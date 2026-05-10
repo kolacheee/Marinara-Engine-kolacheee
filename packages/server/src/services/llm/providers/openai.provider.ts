@@ -1361,6 +1361,20 @@ export class OpenAIProvider extends BaseLLMProvider {
         response,
         "OpenAI chatResponses() non-stream response",
       );
+
+      // Check for application-level failures returned with HTTP 200
+      const status = json.status as string | undefined;
+      if (status === "failed") {
+        const error = json.error as Record<string, unknown> | undefined;
+        const msg = (error?.message as string) ?? "unknown error";
+        throw new Error(`OpenAI Responses API returned failed status: ${msg}`);
+      }
+      if (status === "incomplete") {
+        const details = json.incomplete_details as Record<string, unknown> | undefined;
+        const reason = (details?.reason as string) ?? "unknown";
+        logger.warn("[OpenAI Responses] Non-streaming response incomplete (reason=%s)", reason);
+      }
+
       // Extract reasoning summaries for non-streaming
       if (options.onThinking) {
         const output = json.output as Array<Record<string, unknown>> | undefined;
@@ -1382,6 +1396,15 @@ export class OpenAIProvider extends BaseLLMProvider {
       // Emit encrypted reasoning items for multi-turn context
       this.emitEncryptedReasoning(json, options);
       const text = this.extractResponsesText(json);
+      if (!text) {
+        const output = json.output as Array<Record<string, unknown>> | undefined;
+        logger.warn(
+          "[OpenAI Responses] No text extracted from non-streaming response (status=%s, output_text type=%s, output items=%s)",
+          status ?? "n/a",
+          typeof json.output_text,
+          output ? output.map((i) => i.type).join(",") : "none",
+        );
+      }
       if (text) yield text;
       return this.extractResponsesUsage(json);
     }
@@ -1427,7 +1450,8 @@ export class OpenAIProvider extends BaseLLMProvider {
           const eventType = currentEvent || (parsed.type as string) || "";
 
           switch (eventType) {
-            case "response.output_text.delta": {
+            case "response.output_text.delta":
+            case "response.text.delta": {
               const delta = parsed.delta as string | undefined;
               if (delta) {
                 yieldedAny = true;
@@ -1462,6 +1486,14 @@ export class OpenAIProvider extends BaseLLMProvider {
                   if (fallback) {
                     yieldedAny = true;
                     yield fallback;
+                  } else {
+                    const output = resp.output as Array<Record<string, unknown>> | undefined;
+                    logger.warn(
+                      "[OpenAI Responses] Stream produced no text (status=%s, output_text type=%s, output items=%s)",
+                      resp.status ?? "n/a",
+                      typeof resp.output_text,
+                      output ? output.map((i) => i.type).join(",") : "none",
+                    );
                   }
                 }
               }
@@ -1544,6 +1576,15 @@ export class OpenAIProvider extends BaseLLMProvider {
         response,
         "OpenAI chatCompleteResponses() non-stream response",
       );
+
+      // Check for application-level failures returned with HTTP 200
+      const respStatus = json.status as string | undefined;
+      if (respStatus === "failed") {
+        const error = json.error as Record<string, unknown> | undefined;
+        const msg = (error?.message as string) ?? "unknown error";
+        throw new Error(`OpenAI Responses API returned failed status: ${msg}`);
+      }
+
       // Extract reasoning summaries
       if (options.onThinking) {
         const output = json.output as Array<Record<string, unknown>> | undefined;
@@ -1620,7 +1661,8 @@ export class OpenAIProvider extends BaseLLMProvider {
           const eventType = currentEvent || (parsed.type as string) || "";
 
           switch (eventType) {
-            case "response.output_text.delta": {
+            case "response.output_text.delta":
+            case "response.text.delta": {
               const delta = parsed.delta as string | undefined;
               if (delta) {
                 content += delta;
@@ -1772,12 +1814,16 @@ export class OpenAIProvider extends BaseLLMProvider {
         const content = item.content as Array<Record<string, unknown>> | undefined;
         if (content) {
           for (const part of content) {
-            if (part.type === "output_text" && typeof part.text === "string") {
+            if ((part.type === "output_text" || part.type === "text") && typeof part.text === "string") {
               text += part.text;
             } else if (part.type === "refusal" && typeof part.refusal === "string") {
               text += part.refusal;
             }
           }
+        }
+        // Fall back to item-level text field (some models return content as a string)
+        if (!text && typeof item.content === "string") {
+          text += item.content;
         }
       }
     }
