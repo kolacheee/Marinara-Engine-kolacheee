@@ -231,12 +231,20 @@ PF.core = {
 
   // ── input ───────────────────────────────────────────────────────────────────
   _hostOwnsKeyboard() {
-    // Never fight the host for keys: skip when focus is inside any host
-    // control, or a host dialog / floating panel is open (review finding).
+    // Never fight the host for keys. Two checks, deliberately narrow (the
+    // first live playtest showed broad ones misfire — the toast container is
+    // a permanently-mounted [data-chat-floating-panel]):
+    // 1) focus is inside a host control (covers inputs, selects, menus,
+    //    floating panels — focus follows interaction);
+    // 2) a visible MODAL dialog is open (aria-modal, e.g. the setup wizard).
     const ae = document.activeElement;
     if (ae && ae !== document.body && ae !== document.documentElement && !(this._mainEl && this._mainEl.contains(ae)))
       return true;
-    return !!document.querySelector('[role="dialog"], [data-chat-floating-panel]');
+    for (const node of document.querySelectorAll('[role="dialog"][aria-modal="true"]')) {
+      const rect = node.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) return true;
+    }
+    return false;
   },
 
   _bindKeys() {
@@ -377,3 +385,9 @@ class PixelforgeElement extends HTMLElement {
 
 const PF_TAG = "marinara-capability-pixelforge";
 if (!customElements.get(PF_TAG)) customElements.define(PF_TAG, PixelforgeElement);
+
+// Debug/testing handle: lets automated playtests (and future Playwright smoke
+// lanes) inspect and step the world without relying on requestAnimationFrame,
+// which browsers pause for non-composited tabs. The package runs full-trust in
+// the main realm anyway, so this exposes nothing that wasn't already reachable.
+globalThis.__pixelforge = PF;
