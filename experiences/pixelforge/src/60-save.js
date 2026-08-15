@@ -182,8 +182,7 @@ PF.save = {
     const meta = core.host && typeof core.host.chatMeta === "object" && core.host.chatMeta !== null ? core.host.chatMeta : {};
     core.sim = this.simFromSaved(saved, meta, core.chatId);
     this._lastSerialized = JSON.stringify(this.snapshot(core));
-    core.render?.invalidateZone("village");
-    core.render?.invalidateZone("inn");
+    for (const zoneId of Object.keys(core.sim.world.zones)) core.render?.invalidateZone(zoneId);
     core.hud?.refreshChips();
   },
 

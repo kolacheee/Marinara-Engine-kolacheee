@@ -160,8 +160,7 @@ PF.core = {
     this.sim = PF.save.restore(p.chatMeta ?? {}, p.chatId);
     this.host = p;
     void PF.save.adopt(this);
-    this.render?.invalidateZone("village");
-    this.render?.invalidateZone("inn");
+    for (const zoneId of Object.keys(this.sim.world.zones)) this.render?.invalidateZone(zoneId);
     this._resumeMode = "walk";
     this._combatOverride = false;
     this._lastPosSave = 0;
