@@ -105,6 +105,9 @@ PF.core = {
     if (!p || typeof p.chatId !== "string") return;
     if (p.chatId !== this.chatId) this._switchChat(p);
     this.host = p;
+    // Tier-1 art rides the packageId/packageVersion the host injects (engine
+    // #5092); load() is idempotent and Tier-0 remains the fallback throughout.
+    void PF.assets.load(this);
 
     // Self-heal an erased save key (engine's unqueued updateMetadata writers —
     // issue #5076 class; review finding).

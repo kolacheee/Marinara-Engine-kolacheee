@@ -58,15 +58,18 @@ PF.Render = class {
 
     ctx.drawImage(comp.base, camX, camY, viewW, viewH, offX, offY, viewW, viewH);
 
-    // actors, y-sorted (player + NPC tokens)
+    // actors, y-sorted (player + NPC tokens); Tier-1 sheets ?? Tier-0 strips
     const actors = z.npcs
       .map((npc) => ({
         y: npc.y * T + 8,
         draw: () => {
-          const strip = PF.art.actor(npc.hue);
-          const frame = npc.stepPhase ? 1 + (Math.floor(npc.stepPhase) % 2) : 0;
-          ctx.drawImage(
-            strip.frames[npc.facing || 0][frame],
+          PF.art.drawActor(
+            ctx,
+            npc.id,
+            npc.hue,
+            npc.facing || 0,
+            npc.stepPhase || 0,
+            !!npc.stepPhase,
             Math.round(npc.x * T + 2 - camX + offX),
             Math.round(npc.y * T - 6 - camY + offY),
           );
@@ -81,10 +84,13 @@ PF.Render = class {
         {
           y: sim.y,
           draw: () => {
-            const strip = PF.art.actor(158); // player: teal
-            const frame = sim.moving ? 1 + (Math.floor(sim.phase) % 2) : 0;
-            ctx.drawImage(
-              strip.frames[sim.facing][frame],
+            PF.art.drawActor(
+              ctx,
+              "player",
+              158, // teal fallback hue
+              sim.facing,
+              sim.phase,
+              sim.moving,
               Math.round(sim.x - 6 - camX + offX),
               Math.round(sim.y - 14 - camY + offY),
             );

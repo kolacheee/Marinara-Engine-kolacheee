@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "id": "pixelforge",
   "name": "Pixelforge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A walkable pixel-art village RPG: explore a closed world, talk to NPCs to drive the story, and let the GM narrate — with World Maps integration and the engine's own combat.",
   "kind": ["agent"],
   "engine": { "min": "2.0.0", "maxExclusive": "3.0.0" },
