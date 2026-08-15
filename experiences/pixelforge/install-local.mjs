@@ -5,7 +5,7 @@
 // restart needed; reload the app tab afterwards.
 //
 // Usage: node install-local.mjs [--data-dir <path>]   (default: ../../packages/server/data)
-import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -47,8 +47,14 @@ registry.packages.push({
   readinessError: null,
   legacy: false,
 });
-writeFileSync(registryPath, JSON.stringify(registry, null, 2));
+// Atomic write (temp + rename), mirroring the engine's own writeRegistry. Note:
+// if the server installs/uninstalls a package at the same moment, its own
+// registry write can still clobber this one — prefer running while idle.
+const tmpPath = `${registryPath}.tmp-install-local`;
+writeFileSync(tmpPath, JSON.stringify(registry, null, 2));
+renameSync(tmpPath, registryPath);
 
 console.log(`installed pixelforge ${manifest.version} → ${versionDir}`);
 console.log(`registry updated: ${registryPath} (backup: installed.json.bak)`);
 console.log("no server restart needed (client-only) — reload the Marinara tab and open New Game → Experiences.");
+console.log("tip: avoid installing/uninstalling other packages in the app at the same moment.");

@@ -26,13 +26,27 @@ PF.save = {
     };
   },
 
+  /** Where /game/create actually stores the wizard config (review finding):
+   *  the chooser wraps our cfg as setupConfig.experienceConfig = cfg, and the
+   *  server persists the whole setupConfig under meta.gameSetupConfig — so our
+   *  own `experienceConfig.seed` lands two levels deep. Read every plausible
+   *  depth so a future un-nesting doesn't strand old games. */
+  _configSeed(meta) {
+    const setup = meta && typeof meta.gameSetupConfig === "object" && meta.gameSetupConfig !== null ? meta.gameSetupConfig : null;
+    const outer = setup && typeof setup.experienceConfig === "object" && setup.experienceConfig !== null ? setup.experienceConfig : null;
+    const inner = outer && typeof outer.experienceConfig === "object" && outer.experienceConfig !== null ? outer.experienceConfig : null;
+    for (const candidate of [inner?.seed, outer?.seed]) {
+      if (typeof candidate === "number") return candidate >>> 0;
+    }
+    return null;
+  },
+
   /** Restore a saved state into a freshly built world. Returns the sim. */
   restore(meta, chatId) {
     const saved = meta && typeof meta.pixelforge === "object" && meta.pixelforge !== null ? meta.pixelforge : null;
-    const cfg = meta && typeof meta.experienceConfig === "object" && meta.experienceConfig !== null ? meta.experienceConfig : null;
     const seed =
       (saved && typeof saved.seed === "number" && (saved.seed >>> 0)) ||
-      (cfg && typeof cfg.seed === "number" && (cfg.seed >>> 0)) ||
+      this._configSeed(meta) ||
       PF.hashStr(String(chatId));
     const world = PF.world.build(seed);
     const sim = new PF.Sim(world);
@@ -60,6 +74,18 @@ PF.save = {
       }
     }
     return sim;
+  },
+
+  /** Self-heal (review finding): ~40 engine call sites still use the unqueued
+   *  whole-blob updateMetadata (issue #5076 class), any of which can silently
+   *  erase our key between turns. If we have saved state but the incoming
+   *  chatMeta lost the key, re-save from the in-memory authority. */
+  ensurePresent(core, meta) {
+    if (!this._lastSerialized || !core.sim || !core.chatId) return;
+    if (meta && typeof meta === "object" && meta.pixelforge == null) {
+      this._lastSerialized = null; // force the next flush to actually write
+      this.markDirty(core);
+    }
   },
 
   markDirty(core) {

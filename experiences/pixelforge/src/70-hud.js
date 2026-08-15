@@ -27,7 +27,7 @@ PF.Hud = class {
     this.talkBtn = this._btn("Talk (E)", () => core.interact());
     this.travelBtn = this._btn("Travel", () => this.toggleTravel());
     this.keyboardBtn = this._btn("Keyboard", () => core.setMode("dialogue"));
-    this.resumeBtn = this._btn("▶ Resume walking", () => core.setMode("walk"));
+    this.resumeBtn = this._btn("▶ Resume walking", () => core.resume());
     this.actions = PF.el(
       "div",
       {
@@ -95,6 +95,7 @@ PF.Hud = class {
   }
 
   destroy() {
+    clearTimeout(this._toastTimer);
     this.root.remove();
   }
 
@@ -142,15 +143,23 @@ PF.Hud = class {
     const sim = this.core.sim;
     if (!sim) return;
     const mode = sim.mode;
-    if (mode !== this._mode) {
+    const spatialAvail = PF.spatial.available;
+    if (mode !== this._mode || spatialAvail !== this._spatialAvail) {
       this._mode = mode;
+      this._spatialAvail = spatialAvail;
       const inWorld = mode === "walk";
-      this.root.style.display = mode === "combat" || mode === "replay" ? "none" : "";
+      // Replay: the host owns the whole screen. Combat: keep a minimal HUD —
+      // the mode is inferred from the narrative gameActiveState, which can flip
+      // without any combat UI mounting, so the player must NEVER be left with
+      // zero controls (review finding). Resume is the guaranteed exit.
+      this.root.style.display = mode === "replay" ? "none" : "";
       this.dpad.style.display = inWorld ? "" : "none";
       this.talkBtn.style.display = inWorld ? "" : "none";
-      this.travelBtn.style.display = inWorld && PF.spatial.available ? "" : "none";
+      this.travelBtn.style.display = inWorld && spatialAvail ? "" : "none";
       this.keyboardBtn.style.display = inWorld ? "" : "none";
-      this.resumeBtn.style.display = mode === "dialogue" ? "" : "none";
+      this.resumeBtn.style.display = mode === "dialogue" || mode === "combat" ? "" : "none";
+      this.resumeBtn.textContent = mode === "combat" ? "▶ Resume exploring" : "▶ Resume walking";
+      this.travelMenu.style.display = "none";
       if (mode === "dialogue") this.toast("Type in the message box below — Resume to keep walking");
     }
     if (this._mode === "walk") {

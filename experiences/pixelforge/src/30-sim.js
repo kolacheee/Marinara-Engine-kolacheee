@@ -72,16 +72,6 @@ PF.Sim = class {
       } else {
         this.phase = 0;
       }
-      // package-local clock (never the host time endpoints — issue #5076)
-      this._clockAcc += dt;
-      while (this._clockAcc >= PF.CLOCK_SECONDS_PER_GAME_MINUTE) {
-        this._clockAcc -= PF.CLOCK_SECONDS_PER_GAME_MINUTE;
-        this.clockMin++;
-        if (this.clockMin >= 24 * 60) {
-          this.clockMin = 0;
-          this.day++;
-        }
-      }
       // portal under feet?
       const tx = Math.floor(this.x / PF.TILE);
       const ty = Math.floor(this.y / PF.TILE);
@@ -104,8 +94,21 @@ PF.Sim = class {
         }
       }
     }
-    // NPC wander runs in walk + dialogue (life goes on), never combat/replay
-    if (this.mode === "walk" || this.mode === "dialogue") this.stepNpcs(dt, z);
+    // Clock + NPC wander run in walk AND dialogue (life goes on, time passes
+    // during conversations), never in combat/replay. Package-local clock only —
+    // never the host time endpoints (issue #5076).
+    if (this.mode === "walk" || this.mode === "dialogue") {
+      this._clockAcc += dt;
+      while (this._clockAcc >= PF.CLOCK_SECONDS_PER_GAME_MINUTE) {
+        this._clockAcc -= PF.CLOCK_SECONDS_PER_GAME_MINUTE;
+        this.clockMin++;
+        if (this.clockMin >= 24 * 60) {
+          this.clockMin = 0;
+          this.day++;
+        }
+      }
+      this.stepNpcs(dt, z);
+    }
     return { zoneChanged: false };
   }
 

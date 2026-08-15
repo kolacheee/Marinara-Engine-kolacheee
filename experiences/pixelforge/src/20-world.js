@@ -53,11 +53,13 @@ PF.world = (() => {
     return { doorX: dx, doorY: wallY };
   }
 
-  function scatterTrees(z, rnd, count) {
+  function scatterTrees(z, rnd, count, reserved) {
     for (let i = 0; i < count; i++) {
       const x = 1 + ((rnd() * (z.w - 2)) | 0);
       const y = 2 + ((rnd() * (z.h - 3)) | 0);
       if (z.solid[idx(z, x, y)] || z.object[idx(z, x, y)] || z.ground[idx(z, x, y)] !== "grass") continue;
+      // never near a door or portal exit — a tree there traps the player (review finding)
+      if (reserved && reserved.some((r) => Math.abs(r.x - x) <= 1 && Math.abs(r.y - y) <= 2)) continue;
       put(z, x, y, "object", "trunk", true);
       put(z, x, y - 1, "overhead", "canopy");
     }
@@ -105,9 +107,10 @@ PF.world = (() => {
     put(v, 7, 19, "object", null, false); // gate
     // buildings
     const inn = building(v, 25, 6, 8, 5, 3, [1, 6]); // the Amber Hearth Inn
-    building(v, 6, 6, 6, 4, 2, [4]); // Tam's farmhouse
-    building(v, 13, 6, 5, 4, 2, [1]); // Rook's cottage
-    scatterTrees(v, rnd, 26);
+    const farm = building(v, 6, 6, 6, 4, 2, [4]); // Tam's farmhouse
+    const cottage = building(v, 13, 6, 5, 4, 2, [1]); // Rook's cottage
+    const doors = [inn, farm, cottage].map((b) => ({ x: b.doorX, y: b.doorY }));
+    scatterTrees(v, rnd, 26, doors.concat(doors.map((d) => ({ x: d.x, y: d.y + 1 }))));
     v.spawn = { x: 21, y: 17 };
 
     // ── Inn interior ──

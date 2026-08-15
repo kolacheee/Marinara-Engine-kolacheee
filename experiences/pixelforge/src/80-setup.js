@@ -6,6 +6,11 @@
 // isn't active the host falls back to standard mode and the surface runs
 // unbound — both are handled (verified trap #6).
 PF.mountSetup = (el, props) => {
+  // The host delivers a FRESH props object on every render, and its onCancel
+  // closes over the current `launching` state — capturing the first one would
+  // let "Back" defeat the host's mid-launch freeze (review finding). Keep the
+  // latest props on the element and read them at click time.
+  el._pfProps = props;
   if (el._pfSetupMounted) return;
   el._pfSetupMounted = true;
   el.style.display = "block";
@@ -66,7 +71,7 @@ PF.mountSetup = (el, props) => {
     type: "button",
     style: `${S.btn}background:transparent;color:inherit;`,
     text: "Back",
-    onclick: () => props.onCancel?.(),
+    onclick: () => el._pfProps?.onCancel?.(),
   });
 
   const root = PF.el("div", { style: "font-family:inherit;color:inherit;" }, [
@@ -95,7 +100,11 @@ PF.mountSetup = (el, props) => {
   void (async () => {
     try {
       const conns = await PF.api.getJson("/connections");
-      const list = Array.isArray(conns) ? conns : [];
+      // Text-capable connections only — the host doesn't re-check eligibility,
+      // and an image/video connection here fails at first generation (review finding).
+      const list = (Array.isArray(conns) ? conns : []).filter(
+        (c) => c?.provider !== "image_generation" && c?.provider !== "video_generation",
+      );
       connSel.replaceChildren(
         ...list.map((c) =>
           PF.el("option", {
@@ -104,7 +113,9 @@ PF.mountSetup = (el, props) => {
           }),
         ),
       );
-      if (!list.length) connSel.replaceChildren(PF.el("option", { value: "", text: "No connections configured" }));
+      const preferred = list.find((c) => c?.isDefault) ?? list.find((c) => c?.fallbackForMain);
+      if (preferred && typeof preferred.id === "string") connSel.value = preferred.id;
+      if (!list.length) connSel.replaceChildren(PF.el("option", { value: "", text: "No text connections configured" }));
     } catch {
       connSel.replaceChildren(PF.el("option", { value: "", text: "Could not load connections" }));
     }
@@ -162,26 +173,34 @@ PF.mountSetup = (el, props) => {
       experienceConfig: { seed },
     };
     launchBtn.disabled = true;
+    cancelBtn.disabled = true; // mirror the host's mid-launch freeze
     launchBtn.textContent = "Setting up…";
     try {
-      const chatId = await props.onLaunch(setupConfig, nameIn.value.trim() || "Hearthvale", undefined, {
+      const chatId = await el._pfProps.onLaunch(setupConfig, nameIn.value.trim() || "Hearthvale", undefined, {
         gmConnectionId,
       });
-      // Seed the world state right away so the first surface load is deterministic
-      // even if experienceConfig is trimmed somewhere down the line.
+      // Seed the world state right away so the first surface load is deterministic.
+      // Retried because restore()'s config fallback depends on the host's nesting;
+      // this PATCH is the direct, unambiguous path.
       if (typeof chatId === "string") {
         const world = PF.world.build(seed);
         const sim = new PF.Sim(world);
-        try {
-          await PF.api.patchMetadata(chatId, { pixelforge: { ...PF.save.snapshot({ sim, chatId }), chatId } }, false);
-        } catch {
-          /* metadata seeding is an optimization; restore() falls back to experienceConfig.seed */
+        const snap = PF.save.snapshot({ sim, chatId });
+        for (let attempt = 0; attempt < 3; attempt++) {
+          try {
+            await PF.api.patchMetadata(chatId, { pixelforge: snap }, false);
+            break;
+          } catch (err) {
+            if (attempt === 2) console.warn("[pixelforge] world seeding failed; restore will use the config seed", err);
+            else await new Promise((r) => setTimeout(r, 400 * (attempt + 1)));
+          }
         }
       }
     } catch (err) {
       errEl.textContent = err && err.message ? String(err.message) : "Launch failed — check the connection and try again.";
       errEl.style.display = "block";
       launchBtn.disabled = false;
+      cancelBtn.disabled = false;
       launchBtn.textContent = "Begin in Hearthvale";
     }
   });
