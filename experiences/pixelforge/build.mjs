@@ -4,9 +4,10 @@
 // No dependencies — plain node.
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
-import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildArt } from "./build-art.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(here, "..", "..");
@@ -44,20 +45,38 @@ try {
 const sha256 = (buf) => createHash("sha256").update(buf).digest("hex");
 const clientBuf = Buffer.from(bundle, "utf8");
 
-const manifest = {
-  ...template,
-  capabilityApi: { major: 1, minor: 9 },
-  builtAgainst: { engineVersion: enginePkg.version, engineCommit },
-  files: [{ path: "client.js", sha256: sha256(clientBuf), bytes: clientBuf.length }],
-};
+// Tier-1 authored art (deterministic PNGs + atlas/sprite metadata), shipped as
+// package assets via contributions.assets (Capability API 1.10, engine #5091).
+const art = buildArt();
 
 const outDir = join(here, "dist", "pixelforge", template.version);
 rmSync(join(here, "dist"), { recursive: true, force: true });
-mkdirSync(outDir, { recursive: true });
+mkdirSync(join(outDir, "sprites"), { recursive: true });
 writeFileSync(join(outDir, "client.js"), clientBuf);
+const files = [{ path: "client.js", sha256: sha256(clientBuf), bytes: clientBuf.length }];
+for (const assetPath of art.files) {
+  const source = join(art.dir, assetPath);
+  const data = readFileSync(source);
+  copyFileSync(source, join(outDir, assetPath));
+  files.push({ path: assetPath, sha256: sha256(data), bytes: data.length });
+}
+
+const manifest = {
+  ...template,
+  // contributions.assets requires capabilityApi ≥ 1.10 (schema gate).
+  capabilityApi: { major: 1, minor: 10 },
+  builtAgainst: { engineVersion: enginePkg.version, engineCommit },
+  contributions: {
+    ...template.contributions,
+    assets: { paths: art.files },
+  },
+  files,
+};
 writeFileSync(join(outDir, "manifest.json"), JSON.stringify(manifest, null, 2));
 
+const totalAssetBytes = files.slice(1).reduce((a, f) => a + f.bytes, 0);
 console.log(`built pixelforge ${template.version}`);
-console.log(`  client.js  ${clientBuf.length} bytes  sha256 ${manifest.files[0].sha256.slice(0, 12)}…`);
+console.log(`  client.js  ${clientBuf.length} bytes  sha256 ${files[0].sha256.slice(0, 12)}…`);
+console.log(`  assets     ${art.files.length} files, ${totalAssetBytes} bytes`);
 console.log(`  builtAgainst ${enginePkg.version} @ ${engineCommit.slice(0, 9)}`);
 console.log(`  out: ${outDir}`);

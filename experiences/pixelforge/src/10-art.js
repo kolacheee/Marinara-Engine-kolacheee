@@ -21,9 +21,11 @@ PF.art = (() => {
 
   const T = PF.TILE;
 
-  /** Paint one 16×16 tile via a painter fn keyed by tile id; cached. */
+  /** One 16×16 tile canvas: Tier-1 (authored atlas) ?? Tier-0 (procedural). */
   const tileCache = new Map();
   function tile(id) {
+    const authored = PF.assets?.tileCanvas(id);
+    if (authored) return authored;
     let c = tileCache.get(id);
     if (c) return c;
     c = PF.offscreen(T, T);
@@ -206,5 +208,14 @@ PF.art = (() => {
     return strip;
   }
 
-  return { PAL, tile, actor };
+  /** Draw an actor frame at (dx, dy): Tier-1 sheet (4-frame authored walk
+   *  cycle, keyed by actor name) ?? Tier-0 strip (3-frame synthesized). */
+  function drawActor(ctx, key, hue, facing, phase, moving, dx, dy) {
+    if (PF.assets?.drawActor(ctx, key, facing, phase, moving, dx, dy)) return;
+    const strip = actor(hue);
+    const frame = moving ? 1 + (Math.floor(phase) % 2) : 0;
+    ctx.drawImage(strip.frames[facing][frame], dx, dy);
+  }
+
+  return { PAL, tile, actor, drawActor };
 })();

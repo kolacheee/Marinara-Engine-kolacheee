@@ -28,6 +28,13 @@ rmSync(versionDir, { recursive: true, force: true });
 mkdirSync(versionDir, { recursive: true });
 copyFileSync(join(distDir, "manifest.json"), join(versionDir, "manifest.json"));
 copyFileSync(join(distDir, "client.js"), join(versionDir, "client.js"));
+// Every manifest-declared file must land next to the client (assets etc.).
+for (const file of manifest.files ?? []) {
+  if (file.path === "client.js") continue;
+  const target = join(versionDir, file.path);
+  mkdirSync(dirname(target), { recursive: true });
+  copyFileSync(join(distDir, file.path), target);
+}
 
 const registryPath = join(pkgRoot, "installed.json");
 let registry = { schemaVersion: 1, packages: [] };

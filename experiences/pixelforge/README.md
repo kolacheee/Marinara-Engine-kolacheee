@@ -98,6 +98,18 @@ but reload the browser tab. The Experience then appears in the new-game wizard's
   chat-id hash — and setup also seeds the `pixelforge` key directly (retried) so the first mount is
   deterministic.
 
+## Tier-1 art (Phase 2)
+
+`build-art.mjs` generates the authored art deterministically at build time (dependency-free PNG
+encoder in `png.mjs`): a 21-tile atlas (`tiles.png` + `atlas.json`) and 4-direction × 4-frame
+walk-cycle sprite sheets for the player and each villager (`sprites/*.png` + `sprites.json`).
+They ship as package files via `contributions.assets` (Capability API 1.10) and load at runtime
+through the `packageId`/`packageVersion` the host injects into `capabilityProps`; every draw
+resolves `Tier1 ?? Tier0`, so a failed or unavailable load (older engine, 404, corruption)
+falls back to procedural art with no interruption. Path gotcha: manifest asset paths are
+package-root-relative (`tiles.png`, `sprites/player.png`) and the serve route namespaces them
+under `/assets/` — do not prefix the paths themselves with `assets/`.
+
 ## Phase-1 TODO (tracked for later commits)
 
 - Message-anchored delta log + checkpoint-restore / branch self-heal (currently: last-write world
