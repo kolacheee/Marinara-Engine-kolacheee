@@ -157,8 +157,12 @@ PF.Hud = class {
       this.talkBtn.style.display = inWorld ? "" : "none";
       this.travelBtn.style.display = inWorld && spatialAvail ? "" : "none";
       this.keyboardBtn.style.display = inWorld ? "" : "none";
-      this.resumeBtn.style.display = mode === "dialogue" || mode === "combat" ? "" : "none";
-      this.resumeBtn.textContent = mode === "combat" ? "▶ Resume exploring" : "▶ Resume walking";
+      // In combat, Resume exists only for the NARRATIVE fallback signal (which
+      // can flip without any combat UI). With the real Capability API 1.11
+      // signal the combat UI owns the screen — no package controls at all.
+      const combatResumeApplies = mode === "combat" && !this.core._combatSignalIsReal;
+      this.resumeBtn.style.display = mode === "dialogue" || combatResumeApplies ? "" : "none";
+      this.resumeBtn.textContent = combatResumeApplies ? "▶ Resume exploring" : "▶ Resume walking";
       this.travelMenu.style.display = "none";
       if (mode === "dialogue") this.toast("Type in the message box below — Resume to keep walking");
     }

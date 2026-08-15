@@ -115,11 +115,20 @@ PF.core = {
     PF.save.ensurePresent(this, meta);
 
     // Mode arbitration: replay > combat > (walk|dialogue kept as-is).
-    // gameActiveState is the GM's NARRATIVE state — it can say "combat" without
-    // any combat UI mounting, so it pauses the world but the HUD always keeps a
-    // Resume exit, and the player's override wins until the state leaves combat.
-    const combatState = meta.gameActiveState === "combat";
+    // Prefer the real combat signal (Capability API 1.11, #5094): true the
+    // instant the combat UI actually mounts. Fallback for older engines is the
+    // GM's NARRATIVE gameActiveState — which can say "combat" without any
+    // combat UI mounting, so it pauses the world but the HUD always keeps a
+    // Resume exit, and the player's override wins until the state clears.
+    this._combatSignalIsReal = typeof p.combatActive === "boolean";
+    const combatState = this._combatSignalIsReal ? p.combatActive : meta.gameActiveState === "combat";
     if (!combatState) this._combatOverride = false;
+    // A failed encounter generation would otherwise leave the player watching
+    // for a combat that never comes — surface it once per distinct error.
+    if (p.combatError && p.combatError !== this._lastCombatError) {
+      this._lastCombatError = p.combatError;
+      this.hud?.toast("The encounter fizzled — try again.");
+    }
     if (p.replayActive) this.setMode("replay");
     else if (combatState && !this._combatOverride) this.setMode("combat");
     else if (this.sim && (this.sim.mode === "replay" || this.sim.mode === "combat")) this.setMode(this._resumeMode);
@@ -163,10 +172,16 @@ PF.core = {
     this.hud?.update();
   },
 
-  /** Resume button: exits dialogue, or overrides a narrative-only combat state. */
+  /** Resume button: exits dialogue, or overrides a narrative-only combat state.
+   *  When the engine provides the REAL combat signal (Capability API 1.11) the
+   *  combat UI actually owns the screen, so there is nothing to override —
+   *  the HUD simply stays hidden until combat ends. */
   resume() {
     if (!this.sim) return;
-    if (this.sim.mode === "combat") this._combatOverride = true;
+    if (this.sim.mode === "combat") {
+      if (this._combatSignalIsReal) return;
+      this._combatOverride = true;
+    }
     this._resumeMode = "walk";
     this.setMode("walk");
   },
