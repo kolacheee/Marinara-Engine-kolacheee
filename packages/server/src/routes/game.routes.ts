@@ -19,6 +19,7 @@ import { createGalleryStorage } from "../services/storage/gallery.storage.js";
 import { createGameSceneVideosStorage } from "../services/storage/game-scene-videos.storage.js";
 import { createGameStoryboardsStorage } from "../services/storage/game-storyboards.storage.js";
 import { createGameStateStorage } from "../services/storage/game-state.storage.js";
+import { createGameEngineStateStorage } from "../services/storage/game-engine-state.storage.js";
 import { createSpatialContextStorage } from "../services/storage/spatial-context.storage.js";
 import { formatOwnerSpatialBreadcrumb, resolveOwnerSpatialProjection } from "../services/spatial-context/projection.js";
 import {
@@ -9755,16 +9756,18 @@ export async function gameRoutes(app: FastifyInstance) {
     const chat = await chats.getById(chatId);
     if (!chat) throw new Error("Chat not found");
 
-    const meta = parseMeta(chat.metadata);
-    const currentTime = (meta.gameTime as GameTime) ?? createInitialTime();
-    let newTime: GameTime;
-    if (isTimeOfDayLabel(action)) {
-      newTime = setTimeOfDay(currentTime, action);
-    } else {
-      newTime = advanceTime(currentTime, action);
-    }
-
-    await chats.updateMetadata(chatId, { ...meta, gameTime: newTime });
+    // #5076: recompute the new time against the queue-fresh metadata and write ONLY the gameTime key
+    // through the queued patch path. The old whole-blob updateMetadata (spreading a request-time
+    // `meta`) silently reverted any concurrent metadata write that landed in between — most damagingly
+    // a World Maps definition revision bump, which then permanently fails movement validation as
+    // spatial_transition_stale_definition. patchMetadata re-reads and merges under the per-chat queue.
+    let newTime: GameTime | undefined;
+    const updated = await chats.patchMetadata(chatId, (freshMeta) => {
+      const currentTime = (freshMeta.gameTime as GameTime) ?? createInitialTime();
+      newTime = isTimeOfDayLabel(action) ? setTimeOfDay(currentTime, action) : advanceTime(currentTime, action);
+      return { gameTime: newTime };
+    });
+    if (!updated || !newTime) throw new Error("Chat not found");
 
     // Also update the game state snapshot so WeatherEffects picks it up
     const gameStateStore = createGameStateStorage(app.db);
@@ -9799,7 +9802,8 @@ export async function gameRoutes(app: FastifyInstance) {
       weather.type = type as any;
       weather.description = `The weather is ${type}.`;
 
-      await chats.updateMetadata(chatId, { ...meta, gameWeather: weather });
+      // #5076: narrow queued patch so a concurrent metadata write is merged, not clobbered.
+      await chats.patchMetadata(chatId, { gameWeather: weather });
       const gameStateStore = createGameStateStorage(app.db);
       await updateLatestGameStateWithTrackerLocks(gameStateStore, chatId, {
         weather: weather.type,
@@ -9815,7 +9819,8 @@ export async function gameRoutes(app: FastifyInstance) {
     const biome = inferBiome(location);
     const weather = generateWeather(biome, season);
 
-    await chats.updateMetadata(chatId, { ...meta, gameWeather: weather });
+    // #5076: narrow queued patch so a concurrent metadata write is merged, not clobbered.
+    await chats.patchMetadata(chatId, { gameWeather: weather });
 
     // Also update the game state snapshot so WeatherEffects picks it up
     const gameStateStore = createGameStateStorage(app.db);
@@ -13259,6 +13264,28 @@ export async function gameRoutes(app: FastifyInstance) {
       },
       manualOverrides,
     );
+
+    // #5077: a turn-game engine snapshot (UNO/Chess/Poker/8-ball, and any future capability-package
+    // per-message game state) is anchored per (message, swipe) INDEPENDENTLY of the game/spatial
+    // snapshots the checkpoint captures, so checkpoints never carried it and a load left an active
+    // game on its post-checkpoint state. Recover the engine state that was current at checkpoint time
+    // (keyed by createdAt <= the checkpoint's createdAt, since its own anchor is unrelated to the
+    // captured snapshots) and clone it onto the restore anchor, so getTurnGameView — via
+    // resolveTurnGameAnchor's checkpoint_restore rule — rewinds the game too. No-op when the chat has
+    // never had a turn-game (the lookup is chatId-scoped, so ownership needs no extra guard).
+    const engineStore = createGameEngineStateStorage(app.db);
+    const cpEngineRow = await engineStore.getLatestAtOrBefore(input.chatId, cp.createdAt);
+    if (cpEngineRow) {
+      await engineStore.create({
+        chatId: input.chatId,
+        messageId: restoreMsg.id,
+        swipeIndex: 0,
+        gameType: cpEngineRow.gameType,
+        schemaVersion: cpEngineRow.schemaVersion,
+        state: cpEngineRow.state,
+        committed: true,
+      });
+    }
 
     // Restore chat metadata fields from checkpoint
     if (cp.gameState) {
