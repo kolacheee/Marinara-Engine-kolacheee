@@ -20,10 +20,12 @@ PF.core = {
   _raf: 0,
   _lastT: 0,
   _acc: 0,
-  _chromeSent: null,
   _narrationDoneWas: true,
   _keysBound: false,
   _resizeObs: null,
+  _resumeMode: "walk", // mode to restore when combat/replay ends
+  _combatOverride: false, // player chose to keep exploring during a narrative "combat" state
+  _lastPosSave: 0,
 
   // ── attachment ──────────────────────────────────────────────────────────────
   attachUnderlay(el, props) {
@@ -73,6 +75,10 @@ PF.core = {
       this.hud?.destroy();
       this.hud = null;
       this._unbindKeys();
+      // Hand classic chrome back so an error/unmount can never strand the
+      // player with no turn input (review blocker): the host clears its seam
+      // state only on chat switch, not on element unmount.
+      this._releaseChrome();
     }
     if (!this._underlayEl && !this._mainEl) {
       // Last detach: stop the loop and flush. Element remounts (version bump,
@@ -100,11 +106,20 @@ PF.core = {
     if (p.chatId !== this.chatId) this._switchChat(p);
     this.host = p;
 
-    // Mode arbitration: replay > combat > (walk|dialogue kept as-is).
+    // Self-heal an erased save key (engine's unqueued updateMetadata writers —
+    // issue #5076 class; review finding).
     const meta = p.chatMeta && typeof p.chatMeta === "object" ? p.chatMeta : {};
+    PF.save.ensurePresent(this, meta);
+
+    // Mode arbitration: replay > combat > (walk|dialogue kept as-is).
+    // gameActiveState is the GM's NARRATIVE state — it can say "combat" without
+    // any combat UI mounting, so it pauses the world but the HUD always keeps a
+    // Resume exit, and the player's override wins until the state leaves combat.
+    const combatState = meta.gameActiveState === "combat";
+    if (!combatState) this._combatOverride = false;
     if (p.replayActive) this.setMode("replay");
-    else if (meta.gameActiveState === "combat") this.setMode("combat");
-    else if (this.sim && (this.sim.mode === "replay" || this.sim.mode === "combat")) this.setMode("walk");
+    else if (combatState && !this._combatOverride) this.setMode("combat");
+    else if (this.sim && (this.sim.mode === "replay" || this.sim.mode === "combat")) this.setMode(this._resumeMode);
 
     // Turn finished → the GM may have moved the party or changed the world.
     const narrationDone = p.narrationDone !== false;
@@ -113,6 +128,9 @@ PF.core = {
       PF.save.markDirty(this);
     }
     this._narrationDoneWas = narrationDone;
+    // Declared every props delivery: the host wipes its seam state on scope
+    // changes the package can't see, and it dedupes identical declarations
+    // by value itself — a package-side cache only causes lost declarations.
     this._declareChrome();
   },
 
@@ -123,35 +141,57 @@ PF.core = {
     this.sim = PF.save.restore(p.chatMeta ?? {}, p.chatId);
     this.render?.invalidateZone("village");
     this.render?.invalidateZone("inn");
-    this._chromeSent = null;
+    this._resumeMode = "walk";
+    this._combatOverride = false;
+    this._lastPosSave = 0;
     this.hud?.refreshChips();
     void PF.spatial.refresh(this);
   },
 
   setMode(mode) {
     if (!this.sim || this.sim.mode === mode) return;
+    const prev = this.sim.mode;
+    if ((mode === "combat" || mode === "replay") && (prev === "walk" || prev === "dialogue")) {
+      this._resumeMode = prev; // don't collapse dialogue into walk on exit (review finding)
+    }
     this.sim.mode = mode;
     this.input.up = this.input.down = this.input.left = this.input.right = false;
     this._declareChrome();
     this.hud?.update();
   },
 
+  /** Resume button: exits dialogue, or overrides a narrative-only combat state. */
+  resume() {
+    if (!this.sim) return;
+    if (this.sim.mode === "combat") this._combatOverride = true;
+    this._resumeMode = "walk";
+    this.setMode("walk");
+  },
+
   _declareChrome() {
     const fn = this.host?.setExperienceChrome;
     if (typeof fn !== "function" || !this.sim) return;
-    const want = {
-      providesPlayerInput: this.sim.mode === "walk",
-      providesChoices: false,
-      providesInventory: false,
-      providesCombat: false,
-    };
-    const key = JSON.stringify(want);
-    if (key === this._chromeSent) return;
-    this._chromeSent = key;
     try {
-      fn(want);
+      fn({
+        providesPlayerInput: this.sim.mode === "walk",
+        providesChoices: false,
+        providesInventory: false,
+        providesCombat: false,
+      });
     } catch (err) {
-      PF.fail(this._mainEl, err);
+      // Recoverable — never escalate to the runtime-error contract (it unmounts
+      // the surface and its retry card is pointer-events-none; review blocker).
+      console.warn("[pixelforge] chrome declaration failed", err);
+    }
+  },
+
+  _releaseChrome() {
+    const fn = this.host?.setExperienceChrome;
+    if (typeof fn !== "function") return;
+    try {
+      fn(null);
+    } catch {
+      /* releasing must never throw */
     }
   },
 
@@ -169,10 +209,19 @@ PF.core = {
     this.hud?.toast(`Talking to ${npc.name}`);
     void Promise.resolve(
       this.host.sendMessage(`${sim.header()} I walk up to ${npc.name} the ${npc.role} and greet them.`),
-    ).catch((err) => {
-      this.setMode("walk");
-      PF.fail(this._mainEl, err);
-    });
+    )
+      .then((ok) => {
+        if (ok === false) {
+          this.setMode("walk");
+          this.hud?.toast("The story isn't accepting turns right now.");
+        }
+      })
+      .catch((err) => {
+        // Recoverable per-turn failure: stay mounted, tell the player, move on.
+        this.setMode("walk");
+        this.hud?.toast("That didn't go through — try again.");
+        console.warn("[pixelforge] interact send failed", err);
+      });
     PF.save.markDirty(this);
   },
 
@@ -181,34 +230,52 @@ PF.core = {
   },
 
   // ── input ───────────────────────────────────────────────────────────────────
+  _hostOwnsKeyboard() {
+    // Never fight the host for keys: skip when focus is inside any host
+    // control, or a host dialog / floating panel is open (review finding).
+    const ae = document.activeElement;
+    if (ae && ae !== document.body && ae !== document.documentElement && !(this._mainEl && this._mainEl.contains(ae)))
+      return true;
+    return !!document.querySelector('[role="dialog"], [data-chat-floating-panel]');
+  },
+
   _bindKeys() {
     if (this._keysBound) return;
     this._keysBound = true;
-    this._onKey = (down) => (ev) => {
+    const DIRS = {
+      w: "up", arrowup: "up", s: "down", arrowdown: "down",
+      a: "left", arrowleft: "left", d: "right", arrowright: "right",
+    };
+    this._keyDown = (ev) => {
       if (!this.sim || !this._mainEl) return;
       const t = ev.target;
       if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
       const k = ev.key.toLowerCase();
-      if (this.sim.mode === "dialogue" && down && k === "escape") {
+      if (this.sim.mode === "dialogue" && k === "escape") {
         this.setMode("walk");
         return;
       }
-      if (this.sim.mode !== "walk") return;
-      const map = {
-        w: "up", arrowup: "up", s: "down", arrowdown: "down",
-        a: "left", arrowleft: "left", d: "right", arrowright: "right",
-      };
-      if (map[k]) {
-        this.input[map[k]] = down;
+      if (this.sim.mode !== "walk" || this._hostOwnsKeyboard()) return;
+      if (DIRS[k]) {
+        this.input[DIRS[k]] = true;
         ev.preventDefault();
-      } else if (down && (k === "e" || k === "enter")) {
+      } else if (k === "e") {
+        // "e" only — Enter belongs to host buttons/menus (review finding)
         this.interact();
       }
     };
-    this._keyDown = this._onKey(true);
-    this._keyUp = this._onKey(false);
+    // keyup ALWAYS clears, whatever the target or open panels — otherwise a
+    // keyup landing on an input leaves the avatar walking forever.
+    this._keyUp = (ev) => {
+      const dir = DIRS[ev.key.toLowerCase()];
+      if (dir) this.input[dir] = false;
+    };
+    this._onBlur = () => {
+      this.input.up = this.input.down = this.input.left = this.input.right = false;
+    };
     window.addEventListener("keydown", this._keyDown);
     window.addEventListener("keyup", this._keyUp);
+    window.addEventListener("blur", this._onBlur);
     if (!PF.core._pagehideBound) {
       PF.core._pagehideBound = true;
       window.addEventListener("pagehide", () => void PF.save.flush(PF.core, true));
@@ -220,6 +287,7 @@ PF.core = {
     this._keysBound = false;
     window.removeEventListener("keydown", this._keyDown);
     window.removeEventListener("keyup", this._keyUp);
+    window.removeEventListener("blur", this._onBlur);
   },
 
   // ── loop ────────────────────────────────────────────────────────────────────
@@ -250,7 +318,13 @@ PF.core = {
         }
       }
       if (this._underlayEl) this.render?.draw(sim);
-      if (sim.dirty) PF.save.markDirty(this);
+      // Positional autosave: at most one save per 30s of movement — the real
+      // save triggers are events (zone change, dialogue, travel, turn end).
+      // Never per-frame, never every debounce window (review finding).
+      if (sim.dirty && t - this._lastPosSave > 30_000) {
+        this._lastPosSave = t;
+        PF.save.markDirty(this);
+      }
       this.hud?.update();
     };
     this._raf = requestAnimationFrame(tick);
@@ -293,6 +367,9 @@ class PixelforgeElement extends HTMLElement {
       if (p.layer === "underlay") PF.core.attachUnderlay(this, p);
       else if (typeof p.chatId === "string") PF.core.attachMain(this, p);
     } catch (err) {
+      // Unrecoverable wiring failure: hand classic chrome back FIRST so the
+      // host's error card never strands the player without turn input.
+      PF.core._releaseChrome();
       PF.fail(this, err);
     }
   }

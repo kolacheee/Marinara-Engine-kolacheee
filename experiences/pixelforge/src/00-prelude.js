@@ -68,11 +68,13 @@ PF.api = {
     if (!res.ok) throw new Error(`GET ${path} → ${res.status}`);
     return res.json();
   },
-  /** Merge-patch one key into chat metadata. `keepalive` for teardown flushes. */
+  /** Merge-patch one key into chat metadata. `keepalive` for teardown flushes.
+   *  x-marinara-csrf is required on every unsafe /api request (the same-origin
+   *  escape hatch is off behind proxies/LAN hostnames — review finding). */
   async patchMetadata(chatId, patch, keepalive = false) {
     const res = await fetch(`/api/chats/${encodeURIComponent(chatId)}/metadata`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-marinara-csrf": "1" },
       body: JSON.stringify(patch),
       keepalive,
     });

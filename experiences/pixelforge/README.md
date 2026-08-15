@@ -62,8 +62,12 @@ but reload the browser tab. The Experience then appears in the new-game wizard's
   expectedCurrentLocationId, commandId}` as `sendMessage`'s third argument. Spatial context is
   **authoritative**: a location change with no in-flight command teleports the avatar (narrated
   drift), the world never queues a compensating transition.
-- Saves: `PATCH /api/chats/:id/metadata` with a single `pixelforge` key (< ~4 KB), debounced and
-  event-driven, flushed with `keepalive` on teardown.
+- Saves: `PATCH /api/chats/:id/metadata` (with the required `x-marinara-csrf` header) writing a
+  single `pixelforge` key (< ~4 KB). Event-driven — zone change, dialogue, travel, turn end — plus
+  a positional autosave at most every 30 s while moving; flushed with `keepalive` on teardown.
+  Because ~40 engine call sites still whole-blob-write metadata outside the patch queue (the
+  issue #5076 class), the key can be silently erased between turns: the package keeps in-memory
+  authority and re-writes the key when an incoming `chatMeta` has lost it.
 
 ## Deliberate constraints (from the verified exploration)
 
@@ -80,6 +84,19 @@ but reload the browser tab. The Experience then appears in the new-game wizard's
 - The underlay never paints outside the integer-scaled viewport, so the host's scene/storyboard
   background stays visible in the letterbox bands; during replay the canvas clears entirely.
 - Single-file ES module; no WASM, no eval, no external libraries (CSP + single-entrypoint serving).
+
+## Review-verified behavior notes
+
+- Combat mode is inferred from `chatMeta.gameActiveState`, which is the GM's *narrative* state and
+  can flip to "combat" without any combat UI mounting — so the HUD always keeps a Resume exit
+  visible in combat mode, and the player's Resume overrides the narrative state until it changes.
+- Spatial transition commits/rejects are reported by the host only as capability events addressed
+  to `hierarchical-maps`; this package cannot hear them, so a pending travel self-clears after two
+  turn-boundary refreshes with no movement.
+- The wizard's seed reaches metadata at `gameSetupConfig.experienceConfig.experienceConfig.seed`
+  (the chooser nests the package config); `restore()` reads that path, the saved key, and finally a
+  chat-id hash — and setup also seeds the `pixelforge` key directly (retried) so the first mount is
+  deterministic.
 
 ## Phase-1 TODO (tracked for later commits)
 
