@@ -133,10 +133,13 @@ PF.core = {
     else if (combatState && !this._combatOverride) this.setMode("combat");
     else if (this.sim && (this.sim.mode === "replay" || this.sim.mode === "combat")) this.setMode(this._resumeMode);
 
-    // Turn finished → the GM may have moved the party or changed the world.
+    // Turn finished → the GM may have moved the party or changed the world —
+    // and the timeline may have moved under us (swipe/branch/checkpoint load):
+    // in routes mode the anchored server row is the authority, so check it.
     const narrationDone = p.narrationDone !== false;
     if (narrationDone && !this._narrationDoneWas) {
       void PF.spatial.refresh(this);
+      void PF.save.checkRewind(this);
       PF.save.markDirty(this);
     }
     this._narrationDoneWas = narrationDone;
@@ -149,8 +152,14 @@ PF.core = {
   _switchChat(p) {
     if (this.chatId) void PF.save.flush(this, false);
     PF.spatial.reset();
+    PF.save.reset();
     this.chatId = p.chatId;
+    // Synchronous boot from the metadata cache (instant world), then adopt()
+    // probes the experience-state routes (#5102) and, when available, promotes
+    // the timeline-anchored server row to authority — rebuilding if it differs.
     this.sim = PF.save.restore(p.chatMeta ?? {}, p.chatId);
+    this.host = p;
+    void PF.save.adopt(this);
     this.render?.invalidateZone("village");
     this.render?.invalidateZone("inn");
     this._resumeMode = "walk";
