@@ -178,4 +178,32 @@ PF.Sim = class {
     const near = this.nearNpc ? `; near: ${this.nearNpc.name} (${this.nearNpc.role})` : "";
     return `[World: ${z.name}; ${this.clockLabel()}${near}]`;
   }
+
+  /** The metered turn prefix (docs/brief-schema.md §7): name+role ride the
+   *  header ALWAYS; the settlement situation injects once on the first
+   *  outbound message; a zone's flavor once on first entry; an NPC's persona
+   *  once per NPC. The one-shot flags persist in saves, so a reload never
+   *  re-taxes the context — chat history is the durable channel. Legacy
+   *  worlds carry no prose, so this degrades to header() exactly. */
+  composePrefix(npc) {
+    this.intro ??= { world: false, zones: {}, npcs: {} };
+    const parts = [this.header()];
+    if (!this.intro.world && this.world.situation) {
+      parts.push(`[Setting: ${this.world.situation}]`);
+      this.intro.world = true;
+      this.dirty = true;
+    }
+    const z = this.zone();
+    if (!this.intro.zones[this.zoneId] && z.flavor) {
+      parts.push(`[${z.name}: ${z.flavor}]`);
+      this.intro.zones[this.zoneId] = true;
+      this.dirty = true;
+    }
+    if (npc && npc.id && npc.persona && !this.intro.npcs[npc.id]) {
+      parts.push(`[${npc.name}: ${npc.persona}]`);
+      this.intro.npcs[npc.id] = true;
+      this.dirty = true;
+    }
+    return parts.join(" ");
+  }
 };

@@ -311,6 +311,10 @@ PF.world = (() => {
       for (let i = 0; i < v.ground.length; i++) if (v.ground[i] === "path" && rnd() < 0.18) v.ground[i] = "dirt";
     }
     v.spawn = { x: midX, y: midY + 2 };
+    // Injection-discipline prose (§7) rides the world so the runtime never
+    // needs the brief: zone flavor injects once on first entry, the situation
+    // once on the first outbound message.
+    v.flavor = brief.flavor;
 
     // ── Building arithmetic (§4.5) ──
     const households = [...new Set(brief.cast.map((m) => m.household))].sort((a, b) => a - b);
@@ -425,6 +429,7 @@ PF.world = (() => {
       const doorX = (w / 2) | 0;
       put(zone, doorX, h - 1, "object", "door", false);
       zone.spawn = { x: doorX, y: h - 2 };
+      zone.flavor = place.flavor;
       zones[id] = zone;
       const facade = buildings.find((b) => b.boundPlace === place);
       if (facade) {
@@ -473,6 +478,7 @@ PF.world = (() => {
         zone.portals.push({ x: east ? 0 : zone.w - 1, y: wMidY + dy, toZone: "z1", toX: vroadX, toY: midY - 1 + dy, label: `Back to ${brief.name}` });
       }
       if (!east) zone.spawn = { x: zone.w - 4, y: wMidY };
+      zone.flavor = place.flavor;
       zones[id] = zone;
     });
 
@@ -508,6 +514,7 @@ PF.world = (() => {
       seed,
       theme: activeTheme,
       brieved: true, // marks a compiled world (saves still carry only seed/theme/zone)
+      situation: brief.situation,
       zones,
       startZone: "z1",
       bindings: {},
