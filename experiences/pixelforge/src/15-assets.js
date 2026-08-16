@@ -8,6 +8,9 @@
 // with ETags — never immutable).
 PF.assets = {
   status: "idle", // idle | loading | ready | failed
+  /** The theme the shipped atlas was authored for: Tier-1 art only serves this
+   *  theme; every other theme renders procedurally until themed atlases ship. */
+  atlasTheme: "cozy-village",
   atlas: null, // {tileSize, columns, tiles: {id: index}}
   sprites: null, // {frameWidth, frameHeight, frames, rows, actors: {name: path}}
   _atlasImg: null,
