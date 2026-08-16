@@ -14,6 +14,7 @@
 PF.save = {
   _timer: 0,
   _lastSerialized: null,
+  _flushChain: null,
   /** null until adopt() probes; then "routes" | "metadata". */
   mode: null,
   /** Serialized last-known server-side route state (ours or adopted). */
@@ -60,10 +61,11 @@ PF.save = {
 
   /** Build a sim from a save object (route state or the metadata key). */
   simFromSaved(saved, meta, chatId) {
-    const seed =
-      (saved && typeof saved.seed === "number" && (saved.seed >>> 0)) ||
-      this._configSeed(meta) ||
-      PF.hashStr(String(chatId));
+    // Explicit null checks: 0 is a legitimate seed, so truthiness chaining would
+    // silently rebuild a zero-seeded world from the wrong source.
+    let seed = saved && typeof saved.seed === "number" ? saved.seed >>> 0 : null;
+    if (seed === null) seed = this._configSeed(meta);
+    if (seed === null) seed = PF.hashStr(String(chatId));
     const world = PF.world.build(seed);
     const sim = new PF.Sim(world);
     if (saved && saved.v === 1) {
@@ -182,7 +184,7 @@ PF.save = {
     const meta = core.host && typeof core.host.chatMeta === "object" && core.host.chatMeta !== null ? core.host.chatMeta : {};
     core.sim = this.simFromSaved(saved, meta, core.chatId);
     this._lastSerialized = JSON.stringify(this.snapshot(core));
-    for (const zoneId of Object.keys(core.sim.world.zones)) core.render?.invalidateZone(zoneId);
+    core.render?.clearZones();
     core.hud?.refreshChips();
   },
 
@@ -194,7 +196,15 @@ PF.save = {
     }, 2500);
   },
 
-  async flush(core, teardown) {
+  /** Serialize flushes: a teardown flush and a debounced flush can otherwise
+   *  overlap and double-write (the dedupe check reads _lastSerialized, which is
+   *  only written after the awaits). */
+  flush(core, teardown) {
+    this._flushChain = (this._flushChain ?? Promise.resolve()).then(() => this._flushNow(core, teardown));
+    return this._flushChain;
+  },
+
+  async _flushNow(core, teardown) {
     if (this._timer) {
       clearTimeout(this._timer);
       this._timer = 0;
