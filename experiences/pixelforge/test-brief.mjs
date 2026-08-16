@@ -9,10 +9,10 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 // Mirror the real bundle: concatenate the modules into one scope (the prelude
 // declares `const PF` itself) and return PF. The DOM helpers stay unused.
-const source = ["00-prelude.js", "25-brief.js"]
+const source = ["00-prelude.js", "10-art.js", "18-brief.js", "20-world.js"]
   .map((file) => readFileSync(join(here, "src", file), "utf8"))
   .join("\n");
-const { brief } = new Function(`"use strict";\n${source}\nreturn PF;`)();
+const { brief, world } = new Function(`"use strict";\n${source}\nreturn PF;`)();
 const ctx = { theme: "cozy-village", seed: 424242 };
 
 // 1. The farm-village conversation case: 30 people, structured as households.
@@ -167,4 +167,81 @@ const ctx = { theme: "cozy-village", seed: 424242 };
   assert.ok(JSON.stringify(brief.schema()).length <= 8_000, "schema fits the route's cap");
 }
 
-console.log("brief validator: all cases passed");
+// ── Compiler invariants (compile(sealedBrief, seed)) ─────────────────────────
+function checkWorld(w, sealed, label) {
+  assert.equal(w.startZone, "z1", `${label}: settlement is z1`);
+  assert.ok(w.zones.z1, `${label}: z1 exists`);
+  // Every named zone in the brief exists under its ordinal id.
+  for (const [id, name] of Object.entries(sealed._ids.zones)) {
+    assert.ok(w.zones[id], `${label}: zone ${id} (${name}) compiled`);
+    assert.equal(w.zones[id].name, name, `${label}: ${id} keeps its display name`);
+  }
+  // Every cast member is placed in a real zone, with a legal wander rect.
+  const placed = Object.values(w.zones).flatMap((z) => z.npcs.map((n) => n.name));
+  for (const member of sealed.cast) assert.ok(placed.includes(member.name), `${label}: ${member.name} placed`);
+  for (const zone of Object.values(w.zones)) {
+    for (const npc of zone.npcs) {
+      assert.ok(npc.wander.x0 >= 0 && npc.wander.x1 < zone.w && npc.wander.y0 >= 0 && npc.wander.y1 < zone.h,
+        `${label}: ${npc.name} wander inside ${zone.id}`);
+    }
+    // Portals land on walkable tiles in their destination.
+    for (const portal of zone.portals) {
+      const dest = w.zones[portal.toZone];
+      assert.ok(dest, `${label}: portal target ${portal.toZone} exists`);
+      assert.ok(!dest.solid[dest.w * portal.toY + portal.toX], `${label}: portal to ${portal.toZone} lands walkable`);
+    }
+  }
+  // Buildings honor the arithmetic: at least one roof per household group, and
+  // the settlement spawn is walkable.
+  const v = w.zones.z1;
+  assert.ok(!v.solid[v.w * v.spawn.y + v.spawn.x], `${label}: spawn walkable`);
+}
+
+// 10. Both themed default briefs compile with all invariants holding.
+for (const theme of ["cozy-village", "sci-fi-colony"]) {
+  const sealed = brief.defaults(theme, 424242);
+  checkWorld(world.build(424242, theme, sealed), sealed, `defaults(${theme})`);
+}
+
+// 11. The farm-village case compiles: four households → four-ish roofs, never thirty.
+{
+  const sealed = brief.validate(
+    {
+      scale: "village", name: "Mossbrook", backgroundPopulation: 30,
+      places: [{ kind: "hall", name: "The Grange Hall" }, { kind: "gathering", name: "The Wet Boot" }],
+      cast: [
+        { name: "Alder", role: "mayor", kind: "leader", tint: "blue", home: "Mossbrook", household: 1 },
+        { name: "Nessa", role: "daughter", kind: "folk", tint: "violet", home: "Mossbrook", household: 1 },
+        { name: "Perrin", role: "innkeep", kind: "host", tint: "amber", home: "The Wet Boot", household: 2 },
+        { name: "Sera", role: "weaver", kind: "elder", tint: "rose", home: "Mossbrook", household: 3 },
+        { name: "Brint", role: "farmhand", kind: "grower", tint: "green", home: "Mossbrook", household: 4 },
+        { name: "Marla", role: "farmhand", kind: "grower", tint: "teal", home: "Mossbrook", household: 4 },
+      ],
+    },
+    ctx,
+  );
+  const w = world.build(424242, "cozy-village", sealed);
+  checkWorld(w, sealed, "mossbrook");
+  const v = w.zones.z1;
+  const doorCount = v.object.filter((t) => t === "door").length;
+  assert.ok(doorCount >= 4 && doorCount <= 10, `a handful of doors (${doorCount}), never thirty`);
+  assert.ok(w.zones.z2 && w.zones.z3, "hall and gathering interiors compiled");
+  const innkeeper = Object.values(w.zones).flatMap((z) => z.npcs).find((n) => n.name === "Perrin");
+  assert.ok(innkeeper, "the innkeeper lives in the gathering interior");
+}
+
+// 12. Determinism: same brief + seed → structurally identical world.
+{
+  const sealed = brief.defaults("cozy-village", 7);
+  const a = world.build(7, "cozy-village", sealed);
+  const b = world.build(7, "cozy-village", sealed);
+  assert.equal(JSON.stringify(a.zones.z1.ground), JSON.stringify(b.zones.z1.ground), "compile is deterministic");
+}
+
+// 13. Legacy path untouched: no brief → the fixed three-zone world.
+{
+  const w = world.build(424242, "cozy-village");
+  assert.deepEqual(Object.keys(w.zones).sort(), ["forest", "inn", "village"], "legacy zones for pre-brief saves");
+}
+
+console.log("brief validator + compiler: all cases passed");
