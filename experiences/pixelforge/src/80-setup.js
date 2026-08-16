@@ -5,38 +5,10 @@
 // World Maps: requests hierarchical mode + agents; if the World Maps agent
 // isn't active the host falls back to standard mode and the surface runs
 // unbound — both are handled (verified trap #6).
-/** The one #5135 generation call with the spec's failure ladder (§5): 90s
- *  abort, Skip via the repurposed cancel button, one higher-budget retry on
- *  truncation, and themed defaults on every other outcome — the wizard is
- *  never gated on the model. Returns a SEALED brief either way. */
-async function generateWorldBrief(chatId, { theme, seed, preferences, onProgress, cancelBtn }) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 90_000);
-  const onSkip = () => controller.abort();
-  cancelBtn?.addEventListener("click", onSkip);
-  try {
-    const base = { instructions: PF.brief.guidance(theme), userContent: preferences, schema: PF.brief.schema() };
-    let response = await PF.api.postExperienceGeneration(chatId, base, controller.signal);
-    if (response.status === 422 && response.body?.truncated) {
-      onProgress?.("Generating your world… (one more try)");
-      response = await PF.api.postExperienceGeneration(chatId, { ...base, maxTokens: 4096 }, controller.signal);
-    }
-    if (response.status === 200 && response.body?.ok && response.body.data && typeof response.body.data === "object") {
-      return PF.brief.validate(response.body.data, { theme, seed });
-    }
-    console.warn(
-      "[pixelforge] world generation unavailable; using the themed default",
-      response.status,
-      response.body?.error ?? null,
-    );
-  } catch (err) {
-    if (!controller.signal.aborted) console.warn("[pixelforge] world generation failed; using the themed default", err);
-  } finally {
-    clearTimeout(timer);
-    cancelBtn?.removeEventListener("click", onSkip);
-  }
-  return PF.brief.defaults(theme, seed);
-}
+// World generation does NOT happen here (spec §5, amended): the wizard only
+// stamps `generate: true` into the experience config; the surface picks it up
+// after launch (PF.save.maybeGenerateBrief) so the whole 90s window runs
+// behind a playable world instead of a torn-down setup UI.
 
 PF.mountSetup = (el, props) => {
   // The host delivers a FRESH props object on every render, and its onCancel
@@ -254,7 +226,7 @@ PF.mountSetup = (el, props) => {
       enableAgents: true,
       spatialMapInstructions: preset.spatial,
       combatStyle: "classic",
-      experienceConfig: { seed, theme: themeSel.value },
+      experienceConfig: { seed, theme: themeSel.value, generate: true },
     };
     launchBtn.disabled = true;
     cancelBtn.disabled = true; // mirror the host's mid-launch freeze
@@ -264,61 +236,10 @@ PF.mountSetup = (el, props) => {
         gmConnectionId,
       });
       if (typeof chatId === "string") {
-        // ── World generation (docs/brief-schema.md §5): an upgrade, never a
-        // gate. The one #5135 call runs with a progress state and a Skip; any
-        // failure — skip, abort, truncation after one retry, provider error,
-        // unparseable — seals the themed default brief instead. The player
-        // always gets a world.
-        launchBtn.textContent = "Generating your world…";
-        cancelBtn.textContent = "Skip world generation";
-        cancelBtn.disabled = false;
-        const brief = await generateWorldBrief(chatId, {
-          theme: themeSel.value,
-          seed,
-          preferences:
-            `Game name: ${nameIn.value.trim() || preset.name}\n` +
-            `Setting: ${settingIn.value.trim() || preset.setting}\n` +
-            `Tone: ${toneSel.value}\nDifficulty: ${diffSel.value}\nRating: ${ratingSel.value}`,
-          onProgress: (label) => {
-            launchBtn.textContent = label;
-          },
-          cancelBtn,
-        });
-        cancelBtn.disabled = true;
-        cancelBtn.textContent = "Cancel";
-        launchBtn.textContent = "Setting up…";
-
-        // Store the sealed brief in the wizard config (its only home — save
-        // rows never carry it), then seed the world state so the first surface
-        // load is deterministic. Read-modify-write because the metadata PATCH
-        // merges top-level keys and gameSetupConfig is one of them.
-        try {
-          const chatPayload = await PF.api.getJson(`/chats/${encodeURIComponent(chatId)}`);
-          const chatRow = chatPayload && typeof chatPayload === "object" && chatPayload.chat ? chatPayload.chat : chatPayload;
-          let metaRaw = chatRow?.metadata ?? {};
-          if (typeof metaRaw === "string") {
-            try {
-              metaRaw = JSON.parse(metaRaw);
-            } catch {
-              metaRaw = {};
-            }
-          }
-          const setupStored =
-            metaRaw && typeof metaRaw.gameSetupConfig === "object" && metaRaw.gameSetupConfig !== null
-              ? metaRaw.gameSetupConfig
-              : setupConfig;
-          const expStored =
-            setupStored && typeof setupStored.experienceConfig === "object" && setupStored.experienceConfig !== null
-              ? setupStored.experienceConfig
-              : { seed, theme: themeSel.value };
-          await PF.api.patchMetadata(chatId, {
-            gameSetupConfig: { ...setupStored, experienceConfig: { ...expStored, brief } },
-          });
-        } catch (err) {
-          console.warn("[pixelforge] brief storage failed; the world will build from the themed default", err);
-        }
-
-        const world = PF.world.build(seed, themeSel.value, brief);
+        // Seed the world state so the first surface load is deterministic. The
+        // default themed world only — generation runs surface-side after
+        // launch and rebuilds the world when the brief lands.
+        const world = PF.world.build(seed, themeSel.value);
         const sim = new PF.Sim(world);
         const snap = PF.save.snapshot({ sim, chatId });
         for (let attempt = 0; attempt < 3; attempt++) {
