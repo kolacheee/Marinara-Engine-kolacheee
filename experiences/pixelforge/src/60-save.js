@@ -60,6 +60,19 @@ PF.save = {
     return this.simFromSaved(saved, meta, chatId);
   },
 
+  /** The sealed world brief, from the same double-nested config home as the
+   *  seed (written by the wizard's generation step, or patched in after a
+   *  post-create generation). Absent on pre-0.4.0 games → legacy layout. */
+  _configBrief(meta) {
+    const setup = meta && typeof meta.gameSetupConfig === "object" && meta.gameSetupConfig !== null ? meta.gameSetupConfig : null;
+    const outer = setup && typeof setup.experienceConfig === "object" && setup.experienceConfig !== null ? setup.experienceConfig : null;
+    const inner = outer && typeof outer.experienceConfig === "object" && outer.experienceConfig !== null ? outer.experienceConfig : null;
+    for (const candidate of [inner?.brief, outer?.brief]) {
+      if (candidate && typeof candidate === "object" && Array.isArray(candidate.cast)) return candidate;
+    }
+    return null;
+  },
+
   /** The wizard's theme, from the same double-nested config home as the seed. */
   _configTheme(meta) {
     const setup = meta && typeof meta.gameSetupConfig === "object" && meta.gameSetupConfig !== null ? meta.gameSetupConfig : null;
@@ -80,8 +93,10 @@ PF.save = {
     if (seed === null) seed = PF.hashStr(String(chatId));
     // Saved theme wins (it is what the world was built with), then the wizard
     // config; build() validates the id and falls back to the default theme.
+    // The sealed brief (when present) makes build() compile the generated
+    // world; the brief lives ONLY in the wizard config, never in save rows.
     const theme = (saved && typeof saved.theme === "string" ? saved.theme : null) ?? this._configTheme(meta);
-    const world = PF.world.build(seed, theme);
+    const world = PF.world.build(seed, theme, this._configBrief(meta));
     const sim = new PF.Sim(world);
     if (saved && saved.v === 1) {
       if (typeof saved.zone === "string" && world.zones[saved.zone]) sim.zoneId = saved.zone;
