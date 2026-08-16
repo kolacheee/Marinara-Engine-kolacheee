@@ -160,7 +160,9 @@ PF.core = {
     this.sim = PF.save.restore(p.chatMeta ?? {}, p.chatId);
     this.host = p;
     void PF.save.adopt(this);
-    for (const zoneId of Object.keys(this.sim.world.zones)) this.render?.invalidateZone(zoneId);
+    // New chat, new world: drop every cached zone composite — the cache is
+    // keyed by zone id alone, so a stale entry would show the previous game.
+    this.render?.clearZones();
     this._resumeMode = "walk";
     this._combatOverride = false;
     this._lastPosSave = 0;
@@ -416,4 +418,11 @@ if (!customElements.get(PF_TAG)) customElements.define(PF_TAG, PixelforgeElement
 // lanes) inspect and step the world without relying on requestAnimationFrame,
 // which browsers pause for non-composited tabs. The package runs full-trust in
 // the main realm anyway, so this exposes nothing that wasn't already reachable.
-globalThis.__pixelforge = PF;
+// Gated behind an explicit opt-in so a shipped install doesn't hand other page
+// scripts a ready-made driving handle (capability-equivalent to what any
+// same-document script already has, but no reason to pre-assemble it).
+try {
+  if (globalThis.localStorage?.getItem("pixelforge-debug") === "1") globalThis.__pixelforge = PF;
+} catch {
+  // Storage access can throw in exotic embeddings; the handle just stays off.
+}
