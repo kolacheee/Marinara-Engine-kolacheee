@@ -236,7 +236,7 @@ PF.core = {
     this.setMode("dialogue");
     this.hud?.toast(`Talking to ${npc.name}`);
     void Promise.resolve(
-      this.host.sendMessage(`${sim.header()} I walk up to ${npc.name} the ${npc.role} and greet them.`),
+      this.host.sendMessage(`${sim.composePrefix(npc)} I walk up to ${npc.name} the ${npc.role} and greet them.`),
     )
       .then((ok) => {
         if (ok === false) {

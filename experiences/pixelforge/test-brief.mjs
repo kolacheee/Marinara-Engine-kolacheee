@@ -9,10 +9,11 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 // Mirror the real bundle: concatenate the modules into one scope (the prelude
 // declares `const PF` itself) and return PF. The DOM helpers stay unused.
-const source = ["00-prelude.js", "10-art.js", "18-brief.js", "20-world.js"]
+const source = ["00-prelude.js", "10-art.js", "18-brief.js", "20-world.js", "30-sim.js"]
   .map((file) => readFileSync(join(here, "src", file), "utf8"))
   .join("\n");
-const { brief, world } = new Function(`"use strict";\n${source}\nreturn PF;`)();
+const loadedPF = new Function(`"use strict";\n${source}\nreturn PF;`)();
+const { brief, world } = loadedPF;
 const ctx = { theme: "cozy-village", seed: 424242 };
 
 // 1. The farm-village conversation case: 30 people, structured as households.
@@ -242,6 +243,49 @@ for (const theme of ["cozy-village", "sci-fi-colony"]) {
 {
   const w = world.build(424242, "cozy-village");
   assert.deepEqual(Object.keys(w.zones).sort(), ["forest", "inn", "village"], "legacy zones for pre-brief saves");
+}
+
+// 14. §7 injection discipline: prose rides the world; the prefix meters it once.
+{
+  const sealed = brief.validate(
+    {
+      scale: "village", name: "Meterton",
+      flavor: "Dust and patience.",
+      situation: "Foreman Vex is hiding the cracked dome report from surveyor Yun.",
+      places: [{ kind: "gathering", name: "The Bar", flavor: "Low lights, long tabs." }],
+      cast: [
+        { name: "Vex", role: "foreman", kind: "leader", tint: "red", home: "Meterton", household: 1, persona: "Wants quota; hiding the report." },
+        { name: "Yun", role: "surveyor", kind: "scholar", tint: "teal", home: "Meterton", household: 2, persona: "Wants truth; hiding the source." },
+        { name: "Bel", role: "barkeep", kind: "host", tint: "amber", home: "The Bar", household: 3, persona: "" },
+        { name: "Six", role: "runner", kind: "wanderer", tint: "violet", home: "Meterton", household: 4, persona: "" },
+      ],
+    },
+    ctx,
+  );
+  const w = world.build(424242, "sci-fi-colony", sealed);
+  assert.equal(w.situation, sealed.situation, "situation rides the world");
+  assert.equal(w.zones.z2.flavor, "Low lights, long tabs.", "zone flavor rides the zone");
+  // A minimal sim stub exercising composePrefix without the full Sim class.
+  const sim = {
+    world: w, zoneId: "z1", nearNpc: null, dirty: false,
+    zone() { return this.world.zones[this.zoneId]; },
+    clockLabel: () => "Day 1 · 08:00",
+  };
+  // Borrow the real methods off the shipped Sim prototype.
+  sim.header = loadedPF.Sim.prototype.header.bind(sim);
+  sim.composePrefix = loadedPF.Sim.prototype.composePrefix.bind(sim);
+  const npcVex = Object.values(w.zones).flatMap((z) => z.npcs).find((n) => n.name === "Vex");
+  const first = sim.composePrefix(npcVex);
+  assert.ok(first.includes("[Setting: Foreman Vex is hiding"), "situation injected on the first message");
+  assert.ok(first.includes("[Vex: Wants quota"), "persona injected on first talk");
+  const second = sim.composePrefix(npcVex);
+  assert.ok(!second.includes("[Setting:"), "situation never re-injected");
+  assert.ok(!second.includes("Wants quota"), "persona never re-injected for the same NPC");
+  sim.zoneId = "z2";
+  const barEntry = sim.composePrefix(null);
+  assert.ok(barEntry.includes("[The Bar: Low lights"), "zone flavor injected once on first entry");
+  assert.ok(!sim.composePrefix(null).includes("Low lights"), "zone flavor not repeated");
+  assert.ok(sim.dirty, "injection marks the save dirty so flags persist");
 }
 
 console.log("brief validator + compiler: all cases passed");

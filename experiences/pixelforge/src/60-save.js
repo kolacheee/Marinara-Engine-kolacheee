@@ -36,6 +36,9 @@ PF.save = {
       clockMin: sim.clockMin,
       day: sim.day,
       bindings: sim.world.bindings,
+      // §7 one-shot injection flags: persisted so a reload never re-taxes the
+      // GM context with prose that already lives in chat history.
+      intro: sim.intro ?? { world: false, zones: {}, npcs: {} },
     };
   },
 
@@ -106,6 +109,13 @@ PF.save = {
       if (typeof saved.facing === "number") sim.facing = saved.facing & 3;
       if (typeof saved.clockMin === "number") sim.clockMin = PF.clamp(saved.clockMin | 0, 0, 24 * 60 - 1);
       if (typeof saved.day === "number") sim.day = Math.max(1, saved.day | 0);
+      if (saved.intro && typeof saved.intro === "object") {
+        sim.intro = {
+          world: saved.intro.world === true,
+          zones: saved.intro.zones && typeof saved.intro.zones === "object" ? { ...saved.intro.zones } : {},
+          npcs: saved.intro.npcs && typeof saved.intro.npcs === "object" ? { ...saved.intro.npcs } : {},
+        };
+      }
       if (saved.bindings && typeof saved.bindings === "object") {
         for (const [loc, zone] of Object.entries(saved.bindings)) {
           if (typeof zone === "string" && world.zones[zone]) {

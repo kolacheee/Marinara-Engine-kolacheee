@@ -112,7 +112,7 @@ PF.spatial = {
     const gen = this._gen;
     const chatId = core.chatId;
     try {
-      const text = `${core.sim.header()} We travel to ${dest.name}.`;
+      const text = `${core.sim.composePrefix(null)} We travel to ${dest.name}.`;
       const ok = await core.host.sendMessage(text, undefined, transition);
       if (gen !== this._gen || core.chatId !== chatId) return;
       if (ok === false) {
