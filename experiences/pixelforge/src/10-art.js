@@ -292,9 +292,10 @@ PF.art = (() => {
   /** Swap the active theme: mutate PAL in place (painters and the renderer read
    *  it by reference) and drop this module's procedural caches. Callers that
    *  composite tiles (the zone renderer) must clear their own caches too —
-   *  world builds already do. Unknown ids keep the current theme. */
+   *  world builds already do. Unknown ids resolve to the fixed default, never
+   *  whatever theme happens to be active (order-dependent worlds otherwise). */
   function setTheme(id) {
-    const theme = THEMES[typeof id === "string" ? id : ""] ? id : activeTheme;
+    const theme = THEMES[typeof id === "string" ? id : ""] ? id : "cozy-village";
     if (theme === activeTheme) return activeTheme;
     activeTheme = theme;
     for (const key of Object.keys(PAL)) delete PAL[key];

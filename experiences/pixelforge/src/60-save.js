@@ -63,10 +63,15 @@ PF.save = {
     return this.simFromSaved(saved, meta, chatId);
   },
 
-  /** The sealed world brief, from the same double-nested config home as the
-   *  seed (written by the wizard's generation step, or patched in after a
-   *  post-create generation). Absent on pre-0.4.0 games → legacy layout. */
+  /** The sealed world brief. Primary home: the TOP-LEVEL pixelforgeBrief
+   *  metadata key (atomic under the queued shallow-merge PATCH — no
+   *  read-modify-write of the whole setup config). The nested config location
+   *  remains readable for chats sealed before the key moved. Absent on
+   *  pre-0.4.0 games → legacy layout. */
   _configBrief(meta) {
+    const top = meta && typeof meta.pixelforgeBrief === "object" && meta.pixelforgeBrief !== null ? meta.pixelforgeBrief : null;
+    if (top && Array.isArray(top.cast)) return top;
+    if (top) return null; // a {skipped:true} marker: generation declined, stay legacy
     const setup = meta && typeof meta.gameSetupConfig === "object" && meta.gameSetupConfig !== null ? meta.gameSetupConfig : null;
     const outer = setup && typeof setup.experienceConfig === "object" && setup.experienceConfig !== null ? setup.experienceConfig : null;
     const inner = outer && typeof outer.experienceConfig === "object" && outer.experienceConfig !== null ? outer.experienceConfig : null;
@@ -74,6 +79,68 @@ PF.save = {
       if (candidate && typeof candidate === "object" && Array.isArray(candidate.cast)) return candidate;
     }
     return null;
+  },
+
+  /** The wizard's opt-in for surface-side world generation (0.4.0 chats). */
+  _configGenerate(meta) {
+    const setup = meta && typeof meta.gameSetupConfig === "object" && meta.gameSetupConfig !== null ? meta.gameSetupConfig : null;
+    const outer = setup && typeof setup.experienceConfig === "object" && setup.experienceConfig !== null ? setup.experienceConfig : null;
+    const inner = outer && typeof outer.experienceConfig === "object" && outer.experienceConfig !== null ? outer.experienceConfig : null;
+    return inner?.generate === true || outer?.generate === true;
+  },
+
+  /** Surface-side world generation (spec §5, amended): fully NON-BLOCKING.
+   *  The chat boots on the themed legacy world immediately; the one #5135
+   *  call runs behind a toast, the sealed brief stores atomically under
+   *  pixelforgeBrief (3 retries), and the world rebuilds on arrival. Runs at
+   *  most once per chat: the stored key (sealed brief or a skipped marker) is
+   *  the one-shot guard, so old chats and completed chats never re-generate. */
+  async maybeGenerateBrief(core) {
+    if (!core.chatId || this._generating) return;
+    const chatId = core.chatId;
+    const meta = core.host && typeof core.host.chatMeta === "object" && core.host.chatMeta !== null ? core.host.chatMeta : {};
+    if (meta.pixelforgeBrief !== undefined) return;
+    if (this._configBrief(meta)) return;
+    if (!this._configGenerate(meta)) return;
+    this._generating = true;
+    try {
+      core.hud?.toast("Generating your world — keep exploring meanwhile…");
+      const theme = this._configTheme(meta) ?? "cozy-village";
+      let seed = this._configSeed(meta);
+      if (seed === null) seed = PF.hashStr(String(chatId));
+      const setup = meta.gameSetupConfig && typeof meta.gameSetupConfig === "object" ? meta.gameSetupConfig : {};
+      const preferences = [
+        setup.setting ? `Setting: ${setup.setting}` : "",
+        setup.tone ? `Tone: ${setup.tone}` : "",
+        setup.difficulty ? `Difficulty: ${setup.difficulty}` : "",
+        setup.rating ? `Rating: ${setup.rating}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+      const sealed = await PF.brief.generate(chatId, { theme, seed, preferences });
+      let stored = false;
+      for (let attempt = 0; attempt < 3 && !stored; attempt++) {
+        try {
+          await PF.api.patchMetadata(chatId, { pixelforgeBrief: sealed });
+          stored = true;
+        } catch (err) {
+          if (attempt === 2) console.warn("[pixelforge] brief storage failed; keeping the default world", err);
+          else await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)));
+        }
+      }
+      if (!stored || chatId !== core.chatId) return;
+      // Rebuild onto the generated world (the default one has only seconds of
+      // play on it). Fresh sim, fresh bindings; spatial re-seeds next turn.
+      core.sim = new PF.Sim(PF.world.build(seed, theme, sealed));
+      this._lastSerialized = null;
+      core.render?.clearZones?.();
+      void PF.assets.load(core);
+      core.hud?.refreshChips();
+      core.hud?.toast("The world takes shape.");
+      this.markDirty(core);
+    } finally {
+      this._generating = false;
+    }
   },
 
   /** The wizard's theme, from the same double-nested config home as the seed. */
@@ -97,7 +164,8 @@ PF.save = {
     // Saved theme wins (it is what the world was built with), then the wizard
     // config; build() validates the id and falls back to the default theme.
     // The sealed brief (when present) makes build() compile the generated
-    // world; the brief lives ONLY in the wizard config, never in save rows.
+    // world; the brief lives ONLY in chat metadata (pixelforgeBrief, or the
+    // legacy nested config spot), never in save rows.
     const theme = (saved && typeof saved.theme === "string" ? saved.theme : null) ?? this._configTheme(meta);
     const world = PF.world.build(seed, theme, this._configBrief(meta));
     const sim = new PF.Sim(world);
@@ -225,6 +293,9 @@ PF.save = {
     core.sim = this.simFromSaved(saved, meta, core.chatId);
     this._lastSerialized = JSON.stringify(this.snapshot(core));
     core.render?.clearZones();
+    // A rebuild can change the theme; the asset loader is theme-aware and
+    // no-ops when nothing changed.
+    void PF.assets.load(core);
     core.hud?.refreshChips();
   },
 

@@ -160,8 +160,23 @@ PF.world = (() => {
   };
 
   function build(seed, theme, sealedBrief) {
-    if (sealedBrief && typeof sealedBrief === "object" && Array.isArray(sealedBrief.cast)) {
-      return compile(sealedBrief, seed);
+    // Tight gate + containment: only a fully-sealed brief compiles, and a
+    // malformed stored one degrades to the legacy world instead of bricking
+    // the surface on every load.
+    if (
+      sealedBrief &&
+      typeof sealedBrief === "object" &&
+      Array.isArray(sealedBrief.cast) &&
+      Array.isArray(sealedBrief.places) &&
+      Array.isArray(sealedBrief.features) &&
+      sealedBrief._ids &&
+      typeof sealedBrief._ids.zones === "object"
+    ) {
+      try {
+        return compile(sealedBrief, seed);
+      } catch (err) {
+        console.warn("[pixelforge] stored brief failed to compile; using the themed legacy world", err);
+      }
     }
     return buildLegacy(seed, theme);
   }
@@ -293,6 +308,10 @@ PF.world = (() => {
     const rnd = PF.rng(seed);
     const scale = PF.brief.SCALES[brief.scale] || PF.brief.SCALES.village;
     const zones = {};
+    // Zones key by the brief's ordinal ids POSITIONALLY (z1 = settlement,
+    // z{n+2} = places[n]) — never by name round-trips, so a display-name
+    // collision can never collapse two ids into one zone.
+    const zoneIdForPlace = (place) => `z${brief.places.indexOf(place) + 2}`;
     const zoneIdByName = new Map(Object.entries(brief._ids.zones).map(([id, name]) => [name, id]));
 
     // ── The settlement exterior (z1) ──
@@ -356,8 +375,9 @@ PF.world = (() => {
     for (const place of interiorPlaces) {
       const slot = takeSlot();
       if (!slot) break;
-      const b = building(v, slot.x, slot.y, place.kind === "hall" ? 8 : 7, 5, 3, [1, 5]);
-      buildings.push({ door: b, boundPlace: place });
+      const width = place.kind === "hall" ? 8 : 7;
+      const b = building(v, slot.x, slot.y, width, 5, 3, [1, 5]);
+      buildings.push({ door: b, rect: { x: slot.x, y: slot.y, w: width, h: 5 }, boundPlace: place });
     }
     for (const { special, owner } of specials) {
       // A special whose interior already exists as a place shares that facade.
@@ -369,24 +389,41 @@ PF.world = (() => {
       const slot = takeSlot();
       if (!slot) break;
       const b = building(v, slot.x, slot.y, 6, 4, 2, [4]);
-      buildings.push({ door: b, special, owner });
+      buildings.push({ door: b, rect: { x: slot.x, y: slot.y, w: 6, h: 4 }, special, owner });
     }
     for (const group of householdGroups) {
       const slot = takeSlot();
       if (!slot) break;
       const width = Math.min(8, 5 + group.length); // merged blocks read larger
       const b = building(v, slot.x, slot.y, width, 4, 2, [1]);
-      buildings.push({ door: b, households: group });
+      buildings.push({ door: b, rect: { x: slot.x, y: slot.y, w: width, h: 4 }, households: group });
     }
 
-    // ── Features: reserved rects in the corners, clockwise from north-west ──
+    // ── Features: corner anchors, but NEVER over a building or another
+    // feature. Buildings claim their footprint plus the roof overhang above and
+    // a door apron below — a placer that fenced over a hall's only door
+    // orphaned the zone and the NPC inside it (review blocker). A feature with
+    // no clear anchor is dropped: a plainer settlement, never a sealed one.
+    const claimed = buildings.map((b) => ({
+      x: b.rect.x - 1,
+      y: b.rect.y - 3,
+      w: b.rect.w + 2,
+      h: b.rect.h + 5,
+    }));
+    const intersects = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
     const featureAnchors = [
       { x: 4, y: 3 }, { x: v.w - 12, y: 3 }, { x: v.w - 12, y: v.h - 8 }, { x: 4, y: v.h - 8 },
     ];
-    brief.features.forEach((feature, index) => {
-      const anchor = featureAnchors[index % featureAnchors.length];
+    const FEATURE_RECT = { w: 9, h: 6 };
+    for (const feature of brief.features) {
+      const anchor = featureAnchors.find((candidate) => {
+        const rect = { x: candidate.x, y: candidate.y, ...FEATURE_RECT };
+        return !claimed.some((busy) => intersects(rect, busy));
+      });
+      if (!anchor) continue; // dropped, not misplaced
       PLACERS[feature.tag]?.(v, anchor.x, anchor.y);
-    });
+      claimed.push({ x: anchor.x, y: anchor.y, ...FEATURE_RECT });
+    }
     const doorRects = buildings.map((b) => ({ x: b.door.doorX, y: b.door.doorY }));
     scatterTrees(v, rnd, { woods: 26, fields: 8, rocky: 10, water: 12, barren: 5 }[brief.surround] ?? 12,
       doorRects.concat(doorRects.map((d) => ({ x: d.x, y: d.y + 1 }))));
@@ -394,7 +431,7 @@ PF.world = (() => {
 
     // ── Interior zones ──
     for (const place of interiorPlaces) {
-      const id = zoneIdByName.get(place.name);
+      const id = zoneIdForPlace(place);
       if (!id) continue;
       const [w, h] = INTERIOR_DIMS[place.kind] || INTERIOR_DIMS.dwelling;
       const zone = makeZone(id, place.name, w, h, "floor");
@@ -414,8 +451,10 @@ PF.world = (() => {
         fillRect(zone, 5, 6, 4, 3, "ground", "rug", false);
         zone.lights.push({ x: 4, y: 3 }, { x: w - 5, y: 5 });
       } else if (place.kind === "hall") {
-        fillRect(zone, 4, 5, w - 8, 1, "object", "table", true);
+        // Rug first: its ground fill clears solidity, so painting it after the
+        // table silently made the table walk-through (review finding).
         fillRect(zone, 3, 3, w - 6, h - 6, "ground", "rug", false);
+        fillRect(zone, 4, 5, w - 8, 1, "object", "table", true);
         zone.lights.push({ x: 3, y: 2 }, { x: w - 4, y: 2 });
       } else if (place.kind === "workshop") {
         fillRect(zone, 3, 3, 4, 1, "object", "counter", true);
@@ -440,13 +479,17 @@ PF.world = (() => {
 
     // ── Wilds zones, hung off alternating map edges ──
     wildsPlaces.forEach((place, index) => {
-      const id = zoneIdByName.get(place.name);
+      const id = zoneIdForPlace(place);
       if (!id) return;
       const zone = makeZone(id, place.name, 36, 24, "grass");
       for (let i = 0; i < zone.ground.length; i++) if (rnd() < 0.4) zone.ground[i] = "grass2";
       borderTrees(zone);
       const wMidY = 12;
-      fillRect(zone, 1, wMidY, 19, 2, "ground", "path");
+      const east = index === 0;
+      // The road home runs from the portal side: west-hung wilds mirror the
+      // approach so arrival never lands in scatter (review finding).
+      if (east) fillRect(zone, 1, wMidY, 19, 2, "ground", "path");
+      else fillRect(zone, zone.w - 20, wMidY, 19, 2, "ground", "path");
       const tags = new Set((place.features ?? []).map((f) => f.tag));
       if (tags.has("water-crossing")) {
         fillRect(zone, 20, 1, 2, 22, "ground", "water", true);
@@ -459,13 +502,16 @@ PF.world = (() => {
         PLACERS[feature.tag]?.(zone, anchorX, 8 + ((anchorX / 3) | 0) % 4);
         anchorX = Math.max(6, (anchorX + 9) % (zone.w - 10));
       }
+      // Reserve BOTH sides' arrival tiles and spawns — the west-hung wilds'
+      // arrival used to land inside scattered trunks on some seeds.
       scatterTrees(zone, rnd, tags.has("dense-growth") ? 70 : 45, [
-        { x: 1, y: wMidY }, { x: 1, y: wMidY + 1 }, { x: 20, y: wMidY }, { x: 21, y: wMidY + 1 },
+        { x: 1, y: wMidY }, { x: 1, y: wMidY + 1 }, { x: 2, y: wMidY }, { x: 3, y: wMidY },
+        { x: 20, y: wMidY }, { x: 21, y: wMidY + 1 },
+        { x: zone.w - 2, y: wMidY }, { x: zone.w - 2, y: wMidY + 1 }, { x: zone.w - 3, y: wMidY }, { x: zone.w - 4, y: wMidY },
       ]);
       zone.spawn = { x: 3, y: wMidY };
       // Two-tile edge portals: east edge of the settlement for the first wilds,
       // west edge for the second.
-      const east = index === 0;
       const vx = east ? v.w - 1 : 0;
       const vroadX = east ? v.w - 2 : 1;
       fillRect(v, east ? v.w - 2 : 0, midY - 1, 2, 2, "ground", "path");

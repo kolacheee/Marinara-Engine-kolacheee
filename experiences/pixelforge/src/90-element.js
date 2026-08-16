@@ -160,6 +160,9 @@ PF.core = {
     this.sim = PF.save.restore(p.chatMeta ?? {}, p.chatId);
     this.host = p;
     void PF.save.adopt(this);
+    // 0.4.0 chats without a sealed brief generate one here, non-blocking: the
+    // default world is playable immediately and rebuilds when the brief lands.
+    void PF.save.maybeGenerateBrief(this);
     // New chat, new world: drop every cached zone composite — the cache is
     // keyed by zone id alone, so a stale entry would show the previous game.
     this.render?.clearZones();
@@ -242,6 +245,8 @@ PF.core = {
         if (ok === false) {
           this.setMode("walk");
           this.hud?.toast("The story isn't accepting turns right now.");
+        } else {
+          sim.commitIntro();
         }
       })
       .catch((err) => {

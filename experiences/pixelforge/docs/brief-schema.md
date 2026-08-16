@@ -114,8 +114,10 @@ response is **never stored** (checkpoints capture by value — see #5110).
 3. **Zones.** Cap/dedupe places (folded-name collision → seed-derived suffix on the LABEL only);
    drop feature items with unknown tags whole; a `host` in the cast with no gathering place
    synthesizes AT MOST ONE interior named from the host (the player can walk into the inn).
-4. **Cast.** Bounds 4-10 (over → keep `leader`+first-N by array order; under → §5 floors);
-   `home` resolution per §1; households >6 members split by `hash(seed, "household-split")`.
+4. **Cast.** Bounds 4-10 (over → keep `leader` + first-N by array order, hoisting a `leader`
+   found past the cap into the kept set); `home` resolution per §1; a household >6 members
+   splits **per member** by `hash(seed, "household-split-<memberId>")`, scanning forward
+   (wraparound) to the first household with room — deterministic, no clustering on one target.
 5. **Derivation & caps** (buildings — the "30 people" rule):
    - dwellings = distinct households; shared household = shared roof;
    - special buildings from `kind` (never a duplicate hall; extra specials demote to workyard
@@ -133,16 +135,23 @@ response is **never stored** (checkpoints capture by value — see #5110).
 **Global budget:** the sealed brief must serialize ≤8 KB; over-budget briefs truncate prose fields
 in reverse-leverage order (`persona`s → zone `flavor`s → `flavor`) before anything structural.
 
-## 5. Latency & failure budget (the wizard never blocks)
+## 5. Latency & failure budget (generation never blocks — amended)
 
-The wizard shows a progress state with a **Skip** button; skip (or any failure) builds the themed
-default world — generation is an upgrade, never a gate. Package-side call budget: 90 s abort.
-On the route's `truncated: true` 422 → **one** retry at `maxTokens: 4096`; if still truncated,
-**salvage** from `raw` (transport pass rules: balanced span, complete array elements) and let the
-floors top up the rest. On `provider_error` / parse-failure 422 → themed defaults, with the raw
-text logged to console only. Token budgets in this spec are asserted, not measured — the pre-ship
-gate is running the guidance through the smallest target models N times and counting parse
-failures, enum drift, ceiling overruns, and wall-clock (tracked as a 0.4.0 validation TODO).
+*Amended from the sealed draft (which put generation in the wizard with a Skip button): the
+pre-launch chat is not experience-stamped, so the #5135 route 409s before launch, and after
+launch the host tears the setup UI down — there is no wizard window to block.* Generation runs
+**surface-side, after launch**: the wizard stamps `generate: true` into the experience config and
+seeds the themed default world, so the player is walking immediately; the one call runs behind a
+toast. Package-side call budget: 90 s abort. On the route's `truncated: true` 422 → **one** retry
+at `maxTokens: 4096`; if still truncated, **salvage** from `raw` (transport pass rules: balanced
+span, complete array elements) and let the floors top up the rest. On `provider_error` /
+parse-failure 422 → themed defaults, with the raw text logged to console only. The sealed result
+stores **atomically** under the top-level `pixelforgeBrief` metadata key (shallow-merge PATCH,
+3 retries — never a read-modify-write of the whole setup config), and the world rebuilds in
+place when it lands; the stored key doubles as the one-shot guard, so a chat never generates
+twice. Token budgets in this spec are asserted, not measured — the pre-ship gate is running the
+guidance through the smallest target models N times and counting parse failures, enum drift,
+ceiling overruns, and wall-clock (tracked as a 0.4.0 validation TODO).
 
 ## 6. The placer registry (feature vocabulary)
 
@@ -167,20 +176,33 @@ fallback chain is for third-party extension, not for shipping silent per-theme f
 ## 7. Injection discipline (metering the prose)
 
 Written here because it is what keeps the brief from taxing every turn forever: `name` + free-text
-`role` ride the per-turn header **always**; a zone's `flavor` injects **once on first entry**; an
-NPC's `persona` injects **once per NPC per session** (first interaction); `situation` and the
-settlement `flavor` inject **once at setup only**. Nothing else from the brief ever enters GM
-context — the durable channel is World Maps (§8), which the GM already reads.
+`role` ride the per-turn header **always**; `situation` injects **once, on the first outbound
+turn**; a zone's `flavor` injects **once on first entry**; an NPC's `persona` injects **once per
+NPC** (first interaction). The one-shot flags **persist in saves** and burn only when the host
+*accepts* the turn (a refused send never loses the prose), so a reload never re-taxes the
+context. Nothing else from the brief ever enters GM context — the durable channel is **chat
+history**: each injection lands once inside a committed turn and stays in the transcript the GM
+re-reads every generation.
 
-## 8. World Maps export (pure function of the sealed brief)
+## 8. World Maps export (deferred — amended)
 
-Root: `{name, description: flavor + " " + populationPhrase(backgroundPopulation), kind: root}`.
-Each place: `{name, description: flavor, parentId: root, kind by zone kind}`. Each feature:
-`{name, description: tag's theme label, parentId: its zone}`. Exported once at first compile,
-keyed by §2 ids; the GM thereafter "fetches" world guidance through the spatial channel it
-already consumes, at zero added per-turn cost.
+*Amended: the sealed draft made World Maps the durable channel via an export "at first compile."
+There is no runtime write API for locations — `spatialMapInstructions` is a create-time mode flag
+only, and by the time the brief exists the map does too. The durable channel is chat history
+(§7).* The export design is retained for when a location write path ships: root
+`{name, description: flavor + " " + populationPhrase(backgroundPopulation), kind: root}`; each
+place `{name, description: flavor, parentId: root, kind by zone kind}`; each feature
+`{name, description: tag's theme label, parentId: its zone}`; keyed by §2 ids.
 
-## 9. Guidance note on theme mismatch
+## 9. Reserved consumers (sealed now, wired in 0.5.x)
+
+Three sealed fields have no in-world consumer yet: `backgroundPopulation` (planned: ambient
+walker density + the §8 population phrase), `prosperity` (planned: building extras/decoration
+density), and feature `name` labels (planned: on-map signage/inspect text). They are validated,
+repaired, and stored **now** so shipped briefs never need regeneration when the consumers land —
+the schema is the contract, not the renderer.
+
+## 10. Guidance note on theme mismatch
 
 The shipped guidance states verbatim: *the theme is authoritative; dress the player's setting text
 to fit it.* A player typing "cyberpunk megacity" under `cozy-village` gets a cozy village wearing

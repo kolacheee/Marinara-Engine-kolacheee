@@ -1,6 +1,7 @@
 // Standalone harness for the brief validator (node test-brief.mjs): shims the
-// PF prelude globals, loads 00-prelude + 25-brief, and drives the repair passes
-// through the spec's degenerate cases (docs/brief-schema.md §4-5).
+// PF prelude globals, loads the non-DOM modules, and drives the repair passes,
+// compiler invariants, injection metering, and spatial-binding regressions
+// through the spec's degenerate cases (docs/brief-schema.md §4-5, §7).
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -9,7 +10,7 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 // Mirror the real bundle: concatenate the modules into one scope (the prelude
 // declares `const PF` itself) and return PF. The DOM helpers stay unused.
-const source = ["00-prelude.js", "10-art.js", "18-brief.js", "20-world.js", "30-sim.js"]
+const source = ["00-prelude.js", "10-art.js", "18-brief.js", "20-world.js", "30-sim.js", "50-spatial.js"]
   .map((file) => readFileSync(join(here, "src", file), "utf8"))
   .join("\n");
 const loadedPF = new Function(`"use strict";\n${source}\nreturn PF;`)();
@@ -185,11 +186,13 @@ function checkWorld(w, sealed, label) {
       assert.ok(npc.wander.x0 >= 0 && npc.wander.x1 < zone.w && npc.wander.y0 >= 0 && npc.wander.y1 < zone.h,
         `${label}: ${npc.name} wander inside ${zone.id}`);
     }
-    // Portals land on walkable tiles in their destination.
+    // Portals land on walkable tiles in their destination — and the portal's
+    // OWN tile must be walkable too, or the player can never step onto it.
     for (const portal of zone.portals) {
       const dest = w.zones[portal.toZone];
       assert.ok(dest, `${label}: portal target ${portal.toZone} exists`);
       assert.ok(!dest.solid[dest.w * portal.toY + portal.toX], `${label}: portal to ${portal.toZone} lands walkable`);
+      assert.ok(!zone.solid[zone.w * portal.y + portal.x], `${label}: portal source in ${zone.id} is reachable`);
     }
   }
   // Buildings honor the arithmetic: at least one roof per household group, and
@@ -274,18 +277,170 @@ for (const theme of ["cozy-village", "sci-fi-colony"]) {
   // Borrow the real methods off the shipped Sim prototype.
   sim.header = loadedPF.Sim.prototype.header.bind(sim);
   sim.composePrefix = loadedPF.Sim.prototype.composePrefix.bind(sim);
+  sim.commitIntro = loadedPF.Sim.prototype.commitIntro.bind(sim);
   const npcVex = Object.values(w.zones).flatMap((z) => z.npcs).find((n) => n.name === "Vex");
   const first = sim.composePrefix(npcVex);
   assert.ok(first.includes("[Setting: Foreman Vex is hiding"), "situation injected on the first message");
   assert.ok(first.includes("[Vex: Wants quota"), "persona injected on first talk");
+  // Compose is PURE: a refused/failed send must not burn the prose (review
+  // finding) — only commitIntro(), called when the host accepts, does.
+  assert.equal(sim.dirty, false, "compose alone never dirties the save");
+  const retry = sim.composePrefix(npcVex);
+  assert.ok(retry.includes("[Setting:") && retry.includes("Wants quota"), "uncommitted prose survives for a retry");
+  sim.commitIntro();
+  assert.ok(sim.dirty, "the accepted turn burns the flags and dirties the save");
   const second = sim.composePrefix(npcVex);
   assert.ok(!second.includes("[Setting:"), "situation never re-injected");
   assert.ok(!second.includes("Wants quota"), "persona never re-injected for the same NPC");
+  sim.commitIntro(); // a prose-free prefix commits as a no-op
   sim.zoneId = "z2";
   const barEntry = sim.composePrefix(null);
   assert.ok(barEntry.includes("[The Bar: Low lights"), "zone flavor injected once on first entry");
+  sim.commitIntro();
   assert.ok(!sim.composePrefix(null).includes("Low lights"), "zone flavor not repeated");
-  assert.ok(sim.dirty, "injection marks the save dirty so flags persist");
+}
+
+// 15. salvageText: fences, chatter, string-aware spans, truncated tails.
+{
+  const fenced = brief.salvageText('```json\n{"scale":"village","name":"Salv"}\n```');
+  assert.equal(fenced?.name, "Salv", "fences stripped, object parsed");
+  const wrapped = brief.salvageText('Sure! Here is the world: {"name":"Wrap","cast":[]} Hope you like it.');
+  assert.equal(wrapped?.name, "Wrap", "outermost balanced span extracted from chatter");
+  const braces = brief.salvageText('{"name":"Brace {not a block}","cast":[]}');
+  assert.equal(braces?.name, "Brace {not a block}", "braces inside strings don't derail the scanner");
+  const truncated = brief.salvageText('{"name":"Cut","cast":[{"name":"A","kind":"folk"},{"name":"B","ki');
+  assert.equal(truncated?.name, "Cut", "truncated document closed and parsed");
+  assert.deepEqual(truncated.cast[0], { name: "A", kind: "folk" }, "complete array elements survive the cut");
+  assert.ok(truncated.cast.every((c) => !("ki" in c)), "the partial trailing field is dropped");
+  assert.equal(brief.salvageText("no json here"), null, "no object → null");
+  assert.equal(brief.salvageText(""), null, "empty → null");
+}
+
+// 16. Leader hoist: a leader past the cast cap is kept, not silently dropped.
+{
+  const rawCast = [];
+  for (let i = 0; i < 11; i++) {
+    rawCast.push({ name: `Villager ${i}`, kind: "folk", tint: "green", home: "Hoistton", household: (i % 6) + 1 });
+  }
+  rawCast.push({ name: "Mayor Last", kind: "leader", tint: "blue", home: "Hoistton", household: 1 });
+  const sealed = brief.validate({ scale: "village", name: "Hoistton", cast: rawCast }, ctx);
+  assert.ok(sealed.cast.length <= brief.CAPS.castMax, "cast capped");
+  assert.ok(sealed.cast.some((c) => c.name === "Mayor Last" && c.kind === "leader"), "the leader is hoisted into the kept set");
+}
+
+// 17. Host synthesis: a host with no gathering place gets an interior to keep.
+{
+  const sealed = brief.validate(
+    {
+      scale: "village", name: "Hostville",
+      places: [{ kind: "wilds", name: "The Briar" }],
+      cast: [
+        { name: "Perrin", kind: "host", tint: "amber", home: "Hostville", household: 1 },
+        { name: "A", kind: "folk", tint: "green", home: "Hostville", household: 2 },
+        { name: "B", kind: "folk", tint: "blue", home: "Hostville", household: 3 },
+        { name: "C", kind: "folk", tint: "rose", home: "Hostville", household: 4 },
+      ],
+    },
+    ctx,
+  );
+  const gathering = sealed.places.find((p) => p.kind === "gathering");
+  assert.ok(gathering, "a gathering interior is synthesized for the host");
+  assert.ok(gathering.name.includes("Perrin"), "the synthesized place is named from the host");
+}
+
+// 18. Name dedupe holds even when the same name floods several place kinds.
+{
+  const sealed = brief.validate(
+    {
+      scale: "village", name: "Sameton",
+      places: [
+        { kind: "gathering", name: "The Same" },
+        { kind: "hall", name: "The Same" },
+        { kind: "wilds", name: "The Same" },
+        { kind: "wilds", name: "the same" },
+      ],
+      cast: [
+        { name: "A", kind: "folk", tint: "green", home: "Sameton", household: 1 },
+        { name: "B", kind: "folk", tint: "blue", home: "Sameton", household: 2 },
+        { name: "C", kind: "folk", tint: "rose", home: "Sameton", household: 3 },
+        { name: "D", kind: "folk", tint: "teal", home: "Sameton", household: 4 },
+      ],
+    },
+    ctx,
+  );
+  const folded = sealed.places.map((p) => p.name.toLowerCase());
+  assert.equal(new Set(folded).size, folded.length, "every collision resolved to a unique name");
+  assert.ok(!folded.includes(sealed.name.toLowerCase()), "no place shadows the settlement itself");
+}
+
+// 19. A situation with no sentence boundary inside the cap degrades to EMPTY —
+// a cut hook is worse than none (§4.2).
+{
+  const endless = `The foreman is hiding ${"a very long secret about the dome and the survey and the quota ".repeat(6)}forever`;
+  const sealed = brief.validate({ scale: "village", name: "Runon", situation: endless, cast: [] }, ctx);
+  assert.equal(sealed.situation, "", "clause-losing truncation degrades to empty");
+}
+
+// 20. Two wilds: both compile, both are reachable from the settlement and lead
+// back (the west-hung wilds mirrors the approach road — review finding).
+{
+  const sealed = brief.validate(
+    {
+      scale: "village", name: "Twinwood",
+      places: [
+        { kind: "wilds", name: "East Reach" },
+        { kind: "wilds", name: "West Reach" },
+        { kind: "gathering", name: "The Hearth" },
+      ],
+      cast: [
+        { name: "A", kind: "host", tint: "amber", home: "The Hearth", household: 1 },
+        { name: "B", kind: "folk", tint: "green", home: "Twinwood", household: 2 },
+        { name: "C", kind: "folk", tint: "blue", home: "Twinwood", household: 3 },
+        { name: "D", kind: "folk", tint: "rose", home: "Twinwood", household: 4 },
+      ],
+    },
+    ctx,
+  );
+  const w = world.build(424242, "cozy-village", sealed);
+  checkWorld(w, sealed, "twinwood");
+  const wildsIds = Object.values(w.zones).filter((z) => sealed.places.some((p, i) => p.kind === "wilds" && `z${i + 2}` === z.id)).map((z) => z.id);
+  assert.equal(wildsIds.length, 2, "both wilds compiled");
+  for (const id of wildsIds) {
+    assert.ok(w.zones.z1.portals.some((p) => p.toZone === id), `settlement has a portal to ${id}`);
+    assert.ok(w.zones[id].portals.some((p) => p.toZone === "z1"), `${id} leads back to the settlement`);
+  }
+}
+
+// 21. Review blocker regression: the spatial seed binding uses the world's OWN
+// start zone (compiled worlds key z1..), and a stale binding degrades safely.
+{
+  const sealed = brief.defaults("cozy-village", 99);
+  const w = world.build(99, "cozy-village", sealed);
+  const sim = {
+    world: w, zoneId: w.startZone, mode: "walk",
+    zone() { return this.world.zones[this.zoneId]; },
+    teleport(zoneId) { this.zoneId = zoneId; },
+  };
+  let dirtied = false;
+  const core = { chatId: "chat-spatial", sim, markDirty: () => { dirtied = true; }, hud: { toast() {}, refreshChips() {} } };
+  loadedPF.api = loadedPF.api ?? {};
+  loadedPF.api.getSpatial = async () => ({
+    definition: { revision: 1 }, currentLocationId: "loc-root",
+    breadcrumb: [{ name: "Rootville" }], destinations: [],
+  });
+  loadedPF.spatial.reset();
+  await loadedPF.spatial.refresh(core);
+  assert.equal(w.bindings["loc-root"], "z1", "first-seen location binds the compiled start zone, never a legacy literal");
+  assert.equal(w.zones.z1.spatialLocationId, "loc-root", "the zone records its location id");
+  assert.ok(dirtied, "the seeded binding persists via a save");
+  // Narrated drift onto a STALE binding (zone gone) must not throw or teleport.
+  w.bindings["loc-ghost"] = "no-such-zone";
+  loadedPF.api.getSpatial = async () => ({
+    definition: { revision: 1 }, currentLocationId: "loc-ghost",
+    breadcrumb: [{ name: "Ghost" }], destinations: [],
+  });
+  await loadedPF.spatial.refresh(core);
+  assert.equal(sim.zoneId, "z1", "a stale binding degrades to staying put");
 }
 
 console.log("brief validator + compiler: all cases passed");
