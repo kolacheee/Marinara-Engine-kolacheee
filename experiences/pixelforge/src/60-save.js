@@ -28,6 +28,7 @@ PF.save = {
       v: 1,
       chatId: core.chatId,
       seed: sim.world.seed,
+      theme: sim.world.theme,
       zone: sim.zoneId,
       x: Math.round(sim.x),
       y: Math.round(sim.y),
@@ -59,6 +60,17 @@ PF.save = {
     return this.simFromSaved(saved, meta, chatId);
   },
 
+  /** The wizard's theme, from the same double-nested config home as the seed. */
+  _configTheme(meta) {
+    const setup = meta && typeof meta.gameSetupConfig === "object" && meta.gameSetupConfig !== null ? meta.gameSetupConfig : null;
+    const outer = setup && typeof setup.experienceConfig === "object" && setup.experienceConfig !== null ? setup.experienceConfig : null;
+    const inner = outer && typeof outer.experienceConfig === "object" && outer.experienceConfig !== null ? outer.experienceConfig : null;
+    for (const candidate of [inner?.theme, outer?.theme]) {
+      if (typeof candidate === "string" && candidate) return candidate;
+    }
+    return null;
+  },
+
   /** Build a sim from a save object (route state or the metadata key). */
   simFromSaved(saved, meta, chatId) {
     // Explicit null checks: 0 is a legitimate seed, so truthiness chaining would
@@ -66,7 +78,10 @@ PF.save = {
     let seed = saved && typeof saved.seed === "number" ? saved.seed >>> 0 : null;
     if (seed === null) seed = this._configSeed(meta);
     if (seed === null) seed = PF.hashStr(String(chatId));
-    const world = PF.world.build(seed);
+    // Saved theme wins (it is what the world was built with), then the wizard
+    // config; build() validates the id and falls back to the default theme.
+    const theme = (saved && typeof saved.theme === "string" ? saved.theme : null) ?? this._configTheme(meta);
+    const world = PF.world.build(seed, theme);
     const sim = new PF.Sim(world);
     if (saved && saved.v === 1) {
       if (typeof saved.zone === "string" && world.zones[saved.zone]) sim.zoneId = saved.zone;

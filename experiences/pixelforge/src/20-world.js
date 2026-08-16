@@ -80,11 +80,21 @@ PF.world = (() => {
     }
   }
 
-  function build(seed) {
+  // Per-theme display names for the fixed layout (Slice 1 of the world-gen
+  // plan): same zone grammar and geometry, re-skinned tiles and names. The
+  // LLM-brief compiler (Slice 3) replaces these with generated content.
+  const ZONE_NAMES = {
+    "cozy-village": { village: "Hearthvale", inn: "The Amber Hearth Inn", forest: "The Whisperwood" },
+    "sci-fi-colony": { village: "Meridian Base", inn: "The Meridian Cantina", forest: "The Mast Field" },
+  };
+
+  function build(seed, theme) {
+    const activeTheme = PF.art.setTheme ? PF.art.setTheme(theme) : "cozy-village";
+    const names = ZONE_NAMES[activeTheme] || ZONE_NAMES["cozy-village"];
     const rnd = PF.rng(seed);
 
-    // ── Hearthvale (village exterior) ──
-    const v = makeZone("village", "Hearthvale", 44, 30, "grass");
+    // ── The settlement exterior ──
+    const v = makeZone("village", names.village, 44, 30, "grass");
     for (let i = 0; i < v.ground.length; i++) if (rnd() < 0.25) v.ground[i] = "grass2";
     borderTrees(v);
     // paths: a crossroad through a small plaza
@@ -114,7 +124,7 @@ PF.world = (() => {
     v.spawn = { x: 21, y: 17 };
 
     // ── Inn interior ──
-    const n = makeZone("inn", "The Amber Hearth Inn", 16, 12, "floor");
+    const n = makeZone("inn", names.inn, 16, 12, "floor");
     for (let x = 0; x < n.w; x++) {
       put(n, x, 0, "object", "wallStone", true);
       put(n, x, 1, "object", "wall", true);
@@ -135,7 +145,7 @@ PF.world = (() => {
     // ── The Whisperwood (forest, east of the village) ──
     // Composed entirely from existing tiles: dense trees, a 2-wide path to a
     // stone clearing with a standing stone, and a stream crossed by a ford.
-    const f = makeZone("forest", "The Whisperwood", 36, 24, "grass");
+    const f = makeZone("forest", names.forest, 36, 24, "grass");
     for (let i = 0; i < f.ground.length; i++) if (rnd() < 0.4) f.ground[i] = "grass2";
     borderTrees(f);
     fillRect(f, 1, 12, 19, 2, "ground", "path"); // west approach
@@ -183,6 +193,7 @@ PF.world = (() => {
 
     return {
       seed,
+      theme: activeTheme,
       zones: { village: v, inn: n, forest: f },
       startZone: "village",
       // The exterior binds to the campaign's starting World Maps location once known.

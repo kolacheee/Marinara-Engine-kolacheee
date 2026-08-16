@@ -33,12 +33,57 @@ PF.mountSetup = (el, props) => {
       options.map(([v, t]) => PF.el("option", { value: v, text: t })),
     );
 
-  const nameIn = input("Hearthvale");
+  // Per-theme wizard defaults: picking a theme re-skins the whole run — genre
+  // text for the GM, default name/setting/goals, spatial seed, and the tile
+  // theme the world builder paints with (PF.art themes). Fields the player has
+  // already edited are never overwritten by a theme change.
+  const THEME_PRESETS = {
+    "cozy-village": {
+      genre: "Cozy pixel-art village RPG (Stardew/Harvest-Moon-like), slice of life with gentle adventure",
+      name: "Hearthvale",
+      setting:
+        "The pixel village of Hearthvale: a cozy closed valley with an inn (The Amber Hearth, kept by Mira), " +
+        "Tam's farm, and a small guard post watched by Rook. Slice-of-life with gentle mystery; danger exists but is rare.",
+      goals: "Settle into Hearthvale, get to know its people, and follow whatever quiet mysteries surface.",
+      spatial:
+        "A small closed valley. Root location: the village of Hearthvale. Children: The Amber Hearth Inn, " +
+        "Tam's Farm, the Guard Post, the Village Pond. Keep the world compact and walkable.",
+    },
+    "sci-fi-colony": {
+      genre: "Pixel-art sci-fi frontier-colony RPG, slice of life with gentle mystery among the stars",
+      name: "Meridian Base",
+      setting:
+        "Meridian Base, a small frontier colony under a sealed sky: a hab ring with a cantina (kept by Mira), " +
+        "Tam's hydroponics bay, and a landing pad watched by Rook. Slice-of-life with gentle mystery; danger exists but is rare.",
+      goals: "Settle into the colony, get to know its crew, and follow whatever quiet mysteries surface.",
+      spatial:
+        "A compact pressurised colony. Root location: Meridian Base. Children: the Cantina, the Hydroponics Bay, " +
+        "the Landing Pad, the Coolant Pool. Keep the world compact and walkable.",
+    },
+  };
+
+  const themeSel = select(
+    (PF.art.themeIds ? PF.art.themeIds() : ["cozy-village"])
+      .filter((id) => THEME_PRESETS[id])
+      .map((id) => [id, id === "cozy-village" ? "Cozy village" : "Sci-fi colony"]),
+  );
+
+  const nameIn = input(THEME_PRESETS["cozy-village"].name);
   const seedIn = input(String((Math.random() * 0xffffffff) >>> 0));
   const settingIn = PF.el("textarea", { style: `${S.input}min-height:64px;`, rows: "3" });
-  settingIn.value =
-    "The pixel village of Hearthvale: a cozy closed valley with an inn (The Amber Hearth, kept by Mira), " +
-    "Tam's farm, and a small guard post watched by Rook. Slice-of-life with gentle mystery; danger exists but is rare.";
+  settingIn.value = THEME_PRESETS["cozy-village"].setting;
+
+  // Swap theme-derived defaults on selection, but only for fields still holding
+  // the previous theme's default — a player's own text always wins.
+  let appliedTheme = "cozy-village";
+  themeSel.addEventListener("change", () => {
+    const previous = THEME_PRESETS[appliedTheme];
+    const next = THEME_PRESETS[themeSel.value];
+    if (!next || !previous) return;
+    if (nameIn.value === previous.name) nameIn.value = next.name;
+    if (settingIn.value === previous.setting) settingIn.value = next.setting;
+    appliedTheme = themeSel.value;
+  });
   const toneSel = select([
     ["cozy, warm, gently comedic", "Cozy & warm"],
     ["wistful, quiet, bittersweet", "Wistful & quiet"],
@@ -82,7 +127,10 @@ PF.mountSetup = (el, props) => {
         "Uses the engine's own combat, and follows the World Map when its agent is active.",
     }),
     field("Game name", nameIn),
-    field("World seed", seedIn),
+    PF.el("div", { style: S.row }, [
+      PF.el("div", { style: "flex:1;" }, [field("Theme", themeSel)]),
+      PF.el("div", { style: "flex:1;" }, [field("World seed", seedIn)]),
+    ]),
     field("Setting", settingIn),
     PF.el("div", { style: S.row }, [
       PF.el("div", { style: "flex:1;" }, [field("Tone", toneSel)]),
@@ -159,22 +207,21 @@ PF.mountSetup = (el, props) => {
     // silently truncating at the first non-digit.
     const seedText = seedIn.value.trim();
     const seed = (/^\d+$/.test(seedText) ? Number.parseInt(seedText, 10) : PF.hashStr(seedText || nameIn.value)) >>> 0;
+    const preset = THEME_PRESETS[themeSel.value] || THEME_PRESETS["cozy-village"];
     const setupConfig = {
-      genre: "Cozy pixel-art village RPG (Stardew/Harvest-Moon-like), slice of life with gentle adventure",
-      setting: settingIn.value.trim() || "The pixel village of Hearthvale.",
+      genre: preset.genre,
+      setting: settingIn.value.trim() || preset.setting,
       tone: toneSel.value,
       difficulty: diffSel.value,
       rating: ratingSel.value,
       gmMode: "standalone",
-      playerGoals: "Settle into Hearthvale, get to know its people, and follow whatever quiet mysteries surface.",
+      playerGoals: preset.goals,
       partyCharacterIds: partyChecks.filter((cb) => cb.checked).map((cb) => cb.value),
       gameWorldMapMode: "hierarchical",
       enableAgents: true,
-      spatialMapInstructions:
-        "A small closed valley. Root location: the village of Hearthvale. Children: The Amber Hearth Inn, " +
-        "Tam's Farm, the Guard Post, the Village Pond. Keep the world compact and walkable.",
+      spatialMapInstructions: preset.spatial,
       combatStyle: "classic",
-      experienceConfig: { seed },
+      experienceConfig: { seed, theme: themeSel.value },
     };
     launchBtn.disabled = true;
     cancelBtn.disabled = true; // mirror the host's mid-launch freeze
