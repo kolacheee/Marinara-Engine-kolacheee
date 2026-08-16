@@ -32,31 +32,53 @@ PF.assets = {
     return img;
   },
 
+  /** The atlas sheet for a theme: the cozy sheet keeps its legacy filename. */
+  _atlasPath(theme) {
+    return theme === "cozy-village" ? "tiles.png" : `tiles-${encodeURIComponent(theme)}.png`;
+  },
+
   async load(core) {
-    if (this.status === "loading" || this.status === "ready") return;
+    const theme = PF.art?.theme ?? "cozy-village";
+    if (this.status === "loading" || this.status === "failed") return;
+    if (this.status === "ready" && this.atlasTheme === theme) return;
     // packageId arrives via capabilityProps on engines with #5092; without it
     // (older engine) Tier-0 is the deliberate resting state, not an error.
     if (typeof core.host?.packageId !== "string") {
       this.status = "failed";
       return;
     }
+    const firstLoad = this.status !== "ready";
     this.status = "loading";
     try {
-      const [atlas, sprites] = await Promise.all([
-        fetch(this._url(core, "atlas.json")).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`atlas ${r.status}`)))),
-        fetch(this._url(core, "sprites.json")).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`sprites ${r.status}`)))),
-      ]);
-      const [atlasImg, ...sheets] = await Promise.all([
-        this._image(this._url(core, "tiles.png")),
-        ...Object.entries(sprites.actors ?? {}).map(async ([name, path]) => [name, await this._image(this._url(core, path))]),
-      ]);
-      this.atlas = atlas;
-      this.sprites = sprites;
+      if (firstLoad) {
+        const [atlas, sprites] = await Promise.all([
+          fetch(this._url(core, "atlas.json")).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`atlas ${r.status}`)))),
+          fetch(this._url(core, "sprites.json")).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`sprites ${r.status}`)))),
+        ]);
+        const sheets = await Promise.all(
+          Object.entries(sprites.actors ?? {}).map(async ([name, path]) => [name, await this._image(this._url(core, path))]),
+        );
+        this.atlas = atlas;
+        this.sprites = sprites;
+        for (const [name, img] of sheets) this._sheets.set(name, img);
+      }
+      // The themed atlas sheet, falling back to the cozy sheet when a theme has
+      // no atlas yet (older installed version) — the tile() gate then simply
+      // keeps that theme procedural, which is the deliberate resting state.
+      let atlasTheme = theme;
+      let atlasImg;
+      try {
+        atlasImg = await this._image(this._url(core, this._atlasPath(theme)));
+      } catch {
+        atlasTheme = "cozy-village";
+        atlasImg = await this._image(this._url(core, "tiles.png"));
+      }
       this._atlasImg = atlasImg;
-      for (const [name, img] of sheets) this._sheets.set(name, img);
+      this.atlasTheme = atlasTheme;
+      this._tileCanvases.clear();
       this.status = "ready";
-      // Zone composites were painted with Tier-0 tiles — rebuild them.
-      if (core.render && core.sim) for (const zoneId of Object.keys(core.sim.world.zones)) core.render.invalidateZone(zoneId);
+      // Zone composites were painted with the previous tier/theme — rebuild.
+      core.render?.clearZones?.();
     } catch (err) {
       this.status = "failed";
       console.warn("[pixelforge] Tier-1 assets unavailable, staying on procedural art", err);
