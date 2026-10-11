@@ -26,8 +26,8 @@ import {
   type WorldPerson,
   type WorldTownBuilding,
   worldSeason,
-  worldBridgePiece,
-  worldHedgePiece,
+  worldBridgePieces,
+  worldHedgePieces,
 } from "@marinara-engine/shared";
 import { useDungeonEnter, useOverworld, useTown, useTownVisit } from "../../hooks/use-game";
 import {
@@ -187,11 +187,15 @@ export function TownView({
         if (cell === "h")
           standing.push({
             bottom: y,
-            draw: () =>
-              drawTile.piece(ctx, "hedge_joined", worldHedgePiece(isHedge, x, y), x * T, y * T, pick) ||
-              drawTile(ctx, "hedge", x * T, y * T) ||
-              drawTile(ctx, "tree", x * T, y * T) ||
-              plain(PLAIN.hedge, x * T, y * T),
+            draw: () => {
+              // Its joined pieces (straight, curved round a corner, slanting to a diagonal neighbour), else
+              // the plain hedge.
+              const pieces = worldHedgePieces(isHedge, x, y, (piece) => drawTile.hasPiece("hedge_joined", piece, pick));
+              if (pieces.every((piece) => drawTile.hasPiece("hedge_joined", piece, pick)))
+                for (const piece of pieces) drawTile.piece(ctx, "hedge_joined", piece, x * T, y * T, pick);
+              else if (!drawTile(ctx, "hedge", x * T, y * T) && !drawTile(ctx, "tree", x * T, y * T))
+                plain(PLAIN.hedge, x * T, y * T);
+            },
           });
         // A tree here and there on the open ground away from the streets, and where a hand layout
         // (worldgen W9h) planted one or dug a well; "o" is open ground kept clear.
@@ -223,18 +227,25 @@ export function TownView({
             ctx.fillRect(x * T, y * T, T, T);
           }
     }
-    // Bridges over the water, flat on the ground.
+    // Bridges over the water, flat on the ground: along their run, turning a corner, or slanting across
+    // (those pieces spill past their cells, so they go down after the rest).
+    const slanting: Array<() => void> = [];
     for (let y = 0; y < town.height; y++)
       for (let x = 0; x < town.width; x++)
         if (cellOf(x, y) === "b") {
-          const along = worldBridgePiece(groundAt, x, y);
-          if (
-            !drawTile.piece(ctx, along.id, along.piece, x * T, y * T, cellNoise(x, y)(5)) &&
-            !drawTile(ctx, "bridge", x * T, y * T) &&
-            !drawTile(ctx, "street", x * T, y * T)
-          )
+          const pick = cellNoise(x, y)(5);
+          const has = (id: string, piece: number) => drawTile.hasPiece(id, piece, pick);
+          const pieces = worldBridgePieces(groundAt, x, y, has);
+          if (pieces.every((each) => has(each.id, each.piece))) {
+            const drawPieces = () => {
+              for (const each of pieces) drawTile.piece(ctx, each.id, each.piece, x * T, y * T, pick);
+            };
+            if (pieces.some((each) => each.id === "bridge_diag")) slanting.push(drawPieces);
+            else drawPieces();
+          } else if (!drawTile(ctx, "bridge", x * T, y * T) && !drawTile(ctx, "street", x * T, y * T))
             plain(PLAIN.bridge, x * T, y * T);
         }
+    for (const drawPieces of slanting) drawPieces();
     for (const building of town.buildings) {
       standing.push({ bottom: building.y + building.h - 1, draw: () => drawBuilding(building) });
     }

@@ -18,6 +18,7 @@ import {
   TILE_PACK_MAX_BYTES,
   WORLD_ART_FAMILIES,
   WORLD_TILE_BLOCKS,
+  WORLD_TILE_BLOCK_SIZES,
   WORLD_TILE_IDS,
   parseTilePack,
   type TilePack,
@@ -126,6 +127,7 @@ export async function gameTilePacksRoutes(app: FastifyInstance) {
     // Every tile a pack can draw, and the ones laid out as blocks of pieces, for a maker to offer them all.
     tileIds: WORLD_TILE_IDS,
     tileBlocks: WORLD_TILE_BLOCKS,
+    tileBlockSizes: WORLD_TILE_BLOCK_SIZES,
     selection: await readSelection(),
   }));
 

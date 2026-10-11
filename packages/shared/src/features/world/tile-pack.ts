@@ -106,11 +106,14 @@ export const WORLD_TILE_IDS = Object.freeze([
   // pack's eight decorations. Fields draw as the farmland look, paths and water with their edge tiles.
   "bridge",
   "hedge",
-  // Joined pieces (image packs): a hedge or fence that meets its neighbours, and a bridge along the way it
-  // spans with railings and ends (WORLD_TILE_BLOCKS); the plain bridge and hedge stand in without them.
+  // Joined pieces (image packs): a hedge or fence that meets its neighbours (straight, curved and diagonal),
+  // and a bridge along the way it spans with railings and ends, slanting or turning a corner
+  // (WORLD_TILE_BLOCKS); the plain bridge and hedge stand in without them.
   "hedge_joined",
   "bridge_ns",
   "bridge_ew",
+  "bridge_diag",
+  "bridge_turn",
   ...WORLD_TOWN_PROPS,
   // Maps of places (image packs; map editor Phase 3): a cave, dungeon or station set's floor, wall and liquid,
   // the liquid's edges, and eight props (WORLD_DUNGEON_PROP_COUNT; the sixth, dn_prop5, is the way out). Generic
@@ -145,27 +148,149 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "hedge_joined",
   "bridge_ns",
   "bridge_ew",
+  "bridge_diag",
+  "bridge_turn",
   ...WORLD_TOWN_PROPS,
   ...dungeonTileIds(),
 ]);
-/** Tiles whose every variant is a block of pieces, cells across by down, one piece a cell read left to right
- *  and top to bottom: a hedge's sixteen by which neighbours are hedges too (worldHedgePiece), a bridge's
- *  end, deck and end along the way it spans (worldBridgePiece). */
+/** Tiles whose every variant is a block of pieces, cells across by down (worldTilePiece says where each piece
+ *  lies in it): a hedge's pieces by which neighbours are hedges too (worldHedgePieces), a bridge's end, deck
+ *  and end along the way it spans, slanting (`bridge_diag`) or turning a corner (`bridge_turn`)
+ *  (worldBridgePieces). */
 export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number]>> = Object.freeze({
-  hedge_joined: [4, 4],
+  hedge_joined: [4, 23],
   bridge_ns: [1, 3],
   bridge_ew: [3, 1],
+  bridge_diag: [6, 4],
+  bridge_turn: [2, 2],
 });
+/** Every size a block tile's variant may be, the whole block first: a joined hedge may stop after its
+ *  sixteen straight pieces (4 by 4) or its curved corners (4 by 5), and draws straight where it has no more. */
+export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<readonly [number, number]>>> = Object.freeze(
+  {
+    hedge_joined: [
+      [4, 23],
+      [4, 5],
+      [4, 4],
+    ],
+    bridge_ns: [[1, 3]],
+    bridge_ew: [[3, 1]],
+    bridge_diag: [[6, 4]],
+    bridge_turn: [[2, 2]],
+  },
+);
 
-/** A hedge cell's piece of `hedge_joined`: its neighbours that are hedges too, north 1, east 2, south 4,
- *  west 8 (0 a lone post, 5 a run north to south, 10 east to west, 15 a crossing). */
+/** `hedge_joined`'s curved corners (row 5), by the straight mask they stand in for: north and east, east and
+ *  south, south and west, west and north. */
+export const WORLD_HEDGE_CURVES: Readonly<Record<number, number>> = Object.freeze({ 3: 16, 6: 17, 12: 18, 9: 19 });
+/** `hedge_joined`'s eighteen diagonal pieces (from row 6, two cells by two each, two to a row), by the
+ *  hedge neighbours they join: straight ones north 1, east 2, south 4, west 8, and diagonal ones (counted
+ *  only when neither straight cell between is a hedge) north-east 1, south-east 2, south-west 4, north-west 8,
+ *  keyed "straight:diagonal". In order: the runs / and \, the four lone ends (toward NE, SE, SW, NW), the
+ *  eight turns from straight to diagonal (W+NE, W+SE, E+NW, E+SW, N+SE, N+SW, S+NE, S+NW), and the four
+ *  turns from diagonal to diagonal (NE+SE, SE+SW, SW+NW, NW+NE). */
+export const WORLD_HEDGE_DIAGONALS: Readonly<Record<string, number>> = Object.freeze(
+  Object.fromEntries(
+    [
+      "0:5",
+      "0:10",
+      "0:1",
+      "0:2",
+      "0:4",
+      "0:8",
+      "8:1",
+      "8:2",
+      "2:8",
+      "2:4",
+      "1:2",
+      "1:4",
+      "4:1",
+      "4:8",
+      "0:3",
+      "0:6",
+      "0:12",
+      "0:9",
+    ].map((key, index) => [key, 20 + index]),
+  ),
+);
+
+/** Where a block tile's piece lies in its variant, in cells (w by h; a piece wider than a cell is drawn
+ *  centred on its cell, spilling past it), or null when a variant of that size lacks it. A `hedge_joined`
+ *  is its sixteen straight pieces by mask (rows 1 to 4), its four curved corners (row 5), then its eighteen
+ *  diagonal pieces two cells by two (WORLD_HEDGE_DIAGONALS); a `bridge_diag` its six pieces two cells by
+ *  two, / then \ (each: the end to the south, the deck, the end to the north); any other block one cell a
+ *  piece, read left to right and top to bottom. */
+export function worldTilePiece(
+  id: string,
+  piece: number,
+  block: readonly [number, number],
+): { x: number; y: number; w: number; h: number } | null {
+  const [w, h] = block;
+  if (!Number.isInteger(piece) || piece < 0) return null;
+  if (id === "hedge_joined") {
+    if (piece < 20) return piece < 4 * Math.min(h, 5) ? { x: piece % 4, y: Math.floor(piece / 4), w: 1, h: 1 } : null;
+    const at = piece - 20;
+    return at < 18 && h >= 23 ? { x: (at % 2) * 2, y: 5 + Math.floor(at / 2) * 2, w: 2, h: 2 } : null;
+  }
+  if (id === "bridge_diag")
+    return piece < 6 && w >= 6 && h >= 4 ? { x: (piece % 3) * 2, y: Math.floor(piece / 3) * 2, w: 2, h: 2 } : null;
+  return piece < w * h ? { x: piece % w, y: Math.floor(piece / w), w: 1, h: 1 } : null;
+}
+
+/** A cell's neighbours of its own kind: straight ones north 1, east 2, south 4, west 8, and diagonal ones
+ *  north-east 1, south-east 2, south-west 4, north-west 8, a diagonal one counted only when neither straight
+ *  cell between is of the kind (else the two join round that cell). */
+function joinMasks(same: (x: number, y: number) => boolean, x: number, y: number) {
+  const [n, e, s, w] = [same(x, y - 1), same(x + 1, y), same(x, y + 1), same(x - 1, y)];
+  const straight = (n ? 1 : 0) | (e ? 2 : 0) | (s ? 4 : 0) | (w ? 8 : 0);
+  const diagonal =
+    (!n && !e && same(x + 1, y - 1) ? 1 : 0) |
+    (!s && !e && same(x + 1, y + 1) ? 2 : 0) |
+    (!s && !w && same(x - 1, y + 1) ? 4 : 0) |
+    (!n && !w && same(x - 1, y - 1) ? 8 : 0);
+  return { straight, diagonal };
+}
+const DIAGONAL_BITS = [1, 2, 4, 8] as const;
+
+/** A hedge cell's pieces of `hedge_joined`, drawn in order, one over another (worldTilePiece). Straight
+ *  neighbours pick one of sixteen by mask (north 1, east 2, south 4, west 8: 0 a lone post, 5 a run north to
+ *  south, 10 east to west, 15 a crossing), a corner drawn curved where the pack has it (WORLD_HEDGE_CURVES);
+ *  diagonal ones the diagonal piece for the join (WORLD_HEDGE_DIAGONALS), or for a join it has none for the
+ *  straight piece with a lone end toward each diagonal (two opposite ends as a run). `has` says which
+ *  pieces the pack has; with none of the diagonals the hedge joins straight only. */
+export function worldHedgePieces(
+  isHedge: (x: number, y: number) => boolean,
+  x: number,
+  y: number,
+  has: (piece: number) => boolean = () => true,
+): number[] {
+  const { straight, diagonal } = joinMasks(isHedge, x, y);
+  const plain =
+    WORLD_HEDGE_CURVES[straight] !== undefined && has(WORLD_HEDGE_CURVES[straight]!) && !diagonal
+      ? WORLD_HEDGE_CURVES[straight]!
+      : straight;
+  if (!diagonal) return [plain];
+  const exact = WORLD_HEDGE_DIAGONALS[`${straight}:${diagonal}`];
+  if (exact !== undefined && has(exact)) return [exact];
+  const layered: number[] = straight ? [straight] : [];
+  let ends = diagonal;
+  if (!straight)
+    for (const [run, mask] of [
+      [20, 5],
+      [21, 10],
+    ] as const)
+      if ((ends & mask) === mask) {
+        layered.push(run);
+        ends &= ~mask;
+      }
+  for (const [index, bit] of DIAGONAL_BITS.entries()) if (ends & bit) layered.push(22 + index);
+  return layered.every(has) ? layered : [straight];
+}
+
+/** A hedge cell's straight piece of `hedge_joined` (worldHedgePieces with only its sixteen straight pieces):
+ *  its neighbours that are hedges too, north 1, east 2, south 4, west 8. */
 export function worldHedgePiece(isHedge: (x: number, y: number) => boolean, x: number, y: number): number {
-  return (
-    (isHedge(x, y - 1) ? 1 : 0) |
-    (isHedge(x + 1, y) ? 2 : 0) |
-    (isHedge(x, y + 1) ? 4 : 0) |
-    (isHedge(x - 1, y) ? 8 : 0)
-  );
+  return joinMasks(isHedge, x, y).straight;
 }
 
 /** A bridge cell's piece: `bridge_ns` or `bridge_ew` by the way its run goes (a lone cell: the way with land
@@ -192,6 +317,60 @@ export function worldBridgePiece(
   const [before, after] = northSouth ? [bridge(0, -1), bridge(0, 1)] : [bridge(-1, 0), bridge(1, 0)];
   const piece = !before && after ? 0 : before && !after ? 2 : 1;
   return { id: northSouth ? "bridge_ns" : "bridge_ew", piece };
+}
+
+/** `bridge_turn`'s quarter curves, by the straight bridge neighbours they join: north and east, east and
+ *  south, south and west, west and north. */
+const BRIDGE_TURNS: Readonly<Record<number, number>> = { 3: 0, 6: 1, 12: 2, 9: 3 };
+/** `bridge_diag`'s end reaching toward each diagonal neighbour (north-east, south-east, south-west,
+ *  north-west): the / run's south-west end, the \ run's north-west end, the / run's north-east end, the \
+ *  run's south-east end. */
+const BRIDGE_DIAG_ENDS = [0, 3, 2, 5] as const;
+
+/** A bridge cell's pieces, drawn in order, one over another (worldTilePiece). Two bridge neighbours round a
+ *  corner (north and east, ...) turn it (`bridge_turn`); a diagonal bridge neighbour (counted only when
+ *  neither straight cell between is a bridge, so the way crosses that corner) slants it (`bridge_diag`: the
+ *  / run 0 its south-west end, 1 its deck, 2 its north-east end; the \ run 3, 4, 5 the same from the
+ *  north-west); otherwise the straight piece (worldBridgePiece). A cell joining more ways than one piece
+ *  shows draws the straight piece with an end toward each diagonal. `has` says which pieces the pack has;
+ *  without them the bridge runs straight. */
+export function worldBridgePieces(
+  ground: (x: number, y: number) => string | undefined,
+  x: number,
+  y: number,
+  has: (id: string, piece: number) => boolean = () => true,
+): Array<{ id: string; piece: number }> {
+  const straightPiece = worldBridgePiece(ground, x, y);
+  const { straight, diagonal } = joinMasks((bx, by) => ground(bx, by) === "b", x, y);
+  const pick = (pieces: Array<{ id: string; piece: number }>) =>
+    pieces.every((each) => has(each.id, each.piece)) ? pieces : [straightPiece];
+  if (!diagonal) {
+    const turn = BRIDGE_TURNS[straight];
+    return turn === undefined ? [straightPiece] : pick([{ id: "bridge_turn", piece: turn }]);
+  }
+  if (!straight) {
+    const run =
+      diagonal === 1
+        ? 0
+        : diagonal === 5
+          ? 1
+          : diagonal === 4
+            ? 2
+            : diagonal === 2
+              ? 3
+              : diagonal === 10
+                ? 4
+                : diagonal === 8
+                  ? 5
+                  : -1;
+    if (run >= 0) return pick([{ id: "bridge_diag", piece: run }]);
+  }
+  return pick([
+    ...(straight ? [straightPiece] : []),
+    ...DIAGONAL_BITS.flatMap((bit, index) =>
+      diagonal & bit ? [{ id: "bridge_diag", piece: BRIDGE_DIAG_ENDS[index]! }] : [],
+    ),
+  ]);
 }
 
 const colour = z.string().regex(/^#[0-9a-f]{6}([0-9a-f]{2})?$/i, "A colour is #rrggbb or #rrggbbaa");
@@ -489,10 +668,12 @@ function parseImageTilePack(value: unknown): TilePackRead {
         issues.push(`${id} variant ${index + 1} reaches past the edge of the sheet "${sheet.id}".`);
       // An edge tile is a block of sixteen pieces, four cells by four, or longer with its slanted corners (4 by
       // 6) and its curved runs (4 by 30); a sprite spans at most TILE_PACK_IMAGE_SPAN cells each way.
-      const block = WORLD_TILE_BLOCKS[id];
-      if (block) {
-        if (w !== block[0] || h !== block[1])
-          issues.push(`${id} variant ${index + 1} is ${w} by ${h} cells; its block is ${block[0]} by ${block[1]}.`);
+      const sizes = WORLD_TILE_BLOCK_SIZES[id];
+      if (sizes) {
+        if (!sizes.some(([bw, bh]) => w === bw && h === bh))
+          issues.push(
+            `${id} variant ${index + 1} is ${w} by ${h} cells; its block is ${sizes.map(([bw, bh]) => `${bw} by ${bh}`).join(" or ")}.`,
+          );
       } else if (id.startsWith("fringe_")) {
         if (w !== 4 || h !== 4)
           issues.push(`${id} variant ${index + 1} is ${w} by ${h} cells; a fringe's block is 4 by 4.`);
