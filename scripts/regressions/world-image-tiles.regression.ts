@@ -42,6 +42,9 @@ import {
   WORLD_EDGE_SLANT_PIECE_BY_MASK,
   type ImageTilePack,
   type TilePack,
+  WORLD_TILE_BLOCKS,
+  worldBridgePiece,
+  worldHedgePiece,
 } from "../../packages/shared/src/index.js";
 import { imageTilePack, pngBytes, pngDataUrl } from "./fixtures/image-tile-pack.js";
 
@@ -295,6 +298,59 @@ try {
     "each look once in the fringe order",
   );
   assert.ok(WORLD_FRINGE_ORDER.indexOf("forest") > WORLD_FRINGE_ORDER.indexOf("grass"), "a forest overhangs the grass");
+  // Blocks of pieces: a joined hedge four by four, a bridge along its run (1 by 3 north to south, 3 by 1 east
+  // to west), each only that size.
+  assert.ok(
+    parseTilePack(
+      withEdges({
+        hedge_joined: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 4 }],
+        bridge_ns: [{ sheet: "edges", x: 0, y: 0, w: 1, h: 3 }],
+        bridge_ew: [{ sheet: "edges", x: 0, y: 0, w: 3, h: 1 }],
+      }),
+    ).ok,
+    "a hedge's and a bridge's blocks",
+  );
+  refused(withEdges({ bridge_ns: [{ sheet: "edges", x: 0, y: 0, w: 3, h: 1 }] }), /its block is 1 by 3/, "turned");
+  refused(withEdges({ hedge_joined: [{ sheet: "edges", x: 0, y: 0 }] }), /its block is 4 by 4/, "one cell");
+  // A hedge's piece by its neighbours (north 1, east 2, south 4, west 8).
+  const hedges = new Set(["1,0", "1,1", "1,2", "2,1"]);
+  const hedgeAt = (x: number, y: number) => hedges.has(`${x},${y}`);
+  assert.deepEqual(
+    [
+      worldHedgePiece(hedgeAt, 1, 0),
+      worldHedgePiece(hedgeAt, 1, 1),
+      worldHedgePiece(hedgeAt, 2, 1),
+      worldHedgePiece(hedgeAt, 5, 5),
+    ],
+    [4, 1 | 2 | 4, 8, 0],
+    "an end, a tee, an end the other way, a lone post",
+  );
+  // A bridge's way and piece: a river running east to west crossed north to south, and the other way round.
+  const town = (rows: string[]) => (x: number, y: number) => rows[y]?.[x];
+  const across = town([".", "b", "b", "b", "."]);
+  assert.deepEqual(
+    [1, 2, 3].map((y) => worldBridgePiece(across, 0, y)),
+    [
+      { id: "bridge_ns", piece: 0 },
+      { id: "bridge_ns", piece: 1 },
+      { id: "bridge_ns", piece: 2 },
+    ],
+  );
+  assert.deepEqual(worldBridgePiece(town([".bb."]), 2, 0), { id: "bridge_ew", piece: 2 });
+  assert.deepEqual(
+    worldBridgePiece(town(["~.~", "~b~", "~.~"]), 1, 1),
+    { id: "bridge_ns", piece: 1 },
+    "lone, land N-S",
+  );
+  assert.deepEqual(
+    worldBridgePiece(town(["~~~", ".b.", "~~~"]), 1, 1),
+    { id: "bridge_ew", piece: 1 },
+    "lone, land E-W",
+  );
+  assert.ok(
+    ["hedge_joined", "bridge_ns", "bridge_ew"].every((id) => WORLD_TILE_BLOCKS[id]),
+    "listed as blocks",
+  );
   // Patterns: the ground, a town's ground, streets and square, and a room's floor and walls.
   assert.ok(
     ["grass", "town_ground", "in_floor", "in_wall"].every((id) => WORLD_PATTERN_TILE_IDS.includes(id as never)),

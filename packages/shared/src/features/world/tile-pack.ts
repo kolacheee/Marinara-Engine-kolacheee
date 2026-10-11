@@ -106,6 +106,11 @@ export const WORLD_TILE_IDS = Object.freeze([
   // pack's eight decorations. Fields draw as the farmland look, paths and water with their edge tiles.
   "bridge",
   "hedge",
+  // Joined pieces (image packs): a hedge or fence that meets its neighbours, and a bridge along the way it
+  // spans with railings and ends (WORLD_TILE_BLOCKS); the plain bridge and hedge stand in without them.
+  "hedge_joined",
+  "bridge_ns",
+  "bridge_ew",
   ...WORLD_TOWN_PROPS,
   // Maps of places (image packs; map editor Phase 3): a cave, dungeon or station set's floor, wall and liquid,
   // the liquid's edges, and eight props (WORLD_DUNGEON_PROP_COUNT; the sixth, dn_prop5, is the way out). Generic
@@ -137,9 +142,57 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "site",
   "bridge",
   "hedge",
+  "hedge_joined",
+  "bridge_ns",
+  "bridge_ew",
   ...WORLD_TOWN_PROPS,
   ...dungeonTileIds(),
 ]);
+/** Tiles whose every variant is a block of pieces, cells across by down, one piece a cell read left to right
+ *  and top to bottom: a hedge's sixteen by which neighbours are hedges too (worldHedgePiece), a bridge's
+ *  end, deck and end along the way it spans (worldBridgePiece). */
+export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number]>> = Object.freeze({
+  hedge_joined: [4, 4],
+  bridge_ns: [1, 3],
+  bridge_ew: [3, 1],
+});
+
+/** A hedge cell's piece of `hedge_joined`: its neighbours that are hedges too, north 1, east 2, south 4,
+ *  west 8 (0 a lone post, 5 a run north to south, 10 east to west, 15 a crossing). */
+export function worldHedgePiece(isHedge: (x: number, y: number) => boolean, x: number, y: number): number {
+  return (
+    (isHedge(x, y - 1) ? 1 : 0) |
+    (isHedge(x + 1, y) ? 2 : 0) |
+    (isHedge(x, y + 1) ? 4 : 0) |
+    (isHedge(x - 1, y) ? 8 : 0)
+  );
+}
+
+/** A bridge cell's piece: `bridge_ns` or `bridge_ew` by the way its run goes (a lone cell: the way with land
+ *  at both sides, else water at both of the others), and 0 for the end meeting land before it, 2 for the end
+ *  meeting land after it, 1 for the deck (a one-cell bridge is all deck). `ground` reads a town's cell
+ *  ("b" a bridge, "~" water, undefined off the map). */
+export function worldBridgePiece(
+  ground: (x: number, y: number) => string | undefined,
+  x: number,
+  y: number,
+): { id: "bridge_ns" | "bridge_ew"; piece: number } {
+  const bridge = (dx: number, dy: number) => ground(x + dx, y + dy) === "b";
+  const land = (dx: number, dy: number) => {
+    const cell = ground(x + dx, y + dy);
+    return cell !== undefined && cell !== "b" && cell !== "~";
+  };
+  const water = (dx: number, dy: number) => ground(x + dx, y + dy) === "~";
+  const northSouth =
+    bridge(0, -1) || bridge(0, 1)
+      ? true
+      : bridge(-1, 0) || bridge(1, 0)
+        ? false
+        : (land(0, -1) && land(0, 1)) || (water(-1, 0) && water(1, 0)) || !(land(-1, 0) && land(1, 0));
+  const [before, after] = northSouth ? [bridge(0, -1), bridge(0, 1)] : [bridge(-1, 0), bridge(1, 0)];
+  const piece = !before && after ? 0 : before && !after ? 2 : 1;
+  return { id: northSouth ? "bridge_ns" : "bridge_ew", piece };
+}
 
 const colour = z.string().regex(/^#[0-9a-f]{6}([0-9a-f]{2})?$/i, "A colour is #rrggbb or #rrggbbaa");
 const row = z.string().length(TILE_PACK_SIZE);
@@ -436,7 +489,11 @@ function parseImageTilePack(value: unknown): TilePackRead {
         issues.push(`${id} variant ${index + 1} reaches past the edge of the sheet "${sheet.id}".`);
       // An edge tile is a block of sixteen pieces, four cells by four, or longer with its slanted corners (4 by
       // 6) and its curved runs (4 by 30); a sprite spans at most TILE_PACK_IMAGE_SPAN cells each way.
-      if (id.startsWith("fringe_")) {
+      const block = WORLD_TILE_BLOCKS[id];
+      if (block) {
+        if (w !== block[0] || h !== block[1])
+          issues.push(`${id} variant ${index + 1} is ${w} by ${h} cells; its block is ${block[0]} by ${block[1]}.`);
+      } else if (id.startsWith("fringe_")) {
         if (w !== 4 || h !== 4)
           issues.push(`${id} variant ${index + 1} is ${w} by ${h} cells; a fringe's block is 4 by 4.`);
       } else if (id.startsWith("edge_")) {

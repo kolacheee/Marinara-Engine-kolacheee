@@ -75,6 +75,11 @@ try {
     assert.equal((await app.inject({ method: "GET", url: "/api/game-tile-packs/builtin/noir" })).statusCode, 404);
     // Each dungeon set the Engine has art for is served by its id; any other id is not.
     assert.ok(Array.isArray(empty.builtInDungeons), "the dungeon sets with art of their own are listed");
+    assert.ok(
+      empty.tileIds.includes("hedge_joined") && empty.tileIds.includes("site"),
+      "every tile id a pack may draw",
+    );
+    assert.deepEqual(empty.tileBlocks.bridge_ns, [1, 3]);
     for (const set of empty.builtInDungeons as string[]) {
       const art = await app.inject({ method: "GET", url: `/api/game-tile-packs/builtin/dungeon/${set}` });
       assert.equal(art.statusCode, 200, `${set}: its art is served`);

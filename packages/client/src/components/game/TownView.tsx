@@ -26,6 +26,8 @@ import {
   type WorldPerson,
   type WorldTownBuilding,
   worldSeason,
+  worldBridgePiece,
+  worldHedgePiece,
 } from "@marinara-engine/shared";
 import { useDungeonEnter, useOverworld, useTown, useTownVisit } from "../../hooks/use-game";
 import {
@@ -151,6 +153,10 @@ export function TownView({
     const squareEdges = drawTile.hasEdges("square");
     const roadEdges = drawTile.hasEdges("road");
     const waterEdges = drawTile.hasEdges("water");
+    // A town's cell, none off its edge: what joins a hedge to its neighbours, and which way a bridge runs.
+    const groundAt = (x: number, y: number) =>
+      x >= 0 && y >= 0 && x < town.width && y < town.height ? town.ground[y * town.width + x] : undefined;
+    const isHedge = (x: number, y: number) => groundAt(x, y) === "h";
     for (let y = 0; y < town.height; y++) {
       for (let x = 0; x < town.width; x++) {
         const cell = town.ground[y * town.width + x];
@@ -182,6 +188,7 @@ export function TownView({
           standing.push({
             bottom: y,
             draw: () =>
+              drawTile.piece(ctx, "hedge_joined", worldHedgePiece(isHedge, x, y), x * T, y * T, pick) ||
               drawTile(ctx, "hedge", x * T, y * T) ||
               drawTile(ctx, "tree", x * T, y * T) ||
               plain(PLAIN.hedge, x * T, y * T),
@@ -219,8 +226,15 @@ export function TownView({
     // Bridges over the water, flat on the ground.
     for (let y = 0; y < town.height; y++)
       for (let x = 0; x < town.width; x++)
-        if (cellOf(x, y) === "b" && !drawTile(ctx, "bridge", x * T, y * T) && !drawTile(ctx, "street", x * T, y * T))
-          plain(PLAIN.bridge, x * T, y * T);
+        if (cellOf(x, y) === "b") {
+          const along = worldBridgePiece(groundAt, x, y);
+          if (
+            !drawTile.piece(ctx, along.id, along.piece, x * T, y * T, cellNoise(x, y)(5)) &&
+            !drawTile(ctx, "bridge", x * T, y * T) &&
+            !drawTile(ctx, "street", x * T, y * T)
+          )
+            plain(PLAIN.bridge, x * T, y * T);
+        }
     for (const building of town.buildings) {
       standing.push({ bottom: building.y + building.h - 1, draw: () => drawBuilding(building) });
     }
