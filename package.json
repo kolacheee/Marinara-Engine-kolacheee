@@ -20,6 +20,7 @@
     "build": "node ./scripts/pnpm-runner.mjs clean:stale-client && node ./scripts/pnpm-runner.mjs --filter @marinara-engine/shared build && node ./scripts/pnpm-runner.mjs --filter @marinara-engine/server --filter @marinara-engine/client --parallel run build",
     "build:shared": "node ./scripts/pnpm-runner.mjs --filter @marinara-engine/shared build",
     "art:overworld": "node scripts/art/build-overworld-tiles.mjs",
+    "art:builtin": "node ./scripts/pnpm-runner.mjs build:shared && node scripts/art/pack-builtin-art.mjs",
     "build:server": "node ./scripts/pnpm-runner.mjs --filter @marinara-engine/server build",
     "build:client": "node ./scripts/pnpm-runner.mjs build:shared && node ./scripts/pnpm-runner.mjs --filter @marinara-engine/client build",
     "check": "node ./scripts/pnpm-runner.mjs clean:stale-client && node ./scripts/pnpm-runner.mjs impeccable:check && node ./scripts/pnpm-runner.mjs localization:check && node ./scripts/pnpm-runner.mjs format:check && node ./scripts/pnpm-runner.mjs lint && node ./scripts/pnpm-runner.mjs check:e2e-types && node ./scripts/pnpm-runner.mjs check:token-estimation-types && node ./scripts/pnpm-runner.mjs build",

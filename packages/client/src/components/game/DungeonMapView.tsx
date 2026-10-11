@@ -41,21 +41,28 @@ const PLAIN = { floor: "#4a443d", wall: "#837767", liquid: "#245a78", prop: "#c9
 const centreOf = (cell: Point): Point => ({ x: cell.x * T + T / 2, y: cell.y * T + T / 2 });
 
 /** The set's own tile pack: the Experience's dungeon look by that id (1.357), else the player's library's
- *  pack by the set's name. */
+ *  pack by the set's name, else the Engine's own art for the set. */
 function useDungeonPack(set: string | undefined, looks?: readonly TilePack[]): TilePack | null | "loading" {
   const { data: library, isPending } = useTilePackLibrary();
   const look = set ? looks?.find((pack) => pack.id === set) : undefined;
   const entry = set && !look ? library?.packs.find((pack) => pack.id === set) : undefined;
+  const builtIn = Boolean(set && !look && !entry && library?.builtInDungeons?.includes(set));
   const { data, isPending: packPending } = useQuery({
-    queryKey: ["game", "tile-packs", "dungeon", set, entry?.version ?? null],
+    queryKey: ["game", "tile-packs", "dungeon", set, entry?.version ?? null, builtIn],
     queryFn: async () =>
-      (await api.get<{ pack: TilePack }>(`/game-tile-packs/pack?id=${encodeURIComponent(set!)}`)).pack,
-    enabled: Boolean(entry),
+      (
+        await api.get<{ pack: TilePack }>(
+          entry
+            ? `/game-tile-packs/pack?id=${encodeURIComponent(set!)}`
+            : `/game-tile-packs/builtin/dungeon/${encodeURIComponent(set!)}`,
+        )
+      ).pack,
+    enabled: Boolean(entry) || builtIn,
     staleTime: Infinity,
   });
   if (look) return look;
-  if (isPending || (entry && packPending)) return "loading";
-  return entry ? (data ?? null) : null;
+  if (isPending || ((entry || builtIn) && packPending)) return "loading";
+  return entry || builtIn ? (data ?? null) : null;
 }
 
 export function DungeonMapView({

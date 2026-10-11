@@ -73,6 +73,17 @@ try {
     assert.equal(own.statusCode, 200);
     assert.equal(own.json().pack.family, "wuxia");
     assert.equal((await app.inject({ method: "GET", url: "/api/game-tile-packs/builtin/noir" })).statusCode, 404);
+    // Each dungeon set the Engine has art for is served by its id; any other id is not.
+    assert.ok(Array.isArray(empty.builtInDungeons), "the dungeon sets with art of their own are listed");
+    for (const set of empty.builtInDungeons as string[]) {
+      const art = await app.inject({ method: "GET", url: `/api/game-tile-packs/builtin/dungeon/${set}` });
+      assert.equal(art.statusCode, 200, `${set}: its art is served`);
+      assert.deepEqual([art.json().pack.id, art.json().pack.family], [set, "dungeon"]);
+    }
+    assert.equal(
+      (await app.inject({ method: "GET", url: "/api/game-tile-packs/builtin/dungeon/noir_alley" })).statusCode,
+      404,
+    );
 
     // Saved from the maker: filed under local/; the same again is unchanged; other tiles under the same
     // version a conflict; a new version is the one served.

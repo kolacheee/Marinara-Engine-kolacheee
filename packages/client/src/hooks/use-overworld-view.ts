@@ -113,10 +113,12 @@ export function useOverworldClock(
 
 // ── Tile packs (worldgen W9a) ──
 
-/** The stored tile packs, the families with a built-in pack, and the pack each family is drawn with. */
+/** The stored tile packs, the families and dungeon sets with a built-in pack, and the pack each family is
+ *  drawn with. */
 export interface TilePackLibrary {
   packs: Array<{ id: string; name: string; family: string; version: number; tilePackVersion?: 1 | 2 }>;
   builtIn: string[];
+  builtInDungeons?: string[];
   selection: Record<string, string>;
 }
 
