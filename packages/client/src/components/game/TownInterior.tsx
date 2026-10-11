@@ -118,7 +118,8 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
         if (!drawTile(ctx, id!, x * T, y * T, cellNoise(x, y)(3))) plain(colour!, x * T, y * T);
         // A door in a wall running across (the way out, a doorway between rooms one above the other); a
         // doorway in a wall running up and down is an opening the floor runs through.
-        const across = interior.ground[y * interior.width + x - 1] === "#" && interior.ground[y * interior.width + x + 1] === "#";
+        const across =
+          interior.ground[y * interior.width + x - 1] === "#" && interior.ground[y * interior.width + x + 1] === "#";
         if ((c === "d" || c === "D") && across && !drawTile(ctx, "in_door", x * T, y * T))
           plain(PLAIN.door!, x * T, y * T);
       }
@@ -146,11 +147,14 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
     // piece where it has not; a piece against a back wall stands back against it.
     for (const sprite of worldInteriorSprites(interior)) {
       const at = (x: number, w: number, id: string, pick: number) =>
-        drawTile(ctx, id, x * T + ((w - 1) * T) / 2, sprite.y * T - sprite.lift * T, pick);
-      if (sprite.ids.some((id) => {
-        const pick = drawTile.pickWide(id, sprite.w);
-        return pick !== undefined && at(sprite.x, sprite.w, id, pick);
-      }))
+        drawTile(ctx, id, x * T + ((w - 1) * T) / 2 + (sprite.shift ?? 0) * T, sprite.y * T - sprite.lift * T, pick);
+      // The best piece at any size the pack draws it; the others only as wide as the cells.
+      if (
+        sprite.ids.some((id, index) => {
+          const pick = drawTile.pickWide(id, sprite.w) ?? (index === 0 ? 0 : undefined);
+          return pick !== undefined && at(sprite.x, sprite.w, id, pick);
+        })
+      )
         continue;
       if (
         sprite.cell &&

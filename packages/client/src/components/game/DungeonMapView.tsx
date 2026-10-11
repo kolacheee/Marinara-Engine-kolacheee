@@ -167,12 +167,16 @@ export function DungeonMapView({
           if (piece >= 0) drawTile.edge(ctx, "dn_liquid", piece, x * T, y * T, cellNoise(x, y)(71));
         }
     }
-    // A way north out of a room through its back wall: a doorway set into the wall, where the set has one;
-    // other openings are gaps the floor runs through.
+    // A way north out of a room through its back wall: a door (just the door) over the wall's face carried
+    // across the gap, where the set has one; other openings are gaps the floor runs through.
     const opening = (x: number, y: number) => worldBackWallOpening(solid, cells.width, cells.height, x, y);
     for (let y = 0; y < cells.height; y++)
       for (let x = 0; x < cells.width; x++)
-        if (opening(x, y) === "door") drawTile(ctx, "dn_door_wall", x * T, y * T, cellNoise(x, y)(7));
+        if (opening(x, y) === "door" && drawTile.blockSize("dn_door_wall")) {
+          for (let face = 0; face < Math.min(faceH, y + 1); face++)
+            drawTile.piece(ctx, "dn_wall_face", (faceH - 1 - face) * faceW + (x % faceW), x * T, (y - face) * T);
+          drawTile(ctx, "dn_door_wall", x * T, y * T, cellNoise(x, y)(7));
+        }
     for (let y = 0; y < cells.height; y++)
       for (let x = 0; x < cells.width; x++) {
         const prop = cells.props[y * cells.width + x]!;

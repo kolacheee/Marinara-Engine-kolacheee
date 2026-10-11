@@ -299,7 +299,8 @@ export function bedFoot(
 }
 
 /** A furnishing's beds, each whole: a bed or a bunk bed its head over its foot (bedFoot), a double bed two
- *  of those side by side (paired from the west, as wide furniture is). `x`, `y` its head's west cell, `w`
+ *  of those side by side (paired from the west, as wide furniture is), a bed lying sideways (against a side
+ *  wall) two bed cells side by side with no foot below either (paired from the west too). `x`, `y` its head's west cell, `w`
  *  by `h` the cells it covers (a lone cell is a whole bed, a lone column of a double bed half of one);
  *  `cells`, its furniture's cells; `sleeps`, where the people who sleep in it lie (a bed one, a bunk bed and
  *  a double bed two). */
@@ -315,10 +316,25 @@ export function worldBeds(furniture: ReadonlyArray<Piece>): Array<{
   const has = (kind: WorldFurniture, x: number, y: number) =>
     furniture.some((each) => each.kind === kind && each.x === x && each.y === y);
   const head = (kind: WorldFurniture, x: number, y: number) => has(kind, x, y) && !bedFoot(furniture, { x, y, kind });
+  const lone = (x: number, y: number) =>
+    head("bed", x, y) && !(has("bed", x, y + 1) && bedFoot(furniture, { x, y: y + 1, kind: "bed" }));
   const beds: ReturnType<typeof worldBeds> = [];
   for (const piece of furniture) {
     if (!WORLD_BED_FURNITURE.includes(piece.kind) || !head(piece.kind, piece.x, piece.y)) continue;
     const { kind, x, y } = piece;
+    if (kind === "bed" && lone(x, y)) {
+      let along = 0;
+      while (lone(x - along - 1, y)) along++;
+      if (along % 2 === 1) continue;
+      if (lone(x + 1, y)) {
+        const cells = [
+          { x, y },
+          { x: x + 1, y },
+        ];
+        beds.push({ kind, x, y, w: 2, h: 1, cells, sleeps: cells.slice(0, 1) });
+        continue;
+      }
+    }
     let west = 0;
     if (kind === "bed_double") while (head(kind, x - west - 1, y)) west++;
     if (west % 2 === 1) continue;
@@ -336,9 +352,10 @@ export function worldBeds(furniture: ReadonlyArray<Piece>): Array<{
 }
 
 /** How a piece of furniture is drawn (worldInteriorSprites): the tiles to try, best first, each `w` cells
- *  across (a pack's variant that wide; else, last, any it has); failing those, `cell` a cell at a time;
+ *  across (a pack's variant that wide; the first of them at any size it has, else the next); failing those, `cell` a cell at a time;
  *  standing over the cells (x .. x + w - 1, y) (its bottom row: a sprite rises above it, over what is
- *  behind), centred on them, its foot `lift` cells above their bottom edge; drawn in order of `base`. */
+ *  behind), centred on them and `shift` cells east of that (west when below 0), its foot `lift` cells above
+ *  their bottom edge (below it when under 0); drawn in order of `base`. */
 export interface WorldInteriorSprite {
   ids: string[];
   cell?: string[];
@@ -346,6 +363,7 @@ export interface WorldInteriorSprite {
   y: number;
   w: number;
   lift: number;
+  shift?: number;
   base: number;
 }
 
@@ -354,11 +372,17 @@ export interface WorldInteriorSprite {
 const AGAINST_LIFT = 0.75;
 /** The most cells across a piece of each kind is laid (WORLD_WIDE_FURNITURE): two, a long table three. */
 const RUN: Partial<Record<WorldFurniture, number>> = { longtable: 3 };
-/** Pieces a chair faces when beside one. */
+/** How far a chair at a table or desk is drawn toward it, tucked under it: half a cell. */
+const TUCK = 0.5;
+/** How far a bookshelf against a side wall is drawn toward the wall, over its top: a third of a cell. */
+const HUG = 1 / 3;
+/** Pieces a chair faces when beside one, tucked under it. */
 const SEATED_AT: ReadonlySet<WorldFurniture> = new Set(["table", "longtable", "desk", "counter", "workbench"]);
 
 /** A building's furniture as drawn, back to front: a pack's pieces facing the way they stand (a chair
- *  toward the table or desk beside it; a piece against a side wall away from it), sized by the cells they
+ *  toward the table or desk beside it, tucked under it, and a desk with none beside it given one where its
+ *  worker sits, before it, else behind it; a piece against a side wall away from it, a bookshelf drawn
+ *  back over the wall's top), sized by the cells they
  *  are laid over (a pair of tables one square table, three long tables one long one; a bench or a counter
  *  across a wide room, along a tall one), the plain tiles where a pack has none of these. Rugs are laid
  *  apart (`rugs`), under it all. */
@@ -377,13 +401,19 @@ export function worldInteriorSprites(
     return room ? room.h > room.w : false;
   };
   const sprites: WorldInteriorSprite[] = [];
-  const add = (sprite: Omit<WorldInteriorSprite, "base">) =>
-    sprites.push({ ...sprite, base: sprite.y + 1 - sprite.lift });
+  // A chair beside a table draws before it (under it), but after it when it stands before it (south).
+  const add = (sprite: Omit<WorldInteriorSprite, "base">, before = false) =>
+    sprites.push({ ...sprite, base: sprite.y + 1 - sprite.lift - (before ? 0.01 : 0) });
+  const open = (x: number, y: number) => ground[y * width + x] === "." && !kindAt.has(y * width + x);
   const used = new Set<number>();
   for (const bed of worldBeds(interior.furniture)) {
     bed.cells.forEach((cell) => used.add(cell.y * width + cell.x));
     const y = bed.y + bed.h - 1;
-    if (bed.kind === "bed_double" && bed.w === 2)
+    // Sideways, its pillow against the side wall.
+    const pillow = wall(bed.x + 2, bed.y) && !wall(bed.x - 1, bed.y) ? "right" : "left";
+    if (bed.kind === "bed" && bed.w === 2)
+      add({ ids: [`in_bed_${pillow}`], cell: ["in_bed"], x: bed.x, y, w: 2, lift: 0 });
+    else if (bed.kind === "bed_double" && bed.w === 2)
       add({ ids: ["in_bed_double"], cell: ["in_bed"], x: bed.x, y, w: 2, lift: 0 });
     else
       for (let dx = 0; dx < bed.w; dx++)
@@ -409,9 +439,14 @@ export function worldInteriorSprites(
     switch (kind) {
       case "chair": {
         const at = (dx: number, dy: number) => SEATED_AT.has(kindAt.get((y + dy) * width + x + dx) as WorldFurniture);
-        const facing = at(1, 0) ? "right" : at(-1, 0) ? "left" : at(0, 1) ? "down" : at(0, -1) ? "up" : "down";
-        ids = [`in_chair_${facing}`, plain];
-        break;
+        const facing = at(1, 0) ? "right" : at(-1, 0) ? "left" : at(0, 1) ? "down" : at(0, -1) ? "up" : null;
+        const tuck = { right: [TUCK, 0], left: [-TUCK, 0], down: [0, -TUCK], up: [0, TUCK], none: [0, 0] };
+        const [shift, chairLift] = tuck[facing ?? "none"];
+        add(
+          { ids: [`in_chair_${facing ?? "down"}`, plain], x, y, w: 1, lift: chairLift!, ...(shift ? { shift } : {}) },
+          facing === "right" || facing === "left",
+        );
+        continue;
       }
       case "table":
         ids = n === 2 ? ["in_table_square", plain] : [plain];
@@ -422,15 +457,44 @@ export function worldInteriorSprites(
           n === 3
             ? ["in_longtable_h"]
             : n === 2
-              ? [...(tall(x, y) ? ["in_longtable_v"] : []), plain, "in_table"]
-              : [plain, "in_table"];
+              ? [...(tall(x, y) ? ["in_longtable_v"] : []), "in_table_square", plain, "in_table"]
+              : ["in_table", plain];
         cell = [plain, "in_table"];
         break;
       case "desk":
-      case "workbench":
-        ids = n === 2 ? [`${plain}_down`, plain] : side ? [`${plain}_${side}`, plain] : [plain];
+      case "workbench": {
+        // A desk with a chair behind it (north) and none before it faces up.
+        const chair = (dy: number) => [0, 1].some((dx) => kindAt.get((y + dy) * width + x + dx) === "chair");
+        const beside = (dy: number) => Array.from({ length: n }, (_, dx) => x + dx).find((cx) => open(cx, y + dy));
+        // A desk with no chair beside it is given one: before it where its worker sits, else behind it.
+        const before = kind === "desk" && !chair(-1) && !chair(1) && !side ? beside(1) : undefined;
+        const behind =
+          kind === "desk" && !chair(-1) && !chair(1) && !side && before === undefined ? beside(-1) : undefined;
+        const up =
+          kind === "desk" && n === 2 && (chair(-1) || behind !== undefined) && !chair(1) && before === undefined;
+        ids = n === 2 ? [`${plain}_${up ? "up" : "down"}`, plain] : side ? [`${plain}_${side}`, plain] : [plain];
         cell = [plain];
+        const centre = (cx: number) => (n === 2 ? (cx === x ? 0.5 : -0.5) : 0);
+        if (before !== undefined)
+          add({
+            ids: ["in_chair_up", "in_chair"],
+            x: before,
+            y: y + 1,
+            w: 1,
+            lift: TUCK,
+            ...(n === 2 ? { shift: centre(before) } : {}),
+          });
+        if (behind !== undefined)
+          add({
+            ids: ["in_chair_down", "in_chair"],
+            x: behind,
+            y: y - 1,
+            w: 1,
+            lift: -TUCK,
+            ...(n === 2 ? { shift: centre(behind) } : {}),
+          });
         break;
+      }
       case "counter":
       case "bench":
         ids = n === 2 ? [`${plain}_h`, plain] : along ? [`${plain}_v`, plain] : [plain];
@@ -438,6 +502,10 @@ export function worldInteriorSprites(
         break;
       case "bookshelf":
         ids = !back && side ? [`${plain}_${side}`, plain] : [plain];
+        if (!back && side) {
+          add({ ids, x, y, w: 1, lift, shift: side === "right" ? -HUG : HUG });
+          continue;
+        }
         break;
       case "hearth":
         ids = n === 2 ? ["in_hearth_wide", plain] : [plain];
@@ -965,9 +1033,11 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
     seats[item.for] = at;
     taken.add(key(at.x, at.y));
   };
-  /** A bed's shapes, best first: a double bed two cells across, then as a bed; a bunk bed, then as a bed;
+  /** A bed's shapes, best first: along a side wall, a bed lying sideways; a double bed two cells across,
+   *  then as a bed; a bunk bed, then as a bed;
    *  any of them two cells long, then one where its foot has no room. */
-  const bedShapes = (kind: WorldFurniture): Array<[WorldFurniture, number, number]> => [
+  const bedShapes = (kind: WorldFurniture, sideways: boolean): Array<[WorldFurniture, number, number]> => [
+    ...(sideways && kind === "bed" ? [["bed", 2, 1] as [WorldFurniture, number, number]] : []),
     ...(kind === "bed_double" ? [["bed_double", 2, 2] as [WorldFurniture, number, number]] : []),
     ...(kind === "bed_bunk" ? [["bed_bunk", 1, 2] as [WorldFurniture, number, number]] : []),
     ["bed", 1, 2],
@@ -980,8 +1050,8 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
   };
   /** Puts a bed in the first shape that fits at one of the spots (its head's west cell), trying each shape
    *  at every spot before the next shape. */
-  const putBed = (item: Item, spots: Array<{ x: number; y: number; east?: boolean }>) => {
-    for (const [kind, w, h] of bedShapes(item.kind))
+  const putBed = (item: Item, spots: Array<{ x: number; y: number; east?: boolean }>, sideways = false) => {
+    for (const [kind, w, h] of bedShapes(item.kind, sideways))
       for (const spot of spots) {
         // Against an east wall a bed two across reaches west from it.
         const cells = footprint(spot.east ? spot.x - w + 1 : spot.x, spot.y, w, h);
@@ -1034,13 +1104,15 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
       }
       put(item, [key(x, row)]);
       // A hearth, a rack, an altar or drawers two cells across where there is room.
-      if (WORLD_WIDE_FURNITURE.includes(item.kind) && fits(x + 1, row)) put({ ...item, for: undefined }, [key(x + 1, row)]);
+      if (WORLD_WIDE_FURNITURE.includes(item.kind) && fits(x + 1, row))
+        put({ ...item, for: undefined }, [key(x + 1, row)]);
     }
-    // Things standing on the floor, in rows two apart from the counter or the back wall down.
+    // Things standing on the floor, in rows two apart from the counter or the back wall down, each row laid
+    // from the west a cell in from the wall (so a chair fits at a table's end).
     const firstRow = room.y + (counters.length ? 4 : 2);
     let index = 0;
     for (let y = firstRow; y < room.y + room.h - 1 && index < floors.length; y += 2) {
-      for (const x of byMiddle) {
+      for (const x of columns.slice(1)) {
         if (index >= floors.length) break;
         if (!fits(x, y)) continue;
         // Not side by side with another thing on the floor, so a chair or a person fits between.
@@ -1067,8 +1139,9 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
       const spots: Array<{ x: number; y: number; east?: boolean }> = [];
       for (let y = room.y; y < room.y + room.h - 1; y++)
         spots.push({ x: room.x, y }, { x: room.x + room.w - 1, y, east: true });
+      // A bed along a side wall lies sideways, its head against the wall, where it fits.
       if (WORLD_BED_FURNITURE.includes(item.kind)) {
-        putBed(item, spots);
+        putBed(item, spots, true);
         continue;
       }
       const spot = spots.find((each) => fits(each.x, each.y));
