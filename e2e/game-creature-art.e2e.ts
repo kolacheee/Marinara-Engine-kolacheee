@@ -6,7 +6,8 @@ import { seedUIState } from "./ui-state-fixture.js";
 
 // Creature art on the tactical board (design-game-creature-art.md): with a creature pack chosen, an enemy
 // the pack has ("Goblin 2" is a goblin) is drawn with its art, standing on its cell and facing a way; one it
-// does not have keeps its token. Without a pack, every enemy keeps its token.
+// does not have keeps its token. Without a pack, every enemy keeps its token. The Engine's own art (the SRD
+// monsters, Pixelforge W1) stands in for any creature no pack has.
 
 const version = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")).version;
 
@@ -138,18 +139,29 @@ async function openGame(page: Page, chatId: string, testInfo: TestInfo) {
   await page.goto("/");
 }
 
-for (const chosen of [true, false]) {
-  test(`creature art ${chosen ? "stands in for a token the pack has" : "is never drawn without a pack"}`, async ({
-    page,
-    request,
-  }, testInfo) => {
+const TITLES = {
+  true: "creature art stands in for a token the pack has",
+  false: "creature art is never drawn without a pack",
+  builtin: "the Engine's own creature art stands in where no pack has the creature",
+} as const;
+for (const chosen of [true, false, "builtin"] as const) {
+  test(TITLES[`${chosen}`], async ({ page, request }, testInfo) => {
     test.setTimeout(120_000);
     let chatId: string | undefined;
     try {
       // The library's creature pack (Pixelforge's storage): the route answered here.
       await page.route("**/api/game-tile-packs/creatures", (route) =>
-        route.fulfill({ json: { pack: chosen ? pack : null } }),
+        route.fulfill({ json: { pack: chosen === true ? pack : null } }),
       );
+      // The Engine's own art: answered by the server only where that is what is tested.
+      if (chosen !== "builtin")
+        await page.route("**/api/game-tile-packs/creatures/builtin", (route) =>
+          route.fulfill({ json: { pack: null } }),
+        );
+      const sheets: number[] = [];
+      page.on("response", (answer) => {
+        if (answer.url().includes("/api/game-tile-packs/creatures/builtin/sheet/")) sheets.push(answer.status());
+      });
       const created = await request.post("/api/game/create", {
         data: {
           name: "Creature art",
@@ -210,6 +222,15 @@ for (const chosen of [true, false]) {
       const battle = page.locator('[data-component="TacticalCombatUI"]');
       await expect(battle.getByRole("button", { name: /^Goblin 2/ }).first()).toBeVisible({ timeout: 40_000 });
       const goblinArt = battle.locator('[data-creature-art="goblin"]');
+      if (chosen === "builtin") {
+        // Both are SRD monsters: drawn from their own sheets, each loaded as its fighter shows.
+        await expect(goblinArt).toHaveCount(1);
+        await expect(battle.locator('[data-creature-art="skeleton"]')).toHaveCount(1);
+        await expect.poll(() => sheets.length).toBeGreaterThanOrEqual(2);
+        expect(sheets.every((status) => status === 200 || status === 304)).toBeTruthy();
+        await page.screenshot({ path: testInfo.outputPath("creature-art-builtin.png") });
+        return;
+      }
       if (!chosen) {
         await expect(battle.locator("[data-creature-art]")).toHaveCount(0);
         await expect(battle.getByRole("button", { name: /^Goblin 2/ }).first()).toContainText("G2");

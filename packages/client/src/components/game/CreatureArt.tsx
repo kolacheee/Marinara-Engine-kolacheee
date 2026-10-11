@@ -8,6 +8,7 @@ import {
   creatureArtFrame,
   creatureFacingToward,
   CREATURE_FLY_STEPS,
+  builtInCreaturePackSchema,
   creaturePackSchema,
   findCreatureArt,
   type CreatureArtFor,
@@ -35,15 +36,35 @@ export function useCreaturePack(): CreaturePack | null {
   return data ?? null;
 }
 
+/** The Engine's own creature art (its sheets are files, loaded as a fighter shows), or none. */
+export function useBuiltInCreaturePack(): CreaturePack | null {
+  const { data } = useQuery({
+    queryKey: ["game", "creature-pack", "builtin"],
+    queryFn: async () => {
+      try {
+        const answer = await api.get<{ pack: unknown }>("/game-tile-packs/creatures/builtin");
+        const parsed = builtInCreaturePackSchema.safeParse(answer.pack);
+        return parsed.success ? parsed.data : null;
+      } catch {
+        return null;
+      }
+    },
+    staleTime: Infinity,
+  });
+  return data ?? null;
+}
+
 /** The creature packs the game's Experience ships (Capability API 1.344), put in place by the game's
  *  screen for the fights it shows. */
 export const ExperienceCreaturePacksContext = createContext<readonly CreaturePack[]>([]);
 
-/** Every creature pack a fight draws from: the Experience's own, in its order, then the library's. */
+/** Every creature pack a fight draws from: the Experience's own, in its order, then the library's, then
+ *  the Engine's own art for any creature neither has. */
 export function useCreaturePacks(): readonly CreaturePack[] {
   const own = useContext(ExperienceCreaturePacksContext);
   const chosen = useCreaturePack();
-  return useMemo(() => (chosen ? [...own, chosen] : own), [own, chosen]);
+  const builtIn = useBuiltInCreaturePack();
+  return useMemo(() => [...own, ...(chosen ? [chosen] : []), ...(builtIn ? [builtIn] : [])], [own, chosen, builtIn]);
 }
 
 /** A fighter's art in the first pack that has it, with that pack. */

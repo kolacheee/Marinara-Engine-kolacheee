@@ -5,11 +5,19 @@
 // `local/<id>` as tile packs are; one is chosen for every fight (the library's "creatures" selection),
 // and fights read the chosen one from `GET /api/game-tile-packs/creatures` (none: today's tokens).
 // Saving, importing and removing are administrative acts behind `requirePrivilegedAccess`; the choice is
-// a preference.
+// a preference. The Engine's own art (src/assets/creature-art) is served beside them at `/builtin`, its
+// sheets one file per creature's block, and fights draw from it for any creature the chosen pack lacks.
 // ──────────────────────────────────────────────
+import { readFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import type { FastifyInstance, FastifyReply } from "fastify";
 import { z } from "zod";
-import { CREATURE_PACK_MAX_BYTES, parseCreaturePack, type CreaturePack } from "@marinara-engine/shared";
+import {
+  CREATURE_PACK_MAX_BYTES,
+  builtInCreaturePackSchema,
+  parseCreaturePack,
+  type CreaturePack,
+} from "@marinara-engine/shared";
 import { logger } from "../lib/logger.js";
 import { requirePrivilegedAccess } from "../middleware/privileged-gate.js";
 import { GAME_RULESETS_RATE_LIMIT } from "../middleware/rate-limit.js";
@@ -19,6 +27,23 @@ import {
   CreaturePackVersionConflictError,
   type GameCreaturePackRow,
 } from "../services/storage/game-creature-packs.storage.js";
+
+const BUILT_IN_DIR = fileURLToPath(new URL("../assets/creature-art/srd-monsters/", import.meta.url));
+const SHEET_FILE = /^[a-z0-9][a-z0-9_-]{0,63}\.png$/u;
+
+/** The Engine's own creature art, read once; none when it is not shipped or does not read. */
+let builtIn: Promise<{ pack: CreaturePack; files: Set<string> } | null> | null = null;
+const readBuiltIn = () =>
+  (builtIn ??= readFile(`${BUILT_IN_DIR}pack.json`, "utf8")
+    .then((text) => {
+      const read = builtInCreaturePackSchema.safeParse(JSON.parse(text));
+      if (!read.success) {
+        logger.error("[game/creature-packs] The built-in creature art does not read: %s", read.error.message);
+        return null;
+      }
+      return { pack: read.data, files: new Set(read.data.sheets.map((sheet) => `${sheet.id}.png`)) };
+    })
+    .catch(() => null));
 
 /** The stored pack every fight is drawn with, in app settings. */
 const SELECTION_KEY = "gameCreaturePackSelection";
@@ -79,6 +104,21 @@ export async function gameCreaturePacksRoutes(app: FastifyInstance) {
     const chosen = await readSelection();
     const row = chosen ? await store.latestOf(chosen) : null;
     return { pack: row ? packOf(row) : null };
+  });
+
+  // ── GET /api/game-tile-packs/creatures/builtin ── the Engine's own art, or none.
+  app.get("/builtin", async () => ({ pack: (await readBuiltIn())?.pack ?? null }));
+
+  // ── GET /api/game-tile-packs/creatures/builtin/sheet/:file ── one of its sheets.
+  app.get<{ Params: { file: string } }>("/builtin/sheet/:file", async (req, reply) => {
+    const file = req.params.file;
+    const own = await readBuiltIn();
+    if (!own || !SHEET_FILE.test(file) || !own.files.has(file))
+      return reply.status(404).send({ error: "No such sheet." });
+    return reply
+      .type("image/png")
+      .header("cache-control", "public, max-age=86400")
+      .send(await readFile(`${BUILT_IN_DIR}${file}`));
   });
 
   // ── GET /api/game-tile-packs/creatures/library ── the stored packs and the one chosen.
