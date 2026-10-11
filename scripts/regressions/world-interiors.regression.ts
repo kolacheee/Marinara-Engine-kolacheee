@@ -217,6 +217,8 @@ try {
         for (const { x, y, pick } of interior.decor) {
           const below = (dy: number) => interior.ground[(y + dy) * interior.width + x];
           assert.ok(pick >= 0 && pick < WORLD_INTERIOR_DECOR_COUNT, label);
+          // Only on the upper row of a face, two cells above the floor: never its lower row (floor right
+          // below) nor the first floor row.
           assert.ok(below(0) === "#" && below(1) === "#" && below(2) === ".", `${label}: decor high on a face`);
           assert.ok(
             !interior.furniture.some(

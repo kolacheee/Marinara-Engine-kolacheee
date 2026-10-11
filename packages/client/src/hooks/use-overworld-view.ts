@@ -17,6 +17,7 @@ import {
   OVERWORLD_SECONDS_PER_GAME_MINUTE,
   tilePackPixels,
   CHARACTER_FACINGS,
+  worldCentredDrop,
   worldTilePiece,
   worldWholeEdgeBlocks,
   WORLD_PATTERN_TILE_IDS,
@@ -215,6 +216,9 @@ export type OverworldTileDrawer = ((
   /** Whether a look's fringe piece (`pick` its variant, as `fringe` takes it) shows the look at a point in
    *  it, `u` and `v` across and down its cell (0 to 1): where the look's ground reaches past its cells. */
   fringeCovers: (look: string, piece: number, pick: number, u: number, v: number) => boolean;
+  /** Draws a tile on the cell at (x, y) as the drawer does, but with its visible art centred top to bottom
+   *  in it (worldCentredDrop), as a wall decoration hangs; false when the pack has no such tile. */
+  centred: (ctx: CanvasRenderingContext2D, id: string, x: number, y: number, pick?: number) => boolean;
   /** How long every one of a terrain's edge blocks is (4, 6 with slants, 30 with curves; 0 for none), for
    *  worldEdgePiece. */
   edgeRows: (terrain: WorldEdgeTerrain) => number;
@@ -509,6 +513,27 @@ export function useOverworldAtlas(
         const py = at.sy + Math.min(size - 1, Math.max(0, Math.floor(v * size)));
         return (pixels.data[(py * pixels.width + px) * 4 + 3] ?? 0) >= 128;
       };
+      draw.centred = (ctx, id, x, y, pick = 0) => {
+        const variants = seasonal(ready?.tiles, id) ?? seasonal(ready?.tiles, fallbackOf(id) ?? "");
+        const tile = ready?.canvas ? variantOf(variants, pick) : null;
+        if (!tile || !ready?.canvas) return false;
+        const [dw, dh] = [tile.w * OVERWORLD_TILE, tile.h * OVERWORLD_TILE];
+        const drop =
+          (centredDrop(ready.canvas, tile.sx, tile.sy, tile.w * size, tile.h * size) * OVERWORLD_TILE) / size;
+        const [sw, sh] = [tile.w * size, tile.h * size];
+        ctx.drawImage(
+          ready.canvas,
+          tile.sx,
+          tile.sy,
+          sw,
+          sh,
+          x + (OVERWORLD_TILE - dw) / 2,
+          y + OVERWORLD_TILE - dh + drop,
+          dw,
+          dh,
+        );
+        return true;
+      };
       draw.edge = (ctx, terrain, piece, x, y, pick = 0) => {
         const variants = ready?.edges?.[`edge_${terrain}`];
         if (!variants?.length || piece < 0 || !ready?.canvas) return false;
@@ -549,6 +574,7 @@ export function useOverworldAtlas(
     draw.fringeRows = () => 0;
     draw.fringe = () => false;
     draw.fringeCovers = () => false;
+    draw.centred = (ctx, id, x, y, pick = 0) => draw(ctx, id, x, y, pick);
     draw.edgeRows = () => 0;
     draw.edge = () => false;
     draw.setCellSeason = (value) => {
@@ -588,6 +614,27 @@ function imageFingerprint(pack: ImageTilePack): string {
 function fitInside(width: number, height: number, boxWidth: number, boxHeight: number): [number, number] {
   const scale = Math.min(boxWidth / width, boxHeight / height);
   return [width * scale, height * scale];
+}
+
+/** How far down to draw a piece of an atlas so its visible art is centred top to bottom (worldCentredDrop),
+ *  in the atlas's pixels, worked out once a piece. */
+const centredDrops = new WeakMap<HTMLCanvasElement, Map<string, number>>();
+function centredDrop(canvas: HTMLCanvasElement, sx: number, sy: number, w: number, h: number): number {
+  let known = centredDrops.get(canvas);
+  if (!known) centredDrops.set(canvas, (known = new Map()));
+  const key = `${sx},${sy},${w},${h}`;
+  let drop = known.get(key);
+  if (drop === undefined) {
+    const pixels = canvas.getContext("2d")?.getImageData(sx, sy, w, h).data;
+    drop = pixels
+      ? worldCentredDrop(h, (row) => {
+          for (let col = 0; col < w; col++) if ((pixels[(row * w + col) * 4 + 3] ?? 0) > 0) return true;
+          return false;
+        })
+      : 0;
+    known.set(key, drop);
+  }
+  return drop;
 }
 
 /** Whether a piece of an atlas is wholly clear, worked out once a piece. */

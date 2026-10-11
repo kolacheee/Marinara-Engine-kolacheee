@@ -283,6 +283,18 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
   },
 );
 
+/** How far down (in pixels; up when below 0) to draw a sprite `rows` pixels tall so its visible art (the
+ *  rows where `opaque`) sits centred top to bottom in it: a wall decoration hung centred on its cell, not
+ *  standing on its foot. 0 for a sprite with nothing visible. */
+export function worldCentredDrop(rows: number, opaque: (row: number) => boolean): number {
+  let top = 0;
+  while (top < rows && !opaque(top)) top++;
+  if (top === rows) return 0;
+  let bottom = rows;
+  while (!opaque(bottom - 1)) bottom--;
+  return (rows - top - bottom) / 2;
+}
+
 /** The trees standing in a cell of a wooded look: a staggered lattice across the map (rows 16 of a 48-pixel
  *  cell's pixels apart, trees 24 apart along a row, every other row shifted 12), each nudged up to 1.5
  *  pixels each way and picking one of the eight trees, kept where its base and the points 6 pixels up and

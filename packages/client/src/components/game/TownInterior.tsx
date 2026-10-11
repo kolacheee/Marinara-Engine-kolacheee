@@ -138,10 +138,11 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
         for (let dx = 0; dx < rug.w; dx++)
           drawTile(ctx, "in_rug", (rug.x + dx) * T, (rug.y + dy) * T, drawTile.pickWide("in_rug", 1) ?? 0);
     }
-    // What hangs on the walls: the decoration picked, or the next the pack has.
+    // What hangs on the walls (only on the upper row of a back wall's face), its art centred top to bottom in
+    // the cell: the decoration picked, or the next the pack has.
     for (const { x, y, pick } of interior.decor)
       for (let step = 0; step < WORLD_INTERIOR_DECOR_COUNT; step++)
-        if (drawTile(ctx, `in_wall_deco${(pick + step) % WORLD_INTERIOR_DECOR_COUNT}`, x * T, y * T)) break;
+        if (drawTile.centred(ctx, `in_wall_deco${(pick + step) % WORLD_INTERIOR_DECOR_COUNT}`, x * T, y * T)) break;
     // Furniture back to front by where each stands (worldInteriorSprites): facing the way it stands and
     // sized by the cells it is laid over where the pack has those pieces, a cell at a time or the plain
     // piece where it has not; a piece against a back wall stands back against it.
