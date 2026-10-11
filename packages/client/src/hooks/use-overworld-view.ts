@@ -184,6 +184,10 @@ export type OverworldTileDrawer = ((
   piece: (ctx: CanvasRenderingContext2D, id: string, piece: number, x: number, y: number, pick?: number) => boolean;
   /** Whether `piece` would draw that piece. */
   hasPiece: (id: string, piece: number, pick?: number) => boolean;
+  /** A tile's variant's cells across and down (by `pick`), null with none. */
+  blockSize: (id: string, pick?: number) => readonly [number, number] | null;
+  /** The `pick` that draws a tile's first variant `w` cells across, undefined with none. */
+  pickWide: (id: string, w: number) => number | undefined;
   /** Whether the pack has edge tiles for a terrain (water, road, street, square). */
   hasEdges: (terrain: WorldEdgeTerrain) => boolean;
   /** Draws what follows in a season of its own (a place the story holds at one, Capability API 1.351)
@@ -411,6 +415,15 @@ export function useOverworldAtlas(
         return clearPiece(ready.canvas, sx, sy, at.w * size, at.h * size) ? null : { block, at };
       };
       draw.hasPiece = (id, piece, pick = 0) => Boolean(ready?.canvas && pieceAt(id, piece, pick));
+      draw.pickWide = (id, w) => {
+        const variants = ready?.tiles[id] ?? [];
+        const index = variants.findIndex((each) => each.w === w);
+        return index < 0 ? undefined : (index + 0.5) / variants.length;
+      };
+      draw.blockSize = (id, pick = 0) => {
+        const block = variantOf(ready?.tiles[id], pick);
+        return block ? [block.w, block.h] : null;
+      };
       draw.piece = (ctx, id, piece, x, y, pick = 0) => {
         const found = pieceAt(id, piece, pick);
         if (!found || !ready?.canvas) return false;
@@ -511,6 +524,8 @@ export function useOverworldAtlas(
     draw.character = () => false;
     draw.piece = () => false;
     draw.hasPiece = () => false;
+    draw.blockSize = () => null;
+    draw.pickWide = (_id, w) => (w === 1 ? 0 : undefined);
     draw.hasEdges = () => false;
     draw.hasFringe = () => false;
     draw.fringeRows = () => 0;

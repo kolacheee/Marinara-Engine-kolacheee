@@ -24,6 +24,10 @@ import { join } from "node:path";
 import {
   WORLD_GENERATOR_VERSION,
   WORLD_INTERIOR_VERSION,
+  WORLD_INTERIOR_BACK_WALL,
+  WORLD_INTERIOR_DECOR_COUNT,
+  WORLD_WALL_FURNITURE,
+  WORLD_INTERIOR_RUG_SIZES,
   WORLD_STARTER_KITS,
   WORLD_TILE_IDS,
   WORLD_FURNITURE,
@@ -97,7 +101,10 @@ function checkRooms(town: WorldTown, interior: WorldInterior, label: string): vo
   const pieces = new Map<number, string>();
   for (const piece of interior.furniture) {
     assert.ok(WORLD_FURNITURE.includes(piece.kind), `${label}: a known piece`);
-    assert.equal(at(piece.x, piece.y), ".", `${label}: ${piece.kind} on the floor`);
+    // On the floor, or a hearth, shelves, a bookcase or a lamp against a back wall on its face.
+    const onFace =
+      WORLD_WALL_FURNITURE.includes(piece.kind) && at(piece.x, piece.y) === "#" && at(piece.x, piece.y + 1) === ".";
+    assert.ok(at(piece.x, piece.y) === "." || onFace, `${label}: ${piece.kind} on the floor or a wall's face`);
     const cell = piece.y * width + piece.x;
     assert.ok(!pieces.has(cell), `${label}: two pieces in one place`);
     pieces.set(cell, piece.kind);
@@ -140,7 +147,12 @@ function checkRooms(town: WorldTown, interior: WorldInterior, label: string): vo
     assert.equal(at(seat.x, seat.y), ".", `${label}: ${id}'s spot is on the floor`);
     const on = pieces.get(seat.y * width + seat.x);
     assert.ok(on === undefined || on === "bed", `${label}: ${id} stands on nothing but a bed`);
-    assert.ok(reachable(seat.x, seat.y), `${label}: ${id}'s spot is reachable`);
+    // A bed two cells long is reached at its head or its foot.
+    const foot = pieces.get(seat.y * width + seat.x) === "bed" && pieces.get((seat.y + 1) * width + seat.x) === "bed";
+    assert.ok(
+      reachable(seat.x, seat.y) || (foot && reachable(seat.x, seat.y + 1)),
+      `${label}: ${id}'s spot is reachable`,
+    );
   }
   // Each resident has a bed and each worker a spot, up to the most a building seats (eight of each).
   const building = town.buildings.find((each) => each.id === interior.buildingId)!;
@@ -162,6 +174,7 @@ try {
   // which building stands where, never how a building's rooms lay out); generator 3's are checked too.
   const pinned = createHash("sha256");
   let buildings = 0;
+  let decorations = 0;
   for (const [kit, version] of WORLD_STARTER_KITS.flatMap((kit) =>
     [2, WORLD_GENERATOR_VERSION].map((version) => [kit, version] as const),
   )) {
@@ -174,6 +187,43 @@ try {
         assert.deepEqual(layOutInterior(game, town, building), interior, `${label}: the same rooms each time`);
         checkRooms(town, interior, label);
         if (version === 2) pinned.update(JSON.stringify(interior));
+        // Seen three-quarters on: each room's back wall two cells deep; decorations on a face (a wall with
+        // floor below it, or the wall above that), never behind a tall piece standing against it.
+        for (const room of interior.rooms)
+          for (let x = room.x; x < room.x + room.w; x++)
+            for (let dy = 1; dy <= WORLD_INTERIOR_BACK_WALL; dy++)
+              assert.equal(interior.ground[(room.y - dy) * interior.width + x], "#", `${label}: a deep back wall`);
+        for (const { x, y, pick } of interior.decor) {
+          const below = (dy: number) => interior.ground[(y + dy) * interior.width + x];
+          assert.ok(pick >= 0 && pick < WORLD_INTERIOR_DECOR_COUNT, label);
+          assert.ok(below(0) === "#" && below(1) === "#" && below(2) === ".", `${label}: decor high on a face`);
+          assert.ok(
+            !interior.furniture.some(
+              (piece) =>
+                piece.x === x && (piece.y === y + 1 || piece.y === y + 2) && WORLD_WALL_FURNITURE.includes(piece.kind),
+            ),
+            `${label}: no decor above a piece against the wall`,
+          );
+          decorations++;
+        }
+        // Rugs wholly on open floor, none on another; one by the way in.
+        const rugged = new Set<number>();
+        for (const rug of interior.rugs)
+          for (let dy = 0; dy < rug.h; dy++)
+            for (let dx = 0; dx < rug.w; dx++) {
+              const cell = (rug.y + dy) * interior.width + rug.x + dx;
+              assert.equal(interior.ground[cell], ".", `${label}: a rug on the floor`);
+              assert.ok(!rugged.has(cell), `${label}: rugs apart`);
+              rugged.add(cell);
+            }
+        assert.ok(
+          rugged.has((interior.door.y - 1) * interior.width + interior.door.x),
+          `${label}: a rug by the way in`,
+        );
+        assert.ok(
+          interior.rugs.every((rug) => WORLD_INTERIOR_RUG_SIZES.some((size) => size.w === rug.w && size.h === rug.h)),
+        );
+        assert.ok(!interior.furniture.some((piece) => piece.kind === "rug"), `${label}: rugs are laid as rugs`);
         buildings++;
         // A part of town has none; every other building has these rooms.
         const rooms = worldInterior(game, town, building.id);
@@ -183,9 +233,10 @@ try {
     }
   }
   assert.ok(buildings > 1000, "many buildings checked");
+  assert.ok(decorations > buildings, "walls are decorated");
   assert.equal(
     `${WORLD_INTERIOR_VERSION}:${pinned.digest("hex").slice(0, 16)}`,
-    "1:8cb23466b308b9b9",
+    "2:edbc8bd312023af3",
     "the rooms changed: bump WORLD_INTERIOR_VERSION and pin the new digest",
   );
 
@@ -593,7 +644,9 @@ try {
     for (let y = 0; y < laid.height; y++)
       for (let x = 0; x < laid.width; x++) if (laid.ground[y * laid.width + x] === ".") floor.push({ x, y });
     const entry = { x: laid.door.x, y: laid.door.y - 1 };
-    const spot = floor.find((cell) => cell.y === 1 && (cell.x !== entry.x || cell.y !== entry.y))!;
+    const spot = floor.find(
+      (cell) => cell.y === WORLD_INTERIOR_BACK_WALL && (cell.x !== entry.x || cell.y !== entry.y),
+    )!;
     const sized = { settlement: settlement.id, building: tavern.id, width: laid.width, height: laid.height };
     // Furnished with a bed in the top row and a table beside it.
     const furniture = [
@@ -629,6 +682,14 @@ try {
       assert.match(answer.json().error, pattern, label);
     };
     await refused([{ ...sized, furniture: [{ x: 0, y: 0, kind: "crate" }] }], /not on the floor/, "on a wall");
+    // A bookcase may stand against the back wall on its face; a crate may not.
+    const face = { x: spot.x, y: spot.y - 1 };
+    assert.equal(
+      (await save([{ ...sized, furniture: [{ ...face, kind: "bookshelf" }] }])).statusCode,
+      200,
+      "a bookcase on the face",
+    );
+    await refused([{ ...sized, furniture: [{ ...face, kind: "crate" }] }], /not on the floor/, "a crate on the face");
     await refused([{ ...sized, furniture: [{ ...entry, kind: "crate" }] }], /stands in the way in/, "in the way in");
     await refused(
       [

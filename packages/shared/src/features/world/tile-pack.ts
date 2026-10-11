@@ -51,6 +51,9 @@ function dungeonTileIds() {
   return [
     "dn_floor",
     "dn_wall",
+    // A wall's face and top, as a room's are (in_wall_face, in_wall_top; worldInteriorWallPiece).
+    "dn_wall_face",
+    "dn_wall_top",
     "dn_liquid",
     ...WORLD_MAP_EDGE_TERRAINS.map((terrain) => `edge_${terrain}` as const),
     "dn_prop0",
@@ -63,6 +66,19 @@ function dungeonTileIds() {
     "dn_prop7",
   ] as const;
 }
+
+/** A wooded look's trees standing on the overworld (image packs; user, 2026-10-11, forest edges like
+ *  bushes cut off with no trunks): `treeline_<look>` is a block of eight trees, four cells by two, each a
+ *  single tree with its trunk at the bottom. With it, the look's ground is drawn through its fringe where
+ *  it meets other ground and trees are planted over it (worldTreelineTrees). */
+export const WORLD_TREELINE_LOOKS = Object.freeze([
+  "forest",
+  "conifer_forest",
+  "autumn_forest",
+  "jungle",
+  "dead_forest",
+  "bamboo",
+] as const);
 
 /** Every tile the overworld, the towns and the maps of places draw. */
 export const WORLD_TILE_IDS = Object.freeze([
@@ -90,14 +106,20 @@ export const WORLD_TILE_IDS = Object.freeze([
   "house",
   "hall",
   // Inside buildings (worldgen W13): the floor, a wall, a doorway, and each piece of furniture. A wall may be
-  // drawn as its face (the side seen from the room, a pattern) and its top (a block of sixteen pieces by
-  // which neighbours are walls too) (image packs; worldInteriorWallPiece); `in_wall` stands in without them.
+  // drawn as its face (the side seen from the room, a pattern a row to each cell up from the floor) and its
+  // top (a block of sixteen pieces by which neighbours are walls too), with decorations hung on its face
+  // (image packs; worldInteriorWallPiece); `in_wall` stands in without them.
   "in_floor",
   "in_wall",
   "in_wall_face",
   "in_wall_top",
+  ...Array.from({ length: 8 }, (_, index) => `in_wall_deco${index}` as const),
   "in_door",
   ...WORLD_FURNITURE.map((kind) => `in_${kind}` as const),
+  // Rugs larger than a cell (image packs; WORLD_INTERIOR_RUG_SIZES): a runner, a square one, a large one.
+  "in_rug_runner",
+  "in_rug_square",
+  "in_rug_large",
   // Edge tiles (image packs): each variant a block of sixteen pieces, four cells by four, for a terrain
   // that blends into the ground around it.
   ...WORLD_EDGE_TERRAINS.map((terrain) => `edge_${terrain}` as const),
@@ -123,6 +145,8 @@ export const WORLD_TILE_IDS = Object.freeze([
   "bridge_diag",
   "bridge_turn",
   ...WORLD_TOWN_PROPS,
+  // Trees standing on a wooded look (image packs; WORLD_TREELINE_LOOKS).
+  ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
   // Maps of places (image packs; map editor Phase 3): a cave, dungeon or station set's floor, wall and liquid,
   // the liquid's edges, and eight props (WORLD_DUNGEON_PROP_COUNT; the sixth, dn_prop5, is the way out). Generic
   // ids, so one map plays with any set's pack.
@@ -143,6 +167,7 @@ export const WORLD_PATTERN_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "in_wall_face",
   "dn_floor",
   "dn_wall",
+  "dn_wall_face",
   "dn_liquid",
 ]);
 /** Tiles only an image pack draws (whole buildings as sprites); a drawn pack's roofs and fronts stand in. */
@@ -163,6 +188,12 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "bridge_turn",
   "in_wall_face",
   "in_wall_top",
+  ...Array.from({ length: 8 }, (_, index) => `in_wall_deco${index}` as const),
+  "in_rug_runner",
+  "in_rug_square",
+  "in_rug_large",
+  "in_longtable",
+  ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
   ...WORLD_TOWN_PROPS,
   ...dungeonTileIds(),
 ]);
@@ -179,6 +210,8 @@ export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number
   bridge_diag: [6, 4],
   bridge_turn: [2, 2],
   in_wall_top: [4, 4],
+  dn_wall_top: [4, 4],
+  ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [4, 2] as const])),
 });
 /** Every size a block tile's variant may be, the whole block first: a joined hedge may stop after its
  *  sixteen straight pieces (4 by 4) or its curved corners (4 by 5), and draws straight where it has no more. */
@@ -204,8 +237,46 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
     bridge_diag: [[6, 4]],
     bridge_turn: [[2, 2]],
     in_wall_top: [[4, 4]],
+    dn_wall_top: [[4, 4]],
+    ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [[4, 2] as const]])),
   },
 );
+
+/** The trees planted in a cell of a wooded look: three in the cell, and one more toward each side that
+ *  meets other ground (so the edge reads as a treeline), each nudged by the cell and picking one of the
+ *  eight trees. `x` and `y` are where its trunk stands, in cells (fractions across the map). */
+export function worldTreelineTrees(
+  isLook: (x: number, y: number) => boolean,
+  x: number,
+  y: number,
+): Array<{ x: number; y: number; pick: number }> {
+  const spots: Array<[number, number]> = [
+    [0.3, 0.45],
+    [0.75, 0.6],
+    [0.5, 0.95],
+  ];
+  for (const [dx, dy] of [
+    [0, -1],
+    [1, 0],
+    [0, 1],
+    [-1, 0],
+  ] as const)
+    if (!isLook(x + dx, y + dy)) spots.push([0.5 + 0.3 * dx, 0.6 + 0.3 * dy]);
+  return spots.map(([fx, fy], index) => ({
+    // Nudged up to 6 and 4 of a 48-pixel cell's pixels each way.
+    x: x + fx + (treeHash(x, y, index * 3) - 0.5) * 0.25,
+    y: y + fy + (treeHash(x, y, index * 3 + 1) - 0.5) * (8 / 48),
+    pick: Math.floor(treeHash(x, y, index * 3 + 2) * 8),
+  }));
+}
+
+/** A number in [0, 1) for a cell and a salt, the same every time. */
+function treeHash(x: number, y: number, salt: number): number {
+  let h = Math.imul(x + 0x9e37, 0x85ebca6b) ^ Math.imul(y + 0x7f4a, 0xc2b2ae35) ^ Math.imul(salt + 1, 0x27d4eb2f);
+  h = Math.imul(h ^ (h >>> 15), 0x2c1b3c6d);
+  h = Math.imul(h ^ (h >>> 12), 0x297a2d39);
+  return ((h ^ (h >>> 15)) >>> 0) / 4294967296;
+}
 
 /** Tiles laid out as `hedge_joined` is (worldTilePiece, worldJoinedPieces): a hedge or fence, a road over
  *  the overworld, a path through town. */
@@ -330,24 +401,25 @@ export function worldJoinedPieces(
   return layered.every(has) ? layered : [straight];
 }
 
-/** A wall cell's piece inside a building: its face (`in_wall_face`, drawn as a pattern) where the room is
- *  south of it (floor or a doorway), else its top (`in_wall_top`), the piece for which neighbours are walls
- *  too, north 1, east 2, south 4, west 8 (beyond the building counts as wall). `ground` is the rooms' cells
- *  ("#" a wall), `width` by `height`. */
+/** A wall cell's pieces inside a building (three-quarters on): `face`, how many cells up from the floor its
+ *  face is (0 the cell with floor or a doorway south of it, 1 the wall cell above that; `in_wall_face`'s
+ *  rows count up from its bottom row), or null for no face; `top`, its piece of `in_wall_top` by which
+ *  neighbours are walls too, north 1, east 2, south 4, west 8 (beyond the building counts as wall), drawn
+ *  where it has no face or the pack's face has no row so high. `ground` is the rooms' cells ("#" a wall),
+ *  `width` by `height`. */
 export function worldInteriorWallPiece(
   ground: string,
   width: number,
   height: number,
   x: number,
   y: number,
-): { id: "in_wall_face" | "in_wall_top"; piece: number } {
+): { face: number | null; top: number } {
   const wall = (wx: number, wy: number) =>
     wx < 0 || wy < 0 || wx >= width || wy >= height || ground[wy * width + wx] === "#";
-  if (y + 1 < height && !wall(x, y + 1)) return { id: "in_wall_face", piece: 0 };
-  return {
-    id: "in_wall_top",
-    piece: (wall(x, y - 1) ? 1 : 0) | (wall(x + 1, y) ? 2 : 0) | (wall(x, y + 1) ? 4 : 0) | (wall(x - 1, y) ? 8 : 0),
-  };
+  const open = (wy: number) => wy < height && !wall(x, wy);
+  const face = open(y + 1) ? 0 : wall(x, y + 1) && open(y + 2) ? 1 : null;
+  const top = (wall(x, y - 1) ? 1 : 0) | (wall(x + 1, y) ? 2 : 0) | (wall(x, y + 1) ? 4 : 0) | (wall(x - 1, y) ? 8 : 0);
+  return { face, top };
 }
 
 /** A hedge cell's straight piece of `hedge_joined` (worldHedgePieces with only its sixteen straight pieces):

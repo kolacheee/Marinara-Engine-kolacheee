@@ -23,6 +23,8 @@ import {
   worldRoadCells,
   worldEdgePiece,
   worldJoinedPieces,
+  WORLD_TREELINE_LOOKS,
+  worldTreelineTrees,
   worldEdgeMask,
   WORLD_FRINGE_ORDER,
   worldGroundLooks,
@@ -185,13 +187,13 @@ export function WorldOverworld({
     2 * worldSize.width * worldSize.height,
     scale * (typeof window === "undefined" ? 1 : window.devicePixelRatio || 1),
   );
-  const ground = useMemo(() => {
+  const { canvas: ground, trees } = useMemo(() => {
     const canvas = document.createElement("canvas");
-    if (drawTile.loading) return canvas;
+    if (drawTile.loading) return { canvas, trees: [] as Array<{ x: number; y: number; look: string; pick: number }> };
     canvas.width = world.width * OVERWORLD_TILE * resolution;
     canvas.height = world.height * OVERWORLD_TILE * resolution;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return canvas;
+    if (!ctx) return { canvas, trees: [] as Array<{ x: number; y: number; look: string; pick: number }> };
     ctx.scale(resolution, resolution);
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = "high";
@@ -225,15 +227,41 @@ export function WorldOverworld({
     };
     // The look each cell is drawn with (a water cell under its edge pieces: the land under it).
     const drawnLook: string[] = new Array(width * height);
+    for (let y = 0; y < height; y++)
+      for (let x = 0; x < width; x++) {
+        const own = cells[y * width + x]!;
+        drawnLook[y * width + x] = looks[waterEdges && water[own] ? (landUnder(x, y) ?? own) : own]!;
+      }
+    // A wooded look with trees and a fringe: its edge cells under-painted with the ground beside them (the
+    // look's own ground then drawn through its fringe, so the forest floor ends in curves), trees after.
+    const treeLooks = new Set<string>(
+      WORLD_TREELINE_LOOKS.filter((look) => drawTile.hasPiece(`treeline_${look}`, 0) && drawTile.hasFringe(look)),
+    );
+    const lookAt = (x: number, y: number) =>
+      drawnLook[Math.min(height - 1, Math.max(0, y)) * width + Math.min(width - 1, Math.max(0, x))]!;
+    const inner = (x: number, y: number) => {
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) if (lookAt(x + dx, y + dy) !== lookAt(x, y)) return false;
+      return true;
+    };
+    const besideLook = (x: number, y: number) => {
+      const count = new Map<string, number>();
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) {
+          const other = lookAt(x + dx, y + dy);
+          if (other !== lookAt(x, y)) count.set(other, (count.get(other) ?? 0) + 1);
+        }
+      return [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
+    };
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
-        const cell = waterEdges && water[own] ? (landUnder(x, y) ?? own) : own;
-        drawnLook[y * width + x] = looks[cell]!;
+        const look = drawnLook[y * width + x]!;
+        const drawn = treeLooks.has(look) && !inner(x, y) ? (besideLook(x, y) ?? look) : look;
         const noise = cellNoise(x, y);
         inSeason(x, y);
-        if (!drawTile(ctx, looks[cell]!, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(99))) {
-          paintGround(ctx, looks[cell]!, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise);
+        if (!drawTile(ctx, drawn, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(99))) {
+          paintGround(ctx, drawn as (typeof looks)[number], x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise);
         }
         if (water[own] && !waterEdges) {
           paintShore(ctx, x * OVERWORLD_TILE, y * OVERWORLD_TILE, {
@@ -255,7 +283,12 @@ export function WorldOverworld({
       for (let y = 0; y <= height; y++)
         for (let x = 0; x <= width; x++) {
           const mask = worldEdgeMask(isLook, x, y, width, height);
-          if (mask === 0 || mask === 15) continue;
+          // A wooded look under-painted at its edge has its own ground drawn whole at the corners there too.
+          const whole =
+            treeLooks.has(look) &&
+            mask === 15 &&
+            !(inner(x - 1, y - 1) && inner(x, y - 1) && inner(x - 1, y) && inner(x, y));
+          if (mask === 0 || (mask === 15 && !whole)) continue;
           inSeason(x, y);
           drawTile.fringe(
             ctx,
@@ -330,7 +363,19 @@ export function WorldOverworld({
       for (const drawPieces of spilling) drawPieces();
     } else if (roads.size) edgePass("road", (x, y) => roads.has(y * width + x));
     drawTile.setCellSeason(undefined);
-    return canvas;
+    // The trees on wooded looks that have them, with the markers: never on a road or a place.
+    const placed = new Set(world.places.map((place) => place.at.y * width + place.at.x));
+    const trees: Array<{ x: number; y: number; look: string; pick: number }> = [];
+    for (let y = 0; y < height; y++)
+      for (let x = 0; x < width; x++) {
+        const look = looks[cells[y * width + x]!]!;
+        if (!WORLD_TREELINE_LOOKS.includes(look as never) || !drawTile.hasPiece(`treeline_${look}`, 0)) continue;
+        if (roads.has(y * width + x) || placed.has(y * width + x)) continue;
+        const isLook = (cx: number, cy: number) =>
+          cx < 0 || cy < 0 || cx >= width || cy >= height || looks[cells[cy * width + cx]!] === look;
+        for (const tree of worldTreelineTrees(isLook, x, y)) trees.push({ ...tree, look });
+      }
+    return { canvas, trees };
   }, [byId, drawTile, game, heldCells, kit.travel, resolution, world]);
   const markers = useMemo(() => {
     const canvas = document.createElement("canvas");
@@ -342,7 +387,7 @@ export function WorldOverworld({
     ctx.scale(resolution, resolution);
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = "high";
-    for (const { place } of settlements) {
+    const drawPlace = (place: (typeof settlements)[number]["place"]) => {
       const [x, y] = [place.at.x * OVERWORLD_TILE, place.at.y * OVERWORLD_TILE];
       // After dark, a warm glow of lit windows under each place still standing.
       if (lit && !ruined.has(place.id)) {
@@ -359,15 +404,30 @@ export function WorldOverworld({
         ctx.globalAlpha = sealedKey.split(",").includes(place.id) ? 0.45 : 1;
         if (!drawTile(ctx, "site", x, y, pick)) paintSite(ctx, place.at.x, place.at.y);
         ctx.globalAlpha = 1;
-        continue;
+        return;
       }
       const tier = settlementTier(place, top);
       if (!drawTile(ctx, ruined.has(place.id) ? "ruin" : `marker${tier}`, x, y)) {
         paintSettlement(ctx, place.at.x, place.at.y, tier, ruined.has(place.id), lit);
       }
-    }
+    };
+    // Back to front by where each stands: trees (trunk at the bottom) and the places among them.
+    const standing: Array<{ base: number; draw: () => void }> = trees.map((tree) => ({
+      base: tree.y,
+      draw: () =>
+        drawTile.piece(
+          ctx,
+          `treeline_${tree.look}`,
+          tree.pick,
+          tree.x * OVERWORLD_TILE - OVERWORLD_TILE / 2,
+          tree.y * OVERWORLD_TILE - (OVERWORLD_TILE * 46) / 48,
+        ),
+    }));
+    for (const { place } of settlements) standing.push({ base: place.at.y + 1, draw: () => drawPlace(place) });
+    standing.sort((a, b) => a.base - b.base);
+    for (const each of standing) each.draw();
     return canvas;
-  }, [drawTile, lit, resolution, ruined, sealedKey, settlements, siteIds, top, world.height, world.width]);
+  }, [drawTile, lit, resolution, ruined, sealedKey, settlements, siteIds, top, trees, world.height, world.width]);
 
   // Beyond the world's edge, the ground its edge has most of (the sea around an island, open space).
   const beyond = useMemo(() => {

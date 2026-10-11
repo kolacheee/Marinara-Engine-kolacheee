@@ -18,6 +18,7 @@ import {
   dungeonFromGameDungeonMap,
   dungeonWalkable,
   worldEdgePiece,
+  worldInteriorWallPiece,
   type CharacterFacing,
   type TilePack,
 } from "@marinara-engine/shared";
@@ -134,9 +135,20 @@ export function DungeonMapView({
       ctx.fillRect(x, y, T, T);
     };
     const liquidEdges = drawTile.hasEdges("dn_liquid");
+    // Walls seen three-quarters on, as a room's: a face a row to each cell up from the floor (over the rock
+    // behind a wall too), the top elsewhere, where the pack has them.
+    const solid = cells.ground.map((ground) => (ground === "wall" || ground === "rock" ? "#" : ".")).join("");
+    const [faceW, faceH] = drawTile.blockSize("dn_wall_face") ?? [0, 0];
     for (let y = 0; y < cells.height; y++)
       for (let x = 0; x < cells.width; x++) {
         const ground = cells.ground[y * cells.width + x];
+        if (ground === "wall" || ground === "rock") {
+          const wall = worldInteriorWallPiece(solid, cells.width, cells.height, x, y);
+          if (wall.face !== null && wall.face < faceH) {
+            if (drawTile.piece(ctx, "dn_wall_face", (faceH - 1 - wall.face) * faceW + (x % faceW), x * T, y * T))
+              continue;
+          } else if (ground === "wall" && drawTile.piece(ctx, "dn_wall_top", wall.top, x * T, y * T)) continue;
+        }
         if (ground === "rock") continue;
         const pick = cellNoise(x, y)(5);
         // With the liquid's edge pieces, a pool is under-painted as floor and drawn by the pieces.
