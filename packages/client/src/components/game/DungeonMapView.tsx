@@ -143,7 +143,7 @@ export function DungeonMapView({
       for (let x = 0; x < cells.width; x++) {
         const ground = cells.ground[y * cells.width + x];
         if (ground === "wall" || ground === "rock") {
-          const wall = worldInteriorWallPiece(solid, cells.width, cells.height, x, y);
+          const wall = worldInteriorWallPiece(solid, cells.width, cells.height, x, y, false);
           if (wall.face !== null && wall.face < faceH) {
             if (drawTile.piece(ctx, "dn_wall_face", (faceH - 1 - wall.face) * faceW + (x % faceW), x * T, y * T))
               continue;

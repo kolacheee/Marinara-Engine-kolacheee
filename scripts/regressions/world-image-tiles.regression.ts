@@ -347,28 +347,50 @@ try {
   );
   refused(withEdges({ in_wall_top: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 1 }] }), /its block is 4 by 4/, "a top");
   assert.ok(WORLD_PATTERN_TILE_IDS.includes("in_wall_face") && WORLD_IMAGE_ONLY_TILE_IDS.includes("in_wall_top"));
-  // A wooded look's trees: a block of eight, four by two; three to a cell and one toward each side that meets
-  // other ground, trunks within the cell or just past its side, the same every time.
+  // A wooded look's trees: a block of eight, four by two; a staggered lattice, six to a cell inside the wood,
+  // none where the floor stops (a tree's base and the points beside it above all on it), the same every time.
   assert.deepEqual(WORLD_TILE_BLOCKS.treeline_forest, [4, 2]);
   assert.ok(WORLD_IMAGE_ONLY_TILE_IDS.includes("treeline_bamboo"));
   const wood = (x: number, y: number) => x >= 0 && y >= 0 && x < 3 && y < 3;
-  assert.equal(worldTreelineTrees(wood, 1, 1).length, 3, "inside the wood");
-  const edgeTrees = worldTreelineTrees(wood, 0, 0);
-  assert.equal(edgeTrees.length, 5, "at its corner, two more toward the open sides");
-  assert.deepEqual(worldTreelineTrees(wood, 0, 0), edgeTrees);
-  for (const tree of edgeTrees) {
+  assert.equal(worldTreelineTrees(wood, 1, 1).length, 6, "inside the wood");
+  // A floor curving away at the wood's corner: fewer trees, all well inside it.
+  const curved = (x: number, y: number) => wood(x, y) && Math.hypot(x - 3, y - 3) < 2.5;
+  const edgeTrees = worldTreelineTrees(curved, 1, 1);
+  assert.ok(edgeTrees.length > 0 && edgeTrees.length < 6, "at its curved edge, fewer");
+  assert.deepEqual(worldTreelineTrees(curved, 1, 1), edgeTrees);
+  for (const tree of [...edgeTrees, ...worldTreelineTrees(wood, 1, 1)]) {
     assert.ok(tree.pick >= 0 && tree.pick < 8 && Number.isInteger(tree.pick));
-    assert.ok(tree.x > -0.5 && tree.x < 1.5 && tree.y > -0.5 && tree.y < 1.5, "near its cell");
+    assert.ok(tree.x >= 1 && tree.x < 2 && tree.y >= 1 && tree.y < 2, "in its cell");
   }
+  for (const tree of edgeTrees)
+    assert.ok(curved(tree.x - 6 / 48, tree.y - 6 / 48) && curved(tree.x + 6 / 48, tree.y - 6 / 48));
+  const treeRows = [...new Set(worldTreelineTrees(wood, 1, 1).map((tree) => Math.round((tree.y * 48) / 16)))];
+  assert.equal(treeRows.length, 3, "three rows to a cell, 16 pixels apart");
   // Seen three-quarters on: the face a row to each cell up from the floor (two here), the top elsewhere.
-  const rooms = ["#####", "##.##", "#...#", "##D##"].join("");
-  const wallAt = (x: number, y: number) => worldInteriorWallPiece(rooms, 5, 4, x, y);
-  assert.deepEqual(wallAt(2, 0), { face: 0, top: 1 | 2 | 8 }, "above the floor");
-  assert.deepEqual(wallAt(1, 1), { face: 0, top: 1 | 8 }, "above the floor, lower down");
-  assert.deepEqual(wallAt(1, 0), { face: 1, top: 1 | 2 | 4 | 8 }, "a cell up from the floor");
-  assert.deepEqual(wallAt(0, 0), { face: null, top: 1 | 2 | 4 | 8 }, "a corner: beyond counts as wall");
-  assert.deepEqual(wallAt(0, 2), { face: null, top: 1 | 4 | 8 }, "a side wall");
-  assert.deepEqual(wallAt(1, 3), { face: null, top: 4 | 8 }, "the bottom row: floor and doorway beside it");
+  const rooms = ["#######", "#######", "#.....#", "###D###"].join("");
+  const wallAt = (x: number, y: number) => worldInteriorWallPiece(rooms, 7, 4, x, y);
+  assert.deepEqual(wallAt(2, 1), { face: 0, top: 1 | 2 | 8, divider: false }, "above the floor");
+  assert.deepEqual(wallAt(2, 0), { face: 1, top: 1 | 2 | 4 | 8, divider: false }, "a cell up from the floor");
+  assert.deepEqual(wallAt(0, 0), { face: null, top: 1 | 2 | 4 | 8, divider: false }, "a corner");
+  assert.deepEqual(wallAt(0, 2), { face: null, top: 1 | 4 | 8, divider: false }, "a side wall");
+  assert.deepEqual(
+    wallAt(2, 3),
+    { face: null, top: 4 | 8, divider: false },
+    "the bottom row: floor and doorway beside it",
+  );
+  // Two rooms: the wall between them a divider where floor or a doorway is south of it, its top elsewhere;
+  // one cell of wall standing over floor (no run across, nothing above) is a divider too.
+  const two = ["#######", "#######", "#..#..#", "#..d..#", "#.....#", "#######"].join("");
+  const twoAt = (x: number, y: number) => worldInteriorWallPiece(two, 7, 6, x, y);
+  assert.deepEqual(twoAt(3, 2), { face: null, top: 1, divider: true }, "above the doorway");
+  // Where it meets the back wall, its top runs on up through it, between the two rooms' faces.
+  assert.deepEqual(twoAt(3, 1), { face: null, top: 1 | 2 | 4 | 8, divider: false }, "meeting the back wall");
+  assert.deepEqual([twoAt(2, 1).face, twoAt(2, 0).face, twoAt(4, 1).face], [0, 1, 0], "each room's face");
+  const pillar = ["#####", "#...#", "#.#.#", "#...#", "##D##"].join("");
+  assert.deepEqual(worldInteriorWallPiece(pillar, 5, 5, 2, 2), { face: null, top: 0, divider: true }, "a pillar");
+  // A cave's rock has a face wherever floor is south of it.
+  assert.deepEqual(worldInteriorWallPiece(pillar, 5, 5, 2, 2, false), { face: 0, top: 0, divider: false });
+  assert.ok(WORLD_PATTERN_TILE_IDS.includes("in_wall_divider") && WORLD_IMAGE_ONLY_TILE_IDS.includes("in_bed_bunk"));
   // Where each piece lies: the hedge's straight and curved pieces a cell each, its diagonal ones and the
   // slanting bridge's two cells by two; a smaller block lacks the pieces past it.
   assert.deepEqual(worldTilePiece("hedge_joined", 5, [4, 23]), { x: 1, y: 1, w: 1, h: 1 });

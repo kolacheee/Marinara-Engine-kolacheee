@@ -27,6 +27,7 @@ import {
   WORLD_INTERIOR_BACK_WALL,
   WORLD_INTERIOR_DECOR_COUNT,
   WORLD_WALL_FURNITURE,
+  WORLD_BED_FURNITURE,
   WORLD_INTERIOR_RUG_SIZES,
   WORLD_STARTER_KITS,
   WORLD_TILE_IDS,
@@ -41,6 +42,8 @@ import {
   worldInteriorPeopleAt,
   worldInteriorUse,
   worldInteriorWords,
+  worldInteriorWallPiece,
+  worldBeds,
   worldTown,
   worldTownWhere,
   worldEditsEmpty,
@@ -101,14 +104,14 @@ function checkRooms(town: WorldTown, interior: WorldInterior, label: string): vo
   const pieces = new Map<number, string>();
   for (const piece of interior.furniture) {
     assert.ok(WORLD_FURNITURE.includes(piece.kind), `${label}: a known piece`);
-    // On the floor, or a hearth, shelves, a bookcase or a lamp against a back wall on its face.
-    const onFace =
-      WORLD_WALL_FURNITURE.includes(piece.kind) && at(piece.x, piece.y) === "#" && at(piece.x, piece.y + 1) === ".";
-    assert.ok(at(piece.x, piece.y) === "." || onFace, `${label}: ${piece.kind} on the floor or a wall's face`);
+    // On the floor (a hearth, shelves, a bookcase or a lamp on the row before a back wall, drawn back
+    // against it).
+    assert.equal(at(piece.x, piece.y), ".", `${label}: ${piece.kind} on the floor`);
     const cell = piece.y * width + piece.x;
     assert.ok(!pieces.has(cell), `${label}: two pieces in one place`);
     pieces.set(cell, piece.kind);
   }
+  const beds = worldBeds(interior.furniture);
   // Reachable from the step inside the way out, over floor nothing stands on.
   const seen = new Set<number>();
   const queue = [(interior.door.y - 1) * width + interior.door.x];
@@ -146,21 +149,34 @@ function checkRooms(town: WorldTown, interior: WorldInterior, label: string): vo
   for (const [id, seat] of Object.entries(interior.seats)) {
     assert.equal(at(seat.x, seat.y), ".", `${label}: ${id}'s spot is on the floor`);
     const on = pieces.get(seat.y * width + seat.x);
-    assert.ok(on === undefined || on === "bed", `${label}: ${id} stands on nothing but a bed`);
-    // A bed two cells long is reached at its head or its foot.
-    const foot = pieces.get(seat.y * width + seat.x) === "bed" && pieces.get((seat.y + 1) * width + seat.x) === "bed";
     assert.ok(
-      reachable(seat.x, seat.y) || (foot && reachable(seat.x, seat.y + 1)),
+      on === undefined || WORLD_BED_FURNITURE.includes(on as never),
+      `${label}: ${id} stands on nothing but a bed`,
+    );
+    // A bed is reached at any cell of it.
+    const bed = beds.find((each) => each.cells.some((cell) => cell.x === seat.x && cell.y === seat.y));
+    assert.ok(
+      reachable(seat.x, seat.y) || bed?.cells.some((cell) => reachable(cell.x, cell.y)),
       `${label}: ${id}'s spot is reachable`,
     );
   }
+  // Beds whole: a double bed two cells across and two long, a bunk bed two long, two never sharing a spot.
+  for (const bed of beds) {
+    if (bed.kind === "bed_double") assert.ok(bed.w === 2 && bed.h === 2, `${label}: a whole double bed`);
+    if (bed.kind === "bed_bunk") assert.equal(bed.h, 2, `${label}: a whole bunk bed`);
+  }
+  const spots = Object.values(interior.seats).map((seat) => `${seat.x},${seat.y}`);
+  assert.equal(new Set(spots).size, spots.length, `${label}: one person to a spot`);
   // Each resident has a bed and each worker a spot, up to the most a building seats (eight of each).
   const building = town.buildings.find((each) => each.id === interior.buildingId)!;
   const residents = building.people.filter((id) => town.homeOf[id] === building.id).slice(0, 8);
   for (const id of residents) {
     const seat = interior.seats[id];
     assert.ok(seat, `${label}: ${id} has a bed`);
-    assert.equal(pieces.get(seat.y * width + seat.x), "bed", `${label}: ${id} sleeps in a bed`);
+    assert.ok(
+      WORLD_BED_FURNITURE.includes(pieces.get(seat.y * width + seat.x) as never),
+      `${label}: ${id} sleeps in a bed`,
+    );
   }
   const workers = building.people
     .filter((id) => town.workOf[id] === building.id || (town.homeOf[id] !== building.id && building.kind !== "home"))
@@ -175,6 +191,8 @@ try {
   const pinned = createHash("sha256");
   let buildings = 0;
   let decorations = 0;
+  const kinds = new Set<string>();
+  let dividers = 0;
   for (const [kit, version] of WORLD_STARTER_KITS.flatMap((kit) =>
     [2, WORLD_GENERATOR_VERSION].map((version) => [kit, version] as const),
   )) {
@@ -206,6 +224,18 @@ try {
           );
           decorations++;
         }
+        for (const piece of interior.furniture) kinds.add(`${interior.use}:${piece.kind}`);
+        // Two rooms side by side: the wall between them a divider seen from the room before it, never
+        // part of a back wall.
+        for (let y = 0; y < interior.height; y++)
+          for (let x = 0; x < interior.width; x++)
+            if (interior.ground[y * interior.width + x] === "#") {
+              const piece = worldInteriorWallPiece(interior.ground, interior.width, interior.height, x, y);
+              if (piece.divider) {
+                dividers++;
+                assert.equal(piece.face, null, `${label}: a divider has no back wall's face`);
+              }
+            }
         // Rugs wholly on open floor, none on another; one by the way in.
         const rugged = new Set<number>();
         for (const rug of interior.rugs)
@@ -234,9 +264,33 @@ try {
   }
   assert.ok(buildings > 1000, "many buildings checked");
   assert.ok(decorations > buildings, "walls are decorated");
+  assert.ok(dividers > buildings / 2, "rooms divided");
+  for (const kind of ["home:bed_double", "guard:bed_bunk", "clinic:bed", "study:bookshelf"])
+    assert.ok(kinds.has(kind), `laid out somewhere: ${kind}`);
+  // A tavern that is an inn sleeps travellers: a room to sleep in, with a double bed and bunk beds.
+  {
+    let checked = false;
+    for (const [game, settlement] of WORLD_STARTER_KITS.flatMap((kit) => {
+      const game = gameOf(kit.id, 31, WORLD_GENERATOR_VERSION);
+      return game.world.places.filter((place) => place.rank !== undefined).map((place) => [game, place] as const);
+    })) {
+      if (checked) break;
+      const town = worldTown(game, settlement.id)!;
+      const tavern = town.buildings.find((each) => layOutInterior(game, town, each).use === "tavern");
+      if (!tavern) continue;
+      const inn = layOutInterior(game, town, { ...tavern, role: "innkeeper", name: "The Harbour Inn" });
+      checkRooms(town, inn, "an inn");
+      assert.equal(inn.rooms[1]?.use, "sleep", "an inn has a room to sleep in");
+      const kindsIn = new Set(worldBeds(inn.furniture).map((bed) => bed.kind));
+      assert.ok(kindsIn.has("bed_double") && kindsIn.has("bed_bunk"), "an inn's beds");
+      checked = true;
+      break;
+    }
+    assert.ok(checked, "a tavern to make an inn of");
+  }
   assert.equal(
     `${WORLD_INTERIOR_VERSION}:${pinned.digest("hex").slice(0, 16)}`,
-    "2:edbc8bd312023af3",
+    "2:6bede09af0591e27",
     "the rooms changed: bump WORLD_INTERIOR_VERSION and pin the new digest",
   );
 
@@ -682,14 +736,13 @@ try {
       assert.match(answer.json().error, pattern, label);
     };
     await refused([{ ...sized, furniture: [{ x: 0, y: 0, kind: "crate" }] }], /not on the floor/, "on a wall");
-    // A bookcase may stand against the back wall on its face; a crate may not.
+    // A bookcase stands on the floor before the back wall, never on its face.
     const face = { x: spot.x, y: spot.y - 1 };
-    assert.equal(
-      (await save([{ ...sized, furniture: [{ ...face, kind: "bookshelf" }] }])).statusCode,
-      200,
+    await refused(
+      [{ ...sized, furniture: [{ ...face, kind: "bookshelf" }] }],
+      /not on the floor/,
       "a bookcase on the face",
     );
-    await refused([{ ...sized, furniture: [{ ...face, kind: "crate" }] }], /not on the floor/, "a crate on the face");
     await refused([{ ...sized, furniture: [{ ...entry, kind: "crate" }] }], /stands in the way in/, "in the way in");
     await refused(
       [

@@ -25,16 +25,22 @@ export const WORLD_FURNITURE = Object.freeze([
   "plant",
   "lamp",
   "longtable",
+  "bed_double",
+  "bed_bunk",
 ] as const);
 export type WorldFurniture = (typeof WORLD_FURNITURE)[number];
 
-/** Furniture that may stand against a back wall on its face (the wall cell with floor below it), its
- *  base on the floor line, rising over the wall behind it: a hearth, shelves, a bookcase, a lamp. It may
- *  stand on the floor as well. */
+/** Furniture that stands against a back wall (on the floor row before it, drawn back against the wall's
+ *  face and rising over it): a hearth, shelves, a bookcase, a lamp. It may stand elsewhere on the floor as
+ *  well. */
 export const WORLD_WALL_FURNITURE: readonly WorldFurniture[] = Object.freeze(["hearth", "shelf", "bookshelf", "lamp"]);
 
 /** Furniture two cells across where two of it stand side by side (a pack draws the pair as one piece). */
 export const WORLD_WIDE_FURNITURE: readonly WorldFurniture[] = Object.freeze(["table", "desk", "counter", "longtable"]);
+
+/** Beds: a bed and a bunk bed are a cell across and two long (head to the north), a double bed two cells
+ *  across and two long (worldBeds). A bunk bed and a double bed each sleep two. */
+export const WORLD_BED_FURNITURE: readonly WorldFurniture[] = Object.freeze(["bed", "bed_double", "bed_bunk"]);
 
 /** What a building's rooms are furnished as (worldgen W13). */
 export const WORLD_INTERIOR_USES = Object.freeze([

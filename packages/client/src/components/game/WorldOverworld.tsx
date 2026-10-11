@@ -363,18 +363,38 @@ export function WorldOverworld({
       for (const drawPieces of spilling) drawPieces();
     } else if (roads.size) edgePass("road", (x, y) => roads.has(y * width + x));
     drawTile.setCellSeason(undefined);
-    // The trees on wooded looks that have them, with the markers: never on a road or a place.
+    // The trees on wooded looks that have them, with the markers: on the look's floor as drawn through its
+    // fringe (so they follow its curved edge), never on a road or a place.
     const placed = new Set(world.places.map((place) => place.at.y * width + place.at.x));
     const trees: Array<{ x: number; y: number; look: string; pick: number }> = [];
-    for (let y = 0; y < height; y++)
-      for (let x = 0; x < width; x++) {
-        const look = looks[cells[y * width + x]!]!;
-        if (!WORLD_TREELINE_LOOKS.includes(look as never) || !drawTile.hasPiece(`treeline_${look}`, 0)) continue;
-        if (roads.has(y * width + x) || placed.has(y * width + x)) continue;
-        const isLook = (cx: number, cy: number) =>
-          cx < 0 || cy < 0 || cx >= width || cy >= height || looks[cells[cy * width + cx]!] === look;
-        for (const tree of worldTreelineTrees(isLook, x, y)) trees.push({ ...tree, look });
-      }
+    for (const look of treeLooks) {
+      if (!drawnLook.includes(look)) continue;
+      const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
+      const fringeRows = drawTile.fringeRows(look);
+      const onFloor = (px: number, py: number) => {
+        const [cx, cy] = [Math.floor(px), Math.floor(py)];
+        if (cx < 0 || cy < 0 || cx >= width || cy >= height) return false;
+        if (roads.has(cy * width + cx) || placed.has(cy * width + cx)) return false;
+        if (isLook(cx, cy) && inner(cx, cy)) return true;
+        // The corner whose fringe piece the point lies in.
+        const [kx, ky] = [Math.round(px), Math.round(py)];
+        const mask = worldEdgeMask(isLook, kx, ky, width, height);
+        if (mask === 15) return true;
+        if (mask === 0) return false;
+        const piece = worldEdgePiece(isLook, kx, ky, width, height, fringeRows);
+        return drawTile.fringeCovers(look, piece, cellNoise(kx, ky)(79), px - kx + 0.5, py - ky + 0.5);
+      };
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          // The look's cells and those its fringe reaches onto.
+          let near = false;
+          for (let dy = -1; dy <= 1 && !near; dy++)
+            for (let dx = -1; dx <= 1 && !near; dx++)
+              near = x + dx >= 0 && y + dy >= 0 && x + dx < width && y + dy < height && isLook(x + dx, y + dy);
+          if (!near) continue;
+          for (const tree of worldTreelineTrees(onFloor, x, y)) trees.push({ ...tree, look });
+        }
+    }
     return { canvas, trees };
   }, [byId, drawTile, game, heldCells, kit.travel, resolution, world]);
   const markers = useMemo(() => {

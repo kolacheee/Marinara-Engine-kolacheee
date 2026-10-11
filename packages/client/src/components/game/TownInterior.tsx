@@ -8,10 +8,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
+  WORLD_BED_FURNITURE,
   WORLD_INTERIOR_DECOR_COUNT,
   WORLD_INTERIOR_RUG_SIZES,
+  WORLD_WALL_FURNITURE,
   WORLD_WIDE_FURNITURE,
-  bedFoot,
+  worldBeds,
   worldInteriorPeopleAt,
   worldInteriorWallPiece,
   type WorldPerson,
@@ -98,15 +100,20 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
     for (let y = 0; y < interior.height; y++) {
       for (let x = 0; x < interior.width; x++) {
         const c = interior.ground[y * interior.width + x];
-        // A wall's face toward the room (its row by how far up from the floor, its column by position) and
-        // its top, where the pack has them; else the one wall tile.
+        // A wall's face toward the room (its row by how far up from the floor, its column by position), a
+        // divider's face between two rooms (else as a face against the floor), and its top, where the pack
+        // has them; else the one wall tile.
         if (c === "#") {
           const wall = worldInteriorWallPiece(interior.ground, interior.width, interior.height, x, y);
           const [w, h] = drawTile.blockSize("in_wall_face") ?? [0, 0];
+          const [dw] = drawTile.blockSize("in_wall_divider") ?? [0];
+          const face = (row: number) =>
+            row < h && drawTile.piece(ctx, "in_wall_face", (h - 1 - row) * w + (x % w), x * T, y * T);
           if (
-            wall.face !== null && wall.face < h
-              ? drawTile.piece(ctx, "in_wall_face", (h - 1 - wall.face) * w + (x % w), x * T, y * T)
-              : drawTile.piece(ctx, "in_wall_top", wall.top, x * T, y * T)
+            (wall.divider && dw > 0 && drawTile.piece(ctx, "in_wall_divider", x % dw, x * T, y * T)) ||
+            (wall.divider && face(0)) ||
+            (wall.face !== null && face(wall.face)) ||
+            ((wall.face === null || wall.face >= h) && drawTile.piece(ctx, "in_wall_top", wall.top, x * T, y * T))
           )
             continue;
         }
@@ -137,19 +144,41 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
     for (const { x, y, pick } of interior.decor)
       for (let step = 0; step < WORLD_INTERIOR_DECOR_COUNT; step++)
         if (drawTile(ctx, `in_wall_deco${(pick + step) % WORLD_INTERIOR_DECOR_COUNT}`, x * T, y * T)) break;
-    // Furniture back to front, so a tall piece rises over the wall behind it and not over what stands
-    // before it; a pair side by side drawn as one piece two cells across where the pack has one (a long
-    // table drawn as a table where it has none).
-    const standing = interior.furniture.filter((piece) => piece.kind !== "rug").sort((a, b) => a.y - b.y || a.x - b.x);
+    // Furniture back to front by where each stands (its base), so a tall piece rises over the wall behind
+    // it and not over what stands before it. A hearth, shelves, a bookcase or a lamp on the floor row
+    // before a wall stands back against it, its base 12 pixels below the wall's foot. A pair side by side
+    // is drawn as one piece two cells across where the pack has one (a long table drawn as a table where
+    // it has none).
+    const againstWall = (piece: { x: number; y: number; kind: string }) =>
+      WORLD_WALL_FURNITURE.includes(piece.kind as never) &&
+      interior.ground[(piece.y - 1) * interior.width + piece.x] === "#";
+    const lift = T - 12;
+    const base = (piece: { x: number; y: number; kind: string }) => (piece.y + 1) * T - (againstWall(piece) ? lift : 0);
+    const standing = interior.furniture
+      .filter((piece) => piece.kind !== "rug")
+      .sort((a, b) => base(a) - base(b) || a.x - b.x);
     const paired = new Set<(typeof standing)[number]>();
+    const beds = worldBeds(interior.furniture);
     for (const piece of standing) {
       if (paired.has(piece)) continue;
-      // A bed lies head to the north from its head cell over its foot (bedFoot), drawn from its head down.
-      if (piece.kind === "bed") {
-        if (bedFoot(interior.furniture, piece)) continue;
-        const [, h] = drawTile.blockSize("in_bed") ?? [1, 1];
-        if (!drawTile(ctx, "in_bed", piece.x * T, (piece.y + h - 1) * T))
-          plain(PLAIN.furniture!, piece.x * T, piece.y * T, 3);
+      // A bed lies head to the north, drawn whole from its head's west cell down (worldBeds): a double bed
+      // two cells across, a bunk bed, else as beds a cell across.
+      if (WORLD_BED_FURNITURE.includes(piece.kind)) {
+        const bed = beds.find((each) => each.x === piece.x && each.y === piece.y);
+        if (!bed) continue;
+        const bottom = (bed.y + bed.h - 1) * T;
+        const whole =
+          bed.kind === "bed_double"
+            ? bed.w === 2 &&
+              bed.h === 2 &&
+              drawTile(ctx, "in_bed_double", bed.x * T + T / 2, bottom, drawTile.pickWide("in_bed_double", 2) ?? 0)
+            : bed.kind === "bed_bunk" && bed.h === 2 && drawTile(ctx, "in_bed_bunk", bed.x * T, bottom);
+        if (whole) continue;
+        for (let dx = 0; dx < bed.w; dx++) {
+          const [, h] = drawTile.blockSize("in_bed") ?? [1, 1];
+          if (!drawTile(ctx, "in_bed", (bed.x + dx) * T, (bed.y + Math.min(h, bed.h) - 1) * T))
+            plain(PLAIN.furniture!, (bed.x + dx) * T, bed.y * T, 3);
+        }
         continue;
       }
       const ids = piece.kind === "longtable" ? ["in_longtable", "in_table"] : [`in_${piece.kind}`];
@@ -164,7 +193,13 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
           paired.add(twin);
           return true;
         }
-        return drawTile(ctx, id, piece.x * T, piece.y * T, drawTile.pickWide(id, 1) ?? 0);
+        return drawTile(
+          ctx,
+          id,
+          piece.x * T,
+          piece.y * T - (againstWall(piece) ? lift : 0),
+          drawTile.pickWide(id, 1) ?? 0,
+        );
       });
       if (!drawn) plain(PLAIN.furniture!, piece.x * T, piece.y * T, 3);
     }
