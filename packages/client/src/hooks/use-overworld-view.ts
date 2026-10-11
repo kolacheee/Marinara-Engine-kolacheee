@@ -17,6 +17,7 @@ import {
   OVERWORLD_SECONDS_PER_GAME_MINUTE,
   tilePackPixels,
   CHARACTER_FACINGS,
+  worldTilePiece,
   worldWholeEdgeBlocks,
   WORLD_PATTERN_TILE_IDS,
   WORLD_GROUND_LOOK_FALLBACK,
@@ -121,6 +122,8 @@ export interface TilePackLibrary {
   builtInDungeons?: string[];
   tileIds?: string[];
   tileBlocks?: Record<string, [number, number]>;
+  /** Every size a block tile's variant may be, the whole block first. */
+  tileBlockSizes?: Record<string, Array<[number, number]>>;
   selection: Record<string, string>;
 }
 
@@ -176,8 +179,11 @@ export type OverworldTileDrawer = ((
     lying?: boolean,
   ) => boolean;
   /** Draws one piece of a block tile (WORLD_TILE_BLOCKS: a joined hedge, a bridge along its run) on the
-   *  cell at (x, y), the variant by `pick`; false when the pack has no such block. */
+   *  cell at (x, y), the variant by `pick`, a piece wider than a cell centred on it (worldTilePiece); false
+   *  when the pack has no such block or that variant lacks the piece. */
   piece: (ctx: CanvasRenderingContext2D, id: string, piece: number, x: number, y: number, pick?: number) => boolean;
+  /** Whether `piece` would draw that piece. */
+  hasPiece: (id: string, piece: number, pick?: number) => boolean;
   /** Whether the pack has edge tiles for a terrain (water, road, street, square). */
   hasEdges: (terrain: WorldEdgeTerrain) => boolean;
   /** Draws what follows in a season of its own (a place the story holds at one, Capability API 1.351)
@@ -393,20 +399,29 @@ export function useOverworldAtlas(
         ctx.drawImage(sheet, sx, sy, fw, fh, x + (OVERWORLD_TILE - dw) / 2, y + OVERWORLD_TILE - dh, dw, dh);
         return true;
       };
-      draw.piece = (ctx, id, piece, x, y, pick = 0) => {
+      // A piece the pack left clear (a block's spare slot) counts as one it lacks, so the cell falls back.
+      const pieceAt = (id: string, piece: number, pick: number) => {
         const block = variantOf(ready?.tiles[id], pick);
-        if (!block || !ready?.canvas || piece < 0 || piece >= block.w * block.h) return false;
-        const [col, row] = [piece % block.w, Math.floor(piece / block.w)];
+        const at = block && worldTilePiece(id, piece, [block.w, block.h]);
+        if (!block || !at || !ready?.canvas) return null;
+        const [sx, sy] = [block.sx + at.x * size, block.sy + at.y * size];
+        return clearPiece(ready.canvas, sx, sy, at.w * size, at.h * size) ? null : { block, at };
+      };
+      draw.hasPiece = (id, piece, pick = 0) => Boolean(ready?.canvas && pieceAt(id, piece, pick));
+      draw.piece = (ctx, id, piece, x, y, pick = 0) => {
+        const found = pieceAt(id, piece, pick);
+        if (!found || !ready?.canvas) return false;
+        const { block, at } = found;
         ctx.drawImage(
           ready.canvas,
-          block.sx + col * size,
-          block.sy + row * size,
-          size,
-          size,
-          x,
-          y,
-          OVERWORLD_TILE,
-          OVERWORLD_TILE,
+          block.sx + at.x * size,
+          block.sy + at.y * size,
+          at.w * size,
+          at.h * size,
+          x - ((at.w - 1) * OVERWORLD_TILE) / 2,
+          y - ((at.h - 1) * OVERWORLD_TILE) / 2,
+          at.w * OVERWORLD_TILE,
+          at.h * OVERWORLD_TILE,
         );
         return true;
       };
@@ -488,6 +503,7 @@ export function useOverworldAtlas(
     draw.sprite = () => null;
     draw.character = () => false;
     draw.piece = () => false;
+    draw.hasPiece = () => false;
     draw.hasEdges = () => false;
     draw.hasFringe = () => false;
     draw.fringe = () => false;
@@ -530,6 +546,21 @@ function imageFingerprint(pack: ImageTilePack): string {
 function fitInside(width: number, height: number, boxWidth: number, boxHeight: number): [number, number] {
   const scale = Math.min(boxWidth / width, boxHeight / height);
   return [width * scale, height * scale];
+}
+
+/** Whether a piece of an atlas is wholly clear, worked out once a piece. */
+const clearPieces = new WeakMap<HTMLCanvasElement, Map<string, boolean>>();
+function clearPiece(canvas: HTMLCanvasElement, sx: number, sy: number, w: number, h: number): boolean {
+  let known = clearPieces.get(canvas);
+  if (!known) clearPieces.set(canvas, (known = new Map()));
+  const key = `${sx},${sy},${w},${h}`;
+  let clear = known.get(key);
+  if (clear === undefined) {
+    const pixels = canvas.getContext("2d")?.getImageData(sx, sy, w, h).data;
+    clear = Boolean(pixels) && pixels!.every((value, index) => index % 4 !== 3 || value === 0);
+    known.set(key, clear);
+  }
+  return clear;
 }
 
 interface ImageAtlas {

@@ -16,6 +16,7 @@ import {
   worldTownDoor,
   worldTownMinutes,
   worldTownPath,
+  worldTownReach,
   type GameWorld,
   type WorldTown,
 } from "../../packages/shared/src/index.js";
@@ -131,6 +132,27 @@ assert.ok(
 assert.ok(
   overBridge.every((cell) => river.ground[cell.y * 4 + cell.x] !== "~"),
   "never through water",
+);
+// A bridge slanting across the river, its cells meeting at their corners: walked corner to corner.
+const slant = townOf(["sb~~~.", "~~b~~.", "~~~b~.", "~~~sss"], [house("h1", 5, 0, { x: 5, y: 3 })]);
+assert.deepEqual(
+  worldTownPath(slant, "square", "h1"),
+  [
+    { x: 1, y: 0 },
+    { x: 2, y: 1 },
+    { x: 3, y: 2 },
+    { x: 3, y: 3 },
+    { x: 4, y: 3 },
+    { x: 5, y: 3 },
+  ],
+  "down the slanting bridge, corner to corner",
+);
+assert.ok(worldTownReach(slant).has(3 * 6 + 5), "its far bank is reached");
+// Not across water corner to corner off a bridge, nor between two bridge cells already joined side by side.
+assert.equal(
+  worldTownPath(townOf(["s~", "~s"], [house("h1", 1, 0, { x: 1, y: 1 })]), "square", "h1")!.length,
+  2,
+  "no slant off a bridge: the boxed-in way",
 );
 const hedged = townOf(["sphs", "sphs", "ssss", "s..."], [house("h1", 2, 3, { x: 3, y: 0 })]);
 const roundHedge = worldTownPath(hedged, "square", "h1")!;

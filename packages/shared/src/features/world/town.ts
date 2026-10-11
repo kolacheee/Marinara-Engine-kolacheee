@@ -640,9 +640,9 @@ export function worldTownDoorCell(
   return { x: x + Math.min(1, w - 1), y: y + h };
 }
 
-/** The cells a walk reaches from the middle of the square, four ways, over walkable ground (WORLD_TOWN_WALKABLE:
- *  open ground, street, square, kept clear, field, path, bridge), never through a building or a stall; each
- *  door's cell counts as reached when a walk gets to it. */
+/** The cells a walk reaches from the middle of the square, four ways (and corner to corner along a slanting
+ *  bridge), over walkable ground (WORLD_TOWN_WALKABLE: open ground, street, square, kept clear, field, path,
+ *  bridge), never through a building or a stall; each door's cell counts as reached when a walk gets to it. */
 export function worldTownReach(
   town: Pick<WorldTown, "width" | "height" | "ground" | "buildings" | "stalls" | "square">,
 ): Set<number> {
@@ -658,12 +658,24 @@ export function worldTownReach(
   while (queue.length) {
     const cell = queue.shift()!;
     const [x, y] = [cell % width, Math.floor(cell / width)];
-    for (const [nx, ny] of [
-      [x + 1, y],
-      [x - 1, y],
-      [x, y + 1],
-      [x, y - 1],
-    ] as const) {
+    // A bridge slanting across the water (its cells meeting at a corner, neither cell between a bridge) is
+    // walked corner to corner, as it is drawn.
+    const bridgeAt = (bx: number, by: number) =>
+      bx >= 0 && by >= 0 && bx < width && by < height && town.ground[by * width + bx] === "b";
+    const slants =
+      town.ground[cell] === "b"
+        ? (
+            [
+              [1, -1],
+              [1, 1],
+              [-1, 1],
+              [-1, -1],
+            ] as const
+          )
+            .filter(([dx, dy]) => bridgeAt(x + dx, y + dy) && !bridgeAt(x + dx, y) && !bridgeAt(x, y + dy))
+            .map(([dx, dy]) => [x + dx, y + dy] as const)
+        : [];
+    for (const [nx, ny] of [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1], ...slants] as const) {
       if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
       const next = ny * width + nx;
       if (reached.has(next) || blocked.has(next) || !WORLD_TOWN_WALKABLE.includes(town.ground[next]!)) continue;
@@ -804,12 +816,24 @@ function townPathOn(
     const cell = queue[head]!;
     if (cell === to) break;
     const [x, y] = [cell % width, Math.floor(cell / width)];
-    for (const [nx, ny] of [
-      [x + 1, y],
-      [x - 1, y],
-      [x, y + 1],
-      [x, y - 1],
-    ] as const) {
+    // A bridge slanting across the water (its cells meeting at a corner, neither cell between a bridge) is
+    // walked corner to corner, as it is drawn.
+    const bridgeAt = (bx: number, by: number) =>
+      bx >= 0 && by >= 0 && bx < width && by < height && town.ground[by * width + bx] === "b";
+    const slants =
+      town.ground[cell] === "b"
+        ? (
+            [
+              [1, -1],
+              [1, 1],
+              [-1, 1],
+              [-1, -1],
+            ] as const
+          )
+            .filter(([dx, dy]) => bridgeAt(x + dx, y + dy) && !bridgeAt(x + dx, y) && !bridgeAt(x, y + dy))
+            .map(([dx, dy]) => [x + dx, y + dy] as const)
+        : [];
+    for (const [nx, ny] of [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1], ...slants] as const) {
       if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
       const next = ny * width + nx;
       if (prev.has(next) || !open(next)) continue;
@@ -825,7 +849,7 @@ function townPathOn(
 }
 
 /** The way a walk across town takes, from one spot's door to another's, as the cells after the start
- *  (map editor Phase 2): the shortest four-way way on streets, the square and paths, else across open
+ *  (map editor Phase 2): the shortest four-way way (corner to corner along a slanting bridge) on streets, the square and paths, else across open
  *  ground too, never through a building, a tree, a well, water or a hedge. With no way at all (a
  *  hand layout boxed a door in) the old way: along the street the party is on, then the one it turns
  *  into. Null for a spot not in the town; empty when the two are the same. */

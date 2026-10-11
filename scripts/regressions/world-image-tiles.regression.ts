@@ -43,6 +43,11 @@ import {
   type ImageTilePack,
   type TilePack,
   WORLD_TILE_BLOCKS,
+  WORLD_HEDGE_CURVES,
+  WORLD_HEDGE_DIAGONALS,
+  worldTilePiece,
+  worldHedgePieces,
+  worldBridgePieces,
   worldBridgePiece,
   worldHedgePiece,
 } from "../../packages/shared/src/index.js";
@@ -298,20 +303,43 @@ try {
     "each look once in the fringe order",
   );
   assert.ok(WORLD_FRINGE_ORDER.indexOf("forest") > WORLD_FRINGE_ORDER.indexOf("grass"), "a forest overhangs the grass");
-  // Blocks of pieces: a joined hedge four by four, a bridge along its run (1 by 3 north to south, 3 by 1 east
-  // to west), each only that size.
+  // Blocks of pieces: a joined hedge 4 by 23 (or only its straight pieces, 4 by 4, or those and its curved
+  // corners, 4 by 5), a bridge along its run (1 by 3 north to south, 3 by 1 east to west), slanting (6 by 4)
+  // and turning (2 by 2), each only those sizes.
+  for (const h of [4, 5, 23])
+    assert.ok(
+      parseTilePack(withEdges({ hedge_joined: [{ sheet: h > 6 ? "tall" : "edges", x: 0, y: 0, w: 4, h }] })).ok,
+      `a hedge block 4 by ${h}`,
+    );
   assert.ok(
     parseTilePack(
       withEdges({
-        hedge_joined: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 4 }],
         bridge_ns: [{ sheet: "edges", x: 0, y: 0, w: 1, h: 3 }],
         bridge_ew: [{ sheet: "edges", x: 0, y: 0, w: 3, h: 1 }],
+        bridge_turn: [{ sheet: "edges", x: 0, y: 0, w: 2, h: 2 }],
       }),
     ).ok,
-    "a hedge's and a bridge's blocks",
+    "a bridge's blocks",
   );
   refused(withEdges({ bridge_ns: [{ sheet: "edges", x: 0, y: 0, w: 3, h: 1 }] }), /its block is 1 by 3/, "turned");
-  refused(withEdges({ hedge_joined: [{ sheet: "edges", x: 0, y: 0 }] }), /its block is 4 by 4/, "one cell");
+  refused(
+    withEdges({ hedge_joined: [{ sheet: "edges", x: 0, y: 0 }] }),
+    /its block is 4 by 23 or 4 by 5 or 4 by 4/,
+    "one cell",
+  );
+  refused(withEdges({ bridge_diag: [{ sheet: "edges", x: 0, y: 0, w: 3, h: 2 }] }), /its block is 6 by 4/, "small");
+  // Where each piece lies: the hedge's straight and curved pieces a cell each, its diagonal ones and the
+  // slanting bridge's two cells by two; a smaller block lacks the pieces past it.
+  assert.deepEqual(worldTilePiece("hedge_joined", 5, [4, 23]), { x: 1, y: 1, w: 1, h: 1 });
+  assert.deepEqual(worldTilePiece("hedge_joined", 18, [4, 23]), { x: 2, y: 4, w: 1, h: 1 });
+  assert.deepEqual(worldTilePiece("hedge_joined", 21, [4, 23]), { x: 2, y: 5, w: 2, h: 2 });
+  assert.deepEqual(worldTilePiece("hedge_joined", 37, [4, 23]), { x: 2, y: 21, w: 2, h: 2 });
+  assert.equal(worldTilePiece("hedge_joined", 38, [4, 23]), null);
+  assert.equal(worldTilePiece("hedge_joined", 16, [4, 4]), null);
+  assert.equal(worldTilePiece("hedge_joined", 20, [4, 5]), null);
+  assert.deepEqual(worldTilePiece("bridge_diag", 4, [6, 4]), { x: 2, y: 2, w: 2, h: 2 });
+  assert.deepEqual(worldTilePiece("bridge_turn", 3, [2, 2]), { x: 1, y: 1, w: 1, h: 1 });
+  assert.deepEqual(worldTilePiece("bridge_ew", 2, [3, 1]), { x: 2, y: 0, w: 1, h: 1 });
   // A hedge's piece by its neighbours (north 1, east 2, south 4, west 8).
   const hedges = new Set(["1,0", "1,1", "1,2", "2,1"]);
   const hedgeAt = (x: number, y: number) => hedges.has(`${x},${y}`);
@@ -325,6 +353,36 @@ try {
     [4, 1 | 2 | 4, 8, 0],
     "an end, a tee, an end the other way, a lone post",
   );
+  // Its pieces with curves and diagonals: a corner curved, a slanting run and its ends, turns from straight
+  // to diagonal and from diagonal to diagonal, and a crossing of diagonals layered from runs.
+  const grid = (rows: string[]) => (x: number, y: number) => rows[y]?.[x] === "h";
+  const corner = grid(["hh", "h."]);
+  assert.deepEqual(worldHedgePieces(corner, 0, 0), [WORLD_HEDGE_CURVES[6]!], "a curved corner, east and south");
+  assert.deepEqual(
+    worldHedgePieces(corner, 0, 0, (piece) => piece < 16),
+    [6],
+    "square where it has no curves",
+  );
+  const slant = grid(["..h", ".h.", "h.."]);
+  assert.deepEqual(
+    [worldHedgePieces(slant, 1, 1), worldHedgePieces(slant, 0, 2), worldHedgePieces(slant, 2, 0)],
+    [[20], [22], [24]],
+    "a / run, its end reaching north-east, its end reaching south-west",
+  );
+  assert.deepEqual(worldHedgePieces(grid(["h..", ".h.", "..h"]), 1, 1), [21], "a \\ run");
+  assert.deepEqual(worldHedgePieces(grid(["..h", "hh."]), 1, 1), [26], "west then north-east");
+  assert.deepEqual(worldHedgePieces(grid([".h.", ".h.", "h.."]), 1, 1), [31], "north then south-west");
+  assert.deepEqual(worldHedgePieces(grid(["..h", ".h.", "..h"]), 1, 1), [34], "north-east and south-east");
+  assert.deepEqual(worldHedgePieces(grid(["h.h", ".h.", "h.h"]), 1, 1), [20, 21], "a crossing of both runs");
+  assert.deepEqual(worldHedgePieces(grid(["h.h", ".h.", "..h"]), 1, 1), [21, 22], "a run and an end");
+  assert.deepEqual(worldHedgePieces(grid(["hh.", "...", "..."]), 1, 0), [8], "joined along its side, not slanting");
+  assert.deepEqual(worldHedgePieces(grid(["h.", "hh"]), 1, 1), [8], "a diagonal round a straight one is not one");
+  assert.deepEqual(
+    worldHedgePieces(slant, 1, 1, (piece) => piece < 20),
+    [0],
+    "straight only without diagonals",
+  );
+  assert.equal(new Set(Object.values(WORLD_HEDGE_DIAGONALS)).size, 18, "eighteen diagonal pieces");
   // A bridge's way and piece: a river running east to west crossed north to south, and the other way round.
   const town = (rows: string[]) => (x: number, y: number) => rows[y]?.[x];
   const across = town([".", "b", "b", "b", "."]);
@@ -347,8 +405,41 @@ try {
     { id: "bridge_ew", piece: 1 },
     "lone, land E-W",
   );
+  // Turning and slanting: a quarter curve where two bridge neighbours meet round a corner, a slanting run's
+  // ends and deck, and straight where the pack has no such pieces.
+  assert.deepEqual(worldBridgePieces(town(["~b~", "~bb", "~~~"]), 1, 1), [{ id: "bridge_turn", piece: 0 }], "N+E");
+  assert.deepEqual(worldBridgePieces(town(["~~~", "bb~", "~b~"]), 1, 1), [{ id: "bridge_turn", piece: 2 }], "S+W");
+  const slantingBridge = town(["~~b", "~b~", "b~~"]);
+  assert.deepEqual(
+    [
+      worldBridgePieces(slantingBridge, 0, 2),
+      worldBridgePieces(slantingBridge, 1, 1),
+      worldBridgePieces(slantingBridge, 2, 0),
+    ],
+    [[{ id: "bridge_diag", piece: 0 }], [{ id: "bridge_diag", piece: 1 }], [{ id: "bridge_diag", piece: 2 }]],
+    "a / bridge: its south-west end, deck, north-east end",
+  );
+  const backBridge = town(["b~~", "~b~", "~~b"]);
+  assert.deepEqual(
+    [worldBridgePieces(backBridge, 0, 0), worldBridgePieces(backBridge, 1, 1), worldBridgePieces(backBridge, 2, 2)],
+    [[{ id: "bridge_diag", piece: 3 }], [{ id: "bridge_diag", piece: 4 }], [{ id: "bridge_diag", piece: 5 }]],
+    "a \\ bridge from the north-west",
+  );
+  assert.deepEqual(
+    worldBridgePieces(town(["~~~", "bb~", "~~b"]), 1, 1),
+    [
+      { id: "bridge_ew", piece: 2 },
+      { id: "bridge_diag", piece: 3 },
+    ],
+    "a straight run's end, slanting on toward the south-east",
+  );
+  assert.deepEqual(
+    worldBridgePieces(slantingBridge, 1, 1, (id) => id !== "bridge_diag"),
+    [worldBridgePiece(slantingBridge, 1, 1)],
+    "straight without the slanting pieces",
+  );
   assert.ok(
-    ["hedge_joined", "bridge_ns", "bridge_ew"].every((id) => WORLD_TILE_BLOCKS[id]),
+    ["hedge_joined", "bridge_ns", "bridge_ew", "bridge_diag", "bridge_turn"].every((id) => WORLD_TILE_BLOCKS[id]),
     "listed as blocks",
   );
   // Patterns: the ground, a town's ground, streets and square, and a room's floor and walls.

@@ -80,6 +80,11 @@ try {
       "every tile id a pack may draw",
     );
     assert.deepEqual(empty.tileBlocks.bridge_ns, [1, 3]);
+    assert.deepEqual(empty.tileBlockSizes.hedge_joined, [
+      [4, 23],
+      [4, 5],
+      [4, 4],
+    ]);
     for (const set of empty.builtInDungeons as string[]) {
       const art = await app.inject({ method: "GET", url: `/api/game-tile-packs/builtin/dungeon/${set}` });
       assert.equal(art.statusCode, 200, `${set}: its art is served`);
