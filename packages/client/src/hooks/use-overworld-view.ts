@@ -119,6 +119,8 @@ export interface TilePackLibrary {
   packs: Array<{ id: string; name: string; family: string; version: number; tilePackVersion?: 1 | 2 }>;
   builtIn: string[];
   builtInDungeons?: string[];
+  tileIds?: string[];
+  tileBlocks?: Record<string, [number, number]>;
   selection: Record<string, string>;
 }
 
@@ -173,6 +175,9 @@ export type OverworldTileDrawer = ((
     frame?: number,
     lying?: boolean,
   ) => boolean;
+  /** Draws one piece of a block tile (WORLD_TILE_BLOCKS: a joined hedge, a bridge along its run) on the
+   *  cell at (x, y), the variant by `pick`; false when the pack has no such block. */
+  piece: (ctx: CanvasRenderingContext2D, id: string, piece: number, x: number, y: number, pick?: number) => boolean;
   /** Whether the pack has edge tiles for a terrain (water, road, street, square). */
   hasEdges: (terrain: WorldEdgeTerrain) => boolean;
   /** Draws what follows in a season of its own (a place the story holds at one, Capability API 1.351)
@@ -388,6 +393,23 @@ export function useOverworldAtlas(
         ctx.drawImage(sheet, sx, sy, fw, fh, x + (OVERWORLD_TILE - dw) / 2, y + OVERWORLD_TILE - dh, dw, dh);
         return true;
       };
+      draw.piece = (ctx, id, piece, x, y, pick = 0) => {
+        const block = variantOf(ready?.tiles[id], pick);
+        if (!block || !ready?.canvas || piece < 0 || piece >= block.w * block.h) return false;
+        const [col, row] = [piece % block.w, Math.floor(piece / block.w)];
+        ctx.drawImage(
+          ready.canvas,
+          block.sx + col * size,
+          block.sy + row * size,
+          size,
+          size,
+          x,
+          y,
+          OVERWORLD_TILE,
+          OVERWORLD_TILE,
+        );
+        return true;
+      };
       draw.hasEdges = (terrain) => Boolean(ready?.edges?.[`edge_${terrain}`]?.length);
       draw.edgeRows = (terrain) => {
         const variants = ready?.edges?.[`edge_${terrain}`];
@@ -465,6 +487,7 @@ export function useOverworldAtlas(
       (!own && Boolean(family) && (libraryPending || (Boolean(chosen) && !fetched && !fetchFailed)));
     draw.sprite = () => null;
     draw.character = () => false;
+    draw.piece = () => false;
     draw.hasEdges = () => false;
     draw.hasFringe = () => false;
     draw.fringe = () => false;

@@ -17,6 +17,8 @@ import {
   TILE_PACK_IMAGE_FILE_MAX_BYTES,
   TILE_PACK_MAX_BYTES,
   WORLD_ART_FAMILIES,
+  WORLD_TILE_BLOCKS,
+  WORLD_TILE_IDS,
   parseTilePack,
   type TilePack,
 } from "@marinara-engine/shared";
@@ -121,6 +123,9 @@ export async function gameTilePacksRoutes(app: FastifyInstance) {
     })),
     builtIn: [...WORLD_ART_FAMILIES],
     builtInDungeons: builtInDungeonSets,
+    // Every tile a pack can draw, and the ones laid out as blocks of pieces, for a maker to offer them all.
+    tileIds: WORLD_TILE_IDS,
+    tileBlocks: WORLD_TILE_BLOCKS,
     selection: await readSelection(),
   }));
 
