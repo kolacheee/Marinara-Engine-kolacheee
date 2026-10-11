@@ -232,8 +232,9 @@ export function WorldOverworld({
         const own = cells[y * width + x]!;
         drawnLook[y * width + x] = looks[waterEdges && water[own] ? (landUnder(x, y) ?? own) : own]!;
       }
-    // A wooded look with trees and a fringe: its edge cells under-painted with the ground beside them (the
-    // look's own ground then drawn through its fringe, so the forest floor ends in curves), trees after.
+    // A wooded look with trees and a fringe: its own ground only on cells wholly among it, its edge cells
+    // painted with the ground beside them, and its trees (after) standing where its fringe would curve, so
+    // no forest floor shows past the trees at its edge.
     const treeLooks = new Set<string>(
       WORLD_TREELINE_LOOKS.filter((look) => drawTile.hasPiece(`treeline_${look}`, 0) && drawTile.hasFringe(look)),
     );
@@ -276,19 +277,14 @@ export function WorldOverworld({
     // Fringes: where the pack has one for a look, the look spills past its cells onto the ground beside it,
     // taller ground drawn last so it overhangs.
     for (const look of WORLD_FRINGE_ORDER) {
-      if (!drawTile.hasFringe(look) || !drawnLook.includes(look)) continue;
+      if (!drawTile.hasFringe(look) || !drawnLook.includes(look) || treeLooks.has(look)) continue;
       const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
       // Laid out as an edge tile is: with slanted corners and curved runs where the fringe has them.
       const fringeRows = drawTile.fringeRows(look);
       for (let y = 0; y <= height; y++)
         for (let x = 0; x <= width; x++) {
           const mask = worldEdgeMask(isLook, x, y, width, height);
-          // A wooded look under-painted at its edge has its own ground drawn whole at the corners there too.
-          const whole =
-            treeLooks.has(look) &&
-            mask === 15 &&
-            !(inner(x - 1, y - 1) && inner(x, y - 1) && inner(x - 1, y) && inner(x, y));
-          if (mask === 0 || (mask === 15 && !whole)) continue;
+          if (mask === 0 || mask === 15) continue;
           inSeason(x, y);
           drawTile.fringe(
             ctx,

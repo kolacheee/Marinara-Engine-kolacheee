@@ -44,6 +44,7 @@ import {
   worldInteriorWords,
   worldInteriorWallPiece,
   worldBeds,
+  worldInteriorSprites,
   worldTown,
   worldTownWhere,
   worldEditsEmpty,
@@ -192,6 +193,7 @@ try {
   let buildings = 0;
   let decorations = 0;
   const kinds = new Set<string>();
+  const drawnAs = new Set<string>();
   let dividers = 0;
   for (const [kit, version] of WORLD_STARTER_KITS.flatMap((kit) =>
     [2, WORLD_GENERATOR_VERSION].map((version) => [kit, version] as const),
@@ -225,6 +227,28 @@ try {
           decorations++;
         }
         for (const piece of interior.furniture) kinds.add(`${interior.use}:${piece.kind}`);
+        // Drawn as: every piece once, a chair facing the table or desk it is at, back to front.
+        const sprites = worldInteriorSprites(interior);
+        const kindAt = new Map(interior.furniture.map((piece) => [`${piece.x},${piece.y}`, piece.kind]));
+        let covered = 0;
+        for (const sprite of sprites) {
+          drawnAs.add(sprite.ids[0]!);
+          covered += sprite.w;
+          const facing = /^in_chair_(right|left|down|up)$/u.exec(sprite.ids[0]!)?.[1];
+          if (facing && facing !== "down") {
+            const [dx, dy] = { right: [1, 0], left: [-1, 0], up: [0, -1] }[facing as "right" | "left" | "up"];
+            assert.ok(
+              ["table", "longtable", "desk", "counter", "workbench"].includes(kindAt.get(`${sprite.x + dx!},${sprite.y + dy!}`)!),
+              `${label}: a chair faces what it is at`,
+            );
+          }
+        }
+        const bedCells = worldBeds(interior.furniture).reduce((n, bed) => n + bed.cells.length - bed.w, 0);
+        assert.equal(covered + bedCells, interior.furniture.length, `${label}: every piece drawn once`);
+        assert.ok(
+          sprites.every((sprite, index) => index === 0 || sprites[index - 1]!.base <= sprite.base),
+          `${label}: back to front`,
+        );
         // Two rooms side by side: the wall between them a divider seen from the room before it, never
         // part of a back wall.
         for (let y = 0; y < interior.height; y++)
@@ -265,6 +289,20 @@ try {
   assert.ok(buildings > 1000, "many buildings checked");
   assert.ok(decorations > buildings, "walls are decorated");
   assert.ok(dividers > buildings / 2, "rooms divided");
+  for (const id of [
+    "in_table_square",
+    "in_longtable_h",
+    "in_chair_left",
+    "in_chair_right",
+    "in_hearth_wide",
+    "in_bench_h",
+    "in_counter_h",
+    "in_desk_down",
+    "in_workbench_down",
+    "in_bed_double",
+    "in_bed_bunk",
+  ])
+    assert.ok(drawnAs.has(id), `drawn somewhere: ${id}`);
   for (const kind of ["home:bed_double", "guard:bed_bunk", "clinic:bed", "study:bookshelf"])
     assert.ok(kinds.has(kind), `laid out somewhere: ${kind}`);
   // A tavern that is an inn sleeps travellers: a room to sleep in, with a double bed and bunk beds.

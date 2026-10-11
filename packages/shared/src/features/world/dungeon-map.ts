@@ -528,11 +528,18 @@ export function generateDungeonMap(setId: string, seed: number, size: DungeonMap
     rooms,
     entrance: { x: 0, y: 0 },
   };
-  // The way in: the way-out prop in the first room, on a floor cell.
+  // The way in: the way-out prop in the first room, on a floor cell, set into a back wall where it can be
+  // (the wall rising two cells right behind it), else the first floor cell.
+  const solid = (x: number, y: number) => y < 0 || ground[y * width + x] === "rock" || ground[y * width + x] === "wall";
   const firstFloor = (room: DungeonRoom) => {
+    let first: { x: number; y: number } | null = null;
     for (let y = room.y; y < room.y + room.h; y++)
-      for (let x = room.x; x < room.x + room.w; x++) if (ground[y * width + x] === "floor") return { x, y };
-    return null;
+      for (let x = room.x; x < room.x + room.w; x++) {
+        if (ground[y * width + x] !== "floor") continue;
+        if (solid(x, y - 1) && solid(x, y - 2)) return { x, y };
+        first ??= { x, y };
+      }
+    return first;
   };
   const way = (rooms[0] && firstFloor(rooms[0])) ?? { x: Math.floor(width / 2), y: Math.floor(height / 2) };
   map.entrance = way;
