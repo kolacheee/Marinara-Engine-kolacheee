@@ -87,7 +87,16 @@ try {
             used.set(cell, building.id);
           }
         const door = town.ground[building.door.y * town.width + building.door.x];
-        assert.ok(door === "s" || door === "q", `${label}: ${building.id}'s door is on a street`);
+        // Generator 3 sets lots back a cell: the door is a path cell beside a street.
+        const street = (x: number, y: number) =>
+          x >= 0 && x < town.width && /[sq]/.test(town.ground[y * town.width + x] ?? "");
+        const { x: dx, y: dy } = building.door;
+        assert.ok(
+          door === "s" ||
+            door === "q" ||
+            (door === "p" && (street(dx - 1, dy) || street(dx + 1, dy) || street(dx, dy - 1) || street(dx, dy + 1))),
+          `${label}: ${building.id}'s door is on a street`,
+        );
         const beside =
           building.door.x >= building.x - 1 &&
           building.door.x <= building.x + building.w &&

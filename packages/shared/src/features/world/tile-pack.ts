@@ -89,9 +89,13 @@ export const WORLD_TILE_IDS = Object.freeze([
   // place of the roofs and fronts above.
   "house",
   "hall",
-  // Inside buildings (worldgen W13): the floor, a wall, a doorway, and each piece of furniture.
+  // Inside buildings (worldgen W13): the floor, a wall, a doorway, and each piece of furniture. A wall may be
+  // drawn as its face (the side seen from the room, a pattern) and its top (a block of sixteen pieces by
+  // which neighbours are walls too) (image packs; worldInteriorWallPiece); `in_wall` stands in without them.
   "in_floor",
   "in_wall",
+  "in_wall_face",
+  "in_wall_top",
   "in_door",
   ...WORLD_FURNITURE.map((kind) => `in_${kind}` as const),
   // Edge tiles (image packs): each variant a block of sixteen pieces, four cells by four, for a terrain
@@ -136,6 +140,7 @@ export const WORLD_PATTERN_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "square",
   "in_floor",
   "in_wall",
+  "in_wall_face",
   "dn_floor",
   "dn_wall",
   "dn_liquid",
@@ -156,6 +161,8 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "bridge_ew",
   "bridge_diag",
   "bridge_turn",
+  "in_wall_face",
+  "in_wall_top",
   ...WORLD_TOWN_PROPS,
   ...dungeonTileIds(),
 ]);
@@ -171,6 +178,7 @@ export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number
   bridge_ew: [3, 1],
   bridge_diag: [6, 4],
   bridge_turn: [2, 2],
+  in_wall_top: [4, 4],
 });
 /** Every size a block tile's variant may be, the whole block first: a joined hedge may stop after its
  *  sixteen straight pieces (4 by 4) or its curved corners (4 by 5), and draws straight where it has no more. */
@@ -195,6 +203,7 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
     bridge_ew: [[3, 1]],
     bridge_diag: [[6, 4]],
     bridge_turn: [[2, 2]],
+    in_wall_top: [[4, 4]],
   },
 );
 
@@ -319,6 +328,26 @@ export function worldJoinedPieces(
       }
   for (const [index, bit] of DIAGONAL_BITS.entries()) if (ends & bit) layered.push(22 + index);
   return layered.every(has) ? layered : [straight];
+}
+
+/** A wall cell's piece inside a building: its face (`in_wall_face`, drawn as a pattern) where the room is
+ *  south of it (floor or a doorway), else its top (`in_wall_top`), the piece for which neighbours are walls
+ *  too, north 1, east 2, south 4, west 8 (beyond the building counts as wall). `ground` is the rooms' cells
+ *  ("#" a wall), `width` by `height`. */
+export function worldInteriorWallPiece(
+  ground: string,
+  width: number,
+  height: number,
+  x: number,
+  y: number,
+): { id: "in_wall_face" | "in_wall_top"; piece: number } {
+  const wall = (wx: number, wy: number) =>
+    wx < 0 || wy < 0 || wx >= width || wy >= height || ground[wy * width + wx] === "#";
+  if (y + 1 < height && !wall(x, y + 1)) return { id: "in_wall_face", piece: 0 };
+  return {
+    id: "in_wall_top",
+    piece: (wall(x, y - 1) ? 1 : 0) | (wall(x + 1, y) ? 2 : 0) | (wall(x, y + 1) ? 4 : 0) | (wall(x - 1, y) ? 8 : 0),
+  };
 }
 
 /** A hedge cell's straight piece of `hedge_joined` (worldHedgePieces with only its sixteen straight pieces):

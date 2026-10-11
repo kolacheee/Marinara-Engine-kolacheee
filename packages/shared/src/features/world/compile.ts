@@ -13,11 +13,12 @@ import { worldBriefDeepestLayer } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./art-family.js";
 
-export const WORLD_GENERATOR_VERSION = 2;
-/** The generator versions this Engine makes again from a recipe exactly as they were made: 2 adds sites
- *  (caves, ruins, crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none.
- *  A recipe of a version it reads stays editable and sharable as a recipe. */
-export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2]);
+export const WORLD_GENERATOR_VERSION = 3;
+/** The generator versions this Engine makes again from a recipe exactly as they were made: 3 sets each
+ *  town lot a cell back from its street with a path from its door out to it, 2 adds sites (caves, ruins,
+ *  crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none. A recipe of a
+ *  version it reads stays editable and sharable as a recipe. */
+export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3]);
 export function worldGeneratorReads(version: unknown): boolean {
   return typeof version === "number" && WORLD_GENERATOR_VERSIONS_READ.includes(version);
 }

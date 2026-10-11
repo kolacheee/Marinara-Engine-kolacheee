@@ -59,7 +59,7 @@ const { createConnectionsStorage } = await import("../../packages/server/src/ser
 const { gameRoutes } = await import("../../packages/server/src/routes/game.routes.js");
 const { generateRoutes } = await import("../../packages/server/src/routes/generate.routes.js");
 
-const gameOf = (id: string, seed: number): GameWorld => {
+const gameOf = (id: string, seed: number, generatorVersion?: number): GameWorld => {
   const parsed = parseWorldKit(WORLD_STARTER_KITS.find((each) => each.id === id)!);
   assert.ok(parsed.ok);
   const kit = parsed.kit;
@@ -74,7 +74,7 @@ const gameOf = (id: string, seed: number): GameWorld => {
     })),
   });
   assert.ok(checked.ok);
-  const inputs = { kit, seed, grounding: "expand" as const, brief: checked.brief };
+  const inputs = { kit, seed, grounding: "expand" as const, brief: checked.brief, generatorVersion };
   return { ...inputs, world: compileGameWorld(inputs) };
 };
 
@@ -158,10 +158,14 @@ function checkRooms(town: WorldTown, interior: WorldInterior, label: string): vo
 
 try {
   // ── Every building of every starter world, laid out ──
+  // The pinned rooms are generator 2's towns (generator 3 only sets their lots back a cell, which moves
+  // which building stands where, never how a building's rooms lay out); generator 3's are checked too.
   const pinned = createHash("sha256");
   let buildings = 0;
-  for (const kit of WORLD_STARTER_KITS) {
-    const game = gameOf(kit.id, 31);
+  for (const [kit, version] of WORLD_STARTER_KITS.flatMap((kit) =>
+    [2, WORLD_GENERATOR_VERSION].map((version) => [kit, version] as const),
+  )) {
+    const game = gameOf(kit.id, 31, version);
     for (const settlement of game.world.places.filter((place) => place.rank !== undefined)) {
       const town = worldTown(game, settlement.id)!;
       for (const building of town.buildings) {
@@ -169,7 +173,7 @@ try {
         const interior = layOutInterior(game, town, building);
         assert.deepEqual(layOutInterior(game, town, building), interior, `${label}: the same rooms each time`);
         checkRooms(town, interior, label);
-        pinned.update(JSON.stringify(interior));
+        if (version === 2) pinned.update(JSON.stringify(interior));
         buildings++;
         // A part of town has none; every other building has these rooms.
         const rooms = worldInterior(game, town, building.id);
@@ -178,7 +182,7 @@ try {
       }
     }
   }
-  assert.ok(buildings > 500, "many buildings checked");
+  assert.ok(buildings > 1000, "many buildings checked");
   assert.equal(
     `${WORLD_INTERIOR_VERSION}:${pinned.digest("hex").slice(0, 16)}`,
     "1:8cb23466b308b9b9",

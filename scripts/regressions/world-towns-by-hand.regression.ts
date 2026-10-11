@@ -80,7 +80,7 @@ const overlaps = (a: { x: number; y: number; w: number; h: number }, b: typeof a
   a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
 const sameRect = (a: { x: number; y: number; w: number; h: number }, b: typeof a) =>
   a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h;
-/** Buildings never overlap, each stands on one of the town's lots, every door is on a street or the square. */
+/** Buildings never overlap, each stands on one of the town's lots, every door is on a street, the square or a path to one. */
 const wellLaidOut = (town: WorldTown) => {
   town.buildings.forEach((building, index) => {
     assert.ok(
@@ -88,7 +88,7 @@ const wellLaidOut = (town: WorldTown) => {
       `${building.id} stands on a lot`,
     );
     for (const other of town.buildings.slice(index + 1)) assert.ok(!overlaps(building, other), building.id);
-    assert.match(town.ground[building.door.y * town.width + building.door.x]!, /[sq]/, `${building.id}'s door`);
+    assert.match(town.ground[building.door.y * town.width + building.door.x]!, /[sqp]/, `${building.id}'s door`);
   });
 };
 wellLaidOut(asMade);

@@ -51,6 +51,7 @@ import {
   worldJoinedPieces,
   worldBridgePiece,
   worldHedgePiece,
+  worldInteriorWallPiece,
 } from "../../packages/shared/src/index.js";
 import { imageTilePack, pngBytes, pngDataUrl } from "./fixtures/image-tile-pack.js";
 
@@ -331,6 +332,26 @@ try {
     "one cell",
   );
   refused(withEdges({ bridge_diag: [{ sheet: "edges", x: 0, y: 0, w: 3, h: 2 }] }), /its block is 6 by 4/, "small");
+  // A room's wall: its face a pattern of any size, its top a block of sixteen pieces (4 by 4) by which
+  // neighbours are walls too; the face toward the room (floor or a doorway south of it), else the top.
+  assert.ok(
+    parseTilePack(
+      withEdges({
+        in_wall_face: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 1 }],
+        in_wall_top: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 4 }],
+      }),
+    ).ok,
+    "a wall's face and top",
+  );
+  refused(withEdges({ in_wall_top: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 1 }] }), /its block is 4 by 4/, "a top");
+  assert.ok(WORLD_PATTERN_TILE_IDS.includes("in_wall_face") && WORLD_IMAGE_ONLY_TILE_IDS.includes("in_wall_top"));
+  const rooms = ["#####", "#..##", "#.#.#", "##D##"].join("");
+  const wallAt = (x: number, y: number) => worldInteriorWallPiece(rooms, 5, 4, x, y);
+  assert.deepEqual(wallAt(1, 0), { id: "in_wall_face", piece: 0 }, "above the floor");
+  assert.deepEqual(wallAt(2, 2), { id: "in_wall_face", piece: 0 }, "above the doorway");
+  assert.deepEqual(wallAt(0, 0), { id: "in_wall_top", piece: 1 | 2 | 4 | 8 }, "a corner: beyond counts as wall");
+  assert.deepEqual(wallAt(0, 1), { id: "in_wall_top", piece: 1 | 4 | 8 }, "the floor east of it");
+  assert.deepEqual(wallAt(1, 3), { id: "in_wall_top", piece: 4 | 8 }, "the bottom row: floor and doorway beside it");
   // Where each piece lies: the hedge's straight and curved pieces a cell each, its diagonal ones and the
   // slanting bridge's two cells by two; a smaller block lacks the pieces past it.
   assert.deepEqual(worldTilePiece("hedge_joined", 5, [4, 23]), { x: 1, y: 1, w: 1, h: 1 });
