@@ -149,10 +149,13 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
     for (const sprite of worldInteriorSprites(interior)) {
       const at = (x: number, w: number, id: string, pick: number) =>
         drawTile(ctx, id, x * T + ((w - 1) * T) / 2 + (sprite.shift ?? 0) * T, sprite.y * T - sprite.lift * T, pick);
-      // The best piece at any size the pack draws it; the others only as wide as the cells.
+      // The best piece at any size the pack draws it; the others only as wide as the cells. Where the pack
+      // has more than one of that size, each piece in the room keeps one of them, by where it stands.
+      const seed = cellNoise(sprite.x, sprite.y)(11);
       if (
         sprite.ids.some((id, index) => {
-          const pick = drawTile.pickWide(id, sprite.w) ?? (index === 0 ? 0 : undefined);
+          const pick =
+            drawTile.pickWide(id, sprite.w, seed) ?? (index === 0 ? drawTile.pickWide(id, null, seed) : undefined);
           return pick !== undefined && at(sprite.x, sprite.w, id, pick);
         })
       )
@@ -161,7 +164,7 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
         sprite.cell &&
         Array.from({ length: sprite.w }, (_, dx) =>
           sprite.cell!.some((id) => {
-            const pick = drawTile.pickWide(id, 1);
+            const pick = drawTile.pickWide(id, 1, cellNoise(sprite.x + dx, sprite.y)(11));
             return pick !== undefined && at(sprite.x + dx, 1, id, pick);
           }),
         ).every(Boolean)

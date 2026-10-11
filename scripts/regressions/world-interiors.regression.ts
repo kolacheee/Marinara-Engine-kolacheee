@@ -31,6 +31,7 @@ import {
   WORLD_INTERIOR_RUG_SIZES,
   WORLD_STARTER_KITS,
   WORLD_TILE_IDS,
+  WORLD_INTERIOR_WALL_LIGHT,
   WORLD_FURNITURE,
   checkWorldBrief,
   compileGameWorld,
@@ -45,6 +46,9 @@ import {
   worldInteriorWallPiece,
   worldBeds,
   worldInteriorSprites,
+  worldFurnitureOfTile,
+  worldFurnitureInspectWords,
+  WORLD_TILE_IDS,
   worldTown,
   worldTownWhere,
   worldEditsEmpty,
@@ -161,10 +165,11 @@ function checkRooms(town: WorldTown, interior: WorldInterior, label: string): vo
       `${label}: ${id}'s spot is reachable`,
     );
   }
-  // Beds whole: a double bed two cells across and two long, a bunk bed two long, two never sharing a spot.
+  // Beds whole: a double bed two cells across and two long, a bunk bed two across standing a row deep, two
+  // never sharing a spot.
   for (const bed of beds) {
     if (bed.kind === "bed_double") assert.ok(bed.w === 2 && bed.h === 2, `${label}: a whole double bed`);
-    if (bed.kind === "bed_bunk") assert.equal(bed.h, 2, `${label}: a whole bunk bed`);
+    if (bed.kind === "bed_bunk") assert.ok(bed.w === 2 && bed.h === 1, `${label}: a whole bunk bed, standing`);
   }
   const spots = Object.values(interior.seats).map((seat) => `${seat.x},${seat.y}`);
   assert.equal(new Set(spots).size, spots.length, `${label}: one person to a spot`);
@@ -196,6 +201,7 @@ try {
   const drawnAs = new Set<string>();
   let dividers = 0;
   let desksSeated = 0;
+  let lights = 0;
   for (const [kit, version] of WORLD_STARTER_KITS.flatMap((kit) =>
     [2, WORLD_GENERATOR_VERSION].map((version) => [kit, version] as const),
   )) {
@@ -228,6 +234,30 @@ try {
             `${label}: no decor above a piece against the wall`,
           );
           decorations++;
+        }
+        // Each room's back wall (a run of face) shows its wall light (in_wall_deco1), where anything can hang.
+        for (let y = 0; y + 2 < interior.height; y++) {
+          let start = -1;
+          for (let x = 0; x <= interior.width; x++) {
+            const face =
+              x < interior.width &&
+              interior.ground[y * interior.width + x] === "#" &&
+              interior.ground[(y + 1) * interior.width + x] === "#" &&
+              interior.ground[(y + 2) * interior.width + x] === ".";
+            if (face && start < 0) start = x;
+            if (!face && start >= 0) {
+              const span = (each: { x: number; y: number }) => each.y === y && each.x >= start && each.x < x;
+              const hangs = interior.decor.some(span);
+              const lit = interior.decor.filter(span).filter((each) => each.pick === WORLD_INTERIOR_WALL_LIGHT);
+              assert.equal(
+                lit.length,
+                hangs ? 1 : 0,
+                `${label}: one wall light on the back wall at ${start}..${x - 1}, ${y}`,
+              );
+              lights++;
+              start = -1;
+            }
+          }
         }
         for (const piece of interior.furniture) kinds.add(`${interior.use}:${piece.kind}`);
         // Drawn as: every piece once, a chair facing the table or desk it is at, back to front.
@@ -299,8 +329,50 @@ try {
   assert.ok(buildings > 1000, "many buildings checked");
   assert.ok(decorations > buildings, "walls are decorated");
   assert.ok(dividers > buildings / 2, "rooms divided");
+  assert.ok(lights > buildings, "rooms lit");
   assert.ok(desksSeated > 10, "desks given chairs");
-  // A bookcase against a side wall (laid by hand) stands back over the wall's top, facing into the room.
+  // Beds against the walls, as the art stands best (at 48 pixels a cell): a bed or a double bed lying head
+  // to the back wall 2 pixels clear of the wall line; a bunk bed standing up against it, its foot 30 pixels
+  // below the wall line; a bed lying sideways 2 pixels clear of its side wall.
+  {
+    const room = (width: number, rows: string[], furniture: Array<{ kind: string; x: number; y: number }>) =>
+      worldInteriorSprites({ width, ground: rows.join(""), furniture, rooms: [] } as unknown as Parameters<
+        typeof worldInteriorSprites
+      >[0]);
+    const top = (sprite: { y: number; lift: number }, h: number) => (sprite.y + 1 - sprite.lift) * 48 - h * 48;
+    const wallLine = 2 * 48;
+    const beds = room(
+      8,
+      ["########", "########", "#......#", "#......#", "#......#", "########"],
+      [
+        { kind: "bed", x: 1, y: 2 },
+        { kind: "bed", x: 1, y: 3 },
+        { kind: "bed_double", x: 3, y: 2 },
+        { kind: "bed_double", x: 4, y: 2 },
+        { kind: "bed_double", x: 3, y: 3 },
+        { kind: "bed_double", x: 4, y: 3 },
+        { kind: "bed_bunk", x: 5, y: 2 },
+        { kind: "bed_bunk", x: 6, y: 2 },
+      ],
+    );
+    const drawn = (id: string) => beds.find((sprite) => sprite.ids[0] === id)!;
+    assert.ok(Math.abs(top(drawn("in_bed"), 2) - (wallLine + 2)) < 1e-9, "a bed 2 px clear of the back wall");
+    assert.ok(Math.abs(top(drawn("in_bed_double"), 2) - (wallLine + 2)) < 1e-9, "a double bed 2 px clear");
+    const bunk = drawn("in_bed_bunk");
+    assert.equal(bunk.w, 2, "a bunk bed two cells across");
+    assert.ok(Math.abs((bunk.y + 1 - bunk.lift) * 48 - (wallLine + 30)) < 1e-9, "a bunk bed's foot 30 px below");
+    const sideways = room(
+      6,
+      ["######", "######", "#....#", "#....#", "######"],
+      [
+        { kind: "bed", x: 1, y: 3 },
+        { kind: "bed", x: 2, y: 3 },
+      ],
+    );
+    assert.equal(sideways[0]!.ids[0], "in_bed_left");
+    assert.ok(Math.abs(sideways[0]!.shift! * 48 - 2) < 1e-9, "a sideways bed 2 px clear of its side wall");
+  }
+  // A bookcase against a side wall (laid by hand) faces into the room, in its own cell (its art hugs the wall).
   {
     const shelves = worldInteriorSprites({
       width: 5,
@@ -314,8 +386,8 @@ try {
     assert.deepEqual(
       shelves.map((sprite) => [sprite.ids[0], sprite.shift]),
       [
-        ["in_bookshelf_right", -1 / 3],
-        ["in_bookshelf_left", 1 / 3],
+        ["in_bookshelf_right", undefined],
+        ["in_bookshelf_left", undefined],
       ],
     );
   }
@@ -335,6 +407,48 @@ try {
     assert.ok(drawnAs.has(id), `drawn somewhere: ${id}`);
   for (const kind of ["home:bed_double", "guard:bed_bunk", "clinic:bed", "study:bookshelf"])
     assert.ok(kinds.has(kind), `laid out somewhere: ${kind}`);
+  // Inspecting a piece says the same whichever way it faces or however big it is drawn: each furniture
+  // tile a pack may draw is its base piece, in every setting family's words.
+  {
+    const tiles = WORLD_TILE_IDS.filter((id) => id.startsWith("in_") && worldFurnitureOfTile(id) !== null);
+    for (const id of [
+      "in_bookshelf_left",
+      "in_bookshelf_right",
+      "in_desk_up",
+      "in_desk_left",
+      "in_chair_down",
+      "in_bed_left",
+      "in_bench_v",
+      "in_table_square",
+      "in_longtable_h",
+      "in_hearth_wide",
+      "in_bed_bunk",
+    ])
+      assert.ok(tiles.includes(id as never), `furniture tile: ${id}`);
+    const base: Record<string, string> = {
+      in_bookshelf_left: "bookshelf",
+      in_bookshelf_right: "bookshelf",
+      in_desk_up: "desk",
+      in_chair_up: "chair",
+      in_bed_right: "bed",
+      in_table_square: "table",
+      in_longtable_v: "longtable",
+      in_hearth_wide: "hearth",
+      in_bed_double: "bed_double",
+      in_bed_bunk: "bed_bunk",
+    };
+    for (const [id, kind] of Object.entries(base)) assert.equal(worldFurnitureOfTile(id), kind, id);
+    for (const family of [undefined, "wuxia", "modern", "jazz_age", "scifi", "wasteland"])
+      for (const id of tiles)
+        assert.equal(
+          worldFurnitureInspectWords(id, family),
+          worldFurnitureInspectWords(worldFurnitureOfTile(id)!, family),
+          `${id} inspects as its piece (${family})`,
+        );
+    assert.equal(worldFurnitureInspectWords("in_bookshelf_left"), worldFurnitureInspectWords("bookshelf"));
+    assert.equal(worldFurnitureOfTile("in_wall_deco3"), null, "a wall decoration is no furniture");
+    assert.equal(worldFurnitureOfTile("in_wall_face"), null);
+  }
   // A tavern that is an inn sleeps travellers: a room to sleep in, with a double bed and bunk beds.
   {
     let checked = false;
@@ -358,7 +472,7 @@ try {
   }
   assert.equal(
     `${WORLD_INTERIOR_VERSION}:${pinned.digest("hex").slice(0, 16)}`,
-    "2:ceceb1d463de6a77",
+    "2:98781cb8eb504093",
     "the rooms changed: bump WORLD_INTERIOR_VERSION and pin the new digest",
   );
 

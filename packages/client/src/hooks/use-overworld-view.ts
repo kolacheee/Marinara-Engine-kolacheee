@@ -187,8 +187,9 @@ export type OverworldTileDrawer = ((
   hasPiece: (id: string, piece: number, pick?: number) => boolean;
   /** A tile's variant's cells across and down (by `pick`), null with none. */
   blockSize: (id: string, pick?: number) => readonly [number, number] | null;
-  /** The `pick` that draws a tile's first variant `w` cells across, undefined with none. */
-  pickWide: (id: string, w: number) => number | undefined;
+  /** The `pick` that draws one of a tile's variants `w` cells across (null: the size of its first), the one
+   *  `seed` (0..1) chooses among them (the first by default), undefined with none. */
+  pickWide: (id: string, w: number | null, seed?: number) => number | undefined;
   /** Whether the pack has edge tiles for a terrain (water, road, street, square). */
   hasEdges: (terrain: WorldEdgeTerrain) => boolean;
   /** Draws what follows in a season of its own (a place the story holds at one, Capability API 1.351)
@@ -413,19 +414,24 @@ export function useOverworldAtlas(
         ctx.drawImage(sheet, sx, sy, fw, fh, x + (OVERWORLD_TILE - dw) / 2, y + OVERWORLD_TILE - dh, dw, dh);
         return true;
       };
-      // A piece the pack left clear (a block's spare slot) counts as one it lacks, so the cell falls back.
+      // A piece the pack left clear (a block's spare slot) counts as one it lacks, so the cell falls back. A
+      // block in the season's own art where the pack has it (a forest's trees, `treeline_<look>@<season>`).
       const pieceAt = (id: string, piece: number, pick: number) => {
-        const block = variantOf(ready?.tiles[id], pick);
+        const block = variantOf(seasonal(ready?.tiles, id), pick);
         const at = block && worldTilePiece(id, piece, [block.w, block.h]);
         if (!block || !at || !ready?.canvas) return null;
         const [sx, sy] = [block.sx + at.x * size, block.sy + at.y * size];
         return clearPiece(ready.canvas, sx, sy, at.w * size, at.h * size) ? null : { block, at };
       };
       draw.hasPiece = (id, piece, pick = 0) => Boolean(ready?.canvas && pieceAt(id, piece, pick));
-      draw.pickWide = (id, w) => {
+      draw.pickWide = (id, w, seed = 0) => {
         const variants = ready?.tiles[id] ?? [];
-        const index = variants.findIndex((each) => each.w === w);
-        return index < 0 ? undefined : (index + 0.5) / variants.length;
+        const first = variants[0];
+        const fits = variants
+          .map((each, index) => ({ each, index }))
+          .filter(({ each }) => (w === null ? first && each.w === first.w && each.h === first.h : each.w === w));
+        const chosen = fits[Math.min(fits.length - 1, Math.floor(seed * fits.length))];
+        return chosen ? (chosen.index + 0.5) / variants.length : undefined;
       };
       draw.blockSize = (id, pick = 0) => {
         const block = variantOf(ready?.tiles[id], pick);
@@ -568,7 +574,7 @@ export function useOverworldAtlas(
     draw.piece = () => false;
     draw.hasPiece = () => false;
     draw.blockSize = () => null;
-    draw.pickWide = (_id, w) => (w === 1 ? 0 : undefined);
+    draw.pickWide = (_id, w) => (w === 1 || w === null ? 0 : undefined);
     draw.hasEdges = () => false;
     draw.hasFringe = () => false;
     draw.fringeRows = () => 0;
