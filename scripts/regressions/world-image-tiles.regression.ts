@@ -52,6 +52,7 @@ import {
   worldBridgePiece,
   worldHedgePiece,
   worldInteriorWallPiece,
+  worldTreelineTrees,
 } from "../../packages/shared/src/index.js";
 import { imageTilePack, pngBytes, pngDataUrl } from "./fixtures/image-tile-pack.js";
 
@@ -333,11 +334,12 @@ try {
   );
   refused(withEdges({ bridge_diag: [{ sheet: "edges", x: 0, y: 0, w: 3, h: 2 }] }), /its block is 6 by 4/, "small");
   // A room's wall: its face a pattern of any size, its top a block of sixteen pieces (4 by 4) by which
-  // neighbours are walls too; the face toward the room (floor or a doorway south of it), else the top.
+  // neighbours are walls too, and decorations to hang on the face.
   assert.ok(
     parseTilePack(
       withEdges({
-        in_wall_face: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 1 }],
+        in_wall_face: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 2 }],
+        in_wall_deco3: [{ sheet: "edges", x: 0, y: 0 }],
         in_wall_top: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 4 }],
       }),
     ).ok,
@@ -345,13 +347,28 @@ try {
   );
   refused(withEdges({ in_wall_top: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 1 }] }), /its block is 4 by 4/, "a top");
   assert.ok(WORLD_PATTERN_TILE_IDS.includes("in_wall_face") && WORLD_IMAGE_ONLY_TILE_IDS.includes("in_wall_top"));
-  const rooms = ["#####", "#..##", "#.#.#", "##D##"].join("");
+  // A wooded look's trees: a block of eight, four by two; three to a cell and one toward each side that meets
+  // other ground, trunks within the cell or just past its side, the same every time.
+  assert.deepEqual(WORLD_TILE_BLOCKS.treeline_forest, [4, 2]);
+  assert.ok(WORLD_IMAGE_ONLY_TILE_IDS.includes("treeline_bamboo"));
+  const wood = (x: number, y: number) => x >= 0 && y >= 0 && x < 3 && y < 3;
+  assert.equal(worldTreelineTrees(wood, 1, 1).length, 3, "inside the wood");
+  const edgeTrees = worldTreelineTrees(wood, 0, 0);
+  assert.equal(edgeTrees.length, 5, "at its corner, two more toward the open sides");
+  assert.deepEqual(worldTreelineTrees(wood, 0, 0), edgeTrees);
+  for (const tree of edgeTrees) {
+    assert.ok(tree.pick >= 0 && tree.pick < 8 && Number.isInteger(tree.pick));
+    assert.ok(tree.x > -0.5 && tree.x < 1.5 && tree.y > -0.5 && tree.y < 1.5, "near its cell");
+  }
+  // Seen three-quarters on: the face a row to each cell up from the floor (two here), the top elsewhere.
+  const rooms = ["#####", "##.##", "#...#", "##D##"].join("");
   const wallAt = (x: number, y: number) => worldInteriorWallPiece(rooms, 5, 4, x, y);
-  assert.deepEqual(wallAt(1, 0), { id: "in_wall_face", piece: 0 }, "above the floor");
-  assert.deepEqual(wallAt(2, 2), { id: "in_wall_face", piece: 0 }, "above the doorway");
-  assert.deepEqual(wallAt(0, 0), { id: "in_wall_top", piece: 1 | 2 | 4 | 8 }, "a corner: beyond counts as wall");
-  assert.deepEqual(wallAt(0, 1), { id: "in_wall_top", piece: 1 | 4 | 8 }, "the floor east of it");
-  assert.deepEqual(wallAt(1, 3), { id: "in_wall_top", piece: 4 | 8 }, "the bottom row: floor and doorway beside it");
+  assert.deepEqual(wallAt(2, 0), { face: 0, top: 1 | 2 | 8 }, "above the floor");
+  assert.deepEqual(wallAt(1, 1), { face: 0, top: 1 | 8 }, "above the floor, lower down");
+  assert.deepEqual(wallAt(1, 0), { face: 1, top: 1 | 2 | 4 | 8 }, "a cell up from the floor");
+  assert.deepEqual(wallAt(0, 0), { face: null, top: 1 | 2 | 4 | 8 }, "a corner: beyond counts as wall");
+  assert.deepEqual(wallAt(0, 2), { face: null, top: 1 | 4 | 8 }, "a side wall");
+  assert.deepEqual(wallAt(1, 3), { face: null, top: 4 | 8 }, "the bottom row: floor and doorway beside it");
   // Where each piece lies: the hedge's straight and curved pieces a cell each, its diagonal ones and the
   // slanting bridge's two cells by two; a smaller block lacks the pieces past it.
   assert.deepEqual(worldTilePiece("hedge_joined", 5, [4, 23]), { x: 1, y: 1, w: 1, h: 1 });

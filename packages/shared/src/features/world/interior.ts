@@ -13,17 +13,30 @@
 // version on purpose. Rooms laid out by hand (W13b) are kept in the world's hand edits.
 // ──────────────────────────────────────────────
 import { worldStream } from "./compile.js";
-import type { WorldFurniture, WorldInteriorUse } from "./furniture.js";
+import { WORLD_WALL_FURNITURE, WORLD_WIDE_FURNITURE, type WorldFurniture, type WorldInteriorUse } from "./furniture.js";
 import type { GameWorld } from "./game-world.js";
 import type { WorldPerson } from "./people.js";
 import { worldTownWhere, type WorldTown, type WorldTownBuilding } from "./town.js";
 
-/** Bumped whenever a building's rooms would lay out differently. */
-export const WORLD_INTERIOR_VERSION = 1;
+/** Bumped whenever a building's rooms would lay out differently. 2: rooms seen three-quarters on, their
+ *  back walls two cells deep (WORLD_INTERIOR_BACK_WALL), a hearth, shelves and bookcases against them,
+ *  decorations hung high on them, tables two cells across, and rugs of their own sizes. */
+export const WORLD_INTERIOR_VERSION = 2;
+/** How deep a laid-out room's back (north) wall is, in cells: its face is seen from the room. */
+export const WORLD_INTERIOR_BACK_WALL = 2;
+/** How many wall decorations a tile pack may draw (`in_wall_deco0` on). */
+export const WORLD_INTERIOR_DECOR_COUNT = 8;
+/** A rug's tile by its size: one cell by the way in, a runner, a square one, a large one. */
+export const WORLD_INTERIOR_RUG_SIZES = Object.freeze([
+  { w: 1, h: 1, tile: "in_rug" },
+  { w: 2, h: 1, tile: "in_rug_runner" },
+  { w: 2, h: 2, tile: "in_rug_square" },
+  { w: 3, h: 2, tile: "in_rug_large" },
+] as const);
 
 export { WORLD_INTERIOR_USES, type WorldInteriorUse } from "./furniture.js";
 
-export { WORLD_FURNITURE, type WorldFurniture } from "./furniture.js";
+export { WORLD_FURNITURE, WORLD_WALL_FURNITURE, WORLD_WIDE_FURNITURE, type WorldFurniture } from "./furniture.js";
 
 export const WORLD_INTERIOR_ROOMS = Object.freeze(["main", "sleep", "back"] as const);
 export type WorldInteriorRoom = (typeof WORLD_INTERIOR_ROOMS)[number];
@@ -48,6 +61,11 @@ export interface WorldInterior {
     cells?: number[];
   }>;
   furniture: Array<{ x: number; y: number; kind: WorldFurniture }>;
+  /** What hangs high on the walls' faces (the row above the one against the floor): `pick` is which of the
+   *  pack's decorations (`in_wall_deco<pick>`, or the next it has). Never above a piece against the wall. */
+  decor: Array<{ x: number; y: number; pick: number }>;
+  /** Rugs, flat on the floor under whatever stands on them, `w` by `h` cells (WORLD_INTERIOR_RUG_SIZES). */
+  rugs: Array<{ x: number; y: number; w: number; h: number }>;
   /** Where each person who belongs here is while here, by person id: a work spot, or their bed. */
   seats: Record<string, { x: number; y: number }>;
 }
@@ -156,13 +174,21 @@ export function worldInterior(game: GameWorld, town: WorldTown, buildingId: stri
   // drawn for; one that no longer passes its checks falls back to the laid-out rooms.
   if (edit.ground !== undefined) {
     if (edit.use && edit.use !== laidOut.use) return laidOut;
-    return handRoomIssues(edit).length === 0 ? drawnByHand(town, building, laidOut.use, edit) : laidOut;
+    if (handRoomIssues(edit).length) return laidOut;
+    const drawn = drawnByHand(town, building, laidOut.use, edit);
+    return {
+      ...drawn,
+      decor: wallDecor(game, town, building, drawn.width, drawn.height, drawn.ground, drawn.furniture),
+    };
   }
   // Furnished by hand (W13b) when the rooms are still the size they were furnished at; a hand layout
   // that no longer fits is not applied (the editor says why).
-  return worldInteriorEditFits(laidOut, edit) && interiorEditIssues(laidOut, edit).length === 0
-    ? furnishByHand(town, building, laidOut, edit)
-    : laidOut;
+  if (!worldInteriorEditFits(laidOut, edit) || interiorEditIssues(laidOut, edit).length) return laidOut;
+  const furnished = furnishByHand(town, building, laidOut, edit);
+  return {
+    ...furnished,
+    decor: wallDecor(game, town, building, laidOut.width, laidOut.height, laidOut.ground, furnished.furniture),
+  };
 }
 
 /** A building's furniture as laid out by hand (worldgen W13b). */
@@ -191,9 +217,15 @@ export function worldInteriorOpen(interior: Pick<WorldInterior, "width" | "groun
     if (ground[at] !== "." && ground[at] !== "d") continue;
     if (!blocked.has(at) && !seen.has(at)) return false;
   }
+  // A bed two cells long has open floor beside its head or its foot.
+  const bed = (x: number, y: number) => interior.furniture.some((p) => p.kind === "bed" && p.x === x && p.y === y);
+  const beside = (x: number, y: number) => [1, -1, width, -width].some((step) => seen.has(y * width + x + step));
   return interior.furniture.every(
     (piece) =>
-      piece.kind !== "bed" || [1, -1, width, -width].some((step) => seen.has(piece.y * width + piece.x + step)),
+      piece.kind !== "bed" ||
+      beside(piece.x, piece.y) ||
+      (bed(piece.x, piece.y + 1) && beside(piece.x, piece.y + 1)) ||
+      (bed(piece.x, piece.y - 1) && beside(piece.x, piece.y - 1)),
   );
 }
 
@@ -238,6 +270,29 @@ function handRegions(width: number, ground: string, entry: number): number[][] {
   return regions;
 }
 
+/** Whether a bed cell is the foot of a bed (a bed's head lies north of it): a bed is two cells long, head
+ *  to the north, where there is room; a lone bed cell is a whole bed. */
+export function bedFoot(
+  furniture: ReadonlyArray<{ x: number; y: number; kind: WorldFurniture }>,
+  piece: {
+    x: number;
+    y: number;
+  },
+): boolean {
+  // The head is the cell above unless that one is itself a foot (beds end to end, head, foot, head, foot).
+  let heads = 0;
+  for (let y = piece.y - 1; furniture.some((each) => each.kind === "bed" && each.x === piece.x && each.y === y); y--)
+    heads++;
+  return heads % 2 === 1;
+}
+
+/** Whether a piece stands against a back wall on its face: a hearth, shelves, a bookcase or a lamp on a
+ *  wall cell with floor below it (WORLD_WALL_FURNITURE). */
+function onFace(ground: string, width: number, piece: { x: number; y: number; kind: WorldFurniture }): boolean {
+  const at = piece.y * width + piece.x;
+  return WORLD_WALL_FURNITURE.includes(piece.kind) && ground[at] === "#" && ground[at + width] === ".";
+}
+
 /** Why rooms drawn by hand cannot be used, or nothing. Places count from 1. */
 function handRoomIssues(edit: WorldInteriorEdit): string[] {
   const { width, height } = edit;
@@ -274,7 +329,7 @@ function handRoomIssues(edit: WorldInteriorEdit): string[] {
   for (const piece of edit.furniture) {
     const at = piece.y * width + piece.x;
     const where = `column ${piece.x + 1}, row ${piece.y + 1}`;
-    if (piece.x >= width || piece.y >= height || ground[at] !== ".")
+    if (piece.x >= width || piece.y >= height || !(ground[at] === "." || onFace(ground, width, piece)))
       issues.push(`the ${piece.kind} at ${where} is not on the floor.`);
     else if (at === entry) issues.push(`the ${piece.kind} at ${where} stands in the way in.`);
     else if (taken.has(at)) issues.push(`two pieces stand at ${where}.`);
@@ -336,7 +391,7 @@ function drawnByHand(
   const workers = building.people
     .filter((id) => town.workOf[id] === building.id || (!homeOf(id) && building.kind !== "home"))
     .slice(0, MOST_PEOPLE);
-  const beds = furniture.filter((piece) => piece.kind === "bed");
+  const beds = furniture.filter((piece) => piece.kind === "bed" && !bedFoot(furniture, piece));
   residents.forEach((id, index) => {
     const bed = beds[index];
     if (bed) seats[id] = { x: bed.x, y: bed.y };
@@ -359,7 +414,7 @@ function drawnByHand(
     const at = byDistance.find((each) => open(each));
     if (at !== undefined) seats[id] = take(at);
   }
-  return { buildingId: building.id, use, width, height, ground, door, rooms, furniture, seats };
+  return { buildingId: building.id, use, width, height, ground, door, rooms, furniture, decor: [], rugs: [], seats };
 }
 
 /** Why a hand furnishing does not fit the rooms as laid out, or nothing. Places count from 1. */
@@ -370,7 +425,11 @@ function interiorEditIssues(laidOut: WorldInterior, edit: WorldInteriorEdit): st
   for (const piece of edit.furniture) {
     const at = piece.y * laidOut.width + piece.x;
     const where = `column ${piece.x + 1}, row ${piece.y + 1}`;
-    if (piece.x >= laidOut.width || piece.y >= laidOut.height || laidOut.ground[at] !== ".") {
+    if (
+      piece.x >= laidOut.width ||
+      piece.y >= laidOut.height ||
+      !(laidOut.ground[at] === "." || onFace(laidOut.ground, laidOut.width, piece))
+    ) {
       issues.push(`the ${piece.kind} at ${where} is not on the floor.`);
     } else if (at === entry) {
       issues.push(`the ${piece.kind} at ${where} stands in the way in.`);
@@ -400,7 +459,7 @@ function furnishByHand(
   const used = new Set<number>();
   const seats: WorldInterior["seats"] = {};
   const residents = building.people.filter((id) => town.homeOf[id] === building.id).slice(0, MOST_PEOPLE);
-  const beds = furniture.filter((piece) => piece.kind === "bed");
+  const beds = furniture.filter((piece) => piece.kind === "bed" && !bedFoot(furniture, piece));
   const open = (at: number) => laidOut.ground[at] === "." && !covered.has(at) && !used.has(at);
   const nearest = (from: { x: number; y: number }) => {
     let best: { x: number; y: number } | null = null;
@@ -510,7 +569,7 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
     case "tavern":
       main.push({ kind: "hearth", where: "wall" }, { kind: "barrel", where: "wall" }, { kind: "shelf", where: "wall" });
       staff("counter", "above");
-      each(2 + tier, () => ({ kind: "table", where: "floor" }));
+      each(2 + tier, (index) => ({ kind: index % 2 ? "table" : "longtable", where: "floor" }));
       secondUse = "back";
       second.push(
         { kind: "barrel", where: "wall" },
@@ -560,14 +619,13 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
       main.push({ kind: "lamp", where: "side" });
       break;
     case "hall":
-      main.push({ kind: "hearth", where: "wall" }, { kind: "rug", where: "floor" });
+      main.push({ kind: "hearth", where: "wall" });
       staff("table", "below");
-      each(Math.max(0, 2 - workers.length) + tier, () => ({ kind: "table", where: "floor" }));
+      each(Math.max(0, 2 - workers.length) + tier, () => ({ kind: "longtable", where: "floor" }));
       main.push({ kind: "plant", where: "side" });
       break;
     case "training":
       main.push({ kind: "rack", where: "wall" }, { kind: "rack", where: "wall" });
-      each(1 + Math.min(2, tier), () => ({ kind: "rug", where: "floor" }));
       staff("bench", "below", "side");
       secondUse = "back";
       second.push({ kind: "crate", where: "wall" }, { kind: "barrel", where: "wall" });
@@ -586,20 +644,28 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
       secondUse = "back";
       second.push({ kind: "crate", where: "wall" }, { kind: "shelf", where: "side" });
   }
-  if (random() < 0.4) main.push({ kind: random() < 0.5 ? "plant" : "rug", where: random() < 0.5 ? "side" : "floor" });
+  // Now and then a plant (a rug is laid with the rugs, layOutRugs).
+  if (random() < 0.4) {
+    const plant = random() < 0.5;
+    const where = random() < 0.5 ? "side" : "floor";
+    if (plant) main.push({ kind: "plant", where });
+  }
 
   // ── How big: as wide as its wall and floor things need, as deep as its floor things ──
   const count = (items: Item[], where: Item["where"]) => items.filter((item) => item.where === where).length;
-  // Floor things stand two apart (a chair or a seat between), in rows two apart.
-  const mainFloor = count(main, "floor");
+  // Floor things stand two apart (a chair or a seat between), in rows two apart; a table two cells across.
+  const wide = new Set<WorldFurniture>(["table", "desk", "longtable"]);
+  const mainFloor = main
+    .filter((item) => item.where === "floor")
+    .reduce((n, item) => n + (wide.has(item.kind) ? 2 : 1), 0);
   const mainW = clamp(
     Math.max(count(main, "wall") + 2, Math.ceil(mainFloor / 2) * 2 + 1, 5 + (random() < 0.5 ? 1 : 0)),
     MAIN_W,
   );
   const floorRows = Math.ceil(mainFloor / Math.max(1, Math.floor((mainW - 1) / 2)));
   const mainH = clamp(3 + floorRows * 2 - (floorRows ? 1 : 0) + Math.ceil(count(main, "side") / 2 / 3), MAIN_H);
-  const secondW = secondUse ? clamp(Math.ceil(count(second, "wall") / 2) + 2, [3, 8]) : 0;
-  const height = mainH + 2;
+  const secondW = secondUse ? clamp(count(second, "wall") + 1, [3, 9]) : 0;
+  const height = mainH + 1 + WORLD_INTERIOR_BACK_WALL;
   const width = mainW + 2 + (secondUse ? secondW + 1 : 0);
 
   // ── The walls, the rooms, the way out ──
@@ -607,15 +673,18 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
   const secondLeft = secondUse ? random() < 0.5 : false;
   const mainX = secondLeft ? secondW + 2 : 1;
   const secondX = secondLeft ? 1 : mainW + 2;
-  const rooms: WorldInterior["rooms"] = [{ x: mainX, y: 1, w: mainW, h: mainH, use: "main" }];
-  if (secondUse) rooms.push({ x: secondX, y: 1, w: secondW, h: mainH, use: secondUse });
+  const top = WORLD_INTERIOR_BACK_WALL;
+  const rooms: WorldInterior["rooms"] = [{ x: mainX, y: top, w: mainW, h: mainH, use: "main" }];
+  if (secondUse) rooms.push({ x: secondX, y: top, w: secondW, h: mainH, use: secondUse });
   for (const room of rooms)
     for (let y = room.y; y < room.y + room.h; y++)
       for (let x = room.x; x < room.x + room.w; x++) cells[y * width + x] = ".";
   const door = { x: mainX + Math.floor(mainW / 2) + (mainW > 6 ? Math.floor(random() * 3) - 1 : 0), y: height - 1 };
   cells[door.y * width + door.x] = "D";
   // The doorway between the rooms, low in their shared wall, near the way out.
-  const between = secondUse ? { x: secondLeft ? mainX - 1 : mainX + mainW, y: mainH - Math.floor(random() * 2) } : null;
+  const between = secondUse
+    ? { x: secondLeft ? mainX - 1 : mainX + mainW, y: top - 1 + mainH - Math.floor(random() * 2) }
+    : null;
   if (between) cells[between.y * width + between.x] = "d";
 
   // ── The furniture ──
@@ -625,7 +694,7 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
   const key = (x: number, y: number) => y * width + x;
   // Kept clear: the way in and the step inside it, the walk up the room from it, and both sides of the
   // doorway between the rooms.
-  for (let y = 1; y < height - 1; y++) taken.add(key(door.x, y));
+  for (let y = top; y < height - 1; y++) taken.add(key(door.x, y));
   if (between) for (const dx of [-1, 1]) taken.add(key(between.x + dx, between.y));
   const isFloor = (x: number, y: number) => cells[key(x, y)] === ".";
   const free = (x: number, y: number) => isFloor(x, y) && !taken.has(key(x, y));
@@ -634,7 +703,7 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
   const entry = key(door.x, door.y - 1);
   /** Whether a piece may stand here: free, and with it there every bit of open floor is still reached
    *  from the way in and every bed still has open floor beside it, so nothing and nobody is walled in. */
-  const fits = (x: number, y: number) => {
+  const fits = (x: number, y: number, bedFootHere = false) => {
     if (!free(x, y)) return false;
     const cell = key(x, y);
     blocked.add(cell);
@@ -653,8 +722,15 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
     for (let at = 0; at < cells.length && ok; at++) {
       if (cells[at] !== "." && cells[at] !== "d") continue;
       if (!blocked.has(at)) ok = seen.has(at);
-      else if (furniture.some((piece) => piece.kind === "bed" && key(piece.x, piece.y) === at) || at === cell)
-        ok = [at + 1, at - 1, at + width, at - width].some((next) => seen.has(next));
+      else if (furniture.some((piece) => piece.kind === "bed" && key(piece.x, piece.y) === at) || at === cell) {
+        // A bed two cells long has open floor beside its head or its foot.
+        const isBed = (c: number) =>
+          (bedFootHere && c === cell) || furniture.some((piece) => piece.kind === "bed" && key(piece.x, piece.y) === c);
+        const beside = (c: number) => [c + 1, c - 1, c + width, c - width].some((next) => seen.has(next));
+        ok =
+          beside(at) ||
+          (isBed(at) && ((isBed(at + width) && beside(at + width)) || (isBed(at - width) && beside(at - width))));
+      }
     }
     blocked.delete(cell);
     return ok;
@@ -663,6 +739,12 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
     furniture.push({ x, y, kind: item.kind });
     blocked.add(key(x, y));
     taken.add(key(x, y));
+    // A bed is two cells long, its head here and its foot below where there is room.
+    if (item.kind === "bed" && fits(x, y + 1, true)) {
+      furniture.push({ x, y: y + 1, kind: "bed" });
+      blocked.add(key(x, y + 1));
+      taken.add(key(x, y + 1));
+    }
     if (!item.for) return;
     const at = item.seat === "on" ? { x, y } : item.seat === "above" ? { x, y: y - 1 } : { x, y: y + 1 };
     if (item.seat !== "on" && (!isFloor(at.x, at.y) || taken.has(key(at.x, at.y)))) return;
@@ -690,12 +772,36 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
           if (fits(x, row)) put(item, x, row);
         });
     }
+    // A hearth, shelves, a bookcase or a lamp against the back wall stands on its face, its base on the
+    // floor line (what works at it stands on the floor before it); once the face is full, on the floor.
+    const onFace = new Set<number>();
+    const hung = new Set<Item>();
+    for (const item of walls.filter((each) => WORLD_WALL_FURNITURE.includes(each.kind))) {
+      const row = room.y - 1;
+      const x = byMiddle.find(
+        (column) =>
+          cells[key(column, row)] === "#" &&
+          !onFace.has(column) &&
+          (!item.for || item.seat === "on" || free(column, room.y)),
+      );
+      if (x === undefined) continue;
+      onFace.add(x);
+      hung.add(item);
+      furniture.push({ x, y: row, kind: item.kind });
+      if (item.for && item.seat === "below") {
+        seats[item.for] = { x, y: room.y };
+        taken.add(key(x, room.y));
+      }
+    }
     // Things against the back wall, and once it is full, along the side walls instead.
     for (const item of walls) {
+      if (hung.has(item)) continue;
       const row = room.y;
-      const x = byMiddle.find(
-        (column) => fits(column, row) && (!item.for || item.seat === "on" || free(column, row + 1)),
-      );
+      const ok = (column: number) => fits(column, row) && (!item.for || item.seat === "on" || free(column, row + 1));
+      // A bed where its foot fits below it, else wherever its head does.
+      const x =
+        (item.kind === "bed" ? byMiddle.find((column) => ok(column) && free(column, row + 1)) : undefined) ??
+        byMiddle.find(ok);
       if (x !== undefined) put(item, x, row);
       else sides.unshift(item);
     }
@@ -711,9 +817,14 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
         if (taken.has(key(x + 1, y)) && furniture.some((f) => f.x === x + 1 && f.y === y)) continue;
         const item = floors[index++]!;
         put(item, x, y);
+        // A table, desk or long table two cells across where it fits (a long table only so), else one.
+        const pair = wide.has(item.kind) && fits(x + 1, y) && !furniture.some((f) => f.x === x + 2 && f.y === y);
+        if (pair) put({ kind: item.kind, where: "floor" }, x + 1, y);
+        else if (item.kind === "longtable") furniture[furniture.length - 1]!.kind = "table";
         // A table has a chair beside it when there is room.
-        if (item.kind === "table" && !item.for) {
-          const side = fits(x + 1, y) ? x + 1 : fits(x - 1, y) ? x - 1 : null;
+        if ((item.kind === "table" || (item.kind === "longtable" && !pair)) && !item.for) {
+          const right = pair ? x + 2 : x + 1;
+          const side = fits(right, y) ? right : fits(x - 1, y) ? x - 1 : null;
           if (side !== null) put({ kind: "chair", where: "floor" }, side, y);
         }
       }
@@ -747,7 +858,92 @@ export function layOutInterior(game: GameWorld, town: WorldTown, building: World
       }
   }
 
-  return { buildingId: building.id, use, width, height, ground: cells.join(""), door, rooms, furniture, seats };
+  const ground = cells.join("");
+  const decor = wallDecor(game, town, building, width, height, ground, furniture);
+  const rugs = layOutRugs(game, town, building, { width, ground, door, rooms, use });
+  return { buildingId: building.id, use, width, height, ground, door, rooms, furniture, decor, rugs, seats };
+}
+
+/** Furniture that rises over the wall behind it: nothing hangs above it. */
+const TALL_PIECES: ReadonlySet<WorldFurniture> = new Set(WORLD_WALL_FURNITURE);
+
+/** Decorations hung high on the walls' faces (the wall cell above the one with floor below it), about one
+ *  to each three or four cells of a run of face, never above a piece against the wall or standing tall
+ *  before it, from a stream of their own so nothing else moves. */
+function wallDecor(
+  game: GameWorld,
+  town: WorldTown,
+  building: WorldTownBuilding,
+  width: number,
+  height: number,
+  ground: string,
+  furniture: WorldInterior["furniture"],
+): WorldInterior["decor"] {
+  const random = worldStream(game.seed, "interior-decor", town.settlementId, building.id);
+  const at = (x: number, y: number) => (x < 0 || y < 0 || x >= width || y >= height ? "#" : ground[y * width + x]);
+  const tall = new Set(furniture.filter((piece) => TALL_PIECES.has(piece.kind)).map((p) => p.y * width + p.x));
+  const high = (x: number, y: number) =>
+    at(x, y) === "#" &&
+    at(x, y + 1) === "#" &&
+    at(x, y + 2) === "." &&
+    !tall.has((y + 1) * width + x) &&
+    !tall.has((y + 2) * width + x);
+  const decor: WorldInterior["decor"] = [];
+  for (let y = 0; y < height - 2; y++) {
+    let next = -1;
+    for (let x = 0; x < width; x++) {
+      if (!high(x, y)) {
+        next = -1;
+        continue;
+      }
+      // A run starts: its first decoration one or two cells in, then every three or four.
+      if (next < 0) next = x + 1 + Math.floor(random() * 2);
+      if (x !== next) continue;
+      decor.push({ x, y, pick: Math.floor(random() * WORLD_INTERIOR_DECOR_COUNT) });
+      next = x + 3 + Math.floor(random() * 2);
+    }
+  }
+  return decor;
+}
+
+/** A laid-out building's rugs, from a stream of their own: one by the way in, a large one in a hall's
+ *  main room, square mats in a training hall, now and then a runner; each wholly on open floor, none on
+ *  another, none but the first on the step inside the way in. */
+function layOutRugs(
+  game: GameWorld,
+  town: WorldTown,
+  building: WorldTownBuilding,
+  interior: Pick<WorldInterior, "width" | "ground" | "door" | "rooms" | "use">,
+): WorldInterior["rugs"] {
+  const random = worldStream(game.seed, "interior-rugs", town.settlementId, building.id);
+  const { width, ground, door } = interior;
+  const entry = (door.y - 1) * width + door.x;
+  const rugs: WorldInterior["rugs"] = [{ x: door.x, y: door.y - 1, w: 1, h: 1 }];
+  const covered = new Set([entry]);
+  const lay = (room: WorldInterior["rooms"][number], w: number, h: number, middle: boolean) => {
+    const spots: Array<{ x: number; y: number }> = [];
+    for (let y = room.y; y + h <= room.y + room.h; y++)
+      for (let x = room.x; x + w <= room.x + room.w; x++) spots.push({ x, y });
+    const cx = room.x + (room.w - w) / 2;
+    const cy = room.y + (room.h - h) / 2;
+    const start = Math.floor(random() * spots.length);
+    const order = middle
+      ? spots.sort((a, b) => Math.hypot(a.x - cx, a.y - cy) - Math.hypot(b.x - cx, b.y - cy))
+      : spots.map((_, index) => spots[(index + start) % spots.length]!);
+    for (const spot of order) {
+      const cells: number[] = [];
+      for (let dy = 0; dy < h; dy++) for (let dx = 0; dx < w; dx++) cells.push((spot.y + dy) * width + spot.x + dx);
+      if (cells.some((cell) => ground[cell] !== "." || covered.has(cell))) continue;
+      cells.forEach((cell) => covered.add(cell));
+      rugs.push({ ...spot, w, h });
+      return;
+    }
+  };
+  const main = interior.rooms[0]!;
+  if (interior.use === "hall" || interior.use === "tavern") lay(main, 3, 2, true);
+  if (interior.use === "training") for (let n = 0; n < 2; n++) lay(main, 2, 2, false);
+  if (random() < 0.4) lay(interior.rooms[interior.rooms.length - 1]!, 2, 1, false);
+  return rugs;
 }
 
 /** The people inside a building at an hour, each where they are in it. */
@@ -776,11 +972,20 @@ function besideBed(
   bed: { x: number; y: number },
   others: ReadonlyArray<{ at: { x: number; y: number } }>,
 ): { x: number; y: number } | null {
+  // Beside its head, or beside its foot (a bed two cells long).
+  const foot = interior.furniture.some((piece) => piece.kind === "bed" && piece.x === bed.x && piece.y === bed.y + 1);
   for (const [dx, dy] of [
     [0, 1],
     [1, 0],
     [-1, 0],
     [0, -1],
+    ...(foot
+      ? ([
+          [0, 2],
+          [1, 1],
+          [-1, 1],
+        ] as const)
+      : []),
   ] as const) {
     const [x, y] = [bed.x + dx, bed.y + dy];
     if (interior.ground[y * interior.width + x] !== ".") continue;
@@ -810,6 +1015,7 @@ const FURNITURE_WORDS: Record<WorldFurniture, [string, string]> = {
   rug: ["a rug", "rugs"],
   plant: ["a plant", "plants"],
   lamp: ["a lamp", "lamps"],
+  longtable: ["a long table", "long tables"],
 };
 /** A piece's words in a setting family, where they differ from the plain ones. */
 const FAMILY_WORDS: Record<string, Partial<Record<WorldFurniture, [string, string]>>> = {
@@ -849,10 +1055,18 @@ export function worldInteriorWords(interior: WorldInterior, family?: string): st
     const counts = new Map<WorldFurniture, number>();
     for (const piece of interior.furniture) {
       if (piece.kind === "chair" || piece.kind === "rug" || piece.kind === "plant" || piece.kind === "lamp") continue;
+      // A pair side by side is one piece two cells across.
+      const left = interior.furniture.some(
+        (each) => each.kind === piece.kind && each.x === piece.x - 1 && each.y === piece.y,
+      );
+      if (left && WORLD_WIDE_FURNITURE.includes(piece.kind)) continue;
+      if (piece.kind === "bed" && bedFoot(interior.furniture, piece)) continue;
+      // A piece on a back wall's face is in the room before it.
+      const y = interior.ground[piece.y * interior.width + piece.x] === "#" ? piece.y + 1 : piece.y;
       if (
         room.cells
-          ? !room.cells.includes(piece.y * interior.width + piece.x)
-          : piece.x < room.x || piece.x >= room.x + room.w || piece.y < room.y || piece.y >= room.y + room.h
+          ? !room.cells.includes(y * interior.width + piece.x)
+          : piece.x < room.x || piece.x >= room.x + room.w || y < room.y || y >= room.y + room.h
       )
         continue;
       counts.set(piece.kind, (counts.get(piece.kind) ?? 0) + 1);
