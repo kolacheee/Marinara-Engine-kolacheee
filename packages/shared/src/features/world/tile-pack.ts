@@ -732,12 +732,13 @@ export type TilePackRead = { ok: true; pack: TilePack; notes: string[] } | { ok:
 
 const KNOWN = new Set<string>(WORLD_TILE_IDS);
 /** Tiles an image pack may give seasonal variants, as `<id>@<season>` (drawn in that season, the plain id
- *  otherwise): the ground and its fringes, the town's ground and its trees. */
+ *  otherwise): the ground and its fringes, the town's ground and its trees, a forest's trees. */
 export const WORLD_SEASONAL_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   ...WORLD_GROUND_LOOKS,
   ...WORLD_GROUND_LOOKS.map((look) => `fringe_${look}` as const),
   "town_ground",
   "tree",
+  ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
 ]);
 const IMAGE_KNOWN = new Set<string>([
   ...WORLD_TILE_IDS,
