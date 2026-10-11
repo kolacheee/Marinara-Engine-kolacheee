@@ -48,6 +48,7 @@ import {
   worldTilePiece,
   worldHedgePieces,
   worldBridgePieces,
+  worldJoinedPieces,
   worldBridgePiece,
   worldHedgePiece,
 } from "../../packages/shared/src/index.js";
@@ -281,12 +282,14 @@ try {
   );
   refused(withEdges({ edge_water: [{ sheet: "tall", x: 0, y: 0, w: 4, h: 31 }] }), /h/, "nor 31");
   refused(withEdges({ house: [{ sheet: "tall", x: 0, y: 0, w: 4, h: 9 }] }), /at most 8 each way/, "a sprite 9 tall");
-  // Fringes: a block of sixteen masks for a ground look, four by four only.
+  // Fringes: a ground look's masks, laid out as an edge tile's: 4 by 4, 4 by 6 or 4 by 30.
   assert.ok(parseTilePack(withEdges({ fringe_forest: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 4 }] })).ok, "a fringe");
+  assert.ok(parseTilePack(withEdges({ fringe_forest: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 6 }] })).ok, "slants");
+  assert.ok(parseTilePack(withEdges({ fringe_forest: [{ sheet: "tall", x: 0, y: 0, w: 4, h: 30 }] })).ok, "curves");
   refused(
-    withEdges({ fringe_forest: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 6 }] }),
-    /a fringe's block is 4 by 4/,
-    "6 rows",
+    withEdges({ fringe_forest: [{ sheet: "edges", x: 0, y: 0, w: 4, h: 5 }] }),
+    /a fringe's block is 4 by 4, 4 by 6, or 4 by 30/,
+    "5 rows",
   );
   assert.ok(
     WORLD_GROUND_LOOKS.every((look) => WORLD_TILE_IDS.includes(`fringe_${look}` as never)),
@@ -653,6 +656,26 @@ try {
   for (let at = 1; at < road.length; at++)
     assert.equal(Math.abs(road[at]!.x - road[at - 1]!.x) + Math.abs(road[at]!.y - road[at - 1]!.y), 1, "4-connected");
   assert.ok(!worldRoadCells({ x: 0, y: 0 }, { x: 4, y: 0 }, (x) => x === 2).some((cell) => cell.x === 2), "skipped");
+  // Eight-connected for joined road pieces: one cell a column (or a row, steeper), corner to corner.
+  const slantRoad = worldRoadCells({ x: 0, y: 0 }, { x: 4, y: 2 }, () => false, true);
+  assert.equal(slantRoad.length, 5, "one cell a column");
+  assert.deepEqual(slantRoad.at(-1), { x: 4, y: 2 });
+  for (let at = 1; at < slantRoad.length; at++)
+    assert.equal(
+      Math.max(Math.abs(slantRoad[at]!.x - slantRoad[at - 1]!.x), Math.abs(slantRoad[at]!.y - slantRoad[at - 1]!.y)),
+      1,
+    );
+  assert.deepEqual(
+    worldRoadCells({ x: 3, y: 3 }, { x: 0, y: 0 }, () => false, true),
+    [3, 2, 1, 0].map((n) => ({ x: n, y: n })),
+    "a diagonal from the far end, listed from it",
+  );
+  // Roads and paths laid out as a hedge is.
+  assert.deepEqual(worldTilePiece("road_joined", 21, [4, 23]), { x: 2, y: 5, w: 2, h: 2 });
+  assert.deepEqual(worldTilePiece("path_joined", 17, [4, 5]), { x: 1, y: 4, w: 1, h: 1 });
+  const lane = (rows: string[]) => (x: number, y: number) => "psq".includes(rows[y]?.[x] ?? "-");
+  assert.deepEqual(worldJoinedPieces(lane([".h.", ".p.", "sss"]), 1, 1), [4], "a path from a door to the street");
+  assert.deepEqual(worldJoinedPieces(lane(["..p", ".p.", "s.."]), 1, 1), [20], "a path slanting between them");
   const piece = { sx: 0, sy: 0 };
   const whole = Array.from({ length: 16 }, () => piece);
   const holed: Array<typeof piece | undefined> = [...whole];

@@ -22,6 +22,7 @@ import {
   worldGroundCells,
   worldRoadCells,
   worldEdgePiece,
+  worldJoinedPieces,
   worldEdgeMask,
   WORLD_FRINGE_ORDER,
   worldGroundLooks,
@@ -249,6 +250,8 @@ export function WorldOverworld({
     for (const look of WORLD_FRINGE_ORDER) {
       if (!drawTile.hasFringe(look) || !drawnLook.includes(look)) continue;
       const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
+      // Laid out as an edge tile is: with slanted corners and curved runs where the fringe has them.
+      const fringeRows = drawTile.fringeRows(look);
       for (let y = 0; y <= height; y++)
         for (let x = 0; x <= width; x++) {
           const mask = worldEdgeMask(isLook, x, y, width, height);
@@ -257,7 +260,7 @@ export function WorldOverworld({
           drawTile.fringe(
             ctx,
             look,
-            WORLD_EDGE_PIECE_BY_MASK[mask]!,
+            worldEdgePiece(isLook, x, y, width, height, fringeRows),
             x * OVERWORLD_TILE,
             y * OVERWORLD_TILE,
             (cx, cy) => cellNoise(cx, cy)(99),
@@ -284,8 +287,10 @@ export function WorldOverworld({
         }
     };
     if (waterEdges) edgePass("water", (x, y) => water[cells[y * width + x]!]!);
-    // Ways over open ground: as road cells with road edge tiles, else drawn as lines.
-    const roadEdges = drawTile.hasEdges("road");
+    // Ways over open ground: as road cells with joined road pieces (laid corner to corner) or road edge
+    // tiles, else drawn as lines.
+    const roadJoined = drawTile.hasPiece("road_joined", 0);
+    const roadEdges = roadJoined || drawTile.hasEdges("road");
     const roads = new Set<number>();
     // Settlements' own cells (from the world, not the list sorted by where the party is, so an arrival
     // never draws the ground again).
@@ -298,13 +303,32 @@ export function WorldOverworld({
       if (!from || !to) continue;
       const crosses = kit.travel.find((way) => way.id === link.way)?.crosses ?? "open";
       if (roadEdges && crosses === "open") {
-        const cellsOn = worldRoadCells(from.at, to.at, (x, y) => wet(x, y) || settled.has(y * width + x));
+        const cellsOn = worldRoadCells(from.at, to.at, (x, y) => wet(x, y) || settled.has(y * width + x), roadJoined);
         for (const { x, y } of cellsOn) roads.add(y * width + x);
         continue;
       }
       paintWay(ctx, from.at, to.at, crosses);
     }
-    if (roads.size) edgePass("road", (x, y) => roads.has(y * width + x));
+    if (roads.size && roadJoined) {
+      // Flat on the ground, each road cell's pieces by its road neighbours; pieces that spill past their
+      // cells (the diagonal ones) after the rest.
+      const isRoad = (x: number, y: number) => x >= 0 && y >= 0 && x < width && y < height && roads.has(y * width + x);
+      const spilling: Array<() => void> = [];
+      for (const at of roads) {
+        const [x, y] = [at % width, Math.floor(at / width)];
+        const pick = cellNoise(x, y)(73);
+        const has = (piece: number) => drawTile.hasPiece("road_joined", piece, pick);
+        const pieces = worldJoinedPieces(isRoad, x, y, has);
+        const drawPieces = () => {
+          inSeason(x, y);
+          for (const piece of pieces)
+            drawTile.piece(ctx, "road_joined", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, pick);
+        };
+        if (pieces.some((piece) => piece >= 20)) spilling.push(drawPieces);
+        else drawPieces();
+      }
+      for (const drawPieces of spilling) drawPieces();
+    } else if (roads.size) edgePass("road", (x, y) => roads.has(y * width + x));
     drawTile.setCellSeason(undefined);
     return canvas;
   }, [byId, drawTile, game, heldCells, kit.travel, resolution, world]);
