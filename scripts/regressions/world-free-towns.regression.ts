@@ -133,16 +133,19 @@ refusedPlace(other.x, other.y, /overlaps|before the door/, "on another building"
 refusedPlace(freeLot.x, freeLot.y, /no building "w999"/, "an unknown building", "w999");
 
 // ── The new ground kinds ──
-// Water all round a door's cell boxes the building in.
+// Water all round a door's cell boxes the building in (the building's own side left as it is).
 const door = home.door;
+const inHome = (x: number, y: number) => x >= home.x && x < home.x + home.w && y >= home.y && y < home.y + home.h;
 const ring: Record<number, string> = {};
 for (const [dx, dy] of [
   [1, 0],
   [-1, 0],
   [0, 1],
+  [0, -1],
 ]) {
   const cell = (door.y + dy) * width + door.x + dx;
-  if (town.ground[cell] === "s" || town.ground[cell] === ".") ring[cell] = "~";
+  if (inHome(door.x + dx, door.y + dy)) continue;
+  if (town.ground[cell] === "s" || town.ground[cell] === "." || town.ground[cell] === "p") ring[cell] = "~";
 }
 ring[door.y * width + door.x] = "p";
 const boxed = layer([{ settlement: city.id, ground: groundOf(ring) }]);

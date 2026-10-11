@@ -64,8 +64,14 @@ const briefOf = (kit: ReturnType<typeof parseWorldKit> & { ok: true }) =>
   });
 
 try {
-  assert.equal(WORLD_GENERATOR_VERSION, 2);
-  assert.ok(worldGeneratorReads(1) && worldGeneratorReads(2) && !worldGeneratorReads(3) && !worldGeneratorReads("2"));
+  assert.equal(WORLD_GENERATOR_VERSION, 3);
+  assert.ok(
+    worldGeneratorReads(1) &&
+      worldGeneratorReads(2) &&
+      worldGeneratorReads(3) &&
+      !worldGeneratorReads(4) &&
+      !worldGeneratorReads("2"),
+  );
 
   for (const starter of WORLD_STARTER_KITS) {
     const parsed = parseWorldKit(starter);
@@ -76,7 +82,7 @@ try {
     for (const seed of [21, 4242]) {
       const label = `${starter.id} ${seed}`;
       const v1 = compileWorld({ seed, kit, brief: checked.brief, generatorVersion: 1 });
-      const v2 = compileWorld({ seed, kit, brief: checked.brief });
+      const v2 = compileWorld({ seed, kit, brief: checked.brief, generatorVersion: 2 });
       assert.equal(v1.generatorVersion, 1);
       assert.equal(v2.generatorVersion, 2);
       // Version 2 is version 1 with sites after it: nothing else moves.
@@ -85,8 +91,9 @@ try {
         v1,
         `${label}: the rest of the world as version 1 made it`,
       );
+      // Version 3 changes only how towns are laid out: the overworld is version 2's.
       assert.deepEqual(
-        compileWorld({ seed, kit, brief: checked.brief }),
+        { ...compileWorld({ seed, kit, brief: checked.brief }), generatorVersion: 2 },
         v2,
         `${label}: the same seed, the same sites`,
       );
@@ -192,7 +199,8 @@ try {
   assert.equal(worldSites(old).length, 0, "with no sites");
   assert.equal(worldSnapshot(old).generatorVersion, 1, "and its snapshot says version 1");
   assert.ok(worldSites(gameWorldFromMetadata(recipe(2))!).length > 0, "a version 2 recipe has them");
-  assert.equal(gameWorldFromMetadata(recipe(3)), null, "a version this Engine does not know is refused");
+  assert.ok(gameWorldFromMetadata(recipe(3)), "a version 3 recipe reads");
+  assert.equal(gameWorldFromMetadata(recipe(4)), null, "a version this Engine does not know is refused");
 
   // A version 1 world read in a new game's setup (a world file, a setup file, a library world, a map
   // pack) is made again as version 1; a new seed or brief makes a version 2 world.

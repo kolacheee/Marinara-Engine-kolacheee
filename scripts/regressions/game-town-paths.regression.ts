@@ -82,6 +82,47 @@ for (const kit of WORLD_STARTER_KITS) {
   }
 }
 
+// ── Generator 3: each lot a cell back from its street, a path from its door out to it; 2 as it was ──
+{
+  const fresh = gameOf(WORLD_STARTER_KITS[0]!.id, 31);
+  const older = (() => {
+    const game = gameOf(WORLD_STARTER_KITS[0]!.id, 31);
+    const inputs = {
+      kit: game.kit,
+      seed: game.seed,
+      grounding: game.grounding,
+      brief: game.brief,
+      generatorVersion: 2,
+    };
+    return { ...inputs, world: compileGameWorld(inputs) } as GameWorld;
+  })();
+  assert.equal(fresh.world.generatorVersion, 3);
+  assert.equal(older.world.generatorVersion, 2);
+  for (const settlement of fresh.world.places.filter((place) => place.rank !== undefined)) {
+    const town = worldTown(fresh, settlement.id)!;
+    const at = (x: number, y: number) => town.ground[y * town.width + x];
+    for (const building of town.buildings) {
+      const { x, y } = building.door;
+      assert.equal(at(x, y), "p", `${settlement.name} ${building.id}: a path at its door`);
+      assert.ok(
+        [at(x + 1, y), at(x - 1, y), at(x, y + 1), at(x, y - 1)].some((cell) => cell === "s" || cell === "q"),
+        `${settlement.name} ${building.id}: out to the street`,
+      );
+    }
+    assert.ok(
+      [...town.ground].filter((cell) => cell === "p").length === town.buildings.length,
+      `${settlement.name}: a path for each building, no more`,
+    );
+    const before = worldTown(older, settlement.id)!;
+    for (const building of before.buildings)
+      assert.match(
+        before.ground[building.door.y * before.width + building.door.x]!,
+        /[sq]/u,
+        "version 2: on the street",
+      );
+  }
+}
+
 // ── A town drawn by hand: round a building, round a tree, over a bridge, and the old L when boxed in ──
 const townOf = (rows: string[], buildings: WorldTown["buildings"] = []): WorldTown => ({
   settlementId: "s1",

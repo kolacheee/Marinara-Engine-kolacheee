@@ -169,7 +169,7 @@ export function worldEdgeMask(
  * from the middle of one cell to the middle of the other. `skip` leaves cells out (water, a settlement's
  * own cell). Walked the same way whichever end it starts from (ties between the two axes would otherwise
  * lay a way and its way back side by side), and listed from `from`. `diagonal` walks it eight-connected
- * instead, for a pack whose road joins corner to corner (`road_joined`).
+ * instead, in straight and 45 degree runs, for a pack whose road joins corner to corner (`road_joined`).
  */
 export function worldRoadCells(
   start: { x: number; y: number },
@@ -183,24 +183,25 @@ export function worldRoadCells(
   let [x, y] = [from.x, from.y];
   const [dx, dy] = [Math.abs(to.x - from.x), Math.abs(to.y - from.y)];
   const [sx, sy] = [Math.sign(to.x - from.x), Math.sign(to.y - from.y)];
+  const push = () => {
+    if (!skip(x, y)) out.push({ x, y });
+  };
   if (diagonal) {
-    // Eight-connected (for joined road pieces, which join corner to corner): the cell nearest the line in
-    // each column, or each row where the line is steeper.
-    const steps = Math.max(dx, dy);
-    for (let step = 0; step <= steps; step++) {
-      const [cx, cy] = [
-        from.x + sx * Math.round((step * dx) / steps || 0),
-        from.y + sy * Math.round((step * dy) / steps || 0),
-      ];
-      if (!skip(cx, cy)) out.push({ x: cx, y: cy });
+    // Eight-connected (for joined road pieces, which join corner to corner), in straight and 45 degree runs
+    // only, so the road never steps: straight for half the difference, one diagonal run, straight again.
+    const [major, minor] = [Math.max(dx, dy), Math.min(dx, dy)];
+    const before = Math.floor((major - minor) / 2);
+    push();
+    for (let step = 0; step < major; step++) {
+      const slanting = step >= before && step < before + minor;
+      if (dx >= dy || slanting) x += sx;
+      if (dy > dx || slanting) y += sy;
+      push();
     }
     return flip ? out.reverse() : out;
   }
   // A supercover walk: step along whichever axis the line reaches the next cell border on first.
   let [ix, iy] = [0, 0];
-  const push = () => {
-    if (!skip(x, y)) out.push({ x, y });
-  };
   push();
   while (ix < dx || iy < dy) {
     if ((0.5 + ix) * dy < (0.5 + iy) * dx || iy >= dy) {

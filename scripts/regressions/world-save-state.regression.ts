@@ -194,8 +194,10 @@ assert.ok(storyPlaced >= WORLD_STARTER_KITS.length / 2, `the story's place stood
     ...[2, 3, 4, 5, 6, 7].map((n) => ({ id: `${city.id}-e${n}`, placeId: city.id, name: `Crowd ${n}` })),
   ];
   const crowded = worldTown(made(kit, 31, { ...edits, addedPeople: crowd, towns: [] }), city.id)!;
+  // The home the crowd lives in (a home the stored world has no one in, or none at all).
+  const newcomers = new Set(crowd.slice(edits.addedPeople!.length).map((person) => person.id));
   const newHome = crowded.buildings.find(
-    (each) => each.kind === "home" && !laidOut.buildings.some((old) => old.id === each.id),
+    (each) => each.kind === "home" && each.people.some((id) => newcomers.has(id)),
   )!;
   assert.ok(newHome, "the crowd needs a new home");
   const room = crowded.lots.find((lot) => crowded.buildings.every((each) => !overlaps(each, lot)))!;
@@ -224,7 +226,11 @@ assert.ok(storyPlaced >= WORLD_STARTER_KITS.length / 2, `the story's place stood
   const treedTown = worldTown(stored(treed), city.id, story)!;
   const gullAt = treedTown.buildings.find((building) => building.id === "x1");
   assert.ok(gullAt, "the story's place stands in town");
-  assert.match(treedTown.ground[gullAt.door.y * treedTown.width + gullAt.door.x]!, /[sq]/, "its door is on the street");
+  assert.match(
+    treedTown.ground[gullAt.door.y * treedTown.width + gullAt.door.x]!,
+    /[sqp]/,
+    "its door is on the street or a path to it",
+  );
 }
 
 // ── The living world folds on from a session's checkpoint exactly as from the start ──

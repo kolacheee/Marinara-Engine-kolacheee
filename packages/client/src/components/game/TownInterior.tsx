@@ -7,7 +7,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { worldInteriorPeopleAt, type WorldPerson } from "@marinara-engine/shared";
+import { worldInteriorPeopleAt, worldInteriorWallPiece, type WorldPerson } from "@marinara-engine/shared";
 import { useTownInterior, type TownState } from "../../hooks/use-game";
 import type { OverworldTileDrawer } from "../../hooks/use-overworld-view";
 import { OVERWORLD_TILE, cellNoise, paintParty } from "../../lib/overworld-paint";
@@ -90,6 +90,16 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
     for (let y = 0; y < interior.height; y++) {
       for (let x = 0; x < interior.width; x++) {
         const c = interior.ground[y * interior.width + x];
+        // A wall's face toward the room and its top, where the pack has them; else the one wall tile.
+        if (c === "#") {
+          const wall = worldInteriorWallPiece(interior.ground, interior.width, interior.height, x, y);
+          if (
+            wall.id === "in_wall_face"
+              ? drawTile(ctx, wall.id, x * T, y * T)
+              : drawTile.piece(ctx, wall.id, wall.piece, x * T, y * T)
+          )
+            continue;
+        }
         const [id, colour] =
           c === "#"
             ? ["in_wall", PLAIN.wall]

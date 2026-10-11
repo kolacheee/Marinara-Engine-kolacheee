@@ -330,8 +330,12 @@ const brief = {
     { ...world, generatorVersion: 1, places: world.places.slice(0, versionOne.places.length) },
     versionOne,
   );
+  // Version 3 only sets town lots back from the street (towns are laid out when asked for), so its
+  // world is version 2's with the version changed.
   assert.equal(
-    createHash("sha256").update(JSON.stringify(world)).digest("hex"),
+    createHash("sha256")
+      .update(JSON.stringify({ ...world, generatorVersion: 2 }))
+      .digest("hex"),
     "a309b82f166d841222f19220d5c0bffd3693933f6b7e1e5ed5152f8381e72888",
     "the committed world of generator version 2",
   );

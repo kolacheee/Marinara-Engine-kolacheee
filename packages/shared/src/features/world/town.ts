@@ -14,7 +14,7 @@
 // as when the town is laid out whole.
 // ──────────────────────────────────────────────
 import { z } from "zod";
-import { worldStream, type WorldPlace } from "./compile.js";
+import { WORLD_GENERATOR_VERSION, worldStream, type WorldPlace } from "./compile.js";
 import { compileGameWorld } from "./game-world.js";
 import {
   WORLD_TOWN_WALKABLE,
@@ -164,6 +164,24 @@ function townPeople(game: GameWorld, settlementId: string): WorldPerson[] {
   ];
 }
 
+/** Whether a lot's door cell is outside it, a cell back from a street or the square (generator 3's lots):
+ *  the open ground its path goes on. */
+function setBackDoor(town: WorldTown, lot: WorldTownLot): boolean {
+  const inside = lot.door.x >= lot.x && lot.door.x < lot.x + lot.w && lot.door.y >= lot.y && lot.door.y < lot.y + lot.h;
+  if (inside) return false;
+  const { x, y } = lot.door;
+  return [
+    [x + 1, y],
+    [x - 1, y],
+    [x, y + 1],
+    [x, y - 1],
+  ].some(
+    ([nx, ny]) =>
+      !(nx! >= lot.x && nx! < lot.x + lot.w && ny! >= lot.y && ny! < lot.y + lot.h) &&
+      /[sq]/.test(town.ground[ny! * town.width + nx!] ?? ""),
+  );
+}
+
 /** The places the story added in a town, each on the next free lot, nearest the crossroads first, or
  *  else in the home furthest out that nobody named lives in. */
 function addStoryPlaces(town: WorldTown, places: ReadonlyArray<{ id: string; name: string }>): void {
@@ -172,8 +190,10 @@ function addStoryPlaces(town: WorldTown, places: ReadonlyArray<{ id: string; nam
   const free = (lot: WorldTownLot) => {
     for (let yy = lot.y; yy < lot.y + lot.h; yy++)
       for (let xx = lot.x; xx < lot.x + lot.w; xx++) if (town.ground[yy * town.width + xx] !== ".") return false;
-    // Its door opens on a street or the square, never on ground painted since (a tree, a well).
-    if (!/[sq]/.test(town.ground[lot.door.y * town.width + lot.door.x] ?? "")) return false;
+    // Its door opens on a street, the square or a path (or the open ground a set-back lot's path goes on),
+    // never on ground painted since (a tree, a well).
+    const doorCell = town.ground[lot.door.y * town.width + lot.door.x] ?? "";
+    if (!/[sqp]/.test(doorCell) && !(doorCell === "." && setBackDoor(town, lot))) return false;
     return !town.buildings.some((building) => overlaps(building, lot));
   };
   // A walk from the square must still reach its door, and every door it reached before (a town laid out by
@@ -191,6 +211,10 @@ function addStoryPlaces(town: WorldTown, places: ReadonlyArray<{ id: string; nam
     const lot = town.lots.find((each) => free(each) && reachable(each, before, doorsBefore));
     let building: WorldTownBuilding | undefined;
     if (lot) {
+      if (town.ground[lot.door.y * town.width + lot.door.x] === ".") {
+        const at = lot.door.y * town.width + lot.door.x;
+        town.ground = `${town.ground.slice(0, at)}p${town.ground.slice(at + 1)}`;
+      }
       building = {
         id: place.id,
         kind: "place",
@@ -263,6 +287,8 @@ function layOutTown(
   const settlement = world.places.find((place) => place.id === settlementId);
   if (!settlement || settlement.rank === undefined) return null;
   const tier = worldTownTier(game, settlement);
+  // Generator 3: each lot stands a cell back from its street, a path from its door out to it.
+  const setBack = (world.generatorVersion ?? WORLD_GENERATOR_VERSION) >= 3 ? 1 : 0;
   const [width, height] = SIZES[tier]!;
   const random = worldStream(game.seed, "town", settlementId);
   const cells = Array.from({ length: width * height }, () => ".");
@@ -284,10 +310,12 @@ function layOutTown(
 
   // ── Lots facing the streets, nearest the crossroads first ──
   const taken = new Set<number>();
-  const free = (x: number, y: number, w: number, h: number) => {
+  const free = (x: number, y: number, w: number, h: number, door?: { x: number; y: number }) => {
     if (x < 1 || y < 1 || x + w > width - 1 || y + h > height - 1) return false;
     for (let yy = y; yy < y + h; yy++)
       for (let xx = x; xx < x + w; xx++) if (at(xx, yy) !== "." || taken.has(yy * width + xx)) return false;
+    // A set-back lot's door cell (its path) is open ground no other lot has.
+    if (setBack && door && (at(door.x, door.y) !== "." || taken.has(door.y * width + door.x))) return false;
     return true;
   };
   type Lot = { x: number; y: number; w: number; h: number; door: { x: number; y: number } };
@@ -295,23 +323,28 @@ function layOutTown(
   for (const y of across) {
     for (let x = 1; x < width - LOT_ACROSS.w; x += LOT_ACROSS.w + 1) {
       // North of the street (door below it) and south of it (door above it).
-      lots.push({ x, y: y - LOT_ACROSS.h, ...LOT_ACROSS, door: { x: x + 1, y } });
-      lots.push({ x, y: y + 1, ...LOT_ACROSS, door: { x: x + 1, y } });
+      lots.push({ x, y: y - LOT_ACROSS.h - setBack, ...LOT_ACROSS, door: { x: x + 1, y: y - setBack } });
+      lots.push({ x, y: y + 1 + setBack, ...LOT_ACROSS, door: { x: x + 1, y: y + setBack } });
     }
   }
   for (const x of down) {
     for (let y = 1; y < height - LOT_DOWN.h; y += LOT_DOWN.h + 1) {
-      lots.push({ x: x - LOT_DOWN.w, y, ...LOT_DOWN, door: { x, y: y + 2 } });
-      lots.push({ x: x + 1, y, ...LOT_DOWN, door: { x, y: y + 2 } });
+      lots.push({ x: x - LOT_DOWN.w - setBack, y, ...LOT_DOWN, door: { x: x - setBack, y: y + 2 } });
+      lots.push({ x: x + 1 + setBack, y, ...LOT_DOWN, door: { x: x + setBack, y: y + 2 } });
     }
   }
   const distance = (lot: Lot) => Math.abs(lot.door.x - cx) + Math.abs(lot.door.y - cy) + random() * 0.5;
   const ordered = lots.map((lot) => ({ lot, d: distance(lot) })).sort((a, b) => a.d - b.d);
   const claim = (): Lot | undefined => {
     for (const { lot } of ordered) {
-      if (!free(lot.x, lot.y, lot.w, lot.h)) continue;
+      if (!free(lot.x, lot.y, lot.w, lot.h, lot.door)) continue;
       for (let yy = lot.y; yy < lot.y + lot.h; yy++)
         for (let xx = lot.x; xx < lot.x + lot.w; xx++) taken.add(yy * width + xx);
+      // Its path, from the door out to the street.
+      if (setBack) {
+        taken.add(lot.door.y * width + lot.door.x);
+        set(lot.door.x, lot.door.y, "p");
+      }
       return lot;
     }
     return undefined;
@@ -394,7 +427,7 @@ function layOutTown(
     homeOf[person.id] = home.id;
   });
   // The townsfolk the story never names: more of the free lots, the bigger the place.
-  const open = ordered.filter(({ lot }) => free(lot.x, lot.y, lot.w, lot.h)).length;
+  const open = ordered.filter(({ lot }) => free(lot.x, lot.y, lot.w, lot.h, lot.door)).length;
   for (let left = Math.round(open * FILL[tier]!); left > 0; left--) if (!build("home", {})) break;
   // The places the story added, last, so the town as the world laid it out never moves: each takes the
   // next free lot, or else the home furthest out that nobody named lives in. That home keeps its id, so a
@@ -438,7 +471,7 @@ function layOutTown(
       if (lot.x < 1 || lot.y < 1 || lot.x + lot.w > width - 1 || lot.y + lot.h > height - 1) return false;
       for (let yy = lot.y; yy < lot.y + lot.h; yy++)
         for (let xx = lot.x; xx < lot.x + lot.w; xx++) if (at(xx, yy) !== ".") return false;
-      return true;
+      return !setBack || ".p".includes(at(lot.door.x, lot.door.y) ?? "-");
     });
   const deco: NonNullable<WorldTown["deco"]> = [];
   const issues = entry ? layOutByHand(entry, buildings, standable, cells, width, [square, ...stalls], deco) : [];
@@ -507,6 +540,8 @@ function layOutByHand(
     const from = { x: building.x, y: building.y, w: building.w, h: building.h, door: { ...building.door } };
     Object.assign(building, { x: lot.x, y: lot.y, w: lot.w, h: lot.h, door: { ...lot.door } });
     if (there) Object.assign(there, from);
+    // A lot a cell back from its street (generator 3) gets its path when a building moves onto it.
+    if (cells[lot.door.y * width + lot.door.x] === ".") cells[lot.door.y * width + lot.door.x] = "p";
   }
   // ── Buildings placed anywhere free (Phase 2) ──
   const middle = { x: square.x + Math.floor(square.w / 2), y: square.y + Math.floor(square.h / 2) };
