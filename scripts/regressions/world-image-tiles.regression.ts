@@ -53,6 +53,7 @@ import {
   worldHedgePiece,
   worldInteriorWallPiece,
   worldTreelineTrees,
+  worldCentredDrop,
   worldBackWallOpening,
 } from "../../packages/shared/src/index.js";
 import { imageTilePack, pngBytes, pngDataUrl } from "./fixtures/image-tile-pack.js";
@@ -858,6 +859,28 @@ try {
     await closeDB();
   }
 
+  // A wall decoration hangs with its art centred top to bottom in its cell, wherever in the cell the art
+  // was drawn: a lantern drawn low is lifted, one drawn high dropped, a centred one left be.
+  {
+    const art = (top: number, bottom: number) => (row: number) => row >= top && row < bottom;
+    assert.equal(worldCentredDrop(48, art(14, 42)), -4, "art low in the cell is lifted");
+    assert.equal(worldCentredDrop(48, art(0, 20)), 14, "art high in the cell is dropped");
+    assert.equal(worldCentredDrop(48, art(10, 38)), 0, "centred art stays");
+    assert.equal(
+      worldCentredDrop(48, () => false),
+      0,
+      "nothing visible, nothing moved",
+    );
+    // Centred: as much clear above the art as below it.
+    for (const [top, bottom] of [
+      [3, 45],
+      [30, 48],
+      [0, 1],
+    ] as const) {
+      const drop = worldCentredDrop(48, art(top, bottom));
+      assert.equal(top + drop, 48 - (bottom + drop), `centred ${top}..${bottom}`);
+    }
+  }
   console.log("World image tiles: image packs read, checked, kept and listed beside drawn ones.");
 } finally {
   rmSync(dataDir, { recursive: true, force: true });
