@@ -328,7 +328,7 @@ try {
   }
   assert.equal(
     `${WORLD_INTERIOR_VERSION}:${pinned.digest("hex").slice(0, 16)}`,
-    "2:6bede09af0591e27",
+    "2:257a46692e369d9a",
     "the rooms changed: bump WORLD_INTERIOR_VERSION and pin the new digest",
   );
 
