@@ -8,13 +8,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
-  WORLD_BED_FURNITURE,
   WORLD_INTERIOR_DECOR_COUNT,
   WORLD_INTERIOR_RUG_SIZES,
-  WORLD_WALL_FURNITURE,
-  WORLD_WIDE_FURNITURE,
-  worldBeds,
   worldInteriorPeopleAt,
+  worldInteriorSprites,
   worldInteriorWallPiece,
   type WorldPerson,
 } from "@marinara-engine/shared";
@@ -117,13 +114,13 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
           )
             continue;
         }
-        const [id, colour] =
-          c === "#"
-            ? ["in_wall", PLAIN.wall]
-            : c === "d" || c === "D"
-              ? ["in_door", PLAIN.door]
-              : ["in_floor", PLAIN.floor];
+        const [id, colour] = c === "#" ? ["in_wall", PLAIN.wall] : ["in_floor", PLAIN.floor];
         if (!drawTile(ctx, id!, x * T, y * T, cellNoise(x, y)(3))) plain(colour!, x * T, y * T);
+        // A door in a wall running across (the way out, a doorway between rooms one above the other); a
+        // doorway in a wall running up and down is an opening the floor runs through.
+        const across = interior.ground[y * interior.width + x - 1] === "#" && interior.ground[y * interior.width + x + 1] === "#";
+        if ((c === "d" || c === "D") && across && !drawTile(ctx, "in_door", x * T, y * T))
+          plain(PLAIN.door!, x * T, y * T);
       }
     }
     // Rugs flat on the floor, each its size's tile, else the small rug in each cell.
@@ -144,64 +141,30 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
     for (const { x, y, pick } of interior.decor)
       for (let step = 0; step < WORLD_INTERIOR_DECOR_COUNT; step++)
         if (drawTile(ctx, `in_wall_deco${(pick + step) % WORLD_INTERIOR_DECOR_COUNT}`, x * T, y * T)) break;
-    // Furniture back to front by where each stands (its base), so a tall piece rises over the wall behind
-    // it and not over what stands before it. A hearth, shelves, a bookcase or a lamp on the floor row
-    // before a wall stands back against it, its base 12 pixels below the wall's foot. A pair side by side
-    // is drawn as one piece two cells across where the pack has one (a long table drawn as a table where
-    // it has none).
-    const againstWall = (piece: { x: number; y: number; kind: string }) =>
-      WORLD_WALL_FURNITURE.includes(piece.kind as never) &&
-      interior.ground[(piece.y - 1) * interior.width + piece.x] === "#";
-    const lift = T - 12;
-    const base = (piece: { x: number; y: number; kind: string }) => (piece.y + 1) * T - (againstWall(piece) ? lift : 0);
-    const standing = interior.furniture
-      .filter((piece) => piece.kind !== "rug")
-      .sort((a, b) => base(a) - base(b) || a.x - b.x);
-    const paired = new Set<(typeof standing)[number]>();
-    const beds = worldBeds(interior.furniture);
-    for (const piece of standing) {
-      if (paired.has(piece)) continue;
-      // A bed lies head to the north, drawn whole from its head's west cell down (worldBeds): a double bed
-      // two cells across, a bunk bed, else as beds a cell across.
-      if (WORLD_BED_FURNITURE.includes(piece.kind)) {
-        const bed = beds.find((each) => each.x === piece.x && each.y === piece.y);
-        if (!bed) continue;
-        const bottom = (bed.y + bed.h - 1) * T;
-        const whole =
-          bed.kind === "bed_double"
-            ? bed.w === 2 &&
-              bed.h === 2 &&
-              drawTile(ctx, "in_bed_double", bed.x * T + T / 2, bottom, drawTile.pickWide("in_bed_double", 2) ?? 0)
-            : bed.kind === "bed_bunk" && bed.h === 2 && drawTile(ctx, "in_bed_bunk", bed.x * T, bottom);
-        if (whole) continue;
-        for (let dx = 0; dx < bed.w; dx++) {
-          const [, h] = drawTile.blockSize("in_bed") ?? [1, 1];
-          if (!drawTile(ctx, "in_bed", (bed.x + dx) * T, (bed.y + Math.min(h, bed.h) - 1) * T))
-            plain(PLAIN.furniture!, (bed.x + dx) * T, bed.y * T, 3);
-        }
+    // Furniture back to front by where each stands (worldInteriorSprites): facing the way it stands and
+    // sized by the cells it is laid over where the pack has those pieces, a cell at a time or the plain
+    // piece where it has not; a piece against a back wall stands back against it.
+    for (const sprite of worldInteriorSprites(interior)) {
+      const at = (x: number, w: number, id: string, pick: number) =>
+        drawTile(ctx, id, x * T + ((w - 1) * T) / 2, sprite.y * T - sprite.lift * T, pick);
+      if (sprite.ids.some((id) => {
+        const pick = drawTile.pickWide(id, sprite.w);
+        return pick !== undefined && at(sprite.x, sprite.w, id, pick);
+      }))
         continue;
-      }
-      const ids = piece.kind === "longtable" ? ["in_longtable", "in_table"] : [`in_${piece.kind}`];
-      const twin = WORLD_WIDE_FURNITURE.includes(piece.kind)
-        ? standing.find(
-            (each) => each.kind === piece.kind && each.y === piece.y && each.x === piece.x + 1 && !paired.has(each),
-          )
-        : undefined;
-      const drawn = ids.some((id) => {
-        const widePick = twin ? drawTile.pickWide(id, 2) : undefined;
-        if (twin && widePick !== undefined && drawTile(ctx, id, piece.x * T + T / 2, piece.y * T, widePick)) {
-          paired.add(twin);
-          return true;
-        }
-        return drawTile(
-          ctx,
-          id,
-          piece.x * T,
-          piece.y * T - (againstWall(piece) ? lift : 0),
-          drawTile.pickWide(id, 1) ?? 0,
-        );
-      });
-      if (!drawn) plain(PLAIN.furniture!, piece.x * T, piece.y * T, 3);
+      if (
+        sprite.cell &&
+        Array.from({ length: sprite.w }, (_, dx) =>
+          sprite.cell!.some((id) => {
+            const pick = drawTile.pickWide(id, 1);
+            return pick !== undefined && at(sprite.x + dx, 1, id, pick);
+          }),
+        ).every(Boolean)
+      )
+        continue;
+      // A pack's piece of another size, as it is.
+      if (sprite.ids.some((id) => at(sprite.x, sprite.w, id, 0))) continue;
+      for (let dx = 0; dx < sprite.w; dx++) plain(PLAIN.furniture!, (sprite.x + dx) * T, sprite.y * T, 3);
     }
     // Back to front, the party (just inside the way out, facing into the rooms) among them.
     const partyRow = interior.door.y - 1;

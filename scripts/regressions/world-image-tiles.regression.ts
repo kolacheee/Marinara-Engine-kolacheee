@@ -53,6 +53,7 @@ import {
   worldHedgePiece,
   worldInteriorWallPiece,
   worldTreelineTrees,
+  worldBackWallOpening,
 } from "../../packages/shared/src/index.js";
 import { imageTilePack, pngBytes, pngDataUrl } from "./fixtures/image-tile-pack.js";
 
@@ -391,6 +392,15 @@ try {
   // A cave's rock has a face wherever floor is south of it.
   assert.deepEqual(worldInteriorWallPiece(pillar, 5, 5, 2, 2, false), { face: 0, top: 0, divider: false });
   assert.ok(WORLD_PATTERN_TILE_IDS.includes("in_wall_divider") && WORLD_IMAGE_ONLY_TILE_IDS.includes("in_bed_bunk"));
+  // A cave's back wall: stairs set into it right behind the way out, a doorway where a way leads north
+  // through it; a gap anywhere else.
+  const cave = ["#####", "##.##", "##.##", "#...#", "#...#", "#####"].join("");
+  assert.equal(worldBackWallOpening(cave, 5, 6, 2, 2), "door", "a way north through the back wall");
+  assert.equal(worldBackWallOpening(cave, 5, 6, 1, 3), "stairs", "the back wall right behind");
+  assert.equal(worldBackWallOpening(cave, 5, 6, 2, 1), "stairs", "the end of the way, the map's edge behind");
+  assert.equal(worldBackWallOpening(cave, 5, 6, 2, 4), null, "in the room");
+  assert.equal(worldBackWallOpening(cave, 5, 6, 0, 0), null, "rock");
+  assert.ok(WORLD_IMAGE_ONLY_TILE_IDS.includes("dn_door_wall") && WORLD_IMAGE_ONLY_TILE_IDS.includes("in_chair_left"));
   // Where each piece lies: the hedge's straight and curved pieces a cell each, its diagonal ones and the
   // slanting bridge's two cells by two; a smaller block lacks the pieces past it.
   assert.deepEqual(worldTilePiece("hedge_joined", 5, [4, 23]), { x: 1, y: 1, w: 1, h: 1 });

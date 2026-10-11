@@ -17,6 +17,7 @@ import {
   dungeonAreaAt,
   dungeonFromGameDungeonMap,
   dungeonWalkable,
+  worldBackWallOpening,
   worldEdgePiece,
   worldInteriorWallPiece,
   type CharacterFacing,
@@ -166,10 +167,19 @@ export function DungeonMapView({
           if (piece >= 0) drawTile.edge(ctx, "dn_liquid", piece, x * T, y * T, cellNoise(x, y)(71));
         }
     }
+    // A way north out of a room through its back wall: a doorway set into the wall, where the set has one;
+    // other openings are gaps the floor runs through.
+    const opening = (x: number, y: number) => worldBackWallOpening(solid, cells.width, cells.height, x, y);
+    for (let y = 0; y < cells.height; y++)
+      for (let x = 0; x < cells.width; x++)
+        if (opening(x, y) === "door") drawTile(ctx, "dn_door_wall", x * T, y * T, cellNoise(x, y)(7));
     for (let y = 0; y < cells.height; y++)
       for (let x = 0; x < cells.width; x++) {
         const prop = cells.props[y * cells.width + x]!;
         if (prop < 0) continue;
+        // The way out set into the back wall right behind it, where the wall rises there.
+        if (prop === DUNGEON_EXIT_PROP && opening(x, y) === "stairs" && drawTile(ctx, "dn_prop5", x * T, (y - 1) * T))
+          continue;
         if (!drawTile(ctx, `dn_prop${prop}`, x * T, y * T)) {
           ctx.fillStyle = PLAIN.prop;
           if (prop === DUNGEON_EXIT_PROP) {

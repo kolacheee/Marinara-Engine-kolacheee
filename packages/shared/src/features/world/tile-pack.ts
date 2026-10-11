@@ -47,6 +47,30 @@ const NINE = ["nw", "n", "ne", "w", "c", "e", "sw", "s", "se"] as const;
 /** A dungeon set's props: how many, and which one is the way out. */
 export const WORLD_DUNGEON_PROP_COUNT = 8;
 export const WORLD_DUNGEON_WAY_OUT_PROP = "dn_prop5";
+/** Furniture tiles by the way a piece faces and the cells it is laid over (worldInteriorSprites). */
+const WORLD_FURNITURE_SPRITES = [
+  "in_chair_down",
+  "in_chair_left",
+  "in_chair_right",
+  "in_chair_up",
+  "in_bench_h",
+  "in_bench_v",
+  "in_counter_h",
+  "in_counter_v",
+  "in_workbench_down",
+  "in_workbench_left",
+  "in_workbench_right",
+  "in_desk_down",
+  "in_desk_left",
+  "in_desk_right",
+  "in_bookshelf_left",
+  "in_bookshelf_right",
+  "in_table_square",
+  "in_longtable_h",
+  "in_longtable_v",
+  "in_hearth_wide",
+] as const;
+
 function dungeonTileIds() {
   return [
     "dn_floor",
@@ -54,6 +78,9 @@ function dungeonTileIds() {
     // A wall's face and top, as a room's are (in_wall_face, in_wall_top; worldInteriorWallPiece).
     "dn_wall_face",
     "dn_wall_top",
+    // A doorway set into a back wall's face, two cells high (image packs; drawn where a way leads north
+    // out of a room through its back wall).
+    "dn_door_wall",
     "dn_liquid",
     ...WORLD_MAP_EDGE_TERRAINS.map((terrain) => `edge_${terrain}` as const),
     "dn_prop0",
@@ -118,6 +145,9 @@ export const WORLD_TILE_IDS = Object.freeze([
   ...Array.from({ length: 8 }, (_, index) => `in_wall_deco${index}` as const),
   "in_door",
   ...WORLD_FURNITURE.map((kind) => `in_${kind}` as const),
+  // Furniture facing the way it stands and sized by the cells it is laid over (image packs;
+  // worldInteriorSprites); the plain pieces stand in without them.
+  ...WORLD_FURNITURE_SPRITES,
   // Rugs larger than a cell (image packs; WORLD_INTERIOR_RUG_SIZES): a runner, a square one, a large one.
   "in_rug_runner",
   "in_rug_square",
@@ -199,6 +229,8 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "in_longtable",
   "in_bed_double",
   "in_bed_bunk",
+  "in_drawers",
+  ...WORLD_FURNITURE_SPRITES,
   ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
   ...WORLD_TOWN_PROPS,
   ...dungeonTileIds(),
@@ -431,6 +463,36 @@ export function worldInteriorWallPiece(
   const face = backFace(x, y) ? 0 : wall(x, y) && backFace(x, y + 1) ? 1 : null;
   const top = (wall(x, y - 1) ? 1 : 0) | (wall(x + 1, y) ? 2 : 0) | (wall(x, y + 1) ? 4 : 0) | (wall(x - 1, y) ? 8 : 0);
   return { face, top, divider: face === null && front(x, y) };
+}
+
+/** What a cave's or dungeon's back wall holds at an open cell (x, y), seen three-quarters on: "door" where the
+ *  cell and the one north of it lead up through a back wall (its face beside both, the room south of it; a
+ *  doorway set into the wall, `dn_door_wall`, two cells high over them), "stairs" where the back wall's
+ *  face rises two cells right behind it (the way out set into it), else null. `ground` is the map's cells
+ *  ("#" solid), `width` by `height`. */
+export function worldBackWallOpening(
+  ground: string,
+  width: number,
+  height: number,
+  x: number,
+  y: number,
+): "door" | "stairs" | null {
+  const open = (wx: number, wy: number) =>
+    wx >= 0 && wy >= 0 && wx < width && wy < height && ground[wy * width + wx] !== "#";
+  const face = (wx: number, wy: number, row: number) =>
+    !open(wx, wy) && worldInteriorWallPiece(ground, width, height, wx, wy, false).face === row;
+  if (!open(x, y)) return null;
+  if (face(x, y - 1, 0) && face(x, y - 2, 1)) return "stairs";
+  if (
+    open(x, y - 1) &&
+    open(x, y + 1) &&
+    face(x - 1, y, 0) &&
+    face(x + 1, y, 0) &&
+    face(x - 1, y - 1, 1) &&
+    face(x + 1, y - 1, 1)
+  )
+    return "door";
+  return null;
 }
 
 /** A hedge cell's straight piece of `hedge_joined` (worldHedgePieces with only its sixteen straight pieces):

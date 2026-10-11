@@ -27,6 +27,7 @@ export const WORLD_FURNITURE = Object.freeze([
   "longtable",
   "bed_double",
   "bed_bunk",
+  "drawers",
 ] as const);
 export type WorldFurniture = (typeof WORLD_FURNITURE)[number];
 
@@ -35,8 +36,20 @@ export type WorldFurniture = (typeof WORLD_FURNITURE)[number];
  *  well. */
 export const WORLD_WALL_FURNITURE: readonly WorldFurniture[] = Object.freeze(["hearth", "shelf", "bookshelf", "lamp"]);
 
-/** Furniture two cells across where two of it stand side by side (a pack draws the pair as one piece). */
-export const WORLD_WIDE_FURNITURE: readonly WorldFurniture[] = Object.freeze(["table", "desk", "counter", "longtable"]);
+/** Furniture laid two cells across where it fits (a long table three), drawn as one piece over its cells
+ *  (worldInteriorSprites). */
+export const WORLD_WIDE_FURNITURE: readonly WorldFurniture[] = Object.freeze([
+  "table",
+  "desk",
+  "counter",
+  "longtable",
+  "bench",
+  "workbench",
+  "altar",
+  "rack",
+  "drawers",
+  "hearth",
+]);
 
 /** Beds: a bed and a bunk bed are a cell across and two long (head to the north), a double bed two cells
  *  across and two long (worldBeds). A bunk bed and a double bed each sleep two. */
