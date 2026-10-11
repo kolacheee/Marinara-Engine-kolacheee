@@ -106,12 +106,14 @@ export const WORLD_TILE_IDS = Object.freeze([
   "house",
   "hall",
   // Inside buildings (worldgen W13): the floor, a wall, a doorway, and each piece of furniture. A wall may be
-  // drawn as its face (the side seen from the room, a pattern a row to each cell up from the floor) and its
-  // top (a block of sixteen pieces by which neighbours are walls too), with decorations hung on its face
-  // (image packs; worldInteriorWallPiece); `in_wall` stands in without them.
+  // drawn as its face (the side seen from the room, a pattern a row to each cell up from the floor), a
+  // divider's face between two rooms (a pattern a cell high), and its top (a block of sixteen pieces by
+  // which neighbours are walls too), with decorations hung on its face (image packs;
+  // worldInteriorWallPiece); `in_wall` stands in without them.
   "in_floor",
   "in_wall",
   "in_wall_face",
+  "in_wall_divider",
   "in_wall_top",
   ...Array.from({ length: 8 }, (_, index) => `in_wall_deco${index}` as const),
   "in_door",
@@ -165,6 +167,7 @@ export const WORLD_PATTERN_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "in_floor",
   "in_wall",
   "in_wall_face",
+  "in_wall_divider",
   "dn_floor",
   "dn_wall",
   "dn_wall_face",
@@ -187,12 +190,15 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "bridge_diag",
   "bridge_turn",
   "in_wall_face",
+  "in_wall_divider",
   "in_wall_top",
   ...Array.from({ length: 8 }, (_, index) => `in_wall_deco${index}` as const),
   "in_rug_runner",
   "in_rug_square",
   "in_rug_large",
   "in_longtable",
+  "in_bed_double",
+  "in_bed_bunk",
   ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
   ...WORLD_TOWN_PROPS,
   ...dungeonTileIds(),
@@ -242,32 +248,29 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
   },
 );
 
-/** The trees planted in a cell of a wooded look: three in the cell, and one more toward each side that
- *  meets other ground (so the edge reads as a treeline), each nudged by the cell and picking one of the
- *  eight trees. `x` and `y` are where its trunk stands, in cells (fractions across the map). */
+/** The trees standing in a cell of a wooded look: a staggered lattice across the map (rows 16 of a 48-pixel
+ *  cell's pixels apart, trees 24 apart along a row, every other row shifted 12), each nudged up to 1.5
+ *  pixels each way and picking one of the eight trees, kept where its base and the points 6 pixels up and
+ *  to each side of it are all on the wooded floor (`onFloor`, at a point across the map in cells: the look
+ *  as drawn through its fringe, so the trees follow its curved edge). `x` and `y` are where its trunk
+ *  stands, in cells (fractions across the map). */
 export function worldTreelineTrees(
-  isLook: (x: number, y: number) => boolean,
+  onFloor: (x: number, y: number) => boolean,
   x: number,
   y: number,
 ): Array<{ x: number; y: number; pick: number }> {
-  const spots: Array<[number, number]> = [
-    [0.3, 0.45],
-    [0.75, 0.6],
-    [0.5, 0.95],
-  ];
-  for (const [dx, dy] of [
-    [0, -1],
-    [1, 0],
-    [0, 1],
-    [-1, 0],
-  ] as const)
-    if (!isLook(x + dx, y + dy)) spots.push([0.5 + 0.3 * dx, 0.6 + 0.3 * dy]);
-  return spots.map(([fx, fy], index) => ({
-    // Nudged up to 6 and 4 of a 48-pixel cell's pixels each way.
-    x: x + fx + (treeHash(x, y, index * 3) - 0.5) * 0.25,
-    y: y + fy + (treeHash(x, y, index * 3 + 1) - 0.5) * (8 / 48),
-    pick: Math.floor(treeHash(x, y, index * 3 + 2) * 8),
-  }));
+  const trees: Array<{ x: number; y: number; pick: number }> = [];
+  const px = 1 / 48;
+  for (let row = 0; row < 3; row++)
+    for (let column = 0; column < 2; column++) {
+      const salt = (row * 2 + column) * 3;
+      const shift = (3 * y + row) % 2 === 0 ? 0 : 12;
+      const tx = x + (6 + 24 * column + shift + (treeHash(x, y, salt) - 0.5) * 3) * px;
+      const ty = y + (8 + 16 * row + (treeHash(x, y, salt + 1) - 0.5) * 3) * px;
+      if (!onFloor(tx, ty) || !onFloor(tx - 6 * px, ty - 6 * px) || !onFloor(tx + 6 * px, ty - 6 * px)) continue;
+      trees.push({ x: tx, y: ty, pick: Math.floor(treeHash(x, y, salt + 2) * 8) });
+    }
+  return trees;
 }
 
 /** A number in [0, 1) for a cell and a salt, the same every time. */
@@ -403,23 +406,31 @@ export function worldJoinedPieces(
 
 /** A wall cell's pieces inside a building (three-quarters on): `face`, how many cells up from the floor its
  *  face is (0 the cell with floor or a doorway south of it, 1 the wall cell above that; `in_wall_face`'s
- *  rows count up from its bottom row), or null for no face; `top`, its piece of `in_wall_top` by which
- *  neighbours are walls too, north 1, east 2, south 4, west 8 (beyond the building counts as wall), drawn
- *  where it has no face or the pack's face has no row so high. `ground` is the rooms' cells ("#" a wall),
- *  `width` by `height`. */
+ *  rows count up from its bottom row), or null for no face; `divider`, whether it is a divider between two
+ *  rooms seen from the room south of it (a wall cell with open floor south of it that is not part of a back
+ *  wall: a back wall is a run across, at least two cells deep; a divider's face is `in_wall_divider`);
+ *  `top`, its piece of `in_wall_top` by which neighbours are walls too, north 1, east 2, south 4, west 8
+ *  (beyond the building counts as wall), drawn where it has no face or the pack's face has no row so high.
+ *  `ground` is the rooms' cells ("#" a wall), `width` by `height`. Without `dividers` (a cave's rock), every
+ *  wall cell with open floor south of it has a face. */
 export function worldInteriorWallPiece(
   ground: string,
   width: number,
   height: number,
   x: number,
   y: number,
-): { face: number | null; top: number } {
+  dividers = true,
+): { face: number | null; top: number; divider: boolean } {
   const wall = (wx: number, wy: number) =>
     wx < 0 || wy < 0 || wx >= width || wy >= height || ground[wy * width + wx] === "#";
-  const open = (wy: number) => wy < height && !wall(x, wy);
-  const face = open(y + 1) ? 0 : wall(x, y + 1) && open(y + 2) ? 1 : null;
+  const open = (wx: number, wy: number) => wx >= 0 && wy >= 0 && wx < width && wy < height && !wall(wx, wy);
+  const front = (wx: number, wy: number) => wall(wx, wy) && open(wx, wy + 1);
+  // The face of a back wall: a run across (a neighbour's face too), the wall going on above it.
+  const backFace = (wx: number, wy: number) =>
+    front(wx, wy) && (!dividers || (wall(wx, wy - 1) && (front(wx - 1, wy) || front(wx + 1, wy))));
+  const face = backFace(x, y) ? 0 : wall(x, y) && backFace(x, y + 1) ? 1 : null;
   const top = (wall(x, y - 1) ? 1 : 0) | (wall(x + 1, y) ? 2 : 0) | (wall(x, y + 1) ? 4 : 0) | (wall(x - 1, y) ? 8 : 0);
-  return { face, top };
+  return { face, top, divider: face === null && front(x, y) };
 }
 
 /** A hedge cell's straight piece of `hedge_joined` (worldHedgePieces with only its sixteen straight pieces):

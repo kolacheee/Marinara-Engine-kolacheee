@@ -212,6 +212,9 @@ export type OverworldTileDrawer = ((
     pickAt: (cx: number, cy: number) => number,
     pick?: number,
   ) => boolean;
+  /** Whether a look's fringe piece (`pick` its variant, as `fringe` takes it) shows the look at a point in
+   *  it, `u` and `v` across and down its cell (0 to 1): where the look's ground reaches past its cells. */
+  fringeCovers: (look: string, piece: number, pick: number, u: number, v: number) => boolean;
   /** How long every one of a terrain's edge blocks is (4, 6 with slants, 30 with curves; 0 for none), for
    *  worldEdgePiece. */
   edgeRows: (terrain: WorldEdgeTerrain) => number;
@@ -491,6 +494,21 @@ export function useOverworldAtlas(
         ctx.drawImage(through, x - half, y - half, OVERWORLD_TILE, OVERWORLD_TILE);
         return true;
       };
+      let pixels: ImageData | null = null;
+      draw.fringeCovers = (look, piece, pick, u, v) => {
+        const variants = fringeOf(look);
+        if (!variants?.length || piece < 0 || !ready?.canvas) return false;
+        const at = variants[Math.min(variants.length - 1, Math.floor(pick * variants.length))]?.[piece];
+        if (!at) return false;
+        if (!pixels) {
+          const read = ready.canvas.getContext("2d", { willReadFrequently: true });
+          if (!read) return false;
+          pixels = read.getImageData(0, 0, ready.canvas.width, ready.canvas.height);
+        }
+        const px = at.sx + Math.min(size - 1, Math.max(0, Math.floor(u * size)));
+        const py = at.sy + Math.min(size - 1, Math.max(0, Math.floor(v * size)));
+        return (pixels.data[(py * pixels.width + px) * 4 + 3] ?? 0) >= 128;
+      };
       draw.edge = (ctx, terrain, piece, x, y, pick = 0) => {
         const variants = ready?.edges?.[`edge_${terrain}`];
         if (!variants?.length || piece < 0 || !ready?.canvas) return false;
@@ -530,6 +548,7 @@ export function useOverworldAtlas(
     draw.hasFringe = () => false;
     draw.fringeRows = () => 0;
     draw.fringe = () => false;
+    draw.fringeCovers = () => false;
     draw.edgeRows = () => 0;
     draw.edge = () => false;
     draw.setCellSeason = (value) => {
