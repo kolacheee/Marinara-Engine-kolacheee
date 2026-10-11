@@ -195,6 +195,7 @@ try {
   const kinds = new Set<string>();
   const drawnAs = new Set<string>();
   let dividers = 0;
+  let desksSeated = 0;
   for (const [kit, version] of WORLD_STARTER_KITS.flatMap((kit) =>
     [2, WORLD_GENERATOR_VERSION].map((version) => [kit, version] as const),
   )) {
@@ -233,14 +234,21 @@ try {
         let covered = 0;
         for (const sprite of sprites) {
           drawnAs.add(sprite.ids[0]!);
-          covered += sprite.w;
           const facing = /^in_chair_(right|left|down|up)$/u.exec(sprite.ids[0]!)?.[1];
-          if (facing && facing !== "down") {
-            const [dx, dy] = { right: [1, 0], left: [-1, 0], up: [0, -1] }[facing as "right" | "left" | "up"];
+          // A desk's own chair, drawn where its worker sits (no piece of furniture of its own).
+          const given = facing !== undefined && kindAt.get(`${sprite.x},${sprite.y}`) !== "chair";
+          if (!given) covered += sprite.w;
+          if (facing && (facing !== "down" || sprite.lift !== 0 || given)) {
+            const [dx, dy] = { right: [1, 0], left: [-1, 0], up: [0, -1], down: [0, 1] }[facing as "right"];
+            const at = kindAt.get(`${sprite.x + dx!},${sprite.y + dy!}`)!;
             assert.ok(
-              ["table", "longtable", "desk", "counter", "workbench"].includes(kindAt.get(`${sprite.x + dx!},${sprite.y + dy!}`)!),
+              (given ? ["desk"] : ["table", "longtable", "desk", "counter", "workbench"]).includes(at),
               `${label}: a chair faces what it is at`,
             );
+            // Tucked half a cell under it.
+            if (dx) assert.equal(sprite.shift, dx / 2, `${label}: a chair tucked under the side it faces`);
+            else assert.equal(sprite.lift, -dy! / 2, `${label}: a chair tucked under what is before or behind it`);
+            if (given) desksSeated++;
           }
         }
         const bedCells = worldBeds(interior.furniture).reduce((n, bed) => n + bed.cells.length - bed.w, 0);
@@ -289,6 +297,26 @@ try {
   assert.ok(buildings > 1000, "many buildings checked");
   assert.ok(decorations > buildings, "walls are decorated");
   assert.ok(dividers > buildings / 2, "rooms divided");
+  assert.ok(desksSeated > 10, "desks given chairs");
+  // A bookcase against a side wall (laid by hand) stands back over the wall's top, facing into the room.
+  {
+    const shelves = worldInteriorSprites({
+      width: 5,
+      ground: "#####" + "#...#" + "#...#" + "#####",
+      furniture: [
+        { kind: "bookshelf", x: 1, y: 2 },
+        { kind: "bookshelf", x: 3, y: 2 },
+      ],
+      rooms: [],
+    } as unknown as Parameters<typeof worldInteriorSprites>[0]);
+    assert.deepEqual(
+      shelves.map((sprite) => [sprite.ids[0], sprite.shift]),
+      [
+        ["in_bookshelf_right", -1 / 3],
+        ["in_bookshelf_left", 1 / 3],
+      ],
+    );
+  }
   for (const id of [
     "in_table_square",
     "in_longtable_h",
@@ -328,7 +356,7 @@ try {
   }
   assert.equal(
     `${WORLD_INTERIOR_VERSION}:${pinned.digest("hex").slice(0, 16)}`,
-    "2:257a46692e369d9a",
+    "2:ceceb1d463de6a77",
     "the rooms changed: bump WORLD_INTERIOR_VERSION and pin the new digest",
   );
 
