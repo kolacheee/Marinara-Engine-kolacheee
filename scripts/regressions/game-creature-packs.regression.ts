@@ -14,7 +14,12 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { parseCreaturePack, type CreaturePack } from "../../packages/shared/src/index.js";
+import {
+  builtInCreaturePackSchema,
+  findCreatureArt,
+  parseCreaturePack,
+  type CreaturePack,
+} from "../../packages/shared/src/index.js";
 
 const dataDir = mkdtempSync(join(tmpdir(), "marinara-creature-packs-"));
 process.env.DATA_DIR = dataDir;
@@ -138,6 +143,40 @@ try {
     const chosen = async () => (await app.inject({ method: "GET", url: "/api/game-tile-packs/creatures" })).json();
     assert.deepEqual(await library(), { packs: [], selection: null });
     assert.deepEqual(await chosen(), { pack: null }, "no pack: fights keep their tokens");
+
+    // The Engine's own art: every SRD monster, walking, its flyers with a flying block, each block a sheet
+    // file of its own that the route serves (and nothing else).
+    const own = (await app.inject({ method: "GET", url: "/api/game-tile-packs/creatures/builtin" })).json();
+    const builtIn = builtInCreaturePackSchema.parse(own.pack);
+    assert.equal(builtIn.creatures.length, 319);
+    assert.ok(
+      builtIn.creatures.every((creature) => creature.frames === 3),
+      "every creature walks",
+    );
+    assert.equal(builtIn.creatures.filter((creature) => creature.fly).length, 101);
+    const sizes = new Map(builtIn.sheets.map((sheet) => [sheet.id, sheet]));
+    for (const creature of builtIn.creatures)
+      for (const block of [...creature.variants, ...(creature.fly ?? [])]) {
+        const sheet = sizes.get(block.sheet);
+        assert.ok(sheet, `${creature.id}: its sheet is listed`);
+        assert.deepEqual(
+          [sheet.width, sheet.height],
+          [3 * creature.w * builtIn.tileSize, 4 * creature.h * builtIn.tileSize],
+          `${creature.id}: three frames by four facings`,
+        );
+      }
+    assert.ok(findCreatureArt(builtIn, { name: "Goblin 3" }), "found by name");
+    const goblin = builtIn.sheets.find((sheet) => sheet.id === "goblin-walk")!;
+    const png = await app.inject({ method: "GET", url: goblin.png });
+    assert.equal(png.statusCode, 200);
+    assert.equal(png.headers["content-type"], "image/png");
+    assert.deepEqual([...png.rawPayload.subarray(1, 4)], [0x50, 0x4e, 0x47]);
+    for (const url of ["sheet/nothing.png", "sheet/..%2Fpack.json", "sheet/pack.json"])
+      assert.equal(
+        (await app.inject({ method: "GET", url: `/api/game-tile-packs/creatures/builtin/${url}` })).statusCode,
+        404,
+        url,
+      );
 
     const save = (body: unknown) =>
       app.inject({ method: "POST", url: "/api/game-tile-packs/creatures", payload: { pack: body } });

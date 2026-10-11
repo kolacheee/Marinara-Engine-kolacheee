@@ -109,6 +109,26 @@ export const creaturePackSchema = z
 export type CreaturePack = z.infer<typeof creaturePackSchema>;
 export type CreaturePackCreature = CreaturePack["creatures"][number];
 
+/** The Engine's own creature art (Pixelforge W1): a pack whose sheets are PNG files the server serves at
+ *  this path, one per creature's block, so a fight loads only the art of the creatures on its board. It is
+ *  never stored, shared or chosen; fights draw from it after the Experience's packs and the chosen one. */
+export const CREATURE_BUILT_IN_SHEET_PATH = "/api/game-tile-packs/creatures/builtin/sheet/";
+export const builtInCreaturePackSchema = creaturePackSchema.extend({
+  sheets: z
+    .array(
+      z
+        .object({
+          id,
+          png: z.string().regex(/^\/api\/game-tile-packs\/creatures\/builtin\/sheet\/[a-z0-9][a-z0-9_-]{0,63}\.png$/u),
+          width: z.number().int().min(1).max(CREATURE_PACK_MAX.sheetPx),
+          height: z.number().int().min(1).max(CREATURE_PACK_MAX.sheetPx),
+        })
+        .strict(),
+    )
+    .min(1)
+    .max(CREATURE_PACK_MAX.creatures * 2),
+});
+
 /** The most a creature pack's file may be (its sheets are most of it). */
 export const CREATURE_PACK_MAX_BYTES = 32_000_000;
 
