@@ -28,6 +28,7 @@ import {
   worldSeason,
   worldBridgePieces,
   worldHedgePieces,
+  worldJoinedPieces,
 } from "@marinara-engine/shared";
 import { useDungeonEnter, useOverworld, useTown, useTownVisit } from "../../hooks/use-game";
 import {
@@ -151,7 +152,10 @@ export function TownView({
     const standing: Array<{ bottom: number; draw: () => void }> = [];
     const streetEdges = drawTile.hasEdges("street");
     const squareEdges = drawTile.hasEdges("square");
-    const roadEdges = drawTile.hasEdges("road");
+    // Paths as joined pieces (laid as a hedge is, meeting the streets and square) where the pack has them,
+    // else by the road's edge pieces.
+    const pathJoined = drawTile.hasPiece("path_joined", 0);
+    const roadEdges = !pathJoined && drawTile.hasEdges("road");
     const waterEdges = drawTile.hasEdges("water");
     // A town's cell, none off its edge: what joins a hedge to its neighbours, and which way a bridge runs.
     const groundAt = (x: number, y: number) =>
@@ -179,7 +183,7 @@ export function TownView({
         if (cell === "f") {
           if (!drawTile(ctx, "farmland", x * T, y * T, pick) && !drawTile(ctx, "town_ground", x * T, y * T, pick))
             plain(PLAIN.field, x * T, y * T);
-        } else if (cell === "p" && !roadEdges) {
+        } else if (cell === "p" && !roadEdges && !pathJoined) {
           plain(PLAIN.path, x * T, y * T);
         } else if ((cell === "~" || cell === "b") && !waterEdges) {
           plain(PLAIN.water, x * T, y * T);
@@ -216,6 +220,22 @@ export function TownView({
     };
     if (waterEdges) edgePass("water", (x, y) => cellOf(x, y) === "~" || cellOf(x, y) === "b");
     if (roadEdges) edgePass("road", (x, y) => cellOf(x, y) === "p");
+    if (pathJoined) {
+      const joins = (x: number, y: number) => "psq".includes(groundAt(x, y) ?? "-");
+      const spilling: Array<() => void> = [];
+      for (let y = 0; y < town.height; y++)
+        for (let x = 0; x < town.width; x++) {
+          if (cellOf(x, y) !== "p") continue;
+          const pick = cellNoise(x, y)(5);
+          const pieces = worldJoinedPieces(joins, x, y, (piece) => drawTile.hasPiece("path_joined", piece, pick));
+          const drawPieces = () => {
+            for (const piece of pieces) drawTile.piece(ctx, "path_joined", piece, x * T, y * T, pick);
+          };
+          if (pieces.some((piece) => piece >= 20)) spilling.push(drawPieces);
+          else drawPieces();
+        }
+      for (const drawPieces of spilling) drawPieces();
+    }
     if (streetEdges) edgePass("street", (x, y) => cellOf(x, y) === "s" || cellOf(x, y) === "q");
     if (squareEdges) edgePass("square", (x, y) => cellOf(x, y) === "q");
     else if (streetEdges) {

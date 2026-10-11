@@ -168,12 +168,14 @@ export function worldEdgeMask(
  * step one cell across or down, never a corner-to-corner step, so a road never pinches to a diagonal),
  * from the middle of one cell to the middle of the other. `skip` leaves cells out (water, a settlement's
  * own cell). Walked the same way whichever end it starts from (ties between the two axes would otherwise
- * lay a way and its way back side by side), and listed from `from`.
+ * lay a way and its way back side by side), and listed from `from`. `diagonal` walks it eight-connected
+ * instead, for a pack whose road joins corner to corner (`road_joined`).
  */
 export function worldRoadCells(
   start: { x: number; y: number },
   end: { x: number; y: number },
   skip: (x: number, y: number) => boolean,
+  diagonal = false,
 ): Array<{ x: number; y: number }> {
   const flip = start.y > end.y || (start.y === end.y && start.x > end.x);
   const [from, to] = flip ? [end, start] : [start, end];
@@ -181,6 +183,19 @@ export function worldRoadCells(
   let [x, y] = [from.x, from.y];
   const [dx, dy] = [Math.abs(to.x - from.x), Math.abs(to.y - from.y)];
   const [sx, sy] = [Math.sign(to.x - from.x), Math.sign(to.y - from.y)];
+  if (diagonal) {
+    // Eight-connected (for joined road pieces, which join corner to corner): the cell nearest the line in
+    // each column, or each row where the line is steeper.
+    const steps = Math.max(dx, dy);
+    for (let step = 0; step <= steps; step++) {
+      const [cx, cy] = [
+        from.x + sx * Math.round((step * dx) / steps || 0),
+        from.y + sy * Math.round((step * dy) / steps || 0),
+      ];
+      if (!skip(cx, cy)) out.push({ x: cx, y: cy });
+    }
+    return flip ? out.reverse() : out;
+  }
   // A supercover walk: step along whichever axis the line reaches the next cell border on first.
   let [ix, iy] = [0, 0];
   const push = () => {

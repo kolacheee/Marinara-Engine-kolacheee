@@ -191,6 +191,9 @@ export type OverworldTileDrawer = ((
   setCellSeason: (season: WorldSeason | undefined) => void;
   /** Whether the pack has a fringe for a ground look (or for the look it stands in for). */
   hasFringe: (look: string) => boolean;
+  /** The rows of a look's fringe blocks (4, 6 or 30, the fewest any variant has, as worldEdgePiece takes
+   *  them), 0 with none. */
+  fringeRows: (look: string) => number;
   /**
    * Spills a look's own ground past its cells onto its neighbours around the corner at (x, y) (in units): the
    * look drawn over the four cells meeting there (`pickAt` the variant a cell draws, as the ground does), seen
@@ -433,6 +436,10 @@ export function useOverworldAtlas(
       const fringeOf = (look: string) =>
         seasonal(ready?.edges, `fringe_${look}`) ?? seasonal(ready?.edges, `fringe_${fallbackOf(look) ?? ""}`);
       draw.hasFringe = (look) => Boolean(fringeOf(look)?.length);
+      draw.fringeRows = (look) => {
+        const variants = fringeOf(look);
+        return variants?.length ? Math.min(...variants.map((block) => block.length / 4)) : 0;
+      };
       let through: HTMLCanvasElement | null = null;
       draw.fringe = (ctx, look, piece, x, y, pickAt, pick = 0) => {
         const variants = fringeOf(look);
@@ -506,6 +513,7 @@ export function useOverworldAtlas(
     draw.hasPiece = () => false;
     draw.hasEdges = () => false;
     draw.hasFringe = () => false;
+    draw.fringeRows = () => 0;
     draw.fringe = () => false;
     draw.edgeRows = () => 0;
     draw.edge = () => false;

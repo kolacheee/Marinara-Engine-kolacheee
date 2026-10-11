@@ -97,7 +97,8 @@ export const WORLD_TILE_IDS = Object.freeze([
   // Edge tiles (image packs): each variant a block of sixteen pieces, four cells by four, for a terrain
   // that blends into the ground around it.
   ...WORLD_EDGE_TERRAINS.map((terrain) => `edge_${terrain}` as const),
-  // Fringes (image packs): for a ground look, sixteen masks through which it spills onto its neighbours.
+  // Fringes (image packs): for a ground look, the masks through which it spills onto its neighbours, laid out
+  // as an edge tile's (sixteen; with slanted corners; with curved runs).
   ...WORLD_GROUND_LOOKS.map((look) => `fringe_${look}` as const),
   // A site on the overworld the party can walk into (a cave, mine or ruin outside any town): its marker, a
   // pack's own (image packs; each variant a kind of site, picked per place).
@@ -107,9 +108,12 @@ export const WORLD_TILE_IDS = Object.freeze([
   "bridge",
   "hedge",
   // Joined pieces (image packs): a hedge or fence that meets its neighbours (straight, curved and diagonal),
+  // a road over the overworld and a path through town laid the same way (flat, under what stands),
   // and a bridge along the way it spans with railings and ends, slanting or turning a corner
   // (WORLD_TILE_BLOCKS); the plain bridge and hedge stand in without them.
   "hedge_joined",
+  "road_joined",
+  "path_joined",
   "bridge_ns",
   "bridge_ew",
   "bridge_diag",
@@ -146,6 +150,8 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "bridge",
   "hedge",
   "hedge_joined",
+  "road_joined",
+  "path_joined",
   "bridge_ns",
   "bridge_ew",
   "bridge_diag",
@@ -159,6 +165,8 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
  *  (worldBridgePieces). */
 export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number]>> = Object.freeze({
   hedge_joined: [4, 23],
+  road_joined: [4, 23],
+  path_joined: [4, 23],
   bridge_ns: [1, 3],
   bridge_ew: [3, 1],
   bridge_diag: [6, 4],
@@ -173,12 +181,26 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
       [4, 5],
       [4, 4],
     ],
+    road_joined: [
+      [4, 23],
+      [4, 5],
+      [4, 4],
+    ],
+    path_joined: [
+      [4, 23],
+      [4, 5],
+      [4, 4],
+    ],
     bridge_ns: [[1, 3]],
     bridge_ew: [[3, 1]],
     bridge_diag: [[6, 4]],
     bridge_turn: [[2, 2]],
   },
 );
+
+/** Tiles laid out as `hedge_joined` is (worldTilePiece, worldJoinedPieces): a hedge or fence, a road over
+ *  the overworld, a path through town. */
+export const WORLD_JOINED_TILE_IDS: readonly string[] = Object.freeze(["hedge_joined", "road_joined", "path_joined"]);
 
 /** `hedge_joined`'s curved corners (row 5), by the straight mask they stand in for: north and east, east and
  *  south, south and west, west and north. */
@@ -227,7 +249,7 @@ export function worldTilePiece(
 ): { x: number; y: number; w: number; h: number } | null {
   const [w, h] = block;
   if (!Number.isInteger(piece) || piece < 0) return null;
-  if (id === "hedge_joined") {
+  if (WORLD_JOINED_TILE_IDS.includes(id)) {
     if (piece < 20) return piece < 4 * Math.min(h, 5) ? { x: piece % 4, y: Math.floor(piece / 4), w: 1, h: 1 } : null;
     const at = piece - 20;
     return at < 18 && h >= 23 ? { x: (at % 2) * 2, y: 5 + Math.floor(at / 2) * 2, w: 2, h: 2 } : null;
@@ -264,7 +286,19 @@ export function worldHedgePieces(
   y: number,
   has: (piece: number) => boolean = () => true,
 ): number[] {
-  const { straight, diagonal } = joinMasks(isHedge, x, y);
+  return worldJoinedPieces(isHedge, x, y, has);
+}
+
+/** A joined tile's pieces for a cell (`hedge_joined`, `road_joined`, `path_joined`, laid out alike), as
+ *  worldHedgePieces picks a hedge's: `same` says which cells it joins (a road the road's cells, a path its
+ *  own and the streets and square it meets). */
+export function worldJoinedPieces(
+  same: (x: number, y: number) => boolean,
+  x: number,
+  y: number,
+  has: (piece: number) => boolean = () => true,
+): number[] {
+  const { straight, diagonal } = joinMasks(same, x, y);
   const plain =
     WORLD_HEDGE_CURVES[straight] !== undefined && has(WORLD_HEDGE_CURVES[straight]!) && !diagonal
       ? WORLD_HEDGE_CURVES[straight]!
@@ -674,13 +708,10 @@ function parseImageTilePack(value: unknown): TilePackRead {
           issues.push(
             `${id} variant ${index + 1} is ${w} by ${h} cells; its block is ${sizes.map(([bw, bh]) => `${bw} by ${bh}`).join(" or ")}.`,
           );
-      } else if (id.startsWith("fringe_")) {
-        if (w !== 4 || h !== 4)
-          issues.push(`${id} variant ${index + 1} is ${w} by ${h} cells; a fringe's block is 4 by 4.`);
-      } else if (id.startsWith("edge_")) {
+      } else if (id.startsWith("edge_") || id.startsWith("fringe_")) {
         if (w !== 4 || !(WORLD_EDGE_BLOCK_ROWS as readonly number[]).includes(h))
           issues.push(
-            `${id} variant ${index + 1} is ${w} by ${h} cells; an edge tile's block is 4 by 4, 4 by 6, or 4 by 30.`,
+            `${id} variant ${index + 1} is ${w} by ${h} cells; ${id.startsWith("fringe_") ? "a fringe's" : "an edge tile's"} block is 4 by 4, 4 by 6, or 4 by 30.`,
           );
       } else if (w > TILE_PACK_IMAGE_SPAN || h > TILE_PACK_IMAGE_SPAN)
         issues.push(`${id} variant ${index + 1} spans ${w} by ${h} cells; at most ${TILE_PACK_IMAGE_SPAN} each way.`);
