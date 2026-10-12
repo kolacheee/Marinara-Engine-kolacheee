@@ -1,8 +1,9 @@
 // ──────────────────────────────────────────────
 // Routes: tile packs (worldgen W9a)
 //
-// The Engine's own packs, one per setting family (read only, shipped in src/assets/overworld-tiles),
-// and one per dungeon set (src/assets/dungeon-tiles, by the set's id: a cave, dungeon or station's art),
+// The Engine's own packs, one per setting family (read only: its art, 48 px images in
+// src/assets/overworld-art, and the 16 px tiles drawn in code in src/assets/overworld-tiles, served where a
+// family has no art and to a maker of drawn tiles), and one per dungeon set (src/assets/dungeon-tiles, by the set's id: a cave, dungeon or station's art),
 // and the packs made in Pixelforge or imported from a file, filed under `local/<id>` so none can take a
 // built-in family's id. Saving, importing, removing, and choosing which pack each family is drawn with
 // change what every game draws, so all sit behind `requirePrivilegedAccess`, as ruleset imports do.
@@ -36,6 +37,16 @@ import {
 } from "../services/storage/game-tile-packs.storage.js";
 
 const BUILT_IN_DIR = fileURLToPath(new URL("../assets/overworld-tiles/", import.meta.url));
+const BUILT_IN_ART_DIR = fileURLToPath(new URL("../assets/overworld-art/", import.meta.url));
+/** The families the Engine ships art for (an image pack beside the drawn one). */
+const builtInArtFamilies = (() => {
+  try {
+    const files = new Set(readdirSync(BUILT_IN_ART_DIR));
+    return WORLD_ART_FAMILIES.filter((family) => files.has(`${family}.json`));
+  } catch {
+    return [];
+  }
+})();
 const BUILT_IN_DUNGEON_DIR = fileURLToPath(new URL("../assets/dungeon-tiles/", import.meta.url));
 /** The dungeon sets the Engine ships art for: a known set with its pack's file beside it. */
 const builtInDungeonSets = (() => {
@@ -123,6 +134,8 @@ export async function gameTilePacksRoutes(app: FastifyInstance) {
       tilePackVersion: row.definition.startsWith('{"tilePackVersion":2') ? 2 : 1,
     })),
     builtIn: [...WORLD_ART_FAMILIES],
+    // The families whose built-in pack is art (images); the rest are drawn.
+    builtInArt: builtInArtFamilies,
     builtInDungeons: builtInDungeonSets,
     // Every tile a pack can draw, and the ones laid out as blocks of pieces, for a maker to offer them all.
     tileIds: WORLD_TILE_IDS,
@@ -131,38 +144,53 @@ export async function gameTilePacksRoutes(app: FastifyInstance) {
     selection: await readSelection(),
   }));
 
-  // ── GET /api/game-tile-packs/builtin/:family ──
+  /** A family's built-in pack: its art where it has some (unless `drawn`), else its drawn tiles. */
+  const sendBuiltIn = async (family: string, drawn: boolean, reply: FastifyReply) => {
+    if (!(WORLD_ART_FAMILIES as readonly string[]).includes(family)) {
+      return reply.status(404).send({ error: "No built-in tile pack for that family." });
+    }
+    const art = !drawn && (builtInArtFamilies as readonly string[]).includes(family);
+    const read = parseTilePack(await readFile(`${art ? BUILT_IN_ART_DIR : BUILT_IN_DIR}${family}.json`, "utf8"));
+    if (!read.ok) {
+      logger.error("[game/tile-packs] The built-in %s pack does not read: %s", family, read.issues.join("; "));
+      return reply.status(500).send({ error: "The built-in tile pack does not read." });
+    }
+    return { pack: read.pack };
+  };
+
+  // ── GET /api/game-tile-packs/builtin/:family ── the family's own pack: its art, else its drawn tiles.
   app.get<{ Params: { family: string } }>(
     "/builtin/:family",
     { config: { rateLimit: GAME_TILE_PACKS_RATE_LIMIT } },
+    async (req, reply) => sendBuiltIn(req.params.family, false, reply),
+  );
+
+  // ── GET /api/game-tile-packs/builtin/drawn/:family ── the family's drawn tiles (16 px, drawn in code),
+  // for a maker of drawn tiles to start from.
+  app.get<{ Params: { family: string } }>(
+    "/builtin/drawn/:family",
+    { config: { rateLimit: GAME_TILE_PACKS_RATE_LIMIT } },
+    async (req, reply) => sendBuiltIn(req.params.family, true, reply),
+  );
+
+  // ── GET /api/game-tile-packs/builtin/dungeon/:set ── a dungeon set's own art, drawn when a map names no
+  // pack of its own and the library holds none by the set's id.
+  app.get<{ Params: { set: string } }>(
+    "/builtin/dungeon/:set",
+    { config: { rateLimit: GAME_TILE_PACKS_RATE_LIMIT } },
     async (req, reply) => {
-      const family = req.params.family;
-      if (!(WORLD_ART_FAMILIES as readonly string[]).includes(family)) {
-        return reply.status(404).send({ error: "No built-in tile pack for that family." });
+      const set = req.params.set;
+      if (!builtInDungeonSets.includes(set)) {
+        return reply.status(404).send({ error: "No built-in tile pack for that dungeon set." });
       }
-      const read = parseTilePack(await readFile(`${BUILT_IN_DIR}${family}.json`, "utf8"));
+      const read = parseTilePack(await readFile(`${BUILT_IN_DUNGEON_DIR}${set}.json`, "utf8"));
       if (!read.ok) {
-        logger.error("[game/tile-packs] The built-in %s pack does not read: %s", family, read.issues.join("; "));
+        logger.error("[game/tile-packs] The built-in %s dungeon pack does not read: %s", set, read.issues.join("; "));
         return reply.status(500).send({ error: "The built-in tile pack does not read." });
       }
       return { pack: read.pack };
     },
   );
-
-  // ── GET /api/game-tile-packs/builtin/dungeon/:set ── a dungeon set's own art, drawn when a map names no
-  // pack of its own and the library holds none by the set's id.
-  app.get<{ Params: { set: string } }>("/builtin/dungeon/:set", async (req, reply) => {
-    const set = req.params.set;
-    if (!builtInDungeonSets.includes(set)) {
-      return reply.status(404).send({ error: "No built-in tile pack for that dungeon set." });
-    }
-    const read = parseTilePack(await readFile(`${BUILT_IN_DUNGEON_DIR}${set}.json`, "utf8"));
-    if (!read.ok) {
-      logger.error("[game/tile-packs] The built-in %s dungeon pack does not read: %s", set, read.issues.join("; "));
-      return reply.status(500).send({ error: "The built-in tile pack does not read." });
-    }
-    return { pack: read.pack };
-  });
 
   // ── GET /api/game-tile-packs/pack?id= ── a stored pack's latest version.
   app.get("/pack", { config: { rateLimit: GAME_TILE_PACKS_RATE_LIMIT } }, async (req, reply) => {

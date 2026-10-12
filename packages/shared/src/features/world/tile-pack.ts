@@ -1,8 +1,9 @@
 // ──────────────────────────────────────────────
 // Tile packs (worldgen W9a): the overworld's and the towns' art as data, a palette and every tile as
 // sixteen rows of sixteen characters, one per pixel: a palette index from `0-9a-zA-Z`, or "." for clear.
-// The Engine's own packs are drawn in code (scripts/art/build-overworld-tiles.mjs); a pack made in
-// Pixelforge, or shared as a file, has the same shape. A tile a pack lacks is drawn plain.
+// The Engine's own drawn packs are drawn in code (scripts/art/build-overworld-tiles.mjs), and its art is
+// image packs (scripts/art/pack-builtin-art.mjs); a pack made in Pixelforge, or shared as a file, has the
+// same shape. A tile a pack lacks is drawn plain.
 //
 // An image pack (version 2, Pixelforge's image tiles) draws its tiles from PNG sheets laid out on a grid
 // of cells `tileSize` pixels across (48 for the RPG Maker look the art direction chose), each tile a

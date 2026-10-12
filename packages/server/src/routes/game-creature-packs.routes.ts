@@ -107,19 +107,25 @@ export async function gameCreaturePacksRoutes(app: FastifyInstance) {
   });
 
   // ── GET /api/game-tile-packs/creatures/builtin ── the Engine's own art, or none.
-  app.get("/builtin", async () => ({ pack: (await readBuiltIn())?.pack ?? null }));
+  app.get("/builtin", { config: { rateLimit: GAME_RULESETS_RATE_LIMIT } }, async () => ({
+    pack: (await readBuiltIn())?.pack ?? null,
+  }));
 
   // ── GET /api/game-tile-packs/creatures/builtin/sheet/:file ── one of its sheets.
-  app.get<{ Params: { file: string } }>("/builtin/sheet/:file", async (req, reply) => {
-    const file = req.params.file;
-    const own = await readBuiltIn();
-    if (!own || !SHEET_FILE.test(file) || !own.files.has(file))
-      return reply.status(404).send({ error: "No such sheet." });
-    return reply
-      .type("image/png")
-      .header("cache-control", "public, max-age=86400")
-      .send(await readFile(`${BUILT_IN_DIR}${file}`));
-  });
+  app.get<{ Params: { file: string } }>(
+    "/builtin/sheet/:file",
+    { config: { rateLimit: GAME_RULESETS_RATE_LIMIT } },
+    async (req, reply) => {
+      const file = req.params.file;
+      const own = await readBuiltIn();
+      if (!own || !SHEET_FILE.test(file) || !own.files.has(file))
+        return reply.status(404).send({ error: "No such sheet." });
+      return reply
+        .type("image/png")
+        .header("cache-control", "public, max-age=86400")
+        .send(await readFile(`${BUILT_IN_DIR}${file}`));
+    },
+  );
 
   // ── GET /api/game-tile-packs/creatures/library ── the stored packs and the one chosen.
   app.get("/library", { config: { rateLimit: GAME_RULESETS_RATE_LIMIT } }, async () => ({
