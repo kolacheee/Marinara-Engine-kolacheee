@@ -14,7 +14,14 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-import { TILE_PACK_ALPHABET, parseTilePack, tilePackPixels, type TilePack } from "../../packages/shared/src/index.js";
+import {
+  DUNGEON_SETS,
+  TILE_PACK_ALPHABET,
+  WORLD_ART_FAMILIES,
+  parseTilePack,
+  tilePackPixels,
+  type TilePack,
+} from "../../packages/shared/src/index.js";
 
 const dataDir = mkdtempSync(join(tmpdir(), "marinara-tile-packs-"));
 process.env.DATA_DIR = dataDir;
@@ -72,9 +79,24 @@ try {
     const own = await app.inject({ method: "GET", url: "/api/game-tile-packs/builtin/wuxia" });
     assert.equal(own.statusCode, 200);
     assert.equal(own.json().pack.family, "wuxia");
+    // The Engine's art (48 px images) where a family has some, with no characters (drawn again on their
+    // own); its drawn tiles stay served for a maker of drawn tiles.
+    assert.deepEqual(empty.builtInArt, [...WORLD_ART_FAMILIES], "every family has art of its own");
+    assert.equal(own.json().pack.tilePackVersion, 2);
+    assert.equal(own.json().pack.characters, undefined, "no characters in the built-in art");
+    for (const tile of ["folk", "party"]) assert.equal(own.json().pack.tiles[tile], undefined, `no ${tile} sprite`);
+    assert.ok(own.json().pack.tiles["grass@winter"], "the seasons are in it");
+    const drawn = await app.inject({ method: "GET", url: "/api/game-tile-packs/builtin/drawn/wuxia" });
+    assert.equal(drawn.statusCode, 200);
+    assert.equal(drawn.json().pack.tilePackVersion, 1);
+    assert.equal((await app.inject({ method: "GET", url: "/api/game-tile-packs/builtin/drawn/noir" })).statusCode, 404);
     assert.equal((await app.inject({ method: "GET", url: "/api/game-tile-packs/builtin/noir" })).statusCode, 404);
     // Each dungeon set the Engine has art for is served by its id; any other id is not.
-    assert.ok(Array.isArray(empty.builtInDungeons), "the dungeon sets with art of their own are listed");
+    assert.deepEqual(
+      empty.builtInDungeons,
+      DUNGEON_SETS.map((set) => set.id),
+      "every dungeon set has art of its own",
+    );
     assert.ok(
       empty.tileIds.includes("hedge_joined") && empty.tileIds.includes("site"),
       "every tile id a pack may draw",
