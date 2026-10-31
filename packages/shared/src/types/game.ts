@@ -273,6 +273,11 @@ export interface GameSetupConfig {
   /** A cruel opponent (a `cruel` temperament, combat AI T3) may strike those already down. Absent is
    *  never: off unless the game asks for it. */
   cruelOpponents?: boolean;
+  /** Classic Marinara classes (combat overhaul): party members fight with the class progression kept
+   *  on their card and opponents by tier and archetype, in Classic fights. Absent is off. */
+  marinaraClasses?: boolean;
+  /** With `marinaraClasses`, a party member who falls in a fight is gone for good. Absent is off. */
+  permadeath?: boolean;
   /** The player plays every companion in a fight themselves. Absent, each companion fights on its
    *  own (the Engine plays it) until the player takes it (Alyssa 2026-10-26). */
   playerRunsCompanions?: boolean;

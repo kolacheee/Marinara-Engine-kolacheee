@@ -507,6 +507,8 @@ export interface MarinaraFighter {
   gear?: MarinaraFighterGear;
   /** The foe's tier, for balance and XP. */
   tier?: MarinaraEnemyTier;
+  /** A boss once below half its HP: it hits harder for the rest of the fight (MARINARA_BOSS_RULES). */
+  enraged?: boolean;
   // fight state
   next: number;
   mods: Array<{ stat: string; pct: number; turns: number; source: string }>;
@@ -1129,6 +1131,7 @@ export function marinaraHitNumbers(
   if (magic) pct += hooks.spellDamagePct ?? 0;
   pct += (hooks.damagePct ?? 0) + (actor.gear?.damagePct ?? 0);
   if (hooks.damageBelowHalfPct && actor.hp < actor.maxHp / 2) pct += hooks.damageBelowHalfPct;
+  if (actor.enraged) pct += MARINARA_BOSS_RULES.enrageDamagePct;
   if (target.marked > 0 && hooks.bonusVsMarked) pct += hooks.bonusVsMarked;
   if (effect.finisher && target.hp < target.maxHp * effect.finisher.below) pct += effect.finisher.bonus;
   if (target.hp < target.maxHp / 2) pct += hooksOf(target).takenBelowHalfPct ?? 0;
@@ -1260,9 +1263,29 @@ function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly Marina
   else unit.mods.splice(picked.index, 1);
 }
 
+/**
+ * What only a boss has (Alyssa's strict rule: nothing legendary below a boss): it shrugs off the
+ * statuses that would take whole turns from it, and once below half its HP it hits harder for the
+ * rest of the fight.
+ */
+export const MARINARA_BOSS_RULES = {
+  ignores: ["sleep", "stun", "confuse"] as readonly MarinaraStatusId[],
+  enrageBelow: 0.5,
+  enrageDamagePct: 0.2,
+};
+
+/** Whether a status can't take hold on this fighter. */
+function shrugsOff(target: MarinaraFighter, status: string): boolean {
+  return (
+    !!hooksOf(target).debuffImmune ||
+    !!target.gear?.immune?.includes(status) ||
+    (target.tier === "boss" && (MARINARA_BOSS_RULES.ignores as readonly string[]).includes(status))
+  );
+}
+
 function addStatus(target: MarinaraFighter, applies: NonNullable<MarinaraEffect["applies"]>, bonus: number) {
   if (applies.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0) return false;
-  if (hooksOf(target).debuffImmune || target.gear?.immune?.includes(applies.status)) return false;
+  if (shrugsOff(target, applies.status)) return false;
   target.statuses = target.statuses.filter((s) => s.status !== applies.status);
   target.statuses.push({ status: applies.status, turns: applies.duration + bonus, power: applies.power });
   return true;
@@ -1394,12 +1417,22 @@ export function releaseMarinaraCharge(
   all: MarinaraFighter[],
   ctx: MarinaraFightContext,
 ): void {
-  const skill = actor.skills.find((s) => s.id === release.skillId) ?? null;
-  const base = skill ? marinaraSkillEffect(actor, skill) : null;
+  const ability = release.skillId.startsWith("enemy:")
+    ? MARINARA_ENEMY_SKILLS[release.skillId.slice("enemy:".length)]
+    : undefined;
+  const skill = ability ? null : (actor.skills.find((s) => s.id === release.skillId) ?? null);
+  let base: MarinaraEffect | null = skill ? marinaraSkillEffect(actor, skill) : null;
+  if (ability) {
+    const { label: _label, ...effect } = ability;
+    base = effect;
+  }
   if (!base) return;
   const effect = { ...base, charge: false };
   const target = all.find((u) => u.id === release.targetId && u.hp > 0) ?? marinaraTargetsFor(actor, effect, all)[0];
-  if (target) act(actor, skill, effect, [target], all, ctx);
+  if (!target) return;
+  // An area lands on everyone in it when it goes off, not only on the one it was aimed at.
+  const struck = ctx.grouped === false ? [target] : marinaraStruck(actor, effect, [target], all);
+  act(actor, skill, effect, struck, all, ctx, ability ? release.skillId : undefined);
 }
 
 /** Defending: Defense up until the fighter's next turn, a quarter of its stamina back. */
@@ -1459,10 +1492,11 @@ export function performMarinaraOption(
   const struck = ctx.grouped === false ? [...targets] : marinaraStruck(actor, option.effect, targets, all);
   if (option.effect.charge) {
     const target = struck[0];
-    if (!target || !option.skill) return;
-    actor.charging = { skillId: option.skill.id, targetId: target.id };
+    const chargedId = option.skill?.id ?? option.id;
+    if (!target || !chargedId) return;
+    actor.charging = { skillId: chargedId, targetId: target.id };
     if (hooks.entrench) entrench(actor);
-    ctx.events.push({ kind: "charge", actorId: actor.id, targetId: target.id, skillId: option.skill.id });
+    ctx.events.push({ kind: "charge", actorId: actor.id, targetId: target.id, skillId: chargedId });
     return;
   }
   act(actor, option.skill, option.effect, struck, all, ctx, option.id ?? undefined);
@@ -1613,10 +1647,7 @@ function act(
     case "status":
       for (const target of targets) {
         const roll = random();
-        if (
-          effect.status !== "regen" &&
-          (roll > (effect.chance ?? 1) || hooksOf(target).debuffImmune || target.gear?.immune?.includes(effect.status!))
-        ) {
+        if (effect.status !== "regen" && (roll > (effect.chance ?? 1) || shrugsOff(target, effect.status!))) {
           ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
           continue;
         }
@@ -1788,6 +1819,8 @@ function strike(
   if (hooks.assassinate && crit && target.hp - amount < target.maxHp * 0.15 && target.maxHp <= 300) amount = target.hp;
   const before = target.hp;
   target.hp -= amount;
+  if (target.tier === "boss" && target.hp > 0 && target.hp < target.maxHp * MARINARA_BOSS_RULES.enrageBelow)
+    target.enraged = true;
   if (target.hp <= 0 && targetHooks.lastStand && !target.lastStandUsed) {
     target.lastStandUsed = true;
     target.hp = 1;
