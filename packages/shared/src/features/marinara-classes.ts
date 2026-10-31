@@ -458,7 +458,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "sword-saint",
-      label: "Sword Saint",
+      label: "Moonless Blade",
       from: "duelist",
       role: "Ends duels in one turn",
       leans: ["speed", "skill"],
@@ -469,7 +469,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "ravager",
-      label: "Ravager",
+      label: "Bloodsworn",
       from: "blade",
       role: "Grows deadlier as it is hurt",
       leans: ["strength", "hp"],
@@ -592,7 +592,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "bastion",
-      label: "Bastion",
+      label: "Stonewall",
       from: "sentinel",
       role: "Nothing gets past",
       leans: ["hp", "defense", "resistance"],
@@ -650,7 +650,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "unbroken",
-      label: "Unbroken",
+      label: "Bulwark",
       from: "aegis",
       role: "The wall that never falls",
       leans: ["hp", "defense", "resistance", "luck"],
@@ -663,7 +663,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           15,
           "Allies cannot drop below 1 HP for a round. Once a fight.",
         ),
-        passive("bulwark-aura", "Bulwark Aura", 25, "The front row gains Defense.", true),
+        passive("bulwark-aura", "Shield Line", 25, "The front row gains Defense.", true),
       ],
     },
   ]),
@@ -722,7 +722,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "windrunner",
-      label: "Windrunner",
+      label: "Harrier",
       from: "skirmisher",
       role: "Owns the turn order",
       leans: ["speed", "skill"],
@@ -793,7 +793,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "deadeye",
-      label: "Deadeye",
+      label: "Farshot",
       from: "sharpshooter",
       role: "One shot, one kill",
       leans: ["skill", "strength"],
@@ -850,7 +850,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
   ...tree("arcanist", [
     {
       id: "arcanist",
-      label: "Arcanist",
+      label: "Channeler",
       role: "Back-row caster",
       leans: ["magic"],
       skills: [
@@ -868,7 +868,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "elementalist",
-      label: "Elementalist",
+      label: "Fusionist",
       from: "arcanist",
       role: "Chains elements into reactions",
       leans: ["magic", "skill"],
@@ -1003,7 +1003,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "mesmer",
-      label: "Mesmer",
+      label: "Dreamcaller",
       from: "hexer",
       role: "Sleep, confusion, delay",
       leans: ["magic", "speed"],
@@ -1036,7 +1036,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "eclipse",
-      label: "Eclipse",
+      label: "Void Sovereign",
       from: "void-binder",
       role: "Darkness made will",
       leans: ["magic", "resistance", "luck", "hp"],
@@ -1130,7 +1130,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "eternal",
-      label: "Eternal",
+      label: "Lightbearer",
       from: "lifebinder",
       role: "Death has no hold",
       leans: ["magic", "resistance", "hp", "luck"],
@@ -1166,7 +1166,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "chanter",
-      label: "Chanter",
+      label: "Cantor",
       from: "herald",
       role: "Songs that stack",
       leans: ["luck", "magic"],
@@ -1188,7 +1188,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     },
     {
       id: "tactician",
-      label: "Tactician",
+      label: "Field Captain",
       from: "herald",
       role: "Orders allies",
       leans: ["speed", "skill"],
@@ -1448,7 +1448,7 @@ export function marinaraUsableSkills(progression: MarinaraProgression): Array<Ma
 /**
  * The stat a carried skill runs on (Alyssa 2026-10-31): the better of the character's own and what
  * they would have in their best-trained class for that stat, as that class's expected stats at its
- * class level. A Blade who trained Arcanist to 10 casts a carried Element Bolt with an Arcanist's
+ * class level. A Blade who trained Channeler to 10 casts a carried Element Bolt with a Channeler's
  * Magic at level 10, not a Blade's.
  */
 export function marinaraCarriedStat(progression: MarinaraProgression, stat: MarinaraStat): number {
