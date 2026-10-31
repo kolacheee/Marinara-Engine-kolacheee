@@ -268,6 +268,7 @@ export * from "./utils/dice-pool.js";
 export { parseChoiceOptions, resolveChoiceVariableValue, type ChoiceOptionValue } from "./utils/preset-choices.js";
 
 export * from "./features/combat-ai.js";
+export * from "./features/marinara-classes.js";
 export * from "./features/combat-director.js";
 
 export * from "./features/combat-conditions.js";
