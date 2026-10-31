@@ -233,6 +233,37 @@ export function marinaraBestDamageType(
   return best;
 }
 
+// ── Weapon riders ──
+
+/**
+ * A rider is damage of another type carried on top of a weapon hit (Alyssa 2026-10-31): from an
+ * enchantment (Imbue Weapon) or a coating item the user dips the weapon in. It deals a share of
+ * the hit's damage before affinities, in its own type, so the target's affinity to the rider's type
+ * applies (more for an enchantment than a coating); a Poison rider poisons instead. It lands only when the hit does and the weapon's own
+ * type is not immune, absorbed or otherwise walled off, except Light and Dark, which pierce any
+ * physical immunity (a ghost that steel passes through still burns in holy water).
+ */
+/** Rider damage as a share of the hit: an enchantment (a trained skill) carries more than a coating item. */
+export const MARINARA_RIDER_DAMAGE_PCT = { enchantment: 0.6, coating: 0.4 } as const;
+export const MARINARA_POISON_RIDER = { pctOfMaxHp: 0.05, turns: 3 } as const;
+export const MARINARA_PIERCING_RIDERS = ["light", "dark"] as const satisfies readonly MarinaraDamageType[];
+
+/** Whether a rider lands, given the weapon type's own affinity multiplier against the target. */
+export function marinaraRiderLands(weaponMultiplier: number, rider: MarinaraDamageType): boolean {
+  return weaponMultiplier > 0 || (MARINARA_PIERCING_RIDERS as readonly MarinaraDamageType[]).includes(rider);
+}
+
+/** Coating items: applying one is an item action, and it lasts this many of the user's turns. */
+export const MARINARA_COATING_TURNS = 5;
+export const MARINARA_WEAPON_COATINGS = [
+  { id: "venom-vial", label: "Venom Vial", rider: "poison" },
+  { id: "fire-oil", label: "Fire Oil", rider: "fire" },
+  { id: "frost-salts", label: "Frost Salts", rider: "ice" },
+  { id: "storm-flask", label: "Storm Flask", rider: "lightning" },
+  { id: "holy-water", label: "Holy Water", rider: "light" },
+  { id: "grave-dust", label: "Grave Dust", rider: "dark" },
+] as const satisfies ReadonlyArray<{ id: string; label: string; rider: MarinaraDamageType }>;
+
 // ── Resources ──
 
 /** Magic skills spend MP, which does not come back in a fight. Everything else spends stamina. */
@@ -781,7 +812,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           5,
           "magic",
           3,
-          "For 3 turns, weapon attacks and skills take the user's pick of element.",
+          "For 3 turns, weapon hits carry the user's pick of element on top, as a rider.",
           true,
         ),
       ],
