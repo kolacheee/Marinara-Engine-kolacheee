@@ -14916,6 +14916,18 @@ function GameSurfaceComponent({
             }
             ruleset={characterSheetRuleset}
             rulesetPinned={gameRuleset.status !== "none"}
+            {...((chatMeta.gameSetupConfig as { marinaraClasses?: boolean } | undefined)?.marinaraClasses === true &&
+            gameRuleset.status === "none" &&
+            activeChatId
+              ? {
+                  marinara: {
+                    chatId: activeChatId,
+                    stored: findStoredGameCard(partyCards[characterSheetCharId].title).cards[
+                      findStoredGameCard(partyCards[characterSheetCharId].title).index
+                    ]?.marinara,
+                  },
+                }
+              : {})}
           />
         )}
 

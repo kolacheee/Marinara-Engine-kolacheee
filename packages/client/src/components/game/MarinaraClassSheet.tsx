@@ -1,0 +1,162 @@
+// A party member's Classic Marinara class, between fights (combat overhaul): level, XP, stats, the
+// classes their two trees open, and the skills they carry from other classes.
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
+import {
+  MARINARA_CARRY_SLOTS,
+  MARINARA_STATS,
+  MARINARA_XP_PER_LEVEL,
+  marinaraClass,
+  marinaraClassBlock,
+  marinaraLearnedSkills,
+  marinaraOpenClasses,
+  marinaraTrees,
+  readMarinaraCardProgression,
+} from "@marinara-engine/shared";
+import { api } from "../../lib/api-client";
+import { chatKeys } from "../../hooks/use-chats";
+
+const blockKey = (block: string) => block.replace(/-(\w)/g, (_, c: string) => c.toUpperCase());
+
+type Props = { chatId: string; name: string; stored: unknown };
+
+export function MarinaraClassSheet({ chatId, name, stored }: Props) {
+  const { t } = useTranslation();
+  const qc = useQueryClient();
+  const [busy, setBusy] = useState(false);
+  const progression = readMarinaraCardProgression(stored);
+  if (!progression)
+    return <p className="text-xs text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.none")}</p>;
+  const active = marinaraClass(progression.activeClass);
+  const trees = marinaraTrees(progression.primary, progression.temperament);
+  const learned = marinaraLearnedSkills(progression).filter((skill) => skill.classId !== progression.activeClass);
+  const save = async (change: { classId?: string; carried?: string[] }) => {
+    setBusy(true);
+    try {
+      await api.post("/game/combat/director/marinara/progression", { chatId, name, ...change });
+      await qc.invalidateQueries({ queryKey: chatKeys.detail(chatId) });
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : t("game.combat.marinara.sheet.failed"));
+    } finally {
+      setBusy(false);
+    }
+  };
+  const toggleCarry = (id: string) => {
+    const carried = progression.carried.includes(id)
+      ? progression.carried.filter((one) => one !== id)
+      : [...progression.carried, id];
+    if (carried.length > MARINARA_CARRY_SLOTS) {
+      toast.error(t("game.combat.marinara.sheet.carryFull", { count: MARINARA_CARRY_SLOTS }));
+      return;
+    }
+    void save({ carried });
+  };
+  return (
+    <div className="space-y-3 text-xs" data-testid="marinara-class-sheet">
+      <div>
+        <p className="text-sm font-semibold">
+          {active?.label ?? progression.activeClass} · {t("game.combat.marinara.level", { level: progression.level })}
+          {progression.fallen ? ` · ${t("game.combat.marinara.sheet.fallen")}` : ""}
+        </p>
+        <p className="text-[var(--muted-foreground)]">
+          {t("game.combat.marinara.sheet.xp", { xp: progression.xp, next: MARINARA_XP_PER_LEVEL })} ·{" "}
+          {t("game.combat.marinara.sheet.classLevel", {
+            level: progression.classLevels[progression.activeClass] ?? 1,
+          })}{" "}
+          ·{" "}
+          {trees.pure
+            ? t("game.combat.marinara.sheet.pure", {
+                tree: t(`game.combat.marinara.archetype.${trees.primary}`),
+              })
+            : t("game.combat.marinara.sheet.trees", {
+                primary: t(`game.combat.marinara.archetype.${trees.primary}`),
+                secondary: t(`game.combat.marinara.archetype.${trees.secondary}`),
+              })}
+        </p>
+      </div>
+      <dl className="grid grid-cols-4 gap-1 tabular-nums">
+        {MARINARA_STATS.map((stat) => (
+          <div key={stat} className="rounded border border-[var(--border)] px-1.5 py-0.5">
+            <dt className="text-[var(--muted-foreground)]">{t(`game.combat.marinara.stat.${stat}`)}</dt>
+            <dd className="font-semibold">{Math.round(progression.stats[stat])}</dd>
+          </div>
+        ))}
+      </dl>
+      {!progression.fallen && (
+        <>
+          <div>
+            <p className="mb-1 font-medium">{t("game.combat.marinara.sheet.classes")}</p>
+            <div className="flex flex-wrap gap-1">
+              {marinaraOpenClasses(progression).map((def) => {
+                const block = marinaraClassBlock(progression, def.id);
+                const current = def.id === progression.activeClass;
+                const trained = progression.classLevels[def.id];
+                return (
+                  <button
+                    key={def.id}
+                    type="button"
+                    disabled={busy || current || !!block}
+                    title={
+                      block
+                        ? t(`game.combat.marinara.sheet.block.${blockKey(block)}`, { defaultValue: block })
+                        : def.role
+                    }
+                    onClick={() => void save({ classId: def.id })}
+                    className={
+                      "min-h-9 rounded-md border px-2 py-1 text-left disabled:opacity-60 " +
+                      (current ? "border-[var(--primary)]" : "border-[var(--border)] bg-[var(--secondary)]")
+                    }
+                  >
+                    <span className="font-medium">{def.label}</span>
+                    <span className="ml-1 text-[var(--muted-foreground)]">
+                      {trained !== undefined
+                        ? t("game.combat.marinara.sheet.classLevel", { level: trained })
+                        : block
+                          ? t(`game.combat.marinara.sheet.block.${blockKey(block)}`, { defaultValue: block })
+                          : t(`game.combat.marinara.sheet.tier.${def.tier}`)}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div>
+            <p className="mb-1 font-medium">
+              {t("game.combat.marinara.sheet.carried", {
+                count: progression.carried.length,
+                max: MARINARA_CARRY_SLOTS,
+              })}
+            </p>
+            {learned.length === 0 ? (
+              <p className="text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.nothingToCarry")}</p>
+            ) : (
+              <ul className="space-y-1">
+                {learned.map((skill) => (
+                  <li key={skill.id}>
+                    <label className="flex cursor-pointer items-start gap-2">
+                      <input
+                        type="checkbox"
+                        className="mt-0.5 size-4 accent-[var(--primary)]"
+                        checked={progression.carried.includes(skill.id)}
+                        disabled={busy}
+                        onChange={() => toggleCarry(skill.id)}
+                      />
+                      <span>
+                        <span className="font-medium">{skill.label}</span>{" "}
+                        <span className="text-[var(--muted-foreground)]">
+                          ({marinaraClass(skill.classId)?.label}) {skill.summary}
+                        </span>
+                      </span>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}

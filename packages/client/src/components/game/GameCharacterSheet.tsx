@@ -32,6 +32,7 @@ import type {
 import { cn, getAvatarCropStyle } from "../../lib/utils";
 import { useBackdropDismiss } from "../../hooks/use-backdrop-dismiss";
 import { GameRulesetSheet } from "./GameRulesetSheet";
+import { MarinaraClassSheet } from "./MarinaraClassSheet";
 import { rulesetSheetLevel } from "../../lib/ruleset-sheet-view";
 import { DraftNumberInput } from "../ui/DraftNumberInput";
 import { NEUTRAL_SURFACE_VARIABLES } from "../ui/neutral-surface-styles";
@@ -116,6 +117,8 @@ interface GameCharacterSheetProps {
   /** The game has a ruleset, even while it loads: the header then never shows the game card's own
    *  level, which is from before the ruleset. */
   rulesetPinned?: boolean;
+  /** Classic Marinara classes (combat overhaul): the class kept on this party member's card. */
+  marinara?: { chatId: string; stored: unknown };
 }
 
 interface GameCardDraft {
@@ -351,6 +354,7 @@ export function GameCharacterSheet({
   isRegenerating = false,
   ruleset,
   rulesetPinned = false,
+  marinara,
 }: GameCharacterSheetProps) {
   const { t: localizeUi } = useUiTranslation();
   const backdropDismiss = useBackdropDismiss(onClose);
@@ -752,6 +756,11 @@ export function GameCharacterSheet({
                   )}
                 </p>
               )}
+            </div>
+          )}
+          {!isEditing && marinara && (
+            <div className="border-b border-[var(--marinara-chat-chrome-panel-border)] px-5 py-4">
+              <MarinaraClassSheet chatId={marinara.chatId} name={card.title} stored={marinara.stored} />
             </div>
           )}
           {isEditing && (
