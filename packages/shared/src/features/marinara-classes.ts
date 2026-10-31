@@ -717,7 +717,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Decoys absorb the next 3 hits on the party.",
           true,
         ),
-        passive("perfect-evasion", "Perfect Evasion", 25, "Dodge rises with each miss against the user."),
+        passive("perfect-evasion", "Perfect Evasion", 25, "Dodge rises with each miss against the user, up to +30."),
       ],
     },
   ]),
