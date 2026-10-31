@@ -371,6 +371,7 @@ function partyFightWith(character: MarinaraProgression, key: string, level: numb
     random: marinaraRandom(`p3:${key}:${level}:${i}`),
     grouped: true,
     maxActions: 800,
+    focus: true,
   });
 }
 
@@ -391,8 +392,9 @@ function phase3(count: number): string {
     for (let step = 0; step < 12; step++) {
       const mid = (lo + hi) / 2;
       let wins = 0;
-      for (let i = 0; i < 60; i++) if (partyFight(marinaraClass(reference)!, level, i, mid).winner === "party") wins++;
-      if (wins / 60 > 0.65) lo = mid;
+      for (let i = 0; i < count; i++)
+        if (partyFight(marinaraClass(reference)!, level, i, mid).winner === "party") wins++;
+      if (wins / count > 0.65) lo = mid;
       else hi = mid;
     }
     scales.set(`${tier}:${level}`, (lo + hi) / 2);
@@ -419,7 +421,7 @@ function phase3(count: number): string {
   return [
     "# Class lab, phase 3: utility potential",
     "",
-    `A party of four: a Blade line, a Guard line and a Marksman line (promoted as their level allows), plus the class being tested in the fourth slot, against four foes of the level (a bruiser, a guard, an archer and a caster with expected stats). The foes' health is tuned for each tier and level so the party wins about 65% of fights with the Arcanist line's class of the same tier in the slot (Arcanist, Elementalist, Stormcaller), so a row compares a class with the Arcanist of its own tier (scales: ${[...scales].map(([k, s]) => `${k} ×${s.toFixed(2)}`).join(", ")}). ${count} fights per row. A class that adds more than an Arcanist wins more, loses less HP or ends sooner.`,
+    `A party of four: a Blade line, a Guard line and a Marksman line (promoted as their level allows), plus the class being tested in the fourth slot, against four foes of the level (a bruiser, a guard, an archer and a caster with expected stats) that focus their attacks: the back row first, then whoever would fall soonest. The foes' health is tuned for each tier and level so the party wins about 65% of fights with the Arcanist line's class of the same tier in the slot (Arcanist, Elementalist, Stormcaller), so a row compares a class with the Arcanist of its own tier (scales: ${[...scales].map(([k, s]) => `${k} ×${s.toFixed(2)}`).join(", ")}). ${count} fights per row. A class that adds more than an Arcanist wins more, loses less HP or ends sooner.`,
     "",
     "| Class in slot | Tier | Level | Win rate | Party HP lost (median) | Rounds to win (median) |",
     "| --- | --- | --- | --- | --- | --- |",
