@@ -68,7 +68,11 @@ import {
 import { createCharactersStorage } from "../services/storage/characters.storage.js";
 import { createChatsStorage, withChatMetadataPatchQueue } from "../services/storage/chats.storage.js";
 import { createGameEngineStateStorage } from "../services/storage/game-engine-state.storage.js";
-import { marinaraFightStart, type MarinaraFightStart } from "../services/game/marinara-fight-start.service.js";
+import {
+  marinaraFightEnd,
+  marinaraFightStart,
+  type MarinaraFightStart,
+} from "../services/game/marinara-fight-start.service.js";
 import {
   createCombatDirector,
   combatDirectorView,
@@ -1066,6 +1070,26 @@ export async function combatDirectorRoutes(
               },
               { metadataQueueHeld: true, touchUpdatedAt: false },
             );
+        }
+        // A Classic Marinara fight just ended: its XP, level-ups and (under permadeath) the fallen go
+        // onto the party's cards, once.
+        if (s.marinara && s.outcome && !previous.state.outcome && !s.marinara.growth) {
+          const marinara = s.marinara;
+          await chats.patchMetadata(
+            chatId,
+            (current) => {
+              const end = marinaraFightEnd({
+                state: marinara,
+                outcome: s.outcome!,
+                cards: Array.isArray(current.gameCharacterCards) ? current.gameCharacterCards : [],
+                seed: s.seed,
+                permadeath: (current.gameSetupConfig as { permadeath?: boolean } | undefined)?.permadeath === true,
+              });
+              marinara.growth = end.growth;
+              return end.cards ? { gameCharacterCards: end.cards } : {};
+            },
+            { metadataQueueHeld: true, touchUpdatedAt: false },
+          );
         }
         // A win already saved has dropped its loot: this one keeps what that one dropped.
         if (won) {

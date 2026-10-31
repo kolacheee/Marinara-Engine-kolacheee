@@ -1973,4 +1973,6 @@ export interface MarinaraFightGrowth {
   levelUps: Array<{ level: number; gains: Partial<MarinaraStats> }>;
   /** Class levels reached that open a promotion. */
   promotionReady?: boolean;
+  /** Fell under permadeath: gone for good. */
+  fallen?: boolean;
 }
