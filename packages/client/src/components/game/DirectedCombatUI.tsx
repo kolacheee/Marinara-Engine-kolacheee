@@ -21,6 +21,7 @@ import { rulesetSpendCarry, runRulesetSpendCarry, type RulesetSpendCarried } fro
 import type { RulesetCellChoice } from "../../lib/ruleset-combat-board";
 import { TacticalCombatUI } from "./TacticalCombatUI";
 import { CombatAiControls } from "./CombatAiControls";
+import { MarinaraFightPanel } from "./MarinaraFightPanel";
 import { cn } from "../../lib/utils";
 import { GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
 
@@ -402,6 +403,14 @@ export function DirectedCombatUI(props: Props) {
               </div>
             )}
             {fight && definition && <RulesetCombatStatus definition={definition} view={fight} />}
+            {!fight && (
+              <MarinaraFightPanel
+                party={s.party}
+                enemies={s.enemies}
+                actorId={s.actorId}
+                growth={s.summary?.marinara}
+              />
+            )}
             {s.stage === "select" && s.style === "classic" && (
               <button
                 disabled={busy}
