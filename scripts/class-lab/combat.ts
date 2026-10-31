@@ -17,6 +17,7 @@ import {
   MARINARA_ELEMENTS,
   MARINARA_STAMINA,
   MARINARA_STATS,
+  marinaraAffinityMultiplier,
   marinaraBestDamageType,
   marinaraDamageOptions,
   marinaraMaxMp,
@@ -97,7 +98,7 @@ export interface Effect {
   pctOfMax?: number;
   pct?: number;
   duration?: number;
-  status?: "sleep" | "stun" | "poison" | "confuse" | "doom" | "slow" | "regen";
+  status?: "sleep" | "stun" | "poison" | "wither" | "confuse" | "doom" | "slow" | "regen";
   chance?: number;
   /** Timeline weight of the action: 1 normal, more for heavy actions. */
   weight?: number;
@@ -133,7 +134,8 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   "reckless-swing": dmg("strength", 13, { selfDebuff: { stat: "defense", pct: -0.3, duration: 2 } }),
   "sweeping-ruin": dmg("strength", 9, { target: "front-row", weight: 1.2 }),
   arsenal: dmg("strength", 8, { pierce: 0.3 }),
-  "thousand-edges": dmg("strength", 7, { target: "all-enemies", ranged: true, weight: 1.3, cooldown: 3 }),
+  // Every enemy in reach: the front row in Classic (every adjacent enemy in Tactical).
+  "thousand-edges": dmg("strength", 7, { target: "front-row", weight: 1.3, cooldown: 3 }),
   // Guard
   cover: { kind: "cover", target: "ally", duration: 1 },
   provoke: { kind: "provoke", target: "self", duration: 2 },
@@ -184,6 +186,7 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   // Hexer
   weaken: { kind: "debuff", target: "enemy", stat: "damage", pct: -0.25, duration: 3 },
   rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.08 },
+  wither: { kind: "status", target: "enemy", status: "wither", chance: 1, duration: 3, power: 0.06 },
   doom: { kind: "status", target: "enemy", status: "doom", chance: 0.6, duration: 3 },
   lull: { kind: "status", target: "enemy", status: "sleep", chance: 0.75, duration: 3 },
   "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2 },
@@ -857,8 +860,12 @@ function choose(
           break;
         const target = fresh.sort((a, b) => b.hp - a.hp)[0]!;
         const value =
-          effect.status === "poison"
-            ? target.maxHp * (effect.power ?? 0.08) * (effect.duration ?? 3) * (effect.chance ?? 1)
+          effect.status === "poison" || effect.status === "wither"
+            ? target.maxHp *
+              (effect.power ?? 0.08) *
+              (effect.duration ?? 3) *
+              (effect.chance ?? 1) *
+              (effect.status === "poison" ? marinaraAffinityMultiplier(target.affinities, "poison") : 1)
             : effect.status === "doom"
               ? Math.min(target.hp, target.maxHp * (target.maxHp > 300 ? TUNING.doomBossPct : TUNING.doomPct)) *
                 (effect.chance ?? 1) *
@@ -967,10 +974,12 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   actor.defending = false;
   // Statuses tick at the start of the actor's turn.
   for (const status of actor.statuses) {
-    if (status.status === "poison") {
-      const amount = Math.max(1, Math.round(actor.maxHp * (status.power ?? 0.08)));
-      actor.hp -= amount;
-      bump(log.damageTaken, actor.id, amount);
+    if (status.status === "poison" || status.status === "wither") {
+      // Poison is a damage type foes can resist; Wither is pure and nothing stops it.
+      const multiplier = status.status === "poison" ? marinaraAffinityMultiplier(actor.affinities, "poison") : 1;
+      const amount = Math.round(actor.maxHp * (status.power ?? 0.08) * multiplier);
+      actor.hp = Math.min(actor.maxHp, actor.hp - amount);
+      if (amount > 0) bump(log.damageTaken, actor.id, amount);
     }
     if (status.status === "regen") {
       const amount = Math.round(actor.maxHp * (status.power ?? 0.1));

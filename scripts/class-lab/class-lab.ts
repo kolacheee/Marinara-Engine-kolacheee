@@ -144,12 +144,12 @@ function dummy(id: string, level: number, hp: number, affinities?: MarinaraAffin
 
 /** Six foes with typical affinity profiles: beast, flyer, armoured, spirit, fire elemental, undead. */
 export const AFFINITY_PROFILES: MarinaraAffinities[] = [
-  { slash: "weak", fire: "weak" },
+  { slash: "weak", fire: "weak", poison: "weak" },
   { pierce: "weak", lightning: "weak", blunt: "resist" },
   { slash: "resist", pierce: "resist", blunt: "weak", lightning: "weak" },
-  { slash: "resist", pierce: "resist", blunt: "resist", light: "weak", dark: "immune" },
-  { fire: "absorb", ice: "weak", slash: "resist" },
-  { pierce: "resist", ice: "resist", blunt: "weak", light: "weak", dark: "absorb" },
+  { slash: "resist", pierce: "resist", blunt: "resist", light: "weak", dark: "immune", poison: "immune" },
+  { fire: "absorb", ice: "weak", slash: "resist", poison: "immune" },
+  { pierce: "resist", ice: "resist", blunt: "weak", light: "weak", dark: "absorb", poison: "immune" },
 ];
 
 function phase1(count: number): string {
@@ -199,7 +199,7 @@ function phase1(count: number): string {
   return [
     "# Class lab, phase 1: damage potential",
     "",
-    `Rounds to clear dummies that never fight back (median, with p10–p90 across ${count} characters per row, each with its own hidden aptitudes). A round is one turn of a Speed 15 character. Lower is better. A promoted class carries up to four skills from the classes it came through (their marked carry picks first). Dummies have the average expected Defense and Resistance of the level. Single: one dummy with 6× a typical HP. Spread: three with 2× each, where a front-row area hits only one. Grouped: five with 1.2× each, all in reach of area attacks. Affinities: six dummies with a typical HP each and typical affinity profiles (beast: weak to slash and fire; flyer: weak to pierce and lightning, resists blunt; armoured: resists slash and pierce, weak to blunt and lightning; spirit: resists all physical, weak to light, immune to dark; fire elemental: absorbs fire, weak to ice, resists slash; undead: resists pierce and ice, weak to blunt and light, absorbs dark), spread out; the × figure compares it with the same four dummies without affinities (above 1 means affinities slow this class down). Physical skills cost stamina, magic skills MP. Damage per MP is the damage of its MP-costing skills on the single dummy, per MP spent; – means it has no damaging skill that costs MP.`,
+    `Rounds to clear dummies that never fight back (median, with p10–p90 across ${count} characters per row, each with its own hidden aptitudes). A round is one turn of a Speed 15 character. Lower is better. A promoted class carries up to four skills from the classes it came through (their marked carry picks first). Dummies have the average expected Defense and Resistance of the level. Single: one dummy with 6× a typical HP. Spread: three with 2× each, where a front-row area hits only one. Grouped: five with 1.2× each, all in reach of area attacks. Affinities: six dummies with a typical HP each and typical affinity profiles (beast: weak to slash, fire and poison; flyer: weak to pierce and lightning, resists blunt; armoured: resists slash and pierce, weak to blunt and lightning; spirit: resists all physical, weak to light, immune to dark and poison; fire elemental: absorbs fire, weak to ice, resists slash, immune to poison; undead: resists pierce and ice, weak to blunt and light, absorbs dark, immune to poison), spread out; the × figure compares it with the same four dummies without affinities (above 1 means affinities slow this class down). Physical skills cost stamina, magic skills MP. Damage per MP is the damage of its MP-costing skills on the single dummy, per MP spent; – means it has no damaging skill that costs MP.`,
     "",
     "| Class | Tier | Level | Single | Spread (3) | Grouped (5) | Affinities (6) | Damage per MP |",
     "| --- | --- | --- | --- | --- | --- | --- | --- |",
