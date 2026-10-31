@@ -4,7 +4,14 @@
 // within the game's encounter budget unless the story wrote it.
 
 import {
+  awardMarinaraXp,
   createMarinaraCardProgression,
+  marinaraClassBlock,
+  marinaraFoeXp,
+  marinaraRandom,
+  scaleMarinaraXp,
+  MARINARA_CLASSES,
+  type MarinaraFightGrowth,
   gameCardTemperament,
   marinaraFoeFighters,
   marinaraPartyFighter,
@@ -18,7 +25,7 @@ import {
   type MarinaraPartyTemperament,
 } from "@marinara-engine/shared";
 import { gameCardFor } from "./party-temperament.service.js";
-import { marinaraCombatant } from "./marinara-director.service.js";
+import { marinaraCombatant, type MarinaraDirectorState } from "./marinara-director.service.js";
 
 export interface MarinaraFightStart {
   party: Combatant[];
@@ -104,4 +111,85 @@ export function marinaraFightStart(input: {
       })
     : null;
   return { party, enemies, fighters, cards, notes: foes.notes };
+}
+
+/**
+ * What a fight's end gives the party (decided 2026-11-01, for Alyssa's review): a won fight pays each
+ * beaten foe's XP (its tier's), half shared evenly by everyone who fought and half by the share of
+ * damage, healing and support each gave; each share is scaled by the foe's level against theirs, with
+ * the catch-up for those below the party's average. A lost or fled fight pays nothing. Under
+ * permadeath, one down when a won or fled fight ends is gone; a lost fight is left to the story.
+ */
+export function marinaraFightEnd(input: {
+  state: MarinaraDirectorState;
+  outcome: string;
+  cards: readonly Record<string, unknown>[];
+  seed: number;
+  permadeath: boolean;
+}): { growth: MarinaraFightGrowth[]; cards: Record<string, unknown>[] | null } {
+  const party = input.state.fighters.filter((one) => one.side === "party");
+  const foes = input.state.fighters.filter((one) => one.side !== "party");
+  const named = input.cards.filter(
+    (card): card is Record<string, unknown> & { name: string } =>
+      typeof card.name === "string" && Boolean(card.name.trim()),
+  );
+  const beaten = input.outcome === "victory" ? foes.filter((foe) => foe.hp <= 0) : [];
+  const shareOf = (id: string) => {
+    const credit = input.state.credit[id];
+    return credit ? credit.damage + credit.support : 0;
+  };
+  const total = party.reduce((sum, one) => sum + shareOf(one.id), 0);
+  const average = party.length ? party.reduce((sum, one) => sum + one.level, 0) / party.length : 1;
+  const growth: MarinaraFightGrowth[] = [];
+  const changed = new Map<string, MarinaraCardProgression>();
+  for (const fighter of party) {
+    const card = gameCardFor(named, fighter.name);
+    const progression = readMarinaraCardProgression(card?.marinara);
+    if (!card || !progression) continue;
+    const share = 0.5 / party.length + (total > 0 ? (0.5 * shareOf(fighter.id)) / total : 0.5 / party.length);
+    const xp = beaten.reduce(
+      (sum, foe) =>
+        sum +
+        scaleMarinaraXp({
+          base: marinaraFoeXp(foe) * share,
+          level: progression.level,
+          foeLevel: foe.level,
+          partyAverageLevel: average,
+        }),
+      0,
+    );
+    const fell = input.permadeath && fighter.hp <= 0 && input.outcome !== "defeat";
+    if (!xp && !fell) continue;
+    const awarded = xp
+      ? awardMarinaraXp(progression, xp, marinaraRandom(`${input.seed}:growth:${card.name}`))
+      : { progression, levelUps: [] };
+    const next: MarinaraCardProgression = {
+      ...progression,
+      ...awarded.progression,
+      ...(fell ? { fallen: true } : {}),
+    };
+    changed.set(normalizeCharacterLookupName(card.name), next);
+    const active = next.activeClass;
+    growth.push({
+      name: fighter.name,
+      xp,
+      level: next.level,
+      classId: active,
+      classLevel: next.classLevels[active] ?? 1,
+      levelUps: awarded.levelUps,
+      ...(MARINARA_CLASSES.some(
+        (def) => def.from === active && next.classLevels[def.id] === undefined && !marinaraClassBlock(next, def.id),
+      )
+        ? { promotionReady: true }
+        : {}),
+      ...(fell ? { fallen: true } : {}),
+    });
+  }
+  const cards = changed.size
+    ? input.cards.map((card) => {
+        const next = typeof card.name === "string" ? changed.get(normalizeCharacterLookupName(card.name)) : undefined;
+        return next ? { ...card, marinara: next } : card;
+      })
+    : null;
+  return { growth, cards };
 }

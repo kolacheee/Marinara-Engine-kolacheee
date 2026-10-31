@@ -250,6 +250,8 @@ function sync(s: CombatDirectorState) {
       ],
       // Once a won fight has dropped its loot, even none, the summary says so: nothing drops it again.
       ...(s.loot ? { loot: s.loot.map((drop) => ({ ...drop })) } : {}),
+      // What the party took from a Classic Marinara fight: XP, level-ups, a promotion open, the fallen.
+      ...(s.marinara?.growth?.length ? { marinara: s.marinara.growth } : {}),
     };
   }
 }

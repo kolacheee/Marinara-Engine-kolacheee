@@ -17,7 +17,10 @@ import {
   type MarinaraFightContext,
 } from "../../packages/shared/src/features/marinara-combat.js";
 import { createMarinaraProgression, marinaraRandom } from "../../packages/shared/src/features/marinara-classes.js";
-import { marinaraFightStart } from "../../packages/server/src/services/game/marinara-fight-start.service.js";
+import {
+  marinaraFightEnd,
+  marinaraFightStart,
+} from "../../packages/server/src/services/game/marinara-fight-start.service.js";
 import type { Combatant } from "../../packages/shared/src/types/game.js";
 
 const ctx = (): MarinaraFightContext => ({ random: marinaraRandom("rules"), events: [] });
@@ -137,6 +140,40 @@ for (const tier of ["boss", "standard"] as const) {
     storyFight: true,
   });
   assert.equal(story.enemies.length, 12, "a story's fight keeps every opponent it wrote");
+}
+
+// A fight's end: a win pays XP onto the cards, more to who did more; a loss pays nothing; under
+// permadeath the one down at the end of a win is gone.
+{
+  const a = party("Ayla"),
+    b = party("Bren");
+  a.side = b.side = "party";
+  const foes = [0, 1, 2, 3].map((i) =>
+    buildMarinaraEnemy({ id: `f${i}`, name: `Foe ${i}`, level: 1, tier: "standard" }),
+  );
+  for (const foe of foes) foe.hp = 0;
+  b.hp = 0;
+  const progression = createMarinaraProgression({ seed: "p", primary: "guard", temperament: "disciplined" });
+  const cards = [
+    { name: "Ayla", marinara: progression },
+    { name: "Bren", marinara: progression },
+  ];
+  const state = {
+    fighters: [a, b, ...foes],
+    draws: 0,
+    credit: { Ayla: { damage: 60, support: 0, foes: [] }, Bren: { damage: 10, support: 0, foes: [] } },
+  };
+  const won = marinaraFightEnd({ state, outcome: "victory", cards, seed: 1, permadeath: true });
+  const ayla = won.growth.find((g) => g.name === "Ayla")!,
+    bren = won.growth.find((g) => g.name === "Bren")!;
+  assert.ok(ayla.xp > bren.xp && bren.xp > 0, "both earn XP, the one who did more earns more");
+  assert.equal(bren.fallen, true, "one down at the end of a won fight falls under permadeath");
+  assert.equal((won.cards?.[1]?.marinara as { fallen?: boolean }).fallen, true, "and the card says so");
+  assert.ok((won.cards?.[0]?.marinara as { xp: number }).xp > 0, "the XP is written on the card");
+  const lost = marinaraFightEnd({ state, outcome: "defeat", cards, seed: 1, permadeath: true });
+  assert.equal(lost.growth.length, 0, "a lost fight pays nothing and kills no one");
+  const gentle = marinaraFightEnd({ state, outcome: "victory", cards, seed: 1, permadeath: false });
+  assert.ok(!gentle.growth.some((g) => g.fallen), "without permadeath nobody falls");
 }
 
 console.log("game-marinara-rules: ok");
