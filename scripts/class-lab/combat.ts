@@ -750,7 +750,7 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
   const evade =
     effStat(target, "speed", all) * 2 +
     effStat(target, "luck", all) +
-    target.missesAgainst * (passiveHooks(target.skills).evasionStacking ?? 0);
+    Math.min(30, target.missesAgainst * (passiveHooks(target.skills).evasionStacking ?? 0));
   const hitChance = Math.max(
     5,
     Math.min(
