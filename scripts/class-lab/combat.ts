@@ -339,7 +339,15 @@ function cleanse(unit: LabUnit, how: "all" | "one", all: LabUnit[]) {
   else unit.mods.splice(picked.index, 1);
 }
 
+/** Slow takes this share off Speed. */
+export const SLOW_SPEED_PCT = 0.3;
+
+/** Bestiary bosses (marinara-bestiary.ts MARINARA_BOSS_RULES). */
+export const BOSS_ENRAGE = { below: 0.5, damagePct: 0.2 };
+export const BOSS_IMMUNE: ReadonlySet<string> = new Set(["sleep", "stun", "confuse"]);
+
 function addStatus(target: LabUnit, applies: NonNullable<Effect["applies"]>, bonus: number) {
+  if (target.boss && BOSS_IMMUNE.has(applies.status)) return;
   if (applies.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0) return;
   if (passiveHooks(target.skills).debuffImmune) return;
   target.statuses = target.statuses.filter((s) => s.status !== applies.status);
@@ -527,7 +535,10 @@ export interface LabUnit {
   wardTurns: number;
   cooldowns: Record<string, number>;
   used: Set<string>;
-  charging?: { skillId: string; targetId: string };
+  charging?: { skillId: string; targetId: string; enemy?: boolean };
+  /** A bestiary boss: can't be slept, stunned or confused, and turns savage below half its HP. */
+  boss?: boolean;
+  enraged?: boolean;
   lastStandUsed?: boolean;
   miracleUsed?: boolean;
   evadedThisRound?: boolean;
@@ -640,6 +651,9 @@ export interface FightLog {
   /** Party HP lost as a share of party max HP. */
   partyHpLostPct: number;
   downed: string[];
+  /** The biggest single hit on a party member as a share of their max HP, and who dealt it. */
+  maxHitPct?: number;
+  maxHitBy?: string;
 }
 
 export interface FightOptions {
@@ -713,6 +727,8 @@ function effStat(unit: LabUnit, stat: MarinaraStat, all: LabUnit[]): number {
   const own = passiveHooks(unit.skills);
   let pct = own.statPct?.[stat] ?? 0;
   for (const mod of unit.mods) if (mod.stat === stat) pct += mod.pct;
+  // Slow: a third off Speed while it lasts.
+  if (stat === "speed" && unit.statuses.some((s) => s.status === "slow")) pct -= SLOW_SPEED_PCT;
   const allies = all.filter((other) => other.side === unit.side && other.hp > 0);
   for (const ally of allies) {
     const hooks = passiveHooks(ally.skills);
@@ -736,7 +752,11 @@ function powerStat(unit: LabUnit, stat: MarinaraStat, effect: Effect, all: LabUn
 
 /** The damage types this effect can hit with; an imbued weapon adds the elements. */
 function damageOptions(actor: LabUnit, effect: Effect) {
-  if (!actor.classId) return [actor.attackType ?? "blunt"] as const;
+  if (!actor.classId) {
+    // A classless foe hits with its own attack type, or its ability's fixed type (a breath's fire).
+    const fixed = effect.type && !["weapon", "element", "any-physical"].includes(effect.type) ? effect.type : null;
+    return [(fixed as MarinaraDamageType | null) ?? actor.attackType ?? "blunt"] as const;
+  }
   const type = effect.type ?? "weapon";
   const options = marinaraDamageOptions(type, actor.classId);
   // Imbue Weapon: the weapon's damage becomes the user's pick of element.
@@ -1230,17 +1250,46 @@ function enemyChoose(actor: LabUnit, all: LabUnit[], random: () => number) {
     }
   }
   // Foes use an ability now and then, on a target that doesn't already suffer it.
+  const friends = living(all.filter((u) => u.side === actor.side));
   for (const id of actor.enemySkills ?? []) {
     if (confused || (actor.cooldowns[id] ?? 0) > 0 || random() >= 0.4) continue;
-    const ability = ENEMY_SKILLS[id]!;
-    const reach = targetsFor(actor, ability, all);
-    const fresh = reach.filter(
-      (u) => !(ability.applies && u.statuses.some((s) => s.status === ability.applies!.status)),
-    );
-    if (!fresh.length) continue;
-    const picked = fresh.includes(target) ? target : fresh[0]!;
+    const ability = ENEMY_SKILLS[id];
+    if (!ability) continue;
+    let targets: LabUnit[] = [];
+    if (ability.target === "self") {
+      const already =
+        (ability.status && actor.statuses.some((s) => s.status === ability.status)) ||
+        (ability.stat && actor.mods.some((m) => m.source === id));
+      if (already) continue;
+      if (ability.status === "regen" && actor.hp > actor.maxHp * 0.7) continue;
+      targets = [actor];
+    } else if (ability.target === "party") {
+      if (friends.some((u) => u.mods.some((m) => m.source === id))) continue;
+      targets = friends;
+    } else if (ability.target === "ally") {
+      const hurt = [...friends].sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0];
+      if (!hurt || hurt.hp > hurt.maxHp * (ability.kind === "heal" ? 0.6 : 0.8)) continue;
+      targets = [hurt];
+    } else {
+      const reach = targetsFor(actor, ability, all);
+      if (ability.target === "all-enemies" || ability.target === "front-row") {
+        const hit = ability.target === "front-row" ? reach.filter((u) => u.row === "front") : reach;
+        targets = hit.length ? hit : reach;
+      } else {
+        const lands = ability.applies?.status ?? (ability.kind === "status" ? ability.status : undefined);
+        const fresh = reach.filter((u) => !(lands && u.statuses.some((s) => s.status === lands)));
+        if (!fresh.length) continue;
+        targets = [fresh.includes(target) ? target : fresh[0]!];
+      }
+    }
+    if (!targets.length) continue;
     actor.cooldowns[id] = ability.cooldown ?? 3;
-    return { skill: null, effect: ability, targets: [picked] };
+    return { skill: null, effect: ability, targets, abilityId: id };
+  }
+  // A foe built on a class fights with its class's skills, as a party member would.
+  if (!confused && actor.skills.some((skill) => skill.kind === "active")) {
+    const picked = choose(actor, all);
+    if (picked) return picked;
   }
   return { skill: null, effect, targets: [target] };
 }
@@ -1270,6 +1319,10 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   tacticalFlag = Boolean(options.tactical);
   actor.defending = false;
   actor.hidden = false;
+  if (actor.boss && !actor.enraged && actor.hp > 0 && actor.hp < actor.maxHp * BOSS_ENRAGE.below) {
+    actor.enraged = true;
+    addMod(actor, "damage", BOSS_ENRAGE.damagePct, 9999, "enrage");
+  }
   actor.secondWindUsed = false;
   // Statuses tick at the start of the actor's turn.
   for (const status of actor.statuses) {
@@ -1325,8 +1378,16 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   if (actor.charging) {
     const charging = actor.charging;
     actor.charging = undefined;
-    const skill = actor.skills.find((s) => s.id === charging.skillId) ?? null;
-    const effect = { ...SKILL_EFFECTS[charging.skillId]!, ...(skill?.damage ? { type: skill.damage } : {}) };
+    const skill = charging.enemy ? null : (actor.skills.find((s) => s.id === charging.skillId) ?? null);
+    const base = charging.enemy ? ENEMY_SKILLS[charging.skillId]! : SKILL_EFFECTS[charging.skillId]!;
+    const effect = { ...base, ...(skill?.damage ? { type: skill.damage } : {}) };
+    if (effect.target === "all-enemies" || effect.target === "front-row") {
+      const pool = targetsFor(actor, effect, all);
+      const hit = effect.target === "front-row" ? pool.filter((u) => u.row === "front") : pool;
+      const targets = hit.length ? hit : pool;
+      if (targets.length) act(actor, skill, { ...effect, charge: false }, targets, all, options, log);
+      return;
+    }
     const target = all.find((u) => u.id === charging.targetId && u.hp > 0) ?? targetsFor(actor, effect, all)[0];
     if (target) act(actor, skill, { ...effect, charge: false }, [target], all, options, log);
     return;
@@ -1360,7 +1421,9 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
     if (choice.effect.oncePerFight) actor.used.add(choice.skill.id);
   }
   if (choice.effect.charge) {
-    actor.charging = { skillId: choice.skill!.id, targetId: choice.targets[0]!.id };
+    actor.charging = choice.skill
+      ? { skillId: choice.skill.id, targetId: choice.targets[0]!.id }
+      : { skillId: (choice as { abilityId?: string }).abilityId!, targetId: choice.targets[0]!.id, enemy: true };
     if (hooks.entrench) entrench(actor);
     return;
   }
@@ -1508,6 +1571,7 @@ function act(
     case "status":
       for (const target of targets) {
         if (effect.status !== "regen" && random() > (effect.chance ?? 1)) continue;
+        if (target.boss && BOSS_IMMUNE.has(effect.status!)) continue;
         target.statuses.push({
           status: effect.status!,
           turns: (effect.duration ?? 2) + durationBonus,
@@ -1602,6 +1666,11 @@ function strike(
   }
   const dealt = before - Math.max(0, target.hp);
   bump(log.damageDealt, actor.id, dealt);
+  // Crits are luck; the cap that matters is on a plain hit.
+  if (target.side === "party" && !crit && amount / target.maxHp > (log.maxHitPct ?? 0)) {
+    log.maxHitPct = amount / target.maxHp;
+    log.maxHitBy = actor.id;
+  }
   if (hooks.lifestealPct) actor.hp = Math.min(actor.maxHp, actor.hp + dealt * hooks.lifestealPct * healFactor(actor));
   bump(log.damageTaken, target.id, dealt);
   if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);

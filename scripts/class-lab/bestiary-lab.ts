@@ -1,0 +1,141 @@
+/**
+ * Bestiary lab: measures what each foe family is worth in an encounter budget (Alyssa 2026-10-31:
+ * balanced encounters, as the SRD's CR does), against reference parties of four grown with real
+ * level-ups.
+ *
+ *   node scripts/class-lab/bestiary-lab.ts measure <out.json> [fightsPerParty]
+ *   node scripts/class-lab/bestiary-lab.ts table <in.json> <out.ts>
+ *
+ * Measure: for each family, tier and sample level, a group of copies (four minions, three standard,
+ * two elite, one boss) fights each reference party; their HP is scaled until the party loses 35% of
+ * its HP on average (the "Normal" mark). A group that needs its HP scaled by h to get there is worth
+ * 4 / (copies × √h) party members each (worth goes as the square root of HP times damage, as in
+ * Lanchester's square law, so h in HP is √h in worth). Resumable: combos already in the JSON are kept.
+ */
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  MARINARA_BESTIARY,
+  MARINARA_TIER_RULES,
+  marinaraEnemyName,
+  marinaraEnemySpec,
+  type MarinaraBestiarySetting,
+  type MarinaraEnemyFamily,
+  type MarinaraEnemyTier,
+} from "../../packages/shared/src/features/marinara-bestiary.js";
+import { marinaraRandom } from "../../packages/shared/src/features/marinara-classes.js";
+import { runFight, type LabUnit } from "./combat.js";
+import { enemyUnit, referenceParty, REFERENCE_PARTIES } from "./bestiary-units.js";
+
+export const SAMPLE_LEVELS = [1, 4, 8, 12, 16, 20, 24, 28] as const;
+export const NORMAL_HP_LOST = 0.35;
+const COPIES: Record<MarinaraEnemyTier, number> = { minion: 4, standard: 3, elite: 2, boss: 1 };
+
+function settingOf(family: MarinaraEnemyFamily, level: number): MarinaraBestiarySetting | null {
+  for (const setting of Object.keys(family.names) as MarinaraBestiarySetting[])
+    if (marinaraEnemyName(family, setting, level)) return setting;
+  return null;
+}
+
+export function foes(family: MarinaraEnemyFamily, tier: MarinaraEnemyTier, level: number, count: number, hpScale: number): LabUnit[] {
+  const setting = settingOf(family, level)!;
+  return Array.from({ length: count }, (_, j) => {
+    const unit = enemyUnit(marinaraEnemySpec({ familyId: family.id, setting, level, tier, id: `e${j}` }));
+    unit.maxHp = unit.hp = Math.max(1, Math.round(unit.maxHp * hpScale));
+    return unit;
+  });
+}
+
+/** Mean party HP lost (downed count as all of theirs) and win rate over the reference parties. */
+export function outcome(
+  make: (seed: number) => LabUnit[],
+  level: number,
+  fightsPerParty: number,
+  key: string,
+): { lost: number; wins: number } {
+  let lost = 0;
+  let wins = 0;
+  let total = 0;
+  for (const name of Object.keys(REFERENCE_PARTIES))
+    for (let i = 0; i < fightsPerParty; i++) {
+      const party = referenceParty(name, level, `${i}`);
+      const log = runFight(party, make(i), {
+        random: marinaraRandom(`bl:${key}:${name}:${i}`),
+        grouped: true,
+        focus: true,
+        maxActions: 800,
+      });
+      lost += log.winner === "party" ? log.partyHpLostPct : 1;
+      if (log.winner === "party") wins++;
+      total++;
+    }
+  return { lost: lost / total, wins: wins / total };
+}
+
+function measureOne(family: MarinaraEnemyFamily, tier: MarinaraEnemyTier, level: number, fights: number) {
+  const copies = COPIES[tier];
+  const key = `${family.id}:${tier}:${level}`;
+  let lo = Math.log(0.05);
+  let hi = Math.log(40);
+  for (let step = 0; step < 11; step++) {
+    const mid = (lo + hi) / 2;
+    const { lost } = outcome(() => foes(family, tier, level, copies, Math.exp(mid)), level, fights, key);
+    if (lost < NORMAL_HP_LOST) lo = mid;
+    else hi = mid;
+  }
+  const h = Math.exp((lo + hi) / 2);
+  return { h, threat: 4 / (copies * Math.sqrt(h)) };
+}
+
+export type ThreatTable = Record<string, Record<string, Record<string, number>>>;
+
+function measure(out: string, fights: number) {
+  const table: ThreatTable = existsSync(out) ? JSON.parse(readFileSync(out, "utf8")) : {};
+  const only = process.env.FAMILIES?.split(",");
+  for (const family of MARINARA_BESTIARY) {
+    if (only && !only.includes(family.id)) continue;
+    for (const tier of family.tiers)
+      for (const level of SAMPLE_LEVELS) {
+        if (level < family.levels[0] || level > family.levels[1] || level < MARINARA_TIER_RULES[tier].minLevel) continue;
+        if (!settingOf(family, level)) continue;
+        if (table[family.id]?.[tier]?.[level] !== undefined) continue;
+        const { threat } = measureOne(family, tier, level, fights);
+        ((table[family.id] ??= {})[tier] ??= {})[level] = Math.round(threat * 1000) / 1000;
+        writeFileSync(out, JSON.stringify(table, null, 1));
+        console.log(`${family.id} ${tier} L${level}: ${threat.toFixed(3)}`);
+      }
+  }
+}
+
+function emitTable(input: string, out: string) {
+  const table: ThreatTable = JSON.parse(readFileSync(input, "utf8"));
+  const lines = [
+    "// Generated by scripts/class-lab/bestiary-lab.ts (table); do not edit by hand. Re-measure after",
+    "// changing a family, an ability, the tier sizes or the class trees.",
+    "//",
+    "// What one foe of a family is worth in an encounter budget, by tier, at the lab's sample levels",
+    "// (party members: a party of four's Normal budget is 4). Levels between samples interpolate.",
+    "",
+    `export const MARINARA_BESTIARY_SAMPLE_LEVELS = ${JSON.stringify(SAMPLE_LEVELS)} as const;`,
+    "",
+    "export const MARINARA_BESTIARY_THREAT: Record<string, Partial<Record<string, Record<number, number>>>> = {",
+  ];
+  for (const [family, tiers] of Object.entries(table)) {
+    lines.push(`  "${family}": {`);
+    for (const [tier, levels] of Object.entries(tiers))
+      lines.push(
+        `    ${tier}: { ${Object.entries(levels)
+          .map(([level, value]) => `${level}: ${Number(value).toFixed(2)}`)
+          .join(", ")} },`,
+      );
+    lines.push("  },");
+  }
+  lines.push("};", "");
+  writeFileSync(out, lines.join("\n"));
+}
+
+if (process.argv[1]?.endsWith("bestiary-lab.ts")) {
+  const command = process.argv[2];
+  if (command === "measure") measure(process.argv[3]!, Number(process.argv[4] ?? 8));
+  else if (command === "table") emitTable(process.argv[3]!, process.argv[4]!);
+  else console.error("measure <out.json> [fights] | table <in.json> <out.ts>");
+}
