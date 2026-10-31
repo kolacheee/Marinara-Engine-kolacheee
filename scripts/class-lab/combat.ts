@@ -58,6 +58,13 @@ export const TUNING = {
   doomBossPct: 0.1,
   /** Front-row foes hit only the front row while any of it stands, unless ranged. */
   frontRowShield: true,
+  /**
+   * Classic rows, early Final Fantasy style: melee can reach the back row, but deals half damage
+   * to it. Off: the front row shields the back row from melee entirely. (LAB_ROWS=half to try it.)
+   */
+  backRowHalf: process.env.LAB_ROWS === "half",
+  /** An area attack that strikes more than one foe deals this share to each (early Final Fantasy style). */
+  areaSpreadPct: 0.6,
 };
 
 // ── Effects ──
@@ -79,6 +86,7 @@ export interface Effect {
     | "ward"
     | "extra-turn"
     | "command"
+    | "cleanse"
     | "none";
   target: EffectTarget;
   power?: number;
@@ -103,8 +111,20 @@ export interface Effect {
   pctOfMax?: number;
   pct?: number;
   duration?: number;
-  status?: "sleep" | "stun" | "poison" | "wither" | "confuse" | "doom" | "slow" | "regen";
+  status?: "sleep" | "stun" | "poison" | "wither" | "bleed" | "wound" | "confuse" | "doom" | "slow" | "regen";
   chance?: number;
+  /** Also lays a status on the target when it lands (Rend's bleed, Curse's wound). */
+  applies?: { status: NonNullable<Effect["status"]>; chance?: number; duration: number; power?: number };
+  /** Share of damage per foe when an area attack strikes several. */
+  spread?: number;
+  /** Vanish: the user can't be targeted until its next turn. */
+  hide?: boolean;
+  /** The user's next landed hit exposes its target: everyone deals this much more to it for 2 turns. */
+  exposeNext?: number;
+  /** A landed status also exposes the target (Seal). */
+  exposes?: { pct: number; duration: number };
+  /** Heals that cleanse: every debuff, or the worst one on each target. */
+  cleanse?: "all" | "one";
   /** Timeline weight of the action: 1 normal, more for heavy actions. */
   weight?: number;
   /** Takes a turn of charging before it lands. */
@@ -114,7 +134,7 @@ export interface Effect {
   /** After damage, lowers the user's own stat (Reckless Swing). */
   selfDebuff?: { stat: MarinaraStat; pct: number; duration: number };
   /** Lowers the target's stat after a hit (Shield Bash stagger, Sundering). */
-  onHit?: { stat: MarinaraStat; pct: number; duration: number };
+  onHit?: { stat: MarinaraStat | "damage"; pct: number; duration: number };
   /** Damage counted from another stat (Verdict: Defense). */
   from?: MarinaraStat;
   /** Extra damage below this share of the target's HP (finishers). */
@@ -137,7 +157,11 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   flurry: dmg("strength", 4, { hits: 2 }),
   "moonless-cut": dmg("strength", 10, { critBonus: 30, finisher: { below: 0.5, bonus: 0.5 } }),
   "reckless-swing": dmg("strength", 13, { selfDebuff: { stat: "defense", pct: -0.3, duration: 2 } }),
-  "sweeping-ruin": dmg("strength", 9, { target: "front-row", weight: 1.2 }),
+  "sweeping-ruin": dmg("strength", 9, {
+    target: "front-row",
+    weight: 1.2,
+    onHit: { stat: "damage", pct: -0.15, duration: 2 },
+  }),
   arsenal: dmg("strength", 8, { pierce: 0.3 }),
   // Every enemy in reach: the front row in Classic (every adjacent enemy in Tactical).
   "thousand-edges": dmg("strength", 7, { target: "front-row", weight: 1.3, cooldown: 3 }),
@@ -154,7 +178,16 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   // Scout
   steal: { kind: "none", target: "enemy" },
   backstab: dmg("strength", 10, { critBonus: 15 }),
-  vanish: { kind: "buff", target: "self", stat: "damage", pct: 0.6, duration: 1 },
+  vanish: {
+    kind: "buff",
+    target: "self",
+    stat: "damage",
+    pct: 0.6,
+    duration: 1,
+    hide: true,
+    exposeNext: 0.2,
+    cooldown: 3,
+  },
   "hit-and-run": dmg("strength", 5, { weight: 0.6 }),
   "double-time": { kind: "extra-turn", target: "self", cooldown: 3 },
   shadowstep: dmg("strength", 9, { ranged: true, critBonus: 10 }),
@@ -185,7 +218,14 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   "twin-cast": dmg("magic", 5, { ranged: true, hits: 2 }),
   tempest: dmg("magic", 6, { ranged: true, target: "all-enemies", weight: 1.2, cooldown: 2 }),
   glyph: dmg("magic", 10, { ranged: true, weight: 0.8 }),
-  seal: { kind: "status", target: "enemy", status: "stun", chance: 0.7, duration: 2 },
+  seal: {
+    kind: "status",
+    target: "enemy",
+    status: "stun",
+    chance: 0.7,
+    duration: 2,
+    exposes: { pct: 0.2, duration: 2 },
+  },
   starfall: dmg("magic", 8, { ranged: true, pierce: 1 }),
   convergence: dmg("magic", 24, { ranged: true, charge: true }),
   // Hexer
@@ -200,10 +240,11 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
   revive: { kind: "revive", target: "downed-ally", power: 0.25 },
-  sanctuary: { kind: "heal", target: "party", scales: "magic", power: 5, weight: 1.2 },
-  remedy: { kind: "heal", target: "ally", scales: "magic", power: 5 },
-  "elixir-rain": { kind: "status", target: "party", status: "regen", chance: 1, duration: 3, power: 0.1 },
-  barrier: { kind: "shield", target: "ally", scales: "magic", power: 10 },
+  sanctuary: { kind: "heal", target: "party", scales: "magic", power: 5, weight: 1.2, cleanse: "one" },
+  remedy: { kind: "heal", target: "ally", scales: "magic", power: 5, cleanse: "all" },
+  purify: { kind: "cleanse", target: "ally", cleanse: "all" },
+  "elixir-rain": { kind: "status", target: "party", status: "regen", chance: 1, duration: 3, power: 0.07 },
+  barrier: { kind: "shield", target: "ally", scales: "magic", power: 8 },
   "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true },
   // Herald
   "imbue-weapon": { kind: "buff", target: "self", stat: "imbue", pct: 1, duration: 3 },
@@ -216,6 +257,92 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   "raise-the-banner": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3 },
   "hour-of-heroes": { kind: "command", target: "party", oncePerFight: true },
 };
+
+/**
+ * What foes in the lab can do besides attack: damage over time and debuffs a healer would want
+ * to remove. Humanoid foes would use the class trees instead; these stand in for monster abilities.
+ */
+export const ENEMY_SKILLS: Record<string, Effect> = {
+  // A bruiser's tearing blow: the target bleeds for 5% of max HP a turn.
+  rend: dmg("strength", 5, { applies: { status: "bleed", duration: 3, power: 0.05 }, cooldown: 3 }),
+  // A guard's armour-breaking blow.
+  sunder: dmg("strength", 5, { onHit: { stat: "defense", pct: -0.25, duration: 2 }, cooldown: 3 }),
+  // An archer's poisoned arrow: 6% of max HP a turn.
+  "venom-arrow": dmg("strength", 4, {
+    ranged: true,
+    type: "pierce",
+    applies: { status: "poison", duration: 3, power: 0.06 },
+    cooldown: 3,
+  }),
+  // A caster's curse: healing received halved and damage dealt down a fifth.
+  curse: {
+    kind: "debuff",
+    target: "enemy",
+    stat: "damage",
+    pct: -0.2,
+    duration: 2,
+    ranged: true,
+    applies: { status: "wound", duration: 3 },
+    cooldown: 3,
+  },
+};
+
+/** Wound halves healing received. */
+export const WOUND_HEALING = 0.5;
+const healFactor = (unit: LabUnit) => (unit.statuses.some((s) => s.status === "wound") ? WOUND_HEALING : 1);
+const HARMFUL = new Set(["poison", "wither", "bleed", "wound", "doom", "sleep", "stun", "confuse", "slow"]);
+
+/** How much removing a unit's debuffs is worth, in HP. */
+function debuffBurden(unit: LabUnit, all: LabUnit[]): number {
+  let value = 0;
+  for (const status of unit.statuses) {
+    if (!HARMFUL.has(status.status)) continue;
+    if (status.status === "poison" || status.status === "wither" || status.status === "bleed")
+      value +=
+        unit.maxHp *
+        (status.power ?? 0.05) *
+        status.turns *
+        (status.status === "poison" ? marinaraAffinityMultiplier(unit.affinities, "poison") : 1);
+    else if (status.status === "wound") value += (unit.maxHp - unit.hp) * 0.3 + unit.maxHp * 0.05;
+    else if (status.status === "doom")
+      value += Math.min(unit.hp, unit.maxHp * (unit.maxHp > 300 ? TUNING.doomBossPct : TUNING.doomPct));
+    else value += effStat(unit, unit.magicBasic ? "magic" : "strength", all) * 1.5 * status.turns;
+  }
+  for (const mod of unit.mods) if (mod.pct < 0) value += Math.abs(mod.pct) * unit.maxHp * 0.15 * mod.turns;
+  return value;
+}
+
+/** The single debuff whose removal is worth most (Sanctuary takes one each). */
+function cleanse(unit: LabUnit, how: "all" | "one", all: LabUnit[]) {
+  if (how === "all") {
+    unit.statuses = unit.statuses.filter((s) => !HARMFUL.has(s.status));
+    unit.mods = unit.mods.filter((m) => m.pct >= 0);
+    return;
+  }
+  let best: { kind: "status" | "mod"; index: number; value: number } | null = null;
+  unit.statuses.forEach((status, index) => {
+    if (!HARMFUL.has(status.status)) return;
+    const solo = { ...unit, statuses: [status], mods: [] } as LabUnit;
+    const value = debuffBurden(solo, all);
+    if (!best || value > best.value) best = { kind: "status", index, value };
+  });
+  unit.mods.forEach((mod, index) => {
+    if (mod.pct >= 0) return;
+    const value = Math.abs(mod.pct) * unit.maxHp * 0.15 * mod.turns;
+    if (!best || value > best.value) best = { kind: "mod", index, value };
+  });
+  const picked = best as { kind: "status" | "mod"; index: number } | null;
+  if (!picked) return;
+  if (picked.kind === "status") unit.statuses.splice(picked.index, 1);
+  else unit.mods.splice(picked.index, 1);
+}
+
+function addStatus(target: LabUnit, applies: NonNullable<Effect["applies"]>, bonus: number) {
+  if (applies.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0) return;
+  if (passiveHooks(target.skills).debuffImmune) return;
+  target.statuses = target.statuses.filter((s) => s.status !== applies.status);
+  target.statuses.push({ status: applies.status, turns: applies.duration + bonus, power: applies.power });
+}
 
 /** Passive hooks the resolver reads. */
 export interface PassiveHooks {
@@ -258,6 +385,8 @@ export interface PassiveHooks {
   overheal?: boolean;
   healCrit?: boolean;
   bonusVsMarked?: number;
+  /** The whole party deals more to a marked target (Pack Tactics). */
+  partyBonusVsMarked?: number;
   hitsLowerDefense?: number;
   firstSpellFree?: boolean;
   partyDamageWhileWhole?: number;
@@ -305,14 +434,14 @@ export const PASSIVES: Record<string, PassiveHooks> = {
   exploit: { critBonus: 15 },
   assassinate: { assassinate: true },
   fleet: { statPct: { speed: 0.2 } },
-  tailwind: { partySpeedPct: 0.1 },
+  tailwind: { partySpeedPct: 0.2 },
   elusive: { evadeFirstHitEachRound: true },
   "perfect-evasion": { evasionStacking: 10 },
   "true-aim": { hitBonus: 15 },
   steady: { hitBonus: 5 },
   overwatch: { counter: "always" },
   tracker: { critBonus: 5 },
-  "pack-tactics": { bonusVsMarked: 0.25 },
+  "pack-tactics": { partyBonusVsMarked: 0.25 },
   "heavy-draw": { heavyDraw: true },
   sundering: { hitsLowerDefense: 0.1 },
   attunement: { spellDamagePct: 0.15 },
@@ -332,7 +461,7 @@ export const PASSIVES: Record<string, PassiveHooks> = {
   "item-savant": {},
   "double-dose": {},
   overheal: { overheal: true },
-  sanctified: { partyMagicTakenPct: -0.25 },
+  sanctified: { partyMagicTakenPct: -0.15 },
   encore: { buffDurationBonus: 1 },
   tempo: { partySpeedPct: 0.1 },
   foresight: { partyDefensePct: 0.1 },
@@ -368,6 +497,8 @@ export interface LabUnit {
   attackType?: MarinaraDamageType;
   /** Active skills and passives it fights with. */
   skills: MarinaraSkillDef[];
+  /** A foe's own abilities (ENEMY_SKILLS ids). */
+  enemySkills?: string[];
   /** Basic attack reaches the back row (bows, spells). */
   rangedBasic: boolean;
   /** A dummy never acts. */
@@ -399,6 +530,9 @@ export interface LabUnit {
   actions: number;
   defending: boolean;
   marked: number;
+  hidden?: boolean;
+  exposeNext?: number;
+  secondWindUsed?: boolean;
 }
 
 export function makeUnit(input: {
@@ -654,7 +788,10 @@ function usable(unit: LabUnit): Array<{ skill: MarinaraSkillDef | null; effect: 
 }
 
 function targetsFor(actor: LabUnit, effect: Effect, all: LabUnit[]): LabUnit[] {
-  const foes = living(all.filter((unit) => unit.side !== actor.side));
+  const everyFoe = living(all.filter((unit) => unit.side !== actor.side));
+  // A vanished unit can't be picked out while anyone else is there to hit.
+  const seen = everyFoe.filter((unit) => !unit.hidden);
+  const foes = effect.target === "enemy" && seen.length ? seen : everyFoe;
   const friends = living(all.filter((unit) => unit.side === actor.side));
   if (effect.target === "self") return [actor];
   if (effect.target === "party") return friends;
@@ -664,7 +801,7 @@ function targetsFor(actor: LabUnit, effect: Effect, all: LabUnit[]): LabUnit[] {
   if (taunter && (effect.target === "enemy" || effect.target === "front-row")) return [taunter];
   const provokers = foes.filter((unit) => unit.provoking > 0);
   if (effect.target === "enemy" && provokers.length) return provokers;
-  if (effect.ranged || !TUNING.frontRowShield || tacticalFlag) return foes;
+  if (effect.ranged || !TUNING.frontRowShield || tacticalFlag || TUNING.backRowHalf) return foes;
   const front = foes.filter((unit) => unit.row === "front");
   return front.length ? front : foes;
 }
@@ -726,6 +863,7 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
     pct += allyHooks.partyDamagePct ?? 0;
     if (allyHooks.partyDamageWhileWhole && all.filter((u) => u.side === actor.side).every((u) => u.hp > 0))
       pct += allyHooks.partyDamageWhileWhole;
+    if (target.marked > 0) pct += allyHooks.partyBonusVsMarked ?? 0;
   }
   if (magic) pct += hooks.spellDamagePct ?? 0;
   pct += hooks.damagePct ?? 0;
@@ -742,7 +880,9 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
-  const raw = Math.max(TUNING.minDamage, damage * (1 + pct));
+  const melee = !effect.ranged && !magic && !(actor.rangedBasic && effect.basic);
+  const rowFactor = TUNING.backRowHalf && !tacticalFlag && melee && target.row === "back" ? 0.5 : 1;
+  const raw = Math.max(TUNING.minDamage, damage * (1 + pct) * (effect.spread ?? 1) * rowFactor);
   // Absorbed damage comes out negative: it heals the target.
   damage = raw * multiplier;
   const rider = riderFor(actor, target, effect, raw, best.multiplier);
@@ -810,8 +950,9 @@ function choose(
         if (effect.target === "all-enemies" || effect.target === "front-row") {
           const hit = effect.target === "front-row" ? pool.filter((u) => u.row === "front") : pool;
           const struck = effect.target === "front-row" && !groupedFlag ? hit.slice(0, 1) : hit;
+          const spread = struck.length > 1 ? { ...effect, spread: TUNING.areaSpreadPct } : effect;
           const value = struck.reduce(
-            (sum, target) => sum + Math.min(target.hp, expectedHit(actor, target, effect, all)),
+            (sum, target) => sum + Math.min(target.hp, expectedHit(actor, target, spread, all)),
             0,
           );
           consider(skill, effect, struck, effect.charge ? value / 2 : value);
@@ -834,15 +975,24 @@ function choose(
           );
           break;
         }
-        const hurt = friends.filter((u) => u.hp < u.maxHp * 0.6);
-        if (!hurt.length) break;
         const amount = powerStat(actor, "magic", effect, all) * TUNING.healMagicPct + (effect.power ?? 0);
-        if (effect.target === "party")
-          consider(skill, effect, friends, friends.reduce((sum, u) => sum + Math.min(u.maxHp - u.hp, amount), 0) * 1.1);
-        else {
-          const lowest = hurt.sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0]!;
-          consider(skill, effect, [lowest], Math.min(lowest.maxHp - lowest.hp, amount) * 1.3);
+        const healValue = (u: LabUnit) =>
+          Math.min(u.maxHp - u.hp, amount * healFactor(u)) * (u.hp < u.maxHp * 0.6 ? 1 : 0.3);
+        const cleanValue = (u: LabUnit) =>
+          effect.cleanse === "all" ? debuffBurden(u, all) : effect.cleanse === "one" ? debuffBurden(u, all) * 0.6 : 0;
+        if (effect.target === "party") {
+          const value = friends.reduce((sum, u) => sum + healValue(u) + cleanValue(u), 0);
+          if (friends.some((u) => u.hp < u.maxHp * 0.6) || value > 0) consider(skill, effect, friends, value * 1.1);
+        } else {
+          const ranked = [...friends].sort((a, b) => healValue(b) + cleanValue(b) - healValue(a) - cleanValue(a))[0]!;
+          const value = healValue(ranked) + cleanValue(ranked);
+          if (value > 0) consider(skill, effect, [ranked], value * 1.3);
         }
+        break;
+      }
+      case "cleanse": {
+        const ranked = [...friends].sort((a, b) => debuffBurden(b, all) - debuffBurden(a, all))[0];
+        if (ranked && debuffBurden(ranked, all) > 0) consider(skill, effect, [ranked], debuffBurden(ranked, all) * 1.2);
         break;
       }
       case "revive": {
@@ -868,6 +1018,19 @@ function choose(
           const imbued = bestDamage(actor, all);
           actor.mods = actor.mods.filter((m) => m.source !== "probe");
           if (imbued > plain) consider(skill, effect, [actor], (imbued - plain) * (effect.duration ?? 3) * 0.8);
+          break;
+        }
+        if (effect.exposeNext) {
+          if (actor.exposeNext) break;
+          const others = friends.filter((u) => u.id !== actor.id).reduce((sum, u) => sum + bestDamage(u, all), 0);
+          consider(
+            skill,
+            effect,
+            [actor],
+            bestDamage(actor, all) * (effect.pct ?? 0) +
+              others * effect.exposeNext * 2 * 0.6 +
+              (threatened ? actor.maxHp * 0.05 : 0),
+          );
           break;
         }
         if (effect.stat === "damage-taken" || effect.stat === "resistance") {
@@ -1057,10 +1220,25 @@ function enemyChoose(actor: LabUnit, all: LabUnit[], random: () => number) {
       target = guard;
     }
   }
+  // Foes use an ability now and then, on a target that doesn't already suffer it.
+  for (const id of actor.enemySkills ?? []) {
+    if (confused || (actor.cooldowns[id] ?? 0) > 0 || random() >= 0.4) continue;
+    const ability = ENEMY_SKILLS[id]!;
+    const reach = targetsFor(actor, ability, all);
+    const fresh = reach.filter(
+      (u) => !(ability.applies && u.statuses.some((s) => s.status === ability.applies!.status)),
+    );
+    if (!fresh.length) continue;
+    const picked = fresh.includes(target) ? target : fresh[0]!;
+    actor.cooldowns[id] = ability.cooldown ?? 3;
+    return { skill: null, effect: ability, targets: [picked] };
+  }
   return { skill: null, effect, targets: [target] };
 }
 
 let focusFlag = false;
+/** What the unit with id "slot" chose, across fights (for the lab's trace report). */
+export const skillTally: Record<string, number> = {};
 /** Hold the Line's free attacks are counted against this throwaway log by the enemy's chooser. */
 const emptyLog: FightLog = {
   rounds: 0,
@@ -1082,17 +1260,19 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   groupedFlag = options.grouped;
   tacticalFlag = Boolean(options.tactical);
   actor.defending = false;
+  actor.hidden = false;
+  actor.secondWindUsed = false;
   // Statuses tick at the start of the actor's turn.
   for (const status of actor.statuses) {
-    if (status.status === "poison" || status.status === "wither") {
-      // Poison is a damage type foes can resist; Wither is pure and nothing stops it.
+    if (status.status === "poison" || status.status === "wither" || status.status === "bleed") {
+      // Poison is a damage type foes can resist; Wither and Bleed are pure and nothing stops them.
       const multiplier = status.status === "poison" ? marinaraAffinityMultiplier(actor.affinities, "poison") : 1;
       const amount = Math.round(actor.maxHp * (status.power ?? 0.08) * multiplier);
       actor.hp = Math.min(actor.maxHp, actor.hp - amount);
       if (amount > 0) bump(log.damageTaken, actor.id, amount);
     }
     if (status.status === "regen") {
-      const amount = Math.round(actor.maxHp * (status.power ?? 0.1));
+      const amount = Math.round(actor.maxHp * (status.power ?? 0.1) * healFactor(actor));
       actor.hp = Math.min(actor.maxHp, actor.hp + amount);
     }
     if (status.status === "doom" && status.turns === 1 && actor.hp > 0) {
@@ -1144,6 +1324,8 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   }
   const choice = actor.side === "party" ? choose(actor, all) : enemyChoose(actor, all, random);
   if (!choice) return;
+  if (actor.id === "slot")
+    bump(skillTally, choice.skill?.id ?? (choice.effect.kind === "buff" ? "defend" : "attack"), 1);
   if (choice.effect.kind === "buff" && !choice.effect.stat) {
     actor.defending = true;
     if (hooks.entrench) entrench(actor);
@@ -1250,6 +1432,8 @@ function act(
         : 0;
   switch (effect.kind) {
     case "damage": {
+      if ((effect.target === "all-enemies" || effect.target === "front-row") && targets.length > 1)
+        effect = { ...effect, spread: TUNING.areaSpreadPct };
       for (const target of targets) {
         // Sworn Ward: whoever watches over this target strikes the attacker first, hit or miss.
         for (const warder of living(
@@ -1275,6 +1459,8 @@ function act(
           ? target.maxHp * effect.pctOfMax
           : powerStat(actor, "magic", effect, all) * TUNING.healMagicPct + (effect.power ?? 0);
         if (hooks.healCrit && random() < 0.15) amount *= 1.5;
+        amount *= healFactor(target);
+        if (effect.cleanse) cleanse(target, effect.cleanse, all);
         const before = target.hp;
         target.hp = Math.min(target.maxHp, target.hp + amount);
         if (hooks.overheal) target.shield += Math.max(0, before + amount - target.maxHp) * 0.5;
@@ -1282,6 +1468,9 @@ function act(
       }
       break;
     }
+    case "cleanse":
+      for (const target of targets) cleanse(target, effect.cleanse ?? "all", all);
+      break;
     case "revive": {
       const target = targets[0];
       if (target && target.hp <= 0) {
@@ -1297,11 +1486,14 @@ function act(
     case "buff":
       for (const target of targets)
         addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
+      if (effect.hide) actor.hidden = true;
+      if (effect.exposeNext) actor.exposeNext = effect.exposeNext;
       break;
     case "debuff":
       for (const target of targets) {
         addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "debuff");
         if (skill?.id === "mark-prey") target.marked = (effect.duration ?? 3) + durationBonus;
+        if (effect.applies && random() < (effect.applies.chance ?? 1)) addStatus(target, effect.applies, durationBonus);
       }
       break;
     case "status":
@@ -1312,6 +1504,8 @@ function act(
           turns: (effect.duration ?? 2) + durationBonus,
           power: effect.power,
         });
+        if (effect.exposes)
+          addMod(target, "damage-taken", effect.exposes.pct, effect.exposes.duration + durationBonus, "exposed");
       }
       break;
     case "cover":
@@ -1399,16 +1593,26 @@ function strike(
   }
   const dealt = before - Math.max(0, target.hp);
   bump(log.damageDealt, actor.id, dealt);
-  if (hooks.lifestealPct) actor.hp = Math.min(actor.maxHp, actor.hp + dealt * hooks.lifestealPct);
+  if (hooks.lifestealPct) actor.hp = Math.min(actor.maxHp, actor.hp + dealt * hooks.lifestealPct * healFactor(actor));
   bump(log.damageTaken, target.id, dealt);
   if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);
+  if (actor.exposeNext) {
+    addMod(target, "damage-taken", actor.exposeNext, 2, "exposed");
+    actor.exposeNext = undefined;
+  }
+  if (effect.applies && amount > 0 && random() < (effect.applies.chance ?? 1)) addStatus(target, effect.applies, 0);
   if (hooks.hitsLowerDefense) addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
   if (target.statuses.some((s) => s.status === "sleep"))
     target.statuses = target.statuses.filter((s) => s.status !== "sleep");
   if (target.hp <= 0) {
     target.hp = 0;
-    if (hooks.healOnKillPct) actor.hp = Math.min(actor.maxHp, actor.hp + Math.round(actor.maxHp * hooks.healOnKillPct));
-    if (hooks.actOnKill) actor.next -= (TUNING.timeline / (effStat(actor, "speed", all) + TUNING.speedFloor)) * 0.5;
+    if (hooks.healOnKillPct)
+      actor.hp = Math.min(actor.maxHp, actor.hp + Math.round(actor.maxHp * hooks.healOnKillPct * healFactor(actor)));
+    // Second Wind: a kill gives a whole new action, once per turn.
+    if (hooks.actOnKill && !actor.secondWindUsed) {
+      actor.secondWindUsed = true;
+      actor.next -= TUNING.timeline / (effStat(actor, "speed", all) + TUNING.speedFloor);
+    }
     const savior = living(all.filter((u) => u.side === target.side)).find(
       (u) => passiveHooks(u.skills).miracle && !u.miracleUsed,
     );
