@@ -245,6 +245,7 @@ export function marinaraBestDamageType(
  */
 /** Rider damage as a share of the hit: an enchantment (a trained skill) carries more than a coating item. */
 export const MARINARA_RIDER_DAMAGE_PCT = { enchantment: 0.6, coating: 0.4 } as const;
+// Imbue Weapon is not a rider (Alyssa 2026-10-31): it turns the weapon's damage into the element.
 export const MARINARA_POISON_RIDER = { pctOfMaxHp: 0.05, turns: 3 } as const;
 export const MARINARA_PIERCING_RIDERS = ["light", "dark"] as const satisfies readonly MarinaraDamageType[];
 
@@ -812,7 +813,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           5,
           "magic",
           3,
-          "For 3 turns, weapon hits carry the user's pick of element on top, as a rider.",
+          "For 3 turns, weapon attacks and skills deal the user's pick of element instead of their physical type.",
           true,
         ),
       ],

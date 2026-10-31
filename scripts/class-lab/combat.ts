@@ -579,7 +579,9 @@ function powerStat(unit: LabUnit, stat: MarinaraStat, effect: Effect, all: LabUn
 function damageOptions(actor: LabUnit, effect: Effect) {
   if (!actor.classId) return [actor.attackType ?? "blunt"] as const;
   const type = effect.type ?? "weapon";
-  return marinaraDamageOptions(type, actor.classId);
+  const options = marinaraDamageOptions(type, actor.classId);
+  // Imbue Weapon: the weapon's damage becomes the user's pick of element.
+  return type === "weapon" && modTotal(actor, "imbue") > 0 ? [...options, ...MARINARA_ELEMENTS] : options;
 }
 
 function modTotal(unit: LabUnit, stat: string): number {
@@ -673,8 +675,6 @@ function expectedHit(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUn
 function riderFor(actor: LabUnit, target: LabUnit, effect: Effect, raw: number, weaponMultiplier: number) {
   if (effect.damage === "magic" || effect.kind !== "damage") return null;
   const types: Array<[MarinaraDamageType, number]> = [];
-  if (modTotal(actor, "imbue") > 0)
-    for (const type of MARINARA_ELEMENTS) types.push([type, MARINARA_RIDER_DAMAGE_PCT.enchantment]);
   if (actor.coating) types.push([actor.coating, MARINARA_RIDER_DAMAGE_PCT.coating]);
   let best: { type: MarinaraDamageType; multiplier: number; damage: number } | null = null;
   for (const [type, share] of types) {
