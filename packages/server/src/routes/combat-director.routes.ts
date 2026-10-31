@@ -68,6 +68,7 @@ import {
 import { createCharactersStorage } from "../services/storage/characters.storage.js";
 import { createChatsStorage, withChatMetadataPatchQueue } from "../services/storage/chats.storage.js";
 import { createGameEngineStateStorage } from "../services/storage/game-engine-state.storage.js";
+import { marinaraFightStart, type MarinaraFightStart } from "../services/game/marinara-fight-start.service.js";
 import {
   createCombatDirector,
   combatDirectorView,
@@ -1269,6 +1270,40 @@ export async function combatDirectorRoutes(
           here?.scene ??
           worldSceneLike(gameWorldBattlefields(meta) ?? WORLD_DEFAULT_BATTLEFIELDS, input.environment) ??
           input.environment;
+        // Classic Marinara classes (combat overhaul): the party fights with the progressions kept on their
+        // cards and the opponents by tier, in a Classic fight of a game without a ruleset.
+        let marinara: MarinaraFightStart | null = null;
+        if (setup.marinaraClasses === true && input.style === "classic" && !meta.gameRuleset) {
+          marinara = marinaraFightStart({
+            gameId: input.chatId,
+            cards: Array.isArray(meta.gameCharacterCards) ? meta.gameCharacterCards : [],
+            party: input.party as Combatant[],
+            enemies: input.enemies.map(({ creature: _c, tier: _t, proposed: _p, ...unit }) => unit) as Combatant[],
+            difficulty: normalizeGameDifficulty(setup.difficulty),
+            storyFight: !!(await latestStoryFight(app.db, input.chatId, meta)),
+          });
+          if (!marinara.party.length) return reply.code(400).send({ error: "Nobody in the party can fight." });
+          if (marinara.cards) {
+            const made = new Map(
+              marinara.cards.flatMap((card) =>
+                typeof card.name === "string" && card.marinara ? [[card.name, card.marinara] as const] : [],
+              ),
+            );
+            await chats.patchMetadata(
+              input.chatId,
+              (current) => ({
+                gameCharacterCards: (Array.isArray(current.gameCharacterCards) ? current.gameCharacterCards : []).map(
+                  (card: Record<string, unknown>) =>
+                    typeof card.name === "string" && made.has(card.name) && !card.marinara
+                      ? { ...card, marinara: made.get(card.name) }
+                      : card,
+                ),
+              }),
+              { touchUpdatedAt: false },
+            );
+          }
+          for (const note of marinara.notes) logger.info("[combat-director/start] %s", note);
+        }
         const state = createCombatDirector({
           ...input,
           ...(environment ? { environment } : {}),
@@ -1279,9 +1314,12 @@ export async function combatDirectorRoutes(
             ...(item ? { item } : {}),
           })),
           itemEffects: fightItems.effects,
-          party: input.party as Combatant[],
+          party: marinara?.party ?? (input.party as Combatant[]),
           // What the fight is RESOLVED by is read below and never stored on the Engine's own units.
-          enemies: input.enemies.map(({ creature: _c, tier: _t, proposed: _p, ...unit }) => unit) as Combatant[],
+          enemies:
+            marinara?.enemies ??
+            (input.enemies.map(({ creature: _c, tier: _t, proposed: _p, ...unit }) => unit) as Combatant[]),
+          ...(marinara ? { marinara: marinara.fighters } : {}),
           id: randomUUID(),
           // Who the scene caught unaware: an opponent among them checks its morale first (combat AI E1).
           surprised: input.enemies.flatMap((one) => (one.surprised ? [one.id] : [])),
