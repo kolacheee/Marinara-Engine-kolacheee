@@ -19,6 +19,8 @@ import {
   MARINARA_STATS,
   MARINARA_POISON_RIDER,
   MARINARA_RIDER_DAMAGE_PCT,
+  MARINARA_MIN_HIT_CHANCE,
+  marinaraFightHpMultiplier,
   marinaraAffinityMultiplier,
   marinaraRiderLands,
   marinaraBestDamageType,
@@ -45,7 +47,7 @@ export const TUNING = {
   /** Weapon and spell power grow with level, as better gear would: added to every hit's power. */
   powerPerLevel: 0.2,
   /** Fight HP is the HP stat times this, so an even fight takes three to five hits to drop someone. */
-  hpMultiplier: 1.5,
+  /** Fight HP multiplier now grows with level: see `marinaraFightHpMultiplier`. */
   /** Heals add this share of the healer's Magic to their power. */
   healMagicPct: 0.5,
   /** How much the party AI minds spending a point of each resource. */
@@ -429,7 +431,8 @@ export function makeUnit(input: {
   const maxMp = Math.round(marinaraMaxMp({ magic: pick("magic", "mp") }) * (1 + (passives.mpPct ?? 0)));
   const maxStamina = marinaraMaxStamina({ strength: pick("strength", "stamina"), speed: pick("speed", "stamina") });
   const maxHp =
-    input.hpOverride ?? Math.max(1, Math.round(input.stats.hp * TUNING.hpMultiplier * (1 + (passives.hpPct ?? 0))));
+    input.hpOverride ??
+    Math.max(1, Math.round(input.stats.hp * marinaraFightHpMultiplier(input.level ?? 1) * (1 + (passives.hpPct ?? 0))));
   return {
     ...input,
     level: input.level ?? 1,
@@ -752,7 +755,7 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
     effStat(target, "luck", all) +
     Math.min(30, target.missesAgainst * (passiveHooks(target.skills).evasionStacking ?? 0));
   const hitChance = Math.max(
-    5,
+    MARINARA_MIN_HIT_CHANCE,
     Math.min(
       100,
       TUNING.hitBase +
