@@ -11,6 +11,7 @@ import {
   MARINARA_CLASSES,
   MARINARA_WEAPON_COATINGS,
 } from "../../packages/shared/src/features/marinara-classes.js";
+import { WORLD_STARTER_KITS } from "../../packages/shared/src/features/world/starter-kits.js";
 import {
   MARINARA_ACCESSORIES,
   MARINARA_ARMOUR_FAMILIES,
@@ -137,6 +138,13 @@ assert.equal(marinaraItemInPlace("holy-water", marinaraItemPlace("modern_superna
 assert.equal(marinaraItemInPlace("moonwake", marinaraItemPlace("cyberpunk")), false);
 assert.equal(marinaraItemInPlace("moonwake", marinaraItemPlace("wuxia_xianxia")), true);
 assert.deepEqual(marinaraItemPlace("Western"), { setting: null });
+
+// The kit map is the Engine's own: every starter kit, mapped to the art family it declares (the
+// bestiary keys enemies by these kit ids, so loot for any kit lands in the right setting).
+assert.deepEqual(Object.fromEntries(WORLD_STARTER_KITS.map((kit) => [kit.id, kit.family])), {
+  ...MARINARA_KIT_SETTINGS,
+});
+for (const kit of WORLD_STARTER_KITS) assert.equal(marinaraItemPlace(kit.id).kit, kit.id);
 
 // Every coating in the class rules is an item.
 for (const coating of MARINARA_WEAPON_COATINGS) assert.ok(marinaraItem(coating.id)?.consumable, coating.id);
