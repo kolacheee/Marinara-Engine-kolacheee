@@ -68,6 +68,7 @@ export interface Effect {
     | "revive"
     | "cover"
     | "provoke"
+    | "taunt"
     | "extra-turn"
     | "command"
     | "none";
@@ -130,9 +131,10 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   // Guard
   cover: { kind: "cover", target: "ally", duration: 1 },
   provoke: { kind: "provoke", target: "self", duration: 2 },
+  challenge: { kind: "taunt", target: "enemy", duration: 2 },
   fortress: { kind: "buff", target: "party", stat: "damage-taken", pct: -0.5, duration: 1, cooldown: 5 },
-  "shield-bash": dmg("strength", 6, { onHit: { stat: "speed", pct: -0.3, duration: 1 } }),
-  verdict: dmg("defense", 6, { from: "defense" }),
+  spellguard: { kind: "buff", target: "party", stat: "resistance", pct: 0.3, duration: 2 },
+  verdict: dmg("magic", 6, { from: "resistance" }),
   "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2 },
   "oath-of-iron": { kind: "buff", target: "party", stat: "damage-taken", pct: -0.75, duration: 1, oncePerFight: true },
   // Scout
@@ -260,7 +262,8 @@ export const PASSIVES: Record<string, PassiveHooks> = {
   "shield-wall": { backRowTakenPct: -0.2 },
   "last-stand": { lastStand: true },
   retaliate: { counter: "always" },
-  reprisal: { reprisalPct: 0.3 },
+  "aura-of-warding": { partyMagicTakenPct: -0.35 },
+  "elder-oath": { statPct: { resistance: 0.5 } },
   immovable: { unstoppable: true },
   "bulwark-aura": { frontRowDefensePct: 0.2 },
   "light-feet": { statPct: { speed: 0.1 } },
@@ -339,6 +342,9 @@ export interface LabUnit {
   shield: number;
   covering?: string;
   provoking: number;
+  /** Taunted: must target this unit while `tauntTurns` lasts. */
+  tauntedBy?: string;
+  tauntTurns: number;
   cooldowns: Record<string, number>;
   used: Set<string>;
   charging?: { skillId: string; targetId: string };
@@ -389,6 +395,7 @@ export function makeUnit(input: {
     statuses: [],
     shield: 0,
     provoking: 0,
+    tauntTurns: 0,
     cooldowns: {},
     used: new Set(),
     missesAgainst: 0,
@@ -565,6 +572,8 @@ function targetsFor(actor: LabUnit, effect: Effect, all: LabUnit[]): LabUnit[] {
   if (effect.target === "party") return friends;
   if (effect.target === "ally") return friends;
   if (effect.target === "downed-ally") return all.filter((unit) => unit.side === actor.side && unit.hp <= 0);
+  const taunter = actor.tauntTurns > 0 ? foes.find((unit) => unit.id === actor.tauntedBy) : undefined;
+  if (taunter && (effect.target === "enemy" || effect.target === "front-row")) return [taunter];
   const provokers = foes.filter((unit) => unit.provoking > 0);
   if (effect.target === "enemy" && provokers.length) return provokers;
   if (effect.ranged || !TUNING.frontRowShield) return foes;
@@ -794,6 +803,25 @@ function choose(
         consider(skill, effect, [actor], foes.reduce((s, f) => s + effStat(f, "strength", all), 0) * 0.5);
         break;
       }
+      case "taunt": {
+        if (!threatened || friends.length < 2) break;
+        const loose = foes.filter((f) => !(f.tauntTurns > 0 && f.tauntedBy === actor.id) && !f.dummy);
+        if (!loose.length) break;
+        const target = loose.sort(
+          (a, b) =>
+            effStat(b, "strength", all) +
+            effStat(b, "magic", all) -
+            effStat(a, "strength", all) -
+            effStat(a, "magic", all),
+        )[0]!;
+        consider(
+          skill,
+          effect,
+          [target],
+          Math.max(effStat(target, "strength", all), effStat(target, "magic", all)) * 1.2,
+        );
+        break;
+      }
       case "extra-turn":
         consider(skill, effect, [actor], bestDamage(actor, all) * 0.9);
         break;
@@ -888,6 +916,7 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   }
   actor.next += (TUNING.timeline / (effStat(actor, "speed", all) + TUNING.speedFloor)) * 1;
   if (actor.provoking > 0) actor.provoking--;
+  if (actor.tauntTurns > 0) actor.tauntTurns--;
   for (const id of Object.keys(actor.cooldowns)) actor.cooldowns[id] = Math.max(0, actor.cooldowns[id]! - 1);
   if (skips || actor.dummy) return;
   actor.actions++;
@@ -1032,6 +1061,12 @@ function act(
       break;
     case "provoke":
       actor.provoking = effect.duration ?? 2;
+      break;
+    case "taunt":
+      for (const target of targets) {
+        target.tauntedBy = actor.id;
+        target.tauntTurns = effect.duration ?? 2;
+      }
       break;
     case "extra-turn":
       actor.next -= TUNING.timeline / (effStat(actor, "speed", all) + TUNING.speedFloor);
