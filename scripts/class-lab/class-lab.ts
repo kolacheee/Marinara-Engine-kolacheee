@@ -308,12 +308,16 @@ function enemyParty(level: number, hpScale: number): LabUnit[] {
 }
 
 function partyFight(slot: MarinaraClassDef, level: number, i: number, hpScale: number) {
+  return partyFightWith(buildCharacter(slot, level, `${slot.id}:${level}:${i}`), `${slot.id}`, level, i, hpScale);
+}
+
+function partyFightWith(character: MarinaraProgression, key: string, level: number, i: number, hpScale: number) {
   const teammates = TEAMMATES.map((t, n) =>
     unitFrom(buildCharacter(teamClass(t.line, level), level, `team:${level}:${i}:${n}`), `t${n}`, "party"),
   );
-  const slotted = unitFrom(buildCharacter(slot, level, `${slot.id}:${level}:${i}`), "slot", "party");
+  const slotted = unitFrom(character, "slot", "party");
   return runFight([...teammates, slotted], enemyParty(level, hpScale), {
-    random: marinaraRandom(`p3:${slot.id}:${level}:${i}`),
+    random: marinaraRandom(`p3:${key}:${level}:${i}`),
     grouped: true,
     maxActions: 800,
   });
@@ -372,9 +376,120 @@ function phase3(count: number): string {
   ].join("\n");
 }
 
+// ── Phase 4: cross-training ──
+
+/** The scale that puts the party with an Arcanist-line class of this tier and level at about 65% wins. */
+function calibrate(tier: "base" | "advanced" | "master", level: number): number {
+  const reference = tier === "base" ? "arcanist" : tier === "advanced" ? "elementalist" : "stormcaller";
+  let lo = 0.3;
+  let hi = 8;
+  for (let step = 0; step < 12; step++) {
+    const mid = (lo + hi) / 2;
+    let wins = 0;
+    for (let i = 0; i < 60; i++) if (partyFight(marinaraClass(reference)!, level, i, mid).winner === "party") wins++;
+    if (wins / 60 > 0.65) lo = mid;
+    else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
+
+/**
+ * A level 20 character of `primary` who spent 10 levels in their secondary tree's base class
+ * before promoting at 10: active in the primary tree's first advanced class at class level 10,
+ * carrying the best of the secondary class (its marked picks and actives first).
+ */
+function crossTrained(primary: MarinaraArchetype, secondary: MarinaraArchetype, seed: string): MarinaraProgression {
+  const temperament = MARINARA_PARTY_TEMPERAMENTS.find((t) => MARINARA_TEMPERAMENT_TREES[t] === secondary)!;
+  const random = marinaraRandom(`grow:${seed}`);
+  let character = createMarinaraProgression({ seed, primary, temperament });
+  character = awardMarinaraXp(character, 900, random).progression; // primary base to 10
+  character = setMarinaraClass(character, secondary);
+  character = awardMarinaraXp(character, 1000, random).progression; // secondary base 1 -> 11 (level 20)
+  const advanced = MARINARA_CLASSES.find((def) => def.from === primary && !def.pure)!;
+  character = setMarinaraClass(character, advanced.id);
+  const earlier = marinaraLearnedSkills(character).filter((skill) => skill.classId !== character.activeClass);
+  const ranked = [...earlier].sort(
+    (a, b) =>
+      Number(b.classId === secondary) - Number(a.classId === secondary) ||
+      Number(Boolean(b.carryPick)) - Number(Boolean(a.carryPick)) ||
+      Number(b.kind === "active") - Number(a.kind === "active"),
+  );
+  return setMarinaraCarried(
+    character,
+    ranked.slice(0, MARINARA_CARRY_SLOTS).map((skill) => skill.id),
+  );
+}
+
+function phase4(count: number): string {
+  const level = 20;
+  const scale = calibrate("advanced", level);
+  const hp = averageExpected(level).hp * TUNING.hpMultiplier;
+  const measure = (character: MarinaraProgression, key: string) => {
+    const single: number[] = [];
+    const affinity: number[] = [];
+    let wins = 0;
+    for (let i = 0; i < count; i++) {
+      const random = marinaraRandom(`p4:${key}:${i}`);
+      const one = runFight([unitFrom(character, "hero", "party", "front")], [dummy("d", level, hp * 6)], {
+        random,
+        grouped: true,
+        maxActions: 600,
+      });
+      single.push(one.winner === "party" ? one.rounds : Number.POSITIVE_INFINITY);
+      const mixed = runFight(
+        [unitFrom(character, "hero", "party", "front")],
+        AFFINITY_PROFILES.map((a, n) => dummy(`d${n}`, level, hp, a)),
+        { random, grouped: false, maxActions: 600 },
+      );
+      affinity.push(mixed.winner === "party" ? mixed.rounds : Number.POSITIVE_INFINITY);
+      if (partyFightWith(character, key, level, i, scale).winner === "party") wins++;
+    }
+    return { single: quantiles(single).median, affinity: quantiles(affinity).median, win: wins / count };
+  };
+  const rows: string[] = [];
+  const seeds = 5; // characters per row: each is measured `count` times
+  for (const primary of MARINARA_ARCHETYPES) {
+    const advanced = MARINARA_CLASSES.find((def) => def.from === primary && !def.pure)!;
+    const avg = (list: Array<ReturnType<typeof measure>>) => ({
+      single: list.reduce((s, r) => s + r.single, 0) / list.length,
+      affinity: list.reduce((s, r) => s + r.affinity, 0) / list.length,
+      win: list.reduce((s, r) => s + r.win, 0) / list.length,
+    });
+    const own = avg(
+      Array.from({ length: seeds }, (_, n) =>
+        measure(buildCharacter(advanced, level, `${advanced.id}:${level}:${n}`), `own:${primary}:${n}`),
+      ),
+    );
+    rows.push(
+      `| ${advanced.label} | own tree only (class level 20) | – | ${fmt(own.single)} | ${fmt(own.affinity)} | ${fmt(own.win * 100, 0)}% |`,
+    );
+    for (const secondary of MARINARA_ARCHETYPES) {
+      if (secondary === primary) continue;
+      const crossed = Array.from({ length: seeds }, (_, n) =>
+        crossTrained(primary, secondary, `x:${primary}:${secondary}:${n}`),
+      );
+      const r = avg(crossed.map((c, n) => measure(c, `x:${primary}:${secondary}:${n}`)));
+      const carried = crossed[0]!.carried.join(", ");
+      rows.push(
+        `| ${advanced.label} | + ${marinaraClass(secondary)!.label} 10 | ${carried} | ${fmt(r.single)} | ${fmt(r.affinity)} | ${fmt(r.win * 100, 0)}% |`,
+      );
+    }
+  }
+  return [
+    "# Class lab, phase 4: cross-training and carried skills",
+    "",
+    `Level 20 characters. "Own tree only" spent all 20 levels in their primary tree and is a class level 20 advanced class carrying four skills from its base class. "+ X 10" spent levels 10–20 in their secondary tree's base class X (class level 11), then promoted, so its advanced class is only class level 10, and it carries the best four skills it learned outside the active class, secondary first. Single: rounds to clear one 6× HP dummy. Affinities: rounds to clear the six affinity dummies (as in phase 1). Win rate: the phase 3 party fight with this character in the slot, foes scaled ×${scale.toFixed(2)} (Elementalist level 20 wins about 65%). ${seeds} characters per row, ${count} fights each; medians averaged over the characters.`,
+    "",
+    "| Active class | Training | Carried (first character) | Single | Affinities (6) | Party win rate |",
+    "| --- | --- | --- | --- | --- | --- |",
+    ...rows,
+  ].join("\n");
+}
+
 const phase = process.argv[2] ?? "1";
 const out = process.argv[3];
 const count = Number(process.argv[4] ?? 100);
-const report = phase === "1" ? phase1(count) : phase === "2" ? phase2(count) : phase3(count);
+const report =
+  phase === "1" ? phase1(count) : phase === "2" ? phase2(count) : phase === "3" ? phase3(count) : phase4(count);
 if (out) writeFileSync(out, `${report}\n`);
 else console.log(report);
