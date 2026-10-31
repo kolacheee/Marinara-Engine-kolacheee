@@ -215,7 +215,7 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
     cooldown: 3,
     onHit: { stat: "defense", pct: -0.25, duration: 2 },
   }),
-  // Arcanist
+  // Channeler
   "element-bolt": dmg("magic", 7, { ranged: true }),
   "twin-cast": dmg("magic", 5, { ranged: true, hits: 2 }),
   tempest: dmg("magic", 6, { ranged: true, target: "all-enemies", weight: 1.2, cooldown: 2 }),
@@ -435,7 +435,7 @@ export const PASSIVES: Record<string, PassiveHooks> = {
   "aura-of-warding": { partyMagicTakenPct: -0.35 },
   "elder-oath": { statPct: { resistance: 0.5 } },
   immovable: { unstoppable: true },
-  "bulwark-aura": { frontRowDefensePct: 0.2 },
+  "shield-line": { frontRowDefensePct: 0.2 },
   "light-feet": { statPct: { speed: 0.1 } },
   exploit: { critBonus: 15 },
   assassinate: { assassinate: true },
@@ -446,7 +446,7 @@ export const PASSIVES: Record<string, PassiveHooks> = {
   "true-aim": { hitBonus: 15 },
   steady: { hitBonus: 5 },
   overwatch: { counter: "always" },
-  tracker: { critBonus: 5 },
+  "read-the-signs": { critBonus: 5 },
   "pack-tactics": { partyBonusVsMarked: 0.25 },
   "heavy-draw": { heavyDraw: true },
   sundering: { hitsLowerDefense: 0.1 },

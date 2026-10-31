@@ -95,7 +95,7 @@ for (let i = 0; i < 200; i++) {
   assert.ok(leaned / 200 > plain / 200 + 5, "a Description leaning Magic raises the Magic aptitude");
 }
 
-// John: a Blade whose starting temperament is Supportive trains Blade and Mender, never Arcanist,
+// John: a Blade whose starting temperament is Supportive trains Blade and Mender, never Channeler,
 // and never the pure branch.
 const john = createMarinaraProgression({ seed: "game-1:john", primary: "blade", temperament: "supportive" });
 assert.equal(john.activeClass, "blade");
@@ -103,10 +103,10 @@ assert.deepEqual(
   marinaraOpenClasses(john)
     .map((def) => def.id)
     .sort(),
-  ["blade", "duelist", "mender", "ravager"].sort(),
+  ["blade", "duelist", "mender", "bloodsworn"].sort(),
   "base classes of both trees and the promotions one step past a trained class",
 );
-assert.equal(marinaraClassBlock(john, "arcanist"), "not-in-trees");
+assert.equal(marinaraClassBlock(john, "channeler"), "not-in-trees");
 assert.equal(marinaraClassBlock(john, "weaponmaster"), "not-in-trees");
 assert.equal(marinaraClassBlock(john, "duelist"), "class-level", "promotion waits on class level 10");
 assert.throws(() => setMarinaraClass(john, "duelist"));
@@ -147,7 +147,7 @@ assert.deepEqual(
   marinaraOpenClasses(pure)
     .map((def) => def.id)
     .sort(),
-  ["blade", "duelist", "ravager", "weaponmaster"],
+  ["blade", "bloodsworn", "duelist", "weaponmaster"],
 );
 const pureLeveled = awardMarinaraXp(pure, 900, marinaraRandom("pure")).progression;
 assert.equal(marinaraClassBlock(pureLeveled, "weaponmaster"), null);
@@ -182,11 +182,11 @@ const capped = awardMarinaraXp(john, 100_000, marinaraRandom("cap")).progression
 assert.equal(capped.level, MARINARA_LEVEL_CAP);
 assert.equal(capped.xp, 0);
 
-// Expected stats rise with level and promotions, and a Guard is expected to out-defend an Arcanist.
+// Expected stats rise with level and promotions, and a Guard is expected to out-defend a Channeler.
 const guard10 = expectedMarinaraStats("guard", 10);
 const guard30 = expectedMarinaraStats("guard", 30);
 assert.ok(guard30.defense > guard10.defense && guard30.hp > guard10.hp);
-assert.ok(expectedMarinaraStats("guard", 20).defense > expectedMarinaraStats("arcanist", 20).defense);
-assert.ok(expectedMarinaraStats("arcanist", 20).magic > expectedMarinaraStats("guard", 20).magic);
+assert.ok(expectedMarinaraStats("guard", 20).defense > expectedMarinaraStats("channeler", 20).defense);
+assert.ok(expectedMarinaraStats("channeler", 20).magic > expectedMarinaraStats("guard", 20).magic);
 
 console.log("game-marinara-classes: ok");
