@@ -1234,6 +1234,21 @@ export function marinaraUsableSkills(progression: MarinaraProgression): Array<Ma
   return [...own, ...carried.slice(0, MARINARA_CARRY_SLOTS)];
 }
 
+/**
+ * The stat a carried skill runs on (Alyssa 2026-10-31): the better of the character's own and what
+ * they would have in their best-trained class for that stat, as that class's expected stats at its
+ * class level. A Blade who trained Arcanist to 10 casts a carried Element Bolt with an Arcanist's
+ * Magic at level 10, not a Blade's.
+ */
+export function marinaraCarriedStat(progression: MarinaraProgression, stat: MarinaraStat): number {
+  let best = progression.stats[stat];
+  for (const [classId, classLevel] of Object.entries(progression.classLevels)) {
+    const def = marinaraClass(classId);
+    if (def) best = Math.max(best, expectedMarinaraStats(def.archetype, classLevel)[stat]);
+  }
+  return best;
+}
+
 /** Picks the carried skills: up to four, each learned in a class other than the active one. */
 export function setMarinaraCarried(progression: MarinaraProgression, skillIds: readonly string[]): MarinaraProgression {
   const unique = [...new Set(skillIds)];

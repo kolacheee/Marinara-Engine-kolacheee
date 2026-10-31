@@ -76,6 +76,8 @@ export interface Effect {
   power?: number;
   scales?: MarinaraStat;
   damage?: "physical" | "magic";
+  /** Comes from a carried skill: runs on the user's carried stats. */
+  carried?: boolean;
   /** A basic attack, which immunity and absorption only resist. */
   basic?: boolean;
   /** Damage type; a skill's own type comes from its definition. */
@@ -322,6 +324,9 @@ export interface LabUnit {
   maxStamina: number;
   stamina: number;
   affinities?: MarinaraAffinities;
+  /** Carried skill ids, and the stats they run on (best-trained class). */
+  carriedIds?: ReadonlySet<string>;
+  carriedStats?: Partial<MarinaraStats>;
   /** The class it fights as; its weapons and basic attack follow it. */
   classId?: string;
   /** Damage type of a unit with no class (a plain foe). */
@@ -374,10 +379,18 @@ export function makeUnit(input: {
   affinities?: MarinaraAffinities;
   classId?: string;
   attackType?: MarinaraDamageType;
+  carriedIds?: ReadonlySet<string>;
+  carriedStats?: Partial<MarinaraStats>;
 }): LabUnit {
   const passives = passiveHooks(input.skills ?? []);
-  const maxMp = Math.round(marinaraMaxMp(input.stats) * (1 + (passives.mpPct ?? 0)));
-  const maxStamina = marinaraMaxStamina(input.stats);
+  // Carrying a skill that spends MP (or stamina) sizes that pool from the carried stats, as the
+  // skill's own power is.
+  const carries = (resource: "mp" | "stamina") =>
+    (input.skills ?? []).some((skill) => input.carriedIds?.has(skill.id) && skill.resource === resource);
+  const pick = (stat: MarinaraStat, resource: "mp" | "stamina") =>
+    carries(resource) ? Math.max(input.stats[stat], input.carriedStats?.[stat] ?? 0) : input.stats[stat];
+  const maxMp = Math.round(marinaraMaxMp({ magic: pick("magic", "mp") }) * (1 + (passives.mpPct ?? 0)));
+  const maxStamina = marinaraMaxStamina({ strength: pick("strength", "stamina"), speed: pick("speed", "stamina") });
   const maxHp = input.hpOverride ?? Math.max(1, Math.round(input.stats.hp * TUNING.hpMultiplier));
   return {
     ...input,
@@ -519,6 +532,13 @@ function effStat(unit: LabUnit, stat: MarinaraStat, all: LabUnit[]): number {
   return Math.max(0, unit.stats[stat] * (1 + pct));
 }
 
+/** The stat an effect's power runs on: a carried skill uses the better of own and carried stats. */
+function powerStat(unit: LabUnit, stat: MarinaraStat, effect: Effect, all: LabUnit[]): number {
+  const own = effStat(unit, stat, all);
+  const carried = effect.carried ? unit.carriedStats?.[stat] : undefined;
+  return carried === undefined ? own : Math.max(own, carried * (own / Math.max(1, unit.stats[stat])));
+}
+
 function modTotal(unit: LabUnit, stat: string): number {
   return unit.mods.filter((mod) => mod.stat === stat).reduce((sum, mod) => sum + mod.pct, 0);
 }
@@ -555,7 +575,11 @@ function usable(unit: LabUnit): Array<{ skill: MarinaraSkillDef | null; effect: 
     if (skill.kind !== "active") continue;
     const base = SKILL_EFFECTS[skill.id];
     if (!base || base.kind === "none") continue;
-    const effect = skill.damage ? { ...base, type: skill.damage } : base;
+    const effect = {
+      ...base,
+      ...(skill.damage ? { type: skill.damage } : {}),
+      ...(unit.carriedIds?.has(skill.id) ? { carried: true } : {}),
+    };
     const { resource, cost } = costOf(unit, skill);
     if (cost > (resource === "mp" ? unit.mp : unit.stamina)) continue;
     if ((unit.cooldowns[skill.id] ?? 0) > 0) continue;
@@ -593,7 +617,10 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
   const attackStat = effect.from ?? effect.scales ?? (magic ? "magic" : "strength");
   const guard = effStat(target, magic ? "resistance" : "defense", all) * (1 - (effect.pierce ?? 0));
   let damage =
-    effStat(actor, attackStat, all) + (effect.power ?? TUNING.basicPower) + actor.level * TUNING.powerPerLevel - guard;
+    powerStat(actor, attackStat, effect, all) +
+    (effect.power ?? TUNING.basicPower) +
+    actor.level * TUNING.powerPerLevel -
+    guard;
   let pct = modTotal(actor, "damage") + modTotal(target, "damage-taken");
   for (const ally of living(all.filter((unit) => unit.side === actor.side))) {
     const allyHooks = passiveHooks(ally.skills);
@@ -697,7 +724,7 @@ function choose(
       case "heal": {
         const hurt = friends.filter((u) => u.hp < u.maxHp * 0.6);
         if (!hurt.length) break;
-        const amount = effStat(actor, "magic", all) * TUNING.healMagicPct + (effect.power ?? 0);
+        const amount = powerStat(actor, "magic", effect, all) * TUNING.healMagicPct + (effect.power ?? 0);
         if (effect.target === "party")
           consider(skill, effect, friends, friends.reduce((sum, u) => sum + Math.min(u.maxHp - u.hp, amount), 0) * 1.1);
         else {
@@ -714,7 +741,8 @@ function choose(
       case "shield": {
         if (!threatened) break;
         const front = friends.filter((u) => u.row === "front" && u.shield <= 0)[0];
-        if (front) consider(skill, effect, [front], (effStat(actor, "magic", all) + (effect.power ?? 0)) * 0.9);
+        if (front)
+          consider(skill, effect, [front], (powerStat(actor, "magic", effect, all) + (effect.power ?? 0)) * 0.9);
         break;
       }
       case "buff": {
@@ -1015,7 +1043,7 @@ function act(
     }
     case "heal": {
       for (const target of targets) {
-        let amount = effStat(actor, "magic", all) * TUNING.healMagicPct + (effect.power ?? 0);
+        let amount = powerStat(actor, "magic", effect, all) * TUNING.healMagicPct + (effect.power ?? 0);
         if (hooks.healCrit && random() < 0.15) amount *= 1.5;
         const before = target.hp;
         target.hp = Math.min(target.maxHp, target.hp + amount);
@@ -1033,7 +1061,7 @@ function act(
       break;
     }
     case "shield": {
-      for (const target of targets) target.shield += effStat(actor, "magic", all) + (effect.power ?? 0);
+      for (const target of targets) target.shield += powerStat(actor, "magic", effect, all) + (effect.power ?? 0);
       break;
     }
     case "buff":
