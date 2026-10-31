@@ -244,6 +244,8 @@ function phase2(count: number): string {
       const survive: number[] = [];
       const surviveMagic: number[] = [];
       const backTaken: number[] = [];
+      const protectClassic: number[] = [];
+      const protectTactical: number[] = [];
       for (let i = 0; i < count; i++) {
         const character = buildCharacter(def, level, `${def.id}:${level}:${i}`);
         const random = marinaraRandom(`p2:${def.id}:${level}:${i}`);
@@ -277,22 +279,57 @@ function phase2(count: number): string {
         });
         const taken = (guarded.damageTaken.back0 ?? 0) + (guarded.damageTaken.back1 ?? 0);
         backTaken.push(taken / Math.max(0.5, guarded.rounds));
+        // Protect: two back-row allies with real HP that do not act, against a bruiser, an archer
+        // and a caster that go for the back row; rounds until the first ally falls.
+        for (const [mode, list] of [
+          ["classic", protectClassic],
+          ["tactical", protectTactical],
+        ] as const) {
+          const allies = [0, 1].map((n) => {
+            const unit = unitFrom(
+              buildCharacter(marinaraClass("arcanist")!, Math.max(1, level), `ward:${level}:${i}:${n}`),
+              `ally${n}`,
+              "party",
+              "back",
+            );
+            unit.skills = [];
+            unit.dummy = true;
+            return unit;
+          });
+          const hero = unitFrom(character, "hero", "party", "front");
+          const foes = [
+            attacker("f1", "blade", level),
+            attacker("f2", "marksman", level),
+            attacker("f3", "arcanist", level),
+          ];
+          const fight = runFight([hero, ...allies], foes, {
+            random: marinaraRandom(`p2${mode}:${def.id}:${level}:${i}`),
+            grouped: true,
+            maxActions: 400,
+            focus: true,
+            tactical: mode === "tactical",
+            stopWhenDowned: allies.map((u) => u.id),
+          });
+          list.push(fight.rounds);
+        }
       }
       const s = quantiles(survive);
       const m = quantiles(surviveMagic);
       const b = quantiles(backTaken);
+      const pc = quantiles(protectClassic);
+      const pt = quantiles(protectTactical);
       rows.push(
-        `| ${def.label} | ${def.tier}${def.pure ? " (pure)" : ""} | ${level} | ${fmt(s.median)} (${fmt(s.p10)}–${fmt(s.p90)}) | ${fmt(m.median)} (${fmt(m.p10)}–${fmt(m.p90)}) | ${fmt(b.median)} |`,
+        `| ${def.label} | ${def.tier}${def.pure ? " (pure)" : ""} | ${level} | ${fmt(s.median)} (${fmt(s.p10)}–${fmt(s.p90)}) | ${fmt(m.median)} (${fmt(m.p10)}–${fmt(m.p90)}) | ${fmt(b.median)} | ${fmt(pc.median)} | ${fmt(pt.median)} |`,
       );
     }
   }
   return [
     "# Class lab, phase 2: tank potential",
     "",
-    `Each class alone in the front row against two standard attackers of its level that cannot be killed, with expected stats and no special skills, using its own skills to stay up. Survival is rounds until it falls (median, with p10–p90 across ${count} characters), against two bruisers (physical) and against two casters (magic). Back row taken is the damage per round two back-row allies take while this class holds the front against a bruiser and a caster: lower means it shields them better.`,
+    `Each class alone in the front row against two standard attackers of its level that cannot be killed, with expected stats and no special skills, using its own skills to stay up. Survival is rounds until it falls (median, with p10–p90 across ${count} characters), against two bruisers (physical) and against two casters (magic). Back row taken is the damage per round two back-row allies take while this class holds the front against a bruiser and a caster: lower means it shields them better. Back row lasts: rounds until the first of two back-row allies falls while this class holds the front, against a bruiser, an archer and a caster that go for the back row and the weakest target; in Classic melee foes cannot pass a standing front row, in Tactical nothing shields the back row except the class's own skills (taunts, Sworn Ward, Hold the Line). Higher is better.`,
     "",
-    "| Class | Tier | Level | Rounds vs physical | Rounds vs magic | Back row taken per round |",
-    "| --- | --- | --- | --- | --- | --- |",
+    "| Class | Tier | Level | Rounds vs physical | Rounds vs magic | Back row taken per round | Back row lasts (Classic) | Back row lasts (Tactical) |",
+    "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ...rows,
   ].join("\n");
 }

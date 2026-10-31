@@ -505,7 +505,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["hp", "defense"],
       skills: [
         passive("steadfast", "Steadfast", 5, "+20% max HP.", true),
-        active("cover", "Cover", 1, "defense", 0, "Takes the next hit aimed at an ally."),
+        active(
+          "cover",
+          "Cover",
+          1,
+          "defense",
+          0,
+          "Guard-tree trait, kept in every Guard class: guards an ally until the user's next turn; every single-target hit on them comes to the user.",
+        ),
         active("challenge", "Challenge", 1, "defense", 2, "One enemy must target the user for 2 turns.", true),
         active(
           "sworn-ward",
@@ -520,7 +527,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "hold-the-line",
           "Hold the Line",
           5,
-          "Tactical: a foe that moves next to the user stops there, and one that leaves its reach takes a free attack.",
+          "Guard-tree trait, kept in every Guard class: acts early in the first round; in Tactical a foe that moves next to the user stops there, and one that leaves its reach takes a free attack.",
         ),
         passive("stalwart", "Stalwart", 5, "+20% Defense while defending.", true),
         passive(
@@ -1363,9 +1370,20 @@ export function marinaraLearnedSkills(progression: MarinaraProgression): Array<M
 }
 
 /** The skills a character fights with: their active class's learned skills and what they carry. */
+/** Skills every class of an archetype's tree keeps once learned, without a carry slot. */
+export const MARINARA_ARCHETYPE_TRAITS: Partial<Record<MarinaraArchetype, readonly string[]>> = {
+  guard: ["hold-the-line", "cover"],
+};
+
 export function marinaraUsableSkills(progression: MarinaraProgression): Array<MarinaraSkillDef & { classId: string }> {
   const learned = marinaraLearnedSkills(progression);
-  const own = learned.filter((skill) => skill.classId === progression.activeClass);
+  const archetype = marinaraClass(progression.activeClass)?.archetype;
+  const traits = (archetype && MARINARA_ARCHETYPE_TRAITS[archetype]) || [];
+  const own = learned.filter(
+    (skill) =>
+      skill.classId === progression.activeClass ||
+      (traits.includes(skill.id) && marinaraClass(skill.classId)?.archetype === archetype),
+  );
   const carried = learned.filter(
     (skill) => skill.classId !== progression.activeClass && progression.carried.includes(skill.id),
   );
