@@ -19,6 +19,7 @@ import {
   MARINARA_STATS,
   MARINARA_POISON_RIDER,
   MARINARA_RIDER_DAMAGE_PCT,
+  MARINARA_BACK_ROW_MELEE_PCT,
   MARINARA_MIN_HIT_CHANCE,
   marinaraFightHpMultiplier,
   marinaraAffinityMultiplier,
@@ -60,9 +61,10 @@ export const TUNING = {
   frontRowShield: true,
   /**
    * Classic rows, early Final Fantasy style: melee can reach the back row, but deals half damage
-   * to it. Off: the front row shields the back row from melee entirely. (LAB_ROWS=half to try it.)
+   * to it (MARINARA_BACK_ROW_MELEE_PCT). LAB_ROWS=shield tries the old rule, where the front row
+   * blocks melee from the back row entirely.
    */
-  backRowHalf: process.env.LAB_ROWS === "half",
+  backRowHalf: process.env.LAB_ROWS !== "shield",
   /** An area attack that strikes more than one foe deals this share to each (early Final Fantasy style). */
   areaSpreadPct: 0.6,
 };
@@ -881,7 +883,8 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
   const melee = !effect.ranged && !magic && !(actor.rangedBasic && effect.basic);
-  const rowFactor = TUNING.backRowHalf && !tacticalFlag && melee && target.row === "back" ? 0.5 : 1;
+  const rowFactor =
+    TUNING.backRowHalf && !tacticalFlag && melee && target.row === "back" ? MARINARA_BACK_ROW_MELEE_PCT : 1;
   const raw = Math.max(TUNING.minDamage, damage * (1 + pct) * (effect.spread ?? 1) * rowFactor);
   // Absorbed damage comes out negative: it heals the target.
   damage = raw * multiplier;
@@ -1555,7 +1558,7 @@ function strike(
   const targetHooks = passiveHooks(target.skills);
   if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound) {
     target.evadedThisRound = true;
-    return;
+    if (random() < 0.5) return;
   }
   const { damage, hitChance, critChance, multiplier, rider } = hitNumbers(actor, target, effect, all);
   const hooks = passiveHooks(actor.skills);

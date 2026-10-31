@@ -284,6 +284,11 @@ export function marinaraFightHpMultiplier(level: number): number {
 
 /** No attack's chance to hit drops below this, however evasive the target. */
 export const MARINARA_MIN_HIT_CHANCE = 25;
+/**
+ * Classic rows (early Final Fantasy): melee can reach the back row, but deals this share of its
+ * damage there. Ranged attacks and spells deal full damage to either row. Tactical has no rows.
+ */
+export const MARINARA_BACK_ROW_MELEE_PCT = 0.5;
 
 // ── Resources ──
 
@@ -734,7 +739,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["speed", "skill", "luck"],
       skills: [
         active("shadowstep", "Shadowstep", 10, "skill", 4, "Strikes the back row from the front.", true),
-        passive("elusive", "Elusive", 15, "The first hit each round misses."),
+        passive("elusive", "Elusive", 15, "The first hit each round has a 50% chance to miss."),
       ],
     },
     {
