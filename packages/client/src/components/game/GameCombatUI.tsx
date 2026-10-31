@@ -2257,6 +2257,8 @@ export function GameCombatUI({
                       .filter((s) => !s.reaction)
                       .map((skill) => {
                         const insufficientMp =
+                          // A Classic Marinara skill says itself why it can't be used now (cost, cooldown, once a fight).
+                          !!skill.unavailable ||
                           (activePlayer.skillCooldowns?.[skill.id] ?? 0) > 0 ||
                           (skill.slotLevel
                             ? (activePlayer.spellSlots?.[String(skill.slotLevel)] ?? 0) <= 0
@@ -2284,7 +2286,12 @@ export function GameCombatUI({
                               {localizeUi(combatSkillTypeLabelKey(skill.type))} ·{" "}
                               {skill.slotLevel
                                 ? localizeUi("game.combat.director.slotCost", { level: skill.slotLevel })
-                                : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
+                                : skill.staminaCost
+                                  ? localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost })
+                                  : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
+                              {skill.readyIn
+                                ? ` · ${localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })}`
+                                : ""}
                             </span>
                           </button>
                         );
@@ -2862,6 +2869,7 @@ export function GameCombatUI({
                   .filter((s) => !s.reaction)
                   .map((skill) => {
                     const insufficientMp =
+                      !!skill.unavailable ||
                       (activePlayer.skillCooldowns?.[skill.id] ?? 0) > 0 ||
                       (skill.slotLevel
                         ? (activePlayer.spellSlots?.[String(skill.slotLevel)] ?? 0) <= 0
@@ -2890,7 +2898,12 @@ export function GameCombatUI({
                           {skill.description || localizeUi(combatSkillDescriptionKey(skill.type))} •{" "}
                           {skill.slotLevel
                             ? localizeUi("game.combat.director.slotCost", { level: skill.slotLevel })
-                            : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
+                            : skill.staminaCost
+                              ? localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost })
+                              : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
+                          {skill.readyIn
+                            ? ` · ${localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })}`
+                            : ""}
                         </div>
                       </button>
                     );

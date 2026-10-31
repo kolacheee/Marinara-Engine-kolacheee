@@ -1930,6 +1930,8 @@ export interface MarinaraCombatantView {
   covering?: string;
   defending?: boolean;
   hidden?: boolean;
+  /** A boss below half its HP, hitting harder. */
+  enraged?: boolean;
   coating?: MarinaraDamageType;
   /** Damage types it is known to be weak to, resist, be immune to or absorb. */
   affinities?: MarinaraAffinities;
@@ -1957,6 +1959,7 @@ export function marinaraCombatantView(unit: MarinaraFighter): MarinaraCombatantV
     ...(unit.covering ? { covering: unit.covering } : {}),
     ...(unit.defending ? { defending: true } : {}),
     ...(unit.hidden ? { hidden: true } : {}),
+    ...(unit.enraged ? { enraged: true } : {}),
     ...(unit.coating ? { coating: unit.coating } : {}),
     ...(unit.affinities ? { affinities: { ...unit.affinities } } : {}),
     next: Math.round(unit.next),
