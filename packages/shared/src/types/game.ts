@@ -182,6 +182,9 @@ export interface GameCharacterCard {
   /** This game's copy of the character's sheet for the pinned ruleset (`chat.metadata.gameRuleset`).
    *  Edited in the game, never written back to the library card or persona. */
   rulesetSheet?: import("../schemas/ruleset.schema.js").RulesetSheetEnvelope;
+  /** Classic Marinara (Marinara's own classes): this game's progression for the character, never
+   *  the library card's: class, levels, stats, hidden aptitudes, carried skills and equipment. */
+  marinara?: import("../features/marinara-party.js").MarinaraCardProgression;
 }
 
 // ── NPCs ──

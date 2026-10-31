@@ -502,6 +502,9 @@ export interface MarinaraFighter {
   magicBasic?: boolean;
   /** Extra power from gear on every hit, on top of the level's. */
   gearPower?: number;
+  /** What equipped gear gives (marinara-items.ts `marinaraGearBonus`): its weapon and spell power
+   *  replace the level's stand-in, its weapon decides the weapon's damage type. */
+  gear?: MarinaraFighterGear;
   /** The foe's tier, for balance and XP. */
   tier?: MarinaraEnemyTier;
   // fight state
@@ -538,6 +541,18 @@ export interface MarinaraFighter {
   commanded?: boolean;
 }
 
+export interface MarinaraFighterGear {
+  power: number;
+  spellPower: number;
+  weaponType?: MarinaraDamageType;
+  hit?: number;
+  crit?: number;
+  damagePct?: number;
+  lifestealPct?: number;
+  /** Statuses it can't be given. */
+  immune?: string[];
+}
+
 export interface MarinaraFighterInput {
   id: string;
   name: string;
@@ -559,6 +574,7 @@ export interface MarinaraFighterInput {
   coating?: MarinaraDamageType;
   enemySkills?: string[];
   gearPower?: number;
+  gear?: MarinaraFighterGear;
   tier?: MarinaraEnemyTier;
 }
 
@@ -627,6 +643,9 @@ export function buildMarinaraPartyFighter(input: {
   row?: MarinaraFighter["row"];
   gearPower?: number;
   gearStats?: Partial<MarinaraStats>;
+  gear?: MarinaraFighterGear;
+  /** A ranged weapon in hand: the basic attack reaches the back row at full damage. */
+  rangedWeapon?: boolean;
   affinities?: MarinaraAffinities;
 }): MarinaraFighter {
   const { progression } = input;
@@ -650,9 +669,10 @@ export function buildMarinaraPartyFighter(input: {
     archetype,
     classId: progression.activeClass,
     level: progression.level,
-    rangedBasic: RANGED_ARCHETYPES.has(archetype),
+    rangedBasic: input.rangedWeapon ?? RANGED_ARCHETYPES.has(archetype),
     magicBasic: CASTER_ARCHETYPES.has(archetype),
     carriedIds,
+    ...(input.gear ? { gear: input.gear } : {}),
     carriedStats,
     ...(input.gearPower ? { gearPower: input.gearPower } : {}),
     ...(input.affinities ? { affinities: input.affinities } : {}),
@@ -921,7 +941,9 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
     return [actor.attackType ?? "blunt"];
   }
   const type = effect.type ?? "weapon";
-  const options = marinaraDamageOptions(type, actor.classId);
+  // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
+  const options =
+    type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
   // Imbue Weapon: the weapon's damage becomes the user's pick of element.
   return type === "weapon" && modTotal(actor, "imbue") > 0 ? [...options, ...MARINARA_ELEMENTS] : options;
 }
@@ -1093,7 +1115,7 @@ export function marinaraHitNumbers(
   let damage =
     powerStat(actor, attackStat, effect, all) +
     (effect.power ?? MARINARA_TUNING.basicPower) +
-    actor.level * MARINARA_TUNING.powerPerLevel +
+    (actor.gear ? (magic ? actor.gear.spellPower : actor.gear.power) : actor.level * MARINARA_TUNING.powerPerLevel) +
     (actor.gearPower ?? 0) -
     guard;
   let pct = modTotal(actor, "damage") + modTotal(target, "damage-taken");
@@ -1105,7 +1127,7 @@ export function marinaraHitNumbers(
     if (target.marked > 0) pct += allyHooks.partyBonusVsMarked ?? 0;
   }
   if (magic) pct += hooks.spellDamagePct ?? 0;
-  pct += hooks.damagePct ?? 0;
+  pct += (hooks.damagePct ?? 0) + (actor.gear?.damagePct ?? 0);
   if (hooks.damageBelowHalfPct && actor.hp < actor.maxHp / 2) pct += hooks.damageBelowHalfPct;
   if (target.marked > 0 && hooks.bonusVsMarked) pct += hooks.bonusVsMarked;
   if (effect.finisher && target.hp < target.maxHp * effect.finisher.below) pct += effect.finisher.bonus;
@@ -1147,7 +1169,8 @@ export function marinaraHitNumbers(
         marinaraEffectiveStat(actor, "skill", all) * 2 +
         marinaraEffectiveStat(actor, "luck", all) / 2 +
         (effect.hitBonus ?? 0) +
-        (hooks.hitBonus ?? 0) -
+        (hooks.hitBonus ?? 0) +
+        (actor.gear?.hit ?? 0) -
         evade,
     ),
   );
@@ -1158,6 +1181,7 @@ export function marinaraHitNumbers(
       marinaraEffectiveStat(actor, "skill", all) / 2 +
         (effect.critBonus ?? 0) +
         (hooks.critBonus ?? 0) +
+        (actor.gear?.crit ?? 0) +
         partyCrit -
         marinaraEffectiveStat(target, "luck", all),
     ),
@@ -1238,7 +1262,7 @@ function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly Marina
 
 function addStatus(target: MarinaraFighter, applies: NonNullable<MarinaraEffect["applies"]>, bonus: number) {
   if (applies.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0) return false;
-  if (hooksOf(target).debuffImmune) return false;
+  if (hooksOf(target).debuffImmune || target.gear?.immune?.includes(applies.status)) return false;
   target.statuses = target.statuses.filter((s) => s.status !== applies.status);
   target.statuses.push({ status: applies.status, turns: applies.duration + bonus, power: applies.power });
   return true;
@@ -1589,7 +1613,10 @@ function act(
     case "status":
       for (const target of targets) {
         const roll = random();
-        if (effect.status !== "regen" && (roll > (effect.chance ?? 1) || hooksOf(target).debuffImmune)) {
+        if (
+          effect.status !== "regen" &&
+          (roll > (effect.chance ?? 1) || hooksOf(target).debuffImmune || target.gear?.immune?.includes(effect.status!))
+        ) {
           ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
           continue;
         }
@@ -1780,8 +1807,8 @@ function strike(
     roll: Math.floor(roll),
   });
   if (rider) applyRider(actor, target, rider, crit, ctx);
-  if (hooks.lifestealPct)
-    actor.hp = Math.round(Math.min(actor.maxHp, actor.hp + dealt * hooks.lifestealPct * healFactor(actor)));
+  const lifesteal = (hooks.lifestealPct ?? 0) + (actor.gear?.lifestealPct ?? 0);
+  if (lifesteal) actor.hp = Math.round(Math.min(actor.maxHp, actor.hp + dealt * lifesteal * healFactor(actor)));
   if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);
   if (actor.exposeNext) {
     addMod(target, "damage-taken", actor.exposeNext, 2, "exposed");
