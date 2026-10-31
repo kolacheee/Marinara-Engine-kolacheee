@@ -59,6 +59,9 @@ export const MARINARA_TUNING = {
   speedFloor: 10,
   defendDefensePct: 0.5,
   minDamage: 1,
+  /** A hit that lands always deals at least this share of its attack and power, so two walls
+   *  never trade 1s forever (Engine balance 2026-11-01). */
+  minDamagePct: 0.1,
   /** Weapon and spell power grow with level, as better gear would: added to every hit's power. */
   powerPerLevel: 0.2,
   /** Heals add this share of the healer's Magic to their power. */
@@ -666,8 +669,8 @@ export const MARINARA_ENEMY_TIERS_LIST = ["minion", "standard", "elite", "boss"]
 export const MARINARA_ENEMY_TIERS: Record<MarinaraEnemyTier, { hp: number; stats: number; xp: number }> = {
   minion: { hp: 0.6, stats: 0.85, xp: 0.5 },
   standard: { hp: 1, stats: 1, xp: 1 },
-  elite: { hp: 1.8, stats: 1.1, xp: 2 },
-  boss: { hp: 4, stats: 1.2, xp: 5 },
+  elite: { hp: 2.2, stats: 1.15, xp: 2 },
+  boss: { hp: 5, stats: 1.3, xp: 5 },
 };
 
 export interface MarinaraEnemySpec {
@@ -740,7 +743,7 @@ export function marinaraPartyLevel(levels: readonly number[]): number {
  */
 export const MARINARA_TIER_COST: Record<MarinaraEnemyTier, number> = { minion: 0.5, standard: 1, elite: 2, boss: 4 };
 export const MARINARA_DIFFICULTY_BUDGET: Record<string, number> = {
-  easy: 0.7,
+  casual: 0.7,
   normal: 1,
   hard: 1.3,
   brutal: 1.6,
@@ -1119,7 +1122,12 @@ export function marinaraHitNumbers(
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
   const melee = !effect.ranged && !magic && !(actor.rangedBasic && effect.basic);
   const rowFactor = !tactical && melee && target.row === "back" ? MARINARA_BACK_ROW_MELEE_PCT : 1;
-  const raw = Math.max(MARINARA_TUNING.minDamage, damage * (1 + pct) * (effect.spread ?? 1) * rowFactor);
+  const floor = Math.max(
+    MARINARA_TUNING.minDamage,
+    (powerStat(actor, attackStat, effect, all) + (effect.power ?? MARINARA_TUNING.basicPower)) *
+      MARINARA_TUNING.minDamagePct,
+  );
+  const raw = Math.max(floor, damage * (1 + pct)) * (effect.spread ?? 1) * rowFactor;
   // Absorbed damage comes out negative: it heals the target.
   damage = raw * multiplier;
   const rider = riderFor(actor, target, effect, raw, best.multiplier);
@@ -1839,4 +1847,70 @@ export function marinaraFoeXp(foe: Pick<MarinaraFighter, "tier">): number {
 /** An archetype's base stats, for a monster with no class (the bestiary's). */
 export function marinaraArchetypeStart(archetype: MarinaraArchetype): MarinaraStats {
   return { ...MARINARA_ARCHETYPE_BASES[archetype].start };
+}
+
+// ── What a screen shows ──
+
+/** A Classic Marinara fighter as a fight screen shows it. */
+export interface MarinaraCombatantView {
+  classId?: string;
+  classLabel?: string;
+  archetype?: MarinaraArchetype;
+  level: number;
+  tier?: MarinaraEnemyTier;
+  row: MarinaraFighter["row"];
+  stamina: number;
+  maxStamina: number;
+  stats: MarinaraStats;
+  shield: number;
+  statuses: Array<{ status: MarinaraStatusId; turns: number }>;
+  /** Buffs and debuffs on it: the stat and the share, summed by stat. */
+  mods: Array<{ stat: string; pct: number }>;
+  charging?: string;
+  covering?: string;
+  defending?: boolean;
+  hidden?: boolean;
+  coating?: MarinaraDamageType;
+  /** Damage types it is known to be weak to, resist, be immune to or absorb. */
+  affinities?: MarinaraAffinities;
+  /** Where it stands on the timeline: lower acts sooner. */
+  next: number;
+}
+
+export function marinaraCombatantView(unit: MarinaraFighter): MarinaraCombatantView {
+  const def = unit.classId ? marinaraClass(unit.classId) : undefined;
+  const mods = new Map<string, number>();
+  for (const mod of unit.mods) if (mod.source !== "probe") mods.set(mod.stat, (mods.get(mod.stat) ?? 0) + mod.pct);
+  return {
+    ...(def ? { classId: def.id, classLabel: def.label } : {}),
+    ...(unit.archetype ? { archetype: unit.archetype } : {}),
+    level: unit.level,
+    ...(unit.tier ? { tier: unit.tier } : {}),
+    row: unit.row,
+    stamina: unit.stamina,
+    maxStamina: unit.maxStamina,
+    stats: { ...unit.stats },
+    shield: Math.round(unit.shield),
+    statuses: unit.statuses.map(({ status, turns }) => ({ status, turns })),
+    mods: [...mods.entries()].map(([stat, pct]) => ({ stat, pct: Math.round(pct * 100) / 100 })),
+    ...(unit.charging ? { charging: unit.charging.skillId } : {}),
+    ...(unit.covering ? { covering: unit.covering } : {}),
+    ...(unit.defending ? { defending: true } : {}),
+    ...(unit.hidden ? { hidden: true } : {}),
+    ...(unit.coating ? { coating: unit.coating } : {}),
+    ...(unit.affinities ? { affinities: { ...unit.affinities } } : {}),
+    next: Math.round(unit.next),
+  };
+}
+
+/** What a fight did for one party member: XP, level-ups with their stat gains, and class levels. */
+export interface MarinaraFightGrowth {
+  name: string;
+  xp: number;
+  level: number;
+  classId: string;
+  classLevel: number;
+  levelUps: Array<{ level: number; gains: Partial<MarinaraStats> }>;
+  /** Class levels reached that open a promotion. */
+  promotionReady?: boolean;
 }

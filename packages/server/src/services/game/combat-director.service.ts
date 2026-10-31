@@ -40,6 +40,18 @@ import {
 import { chooseClassicAction, estimateClassicAttack } from "./combat-ai.service.js";
 import { resolveCombatRound, rollInitiative, canCombatantAct } from "./combat.service.js";
 import type { RulesetFightState } from "./ruleset-combat-director.service.js";
+import {
+  absorbItemResult,
+  createMarinaraDirectorState,
+  marinaraActionChoices,
+  marinaraActionProblem,
+  marinaraAiAction,
+  mirrorMarinaraUnits,
+  nextMarinaraTurn,
+  performMarinaraAction,
+  type MarinaraDirectorState,
+} from "./marinara-director.service.js";
+import type { MarinaraFighter } from "@marinara-engine/shared";
 
 type Unit = Combatant | TacticalUnit;
 type Action = { unitId: string; classic?: CombatPlayerAction; tactical?: Extract<TacticalAction, { unitId: string }> };
@@ -121,6 +133,9 @@ export interface CombatDirectorState extends DirectedCombatView {
   >;
   /** Opponents out of the fight alive (combat AI E1): run off the board, or given up to the party. */
   gone?: Array<{ id: string; name: string; hp: number; maxHp: number; left: "fled" | "surrendered" }>;
+  /** A game on Marinara's own classes (Classic Marinara): every fighter, its timeline and its credit
+   *  for XP. Its turns come off the timeline, and its math is the shared Classic Marinara math. */
+  marinara?: MarinaraDirectorState;
 }
 /** What shakes an opponent (combat AI E1), each checked once, in this order, as one of its turns
  *  starts: being caught unaware, its leader falling, half its side down, the first of its side down,
@@ -141,8 +156,10 @@ const skillFor = (s: CombatDirectorState, a: Action) => {
 };
 const cooldownKey = (s: CombatDirectorState, skill: CombatSkill) => (s.style === "tactical" ? skill.name : skill.id);
 const ready = (s: CombatDirectorState, u: Unit, k: CombatSkill) =>
-  (u.skillCooldowns?.[cooldownKey(s, k)] ?? 0) <= 0 &&
-  (k.slotLevel ? (u.spellSlots?.[String(k.slotLevel)] ?? 0) > 0 : (u.mp ?? 0) >= k.mpCost);
+  s.marinara
+    ? !k.unavailable
+    : (u.skillCooldowns?.[cooldownKey(s, k)] ?? 0) <= 0 &&
+      (k.slotLevel ? (u.spellSlots?.[String(k.slotLevel)] ?? 0) > 0 : (u.mp ?? 0) >= k.mpCost);
 const canAct = (u: Unit) => canCombatantAct(u);
 /** Whether the Game Master plays this opponent's turns: a boss, and in a game that asks for it a named
  *  or a brilliant one (combat AI P9), or every one where the ruleset gives it the opposition (1.774). */
@@ -168,6 +185,15 @@ function log(
   s.log.push({ id: ++s.serial, text, kind, actorId, source, message });
   s.log = s.log.slice(-240);
 }
+/** A Classic Marinara fight still going after this many rounds is called off. */
+const MARINARA_ROUND_LIMIT = 60;
+/** The log a Classic Marinara step writes to. */
+const marinaraLog = (s: CombatDirectorState) => (text: string, kind: string, actorId?: string, source?: string) =>
+  log(s, text, kind, actorId, source as Source | undefined);
+/** Classic Marinara's own turn, for a unit the Engine plays: what its combat AI picks with the shared math. */
+function marinaraTurn(s: CombatDirectorState, u: Unit): CombatPlayerAction {
+  return marinaraAiAction(s.marinara!, u as Combatant, s.round, normalizeGameDifficulty(s.difficulty), !!s.tactical);
+}
 /** What the Game Master is told of a ruleset fight's board: as a tactical one, its scene when painted. */
 function rulesetBoardSummary(board: RulesetCombatBoard | undefined, seed: number): string | undefined {
   if (!board?.battlefield) return undefined;
@@ -175,6 +201,11 @@ function rulesetBoardSummary(board: RulesetCombatBoard | undefined, seed: number
   return summarizeTacticalBattlefield({ ...board, seed, ...(scene ? { environment: scene } : {}) });
 }
 function sync(s: CombatDirectorState) {
+  if (s.marinara)
+    mirrorMarinaraUnits(
+      s.marinara,
+      s.tactical ? (s.tactical.units as unknown as Combatant[]) : [...s.party, ...s.enemies],
+    );
   if (s.tactical) {
     const convert = (u: TacticalUnit): Combatant => ({ ...u, side: side(u) === "party" ? "player" : "enemy" });
     s.party = s.tactical.units.filter((u) => u.side === "party").map(convert);
@@ -289,6 +320,8 @@ export function createCombatDirector(input: {
   inventory?: CombatDirectorState["inventory"];
   /** Who the scene caught unaware: an opponent among them checks its morale on its first turn. */
   surprised?: string[];
+  /** Classic Marinara fighters, one per unit by id: a game on Marinara's own classes. */
+  marinara?: MarinaraFighter[];
 }): CombatDirectorState {
   const party = structuredClone(input.party),
     enemies = structuredClone(input.enemies);
@@ -354,9 +387,15 @@ export function createCombatDirector(input: {
       ...(input.made ? { made: input.made } : {}),
       ...(input.turnOrder ? { turnOrder: input.turnOrder } : {}),
     });
+  if (input.marinara?.length && s.style !== "ruleset") {
+    s.marinara = createMarinaraDirectorState(input.marinara, s.seed);
+    // Bosses act on the timeline like everyone else; extra actions come from their own skills.
+    for (const u of directorUnits(s)) if (u.boss) u.boss = { ...u.boss, points: 0 };
+    sync(s);
+  }
   for (const u of directorUnits(s))
     s.budgets[u.id] = { legendary: side(u) === "enemy" ? (u.boss?.points ?? 0) : 0, reaction: 1 };
-  if (s.style === "classic") s.order = rollInitiative([...party, ...enemies]).map((e) => e.id);
+  if (s.style === "classic" && !s.marinara) s.order = rollInitiative([...party, ...enemies]).map((e) => e.id);
   advanceCombatDirector(s);
   return s;
 }
@@ -547,6 +586,10 @@ function validate(s: CombatDirectorState, a: Action): void {
   if (a.tactical && s.tactical) {
     const invalid = validateTacticalUnitAction(s.tactical, u as TacticalUnit, a.tactical);
     if (invalid) throw new Error(invalid.error);
+  } else if (a.classic && s.marinara) {
+    if (a.classic.type === "flee") throw new Error("Unsupported action in this window.");
+    const problem = marinaraActionProblem(s.marinara, u.id, a.classic);
+    if (problem) throw new Error(problem);
   } else if (a.classic) {
     if (a.classic.type === "flee") throw new Error("Unsupported action in this window.");
     const skill = skillFor(s, a);
@@ -576,6 +619,21 @@ function validate(s: CombatDirectorState, a: Action): void {
   }
 }
 function options(s: CombatDirectorState, u: Unit, legendary = false): Candidate[] {
+  if (s.marinara && !s.tactical) {
+    if (legendary) return [];
+    return marinaraActionChoices(s.marinara, u.id)
+      .slice(0, 24)
+      .map(({ action, label }, index) => ({
+        id: String(index),
+        kind: action.type === "defend" ? "defend" : action.type === "skill" ? "skill" : "attack",
+        actorId: u.id,
+        ...("targetId" in action && action.targetId ? { targetId: action.targetId } : {}),
+        ...(action.type === "skill" ? { skillName: label, skillId: action.skillId } : {}),
+        mpCost: action.type === "skill" ? (u.skills?.find((k) => k.id === action.skillId)?.mpCost ?? 0) : 0,
+        legendaryCost: 0,
+        action: { unitId: u.id, classic: action },
+      }));
+  }
   const all: Candidate[] = [];
   const add = (
     action: Action,
@@ -742,6 +800,25 @@ function suggestChoices(s: CombatDirectorState, u: Unit): void {
       decideProfileAction(t, { ...unit, tactics: unit.tactics }, (ranked) => {
         ranking = ranked.map(({ candidate, parts }) => ({ action: candidate.action, parts }));
       });
+    } else if (s.marinara) {
+      marinaraAiAction(
+        structuredClone(s.marinara),
+        structuredClone(u) as Combatant,
+        s.round,
+        normalizeGameDifficulty(s.difficulty),
+        false,
+        (ranked) => {
+          ranking = ranked.map(({ candidate, parts }) => ({
+            action:
+              candidate.action.optionId === "defend"
+                ? { type: "defend" }
+                : candidate.action.optionId === null
+                  ? { type: "attack", targetId: candidate.action.targetIds[0] }
+                  : { type: "skill", targetId: candidate.action.targetIds[0], skillId: candidate.action.optionId },
+            parts,
+          }));
+        },
+      );
     } else {
       const copy = structuredClone(u) as Combatant;
       chooseClassicAction(
@@ -819,7 +896,8 @@ function declare(s: CombatDirectorState, action: Action, source: Source, reactio
     action = structuredClone(action);
     delete (action.tactical as { to?: unknown }).to;
   }
-  if (skill) pay(s, u, skill);
+  // A Classic Marinara skill is paid for as it resolves, by the shared math.
+  if (skill && !s.marinara) pay(s, u, skill);
   const itemName =
     action.classic?.type === "item"
       ? action.classic.itemId
@@ -983,15 +1061,17 @@ export function chooseDirectorFallback(s: CombatDirectorState): string {
   if (w.kind === "ordinary") {
     const desired = s.tactical
       ? decideTacticalAction(s.tactical, u as TacticalUnit)
-      : chooseClassicAction(
-          u as Combatant,
-          living(s).filter((x) => side(x) === side(u)) as Combatant[],
-          living(s).filter((x) => side(x) !== side(u)) as Combatant[],
-          s.round,
-          s.difficulty,
-          s.weather,
-          s.elements,
-        );
+      : s.marinara
+        ? marinaraTurn(s, u)
+        : chooseClassicAction(
+            u as Combatant,
+            living(s).filter((x) => side(x) === side(u)) as Combatant[],
+            living(s).filter((x) => side(x) !== side(u)) as Combatant[],
+            s.round,
+            s.difficulty,
+            s.weather,
+            s.elements,
+          );
     const match = s.choices.find(
       (c) =>
         c.kind === desired.type &&
@@ -1145,6 +1225,8 @@ function effect(s: CombatDirectorState, p: Pending) {
       performTacticalUnitAction(s.tactical, u as TacticalUnit, p.action.tactical, events, !!p.skillId);
       guarded.forEach((x, i) => (x.defending = prior[i]!));
       for (const e of events) log(s, e.text, e.kind, e.actorId, p.source, e.message);
+    } else if (p.action.classic && s.marinara && p.action.classic.type !== "item") {
+      performMarinaraAction(s.marinara, u.id, p.action.classic, s.seed, false, marinaraLog(s), p.source);
     } else if (p.action.classic) {
       const defended = new Set([...s.defending, ...(p.guarded ?? [])]);
       const skill = u.skills?.find((k) => k.id === p.skillId);
@@ -1175,6 +1257,8 @@ function effect(s: CombatDirectorState, p: Pending) {
         ),
       );
       const result = { actions: results.flatMap((r) => r.actions) };
+      // An item changed HP the old way: the Classic Marinara fighters take the new numbers.
+      if (s.marinara) absorbItemResult(s.marinara, [...s.party, ...s.enemies]);
       if (p.action.classic.type === "defend") {
         if (!s.defending.includes(u.id)) s.defending.push(u.id);
         log(s, `${u.name} braces for impact.`, "defend", u.id, p.source, {
@@ -1251,6 +1335,29 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         s.round++;
         s.skipParty = false;
         s.gmCalls = 0;
+      } else if (s.marinara) {
+        // Classic Marinara: one fighter at a time off the timeline; its turn starts here (damage over
+        // time, effects counting down), and one asleep or stunned spends it without acting.
+        const turn = nextMarinaraTurn(s.marinara, s.seed, false, marinaraLog(s));
+        if (turn.round > s.round) {
+          s.round = turn.round;
+          s.gmCalls = 0;
+        }
+        // Neither side can finish the other: the fight is called off with both standing.
+        if (s.round > MARINARA_ROUND_LIMIT) {
+          s.stalled = true;
+          s.outcome = "flee";
+          log(s, "Neither side can break the other; the fight breaks off.", "stalled");
+          sync(s);
+          continue;
+        }
+        sync(s);
+        if (turn.actor) s.tasks.push({ kind: "activate", unitId: turn.actor.id });
+        else if (!s.outcome) {
+          s.stalled = true;
+          s.outcome = "defeat";
+          sync(s);
+        }
       } else {
         const next = s.order.shift();
         if (next) {
@@ -1378,18 +1485,20 @@ export function advanceCombatDirector(s: CombatDirectorState) {
               { unitId: string }
             >,
           }
-        : {
-            unitId: u.id,
-            classic: chooseClassicAction(
-              u as Combatant,
-              living(s).filter((x) => side(x) === side(u)) as Combatant[],
-              living(s).filter((x) => side(x) !== side(u)) as Combatant[],
-              s.round,
-              s.difficulty,
-              s.weather,
-              s.elements,
-            ) as CombatPlayerAction,
-          };
+        : s.marinara
+          ? { unitId: u.id, classic: marinaraTurn(s, u) }
+          : {
+              unitId: u.id,
+              classic: chooseClassicAction(
+                u as Combatant,
+                living(s).filter((x) => side(x) === side(u)) as Combatant[],
+                living(s).filter((x) => side(x) !== side(u)) as Combatant[],
+                s.round,
+                s.difficulty,
+                s.weather,
+                s.elements,
+              ) as CombatPlayerAction,
+            };
       try {
         declare(s, action, "ai");
       } catch {
