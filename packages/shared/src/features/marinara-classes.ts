@@ -265,6 +265,26 @@ export const MARINARA_WEAPON_COATINGS = [
   { id: "grave-dust", label: "Grave Dust", rider: "dark" },
 ] as const satisfies ReadonlyArray<{ id: string; label: string; rider: MarinaraDamageType }>;
 
+// ── Fight HP ──
+
+/**
+ * HP in a fight is the HP stat times a multiplier that grows with level (2026-10-31): attack stats
+ * outgrow HP and defenses as levels rise, so without it a level 30 fight ends in half the hits of a
+ * level 10 one. The same rule holds for party members and for humanoid foes built on these classes.
+ */
+export const MARINARA_FIGHT_HP = { atLevel1: 1.5, atCap: 2.5 } as const;
+
+export function marinaraFightHpMultiplier(level: number): number {
+  const at = Math.max(1, Math.min(MARINARA_LEVEL_CAP, level));
+  return (
+    MARINARA_FIGHT_HP.atLevel1 +
+    ((MARINARA_FIGHT_HP.atCap - MARINARA_FIGHT_HP.atLevel1) * (at - 1)) / (MARINARA_LEVEL_CAP - 1)
+  );
+}
+
+/** No attack's chance to hit drops below this, however evasive the target. */
+export const MARINARA_MIN_HIT_CHANCE = 25;
+
 // ── Resources ──
 
 /** Magic skills spend MP, which does not come back in a fight. Everything else spends stamina. */

@@ -16,6 +16,7 @@ import {
   MARINARA_CLASSES,
   MARINARA_STATS,
   marinaraCarriedStat,
+  marinaraFightHpMultiplier,
   MARINARA_TEMPERAMENT_TREES,
   MARINARA_PARTY_TEMPERAMENTS,
   awardMarinaraXp,
@@ -34,7 +35,7 @@ import {
   type MarinaraProgression,
   type MarinaraStats,
 } from "../../packages/shared/src/features/marinara-classes.js";
-import { TUNING, makeUnit, runFight, type LabUnit } from "./combat.js";
+import { makeUnit, runFight, type LabUnit } from "./combat.js";
 
 const RANGED: ReadonlySet<MarinaraArchetype> = new Set(["marksman"]);
 const CASTERS: ReadonlySet<MarinaraArchetype> = new Set(["arcanist", "hexer", "mender", "herald"]);
@@ -156,7 +157,7 @@ function phase1(count: number): string {
   const rows: string[] = [];
   for (const def of MARINARA_CLASSES) {
     for (const level of levelsFor(def)) {
-      const hp = averageExpected(level).hp * TUNING.hpMultiplier;
+      const hp = averageExpected(level).hp * marinaraFightHpMultiplier(level);
       const result = {
         single: [] as number[],
         spread: [] as number[],
@@ -349,7 +350,9 @@ function teamClass(line: string[], level: number) {
 function enemyParty(level: number, hpScale: number): LabUnit[] {
   const make = (id: string, archetype: MarinaraArchetype) => {
     const unit = attacker(id, archetype, level);
-    unit.maxHp = unit.hp = Math.round(expectedMarinaraStats(archetype, level).hp * TUNING.hpMultiplier * hpScale);
+    unit.maxHp = unit.hp = Math.round(
+      expectedMarinaraStats(archetype, level).hp * marinaraFightHpMultiplier(level) * hpScale,
+    );
     return unit;
   };
   return [make("e1", "blade"), make("e2", "guard"), make("e3", "marksman"), make("e4", "arcanist")];
@@ -471,7 +474,7 @@ function crossTrained(primary: MarinaraArchetype, secondary: MarinaraArchetype, 
 function phase4(count: number): string {
   const level = 20;
   const scale = calibrate("advanced", level);
-  const hp = averageExpected(level).hp * TUNING.hpMultiplier;
+  const hp = averageExpected(level).hp * marinaraFightHpMultiplier(level);
   const measure = (character: MarinaraProgression, key: string) => {
     const single: number[] = [];
     const affinity: number[] = [];
