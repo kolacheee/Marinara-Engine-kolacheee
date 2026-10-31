@@ -35,7 +35,7 @@ import {
   type MarinaraProgression,
   type MarinaraStats,
 } from "../../packages/shared/src/features/marinara-classes.js";
-import { makeUnit, runFight, type LabUnit } from "./combat.js";
+import { makeUnit, runFight, skillTally, type LabUnit } from "./combat.js";
 
 const RANGED: ReadonlySet<MarinaraArchetype> = new Set(["marksman"]);
 const CASTERS: ReadonlySet<MarinaraArchetype> = new Set(["arcanist", "hexer", "mender", "herald"]);
@@ -355,14 +355,34 @@ function enemyParty(level: number, hpScale: number): LabUnit[] {
     );
     return unit;
   };
-  return [make("e1", "blade"), make("e2", "guard"), make("e3", "marksman"), make("e4", "arcanist")];
+  const foes = [make("e1", "blade"), make("e2", "guard"), make("e3", "marksman"), make("e4", "arcanist")];
+  // Each foe has one ability a healer would want to undo: bleeding, sundered armour, poison, a wounding curse.
+  foes[0]!.enemySkills = ["rend"];
+  foes[1]!.enemySkills = ["sunder"];
+  foes[2]!.enemySkills = ["venom-arrow"];
+  foes[3]!.enemySkills = ["curse"];
+  return foes;
 }
 
-function partyFight(slot: MarinaraClassDef, level: number, i: number, hpScale: number) {
-  return partyFightWith(buildCharacter(slot, level, `${slot.id}:${level}:${i}`), `${slot.id}`, level, i, hpScale);
+function partyFight(slot: MarinaraClassDef, level: number, i: number, hpScale: number, tactical = false) {
+  return partyFightWith(
+    buildCharacter(slot, level, `${slot.id}:${level}:${i}`),
+    `${slot.id}`,
+    level,
+    i,
+    hpScale,
+    tactical,
+  );
 }
 
-function partyFightWith(character: MarinaraProgression, key: string, level: number, i: number, hpScale: number) {
+function partyFightWith(
+  character: MarinaraProgression,
+  key: string,
+  level: number,
+  i: number,
+  hpScale: number,
+  tactical = false,
+) {
   const teammates = TEAMMATES.map((t, n) =>
     unitFrom(buildCharacter(teamClass(t.line, level), level, `team:${level}:${i}:${n}`), `t${n}`, "party"),
   );
@@ -372,59 +392,63 @@ function partyFightWith(character: MarinaraProgression, key: string, level: numb
     grouped: true,
     maxActions: 800,
     focus: true,
+    tactical,
   });
 }
 
 function phase3(count: number): string {
   // Tune the enemies at each level so the party with an Arcanist (advanced/master as the level asks) in the slot wins about 65%.
   const scales = new Map<string, number>();
-  for (const [tier, level] of [
-    ["base", 1],
-    ["base", 10],
-    ["advanced", 10],
-    ["advanced", 20],
-    ["master", 20],
-    ["master", 30],
-  ] as const) {
-    const reference = tier === "base" ? "arcanist" : tier === "advanced" ? "elementalist" : "stormcaller";
-    let lo = 0.3;
-    let hi = 6;
-    for (let step = 0; step < 12; step++) {
-      const mid = (lo + hi) / 2;
-      let wins = 0;
-      for (let i = 0; i < count; i++)
-        if (partyFight(marinaraClass(reference)!, level, i, mid).winner === "party") wins++;
-      if (wins / count > 0.65) lo = mid;
-      else hi = mid;
+  for (const tactical of [false, true])
+    for (const [tier, level] of [
+      ["base", 1],
+      ["base", 10],
+      ["advanced", 10],
+      ["advanced", 20],
+      ["master", 20],
+      ["master", 30],
+    ] as const) {
+      const reference = tier === "base" ? "arcanist" : tier === "advanced" ? "elementalist" : "stormcaller";
+      let lo = 0.3;
+      let hi = 6;
+      for (let step = 0; step < 12; step++) {
+        const mid = (lo + hi) / 2;
+        let wins = 0;
+        for (let i = 0; i < count; i++)
+          if (partyFight(marinaraClass(reference)!, level, i, mid, tactical).winner === "party") wins++;
+        if (wins / count > 0.65) lo = mid;
+        else hi = mid;
+      }
+      scales.set(`${tactical ? "t" : "c"}:${tier}:${level}`, (lo + hi) / 2);
     }
-    scales.set(`${tier}:${level}`, (lo + hi) / 2);
-  }
   const rows: string[] = [];
   for (const def of MARINARA_CLASSES) {
     for (const level of levelsFor(def)) {
       let wins = 0;
+      let tacticalWins = 0;
       const lost: number[] = [];
       const rounds: number[] = [];
       for (let i = 0; i < count; i++) {
-        const log = partyFight(def, level, i, scales.get(`${def.tier}:${level}`)!);
+        const log = partyFight(def, level, i, scales.get(`c:${def.tier}:${level}`)!);
         if (log.winner === "party") {
           wins++;
           rounds.push(log.rounds);
         }
         lost.push(log.partyHpLostPct * 100);
+        if (partyFight(def, level, i, scales.get(`t:${def.tier}:${level}`)!, true).winner === "party") tacticalWins++;
       }
       rows.push(
-        `| ${def.label} | ${def.tier}${def.pure ? " (pure)" : ""} | ${level} | ${fmt((wins / count) * 100, 0)}% | ${fmt(quantiles(lost).median, 0)}% | ${fmt(quantiles(rounds).median)} |`,
+        `| ${def.label} | ${def.tier}${def.pure ? " (pure)" : ""} | ${level} | ${fmt((wins / count) * 100, 0)}% | ${fmt((tacticalWins / count) * 100, 0)}% | ${fmt(quantiles(lost).median, 0)}% | ${fmt(quantiles(rounds).median)} |`,
       );
     }
   }
   return [
     "# Class lab, phase 3: utility potential",
     "",
-    `A party of four: a Blade line, a Guard line and a Marksman line (promoted as their level allows), plus the class being tested in the fourth slot, against four foes of the level (a bruiser, a guard, an archer and a caster with expected stats) that focus their attacks: the back row first, then whoever would fall soonest. The foes' health is tuned for each tier and level so the party wins about 65% of fights with the Arcanist line's class of the same tier in the slot (Arcanist, Elementalist, Stormcaller), so a row compares a class with the Arcanist of its own tier (scales: ${[...scales].map(([k, s]) => `${k} ×${s.toFixed(2)}`).join(", ")}). ${count} fights per row. A class that adds more than an Arcanist wins more, loses less HP or ends sooner.`,
+    `A party of four: a Blade line, a Guard line and a Marksman line (promoted as their level allows), plus the class being tested in the fourth slot, against four foes of the level (a bruiser, a guard, an archer and a caster with expected stats) that focus their attacks: the back row first, then whoever would fall soonest. The foes' health is tuned for each tier and level so the party wins about 65% of fights with the Arcanist line's class of the same tier in the slot (Arcanist, Elementalist, Stormcaller), so a row compares a class with the Arcanist of its own tier (scales, c = Classic and t = Tactical: ${[...scales].map(([k, s]) => `${k} ×${s.toFixed(2)}`).join(", ")}). Each foe also has one ability a healer would want to undo: the bruiser's Rend (bleeding, 5% of max HP a turn for 3), the guard's Sunder (−25% Defense for 2), the archer's Venom Arrow (poison, 6% for 3) and the caster's Curse (Wound: healing received halved for 3, and −20% damage for 2). In Classic, melee attacks reach only the front row while it stands; in Tactical there is no row shield and Hold the Line stops melee foes heading for the back row. An area attack that strikes several foes deals 60% to each. ${count} fights per row and mode, each mode calibrated on its own. A class that adds more than an Arcanist wins more, loses less HP or ends sooner.`,
     "",
-    "| Class in slot | Tier | Level | Win rate | Party HP lost (median) | Rounds to win (median) |",
-    "| --- | --- | --- | --- | --- | --- |",
+    "| Class in slot | Tier | Level | Win rate (Classic) | Win rate (Tactical) | Party HP lost (Classic, median) | Rounds to win (Classic, median) |",
+    "| --- | --- | --- | --- | --- | --- | --- |",
     ...rows,
   ].join("\n");
 }
@@ -539,7 +563,30 @@ function phase4(count: number): string {
   ].join("\n");
 }
 
+/** Trace one class in the phase 3 fight: win rate, damage and what it chose. */
+function trace(classId: string, level: number, count: number): string {
+  const tier = marinaraClass(classId)!.tier;
+  const scale = calibrate(tier, level);
+  for (const key of Object.keys(skillTally)) delete skillTally[key];
+  let wins = 0;
+  let dealt = 0;
+  let total = 0;
+  for (let i = 0; i < count; i++) {
+    const log = partyFight(marinaraClass(classId)!, level, i, scale);
+    if (log.winner === "party") wins++;
+    dealt += log.damageDealt.slot ?? 0;
+    total += Object.entries(log.damageDealt)
+      .filter(([id]) => !id.startsWith("e"))
+      .reduce((sum, [, v]) => sum + v, 0);
+  }
+  return `${classId} L${level}: wins ${((wins / count) * 100).toFixed(0)}%, share of party damage ${((dealt / total) * 100).toFixed(0)}%, choices ${JSON.stringify(skillTally)}`;
+}
+
 const phase = process.argv[2] ?? "1";
+if (phase === "trace") {
+  console.log(trace(process.argv[3]!, Number(process.argv[4]), Number(process.argv[5] ?? 60)));
+  process.exit(0);
+}
 const out = process.argv[3];
 const count = Number(process.argv[4] ?? 100);
 const report =

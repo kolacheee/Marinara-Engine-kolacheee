@@ -459,7 +459,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["speed", "skill"],
       skills: [
         active("moonless-cut", "Moonless Cut", 20, "skill", 8, "A crit-boosted finisher.", true),
-        passive("second-wind", "Second Wind", 24, "Acts again on a kill, once a round."),
+        passive("second-wind", "Second Wind", 24, "A kill grants a whole new action, once a turn."),
       ],
     },
     {
@@ -481,7 +481,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Cleaves the front row",
       leans: ["strength", "hp"],
       skills: [
-        active("sweeping-ruin", "Sweeping Ruin", 20, "strength", 8, "Hits the whole enemy front row.", true),
+        active(
+          "sweeping-ruin",
+          "Sweeping Ruin",
+          20,
+          "strength",
+          8,
+          "Hits the whole enemy front row; struck foes deal 15% less damage for 2 turns.",
+          true,
+        ),
         passive("unstoppable", "Unstoppable", 24, "Cannot be stunned while below half HP."),
       ],
     },
@@ -684,7 +692,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Unseen killer",
       leans: ["skill", "luck", "speed"],
       skills: [
-        active("vanish", "Vanish", 20, "speed", 8, "Untargetable for a turn; the next hit crits.", true),
+        active(
+          "vanish",
+          "Vanish",
+          20,
+          "speed",
+          8,
+          "Untargetable for a turn; the next hit crits and exposes its target (+20% damage from everyone for 2 turns). Cooldown 3.",
+          true,
+        ),
         passive("assassinate", "Assassinate", 24, "A crit on a target below 15% HP defeats it. Never bosses."),
       ],
     },
@@ -707,7 +723,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["speed", "skill"],
       skills: [
         active("double-time", "Double Time", 20, "speed", 10, "Two actions this turn."),
-        passive("tailwind", "Tailwind", 24, "The whole party acts a little sooner.", true),
+        passive("tailwind", "Tailwind", 24, "The whole party acts sooner (+20% Speed).", true),
       ],
     },
     {
@@ -800,7 +816,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["skill", "speed", "luck"],
       skills: [
         active("snare-field", "Snare Field", 20, "skill", 10, "Enemies that act are slowed."),
-        passive("pack-tactics", "Pack Tactics", 24, "More damage to a marked target.", true),
+        passive("pack-tactics", "Pack Tactics", 24, "The whole party deals 25% more damage to a marked target.", true),
       ],
     },
     {
@@ -885,7 +901,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Bends the battlefield",
       leans: ["magic", "resistance"],
       skills: [
-        active("seal", "Seal", 20, "magic", 10, "Locks an enemy's skills for 2 turns."),
+        active(
+          "seal",
+          "Seal",
+          20,
+          "magic",
+          10,
+          "Locks an enemy's skills for 2 turns; a sealed foe takes 20% more damage.",
+        ),
         passive("prepared-mind", "Prepared Mind", 24, "The first spell each fight costs no MP.", true),
       ],
     },
@@ -1036,6 +1059,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Heals the user for a quarter of their max HP. Cooldown 3.",
           true,
         ),
+        active("purify", "Purify", 8, "magic", 3, "Cleanses all debuffs and damage over time on one ally.", true),
       ],
     },
     {
@@ -1067,7 +1091,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Items, cures and regeneration",
       leans: ["skill", "magic"],
       skills: [
-        active("remedy", "Remedy", 10, "magic", 4, "Cleanses all debuffs on one ally."),
+        active("remedy", "Remedy", 10, "magic", 4, "Heals one ally and cleanses all their debuffs."),
         passive("item-savant", "Item Savant", 15, "Items work 50% better.", true),
       ],
     },
