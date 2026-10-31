@@ -17,7 +17,10 @@ import {
   MARINARA_ELEMENTS,
   MARINARA_STAMINA,
   MARINARA_STATS,
+  MARINARA_POISON_RIDER,
+  MARINARA_RIDER_DAMAGE_PCT,
   marinaraAffinityMultiplier,
+  marinaraRiderLands,
   marinaraBestDamageType,
   marinaraDamageOptions,
   marinaraMaxMp,
@@ -354,6 +357,8 @@ export interface LabUnit {
   carriedStats?: Partial<MarinaraStats>;
   /** The class it fights as; its weapons and basic attack follow it. */
   classId?: string;
+  /** A coating on the weapon: a rider type carried on weapon hits. */
+  coating?: MarinaraDamageType;
   /** Damage type of a unit with no class (a plain foe). */
   attackType?: MarinaraDamageType;
   /** Active skills and passives it fights with. */
@@ -409,6 +414,7 @@ export function makeUnit(input: {
   attackType?: MarinaraDamageType;
   carriedIds?: ReadonlySet<string>;
   carriedStats?: Partial<MarinaraStats>;
+  coating?: MarinaraDamageType;
 }): LabUnit {
   const passives = passiveHooks(input.skills ?? []);
   // Carrying a skill that spends MP (or stamina) sizes that pool from the carried stats, as the
@@ -573,8 +579,7 @@ function powerStat(unit: LabUnit, stat: MarinaraStat, effect: Effect, all: LabUn
 function damageOptions(actor: LabUnit, effect: Effect) {
   if (!actor.classId) return [actor.attackType ?? "blunt"] as const;
   const type = effect.type ?? "weapon";
-  const options = marinaraDamageOptions(type, actor.classId);
-  return type === "weapon" && modTotal(actor, "imbue") > 0 ? [...options, ...MARINARA_ELEMENTS] : options;
+  return marinaraDamageOptions(type, actor.classId);
 }
 
 function modTotal(unit: LabUnit, stat: string): number {
@@ -645,8 +650,45 @@ function targetsFor(actor: LabUnit, effect: Effect, all: LabUnit[]): LabUnit[] {
 
 /** Expected damage of one hit, for choosing; the real roll happens in `strike`. */
 function expectedHit(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUnit[]): number {
-  const { damage, hitChance, critChance } = hitNumbers(actor, target, effect, all);
-  return (hitChance / 100) * damage * (1 + (critChance / 100) * (TUNING.critMultiplier - 1)) * (effect.hits ?? 1);
+  const { damage, hitChance, critChance, rider } = hitNumbers(actor, target, effect, all);
+  const riderValue = !rider
+    ? 0
+    : rider.type === "poison"
+      ? target.statuses.some((s) => s.status === "poison")
+        ? 0
+        : target.maxHp * MARINARA_POISON_RIDER.pctOfMaxHp * MARINARA_POISON_RIDER.turns * rider.multiplier * 0.5
+      : rider.damage;
+  return (
+    (hitChance / 100) *
+    (damage + riderValue) *
+    (1 + (critChance / 100) * (TUNING.critMultiplier - 1)) *
+    (effect.hits ?? 1)
+  );
+}
+
+/**
+ * The rider a weapon hit carries: the best of the imbued elements and the coating against this
+ * target, if it lands (the weapon's own type not walled off, or a Light or Dark rider).
+ */
+function riderFor(actor: LabUnit, target: LabUnit, effect: Effect, raw: number, weaponMultiplier: number) {
+  if (effect.damage === "magic" || effect.kind !== "damage") return null;
+  const types: Array<[MarinaraDamageType, number]> = [];
+  if (modTotal(actor, "imbue") > 0)
+    for (const type of MARINARA_ELEMENTS) types.push([type, MARINARA_RIDER_DAMAGE_PCT.enchantment]);
+  if (actor.coating) types.push([actor.coating, MARINARA_RIDER_DAMAGE_PCT.coating]);
+  let best: { type: MarinaraDamageType; multiplier: number; damage: number } | null = null;
+  for (const [type, share] of types) {
+    if (!marinaraRiderLands(weaponMultiplier, type)) continue;
+    const multiplier = marinaraAffinityMultiplier(target.affinities, type);
+    const damage = type === "poison" ? 0 : raw * share * multiplier;
+    const score = type === "poison" ? target.maxHp * MARINARA_POISON_RIDER.pctOfMaxHp * multiplier : damage;
+    if (
+      !best ||
+      score > (best.type === "poison" ? target.maxHp * MARINARA_POISON_RIDER.pctOfMaxHp * best.multiplier : best.damage)
+    )
+      best = { type, multiplier, damage };
+  }
+  return best && best.multiplier !== 0 ? best : null;
 }
 
 function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUnit[]) {
@@ -681,8 +723,10 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
+  const raw = Math.max(TUNING.minDamage, damage * (1 + pct));
   // Absorbed damage comes out negative: it heals the target.
-  damage = Math.max(TUNING.minDamage, damage * (1 + pct)) * multiplier;
+  damage = raw * multiplier;
+  const rider = riderFor(actor, target, effect, raw, best.multiplier);
   const partyCrit = living(all.filter((unit) => unit.side === actor.side)).reduce(
     (sum, ally) => sum + (passiveHooks(ally.skills).partyCritBonus ?? 0),
     0,
@@ -714,8 +758,9 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
         effStat(target, "luck", all),
     ),
   );
-  if (target.statuses.some((s) => s.status === "sleep")) return { damage, hitChance: 100, critChance, multiplier };
-  return { damage, hitChance, critChance, multiplier };
+  if (target.statuses.some((s) => s.status === "sleep"))
+    return { damage, hitChance: 100, critChance, multiplier, rider };
+  return { damage, hitChance, critChance, multiplier, rider };
 }
 
 /** The lab's party AI: the best expected value with simple rules for support. */
@@ -1073,6 +1118,33 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   }
 }
 
+/** A rider lands: extra damage in its own type, or a poisoning. */
+function applyRider(
+  actor: LabUnit,
+  target: LabUnit,
+  rider: { type: MarinaraDamageType; multiplier: number; damage: number },
+  crit: boolean,
+  log: FightLog,
+) {
+  if (rider.type === "poison") {
+    if (rider.multiplier <= 0) return;
+    target.statuses = target.statuses.filter((s) => s.status !== "poison");
+    target.statuses.push({
+      status: "poison",
+      turns: MARINARA_POISON_RIDER.turns,
+      power: MARINARA_POISON_RIDER.pctOfMaxHp,
+    });
+    return;
+  }
+  const amount = Math.round(rider.damage * (crit ? TUNING.critMultiplier : 1));
+  const before = target.hp;
+  target.hp = Math.min(target.maxHp, target.hp - amount);
+  if (amount > 0) {
+    bump(log.damageDealt, actor.id, before - Math.max(0, target.hp));
+    bump(log.damageTaken, target.id, before - Math.max(0, target.hp));
+  }
+}
+
 /** Entrench: Defense and Resistance up until the user's next turn. */
 function entrench(unit: LabUnit) {
   addMod(unit, "defense", 0.3, 1, "entrench");
@@ -1226,10 +1298,11 @@ function strike(
     target.evadedThisRound = true;
     return;
   }
-  const { damage, hitChance, critChance, multiplier } = hitNumbers(actor, target, effect, all);
+  const { damage, hitChance, critChance, multiplier, rider } = hitNumbers(actor, target, effect, all);
   const hooks = passiveHooks(actor.skills);
   if (multiplier < 0) {
     target.hp = Math.min(target.maxHp, target.hp - damage);
+    if (rider && random() * 100 < hitChance) applyRider(actor, target, rider, false, log);
     return;
   }
   if (random() * 100 >= hitChance) {
@@ -1246,6 +1319,7 @@ function strike(
     if (foeOmen && random() < 0.5) crit = false;
   }
   let amount = Math.round(damage * (crit ? TUNING.critMultiplier : 1));
+  if (rider) applyRider(actor, target, rider, crit, log);
   if (target.shield > 0) {
     const absorbed = Math.min(target.shield, amount);
     target.shield -= absorbed;

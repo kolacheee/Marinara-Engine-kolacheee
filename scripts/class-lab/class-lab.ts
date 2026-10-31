@@ -147,7 +147,7 @@ export const AFFINITY_PROFILES: MarinaraAffinities[] = [
   { slash: "weak", fire: "weak", poison: "weak" },
   { pierce: "weak", lightning: "weak", blunt: "resist" },
   { slash: "resist", pierce: "resist", blunt: "weak", lightning: "weak" },
-  { slash: "resist", pierce: "resist", blunt: "resist", light: "weak", dark: "immune", poison: "immune" },
+  { slash: "immune", pierce: "immune", blunt: "immune", light: "weak", dark: "immune", poison: "immune" },
   { fire: "absorb", ice: "weak", slash: "resist", poison: "immune" },
   { pierce: "resist", ice: "resist", blunt: "weak", light: "weak", dark: "absorb", poison: "immune" },
 ];
@@ -163,6 +163,7 @@ function phase1(count: number): string {
         grouped: [] as number[],
         neutral: [] as number[],
         affinity: [] as number[],
+        coated: [] as number[],
         perMp: [] as number[],
       };
       for (let i = 0; i < count; i++) {
@@ -174,9 +175,14 @@ function phase1(count: number): string {
           ["grouped", [0, 1, 2, 3, 4].map((n) => dummy(`d${n}`, level, hp * 1.2)), true],
           ["neutral", [0, 1, 2, 3, 4, 5].map((n) => dummy(`d${n}`, level, hp)), false],
           ["affinity", AFFINITY_PROFILES.map((a, n) => dummy(`d${n}`, level, hp, a)), false],
+          ["coated", AFFINITY_PROFILES.map((a, n) => dummy(`d${n}`, level, hp, a)), false],
         ];
         for (const [name, enemies, grouped] of scenarios) {
           const hero = unitFrom(character, "hero", "party", "front");
+          if (name === "coated") {
+            if (CASTERS.has(def.archetype)) continue;
+            hero.coating = "light"; // holy water
+          }
           const log = runFight([hero], enemies, { random, grouped, maxActions: 600 });
           result[name].push(log.winner === "party" ? log.rounds : Number.POSITIVE_INFINITY);
           if (name === "single") {
@@ -191,18 +197,19 @@ function phase1(count: number): string {
       const perMp = quantiles(result.perMp);
       const affinity = quantiles(result.affinity);
       const neutral = quantiles(result.neutral);
+      const coated = quantiles(result.coated);
       rows.push(
-        `| ${def.label} | ${def.tier}${def.pure ? " (pure)" : ""} | ${level} | ${fmt(single.median)} (${fmt(single.p10)}–${fmt(single.p90)}) | ${fmt(spread.median)} (${fmt(spread.p10)}–${fmt(spread.p90)}) | ${fmt(grouped.median)} (${fmt(grouped.p10)}–${fmt(grouped.p90)}) | ${fmt(affinity.median)} (×${fmt(affinity.median / neutral.median, 2)}) | ${result.perMp.length ? fmt(perMp.median) : "–"} |`,
+        `| ${def.label} | ${def.tier}${def.pure ? " (pure)" : ""} | ${level} | ${fmt(single.median)} (${fmt(single.p10)}–${fmt(single.p90)}) | ${fmt(spread.median)} (${fmt(spread.p10)}–${fmt(spread.p90)}) | ${fmt(grouped.median)} (${fmt(grouped.p10)}–${fmt(grouped.p90)}) | ${fmt(affinity.median)} (×${fmt(affinity.median / neutral.median, 2)}) | ${result.coated.length ? fmt(coated.median) : "–"} | ${result.perMp.length ? fmt(perMp.median) : "–"} |`,
       );
     }
   }
   return [
     "# Class lab, phase 1: damage potential",
     "",
-    `Rounds to clear dummies that never fight back (median, with p10–p90 across ${count} characters per row, each with its own hidden aptitudes). A round is one turn of a Speed 15 character. Lower is better. A promoted class carries up to four skills from the classes it came through (their marked carry picks first). Dummies have the average expected Defense and Resistance of the level. Single: one dummy with 6× a typical HP. Spread: three with 2× each, where a front-row area hits only one. Grouped: five with 1.2× each, all in reach of area attacks. Affinities: six dummies with a typical HP each and typical affinity profiles (beast: weak to slash, fire and poison; flyer: weak to pierce and lightning, resists blunt; armoured: resists slash and pierce, weak to blunt and lightning; spirit: resists all physical, weak to light, immune to dark and poison; fire elemental: absorbs fire, weak to ice, resists slash, immune to poison; undead: resists pierce and ice, weak to blunt and light, absorbs dark, immune to poison), spread out; the × figure compares it with the same four dummies without affinities (above 1 means affinities slow this class down). Physical skills cost stamina, magic skills MP. Damage per MP is the damage of its MP-costing skills on the single dummy, per MP spent; – means it has no damaging skill that costs MP.`,
+    `Rounds to clear dummies that never fight back (median, with p10–p90 across ${count} characters per row, each with its own hidden aptitudes). A round is one turn of a Speed 15 character. Lower is better. A promoted class carries up to four skills from the classes it came through (their marked carry picks first). Dummies have the average expected Defense and Resistance of the level. Single: one dummy with 6× a typical HP. Spread: three with 2× each, where a front-row area hits only one. Grouped: five with 1.2× each, all in reach of area attacks. Affinities: six dummies with a typical HP each and typical affinity profiles (beast: weak to slash, fire and poison; flyer: weak to pierce and lightning, resists blunt; armoured: resists slash and pierce, weak to blunt and lightning; spirit: immune to all physical, dark and poison, weak to light; fire elemental: absorbs fire, weak to ice, resists slash, immune to poison; undead: resists pierce and ice, weak to blunt and light, absorbs dark, immune to poison), spread out; the × figure compares it with the same four dummies without affinities (above 1 means affinities slow this class down). Affinities, holy water: the same six with the weapon coated in holy water (a Light rider), for classes that fight with weapons. Physical skills cost stamina, magic skills MP. Damage per MP is the damage of its MP-costing skills on the single dummy, per MP spent; – means it has no damaging skill that costs MP.`,
     "",
-    "| Class | Tier | Level | Single | Spread (3) | Grouped (5) | Affinities (6) | Damage per MP |",
-    "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    "| Class | Tier | Level | Single | Spread (3) | Grouped (5) | Affinities (6) | Affinities, holy water | Damage per MP |",
+    "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ...rows,
   ].join("\n");
 }
