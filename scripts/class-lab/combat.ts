@@ -70,6 +70,7 @@ export interface Effect {
     | "cover"
     | "provoke"
     | "taunt"
+    | "ward"
     | "extra-turn"
     | "command"
     | "none";
@@ -137,6 +138,7 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   cover: { kind: "cover", target: "ally", duration: 1 },
   provoke: { kind: "provoke", target: "self", duration: 2 },
   challenge: { kind: "taunt", target: "enemy", duration: 2 },
+  "sworn-ward": { kind: "ward", target: "ally", duration: 3 },
   fortress: { kind: "buff", target: "party", stat: "damage-taken", pct: -0.5, duration: 1, cooldown: 5 },
   spellguard: { kind: "buff", target: "party", stat: "resistance", pct: 0.3, duration: 2 },
   verdict: dmg("magic", 6, { from: "resistance" }),
@@ -211,6 +213,8 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
 export interface PassiveHooks {
   damagePct?: number;
   hpPct?: number;
+  /** +30% Defense and Resistance until the next turn after defending or charging. */
+  entrench?: boolean;
   /** Added to the weakness multiplier. */
   weakBonus?: number;
   lifestealPct?: number;
@@ -265,6 +269,7 @@ export interface PassiveHooks {
 export const PASSIVES: Record<string, PassiveHooks> = {
   "battle-rhythm": { damagePct: 0.15 },
   steadfast: { hpPct: 0.2 },
+  entrench: { entrench: true },
   "keen-eye": { hitBonus: 15, critBonus: 10 },
   "exploit-weakness": { weakBonus: 0.5 },
   "drain-touch": { lifestealPct: 0.15 },
@@ -367,6 +372,9 @@ export interface LabUnit {
   /** Taunted: must target this unit while `tauntTurns` lasts. */
   tauntedBy?: string;
   tauntTurns: number;
+  /** Sworn Ward: the ally this unit watches over, and for how many of its own turns. */
+  wardOn?: string;
+  wardTurns: number;
   cooldowns: Record<string, number>;
   used: Set<string>;
   charging?: { skillId: string; targetId: string };
@@ -427,6 +435,7 @@ export function makeUnit(input: {
     shield: 0,
     provoking: 0,
     tauntTurns: 0,
+    wardTurns: 0,
     cooldowns: {},
     used: new Set(),
     missesAgainst: 0,
@@ -894,6 +903,16 @@ function choose(
         );
         break;
       }
+      case "ward": {
+        if (!threatened || friends.length < 2 || actor.wardTurns > 0) break;
+        const others = friends.filter((u) => u.id !== actor.id);
+        // Watch the ally most likely to be hit: the front row, then the most hurt.
+        const ward = others.sort(
+          (a, b) => Number(b.row === "front") - Number(a.row === "front") || a.hp / a.maxHp - b.hp / b.maxHp,
+        )[0]!;
+        consider(skill, effect, [ward], bestDamage(actor, all) * (effect.duration ?? 3) * 0.5);
+        break;
+      }
       case "extra-turn":
         consider(skill, effect, [actor], bestDamage(actor, all) * 0.9);
         break;
@@ -989,6 +1008,7 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   actor.next += (TUNING.timeline / (effStat(actor, "speed", all) + TUNING.speedFloor)) * 1;
   if (actor.provoking > 0) actor.provoking--;
   if (actor.tauntTurns > 0) actor.tauntTurns--;
+  if (actor.wardTurns > 0) actor.wardTurns--;
   for (const id of Object.keys(actor.cooldowns)) actor.cooldowns[id] = Math.max(0, actor.cooldowns[id]! - 1);
   if (skips || actor.dummy) return;
   actor.actions++;
@@ -1006,6 +1026,7 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   if (!choice) return;
   if (choice.effect.kind === "buff" && !choice.effect.stat) {
     actor.defending = true;
+    if (hooks.entrench) entrench(actor);
     actor.stamina = Math.min(
       actor.maxStamina,
       actor.stamina + Math.round(actor.maxStamina * MARINARA_STAMINA.defendRegenPct),
@@ -1029,6 +1050,7 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   }
   if (choice.effect.charge) {
     actor.charging = { skillId: choice.skill!.id, targetId: choice.targets[0]!.id };
+    if (hooks.entrench) entrench(actor);
     return;
   }
   const dealtBefore = log.damageDealt[actor.id] ?? 0;
@@ -1040,6 +1062,12 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
     if (again && again.effect.kind === "damage")
       act(actor, again.skill, again.effect, again.targets, all, options, log);
   }
+}
+
+/** Entrench: Defense and Resistance up until the user's next turn. */
+function entrench(unit: LabUnit) {
+  addMod(unit, "defense", 0.3, 1, "entrench");
+  addMod(unit, "resistance", 0.3, 1, "entrench");
 }
 
 function tickMods(unit: LabUnit, all: LabUnit[]) {
@@ -1076,6 +1104,15 @@ function act(
   switch (effect.kind) {
     case "damage": {
       for (const target of targets) {
+        // Sworn Ward: whoever watches over this target strikes the attacker first, hit or miss.
+        for (const warder of living(
+          all.filter((u) => u.side === target.side && u.wardTurns > 0 && u.wardOn === target.id),
+        )) {
+          const strikeBack = basicAttack(warder);
+          const reach = targetsFor(warder, strikeBack, all);
+          if (reach.includes(actor) && actor.hp > 0) strike(warder, actor, strikeBack, all, options, log, false);
+        }
+        if (actor.hp <= 0) break;
         for (let i = 0; i < (effect.hits ?? 1); i++) {
           if (target.hp <= 0) break;
           strike(actor, target, effect, all, options, log, true);
@@ -1135,6 +1172,10 @@ function act(
       break;
     case "provoke":
       actor.provoking = effect.duration ?? 2;
+      break;
+    case "ward":
+      actor.wardOn = targets[0]?.id;
+      actor.wardTurns = effect.duration ?? 3;
       break;
     case "taunt":
       for (const target of targets) {
@@ -1229,7 +1270,9 @@ function strike(
     }
     return;
   }
-  if (canBeCountered && !effect.ranged && targetHooks.counter === "always")
+  // Retaliate answers any hit it can reach back: a ranged user counters ranged attackers too.
+  const reachesBack = !effect.ranged || target.rangedBasic || Boolean(target.magicBasic);
+  if (canBeCountered && reachesBack && targetHooks.counter === "always" && target.hp > 0)
     strike(target, actor, basicAttack(target), all, options, log, false);
 }
 
