@@ -15,6 +15,8 @@
 //   - A character trains in two trees: the primary from their sheet, the secondary from the
 //     temperament they started the game with.
 //   - Only the active class's skills are used, plus up to four carried from classes trained in.
+//   - Skills cost MP (magic) or stamina (everything else). Damage has a type (slash, pierce, blunt,
+//     fire, ice, lightning, light, dark) that foes can be weak to, resist, be immune to or absorb.
 // ──────────────────────────────────────────────
 
 import { combatAiHash } from "./combat-ai.js";
@@ -132,6 +134,96 @@ export function marinaraTrees(
   return secondary === primary ? { primary, secondary: null, pure: true } : { primary, secondary, pure: false };
 }
 
+// ── Damage types ──
+
+export const MARINARA_DAMAGE_TYPES = ["slash", "pierce", "blunt", "fire", "ice", "lightning", "light", "dark"] as const;
+export type MarinaraDamageType = (typeof MARINARA_DAMAGE_TYPES)[number];
+export const MARINARA_PHYSICAL_TYPES = ["slash", "pierce", "blunt"] as const satisfies readonly MarinaraDamageType[];
+/** The elements a caster picks between when a spell is "in the caster's element". */
+export const MARINARA_ELEMENTS = ["fire", "ice", "lightning"] as const satisfies readonly MarinaraDamageType[];
+/**
+ * What a skill hits with: a fixed type, the user's weapon (the active class's basic attack, so a
+ * carried Power Strike is blunt in a Guard's hands), the caster's pick of element, or whichever
+ * physical type the target is weakest to.
+ */
+export type MarinaraSkillDamage = MarinaraDamageType | "weapon" | "element" | "any-physical";
+export type MarinaraAffinity = "weak" | "resist" | "immune" | "absorb";
+export type MarinaraAffinities = Partial<Record<MarinaraDamageType, MarinaraAffinity>>;
+/** Damage multiplier per affinity; absorb heals the target instead. */
+export const MARINARA_AFFINITY_MULTIPLIER: Record<MarinaraAffinity, number> = {
+  weak: 1.5,
+  resist: 0.5,
+  immune: 0,
+  absorb: -1,
+};
+/** Each archetype's basic attack. */
+export const MARINARA_ARCHETYPE_ATTACKS: Record<MarinaraArchetype, Exclude<MarinaraSkillDamage, "weapon">> = {
+  blade: "slash",
+  guard: "blunt",
+  scout: "slash",
+  marksman: "pierce",
+  arcanist: "element",
+  hexer: "dark",
+  mender: "light",
+  herald: "slash",
+};
+
+/** The concrete types a skill can hit with when used by a character of `archetype`. */
+export function marinaraDamageOptions(
+  damage: MarinaraSkillDamage,
+  archetype: MarinaraArchetype,
+): readonly MarinaraDamageType[] {
+  if (damage === "weapon") return marinaraDamageOptions(MARINARA_ARCHETYPE_ATTACKS[archetype], archetype);
+  if (damage === "element") return MARINARA_ELEMENTS;
+  if (damage === "any-physical") return MARINARA_PHYSICAL_TYPES;
+  return [damage];
+}
+
+export function marinaraAffinityMultiplier(
+  affinities: MarinaraAffinities | undefined,
+  type: MarinaraDamageType,
+): number {
+  const affinity = affinities?.[type];
+  return affinity ? MARINARA_AFFINITY_MULTIPLIER[affinity] : 1;
+}
+
+/** The best type to hit a target with out of `options`, and its multiplier. */
+export function marinaraBestDamageType(
+  options: readonly MarinaraDamageType[],
+  affinities: MarinaraAffinities | undefined,
+): { type: MarinaraDamageType; multiplier: number } {
+  let best = { type: options[0]!, multiplier: marinaraAffinityMultiplier(affinities, options[0]!) };
+  for (const type of options.slice(1)) {
+    const multiplier = marinaraAffinityMultiplier(affinities, type);
+    if (multiplier > best.multiplier) best = { type, multiplier };
+  }
+  return best;
+}
+
+// ── Resources ──
+
+/** Magic skills spend MP, which does not come back in a fight. Everything else spends stamina. */
+export type MarinaraResource = "mp" | "stamina";
+export const MARINARA_MP = { base: 8, perMagic: 2 } as const;
+/** Stamina comes back a little each turn, and more on a turn spent defending. */
+export const MARINARA_STAMINA = {
+  base: 10,
+  perStrength: 1,
+  perSpeed: 0.5,
+  regenPct: 0.1,
+  defendRegenPct: 0.25,
+} as const;
+
+export function marinaraMaxMp(stats: Pick<MarinaraStats, "magic">): number {
+  return Math.round(MARINARA_MP.base + stats.magic * MARINARA_MP.perMagic);
+}
+
+export function marinaraMaxStamina(stats: Pick<MarinaraStats, "strength" | "speed">): number {
+  return Math.round(
+    MARINARA_STAMINA.base + stats.strength * MARINARA_STAMINA.perStrength + stats.speed * MARINARA_STAMINA.perSpeed,
+  );
+}
+
 // ── Classes and skills ──
 
 export type MarinaraClassTier = "base" | "advanced" | "master";
@@ -144,7 +236,11 @@ export interface MarinaraSkillDef {
   learnedAt: number;
   /** The stat its power runs on, so a carried skill runs on its user's own stat. */
   scales?: MarinaraStat;
-  mpCost?: number;
+  /** What using it costs, in `resource`. */
+  cost?: number;
+  resource?: MarinaraResource;
+  /** What a damaging skill hits with. */
+  damage?: MarinaraSkillDamage;
   /** Designed to be worth carrying into other classes. Any skill can be carried. */
   carryPick?: boolean;
   summary: string;
@@ -165,12 +261,40 @@ export interface MarinaraClassDef {
   skills: readonly MarinaraSkillDef[];
 }
 
+/** The damage type of every damaging active skill. */
+const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
+  "power-strike": "weapon",
+  flurry: "weapon",
+  "moonless-cut": "slash",
+  "reckless-swing": "weapon",
+  "sweeping-ruin": "slash",
+  arsenal: "any-physical",
+  "thousand-edges": "slash",
+  "shield-bash": "blunt",
+  verdict: "light",
+  backstab: "pierce",
+  "hit-and-run": "weapon",
+  shadowstep: "dark",
+  "aimed-shot": "pierce",
+  pierce: "pierce",
+  headshot: "pierce",
+  volley: "pierce",
+  "ruinous-barrage": "blunt",
+  "element-bolt": "element",
+  "twin-cast": "element",
+  tempest: "lightning",
+  glyph: "element",
+  starfall: "light",
+  convergence: "element",
+  siphon: "dark",
+};
+
 const active = (
   id: string,
   label: string,
   learnedAt: number,
   scales: MarinaraStat,
-  mpCost: number,
+  cost: number,
   summary: string,
   carryPick = false,
 ): MarinaraSkillDef => ({
@@ -179,7 +303,9 @@ const active = (
   kind: "active",
   learnedAt,
   scales,
-  mpCost,
+  cost,
+  resource: scales === "magic" ? "mp" : "stamina",
+  ...(SKILL_DAMAGE[id] ? { damage: SKILL_DAMAGE[id] } : {}),
   summary,
   ...(carryPick ? { carryPick } : {}),
 });
