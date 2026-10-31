@@ -1024,8 +1024,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "void-binder",
-      label: "Void Binder",
+      id: "nullifier",
+      label: "Nullifier",
       from: "hexer",
       role: "Steals power",
       leans: ["magic", "resistance", "luck"],
@@ -1037,7 +1037,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "void-sovereign",
       label: "Void Sovereign",
-      from: "void-binder",
+      from: "nullifier",
       role: "Darkness made will",
       leans: ["magic", "resistance", "luck", "hp"],
       skills: [
@@ -1234,8 +1234,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "exalted",
-      label: "Exalted",
+      id: "lodestar",
+      label: "Lodestar",
       from: "standard-bearer",
       role: "Legends follow them",
       leans: ["luck", "speed", "hp", "skill"],
