@@ -87,7 +87,7 @@ export function buildCharacter(def: MarinaraClassDef, level: number, seed: strin
   );
 }
 
-function unitFrom(character: MarinaraProgression, id: string, side: LabUnit["side"], row?: LabUnit["row"]): LabUnit {
+export function unitFrom(character: MarinaraProgression, id: string, side: LabUnit["side"], row?: LabUnit["row"]): LabUnit {
   const def = marinaraClass(character.activeClass)!;
   return makeUnit({
     id,
@@ -582,14 +582,17 @@ function trace(classId: string, level: number, count: number): string {
   return `${classId} L${level}: wins ${((wins / count) * 100).toFixed(0)}%, share of party damage ${((dealt / total) * 100).toFixed(0)}%, choices ${JSON.stringify(skillTally)}`;
 }
 
-const phase = process.argv[2] ?? "1";
-if (phase === "trace") {
-  console.log(trace(process.argv[3]!, Number(process.argv[4]), Number(process.argv[5] ?? 60)));
-  process.exit(0);
+// Run only as the entry point, so other lab scripts can import the party builders.
+if (process.argv[1]?.endsWith("class-lab.ts")) {
+  const phase = process.argv[2] ?? "1";
+  if (phase === "trace") {
+    console.log(trace(process.argv[3]!, Number(process.argv[4]), Number(process.argv[5] ?? 60)));
+    process.exit(0);
+  }
+  const out = process.argv[3];
+  const count = Number(process.argv[4] ?? 100);
+  const report =
+    phase === "1" ? phase1(count) : phase === "2" ? phase2(count) : phase === "3" ? phase3(count) : phase4(count);
+  if (out) writeFileSync(out, `${report}\n`);
+  else console.log(report);
 }
-const out = process.argv[3];
-const count = Number(process.argv[4] ?? 100);
-const report =
-  phase === "1" ? phase1(count) : phase === "2" ? phase2(count) : phase === "3" ? phase3(count) : phase4(count);
-if (out) writeFileSync(out, `${report}\n`);
-else console.log(report);
