@@ -139,11 +139,11 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   "oath-of-iron": { kind: "buff", target: "party", stat: "damage-taken", pct: -0.75, duration: 1, oncePerFight: true },
   // Scout
   steal: { kind: "none", target: "enemy" },
-  backstab: dmg("strength", 8, { critBonus: 15 }),
+  backstab: dmg("strength", 10, { critBonus: 15 }),
   vanish: { kind: "buff", target: "self", stat: "damage", pct: 0.6, duration: 1 },
   "hit-and-run": dmg("strength", 5, { weight: 0.6 }),
   "double-time": { kind: "extra-turn", target: "self", cooldown: 3 },
-  shadowstep: dmg("strength", 7, { ranged: true, critBonus: 10 }),
+  shadowstep: dmg("strength", 9, { ranged: true, critBonus: 10 }),
   "thousand-shadows": {
     kind: "buff",
     target: "party",
@@ -179,9 +179,9 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.08 },
   doom: { kind: "status", target: "enemy", status: "doom", chance: 0.6, duration: 3 },
   lull: { kind: "status", target: "enemy", status: "sleep", chance: 0.75, duration: 3 },
-  "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.5, duration: 2 },
-  siphon: dmg("magic", 5, { ranged: true, pierce: 0.5 }),
-  "total-eclipse": { kind: "debuff", target: "all-enemies", stat: "damage", pct: -0.3, duration: 2, cooldown: 4 },
+  "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2 },
+  siphon: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
+  "total-eclipse": { kind: "debuff", target: "all-enemies", stat: "damage", pct: -0.4, duration: 2, cooldown: 3 },
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
   revive: { kind: "revive", target: "downed-ally", power: 0.25 },
@@ -191,9 +191,9 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   barrier: { kind: "shield", target: "ally", scales: "magic", power: 10 },
   "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true },
   // Herald
-  rally: { kind: "buff", target: "party", stat: "damage", pct: 0.15, duration: 2 },
-  "battle-hymn": { kind: "buff", target: "party", stat: "damage", pct: 0.2, duration: 3 },
-  crescendo: { kind: "buff", target: "party", stat: "damage", pct: 0.4, duration: 1, cooldown: 3 },
+  rally: { kind: "buff", target: "party", stat: "damage", pct: 0.2, duration: 2 },
+  "battle-hymn": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3 },
+  crescendo: { kind: "buff", target: "party", stat: "damage", pct: 0.5, duration: 1, cooldown: 3 },
   command: { kind: "command", target: "ally" },
   "grand-strategy": { kind: "command", target: "party", cooldown: 4 },
   "raise-the-banner": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3 },
@@ -741,7 +741,7 @@ function choose(
       case "debuff": {
         const fresh = pool.filter((u) => !u.mods.some((m) => m.source === skill!.id));
         if (!fresh.length) break;
-        if (effect.stat === "damage" && !threatened) break;
+        if ((effect.stat === "damage" || effect.stat === "speed") && !threatened) break;
         const value =
           effect.stat === "damage-taken"
             ? friends.reduce((sum, u) => sum + effStat(u, "strength", all) * 0.5, 0) *
@@ -896,7 +896,7 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
     if (status.status === "sleep") {
       const sleepers = all.filter((u) => u.side !== actor.side && u.hp > 0 && passiveHooks(u.skills).nightmare);
       if (sleepers.length) {
-        const amount = Math.round(actor.maxHp * 0.06);
+        const amount = Math.round(actor.maxHp * 0.1);
         actor.hp -= amount;
         bump(log.damageTaken, actor.id, amount);
       }

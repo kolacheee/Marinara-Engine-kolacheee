@@ -962,7 +962,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Herald",
       role: "Lifts the party",
       leans: ["luck", "speed"],
-      skills: [active("rally", "Rally", 1, "luck", 3, "+15% attack to the party for 2 rounds.", true)],
+      skills: [active("rally", "Rally", 1, "luck", 3, "+20% attack to the party for 2 rounds.", true)],
     },
     {
       id: "chanter",
