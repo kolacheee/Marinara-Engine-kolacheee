@@ -136,7 +136,17 @@ export function marinaraTrees(
 
 // ── Damage types ──
 
-export const MARINARA_DAMAGE_TYPES = ["slash", "pierce", "blunt", "fire", "ice", "lightning", "light", "dark"] as const;
+export const MARINARA_DAMAGE_TYPES = [
+  "slash",
+  "pierce",
+  "blunt",
+  "fire",
+  "ice",
+  "lightning",
+  "light",
+  "dark",
+  "poison",
+] as const;
 export type MarinaraDamageType = (typeof MARINARA_DAMAGE_TYPES)[number];
 export const MARINARA_PHYSICAL_TYPES = ["slash", "pierce", "blunt"] as const satisfies readonly MarinaraDamageType[];
 /** The elements a caster picks between when a spell is "in the caster's element". */
@@ -311,6 +321,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   starfall: "light",
   convergence: "element",
   siphon: "dark",
+  rot: "poison",
 };
 
 const active = (
@@ -442,7 +453,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       weapons: ["slash", "pierce", "blunt"],
       leans: ["strength", "skill", "speed", "defense"],
       skills: [
-        active("thousand-edges", "Thousand Edges", 20, "strength", 12, "One hit on every living enemy."),
+        active(
+          "thousand-edges",
+          "Thousand Edges",
+          20,
+          "strength",
+          12,
+          "Hits every enemy in reach: the front row in Classic, every adjacent enemy in Tactical.",
+        ),
         passive("peerless", "Peerless", 25, "An extra action every third round.", true),
       ],
     },
@@ -843,6 +861,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["magic", "resistance"],
       skills: [
         active("weaken", "Weaken", 1, "magic", 3, "-20% Strength or Magic for 3 rounds.", true),
+        active(
+          "wither",
+          "Wither",
+          3,
+          "magic",
+          4,
+          "Pure damage over time: 6% of max HP each turn for 3 turns. No defense or affinity stops it.",
+        ),
         passive("drain-touch", "Drain Touch", 5, "Heals the user for 15% of the damage they deal.", true),
       ],
     },
@@ -853,7 +879,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Curses and damage over time",
       leans: ["magic"],
       skills: [
-        active("rot", "Rot", 10, "magic", 5, "A poison that spreads when its target falls."),
+        active(
+          "rot",
+          "Rot",
+          10,
+          "magic",
+          5,
+          "Poison: 8% of max HP each turn for 4 turns; spreads when its target falls.",
+        ),
         passive("lingering", "Lingering", 15, "Debuffs last a round longer.", true),
       ],
     },
@@ -864,7 +897,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Seals fates",
       leans: ["magic", "luck"],
       skills: [
-        active("doom", "Doom", 20, "magic", 12, "The target falls in 3 turns unless cleansed. Never bosses."),
+        active(
+          "doom",
+          "Doom",
+          20,
+          "magic",
+          12,
+          "In 3 turns the target loses 40% of max HP (10% for a boss) unless cleansed. Pure damage.",
+        ),
         passive("ill-omen", "Ill Omen", 24, "Enemy crits sometimes become misses.", true),
       ],
     },
