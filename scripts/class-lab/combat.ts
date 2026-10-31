@@ -221,6 +221,8 @@ export interface PassiveHooks {
   hpPct?: number;
   /** +30% Defense and Resistance until the next turn after defending or charging. */
   entrench?: boolean;
+  holdTheLine?: boolean;
+  vanguard?: boolean;
   /** Added to the weakness multiplier. */
   weakBonus?: number;
   lifestealPct?: number;
@@ -276,6 +278,7 @@ export const PASSIVES: Record<string, PassiveHooks> = {
   "battle-rhythm": { damagePct: 0.15 },
   steadfast: { hpPct: 0.2 },
   entrench: { entrench: true },
+  "hold-the-line": { holdTheLine: true, vanguard: true },
   "keen-eye": { hitBonus: 15, critBonus: 10 },
   "exploit-weakness": { weakBonus: 0.5 },
   "drain-touch": { lifestealPct: 0.15 },
@@ -501,6 +504,12 @@ export interface FightOptions {
   /** A front-row area attack hits every foe (grouped) or only the one targeted (spread out). */
   grouped: boolean;
   maxActions?: number;
+  /** Enemies go for the weakest reachable target, back row first, instead of at random. */
+  focus?: boolean;
+  /** Tactical-style: no front-row shield; Hold the Line stops melee foes heading past a guard. */
+  tactical?: boolean;
+  /** End the fight (as an enemy win) when any of these units falls. */
+  stopWhenDowned?: string[];
 }
 
 const living = (units: LabUnit[]) => units.filter((unit) => unit.hp > 0);
@@ -523,7 +532,11 @@ export function runFight(party: LabUnit[], enemies: LabUnit[], options: FightOpt
   const partyMax = party.reduce((sum, unit) => sum + unit.maxHp, 0);
   const partyStart = party.reduce((sum, unit) => sum + unit.hp, 0);
   for (const unit of all)
-    unit.next = (TUNING.timeline / (effStat(unit, "speed", all) + TUNING.speedFloor)) * options.random();
+    unit.next =
+      (TUNING.timeline / (effStat(unit, "speed", all) + TUNING.speedFloor)) *
+      options.random() *
+      // Vanguard: a Guard-tree class is ready before the first blow lands.
+      (passiveHooks(unit.skills).vanguard ? 0.2 : 1);
   const maxActions = options.maxActions ?? 400;
   let total = 0;
   let clock = 0;
@@ -532,7 +545,10 @@ export function runFight(party: LabUnit[], enemies: LabUnit[], options: FightOpt
       log.winner = "party";
       break;
     }
-    if (living(party).length === 0) {
+    if (
+      living(party).length === 0 ||
+      (options.stopWhenDowned && all.some((u) => options.stopWhenDowned!.includes(u.id) && u.hp <= 0))
+    ) {
       log.winner = "enemy";
       break;
     }
@@ -645,7 +661,7 @@ function targetsFor(actor: LabUnit, effect: Effect, all: LabUnit[]): LabUnit[] {
   if (taunter && (effect.target === "enemy" || effect.target === "front-row")) return [taunter];
   const provokers = foes.filter((unit) => unit.provoking > 0);
   if (effect.target === "enemy" && provokers.length) return provokers;
-  if (effect.ranged || !TUNING.frontRowShield) return foes;
+  if (effect.ranged || !TUNING.frontRowShield || tacticalFlag) return foes;
   const front = foes.filter((unit) => unit.row === "front");
   return front.length ? front : foes;
 }
@@ -924,11 +940,19 @@ function choose(
         break;
       }
       case "cover": {
-        if (!threatened) break;
-        const back = friends.filter(
-          (u) => u.id !== actor.id && u.hp < u.maxHp * 0.5 && !friends.some((f) => f.covering === u.id),
-        )[0];
-        if (back) consider(skill, effect, [back], effStat(foes[0]!, "strength", all) * 1.2);
+        // Guard the ally most at risk until the user's next turn: every single-target hit on them
+        // comes to the user instead.
+        if (!threatened || actor.covering) break;
+        const exposed = friends
+          .filter((u) => u.id !== actor.id && !friends.some((f) => f.covering === u.id))
+          .sort((a, b) => Number(b.row === "back") - Number(a.row === "back") || a.hp - b.hp)[0];
+        if (exposed) {
+          const incoming = foes.reduce(
+            (sum, foe) => sum + Math.max(effStat(foe, "strength", all), effStat(foe, "magic", all)),
+            0,
+          );
+          consider(skill, effect, [exposed], incoming * (exposed.hp < exposed.maxHp * 0.6 ? 1.2 : 0.8));
+        }
         break;
       }
       case "provoke": {
@@ -992,6 +1016,7 @@ function choose(
 }
 
 let groupedFlag = true;
+let tacticalFlag = false;
 
 function bestDamage(unit: LabUnit, all: LabUnit[]): number {
   const foes = living(all.filter((u) => u.side !== unit.side));
@@ -1010,12 +1035,49 @@ function enemyChoose(actor: LabUnit, all: LabUnit[], random: () => number) {
   const confused = actor.statuses.some((s) => s.status === "confuse");
   if (confused && random() < 0.5) pool = living(all.filter((u) => u.side === actor.side && u.id !== actor.id));
   if (!pool.length) return null;
-  return { skill: null, effect, targets: [pool[Math.floor(random() * pool.length)]!] };
+  let target = pool[Math.floor(random() * pool.length)]!;
+  if (focusFlag && !confused) {
+    // Back row first, then whoever would fall soonest.
+    target = [...pool].sort(
+      (a, b) =>
+        Number(b.row === "back") - Number(a.row === "back") ||
+        a.hp / Math.max(1, expectedHit(actor, a, effect, all)) - b.hp / Math.max(1, expectedHit(actor, b, effect, all)),
+    )[0]!;
+  }
+  // Hold the Line (Tactical): a melee foe heading past a guard to the back row is stopped beside it,
+  // takes a free attack, and fights the guard instead.
+  if (tacticalFlag && !effect.ranged && target.row === "back") {
+    const guard = living(all.filter((u) => u.side === target.side && passiveHooks(u.skills).holdTheLine))[0];
+    if (guard) {
+      strike(guard, actor, basicAttack(guard), all, { random, grouped: groupedFlag }, emptyLog, false);
+      if (actor.hp <= 0) return null;
+      target = guard;
+    }
+  }
+  return { skill: null, effect, targets: [target] };
 }
 
+let focusFlag = false;
+/** Hold the Line's free attacks are counted against this throwaway log by the enemy's chooser. */
+const emptyLog: FightLog = {
+  rounds: 0,
+  winner: "timeout",
+  damageDealt: {},
+  damageTaken: {},
+  healingDone: {},
+  mpSpent: {},
+  staminaSpent: {},
+  mpSkillDamage: {},
+  actions: {},
+  partyHpLostPct: 0,
+  downed: [],
+};
+
 function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: FightLog) {
+  focusFlag = Boolean(options.focus);
   const { random } = options;
   groupedFlag = options.grouped;
+  tacticalFlag = Boolean(options.tactical);
   actor.defending = false;
   // Statuses tick at the start of the actor's turn.
   for (const status of actor.statuses) {
@@ -1062,6 +1124,7 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   actor.next += (TUNING.timeline / (effStat(actor, "speed", all) + TUNING.speedFloor)) * 1;
   if (actor.provoking > 0) actor.provoking--;
   if (actor.tauntTurns > 0) actor.tauntTurns--;
+  actor.covering = undefined; // Cover lasts until the coverer's next turn
   if (actor.wardTurns > 0) actor.wardTurns--;
   for (const id of Object.keys(actor.cooldowns)) actor.cooldowns[id] = Math.max(0, actor.cooldowns[id]! - 1);
   if (skips || actor.dummy) return;
@@ -1290,7 +1353,6 @@ function strike(
   // Cover: a guard steps in front of the ally it covers.
   const coverer = living(all.filter((u) => u.side === target.side && u.covering === target.id))[0];
   if (coverer && effect.target === "enemy") {
-    coverer.covering = undefined;
     target = coverer;
   }
   const targetHooks = passiveHooks(target.skills);
