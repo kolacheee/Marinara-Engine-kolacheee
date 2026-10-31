@@ -14,6 +14,8 @@ import { writeFileSync } from "node:fs";
 import {
   MARINARA_ARCHETYPES,
   MARINARA_CLASSES,
+  MARINARA_STATS,
+  marinaraCarriedStat,
   MARINARA_TEMPERAMENT_TREES,
   MARINARA_PARTY_TEMPERAMENTS,
   awardMarinaraXp,
@@ -95,6 +97,8 @@ function unitFrom(character: MarinaraProgression, id: string, side: LabUnit["sid
     skills: marinaraUsableSkills(character),
     archetype: def.archetype,
     classId: def.id,
+    carriedIds: new Set(character.carried),
+    carriedStats: Object.fromEntries(MARINARA_STATS.map((stat) => [stat, marinaraCarriedStat(character, stat)])),
     rangedBasic: RANGED.has(def.archetype),
     magicBasic: CASTERS.has(def.archetype),
     level: character.level,
