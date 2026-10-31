@@ -457,6 +457,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
         passive("steadfast", "Steadfast", 5, "+20% max HP.", true),
         active("cover", "Cover", 1, "defense", 0, "Takes the next hit aimed at an ally."),
         active("challenge", "Challenge", 1, "defense", 2, "One enemy must target the user for 2 turns.", true),
+        active(
+          "sworn-ward",
+          "Sworn Ward",
+          3,
+          "defense",
+          3,
+          "Marks an ally for 3 turns: whenever an enemy attacks them, hit or miss, the user strikes that enemy at once (if it can reach).",
+          true,
+        ),
         passive(
           "hold-the-line",
           "Hold the Line",
@@ -464,6 +473,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Tactical: a foe that moves next to the user stops there, and one that leaves its reach takes a free attack.",
         ),
         passive("stalwart", "Stalwart", 5, "+20% Defense while defending.", true),
+        passive(
+          "entrench",
+          "Entrench",
+          8,
+          "+30% Defense and Resistance until the user's next turn after defending or charging a skill.",
+          true,
+        ),
       ],
     },
     {
@@ -475,7 +491,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       skills: [
         active("provoke", "Provoke", 10, "defense", 3, "Every enemy must target the user for a round.", true),
         passive("shield-wall", "Shield Wall", 15, "The back row takes less damage while the user stands."),
-        passive("retaliate", "Retaliate", 18, "Counters any melee hit.", true),
+        passive(
+          "retaliate",
+          "Retaliate",
+          18,
+          "Counters any hit it can reach back: melee hits, or any hit when the user attacks at range.",
+          true,
+        ),
       ],
     },
     {
