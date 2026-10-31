@@ -142,9 +142,9 @@ export const MARINARA_PHYSICAL_TYPES = ["slash", "pierce", "blunt"] as const sat
 /** The elements a caster picks between when a spell is "in the caster's element". */
 export const MARINARA_ELEMENTS = ["fire", "ice", "lightning"] as const satisfies readonly MarinaraDamageType[];
 /**
- * What a skill hits with: a fixed type, the user's weapon (the active class's basic attack, so a
- * carried Power Strike is blunt in a Guard's hands), the caster's pick of element, or whichever
- * physical type the target is weakest to.
+ * What a skill hits with: a fixed type, the user's equipped weapon (Alyssa 2026-10-31: a Blade with
+ * a mace hits blunt, and a carried Power Strike takes the type of whatever its user holds), the
+ * caster's pick of element, or whichever physical type the target is weakest to.
  */
 export type MarinaraSkillDamage = MarinaraDamageType | "weapon" | "element" | "any-physical";
 export type MarinaraAffinity = "weak" | "resist" | "immune" | "absorb";
@@ -156,24 +156,47 @@ export const MARINARA_AFFINITY_MULTIPLIER: Record<MarinaraAffinity, number> = {
   immune: 0,
   absorb: -1,
 };
-/** Each archetype's basic attack. */
-export const MARINARA_ARCHETYPE_ATTACKS: Record<MarinaraArchetype, Exclude<MarinaraSkillDamage, "weapon">> = {
-  blade: "slash",
-  guard: "blunt",
-  scout: "slash",
-  marksman: "pierce",
+/** Each archetype's basic attack: physical archetypes strike with their weapon, casters with magic. */
+export const MARINARA_ARCHETYPE_ATTACKS: Record<MarinaraArchetype, MarinaraSkillDamage> = {
+  blade: "weapon",
+  guard: "weapon",
+  scout: "weapon",
+  marksman: "weapon",
   arcanist: "element",
   hexer: "dark",
   mender: "light",
-  herald: "slash",
+  herald: "weapon",
 };
 
-/** The concrete types a skill can hit with when used by a character of `archetype`. */
-export function marinaraDamageOptions(
-  damage: MarinaraSkillDamage,
-  archetype: MarinaraArchetype,
-): readonly MarinaraDamageType[] {
-  if (damage === "weapon") return marinaraDamageOptions(MARINARA_ARCHETYPE_ATTACKS[archetype], archetype);
+/**
+ * The weapon types each archetype can equip (swords and spears, maces and lances, and so on); a
+ * class can widen it (`MarinaraClassDef.weapons`). Switching weapons is how a fighter answers a
+ * resistance, as a caster answers one by changing element.
+ */
+export const MARINARA_ARCHETYPE_WEAPONS: Record<MarinaraArchetype, readonly MarinaraDamageType[]> = {
+  blade: ["slash", "pierce"],
+  guard: ["blunt", "pierce"],
+  scout: ["slash", "pierce"],
+  marksman: ["pierce", "blunt"],
+  arcanist: ["blunt"],
+  hexer: ["blunt", "pierce"],
+  mender: ["blunt"],
+  herald: ["slash", "pierce"],
+};
+
+/** The weapon types a character can equip in this class. */
+export function marinaraWeaponTypes(classId: string): readonly MarinaraDamageType[] {
+  const def = marinaraClass(classId);
+  if (!def) return [];
+  return def.weapons ?? MARINARA_ARCHETYPE_WEAPONS[def.archetype];
+}
+
+/**
+ * The concrete types a skill can hit with in this class, `weapon` meaning every weapon type the
+ * class can equip (the best one is the one a character would have in hand).
+ */
+export function marinaraDamageOptions(damage: MarinaraSkillDamage, classId: string): readonly MarinaraDamageType[] {
+  if (damage === "weapon") return marinaraWeaponTypes(classId);
   if (damage === "element") return MARINARA_ELEMENTS;
   if (damage === "any-physical") return MARINARA_PHYSICAL_TYPES;
   return [damage];
@@ -256,6 +279,8 @@ export interface MarinaraClassDef {
   /** The class it promotes from; none for a base class. */
   from?: string;
   role: string;
+  /** Weapon types it can equip, when wider than its archetype's. */
+  weapons?: readonly MarinaraDamageType[];
   /** The stats it grows best: a promoted class adds to these. */
   leans: readonly MarinaraStat[];
   skills: readonly MarinaraSkillDef[];
@@ -265,24 +290,24 @@ export interface MarinaraClassDef {
 const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "power-strike": "weapon",
   flurry: "weapon",
-  "moonless-cut": "slash",
+  "moonless-cut": "weapon",
   "reckless-swing": "weapon",
-  "sweeping-ruin": "slash",
+  "sweeping-ruin": "weapon",
   arsenal: "any-physical",
-  "thousand-edges": "slash",
+  "thousand-edges": "weapon",
   "shield-bash": "blunt",
   verdict: "light",
-  backstab: "pierce",
+  backstab: "weapon",
   "hit-and-run": "weapon",
   shadowstep: "dark",
-  "aimed-shot": "pierce",
+  "aimed-shot": "weapon",
   pierce: "pierce",
-  headshot: "pierce",
-  volley: "pierce",
+  headshot: "weapon",
+  volley: "weapon",
   "ruinous-barrage": "blunt",
   "element-bolt": "element",
   "twin-cast": "element",
-  tempest: "lightning",
+  tempest: "element",
   glyph: "element",
   starfall: "light",
   convergence: "element",
@@ -402,6 +427,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Weaponmaster",
       from: "blade",
       role: "Every weapon, every answer",
+      weapons: ["slash", "pierce", "blunt"],
       leans: ["strength", "skill", "speed"],
       skills: [
         active("arsenal", "Arsenal", 10, "strength", 4, "An attack against the target's weakest defense.", true),
@@ -413,6 +439,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Paragon of Arms",
       from: "weaponmaster",
       role: "The pinnacle of the blade",
+      weapons: ["slash", "pierce", "blunt"],
       leans: ["strength", "skill", "speed", "defense"],
       skills: [
         active("thousand-edges", "Thousand Edges", 20, "strength", 12, "One hit on every living enemy."),
