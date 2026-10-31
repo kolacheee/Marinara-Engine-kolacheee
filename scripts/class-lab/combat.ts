@@ -159,7 +159,7 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   flurry: dmg("strength", 4, { hits: 2 }),
   "moonless-cut": dmg("strength", 10, { critBonus: 30, finisher: { below: 0.5, bonus: 0.5 } }),
   "reckless-swing": dmg("strength", 13, { selfDebuff: { stat: "defense", pct: -0.3, duration: 2 } }),
-  "sweeping-ruin": dmg("strength", 9, {
+  "sweeping-ruin": dmg("strength", 13, {
     target: "front-row",
     weight: 1.2,
     onHit: { stat: "damage", pct: -0.15, duration: 2 },
@@ -404,6 +404,10 @@ export interface PassiveHooks {
   heavyDraw?: boolean;
   bloodlust?: boolean;
   unstoppable?: boolean;
+  /** Damage taken changes by this share while below half HP. */
+  takenBelowHalfPct?: number;
+  /** Spells cost this share more (negative: less) MP. */
+  mpCostPct?: number;
   noPenalty?: boolean;
 }
 
@@ -421,7 +425,7 @@ export const PASSIVES: Record<string, PassiveHooks> = {
   "second-wind": { actOnKill: true },
   bloodrage: { damageBelowHalfPct: 0.3 },
   bloodlust: { healOnKillPct: 0.1 },
-  unstoppable: { unstoppable: true },
+  unstoppable: { unstoppable: true, takenBelowHalfPct: -0.15 },
   "adaptive-grip": { hitBonus: 10, noPenalty: true },
   peerless: { extraActionEvery: 3 },
   stalwart: { defendBonusPct: 0.2 },
@@ -449,7 +453,7 @@ export const PASSIVES: Record<string, PassiveHooks> = {
   attunement: { spellDamagePct: 0.15 },
   overcharge: { critBonus: 10 },
   "spell-ward": { statPct: { resistance: 0.25 } },
-  "prepared-mind": { firstSpellFree: true },
+  "prepared-mind": { firstSpellFree: true, mpCostPct: -0.25 },
   "deep-well": { mpPct: 0.5 },
   "mana-tide": { mpRegenPct: 0.08 },
   lingering: { debuffDurationBonus: 1 },
@@ -766,7 +770,8 @@ function basicAttack(unit: LabUnit): Effect {
 function costOf(unit: LabUnit, skill: MarinaraSkillDef): { resource: "mp" | "stamina"; cost: number } {
   const resource = skill.resource ?? "mp";
   const free = resource === "mp" && passiveHooks(unit.skills).firstSpellFree && !unit.firstSpellUsed;
-  return { resource, cost: free ? 0 : (skill.cost ?? 0) };
+  const cut = resource === "mp" ? (passiveHooks(unit.skills).mpCostPct ?? 0) : 0;
+  return { resource, cost: free ? 0 : Math.max(0, Math.round((skill.cost ?? 0) * (1 + cut))) };
 }
 
 function usable(unit: LabUnit): Array<{ skill: MarinaraSkillDef | null; effect: Effect }> {
@@ -872,6 +877,7 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
   if (hooks.damageBelowHalfPct && actor.hp < actor.maxHp / 2) pct += hooks.damageBelowHalfPct;
   if (target.marked > 0 && hooks.bonusVsMarked) pct += hooks.bonusVsMarked;
   if (effect.finisher && target.hp < target.maxHp * effect.finisher.below) pct += effect.finisher.bonus;
+  if (target.hp < target.maxHp / 2) pct += passiveHooks(target.skills).takenBelowHalfPct ?? 0;
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
     const allyHooks = passiveHooks(ally.skills);
     if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;

@@ -495,7 +495,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Hits the whole enemy front row; struck foes deal 15% less damage for 2 turns.",
           true,
         ),
-        passive("unstoppable", "Unstoppable", 24, "Cannot be stunned while below half HP."),
+        passive("unstoppable", "Unstoppable", 24, "Below half HP: cannot be stunned and takes 15% less damage."),
       ],
     },
     {
@@ -914,7 +914,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "Locks an enemy's skills for 2 turns; a sealed foe takes 20% more damage.",
         ),
-        passive("prepared-mind", "Prepared Mind", 24, "The first spell each fight costs no MP.", true),
+        passive(
+          "prepared-mind",
+          "Prepared Mind",
+          24,
+          "Spells cost 25% less MP, and the first spell each fight costs none.",
+          true,
+        ),
       ],
     },
     {
