@@ -42,7 +42,7 @@ try {
     gameSetupConfig: { combatDirector: true, marinaraClasses: true, difficulty: "normal" },
     gameCharacterCards: [
       { name: "Ayla", class: "Knight", temperament: "protective", temperamentInitial: "protective" },
-      { name: "Corin", class: "Hedge mage", abilities: ["Firebolt"], temperament: "methodical" },
+      { name: "Corin", class: "Hedge mage", abilities: ["Firebolt"], temperament: "reckless" },
       { name: "Dessa", class: "Healer", temperament: "supportive" },
     ],
   });
@@ -96,6 +96,22 @@ try {
     ),
     "the XP is on the cards",
   );
+
+  // Between fights a party member switches to another open class; a class not open is refused.
+  const { marinaraClassBlock, marinaraOpenClasses } =
+    await import("../../packages/shared/src/features/marinara-classes.js");
+  const corin = cardsAfter.find((card: { name: string }) => card.name === "Corin").marinara;
+  const other = marinaraOpenClasses(corin).find(
+    (def) => def.id !== corin.activeClass && !marinaraClassBlock(corin, def.id),
+  );
+  assert.ok(other, "a character opens a second tree's base class from the start");
+  const switched = await post("/combat/marinara/progression", { chatId: chat.id, name: "Corin", classId: other!.id });
+  assert.equal(switched.statusCode, 200, switched.body);
+  assert.equal(switched.json().progression.activeClass, other!.id);
+  const refused = await post("/combat/marinara/progression", { chatId: chat.id, name: "Corin", classId: "nope" });
+  assert.equal(refused.statusCode, 400, "an unknown class is refused");
+  const stored = JSON.parse((await chats.getById(chat.id))!.metadata || "{}").gameCharacterCards;
+  assert.equal(stored.find((card: { name: string }) => card.name === "Corin").marinara.activeClass, other!.id);
   console.log("game-marinara-route: ok");
 } finally {
   await app.close();

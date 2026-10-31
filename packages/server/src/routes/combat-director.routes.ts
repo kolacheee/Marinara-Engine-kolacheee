@@ -45,6 +45,10 @@ import {
   combatOrdersSchema,
   type CombatOrders,
   normalizeCharacterLookupName,
+  marinaraLearnedSkills,
+  readMarinaraCardProgression,
+  setMarinaraCarried,
+  setMarinaraClass,
   combatTacticsSchema,
   combatAiHintsSchema,
   rulesetBestiarySheetCatalogIds,
@@ -1695,6 +1699,64 @@ export async function combatDirectorRoutes(
       logger.warn(err, "Unable to start directed combat");
       return reply.code(400).send({ error: err instanceof Error ? err.message : "Invalid combat request." });
     }
+  });
+  /**
+   * A party member's Classic Marinara class and carried skills, changed between fights (combat
+   * overhaul). A fight already going keeps the fighter it started with; the change shows from the next.
+   */
+  app.post("/marinara/progression", async (req, reply) => {
+    const parsed = z
+      .object({
+        chatId: key,
+        name: z.string().min(1).max(200),
+        classId: z.string().max(80).optional(),
+        carried: z.array(z.string().max(80)).max(8).optional(),
+      })
+      .safeParse(req.body);
+    if (!parsed.success) return reply.code(400).send({ error: parsed.error.issues[0]?.message });
+    const input = parsed.data;
+    let refusal: string | null = null;
+    let progression: unknown = null;
+    const patched = await chats.patchMetadata(
+      input.chatId,
+      (current) => {
+        const cards = Array.isArray(current.gameCharacterCards)
+          ? (current.gameCharacterCards as Record<string, unknown>[])
+          : [];
+        const index = cards.findIndex(
+          (card) =>
+            typeof card.name === "string" &&
+            normalizeCharacterLookupName(card.name) === normalizeCharacterLookupName(input.name),
+        );
+        let next = index >= 0 ? readMarinaraCardProgression(cards[index]!.marinara) : undefined;
+        if (!next) {
+          refusal = "This party member has no Classic Marinara class yet. They get one on their first fight.";
+          return {};
+        }
+        if (next.fallen) {
+          refusal = "This party member has fallen.";
+          return {};
+        }
+        try {
+          if (input.classId && input.classId !== next.activeClass)
+            next = { ...next, ...setMarinaraClass(next, input.classId) };
+          // A class switched to sets its own skills apart from the carried ones: one carried from it is dropped.
+          const carried = (input.carried ?? next.carried).filter((id) =>
+            marinaraLearnedSkills(next!).some((skill) => skill.id === id && skill.classId !== next!.activeClass),
+          );
+          next = { ...next, ...setMarinaraCarried(next, input.carried ? input.carried : carried) };
+        } catch (err) {
+          refusal = err instanceof Error ? err.message : "That class change is not allowed.";
+          return {};
+        }
+        progression = next;
+        return { gameCharacterCards: cards.map((card, i) => (i === index ? { ...card, marinara: next } : card)) };
+      },
+      { touchUpdatedAt: false },
+    );
+    if (!patched) return reply.code(404).send({ error: "Chat not found." });
+    if (refusal) return reply.code(400).send({ error: refusal });
+    return { progression };
   });
   app.get("/state", async (req, reply) => {
     const parsed = z.object({ chatId: key, anchor: key }).safeParse(req.query);
