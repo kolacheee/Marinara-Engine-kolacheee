@@ -117,7 +117,7 @@ export function marinaraFightStart(input: {
  * What a fight's end gives the party (decided 2026-11-01, for Alyssa's review): a won fight pays each
  * beaten foe's XP (its tier's), half shared evenly by everyone who fought and half by the share of
  * damage, healing and support each gave; each share is scaled by the foe's level against theirs, with
- * the catch-up for those below the party's average. A lost or fled fight pays nothing. Under
+ * the catch-up for those below the party's average. A foe that surrendered or fled counts as beaten. A lost or fled fight pays nothing. Under
  * permadeath, one down when a won or fled fight ends is gone; a lost fight is left to the story.
  */
 export function marinaraFightEnd(input: {
@@ -129,11 +129,13 @@ export function marinaraFightEnd(input: {
 }): { growth: MarinaraFightGrowth[]; cards: Record<string, unknown>[] | null } {
   const party = input.state.fighters.filter((one) => one.side === "party");
   const foes = input.state.fighters.filter((one) => one.side !== "party");
+  // Foes that left a won fight alive (surrendered, fled) were driven off: they pay as the beaten do.
+  const left = (input.state.left ?? []).filter((one) => one.side !== "party");
   const named = input.cards.filter(
     (card): card is Record<string, unknown> & { name: string } =>
       typeof card.name === "string" && Boolean(card.name.trim()),
   );
-  const beaten = input.outcome === "victory" ? foes.filter((foe) => foe.hp <= 0) : [];
+  const beaten = input.outcome === "victory" ? [...foes.filter((foe) => foe.hp <= 0), ...left] : [];
   const shareOf = (id: string) => {
     const credit = input.state.credit[id];
     return credit ? credit.damage + credit.support : 0;

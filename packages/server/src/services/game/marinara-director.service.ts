@@ -52,6 +52,8 @@ export interface MarinaraDirectorState {
   draws: number;
   /** Who did what to whom, for XP: damage dealt to each foe, healing and support given. */
   credit: Record<string, { damage: number; support: number; foes: string[] }>;
+  /** Fighters that left the fight alive (surrendered, fled), off the timeline. */
+  left?: MarinaraFighter[];
   /** What the party took from the fight, once it ended (summary.marinara). */
   growth?: MarinaraFightGrowth[];
 }
