@@ -15,6 +15,7 @@ export * from "./types/card-field.js";
 export * from "./schemas/card-field-alternative.schema.js";
 export * from "./utils/card-field-alternatives.js";
 export * from "./utils/mari-editor-fields.js";
+export * from "./utils/game-character-name-match.js";
 export * from "./types/character-catalog.js";
 export * from "./types/lorebook.js";
 export * from "./types/prompt.js";
@@ -269,6 +270,12 @@ export { parseChoiceOptions, resolveChoiceVariableValue, type ChoiceOptionValue 
 
 export * from "./features/combat-ai.js";
 export * from "./features/marinara-classes.js";
+export * from "./features/marinara-combat.js";
+export * from "./features/marinara-ai.js";
+export * from "./features/marinara-items.js";
+export * from "./features/marinara-bestiary.js";
+export * from "./features/marinara-bestiary-threat.js";
+export * from "./features/marinara-party.js";
 export * from "./features/combat-director.js";
 
 export * from "./features/combat-conditions.js";

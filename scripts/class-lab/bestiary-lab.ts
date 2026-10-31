@@ -1,16 +1,17 @@
 /**
  * Bestiary lab: measures what each foe family is worth in an encounter budget (Alyssa 2026-10-31:
- * balanced encounters, as the SRD's CR does), against reference parties of four grown with real
- * level-ups.
+ * balanced encounters, as the SRD's CR does), in fights the combat director plays with the Engine's
+ * own combat AI on both sides, against reference parties of four grown with real level-ups and
+ * wearing standard gear.
  *
- *   node scripts/class-lab/bestiary-lab.ts measure <out.json> [fightsPerParty]
- *   node scripts/class-lab/bestiary-lab.ts table <in.json> <out.ts>
+ *   tsx scripts/class-lab/bestiary-lab.ts measure <out.json> [fightsPerParty]   (FAMILIES=a,b to limit)
+ *   tsx scripts/class-lab/bestiary-lab.ts table <out.ts> <in.json> [more.json ...]
  *
  * Measure: for each family, tier and sample level, a group of copies (four minions, three standard,
  * two elite, one boss) fights each reference party; their HP is scaled until the party loses 35% of
- * its HP on average (the "Normal" mark). A group that needs its HP scaled by h to get there is worth
- * 4 / (copies × √h) party members each (worth goes as the square root of HP times damage, as in
- * Lanchester's square law, so h in HP is √h in worth). Resumable: combos already in the JSON are kept.
+ * its HP on average (the Normal mark). A group that needs its HP scaled by h to get there is worth
+ * 4 / (copies × √h) party members each: worth goes as the square root of HP times damage
+ * (Lanchester's square law), so h in HP is √h in worth. Resumable: combos in the JSON are kept.
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import {
@@ -20,34 +21,38 @@ import {
   marinaraEnemySpec,
   type MarinaraBestiarySetting,
   type MarinaraEnemyFamily,
-  type MarinaraEnemyTier,
 } from "../../packages/shared/src/features/marinara-bestiary.js";
-import { marinaraRandom } from "../../packages/shared/src/features/marinara-classes.js";
-import { runFight, type LabUnit } from "./combat.js";
-import { enemyUnit, referenceParty, REFERENCE_PARTIES } from "./bestiary-units.js";
+import type { MarinaraEnemyTier, MarinaraFighter } from "../../packages/shared/src/features/marinara-combat.js";
+import { enemyFighter, playFight, referenceParty, REFERENCE_PARTIES, seedOf } from "./bestiary-units.js";
 
 export const SAMPLE_LEVELS = [1, 4, 8, 12, 16, 20, 24, 28] as const;
 export const NORMAL_HP_LOST = 0.35;
 const COPIES: Record<MarinaraEnemyTier, number> = { minion: 4, standard: 3, elite: 2, boss: 1 };
 
-function settingOf(family: MarinaraEnemyFamily, level: number): MarinaraBestiarySetting | null {
+export function settingOf(family: MarinaraEnemyFamily, level: number): MarinaraBestiarySetting | null {
   for (const setting of Object.keys(family.names) as MarinaraBestiarySetting[])
     if (marinaraEnemyName(family, setting, level)) return setting;
   return null;
 }
 
-export function foes(family: MarinaraEnemyFamily, tier: MarinaraEnemyTier, level: number, count: number, hpScale: number): LabUnit[] {
+export function foes(
+  family: MarinaraEnemyFamily,
+  tier: MarinaraEnemyTier,
+  level: number,
+  count: number,
+  hpScale = 1,
+): MarinaraFighter[] {
   const setting = settingOf(family, level)!;
   return Array.from({ length: count }, (_, j) => {
-    const unit = enemyUnit(marinaraEnemySpec({ familyId: family.id, setting, level, tier, id: `e${j}` }));
+    const unit = enemyFighter(marinaraEnemySpec({ familyId: family.id, setting, level, tier, id: `e${j}` }));
     unit.maxHp = unit.hp = Math.max(1, Math.round(unit.maxHp * hpScale));
     return unit;
   });
 }
 
-/** Mean party HP lost (downed count as all of theirs) and win rate over the reference parties. */
+/** Mean party HP lost (all of it on a loss) and win rate over the reference parties. */
 export function outcome(
-  make: (seed: number) => LabUnit[],
+  make: () => MarinaraFighter[],
   level: number,
   fightsPerParty: number,
   key: string,
@@ -57,33 +62,25 @@ export function outcome(
   let total = 0;
   for (const name of Object.keys(REFERENCE_PARTIES))
     for (let i = 0; i < fightsPerParty; i++) {
-      const party = referenceParty(name, level, `${i}`);
-      const log = runFight(party, make(i), {
-        random: marinaraRandom(`bl:${key}:${name}:${i}`),
-        grouped: true,
-        focus: true,
-        maxActions: 800,
-      });
-      lost += log.winner === "party" ? log.partyHpLostPct : 1;
-      if (log.winner === "party") wins++;
+      const fight = playFight(referenceParty(name, level, `${i}`), make(), seedOf(`bl:${key}:${name}:${i}`));
+      lost += fight.lost;
+      if (fight.victory) wins++;
       total++;
     }
   return { lost: lost / total, wins: wins / total };
 }
 
-function measureOne(family: MarinaraEnemyFamily, tier: MarinaraEnemyTier, level: number, fights: number) {
-  const copies = COPIES[tier];
-  const key = `${family.id}:${tier}:${level}`;
+/** The HP scale that puts a group at the Normal mark (log-space bisection, common seeds). */
+export function normalScale(make: (hp: number) => MarinaraFighter[], level: number, fights: number, key: string, steps = 9) {
   let lo = Math.log(0.05);
   let hi = Math.log(40);
-  for (let step = 0; step < 11; step++) {
+  for (let step = 0; step < steps; step++) {
     const mid = (lo + hi) / 2;
-    const { lost } = outcome(() => foes(family, tier, level, copies, Math.exp(mid)), level, fights, key);
+    const { lost } = outcome(() => make(Math.exp(mid)), level, fights, key);
     if (lost < NORMAL_HP_LOST) lo = mid;
     else hi = mid;
   }
-  const h = Math.exp((lo + hi) / 2);
-  return { h, threat: 4 / (copies * Math.sqrt(h)) };
+  return Math.exp((lo + hi) / 2);
 }
 
 export type ThreatTable = Record<string, Record<string, Record<string, number>>>;
@@ -98,35 +95,46 @@ function measure(out: string, fights: number) {
         if (level < family.levels[0] || level > family.levels[1] || level < MARINARA_TIER_RULES[tier].minLevel) continue;
         if (!settingOf(family, level)) continue;
         if (table[family.id]?.[tier]?.[level] !== undefined) continue;
-        const { threat } = measureOne(family, tier, level, fights);
+        const copies = COPIES[tier];
+        const h = normalScale((hp) => foes(family, tier, level, copies, hp), level, fights, `${family.id}:${tier}:${level}`);
+        const threat = 4 / (copies * Math.sqrt(h));
         ((table[family.id] ??= {})[tier] ??= {})[level] = Math.round(threat * 1000) / 1000;
         writeFileSync(out, JSON.stringify(table, null, 1));
-        console.log(`${family.id} ${tier} L${level}: ${threat.toFixed(3)}`);
+        console.log(`${new Date().toISOString().slice(11, 19)} ${family.id} ${tier} L${level}: ${threat.toFixed(3)}`);
       }
   }
 }
 
-function emitTable(input: string, out: string) {
-  const table: ThreatTable = JSON.parse(readFileSync(input, "utf8"));
+function emitTable(out: string, inputs: string[]) {
+  const table: ThreatTable = {};
+  for (const input of inputs) {
+    const part: ThreatTable = JSON.parse(readFileSync(input, "utf8"));
+    for (const [family, tiers] of Object.entries(part)) table[family] = { ...(table[family] ?? {}), ...tiers };
+  }
+  const order = MARINARA_BESTIARY.map((family) => family.id).filter((id) => table[id]);
   const lines = [
     "// Generated by scripts/class-lab/bestiary-lab.ts (table); do not edit by hand. Re-measure after",
-    "// changing a family, an ability, the tier sizes or the class trees.",
+    "// changing a family, an ability, the tier sizes, the fight math or the class trees.",
     "//",
-    "// What one foe of a family is worth in an encounter budget, by tier, at the lab's sample levels",
-    "// (party members: a party of four's Normal budget is 4). Levels between samples interpolate.",
+    "// What one foe of a family is worth in an encounter budget, by tier, at the lab's sample levels,",
+    "// in party members (a party of four's Normal budget is 4). Levels between samples interpolate.",
     "",
     `export const MARINARA_BESTIARY_SAMPLE_LEVELS = ${JSON.stringify(SAMPLE_LEVELS)} as const;`,
     "",
     "export const MARINARA_BESTIARY_THREAT: Record<string, Partial<Record<string, Record<number, number>>>> = {",
   ];
-  for (const [family, tiers] of Object.entries(table)) {
+  for (const family of order) {
     lines.push(`  "${family}": {`);
-    for (const [tier, levels] of Object.entries(tiers))
+    for (const tier of ["minion", "standard", "elite", "boss"]) {
+      const levels = table[family]![tier];
+      if (!levels) continue;
       lines.push(
         `    ${tier}: { ${Object.entries(levels)
+          .sort((a, b) => Number(a[0]) - Number(b[0]))
           .map(([level, value]) => `${level}: ${Number(value).toFixed(2)}`)
           .join(", ")} },`,
       );
+    }
     lines.push("  },");
   }
   lines.push("};", "");
@@ -135,7 +143,7 @@ function emitTable(input: string, out: string) {
 
 if (process.argv[1]?.endsWith("bestiary-lab.ts")) {
   const command = process.argv[2];
-  if (command === "measure") measure(process.argv[3]!, Number(process.argv[4] ?? 8));
-  else if (command === "table") emitTable(process.argv[3]!, process.argv[4]!);
-  else console.error("measure <out.json> [fights] | table <in.json> <out.ts>");
+  if (command === "measure") measure(process.argv[3]!, Number(process.argv[4] ?? 4));
+  else if (command === "table") emitTable(process.argv[3]!, process.argv.slice(4));
+  else console.error("measure <out.json> [fights] | table <out.ts> <in.json...>");
 }

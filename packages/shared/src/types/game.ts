@@ -182,6 +182,9 @@ export interface GameCharacterCard {
   /** This game's copy of the character's sheet for the pinned ruleset (`chat.metadata.gameRuleset`).
    *  Edited in the game, never written back to the library card or persona. */
   rulesetSheet?: import("../schemas/ruleset.schema.js").RulesetSheetEnvelope;
+  /** Classic Marinara (Marinara's own classes): this game's progression for the character, never
+   *  the library card's: class, levels, stats, hidden aptitudes, carried skills and equipment. */
+  marinara?: import("../features/marinara-party.js").MarinaraCardProgression;
 }
 
 // ── NPCs ──
@@ -751,6 +754,8 @@ export interface Combatant extends CombatAttackTraits, RulesetEncounterBlueprint
   combatClass?: string;
   /** Tactical traversal rule. Classic combat ignores this; missing means walk. */
   movementMode?: TacticalMovementMode;
+  /** A Classic Marinara fighter (Marinara's own classes): what the screen shows of it. */
+  marinara?: import("../features/marinara-combat.js").MarinaraCombatantView;
 }
 
 export interface CombatStatusEffect {
@@ -780,6 +785,14 @@ export interface CombatSkill extends CombatAttackTraits {
   cooldown?: number;
   element?: string;
   statusEffect?: string;
+  /** A Classic Marinara skill that spends stamina rather than MP. */
+  staminaCost?: number;
+  /** Whom a Classic Marinara skill is aimed at; an area or a party skill strikes the rest itself. */
+  aims?: import("../features/marinara-combat.js").MarinaraEffectTarget;
+  /** Turns until it can be used again (Classic Marinara). */
+  readyIn?: number;
+  /** Can't be used now (Classic Marinara): not enough MP or stamina, cooling down, or used up. */
+  unavailable?: "cost" | "cooldown" | "used";
 }
 
 /** Lightweight element info for the client */
@@ -903,6 +916,8 @@ export interface CombatSummary {
   battlefieldSummary?: string;
   /** What the win dropped into the party's bags, and how many of each nobody could carry. */
   loot?: Array<{ name: string; quantity?: number; left?: number }>;
+  /** Classic Marinara: XP each party member earned, their level-ups and stat gains. */
+  marinara?: import("../features/marinara-combat.js").MarinaraFightGrowth[];
   /** What a ruleset fight really ended on, in the ruleset's own numbers. Present only for a fight
    *  the ruleset resolved, and the recap is written from it instead of the shares above. */
   ruleset?: import("../features/ruleset-combat/types.js").RulesetEncounterSummary;
