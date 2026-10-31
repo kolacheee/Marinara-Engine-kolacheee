@@ -372,6 +372,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Front-row striker",
       leans: ["strength", "speed"],
       skills: [
+        passive("battle-rhythm", "Battle Rhythm", 5, "+15% damage with every attack, weapon or spell.", true),
         active("power-strike", "Power Strike", 1, "strength", 0, "A heavy hit that delays the user's next turn.", true),
       ],
     },
@@ -453,6 +454,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Front-row protector",
       leans: ["hp", "defense"],
       skills: [
+        passive("steadfast", "Steadfast", 5, "+20% max HP.", true),
         active("cover", "Cover", 1, "defense", 0, "Takes the next hit aimed at an ally."),
         active("challenge", "Challenge", 1, "defense", 2, "One enemy must target the user for 2 turns.", true),
         passive(
@@ -560,6 +562,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Quick, slippery, opportunist",
       leans: ["speed", "luck"],
       skills: [
+        passive("keen-eye", "Keen Eye", 5, "+15 hit and +10 crit chance, weapon or spell.", true),
         active("steal", "Steal", 1, "speed", 0, "Takes an item or gold from an enemy.", true),
         passive("light-feet", "Light Feet", 5, "Better dodge."),
       ],
@@ -646,6 +649,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Back-row damage",
       leans: ["skill", "strength"],
       skills: [
+        passive(
+          "exploit-weakness",
+          "Exploit Weakness",
+          5,
+          "Hits on a weakness deal double damage instead of one and a half.",
+          true,
+        ),
         active("aimed-shot", "Aimed Shot", 1, "skill", 0, "A shot that rarely misses but delays the next turn."),
         passive("true-aim", "True Aim", 5, "+15% hit chance.", true),
       ],
@@ -723,7 +733,18 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Arcanist",
       role: "Back-row caster",
       leans: ["magic"],
-      skills: [active("element-bolt", "Element Bolt", 1, "magic", 3, "One target, in the caster's element.", true)],
+      skills: [
+        active("element-bolt", "Element Bolt", 1, "magic", 3, "One target, in the caster's element.", true),
+        active(
+          "imbue-weapon",
+          "Imbue Weapon",
+          5,
+          "magic",
+          3,
+          "For 3 turns, weapon attacks and skills take the user's pick of element.",
+          true,
+        ),
+      ],
     },
     {
       id: "elementalist",
@@ -798,7 +819,10 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Hexer",
       role: "Weakens enemies",
       leans: ["magic", "resistance"],
-      skills: [active("weaken", "Weaken", 1, "magic", 3, "-20% Strength or Magic for 3 rounds.", true)],
+      skills: [
+        active("weaken", "Weaken", 1, "magic", 3, "-20% Strength or Magic for 3 rounds.", true),
+        passive("drain-touch", "Drain Touch", 5, "Heals the user for 15% of the damage they deal.", true),
+      ],
     },
     {
       id: "witch",
@@ -880,7 +904,18 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Mender",
       role: "Keeps the party up",
       leans: ["magic", "resistance"],
-      skills: [active("mend", "Mend", 1, "magic", 3, "Heals one ally.", true)],
+      skills: [
+        active("mend", "Mend", 1, "magic", 3, "Heals one ally.", true),
+        active(
+          "second-breath",
+          "Second Breath",
+          5,
+          "hp",
+          4,
+          "Heals the user for a quarter of their max HP. Cooldown 3.",
+          true,
+        ),
+      ],
     },
     {
       id: "cleric",
@@ -962,7 +997,16 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Herald",
       role: "Lifts the party",
       leans: ["luck", "speed"],
-      skills: [active("rally", "Rally", 1, "luck", 3, "+20% attack to the party for 2 rounds.", true)],
+      skills: [
+        active("rally", "Rally", 1, "luck", 3, "+20% attack to the party for 2 rounds.", true),
+        passive(
+          "rallying-presence",
+          "Rallying Presence",
+          5,
+          "Allies deal 10% more damage while the user stands.",
+          true,
+        ),
+      ],
     },
     {
       id: "chanter",
