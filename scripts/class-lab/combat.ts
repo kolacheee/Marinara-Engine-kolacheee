@@ -14,6 +14,7 @@
  */
 import {
   MARINARA_ARCHETYPE_ATTACKS,
+  MARINARA_ELEMENTS,
   MARINARA_STAMINA,
   MARINARA_STATS,
   marinaraBestDamageType,
@@ -90,7 +91,9 @@ export interface Effect {
   /** Reaches the back row from anywhere. */
   ranged?: boolean;
   /** Buff/debuff: stat changed by a share, for `duration` of the target's turns. */
-  stat?: MarinaraStat | "damage" | "damage-taken";
+  stat?: MarinaraStat | "damage" | "damage-taken" | "imbue";
+  /** Heal: a share of the target's max HP instead of Magic-based power. */
+  pctOfMax?: number;
   pct?: number;
   duration?: number;
   status?: "sleep" | "stun" | "poison" | "confuse" | "doom" | "slow" | "regen";
@@ -193,6 +196,8 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   barrier: { kind: "shield", target: "ally", scales: "magic", power: 10 },
   "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true },
   // Herald
+  "imbue-weapon": { kind: "buff", target: "self", stat: "imbue", pct: 1, duration: 3 },
+  "second-breath": { kind: "heal", target: "self", pctOfMax: 0.25, cooldown: 3 },
   rally: { kind: "buff", target: "party", stat: "damage", pct: 0.2, duration: 2 },
   "battle-hymn": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3 },
   crescendo: { kind: "buff", target: "party", stat: "damage", pct: 0.5, duration: 1, cooldown: 3 },
@@ -204,6 +209,12 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
 
 /** Passive hooks the resolver reads. */
 export interface PassiveHooks {
+  damagePct?: number;
+  hpPct?: number;
+  /** Added to the weakness multiplier. */
+  weakBonus?: number;
+  lifestealPct?: number;
+  partyDamagePct?: number;
   critBonus?: number;
   hitBonus?: number;
   /** Counter a melee attack: always, or only one that missed. */
@@ -252,6 +263,12 @@ export interface PassiveHooks {
 }
 
 export const PASSIVES: Record<string, PassiveHooks> = {
+  "battle-rhythm": { damagePct: 0.15 },
+  steadfast: { hpPct: 0.2 },
+  "keen-eye": { hitBonus: 15, critBonus: 10 },
+  "exploit-weakness": { weakBonus: 0.5 },
+  "drain-touch": { lifestealPct: 0.15 },
+  "rallying-presence": { partyDamagePct: 0.1 },
   riposte: { counter: "on-miss" },
   "keen-edge": { critBonus: 10 },
   "second-wind": { actOnKill: true },
@@ -391,7 +408,8 @@ export function makeUnit(input: {
     carries(resource) ? Math.max(input.stats[stat], input.carriedStats?.[stat] ?? 0) : input.stats[stat];
   const maxMp = Math.round(marinaraMaxMp({ magic: pick("magic", "mp") }) * (1 + (passives.mpPct ?? 0)));
   const maxStamina = marinaraMaxStamina({ strength: pick("strength", "stamina"), speed: pick("speed", "stamina") });
-  const maxHp = input.hpOverride ?? Math.max(1, Math.round(input.stats.hp * TUNING.hpMultiplier));
+  const maxHp =
+    input.hpOverride ?? Math.max(1, Math.round(input.stats.hp * TUNING.hpMultiplier * (1 + (passives.hpPct ?? 0))));
   return {
     ...input,
     level: input.level ?? 1,
@@ -539,6 +557,14 @@ function powerStat(unit: LabUnit, stat: MarinaraStat, effect: Effect, all: LabUn
   return carried === undefined ? own : Math.max(own, carried * (own / Math.max(1, unit.stats[stat])));
 }
 
+/** The damage types this effect can hit with; an imbued weapon adds the elements. */
+function damageOptions(actor: LabUnit, effect: Effect) {
+  if (!actor.classId) return [actor.attackType ?? "blunt"] as const;
+  const type = effect.type ?? "weapon";
+  const options = marinaraDamageOptions(type, actor.classId);
+  return type === "weapon" && modTotal(actor, "imbue") > 0 ? [...options, ...MARINARA_ELEMENTS] : options;
+}
+
 function modTotal(unit: LabUnit, stat: string): number {
   return unit.mods.filter((mod) => mod.stat === stat).reduce((sum, mod) => sum + mod.pct, 0);
 }
@@ -624,10 +650,12 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
   let pct = modTotal(actor, "damage") + modTotal(target, "damage-taken");
   for (const ally of living(all.filter((unit) => unit.side === actor.side))) {
     const allyHooks = passiveHooks(ally.skills);
+    pct += allyHooks.partyDamagePct ?? 0;
     if (allyHooks.partyDamageWhileWhole && all.filter((u) => u.side === actor.side).every((u) => u.hp > 0))
       pct += allyHooks.partyDamageWhileWhole;
   }
   if (magic) pct += hooks.spellDamagePct ?? 0;
+  pct += hooks.damagePct ?? 0;
   if (hooks.damageBelowHalfPct && actor.hp < actor.maxHp / 2) pct += hooks.damageBelowHalfPct;
   if (target.marked > 0 && hooks.bonusVsMarked) pct += hooks.bonusVsMarked;
   if (effect.finisher && target.hp < target.maxHp * effect.finisher.below) pct += effect.finisher.bonus;
@@ -637,12 +665,10 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
     if (target.row === "back") pct += allyHooks.backRowTakenPct ?? 0;
   }
   if (hooks.heavyDraw && !magic) pct += 0.2;
-  const best = marinaraBestDamageType(
-    actor.classId ? marinaraDamageOptions(effect.type ?? "weapon", actor.classId) : [actor.attackType ?? "blunt"],
-    target.affinities,
-  );
+  const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
   // A basic attack is never walled off: immune and absorb count as resist for it.
-  const multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
+  let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
+  if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
   // Absorbed damage comes out negative: it heals the target.
   damage = Math.max(TUNING.minDamage, damage * (1 + pct)) * multiplier;
   const partyCrit = living(all.filter((unit) => unit.side === actor.side)).reduce(
@@ -722,6 +748,16 @@ function choose(
         break;
       }
       case "heal": {
+        if (effect.target === "self") {
+          if (!threatened || actor.hp > actor.maxHp * 0.6) break;
+          consider(
+            skill,
+            effect,
+            [actor],
+            Math.min(actor.maxHp - actor.hp, actor.maxHp * (effect.pctOfMax ?? 0)) * 1.3,
+          );
+          break;
+        }
         const hurt = friends.filter((u) => u.hp < u.maxHp * 0.6);
         if (!hurt.length) break;
         const amount = powerStat(actor, "magic", effect, all) * TUNING.healMagicPct + (effect.power ?? 0);
@@ -750,6 +786,14 @@ function choose(
           u.mods.some((m) => m.source === skill!.id),
         );
         if (already) break;
+        if (effect.stat === "imbue") {
+          const plain = bestDamage(actor, all);
+          addMod(actor, "imbue", 1, 1, "probe");
+          const imbued = bestDamage(actor, all);
+          actor.mods = actor.mods.filter((m) => m.source !== "probe");
+          if (imbued > plain) consider(skill, effect, [actor], (imbued - plain) * (effect.duration ?? 3) * 0.8);
+          break;
+        }
         if (effect.stat === "damage-taken" || effect.stat === "resistance") {
           if (!threatened) break;
           const incoming = foes.reduce((sum, foe) => sum + effStat(foe, "strength", all), 0);
@@ -1043,7 +1087,9 @@ function act(
     }
     case "heal": {
       for (const target of targets) {
-        let amount = powerStat(actor, "magic", effect, all) * TUNING.healMagicPct + (effect.power ?? 0);
+        let amount = effect.pctOfMax
+          ? target.maxHp * effect.pctOfMax
+          : powerStat(actor, "magic", effect, all) * TUNING.healMagicPct + (effect.power ?? 0);
         if (hooks.healCrit && random() < 0.15) amount *= 1.5;
         const before = target.hp;
         target.hp = Math.min(target.maxHp, target.hp + amount);
@@ -1164,6 +1210,7 @@ function strike(
   }
   const dealt = before - Math.max(0, target.hp);
   bump(log.damageDealt, actor.id, dealt);
+  if (hooks.lifestealPct) actor.hp = Math.min(actor.maxHp, actor.hp + dealt * hooks.lifestealPct);
   bump(log.damageTaken, target.id, dealt);
   if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);
   if (hooks.hitsLowerDefense) addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
