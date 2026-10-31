@@ -6,11 +6,22 @@
  *   Physical damage = Strength + power − Defense; magic = Magic + power − Resistance (at least 1).
  *   Hit  = base + Skill×2 + Luck/2 − (Speed×2 + Luck) of the target, 5..100.
  *   Crit = Skill/2 + bonuses − target Luck, 0..100; a crit doubles damage.
+ *   Damage type: the hit is multiplied by the target's affinity to its type (weak ×1.5, resist ×0.5,
+ *   immune ×0, absorb heals); a skill with a choice of types uses the best one against the target.
+ *   Magic skills cost MP (no regeneration); the rest cost stamina, which regenerates each turn.
  *   Turn order is a timeline: each action pushes the actor's next turn back by
  *   weight × TIMELINE / (Speed + SPEED_FLOOR), so fast characters act more often.
  */
 import {
+  MARINARA_ARCHETYPE_ATTACKS,
+  MARINARA_STAMINA,
   MARINARA_STATS,
+  marinaraBestDamageType,
+  marinaraDamageOptions,
+  marinaraMaxMp,
+  marinaraMaxStamina,
+  type MarinaraAffinities,
+  type MarinaraSkillDamage,
   type MarinaraArchetype,
   type MarinaraSkillDef,
   type MarinaraStat,
@@ -27,8 +38,12 @@ export const TUNING = {
   minDamage: 1,
   /** Weapon and spell power grow with level, as better gear would: added to every hit's power. */
   powerPerLevel: 0.4,
-  mpBase: 8,
-  mpPerMagic: 2,
+  /** How much the party AI minds spending a point of each resource. */
+  mpCostWeight: 0.15,
+  staminaCostWeight: 0.05,
+  /** Doom's toll when it runs out, as a share of max HP; a boss (over 300 HP) takes the smaller one. */
+  doomPct: 0.4,
+  doomBossPct: 0.1,
   /** Front-row foes hit only the front row while any of it stands, unless ranged. */
   frontRowShield: true,
 };
@@ -55,6 +70,10 @@ export interface Effect {
   power?: number;
   scales?: MarinaraStat;
   damage?: "physical" | "magic";
+  /** A basic attack, which immunity and absorption only resist. */
+  basic?: boolean;
+  /** Damage type; a skill's own type comes from its definition. */
+  type?: MarinaraSkillDamage;
   hits?: number;
   hitBonus?: number;
   critBonus?: number;
@@ -84,11 +103,7 @@ export interface Effect {
   finisher?: { below: number; bonus: number };
 }
 
-const dmg = (
-  scales: MarinaraStat,
-  power: number,
-  extra: Partial<Effect> = {},
-): Effect => ({
+const dmg = (scales: MarinaraStat, power: number, extra: Partial<Effect> = {}): Effect => ({
   kind: "damage",
   target: "enemy",
   scales,
@@ -122,18 +137,26 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   "hit-and-run": dmg("strength", 5, { weight: 0.6 }),
   "double-time": { kind: "extra-turn", target: "self", cooldown: 3 },
   shadowstep: dmg("strength", 7, { ranged: true, critBonus: 10 }),
-  "thousand-shadows": { kind: "buff", target: "party", stat: "damage-taken", pct: -0.6, duration: 2, oncePerFight: true },
+  "thousand-shadows": {
+    kind: "buff",
+    target: "party",
+    stat: "damage-taken",
+    pct: -0.6,
+    duration: 2,
+    oncePerFight: true,
+  },
   // Marksman
   "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, weight: 1.2 }),
   pierce: dmg("strength", 7, { ranged: true, pierce: 0.5 }),
   headshot: dmg("strength", 20, { ranged: true, charge: true, critBonus: 10 }),
   "mark-prey": { kind: "debuff", target: "enemy", stat: "damage-taken", pct: 0.25, duration: 3 },
   "snare-field": { kind: "debuff", target: "all-enemies", stat: "speed", pct: -0.3, duration: 2 },
-  volley: dmg("strength", 4, { ranged: true, target: "all-enemies" }),
+  volley: dmg("strength", 4, { ranged: true, target: "all-enemies", cooldown: 2 }),
   "ruinous-barrage": dmg("strength", 9, {
     ranged: true,
     target: "all-enemies",
     weight: 1.3,
+    cooldown: 3,
     onHit: { stat: "defense", pct: -0.25, duration: 2 },
   }),
   // Arcanist
@@ -288,6 +311,11 @@ export interface LabUnit {
   hp: number;
   maxMp: number;
   mp: number;
+  maxStamina: number;
+  stamina: number;
+  affinities?: MarinaraAffinities;
+  /** Basic attack type for a unit with no archetype. */
+  attack?: MarinaraSkillDamage;
   /** Active skills and passives it fights with. */
   skills: MarinaraSkillDef[];
   /** Basic attack reaches the back row (bows, spells). */
@@ -330,9 +358,12 @@ export function makeUnit(input: {
   dummy?: boolean;
   hpOverride?: number;
   level?: number;
+  affinities?: MarinaraAffinities;
+  attack?: MarinaraSkillDamage;
 }): LabUnit {
   const passives = passiveHooks(input.skills ?? []);
-  const maxMp = Math.round((TUNING.mpBase + input.stats.magic * TUNING.mpPerMagic) * (1 + (passives.mpPct ?? 0)));
+  const maxMp = Math.round(marinaraMaxMp(input.stats) * (1 + (passives.mpPct ?? 0)));
+  const maxStamina = marinaraMaxStamina(input.stats);
   const maxHp = input.hpOverride ?? Math.max(1, Math.round(input.stats.hp));
   return {
     ...input,
@@ -343,6 +374,8 @@ export function makeUnit(input: {
     hp: maxHp,
     maxMp,
     mp: maxMp,
+    maxStamina,
+    stamina: maxStamina,
     next: 0,
     mods: [],
     statuses: [],
@@ -390,6 +423,7 @@ export interface FightLog {
   damageTaken: Record<string, number>;
   healingDone: Record<string, number>;
   mpSpent: Record<string, number>;
+  staminaSpent: Record<string, number>;
   /** Damage dealt by actions that cost MP, by actor. */
   mpSkillDamage: Record<string, number>;
   actions: Record<string, number>;
@@ -416,6 +450,7 @@ export function runFight(party: LabUnit[], enemies: LabUnit[], options: FightOpt
     damageTaken: {},
     healingDone: {},
     mpSpent: {},
+    staminaSpent: {},
     mpSkillDamage: {},
     actions: {},
     partyHpLostPct: 0,
@@ -423,7 +458,8 @@ export function runFight(party: LabUnit[], enemies: LabUnit[], options: FightOpt
   };
   const partyMax = party.reduce((sum, unit) => sum + unit.maxHp, 0);
   const partyStart = party.reduce((sum, unit) => sum + unit.hp, 0);
-  for (const unit of all) unit.next = (TUNING.timeline / (effStat(unit, "speed", all) + TUNING.speedFloor)) * options.random();
+  for (const unit of all)
+    unit.next = (TUNING.timeline / (effStat(unit, "speed", all) + TUNING.speedFloor)) * options.random();
   const maxActions = options.maxActions ?? 400;
   let total = 0;
   let clock = 0;
@@ -483,20 +519,30 @@ function bump(record: Record<string, number>, id: string, amount: number) {
   record[id] = (record[id] ?? 0) + amount;
 }
 
+function basicAttack(unit: LabUnit): Effect {
+  return dmg(unit.magicBasic ? "magic" : "strength", TUNING.basicPower, {
+    ranged: unit.rangedBasic || unit.magicBasic,
+    basic: true,
+    type: unit.attack ?? (unit.archetype ? MARINARA_ARCHETYPE_ATTACKS[unit.archetype] : "blunt"),
+  });
+}
+
+/** What a skill costs this unit right now, and in which resource. */
+function costOf(unit: LabUnit, skill: MarinaraSkillDef): { resource: "mp" | "stamina"; cost: number } {
+  const resource = skill.resource ?? "mp";
+  const free = resource === "mp" && passiveHooks(unit.skills).firstSpellFree && !unit.firstSpellUsed;
+  return { resource, cost: free ? 0 : (skill.cost ?? 0) };
+}
+
 function usable(unit: LabUnit): Array<{ skill: MarinaraSkillDef | null; effect: Effect }> {
-  const out: Array<{ skill: MarinaraSkillDef | null; effect: Effect }> = [
-    {
-      skill: null,
-      effect: dmg(unit.magicBasic ? "magic" : "strength", TUNING.basicPower, { ranged: unit.rangedBasic || unit.magicBasic }),
-    },
-  ];
-  const hooks = passiveHooks(unit.skills);
+  const out: Array<{ skill: MarinaraSkillDef | null; effect: Effect }> = [{ skill: null, effect: basicAttack(unit) }];
   for (const skill of unit.skills) {
     if (skill.kind !== "active") continue;
-    const effect = SKILL_EFFECTS[skill.id];
-    if (!effect || effect.kind === "none") continue;
-    const cost = hooks.firstSpellFree && !unit.firstSpellUsed && skill.scales === "magic" ? 0 : (skill.mpCost ?? 0);
-    if (cost > unit.mp) continue;
+    const base = SKILL_EFFECTS[skill.id];
+    if (!base || base.kind === "none") continue;
+    const effect = skill.damage ? { ...base, type: skill.damage } : base;
+    const { resource, cost } = costOf(unit, skill);
+    if (cost > (resource === "mp" ? unit.mp : unit.stamina)) continue;
     if ((unit.cooldowns[skill.id] ?? 0) > 0) continue;
     if (effect.oncePerFight && unit.used.has(skill.id)) continue;
     out.push({ skill, effect });
@@ -547,12 +593,22 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
     if (target.row === "back") pct += allyHooks.backRowTakenPct ?? 0;
   }
   if (hooks.heavyDraw && !magic) pct += 0.2;
-  damage = Math.max(TUNING.minDamage, damage * (1 + pct));
+  const best = marinaraBestDamageType(
+    marinaraDamageOptions(effect.type ?? (magic ? "element" : "blunt"), actor.archetype ?? "blade"),
+    target.affinities,
+  );
+  // A basic attack is never walled off: immune and absorb count as resist for it.
+  const multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
+  // Absorbed damage comes out negative: it heals the target.
+  damage = Math.max(TUNING.minDamage, damage * (1 + pct)) * multiplier;
   const partyCrit = living(all.filter((unit) => unit.side === actor.side)).reduce(
     (sum, ally) => sum + (passiveHooks(ally.skills).partyCritBonus ?? 0),
     0,
   );
-  const evade = effStat(target, "speed", all) * 2 + effStat(target, "luck", all) + target.missesAgainst * (passiveHooks(target.skills).evasionStacking ?? 0);
+  const evade =
+    effStat(target, "speed", all) * 2 +
+    effStat(target, "luck", all) +
+    target.missesAgainst * (passiveHooks(target.skills).evasionStacking ?? 0);
   const hitChance = Math.max(
     5,
     Math.min(
@@ -569,15 +625,22 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
     0,
     Math.min(
       100,
-      effStat(actor, "skill", all) / 2 + (effect.critBonus ?? 0) + (hooks.critBonus ?? 0) + partyCrit - effStat(target, "luck", all),
+      effStat(actor, "skill", all) / 2 +
+        (effect.critBonus ?? 0) +
+        (hooks.critBonus ?? 0) +
+        partyCrit -
+        effStat(target, "luck", all),
     ),
   );
-  if (target.statuses.some((s) => s.status === "sleep")) return { damage, hitChance: 100, critChance };
-  return { damage, hitChance, critChance };
+  if (target.statuses.some((s) => s.status === "sleep")) return { damage, hitChance: 100, critChance, multiplier };
+  return { damage, hitChance, critChance, multiplier };
 }
 
 /** The lab's party AI: the best expected value with simple rules for support. */
-function choose(actor: LabUnit, all: LabUnit[]): { skill: MarinaraSkillDef | null; effect: Effect; targets: LabUnit[] } | null {
+function choose(
+  actor: LabUnit,
+  all: LabUnit[],
+): { skill: MarinaraSkillDef | null; effect: Effect; targets: LabUnit[] } | null {
   const options = usable(actor);
   const friends = living(all.filter((unit) => unit.side === actor.side));
   const foes = living(all.filter((unit) => unit.side !== actor.side));
@@ -587,9 +650,10 @@ function choose(actor: LabUnit, all: LabUnit[]): { skill: MarinaraSkillDef | nul
   const consider = (skill: MarinaraSkillDef | null, effect: Effect, targets: LabUnit[], score: number) => {
     const weight = effect.weight ?? 1;
     const perTime = score / weight;
-    const cost = skill?.mpCost ?? 0;
-    // MP is a budget: spend it when it pays, not on trifles.
-    const adjusted = perTime - cost * 0.15;
+    const price = skill ? costOf(actor, skill) : null;
+    // MP is a budget: spend it when it pays, not on trifles. Stamina comes back, so it matters less.
+    const adjusted =
+      perTime - (price ? price.cost * (price.resource === "mp" ? TUNING.mpCostWeight : TUNING.staminaCostWeight) : 0);
     if (!best || adjusted > best.score) best = { skill, effect, targets, score: adjusted };
   };
   for (const { skill, effect } of options) {
@@ -597,10 +661,13 @@ function choose(actor: LabUnit, all: LabUnit[]): { skill: MarinaraSkillDef | nul
     if (!pool.length) continue;
     switch (effect.kind) {
       case "damage": {
-        if (effect.target === "all-enemies" || (effect.target === "front-row")) {
+        if (effect.target === "all-enemies" || effect.target === "front-row") {
           const hit = effect.target === "front-row" ? pool.filter((u) => u.row === "front") : pool;
           const struck = effect.target === "front-row" && !groupedFlag ? hit.slice(0, 1) : hit;
-          const value = struck.reduce((sum, target) => sum + Math.min(target.hp, expectedHit(actor, target, effect, all)), 0);
+          const value = struck.reduce(
+            (sum, target) => sum + Math.min(target.hp, expectedHit(actor, target, effect, all)),
+            0,
+          );
           consider(skill, effect, struck, effect.charge ? value / 2 : value);
         } else {
           for (const target of pool) {
@@ -641,7 +708,12 @@ function choose(actor: LabUnit, all: LabUnit[]): { skill: MarinaraSkillDef | nul
         if (effect.stat === "damage-taken" || effect.stat === "resistance") {
           if (!threatened) break;
           const incoming = foes.reduce((sum, foe) => sum + effStat(foe, "strength", all), 0);
-          consider(skill, effect, effect.target === "self" ? [actor] : friends, incoming * Math.abs(effect.pct ?? 0) * (effect.duration ?? 1) * 0.8);
+          consider(
+            skill,
+            effect,
+            effect.target === "self" ? [actor] : friends,
+            incoming * Math.abs(effect.pct ?? 0) * (effect.duration ?? 1) * 0.8,
+          );
         } else {
           const damagers = effect.target === "self" ? [actor] : friends;
           const dealt = damagers.reduce((sum, u) => sum + effStat(u, u.magicBasic ? "magic" : "strength", all), 0);
@@ -655,33 +727,57 @@ function choose(actor: LabUnit, all: LabUnit[]): { skill: MarinaraSkillDef | nul
         if (effect.stat === "damage" && !threatened) break;
         const value =
           effect.stat === "damage-taken"
-            ? friends.reduce((sum, u) => sum + effStat(u, "strength", all) * 0.5, 0) * (effect.pct ?? 0) * (effect.duration ?? 1)
-            : fresh.reduce((sum, foe) => sum + effStat(foe, "strength", all), 0) * Math.abs(effect.pct ?? 0) * (effect.duration ?? 1) * 0.6;
-        consider(skill, effect, effect.target === "all-enemies" ? fresh : [fresh.sort((a, b) => b.hp - a.hp)[0]!], value);
+            ? friends.reduce((sum, u) => sum + effStat(u, "strength", all) * 0.5, 0) *
+              (effect.pct ?? 0) *
+              (effect.duration ?? 1)
+            : fresh.reduce((sum, foe) => sum + effStat(foe, "strength", all), 0) *
+              Math.abs(effect.pct ?? 0) *
+              (effect.duration ?? 1) *
+              0.6;
+        consider(
+          skill,
+          effect,
+          effect.target === "all-enemies" ? fresh : [fresh.sort((a, b) => b.hp - a.hp)[0]!],
+          value,
+        );
         break;
       }
       case "status": {
         if (effect.status === "regen") {
           if (!threatened || friends.some((u) => u.statuses.some((s) => s.status === "regen"))) break;
-          consider(skill, effect, friends, friends.reduce((s, u) => s + u.maxHp * (effect.power ?? 0.1), 0) * (effect.duration ?? 1) * 0.6);
+          consider(
+            skill,
+            effect,
+            friends,
+            friends.reduce((s, u) => s + u.maxHp * (effect.power ?? 0.1), 0) * (effect.duration ?? 1) * 0.6,
+          );
           break;
         }
         const fresh = pool.filter((u) => !u.statuses.some((s) => s.status === effect.status));
         if (!fresh.length) break;
-        if ((effect.status === "sleep" || effect.status === "stun" || effect.status === "confuse") && !threatened) break;
+        if ((effect.status === "sleep" || effect.status === "stun" || effect.status === "confuse") && !threatened)
+          break;
         const target = fresh.sort((a, b) => b.hp - a.hp)[0]!;
         const value =
           effect.status === "poison"
             ? target.maxHp * (effect.power ?? 0.08) * (effect.duration ?? 3) * (effect.chance ?? 1)
             : effect.status === "doom"
-              ? target.hp * (effect.chance ?? 1) * 0.5
-              : effStat(target, "strength", all) * 1.5 * (effect.duration ?? 1) * (effect.chance ?? 1) * (effect.target === "all-enemies" ? fresh.length : 1);
+              ? Math.min(target.hp, target.maxHp * (target.maxHp > 300 ? TUNING.doomBossPct : TUNING.doomPct)) *
+                (effect.chance ?? 1) *
+                0.8
+              : effStat(target, "strength", all) *
+                1.5 *
+                (effect.duration ?? 1) *
+                (effect.chance ?? 1) *
+                (effect.target === "all-enemies" ? fresh.length : 1);
         consider(skill, effect, effect.target === "all-enemies" ? fresh : [target], value);
         break;
       }
       case "cover": {
         if (!threatened) break;
-        const back = friends.filter((u) => u.id !== actor.id && u.hp < u.maxHp * 0.5 && !friends.some((f) => f.covering === u.id))[0];
+        const back = friends.filter(
+          (u) => u.id !== actor.id && u.hp < u.maxHp * 0.5 && !friends.some((f) => f.covering === u.id),
+        )[0];
         if (back) consider(skill, effect, [back], effStat(foes[0]!, "strength", all) * 1.2);
         break;
       }
@@ -700,7 +796,12 @@ function choose(actor: LabUnit, all: LabUnit[]): { skill: MarinaraSkillDef | nul
           effect.target === "party"
             ? others.reduce((s, u) => s + bestDamage(u, all), 0) * 0.9
             : Math.max(...others.map((u) => bestDamage(u, all)));
-        consider(skill, effect, effect.target === "party" ? others : [others.sort((a, b) => bestDamage(b, all) - bestDamage(a, all))[0]!], value);
+        consider(
+          skill,
+          effect,
+          effect.target === "party" ? others : [others.sort((a, b) => bestDamage(b, all) - bestDamage(a, all))[0]!],
+          value,
+        );
         break;
       }
     }
@@ -725,9 +826,7 @@ function bestDamage(unit: LabUnit, all: LabUnit[]): number {
 }
 
 function enemyChoose(actor: LabUnit, all: LabUnit[], random: () => number) {
-  const effect = dmg(actor.magicBasic ? "magic" : "strength", TUNING.basicPower, {
-    ranged: actor.rangedBasic || actor.magicBasic,
-  });
+  const effect = basicAttack(actor);
   let pool = targetsFor(actor, effect, all);
   const confused = actor.statuses.some((s) => s.status === "confuse");
   if (confused && random() < 0.5) pool = living(all.filter((u) => u.side === actor.side && u.id !== actor.id));
@@ -751,8 +850,12 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
       actor.hp = Math.min(actor.maxHp, actor.hp + amount);
     }
     if (status.status === "doom" && status.turns === 1 && actor.hp > 0) {
-      bump(log.damageTaken, actor.id, actor.hp);
-      actor.hp = 0;
+      const toll = Math.min(
+        actor.hp,
+        Math.round(actor.maxHp * (actor.maxHp > 300 ? TUNING.doomBossPct : TUNING.doomPct)),
+      );
+      bump(log.damageTaken, actor.id, toll);
+      actor.hp -= toll;
     }
     if (status.status === "sleep") {
       const sleepers = all.filter((u) => u.side !== actor.side && u.hp > 0 && passiveHooks(u.skills).nightmare);
@@ -765,6 +868,10 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   }
   const hooks = passiveHooks(actor.skills);
   if (hooks.mpRegenPct) actor.mp = Math.min(actor.maxMp, actor.mp + Math.round(actor.maxMp * hooks.mpRegenPct));
+  actor.stamina = Math.min(
+    actor.maxStamina,
+    actor.stamina + Math.max(1, Math.round(actor.maxStamina * MARINARA_STAMINA.regenPct)),
+  );
   const skips = actor.statuses.some((s) => s.status === "sleep" || s.status === "stun");
   tickMods(actor, all);
   if (actor.hp <= 0) {
@@ -781,7 +888,7 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
     const charging = actor.charging;
     actor.charging = undefined;
     const skill = actor.skills.find((s) => s.id === charging.skillId) ?? null;
-    const effect = SKILL_EFFECTS[charging.skillId]!;
+    const effect = { ...SKILL_EFFECTS[charging.skillId]!, ...(skill?.damage ? { type: skill.damage } : {}) };
     const target = all.find((u) => u.id === charging.targetId && u.hp > 0) ?? targetsFor(actor, effect, all)[0];
     if (target) act(actor, skill, { ...effect, charge: false }, [target], all, options, log);
     return;
@@ -790,16 +897,24 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   if (!choice) return;
   if (choice.effect.kind === "buff" && !choice.effect.stat) {
     actor.defending = true;
+    actor.stamina = Math.min(
+      actor.maxStamina,
+      actor.stamina + Math.round(actor.maxStamina * MARINARA_STAMINA.defendRegenPct),
+    );
     return;
   }
   const extraWeight = (choice.effect.weight ?? 1) - 1;
   actor.next += (TUNING.timeline / (effStat(actor, "speed", all) + TUNING.speedFloor)) * extraWeight;
   if (choice.skill) {
-    const cost =
-      hooks.firstSpellFree && !actor.firstSpellUsed && choice.skill.scales === "magic" ? 0 : (choice.skill.mpCost ?? 0);
-    if (choice.skill.scales === "magic") actor.firstSpellUsed = true;
-    actor.mp -= cost;
-    bump(log.mpSpent, actor.id, cost);
+    const { resource, cost } = costOf(actor, choice.skill);
+    if (resource === "mp") {
+      actor.firstSpellUsed = true;
+      actor.mp -= cost;
+      bump(log.mpSpent, actor.id, cost);
+    } else {
+      actor.stamina -= cost;
+      bump(log.staminaSpent, actor.id, cost);
+    }
     if (choice.effect.cooldown) actor.cooldowns[choice.skill.id] = choice.effect.cooldown;
     if (choice.effect.oncePerFight) actor.used.add(choice.skill.id);
   }
@@ -809,10 +924,12 @@ function takeTurn(actor: LabUnit, all: LabUnit[], options: FightOptions, log: Fi
   }
   const dealtBefore = log.damageDealt[actor.id] ?? 0;
   act(actor, choice.skill, choice.effect, choice.targets, all, options, log);
-  if (choice.skill?.mpCost) bump(log.mpSkillDamage, actor.id, (log.damageDealt[actor.id] ?? 0) - dealtBefore);
+  if (choice.skill?.resource === "mp" && choice.skill.cost)
+    bump(log.mpSkillDamage, actor.id, (log.damageDealt[actor.id] ?? 0) - dealtBefore);
   if (hooks.extraActionEvery && actor.actions % hooks.extraActionEvery === 0) {
     const again = choose(actor, all);
-    if (again && again.effect.kind === "damage") act(actor, again.skill, again.effect, again.targets, all, options, log);
+    if (again && again.effect.kind === "damage")
+      act(actor, again.skill, again.effect, again.targets, all, options, log);
   }
 }
 
@@ -842,7 +959,11 @@ function act(
   const { random } = options;
   const hooks = passiveHooks(actor.skills);
   const durationBonus =
-    effect.kind === "debuff" || effect.kind === "status" ? (hooks.debuffDurationBonus ?? 0) : effect.kind === "buff" ? (hooks.buffDurationBonus ?? 0) : 0;
+    effect.kind === "debuff" || effect.kind === "status"
+      ? (hooks.debuffDurationBonus ?? 0)
+      : effect.kind === "buff"
+        ? (hooks.buffDurationBonus ?? 0)
+        : 0;
   switch (effect.kind) {
     case "damage": {
       for (const target of targets) {
@@ -851,7 +972,8 @@ function act(
           strike(actor, target, effect, all, options, log, true);
         }
       }
-      if (effect.selfDebuff) addMod(actor, effect.selfDebuff.stat, effect.selfDebuff.pct, effect.selfDebuff.duration, `${skill?.id}:self`);
+      if (effect.selfDebuff)
+        addMod(actor, effect.selfDebuff.stat, effect.selfDebuff.pct, effect.selfDebuff.duration, `${skill?.id}:self`);
       break;
     }
     case "heal": {
@@ -878,7 +1000,8 @@ function act(
       break;
     }
     case "buff":
-      for (const target of targets) addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
+      for (const target of targets)
+        addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
       break;
     case "debuff":
       for (const target of targets) {
@@ -889,8 +1012,11 @@ function act(
     case "status":
       for (const target of targets) {
         if (effect.status !== "regen" && random() > (effect.chance ?? 1)) continue;
-        if (effect.status === "doom" && target.maxHp > 300) continue; // never bosses
-        target.statuses.push({ status: effect.status!, turns: (effect.duration ?? 2) + durationBonus, power: effect.power });
+        target.statuses.push({
+          status: effect.status!,
+          turns: (effect.duration ?? 2) + durationBonus,
+          power: effect.power,
+        });
       }
       break;
     case "cover":
@@ -905,7 +1031,8 @@ function act(
     case "command":
       for (const target of targets) {
         const choice = choose(target, all);
-        if (choice && choice.effect.kind !== "command") act(target, choice.skill, choice.effect, choice.targets, all, options, log);
+        if (choice && choice.effect.kind !== "command")
+          act(target, choice.skill, choice.effect, choice.targets, all, options, log);
       }
       break;
   }
@@ -932,17 +1059,23 @@ function strike(
     target.evadedThisRound = true;
     return;
   }
-  const { damage, hitChance, critChance } = hitNumbers(actor, target, effect, all);
+  const { damage, hitChance, critChance, multiplier } = hitNumbers(actor, target, effect, all);
   const hooks = passiveHooks(actor.skills);
+  if (multiplier < 0) {
+    target.hp = Math.min(target.maxHp, target.hp - damage);
+    return;
+  }
   if (random() * 100 >= hitChance) {
     target.missesAgainst++;
     if (canBeCountered && !effect.ranged && targetHooks.counter && target.hp > 0)
-      strike(target, actor, dmg(target.magicBasic ? "magic" : "strength", TUNING.basicPower), all, options, log, false);
+      strike(target, actor, basicAttack(target), all, options, log, false);
     return;
   }
   let crit = random() * 100 < critChance;
   if (crit) {
-    const foeOmen = living(all.filter((u) => u.side === target.side)).some((u) => passiveHooks(u.skills).enemyCritToMissChance);
+    const foeOmen = living(all.filter((u) => u.side === target.side)).some(
+      (u) => passiveHooks(u.skills).enemyCritToMissChance,
+    );
     if (foeOmen && random() < 0.5) crit = false;
   }
   let amount = Math.round(damage * (crit ? TUNING.critMultiplier : 1));
@@ -963,7 +1096,8 @@ function strike(
   bump(log.damageTaken, target.id, dealt);
   if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);
   if (hooks.hitsLowerDefense) addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
-  if (target.statuses.some((s) => s.status === "sleep")) target.statuses = target.statuses.filter((s) => s.status !== "sleep");
+  if (target.statuses.some((s) => s.status === "sleep"))
+    target.statuses = target.statuses.filter((s) => s.status !== "sleep");
   if (target.hp <= 0) {
     target.hp = 0;
     if (hooks.healOnKillPct) actor.hp = Math.min(actor.maxHp, actor.hp + Math.round(actor.maxHp * hooks.healOnKillPct));
@@ -978,7 +1112,7 @@ function strike(
     return;
   }
   if (canBeCountered && !effect.ranged && targetHooks.counter === "always")
-    strike(target, actor, dmg(target.magicBasic ? "magic" : "strength", TUNING.basicPower), all, options, log, false);
+    strike(target, actor, basicAttack(target), all, options, log, false);
 }
 
 export { MARINARA_STATS };

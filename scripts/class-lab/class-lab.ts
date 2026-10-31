@@ -26,6 +26,7 @@ import {
   setMarinaraCarried,
   marinaraUsableSkills,
   setMarinaraClass,
+  type MarinaraAffinities,
   type MarinaraArchetype,
   type MarinaraClassDef,
   type MarinaraProgression,
@@ -37,7 +38,8 @@ const RANGED: ReadonlySet<MarinaraArchetype> = new Set(["marksman"]);
 const CASTERS: ReadonlySet<MarinaraArchetype> = new Set(["arcanist", "hexer", "mender", "herald"]);
 const FRONT: ReadonlySet<MarinaraArchetype> = new Set(["blade", "guard", "scout"]);
 
-const levelsFor = (def: MarinaraClassDef) => (def.tier === "base" ? [1, 10] : def.tier === "advanced" ? [10, 20] : [20, 30]);
+const levelsFor = (def: MarinaraClassDef) =>
+  def.tier === "base" ? [1, 10] : def.tier === "advanced" ? [10, 20] : [20, 30];
 
 /** The chain of classes from the base class to this one. */
 function pathTo(def: MarinaraClassDef): MarinaraClassDef[] {
@@ -65,14 +67,21 @@ export function buildCharacter(def: MarinaraClassDef, level: number, seed: strin
   for (let step = 0; step < chain.length; step++) {
     const target = step === chain.length - 1 ? level : Math.min(level, (step + 1) * 10);
     if (step > 0) character = setMarinaraClass(character, chain[step]!.id);
-    if (target > character.level) character = awardMarinaraXp(character, (target - character.level) * 100, random).progression;
+    if (target > character.level)
+      character = awardMarinaraXp(character, (target - character.level) * 100, random).progression;
   }
   // A player carries the best of what earlier classes taught: their marked picks first, then actives.
   const earlier = marinaraLearnedSkills(character).filter((skill) => skill.classId !== character.activeClass);
   const ranked = [...earlier].sort(
-    (a, b) => Number(Boolean(b.carryPick)) - Number(Boolean(a.carryPick)) || Number(b.kind === "active") - Number(a.kind === "active") || b.learnedAt - a.learnedAt,
+    (a, b) =>
+      Number(Boolean(b.carryPick)) - Number(Boolean(a.carryPick)) ||
+      Number(b.kind === "active") - Number(a.kind === "active") ||
+      b.learnedAt - a.learnedAt,
   );
-  return setMarinaraCarried(character, ranked.slice(0, MARINARA_CARRY_SLOTS).map((skill) => skill.id));
+  return setMarinaraCarried(
+    character,
+    ranked.slice(0, MARINARA_CARRY_SLOTS).map((skill) => skill.id),
+  );
 }
 
 function unitFrom(character: MarinaraProgression, id: string, side: LabUnit["side"], row?: LabUnit["row"]): LabUnit {
@@ -102,23 +111,55 @@ function averageExpected(level: number): MarinaraStats {
 function quantiles(values: number[]) {
   const sorted = [...values].sort((a, b) => a - b);
   const at = (q: number) => sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))] ?? 0;
-  return { p10: at(0.1), median: at(0.5), p90: at(0.9), mean: values.reduce((s, v) => s + v, 0) / Math.max(1, values.length) };
+  return {
+    p10: at(0.1),
+    median: at(0.5),
+    p90: at(0.9),
+    mean: values.reduce((s, v) => s + v, 0) / Math.max(1, values.length),
+  };
 }
 
 const fmt = (n: number, digits = 1) => (Number.isFinite(n) ? n.toFixed(digits) : "–");
 
 // ── Phase 1: damage ──
 
-function dummy(id: string, level: number, hp: number): LabUnit {
-  return makeUnit({ id, name: "Dummy", side: "enemy", row: "front", stats: averageExpected(level), dummy: true, hpOverride: Math.round(hp), level });
+function dummy(id: string, level: number, hp: number, affinities?: MarinaraAffinities): LabUnit {
+  return makeUnit({
+    id,
+    name: "Dummy",
+    side: "enemy",
+    row: "front",
+    stats: averageExpected(level),
+    dummy: true,
+    hpOverride: Math.round(hp),
+    level,
+    affinities,
+  });
 }
+
+/** Six foes with typical affinity profiles: beast, flyer, armoured, spirit, fire elemental, undead. */
+export const AFFINITY_PROFILES: MarinaraAffinities[] = [
+  { slash: "weak", fire: "weak" },
+  { pierce: "weak", lightning: "weak", blunt: "resist" },
+  { slash: "resist", pierce: "resist", blunt: "weak", lightning: "weak" },
+  { slash: "resist", pierce: "resist", blunt: "resist", light: "weak", dark: "immune" },
+  { fire: "absorb", ice: "weak", slash: "resist" },
+  { pierce: "resist", ice: "resist", blunt: "weak", light: "weak", dark: "absorb" },
+];
 
 function phase1(count: number): string {
   const rows: string[] = [];
   for (const def of MARINARA_CLASSES) {
     for (const level of levelsFor(def)) {
       const hp = averageExpected(level).hp;
-      const result = { single: [] as number[], spread: [] as number[], grouped: [] as number[], perMp: [] as number[] };
+      const result = {
+        single: [] as number[],
+        spread: [] as number[],
+        grouped: [] as number[],
+        neutral: [] as number[],
+        affinity: [] as number[],
+        perMp: [] as number[],
+      };
       for (let i = 0; i < count; i++) {
         const character = buildCharacter(def, level, `${def.id}:${level}:${i}`);
         const random = marinaraRandom(`p1:${def.id}:${level}:${i}`);
@@ -126,6 +167,8 @@ function phase1(count: number): string {
           ["single", [dummy("d1", level, hp * 6)], true],
           ["spread", [0, 1, 2].map((n) => dummy(`d${n}`, level, hp * 2)), false],
           ["grouped", [0, 1, 2, 3, 4].map((n) => dummy(`d${n}`, level, hp * 1.2)), true],
+          ["neutral", [0, 1, 2, 3, 4, 5].map((n) => dummy(`d${n}`, level, hp)), false],
+          ["affinity", AFFINITY_PROFILES.map((a, n) => dummy(`d${n}`, level, hp, a)), false],
         ];
         for (const [name, enemies, grouped] of scenarios) {
           const hero = unitFrom(character, "hero", "party", "front");
@@ -141,18 +184,20 @@ function phase1(count: number): string {
       const spread = quantiles(result.spread);
       const grouped = quantiles(result.grouped);
       const perMp = quantiles(result.perMp);
+      const affinity = quantiles(result.affinity);
+      const neutral = quantiles(result.neutral);
       rows.push(
-        `| ${def.label} | ${def.tier}${def.pure ? " (pure)" : ""} | ${level} | ${fmt(single.median)} (${fmt(single.p10)}–${fmt(single.p90)}) | ${fmt(spread.median)} (${fmt(spread.p10)}–${fmt(spread.p90)}) | ${fmt(grouped.median)} (${fmt(grouped.p10)}–${fmt(grouped.p90)}) | ${result.perMp.length ? fmt(perMp.median) : "–"} |`,
+        `| ${def.label} | ${def.tier}${def.pure ? " (pure)" : ""} | ${level} | ${fmt(single.median)} (${fmt(single.p10)}–${fmt(single.p90)}) | ${fmt(spread.median)} (${fmt(spread.p10)}–${fmt(spread.p90)}) | ${fmt(grouped.median)} (${fmt(grouped.p10)}–${fmt(grouped.p90)}) | ${fmt(affinity.median)} (×${fmt(affinity.median / neutral.median, 2)}) | ${result.perMp.length ? fmt(perMp.median) : "–"} |`,
       );
     }
   }
   return [
     "# Class lab, phase 1: damage potential",
     "",
-    `Rounds to clear dummies that never fight back (median, with p10–p90 across ${count} characters per row, each with its own hidden aptitudes). A round is one turn of a Speed 15 character. Lower is better. A promoted class carries up to four skills from the classes it came through (their marked carry picks first). Dummies have the average expected Defense and Resistance of the level. Single: one dummy with 6× a typical HP. Spread: three with 2× each, where a front-row area hits only one. Grouped: five with 1.2× each, all in reach of area attacks. Damage per MP is the damage of its MP-costing skills on the single dummy, per MP spent; – means it has no damaging skill that costs MP.`,
+    `Rounds to clear dummies that never fight back (median, with p10–p90 across ${count} characters per row, each with its own hidden aptitudes). A round is one turn of a Speed 15 character. Lower is better. A promoted class carries up to four skills from the classes it came through (their marked carry picks first). Dummies have the average expected Defense and Resistance of the level. Single: one dummy with 6× a typical HP. Spread: three with 2× each, where a front-row area hits only one. Grouped: five with 1.2× each, all in reach of area attacks. Affinities: six dummies with a typical HP each and typical affinity profiles (beast: weak to slash and fire; flyer: weak to pierce and lightning, resists blunt; armoured: resists slash and pierce, weak to blunt and lightning; spirit: resists all physical, weak to light, immune to dark; fire elemental: absorbs fire, weak to ice, resists slash; undead: resists pierce and ice, weak to blunt and light, absorbs dark), spread out; the × figure compares it with the same four dummies without affinities (above 1 means affinities slow this class down). Physical skills cost stamina, magic skills MP. Damage per MP is the damage of its MP-costing skills on the single dummy, per MP spent; – means it has no damaging skill that costs MP.`,
     "",
-    "| Class | Tier | Level | Single | Spread (3) | Grouped (5) | Damage per MP |",
-    "| --- | --- | --- | --- | --- | --- | --- |",
+    "| Class | Tier | Level | Single | Spread (3) | Grouped (5) | Affinities (6) | Damage per MP |",
+    "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ...rows,
   ].join("\n");
 }
@@ -174,7 +219,10 @@ function attacker(id: string, archetype: MarinaraArchetype, level: number): LabU
   });
 }
 
-const standardAttackers = (level: number) => [attacker("bruiser", "blade", level), attacker("caster", "arcanist", level)];
+const standardAttackers = (level: number) => [
+  attacker("bruiser", "blade", level),
+  attacker("caster", "arcanist", level),
+];
 
 function phase2(count: number): string {
   const rows: string[] = [];
@@ -199,12 +247,21 @@ function phase2(count: number): string {
         );
         surviveMagic.push(magical.rounds);
         const casters = [0, 1].map((n) =>
-          unitFrom(buildCharacter(marinaraClass("arcanist")!, Math.min(level, 10), `ally:${level}:${i}:${n}`), `back${n}`, "party", "back"),
+          unitFrom(
+            buildCharacter(marinaraClass("arcanist")!, Math.min(level, 10), `ally:${level}:${i}:${n}`),
+            `back${n}`,
+            "party",
+            "back",
+          ),
         );
         for (const unit of casters) unit.skills = []; // the back row only takes hits here
         for (const unit of casters) unit.dummy = true;
         const front = unitFrom(character, "hero", "party", "front");
-        const guarded = runFight([front, ...casters], standardAttackers(level), { random, grouped: true, maxActions: 60 });
+        const guarded = runFight([front, ...casters], standardAttackers(level), {
+          random,
+          grouped: true,
+          maxActions: 60,
+        });
         const taken = (guarded.damageTaken.back0 ?? 0) + (guarded.damageTaken.back1 ?? 0);
         backTaken.push(taken / Math.max(0.5, guarded.rounds));
       }
@@ -229,7 +286,7 @@ function phase2(count: number): string {
 
 // ── Phase 3: utility ──
 
-const TEAMMATES: Array<{ line: string[]; }> = [
+const TEAMMATES: Array<{ line: string[] }> = [
   { line: ["blade", "duelist", "sword-saint"] },
   { line: ["guard", "sentinel", "bastion"] },
   { line: ["marksman", "sharpshooter", "deadeye"] },
@@ -263,7 +320,14 @@ function partyFight(slot: MarinaraClassDef, level: number, i: number, hpScale: n
 function phase3(count: number): string {
   // Tune the enemies at each level so the party with an Arcanist (advanced/master as the level asks) in the slot wins about 65%.
   const scales = new Map<string, number>();
-  for (const [tier, level] of [["base", 1], ["base", 10], ["advanced", 10], ["advanced", 20], ["master", 20], ["master", 30]] as const) {
+  for (const [tier, level] of [
+    ["base", 1],
+    ["base", 10],
+    ["advanced", 10],
+    ["advanced", 20],
+    ["master", 20],
+    ["master", 30],
+  ] as const) {
     const reference = tier === "base" ? "arcanist" : tier === "advanced" ? "elementalist" : "stormcaller";
     let lo = 0.3;
     let hi = 6;
