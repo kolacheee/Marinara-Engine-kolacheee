@@ -31,6 +31,12 @@ import {
   type MarinaraStats,
 } from "./marinara-classes.js";
 import type { CombatMind, CombatTemperament } from "./combat-minds.js";
+import {
+  MARINARA_ENEMY_TIERS_LIST,
+  type MarinaraEffect,
+  type MarinaraEnemySpec,
+  type MarinaraEnemyTier,
+} from "./marinara-combat.js";
 import { MARINARA_BESTIARY_THREAT } from "./marinara-bestiary-threat.js";
 
 // ── Settings ──
@@ -86,8 +92,6 @@ export function marinaraBestiarySetting(
 
 // ── Tiers ──
 
-export const MARINARA_ENEMY_TIER_IDS = ["minion", "standard", "elite", "boss"] as const;
-export type MarinaraEnemyTier = (typeof MARINARA_ENEMY_TIER_IDS)[number];
 
 /**
  * What a tier is worth in a budget compared with a standard foe of the same family and level
@@ -105,14 +109,6 @@ export const MARINARA_TIER_RULES: Record<
   boss: { threat: 5.5, minLevel: 5, maxPerFight: 1 },
 };
 
-/** The draft HP and stat sizes the lab measures threat with: the Engine's MARINARA_ENEMY_TIERS
- *  (packages/shared/src/features/marinara-combat.ts on the Engine branch) once both land. */
-export const MARINARA_BESTIARY_TIER_SIZES: Record<MarinaraEnemyTier, { hp: number; stats: number }> = {
-  minion: { hp: 0.6, stats: 0.85 },
-  standard: { hp: 1, stats: 1 },
-  elite: { hp: 1.8, stats: 1.1 },
-  boss: { hp: 4, stats: 1.2 },
-};
 
 /**
  * Foes grow a little past their expected stats with level (HP and offence, a share per level above 1):
@@ -139,65 +135,21 @@ export function marinaraFoeLevelScale(level: number): Partial<MarinaraStats> {
   };
 }
 
-/** Boss rules on top of size: it can't be slept, stunned or confused, and it turns savage below half. */
-export const MARINARA_BOSS_RULES = { immune: ["sleep", "stun", "confuse"], enrageBelow: 0.5, enrageDamagePct: 0.2 } as const;
 
 // ── Abilities ──
-
-export type MarinaraStatusId =
-  | "sleep"
-  | "stun"
-  | "poison"
-  | "wither"
-  | "bleed"
-  | "wound"
-  | "confuse"
-  | "doom"
-  | "slow"
-  | "regen";
-
-/**
- * A foe's ability, in the class lab's effect shape (scripts/class-lab/combat.ts `Effect`), which the
- * Engine's fight math reads too. Only the fields foes use are here.
- */
-export interface MarinaraEnemyEffect {
-  kind: "damage" | "heal" | "buff" | "debuff" | "status" | "shield";
-  target: "enemy" | "all-enemies" | "front-row" | "self" | "ally" | "party";
-  power?: number;
-  scales?: MarinaraStat;
-  damage?: "physical" | "magic";
-  type?: MarinaraSkillDamage;
-  hits?: number;
-  hitBonus?: number;
-  critBonus?: number;
-  pierce?: number;
-  ranged?: boolean;
-  stat?: MarinaraStat | "damage" | "damage-taken";
-  pct?: number;
-  pctOfMax?: number;
-  duration?: number;
-  status?: MarinaraStatusId;
-  chance?: number;
-  applies?: { status: MarinaraStatusId; chance?: number; duration: number; power?: number };
-  spread?: number;
-  weight?: number;
-  charge?: boolean;
-  cooldown?: number;
-  onHit?: { stat: MarinaraStat | "damage"; pct: number; duration: number };
-}
 
 export interface MarinaraEnemyAbility {
   id: string;
   /** A label for the log and the GM; a game may rename it in its setting's words. */
   label: string;
   summary: string;
-  effect: MarinaraEnemyEffect;
+  effect: MarinaraEffect;
   /** The lowest tier and level it may be used at (hard control, area breath, Doom). */
   minTier?: MarinaraEnemyTier;
   minLevel?: number;
 }
 
-const strike = (power: number, extra: Partial<MarinaraEnemyEffect> = {}): MarinaraEnemyEffect => ({
+const strike = (power: number, extra: Partial<MarinaraEffect> = {}): MarinaraEffect => ({
   kind: "damage",
   target: "enemy",
   scales: "strength",
@@ -205,7 +157,7 @@ const strike = (power: number, extra: Partial<MarinaraEnemyEffect> = {}): Marina
   power,
   ...extra,
 });
-const spell = (power: number, type: MarinaraSkillDamage, extra: Partial<MarinaraEnemyEffect> = {}): MarinaraEnemyEffect => ({
+const spell = (power: number, type: MarinaraSkillDamage, extra: Partial<MarinaraEffect> = {}): MarinaraEffect => ({
   kind: "damage",
   target: "enemy",
   scales: "magic",
@@ -219,7 +171,7 @@ const ability = (
   id: string,
   label: string,
   summary: string,
-  effect: MarinaraEnemyEffect,
+  effect: MarinaraEffect,
   gate: { minTier?: MarinaraEnemyTier; minLevel?: number } = {},
 ): MarinaraEnemyAbility => ({ id, label, summary, effect, ...gate });
 
@@ -818,7 +770,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["territorial", "patient"],
     archetype: "hexer",
     statScale: { hp: 1.1, magic: 0.9, speed: 0.7, defense: 1.0 },
-    attackType: "pierce",
+    attackType: "poison",
     rangedBasic: true,
     row: "back",
     affinities: { fire: "weak", ice: "resist", poison: "immune", blunt: "resist" },
@@ -1394,25 +1346,12 @@ export function marinaraEnemyAbilities(family: MarinaraEnemyFamily, tier: Marina
 
 // ── Building a foe ──
 
-/** What the Engine's `buildMarinaraEnemy` takes (Engine thread's spec, 2026-10-31). */
-export interface MarinaraEnemySpec {
-  id: string;
-  name: string;
-  classId?: string;
-  archetype?: MarinaraArchetype;
-  statScale?: Partial<MarinaraStats>;
-  level: number;
-  tier: MarinaraEnemyTier;
-  row?: "front" | "back";
-  affinities?: MarinaraAffinities;
-  attackType?: MarinaraDamageType;
-  rangedBasic?: boolean;
-  enemySkills?: string[];
-  /** Carried for the combat AI (combat-ai.ts aiHints). */
+/** A bestiary foe: what the Engine's `buildMarinaraEnemy` takes, plus its family and the combat AI's hints. */
+export type MarinaraBestiaryFoeSpec = MarinaraEnemySpec & {
+  familyId: string;
   mind?: CombatMind;
   temperament?: CombatTemperament;
-  familyId: string;
-}
+};
 
 function combinedScale(a: Partial<MarinaraStats> | undefined, b: Partial<MarinaraStats>): Partial<MarinaraStats> {
   const out: Partial<MarinaraStats> = { ...(a ?? {}) };
@@ -1431,7 +1370,7 @@ export function marinaraEnemySpec(input: {
   temperament?: CombatTemperament;
   /** A name the story gives it (a boss's own name); the family's band name otherwise. */
   name?: string;
-}): MarinaraEnemySpec {
+}): MarinaraBestiaryFoeSpec {
   const family = FAMILY_BY_ID.get(input.familyId);
   if (!family) throw new Error(`Unknown enemy family ${input.familyId}.`);
   const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.round(input.level)));
@@ -1454,7 +1393,7 @@ export function marinaraEnemySpec(input: {
     row: family.row,
     ...(family.affinities ? { affinities: family.affinities } : {}),
     ...(family.attackType ? { attackType: family.attackType } : {}),
-    ...(family.rangedBasic ? { rangedBasic: true } : {}),
+    ...(family.rangedBasic ? { ranged: true } : {}),
     enemySkills: marinaraEnemyAbilities(family, input.tier, level),
     mind: family.mind,
     ...(temperament ? { temperament } : {}),
@@ -1469,13 +1408,13 @@ export function marinaraEnemySpec(input: {
  * downed now and then, and Deadly ones only with luck and good play. Measured in the bestiary lab on
  * encounters the builder makes.
  */
-export const MARINARA_DIFFICULTY_BUDGET = {
+export const MARINARA_ENCOUNTER_BUDGET = {
   easy: 0.6,
   normal: 1,
   hard: 1.35,
   deadly: 1.7,
 } as const;
-export type MarinaraEncounterDifficulty = keyof typeof MARINARA_DIFFICULTY_BUDGET;
+export type MarinaraEncounterDifficulty = keyof typeof MARINARA_ENCOUNTER_BUDGET;
 
 /** A foe's worth changes this much per level it stands above (or below) the party. */
 export const MARINARA_LEVEL_GAP_THREAT = 1.12;
@@ -1534,11 +1473,11 @@ export function marinaraEncounterRating(
   party: MarinaraEncounterParty,
 ): MarinaraEncounterDifficulty | "trivial" | "beyond" {
   const share = threat / Math.max(1, party.size);
-  if (share > MARINARA_DIFFICULTY_BUDGET.deadly * 1.05) return "beyond";
-  if (share > (MARINARA_DIFFICULTY_BUDGET.hard + MARINARA_DIFFICULTY_BUDGET.deadly) / 2) return "deadly";
-  if (share > (MARINARA_DIFFICULTY_BUDGET.normal + MARINARA_DIFFICULTY_BUDGET.hard) / 2) return "hard";
-  if (share > (MARINARA_DIFFICULTY_BUDGET.easy + MARINARA_DIFFICULTY_BUDGET.normal) / 2) return "normal";
-  if (share > MARINARA_DIFFICULTY_BUDGET.easy / 2) return "easy";
+  if (share > MARINARA_ENCOUNTER_BUDGET.deadly * 1.05) return "beyond";
+  if (share > (MARINARA_ENCOUNTER_BUDGET.hard + MARINARA_ENCOUNTER_BUDGET.deadly) / 2) return "deadly";
+  if (share > (MARINARA_ENCOUNTER_BUDGET.normal + MARINARA_ENCOUNTER_BUDGET.hard) / 2) return "hard";
+  if (share > (MARINARA_ENCOUNTER_BUDGET.easy + MARINARA_ENCOUNTER_BUDGET.normal) / 2) return "normal";
+  if (share > MARINARA_ENCOUNTER_BUDGET.easy / 2) return "easy";
   return "trivial";
 }
 
@@ -1593,7 +1532,7 @@ export function marinaraCheckEncounter(input: {
       problems.push(`${label}: more than ${MARINARA_LEVEL_GAP.below} levels below the party; not worth a fight.`);
     threat += marinaraFoeThreat(family.id, foe.tier, foe.level, party.level);
   }
-  for (const tier of MARINARA_ENEMY_TIER_IDS)
+  for (const tier of MARINARA_ENEMY_TIERS_LIST)
     if ((perTier[tier] ?? 0) > MARINARA_TIER_RULES[tier].maxPerFight)
       problems.push(`${perTier[tier]} ${tier} foes; at most ${MARINARA_TIER_RULES[tier].maxPerFight}.`);
   if (foes.length && front === 0) problems.push("Nobody in the front row.");
@@ -1641,7 +1580,7 @@ export function marinaraBuildEncounter(input: {
 }): { foes: MarinaraEncounterFoe[]; threat: number } {
   const { party, random } = input;
   const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.round(party.level)));
-  const budget = MARINARA_DIFFICULTY_BUDGET[input.difficulty] * party.size;
+  const budget = MARINARA_ENCOUNTER_BUDGET[input.difficulty] * party.size;
   const pool = marinaraBestiaryFor(input.setting, level);
   if (!pool.length) return { foes: [], threat: 0 };
   const pick = <T>(list: readonly T[]): T => list[Math.floor(random() * list.length)]!;
@@ -1709,4 +1648,105 @@ export function marinaraBuildEncounter(input: {
     }
   }
   return { foes, threat };
+}
+
+/** What the GM's fight setup sees: the families the setting has at the party's level, with their
+ *  names there and what they do, so it picks designed foes instead of inventing them. */
+export function marinaraBestiaryMenu(
+  setting: MarinaraBestiarySetting,
+  partyLevel: number,
+): Array<{ familyId: string; name: string; kind: MarinaraEnemyKind; role: MarinaraEnemyRole; tiers: MarinaraEnemyTier[]; summary: string }> {
+  const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.round(partyLevel)));
+  return marinaraBestiaryFor(setting, level).map((family) => ({
+    familyId: family.id,
+    name: marinaraEnemyName(family, setting, level)!,
+    kind: family.kind,
+    role: family.role,
+    tiers: family.tiers.filter((tier) => level >= MARINARA_TIER_RULES[tier].minLevel),
+    summary: family.summary,
+  }));
+}
+
+const DEMOTE: Record<MarinaraEnemyTier, MarinaraEnemyTier | null> = {
+  boss: "elite",
+  elite: "standard",
+  standard: "minion",
+  minion: null,
+};
+
+/**
+ * Makes the fight the GM asked for fit the rules and the difficulty, changing as little as it can:
+ * unknown families and ones the setting lacks are dropped, levels pulled into range, tiers the
+ * family lacks or the level doesn't allow lowered, extra foes past the room and tier caps dropped,
+ * then, while it rates over `difficulty`, the foe worth most is lowered a tier (or a minion
+ * dropped). Every change is listed so the GM can tell the story it makes.
+ */
+export function marinaraFitEncounter(input: {
+  setting: MarinaraBestiarySetting;
+  party: MarinaraEncounterParty;
+  foes: readonly MarinaraEncounterFoe[];
+  difficulty: MarinaraEncounterDifficulty;
+}): { foes: MarinaraEncounterFoe[]; threat: number; changes: string[] } {
+  const { setting, party } = input;
+  const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.round(party.level)));
+  const changes: string[] = [];
+  const foes: MarinaraEncounterFoe[] = [];
+  const perTier: Partial<Record<MarinaraEnemyTier, number>> = {};
+  for (const asked of input.foes) {
+    const family = FAMILY_BY_ID.get(asked.familyId);
+    if (!family) {
+      changes.push(`Dropped ${asked.familyId}: no such family.`);
+      continue;
+    }
+    const above = asked.tier === "boss" ? MARINARA_LEVEL_GAP.bossAbove : MARINARA_LEVEL_GAP.above;
+    let foeLevel = Math.max(level - MARINARA_LEVEL_GAP.below, Math.min(level + above, Math.round(asked.level)));
+    foeLevel = Math.max(family.levels[0], Math.min(marinaraEnemySettingCap(family, setting), foeLevel));
+    if (!marinaraEnemyName(family, setting, foeLevel)) {
+      changes.push(`Dropped ${family.id}: not found in ${setting} near level ${level}.`);
+      continue;
+    }
+    if (foeLevel !== asked.level) changes.push(`${family.id}: level ${asked.level} → ${foeLevel}.`);
+    let tier: MarinaraEnemyTier | null = asked.tier;
+    while (
+      tier &&
+      (!family.tiers.includes(tier) ||
+        foeLevel < MARINARA_TIER_RULES[tier].minLevel ||
+        (perTier[tier] ?? 0) >= MARINARA_TIER_RULES[tier].maxPerFight)
+    )
+      tier = DEMOTE[tier];
+    if (!tier) {
+      changes.push(`Dropped ${family.id} (${asked.tier}): no tier it can take here.`);
+      continue;
+    }
+    if (tier !== asked.tier) changes.push(`${family.id}: ${asked.tier} → ${tier}.`);
+    if (foes.length >= MARINARA_MAX_FOES) {
+      changes.push(`Dropped ${family.id}: a battle has room for ${MARINARA_MAX_FOES}.`);
+      continue;
+    }
+    perTier[tier] = (perTier[tier] ?? 0) + 1;
+    foes.push({ familyId: family.id, tier, level: foeLevel });
+  }
+  const worth = (foe: MarinaraEncounterFoe) => marinaraFoeThreat(foe.familyId, foe.tier, foe.level, level);
+  const total = () => foes.reduce((sum, foe) => sum + worth(foe), 0);
+  const order = ["trivial", "easy", "normal", "hard", "deadly", "beyond"] as const;
+  const over = () => order.indexOf(marinaraEncounterRating(total(), party)) > order.indexOf(input.difficulty);
+  for (let guard = 0; guard < 40 && foes.length && over(); guard++) {
+    const top = [...foes].sort((a, b) => worth(b) - worth(a))[0]!;
+    const index = foes.indexOf(top);
+    const lower = DEMOTE[top.tier];
+    const family = FAMILY_BY_ID.get(top.familyId)!;
+    if (lower && family.tiers.includes(lower)) {
+      foes[index] = { ...top, tier: lower };
+      changes.push(`${top.familyId}: ${top.tier} → ${lower} to fit a ${input.difficulty} fight.`);
+    } else if (top.level > level - MARINARA_LEVEL_GAP.below && top.level > family.levels[0]) {
+      foes[index] = { ...top, level: top.level - 1 };
+      changes.push(`${top.familyId}: level ${top.level} → ${top.level - 1} to fit a ${input.difficulty} fight.`);
+    } else {
+      foes.splice(index, 1);
+      changes.push(`Dropped ${top.familyId} to fit a ${input.difficulty} fight.`);
+    }
+  }
+  if (foes.length && !foes.some((foe) => FAMILY_BY_ID.get(foe.familyId)!.row === "front"))
+    changes.push("Nobody stands in front: the back row takes melee at full damage.");
+  return { foes, threat: total(), changes };
 }

@@ -10,7 +10,7 @@ import {
   MARINARA_BESTIARY,
   MARINARA_BESTIARY_ABILITIES,
   MARINARA_BESTIARY_SETTINGS,
-  MARINARA_DIFFICULTY_BUDGET,
+  MARINARA_ENCOUNTER_BUDGET,
   MARINARA_MAX_FOES,
   MARINARA_TIER_RULES,
   marinaraAbilityAllowed,
@@ -21,6 +21,8 @@ import {
   marinaraEnemyClassAt,
   marinaraEnemyName,
   marinaraEnemySpec,
+  marinaraFitEncounter,
+  marinaraBestiaryMenu,
   marinaraFoeThreat,
   type MarinaraEncounterDifficulty,
 } from "../../packages/shared/src/features/marinara-bestiary.js";
@@ -152,13 +154,37 @@ assert.ok(
   "three elites three levels up are more than a Normal fight",
 );
 
+// Fitting the GM's ask: an over-budget fight is lowered until it rates what was asked, and the
+// changes are listed; things the setting lacks are dropped.
+const asked = marinaraFitEncounter({
+  setting: "high_fantasy",
+  party,
+  difficulty: "normal",
+  foes: [
+    { familyId: "lout", tier: "boss", level: 9 },
+    { familyId: "lout", tier: "elite", level: 9 },
+    { familyId: "turret", tier: "standard", level: 6 },
+    { familyId: "hound", tier: "boss", level: 4 },
+  ],
+});
+assert.ok(asked.changes.some((c) => c.startsWith("Dropped turret")));
+assert.ok(!asked.foes.some((f) => f.familyId === "hound" && f.tier === "boss"), "a level 4 hound can't be a boss");
+assert.deepEqual(
+  marinaraCheckEncounter({ setting: "high_fantasy", party, foes: asked.foes, allowed: "normal" }).problems,
+  [],
+  asked.changes.join(" "),
+);
+const menu = marinaraBestiaryMenu("cyberpunk", 12);
+assert.ok(menu.some((entry) => entry.name === "Riot Trooper"));
+assert.ok(menu.every((entry) => entry.tiers.length > 0));
+
 // The builder: every fight it makes passes the checker and lands between 70% and 100% of its budget
 // (the room a fight has and the foes' sizes keep a few short of 85%).
 let built = 0;
 let underFilled = 0;
 for (const setting of MARINARA_BESTIARY_SETTINGS)
   for (const level of [1, 3, 7, 12, 18, 24, 30])
-    for (const difficulty of Object.keys(MARINARA_DIFFICULTY_BUDGET) as MarinaraEncounterDifficulty[])
+    for (const difficulty of Object.keys(MARINARA_ENCOUNTER_BUDGET) as MarinaraEncounterDifficulty[])
       for (let i = 0; i < 6; i++) {
         const party4 = { level, size: 4 };
         const fight = marinaraBuildEncounter({
@@ -171,7 +197,7 @@ for (const setting of MARINARA_BESTIARY_SETTINGS)
         assert.ok(fight.foes.length > 0 && fight.foes.length <= MARINARA_MAX_FOES, `${setting} L${level} ${difficulty}: foes`);
         const result = marinaraCheckEncounter({ setting, party: party4, foes: fight.foes, allowed: difficulty });
         assert.deepEqual(result.problems, [], `${setting} L${level} ${difficulty}: ${result.problems.join("; ")}`);
-        const budget = MARINARA_DIFFICULTY_BUDGET[difficulty] * 4;
+        const budget = MARINARA_ENCOUNTER_BUDGET[difficulty] * 4;
         assert.ok(fight.threat <= budget + 1e-9, `${setting} L${level} ${difficulty}: over budget`);
         if (fight.threat < budget * 0.7) underFilled++;
         for (const foe of fight.foes)
