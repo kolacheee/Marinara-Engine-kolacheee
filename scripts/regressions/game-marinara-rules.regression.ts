@@ -173,6 +173,15 @@ for (const tier of ["boss", "standard"] as const) {
   const lost = marinaraFightEnd({ state, outcome: "defeat", cards, seed: 1, permadeath: true });
   assert.equal(lost.growth.length, 0, "a lost fight pays nothing and kills no one");
   const gentle = marinaraFightEnd({ state, outcome: "victory", cards, seed: 1, permadeath: false });
+  const fled = buildMarinaraEnemy({ id: "fled", name: "Runner", level: 1, tier: "standard" });
+  const drivenOff = marinaraFightEnd({
+    state: { fighters: [a], draws: 0, credit: {}, left: [fled] },
+    outcome: "victory",
+    cards,
+    seed: 1,
+    permadeath: false,
+  });
+  assert.ok(drivenOff.growth[0]?.xp, "a foe driven off in a won fight pays its XP");
   assert.ok(!gentle.growth.some((g) => g.fallen), "without permadeath nobody falls");
 }
 

@@ -435,6 +435,14 @@ function atBoardEdge(s: CombatDirectorState, u: Unit): boolean {
 /** Out of the fight alive (combat AI E1): kept for the story, gone from the board and the turn order. */
 function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered") {
   (s.gone ??= []).push({ id: u.id, name: u.name, hp: u.hp, maxHp: u.maxHp, left });
+  // Off the Classic Marinara timeline too, kept aside for the XP it pays when the fight is won.
+  if (s.marinara) {
+    const fighter = s.marinara.fighters.find((one) => one.id === u.id);
+    if (fighter) {
+      s.marinara.fighters = s.marinara.fighters.filter((one) => one !== fighter);
+      (s.marinara.left ??= []).push(fighter);
+    }
+  }
   if (s.tactical) s.tactical.units = s.tactical.units.filter((one) => one.id !== u.id);
   else s.enemies = s.enemies.filter((one) => one.id !== u.id);
   s.order = s.order.filter((id) => id !== u.id);
