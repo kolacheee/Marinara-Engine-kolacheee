@@ -53,7 +53,7 @@ export const MARINARA_ARCHETYPES = [
   "guard",
   "scout",
   "marksman",
-  "arcanist",
+  "channeler",
   "hexer",
   "mender",
   "herald",
@@ -77,7 +77,7 @@ export const MARINARA_ARCHETYPE_BASES: Record<MarinaraArchetype, { start: Marina
   guard: { start: stats(24, 6, 0, 4, 3, 9, 3, 3), growth: stats(90, 40, 0, 35, 20, 55, 20, 25) },
   scout: { start: stats(18, 5, 1, 7, 9, 3, 2, 7), growth: stats(60, 35, 10, 50, 60, 20, 20, 50) },
   marksman: { start: stats(18, 6, 1, 8, 6, 4, 2, 4), growth: stats(65, 45, 5, 60, 45, 25, 15, 30) },
-  arcanist: { start: stats(16, 1, 8, 5, 5, 2, 6, 3), growth: stats(50, 5, 60, 40, 40, 15, 40, 25) },
+  channeler: { start: stats(16, 1, 8, 5, 5, 2, 6, 3), growth: stats(50, 5, 60, 40, 40, 15, 40, 25) },
   hexer: { start: stats(17, 1, 7, 5, 4, 2, 7, 4), growth: stats(55, 5, 50, 40, 35, 15, 50, 35) },
   mender: { start: stats(17, 1, 7, 4, 4, 2, 8, 6), growth: stats(55, 5, 50, 35, 35, 15, 55, 45) },
   herald: { start: stats(18, 3, 4, 5, 6, 3, 4, 8), growth: stats(60, 25, 30, 40, 45, 20, 30, 60) },
@@ -112,8 +112,8 @@ export const MARINARA_TEMPERAMENT_TREES: Record<MarinaraPartyTemperament, Marina
   cowardly: "scout",
   patient: "marksman",
   cautious: "marksman",
-  arrogant: "arcanist",
-  methodical: "arcanist",
+  arrogant: "channeler",
+  methodical: "channeler",
   cruel: "hexer",
   supportive: "mender",
   coordinated: "herald",
@@ -172,7 +172,7 @@ export const MARINARA_ARCHETYPE_ATTACKS: Record<MarinaraArchetype, MarinaraSkill
   guard: "weapon",
   scout: "weapon",
   marksman: "weapon",
-  arcanist: "element",
+  channeler: "element",
   hexer: "dark",
   mender: "light",
   herald: "weapon",
@@ -188,7 +188,7 @@ export const MARINARA_ARCHETYPE_WEAPONS: Record<MarinaraArchetype, readonly Mari
   guard: ["blunt", "pierce"],
   scout: ["slash", "pierce"],
   marksman: ["pierce", "blunt"],
-  arcanist: ["blunt"],
+  channeler: ["blunt"],
   hexer: ["blunt", "pierce"],
   mender: ["blunt"],
   herald: ["slash", "pierce"],
@@ -457,7 +457,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "sword-saint",
+      id: "moonless-blade",
       label: "Moonless Blade",
       from: "duelist",
       role: "Ends duels in one turn",
@@ -468,7 +468,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "ravager",
+      id: "bloodsworn",
       label: "Bloodsworn",
       from: "blade",
       role: "Grows deadlier as it is hurt",
@@ -482,7 +482,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "warbringer",
       label: "Warbringer",
-      from: "ravager",
+      from: "bloodsworn",
       role: "Cleaves the front row",
       leans: ["strength", "hp"],
       skills: [
@@ -591,7 +591,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "bastion",
+      id: "stonewall",
       label: "Stonewall",
       from: "sentinel",
       role: "Nothing gets past",
@@ -649,7 +649,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "unbroken",
+      id: "bulwark",
       label: "Bulwark",
       from: "aegis",
       role: "The wall that never falls",
@@ -663,7 +663,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           15,
           "Allies cannot drop below 1 HP for a round. Once a fight.",
         ),
-        passive("bulwark-aura", "Shield Line", 25, "The front row gains Defense.", true),
+        passive("shield-line", "Shield Line", 25, "The front row gains Defense.", true),
       ],
     },
   ]),
@@ -721,7 +721,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "windrunner",
+      id: "harrier",
       label: "Harrier",
       from: "skirmisher",
       role: "Owns the turn order",
@@ -792,7 +792,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "deadeye",
+      id: "farshot",
       label: "Farshot",
       from: "sharpshooter",
       role: "One shot, one kill",
@@ -803,20 +803,20 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "hunter",
-      label: "Hunter",
+      id: "tracker",
+      label: "Tracker",
       from: "marksman",
       role: "Marks and traps",
       leans: ["skill", "speed"],
       skills: [
         active("mark-prey", "Mark Prey", 10, "skill", 3, "The target takes more damage from everyone.", true),
-        passive("tracker", "Tracker", 15, "Sees enemy weaknesses."),
+        passive("read-the-signs", "Read the Signs", 15, "Sees enemy weaknesses."),
       ],
     },
     {
-      id: "grand-hunter",
-      label: "Grand Hunter",
-      from: "hunter",
+      id: "huntsmaster",
+      label: "Huntsmaster",
+      from: "tracker",
       role: "Controls the hunt",
       leans: ["skill", "speed", "luck"],
       skills: [
@@ -847,9 +847,9 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
   ]),
-  ...tree("arcanist", [
+  ...tree("channeler", [
     {
-      id: "arcanist",
+      id: "channeler",
       label: "Channeler",
       role: "Back-row caster",
       leans: ["magic"],
@@ -867,9 +867,9 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "elementalist",
+      id: "fusionist",
       label: "Fusionist",
-      from: "arcanist",
+      from: "channeler",
       role: "Chains elements into reactions",
       leans: ["magic", "skill"],
       skills: [
@@ -880,7 +880,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "stormcaller",
       label: "Stormcaller",
-      from: "elementalist",
+      from: "fusionist",
       role: "Area devastation",
       leans: ["magic", "speed"],
       skills: [
@@ -891,7 +891,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "rune-scholar",
       label: "Rune Scholar",
-      from: "arcanist",
+      from: "channeler",
       role: "Wards and prepared spells",
       leans: ["magic", "resistance"],
       skills: [
@@ -926,7 +926,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "astral-adept",
       label: "Astral Adept",
-      from: "arcanist",
+      from: "channeler",
       role: "Raw, unaligned power",
       leans: ["magic", "resistance", "skill"],
       skills: [
@@ -1002,7 +1002,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "mesmer",
+      id: "dreamcaller",
       label: "Dreamcaller",
       from: "hexer",
       role: "Sleep, confusion, delay",
@@ -1015,7 +1015,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "dreamweaver",
       label: "Dreamweaver",
-      from: "mesmer",
+      from: "dreamcaller",
       role: "Takes enemies out of the fight",
       leans: ["magic", "speed"],
       skills: [
@@ -1035,7 +1035,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "eclipse",
+      id: "void-sovereign",
       label: "Void Sovereign",
       from: "void-binder",
       role: "Darkness made will",
@@ -1129,7 +1129,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "eternal",
+      id: "lightbearer",
       label: "Lightbearer",
       from: "lifebinder",
       role: "Death has no hold",
@@ -1165,7 +1165,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "chanter",
+      id: "cantor",
       label: "Cantor",
       from: "herald",
       role: "Songs that stack",
@@ -1178,7 +1178,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "maestro",
       label: "Maestro",
-      from: "chanter",
+      from: "cantor",
       role: "Conducts the fight",
       leans: ["luck", "magic", "speed"],
       skills: [
@@ -1187,7 +1187,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "tactician",
+      id: "field-captain",
       label: "Field Captain",
       from: "herald",
       role: "Orders allies",
@@ -1200,7 +1200,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "marshal",
       label: "Marshal",
-      from: "tactician",
+      from: "field-captain",
       role: "Turns a party into an army",
       leans: ["speed", "skill", "luck"],
       skills: [

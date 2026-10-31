@@ -5,7 +5,7 @@
  *
  * Phases: 1 damage (dummies: one big, three spread out, five grouped), 2 tank (survival against
  * standard attackers, and how much a front-liner spares the back row), 3 utility (a party of four
- * where one slot rotates, compared with an Arcanist in that slot). A promoted character carries up to four skills from the classes it came through (its
+ * where one slot rotates, compared with a Channeler in that slot). A promoted character carries up to four skills from the classes it came through (its
  * marked carry picks first). Every class is run at the two
  * levels its tier is played at (base 1 and 10, advanced 10 and 20, master 20 and 30), with many
  * characters each, so the spread of hidden aptitudes shows (p10, median, p90).
@@ -38,7 +38,7 @@ import {
 import { makeUnit, runFight, skillTally, type LabUnit } from "./combat.js";
 
 const RANGED: ReadonlySet<MarinaraArchetype> = new Set(["marksman"]);
-const CASTERS: ReadonlySet<MarinaraArchetype> = new Set(["arcanist", "hexer", "mender", "herald"]);
+const CASTERS: ReadonlySet<MarinaraArchetype> = new Set(["channeler", "hexer", "mender", "herald"]);
 const FRONT: ReadonlySet<MarinaraArchetype> = new Set(["blade", "guard", "scout"]);
 
 const levelsFor = (def: MarinaraClassDef) =>
@@ -235,7 +235,7 @@ function attacker(id: string, archetype: MarinaraArchetype, level: number): LabU
 
 const standardAttackers = (level: number) => [
   attacker("bruiser", "blade", level),
-  attacker("caster", "arcanist", level),
+  attacker("caster", "channeler", level),
 ];
 
 function phase2(count: number): string {
@@ -258,13 +258,13 @@ function phase2(count: number): string {
         survive.push(physical.rounds);
         const magical = runFight(
           [unitFrom(character, "hero", "party", "front")],
-          [attacker("c1", "arcanist", level), attacker("c2", "arcanist", level)],
+          [attacker("c1", "channeler", level), attacker("c2", "channeler", level)],
           { random, grouped: true, maxActions: 800 },
         );
         surviveMagic.push(magical.rounds);
         const casters = [0, 1].map((n) =>
           unitFrom(
-            buildCharacter(marinaraClass("arcanist")!, Math.min(level, 10), `ally:${level}:${i}:${n}`),
+            buildCharacter(marinaraClass("channeler")!, Math.min(level, 10), `ally:${level}:${i}:${n}`),
             `back${n}`,
             "party",
             "back",
@@ -288,7 +288,7 @@ function phase2(count: number): string {
         ] as const) {
           const allies = [0, 1].map((n) => {
             const unit = unitFrom(
-              buildCharacter(marinaraClass("arcanist")!, Math.max(1, level), `ward:${level}:${i}:${n}`),
+              buildCharacter(marinaraClass("channeler")!, Math.max(1, level), `ward:${level}:${i}:${n}`),
               `ally${n}`,
               "party",
               "back",
@@ -301,7 +301,7 @@ function phase2(count: number): string {
           const foes = [
             attacker("f1", "blade", level),
             attacker("f2", "marksman", level),
-            attacker("f3", "arcanist", level),
+            attacker("f3", "channeler", level),
           ];
           const fight = runFight([hero, ...allies], foes, {
             random: marinaraRandom(`p2${mode}:${def.id}:${level}:${i}`),
@@ -338,9 +338,9 @@ function phase2(count: number): string {
 // ── Phase 3: utility ──
 
 const TEAMMATES: Array<{ line: string[] }> = [
-  { line: ["blade", "duelist", "sword-saint"] },
-  { line: ["guard", "sentinel", "bastion"] },
-  { line: ["marksman", "sharpshooter", "deadeye"] },
+  { line: ["blade", "duelist", "moonless-blade"] },
+  { line: ["guard", "sentinel", "stonewall"] },
+  { line: ["marksman", "sharpshooter", "farshot"] },
 ];
 
 function teamClass(line: string[], level: number) {
@@ -355,7 +355,7 @@ function enemyParty(level: number, hpScale: number): LabUnit[] {
     );
     return unit;
   };
-  const foes = [make("e1", "blade"), make("e2", "guard"), make("e3", "marksman"), make("e4", "arcanist")];
+  const foes = [make("e1", "blade"), make("e2", "guard"), make("e3", "marksman"), make("e4", "channeler")];
   // Each foe has one ability a healer would want to undo: bleeding, sundered armour, poison, a wounding curse.
   foes[0]!.enemySkills = ["rend"];
   foes[1]!.enemySkills = ["sunder"];
@@ -397,7 +397,7 @@ function partyFightWith(
 }
 
 function phase3(count: number): string {
-  // Tune the enemies at each level so the party with an Arcanist (advanced/master as the level asks) in the slot wins about 65%.
+  // Tune the enemies at each level so the party with a Channeler (advanced/master as the level asks) in the slot wins about 65%.
   const scales = new Map<string, number>();
   for (const tactical of [false, true])
     for (const [tier, level] of [
@@ -408,7 +408,7 @@ function phase3(count: number): string {
       ["master", 20],
       ["master", 30],
     ] as const) {
-      const reference = tier === "base" ? "arcanist" : tier === "advanced" ? "elementalist" : "stormcaller";
+      const reference = tier === "base" ? "channeler" : tier === "advanced" ? "fusionist" : "stormcaller";
       let lo = 0.3;
       let hi = 6;
       for (let step = 0; step < 12; step++) {
@@ -445,7 +445,7 @@ function phase3(count: number): string {
   return [
     "# Class lab, phase 3: utility potential",
     "",
-    `A party of four: a Blade line, a Guard line and a Marksman line (promoted as their level allows), plus the class being tested in the fourth slot, against four foes of the level (a bruiser, a guard, an archer and a caster with expected stats) that focus their attacks: the back row first, then whoever would fall soonest. The foes' health is tuned for each tier and level so the party wins about 65% of fights with the Arcanist line's class of the same tier in the slot (Arcanist, Elementalist, Stormcaller), so a row compares a class with the Arcanist of its own tier (scales, c = Classic and t = Tactical: ${[...scales].map(([k, s]) => `${k} ×${s.toFixed(2)}`).join(", ")}). Each foe also has one ability a healer would want to undo: the bruiser's Rend (bleeding, 5% of max HP a turn for 3), the guard's Sunder (−25% Defense for 2), the archer's Venom Arrow (poison, 6% for 3) and the caster's Curse (Wound: healing received halved for 3, and −20% damage for 2). In Classic, melee attacks reach the back row at half damage (early Final Fantasy rows); in Tactical there is no row shield and Hold the Line stops melee foes heading for the back row. An area attack that strikes several foes deals 60% to each. ${count} fights per row and mode, each mode calibrated on its own. A class that adds more than an Arcanist wins more, loses less HP or ends sooner.`,
+    `A party of four: a Blade line, a Guard line and a Marksman line (promoted as their level allows), plus the class being tested in the fourth slot, against four foes of the level (a bruiser, a guard, an archer and a caster with expected stats) that focus their attacks: the back row first, then whoever would fall soonest. The foes' health is tuned for each tier and level so the party wins about 65% of fights with the Channeler line's class of the same tier in the slot (Channeler, Fusionist, Stormcaller), so a row compares a class with the Channeler of its own tier (scales, c = Classic and t = Tactical: ${[...scales].map(([k, s]) => `${k} ×${s.toFixed(2)}`).join(", ")}). Each foe also has one ability a healer would want to undo: the bruiser's Rend (bleeding, 5% of max HP a turn for 3), the guard's Sunder (−25% Defense for 2), the archer's Venom Arrow (poison, 6% for 3) and the caster's Curse (Wound: healing received halved for 3, and −20% damage for 2). In Classic, melee attacks reach the back row at half damage (early Final Fantasy rows); in Tactical there is no row shield and Hold the Line stops melee foes heading for the back row. An area attack that strikes several foes deals 60% to each. ${count} fights per row and mode, each mode calibrated on its own. A class that adds more than a Channeler wins more, loses less HP or ends sooner.`,
     "",
     "| Class in slot | Tier | Level | Win rate (Classic) | Win rate (Tactical) | Party HP lost (Classic, median) | Rounds to win (Classic, median) |",
     "| --- | --- | --- | --- | --- | --- | --- |",
@@ -455,9 +455,9 @@ function phase3(count: number): string {
 
 // ── Phase 4: cross-training ──
 
-/** The scale that puts the party with an Arcanist-line class of this tier and level at about 65% wins. */
+/** The scale that puts the party with a Channeler-line class of this tier and level at about 65% wins. */
 function calibrate(tier: "base" | "advanced" | "master", level: number): number {
-  const reference = tier === "base" ? "arcanist" : tier === "advanced" ? "elementalist" : "stormcaller";
+  const reference = tier === "base" ? "channeler" : tier === "advanced" ? "fusionist" : "stormcaller";
   let lo = 0.3;
   let hi = 8;
   for (let step = 0; step < 12; step++) {
@@ -555,7 +555,7 @@ function phase4(count: number): string {
   return [
     "# Class lab, phase 4: cross-training and carried skills",
     "",
-    `Level 20 characters. "Own tree only" spent all 20 levels in their primary tree and is a class level 20 advanced class carrying four skills from its base class. "+ X 10" spent levels 10–20 in their secondary tree's base class X (class level 11), then promoted, so its advanced class is only class level 10, and it carries the best four skills it learned outside the active class, secondary first. Single: rounds to clear one 6× HP dummy. Affinities: rounds to clear the six affinity dummies (as in phase 1). Win rate: the phase 3 party fight with this character in the slot, foes scaled ×${scale.toFixed(2)} (Elementalist level 20 wins about 65%). ${seeds} characters per row, ${count} fights each; medians averaged over the characters.`,
+    `Level 20 characters. "Own tree only" spent all 20 levels in their primary tree and is a class level 20 advanced class carrying four skills from its base class. "+ X 10" spent levels 10–20 in their secondary tree's base class X (class level 11), then promoted, so its advanced class is only class level 10, and it carries the best four skills it learned outside the active class, secondary first. Single: rounds to clear one 6× HP dummy. Affinities: rounds to clear the six affinity dummies (as in phase 1). Win rate: the phase 3 party fight with this character in the slot, foes scaled ×${scale.toFixed(2)} (Fusionist level 20 wins about 65%). ${seeds} characters per row, ${count} fights each; medians averaged over the characters.`,
     "",
     "| Active class | Training | Carried (first character) | Single | Affinities (6) | Party win rate |",
     "| --- | --- | --- | --- | --- | --- |",
