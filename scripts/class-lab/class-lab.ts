@@ -32,7 +32,7 @@ import {
   type MarinaraProgression,
   type MarinaraStats,
 } from "../../packages/shared/src/features/marinara-classes.js";
-import { makeUnit, runFight, type LabUnit } from "./combat.js";
+import { TUNING, makeUnit, runFight, type LabUnit } from "./combat.js";
 
 const RANGED: ReadonlySet<MarinaraArchetype> = new Set(["marksman"]);
 const CASTERS: ReadonlySet<MarinaraArchetype> = new Set(["arcanist", "hexer", "mender", "herald"]);
@@ -94,6 +94,7 @@ function unitFrom(character: MarinaraProgression, id: string, side: LabUnit["sid
     stats: character.stats,
     skills: marinaraUsableSkills(character),
     archetype: def.archetype,
+    classId: def.id,
     rangedBasic: RANGED.has(def.archetype),
     magicBasic: CASTERS.has(def.archetype),
     level: character.level,
@@ -151,7 +152,7 @@ function phase1(count: number): string {
   const rows: string[] = [];
   for (const def of MARINARA_CLASSES) {
     for (const level of levelsFor(def)) {
-      const hp = averageExpected(level).hp;
+      const hp = averageExpected(level).hp * TUNING.hpMultiplier;
       const result = {
         single: [] as number[],
         spread: [] as number[],
@@ -212,6 +213,7 @@ function attacker(id: string, archetype: MarinaraArchetype, level: number): LabU
     row: FRONT.has(archetype) ? "front" : "back",
     stats: expectedMarinaraStats(archetype, level),
     archetype,
+    classId: archetype,
     rangedBasic: RANGED.has(archetype),
     magicBasic: CASTERS.has(archetype),
     hpOverride: 1_000_000,
@@ -299,7 +301,7 @@ function teamClass(line: string[], level: number) {
 function enemyParty(level: number, hpScale: number): LabUnit[] {
   const make = (id: string, archetype: MarinaraArchetype) => {
     const unit = attacker(id, archetype, level);
-    unit.maxHp = unit.hp = Math.round(expectedMarinaraStats(archetype, level).hp * hpScale);
+    unit.maxHp = unit.hp = Math.round(expectedMarinaraStats(archetype, level).hp * TUNING.hpMultiplier * hpScale);
     return unit;
   };
   return [make("e1", "blade"), make("e2", "guard"), make("e3", "marksman"), make("e4", "arcanist")];

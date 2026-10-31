@@ -21,6 +21,7 @@ import {
   marinaraMaxMp,
   marinaraMaxStamina,
   type MarinaraAffinities,
+  type MarinaraDamageType,
   type MarinaraSkillDamage,
   type MarinaraArchetype,
   type MarinaraSkillDef,
@@ -37,7 +38,11 @@ export const TUNING = {
   defendDefensePct: 0.5,
   minDamage: 1,
   /** Weapon and spell power grow with level, as better gear would: added to every hit's power. */
-  powerPerLevel: 0.4,
+  powerPerLevel: 0.2,
+  /** Fight HP is the HP stat times this, so an even fight takes three to five hits to drop someone. */
+  hpMultiplier: 1.5,
+  /** Heals add this share of the healer's Magic to their power. */
+  healMagicPct: 0.5,
   /** How much the party AI minds spending a point of each resource. */
   mpCostWeight: 0.15,
   staminaCostWeight: 0.05,
@@ -162,7 +167,7 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   // Arcanist
   "element-bolt": dmg("magic", 7, { ranged: true }),
   "twin-cast": dmg("magic", 5, { ranged: true, hits: 2 }),
-  tempest: dmg("magic", 8, { ranged: true, target: "all-enemies", weight: 1.2 }),
+  tempest: dmg("magic", 6, { ranged: true, target: "all-enemies", weight: 1.2, cooldown: 2 }),
   glyph: dmg("magic", 10, { ranged: true, weight: 0.8 }),
   seal: { kind: "status", target: "enemy", status: "stun", chance: 0.7, duration: 2 },
   starfall: dmg("magic", 8, { ranged: true, pierce: 1 }),
@@ -176,10 +181,10 @@ export const SKILL_EFFECTS: Record<string, Effect> = {
   siphon: dmg("magic", 5, { ranged: true, pierce: 0.5 }),
   "total-eclipse": { kind: "debuff", target: "all-enemies", stat: "damage", pct: -0.3, duration: 2, cooldown: 4 },
   // Mender
-  mend: { kind: "heal", target: "ally", scales: "magic", power: 10 },
+  mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
   revive: { kind: "revive", target: "downed-ally", power: 0.25 },
-  sanctuary: { kind: "heal", target: "party", scales: "magic", power: 8, weight: 1.2 },
-  remedy: { kind: "heal", target: "ally", scales: "magic", power: 6 },
+  sanctuary: { kind: "heal", target: "party", scales: "magic", power: 5, weight: 1.2 },
+  remedy: { kind: "heal", target: "ally", scales: "magic", power: 5 },
   "elixir-rain": { kind: "status", target: "party", status: "regen", chance: 1, duration: 3, power: 0.1 },
   barrier: { kind: "shield", target: "ally", scales: "magic", power: 10 },
   "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true },
@@ -314,8 +319,10 @@ export interface LabUnit {
   maxStamina: number;
   stamina: number;
   affinities?: MarinaraAffinities;
-  /** Basic attack type for a unit with no archetype. */
-  attack?: MarinaraSkillDamage;
+  /** The class it fights as; its weapons and basic attack follow it. */
+  classId?: string;
+  /** Damage type of a unit with no class (a plain foe). */
+  attackType?: MarinaraDamageType;
   /** Active skills and passives it fights with. */
   skills: MarinaraSkillDef[];
   /** Basic attack reaches the back row (bows, spells). */
@@ -359,12 +366,13 @@ export function makeUnit(input: {
   hpOverride?: number;
   level?: number;
   affinities?: MarinaraAffinities;
-  attack?: MarinaraSkillDamage;
+  classId?: string;
+  attackType?: MarinaraDamageType;
 }): LabUnit {
   const passives = passiveHooks(input.skills ?? []);
   const maxMp = Math.round(marinaraMaxMp(input.stats) * (1 + (passives.mpPct ?? 0)));
   const maxStamina = marinaraMaxStamina(input.stats);
-  const maxHp = input.hpOverride ?? Math.max(1, Math.round(input.stats.hp));
+  const maxHp = input.hpOverride ?? Math.max(1, Math.round(input.stats.hp * TUNING.hpMultiplier));
   return {
     ...input,
     level: input.level ?? 1,
@@ -523,7 +531,7 @@ function basicAttack(unit: LabUnit): Effect {
   return dmg(unit.magicBasic ? "magic" : "strength", TUNING.basicPower, {
     ranged: unit.rangedBasic || unit.magicBasic,
     basic: true,
-    type: unit.attack ?? (unit.archetype ? MARINARA_ARCHETYPE_ATTACKS[unit.archetype] : "blunt"),
+    type: unit.archetype ? MARINARA_ARCHETYPE_ATTACKS[unit.archetype] : "weapon",
   });
 }
 
@@ -594,7 +602,7 @@ function hitNumbers(actor: LabUnit, target: LabUnit, effect: Effect, all: LabUni
   }
   if (hooks.heavyDraw && !magic) pct += 0.2;
   const best = marinaraBestDamageType(
-    marinaraDamageOptions(effect.type ?? (magic ? "element" : "blunt"), actor.archetype ?? "blade"),
+    actor.classId ? marinaraDamageOptions(effect.type ?? "weapon", actor.classId) : [actor.attackType ?? "blunt"],
     target.affinities,
   );
   // A basic attack is never walled off: immune and absorb count as resist for it.
@@ -680,7 +688,7 @@ function choose(
       case "heal": {
         const hurt = friends.filter((u) => u.hp < u.maxHp * 0.6);
         if (!hurt.length) break;
-        const amount = effStat(actor, "magic", all) + (effect.power ?? 0);
+        const amount = effStat(actor, "magic", all) * TUNING.healMagicPct + (effect.power ?? 0);
         if (effect.target === "party")
           consider(skill, effect, friends, friends.reduce((sum, u) => sum + Math.min(u.maxHp - u.hp, amount), 0) * 1.1);
         else {
@@ -978,7 +986,7 @@ function act(
     }
     case "heal": {
       for (const target of targets) {
-        let amount = effStat(actor, "magic", all) + (effect.power ?? 0);
+        let amount = effStat(actor, "magic", all) * TUNING.healMagicPct + (effect.power ?? 0);
         if (hooks.healCrit && random() < 0.15) amount *= 1.5;
         const before = target.hp;
         target.hp = Math.min(target.maxHp, target.hp + amount);
