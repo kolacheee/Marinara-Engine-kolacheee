@@ -3783,6 +3783,13 @@ function CombatantCard({
           </div>
         )}
 
+        {/* A foe who yielded waits on the party's spare-or-finish choice (Alyssa 2026-11-01). */}
+        {combatant.marinara?.yielded && !isKo && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-amber-500/85 py-0.5 text-center text-[0.55rem] font-semibold uppercase tracking-wide text-black">
+            {localizeUi("game.combat.marinara.yielded")}
+          </div>
+        )}
+
         {/* KO overlay */}
         {isKo && (
           <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/50">
