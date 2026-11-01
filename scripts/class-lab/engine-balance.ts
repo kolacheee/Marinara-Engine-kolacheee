@@ -67,7 +67,7 @@ const PARTIES: MarinaraArchetype[][] = [
 const FOE_KINDS: MarinaraArchetype[] = [...MARINARA_ARCHETYPES];
 
 function fight(seed: number, level: number, tiers: MarinaraEnemyTier[]): CombatDirectorState {
-  const kinds = PARTIES[seed % PARTIES.length]!;
+  const kinds = PARTIES[process.env.PARTY ? Number(process.env.PARTY) : seed % PARTIES.length]!;
   const party = kinds.map((primary, i) =>
     // As the Engine builds a party member: their standard kit for their tier until they have gear.
     marinaraPartyFighter(`p${i}`, `${primary}${i}`, grown(`b:${seed}:${i}`, primary, level)),

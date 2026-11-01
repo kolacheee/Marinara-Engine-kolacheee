@@ -5,6 +5,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import {
+  MARINARA_ARCHETYPE_TRAITS,
   MARINARA_CARRY_SLOTS,
   MARINARA_STATS,
   MARINARA_XP_PER_LEVEL,
@@ -42,7 +43,13 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
     return <p className="text-xs text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.none")}</p>;
   const active = marinaraClass(progression.activeClass);
   const trees = marinaraTrees(progression.primary, progression.temperament);
-  const learned = marinaraLearnedSkills(progression).filter((skill) => skill.classId !== progression.activeClass);
+  // A tree trait the active class already keeps (Cover, Hold the Line for a Guard line) needs no slot.
+  const kept = active ? (MARINARA_ARCHETYPE_TRAITS[active.archetype] ?? []) : [];
+  const learned = marinaraLearnedSkills(progression).filter(
+    (skill) =>
+      skill.classId !== progression.activeClass &&
+      !(kept.includes(skill.id) && marinaraClass(skill.classId)?.archetype === active?.archetype),
+  );
   const save = async (change: { classId?: string; carried?: string[]; equipment?: MarinaraEquipment }) => {
     setBusy(true);
     try {

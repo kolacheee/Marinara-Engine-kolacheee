@@ -685,5 +685,6 @@ const MARINARA_BOARD_CLASSES: Record<NonNullable<MarinaraFighter["archetype"]>, 
   channeler: "mage",
   hexer: "mage",
   mender: "healer",
-  herald: "fighter",
+  // A Herald lifts the party from behind it, as in its Classic back row: reach 1-2 (playtest 2026-11-01).
+  herald: "mage",
 };
