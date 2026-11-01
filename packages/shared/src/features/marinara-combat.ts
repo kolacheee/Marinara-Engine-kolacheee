@@ -123,7 +123,9 @@ export interface MarinaraEffect {
   /** Reaches the back row at full damage from anywhere. */
   ranged?: boolean;
   /** Buff/debuff: stat changed by a share, for `duration` of the target's turns. */
-  stat?: MarinaraStat | "damage" | "damage-taken" | "imbue";
+  stat?: MarinaraStat | "damage" | "damage-taken" | "imbue" | "element-taken";
+  /** Buff: more stats changed alongside `stat`, for the same turns (Grand Inscription). */
+  alsoMods?: readonly { stat: MarinaraStat | "damage" | "damage-taken" | "element-taken"; pct: number }[];
   /** Heal: a share of the target's max HP instead of Magic-based power. */
   pctOfMax?: number;
   pct?: number;
@@ -215,7 +217,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     duration: 1,
     hide: true,
     exposeNext: 0.2,
-    cooldown: 3,
+    cooldown: 2,
   },
   "hit-and-run": dmg("strength", 5, { weight: 0.6 }),
   "double-time": { kind: "extra-turn", target: "self", cooldown: 3 },
@@ -231,7 +233,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Marksman
   "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, weight: 1.2 }),
   pierce: dmg("strength", 7, { ranged: true, pierce: 0.5 }),
-  headshot: dmg("strength", 20, { ranged: true, charge: true, critBonus: 10 }),
+  headshot: dmg("strength", 20, { ranged: true, charge: true, critBonus: 25 }),
   "mark-prey": { kind: "debuff", target: "enemy", stat: "damage-taken", pct: 0.25, duration: 3 },
   "snare-field": { kind: "debuff", target: "all-enemies", stat: "speed", pct: -0.3, duration: 2 },
   volley: dmg("strength", 4, { ranged: true, target: "all-enemies", cooldown: 2 }),
@@ -246,14 +248,20 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "element-bolt": dmg("magic", 7, { ranged: true }),
   "twin-cast": dmg("magic", 5, { ranged: true, hits: 2 }),
   tempest: dmg("magic", 6, { ranged: true, target: "all-enemies", weight: 1.2, cooldown: 2 }),
-  glyph: dmg("magic", 10, { ranged: true, weight: 0.8 }),
-  seal: {
-    kind: "status",
-    target: "enemy",
-    status: "stun",
-    chance: 0.7,
-    duration: 2,
-    exposes: { pct: 0.2, duration: 2 },
+  // Rune Scholar line (Alyssa 2026-11-01): party elemental support. The party's weapons take whichever
+  // of fire, ice and lightning hurts most.
+  "edge-runes": { kind: "buff", target: "party", stat: "imbue", pct: 1, duration: 3, cooldown: 2 },
+  "grand-inscription": {
+    kind: "buff",
+    target: "party",
+    stat: "imbue",
+    pct: 1,
+    duration: 3,
+    cooldown: 3,
+    alsoMods: [
+      { stat: "damage", pct: 0.2 },
+      { stat: "element-taken", pct: -0.3 },
+    ],
   },
   starfall: dmg("magic", 8, { ranged: true, pierce: 1 }),
   convergence: dmg("magic", 24, { ranged: true, charge: true }),
@@ -384,6 +392,8 @@ export interface MarinaraPassiveHooks {
   counter?: "always" | "on-miss";
   healOnKillPct?: number;
   damageBelowHalfPct?: number;
+  /** More damage by this share times the share of max HP the user is missing (Bloodrage). */
+  damagePerMissingPct?: number;
   evadeFirstHitEachRound?: boolean;
   statPct?: Partial<Record<MarinaraStat, number>>;
   mpPct?: number;
@@ -391,6 +401,9 @@ export interface MarinaraPassiveHooks {
   spellDamagePct?: number;
   partySpeedPct?: number;
   partyDefensePct?: number;
+  partyResistancePct?: number;
+  /** The party takes this share more (negative: less) fire, ice and lightning damage (Warding Runes). */
+  partyElementTakenPct?: number;
   partyCritBonus?: number;
   partyMagicTakenPct?: number;
   frontRowDefensePct?: number;
@@ -444,19 +457,20 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   riposte: { counter: "on-miss" },
   "keen-edge": { critBonus: 10 },
   "second-wind": { actOnKill: true },
-  bloodrage: { damageBelowHalfPct: 0.3 },
-  bloodlust: { healOnKillPct: 0.1 },
+  // Bloodsworn (Alyssa 2026-11-01): the lower its HP, the harder it hits, and it drinks from every hit.
+  bloodrage: { damagePerMissingPct: 0.6 },
+  bloodlust: { lifestealPct: 0.15 },
   unstoppable: { unstoppable: true, takenBelowHalfPct: -0.15 },
   "adaptive-grip": { hitBonus: 10, noPenalty: true },
   peerless: { extraActionEvery: 3 },
   stalwart: { defendBonusPct: 0.2 },
-  "shield-wall": { backRowTakenPct: -0.2 },
+  "shield-wall": { backRowTakenPct: -0.25 },
   "last-stand": { lastStand: true },
   retaliate: { counter: "always" },
   "aura-of-warding": { partyMagicTakenPct: -0.35 },
   "elder-oath": { statPct: { resistance: 0.5 } },
   immovable: { unstoppable: true },
-  "shield-line": { frontRowDefensePct: 0.2 },
+  "shield-line": { partyDefensePct: 0.15, partyResistancePct: 0.15 },
   "light-feet": { statPct: { speed: 0.1 } },
   exploit: { critBonus: 15 },
   assassinate: { assassinate: true },
@@ -467,14 +481,15 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "true-aim": { hitBonus: 15 },
   steady: { hitBonus: 5 },
   overwatch: { counter: "always" },
+  "dead-eye": { critBonus: 15 },
   "read-the-signs": { critBonus: 5 },
   "pack-tactics": { partyBonusVsMarked: 0.25 },
   "heavy-draw": { heavyDraw: true },
   sundering: { hitsLowerDefense: 0.1 },
   attunement: { spellDamagePct: 0.15 },
   overcharge: { critBonus: 10 },
-  "spell-ward": { statPct: { resistance: 0.25 } },
-  "prepared-mind": { firstSpellFree: true, mpCostPct: -0.25 },
+  "warding-runes": { partyElementTakenPct: -0.25 },
+  "living-runes": { partyElementTakenPct: -0.35, buffDurationBonus: 1 },
   "deep-well": { mpPct: 0.5 },
   "mana-tide": { mpRegenPct: 0.08 },
   lingering: { debuffDurationBonus: 1 },
@@ -968,6 +983,7 @@ export function marinaraEffectiveStat(
   for (const ally of allies) {
     const hooks = hooksOf(ally);
     if (stat === "speed") pct += hooks.partySpeedPct ?? 0;
+    if (stat === "resistance") pct += hooks.partyResistancePct ?? 0;
     if (stat === "defense") {
       pct += hooks.partyDefensePct ?? 0;
       if (marinaraRowOf(unit, all) === "front") pct += hooks.frontRowDefensePct ?? 0;
@@ -1261,6 +1277,7 @@ export function marinaraHitNumbers(
   if (magic) pct += hooks.spellDamagePct ?? 0;
   pct += (hooks.damagePct ?? 0) + (actor.gear?.damagePct ?? 0);
   if (hooks.damageBelowHalfPct && actor.hp < actor.maxHp / 2) pct += hooks.damageBelowHalfPct;
+  if (hooks.damagePerMissingPct) pct += hooks.damagePerMissingPct * Math.max(0, 1 - actor.hp / actor.maxHp);
   if (actor.enraged) pct += MARINARA_BOSS_RULES.enrageDamagePct;
   if (target.marked > 0 && hooks.bonusVsMarked) pct += hooks.bonusVsMarked;
   if (effect.finisher && target.hp < target.maxHp * effect.finisher.below) pct += effect.finisher.bonus;
@@ -1276,6 +1293,13 @@ export function marinaraHitNumbers(
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
+  // Warding Runes and Grand Inscription: the elements bite the warded party less.
+  if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
+    let cut = modTotal(target, "element-taken");
+    for (const ally of living(all.filter((unit) => unit.side === target.side)))
+      cut += hooksOf(ally).partyElementTakenPct ?? 0;
+    multiplier *= Math.max(0.1, 1 + cut);
+  }
   const melee = !effect.ranged && !magic && !(actor.rangedBasic && effect.basic);
   const rowFactor = !tactical && melee && marinaraRowOf(target, all) === "back" ? MARINARA_BACK_ROW_MELEE_PCT : 1;
   const floor = Math.max(
@@ -1761,6 +1785,8 @@ function act(
     case "buff":
       for (const target of targets) {
         addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
+        for (const also of effect.alsoMods ?? [])
+          addMod(target, also.stat, also.pct, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
         ctx.events.push({ kind: "buff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
       }
       if (effect.hide) actor.hidden = true;

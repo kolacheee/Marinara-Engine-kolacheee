@@ -15,7 +15,7 @@ import {
   type RankedCombatCandidate,
 } from "./combat-ai.js";
 import type { GameDifficulty } from "./combat-conditions.js";
-import { marinaraAffinityMultiplier } from "./marinara-classes.js";
+import { MARINARA_ELEMENTS, marinaraAffinityMultiplier, marinaraClass } from "./marinara-classes.js";
 import {
   MARINARA_TUNING,
   marinaraBasicAttack,
@@ -105,6 +105,15 @@ export function marinaraAiCandidates(
   // What a foe's basic blow does to the party on average.
   const incomingFrom = (foe: MarinaraFighter) =>
     friends.reduce((sum, unit) => sum + hit(foe, unit, marinaraBasicAttack(foe)), 0) / Math.max(1, friends.length);
+  // What the foes who hit with fire, ice or lightning deal the party a round.
+  const elementalIncoming = () =>
+    foes
+      .filter(
+        (foe) =>
+          (MARINARA_ELEMENTS as readonly string[]).includes(foe.attackType ?? "") ||
+          (!!foe.classId && marinaraClass(foe.classId)?.archetype === "channeler"),
+      )
+      .reduce((sum, foe) => sum + incomingFrom(foe), 0);
   const out: CombatAiCandidate<MarinaraChoice>[] = [];
   const add = (
     option: MarinaraOption,
@@ -233,11 +242,23 @@ export function marinaraAiCandidates(
         if (who.some((u) => u.mods.some((m) => m.source === option.id))) break;
         let value = 0;
         if (effect.stat === "imbue") {
-          const plain = bestDamage(actor, all, tactical);
-          actor.mods.push({ stat: "imbue", pct: 1, turns: 1, source: "probe" });
-          const imbued = bestDamage(actor, all, tactical);
-          actor.mods = actor.mods.filter((m) => m.source !== "probe");
-          value = Math.max(0, imbued - plain) * (effect.duration ?? 3) * 0.8;
+          // What the element adds to each imbued fighter's best hit (the whole party for Edge Runes).
+          for (const u of who) {
+            if (u.mods.some((m) => m.stat === "imbue")) continue;
+            const plain = bestDamage(u, all, tactical);
+            u.mods.push({ stat: "imbue", pct: 1, turns: 1, source: "probe" });
+            const imbued = bestDamage(u, all, tactical);
+            u.mods = u.mods.filter((m) => m.source !== "probe");
+            value += Math.max(0, imbued - plain) * (effect.duration ?? 3) * 0.8;
+          }
+          // Grand Inscription's riders: more damage, and less from the elements while threatened.
+          for (const also of effect.alsoMods ?? []) {
+            if (also.stat === "damage")
+              value +=
+                who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0) * also.pct * (effect.duration ?? 1) * 0.7;
+            else if (also.stat === "element-taken" && threatened)
+              value += elementalIncoming() * Math.abs(also.pct) * (effect.duration ?? 1) * 0.8;
+          }
         } else if (effect.exposeNext) {
           if (actor.exposeNext) break;
           const others = friends
