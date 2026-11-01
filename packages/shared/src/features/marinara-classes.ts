@@ -354,6 +354,10 @@ export interface MarinaraClassDef {
   leans: readonly MarinaraStat[];
   /** Where it stands by default when its archetype's row doesn't fit (the Witch line fights in front). */
   row?: "front" | "back";
+  /** Growth points added to (or taken from) its archetype's on top of its leans, for a class whose role
+   *  wants a stat its archetype grows poorly (the Warden's Resistance). Promotion adds a point for
+   *  each 10. */
+  tune?: Partial<Record<MarinaraStat, number>>;
   skills: readonly MarinaraSkillDef[];
 }
 
@@ -378,7 +382,6 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "element-bolt": "element",
   "twin-cast": "element",
   tempest: "element",
-  glyph: "element",
   starfall: "light",
   convergence: "element",
   siphon: "dark",
@@ -481,8 +484,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["strength", "hp"],
       skills: [
         active("reckless-swing", "Reckless Swing", 10, "strength", 3, "A big hit that lowers the user's Defense."),
-        passive("bloodrage", "Bloodrage", 12, "More damage below half HP."),
-        passive("bloodlust", "Bloodlust", 15, "Heals 10% of max HP on a kill.", true),
+        passive("bloodrage", "Bloodrage", 12, "Up to +60% damage, rising with every point of HP the user is missing."),
+        passive("bloodlust", "Bloodlust", 15, "Drinks back 15% of the damage the user deals.", true),
       ],
     },
     {
@@ -586,11 +589,10 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["hp", "defense"],
       skills: [
         active("provoke", "Provoke", 10, "defense", 3, "Every enemy must target the user for a round.", true),
-        passive("shield-wall", "Shield Wall", 15, "The back row takes less damage while the user stands."),
         passive(
           "retaliate",
           "Retaliate",
-          18,
+          15,
           "Counters any hit it can reach back: melee hits, or any hit when the user attacks at range.",
           true,
         ),
@@ -604,6 +606,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["hp", "defense", "resistance"],
       skills: [
         active("fortress", "Fortress", 20, "defense", 12, "The party takes half damage for a round. Long cooldown."),
+        passive("shield-wall", "Shield Wall", 22, "The back row takes 25% less damage while the user stands."),
         passive("last-stand", "Last Stand", 24, "Survives one lethal hit a fight.", true),
       ],
     },
@@ -613,6 +616,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "guard",
       role: "Wards the party against magic (an old oath, nature and light)",
       leans: ["resistance", "hp"],
+      // The magic tank (Alyssa 2026-11-01): out-grows any Hexer in Resistance.
+      tune: { resistance: 20 },
       skills: [
         active("spellguard", "Spellguard", 10, "resistance", 4, "+30% Resistance to the party for 2 rounds."),
         passive(
@@ -630,6 +635,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "warden",
       role: "Unbowed by any spell",
       leans: ["resistance", "hp", "defense"],
+      tune: { resistance: 20 },
       skills: [
         active("verdict", "Verdict", 20, "resistance", 8, "Light damage based on the user's Resistance.", true),
         passive("elder-oath", "Elder Oath", 24, "+50% Resistance; immune to Doom and sleep."),
@@ -641,6 +647,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "guard",
       role: "Guards against everything",
       leans: ["hp", "defense", "resistance"],
+      // A Pure Guard stands up to magic too, so a magic-heavy game doesn't push it into the Warden.
+      tune: { resistance: 5 },
       skills: [
         active(
           "warding-stance",
@@ -660,6 +668,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "aegis",
       role: "The wall that never falls",
       leans: ["hp", "defense", "resistance", "luck"],
+      tune: { resistance: 5 },
       skills: [
         active(
           "oath-of-iron",
@@ -669,7 +678,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           15,
           "Allies cannot drop below 1 HP for a round. Once a fight.",
         ),
-        passive("shield-line", "Shield Line", 25, "The front row gains Defense.", true),
+        passive("shield-line", "Shield Line", 25, "The whole party gains 15% Defense and Resistance.", true),
       ],
     },
   ]),
@@ -709,7 +718,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "speed",
           8,
-          "Untargetable for a turn; the next hit crits and exposes its target (+20% damage from everyone for 2 turns). Cooldown 3.",
+          "Untargetable for a turn; the next hit crits and exposes its target (+20% damage from everyone for 2 turns). Cooldown 2.",
           true,
         ),
         passive("assassinate", "Assassinate", 24, "A crit on a target below 15% HP defeats it. Never bosses."),
@@ -804,7 +813,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "One shot, one kill",
       leans: ["skill", "strength"],
       skills: [
-        active("headshot", "Headshot", 20, "skill", 10, "A huge single hit after a turn of charging."),
+        active(
+          "headshot",
+          "Headshot",
+          20,
+          "skill",
+          10,
+          "A huge single hit after a turn of charging; +25% crit chance.",
+        ),
+        passive("dead-eye", "Dead Eye", 22, "+15% crit chance."),
         passive("overwatch", "Overwatch", 24, "Shoots the first enemy to act each round.", true),
       ],
     },
@@ -898,34 +915,49 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "rune-scholar",
       label: "Rune Scholar",
       from: "channeler",
-      role: "Wards and prepared spells",
-      leans: ["magic", "resistance"],
+      // Party elemental support (Alyssa 2026-11-01): wards the party against the elements and lends
+      // its weapons an edge of them. Not a durable class.
+      role: "Wards the party against the elements and lends its weapons their edge",
+      leans: ["magic", "speed"],
       skills: [
-        active("glyph", "Glyph", 10, "magic", 5, "A spell set now that fires on the next enemy to act."),
-        passive("spell-ward", "Spell Ward", 15, "+Resistance.", true),
+        active(
+          "edge-runes",
+          "Edge Runes",
+          10,
+          "magic",
+          6,
+          "For 3 turns the party's weapon attacks and skills strike with fire, ice or lightning, whichever hurts most.",
+        ),
+        passive(
+          "warding-runes",
+          "Warding Runes",
+          15,
+          "The party takes 25% less fire, ice and lightning damage while the user stands.",
+          true,
+        ),
       ],
     },
     {
       id: "runelord",
       label: "Runelord",
       from: "rune-scholar",
-      role: "Bends the battlefield",
-      leans: ["magic", "resistance"],
+      role: "Writes the elements into the whole party",
+      leans: ["magic", "speed", "luck"],
       skills: [
         active(
-          "seal",
-          "Seal",
+          "grand-inscription",
+          "Grand Inscription",
           20,
           "magic",
-          10,
-          "Locks an enemy's skills for 2 turns; a sealed foe takes 20% more damage.",
+          12,
+          "For 3 turns the party's weapon attacks take their best element, the party deals 20% more damage and takes 30% less fire, ice and lightning damage. Every third turn.",
+          true,
         ),
         passive(
-          "prepared-mind",
-          "Prepared Mind",
+          "living-runes",
+          "Living Runes",
           24,
-          "Spells cost 25% less MP, and the first spell each fight costs none.",
-          true,
+          "The party takes 35% less fire, ice and lightning damage while the user stands, and the user's buffs last a turn longer.",
         ),
       ],
     },
@@ -995,6 +1027,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Front-line curser, fed by what it drains",
       leans: ["magic", "hp", "defense"],
       row: "front",
+      // A little more Defense for the front line (Alyssa 2026-11-01).
+      tune: { defense: 10 },
       skills: [
         active(
           "rot",
@@ -1012,8 +1046,11 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Carrion Lord",
       from: "witch",
       role: "Holds the front line by devouring it",
-      leans: ["magic", "hp", "defense", "resistance"],
+      // No Resistance lean (Alyssa 2026-11-01): the Hexer is the best magic tank at level 10, but the
+      // Warden line is the best one after.
+      leans: ["magic", "hp", "defense"],
       row: "front",
+      tune: { defense: 10 },
       skills: [
         active(
           "carrion-feast",
@@ -1060,9 +1097,10 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "hexer",
       role: "Steals power",
       leans: ["magic", "resistance", "luck"],
+      tune: { resistance: -10 },
       skills: [
         active("siphon", "Siphon", 10, "magic", 5, "Steals a buff or drains MP.", true),
-        passive("null", "Null", 15, "Immune to debuffs."),
+        passive("devour", "Devour", 15, "Heals when a debuff the user placed expires.", true),
       ],
     },
     {
@@ -1071,6 +1109,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "nullifier",
       role: "Darkness made will",
       leans: ["magic", "resistance", "luck", "hp"],
+      tune: { resistance: -15 },
       skills: [
         active(
           "total-eclipse",
@@ -1080,7 +1119,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           18,
           "Strips every enemy buff and lowers their stats for 2 rounds.",
         ),
-        passive("devour", "Devour", 25, "Heals when a debuff the user placed expires.", true),
+        // Immunity is a master's gift (Alyssa 2026-11-01): Null moved here from the Nullifier.
+        passive("null", "Null", 25, "Immune to debuffs.", true),
       ],
     },
   ]),
@@ -1251,7 +1291,9 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Standard-Bearer",
       from: "herald",
       role: "The flag the party fights under",
-      leans: ["luck", "hp", "defense"],
+      // Luck, Speed and Skill (Alyssa 2026-11-01: not HP and Defense): raises the banner first and
+      // carries it well, but isn't a wall.
+      leans: ["luck", "speed", "skill"],
       skills: [
         active(
           "raise-the-banner",
@@ -1294,25 +1336,28 @@ export function marinaraBaseClass(archetype: MarinaraArchetype): MarinaraClassDe
 export function marinaraClassGrowth(def: MarinaraClassDef): MarinaraStats {
   const base = MARINARA_ARCHETYPE_BASES[def.archetype].growth;
   const lift = def.tier === "base" ? 0 : def.tier === "advanced" ? 10 : 15;
-  return statRecord((stat) => base[stat] + (def.leans.includes(stat) ? lift : 0));
+  return statRecord((stat) =>
+    Math.max(0, base[stat] + (def.leans.includes(stat) ? lift : 0) + (def.tune?.[stat] ?? 0)),
+  );
 }
 
-/** What promoting into a class adds at once: its leans +2 (+3 for a master), HP +4 (+5), and +1 to
- *  every other stat its archetype grows at all. */
+/** What promoting into a class adds at once: its leans +2 (+3 for a master), HP +4 (+5), +1 to
+ *  every other stat its archetype grows at all, and a point for each 10 of its tune. */
 export function marinaraPromotionBonus(def: MarinaraClassDef): MarinaraStats {
   if (def.tier === "base") return statRecord(() => 0);
   const master = def.tier === "master";
   const growth = MARINARA_ARCHETYPE_BASES[def.archetype].growth;
-  return statRecord((stat) =>
-    stat === "hp"
-      ? (master ? 5 : 4) + (def.leans.includes("hp") ? 1 : 0)
-      : def.leans.includes(stat)
-        ? master
-          ? 3
-          : 2
-        : growth[stat] > 10
-          ? 1
-          : 0,
+  return statRecord(
+    (stat) =>
+      (stat === "hp"
+        ? (master ? 5 : 4) + (def.leans.includes("hp") ? 1 : 0)
+        : def.leans.includes(stat)
+          ? master
+            ? 3
+            : 2
+          : growth[stat] > 10
+            ? 1
+            : 0) + Math.round((def.tune?.[stat] ?? 0) / 10),
   );
 }
 
