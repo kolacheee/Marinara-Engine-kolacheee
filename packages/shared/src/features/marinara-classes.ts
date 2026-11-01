@@ -1769,17 +1769,26 @@ export function scaleMarinaraXp(input: {
 
 /** Adds XP to the character and their active class; levels up (rolling growth) as it passes 100s,
  *  up to the cap. */
+/** A class below this share of the character's level earns class XP times `multiplier`. */
+export const MARINARA_CLASS_CATCH_UP = { below: 0.5, multiplier: 2 } as const;
+
 export function awardMarinaraXp(
   progression: MarinaraProgression,
   xp: number,
   random: () => number,
 ): { progression: MarinaraProgression; levelUps: MarinaraLevelUp[] } {
+  // Class catch-up (Alyssa 2026-11-01, item 7): a class trained below half the character's level earns
+  // double class XP, so trying the secondary tree late isn't a grind from class level 1.
+  const behind =
+    (progression.classLevels[progression.activeClass] ?? 1) <
+    Math.floor(progression.level * MARINARA_CLASS_CATCH_UP.below);
+  const classGain = Math.max(0, Math.round(xp)) * (behind ? MARINARA_CLASS_CATCH_UP.multiplier : 1);
   let next: MarinaraProgression = {
     ...progression,
     xp: progression.xp + Math.max(0, Math.round(xp)),
     classXp: {
       ...progression.classXp,
-      [progression.activeClass]: (progression.classXp[progression.activeClass] ?? 0) + Math.max(0, Math.round(xp)),
+      [progression.activeClass]: (progression.classXp[progression.activeClass] ?? 0) + classGain,
     },
   };
   const levelUps: MarinaraLevelUp[] = [];
@@ -1830,4 +1839,67 @@ export function expectedMarinaraStats(archetype: MarinaraArchetype, level: numbe
     for (const stat of MARINARA_STATS) out[stat] += growth[stat] / 100;
   }
   return statRecord((stat) => Math.round(out[stat] * 10) / 10);
+}
+
+/**
+ * Carries from the secondary tree that suit a character's primary tree (Alyssa 2026-11-01, item 7):
+ * testers rarely trained their secondary tree because nothing said what it offered. Named pairs carry
+ * their own reason; otherwise the secondary tree's carry picks from its base class, with their summary.
+ */
+const SECONDARY_FITS: Partial<Record<`${MarinaraArchetype}>${MarinaraArchetype}`, Array<[string, string]>>> = {
+  "marksman>guard": [
+    ["sworn-ward", "Ward your tank: whoever attacks them gets shot back, at range."],
+    ["challenge", "Pull one foe off the back row while you shoot."],
+  ],
+  "scout>guard": [["challenge", "Draw a foe onto your hard-to-hit Scout so the rest of the party strikes freely."]],
+  "guard>hexer": [["drain-touch", "Your hits heal you: a tank that mends itself."]],
+  "guard>marksman": [["true-aim", "Your counters land more often."]],
+  "blade>herald": [["rally", "Lift the party's damage before your heavy hits."]],
+  "blade>scout": [["keen-eye", "More hits and crits on every swing."]],
+  "channeler>hexer": [["weaken", "Blunt the foe that threatens your back row."]],
+  "hexer>channeler": [["element-bolt", "A damage spell that finds weaknesses."]],
+  "hexer>mender": [["second-breath", "Heal yourself without spending a healer's turn."]],
+  "mender>guard": [["steadfast", "+20% max HP keeps the healer standing."]],
+  "herald>blade": [["battle-rhythm", "+15% damage on every attack, so a Herald hits back."]],
+  "marksman>herald": [["rally", "Raise the party's damage, then shoot."]],
+};
+
+export interface MarinaraSecondaryFit {
+  skillId: string;
+  label: string;
+  classId: string;
+  classLabel: string;
+  learnedAt: number;
+  reason: string;
+}
+
+export function marinaraSecondaryFits(progression: MarinaraProgression, max = 3): MarinaraSecondaryFit[] {
+  const trees = marinaraTrees(progression.primary, progression.temperament);
+  if (!trees.secondary) return [];
+  const inTree = MARINARA_CLASSES.filter((def) => def.archetype === trees.secondary);
+  const find = (skillId: string) => {
+    for (const def of inTree) {
+      const skill = def.skills.find((one) => one.id === skillId);
+      if (skill) return { def, skill };
+    }
+    return undefined;
+  };
+  const out: MarinaraSecondaryFit[] = [];
+  const add = (skillId: string, reason?: string) => {
+    const hit = find(skillId);
+    if (!hit || out.some((one) => one.skillId === skillId) || out.length >= max) return;
+    out.push({
+      skillId,
+      label: hit.skill.label,
+      classId: hit.def.id,
+      classLabel: hit.def.label,
+      learnedAt: hit.skill.learnedAt,
+      reason: reason ?? hit.skill.summary,
+    });
+  };
+  for (const [skillId, reason] of SECONDARY_FITS[`${trees.primary}>${trees.secondary}`] ?? []) add(skillId, reason);
+  const traits = MARINARA_ARCHETYPE_TRAITS[trees.secondary] ?? [];
+  for (const skill of inTree.find((def) => def.tier === "base")?.skills ?? [])
+    if (skill.carryPick && !traits.includes(skill.id)) add(skill.id);
+  return out;
 }
