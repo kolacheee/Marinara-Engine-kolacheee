@@ -1080,7 +1080,9 @@ export function marinaraTargetsFor(
   const friends = living(all.filter((unit) => unit.side === actor.side));
   if (effect.target === "self") return [actor];
   if (effect.target === "party") return friends;
-  if (effect.target === "ally") return friends;
+  // Guarding or watching over someone means someone else.
+  if (effect.target === "ally")
+    return effect.kind === "cover" || effect.kind === "ward" ? friends.filter((unit) => unit !== actor) : friends;
   if (effect.target === "downed-ally") return all.filter((unit) => unit.side === actor.side && unit.hp <= 0);
   const taunter = actor.tauntTurns > 0 ? foes.find((unit) => unit.id === actor.tauntedBy) : undefined;
   if (taunter && (effect.target === "enemy" || effect.target === "front-row")) return [taunter];
