@@ -2047,7 +2047,15 @@ export function GameCombatUI({
 
           <div className="relative z-0 grid min-h-0 flex-1 grid-rows-[minmax(min-content,1fr)_auto] gap-y-[clamp(1.25rem,5svh,2.5rem)] overflow-y-auto overflow-x-hidden px-2 py-[clamp(0.5rem,2svh,1rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <div className="overflow-x-auto overflow-y-visible pt-[clamp(2.75rem,9svh,4rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <div className="flex w-max min-w-full flex-nowrap items-start justify-center gap-[clamp(0.25rem,1.5vw,0.5rem)]">
+              <div
+                className={cn(
+                  "items-start justify-center gap-x-[clamp(0.25rem,1.5vw,0.5rem)]",
+                  // More than four to a side on a phone: lines of three rather than one line off the edge.
+                  enemies.length > 4
+                    ? "grid w-full grid-cols-3 justify-items-center gap-y-2"
+                    : "flex w-max min-w-full flex-nowrap",
+                )}
+              >
                 {enemies.map((enemy) => (
                   <div
                     key={`stage-${enemy.id}`}
@@ -2062,7 +2070,7 @@ export function GameCombatUI({
                       isActive={turnOrder[0]?.id === enemy.id && phase === "animating"}
                       onSelect={() => handleTargetSelect(enemy.id)}
                       damagePopups={damagePopups.filter((p) => p.targetId === enemy.id)}
-                      sideCount={enemies.length}
+                      sideCount={enemies.length > 4 ? 3 : enemies.length}
                       compact
                     />
                     {enemy.marinara?.row === "back" && (
@@ -2076,7 +2084,15 @@ export function GameCombatUI({
             </div>
 
             <div className="shrink-0 overflow-x-auto overflow-y-visible pb-[clamp(0.75rem,3svh,1.5rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <div className="flex w-max min-w-full flex-nowrap items-end justify-center gap-[clamp(0.25rem,1.5vw,0.5rem)]">
+              <div
+                className={cn(
+                  "items-end justify-center gap-x-[clamp(0.25rem,1.5vw,0.5rem)]",
+                  // More than four to a side on a phone: lines of three rather than one line off the edge.
+                  party.length > 4
+                    ? "grid w-full grid-cols-3 justify-items-center gap-y-2"
+                    : "flex w-max min-w-full flex-nowrap",
+                )}
+              >
                 {party.map((member, i) => (
                   <div
                     key={`stage-${member.id}`}
@@ -2098,7 +2114,7 @@ export function GameCombatUI({
                           : undefined
                       }
                       damagePopups={damagePopups.filter((p) => p.targetId === member.id)}
-                      sideCount={party.length}
+                      sideCount={party.length > 4 ? 3 : party.length}
                       compact
                     />
                     {member.marinara?.row === "back" && (
