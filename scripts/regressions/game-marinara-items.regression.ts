@@ -370,6 +370,17 @@ console.log("game-marinara-items (steal) passed");
   assert.ok(marinaraBelowStandard(standard.weapon!.replace("-t3", "-t2"), "weapon", "blade", 3));
   assert.ok(!marinaraBelowStandard(standard.weapon!, "weapon", "blade", 3));
   assert.ok(!marinaraBelowStandard(standard.armor!.replace("-t3", "-t4"), "armor", "blade", 3));
+  // A martial wearer gets nothing from a mace's spell power (browser check G1: a T2 mace next to a T3
+  // spear for a Guard), and a caster nothing from a blade's weapon power.
+  const guard = marinaraStandardEquipment("guard", 3);
+  assert.ok(marinaraBelowStandard("mace-t2", "weapon", "guard", 3, 14), `mace-t2 below ${guard.weapon}`);
+  assert.ok(marinaraBelowStandard(guard.weapon!.replace("-t3", "-t2"), "weapon", "guard", 3, 14));
+  assert.ok(!marinaraBelowStandard(guard.weapon!.replace("-t3", "-t4"), "weapon", "guard", 3, 14));
+  const channeler = marinaraStandardEquipment("channeler", 3);
+  assert.ok(
+    marinaraBelowStandard("longblade-t3", "weapon", "channeler", 3, 8),
+    `a sword is below ${channeler.weapon} for a caster`,
+  );
 }
 console.log("game-marinara-items (standard fallback) passed");
 
@@ -467,7 +478,9 @@ console.log("game-marinara-items (equipping) passed");
     gameCharacterCards: [{ marinara: { level: 12, activeClass: "blade" } }],
   })!;
   assert.ok(blade.shop!.length < classic.shop!.length, `trimmed (${blade.shop!.length} vs ${classic.shop!.length})`);
-  console.log(`a T3 Classic shop for one class (all sizes, with the kit's own goods) lists ${blade.shop!.length} wares`);
+  console.log(
+    `a T3 Classic shop for one class (all sizes, with the kit's own goods) lists ${blade.shop!.length} wares`,
+  );
   // A party with no Classic progression yet shops at T1.
   const fresh = marinaraGameWorldKit({ ...meta, gameCharacterCards: [] })!;
   assert.ok(fresh.shop!.length < classic.shop!.length);
