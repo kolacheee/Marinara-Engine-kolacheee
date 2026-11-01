@@ -355,6 +355,24 @@ console.log("game-marinara-items (in a game) passed");
 }
 console.log("game-marinara-items (steal) passed");
 
+// ── Empty slots fall back to the standard kit (items playtest I1) ──
+{
+  const { marinaraWornEquipment, marinaraBelowStandard, marinaraStandardEquipment } =
+    await import("../../packages/shared/src/index.js");
+  const standard = marinaraStandardEquipment("blade", 3);
+  const ring = marinaraWornEquipment("blade", 3, { accessories: ["charm-strength-1"] });
+  assert.equal(ring.weapon, standard.weapon, "a ring alone keeps the kit's weapon");
+  assert.equal(ring.armor, standard.armor, "and its armour");
+  assert.deepEqual(ring.accessories, ["charm-strength-1"]);
+  assert.deepEqual(marinaraWornEquipment("blade", 3, undefined), standard);
+  assert.equal(marinaraWornEquipment("blade", 3, { weapon: "knife-t3" }).weapon, "knife-t3", "own pieces are kept");
+  // Last tier's piece is below the kit; the kit's own piece and next tier's are not.
+  assert.ok(marinaraBelowStandard(standard.weapon!.replace("-t3", "-t2"), "weapon", "blade", 3));
+  assert.ok(!marinaraBelowStandard(standard.weapon!, "weapon", "blade", 3));
+  assert.ok(!marinaraBelowStandard(standard.armor!.replace("-t3", "-t4"), "armor", "blade", 3));
+}
+console.log("game-marinara-items (standard fallback) passed");
+
 // ── Equipping from the bag ──
 {
   const { marinaraOwnedGear, marinaraEquipRefusal, marinaraEquipmentForClass } =

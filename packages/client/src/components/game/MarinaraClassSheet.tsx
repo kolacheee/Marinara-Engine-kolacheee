@@ -9,12 +9,15 @@ import {
   MARINARA_STATS,
   MARINARA_XP_PER_LEVEL,
   MARINARA_ACCESSORY_SLOTS,
+  marinaraBelowStandard,
   marinaraCanEquip,
   marinaraClass,
   marinaraClassBlock,
   marinaraGameItemPlace,
   marinaraItemName,
   marinaraOwnedGear,
+  marinaraStandardEquipment,
+  marinaraTierForLevel,
   normalizeGameInventoryStacks,
   type MarinaraEquipment,
   marinaraLearnedSkills,
@@ -66,6 +69,11 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
   const place = marinaraGameItemPlace(metadata);
   const owned = marinaraOwnedGear(normalizeGameInventoryStacks(metadata.gameInventory), place);
   const equipment = progression.equipment ?? {};
+  // An empty weapon or armour slot fights with the class's standard piece for their tier; a piece worth
+  // less than it is marked, so a looted dagger isn't worn by mistake (items playtest I1).
+  const archetype = marinaraClass(progression.activeClass)?.archetype ?? progression.primary;
+  const tier = marinaraTierForLevel(progression.level);
+  const standard = marinaraStandardEquipment(archetype, tier);
   const options = (slot: "weapon" | "armor" | "accessory", current: string | undefined) => {
     const ids = owned
       .filter((gear) => gear.slot === slot && marinaraCanEquip(progression.activeClass, gear.id, slot))
@@ -82,7 +90,13 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
       },
     });
   };
-  const slotSelect = (label: string, value: string | undefined, ids: string[], pick: (id: string) => void) => (
+  const slotSelect = (
+    label: string,
+    value: string | undefined,
+    ids: string[],
+    pick: (id: string) => void,
+    slot?: "weapon" | "armor",
+  ) => (
     <label key={label} className="flex items-center gap-2">
       <span className="w-24 shrink-0 text-[var(--muted-foreground)]">{label}</span>
       <select
@@ -91,10 +105,16 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
         disabled={busy}
         onChange={(event) => pick(event.target.value)}
       >
-        <option value="">{t("game.combat.marinara.sheet.gearNothing")}</option>
+        <option value="">
+          {slot && standard[slot]
+            ? t("game.combat.marinara.sheet.gearStandardPiece", { name: marinaraItemName(standard[slot]!, place) })
+            : t("game.combat.marinara.sheet.gearNothing")}
+        </option>
         {ids.map((id) => (
           <option key={id} value={id}>
-            {marinaraItemName(id, place)}
+            {slot && marinaraBelowStandard(id, slot, archetype, tier)
+              ? t("game.combat.marinara.sheet.gearBelowStandard", { name: marinaraItemName(id, place) })
+              : marinaraItemName(id, place)}
           </option>
         ))}
       </select>
@@ -177,20 +197,20 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
           </div>
           <div className="space-y-1" data-testid="marinara-gear">
             <p className="font-medium">{t("game.combat.marinara.sheet.gear")}</p>
-            {!progression.equipment && (
-              <p className="text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.gearStandard")}</p>
-            )}
+            <p className="text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.gearStandard")}</p>
             {slotSelect(
               t("game.combat.marinara.sheet.slot.weapon"),
               equipment.weapon,
               options("weapon", equipment.weapon),
               (id) => wear({ ...equipment, weapon: id || undefined }),
+              "weapon",
             )}
             {slotSelect(
               t("game.combat.marinara.sheet.slot.armor"),
               equipment.armor,
               options("armor", equipment.armor),
               (id) => wear({ ...equipment, armor: id || undefined }),
+              "armor",
             )}
             {Array.from({ length: MARINARA_ACCESSORY_SLOTS }, (_, n) => {
               const current = equipment.accessories?.[n];
