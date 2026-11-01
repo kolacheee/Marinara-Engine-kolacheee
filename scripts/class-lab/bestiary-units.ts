@@ -20,6 +20,7 @@ import {
   createMarinaraProgression,
   marinaraClass,
   marinaraClassBlock,
+  marinaraKeptTraits,
   marinaraLearnedSkills,
   marinaraOpenClasses,
   marinaraRandom,
@@ -133,7 +134,9 @@ function harnessGrown(primary: string, level: number, seed: string): MarinaraPro
 }
 
 function carried(p: MarinaraProgression): MarinaraProgression {
-  const earlier = marinaraLearnedSkills(p).filter((skill) => skill.classId !== p.activeClass);
+  // Tree traits are kept by every class of the tree and can't be carried.
+  const kept = new Set(marinaraKeptTraits(p));
+  const earlier = marinaraLearnedSkills(p).filter((skill) => skill.classId !== p.activeClass && !kept.has(skill.id));
   const ranked = [...earlier].sort(
     (a, b) =>
       Number(Boolean(b.carryPick)) - Number(Boolean(a.carryPick)) ||
