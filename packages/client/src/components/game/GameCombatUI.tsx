@@ -2057,7 +2057,8 @@ export function GameCombatUI({
               className={cn(
                 // A scroll box's automatic minimum height is 0: hold it to its cards.
                 "min-h-min overflow-x-auto overflow-y-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-                crowdedStage ? "pt-6" : "pt-[clamp(2.75rem,9svh,4rem)]",
+                // Clear of the floating buttons over the stage's top (about 44px).
+                crowdedStage ? "pt-11" : "pt-[clamp(2.75rem,9svh,4rem)]",
               )}
             >
               <div
@@ -3610,16 +3611,16 @@ function CombatantCard({
     "--combat-card-width": artSize
       ? `${Math.max(120, artSize + 24)}px`
       : slim
-        ? // A crowded phone stage: three cards across, the name and HP bar using the width.
-          "min(calc((100vw - 2.5rem) / 3), 7.5rem)"
+        ? // A crowded phone stage: a line's share of the width (three across at most), for name and HP.
+          `min(calc((100vw - 2.5rem) / ${combatantCount}), 7.5rem)`
         : compact
           ? `clamp(2.75rem, min(22vw, 9svh, ${compactFitWidth}), 5.5rem)`
           : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
     "--combat-avatar-size": artSize
       ? `${artSize}px`
       : slim
-        ? // Lines of cards share about 36svh, less ~2.25rem of name and HP bar a line.
-          `clamp(2rem, calc(36svh / ${lines} - 2.25rem), 4rem)`
+        ? // Lines of cards share about 28svh of art, less ~2.25rem of name and HP bar a line.
+          `clamp(2rem, calc(28svh / ${lines} - 2.25rem), 4rem)`
         : compact
           ? "calc(var(--combat-card-width) - 1rem)"
           : "calc(var(--combat-card-width) - 1.5rem)",
