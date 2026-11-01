@@ -607,7 +607,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "sentinel",
       label: "Sentinel",
       from: "guard",
-      role: "Guards who draw every attack onto themselves and answer each one with steel.",
+      role: "Guards who draw attacks onto themselves and strike back at anyone who hits them or their ward.",
       leans: ["hp", "defense"],
       skills: [
         active("provoke", "Provoke", 10, "defense", 3, "Forces all foes to target the user for 2 turns.", true),
