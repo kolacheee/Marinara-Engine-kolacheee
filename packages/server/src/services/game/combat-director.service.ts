@@ -1373,7 +1373,12 @@ function effect(s: CombatDirectorState, p: Pending) {
         const at = units.find((one) => one.id === id);
         return !!at && Math.abs(at.x - tu.x) + Math.abs(at.y - tu.y) <= range;
       };
-      performMarinaraTacticalAction(s.marinara, tu.id, action, s.seed, marinaraLog(s), near, reach, p.source);
+      const apart = (a: string, b: string) => {
+        const one = units.find((x) => x.id === a);
+        const two = units.find((x) => x.id === b);
+        return one && two ? Math.abs(one.x - two.x) + Math.abs(one.y - two.y) : Infinity;
+      };
+      performMarinaraTacticalAction(s.marinara, tu.id, action, s.seed, marinaraLog(s), near, reach, p.source, apart);
       tu.hasActed = true;
       if (a.type === "defend") tu.defending = true;
       // A commanded ally takes its extra action next, by side or by initiative alike, and keeps its

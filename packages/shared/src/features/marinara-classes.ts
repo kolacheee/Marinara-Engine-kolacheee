@@ -978,7 +978,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "grave-hunger",
           "Grave Hunger",
           9,
-          "Each enemy in reach (their front row while the Hexer stands in front; next to it on a board) gives up 12% of its Defense and Resistance to the Hexer while it lives and stays in reach. Up to five.",
+          "Every enemy within the Hexer's spell reach (all of them in Classic; 3 tiles on a board) gives up 15% of its Defense and Resistance to the Hexer while it lives and stays in reach. Up to five.",
         ),
       ],
     },

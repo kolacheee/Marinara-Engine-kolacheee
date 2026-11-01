@@ -348,12 +348,12 @@ const HARMFUL = new Set<MarinaraStatusId>([
 
 /** Passive hooks the resolver reads. */
 /**
- * Grave Hunger (Alyssa 2026-11-01): each enemy in a Hexer's reach gives up a share of its Defense
- * and Resistance to the Hexer while it lives and stays in reach, so a Hexer holds a front line
- * better the more foes crowd it. Reach is the enemy front row while the Hexer stands in front in
- * Classic, and the foes next to it on a board. Counts at most `most` foes.
+ * Grave Hunger (Alyssa 2026-11-01): every enemy within a Hexer's spell reach gives up a share of its
+ * Defense and Resistance to the Hexer while it lives and stays in reach, so a Hexer stands up better
+ * the more foes crowd the field. In Classic a Hexer's curses reach every foe; on a board, foes within
+ * its spell range. Counts at most `most` foes.
  */
-export const MARINARA_GRAVE_HUNGER = { pct: 0.12, most: 5 };
+export const MARINARA_GRAVE_HUNGER = { pct: 0.15, most: 5 };
 
 export interface MarinaraPassiveHooks {
   damagePct?: number;
@@ -504,8 +504,10 @@ export interface MarinaraFighter {
   maxStamina: number;
   stamina: number;
   affinities?: MarinaraAffinities;
-  /** On a board: the foes next to it, as the director last saw them (Grave Hunger, Sworn Ward). */
+  /** On a board: the foes next to it, as the director last saw them (Sworn Ward). */
   nearFoes?: string[];
+  /** On a board: the foes within a Hexer's spell reach (Grave Hunger). */
+  spellFoes?: string[];
   /** Carried skill ids, and the stats they run on (best-trained class). */
   carriedIds?: string[];
   carriedStats?: Partial<MarinaraStats>;
@@ -992,13 +994,7 @@ export function marinaraWarderReaches(
 export function marinaraLeeched(unit: MarinaraFighter, all: readonly MarinaraFighter[]): MarinaraFighter[] {
   if (unit.hp <= 0) return [];
   const foes = all.filter((other) => other.side !== unit.side && other.hp > 0);
-  const inReach = unit.nearFoes
-    ? foes.filter((foe) => unit.nearFoes!.includes(foe.id))
-    : unit.row !== "front"
-      ? []
-      : foes.some((foe) => foe.row === "front")
-        ? foes.filter((foe) => foe.row === "front")
-        : foes;
+  const inReach = unit.spellFoes ? foes.filter((foe) => unit.spellFoes!.includes(foe.id)) : foes;
   return inReach.slice(0, MARINARA_GRAVE_HUNGER.most);
 }
 

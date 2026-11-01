@@ -38,32 +38,29 @@ const party = (id: string) =>
     progression: createMarinaraProgression({ seed: id, primary: "guard", temperament: "disciplined" }),
   });
 
-// Grave Hunger: a front-row Hexer takes a share of the enemy front row's Defense and Resistance.
+// Grave Hunger: a Hexer takes a share of every foe in spell reach's Defense and Resistance.
 {
   const progression = awardMarinaraXp(
     createMarinaraProgression({ seed: "hex", primary: "hexer", temperament: "cruel" }),
     800,
     marinaraRandom("hex"),
   ).progression;
-  const hexer = buildMarinaraPartyFighter({ id: "hex", name: "Hex", progression, row: "front" });
+  const hexer = buildMarinaraPartyFighter({ id: "hex", name: "Hex", progression, row: "back" });
   assert.ok(
     hexer.skills.some((skill) => skill.id === "grave-hunger"),
     "learned by class level 9",
   );
   const foes = ["f1", "f2"].map((id) => buildMarinaraEnemy({ id, name: id, level: 9, tier: "standard" }));
-  for (const foe of foes) foe.row = "front";
+  foes[1]!.row = "back";
   const all = [hexer, ...foes];
-  assert.equal(marinaraLeeched(hexer, all).length, 2);
+  assert.equal(marinaraLeeched(hexer, all).length, 2, "every foe, either row, from either row");
   const taken = foes.reduce((sum, foe) => sum + foe.stats.defense * MARINARA_GRAVE_HUNGER.pct, 0);
   assert.ok(Math.abs(marinaraEffectiveStat(hexer, "defense", all) - (hexer.stats.defense + taken)) < 1e-9);
   assert.ok(marinaraEffectiveStat(foes[0]!, "defense", all) < foes[0]!.stats.defense, "the foe loses it");
-  hexer.row = "back";
-  assert.equal(marinaraLeeched(hexer, all).length, 0, "nothing from the back row");
-  hexer.row = "front";
   foes[1]!.hp = 0;
   assert.equal(marinaraLeeched(hexer, all).length, 1, "a fallen foe gives nothing");
-  hexer.nearFoes = [];
-  assert.equal(marinaraLeeched(hexer, all).length, 0, "on a board, only foes next to it");
+  hexer.spellFoes = [];
+  assert.equal(marinaraLeeched(hexer, all).length, 0, "on a board, only foes in spell reach");
 }
 
 // A charged area ability: charged on one turn, lands on every foe when released.
