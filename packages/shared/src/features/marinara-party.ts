@@ -300,6 +300,7 @@ export function marinaraFighterGear(
       ...(bonus.effects.crit ? { crit: bonus.effects.crit } : {}),
       ...(bonus.effects.damagePct ? { damagePct: bonus.effects.damagePct } : {}),
       ...(bonus.effects.lifestealPct ? { lifestealPct: bonus.effects.lifestealPct } : {}),
+      ...(bonus.effects.stealChance ? { stealChance: bonus.effects.stealChance } : {}),
       ...(bonus.immune.length ? { immune: [...bonus.immune] } : {}),
     },
     stats: bonus.stats,
