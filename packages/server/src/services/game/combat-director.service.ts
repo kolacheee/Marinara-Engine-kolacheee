@@ -49,6 +49,8 @@ import {
   marinaraAiAction,
   marinaraTacticalTurnStart,
   performMarinaraTacticalAction,
+  marinaraItemPower,
+  marinaraAfterItem,
   marinaraBoardAiAction,
   mirrorMarinaraUnits,
   nextMarinaraTurn,
@@ -611,6 +613,20 @@ function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered
   log(s, text, "status", u.id, undefined, { key, params: { actor: u.name } });
 }
 /** The party's word on foes who yielded: spared, they leave as surrendered; finished, they fall. */
+/** A commanded ally (or one Double Dose gave an extra action) takes its extra action next on a board, by
+ *  side or by initiative alike, and keeps its own turn this round if it hadn't taken it yet. */
+function queueMarinaraBonusTurns(s: CombatDirectorState) {
+  if (!s.marinara || !s.tactical) return;
+  for (const fighter of s.marinara.fighters)
+    if ((fighter.bonusTurns ?? 0) > 0 && fighter.hp > 0 && s.marinaraOwed?.[fighter.id] === undefined) {
+      const unit = s.tactical.units.find((one) => one.id === fighter.id);
+      if (!unit) continue;
+      (s.marinaraOwed ??= {})[fighter.id] = !!unit.hasActed;
+      unit.hasActed = false;
+      unit.hasMoved = false;
+      s.tasks.push({ kind: "activate", unitId: unit.id });
+    }
+}
 function resolveMercy(s: CombatDirectorState, choice: "spare" | "finish") {
   const ids = s.mercy?.foeIds ?? [];
   delete s.mercy;
@@ -1141,7 +1157,11 @@ function declare(s: CombatDirectorState, action: Action, source: Source, reactio
     const failed = (action.classic ?? action.tactical) as { failed?: string; truly?: CombatItemEffect } | undefined;
     const does = failed?.truly ?? effect;
     if (action.classic?.type === "item")
-      action.classic.itemEffect = failed?.failed ? { ...does, failed: failed.failed } : does;
+      action.classic.itemEffect = failed?.failed
+        ? { ...does, failed: failed.failed }
+        : s.marinara
+          ? marinaraItemPower(s.marinara, u.id, does)
+          : does;
   }
   const id = `p${++s.serial}`;
   s.pending[id] = {
@@ -1424,7 +1444,12 @@ function effect(s: CombatDirectorState, p: Pending) {
           type: "item",
           itemId: action.itemName,
           targetId: action.targetId,
-          itemEffect: effect && failed ? { ...effect, failed } : effect,
+          itemEffect:
+            effect && failed
+              ? { ...effect, failed }
+              : s.marinara
+                ? marinaraItemPower(s.marinara, u.id, effect)
+                : effect,
         },
         defendingIds: new Set(),
       });
@@ -1439,6 +1464,13 @@ function effect(s: CombatDirectorState, p: Pending) {
           key: "game.combat.event.item",
           params: { actor: u.name, item: action.itemName },
         });
+      if (s.marinara) {
+        absorbItemResult(s.marinara, s.tactical.units as unknown as Combatant[]);
+        if (!failed && marinaraAfterItem(s.marinara, u.id, marinaraLog(s))) {
+          (u as TacticalUnit).hasActed = true;
+          queueMarinaraBonusTurns(s);
+        }
+      }
     } else if (
       s.tactical &&
       s.marinara &&
@@ -1481,17 +1513,7 @@ function effect(s: CombatDirectorState, p: Pending) {
       performMarinaraTacticalAction(s.marinara, tu.id, action, s.seed, marinaraLog(s), near, reach, p.source, apart);
       tu.hasActed = true;
       if (a.type === "defend") tu.defending = true;
-      // A commanded ally takes its extra action next, by side or by initiative alike, and keeps its
-      // own turn this round if it hadn't taken it yet.
-      for (const fighter of s.marinara.fighters)
-        if ((fighter.bonusTurns ?? 0) > 0 && fighter.hp > 0 && s.marinaraOwed?.[fighter.id] === undefined) {
-          const unit = units.find((one) => one.id === fighter.id);
-          if (!unit) continue;
-          (s.marinaraOwed ??= {})[fighter.id] = !!unit.hasActed;
-          unit.hasActed = false;
-          unit.hasMoved = false;
-          s.tasks.push({ kind: "activate", unitId: unit.id });
-        }
+      queueMarinaraBonusTurns(s);
       sync(s);
     } else if (s.tactical && p.action.tactical) {
       const guarded = (p.guarded ?? []).map((id) => get(s, id) as TacticalUnit).filter(Boolean);
@@ -1534,7 +1556,11 @@ function effect(s: CombatDirectorState, p: Pending) {
       );
       const result = { actions: results.flatMap((r) => r.actions) };
       // An item changed HP the old way: the Classic Marinara fighters take the new numbers.
-      if (s.marinara) absorbItemResult(s.marinara, [...s.party, ...s.enemies]);
+      if (s.marinara) {
+        absorbItemResult(s.marinara, [...s.party, ...s.enemies]);
+        const used = p.action.classic.type === "item" && !(p.action.classic.itemEffect as { failed?: string })?.failed;
+        if (used) marinaraAfterItem(s.marinara, u.id, marinaraLog(s));
+      }
       if (p.action.classic.type === "defend") {
         if (!s.defending.includes(u.id)) s.defending.push(u.id);
         log(s, `${u.name} braces for impact.`, "defend", u.id, p.source, {

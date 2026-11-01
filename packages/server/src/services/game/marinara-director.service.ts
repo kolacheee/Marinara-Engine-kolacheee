@@ -20,6 +20,7 @@ import {
   marinaraCombatantView,
   marinaraDefend,
   marinaraOption,
+  marinaraPassiveHooks,
   marinaraRandom,
   marinaraRoundAt,
   marinaraSkillCost,
@@ -37,6 +38,7 @@ import {
   MARINARA_BESTIARY_ABILITIES,
   type MarinaraFightGrowth,
   marinaraClass,
+  type CombatItemEffect,
   type CombatPlayerAction,
   type CombatSkill,
   type CombatStatusEffect,
@@ -316,6 +318,14 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       return event.status === "empty"
         ? `${actor} finds nothing left on ${target}.`
         : `${actor} steals from ${target}${roll}.`;
+    case "decoy":
+      return `A decoy takes ${actor}'s blow meant for ${target}${event.amount ? ` (${event.amount} left)` : " (the last one)"}.`;
+    case "oath":
+      return `${actor} keeps standing on the oath.`;
+    case "siphon":
+      return event.status
+        ? `${actor} siphons ${target}'s ${event.status} boost.`
+        : `${actor} drains ${event.amount} MP from ${target}.`;
   }
 }
 
@@ -591,6 +601,29 @@ export function performMarinaraTacticalAction(
 }
 
 /** An item the director resolved its own way changed HP: the fighters take the new numbers. */
+/** What an item does in a fighter's hands: Item Savant makes it work 50% better. */
+export function marinaraItemPower<T extends CombatItemEffect | undefined>(
+  state: MarinaraDirectorState,
+  unitId: string,
+  effect: T,
+): T {
+  const fighter = marinaraFighter(state, unitId);
+  const pct = fighter ? (marinaraPassiveHooks(fighter.skills).itemPowerPct ?? 0) : 0;
+  if (!effect || !pct || effect.power === undefined) return effect;
+  return { ...effect, power: Math.round(effect.power * (1 + pct)) };
+}
+
+/** Double Dose: the first item a fighter uses in a round gives it another action. Returns whether it did. */
+export function marinaraAfterItem(state: MarinaraDirectorState, unitId: string, log: MarinaraLog): boolean {
+  const fighter = marinaraFighter(state, unitId);
+  if (!fighter || fighter.hp <= 0 || fighter.freeItemUsed || fighter.commanded) return false;
+  if (!marinaraPassiveHooks(fighter.skills).freeItem) return false;
+  fighter.freeItemUsed = true;
+  fighter.bonusTurns = (fighter.bonusTurns ?? 0) + 1;
+  log(`${fighter.name} gains an extra action (Double Dose).`, "marinara:extra-turn", fighter.id);
+  return true;
+}
+
 export function absorbItemResult(state: MarinaraDirectorState, units: readonly Combatant[]): void {
   for (const unit of units) {
     const fighter = marinaraFighter(state, unit.id);

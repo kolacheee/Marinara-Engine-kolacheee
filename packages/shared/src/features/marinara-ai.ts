@@ -230,6 +230,12 @@ export function marinaraAiCandidates(
         }
         break;
       case "revive":
+        // Undying Light raises them all at once: worth more the more are down.
+        if (effect.allDowned) {
+          if (pool.length)
+            add(option, [pool[0]!], { healing: (effect.power ?? 0.25) * 3 * pool.length, support: 0.5 * pool.length });
+          break;
+        }
         for (const target of pool) add(option, [target], { healing: (effect.power ?? 0.25) * 3, support: 0.5 });
         break;
       case "shield":
@@ -255,7 +261,28 @@ export function marinaraAiCandidates(
         if (!effect.verses && who.some((u) => u.mods.some((m) => m.source === option.id))) break;
         const gain = singing ? effect.verses!.pct : (effect.pct ?? 0);
         let value = 0;
-        if (effect.stat === "imbue") {
+        if (effect.stat === "deathless") {
+          // Oath of Iron: worth the friends a round of blows could put down.
+          if (!threatened) break;
+          const blow = Math.max(0, ...foes.map(incomingFrom)) * 1.5;
+          value = who.filter((u) => u.hp <= blow).reduce((sum, u) => sum + u.maxHp * 0.6, 0);
+        } else if (effect.decoys) {
+          // Thousand Shadows: the blows its decoys will take.
+          if (!threatened || (actor.decoys ?? 0) > 0) break;
+          const blow = foes.reduce((sum, foe) => sum + incomingFrom(foe), 0) / Math.max(1, foes.length);
+          value = blow * effect.decoys * 0.9;
+        } else if (effect.doubles) {
+          // Crescendo: what the party's buffs add once more for a round.
+          for (const u of who)
+            for (const mod of u.mods) {
+              if (mod.pct <= 0 || mod.source.startsWith("crescendo")) continue;
+              if (mod.stat === "damage") value += bestDamage(u, all, tactical) * mod.pct * 0.7;
+              else if ((mod.stat === "defense" || mod.stat === "resistance") && threatened)
+                value +=
+                  (foes.reduce((sum, foe) => sum + incomingFrom(foe), 0) / Math.max(1, who.length)) * mod.pct * 0.5;
+              else if (mod.stat === "speed") value += bestDamage(u, all, tactical) * mod.pct * 0.4;
+            }
+        } else if (effect.stat === "imbue") {
           // What the element adds to each imbued fighter's best hit (the whole party for Edge Runes).
           for (const u of who) {
             if (u.mods.some((m) => m.stat === "imbue")) continue;
@@ -305,14 +332,15 @@ export function marinaraAiCandidates(
           foes.some((u) => u.mods.some((m) => m.source === option.id))
         )
           break;
-        if ((effect.stat === "damage" || effect.stat === "speed") && !threatened) break;
+        if ((effect.stat === "damage" || effect.stat === "best-attack" || effect.stat === "speed") && !threatened)
+          break;
         // Lasts as long as its duration or the foe, whichever ends first.
         const turns = (foe: MarinaraFighter) => Math.max(1, Math.min(effect.duration ?? 1, lasts(foe)));
         // A share of HP: for a damage cut, the damage it keeps off the party over the party's HP
         // (playtest 2026-11-01: valued on raw Strength, Weaken beat every other Hexer skill and
         // Wither was never cast); otherwise over the foes' HP, or the one target's.
         const worth = (targets: readonly MarinaraFighter[], over: number) =>
-          effect.stat === "damage"
+          effect.stat === "damage" || effect.stat === "best-attack"
             ? (targets.reduce((sum, foe) => sum + incomingFrom(foe) * turns(foe), 0) * Math.abs(effect.pct ?? 0)) /
               friendHp
             : (effect.stat === "damage-taken"
