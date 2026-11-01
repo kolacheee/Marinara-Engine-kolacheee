@@ -14,9 +14,16 @@ import {
   registerMarinaraEnemySkills,
   releaseMarinaraCharge,
   marinaraOption,
+  marinaraEffectiveStat,
+  marinaraLeeched,
+  MARINARA_GRAVE_HUNGER,
   type MarinaraFightContext,
 } from "../../packages/shared/src/features/marinara-combat.js";
-import { createMarinaraProgression, marinaraRandom } from "../../packages/shared/src/features/marinara-classes.js";
+import {
+  awardMarinaraXp,
+  createMarinaraProgression,
+  marinaraRandom,
+} from "../../packages/shared/src/features/marinara-classes.js";
 import {
   marinaraFightEnd,
   marinaraFightStart,
@@ -30,6 +37,34 @@ const party = (id: string) =>
     name: id,
     progression: createMarinaraProgression({ seed: id, primary: "guard", temperament: "disciplined" }),
   });
+
+// Grave Hunger: a front-row Hexer takes a share of the enemy front row's Defense and Resistance.
+{
+  const progression = awardMarinaraXp(
+    createMarinaraProgression({ seed: "hex", primary: "hexer", temperament: "cruel" }),
+    800,
+    marinaraRandom("hex"),
+  ).progression;
+  const hexer = buildMarinaraPartyFighter({ id: "hex", name: "Hex", progression, row: "front" });
+  assert.ok(
+    hexer.skills.some((skill) => skill.id === "grave-hunger"),
+    "learned by class level 9",
+  );
+  const foes = ["f1", "f2"].map((id) => buildMarinaraEnemy({ id, name: id, level: 9, tier: "standard" }));
+  for (const foe of foes) foe.row = "front";
+  const all = [hexer, ...foes];
+  assert.equal(marinaraLeeched(hexer, all).length, 2);
+  const taken = foes.reduce((sum, foe) => sum + foe.stats.defense * MARINARA_GRAVE_HUNGER.pct, 0);
+  assert.ok(Math.abs(marinaraEffectiveStat(hexer, "defense", all) - (hexer.stats.defense + taken)) < 1e-9);
+  assert.ok(marinaraEffectiveStat(foes[0]!, "defense", all) < foes[0]!.stats.defense, "the foe loses it");
+  hexer.row = "back";
+  assert.equal(marinaraLeeched(hexer, all).length, 0, "nothing from the back row");
+  hexer.row = "front";
+  foes[1]!.hp = 0;
+  assert.equal(marinaraLeeched(hexer, all).length, 1, "a fallen foe gives nothing");
+  hexer.nearFoes = [];
+  assert.equal(marinaraLeeched(hexer, all).length, 0, "on a board, only foes next to it");
+}
 
 // A charged area ability: charged on one turn, lands on every foe when released.
 registerMarinaraEnemySkills({

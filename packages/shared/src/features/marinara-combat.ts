@@ -347,6 +347,14 @@ const HARMFUL = new Set<MarinaraStatusId>([
 // ── Passives ──
 
 /** Passive hooks the resolver reads. */
+/**
+ * Grave Hunger (Alyssa 2026-11-01): each enemy in a Hexer's reach gives up a share of its Defense
+ * and Resistance to the Hexer while it lives and stays in reach, so a Hexer holds a front line
+ * better the more foes crowd it. Reach is the enemy front row while the Hexer stands in front in
+ * Classic, and the foes next to it on a board. Counts at most `most` foes.
+ */
+export const MARINARA_GRAVE_HUNGER = { pct: 0.12, most: 5 };
+
 export interface MarinaraPassiveHooks {
   damagePct?: number;
   hpPct?: number;
@@ -357,6 +365,8 @@ export interface MarinaraPassiveHooks {
   /** Added to the weakness multiplier. */
   weakBonus?: number;
   lifestealPct?: number;
+  /** Grave Hunger: takes this share of each enemy in reach's Defense and Resistance. */
+  leechGuardPct?: number;
   partyDamagePct?: number;
   critBonus?: number;
   hitBonus?: number;
@@ -419,6 +429,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "keen-eye": { hitBonus: 15, critBonus: 10 },
   "exploit-weakness": { weakBonus: 0.5 },
   "drain-touch": { lifestealPct: 0.2 },
+  "grave-hunger": { leechGuardPct: MARINARA_GRAVE_HUNGER.pct },
   "rallying-presence": { partyDamagePct: 0.1 },
   riposte: { counter: "on-miss" },
   "keen-edge": { critBonus: 10 },
@@ -493,6 +504,8 @@ export interface MarinaraFighter {
   maxStamina: number;
   stamina: number;
   affinities?: MarinaraAffinities;
+  /** On a board: the living foes next to it, as the director last saw them (Grave Hunger's reach). */
+  nearFoes?: string[];
   /** Carried skill ids, and the stats they run on (best-trained class). */
   carriedIds?: string[];
   carriedStats?: Partial<MarinaraStats>;
@@ -947,7 +960,31 @@ export function marinaraEffectiveStat(
   }
   if (stat === "speed" && unit.statuses.some((s) => s.status === "slow")) pct -= 0.3;
   if (stat === "defense" && unit.defending) pct += MARINARA_TUNING.defendDefensePct + (own.defendBonusPct ?? 0);
-  return Math.max(0, unit.stats[stat] * (1 + pct));
+  let flat = 0;
+  if (stat === "defense" || stat === "resistance") {
+    // Grave Hunger: what the Hexer takes, its foes in reach lose.
+    if (own.leechGuardPct) for (const foe of marinaraLeeched(unit, all)) flat += foe.stats[stat] * own.leechGuardPct;
+    for (const other of all) {
+      if (other.side === unit.side || other.hp <= 0) continue;
+      const leech = hooksOf(other).leechGuardPct;
+      if (leech && marinaraLeeched(other, all).includes(unit)) flat -= unit.stats[stat] * leech;
+    }
+  }
+  return Math.max(0, unit.stats[stat] * (1 + pct) + flat);
+}
+
+/** The foes a Grave Hunger Hexer drains now. */
+export function marinaraLeeched(unit: MarinaraFighter, all: readonly MarinaraFighter[]): MarinaraFighter[] {
+  if (unit.hp <= 0) return [];
+  const foes = all.filter((other) => other.side !== unit.side && other.hp > 0);
+  const inReach = unit.nearFoes
+    ? foes.filter((foe) => unit.nearFoes!.includes(foe.id))
+    : unit.row !== "front"
+      ? []
+      : foes.some((foe) => foe.row === "front")
+        ? foes.filter((foe) => foe.row === "front")
+        : foes;
+  return inReach.slice(0, MARINARA_GRAVE_HUNGER.most);
 }
 
 /** The stat an effect's power runs on: a carried skill uses the better of own and carried stats. */
