@@ -2009,18 +2009,24 @@ export function GameCombatUI({
             <div className="min-h-0 overflow-x-auto overflow-y-visible pt-[clamp(2.75rem,9svh,4rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div className="flex w-max min-w-full flex-nowrap items-start justify-center gap-[clamp(0.25rem,1.5vw,0.5rem)]">
                 {enemies.map((enemy) => (
-                  <CombatantCard
-                    elements={elements}
-                    key={`stage-${enemy.id}`}
-                    combatant={enemy}
-                    side="enemy"
-                    isTargetable={phase === "target-select" && selectingEnemyTarget}
-                    isActive={turnOrder[0]?.id === enemy.id && phase === "animating"}
-                    onSelect={() => handleTargetSelect(enemy.id)}
-                    damagePopups={damagePopups.filter((p) => p.targetId === enemy.id)}
-                    sideCount={enemies.length}
-                    compact
-                  />
+                  <div key={`stage-${enemy.id}`} className="flex flex-col items-center" data-row={enemy.marinara?.row}>
+                    <CombatantCard
+                      elements={elements}
+                      combatant={enemy}
+                      side="enemy"
+                      isTargetable={phase === "target-select" && selectingEnemyTarget}
+                      isActive={turnOrder[0]?.id === enemy.id && phase === "animating"}
+                      onSelect={() => handleTargetSelect(enemy.id)}
+                      damagePopups={damagePopups.filter((p) => p.targetId === enemy.id)}
+                      sideCount={enemies.length}
+                      compact
+                    />
+                    {enemy.marinara?.row === "back" && (
+                      <span className="mt-0.5 rounded bg-white/10 px-1 text-[0.5rem] uppercase tracking-wide text-white/50">
+                        {localizeUi("game.combat.marinara.row.back")}
+                      </span>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
@@ -2028,23 +2034,35 @@ export function GameCombatUI({
             <div className="min-h-0 shrink-0 overflow-x-auto overflow-y-visible pb-[clamp(0.75rem,3svh,1.5rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div className="flex w-max min-w-full flex-nowrap items-end justify-center gap-[clamp(0.25rem,1.5vw,0.5rem)]">
                 {party.map((member, i) => (
-                  <CombatantCard
-                    elements={elements}
+                  <div
                     key={`stage-${member.id}`}
-                    combatant={member}
-                    side="player"
-                    isTargetable={phase === "target-select" && selectingAllyTarget}
-                    isActive={
-                      (phase === "player-turn" && i === activePlayerIndex) ||
-                      (turnOrder[0]?.id === member.id && phase === "animating")
-                    }
-                    onSelect={
-                      phase === "target-select" && selectingAllyTarget ? () => handleTargetSelect(member.id) : undefined
-                    }
-                    damagePopups={damagePopups.filter((p) => p.targetId === member.id)}
-                    sideCount={party.length}
-                    compact
-                  />
+                    className="flex flex-col items-center"
+                    data-row={member.marinara?.row}
+                  >
+                    <CombatantCard
+                      elements={elements}
+                      combatant={member}
+                      side="player"
+                      isTargetable={phase === "target-select" && selectingAllyTarget}
+                      isActive={
+                        (phase === "player-turn" && i === activePlayerIndex) ||
+                        (turnOrder[0]?.id === member.id && phase === "animating")
+                      }
+                      onSelect={
+                        phase === "target-select" && selectingAllyTarget
+                          ? () => handleTargetSelect(member.id)
+                          : undefined
+                      }
+                      damagePopups={damagePopups.filter((p) => p.targetId === member.id)}
+                      sideCount={party.length}
+                      compact
+                    />
+                    {member.marinara?.row === "back" && (
+                      <span className="mt-0.5 rounded bg-white/10 px-1 text-[0.5rem] uppercase tracking-wide text-white/50">
+                        {localizeUi("game.combat.marinara.row.back")}
+                      </span>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
