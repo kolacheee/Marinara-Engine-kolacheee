@@ -625,6 +625,8 @@ function shiftTurn(s: CombatDirectorState, u: Unit): void {
 function moraleTurn(s: CombatDirectorState, u: Unit): boolean {
   const mine = s.morale?.[u.id];
   if (!mine || mine.score === undefined || side(u) !== "enemy") return false;
+  // A treasure foe never breaks or surrenders: it leaves only by running off after its rounds.
+  if (s.marinara?.fighters.some((one) => one.id === u.id && one.windfall)) return false;
   if (mine.routed) {
     if (atBoardEdge(s, u)) leaveFight(s, u, "fled");
     else runForTheEdge(s, u);
