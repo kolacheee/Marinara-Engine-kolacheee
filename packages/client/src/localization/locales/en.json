@@ -2199,6 +2199,8 @@
   "game.combat.marinara.sheet.nothingToCarry": "Train in another class to carry its skills.",
   "game.combat.marinara.sheet.promotionOpen": "promotion ready",
   "game.combat.marinara.sheet.pure": "Pure {{tree}}",
+  "game.combat.marinara.sheet.secondaryFit": "{{skill}} ({{className}}, class level {{level}}): {{reason}}",
+  "game.combat.marinara.sheet.secondaryFits": "Worth carrying from your secondary tree",
   "game.combat.marinara.sheet.slot.accessory": "Accessory {{n}}",
   "game.combat.marinara.sheet.slot.armor": "Armour",
   "game.combat.marinara.sheet.slot.weapon": "Weapon",

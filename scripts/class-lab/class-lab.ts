@@ -13,6 +13,7 @@
 import { writeFileSync } from "node:fs";
 import {
   MARINARA_ARCHETYPES,
+  MARINARA_ARCHETYPE_TRAITS,
   MARINARA_CLASSES,
   MARINARA_STATS,
   marinaraCarriedStat,
@@ -74,7 +75,16 @@ export function buildCharacter(def: MarinaraClassDef, level: number, seed: strin
       character = awardMarinaraXp(character, (target - character.level) * 100, random).progression;
   }
   // A player carries the best of what earlier classes taught: their marked picks first, then actives.
-  const earlier = marinaraLearnedSkills(character).filter((skill) => skill.classId !== character.activeClass);
+  // A tree trait the class already keeps (Cover, Ammo Pouch) takes no carry slot.
+  const traits = MARINARA_ARCHETYPE_TRAITS[marinaraClass(character.activeClass)!.archetype] ?? [];
+  const earlier = marinaraLearnedSkills(character).filter(
+    (skill) =>
+      skill.classId !== character.activeClass &&
+      !(
+        traits.includes(skill.id) &&
+        marinaraClass(skill.classId)?.archetype === marinaraClass(character.activeClass)!.archetype
+      ),
+  );
   const ranked = [...earlier].sort(
     (a, b) =>
       Number(Boolean(b.carryPick)) - Number(Boolean(a.carryPick)) ||
@@ -87,7 +97,12 @@ export function buildCharacter(def: MarinaraClassDef, level: number, seed: strin
   );
 }
 
-export function unitFrom(character: MarinaraProgression, id: string, side: LabUnit["side"], row?: LabUnit["row"]): LabUnit {
+export function unitFrom(
+  character: MarinaraProgression,
+  id: string,
+  side: LabUnit["side"],
+  row?: LabUnit["row"],
+): LabUnit {
   const def = marinaraClass(character.activeClass)!;
   return makeUnit({
     id,
@@ -484,7 +499,16 @@ function crossTrained(primary: MarinaraArchetype, secondary: MarinaraArchetype, 
   character = awardMarinaraXp(character, 1000, random).progression; // secondary base 1 -> 11 (level 20)
   const advanced = MARINARA_CLASSES.find((def) => def.from === primary && !def.pure)!;
   character = setMarinaraClass(character, advanced.id);
-  const earlier = marinaraLearnedSkills(character).filter((skill) => skill.classId !== character.activeClass);
+  // A tree trait the class already keeps (Cover, Ammo Pouch) takes no carry slot.
+  const traits = MARINARA_ARCHETYPE_TRAITS[marinaraClass(character.activeClass)!.archetype] ?? [];
+  const earlier = marinaraLearnedSkills(character).filter(
+    (skill) =>
+      skill.classId !== character.activeClass &&
+      !(
+        traits.includes(skill.id) &&
+        marinaraClass(skill.classId)?.archetype === marinaraClass(character.activeClass)!.archetype
+      ),
+  );
   const ranked = [...earlier].sort(
     (a, b) =>
       Number(b.classId === secondary) - Number(a.classId === secondary) ||
