@@ -27,6 +27,7 @@ import {
   marinaraStruck,
   marinaraTargetsFor,
   marinaraUsable,
+  marinaraStandsFront,
   nextMarinaraActor,
   performMarinaraOption,
   releaseMarinaraCharge,
@@ -106,8 +107,8 @@ function boardSkillType(kind: string, target: MarinaraEffect["target"]): CombatS
   return kind === "heal" || kind === "revive" ? "heal" : "buff";
 }
 
-export function marinaraCombatSkills(fighter: MarinaraFighter): CombatSkill[] {
-  const usable = new Set(marinaraUsable(fighter).map((o) => o.id));
+export function marinaraCombatSkills(fighter: MarinaraFighter, all?: readonly MarinaraFighter[]): CombatSkill[] {
+  const usable = new Set(marinaraUsable(fighter, all).map((o) => o.id));
   const out: CombatSkill[] = [];
   for (const skill of fighter.skills) {
     if (skill.kind !== "active") continue;
@@ -135,7 +136,15 @@ export function marinaraCombatSkills(fighter: MarinaraFighter): CombatSkill[] {
         : {}),
       ...(cooldown > 0 ? { readyIn: cooldown } : {}),
       ...(!usable.has(skill.id)
-        ? { unavailable: used ? ("used" as const) : cooldown > 0 ? ("cooldown" as const) : ("cost" as const) }
+        ? {
+            unavailable: used
+              ? ("used" as const)
+              : cooldown > 0
+                ? ("cooldown" as const)
+                : effect.frontOnly && !marinaraStandsFront(fighter, all)
+                  ? ("row" as const)
+                  : ("cost" as const),
+          }
         : {}),
     });
   }
@@ -171,7 +180,7 @@ export function mirrorMarinaraUnits(state: MarinaraDirectorState, units: readonl
     unit.defense = Math.round(fighter.stats.defense);
     // At least 1: the legacy turn check reads 0 Speed as immobilized; the timeline floors speed itself.
     unit.speed = Math.max(1, Math.round(fighter.stats.speed));
-    unit.skills = marinaraCombatSkills(fighter);
+    unit.skills = marinaraCombatSkills(fighter, state.fighters);
     unit.statusEffects = fighter.statuses.map((s): CombatStatusEffect => ({
       name: s.status,
       modifier: 0,
@@ -392,7 +401,7 @@ export function marinaraActionProblem(
     if (coating && actor.side !== "party") return "Item unavailable.";
     return null;
   }
-  const option = marinaraOption(actor, action.type === "attack" ? null : action.skillId);
+  const option = marinaraOption(actor, action.type === "attack" ? null : action.skillId, state.fighters);
   if (!option) return action.type === "skill" ? "Skill unavailable." : "Combatant cannot attack.";
   const aimed = aimedAt(state, actor, option, action.targetId);
   return typeof aimed === "string" ? aimed : null;
@@ -421,7 +430,7 @@ export function performMarinaraAction(
       log(`${actor.name} coats their weapon with ${coating.label}.`, "marinara:item", actor.id, source);
     }
   } else if (action.type === "attack" || action.type === "skill") {
-    const option = marinaraOption(actor, action.type === "attack" ? null : action.skillId);
+    const option = marinaraOption(actor, action.type === "attack" ? null : action.skillId, state.fighters);
     if (!option) throw new Error("Skill unavailable.");
     const aimed = aimedAt(state, actor, option, action.targetId);
     if (typeof aimed === "string") throw new Error(aimed);
@@ -489,7 +498,8 @@ export function performMarinaraTacticalAction(
   if (action.type === "defend") marinaraDefend(actor, ctx);
   else if (action.type === "attack" || action.type === "skill") {
     let option =
-      (action.type === "skill" ? marinaraOption(actor, action.skillId) : undefined) ?? marinaraOption(actor, null);
+      (action.type === "skill" ? marinaraOption(actor, action.skillId, state.fighters) : undefined) ??
+      marinaraOption(actor, null);
     if (!option) throw new Error("Combatant cannot attack.");
     const picked = action.targetId ? marinaraFighter(state, action.targetId) : undefined;
     // A skill for a friend aimed somewhere it can't land (a foe, the user itself for a guard, a
@@ -629,7 +639,7 @@ export function marinaraActionChoices(
   const actor = marinaraFighter(state, unitId);
   if (!actor) return [];
   const out: Array<{ action: CombatPlayerAction; label?: string }> = [];
-  for (const option of marinaraUsable(actor)) {
+  for (const option of marinaraUsable(actor, state.fighters)) {
     const effect = option.effect;
     if (effect.target === "self" || effect.target === "party" || effect.target === "all-enemies") {
       const at = marinaraTargetsFor(actor, effect, state.fighters)[0];
