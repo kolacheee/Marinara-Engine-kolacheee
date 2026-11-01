@@ -631,6 +631,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Allies take 35% less magic damage while the user stands.",
           true,
         ),
+        // More anti-magic tanking at level 20 (Alyssa 2026-11-01).
+        passive("old-oath", "Old Oath", 18, "+30% Resistance; the user takes 20% less magic damage."),
       ],
     },
     {
@@ -788,6 +790,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Back-row damage",
       leans: ["skill", "strength"],
       skills: [
+        // Ammo (Alyssa 2026-11-01): the Marksman tree fires whichever arrowhead, bolt or shot hurts
+        // most, every martial and elemental type, kept by every Marksman class.
+        passive(
+          "ammo-pouch",
+          "Ammo Pouch",
+          1,
+          "Switches ammo: weapon attacks and skills strike as slash, pierce, blunt, fire, ice or lightning, whichever hurts most.",
+        ),
         passive(
           "exploit-weakness",
           "Exploit Weakness",
@@ -825,7 +835,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "A huge single hit after a turn of charging; +25% crit chance.",
         ),
-        passive("dead-eye", "Dead Eye", 22, "+15% crit chance."),
+        passive("dead-eye", "Dead Eye", 22, "+15% crit chance; hits on a weakness deal 25% more."),
         passive("overwatch", "Overwatch", 24, "Shoots the first enemy to act each round.", true),
       ],
     },
@@ -836,8 +846,21 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Marks and traps",
       leans: ["skill", "speed"],
       skills: [
-        active("mark-prey", "Mark Prey", 10, "skill", 3, "The target takes more damage from everyone.", true),
-        passive("read-the-signs", "Read the Signs", 15, "Sees enemy weaknesses."),
+        active(
+          "mark-prey",
+          "Mark Prey",
+          10,
+          "skill",
+          3,
+          "The target takes 35% more damage from everyone for 3 turns.",
+          true,
+        ),
+        passive(
+          "read-the-signs",
+          "Read the Signs",
+          15,
+          "Sees enemy weaknesses; the user deals 20% more to a marked target.",
+        ),
       ],
     },
     {
@@ -848,7 +871,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["skill", "speed", "luck"],
       skills: [
         active("snare-field", "Snare Field", 20, "skill", 10, "Enemies that act are slowed."),
-        passive("pack-tactics", "Pack Tactics", 24, "The whole party deals 25% more damage to a marked target.", true),
+        passive("pack-tactics", "Pack Tactics", 24, "The whole party deals 40% more damage to a marked target.", true),
       ],
     },
     {
@@ -1116,7 +1139,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "nullifier",
       role: "Darkness made will",
       leans: ["magic", "resistance", "luck", "hp"],
-      tune: { resistance: -15 },
+      // Below the Elder Warden against casters (Alyssa 2026-11-01).
+      tune: { resistance: -25 },
       skills: [
         active(
           "total-eclipse",
@@ -1124,7 +1148,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           12,
-          "Dark damage to every enemy; each one struck deals 30% less damage for 2 turns. Every other turn.",
+          "Dark damage to every enemy; each one struck deals 20% less damage for 2 turns. Every other turn.",
           true,
         ),
         passive("abyssal-will", "Abyssal Will", 22, "+20% spell damage."),
@@ -1544,6 +1568,7 @@ export function marinaraLearnedSkills(progression: MarinaraProgression): Array<M
 export const MARINARA_ARCHETYPE_TRAITS: Partial<Record<MarinaraArchetype, readonly string[]>> = {
   guard: ["hold-the-line", "cover"],
   hexer: ["drain-touch", "grave-tithe", "grave-hunger"],
+  marksman: ["ammo-pouch"],
 };
 
 /** The skills a character fights with: their active class's learned skills and what they carry. */
