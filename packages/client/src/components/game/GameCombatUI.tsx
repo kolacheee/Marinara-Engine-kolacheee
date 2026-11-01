@@ -839,16 +839,23 @@ export function GameCombatUI({
     observer.observe(stage);
     return () => observer.disconnect();
   }, [eastWest]);
-  // One card size for both sides: the tallest column fits the stage's height (a card is about its
-  // width plus 4.5rem of name and bars, with 0.5rem between cards) and every column its width.
-  const eastWestCardWidth = useMemo(() => {
+  // One card size for both sides, fitting the tallest column in the stage height and every column in its width.
+  const eastWestLayout = useMemo(() => {
     if (!eastWest || !eastWestBox) return undefined;
-    const columns = [stageColumns(enemies, "enemy"), stageColumns(party, "player")];
-    const tallest = Math.max(1, ...columns.flat().map((column) => column.length));
-    const count = Math.max(1, columns.flat().length);
-    const byHeight = (eastWestBox.height - (tallest - 1) * 8) / tallest - 72;
-    const byWidth = (eastWestBox.width - (count + 1) * 32) / count;
-    return Math.round(Math.max(48, Math.min(120, byHeight, byWidth)));
+    // How many cards a column holds: whichever of 3, 2 or 1 gives the biggest cards. A short stage
+    // (a laptop at 720px with the skill menu open) spreads a row over more columns rather than
+    // squeezing its cards (a card is its width of art plus about 110px of name and bars).
+    let best = { perColumn: 3, width: 0 };
+    for (const perColumn of [3, 2, 1]) {
+      const columns = [...stageColumns(enemies, "enemy", perColumn), ...stageColumns(party, "player", perColumn)];
+      const count = Math.max(1, columns.length);
+      const tallest = Math.max(1, ...columns.map((column) => column.length));
+      const byHeight = (eastWestBox.height - (tallest - 1) * 8) / tallest - 110;
+      const byWidth = (eastWestBox.width - (count + 1) * 24) / count;
+      const width = Math.min(120, byHeight, byWidth);
+      if (width > best.width + 4) best = { perColumn, width };
+    }
+    return { perColumn: best.perColumn, cardWidth: Math.round(Math.max(40, best.width)) };
   }, [eastWest, eastWestBox, enemies, party]);
   const [openDrawer, setOpenDrawer] = useState<MobileDrawerKind>(null);
 
@@ -2742,7 +2749,7 @@ export function GameCombatUI({
           >
             {(["enemy", "player"] as const).map((side) => {
               const list = side === "enemy" ? enemies : party;
-              const columns = stageColumns(list, side);
+              const columns = stageColumns(list, side, eastWestLayout?.perColumn ?? 3);
               return (
                 <div
                   key={side}
@@ -2753,12 +2760,12 @@ export function GameCombatUI({
                     <div
                       key={`${side}-${c}`}
                       data-row={column[0]?.marinara?.row}
-                      className="flex flex-col items-center justify-center gap-2"
+                      className="flex shrink-0 flex-col items-center justify-center gap-2"
                     >
                       {column.map((combatant) => {
                         const i = party.indexOf(combatant);
                         return (
-                          <div key={combatant.id} className="relative flex flex-col items-center">
+                          <div key={combatant.id} className="relative flex shrink-0 flex-col items-center">
                             <CombatantCard
                               elements={elements}
                               combatant={combatant}
@@ -2782,7 +2789,7 @@ export function GameCombatUI({
                               }
                               damagePopups={damagePopups.filter((p) => p.targetId === combatant.id)}
                               dialogueLines={combatDialogueLayout.byCombatantId.get(combatant.id)}
-                              cardWidth={eastWestCardWidth}
+                              cardWidth={eastWestLayout?.cardWidth}
                               onDismissDialogue={dismissCombatDialogueLine}
                             />
                           </div>
@@ -3471,13 +3478,13 @@ function CombatMechanicsPanel({ mechanics, round }: { mechanics: CombatMechanic[
 
 /**
  * One side of an east-west stage as columns, from the middle of the stage outward: its front row,
- * then its back row, each at most three to a column. The foes stand on the left, so their columns
+ * then its back row, each at most `perColumn` to a column. The foes stand on the left, so their columns
  * are given back to front; the party's front to back.
  */
-function stageColumns(list: readonly Combatant[], side: "player" | "enemy"): Combatant[][] {
+function stageColumns(list: readonly Combatant[], side: "player" | "enemy", perColumn = 3): Combatant[][] {
   const chunk = (row: Combatant[]) => {
     const out: Combatant[][] = [];
-    for (let at = 0; at < row.length; at += 3) out.push(row.slice(at, at + 3));
+    for (let at = 0; at < row.length; at += perColumn) out.push(row.slice(at, at + perColumn));
     return out;
   };
   const front = list.filter((one) => one.marinara?.row !== "back");
@@ -3648,7 +3655,7 @@ function CombatantCard({
       {/* Combatant sprite / avatar area */}
       <div
         className={cn(
-          "relative flex aspect-square items-center justify-center rounded-xl border-2 transition-all duration-200",
+          "relative flex aspect-square shrink-0 items-center justify-center rounded-xl border-2 transition-all duration-200",
           "w-[var(--combat-avatar-size)]",
           isKo && "grayscale opacity-40",
           isTargetable &&
