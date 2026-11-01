@@ -618,7 +618,11 @@ export async function combatDirectorRoutes(
       elements: worldElementSetSchema.optional(),
       round: z.number().int().min(1),
       party: z.array(directedCombatantSchema).min(1).max(20),
-      enemies: z.array(directedCombatantSchema).min(1).max(20),
+      // A won fight can end with every foe gone (surrendered or fled): nobody left is fine once it's over.
+      enemies: z
+        .array(directedCombatantSchema)
+        .min(state.outcome ? 0 : 1)
+        .max(20),
       budgets: z.record(
         key,
         z.object({ legendary: z.number().int().min(0).max(6), reaction: z.number().int().min(0).max(1) }),

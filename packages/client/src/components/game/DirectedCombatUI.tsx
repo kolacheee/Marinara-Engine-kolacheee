@@ -409,6 +409,8 @@ export function DirectedCombatUI(props: Props) {
                 enemies={s.enemies}
                 actorId={s.actorId}
                 growth={s.summary?.marinara}
+                loot={s.summary?.loot}
+                over={!!s.outcome}
               />
             )}
             {s.stage === "select" && s.style === "classic" && (

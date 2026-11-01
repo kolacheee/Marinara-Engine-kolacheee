@@ -97,6 +97,21 @@ try {
     "the XP is on the cards",
   );
 
+  // A won fight where every foe left (surrendered or fled) saves with no enemies, and still reopens.
+  {
+    const { createGameEngineStateStorage } =
+      await import("../../packages/server/src/services/storage/game-engine-state.storage.js");
+    const { COMBAT_DIRECTOR_NAMESPACE } = await import("../../packages/server/src/routes/combat-director.routes.js");
+    const store = createGameEngineStateStorage(db);
+    const row = (await store.getByChatAndMessage(chat.id, anchor.id, 0, COMBAT_DIRECTOR_NAMESPACE))!;
+    const saved = JSON.parse(row.state);
+    saved.enemies = [];
+    if (saved.tactical) saved.tactical.units = saved.tactical.units.filter((u: { side: string }) => u.side !== "enemy");
+    await store.updateStateById(row.id, JSON.stringify(saved), true, chat.id);
+    const reopened = await app.inject({ method: "GET", url: `/combat/state?chatId=${chat.id}&anchor=${anchor.id}` });
+    assert.equal(reopened.statusCode, 200, `a won fight with every foe gone reopens: ${reopened.body}`);
+  }
+
   // Between fights a party member switches to another open class; a class not open is refused.
   const { marinaraClassBlock, marinaraOpenClasses } =
     await import("../../packages/shared/src/features/marinara-classes.js");

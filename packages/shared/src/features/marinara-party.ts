@@ -369,6 +369,23 @@ function tierOf(foe: MarinaraFoeBrief, partyHp: number): MarinaraEnemyTier {
   return "standard";
 }
 
+/**
+ * The one ability a foe the Game Master invents (no bestiary family, no class) fights with, by its
+ * archetype. Without it such a foe had only its basic attack, and a lone invented boss was won 100% of
+ * the time for 3-23% of the party's HP; the Engine-AI balance runs were measured with one ability per
+ * foe (playtest 2026-11-01).
+ */
+export const MARINARA_GENERIC_FOE_SKILL: Record<MarinaraArchetype, string> = {
+  blade: "rend",
+  scout: "rend",
+  guard: "sunder",
+  herald: "sunder",
+  marksman: "venom-arrow",
+  channeler: "curse",
+  hexer: "curse",
+  mender: "curse",
+};
+
 function archetypeOf(foe: MarinaraFoeBrief): MarinaraArchetype {
   if (foe.marinara?.archetype && (MARINARA_ARCHETYPES as readonly string[]).includes(foe.marinara.archetype))
     return foe.marinara.archetype;
@@ -458,7 +475,11 @@ export function marinaraFoeFighters(input: {
         ...(foe.marinara?.classId && marinaraClass(foe.marinara.classId) ? { classId: foe.marinara.classId } : {}),
         ...(foe.marinara?.row ? { row: foe.marinara.row } : {}),
         ...(foe.marinara?.affinities ? { affinities: foe.marinara.affinities } : {}),
-        ...(foe.marinara?.enemySkills ? { enemySkills: foe.marinara.enemySkills } : {}),
+        ...(foe.marinara?.enemySkills
+          ? { enemySkills: foe.marinara.enemySkills }
+          : foe.marinara?.classId
+            ? {}
+            : { enemySkills: [MARINARA_GENERIC_FOE_SKILL[archetypeOf(foe)]] }),
         // No bestiary level growth here: it is measured with the bestiary's own threat fitting, and on the
         // flat tier budget it made level 20+ fights unwinnable on the Engine's AI (engine-balance, 2026-11-01).
         ...(tier === "boss" && foeLevel > 20
