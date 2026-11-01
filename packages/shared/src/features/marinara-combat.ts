@@ -599,7 +599,6 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   unstoppable: { stunImmune: "below-half", takenBelowHalfPct: -0.15 },
   "adaptive-grip": { hitBonus: 10, noPenalty: true },
   peerless: { extraActionEvery: 3 },
-  stalwart: { defendBonusPct: 0.2 },
   "shield-wall": { backRowTakenPct: -0.25 },
   "last-stand": { lastStand: true },
   retaliate: { counter: "always", counterDefensePct: 0.5 },
