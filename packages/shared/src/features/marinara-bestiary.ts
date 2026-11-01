@@ -1263,10 +1263,10 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
-      cyberpunk: n("Wasp Drone", "Hunter Drone@11", "Overseer Drone@21"),
-      space_opera: n("Probe", "Gun Drone@11", "Swarm Node@21"),
-      post_apocalyptic: n("Salvaged Drone", "Old-War Drone@11", "Sky-Warden Relic@21"),
-      modern_day: n("Hobby Drone", "Surveillance Drone@8", "@17"),
+      cyberpunk: n("Gnatcam", "Hornet-Kite@11", "Halo Overseer@21"),
+      space_opera: n("Picket Mote", "Cutter Drone@11", "Lattice Node@21"),
+      post_apocalyptic: n("Junk Rotor", "Old-War Drone@11", "Sky-Warden Relic@21"),
+      modern_day: n("Backyard Buzzer", "Watchlist Drone@8", "@17"),
     },
   },
   {
@@ -1286,8 +1286,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     levels: [3, 30],
     tiers: LOW_TIERS,
     names: {
-      cyberpunk: n("Wall Turret", "Sentry Gun@11", "Point Defense Grid@21"),
-      space_opera: n("Point Defense", "Rail Turret@11", "Lance Battery@21"),
+      cyberpunk: n("Doorframe Gun", "Tollgate Turret@11", "Citadel Gunwall@21"),
+      space_opera: n("Hull Popgun", "Rail Picket@11", "Lance Battery@21"),
       post_apocalyptic: n("Scrap Turret", "Bunker Gun@11", "Fortress Battery@21"),
     },
   },
@@ -1608,6 +1608,27 @@ export function marinaraBuildEncounter(input: {
     const boss = { familyId: lead.id, tier: "boss" as const, level };
     if (worth(boss) <= budget) add(boss);
   }
+  // Someone stands in front: unless the boss does, one front-row foe (from a chosen family, else the
+  // same company, else any front-row family) is placed before the fill, at the cheapest tier that fits;
+  // a back-row boss that leaves no room for one is dropped first.
+  const isFront = (family: MarinaraEnemyFamily) => family.row === "front";
+  if (!foes.some((foe) => isFront(FAMILY_BY_ID.get(foe.familyId)!))) {
+    const chosenFronts = families.filter(isFront);
+    const fronts = pool.filter((family) => isFront(family) && KIND_GROUPS[family.kind] === KIND_GROUPS[lead.kind]);
+    const stand = chosenFronts.length ? pick(chosenFronts) : fronts.length ? pick(fronts) : pool.find(isFront);
+    if (stand && !families.includes(stand)) families.push(stand);
+    if (stand) {
+      const tiers = (["standard", "minion", "elite"] as const).filter(
+        (tier) => stand.tiers.includes(tier) && level >= MARINARA_TIER_RULES[tier].minLevel,
+      );
+      const fits = () => tiers.find((tier) => worth({ familyId: stand.id, tier, level }) <= budget - threat);
+      if (!fits() && foes.length) {
+        threat -= worth(foes.pop()!);
+      }
+      const tier = fits();
+      if (tier) add({ familyId: stand.id, tier, level });
+    }
+  }
   // Fill: try foes from the chosen families at a tier that fits what's left, until nothing fits.
   const tierCount = (tier: MarinaraEnemyTier) => foes.filter((foe) => foe.tier === tier).length;
   for (let guard = 0; guard < 40 && foes.length < MARINARA_MAX_FOES; guard++) {
@@ -1634,18 +1655,6 @@ export function marinaraBuildEncounter(input: {
     }
     add(chosen);
     if (threat >= budget * 0.85 && random() < 0.5) break;
-  }
-  // Someone stands in front: swap the last back-row foe for a front-row family's if none does.
-  const isFront = (foe: MarinaraEncounterFoe) => FAMILY_BY_ID.get(foe.familyId)!.row === "front";
-  if (foes.length && !foes.some(isFront)) {
-    const fronts = pool.filter((family) => family.row === "front" && KIND_GROUPS[family.kind] === KIND_GROUPS[lead.kind]);
-    const stand = fronts.length ? pick(fronts) : pool.find((family) => family.row === "front");
-    if (stand) {
-      const removed = foes.pop()!;
-      threat -= worth(removed);
-      const tier = stand.tiers.includes("standard") ? "standard" : stand.tiers[0]!;
-      add({ familyId: stand.id, tier, level });
-    }
   }
   return { foes, threat };
 }
