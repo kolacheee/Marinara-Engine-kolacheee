@@ -2152,29 +2152,60 @@ export function marinaraShopStock(input: {
 }
 
 /**
- * Everything a game's shops can sell a party of this tier, with the smallest place that sells it: the
- * fixed counterpart of `marinaraShopStock` for a kit's market, whose shelves are the same every day.
- * A hamlet sells consumables and last tier's gear; a town this tier's gear, revives, cure-alls and
- * plain accessories; a city the best accessories. T6 gear, uniques, boons and `found` things never.
+ * What a game's shops sell a party of this tier, with the smallest place that sells it: the fixed
+ * counterpart of `marinaraShopStock` for a kit's market, whose shelves are the same every day and are
+ * listed to the Game Master each turn, so they stay short. Of a line with ranks (heal-1, heal-2) only
+ * the best the tier allows is sold. A hamlet sells consumables and last tier's gear; a town this tier's
+ * gear, revives, cure-alls, charms and shields; a city wards, guards and rank-3 charms. Weapons, armour
+ * and shields only of kinds one of `wearers` (the party's classes) can wear, when given. T6 gear,
+ * uniques, boons and `found` things are never sold.
  */
 export function marinaraShopCatalog(
   tier: MarinaraTier,
   place: MarinaraItemPlace,
+  wearers?: readonly string[],
 ): Array<{ id: string; size: MarinaraShopSize }> {
   const out: Array<{ id: string; size: MarinaraShopSize }> = [];
-  for (const def of MARINARA_CONSUMABLES)
-    if (!def.found && def.tier <= tier && marinaraItemAllowed(def, place))
+  // The best rank of each ranked line on sale: `heal-2` replaces `heal-1`, `charm-speed-2` `charm-speed-1`.
+  const best = (ids: readonly string[]) => {
+    const top = new Map<string, number>();
+    for (const id of ids) {
+      const ranked = /^(.*)-(\d)$/.exec(id);
+      if (ranked) top.set(ranked[1]!, Math.max(top.get(ranked[1]!) ?? 0, Number(ranked[2])));
+    }
+    return (id: string) => {
+      const ranked = /^(.*)-(\d)$/.exec(id);
+      return !ranked || top.get(ranked[1]!) === Number(ranked[2]);
+    };
+  };
+  const consumables = MARINARA_CONSUMABLES.filter(
+    (def) => !def.found && def.tier <= tier && marinaraItemAllowed(def, place),
+  );
+  const topConsumable = best(consumables.map((def) => def.id));
+  for (const def of consumables)
+    if (topConsumable(def.id))
       out.push({ id: def.id, size: def.effect.kind === "revive" || def.id === "cure-all" ? "town" : "small" });
   const lower = clampTier(Math.min(5, tier - 1));
   const upper = clampTier(Math.min(5, tier));
+  const worn = (id: string, slot: "weapon" | "armor" | "accessory") =>
+    !wearers?.length || wearers.some((classId) => marinaraCanEquip(classId, id, slot));
   for (const family of [...MARINARA_WEAPON_FAMILIES, ...MARINARA_ARMOUR_FAMILIES]) {
     if (!marinaraItemAllowed(family, place)) continue;
+    const slot = MARINARA_WEAPON_FAMILIES.includes(family as MarinaraWeaponFamily) ? "weapon" : "armor";
+    if (!worn(`${family.id}-t${lower}`, slot)) continue;
     out.push({ id: `${family.id}-t${lower}`, size: "small" });
     if (upper !== lower) out.push({ id: `${family.id}-t${upper}`, size: "town" });
   }
-  for (const def of MARINARA_ACCESSORIES)
-    if (!def.found && def.tier <= tier && marinaraItemAllowed(def, place))
-      out.push({ id: def.id, size: def.rank < 3 ? "town" : "city" });
+  const accessories = MARINARA_ACCESSORIES.filter(
+    (def) => !def.found && def.tier <= tier && marinaraItemAllowed(def, place) && worn(def.id, "accessory"),
+  );
+  const topAccessory = best(accessories.map((def) => def.id));
+  for (const def of accessories)
+    if (topAccessory(def.id))
+      out.push({
+        id: def.id,
+        size: def.rank >= 3 || def.id.startsWith("ward-") || def.id.startsWith("guard-") ? "city" : "town",
+      });
   return out;
 }
 
