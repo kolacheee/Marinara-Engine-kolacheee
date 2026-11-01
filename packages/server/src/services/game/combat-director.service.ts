@@ -245,7 +245,9 @@ export function marinaraBoardTurn(
     if (again && again.type !== "defend") {
       picked = again;
       to = step.x === tu.x && step.y === tu.y ? undefined : step;
-    } else if (!boardTo || nearest(step) < nearest(boardTo)) to = step.x === tu.x && step.y === tu.y ? undefined : step;
+      // Nothing in reach from anywhere it can stand: the board's own walk, which paths round walls
+      // (a straight-line step stopped both sides at a wall for 60 rounds, playtest 2026-11-01).
+    } else if (!boardTo) to = step.x === tu.x && step.y === tu.y ? undefined : step;
   }
   if (!picked) return board;
   const where = to ? { to } : {};

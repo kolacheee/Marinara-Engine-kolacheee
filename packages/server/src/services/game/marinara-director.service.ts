@@ -473,9 +473,10 @@ export function performMarinaraTacticalAction(
 ): void {
   const actor = marinaraFighter(state, unitId);
   if (!actor) throw new Error("Combatant cannot act.");
-  // Grave Hunger reaches the foes next to a Hexer on the board, as they stand now.
+  // On the board, what each fighter can reach is the foes next to it as they stand now (Grave
+  // Hunger, Sworn Ward's strike back).
   for (const fighter of state.fighters)
-    if (fighter.hp > 0 && fighter.skills.some((skill) => skill.id === "grave-hunger"))
+    if (fighter.hp > 0)
       fighter.nearFoes = near(fighter.id).filter((id) => marinaraFighter(state, id)?.side !== fighter.side);
   const ctx = { ...context(state, seed, true), grouped: false };
   if (action.type === "defend") marinaraDefend(actor, ctx);
