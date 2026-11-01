@@ -1052,7 +1052,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           7,
           "magic",
           6,
-          "Front row only: dark damage to every enemy; the user heals for half of what it deals. Every other turn.",
+          "Front row only (a back row with nobody standing in front counts as front): dark damage to every enemy; the user heals for half of what it deals. Every other turn.",
         ),
         passive(
           "grave-hunger",
@@ -1546,6 +1546,24 @@ export function marinaraClassBlock(progression: MarinaraProgression, classId: st
   return null;
 }
 
+/** What a class block means in words: "needs Bloodsworn 20 (now 19)". */
+export function marinaraClassBlockText(progression: MarinaraProgression, classId: string, block: string): string {
+  const def = marinaraClass(classId);
+  if (block === "class-level" && def?.from) {
+    const needed = MARINARA_PROMOTION_LEVEL[def.tier as "advanced" | "master"];
+    return `${def.label} needs ${marinaraClass(def.from)?.label ?? def.from} ${needed} (now ${progression.classLevels[def.from] ?? 0}).`;
+  }
+  if (block === "not-in-trees") return `${def?.label ?? classId} is not in this character's trees.`;
+  return `Cannot take class ${def?.label ?? classId}.`;
+}
+
+/** The skills every class of the active class's tree keeps (Cover, Drain Touch, Ammo Pouch): they need no
+ *  carry slot. */
+export function marinaraKeptTraits(progression: MarinaraProgression): readonly string[] {
+  const archetype = marinaraClass(progression.activeClass)?.archetype;
+  return (archetype && MARINARA_ARCHETYPE_TRAITS[archetype]) || [];
+}
+
 /**
  * Makes a class the active one, out of combat. A class trained in before is switched back to as it
  * was; a promotion starts at its parent's class level and adds its promotion bonus once.
@@ -1553,7 +1571,7 @@ export function marinaraClassBlock(progression: MarinaraProgression, classId: st
 export function setMarinaraClass(progression: MarinaraProgression, classId: string): MarinaraProgression {
   if (progression.classLevels[classId] !== undefined) return { ...progression, activeClass: classId };
   const block = marinaraClassBlock(progression, classId);
-  if (block) throw new Error(`Cannot take class ${classId}: ${block}`);
+  if (block) throw new Error(marinaraClassBlockText(progression, classId, block));
   const def = marinaraClass(classId)!;
   const bonus = marinaraPromotionBonus(def);
   const startLevel = def.from ? progression.classLevels[def.from]! : 1;
@@ -1561,7 +1579,9 @@ export function setMarinaraClass(progression: MarinaraProgression, classId: stri
     ...progression,
     activeClass: classId,
     classLevels: { ...progression.classLevels, [classId]: startLevel },
-    classXp: { ...progression.classXp, [classId]: 0 },
+    // A promotion keeps the parent class's progress toward its next level (playtest 2026-11-01: starting
+    // at 0 left the class a level behind the character, and the next promotion was refused).
+    classXp: { ...progression.classXp, [classId]: def.from ? (progression.classXp[def.from] ?? 0) : 0 },
     stats: statRecord((stat) => progression.stats[stat] + bonus[stat]),
     expected: statRecord((stat) => progression.expected[stat] + bonus[stat]),
   };
@@ -1651,9 +1671,14 @@ export function setMarinaraCarried(progression: MarinaraProgression, skillIds: r
   const unique = [...new Set(skillIds)];
   if (unique.length > MARINARA_CARRY_SLOTS) throw new Error(`At most ${MARINARA_CARRY_SLOTS} carried skills.`);
   const learned = marinaraLearnedSkills(progression);
+  const kept = marinaraKeptTraits(progression);
+  const archetype = marinaraClass(progression.activeClass)?.archetype;
   for (const id of unique) {
-    if (!learned.some((skill) => skill.id === id && skill.classId !== progression.activeClass))
-      throw new Error(`Skill ${id} is not learned in another class.`);
+    const skill = learned.find((one) => one.id === id && one.classId !== progression.activeClass);
+    if (!skill) throw new Error(`Skill ${id} is not learned in another class.`);
+    // A tree trait from the active tree is kept anyway: carried too, it showed twice and took a slot.
+    if (kept.includes(id) && marinaraClass(skill.classId)?.archetype === archetype)
+      throw new Error(`${skill.label} is kept by every class of this tree; it needs no carry slot.`);
   }
   return { ...progression, carried: unique };
 }

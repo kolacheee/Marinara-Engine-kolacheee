@@ -55,7 +55,7 @@ import {
   performMarinaraAction,
   type MarinaraDirectorState,
 } from "./marinara-director.service.js";
-import type { MarinaraFighter } from "@marinara-engine/shared";
+import { marinaraEnemyFamily, type MarinaraFighter } from "@marinara-engine/shared";
 
 type Unit = Combatant | TacticalUnit;
 type Action = { unitId: string; classic?: CombatPlayerAction; tactical?: Extract<TacticalAction, { unitId: string }> };
@@ -136,7 +136,17 @@ export interface CombatDirectorState extends DirectedCombatView {
    *  fights saved before morale, which nobody breaks in. */
   morale?: Record<
     string,
-    { score?: number; leader?: true; surprised?: true; checked?: MoraleTrigger[]; routed?: true }
+    {
+      score?: number;
+      leader?: true;
+      surprised?: true;
+      checked?: MoraleTrigger[];
+      routed?: true;
+      /** Threw down its arms (Classic Marinara): out of the fight's turns, the party's to spare or finish. */
+      yielded?: true;
+      /** Only runs, never surrenders (a dragon, a fiend). */
+      runsOnly?: true;
+    }
   >;
   /** Opponents out of the fight alive (combat AI E1): run off the board, or given up to the party. */
   gone?: Array<{ id: string; name: string; hp: number; maxHp: number; left: "fled" | "surrendered" }>;
@@ -317,6 +327,7 @@ function sync(s: CombatDirectorState) {
     mirrorMarinaraUnits(
       s.marinara,
       s.tactical ? (s.tactical.units as unknown as Combatant[]) : [...s.party, ...s.enemies],
+      !!s.tactical,
     );
   if (s.tactical) {
     const convert = (u: TacticalUnit): Combatant => ({ ...u, side: side(u) === "party" ? "player" : "enemy" });
@@ -327,6 +338,10 @@ function sync(s: CombatDirectorState) {
   // A ruleset fight's outcome is the ruleset's own (syncRulesetCombatants): a hero at 0 who is still
   // rolling to live keeps it going, though no unit has hit points left (cloud re-test 2026-10-26).
   if (s.style !== "ruleset") {
+    // Foes who yielded are spared once no one fights on: they leave as surrendered and pay as the beaten.
+    const yielded = (u: Unit) => !!s.morale?.[u.id]?.yielded;
+    if (!s.outcome && !living(s).some((u) => side(u) === "enemy" && !yielded(u)))
+      for (const u of living(s).filter((one) => side(one) === "enemy" && yielded(one))) leaveFight(s, u, "surrendered");
     if (!living(s).some((u) => side(u) === "enemy")) s.outcome = "victory";
     else if (!living(s).some((u) => side(u) === "party")) s.outcome = "defeat";
   }
@@ -481,9 +496,13 @@ export function createCombatDirector(input: {
   if (s.style !== "ruleset") {
     s.morale = {};
     for (const u of enemies) {
-      const score = moraleScore(u);
+      const mind = marinaraMind(input.marinara, u.id);
+      const base = mind === "none" ? undefined : moraleScore(u);
+      // An elite is a hardened fighter: harder to shake (playtest 2026-11-01: elites gave up at half HP).
+      const score = base === undefined ? undefined : Math.min(12, base + (mind === "elite" ? 2 : 0));
       s.morale[u.id] = {
         ...(score !== undefined ? { score } : {}),
+        ...(mind === "runs" ? { runsOnly: true as const } : {}),
         ...(u.aiHints?.leader || u.boss ? { leader: true as const } : {}),
         ...(input.surprised?.includes(u.id) ? { surprised: true as const } : {}),
       };
@@ -518,6 +537,23 @@ export function createCombatDirector(input: {
  * off its mind (an animal's nerve is its nature, a planner's is steadier) and its temperament, one
  * more for a leader. None for a boss, whose story decides when it gives up, nor for the mindless.
  */
+/**
+ * Who in a Classic Marinara fight may lose heart (Alyssa 2026-11-01): only foes who would realistically
+ * run or give up. People and giants may do both; dragons and fiends may run but never give up; beasts,
+ * the dead, oozes, constructs and the like never break, and a treasure foe leaves only by its own flight.
+ */
+function marinaraMind(
+  fighters: readonly MarinaraFighter[] | undefined,
+  id: string,
+): "none" | "runs" | "elite" | "person" | undefined {
+  const fighter = fighters?.find((one) => one.id === id);
+  if (!fighter) return undefined;
+  if (fighter.windfall) return "none";
+  const kind = fighter.familyId ? marinaraEnemyFamily(fighter.familyId)?.kind : "humanoid";
+  if (kind === "dragon" || kind === "fiend") return "runs";
+  if (kind !== "humanoid" && kind !== "giant") return "none";
+  return fighter.tier === "elite" ? "elite" : "person";
+}
 function moraleScore(u: Combatant): number | undefined {
   // Nor for a fanatic (combat AI T2), who never breaks.
   if (u.boss || u.tactics?.mind === "mindless" || u.tactics?.adjective === "fanatical") return undefined;
@@ -624,7 +660,13 @@ function shiftTurn(s: CombatDirectorState, u: Unit): void {
 }
 function moraleTurn(s: CombatDirectorState, u: Unit): boolean {
   const mine = s.morale?.[u.id];
-  if (!mine || mine.score === undefined || side(u) !== "enemy") return false;
+  if (!mine || side(u) !== "enemy") return false;
+  // One that gave up waits on the party: its turns pass.
+  if (mine.yielded) {
+    if (s.tactical) (u as TacticalUnit).hasActed = true;
+    return true;
+  }
+  if (mine.score === undefined) return false;
   // A treasure foe never breaks or surrenders: it leaves only by running off after its rounds.
   if (s.marinara?.fighters.some((one) => one.id === u.id && one.windfall)) return false;
   if (mine.routed) {
@@ -665,7 +707,20 @@ function moraleTurn(s: CombatDirectorState, u: Unit): boolean {
           side(one) === "party" &&
           Math.abs((one as TacticalUnit).x - at.x) + Math.abs((one as TacticalUnit).y - at.y) <= 1,
       );
-    if ((u.tactics?.mind ?? "tactical") !== "instinct" && pinned) {
+    if ((u.tactics?.mind ?? "tactical") !== "instinct" && pinned && !mine.runsOnly) {
+      // Classic Marinara (Alyssa 2026-11-01): it throws down its arms and waits on the party, who may spare
+      // it (it pays as beaten when the fight is won) or finish it off.
+      if (s.marinara) {
+        mine.yielded = true;
+        const fighter = s.marinara.fighters.find((one) => one.id === u.id);
+        if (fighter) fighter.yielded = true;
+        if (s.tactical) (u as TacticalUnit).hasActed = true;
+        log(s, `${u.name} throws down its arms and begs for mercy.`, "status", u.id, undefined, {
+          key: "game.combat.event.yields",
+          params: { actor: u.name },
+        });
+        return true;
+      }
       leaveFight(s, u, "surrendered");
       return true;
     }

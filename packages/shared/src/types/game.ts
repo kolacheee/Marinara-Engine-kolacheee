@@ -798,6 +798,8 @@ export interface CombatSkill extends CombatAttackTraits {
   readyIn?: number;
   /** Can't be used now (Classic Marinara): not enough MP or stamina, cooling down, or used up. */
   unavailable?: "cost" | "cooldown" | "used" | "row";
+  /** What one use would do now (Classic Marinara): damage per foe or healing per ally, from the user's stats. */
+  estimate?: import("../features/marinara-combat.js").MarinaraSkillEstimate;
 }
 
 /** Lightweight element info for the client */

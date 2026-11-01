@@ -153,7 +153,11 @@ export function marinaraAiCandidates(
     options.reach ? pool.filter((target) => options.reach!(option, target)) : pool;
   for (const option of marinaraUsable(actor, all)) {
     const { effect } = option;
-    const pool = reachable(option, marinaraTargetsFor(actor, effect, all));
+    // A foe that yielded is the player's to spare or finish: the AI leaves it be.
+    const pool = reachable(
+      option,
+      marinaraTargetsFor(actor, effect, all).filter((unit) => !(unit.yielded && unit.side !== actor.side)),
+    );
     if (!pool.length && effect.target !== "party" && effect.target !== "self") continue;
     switch (effect.kind) {
       case "damage": {

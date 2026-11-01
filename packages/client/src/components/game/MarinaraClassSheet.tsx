@@ -25,6 +25,7 @@ import {
   marinaraOpenClasses,
   marinaraTrees,
   readMarinaraCardProgression,
+  MARINARA_PROMOTION_LEVEL,
 } from "@marinara-engine/shared";
 import { api } from "../../lib/api-client";
 import { chatKeys, useChat } from "../../hooks/use-chats";
@@ -45,6 +46,15 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
   const trees = marinaraTrees(progression.primary, progression.temperament);
   // A tree trait the active class already keeps (Cover, Hold the Line for a Guard line) needs no slot.
   const kept = active ? (MARINARA_ARCHETYPE_TRAITS[active.archetype] ?? []) : [];
+  // What a promotion still needs, for the class-level refusal: "needs Bloodsworn 20 (now 19)".
+  const blockParams = (def: { from?: string; tier: string }) =>
+    def.from
+      ? {
+          parent: marinaraClass(def.from)?.label ?? def.from,
+          needed: MARINARA_PROMOTION_LEVEL[def.tier as "advanced" | "master"] ?? 0,
+          level: progression.classLevels[def.from] ?? 0,
+        }
+      : {};
   const learned = marinaraLearnedSkills(progression).filter(
     (skill) =>
       skill.classId !== progression.activeClass &&
@@ -53,8 +63,15 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
   const save = async (change: { classId?: string; carried?: string[]; equipment?: MarinaraEquipment }) => {
     setBusy(true);
     try {
-      await api.post("/game/combat/director/marinara/progression", { chatId, name, ...change });
+      const result = await api.post<{ dropped?: string[] }>("/game/combat/director/marinara/progression", {
+        chatId,
+        name,
+        ...change,
+      });
       await qc.invalidateQueries({ queryKey: chatKeys.detail(chatId) });
+      // Say what a class change or carry change took away (playtest 2026-11-01).
+      if (result?.dropped?.length)
+        toast.warning(t("game.combat.marinara.sheet.dropped", { skills: result.dropped.join(", ") }));
     } catch (error) {
       toast.error(error instanceof Error ? error.message : t("game.combat.marinara.sheet.failed"));
     } finally {
@@ -174,7 +191,10 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                     disabled={busy || current || !!block}
                     title={
                       block
-                        ? t(`game.combat.marinara.sheet.block.${blockKey(block)}`, { defaultValue: block })
+                        ? t(`game.combat.marinara.sheet.block.${blockKey(block)}`, {
+                            defaultValue: block,
+                            ...blockParams(def),
+                          })
                         : def.role
                     }
                     onClick={() => void save({ classId: def.id })}
@@ -192,7 +212,10 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                       {trained !== undefined
                         ? t("game.combat.marinara.sheet.classLevel", { level: trained })
                         : block
-                          ? t(`game.combat.marinara.sheet.block.${blockKey(block)}`, { defaultValue: block })
+                          ? t(`game.combat.marinara.sheet.block.${blockKey(block)}`, {
+                              defaultValue: block,
+                              ...blockParams(def),
+                            })
                           : def.from
                             ? t("game.combat.marinara.sheet.promotionOpen")
                             : t(`game.combat.marinara.sheet.tier.${def.tier}`)}

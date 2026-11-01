@@ -47,6 +47,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "../../lib/utils";
+import { marinaraSkillEstimateLabel } from "../../lib/marinara-skill-estimate";
 import { GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
 import { boardCellArt, boardSliceStyle, useBoardArt } from "../../lib/board-art";
 import { audioManager } from "../../lib/game-audio";
@@ -1891,6 +1892,9 @@ export function TacticalCombatUI({
                                 : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
                             </span>
                           )}
+                          {skill.estimate ? (
+                            <span className="text-rose-200">{marinaraSkillEstimateLabel(skill, localizeUi)}</span>
+                          ) : null}
                           {skill.staminaCost ? (
                             <span className="text-emerald-300">
                               {localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost })}

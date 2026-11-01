@@ -24,6 +24,7 @@ import {
   marinaraRoundAt,
   marinaraSkillCost,
   marinaraSkillEffect,
+  marinaraSkillEstimate,
   marinaraStruck,
   marinaraTargetsFor,
   marinaraUsable,
@@ -107,7 +108,11 @@ function boardSkillType(kind: string, target: MarinaraEffect["target"]): CombatS
   return kind === "heal" || kind === "revive" ? "heal" : "buff";
 }
 
-export function marinaraCombatSkills(fighter: MarinaraFighter, all?: readonly MarinaraFighter[]): CombatSkill[] {
+export function marinaraCombatSkills(
+  fighter: MarinaraFighter,
+  all?: readonly MarinaraFighter[],
+  tactical = false,
+): CombatSkill[] {
   const usable = new Set(marinaraUsable(fighter, all).map((o) => o.id));
   const out: CombatSkill[] = [];
   for (const skill of fighter.skills) {
@@ -117,6 +122,8 @@ export function marinaraCombatSkills(fighter: MarinaraFighter, all?: readonly Ma
     const { resource, cost } = marinaraSkillCost(fighter, skill);
     const cooldown = fighter.cooldowns[skill.id] ?? 0;
     const used = !!effect.oncePerFight && fighter.used.includes(skill.id);
+    // What it would do now, from the fighter's own stats against whoever is in the fight.
+    const estimate = all ? marinaraSkillEstimate(fighter, effect, all, tactical) : null;
     out.push({
       id: skill.id,
       name: skill.label,
@@ -135,6 +142,7 @@ export function marinaraCombatSkills(fighter: MarinaraFighter, all?: readonly Ma
         ? { range: MARINARA_BOARD_SPELL_RANGE[fighter.archetype ?? ""] }
         : {}),
       ...(cooldown > 0 ? { readyIn: cooldown } : {}),
+      ...(estimate ? { estimate } : {}),
       ...(!usable.has(skill.id)
         ? {
             unavailable: used
@@ -167,7 +175,7 @@ export function marinaraCombatSkills(fighter: MarinaraFighter, all?: readonly Ma
 }
 
 /** Copies every fighter onto the director's unit of the same id. */
-export function mirrorMarinaraUnits(state: MarinaraDirectorState, units: readonly Combatant[]): void {
+export function mirrorMarinaraUnits(state: MarinaraDirectorState, units: readonly Combatant[], tactical = false): void {
   for (const unit of units) {
     const fighter = marinaraFighter(state, unit.id);
     if (!fighter) continue;
@@ -180,7 +188,7 @@ export function mirrorMarinaraUnits(state: MarinaraDirectorState, units: readonl
     unit.defense = Math.round(fighter.stats.defense);
     // At least 1: the legacy turn check reads 0 Speed as immobilized; the timeline floors speed itself.
     unit.speed = Math.max(1, Math.round(fighter.stats.speed));
-    unit.skills = marinaraCombatSkills(fighter, state.fighters);
+    unit.skills = marinaraCombatSkills(fighter, state.fighters, tactical);
     unit.statusEffects = fighter.statuses.map((s): CombatStatusEffect => ({
       name: s.status,
       modifier: 0,
