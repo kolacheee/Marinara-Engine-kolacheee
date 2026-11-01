@@ -150,6 +150,8 @@ export interface MarinaraEffect {
   charge?: boolean;
   cooldown?: number;
   oncePerFight?: boolean;
+  /** Only from the front row (on a board: with a foe next to the user). */
+  frontOnly?: boolean;
   /** After damage, lowers the user's own stat (Reckless Swing). */
   selfDebuff?: { stat: MarinaraStat; pct: number; duration: number };
   /** Lowers the target's stat after a hit (Shield Bash stagger, Sundering). */
@@ -265,7 +267,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   siphon: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
   // Every foe, and the Hexer drinks half of it back: a Hexer can hold the front against a swarm
   // (Alyssa 2026-11-01).
-  "grave-tithe": dmg("magic", 5, { target: "all-enemies", ranged: true, drain: 0.5, cooldown: 2 }),
+  // Front row only (Alyssa 2026-11-01): the Hexer's front-line drain.
+  "grave-tithe": dmg("magic", 5, { target: "all-enemies", ranged: true, drain: 0.5, cooldown: 2, frontOnly: true }),
   "total-eclipse": { kind: "debuff", target: "all-enemies", stat: "damage", pct: -0.4, duration: 2, cooldown: 3 },
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
@@ -349,11 +352,12 @@ const HARMFUL = new Set<MarinaraStatusId>([
 /** Passive hooks the resolver reads. */
 /**
  * Grave Hunger (Alyssa 2026-11-01): every enemy within a Hexer's spell reach gives up a share of its
- * Defense and Resistance to the Hexer while it lives and stays in reach, so a Hexer stands up better
+ * Defense and Resistance to the Hexer while it lives and stays in reach, a bigger share while the
+ * Hexer stands in the front line (`frontPct`), so a Hexer stands up better
  * the more foes crowd the field. In Classic a Hexer's curses reach every foe; on a board, foes within
  * its spell range. Counts at most `most` foes.
  */
-export const MARINARA_GRAVE_HUNGER = { pct: 0.15, most: 5 };
+export const MARINARA_GRAVE_HUNGER = { pct: 0.15, frontPct: 0.25, most: 5 };
 
 export interface MarinaraPassiveHooks {
   damagePct?: number;
@@ -965,11 +969,12 @@ export function marinaraEffectiveStat(
   let flat = 0;
   if (stat === "defense" || stat === "resistance") {
     // Grave Hunger: what the Hexer takes, its foes in reach lose.
-    if (own.leechGuardPct) for (const foe of marinaraLeeched(unit, all)) flat += foe.stats[stat] * own.leechGuardPct;
+    if (own.leechGuardPct)
+      for (const foe of marinaraLeeched(unit, all)) flat += foe.stats[stat] * marinaraLeechPct(unit, all);
     for (const other of all) {
       if (other.side === unit.side || other.hp <= 0) continue;
       const leech = hooksOf(other).leechGuardPct;
-      if (leech && marinaraLeeched(other, all).includes(unit)) flat -= unit.stats[stat] * leech;
+      if (leech && marinaraLeeched(other, all).includes(unit)) flat -= unit.stats[stat] * marinaraLeechPct(other, all);
     }
   }
   return Math.max(0, unit.stats[stat] * (1 + pct) + flat);
@@ -997,6 +1002,20 @@ export function marinaraWarderReaches(
 export function marinaraRowOf(unit: MarinaraFighter, all: readonly MarinaraFighter[]): MarinaraFighter["row"] {
   if (unit.row === "front") return "front";
   return all.some((u) => u.side === unit.side && u.hp > 0 && u.row === "front") ? "back" : "front";
+}
+
+/**
+ * Whether a fighter stands in the front line now: in Classic its row as it fights (see
+ * marinaraRowOf; its own row when the side isn't known), on a board a foe next to it.
+ */
+export function marinaraStandsFront(unit: MarinaraFighter, all?: readonly MarinaraFighter[]): boolean {
+  if (unit.nearFoes) return unit.nearFoes.length > 0;
+  return (all ? marinaraRowOf(unit, all) : unit.row) === "front";
+}
+
+/** The share Grave Hunger takes from each foe now: more from the front line. */
+export function marinaraLeechPct(unit: MarinaraFighter, all: readonly MarinaraFighter[]): number {
+  return marinaraStandsFront(unit, all) ? MARINARA_GRAVE_HUNGER.frontPct : MARINARA_GRAVE_HUNGER.pct;
 }
 
 /** The foes a Grave Hunger Hexer drains now. */
@@ -1099,7 +1118,8 @@ export interface MarinaraOption {
 }
 
 /** Everything the fighter can do this turn: paid for, off cooldown, not used up. */
-export function marinaraUsable(unit: MarinaraFighter): MarinaraOption[] {
+export function marinaraUsable(unit: MarinaraFighter, all?: readonly MarinaraFighter[]): MarinaraOption[] {
+  const front = marinaraStandsFront(unit, all);
   const out: MarinaraOption[] = [
     { id: null, label: "Attack", skill: null, effect: marinaraBasicAttack(unit), cost: 0 },
   ];
@@ -1112,6 +1132,7 @@ export function marinaraUsable(unit: MarinaraFighter): MarinaraOption[] {
     if ((unit.cooldowns[skill.id] ?? 0) > 0) continue;
     if (effect.oncePerFight && unit.used.includes(skill.id)) continue;
     if (effect.kind === "command" && unit.commanded) continue;
+    if (effect.frontOnly && !front) continue;
     out.push({ id: skill.id, label: skill.label, skill, effect, cost, resource });
   }
   for (const id of unit.enemySkills ?? []) {
@@ -1124,8 +1145,12 @@ export function marinaraUsable(unit: MarinaraFighter): MarinaraOption[] {
 }
 
 /** The option with this id, if the fighter can use it now. */
-export function marinaraOption(unit: MarinaraFighter, id: string | null): MarinaraOption | undefined {
-  return marinaraUsable(unit).find((option) => option.id === id);
+export function marinaraOption(
+  unit: MarinaraFighter,
+  id: string | null,
+  all?: readonly MarinaraFighter[],
+): MarinaraOption | undefined {
+  return marinaraUsable(unit, all).find((option) => option.id === id);
 }
 
 /**

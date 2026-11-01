@@ -43,7 +43,7 @@ const living = (units: readonly MarinaraFighter[]) => units.filter((unit) => uni
 /** The best expected single hit this fighter could make now: what an extra action of theirs is worth. */
 function bestDamage(unit: MarinaraFighter, all: readonly MarinaraFighter[], tactical: boolean): number {
   let best = 0;
-  for (const { effect } of marinaraUsable(unit)) {
+  for (const { effect } of marinaraUsable(unit, all)) {
     if (effect.kind !== "damage") continue;
     for (const target of marinaraTargetsFor(unit, effect, all))
       best = Math.max(best, Math.min(target.hp, marinaraExpectedHit(unit, target, effect, all, tactical)));
@@ -141,7 +141,7 @@ export function marinaraAiCandidates(
   };
   const reachable = (option: MarinaraOption, pool: MarinaraFighter[]) =>
     options.reach ? pool.filter((target) => options.reach!(option, target)) : pool;
-  for (const option of marinaraUsable(actor)) {
+  for (const option of marinaraUsable(actor, all)) {
     const { effect } = option;
     const pool = reachable(option, marinaraTargetsFor(actor, effect, all));
     if (!pool.length && effect.target !== "party" && effect.target !== "self") continue;

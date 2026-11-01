@@ -797,7 +797,7 @@ export interface CombatSkill extends CombatAttackTraits {
   /** Turns until it can be used again (Classic Marinara). */
   readyIn?: number;
   /** Can't be used now (Classic Marinara): not enough MP or stamina, cooling down, or used up. */
-  unavailable?: "cost" | "cooldown" | "used";
+  unavailable?: "cost" | "cooldown" | "used" | "row";
 }
 
 /** Lightweight element info for the client */

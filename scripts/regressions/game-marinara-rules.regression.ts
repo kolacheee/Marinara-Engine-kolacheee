@@ -53,10 +53,24 @@ const party = (id: string) =>
   );
   const foes = ["f1", "f2"].map((id) => buildMarinaraEnemy({ id, name: id, level: 9, tier: "standard" }));
   foes[1]!.row = "back";
-  const all = [hexer, ...foes];
+  const guard = party("g");
+  guard.row = "front";
+  const all = [hexer, guard, ...foes];
   assert.equal(marinaraLeeched(hexer, all).length, 2, "every foe, either row, from either row");
-  const taken = foes.reduce((sum, foe) => sum + foe.stats.defense * MARINARA_GRAVE_HUNGER.pct, 0);
-  assert.ok(Math.abs(marinaraEffectiveStat(hexer, "defense", all) - (hexer.stats.defense + taken)) < 1e-9);
+  const taken = (pct: number) => foes.reduce((sum, foe) => sum + foe.stats.defense * pct, 0);
+  assert.ok(
+    Math.abs(marinaraEffectiveStat(hexer, "defense", all) - (hexer.stats.defense + taken(MARINARA_GRAVE_HUNGER.pct))) <
+      1e-9,
+  );
+  assert.ok(!marinaraOption(hexer, "grave-tithe", all), "Grave Tithe needs the front row");
+  hexer.row = "front";
+  assert.ok(
+    Math.abs(
+      marinaraEffectiveStat(hexer, "defense", all) - (hexer.stats.defense + taken(MARINARA_GRAVE_HUNGER.frontPct)),
+    ) < 1e-9,
+    "more from the front",
+  );
+  assert.ok(marinaraOption(hexer, "grave-tithe", all), "and Grave Tithe opens");
   assert.ok(marinaraEffectiveStat(foes[0]!, "defense", all) < foes[0]!.stats.defense, "the foe loses it");
   foes[1]!.hp = 0;
   assert.equal(marinaraLeeched(hexer, all).length, 1, "a fallen foe gives nothing");

@@ -196,7 +196,12 @@ function sanitizeCombatSkills(skills: unknown): Combatant["skills"] {
     if (staminaCost > 0) next.staminaCost = staminaCost;
     const readyIn = numberFromUnknown(skill.readyIn, 0);
     if (readyIn > 0) next.readyIn = readyIn;
-    if (skill.unavailable === "cost" || skill.unavailable === "cooldown" || skill.unavailable === "used")
+    if (
+      skill.unavailable === "cost" ||
+      skill.unavailable === "cooldown" ||
+      skill.unavailable === "used" ||
+      skill.unavailable === "row"
+    )
       next.unavailable = skill.unavailable;
     if (typeof skill.aims === "string") next.aims = skill.aims as CombatSkill["aims"];
     for (const [field, schema] of Object.entries(combatInterruptFields)) {
@@ -2375,6 +2380,7 @@ export function GameCombatUI({
                                 skill.readyIn
                                   ? localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })
                                   : null,
+                                skill.unavailable === "row" ? localizeUi("game.combat.marinara.frontRowOnly") : null,
                               ]
                                 .filter(Boolean)
                                 .join(" · ")}
@@ -3062,6 +3068,9 @@ export function GameCombatUI({
                           {skillCostLabel(skill, localizeUi) ? [" • ", skillCostLabel(skill, localizeUi)].join("") : ""}
                           {skill.readyIn
                             ? [" · ", localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })].join("")
+                            : ""}
+                          {skill.unavailable === "row"
+                            ? [" · ", localizeUi("game.combat.marinara.frontRowOnly")].join("")
                             : ""}
                         </div>
                       </button>
