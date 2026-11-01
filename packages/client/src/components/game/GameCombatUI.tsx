@@ -93,6 +93,7 @@ type CombatantCardStyle = CSSProperties & {
   "--combat-avatar-size": string;
   "--combat-dialogue-width": string;
   "--combat-dialogue-max-height": string;
+  "--combat-info-width": string;
 };
 
 type CombatSkillType = NonNullable<Combatant["skills"]>[number]["type"];
@@ -850,21 +851,20 @@ export function GameCombatUI({
     // How many cards a column holds: whichever of 3, 2 or 1 gives the biggest cards. A short stage
     // (a laptop at 720px with the skill menu open) spreads a row over more columns rather than
     // squeezing its cards (a card is its width of art plus about 110px of name and bars).
-    // A column takes at least 120px across (its name and stat lines), 24px between columns, 48px
-    // between the sides and 48px of padding; an arrangement wider than the stage is never taken.
-    let best: { perColumn: number; width: number } | null = null;
+    // A column is 120px across (the card's name and bars), 24px between columns, 48px between the
+    // sides and 48px of padding; an arrangement wider than the stage is never taken. The art is
+    // what's left of the column's height after about 80px of name and bars a card.
+    let best: { perColumn: number; art: number } | null = null;
     for (const perColumn of [3, 2, 1]) {
       const columns = [...stageColumns(enemies, "enemy", perColumn), ...stageColumns(party, "player", perColumn)];
       const count = Math.max(1, columns.length);
       const tallest = Math.max(1, ...columns.map((column) => column.length));
-      const byHeight = (eastWestBox.height - (tallest - 1) * 8) / tallest - 110;
-      const width = Math.min(120, byHeight);
-      const across = (column: number) => count * Math.max(column, 120) + Math.max(0, count - 2) * 24 + 48 + 48;
-      if (across(width) > eastWestBox.width) continue;
-      if (!best || width > best.width + 4) best = { perColumn, width };
+      if (count * 120 + Math.max(0, count - 2) * 24 + 48 + 48 > eastWestBox.width) continue;
+      const art = Math.min(96, (eastWestBox.height - (tallest - 1) * 8) / tallest - 80);
+      if (!best || art > best.art + 4) best = { perColumn, art };
     }
-    best ??= { perColumn: 3, width: (eastWestBox.height - 16) / 3 - 110 };
-    return { perColumn: best.perColumn, cardWidth: Math.round(Math.max(40, best.width)) };
+    best ??= { perColumn: 3, art: (eastWestBox.height - 16) / 3 - 80 };
+    return { perColumn: best.perColumn, artSize: Math.round(Math.max(32, best.art)) };
   }, [eastWest, eastWestBox, enemies, party]);
   const [openDrawer, setOpenDrawer] = useState<MobileDrawerKind>(null);
 
@@ -2755,7 +2755,7 @@ export function GameCombatUI({
           // columns (Alyssa 2026-11-01).
           <div
             ref={eastWestStageRef}
-            className="relative flex h-full min-h-0 w-full flex-nowrap items-stretch justify-evenly gap-12 overflow-visible px-3 pb-[clamp(0.25rem,1.5svh,0.75rem)] pt-[clamp(2.75rem,8svh,4rem)] sm:px-6"
+            className="relative flex h-full min-h-0 w-full flex-nowrap items-stretch justify-evenly gap-12 overflow-visible px-3 pb-[clamp(0.25rem,1.5svh,0.75rem)] pt-10 sm:px-6"
           >
             {(["enemy", "player"] as const).map((side) => {
               const list = side === "enemy" ? enemies : party;
@@ -2795,7 +2795,7 @@ export function GameCombatUI({
                               }
                               damagePopups={damagePopups.filter((p) => p.targetId === combatant.id)}
                               dialogueLines={combatDialogueLayout.byCombatantId.get(combatant.id)}
-                              cardWidth={eastWestLayout?.cardWidth}
+                              artSize={eastWestLayout?.artSize}
                               onDismissDialogue={dismissCombatDialogueLine}
                             />
                           </div>
@@ -3514,7 +3514,7 @@ function CombatantCard({
   sideCount = 1,
   onDismissDialogue,
   compact = false,
-  cardWidth,
+  artSize,
   elements,
 }: {
   combatant: Combatant;
@@ -3527,8 +3527,8 @@ function CombatantCard({
   sideCount?: number;
   onDismissDialogue?: (line: PartyDialogueLine) => void;
   compact?: boolean;
-  /** A width in px the stage worked out for it (an east-west stage fits its tallest column). */
-  cardWidth?: number;
+  /** An east-west stage's art size in px: the card takes its column's 120px, its art this square. */
+  artSize?: number;
   elements?: WorldElementSet;
 }) {
   const { t: localizeUi } = useUiTranslation();
@@ -3565,14 +3565,19 @@ function CombatantCard({
   const desktopDialogueFitWidth = `calc((100vw - 3rem) / ${combatantCount})`;
   const compactFitWidth = `calc((100vw - 2.5rem) / ${combatantCount})`;
   const cardStyle: CombatantCardStyle = {
-    "--combat-card-width": cardWidth
-      ? `${cardWidth}px`
+    "--combat-card-width": artSize
+      ? `${Math.max(120, artSize + 24)}px`
       : compact
         ? `clamp(2.75rem, min(22vw, 9svh, ${compactFitWidth}), 5.5rem)`
         : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
-    "--combat-avatar-size": compact
-      ? "calc(var(--combat-card-width) - 1rem)"
-      : "calc(var(--combat-card-width) - 1.5rem)",
+    "--combat-avatar-size": artSize
+      ? `${artSize}px`
+      : compact
+        ? "calc(var(--combat-card-width) - 1rem)"
+        : "calc(var(--combat-card-width) - 1.5rem)",
+    "--combat-info-width": artSize
+      ? "calc(var(--combat-card-width) - 0.5rem)"
+      : "calc(var(--combat-avatar-size) + 1rem)",
     "--combat-dialogue-width": compact
       ? "var(--combat-avatar-size)"
       : `clamp(6.5rem, min(15rem, ${desktopDialogueFitWidth}), 15rem)`,
@@ -3664,8 +3669,8 @@ function CombatantCard({
       {/* Combatant sprite / avatar area */}
       <div
         className={cn(
-          "relative flex aspect-square shrink-0 items-center justify-center rounded-xl border-2 transition-all duration-200",
-          "w-[var(--combat-avatar-size)]",
+          "relative flex aspect-square shrink-0 items-center justify-center overflow-hidden rounded-xl border-2 transition-all duration-200",
+          "h-[var(--combat-avatar-size)] w-[var(--combat-avatar-size)]",
           isKo && "grayscale opacity-40",
           isTargetable &&
             !isKo &&
@@ -3736,7 +3741,7 @@ function CombatantCard({
       </div>
 
       {/* Name + Level */}
-      <div className="mt-1.5 flex max-w-[calc(var(--combat-avatar-size)+1rem)] min-w-0 items-center gap-1">
+      <div className="mt-1.5 flex max-w-[var(--combat-info-width)] min-w-0 items-center gap-1">
         <span
           className={cn("truncate text-[0.68rem] font-semibold sm:text-xs", isKo ? "text-white/30" : "text-white/90")}
         >
@@ -3749,7 +3754,7 @@ function CombatantCard({
       </div>
 
       {/* HP bar */}
-      <div className="mt-1 w-[calc(var(--combat-avatar-size)+1rem)]">
+      <div className="mt-1 w-[var(--combat-info-width)]">
         <div className="flex items-center gap-1">
           <Heart size={9} className={cn(isKo ? "text-white/20" : "text-red-400")} />
           <div className={cn("h-2 flex-1 overflow-hidden rounded-full bg-white/10", !isKo && `shadow-sm ${hpGlow}`)}>
