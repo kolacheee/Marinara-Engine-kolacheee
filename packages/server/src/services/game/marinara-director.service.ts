@@ -178,7 +178,7 @@ export function mirrorMarinaraUnits(state: MarinaraDirectorState, units: readonl
       stat: "hp",
       turnsLeft: s.turns,
     }));
-    unit.marinara = marinaraCombatantView(fighter);
+    unit.marinara = marinaraCombatantView(fighter, state.fighters);
   }
 }
 
