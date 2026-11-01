@@ -29,6 +29,7 @@ import {
   type MarinaraFoeBrief,
   type MarinaraPartyTemperament,
   type MarinaraDamageType,
+  marinaraApplyCompanions,
 } from "@marinara-engine/shared";
 import { gameCardFor } from "./party-temperament.service.js";
 import { marinaraCombatant, type MarinaraDirectorState } from "./marinara-director.service.js";
@@ -91,6 +92,7 @@ export function marinaraFightStart(input: {
   const made = new Map<string, MarinaraCardProgression>();
   const party: Combatant[] = [];
   const fighters: MarinaraFighter[] = [];
+  const keepers: Array<{ fighter: MarinaraFighter; progression: MarinaraCardProgression; member: Combatant }> = [];
   for (const member of input.party) {
     const card = gameCardFor(named, member.name);
     let progression = readMarinaraCardProgression(card?.marinara);
@@ -109,8 +111,11 @@ export function marinaraFightStart(input: {
     const fighter = marinaraPartyFighter(member.id, member.name, progression);
     if (input.ammo?.length && fighter.archetype === "marksman") fighter.ammoOwned = [...input.ammo];
     fighters.push(fighter);
-    party.push(marinaraCombatant(fighter, kept(member)));
+    keepers.push({ fighter, progression, member });
   }
+  // Tamed companions (Tracker): their keeper's stat, and with Bond the party's, before anyone is shown.
+  marinaraApplyCompanions(keepers);
+  for (const { fighter, member } of keepers) party.push(marinaraCombatant(fighter, kept(member)));
   const partyAverageHp = fighters.length ? fighters.reduce((sum, one) => sum + one.maxHp, 0) / fighters.length : 20;
   const foes = marinaraFoeFighters({
     foes: input.enemies as unknown as MarinaraFoeBrief[],
@@ -221,7 +226,21 @@ export function marinaraFightEnd(input: {
       0,
     );
     const fell = input.permadeath && fighter.hp <= 0 && input.outcome !== "defeat";
-    if (!xp && !fell) continue;
+    // A beast this fighter tamed follows them from now on, replacing any before it (Tracker). Kept
+    // unless the fight was lost.
+    const beast =
+      input.outcome !== "defeat"
+        ? [...(input.state.left ?? [])].reverse().find((one) => one.tamedBy === fighter.id && one.tameable)
+        : undefined;
+    const companion = beast?.tameable
+      ? {
+          name: beast.tameable.name,
+          stat: beast.tameable.stat,
+          ...(beast.tameable.familyId ? { familyId: beast.tameable.familyId } : {}),
+          level: beast.level,
+        }
+      : undefined;
+    if (!xp && !fell && !companion) continue;
     const awarded = xp
       ? awardMarinaraXp(progression, xp, marinaraRandom(`${input.seed}:growth:${card.name}`))
       : { progression, levelUps: [] };
@@ -229,6 +248,7 @@ export function marinaraFightEnd(input: {
       ...progression,
       ...awarded.progression,
       ...(fell ? { fallen: true } : {}),
+      ...(companion ? { companion } : {}),
     };
     changed.set(normalizeCharacterLookupName(card.name), next);
     const active = next.activeClass;
@@ -245,6 +265,7 @@ export function marinaraFightEnd(input: {
         ? { promotionReady: true }
         : {}),
       ...(fell ? { fallen: true } : {}),
+      ...(companion ? { tamed: companion.name } : {}),
     });
   }
   const cards = changed.size

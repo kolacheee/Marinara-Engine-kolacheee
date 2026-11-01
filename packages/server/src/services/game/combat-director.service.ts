@@ -153,7 +153,7 @@ export interface CombatDirectorState extends DirectedCombatView {
     }
   >;
   /** Opponents out of the fight alive (combat AI E1): run off the board, or given up to the party. */
-  gone?: Array<{ id: string; name: string; hp: number; maxHp: number; left: "fled" | "surrendered" }>;
+  gone?: Array<{ id: string; name: string; hp: number; maxHp: number; left: "fled" | "surrendered" | "tamed" }>;
   /** A game on Marinara's own classes (Classic Marinara): every fighter, its timeline and its credit
    *  for XP. Its turns come off the timeline, and its math is the shared Classic Marinara math. */
   marinara?: MarinaraDirectorState;
@@ -328,6 +328,11 @@ function rulesetBoardSummary(board: RulesetCombatBoard | undefined, seed: number
 }
 function sync(s: CombatDirectorState) {
   if (s.marinara) {
+    // A beast a Tracker tamed leaves the fight at once, the keeper's companion now (Alyssa 2026-11-01).
+    for (const fighter of s.marinara.fighters.filter((one) => one.tamedBy && one.hp > 0)) {
+      const u = get(s, fighter.id);
+      if (u) leaveFight(s, u, "tamed", true);
+    }
     // A Marksman the AI runs loads its own ammunition, shot by shot; one the player runs, by hand.
     for (const u of s.tactical ? s.tactical.units : s.party) {
       const fighter = side(u as Unit) === "party" ? marinaraFighter(s.marinara, u.id) : undefined;
@@ -599,7 +604,7 @@ function atBoardEdge(s: CombatDirectorState, u: Unit): boolean {
   return t.x <= 0 || t.y <= 0 || t.x >= width - 1 || t.y >= height - 1;
 }
 /** Out of the fight alive (combat AI E1): kept for the story, gone from the board and the turn order. */
-function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered", quiet = false) {
+function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered" | "tamed", quiet = false) {
   (s.gone ??= []).push({ id: u.id, name: u.name, hp: u.hp, maxHp: u.maxHp, left });
   // Off the Classic Marinara timeline too, kept aside for the XP it pays when the fight is won.
   if (s.marinara) {

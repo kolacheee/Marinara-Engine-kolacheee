@@ -16,9 +16,11 @@ import {
   type MarinaraArchetype,
   type MarinaraPartyTemperament,
   type MarinaraProgression,
+  type MarinaraStat,
   type MarinaraStats,
 } from "./marinara-classes.js";
 import {
+  MARINARA_COMPANION,
   MARINARA_ENEMY_TIERS,
   MARINARA_ENEMY_TIERS_LIST,
   buildMarinaraEnemy,
@@ -38,6 +40,8 @@ import {
   type MarinaraEquipment,
 } from "./marinara-items.js";
 import {
+  marinaraEnemyFamily,
+  marinaraEnemyName,
   marinaraEnemySpec,
   marinaraFitEncounter,
   MARINARA_TIER_RULES,
@@ -53,6 +57,17 @@ export interface MarinaraCardProgression extends MarinaraProgression {
   row?: "front" | "back";
   /** Fell for good in a game with permadeath on. */
   fallen?: boolean;
+  /** The beast they tamed (Tracker, Alyssa 2026-11-01): one at a time, kept between fights. */
+  companion?: MarinaraCompanion;
+}
+
+/** A tamed beast: no fighter of its own, a stat boost to its keeper (and Sic's strike). */
+export interface MarinaraCompanion {
+  name: string;
+  /** The stat it is strongest in, which it raises. */
+  stat: MarinaraStat;
+  familyId?: string;
+  level?: number;
 }
 
 /** Words that point at each archetype, strongest first within each. */
@@ -309,6 +324,59 @@ export function marinaraFighterGear(
     stats: bonus.stats,
     ...(bonus.ranged !== undefined ? { ranged: bonus.ranged } : {}),
   };
+}
+
+/** What Tame can take of a bestiary foe: wild beasts and vermin below elite, never treasure. */
+function marinaraTameableFor(
+  familyId: string,
+  setting: MarinaraBestiarySetting,
+  level: number,
+  tier: MarinaraEnemyTier,
+): Pick<MarinaraFighter, "tameable"> {
+  const family = marinaraEnemyFamily(familyId);
+  if (!family || (family.kind !== "beast" && family.kind !== "vermin") || family.role === "treasure") return {};
+  if (tier === "elite" || tier === "boss") return {};
+  const name = marinaraEnemyName(family, setting, level);
+  if (!name) return {};
+  // Its best stat is the one its family stands out in (HP aside).
+  const stat =
+    (Object.entries(family.statScale ?? {}) as Array<[MarinaraStat, number]>)
+      .filter(([one]) => one !== "hp")
+      .sort((a, b) => b[1] - a[1])[0]?.[0] ?? "strength";
+  return { tameable: { name, stat, familyId } };
+}
+
+/** The classes a companion's bonus counts in: the Tracker's tree. */
+export const MARINARA_COMPANION_CLASSES: readonly string[] = ["tracker", "huntsmaster"];
+
+/**
+ * Companions at the start of a fight (Alyssa 2026-11-01): each keeper with a Tracker-tree class active
+ * gets +10% to the companion's stat (+20% with Bond), and with Bond the rest of the party gets half
+ * that. Stats only: HP follows when the stat is HP.
+ */
+export function marinaraApplyCompanions(
+  party: ReadonlyArray<{ fighter: MarinaraFighter; progression: MarinaraCardProgression }>,
+): void {
+  const raise = (fighter: MarinaraFighter, stat: MarinaraStat, pct: number) => {
+    fighter.stats[stat] = fighter.stats[stat] * (1 + pct);
+    if (stat === "hp") {
+      const ratio = fighter.maxHp > 0 ? fighter.hp / fighter.maxHp : 1;
+      fighter.maxHp = Math.round(fighter.maxHp * (1 + pct));
+      fighter.hp = Math.round(fighter.maxHp * ratio);
+    }
+  };
+  for (const { fighter, progression } of party) {
+    const companion = progression.companion;
+    if (!companion) continue;
+    fighter.companion = { name: companion.name, stat: companion.stat };
+    if (!MARINARA_COMPANION_CLASSES.includes(progression.activeClass)) continue;
+    const bond = fighter.skills.some((skill) => skill.id === "bond");
+    const pct = bond ? MARINARA_COMPANION.bond : MARINARA_COMPANION.pct;
+    raise(fighter, companion.stat, pct);
+    if (bond)
+      for (const other of party)
+        if (other.fighter !== fighter) raise(other.fighter, companion.stat, pct * MARINARA_COMPANION.shared);
+  }
 }
 
 /** A party member's fighter for a fight. */
@@ -576,6 +644,7 @@ function marinaraBestiaryFoes(input: {
         }),
         familyId: foe.familyId,
         ...(spec.windfall ? { windfall: spec.windfall } : {}),
+        ...marinaraTameableFor(foe.familyId, input.setting, spec.level, spec.tier),
       };
       // A treasure foe hardly hurts: everything it deals is scaled down for the whole fight.
       if (spec.damageScale !== undefined && spec.damageScale !== 1)

@@ -173,6 +173,10 @@ export function gameGmPromptDecisionTexts(chatMetadata: Record<string, unknown>,
 function appendGameCardDetails(parts: string[], card: Record<string, unknown> | undefined): void {
   if (!card) return;
   if (card.class) parts.push(`Class: ${card.class}`);
+  // A beast they tamed in a Classic fight (Tracker): it follows them, though it never fights on its own.
+  const companion = (card.marinara as { companion?: { name?: unknown } } | undefined)?.companion;
+  if (companion && typeof companion.name === "string" && companion.name.trim())
+    parts.push(`Companion: ${companion.name.trim()} (a beast they tamed; it follows them and helps them fight)`);
   if ((card.abilities as string[])?.length) parts.push(`Abilities: ${(card.abilities as string[]).join(", ")}`);
   if ((card.strengths as string[])?.length) parts.push(`Strengths: ${(card.strengths as string[]).join(", ")}`);
   if ((card.weaknesses as string[])?.length) parts.push(`Weaknesses: ${(card.weaknesses as string[]).join(", ")}`);

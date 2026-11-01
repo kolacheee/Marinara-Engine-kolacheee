@@ -314,6 +314,8 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       return `${actor}'s miracle keeps ${target} standing.`;
     case "hold-the-line":
       return `${actor} holds the line against ${target}.`;
+    case "tame":
+      return `${actor} tames ${target}${roll}: it follows ${actor} now.`;
     case "steal":
       return event.status === "empty"
         ? `${actor} finds nothing left on ${target}.`

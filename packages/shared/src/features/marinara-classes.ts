@@ -960,7 +960,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "tracker",
       label: "Tracker",
       from: "marksman",
-      role: "Hunters who mark their quarry for the whole party.",
+      role: "Hunters who mark their quarry for the whole party and tame the beasts they bring down.",
       leans: ["skill", "speed"],
       skills: [
         active(
@@ -970,6 +970,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "skill",
           3,
           "Bonus action. The target takes 35% more damage from all sources for 3 turns.",
+          true,
+        ),
+        active(
+          "tame",
+          "Tame",
+          12,
+          "skill",
+          4,
+          "Tames one wild beast below 30% HP, taking it out of the fight. Success rises with Skill and Luck. The beast becomes the user's companion and raises the user's stat it is strongest in by 10%. One companion at a time.",
           true,
         ),
         passive(
@@ -988,7 +997,16 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["skill", "speed", "luck"],
       skills: [
         active("snare-field", "Snare Field", 20, "skill", 10, "Lowers all foes' Speed by 30% for 2 turns."),
+        active(
+          "sic",
+          "Sic",
+          22,
+          "strength",
+          4,
+          "Bonus action. The user's companion strikes one foe. Usable every other turn.",
+        ),
         passive("pack-tactics", "Pack Tactics", 24, "The party deals 40% more damage to marked foes.", true),
+        passive("bond", "Bond", 26, "The companion's bonus rises to 20%, and the rest of the party gains half of it."),
       ],
     },
     {

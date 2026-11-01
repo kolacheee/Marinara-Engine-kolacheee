@@ -966,7 +966,8 @@ export async function combatDirectorRoutes(
       won && s.marinara
         ? await planMarinaraVictoryLoot(app.db, chatId, s.marinara.fighters, `${s.id}:${s.seed}:loot`, {
             // Out of the fight alive: one that surrendered hands everything over, one that fled drops coin.
-            left: s.marinara.left,
+            // A tamed beast drops nothing: it follows its keeper now.
+            left: s.marinara.left?.filter((one) => !one.tamedBy),
             fled: (s.gone ?? []).filter((one) => one.left === "fled").map((one) => one.id),
           })
         : won

@@ -912,8 +912,9 @@ export interface CombatSummary {
     defeated: boolean;
     hp: number;
     maxHp: number;
-    /** Out of the fight alive, its heart gone: run off, or given up to the party. */
-    left?: "fled" | "surrendered";
+    /** Out of the fight alive, its heart gone: run off, or given up to the party; or tamed by a
+     *  party member (Classic Tame), now their companion. */
+    left?: "fled" | "surrendered" | "tamed";
   }>;
   /** The party gave itself up to honourable opponents (combat AI T6), who take it alive. */
   yielded?: true;
