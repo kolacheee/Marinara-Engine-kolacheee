@@ -8,7 +8,10 @@ import {
   commandCombatDirector,
   createCombatDirector,
 } from "../../packages/server/src/services/game/combat-director.service.js";
-import { marinaraAiAction, marinaraCombatant } from "../../packages/server/src/services/game/marinara-director.service.js";
+import {
+  marinaraAiAction,
+  marinaraCombatant,
+} from "../../packages/server/src/services/game/marinara-director.service.js";
 import {
   MARINARA_CARRY_SLOTS,
   MARINARA_PARTY_TEMPERAMENTS,
@@ -32,7 +35,10 @@ import {
   type MarinaraEffect,
   type MarinaraFighter,
 } from "../../packages/shared/src/features/marinara-combat.js";
-import { MARINARA_BESTIARY_ABILITIES, type MarinaraBestiaryFoeSpec } from "../../packages/shared/src/features/marinara-bestiary.js";
+import {
+  MARINARA_BESTIARY_ABILITIES,
+  type MarinaraBestiaryFoeSpec,
+} from "../../packages/shared/src/features/marinara-bestiary.js";
 import {
   marinaraGearBonus,
   marinaraStandardEquipment,
@@ -66,7 +72,8 @@ export function enemyFighter(spec: MarinaraBestiaryFoeSpec): MarinaraFighter {
   });
   // The Engine applies damageScale when it builds the foe; the lab does it with a lasting damage mod.
   const scale = (spec as { damageScale?: number }).damageScale;
-  if (scale !== undefined && scale !== 1) fighter.mods.push({ stat: "damage", pct: scale - 1, turns: 99999, source: "damage-scale" });
+  if (scale !== undefined && scale !== 1)
+    fighter.mods.push({ stat: "damage", pct: scale - 1, turns: 99999, source: "damage-scale" });
   return fighter;
 }
 
@@ -234,6 +241,10 @@ export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], see
     marinara: [...party, ...foes],
   });
   for (let step = 0; step < 4000 && !s.outcome; step++) {
+    if (s.mercy) {
+      commandCombatDirector(s, { type: "mercy", choice: "spare" });
+      continue;
+    }
     if (s.stage === "action" && s.actorId) {
       const unit = [...s.party, ...s.enemies].find((u) => u.id === s.actorId)!;
       commandCombatDirector(s, {
