@@ -642,11 +642,12 @@ export const MARINARA_ARCHETYPE_ROWS: Record<MarinaraArchetype, MarinaraFighter[
   blade: "front",
   guard: "front",
   scout: "front",
-  herald: "front",
   marksman: "back",
   channeler: "back",
   hexer: "back",
   mender: "back",
+  // A Herald lifts the party from behind it (was front row: 41-48% downed, 1-4% of damage; playtest 2026-11-01).
+  herald: "back",
 };
 
 const RANGED_ARCHETYPES = new Set<MarinaraArchetype>(["marksman"]);
