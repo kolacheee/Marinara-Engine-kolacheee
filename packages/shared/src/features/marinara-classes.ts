@@ -80,7 +80,8 @@ export const MARINARA_ARCHETYPE_BASES: Record<MarinaraArchetype, { start: Marina
   scout: { start: stats(20, 5, 1, 7, 9, 5, 2, 7), growth: stats(70, 35, 10, 50, 60, 40, 20, 50) },
   marksman: { start: stats(18, 6, 1, 8, 6, 4, 2, 4), growth: stats(65, 45, 5, 60, 45, 25, 15, 30) },
   channeler: { start: stats(16, 1, 8, 5, 5, 2, 6, 3), growth: stats(50, 5, 60, 40, 40, 15, 40, 25) },
-  hexer: { start: stats(17, 1, 7, 5, 4, 2, 7, 4), growth: stats(55, 5, 50, 40, 35, 15, 50, 35) },
+  // Hexer HP 19 (was 17, balance pass 2026-11-01): the lowest base class early, down in half its fights.
+  hexer: { start: stats(19, 1, 7, 5, 4, 2, 7, 4), growth: stats(55, 5, 50, 40, 35, 15, 50, 35) },
   mender: { start: stats(17, 1, 7, 4, 4, 2, 8, 6), growth: stats(55, 5, 50, 35, 35, 15, 55, 45) },
   herald: { start: stats(18, 3, 4, 5, 6, 3, 4, 8), growth: stats(60, 25, 30, 40, 45, 20, 30, 60) },
 };
@@ -485,7 +486,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Grows deadlier as it is hurt",
       leans: ["strength", "hp"],
       skills: [
-        active("reckless-swing", "Reckless Swing", 10, "strength", 3, "A big hit that lowers the user's Defense."),
+        active(
+          "reckless-swing",
+          "Reckless Swing",
+          10,
+          "strength",
+          3,
+          "A big, sure hit that leaves a Wound (healing halved for 3 turns) and lowers the user's Defense.",
+        ),
         passive("bloodrage", "Bloodrage", 12, "Up to +60% damage, rising with every point of HP the user is missing."),
         passive("bloodlust", "Bloodlust", 15, "Drinks back 15% of the damage the user deals.", true),
       ],
@@ -595,7 +603,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "retaliate",
           "Retaliate",
           15,
-          "Counters any hit it can reach back: melee hits, or any hit when the user attacks at range.",
+          "Counters any hit it can reach back (melee hits, or any hit when the user attacks at range), harder the higher the user's Defense.",
           true,
         ),
       ],
@@ -663,10 +671,10 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "resistance",
           4,
-          "Defending blocks magic as well as steel.",
+          "+50% Resistance for 2 rounds, and every foe's single-target attacks come to the user until its next turn.",
           true,
         ),
-        passive("immovable", "Immovable", 15, "Immune to push and stagger."),
+        passive("immovable", "Immovable", 15, "Immune to push and stagger; +20% Defense while defending."),
       ],
     },
     {
@@ -837,7 +845,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "A huge single hit after a turn of charging; +25% crit chance.",
         ),
         passive("dead-eye", "Dead Eye", 22, "+15% crit chance; hits on a weakness deal 25% more."),
-        passive("overwatch", "Overwatch", 24, "Shoots the first enemy to act each round.", true),
+        passive("overwatch", "Overwatch", 24, "Shoots back at the first enemy that attacks the user each round.", true),
       ],
     },
     {
@@ -893,7 +901,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Breaks armies and armour",
       leans: ["strength", "skill", "hp"],
       skills: [
-        active("ruinous-barrage", "Ruinous Barrage", 20, "strength", 14, "A big area hit that shatters Defense."),
+        active(
+          "ruinous-barrage",
+          "Ruinous Barrage",
+          20,
+          "strength",
+          10,
+          "A big hit on every enemy that shatters their Defense (-25% for 2 turns).",
+        ),
         passive("sundering", "Sundering", 25, "Hits lower the target's Defense.", true),
       ],
     },
@@ -969,7 +984,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Rune Strike",
           12,
           "magic",
-          4,
+          5,
           "A heavy rune-charged bolt in whichever of fire, ice or lightning the target is weakest to.",
           true,
         ),
@@ -1013,7 +1028,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Raw, unaligned power",
       leans: ["magic", "resistance", "skill"],
       skills: [
-        active("starfall", "Starfall", 10, "magic", 7, "Non-elemental; ignores resistances."),
+        active(
+          "starfall",
+          "Starfall",
+          10,
+          "magic",
+          7,
+          "Non-elemental: no foe resists it, and it ignores half their Resistance.",
+        ),
         passive("deep-well", "Deep Well", 15, "+MP.", true),
       ],
     },
@@ -1042,8 +1064,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Wither",
           3,
           "magic",
-          4,
-          "Pure damage over time: 6% of max HP each turn for 3 turns. No defense or affinity stops it.",
+          3,
+          "Pure damage over time: 6% of max HP each turn for 3 turns (half on a boss), and a Wound: healing halved. No defense or affinity stops it.",
         ),
         passive("drain-touch", "Drain Touch", 5, "Heals the user for 20% of the damage they deal.", true),
         active(
@@ -1075,14 +1097,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       // A little more Defense for the front line (Alyssa 2026-11-01).
       tune: { defense: 10 },
       skills: [
-        active(
-          "rot",
-          "Rot",
-          10,
-          "magic",
-          5,
-          "Poison: 8% of max HP each turn for 4 turns; spreads when its target falls.",
-        ),
+        active("rot", "Rot", 10, "magic", 5, "Poison: 6% of max HP each turn for 4 turns (half on a boss)."),
         passive("grave-skin", "Grave Skin", 15, "Takes 15% less damage while standing in the front row.", true),
       ],
     },
@@ -1135,7 +1150,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["magic", "speed"],
       tune: { resistance: -10 },
       skills: [
-        active("mass-confusion", "Mass Confusion", 20, "magic", 14, "Enemies may strike each other."),
+        active(
+          "mass-confusion",
+          "Mass Confusion",
+          20,
+          "magic",
+          14,
+          "Enemies may strike each other. Bosses ignore it; elites shake it off more.",
+        ),
         passive("nightmare", "Nightmare", 24, "Sleeping enemies take damage.", true),
       ],
     },
@@ -1202,7 +1224,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Big heals and revival",
       leans: ["magic", "resistance"],
       skills: [
-        active("revive", "Revive", 10, "magic", 10, "Brings back a downed ally at 25% HP.", true),
+        active("revive", "Revive", 10, "magic", 10, "Brings back a downed ally at 25% HP. Cooldown 3.", true),
         passive("grace", "Grace", 15, "Heals can crit."),
       ],
     },
@@ -1747,17 +1769,26 @@ export function scaleMarinaraXp(input: {
 
 /** Adds XP to the character and their active class; levels up (rolling growth) as it passes 100s,
  *  up to the cap. */
+/** A class below this share of the character's level earns class XP times `multiplier`. */
+export const MARINARA_CLASS_CATCH_UP = { below: 0.5, multiplier: 2 } as const;
+
 export function awardMarinaraXp(
   progression: MarinaraProgression,
   xp: number,
   random: () => number,
 ): { progression: MarinaraProgression; levelUps: MarinaraLevelUp[] } {
+  // Class catch-up (Alyssa 2026-11-01, item 7): a class trained below half the character's level earns
+  // double class XP, so trying the secondary tree late isn't a grind from class level 1.
+  const behind =
+    (progression.classLevels[progression.activeClass] ?? 1) <
+    Math.floor(progression.level * MARINARA_CLASS_CATCH_UP.below);
+  const classGain = Math.max(0, Math.round(xp)) * (behind ? MARINARA_CLASS_CATCH_UP.multiplier : 1);
   let next: MarinaraProgression = {
     ...progression,
     xp: progression.xp + Math.max(0, Math.round(xp)),
     classXp: {
       ...progression.classXp,
-      [progression.activeClass]: (progression.classXp[progression.activeClass] ?? 0) + Math.max(0, Math.round(xp)),
+      [progression.activeClass]: (progression.classXp[progression.activeClass] ?? 0) + classGain,
     },
   };
   const levelUps: MarinaraLevelUp[] = [];
@@ -1808,4 +1839,67 @@ export function expectedMarinaraStats(archetype: MarinaraArchetype, level: numbe
     for (const stat of MARINARA_STATS) out[stat] += growth[stat] / 100;
   }
   return statRecord((stat) => Math.round(out[stat] * 10) / 10);
+}
+
+/**
+ * Carries from the secondary tree that suit a character's primary tree (Alyssa 2026-11-01, item 7):
+ * testers rarely trained their secondary tree because nothing said what it offered. Named pairs carry
+ * their own reason; otherwise the secondary tree's carry picks from its base class, with their summary.
+ */
+const SECONDARY_FITS: Partial<Record<`${MarinaraArchetype}>${MarinaraArchetype}`, Array<[string, string]>>> = {
+  "marksman>guard": [
+    ["sworn-ward", "Ward your tank: whoever attacks them gets shot back, at range."],
+    ["challenge", "Pull one foe off the back row while you shoot."],
+  ],
+  "scout>guard": [["challenge", "Draw a foe onto your hard-to-hit Scout so the rest of the party strikes freely."]],
+  "guard>hexer": [["drain-touch", "Your hits heal you: a tank that mends itself."]],
+  "guard>marksman": [["true-aim", "Your counters land more often."]],
+  "blade>herald": [["rally", "Lift the party's damage before your heavy hits."]],
+  "blade>scout": [["keen-eye", "More hits and crits on every swing."]],
+  "channeler>hexer": [["weaken", "Blunt the foe that threatens your back row."]],
+  "hexer>channeler": [["element-bolt", "A damage spell that finds weaknesses."]],
+  "hexer>mender": [["second-breath", "Heal yourself without spending a healer's turn."]],
+  "mender>guard": [["steadfast", "+20% max HP keeps the healer standing."]],
+  "herald>blade": [["battle-rhythm", "+15% damage on every attack, so a Herald hits back."]],
+  "marksman>herald": [["rally", "Raise the party's damage, then shoot."]],
+};
+
+export interface MarinaraSecondaryFit {
+  skillId: string;
+  label: string;
+  classId: string;
+  classLabel: string;
+  learnedAt: number;
+  reason: string;
+}
+
+export function marinaraSecondaryFits(progression: MarinaraProgression, max = 3): MarinaraSecondaryFit[] {
+  const trees = marinaraTrees(progression.primary, progression.temperament);
+  if (!trees.secondary) return [];
+  const inTree = MARINARA_CLASSES.filter((def) => def.archetype === trees.secondary);
+  const find = (skillId: string) => {
+    for (const def of inTree) {
+      const skill = def.skills.find((one) => one.id === skillId);
+      if (skill) return { def, skill };
+    }
+    return undefined;
+  };
+  const out: MarinaraSecondaryFit[] = [];
+  const add = (skillId: string, reason?: string) => {
+    const hit = find(skillId);
+    if (!hit || out.some((one) => one.skillId === skillId) || out.length >= max) return;
+    out.push({
+      skillId,
+      label: hit.skill.label,
+      classId: hit.def.id,
+      classLabel: hit.def.label,
+      learnedAt: hit.skill.learnedAt,
+      reason: reason ?? hit.skill.summary,
+    });
+  };
+  for (const [skillId, reason] of SECONDARY_FITS[`${trees.primary}>${trees.secondary}`] ?? []) add(skillId, reason);
+  const traits = MARINARA_ARCHETYPE_TRAITS[trees.secondary] ?? [];
+  for (const skill of inTree.find((def) => def.tier === "base")?.skills ?? [])
+    if (skill.carryPick && !traits.includes(skill.id)) add(skill.id);
+  return out;
 }
