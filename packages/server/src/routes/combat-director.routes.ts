@@ -1167,6 +1167,14 @@ export async function combatDirectorRoutes(
       ? written
       : undefined;
   };
+  /** What the setup wrote about a rare treasure foe: a chance encounter may roll one, the story may find one. */
+  const marinaraRare = (input: { enemies: ReadonlyArray<{ marinara?: unknown }> }) => {
+    const written = input.enemies.map((one) => one.marinara as { chance?: unknown; treasure?: unknown } | undefined);
+    return {
+      ...(written.some((one) => one?.chance === true) ? { chance: true } : {}),
+      ...(written.some((one) => one?.treasure === true) ? { treasure: true } : {}),
+    };
+  };
   app.post("/start", async (req, reply) => {
     const parsed = z
       .object({
@@ -1371,6 +1379,8 @@ export async function combatDirectorRoutes(
               typeof setup.genre === "string" ? setup.genre : null,
             ),
             ...(marinaraEncounter(input) ? { encounter: marinaraEncounter(input)! } : {}),
+            ...marinaraRare(input),
+            seed: randomUUID(),
           });
           if (!marinara.party.length) return reply.code(400).send({ error: "Nobody in the party can fight." });
           if (marinara.cards) {

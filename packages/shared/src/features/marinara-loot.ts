@@ -79,7 +79,8 @@ export function marinaraVictoryLoot(input: {
   equipment?: ReadonlyArray<MarinaraEquipment | null | undefined>;
 }): { lines: MarinaraLootLine[]; gold: number; items: string[] } {
   const party = input.fighters.filter((fighter) => fighter.side === "party");
-  const away = (input.left ?? []).filter((fighter) => fighter.side === "enemy" && !fighter.dummy);
+  // A treasure foe that got away takes its windfall with it.
+  const away = (input.left ?? []).filter((fighter) => fighter.side === "enemy" && !fighter.dummy && !fighter.windfall);
   const fled = new Set(input.fled ?? []);
   const beaten = [
     ...input.fighters.filter((fighter) => fighter.side === "enemy" && fighter.hp <= 0 && !fighter.dummy),
@@ -105,6 +106,7 @@ export function marinaraVictoryLoot(input: {
             // A beast, spirit or machine carries no purse; a foe the bestiary doesn't know is taken as a person.
             ...(family && family.kind !== "humanoid" ? { carriesCoin: false } : {}),
             ...(fled.has(fighter.id) ? { fled: true } : {}),
+            ...(fighter.windfall ? { coinScale: fighter.windfall.gold } : {}),
           };
         }),
         place: input.place,

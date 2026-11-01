@@ -1903,6 +1903,8 @@ export interface MarinaraLootFoe {
   carriesCoin?: boolean;
   /** Got away (fled): drops only the coin it lost in the scramble, half its gold, no items. */
   fled?: boolean;
+  /** A treasure foe's purse, as multiples of a standard foe's coin (and never halved for no purse). */
+  coinScale?: number;
 }
 
 /**
@@ -2039,7 +2041,7 @@ export function marinaraRollLoot(input: {
   const items: string[] = [];
   for (const foe of input.foes) {
     const tier = foe.tier ?? input.tier;
-    const coin = (foe.carriesCoin === false ? 0.5 : 1) * (foe.fled ? 0.5 : 1);
+    const coin = foe.coinScale ?? (foe.carriesCoin === false ? 0.5 : 1) * (foe.fled ? 0.5 : 1);
     gold += tierPrice(MARINARA_LOOT.gold, tier) * MARINARA_LOOT.goldRank[foe.rank] * coin * (0.75 + random() * 0.5);
     if (foe.fled) continue;
     const signature = marinaraFamilyDrops(foe.family, tier, input.place);
