@@ -93,6 +93,12 @@ function alliedAim(aims: string | undefined): boolean {
 }
 
 /** The skills a fighter shows on its menu: every active it has, usable now or not. */
+/**
+ * Casters' skills reach 3 tiles on a board (their basic attack stays at 2). With 2 they spent a third
+ * to half of their turns guarding behind their own front line, out of reach (playtest 2026-11-01).
+ */
+export const MARINARA_BOARD_SPELL_RANGE: Partial<Record<string, number>> = { channeler: 3, hexer: 3, mender: 3 };
+
 /** What a skill is to the board: by whom it lands on (a foe or a friend), then by what it does. */
 function boardSkillType(kind: string, target: MarinaraEffect["target"]): CombatSkill["type"] {
   const atFoes = target === "enemy" || target === "all-enemies" || target === "front-row";
@@ -124,6 +130,9 @@ export function marinaraCombatSkills(fighter: MarinaraFighter): CombatSkill[] {
         : {}),
       ...(effect.damage === "magic" ? { spell: true } : {}),
       aims: effect.target,
+      ...(MARINARA_BOARD_SPELL_RANGE[fighter.archetype ?? ""]
+        ? { range: MARINARA_BOARD_SPELL_RANGE[fighter.archetype ?? ""] }
+        : {}),
       ...(cooldown > 0 ? { readyIn: cooldown } : {}),
       ...(!usable.has(skill.id)
         ? { unavailable: used ? ("used" as const) : cooldown > 0 ? ("cooldown" as const) : ("cost" as const) }
@@ -582,15 +591,17 @@ export function marinaraBoardAiAction(
   try {
     const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
       tactical: true,
-      // Friends within the board's support range (2 tiles); the user itself, a whole side and the
+      // Friends within the board's support range (2 tiles, a caster's 3); the user itself, a whole side and the
       // fallen (whom the board can't aim at; resolution finds them) anywhere.
       reach: (option, target) =>
         target.id === actor.id ||
         option.effect.target === "party" ||
         option.effect.target === "downed-ally" ||
-        (target.side === actor.side
-          ? distance(target.id) <= 2
-          : distance(target.id) <= (option.id === null ? attackRange : Math.max(attackRange, 2))),
+        distance(target.id) <=
+          (option.id === null
+            ? attackRange
+            : (MARINARA_BOARD_SPELL_RANGE[actor.archetype ?? ""] ??
+              (target.side === actor.side ? 2 : Math.max(attackRange, 2)))),
     });
     return marinaraChoiceAction(actor, choice);
   } catch {

@@ -230,7 +230,7 @@ export function marinaraBoardTurn(
   if (picked?.type === "defend" && !tu.hasMoved && foes.length) {
     // Closest approach: a tile with a foe in reach (the farthest such tile for a ranged unit), else
     // the tile nearest any foe.
-    const range = tu.attackRange.max;
+    const range = Math.max(tu.attackRange.max, ...(tu.skills ?? []).map((k) => k.range ?? 0));
     const nearest = (at: TacticalCoord) => Math.min(...foes.map((foe) => from(at)(foe.id)));
     const tiles = [{ x: tu.x, y: tu.y }, ...getMovementRange(t, tu.id)];
     const score = (at: TacticalCoord) => {
@@ -1327,7 +1327,8 @@ function effect(s: CombatDirectorState, p: Pending) {
           : a.type === "skill" && skillId
             ? { type: "skill", skillId, targetId: a.targetId ?? tu.id }
             : { type: "attack", targetId: a.targetId ?? tu.id };
-      const range = a.type === "skill" ? Math.max(tu.attackRange.max, 2) : tu.attackRange.max;
+      const skillRange = a.type === "skill" ? u.skills?.find((k) => k.name === a.skillName)?.range : undefined;
+      const range = a.type === "skill" ? (skillRange ?? Math.max(tu.attackRange.max, 2)) : tu.attackRange.max;
       const reach = (id: string) => {
         const at = units.find((one) => one.id === id);
         return !!at && Math.abs(at.x - tu.x) + Math.abs(at.y - tu.y) <= range;
