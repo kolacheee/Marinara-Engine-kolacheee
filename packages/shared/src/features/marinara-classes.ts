@@ -387,6 +387,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   siphon: "dark",
   "grave-tithe": "dark",
   "carrion-feast": "dark",
+  "total-eclipse": "dark",
   rot: "poison",
 };
 
@@ -604,6 +605,9 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "sentinel",
       role: "Nothing gets past",
       leans: ["hp", "defense", "resistance"],
+      // Grows past the Sentinel it came from (Alyssa 2026-11-01: at level 30 it held fewer rounds than
+      // a level 20 Sentinel).
+      tune: { hp: 20, defense: 20, resistance: 10 },
       skills: [
         active("fortress", "Fortress", 20, "defense", 12, "The party takes half damage for a round. Long cooldown."),
         passive("shield-wall", "Shield Wall", 22, "The back row takes 25% less damage while the user stands."),
@@ -718,7 +722,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "speed",
           8,
-          "Untargetable for a turn; the next hit crits and exposes its target (+20% damage from everyone for 2 turns). Cooldown 2.",
+          "A bonus action: untargetable until the user's next turn and acts again at once; the next hit crits and exposes its target (+20% damage from everyone for 2 turns). Every other turn.",
           true,
         ),
         passive("assassinate", "Assassinate", 24, "A crit on a target below 15% HP defeats it. Never bosses."),
@@ -1075,6 +1079,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "hexer",
       role: "Sleep, confusion, delay",
       leans: ["magic", "speed"],
+      // The Hexer lines' Resistance cut (Alyssa 2026-11-01): the Warden line is the magic tank.
+      tune: { resistance: -10 },
       skills: [
         active("lull", "Lull", 10, "magic", 5, "Sleep until hit.", true),
         passive("slow-time", "Slow Time", 15, "Debuffed enemies act later."),
@@ -1086,6 +1092,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "dreamcaller",
       role: "Takes enemies out of the fight",
       leans: ["magic", "speed"],
+      tune: { resistance: -10 },
       skills: [
         active("mass-confusion", "Mass Confusion", 20, "magic", 14, "Enemies may strike each other."),
         passive("nightmare", "Nightmare", 24, "Sleeping enemies take damage.", true),
@@ -1116,9 +1123,11 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Total Eclipse",
           20,
           "magic",
-          18,
-          "Strips every enemy buff and lowers their stats for 2 rounds.",
+          12,
+          "Dark damage to every enemy; each one struck deals 30% less damage for 2 turns. Every other turn.",
+          true,
         ),
+        passive("abyssal-will", "Abyssal Will", 22, "+20% spell damage."),
         // Immunity is a master's gift (Alyssa 2026-11-01): Null moved here from the Nullifier.
         passive("null", "Null", 25, "Immune to debuffs.", true),
       ],
