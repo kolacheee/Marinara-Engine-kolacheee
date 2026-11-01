@@ -12203,6 +12203,7 @@ function GameSurfaceComponent({
         // Out of it alive, their heart gone: the story goes on with them.
         const fledEnemies = summary.enemies.filter((e) => e.left === "fled");
         const yieldedEnemies = summary.enemies.filter((e) => e.left === "surrendered");
+        const tamedEnemies = summary.enemies.filter((e) => e.left === "tamed");
         const partyStatus = summary.party.map((p) => {
           const hpPct = p.maxHp > 0 ? Math.round((p.hp / p.maxHp) * 100) : 0;
           const effects = p.statusEffects.length > 0 ? ` [${p.statusEffects.join(", ")}]` : "";
@@ -12262,6 +12263,10 @@ function GameSurfaceComponent({
         if (yieldedEnemies.length > 0 && !fought) {
           recapLines.push(`Surrendered to the party, alive: ${yieldedEnemies.map((e) => e.name).join(", ")}`);
         }
+        if (tamedEnemies.length > 0)
+          recapLines.push(
+            `Tamed by the party, now a companion that follows them: ${tamedEnemies.map((e) => e.name).join(", ")}`,
+          );
         // The ruleset's own numbers in place of the percentage lines: the fight was not fought on a
         // share of a maximum, so the Game Master is never shown one.
         if (fought) recapLines.push(...rulesetCombatRecapLines(fought.definition, fought.ruleset));

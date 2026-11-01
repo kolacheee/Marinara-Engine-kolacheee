@@ -104,6 +104,7 @@ export interface MarinaraEffect {
     | "command"
     | "cleanse"
     | "steal"
+    | "tame"
     | "none";
   target: MarinaraEffectTarget;
   power?: number;
@@ -155,6 +156,8 @@ export interface MarinaraEffect {
   verses?: { pct: number; most: number };
   /** Costs no turn: the user acts again at once (not from an action that was itself a bonus). */
   bonusAction?: boolean;
+  /** Sic: the user's tamed companion strikes, from the user's stat the companion is strongest in. */
+  companion?: boolean;
   /** Draws every foe's single-target attacks to the user for this many of its turns (Warding Stance). */
   provokes?: number;
   /** The user's next landed hit exposes its target: everyone deals this much more to it for 2 turns. */
@@ -213,6 +216,25 @@ export const MARINARA_STEAL: { base: number; perSpeed: number; rank: Record<Mari
   perSpeed: 0.02,
   rank: { minion: 0.1, standard: 0, elite: -0.15, boss: -0.3 },
 };
+
+/**
+ * Tame (Tracker, Alyssa 2026-11-01): a wild beast or vermin below `belowHp` of its HP, never an elite,
+ * boss or treasure foe. The odds are `base`, plus up to `skillLuck` as the user's Skill and Luck outweigh
+ * the beast's, plus `perHpMissing` for each share of HP under the line it has lost, less `perLevel` for
+ * every level the beast stands above the user; never below `min` or above `max`.
+ */
+export const MARINARA_TAME = {
+  belowHp: 0.3,
+  base: 0.3,
+  skillLuck: 0.4,
+  perHpMissing: 1,
+  perLevel: 0.06,
+  min: 0.1,
+  max: 0.9,
+} as const;
+/** A companion raises its keeper's matching stat this much while a Tracker-tree class is active;
+ *  Bond raises it to `bond`, and the rest of the party gets `shared` of it. */
+export const MARINARA_COMPANION = { pct: 0.1, bond: 0.2, shared: 0.5 } as const;
 
 /** What every active class skill does. Steal takes something from a foe, kept with the fight's loot. */
 export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
@@ -289,6 +311,9 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // A bonus action (lab 2026-11-01: marking ate 54-73% of a Tracker's turns for 6% of party damage).
   "mark-prey": { kind: "debuff", target: "enemy", stat: "damage-taken", pct: 0.35, duration: 3, bonusAction: true },
   "snare-field": { kind: "debuff", target: "all-enemies", stat: "speed", pct: -0.3, duration: 2 },
+  // Tame (Alyssa 2026-11-01): a weakened wild beast becomes the user's companion; Sic sends it in.
+  tame: { kind: "tame", target: "enemy" },
+  sic: dmg("strength", 7, { ranged: true, bonusAction: true, cooldown: 2, companion: true }),
   volley: dmg("strength", 4, { ranged: true, target: "all-enemies", cooldown: 2 }),
   // Balance pass (2026-11-01): power 9 -> 13 (Volley did as much for 6 stamina).
   "ruinous-barrage": dmg("strength", 13, {
@@ -719,6 +744,12 @@ export interface MarinaraFighter {
   yielded?: boolean;
   /** Robbed by this fighter (Steal): a foe has one thing to take, kept with the fight's loot. */
   stolenBy?: string;
+  /** A wild beast or vermin Tame can take: what it is called and the stat it is strongest in. */
+  tameable?: { name: string; stat: MarinaraStat; familyId?: string };
+  /** Tamed by this fighter: it leaves the fight, pays XP and drops nothing. */
+  tamedBy?: string;
+  /** The tamed beast that follows this party member (Tracker): Sic strikes with it. */
+  companion?: { name: string; stat: MarinaraStat };
   /** A boss once below half its HP: it hits harder for the rest of the fight (MARINARA_BOSS_RULES). */
   enraged?: boolean;
   // fight state
@@ -1097,6 +1128,7 @@ export type MarinaraEventKind =
   | "miracle"
   | "hold-the-line"
   | "steal"
+  | "tame"
   | "decoy"
   | "oath"
   | "siphon";
@@ -1393,11 +1425,51 @@ export function marinaraSkillCost(
 export function marinaraSkillEffect(unit: MarinaraFighter, skill: MarinaraSkillDef): MarinaraEffect | null {
   const base = MARINARA_SKILL_EFFECTS[skill.id];
   if (!base || base.kind === "none") return null;
+  // Sic needs a companion, and strikes from the user's stat it is strongest in (Strength when that is a
+  // guarding stat or HP).
+  if (base.companion && !unit.companion) return null;
+  const sicFrom = base.companion && unit.companion ? companionAttackStat(unit.companion.stat) : undefined;
   return {
     ...base,
+    ...(sicFrom ? { from: sicFrom } : {}),
     ...(skill.damage ? { type: skill.damage } : {}),
     ...(unit.carriedIds?.includes(skill.id) ? { carried: true } : {}),
   };
+}
+
+function companionAttackStat(stat: MarinaraStat): MarinaraStat {
+  return stat === "magic" || stat === "skill" || stat === "speed" || stat === "luck" ? stat : "strength";
+}
+
+/** Whether Tame can be tried on this foe now. */
+export function marinaraTameable(target: MarinaraFighter): boolean {
+  return (
+    !!target.tameable &&
+    target.hp > 0 &&
+    target.hp < target.maxHp * MARINARA_TAME.belowHp &&
+    target.tier !== "elite" &&
+    target.tier !== "boss" &&
+    !target.windfall &&
+    !target.yielded
+  );
+}
+
+/** The chance, in percent, that this fighter's Tame takes this beast. */
+export function marinaraTameChance(
+  actor: MarinaraFighter,
+  target: MarinaraFighter,
+  all: readonly MarinaraFighter[],
+): number {
+  const mine = marinaraEffectiveStat(actor, "skill", all) + marinaraEffectiveStat(actor, "luck", all);
+  const its = marinaraEffectiveStat(target, "skill", all) + marinaraEffectiveStat(target, "luck", all);
+  const share = mine / Math.max(1, mine + its);
+  const missing = Math.max(0, MARINARA_TAME.belowHp - target.hp / Math.max(1, target.maxHp));
+  const chance =
+    MARINARA_TAME.base +
+    MARINARA_TAME.skillLuck * share +
+    MARINARA_TAME.perHpMissing * missing -
+    MARINARA_TAME.perLevel * Math.max(0, target.level - actor.level);
+  return Math.round(Math.min(MARINARA_TAME.max, Math.max(MARINARA_TAME.min, chance)) * 100);
 }
 
 /** One thing a fighter can do now: a class skill, an enemy ability, or the basic attack (no id). */
@@ -1466,6 +1538,8 @@ export function marinaraTargetsFor(
   if (effect.target === "ally")
     return effect.kind === "cover" || effect.kind === "ward" ? friends.filter((unit) => unit !== actor) : friends;
   if (effect.target === "downed-ally") return all.filter((unit) => unit.side === actor.side && unit.hp <= 0);
+  // Tame looks past taunts: only a beast it can take.
+  if (effect.kind === "tame") return everyFoe.filter(marinaraTameable);
   const taunter = actor.tauntTurns > 0 ? foes.find((unit) => unit.id === actor.tauntedBy) : undefined;
   if (taunter && (effect.target === "enemy" || effect.target === "front-row")) return [taunter];
   const provokers = foes.filter((unit) => unit.provoking > 0);
@@ -2112,6 +2186,10 @@ function act(
       }
       if (effect.selfDebuff)
         addMod(actor, effect.selfDebuff.stat, effect.selfDebuff.pct, effect.selfDebuff.duration, `${skill?.id}:self`);
+      if (effect.bonusAction && !actor.commanded) {
+        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
+      }
       break;
     }
     case "heal": {
@@ -2306,6 +2384,21 @@ function act(
         if (roll < chance) {
           target.stolenBy = actor.id;
           ctx.events.push({ kind: "steal", ...event });
+        } else ctx.events.push({ kind: "miss", ...event });
+      }
+      break;
+    case "tame":
+      for (const target of targets) {
+        if (target.side === actor.side || !marinaraTameable(target)) {
+          ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId });
+          continue;
+        }
+        const chance = marinaraTameChance(actor, target, all);
+        const roll = random() * 100;
+        const event = { actorId: actor.id, targetId: target.id, skillId, chance, roll: Math.floor(roll) };
+        if (roll < chance) {
+          target.tamedBy = actor.id;
+          ctx.events.push({ kind: "tame", ...event });
         } else ctx.events.push({ kind: "miss", ...event });
       }
       break;
@@ -2687,4 +2780,6 @@ export interface MarinaraFightGrowth {
   promotionReady?: boolean;
   /** Fell under permadeath: gone for good. */
   fallen?: boolean;
+  /** Tamed this beast in the fight: their companion now. */
+  tamed?: string;
 }

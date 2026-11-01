@@ -2259,6 +2259,7 @@
   "game.combat.marinara.status.stun": "Stunned",
   "game.combat.marinara.status.wither": "Withered",
   "game.combat.marinara.status.wound": "Wounded",
+  "game.combat.marinara.tamed": "tamed {{name}}, now a companion",
   "game.combat.marinara.tier.boss": "Boss",
   "game.combat.marinara.tier.elite": "Elite",
   "game.combat.marinara.tier.minion": "Minion",
