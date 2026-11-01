@@ -59,12 +59,12 @@ const tierAt = (level: number) => (level < 10 ? "base" : level < 20 ? "advanced"
 /** The frame's class of a line at a level. */
 const LINES: Record<string, string[]> = {
   guard: ["guard", "sentinel", "stonewall"],
-  blade: ["blade", "bloodsworn", "warbringer"],
+  blade: ["blade", "bloodsworn", "cleaver"],
   mender: ["mender", "cleric", "saint"],
   channeler: ["channeler", "fusionist", "stormcaller"],
   marksman: ["marksman", "sharpshooter", "farshot"],
   aegis: ["guard", "aegis", "bulwark"],
-  shade: ["scout", "shade", "veil-lord"],
+  shade: ["scout", "shade", "shroud"],
 };
 const lineAt = (line: string, level: number) => LINES[line]![level < 10 ? 0 : level < 20 ? 1 : 2]!;
 const FRAMES: Record<string, string[]> = {

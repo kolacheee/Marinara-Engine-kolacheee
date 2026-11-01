@@ -210,7 +210,7 @@ function nameOf(state: MarinaraDirectorState, id: string | undefined): string {
 function skillLabel(fighter: MarinaraFighter | undefined, id: string | undefined): string | undefined {
   if (!id) return undefined;
   if (id.startsWith("enemy:")) return MARINARA_ENEMY_SKILLS[id.slice(6)]?.label ?? id.slice(6);
-  if (id === "second-wind") return "Second Wind";
+  if (id === "follow-through") return "Follow Through";
   return fighter?.skills.find((s) => s.id === id)?.label ?? marinaraSkillLabel(id);
 }
 
