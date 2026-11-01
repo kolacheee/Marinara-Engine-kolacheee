@@ -1301,7 +1301,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           5,
-          "The party deals 25% more damage for 3 turns; each re-cast while it lasts adds a verse (+10%, up to 3).",
+          "A bonus action: the party deals 25% more damage for 3 turns; each re-cast while it lasts adds a verse (+10%, up to 3).",
         ),
         active(
           "swift-refrain",
@@ -1309,7 +1309,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           12,
           "magic",
           5,
-          "The party gains 15% Speed for 3 turns; each re-cast while it lasts adds a verse (+10%, up to 3).",
+          "A bonus action: the party gains 15% Speed for 3 turns; each re-cast while it lasts adds a verse (+10%, up to 3).",
         ),
         active(
           "guarding-refrain",
@@ -1317,7 +1317,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           14,
           "magic",
           5,
-          "The party gains 15% Defense and Resistance for 3 turns; each re-cast while it lasts adds a verse (+10%, up to 3).",
+          "A bonus action: the party gains 15% Defense and Resistance for 3 turns; each re-cast while it lasts adds a verse (+10%, up to 3).",
         ),
         passive("encore", "Encore", 15, "Buffs the user gives last a round longer.", true),
       ],
