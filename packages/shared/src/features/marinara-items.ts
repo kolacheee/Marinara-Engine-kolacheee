@@ -1851,6 +1851,8 @@ export interface MarinaraLootFoe {
   tier?: MarinaraTier;
   /** Beasts and spirits carry no coin: they drop half gold (their hide, a trophy, what they hoarded). */
   carriesCoin?: boolean;
+  /** Got away (fled): drops only the coin it lost in the scramble, half its gold, no items. */
+  fled?: boolean;
 }
 
 /**
@@ -1987,8 +1989,9 @@ export function marinaraRollLoot(input: {
   const items: string[] = [];
   for (const foe of input.foes) {
     const tier = foe.tier ?? input.tier;
-    const coin = foe.carriesCoin === false ? 0.5 : 1;
+    const coin = (foe.carriesCoin === false ? 0.5 : 1) * (foe.fled ? 0.5 : 1);
     gold += tierPrice(MARINARA_LOOT.gold, tier) * MARINARA_LOOT.goldRank[foe.rank] * coin * (0.75 + random() * 0.5);
+    if (foe.fled) continue;
     const signature = marinaraFamilyDrops(foe.family, tier, input.place);
     const common = signature.find((id) => marinaraItem(id)?.kind === "consumable");
     if (random() < MARINARA_LOOT.consumable[foe.rank]) {

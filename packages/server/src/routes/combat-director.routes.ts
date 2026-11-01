@@ -926,11 +926,14 @@ export async function combatDirectorRoutes(
         : undefined;
     // The step that wins drops the fight's loot, rolled before the queue is held and added with the
     // step: each defeated bestiary opponent's table, or the native tables by how many fell.
-    // A Classic Marinara party that got away keeps what it stole (Steal) from the foes it left behind.
+    // A Classic Marinara party that got away keeps what it stole (Steal), from foes still there or gone.
     const won =
       (s.outcome === "victory" ||
         (s.outcome === "flee" &&
-          !!s.marinara?.fighters.some((fighter) => fighter.side === "enemy" && fighter.stolenBy))) &&
+          !!s.marinara &&
+          [...s.marinara.fighters, ...(s.marinara.left ?? [])].some(
+            (fighter) => fighter.side === "enemy" && fighter.stolenBy,
+          ))) &&
       s.loot === undefined;
     const encounter = s.style === "ruleset" ? s.rulesetFight?.encounter : undefined;
     const fallen = encounter
@@ -943,7 +946,11 @@ export async function combatDirectorRoutes(
     // A Classic Marinara fight drops from the item tables instead (marinara-items.ts), by the foes beaten.
     const loot =
       won && s.marinara
-        ? await planMarinaraVictoryLoot(app.db, chatId, s.marinara.fighters, `${s.id}:${s.seed}:loot`)
+        ? await planMarinaraVictoryLoot(app.db, chatId, s.marinara.fighters, `${s.id}:${s.seed}:loot`, {
+            // Out of the fight alive: one that surrendered hands everything over, one that fled drops coin.
+            left: s.marinara.left,
+            fled: (s.gone ?? []).filter((one) => one.left === "fled").map((one) => one.id),
+          })
         : won
           ? await planGameVictoryLoot(
               app.db,
