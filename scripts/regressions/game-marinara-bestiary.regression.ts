@@ -21,6 +21,7 @@ import {
   marinaraEnemyClassAt,
   marinaraEnemyName,
   marinaraEnemySpec,
+  marinaraRollRareEncounter,
   marinaraFitEncounter,
   marinaraBestiaryMenu,
   marinaraFoeThreat,
@@ -65,7 +66,8 @@ for (const family of MARINARA_BESTIARY) {
     }
   }
   // The threat table covers every tier the family has, at every sample level it lives at.
-  for (const tier of family.tiers) assert.ok(MARINARA_BESTIARY_THREAT[family.id]?.[tier], `${family.id} ${tier} measured`);
+  if (family.role !== "treasure")
+    for (const tier of family.tiers) assert.ok(MARINARA_BESTIARY_THREAT[family.id]?.[tier], `${family.id} ${tier} measured`);
 }
 
 // No band name means two different things.
@@ -197,6 +199,38 @@ assert.ok(
     ],
   }).problems.some((p) => p.includes("healer")),
 );
+// A Brutal game breaks the level cap: five levels up is refused on Normal, allowed on Brutal, and the
+// builder lifts some Brutal fights above the party while keeping to the budget.
+const upFive = [{ familyId: "sellsword", tier: "standard" as const, level: 17 }];
+assert.ok(marinaraCheckEncounter({ setting: "high_fantasy", party: { level: 12, size: 4 }, foes: upFive }).problems.some((p) => p.includes("levels above")));
+assert.ok(!marinaraCheckEncounter({ setting: "high_fantasy", party: { level: 12, size: 4, brutal: true }, foes: upFive }).problems.some((p) => p.includes("levels above")));
+let lifted = 0;
+for (let i = 0; i < 40; i++) {
+  const brutalParty = { level: 12, size: 4, brutal: true };
+  const fight = marinaraBuildEncounter({ setting: "high_fantasy", party: brutalParty, difficulty: "hard", random: marinaraRandom(`brutal:${i}`) });
+  assert.ok(fight.threat <= MARINARA_ENCOUNTER_BUDGET.hard * 4 + 1e-9, "brutal fights keep to the budget");
+  assert.deepEqual(marinaraCheckEncounter({ setting: "high_fantasy", party: brutalParty, foes: fight.foes, allowed: "hard" }).problems, []);
+  if (fight.foes.some((f) => f.level > 12)) lifted++;
+}
+assert.ok(lifted >= 10, `brutal fights lifted above the party: ${lifted} of 40`);
+
+// Treasure foes: never in ordinary fights or the GM's menu; a rare roll puts one to three of one
+// family in a random encounter, and they count for next to nothing in a budget.
+assert.ok(MARINARA_BESTIARY.filter((f) => f.role === "treasure").every((f) => f.windfall && f.windfall.fleeAfterRounds > 0));
+for (const setting of MARINARA_BESTIARY_SETTINGS) {
+  assert.ok(marinaraBestiaryMenu(setting, 10).every((entry) => !["glimmerling", "hoardling"].includes(entry.familyId)));
+  for (const level of [1, 15, 30]) {
+    const rare = marinaraRollRareEncounter({ setting, party: { level, size: 4 }, random: marinaraRandom(`rare:${setting}:${level}`), force: true });
+    assert.ok(rare && rare.length >= 1 && rare.length <= 3 && new Set(rare.map((f) => f.familyId)).size === 1, `${setting} L${level} rare`);
+    for (const foe of rare!) marinaraEnemySpec({ ...foe, setting, id: "t" });
+  }
+}
+let rares = 0;
+for (let i = 0; i < 3200; i++)
+  if (marinaraRollRareEncounter({ setting: "high_fantasy", party: { level: 8, size: 4 }, random: marinaraRandom(`roll:${i}`) })) rares++;
+assert.ok(rares > 50 && rares < 160, `rare encounters about 1 in 32: ${rares} of 3200`);
+assert.ok(marinaraFoeThreat("glimmerling", "standard", 10, 10) < 0.2);
+
 // A boss takes its family's next, grander name.
 assert.equal(marinaraEnemySpec({ familyId: "cutpurse", setting: "high_fantasy", level: 6, tier: "boss", id: "b" }).name, "Roadknife");
 assert.equal(marinaraEnemySpec({ familyId: "cutpurse", setting: "high_fantasy", level: 6, tier: "standard", id: "s" }).name, "Footpad");
