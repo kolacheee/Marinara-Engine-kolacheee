@@ -273,6 +273,8 @@ export * from "./features/marinara-classes.js";
 export * from "./features/marinara-combat.js";
 export * from "./features/marinara-ai.js";
 export * from "./features/marinara-items.js";
+export * from "./features/marinara-bestiary.js";
+export * from "./features/marinara-bestiary-threat.js";
 export * from "./features/marinara-party.js";
 export * from "./features/combat-director.js";
 
