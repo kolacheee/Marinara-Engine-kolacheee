@@ -99,6 +99,9 @@ export interface CombatDirectorState extends DirectedCombatView {
   yielded?: true;
   /** Called off with both sides standing, after rounds in which nothing changed (K8). */
   stalled?: true;
+  /** Classic Marinara on a board: allies commanded to an extra action, and whether each had already
+   *  taken its own turn this round (one that hadn't keeps it). */
+  marinaraOwed?: Record<string, boolean>;
   difficulty: string;
   weather?: CombatWeather;
   /** The game's elements (worldgen W6c); the classic six when absent. */
@@ -1371,11 +1374,16 @@ function effect(s: CombatDirectorState, p: Pending) {
       performMarinaraTacticalAction(s.marinara, tu.id, action, s.seed, marinaraLog(s), near, reach, p.source);
       tu.hasActed = true;
       if (a.type === "defend") tu.defending = true;
-      // A commanded ally gets its extra action on the board as well.
+      // A commanded ally takes its extra action next, by side or by initiative alike, and keeps its
+      // own turn this round if it hadn't taken it yet.
       for (const fighter of s.marinara.fighters)
-        if ((fighter.bonusTurns ?? 0) > 0 && fighter.hp > 0) {
+        if ((fighter.bonusTurns ?? 0) > 0 && fighter.hp > 0 && s.marinaraOwed?.[fighter.id] === undefined) {
           const unit = units.find((one) => one.id === fighter.id);
-          if (unit) unit.hasActed = false;
+          if (!unit) continue;
+          (s.marinaraOwed ??= {})[fighter.id] = !!unit.hasActed;
+          unit.hasActed = false;
+          unit.hasMoved = false;
+          s.tasks.push({ kind: "activate", unitId: unit.id });
         }
       sync(s);
     } else if (s.tactical && p.action.tactical) {
@@ -1458,6 +1466,15 @@ function effect(s: CombatDirectorState, p: Pending) {
       (u as TacticalUnit).hasMoved = flags[0];
       (u as TacticalUnit).hasActed = flags[1];
     } else if (p.action.tactical?.type !== "move") (u as TacticalUnit).hasActed = true;
+    // A commanded ally's extra action done: one that hadn't had its own turn this round still has it.
+    const owed = p.action.tactical?.type !== "move" ? s.marinaraOwed?.[u.id] : undefined;
+    if (owed !== undefined) {
+      delete s.marinaraOwed![u.id];
+      if (!owed) {
+        (u as TacticalUnit).hasActed = false;
+        (u as TacticalUnit).hasMoved = false;
+      }
+    }
   }
   delete s.pending[p.id];
   sync(s);
@@ -1500,6 +1517,7 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         tickTacticalRound(s.tactical, events);
         for (const e of events) log(s, e.text, e.kind, e.actorId, undefined, e.message);
         s.tactical.round++;
+        delete s.marinaraOwed;
         s.round++;
         s.skipParty = false;
         s.gmCalls = 0;
