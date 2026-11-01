@@ -2668,7 +2668,8 @@ export function GameCombatUI({
       {/* ── Battle scene ── */}
       <div
         className={cn(
-          "relative grid min-h-0 flex-1 grid-rows-[minmax(0,1fr)_auto] gap-y-[clamp(0.25rem,2svh,1.25rem)] overflow-hidden",
+          // The enemy row keeps its cards' height and the scene scrolls, rather than the cards spilling over the party when the menu below grows.
+          "relative grid min-h-0 flex-1 grid-rows-[minmax(min-content,1fr)_auto] gap-y-[clamp(0.25rem,2svh,1.25rem)] overflow-y-auto overflow-x-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
           activeImpactTone === "critical" && "game-combat-scene--critical",
           activeImpactTone === "hit" && "game-combat-scene--hit",
           activeImpactTone === "reaction" && "game-combat-scene--reaction",
@@ -2702,45 +2703,57 @@ export function GameCombatUI({
         )}
 
         {/* ── Enemy area (top section) ── */}
-        <div className="relative flex min-h-0 flex-nowrap items-start justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pt-[clamp(3.25rem,13svh,5.5rem)] sm:px-6">
+        <div className="relative flex flex-nowrap items-start justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pt-[clamp(3.25rem,13svh,5.5rem)] sm:px-6">
           {enemies.map((enemy) => (
-            <CombatantCard
-              elements={elements}
-              key={enemy.id}
-              combatant={enemy}
-              side="enemy"
-              isTargetable={phase === "target-select" && selectingEnemyTarget}
-              isActive={turnOrder[0]?.id === enemy.id && phase === "animating"}
-              onSelect={() => handleTargetSelect(enemy.id)}
-              damagePopups={damagePopups.filter((p) => p.targetId === enemy.id)}
-              dialogueLines={combatDialogueLayout.byCombatantId.get(enemy.id)}
-              sideCount={enemies.length}
-              onDismissDialogue={dismissCombatDialogueLine}
-            />
+            <div key={enemy.id} className="flex flex-col items-center">
+              <CombatantCard
+                elements={elements}
+                combatant={enemy}
+                side="enemy"
+                isTargetable={phase === "target-select" && selectingEnemyTarget}
+                isActive={turnOrder[0]?.id === enemy.id && phase === "animating"}
+                onSelect={() => handleTargetSelect(enemy.id)}
+                damagePopups={damagePopups.filter((p) => p.targetId === enemy.id)}
+                dialogueLines={combatDialogueLayout.byCombatantId.get(enemy.id)}
+                sideCount={enemies.length}
+                onDismissDialogue={dismissCombatDialogueLine}
+              />
+              {enemy.marinara?.row === "back" && (
+                <span className="mt-0.5 rounded bg-white/10 px-1 text-[0.55rem] uppercase tracking-wide text-white/50">
+                  {localizeUi("game.combat.marinara.row.back")}
+                </span>
+              )}
+            </div>
           ))}
         </div>
 
         {/* ── Party area (bottom section) ── */}
         <div className="relative flex min-h-0 shrink-0 flex-nowrap items-end justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pb-[clamp(0.25rem,2svh,1rem)] sm:px-6">
           {party.map((member, i) => (
-            <CombatantCard
-              elements={elements}
-              key={member.id}
-              combatant={member}
-              side="player"
-              isTargetable={phase === "target-select" && selectingAllyTarget}
-              isActive={
-                (phase === "player-turn" && i === activePlayerIndex) ||
-                (turnOrder[0]?.id === member.id && phase === "animating")
-              }
-              onSelect={
-                phase === "target-select" && selectingAllyTarget ? () => handleTargetSelect(member.id) : undefined
-              }
-              damagePopups={damagePopups.filter((p) => p.targetId === member.id)}
-              dialogueLines={combatDialogueLayout.byCombatantId.get(member.id)}
-              sideCount={party.length}
-              onDismissDialogue={dismissCombatDialogueLine}
-            />
+            <div key={member.id} className="flex flex-col items-center">
+              <CombatantCard
+                elements={elements}
+                combatant={member}
+                side="player"
+                isTargetable={phase === "target-select" && selectingAllyTarget}
+                isActive={
+                  (phase === "player-turn" && i === activePlayerIndex) ||
+                  (turnOrder[0]?.id === member.id && phase === "animating")
+                }
+                onSelect={
+                  phase === "target-select" && selectingAllyTarget ? () => handleTargetSelect(member.id) : undefined
+                }
+                damagePopups={damagePopups.filter((p) => p.targetId === member.id)}
+                dialogueLines={combatDialogueLayout.byCombatantId.get(member.id)}
+                sideCount={party.length}
+                onDismissDialogue={dismissCombatDialogueLine}
+              />
+              {member.marinara?.row === "back" && (
+                <span className="mt-0.5 rounded bg-white/10 px-1 text-[0.55rem] uppercase tracking-wide text-white/50">
+                  {localizeUi("game.combat.marinara.row.back")}
+                </span>
+              )}
+            </div>
           ))}
         </div>
       </div>
