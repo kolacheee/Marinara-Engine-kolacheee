@@ -1767,6 +1767,40 @@ export function marinaraStandardEquipment(archetype: MarinaraArchetype, tier: Ma
   return { weapon: `${gear.weapon}-t${tier}`, armor: `${gear.armour}-t${tier}`, accessories: [] };
 }
 
+/**
+ * What a fighter wears: its own pieces, and the class's standard kit for its tier in any empty weapon
+ * or armour slot, so a looted ring never costs the kit's sword (items playtest I1, 2026-11-01).
+ */
+export function marinaraWornEquipment(
+  archetype: MarinaraArchetype,
+  tier: MarinaraTier,
+  equipment: MarinaraEquipment | null | undefined,
+): MarinaraEquipment {
+  const standard = marinaraStandardEquipment(archetype, tier);
+  return {
+    weapon: equipment?.weapon ?? standard.weapon,
+    armor: equipment?.armor ?? standard.armor,
+    accessories: [...(equipment?.accessories ?? [])],
+  };
+}
+
+/** A rough worth of gear for comparing two pieces: power, spell power and every stat it gives. */
+export function marinaraGearScore(equipment: MarinaraEquipment | null | undefined): number {
+  const bonus = marinaraGearBonus(equipment);
+  return bonus.power + bonus.spellPower + Object.values(bonus.stats).reduce((sum, value) => sum + (value ?? 0), 0);
+}
+
+/** Whether a weapon or armour is worth less than the standard kit's piece the slot would fall back to. */
+export function marinaraBelowStandard(
+  id: string,
+  slot: "weapon" | "armor",
+  archetype: MarinaraArchetype,
+  tier: MarinaraTier,
+): boolean {
+  const standard = marinaraStandardEquipment(archetype, tier);
+  return marinaraGearScore({ [slot]: id }) < marinaraGearScore({ [slot]: standard[slot] });
+}
+
 // ── Prices ──
 
 /**
@@ -2115,6 +2149,33 @@ export function marinaraShopStock(input: {
       (size !== "small" || (def.effect.kind !== "revive" && def.id !== "cure-all")),
   ).map((def) => def.id);
   return [...consumables, ...gear, ...(size === "small" ? [] : accessories)];
+}
+
+/**
+ * Everything a game's shops can sell a party of this tier, with the smallest place that sells it: the
+ * fixed counterpart of `marinaraShopStock` for a kit's market, whose shelves are the same every day.
+ * A hamlet sells consumables and last tier's gear; a town this tier's gear, revives, cure-alls and
+ * plain accessories; a city the best accessories. T6 gear, uniques, boons and `found` things never.
+ */
+export function marinaraShopCatalog(
+  tier: MarinaraTier,
+  place: MarinaraItemPlace,
+): Array<{ id: string; size: MarinaraShopSize }> {
+  const out: Array<{ id: string; size: MarinaraShopSize }> = [];
+  for (const def of MARINARA_CONSUMABLES)
+    if (!def.found && def.tier <= tier && marinaraItemAllowed(def, place))
+      out.push({ id: def.id, size: def.effect.kind === "revive" || def.id === "cure-all" ? "town" : "small" });
+  const lower = clampTier(Math.min(5, tier - 1));
+  const upper = clampTier(Math.min(5, tier));
+  for (const family of [...MARINARA_WEAPON_FAMILIES, ...MARINARA_ARMOUR_FAMILIES]) {
+    if (!marinaraItemAllowed(family, place)) continue;
+    out.push({ id: `${family.id}-t${lower}`, size: "small" });
+    if (upper !== lower) out.push({ id: `${family.id}-t${upper}`, size: "town" });
+  }
+  for (const def of MARINARA_ACCESSORIES)
+    if (!def.found && def.tier <= tier && marinaraItemAllowed(def, place))
+      out.push({ id: def.id, size: def.rank < 3 ? "town" : "city" });
+  return out;
 }
 
 // ── Checks ──
