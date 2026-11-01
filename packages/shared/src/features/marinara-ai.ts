@@ -18,6 +18,7 @@ import type { GameDifficulty } from "./combat-conditions.js";
 import { marinaraAffinityMultiplier } from "./marinara-classes.js";
 import {
   MARINARA_TUNING,
+  marinaraBasicAttack,
   marinaraDebuffBurden,
   marinaraEffectiveStat,
   marinaraExpectedHit,
@@ -56,6 +57,16 @@ function bestDamage(unit: MarinaraFighter, all: readonly MarinaraFighter[], tact
  * are the HP a buff, debuff or guard is expected to be worth over the side's average max HP.
  * `reach` narrows who a single-target option can be aimed at (a Tactical board's reach).
  */
+/**
+ * Support, setup and protection here are worked out in the same HP terms as damage, but the Engine's
+ * combat AI weighs them at a fraction of damage by default (support 0.35, setup 0.2, protection 0
+ * unless protective), tuned for its other fights' rougher numbers. On those weights buffs, debuffs
+ * and taunts lost to a free attack almost every turn (playtest 2026-11-01: Rally 7%, Challenge 0%,
+ * Mass Confusion 0%). These bring a temperament-neutral unit back to even; temperaments still lean.
+ * A buff or debuff already on doesn't repeat, so a leaning unit can't spam it.
+ */
+export const MARINARA_AI_NORM = { support: 2.5, setup: 3.5, protection: 0.5, protectionAsSupport: 0.25 };
+
 export function marinaraAiCandidates(
   actor: MarinaraFighter,
   all: readonly MarinaraFighter[],
@@ -95,13 +106,21 @@ export function marinaraAiCandidates(
     // MP never comes back in a fight; stamina does, so it is cheaper to spend.
     const cost = price ? (price.cost / Math.max(1, pool)) * (price.resource === "mp" ? 1 : 0.4) : 0;
     const scale = (value: number | undefined) => (value === undefined ? undefined : value / weight);
+    // A guard's worth also counts as support, so a Guard who isn't protective by temperament still
+    // covers and challenges (playtest 2026-11-01: Challenge was never picked).
+    const guarded = parts.support === undefined ? (parts.protection ?? 0) * MARINARA_AI_NORM.protectionAsSupport : 0;
     out.push({
       action: { optionId: option.id, targetIds: targets.map((unit) => unit.id) },
       ...parts,
       damage: scale(parts.damage),
       healing: scale(parts.healing),
-      support: scale(parts.support),
-      setup: scale(parts.setup),
+      support: scale(
+        parts.support === undefined && !guarded
+          ? undefined
+          : ((parts.support ?? 0) + guarded) * MARINARA_AI_NORM.support,
+      ),
+      setup: scale(parts.setup === undefined ? undefined : parts.setup * MARINARA_AI_NORM.setup),
+      protection: parts.protection === undefined ? undefined : parts.protection * MARINARA_AI_NORM.protection,
       cost: (parts.cost ?? 0) + cost,
     });
   };
@@ -127,10 +146,18 @@ export function marinaraAiCandidates(
           }
           // A charged skill lands a turn later.
           const later = effect.charge ? 0.5 : 1;
+          // What it drinks back (Grave Tithe), as healing for the user.
+          let drained = 0;
+          if (effect.drain)
+            for (const target of struck) drained += Math.min(target.hp, hit(actor, target, spread)) * effect.drain;
+          const missing = actor.maxHp - actor.hp;
           add(option, [aim], {
             targetId: area ? undefined : aim.id,
             damage: damage * later,
             finish: finish * later,
+            ...(drained > 0 && missing > 0
+              ? { healing: (Math.min(missing, drained) / actor.maxHp) * (actor.hp / actor.maxHp < 0.5 ? 2 : 1) * later }
+              : {}),
           });
         }
         break;
@@ -284,10 +311,21 @@ export function marinaraAiCandidates(
       }
       case "cover": {
         if (!threatened || actor.covering) break;
+        // Worth what the foes' hardest blow would do to them over what it does to the Guard: little
+        // when the friend is as hard to hurt as the Guard, a lot for a soft one (playtest 2026-11-01:
+        // Guards covered every turn and never struck).
+        const incoming = (unit: MarinaraFighter) =>
+          Math.max(0, ...foes.map((foe) => hit(foe, unit, marinaraBasicAttack(foe))));
+        const own = incoming(actor);
         for (const target of pool) {
           if (target.id === actor.id || friends.some((f) => f.covering === target.id)) continue;
-          const danger = 1 - target.hp / target.maxHp + (target.row === "back" ? 0.3 : 0);
-          add(option, [target], { protection: 0.4 + danger * 0.6 });
+          const saved = Math.max(0, incoming(target) - own);
+          if (saved <= 0) continue;
+          const danger = 1 - target.hp / target.maxHp;
+          add(option, [target], {
+            support: (saved * (1 + danger)) / friendHp,
+            protection: 0.2 + danger * 0.4,
+          });
         }
         break;
       }

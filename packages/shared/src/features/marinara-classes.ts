@@ -380,6 +380,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   starfall: "light",
   convergence: "element",
   siphon: "dark",
+  "grave-tithe": "dark",
   rot: "poison",
 };
 
@@ -964,7 +965,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           4,
           "Pure damage over time: 6% of max HP each turn for 3 turns. No defense or affinity stops it.",
         ),
-        passive("drain-touch", "Drain Touch", 5, "Heals the user for 15% of the damage they deal.", true),
+        passive("drain-touch", "Drain Touch", 5, "Heals the user for 20% of the damage they deal.", true),
+        active(
+          "grave-tithe",
+          "Grave Tithe",
+          7,
+          "magic",
+          6,
+          "Dark damage to every enemy; the user heals for half of what it deals. Every other turn.",
+        ),
       ],
     },
     {
@@ -1426,11 +1435,17 @@ export function marinaraLearnedSkills(progression: MarinaraProgression): Array<M
   );
 }
 
-/** The skills a character fights with: their active class's learned skills and what they carry. */
-/** Skills every class of an archetype's tree keeps once learned, without a carry slot. */
+/**
+ * Skills every class of an archetype's tree keeps once learned, without a carry slot. A Hexer's
+ * lifesteal is the line's identity (Alyssa 2026-11-01), so every Hexer class keeps Drain Touch and
+ * Grave Tithe.
+ */
 export const MARINARA_ARCHETYPE_TRAITS: Partial<Record<MarinaraArchetype, readonly string[]>> = {
   guard: ["hold-the-line", "cover"],
+  hexer: ["drain-touch", "grave-tithe"],
 };
+
+/** The skills a character fights with: their active class's learned skills and what they carry. */
 
 export function marinaraUsableSkills(progression: MarinaraProgression): Array<MarinaraSkillDef & { classId: string }> {
   const learned = marinaraLearnedSkills(progression);
