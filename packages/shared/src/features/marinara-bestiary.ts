@@ -490,7 +490,18 @@ export type MarinaraEnemyKind =
   | "machine";
 
 /** What a foe does in a fight, which decides its row and how the GM should use it. */
-export type MarinaraEnemyRole = "brute" | "tank" | "skirmisher" | "shooter" | "caster" | "hexer" | "healer" | "leader" | "swarm";
+export type MarinaraEnemyRole =
+  | "brute"
+  | "tank"
+  | "skirmisher"
+  | "shooter"
+  | "caster"
+  | "hexer"
+  | "healer"
+  | "leader"
+  | "swarm"
+  /** A rare encounter worth a windfall (see `windfall`): never built into ordinary fights. */
+  | "treasure";
 
 /** A name for one band of levels: the family's look from `from` up to the next band. */
 export interface MarinaraEnemyName {
@@ -523,6 +534,11 @@ export interface MarinaraEnemyFamily {
   tiers: readonly MarinaraEnemyTier[];
   /** Its names in each setting it lives in, by level band. */
   names: Partial<Record<MarinaraBestiarySetting, readonly MarinaraEnemyName[]>>;
+  /** A treasure foe's windfall: what beating it pays, as multiples of a standard foe of its level
+   *  (its XP, its coin drop), and how many rounds it stays before it flees with all of it (at the end of that round). */
+  windfall?: { xp: number; gold: number; fleeAfterRounds: number };
+  /** Everything it deals is scaled by this (a treasure foe barely fights back); 1 when absent. */
+  damageScale?: number;
 }
 
 /** "Mire Gel", "Bile Gel@11", "Quickglass Gel@21" → bands; a bare "@11" ends the last band at 10. */
@@ -1291,6 +1307,66 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       post_apocalyptic: n("Scrap Turret", "Bunker Gun@11", "Fortress Battery@21"),
     },
   },
+  // ── Treasure: the rare encounter worth a windfall (Alyssa, 11-01) ──
+  // Tiny, slippery and quick to bolt: almost every blow glances off or misses, and it flees after a
+  // few turns with all of it. Beaten, it pays many times a normal foe. Never in ordinary fights:
+  // marinaraRollRareEncounter() puts one or a few in a random encounter now and then.
+  {
+    id: "glimmerling",
+    kind: "spirit",
+    role: "treasure",
+    summary: "A rare, skittish thing that bolts within a few turns; beaten, it is worth a great deal of experience.",
+    mind: "instinct",
+    temperaments: ["cowardly"],
+    archetype: "scout",
+    statScale: { hp: 0.2, strength: 0.4, magic: 0.4, skill: 0.8, speed: 1.6, defense: 2.5, resistance: 2.5, luck: 3.5 },
+    attackType: "blunt",
+    row: "front",
+    affinities: { poison: "immune" },
+    abilities: [],
+    levels: [1, 30],
+    tiers: ["standard"],
+    windfall: { xp: 12, gold: 1, fleeAfterRounds: 3 },
+    damageScale: 0.25,
+    names: {
+      high_fantasy: n("Quicksilver Bead", "Quicksilver Puddle@11", "Quicksilver Pool@21"),
+      wuxia_xianxia: n("Qi-Pearl Hopper", "Qi-Pearl Leaper@11", "Thousand-Year Qi Pearl@21"),
+      modern_day: n("Sterling Squirrel", "Sterling Hare@11", "Sterling Stag@21"),
+      modern_supernatural: n("Remembering Light", "Lore Moth@11", "Moth of Old Secrets@21"),
+      the_1920s: n("Tip-Off Kid", "Wire Man's Runner@11", "Ledger Runner@21"),
+      cyberpunk: n("Data Mite", "Cache Leech@11", "Zero-Day Ghost@21"),
+      space_opera: n("Prism Mite", "Prism Skitter@11", "Prism Seraph@21"),
+      post_apocalyptic: n("Glow Grub", "Glow Hopper@11", "Glow Matriarch@21"),
+    },
+  },
+  {
+    id: "hoardling",
+    kind: "vermin",
+    role: "treasure",
+    summary: "A rare, hoarding thing that bolts within a few turns; beaten, it spills a fortune in coin.",
+    mind: "instinct",
+    temperaments: ["cowardly"],
+    archetype: "scout",
+    statScale: { hp: 0.2, strength: 0.4, magic: 0.3, skill: 0.8, speed: 1.5, defense: 2.2, resistance: 2.2, luck: 3 },
+    attackType: "blunt",
+    row: "front",
+    affinities: { poison: "immune" },
+    abilities: [],
+    levels: [1, 30],
+    tiers: ["standard"],
+    windfall: { xp: 2, gold: 15, fleeAfterRounds: 3 },
+    damageScale: 0.25,
+    names: {
+      high_fantasy: n("Gilt Gloop", "Gilded Ooze@11", "Crown-Gold Ooze@21"),
+      wuxia_xianxia: n("Copper-Cash Toad", "Silver-Ingot Toad@11", "Golden Toad of Fortune@21"),
+      modern_day: n("Coin-Hoarding Magpie", "Jackpot Magpie@11", "Kingpin's Magpie@21"),
+      modern_supernatural: n("Wishing-Well Sprite", "Wishing-Well Warden@11", "Wishing-Well Sovereign@21"),
+      the_1920s: n("Bagman", "Payroll Courier@11", "Bank Messenger@21"),
+      cyberpunk: n("Cred-Chip Courier", "Black-Card Courier@11", "Vault Key Courier@21"),
+      space_opera: n("Ore Tick", "Platinum Tick@11", "Iridium Tick@21"),
+      post_apocalyptic: n("Scrap-Gold Beetle", "Brass Beetle@11", "Reactor-Gold Beetle@21"),
+    },
+  },
 ];
 
 const FAMILY_BY_ID = new Map(MARINARA_BESTIARY.map((family) => [family.id, family]));
@@ -1342,7 +1418,9 @@ export function marinaraEnemySettingCap(family: MarinaraEnemyFamily, setting: Ma
 export function marinaraBestiaryFor(setting: MarinaraBestiarySetting, level: number): MarinaraEnemyFamily[] {
   return MARINARA_BESTIARY.filter(
     (family) =>
-      marinaraEnemyName(family, setting, level) !== null && level <= marinaraEnemySettingCap(family, setting),
+      family.role !== "treasure" &&
+      marinaraEnemyName(family, setting, level) !== null &&
+      level <= marinaraEnemySettingCap(family, setting),
   );
 }
 
@@ -1367,6 +1445,10 @@ export type MarinaraBestiaryFoeSpec = MarinaraEnemySpec & {
   familyId: string;
   mind?: CombatMind;
   temperament?: CombatTemperament;
+  /** A treasure foe's windfall (MarinaraEnemyFamily.windfall): what beating it pays, and when it flees. */
+  windfall?: { xp: number; gold: number; fleeAfterRounds: number };
+  /** Everything it deals is scaled by this (a treasure foe's feeble blows); 1 when absent. */
+  damageScale?: number;
 };
 
 function combinedScale(a: Partial<MarinaraStats> | undefined, b: Partial<MarinaraStats>): Partial<MarinaraStats> {
@@ -1403,7 +1485,9 @@ export function marinaraEnemySpec(input: {
     name: input.name?.trim() || (input.tier === "boss" ? marinaraEnemyBossName(family, input.setting, level)! : bandName),
     familyId: family.id,
     ...(classId ? { classId } : { archetype: family.archetype }),
-    statScale: combinedScale(family.statScale, marinaraFoeLevelScale(level)),
+    // A treasure foe skips the level growth that keeps fighting foes level with the party: how hard
+    // it is to catch was tuned flat across levels.
+    statScale: family.role === "treasure" ? { ...family.statScale } : combinedScale(family.statScale, marinaraFoeLevelScale(level)),
     level,
     tier: input.tier,
     row: family.row,
@@ -1413,6 +1497,8 @@ export function marinaraEnemySpec(input: {
     enemySkills: marinaraEnemyAbilities(family, input.tier, level),
     mind: family.mind,
     ...(temperament ? { temperament } : {}),
+    ...(family.windfall ? { windfall: family.windfall } : {}),
+    ...(family.damageScale !== undefined ? { damageScale: family.damageScale } : {}),
   };
 }
 
@@ -1432,6 +1518,9 @@ export const MARINARA_ENCOUNTER_BUDGET = {
 } as const;
 export type MarinaraEncounterDifficulty = keyof typeof MARINARA_ENCOUNTER_BUDGET;
 
+/** What a treasure foe counts for in a budget: next to nothing, it barely fights back. */
+export const MARINARA_TREASURE_THREAT = 0.1;
+
 /** A foe's worth changes this much per level it stands above (or below) the party. */
 export const MARINARA_LEVEL_GAP_THREAT = 1.12;
 
@@ -1448,6 +1537,16 @@ export const MARINARA_THREAT_CALIBRATION = 1.13;
 /** How far a foe's level may stray from the party's: never more than 3 above (a boss 5), and foes
  *  more than 8 below aren't worth a fight. */
 export const MARINARA_LEVEL_GAP = { above: 3, bossAbove: 5, below: 8 } as const;
+
+/** A Brutal game breaks the level cap (Alyssa, 11-01): foes may stand this far above the party, and
+ *  the builder lifts them up to `lift` levels on its own. Their worth still grows 1.12x a level, so
+ *  the budget holds; the fight just has fewer, stronger foes. */
+export const MARINARA_LEVEL_GAP_BRUTAL = { above: 6, bossAbove: 8, below: 8, lift: 3 } as const;
+
+/** The level gap rules for a party (Brutal games get the wider ones). */
+export function marinaraLevelGap(party: MarinaraEncounterParty): { above: number; bossAbove: number; below: number } {
+  return party.brutal ? MARINARA_LEVEL_GAP_BRUTAL : MARINARA_LEVEL_GAP;
+}
 /** A Classic battle has room for six foes. */
 export const MARINARA_MAX_FOES = 6;
 
@@ -1477,6 +1576,7 @@ function interpolate(levels: Record<number, number>, level: number): number | nu
  * for that tier fall back to their standard worth times the tier's rule.
  */
 export function marinaraFoeThreat(familyId: string, tier: MarinaraEnemyTier, level: number, partyLevel: number): number {
+  if (FAMILY_BY_ID.get(familyId)?.role === "treasure") return MARINARA_TREASURE_THREAT;
   const measured = MARINARA_BESTIARY_THREAT[familyId];
   let worth = measured?.[tier] ? interpolate(measured[tier]!, level) : null;
   if (worth === null) {
@@ -1493,6 +1593,8 @@ export interface MarinaraEncounterParty {
   level: number;
   /** How many can fight. */
   size: number;
+  /** The game is on Brutal: foes may break the usual level cap (MARINARA_LEVEL_GAP_BRUTAL). */
+  brutal?: boolean;
 }
 
 export interface MarinaraEncounterFoe {
@@ -1560,10 +1662,11 @@ export function marinaraCheckEncounter(input: {
       if (!named || foe.level > marinaraEnemySettingCap(family, input.setting))
         problems.push(`${label}: not found in ${input.setting} at that level.`);
     }
-    const above = foe.tier === "boss" ? MARINARA_LEVEL_GAP.bossAbove : MARINARA_LEVEL_GAP.above;
+    const gap = marinaraLevelGap(party);
+    const above = foe.tier === "boss" ? gap.bossAbove : gap.above;
     if (foe.level > party.level + above) problems.push(`${label}: more than ${above} levels above the party.`);
-    if (foe.level < party.level - MARINARA_LEVEL_GAP.below)
-      problems.push(`${label}: more than ${MARINARA_LEVEL_GAP.below} levels below the party; not worth a fight.`);
+    if (foe.level < party.level - gap.below)
+      problems.push(`${label}: more than ${gap.below} levels below the party; not worth a fight.`);
     threat += marinaraFoeThreat(family.id, foe.tier, foe.level, party.level);
   }
   for (const tier of MARINARA_ENEMY_TIERS_LIST)
@@ -1621,6 +1724,10 @@ export function marinaraBuildEncounter(input: {
   const budget = MARINARA_ENCOUNTER_BUDGET[input.difficulty] * party.size;
   const pool = marinaraBestiaryFor(input.setting, level);
   if (!pool.length) return { foes: [], threat: 0 };
+  // A Brutal game lifts the whole fight a few levels above the party, where each family's names reach.
+  const lift = party.brutal ? Math.floor(random() * (MARINARA_LEVEL_GAP_BRUTAL.lift + 1)) : 0;
+  const foeLevel = (family: MarinaraEnemyFamily) =>
+    Math.max(level, Math.min(level + lift, MARINARA_LEVEL_CAP, family.levels[1], marinaraEnemySettingCap(family, input.setting)));
   const pick = <T>(list: readonly T[]): T => list[Math.floor(random() * list.length)]!;
   const wanted = (input.families ?? []).map((id) => pool.find((family) => family.id === id)).filter(Boolean) as MarinaraEnemyFamily[];
   const lead =
@@ -1643,7 +1750,7 @@ export function marinaraBuildEncounter(input: {
     threat += worth(foe);
   };
   if (input.boss && level >= MARINARA_TIER_RULES.boss.minLevel && lead.tiers.includes("boss")) {
-    const boss = { familyId: lead.id, tier: "boss" as const, level };
+    const boss = { familyId: lead.id, tier: "boss" as const, level: foeLevel(lead) };
     if (worth(boss) <= budget) add(boss);
   }
   // Someone stands in front: unless the boss does, one front-row foe (from a chosen family, else the
@@ -1659,12 +1766,12 @@ export function marinaraBuildEncounter(input: {
       const tiers = (["standard", "minion", "elite"] as const).filter(
         (tier) => stand.tiers.includes(tier) && level >= MARINARA_TIER_RULES[tier].minLevel,
       );
-      const fits = () => tiers.find((tier) => worth({ familyId: stand.id, tier, level }) <= budget - threat);
+      const fits = () => tiers.find((tier) => worth({ familyId: stand.id, tier, level: foeLevel(stand) }) <= budget - threat);
       if (!fits() && foes.length) {
         threat -= worth(foes.pop()!);
       }
       const tier = fits();
-      if (tier) add({ familyId: stand.id, tier, level });
+      if (tier) add({ familyId: stand.id, tier, level: foeLevel(stand) });
     }
   }
   // Fill: try foes from the chosen families at a tier that fits what's left, until nothing fits.
@@ -1680,7 +1787,7 @@ export function marinaraBuildEncounter(input: {
         if (tier === "boss" || level < MARINARA_TIER_RULES[tier].minLevel) continue;
         if (tierCount(tier) >= MARINARA_TIER_RULES[tier].maxPerFight) continue;
         if (roleFull(family)) continue;
-        const foe = { familyId: family.id, tier, level };
+        const foe = { familyId: family.id, tier, level: foeLevel(family) };
         if (worth(foe) <= left) options.push(foe);
       }
     if (!options.length) break;
@@ -1699,6 +1806,37 @@ export function marinaraBuildEncounter(input: {
     if (threat >= budget * 0.85 && random() < 0.5) break;
   }
   return { foes, threat };
+}
+
+/** How often a random encounter is a rare treasure encounter instead (JRPG-style rare spawn). */
+export const MARINARA_RARE_ENCOUNTER_CHANCE = 1 / 32;
+
+/** The treasure families a setting has at a level. */
+export function marinaraTreasureFor(setting: MarinaraBestiarySetting, level: number): MarinaraEnemyFamily[] {
+  return MARINARA_BESTIARY.filter(
+    (family) => family.role === "treasure" && marinaraEnemyName(family, setting, level) !== null,
+  );
+}
+
+/**
+ * Rolls whether a random encounter (never a story fight) is a rare treasure encounter: one to three
+ * treasure foes of one family, at the party's level. Null on most rolls. The caller decides which
+ * fights count as random encounters; the GM may also ask for one when the story finds one.
+ */
+export function marinaraRollRareEncounter(input: {
+  setting: MarinaraBestiarySetting;
+  party: MarinaraEncounterParty;
+  random: () => number;
+  /** Skip the chance roll: the story has already put one here. */
+  force?: boolean;
+}): MarinaraEncounterFoe[] | null {
+  if (!input.force && input.random() >= MARINARA_RARE_ENCOUNTER_CHANCE) return null;
+  const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.round(input.party.level)));
+  const pool = marinaraTreasureFor(input.setting, level);
+  if (!pool.length) return null;
+  const family = pool[Math.floor(input.random() * pool.length)]!;
+  const count = 1 + Math.floor(input.random() * 3);
+  return Array.from({ length: count }, () => ({ familyId: family.id, tier: "standard" as const, level }));
 }
 
 /** What the GM's fight setup sees: the families the setting has at the party's level, with their
@@ -1749,8 +1887,9 @@ export function marinaraFitEncounter(input: {
       changes.push(`Dropped ${asked.familyId}: no such family.`);
       continue;
     }
-    const above = asked.tier === "boss" ? MARINARA_LEVEL_GAP.bossAbove : MARINARA_LEVEL_GAP.above;
-    let foeLevel = Math.max(level - MARINARA_LEVEL_GAP.below, Math.min(level + above, Math.round(asked.level)));
+    const gap = marinaraLevelGap(party);
+    const above = asked.tier === "boss" ? gap.bossAbove : gap.above;
+    let foeLevel = Math.max(level - gap.below, Math.min(level + above, Math.round(asked.level)));
     foeLevel = Math.max(family.levels[0], Math.min(marinaraEnemySettingCap(family, setting), foeLevel));
     if (!marinaraEnemyName(family, setting, foeLevel)) {
       changes.push(`Dropped ${family.id}: not found in ${setting} near level ${level}.`);
@@ -1794,7 +1933,7 @@ export function marinaraFitEncounter(input: {
     if (lower && family.tiers.includes(lower)) {
       foes[index] = { ...top, tier: lower };
       changes.push(`${top.familyId}: ${top.tier} → ${lower} to fit a ${input.difficulty} fight.`);
-    } else if (top.level > level - MARINARA_LEVEL_GAP.below && top.level > family.levels[0]) {
+    } else if (top.level > level - marinaraLevelGap(party).below && top.level > family.levels[0]) {
       foes[index] = { ...top, level: top.level - 1 };
       changes.push(`${top.familyId}: level ${top.level} → ${top.level - 1} to fit a ${input.difficulty} fight.`);
     } else {
