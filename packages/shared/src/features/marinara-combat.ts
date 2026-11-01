@@ -218,10 +218,11 @@ export const MARINARA_STEAL: { base: number; perSpeed: number; rank: Record<Mari
 };
 
 /**
- * Tame (Tracker, Alyssa 2026-11-01): a wild beast or vermin below `belowHp` of its HP, never an elite,
- * boss or treasure foe. The odds are `base`, plus up to `skillLuck` as the user's Skill and Luck outweigh
- * the beast's, plus `perHpMissing` for each share of HP under the line it has lost, less `perLevel` for
- * every level the beast stands above the user; never below `min` or above `max`.
+ * Tame (Tracker, Alyssa 2026-11-01): a wild beast or vermin below `belowHp` of its HP, never a boss or
+ * treasure foe. The odds are `base`, plus up to `skillLuck` as the user's Skill and Luck outweigh the
+ * beast's, plus `perHpMissing` for each share of HP under the line it has lost, less `perLevel` for
+ * every level the beast stands above the user, less `elite` for an elite (23:36); never below `min` or
+ * above `max`.
  */
 export const MARINARA_TAME = {
   belowHp: 0.3,
@@ -229,12 +230,28 @@ export const MARINARA_TAME = {
   skillLuck: 0.4,
   perHpMissing: 1,
   perLevel: 0.06,
+  elite: 0.2,
   min: 0.1,
   max: 0.9,
 } as const;
-/** A companion raises its keeper's matching stat this much while a Tracker-tree class is active;
- *  Bond raises it to `bond`, and the rest of the party gets `shared` of it. */
-export const MARINARA_COMPANION = { pct: 0.1, bond: 0.2, shared: 0.5 } as const;
+/** A companion raises its keeper's matching stat while a Tracker-tree class is active, by `base` plus
+ *  `perLevel` for each level it was tamed at, times its rank's factor (Alyssa 23:36: stronger catches
+ *  pay); Bond multiplies that by `bond`, and the rest of the party gets `shared` of the result. */
+export const MARINARA_COMPANION = {
+  base: 0.04,
+  perLevel: 0.004,
+  tier: { minion: 0.5, standard: 1, elite: 1.5, boss: 0 } as Record<MarinaraEnemyTier, number>,
+  bond: 1.5,
+  shared: 0.5,
+} as const;
+
+/** What a companion tamed at this level and rank adds to its keeper's stat, as a share. */
+export function marinaraCompanionBonus(companion: { level?: number; tier?: MarinaraEnemyTier }): number {
+  return (
+    (MARINARA_COMPANION.base + MARINARA_COMPANION.perLevel * (companion.level ?? 1)) *
+    (MARINARA_COMPANION.tier[companion.tier ?? "standard"] ?? 1)
+  );
+}
 
 /** What every active class skill does. Steal takes something from a foe, kept with the fight's loot. */
 export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
@@ -1447,7 +1464,6 @@ export function marinaraTameable(target: MarinaraFighter): boolean {
     !!target.tameable &&
     target.hp > 0 &&
     target.hp < target.maxHp * MARINARA_TAME.belowHp &&
-    target.tier !== "elite" &&
     target.tier !== "boss" &&
     !target.windfall &&
     !target.yielded
@@ -1468,7 +1484,8 @@ export function marinaraTameChance(
     MARINARA_TAME.base +
     MARINARA_TAME.skillLuck * share +
     MARINARA_TAME.perHpMissing * missing -
-    MARINARA_TAME.perLevel * Math.max(0, target.level - actor.level);
+    MARINARA_TAME.perLevel * Math.max(0, target.level - actor.level) -
+    (target.tier === "elite" ? MARINARA_TAME.elite : 0);
   return Math.round(Math.min(MARINARA_TAME.max, Math.max(MARINARA_TAME.min, chance)) * 100);
 }
 
@@ -2782,4 +2799,6 @@ export interface MarinaraFightGrowth {
   fallen?: boolean;
   /** Tamed this beast in the fight: their companion now. */
   tamed?: string;
+  /** Their stable was full: the player picks one to release on their sheet. */
+  stableFull?: boolean;
 }

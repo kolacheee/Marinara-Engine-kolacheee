@@ -30,6 +30,8 @@ import {
   marinaraTrees,
   readMarinaraCardProgression,
   MARINARA_PROMOTION_LEVEL,
+  MARINARA_COMPANION_STABLE,
+  marinaraCompanionBonus,
   type MarinaraCardProgression,
   type MarinaraClassDef,
 } from "@marinara-engine/shared";
@@ -55,6 +57,8 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
     equipment?: MarinaraEquipment;
     primary?: MarinaraArchetype;
     row?: "front" | "back" | null;
+    activeCompanion?: string;
+    releaseCompanion?: string;
   }) => {
     setBusy(true);
     try {
@@ -383,6 +387,63 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
               </ul>
             )}
           </div>
+          {/* Tamed beasts (Tracker, Alyssa 2026-11-01): one active, swapped outside battle; a full stable
+              asks which one to let go. */}
+          {(progression.companions?.length || progression.pendingCompanion) && (
+            <div className="space-y-1" data-testid="marinara-companions">
+              <p className="font-medium">
+                {t("game.combat.marinara.sheet.companions", {
+                  count: progression.companions?.length ?? 0,
+                  max: MARINARA_COMPANION_STABLE,
+                })}
+              </p>
+              <p className="text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.companionsHint")}</p>
+              {progression.pendingCompanion && (
+                <div className="rounded-md border border-[var(--primary)] px-2 py-1" role="alert">
+                  <p>{t("game.combat.marinara.sheet.companionWaiting", { name: progression.pendingCompanion.name })}</p>
+                  <button
+                    type="button"
+                    className="mt-1 rounded border border-[var(--border)] px-2 py-0.5"
+                    disabled={busy}
+                    onClick={() => void save({ releaseCompanion: progression.pendingCompanion!.id })}
+                  >
+                    {t("game.combat.marinara.sheet.releaseNew", { name: progression.pendingCompanion.name })}
+                  </button>
+                </div>
+              )}
+              <ul className="space-y-1">
+                {(progression.companions ?? []).map((one) => (
+                  <li key={one.id} className="flex flex-wrap items-center gap-2">
+                    <label className="flex cursor-pointer items-center gap-2">
+                      <input
+                        type="radio"
+                        name={`companion-${name}`}
+                        className="size-4 accent-[var(--primary)]"
+                        checked={progression.activeCompanion === one.id}
+                        disabled={busy}
+                        onChange={() => void save({ activeCompanion: one.id })}
+                      />
+                      <span className="font-medium">{one.name}</span>
+                      <span className="text-[var(--muted-foreground)]">
+                        {t(`game.combat.marinara.stat.${one.stat}`, { defaultValue: one.stat })} +
+                        {Math.round(marinaraCompanionBonus(one) * 100)}%
+                        {one.level ? ` · ${t("game.combat.marinara.level", { level: one.level })}` : ""}
+                        {one.tier && one.tier !== "standard" ? ` · ${t(`game.combat.marinara.tier.${one.tier}`)}` : ""}
+                      </span>
+                    </label>
+                    <button
+                      type="button"
+                      className="rounded border border-[var(--border)] px-1.5 py-0.5 text-[var(--muted-foreground)]"
+                      disabled={busy}
+                      onClick={() => void save({ releaseCompanion: one.id })}
+                    >
+                      {t("game.combat.marinara.sheet.release")}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </>
       )}
     </div>

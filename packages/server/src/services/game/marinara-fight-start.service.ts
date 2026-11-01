@@ -29,6 +29,7 @@ import {
   type MarinaraFoeBrief,
   type MarinaraPartyTemperament,
   type MarinaraDamageType,
+  marinaraAddCompanion,
   marinaraApplyCompanions,
 } from "@marinara-engine/shared";
 import { gameCardFor } from "./party-temperament.service.js";
@@ -226,30 +227,32 @@ export function marinaraFightEnd(input: {
       0,
     );
     const fell = input.permadeath && fighter.hp <= 0 && input.outcome !== "defeat";
-    // A beast this fighter tamed follows them from now on, replacing any before it (Tracker). Kept
-    // unless the fight was lost.
+    // A beast this fighter tamed joins their stable, or waits on a release when it is full (Tracker,
+    // Alyssa 23:31). Kept unless the fight was lost.
     const beast =
       input.outcome !== "defeat"
         ? [...(input.state.left ?? [])].reverse().find((one) => one.tamedBy === fighter.id && one.tameable)
         : undefined;
     const companion = beast?.tameable
       ? {
+          id: `${beast.tameable.familyId ?? "beast"}-${beast.id}-${input.seed}`,
           name: beast.tameable.name,
           stat: beast.tameable.stat,
           ...(beast.tameable.familyId ? { familyId: beast.tameable.familyId } : {}),
           level: beast.level,
+          tier: beast.tier ?? "standard",
         }
       : undefined;
     if (!xp && !fell && !companion) continue;
     const awarded = xp
       ? awardMarinaraXp(progression, xp, marinaraRandom(`${input.seed}:growth:${card.name}`))
       : { progression, levelUps: [] };
-    const next: MarinaraCardProgression = {
+    const grown: MarinaraCardProgression = {
       ...progression,
       ...awarded.progression,
       ...(fell ? { fallen: true } : {}),
-      ...(companion ? { companion } : {}),
     };
+    const next = companion ? marinaraAddCompanion(grown, companion) : grown;
     changed.set(normalizeCharacterLookupName(card.name), next);
     const active = next.activeClass;
     growth.push({
@@ -266,6 +269,7 @@ export function marinaraFightEnd(input: {
         : {}),
       ...(fell ? { fallen: true } : {}),
       ...(companion ? { tamed: companion.name } : {}),
+      ...(companion && next.pendingCompanion?.id === companion.id ? { stableFull: true } : {}),
     });
   }
   const cards = changed.size

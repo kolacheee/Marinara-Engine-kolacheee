@@ -48,6 +48,8 @@ import {
   marinaraLearnedSkills,
   MARINARA_DAMAGE_TYPES,
   marinaraOwnedAmmo,
+  marinaraReleaseCompanion,
+  marinaraSetActiveCompanion,
   marinaraKeptTraits,
   marinaraClass,
   marinaraUsableSkills,
@@ -1827,6 +1829,9 @@ export async function combatDirectorRoutes(
         /** Their Classic row; null goes back to their class's own row. */
         row: z.enum(["front", "back"]).nullable().optional(),
         carried: z.array(z.string().max(80)).max(8).optional(),
+        /** Tracker companions (Alyssa 23:31): the one made active, or the one let go; outside fights only. */
+        activeCompanion: z.string().min(1).max(200).optional(),
+        releaseCompanion: z.string().min(1).max(200).optional(),
         /** What they wear (marinara-items.ts ids), from what the party's bags hold. */
         equipment: z
           .object({
@@ -1893,6 +1898,19 @@ export async function combatDirectorRoutes(
         if (next.fallen) {
           refusal = "This party member has fallen.";
           return {};
+        }
+        if (input.activeCompanion || input.releaseCompanion) {
+          if (current.gameActiveState === "combat") {
+            refusal = "Companions are swapped outside battle.";
+            return {};
+          }
+          try {
+            if (input.releaseCompanion) next = marinaraReleaseCompanion(next, input.releaseCompanion);
+            if (input.activeCompanion) next = marinaraSetActiveCompanion(next, input.activeCompanion);
+          } catch (err) {
+            refusal = err instanceof Error ? err.message : "No such companion.";
+            return {};
+          }
         }
         try {
           const before = marinaraUsableSkills(next);
