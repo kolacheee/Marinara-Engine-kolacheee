@@ -64,7 +64,7 @@ export function MarinaraFightPanel({ party, enemies, actorId, growth }: Props) {
               <div className="tabular-nums text-[var(--muted-foreground)]">
                 {t("game.combat.marinara.hp", { hp: unit.hp, max: unit.maxHp })} ·{" "}
                 {t("game.combat.marinara.stamina", { amount: m.stamina, max: m.maxStamina })}
-                {unit.maxMp ? ` · ${t("game.combat.marinara.mp", { amount: unit.mp, max: unit.maxMp })}` : ""}
+                {unit.maxMp ? [" · ", t("game.combat.marinara.mp", { amount: unit.mp, max: unit.maxMp })].join("") : ""}
               </div>
               {(m.statuses.length > 0 || m.mods.length > 0 || flags.length > 0) && (
                 <div className="mt-0.5 flex flex-wrap gap-1">

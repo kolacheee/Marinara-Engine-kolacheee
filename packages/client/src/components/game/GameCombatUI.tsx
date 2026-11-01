@@ -2290,7 +2290,7 @@ export function GameCombatUI({
                                   ? localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost })
                                   : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
                               {skill.readyIn
-                                ? ` · ${localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })}`
+                                ? [" · ", localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })].join("")
                                 : ""}
                             </span>
                           </button>
@@ -2902,7 +2902,7 @@ export function GameCombatUI({
                               ? localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost })
                               : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
                           {skill.readyIn
-                            ? ` · ${localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })}`
+                            ? [" · ", localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })].join("")
                             : ""}
                         </div>
                       </button>
