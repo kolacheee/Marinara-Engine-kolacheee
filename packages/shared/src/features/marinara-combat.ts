@@ -146,6 +146,8 @@ export interface MarinaraEffect {
   verses?: { pct: number; most: number };
   /** Costs no turn: the user acts again at once (not from an action that was itself a bonus). */
   bonusAction?: boolean;
+  /** Draws every foe's single-target attacks to the user for this many of its turns (Warding Stance). */
+  provokes?: number;
   /** The user's next landed hit exposes its target: everyone deals this much more to it for 2 turns. */
   exposeNext?: number;
   /** A landed status also exposes the target (Seal). */
@@ -197,7 +199,12 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "power-strike": dmg("strength", 9, { weight: 1.3 }),
   flurry: dmg("strength", 4, { hits: 2 }),
   "moonless-cut": dmg("strength", 10, { critBonus: 30, finisher: { below: 0.5, bonus: 0.5 } }),
-  "reckless-swing": dmg("strength", 13, { selfDebuff: { stat: "defense", pct: -0.3, duration: 2 } }),
+  // Balance pass (2026-11-01): it missed evasive foes too often, and opens a Wound (the party's anti-heal).
+  "reckless-swing": dmg("strength", 13, {
+    hitBonus: 15,
+    selfDebuff: { stat: "defense", pct: -0.3, duration: 2 },
+    applies: { status: "wound", duration: 3 },
+  }),
   "sweeping-ruin": dmg("strength", 13, {
     target: "front-row",
     weight: 1.2,
@@ -222,7 +229,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   },
   spellguard: { kind: "buff", target: "party", stat: "resistance", pct: 0.3, duration: 2 },
   verdict: dmg("magic", 6, { from: "resistance" }),
-  "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2 },
+  // Balance pass (2026-11-01): the Pure Guard line's taunt; its tank held fewer fights than a Sentinel's.
+  "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2, provokes: 2 },
   "oath-of-iron": { kind: "buff", target: "party", stat: "damage-taken", pct: -0.75, duration: 1, oncePerFight: true },
   // Scout
   steal: { kind: "steal", target: "enemy" },
@@ -258,7 +266,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "mark-prey": { kind: "debuff", target: "enemy", stat: "damage-taken", pct: 0.35, duration: 3, bonusAction: true },
   "snare-field": { kind: "debuff", target: "all-enemies", stat: "speed", pct: -0.3, duration: 2 },
   volley: dmg("strength", 4, { ranged: true, target: "all-enemies", cooldown: 2 }),
-  "ruinous-barrage": dmg("strength", 9, {
+  // Balance pass (2026-11-01): power 9 -> 13 (Volley did as much for 6 stamina).
+  "ruinous-barrage": dmg("strength", 13, {
     ranged: true,
     target: "all-enemies",
     weight: 1.3,
@@ -273,7 +282,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // AI cast it 1% of the time against Twin Cast's 80% (lab, 2026-11-01).
   tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 2, areaPct: 0.85 }),
   // Rune Scholar (Alyssa 2026-11-01): its own payoff against affinity foes, in their weakest element.
-  "rune-strike": dmg("magic", 11, { ranged: true }),
+  // Balance pass (2026-11-01): 11 -> 9, it out-hit Element Bolt by half again.
+  "rune-strike": dmg("magic", 9, { ranged: true }),
   // Rune Scholar line (Alyssa 2026-11-01): party elemental support. The party's weapons take whichever
   // of fire, ice and lightning hurts most.
   "edge-runes": { kind: "buff", target: "party", stat: "imbue", pct: 1, duration: 3, cooldown: 2 },
@@ -289,12 +299,23 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
       { stat: "element-taken", pct: -0.3 },
     ],
   },
-  starfall: dmg("magic", 8, { ranged: true, pierce: 1 }),
+  // Balance pass (2026-11-01): ignores half of Resistance (was all of it) and every elemental resistance.
+  starfall: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
   convergence: dmg("magic", 24, { ranged: true, charge: true }),
   // Hexer
   weaken: { kind: "debuff", target: "enemy", stat: "damage", pct: -0.25, duration: 3 },
-  rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.08 },
-  wither: { kind: "status", target: "enemy", status: "wither", chance: 1, duration: 3, power: 0.06 },
+  // Balance pass (2026-11-01): 8% -> 6% a turn; a share of max HP grew too big on bosses.
+  rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.06 },
+  // Wither also wounds (healing halved): the party's anti-heal (Alyssa 2026-11-01, item 8).
+  wither: {
+    kind: "status",
+    target: "enemy",
+    status: "wither",
+    chance: 1,
+    duration: 3,
+    power: 0.06,
+    applies: { status: "wound", duration: 3 },
+  },
   doom: { kind: "status", target: "enemy", status: "doom", chance: 0.6, duration: 3 },
   // Carrion Lord (the Hexer's front-line master): a heavy drain on one foe, all of it back.
   "carrion-feast": dmg("magic", 14, { ranged: true, drain: 1, cooldown: 2 }),
@@ -314,7 +335,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   }),
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
-  revive: { kind: "revive", target: "downed-ally", power: 0.25 },
+  revive: { kind: "revive", target: "downed-ally", power: 0.25, cooldown: 3 },
   sanctuary: { kind: "heal", target: "party", scales: "magic", power: 5, weight: 1.2, cleanse: "one" },
   remedy: { kind: "heal", target: "ally", scales: "magic", power: 5, cleanse: "all" },
   purify: { kind: "cleanse", target: "ally", cleanse: "all" },
@@ -457,6 +478,10 @@ export interface MarinaraPassiveHooks {
   hitBonus?: number;
   /** Counter a melee attack: always, or only one that missed. */
   counter?: "always" | "on-miss";
+  /** Counters at most once a round (Overwatch, balance pass 2026-11-01). */
+  counterOncePerRound?: boolean;
+  /** Counters add this share of the user's Defense to their power (Retaliate). */
+  counterDefensePct?: number;
   healOnKillPct?: number;
   damageBelowHalfPct?: number;
   /** More damage by this share times the share of max HP the user is missing (Bloodrage). */
@@ -533,10 +558,10 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   stalwart: { defendBonusPct: 0.2 },
   "shield-wall": { backRowTakenPct: -0.25 },
   "last-stand": { lastStand: true },
-  retaliate: { counter: "always" },
+  retaliate: { counter: "always", counterDefensePct: 0.5 },
   "aura-of-warding": { partyMagicTakenPct: -0.35 },
   "elder-oath": { statPct: { resistance: 0.5 } },
-  immovable: { unstoppable: true },
+  immovable: { unstoppable: true, defendBonusPct: 0.2 },
   "shield-line": { partyDefensePct: 0.15, partyResistancePct: 0.15 },
   "light-feet": { statPct: { speed: 0.1 } },
   exploit: { critBonus: 15 },
@@ -547,7 +572,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "perfect-evasion": { evasionStacking: 10 },
   "true-aim": { hitBonus: 15 },
   steady: { hitBonus: 5 },
-  overwatch: { counter: "always" },
+  overwatch: { counter: "always", counterOncePerRound: true },
   "abyssal-will": { spellDamagePct: 0.2 },
   "dead-eye": { critBonus: 15, weakBonus: 0.25 },
   "ammo-pouch": { ammo: true },
@@ -665,6 +690,7 @@ export interface MarinaraFighter {
   lastStandUsed?: boolean;
   miracleUsed?: boolean;
   evadedThisRound?: boolean;
+  counteredThisRound?: boolean;
   missesAgainst: number;
   firstSpellUsed?: boolean;
   actions: number;
@@ -1198,7 +1224,16 @@ export function marinaraStealChance(
 
 /** A fighter's basic attack. */
 export function marinaraBasicAttack(unit: MarinaraFighter): MarinaraEffect {
+  // Balance pass (2026-11-01): the Herald tree swings with the better of Strength and Magic, and the
+  // Apothecary line with the better of Magic and Skill (they did 4-5 a hit at level 25-30).
+  const from =
+    unit.archetype === "herald" && unit.stats.magic > unit.stats.strength
+      ? ("magic" as const)
+      : (unit.classId === "apothecary" || unit.classId === "panacean") && unit.stats.skill > unit.stats.magic
+        ? ("skill" as const)
+        : undefined;
   return dmg(unit.magicBasic ? "magic" : "strength", MARINARA_TUNING.basicPower, {
+    ...(from ? { from } : {}),
     ranged: unit.rangedBasic || unit.magicBasic,
     basic: true,
     type: unit.archetype && unit.classId ? MARINARA_ARCHETYPE_ATTACKS[unit.archetype] : (unit.attackType ?? "weapon"),
@@ -1581,6 +1616,11 @@ export const MARINARA_BOSS_RULES = {
   ignores: ["sleep", "stun", "confuse"] as readonly MarinaraStatusId[],
   enrageBelow: 0.5,
   enrageDamagePct: 0.2,
+  /** A boss takes this share of Poison and Wither ticks (balance pass 2026-11-01): a share of max HP
+   *  a turn grew too big on a boss's HP. */
+  dotPct: 0.5,
+  /** An elite shakes off confusion this share of the time a non-boss would not. */
+  eliteConfuseResist: 0.5,
 };
 
 /** Whether a status can't take hold on this fighter. */
@@ -1644,10 +1684,13 @@ export function beginMarinaraTurn(
   actor.hidden = false;
   actor.secondWindUsed = false;
   actor.evadedThisRound = false;
+  actor.counteredThisRound = false;
   for (const status of actor.statuses) {
     if (status.status === "poison" || status.status === "wither" || status.status === "bleed") {
       // Poison is a damage type foes can resist; Wither and Bleed are pure and nothing stops them.
-      const multiplier = status.status === "poison" ? marinaraAffinityMultiplier(actor.affinities, "poison") : 1;
+      const multiplier =
+        (status.status === "poison" ? marinaraAffinityMultiplier(actor.affinities, "poison") : 1) *
+        (actor.tier === "boss" && status.status !== "bleed" ? MARINARA_BOSS_RULES.dotPct : 1);
       const amount = Math.round(actor.maxHp * (status.power ?? 0.08) * multiplier);
       const before = actor.hp;
       actor.hp = Math.min(actor.maxHp, actor.hp - amount);
@@ -1806,6 +1849,9 @@ export function performMarinaraOption(
     if (option.effect.oncePerFight) actor.used.push(option.skill.id);
   } else if (option.id?.startsWith("enemy:")) {
     actor.cooldowns[option.id] = option.effect.cooldown ?? 3;
+    // Harden and Self-Repair share one cooldown, so a boss can't stack them into a wall (balance pass).
+    const pair = MARINARA_SHARED_FOE_COOLDOWNS[option.id];
+    if (pair) actor.cooldowns[pair] = Math.max(actor.cooldowns[pair] ?? 0, option.effect.cooldown ?? 3);
   }
   // Confused: a single-target attack goes at one of the user's own side half the time.
   const confused = actor.statuses.some((s) => s.status === "confuse");
@@ -1951,6 +1997,10 @@ function act(
         ctx.events.push({ kind: "buff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
       }
       if (effect.hide) actor.hidden = true;
+      if (effect.provokes) {
+        actor.provoking = Math.max(actor.provoking, effect.provokes);
+        ctx.events.push({ kind: "provoke", actorId: actor.id, skillId });
+      }
       if (effect.bonusAction && !actor.commanded) {
         actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
         ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
@@ -1987,7 +2037,10 @@ function act(
     case "status":
       for (const target of targets) {
         const roll = random();
-        if (effect.status !== "regen" && (roll > (effect.chance ?? 1) || shrugsOff(target, effect.status!))) {
+        const chance =
+          (effect.chance ?? 1) *
+          (effect.status === "confuse" && target.tier === "elite" ? 1 - MARINARA_BOSS_RULES.eliteConfuseResist : 1);
+        if (effect.status !== "regen" && (roll > chance || shrugsOff(target, effect.status!))) {
           ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
           continue;
         }
@@ -2005,6 +2058,15 @@ function act(
         if (effect.exposes)
           addMod(target, "damage-taken", effect.exposes.pct, effect.exposes.duration + durationBonus, "exposed");
         ctx.events.push({ kind: "status", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
+        // A second status riding on it (Wither's Wound).
+        if (effect.applies && addStatus(target, effect.applies, durationBonus))
+          ctx.events.push({
+            kind: "status",
+            actorId: actor.id,
+            targetId: target.id,
+            skillId,
+            status: effect.applies.status,
+          });
       }
       break;
     case "cover":
@@ -2156,9 +2218,9 @@ function strike(
       chance: Math.round(hitChance),
       roll: Math.floor(roll),
     });
-    if (canBeCountered && !effect.ranged && targetHooks.counter && target.hp > 0) {
+    if (canBeCountered && !effect.ranged && targetHooks.counter && target.hp > 0 && mayCounter(target, targetHooks)) {
       ctx.events.push({ kind: "counter", actorId: target.id, targetId: actor.id });
-      strike(target, actor, marinaraBasicAttack(target), all, ctx, false);
+      strike(target, actor, counterAttack(target, targetHooks, all), all, ctx, false);
     }
     return;
   }
@@ -2230,10 +2292,38 @@ function strike(
   }
   // Retaliate answers any hit it can reach back: a ranged user counters ranged attackers too.
   const reachesBack = !effect.ranged || target.rangedBasic || Boolean(target.magicBasic);
-  if (canBeCountered && reachesBack && targetHooks.counter === "always" && target.hp > 0) {
+  if (
+    canBeCountered &&
+    reachesBack &&
+    targetHooks.counter === "always" &&
+    target.hp > 0 &&
+    mayCounter(target, targetHooks)
+  ) {
     ctx.events.push({ kind: "counter", actorId: target.id, targetId: actor.id });
-    strike(target, actor, marinaraBasicAttack(target), all, ctx, false);
+    strike(target, actor, counterAttack(target, targetHooks, all), all, ctx, false);
   }
+}
+
+/** Foe abilities that share a cooldown on one foe. */
+const MARINARA_SHARED_FOE_COOLDOWNS: Record<string, string> = {
+  "enemy:harden": "enemy:self-repair",
+  "enemy:self-repair": "enemy:harden",
+};
+
+/** Whether a fighter may counter now: Overwatch fires once a round (balance pass 2026-11-01). */
+function mayCounter(unit: MarinaraFighter, hooks: MarinaraPassiveHooks): boolean {
+  if (!hooks.counterOncePerRound) return true;
+  if (unit.counteredThisRound) return false;
+  unit.counteredThisRound = true;
+  return true;
+}
+
+/** A counter's strike: the basic attack, plus a share of Defense for Retaliate (the wall hits back). */
+function counterAttack(unit: MarinaraFighter, hooks: MarinaraPassiveHooks, all: readonly MarinaraFighter[]) {
+  const basic = marinaraBasicAttack(unit);
+  if (!hooks.counterDefensePct) return basic;
+  const extra = marinaraEffectiveStat(unit, "defense", all) * hooks.counterDefensePct;
+  return { ...basic, power: (basic.power ?? MARINARA_TUNING.basicPower) + extra };
 }
 
 /** Hold the Line (Tactical): a melee foe moving next to a Guard-tree fighter is stopped there and
