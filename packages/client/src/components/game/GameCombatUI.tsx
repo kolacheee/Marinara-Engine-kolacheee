@@ -826,6 +826,8 @@ export function GameCombatUI({
   // between the existing desktop tree and a sticky-bottom-action-sheet layout. Drawers
   // (Mechanics / Cues / Log / Party) replace inline panels that don't fit on small screens.
   const isMobile = useIsCombatMobile();
+  // Classic Marinara fights stand east-west on wide screens; phones keep the stacked stage.
+  const eastWest = !isMobile && [...enemies, ...party].some((combatant) => combatant.marinara);
   const [openDrawer, setOpenDrawer] = useState<MobileDrawerKind>(null);
 
   const appendCombatLog = useCallback((text: string, tone: CombatLogEntry["tone"] = "action") => {
@@ -2706,60 +2708,124 @@ export function GameCombatUI({
           </div>
         )}
 
-        {/* ── Enemy area (top section) ── */}
-        <div className="relative flex flex-nowrap items-start justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pt-[clamp(3.25rem,13svh,5.5rem)] sm:px-6">
-          {enemies.map((enemy) => (
-            <div key={enemy.id} className="relative flex flex-col items-center">
-              <CombatantCard
-                elements={elements}
-                combatant={enemy}
-                side="enemy"
-                isTargetable={phase === "target-select" && selectingEnemyTarget}
-                isActive={turnOrder[0]?.id === enemy.id && phase === "animating"}
-                onSelect={() => handleTargetSelect(enemy.id)}
-                damagePopups={damagePopups.filter((p) => p.targetId === enemy.id)}
-                dialogueLines={combatDialogueLayout.byCombatantId.get(enemy.id)}
-                sideCount={enemies.length}
-                onDismissDialogue={dismissCombatDialogueLine}
-              />
-              {enemy.marinara?.row === "back" && (
-                <span className="pointer-events-none absolute right-1 top-1 z-10 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/70">
-                  {localizeUi("game.combat.marinara.row.back")}
-                </span>
-              )}
+        {eastWest ? (
+          // Classic Marinara: an east-west stage, foes on the left and the party on the right, each
+          // side's front row the column nearer the other side; a row of more than three takes two
+          // columns (Alyssa 2026-11-01).
+          <div className="relative flex min-h-0 flex-nowrap items-center justify-center gap-[clamp(1.5rem,6vw,6rem)] overflow-visible px-3 pb-[clamp(0.25rem,2svh,1rem)] pt-[clamp(3.25rem,13svh,5.5rem)] sm:px-6">
+            {(["enemy", "player"] as const).map((side) => {
+              const list = side === "enemy" ? enemies : party;
+              const columns = stageColumns(list, side);
+              const tallest = Math.max(1, ...columns.map((column) => column.length));
+              return (
+                <div
+                  key={side}
+                  data-stage-side={side}
+                  className="flex flex-nowrap items-center gap-[clamp(0.5rem,2vw,1.5rem)]"
+                >
+                  {columns.map((column, c) => (
+                    <div
+                      key={`${side}-${c}`}
+                      data-row={column[0]?.marinara?.row}
+                      className="flex flex-col items-center justify-center gap-[clamp(0.25rem,1svh,0.75rem)]"
+                    >
+                      {column.map((combatant) => {
+                        const i = party.indexOf(combatant);
+                        return (
+                          <div key={combatant.id} className="relative flex flex-col items-center">
+                            <CombatantCard
+                              elements={elements}
+                              combatant={combatant}
+                              side={side}
+                              isTargetable={
+                                phase === "target-select" &&
+                                (side === "enemy" ? selectingEnemyTarget : selectingAllyTarget)
+                              }
+                              isActive={
+                                side === "player"
+                                  ? (phase === "player-turn" && i === activePlayerIndex) ||
+                                    (turnOrder[0]?.id === combatant.id && phase === "animating")
+                                  : turnOrder[0]?.id === combatant.id && phase === "animating"
+                              }
+                              onSelect={
+                                side === "enemy"
+                                  ? () => handleTargetSelect(combatant.id)
+                                  : phase === "target-select" && selectingAllyTarget
+                                    ? () => handleTargetSelect(combatant.id)
+                                    : undefined
+                              }
+                              damagePopups={damagePopups.filter((p) => p.targetId === combatant.id)}
+                              dialogueLines={combatDialogueLayout.byCombatantId.get(combatant.id)}
+                              stacked={tallest}
+                              onDismissDialogue={dismissCombatDialogueLine}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <>
+            {/* ── Enemy area (top section) ── */}
+            <div className="relative flex flex-nowrap items-start justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pt-[clamp(3.25rem,13svh,5.5rem)] sm:px-6">
+              {enemies.map((enemy) => (
+                <div key={enemy.id} className="relative flex flex-col items-center">
+                  <CombatantCard
+                    elements={elements}
+                    combatant={enemy}
+                    side="enemy"
+                    isTargetable={phase === "target-select" && selectingEnemyTarget}
+                    isActive={turnOrder[0]?.id === enemy.id && phase === "animating"}
+                    onSelect={() => handleTargetSelect(enemy.id)}
+                    damagePopups={damagePopups.filter((p) => p.targetId === enemy.id)}
+                    dialogueLines={combatDialogueLayout.byCombatantId.get(enemy.id)}
+                    sideCount={enemies.length}
+                    onDismissDialogue={dismissCombatDialogueLine}
+                  />
+                  {enemy.marinara?.row === "back" && (
+                    <span className="pointer-events-none absolute right-1 top-1 z-10 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/70">
+                      {localizeUi("game.combat.marinara.row.back")}
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* ── Party area (bottom section) ── */}
-        <div className="relative flex shrink-0 flex-nowrap items-end justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pb-[clamp(0.25rem,2svh,1rem)] sm:px-6">
-          {party.map((member, i) => (
-            <div key={member.id} className="relative flex flex-col items-center">
-              <CombatantCard
-                elements={elements}
-                combatant={member}
-                side="player"
-                isTargetable={phase === "target-select" && selectingAllyTarget}
-                isActive={
-                  (phase === "player-turn" && i === activePlayerIndex) ||
-                  (turnOrder[0]?.id === member.id && phase === "animating")
-                }
-                onSelect={
-                  phase === "target-select" && selectingAllyTarget ? () => handleTargetSelect(member.id) : undefined
-                }
-                damagePopups={damagePopups.filter((p) => p.targetId === member.id)}
-                dialogueLines={combatDialogueLayout.byCombatantId.get(member.id)}
-                sideCount={party.length}
-                onDismissDialogue={dismissCombatDialogueLine}
-              />
-              {member.marinara?.row === "back" && (
-                <span className="pointer-events-none absolute right-1 top-1 z-10 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/70">
-                  {localizeUi("game.combat.marinara.row.back")}
-                </span>
-              )}
+            {/* ── Party area (bottom section) ── */}
+            <div className="relative flex shrink-0 flex-nowrap items-end justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pb-[clamp(0.25rem,2svh,1rem)] sm:px-6">
+              {party.map((member, i) => (
+                <div key={member.id} className="relative flex flex-col items-center">
+                  <CombatantCard
+                    elements={elements}
+                    combatant={member}
+                    side="player"
+                    isTargetable={phase === "target-select" && selectingAllyTarget}
+                    isActive={
+                      (phase === "player-turn" && i === activePlayerIndex) ||
+                      (turnOrder[0]?.id === member.id && phase === "animating")
+                    }
+                    onSelect={
+                      phase === "target-select" && selectingAllyTarget ? () => handleTargetSelect(member.id) : undefined
+                    }
+                    damagePopups={damagePopups.filter((p) => p.targetId === member.id)}
+                    dialogueLines={combatDialogueLayout.byCombatantId.get(member.id)}
+                    sideCount={party.length}
+                    onDismissDialogue={dismissCombatDialogueLine}
+                  />
+                  {member.marinara?.row === "back" && (
+                    <span className="pointer-events-none absolute right-1 top-1 z-10 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/70">
+                      {localizeUi("game.combat.marinara.row.back")}
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </div>
 
       {combatDialogueLayout.unanchored.length > 0 && phase !== "intro" && (
@@ -3377,6 +3443,23 @@ function CombatMechanicsPanel({ mechanics, round }: { mechanics: CombatMechanic[
   );
 }
 
+/**
+ * One side of an east-west stage as columns, from the middle of the stage outward: its front row,
+ * then its back row, each at most three to a column. The foes stand on the left, so their columns
+ * are given back to front; the party's front to back.
+ */
+function stageColumns(list: readonly Combatant[], side: "player" | "enemy"): Combatant[][] {
+  const chunk = (row: Combatant[]) => {
+    const out: Combatant[][] = [];
+    for (let at = 0; at < row.length; at += 3) out.push(row.slice(at, at + 3));
+    return out;
+  };
+  const front = list.filter((one) => one.marinara?.row !== "back");
+  const back = list.filter((one) => one.marinara?.row === "back");
+  const outward = [...chunk(front), ...chunk(back)];
+  return side === "enemy" ? outward.reverse() : outward;
+}
+
 /** Individual combatant card with HP bar, sprite, and status effects. */
 function CombatantCard({
   combatant,
@@ -3389,6 +3472,7 @@ function CombatantCard({
   sideCount = 1,
   onDismissDialogue,
   compact = false,
+  stacked,
   elements,
 }: {
   combatant: Combatant;
@@ -3401,6 +3485,8 @@ function CombatantCard({
   sideCount?: number;
   onDismissDialogue?: (line: PartyDialogueLine) => void;
   compact?: boolean;
+  /** Cards stacked in one column of an east-west stage: sized to fit that many in the scene's height. */
+  stacked?: number;
   elements?: WorldElementSet;
 }) {
   const { t: localizeUi } = useUiTranslation();
@@ -3437,9 +3523,11 @@ function CombatantCard({
   const desktopDialogueFitWidth = `calc((100vw - 3rem) / ${combatantCount})`;
   const compactFitWidth = `calc((100vw - 2.5rem) / ${combatantCount})`;
   const cardStyle: CombatantCardStyle = {
-    "--combat-card-width": compact
-      ? `clamp(2.75rem, min(22vw, 9svh, ${compactFitWidth}), 5.5rem)`
-      : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
+    "--combat-card-width": stacked
+      ? `clamp(3.25rem, min(8vw, calc(52svh / ${Math.max(1, stacked) * 1.7})), 6.5rem)`
+      : compact
+        ? `clamp(2.75rem, min(22vw, 9svh, ${compactFitWidth}), 5.5rem)`
+        : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
     "--combat-avatar-size": compact
       ? "calc(var(--combat-card-width) - 1rem)"
       : "calc(var(--combat-card-width) - 1.5rem)",
