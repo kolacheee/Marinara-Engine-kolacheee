@@ -828,6 +828,28 @@ export function GameCombatUI({
   const isMobile = useIsCombatMobile();
   // Classic Marinara fights stand east-west on wide screens; phones keep the stacked stage.
   const eastWest = !isMobile && [...enemies, ...party].some((combatant) => combatant.marinara);
+  const eastWestStageRef = useRef<HTMLDivElement>(null);
+  const [eastWestBox, setEastWestBox] = useState<{ width: number; height: number } | null>(null);
+  useEffect(() => {
+    const stage = eastWestStageRef.current;
+    if (!eastWest || !stage || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry) setEastWestBox({ width: entry.contentRect.width, height: entry.contentRect.height });
+    });
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, [eastWest]);
+  // One card size for both sides: the tallest column fits the stage's height (a card is about its
+  // width plus 4.5rem of name and bars, with 0.5rem between cards) and every column its width.
+  const eastWestCardWidth = useMemo(() => {
+    if (!eastWest || !eastWestBox) return undefined;
+    const columns = [stageColumns(enemies, "enemy"), stageColumns(party, "player")];
+    const tallest = Math.max(1, ...columns.flat().map((column) => column.length));
+    const count = Math.max(1, columns.flat().length);
+    const byHeight = (eastWestBox.height - (tallest - 1) * 8) / tallest - 72;
+    const byWidth = (eastWestBox.width - (count + 1) * 32) / count;
+    return Math.round(Math.max(48, Math.min(120, byHeight, byWidth)));
+  }, [eastWest, eastWestBox, enemies, party]);
   const [openDrawer, setOpenDrawer] = useState<MobileDrawerKind>(null);
 
   const appendCombatLog = useCallback((text: string, tone: CombatLogEntry["tone"] = "action") => {
@@ -2675,7 +2697,9 @@ export function GameCombatUI({
       <div
         className={cn(
           // The enemy row keeps its cards' height and the scene scrolls, rather than the cards spilling over the party when the menu below grows.
-          "relative grid min-h-0 flex-1 grid-rows-[minmax(min-content,1fr)_auto] gap-y-[clamp(0.25rem,2svh,1.25rem)] overflow-y-auto overflow-x-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          "relative grid min-h-0 flex-1 gap-y-[clamp(0.25rem,2svh,1.25rem)] overflow-y-auto overflow-x-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          // An east-west stage fills the scene and sizes its cards to it, so it never grows the row.
+          eastWest ? "grid-rows-[minmax(0,1fr)]" : "grid-rows-[minmax(min-content,1fr)_auto]",
           activeImpactTone === "critical" && "game-combat-scene--critical",
           activeImpactTone === "hit" && "game-combat-scene--hit",
           activeImpactTone === "reaction" && "game-combat-scene--reaction",
@@ -2712,22 +2736,24 @@ export function GameCombatUI({
           // Classic Marinara: an east-west stage, foes on the left and the party on the right, each
           // side's front row the column nearer the other side; a row of more than three takes two
           // columns (Alyssa 2026-11-01).
-          <div className="relative flex min-h-0 flex-nowrap items-center justify-center gap-[clamp(1.5rem,6vw,6rem)] overflow-visible px-3 pb-[clamp(0.25rem,2svh,1rem)] pt-[clamp(3.25rem,13svh,5.5rem)] sm:px-6">
+          <div
+            ref={eastWestStageRef}
+            className="relative flex h-full min-h-0 w-full flex-nowrap items-stretch justify-evenly overflow-visible px-3 pb-[clamp(0.25rem,1.5svh,0.75rem)] pt-[clamp(2.75rem,8svh,4rem)] sm:px-6"
+          >
             {(["enemy", "player"] as const).map((side) => {
               const list = side === "enemy" ? enemies : party;
               const columns = stageColumns(list, side);
-              const tallest = Math.max(1, ...columns.map((column) => column.length));
               return (
                 <div
                   key={side}
                   data-stage-side={side}
-                  className="flex flex-nowrap items-center gap-[clamp(0.5rem,2vw,1.5rem)]"
+                  className="flex flex-nowrap items-stretch gap-[clamp(0.75rem,3vw,3rem)]"
                 >
                   {columns.map((column, c) => (
                     <div
                       key={`${side}-${c}`}
                       data-row={column[0]?.marinara?.row}
-                      className="flex flex-col items-center justify-center gap-[clamp(0.25rem,1svh,0.75rem)]"
+                      className="flex flex-col items-center justify-center gap-2"
                     >
                       {column.map((combatant) => {
                         const i = party.indexOf(combatant);
@@ -2756,7 +2782,7 @@ export function GameCombatUI({
                               }
                               damagePopups={damagePopups.filter((p) => p.targetId === combatant.id)}
                               dialogueLines={combatDialogueLayout.byCombatantId.get(combatant.id)}
-                              stacked={tallest}
+                              cardWidth={eastWestCardWidth}
                               onDismissDialogue={dismissCombatDialogueLine}
                             />
                           </div>
@@ -3472,7 +3498,7 @@ function CombatantCard({
   sideCount = 1,
   onDismissDialogue,
   compact = false,
-  stacked,
+  cardWidth,
   elements,
 }: {
   combatant: Combatant;
@@ -3485,8 +3511,8 @@ function CombatantCard({
   sideCount?: number;
   onDismissDialogue?: (line: PartyDialogueLine) => void;
   compact?: boolean;
-  /** Cards stacked in one column of an east-west stage: sized to fit that many in the scene's height. */
-  stacked?: number;
+  /** A width in px the stage worked out for it (an east-west stage fits its tallest column). */
+  cardWidth?: number;
   elements?: WorldElementSet;
 }) {
   const { t: localizeUi } = useUiTranslation();
@@ -3523,8 +3549,8 @@ function CombatantCard({
   const desktopDialogueFitWidth = `calc((100vw - 3rem) / ${combatantCount})`;
   const compactFitWidth = `calc((100vw - 2.5rem) / ${combatantCount})`;
   const cardStyle: CombatantCardStyle = {
-    "--combat-card-width": stacked
-      ? `clamp(3.25rem, min(8vw, calc(52svh / ${Math.max(1, stacked) * 1.7})), 6.5rem)`
+    "--combat-card-width": cardWidth
+      ? `${cardWidth}px`
       : compact
         ? `clamp(2.75rem, min(22vw, 9svh, ${compactFitWidth}), 5.5rem)`
         : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
