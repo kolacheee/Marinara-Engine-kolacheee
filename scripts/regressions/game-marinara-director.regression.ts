@@ -153,4 +153,18 @@ assert.ok(
 );
 assert.equal(withBoss.budgets.foe0?.legendary ?? 0, 0, "no legendary actions on the timeline");
 
+// A fighter with 0 Speed still takes its turns (playtest 2026-11-01: a heavy-kit Guard never acted).
+{
+  const slow = fight(21, 1, ["standard"]);
+  const bo = slow.marinara!.fighters.find((f) => f.id === "bo")!;
+  bo.stats.speed = 0;
+  playOut(slow);
+  assert.ok(
+    slow.log.some(
+      (line) => line.actorId === "bo" && line.kind.startsWith("marinara:") && line.kind !== "marinara:tick",
+    ),
+    "a 0-Speed fighter still acts",
+  );
+}
+
 console.log("game-marinara-director: ok");

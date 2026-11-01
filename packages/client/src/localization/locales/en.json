@@ -2187,6 +2187,7 @@
   "game.combat.marinara.sheet.gearStandard": "Until they wear gear from the bag, they fight with their class's standard kit.",
   "game.combat.marinara.sheet.none": "No Classic Marinara class yet: one is drawn from this sheet and their temperament on their first fight.",
   "game.combat.marinara.sheet.nothingToCarry": "Train in another class to carry its skills.",
+  "game.combat.marinara.sheet.promotionOpen": "promotion ready",
   "game.combat.marinara.sheet.pure": "Pure {{tree}}",
   "game.combat.marinara.sheet.slot.accessory": "Accessory {{n}}",
   "game.combat.marinara.sheet.slot.armor": "Armour",
