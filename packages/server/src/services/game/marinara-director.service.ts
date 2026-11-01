@@ -42,6 +42,7 @@ import {
   type GameDifficulty,
   type MarinaraChoice,
   type MarinaraEvent,
+  type MarinaraEffect,
   type MarinaraFighter,
   type MarinaraFightContext,
   type MarinaraOption,
@@ -92,6 +93,13 @@ function alliedAim(aims: string | undefined): boolean {
 }
 
 /** The skills a fighter shows on its menu: every active it has, usable now or not. */
+/** What a skill is to the board: by whom it lands on (a foe or a friend), then by what it does. */
+function boardSkillType(kind: string, target: MarinaraEffect["target"]): CombatSkill["type"] {
+  const atFoes = target === "enemy" || target === "all-enemies" || target === "front-row";
+  if (atFoes) return kind === "damage" ? "attack" : "debuff";
+  return kind === "heal" || kind === "revive" ? "heal" : "buff";
+}
+
 export function marinaraCombatSkills(fighter: MarinaraFighter): CombatSkill[] {
   const usable = new Set(marinaraUsable(fighter).map((o) => o.id));
   const out: CombatSkill[] = [];
@@ -106,14 +114,7 @@ export function marinaraCombatSkills(fighter: MarinaraFighter): CombatSkill[] {
       id: skill.id,
       name: skill.label,
       description: skill.summary,
-      type:
-        effect.kind === "damage"
-          ? "attack"
-          : effect.kind === "heal" || effect.kind === "revive"
-            ? "heal"
-            : effect.kind === "debuff" || effect.kind === "status" || effect.kind === "taunt" || effect.kind === "steal"
-              ? "debuff"
-              : "buff",
+      type: boardSkillType(effect.kind, effect.target),
       mpCost: resource === "mp" ? cost : 0,
       ...(resource === "stamina" ? { staminaCost: cost } : {}),
       power: effect.power ?? 0,
@@ -136,14 +137,7 @@ export function marinaraCombatSkills(fighter: MarinaraFighter): CombatSkill[] {
     out.push({
       id: `enemy:${id}`,
       name: ability.label ?? id,
-      type:
-        ability.kind === "damage"
-          ? "attack"
-          : ability.kind === "heal"
-            ? "heal"
-            : ability.kind === "buff"
-              ? "buff"
-              : "debuff",
+      type: boardSkillType(ability.kind, ability.target),
       mpCost: 0,
       power: ability.power ?? 0,
       aims: ability.target,
@@ -567,6 +561,41 @@ export function marinaraAiAction(
     ...(ranked ? { ranked } : {}),
   });
   return marinaraChoiceAction(actor, choice);
+}
+
+/**
+ * What the Engine's Marinara AI does on a board, standing at `from` (where the board AI would move
+ * it): the same ranking as Classic, with foes narrowed to those in reach from there (a basic attack
+ * reaches the unit's attack range, a skill at least 2 tiles; a friend 2 tiles). The board AI keeps the moving (playtest 2026-11-01: the generic board AI
+ * played Marinara kits badly: Steal spam, buffs first, casters idle).
+ */
+export function marinaraBoardAiAction(
+  state: MarinaraDirectorState,
+  unit: Combatant,
+  round: number,
+  difficulty: GameDifficulty,
+  distance: (targetId: string) => number,
+  attackRange: number,
+): CombatPlayerAction | null {
+  const actor = marinaraFighter(state, unit.id);
+  if (!actor || !unit.tactics) return null;
+  try {
+    const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
+      tactical: true,
+      // Friends within the board's support range (2 tiles); the user itself, a whole side and the
+      // fallen (whom the board can't aim at; resolution finds them) anywhere.
+      reach: (option, target) =>
+        target.id === actor.id ||
+        option.effect.target === "party" ||
+        option.effect.target === "downed-ally" ||
+        (target.side === actor.side
+          ? distance(target.id) <= 2
+          : distance(target.id) <= (option.id === null ? attackRange : Math.max(attackRange, 2))),
+    });
+    return marinaraChoiceAction(actor, choice);
+  } catch {
+    return null;
+  }
 }
 
 /** Every Classic action a fighter could take now, one per option and target: a Game Master's menu. */

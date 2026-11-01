@@ -7,6 +7,7 @@ import assert from "node:assert/strict";
 import {
   commandCombatDirector,
   createCombatDirector,
+  marinaraBoardTurn,
   type CombatDirectorState,
 } from "../../packages/server/src/services/game/combat-director.service.js";
 import {
@@ -21,7 +22,6 @@ import {
   type MarinaraPartyTemperament,
 } from "../../packages/shared/src/features/marinara-classes.js";
 import { buildMarinaraEnemy, buildMarinaraPartyFighter } from "../../packages/shared/src/features/marinara-combat.js";
-import { decideTacticalAction } from "../../packages/shared/src/features/tactical-combat/index.js";
 import type { TacticalUnit } from "../../packages/shared/src/features/tactical-combat/types.js";
 
 function hero(id: string, primary: MarinaraArchetype, temperament: MarinaraPartyTemperament, level: number) {
@@ -58,7 +58,8 @@ function playOut(s: CombatDirectorState) {
   for (let step = 0; step < 3000 && !s.outcome; step++) {
     if (s.stage === "action" && s.actorId) {
       const unit = s.tactical!.units.find((u) => u.id === s.actorId) as TacticalUnit;
-      commandCombatDirector(s, { type: "tactical", action: decideTacticalAction(s.tactical!, unit) as never });
+      // The party's companions are played as the Engine plays them: the board moves, Marinara AI acts.
+      commandCombatDirector(s, { type: "tactical", action: marinaraBoardTurn(s, unit) as never });
     } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
     else if (s.stage === "select") {
       const next = s.tactical!.units.find((u) => u.side === "party" && u.hp > 0 && !u.hasActed);
@@ -133,6 +134,16 @@ assert.equal(again.outcome, s.outcome, "the same seed plays the same fight");
   playOut(t);
   assert.equal(t.outcome, "flee", "a fight past the round limit breaks off");
   assert.ok(t.stalled, "and says it stalled");
+}
+
+// On a board the Marinara AI picks the action, so a Guard isn't stuck guarding and nobody spends
+// turns on what can't land (playtest 2026-11-01).
+{
+  const t = playOut(fight(13));
+  const lines = t.log.map((line) => line.text);
+  assert.ok(!lines.some((text) => /nothing left/.test(text)), "nobody steals from a foe already robbed");
+  const actions = t.log.filter((line) => line.kind === "marinara:hit").length;
+  assert.ok(actions > 0, "the board fight lands hits");
 }
 
 let wins = 0;

@@ -8,6 +8,7 @@ import { marinaraFoeFighters, marinaraPartyFighter } from "../../packages/shared
 import {
   commandCombatDirector,
   createCombatDirector,
+  marinaraBoardTurn,
   type CombatDirectorState,
 } from "../../packages/server/src/services/game/combat-director.service.js";
 import {
@@ -25,9 +26,18 @@ import {
   type MarinaraArchetype,
   type MarinaraProgression,
 } from "../../packages/shared/src/features/marinara-classes.js";
-import { buildMarinaraEnemy, type MarinaraEnemyTier } from "../../packages/shared/src/features/marinara-combat.js";
+import { decideTacticalAction } from "../../packages/shared/src/features/tactical-combat/index.js";
+import type { TacticalUnit } from "../../packages/shared/src/features/tactical-combat/types.js";
+import {
+  MARINARA_ENEMY_TIERS,
+  buildMarinaraEnemy,
+  type MarinaraEnemyTier,
+} from "../../packages/shared/src/features/marinara-combat.js";
 
 const count = Number(process.argv[2] ?? 40);
+// Experiment knobs: BOSS_STATS / BOSS_HP override the boss tier; LEVELS=20,30 limits the rows.
+if (process.env.BOSS_STATS) MARINARA_ENEMY_TIERS.boss.stats = Number(process.env.BOSS_STATS);
+if (process.env.BOSS_HP) MARINARA_ENEMY_TIERS.boss.hp = Number(process.env.BOSS_HP);
 const style = (process.argv[3] ?? "classic") as "classic" | "tactical";
 
 /** A character grown to a level in their primary tree, promoting at 10 and 20 to a random line. */
@@ -88,12 +98,27 @@ function fight(seed: number, level: number, tiers: MarinaraEnemyTier[]): CombatD
     gm: false,
     difficulty: "normal",
     seed,
+    ...(style === "tactical" ? { battlefield: { size: "small" } as never } : {}),
     marinara: [...party, ...foes],
   });
 }
 
 function playOut(s: CombatDirectorState) {
-  for (let step = 0; step < 3000 && !s.outcome; step++) {
+  for (let step = 0; step < 6000 && !s.outcome; step++) {
+    if (s.tactical) {
+      // On a board the Engine's Tactical AI plays both sides (the party begins its units in order).
+      if (s.stage === "action" && s.actorId) {
+        const unit = s.tactical.units.find((u) => u.id === s.actorId) as TacticalUnit;
+        const action =
+          process.env.BOARD_AI === "1" ? decideTacticalAction(s.tactical, unit) : marinaraBoardTurn(s, unit);
+        commandCombatDirector(s, { type: "tactical", action: action as never });
+      } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
+      else if (s.stage === "select") {
+        const next = s.tactical.units.find((u) => u.side === "party" && u.hp > 0 && !u.hasActed);
+        commandCombatDirector(s, next ? { type: "begin", unitId: next.id } : { type: "continue" });
+      } else commandCombatDirector(s, { type: "continue" });
+      continue;
+    }
     if (s.stage === "action" && s.actorId) {
       const unit = [...s.party, ...s.enemies].find((u) => u.id === s.actorId)!;
       commandCombatDirector(s, {
@@ -117,7 +142,8 @@ const rows: string[] = [
   "| Level | Encounter | Party wins | Rounds | Party HP lost | Downed |",
   "| --- | --- | --- | --- | --- | --- |",
 ];
-for (const level of [1, 5, 10, 20, 30]) {
+const LEVELS = process.env.LEVELS ? process.env.LEVELS.split(",").map(Number) : [1, 5, 10, 20, 30];
+for (const level of LEVELS) {
   for (const [label, tiers] of ENCOUNTERS) {
     let wins = 0,
       rounds = 0,
