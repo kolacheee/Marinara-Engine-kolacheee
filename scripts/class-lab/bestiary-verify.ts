@@ -38,12 +38,15 @@ export interface EncounterResult {
   wins: number;
   lost: number;
   downed: number;
+  /** Share of fights the director called off with neither side able to finish the other. */
+  stalls?: number;
 }
 
 export function playEncounter(setting: string, level: number, foes: MarinaraEncounterFoe[], fights: number, key: string) {
   let wins = 0;
   let lost = 0;
   let downed = 0;
+  let stalls = 0;
   let total = 0;
   for (const name of Object.keys(REFERENCE_PARTIES))
     for (let i = 0; i < fights; i++) {
@@ -53,10 +56,11 @@ export function playEncounter(setting: string, level: number, foes: MarinaraEnco
       const fight = playFight(referenceParty(name, level, `v${i}`), units, seedOf(`verify:${key}:${name}:${i}`));
       total++;
       if (fight.victory) wins++;
+      if (fight.stalled) stalls++;
       lost += fight.lost;
       downed += fight.downed;
     }
-  return { wins: wins / total, lost: lost / total, downed: downed / total };
+  return { wins: wins / total, lost: lost / total, downed: downed / total, stalls: stalls / total };
 }
 
 const pct = (n: number) => `${Math.round(n * 100)}%`;
@@ -135,13 +139,13 @@ function enemySkill(id: string) {
 
 export function report(results: EncounterResult[]): string {
   const lines: string[] = [];
-  lines.push("| Difficulty | Encounters | Wins (mean) | Wins (worst 10% of encounters) | HP lost (mean) | Allies down per fight | Foes per fight |");
-  lines.push("| --- | --- | --- | --- | --- | --- | --- |");
+  lines.push("| Difficulty | Encounters | Wins (mean) | Wins (worst 10% of encounters) | HP lost (mean) | Allies down per fight | Foes per fight | Stalled |");
+  lines.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
   for (const difficulty of DIFFICULTIES) {
     const rows = results.filter((r) => r.difficulty === difficulty);
     const mean = (f: (r: EncounterResult) => number) => rows.reduce((s, r) => s + f(r), 0) / Math.max(1, rows.length);
     lines.push(
-      `| ${difficulty} | ${rows.length} | ${pct(mean((r) => r.wins))} | ${pct(quantile(rows.map((r) => r.wins), 0.1))} | ${pct(mean((r) => r.lost))} | ${mean((r) => r.downed).toFixed(2)} | ${mean((r) => r.foes.length).toFixed(1)} |`,
+      `| ${difficulty} | ${rows.length} | ${pct(mean((r) => r.wins))} | ${pct(quantile(rows.map((r) => r.wins), 0.1))} | ${pct(mean((r) => r.lost))} | ${mean((r) => r.downed).toFixed(2)} | ${mean((r) => r.foes.length).toFixed(1)} | ${pct(mean((r) => r.stalls ?? 0))} |`,
     );
   }
   const bossRows = results.filter((r) => r.boss);

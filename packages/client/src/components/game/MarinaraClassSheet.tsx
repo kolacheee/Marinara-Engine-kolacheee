@@ -153,7 +153,11 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                     onClick={() => void save({ classId: def.id })}
                     className={
                       "min-h-9 rounded-md border px-2 py-1 text-left disabled:opacity-60 " +
-                      (current ? "border-[var(--primary)]" : "border-[var(--border)] bg-[var(--secondary)]")
+                      (current
+                        ? "border-[var(--primary)]"
+                        : !block && def.from && trained === undefined
+                          ? "border-[var(--primary)] bg-[var(--primary)]/10"
+                          : "border-[var(--border)] bg-[var(--secondary)]")
                     }
                   >
                     <span className="font-medium">{def.label}</span>
@@ -162,7 +166,9 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                         ? t("game.combat.marinara.sheet.classLevel", { level: trained })
                         : block
                           ? t(`game.combat.marinara.sheet.block.${blockKey(block)}`, { defaultValue: block })
-                          : t(`game.combat.marinara.sheet.tier.${def.tier}`)}
+                          : def.from
+                            ? t("game.combat.marinara.sheet.promotionOpen")
+                            : t(`game.combat.marinara.sheet.tier.${def.tier}`)}
                     </span>
                   </button>
                 );

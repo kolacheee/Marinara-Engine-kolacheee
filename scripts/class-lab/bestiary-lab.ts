@@ -41,11 +41,14 @@ export function foes(
   level: number,
   count: number,
   hpScale = 1,
+  damageScale = 1,
 ): MarinaraFighter[] {
   const setting = settingOf(family, level)!;
   return Array.from({ length: count }, (_, j) => {
     const unit = enemyFighter(marinaraEnemySpec({ familyId: family.id, setting, level, tier, id: `e${j}` }));
     unit.maxHp = unit.hp = Math.max(1, Math.round(unit.maxHp * hpScale));
+    // A lasting damage modifier (the same one war cries use) scales everything the foe deals.
+    if (damageScale !== 1) unit.mods.push({ stat: "damage", pct: damageScale - 1, turns: 99999, source: "lab-scale" });
     return unit;
   });
 }
@@ -72,8 +75,8 @@ export function outcome(
 
 /** The HP scale that puts a group at the Normal mark (log-space bisection, common seeds). */
 export function normalScale(make: (hp: number) => MarinaraFighter[], level: number, fights: number, key: string, steps = 9) {
-  let lo = Math.log(0.05);
-  let hi = Math.log(40);
+  let lo = Math.log(0.15);
+  let hi = Math.log(6);
   for (let step = 0; step < steps; step++) {
     const mid = (lo + hi) / 2;
     const { lost } = outcome(() => make(Math.exp(mid)), level, fights, key);
@@ -96,8 +99,11 @@ function measure(out: string, fights: number) {
         if (!settingOf(family, level)) continue;
         if (table[family.id]?.[tier]?.[level] !== undefined) continue;
         const copies = COPIES[tier];
-        const h = normalScale((hp) => foes(family, tier, level, copies, hp), level, fights, `${family.id}:${tier}:${level}`);
-        const threat = 4 / (copies * Math.sqrt(h));
+        // HP and damage are scaled together (a group at scale s is as strong as s times as many
+        // foes, Lanchester's square law), which keeps fight length near the real one; scaling HP
+        // alone overrated hard hitters measured far from full size.
+        const s = normalScale((k) => foes(family, tier, level, copies, k, k), level, fights, `${family.id}:${tier}:${level}`);
+        const threat = 4 / (copies * s);
         ((table[family.id] ??= {})[tier] ??= {})[level] = Math.round(threat * 1000) / 1000;
         writeFileSync(out, JSON.stringify(table, null, 1));
         console.log(`${new Date().toISOString().slice(11, 19)} ${family.id} ${tier} L${level}: ${threat.toFixed(3)}`);

@@ -166,7 +166,8 @@ export function mirrorMarinaraUnits(state: MarinaraDirectorState, units: readonl
     unit.level = fighter.level;
     unit.attack = Math.round(Math.max(fighter.stats.strength, fighter.stats.magic));
     unit.defense = Math.round(fighter.stats.defense);
-    unit.speed = Math.round(fighter.stats.speed);
+    // At least 1: the legacy turn check reads 0 Speed as immobilized; the timeline floors speed itself.
+    unit.speed = Math.max(1, Math.round(fighter.stats.speed));
     unit.skills = marinaraCombatSkills(fighter);
     unit.statusEffects = fighter.statuses.map((s): CombatStatusEffect => ({
       name: s.status,
@@ -594,7 +595,7 @@ export function marinaraCombatant(fighter: MarinaraFighter, extra: Partial<Comba
     maxMp: fighter.maxMp,
     attack: Math.round(Math.max(fighter.stats.strength, fighter.stats.magic)),
     defense: Math.round(fighter.stats.defense),
-    speed: Math.round(fighter.stats.speed),
+    speed: Math.max(1, Math.round(fighter.stats.speed)),
     level: fighter.level,
     skills: marinaraCombatSkills(fighter),
     ...extra,
