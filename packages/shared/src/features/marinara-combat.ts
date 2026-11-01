@@ -323,6 +323,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     pct: 0.25,
     duration: 3,
     verses: { pct: 0.1, most: 3 },
+    // A bonus action (Alyssa 2026-11-01): the Cantor sings and still acts.
+    bonusAction: true,
   },
   "swift-refrain": {
     kind: "buff",
@@ -331,6 +333,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     pct: 0.15,
     duration: 3,
     verses: { pct: 0.1, most: 3 },
+    // A bonus action (Alyssa 2026-11-01): the Cantor sings and still acts.
+    bonusAction: true,
   },
   "guarding-refrain": {
     kind: "buff",
@@ -340,6 +344,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     duration: 3,
     alsoMods: [{ stat: "resistance", pct: 0.15 }],
     verses: { pct: 0.1, most: 3 },
+    // A bonus action (Alyssa 2026-11-01): the Cantor sings and still acts.
+    bonusAction: true,
   },
   crescendo: { kind: "buff", target: "party", stat: "damage", pct: 0.5, duration: 1, cooldown: 3 },
   command: { kind: "command", target: "ally" },
