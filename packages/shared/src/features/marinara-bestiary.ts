@@ -1427,7 +1427,7 @@ export function marinaraEnemySpec(input: {
 export const MARINARA_ENCOUNTER_BUDGET = {
   easy: 0.7,
   normal: 1,
-  hard: 1.2,
+  hard: 1.15,
   deadly: 1.6,
 } as const;
 export type MarinaraEncounterDifficulty = keyof typeof MARINARA_ENCOUNTER_BUDGET;

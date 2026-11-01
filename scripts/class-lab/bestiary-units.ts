@@ -16,7 +16,9 @@ import {
   awardMarinaraXp,
   createMarinaraProgression,
   marinaraClass,
+  marinaraClassBlock,
   marinaraLearnedSkills,
+  marinaraOpenClasses,
   marinaraRandom,
   setMarinaraCarried,
   setMarinaraClass,
@@ -64,8 +66,8 @@ export function enemyFighter(spec: MarinaraBestiaryFoeSpec): MarinaraFighter {
   });
 }
 
-/** Reference parties: an early-FF four (fighter, guard, caster, healer), a skirmish four and a no-healer four. */
-export const REFERENCE_PARTIES: Record<string, string[][]> = {
+/** Fixed-line parties: an early-FF four (fighter, guard, caster, healer), a skirmish four and a no-healer four. */
+const LINE_PARTIES: Record<string, string[][]> = {
   classic: [
     ["blade", "duelist", "moonless-blade"],
     ["guard", "sentinel", "stonewall"],
@@ -85,6 +87,53 @@ export const REFERENCE_PARTIES: Record<string, string[][]> = {
     ["hexer", "witch", "doom-oracle"],
   ],
 };
+
+/** The playtest harness's five parties (/mnt/project-files/playtest/classic-overhaul/PARTIES.md): by
+ *  primary tree, everyone "disciplined" (Herald secondary), promoted at random among the open classes. */
+const HARNESS_PARTIES: Record<string, string[]> = {
+  classic: ["blade", "guard", "channeler", "mender"],
+  skirmish: ["scout", "marksman", "hexer", "herald"],
+  bruisers: ["blade", "guard", "marksman", "mender"],
+  skirmishGuard: ["scout", "guard", "marksman", "herald"],
+  casters: ["channeler", "hexer", "mender", "guard"],
+};
+
+/** Which parties the lab measures against: LAB_PARTIES=lines (three fixed lines) or harness (the
+ *  playtest's five, the default: more varied, closer to what players field). */
+export const LAB_PARTY_SET = process.env.LAB_PARTIES === "lines" ? "lines" : "harness";
+export const REFERENCE_PARTIES: Record<string, unknown> = LAB_PARTY_SET === "lines" ? LINE_PARTIES : HARNESS_PARTIES;
+
+/** A harness character: a primary tree, "disciplined", promoted at class level 10 and 20 to a random
+ *  open class that follows the active one, carrying the best of what earlier classes taught. */
+function harnessGrown(primary: string, level: number, seed: string): MarinaraProgression {
+  const random = marinaraRandom(`grow:${seed}`);
+  let p = createMarinaraProgression({ seed, primary: primary as never, temperament: "disciplined" });
+  while (p.level < level) {
+    p = awardMarinaraXp(p, 100, random).progression;
+    const classLevel = p.classLevels[p.activeClass] ?? 1;
+    if (classLevel >= 10 && classLevel % 10 === 0) {
+      const next = marinaraOpenClasses(p).filter(
+        (def) => def.from === p.activeClass && p.classLevels[def.id] === undefined && !marinaraClassBlock(p, def.id),
+      );
+      if (next.length) p = setMarinaraClass(p, next[Math.floor(random() * next.length)]!.id);
+    }
+  }
+  return carried(p);
+}
+
+function carried(p: MarinaraProgression): MarinaraProgression {
+  const earlier = marinaraLearnedSkills(p).filter((skill) => skill.classId !== p.activeClass);
+  const ranked = [...earlier].sort(
+    (a, b) =>
+      Number(Boolean(b.carryPick)) - Number(Boolean(a.carryPick)) ||
+      Number(b.kind === "active") - Number(a.kind === "active") ||
+      b.learnedAt - a.learnedAt,
+  );
+  return setMarinaraCarried(
+    p,
+    ranked.slice(0, MARINARA_CARRY_SLOTS).map((skill) => skill.id),
+  );
+}
 
 /** A character on a class line at a level: promoted at class level 10 and 20, carrying the best of
  *  what earlier classes taught (marked picks first). */
@@ -134,8 +183,12 @@ export function referenceParty(name: string, level: number, seed: string): Marin
 }
 
 function buildReferenceParty(name: string, level: number, seed: string): MarinaraFighter[] {
-  return REFERENCE_PARTIES[name]!.map((line, n) => {
-    const progression = grown(line, level, `${name}:${seed}:${n}`);
+  const members = (REFERENCE_PARTIES[name] as Array<string[] | string>)!;
+  return members.map((member, n) => {
+    const progression =
+      typeof member === "string"
+        ? harnessGrown(member, level, `${name}:${seed}:${n}`)
+        : grown(member, level, `${name}:${seed}:${n}`);
     const def = marinaraClass(progression.activeClass)!;
     if (!LAB_GEAR) return buildMarinaraPartyFighter({ id: `p${n}`, name: def.label, progression });
     const bonus = marinaraGearBonus(marinaraStandardEquipment(def.archetype, marinaraTierForLevel(level)), {
