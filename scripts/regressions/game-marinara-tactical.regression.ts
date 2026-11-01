@@ -57,7 +57,9 @@ function fight(seed: number): CombatDirectorState {
 
 function playOut(s: CombatDirectorState) {
   for (let step = 0; step < 3000 && !s.outcome; step++) {
-    if (s.stage === "action" && s.actorId) {
+    // Only foes who yielded are left: the party's word (spare or finish) is asked for first.
+    if (s.mercy) commandCombatDirector(s, { type: "mercy", choice: step % 2 ? "spare" : "finish" });
+    else if (s.stage === "action" && s.actorId) {
       const unit = s.tactical!.units.find((u) => u.id === s.actorId) as TacticalUnit;
       // The party's companions are played as the Engine plays them: the board moves, Marinara AI acts.
       commandCombatDirector(s, { type: "tactical", action: marinaraBoardTurn(s, unit) as never });

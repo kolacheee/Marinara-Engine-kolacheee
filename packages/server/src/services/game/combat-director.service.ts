@@ -339,9 +339,15 @@ function sync(s: CombatDirectorState) {
   // rolling to live keeps it going, though no unit has hit points left (cloud re-test 2026-10-26).
   if (s.style !== "ruleset") {
     // Foes who yielded are spared once no one fights on: they leave as surrendered and pay as the beaten.
+    // The party chooses (Alyssa 2026-11-01): the fight waits on its `mercy` command, spare or finish.
     const yielded = (u: Unit) => !!s.morale?.[u.id]?.yielded;
-    if (!s.outcome && !living(s).some((u) => side(u) === "enemy" && !yielded(u)))
-      for (const u of living(s).filter((one) => side(one) === "enemy" && yielded(one))) leaveFight(s, u, "surrendered");
+    const enemiesLeft = living(s).filter((u) => side(u) === "enemy");
+    if (!s.outcome && enemiesLeft.length && enemiesLeft.every(yielded) && living(s).some((u) => side(u) === "party")) {
+      s.mercy = { foeIds: enemiesLeft.map((u) => u.id) };
+      // Nobody's turn while the party decides.
+      s.actorId = undefined;
+      if (s.stage === "action") s.stage = "select";
+    } else delete s.mercy;
     if (!living(s).some((u) => side(u) === "enemy")) s.outcome = "victory";
     else if (!living(s).some((u) => side(u) === "party")) s.outcome = "defeat";
   }
@@ -402,6 +408,7 @@ export function combatDirectorView(s: CombatDirectorState): DirectedCombatView {
     log: entries,
     outcome,
     summary,
+    mercy,
   } = s;
   return {
     id,
@@ -421,6 +428,7 @@ export function combatDirectorView(s: CombatDirectorState): DirectedCombatView {
     log: entries,
     outcome,
     summary,
+    ...(mercy ? { mercy } : {}),
   };
 }
 export function createCombatDirector(input: {
@@ -581,7 +589,7 @@ function atBoardEdge(s: CombatDirectorState, u: Unit): boolean {
   return t.x <= 0 || t.y <= 0 || t.x >= width - 1 || t.y >= height - 1;
 }
 /** Out of the fight alive (combat AI E1): kept for the story, gone from the board and the turn order. */
-function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered") {
+function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered", quiet = false) {
   (s.gone ??= []).push({ id: u.id, name: u.name, hp: u.hp, maxHp: u.maxHp, left });
   // Off the Classic Marinara timeline too, kept aside for the XP it pays when the fight is won.
   if (s.marinara) {
@@ -597,9 +605,35 @@ function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered
   s.defending = s.defending.filter((id) => id !== u.id);
   s.tasks = s.tasks.filter((task) => !("unitId" in task) || task.unitId !== u.id);
   if (s.actorId === u.id) s.actorId = undefined;
+  if (quiet) return;
   const key = left === "fled" ? "game.combat.event.fled" : "game.combat.event.surrendered";
   const text = left === "fled" ? `${u.name} gets away from the fight.` : `${u.name} throws down its arms and gives up.`;
   log(s, text, "status", u.id, undefined, { key, params: { actor: u.name } });
+}
+/** The party's word on foes who yielded: spared, they leave as surrendered; finished, they fall. */
+function resolveMercy(s: CombatDirectorState, choice: "spare" | "finish") {
+  const ids = s.mercy?.foeIds ?? [];
+  delete s.mercy;
+  for (const id of ids) {
+    const u = get(s, id);
+    if (!u || u.hp <= 0) continue;
+    if (choice === "spare") {
+      log(s, `${u.name} is spared.`, "status", u.id, "manual", {
+        key: "game.combat.event.spared",
+        params: { actor: u.name },
+      });
+      leaveFight(s, u, "surrendered", true);
+    } else {
+      u.hp = 0;
+      const fighter = s.marinara?.fighters.find((one) => one.id === id);
+      if (fighter) fighter.hp = 0;
+      log(s, `${u.name} is finished off.`, "status", u.id, "manual", {
+        key: "game.combat.event.finished",
+        params: { actor: u.name },
+      });
+    }
+  }
+  sync(s);
 }
 /** Treasure foes (marinara-bestiary.ts) still standing after their rounds get away, paying nothing. */
 function treasureFlees(s: CombatDirectorState) {
@@ -1558,7 +1592,7 @@ export function advanceCombatDirector(s: CombatDirectorState) {
   if (s.style === "ruleset") return;
   for (let guard = 0; guard < 20000 && !s.outcome; guard++) {
     sync(s);
-    if (s.outcome || s.window) return;
+    if (s.outcome || s.window || s.mercy) return;
     const task = s.tasks.shift();
     if (!task) {
       s.actorId = undefined;
@@ -1820,6 +1854,19 @@ export function commandCombatDirector(s: CombatDirectorState, command: DirectedC
     return;
   }
   if (command.type === "yield") throw new Error("Only a ruleset fight's party may yield.");
+  // Foes who yielded wait on the party's word; a fallback or a carry-on spares them.
+  if (s.mercy) {
+    const choice =
+      command.type === "mercy"
+        ? command.choice
+        : command.type === "fallback" || command.type === "continue"
+          ? "spare"
+          : undefined;
+    if (!choice) throw new Error("Decide first whether to spare the foes who yielded.");
+    resolveMercy(s, choice);
+    return;
+  }
+  if (command.type === "mercy") throw new Error("No foe is waiting on mercy.");
   if (command.type === "controlCompanions") throw new Error("Only a ruleset fight hands over every companion at once.");
   if (command.type === "draw" || command.type === "ammo")
     throw new Error("Only a ruleset fight takes things in hand or picks ammunition.");

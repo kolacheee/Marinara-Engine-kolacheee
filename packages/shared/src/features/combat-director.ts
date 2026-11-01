@@ -142,6 +142,10 @@ export type DirectedCommand =
   /** Whether the player chooses what their own symbol throws buy (1.382) rather than the Engine. */
   | { type: "spends"; choose: boolean }
   | { type: "flee" }
+  /** Classic Marinara (Alyssa 2026-11-01): what becomes of foes who threw down their arms once nobody
+   *  else fights on (the view's `mercy`). Spared, they leave as surrendered; finished, they fall as
+   *  beaten. Both pay loot and XP. */
+  | { type: "mercy"; choice: "spare" | "finish" }
   /** The party gives itself up to opponents who are all honourable (combat AI T6): a ruleset fight's. */
   | { type: "yield" };
 export interface CombatDecisionOption {
@@ -594,4 +598,7 @@ export interface DirectedCombatView {
   }>;
   outcome?: "victory" | "defeat" | "flee";
   summary?: CombatSummary;
+  /** Classic Marinara: only foes who yielded are left, and the fight waits on the party's `mercy`
+   *  command (spare or finish). No turns are taken meanwhile. */
+  mercy?: { foeIds: string[] };
 }

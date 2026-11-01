@@ -113,6 +113,10 @@ const USAGE: Record<string, Record<string, number>> | null = process.env.USAGE ?
 
 function playOut(s: CombatDirectorState) {
   for (let step = 0; step < 6000 && !s.outcome; step++) {
+    if (s.mercy) {
+      commandCombatDirector(s, { type: "mercy", choice: "spare" });
+      continue;
+    }
     if (s.tactical) {
       // On a board the Engine's Tactical AI plays both sides (the party begins its units in order).
       if (s.stage === "action" && s.actorId) {
