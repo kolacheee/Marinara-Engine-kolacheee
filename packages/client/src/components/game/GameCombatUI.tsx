@@ -164,6 +164,18 @@ function normalizeCombatStatusStat(value: unknown): CombatStatusStat {
   return value === "attack" || value === "defense" || value === "speed" || value === "hp" ? value : "hp";
 }
 
+/** What a skill costs, as shown on its button: a spell slot, stamina or MP. A Classic Marinara skill
+ *  that costs nothing (Power Strike pays with time on the timeline) shows no cost rather than "0 MP". */
+function skillCostLabel(
+  skill: CombatSkill,
+  localizeUi: (key: string, options?: Record<string, unknown>) => string,
+): string | null {
+  if (skill.slotLevel) return localizeUi("game.combat.director.slotCost", { level: skill.slotLevel });
+  if (skill.staminaCost) return localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost });
+  if (skill.aims !== undefined && !skill.mpCost) return null;
+  return localizeUi("game.combat.director.mpCost", { amount: skill.mpCost });
+}
+
 function sanitizeCombatSkills(skills: unknown): Combatant["skills"] {
   if (!Array.isArray(skills)) return undefined;
   const sanitized: CombatSkill[] = [];
@@ -179,6 +191,14 @@ function sanitizeCombatSkills(skills: unknown): Combatant["skills"] {
       mpCost: Math.max(0, numberFromUnknown(skill.mpCost, 0)),
       power: Math.max(0.1, numberFromUnknown(skill.power, 1)),
     };
+    // Classic Marinara: what a skill costs in stamina, when it's ready and why it can't be used now.
+    const staminaCost = numberFromUnknown(skill.staminaCost, 0);
+    if (staminaCost > 0) next.staminaCost = staminaCost;
+    const readyIn = numberFromUnknown(skill.readyIn, 0);
+    if (readyIn > 0) next.readyIn = readyIn;
+    if (skill.unavailable === "cost" || skill.unavailable === "cooldown" || skill.unavailable === "used")
+      next.unavailable = skill.unavailable;
+    if (typeof skill.aims === "string") next.aims = skill.aims as CombatSkill["aims"];
     for (const [field, schema] of Object.entries(combatInterruptFields)) {
       const parsed = schema.safeParse(skill[field]);
       if (parsed.success && parsed.data !== undefined) Object.assign(next, { [field]: parsed.data });
@@ -2197,6 +2217,15 @@ export function GameCombatUI({
                   <div className="truncate text-xs font-semibold text-white">{activePlayer.name}</div>
                   <div className="text-[0.55rem] tabular-nums text-white/45">
                     {localizeUi("ui.game.gamecharactersheet.hp")} {activePlayer.hp}/{activePlayer.maxHp}
+                    {activePlayer.marinara
+                      ? [
+                          " · ",
+                          localizeUi("game.combat.marinara.stamina", {
+                            amount: activePlayer.marinara.stamina,
+                            max: activePlayer.marinara.maxStamina,
+                          }),
+                        ].join("")
+                      : ""}
                     {activePlayer.maxMp
                       ? localizeUi("ui.game.gamecombatui.mpValue1Value2", {
                           value1: activePlayer.mp ?? 0,
@@ -2283,15 +2312,15 @@ export function GameCombatUI({
                           >
                             <span className="min-w-0 truncate font-semibold text-white/90">{skill.name}</span>
                             <span className="shrink-0 text-[0.6rem] tabular-nums text-white/45">
-                              {localizeUi(combatSkillTypeLabelKey(skill.type))} ·{" "}
-                              {skill.slotLevel
-                                ? localizeUi("game.combat.director.slotCost", { level: skill.slotLevel })
-                                : skill.staminaCost
-                                  ? localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost })
-                                  : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
-                              {skill.readyIn
-                                ? [" · ", localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })].join("")
-                                : ""}
+                              {[
+                                localizeUi(combatSkillTypeLabelKey(skill.type)),
+                                skillCostLabel(skill, localizeUi),
+                                skill.readyIn
+                                  ? localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })
+                                  : null,
+                              ]
+                                .filter(Boolean)
+                                .join(" · ")}
                             </span>
                           </button>
                         );
@@ -2895,12 +2924,8 @@ export function GameCombatUI({
                         <div className="font-semibold text-white/90">{skill.name}</div>
                         <div className="mt-0.5 text-[0.65rem] text-white/45">
                           {localizeUi(combatSkillTypeLabelKey(skill.type))} ·{" "}
-                          {skill.description || localizeUi(combatSkillDescriptionKey(skill.type))} •{" "}
-                          {skill.slotLevel
-                            ? localizeUi("game.combat.director.slotCost", { level: skill.slotLevel })
-                            : skill.staminaCost
-                              ? localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost })
-                              : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
+                          {skill.description || localizeUi(combatSkillDescriptionKey(skill.type))}
+                          {skillCostLabel(skill, localizeUi) ? [" • ", skillCostLabel(skill, localizeUi)].join("") : ""}
                           {skill.readyIn
                             ? [" · ", localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })].join("")
                             : ""}
@@ -3572,6 +3597,24 @@ function CombatantCard({
             {combatant.hp}/{combatant.maxHp}
           </span>
         </div>
+
+        {/* Stamina bar (Classic Marinara fighters) */}
+        {combatant.marinara && combatant.marinara.maxStamina > 0 && (
+          <div className="mt-0.5 flex items-center gap-1">
+            <Zap size={9} className="text-emerald-400" />
+            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-emerald-500 transition-all duration-500"
+                style={{
+                  width: `${Math.max(0, Math.min(100, (combatant.marinara.stamina / combatant.marinara.maxStamina) * 100))}%`,
+                }}
+              />
+            </div>
+            <span className="min-w-[2.5rem] text-right text-[0.55rem] tabular-nums text-white/40">
+              {combatant.marinara.stamina}/{combatant.marinara.maxStamina}
+            </span>
+          </div>
+        )}
 
         {/* MP bar (if applicable) */}
         {mpPercent !== null && (

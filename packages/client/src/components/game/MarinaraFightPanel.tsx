@@ -8,11 +8,15 @@ type Props = {
   enemies: readonly Combatant[];
   actorId?: string | null;
   growth?: readonly MarinaraFightGrowth[];
+  /** What the won fight dropped into the bags. */
+  loot?: ReadonlyArray<{ name: string; quantity?: number }>;
+  /** The fight is over: nobody acts next. */
+  over?: boolean;
 };
 
 const pct = (value: number) => `${value > 0 ? "+" : ""}${Math.round(value * 100)}%`;
 
-export function MarinaraFightPanel({ party, enemies, actorId, growth }: Props) {
+export function MarinaraFightPanel({ party, enemies, actorId, growth, loot, over }: Props) {
   const { t } = useTranslation();
   const units = [...party, ...enemies].filter((unit) => unit.marinara);
   if (!units.length) return null;
@@ -22,10 +26,12 @@ export function MarinaraFightPanel({ party, enemies, actorId, growth }: Props) {
     .slice(0, 6);
   return (
     <div className="mt-2 space-y-2 text-xs" data-testid="marinara-fight-panel">
-      <p className="text-[var(--muted-foreground)]">
-        <span className="font-medium text-[var(--foreground)]">{t("game.combat.marinara.next")}</span>{" "}
-        {order.map((unit) => unit.name).join(" → ")}
-      </p>
+      {!over && (
+        <p className="text-[var(--muted-foreground)]">
+          <span className="font-medium text-[var(--foreground)]">{t("game.combat.marinara.next")}</span>{" "}
+          {order.map((unit) => unit.name).join(" → ")}
+        </p>
+      )}
       <ul className="grid gap-1 sm:grid-cols-2">
         {units.map((unit) => {
           const m = unit.marinara!;
@@ -94,6 +100,15 @@ export function MarinaraFightPanel({ party, enemies, actorId, growth }: Props) {
           );
         })}
       </ul>
+      {loot && loot.length > 0 && (
+        <p>
+          {t("game.combat.marinara.loot", {
+            items: loot
+              .map((drop) => ((drop.quantity ?? 1) > 1 ? `${drop.name} ×${drop.quantity}` : drop.name))
+              .join(", "),
+          })}
+        </p>
+      )}
       {growth && growth.length > 0 && (
         <ul className="space-y-1" aria-label={t("game.combat.marinara.growth")}>
           {growth.map((one) => (

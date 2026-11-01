@@ -81,7 +81,7 @@ function fight(seed: number, level: number, tiers: MarinaraEnemyTier[]): CombatD
       marinara: {
         tier,
         archetype: FOE_KINDS[Math.floor(random() * FOE_KINDS.length)]!,
-        enemySkills: [["rend", "sunder", "venom-arrow", "curse"][i % 4]!],
+        // No ability given: each foe takes its archetype's, as the Game Master's invented foes do.
       },
     })),
     partyLevels: party.map((one) => one.level),
