@@ -1246,6 +1246,11 @@ export function generatedEnemyToCombatant(enemy: CombatEnemy, index: number, fal
       ? { creatureType: enemy.creatureType.trim() }
       : {}),
     ...(enemy.proposed !== undefined ? { proposed: enemy.proposed } : {}),
+    // Classic Marinara classes: the bestiary family and tier the setup gave it (read only by such a game).
+    // Until the fight starts this is the setup's word on the foe, not the screen's view of it.
+    ...(enemy.marinara && typeof enemy.marinara === "object"
+      ? { marinara: enemy.marinara as unknown as Combatant["marinara"] }
+      : {}),
     ...(enemy.surprised === true ? { surprised: true } : {}),
     ...(enemy.inLair === true ? { inLair: true } : {}),
     ...(enemy.start ? { start: enemy.start } : {}),
