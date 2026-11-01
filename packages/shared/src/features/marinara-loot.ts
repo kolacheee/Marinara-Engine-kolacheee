@@ -9,8 +9,13 @@
 import type { MarinaraFighter } from "./marinara-combat.js";
 import { marinaraBestiarySetting, marinaraEnemyFamily } from "./marinara-bestiary.js";
 import {
+  MARINARA_ACCESSORY_SLOTS,
   MARINARA_ITEM_SETTINGS,
+  marinaraAllItemIds,
+  marinaraCanEquip,
   marinaraGearBonus,
+  marinaraItem,
+  marinaraItemInPlace,
   marinaraItemName,
   marinaraItemPlace,
   marinaraPriceInCoin,
@@ -105,4 +110,103 @@ export function marinaraVictoryLoot(input: {
     }
   } else if (left > 0) lines.push({ name: "Coins", count: left });
   return { lines, gold: loot.gold, items: loot.items };
+}
+
+// ── Equipping from the bag ──
+
+/** A piece of gear the party owns: its item id, its name in the bag, and how many the bag holds. */
+export interface MarinaraOwnedGear {
+  id: string;
+  name: string;
+  count: number;
+  slot: "weapon" | "armor" | "accessory";
+}
+
+/**
+ * The gear in the party's bags, read by name: a stack whose own name is a weapon's, armour's or
+ * accessory's name in this place (as loot names them). A stack the player renamed still counts by its
+ * own name.
+ */
+export function marinaraOwnedGear(
+  stacks: ReadonlyArray<{ name: string; quantity: number }>,
+  place: MarinaraItemPlace,
+): MarinaraOwnedGear[] {
+  const byName = new Map<string, { id: string; slot: MarinaraOwnedGear["slot"] }>();
+  for (const id of marinaraAllItemIds()) {
+    const item = marinaraItem(id)!;
+    if (item.kind === "consumable" || !marinaraItemInPlace(id, place)) continue;
+    const slot = item.kind === "armour" ? "armor" : item.kind;
+    byName.set(marinaraItemName(id, place).toLowerCase(), { id, slot });
+  }
+  const owned = new Map<string, MarinaraOwnedGear>();
+  for (const stack of stacks) {
+    const found = byName.get(stack.name.trim().toLowerCase());
+    if (!found || stack.quantity <= 0) continue;
+    const had = owned.get(found.id);
+    owned.set(found.id, {
+      id: found.id,
+      name: had?.name ?? stack.name,
+      count: (had?.count ?? 0) + stack.quantity,
+      slot: found.slot,
+    });
+  }
+  return [...owned.values()];
+}
+
+const equippedIds = (equipment: MarinaraEquipment | null | undefined): string[] => [
+  ...(equipment?.weapon ? [equipment.weapon] : []),
+  ...(equipment?.armor ? [equipment.armor] : []),
+  ...(equipment?.accessories ?? []),
+];
+
+/**
+ * Why a party member can't wear this equipment, or null when they can: every piece must fit their
+ * class and slot, and the party must own one for everyone wearing it (two can't share one sword).
+ */
+export function marinaraEquipRefusal(input: {
+  classId: string;
+  equipment: MarinaraEquipment;
+  owned: readonly MarinaraOwnedGear[];
+  /** What the rest of the party wears. */
+  others: ReadonlyArray<MarinaraEquipment | null | undefined>;
+}): string | null {
+  const { equipment } = input;
+  if ((equipment.accessories?.length ?? 0) > MARINARA_ACCESSORY_SLOTS)
+    return `Only ${MARINARA_ACCESSORY_SLOTS} accessories can be worn.`;
+  const pieces: Array<[string, "weapon" | "armor" | "accessory"]> = [
+    ...(equipment.weapon ? [[equipment.weapon, "weapon"] as [string, "weapon"]] : []),
+    ...(equipment.armor ? [[equipment.armor, "armor"] as [string, "armor"]] : []),
+    ...(equipment.accessories ?? []).map((id) => [id, "accessory"] as [string, "accessory"]),
+  ];
+  const wanted = new Map<string, number>();
+  for (const [id, slot] of pieces) {
+    if (!marinaraItem(id)) return `${id} is not an item.`;
+    if (!marinaraCanEquip(input.classId, id, slot)) return `${id} can't be used in this class's ${slot} slot.`;
+    wanted.set(id, (wanted.get(id) ?? 0) + 1);
+  }
+  for (const other of input.others)
+    for (const id of equippedIds(other)) if (wanted.has(id)) wanted.set(id, wanted.get(id)! + 1);
+  for (const [id, count] of wanted) {
+    const have = input.owned.find((gear) => gear.id === id)?.count ?? 0;
+    if (have < count)
+      return have ? `The party has only ${have} of that, already worn.` : "The party doesn't have that.";
+  }
+  return null;
+}
+
+/** The equipment left wearable after a class change: anything the new class can't use comes off. */
+export function marinaraEquipmentForClass(
+  classId: string,
+  equipment: MarinaraEquipment | undefined,
+): MarinaraEquipment | undefined {
+  if (!equipment) return undefined;
+  const weapon =
+    equipment.weapon && marinaraCanEquip(classId, equipment.weapon, "weapon") ? equipment.weapon : undefined;
+  const armor = equipment.armor && marinaraCanEquip(classId, equipment.armor, "armor") ? equipment.armor : undefined;
+  const accessories = (equipment.accessories ?? []).filter((id) => marinaraCanEquip(classId, id, "accessory"));
+  return {
+    ...(weapon ? { weapon } : {}),
+    ...(armor ? { armor } : {}),
+    ...(accessories.length ? { accessories } : {}),
+  };
 }
