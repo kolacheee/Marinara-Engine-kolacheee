@@ -168,3 +168,36 @@ assert.equal(withBoss.budgets.foe0?.legendary ?? 0, 0, "no legendary actions on 
 }
 
 console.log("game-marinara-director: ok");
+
+// Classic UI review (2026-11-01): the log says when a side's back row becomes its front, and a roll reads
+// in words ("rolled 63, needed under 34"), not "(63 vs 34%)".
+{
+  const { createMarinaraDirectorState, performMarinaraAction, marinaraEventText } =
+    await import("../../packages/server/src/services/game/marinara-director.service.js");
+  const tank = hero("tank", "guard", "protective", 5);
+  const mage = hero("mage", "channeler", "methodical", 5);
+  tank.row = "front";
+  mage.row = "back";
+  const brute = buildMarinaraEnemy({ id: "brute", name: "Brute", archetype: "blade", level: 9, tier: "elite" });
+  const state = createMarinaraDirectorState([tank, mage, brute], 7);
+  const lines: string[] = [];
+  for (let n = 0; n < 40 && state.fighters.find((f) => f.id === "tank")!.hp > 0; n++) {
+    state.fighters.find((f) => f.id === "tank")!.hp = 1;
+    performMarinaraAction(state, "brute", { type: "attack", targetId: "tank" }, 100 + n, false, (text) =>
+      lines.push(text),
+    );
+  }
+  assert.ok(
+    lines.some((line) => /front row now: its back row is the front/.test(line)),
+    `the log says the back row is now the front: ${lines.join(" | ")}`,
+  );
+  assert.ok(!lines.some((line) => / vs \d+%\)/.test(line)), "no bare '(roll vs chance%)' readout");
+  const missed = marinaraEventText(state, {
+    kind: "miss",
+    actorId: "brute",
+    targetId: "mage",
+    chance: 34,
+    roll: 63,
+  } as Parameters<typeof marinaraEventText>[1]);
+  assert.match(missed, /\(rolled 63, needed under 34\)/);
+}

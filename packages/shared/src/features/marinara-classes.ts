@@ -555,7 +555,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "defense",
           0,
-          "Guard-tree trait, kept in every Guard class: guards an ally until the user's next turn; every single-target hit on them comes to the user.",
+          "Guards an ally until the user's next turn; every single-target hit on them comes to the user.",
         ),
         active("challenge", "Challenge", 1, "defense", 2, "One enemy must target the user for 2 turns.", true),
         active(
@@ -571,7 +571,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "hold-the-line",
           "Hold the Line",
           5,
-          "Guard-tree trait, kept in every Guard class: acts early in the first round; in Tactical a foe that moves next to the user stops there, and one that leaves its reach takes a free attack.",
+          "Acts early in the first round; in Tactical a foe that moves next to the user stops there, and one that leaves its reach takes a free attack.",
         ),
         passive("stalwart", "Stalwart", 5, "+20% Defense while defending.", true),
         passive(

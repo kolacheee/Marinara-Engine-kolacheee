@@ -49,6 +49,8 @@ import {
 /** A party member's Classic Marinara record on their game card. */
 export interface MarinaraCardProgression extends MarinaraProgression {
   equipment?: MarinaraEquipment;
+  /** The Classic row the player put them in; unset, their class's own row. */
+  row?: "front" | "back";
   /** Fell for good in a game with permadeath on. */
   fallen?: boolean;
 }
@@ -321,6 +323,7 @@ export function marinaraPartyFighter(id: string, name: string, progression: Mari
     id,
     name,
     progression,
+    ...(progression.row === "front" || progression.row === "back" ? { row: progression.row } : {}),
     gearStats: gear.stats,
     ...(gear.gear ? { gear: gear.gear } : {}),
     ...(gear.ranged !== undefined ? { rangedWeapon: gear.ranged } : {}),
