@@ -1982,8 +1982,19 @@ export function marinaraBuildEncounter(input: {
     threat += worth(foe);
   };
   if (input.boss && level >= MARINARA_TIER_RULES.boss.minLevel && lead.tiers.includes("boss")) {
+    // A boss asked for (playtest 2026-11-01: dropped when over budget, it came in 3 of 60 Normal fights
+    // for a party of 4) comes a level or two lower when that fits, else as an elite of its family to
+    // lead the fight; a lone boss rates Deadly for 4 by the bestiary's measure.
     const boss = { familyId: lead.id, tier: "boss" as const, level: foeLevel(lead) };
+    const lowest = Math.max(
+      lead.levels[0],
+      MARINARA_TIER_RULES.boss.minLevel,
+      level - marinaraLevelGap(input.party).below,
+    );
+    while (worth(boss) > budget && boss.level > lowest) boss.level--;
+    const elite = { familyId: lead.id, tier: "elite" as const, level: foeLevel(lead) };
     if (worth(boss) <= budget) add(boss);
+    else if (lead.tiers.includes("elite") && worth(elite) <= budget) add(elite);
   }
   // Someone stands in front: unless the boss does, one front-row foe (from a chosen family, else the
   // same company, else any front-row family) is placed before the fill, at the cheapest tier that fits;
@@ -2170,7 +2181,10 @@ export function marinaraFitEncounter(input: {
   const order = ["trivial", "easy", "normal", "hard", "deadly", "beyond"] as const;
   const over = () => order.indexOf(marinaraEncounterRating(total(), party)) > order.indexOf(input.difficulty);
   for (let guard = 0; guard < 40 && foes.length && over(); guard++) {
-    const top = [...foes].sort((a, b) => worth(b) - worth(a))[0]!;
+    // A boss the story asked for stays: those around it give way first (playtest 2026-11-01: the boss
+    // was the costliest foe, so it was the one cut, and only 5 of 16 boss fights had one).
+    const escort = foes.filter((foe) => foe.tier !== "boss");
+    const top = [...(escort.length ? escort : foes)].sort((a, b) => worth(b) - worth(a))[0]!;
     const index = foes.indexOf(top);
     const lower = DEMOTE[top.tier];
     const family = FAMILY_BY_ID.get(top.familyId)!;

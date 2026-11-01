@@ -159,6 +159,8 @@ export interface MarinaraEffect {
   /** Takes a turn of charging before it lands. */
   charge?: boolean;
   cooldown?: number;
+  /** Its cooldown falls on every fighter of the user's side who has it (Fortress). */
+  sideCooldown?: boolean;
   oncePerFight?: boolean;
   /** Only from the front row (on a board: with a foe next to the user). */
   frontOnly?: boolean;
@@ -209,7 +211,15 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   provoke: { kind: "provoke", target: "self", duration: 2 },
   challenge: { kind: "taunt", target: "enemy", duration: 2 },
   "sworn-ward": { kind: "ward", target: "ally", duration: 3 },
-  fortress: { kind: "buff", target: "party", stat: "damage-taken", pct: -0.5, duration: 1, cooldown: 5 },
+  fortress: {
+    kind: "buff",
+    target: "party",
+    stat: "damage-taken",
+    pct: -0.5,
+    duration: 1,
+    cooldown: 5,
+    sideCooldown: true,
+  },
   spellguard: { kind: "buff", target: "party", stat: "resistance", pct: 0.3, duration: 2 },
   verdict: dmg("magic", 6, { from: "resistance" }),
   "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2 },
@@ -628,6 +638,8 @@ export interface MarinaraFighter {
   /** A treasure foe (marinara-bestiary.ts): what beating it pays, as multiples of a standard foe of its
    *  level, and the round after which it flees, paying nothing. */
   windfall?: { xp: number; gold: number; fleeAfterRounds: number };
+  /** Threw down its arms: never acts, and the party's AI leaves it be; the player may spare or finish it. */
+  yielded?: boolean;
   /** Robbed by this fighter (Steal): a foe has one thing to take, kept with the fight's loot. */
   stolenBy?: string;
   /** A boss once below half its HP: it hits harder for the rest of the fight (MARINARA_BOSS_RULES). */
@@ -1458,6 +1470,62 @@ export function marinaraExpectedHit(
   );
 }
 
+/** What one use of an effect would do right now, as the skill button shows it: the damage per foe
+ *  (or the healing per ally) across whoever it can land on, before the hit roll. A crit doubles a hit. */
+export interface MarinaraSkillEstimate {
+  kind: "damage" | "heal";
+  min: number;
+  max: number;
+  critMax?: number;
+  hits?: number;
+}
+
+export function marinaraSkillEstimate(
+  actor: MarinaraFighter,
+  effect: MarinaraEffect,
+  all: readonly MarinaraFighter[],
+  tactical = false,
+): MarinaraSkillEstimate | null {
+  if (effect.kind === "damage") {
+    const foes = living(all.filter((unit) => unit.side !== actor.side && !unit.yielded));
+    if (!foes.length) return null;
+    const area = effect.target === "all-enemies" || effect.target === "front-row";
+    const used =
+      area && foes.length > 1 ? { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct } : effect;
+    const amounts = foes.map((foe) =>
+      Math.max(0, Math.round(marinaraHitNumbers(actor, foe, used, all, tactical).damage)),
+    );
+    const max = Math.max(...amounts);
+    return {
+      kind: "damage",
+      min: Math.min(...amounts),
+      max,
+      critMax: Math.round(max * MARINARA_TUNING.critMultiplier),
+      ...((effect.hits ?? 1) > 1 ? { hits: effect.hits } : {}),
+    };
+  }
+  if (effect.kind === "heal") {
+    const allies = effect.target === "self" ? [actor] : living(all.filter((unit) => unit.side === actor.side));
+    if (!allies.length) return null;
+    const amounts = allies.map((ally) =>
+      Math.round(
+        (effect.pctOfMax
+          ? ally.maxHp * effect.pctOfMax
+          : powerStat(actor, "magic", effect, all) * MARINARA_TUNING.healMagicPct + (effect.power ?? 0)) *
+          healFactor(ally),
+      ),
+    );
+    const max = Math.max(...amounts);
+    return {
+      kind: "heal",
+      min: Math.min(...amounts),
+      max,
+      ...(hooksOf(actor).healCrit ? { critMax: Math.round(max * 1.5) } : {}),
+    };
+  }
+  return null;
+}
+
 /** How much removing a fighter's debuffs is worth, in HP. */
 export function marinaraDebuffBurden(unit: MarinaraFighter, all: readonly MarinaraFighter[]): number {
   let value = 0;
@@ -1729,6 +1797,12 @@ export function performMarinaraOption(
       actor.mp -= cost;
     } else actor.stamina -= cost;
     if (option.effect.cooldown) actor.cooldowns[option.skill.id] = option.effect.cooldown;
+    // A side-wide guard (Fortress): the whole side waits out its cooldown, so several casters can't
+    // take turns keeping it up (playtest 2026-11-01: three Stonewall foes held the party at half damage).
+    if (option.effect.cooldown && option.effect.sideCooldown)
+      for (const ally of all)
+        if (ally.side === actor.side && ally !== actor)
+          ally.cooldowns[option.skill.id] = Math.max(ally.cooldowns[option.skill.id] ?? 0, option.effect.cooldown);
     if (option.effect.oncePerFight) actor.used.push(option.skill.id);
   } else if (option.id?.startsWith("enemy:")) {
     actor.cooldowns[option.id] = option.effect.cooldown ?? 3;

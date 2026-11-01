@@ -24,6 +24,7 @@ import {
   type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
 } from "react";
+import { marinaraSkillEstimateLabel } from "../../lib/marinara-skill-estimate";
 import { cn } from "../../lib/utils";
 import { GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
 import { useRenderTimer } from "../../lib/perf-diagnostics";
@@ -205,6 +206,14 @@ function sanitizeCombatSkills(skills: unknown): Combatant["skills"] {
     )
       next.unavailable = skill.unavailable;
     if (typeof skill.aims === "string") next.aims = skill.aims as CombatSkill["aims"];
+    const estimate = skill.estimate as CombatSkill["estimate"] | undefined;
+    if (
+      estimate &&
+      (estimate.kind === "damage" || estimate.kind === "heal") &&
+      Number.isFinite(estimate.min) &&
+      Number.isFinite(estimate.max)
+    )
+      next.estimate = estimate;
     for (const [field, schema] of Object.entries(combatInterruptFields)) {
       const parsed = schema.safeParse(skill[field]);
       if (parsed.success && parsed.data !== undefined) Object.assign(next, { [field]: parsed.data });
@@ -2413,6 +2422,7 @@ export function GameCombatUI({
                             <span className="shrink-0 text-[0.6rem] tabular-nums text-white/45">
                               {[
                                 localizeUi(combatSkillTypeLabelKey(skill.type)),
+                                marinaraSkillEstimateLabel(skill, localizeUi),
                                 skillCostLabel(skill, localizeUi),
                                 skill.readyIn
                                   ? localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })
@@ -3102,6 +3112,9 @@ export function GameCombatUI({
                         <div className="mt-0.5 text-[0.65rem] text-white/45">
                           {localizeUi(combatSkillTypeLabelKey(skill.type))} ·{" "}
                           {skill.description || localizeUi(combatSkillDescriptionKey(skill.type))}
+                          {marinaraSkillEstimateLabel(skill, localizeUi)
+                            ? [" · ", marinaraSkillEstimateLabel(skill, localizeUi)].join("")
+                            : ""}
                           {skillCostLabel(skill, localizeUi) ? [" • ", skillCostLabel(skill, localizeUi)].join("") : ""}
                           {skill.readyIn
                             ? [" · ", localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })].join("")

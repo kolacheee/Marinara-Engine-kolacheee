@@ -46,6 +46,9 @@ import {
   type CombatOrders,
   normalizeCharacterLookupName,
   marinaraLearnedSkills,
+  marinaraKeptTraits,
+  marinaraClass,
+  marinaraUsableSkills,
   marinaraBestiarySetting,
   readMarinaraCardProgression,
   marinaraEquipmentForClass,
@@ -1818,6 +1821,7 @@ export async function combatDirectorRoutes(
     const input = parsed.data;
     let refusal: string | null = null;
     let progression: unknown = null;
+    let dropped: string[] = [];
     const patched = await chats.patchMetadata(
       input.chatId,
       (current) => {
@@ -1839,13 +1843,26 @@ export async function combatDirectorRoutes(
           return {};
         }
         try {
+          const before = marinaraUsableSkills(next);
           if (input.classId && input.classId !== next.activeClass)
             next = { ...next, ...setMarinaraClass(next, input.classId) };
-          // A class switched to sets its own skills apart from the carried ones: one carried from it is dropped.
+          // A class switched to sets its own skills apart from the carried ones: one carried from it is
+          // dropped, as is one its tree keeps anyway (a trait).
+          const kept = marinaraKeptTraits(next);
+          const archetype = marinaraClass(next.activeClass)?.archetype;
           const carried = (input.carried ?? next.carried).filter((id) =>
-            marinaraLearnedSkills(next!).some((skill) => skill.id === id && skill.classId !== next!.activeClass),
+            marinaraLearnedSkills(next!).some(
+              (skill) =>
+                skill.id === id &&
+                skill.classId !== next!.activeClass &&
+                !(kept.includes(id) && marinaraClass(skill.classId)?.archetype === archetype),
+            ),
           );
-          next = { ...next, ...setMarinaraCarried(next, input.carried ? input.carried : carried) };
+          const afterIds = () => new Set(marinaraUsableSkills(next!).map((skill) => skill.id));
+          next = { ...next, ...setMarinaraCarried(next, input.carried && !input.classId ? input.carried : carried) };
+          // Say what the change took away (playtest 2026-11-01: a promotion dropped the Witch's Rot unseen).
+          const now = afterIds();
+          dropped = [...new Set(before.filter((skill) => !now.has(skill.id)).map((skill) => skill.label))];
           // Gear the new class can't use comes off; gear asked for must fit the class and be in a bag,
           // one for everyone wearing it.
           let equipment = marinaraEquipmentForClass(next.activeClass, next.equipment);
@@ -1880,7 +1897,7 @@ export async function combatDirectorRoutes(
     );
     if (!patched) return reply.code(404).send({ error: "Chat not found." });
     if (refusal) return reply.code(400).send({ error: refusal });
-    return { progression };
+    return { progression, dropped };
   });
   app.get("/state", async (req, reply) => {
     const parsed = z.object({ chatId: key, anchor: key }).safeParse(req.query);
