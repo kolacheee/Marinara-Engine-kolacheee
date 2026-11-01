@@ -30,6 +30,7 @@ import {
   type MarinaraEffect,
   type MarinaraFighter,
   type MarinaraOption,
+  marinaraVersesOf,
 } from "./marinara-combat.js";
 
 /** One choice: an option (null id: the basic attack, "defend": defending) and whom it is aimed at. */
@@ -239,7 +240,15 @@ export function marinaraAiCandidates(
         break;
       case "buff": {
         const who = effect.target === "self" ? [actor] : friends;
-        if (who.some((u) => u.mods.some((m) => m.source === option.id))) break;
+        // A song already sung is worth one more verse until it has them all (Cantor); anything else
+        // already on doesn't repeat.
+        const verses = effect.verses
+          ? Math.max(...who.map((u) => marinaraVersesOf(u, effect, option.id ?? "buff")))
+          : 0;
+        const singing = !!effect.verses && who.some((u) => u.mods.some((m) => m.source === option.id));
+        if (singing && verses >= effect.verses!.most) break;
+        if (!effect.verses && who.some((u) => u.mods.some((m) => m.source === option.id))) break;
+        const gain = singing ? effect.verses!.pct : (effect.pct ?? 0);
         let value = 0;
         if (effect.stat === "imbue") {
           // What the element adds to each imbued fighter's best hit (the whole party for Edge Runes).
@@ -271,10 +280,10 @@ export function marinaraAiCandidates(
         } else if (effect.stat === "damage-taken" || effect.stat === "resistance" || effect.stat === "defense") {
           if (!threatened) break;
           const incoming = foes.reduce((sum, foe) => sum + Math.max(eff(foe, "strength"), eff(foe, "magic")), 0);
-          value = incoming * Math.abs(effect.pct ?? 0) * (effect.duration ?? 1) * 0.8 * (who.length > 1 ? 1 : 0.6);
+          value = incoming * Math.abs(gain) * (effect.duration ?? 1) * 0.8 * (who.length > 1 ? 1 : 0.6);
         } else {
           const dealt = who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
-          value = dealt * (effect.pct ?? 0) * (effect.duration ?? 1) * 0.7;
+          value = dealt * gain * (effect.duration ?? 1) * 0.7;
         }
         if (value <= 0) break;
         add(option, [actor], { support: value / foeHp });
