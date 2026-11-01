@@ -74,8 +74,10 @@ const stats = (
 /** Each archetype's base class at level 1, and its growth rates in percent. */
 export const MARINARA_ARCHETYPE_BASES: Record<MarinaraArchetype, { start: MarinaraStats; growth: MarinaraStats }> = {
   blade: { start: stats(20, 7, 1, 6, 7, 5, 1, 4), growth: stats(75, 50, 5, 45, 50, 30, 10, 30) },
-  guard: { start: stats(24, 6, 0, 4, 3, 9, 3, 3), growth: stats(90, 40, 0, 35, 20, 55, 20, 25) },
-  scout: { start: stats(18, 5, 1, 7, 9, 3, 2, 7), growth: stats(60, 35, 10, 50, 60, 20, 20, 50) },
+  // Guard Skill 6/50% (was 4/35%): a Guard missed 34-44% of its hits and couldn't finish a fight (playtest 2026-11-01).
+  guard: { start: stats(24, 6, 0, 6, 3, 9, 3, 3), growth: stats(90, 40, 0, 50, 20, 55, 20, 25) },
+  // Scout HP 70% and Defense 30% growth (were 60/20): the line went down 25-36% of fights, most others 5-15%.
+  scout: { start: stats(18, 5, 1, 7, 9, 3, 2, 7), growth: stats(70, 35, 10, 50, 60, 30, 20, 50) },
   marksman: { start: stats(18, 6, 1, 8, 6, 4, 2, 4), growth: stats(65, 45, 5, 60, 45, 25, 15, 30) },
   channeler: { start: stats(16, 1, 8, 5, 5, 2, 6, 3), growth: stats(50, 5, 60, 40, 40, 15, 40, 25) },
   hexer: { start: stats(17, 1, 7, 5, 4, 2, 7, 4), growth: stats(55, 5, 50, 40, 35, 15, 50, 35) },
