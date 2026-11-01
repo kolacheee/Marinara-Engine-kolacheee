@@ -125,7 +125,7 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
       <div>
         <p className="text-sm font-semibold">
           {active?.label ?? progression.activeClass} · {t("game.combat.marinara.level", { level: progression.level })}
-          {progression.fallen ? ` · ${t("game.combat.marinara.sheet.fallen")}` : ""}
+          {progression.fallen ? [" · ", t("game.combat.marinara.sheet.fallen")].join("") : ""}
         </p>
         <p className="text-[var(--muted-foreground)]">
           {t("game.combat.marinara.sheet.xp", { xp: progression.xp, next: MARINARA_XP_PER_LEVEL })} ·{" "}
