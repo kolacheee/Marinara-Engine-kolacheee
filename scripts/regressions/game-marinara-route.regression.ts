@@ -112,6 +112,33 @@ try {
   assert.equal(refused.statusCode, 400, "an unknown class is refused");
   const stored = JSON.parse((await chats.getById(chat.id))!.metadata || "{}").gameCharacterCards;
   assert.equal(stored.find((card: { name: string }) => card.name === "Corin").marinara.activeClass, other!.id);
+
+  // The setup's bestiary families reach the fight through the start route, fitted to the fight's difficulty.
+  const { marinaraBestiaryFor } = await import("../../packages/shared/src/features/marinara-bestiary.js");
+  const family = marinaraBestiaryFor("high_fantasy", 1).find((one) => one.tiers.includes("standard"))!;
+  const beastChat = await chats.create({ name: "Bestiary route proof", mode: "game", characterIds: [] });
+  const beastAnchor = await chats.createMessage({
+    chatId: beastChat.id,
+    role: "assistant",
+    content: "[state: combat]",
+  });
+  await chats.patchMetadata(beastChat.id, {
+    gameSetupConfig: { combatDirector: true, marinaraClasses: true, difficulty: "normal", genre: "High Fantasy" },
+    gameCharacterCards: [{ name: "Ayla", class: "Knight", temperament: "protective" }],
+  });
+  const beasts = await post("/combat/start", {
+    chatId: beastChat.id,
+    anchor: beastAnchor.id,
+    style: "classic",
+    party: [unit("p1", "Ayla", "player")],
+    enemies: [0, 1, 2, 3, 4, 5].map((i) => ({
+      ...unit(`b${i}`, `Beast ${i}`, "enemy"),
+      marinara: { family: { familyId: family.id, tier: "standard" }, encounter: "easy" },
+    })),
+  });
+  assert.equal(beasts.statusCode, 200, beasts.body);
+  const fought = beasts.json().session as DirectedCombatView;
+  assert.ok(fought.enemies.length < 6, "six beasts are too many for one hero on an easy fight");
   console.log("game-marinara-route: ok");
 } finally {
   await app.close();

@@ -260,6 +260,23 @@ const directedCombatantFields = z.object({
   requiresSight: z.boolean().optional(),
   combatClass: z.string().max(100).optional(),
   movementMode: z.enum(["walk", "fly", "teleport"]).optional().catch(undefined),
+  // Classic Marinara (combat overhaul): what the fight's setup said of a foe (a bestiary family, a
+  // tier), or on a saved unit what its screen shows. Read only by a game with Classic Marinara classes.
+  marinara: z
+    .object({
+      family: z
+        .object({
+          familyId: z.string().min(1).max(80),
+          tier: z.enum(["minion", "standard", "elite", "boss"]).optional().catch(undefined),
+          level: z.number().int().min(1).max(30).optional().catch(undefined),
+        })
+        .optional()
+        .catch(undefined),
+      tier: z.enum(["minion", "standard", "elite", "boss"]).optional().catch(undefined),
+    })
+    .passthrough()
+    .optional()
+    .catch(undefined),
   element: z.string().max(100).optional(),
   sprite: z.string().max(3000).optional(),
 });
@@ -1113,6 +1130,19 @@ export async function combatDirectorRoutes(
     );
     return { session: sessionView(s, session), ...(live ? { rulesetLive: live } : {}) };
   };
+  /** A Classic Marinara fight's own difficulty: the request's, else what the setup wrote on its foes. */
+  const marinaraEncounter = (input: {
+    encounterDifficulty?: "easy" | "normal" | "hard" | "deadly";
+    enemies: ReadonlyArray<{ marinara?: unknown }>;
+  }) => {
+    if (input.encounterDifficulty) return input.encounterDifficulty;
+    const written = input.enemies
+      .map((one) => (one.marinara as { encounter?: unknown } | undefined)?.encounter)
+      .find(Boolean);
+    return written === "easy" || written === "normal" || written === "hard" || written === "deadly"
+      ? written
+      : undefined;
+  };
   app.post("/start", async (req, reply) => {
     const parsed = z
       .object({
@@ -1316,7 +1346,7 @@ export async function combatDirectorRoutes(
               typeof meta.gameWorldKit?.id === "string" ? meta.gameWorldKit.id : null,
               typeof setup.genre === "string" ? setup.genre : null,
             ),
-            ...(input.encounterDifficulty ? { encounter: input.encounterDifficulty } : {}),
+            ...(marinaraEncounter(input) ? { encounter: marinaraEncounter(input)! } : {}),
           });
           if (!marinara.party.length) return reply.code(400).send({ error: "Nobody in the party can fight." });
           if (marinara.cards) {
