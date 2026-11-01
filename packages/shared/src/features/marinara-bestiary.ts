@@ -207,8 +207,8 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     cooldown: 3,
   }),
   // Beasts and brutes
-  ability("maul", "Maul", "A heavy blow that slows the user's next turn.", strike(9, { weight: 1.3, cooldown: 2 })),
-  ability("gore", "Gore", "Lowers its head for a turn, then charges: a hit it telegraphs.", strike(15, {
+  ability("maul", "Maul", "A heavy blow that slows the user's next turn.", strike(6, { weight: 1.3, cooldown: 2 })),
+  ability("gore", "Gore", "Lowers its head for a turn, then charges: a hit it telegraphs.", strike(8, {
     charge: true,
     cooldown: 4,
   }), { minLevel: 3 }),
@@ -217,7 +217,7 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     applies: { status: "bleed", duration: 2, power: 0.04 },
     cooldown: 3,
   })),
-  ability("swarm-bite", "Swarm Bite", "Three quick bites.", strike(1, { hits: 3, cooldown: 2 }), { minLevel: 8 }),
+  ability("swarm-bite", "Swarm Bite", "Three quick bites.", strike(0, { hits: 3, cooldown: 2 }), { minLevel: 8 }),
   ability("venom-fang", "Venom Fang", "A poisoned bite: 5% of max HP a turn for 3.", strike(3, {
     type: "pierce",
     applies: { status: "poison", duration: 3, power: 0.05 },
@@ -277,19 +277,19 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     duration: 2,
     cooldown: 4,
   }),
-  ability("regenerate", "Regenerate", "Knits its wounds: 6% of max HP a turn for 3.", {
+  ability("regenerate", "Regenerate", "Knits its wounds: 3% of max HP a turn for 3.", {
     kind: "status",
     target: "self",
     status: "regen",
     duration: 3,
-    power: 0.06,
+    power: 0.03,
     cooldown: 5,
   }, { minLevel: 5 }),
   ability("devour", "Devour", "Bites into the fallen and the near-fallen: wounds the target (healing halved for 3).", strike(6, {
     applies: { status: "wound", duration: 3 },
     cooldown: 3,
   }), { minLevel: 4 }),
-  ability("hurl-boulder", "Hurl Boulder", "Throws rubble at anyone, with a turn's wind-up.", strike(10, {
+  ability("hurl-boulder", "Hurl Boulder", "Throws rubble at anyone, with a turn's wind-up.", strike(5, {
     ranged: true,
     type: "blunt",
     charge: true,
@@ -433,12 +433,12 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     applies: { status: "stun", chance: 0.35, duration: 1 },
     cooldown: 5,
   }), { minTier: "elite", minLevel: 8 }),
-  ability("self-repair", "Self-Repair", "Patches itself: 6% of max HP a turn for 3.", {
+  ability("self-repair", "Self-Repair", "Patches itself: 3% of max HP a turn for 3.", {
     kind: "status",
     target: "self",
     status: "regen",
     duration: 3,
-    power: 0.06,
+    power: 0.03,
     cooldown: 5,
   }, { minLevel: 5 }),
   ability("overcharge", "Overcharge", "Runs hot: +30% Speed for 2 turns.", {
@@ -449,7 +449,7 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     duration: 2,
     cooldown: 4,
   }),
-  ability("lock-on", "Lock On", "Aims for a turn, then a heavy shot at anyone.", strike(13, {
+  ability("lock-on", "Lock On", "Aims for a turn, then a heavy shot at anyone.", strike(6, {
     ranged: true,
     charge: true,
     hitBonus: 20,
@@ -640,7 +640,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       wuxia_xianxia: n("Black Ridge Bear", "Iron-Palm Ape@11", "White Ape of the Peaks@21"),
       modern_day: n("Black Bear", "@14"),
       space_opera: n("Bramble Ox", "Ridge Hulk@11", "Mountain-Back@21"),
-      post_apocalyptic: n("Rubble Bear", "Ashback@11", "Hollow King@21"),
+      post_apocalyptic: n("Rubble Bear", "Ashback@11", "Cinder Hulk@21"),
     },
   },
   {
@@ -688,7 +688,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       wuxia_xianxia: n("Jade Centipede", "Hundred-Leg@9", "Golden Centipede@17"),
       modern_day: n("Hornet Swarm", "@9"),
       modern_supernatural: n("Cellar Weaver", "Shroud Spider@9", "Mourning Weaver@17"),
-      space_opera: n("Hive Drone", "Hive Lancer@9", "Hive Matron@17"),
+      space_opera: n("Chitin Picker", "Hive Lancer@9", "Hive Matron@17"),
       post_apocalyptic: n("Glass Roach", "Ash Scuttler@9", "Hive Warden@17"),
     },
   },
@@ -730,7 +730,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     levels: [4, 30],
     tiers: BIG_TIERS,
     names: {
-      space_opera: n("Stalker Larva", "Shadow Stalker@11", "Apex Stalker@21"),
+      space_opera: n("Vent Larva", "Hullshadow@11", "Brood Apex@21"),
       modern_supernatural: n("Moonsick Stray", "Half-Turned@11", "Night Alpha@21"),
       high_fantasy: n("Moonsick Woodsman", "Full-Moon Brute@11", "Pack Sire of the Long Night@21"),
       post_apocalyptic: n("Tunnel Lurker", "Pale Stalker@11", "Deep Hunter@21"),
@@ -748,7 +748,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     statScale: { hp: 1.3, strength: 0.9, speed: 0.6, skill: 0.7, defense: 0.5, resistance: 1.0, luck: 0.4 },
     attackType: "blunt",
     row: "front",
-    affinities: { slash: "resist", pierce: "resist", blunt: "resist", fire: "weak", ice: "weak", poison: "immune" },
+    affinities: { slash: "resist", pierce: "resist", fire: "weak", ice: "weak", poison: "immune" },
     abilities: at(["acid-spit", 1], ["regenerate", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
@@ -757,7 +757,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       wuxia_xianxia: n("Paddy Leech", "Blood Leech@11", "Corpse Leech@21"),
       modern_supernatural: n("Ectoplasm Pool", "Hungry Residue@11", "Weeping Residue@21"),
       cyberpunk: n("Biowaste Sludge", "Nanite Sludge@11", "Grey Bloom@21"),
-      space_opera: n("Hull Slick", "Xeno Gel@11", "Mother Gel@21"),
+      space_opera: n("Hull Slick", "Reactor Gel@11", "Brood Gel@21"),
       post_apocalyptic: n("Tar Crawler", "Sump Sludge@11", "Toxic Bloom@21"),
     },
   },
@@ -1041,7 +1041,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       modern_day: n("Pickpocket", "Mugger@5", "Cat Burglar@12", "Master Thief@20"),
       modern_supernatural: n("Purse-Snatcher", "Fence's Knife@11"),
       the_1920s: n("Pickpocket", "Stick-up Man@9", "Second-Story Ghost@17"),
-      cyberpunk: n("Booster", "Chopshop Cutter@11", "Ghost Fixer@21"),
+      cyberpunk: n("Ripcord Kid", "Chopshop Cutter@11", "Ghost Fixer@21"),
       space_opera: n("Dock Thief", "Corsair Cutter@11", "Void Corsair@21"),
       post_apocalyptic: n("Scavenger", "Highway Raider@11", "Dust Marauder@21"),
     },
@@ -1110,7 +1110,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       wuxia_xianxia: n("Crossbow Bandit", "Flying Dagger Thrower@11", "Hundred-Step Archer@21"),
       modern_supernatural: n("Hunter Initiate", "Silver Shooter@11", "Order Marksman@21"),
       the_1920s: n("Gunsel", "Drum-Gun Man@9", "Rooftop Rifleman@17"),
-      cyberpunk: n("Gang Shooter", "Smartlink Gunner@11", "Rooftop Ghost@21"),
+      cyberpunk: n("Gang Shooter", "Optic-Wired Gunner@11", "Rooftop Ghost@21"),
       space_opera: n("Blaster Trooper", "Rail Gunner@11", "Ghost Sniper@21"),
       post_apocalyptic: n("Junk Shooter", "Watchtower Rifle@11", "Longshot Hermit@21"),
     },
@@ -1175,7 +1175,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       modern_supernatural: n("Hedge Healer", "Order Chaplain@11"),
       modern_day: n("First Aider", "Paramedic@10", "Trauma Surgeon@20"),
       the_1920s: n("Back-Alley Doc", "Mob Doctor@9"),
-      cyberpunk: n("Street Medic", "Chop Clinic Surgeon@11", "Trauma Team Lead@21"),
+      cyberpunk: n("Street Medic", "Chop Clinic Surgeon@11", "Black-Clinic Chief@21"),
       space_opera: n("Corpsman", "Combat Medic@11", "Fleet Surgeon@21"),
       post_apocalyptic: n("Patch-Up", "Hold Doctor@11", "Old Mother of the Hold@21"),
     },
@@ -1231,7 +1231,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     mind: "mindless",
     temperaments: ["territorial"],
     archetype: "guard",
-    statScale: { hp: 1.1, strength: 1.0, speed: 0.6, skill: 0.8, defense: 1.3, resistance: 0.6, luck: 0.3 },
+    statScale: { hp: 1.2, strength: 1.0, speed: 0.6, skill: 0.8, defense: 0.9, resistance: 0.6, luck: 0.3 },
     attackType: "blunt",
     row: "front",
     affinities: { ...PLATE, poison: "immune" },
@@ -1241,7 +1241,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     names: {
       high_fantasy: n("Clay Warder", "Bronze Warder@11", "Runeforged Colossus@21"),
       wuxia_xianxia: n("Wooden Sparring Man", "Bronze Arhat@11", "Jade Guardian Lion@21"),
-      cyberpunk: n("Security Bot", "Riot Mech@11", "Tower Sentinel@21"),
+      cyberpunk: n("Lobby Bulkbot", "Riot Mech@11", "Tower Sentinel@21"),
       space_opera: n("Service Frame", "War Frame@11", "Siege Walker@21"),
       post_apocalyptic: n("Scrap Golem", "Old-World Sentry@11", "War Machine Relic@21"),
     },
@@ -1409,20 +1409,30 @@ export function marinaraEnemySpec(input: {
  * encounters the builder makes.
  */
 export const MARINARA_ENCOUNTER_BUDGET = {
-  easy: 0.6,
+  easy: 0.7,
   normal: 1,
-  hard: 1.35,
-  deadly: 1.7,
+  hard: 1.2,
+  deadly: 1.6,
 } as const;
 export type MarinaraEncounterDifficulty = keyof typeof MARINARA_ENCOUNTER_BUDGET;
 
 /** A foe's worth changes this much per level it stands above (or below) the party. */
 export const MARINARA_LEVEL_GAP_THREAT = 1.12;
+
+/** A boss counts for this much more than its measured worth: one foe carrying the whole fight swings
+ *  more from fight to fight (a lucky crit, a missed heal), and boss-led fights won less often than
+ *  others at the same rating. */
+export const MARINARA_BOSS_THREAT_PREMIUM = 1.15;
 /** How far a foe's level may stray from the party's: never more than 3 above (a boss 5), and foes
  *  more than 8 below aren't worth a fight. */
 export const MARINARA_LEVEL_GAP = { above: 3, bossAbove: 5, below: 8 } as const;
 /** A Classic battle has room for six foes. */
 export const MARINARA_MAX_FOES = 6;
+
+/** Roles whose effects stack across copies (a leader's war cry, a healer's mending): one per fight, so
+ *  two captains don't double every foe's damage. Measured: stacked captains were the fights that went
+ *  furthest past their rating. */
+export const MARINARA_ROLE_CAP: Partial<Record<MarinaraEnemyRole, number>> = { leader: 1, healer: 1 };
 
 function interpolate(levels: Record<number, number>, level: number): number | null {
   const points = Object.entries(levels)
@@ -1451,6 +1461,7 @@ export function marinaraFoeThreat(familyId: string, tier: MarinaraEnemyTier, lev
     const standard = measured?.standard ? interpolate(measured.standard, level) : null;
     worth = (standard ?? 1) * MARINARA_TIER_RULES[tier].threat;
   }
+  if (tier === "boss") worth *= MARINARA_BOSS_THREAT_PREMIUM;
   return worth * Math.pow(MARINARA_LEVEL_GAP_THREAT, level - partyLevel);
 }
 
@@ -1535,6 +1546,10 @@ export function marinaraCheckEncounter(input: {
   for (const tier of MARINARA_ENEMY_TIERS_LIST)
     if ((perTier[tier] ?? 0) > MARINARA_TIER_RULES[tier].maxPerFight)
       problems.push(`${perTier[tier]} ${tier} foes; at most ${MARINARA_TIER_RULES[tier].maxPerFight}.`);
+  for (const [role, cap] of Object.entries(MARINARA_ROLE_CAP)) {
+    const count = foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)?.role === role).length;
+    if (count > cap!) problems.push(`${count} ${role} foes; at most ${cap}.`);
+  }
   if (foes.length && front === 0) problems.push("Nobody in the front row.");
   const rating = marinaraEncounterRating(threat, party);
   if (rating === "beyond") problems.push(`Threat ${threat.toFixed(1)} is beyond Deadly for this party.`);
@@ -1631,6 +1646,9 @@ export function marinaraBuildEncounter(input: {
   }
   // Fill: try foes from the chosen families at a tier that fits what's left, until nothing fits.
   const tierCount = (tier: MarinaraEnemyTier) => foes.filter((foe) => foe.tier === tier).length;
+  const roleFull = (family: MarinaraEnemyFamily) =>
+    MARINARA_ROLE_CAP[family.role] !== undefined &&
+    foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)!.role === family.role).length >= MARINARA_ROLE_CAP[family.role]!;
   for (let guard = 0; guard < 40 && foes.length < MARINARA_MAX_FOES; guard++) {
     const left = budget - threat;
     const options: MarinaraEncounterFoe[] = [];
@@ -1638,6 +1656,7 @@ export function marinaraBuildEncounter(input: {
       for (const tier of family.tiers) {
         if (tier === "boss" || level < MARINARA_TIER_RULES[tier].minLevel) continue;
         if (tierCount(tier) >= MARINARA_TIER_RULES[tier].maxPerFight) continue;
+        if (roleFull(family)) continue;
         const foe = { familyId: family.id, tier, level };
         if (worth(foe) <= left) options.push(foe);
       }
@@ -1728,6 +1747,11 @@ export function marinaraFitEncounter(input: {
       continue;
     }
     if (tier !== asked.tier) changes.push(`${family.id}: ${asked.tier} → ${tier}.`);
+    const roleCap = MARINARA_ROLE_CAP[family.role];
+    if (roleCap !== undefined && foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)!.role === family.role).length >= roleCap) {
+      changes.push(`Dropped ${family.id}: at most ${roleCap} ${family.role} in a fight.`);
+      continue;
+    }
     if (foes.length >= MARINARA_MAX_FOES) {
       changes.push(`Dropped ${family.id}: a battle has room for ${MARINARA_MAX_FOES}.`);
       continue;

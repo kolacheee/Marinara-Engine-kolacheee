@@ -18,8 +18,8 @@ for (const partyLevel of [6, 14, 22]) {
       const level = partyLevel + gap;
       if (level < family.levels[0]) continue;
       // The foes stand at `level`; the party at `partyLevel`.
-      const h = normalScale((hp) => foes(family, "standard", level, 3, hp), partyLevel, 3, `gap:${id}:${partyLevel}:${gap}`, 8);
-      worth[gap] = 4 / (3 * Math.sqrt(h));
+      const s = normalScale((k) => foes(family, "standard", level, 3, k, k), partyLevel, 3, `gap:${id}:${partyLevel}:${gap}`, 8);
+      worth[gap] = 4 / (3 * s);
     }
     const up = worth[3] && worth[0] ? Math.pow(worth[3] / worth[0], 1 / 3) : NaN;
     const down = worth[-3] && worth[0] ? Math.pow(worth[0] / worth[-3], 1 / 3) : NaN;
