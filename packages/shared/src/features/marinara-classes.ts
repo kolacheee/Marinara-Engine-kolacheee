@@ -797,7 +797,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "speed",
           8,
-          "Bonus action. The user can't be targeted until its next turn and acts again at once. Its next hit is a critical hit, and the target takes 20% more damage from all sources for 2 turns. Usable every other turn.",
+          "Bonus action. The user can't be targeted until its next turn. Its next hit is a critical hit, and the target takes 20% more damage from all sources for 2 turns. Usable every other turn.",
           true,
         ),
         passive(
@@ -975,7 +975,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "skill",
           3,
-          "Bonus action. The target takes 35% more damage from all sources for 3 turns, and the user acts again at once.",
+          "Bonus action. The target takes 35% more damage from all sources for 3 turns.",
           true,
         ),
         passive(
