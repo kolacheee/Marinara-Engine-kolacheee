@@ -103,6 +103,8 @@ function fight(seed: number, level: number, tiers: MarinaraEnemyTier[]): CombatD
   });
 }
 
+const USAGE: Record<string, Record<string, number>> | null = process.env.USAGE ? {} : null;
+
 function playOut(s: CombatDirectorState) {
   for (let step = 0; step < 6000 && !s.outcome; step++) {
     if (s.tactical) {
@@ -121,10 +123,15 @@ function playOut(s: CombatDirectorState) {
     }
     if (s.stage === "action" && s.actorId) {
       const unit = [...s.party, ...s.enemies].find((u) => u.id === s.actorId)!;
-      commandCombatDirector(s, {
-        type: "classic",
-        action: marinaraAiAction(s.marinara!, unit, s.round, "normal", false),
-      });
+      const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false);
+      if (USAGE && unit.side === "player") {
+        // USAGE=1: what each party class spends its turns on.
+        const fighter = s.marinara!.fighters.find((f) => f.id === unit.id)!;
+        const what = action.type === "skill" ? action.skillId : action.type;
+        const row = (USAGE[fighter.classId ?? fighter.archetype ?? "?"] ??= {});
+        row[what] = (row[what] ?? 0) + 1;
+      }
+      commandCombatDirector(s, { type: "classic", action });
     } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
     else commandCombatDirector(s, { type: "continue" });
   }
@@ -163,3 +170,14 @@ for (const level of LEVELS) {
   }
 }
 console.log(rows.join("\n"));
+if (USAGE)
+  for (const [cls, row] of Object.entries(USAGE).sort()) {
+    const total = Object.values(row).reduce((a, b) => a + b, 0);
+    console.log(
+      cls.padEnd(16),
+      Object.entries(row)
+        .sort((a, b) => b[1] - a[1])
+        .map(([k, v]) => `${k} ${Math.round((v / total) * 100)}%`)
+        .join(", "),
+    );
+  }

@@ -142,6 +142,8 @@ export interface MarinaraEffect {
   exposes?: { pct: number; duration: number };
   /** Heals that cleanse: every debuff, or the worst one on each target. */
   cleanse?: "all" | "one";
+  /** Heals the user for this share of the damage it deals (Grave Tithe). */
+  drain?: number;
   /** Timeline weight of the action: 1 normal, more for heavy actions. */
   weight?: number;
   /** Takes a turn of charging before it lands. */
@@ -261,6 +263,9 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   lull: { kind: "status", target: "enemy", status: "sleep", chance: 0.75, duration: 3 },
   "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2 },
   siphon: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
+  // Every foe, and the Hexer drinks half of it back: a Hexer can hold the front against a swarm
+  // (Alyssa 2026-11-01).
+  "grave-tithe": dmg("magic", 5, { target: "all-enemies", ranged: true, drain: 0.5, cooldown: 2 }),
   "total-eclipse": { kind: "debuff", target: "all-enemies", stat: "damage", pct: -0.4, duration: 2, cooldown: 3 },
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
@@ -413,7 +418,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "hold-the-line": { holdTheLine: true, vanguard: true },
   "keen-eye": { hitBonus: 15, critBonus: 10 },
   "exploit-weakness": { weakBonus: 0.5 },
-  "drain-touch": { lifestealPct: 0.15 },
+  "drain-touch": { lifestealPct: 0.2 },
   "rallying-presence": { partyDamagePct: 0.1 },
   riposte: { counter: "on-miss" },
   "keen-edge": { critBonus: 10 },
@@ -1890,7 +1895,7 @@ function strike(
     roll: Math.floor(roll),
   });
   if (rider) applyRider(actor, target, rider, crit, ctx);
-  const lifesteal = (hooks.lifestealPct ?? 0) + (actor.gear?.lifestealPct ?? 0);
+  const lifesteal = (hooks.lifestealPct ?? 0) + (actor.gear?.lifestealPct ?? 0) + (effect.drain ?? 0);
   if (lifesteal) actor.hp = Math.round(Math.min(actor.maxHp, actor.hp + dealt * lifesteal * healFactor(actor)));
   if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);
   if (actor.exposeNext) {
