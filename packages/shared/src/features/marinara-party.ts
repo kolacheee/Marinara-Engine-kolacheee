@@ -33,7 +33,7 @@ import {
 } from "./marinara-combat.js";
 import {
   marinaraGearBonus,
-  marinaraStandardEquipment,
+  marinaraWornEquipment,
   marinaraTierForLevel,
   type MarinaraEquipment,
 } from "./marinara-items.js";
@@ -314,8 +314,8 @@ export function marinaraPartyFighter(id: string, name: string, progression: Mari
   // Until a party member has gear of their own, they fight with their class's standard kit for their
   // level's tier, as the class and bestiary labs measured them (decided 2026-11-01).
   const archetype = marinaraClass(progression.activeClass)?.archetype ?? progression.primary;
-  const equipment =
-    progression.equipment ?? marinaraStandardEquipment(archetype, marinaraTierForLevel(progression.level));
+  // An empty weapon or armour slot falls back to the kit's piece for their tier (items playtest I1).
+  const equipment = marinaraWornEquipment(archetype, marinaraTierForLevel(progression.level), progression.equipment);
   const gear = marinaraFighterGear(equipment, progression.stats.strength);
   return buildMarinaraPartyFighter({
     id,
