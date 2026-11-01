@@ -138,6 +138,8 @@ export interface MarinaraEffect {
   spread?: number;
   /** Vanish: the user can't be targeted until its next turn. */
   hide?: boolean;
+  /** Costs no turn: the user acts again at once (not from an action that was itself a bonus). */
+  bonusAction?: boolean;
   /** The user's next landed hit exposes its target: everyone deals this much more to it for 2 turns. */
   exposeNext?: number;
   /** A landed status also exposes the target (Seal). */
@@ -217,6 +219,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     duration: 1,
     hide: true,
     exposeNext: 0.2,
+    // A bonus action (Alyssa 2026-11-01): the Phantom vanishes and strikes in the same turn.
+    bonusAction: true,
     cooldown: 2,
   },
   "hit-and-run": dmg("strength", 5, { weight: 0.6 }),
@@ -279,7 +283,13 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // (Alyssa 2026-11-01).
   // Front row only (Alyssa 2026-11-01): the Hexer's front-line drain.
   "grave-tithe": dmg("magic", 5, { target: "all-enemies", ranged: true, drain: 0.5, cooldown: 2, frontOnly: true }),
-  "total-eclipse": { kind: "debuff", target: "all-enemies", stat: "damage", pct: -0.4, duration: 2, cooldown: 3 },
+  // Void Sovereign (reworked 2026-11-01): it hurts every foe as well as weakening them.
+  "total-eclipse": dmg("magic", 7, {
+    target: "all-enemies",
+    ranged: true,
+    cooldown: 2,
+    onHit: { stat: "damage", pct: -0.3, duration: 2 },
+  }),
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
   revive: { kind: "revive", target: "downed-ally", power: 0.25 },
@@ -481,6 +491,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "true-aim": { hitBonus: 15 },
   steady: { hitBonus: 5 },
   overwatch: { counter: "always" },
+  "abyssal-will": { spellDamagePct: 0.2 },
   "dead-eye": { critBonus: 15 },
   "read-the-signs": { critBonus: 5 },
   "pack-tactics": { partyBonusVsMarked: 0.25 },
@@ -1790,6 +1801,10 @@ function act(
         ctx.events.push({ kind: "buff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
       }
       if (effect.hide) actor.hidden = true;
+      if (effect.bonusAction && !actor.commanded) {
+        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
+      }
       if (effect.exposeNext) actor.exposeNext = effect.exposeNext;
       break;
     case "debuff":
