@@ -289,6 +289,63 @@ console.log("game-marinara-items regression passed");
 }
 console.log("game-marinara-items (in a game) passed");
 
+// ── Steal (marinara-combat.ts, kept by marinara-loot.ts) ──
+{
+  const {
+    buildMarinaraEnemy,
+    marinaraStealChance,
+    marinaraUsable,
+    marinaraVictoryLoot,
+    performMarinaraOption,
+    marinaraRandom,
+  } = await import("../../packages/shared/src/index.js");
+  const thief = {
+    ...buildMarinaraEnemy({ id: "t", name: "Thief", archetype: "scout", level: 12, tier: "standard" }),
+    side: "party" as const,
+    skills: [{ id: "steal", label: "Steal", kind: "active" as const, cost: 1, resource: "stamina" as const }],
+  };
+  const mark = {
+    ...buildMarinaraEnemy({ id: "m", name: "Mark", archetype: "blade", level: 12, tier: "standard" }),
+    familyId: "sellsword",
+  };
+  const boss = { ...mark, id: "b", tier: "boss" as const };
+  const all = [thief, mark];
+  const steal = marinaraUsable(thief).find((option) => option.id === "steal");
+  assert.ok(steal, "Steal is something a Scout can do in a fight");
+  // Odds: bosses are harder, Light Fingers helps, always between 10% and 95%.
+  const base = marinaraStealChance(thief, mark, all);
+  assert.ok(base >= 10 && base <= 95);
+  assert.ok(marinaraStealChance(thief, boss, [thief, boss]) < base, "a boss is harder to rob");
+  const lucky = { ...thief, gear: { power: 0, spellPower: 0, stealChance: 0.25 } };
+  assert.ok(marinaraStealChance(lucky, mark, [lucky, mark]) > base || base === 95, "Light Fingers helps");
+  // A foe is robbed once; a second try finds nothing.
+  let robbed = false;
+  for (let i = 0; i < 20 && !robbed; i++) {
+    const ctx = { random: marinaraRandom(`steal-${i}`), events: [] as Array<{ kind: string; status?: string }> };
+    performMarinaraOption(thief, steal!, [mark], all, ctx as never);
+    robbed = mark.stolenBy === "t";
+    if (robbed) assert.ok(ctx.events.some((event) => event.kind === "steal"));
+  }
+  assert.ok(robbed, "a Steal lands within 20 tries");
+  const again = { random: () => 0, events: [] as Array<{ kind: string; status?: string }> };
+  performMarinaraOption(thief, steal!, [mark], all, again as never);
+  assert.ok(
+    again.events.some((event) => event.kind === "steal" && event.status === "empty"),
+    "nothing left to take",
+  );
+  // What was stolen is kept even when the foe still stands (the party fled), and on top of a win's loot.
+  const kept = marinaraVictoryLoot({ fighters: all, place: { setting: "fantasy" }, seed: "s" });
+  assert.equal(kept.items.length + (kept.gold > 0 ? 1 : 0), 1, "one thing from the one robbed foe");
+  assert.deepEqual(marinaraVictoryLoot({ fighters: all, place: { setting: "fantasy" }, seed: "s" }), kept, "seeded");
+  const plain = marinaraVictoryLoot({
+    fighters: [thief, { ...mark, stolenBy: undefined }],
+    place: { setting: "fantasy" },
+    seed: "s",
+  });
+  assert.deepEqual(plain.lines, [], "nothing robbed, nobody beaten, nothing kept");
+}
+console.log("game-marinara-items (steal) passed");
+
 // ── Equipping from the bag ──
 {
   const { marinaraOwnedGear, marinaraEquipRefusal, marinaraEquipmentForClass } =
