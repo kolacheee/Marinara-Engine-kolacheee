@@ -24,6 +24,7 @@ import {
   marinaraRoundAt,
   marinaraSkillCost,
   marinaraSkillEffect,
+  marinaraStruck,
   marinaraTargetsFor,
   marinaraUsable,
   nextMarinaraActor,
@@ -412,6 +413,80 @@ export function performMarinaraAction(
   record(state, ctx, log, source);
 }
 
+/**
+ * A Tactical fighter's turn starting (Classic Marinara on a board): its statuses tick, its stamina
+ * comes back and its cooldowns count down. Returns whether it acts; one that was charging lets the
+ * charge go instead, on the one it aimed at.
+ */
+export function marinaraTacticalTurnStart(
+  state: MarinaraDirectorState,
+  unitId: string,
+  seed: number,
+  log: MarinaraLog,
+): boolean {
+  const actor = marinaraFighter(state, unitId);
+  if (!actor || actor.hp <= 0) return false;
+  const ctx = context(state, seed, true);
+  const start = beginMarinaraTurn(actor, state.fighters, ctx);
+  record(state, ctx, log);
+  if (start.release) {
+    const release = { ...context(state, seed, true), grouped: false };
+    releaseMarinaraCharge(actor, start.release, state.fighters, release);
+    record(state, release, log);
+    return false;
+  }
+  return start.acts;
+}
+
+/**
+ * A Tactical action on Classic Marinara math. The board has already said who is in reach; an area
+ * lands on the one aimed at and every foe of theirs within `areaRadius` tiles of them (decided
+ * 2026-11-01: the board's area, not the whole side as in Classic). A skill that can't be used now
+ * becomes a basic attack on the same target.
+ */
+export function performMarinaraTacticalAction(
+  state: MarinaraDirectorState,
+  unitId: string,
+  action: CombatPlayerAction,
+  seed: number,
+  log: MarinaraLog,
+  near: (id: string) => string[],
+  reach: (id: string) => boolean,
+  source?: string,
+): void {
+  const actor = marinaraFighter(state, unitId);
+  if (!actor) throw new Error("Combatant cannot act.");
+  const ctx = { ...context(state, seed, true), grouped: false };
+  if (action.type === "defend") marinaraDefend(actor, ctx);
+  else if (action.type === "attack" || action.type === "skill") {
+    const option =
+      (action.type === "skill" ? marinaraOption(actor, action.skillId) : undefined) ?? marinaraOption(actor, null);
+    if (!option) throw new Error("Combatant cannot attack.");
+    const effect = option.effect;
+    const picked = action.targetId ? marinaraFighter(state, action.targetId) : undefined;
+    let struck: MarinaraFighter[];
+    if (effect.target === "self" || effect.target === "party")
+      struck = marinaraStruck(actor, effect, [], state.fighters);
+    else {
+      const pool = marinaraTargetsFor(actor, effect, state.fighters);
+      let aim = picked && pool.includes(picked) ? picked : undefined;
+      // A challenge or a provoker forces the pick only when it can be reached from where the unit
+      // stands; otherwise the board's pick stands (a foe it can't reach can't be made its target).
+      if (!aim && picked && picked.hp > 0 && picked.side !== actor.side && effect.target !== "ally") {
+        const anyFoe = marinaraTargetsFor(actor, { ...effect, target: "all-enemies" }, state.fighters);
+        aim = pool.find((one) => reach(one.id)) ?? (anyFoe.includes(picked) ? picked : undefined);
+      }
+      if (!aim) throw new Error("Invalid target.");
+      struck =
+        effect.target === "all-enemies" || effect.target === "front-row"
+          ? [aim, ...pool.filter((one) => one !== aim && near(aim.id).includes(one.id))]
+          : [aim];
+    }
+    performMarinaraOption(actor, option, struck, state.fighters, ctx);
+  }
+  record(state, ctx, log, source);
+}
+
 /** An item the director resolved its own way changed HP: the fighters take the new numbers. */
 export function absorbItemResult(state: MarinaraDirectorState, units: readonly Combatant[]): void {
   for (const unit of units) {
@@ -511,6 +586,20 @@ export function marinaraCombatant(fighter: MarinaraFighter, extra: Partial<Comba
     skills: marinaraCombatSkills(fighter),
     ...extra,
   };
+  // On a board its reach and step follow its archetype, whatever the fight's setup guessed.
+  if (fighter.archetype) unit.combatClass = MARINARA_BOARD_CLASSES[fighter.archetype];
   unit.marinara = marinaraCombatantView(fighter);
   return unit;
 }
+
+/** The Tactical class each archetype fights as on a board: its reach and its movement. */
+const MARINARA_BOARD_CLASSES: Record<NonNullable<MarinaraFighter["archetype"]>, string> = {
+  blade: "fighter",
+  guard: "knight",
+  scout: "rogue",
+  marksman: "archer",
+  channeler: "mage",
+  hexer: "mage",
+  mender: "healer",
+  herald: "fighter",
+};

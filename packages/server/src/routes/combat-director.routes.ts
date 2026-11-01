@@ -1301,7 +1301,7 @@ export async function combatDirectorRoutes(
         // Classic Marinara classes (combat overhaul): the party fights with the progressions kept on their
         // cards and the opponents by tier, in a Classic fight of a game without a ruleset.
         let marinara: MarinaraFightStart | null = null;
-        if (setup.marinaraClasses === true && input.style === "classic" && !meta.gameRuleset) {
+        if (setup.marinaraClasses === true && input.style !== "ruleset" && !meta.gameRuleset) {
           marinara = marinaraFightStart({
             gameId: input.chatId,
             cards: Array.isArray(meta.gameCharacterCards) ? meta.gameCharacterCards : [],
