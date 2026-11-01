@@ -25,7 +25,7 @@ import {
 import type { MarinaraEnemyTier, MarinaraFighter } from "../../packages/shared/src/features/marinara-combat.js";
 import { enemyFighter, playFight, referenceParty, REFERENCE_PARTIES, seedOf } from "./bestiary-units.js";
 
-export const SAMPLE_LEVELS = [1, 4, 8, 12, 16, 20, 24, 28] as const;
+export const SAMPLE_LEVELS = [1, 4, 8, 12, 16, 20, 24, 28, 30] as const;
 export const NORMAL_HP_LOST = 0.35;
 const COPIES: Record<MarinaraEnemyTier, number> = { minion: 4, standard: 3, elite: 2, boss: 1 };
 
