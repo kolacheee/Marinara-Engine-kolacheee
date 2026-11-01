@@ -129,6 +129,11 @@ assert.equal(duelist.classLevels.duelist, 10);
 assert.ok(duelist.stats.speed > leveled.stats.speed, "promotion bonus lands");
 const back = setMarinaraClass(setMarinaraClass(duelist, "blade"), "duelist");
 assert.deepEqual(back.stats, duelist.stats);
+// A promotion fills empty carry slots with the parent class's actives, so the kit doesn't shrink.
+assert.ok(duelist.carried.length > 0 && duelist.carried.length <= 4);
+assert.ok(
+  duelist.carried.every((id) => marinaraLearnedSkills(leveled).some((s) => s.id === id && s.kind === "active")),
+);
 
 // Skills: only the active class's, plus up to four carried from other trained classes.
 leveled = awardMarinaraXp(duelist, 500, random).progression; // Duelist class level 15
