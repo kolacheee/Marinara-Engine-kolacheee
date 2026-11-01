@@ -12,11 +12,14 @@ type Props = {
   loot?: ReadonlyArray<{ name: string; quantity?: number }>;
   /** The fight is over: nobody acts next. */
   over?: boolean;
+  /** Loads another ammunition type for a Marksman of the party (Alyssa 2026-11-01): a free action. */
+  onLoadAmmo?: (unitId: string, type: string) => void;
+  busy?: boolean;
 };
 
 const pct = (value: number) => `${value > 0 ? "+" : ""}${Math.round(value * 100)}%`;
 
-export function MarinaraFightPanel({ party, enemies, actorId, growth, loot, over }: Props) {
+export function MarinaraFightPanel({ party, enemies, actorId, growth, loot, over, onLoadAmmo, busy }: Props) {
   const { t } = useTranslation();
   const units = [...party, ...enemies].filter((unit) => unit.marinara);
   if (!units.length) return null;
@@ -32,6 +35,50 @@ export function MarinaraFightPanel({ party, enemies, actorId, growth, loot, over
           {order.map((unit) => unit.name).join(" → ")}
         </p>
       )}
+      {/* A Marksman's ammunition, switched by hand at any time; one the AI runs loads its own. */}
+      {!over &&
+        onLoadAmmo &&
+        party
+          .filter((unit) => unit.hp > 0 && unit.marinara?.ammo)
+          .map((unit) => {
+            const ammo = unit.marinara!.ammo!;
+            return (
+              <div
+                key={unit.id}
+                className="flex flex-wrap items-center gap-1"
+                role="group"
+                aria-label={t("game.combat.marinara.ammo", { name: unit.name })}
+                data-testid="marinara-ammo"
+              >
+                <span className="text-[var(--muted-foreground)]">
+                  {t("game.combat.marinara.ammo", { name: unit.name })}
+                </span>
+                {ammo.choices.map((type) => {
+                  const loaded = !ammo.auto && ammo.loaded === type;
+                  return (
+                    <button
+                      key={type}
+                      type="button"
+                      disabled={ammo.auto || busy || loaded}
+                      aria-pressed={loaded}
+                      onClick={() => onLoadAmmo(unit.id, type)}
+                      className={
+                        "rounded border px-1.5 py-0.5 disabled:cursor-default " +
+                        (loaded
+                          ? "border-[var(--primary)] bg-[var(--secondary)] font-medium"
+                          : "border-[var(--border)] disabled:opacity-60")
+                      }
+                    >
+                      {t(`game.combat.marinara.damageType.${type}`, { defaultValue: type })}
+                    </button>
+                  );
+                })}
+                {ammo.auto && (
+                  <span className="text-[var(--muted-foreground)]">{t("game.combat.marinara.ammoAuto")}</span>
+                )}
+              </div>
+            );
+          })}
       {/* Folded by default: open, it pushed the stage above it down to a sliver (playtest 2026-11-01). */}
       <details>
         <summary className="cursor-pointer text-[var(--muted-foreground)]">

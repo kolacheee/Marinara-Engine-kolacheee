@@ -46,6 +46,8 @@ import {
   type CombatOrders,
   normalizeCharacterLookupName,
   marinaraLearnedSkills,
+  MARINARA_DAMAGE_TYPES,
+  marinaraOwnedAmmo,
   marinaraKeptTraits,
   marinaraClass,
   marinaraUsableSkills,
@@ -417,6 +419,7 @@ const command = z.discriminatedUnion("type", [
   z.object({ type: z.literal("fallback") }),
   z.object({ type: z.literal("flee") }),
   z.object({ type: z.literal("mercy"), choice: z.enum(["spare", "finish"]) }),
+  z.object({ type: z.literal("loadAmmo"), unitId: key, ammo: z.enum(MARINARA_DAMAGE_TYPES) }),
   z.object({ type: z.literal("yield") }),
   z.object({ type: z.literal("control"), unitId: key, controller: z.enum(["manual", "ai"]) }),
   z.object({ type: z.literal("controlCompanions"), controller: z.enum(["manual", "ai"]) }),
@@ -1392,6 +1395,7 @@ export async function combatDirectorRoutes(
             ...(marinaraEncounter(input) ? { encounter: marinaraEncounter(input)! } : {}),
             ...marinaraRare(input),
             seed: randomUUID(),
+            ammo: marinaraOwnedAmmo(fightItems.lines.flatMap((line) => [line.name, line.ownName ?? line.name])),
           });
           if (!marinara.party.length) return reply.code(400).send({ error: "Nobody in the party can fight." });
           if (marinara.cards) {
@@ -1418,7 +1422,11 @@ export async function combatDirectorRoutes(
         const state = createCombatDirector({
           ...input,
           ...(environment ? { environment } : {}),
-          inventory: fightItems.lines.map(({ name, quantity, ownName, item }) => ({
+          // Ammunition is no item to use in a Classic fight: it is what its Marksmen load.
+          inventory: (marinara
+            ? fightItems.lines.filter((line) => !marinaraOwnedAmmo([line.name, line.ownName ?? line.name]).length)
+            : fightItems.lines
+          ).map(({ name, quantity, ownName, item }) => ({
             name,
             quantity,
             ...(ownName ? { ownName } : {}),

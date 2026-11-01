@@ -28,6 +28,7 @@ import {
   type MarinaraFighter,
   type MarinaraFoeBrief,
   type MarinaraPartyTemperament,
+  type MarinaraDamageType,
 } from "@marinara-engine/shared";
 import { gameCardFor } from "./party-temperament.service.js";
 import { marinaraCombatant, type MarinaraDirectorState } from "./marinara-director.service.js";
@@ -80,6 +81,8 @@ export function marinaraFightStart(input: {
   treasure?: boolean;
   /** Seeds the rare encounter roll. */
   seed?: string;
+  /** The ammunition types the party's bags hold, for its Marksmen's bows and guns. */
+  ammo?: readonly MarinaraDamageType[];
 }): MarinaraFightStart {
   const named = input.cards.filter(
     (card): card is Record<string, unknown> & { name: string } =>
@@ -104,6 +107,7 @@ export function marinaraFightStart(input: {
       if (card) made.set(normalizeCharacterLookupName(card.name), progression);
     }
     const fighter = marinaraPartyFighter(member.id, member.name, progression);
+    if (input.ammo?.length && fighter.archetype === "marksman") fighter.ammoOwned = [...input.ammo];
     fighters.push(fighter);
     party.push(marinaraCombatant(fighter, kept(member)));
   }

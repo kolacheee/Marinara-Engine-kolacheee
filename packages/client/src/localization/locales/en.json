@@ -2156,6 +2156,8 @@
   "game.combat.marinara.affinity.immune": "immune to {{type}}",
   "game.combat.marinara.affinity.resist": "resists {{type}}",
   "game.combat.marinara.affinity.weak": "weak to {{type}}",
+  "game.combat.marinara.ammo": "{{name}}’s ammo:",
+  "game.combat.marinara.ammoAuto": "(the AI loads the best)",
   "game.combat.marinara.archetype.blade": "Blade",
   "game.combat.marinara.archetype.channeler": "Channeler",
   "game.combat.marinara.archetype.guard": "Guard",

@@ -75,7 +75,7 @@ export function buildCharacter(def: MarinaraClassDef, level: number, seed: strin
       character = awardMarinaraXp(character, (target - character.level) * 100, random).progression;
   }
   // A player carries the best of what earlier classes taught: their marked picks first, then actives.
-  // A tree trait the class already keeps (Cover, Ammo Pouch) takes no carry slot.
+  // A tree trait the class already keeps (Cover, Hold the Line) takes no carry slot.
   const traits = MARINARA_ARCHETYPE_TRAITS[marinaraClass(character.activeClass)!.archetype] ?? [];
   const earlier = marinaraLearnedSkills(character).filter(
     (skill) =>
@@ -499,7 +499,7 @@ function crossTrained(primary: MarinaraArchetype, secondary: MarinaraArchetype, 
   character = awardMarinaraXp(character, 1000, random).progression; // secondary base 1 -> 11 (level 20)
   const advanced = MARINARA_CLASSES.find((def) => def.from === primary && !def.pure)!;
   character = setMarinaraClass(character, advanced.id);
-  // A tree trait the class already keeps (Cover, Ammo Pouch) takes no carry slot.
+  // A tree trait the class already keeps (Cover, Hold the Line) takes no carry slot.
   const traits = MARINARA_ARCHETYPE_TRAITS[marinaraClass(character.activeClass)!.archetype] ?? [];
   const earlier = marinaraLearnedSkills(character).filter(
     (skill) =>

@@ -22,7 +22,6 @@ import {
   MARINARA_ARCHETYPE_ATTACKS,
   MARINARA_ARCHETYPE_BASES,
   MARINARA_ELEMENTS,
-  MARINARA_PHYSICAL_TYPES,
   MARINARA_STAMINA,
   MARINARA_STATS,
   MARINARA_POISON_RIDER,
@@ -490,8 +489,6 @@ export interface MarinaraPassiveHooks {
   /** Added to the weakness multiplier. */
   weakBonus?: number;
   lifestealPct?: number;
-  /** Ammo Pouch: weapon hits may take any martial or elemental type. */
-  ammo?: boolean;
   /** Magic damage the user takes changes by this share (Old Oath). */
   magicTakenPct?: number;
   /** Siphoning Rot: the user's poison and wither ticks heal it for this share of what they take. */
@@ -620,7 +617,6 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "return-fire": { counter: "always", counterOncePerRound: true },
   "abyssal-will": { spellDamagePct: 0.2 },
   "dead-eye": { critBonus: 15, weakBonus: 0.25 },
-  "ammo-pouch": { ammo: true },
   "old-oath": { statPct: { resistance: 0.3 }, magicTakenPct: -0.2 },
   "read-the-signs": { critBonus: 5, bonusVsMarked: 0.2 },
   "pack-tactics": { partyBonusVsMarked: 0.4 },
@@ -684,6 +680,12 @@ export interface MarinaraFighter {
   /** A coating on the weapon: a rider type carried on weapon hits, for `coatingTurns` more turns. */
   coating?: MarinaraDamageType;
   coatingTurns?: number;
+  /** The ammunition types the party owns, for a Marksman's bow or gun (Alyssa 2026-11-01). */
+  ammoOwned?: MarinaraDamageType[];
+  /** The ammunition loaded by hand; absent, the weapon's own. */
+  ammoLoaded?: MarinaraDamageType;
+  /** Run by the AI: loads whichever owned ammunition hurts the target most, shot by shot. */
+  ammoAuto?: boolean;
   /** Damage type of a unit with no class (a monster). */
   attackType?: MarinaraDamageType;
   /** Active skills and passives it fights with. */
@@ -1246,11 +1248,37 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
   const options =
     type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
-  // Ammo Pouch: a Marksman loads whichever martial or elemental ammo hurts most.
-  if ((type === "weapon" || type === "any-physical") && hooksOf(actor).ammo)
-    return [...options, ...MARINARA_PHYSICAL_TYPES.filter((t) => !options.includes(t)), ...MARINARA_ELEMENTS];
+  const imbued = type === "weapon" && modTotal(actor, "imbue") > 0;
+  // Ammunition: a Marksman's shot is the loaded type, or under the AI the best type owned.
+  const ammo = type === "weapon" || type === "any-physical" ? marinaraAmmoChoices(actor) : [];
+  if (ammo.length) {
+    const shots = actor.ammoAuto
+      ? [...new Set([...options, ...ammo])]
+      : actor.ammoLoaded && ammo.includes(actor.ammoLoaded)
+        ? [actor.ammoLoaded]
+        : options;
+    return imbued ? [...new Set([...shots, ...MARINARA_ELEMENTS])] : shots;
+  }
   // Imbue Weapon: the weapon's damage becomes the user's pick of element.
-  return type === "weapon" && modTotal(actor, "imbue") > 0 ? [...options, ...MARINARA_ELEMENTS] : options;
+  return imbued ? [...options, ...MARINARA_ELEMENTS] : options;
+}
+
+/**
+ * What a Marksman can load (Alyssa 2026-11-01: not a skill, an inherent quality of their bows and
+ * guns): the weapon's own type and every ammunition type the party owns. Empty for anyone else, or
+ * for a Marksman whose party owns no ammunition.
+ */
+export function marinaraAmmoChoices(actor: MarinaraFighter): MarinaraDamageType[] {
+  if (actor.archetype !== "marksman" || !actor.ammoOwned?.length || !actor.classId) return [];
+  const own = actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions("weapon", actor.classId);
+  return [...new Set([...own, ...actor.ammoOwned])];
+}
+
+/** Loads a Marksman's ammunition by hand: one of `marinaraAmmoChoices`. A free action. */
+export function marinaraLoadAmmo(actor: MarinaraFighter, type: MarinaraDamageType): boolean {
+  if (!marinaraAmmoChoices(actor).includes(type)) return false;
+  actor.ammoLoaded = type;
+  return true;
 }
 
 /** A song re-sung while it lasts: one more verse on each stat it changes, and its turns start again. */
@@ -2563,6 +2591,9 @@ export interface MarinaraCombatantView {
   /** Threw down its arms: waits on the party, who may spare it or finish it off. */
   yielded?: boolean;
   coating?: MarinaraDamageType;
+  /** A Marksman's ammunition: what is loaded and what can be (owned types and the weapon's own). The
+   *  AI loads by itself for one it runs (`auto`). */
+  ammo?: { loaded: MarinaraDamageType; choices: MarinaraDamageType[]; auto?: boolean };
   /** Damage types it is known to be weak to, resist, be immune to or absorb. */
   affinities?: MarinaraAffinities;
   /** Where it stands on the timeline: lower acts sooner. */
@@ -2593,9 +2624,17 @@ export function marinaraCombatantView(unit: MarinaraFighter, all?: readonly Mari
     ...(unit.enraged ? { enraged: true } : {}),
     ...(unit.yielded ? { yielded: true } : {}),
     ...(unit.coating ? { coating: unit.coating } : {}),
+    ...marinaraAmmoView(unit),
     ...(unit.affinities ? { affinities: { ...unit.affinities } } : {}),
     next: Math.round(unit.next),
   };
+}
+
+function marinaraAmmoView(unit: MarinaraFighter): Pick<MarinaraCombatantView, "ammo"> {
+  const choices = marinaraAmmoChoices(unit);
+  if (!choices.length) return {};
+  const loaded = unit.ammoLoaded && choices.includes(unit.ammoLoaded) ? unit.ammoLoaded : choices[0]!;
+  return { ammo: { loaded, choices, ...(unit.ammoAuto ? { auto: true } : {}) } };
 }
 
 /** What a fight did for one party member: XP, level-ups with their stat gains, and class levels. */

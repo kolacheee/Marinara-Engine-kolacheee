@@ -19,6 +19,7 @@ import {
   summarizeTacticalBattlefield,
   decideTacticalAction,
   decideProfileAction,
+  marinaraLoadAmmo,
   type CombatAiScoreParts,
   type Combatant,
   type CombatSkill,
@@ -52,6 +53,7 @@ import {
   marinaraItemPower,
   marinaraAfterItem,
   marinaraBoardAiAction,
+  marinaraFighter,
   mirrorMarinaraUnits,
   nextMarinaraTurn,
   performMarinaraAction,
@@ -325,12 +327,18 @@ function rulesetBoardSummary(board: RulesetCombatBoard | undefined, seed: number
   return summarizeTacticalBattlefield({ ...board, seed, ...(scene ? { environment: scene } : {}) });
 }
 function sync(s: CombatDirectorState) {
-  if (s.marinara)
+  if (s.marinara) {
+    // A Marksman the AI runs loads its own ammunition, shot by shot; one the player runs, by hand.
+    for (const u of s.tactical ? s.tactical.units : s.party) {
+      const fighter = side(u as Unit) === "party" ? marinaraFighter(s.marinara, u.id) : undefined;
+      if (fighter?.ammoOwned) fighter.ammoAuto = !manual(s, u as Unit);
+    }
     mirrorMarinaraUnits(
       s.marinara,
       s.tactical ? (s.tactical.units as unknown as Combatant[]) : [...s.party, ...s.enemies],
       !!s.tactical,
     );
+  }
   if (s.tactical) {
     const convert = (u: TacticalUnit): Combatant => ({ ...u, side: side(u) === "party" ? "player" : "enemy" });
     s.party = s.tactical.units.filter((u) => u.side === "party").map(convert);
@@ -1880,6 +1888,17 @@ export function commandCombatDirector(s: CombatDirectorState, command: DirectedC
     return;
   }
   if (command.type === "yield") throw new Error("Only a ruleset fight's party may yield.");
+  // A Marksman's ammunition is switched by hand at any time, as a free action (Alyssa 2026-11-01).
+  if (command.type === "loadAmmo") {
+    const u = get(s, command.unitId);
+    const fighter = s.marinara ? marinaraFighter(s.marinara, command.unitId) : undefined;
+    if (!u || side(u) !== "party" || !fighter || fighter.hp <= 0)
+      throw new Error("Only a Marksman of the party loads ammunition.");
+    if (!marinaraLoadAmmo(fighter, command.ammo)) throw new Error("The party owns no such ammunition.");
+    log(s, `${u.name} loads ${command.ammo} ammunition.`, "marinara:ammo", u.id, source);
+    sync(s);
+    return;
+  }
   // Foes who yielded wait on the party's word; a fallback or a carry-on spares them.
   if (s.mercy) {
     const choice =

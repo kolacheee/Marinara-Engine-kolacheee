@@ -895,14 +895,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Archers who switch ammunition to suit any target.",
       leans: ["skill", "strength"],
       skills: [
-        // Ammo (Alyssa 2026-11-01): the Marksman tree fires whichever arrowhead, bolt or shot hurts
-        // most, every martial and elemental type, kept by every Marksman class.
-        passive(
-          "ammo-pouch",
-          "Ammo Pouch",
-          1,
-          "Weapon attacks and skills strike as slash, pierce, blunt, fire, ice or lightning, whichever the target is weakest to.",
-        ),
+        // Ammunition is no skill (Alyssa 2026-11-01): every Marksman's bow or gun loads whatever
+        // ammunition the party owns (marinara-items.ts `ammo-*`), switched by hand mid-fight.
         passive(
           "exploit-weakness",
           "Exploit Weakness",
@@ -1770,7 +1764,7 @@ export function marinaraClassBlockText(progression: MarinaraProgression, classId
   return `Cannot take class ${def?.label ?? classId}.`;
 }
 
-/** The skills every class of the active class's tree keeps (Cover, Drain Touch, Ammo Pouch): they need no
+/** The skills every class of the active class's tree keeps (Cover, Hold the Line): they need no
  *  carry slot. */
 export function marinaraKeptTraits(progression: MarinaraProgression): readonly string[] {
   const archetype = marinaraClass(progression.activeClass)?.archetype;
@@ -1843,7 +1837,6 @@ export function marinaraLearnedSkills(progression: MarinaraProgression): Array<M
  */
 export const MARINARA_ARCHETYPE_TRAITS: Partial<Record<MarinaraArchetype, readonly string[]>> = {
   guard: ["hold-the-line", "cover"],
-  marksman: ["ammo-pouch"],
 };
 
 /** The skills a character fights with: their active class's learned skills and what they carry. */
