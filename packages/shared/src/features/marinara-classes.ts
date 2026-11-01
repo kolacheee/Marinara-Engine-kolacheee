@@ -747,13 +747,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Nimble opportunists who strike fast, dodge faster, and leave with the enemy's valuables.",
       leans: ["speed", "luck"],
       skills: [
-        passive(
-          "keen-eye",
-          "Keen Eye",
-          5,
-          "Raises accuracy by 15% and critical rate by 10%, with weapons and spells.",
-          true,
-        ),
+        passive("keen-eye", "Keen Eye", 5, "Raises accuracy by 15% and critical rate by 10%.", true),
         active(
           "steal",
           "Steal",
