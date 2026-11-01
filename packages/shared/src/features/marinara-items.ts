@@ -2151,6 +2151,33 @@ export function marinaraShopStock(input: {
   return [...consumables, ...gear, ...(size === "small" ? [] : accessories)];
 }
 
+/**
+ * Everything a game's shops can sell a party of this tier, with the smallest place that sells it: the
+ * fixed counterpart of `marinaraShopStock` for a kit's market, whose shelves are the same every day.
+ * A hamlet sells consumables and last tier's gear; a town this tier's gear, revives, cure-alls and
+ * plain accessories; a city the best accessories. T6 gear, uniques, boons and `found` things never.
+ */
+export function marinaraShopCatalog(
+  tier: MarinaraTier,
+  place: MarinaraItemPlace,
+): Array<{ id: string; size: MarinaraShopSize }> {
+  const out: Array<{ id: string; size: MarinaraShopSize }> = [];
+  for (const def of MARINARA_CONSUMABLES)
+    if (!def.found && def.tier <= tier && marinaraItemAllowed(def, place))
+      out.push({ id: def.id, size: def.effect.kind === "revive" || def.id === "cure-all" ? "town" : "small" });
+  const lower = clampTier(Math.min(5, tier - 1));
+  const upper = clampTier(Math.min(5, tier));
+  for (const family of [...MARINARA_WEAPON_FAMILIES, ...MARINARA_ARMOUR_FAMILIES]) {
+    if (!marinaraItemAllowed(family, place)) continue;
+    out.push({ id: `${family.id}-t${lower}`, size: "small" });
+    if (upper !== lower) out.push({ id: `${family.id}-t${upper}`, size: "town" });
+  }
+  for (const def of MARINARA_ACCESSORIES)
+    if (!def.found && def.tier <= tier && marinaraItemAllowed(def, place))
+      out.push({ id: def.id, size: def.rank < 3 ? "town" : "city" });
+  return out;
+}
+
 // ── Checks ──
 
 /** Every item id the tables can produce, for tests and for the Engine's item book. */

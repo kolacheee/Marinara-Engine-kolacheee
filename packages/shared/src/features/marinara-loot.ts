@@ -18,16 +18,18 @@ import {
   marinaraItemInPlace,
   marinaraItemName,
   marinaraItemPlace,
+  marinaraItemPrice,
   marinaraPriceInCoin,
   marinaraRollLoot,
   marinaraRollSteal,
+  marinaraShopCatalog,
   marinaraTierForLevel,
   type MarinaraEquipment,
   type MarinaraFoeRank,
   type MarinaraItemPlace,
   type MarinaraItemSetting,
 } from "./marinara-items.js";
-import { gameWorldKitFromMetadata } from "../schemas/world-kit.schema.js";
+import { gameWorldKitFromMetadata, type WorldKit } from "../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./world/art-family.js";
 
 /** Where a game's items come from: its starter kit, else its own kit's art family, else its genre. */
@@ -238,4 +240,37 @@ export function marinaraEquipmentForClass(
     ...(armor ? { armor } : {}),
     ...(accessories.length ? { accessories } : {}),
   };
+}
+
+// ── Shops ──
+
+/**
+ * A game's setting kit, with the item tables' wares on its shop when the game uses Classic Marinara
+ * classes (`gameSetupConfig.marinaraClasses`): consumables, gear and accessories for the party's tier
+ * (its members' average level), named in the setting and priced in its money, each from the smallest
+ * place that sells it (a hamlet the kit's first size, a town its second, a city its last). Every other
+ * game's kit is returned as it is, so its market is unchanged. A kit with no money has no market.
+ */
+export function marinaraGameWorldKit(metadata: Record<string, unknown> | null | undefined): WorldKit | null {
+  const kit = gameWorldKitFromMetadata(metadata);
+  const setup = (metadata?.gameSetupConfig ?? undefined) as { marinaraClasses?: unknown } | undefined;
+  if (!kit?.money || setup?.marinaraClasses !== true) return kit;
+  const cards = Array.isArray(metadata?.gameCharacterCards) ? (metadata!.gameCharacterCards as unknown[]) : [];
+  const levels = cards.flatMap((card) => {
+    const level = (card as { marinara?: { level?: unknown } } | null)?.marinara?.level;
+    return typeof level === "number" && Number.isFinite(level) && level >= 1 ? [level] : [];
+  });
+  const level = levels.length ? levels.reduce((sum, value) => sum + value, 0) / levels.length : 1;
+  const place = marinaraGameItemPlace(metadata);
+  const last = Math.max(0, kit.sizes.length - 1);
+  const from = { small: 0, town: Math.min(1, last), city: last } as const;
+  const taken = new Set((kit.shop ?? []).map((thing) => thing.name.trim().toLowerCase()));
+  const wares = marinaraShopCatalog(marinaraTierForLevel(level), place).flatMap(({ id, size }) => {
+    const marks = marinaraItemPrice(id);
+    const name = marinaraItemName(id, place);
+    if (marks === null || taken.has(name.toLowerCase())) return [];
+    taken.add(name.toLowerCase());
+    return [{ name, price: Math.max(1, marinaraPriceInCoin(marks, place)), from: from[size] }];
+  });
+  return { ...kit, shop: [...(kit.shop ?? []), ...wares] };
 }
