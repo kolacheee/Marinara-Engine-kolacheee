@@ -276,6 +276,7 @@ export * from "./features/marinara-items.js";
 export * from "./features/marinara-bestiary.js";
 export * from "./features/marinara-bestiary-threat.js";
 export * from "./features/marinara-party.js";
+export * from "./features/marinara-loot.js";
 export * from "./features/combat-director.js";
 
 export * from "./features/combat-conditions.js";
