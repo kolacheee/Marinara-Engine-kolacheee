@@ -134,6 +134,7 @@ export async function planMarinaraVictoryLoot(
   chatId: string,
   fighters: readonly MarinaraFighter[],
   seed: string,
+  away?: { left?: readonly MarinaraFighter[]; fled?: readonly string[] },
 ): Promise<GameLootPlan | null> {
   const chat = await createChatsStorage(db).getById(chatId);
   const metadata = readMetadata(chat?.metadata);
@@ -141,6 +142,8 @@ export async function planMarinaraVictoryLoot(
   const cards = Array.isArray(metadata.gameCharacterCards) ? (metadata.gameCharacterCards as unknown[]) : [];
   const loot = marinaraVictoryLoot({
     fighters,
+    ...(away?.left?.length ? { left: away.left } : {}),
+    ...(away?.fled?.length ? { fled: away.fled } : {}),
     place: marinaraGameItemPlace(metadata),
     seed,
     // The game's money, coin by coin, when it has some.
