@@ -338,6 +338,13 @@ function choose(actor: LabUnit, all: LabUnit[], fight: FightOptions): Choice | n
         const fresh = pool.filter((u) => !u.mods.some((m) => m.source === skill!.id));
         if (!fresh.length) break;
         if ((effect.stat === "damage" || effect.stat === "speed") && !threatened) break;
+        // One mark at a time, as the Engine AI: the party focuses the marked foe.
+        if (
+          effect.stat === "damage-taken" &&
+          effect.target === "enemy" &&
+          foes.some((u) => u.mods.some((m) => m.source === skill!.id))
+        )
+          break;
         const value =
           effect.stat === "damage-taken"
             ? friends.reduce((sum, u) => sum + eff(u, "strength") * 0.5, 0) * (effect.pct ?? 0) * (effect.duration ?? 1)
@@ -345,7 +352,12 @@ function choose(actor: LabUnit, all: LabUnit[], fight: FightOptions): Choice | n
               Math.abs(effect.pct ?? 0) *
               (effect.duration ?? 1) *
               0.6;
-        consider(option, effect.target === "all-enemies" ? fresh : [fresh.sort((a, b) => b.hp - a.hp)[0]!], value);
+        // A mark goes on the foe nearest to falling, which the party can finish under it.
+        const pick =
+          effect.stat === "damage-taken"
+            ? fresh.sort((a, b) => a.hp - b.hp)[0]!
+            : fresh.sort((a, b) => b.hp - a.hp)[0]!;
+        consider(option, effect.target === "all-enemies" ? fresh : [pick], value);
         break;
       }
       case "status": {
