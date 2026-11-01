@@ -161,7 +161,8 @@ export function marinaraAiCandidates(
         const aims = area ? [pool[0]!] : pool;
         for (const aim of aims) {
           const struck = area ? marinaraStruck(actor, effect, [aim], all) : [aim];
-          const spread = struck.length > 1 ? { ...effect, spread: MARINARA_TUNING.areaSpreadPct } : effect;
+          const spread =
+            struck.length > 1 ? { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct } : effect;
           let damage = 0;
           let finish = 0;
           for (const target of struck) {
@@ -292,6 +293,14 @@ export function marinaraAiCandidates(
       case "debuff": {
         const fresh = pool.filter((u) => !u.mods.some((m) => m.source === option.id));
         if (!fresh.length) break;
+        // One mark at a time (lab 2026-11-01: Trackers marked every foe in turn, 231 of 314 actions, for
+        // 6-8% of the party's damage): the party focuses the one it marked.
+        if (
+          effect.stat === "damage-taken" &&
+          effect.target === "enemy" &&
+          foes.some((u) => u.mods.some((m) => m.source === option.id))
+        )
+          break;
         if ((effect.stat === "damage" || effect.stat === "speed") && !threatened) break;
         // Lasts as long as its duration or the foe, whichever ends first.
         const turns = (foe: MarinaraFighter) => Math.max(1, Math.min(effect.duration ?? 1, lasts(foe)));

@@ -137,6 +137,8 @@ export interface MarinaraEffect {
   applies?: { status: MarinaraStatusId; chance?: number; duration: number; power?: number };
   /** Share of damage per foe when an area attack strikes several. */
   spread?: number;
+  /** This area attack's own share per foe, in place of MARINARA_TUNING.areaSpreadPct (Tempest). */
+  areaPct?: number;
   /** Vanish: the user can't be targeted until its next turn. */
   hide?: boolean;
   /** A song: re-cast while it lasts, it adds a verse (this much more, up to `most` verses) to every
@@ -256,7 +258,11 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "element-bolt": dmg("magic", 7, { ranged: true }),
   "twin-cast": dmg("magic", 5, { ranged: true, hits: 2 }),
   // More power (Alyssa 2026-11-01): was 6.
-  tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", weight: 1.2, cooldown: 2 }),
+  // Hits every foe nearly as hard as one (85% each, not the usual 60%), at a normal turn's weight: the
+  // AI cast it 1% of the time against Twin Cast's 80% (lab, 2026-11-01).
+  tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 2, areaPct: 0.85 }),
+  // Rune Scholar (Alyssa 2026-11-01): its own payoff against affinity foes, in their weakest element.
+  "rune-strike": dmg("magic", 11, { ranged: true }),
   // Rune Scholar line (Alyssa 2026-11-01): party elemental support. The party's weapons take whichever
   // of fire, ice and lightning hurts most.
   "edge-runes": { kind: "buff", target: "party", stat: "imbue", pct: 1, duration: 3, cooldown: 2 },
@@ -1789,7 +1795,7 @@ function act(
   switch (effect.kind) {
     case "damage": {
       if ((effect.target === "all-enemies" || effect.target === "front-row") && targets.length > 1)
-        effect = { ...effect, spread: MARINARA_TUNING.areaSpreadPct };
+        effect = { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct };
       for (const target of targets) {
         // Sworn Ward: whoever watches over this target strikes the attacker first, hit or miss.
         for (const warder of living(
