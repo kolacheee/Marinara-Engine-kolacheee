@@ -20,6 +20,7 @@ import {
   marinaraItemPlace,
   marinaraPriceInCoin,
   marinaraRollLoot,
+  marinaraRollSteal,
   marinaraTierForLevel,
   type MarinaraEquipment,
   type MarinaraFoeRank,
@@ -59,7 +60,7 @@ export interface MarinaraLootLine {
 }
 
 /**
- * What a won fight drops: each beaten foe (down, not fled) rolls by its rank, its bestiary family and
+ * What a fight leaves the party: each robbed foe's stolen thing (Steal), and on a win each beaten foe (down, not fled) rolls by its rank, its bestiary family and
  * its own level's tier; gold comes in the game's coins (largest first) when it has money, else as
  * "Coins". `equipment` is the party's, for the best gold charm. Seeded, so a step saved twice drops the
  * same thing.
@@ -73,27 +74,43 @@ export function marinaraVictoryLoot(input: {
 }): { lines: MarinaraLootLine[]; gold: number; items: string[] } {
   const party = input.fighters.filter((fighter) => fighter.side === "party");
   const beaten = input.fighters.filter((fighter) => fighter.side === "enemy" && fighter.hp <= 0 && !fighter.dummy);
-  if (!beaten.length) return { lines: [], gold: 0, items: [] };
+  const robbed = input.fighters.filter((fighter) => fighter.side === "enemy" && fighter.stolenBy && !fighter.dummy);
+  if (!beaten.length && !robbed.length) return { lines: [], gold: 0, items: [] };
   const partyLevel = party.length
     ? party.reduce((sum, fighter) => sum + fighter.level, 0) / party.length
     : beaten.reduce((sum, fighter) => sum + fighter.level, 0) / beaten.length;
   const goldPct = Math.max(0, ...(input.equipment ?? []).map((gear) => marinaraGearBonus(gear).effects.goldPct ?? 0));
-  const loot = marinaraRollLoot({
-    tier: marinaraTierForLevel(partyLevel),
-    foes: beaten.map((fighter) => {
-      const family = fighter.familyId ? marinaraEnemyFamily(fighter.familyId) : undefined;
-      return {
-        rank: (fighter.tier ?? "standard") as MarinaraFoeRank,
-        tier: marinaraTierForLevel(fighter.level),
-        ...(fighter.familyId ? { family: fighter.familyId } : {}),
-        // A beast, spirit or machine carries no purse; a foe the bestiary doesn't know is taken as a person.
-        ...(family && family.kind !== "humanoid" ? { carriesCoin: false } : {}),
-      };
-    }),
-    place: input.place,
-    seed: input.seed,
-    goldPct,
-  });
+  const rolled = beaten.length
+    ? marinaraRollLoot({
+        tier: marinaraTierForLevel(partyLevel),
+        foes: beaten.map((fighter) => {
+          const family = fighter.familyId ? marinaraEnemyFamily(fighter.familyId) : undefined;
+          return {
+            rank: (fighter.tier ?? "standard") as MarinaraFoeRank,
+            tier: marinaraTierForLevel(fighter.level),
+            ...(fighter.familyId ? { family: fighter.familyId } : {}),
+            // A beast, spirit or machine carries no purse; a foe the bestiary doesn't know is taken as a person.
+            ...(family && family.kind !== "humanoid" ? { carriesCoin: false } : {}),
+          };
+        }),
+        place: input.place,
+        seed: input.seed,
+        goldPct,
+      })
+    : { items: [], gold: 0 };
+  // What Steal took (marinara-combat.ts), each robbed foe's one thing, kept whether it fell or not.
+  const loot = { items: [...rolled.items], gold: rolled.gold };
+  for (const foe of robbed) {
+    const taken = marinaraRollSteal({
+      tier: marinaraTierForLevel(foe.level),
+      rank: (foe.tier ?? "standard") as MarinaraFoeRank,
+      place: input.place,
+      ...(foe.familyId ? { family: foe.familyId } : {}),
+      seed: `${input.seed}:${foe.id}`,
+    });
+    if ("item" in taken) loot.items.push(taken.item);
+    else loot.gold += taken.gold;
+  }
   const counts = new Map<string, number>();
   for (const id of loot.items) {
     const name = marinaraItemName(id, input.place);
