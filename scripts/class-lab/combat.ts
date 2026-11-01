@@ -286,11 +286,23 @@ function choose(actor: LabUnit, all: LabUnit[], fight: FightOptions): Choice | n
         );
         if (already) break;
         if (effect.stat === "imbue") {
-          const plain = bestDamage(actor, all, tactical);
-          actor.mods.push({ stat: "imbue", pct: 1, turns: 1, source: "probe" });
-          const imbued = bestDamage(actor, all, tactical);
-          actor.mods = actor.mods.filter((m) => m.source !== "probe");
-          if (imbued > plain) consider(option, [actor], (imbued - plain) * (effect.duration ?? 3) * 0.8);
+          // Each imbued fighter's gain (the whole party for Edge Runes and Grand Inscription), plus
+          // Grand Inscription's damage rider, as the Engine's AI values them.
+          const who = effect.target === "self" ? [actor] : friends;
+          let value = 0;
+          for (const u of who) {
+            if (u.mods.some((m) => m.stat === "imbue")) continue;
+            const plain = bestDamage(u, all, tactical);
+            u.mods.push({ stat: "imbue", pct: 1, turns: 1, source: "probe" });
+            const imbued = bestDamage(u, all, tactical);
+            u.mods = u.mods.filter((m) => m.source !== "probe");
+            value += Math.max(0, imbued - plain) * (effect.duration ?? 3) * 0.8;
+          }
+          for (const also of effect.alsoMods ?? [])
+            if (also.stat === "damage")
+              value +=
+                who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0) * also.pct * (effect.duration ?? 1) * 0.7;
+          if (value > 0) consider(option, who, value);
           break;
         }
         if (effect.exposeNext) {
