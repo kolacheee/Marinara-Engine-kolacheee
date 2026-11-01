@@ -845,16 +845,20 @@ export function GameCombatUI({
     // How many cards a column holds: whichever of 3, 2 or 1 gives the biggest cards. A short stage
     // (a laptop at 720px with the skill menu open) spreads a row over more columns rather than
     // squeezing its cards (a card is its width of art plus about 110px of name and bars).
-    let best = { perColumn: 3, width: 0 };
+    // A column takes at least 120px across (its name and stat lines), 24px between columns, 48px
+    // between the sides and 48px of padding; an arrangement wider than the stage is never taken.
+    let best: { perColumn: number; width: number } | null = null;
     for (const perColumn of [3, 2, 1]) {
       const columns = [...stageColumns(enemies, "enemy", perColumn), ...stageColumns(party, "player", perColumn)];
       const count = Math.max(1, columns.length);
       const tallest = Math.max(1, ...columns.map((column) => column.length));
       const byHeight = (eastWestBox.height - (tallest - 1) * 8) / tallest - 110;
-      const byWidth = (eastWestBox.width - (count + 1) * 24) / count;
-      const width = Math.min(120, byHeight, byWidth);
-      if (width > best.width + 4) best = { perColumn, width };
+      const width = Math.min(120, byHeight);
+      const across = (column: number) => count * Math.max(column, 120) + Math.max(0, count - 2) * 24 + 48 + 48;
+      if (across(width) > eastWestBox.width) continue;
+      if (!best || width > best.width + 4) best = { perColumn, width };
     }
+    best ??= { perColumn: 3, width: (eastWestBox.height - 16) / 3 - 110 };
     return { perColumn: best.perColumn, cardWidth: Math.round(Math.max(40, best.width)) };
   }, [eastWest, eastWestBox, enemies, party]);
   const [openDrawer, setOpenDrawer] = useState<MobileDrawerKind>(null);
@@ -2745,22 +2749,18 @@ export function GameCombatUI({
           // columns (Alyssa 2026-11-01).
           <div
             ref={eastWestStageRef}
-            className="relative flex h-full min-h-0 w-full flex-nowrap items-stretch justify-evenly overflow-visible px-3 pb-[clamp(0.25rem,1.5svh,0.75rem)] pt-[clamp(2.75rem,8svh,4rem)] sm:px-6"
+            className="relative flex h-full min-h-0 w-full flex-nowrap items-stretch justify-evenly gap-12 overflow-visible px-3 pb-[clamp(0.25rem,1.5svh,0.75rem)] pt-[clamp(2.75rem,8svh,4rem)] sm:px-6"
           >
             {(["enemy", "player"] as const).map((side) => {
               const list = side === "enemy" ? enemies : party;
               const columns = stageColumns(list, side, eastWestLayout?.perColumn ?? 3);
               return (
-                <div
-                  key={side}
-                  data-stage-side={side}
-                  className="flex flex-nowrap items-stretch gap-[clamp(0.75rem,3vw,3rem)]"
-                >
+                <div key={side} data-stage-side={side} className="flex flex-nowrap items-stretch gap-6">
                   {columns.map((column, c) => (
                     <div
                       key={`${side}-${c}`}
                       data-row={column[0]?.marinara?.row}
-                      className="flex shrink-0 flex-col items-center justify-center gap-2"
+                      className="flex min-w-[120px] shrink-0 flex-col items-center justify-center gap-2"
                     >
                       {column.map((combatant) => {
                         const i = party.indexOf(combatant);
