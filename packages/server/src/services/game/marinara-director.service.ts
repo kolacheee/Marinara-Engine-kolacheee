@@ -111,7 +111,7 @@ export function marinaraCombatSkills(fighter: MarinaraFighter): CombatSkill[] {
           ? "attack"
           : effect.kind === "heal" || effect.kind === "revive"
             ? "heal"
-            : effect.kind === "debuff" || effect.kind === "status" || effect.kind === "taunt"
+            : effect.kind === "debuff" || effect.kind === "status" || effect.kind === "taunt" || effect.kind === "steal"
               ? "debuff"
               : "buff",
       mpCost: resource === "mp" ? cost : 0,
@@ -291,6 +291,10 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       return `${actor}'s miracle keeps ${target} standing.`;
     case "hold-the-line":
       return `${actor} holds the line against ${target}.`;
+    case "steal":
+      return event.status === "empty"
+        ? `${actor} finds nothing left on ${target}.`
+        : `${actor} steals from ${target}${roll}.`;
   }
 }
 

@@ -926,7 +926,12 @@ export async function combatDirectorRoutes(
         : undefined;
     // The step that wins drops the fight's loot, rolled before the queue is held and added with the
     // step: each defeated bestiary opponent's table, or the native tables by how many fell.
-    const won = s.outcome === "victory" && s.loot === undefined;
+    // A Classic Marinara party that got away keeps what it stole (Steal) from the foes it left behind.
+    const won =
+      (s.outcome === "victory" ||
+        (s.outcome === "flee" &&
+          !!s.marinara?.fighters.some((fighter) => fighter.side === "enemy" && fighter.stolenBy))) &&
+      s.loot === undefined;
     const encounter = s.style === "ruleset" ? s.rulesetFight?.encounter : undefined;
     const fallen = encounter
       ? encounter.combatants.filter((combatant) => combatant.side === "enemy" && combatant.defeated)

@@ -103,6 +103,7 @@ export interface MarinaraEffect {
     | "extra-turn"
     | "command"
     | "cleanse"
+    | "steal"
     | "none";
   target: MarinaraEffectTarget;
   power?: number;
@@ -166,7 +167,15 @@ const dmg = (scales: MarinaraStat, power: number, extra: Partial<MarinaraEffect>
   ...extra,
 });
 
-/** What every active class skill does. Steal and similar have no fight effect. */
+/** Steal's odds: a half chance, a little more for each point of Speed over the foe's, less for elites
+ *  and bosses, plus gear (Light Fingers); never below 10% or above 95%. */
+export const MARINARA_STEAL: { base: number; perSpeed: number; rank: Record<MarinaraEnemyTier, number> } = {
+  base: 0.5,
+  perSpeed: 0.02,
+  rank: { minion: 0.1, standard: 0, elite: -0.15, boss: -0.3 },
+};
+
+/** What every active class skill does. Steal takes something from a foe, kept with the fight's loot. */
 export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Blade
   "power-strike": dmg("strength", 9, { weight: 1.3 }),
@@ -192,7 +201,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2 },
   "oath-of-iron": { kind: "buff", target: "party", stat: "damage-taken", pct: -0.75, duration: 1, oncePerFight: true },
   // Scout
-  steal: { kind: "none", target: "enemy" },
+  steal: { kind: "steal", target: "enemy" },
   backstab: dmg("strength", 10, { critBonus: 15 }),
   vanish: {
     kind: "buff",
@@ -509,6 +518,8 @@ export interface MarinaraFighter {
   tier?: MarinaraEnemyTier;
   /** A bestiary foe's family (marinara-bestiary.ts), for its signature drops. */
   familyId?: string;
+  /** Robbed by this fighter (Steal): a foe has one thing to take, kept with the fight's loot. */
+  stolenBy?: string;
   /** A boss once below half its HP: it hits harder for the rest of the fight (MARINARA_BOSS_RULES). */
   enraged?: boolean;
   // fight state
@@ -553,6 +564,8 @@ export interface MarinaraFighterGear {
   crit?: number;
   damagePct?: number;
   lifestealPct?: number;
+  /** Added to the chance a Steal takes something. */
+  stealChance?: number;
   /** Statuses it can't be given. */
   immune?: string[];
 }
@@ -874,7 +887,8 @@ export type MarinaraEventKind =
   | "command"
   | "last-stand"
   | "miracle"
-  | "hold-the-line";
+  | "hold-the-line"
+  | "steal";
 
 /** One thing that happened, for the log and the narration. */
 export interface MarinaraEvent {
@@ -961,6 +975,21 @@ function addMod(unit: MarinaraFighter, stat: string, pct: number, turns: number,
   const existing = unit.mods.find((mod) => mod.source === source && mod.stat === stat);
   if (existing) existing.turns = Math.max(existing.turns, turns);
   else unit.mods.push({ stat, pct, turns, source });
+}
+
+/** The chance, in percent, that this fighter's Steal takes something from this foe. */
+export function marinaraStealChance(
+  actor: MarinaraFighter,
+  target: MarinaraFighter,
+  all: readonly MarinaraFighter[],
+): number {
+  const speed = marinaraEffectiveStat(actor, "speed", all) - marinaraEffectiveStat(target, "speed", all);
+  const chance =
+    MARINARA_STEAL.base +
+    speed * MARINARA_STEAL.perSpeed +
+    MARINARA_STEAL.rank[target.tier ?? "standard"] +
+    (actor.gear?.stealChance ?? 0);
+  return Math.round(Math.min(0.95, Math.max(0.1, chance)) * 100);
 }
 
 /** A fighter's basic attack. */
@@ -1691,6 +1720,22 @@ function act(
     case "extra-turn":
       actor.next -= turnLength(actor, all);
       ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
+      break;
+    case "steal":
+      for (const target of targets) {
+        if (target.side === actor.side || target.hp <= 0) continue;
+        if (target.stolenBy) {
+          ctx.events.push({ kind: "steal", actorId: actor.id, targetId: target.id, skillId, status: "empty" });
+          continue;
+        }
+        const chance = marinaraStealChance(actor, target, all);
+        const roll = random() * 100;
+        const event = { actorId: actor.id, targetId: target.id, skillId, chance, roll: Math.floor(roll) };
+        if (roll < chance) {
+          target.stolenBy = actor.id;
+          ctx.events.push({ kind: "steal", ...event });
+        } else ctx.events.push({ kind: "miss", ...event });
+      }
       break;
     case "command":
       // Commanded allies act at once, an action on top of their own turns.
