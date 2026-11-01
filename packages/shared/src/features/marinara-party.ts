@@ -31,6 +31,13 @@ import {
   type MarinaraFighterGear,
 } from "./marinara-combat.js";
 import { marinaraGearBonus, type MarinaraEquipment } from "./marinara-items.js";
+import {
+  marinaraEnemySpec,
+  marinaraFitEncounter,
+  type MarinaraBestiarySetting,
+  type MarinaraEncounterDifficulty,
+  type MarinaraEncounterFoe,
+} from "./marinara-bestiary.js";
 
 /** A party member's Classic Marinara record on their game card. */
 export interface MarinaraCardProgression extends MarinaraProgression {
@@ -320,6 +327,8 @@ export interface MarinaraFoeBrief {
   > & {
     /** Levels above (or below) the party's. */
     levelOffset?: number;
+    /** A bestiary foe (marinara-bestiary.ts): its family, tier and level. */
+    family?: { familyId: string; tier?: MarinaraEnemyTier; level?: number };
   };
   combatClass?: string;
   aiHints?: { named?: boolean; leader?: boolean; category?: string };
@@ -373,7 +382,23 @@ export function marinaraFoeFighters(input: {
   partyAverageHp: number;
   difficulty: string;
   keepAll?: boolean;
+  /** The game's bestiary setting, for bestiary foes. */
+  setting?: MarinaraBestiarySetting | null;
+  /** The fight's own difficulty for bestiary foes (the GM's pick); Normal when none was given. */
+  encounter?: MarinaraEncounterDifficulty;
 }): { fighters: MarinaraFighter[]; left: string[]; notes: string[] } {
+  // Bestiary foes are fitted by the bestiary's measured threat; the rest by tier.
+  const bestiary = input.setting ? input.foes.filter((foe) => foe.marinara?.family?.familyId) : [];
+  if (bestiary.length) {
+    const rest = input.foes.filter((foe) => !bestiary.includes(foe));
+    const fromBestiary = marinaraBestiaryFoes({ ...input, foes: bestiary, setting: input.setting! });
+    const others = rest.length ? marinaraFoeFighters({ ...input, foes: rest, setting: null }) : null;
+    return {
+      fighters: [...fromBestiary.fighters, ...(others?.fighters ?? [])],
+      left: [...fromBestiary.left, ...(others?.left ?? [])],
+      notes: [...fromBestiary.notes, ...(others?.notes ?? [])],
+    };
+  }
   const level = marinaraPartyLevel(input.partyLevels);
   const tiers = input.foes.map((foe) => tierOf(foe, input.partyAverageHp));
   const fit = input.keepAll
@@ -406,5 +431,93 @@ export function marinaraFoeFighters(input: {
       }),
     );
   });
+  return { fighters, left, notes };
+}
+
+/**
+ * How the game's difficulty setting scales a bestiary encounter's budget: it counts the party as this
+ * many times its size (decided 2026-11-01, pending the bestiary's measurements). The fight's own
+ * difficulty (easy to deadly) is the GM's per-fight pick on top.
+ */
+export const MARINARA_GAME_DIFFICULTY_SCALE: Record<string, number> = {
+  casual: 0.8,
+  normal: 1,
+  hard: 1.15,
+  brutal: 1.3,
+};
+
+function marinaraBestiaryFoes(input: {
+  foes: readonly MarinaraFoeBrief[];
+  partyLevels: readonly number[];
+  difficulty: string;
+  keepAll?: boolean;
+  setting: MarinaraBestiarySetting;
+  encounter?: MarinaraEncounterDifficulty;
+}): { fighters: MarinaraFighter[]; left: string[]; notes: string[] } {
+  const level = marinaraPartyLevel(input.partyLevels);
+  const asked: Array<MarinaraEncounterFoe & { brief: MarinaraFoeBrief }> = input.foes.map((brief) => {
+    const family = brief.marinara!.family!;
+    return {
+      brief,
+      familyId: family.familyId,
+      tier: family.tier ?? brief.marinara?.tier ?? "standard",
+      level: family.level ?? level + (brief.marinara?.levelOffset ?? 0),
+    };
+  });
+  const notes: string[] = [];
+  let fitted: MarinaraEncounterFoe[] = asked;
+  if (!input.keepAll) {
+    const fit = marinaraFitEncounter({
+      setting: input.setting,
+      party: {
+        level,
+        size: Math.max(1, input.partyLevels.length * (MARINARA_GAME_DIFFICULTY_SCALE[input.difficulty] ?? 1)),
+      },
+      foes: asked.map(({ familyId, tier, level }) => ({ familyId, tier, level })),
+      difficulty: input.encounter ?? "normal",
+    });
+    fitted = fit.foes;
+    notes.push(...fit.changes);
+  }
+  // The fitter keeps foes in order and drops some: each fitted foe is the next asked one of its family.
+  const fighters: MarinaraFighter[] = [];
+  const used = new Set<number>();
+  for (const foe of fitted) {
+    const index = asked.findIndex((one, i) => !used.has(i) && one.familyId === foe.familyId);
+    if (index < 0) continue;
+    used.add(index);
+    const brief = asked[index]!.brief;
+    try {
+      const spec = marinaraEnemySpec({
+        familyId: foe.familyId,
+        setting: input.setting,
+        level: foe.level,
+        tier: foe.tier,
+        id: brief.id,
+        name: brief.name,
+      });
+      fighters.push(
+        buildMarinaraEnemy({
+          id: spec.id,
+          name: spec.name,
+          ...(spec.classId ? { classId: spec.classId } : { archetype: spec.archetype }),
+          level: spec.level,
+          tier: spec.tier,
+          ...(spec.row ? { row: spec.row } : {}),
+          ...(spec.affinities ? { affinities: spec.affinities } : {}),
+          ...(spec.attackType ? { attackType: spec.attackType } : {}),
+          ...(spec.enemySkills?.length ? { enemySkills: spec.enemySkills } : {}),
+          ...(spec.statScale ? { statScale: spec.statScale } : {}),
+          ...(spec.ranged ? { ranged: true } : {}),
+        }),
+      );
+    } catch (err) {
+      notes.push(`${brief.name}: ${err instanceof Error ? err.message : "not in the bestiary"}; fights by tier.`);
+      fighters.push(
+        ...marinaraFoeFighters({ ...input, foes: [brief], partyAverageHp: 0, keepAll: true, setting: null }).fighters,
+      );
+    }
+  }
+  const left = asked.filter((_, i) => !used.has(i)).map((one) => one.brief.id);
   return { fighters, left, notes };
 }

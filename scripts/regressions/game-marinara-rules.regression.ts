@@ -185,4 +185,57 @@ for (const tier of ["boss", "standard"] as const) {
   assert.ok(!gentle.growth.some((g) => g.fallen), "without permadeath nobody falls");
 }
 
+// Bestiary foes: built from their family, fitted by the bestiary's own threat budget.
+{
+  const { marinaraBestiaryFor } = await import("../../packages/shared/src/features/marinara-bestiary.js");
+  const family = marinaraBestiaryFor("high_fantasy", 3).find((one) => one.tiers.includes("standard"))!;
+  assert.ok(family, "the fantasy bestiary has a level 3 standard foe");
+  const foe = (i: number) =>
+    ({
+      id: `b${i}`,
+      name: `Beast ${i}`,
+      side: "enemy",
+      hp: 20,
+      maxHp: 20,
+      mp: 0,
+      maxMp: 0,
+      attack: 5,
+      defense: 5,
+      speed: 5,
+      level: 1,
+      skills: [],
+      marinara: { family: { familyId: family.id, tier: "standard", level: 3 } },
+    }) as unknown as Combatant;
+  const hero = (id: string) =>
+    ({
+      id,
+      name: id,
+      side: "player",
+      hp: 20,
+      maxHp: 20,
+      mp: 0,
+      maxMp: 0,
+      attack: 5,
+      defense: 5,
+      speed: 5,
+      level: 1,
+      skills: [],
+    }) as Combatant;
+  const start = marinaraFightStart({
+    gameId: "bestiary",
+    cards: [],
+    party: [hero("h1"), hero("h2"), hero("h3"), hero("h4")],
+    enemies: Array.from({ length: 10 }, (_, i) => foe(i)),
+    difficulty: "normal",
+    storyFight: false,
+    setting: "high_fantasy",
+  });
+  assert.ok(start.enemies.length > 0 && start.enemies.length < 10, "ten of a family are cut to the budget");
+  assert.ok(
+    start.notes.some((note) => /fit|Dropped/.test(note)),
+    "with the bestiary's own notes",
+  );
+  assert.ok(["minion", "standard"].includes(start.enemies[0]!.marinara?.tier ?? ""), "fitted down, never up");
+}
+
 console.log("game-marinara-rules: ok");

@@ -31,6 +31,8 @@ import {
   performMarinaraOption,
   releaseMarinaraCharge,
   startMarinaraClock,
+  registerMarinaraEnemySkills,
+  MARINARA_BESTIARY_ABILITIES,
   type MarinaraFightGrowth,
   marinaraClass,
   type CombatPlayerAction,
@@ -45,6 +47,13 @@ import {
   type MarinaraOption,
   type RankedCombatCandidate,
 } from "@marinara-engine/shared";
+
+// The bestiary's foe abilities join the Engine's own (marinara-bestiary.ts; the bestiary's win a clash).
+registerMarinaraEnemySkills(
+  Object.fromEntries(
+    MARINARA_BESTIARY_ABILITIES.map((ability) => [ability.id, { ...ability.effect, label: ability.label }]),
+  ),
+);
 
 /** What a director keeps of a Classic Marinara fight. Plain JSON, saved with the fight. */
 export interface MarinaraDirectorState {

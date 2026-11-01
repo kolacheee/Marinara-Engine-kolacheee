@@ -46,6 +46,7 @@ import {
   type CombatOrders,
   normalizeCharacterLookupName,
   marinaraLearnedSkills,
+  marinaraBestiarySetting,
   readMarinaraCardProgression,
   setMarinaraCarried,
   setMarinaraClass,
@@ -1154,6 +1155,8 @@ export async function combatDirectorRoutes(
           .max(32)
           .default([]),
         itemEffects: z.array(itemEffect).max(200).default([]),
+        /** A Classic Marinara fight's own difficulty for bestiary foes (easy to deadly). */
+        encounterDifficulty: z.enum(["easy", "normal", "hard", "deadly"]).optional(),
         inventory: z
           .array(
             z.object({
@@ -1309,6 +1312,11 @@ export async function combatDirectorRoutes(
             enemies: input.enemies.map(({ creature: _c, tier: _t, proposed: _p, ...unit }) => unit) as Combatant[],
             difficulty: normalizeGameDifficulty(setup.difficulty),
             storyFight: !!(await latestStoryFight(app.db, input.chatId, meta)),
+            setting: marinaraBestiarySetting(
+              typeof meta.gameWorldKit?.id === "string" ? meta.gameWorldKit.id : null,
+              typeof setup.genre === "string" ? setup.genre : null,
+            ),
+            ...(input.encounterDifficulty ? { encounter: input.encounterDifficulty } : {}),
           });
           if (!marinara.party.length) return reply.code(400).send({ error: "Nobody in the party can fight." });
           if (marinara.cards) {
