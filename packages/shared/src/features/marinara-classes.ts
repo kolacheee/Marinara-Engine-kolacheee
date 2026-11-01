@@ -830,7 +830,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "harrier",
       label: "Harrier",
       from: "skirmisher",
-      role: "Speed demons who set the pace of battle and pull the party along with them.",
+      role: "Swift skirmishers who set the pace of battle and pull the party along with them.",
       leans: ["speed", "skill"],
       skills: [
         active(
