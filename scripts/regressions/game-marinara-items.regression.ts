@@ -11,10 +11,12 @@ import {
   MARINARA_CLASSES,
   MARINARA_WEAPON_COATINGS,
 } from "../../packages/shared/src/features/marinara-classes.js";
+import { WORLD_STARTER_KITS } from "../../packages/shared/src/features/world/starter-kits.js";
 import {
   MARINARA_ACCESSORIES,
   MARINARA_ARMOUR_FAMILIES,
   MARINARA_CONSUMABLES,
+  MARINARA_FAMILY_DROPS,
   MARINARA_ITEM_SETTINGS,
   MARINARA_KIT_SETTINGS,
   MARINARA_STANDARD_GEAR,
@@ -23,6 +25,8 @@ import {
   MARINARA_WEAPON_FAMILIES,
   marinaraAllItemIds,
   marinaraCanEquip,
+  marinaraConsumable,
+  marinaraFamilyDrops,
   marinaraGearBonus,
   marinaraItem,
   marinaraItemInPlace,
@@ -135,6 +139,13 @@ assert.equal(marinaraItemInPlace("moonwake", marinaraItemPlace("cyberpunk")), fa
 assert.equal(marinaraItemInPlace("moonwake", marinaraItemPlace("wuxia_xianxia")), true);
 assert.deepEqual(marinaraItemPlace("Western"), { setting: null });
 
+// The kit map is the Engine's own: every starter kit, mapped to the art family it declares (the
+// bestiary keys enemies by these kit ids, so loot for any kit lands in the right setting).
+assert.deepEqual(Object.fromEntries(WORLD_STARTER_KITS.map((kit) => [kit.id, kit.family])), {
+  ...MARINARA_KIT_SETTINGS,
+});
+for (const kit of WORLD_STARTER_KITS) assert.equal(marinaraItemPlace(kit.id).kit, kit.id);
+
 // Every coating in the class rules is an item.
 for (const coating of MARINARA_WEAPON_COATINGS) assert.ok(marinaraItem(coating.id)?.consumable, coating.id);
 
@@ -184,6 +195,30 @@ for (let index = 0; index < 50; index++) {
   const stolen = marinaraRollSteal({ tier: 3, rank: "elite", place: { setting: "wuxia" }, seed: `s${index}` });
   if ("item" in stolen) assert.ok(marinaraItemInPlace(stolen.item, { setting: "wuxia" }));
   else assert.ok(stolen.gold > 0);
+}
+
+// Signature drops: every bestiary family's list resolves at every tier, in every place it fits, with
+// its first entry a consumable (its common drop); an excluded item drops out (no grave dust in modern_day),
+// and nothing is above the foe's tier.
+for (const [family, entries] of Object.entries(MARINARA_FAMILY_DROPS)) {
+  assert.ok(marinaraConsumable(entries[0]!.replace(/-\*$/, "-1")), `${family} common drop is a consumable`);
+  for (const tier of MARINARA_TIERS) {
+    const drops = marinaraFamilyDrops(family, tier, { setting: "fantasy" });
+    if (tier === 6) assert.equal(drops.length, entries.length, `${family} T6 resolves all: ${drops.join(", ")}`);
+    assert.ok(drops.length >= 1, `${family} T${tier} drops something`);
+    for (const id of drops) assert.ok(marinaraItem(id)!.tier <= tier, `${family} T${tier} drops ${id} in tier`);
+  }
+}
+assert.deepEqual(marinaraFamilyDrops("shade", 3, marinaraItemPlace("modern_day")), ["charm-resistance-2"]);
+assert.deepEqual(marinaraFamilyDrops("adept", 6, { setting: null }), ["mp-2", "staff-t6", "robes-t6", "charm-magic-3"]);
+{
+  const loot = marinaraRollLoot({
+    tier: 2,
+    foes: Array.from({ length: 40 }, () => ({ rank: "boss" as const, family: "stinger" })),
+    place: { setting: "wuxia" },
+    seed: "stingers",
+  });
+  assert.ok(loot.items.includes("venom-vial"), "stingers drop their venom");
 }
 
 // Shops: never T6 gear, uniques or found things; a hamlet trails a tier; stock is seeded.
