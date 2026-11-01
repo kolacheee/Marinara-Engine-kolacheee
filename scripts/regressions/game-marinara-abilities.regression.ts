@@ -286,4 +286,18 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(strikeAt("boss") > 0, "a boss isn't");
 }
 
+// Steady (Alyssa 2026-11-01): physical hits ignore 20% of the target's Defense.
+{
+  const plain = unit("pl", "party");
+  const steady = unit("sd", "party", ["steady"]);
+  const foe = unit("f", "enemy");
+  plain.stats.strength = steady.stats.strength = 40;
+  foe.stats.defense = 30;
+  const all = [plain, steady, foe];
+  const basic = marinaraOption(plain, null, all)!.effect;
+  const without = marinaraHitNumbers(plain, foe, basic, all).damage;
+  const withPen = marinaraHitNumbers(steady, foe, basic, all).damage;
+  assert.ok(withPen > without, `Steady hits through armour (${without} -> ${withPen})`);
+}
+
 console.log("game-marinara-abilities: ok");
