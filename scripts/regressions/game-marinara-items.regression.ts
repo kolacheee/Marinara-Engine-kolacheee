@@ -286,6 +286,15 @@ console.log("game-marinara-items regression passed");
   assert.deepEqual(marinaraVictoryLoot({ ...input, fighters: [ally, { ...foe("c", "standard"), hp: 5 }] }).lines, []);
   const plain = marinaraVictoryLoot({ ...input, coins: undefined, place: { setting: null } });
   assert.ok(plain.lines.some((line) => line.name === "Coins"));
+  // Foes out of the fight alive count as beaten: one that surrendered drops as if down, one that fled
+  // only half its coin.
+  const standing = { ...foe("a", "boss", "sellsword"), hp: 40 };
+  const gave = marinaraVictoryLoot({ ...input, fighters: [ally], left: [standing] });
+  const down = marinaraVictoryLoot({ ...input, fighters: [ally, { ...standing, hp: 0 }] });
+  assert.deepEqual(gave, down, "one that surrendered drops as if beaten");
+  const ran = marinaraVictoryLoot({ ...input, fighters: [ally], left: [standing], fled: ["a"] });
+  assert.deepEqual(ran.items, [], "one that fled drops no items");
+  assert.ok(ran.gold > 0 && ran.gold < down.gold, `one that fled drops some coin (${ran.gold} vs ${down.gold})`);
 }
 console.log("game-marinara-items (in a game) passed");
 
