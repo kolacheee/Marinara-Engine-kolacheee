@@ -9,7 +9,10 @@ import {
   createCombatDirector,
   type CombatDirectorState,
 } from "../../packages/server/src/services/game/combat-director.service.js";
-import { marinaraCombatant } from "../../packages/server/src/services/game/marinara-director.service.js";
+import {
+  marinaraCombatant,
+  performMarinaraTacticalAction,
+} from "../../packages/server/src/services/game/marinara-director.service.js";
 import {
   awardMarinaraXp,
   createMarinaraProgression,
@@ -86,6 +89,51 @@ for (const unit of s.tactical!.units) {
 }
 const again = playOut(fight(5));
 assert.equal(again.outcome, s.outcome, "the same seed plays the same fight");
+
+// A friend's skill aimed loosely (at a foe, or a guard at itself) lands on the friend who needs it
+// most, and never fails the turn (playtest 2026-11-01).
+{
+  const t = fight(7);
+  const lines: string[] = [];
+  const log = (text: string) => void lines.push(text);
+  const ana = t.marinara!.fighters.find((f) => f.id === "ana")!;
+  ana.hp = Math.round(ana.maxHp / 3);
+  const cover = (targetId: string) =>
+    performMarinaraTacticalAction(
+      t.marinara!,
+      "bo",
+      { type: "skill", skillId: "cover", targetId },
+      7,
+      log as never,
+      () => [],
+      () => true,
+    );
+  assert.doesNotThrow(() => cover("foe0"), "a guard aimed at a foe doesn't fail the turn");
+  assert.doesNotThrow(() => cover("bo"), "a guard aimed at itself doesn't fail the turn");
+  const bo = t.marinara!.fighters.find((f) => f.id === "bo")!;
+  assert.notEqual(bo.covering, "bo", "nobody guards themselves");
+}
+
+// A stunned party member's turn is taken for it, so the round still moves on.
+{
+  const t = fight(9);
+  const ana = t.marinara!.fighters.find((f) => f.id === "ana")!;
+  ana.statuses.push({ status: "stun", turns: 1 } as never);
+  playOut(t);
+  assert.ok(t.outcome, "a fight with a stunned party member still ends");
+}
+
+// Tactical Marinara stops at the same round limit as Classic.
+{
+  const t = fight(11);
+  t.round = 60;
+  t.tactical!.round = 60;
+  for (const f of t.marinara!.fighters) f.hp = f.maxHp * 50;
+  for (const f of t.marinara!.fighters) f.maxHp = f.hp;
+  playOut(t);
+  assert.equal(t.outcome, "flee", "a fight past the round limit breaks off");
+  assert.ok(t.stalled, "and says it stalled");
+}
 
 let wins = 0;
 for (let seed = 100; seed < 112; seed++) if (playOut(fight(seed)).outcome === "victory") wins++;

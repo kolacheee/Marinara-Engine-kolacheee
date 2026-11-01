@@ -1371,6 +1371,13 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         // party chooses among its own first, then everybody else goes by speed.
         const remaining = living(s).filter((u) => !(u as TacticalUnit).hasActed);
         const party = remaining.filter((u) => side(u) === "party");
+        // Classic Marinara: a party member who is asleep or stunned can't be begun, so its turn is
+        // taken for it (its statuses still count down) before the party chooses.
+        const held = s.marinara && !s.tactical.initiative ? party.find((u) => u.hp > 0 && !canAct(u)) : undefined;
+        if (held) {
+          s.tasks.push({ kind: "activate", unitId: held.id });
+          continue;
+        }
         if (!s.tactical.initiative && !s.skipParty && party.some((u) => manual(s, u))) {
           s.tactical.phase = "player";
           s.stage = "select";
@@ -1390,6 +1397,14 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         s.round++;
         s.skipParty = false;
         s.gmCalls = 0;
+        // Classic Marinara on a board stops at the same round limit as Classic.
+        if (s.marinara && s.round > MARINARA_ROUND_LIMIT && !s.outcome) {
+          s.stalled = true;
+          s.outcome = "flee";
+          log(s, "Neither side can break the other; the fight breaks off.", "stalled");
+          sync(s);
+          continue;
+        }
       } else if (s.marinara) {
         // Classic Marinara: one fighter at a time off the timeline; its turn starts here (damage over
         // time, effects counting down), and one asleep or stunned spends it without acting.
@@ -1486,7 +1501,9 @@ export function advanceCombatDirector(s: CombatDirectorState) {
       continue;
     }
     const u = get(s, task.unitId);
-    if (!u || !canAct(u)) {
+    // Classic Marinara on a board: a held fighter's turn still starts (below), so it can wake.
+    const boardTurn = task.kind === "activate" && !!s.marinara && !!s.tactical && !!u && u.hp > 0;
+    if (!u || (!canAct(u) && !boardTurn)) {
       if (task.kind === "activate" && u && s.tactical) {
         (u as TacticalUnit).hasActed = true;
         // Its turn came and went: a guard lasts until its holder's own turn, taken or not (combat C6c).

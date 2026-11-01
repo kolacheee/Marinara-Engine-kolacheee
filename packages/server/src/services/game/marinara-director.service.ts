@@ -473,16 +473,40 @@ export function performMarinaraTacticalAction(
   const ctx = { ...context(state, seed, true), grouped: false };
   if (action.type === "defend") marinaraDefend(actor, ctx);
   else if (action.type === "attack" || action.type === "skill") {
-    const option =
+    let option =
       (action.type === "skill" ? marinaraOption(actor, action.skillId) : undefined) ?? marinaraOption(actor, null);
     if (!option) throw new Error("Combatant cannot attack.");
-    const effect = option.effect;
     const picked = action.targetId ? marinaraFighter(state, action.targetId) : undefined;
+    // A skill for a friend aimed somewhere it can't land (a foe, the user itself for a guard, a
+    // living one for a revive) goes to the friend who needs it most; with no such friend it becomes
+    // a basic attack on a foe in reach, or a guard if there is none (playtest 2026-11-01: the board
+    // AI aims these loosely, and a turn must never fail).
+    if (option.effect.target === "ally" || option.effect.target === "downed-ally") {
+      const friends = marinaraTargetsFor(actor, option.effect, state.fighters);
+      if (!(picked && friends.includes(picked))) {
+        const neediest = [...friends].sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0];
+        if (neediest) action = { ...action, targetId: neediest.id };
+        else {
+          const basic = marinaraOption(actor, null);
+          const foe = basic && marinaraTargetsFor(actor, basic.effect, state.fighters).find((one) => reach(one.id));
+          if (!basic || !foe) {
+            marinaraDefend(actor, ctx);
+            record(state, ctx, log, source);
+            return;
+          }
+          option = basic;
+          action = { type: "attack", targetId: foe.id };
+        }
+      }
+    }
+    const effect = option.effect;
+    const aimedAt = action.targetId ? marinaraFighter(state, action.targetId) : undefined;
     let struck: MarinaraFighter[];
     if (effect.target === "self" || effect.target === "party")
       struck = marinaraStruck(actor, effect, [], state.fighters);
     else {
       const pool = marinaraTargetsFor(actor, effect, state.fighters);
+      const picked = aimedAt;
       let aim = picked && pool.includes(picked) ? picked : undefined;
       // A challenge or a provoker forces the pick only when it can be reached from where the unit
       // stands; otherwise the board's pick stands (a foe it can't reach can't be made its target).
@@ -490,7 +514,13 @@ export function performMarinaraTacticalAction(
         const anyFoe = marinaraTargetsFor(actor, { ...effect, target: "all-enemies" }, state.fighters);
         aim = pool.find((one) => reach(one.id)) ?? (anyFoe.includes(picked) ? picked : undefined);
       }
-      if (!aim) throw new Error("Invalid target.");
+      // Nobody the board picked can be hit: a foe in reach, else a guard.
+      aim ??= pool.find((one) => one.side !== actor.side && reach(one.id));
+      if (!aim) {
+        marinaraDefend(actor, ctx);
+        record(state, ctx, log, source);
+        return;
+      }
       struck =
         effect.target === "all-enemies" || effect.target === "front-row"
           ? [aim, ...pool.filter((one) => one !== aim && near(aim.id).includes(one.id))]
