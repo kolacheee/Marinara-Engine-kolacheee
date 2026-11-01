@@ -2009,7 +2009,11 @@ export function GameCombatUI({
             <div className="overflow-x-auto overflow-y-visible pt-[clamp(2.75rem,9svh,4rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div className="flex w-max min-w-full flex-nowrap items-start justify-center gap-[clamp(0.25rem,1.5vw,0.5rem)]">
                 {enemies.map((enemy) => (
-                  <div key={`stage-${enemy.id}`} className="flex flex-col items-center" data-row={enemy.marinara?.row}>
+                  <div
+                    key={`stage-${enemy.id}`}
+                    className="relative flex flex-col items-center"
+                    data-row={enemy.marinara?.row}
+                  >
                     <CombatantCard
                       elements={elements}
                       combatant={enemy}
@@ -2022,7 +2026,7 @@ export function GameCombatUI({
                       compact
                     />
                     {enemy.marinara?.row === "back" && (
-                      <span className="mt-0.5 rounded bg-white/10 px-1 text-[0.5rem] uppercase tracking-wide text-white/50">
+                      <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/60">
                         {localizeUi("game.combat.marinara.row.back")}
                       </span>
                     )}
@@ -2031,12 +2035,12 @@ export function GameCombatUI({
               </div>
             </div>
 
-            <div className="min-h-0 shrink-0 overflow-x-auto overflow-y-visible pb-[clamp(0.75rem,3svh,1.5rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="shrink-0 overflow-x-auto overflow-y-visible pb-[clamp(0.75rem,3svh,1.5rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div className="flex w-max min-w-full flex-nowrap items-end justify-center gap-[clamp(0.25rem,1.5vw,0.5rem)]">
                 {party.map((member, i) => (
                   <div
                     key={`stage-${member.id}`}
-                    className="flex flex-col items-center"
+                    className="relative flex flex-col items-center"
                     data-row={member.marinara?.row}
                   >
                     <CombatantCard
@@ -2058,7 +2062,7 @@ export function GameCombatUI({
                       compact
                     />
                     {member.marinara?.row === "back" && (
-                      <span className="mt-0.5 rounded bg-white/10 px-1 text-[0.5rem] uppercase tracking-wide text-white/50">
+                      <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/60">
                         {localizeUi("game.combat.marinara.row.back")}
                       </span>
                     )}
@@ -2705,7 +2709,7 @@ export function GameCombatUI({
         {/* ── Enemy area (top section) ── */}
         <div className="relative flex flex-nowrap items-start justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pt-[clamp(3.25rem,13svh,5.5rem)] sm:px-6">
           {enemies.map((enemy) => (
-            <div key={enemy.id} className="flex flex-col items-center">
+            <div key={enemy.id} className="relative flex flex-col items-center">
               <CombatantCard
                 elements={elements}
                 combatant={enemy}
@@ -2719,7 +2723,7 @@ export function GameCombatUI({
                 onDismissDialogue={dismissCombatDialogueLine}
               />
               {enemy.marinara?.row === "back" && (
-                <span className="mt-0.5 rounded bg-white/10 px-1 text-[0.55rem] uppercase tracking-wide text-white/50">
+                <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/60">
                   {localizeUi("game.combat.marinara.row.back")}
                 </span>
               )}
@@ -2728,9 +2732,9 @@ export function GameCombatUI({
         </div>
 
         {/* ── Party area (bottom section) ── */}
-        <div className="relative flex min-h-0 shrink-0 flex-nowrap items-end justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pb-[clamp(0.25rem,2svh,1rem)] sm:px-6">
+        <div className="relative flex shrink-0 flex-nowrap items-end justify-center gap-[clamp(0.25rem,1vw,1rem)] overflow-visible px-3 pb-[clamp(0.25rem,2svh,1rem)] sm:px-6">
           {party.map((member, i) => (
-            <div key={member.id} className="flex flex-col items-center">
+            <div key={member.id} className="relative flex flex-col items-center">
               <CombatantCard
                 elements={elements}
                 combatant={member}
@@ -2749,7 +2753,7 @@ export function GameCombatUI({
                 onDismissDialogue={dismissCombatDialogueLine}
               />
               {member.marinara?.row === "back" && (
-                <span className="mt-0.5 rounded bg-white/10 px-1 text-[0.55rem] uppercase tracking-wide text-white/50">
+                <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/60">
                   {localizeUi("game.combat.marinara.row.back")}
                 </span>
               )}
