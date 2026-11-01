@@ -1784,21 +1784,37 @@ export function marinaraWornEquipment(
   };
 }
 
-/** A rough worth of gear for comparing two pieces: power, spell power and every stat it gives. */
-export function marinaraGearScore(equipment: MarinaraEquipment | null | undefined): number {
-  const bonus = marinaraGearBonus(equipment);
-  return bonus.power + bonus.spellPower + Object.values(bonus.stats).reduce((sum, value) => sum + (value ?? 0), 0);
+/**
+ * A rough worth of gear for comparing two pieces for one wearer: the power its attacks run on (spell
+ * power for a caster, weapon power otherwise; the other is no use to it), plus every stat it gives,
+ * the Speed its weight costs at the wearer's Strength included.
+ */
+export function marinaraGearScore(
+  equipment: MarinaraEquipment | null | undefined,
+  options: { strength?: number; caster?: boolean } = {},
+): number {
+  const bonus = marinaraGearBonus(equipment, options.strength === undefined ? {} : { strength: options.strength });
+  return (
+    (options.caster ? bonus.spellPower : bonus.power) +
+    Object.values(bonus.stats).reduce((sum, value) => sum + (value ?? 0), 0)
+  );
 }
 
-/** Whether a weapon or armour is worth less than the standard kit's piece the slot would fall back to. */
+/**
+ * Whether a weapon or armour is worth less to this wearer than the standard kit's piece the slot would
+ * fall back to. A caster is one whose standard weapon gives more spell power than weapon power.
+ */
 export function marinaraBelowStandard(
   id: string,
   slot: "weapon" | "armor",
   archetype: MarinaraArchetype,
   tier: MarinaraTier,
+  strength?: number,
 ): boolean {
   const standard = marinaraStandardEquipment(archetype, tier);
-  return marinaraGearScore({ [slot]: id }) < marinaraGearScore({ [slot]: standard[slot] });
+  const kit = marinaraGearBonus({ weapon: standard.weapon });
+  const options = { ...(strength === undefined ? {} : { strength }), caster: kit.spellPower > kit.power };
+  return marinaraGearScore({ [slot]: id }, options) < marinaraGearScore({ [slot]: standard[slot] }, options);
 }
 
 // ── Prices ──

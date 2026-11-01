@@ -119,7 +119,7 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
         </option>
         {ids.map((id) => (
           <option key={id} value={id}>
-            {slot && marinaraBelowStandard(id, slot, archetype, tier)
+            {slot && marinaraBelowStandard(id, slot, archetype, tier, progression.stats.strength)
               ? t("game.combat.marinara.sheet.gearBelowStandard", { name: marinaraItemName(id, place) })
               : marinaraItemName(id, place)}
           </option>
