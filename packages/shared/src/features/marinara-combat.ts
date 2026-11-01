@@ -2289,6 +2289,8 @@ export interface MarinaraCombatantView {
   hidden?: boolean;
   /** A boss below half its HP, hitting harder. */
   enraged?: boolean;
+  /** Threw down its arms: waits on the party, who may spare it or finish it off. */
+  yielded?: boolean;
   coating?: MarinaraDamageType;
   /** Damage types it is known to be weak to, resist, be immune to or absorb. */
   affinities?: MarinaraAffinities;
@@ -2318,6 +2320,7 @@ export function marinaraCombatantView(unit: MarinaraFighter, all?: readonly Mari
     ...(unit.defending ? { defending: true } : {}),
     ...(unit.hidden ? { hidden: true } : {}),
     ...(unit.enraged ? { enraged: true } : {}),
+    ...(unit.yielded ? { yielded: true } : {}),
     ...(unit.coating ? { coating: unit.coating } : {}),
     ...(unit.affinities ? { affinities: { ...unit.affinities } } : {}),
     next: Math.round(unit.next),
