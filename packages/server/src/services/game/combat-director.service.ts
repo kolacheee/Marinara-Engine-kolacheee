@@ -264,7 +264,42 @@ export function marinaraBoardTurn(
   }
   const problem = action ? validateTacticalUnitAction(t, tu, action) : { error: "unknown skill" };
   if (!action || problem) return board;
-  return action;
+  return keepingDistance(s, tu, action) ?? action;
+}
+
+/**
+ * A unit that fights from range (a Marksman, a caster, a back-row Herald) shoots from the tile in its
+ * move that keeps its target in reach and stands farthest from every foe. On a board nothing else
+ * shields the back line: a party with no Guard lost its back-liners and won only 62% of Normal fights
+ * at level 25+ (playtest 2026-11-01).
+ */
+function keepingDistance(
+  s: CombatDirectorState,
+  tu: TacticalUnit,
+  action: Extract<TacticalAction, { unitId: string }>,
+): Extract<TacticalAction, { unitId: string }> | null {
+  const t = s.tactical!;
+  if (tu.hasMoved || (action.type !== "attack" && action.type !== "skill") || !action.targetId) return null;
+  const target = t.units.find((one) => one.id === action.targetId);
+  if (!target || target.side === tu.side) return null;
+  const skill = action.type === "skill" ? tu.skills?.find((one) => one.name === action.skillName) : undefined;
+  const reach = action.type === "skill" ? (skill?.range ?? Math.max(tu.attackRange.max, 2)) : tu.attackRange.max;
+  if (reach < 2) return null;
+  const foes = t.units.filter((one) => one.side !== tu.side && one.hp > 0);
+  const gap = (at: TacticalCoord, unit: TacticalUnit) => Math.abs(unit.x - at.x) + Math.abs(unit.y - at.y);
+  const safety = (at: TacticalCoord) => Math.min(...foes.map((foe) => gap(at, foe)));
+  const now = action.to ?? { x: tu.x, y: tu.y };
+  let best: TacticalCoord | null = null;
+  for (const at of [{ x: tu.x, y: tu.y }, ...getMovementRange(t, tu.id)]) {
+    const d = gap(at, target);
+    if (d > reach || d < (action.type === "attack" ? tu.attackRange.min : 1)) continue;
+    if (safety(at) <= safety(best ?? now)) continue;
+    const moved = at.x === tu.x && at.y === tu.y ? { ...action, to: undefined } : { ...action, to: at };
+    if (!validateTacticalUnitAction(t, tu, moved)) best = at;
+  }
+  if (!best) return null;
+  const { to: _to, ...rest } = action;
+  return best.x === tu.x && best.y === tu.y ? rest : { ...rest, to: best };
 }
 /** What the Game Master is told of a ruleset fight's board: as a tactical one, its scene when painted. */
 function rulesetBoardSummary(board: RulesetCombatBoard | undefined, seed: number): string | undefined {

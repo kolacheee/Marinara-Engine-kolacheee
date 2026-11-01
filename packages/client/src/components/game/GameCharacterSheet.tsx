@@ -33,6 +33,7 @@ import { cn, getAvatarCropStyle } from "../../lib/utils";
 import { useBackdropDismiss } from "../../hooks/use-backdrop-dismiss";
 import { GameRulesetSheet } from "./GameRulesetSheet";
 import { MarinaraClassSheet } from "./MarinaraClassSheet";
+import { readMarinaraCardProgression } from "@marinara-engine/shared";
 import { rulesetSheetLevel } from "../../lib/ruleset-sheet-view";
 import { DraftNumberInput } from "../ui/DraftNumberInput";
 import { NEUTRAL_SURFACE_VARIABLES } from "../ui/neutral-surface-styles";
@@ -365,11 +366,12 @@ export function GameCharacterSheet({
       !ruleset
         ? rulesetPinned
           ? null
-          : card.level
+          : // With Classic Marinara classes, the class progression's level is the character's.
+            ((marinara ? readMarinaraCardProgression(marinara.stored)?.level : undefined) ?? card.level)
         : ruleset.status === "ok"
           ? rulesetSheetLevel(ruleset.definition, ruleset.envelope, ruleset.live, ruleset.items)
           : null,
-    [card.level, ruleset, rulesetPinned],
+    [card.level, ruleset, rulesetPinned, marinara],
   );
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
