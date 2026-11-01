@@ -504,7 +504,7 @@ export interface MarinaraFighter {
   maxStamina: number;
   stamina: number;
   affinities?: MarinaraAffinities;
-  /** On a board: the living foes next to it, as the director last saw them (Grave Hunger's reach). */
+  /** On a board: the foes next to it, as the director last saw them (Grave Hunger, Sworn Ward). */
   nearFoes?: string[];
   /** Carried skill ids, and the stats they run on (best-trained class). */
   carriedIds?: string[];
@@ -971,6 +971,21 @@ export function marinaraEffectiveStat(
     }
   }
   return Math.max(0, unit.stats[stat] * (1 + pct) + flat);
+}
+
+/**
+ * Whether a Sworn Ward's keeper can strike back at an attacker: a ranged keeper always can; a melee
+ * one only an attacker next to it on a board, or in Classic one in the front row (or with no front
+ * row left to hide behind). Ranged foes were struck from across the field (playtest 2026-11-01).
+ */
+export function marinaraWarderReaches(
+  warder: MarinaraFighter,
+  attacker: MarinaraFighter,
+  all: readonly MarinaraFighter[],
+): boolean {
+  if (warder.rangedBasic || warder.magicBasic) return true;
+  if (warder.nearFoes) return warder.nearFoes.includes(attacker.id);
+  return attacker.row === "front" || !all.some((u) => u.side === attacker.side && u.hp > 0 && u.row === "front");
 }
 
 /** The foes a Grave Hunger Hexer drains now. */
@@ -1628,7 +1643,7 @@ function act(
         // Sworn Ward: whoever watches over this target strikes the attacker first, hit or miss.
         for (const warder of living(
           all.filter((u) => u.side === target.side && u.wardTurns > 0 && u.wardOn === target.id),
-        )) {
+        ).filter((warder) => marinaraWarderReaches(warder, actor, all))) {
           if (actor.hp <= 0) break;
           ctx.events.push({ kind: "ward", actorId: warder.id, targetId: actor.id });
           strike(warder, actor, marinaraBasicAttack(warder), all, ctx, false);
