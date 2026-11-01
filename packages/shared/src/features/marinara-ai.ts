@@ -94,6 +94,16 @@ export function marinaraAiCandidates(
   const threatenedFriend = friends
     .filter((unit) => unit.id !== actor.id)
     .sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0];
+  // Roughly how many rounds a foe has left: the whole foe side's HP over what the party deals a round.
+  const partyDamage = Math.max(
+    1,
+    friends.reduce((sum, unit) => sum + bestDamage(unit, all, tactical), 0),
+  );
+  const lasts = (foe: MarinaraFighter) =>
+    Math.max(foe.hp, foes.reduce((sum, unit) => sum + unit.hp, 0) * 0.6) / partyDamage;
+  // What a foe's basic blow does to the party on average.
+  const incomingFrom = (foe: MarinaraFighter) =>
+    friends.reduce((sum, unit) => sum + hit(foe, unit, marinaraBasicAttack(foe)), 0) / Math.max(1, friends.length);
   const out: CombatAiCandidate<MarinaraChoice>[] = [];
   const add = (
     option: MarinaraOption,
@@ -103,8 +113,12 @@ export function marinaraAiCandidates(
     const weight = option.effect.weight ?? 1;
     const price = option.skill ? marinaraSkillCost(actor, option.skill) : null;
     const pool = price?.resource === "mp" ? actor.maxMp : actor.maxStamina;
-    // MP never comes back in a fight; stamina does, so it is cheaper to spend.
-    const cost = price ? (price.cost / Math.max(1, pool)) * (price.resource === "mp" ? 1 : 0.4) : 0;
+    // MP never comes back in a fight; stamina does, so it is cheaper to spend. MP gets dearer as it
+    // runs low (playtest 2026-11-01: Menders and Maestros spent it all early on top-ups and buffs).
+    const left = price?.resource === "mp" ? Math.max(1, actor.mp) : pool;
+    const cost = price
+      ? (price.cost / Math.max(1, pool)) * (price.resource === "mp" ? Math.sqrt(pool / left) : 0.4)
+      : 0;
     const scale = (value: number | undefined) => (value === undefined ? undefined : value / weight);
     // A guard's worth also counts as support, so a Guard who isn't protective by temperament still
     // covers and challenges (playtest 2026-11-01: Challenge was never picked).
@@ -175,7 +189,7 @@ export function marinaraAiCandidates(
             : effect.cleanse === "one"
               ? marinaraDebuffBurden(u, all) * 0.6
               : 0;
-        const urgency = (u: MarinaraFighter) => (u.hp / u.maxHp < 0.4 ? 2 : u.hp / u.maxHp < 0.7 ? 1 : 0.3);
+        const urgency = (u: MarinaraFighter) => (u.hp / u.maxHp < 0.4 ? 2 : u.hp / u.maxHp < 0.7 ? 1 : 0.15);
         if (effect.target === "self" || effect.target === "party") {
           const who = effect.target === "self" ? [actor] : friends;
           const healing = who.reduce((sum, u) => sum + (healed(u) / u.maxHp) * urgency(u), 0);
@@ -248,19 +262,27 @@ export function marinaraAiCandidates(
         const fresh = pool.filter((u) => !u.mods.some((m) => m.source === option.id));
         if (!fresh.length) break;
         if ((effect.stat === "damage" || effect.stat === "speed") && !threatened) break;
-        const worth = (targets: readonly MarinaraFighter[]) =>
-          effect.stat === "damage-taken"
-            ? friends.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0) *
-              (effect.pct ?? 0) *
-              (effect.duration ?? 1)
-            : targets.reduce((sum, foe) => sum + Math.max(eff(foe, "strength"), eff(foe, "magic")), 0) *
-              Math.abs(effect.pct ?? 0) *
-              (effect.duration ?? 1) *
-              0.6;
-        if (effect.target === "all-enemies") add(option, [fresh[0]!], { setup: worth(fresh) / foeHp });
+        // Lasts as long as its duration or the foe, whichever ends first.
+        const turns = (foe: MarinaraFighter) => Math.max(1, Math.min(effect.duration ?? 1, lasts(foe)));
+        // A share of HP: for a damage cut, the damage it keeps off the party over the party's HP
+        // (playtest 2026-11-01: valued on raw Strength, Weaken beat every other Hexer skill and
+        // Wither was never cast); otherwise over the foes' HP, or the one target's.
+        const worth = (targets: readonly MarinaraFighter[], over: number) =>
+          effect.stat === "damage"
+            ? (targets.reduce((sum, foe) => sum + incomingFrom(foe) * turns(foe), 0) * Math.abs(effect.pct ?? 0)) /
+              friendHp
+            : (effect.stat === "damage-taken"
+                ? friends.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0) *
+                  (effect.pct ?? 0) *
+                  (effect.duration ?? 1)
+                : targets.reduce((sum, foe) => sum + Math.max(eff(foe, "strength"), eff(foe, "magic")), 0) *
+                  Math.abs(effect.pct ?? 0) *
+                  (effect.duration ?? 1) *
+                  0.6) / over;
+        if (effect.target === "all-enemies") add(option, [fresh[0]!], { setup: worth(fresh, foeHp) });
         else
           for (const target of fresh)
-            add(option, [target], { targetId: target.id, setup: worth([target]) / Math.max(1, target.maxHp) });
+            add(option, [target], { targetId: target.id, setup: worth([target], Math.max(1, target.maxHp)) });
         break;
       }
       case "status": {
