@@ -507,6 +507,8 @@ export interface MarinaraFighter {
   gear?: MarinaraFighterGear;
   /** The foe's tier, for balance and XP. */
   tier?: MarinaraEnemyTier;
+  /** A bestiary foe's family (marinara-bestiary.ts), for its signature drops. */
+  familyId?: string;
   /** A boss once below half its HP: it hits harder for the rest of the fight (MARINARA_BOSS_RULES). */
   enraged?: boolean;
   // fight state

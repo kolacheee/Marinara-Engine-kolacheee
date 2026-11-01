@@ -239,3 +239,116 @@ for (const tier of MARINARA_TIERS)
   }
 
 console.log("game-marinara-items regression passed");
+
+// ── In a game (marinara-loot.ts) ──
+{
+  const { buildMarinaraEnemy, marinaraGameItemPlace, marinaraVictoryLoot } =
+    await import("../../packages/shared/src/index.js");
+  // A game's place: its starter kit, else its genre; nothing known is neutral.
+  assert.deepEqual(marinaraGameItemPlace({ gameWorldKit: WORLD_STARTER_KITS.find((kit) => kit.id === "cyberpunk") }), {
+    setting: "scifi",
+    kit: "cyberpunk",
+  });
+  assert.deepEqual(marinaraGameItemPlace({ gameSetupConfig: { genre: "Wuxia" } }).setting, "wuxia");
+  assert.deepEqual(marinaraGameItemPlace({}), { setting: null });
+
+  const foe = (id: string, tier: "standard" | "boss", familyId?: string) => ({
+    ...buildMarinaraEnemy({ id, name: id, archetype: "blade", level: 12, tier }),
+    hp: 0,
+    ...(familyId ? { familyId } : {}),
+  });
+  const ally = {
+    ...buildMarinaraEnemy({ id: "p", name: "Ally", archetype: "guard", level: 12, tier: "standard" }),
+    side: "party" as const,
+  };
+  const coins = [
+    { item: "money:copper", name: "copper", value: 1 },
+    { item: "money:silver", name: "silver", value: 10 },
+    { item: "money:gold", name: "gold", value: 100 },
+  ];
+  const input = {
+    fighters: [ally, foe("a", "boss", "sellsword"), foe("b", "standard", "hound")],
+    place: { setting: "fantasy" as const, kit: "high_fantasy" },
+    seed: "fight-1",
+    coins,
+  };
+  const won = marinaraVictoryLoot(input);
+  assert.deepEqual(marinaraVictoryLoot(input), won, "seeded");
+  assert.ok(won.gold > 0 && won.items.length >= 1, "a boss drops gear and gold");
+  // Gold in the game's coins, largest first, adding up to the marks in copper.
+  const paid = won.lines
+    .filter((line) => line.item)
+    .reduce((sum, line) => sum + line.count * coins.find((c) => c.item === line.item)!.value, 0);
+  assert.ok(Math.abs(paid - won.gold * 10) < 100, `coins add up (${paid} vs ${won.gold * 10})`);
+  // Items are named in the setting.
+  for (const line of won.lines.filter((line) => !line.item)) assert.ok(!/-t\d$/.test(line.name), line.name);
+  // A fight nobody was beaten in drops nothing; a game with no money gets "Coins".
+  assert.deepEqual(marinaraVictoryLoot({ ...input, fighters: [ally, { ...foe("c", "standard"), hp: 5 }] }).lines, []);
+  const plain = marinaraVictoryLoot({ ...input, coins: undefined, place: { setting: null } });
+  assert.ok(plain.lines.some((line) => line.name === "Coins"));
+}
+console.log("game-marinara-items (in a game) passed");
+
+// ── Equipping from the bag ──
+{
+  const { marinaraOwnedGear, marinaraEquipRefusal, marinaraEquipmentForClass } =
+    await import("../../packages/shared/src/index.js");
+  const fantasy = { setting: "fantasy" as const };
+  // Every gear name is unique in every place, so a bag stack reads back as one item.
+  for (const place of [{ setting: null }, ...MARINARA_ITEM_SETTINGS.map((setting) => ({ setting }))]) {
+    const seen = new Map<string, string>();
+    for (const id of ids) {
+      if (marinaraItem(id)!.kind === "consumable" || !marinaraItemInPlace(id, place)) continue;
+      const name = marinaraItemName(id, place).toLowerCase();
+      assert.ok(!seen.has(name), `${id} and ${seen.get(name)} share "${name}" in ${place.setting}`);
+      seen.set(name, id);
+    }
+  }
+  const owned = marinaraOwnedGear(
+    [
+      { name: "Bluesteel Broadsword", quantity: 1 },
+      { name: "bluesteel broadsword", quantity: 1 },
+      { name: "Hammered Mail Hauberk", quantity: 1 },
+      { name: "Ox Charm", quantity: 1 },
+      { name: "Hearthroot Tonic", quantity: 3 },
+      { name: "Rope", quantity: 1 },
+    ],
+    fantasy,
+  );
+  assert.deepEqual(
+    owned.map((gear) => [gear.id, gear.count, gear.slot]),
+    [
+      ["longblade-t3", 2, "weapon"],
+      ["mail-t2", 1, "armor"],
+      ["charm-strength-1", 1, "accessory"],
+    ],
+  );
+  const ok = { weapon: "longblade-t3", armor: "mail-t2", accessories: ["charm-strength-1"] };
+  assert.equal(marinaraEquipRefusal({ classId: "blade", equipment: ok, owned, others: [] }), null);
+  assert.match(marinaraEquipRefusal({ classId: "channeler", equipment: ok, owned, others: [] })!, /can't be used/);
+  assert.match(
+    marinaraEquipRefusal({ classId: "blade", equipment: { armor: "mail-t2" }, owned, others: [{ armor: "mail-t2" }] })!,
+    /only 1/,
+  );
+  assert.equal(
+    marinaraEquipRefusal({
+      classId: "blade",
+      equipment: { weapon: "longblade-t3" },
+      owned,
+      others: [{ weapon: "longblade-t3" }],
+    }),
+    null,
+    "two swords in the bag, two wearers",
+  );
+  assert.match(
+    marinaraEquipRefusal({ classId: "blade", equipment: { weapon: "bow-t1" }, owned, others: [] })!,
+    /can't/,
+  );
+  assert.match(
+    marinaraEquipRefusal({ classId: "herald", equipment: { weapon: "spear-t4" }, owned, others: [] })!,
+    /doesn't have/,
+  );
+  // A Blade turned Channeler takes the sword and mail off and keeps the charm.
+  assert.deepEqual(marinaraEquipmentForClass("channeler", ok), { accessories: ["charm-strength-1"] });
+}
+console.log("game-marinara-items (equipping) passed");

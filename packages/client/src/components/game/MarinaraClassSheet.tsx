@@ -8,15 +8,22 @@ import {
   MARINARA_CARRY_SLOTS,
   MARINARA_STATS,
   MARINARA_XP_PER_LEVEL,
+  MARINARA_ACCESSORY_SLOTS,
+  marinaraCanEquip,
   marinaraClass,
   marinaraClassBlock,
+  marinaraGameItemPlace,
+  marinaraItemName,
+  marinaraOwnedGear,
+  normalizeGameInventoryStacks,
+  type MarinaraEquipment,
   marinaraLearnedSkills,
   marinaraOpenClasses,
   marinaraTrees,
   readMarinaraCardProgression,
 } from "@marinara-engine/shared";
 import { api } from "../../lib/api-client";
-import { chatKeys } from "../../hooks/use-chats";
+import { chatKeys, useChat } from "../../hooks/use-chats";
 
 const blockKey = (block: string) => block.replace(/-(\w)/g, (_, c: string) => c.toUpperCase());
 
@@ -26,13 +33,14 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
   const { t } = useTranslation();
   const qc = useQueryClient();
   const [busy, setBusy] = useState(false);
+  const { data: chat } = useChat(chatId);
   const progression = readMarinaraCardProgression(stored);
   if (!progression)
     return <p className="text-xs text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.none")}</p>;
   const active = marinaraClass(progression.activeClass);
   const trees = marinaraTrees(progression.primary, progression.temperament);
   const learned = marinaraLearnedSkills(progression).filter((skill) => skill.classId !== progression.activeClass);
-  const save = async (change: { classId?: string; carried?: string[] }) => {
+  const save = async (change: { classId?: string; carried?: string[]; equipment?: MarinaraEquipment }) => {
     setBusy(true);
     try {
       await api.post("/game/combat/director/marinara/progression", { chatId, name, ...change });
@@ -53,6 +61,45 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
     }
     void save({ carried });
   };
+  // Gear from the party's bags that this class can use, by its name in the game's setting.
+  const metadata = (chat?.metadata ?? {}) as Record<string, unknown>;
+  const place = marinaraGameItemPlace(metadata);
+  const owned = marinaraOwnedGear(normalizeGameInventoryStacks(metadata.gameInventory), place);
+  const equipment = progression.equipment ?? {};
+  const options = (slot: "weapon" | "armor" | "accessory", current: string | undefined) => {
+    const ids = owned
+      .filter((gear) => gear.slot === slot && marinaraCanEquip(progression.activeClass, gear.id, slot))
+      .map((gear) => gear.id);
+    return current && !ids.includes(current) ? [current, ...ids] : ids;
+  };
+  const wear = (next: MarinaraEquipment) => {
+    const accessories = (next.accessories ?? []).filter(Boolean);
+    void save({
+      equipment: {
+        ...(next.weapon ? { weapon: next.weapon } : {}),
+        ...(next.armor ? { armor: next.armor } : {}),
+        ...(accessories.length ? { accessories } : {}),
+      },
+    });
+  };
+  const slotSelect = (label: string, value: string | undefined, ids: string[], pick: (id: string) => void) => (
+    <label key={label} className="flex items-center gap-2">
+      <span className="w-24 shrink-0 text-[var(--muted-foreground)]">{label}</span>
+      <select
+        className="min-h-9 min-w-0 flex-1 rounded-md border border-[var(--border)] bg-[var(--secondary)] px-2"
+        value={value ?? ""}
+        disabled={busy}
+        onChange={(event) => pick(event.target.value)}
+      >
+        <option value="">{t("game.combat.marinara.sheet.gearNothing")}</option>
+        {ids.map((id) => (
+          <option key={id} value={id}>
+            {marinaraItemName(id, place)}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
   return (
     <div className="space-y-3 text-xs" data-testid="marinara-class-sheet">
       <div>
@@ -127,6 +174,37 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                 );
               })}
             </div>
+          </div>
+          <div className="space-y-1" data-testid="marinara-gear">
+            <p className="font-medium">{t("game.combat.marinara.sheet.gear")}</p>
+            {!progression.equipment && (
+              <p className="text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.gearStandard")}</p>
+            )}
+            {slotSelect(
+              t("game.combat.marinara.sheet.slot.weapon"),
+              equipment.weapon,
+              options("weapon", equipment.weapon),
+              (id) => wear({ ...equipment, weapon: id || undefined }),
+            )}
+            {slotSelect(
+              t("game.combat.marinara.sheet.slot.armor"),
+              equipment.armor,
+              options("armor", equipment.armor),
+              (id) => wear({ ...equipment, armor: id || undefined }),
+            )}
+            {Array.from({ length: MARINARA_ACCESSORY_SLOTS }, (_, n) => {
+              const current = equipment.accessories?.[n];
+              return slotSelect(
+                t("game.combat.marinara.sheet.slot.accessory", { n: n + 1 }),
+                current,
+                options("accessory", current),
+                (id) => {
+                  const accessories = [...(equipment.accessories ?? [])];
+                  accessories[n] = id;
+                  wear({ ...equipment, accessories });
+                },
+              );
+            })}
           </div>
           <div>
             <p className="mb-1 font-medium">
