@@ -974,6 +974,12 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           6,
           "Dark damage to every enemy; the user heals for half of what it deals. Every other turn.",
         ),
+        passive(
+          "grave-hunger",
+          "Grave Hunger",
+          9,
+          "Each enemy in reach (their front row while the Hexer stands in front; next to it on a board) gives up 12% of its Defense and Resistance to the Hexer while it lives and stays in reach. Up to five.",
+        ),
       ],
     },
     {
@@ -1464,12 +1470,12 @@ export function marinaraLearnedSkills(progression: MarinaraProgression): Array<M
 
 /**
  * Skills every class of an archetype's tree keeps once learned, without a carry slot. A Hexer's
- * lifesteal is the line's identity (Alyssa 2026-11-01), so every Hexer class keeps Drain Touch and
- * Grave Tithe.
+ * lifesteal is the line's identity (Alyssa 2026-11-01), so every Hexer class keeps Drain Touch,
+ * Grave Tithe and Grave Hunger.
  */
 export const MARINARA_ARCHETYPE_TRAITS: Partial<Record<MarinaraArchetype, readonly string[]>> = {
   guard: ["hold-the-line", "cover"],
-  hexer: ["drain-touch", "grave-tithe"],
+  hexer: ["drain-touch", "grave-tithe", "grave-hunger"],
 };
 
 /** The skills a character fights with: their active class's learned skills and what they carry. */

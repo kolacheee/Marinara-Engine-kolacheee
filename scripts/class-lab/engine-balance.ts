@@ -29,6 +29,8 @@ import {
 import { decideTacticalAction } from "../../packages/shared/src/features/tactical-combat/index.js";
 import type { TacticalUnit } from "../../packages/shared/src/features/tactical-combat/types.js";
 import {
+  MARINARA_ARCHETYPE_ROWS,
+  MARINARA_PASSIVES,
   MARINARA_ENEMY_TIERS,
   buildMarinaraEnemy,
   type MarinaraEnemyTier,
@@ -38,6 +40,10 @@ const count = Number(process.argv[2] ?? 40);
 // Experiment knobs: BOSS_STATS / BOSS_HP override the boss tier; LEVELS=20,30 limits the rows.
 if (process.env.BOSS_STATS) MARINARA_ENEMY_TIERS.boss.stats = Number(process.env.BOSS_STATS);
 if (process.env.BOSS_HP) MARINARA_ENEMY_TIERS.boss.hp = Number(process.env.BOSS_HP);
+if (process.env.HEX_FRONT) MARINARA_ARCHETYPE_ROWS.hexer = "front";
+if (process.env.NO_HUNGER) MARINARA_PASSIVES["grave-hunger"] = {};
+let hexFights = 0,
+  hexDown = 0;
 const style = (process.argv[3] ?? "classic") as "classic" | "tactical";
 
 /** A character grown to a level in their primary tree, promoting at 10 and 20 to a random line. */
@@ -163,6 +169,8 @@ for (const level of LEVELS) {
       const max = s.party.reduce((sum, u) => sum + u.maxHp, 0);
       lost += s.party.reduce((sum, u) => sum + (u.maxHp - u.hp), 0) / max;
       downed += s.party.filter((u) => u.hp <= 0).length;
+      const hex = s.party.find((u) => u.name.startsWith("hexer"));
+      if (hex) (hexFights++, hex.hp <= 0 && hexDown++);
     }
     rows.push(
       `| ${level} | ${label} | ${((wins / count) * 100).toFixed(0)}% | ${(rounds / count).toFixed(1)} | ${((lost / count) * 100).toFixed(0)}% | ${(downed / count).toFixed(1)} |`,
@@ -170,6 +178,7 @@ for (const level of LEVELS) {
   }
 }
 console.log(rows.join("\n"));
+console.log(`hexer downed ${hexDown}/${hexFights} = ${Math.round((hexDown / Math.max(1, hexFights)) * 100)}%`);
 if (USAGE)
   for (const [cls, row] of Object.entries(USAGE).sort()) {
     const total = Object.values(row).reduce((a, b) => a + b, 0);
