@@ -124,7 +124,17 @@ export interface MarinaraEffect {
   /** Reaches the back row at full damage from anywhere. */
   ranged?: boolean;
   /** Buff/debuff: stat changed by a share, for `duration` of the target's turns. */
-  stat?: MarinaraStat | "damage" | "damage-taken" | "imbue" | "element-taken";
+  /** deathless: Oath of Iron; shadows: Thousand Shadows' decoys last while it does; best-attack: Weaken; crescendo: Crescendo's marker. */
+  stat?:
+    | MarinaraStat
+    | "damage"
+    | "damage-taken"
+    | "imbue"
+    | "element-taken"
+    | "deathless"
+    | "shadows"
+    | "best-attack"
+    | "crescendo";
   /** Buff: more stats changed alongside `stat`, for the same turns (Grand Inscription). */
   alsoMods?: readonly { stat: MarinaraStat | "damage" | "damage-taken" | "element-taken"; pct: number }[];
   /** Heal: a share of the target's max HP instead of Magic-based power. */
@@ -164,6 +174,18 @@ export interface MarinaraEffect {
   /** Its cooldown falls on every fighter of the user's side who has it (Fortress). */
   sideCooldown?: boolean;
   oncePerFight?: boolean;
+  /** A revive that raises every downed ally, not one (Undying Light). */
+  allDowned?: boolean;
+  /** Decoys that take the next hits on the user's party (Thousand Shadows). */
+  decoys?: number;
+  /** Every buff on the target doubles for the buff's duration (Crescendo). */
+  doubles?: boolean;
+  /** The targets can't be confused while it lasts, and are freed of it (Raise the Banner). */
+  steadies?: boolean;
+  /** More damage by this share to a target an ally struck since its own last turn (Backstab). */
+  flankPct?: number;
+  /** On a hit: steals one of the target's buffs, or drains MP when it has none (Siphon). */
+  siphon?: { mpPct: number };
   /** Only from the front row (on a board: with a foe next to the user). */
   frontOnly?: boolean;
   /** After damage, lowers the user's own stat (Reckless Swing). */
@@ -231,10 +253,11 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   verdict: dmg("magic", 6, { from: "resistance" }),
   // Balance pass (2026-11-01): the Pure Guard line's taunt; its tank held fewer fights than a Sentinel's.
   "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2, provokes: 2 },
-  "oath-of-iron": { kind: "buff", target: "party", stat: "damage-taken", pct: -0.75, duration: 1, oncePerFight: true },
+  // Oath of Iron: nobody of the party drops below 1 HP until their next turn.
+  "oath-of-iron": { kind: "buff", target: "party", stat: "deathless", pct: 1, duration: 1, oncePerFight: true },
   // Scout
   steal: { kind: "steal", target: "enemy" },
-  backstab: dmg("strength", 10, { critBonus: 15 }),
+  backstab: dmg("strength", 10, { critBonus: 15, flankPct: 0.5 }),
   vanish: {
     kind: "buff",
     target: "self",
@@ -250,12 +273,14 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "hit-and-run": dmg("strength", 5, { weight: 0.6 }),
   "double-time": { kind: "extra-turn", target: "self", cooldown: 3 },
   shadowstep: dmg("strength", 9, { ranged: true, critBonus: 10 }),
+  // Thousand Shadows: three decoys take the next three hits on the party (for 3 of the user's turns).
   "thousand-shadows": {
     kind: "buff",
-    target: "party",
-    stat: "damage-taken",
-    pct: -0.6,
-    duration: 2,
+    target: "self",
+    stat: "shadows",
+    pct: 0,
+    duration: 3,
+    decoys: 3,
     oncePerFight: true,
   },
   // Marksman
@@ -303,7 +328,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   starfall: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
   convergence: dmg("magic", 24, { ranged: true, charge: true }),
   // Hexer
-  weaken: { kind: "debuff", target: "enemy", stat: "damage", pct: -0.25, duration: 3 },
+  // Weaken: the foe's Strength or Magic, whichever it hits with.
+  weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.2, duration: 3 },
   // Balance pass (2026-11-01): 8% -> 6% a turn; a share of max HP grew too big on bosses.
   rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.06 },
   // Wither also wounds (healing halved): the party's anti-heal (Alyssa 2026-11-01, item 8).
@@ -321,7 +347,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "carrion-feast": dmg("magic", 14, { ranged: true, drain: 1, cooldown: 2 }),
   lull: { kind: "status", target: "enemy", status: "sleep", chance: 0.75, duration: 3 },
   "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2 },
-  siphon: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
+  siphon: dmg("magic", 8, { ranged: true, pierce: 0.5, siphon: { mpPct: 0.15 } }),
   // Every foe, and the Hexer drinks half of it back: a Hexer can hold the front against a swarm
   // (Alyssa 2026-11-01).
   // Front row only (Alyssa 2026-11-01): the Hexer's front-line drain.
@@ -341,7 +367,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   purify: { kind: "cleanse", target: "ally", cleanse: "all" },
   "elixir-rain": { kind: "status", target: "party", status: "regen", chance: 1, duration: 3, power: 0.07 },
   barrier: { kind: "shield", target: "ally", scales: "magic", power: 8 },
-  "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true },
+  "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true, allDowned: true },
   // Herald
   "imbue-weapon": { kind: "buff", target: "self", stat: "imbue", pct: 1, duration: 3 },
   "second-breath": { kind: "heal", target: "self", pctOfMax: 0.25, cooldown: 3 },
@@ -378,10 +404,11 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     // A bonus action (Alyssa 2026-11-01): the Cantor sings and still acts.
     bonusAction: true,
   },
-  crescendo: { kind: "buff", target: "party", stat: "damage", pct: 0.5, duration: 1, cooldown: 3 },
+  // Crescendo: every buff the party carries counts twice for a round.
+  crescendo: { kind: "buff", target: "party", stat: "crescendo", pct: 0, duration: 1, cooldown: 3, doubles: true },
   command: { kind: "command", target: "ally" },
   "grand-strategy": { kind: "command", target: "party", cooldown: 4 },
-  "raise-the-banner": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3 },
+  "raise-the-banner": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3, steadies: true },
   "hour-of-heroes": { kind: "command", target: "party", oncePerFight: true },
 };
 
@@ -528,7 +555,24 @@ export interface MarinaraPassiveHooks {
   /** Heavy Draw: physical damage up. */
   heavyDraw?: boolean;
   bloodlust?: boolean;
-  unstoppable?: boolean;
+  /** Can't be stunned: ever, or while below half HP (Immovable, Unstoppable). */
+  stunImmune?: "always" | "below-half";
+  /** Statuses that never take hold (Elder Oath). */
+  immuneTo?: MarinaraStatusId[];
+  /** Items used work this share better (Item Savant). */
+  itemPowerPct?: number;
+  /** Using an item once a round gives an extra action (Double Dose). */
+  freeItem?: boolean;
+  /** Crit chance against a target that carries a debuff or harmful status (Exploit). */
+  critVsDebuffed?: number;
+  /** Harder to hit (Light Feet). */
+  evadeBonus?: number;
+  /** The party's Defense rises by this share while no one of it is down (Formation). */
+  partyDefenseWhileWhole?: number;
+  /** A buff on a party member moves its next turn this share of a turn sooner (Tempo). */
+  tempoPct?: number;
+  /** The user's turns take this share longer (Heavy Draw). */
+  turnPct?: number;
   /** Damage taken changes by this share while below half HP. */
   takenBelowHalfPct?: number;
   /** Spells cost this share more (negative: less) MP. */
@@ -552,7 +596,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   // Bloodsworn (Alyssa 2026-11-01): the lower its HP, the harder it hits, and it drinks from every hit.
   bloodrage: { damagePerMissingPct: 0.6 },
   bloodlust: { lifestealPct: 0.15 },
-  unstoppable: { unstoppable: true, takenBelowHalfPct: -0.15 },
+  unstoppable: { stunImmune: "below-half", takenBelowHalfPct: -0.15 },
   "adaptive-grip": { hitBonus: 10, noPenalty: true },
   peerless: { extraActionEvery: 3 },
   stalwart: { defendBonusPct: 0.2 },
@@ -560,11 +604,11 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "last-stand": { lastStand: true },
   retaliate: { counter: "always", counterDefensePct: 0.5 },
   "aura-of-warding": { partyMagicTakenPct: -0.35 },
-  "elder-oath": { statPct: { resistance: 0.5 } },
-  immovable: { unstoppable: true, defendBonusPct: 0.2 },
+  "elder-oath": { statPct: { resistance: 0.5 }, immuneTo: ["doom", "sleep"] },
+  immovable: { stunImmune: "always", defendBonusPct: 0.2 },
   "shield-line": { partyDefensePct: 0.15, partyResistancePct: 0.15 },
-  "light-feet": { statPct: { speed: 0.1 } },
-  exploit: { critBonus: 15 },
+  "light-feet": { evadeBonus: 10 },
+  exploit: { critVsDebuffed: 25 },
   assassinate: { assassinate: true },
   fleet: { statPct: { speed: 0.2 } },
   tailwind: { partySpeedPct: 0.2 },
@@ -579,7 +623,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "old-oath": { statPct: { resistance: 0.3 }, magicTakenPct: -0.2 },
   "read-the-signs": { critBonus: 5, bonusVsMarked: 0.2 },
   "pack-tactics": { partyBonusVsMarked: 0.4 },
-  "heavy-draw": { heavyDraw: true },
+  // Heavy Draw: a bigger bow, slower to draw (text: "More damage, acts later").
+  "heavy-draw": { heavyDraw: true, turnPct: 0.15 },
   sundering: { hitsLowerDefense: 0.1 },
   attunement: { spellDamagePct: 0.15 },
   overcharge: { critBonus: 10 },
@@ -597,14 +642,14 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   devour: { devour: true },
   grace: { healCrit: true },
   miracle: { miracle: true },
-  "item-savant": {},
-  "double-dose": {},
+  "item-savant": { itemPowerPct: 0.5 },
+  "double-dose": { freeItem: true },
   overheal: { overheal: true },
   sanctified: { partyMagicTakenPct: -0.15 },
   encore: { buffDurationBonus: 1 },
-  tempo: { partySpeedPct: 0.1 },
+  tempo: { tempoPct: 0.15 },
   foresight: { partyDefensePct: 0.1 },
-  formation: { partyDefensePct: 0.15 },
+  formation: { partyDefenseWhileWhole: 0.15 },
   inspire: { partyDamageWhileWhole: 0.1 },
   "fortunes-favour": { partyCritBonus: 10 },
 };
@@ -671,7 +716,7 @@ export interface MarinaraFighter {
   enraged?: boolean;
   // fight state
   next: number;
-  mods: Array<{ stat: string; pct: number; turns: number; source: string }>;
+  mods: Array<{ stat: string; pct: number; turns: number; source: string; by?: string }>;
   /** `by`: who laid it, for a curse whose ticks feed its caster (Siphoning Rot). */
   statuses: Array<{ status: MarinaraStatusId; turns: number; power?: number; by?: string }>;
   shield: number;
@@ -691,6 +736,12 @@ export interface MarinaraFighter {
   miracleUsed?: boolean;
   evadedThisRound?: boolean;
   counteredThisRound?: boolean;
+  /** Who of the other side struck it since its own last turn (Backstab). */
+  struckBy?: string;
+  /** Decoys left that take the next hits on this fighter's party (Thousand Shadows). */
+  decoys?: number;
+  /** Used its free item this round (Double Dose). */
+  freeItemUsed?: boolean;
   missesAgainst: number;
   firstSpellUsed?: boolean;
   actions: number;
@@ -1038,7 +1089,10 @@ export type MarinaraEventKind =
   | "last-stand"
   | "miracle"
   | "hold-the-line"
-  | "steal";
+  | "steal"
+  | "decoy"
+  | "oath"
+  | "siphon";
 
 /** One thing that happened, for the log and the narration. */
 export interface MarinaraEvent {
@@ -1069,8 +1123,27 @@ export interface MarinaraFightContext {
 const living = (units: readonly MarinaraFighter[]) => units.filter((unit) => unit.hp > 0);
 const healFactor = (unit: MarinaraFighter) =>
   unit.statuses.some((s) => s.status === "wound") ? MARINARA_TUNING.woundHealing : 1;
-const turnLength = (unit: MarinaraFighter, all: readonly MarinaraFighter[]) =>
-  MARINARA_TUNING.timeline / (marinaraEffectiveStat(unit, "speed", all) + MARINARA_TUNING.speedFloor);
+const turnLength = (unit: MarinaraFighter, all: readonly MarinaraFighter[]) => {
+  let length = MARINARA_TUNING.timeline / (marinaraEffectiveStat(unit, "speed", all) + MARINARA_TUNING.speedFloor);
+  length *= 1 + (hooksOf(unit).turnPct ?? 0);
+  // Slow Time: a debuffed fighter acts later while a foe of its holds time back.
+  if (marinaraDebuffed(unit)) {
+    const slowing = Math.max(
+      0,
+      ...living(all.filter((other) => other.side !== unit.side)).map((other) => hooksOf(other).slowDebuffed ?? 0),
+    );
+    length *= 1 + slowing;
+  }
+  return length;
+};
+
+/** Whether a fighter carries a debuff or a harmful status. */
+export function marinaraDebuffed(unit: MarinaraFighter): boolean {
+  return (
+    unit.statuses.some((s) => HARMFUL.has(s.status)) ||
+    unit.mods.some((mod) => (mod.stat === "damage-taken" ? mod.pct > 0 : mod.pct < 0) && mod.source !== "probe")
+  );
+}
 
 export function marinaraEffectiveStat(
   unit: MarinaraFighter,
@@ -1087,6 +1160,8 @@ export function marinaraEffectiveStat(
     if (stat === "resistance") pct += hooks.partyResistancePct ?? 0;
     if (stat === "defense") {
       pct += hooks.partyDefensePct ?? 0;
+      if (hooks.partyDefenseWhileWhole && all.filter((u) => u.side === unit.side).every((u) => u.hp > 0))
+        pct += hooks.partyDefenseWhileWhole;
       if (marinaraRowOf(unit, all) === "front") pct += hooks.frontRowDefensePct ?? 0;
     }
   }
@@ -1200,11 +1275,40 @@ function modTotal(unit: MarinaraFighter, stat: string): number {
   return unit.mods.filter((mod) => mod.stat === stat).reduce((sum, mod) => sum + mod.pct, 0);
 }
 
-function addMod(unit: MarinaraFighter, stat: string, pct: number, turns: number, source: string) {
+function addMod(unit: MarinaraFighter, stat: string, pct: number, turns: number, source: string, by?: string) {
   if (pct < 0 && hooksOf(unit).debuffImmune) return;
   const existing = unit.mods.find((mod) => mod.source === source && mod.stat === stat);
   if (existing) existing.turns = Math.max(existing.turns, turns);
-  else unit.mods.push({ stat, pct, turns, source });
+  else unit.mods.push({ stat, pct, turns, source, ...(by ? { by } : {}) });
+}
+
+/** Oath of Iron: one sworn to stay standing keeps 1 HP. */
+function holdOn(unit: MarinaraFighter, ctx: MarinaraFightContext) {
+  if (unit.hp > 0 || !unit.mods.some((mod) => mod.stat === "deathless")) return;
+  unit.hp = 1;
+  ctx.events.push({ kind: "oath", actorId: unit.id });
+}
+
+/** Siphon: takes one of the target's buffs for the user, or drains its MP when it has none. */
+function siphon(
+  actor: MarinaraFighter,
+  target: MarinaraFighter,
+  mpPct: number,
+  ctx: MarinaraFightContext,
+  skillId?: string,
+) {
+  const buff = target.mods.find((mod) => mod.pct > 0 && mod.stat !== "damage-taken" && mod.source !== "probe");
+  if (buff) {
+    target.mods = target.mods.filter((mod) => mod !== buff);
+    addMod(actor, buff.stat, buff.pct, buff.turns, `siphon:${buff.source}`);
+    ctx.events.push({ kind: "siphon", actorId: actor.id, targetId: target.id, skillId, status: buff.stat });
+    return;
+  }
+  const drained = Math.min(target.mp, Math.round(target.maxMp * mpPct));
+  if (drained <= 0) return;
+  target.mp -= drained;
+  actor.mp = Math.min(actor.maxMp, actor.mp + drained);
+  ctx.events.push({ kind: "siphon", actorId: actor.id, targetId: target.id, skillId, amount: drained });
 }
 
 /** The chance, in percent, that this fighter's Steal takes something from this foe. */
@@ -1413,6 +1517,11 @@ export function marinaraHitNumbers(
   if (actor.enraged) pct += MARINARA_BOSS_RULES.enrageDamagePct;
   if (target.marked > 0 && hooks.bonusVsMarked) pct += hooks.bonusVsMarked;
   if (effect.finisher && target.hp < target.maxHp * effect.finisher.below) pct += effect.finisher.bonus;
+  // Backstab: a target busy with one of the user's allies.
+  if (effect.flankPct && target.struckBy && target.struckBy !== actor.id) {
+    const by = all.find((u) => u.id === target.struckBy);
+    if (by && by.side === actor.side) pct += effect.flankPct;
+  }
   if (target.hp < target.maxHp / 2) pct += hooksOf(target).takenBelowHalfPct ?? 0;
   if (hooksOf(target).frontTakenPct && marinaraStandsFront(target, all)) pct += hooksOf(target).frontTakenPct!;
   if (magic) pct += hooksOf(target).magicTakenPct ?? 0;
@@ -1421,7 +1530,7 @@ export function marinaraHitNumbers(
     if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;
     if (marinaraRowOf(target, all) === "back") pct += allyHooks.backRowTakenPct ?? 0;
   }
-  if (hooks.heavyDraw && !magic) pct += 0.2;
+  if (hooks.heavyDraw && !magic) pct += 0.3;
   const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
@@ -1451,6 +1560,7 @@ export function marinaraHitNumbers(
   const evade =
     marinaraEffectiveStat(target, "speed", all) * 2 +
     marinaraEffectiveStat(target, "luck", all) +
+    (hooksOf(target).evadeBonus ?? 0) +
     Math.min(30, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0));
   const hitChance = Math.max(
     MARINARA_MIN_HIT_CHANCE,
@@ -1472,6 +1582,7 @@ export function marinaraHitNumbers(
       marinaraEffectiveStat(actor, "skill", all) / 2 +
         (effect.critBonus ?? 0) +
         (hooks.critBonus ?? 0) +
+        (hooks.critVsDebuffed && marinaraDebuffed(target) ? hooks.critVsDebuffed : 0) +
         (actor.gear?.crit ?? 0) +
         partyCrit -
         marinaraEffectiveStat(target, "luck", all),
@@ -1625,18 +1736,34 @@ export const MARINARA_BOSS_RULES = {
 
 /** Whether a status can't take hold on this fighter. */
 function shrugsOff(target: MarinaraFighter, status: string): boolean {
+  const hooks = hooksOf(target);
+  if (status === "stun" && (hooks.stunImmune === "always" || (hooks.stunImmune && target.hp < target.maxHp / 2)))
+    return true;
+  if (hooks.immuneTo?.includes(status as MarinaraStatusId)) return true;
+  // Raise the Banner: a steadied fighter can't be confused.
+  if (status === "confuse" && target.mods.some((mod) => mod.stat === "steady-heart")) return true;
   return (
-    !!hooksOf(target).debuffImmune ||
+    !!hooks.debuffImmune ||
     !!target.gear?.immune?.includes(status) ||
     (target.tier === "boss" && (MARINARA_BOSS_RULES.ignores as readonly string[]).includes(status))
   );
 }
 
-function addStatus(target: MarinaraFighter, applies: NonNullable<MarinaraEffect["applies"]>, bonus: number) {
+function addStatus(
+  target: MarinaraFighter,
+  applies: NonNullable<MarinaraEffect["applies"]>,
+  bonus: number,
+  by?: string,
+) {
   if (applies.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0) return false;
   if (shrugsOff(target, applies.status)) return false;
   target.statuses = target.statuses.filter((s) => s.status !== applies.status);
-  target.statuses.push({ status: applies.status, turns: applies.duration + bonus, power: applies.power });
+  target.statuses.push({
+    status: applies.status,
+    turns: applies.duration + bonus,
+    power: applies.power,
+    ...(by ? { by } : {}),
+  });
   return true;
 }
 
@@ -1685,6 +1812,9 @@ export function beginMarinaraTurn(
   actor.secondWindUsed = false;
   actor.evadedThisRound = false;
   actor.counteredThisRound = false;
+  actor.freeItemUsed = false;
+  // Its own turn came: whoever struck it is no longer keeping it busy (Backstab).
+  delete actor.struckBy;
   for (const status of actor.statuses) {
     if (status.status === "poison" || status.status === "wither" || status.status === "bleed") {
       // Poison is a damage type foes can resist; Wither and Bleed are pure and nothing stops them.
@@ -1695,6 +1825,7 @@ export function beginMarinaraTurn(
       const before = actor.hp;
       actor.hp = Math.min(actor.maxHp, actor.hp - amount);
       if (amount !== 0) ctx.events.push({ kind: "tick", actorId: actor.id, status: status.status, amount });
+      holdOn(actor, ctx);
       // Siphoning Rot: the curse's caster drinks a share of what it takes.
       const caster = status.by ? all.find((u) => u.id === status.by && u.hp > 0) : undefined;
       const feeds = caster ? (hooksOf(caster).curseFeedPct ?? 0) : 0;
@@ -1889,14 +2020,19 @@ function entrench(unit: MarinaraFighter) {
 
 function tickMods(unit: MarinaraFighter, all: readonly MarinaraFighter[]) {
   for (const mod of unit.mods) mod.turns--;
+  const expiredMods = unit.mods.filter((mod) => mod.turns <= 0);
   unit.mods = unit.mods.filter((mod) => mod.turns > 0);
   for (const status of unit.statuses) status.turns--;
   const expired = unit.statuses.filter((s) => s.turns <= 0);
   unit.statuses = unit.statuses.filter((s) => s.turns > 0);
-  if (expired.length) {
-    for (const foe of all.filter((u) => u.side !== unit.side && u.hp > 0)) {
-      if (hooksOf(foe).devour) foe.hp = Math.min(foe.maxHp, foe.hp + Math.round(foe.maxHp * 0.05));
-    }
+  // Devour: the one who placed a debuff or a harmful status heals 5% when it runs out.
+  const placers = [
+    ...expired.filter((s) => HARMFUL.has(s.status)).map((s) => s.by),
+    ...expiredMods.filter((mod) => mod.pct < 0 || (mod.stat === "damage-taken" && mod.pct > 0)).map((mod) => mod.by),
+  ];
+  for (const id of placers) {
+    const foe = id ? all.find((u) => u.id === id && u.side !== unit.side && u.hp > 0) : undefined;
+    if (foe && hooksOf(foe).devour) foe.hp = Math.min(foe.maxHp, foe.hp + Math.round(foe.maxHp * 0.05));
   }
   if (unit.marked > 0) unit.marked--;
 }
@@ -1972,8 +2108,12 @@ function act(
       }
       break;
     case "revive": {
-      const target = targets[0];
-      if (target && target.hp <= 0) {
+      // Undying Light raises every downed ally; a revive otherwise raises the one aimed at.
+      const raised = effect.allDowned
+        ? all.filter((unit) => unit.side === actor.side && unit.hp <= 0 && !unit.dummy)
+        : targets.slice(0, 1);
+      for (const target of raised) {
+        if (target.hp > 0) continue;
         target.hp = Math.max(1, Math.round(target.maxHp * (effect.power ?? 0.25)));
         target.statuses = [];
         ctx.events.push({ kind: "revive", actorId: actor.id, targetId: target.id, skillId, amount: target.hp });
@@ -1990,12 +2130,29 @@ function act(
     }
     case "buff":
       for (const target of targets) {
+        // Crescendo: every buff the target carries counts twice for the round.
+        if (effect.doubles)
+          for (const mod of target.mods.filter(
+            (one) => one.pct > 0 && one.stat !== "damage-taken" && !one.source.startsWith("crescendo"),
+          ))
+            addMod(target, mod.stat, mod.pct, (effect.duration ?? 1) + durationBonus, `crescendo:${mod.source}`);
+        if (effect.steadies) {
+          target.statuses = target.statuses.filter((one) => one.status !== "confuse");
+          addMod(target, "steady-heart", 1, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
+        }
         if (effect.verses) singVerse(target, effect, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
         addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
         for (const also of effect.alsoMods ?? [])
           addMod(target, also.stat, also.pct, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
         ctx.events.push({ kind: "buff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
+        // Tempo: a buffed party member's next turn comes sooner.
+        const tempo = Math.max(
+          0,
+          ...living(all.filter((u) => u.side === target.side)).map((u) => hooksOf(u).tempoPct ?? 0),
+        );
+        if (tempo && target.side === actor.side) target.next -= turnLength(target, all) * tempo;
       }
+      if (effect.decoys) actor.decoys = effect.decoys;
       if (effect.hide) actor.hidden = true;
       if (effect.provokes) {
         actor.provoking = Math.max(actor.provoking, effect.provokes);
@@ -2013,13 +2170,20 @@ function act(
           ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId });
           continue;
         }
-        addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skillId ?? "debuff");
+        // Weaken: whichever of Strength and Magic the target hits with.
+        const stat =
+          effect.stat === "best-attack"
+            ? target.stats.magic > target.stats.strength
+              ? "magic"
+              : "strength"
+            : effect.stat!;
+        addMod(target, stat, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skillId ?? "debuff", actor.id);
         if (skill?.id === "mark-prey") target.marked = (effect.duration ?? 3) + durationBonus;
         ctx.events.push({ kind: "debuff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
         if (
           effect.applies &&
           random() < (effect.applies.chance ?? 1) &&
-          addStatus(target, effect.applies, durationBonus)
+          addStatus(target, effect.applies, durationBonus, actor.id)
         )
           ctx.events.push({
             kind: "status",
@@ -2059,7 +2223,7 @@ function act(
           addMod(target, "damage-taken", effect.exposes.pct, effect.exposes.duration + durationBonus, "exposed");
         ctx.events.push({ kind: "status", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
         // A second status riding on it (Wither's Wound).
-        if (effect.applies && addStatus(target, effect.applies, durationBonus))
+        if (effect.applies && addStatus(target, effect.applies, durationBonus, actor.id))
           ctx.events.push({
             kind: "status",
             actorId: actor.id,
@@ -2166,6 +2330,15 @@ function strike(
     ctx.events.push({ kind: "cover", actorId: coverer.id, targetId: target.id });
     target = coverer;
   }
+  // Thousand Shadows: a decoy takes the hit instead.
+  const shadow = living(all.filter((u) => u.side === target.side)).find(
+    (u) => (u.decoys ?? 0) > 0 && u.mods.some((mod) => mod.stat === "shadows"),
+  );
+  if (shadow) {
+    shadow.decoys! -= 1;
+    ctx.events.push({ kind: "decoy", actorId: actor.id, targetId: target.id, skillId, amount: shadow.decoys });
+    return;
+  }
   const targetHooks = hooksOf(target);
   if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound) {
     target.evadedThisRound = true;
@@ -2235,9 +2408,12 @@ function strike(
     target.shield -= absorbed;
     amount -= absorbed;
   }
-  if (hooks.assassinate && crit && target.hp - amount < target.maxHp * 0.15 && target.maxHp <= 300) amount = target.hp;
+  if (hooks.assassinate && crit && target.hp - amount < target.maxHp * 0.15 && target.tier !== "boss")
+    amount = target.hp;
   const before = target.hp;
   target.hp -= amount;
+  if (actor.side !== target.side) target.struckBy = actor.id;
+  holdOn(target, ctx);
   if (target.tier === "boss" && target.hp > 0 && target.hp < target.maxHp * MARINARA_BOSS_RULES.enrageBelow)
     target.enraged = true;
   if (target.hp <= 0 && targetHooks.lastStand && !target.lastStandUsed) {
@@ -2259,6 +2435,7 @@ function strike(
     roll: Math.floor(roll),
   });
   if (rider) applyRider(actor, target, rider, crit, ctx);
+  if (effect.siphon && target.hp > 0) siphon(actor, target, effect.siphon.mpPct, ctx, skillId);
   const lifesteal = (hooks.lifestealPct ?? 0) + (actor.gear?.lifestealPct ?? 0) + (effect.drain ?? 0);
   if (lifesteal) actor.hp = Math.round(Math.min(actor.maxHp, actor.hp + dealt * lifesteal * healFactor(actor)));
   if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);
