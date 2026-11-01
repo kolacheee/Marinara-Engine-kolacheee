@@ -197,6 +197,9 @@ assert.ok(
     ],
   }).problems.some((p) => p.includes("healer")),
 );
+// A boss takes its family's next, grander name.
+assert.equal(marinaraEnemySpec({ familyId: "cutpurse", setting: "high_fantasy", level: 6, tier: "boss", id: "b" }).name, "Roadknife");
+assert.equal(marinaraEnemySpec({ familyId: "cutpurse", setting: "high_fantasy", level: 6, tier: "standard", id: "s" }).name, "Footpad");
 const menu = marinaraBestiaryMenu("cyberpunk", 12);
 assert.ok(menu.some((entry) => entry.name === "Riot Trooper"));
 assert.ok(menu.every((entry) => entry.tiers.length > 0));

@@ -1312,6 +1312,22 @@ export function marinaraEnemyName(
 }
 
 /**
+ * A boss's name: the family's next, grander band in the setting (a boss Footpad is a Roadknife),
+ * or its own band's name when it is already at the top.
+ */
+export function marinaraEnemyBossName(
+  family: MarinaraEnemyFamily,
+  setting: MarinaraBestiarySetting,
+  level: number,
+): string | null {
+  const own = marinaraEnemyName(family, setting, level);
+  if (!own) return null;
+  const bands = family.names[setting] ?? [];
+  const next = bands.find((band) => band.from > level);
+  return next?.name || own;
+}
+
+/**
  * The highest level a setting's names reach for a family: its top level, or the level before a
  * closing band (a modern-day Wild Boar stops at 10 rather than growing into a level 28 monster).
  */
@@ -1384,7 +1400,7 @@ export function marinaraEnemySpec(input: {
   const classId = marinaraEnemyClassAt(family, level);
   return {
     id: input.id,
-    name: input.name?.trim() || bandName,
+    name: input.name?.trim() || (input.tier === "boss" ? marinaraEnemyBossName(family, input.setting, level)! : bandName),
     familyId: family.id,
     ...(classId ? { classId } : { archetype: family.archetype }),
     statScale: combinedScale(family.statScale, marinaraFoeLevelScale(level)),
@@ -1421,8 +1437,8 @@ export const MARINARA_LEVEL_GAP_THREAT = 1.12;
 
 /** A boss counts for this much more than its measured worth: one foe carrying the whole fight swings
  *  more from fight to fight (a lucky crit, a missed heal), and boss-led fights won less often than
- *  others at the same rating. */
-export const MARINARA_BOSS_THREAT_PREMIUM = 1.15;
+ *  others at the same rating (playtest: Hard with a boss 65-72% wins at 1.15). */
+export const MARINARA_BOSS_THREAT_PREMIUM = 1.3;
 /** How far a foe's level may stray from the party's: never more than 3 above (a boss 5), and foes
  *  more than 8 below aren't worth a fight. */
 export const MARINARA_LEVEL_GAP = { above: 3, bossAbove: 5, below: 8 } as const;
