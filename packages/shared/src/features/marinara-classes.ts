@@ -1068,20 +1068,6 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Pure damage over time: 6% of max HP each turn for 3 turns (half on a boss), and a Wound: healing halved. No defense or affinity stops it.",
         ),
         passive("drain-touch", "Drain Touch", 5, "Heals the user for 20% of the damage they deal.", true),
-        active(
-          "grave-tithe",
-          "Grave Tithe",
-          7,
-          "magic",
-          6,
-          "Front row only (a back row with nobody standing in front counts as front): dark damage to every enemy; the user heals for half of what it deals. Every other turn.",
-        ),
-        passive(
-          "grave-hunger",
-          "Grave Hunger",
-          9,
-          "Every enemy within the Hexer's spell reach (all of them in Classic; 3 tiles on a board) gives up 15% of its Defense and Resistance to the Hexer while it lives and stays in reach, 25% while the Hexer stands in the front row. Up to five.",
-        ),
       ],
     },
     // The Hexer's front line (Alyssa 2026-11-01): it stands in front and lives on what it drains,
@@ -1098,6 +1084,12 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       tune: { defense: 10 },
       skills: [
         active("rot", "Rot", 10, "magic", 5, "Poison: 6% of max HP each turn for 4 turns (half on a boss)."),
+        passive(
+          "grave-hunger",
+          "Grave Hunger",
+          12,
+          "Every enemy within the Hexer's spell reach (all of them in Classic; 3 tiles on a board) gives up 15% of its Defense and Resistance to the Hexer while it lives and stays in reach, 25% while the Hexer stands in the front row. Up to five.",
+        ),
         passive("grave-skin", "Grave Skin", 15, "Takes 15% less damage while standing in the front row.", true),
       ],
     },
@@ -1119,6 +1111,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "magic",
           10,
           "A heavy dark strike on one foe; the user heals for all of it. Every other turn.",
+        ),
+        active(
+          "grave-tithe",
+          "Grave Tithe",
+          22,
+          "magic",
+          6,
+          "Front row only (a back row with nobody standing in front counts as front): dark damage to every enemy; the user heals for half of what it deals. Every other turn.",
         ),
         passive(
           "siphoning-rot",
@@ -1646,13 +1646,12 @@ export function marinaraLearnedSkills(progression: MarinaraProgression): Array<M
 }
 
 /**
- * Skills every class of an archetype's tree keeps once learned, without a carry slot. A Hexer's
- * lifesteal is the line's identity (Alyssa 2026-11-01), so every Hexer class keeps Drain Touch,
- * Grave Tithe and Grave Hunger.
+ * Skills every class of an archetype's tree keeps once learned, without a carry slot. (The Hexer's
+ * went away 2026-11-01: Grave Hunger is the Witch's, Grave Tithe the Carrion Lord's, Drain Touch a
+ * Hexer skill carried like any other.)
  */
 export const MARINARA_ARCHETYPE_TRAITS: Partial<Record<MarinaraArchetype, readonly string[]>> = {
   guard: ["hold-the-line", "cover"],
-  hexer: ["drain-touch", "grave-tithe", "grave-hunger"],
   marksman: ["ammo-pouch"],
 };
 

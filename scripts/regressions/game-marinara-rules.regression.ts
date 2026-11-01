@@ -21,6 +21,7 @@ import {
   type MarinaraFightContext,
 } from "../../packages/shared/src/features/marinara-combat.js";
 import {
+  MARINARA_CLASSES,
   awardMarinaraXp,
   createMarinaraProgression,
   marinaraRandom,
@@ -47,10 +48,17 @@ const party = (id: string) =>
     marinaraRandom("hex"),
   ).progression;
   const hexer = buildMarinaraPartyFighter({ id: "hex", name: "Hex", progression, row: "back" });
-  assert.ok(
-    hexer.skills.some((skill) => skill.id === "grave-hunger"),
-    "learned by class level 9",
-  );
+  // Alyssa 2026-11-01: Grave Hunger is the Witch's (class level 12), Grave Tithe the Carrion Lord's (22).
+  const witch = MARINARA_CLASSES.find((one) => one.id === "witch")!;
+  const lord = MARINARA_CLASSES.find((one) => one.id === "carrion-lord")!;
+  assert.equal(witch.skills.find((one) => one.id === "grave-hunger")?.learnedAt, 12, "the Witch learns Grave Hunger");
+  assert.equal(lord.skills.find((one) => one.id === "grave-tithe")?.learnedAt, 22, "the Carrion Lord, Grave Tithe");
+  assert.ok(!hexer.skills.some((skill) => skill.id === "grave-hunger"), "a base Hexer has neither");
+  hexer.skills = [
+    ...hexer.skills,
+    witch.skills.find((one) => one.id === "grave-hunger")!,
+    lord.skills.find((one) => one.id === "grave-tithe")!,
+  ];
   const foes = ["f1", "f2"].map((id) => buildMarinaraEnemy({ id, name: id, level: 9, tier: "standard" }));
   foes[1]!.row = "back";
   const guard = party("g");
