@@ -1416,7 +1416,7 @@ export function setMarinaraClass(progression: MarinaraProgression, classId: stri
   const def = marinaraClass(classId)!;
   const bonus = marinaraPromotionBonus(def);
   const startLevel = def.from ? progression.classLevels[def.from]! : 1;
-  return {
+  const promoted: MarinaraProgression = {
     ...progression,
     activeClass: classId,
     classLevels: { ...progression.classLevels, [classId]: startLevel },
@@ -1424,6 +1424,33 @@ export function setMarinaraClass(progression: MarinaraProgression, classId: stri
     stats: statRecord((stat) => progression.stats[stat] + bonus[stat]),
     expected: statRecord((stat) => progression.expected[stat] + bonus[stat]),
   };
+  return def.from ? { ...promoted, carried: promotionCarries(promoted, def) } : promoted;
+}
+
+/**
+ * On a promotion, empty carry slots take the actives of the classes promoted from, latest class and
+ * designed carry picks first. A promoted class starts with one active of its own, so without this a
+ * companion nobody kits out lost its whole kit at level 10 and 20 (engine balance 2026-11-01: level
+ * 14 and 22 were the weakest bands). The player can change them on the class screen.
+ */
+function promotionCarries(progression: MarinaraProgression, def: MarinaraClassDef): string[] {
+  const carried = [...progression.carried];
+  const traits = MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? [];
+  const learned = marinaraLearnedSkills(progression);
+  for (
+    let from = def.from ? marinaraClass(def.from) : undefined;
+    from;
+    from = from.from ? marinaraClass(from.from) : undefined
+  ) {
+    const picks = learned
+      .filter((skill) => skill.classId === from!.id && skill.kind === "active" && !traits.includes(skill.id))
+      .sort((a, b) => Number(!!b.carryPick) - Number(!!a.carryPick) || b.learnedAt - a.learnedAt);
+    for (const skill of picks) {
+      if (carried.length >= MARINARA_CARRY_SLOTS) return carried;
+      if (!carried.includes(skill.id)) carried.push(skill.id);
+    }
+  }
+  return carried;
 }
 
 /** Every skill the character has learned, in any class. */
