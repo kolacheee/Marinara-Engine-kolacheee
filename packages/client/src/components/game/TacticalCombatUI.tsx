@@ -1863,6 +1863,7 @@ export function TacticalCombatUI({
                     const cd = selectedUnit.skillCooldowns[skill.name] ?? 0;
                     const ready =
                       cd <= 0 &&
+                      !skill.unavailable &&
                       (skill.slotLevel
                         ? (selectedUnit.spellSlots?.[String(skill.slotLevel)] ?? 0) > 0
                         : selectedUnit.mp >= skill.mpCost) &&
@@ -1890,6 +1891,16 @@ export function TacticalCombatUI({
                                 : localizeUi("game.combat.director.mpCost", { amount: skill.mpCost })}
                             </span>
                           )}
+                          {skill.staminaCost ? (
+                            <span className="text-emerald-300">
+                              {localizeUi("game.combat.marinara.staminaCost", { amount: skill.staminaCost })}
+                            </span>
+                          ) : null}
+                          {skill.readyIn ? (
+                            <span className="text-amber-300">
+                              {localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })}
+                            </span>
+                          ) : null}
                           {cd > 0 && (
                             <span className="text-amber-300">
                               {localizeUi("ui.game.tacticalcombatui.cd")} {cd}
