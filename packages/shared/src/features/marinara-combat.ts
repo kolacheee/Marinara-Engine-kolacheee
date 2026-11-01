@@ -503,7 +503,7 @@ export interface MarinaraPassiveHooks {
   partyDamagePct?: number;
   critBonus?: number;
   hitBonus?: number;
-  /** Steady: physical hits ignore this share of the target's Defense (after any skill pierce). */
+  /** Steady: every hit ignores this share of the target's Defense or Resistance (after any skill pierce). */
   armorPenPct?: number;
   /** Counter a melee attack: always, or only one that missed. */
   counter?: "always" | "on-miss";
@@ -1499,7 +1499,7 @@ export function marinaraHitNumbers(
   const guard =
     marinaraEffectiveStat(target, magic ? "resistance" : "defense", all) *
     (1 - (effect.pierce ?? 0)) *
-    (magic ? 1 : 1 - (hooks.armorPenPct ?? 0));
+    (1 - (hooks.armorPenPct ?? 0));
   let damage =
     powerStat(actor, attackStat, effect, all) +
     (effect.power ?? MARINARA_TUNING.basicPower) +

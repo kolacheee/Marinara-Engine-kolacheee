@@ -933,7 +933,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "steady",
           "Steady",
           15,
-          "Attacks and skills that use the user's weapon ignore 20% of the target's Defense.",
+          "The user's attacks and skills ignore 20% of the target's Defense and Resistance.",
         ),
       ],
     },
