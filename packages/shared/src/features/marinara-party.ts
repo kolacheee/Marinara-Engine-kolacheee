@@ -513,8 +513,8 @@ function marinaraBestiaryFoes(input: {
         id: brief.id,
         name: brief.name,
       });
-      fighters.push(
-        buildMarinaraEnemy({
+      fighters.push({
+        ...buildMarinaraEnemy({
           id: spec.id,
           name: spec.name,
           ...(spec.classId ? { classId: spec.classId } : { archetype: spec.archetype }),
@@ -527,7 +527,8 @@ function marinaraBestiaryFoes(input: {
           ...(spec.statScale ? { statScale: spec.statScale } : {}),
           ...(spec.ranged ? { ranged: true } : {}),
         }),
-      );
+        familyId: foe.familyId,
+      });
     } catch (err) {
       notes.push(`${brief.name}: ${err instanceof Error ? err.message : "not in the bestiary"}; fights by tier.`);
       fighters.push(
