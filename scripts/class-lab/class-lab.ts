@@ -353,7 +353,7 @@ function phase2(count: number): string {
 // ── Phase 3: utility ──
 
 const TEAMMATES: Array<{ line: string[] }> = [
-  { line: ["blade", "duelist", "moonless-blade"] },
+  { line: ["blade", "duelist", "headsman"] },
   { line: ["guard", "sentinel", "stonewall"] },
   { line: ["marksman", "sharpshooter", "farshot"] },
 ];

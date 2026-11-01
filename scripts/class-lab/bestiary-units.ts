@@ -81,7 +81,7 @@ export function enemyFighter(spec: MarinaraBestiaryFoeSpec): MarinaraFighter {
 /** Fixed-line parties: an early-FF four (fighter, guard, caster, healer), a skirmish four and a no-healer four. */
 const LINE_PARTIES: Record<string, string[][]> = {
   classic: [
-    ["blade", "duelist", "moonless-blade"],
+    ["blade", "duelist", "headsman"],
     ["guard", "sentinel", "stonewall"],
     ["channeler", "fusionist", "stormcaller"],
     ["mender", "cleric", "saint"],
@@ -93,7 +93,7 @@ const LINE_PARTIES: Record<string, string[][]> = {
     ["herald", "cantor", "maestro"],
   ],
   noHealer: [
-    ["blade", "bloodsworn", "warbringer"],
+    ["blade", "bloodsworn", "cleaver"],
     ["guard", "aegis", "bulwark"],
     ["marksman", "artillerist", "siegebreaker"],
     ["hexer", "witch", "carrion-lord"],

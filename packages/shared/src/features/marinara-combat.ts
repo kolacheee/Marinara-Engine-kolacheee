@@ -220,7 +220,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Blade
   "power-strike": dmg("strength", 9, { weight: 1.3 }),
   flurry: dmg("strength", 4, { hits: 2 }),
-  "moonless-cut": dmg("strength", 10, { critBonus: 30, finisher: { below: 0.5, bonus: 0.5 } }),
+  "last-cut": dmg("strength", 10, { critBonus: 30, finisher: { below: 0.5, bonus: 0.5 } }),
   // Balance pass (2026-11-01): it missed evasive foes too often, and opens a Wound (the party's anti-heal).
   "reckless-swing": dmg("strength", 13, {
     hitBonus: 15,
@@ -592,7 +592,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "rallying-presence": { partyDamagePct: 0.1 },
   riposte: { counter: "on-miss" },
   "keen-edge": { critBonus: 10 },
-  "second-wind": { actOnKill: true },
+  "follow-through": { actOnKill: true },
   // Bloodsworn (Alyssa 2026-11-01): the lower its HP, the harder it hits, and it drinks from every hit.
   bloodrage: { damagePerMissingPct: 0.6 },
   bloodlust: { lifestealPct: 0.15 },
@@ -749,7 +749,7 @@ export interface MarinaraFighter {
   marked: number;
   hidden?: boolean;
   exposeNext?: number;
-  secondWindUsed?: boolean;
+  followThroughUsed?: boolean;
   /** Commanded (Command, Grand Strategy): acts again at once, outside its own place on the timeline. */
   bonusTurns?: number;
   /** This action is a commanded one, which can't command in turn. */
@@ -1809,7 +1809,7 @@ export function beginMarinaraTurn(
   }
   actor.defending = false;
   actor.hidden = false;
-  actor.secondWindUsed = false;
+  actor.followThroughUsed = false;
   actor.evadedThisRound = false;
   actor.counteredThisRound = false;
   actor.freeItemUsed = false;
@@ -2453,11 +2453,11 @@ function strike(
     ctx.events.push({ kind: "down", actorId: actor.id, targetId: target.id });
     if (hooks.healOnKillPct)
       actor.hp = Math.min(actor.maxHp, actor.hp + Math.round(actor.maxHp * hooks.healOnKillPct * healFactor(actor)));
-    // Second Wind: a kill gives a whole new action, once per turn.
-    if (hooks.actOnKill && !actor.secondWindUsed) {
-      actor.secondWindUsed = true;
+    // Follow Through: a kill gives a whole new action, once per turn.
+    if (hooks.actOnKill && !actor.followThroughUsed) {
+      actor.followThroughUsed = true;
       actor.next -= turnLength(actor, all);
-      ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "second-wind" });
+      ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "follow-through" });
     }
     const savior = living(all.filter((u) => u.side === target.side)).find((u) => hooksOf(u).miracle && !u.miracleUsed);
     if (savior && target.side === "party") {

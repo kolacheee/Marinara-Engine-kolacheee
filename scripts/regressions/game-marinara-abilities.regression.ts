@@ -45,22 +45,22 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
 
 // Unstoppable: no stun below half HP; Immovable: never.
 {
-  const warbringer = unit("wb", "party", ["unstoppable"]);
+  const cleaver = unit("wb", "party", ["unstoppable"]);
   const wall = unit("wall", "party", ["immovable"]);
-  warbringer.hp = warbringer.maxHp;
+  cleaver.hp = cleaver.maxHp;
   const stun = { kind: "status", target: "enemy", status: "stun", chance: 1, duration: 2 } as const;
   const stunner = unit("st", "enemy");
-  const stunAll = [stunner, warbringer, wall];
+  const stunAll = [stunner, cleaver, wall];
   const option = { id: "test-stun", skill: null, effect: stun } as never;
-  performMarinaraOption(stunner, option, [warbringer], stunAll, ctx());
+  performMarinaraOption(stunner, option, [cleaver], stunAll, ctx());
   assert.ok(
-    warbringer.statuses.some((s) => s.status === "stun"),
-    "above half HP the Warbringer can be stunned",
+    cleaver.statuses.some((s) => s.status === "stun"),
+    "above half HP the Cleaver can be stunned",
   );
-  warbringer.statuses = [];
-  warbringer.hp = Math.floor(warbringer.maxHp / 3);
-  performMarinaraOption(stunner, option, [warbringer], stunAll, ctx());
-  assert.ok(!warbringer.statuses.some((s) => s.status === "stun"), "below half HP it can't");
+  cleaver.statuses = [];
+  cleaver.hp = Math.floor(cleaver.maxHp / 3);
+  performMarinaraOption(stunner, option, [cleaver], stunAll, ctx());
+  assert.ok(!cleaver.statuses.some((s) => s.status === "stun"), "below half HP it can't");
   performMarinaraOption(stunner, option, [wall], stunAll, ctx());
   assert.ok(!wall.statuses.some((s) => s.status === "stun"), "Immovable is never stunned");
 }
