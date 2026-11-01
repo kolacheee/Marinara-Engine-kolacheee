@@ -262,6 +262,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.08 },
   wither: { kind: "status", target: "enemy", status: "wither", chance: 1, duration: 3, power: 0.06 },
   doom: { kind: "status", target: "enemy", status: "doom", chance: 0.6, duration: 3 },
+  // Carrion Lord (the Hexer's front-line master): a heavy drain on one foe, all of it back.
+  "carrion-feast": dmg("magic", 14, { ranged: true, drain: 1, cooldown: 2 }),
   lull: { kind: "status", target: "enemy", status: "sleep", chance: 0.75, duration: 3 },
   "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2 },
   siphon: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
@@ -369,6 +371,10 @@ export interface MarinaraPassiveHooks {
   /** Added to the weakness multiplier. */
   weakBonus?: number;
   lifestealPct?: number;
+  /** Siphoning Rot: the user's poison and wither ticks heal it for this share of what they take. */
+  curseFeedPct?: number;
+  /** Grave Skin: damage taken is cut by this share while the user stands in the front line. */
+  frontTakenPct?: number;
   /** Grave Hunger: takes this share of each enemy in reach's Defense and Resistance. */
   leechGuardPct?: number;
   partyDamagePct?: number;
@@ -473,6 +479,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "mana-tide": { mpRegenPct: 0.08 },
   lingering: { debuffDurationBonus: 1 },
   "ill-omen": { enemyCritToMissChance: 0.5 },
+  "grave-skin": { frontTakenPct: -0.15 },
+  "siphoning-rot": { curseFeedPct: 0.5 },
   "slow-time": { slowDebuffed: 0.25 },
   nightmare: { nightmare: true },
   null: { debuffImmune: true },
@@ -549,7 +557,8 @@ export interface MarinaraFighter {
   // fight state
   next: number;
   mods: Array<{ stat: string; pct: number; turns: number; source: string }>;
-  statuses: Array<{ status: MarinaraStatusId; turns: number; power?: number }>;
+  /** `by`: who laid it, for a curse whose ticks feed its caster (Siphoning Rot). */
+  statuses: Array<{ status: MarinaraStatusId; turns: number; power?: number; by?: string }>;
   shield: number;
   covering?: string;
   provoking: number;
@@ -705,7 +714,7 @@ export function buildMarinaraPartyFighter(input: {
     id: input.id,
     name: input.name,
     side: "party",
-    row: input.row ?? MARINARA_ARCHETYPE_ROWS[archetype],
+    row: input.row ?? def?.row ?? MARINARA_ARCHETYPE_ROWS[archetype],
     stats,
     skills: usable.map(({ classId: _c, ...skill }) => skill),
     archetype,
@@ -1256,6 +1265,7 @@ export function marinaraHitNumbers(
   if (target.marked > 0 && hooks.bonusVsMarked) pct += hooks.bonusVsMarked;
   if (effect.finisher && target.hp < target.maxHp * effect.finisher.below) pct += effect.finisher.bonus;
   if (target.hp < target.maxHp / 2) pct += hooksOf(target).takenBelowHalfPct ?? 0;
+  if (hooksOf(target).frontTakenPct && marinaraStandsFront(target, all)) pct += hooksOf(target).frontTakenPct!;
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
     const allyHooks = hooksOf(ally);
     if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;
@@ -1461,8 +1471,22 @@ export function beginMarinaraTurn(
       // Poison is a damage type foes can resist; Wither and Bleed are pure and nothing stops them.
       const multiplier = status.status === "poison" ? marinaraAffinityMultiplier(actor.affinities, "poison") : 1;
       const amount = Math.round(actor.maxHp * (status.power ?? 0.08) * multiplier);
+      const before = actor.hp;
       actor.hp = Math.min(actor.maxHp, actor.hp - amount);
       if (amount !== 0) ctx.events.push({ kind: "tick", actorId: actor.id, status: status.status, amount });
+      // Siphoning Rot: the curse's caster drinks a share of what it takes.
+      const caster = status.by ? all.find((u) => u.id === status.by && u.hp > 0) : undefined;
+      const feeds = caster ? (hooksOf(caster).curseFeedPct ?? 0) : 0;
+      if (caster && feeds > 0 && before > actor.hp) {
+        const healed = Math.min(
+          caster.maxHp - caster.hp,
+          Math.round((before - Math.max(0, actor.hp)) * feeds * healFactor(caster)),
+        );
+        if (healed > 0) {
+          caster.hp += healed;
+          ctx.events.push({ kind: "heal", actorId: caster.id, targetId: caster.id, amount: healed });
+        }
+      }
     }
     if (status.status === "regen") {
       const amount = Math.round(actor.maxHp * (status.power ?? 0.1) * healFactor(actor));
@@ -1781,6 +1805,7 @@ function act(
           status: effect.status!,
           turns: (effect.duration ?? 2) + durationBonus,
           power: effect.power,
+          by: actor.id,
         });
         if (effect.exposes)
           addMod(target, "damage-taken", effect.exposes.pct, effect.exposes.duration + durationBonus, "exposed");

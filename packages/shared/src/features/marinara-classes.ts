@@ -352,6 +352,8 @@ export interface MarinaraClassDef {
   weapons?: readonly MarinaraDamageType[];
   /** The stats it grows best: a promoted class adds to these. */
   leans: readonly MarinaraStat[];
+  /** Where it stands by default when its archetype's row doesn't fit (the Witch line fights in front). */
+  row?: "front" | "back";
   skills: readonly MarinaraSkillDef[];
 }
 
@@ -381,6 +383,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   convergence: "element",
   siphon: "dark",
   "grave-tithe": "dark",
+  "carrion-feast": "dark",
   rot: "poison",
 };
 
@@ -982,12 +985,16 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
         ),
       ],
     },
+    // The Hexer's front line (Alyssa 2026-11-01): it stands in front and lives on what it drains,
+    // holding a line without taunts or control. Leans HP and Defense; Grave Skin cuts what it takes
+    // in front, Siphoning Rot turns its curses' ticks into healing, Carrion Feast drains one foe.
     {
       id: "witch",
       label: "Witch",
       from: "hexer",
-      role: "Curses and damage over time",
-      leans: ["magic"],
+      role: "Front-line curser, fed by what it drains",
+      leans: ["magic", "hp", "defense"],
+      row: "front",
       skills: [
         active(
           "rot",
@@ -997,25 +1004,32 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           5,
           "Poison: 8% of max HP each turn for 4 turns; spreads when its target falls.",
         ),
-        passive("lingering", "Lingering", 15, "Debuffs last a round longer.", true),
+        passive("grave-skin", "Grave Skin", 15, "Takes 15% less damage while standing in the front row.", true),
       ],
     },
     {
-      id: "doom-oracle",
-      label: "Doom Oracle",
+      id: "carrion-lord",
+      label: "Carrion Lord",
       from: "witch",
-      role: "Seals fates",
-      leans: ["magic", "luck"],
+      role: "Holds the front line by devouring it",
+      leans: ["magic", "hp", "defense", "resistance"],
+      row: "front",
       skills: [
         active(
-          "doom",
-          "Doom",
+          "carrion-feast",
+          "Carrion Feast",
           20,
           "magic",
-          12,
-          "In 3 turns the target loses 40% of max HP (10% for a boss) unless cleansed. Pure damage.",
+          10,
+          "A heavy dark strike on one foe; the user heals for all of it. Every other turn.",
         ),
-        passive("ill-omen", "Ill Omen", 24, "Enemy crits sometimes become misses.", true),
+        passive(
+          "siphoning-rot",
+          "Siphoning Rot",
+          24,
+          "The user's poison and wither ticks heal the user for half of what they take.",
+          true,
+        ),
       ],
     },
     {

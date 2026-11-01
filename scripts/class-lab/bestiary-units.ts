@@ -84,7 +84,7 @@ const LINE_PARTIES: Record<string, string[][]> = {
     ["blade", "bloodsworn", "warbringer"],
     ["guard", "aegis", "bulwark"],
     ["marksman", "artillerist", "siegebreaker"],
-    ["hexer", "witch", "doom-oracle"],
+    ["hexer", "witch", "carrion-lord"],
   ],
 };
 

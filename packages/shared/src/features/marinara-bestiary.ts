@@ -1143,7 +1143,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     summary: "A zealot of something dark: curses, rot and wither, never surrenders.",
     mind: "tactical",
     temperaments: ["fanatical", "cruel", "methodical"],
-    classLine: ["hexer", "witch", "doom-oracle"],
+    classLine: ["hexer", "witch", "carrion-lord"],
     row: "back",
     abilities: at(["curse", 1], ["life-sap", 6], ["doom-mark", 18]),
     levels: [1, 30],
