@@ -565,6 +565,15 @@ function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered
   const text = left === "fled" ? `${u.name} gets away from the fight.` : `${u.name} throws down its arms and gives up.`;
   log(s, text, "status", u.id, undefined, { key, params: { actor: u.name } });
 }
+/** Treasure foes (marinara-bestiary.ts) still standing after their rounds get away, paying nothing. */
+function treasureFlees(s: CombatDirectorState) {
+  for (const fighter of [...(s.marinara?.fighters ?? [])]) {
+    if (!fighter.windfall || fighter.side === "party" || fighter.hp <= 0) continue;
+    if (s.round <= fighter.windfall.fleeAfterRounds) continue;
+    const unit = get(s, fighter.id);
+    if (unit) leaveFight(s, unit, "fled");
+  }
+}
 /** One running walks for the board's edge, as far from the party as the way allows. */
 function runForTheEdge(s: CombatDirectorState, u: Unit) {
   const t = u as TacticalUnit;
@@ -1528,6 +1537,7 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         s.round++;
         s.skipParty = false;
         s.gmCalls = 0;
+        treasureFlees(s);
         // Classic Marinara on a board stops at the same round limit as Classic.
         if (s.marinara && s.round > MARINARA_ROUND_LIMIT && !s.outcome) {
           s.stalled = true;
@@ -1543,6 +1553,13 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         if (turn.round > s.round) {
           s.round = turn.round;
           s.gmCalls = 0;
+        }
+        // A treasure foe still standing after its rounds runs off on its turn, windfall and all.
+        const runner = turn.actor?.windfall && turn.actor.side !== "party" ? get(s, turn.actor.id) : undefined;
+        if (runner && s.round > turn.actor!.windfall!.fleeAfterRounds) {
+          leaveFight(s, runner, "fled");
+          sync(s);
+          continue;
         }
         // Neither side can finish the other: the fight is called off with both standing.
         if (s.round > MARINARA_ROUND_LIMIT) {

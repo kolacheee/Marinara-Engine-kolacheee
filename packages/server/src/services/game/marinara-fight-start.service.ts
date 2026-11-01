@@ -7,8 +7,11 @@ import {
   awardMarinaraXp,
   createMarinaraCardProgression,
   marinaraClassBlock,
+  marinaraEnemyFamily,
+  marinaraEnemyName,
   marinaraFoeXp,
   marinaraRandom,
+  marinaraRollRareEncounter,
   scaleMarinaraXp,
   MARINARA_CLASSES,
   type MarinaraBestiarySetting,
@@ -71,6 +74,12 @@ export function marinaraFightStart(input: {
   setting?: MarinaraBestiarySetting | null;
   /** The fight's own difficulty for bestiary foes. */
   encounter?: MarinaraEncounterDifficulty;
+  /** A chance encounter: now and then a rare treasure foe turns up in it. */
+  chance?: boolean;
+  /** The story found a rare treasure foe here. */
+  treasure?: boolean;
+  /** Seeds the rare encounter roll. */
+  seed?: string;
 }): MarinaraFightStart {
   const named = input.cards.filter(
     (card): card is Record<string, unknown> & { name: string } =>
@@ -108,8 +117,45 @@ export function marinaraFightStart(input: {
     ...(input.setting ? { setting: input.setting } : {}),
     ...(input.encounter ? { encounter: input.encounter } : {}),
   });
+  // A rare treasure foe (Alyssa 2026-11-01): about 1 chance encounter in 32, or when the story found one.
+  // Never in a story's own fight.
+  if (input.setting && !input.storyFight && (input.chance || input.treasure)) {
+    const levels = fighters.map((one) => one.level);
+    const level = levels.length ? levels.reduce((sum, one) => sum + one, 0) / levels.length : 1;
+    const rolled = marinaraRollRareEncounter({
+      setting: input.setting,
+      party: { level, size: Math.max(1, levels.length), ...(input.difficulty === "brutal" ? { brutal: true } : {}) },
+      random: marinaraRandom(`${input.gameId}:${input.seed ?? ""}:rare`),
+      ...(input.treasure ? { force: true } : {}),
+    });
+    if (rolled) {
+      const letters = "ABC";
+      const briefs: MarinaraFoeBrief[] = rolled.map((foe, index) => {
+        const family = marinaraEnemyFamily(foe.familyId);
+        const name = (family && marinaraEnemyName(family, input.setting!, foe.level)) ?? foe.familyId;
+        return {
+          id: `treasure-${index + 1}`,
+          name: rolled.length > 1 ? `${name} ${letters[index]}` : name,
+          marinara: { family: { familyId: foe.familyId, tier: foe.tier, level: foe.level } },
+        };
+      });
+      const extra = marinaraFoeFighters({
+        foes: briefs,
+        partyLevels: levels,
+        partyAverageHp,
+        difficulty: input.difficulty,
+        keepAll: true,
+        setting: input.setting,
+      });
+      foes.fighters.push(...extra.fighters);
+      foes.notes.push(`A rare encounter: ${briefs.map((one) => one.name).join(", ")}.`, ...extra.notes);
+    }
+  }
   const byId = new Map(input.enemies.map((unit) => [unit.id, unit]));
-  const enemies = foes.fighters.map((fighter) => marinaraCombatant(fighter, kept(byId.get(fighter.id)!)));
+  const enemies = foes.fighters.map((fighter) => {
+    const unit = byId.get(fighter.id);
+    return marinaraCombatant(fighter, unit ? kept(unit) : {});
+  });
   fighters.push(...foes.fighters);
   const cards = made.size
     ? input.cards.map((card) => {
@@ -137,8 +183,9 @@ export function marinaraFightEnd(input: {
 }): { growth: MarinaraFightGrowth[]; cards: Record<string, unknown>[] | null } {
   const party = input.state.fighters.filter((one) => one.side === "party");
   const foes = input.state.fighters.filter((one) => one.side !== "party");
-  // Foes that left a won fight alive (surrendered, fled) were driven off: they pay as the beaten do.
-  const left = (input.state.left ?? []).filter((one) => one.side !== "party");
+  // Foes that left a won fight alive (surrendered, fled) were driven off: they pay as the beaten do,
+  // save a treasure foe, which got away with its windfall.
+  const left = (input.state.left ?? []).filter((one) => one.side !== "party" && !one.windfall);
   const named = input.cards.filter(
     (card): card is Record<string, unknown> & { name: string } =>
       typeof card.name === "string" && Boolean(card.name.trim()),
@@ -161,7 +208,8 @@ export function marinaraFightEnd(input: {
       (sum, foe) =>
         sum +
         scaleMarinaraXp({
-          base: marinaraFoeXp(foe) * share,
+          // A treasure foe pays its windfall: that many standard foes' XP at its level.
+          base: (foe.windfall ? marinaraFoeXp({ tier: "standard" }) * foe.windfall.xp : marinaraFoeXp(foe)) * share,
           level: progression.level,
           foeLevel: foe.level,
           partyAverageLevel: average,

@@ -1086,6 +1086,8 @@ export function buildInitPrompt(
   if (marinara && !ruleset) {
     inst += `- This game fights with Classic Marinara classes. Add a top-level "encounterDifficulty": "easy|normal|hard|deadly" for how hard the story means this fight to be (normal for most fights; deadly only for a true climax).\n`;
     inst += `- Give every enemy a tier: minion (fodder that goes down fast), standard, elite (a captain, a veteran beast) or boss (one per fight at most, only a true boss, never below party level 5). The Engine fits the fight to the party: too many or too strong enemies are lowered a tier or held back.\n`;
+    inst += `- A boss only when the story calls for one (a climax, a named villain), never in a chance encounter.\n`;
+    inst += `- Add a top-level "encounterKind": "chance" for a chance meeting (wandering beasts, roadside bandits, whatever the party stumbles on), or "story" for a fight the story set up. In a chance encounter the Engine now and then adds a rare treasure creature that flees after a few rounds. Add "treasure": true only when the story itself has found such a rare treasure creature.\n`;
     if (marinara.menu.length) {
       inst += `- Bestiary for this setting at the party's level. When an enemy is one of these, give its family id exactly as written and keep its name as listed or the story's own name for it; HP and attacks you write for it are ignored, the bestiary decides them:\n`;
       for (const one of marinara.menu)
@@ -1557,6 +1559,9 @@ export async function encounterRoutes(app: FastifyInstance) {
         const encounter = ["easy", "normal", "hard", "deadly"].includes(String(combatState.encounterDifficulty))
           ? String(combatState.encounterDifficulty)
           : undefined;
+        // A chance encounter may turn up a rare treasure foe; the story may also find one itself.
+        const chance = combatState.encounterKind === "chance";
+        const treasure = combatState.treasure === true;
         combatState = {
           ...combatState,
           enemies: ((combatState.enemies as Array<Record<string, unknown>>) ?? []).map((enemy) => {
@@ -1568,6 +1573,8 @@ export async function encounterRoutes(app: FastifyInstance) {
                 ...(family ? { family: { familyId: family, ...(tier ? { tier } : {}) } } : {}),
                 ...(tier ? { tier } : {}),
                 ...(encounter ? { encounter } : {}),
+                ...(chance ? { chance: true } : {}),
+                ...(treasure ? { treasure: true } : {}),
               },
             };
           }),

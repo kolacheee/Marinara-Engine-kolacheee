@@ -531,6 +531,8 @@ function marinaraBestiaryFoes(input: {
       party: {
         level,
         size: Math.max(1, input.partyLevels.length * (MARINARA_GAME_DIFFICULTY_SCALE[input.difficulty] ?? 1)),
+        // Brutal breaks the level cap (Alyssa 2026-11-01).
+        ...(input.difficulty === "brutal" ? { brutal: true } : {}),
       },
       foes: asked.map(({ familyId, tier, level }) => ({ familyId, tier, level })),
       difficulty: input.encounter ?? "normal",
@@ -555,7 +557,7 @@ function marinaraBestiaryFoes(input: {
         id: brief.id,
         name: brief.name,
       });
-      fighters.push({
+      const fighter: MarinaraFighter = {
         ...buildMarinaraEnemy({
           id: spec.id,
           name: spec.name,
@@ -570,7 +572,12 @@ function marinaraBestiaryFoes(input: {
           ...(spec.ranged ? { ranged: true } : {}),
         }),
         familyId: foe.familyId,
-      });
+        ...(spec.windfall ? { windfall: spec.windfall } : {}),
+      };
+      // A treasure foe hardly hurts: everything it deals is scaled down for the whole fight.
+      if (spec.damageScale !== undefined && spec.damageScale !== 1)
+        fighter.mods.push({ stat: "damage", pct: spec.damageScale - 1, turns: 1e9, source: "treasure" });
+      fighters.push(fighter);
     } catch (err) {
       notes.push(`${brief.name}: ${err instanceof Error ? err.message : "not in the bestiary"}; fights by tier.`);
       fighters.push(

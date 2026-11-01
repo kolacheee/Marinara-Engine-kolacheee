@@ -612,6 +612,9 @@ export interface MarinaraFighter {
   tier?: MarinaraEnemyTier;
   /** A bestiary foe's family (marinara-bestiary.ts), for its signature drops. */
   familyId?: string;
+  /** A treasure foe (marinara-bestiary.ts): what beating it pays, as multiples of a standard foe of its
+   *  level, and the round after which it flees, paying nothing. */
+  windfall?: { xp: number; gold: number; fleeAfterRounds: number };
   /** Robbed by this fighter (Steal): a foe has one thing to take, kept with the fight's loot. */
   stolenBy?: string;
   /** A boss once below half its HP: it hits harder for the rest of the fight (MARINARA_BOSS_RULES). */
