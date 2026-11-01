@@ -46,6 +46,8 @@ import {
   marinaraActionChoices,
   marinaraActionProblem,
   marinaraAiAction,
+  marinaraTacticalTurnStart,
+  performMarinaraTacticalAction,
   mirrorMarinaraUnits,
   nextMarinaraTurn,
   performMarinaraAction,
@@ -1227,6 +1229,49 @@ function effect(s: CombatDirectorState, p: Pending) {
           key: "game.combat.event.item",
           params: { actor: u.name, item: action.itemName },
         });
+    } else if (
+      s.tactical &&
+      s.marinara &&
+      p.action.tactical &&
+      (p.action.tactical.type === "attack" || p.action.tactical.type === "skill" || p.action.tactical.type === "defend")
+    ) {
+      // Classic Marinara on a board: the board moves the unit, the shared math resolves what it does.
+      const a = p.action.tactical;
+      const tu = u as TacticalUnit;
+      const events: TacticalCombatState["log"] = [];
+      if (a.to) performTacticalUnitAction(s.tactical, tu, { type: "move", unitId: tu.id, to: a.to }, events);
+      for (const e of events) log(s, e.text, e.kind, e.actorId, p.source, e.message);
+      const units = s.tactical.units;
+      const near = (id: string) => {
+        const at = units.find((one) => one.id === id);
+        return at
+          ? units
+              .filter((one) => one.id !== id && Math.max(Math.abs(one.x - at.x), Math.abs(one.y - at.y)) <= 1)
+              .map((one) => one.id)
+          : [];
+      };
+      const skillId = a.type === "skill" ? u.skills?.find((k) => k.name === a.skillName)?.id : undefined;
+      const action: CombatPlayerAction =
+        a.type === "defend"
+          ? { type: "defend" }
+          : a.type === "skill" && skillId
+            ? { type: "skill", skillId, targetId: a.targetId ?? tu.id }
+            : { type: "attack", targetId: a.targetId ?? tu.id };
+      const range = a.type === "skill" ? Math.max(tu.attackRange.max, 2) : tu.attackRange.max;
+      const reach = (id: string) => {
+        const at = units.find((one) => one.id === id);
+        return !!at && Math.abs(at.x - tu.x) + Math.abs(at.y - tu.y) <= range;
+      };
+      performMarinaraTacticalAction(s.marinara, tu.id, action, s.seed, marinaraLog(s), near, reach, p.source);
+      tu.hasActed = true;
+      if (a.type === "defend") tu.defending = true;
+      // A commanded ally gets its extra action on the board as well.
+      for (const fighter of s.marinara.fighters)
+        if ((fighter.bonusTurns ?? 0) > 0 && fighter.hp > 0) {
+          const unit = units.find((one) => one.id === fighter.id);
+          if (unit) unit.hasActed = false;
+        }
+      sync(s);
     } else if (s.tactical && p.action.tactical) {
       const guarded = (p.guarded ?? []).map((id) => get(s, id) as TacticalUnit).filter(Boolean);
       const prior = guarded.map((x) => x.defending);
@@ -1458,6 +1503,15 @@ export function advanceCombatDirector(s: CombatDirectorState) {
         s.tactical.phase = side(u) === "party" ? "player" : "enemy";
         (u as TacticalUnit).defending = false;
       }
+      // Classic Marinara on a board: the fighter's own turn starts (statuses tick, stamina back); one
+      // asleep, stunned or letting a charge go spends it there.
+      if (s.marinara && s.tactical && !marinaraTacticalTurnStart(s.marinara, u.id, s.seed, marinaraLog(s))) {
+        (u as TacticalUnit).hasActed = true;
+        s.actorId = undefined;
+        sync(s);
+        continue;
+      }
+      if (s.marinara && s.tactical) sync(s);
       s.tasks.unshift(
         ...legendaryTasks(s, u, "anticipation"),
         { kind: "act", unitId: u.id },

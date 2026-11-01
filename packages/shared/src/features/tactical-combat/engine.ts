@@ -583,6 +583,8 @@ function canCounter(state: TacticalCombatState, attacker: TacticalUnit, defender
 }
 
 function skillReady(unit: TacticalUnit, skill: CombatSkill): boolean {
+  // A Classic Marinara skill says itself when it can't be used (stamina, cooldown, once a fight).
+  if (skill.unavailable) return false;
   const cd = unit.skillCooldowns[skill.name] ?? 0;
   return cd <= 0 && (skill.slotLevel ? (unit.spellSlots?.[String(skill.slotLevel)] ?? 0) > 0 : unit.mp >= skill.mpCost);
 }
