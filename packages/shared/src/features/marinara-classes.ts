@@ -853,7 +853,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "skill",
           3,
-          "The target takes 35% more damage from everyone for 3 turns.",
+          "A bonus action: the target takes 35% more damage from everyone for 3 turns, and the user acts again at once.",
           true,
         ),
         passive(

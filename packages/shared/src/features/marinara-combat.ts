@@ -244,7 +244,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, weight: 1.2 }),
   pierce: dmg("strength", 7, { ranged: true, pierce: 0.5 }),
   headshot: dmg("strength", 20, { ranged: true, charge: true, critBonus: 25 }),
-  "mark-prey": { kind: "debuff", target: "enemy", stat: "damage-taken", pct: 0.35, duration: 3 },
+  // A bonus action (lab 2026-11-01: marking ate 54-73% of a Tracker's turns for 6% of party damage).
+  "mark-prey": { kind: "debuff", target: "enemy", stat: "damage-taken", pct: 0.35, duration: 3, bonusAction: true },
   "snare-field": { kind: "debuff", target: "all-enemies", stat: "speed", pct: -0.3, duration: 2 },
   volley: dmg("strength", 4, { ranged: true, target: "all-enemies", cooldown: 2 }),
   "ruinous-barrage": dmg("strength", 9, {
@@ -1897,6 +1898,10 @@ function act(
             skillId,
             status: effect.applies.status,
           });
+      }
+      if (effect.bonusAction && !actor.commanded) {
+        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       break;
     case "status":
