@@ -23,7 +23,9 @@
 // ──────────────────────────────────────────────
 
 import {
+  MARINARA_DAMAGE_TYPES,
   MARINARA_LEVEL_CAP,
+  MARINARA_PHYSICAL_TYPES,
   MARINARA_STATS,
   MARINARA_WEAPON_COATINGS,
   expectedMarinaraStats,
@@ -1040,6 +1042,9 @@ export type MarinaraConsumableEffect =
   | { kind: "revive"; pct: number }
   | { kind: "cleanse"; statuses: readonly MarinaraStatus[] | "all" }
   | { kind: "coat"; rider: MarinaraDamageType }
+  /** Marksman ammunition (Alyssa 2026-11-01): owning it lets a Marksman's bow or gun shoot this type,
+   *  loaded by hand mid-fight (an AI-run one loads the best). Not spent: owning it is having it. */
+  | { kind: "ammo"; type: MarinaraDamageType }
   /** Magic damage of `type`, cast as if by a caster with `marinaraBombMagic(tier)` Magic and
    *  this power; on several foes each takes MARINARA area share (60%). */
   | { kind: "bomb"; type: MarinaraDamageType; power: number; area: boolean }
@@ -1122,6 +1127,91 @@ const COATING_NAMES: Record<string, MarinaraNames> = {
     "Yin Talisman",
     "Graveyard Dirt",
     "Crater Ash",
+  ),
+};
+
+/** Marksman ammunition, by the type it shoots, per setting. */
+const AMMO_NAMES: Record<MarinaraDamageType, MarinaraNames> = {
+  slash: names(
+    "Broadhead Ammo",
+    "Broadhead Arrows",
+    "Flechette Rounds",
+    "Hollow-Point Rounds",
+    "Crescent Arrows",
+    "Dum-Dum Rounds",
+    "Scrap-Blade Bolts",
+  ),
+  pierce: names(
+    "Piercing Ammo",
+    "Bodkin Arrows",
+    "Penetrator Rounds",
+    "Armor-Piercing Rounds",
+    "Needle Arrows",
+    "Steel-Core Rounds",
+    "Rebar Bolts",
+  ),
+  blunt: names(
+    "Blunt Ammo",
+    "Blunt Arrows",
+    "Kinetic Slugs",
+    "Rubber Rounds",
+    "Knob-Head Arrows",
+    "Lead Slugs",
+    "Bolt-Nut Shot",
+  ),
+  fire: names(
+    "Fire Ammo",
+    "Fire Arrows",
+    "Plasma Cells",
+    "Incendiary Rounds",
+    "Fire-Crow Arrows",
+    "Tracer Rounds",
+    "Burning Bolts",
+  ),
+  ice: names(
+    "Frost Ammo",
+    "Frost Arrows",
+    "Cryo Cells",
+    "Cryo Rounds",
+    "Cold-Jade Arrows",
+    "Icebox Rounds",
+    "Coolant Darts",
+  ),
+  lightning: names(
+    "Storm Ammo",
+    "Storm Arrows",
+    "Arc Cells",
+    "Taser Rounds",
+    "Thunder Arrows",
+    "Live-Wire Rounds",
+    "Battery Bolts",
+  ),
+  light: names(
+    "Holy Ammo",
+    "Blessed Arrows",
+    "Photon Cells",
+    "Silver Rounds",
+    "Yang Arrows",
+    "Silver Bullets",
+    "Glowstone Shot",
+  ),
+  dark: names(
+    "Shadow Ammo",
+    "Shadow Arrows",
+    "Void Cells",
+    "Cursed Rounds",
+    "Yin Arrows",
+    "Graveyard Rounds",
+    "Crater-Ash Shot",
+  ),
+  poison: names(
+    "Venom Ammo",
+    "Venom Arrows",
+    "Toxin Darts",
+    "Tranquilizer Darts",
+    "Five-Venom Arrows",
+    "Arsenic Rounds",
+    "Sump Darts",
   ),
 };
 
@@ -1436,6 +1526,19 @@ export const MARINARA_CONSUMABLES: readonly MarinaraConsumableDef[] = [
       summary: `Coats a weapon: hits carry ${coating.rider} on top (${coating.rider === "poison" ? "poisons" : "40% of the hit"}) for 5 turns.`,
     }),
   ),
+  // Ammunition: a Marksman's bow or gun shoots any type the party owns (Alyssa 2026-11-01). Kept, not
+  // spent, so it costs more than a use-once item: martial types a little, elements more.
+  ...MARINARA_DAMAGE_TYPES.map((type) =>
+    consumable({
+      id: `ammo-${type}`,
+      tier: 1,
+      effect: { kind: "ammo", type },
+      ...(type === "light" || type === "dark" ? { excludeKits: ["modern_day"] } : {}),
+      priceMult: (MARINARA_PHYSICAL_TYPES as readonly string[]).includes(type) ? 3 : 5,
+      names: AMMO_NAMES[type],
+      summary: `Ammunition: a Marksman's bow or gun can shoot ${type} once the party owns it. Loaded by hand mid-fight; never used up.`,
+    }),
+  ),
   // Bombs: elemental damage that runs on no one's stats
   ...Object.keys(BOMB_ELEMENT_WORDS).flatMap((element) =>
     BOMB_RANKS.map((rank) =>
@@ -1536,6 +1639,20 @@ export function marinaraConsumable(id: string): MarinaraConsumableDef | undefine
 }
 
 /** The Magic a bomb of this tier is thrown with: an expected Channeler's at the tier's first level. */
+/**
+ * The ammunition types the party's bags hold, from their items' names (any setting's name, or the
+ * item's id): what a Marksman's bow or gun can load in a fight.
+ */
+export function marinaraOwnedAmmo(itemNames: readonly string[]): MarinaraDamageType[] {
+  const held = new Set(itemNames.map((name) => name.trim().toLowerCase()));
+  return MARINARA_CONSUMABLES.flatMap((def) =>
+    def.effect.kind === "ammo" &&
+    (held.has(def.id) || Object.values(def.names).some((name) => held.has(name.toLowerCase())))
+      ? [def.effect.type]
+      : [],
+  );
+}
+
 export function marinaraBombMagic(tier: MarinaraTier): number {
   return Math.round(expectedMarinaraStats("channeler", (tier - 1) * MARINARA_LEVELS_PER_TIER + 1).magic);
 }
@@ -1987,7 +2104,7 @@ export function marinaraConsumableTable(tier: MarinaraTier, place: MarinaraItemP
           ? 3
           : kind === "mp" || kind === "stamina"
             ? 4
-            : kind === "revive"
+            : kind === "revive" || kind === "ammo"
               ? 1
               : 2;
     return [def.id, def.tier === tier ? weight * 1.5 : weight];

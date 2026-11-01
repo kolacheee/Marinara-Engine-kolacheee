@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ComponentProps 
 import { ApiError } from "../../lib/api-client";
 import type {
   CombatDecisionOption,
+  MarinaraDamageType,
   RulesetDefinition,
   TacticalBattlefieldBrief,
   TacticalTerrain,
@@ -412,6 +413,8 @@ export function DirectedCombatUI(props: Props) {
                 growth={s.summary?.marinara}
                 loot={s.summary?.loot}
                 over={!!s.outcome || !!s.mercy}
+                busy={busy}
+                onLoadAmmo={(unitId, type) => send({ type: "loadAmmo", unitId, ammo: type as MarinaraDamageType })}
               />
             )}
             {/* Only foes who yielded are left: the party spares them or finishes them (Alyssa 2026-11-01);

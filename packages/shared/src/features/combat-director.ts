@@ -2,6 +2,7 @@ import type { RulesetCheckSource } from "./rulesets/check-effects.js";
 import type { RulesetItemEffectFact } from "./rulesets/item-book.js";
 import type { CombatWeather } from "./combat-conditions.js";
 import type { CombatOrders } from "./combat-ai.js";
+import type { MarinaraDamageType } from "./marinara-classes.js";
 import { z } from "zod";
 import type { Combatant, CombatPlayerAction, CombatSummary } from "../types/game.js";
 import type {
@@ -146,6 +147,9 @@ export type DirectedCommand =
    *  else fights on (the view's `mercy`). Spared, they leave as surrendered; finished, they fall as
    *  beaten. Both pay loot and XP. */
   | { type: "mercy"; choice: "spare" | "finish" }
+  /** Classic Marinara (Alyssa 2026-11-01): a Marksman loads another of the ammunition types the party
+   *  owns (the unit's `marinara.ammo.choices`), by hand, at any time; a free action. */
+  | { type: "loadAmmo"; unitId: string; ammo: MarinaraDamageType }
   /** The party gives itself up to opponents who are all honourable (combat AI T6): a ruleset fight's. */
   | { type: "yield" };
 export interface CombatDecisionOption {
