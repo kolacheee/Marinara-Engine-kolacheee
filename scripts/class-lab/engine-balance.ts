@@ -4,6 +4,7 @@
  *
  *   node packages/server/node_modules/tsx/dist/cli.mjs scripts/class-lab/engine-balance.ts [fights] [style]
  */
+import { marinaraFoeFighters, marinaraPartyFighter } from "../../packages/shared/src/features/marinara-party.js";
 import {
   commandCombatDirector,
   createCombatDirector,
@@ -24,11 +25,7 @@ import {
   type MarinaraArchetype,
   type MarinaraProgression,
 } from "../../packages/shared/src/features/marinara-classes.js";
-import {
-  buildMarinaraEnemy,
-  buildMarinaraPartyFighter,
-  type MarinaraEnemyTier,
-} from "../../packages/shared/src/features/marinara-combat.js";
+import { buildMarinaraEnemy, type MarinaraEnemyTier } from "../../packages/shared/src/features/marinara-combat.js";
 
 const count = Number(process.argv[2] ?? 40);
 const style = (process.argv[3] ?? "classic") as "classic" | "tactical";
@@ -62,23 +59,26 @@ const FOE_KINDS: MarinaraArchetype[] = [...MARINARA_ARCHETYPES];
 function fight(seed: number, level: number, tiers: MarinaraEnemyTier[]): CombatDirectorState {
   const kinds = PARTIES[seed % PARTIES.length]!;
   const party = kinds.map((primary, i) =>
-    buildMarinaraPartyFighter({
-      id: `p${i}`,
-      name: `${primary}${i}`,
-      progression: grown(`b:${seed}:${i}`, primary, level),
-    }),
+    // As the Engine builds a party member: their standard kit for their tier until they have gear.
+    marinaraPartyFighter(`p${i}`, `${primary}${i}`, grown(`b:${seed}:${i}`, primary, level)),
   );
   const random = marinaraRandom(`foes:${seed}`);
-  const foes = tiers.map((tier, i) =>
-    buildMarinaraEnemy({
+  // As the Engine builds them at a fight's start (generic foes: tier floors and level growth).
+  const foes = marinaraFoeFighters({
+    foes: tiers.map((tier, i) => ({
       id: `e${i}`,
       name: `foe${i}`,
-      archetype: FOE_KINDS[Math.floor(random() * FOE_KINDS.length)]!,
-      level,
-      tier,
-      enemySkills: [["rend", "sunder", "venom-arrow", "curse"][i % 4]!],
-    }),
-  );
+      marinara: {
+        tier,
+        archetype: FOE_KINDS[Math.floor(random() * FOE_KINDS.length)]!,
+        enemySkills: [["rend", "sunder", "venom-arrow", "curse"][i % 4]!],
+      },
+    })),
+    partyLevels: party.map((one) => one.level),
+    partyAverageHp: party.reduce((sum, one) => sum + one.maxHp, 0) / party.length,
+    difficulty: "normal",
+    keepAll: true,
+  }).fighters;
   return createCombatDirector({
     id: `b${seed}`,
     anchor: "a",

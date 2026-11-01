@@ -39,6 +39,7 @@ import {
 import {
   marinaraEnemySpec,
   marinaraFitEncounter,
+  MARINARA_TIER_RULES,
   type MarinaraBestiarySetting,
   type MarinaraEncounterDifficulty,
   type MarinaraEncounterFoe,
@@ -423,20 +424,26 @@ export function marinaraFoeFighters(input: {
       notes.push(`${foe.name} stays out of the fight (over the encounter budget).`);
       return;
     }
-    const tier = fit.tiers[index]!;
+    let tier = fit.tiers[index]!;
+    // The bestiary's floors hold for every foe: no boss below level 5, and so on (strict balance rule).
+    const foeLevel = Math.max(1, level + (foe.marinara?.levelOffset ?? 0));
+    while (tier !== "minion" && foeLevel < MARINARA_TIER_RULES[tier].minLevel)
+      tier = tier === "boss" ? "elite" : tier === "elite" ? "standard" : "minion";
     if (tier !== tiers[index])
       notes.push(`${foe.name} fights as ${tier} instead of ${tiers[index]} (encounter budget).`);
     fighters.push(
       buildMarinaraEnemy({
         id: foe.id,
         name: foe.name,
-        level: Math.max(1, level + (foe.marinara?.levelOffset ?? 0)),
+        level: foeLevel,
         tier,
         archetype: archetypeOf(foe),
         ...(foe.marinara?.classId && marinaraClass(foe.marinara.classId) ? { classId: foe.marinara.classId } : {}),
         ...(foe.marinara?.row ? { row: foe.marinara.row } : {}),
         ...(foe.marinara?.affinities ? { affinities: foe.marinara.affinities } : {}),
         ...(foe.marinara?.enemySkills ? { enemySkills: foe.marinara.enemySkills } : {}),
+        // No bestiary level growth here: it is measured with the bestiary's own threat fitting, and on the
+        // flat tier budget it made level 20+ fights unwinnable on the Engine's AI (engine-balance, 2026-11-01).
         ...(foe.marinara?.statScale ? { statScale: foe.marinara.statScale } : {}),
       }),
     );
