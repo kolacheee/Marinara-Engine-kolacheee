@@ -2184,6 +2184,7 @@
   "game.combat.marinara.sheet.fallen": "Fallen",
   "game.combat.marinara.sheet.none": "No Classic Marinara class yet: one is drawn from this sheet and their temperament on their first fight.",
   "game.combat.marinara.sheet.nothingToCarry": "Train in another class to carry its skills.",
+  "game.combat.marinara.sheet.promotionOpen": "promotion ready",
   "game.combat.marinara.sheet.pure": "Pure {{tree}}",
   "game.combat.marinara.sheet.tier.advanced": "advanced",
   "game.combat.marinara.sheet.tier.base": "base",
