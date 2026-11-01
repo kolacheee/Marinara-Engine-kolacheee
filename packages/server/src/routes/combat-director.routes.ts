@@ -30,7 +30,7 @@ import {
 } from "../services/game/game-inventory.service.js";
 import { resolveCombatWeather } from "../services/game/weather.service.js";
 import { gameClockMinutes } from "../services/game/time.service.js";
-import { addGameLoot, planGameVictoryLoot } from "../services/game/game-loot.service.js";
+import { addGameLoot, planGameVictoryLoot, planMarinaraVictoryLoot } from "../services/game/game-loot.service.js";
 import { rollDieSecurely } from "../services/game/dice-rng.js";
 import { rollGameFightItemGate } from "../services/game/game-item-use.service.js";
 import type { FastifyInstance } from "fastify";
@@ -931,25 +931,29 @@ export async function combatDirectorRoutes(
           // One that gave up hands over what it carried (combat AI E1); one that ran takes it along.
           ...(s.gone ?? []).filter((enemy) => enemy.left === "surrendered"),
         ];
-    const loot = won
-      ? await planGameVictoryLoot(
-          app.db,
-          chatId,
-          {
-            tables: fallen.flatMap((enemy) => s.rulesetFight?.lootTables?.[enemy.id] ?? []),
-            defeated: fallen.length,
-            difficulty: s.difficulty,
-            // What the beaten still had on them (1.795); one that ran took its along.
-            // Its coins too (laptop playtest 2026-10-25: a thief's stolen 9 gp never came back).
-            carried: (encounter?.combatants ?? []).flatMap((combatant) =>
-              combatant.side === "enemy" && combatant.defeated && !combatant.away?.left
-                ? [...rulesetCarriedLeft(combatant), ...(s.rulesetFight?.purses?.[combatant.id] ?? [])]
-                : [],
-            ),
-          },
-          rollDieSecurely,
-        )
-      : null;
+    // A Classic Marinara fight drops from the item tables instead (marinara-items.ts), by the foes beaten.
+    const loot =
+      won && s.marinara
+        ? await planMarinaraVictoryLoot(app.db, chatId, s.marinara.fighters, `${s.id}:${s.seed}:loot`)
+        : won
+          ? await planGameVictoryLoot(
+              app.db,
+              chatId,
+              {
+                tables: fallen.flatMap((enemy) => s.rulesetFight?.lootTables?.[enemy.id] ?? []),
+                defeated: fallen.length,
+                difficulty: s.difficulty,
+                // What the beaten still had on them (1.795); one that ran took its along.
+                // Its coins too (laptop playtest 2026-10-25: a thief's stolen 9 gp never came back).
+                carried: (encounter?.combatants ?? []).flatMap((combatant) =>
+                  combatant.side === "enemy" && combatant.defeated && !combatant.away?.left
+                    ? [...rulesetCarriedLeft(combatant), ...(s.rulesetFight?.purses?.[combatant.id] ?? [])]
+                    : [],
+                ),
+              },
+              rollDieSecurely,
+            )
+          : null;
     await withChatMetadataPatchQueue(chatId, () =>
       app.db.transaction(async () => {
         const previous = await load(chatId, s.anchor);

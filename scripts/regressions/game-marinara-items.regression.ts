@@ -239,3 +239,52 @@ for (const tier of MARINARA_TIERS)
   }
 
 console.log("game-marinara-items regression passed");
+
+// ── In a game (marinara-loot.ts) ──
+{
+  const { buildMarinaraEnemy, marinaraGameItemPlace, marinaraVictoryLoot } =
+    await import("../../packages/shared/src/index.js");
+  // A game's place: its starter kit, else its genre; nothing known is neutral.
+  assert.deepEqual(marinaraGameItemPlace({ gameWorldKit: WORLD_STARTER_KITS.find((kit) => kit.id === "cyberpunk") }), {
+    setting: "scifi",
+    kit: "cyberpunk",
+  });
+  assert.deepEqual(marinaraGameItemPlace({ gameSetupConfig: { genre: "Wuxia" } }).setting, "wuxia");
+  assert.deepEqual(marinaraGameItemPlace({}), { setting: null });
+
+  const foe = (id: string, tier: "standard" | "boss", familyId?: string) => ({
+    ...buildMarinaraEnemy({ id, name: id, archetype: "blade", level: 12, tier }),
+    hp: 0,
+    ...(familyId ? { familyId } : {}),
+  });
+  const ally = {
+    ...buildMarinaraEnemy({ id: "p", name: "Ally", archetype: "guard", level: 12, tier: "standard" }),
+    side: "party" as const,
+  };
+  const coins = [
+    { item: "money:copper", name: "copper", value: 1 },
+    { item: "money:silver", name: "silver", value: 10 },
+    { item: "money:gold", name: "gold", value: 100 },
+  ];
+  const input = {
+    fighters: [ally, foe("a", "boss", "sellsword"), foe("b", "standard", "hound")],
+    place: { setting: "fantasy" as const, kit: "high_fantasy" },
+    seed: "fight-1",
+    coins,
+  };
+  const won = marinaraVictoryLoot(input);
+  assert.deepEqual(marinaraVictoryLoot(input), won, "seeded");
+  assert.ok(won.gold > 0 && won.items.length >= 1, "a boss drops gear and gold");
+  // Gold in the game's coins, largest first, adding up to the marks in copper.
+  const paid = won.lines
+    .filter((line) => line.item)
+    .reduce((sum, line) => sum + line.count * coins.find((c) => c.item === line.item)!.value, 0);
+  assert.ok(Math.abs(paid - won.gold * 10) < 100, `coins add up (${paid} vs ${won.gold * 10})`);
+  // Items are named in the setting.
+  for (const line of won.lines.filter((line) => !line.item)) assert.ok(!/-t\d$/.test(line.name), line.name);
+  // A fight nobody was beaten in drops nothing; a game with no money gets "Coins".
+  assert.deepEqual(marinaraVictoryLoot({ ...input, fighters: [ally, { ...foe("c", "standard"), hp: 5 }] }).lines, []);
+  const plain = marinaraVictoryLoot({ ...input, coins: undefined, place: { setting: null } });
+  assert.ok(plain.lines.some((line) => line.name === "Coins"));
+}
+console.log("game-marinara-items (in a game) passed");
