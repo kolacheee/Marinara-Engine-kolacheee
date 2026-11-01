@@ -834,6 +834,7 @@ export function GameCombatUI({
   const isMobile = useIsCombatMobile();
   // Classic Marinara fights stand east-west on wide screens; phones keep the stacked stage.
   const eastWest = !isMobile && [...enemies, ...party].some((combatant) => combatant.marinara);
+  const crowdedStage = enemies.length > 4 || party.length > 4;
   const eastWestStageRef = useRef<HTMLDivElement>(null);
   const [eastWestBox, setEastWestBox] = useState<{ width: number; height: number } | null>(null);
   useEffect(() => {
@@ -2045,14 +2046,18 @@ export function GameCombatUI({
             </div>
           )}
 
-          <div className="relative z-0 grid min-h-0 flex-1 grid-rows-[minmax(min-content,1fr)_auto] gap-y-[clamp(1.25rem,5svh,2.5rem)] overflow-y-auto overflow-x-hidden px-2 py-[clamp(0.5rem,2svh,1rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div
+            className={cn(
+              "relative z-0 grid min-h-0 flex-1 grid-rows-[minmax(min-content,1fr)_auto] overflow-y-auto overflow-x-hidden px-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+              // A crowded stage (more than four on a side) spends its height on cards, not spacing.
+              crowdedStage ? "gap-y-2 py-1" : "gap-y-[clamp(1.25rem,5svh,2.5rem)] py-[clamp(0.5rem,2svh,1rem)]",
+            )}
+          >
             <div
               className={cn(
                 // A scroll box's automatic minimum height is 0: hold it to its cards.
                 "min-h-min overflow-x-auto overflow-y-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-                enemies.length + party.length > 8 || enemies.length > 4 || party.length > 4
-                  ? "pt-[clamp(2.25rem,6svh,3rem)]"
-                  : "pt-[clamp(2.75rem,9svh,4rem)]",
+                crowdedStage ? "pt-6" : "pt-[clamp(2.75rem,9svh,4rem)]",
               )}
             >
               <div
@@ -2092,7 +2097,12 @@ export function GameCombatUI({
               </div>
             </div>
 
-            <div className="min-h-min shrink-0 overflow-x-auto overflow-y-visible pb-[clamp(0.75rem,3svh,1.5rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div
+              className={cn(
+                "min-h-min shrink-0 overflow-x-auto overflow-y-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+                crowdedStage ? "pb-1" : "pb-[clamp(0.75rem,3svh,1.5rem)]",
+              )}
+            >
               <div
                 className={cn(
                   "items-end justify-center gap-x-[clamp(0.25rem,1.5vw,0.5rem)]",
@@ -3599,21 +3609,22 @@ function CombatantCard({
   const cardStyle: CombatantCardStyle = {
     "--combat-card-width": artSize
       ? `${Math.max(120, artSize + 24)}px`
-      : compact
-        ? `clamp(2.25rem, min(22vw, 9svh, ${compactFitWidth}${
-            // Three or more lines of cards on a phone share its stage: about 36svh, less ~2.75rem of
-            // name and HP bar a line.
-            lines > 2 ? `, calc(36svh / ${lines} - 2.75rem)` : ""
-          }), 5.5rem)`
-        : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
+      : slim
+        ? // A crowded phone stage: three cards across, the name and HP bar using the width.
+          "min(calc((100vw - 2.5rem) / 3), 7.5rem)"
+        : compact
+          ? `clamp(2.75rem, min(22vw, 9svh, ${compactFitWidth}), 5.5rem)`
+          : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
     "--combat-avatar-size": artSize
       ? `${artSize}px`
-      : compact
-        ? "calc(var(--combat-card-width) - 1rem)"
-        : "calc(var(--combat-card-width) - 1.5rem)",
-    "--combat-info-width": artSize
-      ? "calc(var(--combat-card-width) - 0.5rem)"
-      : "calc(var(--combat-avatar-size) + 1rem)",
+      : slim
+        ? // Lines of cards share about 36svh, less ~2.25rem of name and HP bar a line.
+          `clamp(2rem, calc(36svh / ${lines} - 2.25rem), 4rem)`
+        : compact
+          ? "calc(var(--combat-card-width) - 1rem)"
+          : "calc(var(--combat-card-width) - 1.5rem)",
+    "--combat-info-width":
+      artSize || slim ? "calc(var(--combat-card-width) - 0.5rem)" : "calc(var(--combat-avatar-size) + 1rem)",
     "--combat-dialogue-width": compact
       ? "var(--combat-avatar-size)"
       : `clamp(6.5rem, min(15rem, ${desktopDialogueFitWidth}), 15rem)`,
@@ -3840,7 +3851,12 @@ function CombatantCard({
       </div>
 
       {/* Element aura indicator keeps a reserved row so one status never shifts the card. */}
-      <div className={cn("mt-0.5 flex items-center justify-center", compact ? "h-3" : "h-4")}>
+      <div
+        className={cn(
+          "mt-0.5 flex items-center justify-center",
+          slim && !combatant.elementAura ? "hidden" : compact ? "h-3" : "h-4",
+        )}
+      >
         {combatant.elementAura && (
           <div
             className="rounded-full px-1.5 py-0 text-[0.5rem] font-bold uppercase tracking-wider"
