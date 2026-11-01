@@ -2026,7 +2026,7 @@ export function GameCombatUI({
                       compact
                     />
                     {enemy.marinara?.row === "back" && (
-                      <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/60">
+                      <span className="pointer-events-none absolute right-1 top-1 z-10 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/70">
                         {localizeUi("game.combat.marinara.row.back")}
                       </span>
                     )}
@@ -2062,7 +2062,7 @@ export function GameCombatUI({
                       compact
                     />
                     {member.marinara?.row === "back" && (
-                      <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/60">
+                      <span className="pointer-events-none absolute right-1 top-1 z-10 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/70">
                         {localizeUi("game.combat.marinara.row.back")}
                       </span>
                     )}
@@ -2723,7 +2723,7 @@ export function GameCombatUI({
                 onDismissDialogue={dismissCombatDialogueLine}
               />
               {enemy.marinara?.row === "back" && (
-                <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/60">
+                <span className="pointer-events-none absolute right-1 top-1 z-10 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/70">
                   {localizeUi("game.combat.marinara.row.back")}
                 </span>
               )}
@@ -2753,7 +2753,7 @@ export function GameCombatUI({
                 onDismissDialogue={dismissCombatDialogueLine}
               />
               {member.marinara?.row === "back" && (
-                <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/60">
+                <span className="pointer-events-none absolute right-1 top-1 z-10 rounded bg-black/60 px-1 text-[0.5rem] uppercase tracking-wide text-white/70">
                   {localizeUi("game.combat.marinara.row.back")}
                 </span>
               )}
