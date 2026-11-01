@@ -11,6 +11,8 @@ import {
   marinaraRandom,
   scaleMarinaraXp,
   MARINARA_CLASSES,
+  type MarinaraBestiarySetting,
+  type MarinaraEncounterDifficulty,
   type MarinaraFightGrowth,
   gameCardTemperament,
   marinaraFoeFighters,
@@ -65,6 +67,10 @@ export function marinaraFightStart(input: {
   difficulty: string;
   /** A story's own fight keeps every opponent it wrote. */
   storyFight: boolean;
+  /** The game's bestiary setting, for bestiary foes. */
+  setting?: MarinaraBestiarySetting | null;
+  /** The fight's own difficulty for bestiary foes. */
+  encounter?: MarinaraEncounterDifficulty;
 }): MarinaraFightStart {
   const named = input.cards.filter(
     (card): card is Record<string, unknown> & { name: string } =>
@@ -99,6 +105,8 @@ export function marinaraFightStart(input: {
     partyAverageHp,
     difficulty: input.difficulty,
     keepAll: input.storyFight,
+    ...(input.setting ? { setting: input.setting } : {}),
+    ...(input.encounter ? { encounter: input.encounter } : {}),
   });
   const byId = new Map(input.enemies.map((unit) => [unit.id, unit]));
   const enemies = foes.fighters.map((fighter) => marinaraCombatant(fighter, kept(byId.get(fighter.id)!)));
