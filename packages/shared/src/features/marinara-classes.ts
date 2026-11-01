@@ -473,7 +473,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       skills: [
         active("flurry", "Flurry", 10, "speed", 4, "Strikes one foe twice."),
         passive("riposte", "Riposte", 12, "Counterattacks when a melee attack misses the user."),
-        passive("keen-edge", "Keen Edge", 15, "Raises critical rate by 10%.", true),
+        passive("keen-edge", "Keen Edge", 15, "Increases critical rate by 10%.", true),
       ],
     },
     {
@@ -510,7 +510,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           3,
           "Deals massive damage to one foe with +15% accuracy and inflicts Wound (healing received halved) for 3 turns. Lowers the user's Defense by 30% for 2 turns.",
         ),
-        passive("bloodrage", "Bloodrage", 12, "Raises damage dealt by up to 60% as the user's HP falls."),
+        passive("bloodrage", "Bloodrage", 12, "Increases damage dealt by up to 60% as the user's HP falls."),
         passive("bloodlust", "Bloodlust", 15, "Restores HP equal to 15% of damage dealt.", true),
       ],
     },
@@ -554,7 +554,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "adaptive-grip",
           "Adaptive Grip",
           15,
-          "Raises accuracy by 10%. Armored and evasive foes gain no defensive bonus.",
+          "Increases accuracy by 10%. Armored and evasive foes gain no defensive bonus.",
         ),
       ],
     },
@@ -660,7 +660,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       // The magic tank (Alyssa 2026-11-01): out-grows any Hexer in Resistance.
       tune: { resistance: 20 },
       skills: [
-        active("spellguard", "Spellguard", 10, "resistance", 4, "Raises the party's Resistance by 30% for 2 rounds."),
+        active(
+          "spellguard",
+          "Spellguard",
+          10,
+          "resistance",
+          4,
+          "Increases the party's Resistance by 30% for 2 rounds.",
+        ),
         passive(
           "aura-of-warding",
           "Aura of Warding",
@@ -669,7 +676,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           true,
         ),
         // More anti-magic tanking at level 20 (Alyssa 2026-11-01).
-        passive("old-oath", "Old Oath", 18, "Raises Resistance by 30% and reduces magic damage taken by 20%."),
+        passive("old-oath", "Old Oath", 18, "Increases Resistance by 30% and reduces magic damage taken by 20%."),
       ],
     },
     {
@@ -689,7 +696,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Deals light damage to one foe based on the user's Resistance.",
           true,
         ),
-        passive("elder-oath", "Elder Oath", 24, "Raises Resistance by 50%. Nullifies Doom and Sleep."),
+        passive("elder-oath", "Elder Oath", 24, "Increases Resistance by 50%. Nullifies Doom and Sleep."),
       ],
     },
     {
@@ -707,17 +714,17 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "resistance",
           4,
-          "Raises the user's Resistance by 50% for 2 turns, and draws every foe's single-target attacks to the user for 2 turns.",
+          "Increases the user's Resistance by 50% for 2 turns, and draws every foe's single-target attacks to the user for 2 turns.",
           true,
         ),
         passive(
           "entrench",
           "Entrench",
           12,
-          "After defending or charging a skill, raises Defense and Resistance by 30% until the user's next turn.",
+          "After defending or charging a skill, increases Defense and Resistance by 30% until the user's next turn.",
           true,
         ),
-        passive("immovable", "Immovable", 15, "Nullifies Stun. Raises Defense by 20% while defending."),
+        passive("immovable", "Immovable", 15, "Nullifies Stun. Increases Defense by 20% while defending."),
       ],
     },
     {
@@ -736,7 +743,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           15,
           "Until each ally's next turn, no party member can drop below 1 HP, from attacks or damage over time. Once per battle.",
         ),
-        passive("shield-line", "Shield Line", 25, "Raises the party's Defense and Resistance by 15%.", true),
+        passive("shield-line", "Shield Line", 25, "Increases the party's Defense and Resistance by 15%.", true),
       ],
     },
   ]),
@@ -747,7 +754,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Nimble opportunists who strike fast, dodge faster, and leave with the enemy's valuables.",
       leans: ["speed", "luck"],
       skills: [
-        passive("keen-eye", "Keen Eye", 5, "Raises accuracy by 15% and critical rate by 10%.", true),
+        passive("keen-eye", "Keen Eye", 5, "Increases accuracy by 15% and critical rate by 10%.", true),
         active(
           "steal",
           "Steal",
@@ -757,7 +764,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Attempts to steal an item or gold from one foe. Better odds the faster the user is than the foe; worse against elites and bosses.",
           true,
         ),
-        passive("light-feet", "Light Feet", 5, "Raises evasion by 10%."),
+        passive("light-feet", "Light Feet", 5, "Increases evasion by 10%."),
       ],
     },
     {
@@ -779,7 +786,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "exploit",
           "Exploit",
           15,
-          "Raises critical rate by 25% against foes with a debuff or status ailment.",
+          "Increases critical rate by 25% against foes with a debuff or status ailment.",
           true,
         ),
       ],
@@ -823,7 +830,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           3,
           "Deals light damage to one foe. The user's next turn comes sooner.",
         ),
-        passive("fleet", "Fleet", 15, "Raises Speed by 20%.", true),
+        passive("fleet", "Fleet", 15, "Increases Speed by 20%.", true),
       ],
     },
     {
@@ -841,7 +848,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "The user takes another action at once. Cooldown: 3 turns.",
         ),
-        passive("tailwind", "Tailwind", 24, "Raises the party's Speed by 20%.", true),
+        passive("tailwind", "Tailwind", 24, "Increases the party's Speed by 20%.", true),
       ],
     },
     {
@@ -883,7 +890,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "perfect-evasion",
           "Perfect Evasion",
           25,
-          "Each attack that misses the user raises its evasion by 10%, up to 30%.",
+          "Each attack that misses the user increases its evasion by 10%, up to 30%.",
         ),
       ],
     },
@@ -912,7 +919,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           0,
           "Fires at one foe with +30% accuracy. Delays the user's next turn.",
         ),
-        passive("true-aim", "True Aim", 5, "Raises accuracy by 15%.", true),
+        passive("true-aim", "True Aim", 5, "Increases accuracy by 15%.", true),
       ],
     },
     {
@@ -946,7 +953,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "Charges for one turn, then deals massive damage to one foe with +25% critical rate.",
         ),
-        passive("dead-eye", "Dead Eye", 22, "Raises critical rate by 15%. Hits on a weakness deal 25% more."),
+        passive("dead-eye", "Dead Eye", 22, "Increases critical rate by 15%. Hits on a weakness deal 25% more."),
         passive(
           "return-fire",
           "Return Fire",
@@ -985,7 +992,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "read-the-signs",
           "Read the Signs",
           15,
-          "Raises critical rate by 5%. Deals 20% more damage to marked foes.",
+          "Increases critical rate by 5%. Deals 20% more damage to marked foes.",
         ),
       ],
     },
@@ -1017,7 +1024,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["strength", "skill"],
       skills: [
         active("volley", "Volley", 10, "strength", 6, "Deals light damage to all foes. Cooldown: 2 turns.", true),
-        passive("heavy-draw", "Heavy Draw", 15, "Raises damage by 30%. The user gets 15% fewer turns."),
+        passive("heavy-draw", "Heavy Draw", 15, "Increases damage by 30%. The user gets 15% fewer turns."),
       ],
     },
     {
@@ -1074,7 +1081,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["magic", "skill"],
       skills: [
         active("twin-cast", "Twin Cast", 10, "magic", 6, "Casts two spells on one foe in one action."),
-        passive("attunement", "Attunement", 15, "Raises spell damage by 15%.", true),
+        passive("attunement", "Attunement", 15, "Increases spell damage by 15%.", true),
       ],
     },
     {
@@ -1093,7 +1100,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Deals magic damage to all foes at 85% of a single-target spell, each in the element it is weakest to. Cooldown: 2 turns.",
           true,
         ),
-        passive("overcharge", "Overcharge", 24, "Raises critical rate by 10%."),
+        passive("overcharge", "Overcharge", 24, "Increases critical rate by 10%."),
       ],
     },
     {
@@ -1367,7 +1374,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Deals dark damage to all foes and lowers their damage by 20% for 2 turns. Cooldown: 2 turns.",
           true,
         ),
-        passive("abyssal-will", "Abyssal Will", 22, "Raises spell damage by 20%."),
+        passive("abyssal-will", "Abyssal Will", 22, "Increases spell damage by 20%."),
         // Immunity is a master's gift (Alyssa 2026-11-01): Null moved here from the Nullifier.
         passive("null", "Null", 25, "Nullifies all debuffs.", true),
       ],
@@ -1494,7 +1501,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Battle leaders who rally the party to fight harder.",
       leans: ["luck", "speed"],
       skills: [
-        active("rally", "Rally", 1, "luck", 3, "Raises the party's damage by 20% for 2 rounds.", true),
+        active("rally", "Rally", 1, "luck", 3, "Increases the party's damage by 20% for 2 rounds.", true),
         passive(
           "rallying-presence",
           "Rallying Presence",
@@ -1519,7 +1526,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           5,
-          "Bonus action. Raises the party's damage by 25% for 3 turns. Each recast while it lasts adds 10%, up to 3 times.",
+          "Bonus action. Increases the party's damage by 25% for 3 turns. Each recast while it lasts adds 10%, up to 3 times.",
         ),
         active(
           "swift-refrain",
@@ -1527,7 +1534,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           12,
           "magic",
           5,
-          "Bonus action. Raises the party's Speed by 15% for 3 turns. Each recast while it lasts adds 10%, up to 3 times.",
+          "Bonus action. Increases the party's Speed by 15% for 3 turns. Each recast while it lasts adds 10%, up to 3 times.",
         ),
         active(
           "guarding-refrain",
@@ -1535,7 +1542,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           14,
           "magic",
           5,
-          "Bonus action. Raises the party's Defense and Resistance by 15% for 3 turns. Each recast while it lasts adds 10%, up to 3 times.",
+          "Bonus action. Increases the party's Defense and Resistance by 15% for 3 turns. Each recast while it lasts adds 10%, up to 3 times.",
         ),
         passive("encore", "Encore", 15, "Buffs the user grants last one turn longer.", true),
       ],
@@ -1566,7 +1573,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["speed", "skill"],
       skills: [
         active("command", "Command", 10, "skill", 6, "One ally acts at once.", true),
-        passive("foresight", "Foresight", 15, "Raises the party's Defense by 10%."),
+        passive("foresight", "Foresight", 15, "Increases the party's Defense by 10%."),
       ],
     },
     {
@@ -1584,7 +1591,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           18,
           "Every ally acts once, at once. Cooldown: 4 turns.",
         ),
-        passive("formation", "Formation", 24, "Raises the party's Defense by 15% while no ally is down.", true),
+        passive("formation", "Formation", 24, "Increases the party's Defense by 15% while no ally is down.", true),
       ],
     },
     {
@@ -1602,7 +1609,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "luck",
           6,
-          "Raises the party's damage by 25% for 3 turns. Cures Confusion and prevents it while the banner flies.",
+          "Increases the party's damage by 25% for 3 turns. Cures Confusion and prevents it while the banner flies.",
         ),
         passive("inspire", "Inspire", 15, "While no ally is down, the party deals 10% more damage.", true),
       ],
@@ -1615,7 +1622,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["luck", "speed", "hp", "skill"],
       skills: [
         active("hour-of-heroes", "Hour of Heroes", 20, "luck", 20, "Every ally acts once, at once. Once per battle."),
-        passive("fortunes-favour", "Fortune's Favour", 25, "Raises the party's critical rate by 10%.", true),
+        passive("fortunes-favour", "Fortune's Favour", 25, "Increases the party's critical rate by 10%.", true),
       ],
     },
   ]),
