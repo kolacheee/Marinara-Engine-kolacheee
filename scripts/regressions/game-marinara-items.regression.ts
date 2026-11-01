@@ -436,3 +436,33 @@ console.log("game-marinara-items (standard fallback) passed");
   assert.deepEqual(marinaraEquipmentForClass("channeler", ok), { accessories: ["charm-strength-1"] });
 }
 console.log("game-marinara-items (equipping) passed");
+
+// ── Shops in a Classic game's kit market ──
+{
+  const { marinaraGameWorldKit, marinaraShopCatalog, worldKitItems } =
+    await import("../../packages/shared/src/index.js");
+  const kit = WORLD_STARTER_KITS.find((one) => one.id === "high_fantasy")!;
+  const card = (level: number) => ({ marinara: { level } });
+  const plainMeta = { gameWorldKit: kit, gameSetupConfig: {} };
+  // Another game's market is the kit's own, untouched.
+  assert.deepEqual(marinaraGameWorldKit(plainMeta)?.shop, kit.shop);
+  const meta = { gameWorldKit: kit, gameSetupConfig: { marinaraClasses: true }, gameCharacterCards: [card(12)] };
+  const classic = marinaraGameWorldKit(meta)!;
+  assert.ok(classic.shop!.length > (kit.shop?.length ?? 0), "a Classic game's shop sells the tables' wares");
+  const names = classic.shop!.map((thing) => thing.name.toLowerCase());
+  assert.equal(new Set(names).size, names.length, "every ware has its own name");
+  assert.ok(classic.shop!.every((thing) => Number.isInteger(thing.price) && thing.price > 0));
+  assert.ok(classic.shop!.every((thing) => (thing.from ?? 0) < kit.sizes.length));
+  // T3 party: last tier's gear in a hamlet, this tier's in a town, never T6 or uniques.
+  const catalog = marinaraShopCatalog(3, { setting: "fantasy" });
+  assert.ok(catalog.some((ware) => ware.id === "longblade-t2" && ware.size === "small"));
+  assert.ok(catalog.some((ware) => ware.id === "longblade-t3" && ware.size === "town"));
+  assert.ok(!catalog.some((ware) => /-t[456]$/.test(ware.id)));
+  // The market the Engine builds from it prices them in the kit's coins.
+  const items = worldKitItems(classic)!;
+  assert.ok(items.entries.shop!.length === classic.shop!.length);
+  // A party with no Classic progression yet shops at T1.
+  const fresh = marinaraGameWorldKit({ ...meta, gameCharacterCards: [] })!;
+  assert.ok(fresh.shop!.length < classic.shop!.length);
+}
+console.log("game-marinara-items (shops) passed");

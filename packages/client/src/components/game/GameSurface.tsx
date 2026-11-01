@@ -47,6 +47,7 @@ import {
   gameDungeonMapFromMetadata,
   GAME_LOOT_GIVEN_LINE,
   GAME_REWARD_PROMPT_LINE,
+  marinaraGameWorldKit,
 } from "@marinara-engine/shared";
 // ──────────────────────────────────────────────
 // Game: Main Surface (rendered by ChatArea when mode === "game")
@@ -9443,7 +9444,16 @@ function GameSurfaceComponent({
     });
   }, [chatMeta.gameCharacterCards, gameRuleset]);
   // A game with no ruleset buys and pays in its setting kit's money (worldgen W6b).
-  const inventoryKit = gameKit;
+  // A Classic Marinara game's shops also sell the item tables' wares for the party's tier.
+  const inventoryKit = useMemo(
+    () =>
+      marinaraGameWorldKit({
+        gameWorldKit: chatMeta.gameWorldKit,
+        gameSetupConfig: chatMeta.gameSetupConfig,
+        gameCharacterCards: chatMeta.gameCharacterCards,
+      }),
+    [chatMeta.gameWorldKit, chatMeta.gameSetupConfig, chatMeta.gameCharacterCards],
+  );
   const inventoryItemBook = useRulesetItemBook(gameRuleset, inventorySheets, chatMeta.gameInventedItems, inventoryKit);
   /** The Use button. One of the ruleset's items with a `use` is used by the Engine first: what it does
    *  to whoever carries it lands on their sheet, it is spent, and the Game Master is told what happened
