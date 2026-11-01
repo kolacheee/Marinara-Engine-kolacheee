@@ -461,6 +461,13 @@ console.log("game-marinara-items (equipping) passed");
   // The market the Engine builds from it prices them in the kit's coins.
   const items = worldKitItems(classic)!;
   assert.ok(items.entries.shop!.length === classic.shop!.length);
+  // Only the party's classes' weapons and armour: a lone Blade's town has no staffs or wands.
+  const blade = marinaraGameWorldKit({
+    ...meta,
+    gameCharacterCards: [{ marinara: { level: 12, activeClass: "blade" } }],
+  })!;
+  assert.ok(blade.shop!.length < classic.shop!.length, `trimmed (${blade.shop!.length} vs ${classic.shop!.length})`);
+  console.log(`a T3 Classic shop for one class (all sizes, with the kit's own goods) lists ${blade.shop!.length} wares`);
   // A party with no Classic progression yet shops at T1.
   const fresh = marinaraGameWorldKit({ ...meta, gameCharacterCards: [] })!;
   assert.ok(fresh.shop!.length < classic.shop!.length);
