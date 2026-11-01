@@ -139,6 +139,9 @@ export interface MarinaraEffect {
   spread?: number;
   /** Vanish: the user can't be targeted until its next turn. */
   hide?: boolean;
+  /** A song: re-cast while it lasts, it adds a verse (this much more, up to `most` verses) to every
+   *  stat it changes, and starts its turns again (Cantor). */
+  verses?: { pct: number; most: number };
   /** Costs no turn: the user acts again at once (not from an action that was itself a bonus). */
   bonusAction?: boolean;
   /** The user's next landed hit exposes its target: everyone deals this much more to it for 2 turns. */
@@ -305,7 +308,32 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "imbue-weapon": { kind: "buff", target: "self", stat: "imbue", pct: 1, duration: 3 },
   "second-breath": { kind: "heal", target: "self", pctOfMax: 0.25, cooldown: 3 },
   rally: { kind: "buff", target: "party", stat: "damage", pct: 0.2, duration: 2 },
-  "battle-hymn": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3 },
+  // Cantor's songs stack by verse (Alyssa 2026-11-01): each re-cast while one lasts adds 10%, up to 3.
+  "battle-hymn": {
+    kind: "buff",
+    target: "party",
+    stat: "damage",
+    pct: 0.25,
+    duration: 3,
+    verses: { pct: 0.1, most: 3 },
+  },
+  "swift-refrain": {
+    kind: "buff",
+    target: "party",
+    stat: "speed",
+    pct: 0.15,
+    duration: 3,
+    verses: { pct: 0.1, most: 3 },
+  },
+  "guarding-refrain": {
+    kind: "buff",
+    target: "party",
+    stat: "defense",
+    pct: 0.15,
+    duration: 3,
+    alsoMods: [{ stat: "resistance", pct: 0.15 }],
+    verses: { pct: 0.1, most: 3 },
+  },
   crescendo: { kind: "buff", target: "party", stat: "damage", pct: 0.5, duration: 1, cooldown: 3 },
   command: { kind: "command", target: "ally" },
   "grand-strategy": { kind: "command", target: "party", cooldown: 4 },
@@ -1095,6 +1123,25 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   return type === "weapon" && modTotal(actor, "imbue") > 0 ? [...options, ...MARINARA_ELEMENTS] : options;
 }
 
+/** A song re-sung while it lasts: one more verse on each stat it changes, and its turns start again. */
+function singVerse(unit: MarinaraFighter, effect: MarinaraEffect, turns: number, source: string) {
+  const verses = effect.verses!;
+  const stats = [{ stat: effect.stat!, pct: effect.pct ?? 0 }, ...(effect.alsoMods ?? [])];
+  for (const { stat, pct } of stats) {
+    const mod = unit.mods.find((m) => m.source === source && m.stat === stat);
+    if (!mod) continue;
+    mod.pct = Math.min(pct + verses.pct * verses.most, mod.pct + verses.pct);
+    mod.turns = Math.max(mod.turns, turns);
+  }
+}
+
+/** How many verses of a song this unit already has (0: not singing it). */
+export function marinaraVersesOf(unit: MarinaraFighter, effect: MarinaraEffect, source: string): number {
+  if (!effect.verses) return 0;
+  const mod = unit.mods.find((m) => m.source === source && m.stat === effect.stat);
+  return mod ? Math.round((mod.pct - (effect.pct ?? 0)) / effect.verses.pct) : 0;
+}
+
 function modTotal(unit: MarinaraFighter, stat: string): number {
   return unit.mods.filter((mod) => mod.stat === stat).reduce((sum, mod) => sum + mod.pct, 0);
 }
@@ -1807,6 +1854,7 @@ function act(
     }
     case "buff":
       for (const target of targets) {
+        if (effect.verses) singVerse(target, effect, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
         addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
         for (const also of effect.alsoMods ?? [])
           addMod(target, also.stat, also.pct, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");

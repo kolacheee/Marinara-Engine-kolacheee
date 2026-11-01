@@ -92,23 +92,19 @@ export function marinaraBestiarySetting(
 
 // ── Tiers ──
 
-
 /**
  * What a tier is worth in a budget compared with a standard foe of the same family and level
  * (measured in the bestiary lab against the Engine's MARINARA_ENEMY_TIERS sizes), and the lowest level
  * it may appear at. A boss below level 5 would be the "CR ½ with legendary actions" the 5e playtest
  * caught (Alyssa 2026-10-30).
  */
-export const MARINARA_TIER_RULES: Record<
-  MarinaraEnemyTier,
-  { threat: number; minLevel: number; maxPerFight: number }
-> = {
-  minion: { threat: 0.45, minLevel: 1, maxPerFight: 6 },
-  standard: { threat: 1, minLevel: 1, maxPerFight: 6 },
-  elite: { threat: 2.2, minLevel: 3, maxPerFight: 3 },
-  boss: { threat: 5.5, minLevel: 5, maxPerFight: 1 },
-};
-
+export const MARINARA_TIER_RULES: Record<MarinaraEnemyTier, { threat: number; minLevel: number; maxPerFight: number }> =
+  {
+    minion: { threat: 0.45, minLevel: 1, maxPerFight: 6 },
+    standard: { threat: 1, minLevel: 1, maxPerFight: 6 },
+    elite: { threat: 2.2, minLevel: 3, maxPerFight: 3 },
+    boss: { threat: 5.5, minLevel: 5, maxPerFight: 1 },
+  };
 
 /**
  * Foes grow a little past their expected stats with level (HP and offence, a share per level above 1):
@@ -134,7 +130,6 @@ export function marinaraFoeLevelScale(level: number): Partial<MarinaraStats> {
     magic: 1 + MARINARA_FOE_LEVEL_GROWTH.magic * above,
   };
 }
-
 
 // ── Abilities ──
 
@@ -182,20 +177,35 @@ const ability = (
  */
 export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   // The class lab's four, so foes and the lab share them.
-  ability("rend", "Rend", "A tearing blow: the target bleeds 5% of max HP a turn for 3.", strike(5, {
-    applies: { status: "bleed", duration: 3, power: 0.05 },
-    cooldown: 3,
-  })),
-  ability("sunder", "Sunder", "An armour-breaking blow: −25% Defense for 2 turns.", strike(5, {
-    onHit: { stat: "defense", pct: -0.25, duration: 2 },
-    cooldown: 3,
-  })),
-  ability("venom-arrow", "Venom Arrow", "A poisoned shot: 6% of max HP a turn for 3.", strike(4, {
-    ranged: true,
-    type: "pierce",
-    applies: { status: "poison", duration: 3, power: 0.06 },
-    cooldown: 3,
-  })),
+  ability(
+    "rend",
+    "Rend",
+    "A tearing blow: the target bleeds 5% of max HP a turn for 3.",
+    strike(5, {
+      applies: { status: "bleed", duration: 3, power: 0.05 },
+      cooldown: 3,
+    }),
+  ),
+  ability(
+    "sunder",
+    "Sunder",
+    "An armour-breaking blow: −25% Defense for 2 turns.",
+    strike(5, {
+      onHit: { stat: "defense", pct: -0.25, duration: 2 },
+      cooldown: 3,
+    }),
+  ),
+  ability(
+    "venom-arrow",
+    "Venom Arrow",
+    "A poisoned shot: 6% of max HP a turn for 3.",
+    strike(4, {
+      ranged: true,
+      type: "pierce",
+      applies: { status: "poison", duration: 3, power: 0.06 },
+      cooldown: 3,
+    }),
+  ),
   ability("curse", "Curse", "Wound (healing received halved for 3 turns) and −20% damage dealt for 2.", {
     kind: "debuff",
     target: "enemy",
@@ -208,44 +218,94 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   }),
   // Beasts and brutes
   ability("maul", "Maul", "A heavy blow that slows the user's next turn.", strike(6, { weight: 1.3, cooldown: 2 })),
-  ability("gore", "Gore", "Lowers its head for a turn, then charges: a hit it telegraphs.", strike(8, {
-    charge: true,
-    cooldown: 4,
-  }), { minLevel: 3 }),
-  ability("pounce", "Pounce", "Leaps over the front row: full damage to anyone.", strike(5, { ranged: true, cooldown: 2 })),
-  ability("gnaw", "Gnaw", "Worrying bites: the target bleeds 4% a turn for 2.", strike(2, {
-    applies: { status: "bleed", duration: 2, power: 0.04 },
-    cooldown: 3,
-  })),
+  ability(
+    "gore",
+    "Gore",
+    "Lowers its head for a turn, then charges: a hit it telegraphs.",
+    strike(8, {
+      charge: true,
+      cooldown: 4,
+    }),
+    { minLevel: 3 },
+  ),
+  ability(
+    "pounce",
+    "Pounce",
+    "Leaps over the front row: full damage to anyone.",
+    strike(5, { ranged: true, cooldown: 2 }),
+  ),
+  ability(
+    "gnaw",
+    "Gnaw",
+    "Worrying bites: the target bleeds 4% a turn for 2.",
+    strike(2, {
+      applies: { status: "bleed", duration: 2, power: 0.04 },
+      cooldown: 3,
+    }),
+  ),
   ability("swarm-bite", "Swarm Bite", "Three quick bites.", strike(0, { hits: 3, cooldown: 2 }), { minLevel: 8 }),
-  ability("venom-fang", "Venom Fang", "A poisoned bite: 5% of max HP a turn for 3.", strike(3, {
-    type: "pierce",
-    applies: { status: "poison", duration: 3, power: 0.05 },
-    cooldown: 3,
-  })),
-  ability("constrict", "Constrict", "Coils round the target: it is slowed for 2 turns.", strike(4, {
-    type: "blunt",
-    applies: { status: "slow", duration: 2, chance: 0.7 },
-    cooldown: 4,
-  }), { minLevel: 5 }),
-  ability("tail-sweep", "Tail Sweep", "Sweeps the whole front row.", strike(6, { target: "front-row", spread: 0.6, cooldown: 3 }), {
-    minTier: "standard",
-    minLevel: 6,
-  }),
-  ability("trample", "Trample", "Charges through the whole party.", strike(6, { target: "all-enemies", spread: 0.6, weight: 1.3, cooldown: 4 }), {
-    minTier: "elite",
-    minLevel: 8,
-  }),
-  ability("dive", "Dive", "Drops from above on anyone, then climbs again.", strike(4, { ranged: true, critBonus: 10, cooldown: 2 })),
-  ability("shriek", "Shriek", "A piercing cry: the party is slowed for 2 turns (half resist).", {
-    kind: "status",
-    target: "all-enemies",
-    status: "slow",
-    chance: 0.5,
-    duration: 2,
-    ranged: true,
-    cooldown: 5,
-  }, { minLevel: 5 }),
+  ability(
+    "venom-fang",
+    "Venom Fang",
+    "A poisoned bite: 5% of max HP a turn for 3.",
+    strike(3, {
+      type: "pierce",
+      applies: { status: "poison", duration: 3, power: 0.05 },
+      cooldown: 3,
+    }),
+  ),
+  ability(
+    "constrict",
+    "Constrict",
+    "Coils round the target: it is slowed for 2 turns.",
+    strike(4, {
+      type: "blunt",
+      applies: { status: "slow", duration: 2, chance: 0.7 },
+      cooldown: 4,
+    }),
+    { minLevel: 5 },
+  ),
+  ability(
+    "tail-sweep",
+    "Tail Sweep",
+    "Sweeps the whole front row.",
+    strike(6, { target: "front-row", spread: 0.6, cooldown: 3 }),
+    {
+      minTier: "standard",
+      minLevel: 6,
+    },
+  ),
+  ability(
+    "trample",
+    "Trample",
+    "Charges through the whole party.",
+    strike(6, { target: "all-enemies", spread: 0.6, weight: 1.3, cooldown: 4 }),
+    {
+      minTier: "elite",
+      minLevel: 8,
+    },
+  ),
+  ability(
+    "dive",
+    "Dive",
+    "Drops from above on anyone, then climbs again.",
+    strike(4, { ranged: true, critBonus: 10, cooldown: 2 }),
+  ),
+  ability(
+    "shriek",
+    "Shriek",
+    "A piercing cry: the party is slowed for 2 turns (half resist).",
+    {
+      kind: "status",
+      target: "all-enemies",
+      status: "slow",
+      chance: 0.5,
+      duration: 2,
+      ranged: true,
+      cooldown: 5,
+    },
+    { minLevel: 5 },
+  ),
   ability("web", "Web", "Binds one target: slowed for 2 turns.", {
     kind: "status",
     target: "enemy",
@@ -255,20 +315,31 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     ranged: true,
     cooldown: 3,
   }),
-  ability("spore-cloud", "Spore Cloud", "Spores over the party: poison, 4% a turn for 3.", {
-    kind: "status",
-    target: "all-enemies",
-    status: "poison",
-    chance: 0.7,
-    duration: 3,
-    ranged: true,
-    power: 0.04,
-    cooldown: 5,
-  }, { minLevel: 6 }),
-  ability("acid-spit", "Acid Spit", "Corrodes armour: −20% Defense for 2 turns.", spell(4, "poison", {
-    onHit: { stat: "defense", pct: -0.2, duration: 2 },
-    cooldown: 3,
-  })),
+  ability(
+    "spore-cloud",
+    "Spore Cloud",
+    "Spores over the party: poison, 4% a turn for 3.",
+    {
+      kind: "status",
+      target: "all-enemies",
+      status: "poison",
+      chance: 0.7,
+      duration: 3,
+      ranged: true,
+      power: 0.04,
+      cooldown: 5,
+    },
+    { minLevel: 6 },
+  ),
+  ability(
+    "acid-spit",
+    "Acid Spit",
+    "Corrodes armour: −20% Defense for 2 turns.",
+    spell(4, "poison", {
+      onHit: { stat: "defense", pct: -0.2, duration: 2 },
+      cooldown: 3,
+    }),
+  ),
   ability("harden", "Harden", "Hardens its hide: +40% Defense until its next two turns pass.", {
     kind: "buff",
     target: "self",
@@ -277,113 +348,196 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     duration: 2,
     cooldown: 4,
   }),
-  ability("regenerate", "Regenerate", "Knits its wounds: 3% of max HP a turn for 3.", {
-    kind: "status",
-    target: "self",
-    status: "regen",
-    duration: 3,
-    power: 0.03,
-    cooldown: 5,
-  }, { minLevel: 5 }),
-  ability("devour", "Devour", "Bites into the fallen and the near-fallen: wounds the target (healing halved for 3).", strike(6, {
-    applies: { status: "wound", duration: 3 },
-    cooldown: 3,
-  }), { minLevel: 4 }),
-  ability("hurl-boulder", "Hurl Boulder", "Throws rubble at anyone, with a turn's wind-up.", strike(5, {
-    ranged: true,
-    type: "blunt",
-    charge: true,
-    cooldown: 4,
-  }), { minLevel: 6 }),
+  ability(
+    "regenerate",
+    "Regenerate",
+    "Knits its wounds: 3% of max HP a turn for 3.",
+    {
+      kind: "status",
+      target: "self",
+      status: "regen",
+      duration: 3,
+      power: 0.03,
+      cooldown: 5,
+    },
+    { minLevel: 5 },
+  ),
+  ability(
+    "devour",
+    "Devour",
+    "Bites into the fallen and the near-fallen: wounds the target (healing halved for 3).",
+    strike(6, {
+      applies: { status: "wound", duration: 3 },
+      cooldown: 3,
+    }),
+    { minLevel: 4 },
+  ),
+  ability(
+    "hurl-boulder",
+    "Hurl Boulder",
+    "Throws rubble at anyone, with a turn's wind-up.",
+    strike(5, {
+      ranged: true,
+      type: "blunt",
+      charge: true,
+      cooldown: 4,
+    }),
+    { minLevel: 6 },
+  ),
   // Breath and spirits
   ability("ember", "Ember", "A spit of flame.", spell(5, "fire")),
   ability("rime", "Rime", "A shard of frost.", spell(5, "ice")),
   ability("spark", "Spark", "A lash of lightning.", spell(5, "lightning")),
-  ability("fire-breath", "Fire Breath", "Breathes fire over the party, with a turn's wind-up.", spell(9, "fire", {
-    target: "all-enemies",
-    spread: 0.6,
-    charge: true,
-    cooldown: 4,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("frost-breath", "Frost Breath", "Breathes frost over the party, with a turn's wind-up.", spell(9, "ice", {
-    target: "all-enemies",
-    spread: 0.6,
-    charge: true,
-    cooldown: 4,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("storm-breath", "Storm Breath", "Breathes lightning over the party, with a turn's wind-up.", spell(9, "lightning", {
-    target: "all-enemies",
-    spread: 0.6,
-    charge: true,
-    cooldown: 4,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("chill-touch", "Chill Touch", "A dead hand's touch: Wither, 5% of max HP a turn for 3.", spell(3, "dark", {
-    ranged: false,
-    applies: { status: "wither", duration: 3, power: 0.05 },
-    cooldown: 3,
-  })),
-  ability("wail", "Wail", "A grieving cry: the party deals 15% less damage for 2 turns.", {
-    kind: "debuff",
-    target: "all-enemies",
-    stat: "damage",
-    pct: -0.15,
-    duration: 2,
-    ranged: true,
-    cooldown: 5,
-  }, { minLevel: 6 }),
-  ability("dread-gaze", "Dread Gaze", "Fixes one target with its eyes: asleep for 2 turns (half the time).", {
-    kind: "status",
-    target: "enemy",
-    status: "sleep",
-    chance: 0.45,
-    duration: 2,
-    ranged: true,
-    cooldown: 5,
-  }, { minTier: "elite", minLevel: 8 }),
-  ability("bewitch", "Bewitch", "Turns a mind: confused for 2 turns (under half the time).", {
-    kind: "status",
-    target: "enemy",
-    status: "confuse",
-    chance: 0.4,
-    duration: 2,
-    ranged: true,
-    cooldown: 5,
-  }, { minTier: "elite", minLevel: 8 }),
-  ability("stagger", "Stagger", "A ringing blow: stunned for a turn (a third of the time).", strike(6, {
-    type: "blunt",
-    applies: { status: "stun", chance: 0.35, duration: 1 },
-    cooldown: 5,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("doom-mark", "Doom Mark", "Marks a target: in 3 turns it loses 40% of max HP unless cleansed.", {
-    kind: "status",
-    target: "enemy",
-    status: "doom",
-    chance: 0.6,
-    duration: 3,
-    ranged: true,
-    cooldown: 6,
-  }, { minTier: "boss", minLevel: 15 }),
+  ability(
+    "fire-breath",
+    "Fire Breath",
+    "Breathes fire over the party, with a turn's wind-up.",
+    spell(9, "fire", {
+      target: "all-enemies",
+      spread: 0.6,
+      charge: true,
+      cooldown: 4,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "frost-breath",
+    "Frost Breath",
+    "Breathes frost over the party, with a turn's wind-up.",
+    spell(9, "ice", {
+      target: "all-enemies",
+      spread: 0.6,
+      charge: true,
+      cooldown: 4,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "storm-breath",
+    "Storm Breath",
+    "Breathes lightning over the party, with a turn's wind-up.",
+    spell(9, "lightning", {
+      target: "all-enemies",
+      spread: 0.6,
+      charge: true,
+      cooldown: 4,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "chill-touch",
+    "Chill Touch",
+    "A dead hand's touch: Wither, 5% of max HP a turn for 3.",
+    spell(3, "dark", {
+      ranged: false,
+      applies: { status: "wither", duration: 3, power: 0.05 },
+      cooldown: 3,
+    }),
+  ),
+  ability(
+    "wail",
+    "Wail",
+    "A grieving cry: the party deals 15% less damage for 2 turns.",
+    {
+      kind: "debuff",
+      target: "all-enemies",
+      stat: "damage",
+      pct: -0.15,
+      duration: 2,
+      ranged: true,
+      cooldown: 5,
+    },
+    { minLevel: 6 },
+  ),
+  ability(
+    "dread-gaze",
+    "Dread Gaze",
+    "Fixes one target with its eyes: asleep for 2 turns (half the time).",
+    {
+      kind: "status",
+      target: "enemy",
+      status: "sleep",
+      chance: 0.45,
+      duration: 2,
+      ranged: true,
+      cooldown: 5,
+    },
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "bewitch",
+    "Bewitch",
+    "Turns a mind: confused for 2 turns (under half the time).",
+    {
+      kind: "status",
+      target: "enemy",
+      status: "confuse",
+      chance: 0.4,
+      duration: 2,
+      ranged: true,
+      cooldown: 5,
+    },
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "stagger",
+    "Stagger",
+    "A ringing blow: stunned for a turn (a third of the time).",
+    strike(6, {
+      type: "blunt",
+      applies: { status: "stun", chance: 0.35, duration: 1 },
+      cooldown: 5,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "doom-mark",
+    "Doom Mark",
+    "Marks a target: in 3 turns it loses 40% of max HP unless cleansed.",
+    {
+      kind: "status",
+      target: "enemy",
+      status: "doom",
+      chance: 0.6,
+      duration: 3,
+      ranged: true,
+      cooldown: 6,
+    },
+    { minTier: "boss", minLevel: 15 },
+  ),
   ability("life-sap", "Life Sap", "Drains a little life: dark damage.", spell(5, "dark", { cooldown: 2 })),
   ability("smite", "Smite", "A zealot's blow of light.", spell(6, "light", { ranged: false, cooldown: 2 })),
   // People and machines
-  ability("war-cry", "War Cry", "Its side deals 15% more damage for 3 turns.", {
-    kind: "buff",
-    target: "party",
-    stat: "damage",
-    pct: 0.15,
-    duration: 3,
-    ranged: true,
-    cooldown: 5,
-  }, { minLevel: 4 }),
-  ability("rally", "Rally", "Its side gains +20% Speed for 2 turns.", {
-    kind: "buff",
-    target: "party",
-    stat: "speed",
-    pct: 0.2,
-    duration: 2,
-    ranged: true,
-    cooldown: 5,
-  }, { minLevel: 8 }),
+  ability(
+    "war-cry",
+    "War Cry",
+    "Its side deals 15% more damage for 3 turns.",
+    {
+      kind: "buff",
+      target: "party",
+      stat: "damage",
+      pct: 0.15,
+      duration: 3,
+      ranged: true,
+      cooldown: 5,
+    },
+    { minLevel: 4 },
+  ),
+  ability(
+    "rally",
+    "Rally",
+    "Its side gains +20% Speed for 2 turns.",
+    {
+      kind: "buff",
+      target: "party",
+      stat: "speed",
+      pct: 0.2,
+      duration: 2,
+      ranged: true,
+      cooldown: 5,
+    },
+    { minLevel: 8 },
+  ),
   ability("mend", "Mend", "Heals an ally.", {
     kind: "heal",
     target: "ally",
@@ -392,55 +546,96 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     ranged: true,
     cooldown: 2,
   }),
-  ability("shield-ally", "Shield Ally", "Throws up a barrier on an ally that soaks damage.", {
-    kind: "shield",
-    target: "ally",
-    scales: "magic",
-    power: 8,
-    ranged: true,
-    cooldown: 4,
-  }, { minLevel: 5 }),
-  ability("mark-target", "Mark Target", "Paints a target: everyone deals 20% more to it for 2 turns.", {
-    kind: "debuff",
-    target: "enemy",
-    stat: "damage-taken",
-    pct: 0.2,
-    duration: 2,
-    ranged: true,
-    cooldown: 4,
-  }, { minLevel: 6 }),
-  ability("dirty-trick", "Dirty Trick", "Sand in the eyes or a low blow: −25% Skill for 2 turns.", strike(3, {
-    onHit: { stat: "skill", pct: -0.25, duration: 2 },
-    cooldown: 3,
-  })),
-  ability("suppressing-fire", "Suppressing Fire", "Sprays the whole party with fire: light damage to each.", strike(4, {
-    target: "all-enemies",
-    ranged: true,
-    type: "pierce",
-    spread: 0.6,
-    cooldown: 3,
-  }), { minLevel: 6 }),
-  ability("grenade", "Grenade", "A thrown charge with a fuse: fire over the party.", strike(8, {
-    target: "all-enemies",
-    ranged: true,
-    type: "fire",
-    spread: 0.6,
-    charge: true,
-    cooldown: 5,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("taser", "Shock Prod", "A jolt that may stun for a turn (a third of the time).", strike(4, {
-    type: "lightning",
-    applies: { status: "stun", chance: 0.35, duration: 1 },
-    cooldown: 5,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("self-repair", "Self-Repair", "Patches itself: 3% of max HP a turn for 3.", {
-    kind: "status",
-    target: "self",
-    status: "regen",
-    duration: 3,
-    power: 0.03,
-    cooldown: 5,
-  }, { minLevel: 5 }),
+  ability(
+    "shield-ally",
+    "Shield Ally",
+    "Throws up a barrier on an ally that soaks damage.",
+    {
+      kind: "shield",
+      target: "ally",
+      scales: "magic",
+      power: 8,
+      ranged: true,
+      cooldown: 4,
+    },
+    { minLevel: 5 },
+  ),
+  ability(
+    "mark-target",
+    "Mark Target",
+    "Paints a target: everyone deals 20% more to it for 2 turns.",
+    {
+      kind: "debuff",
+      target: "enemy",
+      stat: "damage-taken",
+      pct: 0.2,
+      duration: 2,
+      ranged: true,
+      cooldown: 4,
+    },
+    { minLevel: 6 },
+  ),
+  ability(
+    "dirty-trick",
+    "Dirty Trick",
+    "Sand in the eyes or a low blow: −25% Skill for 2 turns.",
+    strike(3, {
+      onHit: { stat: "skill", pct: -0.25, duration: 2 },
+      cooldown: 3,
+    }),
+  ),
+  ability(
+    "suppressing-fire",
+    "Suppressing Fire",
+    "Sprays the whole party with fire: light damage to each.",
+    strike(4, {
+      target: "all-enemies",
+      ranged: true,
+      type: "pierce",
+      spread: 0.6,
+      cooldown: 3,
+    }),
+    { minLevel: 6 },
+  ),
+  ability(
+    "grenade",
+    "Grenade",
+    "A thrown charge with a fuse: fire over the party.",
+    strike(8, {
+      target: "all-enemies",
+      ranged: true,
+      type: "fire",
+      spread: 0.6,
+      charge: true,
+      cooldown: 5,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "taser",
+    "Shock Prod",
+    "A jolt that may stun for a turn (a third of the time).",
+    strike(4, {
+      type: "lightning",
+      applies: { status: "stun", chance: 0.35, duration: 1 },
+      cooldown: 5,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "self-repair",
+    "Self-Repair",
+    "Patches itself: 3% of max HP a turn for 3.",
+    {
+      kind: "status",
+      target: "self",
+      status: "regen",
+      duration: 3,
+      power: 0.03,
+      cooldown: 5,
+    },
+    { minLevel: 5 },
+  ),
   ability("overcharge", "Overcharge", "Runs hot: +30% Speed for 2 turns.", {
     kind: "buff",
     target: "self",
@@ -449,12 +644,18 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     duration: 2,
     cooldown: 4,
   }),
-  ability("lock-on", "Lock On", "Aims for a turn, then a heavy shot at anyone.", strike(6, {
-    ranged: true,
-    charge: true,
-    hitBonus: 20,
-    cooldown: 4,
-  }), { minLevel: 5 }),
+  ability(
+    "lock-on",
+    "Lock On",
+    "Aims for a turn, then a heavy shot at anyone.",
+    strike(6, {
+      ranged: true,
+      charge: true,
+      hitBonus: 20,
+      cooldown: 4,
+    }),
+    { minLevel: 5 },
+  ),
 ];
 
 const ABILITY_BY_ID = new Map(MARINARA_BESTIARY_ABILITIES.map((each) => [each.id, each]));
@@ -490,7 +691,8 @@ export type MarinaraEnemyKind =
   | "machine";
 
 /** What a foe does in a fight, which decides its row and how the GM should use it. */
-export type MarinaraEnemyRole = "brute" | "tank" | "skirmisher" | "shooter" | "caster" | "hexer" | "healer" | "leader" | "swarm";
+export type MarinaraEnemyRole =
+  "brute" | "tank" | "skirmisher" | "shooter" | "caster" | "hexer" | "healer" | "leader" | "swarm";
 
 /** A name for one band of levels: the family's look from `from` up to the next band. */
 export interface MarinaraEnemyName {
@@ -541,7 +743,14 @@ const BIG_TIERS = ["standard", "elite", "boss"] as const;
 const BONE: MarinaraAffinities = { blunt: "weak", pierce: "resist", light: "weak", dark: "absorb", poison: "immune" };
 const PLATE: MarinaraAffinities = { slash: "resist", pierce: "resist", blunt: "weak", lightning: "weak" };
 const MACHINE: MarinaraAffinities = { lightning: "weak", poison: "immune", pierce: "resist" };
-const GHOST: MarinaraAffinities = { slash: "immune", pierce: "immune", blunt: "immune", light: "weak", poison: "immune", dark: "resist" };
+const GHOST: MarinaraAffinities = {
+  slash: "immune",
+  pierce: "immune",
+  blunt: "immune",
+  light: "weak",
+  poison: "immune",
+  dark: "resist",
+};
 
 export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
   // ── Vermin and beasts ──
@@ -590,7 +799,12 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       high_fantasy: n("Ditch Cur", "Moor Hound@9", "Ashmane Hound@17", "Hearthless Sire@25"),
       wuxia_xianxia: n("Hill Jackal", "Grave-Mound Wolf@9", "Moon-Howling Wolf@17", "Heavenly Dog@25"),
       modern_day: n("Stray Dog", "Guard Dog@6", "Fighting Dog@12", "Police K-9@20"),
-      modern_supernatural: n("Black-Eyed Stray", "Moonstruck Hound@9", "Gloaming Hound@17", "Hound of the Last Gate@25"),
+      modern_supernatural: n(
+        "Black-Eyed Stray",
+        "Moonstruck Hound@9",
+        "Gloaming Hound@17",
+        "Hound of the Last Gate@25",
+      ),
       the_1920s: n("Junkyard Dog", "Rail Yard Hound@8"),
       cyberpunk: n("Gutter Mutt", "Chromejaw@9", "Leashless Hunter@17"),
       space_opera: n("Scrub Lurcher", "Dune Lurcher@9", "Void Lurcher@17", "Lurcher Alpha@25"),
@@ -1341,8 +1555,7 @@ export function marinaraEnemySettingCap(family: MarinaraEnemyFamily, setting: Ma
 /** The families a setting may use at a level. */
 export function marinaraBestiaryFor(setting: MarinaraBestiarySetting, level: number): MarinaraEnemyFamily[] {
   return MARINARA_BESTIARY.filter(
-    (family) =>
-      marinaraEnemyName(family, setting, level) !== null && level <= marinaraEnemySettingCap(family, setting),
+    (family) => marinaraEnemyName(family, setting, level) !== null && level <= marinaraEnemySettingCap(family, setting),
   );
 }
 
@@ -1400,7 +1613,8 @@ export function marinaraEnemySpec(input: {
   const classId = marinaraEnemyClassAt(family, level);
   return {
     id: input.id,
-    name: input.name?.trim() || (input.tier === "boss" ? marinaraEnemyBossName(family, input.setting, level)! : bandName),
+    name:
+      input.name?.trim() || (input.tier === "boss" ? marinaraEnemyBossName(family, input.setting, level)! : bandName),
     familyId: family.id,
     ...(classId ? { classId } : { archetype: family.archetype }),
     statScale: combinedScale(family.statScale, marinaraFoeLevelScale(level)),
@@ -1476,7 +1690,12 @@ function interpolate(levels: Record<number, number>, level: number): number | nu
  * worth for its tier at its own level, times the level-gap factor. Families measured in no sample
  * for that tier fall back to their standard worth times the tier's rule.
  */
-export function marinaraFoeThreat(familyId: string, tier: MarinaraEnemyTier, level: number, partyLevel: number): number {
+export function marinaraFoeThreat(
+  familyId: string,
+  tier: MarinaraEnemyTier,
+  level: number,
+  partyLevel: number,
+): number {
   const measured = MARINARA_BESTIARY_THREAT[familyId];
   let worth = measured?.[tier] ? interpolate(measured[tier]!, level) : null;
   if (worth === null) {
@@ -1537,7 +1756,8 @@ export function marinaraCheckEncounter(input: {
   const problems: string[] = [];
   const { party, foes } = input;
   if (!foes.length) problems.push("No foes.");
-  if (foes.length > MARINARA_MAX_FOES) problems.push(`${foes.length} foes; a battle has room for ${MARINARA_MAX_FOES}.`);
+  if (foes.length > MARINARA_MAX_FOES)
+    problems.push(`${foes.length} foes; a battle has room for ${MARINARA_MAX_FOES}.`);
   const perTier: Partial<Record<MarinaraEnemyTier, number>> = {};
   let threat = 0;
   let front = 0;
@@ -1622,10 +1842,16 @@ export function marinaraBuildEncounter(input: {
   const pool = marinaraBestiaryFor(input.setting, level);
   if (!pool.length) return { foes: [], threat: 0 };
   const pick = <T>(list: readonly T[]): T => list[Math.floor(random() * list.length)]!;
-  const wanted = (input.families ?? []).map((id) => pool.find((family) => family.id === id)).filter(Boolean) as MarinaraEnemyFamily[];
+  const wanted = (input.families ?? [])
+    .map((id) => pool.find((family) => family.id === id))
+    .filter(Boolean) as MarinaraEnemyFamily[];
   const lead =
     wanted[0] ??
-    pick(input.boss ? pool.filter((family) => family.tiers.includes("boss")) : pool.filter((family) => family.role !== "healer"));
+    pick(
+      input.boss
+        ? pool.filter((family) => family.tiers.includes("boss"))
+        : pool.filter((family) => family.role !== "healer"),
+    );
   if (!lead) return { foes: [], threat: 0 };
   const company = pool.filter(
     (family) => family !== lead && KIND_GROUPS[family.kind] === KIND_GROUPS[lead.kind] && !wanted.includes(family),
@@ -1671,7 +1897,8 @@ export function marinaraBuildEncounter(input: {
   const tierCount = (tier: MarinaraEnemyTier) => foes.filter((foe) => foe.tier === tier).length;
   const roleFull = (family: MarinaraEnemyFamily) =>
     MARINARA_ROLE_CAP[family.role] !== undefined &&
-    foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)!.role === family.role).length >= MARINARA_ROLE_CAP[family.role]!;
+    foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)!.role === family.role).length >=
+      MARINARA_ROLE_CAP[family.role]!;
   for (let guard = 0; guard < 40 && foes.length < MARINARA_MAX_FOES; guard++) {
     const left = budget - threat;
     const options: MarinaraEncounterFoe[] = [];
@@ -1706,7 +1933,14 @@ export function marinaraBuildEncounter(input: {
 export function marinaraBestiaryMenu(
   setting: MarinaraBestiarySetting,
   partyLevel: number,
-): Array<{ familyId: string; name: string; kind: MarinaraEnemyKind; role: MarinaraEnemyRole; tiers: MarinaraEnemyTier[]; summary: string }> {
+): Array<{
+  familyId: string;
+  name: string;
+  kind: MarinaraEnemyKind;
+  role: MarinaraEnemyRole;
+  tiers: MarinaraEnemyTier[];
+  summary: string;
+}> {
   const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.round(partyLevel)));
   return marinaraBestiaryFor(setting, level).map((family) => ({
     familyId: family.id,
@@ -1771,7 +2005,10 @@ export function marinaraFitEncounter(input: {
     }
     if (tier !== asked.tier) changes.push(`${family.id}: ${asked.tier} → ${tier}.`);
     const roleCap = MARINARA_ROLE_CAP[family.role];
-    if (roleCap !== undefined && foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)!.role === family.role).length >= roleCap) {
+    if (
+      roleCap !== undefined &&
+      foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)!.role === family.role).length >= roleCap
+    ) {
       changes.push(`Dropped ${family.id}: at most ${roleCap} ${family.role} in a fight.`);
       continue;
     }
