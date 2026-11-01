@@ -2046,7 +2046,15 @@ export function GameCombatUI({
           )}
 
           <div className="relative z-0 grid min-h-0 flex-1 grid-rows-[minmax(min-content,1fr)_auto] gap-y-[clamp(1.25rem,5svh,2.5rem)] overflow-y-auto overflow-x-hidden px-2 py-[clamp(0.5rem,2svh,1rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="overflow-x-auto overflow-y-visible pt-[clamp(2.75rem,9svh,4rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div
+              className={cn(
+                // A scroll box's automatic minimum height is 0: hold it to its cards.
+                "min-h-min overflow-x-auto overflow-y-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+                enemies.length + party.length > 8 || enemies.length > 4 || party.length > 4
+                  ? "pt-[clamp(2.25rem,6svh,3rem)]"
+                  : "pt-[clamp(2.75rem,9svh,4rem)]",
+              )}
+            >
               <div
                 className={cn(
                   "items-start justify-center gap-x-[clamp(0.25rem,1.5vw,0.5rem)]",
@@ -2071,6 +2079,7 @@ export function GameCombatUI({
                       onSelect={() => handleTargetSelect(enemy.id)}
                       damagePopups={damagePopups.filter((p) => p.targetId === enemy.id)}
                       sideCount={enemies.length > 4 ? 3 : enemies.length}
+                      lines={(enemies.length > 4 ? 2 : 1) + (party.length > 4 ? 2 : 1)}
                       compact
                     />
                     {enemy.marinara?.row === "back" && (
@@ -2083,7 +2092,7 @@ export function GameCombatUI({
               </div>
             </div>
 
-            <div className="shrink-0 overflow-x-auto overflow-y-visible pb-[clamp(0.75rem,3svh,1.5rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="min-h-min shrink-0 overflow-x-auto overflow-y-visible pb-[clamp(0.75rem,3svh,1.5rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div
                 className={cn(
                   "items-end justify-center gap-x-[clamp(0.25rem,1.5vw,0.5rem)]",
@@ -2115,6 +2124,7 @@ export function GameCombatUI({
                       }
                       damagePopups={damagePopups.filter((p) => p.targetId === member.id)}
                       sideCount={party.length > 4 ? 3 : party.length}
+                      lines={(enemies.length > 4 ? 2 : 1) + (party.length > 4 ? 2 : 1)}
                       compact
                     />
                     {member.marinara?.row === "back" && (
@@ -3531,6 +3541,7 @@ function CombatantCard({
   onDismissDialogue,
   compact = false,
   artSize,
+  lines = 2,
   elements,
 }: {
   combatant: Combatant;
@@ -3545,6 +3556,8 @@ function CombatantCard({
   compact?: boolean;
   /** An east-west stage's art size in px: the card takes its column's 120px, its art this square. */
   artSize?: number;
+  /** Lines of cards on a phone's stacked stage, both sides together. */
+  lines?: number;
   elements?: WorldElementSet;
 }) {
   const { t: localizeUi } = useUiTranslation();
@@ -3584,7 +3597,11 @@ function CombatantCard({
     "--combat-card-width": artSize
       ? `${Math.max(120, artSize + 24)}px`
       : compact
-        ? `clamp(2.75rem, min(22vw, 9svh, ${compactFitWidth}), 5.5rem)`
+        ? `clamp(2.25rem, min(22vw, 9svh, ${compactFitWidth}${
+            // Three or more lines of cards on a phone share its stage: about 42svh, less ~4rem of
+            // name and bars a line.
+            lines > 2 ? `, calc(42svh / ${lines} - 4rem)` : ""
+          }), 5.5rem)`
         : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
     "--combat-avatar-size": artSize
       ? `${artSize}px`
