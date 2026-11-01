@@ -554,7 +554,7 @@ export interface MarinaraPassiveHooks {
   slowDebuffed?: number;
   /** Gains dodge with each miss against it. */
   evasionStacking?: number;
-  /** Heavy Draw: physical damage up. */
+  /** Heavy Draw: all damage up 30%. */
   heavyDraw?: boolean;
   bloodlust?: boolean;
   /** Can't be stunned: ever, or while below half HP (Immovable, Unstoppable). */
@@ -624,7 +624,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "read-the-signs": { critBonus: 5, bonusVsMarked: 0.2 },
   "pack-tactics": { partyBonusVsMarked: 0.4 },
   // Heavy Draw: a bigger bow, slower to draw (text: "More damage, acts later").
-  "heavy-draw": { heavyDraw: true, turnPct: 0.15 },
+  // Heavy Draw: 1 / 1.1765 = 0.85, so 15% fewer turns (Alyssa 2026-11-01: say it as turns, not "longer").
+  "heavy-draw": { heavyDraw: true, turnPct: 0.1765 },
   sundering: { hitsLowerDefense: 0.1 },
   attunement: { spellDamagePct: 0.15 },
   overcharge: { critBonus: 10 },
@@ -1565,7 +1566,7 @@ export function marinaraHitNumbers(
     if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;
     if (marinaraRowOf(target, all) === "back") pct += allyHooks.backRowTakenPct ?? 0;
   }
-  if (hooks.heavyDraw && !magic) pct += 0.3;
+  if (hooks.heavyDraw) pct += 0.3;
   const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
