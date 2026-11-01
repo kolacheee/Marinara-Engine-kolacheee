@@ -470,14 +470,21 @@ export function performMarinaraTacticalAction(
   near: (id: string) => string[],
   reach: (id: string) => boolean,
   source?: string,
+  /** Tiles between two units on the board. */
+  apart?: (a: string, b: string) => number,
 ): void {
   const actor = marinaraFighter(state, unitId);
   if (!actor) throw new Error("Combatant cannot act.");
   // On the board, what each fighter can reach is the foes next to it as they stand now (Grave
   // Hunger, Sworn Ward's strike back).
   for (const fighter of state.fighters)
-    if (fighter.hp > 0)
+    if (fighter.hp > 0) {
       fighter.nearFoes = near(fighter.id).filter((id) => marinaraFighter(state, id)?.side !== fighter.side);
+      if (apart && fighter.skills.some((skill) => skill.id === "grave-hunger"))
+        fighter.spellFoes = state.fighters
+          .filter((foe) => foe.side !== fighter.side && apart(fighter.id, foe.id) <= MARINARA_BOARD_SPELL_RANGE.hexer!)
+          .map((foe) => foe.id);
+    }
   const ctx = { ...context(state, seed, true), grouped: false };
   if (action.type === "defend") marinaraDefend(actor, ctx);
   else if (action.type === "attack" || action.type === "skill") {
