@@ -174,6 +174,29 @@ assert.deepEqual(
   [],
   asked.changes.join(" "),
 );
+// One leader and one healer a fight: their buffs and heals stack across copies.
+const twoCaptains = marinaraFitEncounter({
+  setting: "high_fantasy",
+  party,
+  difficulty: "deadly",
+  foes: [
+    { familyId: "captain", tier: "standard", level: party.level },
+    { familyId: "captain", tier: "standard", level: party.level },
+    { familyId: "sellsword", tier: "standard", level: party.level },
+  ],
+});
+assert.equal(twoCaptains.foes.filter((f) => f.familyId === "captain").length, 1);
+assert.ok(
+  marinaraCheckEncounter({
+    setting: "high_fantasy",
+    party,
+    foes: [
+      { familyId: "field-medic", tier: "standard", level: party.level },
+      { familyId: "field-medic", tier: "standard", level: party.level },
+      { familyId: "sellsword", tier: "standard", level: party.level },
+    ],
+  }).problems.some((p) => p.includes("healer")),
+);
 const menu = marinaraBestiaryMenu("cyberpunk", 12);
 assert.ok(menu.some((entry) => entry.name === "Riot Trooper"));
 assert.ok(menu.every((entry) => entry.tiers.length > 0));

@@ -159,6 +159,8 @@ export interface PlayedFight {
   lost: number;
   downed: number;
   rounds: number;
+  /** Neither side could finish the other and the director called the fight off (counted as no win). */
+  stalled: boolean;
 }
 
 /** One fight through the combat director, the Engine's combat AI playing both sides. */
@@ -187,9 +189,11 @@ export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], see
   const max = s.party.reduce((sum, u) => sum + u.maxHp, 0);
   const left = s.party.reduce((sum, u) => sum + Math.max(0, u.hp), 0);
   const victory = s.outcome === "victory";
+  const stalled = Boolean(s.stalled);
   return {
     victory,
-    lost: victory ? (max - left) / Math.max(1, max) : 1,
+    stalled,
+    lost: victory || stalled ? (max - left) / Math.max(1, max) : 1,
     downed: s.party.filter((u) => u.hp <= 0).length,
     rounds: s.round,
   };
