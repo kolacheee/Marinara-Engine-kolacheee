@@ -60,21 +60,32 @@ export interface MarinaraLootLine {
 }
 
 /**
- * What a fight leaves the party: each robbed foe's stolen thing (Steal), and on a win each beaten foe (down, not fled) rolls by its rank, its bestiary family and
- * its own level's tier; gold comes in the game's coins (largest first) when it has money, else as
- * "Coins". `equipment` is the party's, for the best gold charm. Seeded, so a step saved twice drops the
- * same thing.
+ * What a fight leaves the party: each robbed foe's stolen thing (Steal), and on a win each beaten foe
+ * rolls by its rank, its bestiary family and its own level's tier. Beaten is down, or out of the fight
+ * alive (`left`, as the director keeps them): one that surrendered hands over everything, one that fled
+ * (`fled` ids) only half its gold, dropped as it ran. Gold comes in the game's coins (largest first)
+ * when it has money, else as "Coins". `equipment` is the party's, for the best gold charm. Seeded, so a
+ * step saved twice drops the same thing.
  */
 export function marinaraVictoryLoot(input: {
   fighters: readonly MarinaraFighter[];
+  left?: readonly MarinaraFighter[];
+  fled?: readonly string[];
   place: MarinaraItemPlace;
   seed: string;
   coins?: readonly MarinaraLootCoin[];
   equipment?: ReadonlyArray<MarinaraEquipment | null | undefined>;
 }): { lines: MarinaraLootLine[]; gold: number; items: string[] } {
   const party = input.fighters.filter((fighter) => fighter.side === "party");
-  const beaten = input.fighters.filter((fighter) => fighter.side === "enemy" && fighter.hp <= 0 && !fighter.dummy);
-  const robbed = input.fighters.filter((fighter) => fighter.side === "enemy" && fighter.stolenBy && !fighter.dummy);
+  const away = (input.left ?? []).filter((fighter) => fighter.side === "enemy" && !fighter.dummy);
+  const fled = new Set(input.fled ?? []);
+  const beaten = [
+    ...input.fighters.filter((fighter) => fighter.side === "enemy" && fighter.hp <= 0 && !fighter.dummy),
+    ...away,
+  ];
+  const robbed = [...input.fighters, ...away].filter(
+    (fighter) => fighter.side === "enemy" && fighter.stolenBy && !fighter.dummy,
+  );
   if (!beaten.length && !robbed.length) return { lines: [], gold: 0, items: [] };
   const partyLevel = party.length
     ? party.reduce((sum, fighter) => sum + fighter.level, 0) / party.length
@@ -91,6 +102,7 @@ export function marinaraVictoryLoot(input: {
             ...(fighter.familyId ? { family: fighter.familyId } : {}),
             // A beast, spirit or machine carries no purse; a foe the bestiary doesn't know is taken as a person.
             ...(family && family.kind !== "humanoid" ? { carriesCoin: false } : {}),
+            ...(fled.has(fighter.id) ? { fled: true } : {}),
           };
         }),
         place: input.place,
