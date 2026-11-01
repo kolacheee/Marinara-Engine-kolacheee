@@ -16,6 +16,7 @@ import {
   marinaraOption,
   marinaraEffectiveStat,
   marinaraLeeched,
+  marinaraRowOf,
   MARINARA_GRAVE_HUNGER,
   type MarinaraFightContext,
 } from "../../packages/shared/src/features/marinara-combat.js";
@@ -61,6 +62,22 @@ const party = (id: string) =>
   assert.equal(marinaraLeeched(hexer, all).length, 1, "a fallen foe gives nothing");
   hexer.spellFoes = [];
   assert.equal(marinaraLeeched(hexer, all).length, 0, "on a board, only foes in spell reach");
+}
+
+// With nobody standing in its front row, a side's back row is the front: melee hits it in full.
+{
+  const blade = buildMarinaraEnemy({ id: "b", name: "b", level: 5, tier: "standard", archetype: "blade" });
+  const front = party("pf"),
+    back = party("pb");
+  front.row = "front";
+  back.row = "back";
+  const all = [blade, front, back];
+  const basic = marinaraOption(blade, null)!.effect;
+  const shielded = marinaraHitNumbers(blade, back, basic, all).damage;
+  assert.equal(marinaraRowOf(back, all), "back");
+  front.hp = 0;
+  assert.equal(marinaraRowOf(back, all), "front", "the back row steps up");
+  assert.ok(marinaraHitNumbers(blade, back, basic, all).damage > shielded, "and takes melee in full");
 }
 
 // A charged area ability: charged on one turn, lands on every foe when released.

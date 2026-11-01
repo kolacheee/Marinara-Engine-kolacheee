@@ -22,6 +22,7 @@ import {
   marinaraDebuffBurden,
   marinaraEffectiveStat,
   marinaraExpectedHit,
+  marinaraRowOf,
   marinaraSkillCost,
   marinaraStruck,
   marinaraTargetsFor,
@@ -222,7 +223,7 @@ export function marinaraAiCandidates(
           if (target.shield > 0) continue;
           const amount = eff(actor, "magic") + (effect.power ?? 0);
           add(option, [target], {
-            support: (amount / target.maxHp) * (target.row === "front" ? 1 : 0.6),
+            support: (amount / target.maxHp) * (marinaraRowOf(target, all) === "front" ? 1 : 0.6),
             protection: target.id === threatenedFriend?.id ? 0.3 : 0,
           });
         }

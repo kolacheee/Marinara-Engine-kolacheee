@@ -957,7 +957,7 @@ export function marinaraEffectiveStat(
     if (stat === "speed") pct += hooks.partySpeedPct ?? 0;
     if (stat === "defense") {
       pct += hooks.partyDefensePct ?? 0;
-      if (unit.row === "front") pct += hooks.frontRowDefensePct ?? 0;
+      if (marinaraRowOf(unit, all) === "front") pct += hooks.frontRowDefensePct ?? 0;
     }
   }
   if (stat === "speed" && unit.statuses.some((s) => s.status === "slow")) pct -= 0.3;
@@ -987,7 +987,16 @@ export function marinaraWarderReaches(
 ): boolean {
   if (warder.rangedBasic || warder.magicBasic) return true;
   if (warder.nearFoes) return warder.nearFoes.includes(attacker.id);
-  return attacker.row === "front" || !all.some((u) => u.side === attacker.side && u.hp > 0 && u.row === "front");
+  return marinaraRowOf(attacker, all) === "front";
+}
+
+/**
+ * The row a fighter fights in now: with nobody left standing in its side's front row, the back row
+ * is the front (Alyssa 2026-11-01), for every rule — melee damage, front-row hooks, sweeps, reach.
+ */
+export function marinaraRowOf(unit: MarinaraFighter, all: readonly MarinaraFighter[]): MarinaraFighter["row"] {
+  if (unit.row === "front") return "front";
+  return all.some((u) => u.side === unit.side && u.hp > 0 && u.row === "front") ? "back" : "front";
 }
 
 /** The foes a Grave Hunger Hexer drains now. */
@@ -1225,7 +1234,7 @@ export function marinaraHitNumbers(
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
     const allyHooks = hooksOf(ally);
     if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;
-    if (target.row === "back") pct += allyHooks.backRowTakenPct ?? 0;
+    if (marinaraRowOf(target, all) === "back") pct += allyHooks.backRowTakenPct ?? 0;
   }
   if (hooks.heavyDraw && !magic) pct += 0.2;
   const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
@@ -1233,7 +1242,7 @@ export function marinaraHitNumbers(
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
   const melee = !effect.ranged && !magic && !(actor.rangedBasic && effect.basic);
-  const rowFactor = !tactical && melee && target.row === "back" ? MARINARA_BACK_ROW_MELEE_PCT : 1;
+  const rowFactor = !tactical && melee && marinaraRowOf(target, all) === "back" ? MARINARA_BACK_ROW_MELEE_PCT : 1;
   const floor = Math.max(
     MARINARA_TUNING.minDamage,
     (powerStat(actor, attackStat, effect, all) + (effect.power ?? MARINARA_TUNING.basicPower)) *
@@ -2042,7 +2051,8 @@ export interface MarinaraCombatantView {
   next: number;
 }
 
-export function marinaraCombatantView(unit: MarinaraFighter): MarinaraCombatantView {
+/** What the fight screen shows of a fighter; with `all`, the row it fights in now (see marinaraRowOf). */
+export function marinaraCombatantView(unit: MarinaraFighter, all?: readonly MarinaraFighter[]): MarinaraCombatantView {
   const def = unit.classId ? marinaraClass(unit.classId) : undefined;
   const mods = new Map<string, number>();
   for (const mod of unit.mods) if (mod.source !== "probe") mods.set(mod.stat, (mods.get(mod.stat) ?? 0) + mod.pct);
@@ -2051,7 +2061,7 @@ export function marinaraCombatantView(unit: MarinaraFighter): MarinaraCombatantV
     ...(unit.archetype ? { archetype: unit.archetype } : {}),
     level: unit.level,
     ...(unit.tier ? { tier: unit.tier } : {}),
-    row: unit.row,
+    row: all ? marinaraRowOf(unit, all) : unit.row,
     stamina: unit.stamina,
     maxStamina: unit.maxStamina,
     stats: { ...unit.stats },
