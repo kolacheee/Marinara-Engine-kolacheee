@@ -246,8 +246,8 @@ export function marinaraEquipmentForClass(
 
 /**
  * A game's setting kit, with the item tables' wares on its shop when the game uses Classic Marinara
- * classes (`gameSetupConfig.marinaraClasses`): consumables, gear and accessories for the party's tier
- * (its members' average level), named in the setting and priced in its money, each from the smallest
+ * classes (`gameSetupConfig.marinaraClasses`): consumables, gear its members' classes can wear and
+ * accessories for the party's tier (its members' average level), named in the setting and priced in its money, each from the smallest
  * place that sells it (a hamlet the kit's first size, a town its second, a city its last). Every other
  * game's kit is returned as it is, so its market is unchanged. A kit with no money has no market.
  */
@@ -261,11 +261,15 @@ export function marinaraGameWorldKit(metadata: Record<string, unknown> | null | 
     return typeof level === "number" && Number.isFinite(level) && level >= 1 ? [level] : [];
   });
   const level = levels.length ? levels.reduce((sum, value) => sum + value, 0) / levels.length : 1;
+  const wearers = cards.flatMap((card) => {
+    const classId = (card as { marinara?: { activeClass?: unknown } } | null)?.marinara?.activeClass;
+    return typeof classId === "string" ? [classId] : [];
+  });
   const place = marinaraGameItemPlace(metadata);
   const last = Math.max(0, kit.sizes.length - 1);
   const from = { small: 0, town: Math.min(1, last), city: last } as const;
   const taken = new Set((kit.shop ?? []).map((thing) => thing.name.trim().toLowerCase()));
-  const wares = marinaraShopCatalog(marinaraTierForLevel(level), place).flatMap(({ id, size }) => {
+  const wares = marinaraShopCatalog(marinaraTierForLevel(level), place, wearers).flatMap(({ id, size }) => {
     const marks = marinaraItemPrice(id);
     const name = marinaraItemName(id, place);
     if (marks === null || taken.has(name.toLowerCase())) return [];
