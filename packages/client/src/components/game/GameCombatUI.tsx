@@ -3561,6 +3561,9 @@ function CombatantCard({
   elements?: WorldElementSet;
 }) {
   const { t: localizeUi } = useUiTranslation();
+  // A crowded phone stage (three or more lines of cards) shows name and HP only; stamina and MP are
+  // in the Fighters list.
+  const slim = compact && lines > 2;
   // An aura's colour is its element's own in a setting kit's set, else the older colours by its word, as a
   // game without a kit (Classic Game Mode) always drew them.
   const auraColor = combatant.elementAura
@@ -3598,9 +3601,9 @@ function CombatantCard({
       ? `${Math.max(120, artSize + 24)}px`
       : compact
         ? `clamp(2.25rem, min(22vw, 9svh, ${compactFitWidth}${
-            // Three or more lines of cards on a phone share its stage: about 42svh, less ~4rem of
-            // name and bars a line.
-            lines > 2 ? `, calc(42svh / ${lines} - 4rem)` : ""
+            // Three or more lines of cards on a phone share its stage: about 36svh, less ~2.75rem of
+            // name and HP bar a line.
+            lines > 2 ? `, calc(36svh / ${lines} - 2.75rem)` : ""
           }), 5.5rem)`
         : `clamp(4rem, min(10vw, 12svh, ${desktopFitVw}vw), 7.5rem)`,
     "--combat-avatar-size": artSize
@@ -3802,7 +3805,7 @@ function CombatantCard({
         </div>
 
         {/* Stamina bar (Classic Marinara fighters) */}
-        {combatant.marinara && combatant.marinara.maxStamina > 0 && (
+        {!slim && combatant.marinara && combatant.marinara.maxStamina > 0 && (
           <div className="mt-0.5 flex items-center gap-1">
             <Zap size={9} className="text-emerald-400" />
             <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
@@ -3820,7 +3823,7 @@ function CombatantCard({
         )}
 
         {/* MP bar (if applicable) */}
-        {mpPercent !== null && (
+        {!slim && mpPercent !== null && (
           <div className="mt-0.5 flex items-center gap-1">
             <Droplets size={9} className="text-blue-400" />
             <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
