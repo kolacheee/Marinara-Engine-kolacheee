@@ -93,6 +93,7 @@ function measure(out: string, fights: number) {
   const only = process.env.FAMILIES?.split(",");
   for (const family of MARINARA_BESTIARY) {
     if (only && !only.includes(family.id)) continue;
+    if (family.role === "treasure") continue; // priced by MARINARA_TREASURE_THREAT, not measured
     for (const tier of family.tiers)
       for (const level of SAMPLE_LEVELS) {
         if (level < family.levels[0] || level > family.levels[1] || level < MARINARA_TIER_RULES[tier].minLevel) continue;
