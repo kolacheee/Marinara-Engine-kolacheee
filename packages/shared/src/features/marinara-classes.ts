@@ -388,6 +388,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "grave-tithe": "dark",
   "carrion-feast": "dark",
   "total-eclipse": "dark",
+  "rune-strike": "element",
   rot: "poison",
 };
 
@@ -934,7 +935,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Area devastation",
       leans: ["magic", "speed"],
       skills: [
-        active("tempest", "Tempest", 20, "magic", 14, "Hits every enemy with a chosen element.", true),
+        active(
+          "tempest",
+          "Tempest",
+          20,
+          "magic",
+          10,
+          "Hits every enemy, each nearly as hard as one, in the element that hurts it most.",
+          true,
+        ),
         passive("overcharge", "Overcharge", 24, "Spells crit on a reaction."),
       ],
     },
@@ -954,6 +963,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "magic",
           6,
           "For 3 turns the party's weapon attacks and skills strike with fire, ice or lightning, whichever hurts most.",
+        ),
+        active(
+          "rune-strike",
+          "Rune Strike",
+          12,
+          "magic",
+          4,
+          "A heavy rune-charged bolt in whichever of fire, ice or lightning the target is weakest to.",
+          true,
         ),
         passive(
           "warding-runes",
