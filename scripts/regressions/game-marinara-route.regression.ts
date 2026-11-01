@@ -128,6 +128,53 @@ try {
   const stored = JSON.parse((await chats.getById(chat.id))!.metadata || "{}").gameCharacterCards;
   assert.equal(stored.find((card: { name: string }) => card.name === "Corin").marinara.activeClass, other!.id);
 
+  // Before their first fight the player picks a member's main tree and row (Classic UI review 2026-11-01);
+  // the tree stays once they have gained experience, and the row reaches the fight.
+  {
+    const pickChat = await chats.create({ name: "Tree and row pick proof", mode: "game", characterIds: [] });
+    await chats.patchMetadata(pickChat.id, {
+      gameSetupConfig: { combatDirector: true, marinaraClasses: true, difficulty: "normal" },
+      gameCharacterCards: [
+        { name: "Wren", class: "Knight", temperament: "cautious", temperamentInitial: "cautious" },
+        { name: "Brom", class: "Knight", temperament: "protective", temperamentInitial: "protective" },
+      ],
+    });
+    const pick = (body: Record<string, unknown>) =>
+      post("/combat/marinara/progression", { chatId: pickChat.id, name: "Wren", ...body });
+    const picked = await pick({ primary: "marksman" });
+    assert.equal(picked.statusCode, 200, picked.body);
+    assert.equal(picked.json().progression.primary, "marksman", "a knight's player may still make them a Marksman");
+    const rowed = await pick({ row: "front" });
+    assert.equal(rowed.json().progression.row, "front");
+    const repicked = await pick({ primary: "hexer" });
+    assert.equal(repicked.json().progression.primary, "hexer", "the tree can change until they grow");
+    assert.equal(repicked.json().progression.row, "front", "a re-pick keeps the row");
+    const cleared = await pick({ row: null });
+    assert.equal(cleared.json().progression.row, undefined, "null goes back to the class's own row");
+    await pick({ row: "back" });
+    const pickAnchor = await chats.createMessage({
+      chatId: pickChat.id,
+      role: "assistant",
+      content: "[state: combat]",
+    });
+    const fought = await post("/combat/start", {
+      chatId: pickChat.id,
+      anchor: pickAnchor.id,
+      style: "classic",
+      party: [unit("p1", "Wren", "player"), unit("p2", "Brom", "player")],
+      enemies: [unit("e1", "Bandit", "enemy", 12)],
+    });
+    assert.equal(fought.statusCode, 200, fought.body);
+    const wren = (fought.json().session as DirectedCombatView).party[0]!;
+    // (Brom, a Guard, stands in front; alone, Wren's back row would count as the front.)
+    assert.equal(wren.marinara?.row, "back", "the picked row is the one they fight in");
+    const meta = JSON.parse((await chats.getById(pickChat.id))!.metadata || "{}");
+    meta.gameCharacterCards[0].marinara.xp = 40;
+    await chats.patchMetadata(pickChat.id, { gameCharacterCards: meta.gameCharacterCards });
+    const late = await pick({ primary: "blade" });
+    assert.equal(late.statusCode, 400, "the tree is set once they have experience");
+  }
+
   // The setup's bestiary families reach the fight through the start route, fitted to the fight's difficulty.
   const { marinaraBestiaryFor } = await import("../../packages/shared/src/features/marinara-bestiary.js");
   const family = marinaraBestiaryFor("high_fantasy", 1).find((one) => one.tiers.includes("standard"))!;

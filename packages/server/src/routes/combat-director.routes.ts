@@ -57,6 +57,13 @@ import {
   marinaraOwnedGear,
   setMarinaraCarried,
   setMarinaraClass,
+  createMarinaraCardProgression,
+  gameCardTemperament,
+  partyTemperamentFallback,
+  MARINARA_ARCHETYPES,
+  type MarinaraArchetype,
+  type MarinaraCardProgression,
+  type MarinaraPartyTemperament,
   combatTacticsSchema,
   combatAiHintsSchema,
   rulesetBestiarySheetCatalogIds,
@@ -1805,6 +1812,10 @@ export async function combatDirectorRoutes(
         chatId: key,
         name: z.string().min(1).max(200),
         classId: z.string().max(80).optional(),
+        /** Their primary tree: picked before their first fight, or changed while they have not grown yet. */
+        primary: z.enum(MARINARA_ARCHETYPES as unknown as [MarinaraArchetype, ...MarinaraArchetype[]]).optional(),
+        /** Their Classic row; null goes back to their class's own row. */
+        row: z.enum(["front", "back"]).nullable().optional(),
         carried: z.array(z.string().max(80)).max(8).optional(),
         /** What they wear (marinara-items.ts ids), from what the party's bags hold. */
         equipment: z
@@ -1833,10 +1844,41 @@ export async function combatDirectorRoutes(
             typeof card.name === "string" &&
             normalizeCharacterLookupName(card.name) === normalizeCharacterLookupName(input.name),
         );
-        let next = index >= 0 ? readMarinaraCardProgression(cards[index]!.marinara) : undefined;
+        let next: MarinaraCardProgression | undefined =
+          index >= 0 ? readMarinaraCardProgression(cards[index]!.marinara) : undefined;
+        if (input.primary && index >= 0) {
+          // The player picks the primary tree (Alyssa 2026-10-31). Once they have grown in it, it stays.
+          const fresh = !next || (next.level === 1 && next.xp === 0 && Object.keys(next.classLevels).length === 1);
+          if (!fresh) {
+            refusal = "Their main tree is set once they have gained experience in it.";
+            return {};
+          }
+          if (!next || next.primary !== input.primary) {
+            const card = cards[index]!;
+            const name = typeof card.name === "string" ? card.name : input.name;
+            const temperament = (gameCardTemperament(card)?.initial ??
+              partyTemperamentFallback(input.chatId, name)) as MarinaraPartyTemperament;
+            const made = createMarinaraCardProgression({
+              gameId: input.chatId,
+              card: card as unknown as Parameters<typeof createMarinaraCardProgression>[0]["card"],
+              temperament: next?.temperament ?? temperament,
+              primary: input.primary,
+            });
+            next = {
+              ...made,
+              ...(next?.row ? { row: next.row } : {}),
+              ...(next?.equipment ? { equipment: next.equipment } : {}),
+            };
+          }
+        }
         if (!next) {
-          refusal = "This party member has no Classic Marinara class yet. They get one on their first fight.";
+          refusal =
+            "This party member has no Classic Marinara class yet. Pick their main tree, or they get one on their first fight.";
           return {};
+        }
+        if (input.row !== undefined) {
+          const { row: _row, ...rest } = next;
+          next = input.row ? { ...rest, row: input.row } : rest;
         }
         if (next.fallen) {
           refusal = "This party member has fallen.";

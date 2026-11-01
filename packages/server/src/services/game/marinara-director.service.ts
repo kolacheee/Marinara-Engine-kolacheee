@@ -239,7 +239,8 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
   const target = nameOf(state, event.targetId);
   const skill = skillLabel(marinaraFighter(state, event.actorId), event.skillId);
   const using = skill ? ` with ${skill}` : "";
-  const roll = event.chance !== undefined ? ` (${event.roll} vs ${event.chance}%)` : "";
+  // The roll in words: a d100 roll lands when it is under the chance (Haiku panel: "(63 vs 34%)" had no legend).
+  const roll = event.chance !== undefined ? ` (rolled ${event.roll}, needed under ${event.chance})` : "";
   const how =
     event.affinity === "weak"
       ? ", a weak spot"
@@ -318,6 +319,30 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
   }
 }
 
+/**
+ * Says when a side's back row becomes its front (its last front-liner fell) and when it steps behind
+ * again (one is brought back): every row rule follows marinaraRowOf, and players had no way to tell
+ * (Haiku panel 2026-11-01: Grave Tithe "front only" used from the back row).
+ */
+function rowNotices(state: MarinaraDirectorState, events: readonly MarinaraEvent[], log: MarinaraLog) {
+  const told = new Set<string>();
+  for (const event of events) {
+    if (event.kind !== "down" && event.kind !== "revive") continue;
+    const unit = marinaraFighter(state, event.targetId ?? event.actorId);
+    if (!unit || unit.row !== "front") continue;
+    const side = state.fighters.filter((one) => one.side === unit.side && one.hp > 0);
+    const front = side.filter((one) => one.row === "front");
+    const back = side.filter((one) => one.row === "back");
+    if (!back.length || told.has(`${unit.side}:${event.kind}`)) continue;
+    told.add(`${unit.side}:${event.kind}`);
+    const whose = unit.side === "party" ? "the party's" : "the foes'";
+    if (event.kind === "down" && !front.length)
+      log(`Nobody stands in ${whose} front row now: its back row is the front.`, "marinara:row", unit.id);
+    else if (event.kind === "revive" && front.length === 1 && front[0]!.id === unit.id)
+      log(`${unit.name} is back in front: ${whose} back row is behind again.`, "marinara:row", unit.id);
+  }
+}
+
 /** Logs a step's events and credits who helped, for XP. */
 function record(state: MarinaraDirectorState, ctx: MarinaraFightContext, log: MarinaraLog, source?: string) {
   for (const event of ctx.events) {
@@ -335,6 +360,7 @@ function record(state: MarinaraDirectorState, ctx: MarinaraFightContext, log: Ma
     )
       credit.support += 5;
   }
+  rowNotices(state, ctx.events, log);
   ctx.events.length = 0;
 }
 
