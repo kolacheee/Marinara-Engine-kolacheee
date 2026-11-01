@@ -504,8 +504,11 @@ export interface MarinaraPassiveHooks {
   armorPenPct?: number;
   /** Counter a melee attack: always, or only one that missed. */
   counter?: "always" | "on-miss";
-  /** Counters at most once a round (Return Fire, balance pass 2026-11-01). */
+  /** Counters at most once a round (balance pass 2026-11-01). */
   counterOncePerRound?: boolean;
+  /** Return Fire: once between its own turns, shoots the first foe to attack it or any ally, if it
+   *  can reach that foe (Alyssa 2026-11-01: a taunting ally mustn't make it useless). */
+  coverFire?: boolean;
   /** Counters add this share of the user's Defense to their power (Retaliate). */
   counterDefensePct?: number;
   healOnKillPct?: number;
@@ -614,7 +617,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "perfect-evasion": { evasionStacking: 10 },
   "true-aim": { hitBonus: 15 },
   steady: { armorPenPct: 0.2 },
-  "return-fire": { counter: "always", counterOncePerRound: true },
+  "return-fire": { coverFire: true },
   "abyssal-will": { spellDamagePct: 0.2 },
   "dead-eye": { critBonus: 15, weakBonus: 0.25 },
   "old-oath": { statPct: { resistance: 0.3 }, magicTakenPct: -0.2 },
@@ -2355,6 +2358,40 @@ function strike(
   canBeCountered: boolean,
   skillId?: string,
 ) {
+  strikeOnce(actor, target, effect, all, ctx, canBeCountered, skillId);
+  if (canBeCountered && actor.side !== target.side) returnFire(actor, target.side, all, ctx);
+}
+
+/** Return Fire: the first ready shooter on the attacked side answers the attack, once per its turn. */
+function returnFire(
+  attacker: MarinaraFighter,
+  side: MarinaraFighter["side"],
+  all: MarinaraFighter[],
+  ctx: MarinaraFightContext,
+) {
+  if (attacker.hp <= 0) return;
+  const shooter = living(all.filter((u) => u.side === side)).find(
+    (u) =>
+      hooksOf(u).coverFire &&
+      !u.counteredThisRound &&
+      !u.statuses.some((s) => s.status === "sleep" || s.status === "stun") &&
+      marinaraWarderReaches(u, attacker, all),
+  );
+  if (!shooter) return;
+  shooter.counteredThisRound = true;
+  ctx.events.push({ kind: "counter", actorId: shooter.id, targetId: attacker.id, skillId: "return-fire" });
+  strikeOnce(shooter, attacker, marinaraBasicAttack(shooter), all, ctx, false);
+}
+
+function strikeOnce(
+  actor: MarinaraFighter,
+  target: MarinaraFighter,
+  effect: MarinaraEffect,
+  all: MarinaraFighter[],
+  ctx: MarinaraFightContext,
+  canBeCountered: boolean,
+  skillId?: string,
+) {
   const { random } = ctx;
   // Cover: a guard steps in front of the ally it covers.
   const coverer = living(all.filter((u) => u.side === target.side && u.covering === target.id))[0];
@@ -2519,7 +2556,7 @@ const MARINARA_SHARED_FOE_COOLDOWNS: Record<string, string> = {
   "enemy:self-repair": "enemy:harden",
 };
 
-/** Whether a fighter may counter now: Return Fire fires once a round (balance pass 2026-11-01). */
+/** Whether a fighter may counter now: some counter once a round (balance pass 2026-11-01). */
 function mayCounter(unit: MarinaraFighter, hooks: MarinaraPassiveHooks): boolean {
   if (!hooks.counterOncePerRound) return true;
   if (unit.counteredThisRound) return false;

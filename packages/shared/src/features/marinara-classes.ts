@@ -935,7 +935,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "farshot",
       label: "Farshot",
       from: "sharpshooter",
-      role: "Long-range snipers who line up one devastating shot, and return fire on anyone who attacks them.",
+      role: "Long-range snipers who line up one devastating shot, and return fire on anyone who attacks the party.",
       leans: ["skill", "strength"],
       skills: [
         active(
@@ -951,7 +951,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "return-fire",
           "Return Fire",
           24,
-          "Counterattacks the first attack on the user each round, if the attacker is in reach.",
+          "Once between the user's turns, shoots back at the first foe to attack the user or an ally, if that foe is in reach.",
           true,
         ),
       ],

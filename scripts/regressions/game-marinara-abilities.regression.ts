@@ -286,7 +286,7 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(strikeAt("boss") > 0, "a boss isn't");
 }
 
-// Steady (Alyssa 2026-11-01): physical hits ignore 20% of the target's Defense.
+// Steady (Alyssa 2026-11-01): every hit ignores 20% of the target's Defense or Resistance.
 {
   const plain = unit("pl", "party");
   const steady = unit("sd", "party", ["steady"]);
@@ -298,6 +298,25 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   const without = marinaraHitNumbers(plain, foe, basic, all).damage;
   const withPen = marinaraHitNumbers(steady, foe, basic, all).damage;
   assert.ok(withPen > without, `Steady hits through armour (${without} -> ${withPen})`);
+}
+
+// Return Fire (Alyssa 2026-11-01): answers the first attack on any ally, once between its turns.
+{
+  const shooter = unit("rf", "party", ["return-fire"]);
+  shooter.rangedBasic = true;
+  const tank = unit("tk", "party");
+  const foe = unit("f", "enemy");
+  foe.maxHp = foe.hp = 5000;
+  const all = [shooter, tank, foe];
+  const basic = marinaraOption(foe, null, all)!.effect;
+  const hit = { id: null, skill: null, effect: { ...basic, hitBonus: 1000 } } as never;
+  const first = ctx("rf1");
+  performMarinaraOption(foe, hit, [tank], all, first);
+  const shots = (c: MarinaraFightContext) => c.events.filter((e) => e.kind === "counter" && e.actorId === "rf").length;
+  assert.equal(shots(first), 1, "an attack on an ally draws Return Fire");
+  const second = ctx("rf2");
+  performMarinaraOption(foe, hit, [tank], all, second);
+  assert.equal(shots(second), 0, "only once between the shooter's turns");
 }
 
 console.log("game-marinara-abilities: ok");
