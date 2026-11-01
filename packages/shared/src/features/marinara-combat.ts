@@ -503,6 +503,8 @@ export interface MarinaraPassiveHooks {
   partyDamagePct?: number;
   critBonus?: number;
   hitBonus?: number;
+  /** Steady: physical hits ignore this share of the target's Defense (after any skill pierce). */
+  armorPenPct?: number;
   /** Counter a melee attack: always, or only one that missed. */
   counter?: "always" | "on-miss";
   /** Counters at most once a round (Overwatch, balance pass 2026-11-01). */
@@ -614,7 +616,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   elusive: { evadeFirstHitEachRound: true },
   "perfect-evasion": { evasionStacking: 10 },
   "true-aim": { hitBonus: 15 },
-  steady: { hitBonus: 5 },
+  steady: { armorPenPct: 0.2 },
   overwatch: { counter: "always", counterOncePerRound: true },
   "abyssal-will": { spellDamagePct: 0.2 },
   "dead-eye": { critBonus: 15, weakBonus: 0.25 },
@@ -1494,7 +1496,10 @@ export function marinaraHitNumbers(
   const hooks = hooksOf(actor);
   const magic = effect.damage === "magic";
   const attackStat = effect.from ?? effect.scales ?? (magic ? "magic" : "strength");
-  const guard = marinaraEffectiveStat(target, magic ? "resistance" : "defense", all) * (1 - (effect.pierce ?? 0));
+  const guard =
+    marinaraEffectiveStat(target, magic ? "resistance" : "defense", all) *
+    (1 - (effect.pierce ?? 0)) *
+    (magic ? 1 : 1 - (hooks.armorPenPct ?? 0));
   let damage =
     powerStat(actor, attackStat, effect, all) +
     (effect.power ?? MARINARA_TUNING.basicPower) +

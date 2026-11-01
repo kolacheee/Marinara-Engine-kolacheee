@@ -929,7 +929,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["skill"],
       skills: [
         active("pierce", "Pierce", 10, "skill", 4, "Fires at one foe, ignoring half its Defense.", true),
-        passive("steady", "Steady", 15, "Raises accuracy by 5%."),
+        passive("steady", "Steady", 15, "Physical hits ignore 20% of the target's Defense."),
       ],
     },
     {
