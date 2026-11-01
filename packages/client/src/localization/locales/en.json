@@ -2162,6 +2162,7 @@
   "game.combat.marinara.defending": "Defending",
   "game.combat.marinara.enraged": "Enraged",
   "game.combat.marinara.fallen": "has fallen for good.",
+  "game.combat.marinara.fighters": "Fighters ({{count}})",
   "game.combat.marinara.growth": "What the party gained",
   "game.combat.marinara.hidden": "Hidden",
   "game.combat.marinara.hp": "HP {{hp}}/{{max}}",

@@ -2005,8 +2005,8 @@ export function GameCombatUI({
             </div>
           )}
 
-          <div className="relative z-0 grid min-h-0 flex-1 grid-rows-[minmax(0,1fr)_auto] gap-y-[clamp(1.25rem,5svh,2.5rem)] overflow-hidden px-2 py-[clamp(0.5rem,2svh,1rem)]">
-            <div className="min-h-0 overflow-x-auto overflow-y-visible pt-[clamp(2.75rem,9svh,4rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="relative z-0 grid min-h-0 flex-1 grid-rows-[minmax(min-content,1fr)_auto] gap-y-[clamp(1.25rem,5svh,2.5rem)] overflow-y-auto overflow-x-hidden px-2 py-[clamp(0.5rem,2svh,1rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="overflow-x-auto overflow-y-visible pt-[clamp(2.75rem,9svh,4rem)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div className="flex w-max min-w-full flex-nowrap items-start justify-center gap-[clamp(0.25rem,1.5vw,0.5rem)]">
                 {enemies.map((enemy) => (
                   <div key={`stage-${enemy.id}`} className="flex flex-col items-center" data-row={enemy.marinara?.row}>
