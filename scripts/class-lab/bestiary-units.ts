@@ -51,7 +51,7 @@ registerMarinaraEnemySkills(
 
 /** A foe from its bestiary spec, as the Engine builds it. */
 export function enemyFighter(spec: MarinaraBestiaryFoeSpec): MarinaraFighter {
-  return buildMarinaraEnemy({
+  const fighter = buildMarinaraEnemy({
     id: spec.id,
     name: spec.name,
     ...(spec.classId ? { classId: spec.classId } : { archetype: spec.archetype }),
@@ -64,6 +64,10 @@ export function enemyFighter(spec: MarinaraBestiaryFoeSpec): MarinaraFighter {
     ...(spec.statScale ? { statScale: spec.statScale } : {}),
     ...(spec.ranged ? { ranged: true } : {}),
   });
+  // The Engine applies damageScale when it builds the foe; the lab does it with a lasting damage mod.
+  const scale = (spec as { damageScale?: number }).damageScale;
+  if (scale !== undefined && scale !== 1) fighter.mods.push({ stat: "damage", pct: scale - 1, turns: 99999, source: "damage-scale" });
+  return fighter;
 }
 
 /** Fixed-line parties: an early-FF four (fighter, guard, caster, healer), a skirmish four and a no-healer four. */
