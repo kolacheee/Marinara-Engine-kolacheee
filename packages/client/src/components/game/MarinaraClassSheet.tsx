@@ -26,6 +26,7 @@ import {
   type MarinaraEquipment,
   marinaraLearnedSkills,
   marinaraOpenClasses,
+  marinaraSecondaryFits,
   marinaraTrees,
   readMarinaraCardProgression,
   MARINARA_PROMOTION_LEVEL,
@@ -211,6 +212,23 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                 secondary: t(`game.combat.marinara.archetype.${trees.secondary}`),
               })}
         </p>
+        {!progression.fallen && marinaraSecondaryFits(progression).length > 0 && (
+          <div className="mt-1 text-[var(--muted-foreground)]">
+            <p className="font-medium">{t("game.combat.marinara.sheet.secondaryFits")}</p>
+            <ul className="list-disc pl-4">
+              {marinaraSecondaryFits(progression).map((fit) => (
+                <li key={fit.skillId}>
+                  {t("game.combat.marinara.sheet.secondaryFit", {
+                    skill: fit.label,
+                    className: fit.classLabel,
+                    level: fit.learnedAt,
+                    reason: fit.reason,
+                  })}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
       <dl className="grid grid-cols-4 gap-1 tabular-nums">
         {MARINARA_STATS.map((stat) => (

@@ -403,20 +403,34 @@ export function marinaraAiCandidates(
         break;
       case "taunt": {
         if (!threatened || friends.length < 2) break;
+        // Drawing a foe onto the user is worth less from the back row, where the user is the soft one
+        // (balance pass 2026-11-01: a Farshot carrying Challenge spent over half its turns on it).
+        const sturdy = actor.row === "front" ? 1 : 0.3;
         for (const target of pool) {
-          if (target.tauntTurns > 0 && target.tauntedBy === actor.id) continue;
+          if (target.tauntTurns > 0) continue;
           const menace = Math.max(eff(target, "strength"), eff(target, "magic")) / Math.max(1, friendHp);
-          add(option, [target], { targetId: target.id, protection: 0.3 + menace, risk: 0.15 });
+          add(option, [target], { targetId: target.id, protection: (0.3 + menace) * sturdy, risk: 0.15 });
         }
         break;
       }
       case "ward": {
         if (!threatened || friends.length < 2 || actor.wardTurns > 0) break;
+        // Worth the strikes back it buys (Alyssa 2026-11-01, item 7: a Farshot warding the tank): one per
+        // foe attack the ward is likely to draw, so a ward on whoever draws the hits (a provoking or
+        // covering tank, the front row) beats one on someone foes leave alone. A guard against nothing.
+        const living = foes.filter((foe) => foe.hp > 0 && !foe.dummy);
+        const front = friends.filter((f) => f.hp > 0 && f.row === "front").length || friends.length;
+        const strikeBack = Math.max(0, ...living.map((foe) => hit(actor, foe, marinaraBasicAttack(actor))));
         for (const target of pool) {
           if (target.id === actor.id) continue;
+          const draws =
+            target.provoking > 0 || Boolean(target.covering)
+              ? living.length
+              : living.filter((foe) => foe.tauntedBy === target.id).length +
+                (target.row === "front" ? living.length / front : living.length * 0.15);
           add(option, [target], {
-            protection: target.id === threatenedFriend?.id ? 0.6 : 0.3,
-            damage: (bestDamage(actor, all, tactical) * 0.5) / foeHp,
+            protection: target.id === threatenedFriend?.id ? 0.2 : 0.1,
+            damage: (strikeBack * Math.min(3, draws)) / foeHp,
           });
         }
         break;

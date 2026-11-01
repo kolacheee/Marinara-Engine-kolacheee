@@ -2222,6 +2222,8 @@
   "game.combat.marinara.sheet.row": "Row",
   "game.combat.marinara.sheet.rowClassDefault": "(class default)",
   "game.combat.marinara.sheet.rowHelp": "Melee hits on the back row deal half damage, both ways. When nobody stands in a side's front row, its back row is the front.",
+  "game.combat.marinara.sheet.secondaryFit": "{{skill}} ({{className}}, class level {{level}}): {{reason}}",
+  "game.combat.marinara.sheet.secondaryFits": "Worth carrying from your secondary tree",
   "game.combat.marinara.sheet.skillLine": "({{tags}}) {{summary}}",
   "game.combat.marinara.sheet.slot.accessory": "Accessory {{n}}",
   "game.combat.marinara.sheet.slot.armor": "Armour",
