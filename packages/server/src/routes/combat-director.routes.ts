@@ -1689,6 +1689,26 @@ export async function combatDirectorRoutes(
           state.stage = rulesetDirectorStage(state);
           session = { definition, packageId: resolved.packageId };
         }
+        // A Classic Marinara fight the Engine's side finished before the player's first turn still pays out.
+        if (state.marinara && state.outcome && !state.marinara.growth) {
+          const fought = state.marinara;
+          await chats.patchMetadata(
+            input.chatId,
+            (current) => {
+              const end = marinaraFightEnd({
+                state: fought,
+                outcome: state.outcome!,
+                cards: Array.isArray(current.gameCharacterCards) ? current.gameCharacterCards : [],
+                seed: state.seed,
+                permadeath: (current.gameSetupConfig as { permadeath?: boolean } | undefined)?.permadeath === true,
+              });
+              fought.growth = end.growth;
+              return end.cards ? { gameCharacterCards: end.cards } : {};
+            },
+            { touchUpdatedAt: false },
+          );
+          combatDirectorView(state);
+        }
         const rowId = await store.create({
           chatId: input.chatId,
           messageId: input.anchor,

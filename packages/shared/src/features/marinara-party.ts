@@ -30,7 +30,12 @@ import {
   type MarinaraFighter,
   type MarinaraFighterGear,
 } from "./marinara-combat.js";
-import { marinaraGearBonus, type MarinaraEquipment } from "./marinara-items.js";
+import {
+  marinaraGearBonus,
+  marinaraStandardEquipment,
+  marinaraTierForLevel,
+  type MarinaraEquipment,
+} from "./marinara-items.js";
 import {
   marinaraEnemySpec,
   marinaraFitEncounter,
@@ -303,7 +308,12 @@ export function marinaraFighterGear(
 
 /** A party member's fighter for a fight. */
 export function marinaraPartyFighter(id: string, name: string, progression: MarinaraCardProgression): MarinaraFighter {
-  const gear = marinaraFighterGear(progression.equipment, progression.stats.strength);
+  // Until a party member has gear of their own, they fight with their class's standard kit for their
+  // level's tier, as the class and bestiary labs measured them (decided 2026-11-01).
+  const archetype = marinaraClass(progression.activeClass)?.archetype ?? progression.primary;
+  const equipment =
+    progression.equipment ?? marinaraStandardEquipment(archetype, marinaraTierForLevel(progression.level));
+  const gear = marinaraFighterGear(equipment, progression.stats.strength);
   return buildMarinaraPartyFighter({
     id,
     name,
