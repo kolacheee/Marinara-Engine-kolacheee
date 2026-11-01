@@ -17,6 +17,7 @@ import {
 import {
   awardMarinaraXp,
   createMarinaraProgression,
+  marinaraClass,
   marinaraRandom,
   type MarinaraArchetype,
   type MarinaraPartyTemperament,
@@ -144,6 +145,54 @@ assert.equal(again.outcome, s.outcome, "the same seed plays the same fight");
   assert.ok(!lines.some((text) => /nothing left/.test(text)), "nobody steals from a foe already robbed");
   const actions = t.log.filter((line) => line.kind === "marinara:hit").length;
   assert.ok(actions > 0, "the board fight lands hits");
+}
+
+// Command on a board: the commanded ally takes its extra action next and, if it hadn't had its own
+// turn this round, still gets it (by initiative too).
+for (const turnOrder of ["side", "initiative"] as const) {
+  const herald = hero("hal", "herald", "coordinated", 12);
+  herald.skills.push(marinaraClass("field-captain")!.skills.find((skill) => skill.id === "command")!);
+  herald.mp = herald.maxMp = 99;
+  herald.stamina = herald.maxStamina = 99;
+  const party = [herald, hero("ana", "blade", "reckless", 12)];
+  const foes = [buildMarinaraEnemy({ id: "foe0", name: "Foe 0", archetype: "guard", level: 12, tier: "elite" })];
+  const t = createCombatDirector({
+    id: `cmd-${turnOrder}`,
+    anchor: "anchor",
+    party: party.map((f) => marinaraCombatant(f)),
+    enemies: foes.map((f) => marinaraCombatant(f)),
+    style: "tactical",
+    difficulty: "normal",
+    seed: 3,
+    battlefield: { size: "small" } as never,
+    ...(turnOrder === "initiative" ? { turnOrder: "initiative" as never } : {}),
+    marinara: [...party, ...foes],
+  });
+  let commanded = false;
+  let anaActions = 0;
+  for (let step = 0; step < 400 && !t.outcome && t.round <= 1; step++) {
+    if (t.stage === "action" && t.actorId) {
+      const unit = t.tactical!.units.find((u) => u.id === t.actorId) as TacticalUnit;
+      if (unit.id === "ana") anaActions++;
+      if (unit.id === "hal" && !commanded) {
+        commanded = true;
+        commandCombatDirector(t, {
+          type: "tactical",
+          action: { type: "skill", unitId: "hal", skillName: "Command", targetId: "ana" } as never,
+        });
+        continue;
+      }
+      commandCombatDirector(t, { type: "tactical", action: { type: "defend", unitId: unit.id } as never });
+    } else if (t.window) commandCombatDirector(t, { type: "fallback" }, "fallback");
+    else if (t.stage === "select") {
+      const next =
+        t.tactical!.units.find((u) => u.id === "hal" && !u.hasActed) ??
+        t.tactical!.units.find((u) => u.side === "party" && u.hp > 0 && !u.hasActed);
+      commandCombatDirector(t, next ? { type: "begin", unitId: next.id } : { type: "continue" });
+    } else commandCombatDirector(t, { type: "continue" });
+  }
+  assert.ok(commanded, `${turnOrder}: the herald commanded`);
+  assert.equal(anaActions, 2, `${turnOrder}: the commanded ally acts twice in the round (extra + own)`);
 }
 
 let wins = 0;
