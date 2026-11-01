@@ -1,6 +1,6 @@
 /**
  * Classic Marinara taming (Tracker line, Alyssa 2026-11-01): Tame takes a wild beast or vermin below
- * 30% HP (never an elite, boss or treasure foe) out of the fight; it pays XP, drops nothing and becomes
+ * 30% HP (never a boss or treasure foe; an elite at worse odds) out of the fight; it pays XP, drops nothing and becomes
  * its keeper's companion, kept on the card. A companion raises its keeper's best-matching stat by 10%
  * while a Tracker-tree class is active; Bond makes that 20% and gives the rest of the party half. Sic
  * sends the companion in as a bonus action every other turn.
@@ -19,12 +19,21 @@ import { MARINARA_CLASSES, createMarinaraProgression } from "../../packages/shar
 import {
   buildMarinaraEnemy,
   marinaraOption,
+  marinaraCompanionBonus,
   marinaraTameChance,
   marinaraTargetsFor,
   performMarinaraOption,
   type MarinaraFighter,
 } from "../../packages/shared/src/features/marinara-combat.js";
-import { marinaraApplyCompanions, marinaraFoeFighters } from "../../packages/shared/src/features/marinara-party.js";
+import {
+  MARINARA_COMPANION_STABLE,
+  marinaraAddCompanion,
+  marinaraApplyCompanions,
+  marinaraFoeFighters,
+  marinaraReleaseCompanion,
+  marinaraSetActiveCompanion,
+  type MarinaraCardProgression,
+} from "../../packages/shared/src/features/marinara-party.js";
 
 const skill = (id: string) => {
   for (const def of MARINARA_CLASSES) {
@@ -57,7 +66,7 @@ const beasts = (tier: "standard" | "elite" = "standard") =>
     setting: "high_fantasy",
   }).fighters;
 
-// Who can be tamed: a hound below 30% HP, not above it, never an elite.
+// Who can be tamed: a hound below 30% HP, not above it; an elite at 20 points lower odds.
 {
   const [dog] = beasts();
   assert.ok(dog?.tameable, "a hound can be tamed");
@@ -77,7 +86,16 @@ const beasts = (tier: "standard" | "elite" = "standard") =>
   dog!.level = 20;
   assert.ok(marinaraTameChance(tracker, dog!, all) < chance, "a beast above the user is harder");
   const [elite] = beasts("elite");
-  assert.equal(elite?.tameable, undefined, "an elite can't be tamed");
+  assert.ok(elite?.tameable, "an elite can be tamed (23:36)");
+  dog!.level = 12;
+  const standardOdds = marinaraTameChance(tracker, dog!, all);
+  dog!.tier = "elite";
+  assert.equal(
+    marinaraTameChance(tracker, dog!, all),
+    Math.max(10, standardOdds - 20),
+    "an elite's odds are 20 points lower",
+  );
+  dog!.tier = "standard";
   const goblin = buildMarinaraEnemy({ id: "g", name: "Goblin", level: 12, tier: "standard" });
   goblin.hp = 1;
   assert.deepEqual(marinaraTargetsFor(tracker, effect, [tracker, goblin]), [], "only beasts");
@@ -117,8 +135,9 @@ const beasts = (tier: "standard" | "elite" = "standard") =>
     seed: 1,
     permadeath: false,
   });
-  const kept = end.cards?.[0]?.marinara as { companion?: { name: string; stat: string }; xp: number };
-  assert.equal(kept.companion?.name, dog!.tameable!.name, "the beast is kept on the card");
+  const kept = end.cards?.[0]?.marinara as MarinaraCardProgression;
+  assert.equal(kept.companions?.[0]?.name, dog!.tameable!.name, "the beast is kept on the card");
+  assert.equal(kept.activeCompanion, kept.companions?.[0]?.id, "the first one tamed is active");
   assert.ok(kept.xp > 0, "and it paid XP");
   assert.equal(end.growth[0]?.tamed, dog!.tameable!.name, "the fight's end says so");
 }
@@ -126,30 +145,33 @@ const beasts = (tier: "standard" | "elite" = "standard") =>
 // The companion's bonus: +10% to its stat with a Tracker-tree class active, Bond 20% and half to all.
 {
   const base = createMarinaraProgression({ seed: "c", primary: "marksman", temperament: "patient" });
-  const companion = { name: "Moor Hound", stat: "speed" as const };
+  const one = { id: "c1", name: "Moor Hound", stat: "speed" as const };
+  const stabled = { companions: [one], activeCompanion: "c1" };
+  const companion = { name: one.name, stat: one.stat };
   const make = (id: string) => buildMarinaraEnemy({ id, name: id, level: 10, tier: "standard", archetype: "scout" });
   const keeper = make("k"),
     friend = make("f");
   const speed = keeper.stats.speed;
   marinaraApplyCompanions([
-    { fighter: keeper, progression: { ...base, activeClass: "tracker", companion } },
+    { fighter: keeper, progression: { ...base, activeClass: "tracker", ...stabled } },
     { fighter: friend, progression: base },
   ]);
-  assert.ok(Math.abs(keeper.stats.speed - speed * 1.1) < 1e-9, "+10% Speed to the keeper");
+  const bonus = marinaraCompanionBonus(one);
+  assert.ok(Math.abs(keeper.stats.speed - speed * (1 + bonus)) < 1e-9, "the bonus to the keeper's Speed");
   assert.equal(friend.stats.speed, speed, "nobody else without Bond");
   assert.deepEqual(keeper.companion, companion, "the keeper has its companion for Sic");
   const off = make("o");
-  marinaraApplyCompanions([{ fighter: off, progression: { ...base, activeClass: "marksman", companion } }]);
+  marinaraApplyCompanions([{ fighter: off, progression: { ...base, activeClass: "marksman", ...stabled } }]);
   assert.equal(off.stats.speed, speed, "no bonus outside the Tracker tree");
   const bonded = make("b"),
     ally = make("a");
   bonded.skills = [...bonded.skills, skill("bond")];
   marinaraApplyCompanions([
-    { fighter: bonded, progression: { ...base, activeClass: "huntsmaster", companion } },
+    { fighter: bonded, progression: { ...base, activeClass: "huntsmaster", ...stabled } },
     { fighter: ally, progression: base },
   ]);
-  assert.ok(Math.abs(bonded.stats.speed - speed * 1.2) < 1e-9, "Bond: +20% to the keeper");
-  assert.ok(Math.abs(ally.stats.speed - speed * 1.1) < 1e-9, "and half of it to the party");
+  assert.ok(Math.abs(bonded.stats.speed - speed * (1 + bonus * 1.5)) < 1e-9, "Bond: half as much again");
+  assert.ok(Math.abs(ally.stats.speed - speed * (1 + bonus * 0.75)) < 1e-9, "and half of that to the party");
 }
 
 // Sic: needs a companion, a bonus action, every other turn.
@@ -166,6 +188,44 @@ const beasts = (tier: "standard" | "elite" = "standard") =>
   assert.ok(foe.hp < hp, "the companion hits");
   assert.equal(master.bonusTurns, 1, "a bonus action");
   assert.equal(master.cooldowns.sic, 2, "then waits a turn");
+}
+
+// The stable (Alyssa 23:31): up to 8, one active, new ones join; a full stable waits on a release.
+{
+  let p: MarinaraCardProgression = createMarinaraProgression({
+    seed: "s",
+    primary: "marksman",
+    temperament: "patient",
+  });
+  const beast = (n: number) => ({ id: `b${n}`, name: `Beast ${n}`, stat: "hp" as const });
+  for (let n = 1; n <= MARINARA_COMPANION_STABLE; n++) p = marinaraAddCompanion(p, beast(n));
+  assert.equal(p.companions?.length, 8, "eight kept");
+  assert.equal(p.activeCompanion, "b1", "the first stays active");
+  p = marinaraAddCompanion(p, beast(9));
+  assert.equal(p.companions?.length, 8, "a ninth doesn't fit");
+  assert.equal(p.pendingCompanion?.id, "b9", "it waits on a release");
+  const freed = marinaraReleaseCompanion(p, "b9");
+  assert.equal(freed.pendingCompanion, undefined, "let go, it's gone");
+  assert.equal(freed.companions?.length, 8);
+  const swapped = marinaraReleaseCompanion(p, "b1");
+  assert.ok(
+    swapped.companions?.some((one) => one.id === "b9"),
+    "releasing an old one keeps the new",
+  );
+  assert.notEqual(swapped.activeCompanion, "b1", "the released one is no longer active");
+  assert.equal(marinaraSetActiveCompanion(swapped, "b5").activeCompanion, "b5", "any stabled one can be made active");
+  assert.throws(() => marinaraSetActiveCompanion(swapped, "b1"), /No such companion/);
+}
+
+// The bonus scales with the level and rank it was tamed at (Alyssa 23:36).
+{
+  const pct = (level: number, tier: "minion" | "standard" | "elite") =>
+    Math.round(marinaraCompanionBonus({ level, tier }) * 1000) / 10;
+  assert.equal(pct(5, "standard"), 6);
+  assert.equal(pct(15, "standard"), 10);
+  assert.equal(pct(30, "standard"), 16);
+  assert.equal(pct(30, "elite"), 24);
+  assert.equal(pct(10, "minion"), 4);
 }
 
 console.log("game-marinara-tame: ok");

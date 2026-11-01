@@ -190,6 +190,7 @@ export function MarinaraFightPanel({ party, enemies, actorId, growth, loot, over
                     ),
                     one.promotionReady ? t("game.combat.marinara.promotionReady") : null,
                     one.tamed ? t("game.combat.marinara.tamed", { name: one.tamed }) : null,
+                    one.stableFull ? t("game.combat.marinara.stableFull") : null,
                   ]
                     .filter(Boolean)
                     .join(" · ")}

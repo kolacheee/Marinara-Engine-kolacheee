@@ -985,7 +985,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           12,
           "skill",
           4,
-          "Tames one wild beast below 30% HP, taking it out of the fight. Success rises with Skill and Luck. The beast becomes the user's companion and raises the user's stat it is strongest in by 10%. One companion at a time.",
+          "Tames one wild beast below 30% HP, taking it out of the fight. Success rises with Skill and Luck. Tamed beasts join the user's companions, up to 8. The active companion increases the user's stat it is strongest in, by more for higher-level and elite beasts; companions are swapped outside battle.",
           true,
         ),
         passive(
@@ -1010,10 +1010,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           22,
           "strength",
           4,
-          "Bonus action. The user's companion strikes one foe. Usable every other turn.",
+          "Bonus action. The user's active companion strikes one foe. Usable every other turn.",
         ),
         passive("pack-tactics", "Pack Tactics", 24, "The party deals 40% more damage to marked foes.", true),
-        passive("bond", "Bond", 26, "The companion's bonus rises to 20%, and the rest of the party gains half of it."),
+        passive(
+          "bond",
+          "Bond",
+          26,
+          "The active companion's bonus increases by half, and the rest of the party gains half of it.",
+        ),
       ],
     },
     {

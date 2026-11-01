@@ -21,6 +21,7 @@ import {
 } from "./marinara-classes.js";
 import {
   MARINARA_COMPANION,
+  marinaraCompanionBonus,
   MARINARA_ENEMY_TIERS,
   MARINARA_ENEMY_TIERS_LIST,
   buildMarinaraEnemy,
@@ -57,17 +58,29 @@ export interface MarinaraCardProgression extends MarinaraProgression {
   row?: "front" | "back";
   /** Fell for good in a game with permadeath on. */
   fallen?: boolean;
-  /** The beast they tamed (Tracker, Alyssa 2026-11-01): one at a time, kept between fights. */
-  companion?: MarinaraCompanion;
+  /** The beasts they tamed (Tracker, Alyssa 2026-11-01 23:31): a stable of up to
+   *  MARINARA_COMPANION_STABLE, kept between fights. */
+  companions?: MarinaraCompanion[];
+  /** The one active companion's id: only it gives its bonus and answers Sic. Switched outside fights. */
+  activeCompanion?: string;
+  /** A beast tamed with the stable full, waiting on the player to release one (it or an old one).
+   *  Never answered, it goes free when the next one is tamed; it gives nothing meanwhile. */
+  pendingCompanion?: MarinaraCompanion;
 }
+
+/** How many tamed beasts a character keeps: one for each stat, if they like. */
+export const MARINARA_COMPANION_STABLE = 8;
 
 /** A tamed beast: no fighter of its own, a stat boost to its keeper (and Sic's strike). */
 export interface MarinaraCompanion {
+  id: string;
   name: string;
   /** The stat it is strongest in, which it raises. */
   stat: MarinaraStat;
   familyId?: string;
+  /** The level and rank it was tamed at: it doesn't grow, so a stronger catch is the upgrade. */
   level?: number;
+  tier?: MarinaraEnemyTier;
 }
 
 /** Words that point at each archetype, strongest first within each. */
@@ -326,7 +339,7 @@ export function marinaraFighterGear(
   };
 }
 
-/** What Tame can take of a bestiary foe: wild beasts and vermin below elite, never treasure. */
+/** What Tame can take of a bestiary foe: wild beasts and vermin, never a boss or treasure. */
 function marinaraTameableFor(
   familyId: string,
   setting: MarinaraBestiarySetting,
@@ -335,15 +348,52 @@ function marinaraTameableFor(
 ): Pick<MarinaraFighter, "tameable"> {
   const family = marinaraEnemyFamily(familyId);
   if (!family || (family.kind !== "beast" && family.kind !== "vermin") || family.role === "treasure") return {};
-  if (tier === "elite" || tier === "boss") return {};
+  if (tier === "boss") return {};
   const name = marinaraEnemyName(family, setting, level);
   if (!name) return {};
-  // Its best stat is the one its family stands out in (HP aside).
+  // Its best stat is the one its family stands out in (HP counts: Alyssa 23:31, one for every stat).
   const stat =
-    (Object.entries(family.statScale ?? {}) as Array<[MarinaraStat, number]>)
-      .filter(([one]) => one !== "hp")
-      .sort((a, b) => b[1] - a[1])[0]?.[0] ?? "strength";
+    (Object.entries(family.statScale ?? {}) as Array<[MarinaraStat, number]>).sort((a, b) => b[1] - a[1])[0]?.[0] ??
+    "strength";
   return { tameable: { name, stat, familyId } };
+}
+
+/** The active companion, if they have one. */
+export function marinaraActiveCompanion(progression: MarinaraCardProgression): MarinaraCompanion | undefined {
+  return progression.companions?.find((one) => one.id === progression.activeCompanion);
+}
+
+/** A beast tamed: into the stable (active when none is), or waiting on a release when it is full. */
+export function marinaraAddCompanion(
+  progression: MarinaraCardProgression,
+  companion: MarinaraCompanion,
+): MarinaraCardProgression {
+  const stable = progression.companions ?? [];
+  if (stable.length >= MARINARA_COMPANION_STABLE) return { ...progression, pendingCompanion: companion };
+  const active = marinaraActiveCompanion(progression) ? progression.activeCompanion : companion.id;
+  return { ...progression, companions: [...stable, companion], ...(active ? { activeCompanion: active } : {}) };
+}
+
+/** Lets one go: a stabled beast (the one waiting takes its place) or the one waiting itself. */
+export function marinaraReleaseCompanion(progression: MarinaraCardProgression, id: string): MarinaraCardProgression {
+  const { pendingCompanion: pending, ...rest } = progression;
+  if (pending?.id === id) return rest;
+  const stable = progression.companions ?? [];
+  if (!stable.some((one) => one.id === id)) throw new Error("No such companion.");
+  const companions = [...stable.filter((one) => one.id !== id), ...(pending ? [pending] : [])];
+  const { activeCompanion: _a, companions: _c, ...base } = rest;
+  const active = rest.activeCompanion !== id ? rest.activeCompanion : companions[0]?.id;
+  return {
+    ...base,
+    ...(companions.length ? { companions } : {}),
+    ...(active ? { activeCompanion: active } : {}),
+  };
+}
+
+/** Makes a stabled beast the active companion (outside fights only; the route checks that). */
+export function marinaraSetActiveCompanion(progression: MarinaraCardProgression, id: string): MarinaraCardProgression {
+  if (!progression.companions?.some((one) => one.id === id)) throw new Error("No such companion.");
+  return { ...progression, activeCompanion: id };
 }
 
 /** The classes a companion's bonus counts in: the Tracker's tree. */
@@ -366,12 +416,12 @@ export function marinaraApplyCompanions(
     }
   };
   for (const { fighter, progression } of party) {
-    const companion = progression.companion;
+    const companion = marinaraActiveCompanion(progression);
     if (!companion) continue;
     fighter.companion = { name: companion.name, stat: companion.stat };
     if (!MARINARA_COMPANION_CLASSES.includes(progression.activeClass)) continue;
     const bond = fighter.skills.some((skill) => skill.id === "bond");
-    const pct = bond ? MARINARA_COMPANION.bond : MARINARA_COMPANION.pct;
+    const pct = marinaraCompanionBonus(companion) * (bond ? MARINARA_COMPANION.bond : 1);
     raise(fighter, companion.stat, pct);
     if (bond)
       for (const other of party)
