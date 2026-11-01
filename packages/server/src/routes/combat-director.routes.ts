@@ -48,6 +48,10 @@ import {
   marinaraLearnedSkills,
   marinaraBestiarySetting,
   readMarinaraCardProgression,
+  marinaraEquipmentForClass,
+  marinaraEquipRefusal,
+  marinaraGameItemPlace,
+  marinaraOwnedGear,
   setMarinaraCarried,
   setMarinaraClass,
   combatTacticsSchema,
@@ -1773,6 +1777,15 @@ export async function combatDirectorRoutes(
         name: z.string().min(1).max(200),
         classId: z.string().max(80).optional(),
         carried: z.array(z.string().max(80)).max(8).optional(),
+        /** What they wear (marinara-items.ts ids), from what the party's bags hold. */
+        equipment: z
+          .object({
+            weapon: z.string().max(80).optional(),
+            armor: z.string().max(80).optional(),
+            accessories: z.array(z.string().max(80)).max(4).optional(),
+          })
+          .strict()
+          .optional(),
       })
       .safeParse(req.body);
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.issues[0]?.message });
@@ -1807,6 +1820,29 @@ export async function combatDirectorRoutes(
             marinaraLearnedSkills(next!).some((skill) => skill.id === id && skill.classId !== next!.activeClass),
           );
           next = { ...next, ...setMarinaraCarried(next, input.carried ? input.carried : carried) };
+          // Gear the new class can't use comes off; gear asked for must fit the class and be in a bag,
+          // one for everyone wearing it.
+          let equipment = marinaraEquipmentForClass(next.activeClass, next.equipment);
+          if (input.equipment) {
+            const why = marinaraEquipRefusal({
+              classId: next.activeClass,
+              equipment: input.equipment,
+              owned: marinaraOwnedGear(
+                normalizeGameInventoryStacks(current.gameInventory),
+                marinaraGameItemPlace(current),
+              ),
+              others: cards.flatMap((card, i) =>
+                i === index ? [] : [readMarinaraCardProgression(card.marinara)?.equipment],
+              ),
+            });
+            if (why) {
+              refusal = why;
+              return {};
+            }
+            equipment = input.equipment;
+          }
+          const { equipment: _was, ...rest } = next;
+          next = { ...rest, ...(equipment && Object.keys(equipment).length ? { equipment } : {}) };
         } catch (err) {
           refusal = err instanceof Error ? err.message : "That class change is not allowed.";
           return {};

@@ -288,3 +288,67 @@ console.log("game-marinara-items regression passed");
   assert.ok(plain.lines.some((line) => line.name === "Coins"));
 }
 console.log("game-marinara-items (in a game) passed");
+
+// ── Equipping from the bag ──
+{
+  const { marinaraOwnedGear, marinaraEquipRefusal, marinaraEquipmentForClass } =
+    await import("../../packages/shared/src/index.js");
+  const fantasy = { setting: "fantasy" as const };
+  // Every gear name is unique in every place, so a bag stack reads back as one item.
+  for (const place of [{ setting: null }, ...MARINARA_ITEM_SETTINGS.map((setting) => ({ setting }))]) {
+    const seen = new Map<string, string>();
+    for (const id of ids) {
+      if (marinaraItem(id)!.kind === "consumable" || !marinaraItemInPlace(id, place)) continue;
+      const name = marinaraItemName(id, place).toLowerCase();
+      assert.ok(!seen.has(name), `${id} and ${seen.get(name)} share "${name}" in ${place.setting}`);
+      seen.set(name, id);
+    }
+  }
+  const owned = marinaraOwnedGear(
+    [
+      { name: "Bluesteel Broadsword", quantity: 1 },
+      { name: "bluesteel broadsword", quantity: 1 },
+      { name: "Hammered Mail Hauberk", quantity: 1 },
+      { name: "Ox Charm", quantity: 1 },
+      { name: "Hearthroot Tonic", quantity: 3 },
+      { name: "Rope", quantity: 1 },
+    ],
+    fantasy,
+  );
+  assert.deepEqual(
+    owned.map((gear) => [gear.id, gear.count, gear.slot]),
+    [
+      ["longblade-t3", 2, "weapon"],
+      ["mail-t2", 1, "armor"],
+      ["charm-strength-1", 1, "accessory"],
+    ],
+  );
+  const ok = { weapon: "longblade-t3", armor: "mail-t2", accessories: ["charm-strength-1"] };
+  assert.equal(marinaraEquipRefusal({ classId: "blade", equipment: ok, owned, others: [] }), null);
+  assert.match(marinaraEquipRefusal({ classId: "channeler", equipment: ok, owned, others: [] })!, /can't be used/);
+  assert.match(
+    marinaraEquipRefusal({ classId: "blade", equipment: { armor: "mail-t2" }, owned, others: [{ armor: "mail-t2" }] })!,
+    /only 1/,
+  );
+  assert.equal(
+    marinaraEquipRefusal({
+      classId: "blade",
+      equipment: { weapon: "longblade-t3" },
+      owned,
+      others: [{ weapon: "longblade-t3" }],
+    }),
+    null,
+    "two swords in the bag, two wearers",
+  );
+  assert.match(
+    marinaraEquipRefusal({ classId: "blade", equipment: { weapon: "bow-t1" }, owned, others: [] })!,
+    /can't/,
+  );
+  assert.match(
+    marinaraEquipRefusal({ classId: "herald", equipment: { weapon: "spear-t4" }, owned, others: [] })!,
+    /doesn't have/,
+  );
+  // A Blade turned Channeler takes the sword and mail off and keeps the charm.
+  assert.deepEqual(marinaraEquipmentForClass("channeler", ok), { accessories: ["charm-strength-1"] });
+}
+console.log("game-marinara-items (equipping) passed");
