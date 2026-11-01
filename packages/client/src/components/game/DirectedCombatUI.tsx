@@ -332,6 +332,7 @@ export function DirectedCombatUI(props: Props) {
                   actorId: s.actorId,
                   canAct,
                   round: s.round,
+                  paused: !!s.mercy,
                   outcome: s.outcome,
                   onAction: (action) => send(action.type === "flee" ? { type: "flee" } : { type: "classic", action }),
                   onControl: (unitId, controller) => send({ type: "control", unitId, controller }),
@@ -410,10 +411,39 @@ export function DirectedCombatUI(props: Props) {
                 actorId={s.actorId}
                 growth={s.summary?.marinara}
                 loot={s.summary?.loot}
-                over={!!s.outcome}
+                over={!!s.outcome || !!s.mercy}
               />
             )}
-            {s.stage === "select" && s.style === "classic" && (
+            {/* Only foes who yielded are left: the party spares them or finishes them (Alyssa 2026-11-01);
+                both pay loot and XP. */}
+            {s.mercy && !s.outcome && (
+              <div className="mt-2" role="group" aria-live="polite" data-testid="combat-mercy">
+                <p className="font-medium">
+                  {t("game.combat.director.mercy.ask", {
+                    names: s.mercy.foeIds.map((id) => name(id)).join(", "),
+                    count: s.mercy.foeIds.length,
+                  })}
+                </p>
+                <p className="text-xs text-[var(--muted-foreground)]">{t("game.combat.director.mercy.help")}</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <button
+                    disabled={busy}
+                    className="min-h-11 rounded-md bg-[var(--primary)] px-4 text-[var(--primary-foreground)] disabled:opacity-50"
+                    onClick={() => send({ type: "mercy", choice: "spare" })}
+                  >
+                    {t("game.combat.director.mercy.spare")}
+                  </button>
+                  <button
+                    disabled={busy}
+                    className="min-h-11 rounded-md border border-[var(--border)] bg-[var(--secondary)] px-4 disabled:opacity-50"
+                    onClick={() => send({ type: "mercy", choice: "finish" })}
+                  >
+                    {t("game.combat.director.mercy.finish")}
+                  </button>
+                </div>
+              </div>
+            )}
+            {s.stage === "select" && s.style === "classic" && !s.mercy && (
               <button
                 disabled={busy}
                 className="mt-2 min-h-11 rounded-md bg-[var(--secondary)] px-3"
@@ -422,7 +452,7 @@ export function DirectedCombatUI(props: Props) {
                 {t("game.combat.director.waitRound")}
               </button>
             )}
-            {s.stage === "select" && s.style === "tactical" && !busy && (
+            {s.stage === "select" && s.style === "tactical" && !busy && !s.mercy && (
               <div className="mt-2 flex flex-wrap gap-2">
                 <p className="w-full text-xs text-[var(--muted-foreground)]">{t("game.combat.director.beginHint")}</p>
                 {s.party
