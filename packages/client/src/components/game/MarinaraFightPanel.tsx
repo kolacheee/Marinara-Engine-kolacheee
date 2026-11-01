@@ -46,6 +46,7 @@ export function MarinaraFightPanel({ party, enemies, actorId, growth, loot, over
               m.covering && t("game.combat.marinara.covering"),
               m.hidden && t("game.combat.marinara.hidden"),
               m.enraged && t("game.combat.marinara.enraged"),
+              m.yielded && t("game.combat.marinara.yielded"),
               m.coating && t("game.combat.marinara.coated", { type: m.coating }),
               m.shield > 0 && t("game.combat.marinara.shield", { amount: m.shield }),
             ].filter(Boolean);

@@ -2260,6 +2260,7 @@
   "game.combat.marinara.tier.minion": "Minion",
   "game.combat.marinara.tier.standard": "Standard",
   "game.combat.marinara.xp": "+{{amount}} XP",
+  "game.combat.marinara.yielded": "Yielded",
   "game.combat.partyFallen": "The party has fallen. Go back to a checkpoint, or play on and let the story say what happens.",
   "game.combat.partyFallenCheckpoint": "Go back to a checkpoint",
   "game.combat.partyFallenPlayOn": "Play on",
