@@ -496,6 +496,8 @@ interface GameCombatUIProps {
   directed?: {
     actorId?: string;
     canAct: boolean;
+    /** The fight waits on a choice shown beside it (sparing yielded foes): no "resolving" spinner. */
+    paused?: boolean;
     round: number;
     outcome?: "victory" | "defeat" | "flee";
     onAction: (action: CombatPlayerAction) => void;
@@ -2040,7 +2042,7 @@ export function GameCombatUI({
               <ActionNarration action={roundResult.actions[animatingActionIndex]!} allCombatants={allCombatants} />
             </div>
           )}
-          {phase === "resolving" && (
+          {phase === "resolving" && !directed?.paused && (
             <div
               data-game-section="combat-banner"
               className={cn(
@@ -3001,7 +3003,7 @@ export function GameCombatUI({
         {/* Resolving / animating state */}
         {(phase === "resolving" || phase === "animating") && (
           <div className="flex flex-col gap-2 px-4 py-3">
-            {phase === "resolving" && (
+            {phase === "resolving" && !directed?.paused && (
               <div className="flex items-center gap-2 text-sm text-white/60">
                 <div className="h-3 w-3 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                 {selectedAction === "custom"
