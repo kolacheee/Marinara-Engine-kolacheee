@@ -275,13 +275,13 @@ export const MARINARA_WEAPON_FAMILIES: readonly MarinaraWeaponFamily[] = [
     crit: 0,
     weight: 9,
     names: names(
-      "Greatblade",
-      "War Axe",
-      "Plasma Cleaver",
-      "Fire Axe",
-      "Ring Broadsword",
-      "Butcher's Cleaver",
-      "Sawblade Cleaver",
+      "Greatsword",
+      "Claymore",
+      "Vibro-claymore",
+      "Replica Claymore",
+      "Zhanmadao",
+      "Highland Claymore",
+      "Scrap Greatsword",
     ),
     summary: "Heavy two-hander: hits hardest, misses more, slows a weak arm.",
   }),
@@ -1428,7 +1428,8 @@ export const MARINARA_CONSUMABLES: readonly MarinaraConsumableDef[] = [
   ...MARINARA_WEAPON_COATINGS.map((coating) =>
     consumable({
       id: coating.id,
-      tier: coating.rider === "light" || coating.rider === "dark" ? 2 : 1,
+      // Light and dark from T1 too: a party of fighters meeting its first ghost needs an answer.
+      tier: 1,
       effect: { kind: "coat", rider: coating.rider },
       ...(coating.rider === "light" || coating.rider === "dark" ? { excludeKits: ["modern_day"] } : {}),
       names: COATING_NAMES[coating.id]!,
@@ -1853,11 +1854,69 @@ export interface MarinaraLootFoe {
 }
 
 /**
- * Signature drops by bestiary family id: what that kind of foe is known for dropping (its venom,
- * its hide made into armour). A family's first entry is its common drop. Filled from
- * marinara-bestiary.ts family ids.
+ * Signature drops by bestiary family id (marinara-bestiary.ts): what that kind of foe is known for
+ * (a stinger's venom, a drake's scales as plate, a sellsword's own blade). The first entry is its
+ * common drop (a consumable); the rest is gear. `-t*` takes the foe's tier and `-*` the rank for it
+ * (I at T1-2, II at T3-4, III at T5-6, or the highest that exists).
  */
-export const MARINARA_FAMILY_DROPS: Readonly<Record<string, readonly string[]>> = {};
+export const MARINARA_FAMILY_DROPS: Readonly<Record<string, readonly string[]>> = {
+  gnawer: ["cure-bleed"],
+  hound: ["cure-bleed", "leathers-t*"],
+  tusker: ["stamina-1", "leathers-t*"],
+  "great-beast": ["heal-*", "leathers-t*", "charm-vigor-*"],
+  raptor: ["storm-flask", "charm-speed-*"],
+  stinger: ["venom-vial", "guard-poison"],
+  serpent: ["venom-vial", "leathers-t*", "guard-poison"],
+  stalker: ["cure-bleed", "knife-t*", "charm-keen-*"],
+  gel: ["cure-poison", "charm-vigor-*"],
+  thornling: ["cure-wither", "wand-t*", "guard-poison"],
+  bones: ["grave-dust", "greatblade-t*", "mail-t*"],
+  gorger: ["grave-dust", "guard-wound"],
+  shade: ["grave-dust", "ward-dark", "charm-resistance-*"],
+  "grave-duelist": ["grave-dust", "longblade-t*", "rapier-t*", "mail-t*"],
+  "cinder-spirit": ["fire-oil", "ward-fire"],
+  "rime-spirit": ["frost-salts", "ward-ice"],
+  "storm-spirit": ["storm-flask", "ward-lightning"],
+  fiend: ["fire-oil", "ward-fire", "wand-t*"],
+  drake: ["fire-oil", "ward-fire", "plate-t*"],
+  lout: ["stamina-1", "maul-t*", "charm-strength-*"],
+  "night-courtier": ["grave-dust", "rapier-t*", "guard-confuse", "charm-luck-*"],
+  cutpurse: ["smoke-bomb", "knife-t*", "charm-light-fingers"],
+  sellsword: ["tonic-might", "longblade-t*", "greatblade-t*", "mail-t*"],
+  shieldbearer: ["tonic-guard", "shield-*", "spear-t*", "plate-t*"],
+  shooter: ["venom-vial", "bow-t*", "greatbow-t*", "sling-t*"],
+  adept: ["mp-*", "staff-t*", "robes-t*", "charm-magic-*"],
+  cultist: ["cure-wound", "wand-t*", "stiletto-t*", "robes-t*"],
+  "field-medic": ["heal-*", "censer-t*", "mace-t*"],
+  captain: ["tonic-might", "longblade-t*", "spear-t*", "charm-early-riser"],
+  brawler: ["stamina-1", "charm-strength-*", "leathers-t*"],
+  warder: ["storm-flask", "plate-t*", "charm-defense-*"],
+  drone: ["storm-flask", "charm-hawkeye-*"],
+  turret: ["storm-flask", "greatbow-t*", "charm-hawkeye-*"],
+};
+
+/** A family's signature drops at a tier, resolved to item ids and left out where they don't belong. */
+export function marinaraFamilyDrops(
+  family: string | undefined,
+  tier: MarinaraTier,
+  place: MarinaraItemPlace,
+): string[] {
+  const entries = family ? MARINARA_FAMILY_DROPS[family] : undefined;
+  if (!entries) return [];
+  const out: string[] = [];
+  for (const entry of entries) {
+    let id: string | undefined = entry;
+    if (entry.endsWith("-t*")) id = `${entry.slice(0, -1)}${tier}`;
+    else if (entry.endsWith("-*")) {
+      id = undefined;
+      for (let rank = Math.min(3, Math.ceil(tier / 2)); rank >= 1 && !id; rank--)
+        if (marinaraItem(`${entry.slice(0, -1)}${rank}`)) id = `${entry.slice(0, -1)}${rank}`;
+    }
+    // Nothing above the foe's tier: a T1 stinger keeps its venom but not the T2 antitoxin charm.
+    if (id && marinaraItemInPlace(id, place) && marinaraItem(id)!.tier <= tier) out.push(id);
+  }
+  return out;
+}
 /** A foe with a signature list drops from it this often instead of the tier table. */
 export const MARINARA_SIGNATURE_CHANCE = 0.5;
 
@@ -1930,13 +1989,12 @@ export function marinaraRollLoot(input: {
     const tier = foe.tier ?? input.tier;
     const coin = foe.carriesCoin === false ? 0.5 : 1;
     gold += tierPrice(MARINARA_LOOT.gold, tier) * MARINARA_LOOT.goldRank[foe.rank] * coin * (0.75 + random() * 0.5);
-    const signature = (foe.family ? MARINARA_FAMILY_DROPS[foe.family] : undefined)?.filter((id) =>
-      marinaraItemInPlace(id, input.place),
-    );
+    const signature = marinaraFamilyDrops(foe.family, tier, input.place);
+    const common = signature.find((id) => marinaraItem(id)?.kind === "consumable");
     if (random() < MARINARA_LOOT.consumable[foe.rank]) {
       const id =
-        signature?.length && random() < MARINARA_SIGNATURE_CHANCE
-          ? signature[0]
+        common && random() < MARINARA_SIGNATURE_CHANCE
+          ? common
           : pickWeighted(marinaraConsumableTable(tier, input.place), random);
       if (id) items.push(id);
     }
@@ -1950,7 +2008,7 @@ export function marinaraRollLoot(input: {
       const uniques = MARINARA_UNIQUES.filter(
         (def) => def.tier <= tier + 1 && marinaraItemInPlace(def.id, input.place),
       ).map((def) => def.id);
-      const signatureGear = signature?.slice(1).filter((id) => marinaraItem(id)?.kind !== "consumable") ?? [];
+      const signatureGear = signature.filter((id) => marinaraItem(id)?.kind !== "consumable");
       let id: string | undefined;
       if (uniques.length && random() < uniqueChance) id = pick(uniques, random);
       else if (signatureGear.length && random() < MARINARA_SIGNATURE_CHANCE) id = pick(signatureGear, random);
@@ -1982,13 +2040,11 @@ export function marinaraStealTable(
   place: MarinaraItemPlace,
   family?: string,
 ): Array<[string, number]> {
-  const signature = (family ? MARINARA_FAMILY_DROPS[family] : undefined)?.filter((id) =>
-    marinaraItemInPlace(id, place),
-  );
+  const signature = marinaraFamilyDrops(family, tier, place);
   const table: Array<[string, number]> = [
     ...marinaraConsumableTable(tier, place),
     ["gold", 8],
-    ...(signature?.length ? ([[signature[0]!, 10]] as Array<[string, number]>) : []),
+    ...signature.filter((id) => marinaraItem(id)?.kind === "consumable").map((id): [string, number] => [id, 10]),
   ];
   if (rank === "elite" || rank === "boss")
     for (const id of marinaraGearTable(tier, place)) table.push([id, rank === "boss" ? 0.6 : 0.3]);
