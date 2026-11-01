@@ -507,7 +507,7 @@ export interface MarinaraPassiveHooks {
   armorPenPct?: number;
   /** Counter a melee attack: always, or only one that missed. */
   counter?: "always" | "on-miss";
-  /** Counters at most once a round (Overwatch, balance pass 2026-11-01). */
+  /** Counters at most once a round (Return Fire, balance pass 2026-11-01). */
   counterOncePerRound?: boolean;
   /** Counters add this share of the user's Defense to their power (Retaliate). */
   counterDefensePct?: number;
@@ -617,7 +617,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "perfect-evasion": { evasionStacking: 10 },
   "true-aim": { hitBonus: 15 },
   steady: { armorPenPct: 0.2 },
-  overwatch: { counter: "always", counterOncePerRound: true },
+  "return-fire": { counter: "always", counterOncePerRound: true },
   "abyssal-will": { spellDamagePct: 0.2 },
   "dead-eye": { critBonus: 15, weakBonus: 0.25 },
   "ammo-pouch": { ammo: true },
@@ -2491,7 +2491,7 @@ const MARINARA_SHARED_FOE_COOLDOWNS: Record<string, string> = {
   "enemy:self-repair": "enemy:harden",
 };
 
-/** Whether a fighter may counter now: Overwatch fires once a round (balance pass 2026-11-01). */
+/** Whether a fighter may counter now: Return Fire fires once a round (balance pass 2026-11-01). */
 function mayCounter(unit: MarinaraFighter, hooks: MarinaraPassiveHooks): boolean {
   if (!hooks.counterOncePerRound) return true;
   if (unit.counteredThisRound) return false;

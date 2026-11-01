@@ -929,7 +929,12 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["skill"],
       skills: [
         active("pierce", "Pierce", 10, "skill", 4, "Fires at one foe, ignoring half its Defense.", true),
-        passive("steady", "Steady", 15, "Physical hits ignore 20% of the target's Defense."),
+        passive(
+          "steady",
+          "Steady",
+          15,
+          "Attacks and skills that use the user's weapon ignore 20% of the target's Defense.",
+        ),
       ],
     },
     {
@@ -949,8 +954,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
         ),
         passive("dead-eye", "Dead Eye", 22, "Raises critical rate by 15%. Hits on a weakness deal 25% more."),
         passive(
-          "overwatch",
-          "Overwatch",
+          "return-fire",
+          "Return Fire",
           24,
           "Counterattacks the first attack on the user each round, if the attacker is in reach.",
           true,
