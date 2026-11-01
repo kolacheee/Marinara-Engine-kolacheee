@@ -19,6 +19,7 @@ import {
   type MarinaraStats,
 } from "./marinara-classes.js";
 import {
+  MARINARA_ENEMY_TIERS,
   MARINARA_ENEMY_TIERS_LIST,
   buildMarinaraEnemy,
   buildMarinaraPartyFighter,
@@ -384,6 +385,21 @@ function archetypeOf(foe: MarinaraFoeBrief): MarinaraArchetype {
 }
 
 /**
+ * A boss the Game Master invents (no bestiary family) past level 20 hits a little softer: the tier's
+ * x1.3 on every stat but HP tapers to x1.15 by level 25. On the Engine's AI a party of four beat the
+ * full x1.3 boss in only about half of its fights at levels 25-30, against 85-90% at level 20, as
+ * promotion skills stop keeping pace with the boss's compounding stats (engine-balance, 2026-11-01).
+ * Bestiary bosses keep their own measured threat.
+ */
+export function marinaraLateBossScale(level: number, scale?: Partial<MarinaraStats>): Partial<MarinaraStats> {
+  const full = MARINARA_ENEMY_TIERS.boss.stats;
+  const factor = (full - 0.15 * Math.min(1, Math.max(0, (level - 20) / 5))) / full;
+  return Object.fromEntries(
+    MARINARA_STATS.map((stat) => [stat, (scale?.[stat] ?? 1) * (stat === "hp" ? 1 : factor)]),
+  ) as Partial<MarinaraStats>;
+}
+
+/**
  * A fight's foes as Classic Marinara fighters, built against the party's level and held to the
  * encounter budget for the party's size and the game's difficulty: over budget, foes drop a tier
  * and, last, the weakest stay out. A story's own fight (`keepAll`) is fought as written.
@@ -445,7 +461,11 @@ export function marinaraFoeFighters(input: {
         ...(foe.marinara?.enemySkills ? { enemySkills: foe.marinara.enemySkills } : {}),
         // No bestiary level growth here: it is measured with the bestiary's own threat fitting, and on the
         // flat tier budget it made level 20+ fights unwinnable on the Engine's AI (engine-balance, 2026-11-01).
-        ...(foe.marinara?.statScale ? { statScale: foe.marinara.statScale } : {}),
+        ...(tier === "boss" && foeLevel > 20
+          ? { statScale: marinaraLateBossScale(foeLevel, foe.marinara?.statScale) }
+          : foe.marinara?.statScale
+            ? { statScale: foe.marinara.statScale }
+            : {}),
       }),
     );
   });

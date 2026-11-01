@@ -24,6 +24,7 @@ import {
   type CombatSkill,
   type CombatPlayerAction,
   type TacticalAction,
+  type TacticalCoord,
   type TacticalUnit,
   type TacticalCombatState,
   type CombatDecisionOption,
@@ -48,6 +49,7 @@ import {
   marinaraAiAction,
   marinaraTacticalTurnStart,
   performMarinaraTacticalAction,
+  marinaraBoardAiAction,
   mirrorMarinaraUnits,
   nextMarinaraTurn,
   performMarinaraAction,
@@ -195,6 +197,74 @@ const marinaraLog = (s: CombatDirectorState) => (text: string, kind: string, act
 /** Classic Marinara's own turn, for a unit the Engine plays: what its combat AI picks with the shared math. */
 function marinaraTurn(s: CombatDirectorState, u: Unit): CombatPlayerAction {
   return marinaraAiAction(s.marinara!, u as Combatant, s.round, normalizeGameDifficulty(s.difficulty), !!s.tactical);
+}
+/**
+ * Classic Marinara on a board, AI turn: the board AI picks where to stand, the Marinara AI what to
+ * do from there. When that leaves it nothing better than a guard, it steps instead to the tile in
+ * its move that brings a foe nearest into reach and chooses again from there. When the Marinara
+ * pick doesn't pass the board's checks, the board AI's own action stands.
+ */
+export function marinaraBoardTurn(
+  s: CombatDirectorState,
+  tu: TacticalUnit,
+): Extract<TacticalAction, { unitId: string }> {
+  const t = s.tactical!;
+  const board = decideTacticalAction(t, tu) as Extract<TacticalAction, { unitId: string }>;
+  const boardTo = board.type === "move" ? board.to : "to" in board ? board.to : undefined;
+  const foes = t.units.filter((one) => one.side !== tu.side && one.hp > 0);
+  const from = (at: TacticalCoord) => (id: string) => {
+    const other = t.units.find((one) => one.id === id);
+    return other ? Math.abs(other.x - at.x) + Math.abs(other.y - at.y) : Infinity;
+  };
+  const choose = (at: TacticalCoord) =>
+    marinaraBoardAiAction(
+      s.marinara!,
+      tu as unknown as Combatant,
+      s.round,
+      normalizeGameDifficulty(s.difficulty),
+      from(at),
+      tu.attackRange.max,
+    );
+  let to = boardTo;
+  let picked = choose(to ?? { x: tu.x, y: tu.y });
+  if (picked?.type === "defend" && !tu.hasMoved && foes.length) {
+    // Closest approach: a tile with a foe in reach (the farthest such tile for a ranged unit), else
+    // the tile nearest any foe.
+    const range = tu.attackRange.max;
+    const nearest = (at: TacticalCoord) => Math.min(...foes.map((foe) => from(at)(foe.id)));
+    const tiles = [{ x: tu.x, y: tu.y }, ...getMovementRange(t, tu.id)];
+    const score = (at: TacticalCoord) => {
+      const d = nearest(at);
+      return d <= range ? 1000 + d : -d;
+    };
+    const step = tiles.reduce((best, at) => (score(at) > score(best) ? at : best));
+    const again = choose(step);
+    if (again && again.type !== "defend") {
+      picked = again;
+      to = step.x === tu.x && step.y === tu.y ? undefined : step;
+    } else if (!boardTo || nearest(step) < nearest(boardTo)) to = step.x === tu.x && step.y === tu.y ? undefined : step;
+  }
+  if (!picked) return board;
+  const where = to ? { to } : {};
+  let action: Extract<TacticalAction, { unitId: string }> | undefined;
+  if (picked.type === "defend") action = { type: "defend", unitId: tu.id, ...where };
+  else if (picked.type === "attack") action = { type: "attack", unitId: tu.id, targetId: picked.targetId, ...where };
+  else if (picked.type === "skill") {
+    const skill = tu.skills?.find((one) => one.id === picked.skillId);
+    // The board can't aim at the fallen: a revive is aimed at the user and resolution finds them.
+    const fallen = t.units.find((one) => one.id === picked.targetId)?.hp === 0;
+    if (skill)
+      action = {
+        type: "skill",
+        unitId: tu.id,
+        skillName: skill.name,
+        targetId: fallen ? tu.id : picked.targetId,
+        ...where,
+      };
+  }
+  const problem = action ? validateTacticalUnitAction(t, tu, action) : { error: "unknown skill" };
+  if (!action || problem) return board;
+  return action;
 }
 /** What the Game Master is told of a ruleset fight's board: as a tactical one, its scene when painted. */
 function rulesetBoardSummary(board: RulesetCombatBoard | undefined, seed: number): string | undefined {
@@ -1561,10 +1631,9 @@ export function advanceCombatDirector(s: CombatDirectorState) {
       const action = s.tactical
         ? {
             unitId: u.id,
-            tactical: decideTacticalAction(s.tactical, u as TacticalUnit) as Extract<
-              TacticalAction,
-              { unitId: string }
-            >,
+            tactical: s.marinara
+              ? marinaraBoardTurn(s, u as TacticalUnit)
+              : (decideTacticalAction(s.tactical, u as TacticalUnit) as Extract<TacticalAction, { unitId: string }>),
           }
         : s.marinara
           ? { unitId: u.id, classic: marinaraTurn(s, u) }
