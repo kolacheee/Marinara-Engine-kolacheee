@@ -1681,6 +1681,31 @@ export const MARINARA_ELEMENT_MASTERY = {
 } as const;
 
 /** The ailment Element Mastery leaves for each element. */
+/**
+ * The wuxing cycles (Alyssa 2026-11-02). Overcoming: each element beats the next (wood parts earth,
+ * earth dams water, water quenches fire, fire melts metal, metal cuts wood); the bestiary sets foe
+ * weaknesses and resistances by it. Generating: each element feeds the next (wood feeds fire, fire
+ * makes earth, earth bears metal, metal gathers water, water nourishes wood); a hit deals
+ * MARINARA_WUXING_FEED_PCT more to a foe already suffering the ailment of the element that feeds it.
+ * Nothing to sequence by hand: it pays off whenever two elements meet on one foe.
+ */
+export const MARINARA_WUXING_OVERCOMES = {
+  wood: "earth",
+  earth: "water",
+  water: "fire",
+  fire: "metal",
+  metal: "wood",
+} as const satisfies Partial<Record<MarinaraDamageType, MarinaraDamageType>>;
+/** What feeds each wuxing element: a target with the feeder's ailment takes more from it. */
+export const MARINARA_WUXING_FED_BY = {
+  fire: "wood",
+  earth: "fire",
+  metal: "earth",
+  water: "metal",
+  wood: "water",
+} as const satisfies Partial<Record<MarinaraDamageType, MarinaraDamageType>>;
+export const MARINARA_WUXING_FEED_PCT = 0.15;
+
 export const MARINARA_ELEMENT_AILMENTS: Record<(typeof MARINARA_ELEMENTS)[number], MarinaraStatusId> = {
   fire: "burn",
   ice: "freeze",
@@ -1829,6 +1854,10 @@ export function marinaraHitNumbers(
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
   if (multiplier > 1 && hooks.elementWeakPct && (MARINARA_ELEMENTS as readonly string[]).includes(best.type))
     multiplier *= 1 + hooks.elementWeakPct;
+  // Wuxing generating cycle: the element that feeds this one has left its ailment on the target.
+  const feeder = (MARINARA_WUXING_FED_BY as Partial<Record<string, (typeof MARINARA_ELEMENTS)[number]>>)[best.type];
+  if (multiplier > 0 && feeder && target.statuses.some((st) => st.status === MARINARA_ELEMENT_AILMENTS[feeder]))
+    multiplier *= 1 + MARINARA_WUXING_FEED_PCT;
   // Attunement: hits in the user's own channeled element.
   if (
     hooks.channeledDamagePct &&
