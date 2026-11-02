@@ -8,7 +8,9 @@ import assert from "node:assert/strict";
 import {
   beginMarinaraTurn,
   buildMarinaraEnemy,
+  marinaraBasicAttack,
   marinaraEffectiveStat,
+  marinaraExpectedHit,
   marinaraHitNumbers,
   marinaraOption,
   marinaraChannelElement,
@@ -99,6 +101,34 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   foe.statuses = [{ status: "poison", turns: 3 }];
   const withSlow = turn([dream, foe]);
   assert.ok(withSlow > without * 1.2, `Slow Time pushes the debuffed foe back (${without} -> ${withSlow})`);
+}
+
+// Slow Time: a status ailment that lands slows the rest of the foe's wait at once, and only once.
+{
+  const dream = unit("dr", "party", ["slow-time"]);
+  const foe = unit("f", "enemy");
+  const all = [dream, foe];
+  dream.turnAt = 100;
+  foe.next = 200;
+  const poison = {
+    id: "t",
+    skill: null,
+    effect: { kind: "status", target: "enemy", status: "poison", chance: 1, duration: 3 },
+  } as never;
+  performMarinaraOption(dream, poison, [foe], all, ctx());
+  assert.ok(
+    foe.statuses.some((s) => s.status === "poison"),
+    "the poison lands",
+  );
+  assert.equal(Math.round(foe.next), 225, "the 100 left to wait becomes 125 (Speed -20%)");
+  performMarinaraOption(dream, poison, [foe], all, ctx());
+  assert.equal(Math.round(foe.next), 225, "a second ailment in the same wait does not slow it again");
+  const plain = unit("pl", "party");
+  const other = unit("o", "enemy");
+  plain.turnAt = 100;
+  other.next = 200;
+  performMarinaraOption(plain, poison, [other], [plain, other], ctx());
+  assert.equal(other.next, 200, "without Slow Time the wait is unchanged");
 }
 
 // Oath of Iron: nobody drops below 1 HP until their next turn.
@@ -231,8 +261,10 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   foe.stats.magic = foe.stats.strength + 10;
   const all = [hexer, foe];
   const before = marinaraEffectiveStat(foe, "magic", all);
+  const mine = marinaraEffectiveStat(hexer, "magic", all);
   use(hexer, "weaken", [foe], all);
   assert.ok(marinaraEffectiveStat(foe, "magic", all) < before * 0.85, "a caster loses Magic");
+  assert.ok(marinaraEffectiveStat(hexer, "magic", all) > mine * 1.15, "the Hexer gains the Magic Weaken saps");
 }
 
 // Crescendo: every buff on the party counts twice for a round.
@@ -246,14 +278,52 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(marinaraEffectiveStat(ally, "speed", all) > before * 1.1, "the Speed song doubles");
 }
 
-// Formation: party Defense only while no one is down.
+// Draw Fire / Hold Fast / Kill Zone: an ally draws the foes, takes less, and the party hits harder.
 {
-  const captain = unit("cp", "party", ["formation"]);
+  const captain = unit("cp", "party", ["draw-fire", "hold-fast", "kill-zone"]);
+  const tank = unit("tk", "party");
+  const foe = unit("f", "enemy");
+  const all = [captain, tank, foe];
+  const option = marinaraOption(captain, "draw-fire", all);
+  assert.ok(option, "the captain can use Draw Fire");
+  assert.ok(!marinaraTargetsFor(captain, option!.effect, all).includes(captain), "Draw Fire goes on someone else");
+  const hitBefore = marinaraExpectedHit(foe, tank, marinaraBasicAttack(foe), all);
+  const dealtBefore = marinaraExpectedHit(captain, foe, marinaraBasicAttack(captain), all);
+  use(captain, "draw-fire", [tank], all);
+  assert.ok(tank.provoking > 0 && captain.provoking === 0, "the tank provokes, not the captain");
+  assert.deepEqual(
+    marinaraTargetsFor(foe, marinaraBasicAttack(foe), all).map((u) => u.id),
+    ["tk"],
+    "foes must attack the tank",
+  );
+  assert.ok(
+    marinaraExpectedHit(foe, tank, marinaraBasicAttack(foe), all) < hitBefore,
+    "Hold Fast: the tank takes less",
+  );
+  assert.ok(
+    marinaraExpectedHit(captain, foe, marinaraBasicAttack(captain), all) > dealtBefore,
+    "Kill Zone: the party deals more",
+  );
+}
+
+// Morale: the bearer's side shrugs off some ailments.
+{
+  const bearer = unit("sb", "party", ["morale"]);
   const ally = unit("al", "party");
-  const all = [captain, ally, unit("f", "enemy")];
-  const whole = marinaraEffectiveStat(captain, "defense", all);
-  ally.hp = 0;
-  assert.ok(marinaraEffectiveStat(captain, "defense", all) < whole, "lost once someone falls");
+  const foe = unit("f", "enemy");
+  const all = [bearer, ally, foe];
+  const poison = {
+    id: "t",
+    skill: null,
+    effect: { kind: "status", target: "enemy", status: "poison", chance: 1, duration: 3 },
+  } as never;
+  let resisted = 0;
+  for (let i = 0; i < 200; i++) {
+    ally.statuses = [];
+    performMarinaraOption(foe, poison, [ally], all, ctx(`morale-${i}`));
+    if (!ally.statuses.some((s) => s.status === "poison")) resisted++;
+  }
+  assert.ok(resisted > 30 && resisted < 90, `about 30% resisted (${resisted}/200)`);
 }
 
 // Raise the Banner: frees the party of confusion and keeps it off.
@@ -358,6 +428,79 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(vanishedChance < plainChance, `Vanish makes the user harder to hit (${plainChance} -> ${vanishedChance})`);
 }
 
+// Vanish's text: the user's next hit that lands is a critical hit, and only that one.
+{
+  const rogue = unit("vc", "party", ["vanish"]);
+  const foe = unit("f", "enemy");
+  foe.hp = foe.maxHp = 100000;
+  foe.stats.luck = 200; // no ordinary crits
+  foe.stats.speed = 0;
+  const all = [rogue, foe];
+  use(rogue, "vanish", [rogue], all);
+  assert.equal(rogue.mods.find((m) => m.source === "vanish")?.stat, "evasion", "no hidden damage buff");
+  let tries = 0;
+  const hit = () => {
+    const c = ctx(`vanish-crit-${tries++}`);
+    performMarinaraOption(rogue, marinaraOption(rogue, null, all)!, [foe], all, c);
+    return c.events.find((e) => e.kind === "hit");
+  };
+  let first = hit();
+  for (let n = 0; n < 40 && !first; n++) first = hit();
+  assert.equal(first?.crit, true, "the first hit to land after Vanish crits");
+  let second = hit();
+  for (let n = 0; n < 40 && !second; n++) second = hit();
+  assert.equal(second?.crit, false, "the one after doesn't");
+}
+
+// Dead Eye: a hit on a weakness deals 25% more than it would.
+{
+  const shooter = unit("de", "party");
+  const eye = unit("de2", "party", ["dead-eye"]);
+  const foe = unit("f", "enemy");
+  foe.affinities = { slash: "weak", pierce: "weak", blunt: "weak" };
+  const all = [shooter, eye, foe];
+  const basic = marinaraBasicAttack(shooter);
+  const plain = marinaraHitNumbers(shooter, foe, basic, all).multiplier;
+  const keen = marinaraHitNumbers(eye, foe, basic, all).multiplier;
+  assert.ok(Math.abs(keen / plain - 1.25) < 1e-9, `Dead Eye: 25% more on a weakness (${plain} -> ${keen})`);
+}
+
+// Adaptive Grip: armored (physical resist) and evasive (evasion bonuses) foes gain nothing against the user.
+{
+  const plainHand = unit("ag0", "party");
+  const grip = unit("ag", "party", ["adaptive-grip"]);
+  const foe = unit("f", "enemy", ["light-feet"]);
+  foe.affinities = { slash: "resist", pierce: "resist", blunt: "resist" };
+  const all = [plainHand, grip, foe];
+  const basic = marinaraBasicAttack(grip);
+  const plain = marinaraHitNumbers(plainHand, foe, basic, all);
+  const gripped = marinaraHitNumbers(grip, foe, basic, all);
+  assert.ok(plain.multiplier < 1 && gripped.multiplier === 1, "the armor's resistance doesn't count");
+  assert.equal(gripped.hitChance, Math.min(100, plain.hitChance + 10 + 10), "+10% accuracy, and Light Feet's 10 gone");
+}
+
+// Peerless: every third action grants a full extra action, not a fixed basic attack.
+{
+  const paragon = unit("pg", "party", ["peerless"]);
+  const foe = unit("f", "enemy");
+  foe.hp = foe.maxHp = 100000;
+  const all = [paragon, foe];
+  paragon.actions = 3;
+  performMarinaraOption(paragon, marinaraOption(paragon, null, all)!, [foe], all, ctx());
+  assert.equal(paragon.bonusTurns, 1, "the third action grants another");
+  paragon.bonusTurns = undefined;
+  paragon.actions = 4;
+  performMarinaraOption(paragon, marinaraOption(paragon, null, all)!, [foe], all, ctx());
+  assert.equal(paragon.bonusTurns, undefined, "the fourth doesn't");
+  // The extra action itself never grants another (a chain of them was endless).
+  paragon.actions = 3;
+  paragon.bonusTurns = 1;
+  beginMarinaraTurn(paragon, all, ctx());
+  assert.equal(paragon.commanded, true, "the extra action is a commanded turn");
+  performMarinaraOption(paragon, marinaraOption(paragon, null, all)!, [foe], all, ctx());
+  assert.equal(paragon.bonusTurns, undefined, "and it grants no more");
+}
+
 // Double Time (Alyssa 2026-11-02): a bonus action that grants one extra action, so two actions that turn.
 {
   const bard = unit("dt", "party", ["double-time"]);
@@ -437,6 +580,20 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(marinaraChannelElement(mage, "ice"), "channels ice");
   assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "ice", "basic attacks strike with ice");
   assert.equal(marinaraChannelElement(mage, "lightning"), false, "once between their turns");
+  // Greater Channel Element (Astral Adept, Starweaver): light and dark too.
+  {
+    const adept = buildMarinaraEnemy({ id: "aa", name: "aa", level: 10, tier: "standard", archetype: "channeler" });
+    adept.classId = "astral-adept";
+    assert.equal(marinaraChannelElement(adept, "light"), false, "plain Channel Element has no light");
+    adept.skills = [...adept.skills, skill("greater-channel-element")];
+    assert.ok(marinaraChannelElement(adept, "dark"), "Greater Channel Element channels dark");
+    assert.ok(
+      MARINARA_CLASSES.filter((def) => def.id === "astral-adept" || def.id === "starweaver").every((def) =>
+        def.skills.some((one) => one.id.startsWith("greater-channel-element")),
+      ),
+      "Astral Adept and Starweaver both learn Greater Channel Element",
+    );
+  }
   assert.equal(marinaraChannelElement(mage, "slash" as never), false, "only elements");
   // Run by the AI, a caster channels the element its target fears as it strikes, once a turn.
   const ai = buildMarinaraEnemy({ id: "ai", name: "ai", level: 10, tier: "standard", archetype: "channeler" });
@@ -492,6 +649,8 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     ["water", "soak"],
     ["metal", "rend"],
     ["wind", "windswept"],
+    ["light", "sear"],
+    ["dark", "wound"],
   ] as const) {
     master.channeled = element;
     performMarinaraOption(master, sure, [dummy], emAll, ctx(`em-${element}`));

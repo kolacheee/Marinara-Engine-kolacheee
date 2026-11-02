@@ -25,6 +25,7 @@ import {
   type MarinaraArchetype,
   type MarinaraEquipment,
   marinaraLearnedSkills,
+  marinaraSkillSummary,
   marinaraOpenClasses,
   marinaraSecondaryFits,
   marinaraTrees,
@@ -378,7 +379,7 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                       <span>
                         <span className="font-medium">{skill.label}</span>{" "}
                         <span className="text-[var(--muted-foreground)]">
-                          ({marinaraClass(skill.classId)?.label}) {skill.summary}
+                          ({marinaraClass(skill.classId)?.label}) {marinaraSkillSummary(skill, progression)}
                         </span>
                       </span>
                     </label>
@@ -511,7 +512,7 @@ function ClassDetails({
                   ]
                     .filter(Boolean)
                     .join(", "),
-                  summary: skill.summary,
+                  summary: marinaraSkillSummary(skill, progression),
                 })}
               </span>
             </li>

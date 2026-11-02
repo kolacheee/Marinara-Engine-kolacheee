@@ -149,11 +149,11 @@ assert.equal(again.outcome, s.outcome, "the same seed plays the same fight");
   assert.ok(actions > 0, "the board fight lands hits");
 }
 
-// Command on a board: the commanded ally takes its extra action next and, if it hadn't had its own
+// Grand Strategy on a board (Command was reworked into Draw Fire, 2026-11-02): the commanded ally takes its extra action next and, if it hadn't had its own
 // turn this round, still gets it (by initiative too).
 for (const turnOrder of ["side", "initiative"] as const) {
   const herald = hero("hal", "herald", "coordinated", 12);
-  herald.skills.push(marinaraClass("field-captain")!.skills.find((skill) => skill.id === "command")!);
+  herald.skills.push(marinaraClass("marshal")!.skills.find((skill) => skill.id === "grand-strategy")!);
   herald.mp = herald.maxMp = 99;
   herald.stamina = herald.maxStamina = 99;
   const party = [herald, hero("ana", "blade", "reckless", 12)];
@@ -180,7 +180,7 @@ for (const turnOrder of ["side", "initiative"] as const) {
         commanded = true;
         commandCombatDirector(t, {
           type: "tactical",
-          action: { type: "skill", unitId: "hal", skillName: "Command", targetId: "ana" } as never,
+          action: { type: "skill", unitId: "hal", skillName: "Grand Strategy", targetId: "ana" } as never,
         });
         continue;
       }

@@ -302,12 +302,13 @@ export function marinaraAiCandidates(
               value += elementalIncoming() * Math.abs(also.pct) * (effect.duration ?? 1) * 0.8;
           }
         } else if (effect.exposeNext) {
-          if (actor.exposeNext) break;
+          if (actor.exposeNext || actor.critNext) break;
           const others = friends
             .filter((u) => u.id !== actor.id)
             .reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
           value =
-            bestDamage(actor, all, tactical) * (effect.pct ?? 0) +
+            // Vanish: the next hit is a sure critical.
+            (effect.critNext ? bestDamage(actor, all, tactical) * (MARINARA_TUNING.critMultiplier - 1) : 0) +
             others * effect.exposeNext * 2 * 0.6 +
             (threatened ? actor.maxHp * 0.05 : 0);
         } else if (effect.stat === "damage-taken" || effect.stat === "resistance" || effect.stat === "defense") {
@@ -427,6 +428,19 @@ export function marinaraAiCandidates(
         break;
       }
       case "provoke":
+        if (option.effect.target === "ally") {
+          // Draw Fire: onto the sturdiest ally standing who isn't drawing them already.
+          if (!threatened || friends.length < 2 || friends.some((f) => f.provoking > 0)) break;
+          for (const target of pool) {
+            if (target.id === actor.id || target.hp <= 0) continue;
+            const sturdy =
+              (target.hp / target.maxHp) *
+              ((eff(target, "defense") + eff(target, "resistance")) /
+                Math.max(1, eff(actor, "defense") + eff(actor, "resistance")));
+            add(option, [target], { targetId: target.id, protection: 0.2 + Math.min(0.6, sturdy * 0.3), risk: 0.1 });
+          }
+          break;
+        }
         if (!threatened || actor.provoking > 0 || friends.length < 2) break;
         add(option, [actor], { protection: 0.5 + (actor.hp / actor.maxHp) * 0.4, risk: 0.2 });
         break;
