@@ -150,7 +150,6 @@ export function MarinaraFightPanel({
               m.enraged && t("game.combat.marinara.enraged"),
               m.yielded && t("game.combat.marinara.yielded"),
               m.coating && t("game.combat.marinara.coated", { type: m.coating }),
-              m.shield > 0 && t("game.combat.marinara.shield", { amount: m.shield }),
             ].filter(Boolean);
             const known = Object.entries(m.affinities ?? {});
             return (
@@ -176,8 +175,10 @@ export function MarinaraFightPanel({
                   </span>
                 </div>
                 <div className="tabular-nums text-[var(--muted-foreground)]">
-                  {t("game.combat.marinara.hp", { hp: unit.hp, max: unit.maxHp })} ·{" "}
-                  {t("game.combat.marinara.stamina", { amount: m.stamina, max: m.maxStamina })}
+                  {m.shield > 0
+                    ? t("game.combat.marinara.hpShield", { hp: unit.hp, max: unit.maxHp, shield: m.shield })
+                    : t("game.combat.marinara.hp", { hp: unit.hp, max: unit.maxHp })}{" "}
+                  · {t("game.combat.marinara.stamina", { amount: m.stamina, max: m.maxStamina })}
                   {unit.maxMp
                     ? [" · ", t("game.combat.marinara.mp", { amount: unit.mp, max: unit.maxMp })].join("")
                     : ""}

@@ -51,6 +51,7 @@ import {
   marinaraReleaseCompanion,
   marinaraSetActiveCompanion,
   marinaraKeptTraits,
+  marinaraCarryRedundant,
   marinaraClass,
   marinaraUsableSkills,
   marinaraBestiarySetting,
@@ -1443,6 +1444,7 @@ export async function combatDirectorRoutes(
             marinara?.enemies ??
             (input.enemies.map(({ creature: _c, tier: _t, proposed: _p, ...unit }) => unit) as Combatant[]),
           ...(marinara ? { marinara: marinara.fighters } : {}),
+          ...(marinara ? { marinaraPlace: marinaraGameItemPlace(meta) } : {}),
           id: randomUUID(),
           // Who the scene caught unaware: an opponent among them checks its morale first (combat AI E1).
           surprised: input.enemies.flatMap((one) => (one.surprised ? [one.id] : [])),
@@ -1921,14 +1923,17 @@ export async function combatDirectorRoutes(
           // dropped, as is one its tree keeps anyway (a trait).
           const kept = marinaraKeptTraits(next);
           const archetype = marinaraClass(next.activeClass)?.archetype;
-          const carried = (input.carried ?? next.carried).filter((id) =>
-            marinaraLearnedSkills(next!).some(
+          const carried: string[] = [];
+          for (const id of input.carried ?? next.carried) {
+            const keep = marinaraLearnedSkills(next!).some(
               (skill) =>
                 skill.id === id &&
                 skill.classId !== next!.activeClass &&
-                !(kept.includes(id) && marinaraClass(skill.classId)?.archetype === archetype),
-            ),
-          );
+                !(kept.includes(id) && marinaraClass(skill.classId)?.archetype === archetype) &&
+                !marinaraCarryRedundant({ ...next!, carried }, id),
+            );
+            if (keep && !carried.includes(id)) carried.push(id);
+          }
           const afterIds = () => new Set(marinaraUsableSkills(next!).map((skill) => skill.id));
           next = { ...next, ...setMarinaraCarried(next, input.carried && !input.classId ? input.carried : carried) };
           // Say what the change took away (playtest 2026-11-01: a promotion dropped the Witch's Rot unseen).
