@@ -422,7 +422,6 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   barrier: { kind: "shield", target: "ally", scales: "magic", power: 8 },
   "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true, allDowned: true },
   // Herald
-  "imbue-weapon": { kind: "buff", target: "self", stat: "imbue", pct: 1, duration: 3 },
   "second-breath": { kind: "heal", target: "self", pctOfMax: 0.25, cooldown: 3 },
   rally: { kind: "buff", target: "party", stat: "damage", pct: 0.2, duration: 2 },
   // Cantor's songs stack by verse (Alyssa 2026-11-01): each re-cast while one lasts adds 10%, up to 3.
@@ -611,6 +610,8 @@ export interface MarinaraPassiveHooks {
   evasionStacking?: number;
   /** Heavy Draw: all damage up 30%. */
   heavyDraw?: boolean;
+  /** Resonance: hits in an element the target is weak to deal this much more damage. */
+  elementWeakPct?: number;
   bloodlust?: boolean;
   /** Can't be stunned: ever, or while below half HP (Immovable, Unstoppable). */
   stunImmune?: "always" | "below-half";
@@ -680,6 +681,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "pack-tactics": { partyBonusVsMarked: 0.4 },
   // Heavy Draw: a bigger draw, a slower user: plain Speed down (Alyssa 2026-11-02).
   "heavy-draw": { heavyDraw: true, statPct: { speed: -0.15 } },
+  // Resonance (Alyssa 2026-11-02, in Imbue Weapon's place): the channeled element bites harder on a weakness.
+  resonance: { elementWeakPct: 0.2 },
   sundering: { hitsLowerDefense: 0.1 },
   attunement: { spellDamagePct: 0.15 },
   overcharge: { critBonus: 10 },
@@ -1736,6 +1739,8 @@ export function marinaraHitNumbers(
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
+  if (multiplier > 1 && hooks.elementWeakPct && (MARINARA_ELEMENTS as readonly string[]).includes(best.type))
+    multiplier *= 1 + hooks.elementWeakPct;
   // Warding Runes and Grand Inscription: the elements bite the warded party less.
   if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
     let cut = modTotal(target, "element-taken");
