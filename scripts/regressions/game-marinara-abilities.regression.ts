@@ -508,6 +508,20 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     `Entangle takes 15 off hit chance (${cleanHit.hitChance} -> ${wuxingHit.hitChance})`,
   );
   assert.ok(wuxingHit.damage < cleanHit.damage, "Rend lowers damage dealt");
+  // Wuxing generating cycle: wood feeds fire, so fire hits an Entangled foe 15% harder.
+  {
+    const target = unit("wx", "enemy");
+    const all2 = [mage, target];
+    const saved = { manual: mage.channelManual, channeled: mage.channeled };
+    mage.channelManual = true;
+    mage.channeled = "fire";
+    const cold = marinaraHitNumbers(mage, target, basic, all2).multiplier;
+    target.statuses.push({ status: "entangle", duration: 2 });
+    const fed = marinaraHitNumbers(mage, target, basic, all2).multiplier;
+    assert.ok(Math.abs(fed / cold - 1.15) < 1e-9, `wood feeds fire (${cold} -> ${fed})`);
+    mage.channelManual = saved.manual;
+    mage.channeled = saved.channeled;
+  }
   // Windswept: attacks against the target gain 15 hit chance.
   const sweptHit = marinaraHitNumbers(foe, dummy, marinaraOption(foe, null, [foe, dummy])!.effect, [foe, dummy]);
   dummy.statuses = dummy.statuses.filter((st) => st.status !== "windswept");
