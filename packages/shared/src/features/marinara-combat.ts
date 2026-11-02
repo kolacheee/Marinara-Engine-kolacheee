@@ -124,7 +124,7 @@ export interface MarinaraEffect {
   /** Reaches the back row at full damage from anywhere. */
   ranged?: boolean;
   /** Buff/debuff: stat changed by a share, for `duration` of the target's turns. */
-  /** deathless: Oath of Iron; shadows: Thousand Shadows' decoys last while it does; best-attack: Weaken; crescendo: Crescendo's marker. */
+  /** deathless: Oath of Iron; shadows: Thousand Shadows' marker (the decoys last until used); best-attack: Weaken; crescendo: Crescendo's marker. */
   stat?:
     | MarinaraStat
     | "damage"
@@ -317,7 +317,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // A bonus action that grants one more action: two actions on the turn it is used.
   "double-time": { kind: "extra-turn", target: "self", cooldown: 3, bonusAction: true },
   shadowstep: dmg("strength", 9, { ranged: true, critBonus: 10 }),
-  // Thousand Shadows: three decoys take the next three hits on the party (for 3 of the user's turns).
+  // Thousand Shadows: three decoys take the next three hits on the party; they last until used
+  // (Alyssa 2026-11-02: no time limit). The buff is only the "shadows" marker.
   "thousand-shadows": {
     kind: "buff",
     target: "self",
@@ -2534,9 +2535,7 @@ function strikeOnce(
     target = coverer;
   }
   // Thousand Shadows: a decoy takes the hit instead.
-  const shadow = living(all.filter((u) => u.side === target.side)).find(
-    (u) => (u.decoys ?? 0) > 0 && u.mods.some((mod) => mod.stat === "shadows"),
-  );
+  const shadow = living(all.filter((u) => u.side === target.side)).find((u) => (u.decoys ?? 0) > 0);
   if (shadow) {
     shadow.decoys! -= 1;
     ctx.events.push({ kind: "decoy", actorId: actor.id, targetId: target.id, skillId, amount: shadow.decoys });
