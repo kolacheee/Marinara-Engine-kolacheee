@@ -440,8 +440,9 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "elixir-rain": { kind: "status", target: "party", status: "regen", chance: 1, duration: 3, power: 0.07 },
   barrier: { kind: "shield", target: "ally", scales: "magic", power: 8 },
   "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true, allDowned: true },
+  // A smite (Alyssa 2026-11-02): replaces Second Breath so a Mender on their own can still hurt a foe.
+  verdict: dmg("magic", 9, { ranged: true }),
   // Herald
-  "second-breath": { kind: "heal", target: "self", pctOfMax: 0.25, cooldown: 3 },
   rally: { kind: "buff", target: "party", stat: "damage", pct: 0.2, duration: 2 },
   // Cantor's songs stack by verse (Alyssa 2026-11-01): each re-cast while one lasts adds 10%, up to 3.
   "battle-hymn": {
