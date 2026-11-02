@@ -438,6 +438,13 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "ice", "basic attacks strike with ice");
   assert.equal(marinaraChannelElement(mage, "lightning"), false, "once between their turns");
   assert.equal(marinaraChannelElement(mage, "slash" as never), false, "only elements");
+  // Run by the AI, a caster channels the element its target fears as it strikes, once a turn.
+  const ai = buildMarinaraEnemy({ id: "ai", name: "ai", level: 10, tier: "standard", archetype: "channeler" });
+  ai.side = "party";
+  ai.classId = "channeler";
+  const aiAll = [ai, foe];
+  performMarinaraOption(ai, marinaraOption(ai, null, aiAll)!, [foe], aiAll, ctx("aich"));
+  assert.equal(ai.channeled, "ice", "the AI channels the target's weakness");
   // Resonance: the channeled element deals 20% more to a foe weak to it.
   const plain = marinaraHitNumbers(mage, foe, basic, all);
   mage.skills = [...mage.skills, skill("resonance")];

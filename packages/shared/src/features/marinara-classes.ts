@@ -1103,7 +1103,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "magic",
           0,
-          "Bonus action. Channels fire, ice or lightning. The user's basic attacks and Channeler spells strike with that element until they channel another. Fire until first channeled.",
+          "Bonus action. Channels fire, ice or lightning. The user's basic attacks and element spells strike with that element until they channel another. Fire until first channeled.",
         ),
         passive("resonance", "Resonance", 5, "Elemental hits deal 20% more damage to foes weak to that element.", true),
       ],
@@ -1123,7 +1123,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "stormcaller",
       label: "Stormcaller",
       from: "fusionist",
-      role: "Weather-callers who strike every foe with the element it fears most.",
+      role: "Weather-callers who strike every foe at once with the channeled element.",
       leans: ["magic", "speed"],
       skills: [
         active(
@@ -1132,7 +1132,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           10,
-          "Deals damage to all foes at 85% of a single-target spell, in the channeled element (carried to another tree: each foe's weakest element). Cooldown: 2 turns.",
+          "Deals damage to all foes in the channeled element at 85% of a single-target spell. Cooldown: 2 turns.",
           true,
         ),
         passive("overcharge", "Overcharge", 24, "Increases critical rate by 10%."),
@@ -1155,15 +1155,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           6,
           "For 3 turns, the party's weapon attacks and skills strike with fire, ice or lightning, whichever the target is weakest to. Cooldown: 2 turns.",
         ),
-        active(
-          "rune-strike",
-          "Rune Strike",
-          12,
-          "magic",
-          5,
-          "Deals damage to one foe in the channeled element (carried to another tree: their weakest element).",
-          true,
-        ),
+        active("rune-strike", "Rune Strike", 12, "magic", 5, "Deals damage to one foe in the channeled element.", true),
         passive(
           "warding-runes",
           "Warding Runes",
