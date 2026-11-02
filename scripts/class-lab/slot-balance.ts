@@ -61,7 +61,7 @@ const LINES: Record<string, string[]> = {
   guard: ["guard", "sentinel", "stonewall"],
   blade: ["blade", "bloodsworn", "cleaver"],
   mender: ["mender", "cleric", "saint"],
-  channeler: ["channeler", "fusionist", "stormcaller"],
+  channeler: ["channeler", "elementalist", "stormcaller"],
   marksman: ["marksman", "sharpshooter", "farshot"],
   aegis: ["guard", "aegis", "bulwark"],
   shade: ["scout", "shade", "shroud"],

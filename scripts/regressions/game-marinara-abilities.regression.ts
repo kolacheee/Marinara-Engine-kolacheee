@@ -445,6 +445,31 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   const aiAll = [ai, foe];
   performMarinaraOption(ai, marinaraOption(ai, null, aiAll)!, [foe], aiAll, ctx("aich"));
   assert.equal(ai.channeled, "ice", "the AI channels the target's weakness");
+  // Element Mastery: ice slows, fire burns.
+  const master = buildMarinaraEnemy({ id: "em", name: "em", level: 10, tier: "standard", archetype: "channeler" });
+  master.side = "party";
+  master.classId = "channeler";
+  master.channelManual = true;
+  master.skills = [...master.skills, skill("element-mastery")];
+  const dummy = unit("d", "enemy");
+  dummy.maxHp = dummy.hp = 5000;
+  const emAll = [master, dummy];
+  const sure = {
+    ...marinaraOption(master, null, emAll)!,
+    effect: { ...marinaraOption(master, null, emAll)!.effect, hitBonus: 1000 },
+  };
+  master.channeled = "ice";
+  performMarinaraOption(master, sure, [dummy], emAll, ctx("em1"));
+  assert.ok(
+    dummy.mods.some((m) => m.stat === "speed" && m.pct < 0),
+    "ice slows",
+  );
+  master.channeled = "fire";
+  performMarinaraOption(master, sure, [dummy], emAll, ctx("em2"));
+  assert.ok(
+    dummy.statuses.some((st) => st.status === "burn"),
+    "fire burns",
+  );
   // Resonance: the channeled element deals 20% more to a foe weak to it.
   const plain = marinaraHitNumbers(mage, foe, basic, all);
   mage.skills = [...mage.skills, skill("resonance")];

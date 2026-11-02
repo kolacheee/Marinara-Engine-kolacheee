@@ -2258,6 +2258,7 @@
   "game.combat.marinara.stat.speed": "Spd",
   "game.combat.marinara.stat.strength": "Str",
   "game.combat.marinara.status.bleed": "Bleeding",
+  "game.combat.marinara.status.burn": "Burning",
   "game.combat.marinara.status.confuse": "Confused",
   "game.combat.marinara.status.doom": "Doomed",
   "game.combat.marinara.status.poison": "Poisoned",

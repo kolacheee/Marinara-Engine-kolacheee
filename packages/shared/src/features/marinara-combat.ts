@@ -85,7 +85,7 @@ export const MARINARA_ROUND_TIME = MARINARA_TUNING.timeline / (15 + MARINARA_TUN
 
 export type MarinaraEffectTarget = "enemy" | "all-enemies" | "front-row" | "self" | "ally" | "party" | "downed-ally";
 export type MarinaraStatusId =
-  "sleep" | "stun" | "poison" | "wither" | "bleed" | "wound" | "confuse" | "doom" | "slow" | "regen";
+  "sleep" | "stun" | "poison" | "wither" | "bleed" | "burn" | "wound" | "confuse" | "doom" | "slow" | "regen";
 
 export interface MarinaraEffect {
   kind:
@@ -354,10 +354,9 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Channeler
   // Channel Element is a bonus action taken outside the skill menu (marinaraChannelElement).
   "channel-element": { kind: "none", target: "self" },
-  "twin-cast": dmg("magic", 5, { ranged: true, hits: 2 }),
   // More power (Alyssa 2026-11-01): was 6.
   // Hits every foe nearly as hard as one (85% each, not the usual 60%), at a normal turn's weight: the
-  // AI cast it 1% of the time against Twin Cast's 80% (lab, 2026-11-01).
+  // AI cast it 1% of the time against the old Twin Cast's 80% (lab, 2026-11-01).
   tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 2, areaPct: 0.85 }),
   // Rune Scholar (Alyssa 2026-11-01): its own payoff against affinity foes, in their weakest element.
   // Balance pass (2026-11-01): 11 -> 9, it out-hit Element Bolt by half again.
@@ -512,6 +511,7 @@ const HARMFUL = new Set<MarinaraStatusId>([
   "poison",
   "wither",
   "bleed",
+  "burn",
   "wound",
   "doom",
   "sleep",
@@ -610,6 +610,8 @@ export interface MarinaraPassiveHooks {
   evasionStacking?: number;
   /** Heavy Draw: all damage up 30%. */
   heavyDraw?: boolean;
+  /** Element Mastery: fire hits burn, ice hits slow, lightning hits crit more. */
+  elementMastery?: boolean;
   /** Resonance: hits in an element the target is weak to deal this much more damage. */
   elementWeakPct?: number;
   bloodlust?: boolean;
@@ -683,6 +685,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "heavy-draw": { heavyDraw: true, statPct: { speed: -0.15 } },
   // Resonance (Alyssa 2026-11-02, in Imbue Weapon's place): the channeled element bites harder on a weakness.
   resonance: { elementWeakPct: 0.2 },
+  // Element Mastery (Alyssa 2026-11-02, the Elementalist in the Fusionist's place).
+  "element-mastery": { elementMastery: true },
   sundering: { hitsLowerDefense: 0.1 },
   attunement: { spellDamagePct: 0.15 },
   overcharge: { critBonus: 10 },
@@ -1612,6 +1616,16 @@ export function marinaraOption(
   return marinaraUsable(unit, all).find((option) => option.id === id);
 }
 
+/** Element Mastery's riders: fire burns 4% max HP a turn for 2 turns, ice -15% Speed for 2 turns,
+ *  lightning +10 critical rate. */
+export const MARINARA_ELEMENT_MASTERY = {
+  burnPct: 0.04,
+  burnTurns: 2,
+  iceSlowPct: 0.15,
+  iceSlowTurns: 2,
+  lightningCrit: 10,
+} as const;
+
 /** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
 export const MARINARA_VANISH_EVADE = 40;
 
@@ -1797,6 +1811,7 @@ export function marinaraHitNumbers(
         (hooks.critBonus ?? 0) +
         (hooks.critVsDebuffed && marinaraDebuffed(target) ? hooks.critVsDebuffed : 0) +
         (actor.gear?.crit ?? 0) +
+        (hooks.elementMastery && best.type === "lightning" ? MARINARA_ELEMENT_MASTERY.lightningCrit : 0) +
         partyCrit -
         marinaraEffectiveStat(target, "luck", all),
     ),
@@ -1901,7 +1916,12 @@ export function marinaraDebuffBurden(unit: MarinaraFighter, all: readonly Marina
   let value = 0;
   for (const status of unit.statuses) {
     if (!HARMFUL.has(status.status)) continue;
-    if (status.status === "poison" || status.status === "wither" || status.status === "bleed")
+    if (
+      status.status === "poison" ||
+      status.status === "wither" ||
+      status.status === "bleed" ||
+      status.status === "burn"
+    )
       value +=
         unit.maxHp *
         (status.power ?? 0.05) *
@@ -2041,11 +2061,17 @@ export function beginMarinaraTurn(
   // Its own turn came: whoever struck it is no longer keeping it busy (Backstab).
   delete actor.struckBy;
   for (const status of actor.statuses) {
-    if (status.status === "poison" || status.status === "wither" || status.status === "bleed") {
-      // Poison is a damage type foes can resist; Wither and Bleed are pure and nothing stops them.
+    if (
+      status.status === "poison" ||
+      status.status === "wither" ||
+      status.status === "bleed" ||
+      status.status === "burn"
+    ) {
+      // Poison and Burn are damage types foes can resist; Wither and Bleed are pure and nothing stops them.
       const multiplier =
-        (status.status === "poison" ? marinaraAffinityMultiplier(actor.affinities, "poison") : 1) *
-        (actor.tier === "boss" && status.status !== "bleed" ? MARINARA_BOSS_RULES.dotPct : 1);
+        (status.status === "poison" || status.status === "burn"
+          ? marinaraAffinityMultiplier(actor.affinities, status.status === "burn" ? "fire" : "poison")
+          : 1) * (actor.tier === "boss" && status.status !== "bleed" ? MARINARA_BOSS_RULES.dotPct : 1);
       const amount = Math.round(actor.maxHp * (status.power ?? 0.08) * multiplier);
       const before = actor.hp;
       actor.hp = Math.min(actor.maxHp, actor.hp - amount);
@@ -2736,6 +2762,19 @@ function strikeOnce(
     roll: Math.floor(roll),
   });
   if (rider) applyRider(actor, target, rider, crit, ctx);
+  // Element Mastery: fire leaves a burn, ice slows (renewed, not stacked).
+  if (hooks.elementMastery && target.hp > 0) {
+    const m = MARINARA_ELEMENT_MASTERY;
+    if (type === "fire" && addStatus(target, { status: "burn", duration: m.burnTurns, power: m.burnPct }, 0, actor.id))
+      ctx.events.push({
+        kind: "debuff",
+        actorId: actor.id,
+        targetId: target.id,
+        status: "burn",
+        skillId: "element-mastery",
+      });
+    if (type === "ice") addMod(target, "speed", -m.iceSlowPct, m.iceSlowTurns, "element-mastery", actor.id);
+  }
   if (effect.siphon && target.hp > 0) siphon(actor, target, effect.siphon.mpPct, ctx, skillId);
   const lifesteal = (hooks.lifestealPct ?? 0) + (actor.gear?.lifestealPct ?? 0) + (effect.drain ?? 0);
   if (lifesteal) actor.hp = Math.round(Math.min(actor.maxHp, actor.hp + dealt * lifesteal * healFactor(actor)));
