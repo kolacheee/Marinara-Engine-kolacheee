@@ -859,7 +859,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "speed",
           10,
-          "The user takes another action at once. Cooldown: 3 turns.",
+          "Bonus action. The user takes an extra action this turn. Cooldown: 3 turns.",
         ),
         passive("tailwind", "Tailwind", 24, "Increases the party's Speed by 20%.", true),
       ],
