@@ -62,6 +62,7 @@ import {
   marinaraChannelChoices,
   marinaraChanneled,
 } from "../../packages/shared/src/features/marinara-combat.js";
+import { marinaraItemPlace } from "../../packages/shared/src/features/marinara-items.js";
 import { isImpassable } from "../../packages/shared/src/features/tactical-combat/math.js";
 import type { Combatant } from "../../packages/shared/src/index.js";
 
@@ -235,6 +236,7 @@ function pickPrimary(g: Game, name: string, primary: string, start?: string) {
 }
 
 function grow(g: Game, to: number) {
+  if (to > 30) { say("Level cap is 30; growing to 30."); to = 30; }
   if (g.members.some((m) => !m.marinara)) throw new Error("Pick a primary tree for everyone first.");
   for (const m of g.members) {
     let p = m.marinara!;
@@ -261,9 +263,20 @@ function setCarry(g: Game, name: string, ids: string[]) {
   const p = m.marinara!;
   const learned = marinaraLearnedSkills(p).filter((s) => s.classId !== p.activeClass);
   const resolved = ids.map((id) => learned.find((s) => s.id === id || s.label.toLowerCase() === id.toLowerCase())?.id ?? id);
-  m.marinara = setMarinaraCarried(p, resolved) as MarinaraCardProgression;
+  // One refused id (a tree trait, an unknown skill) skips only that id, with its reason; the rest still carry.
+  let kept: string[] = [];
+  let next = p;
+  for (const id of resolved) {
+    try {
+      next = setMarinaraCarried(p, [...kept, id]) as MarinaraCardProgression;
+      kept = [...kept, id];
+    } catch (e) {
+      say(`  skipped ${id}: ${(e as Error).message}`);
+    }
+  }
+  m.marinara = kept.length ? next : (setMarinaraCarried(p, []) as MarinaraCardProgression);
   save(g);
-  say(`${m.name} carries: ${resolved.join(", ") || "nothing"} (max ${MARINARA_CARRY_SLOTS}).`);
+  say(`${m.name} carries: ${kept.join(", ") || "nothing"} (max ${MARINARA_CARRY_SLOTS}).`);
 }
 
 function carryable(g: Game, name: string) {
@@ -370,7 +383,11 @@ function startFight(g: Game, style: "classic" | "tactical", difficulty: Marinara
     id: key, anchor: "a", party: start.party, enemies: start.enemies, style, gm: false, difficulty: "normal", seed,
     ...(style === "tactical" ? { battlefield: { size: start.enemies.length + start.party.length > 8 ? "medium" : "small" } as never } : {}),
     marinara: start.fighters,
+    marinaraPlace: marinaraItemPlace(g.setting),
   });
+  // Tactical: the Engine's AI runs the whole party, as AI companions (so they channel and load ammunition
+  // themselves); the director's Tactical default is hand-run companions.
+  if (style === "tactical") for (const u of s.party) (u as { controller?: string }).controller = "ai";
   const fight: Fight = { n, style, difficulty, boss, placing: style === "tactical", seenLog: 0, s, cards, seed };
   say(`\n=== Fight ${n}: ${style}, ${difficulty}${boss ? ", boss" : ""}, party level ${level}, ${g.setting} ===`);
   if (start.notes.length) say(`Notes: ${start.notes.join(" ")}`);
@@ -392,6 +409,21 @@ function newLines(f: Fight) {
   return lines.filter((l) => l.kind !== "phase" || /Round/.test(l.text)).map((l) => `  ${l.text}`);
 }
 
+/**
+ * The party leader stays hand-run in the director, so on the Tactical board (and under `auto`) the panel
+ * channels for a Channeler leader as an AI companion would: the element most living foes are weakest to.
+ */
+function leadChannel(s: CombatDirectorState, unitId: string) {
+  const f = s.marinara?.fighters.find((x) => x.id === unitId);
+  if (!f || f.side !== "party" || !f.channelManual || f.channeledThisTurn || !marinaraCanChannel(f)) return;
+  const foes = s.marinara!.fighters.filter((x) => x.side !== "party" && x.hp > 0);
+  const mult = (a: string | undefined) => (a === "weak" ? 1.5 : a === "resist" ? 0.5 : a === "immune" ? 0 : a === "absorb" ? -1 : 1);
+  const score = (el: string) => foes.reduce((sum, foe) => sum + mult((foe.affinities as Record<string, string> | undefined)?.[el]), 0);
+  const best = [...marinaraChannelChoices(f)].sort((a, b) => score(b) - score(a))[0];
+  if (!best || best === marinaraChanneled(f) || score(best) <= score(marinaraChanneled(f))) return;
+  try { commandCombatDirector(s, { type: "channelElement", unitId, element: best } as never); } catch {}
+}
+
 /** Runs foes (and, in Tactical or under `auto`, the party) until a party decision or the end. */
 function advance(g: Game, f: Fight, autoParty = 0) {
   const s = f.s;
@@ -401,6 +433,7 @@ function advance(g: Game, f: Fight, autoParty = 0) {
     if (s.tactical) {
       if (s.stage === "action" && s.actorId) {
         const unit = s.tactical.units.find((u) => u.id === s.actorId) as TacticalUnit;
+        leadChannel(s, unit.id);
         commandCombatDirector(s, { type: "tactical", action: marinaraBoardTurn(s, unit) as never });
       } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
       else if (s.stage === "select") {
@@ -420,6 +453,7 @@ function advance(g: Game, f: Fight, autoParty = 0) {
       const ours = s.party.some((u) => u.id === unit.id);
       if (ours && autoLeft === 0) break;
       if (ours && autoLeft > 0) autoLeft--;
+      if (ours) leadChannel(s, unit.id);
       commandCombatDirector(s, { type: "classic", action: marinaraAiAction(s.marinara!, unit, s.round, "normal", false) });
     } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
     else commandCombatDirector(s, { type: "continue" });
