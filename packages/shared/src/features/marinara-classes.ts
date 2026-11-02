@@ -401,7 +401,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "sweeping-ruin": "weapon",
   arsenal: "any-physical",
   "thousand-edges": "weapon",
-  verdict: "light",
+  verdict: "earth",
   backstab: "weapon",
   "hit-and-run": "weapon",
   shadowstep: "dark",
@@ -745,7 +745,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "resistance",
           8,
-          "Deals light-element magic damage to one foe based on the user's Defense or Resistance, whichever is higher.",
+          "Deals earth-element magic damage to one foe based on the user's Defense or Resistance, whichever is higher.",
           true,
         ),
         passive("elder-oath", "Elder Oath", 24, "Increases Resistance by 50%. Grants immunity to Doom and Sleep."),
@@ -1276,7 +1276,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "hexer",
       label: "Hexer",
-      role: "Curse-casters who sap the enemy's strength and drain their HP.",
+      role: "Curse-casters who sap the enemy's strength and drain their HP with dark magic.",
       leans: ["magic", "resistance"],
       skills: [
         active(
