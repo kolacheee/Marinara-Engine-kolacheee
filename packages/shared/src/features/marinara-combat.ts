@@ -132,7 +132,7 @@ export interface MarinaraEffect {
   damage?: "physical" | "magic";
   /** The skill's own kind of damage before the weapon's Strength-or-Magic rule switched it: a weapon skill
    *  struck with Magic still carries coatings, a spell struck with Strength still doesn't. */
-  /** Weaken: the user gains, in the stat their weapon strikes with, what the debuff takes from the foe. */
+  /** Weaken: the user gains the stat the debuff takes from the foe (Strength or Magic), by the same share. */
   sapsToUser?: boolean;
   nature?: "physical" | "magic";
   /** Comes from a carried skill: runs on the user's carried stats. */
@@ -2634,15 +2634,9 @@ function act(
             : effect.stat!;
         addMod(target, stat, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skillId ?? "debuff", actor.id);
         if (skill?.id === "mark-prey") target.marked = (effect.duration ?? 3) + durationBonus;
-        // Weaken saps (Alyssa 2026-11-02): what the foe loses, the user gains in the stat they strike with.
+        // Weaken saps (Alyssa 2026-11-02): the user gains the very stat the foe loses.
         if (effect.stat === "best-attack" && effect.sapsToUser)
-          addMod(
-            actor,
-            marinaraWeaponStat(actor),
-            -(effect.pct ?? 0),
-            (effect.duration ?? 1) + durationBonus,
-            `${skillId ?? "debuff"}:sap`,
-          );
+          addMod(actor, stat, -(effect.pct ?? 0), (effect.duration ?? 1) + durationBonus, `${skillId ?? "debuff"}:sap`);
         ctx.events.push({ kind: "debuff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
         if (
           effect.applies &&

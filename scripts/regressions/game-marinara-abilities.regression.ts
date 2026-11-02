@@ -9,7 +9,6 @@ import {
   beginMarinaraTurn,
   buildMarinaraEnemy,
   marinaraEffectiveStat,
-  marinaraWeaponStat,
   marinaraHitNumbers,
   marinaraOption,
   marinaraChannelElement,
@@ -232,11 +231,10 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   foe.stats.magic = foe.stats.strength + 10;
   const all = [hexer, foe];
   const before = marinaraEffectiveStat(foe, "magic", all);
-  const own = marinaraWeaponStat(hexer);
-  const mine = marinaraEffectiveStat(hexer, own, all);
+  const mine = marinaraEffectiveStat(hexer, "magic", all);
   use(hexer, "weaken", [foe], all);
   assert.ok(marinaraEffectiveStat(foe, "magic", all) < before * 0.85, "a caster loses Magic");
-  assert.ok(marinaraEffectiveStat(hexer, own, all) > mine * 1.15, "the Hexer gains what Weaken saps");
+  assert.ok(marinaraEffectiveStat(hexer, "magic", all) > mine * 1.15, "the Hexer gains the Magic Weaken saps");
 }
 
 // Crescendo: every buff on the party counts twice for a round.
