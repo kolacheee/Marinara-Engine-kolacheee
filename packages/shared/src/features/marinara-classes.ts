@@ -632,7 +632,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "retaliate",
           "Retaliate",
           15,
-          "Counterattacks every hit within reach, adding half the user's Defense to the counter's power.",
+          "Counterattacks every hit within reach, adding half the user's Defense or Resistance, whichever is higher, to the counter's power.",
           true,
         ),
       ],
