@@ -401,21 +401,23 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   }
 }
 
-// Every Strength/Magic skill uses the higher of the two (Alyssa 2026-11-02), e.g. Pierce and Mend.
+// Strength or Magic follows the weapon (Alyssa 2026-11-02): a focus means Magic, anything else Strength.
 {
   const caster = unit("pc", "party", ["pierce"]);
-  caster.stats.magic = caster.stats.strength + 20;
+  caster.gear = { power: 0, spellPower: 8 };
   const option = marinaraOption(caster, "pierce", [caster])!;
-  assert.equal(option.effect.damage, "magic", "a magic user's Pierce deals magic damage");
+  assert.equal(option.effect.damage, "magic", "Pierce with a focus deals magic damage");
+  assert.equal(option.effect.scales, "magic", "and runs on Magic");
   const fighter = unit("pf", "party", ["pierce"]);
-  fighter.stats.strength = fighter.stats.magic + 20;
-  assert.equal(marinaraOption(fighter, "pierce", [fighter])!.effect.damage, "physical", "a fighter's stays physical");
+  fighter.gear = { power: 8, spellPower: 0 };
+  fighter.stats.magic = fighter.stats.strength + 50;
+  assert.equal(marinaraOption(fighter, "pierce", [fighter])!.effect.damage, "physical", "a sword keeps it on Strength");
   const medic = unit("md", "party", ["mend"]);
-  medic.stats.strength = medic.stats.magic + 20;
+  medic.gear = { power: 8, spellPower: 0 };
   assert.equal(
     marinaraOption(medic, "mend", [medic])!.effect.scales,
     "strength",
-    "a martial user's heal runs on Strength",
+    "a heal with a sword runs on Strength",
   );
 }
 

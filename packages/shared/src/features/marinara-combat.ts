@@ -110,7 +110,7 @@ export interface MarinaraEffect {
   power?: number;
   scales?: MarinaraStat;
   damage?: "physical" | "magic";
-  /** The skill's own kind of damage before the Strength-or-Magic rule switched it: a weapon skill
+  /** The skill's own kind of damage before the weapon's Strength-or-Magic rule switched it: a weapon skill
    *  struck with Magic still carries coatings, a spell struck with Strength still doesn't. */
   nature?: "physical" | "magic";
   /** Comes from a carried skill: runs on the user's carried stats. */
@@ -1458,12 +1458,12 @@ export function marinaraSkillEffect(unit: MarinaraFighter, skill: MarinaraSkillD
   // guarding stat or HP).
   if (base.companion && !unit.companion) return null;
   const sicFrom = base.companion && unit.companion ? companionAttackStat(unit.companion.stat) : undefined;
-  // Every skill that runs on Strength or Magic uses whichever of the two the user has more of, so
-  // martial and magic users (and blends) can use any skill (Alyssa 2026-11-02). A damage skill
-  // follows it: magic damage against Resistance when Magic is higher, physical against Defense
-  // otherwise. Skills on another stat (Speed, Skill, a guard stat, Sic's companion) are unchanged.
+  // Every skill that runs on Strength or Magic uses the one the user's weapon calls for (Alyssa
+  // 2026-11-02): a focus (more spell power than weapon power) means Magic and magic damage against
+  // Resistance, any other weapon Strength against Defense. Unarmed, the class's standard weapon
+  // decides. Skills on another stat (Speed, Skill, a guard stat, Sic's companion) are unchanged.
   const powered = !base.from && (base.scales === "strength" || base.scales === "magic");
-  const best = unit.stats.magic > unit.stats.strength ? ("magic" as const) : ("strength" as const);
+  const best = marinaraWeaponStat(unit);
   return {
     ...base,
     ...(powered
@@ -1476,6 +1476,14 @@ export function marinaraSkillEffect(unit: MarinaraFighter, skill: MarinaraSkillD
     ...(skill.damage ? { type: skill.damage } : {}),
     ...(unit.carriedIds?.includes(skill.id) ? { carried: true } : {}),
   };
+}
+
+/** Strength or Magic, by the weapon in hand: a focus (more spell power than weapon power) is Magic. */
+export function marinaraWeaponStat(unit: MarinaraFighter): "strength" | "magic" {
+  if (unit.gear) return unit.gear.spellPower > unit.gear.power ? "magic" : "strength";
+  return unit.archetype === "channeler" || unit.archetype === "hexer" || unit.archetype === "mender"
+    ? "magic"
+    : "strength";
 }
 
 function companionAttackStat(stat: MarinaraStat): MarinaraStat {
