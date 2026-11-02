@@ -554,7 +554,8 @@ export interface MarinaraPassiveHooks {
   /** Return Fire: once between its own turns, shoots the first foe to attack it or any ally, if it
    *  can reach that foe (Alyssa 2026-11-01: a taunting ally mustn't make it useless). */
   coverFire?: boolean;
-  /** Counters add this share of the user's Defense to their power (Retaliate). */
+  /** Counters add this share of the user's Defense or Resistance, whichever is higher, to their power
+   *  (Retaliate; Alyssa 2026-11-02: Res too, so Warden and Witch builds use it). */
   counterDefensePct?: number;
   healOnKillPct?: number;
   damageBelowHalfPct?: number;
@@ -2682,11 +2683,12 @@ function mayCounter(unit: MarinaraFighter, hooks: MarinaraPassiveHooks): boolean
   return true;
 }
 
-/** A counter's strike: the basic attack, plus a share of Defense for Retaliate (the wall hits back). */
+/** A counter's strike: the basic attack, plus a share of Defense or Resistance for Retaliate. */
 function counterAttack(unit: MarinaraFighter, hooks: MarinaraPassiveHooks, all: readonly MarinaraFighter[]) {
   const basic = marinaraBasicAttack(unit);
   if (!hooks.counterDefensePct) return basic;
-  const extra = marinaraEffectiveStat(unit, "defense", all) * hooks.counterDefensePct;
+  const guard = Math.max(marinaraEffectiveStat(unit, "defense", all), marinaraEffectiveStat(unit, "resistance", all));
+  const extra = guard * hooks.counterDefensePct;
   return { ...basic, power: (basic.power ?? MARINARA_TUNING.basicPower) + extra };
 }
 
