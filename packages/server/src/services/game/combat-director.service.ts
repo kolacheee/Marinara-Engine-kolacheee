@@ -1916,7 +1916,15 @@ export function commandCombatDirector(s: CombatDirectorState, command: DirectedC
       throw new Error("Only a Channeler of the party channels an element.");
     if (!marinaraChannelElement(fighter, command.element))
       throw new Error("They already channeled this turn, or that is not an element.");
-    log(s, `${u.name} channels ${command.element}.`, "marinara:channel", u.id, source);
+    log(
+      s,
+      command.element === "arcane"
+        ? `${u.name} unchannels, back to raw magic.`
+        : `${u.name} channels ${command.element}.`,
+      "marinara:channel",
+      u.id,
+      source,
+    );
     sync(s);
     return;
   }

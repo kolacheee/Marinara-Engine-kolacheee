@@ -2160,6 +2160,7 @@
   "game.combat.marinara.ammoAuto": "(the AI loads the best)",
   "game.combat.marinara.channel": "{{name}}’s element:",
   "game.combat.marinara.channelAuto": "(the AI channels the best)",
+  "game.combat.marinara.damageType.arcane": "none",
   "game.combat.marinara.archetype.blade": "Blade",
   "game.combat.marinara.archetype.channeler": "Channeler",
   "game.combat.marinara.archetype.guard": "Guard",
