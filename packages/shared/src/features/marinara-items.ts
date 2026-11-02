@@ -138,6 +138,8 @@ export const MARINARA_STATUSES = [
   "poison",
   "bleed",
   "burn",
+  "freeze",
+  "shock",
   "wither",
   "wound",
   "doom",

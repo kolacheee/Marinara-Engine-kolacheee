@@ -2259,6 +2259,8 @@
   "game.combat.marinara.stat.strength": "Str",
   "game.combat.marinara.status.bleed": "Bleeding",
   "game.combat.marinara.status.burn": "Burning",
+  "game.combat.marinara.status.freeze": "Frozen",
+  "game.combat.marinara.status.shock": "Shocked",
   "game.combat.marinara.status.confuse": "Confused",
   "game.combat.marinara.status.doom": "Doomed",
   "game.combat.marinara.status.poison": "Poisoned",

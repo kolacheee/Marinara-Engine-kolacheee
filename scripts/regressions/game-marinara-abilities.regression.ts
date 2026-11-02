@@ -445,7 +445,7 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   const aiAll = [ai, foe];
   performMarinaraOption(ai, marinaraOption(ai, null, aiAll)!, [foe], aiAll, ctx("aich"));
   assert.equal(ai.channeled, "ice", "the AI channels the target's weakness");
-  // Element Mastery: ice slows, fire burns.
+  // Element Mastery: ice Freezes, fire Burns, lightning Shocks.
   const master = buildMarinaraEnemy({ id: "em", name: "em", level: 10, tier: "standard", archetype: "channeler" });
   master.side = "party";
   master.classId = "channeler";
@@ -461,8 +461,8 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   master.channeled = "ice";
   performMarinaraOption(master, sure, [dummy], emAll, ctx("em1"));
   assert.ok(
-    dummy.mods.some((m) => m.stat === "speed" && m.pct < 0),
-    "ice slows",
+    dummy.statuses.some((st) => st.status === "freeze"),
+    "ice freezes",
   );
   master.channeled = "fire";
   performMarinaraOption(master, sure, [dummy], emAll, ctx("em2"));
@@ -470,6 +470,21 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     dummy.statuses.some((st) => st.status === "burn"),
     "fire burns",
   );
+  master.channeled = "lightning";
+  const before = marinaraHitNumbers(foe, dummy, marinaraOption(foe, null, [foe, dummy])!.effect, [
+    foe,
+    dummy,
+  ]).critChance;
+  performMarinaraOption(master, sure, [dummy], emAll, ctx("em3"));
+  assert.ok(
+    dummy.statuses.some((st) => st.status === "shock"),
+    "lightning shocks",
+  );
+  const after = marinaraHitNumbers(foe, dummy, marinaraOption(foe, null, [foe, dummy])!.effect, [
+    foe,
+    dummy,
+  ]).critChance;
+  assert.equal(after, Math.min(100, before + 10), "Shock adds a flat 10 critical chance against the target");
   // Resonance: the channeled element deals 20% more to a foe weak to it.
   const plain = marinaraHitNumbers(mage, foe, basic, all);
   mage.skills = [...mage.skills, skill("resonance")];
