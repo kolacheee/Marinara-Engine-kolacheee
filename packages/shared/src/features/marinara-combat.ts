@@ -2142,7 +2142,6 @@ export function performMarinaraOption(
     const chargedId = option.skill?.id ?? option.id;
     if (!target || !chargedId) return;
     actor.charging = { skillId: chargedId, targetId: target.id };
-    if (hooks.entrench) entrench(actor);
     ctx.events.push({ kind: "charge", actorId: actor.id, targetId: target.id, skillId: chargedId });
     return;
   }
@@ -2154,9 +2153,11 @@ export function performMarinaraOption(
   }
 }
 
+/** Entrench: a defending Guard braces and hits back harder (Strength for counters; Alyssa 2026-11-02). */
 function entrench(unit: MarinaraFighter) {
   addMod(unit, "defense", 0.3, 1, "entrench");
   addMod(unit, "resistance", 0.3, 1, "entrench");
+  addMod(unit, "strength", 0.3, 1, "entrench");
 }
 
 function tickMods(unit: MarinaraFighter, all: readonly MarinaraFighter[]) {
