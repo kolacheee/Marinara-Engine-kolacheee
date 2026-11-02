@@ -1509,7 +1509,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           16,
           "Restores HP to all allies based on the user's Magic and removes one debuff from each. Reduces the user's Speed by 20% until their next turn.",
         ),
-        passive("miracle", "Miracle", 24, "Once per battle, the first ally to fall gets back up with 30% HP.", true),
+        // Swapped with Lightbearer's Miracle (Alyssa 2026-11-02): Miracle was too strong on the Saint.
+        passive("sanctified", "Sanctified", 24, "The party takes 15% less magic damage.", true),
       ],
     },
     {
@@ -1588,7 +1589,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "Revives every downed ally with 50% HP. Once per battle.",
         ),
-        passive("sanctified", "Sanctified", 25, "The party takes 15% less magic damage.", true),
+        passive("miracle", "Miracle", 25, "Once per battle, the first ally to fall gets back up with 30% HP.", true),
       ],
     },
   ]),
