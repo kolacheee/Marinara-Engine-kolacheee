@@ -149,7 +149,8 @@ export interface MarinaraEffect {
   spread?: number;
   /** This area attack's own share per foe, in place of MARINARA_TUNING.areaSpreadPct (Tempest). */
   areaPct?: number;
-  /** Vanish: the user can't be targeted until its next turn. */
+  /** Vanish: attacks on the user are automatically evaded until their next turn. It can still be
+   *  targeted, so Provoke and Challenge still pull foes onto it (evasion tanking). */
   hide?: boolean;
   /** A song: re-cast while it lasts, it adds a verse (this much more, up to `most` verses) to every
    *  stat it changes, and starts its turns again (Cantor). */
@@ -1552,8 +1553,7 @@ export function marinaraTargetsFor(
   all: readonly MarinaraFighter[],
 ): MarinaraFighter[] {
   const everyFoe = living(all.filter((unit) => unit.side !== actor.side));
-  const seen = everyFoe.filter((unit) => !unit.hidden);
-  const foes = effect.target === "enemy" && seen.length ? seen : everyFoe;
+  const foes = everyFoe;
   const friends = living(all.filter((unit) => unit.side === actor.side));
   if (effect.target === "self") return [actor];
   if (effect.target === "party") return friends;
@@ -1727,7 +1727,9 @@ export function marinaraHitNumbers(
     ),
   );
   const asleep = target.statuses.some((s) => s.status === "sleep");
-  return { damage, hitChance: asleep ? 100 : hitChance, critChance, multiplier, type: best.type, rider };
+  // Vanish: every attack on the user misses until their next turn, even while asleep.
+  const finalHit = target.hidden && target.side !== actor.side ? 0 : asleep ? 100 : hitChance;
+  return { damage, hitChance: finalHit, critChance, multiplier, type: best.type, rider };
 }
 
 /** Expected damage of one use on one target, for choosing; the real roll happens when it is used. */
