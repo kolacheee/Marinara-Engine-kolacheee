@@ -419,6 +419,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "grave-tithe": "dark",
   "carrion-feast": "dark",
   "total-eclipse": "dark",
+  verdict: "light",
   rot: "poison",
 };
 
@@ -1477,15 +1478,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["magic", "resistance"],
       skills: [
         active("mend", "Mend", 1, "magic", 3, "Restores HP to one ally.", true),
-        active(
-          "second-breath",
-          "Second Breath",
-          5,
-          "hp",
-          4,
-          "Restores 25% of the user's max HP. Cooldown: 3 turns.",
-          true,
-        ),
+        // Replaced Second Breath (Alyssa 2026-11-02): a smite, so a lone Mender isn't helpless.
+        active("verdict", "Verdict", 5, "magic", 4, "Deals light damage to one foe.", true),
         active("purify", "Purify", 8, "magic", 3, "Removes all debuffs and status ailments from one ally.", true),
       ],
     },
@@ -2167,7 +2161,7 @@ const SECONDARY_FITS: Partial<Record<`${MarinaraArchetype}>${MarinaraArchetype}`
   "blade>scout": [["keen-eye", "More hits and crits on every swing."]],
   "channeler>hexer": [["weaken", "Blunt the foe that threatens your back row."]],
   "hexer>channeler": [["tempest", "A spell that strikes every foe in the channeled element."]],
-  "hexer>mender": [["second-breath", "Heal yourself without spending a healer's turn."]],
+  "hexer>mender": [["mend", "Patch up an ally between curses."]],
   "mender>guard": [["steadfast", "+20% max HP keeps the healer standing."]],
   "herald>blade": [["battle-rhythm", "+15% damage on every attack, so a Herald hits back."]],
   "marksman>herald": [["rally", "Raise the party's damage, then shoot."]],
