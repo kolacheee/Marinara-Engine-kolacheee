@@ -27,6 +27,7 @@ import {
   marinaraHoldTheLine,
   marinaraPassiveHooks,
   marinaraSkillCost,
+  marinaraActionWeight,
   marinaraTargetsFor,
   marinaraUsable,
   nextMarinaraActor,
@@ -207,7 +208,7 @@ function choose(actor: LabUnit, all: LabUnit[], fight: FightOptions): Choice | n
   const hit = (from: LabUnit, to: LabUnit, effect: Effect) => marinaraExpectedHit(from, to, effect, all, tactical);
   let best: { option: MarinaraOption; targets: LabUnit[]; score: number } | null = null;
   const consider = (option: MarinaraOption, targets: LabUnit[], score: number) => {
-    const weight = option.effect.weight ?? 1;
+    const weight = marinaraActionWeight(option.effect);
     const perTime = score / weight;
     const price = option.skill ? marinaraSkillCost(actor, option.skill) : null;
     // MP is a budget: spend it when it pays, not on trifles. Stamina comes back, so it matters less.
