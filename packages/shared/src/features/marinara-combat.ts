@@ -1705,6 +1705,21 @@ export const MARINARA_WUXING_FED_BY = {
   wood: "water",
 } as const satisfies Partial<Record<MarinaraDamageType, MarinaraDamageType>>;
 export const MARINARA_WUXING_FEED_PCT = 0.15;
+/**
+ * The phase each element takes in both cycles (Alyssa 2026-11-02): ice counts as water, lightning and
+ * wind as wood (both wood trigrams). Light and dark stay outside the phases, yang and yin, weak only
+ * to each other.
+ */
+export const MARINARA_ELEMENT_PHASE = {
+  wood: "wood",
+  lightning: "wood",
+  wind: "wood",
+  fire: "fire",
+  earth: "earth",
+  metal: "metal",
+  water: "water",
+  ice: "water",
+} as const satisfies Record<(typeof MARINARA_ELEMENTS)[number], keyof typeof MARINARA_WUXING_OVERCOMES>;
 
 export const MARINARA_ELEMENT_AILMENTS: Record<(typeof MARINARA_ELEMENTS)[number], MarinaraStatusId> = {
   fire: "burn",
@@ -1854,9 +1869,18 @@ export function marinaraHitNumbers(
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
   if (multiplier > 1 && hooks.elementWeakPct && (MARINARA_ELEMENTS as readonly string[]).includes(best.type))
     multiplier *= 1 + hooks.elementWeakPct;
-  // Wuxing generating cycle: the element that feeds this one has left its ailment on the target.
-  const feeder = (MARINARA_WUXING_FED_BY as Partial<Record<string, (typeof MARINARA_ELEMENTS)[number]>>)[best.type];
-  if (multiplier > 0 && feeder && target.statuses.some((st) => st.status === MARINARA_ELEMENT_AILMENTS[feeder]))
+  // Wuxing generating cycle: an element of the phase that feeds this one has left its ailment on the target.
+  const phase = (MARINARA_ELEMENT_PHASE as Partial<Record<string, keyof typeof MARINARA_WUXING_FED_BY>>)[best.type];
+  const feeder = phase ? MARINARA_WUXING_FED_BY[phase] : undefined;
+  if (
+    multiplier > 0 &&
+    feeder &&
+    MARINARA_ELEMENTS.some(
+      (element) =>
+        MARINARA_ELEMENT_PHASE[element] === feeder &&
+        target.statuses.some((st) => st.status === MARINARA_ELEMENT_AILMENTS[element]),
+    )
+  )
     multiplier *= 1 + MARINARA_WUXING_FEED_PCT;
   // Attunement: hits in the user's own channeled element.
   if (
