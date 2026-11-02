@@ -1965,7 +1965,7 @@ export const MARINARA_BOSS_THREAT_PREMIUM = 1.3;
  *  than the sum of those worths. Every worth is scaled by this, fitted in the bestiary lab's verify run
  *  (scripts/class-lab/bestiary-verify.ts) so mixed fights hit their difficulty's marks. Re-fit when the
  *  table is re-measured. */
-export const MARINARA_THREAT_CALIBRATION = 1.13;
+export const MARINARA_THREAT_CALIBRATION = 1.2;
 /** How far a foe's level may stray from the party's: never more than 3 above (a boss 5), and foes
  *  more than 8 below aren't worth a fight. */
 export const MARINARA_LEVEL_GAP = { above: 3, bossAbove: 5, below: 8 } as const;
