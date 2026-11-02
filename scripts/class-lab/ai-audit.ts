@@ -21,7 +21,11 @@ import {
   marinaraBoardTurn,
   type CombatDirectorState,
 } from "../../packages/server/src/services/game/combat-director.service.js";
-import { marinaraAiAction } from "../../packages/server/src/services/game/marinara-director.service.js";
+import {
+  marinaraAiAction,
+  marinaraBoardAiAction,
+} from "../../packages/server/src/services/game/marinara-director.service.js";
+import { decideTacticalAction } from "../../packages/shared/src/features/tactical-combat/index.js";
 import { marinaraFightStart } from "../../packages/server/src/services/game/marinara-fight-start.service.js";
 import { MARINARA_CLASSES, marinaraRandom } from "../../packages/shared/src/features/marinara-classes.js";
 import {
@@ -39,7 +43,7 @@ import {
   marinaraUsable,
   type MarinaraFighter,
 } from "../../packages/shared/src/features/marinara-combat.js";
-import { marinaraAiCandidates } from "../../packages/shared/src/features/marinara-ai.js";
+import { marinaraAiCandidates, chooseMarinaraAction } from "../../packages/shared/src/features/marinara-ai.js";
 import type { TacticalUnit } from "../../packages/shared/src/features/tactical-combat/types.js";
 import type { Combatant } from "../../packages/shared/src/index.js";
 import { buildCharacter } from "./class-lab.js";
@@ -351,6 +355,46 @@ function playFight(level: number, n: number) {
     if (s.tactical) {
       if (s.stage === "action" && s.actorId) {
         const unit = s.tactical.units.find((u) => u.id === s.actorId) as TacticalUnit;
+        if (process.env.DEBUG_TDEF && unit.side === "party") {
+          const near = Math.min(
+            ...s.tactical.units
+              .filter((o) => o.side !== unit.side && o.hp > 0)
+              .map((o) => Math.abs(o.x - unit.x) + Math.abs(o.y - unit.y)),
+          );
+          const clone = structuredClone(s);
+          const cu = clone.tactical!.units.find((u) => u.id === unit.id) as TacticalUnit;
+          const board = decideTacticalAction(clone.tactical!, cu) as { type: string; to?: { x: number; y: number } };
+          const at = (pos: { x: number; y: number }) => (id: string) => {
+            const o = clone.tactical!.units.find((u) => u.id === id);
+            return o ? Math.abs(o.x - pos.x) + Math.abs(o.y - pos.y) : Infinity;
+          };
+          const here = marinaraBoardAiAction(clone.marinara!, cu as never, clone.round, "normal", at(cu), cu.attackRange.max);
+          const there = board.to
+            ? marinaraBoardAiAction(clone.marinara!, cu as never, clone.round, "normal", at(board.to), cu.attackRange.max)
+            : null;
+          const final = marinaraBoardTurn(structuredClone(s), structuredClone(unit)) as { type: string };
+          if (final.type === "defend" && near <= 3 && process.env.DEBUG_TDEF === "2") {
+            const actorF = clone.marinara!.fighters.find((f) => f.id === unit.id)!;
+            const dist = at(cu);
+            let count = 0;
+            const optsSeen: string[] = [];
+            chooseMarinaraAction(actorF, clone.marinara!.fighters, { ...cu, tactics: cu.tactics! } as never, clone.round, "normal", {
+              tactical: true,
+              reach: (o, t) => {
+                count++;
+                optsSeen.push(`${o.id ?? "atk"}>${t.id}@${dist(t.id)}`);
+                return t.id === actorF.id || dist(t.id) <= 3;
+              },
+              ranked: (r) => console.log("  RANK", r.slice(0, 5).map((x) => `${JSON.stringify(x.candidate.action)}=${x.score.toFixed(2)}`).join(" | ")),
+            });
+            console.log("  FOES", clone.marinara!.fighters.filter((f) => f.side === "enemy").map((f) => `${f.id}:hp${f.hp}/${f.maxHp}:${f.row}:${(f as any).yielded ? "Y" : ""}${(f as any).hidden ? "H" : ""}:${(f.statuses ?? []).map((x: any) => x.id ?? x.kind ?? x).join("+")}`).join(" "), "| TU", clone.tactical!.units.filter((u) => u.side !== unit.side).map((u) => `${u.id}:hp${u.hp}@${u.x},${u.y}`).join(" "));
+            console.log("  REACH", count, optsSeen.slice(0, 12).join(" "), "ids", clone.tactical!.units.map((u) => u.id).join(","), "fighters", clone.marinara!.fighters.map((f) => f.id).join(","));
+          }
+          if (final.type === "defend" && near <= 3)
+            console.log(
+              `TDEF r${s.round} ${fighter(unit.id)?.classId} near=${near} range=${unit.attackRange.max} mv=${unit.movement} board=${board.type}${board.to ? `->(${board.to.x},${board.to.y}) from (${unit.x},${unit.y})` : ""} here=${JSON.stringify(here)} there=${JSON.stringify(there)} mp=${fighter(unit.id)?.mp}`,
+            );
+        }
         const action = marinaraBoardTurn(s, unit) as {
           type: string;
           skillName?: string;
