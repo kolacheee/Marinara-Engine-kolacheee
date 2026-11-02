@@ -102,6 +102,10 @@ export function marinaraAiCandidates(
     reach?: (option: MarinaraOption, target: MarinaraFighter) => boolean;
     /** It defended last turn. */
     noDefend?: boolean;
+    /** On a board: whether a fighter could reach a foe with one more action (move and act). An action
+     *  handed to one who can't is wasted on a Defend (Sonnet panel r3: Hour of Heroes' four free
+     *  actions all went on Defend). */
+    canStrike?: (unitId: string) => boolean;
   } = {},
 ): CombatAiCandidate<MarinaraChoice>[] {
   const tactical = !!options.tactical;
@@ -155,7 +159,8 @@ export function marinaraAiCandidates(
   const out: CombatAiCandidate<MarinaraChoice>[] = [];
   // A bonus action leaves the turn's action still to take (review 2026-11-02: songs, Mark Prey and
   // Double Time were weighed against a whole attack, as if they cost the turn, and lost to it).
-  const stillActs = actor.commanded ? 0 : bestShare(actor, all, tactical);
+  const strikes = (unit: MarinaraFighter) => !options.canStrike || options.canStrike(unit.id);
+  const stillActs = actor.commanded || !strikes(actor) ? 0 : bestShare(actor, all, tactical);
   const add = (
     option: MarinaraOption,
     targets: readonly MarinaraFighter[],
@@ -569,10 +574,10 @@ export function marinaraAiCandidates(
       }
       case "extra-turn":
         // One more action of the fighter's best (as a bonus action, Double Time also leaves the turn's own).
-        add(option, [actor], { damage: bestShare(actor, all, tactical) * 0.9 });
+        if (strikes(actor)) add(option, [actor], { damage: bestShare(actor, all, tactical) * 0.9 });
         break;
       case "command": {
-        const others = friends.filter((u) => u.id !== actor.id);
+        const others = friends.filter((u) => u.id !== actor.id && strikes(u));
         if (!others.length) break;
         if (effect.target === "party") {
           add(option, [actor], {
@@ -587,7 +592,8 @@ export function marinaraAiCandidates(
   // Defending: a breather that brings stamina back and blunts the next blows. Never twice running,
   // as the Engine's other fights hold it (two walls defending at each other end nothing).
   const hurt = actor.hp / actor.maxHp;
-  if (!options.noDefend)
+  // A commanded or extra action has no turn to brace for: Defend only when nothing else can be done.
+  if (!options.noDefend && !actor.commanded)
     out.push({
       action: { optionId: "defend", targetIds: [] },
       hold: true,
@@ -613,6 +619,7 @@ export function chooseMarinaraAction(
   options: {
     tactical?: boolean;
     reach?: (option: MarinaraOption, target: MarinaraFighter) => boolean;
+    canStrike?: (unitId: string) => boolean;
     ranked?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void;
   } = {},
 ): MarinaraChoice {
