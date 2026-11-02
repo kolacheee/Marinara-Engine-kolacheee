@@ -83,6 +83,7 @@ interface Tally {
   stalls: number;
   rounds: number;
 }
+const lastPick = new Map<string, { skill?: string; round: number }>();
 const tally: Tally = {
   turns: 0,
   partyTurns: 0,
@@ -161,6 +162,15 @@ function audit(
       bump(tally.reviveChance, "chances");
       bump(tally.reviveChance, `pick:${pick.skillId === rev.id ? "revive" : (pick.skillId ?? pick.kind)}`);
     }
+  }
+  {
+    const key = `${actor.id}`;
+    const prev = lastPick.get(key);
+    const sid = pick.skillId;
+    const opt = sid ? options.find((o) => o.id === sid || o.label === sid) : undefined;
+    if (sid && prev && prev.skill === sid && prev.round === s.round - 1 && !actor.commanded && (opt?.effect.cooldown ?? 0) >= 2)
+      bump(tally.reviveChance, `cooldownBack2Back:${side}:${sid}`);
+    if (!actor.commanded) lastPick.set(key, { skill: sid, round: s.round });
   }
   if (actor.commanded) bump(tally.reviveChance, `${side}:commanded:${pick.kind === "defend" ? "defend" : "act"}`);
   if (party) for (const o of options) if (o.id) bump(tally.avail, o.id);
