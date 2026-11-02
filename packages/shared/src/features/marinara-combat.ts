@@ -110,6 +110,9 @@ export interface MarinaraEffect {
   power?: number;
   scales?: MarinaraStat;
   damage?: "physical" | "magic";
+  /** The skill's own kind of damage before the Strength-or-Magic rule switched it: a weapon skill
+   *  struck with Magic still carries coatings, a spell struck with Strength still doesn't. */
+  nature?: "physical" | "magic";
   /** Comes from a carried skill: runs on the user's carried stats. */
   carried?: boolean;
   /** A basic attack, which immunity and absorption only resist. */
@@ -121,9 +124,6 @@ export interface MarinaraEffect {
   critBonus?: number;
   /** Share of the target's Defense or Resistance ignored. */
   pierce?: number;
-  /** Strikes with the user's higher of Strength and Magic: magic damage (against Resistance) when
-   *  Magic is higher (Pierce; Alyssa 2026-11-02, so magic users benefit too). */
-  adaptive?: boolean;
   /** Reaches the back row at full damage from anywhere. */
   ranged?: boolean;
   /** Buff/debuff: stat changed by a share, for `duration` of the target's turns. */
@@ -333,7 +333,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   },
   // Marksman
   "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, speedUntilNext: -0.2 }),
-  pierce: dmg("strength", 7, { ranged: true, pierce: 0.5, adaptive: true }),
+  pierce: dmg("strength", 7, { ranged: true, pierce: 0.5 }),
   headshot: dmg("strength", 20, { ranged: true, charge: true, critBonus: 25 }),
   // A bonus action (lab 2026-11-01: marking ate 54-73% of a Tracker's turns for 6% of party damage).
   "mark-prey": { kind: "debuff", target: "enemy", stat: "damage-taken", pct: 0.35, duration: 3, bonusAction: true },
@@ -1458,10 +1458,20 @@ export function marinaraSkillEffect(unit: MarinaraFighter, skill: MarinaraSkillD
   // guarding stat or HP).
   if (base.companion && !unit.companion) return null;
   const sicFrom = base.companion && unit.companion ? companionAttackStat(unit.companion.stat) : undefined;
-  const asMagic = base.adaptive && unit.stats.magic > unit.stats.strength;
+  // Every skill that runs on Strength or Magic uses whichever of the two the user has more of, so
+  // martial and magic users (and blends) can use any skill (Alyssa 2026-11-02). A damage skill
+  // follows it: magic damage against Resistance when Magic is higher, physical against Defense
+  // otherwise. Skills on another stat (Speed, Skill, a guard stat, Sic's companion) are unchanged.
+  const powered = !base.from && (base.scales === "strength" || base.scales === "magic");
+  const best = unit.stats.magic > unit.stats.strength ? ("magic" as const) : ("strength" as const);
   return {
     ...base,
-    ...(asMagic ? { scales: "magic" as const, damage: "magic" as const } : {}),
+    ...(powered
+      ? {
+          scales: best,
+          ...(base.damage ? { damage: best === "magic" ? "magic" : "physical", nature: base.damage } : {}),
+        }
+      : {}),
     ...(sicFrom ? { from: sicFrom } : {}),
     ...(skill.damage ? { type: skill.damage } : {}),
     ...(unit.carriedIds?.includes(skill.id) ? { carried: true } : {}),
@@ -1617,7 +1627,7 @@ function riderFor(
   raw: number,
   weaponMultiplier: number,
 ) {
-  if (effect.damage === "magic" || effect.kind !== "damage" || !actor.coating) return null;
+  if ((effect.nature ?? effect.damage) === "magic" || effect.kind !== "damage" || !actor.coating) return null;
   const type = actor.coating;
   if (!marinaraRiderLands(weaponMultiplier, type)) return null;
   const multiplier = marinaraAffinityMultiplier(target.affinities, type);

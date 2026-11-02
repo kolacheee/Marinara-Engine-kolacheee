@@ -401,7 +401,7 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   }
 }
 
-// Pierce (Alyssa 2026-11-02): uses the higher of Strength and Magic, so magic users pierce Resistance.
+// Every Strength/Magic skill uses the higher of the two (Alyssa 2026-11-02), e.g. Pierce and Mend.
 {
   const caster = unit("pc", "party", ["pierce"]);
   caster.stats.magic = caster.stats.strength + 20;
@@ -410,6 +410,13 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   const fighter = unit("pf", "party", ["pierce"]);
   fighter.stats.strength = fighter.stats.magic + 20;
   assert.equal(marinaraOption(fighter, "pierce", [fighter])!.effect.damage, "physical", "a fighter's stays physical");
+  const medic = unit("md", "party", ["mend"]);
+  medic.stats.strength = medic.stats.magic + 20;
+  assert.equal(
+    marinaraOption(medic, "mend", [medic])!.effect.scales,
+    "strength",
+    "a martial user's heal runs on Strength",
+  );
 }
 
 console.log("game-marinara-abilities: ok");
