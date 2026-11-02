@@ -1188,7 +1188,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           12,
-          "For 3 turns, the party's weapon attacks and skills strike in the user's channeled element, the party deals 20% more damage, and it takes 30% less fire, ice and lightning damage. Cooldown: 3 turns.",
+          "For 3 turns, the party's weapon attacks and skills strike in the user's channeled element and the party deals 20% more damage. Cooldown: 3 turns.",
           true,
         ),
         passive(

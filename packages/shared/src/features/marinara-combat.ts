@@ -381,10 +381,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     pct: 1,
     duration: 3,
     cooldown: 3,
-    alsoMods: [
-      { stat: "damage", pct: 0.2 },
-      { stat: "element-taken", pct: -0.3 },
-    ],
+    // Ward cut (Alyssa 2026-11-02): it overlapped Living Runes.
+    alsoMods: [{ stat: "damage", pct: 0.2 }],
   },
   // Balance pass (2026-11-01): ignores half of Resistance (was all of it) and every elemental resistance.
   starfall: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
@@ -1798,7 +1796,7 @@ export function marinaraHitNumbers(
     (MARINARA_ELEMENTS as readonly string[]).includes(best.type)
   )
     multiplier *= 1 + hooks.channeledDamagePct;
-  // Warding Runes and Grand Inscription: the elements bite the warded party less.
+  // Warding Runes and Living Runes (and any "element-taken" mod): the elements bite the warded party less.
   if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
     let cut = modTotal(target, "element-taken");
     for (const ally of living(all.filter((unit) => unit.side === target.side)))
