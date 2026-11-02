@@ -74,7 +74,13 @@ export function outcome(
 }
 
 /** The HP scale that puts a group at the Normal mark (log-space bisection, common seeds). */
-export function normalScale(make: (hp: number) => MarinaraFighter[], level: number, fights: number, key: string, steps = 9) {
+export function normalScale(
+  make: (hp: number) => MarinaraFighter[],
+  level: number,
+  fights: number,
+  key: string,
+  steps = 9,
+) {
   let lo = Math.log(0.15);
   let hi = Math.log(6);
   for (let step = 0; step < steps; step++) {
@@ -96,14 +102,20 @@ function measure(out: string, fights: number) {
     if (family.role === "treasure") continue; // priced by MARINARA_TREASURE_THREAT, not measured
     for (const tier of family.tiers)
       for (const level of SAMPLE_LEVELS) {
-        if (level < family.levels[0] || level > family.levels[1] || level < MARINARA_TIER_RULES[tier].minLevel) continue;
+        if (level < family.levels[0] || level > family.levels[1] || level < MARINARA_TIER_RULES[tier].minLevel)
+          continue;
         if (!settingOf(family, level)) continue;
         if (table[family.id]?.[tier]?.[level] !== undefined) continue;
         const copies = COPIES[tier];
         // HP and damage are scaled together (a group at scale s is as strong as s times as many
         // foes, Lanchester's square law), which keeps fight length near the real one; scaling HP
         // alone overrated hard hitters measured far from full size.
-        const s = normalScale((k) => foes(family, tier, level, copies, k, k), level, fights, `${family.id}:${tier}:${level}`);
+        const s = normalScale(
+          (k) => foes(family, tier, level, copies, k, k),
+          level,
+          fights,
+          `${family.id}:${tier}:${level}`,
+        );
         const threat = 4 / (copies * s);
         ((table[family.id] ??= {})[tier] ??= {})[level] = Math.round(threat * 1000) / 1000;
         writeFileSync(out, JSON.stringify(table, null, 1));
