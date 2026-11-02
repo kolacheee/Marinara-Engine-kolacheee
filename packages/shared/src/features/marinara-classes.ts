@@ -1727,7 +1727,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           6,
           "Increases the party's damage by 25% for 3 turns. Cures Confusion and grants immunity to it while active.",
         ),
-        passive("inspire", "Inspire", 15, "While no ally is down, the party deals 10% more damage.", true),
+        passive("defiance", "Defiance", 15, "Allies below half HP deal 20% more damage.", true),
       ],
     },
     {

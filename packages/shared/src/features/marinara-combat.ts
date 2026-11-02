@@ -665,6 +665,8 @@ export interface MarinaraPassiveHooks {
   partyProvokerTakenPct?: number;
   /** Kill Zone: while an ally of the holder provokes, the party deals this much more damage. */
   partyDamageWhileProvoked?: number;
+  /** Defiance: allies of the holder below half HP deal this much more damage. */
+  partyDamageBelowHalf?: number;
   /** A buff on a party member moves its next turn this share of a turn sooner (Tempo). */
   tempoPct?: number;
   /** The user's turns take this share longer (Heavy Draw). */
@@ -750,7 +752,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   tempo: { tempoPct: 0.15 },
   "hold-fast": { partyProvokerTakenPct: -0.15 },
   "kill-zone": { partyDamageWhileProvoked: 0.15 },
-  inspire: { partyDamageWhileWhole: 0.1 },
+  // Replaced Inspire (Alyssa 2026-11-02): a Standard-Bearer can't keep allies whole, so it rewards the hurt.
+  defiance: { partyDamageBelowHalf: 0.2 },
   "fortunes-favour": { partyCritBonus: 10 },
 };
 
@@ -1926,6 +1929,7 @@ export function marinaraHitNumbers(
     if (allyHooks.partyDamageWhileWhole && all.filter((u) => u.side === actor.side).every((u) => u.hp > 0))
       pct += allyHooks.partyDamageWhileWhole;
     if (target.marked > 0) pct += allyHooks.partyBonusVsMarked ?? 0;
+    if (actor.hp < actor.maxHp / 2) pct += allyHooks.partyDamageBelowHalf ?? 0;
     if (
       allyHooks.partyDamageWhileProvoked &&
       living(all.filter((u) => u.side === actor.side)).some((u) => u.provoking > 0)
