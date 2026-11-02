@@ -85,7 +85,19 @@ export const MARINARA_ROUND_TIME = MARINARA_TUNING.timeline / (15 + MARINARA_TUN
 
 export type MarinaraEffectTarget = "enemy" | "all-enemies" | "front-row" | "self" | "ally" | "party" | "downed-ally";
 export type MarinaraStatusId =
-  "sleep" | "stun" | "poison" | "wither" | "bleed" | "burn" | "wound" | "confuse" | "doom" | "slow" | "regen";
+  | "sleep"
+  | "stun"
+  | "poison"
+  | "wither"
+  | "bleed"
+  | "burn"
+  | "freeze"
+  | "shock"
+  | "wound"
+  | "confuse"
+  | "doom"
+  | "slow"
+  | "regen";
 
 export interface MarinaraEffect {
   kind:
@@ -512,6 +524,8 @@ const HARMFUL = new Set<MarinaraStatusId>([
   "wither",
   "bleed",
   "burn",
+  "freeze",
+  "shock",
   "wound",
   "doom",
   "sleep",
@@ -610,7 +624,7 @@ export interface MarinaraPassiveHooks {
   evasionStacking?: number;
   /** Heavy Draw: all damage up 30%. */
   heavyDraw?: boolean;
-  /** Element Mastery: fire hits burn, ice hits slow, lightning hits crit more. */
+  /** Element Mastery: fire hits Burn, ice hits Freeze, lightning hits Shock. */
   elementMastery?: boolean;
   /** Resonance: hits in an element the target is weak to deal this much more damage. */
   elementWeakPct?: number;
@@ -1252,6 +1266,9 @@ export function marinaraEffectiveStat(
     }
   }
   if (stat === "speed" && unit.statuses.some((s) => s.status === "slow")) pct -= 0.3;
+  // Freeze (Element Mastery's ice): Speed down while it lasts.
+  if (stat === "speed" && unit.statuses.some((s) => s.status === "freeze"))
+    pct -= MARINARA_ELEMENT_MASTERY.freezeSpeedPct;
   if (stat === "defense" && unit.defending) pct += MARINARA_TUNING.defendDefensePct + (own.defendBonusPct ?? 0);
   let flat = 0;
   if (stat === "defense" || stat === "resistance") {
@@ -1616,14 +1633,13 @@ export function marinaraOption(
   return marinaraUsable(unit, all).find((option) => option.id === id);
 }
 
-/** Element Mastery's riders: fire burns 4% max HP a turn for 2 turns, ice -15% Speed for 2 turns,
- *  lightning +10 critical rate. */
+/** Element Mastery's ailments, 2 turns each: Burn 4% max HP a turn, Freeze -15% Speed, Shock +10 critical
+ *  chance (flat, added to the attacker's own) on every attack against the target. */
 export const MARINARA_ELEMENT_MASTERY = {
+  turns: 2,
   burnPct: 0.04,
-  burnTurns: 2,
-  iceSlowPct: 0.15,
-  iceSlowTurns: 2,
-  lightningCrit: 10,
+  freezeSpeedPct: 0.15,
+  shockCrit: 10,
 } as const;
 
 /** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
@@ -1802,7 +1818,7 @@ export function marinaraHitNumbers(
         evade,
     ),
   );
-  const critChance = Math.max(
+  const baseCrit = Math.max(
     0,
     Math.min(
       100,
@@ -1811,10 +1827,15 @@ export function marinaraHitNumbers(
         (hooks.critBonus ?? 0) +
         (hooks.critVsDebuffed && marinaraDebuffed(target) ? hooks.critVsDebuffed : 0) +
         (actor.gear?.crit ?? 0) +
-        (hooks.elementMastery && best.type === "lightning" ? MARINARA_ELEMENT_MASTERY.lightningCrit : 0) +
         partyCrit -
         marinaraEffectiveStat(target, "luck", all),
     ),
+  );
+  // Shock (Element Mastery's lightning): a flat +10 on top of whatever the attacker has, never eaten by
+  // the target's Luck (Alyssa 2026-11-02).
+  const critChance = Math.min(
+    100,
+    baseCrit + (target.statuses.some((st) => st.status === "shock") ? MARINARA_ELEMENT_MASTERY.shockCrit : 0),
   );
   // Hard crowd control (Alyssa 2026-11-02): a stunned or sleeping target can't dodge, on either side.
   return {
@@ -2762,19 +2783,18 @@ function strikeOnce(
     roll: Math.floor(roll),
   });
   if (rider) applyRider(actor, target, rider, crit, ctx);
-  // Element Mastery: fire leaves a burn, ice slows (renewed, not stacked).
+  // Element Mastery: each element leaves its ailment (fire Burn, ice Freeze, lightning Shock), renewed
+  // by further hits rather than stacked.
   if (hooks.elementMastery && target.hp > 0) {
     const m = MARINARA_ELEMENT_MASTERY;
-    if (type === "fire" && addStatus(target, { status: "burn", duration: m.burnTurns, power: m.burnPct }, 0, actor.id))
-      ctx.events.push({
-        kind: "debuff",
-        actorId: actor.id,
-        targetId: target.id,
-        status: "burn",
-        skillId: "element-mastery",
-      });
-    if (type === "ice") addMod(target, "speed", -m.iceSlowPct, m.iceSlowTurns, "element-mastery", actor.id);
+    const status = type === "fire" ? "burn" : type === "ice" ? "freeze" : type === "lightning" ? "shock" : undefined;
+    if (
+      status &&
+      addStatus(target, { status, duration: m.turns, ...(status === "burn" ? { power: m.burnPct } : {}) }, 0, actor.id)
+    )
+      ctx.events.push({ kind: "debuff", actorId: actor.id, targetId: target.id, status, skillId: "element-mastery" });
   }
+
   if (effect.siphon && target.hp > 0) siphon(actor, target, effect.siphon.mpPct, ctx, skillId);
   const lifesteal = (hooks.lifestealPct ?? 0) + (actor.gear?.lifestealPct ?? 0) + (effect.drain ?? 0);
   if (lifesteal) actor.hp = Math.round(Math.min(actor.maxHp, actor.hp + dealt * lifesteal * healFactor(actor)));

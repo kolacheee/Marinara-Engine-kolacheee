@@ -1118,7 +1118,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "element-mastery",
           "Element Mastery",
           10,
-          "Hits in the channeled element add an effect. Fire burns the target for 4% of their max HP a turn for 2 turns. Ice reduces their Speed by 15% for 2 turns. Lightning increases critical rate by 10%. Further hits renew the time instead of stacking.",
+          "Hits in the channeled element inflict an ailment for 2 turns. Fire inflicts Burn (loses 4% of max HP a turn). Ice inflicts Freeze (Speed reduced by 15%). Lightning inflicts Shock (attacks against them gain +10% critical chance). Further hits renew the time instead of stacking.",
         ),
         passive("attunement", "Attunement", 15, "Increases spell damage by 15%.", true),
       ],
