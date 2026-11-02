@@ -2408,6 +2408,13 @@ export function GameCombatUI({
                             type="button"
                             disabled={insufficientMp}
                             onClick={() => {
+                              // A Classic skill on the user, the whole party or every foe has no one to
+                              // pick (Alyssa 2026-11-02: Fortress asked for a target): it goes at once.
+                              if (skill.aims === "self" || skill.aims === "party" || skill.aims === "all-enemies") {
+                                playSfx(COMBAT_SFX.magic);
+                                resolveRound({ type: "skill", skillId: skill.id, targetId: activePlayer.id });
+                                return;
+                              }
                               setSelectedAction("skill");
                               setSelectedSkillId(skill.id);
                               setSelectedItemName(null);

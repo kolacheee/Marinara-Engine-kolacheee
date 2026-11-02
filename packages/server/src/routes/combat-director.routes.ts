@@ -1443,6 +1443,7 @@ export async function combatDirectorRoutes(
             marinara?.enemies ??
             (input.enemies.map(({ creature: _c, tier: _t, proposed: _p, ...unit }) => unit) as Combatant[]),
           ...(marinara ? { marinara: marinara.fighters } : {}),
+          ...(marinara ? { marinaraPlace: marinaraGameItemPlace(meta) } : {}),
           id: randomUUID(),
           // Who the scene caught unaware: an opponent among them checks its morale first (combat AI E1).
           surprised: input.enemies.flatMap((one) => (one.surprised ? [one.id] : [])),
