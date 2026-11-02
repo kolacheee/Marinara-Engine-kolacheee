@@ -734,7 +734,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "entrench",
           "Entrench",
           12,
-          "After defending or charging a skill, increases Defense and Resistance by 30% until the user's next turn.",
+          "After defending, increases Defense, Resistance and Strength by 30% until the user's next turn.",
           true,
         ),
         passive("immovable", "Immovable", 15, "Grants immunity to Stun. Increases Defense by 20% while defending."),
