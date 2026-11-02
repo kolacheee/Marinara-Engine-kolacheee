@@ -339,4 +339,18 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(vanishedChance < plainChance, `Vanish makes the user harder to hit (${plainChance} -> ${vanishedChance})`);
 }
 
+// Double Time (Alyssa 2026-11-02): a bonus action that grants one extra action, so two actions that turn.
+{
+  const bard = unit("dt", "party", ["double-time"]);
+  const foe = unit("f", "enemy");
+  const all = [bard, foe];
+  const before = bard.next;
+  use(bard, "double-time", [bard], all);
+  assert.equal(bard.bonusTurns, 2, "Double Time refunds itself and adds one action");
+  assert.equal(bard.next, before, "the timeline does not move");
+  bard.commanded = true;
+  bard.cooldowns = {};
+  assert.equal(marinaraOption(bard, "double-time", all), undefined, "not offered on an extra action");
+}
+
 console.log("game-marinara-abilities: ok");

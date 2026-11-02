@@ -314,7 +314,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     cooldown: 2,
   },
   "hit-and-run": dmg("strength", 5, { speedUntilNext: 0.6 }),
-  "double-time": { kind: "extra-turn", target: "self", cooldown: 3 },
+  // A bonus action that grants one more action: two actions on the turn it is used.
+  "double-time": { kind: "extra-turn", target: "self", cooldown: 3, bonusAction: true },
   shadowstep: dmg("strength", 9, { ranged: true, critBonus: 10 }),
   // Thousand Shadows: three decoys take the next three hits on the party (for 3 of the user's turns).
   "thousand-shadows": {
@@ -1521,7 +1522,8 @@ export function marinaraUsable(unit: MarinaraFighter, all?: readonly MarinaraFig
     if (cost > (resource === "mp" ? unit.mp : unit.stamina)) continue;
     if ((unit.cooldowns[skill.id] ?? 0) > 0) continue;
     if (effect.oncePerFight && unit.used.includes(skill.id)) continue;
-    if (effect.kind === "command" && unit.commanded) continue;
+    // A commanded action can't command or take extra actions in turn (it would only spend itself).
+    if ((effect.kind === "command" || effect.kind === "extra-turn") && unit.commanded) continue;
     if (effect.frontOnly && !front) continue;
     out.push({ id: skill.id, label: skill.label, skill, effect, cost, resource });
   }
@@ -1543,13 +1545,13 @@ export function marinaraOption(
   return marinaraUsable(unit, all).find((option) => option.id === id);
 }
 
-/**
- * Who an effect can be aimed at. In Classic, a taunt or a provoker forces the pick; a vanished
- * unit can't be picked out while anyone else is there. Tactical leaves reach to the board.
- */
 /** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
 export const MARINARA_VANISH_EVADE = 40;
 
+/**
+ * Who an effect can be aimed at. In Classic, a taunt or a provoker forces the pick (a vanished
+ * unit stays targetable, it is just hard to hit). Tactical leaves reach to the board.
+ */
 export function marinaraTargetsFor(
   actor: MarinaraFighter,
   effect: MarinaraEffect,
@@ -2404,7 +2406,9 @@ function act(
       }
       break;
     case "extra-turn":
-      actor.next -= turnLength(actor, all);
+      // Double Time: one extra action, plus the action it gives back as a bonus action. Extra
+      // actions are commanded ones: nothing ticks and the timeline stays where it was.
+      actor.bonusTurns = (actor.bonusTurns ?? 0) + (effect.bonusAction && !actor.commanded ? 2 : 1);
       ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       break;
     case "steal":
