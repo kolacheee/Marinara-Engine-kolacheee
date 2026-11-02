@@ -395,7 +395,7 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   ability("clod", "Clod", "A fist of packed earth.", spell(5, "earth", { ranged: false })),
   ability("torrent", "Torrent", "A jet of water.", spell(5, "water")),
   ability("gust", "Gust", "A cutting gust of wind.", spell(5, "wind")),
-  ability("tailwind", "Tailwind", "Its side gains +20% Speed for 2 turns.", {
+  ability("fair-wind", "Fair Wind", "Its side gains +20% Speed for 2 turns.", {
     kind: "buff",
     target: "party",
     stat: "speed",
@@ -702,7 +702,7 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     },
     { minLevel: 5 },
   ),
-  ability("overcharge", "Overcharge", "Runs hot: +30% Speed for 2 turns.", {
+  ability("run-hot", "Run Hot", "Runs hot: +30% Speed for 2 turns.", {
     kind: "buff",
     target: "self",
     stat: "speed",
@@ -1254,7 +1254,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     rangedBasic: true,
     row: "back",
     affinities: { ...wuxingFoe("lightning"), blunt: "weak", poison: "immune", pierce: "resist" },
-    abilities: at(["spark", 1], ["overcharge", 6], ["storm-breath", 12]),
+    abilities: at(["spark", 1], ["run-hot", 6], ["storm-breath", 12]),
     levels: [2, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1372,7 +1372,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     rangedBasic: true,
     row: "back",
     affinities: { ...wuxingFoe("wind"), poison: "immune", pierce: "resist" },
-    abilities: at(["gust", 1], ["tailwind", 6], ["cyclone", 12]),
+    abilities: at(["gust", 1], ["fair-wind", 6], ["cyclone", 12]),
     levels: [2, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1703,7 +1703,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     rangedBasic: true,
     row: "back",
     affinities: MACHINE,
-    abilities: at(["mark-target", 6], ["overcharge", 10], ["suppressing-fire", 14]),
+    abilities: at(["mark-target", 6], ["run-hot", 10], ["suppressing-fire", 14]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
