@@ -1487,28 +1487,29 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "cleric",
       label: "Cleric",
       from: "mender",
-      role: "Priests who call fallen allies back to the fight.",
+      role: "Healers who mend the entire party at once.",
       leans: ["magic", "resistance"],
       skills: [
-        active("revive", "Revive", 10, "magic", 10, "Revives target downed ally with 25% HP. Cooldown: 3 turns.", true),
-        passive("grace", "Grace", 15, "Healing has a 15% chance to be a critical heal."),
+        // Swapped with Saint's Revive (Alyssa 2026-11-02).
+        active(
+          "sanctuary",
+          "Sanctuary",
+          10,
+          "magic",
+          16,
+          "Restores HP to all allies based on the user's Magic and removes one debuff from each. Reduces the user's Speed by 20% until their next turn.",
+        ),
+        passive("grace", "Grace", 15, "Healing has a 15% chance to be a critical heal.", true),
       ],
     },
     {
       id: "saint",
       label: "Saint",
       from: "cleric",
-      role: "Holy healers who mend the entire party at once.",
+      role: "Holy priests who call fallen allies back to the fight.",
       leans: ["magic", "resistance", "luck"],
       skills: [
-        active(
-          "sanctuary",
-          "Sanctuary",
-          20,
-          "magic",
-          16,
-          "Restores HP to all allies based on the user's Magic and removes one debuff from each. Reduces the user's Speed by 20% until their next turn.",
-        ),
+        active("revive", "Revive", 20, "magic", 10, "Revives target downed ally with 25% HP. Cooldown: 3 turns.", true),
         // Swapped with Lightbearer's Miracle (Alyssa 2026-11-02): Miracle was too strong on the Saint.
         passive("sanctified", "Sanctified", 24, "The party takes 15% less magic damage.", true),
       ],
