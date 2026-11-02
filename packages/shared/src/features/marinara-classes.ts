@@ -552,7 +552,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "strength",
           4,
-          "Attacks one foe with whichever of slash, pierce or blunt they are weakest to, ignoring 30% of their Defense.",
+          "Attacks one foe with whichever of slash, pierce or blunt they are weakest to, ignoring 30% of their Defense and Resistance.",
           true,
         ),
         passive(
@@ -947,7 +947,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Precision shooters who put arrows through armor.",
       leans: ["skill"],
       skills: [
-        active("pierce", "Pierce", 10, "skill", 4, "Attacks one foe, ignoring half their Defense or Resistance.", true),
+        active("pierce", "Pierce", 10, "skill", 4, "Attacks one foe, ignoring half their Defense and Resistance.", true),
         passive(
           "steady",
           "Steady",
@@ -1204,7 +1204,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           7,
-          "Deals magic damage to one foe, ignoring half their Resistance.",
+          "Deals magic damage to one foe, ignoring half their Defense and Resistance.",
         ),
         passive("deep-well", "Deep Well", 15, "Increases max MP by 50%.", true),
       ],
@@ -1380,7 +1380,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           5,
-          "Deals dark damage to one foe, ignoring half their Resistance. Steals one of their buffs, or drains 15% of their max MP if they have none.",
+          "Deals dark damage to one foe, ignoring half their Defense and Resistance. Steals one of their buffs, or drains 15% of their max MP if they have none.",
           true,
         ),
         passive(
