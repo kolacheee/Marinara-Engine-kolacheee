@@ -2577,8 +2577,9 @@ function performMarinaraOptionNow(
     return;
   }
   act(actor, option.skill, option.effect, struck, all, ctx, option.id ?? undefined);
-  if (hooks.extraActionEvery && actor.actions % hooks.extraActionEvery === 0) {
-    // Peerless: every third action grants another action, chosen like any other.
+  if (hooks.extraActionEvery && !actor.commanded && actor.actions % hooks.extraActionEvery === 0) {
+    // Peerless: every third action grants another action, chosen like any other. `actions` counts only
+    // the user's own turns, so the extra action itself (a commanded turn) never grants another.
     actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
     ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "peerless" });
   }

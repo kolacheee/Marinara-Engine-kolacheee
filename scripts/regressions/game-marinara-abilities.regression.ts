@@ -492,6 +492,13 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   paragon.actions = 4;
   performMarinaraOption(paragon, marinaraOption(paragon, null, all)!, [foe], all, ctx());
   assert.equal(paragon.bonusTurns, undefined, "the fourth doesn't");
+  // The extra action itself never grants another (a chain of them was endless).
+  paragon.actions = 3;
+  paragon.bonusTurns = 1;
+  beginMarinaraTurn(paragon, all, ctx());
+  assert.equal(paragon.commanded, true, "the extra action is a commanded turn");
+  performMarinaraOption(paragon, marinaraOption(paragon, null, all)!, [foe], all, ctx());
+  assert.equal(paragon.bonusTurns, undefined, "and it grants no more");
 }
 
 // Double Time (Alyssa 2026-11-02): a bonus action that grants one extra action, so two actions that turn.
