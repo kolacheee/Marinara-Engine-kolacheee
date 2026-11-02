@@ -7,6 +7,7 @@ import assert from "node:assert/strict";
 import {
   createMarinaraProgression,
   marinaraCarryRedundant,
+  setMarinaraClass,
   marinaraClassTraits,
   marinaraUsableSkills,
   setMarinaraCarried,
@@ -39,6 +40,18 @@ assert.ok(!usable(astral).includes("channel-element"), "an Astral Adept doesn't 
 assert.ok(usable(astral).includes("greater-channel-element"));
 assert.ok(marinaraCarryRedundant(astral, "channel-element"), "and isn't offered it beside Greater Channel");
 assert.throws(() => setMarinaraCarried(astral, ["channel-element"]), /Greater Channel/);
+
+// A Starweaver promoted from Astral Adept has its own Greater Channel: Astral Adept's isn't auto-carried
+// (playtest 2026-11-02: two Greater Channel buttons and a lost slot), nor can it be carried.
+const astral20 = at("astral-adept", { channeler: 10, "astral-adept": 20 });
+const starweaver = setMarinaraClass(astral20, "starweaver");
+assert.ok(!starweaver.carried.includes("greater-channel-element"), "not auto-carried on promotion");
+assert.ok(marinaraCarryRedundant(starweaver, "greater-channel-element"));
+assert.throws(() => setMarinaraCarried(starweaver, ["greater-channel-element"]));
+assert.equal(usable(starweaver).filter((id) => id.startsWith("greater-channel-element")).length, 1);
+// An old save that already carries it shows one Greater Channel, not two.
+const staleCarry = { ...starweaver, carried: ["greater-channel-element"] };
+assert.equal(usable(staleCarry).filter((id) => id.startsWith("greater-channel-element")).length, 1);
 
 // A Blade who trained Channeler carries it, and channels.
 const blade = at("blade", { channeler: 5, blade: 5 });
