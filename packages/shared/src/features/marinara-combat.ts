@@ -788,6 +788,10 @@ export interface MarinaraFighter {
   channeled?: MarinaraDamageType;
   /** Channel Element is a bonus action: once between the user's own turns. */
   channeledThisTurn?: boolean;
+  /** Where on the timeline this fighter's latest turn began: "now" while it acts. */
+  turnAt?: number;
+  /** Slow Time already stretched the wait to this fighter's next turn. */
+  waitSlowed?: boolean;
   /** Run by the player: channels by hand. Otherwise (the AI, foes, harnesses) it channels, as its bonus
    *  action, the element its target is weakest to when it strikes with an element. */
   channelManual?: boolean;
@@ -1247,15 +1251,45 @@ const turnLength = (unit: MarinaraFighter, all: readonly MarinaraFighter[], spee
   length *= 1 + (hooksOf(unit).turnPct ?? 0);
   // Slow Time: a debuffed fighter acts later while a foe of its holds time back.
   if (marinaraDebuffed(unit)) {
-    const slowing = Math.max(
-      0,
-      ...living(all.filter((other) => other.side !== unit.side)).map((other) => hooksOf(other).slowDebuffed ?? 0),
-    );
     // Speed down by `slowing` for the wait to their next turn.
-    length /= 1 - Math.min(0.9, slowing);
+    length /= 1 - slowTimeOn(unit, all);
   }
   return length;
 };
+/** Slow Time: how much a standing foe of the unit slows it while it is debuffed (0 when none can). */
+const slowTimeOn = (unit: MarinaraFighter, all: readonly MarinaraFighter[]) =>
+  Math.min(
+    0.9,
+    Math.max(
+      0,
+      ...living(all.filter((other) => other.side !== unit.side)).map((other) => hooksOf(other).slowDebuffed ?? 0),
+    ),
+  );
+
+/**
+ * Slow Time (Alyssa 2026-11-02): a debuff or status ailment that lands slows at once. Each fighter
+ * not debuffed before the action and debuffed after it has the rest of its wait stretched, once per wait.
+ */
+function slowNewlyDebuffed(before: ReadonlySet<MarinaraFighter>, now: number, all: readonly MarinaraFighter[]): void {
+  for (const unit of living(all)) {
+    if (before.has(unit) || unit.waitSlowed || !marinaraDebuffed(unit)) continue;
+    const slowing = slowTimeOn(unit, all);
+    if (slowing <= 0) continue;
+    const left = Math.max(0, unit.next - now);
+    unit.next = now + left / (1 - slowing);
+    unit.waitSlowed = true;
+  }
+}
+
+/** Runs an action, then slows whoever it newly debuffed (Slow Time). */
+function withSlowTime(actor: MarinaraFighter, all: readonly MarinaraFighter[], run: () => void): void {
+  const before = new Set(all.filter((unit) => marinaraDebuffed(unit)));
+  try {
+    run();
+  } finally {
+    slowNewlyDebuffed(before, actor.turnAt ?? Math.min(...living(all).map((unit) => unit.next)), all);
+  }
+}
 
 /** Whether a fighter carries a debuff or a harmful status. */
 export function marinaraDebuffed(unit: MarinaraFighter): boolean {
@@ -2304,7 +2338,10 @@ export function beginMarinaraTurn(
     ctx.events.push({ kind: "down", actorId: actor.id, targetId: actor.id });
     return { acts: false };
   }
+  actor.turnAt = actor.next;
   actor.next += turnLength(actor, all);
+  // A wait timed while debuffed under Slow Time is already slowed.
+  actor.waitSlowed = marinaraDebuffed(actor) && slowTimeOn(actor, all) > 0;
   if (actor.provoking > 0) actor.provoking--;
   if (actor.tauntTurns > 0) actor.tauntTurns--;
   actor.covering = undefined; // Cover lasts until the coverer's next turn.
@@ -2326,6 +2363,15 @@ export function beginMarinaraTurn(
 
 /** Releases a charged skill (Headshot, Convergence) on its target, or the nearest foe in reach. */
 export function releaseMarinaraCharge(
+  actor: MarinaraFighter,
+  release: { skillId: string; targetId: string },
+  all: MarinaraFighter[],
+  ctx: MarinaraFightContext,
+): void {
+  withSlowTime(actor, all, () => releaseMarinaraChargeNow(actor, release, all, ctx));
+}
+
+function releaseMarinaraChargeNow(
   actor: MarinaraFighter,
   release: { skillId: string; targetId: string },
   all: MarinaraFighter[],
@@ -2372,6 +2418,16 @@ export function marinaraCoat(actor: MarinaraFighter, rider: MarinaraDamageType, 
  * fighters; an area or party effect finds the rest itself.
  */
 export function performMarinaraOption(
+  actor: MarinaraFighter,
+  option: MarinaraOption,
+  targets: readonly MarinaraFighter[],
+  all: MarinaraFighter[],
+  ctx: MarinaraFightContext,
+): void {
+  withSlowTime(actor, all, () => performMarinaraOptionNow(actor, option, targets, all, ctx));
+}
+
+function performMarinaraOptionNow(
   actor: MarinaraFighter,
   option: MarinaraOption,
   targets: readonly MarinaraFighter[],
