@@ -387,7 +387,6 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "grave-tithe": "dark",
   "carrion-feast": "dark",
   "total-eclipse": "dark",
-  "rune-strike": "element",
   rot: "poison",
 };
 
@@ -1120,7 +1119,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "Hits in the channeled element inflict an ailment for 2 turns. Fire inflicts Burn (loses 4% of max HP a turn). Ice inflicts Freeze (Speed reduced by 15%). Lightning inflicts Shock (attacks against them gain +10% critical chance). Further hits renew the time instead of stacking.",
         ),
-        passive("attunement", "Attunement", 15, "Increases spell damage by 15%.", true),
+        passive("attunement", "Attunement", 15, "Increases damage in the channeled element by 15%.", true),
       ],
     },
     {
@@ -1157,9 +1156,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           6,
-          "For 3 turns, the party's weapon attacks and skills strike with fire, ice or lightning, whichever the target is weakest to. Cooldown: 2 turns.",
+          "For 3 turns, the party's weapon attacks and skills strike in the user's channeled element. Cooldown: 2 turns.",
         ),
-        active("rune-strike", "Rune Strike", 12, "magic", 5, "Deals damage to one foe in the channeled element.", true),
         passive(
           "warding-runes",
           "Warding Runes",
@@ -1182,7 +1180,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           12,
-          "For 3 turns, the party's weapons take their best element, the party deals 20% more damage, and it takes 30% less fire, ice and lightning damage. Cooldown: 3 turns.",
+          "For 3 turns, the party's weapon attacks and skills strike in the user's channeled element, the party deals 20% more damage, and it takes 30% less fire, ice and lightning damage. Cooldown: 3 turns.",
           true,
         ),
         passive(
@@ -2103,7 +2101,7 @@ const SECONDARY_FITS: Partial<Record<`${MarinaraArchetype}>${MarinaraArchetype}`
   "blade>herald": [["rally", "Lift the party's damage before your heavy hits."]],
   "blade>scout": [["keen-eye", "More hits and crits on every swing."]],
   "channeler>hexer": [["weaken", "Blunt the foe that threatens your back row."]],
-  "hexer>channeler": [["rune-strike", "A damage spell that finds weaknesses."]],
+  "hexer>channeler": [["tempest", "A spell that strikes every foe in the channeled element."]],
   "hexer>mender": [["second-breath", "Heal yourself without spending a healer's turn."]],
   "mender>guard": [["steadfast", "+20% max HP keeps the healer standing."]],
   "herald>blade": [["battle-rhythm", "+15% damage on every attack, so a Herald hits back."]],

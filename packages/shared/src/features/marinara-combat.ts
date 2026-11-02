@@ -370,11 +370,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Hits every foe nearly as hard as one (85% each, not the usual 60%), at a normal turn's weight: the
   // AI cast it 1% of the time against the old Twin Cast's 80% (lab, 2026-11-01).
   tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 2, areaPct: 0.85 }),
-  // Rune Scholar (Alyssa 2026-11-01): its own payoff against affinity foes, in their weakest element.
-  // Balance pass (2026-11-01): 11 -> 9, it out-hit Element Bolt by half again.
-  "rune-strike": dmg("magic", 9, { ranged: true }),
-  // Rune Scholar line (Alyssa 2026-11-01): party elemental support. The party's weapons take whichever
-  // of fire, ice and lightning hurts most.
+  // Rune Scholar line (Alyssa 2026-11-01): party elemental support. The party's weapon attacks and
+  // skills strike in the caster's channeled element (Alyssa 2026-11-02).
   "edge-runes": { kind: "buff", target: "party", stat: "imbue", pct: 1, duration: 3, cooldown: 2 },
   "grand-inscription": {
     kind: "buff",
@@ -628,6 +625,8 @@ export interface MarinaraPassiveHooks {
   elementMastery?: boolean;
   /** Resonance: hits in an element the target is weak to deal this much more damage. */
   elementWeakPct?: number;
+  /** Attunement: more damage on hits in the user's channeled element. */
+  channeledDamagePct?: number;
   bloodlust?: boolean;
   /** Can't be stunned: ever, or while below half HP (Immovable, Unstoppable). */
   stunImmune?: "always" | "below-half";
@@ -702,7 +701,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   // Element Mastery (Alyssa 2026-11-02, the Elementalist in the Fusionist's place).
   "element-mastery": { elementMastery: true },
   sundering: { hitsLowerDefense: 0.1 },
-  attunement: { spellDamagePct: 0.15 },
+  // Attunement (Alyssa 2026-11-02): damage in the channeled element, not all spells.
+  attunement: { channeledDamagePct: 0.15 },
   overcharge: { critBonus: 10 },
   "warding-runes": { partyElementTakenPct: -0.25 },
   "living-runes": { partyElementTakenPct: -0.35, buffDurationBonus: 1 },
@@ -812,7 +812,8 @@ export interface MarinaraFighter {
   enraged?: boolean;
   // fight state
   next: number;
-  mods: Array<{ stat: string; pct: number; turns: number; source: string; by?: string }>;
+  /** `element`: on an "imbue" mod, the element the caster had channeled (Edge Runes, Grand Inscription). */
+  mods: Array<{ stat: string; pct: number; turns: number; source: string; by?: string; element?: MarinaraDamageType }>;
   /** `by`: who laid it, for a curse whose ticks feed its caster (Siphoning Rot). */
   statuses: Array<{ status: MarinaraStatusId; turns: number; power?: number; by?: string }>;
   shield: number;
@@ -1353,7 +1354,8 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
   const options =
     type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
-  const imbued = type === "weapon" && modTotal(actor, "imbue") > 0;
+  // Edge Runes / Grand Inscription: weapon attacks and skills also strike in the caster's channeled element.
+  const runes = imbueElements(actor, type);
   // Ammunition: a Marksman's shot is the loaded type, or under the AI the best type owned.
   const ammo = type === "weapon" || type === "any-physical" ? marinaraAmmoChoices(actor) : [];
   if (ammo.length) {
@@ -1362,10 +1364,17 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
       : actor.ammoLoaded && ammo.includes(actor.ammoLoaded)
         ? [actor.ammoLoaded]
         : options;
-    return imbued ? [...new Set([...shots, ...MARINARA_ELEMENTS])] : shots;
+    return runes.length ? [...new Set([...shots, ...runes])] : shots;
   }
-  // Imbue Weapon: the weapon's damage becomes the user's pick of element.
-  return imbued ? [...options, ...MARINARA_ELEMENTS] : options;
+  return runes.length ? [...new Set([...options, ...runes])] : options;
+}
+
+/** The elements rune buffs lend this fighter's weapon attacks and skills: each caster's channeled one. */
+function imbueElements(actor: MarinaraFighter, type: string): MarinaraDamageType[] {
+  if (type !== "weapon" && type !== "any-physical") return [];
+  return [
+    ...new Set(actor.mods.filter((mod) => mod.stat === "imbue" && mod.pct > 0).map((mod) => mod.element ?? "fire")),
+  ];
 }
 
 /**
@@ -1382,8 +1391,11 @@ export function marinaraAmmoChoices(actor: MarinaraFighter): MarinaraDamageType[
 /** Whether this fighter channels an element: a class of the Channeler tree. */
 export function marinaraCanChannel(actor: MarinaraFighter): boolean {
   if (!actor.classId) return false;
-  // A Channeler-tree class, or anyone carrying a Channeler element spell (Tempest, Rune Strike...).
-  return actor.archetype === "channeler" || actor.skills.some((skill) => skill.damage === "element");
+  // A Channeler-tree class, or anyone carrying a Channeler element spell (Tempest...) or rune buff.
+  return (
+    actor.archetype === "channeler" ||
+    actor.skills.some((skill) => skill.damage === "element" || MARINARA_SKILL_EFFECTS[skill.id]?.stat === "imbue")
+  );
 }
 
 /** The element a Channeler-tree caster strikes with now: the channeled one, fire until they channel. */
@@ -1777,6 +1789,9 @@ export function marinaraHitNumbers(
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
   if (multiplier > 1 && hooks.elementWeakPct && (MARINARA_ELEMENTS as readonly string[]).includes(best.type))
     multiplier *= 1 + hooks.elementWeakPct;
+  // Attunement: hits in the user's own channeled element.
+  if (hooks.channeledDamagePct && marinaraCanChannel(actor) && best.type === marinaraChanneled(actor))
+    multiplier *= 1 + hooks.channeledDamagePct;
   // Warding Runes and Grand Inscription: the elements bite the warded party less.
   if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
     let cut = modTotal(target, "element-taken");
@@ -2253,6 +2268,16 @@ export function performMarinaraOption(
       ctx.events.push({ kind: "channel", actorId: actor.id, type: element });
     else actor.channeledThisTurn = true;
   }
+  // Before a rune buff, it channels the element the most foes standing are weakest to.
+  if (option.effect.stat === "imbue" && marinaraCanChannel(actor) && !actor.channelManual && !actor.channeledThisTurn) {
+    const foes = living(all.filter((unit) => unit.side !== actor.side));
+    const score = (element: MarinaraDamageType) =>
+      foes.reduce((sum, foe) => sum + marinaraBestDamageType([element], foe.affinities).multiplier, 0);
+    const element = [...MARINARA_ELEMENTS].sort((a, b) => score(b) - score(a))[0]!;
+    if (element !== marinaraChanneled(actor) && marinaraChannelElement(actor, element))
+      ctx.events.push({ kind: "channel", actorId: actor.id, type: element });
+    else actor.channeledThisTurn = true;
+  }
   if (option.skill) {
     const { resource, cost } = marinaraSkillCost(actor, option.skill);
     if (resource === "mp") {
@@ -2438,6 +2463,10 @@ function act(
         }
         if (effect.verses) singVerse(target, effect, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
         addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
+        if (effect.stat === "imbue") {
+          const rune = target.mods.find((mod) => mod.stat === "imbue" && mod.source === (skill?.id ?? "buff"));
+          if (rune) rune.element = marinaraChanneled(actor);
+        }
         for (const also of effect.alsoMods ?? [])
           addMod(target, also.stat, also.pct, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
         ctx.events.push({ kind: "buff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
