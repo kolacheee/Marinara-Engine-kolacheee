@@ -145,6 +145,7 @@ export const MARINARA_STATUSES = [
   "soak",
   "rend",
   "windswept",
+  "sear",
   "wither",
   "wound",
   "doom",

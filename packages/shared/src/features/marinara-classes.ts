@@ -177,6 +177,13 @@ export const MARINARA_CHANNEL_CHOICES = [
   ...MARINARA_ELEMENTS,
   "arcane",
 ] as const satisfies readonly MarinaraDamageType[];
+/** Greater Channel Element (Astral Adept, Starweaver) adds light and dark, before raw magic. */
+export const MARINARA_GREATER_CHANNEL_CHOICES = [
+  ...MARINARA_ELEMENTS,
+  "light",
+  "dark",
+  "arcane",
+] as const satisfies readonly MarinaraDamageType[];
 /**
  * What a skill hits with: a fixed type, the user's equipped weapon (Alyssa 2026-10-31: a Blade with
  * a mace hits blunt, and a carried Power Strike takes the type of whatever its user holds), the
@@ -360,6 +367,8 @@ export interface MarinaraSkillDef {
   /** Designed to be worth carrying into other classes. Any skill can be carried. */
   carryPick?: boolean;
   summary: string;
+  /** The summary for a character who can channel light and dark (Element Mastery's extra ailments). */
+  summaryWithLightDark?: string;
 }
 
 export interface MarinaraClassDef {
@@ -393,8 +402,8 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "reckless-swing": "weapon",
   "sweeping-ruin": "weapon",
   arsenal: "any-physical",
-  "thousand-edges": "weapon",
-  verdict: "light",
+  "thousand-edges": "any-physical",
+  landslide: "earth",
   backstab: "weapon",
   "hit-and-run": "weapon",
   shadowstep: "dark",
@@ -403,6 +412,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   headshot: "weapon",
   volley: "weapon",
   "ruinous-barrage": "blunt",
+  "elemental-lance": "element",
   tempest: "element",
   starfall: "light",
   convergence: "element",
@@ -410,6 +420,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "grave-tithe": "dark",
   "carrion-feast": "dark",
   "total-eclipse": "dark",
+  verdict: "light",
   rot: "poison",
 };
 
@@ -448,6 +459,26 @@ const passive = (
   ...(carryPick ? { carryPick } : {}),
 });
 
+/** Element Mastery's text, with or without the light and dark ailments. */
+const elementMasteryText = (lightDark: boolean) =>
+  "Hits in the channeled element inflict an ailment for 2 turns. Fire inflicts Burn (loses 4% of max HP a turn). Ice inflicts Freeze (Speed reduced by 15%). Lightning inflicts Shock (attacks against them gain +10% critical chance). Wood inflicts Entangle (their hit chance reduced by 15%). Earth inflicts Crumble (Defense reduced by 15%). Water inflicts Soak (Resistance reduced by 15%). Metal inflicts Rend (damage dealt reduced by 15%). Wind inflicts Windswept (attacks against them gain +15% hit chance). " +
+  (lightDark
+    ? "Light inflicts Sear (damage taken increased by 10%). Dark inflicts Wound (healing received halved). "
+    : "") +
+  "Further hits renew the time instead of stacking.";
+
+/** Greater Channel Element (Alyssa 2026-11-02): the Astral line's Channel Element, light and dark too.
+ *  Skill ids are unique per class, so Starweaver's copy has its own id. */
+const greaterChannel = (id = "greater-channel-element") =>
+  active(
+    id,
+    "Greater Channel Element",
+    1,
+    "magic",
+    0,
+    "Bonus action. Channels fire, ice, lightning, wood, earth, water, metal, wind, light, or dark, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Replaces Channel Element.",
+  );
+
 type ClassRow = Omit<MarinaraClassDef, "archetype" | "tier" | "pure"> & { tier?: MarinaraClassTier; pure?: boolean };
 
 /** One tree, in the order base, advanced A, master A, advanced B, master B, pure advanced, pure master. */
@@ -479,7 +510,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "strength",
           0,
-          "Deals heavy damage to one foe. Reduces the user's Speed by 25% until their next turn.",
+          "Deals heavy damage to target foe. Reduces the user's Speed by 25% until their next turn.",
           true,
         ),
       ],
@@ -491,7 +522,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Swordsmen who excel at single combat, striking twice and punishing every missed attack.",
       leans: ["speed", "skill"],
       skills: [
-        active("flurry", "Flurry", 10, "speed", 4, "Strikes one foe twice."),
+        active("flurry", "Flurry", 10, "speed", 4, "Strikes target foe twice."),
         passive("riposte", "Riposte", 12, "Counterattacks when a melee attack misses the user."),
         passive("keen-edge", "Keen Edge", 15, "Increases critical rate by 10%.", true),
       ],
@@ -509,10 +540,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "skill",
           8,
-          "Deals damage to one foe with +30% critical rate. Deals 50% more to foes below half HP.",
+          "Deals damage to target foe with +30% critical rate. Deals 50% more to foes below half HP.",
           true,
         ),
-        passive("follow-through", "Follow Through", 24, "Once per turn, defeating a foe grants another action."),
+        passive(
+          "follow-through",
+          "Follow Through",
+          24,
+          "Once per turn, defeating a foe or landing a critical hit grants another action.",
+        ),
       ],
     },
     {
@@ -528,7 +564,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "strength",
           3,
-          "Deals massive damage to one foe with +15% accuracy and inflicts Wound (healing received halved) for 3 turns. Reduces the user's Defense by 30% for 2 turns.",
+          "Deals massive damage to target foe with +15% accuracy and inflicts Wound (healing received halved) for 3 turns. Reduces the user's Defense by 20% for 2 turns.",
         ),
         passive("bloodrage", "Bloodrage", 12, "Increases damage dealt by up to 60% as the user's HP falls."),
         passive("bloodlust", "Bloodlust", 15, "Restores HP equal to 15% of damage dealt.", true),
@@ -547,7 +583,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "strength",
           8,
-          "Deals damage to all foes in the front row and reduces the damage of foes hit by 15% for 2 turns. Reduces the user's Speed by 20% until their next turn.",
+          "Deals damage to all foes and reduces the damage of foes hit by 15% for 2 turns. Reduces the user's Speed by 20% until their next turn.",
           true,
         ),
         passive(
@@ -572,7 +608,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "strength",
           4,
-          "Attacks one foe with whichever of slash, pierce or blunt they are weakest to, ignoring 30% of their Defense and Resistance.",
+          "Attacks target foe with whichever of slash, pierce or blunt they are weakest to, ignoring 30% of their Defense and Resistance.",
           true,
         ),
         passive(
@@ -597,7 +633,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "strength",
           12,
-          "Deals damage to every foe within reach. Reduces the user's Speed by 25% until their next turn. Cooldown: 3 turns.",
+          "Deals damage to every foe within reach, with whichever of slash, pierce or blunt each is weakest to. Reduces the user's Speed by 25% until their next turn. Cooldown: 3 turns.",
         ),
         passive("peerless", "Peerless", 25, "Grants an extra action every third action.", true),
       ],
@@ -716,17 +752,17 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "elder-warden",
       label: "Elder Warden",
       from: "warden",
-      role: "Veteran Wardens whose resistance to magic has become a weapon of judgement.",
+      role: "Veteran Wardens whose endurance has become a weapon as heavy as the earth itself.",
       leans: ["resistance", "hp", "defense"],
       tune: { resistance: 20 },
       skills: [
         active(
-          "verdict",
-          "Verdict",
+          "landslide",
+          "Landslide",
           20,
           "resistance",
           8,
-          "Deals light-element magic damage to one foe based on the user's Defense or Resistance, whichever is higher.",
+          "Deals earth-element magic damage to target foe based on the user's Defense or Resistance, whichever is higher.",
           true,
         ),
         passive("elder-oath", "Elder Oath", 24, "Increases Resistance by 50%. Grants immunity to Doom and Sleep."),
@@ -746,7 +782,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Warding Stance",
           10,
           "resistance",
-          4,
+          6,
           "Increases the user's Resistance by 50% for 2 turns, and draws every foe's single-target attacks to the user for 2 turns.",
           true,
         ),
@@ -794,7 +830,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "speed",
           0,
-          "Attempts to steal an item or gold from one foe. Better odds the faster the user is than the foe; worse against elites and bosses.",
+          "Attempts to steal an item or gold from target foe. Better odds the faster the user is than the foe; worse against elites and bosses.",
           true,
         ),
         passive("light-feet", "Light Feet", 5, "Increases evasion by 10%."),
@@ -813,7 +849,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "skill",
           3,
-          "Deals damage to one foe with +15% critical rate. Deals 50% more if an ally struck the target since their last turn.",
+          "Deals damage to target foe with +15% critical rate. Deals 50% more if an ally struck the target since their last turn.",
         ),
         passive(
           "exploit",
@@ -861,7 +897,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "speed",
           3,
-          "Attacks one foe as a basic attack would. Increases the user's Speed by 60% until their next turn.",
+          "Attacks target foe as a basic attack would. Increases the user's Speed by 60% until their next turn.",
         ),
         passive("fleet", "Fleet", 15, "Increases Speed by 20%.", true),
       ],
@@ -897,7 +933,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "skill",
           4,
-          "Deals damage to one foe with +10% critical rate. Reaches the back row at full damage.",
+          "Deals dark damage to target foe with +10% critical rate. Reaches the back row at full damage.",
           true,
         ),
         passive(
@@ -921,14 +957,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "speed",
           14,
-          "Creates three decoys that take the next three hits that would land on any party member. Once per battle.",
+          "Creates three decoys that take the next three hits that would land on any party member. Twice per battle.",
           true,
         ),
         passive(
           "perfect-evasion",
           "Perfect Evasion",
           25,
-          "Each attack that misses the user increases their evasion by 10%, up to 30%.",
+          "Each attack that misses the user increases their evasion by 10%, up to 40%.",
         ),
       ],
     },
@@ -955,7 +991,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "skill",
           0,
-          "Attacks one foe with +30% accuracy. Reduces the user's Speed by 20% until their next turn.",
+          "Attacks target foe with +30% accuracy. Reduces the user's Speed by 20% until their next turn.",
         ),
         passive("true-aim", "True Aim", 5, "Increases accuracy by 15%.", true),
       ],
@@ -973,7 +1009,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "skill",
           4,
-          "Attacks one foe, ignoring half their Defense and Resistance.",
+          "Attacks target foe, ignoring half their Defense and Resistance.",
           true,
         ),
         passive(
@@ -997,7 +1033,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "skill",
           10,
-          "Charges for one turn, then deals massive damage to one foe with +25% critical rate.",
+          "Charges for one turn, then deals massive damage to target foe with +25% critical rate.",
         ),
         passive("dead-eye", "Dead Eye", 22, "Increases critical rate by 15%. Hits on a weakness deal 25% more."),
         passive(
@@ -1056,7 +1092,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           22,
           "strength",
           4,
-          "Bonus action. The user's active companion strikes one foe. Usable every other turn.",
+          "Bonus action. The user's active companion strikes target foe. Usable every other turn.",
         ),
         passive("pack-tactics", "Pack Tactics", 24, "The party deals 40% more damage to marked foes.", true),
         passive(
@@ -1117,6 +1153,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       label: "Channeler",
       role: "Elemental mages who wield fire, ice, lightning, wood, earth, water, metal and wind.",
       leans: ["magic"],
+      tune: { hp: 15 },
       skills: [
         active(
           "channel-element",
@@ -1136,11 +1173,19 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Masters of the elements whose spells scorch, freeze, shock, bind, crush, drown, rend and scatter all they touch.",
       leans: ["magic", "skill"],
       skills: [
-        passive(
-          "element-mastery",
-          "Element Mastery",
-          10,
-          "Hits in the channeled element inflict an ailment for 2 turns. Fire inflicts Burn (loses 4% of max HP a turn). Ice inflicts Freeze (Speed reduced by 15%). Lightning inflicts Shock (attacks against them gain +10% critical chance). Wood inflicts Entangle (their hit chance reduced by 15%). Earth inflicts Crumble (Defense reduced by 15%). Water inflicts Soak (Resistance reduced by 15%). Metal inflicts Rend (damage dealt reduced by 15%). Wind inflicts Windswept (attacks against them gain +15% hit chance). Further hits renew the time instead of stacking.",
+        {
+          ...passive("element-mastery", "Element Mastery", 10, elementMasteryText(false)),
+          // Light and dark show only to a character who can channel them (Alyssa 2026-11-02).
+          summaryWithLightDark: elementMasteryText(true),
+        },
+        // Its own single-target spell (playtest 2026-11-02: "where are my spells?").
+        active(
+          "elemental-lance",
+          "Elemental Lance",
+          12,
+          "magic",
+          5,
+          "Deals damage to target foe in the channeled element.",
         ),
         passive("attunement", "Attunement", 15, "Increases damage in the channeled element by 15%.", true),
       ],
@@ -1158,7 +1203,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           10,
-          "Deals damage to all foes in the channeled element at 85% of a single-target spell. Cooldown: 2 turns.",
+          "Deals damage to all foes in the channeled element at 70% of a single-target spell, or full damage when only one foe is left. Cooldown: 3 turns.",
           true,
         ),
         passive("overcharge", "Overcharge", 24, "Increases critical rate by 10%."),
@@ -1221,15 +1266,16 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Mages who cast raw starlight that pierces magical defenses.",
       leans: ["magic", "resistance", "skill"],
       skills: [
+        greaterChannel(),
         active(
           "starfall",
           "Starfall",
           10,
           "magic",
-          7,
-          "Deals damage to one foe, ignoring half their Defense and Resistance.",
+          10,
+          "Deals light damage to target foe, ignoring half their Defense and Resistance.",
         ),
-        passive("deep-well", "Deep Well", 15, "Increases max MP by 50%.", true),
+        passive("deep-well", "Deep Well", 15, "Increases max MP by 30%.", true),
       ],
     },
     {
@@ -1238,16 +1284,18 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "astral-adept",
       role: "Archmages who gather the power of the stars into a single, devastating spell.",
       leans: ["magic", "resistance", "skill", "speed"],
+      tune: { hp: 15, magic: 10 },
       skills: [
+        greaterChannel("greater-channel-element-starweaver"),
         active(
           "convergence",
           "Convergence",
           20,
           "magic",
-          18,
-          "Charges for one turn, then deals massive damage to one foe.",
+          30,
+          "Charges for one turn, then deals massive damage to target foe. Never misses.",
         ),
-        passive("mana-tide", "Mana Tide", 25, "Restores 8% of max MP every turn.", true),
+        passive("mana-tide", "Mana Tide", 25, "Restores 5% of max MP every turn.", true),
       ],
     },
   ]),
@@ -1255,7 +1303,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "hexer",
       label: "Hexer",
-      role: "Curse-casters who sap the enemy's strength and drain their HP.",
+      role: "Curse-casters who sap the enemy's strength and drain their HP with dark magic.",
       leans: ["magic", "resistance"],
       skills: [
         active(
@@ -1264,7 +1312,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "magic",
           3,
-          "Reduces one foe's Strength or Magic, whichever is higher, by 20% for 3 turns.",
+          "Saps 25% of target foe's Strength or Magic, whichever is higher, for 3 turns.",
           true,
         ),
         active(
@@ -1273,7 +1321,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           3,
           "magic",
           3,
-          "Inflicts Wither: the foe loses 6% of max HP each turn for 3 turns. Cannot be resisted. Also inflicts Wound (healing received halved) for 3 turns.",
+          "Inflicts Wither: the foe loses 5% of max HP each turn for 3 turns. Cannot be resisted. Also inflicts Wound (healing received halved) for 3 turns.",
         ),
         passive("drain-touch", "Drain Touch", 5, "Restores HP equal to 20% of damage dealt.", true),
       ],
@@ -1296,16 +1344,16 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Rot",
           10,
           "magic",
-          5,
-          "Inflicts Poison on one foe (6% of max HP per turn for 4 turns). 90% success.",
+          3,
+          "Has a 90% chance to inflict Poison on target foe (6% of max HP per turn for 4 turns).",
         ),
         passive(
           "grave-hunger",
           "Grave Hunger",
           12,
-          "Steals 15% of Defense and Resistance from each foe in spell range, up to five (25% from the front row).",
+          "Saps 15% of Defense and Resistance from each foe in spell range, up to five (25% from the front row).",
         ),
-        passive("grave-skin", "Grave Skin", 15, "Reduces damage taken by 15% while in the front row.", true),
+        passive("grave-skin", "Grave Skin", 15, "Reduces damage taken by 20% while in the front row.", true),
       ],
     },
     {
@@ -1325,7 +1373,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           10,
-          "Deals heavy dark damage to one foe and restores HP equal to the damage dealt. Cooldown: 2 turns.",
+          "Deals heavy dark damage to target foe and saps HP equal to the damage dealt. Cooldown: 2 turns.",
         ),
         active(
           "grave-tithe",
@@ -1333,13 +1381,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           22,
           "magic",
           6,
-          "Deals dark damage to all foes and restores HP equal to half the damage dealt. Front row only. Usable every other turn.",
+          "Deals dark damage to all foes and saps HP equal to half the damage dealt. Front row only. Usable every other turn.",
         ),
         passive(
           "siphoning-rot",
           "Siphoning Rot",
           24,
-          "The user's Poison and Wither restore HP equal to half the damage they deal.",
+          "The user's Poison and Wither sap HP equal to half the damage they deal.",
           true,
         ),
       ],
@@ -1351,7 +1399,6 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Hexers who lull foes to sleep and slow the battle to a crawl.",
       leans: ["magic", "speed"],
       // The Hexer lines' Resistance cut (Alyssa 2026-11-01): the Warden line is the magic tank.
-      tune: { resistance: -10 },
       skills: [
         active(
           "lull",
@@ -1359,14 +1406,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           5,
-          "Inflicts Sleep on one foe for 3 turns. 75% success. Taking damage wakes the target.",
+          "Has a 75% chance to inflict Sleep on target foe for 3 turns. Taking damage wakes the target.",
           true,
         ),
         passive(
           "slow-time",
           "Slow Time",
           15,
-          "While the user stands, foes with a debuff or status ailment take 25% longer between turns.",
+          "While the user stands, foes with a debuff or status ailment have their Speed reduced by 20% until their next turn.",
         ),
       ],
     },
@@ -1376,7 +1423,6 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "dreamcaller",
       role: "Illusionists who turn the enemy against itself.",
       leans: ["magic", "speed"],
-      tune: { resistance: -10 },
       skills: [
         active(
           "mass-confusion",
@@ -1384,7 +1430,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           14,
-          "Inflicts Confusion on all foes for 2 turns. 70% success each.",
+          "Has a 70% chance to inflict Confusion on each foe for 2 turns. Cooldown: 3 turns.",
         ),
         passive("nightmare", "Nightmare", 24, "Sleeping foes lose 10% of max HP each turn.", true),
       ],
@@ -1403,7 +1449,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           5,
-          "Deals dark damage to one foe, ignoring half their Defense and Resistance. Steals one of their buffs, or drains 15% of their max MP if they have none.",
+          "Deals dark damage to target foe, ignoring half their Defense and Resistance. Steals one of their buffs, or drains 15% of their max MP if they have none.",
           true,
         ),
         passive(
@@ -1430,7 +1476,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           12,
-          "Deals dark damage to all foes and reduces the damage of foes hit by 20% for 2 turns. Cooldown: 2 turns.",
+          "Deals dark damage to all foes and reduces the damage of foes hit by 25% for 2 turns. Cooldown: 2 turns.",
           true,
         ),
         passive("abyssal-will", "Abyssal Will", 22, "Increases spell damage by 20%."),
@@ -1443,49 +1489,45 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "mender",
       label: "Mender",
-      role: "Healers who keep the party standing and cure what ails them.",
+      role: "Healers who keep the party standing with light magic and cure what ails them.",
       leans: ["magic", "resistance"],
       skills: [
-        active("mend", "Mend", 1, "magic", 3, "Restores HP to one ally.", true),
-        active(
-          "second-breath",
-          "Second Breath",
-          5,
-          "hp",
-          4,
-          "Restores 25% of the user's max HP. Cooldown: 3 turns.",
-          true,
-        ),
-        active("purify", "Purify", 8, "magic", 3, "Removes all debuffs and status ailments from one ally.", true),
+        active("mend", "Mend", 1, "magic", 3, "Restores HP to target ally based on the user's Magic.", true),
+        // Replaced Second Breath (Alyssa 2026-11-02): a smite, so a lone Mender isn't helpless.
+        active("verdict", "Verdict", 5, "magic", 6, "Deals light damage to target foe with +15% accuracy.", true),
+        active("purify", "Purify", 8, "magic", 3, "Removes all debuffs and status ailments from target ally.", true),
       ],
     },
     {
       id: "cleric",
       label: "Cleric",
       from: "mender",
-      role: "Priests who call fallen allies back to the fight.",
+      role: "Healers who mend the entire party at once.",
       leans: ["magic", "resistance"],
       skills: [
-        active("revive", "Revive", 10, "magic", 10, "Revives one downed ally with 25% HP. Cooldown: 3 turns.", true),
-        passive("grace", "Grace", 15, "Healing has a 15% chance to be a critical heal."),
+        // Swapped with Saint's Revive (Alyssa 2026-11-02).
+        active(
+          "sanctuary",
+          "Sanctuary",
+          10,
+          "magic",
+          12,
+          "Restores HP to all allies based on the user's Magic and removes one debuff from each. Reduces the user's Speed by 20% until their next turn.",
+        ),
+        // From Lightbearer (via Saint), swapped with Grace (Alyssa 2026-11-02).
+        passive("sanctified", "Sanctified", 15, "The party takes 15% less magic damage.", true),
       ],
     },
     {
       id: "saint",
       label: "Saint",
       from: "cleric",
-      role: "Holy healers who mend the entire party at once.",
+      role: "Holy priests who call fallen allies back to the fight.",
       leans: ["magic", "resistance", "luck"],
       skills: [
-        active(
-          "sanctuary",
-          "Sanctuary",
-          20,
-          "magic",
-          16,
-          "Restores HP to all allies and removes one debuff from each. Reduces the user's Speed by 20% until their next turn.",
-        ),
-        passive("miracle", "Miracle", 24, "Once per battle, the first ally to fall gets back up with 30% HP.", true),
+        active("revive", "Revive", 20, "magic", 10, "Revives target downed ally with 35% HP. Cooldown: 3 turns.", true),
+        // Swapped with Cleric's Sanctified (Alyssa 2026-11-02).
+        passive("grace", "Grace", 24, "Healing has a 15% chance to be a critical heal."),
       ],
     },
     {
@@ -1495,7 +1537,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Alchemists who heal with remedies and get the most out of every item.",
       leans: ["skill", "magic"],
       skills: [
-        active("remedy", "Remedy", 10, "magic", 4, "Restores HP to one ally and removes all their debuffs."),
+        active(
+          "remedy",
+          "Remedy",
+          10,
+          "magic",
+          4,
+          "Restores HP to target ally based on the user's Magic and removes all their debuffs and status ailments.",
+        ),
         passive("item-savant", "Item Savant", 15, "Items used by the user are 50% more effective.", true),
       ],
     },
@@ -1530,7 +1579,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Protectors who shield allies before the blow lands.",
       leans: ["magic", "resistance", "hp"],
       skills: [
-        active("barrier", "Barrier", 10, "magic", 6, "Grants one ally a shield that absorbs damage.", true),
+        active(
+          "barrier",
+          "Barrier",
+          10,
+          "magic",
+          3,
+          "Grants target ally a shield that absorbs damage based on the user's Magic. Does not stack with other shields.",
+          true,
+        ),
         passive("overheal", "Overheal", 15, "Half of any healing beyond max HP becomes a shield."),
       ],
     },
@@ -1549,7 +1606,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "Revives every downed ally with 50% HP. Once per battle.",
         ),
-        passive("sanctified", "Sanctified", 25, "The party takes 15% less magic damage.", true),
+        passive("miracle", "Miracle", 25, "Once per battle, the first ally to fall gets back up with 30% HP.", true),
       ],
     },
   ]),
@@ -1628,11 +1685,20 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "field-captain",
       label: "Field Captain",
       from: "herald",
-      role: "Officers who command allies to act on their order.",
+      role: "Officers who turn the enemy's attention onto the ally best able to take it.",
       leans: ["speed", "skill"],
       skills: [
-        active("command", "Command", 10, "skill", 6, "One ally acts at once.", true),
-        passive("foresight", "Foresight", 15, "Increases the party's Defense by 10%."),
+        // Reworked (Alyssa 2026-11-02): the party's way to tank with someone who has no taunt of their own.
+        active(
+          "draw-fire",
+          "Draw Fire",
+          10,
+          "skill",
+          4,
+          "Target ally draws all foes' single-target attacks onto themselves for 2 turns.",
+          true,
+        ),
+        passive("hold-fast", "Hold Fast", 15, "An ally drawing foes' attacks takes 25% less damage."),
       ],
     },
     {
@@ -1647,10 +1713,16 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Grand Strategy",
           20,
           "skill",
-          18,
-          "Every ally acts once, at once. Cooldown: 4 turns.",
+          6,
+          "Bonus action. Target ally acts at once. Cooldown: 3 turns.",
         ),
-        passive("formation", "Formation", 24, "Increases the party's Defense by 15% while no ally is down.", true),
+        passive(
+          "kill-zone",
+          "Kill Zone",
+          24,
+          "While an ally is drawing foes' attacks, the party deals 25% more damage.",
+          true,
+        ),
       ],
     },
     {
@@ -1661,6 +1733,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       // Luck, Speed and Skill (Alyssa 2026-11-01: not HP and Defense): raises the banner first and
       // carries it well, but isn't a wall.
       leans: ["luck", "speed", "skill"],
+      tune: { hp: 15 },
       skills: [
         active(
           "raise-the-banner",
@@ -1668,9 +1741,9 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "luck",
           6,
-          "Increases the party's damage by 25% for 3 turns. Cures Confusion and prevents it while the banner flies.",
+          "Increases the party's damage by 25% for 3 turns. Cures Confusion and grants immunity to it while active.",
         ),
-        passive("inspire", "Inspire", 15, "While no ally is down, the party deals 10% more damage.", true),
+        passive("morale", "Morale", 15, "Allies resist status ailments 30% of the time.", true),
       ],
     },
     {
@@ -1679,8 +1752,9 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "standard-bearer",
       role: "Legendary leaders the party steers by, who turn the tide when it matters.",
       leans: ["luck", "speed", "hp", "skill"],
+      tune: { hp: 15 },
       skills: [
-        active("hour-of-heroes", "Hour of Heroes", 20, "luck", 20, "Every ally acts once, at once. Once per battle."),
+        active("hour-of-heroes", "Hour of Heroes", 20, "luck", 24, "Every ally acts once, at once. Cooldown: 4 turns."),
         passive("fortunes-favour", "Fortune's Favour", 25, "Increases the party's critical rate by 10%.", true),
       ],
     },
@@ -1906,6 +1980,18 @@ function promotionCarries(progression: MarinaraProgression, def: MarinaraClassDe
 }
 
 /** Every skill the character has learned, in any class. */
+/** Whether this character can channel light and dark: they learned Greater Channel Element. */
+export function marinaraCanChannelLightDark(progression: MarinaraProgression): boolean {
+  return marinaraLearnedSkills(progression).some((skill) => skill.id.startsWith("greater-channel-element"));
+}
+
+/** A skill's text for this character: Element Mastery names light and dark only to those who channel them. */
+export function marinaraSkillSummary(skill: MarinaraSkillDef, progression?: MarinaraProgression): string {
+  return skill.summaryWithLightDark && progression && marinaraCanChannelLightDark(progression)
+    ? skill.summaryWithLightDark
+    : skill.summary;
+}
+
 export function marinaraLearnedSkills(progression: MarinaraProgression): Array<MarinaraSkillDef & { classId: string }> {
   return Object.entries(progression.classLevels).flatMap(([classId, classLevel]) =>
     (marinaraClass(classId)?.skills ?? [])
@@ -2125,7 +2211,7 @@ const SECONDARY_FITS: Partial<Record<`${MarinaraArchetype}>${MarinaraArchetype}`
   "blade>scout": [["keen-eye", "More hits and crits on every swing."]],
   "channeler>hexer": [["weaken", "Blunt the foe that threatens your back row."]],
   "hexer>channeler": [["tempest", "A spell that strikes every foe in the channeled element."]],
-  "hexer>mender": [["second-breath", "Heal yourself without spending a healer's turn."]],
+  "hexer>mender": [["mend", "Patch up an ally between curses."]],
   "mender>guard": [["steadfast", "+20% max HP keeps the healer standing."]],
   "herald>blade": [["battle-rhythm", "+15% damage on every attack, so a Herald hits back."]],
   "marksman>herald": [["rally", "Raise the party's damage, then shoot."]],

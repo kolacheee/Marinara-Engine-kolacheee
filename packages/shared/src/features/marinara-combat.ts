@@ -22,7 +22,9 @@ import {
   MARINARA_ARCHETYPE_ATTACKS,
   MARINARA_ARCHETYPE_BASES,
   MARINARA_CHANNEL_CHOICES,
+  MARINARA_GREATER_CHANNEL_CHOICES,
   MARINARA_ELEMENTS,
+  MARINARA_PHYSICAL_TYPES,
   MARINARA_STAMINA,
   MARINARA_STATS,
   MARINARA_POISON_RIDER,
@@ -99,6 +101,7 @@ export type MarinaraStatusId =
   | "soak"
   | "rend"
   | "windswept"
+  | "sear"
   | "wound"
   | "confuse"
   | "doom"
@@ -130,6 +133,8 @@ export interface MarinaraEffect {
   damage?: "physical" | "magic";
   /** The skill's own kind of damage before the weapon's Strength-or-Magic rule switched it: a weapon skill
    *  struck with Magic still carries coatings, a spell struck with Strength still doesn't. */
+  /** Weaken: the user gains the stat the debuff takes from the foe (Strength or Magic), by the same share. */
+  sapsToUser?: boolean;
   nature?: "physical" | "magic";
   /** Comes from a carried skill: runs on the user's carried stats. */
   carried?: boolean;
@@ -154,6 +159,7 @@ export interface MarinaraEffect {
     | "element-taken"
     | "deathless"
     | "shadows"
+    | "evasion"
     | "best-attack"
     | "crescendo";
   /** Buff: more stats changed alongside `stat`, for the same turns (Grand Inscription). */
@@ -170,6 +176,10 @@ export interface MarinaraEffect {
   spread?: number;
   /** This area attack's own share per foe, in place of MARINARA_TUNING.areaSpreadPct (Tempest). */
   areaPct?: number;
+  /** Never misses (Convergence's charged blow). */
+  sureHit?: boolean;
+  /** Tempest: an area attack that deals full damage when only one foe is left. */
+  loneFull?: boolean;
   /** Vanish: +40 evasion until the user's next turn. They can still be targeted, so Provoke and
    *  Challenge still pull foes onto them (evasion tanking). */
   hide?: boolean;
@@ -184,6 +194,8 @@ export interface MarinaraEffect {
   provokes?: number;
   /** The user's next landed hit exposes its target: everyone deals this much more to it for 2 turns. */
   exposeNext?: number;
+  /** Vanish: the user's next hit that lands is a critical hit. */
+  critNext?: boolean;
   /** A landed status also exposes the target (Seal). */
   exposes?: { pct: number; duration: number };
   /** Heals that cleanse: every debuff, or the worst one on each target. */
@@ -201,6 +213,8 @@ export interface MarinaraEffect {
   /** Its cooldown falls on every fighter of the user's side who has it (Fortress). */
   sideCooldown?: boolean;
   oncePerFight?: boolean;
+  /** Usable this many times a fight (Thousand Shadows: twice). */
+  usesPerFight?: number;
   /** A revive that raises every downed ally, not one (Undying Light). */
   allDowned?: boolean;
   /** Decoys that take the next hits on the user's party (Thousand Shadows). */
@@ -220,7 +234,7 @@ export interface MarinaraEffect {
   /** Lowers the target's stat after a hit (Shield Bash stagger, Sundering). */
   onHit?: { stat: MarinaraStat | "damage"; pct: number; duration: number };
   /** Damage counted from another stat; "guard" is Defense or Resistance, whichever is higher
-   *  (Verdict; Alyssa 2026-11-02). */
+   *  (Landslide; Alyssa 2026-11-02). */
   from?: MarinaraStat | "guard";
   /** Extra damage below this share of the target's HP (finishers). */
   finisher?: { below: number; bonus: number };
@@ -288,11 +302,12 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Balance pass (2026-11-01): it missed evasive foes too often, and opens a Wound (the party's anti-heal).
   "reckless-swing": dmg("strength", 13, {
     hitBonus: 15,
-    selfDebuff: { stat: "defense", pct: -0.3, duration: 2 },
+    selfDebuff: { stat: "defense", pct: -0.2, duration: 2 },
     applies: { status: "wound", duration: 3 },
   }),
+  // Every foe (playtest 2026-11-02): melee, so the back row takes half, as for any melee hit.
   "sweeping-ruin": dmg("strength", 13, {
-    target: "front-row",
+    target: "all-enemies",
     speedUntilNext: -0.2,
     onHit: { stat: "damage", pct: -0.15, duration: 2 },
   }),
@@ -314,7 +329,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     sideCooldown: true,
   },
   spellguard: { kind: "buff", target: "party", stat: "resistance", pct: 0.3, duration: 2 },
-  verdict: dmg("magic", 6, { from: "guard" }),
+  landslide: dmg("magic", 6, { from: "guard" }),
   // Balance pass (2026-11-01): the Pure Guard line's taunt; its tank held fewer fights than a Sentinel's.
   "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2, provokes: 2 },
   // Oath of Iron: nobody of the party drops below 1 HP until their next turn.
@@ -325,10 +340,12 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   vanish: {
     kind: "buff",
     target: "self",
-    stat: "damage",
-    pct: 0.6,
+    // The evasion itself comes from `hide` (MARINARA_VANISH_EVADE); the mod only shows it on the sheet.
+    stat: "evasion",
+    pct: 0.4,
     duration: 1,
     hide: true,
+    critNext: true,
     exposeNext: 0.2,
     // A bonus action (Alyssa 2026-11-01): the Phantom vanishes and strikes in the same turn.
     bonusAction: true,
@@ -347,7 +364,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     pct: 0,
     duration: 3,
     decoys: 3,
-    oncePerFight: true,
+    usesPerFight: 2,
   },
   // Marksman
   "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, speedUntilNext: -0.2 }),
@@ -372,10 +389,13 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Channeler
   // Channel Element is a bonus action taken outside the skill menu (marinaraChannelElement).
   "channel-element": { kind: "none", target: "self" },
+  "greater-channel-element": { kind: "none", target: "self" },
+  "greater-channel-element-starweaver": { kind: "none", target: "self" },
   // More power (Alyssa 2026-11-01): was 6.
   // Hits every foe nearly as hard as one (85% each, not the usual 60%), at a normal turn's weight: the
   // AI cast it 1% of the time against the old Twin Cast's 80% (lab, 2026-11-01).
-  tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 2, areaPct: 0.85 }),
+  "elemental-lance": dmg("magic", 11, { ranged: true }),
+  tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 3, areaPct: 0.7, loneFull: true }),
   // Rune Scholar line (Alyssa 2026-11-01): party elemental support. The party's weapon attacks and
   // skills strike in the caster's channeled element (Alyssa 2026-11-02).
   "edge-runes": { kind: "buff", target: "party", stat: "imbue", pct: 1, duration: 3, cooldown: 2 },
@@ -391,10 +411,11 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   },
   // Balance pass (2026-11-01): ignores half of Resistance (was all of it) and every elemental resistance.
   starfall: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
-  convergence: dmg("magic", 24, { ranged: true, charge: true }),
+  // A sure hit on its charged turn (playtest 2026-11-02), paid for with a very high MP cost.
+  convergence: dmg("magic", 24, { ranged: true, charge: true, sureHit: true }),
   // Hexer
   // Weaken: the foe's Strength or Magic, whichever it hits with.
-  weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.2, duration: 3 },
+  weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.25, duration: 3, sapsToUser: true },
   // Balance pass (2026-11-01): 8% -> 6% a turn; a share of max HP grew too big on bosses.
   rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.06 },
   // Wither also wounds (healing halved): the party's anti-heal (Alyssa 2026-11-01, item 8).
@@ -404,14 +425,15 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     status: "wither",
     chance: 1,
     duration: 3,
-    power: 0.06,
+    power: 0.05,
     applies: { status: "wound", duration: 3 },
   },
   doom: { kind: "status", target: "enemy", status: "doom", chance: 0.6, duration: 3 },
   // Carrion Lord (the Hexer's front-line master): a heavy drain on one foe, all of it back.
   "carrion-feast": dmg("magic", 14, { ranged: true, drain: 1, cooldown: 2 }),
   lull: { kind: "status", target: "enemy", status: "sleep", chance: 0.75, duration: 3 },
-  "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2 },
+  // Cooldown (Alyssa 2026-11-02): Confusion is strong (half of single-target attacks go at allies).
+  "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2, cooldown: 3 },
   siphon: dmg("magic", 8, { ranged: true, pierce: 0.5, siphon: { mpPct: 0.15 } }),
   // Every foe, and the Hexer drinks half of it back: a Hexer can hold the front against a swarm
   // (Alyssa 2026-11-01).
@@ -422,19 +444,20 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     target: "all-enemies",
     ranged: true,
     cooldown: 2,
-    onHit: { stat: "damage", pct: -0.2, duration: 2 },
+    onHit: { stat: "damage", pct: -0.25, duration: 2 },
   }),
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
-  revive: { kind: "revive", target: "downed-ally", power: 0.25, cooldown: 3 },
+  revive: { kind: "revive", target: "downed-ally", power: 0.35, cooldown: 3 },
   sanctuary: { kind: "heal", target: "party", scales: "magic", power: 5, speedUntilNext: -0.2, cleanse: "one" },
   remedy: { kind: "heal", target: "ally", scales: "magic", power: 5, cleanse: "all" },
   purify: { kind: "cleanse", target: "ally", cleanse: "all" },
   "elixir-rain": { kind: "status", target: "party", status: "regen", chance: 1, duration: 3, power: 0.07 },
   barrier: { kind: "shield", target: "ally", scales: "magic", power: 8 },
   "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true, allDowned: true },
+  // A smite (Alyssa 2026-11-02): replaces Second Breath so a Mender on their own can still hurt a foe.
+  verdict: dmg("magic", 9, { ranged: true, hitBonus: 15 }),
   // Herald
-  "second-breath": { kind: "heal", target: "self", pctOfMax: 0.25, cooldown: 3 },
   rally: { kind: "buff", target: "party", stat: "damage", pct: 0.2, duration: 2 },
   // Cantor's songs stack by verse (Alyssa 2026-11-01): each re-cast while one lasts adds 10%, up to 3.
   "battle-hymn": {
@@ -470,10 +493,12 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   },
   // Crescendo: every buff the party carries counts twice for a round.
   crescendo: { kind: "buff", target: "party", stat: "crescendo", pct: 0, duration: 1, cooldown: 3, doubles: true },
-  command: { kind: "command", target: "ally" },
-  "grand-strategy": { kind: "command", target: "party", cooldown: 4 },
+  // Field Captain (reworked 2026-11-02, Alyssa): turns the foes onto an ally who can take it.
+  "draw-fire": { kind: "provoke", target: "ally", duration: 2 },
+  // Reworked (Alyssa 2026-11-02): the old Command as a bonus action; the whole-party order is Hour of Heroes.
+  "grand-strategy": { kind: "command", target: "ally", cooldown: 3, bonusAction: true },
   "raise-the-banner": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3, steadies: true },
-  "hour-of-heroes": { kind: "command", target: "party", oncePerFight: true },
+  "hour-of-heroes": { kind: "command", target: "party", cooldown: 4 },
 };
 
 /**
@@ -532,6 +557,7 @@ const HARMFUL = new Set<MarinaraStatusId>([
   "soak",
   "rend",
   "windswept",
+  "sear",
   "wound",
   "doom",
   "sleep",
@@ -561,6 +587,8 @@ export interface MarinaraPassiveHooks {
   vanguard?: boolean;
   /** Added to the weakness multiplier. */
   weakBonus?: number;
+  /** Dead Eye: hits on a weakness deal this share more, after the weakness multiplier. */
+  weakDamagePct?: number;
   lifestealPct?: number;
   /** Magic damage the user takes changes by this share (Old Oath). */
   magicTakenPct?: number;
@@ -651,6 +679,12 @@ export interface MarinaraPassiveHooks {
   evadeBonus?: number;
   /** The party's Defense rises by this share while no one of it is down (Formation). */
   partyDefenseWhileWhole?: number;
+  /** Hold Fast: a provoking ally of the holder takes this much less damage (negative). */
+  partyProvokerTakenPct?: number;
+  /** Kill Zone: while an ally of the holder provokes, the party deals this much more damage. */
+  partyDamageWhileProvoked?: number;
+  /** Morale: the holder's side resists each harmful status ailment this share of the time. */
+  partyStatusResistPct?: number;
   /** A buff on a party member moves its next turn this share of a turn sooner (Tempo). */
   tempoPct?: number;
   /** The user's turns take this share longer (Heavy Draw). */
@@ -699,7 +733,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   steady: { armorPenPct: 0.2 },
   "return-fire": { coverFire: true },
   "abyssal-will": { spellDamagePct: 0.2 },
-  "dead-eye": { critBonus: 15, weakBonus: 0.25 },
+  "dead-eye": { critBonus: 15, weakDamagePct: 0.25 },
   "old-oath": { statPct: { resistance: 0.3 }, magicTakenPct: -0.2 },
   "read-the-signs": { critBonus: 5, bonusVsMarked: 0.2 },
   "pack-tactics": { partyBonusVsMarked: 0.4 },
@@ -715,13 +749,14 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   overcharge: { critBonus: 10 },
   "warding-runes": { partyElementTakenPct: -0.25 },
   "living-runes": { partyElementTakenPct: -0.35, buffDurationBonus: 1 },
-  "deep-well": { mpPct: 0.5 },
-  "mana-tide": { mpRegenPct: 0.08 },
+  "deep-well": { mpPct: 0.3 },
+  "mana-tide": { mpRegenPct: 0.05 },
   lingering: { debuffDurationBonus: 1 },
   "ill-omen": { enemyCritToMissChance: 0.5 },
-  "grave-skin": { frontTakenPct: -0.15 },
+  "grave-skin": { frontTakenPct: -0.2 },
   "siphoning-rot": { curseFeedPct: 0.5 },
-  "slow-time": { slowDebuffed: 0.25 },
+  // Slow Time (Alyssa 2026-11-02, worded as Speed): -20% Speed until the foe's next turn (was "25% longer").
+  "slow-time": { slowDebuffed: 0.2 },
   nightmare: { nightmare: true },
   null: { debuffImmune: true },
   devour: { devour: true },
@@ -733,9 +768,10 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   sanctified: { partyMagicTakenPct: -0.15 },
   encore: { buffDurationBonus: 1 },
   tempo: { tempoPct: 0.15 },
-  foresight: { partyDefensePct: 0.1 },
-  formation: { partyDefenseWhileWhole: 0.15 },
-  inspire: { partyDamageWhileWhole: 0.1 },
+  "hold-fast": { partyProvokerTakenPct: -0.25 },
+  "kill-zone": { partyDamageWhileProvoked: 0.25 },
+  // Replaced Inspire, then Defiance (Alyssa 2026-11-02): useful in any party, no healing needed.
+  morale: { partyStatusResistPct: 0.3 },
   "fortunes-favour": { partyCritBonus: 10 },
 };
 
@@ -779,6 +815,10 @@ export interface MarinaraFighter {
   channeled?: MarinaraDamageType;
   /** Channel Element is a bonus action: once between the user's own turns. */
   channeledThisTurn?: boolean;
+  /** Where on the timeline this fighter's latest turn began: "now" while it acts. */
+  turnAt?: number;
+  /** Slow Time already stretched the wait to this fighter's next turn. */
+  waitSlowed?: boolean;
   /** Run by the player: channels by hand. Otherwise (the AI, foes, harnesses) it channels, as its bonus
    *  action, the element its target is weakest to when it strikes with an element. */
   channelManual?: boolean;
@@ -855,6 +895,8 @@ export interface MarinaraFighter {
   marked: number;
   hidden?: boolean;
   exposeNext?: number;
+  /** Vanish: the user's next hit that lands is a critical hit. */
+  critNext?: boolean;
   followThroughUsed?: boolean;
   /** Commanded (Command, Grand Strategy): acts again at once, outside its own place on the timeline. */
   bonusTurns?: number;
@@ -1238,14 +1280,45 @@ const turnLength = (unit: MarinaraFighter, all: readonly MarinaraFighter[], spee
   length *= 1 + (hooksOf(unit).turnPct ?? 0);
   // Slow Time: a debuffed fighter acts later while a foe of its holds time back.
   if (marinaraDebuffed(unit)) {
-    const slowing = Math.max(
-      0,
-      ...living(all.filter((other) => other.side !== unit.side)).map((other) => hooksOf(other).slowDebuffed ?? 0),
-    );
-    length *= 1 + slowing;
+    // Speed down by `slowing` for the wait to their next turn.
+    length /= 1 - slowTimeOn(unit, all);
   }
   return length;
 };
+/** Slow Time: how much a standing foe of the unit slows it while it is debuffed (0 when none can). */
+const slowTimeOn = (unit: MarinaraFighter, all: readonly MarinaraFighter[]) =>
+  Math.min(
+    0.9,
+    Math.max(
+      0,
+      ...living(all.filter((other) => other.side !== unit.side)).map((other) => hooksOf(other).slowDebuffed ?? 0),
+    ),
+  );
+
+/**
+ * Slow Time (Alyssa 2026-11-02): a debuff or status ailment that lands slows at once. Each fighter
+ * not debuffed before the action and debuffed after it has the rest of its wait stretched, once per wait.
+ */
+function slowNewlyDebuffed(before: ReadonlySet<MarinaraFighter>, now: number, all: readonly MarinaraFighter[]): void {
+  for (const unit of living(all)) {
+    if (before.has(unit) || unit.waitSlowed || !marinaraDebuffed(unit)) continue;
+    const slowing = slowTimeOn(unit, all);
+    if (slowing <= 0) continue;
+    const left = Math.max(0, unit.next - now);
+    unit.next = now + left / (1 - slowing);
+    unit.waitSlowed = true;
+  }
+}
+
+/** Runs an action, then slows whoever it newly debuffed (Slow Time). */
+function withSlowTime(actor: MarinaraFighter, all: readonly MarinaraFighter[], run: () => void): void {
+  const before = new Set(all.filter((unit) => marinaraDebuffed(unit)));
+  try {
+    run();
+  } finally {
+    slowNewlyDebuffed(before, actor.turnAt ?? Math.min(...living(all).map((unit) => unit.next)), all);
+  }
+}
 
 /** Whether a fighter carries a debuff or a harmful status. */
 export function marinaraDebuffed(unit: MarinaraFighter): boolean {
@@ -1352,6 +1425,21 @@ function powerStat(unit: MarinaraFighter, stat: MarinaraStat, effect: MarinaraEf
   return carried === undefined ? own : Math.max(own, carried * (own / Math.max(1, unit.stats[stat])));
 }
 
+/**
+ * Heals and shields grow with the caster's level as fight HP does (Alyssa 2026-11-02): max HP is
+ * multiplied by marinaraFightHpMultiplier, so a flat Magic-based heal fell from about a third of an
+ * ally's max HP at level 1 to under a fifth at level 30.
+ */
+function healScale(actor: MarinaraFighter): number {
+  return marinaraFightHpMultiplier(actor.level ?? 1) / marinaraFightHpMultiplier(1);
+}
+/** A Magic-based heal: (8 for Mend, 5 for the others) plus half the caster's Magic, scaled by level. */
+function magicHeal(actor: MarinaraFighter, effect: MarinaraEffect, all: readonly MarinaraFighter[]): number {
+  return (
+    (powerStat(actor, "magic", effect, all) * MARINARA_TUNING.healMagicPct + (effect.power ?? 0)) * healScale(actor)
+  );
+}
+
 /** The damage types this effect can hit with; an imbued weapon adds the elements. */
 function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly MarinaraDamageType[] {
   if (!actor.classId) {
@@ -1364,7 +1452,9 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   // Channel Element: element hits are the channeled element only (Alyssa 2026-11-02). One the AI runs
   // that hasn't channeled yet this turn can still pick any, so it weighs them all.
   if (type === "element" && marinaraCanChannel(actor))
-    return !actor.channelManual && !actor.channeledThisTurn ? MARINARA_CHANNEL_CHOICES : [marinaraChanneled(actor)];
+    return !actor.channelManual && !actor.channeledThisTurn
+      ? marinaraChannelChoices(actor)
+      : [marinaraChanneled(actor)];
   // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
   const options =
     type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
@@ -1417,6 +1507,13 @@ export function marinaraCanChannel(actor: MarinaraFighter): boolean {
   );
 }
 
+/** What this caster can channel: Greater Channel Element adds light and dark. */
+export function marinaraChannelChoices(actor: MarinaraFighter): readonly MarinaraDamageType[] {
+  return actor.skills.some((skill) => skill.id.startsWith("greater-channel-element"))
+    ? MARINARA_GREATER_CHANNEL_CHOICES
+    : MARINARA_CHANNEL_CHOICES;
+}
+
 /** The element a Channeler-tree caster strikes with now: the channeled one, raw (arcane) magic until they channel. */
 export function marinaraChanneled(actor: MarinaraFighter): MarinaraDamageType {
   return actor.channeled ?? "arcane";
@@ -1428,7 +1525,7 @@ export function marinaraChanneled(actor: MarinaraFighter): MarinaraDamageType {
  */
 export function marinaraChannelElement(actor: MarinaraFighter, element: MarinaraDamageType): boolean {
   if (!marinaraCanChannel(actor) || actor.channeledThisTurn) return false;
-  if (!(MARINARA_CHANNEL_CHOICES as readonly string[]).includes(element)) return false;
+  if (!(marinaraChannelChoices(actor) as readonly string[]).includes(element)) return false;
   actor.channeled = element;
   actor.channeledThisTurn = true;
   return true;
@@ -1525,7 +1622,11 @@ export function marinaraBasicAttack(unit: MarinaraFighter): MarinaraEffect {
       : (unit.classId === "apothecary" || unit.classId === "panacean") && unit.stats.skill > unit.stats.magic
         ? ("skill" as const)
         : undefined;
-  return dmg(unit.magicBasic ? "magic" : "strength", MARINARA_TUNING.basicPower, {
+  // Channeler-tree classes cast a stronger basic spell (playtest 2026-11-02: they lagged on one big foe).
+  const power =
+    MARINARA_TUNING.basicPower +
+    (unit.classId && unit.archetype === "channeler" && unit.magicBasic ? MARINARA_CHANNELER_BASIC_BONUS : 0);
+  return dmg(unit.magicBasic ? "magic" : "strength", power, {
     ...(from ? { from } : {}),
     ranged: unit.rangedBasic || unit.magicBasic,
     basic: true,
@@ -1640,7 +1741,11 @@ export function marinaraUsable(unit: MarinaraFighter, all?: readonly MarinaraFig
     const { resource, cost } = marinaraSkillCost(unit, skill);
     if (cost > (resource === "mp" ? unit.mp : unit.stamina)) continue;
     if ((unit.cooldowns[skill.id] ?? 0) > 0) continue;
-    if (effect.oncePerFight && unit.used.includes(skill.id)) continue;
+    if (
+      (effect.oncePerFight || effect.usesPerFight) &&
+      unit.used.filter((id) => id === skill.id).length >= (effect.usesPerFight ?? 1)
+    )
+      continue;
     // A commanded action can't command or take extra actions in turn (it would only spend itself).
     if ((effect.kind === "command" || effect.kind === "extra-turn") && unit.commanded) continue;
     if (effect.frontOnly && !front) continue;
@@ -1678,6 +1783,7 @@ export const MARINARA_ELEMENT_MASTERY = {
   soakResistancePct: 0.15,
   rendDamagePct: 0.15,
   windsweptHit: 15,
+  searTakenPct: 0.1,
 } as const;
 
 /** The ailment Element Mastery leaves for each element. */
@@ -1721,7 +1827,10 @@ export const MARINARA_ELEMENT_PHASE = {
   ice: "water",
 } as const satisfies Record<(typeof MARINARA_ELEMENTS)[number], keyof typeof MARINARA_WUXING_OVERCOMES>;
 
-export const MARINARA_ELEMENT_AILMENTS: Record<(typeof MARINARA_ELEMENTS)[number], MarinaraStatusId> = {
+export const MARINARA_ELEMENT_AILMENTS: Record<
+  (typeof MARINARA_ELEMENTS)[number] | "light" | "dark",
+  MarinaraStatusId
+> = {
   fire: "burn",
   ice: "freeze",
   lightning: "shock",
@@ -1730,10 +1839,17 @@ export const MARINARA_ELEMENT_AILMENTS: Record<(typeof MARINARA_ELEMENTS)[number
   water: "soak",
   metal: "rend",
   wind: "windswept",
+  // Light and dark: only a Greater Channel Element caster carrying Element Mastery channels them.
+  light: "sear",
+  dark: "wound",
 };
 
 /** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
 export const MARINARA_VANISH_EVADE = 40;
+/** Added to a Channeler-tree class's basic attack power (playtest 2026-11-02). */
+export const MARINARA_CHANNELER_BASIC_BONUS = 2;
+/** Perfect Evasion's most (playtest 2026-11-02: 30 to 40). */
+export const MARINARA_PERFECT_EVASION_CAP = 40;
 
 /**
  * Who an effect can be aimed at. In Classic, a taunt or a provoker forces the pick (a vanished
@@ -1751,7 +1867,9 @@ export function marinaraTargetsFor(
   if (effect.target === "party") return friends;
   // Guarding or watching over someone means someone else.
   if (effect.target === "ally")
-    return effect.kind === "cover" || effect.kind === "ward" ? friends.filter((unit) => unit !== actor) : friends;
+    return effect.kind === "cover" || effect.kind === "ward" || effect.kind === "provoke" || effect.kind === "command"
+      ? friends.filter((unit) => unit !== actor)
+      : friends;
   if (effect.target === "downed-ally") return all.filter((unit) => unit.side === actor.side && unit.hp <= 0);
   // Tame looks past taunts: only a beast it can take.
   if (effect.kind === "tame") return everyFoe.filter(marinaraTameable);
@@ -1833,6 +1951,8 @@ export function marinaraHitNumbers(
     (actor.gearPower ?? 0) -
     guard;
   let pct = modTotal(actor, "damage") + modTotal(target, "damage-taken");
+  // Sear (light): the target takes more.
+  if (target.statuses.some((st) => st.status === "sear")) pct += MARINARA_ELEMENT_MASTERY.searTakenPct;
   // Rend (metal): a rent attacker deals less.
   if (actor.statuses.some((st) => st.status === "rend")) pct -= MARINARA_ELEMENT_MASTERY.rendDamagePct;
   for (const ally of living(all.filter((unit) => unit.side === actor.side))) {
@@ -1841,6 +1961,11 @@ export function marinaraHitNumbers(
     if (allyHooks.partyDamageWhileWhole && all.filter((u) => u.side === actor.side).every((u) => u.hp > 0))
       pct += allyHooks.partyDamageWhileWhole;
     if (target.marked > 0) pct += allyHooks.partyBonusVsMarked ?? 0;
+    if (
+      allyHooks.partyDamageWhileProvoked &&
+      living(all.filter((u) => u.side === actor.side)).some((u) => u.provoking > 0)
+    )
+      pct += allyHooks.partyDamageWhileProvoked;
   }
   if (magic) pct += hooks.spellDamagePct ?? 0;
   pct += (hooks.damagePct ?? 0) + (actor.gear?.damagePct ?? 0);
@@ -1860,14 +1985,30 @@ export function marinaraHitNumbers(
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
     const allyHooks = hooksOf(ally);
     if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;
+    if (target.provoking > 0) pct += allyHooks.partyProvokerTakenPct ?? 0;
     if (marinaraRowOf(target, all) === "back") pct += allyHooks.backRowTakenPct ?? 0;
   }
   if (hooks.heavyDraw) pct += 0.3;
   const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
+  // Adaptive Grip: an armored foe's resistance to slash, pierce or blunt doesn't count against the user.
+  if (
+    hooks.noPenalty &&
+    multiplier > 0 &&
+    multiplier < 1 &&
+    (MARINARA_PHYSICAL_TYPES as readonly string[]).includes(best.type)
+  )
+    multiplier = 1;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
-  if (multiplier > 1 && hooks.elementWeakPct && (MARINARA_ELEMENTS as readonly string[]).includes(best.type))
+  if (multiplier > 1) multiplier *= 1 + (hooks.weakDamagePct ?? 0);
+  // A channeled light or dark hit counts as elemental too (Greater Channel Element).
+  const channeledHit = marinaraCanChannel(actor) && best.type === marinaraChanneled(actor) && best.type !== "arcane";
+  if (
+    multiplier > 1 &&
+    hooks.elementWeakPct &&
+    ((MARINARA_ELEMENTS as readonly string[]).includes(best.type) || channeledHit)
+  )
     multiplier *= 1 + hooks.elementWeakPct;
   // Wuxing generating cycle: an element of the phase that feeds this one has left its ailment on the target.
   const phase = (MARINARA_ELEMENT_PHASE as Partial<Record<string, keyof typeof MARINARA_WUXING_FED_BY>>)[best.type];
@@ -1883,13 +2024,7 @@ export function marinaraHitNumbers(
   )
     multiplier *= 1 + MARINARA_WUXING_FEED_PCT;
   // Attunement: hits in the user's own channeled element.
-  if (
-    hooks.channeledDamagePct &&
-    marinaraCanChannel(actor) &&
-    best.type === marinaraChanneled(actor) &&
-    (MARINARA_ELEMENTS as readonly string[]).includes(best.type)
-  )
-    multiplier *= 1 + hooks.channeledDamagePct;
+  if (hooks.channeledDamagePct && channeledHit) multiplier *= 1 + hooks.channeledDamagePct;
   // Warding Runes and Living Runes (and any "element-taken" mod): the elements bite the warded party less.
   if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
     let cut = modTotal(target, "element-taken");
@@ -1915,9 +2050,12 @@ export function marinaraHitNumbers(
   const evade =
     marinaraEffectiveStat(target, "speed", all) * 2 +
     marinaraEffectiveStat(target, "luck", all) +
-    (hooksOf(target).evadeBonus ?? 0) +
-    (target.hidden ? MARINARA_VANISH_EVADE : 0) +
-    Math.min(30, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0));
+    // Adaptive Grip: an evasive foe's own evasion bonuses don't count against the user.
+    (hooks.noPenalty
+      ? 0
+      : (hooksOf(target).evadeBonus ?? 0) +
+        Math.min(MARINARA_PERFECT_EVASION_CAP, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0))) +
+    (target.hidden ? MARINARA_VANISH_EVADE : 0);
   const hitChance = Math.max(
     MARINARA_MIN_HIT_CHANCE,
     Math.min(
@@ -1957,7 +2095,7 @@ export function marinaraHitNumbers(
   // Hard crowd control (Alyssa 2026-11-02): a stunned or sleeping target can't dodge, on either side.
   return {
     damage,
-    hitChance: marinaraHelpless(target) ? 100 : hitChance,
+    hitChance: marinaraHelpless(target) || effect.sureHit ? 100 : hitChance,
     critChance,
     multiplier,
     type: best.type,
@@ -2013,7 +2151,8 @@ export function marinaraSkillEstimate(
   if (effect.kind === "damage") {
     const foes = living(all.filter((unit) => unit.side !== actor.side && !unit.yielded));
     if (!foes.length) return null;
-    const area = effect.target === "all-enemies" || effect.target === "front-row";
+    const area =
+      (effect.target === "all-enemies" || effect.target === "front-row") && !(effect.loneFull && foes.length === 1);
     const used = area ? { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct } : effect;
     const amounts = foes.map((foe) =>
       Math.max(0, Math.round(marinaraHitNumbers(actor, foe, used, all, tactical).damage)),
@@ -2031,12 +2170,7 @@ export function marinaraSkillEstimate(
     const allies = effect.target === "self" ? [actor] : living(all.filter((unit) => unit.side === actor.side));
     if (!allies.length) return null;
     const amounts = allies.map((ally) =>
-      Math.round(
-        (effect.pctOfMax
-          ? ally.maxHp * effect.pctOfMax
-          : powerStat(actor, "magic", effect, all) * MARINARA_TUNING.healMagicPct + (effect.power ?? 0)) *
-          healFactor(ally),
-      ),
+      Math.round((effect.pctOfMax ? ally.maxHp * effect.pctOfMax : magicHeal(actor, effect, all)) * healFactor(ally)),
     );
     const max = Math.max(...amounts);
     return {
@@ -2131,14 +2265,35 @@ function shrugsOff(target: MarinaraFighter, status: string): boolean {
   );
 }
 
+/**
+ * Morale (Standard-Bearer, Alyssa 2026-11-02): while a holder stands, their side resists each harmful
+ * status ailment some of the time.
+ */
+function moraleHolds(
+  target: MarinaraFighter,
+  status: string,
+  all: readonly MarinaraFighter[],
+  random: () => number,
+): boolean {
+  if (!HARMFUL.has(status as MarinaraStatusId)) return false;
+  const pct = Math.max(
+    0,
+    ...living(all.filter((u) => u.side === target.side)).map((u) => hooksOf(u).partyStatusResistPct ?? 0),
+  );
+  return pct > 0 && random() < pct;
+}
+
 function addStatus(
   target: MarinaraFighter,
   applies: NonNullable<MarinaraEffect["applies"]>,
   bonus: number,
-  by?: string,
+  by: string | undefined,
+  all: readonly MarinaraFighter[],
+  random: () => number,
 ) {
   if (applies.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0) return false;
   if (shrugsOff(target, applies.status)) return false;
+  if (moraleHolds(target, applies.status, all, random)) return false;
   target.statuses = target.statuses.filter((s) => s.status !== applies.status);
   target.statuses.push({
     status: applies.status,
@@ -2276,7 +2431,10 @@ export function beginMarinaraTurn(
     ctx.events.push({ kind: "down", actorId: actor.id, targetId: actor.id });
     return { acts: false };
   }
+  actor.turnAt = actor.next;
   actor.next += turnLength(actor, all);
+  // A wait timed while debuffed under Slow Time is already slowed.
+  actor.waitSlowed = marinaraDebuffed(actor) && slowTimeOn(actor, all) > 0;
   if (actor.provoking > 0) actor.provoking--;
   if (actor.tauntTurns > 0) actor.tauntTurns--;
   actor.covering = undefined; // Cover lasts until the coverer's next turn.
@@ -2298,6 +2456,15 @@ export function beginMarinaraTurn(
 
 /** Releases a charged skill (Headshot, Convergence) on its target, or the nearest foe in reach. */
 export function releaseMarinaraCharge(
+  actor: MarinaraFighter,
+  release: { skillId: string; targetId: string },
+  all: MarinaraFighter[],
+  ctx: MarinaraFightContext,
+): void {
+  withSlowTime(actor, all, () => releaseMarinaraChargeNow(actor, release, all, ctx));
+}
+
+function releaseMarinaraChargeNow(
   actor: MarinaraFighter,
   release: { skillId: string; targetId: string },
   all: MarinaraFighter[],
@@ -2350,6 +2517,16 @@ export function performMarinaraOption(
   all: MarinaraFighter[],
   ctx: MarinaraFightContext,
 ): void {
+  withSlowTime(actor, all, () => performMarinaraOptionNow(actor, option, targets, all, ctx));
+}
+
+function performMarinaraOptionNow(
+  actor: MarinaraFighter,
+  option: MarinaraOption,
+  targets: readonly MarinaraFighter[],
+  all: MarinaraFighter[],
+  ctx: MarinaraFightContext,
+): void {
   const hooks = hooksOf(actor);
   const extraWeight = (option.effect.weight ?? 1) - 1;
   actor.next += turnLength(actor, all) * extraWeight;
@@ -2366,7 +2543,7 @@ export function performMarinaraOption(
     !actor.channeledThisTurn
   ) {
     // Raw magic (unchanneled) only when every element does worse: ties go to an element.
-    const element = marinaraBestDamageType(MARINARA_CHANNEL_CHOICES, first.affinities).type;
+    const element = marinaraBestDamageType(marinaraChannelChoices(actor), first.affinities).type;
     if (element !== marinaraChanneled(actor) && marinaraChannelElement(actor, element))
       ctx.events.push({ kind: "channel", actorId: actor.id, type: element });
     else actor.channeledThisTurn = true;
@@ -2394,7 +2571,7 @@ export function performMarinaraOption(
       for (const ally of all)
         if (ally.side === actor.side && ally !== actor)
           ally.cooldowns[option.skill.id] = Math.max(ally.cooldowns[option.skill.id] ?? 0, option.effect.cooldown);
-    if (option.effect.oncePerFight) actor.used.push(option.skill.id);
+    if (option.effect.oncePerFight || option.effect.usesPerFight) actor.used.push(option.skill.id);
   } else if (option.id?.startsWith("enemy:")) {
     actor.cooldowns[option.id] = option.effect.cooldown ?? 3;
     // Harden and Self-Repair share one cooldown, so a boss can't stack them into a wall (balance pass).
@@ -2422,10 +2599,11 @@ export function performMarinaraOption(
     return;
   }
   act(actor, option.skill, option.effect, struck, all, ctx, option.id ?? undefined);
-  if (hooks.extraActionEvery && actor.actions % hooks.extraActionEvery === 0) {
-    // Peerless: every third action, another basic attack on the same foe.
-    const foe = struck.find((unit) => unit.hp > 0 && unit.side !== actor.side);
-    if (foe) act(actor, null, marinaraBasicAttack(actor), [foe], all, ctx);
+  if (hooks.extraActionEvery && !actor.commanded && actor.actions % hooks.extraActionEvery === 0) {
+    // Peerless: every third action grants another action, chosen like any other. `actions` counts only
+    // the user's own turns, so the extra action itself (a commanded turn) never grants another.
+    actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+    ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "peerless" });
   }
 }
 
@@ -2477,7 +2655,11 @@ function act(
     case "damage": {
       // An area attack always deals its per-foe share, even on a lone foe (Alyssa 2026-11-02: a
       // single target is what single-target skills are for).
-      if (effect.target === "all-enemies" || effect.target === "front-row")
+      // Tempest (playtest 2026-11-02) is the exception: full damage when only one foe is left.
+      if (
+        (effect.target === "all-enemies" || effect.target === "front-row") &&
+        !(effect.loneFull && targets.length === 1)
+      )
         effect = { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct };
       for (const target of targets) {
         // Sworn Ward: whoever watches over this target strikes the attacker first, hit or miss.
@@ -2504,9 +2686,7 @@ function act(
     }
     case "heal": {
       for (const target of targets) {
-        let amount = effect.pctOfMax
-          ? target.maxHp * effect.pctOfMax
-          : powerStat(actor, "magic", effect, all) * MARINARA_TUNING.healMagicPct + (effect.power ?? 0);
+        let amount = effect.pctOfMax ? target.maxHp * effect.pctOfMax : magicHeal(actor, effect, all);
         const crit = !!hooks.healCrit && random() < 0.15;
         if (crit) amount *= 1.5;
         amount *= healFactor(target);
@@ -2546,8 +2726,9 @@ function act(
     }
     case "shield": {
       for (const target of targets) {
-        const amount = Math.round(powerStat(actor, "magic", effect, all) + (effect.power ?? 0));
-        target.shield += amount;
+        const amount = Math.round((powerStat(actor, "magic", effect, all) + (effect.power ?? 0)) * healScale(actor));
+        // Cheaper than a heal (2 MP; Alyssa 2026-11-02), so it doesn't stack: the stronger shield holds.
+        target.shield = Math.max(target.shield, amount);
         ctx.events.push({ kind: "shield", actorId: actor.id, targetId: target.id, skillId, amount });
       }
       break;
@@ -2591,6 +2772,7 @@ function act(
         ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       if (effect.exposeNext) actor.exposeNext = effect.exposeNext;
+      if (effect.critNext) actor.critNext = true;
       break;
     case "debuff":
       for (const target of targets) {
@@ -2607,11 +2789,14 @@ function act(
             : effect.stat!;
         addMod(target, stat, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skillId ?? "debuff", actor.id);
         if (skill?.id === "mark-prey") target.marked = (effect.duration ?? 3) + durationBonus;
+        // Weaken saps (Alyssa 2026-11-02): the user gains the very stat the foe loses.
+        if (effect.stat === "best-attack" && effect.sapsToUser)
+          addMod(actor, stat, -(effect.pct ?? 0), (effect.duration ?? 1) + durationBonus, `${skillId ?? "debuff"}:sap`);
         ctx.events.push({ kind: "debuff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
         if (
           effect.applies &&
           random() < (effect.applies.chance ?? 1) &&
-          addStatus(target, effect.applies, durationBonus, actor.id)
+          addStatus(target, effect.applies, durationBonus, actor.id, all, random)
         )
           ctx.events.push({
             kind: "status",
@@ -2632,7 +2817,10 @@ function act(
         const chance =
           (effect.chance ?? 1) *
           (effect.status === "confuse" && target.tier === "elite" ? 1 - MARINARA_BOSS_RULES.eliteConfuseResist : 1);
-        if (effect.status !== "regen" && (roll > chance || shrugsOff(target, effect.status!))) {
+        if (
+          effect.status !== "regen" &&
+          (roll > chance || shrugsOff(target, effect.status!) || moraleHolds(target, effect.status!, all, random))
+        ) {
           ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
           continue;
         }
@@ -2651,7 +2839,7 @@ function act(
           addMod(target, "damage-taken", effect.exposes.pct, effect.exposes.duration + durationBonus, "exposed");
         ctx.events.push({ kind: "status", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
         // A second status riding on it (Wither's Wound).
-        if (effect.applies && addStatus(target, effect.applies, durationBonus, actor.id))
+        if (effect.applies && addStatus(target, effect.applies, durationBonus, actor.id, all, random))
           ctx.events.push({
             kind: "status",
             actorId: actor.id,
@@ -2665,10 +2853,13 @@ function act(
       actor.covering = targets[0]?.id;
       ctx.events.push({ kind: "cover", actorId: actor.id, targetId: targets[0]?.id, skillId });
       break;
-    case "provoke":
-      actor.provoking = effect.duration ?? 2;
-      ctx.events.push({ kind: "provoke", actorId: actor.id, skillId });
+    case "provoke": {
+      // Draw Fire: an ally provokes in the user's place.
+      const who = effect.target === "ally" ? (targets[0] ?? actor) : actor;
+      who.provoking = effect.duration ?? 2;
+      ctx.events.push({ kind: "provoke", actorId: who.id, skillId });
       break;
+    }
     case "ward":
       actor.wardOn = targets[0]?.id;
       actor.wardTurns = effect.duration ?? 3;
@@ -2724,6 +2915,10 @@ function act(
         if (target.id === actor.id || target.hp <= 0) continue;
         target.bonusTurns = (target.bonusTurns ?? 0) + 1;
         ctx.events.push({ kind: "command", actorId: actor.id, targetId: target.id, skillId });
+      }
+      if (effect.bonusAction && !actor.commanded) {
+        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       break;
   }
@@ -2811,7 +3006,7 @@ function strikeOnce(
   }
   const targetHooks = hooksOf(target);
   // Elusive: a separate 50% dodge before the normal roll, so the first attack halves its hit chance.
-  if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound && !marinaraHelpless(target)) {
+  if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound && !marinaraHelpless(target) && !effect.sureHit) {
     target.evadedThisRound = true;
     if (random() < 0.5) {
       ctx.events.push({ kind: "evade", actorId: actor.id, targetId: target.id, skillId });
@@ -2877,8 +3072,11 @@ function strikeOnce(
     ctx.events.push({ kind: "decoy", actorId: actor.id, targetId: target.id, skillId, amount: shadow.decoys });
     return;
   }
-  let crit = random() * 100 < critChance;
-  if (crit) {
+  // Vanish: the first hit to land after it is a sure critical.
+  const sureCrit = !!actor.critNext;
+  if (sureCrit) actor.critNext = undefined;
+  let crit = sureCrit || random() * 100 < critChance;
+  if (crit && !sureCrit) {
     const omen = living(all.filter((u) => u.side === target.side)).some((u) => hooksOf(u).enemyCritToMissChance);
     if (omen && random() < 0.5) crit = false;
   }
@@ -2922,7 +3120,14 @@ function strikeOnce(
     const status = (MARINARA_ELEMENT_AILMENTS as Partial<Record<string, MarinaraStatusId>>)[type];
     if (
       status &&
-      addStatus(target, { status, duration: m.turns, ...(status === "burn" ? { power: m.burnPct } : {}) }, 0, actor.id)
+      addStatus(
+        target,
+        { status, duration: m.turns, ...(status === "burn" ? { power: m.burnPct } : {}) },
+        0,
+        actor.id,
+        all,
+        random,
+      )
     )
       ctx.events.push({ kind: "debuff", actorId: actor.id, targetId: target.id, status, skillId: "element-mastery" });
   }
@@ -2935,11 +3140,22 @@ function strikeOnce(
     addMod(target, "damage-taken", actor.exposeNext, 2, "exposed");
     actor.exposeNext = undefined;
   }
-  if (effect.applies && amount > 0 && random() < (effect.applies.chance ?? 1) && addStatus(target, effect.applies, 0))
+  if (
+    effect.applies &&
+    amount > 0 &&
+    random() < (effect.applies.chance ?? 1) &&
+    addStatus(target, effect.applies, 0, undefined, all, random)
+  )
     ctx.events.push({ kind: "status", actorId: actor.id, targetId: target.id, skillId, status: effect.applies.status });
   if (hooks.hitsLowerDefense) addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
   if (target.statuses.some((s) => s.status === "sleep"))
     target.statuses = target.statuses.filter((s) => s.status !== "sleep");
+  // Follow Through (playtest 2026-11-02): a critical hit counts as well as a kill, once per turn.
+  if (crit && target.hp > 0 && hooks.actOnKill && !actor.followThroughUsed) {
+    actor.followThroughUsed = true;
+    actor.next -= turnLength(actor, all);
+    ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "follow-through" });
+  }
   if (target.hp <= 0) {
     target.hp = 0;
     ctx.events.push({ kind: "down", actorId: actor.id, targetId: target.id });
@@ -3092,7 +3308,7 @@ export function marinaraCombatantView(unit: MarinaraFighter, all?: readonly Mari
       ? {
           channel: {
             element: marinaraChanneled(unit),
-            choices: [...MARINARA_CHANNEL_CHOICES],
+            choices: [...marinaraChannelChoices(unit)],
             ready: !unit.channeledThisTurn,
             ...(unit.channelManual ? {} : { auto: true }),
           },
