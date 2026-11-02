@@ -107,7 +107,7 @@ export function marinaraAiCandidates(
   // What a foe's basic blow does to the party on average.
   const incomingFrom = (foe: MarinaraFighter) =>
     friends.reduce((sum, unit) => sum + hit(foe, unit, marinaraBasicAttack(foe)), 0) / Math.max(1, friends.length);
-  // What the foes who hit with fire, ice or lightning deal the party a round.
+  // What the foes who hit with an element deal the party a round.
   const elementalIncoming = () =>
     foes
       .filter(

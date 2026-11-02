@@ -16,7 +16,7 @@
 //     temperament they started the game with.
 //   - Only the active class's skills are used, plus up to four carried from classes trained in.
 //   - Skills cost MP (magic) or stamina (everything else). Damage has a type (slash, pierce, blunt,
-//     fire, ice, lightning, light, dark) that foes can be weak to, resist, be immune to or absorb.
+//     fire, ice, lightning, wood, earth, water, metal, light, dark, arcane) that foes can be weak to, resist, be immune to or absorb.
 // ──────────────────────────────────────────────
 
 import { combatAiHash } from "./combat-ai.js";
@@ -146,6 +146,11 @@ export const MARINARA_DAMAGE_TYPES = [
   "fire",
   "ice",
   "lightning",
+  // The wuxing elements beside fire (Alyssa 2026-11-02).
+  "wood",
+  "earth",
+  "water",
+  "metal",
   "light",
   "dark",
   "poison",
@@ -156,7 +161,15 @@ export const MARINARA_DAMAGE_TYPES = [
 export type MarinaraDamageType = (typeof MARINARA_DAMAGE_TYPES)[number];
 export const MARINARA_PHYSICAL_TYPES = ["slash", "pierce", "blunt"] as const satisfies readonly MarinaraDamageType[];
 /** The elements a caster picks between when a spell is "in the caster's element". */
-export const MARINARA_ELEMENTS = ["fire", "ice", "lightning"] as const satisfies readonly MarinaraDamageType[];
+export const MARINARA_ELEMENTS = [
+  "fire",
+  "ice",
+  "lightning",
+  "wood",
+  "earth",
+  "water",
+  "metal",
+] as const satisfies readonly MarinaraDamageType[];
 /** What Channel Element can pick: an element, or "arcane" to unchannel and strike with raw magic. */
 export const MARINARA_CHANNEL_CHOICES = [
   ...MARINARA_ELEMENTS,
@@ -1100,7 +1113,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "channeler",
       label: "Channeler",
-      role: "Elemental mages who wield fire, ice and lightning.",
+      role: "Elemental mages who wield fire, ice, lightning, wood, earth, water and metal.",
       leans: ["magic"],
       skills: [
         active(
@@ -1109,7 +1122,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "magic",
           0,
-          "Bonus action. Channels fire, ice or lightning, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it.",
+          "Bonus action. Channels fire, ice, lightning, wood, earth, water or metal, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it.",
         ),
         passive("resonance", "Resonance", 5, "Elemental hits deal 20% more damage to foes weak to that element.", true),
       ],
@@ -1118,14 +1131,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "elementalist",
       label: "Elementalist",
       from: "channeler",
-      role: "Masters of the elements whose spells scorch, freeze and shock all they touch.",
+      role: "Masters of the elements whose spells scorch, freeze, shock, bind, crush, drown and rend all they touch.",
       leans: ["magic", "skill"],
       skills: [
         passive(
           "element-mastery",
           "Element Mastery",
           10,
-          "Hits in the channeled element inflict an ailment for 2 turns. Fire inflicts Burn (loses 4% of max HP a turn). Ice inflicts Freeze (Speed reduced by 15%). Lightning inflicts Shock (attacks against them gain +10% critical chance). Further hits renew the time instead of stacking.",
+          "Hits in the channeled element inflict an ailment for 2 turns. Fire inflicts Burn (loses 4% of max HP a turn). Ice inflicts Freeze (Speed reduced by 15%). Lightning inflicts Shock (attacks against them gain +10% critical chance). Wood inflicts Entangle (their hit chance reduced by 15%). Earth inflicts Crumble (Defense reduced by 15%). Water inflicts Soak (Resistance reduced by 15%). Metal inflicts Rend (damage dealt reduced by 15%). Further hits renew the time instead of stacking.",
         ),
         passive("attunement", "Attunement", 15, "Increases damage in the channeled element by 15%.", true),
       ],
@@ -1170,7 +1183,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "warding-runes",
           "Warding Runes",
           15,
-          "While the user stands, the party takes 25% less fire, ice and lightning damage.",
+          "While the user stands, the party takes 25% less elemental damage.",
           true,
         ),
       ],
@@ -1195,7 +1208,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "living-runes",
           "Living Runes",
           24,
-          "While the user stands, the party takes 35% less fire, ice and lightning damage. The user's buffs last one turn longer.",
+          "While the user stands, the party takes 35% less elemental damage. The user's buffs last one turn longer.",
         ),
       ],
     },

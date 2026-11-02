@@ -94,6 +94,10 @@ export type MarinaraStatusId =
   | "burn"
   | "freeze"
   | "shock"
+  | "entangle"
+  | "crumble"
+  | "soak"
+  | "rend"
   | "wound"
   | "confuse"
   | "doom"
@@ -522,6 +526,10 @@ const HARMFUL = new Set<MarinaraStatusId>([
   "burn",
   "freeze",
   "shock",
+  "entangle",
+  "crumble",
+  "soak",
+  "rend",
   "wound",
   "doom",
   "sleep",
@@ -587,7 +595,7 @@ export interface MarinaraPassiveHooks {
   partySpeedPct?: number;
   partyDefensePct?: number;
   partyResistancePct?: number;
-  /** The party takes this share more (negative: less) fire, ice and lightning damage (Warding Runes). */
+  /** The party takes this share more (negative: less) elemental damage (Warding Runes). */
   partyElementTakenPct?: number;
   partyCritBonus?: number;
   partyMagicTakenPct?: number;
@@ -1269,6 +1277,11 @@ export function marinaraEffectiveStat(
   // Freeze (Element Mastery's ice): Speed down while it lasts.
   if (stat === "speed" && unit.statuses.some((s) => s.status === "freeze"))
     pct -= MARINARA_ELEMENT_MASTERY.freezeSpeedPct;
+  // Crumble (earth) and Soak (water): Defense or Resistance down while it lasts.
+  if (stat === "defense" && unit.statuses.some((s) => s.status === "crumble"))
+    pct -= MARINARA_ELEMENT_MASTERY.crumbleDefensePct;
+  if (stat === "resistance" && unit.statuses.some((s) => s.status === "soak"))
+    pct -= MARINARA_ELEMENT_MASTERY.soakResistancePct;
   if (stat === "defense" && unit.defending) pct += MARINARA_TUNING.defendDefensePct + (own.defendBonusPct ?? 0);
   let flat = 0;
   if (stat === "defense" || stat === "resistance") {
@@ -1650,13 +1663,30 @@ export function marinaraOption(
 }
 
 /** Element Mastery's ailments, 2 turns each: Burn 4% max HP a turn, Freeze -15% Speed, Shock +10 critical
- *  chance (flat, added to the attacker's own) on every attack against the target. */
+ *  chance (flat, added to the attacker's own) on every attack against the target; the wuxing elements
+ *  (Alyssa 2026-11-02): Entangle -15 hit chance, Crumble -15% Defense, Soak -15% Resistance, Rend -15%
+ *  damage dealt. */
 export const MARINARA_ELEMENT_MASTERY = {
   turns: 2,
   burnPct: 0.04,
   freezeSpeedPct: 0.15,
   shockCrit: 10,
+  entangleHit: 15,
+  crumbleDefensePct: 0.15,
+  soakResistancePct: 0.15,
+  rendDamagePct: 0.15,
 } as const;
+
+/** The ailment Element Mastery leaves for each element. */
+export const MARINARA_ELEMENT_AILMENTS: Record<(typeof MARINARA_ELEMENTS)[number], MarinaraStatusId> = {
+  fire: "burn",
+  ice: "freeze",
+  lightning: "shock",
+  wood: "entangle",
+  earth: "crumble",
+  water: "soak",
+  metal: "rend",
+};
 
 /** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
 export const MARINARA_VANISH_EVADE = 40;
@@ -1759,6 +1789,8 @@ export function marinaraHitNumbers(
     (actor.gearPower ?? 0) -
     guard;
   let pct = modTotal(actor, "damage") + modTotal(target, "damage-taken");
+  // Rend (metal): a rent attacker deals less.
+  if (actor.statuses.some((st) => st.status === "rend")) pct -= MARINARA_ELEMENT_MASTERY.rendDamagePct;
   for (const ally of living(all.filter((unit) => unit.side === actor.side))) {
     const allyHooks = hooksOf(ally);
     pct += allyHooks.partyDamagePct ?? 0;
@@ -1839,6 +1871,8 @@ export function marinaraHitNumbers(
         (effect.hitBonus ?? 0) +
         (hooks.hitBonus ?? 0) +
         (actor.gear?.hit ?? 0) -
+        // Entangle (wood): the bound attacker's hit chance drops.
+        (actor.statuses.some((st) => st.status === "entangle") ? MARINARA_ELEMENT_MASTERY.entangleHit : 0) -
         evade,
     ),
   );
@@ -2826,7 +2860,7 @@ function strikeOnce(
   // by further hits rather than stacked.
   if (hooks.elementMastery && target.hp > 0) {
     const m = MARINARA_ELEMENT_MASTERY;
-    const status = type === "fire" ? "burn" : type === "ice" ? "freeze" : type === "lightning" ? "shock" : undefined;
+    const status = (MARINARA_ELEMENT_AILMENTS as Partial<Record<string, MarinaraStatusId>>)[type];
     if (
       status &&
       addStatus(target, { status, duration: m.turns, ...(status === "burn" ? { power: m.burnPct } : {}) }, 0, actor.id)

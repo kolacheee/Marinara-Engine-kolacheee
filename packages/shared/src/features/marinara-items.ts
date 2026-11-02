@@ -140,6 +140,10 @@ export const MARINARA_STATUSES = [
   "burn",
   "freeze",
   "shock",
+  "entangle",
+  "crumble",
+  "soak",
+  "rend",
   "wither",
   "wound",
   "doom",
@@ -164,7 +168,7 @@ export interface MarinaraGearEffects {
   /** Damage dealt, as a share (0.1 = +10%). */
   damagePct?: number;
   damageBelowHalfPct?: number;
-  /** Element (fire, ice, lightning) spell damage. */
+  /** Element (MARINARA_ELEMENTS) spell damage. */
   elementDamagePct?: number;
   /** Healing done. */
   healPct?: number;
@@ -675,6 +679,10 @@ const ELEMENT_WARDS: ReadonlyArray<[MarinaraDamageType, string]> = [
   ["fire", "Fireproof"],
   ["ice", "Frostproof"],
   ["lightning", "Grounding"],
+  ["wood", "Barkward"],
+  ["earth", "Bedrock"],
+  ["water", "Waterproof"],
+  ["metal", "Ironskin"],
   ["light", "Shade"],
   ["dark", "Dawn"],
 ];
@@ -1198,6 +1206,42 @@ const AMMO_NAMES: Record<Exclude<MarinaraDamageType, "arcane">, MarinaraNames> =
     "Silver Bullets",
     "Glowstone Shot",
   ),
+  wood: names(
+    "Wood Ammo",
+    "Thornwood Arrows",
+    "Bio-Seed Cells",
+    "Splinter Rounds",
+    "Green-Bamboo Arrows",
+    "Hickory Slugs",
+    "Thorn Darts",
+  ),
+  earth: names(
+    "Earth Ammo",
+    "Stoneheart Arrows",
+    "Regolith Slugs",
+    "Frangible Clay Rounds",
+    "Mountain-Stone Arrows",
+    "Birdshot Shells",
+    "Rock-Salt Shells",
+  ),
+  water: names(
+    "Water Ammo",
+    "Tideborn Arrows",
+    "Hydro Cells",
+    "Gel Rounds",
+    "River-Spirit Arrows",
+    "Brine Slugs",
+    "Sludge Darts",
+  ),
+  metal: names(
+    "Metal Ammo",
+    "Ironheart Arrows",
+    "Rail Slugs",
+    "Steel-Core Rounds",
+    "Golden-Edge Arrows",
+    "Steel-Jacket Rounds",
+    "Rebar Bolts",
+  ),
   dark: names(
     "Shadow Ammo",
     "Shadow Arrows",
@@ -1224,6 +1268,10 @@ const BOMB_ELEMENT_WORDS: Record<string, MarinaraNames> = {
   lightning: names("Storm", "Storm", "Arc", "Shock", "Thunder", "Spark", "Shock"),
   light: names("Sun", "Sun", "Photon", "Flash", "Sun", "Flash", "Flare"),
   dark: names("Shadow", "Shadow", "Void", "Shadow", "Shadow", "Shadow", "Shadow"),
+  wood: names("Thorn", "Thorn", "Bio", "Thorn", "Wood", "Briar", "Thorn"),
+  earth: names("Quake", "Quake", "Seismic", "Concussion", "Earth", "Rockfall", "Rubble"),
+  water: names("Tide", "Tide", "Hydro", "Water", "Water", "Flood", "Bilge"),
+  metal: names("Shrapnel", "Shrapnel", "Flechette", "Frag", "Metal", "Shrapnel", "Nail"),
 };
 const BOMB_NOUNS: Record<MarinaraItemSetting | "neutral", readonly [string, string, string]> = {
   neutral: ["Bomb", "Grenade", "Great Bomb"],

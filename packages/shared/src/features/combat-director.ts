@@ -150,7 +150,7 @@ export type DirectedCommand =
   /** Classic Marinara (Alyssa 2026-11-01): a Marksman loads another of the ammunition types the party
    *  owns (the unit's `marinara.ammo.choices`), by hand, at any time; a free action. */
   | { type: "loadAmmo"; unitId: string; ammo: MarinaraDamageType }
-  /** Channel Element: a Channeler-tree caster of the party channels fire, ice or lightning (the
+  /** Channel Element: a Channeler-tree caster of the party channels an element (the
    *  unit's `marinara.channel.choices`); a bonus action, once between their turns. */
   | { type: "channelElement"; unitId: string; element: MarinaraDamageType }
   /** The party gives itself up to opponents who are all honourable (combat AI T6): a ruleset fight's. */
