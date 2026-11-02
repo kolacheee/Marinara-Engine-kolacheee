@@ -2178,7 +2178,7 @@
   "game.combat.marinara.fighters": "Fighters ({{count}})",
   "game.combat.marinara.frontRowOnly": "Front row only (or with nobody standing in front)",
   "game.combat.marinara.growth": "What the party gained",
-  "game.combat.marinara.hidden": "Hidden",
+  "game.combat.marinara.hidden": "Evading",
   "game.combat.marinara.hp": "HP {{hp}}/{{max}}",
   "game.combat.marinara.level": "Lv {{level}}",
   "game.combat.marinara.levelUp": "Level {{level}} ({{gains}})",
