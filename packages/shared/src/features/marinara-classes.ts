@@ -474,7 +474,7 @@ const greaterChannel = (id = "greater-channel-element") =>
     1,
     "magic",
     0,
-    "Bonus action. Channels fire, ice, lightning, wood, earth, water, metal, wind, light or dark, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Replaces Channel Element.",
+    "Bonus action. Channels fire, ice, lightning, wood, earth, water, metal, wind, light, or dark, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Replaces Channel Element.",
   );
 
 type ClassRow = Omit<MarinaraClassDef, "archetype" | "tier" | "pure"> & { tier?: MarinaraClassTier; pure?: boolean };
@@ -1294,7 +1294,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "magic",
           3,
-          "Reduces one foe's Strength or Magic, whichever is higher, by 20% for 3 turns.",
+          "Saps one foe's Strength or Magic, whichever is higher, by 20% for 3 turns.",
           true,
         ),
         active(
@@ -1333,7 +1333,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "grave-hunger",
           "Grave Hunger",
           12,
-          "Steals 15% of Defense and Resistance from each foe in spell range, up to five (25% from the front row).",
+          "Saps 15% of Defense and Resistance from each foe in spell range, up to five (25% from the front row).",
         ),
         passive("grave-skin", "Grave Skin", 15, "Reduces damage taken by 15% while in the front row.", true),
       ],
@@ -1355,7 +1355,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           10,
-          "Deals heavy dark damage to one foe and restores HP equal to the damage dealt. Cooldown: 2 turns.",
+          "Deals heavy dark damage to one foe and saps HP equal to the damage dealt. Cooldown: 2 turns.",
         ),
         active(
           "grave-tithe",
@@ -1363,13 +1363,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           22,
           "magic",
           6,
-          "Deals dark damage to all foes and restores HP equal to half the damage dealt. Front row only. Usable every other turn.",
+          "Deals dark damage to all foes and saps HP equal to half the damage dealt. Front row only. Usable every other turn.",
         ),
         passive(
           "siphoning-rot",
           "Siphoning Rot",
           24,
-          "The user's Poison and Wither restore HP equal to half the damage they deal.",
+          "The user's Poison and Wither sap HP equal to half the damage they deal.",
           true,
         ),
       ],
@@ -1473,7 +1473,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
     {
       id: "mender",
       label: "Mender",
-      role: "Healers who keep the party standing and cure what ails them.",
+      role: "Healers who keep the party standing with light magic and cure what ails them.",
       leans: ["magic", "resistance"],
       skills: [
         active("mend", "Mend", 1, "magic", 3, "Restores HP to one ally.", true),
