@@ -38,6 +38,12 @@ import {
   MARINARA_BESTIARY_ABILITIES,
   type MarinaraFightGrowth,
   marinaraClass,
+  marinaraGrantBonus,
+  marinaraItemName,
+  marinaraRollSteal,
+  marinaraTierForLevel,
+  type MarinaraFoeRank,
+  type MarinaraItemPlace,
   type CombatItemEffect,
   type CombatPlayerAction,
   type CombatSkill,
@@ -71,6 +77,10 @@ export interface MarinaraDirectorState {
   left?: MarinaraFighter[];
   /** What the party took from the fight, once it ended (summary.marinara). */
   growth?: MarinaraFightGrowth[];
+  /** Where the fight is, for what Steal takes (named in the log as it happens). */
+  place?: MarinaraItemPlace;
+  /** The fight's loot seed, so a stolen thing is the one the loot would have rolled. */
+  lootSeed?: string;
 }
 
 export type MarinaraLog = (text: string, kind: string, actorId?: string, source?: string) => void;
@@ -224,6 +234,18 @@ function marinaraSkillLabel(id: string): string {
     .join(" ");
 }
 
+const STAT_WORDS: Record<string, string> = {
+  strength: "Strength",
+  magic: "Magic",
+  skill: "Skill",
+  speed: "Speed",
+  defense: "Defense",
+  resistance: "Resistance",
+  luck: "Luck",
+  damage: "damage",
+  "damage-taken": "damage taken",
+};
+
 const STATUS_WORDS: Record<string, string> = {
   sleep: "falls asleep",
   stun: "is stunned",
@@ -235,6 +257,15 @@ const STATUS_WORDS: Record<string, string> = {
   doom: "is doomed",
   slow: "is slowed",
   regen: "regenerates",
+  burn: "burns (4% of max HP a turn)",
+  freeze: "is frozen (Speed -15%)",
+  shock: "is shocked (attacks on them crit more)",
+  entangle: "is entangled (hit chance -15%)",
+  crumble: "crumbles (Defense -15%)",
+  soak: "is soaked (Resistance -15%)",
+  rend: "is rent (damage dealt -15%)",
+  windswept: "is windswept (easier to hit)",
+  sear: "is seared (damage taken +10%)",
 };
 
 /** One line of the log for one event, in plain words. */
@@ -251,13 +282,28 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       : event.affinity === "resist"
         ? ", resisted"
         : event.affinity === "immune"
-          ? ", no effect"
+          ? ", immune"
           : "";
+  // The rules a hit went through, said out loud (Alyssa 2026-11-02: hidden rules made the back row "feel fake").
+  const rules = [
+    event.halved ? "halved, melee into the back row" : "",
+    event.shielded
+      ? `a shield absorbed ${event.shielded}${event.shieldLeft ? `, ${event.shieldLeft} left` : ", now broken"}`
+      : "",
+    ...(event.notes ?? []).map((note) =>
+      note === "Hold Fast" ? "less from Hold Fast" : note === "Kill Zone" ? "more from Kill Zone" : note,
+    ),
+  ]
+    .filter(Boolean)
+    .map((rule) => `, ${rule}`)
+    .join("");
   switch (event.kind) {
     case "hit":
-      return `${actor} hits ${target}${using} for ${event.amount}${event.type ? ` ${event.type}` : ""}${event.crit ? ", a critical hit" : ""}${how}${roll}.`;
+      return `${actor} hits ${target}${using} for ${event.amount}${event.type ? ` ${event.type}` : ""}${event.crit ? ", a critical hit" : ""}${how}${rules}${roll}.`;
     case "miss":
-      return `${actor} misses ${target}${using}${roll}.`;
+      return event.skillId === "steal"
+        ? `${actor} fails to steal from ${target}${roll}.`
+        : `${actor} misses ${target}${using}${roll}.`;
     case "evade":
       return `${target} slips away from ${actor}'s attack.`;
     case "absorb":
@@ -273,13 +319,27 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
         ? `${actor} lashes out in confusion at ${target}.`
         : `${target} ${STATUS_WORDS[event.status ?? ""] ?? `is afflicted with ${event.status}`}${using ? ` (${skill})` : ""}.`;
     case "resist":
-      return `${target} shrugs off ${skill ?? "it"}.`;
+      return event.why === "immune"
+        ? `${target} is immune to ${skill ?? "it"}.`
+        : event.why === "morale"
+          ? `${target} shrugs off ${skill ?? "it"}, steadied by morale.`
+          : event.why === "chance"
+            ? `${skill ?? "It"} fails to take hold on ${target}${roll}.`
+            : `${target} shrugs off ${skill ?? "it"}.`;
+    case "slowed":
+      return `${actor}'s Slow Time slows ${target} (Speed -${event.amount}% until their next turn).`;
     case "tick":
       return `${actor} takes ${event.amount} from ${event.status}.`;
     case "buff":
       return `${actor} uses ${skill ?? "a boon"}${event.targetId && event.targetId !== event.actorId ? ` on ${target}` : ""}.`;
     case "debuff":
-      return `${actor} uses ${skill ?? "a hex"} on ${target}.`;
+      return event.notes?.includes("sap") && event.status
+        ? `${actor} saps ${Math.abs(event.amount ?? 0)}% of ${target}'s ${STAT_WORDS[event.status] ?? event.status} with ${skill ?? "a hex"}, and gains it for themselves.`
+        : event.status && STAT_WORDS[event.status] && event.amount
+          ? `${actor} uses ${skill ?? "a hex"} on ${target}: ${STAT_WORDS[event.status]} ${event.amount > 0 ? "+" : ""}${event.amount}%.`
+          : event.status && STATUS_WORDS[event.status]
+            ? `${target} ${STATUS_WORDS[event.status]} (${skill ?? actor}).`
+            : `${actor} uses ${skill ?? "a hex"} on ${target}.`;
     case "cleanse":
       return `${actor} cleanses ${target}${using}.`;
     case "shield":
@@ -306,10 +366,15 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       return `${actor} defends.`;
     case "charge":
       return `${actor} readies ${skill ?? "a heavy blow"} at ${target}.`;
-    case "extra-turn":
-      return `${actor} gains an extra action${skill ? ` (${skill})` : ""}.`;
+    case "extra-turn": {
+      // A bonus-action skill leaves the user their action; anything else grants one more.
+      const effect = event.skillId ? MARINARA_SKILL_EFFECTS[event.skillId] : undefined;
+      return effect?.bonusAction && effect.kind !== "extra-turn"
+        ? `${skill} is a bonus action: ${actor} still acts this turn.`
+        : `${actor} gains an extra action${skill ? ` (${skill})` : ""}.`;
+    }
     case "command":
-      return `${actor} commands ${target} to act.`;
+      return `On ${actor}'s command${skill ? ` (${skill})` : ""}, ${target} acts at once.`;
     case "last-stand":
       return `${actor} refuses to fall.`;
     case "miracle":
@@ -321,7 +386,11 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "steal":
       return event.status === "empty"
         ? `${actor} finds nothing left on ${target}.`
-        : `${actor} steals from ${target}${roll}.`;
+        : event.item
+          ? `${actor} steals ${/^[aeiou]/i.test(event.item) ? "an" : "a"} ${event.item} from ${target}${roll}.`
+          : event.amount
+            ? `${actor} steals ${event.amount} gold from ${target}${roll}.`
+            : `${actor} steals from ${target}${roll}.`;
     case "decoy":
       return `A decoy takes ${actor}'s blow meant for ${target}${event.amount ? ` (${event.amount} left)` : " (the last one)"}.`;
     case "oath":
@@ -362,8 +431,25 @@ function rowNotices(state: MarinaraDirectorState, events: readonly MarinaraEvent
 }
 
 /** Logs a step's events and credits who helped, for XP. */
+/** Steal: decides what was taken as it happens, so the log can name it (Alyssa 2026-11-02). */
+function resolveSteal(state: MarinaraDirectorState, event: MarinaraEvent) {
+  if (event.kind !== "steal" || event.status === "empty" || !state.place || !state.lootSeed) return;
+  const foe = event.targetId ? marinaraFighter(state, event.targetId) : undefined;
+  if (!foe) return;
+  foe.stolen ??= marinaraRollSteal({
+    tier: marinaraTierForLevel(foe.level),
+    rank: (foe.tier ?? "standard") as MarinaraFoeRank,
+    place: state.place,
+    ...(foe.familyId ? { family: foe.familyId } : {}),
+    seed: `${state.lootSeed}:${foe.id}`,
+  });
+  if ("item" in foe.stolen) event.item = marinaraItemName(foe.stolen.item, state.place);
+  else event.amount = foe.stolen.gold;
+}
+
 function record(state: MarinaraDirectorState, ctx: MarinaraFightContext, log: MarinaraLog, source?: string) {
   for (const event of ctx.events) {
+    resolveSteal(state, event);
     log(marinaraEventText(state, event), `marinara:${event.kind}`, event.actorId, source);
     const credit = (state.credit[event.actorId] ??= { damage: 0, support: 0, foes: [] });
     const target = event.targetId ? marinaraFighter(state, event.targetId) : undefined;
@@ -627,7 +713,7 @@ export function marinaraAfterItem(state: MarinaraDirectorState, unitId: string, 
   if (!fighter || fighter.hp <= 0 || fighter.freeItemUsed || fighter.commanded) return false;
   if (!marinaraPassiveHooks(fighter.skills).freeItem) return false;
   fighter.freeItemUsed = true;
-  fighter.bonusTurns = (fighter.bonusTurns ?? 0) + 1;
+  marinaraGrantBonus(fighter, state.fighters);
   log(`${fighter.name} gains an extra action (Double Dose).`, "marinara:extra-turn", fighter.id);
   return true;
 }

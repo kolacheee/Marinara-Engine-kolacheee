@@ -26,6 +26,7 @@ import {
   type MarinaraEquipment,
   marinaraLearnedSkills,
   marinaraSkillSummary,
+  marinaraFrontOnly,
   marinaraOpenClasses,
   marinaraSecondaryFits,
   marinaraTrees,
@@ -380,6 +381,9 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                         <span className="font-medium">{skill.label}</span>{" "}
                         <span className="text-[var(--muted-foreground)]">
                           ({marinaraClass(skill.classId)?.label}) {marinaraSkillSummary(skill, progression)}
+                          {currentRow === "back" && marinaraFrontOnly(skill.id)
+                            ? [" ", t("game.combat.marinara.sheet.frontOnlyIdle")].join("")
+                            : ""}
                         </span>
                       </span>
                     </label>
@@ -476,6 +480,8 @@ function ClassDetails({
   const level = trained ?? 0;
   const traits = MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? [];
   const tree = t(`game.combat.marinara.archetype.${def.archetype}`);
+  // The row this class would fight from: front-only skills sit idle in the back (Alyssa 2026-11-02).
+  const row = progression.row ?? def.row ?? MARINARA_ARCHETYPE_ROWS[def.archetype];
   return (
     <div className="mt-2 space-y-1 rounded-md border border-[var(--border)] p-2" data-testid="marinara-class-details">
       <p>
@@ -509,6 +515,9 @@ function ClassDetails({
                       ? `${skill.cost} ${t(`game.combat.marinara.sheet.resource.${skill.resource ?? "mp"}`)}`
                       : null,
                     traits.includes(skill.id) ? t("game.combat.marinara.sheet.treeTrait", { tree }) : null,
+                    row === "back" && marinaraFrontOnly(skill.id)
+                      ? t("game.combat.marinara.sheet.frontOnlyIdle")
+                      : null,
                   ]
                     .filter(Boolean)
                     .join(", "),

@@ -851,6 +851,8 @@ export interface MarinaraFighter {
   yielded?: boolean;
   /** Robbed by this fighter (Steal): a foe has one thing to take, kept with the fight's loot. */
   stolenBy?: string;
+  /** What Steal took, once the director knows the place (logged at once and kept for the loot). */
+  stolen?: { item: string } | { gold: number };
   /** A wild beast or vermin Tame can take: what it is called and the stat it is strongest in. */
   tameable?: { name: string; stat: MarinaraStat; familyId?: string };
   /** Tamed by this fighter: it leaves the fight, pays XP and drops nothing. */
@@ -900,6 +902,9 @@ export interface MarinaraFighter {
   followThroughUsed?: boolean;
   /** Commanded (Command, Grand Strategy): acts again at once, outside its own place on the timeline. */
   bonusTurns?: number;
+  /** When its extra actions were granted, so they're taken in that order (a commanded ally before the
+   *  commander's own bonus action: Grand Strategy "acts at once"). */
+  bonusAt?: number;
   /** This action is a commanded one, which can't command in turn. */
   commanded?: boolean;
 }
@@ -1217,6 +1222,7 @@ export type MarinaraEventKind =
   | "rider"
   | "status"
   | "resist"
+  | "slowed"
   | "tick"
   | "buff"
   | "debuff"
@@ -1259,6 +1265,17 @@ export interface MarinaraEvent {
   /** The chance a hit had, shown with its roll. */
   chance?: number;
   roll?: number;
+  /** Steal: the name of the item taken (gold goes in `amount`). */
+  item?: string;
+  /** Why a skill didn't take hold (resist): an immunity, Morale, or the roll. */
+  why?: "immune" | "morale" | "chance";
+  /** A hit: how much a shield soaked up, and what it has left. */
+  shielded?: number;
+  shieldLeft?: number;
+  /** A hit halved by the back-row melee rule. */
+  halved?: boolean;
+  /** Passives that changed a hit, by name (Hold Fast, Kill Zone), for the log. */
+  notes?: string[];
 }
 
 export interface MarinaraFightContext {
@@ -1299,7 +1316,12 @@ const slowTimeOn = (unit: MarinaraFighter, all: readonly MarinaraFighter[]) =>
  * Slow Time (Alyssa 2026-11-02): a debuff or status ailment that lands slows at once. Each fighter
  * not debuffed before the action and debuffed after it has the rest of its wait stretched, once per wait.
  */
-function slowNewlyDebuffed(before: ReadonlySet<MarinaraFighter>, now: number, all: readonly MarinaraFighter[]): void {
+function slowNewlyDebuffed(
+  before: ReadonlySet<MarinaraFighter>,
+  now: number,
+  all: readonly MarinaraFighter[],
+  ctx?: MarinaraFightContext,
+): void {
   for (const unit of living(all)) {
     if (before.has(unit) || unit.waitSlowed || !marinaraDebuffed(unit)) continue;
     const slowing = slowTimeOn(unit, all);
@@ -1307,16 +1329,31 @@ function slowNewlyDebuffed(before: ReadonlySet<MarinaraFighter>, now: number, al
     const left = Math.max(0, unit.next - now);
     unit.next = now + left / (1 - slowing);
     unit.waitSlowed = true;
+    // Shown in the log (playtest 2026-11-02: "a passive with no visible effect").
+    const by = living(all.filter((other) => other.side !== unit.side)).find((other) => hooksOf(other).slowDebuffed);
+    if (by && ctx)
+      ctx.events.push({
+        kind: "slowed",
+        actorId: by.id,
+        targetId: unit.id,
+        skillId: "slow-time",
+        amount: Math.round(slowing * 100),
+      });
   }
 }
 
 /** Runs an action, then slows whoever it newly debuffed (Slow Time). */
-function withSlowTime(actor: MarinaraFighter, all: readonly MarinaraFighter[], run: () => void): void {
+function withSlowTime(
+  actor: MarinaraFighter,
+  all: readonly MarinaraFighter[],
+  run: () => void,
+  ctx?: MarinaraFightContext,
+): void {
   const before = new Set(all.filter((unit) => marinaraDebuffed(unit)));
   try {
     run();
   } finally {
-    slowNewlyDebuffed(before, actor.turnAt ?? Math.min(...living(all).map((unit) => unit.next)), all);
+    slowNewlyDebuffed(before, actor.turnAt ?? Math.min(...living(all).map((unit) => unit.next)), all, ctx);
   }
 }
 
@@ -1906,6 +1943,10 @@ export interface MarinaraHitNumbers {
   multiplier: number;
   type: MarinaraDamageType;
   rider: { type: MarinaraDamageType; multiplier: number; damage: number } | null;
+  /** Halved by the back-row melee rule. */
+  halved?: boolean;
+  /** Passives that changed it, for the log (Hold Fast, Kill Zone). */
+  notes?: string[];
 }
 
 /** The rider a weapon hit carries (a coating), if it lands. */
@@ -1955,6 +1996,7 @@ export function marinaraHitNumbers(
   if (target.statuses.some((st) => st.status === "sear")) pct += MARINARA_ELEMENT_MASTERY.searTakenPct;
   // Rend (metal): a rent attacker deals less.
   if (actor.statuses.some((st) => st.status === "rend")) pct -= MARINARA_ELEMENT_MASTERY.rendDamagePct;
+  const notes = new Set<string>();
   for (const ally of living(all.filter((unit) => unit.side === actor.side))) {
     const allyHooks = hooksOf(ally);
     pct += allyHooks.partyDamagePct ?? 0;
@@ -1964,8 +2006,10 @@ export function marinaraHitNumbers(
     if (
       allyHooks.partyDamageWhileProvoked &&
       living(all.filter((u) => u.side === actor.side)).some((u) => u.provoking > 0)
-    )
+    ) {
       pct += allyHooks.partyDamageWhileProvoked;
+      notes.add("Kill Zone");
+    }
   }
   if (magic) pct += hooks.spellDamagePct ?? 0;
   pct += (hooks.damagePct ?? 0) + (actor.gear?.damagePct ?? 0);
@@ -1985,7 +2029,10 @@ export function marinaraHitNumbers(
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
     const allyHooks = hooksOf(ally);
     if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;
-    if (target.provoking > 0) pct += allyHooks.partyProvokerTakenPct ?? 0;
+    if (target.provoking > 0 && allyHooks.partyProvokerTakenPct) {
+      pct += allyHooks.partyProvokerTakenPct;
+      notes.add("Hold Fast");
+    }
     if (marinaraRowOf(target, all) === "back") pct += allyHooks.backRowTakenPct ?? 0;
   }
   if (hooks.heavyDraw) pct += 0.3;
@@ -2100,6 +2147,8 @@ export function marinaraHitNumbers(
     multiplier,
     type: best.type,
     rider,
+    ...(rowFactor < 1 ? { halved: true } : {}),
+    ...(notes.size ? { notes: [...notes] } : {}),
   };
 }
 
@@ -2311,9 +2360,22 @@ export function startMarinaraClock(all: MarinaraFighter[], random: () => number)
   for (const unit of all) unit.next = turnLength(unit, all) * random() * (hooksOf(unit).vanguard ? 0.2 : 1);
 }
 
-/** Who acts next: the living fighter soonest on the timeline. */
+/** A skill that works only from the front row (Grave Skin, Grave Tithe), to show it idle in the back. */
+export function marinaraFrontOnly(skillId: string): boolean {
+  return !!(MARINARA_PASSIVES[skillId]?.frontTakenPct || MARINARA_SKILL_EFFECTS[skillId]?.frontOnly);
+}
+
+/** Grants a fighter extra actions, queued after any already granted. */
+export function marinaraGrantBonus(unit: MarinaraFighter, all: readonly MarinaraFighter[], count = 1): void {
+  if (!unit.bonusTurns) unit.bonusAt = Math.max(0, ...all.map((other) => other.bonusAt ?? 0)) + 1;
+  unit.bonusTurns = (unit.bonusTurns ?? 0) + count;
+}
+
+/** Who acts next: one owed an extra action (the earliest granted first), else the soonest on the timeline. */
 export function nextMarinaraActor(all: readonly MarinaraFighter[]): MarinaraFighter | undefined {
-  const commanded = living(all).find((unit) => (unit.bonusTurns ?? 0) > 0);
+  const commanded = living(all)
+    .filter((unit) => (unit.bonusTurns ?? 0) > 0)
+    .sort((a, b) => (a.bonusAt ?? 0) - (b.bonusAt ?? 0))[0];
   if (commanded) return commanded;
   return living(all)
     .filter((unit) => !unit.dummy)
@@ -2339,7 +2401,10 @@ export function beginMarinaraTurn(
   // A commanded turn is an extra action: nothing ticks and the timeline stays where it was.
   if ((actor.bonusTurns ?? 0) > 0) {
     actor.bonusTurns! -= 1;
-    if (!actor.bonusTurns) delete actor.bonusTurns;
+    if (!actor.bonusTurns) {
+      delete actor.bonusTurns;
+      delete actor.bonusAt;
+    }
     actor.commanded = true;
     const asleep = actor.statuses.some((s) => s.status === "sleep" || s.status === "stun");
     return { acts: !asleep && !actor.charging && !actor.dummy };
@@ -2461,7 +2526,7 @@ export function releaseMarinaraCharge(
   all: MarinaraFighter[],
   ctx: MarinaraFightContext,
 ): void {
-  withSlowTime(actor, all, () => releaseMarinaraChargeNow(actor, release, all, ctx));
+  withSlowTime(actor, all, () => releaseMarinaraChargeNow(actor, release, all, ctx), ctx);
 }
 
 function releaseMarinaraChargeNow(
@@ -2517,7 +2582,7 @@ export function performMarinaraOption(
   all: MarinaraFighter[],
   ctx: MarinaraFightContext,
 ): void {
-  withSlowTime(actor, all, () => performMarinaraOptionNow(actor, option, targets, all, ctx));
+  withSlowTime(actor, all, () => performMarinaraOptionNow(actor, option, targets, all, ctx), ctx);
 }
 
 function performMarinaraOptionNow(
@@ -2602,7 +2667,7 @@ function performMarinaraOptionNow(
   if (hooks.extraActionEvery && !actor.commanded && actor.actions % hooks.extraActionEvery === 0) {
     // Peerless: every third action grants another action, chosen like any other. `actions` counts only
     // the user's own turns, so the extra action itself (a commanded turn) never grants another.
-    actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+    marinaraGrantBonus(actor, all);
     ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "peerless" });
   }
 }
@@ -2679,7 +2744,7 @@ function act(
       if (effect.selfDebuff)
         addMod(actor, effect.selfDebuff.stat, effect.selfDebuff.pct, effect.selfDebuff.duration, `${skill?.id}:self`);
       if (effect.bonusAction && !actor.commanded) {
-        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        marinaraGrantBonus(actor, all);
         ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       break;
@@ -2768,7 +2833,7 @@ function act(
         ctx.events.push({ kind: "provoke", actorId: actor.id, skillId });
       }
       if (effect.bonusAction && !actor.commanded) {
-        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        marinaraGrantBonus(actor, all);
         ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       if (effect.exposeNext) actor.exposeNext = effect.exposeNext;
@@ -2777,7 +2842,7 @@ function act(
     case "debuff":
       for (const target of targets) {
         if (hooksOf(target).debuffImmune) {
-          ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId });
+          ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId, why: "immune" });
           continue;
         }
         // Weaken: whichever of Strength and Magic the target hits with.
@@ -2792,7 +2857,15 @@ function act(
         // Weaken saps (Alyssa 2026-11-02): the user gains the very stat the foe loses.
         if (effect.stat === "best-attack" && effect.sapsToUser)
           addMod(actor, stat, -(effect.pct ?? 0), (effect.duration ?? 1) + durationBonus, `${skillId ?? "debuff"}:sap`);
-        ctx.events.push({ kind: "debuff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
+        ctx.events.push({
+          kind: "debuff",
+          actorId: actor.id,
+          targetId: target.id,
+          skillId,
+          status: stat,
+          amount: Math.round((effect.pct ?? 0) * 100),
+          ...(effect.sapsToUser ? { notes: ["sap"] } : {}),
+        });
         if (
           effect.applies &&
           random() < (effect.applies.chance ?? 1) &&
@@ -2807,7 +2880,7 @@ function act(
           });
       }
       if (effect.bonusAction && !actor.commanded) {
-        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        marinaraGrantBonus(actor, all);
         ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       break;
@@ -2817,15 +2890,28 @@ function act(
         const chance =
           (effect.chance ?? 1) *
           (effect.status === "confuse" && target.tier === "elite" ? 1 - MARINARA_BOSS_RULES.eliteConfuseResist : 1);
-        if (
-          effect.status !== "regen" &&
-          (roll > chance || shrugsOff(target, effect.status!) || moraleHolds(target, effect.status!, all, random))
-        ) {
-          ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
-          continue;
-        }
-        if (effect.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0) {
-          ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId, status: "poison" });
+        // Why it didn't take, for the log (Alyssa 2026-11-02: an immunity says so).
+        const why =
+          effect.status === "regen"
+            ? undefined
+            : shrugsOff(target, effect.status!) ||
+                (effect.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0)
+              ? ("immune" as const)
+              : roll > chance
+                ? ("chance" as const)
+                : moraleHolds(target, effect.status!, all, random)
+                  ? ("morale" as const)
+                  : undefined;
+        if (why) {
+          ctx.events.push({
+            kind: "resist",
+            actorId: actor.id,
+            targetId: target.id,
+            skillId,
+            status: effect.status,
+            why,
+            ...(why === "chance" ? { chance: Math.round(chance * 100), roll: Math.floor(roll * 100) } : {}),
+          });
           continue;
         }
         target.statuses = target.statuses.filter((s) => s.status !== effect.status);
@@ -2875,7 +2961,7 @@ function act(
     case "extra-turn":
       // Double Time: one extra action, plus the action it gives back as a bonus action. Extra
       // actions are commanded ones: nothing ticks and the timeline stays where it was.
-      actor.bonusTurns = (actor.bonusTurns ?? 0) + (effect.bonusAction && !actor.commanded ? 2 : 1);
+      marinaraGrantBonus(actor, all, effect.bonusAction && !actor.commanded ? 2 : 1);
       ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       break;
     case "steal":
@@ -2913,11 +2999,11 @@ function act(
       // Commanded allies act at once, an action on top of their own turns.
       for (const target of targets) {
         if (target.id === actor.id || target.hp <= 0) continue;
-        target.bonusTurns = (target.bonusTurns ?? 0) + 1;
+        marinaraGrantBonus(target, all);
         ctx.events.push({ kind: "command", actorId: actor.id, targetId: target.id, skillId });
       }
       if (effect.bonusAction && !actor.commanded) {
-        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        marinaraGrantBonus(actor, all);
         ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       break;
@@ -3013,7 +3099,7 @@ function strikeOnce(
       return;
     }
   }
-  const { damage, hitChance, critChance, multiplier, rider, type } = marinaraHitNumbers(
+  const { damage, hitChance, critChance, multiplier, rider, type, halved, notes } = marinaraHitNumbers(
     actor,
     target,
     effect,
@@ -3081,10 +3167,12 @@ function strikeOnce(
     if (omen && random() < 0.5) crit = false;
   }
   let amount = Math.round(damage * (crit ? MARINARA_TUNING.critMultiplier : 1));
+  let shielded = 0;
   if (target.shield > 0) {
     const absorbed = Math.min(target.shield, amount);
     target.shield -= absorbed;
     amount -= absorbed;
+    shielded = absorbed;
   }
   if (hooks.assassinate && crit && target.hp - amount < target.maxHp * 0.15 && target.tier !== "boss")
     amount = target.hp;
@@ -3109,6 +3197,9 @@ function strikeOnce(
     crit,
     type,
     ...(affinity ? { affinity } : {}),
+    ...(shielded > 0 ? { shielded, shieldLeft: Math.round(target.shield) } : {}),
+    ...(halved ? { halved } : {}),
+    ...(notes?.length ? { notes } : {}),
     chance: Math.round(hitChance),
     roll: Math.floor(roll),
   });

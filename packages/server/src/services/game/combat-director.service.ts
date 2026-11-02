@@ -7,6 +7,7 @@ import {
   hasLineOfSight,
 } from "@marinara-engine/shared";
 import {
+  type MarinaraItemPlace,
   assignCombatTactics,
   combatAiHash,
   shiftCombatTemperament,
@@ -478,6 +479,8 @@ export function createCombatDirector(input: {
   surprised?: string[];
   /** Classic Marinara fighters, one per unit by id: a game on Marinara's own classes. */
   marinara?: MarinaraFighter[];
+  /** Where a Classic fight is, so Steal can name what it takes as it happens. */
+  marinaraPlace?: MarinaraItemPlace;
 }): CombatDirectorState {
   const party = structuredClone(input.party),
     enemies = structuredClone(input.enemies);
@@ -549,6 +552,11 @@ export function createCombatDirector(input: {
     });
   if (input.marinara?.length && s.style !== "ruleset") {
     s.marinara = createMarinaraDirectorState(input.marinara, s.seed);
+    if (input.marinaraPlace) {
+      s.marinara.place = input.marinaraPlace;
+      // The seed the fight's loot rolls with (combat-director.routes.ts), so a steal named now is what it pays.
+      s.marinara.lootSeed = `${s.id}:${s.seed}:loot`;
+    }
     // Bosses act on the timeline like everyone else; extra actions come from their own skills.
     for (const u of directorUnits(s)) if (u.boss) u.boss = { ...u.boss, points: 0 };
     sync(s);
@@ -634,7 +642,9 @@ function leaveFight(s: CombatDirectorState, u: Unit, left: "fled" | "surrendered
  *  side or by initiative alike, and keeps its own turn this round if it hadn't taken it yet. */
 function queueMarinaraBonusTurns(s: CombatDirectorState) {
   if (!s.marinara || !s.tactical) return;
-  for (const fighter of s.marinara.fighters)
+  // In the order they were granted: a commanded ally before its commander's own bonus action.
+  const owed = [...s.marinara.fighters].sort((a, b) => (a.bonusAt ?? 0) - (b.bonusAt ?? 0));
+  for (const fighter of owed)
     if ((fighter.bonusTurns ?? 0) > 0 && fighter.hp > 0 && s.marinaraOwed?.[fighter.id] === undefined) {
       const unit = s.tactical.units.find((one) => one.id === fighter.id);
       if (!unit) continue;
