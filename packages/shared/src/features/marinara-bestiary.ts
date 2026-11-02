@@ -795,8 +795,12 @@ export interface MarinaraEnemyFamily {
   rangedBasic?: boolean;
   row: "front" | "back";
   affinities?: MarinaraAffinities;
-  /** Abilities it gains at a level. */
+  /** Abilities it gains at a level (beasts, spirits, machines: bestiary abilities). */
   abilities: ReadonlyArray<{ id: string; from: number }>;
+  /** A humanoid's carried class skills, from a level (Alyssa 2026-11-02: humanoids fight with their
+   *  class kit plus real carried skills, never bestiary-only tricks). Promoted foes also carry their
+   *  earlier classes' actives, as a player does. */
+  carries?: ReadonlyArray<{ id: string; from: number }>;
   levels: readonly [number, number];
   tiers: readonly MarinaraEnemyTier[];
   /** Its names in each setting it lives in, by level band. */
@@ -1187,7 +1191,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     classLine: ["guard", "sentinel", "stonewall"],
     row: "front",
     affinities: { ...BONE, slash: "resist" },
-    abilities: at(["sunder", 1], ["stagger", 12]),
+    abilities: [],
+    carries: at(["power-strike", 1], ["reckless-swing", 12]),
     levels: [5, 30],
     tiers: BIG_TIERS,
     names: {
@@ -1458,7 +1463,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     classLine: ["scout", "shade", "shroud"],
     row: "front",
     affinities: { light: "weak", fire: "weak", dark: "absorb", poison: "immune" },
-    abilities: at(["life-sap", 1], ["bewitch", 10], ["doom-mark", 20]),
+    abilities: [],
+    carries: at(["siphon", 6], ["wither", 12]),
     levels: [4, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1476,7 +1482,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["opportunistic", "cowardly", "cruel"],
     classLine: ["scout", "rogue", "phantom"],
     row: "front",
-    abilities: at(["dirty-trick", 1], ["mark-target", 8]),
+    abilities: [],
+    carries: at(["weaken", 1], ["mark-prey", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1499,7 +1506,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["reckless", "cruel", "arrogant", "disciplined"],
     classLine: ["blade", "bloodsworn", "cleaver"],
     row: "front",
-    abilities: at(["rend", 3], ["war-cry", 8]),
+    abilities: [],
+    carries: at(["flurry", 6], ["rally", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1523,7 +1531,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     classLine: ["guard", "sentinel", "stonewall"],
     row: "front",
     affinities: {},
-    abilities: at(["sunder", 1], ["taser", 10]),
+    abilities: [],
+    carries: at(["power-strike", 4], ["spellguard", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1546,7 +1555,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["patient", "cautious", "opportunistic"],
     classLine: ["marksman", "sharpshooter", "farshot"],
     row: "back",
-    abilities: at(["venom-arrow", 1], ["lock-on", 8], ["suppressing-fire", 12]),
+    abilities: [],
+    carries: at(["wither", 6], ["volley", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1568,7 +1578,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["arrogant", "methodical", "cautious"],
     classLine: ["channeler", "elementalist", "stormcaller"],
     row: "back",
-    abilities: at(["shield-ally", 6]),
+    abilities: [],
+    carries: at(["barrier", 6], ["starfall", 14]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1589,7 +1600,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["fanatical", "cruel", "methodical"],
     classLine: ["hexer", "witch", "carrion-lord"],
     row: "back",
-    abilities: at(["curse", 1], ["life-sap", 6], ["doom-mark", 18]),
+    abilities: [],
+    carries: at(["shadowstep", 6], ["siphon", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1610,7 +1622,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["supportive", "cautious", "fanatical"],
     classLine: ["mender", "cleric", "saint"],
     row: "back",
-    abilities: at(["mend", 1], ["smite", 6]),
+    abilities: [],
+    carries: at(["barrier", 8], ["starfall", 12]),
     levels: [1, 30],
     tiers: LOW_TIERS,
     names: {
@@ -1633,7 +1646,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["coordinated", "disciplined", "arrogant"],
     classLine: ["herald", "field-captain", "marshal"],
     row: "back",
-    abilities: at(["war-cry", 4], ["rally", 8], ["mark-target", 12]),
+    abilities: [],
+    carries: at(["swift-refrain", 8], ["mark-prey", 12]),
     levels: [4, 30],
     tiers: BIG_TIERS,
     names: {
@@ -1655,7 +1669,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["honourable", "arrogant", "disciplined"],
     classLine: ["scout", "skirmisher", "harrier"],
     row: "front",
-    abilities: at(["stagger", 10]),
+    abilities: [],
+    carries: at(["power-strike", 1], ["flurry", 10]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1927,6 +1942,9 @@ export function marinaraEnemySpec(input: {
     ...(family.attackType ? { attackType: family.attackType } : {}),
     ...(family.rangedBasic ? { ranged: true } : {}),
     enemySkills: marinaraEnemyAbilities(family, input.tier, level),
+    ...(classId && family.carries?.length
+      ? { carriedSkills: family.carries.filter((each) => each.from <= level).map((each) => each.id) }
+      : {}),
     mind: family.mind,
     ...(temperament ? { temperament } : {}),
     ...(family.windfall ? { windfall: family.windfall } : {}),
