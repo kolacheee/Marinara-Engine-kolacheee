@@ -1477,7 +1477,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Healers who keep the party standing with light magic and cure what ails them.",
       leans: ["magic", "resistance"],
       skills: [
-        active("mend", "Mend", 1, "magic", 3, "Restores HP to one ally.", true),
+        active("mend", "Mend", 1, "magic", 3, "Restores HP to one ally equal to 8 plus half the user's Magic.", true),
         // Replaced Second Breath (Alyssa 2026-11-02): a smite, so a lone Mender isn't helpless.
         active("verdict", "Verdict", 5, "magic", 4, "Deals light damage to one foe.", true),
         active("purify", "Purify", 8, "magic", 3, "Removes all debuffs and status ailments from one ally.", true),
@@ -1507,7 +1507,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           16,
-          "Restores HP to all allies and removes one debuff from each. Reduces the user's Speed by 20% until their next turn.",
+          "Restores HP to all allies equal to 5 plus half the user's Magic, and removes one debuff from each. Reduces the user's Speed by 20% until their next turn.",
         ),
         passive("miracle", "Miracle", 24, "Once per battle, the first ally to fall gets back up with 30% HP.", true),
       ],
@@ -1519,7 +1519,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Alchemists who heal with remedies and get the most out of every item.",
       leans: ["skill", "magic"],
       skills: [
-        active("remedy", "Remedy", 10, "magic", 4, "Restores HP to one ally and removes all their debuffs."),
+        active(
+          "remedy",
+          "Remedy",
+          10,
+          "magic",
+          4,
+          "Restores HP to one ally equal to 5 plus half the user's Magic, and removes all their debuffs.",
+        ),
         passive("item-savant", "Item Savant", 15, "Items used by the user are 50% more effective.", true),
       ],
     },
@@ -1554,7 +1561,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Protectors who shield allies before the blow lands.",
       leans: ["magic", "resistance", "hp"],
       skills: [
-        active("barrier", "Barrier", 10, "magic", 6, "Grants one ally a shield that absorbs damage.", true),
+        active(
+          "barrier",
+          "Barrier",
+          10,
+          "magic",
+          6,
+          "Grants one ally a shield that absorbs damage equal to 8 plus the user's Magic.",
+          true,
+        ),
         passive("overheal", "Overheal", 15, "Half of any healing beyond max HP becomes a shield."),
       ],
     },
