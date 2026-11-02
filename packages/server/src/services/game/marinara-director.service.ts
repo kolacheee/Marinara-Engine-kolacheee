@@ -737,6 +737,16 @@ export function marinaraChoiceAction(actor: MarinaraFighter, choice: MarinaraCho
     : { type: "skill", skillId: choice.optionId, targetId };
 }
 
+/**
+ * The AI plays this turn, so it channels and loads ammunition as an AI-run fighter does (review
+ * 2026-11-02: a companion handed to the AI mid-fight, or any Tactical companion, kept the player's
+ * by-hand setting and never channeled; every harness run played its casters unchanneled too).
+ */
+function aiRuns(actor: MarinaraFighter): void {
+  if (actor.channelManual) actor.channelManual = false;
+  if (actor.ammoOwned && !actor.ammoAuto) actor.ammoAuto = true;
+}
+
 /** What the Engine's combat AI does with this fighter's turn. */
 export function marinaraAiAction(
   state: MarinaraDirectorState,
@@ -748,6 +758,7 @@ export function marinaraAiAction(
 ): CombatPlayerAction {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return { type: "defend" };
+  aiRuns(actor);
   const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
     tactical,
     ...(ranked ? { ranked } : {}),
@@ -771,6 +782,7 @@ export function marinaraBoardAiAction(
 ): CombatPlayerAction | null {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
+  aiRuns(actor);
   try {
     const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
       tactical: true,

@@ -1961,6 +1961,10 @@ export function commandCombatDirector(s: CombatDirectorState, command: DirectedC
     if (living(s).find((c) => side(c) === "party")?.id === u.id && command.controller === "ai")
       throw new Error("The leader stays manual.");
     u.controller = command.controller;
+    // Who channels and loads ammunition follows who now runs the companion.
+    const fighter = s.marinara ? marinaraFighter(s.marinara, u.id) : undefined;
+    if (fighter?.ammoOwned) fighter.ammoAuto = !manual(s, u);
+    if (fighter && marinaraCanChannel(fighter)) fighter.channelManual = manual(s, u);
     if (s.stage !== "action") advanceCombatDirector(s);
     sync(s);
     return;
