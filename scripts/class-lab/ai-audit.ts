@@ -74,6 +74,7 @@ interface Tally {
   kinds: Record<string, number>;
   /** Party skills: turns it was usable, and turns it was picked. */
   avail: Record<string, number>;
+  reviveChance: Record<string, number>;
   picked: Record<string, number>;
   stallNotes: string[];
   skills: Record<string, Record<string, number>>;
@@ -96,6 +97,7 @@ const tally: Tally = {
   damageChoice: { picks: 0, ratioSum: 0, under60: 0, physOverMagic: 0 },
   kinds: {},
   avail: {},
+  reviveChance: {},
   picked: {},
   stallNotes: [],
   skills: {},
@@ -153,6 +155,14 @@ function audit(
         .join(" ")}`,
     );
   }
+  if (party && all.some((u) => u.side === "party" && u.hp <= 0)) {
+    const rev = options.find((o) => o.effect.kind === "revive");
+    if (rev) {
+      bump(tally.reviveChance, "chances");
+      bump(tally.reviveChance, `pick:${pick.skillId === rev.id ? "revive" : (pick.skillId ?? pick.kind)}`);
+    }
+  }
+  if (actor.commanded) bump(tally.reviveChance, `${side}:commanded:${pick.kind === "defend" ? "defend" : "act"}`);
   if (party) for (const o of options) if (o.id) bump(tally.avail, o.id);
   if (party && pick.kind === "skill" && pick.skillId) bump(tally.picked, pick.skillId);
   const friends = all.filter((u) => u.side === actor.side && u.hp > 0);
@@ -408,6 +418,7 @@ function playFight(level: number, n: number) {
               .map((o) => Math.abs(o.x - unit.x) + Math.abs(o.y - unit.y)),
           );
           if (near <= unit.movement + Math.max(1, unit.attackRange.max)) tally.defend.inReach++;
+          if (actor.commanded) bump(tally.reviveChance, `commandedDefend:${near <= unit.movement + Math.max(1, unit.attackRange.max) ? "inReach" : "far"}:${unit.hasMoved ? "moved" : "fresh"}`);
         }
         if (actor) {
           const skill = action.skillName ? actor.skills.find((k) => k.label === action.skillName) : undefined;
@@ -503,6 +514,7 @@ console.log(
   `damage picks: ${tally.damageChoice.picks}, mean share of best ${((tally.damageChoice.ratioSum / Math.max(1, tally.damageChoice.picks)) * 100).toFixed(0)}%, under 60% of best ${pct(tally.damageChoice.under60, tally.damageChoice.picks)}, physical while magic was 1.5x+ ${tally.damageChoice.physOverMagic}`,
 );
 console.log(`action kinds: ${top(tally.kinds, 30)}`);
+console.log("revive chances + commanded actions:", JSON.stringify(tally.reviveChance));
 console.log("party skills, picked / turns usable:");
 console.log(
   Object.entries(tally.avail)

@@ -779,6 +779,8 @@ export function marinaraBoardAiAction(
   difficulty: GameDifficulty,
   distance: (targetId: string) => number,
   attackRange: number,
+  /** Whether a fighter could reach a foe with one more action (move and act) from where it stands. */
+  canStrike?: (unitId: string) => boolean,
 ): CombatPlayerAction | null {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
@@ -803,6 +805,7 @@ export function marinaraBoardAiAction(
   try {
     const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
       tactical: true,
+      canStrike,
       // Friends within the board's support range (2 tiles, a caster's 3); the user itself, a whole side and the
       // fallen (whom the board can't aim at; resolution finds them) anywhere.
       reach: (option, target) =>
