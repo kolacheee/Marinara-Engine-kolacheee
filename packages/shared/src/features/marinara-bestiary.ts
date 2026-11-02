@@ -33,6 +33,9 @@ import {
 import type { CombatMind, CombatTemperament } from "./combat-minds.js";
 import {
   MARINARA_ENEMY_TIERS_LIST,
+  MARINARA_ELEMENT_PHASE,
+  MARINARA_WUXING_FED_BY,
+  MARINARA_WUXING_OVERCOMES,
   type MarinaraEffect,
   type MarinaraEnemySpec,
   type MarinaraEnemyTier,
@@ -375,10 +378,10 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   ability(
     "hurl-boulder",
     "Hurl Boulder",
-    "Throws rubble at anyone, with a turn's wind-up.",
+    "Throws rubble at anyone, with a turn's wind-up: earth damage.",
     strike(5, {
       ranged: true,
-      type: "blunt",
+      type: "earth",
       charge: true,
       cooldown: 4,
     }),
@@ -388,6 +391,39 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   ability("ember", "Ember", "A spit of flame.", spell(5, "fire")),
   ability("rime", "Rime", "A shard of frost.", spell(5, "ice")),
   ability("spark", "Spark", "A lash of lightning.", spell(5, "lightning")),
+  ability("bramble", "Bramble", "A lash of thorned vines.", spell(5, "wood")),
+  ability("clod", "Clod", "A fist of packed earth.", spell(5, "earth", { ranged: false })),
+  ability("torrent", "Torrent", "A jet of water.", spell(5, "water")),
+  ability("gust", "Gust", "A cutting gust of wind.", spell(5, "wind")),
+  ability("tailwind", "Tailwind", "Its side gains +20% Speed for 2 turns.", {
+    kind: "buff",
+    target: "party",
+    stat: "speed",
+    pct: 0.2,
+    duration: 2,
+    ranged: true,
+    cooldown: 5,
+  }, { minLevel: 6 }),
+  ability("shrapnel", "Shrapnel", "A spray of metal splinters: two quick hits.", spell(3, "metal", { hits: 2 })),
+  ability("root-snare", "Root Snare", "Roots burst up round one target: slowed for 2 turns.", {
+    kind: "status",
+    target: "enemy",
+    status: "slow",
+    chance: 0.7,
+    duration: 2,
+    ranged: true,
+    cooldown: 4,
+  }, { minLevel: 5 }),
+  ability("undertow", "Undertow", "Drags at the front row: water damage, and each may be slowed for a turn.", spell(5, "water", {
+    target: "front-row",
+    spread: 0.6,
+    applies: { status: "slow", chance: 0.5, duration: 1 },
+    cooldown: 4,
+  }), { minLevel: 6 }),
+  ability("edge-wind", "Edge Wind", "A wind of blades: metal damage, and −20% Defense for 2 turns.", spell(5, "metal", {
+    onHit: { stat: "defense", pct: -0.2, duration: 2 },
+    cooldown: 3,
+  }), { minLevel: 6 }),
   ability(
     "fire-breath",
     "Fire Breath",
@@ -424,6 +460,36 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     }),
     { minTier: "elite", minLevel: 8 },
   ),
+  ability("thorn-storm", "Thorn Storm", "Whips a storm of thorns over the party, with a turn's wind-up.", spell(9, "wood", {
+    target: "all-enemies",
+    spread: 0.6,
+    charge: true,
+    cooldown: 4,
+  }), { minTier: "elite", minLevel: 8 }),
+  ability("quake", "Quake", "Splits the ground under the party, with a turn's wind-up.", spell(9, "earth", {
+    target: "all-enemies",
+    spread: 0.6,
+    charge: true,
+    cooldown: 4,
+  }), { minTier: "elite", minLevel: 8 }),
+  ability("tidal-wave", "Tidal Wave", "Brings a wave down on the party, with a turn's wind-up.", spell(9, "water", {
+    target: "all-enemies",
+    spread: 0.6,
+    charge: true,
+    cooldown: 4,
+  }), { minTier: "elite", minLevel: 8 }),
+  ability("blade-storm", "Blade Storm", "A whirl of edges over the party, with a turn's wind-up.", spell(9, "metal", {
+    target: "all-enemies",
+    spread: 0.6,
+    charge: true,
+    cooldown: 4,
+  }), { minTier: "elite", minLevel: 8 }),
+  ability("cyclone", "Cyclone", "Spins a cyclone through the party, with a turn's wind-up.", spell(9, "wind", {
+    target: "all-enemies",
+    spread: 0.6,
+    charge: true,
+    cooldown: 4,
+  }), { minTier: "elite", minLevel: 8 }),
   ability(
     "chill-touch",
     "Chill Touch",
@@ -756,8 +822,39 @@ const BIG_TIERS = ["standard", "elite", "boss"] as const;
 
 // Physical resistances that recur: bone breaks under a hammer, plate turns a blade.
 const BONE: MarinaraAffinities = { blunt: "weak", pierce: "resist", light: "weak", dark: "absorb", poison: "immune" };
-const PLATE: MarinaraAffinities = { slash: "resist", pierce: "resist", blunt: "weak", lightning: "weak" };
-const MACHINE: MarinaraAffinities = { lightning: "weak", poison: "immune", pierce: "resist" };
+// Machines short out in water and shrug off splinters.
+const MACHINE: MarinaraAffinities = { lightning: "weak", water: "weak", poison: "immune", pierce: "resist" };
+/**
+ * The wuxing wheel for foes (Alyssa 2026-11-02: wood foes are weak to fire, fire does little to water
+ * foes). Each phase is strong against the one it overcomes and the one that feeds it, and resisted by the
+ * one that overcomes it and the one it feeds:
+ *   fire beats metal and wood, water beats fire and metal, earth beats water and fire,
+ *   wood beats earth and water, metal beats wood and earth.
+ * Ice is of water's phase, lightning and wind of wood's (MARINARA_ELEMENT_PHASE). A foe of an element
+ * drinks that element, resists the rest of its phase, is weak to two phases and resists two.
+ * Light and dark sit outside the phases and are weak only to each other.
+ */
+type WuxingPhase = keyof typeof MARINARA_WUXING_OVERCOMES;
+type PhasedElement = keyof typeof MARINARA_ELEMENT_PHASE;
+const PHASED = Object.keys(MARINARA_ELEMENT_PHASE) as PhasedElement[];
+const PHASES = Object.keys(MARINARA_WUXING_OVERCOMES) as WuxingPhase[];
+function wuxingFoe(element: PhasedElement): MarinaraAffinities {
+  const phase = MARINARA_ELEMENT_PHASE[element];
+  const overcomer = PHASES.find((other) => MARINARA_WUXING_OVERCOMES[other] === phase)!;
+  const fed = PHASES.find((other) => MARINARA_WUXING_FED_BY[other] === phase)!;
+  const weak = new Set<WuxingPhase>([overcomer, fed]);
+  const resist = new Set<WuxingPhase>([phase, MARINARA_WUXING_OVERCOMES[phase], MARINARA_WUXING_FED_BY[phase]]);
+  const affinities: MarinaraAffinities = {};
+  for (const each of PHASED) {
+    const of = MARINARA_ELEMENT_PHASE[each];
+    if (each === element) affinities[each] = "absorb";
+    else if (weak.has(of)) affinities[each] = "weak";
+    else if (resist.has(of)) affinities[each] = "resist";
+  }
+  return affinities;
+}
+// Plate is metal: fire and water (rust) get through it, wood, lightning and wind glance off.
+const PLATE: MarinaraAffinities = { ...wuxingFoe("metal"), metal: "resist", slash: "resist", pierce: "resist", blunt: "weak" };
 const GHOST: MarinaraAffinities = {
   slash: "immune",
   pierce: "immune",
@@ -884,8 +981,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     attackType: "slash",
     rangedBasic: true,
     row: "back",
-    affinities: { lightning: "weak", pierce: "weak" },
-    abilities: at(["dive", 1], ["shriek", 9], ["storm-breath", 21]),
+    affinities: { pierce: "weak", metal: "weak", wind: "resist", lightning: "resist", earth: "resist" },
+    abilities: at(["dive", 1], ["gust", 4], ["shriek", 9], ["storm-breath", 21]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -932,7 +1029,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     statScale: { hp: 1.0, strength: 1.0, speed: 1.05, resistance: 0.7 },
     attackType: "pierce",
     row: "front",
-    affinities: { ice: "weak", poison: "resist" },
+    affinities: { earth: "weak", water: "resist", ice: "resist", poison: "resist" },
     abilities: at(["venom-fang", 1], ["constrict", 5], ["tail-sweep", 14]),
     levels: [1, 30],
     tiers: ALL_TIERS,
@@ -977,7 +1074,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     statScale: { hp: 1.3, strength: 0.9, speed: 0.6, skill: 0.7, defense: 0.5, resistance: 1.0, luck: 0.4 },
     attackType: "blunt",
     row: "front",
-    affinities: { slash: "resist", pierce: "resist", fire: "weak", ice: "weak", poison: "immune" },
+    affinities: { slash: "resist", pierce: "resist", fire: "weak", earth: "weak", water: "resist", ice: "resist", poison: "immune" },
     abilities: at(["acid-spit", 1], ["regenerate", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
@@ -1002,8 +1099,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     attackType: "poison",
     rangedBasic: true,
     row: "back",
-    affinities: { fire: "weak", ice: "resist", poison: "immune", blunt: "resist" },
-    abilities: at(["web", 1], ["spore-cloud", 6], ["life-sap", 12]),
+    affinities: { ...wuxingFoe("wood"), poison: "immune", blunt: "resist" },
+    abilities: at(["web", 1], ["bramble", 3], ["spore-cloud", 6], ["life-sap", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1103,7 +1200,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "cinder-spirit",
     kind: "elemental",
     role: "caster",
-    summary: "Living fire: drinks flame, hates water and frost, burns the whole party when grown.",
+    summary: "Living fire: drinks flame, shrugs off wood and metal, quenched by water and frost, smothered by earth; burns the whole party when grown.",
     mind: "instinct",
     temperaments: ["reckless", "territorial"],
     archetype: "channeler",
@@ -1111,7 +1208,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     attackType: "fire",
     rangedBasic: true,
     row: "back",
-    affinities: { fire: "absorb", ice: "weak", poison: "immune", slash: "resist" },
+    affinities: { ...wuxingFoe("fire"), poison: "immune", slash: "resist" },
     abilities: at(["ember", 1], ["fire-breath", 12]),
     levels: [2, 30],
     tiers: ALL_TIERS,
@@ -1126,7 +1223,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "rime-spirit",
     kind: "elemental",
     role: "caster",
-    summary: "Living frost: drinks cold, cracks under fire and hammers.",
+    summary: "Living frost, of water's phase: drinks cold, shrugs off fire and metal, cracks under earth, wood and hammers.",
     mind: "instinct",
     temperaments: ["patient", "territorial"],
     archetype: "channeler",
@@ -1134,7 +1231,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     attackType: "ice",
     rangedBasic: true,
     row: "back",
-    affinities: { ice: "absorb", fire: "weak", blunt: "weak", poison: "immune" },
+    affinities: { ...wuxingFoe("ice"), blunt: "weak", poison: "immune" },
     abilities: at(["rime", 1], ["harden", 6], ["frost-breath", 12]),
     levels: [2, 30],
     tiers: ALL_TIERS,
@@ -1148,7 +1245,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "storm-spirit",
     kind: "elemental",
     role: "caster",
-    summary: "Living lightning: quick, drinks the storm, grounded by earth and stone.",
+    summary: "Living lightning, of wood's phase: quick, drinks the storm, shrugs off earth and water, cut by metal and burnt out by fire.",
     mind: "instinct",
     temperaments: ["reckless", "opportunistic"],
     archetype: "channeler",
@@ -1156,7 +1253,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     attackType: "lightning",
     rangedBasic: true,
     row: "back",
-    affinities: { lightning: "absorb", blunt: "weak", poison: "immune", pierce: "resist" },
+    affinities: { ...wuxingFoe("lightning"), blunt: "weak", poison: "immune", pierce: "resist" },
     abilities: at(["spark", 1], ["overcharge", 6], ["storm-breath", 12]),
     levels: [2, 30],
     tiers: ALL_TIERS,
@@ -1165,6 +1262,124 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
       wuxia_xianxia: n("Thunder Sprite", "Lightning Tribulation Spirit@11", "Ninefold Tribulation@21"),
       cyberpunk: n("Live Wire", "Grid Ghost@11", "Blackout Storm@21"),
       space_opera: n("Plasma Mote", "Ion Spirit@11", "Corona Colossus@21"),
+    },
+  },
+  // The wuxing four beside fire (Alyssa 2026-11-02). Each drinks its own element, falls to the one that
+  // overcomes it (wood parts earth, earth dams water, water quenches fire, fire melts metal, metal fells wood)
+  // and shrugs off the one it overcomes.
+  {
+    id: "grove-spirit",
+    kind: "elemental",
+    role: "caster",
+    summary: "Living wood: drinks growth, roots a target in place, shrugs off earth and water, felled by metal and burnt by fire; whips thorns over the party when grown.",
+    mind: "instinct",
+    temperaments: ["patient", "territorial"],
+    archetype: "channeler",
+    statScale: { hp: 1.05, defense: 0.8, speed: 0.85 },
+    attackType: "wood",
+    rangedBasic: true,
+    row: "back",
+    affinities: { ...wuxingFoe("wood"), poison: "immune" },
+    abilities: at(["bramble", 1], ["root-snare", 5], ["regenerate", 9], ["thorn-storm", 12]),
+    levels: [2, 30],
+    tiers: ALL_TIERS,
+    names: {
+      high_fantasy: n("Sapling Mote", "Briarheart Spirit@11", "Elderbough Colossus@21"),
+      wuxia_xianxia: n("Bamboo Wisp", "Thousand-Root Spirit@11", "Spring-Emperor Grove@21"),
+      modern_supernatural: n("Ivy Haunt", "Overgrowth Spirit@11", "Greenwood Matron@21"),
+      post_apocalyptic: n("Creeper Wisp", "Reclaimer Bloom@11", "Overgrown City@21"),
+    },
+  },
+  {
+    id: "clay-spirit",
+    kind: "elemental",
+    role: "brute",
+    summary: "Living earth: slow and heavy at the front, drinks stone, shrugs off water and fire, split by wood, lightning, wind and metal; shakes the ground when grown.",
+    mind: "instinct",
+    temperaments: ["patient", "territorial"],
+    archetype: "guard",
+    statScale: { hp: 1.1, defense: 1.15, speed: 0.75, resistance: 0.8 },
+    attackType: "earth",
+    row: "front",
+    affinities: { ...wuxingFoe("earth"), poison: "immune", slash: "resist" },
+    abilities: at(["clod", 1], ["harden", 6], ["quake", 12]),
+    levels: [2, 30],
+    tiers: ALL_TIERS,
+    names: {
+      high_fantasy: n("Pebble Mote", "Bedrock Spirit@11", "Mountain's Heart@21"),
+      wuxia_xianxia: n("Clay Sprite", "Yellow Loess Spirit@11", "Five-Peaks Ancestor@21"),
+      modern_supernatural: n("Cellar Clod", "Foundation Spirit@11", "Fault-Line Saint@21"),
+      post_apocalyptic: n("Dust Wisp", "Rubble Spirit@11", "Crater Colossus@21"),
+    },
+  },
+  {
+    id: "tide-spirit",
+    kind: "elemental",
+    role: "caster",
+    summary: "Living water: drinks the flood, drags the front row down, shrugs off fire and metal, dammed by earth and drunk by wood; brings a wave over the party when grown.",
+    mind: "instinct",
+    temperaments: ["patient", "opportunistic"],
+    archetype: "channeler",
+    statScale: { hp: 0.95, defense: 0.8 },
+    attackType: "water",
+    rangedBasic: true,
+    row: "back",
+    affinities: { ...wuxingFoe("water"), poison: "immune", blunt: "resist" },
+    abilities: at(["torrent", 1], ["undertow", 6], ["tidal-wave", 12]),
+    levels: [2, 30],
+    tiers: ALL_TIERS,
+    names: {
+      high_fantasy: n("Dew Mote", "Undertow Spirit@11", "Tidewrack Colossus@21"),
+      wuxia_xianxia: n("Spring Sprite", "Black River Spirit@11", "Four-Seas Sovereign@21"),
+      modern_supernatural: n("Storm-Drain Wisp", "Drowned Spirit@11", "Flood Widow@21"),
+      post_apocalyptic: n("Runoff Wisp", "Floodwater Spirit@11", "Drowned Coast@21"),
+    },
+  },
+  {
+    id: "edge-spirit",
+    kind: "elemental",
+    role: "skirmisher",
+    summary: "Living metal: quick splinters and edges that strip armour, drinks iron, shrugs off wood and earth, melted by fire and rusted by water; a whirl of blades when grown.",
+    mind: "instinct",
+    temperaments: ["reckless", "disciplined"],
+    archetype: "channeler",
+    statScale: { hp: 0.85, defense: 1.1, speed: 1.05, resistance: 0.8 },
+    attackType: "metal",
+    rangedBasic: true,
+    row: "back",
+    affinities: { ...wuxingFoe("metal"), slash: "resist", pierce: "resist", poison: "immune" },
+    abilities: at(["shrapnel", 1], ["edge-wind", 6], ["blade-storm", 12]),
+    levels: [2, 30],
+    tiers: ALL_TIERS,
+    names: {
+      high_fantasy: n("Filing Mote", "Swordsong Spirit@11", "Anvil Colossus@21"),
+      wuxia_xianxia: n("Bronze Bell Sprite", "Thousand-Edge Spirit@11", "White Gold Sovereign@21"),
+      cyberpunk: n("Chrome Gremlin", "Razorwire Ghost@11", "Foundry Saint@21"),
+      post_apocalyptic: n("Rust Wisp", "Scrapstorm Spirit@11", "Junkyard Colossus@21"),
+    },
+  },
+  // Wind (Alyssa 2026-11-02), of wood's phase.
+  {
+    id: "gale-spirit",
+    kind: "elemental",
+    role: "skirmisher",
+    summary: "Living wind, of wood's phase: the quickest spirit, drinks the gale, rides over earth and water, cut by metal and burnt out by fire; a cyclone when grown.",
+    mind: "instinct",
+    temperaments: ["reckless", "opportunistic"],
+    archetype: "channeler",
+    statScale: { hp: 0.8, speed: 1.25, defense: 0.6 },
+    attackType: "wind",
+    rangedBasic: true,
+    row: "back",
+    affinities: { ...wuxingFoe("wind"), poison: "immune", pierce: "resist" },
+    abilities: at(["gust", 1], ["tailwind", 6], ["cyclone", 12]),
+    levels: [2, 30],
+    tiers: ALL_TIERS,
+    names: {
+      high_fantasy: n("Breeze Mote", "Galeborn Spirit@11", "Skyrend Colossus@21"),
+      wuxia_xianxia: n("Willow-Wind Sprite", "Nine-Gale Spirit@11", "Heaven-Sweeping Wind@21"),
+      modern_supernatural: n("Draught Haunt", "Rooftop Gale@11", "Hurricane Widow@21"),
+      space_opera: n("Vent Mote", "Decompression Spirit@11", "Solar Wind Colossus@21"),
     },
   },
   {
@@ -1179,7 +1394,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     attackType: "fire",
     rangedBasic: true,
     row: "back",
-    affinities: { fire: "resist", light: "weak", dark: "resist", poison: "immune" },
+    affinities: { fire: "resist", water: "weak", light: "weak", dark: "resist", poison: "immune" },
     abilities: at(["ember", 1], ["curse", 4], ["bewitch", 10], ["doom-mark", 18]),
     levels: [2, 30],
     tiers: ALL_TIERS,
@@ -1200,7 +1415,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     statScale: { hp: 1.15, strength: 1.1, magic: 1.6, defense: 1.15, resistance: 1.1 },
     attackType: "slash",
     row: "front",
-    affinities: { ice: "weak", fire: "resist" },
+    affinities: { ice: "weak", water: "weak", fire: "resist" },
     abilities: at(["tail-sweep", 6], ["fire-breath", 8]),
     levels: [4, 30],
     tiers: BIG_TIERS,
@@ -1221,7 +1436,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     statScale: { hp: 1.4, strength: 1.2, skill: 0.75, speed: 0.7, defense: 1.0, resistance: 0.5, luck: 0.6 },
     attackType: "blunt",
     row: "front",
-    affinities: { pierce: "weak", blunt: "resist" },
+    affinities: { pierce: "weak", wood: "weak", blunt: "resist", earth: "resist" },
     abilities: at(["maul", 1], ["hurl-boulder", 6], ["trample", 14]),
     levels: [4, 30],
     tiers: BIG_TIERS,
