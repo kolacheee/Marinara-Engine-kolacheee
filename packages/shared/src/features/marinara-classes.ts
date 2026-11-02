@@ -947,15 +947,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Precision shooters who put arrows through armor.",
       leans: ["skill"],
       skills: [
-        active(
-          "pierce",
-          "Pierce",
-          10,
-          "skill",
-          4,
-          "Attacks one foe with the higher of the user's Strength or Magic, ignoring half their Defense or Resistance.",
-          true,
-        ),
+        active("pierce", "Pierce", 10, "skill", 4, "Attacks one foe, ignoring half their Defense or Resistance.", true),
         passive(
           "steady",
           "Steady",
