@@ -1837,6 +1837,9 @@ export function marinaraUsable(unit: MarinaraFighter, all?: readonly MarinaraFig
     // A commanded action can't command or take extra actions in turn (it would only spend itself).
     if ((effect.kind === "command" || effect.kind === "extra-turn") && unit.commanded) continue;
     if (effect.frontOnly && !front) continue;
+    if (all && effect.kind === "status" && effect.target !== "self" && effect.target !== "party") {
+      if (!marinaraTargetsFor(unit, effect, all).length) continue;
+    }
     out.push({ id: skill.id, label: skill.label, skill, effect, cost, resource });
   }
   for (const id of unit.enemySkills ?? []) {
@@ -1950,7 +1953,9 @@ export function marinaraTargetsFor(
 ): MarinaraFighter[] {
   const everyFoe = living(all.filter((unit) => unit.side !== actor.side));
   const foes = everyFoe;
-  const friends = living(all.filter((unit) => unit.side === actor.side));
+  // One that threw down its arms is out of the fight for its own side too: no heals, boons or cover
+  // (Sonnet panel 2026-11-02: an enemy War Priest healed a surrendered foe).
+  const friends = living(all.filter((unit) => unit.side === actor.side && (!unit.yielded || unit === actor)));
   if (effect.target === "self") return [actor];
   if (effect.target === "party") return friends;
   // Guarding or watching over someone means someone else.
@@ -1962,10 +1967,22 @@ export function marinaraTargetsFor(
   // Tame looks past taunts: only a beast it can take.
   if (effect.kind === "tame") return everyFoe.filter(marinaraTameable);
   const taunter = actor.tauntTurns > 0 ? foes.find((unit) => unit.id === actor.tauntedBy) : undefined;
-  if (taunter && (effect.target === "enemy" || effect.target === "front-row")) return [taunter];
+  // An ailment isn't aimed at a foe it can't take hold on (Sonnet panel 2026-11-02: Rot offered at
+  // Rot-immune elites, Mass Confusion spent on an immune boss).
+  const takes = (list: MarinaraFighter[]) => list.filter((unit) => !marinaraStatusImmune(unit, effect));
+  if (taunter && (effect.target === "enemy" || effect.target === "front-row")) return takes([taunter]);
   const provokers = foes.filter((unit) => unit.provoking > 0);
-  if (effect.target === "enemy" && provokers.length) return provokers;
-  return foes;
+  if (effect.target === "enemy" && provokers.length) return takes(provokers);
+  return takes(foes);
+}
+
+/** Whether a status effect can never take hold on this fighter as it stands (an immunity, not a roll). */
+export function marinaraStatusImmune(target: MarinaraFighter, effect: MarinaraEffect): boolean {
+  if (effect.kind !== "status" || !effect.status || effect.status === "regen") return false;
+  return (
+    shrugsOff(target, effect.status) ||
+    (effect.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0)
+  );
 }
 
 /** Who a chosen target actually means: an area hits every foe (or every front-row foe), a party
@@ -2079,7 +2096,13 @@ export function marinaraHitNumbers(
   if (magic) pct += hooksOf(target).magicTakenPct ?? 0;
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
     const allyHooks = hooksOf(ally);
-    if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;
+    if (magic && allyHooks.partyMagicTakenPct) {
+      pct += allyHooks.partyMagicTakenPct;
+      // Said in the log (Sonnet panel 2026-11-02: Sanctified was invisible).
+      for (const id of ["sanctified", "aura-of-warding"])
+        if (ally.skills.some((skill) => skill.id === id))
+          notes.add(id === "sanctified" ? "Sanctified" : "Aura of Warding");
+    }
     if (target.provoking > 0 && allyHooks.partyProvokerTakenPct) {
       pct += allyHooks.partyProvokerTakenPct;
       notes.add("Hold Fast");
@@ -2088,6 +2111,9 @@ export function marinaraHitNumbers(
   }
   if (hooks.heavyDraw) pct += 0.3;
   const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
+  // A rune-lent element that won out over the weapon's own type is said in the log (Sonnet panel
+  // 2026-11-02: Edge Runes "converted inconsistently"; it takes whichever hits harder).
+  if (imbueElements(actor, effect.type ?? "weapon").includes(best.type as MarinaraDamageType)) notes.add("rune");
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   // Adaptive Grip: an armored foe's resistance to slash, pierce or blunt doesn't count against the user.
@@ -2267,7 +2293,10 @@ export function marinaraSkillEstimate(
     };
   }
   if (effect.kind === "heal") {
-    const allies = effect.target === "self" ? [actor] : living(all.filter((unit) => unit.side === actor.side));
+    const allies =
+      effect.target === "self"
+        ? [actor]
+        : living(all.filter((unit) => unit.side === actor.side && (!unit.yielded || unit === actor)));
     if (!allies.length) return null;
     const amounts = allies.map((ally) =>
       Math.round((effect.pctOfMax ? ally.maxHp * effect.pctOfMax : magicHeal(actor, effect, all)) * healFactor(ally)),
@@ -3280,7 +3309,26 @@ function strikeOnce(
 
   if (effect.siphon && target.hp > 0) siphon(actor, target, effect.siphon.mpPct, ctx, skillId);
   const lifesteal = (hooks.lifestealPct ?? 0) + (actor.gear?.lifestealPct ?? 0) + (effect.drain ?? 0);
-  if (lifesteal) actor.hp = Math.round(Math.min(actor.maxHp, actor.hp + dealt * lifesteal * healFactor(actor)));
+  if (lifesteal) {
+    const before = actor.hp;
+    actor.hp = Math.round(Math.min(actor.maxHp, actor.hp + dealt * lifesteal * healFactor(actor)));
+    // A passive's or gear's drain is logged (Sonnet panel 2026-11-02: Bloodlust's heal was invisible);
+    // a drain skill's own heal reads with the hit.
+    const source = effect.drain
+      ? undefined
+      : hooks.lifestealPct
+        ? actor.skills.find((one) => MARINARA_PASSIVES[one.id]?.lifestealPct)?.id
+        : "gear";
+    if (actor.hp > before && source)
+      ctx.events.push({
+        kind: "heal",
+        actorId: actor.id,
+        targetId: actor.id,
+        amount: actor.hp - before,
+        skillId: source === "gear" ? undefined : source,
+        notes: ["drain"],
+      });
+  }
   if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);
   if (actor.exposeNext) {
     addMod(target, "damage-taken", actor.exposeNext, 2, "exposed");

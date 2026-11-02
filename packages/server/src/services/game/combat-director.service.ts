@@ -89,6 +89,9 @@ type Task =
   | { kind: "react"; unitId: string; pendingId: string }
   | { kind: "effect"; pendingId: string };
 type Source = "gm" | "ai" | "manual" | "fallback";
+/** A Classic foe throws down its arms only below this share of its HP. */
+export const MARINARA_YIELD_BELOW_HP = 0.5;
+
 export interface CombatDirectorState extends DirectedCombatView {
   schemaVersion: 1;
   /** What the win dropped into the party's bags, once it is won: set on the step that wins, so a fight
@@ -788,6 +791,12 @@ function moraleTurn(s: CombatDirectorState, u: Unit): boolean {
       // Classic Marinara (Alyssa 2026-11-01): it throws down its arms and waits on the party, who may spare
       // it (it pays as beaten when the fight is won) or finish it off.
       if (s.marinara) {
+        // Not while it is still mostly whole (Sonnet panel 2026-11-02: a Bastion at 315/315 yielded when a
+        // partner fell). The broken nerve waits: the same roll lands once it drops under half HP.
+        if (u.hp >= u.maxHp * MARINARA_YIELD_BELOW_HP) {
+          mine.checked = mine.checked.filter((one) => one !== trigger);
+          continue;
+        }
         mine.yielded = true;
         const fighter = s.marinara.fighters.find((one) => one.id === u.id);
         if (fighter) fighter.yielded = true;

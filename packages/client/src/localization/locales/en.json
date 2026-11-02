@@ -2189,6 +2189,7 @@
   "game.combat.marinara.loot": "Found: {{items}}",
   "game.combat.marinara.mp": "MP {{amount}}/{{max}}",
   "game.combat.marinara.next": "Next to act:",
+  "game.combat.marinara.noneCanBeAffected": "No foe here can be affected",
   "game.combat.marinara.promotionReady": "A promotion is open",
   "game.combat.marinara.readyIn": "ready in {{turns}}",
   "game.combat.marinara.row.back": "Back row",

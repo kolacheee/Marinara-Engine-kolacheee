@@ -42,7 +42,13 @@ export interface EncounterResult {
   stalls?: number;
 }
 
-export function playEncounter(setting: string, level: number, foes: MarinaraEncounterFoe[], fights: number, key: string) {
+export function playEncounter(
+  setting: string,
+  level: number,
+  foes: MarinaraEncounterFoe[],
+  fights: number,
+  key: string,
+) {
   let wins = 0;
   let lost = 0;
   let downed = 0;
@@ -89,10 +95,22 @@ function run(perCell: number, fights: number): EncounterResult[] {
             boss,
           });
           if (!built.foes.length) continue;
-          const check = marinaraCheckEncounter({ setting: setting as never, party: { level, size: 4 }, foes: built.foes });
+          const check = marinaraCheckEncounter({
+            setting: setting as never,
+            party: { level, size: 4 },
+            foes: built.foes,
+          });
           if (check.problems.length) console.error(`builder made a bad fight: ${check.problems.join("; ")}`);
           const played = playEncounter(setting, level, built.foes, fights, `${setting}:${level}:${difficulty}:${e}`);
-          results.push({ setting, level, difficulty, boss: built.foes.some((f) => f.tier === "boss"), foes: built.foes, threat: built.threat, ...played });
+          results.push({
+            setting,
+            level,
+            difficulty,
+            boss: built.foes.some((f) => f.tier === "boss"),
+            foes: built.foes,
+            threat: built.threat,
+            ...played,
+          });
         }
       }
   return results;
@@ -100,12 +118,20 @@ function run(perCell: number, fights: number): EncounterResult[] {
 
 /** The biggest plain (non-crit) hit each family's foes can land on a reference party member, as a
  *  share of that member's max HP, at every sample level and tier. */
-function biggestHits(): Array<{ family: string; tier: string; level: number; share: number; what: string; on: string }> {
+function biggestHits(): Array<{
+  family: string;
+  tier: string;
+  level: number;
+  share: number;
+  what: string;
+  on: string;
+}> {
   const out: Array<{ family: string; tier: string; level: number; share: number; what: string; on: string }> = [];
   for (const family of MARINARA_BESTIARY)
     for (const tier of family.tiers)
       for (const level of [4, 8, 12, 16, 20, 24, 28]) {
-        if (level < family.levels[0] || level > family.levels[1] || level < MARINARA_TIER_RULES[tier].minLevel) continue;
+        if (level < family.levels[0] || level > family.levels[1] || level < MARINARA_TIER_RULES[tier].minLevel)
+          continue;
         if (!settingOf(family, level)) continue;
         const foe = familyFoes(family, tier, level, 1)[0]!;
         let best = { share: 0, what: "", on: "" };
@@ -113,7 +139,17 @@ function biggestHits(): Array<{ family: string; tier: string; level: number; sha
           const party = referenceParty(name, level, "hit");
           const all: MarinaraFighter[] = [...party, foe];
           const attacks = [
-            { id: "attack", effect: { kind: "damage", target: "enemy", scales: foe.magicBasic ? "magic" : "strength", power: 5, damage: foe.magicBasic ? "magic" : "physical", basic: true } },
+            {
+              id: "attack",
+              effect: {
+                kind: "damage",
+                target: "enemy",
+                scales: foe.magicBasic ? "magic" : "strength",
+                power: 5,
+                damage: foe.magicBasic ? "magic" : "physical",
+                basic: true,
+              },
+            },
             ...(foe.enemySkills ?? []).map((id) => ({ id, effect: enemySkill(id) })),
           ];
           for (const member of party)
@@ -122,7 +158,8 @@ function biggestHits(): Array<{ family: string; tier: string; level: number; sha
               const numbers = marinaraHitNumbers(foe, member, effect as never, all);
               // Back-row melee takes half in Classic; an area hit spreads.
               const reachHalf = member.row === "back" && !effect.ranged && !foe.rangedBasic ? 0.5 : 1;
-              const spread = effect.target === "all-enemies" || effect.target === "front-row" ? (effect.spread ?? 0.6) : 1;
+              const spread =
+                effect.target === "all-enemies" || effect.target === "front-row" ? (effect.spread ?? 0.6) : 1;
               const share = (numbers.damage * reachHalf * spread * (effect.hits ?? 1)) / member.maxHp;
               if (share > best.share) best = { share, what: id, on: member.name };
             }
@@ -134,23 +171,34 @@ function biggestHits(): Array<{ family: string; tier: string; level: number; sha
 
 import { MARINARA_ENEMY_SKILLS } from "../../packages/shared/src/features/marinara-combat.js";
 function enemySkill(id: string) {
-  return MARINARA_ENEMY_SKILLS[id] as { kind: string; target: string; ranged?: boolean; spread?: number; hits?: number } | undefined;
+  return MARINARA_ENEMY_SKILLS[id] as
+    { kind: string; target: string; ranged?: boolean; spread?: number; hits?: number } | undefined;
 }
 
 export function report(results: EncounterResult[]): string {
   const lines: string[] = [];
-  lines.push("| Difficulty | Encounters | Wins (mean) | Wins (worst 10% of encounters) | HP lost (mean) | Allies down per fight | Foes per fight | Stalled |");
+  lines.push(
+    "| Difficulty | Encounters | Wins (mean) | Wins (worst 10% of encounters) | HP lost (mean) | Allies down per fight | Foes per fight | Stalled |",
+  );
   lines.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
   for (const difficulty of DIFFICULTIES) {
     const rows = results.filter((r) => r.difficulty === difficulty);
     const mean = (f: (r: EncounterResult) => number) => rows.reduce((s, r) => s + f(r), 0) / Math.max(1, rows.length);
     lines.push(
-      `| ${difficulty} | ${rows.length} | ${pct(mean((r) => r.wins))} | ${pct(quantile(rows.map((r) => r.wins), 0.1))} | ${pct(mean((r) => r.lost))} | ${mean((r) => r.downed).toFixed(2)} | ${mean((r) => r.foes.length).toFixed(1)} | ${pct(mean((r) => r.stalls ?? 0))} |`,
+      `| ${difficulty} | ${rows.length} | ${pct(mean((r) => r.wins))} | ${pct(
+        quantile(
+          rows.map((r) => r.wins),
+          0.1,
+        ),
+      )} | ${pct(mean((r) => r.lost))} | ${mean((r) => r.downed).toFixed(2)} | ${mean((r) => r.foes.length).toFixed(1)} | ${pct(mean((r) => r.stalls ?? 0))} |`,
     );
   }
   const bossRows = results.filter((r) => r.boss);
   if (bossRows.length)
-    lines.push("", `Fights led by a boss: ${bossRows.length}, wins ${pct(bossRows.reduce((s, r) => s + r.wins, 0) / bossRows.length)}, HP lost ${pct(bossRows.reduce((s, r) => s + r.lost, 0) / bossRows.length)}.`);
+    lines.push(
+      "",
+      `Fights led by a boss: ${bossRows.length}, wins ${pct(bossRows.reduce((s, r) => s + r.wins, 0) / bossRows.length)}, HP lost ${pct(bossRows.reduce((s, r) => s + r.lost, 0) / bossRows.length)}.`,
+    );
   lines.push("", "By level (wins, mean party HP lost):", "");
   lines.push("| Level | Easy | Normal | Hard | Deadly |", "| --- | --- | --- | --- | --- |");
   for (const level of VERIFY_LEVELS) {
@@ -179,10 +227,16 @@ export function report(results: EncounterResult[]): string {
       entry.n++;
       entry.over += r.lost - target[r.difficulty];
     }
-  lines.push("", "Family drift: mean party HP lost above (+) or below (−) the difficulty's mark (Easy 18%, Normal 35%, Hard 55%, Deadly 75%), in the encounters it was in:", "");
+  lines.push(
+    "",
+    "Family drift: mean party HP lost above (+) or below (−) the difficulty's mark (Easy 18%, Normal 35%, Hard 55%, Deadly 75%), in the encounters it was in:",
+    "",
+  );
   lines.push("| Family | Encounters | Drift (points) |", "| --- | --- | --- |");
   for (const [id, entry] of Object.entries(blame).sort((a, b) => b[1].over / b[1].n - a[1].over / a[1].n))
-    lines.push(`| ${id} | ${entry.n} | ${entry.over / entry.n >= 0 ? "+" : ""}${Math.round((entry.over / entry.n) * 100)} |`);
+    lines.push(
+      `| ${id} | ${entry.n} | ${entry.over / entry.n >= 0 ? "+" : ""}${Math.round((entry.over / entry.n) * 100)} |`,
+    );
   const worst = [...results].sort((a, b) => a.wins - b.wins || b.lost - a.lost).slice(0, 12);
   lines.push("", "The hardest encounters for their rating:", "");
   lines.push("| Setting | Level | Difficulty | Foes | Wins | HP lost |", "| --- | --- | --- | --- | --- | --- |");
@@ -196,12 +250,17 @@ export function report(results: EncounterResult[]): string {
 if (process.argv[1]?.endsWith("bestiary-verify.ts")) {
   if (process.argv[2] === "merge") {
     const out = process.argv[3]!;
-    const results = process.argv.slice(4).flatMap((file) => JSON.parse(readFileSync(file, "utf8")) as EncounterResult[]);
+    const results = process.argv
+      .slice(4)
+      .flatMap((file) => JSON.parse(readFileSync(file, "utf8")) as EncounterResult[]);
     writeFileSync(out, `${report(results)}\n`);
     console.log(report(results));
   } else if (process.argv[2] === "hits") {
     const hits = biggestHits().sort((a, b) => b.share - a.share);
-    const lines = ["| Family | Tier | Level | Biggest plain hit | With | On |", "| --- | --- | --- | --- | --- | --- |"];
+    const lines = [
+      "| Family | Tier | Level | Biggest plain hit | With | On |",
+      "| --- | --- | --- | --- | --- | --- |",
+    ];
     for (const h of hits.slice(0, Number(process.argv[4] ?? 40)))
       lines.push(`| ${h.family} | ${h.tier} | ${h.level} | ${pct(h.share)} | ${h.what} | ${h.on} |`);
     writeFileSync(process.argv[3]!, `${lines.join("\n")}\n`);
