@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import {
   MARINARA_ARCHETYPES,
   MARINARA_ARCHETYPE_ROWS,
-  MARINARA_ARCHETYPE_TRAITS,
   MARINARA_CARRY_SLOTS,
   MARINARA_STATS,
   MARINARA_XP_PER_LEVEL,
@@ -27,6 +26,8 @@ import {
   marinaraLearnedSkills,
   marinaraSkillSummary,
   marinaraFrontOnly,
+  marinaraClassTraits,
+  marinaraCarryRedundant,
   marinaraOpenClasses,
   marinaraSecondaryFits,
   marinaraTrees,
@@ -115,7 +116,7 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
   const currentRow = progression.row ?? classRow;
   const trees = marinaraTrees(progression.primary, progression.temperament);
   // A tree trait the active class already keeps (Cover, Hold the Line for a Guard line) needs no slot.
-  const kept = active ? (MARINARA_ARCHETYPE_TRAITS[active.archetype] ?? []) : [];
+  const kept = marinaraClassTraits(progression.activeClass);
   // What a promotion still needs, for the class-level refusal: "needs Bloodsworn 20 (now 19)".
   const blockParams = (def: { from?: string; tier: string }) =>
     def.from
@@ -128,7 +129,8 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
   const learned = marinaraLearnedSkills(progression).filter(
     (skill) =>
       skill.classId !== progression.activeClass &&
-      !(kept.includes(skill.id) && marinaraClass(skill.classId)?.archetype === active?.archetype),
+      !(kept.includes(skill.id) && marinaraClass(skill.classId)?.archetype === active?.archetype) &&
+      !marinaraCarryRedundant(progression, skill.id),
   );
   const toggleCarry = (id: string) => {
     const carried = progression.carried.includes(id)
@@ -478,7 +480,7 @@ function ClassDetails({
   const parent = def.from ? marinaraClass(def.from) : undefined;
   const needed = def.tier === "base" ? 0 : MARINARA_PROMOTION_LEVEL[def.tier as "advanced" | "master"];
   const level = trained ?? 0;
-  const traits = MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? [];
+  const traits = marinaraClassTraits(def.id);
   const tree = t(`game.combat.marinara.archetype.${def.archetype}`);
   // The row this class would fight from: front-only skills sit idle in the back (Alyssa 2026-11-02).
   const row = progression.row ?? def.row ?? MARINARA_ARCHETYPE_ROWS[def.archetype];

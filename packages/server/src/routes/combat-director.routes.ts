@@ -51,6 +51,7 @@ import {
   marinaraReleaseCompanion,
   marinaraSetActiveCompanion,
   marinaraKeptTraits,
+  marinaraCarryRedundant,
   marinaraClass,
   marinaraUsableSkills,
   marinaraBestiarySetting,
@@ -1927,7 +1928,8 @@ export async function combatDirectorRoutes(
               (skill) =>
                 skill.id === id &&
                 skill.classId !== next!.activeClass &&
-                !(kept.includes(id) && marinaraClass(skill.classId)?.archetype === archetype),
+                !(kept.includes(id) && marinaraClass(skill.classId)?.archetype === archetype) &&
+                !marinaraCarryRedundant({ ...next!, carried: [] }, id),
             ),
           );
           const afterIds = () => new Set(marinaraUsableSkills(next!).map((skill) => skill.id));
