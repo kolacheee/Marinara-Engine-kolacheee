@@ -728,7 +728,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "ill-omen": { enemyCritToMissChance: 0.5 },
   "grave-skin": { frontTakenPct: -0.15 },
   "siphoning-rot": { curseFeedPct: 0.5 },
-  "slow-time": { slowDebuffed: 0.25 },
+  // Slow Time (Alyssa 2026-11-02, worded as Speed): -20% Speed until the foe's next turn (was "25% longer").
+  "slow-time": { slowDebuffed: 0.2 },
   nightmare: { nightmare: true },
   null: { debuffImmune: true },
   devour: { devour: true },
@@ -1249,7 +1250,8 @@ const turnLength = (unit: MarinaraFighter, all: readonly MarinaraFighter[], spee
       0,
       ...living(all.filter((other) => other.side !== unit.side)).map((other) => hooksOf(other).slowDebuffed ?? 0),
     );
-    length *= 1 + slowing;
+    // Speed down by `slowing` for the wait to their next turn.
+    length /= 1 - Math.min(0.9, slowing);
   }
   return length;
 };
