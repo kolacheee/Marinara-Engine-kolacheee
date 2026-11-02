@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import {
   MARINARA_ARCHETYPES,
   MARINARA_ARCHETYPE_ROWS,
-  MARINARA_ARCHETYPE_TRAITS,
   MARINARA_CARRY_SLOTS,
   MARINARA_STATS,
   MARINARA_XP_PER_LEVEL,
@@ -26,6 +25,9 @@ import {
   type MarinaraEquipment,
   marinaraLearnedSkills,
   marinaraSkillSummary,
+  marinaraFrontOnly,
+  marinaraClassTraits,
+  marinaraCarryRedundant,
   marinaraOpenClasses,
   marinaraSecondaryFits,
   marinaraTrees,
@@ -114,7 +116,7 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
   const currentRow = progression.row ?? classRow;
   const trees = marinaraTrees(progression.primary, progression.temperament);
   // A tree trait the active class already keeps (Cover, Hold the Line for a Guard line) needs no slot.
-  const kept = active ? (MARINARA_ARCHETYPE_TRAITS[active.archetype] ?? []) : [];
+  const kept = marinaraClassTraits(progression.activeClass);
   // What a promotion still needs, for the class-level refusal: "needs Bloodsworn 20 (now 19)".
   const blockParams = (def: { from?: string; tier: string }) =>
     def.from
@@ -127,7 +129,8 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
   const learned = marinaraLearnedSkills(progression).filter(
     (skill) =>
       skill.classId !== progression.activeClass &&
-      !(kept.includes(skill.id) && marinaraClass(skill.classId)?.archetype === active?.archetype),
+      !(kept.includes(skill.id) && marinaraClass(skill.classId)?.archetype === active?.archetype) &&
+      !marinaraCarryRedundant(progression, skill.id),
   );
   const toggleCarry = (id: string) => {
     const carried = progression.carried.includes(id)
@@ -380,6 +383,9 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
                         <span className="font-medium">{skill.label}</span>{" "}
                         <span className="text-[var(--muted-foreground)]">
                           ({marinaraClass(skill.classId)?.label}) {marinaraSkillSummary(skill, progression)}
+                          {currentRow === "back" && marinaraFrontOnly(skill.id)
+                            ? [" ", t("game.combat.marinara.sheet.frontOnlyIdle")].join("")
+                            : ""}
                         </span>
                       </span>
                     </label>
@@ -474,8 +480,10 @@ function ClassDetails({
   const parent = def.from ? marinaraClass(def.from) : undefined;
   const needed = def.tier === "base" ? 0 : MARINARA_PROMOTION_LEVEL[def.tier as "advanced" | "master"];
   const level = trained ?? 0;
-  const traits = MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? [];
+  const traits = marinaraClassTraits(def.id);
   const tree = t(`game.combat.marinara.archetype.${def.archetype}`);
+  // The row this class would fight from: front-only skills sit idle in the back (Alyssa 2026-11-02).
+  const row = progression.row ?? def.row ?? MARINARA_ARCHETYPE_ROWS[def.archetype];
   return (
     <div className="mt-2 space-y-1 rounded-md border border-[var(--border)] p-2" data-testid="marinara-class-details">
       <p>
@@ -509,6 +517,9 @@ function ClassDetails({
                       ? `${skill.cost} ${t(`game.combat.marinara.sheet.resource.${skill.resource ?? "mp"}`)}`
                       : null,
                     traits.includes(skill.id) ? t("game.combat.marinara.sheet.treeTrait", { tree }) : null,
+                    row === "back" && marinaraFrontOnly(skill.id)
+                      ? t("game.combat.marinara.sheet.frontOnlyIdle")
+                      : null,
                   ]
                     .filter(Boolean)
                     .join(", "),

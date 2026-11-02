@@ -117,13 +117,15 @@ export function marinaraVictoryLoot(input: {
   // What Steal took (marinara-combat.ts), each robbed foe's one thing, kept whether it fell or not.
   const loot = { items: [...rolled.items], gold: rolled.gold };
   for (const foe of robbed) {
-    const taken = marinaraRollSteal({
-      tier: marinaraTierForLevel(foe.level),
-      rank: (foe.tier ?? "standard") as MarinaraFoeRank,
-      place: input.place,
-      ...(foe.familyId ? { family: foe.familyId } : {}),
-      seed: `${input.seed}:${foe.id}`,
-    });
+    const taken =
+      foe.stolen ??
+      marinaraRollSteal({
+        tier: marinaraTierForLevel(foe.level),
+        rank: (foe.tier ?? "standard") as MarinaraFoeRank,
+        place: input.place,
+        ...(foe.familyId ? { family: foe.familyId } : {}),
+        seed: `${input.seed}:${foe.id}`,
+      });
     if ("item" in taken) loot.items.push(taken.item);
     else loot.gold += taken.gold;
   }

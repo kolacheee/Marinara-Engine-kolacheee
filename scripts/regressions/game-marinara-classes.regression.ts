@@ -8,6 +8,7 @@ import assert from "node:assert/strict";
 import {
   MARINARA_APTITUDE_RANGE,
   MARINARA_APTITUDE_TOTAL,
+  MARINARA_ARCHETYPE_BASES,
   MARINARA_ARCHETYPES,
   MARINARA_CARRY_SLOTS,
   MARINARA_CLASSES,
@@ -18,6 +19,7 @@ import {
   MARINARA_TEMPERAMENT_TREES,
   awardMarinaraXp,
   createMarinaraProgression,
+  marinaraClassBody,
   expectedMarinaraStats,
   marinaraClass,
   marinaraClassBlock,
@@ -111,11 +113,14 @@ assert.equal(marinaraClassBlock(john, "weaponmaster"), "not-in-trees");
 assert.equal(marinaraClassBlock(john, "duelist"), "class-level", "promotion waits on class level 10");
 assert.throws(() => setMarinaraClass(john, "duelist"));
 
-// Switching to the secondary tree's base class starts it at class level 1, keeps level and stats.
+// Switching to the secondary tree's base class starts it at class level 1 and keeps the character
+// level; the body becomes the Mender's own level-1 body (Alyssa 2026-11-02: body stats follow the
+// active class).
 const asMender = setMarinaraClass(john, "mender");
 assert.equal(asMender.activeClass, "mender");
 assert.equal(asMender.classLevels.mender, 1);
-assert.deepEqual(asMender.stats, john.stats);
+assert.equal(asMender.level, john.level);
+assert.deepEqual(asMender.stats, MARINARA_ARCHETYPE_BASES.mender.start);
 
 // Level the Blade to class level 10, then promote: the promotion starts at its parent's class level
 // and adds its bonus once; switching back and forth adds nothing more.
@@ -129,6 +134,19 @@ assert.equal(duelist.classLevels.duelist, 10);
 assert.ok(duelist.stats.speed > leveled.stats.speed, "promotion bonus lands");
 const back = setMarinaraClass(setMarinaraClass(duelist, "blade"), "duelist");
 assert.deepEqual(back.stats, duelist.stats);
+
+// Body follows the active class: a level-10 Blade switching to a level-1 Mender has a level-1
+// Mender body, and switching back restores the same Blade body (each class rolls its own stream).
+const leveledMender = setMarinaraClass(leveled, "mender");
+assert.equal(leveledMender.level, 10, "character level is kept");
+assert.deepEqual(leveledMender.stats, MARINARA_ARCHETYPE_BASES.mender.start);
+assert.deepEqual(setMarinaraClass(leveledMender, "blade").stats, leveled.stats, "the Blade body comes back");
+assert.deepEqual(leveled.stats, marinaraClassBody(leveled, "blade").stats, "stats are the class body");
+// Levelling the Mender grows its own body only.
+const menderUp = awardMarinaraXp(leveledMender, 300, random).progression;
+assert.ok(menderUp.classLevels.mender! > 1);
+assert.deepEqual(menderUp.stats, marinaraClassBody(menderUp, "mender").stats);
+assert.deepEqual(setMarinaraClass(menderUp, "blade").stats, leveled.stats);
 // A promotion fills empty carry slots with the parent class's actives, so the kit doesn't shrink.
 assert.ok(duelist.carried.length > 0 && duelist.carried.length <= 4);
 assert.ok(
