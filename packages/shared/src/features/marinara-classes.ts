@@ -1111,7 +1111,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "elementalist",
       label: "Elementalist",
       from: "channeler",
-      role: "Mages whose element leaves its mark.",
+      role: "Masters of the elements whose spells scorch, freeze and shock all they touch.",
       leans: ["magic", "skill"],
       skills: [
         passive(
