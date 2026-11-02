@@ -4,6 +4,7 @@
  * combat director with the Engine's own combat AI on both sides (as engine-balance.ts does), so
  * threat is measured with what plays the game.
  */
+import { pickCarries } from "./carries.js";
 import {
   commandCombatDirector,
   createCombatDirector,
@@ -146,10 +147,7 @@ function carried(p: MarinaraProgression): MarinaraProgression {
       Number(b.kind === "active") - Number(a.kind === "active") ||
       b.learnedAt - a.learnedAt,
   );
-  return setMarinaraCarried(
-    p,
-    ranked.slice(0, MARINARA_CARRY_SLOTS).map((skill) => skill.id),
-  );
+  return setMarinaraCarried(p, pickCarries(p, ranked));
 }
 
 /** A character on a class line at a level: promoted at class level 10 and 20, carrying the best of
@@ -170,17 +168,15 @@ function grown(line: string[], level: number, seed: string): MarinaraProgression
     const target = step === 2 ? level : Math.min(level, (step + 1) * 10);
     if (target > p.level) p = awardMarinaraXp(p, (target - p.level) * 100, random).progression;
   }
-  const earlier = marinaraLearnedSkills(p).filter((skill) => skill.classId !== p.activeClass);
+  const kept = new Set(marinaraKeptTraits(p));
+  const earlier = marinaraLearnedSkills(p).filter((skill) => skill.classId !== p.activeClass && !kept.has(skill.id));
   const ranked = [...earlier].sort(
     (a, b) =>
       Number(Boolean(b.carryPick)) - Number(Boolean(a.carryPick)) ||
       Number(b.kind === "active") - Number(a.kind === "active") ||
       b.learnedAt - a.learnedAt,
   );
-  return setMarinaraCarried(
-    p,
-    ranked.slice(0, MARINARA_CARRY_SLOTS).map((skill) => skill.id),
-  );
+  return setMarinaraCarried(p, pickCarries(p, ranked));
 }
 
 /** Standard gear on the party (marinara-items.ts): armour and weight stats, weapon power. LAB_GEAR=0 leaves it off. */
