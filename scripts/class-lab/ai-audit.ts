@@ -182,7 +182,7 @@ function audit(
     }
   }
   if (pick.kind === "defend") {
-    if (process.env.DEBUG_DEFEND && party) {
+    if (process.env.DEBUG_DEFEND && (process.env.DEBUG_DEFEND === "foe" ? !party : party)) {
       const cands = marinaraAiCandidates(actor, all, { tactical: style === "tactical" });
       const fmt = (c: (typeof cands)[number]) =>
         `${c.action.optionId}:${["damage", "finish", "healing", "support", "setup", "protection", "cost", "risk"]
@@ -193,7 +193,7 @@ function audit(
           .filter(Boolean)
           .join(",")}`;
       console.log(
-        `DEF ${actor.classId} ${temper} hp ${actor.hp}/${actor.maxHp} st ${actor.stamina}/${actor.maxStamina} mp ${actor.mp} | ${cands.map(fmt).join(" ")}`,
+        `DEF ${actor.classId ?? actor.name} r${s.round} ${temper} hp ${actor.hp}/${actor.maxHp} st ${actor.stamina}/${actor.maxStamina} mp ${actor.mp} | ${cands.map(fmt).join(" ")}`,
       );
     }
     party ? tally.defend.party++ : tally.defend.foe++;

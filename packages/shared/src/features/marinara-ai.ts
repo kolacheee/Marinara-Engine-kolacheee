@@ -598,7 +598,11 @@ export function marinaraAiCandidates(
     out.push({
       action: { optionId: "defend", targetIds: [] },
       hold: true,
-      support: threatened ? (1 - hurt) * 0.15 + (actor.stamina < actor.maxStamina * 0.3 ? 0.05 : 0) : 0,
+      // Bracing buys time for the others to win; the last one standing only puts off the end (Sonnet
+      // panel r3: lone survivors and hurt foes defended for dozens of rounds).
+      support: threatened
+        ? (friends.length > 1 ? (1 - hurt) * 0.15 : 0) + (actor.stamina < actor.maxStamina * 0.3 ? 0.05 : 0)
+        : 0,
     });
   if (!out.length) out.push({ action: { optionId: "defend", targetIds: [] }, hold: true });
   return out;
