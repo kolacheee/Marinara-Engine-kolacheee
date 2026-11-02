@@ -176,6 +176,10 @@ export interface MarinaraEffect {
   spread?: number;
   /** This area attack's own share per foe, in place of MARINARA_TUNING.areaSpreadPct (Tempest). */
   areaPct?: number;
+  /** Never misses (Convergence's charged blow). */
+  sureHit?: boolean;
+  /** Tempest: an area attack that deals full damage when only one foe is left. */
+  loneFull?: boolean;
   /** Vanish: +40 evasion until the user's next turn. They can still be targeted, so Provoke and
    *  Challenge still pull foes onto them (evasion tanking). */
   hide?: boolean;
@@ -209,6 +213,8 @@ export interface MarinaraEffect {
   /** Its cooldown falls on every fighter of the user's side who has it (Fortress). */
   sideCooldown?: boolean;
   oncePerFight?: boolean;
+  /** Usable this many times a fight (Thousand Shadows: twice). */
+  usesPerFight?: number;
   /** A revive that raises every downed ally, not one (Undying Light). */
   allDowned?: boolean;
   /** Decoys that take the next hits on the user's party (Thousand Shadows). */
@@ -296,11 +302,12 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Balance pass (2026-11-01): it missed evasive foes too often, and opens a Wound (the party's anti-heal).
   "reckless-swing": dmg("strength", 13, {
     hitBonus: 15,
-    selfDebuff: { stat: "defense", pct: -0.3, duration: 2 },
+    selfDebuff: { stat: "defense", pct: -0.2, duration: 2 },
     applies: { status: "wound", duration: 3 },
   }),
+  // Every foe (playtest 2026-11-02): melee, so the back row takes half, as for any melee hit.
   "sweeping-ruin": dmg("strength", 13, {
-    target: "front-row",
+    target: "all-enemies",
     speedUntilNext: -0.2,
     onHit: { stat: "damage", pct: -0.15, duration: 2 },
   }),
@@ -357,7 +364,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     pct: 0,
     duration: 3,
     decoys: 3,
-    oncePerFight: true,
+    usesPerFight: 2,
   },
   // Marksman
   "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, speedUntilNext: -0.2 }),
@@ -387,7 +394,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // More power (Alyssa 2026-11-01): was 6.
   // Hits every foe nearly as hard as one (85% each, not the usual 60%), at a normal turn's weight: the
   // AI cast it 1% of the time against the old Twin Cast's 80% (lab, 2026-11-01).
-  tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 2, areaPct: 0.85 }),
+  "elemental-lance": dmg("magic", 11, { ranged: true }),
+  tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 3, areaPct: 0.7, loneFull: true }),
   // Rune Scholar line (Alyssa 2026-11-01): party elemental support. The party's weapon attacks and
   // skills strike in the caster's channeled element (Alyssa 2026-11-02).
   "edge-runes": { kind: "buff", target: "party", stat: "imbue", pct: 1, duration: 3, cooldown: 2 },
@@ -403,10 +411,11 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   },
   // Balance pass (2026-11-01): ignores half of Resistance (was all of it) and every elemental resistance.
   starfall: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
-  convergence: dmg("magic", 24, { ranged: true, charge: true }),
+  // A sure hit on its charged turn (playtest 2026-11-02), paid for with a very high MP cost.
+  convergence: dmg("magic", 24, { ranged: true, charge: true, sureHit: true }),
   // Hexer
   // Weaken: the foe's Strength or Magic, whichever it hits with.
-  weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.2, duration: 3, sapsToUser: true },
+  weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.25, duration: 3, sapsToUser: true },
   // Balance pass (2026-11-01): 8% -> 6% a turn; a share of max HP grew too big on bosses.
   rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.06 },
   // Wither also wounds (healing halved): the party's anti-heal (Alyssa 2026-11-01, item 8).
@@ -416,7 +425,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     status: "wither",
     chance: 1,
     duration: 3,
-    power: 0.06,
+    power: 0.05,
     applies: { status: "wound", duration: 3 },
   },
   doom: { kind: "status", target: "enemy", status: "doom", chance: 0.6, duration: 3 },
@@ -435,11 +444,11 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     target: "all-enemies",
     ranged: true,
     cooldown: 2,
-    onHit: { stat: "damage", pct: -0.2, duration: 2 },
+    onHit: { stat: "damage", pct: -0.25, duration: 2 },
   }),
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
-  revive: { kind: "revive", target: "downed-ally", power: 0.25, cooldown: 3 },
+  revive: { kind: "revive", target: "downed-ally", power: 0.35, cooldown: 3 },
   sanctuary: { kind: "heal", target: "party", scales: "magic", power: 5, speedUntilNext: -0.2, cleanse: "one" },
   remedy: { kind: "heal", target: "ally", scales: "magic", power: 5, cleanse: "all" },
   purify: { kind: "cleanse", target: "ally", cleanse: "all" },
@@ -447,7 +456,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   barrier: { kind: "shield", target: "ally", scales: "magic", power: 8 },
   "undying-light": { kind: "revive", target: "downed-ally", power: 0.5, oncePerFight: true, allDowned: true },
   // A smite (Alyssa 2026-11-02): replaces Second Breath so a Mender on their own can still hurt a foe.
-  verdict: dmg("magic", 9, { ranged: true }),
+  verdict: dmg("magic", 9, { ranged: true, hitBonus: 15 }),
   // Herald
   rally: { kind: "buff", target: "party", stat: "damage", pct: 0.2, duration: 2 },
   // Cantor's songs stack by verse (Alyssa 2026-11-01): each re-cast while one lasts adds 10%, up to 3.
@@ -487,7 +496,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Field Captain (reworked 2026-11-02, Alyssa): turns the foes onto an ally who can take it.
   "draw-fire": { kind: "provoke", target: "ally", duration: 2 },
   // Reworked (Alyssa 2026-11-02): the old Command as a bonus action; the whole-party order is Hour of Heroes.
-  "grand-strategy": { kind: "command", target: "ally", cooldown: 2, bonusAction: true },
+  "grand-strategy": { kind: "command", target: "ally", cooldown: 3, bonusAction: true },
   "raise-the-banner": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3, steadies: true },
   "hour-of-heroes": { kind: "command", target: "party", cooldown: 4 },
 };
@@ -740,11 +749,11 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   overcharge: { critBonus: 10 },
   "warding-runes": { partyElementTakenPct: -0.25 },
   "living-runes": { partyElementTakenPct: -0.35, buffDurationBonus: 1 },
-  "deep-well": { mpPct: 0.5 },
-  "mana-tide": { mpRegenPct: 0.08 },
+  "deep-well": { mpPct: 0.3 },
+  "mana-tide": { mpRegenPct: 0.05 },
   lingering: { debuffDurationBonus: 1 },
   "ill-omen": { enemyCritToMissChance: 0.5 },
-  "grave-skin": { frontTakenPct: -0.15 },
+  "grave-skin": { frontTakenPct: -0.2 },
   "siphoning-rot": { curseFeedPct: 0.5 },
   // Slow Time (Alyssa 2026-11-02, worded as Speed): -20% Speed until the foe's next turn (was "25% longer").
   "slow-time": { slowDebuffed: 0.2 },
@@ -759,8 +768,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   sanctified: { partyMagicTakenPct: -0.15 },
   encore: { buffDurationBonus: 1 },
   tempo: { tempoPct: 0.15 },
-  "hold-fast": { partyProvokerTakenPct: -0.15 },
-  "kill-zone": { partyDamageWhileProvoked: 0.15 },
+  "hold-fast": { partyProvokerTakenPct: -0.25 },
+  "kill-zone": { partyDamageWhileProvoked: 0.25 },
   // Replaced Inspire, then Defiance (Alyssa 2026-11-02): useful in any party, no healing needed.
   morale: { partyStatusResistPct: 0.3 },
   "fortunes-favour": { partyCritBonus: 10 },
@@ -1613,7 +1622,11 @@ export function marinaraBasicAttack(unit: MarinaraFighter): MarinaraEffect {
       : (unit.classId === "apothecary" || unit.classId === "panacean") && unit.stats.skill > unit.stats.magic
         ? ("skill" as const)
         : undefined;
-  return dmg(unit.magicBasic ? "magic" : "strength", MARINARA_TUNING.basicPower, {
+  // Channeler-tree classes cast a stronger basic spell (playtest 2026-11-02: they lagged on one big foe).
+  const power =
+    MARINARA_TUNING.basicPower +
+    (unit.classId && unit.archetype === "channeler" && unit.magicBasic ? MARINARA_CHANNELER_BASIC_BONUS : 0);
+  return dmg(unit.magicBasic ? "magic" : "strength", power, {
     ...(from ? { from } : {}),
     ranged: unit.rangedBasic || unit.magicBasic,
     basic: true,
@@ -1728,7 +1741,11 @@ export function marinaraUsable(unit: MarinaraFighter, all?: readonly MarinaraFig
     const { resource, cost } = marinaraSkillCost(unit, skill);
     if (cost > (resource === "mp" ? unit.mp : unit.stamina)) continue;
     if ((unit.cooldowns[skill.id] ?? 0) > 0) continue;
-    if (effect.oncePerFight && unit.used.includes(skill.id)) continue;
+    if (
+      (effect.oncePerFight || effect.usesPerFight) &&
+      unit.used.filter((id) => id === skill.id).length >= (effect.usesPerFight ?? 1)
+    )
+      continue;
     // A commanded action can't command or take extra actions in turn (it would only spend itself).
     if ((effect.kind === "command" || effect.kind === "extra-turn") && unit.commanded) continue;
     if (effect.frontOnly && !front) continue;
@@ -1829,6 +1846,10 @@ export const MARINARA_ELEMENT_AILMENTS: Record<
 
 /** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
 export const MARINARA_VANISH_EVADE = 40;
+/** Added to a Channeler-tree class's basic attack power (playtest 2026-11-02). */
+export const MARINARA_CHANNELER_BASIC_BONUS = 2;
+/** Perfect Evasion's most (playtest 2026-11-02: 30 to 40). */
+export const MARINARA_PERFECT_EVASION_CAP = 40;
 
 /**
  * Who an effect can be aimed at. In Classic, a taunt or a provoker forces the pick (a vanished
@@ -2033,7 +2054,7 @@ export function marinaraHitNumbers(
     (hooks.noPenalty
       ? 0
       : (hooksOf(target).evadeBonus ?? 0) +
-        Math.min(30, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0))) +
+        Math.min(MARINARA_PERFECT_EVASION_CAP, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0))) +
     (target.hidden ? MARINARA_VANISH_EVADE : 0);
   const hitChance = Math.max(
     MARINARA_MIN_HIT_CHANCE,
@@ -2074,7 +2095,7 @@ export function marinaraHitNumbers(
   // Hard crowd control (Alyssa 2026-11-02): a stunned or sleeping target can't dodge, on either side.
   return {
     damage,
-    hitChance: marinaraHelpless(target) ? 100 : hitChance,
+    hitChance: marinaraHelpless(target) || effect.sureHit ? 100 : hitChance,
     critChance,
     multiplier,
     type: best.type,
@@ -2130,7 +2151,8 @@ export function marinaraSkillEstimate(
   if (effect.kind === "damage") {
     const foes = living(all.filter((unit) => unit.side !== actor.side && !unit.yielded));
     if (!foes.length) return null;
-    const area = effect.target === "all-enemies" || effect.target === "front-row";
+    const area =
+      (effect.target === "all-enemies" || effect.target === "front-row") && !(effect.loneFull && foes.length === 1);
     const used = area ? { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct } : effect;
     const amounts = foes.map((foe) =>
       Math.max(0, Math.round(marinaraHitNumbers(actor, foe, used, all, tactical).damage)),
@@ -2549,7 +2571,7 @@ function performMarinaraOptionNow(
       for (const ally of all)
         if (ally.side === actor.side && ally !== actor)
           ally.cooldowns[option.skill.id] = Math.max(ally.cooldowns[option.skill.id] ?? 0, option.effect.cooldown);
-    if (option.effect.oncePerFight) actor.used.push(option.skill.id);
+    if (option.effect.oncePerFight || option.effect.usesPerFight) actor.used.push(option.skill.id);
   } else if (option.id?.startsWith("enemy:")) {
     actor.cooldowns[option.id] = option.effect.cooldown ?? 3;
     // Harden and Self-Repair share one cooldown, so a boss can't stack them into a wall (balance pass).
@@ -2633,7 +2655,11 @@ function act(
     case "damage": {
       // An area attack always deals its per-foe share, even on a lone foe (Alyssa 2026-11-02: a
       // single target is what single-target skills are for).
-      if (effect.target === "all-enemies" || effect.target === "front-row")
+      // Tempest (playtest 2026-11-02) is the exception: full damage when only one foe is left.
+      if (
+        (effect.target === "all-enemies" || effect.target === "front-row") &&
+        !(effect.loneFull && targets.length === 1)
+      )
         effect = { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct };
       for (const target of targets) {
         // Sworn Ward: whoever watches over this target strikes the attacker first, hit or miss.
@@ -2980,7 +3006,7 @@ function strikeOnce(
   }
   const targetHooks = hooksOf(target);
   // Elusive: a separate 50% dodge before the normal roll, so the first attack halves its hit chance.
-  if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound && !marinaraHelpless(target)) {
+  if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound && !marinaraHelpless(target) && !effect.sureHit) {
     target.evadedThisRound = true;
     if (random() < 0.5) {
       ctx.events.push({ kind: "evade", actorId: actor.id, targetId: target.id, skillId });
@@ -3124,6 +3150,12 @@ function strikeOnce(
   if (hooks.hitsLowerDefense) addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
   if (target.statuses.some((s) => s.status === "sleep"))
     target.statuses = target.statuses.filter((s) => s.status !== "sleep");
+  // Follow Through (playtest 2026-11-02): a critical hit counts as well as a kill, once per turn.
+  if (crit && target.hp > 0 && hooks.actOnKill && !actor.followThroughUsed) {
+    actor.followThroughUsed = true;
+    actor.next -= turnLength(actor, all);
+    ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "follow-through" });
+  }
   if (target.hp <= 0) {
     target.hp = 0;
     ctx.events.push({ kind: "down", actorId: actor.id, targetId: target.id });
