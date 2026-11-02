@@ -101,6 +101,34 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(withSlow > without * 1.2, `Slow Time pushes the debuffed foe back (${without} -> ${withSlow})`);
 }
 
+// Slow Time: a status ailment that lands slows the rest of the foe's wait at once, and only once.
+{
+  const dream = unit("dr", "party", ["slow-time"]);
+  const foe = unit("f", "enemy");
+  const all = [dream, foe];
+  dream.turnAt = 100;
+  foe.next = 200;
+  const poison = {
+    id: "t",
+    skill: null,
+    effect: { kind: "status", target: "enemy", status: "poison", chance: 1, duration: 3 },
+  } as never;
+  performMarinaraOption(dream, poison, [foe], all, ctx());
+  assert.ok(
+    foe.statuses.some((s) => s.status === "poison"),
+    "the poison lands",
+  );
+  assert.equal(Math.round(foe.next), 225, "the 100 left to wait becomes 125 (Speed -20%)");
+  performMarinaraOption(dream, poison, [foe], all, ctx());
+  assert.equal(Math.round(foe.next), 225, "a second ailment in the same wait does not slow it again");
+  const plain = unit("pl", "party");
+  const other = unit("o", "enemy");
+  plain.turnAt = 100;
+  other.next = 200;
+  performMarinaraOption(plain, poison, [other], [plain, other], ctx());
+  assert.equal(other.next, 200, "without Slow Time the wait is unchanged");
+}
+
 // Oath of Iron: nobody drops below 1 HP until their next turn.
 {
   const oath = unit("oa", "party", ["oath-of-iron"]);

@@ -1396,7 +1396,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "slow-time",
           "Slow Time",
           15,
-          "While the user stands, foes with a debuff or status ailment have their Speed reduced by 20% until their next turn.",
+          "While the user stands, foes with a debuff or status ailment have their Speed reduced by 20% until their next turn, starting the moment it lands.",
         ),
       ],
     },
