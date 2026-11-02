@@ -44,6 +44,7 @@ import {
 } from "../../packages/shared/src/features/marinara-classes.js";
 import {
   createMarinaraCardProgression,
+  marinaraPartyFighter,
   readMarinaraCardProgression,
   type MarinaraCardProgression,
 } from "../../packages/shared/src/features/marinara-party.js";
@@ -204,6 +205,7 @@ function show(g: Game) {
     console.log(
       `- ${m.name}: Level ${p.level}, class ${def.label} (class level ${p.classLevels[p.activeClass]}), trees ${trees.primary}${trees.secondary ? ` + ${trees.secondary}` : " (Pure)"}, row ${m.row ?? "default"}${p.fallen ? " FALLEN" : ""}`,
     );
+    console.log(`    fight HP ${marinaraPartyFighter("x", m.name, p).maxHp} (the stat line's HP is the base stat, scaled by level in fights)`);
     console.log(`    stats ${Object.entries(p.stats).map(([k, v]) => `${k} ${Math.round(v)}`).join(", ")}`);
     console.log(`    trained: ${Object.entries(p.classLevels).map(([id, l]) => `${cls(id)} ${l}`).join(", ")}`);
     console.log(`    fights with: ${marinaraUsableSkills(p).map((s) => `${s.label}${s.kind === "passive" ? " (passive)" : ""}${s.classId !== p.activeClass ? ` [carried from ${cls(s.classId)}]` : ""}`).join("; ") || "basic attack only"}`);
