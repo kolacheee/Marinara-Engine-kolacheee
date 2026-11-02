@@ -1733,8 +1733,20 @@ export function marinaraHitNumbers(
         marinaraEffectiveStat(target, "luck", all),
     ),
   );
-  const asleep = target.statuses.some((s) => s.status === "sleep");
-  return { damage, hitChance: asleep ? 100 : hitChance, critChance, multiplier, type: best.type, rider };
+  // Hard crowd control (Alyssa 2026-11-02): a stunned or sleeping target can't dodge, on either side.
+  return {
+    damage,
+    hitChance: marinaraHelpless(target) ? 100 : hitChance,
+    critChance,
+    multiplier,
+    type: best.type,
+    rider,
+  };
+}
+
+/** Stunned or asleep: every attack on it lands (no evasion, no Elusive dodge). */
+export function marinaraHelpless(unit: MarinaraFighter): boolean {
+  return unit.statuses.some((s) => s.status === "sleep" || s.status === "stun");
 }
 
 /** Expected damage of one use on one target, for choosing; the real roll happens when it is used. */
@@ -2534,8 +2546,10 @@ function strikeOnce(
     ctx.events.push({ kind: "cover", actorId: coverer.id, targetId: target.id });
     target = coverer;
   }
-  // Thousand Shadows: a decoy takes the hit instead.
-  const shadow = living(all.filter((u) => u.side === target.side)).find((u) => (u.decoys ?? 0) > 0);
+  // Thousand Shadows: a decoy takes the hit instead, unless the target is stunned or asleep.
+  const shadow = marinaraHelpless(target)
+    ? undefined
+    : living(all.filter((u) => u.side === target.side)).find((u) => (u.decoys ?? 0) > 0);
   if (shadow) {
     shadow.decoys! -= 1;
     ctx.events.push({ kind: "decoy", actorId: actor.id, targetId: target.id, skillId, amount: shadow.decoys });
@@ -2543,7 +2557,7 @@ function strikeOnce(
   }
   const targetHooks = hooksOf(target);
   // Elusive: a separate 50% dodge before the normal roll, so the first attack halves its hit chance.
-  if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound) {
+  if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound && !marinaraHelpless(target)) {
     target.evadedThisRound = true;
     if (random() < 0.5) {
       ctx.events.push({ kind: "evade", actorId: actor.id, targetId: target.id, skillId });

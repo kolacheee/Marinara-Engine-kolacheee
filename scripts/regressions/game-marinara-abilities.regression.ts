@@ -354,4 +354,34 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.equal(marinaraOption(bard, "double-time", all), undefined, "not offered on an extra action");
 }
 
+// Hard crowd control (Alyssa 2026-11-02): attacks on a stunned or sleeping target always land, either side.
+{
+  for (const side of ["enemy", "party"] as const) {
+    const attacker = unit("atk", side === "enemy" ? "party" : "enemy");
+    const target = unit("tgt", side, ["elusive"]);
+    target.stats.speed = 500;
+    const all = [attacker, target];
+    const basic = marinaraOption(attacker, null, all)!.effect;
+    assert.ok(marinaraHitNumbers(attacker, target, basic, all).hitChance < 100, "a nimble target can dodge");
+    for (const which of ["stun", "sleep"] as const) {
+      target.statuses = [];
+      status(target, which);
+      assert.equal(marinaraHitNumbers(attacker, target, basic, all).hitChance, 100, `${which}: always hit (${side})`);
+      const c = ctx(`cc:${which}:${side}`);
+      performMarinaraOption(attacker, marinaraOption(attacker, null, all)!, [target], all, c);
+      // A hit wakes a sleeper: put it back to sleep for the decoy check.
+      target.statuses = [];
+      status(target, which);
+      target.decoys = 3;
+      target.mods.push({ stat: "shadows", pct: 1, turns: 3, source: "thousand-shadows" });
+      performMarinaraOption(attacker, marinaraOption(attacker, null, all)!, [target], all, c);
+      assert.ok(
+        !c.events.some((e) => e.kind === "miss" || e.kind === "evade" || e.kind === "decoy"),
+        `${which}: no miss, Elusive dodge or decoy`,
+      );
+      target.mods = target.mods.filter((m) => m.stat !== "shadows");
+    }
+  }
+}
+
 console.log("game-marinara-abilities: ok");
