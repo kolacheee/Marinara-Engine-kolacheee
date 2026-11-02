@@ -118,13 +118,14 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.equal(ally.hp, 1, "the sworn ally keeps standing");
 }
 
-// Thousand Shadows: three decoys take the next three hits on the party.
+// Thousand Shadows: three decoys take the next three hits on the party, however long that takes.
 {
   const shade = unit("sh", "party", ["thousand-shadows"]);
   const ally = unit("al", "party");
   const foe = unit("f", "enemy");
   const all = [shade, ally, foe];
   use(shade, "thousand-shadows", [shade], all);
+  shade.mods = shade.mods.filter((mod) => mod.stat !== "shadows"); // no time limit: decoys outlast the buff
   const hp = ally.hp;
   const hit = {
     id: null,
