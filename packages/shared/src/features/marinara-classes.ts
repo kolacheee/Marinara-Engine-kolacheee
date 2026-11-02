@@ -592,7 +592,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "defense",
           0,
-          "Until the user's next turn, single-target attacks on one ally hit the user instead.",
+          "Choose one ally. Until the user's next turn, single-target attacks on that ally hit the user instead.",
         ),
         active("challenge", "Challenge", 1, "defense", 2, "Forces one foe to target the user for 2 turns.", true),
         passive(
