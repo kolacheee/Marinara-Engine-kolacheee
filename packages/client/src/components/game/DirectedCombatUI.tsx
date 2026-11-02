@@ -415,6 +415,9 @@ export function DirectedCombatUI(props: Props) {
                 over={!!s.outcome || !!s.mercy}
                 busy={busy}
                 onLoadAmmo={(unitId, type) => send({ type: "loadAmmo", unitId, ammo: type as MarinaraDamageType })}
+                onChannel={(unitId, element) =>
+                  send({ type: "channelElement", unitId, element: element as MarinaraDamageType })
+                }
               />
             )}
             {/* Only foes who yielded are left: the party spares them or finishes them (Alyssa 2026-11-01);

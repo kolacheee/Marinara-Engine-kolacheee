@@ -341,7 +341,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Tame (Alyssa 2026-11-01): a weakened wild beast becomes the user's companion; Sic sends it in.
   tame: { kind: "tame", target: "enemy" },
   sic: dmg("strength", 7, { ranged: true, bonusAction: true, cooldown: 2, companion: true }),
-  volley: dmg("strength", 4, { ranged: true, target: "all-enemies", cooldown: 2 }),
+  // Volley: a basic attack's power, at the usual 60% area share per foe.
+  volley: dmg("strength", MARINARA_TUNING.basicPower, { ranged: true, target: "all-enemies", cooldown: 2 }),
   // Balance pass (2026-11-01): power 9 -> 13 (Volley did as much for 6 stamina).
   "ruinous-barrage": dmg("strength", 13, {
     ranged: true,
@@ -351,7 +352,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     onHit: { stat: "defense", pct: -0.25, duration: 2 },
   }),
   // Channeler
-  "element-bolt": dmg("magic", 7, { ranged: true }),
+  // Channel Element is a bonus action taken outside the skill menu (marinaraChannelElement).
+  "channel-element": { kind: "none", target: "self" },
   "twin-cast": dmg("magic", 5, { ranged: true, hits: 2 }),
   // More power (Alyssa 2026-11-01): was 6.
   // Hits every foe nearly as hard as one (85% each, not the usual 60%), at a normal turn's weight: the
@@ -742,6 +744,14 @@ export interface MarinaraFighter {
   ammoLoaded?: MarinaraDamageType;
   /** Run by the AI: loads whichever owned ammunition hurts the target most, shot by shot. */
   ammoAuto?: boolean;
+  /** Channel Element (Alyssa 2026-11-02): the element a Channeler-tree caster has channeled; their
+   *  basic attacks and Channeler-tree element spells strike with it. Absent, fire. */
+  channeled?: MarinaraDamageType;
+  /** Channel Element is a bonus action: once between the user's own turns. */
+  channeledThisTurn?: boolean;
+  /** Run by the player: strikes with the channeled element. Otherwise (the AI, foes, harnesses) it
+   *  channels whichever element hurts the target most, hit by hit. */
+  channelManual?: boolean;
   /** Damage type of a unit with no class (a monster). */
   attackType?: MarinaraDamageType;
   /** Active skills and passives it fights with. */
@@ -1310,6 +1320,8 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
     return [actor.attackType ?? "blunt"];
   }
   const type = effect.type ?? "weapon";
+  // Channel Element: a Channeler-tree caster's element hits are the channeled element.
+  if (type === "element" && marinaraCanChannel(actor) && actor.channelManual) return [marinaraChanneled(actor)];
   // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
   const options =
     type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
@@ -1337,6 +1349,28 @@ export function marinaraAmmoChoices(actor: MarinaraFighter): MarinaraDamageType[
   if (actor.archetype !== "marksman" || !actor.ammoOwned?.length || !actor.classId) return [];
   const own = actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions("weapon", actor.classId);
   return [...new Set([...own, ...actor.ammoOwned])];
+}
+
+/** Whether this fighter channels an element: a class of the Channeler tree. */
+export function marinaraCanChannel(actor: MarinaraFighter): boolean {
+  return actor.archetype === "channeler" && !!actor.classId;
+}
+
+/** The element a Channeler-tree caster strikes with now: the channeled one, fire until they channel. */
+export function marinaraChanneled(actor: MarinaraFighter): MarinaraDamageType {
+  return actor.channeled ?? "fire";
+}
+
+/**
+ * Channel Element, a bonus action (Alyssa 2026-11-02): sets the element a Channeler-tree caster's
+ * basic attacks and element spells strike with, until they channel another. Once between their turns.
+ */
+export function marinaraChannelElement(actor: MarinaraFighter, element: MarinaraDamageType): boolean {
+  if (!marinaraCanChannel(actor) || actor.channeledThisTurn) return false;
+  if (!(MARINARA_ELEMENTS as readonly string[]).includes(element)) return false;
+  actor.channeled = element;
+  actor.channeledThisTurn = true;
+  return true;
 }
 
 /** Loads a Marksman's ammunition by hand: one of `marinaraAmmoChoices`. A free action. */
@@ -1992,6 +2026,7 @@ export function beginMarinaraTurn(
   actor.followThroughUsed = false;
   actor.evadedThisRound = false;
   actor.counteredThisRound = false;
+  actor.channeledThisTurn = false;
   actor.freeItemUsed = false;
   // Its own turn came: whoever struck it is no longer keeping it busy (Backstab).
   delete actor.struckBy;
@@ -2803,6 +2838,8 @@ export interface MarinaraCombatantView {
   /** A Marksman's ammunition: what is loaded and what can be (owned types and the weapon's own). The
    *  AI loads by itself for one it runs (`auto`). */
   ammo?: { loaded: MarinaraDamageType; choices: MarinaraDamageType[]; auto?: boolean };
+  /** Channel Element: the channeled element, the choices, whether it may change now, and AI-run. */
+  channel?: { element: MarinaraDamageType; choices: MarinaraDamageType[]; ready: boolean; auto?: boolean };
   /** Damage types it is known to be weak to, resist, be immune to or absorb. */
   affinities?: MarinaraAffinities;
   /** Where it stands on the timeline: lower acts sooner. */
@@ -2834,6 +2871,16 @@ export function marinaraCombatantView(unit: MarinaraFighter, all?: readonly Mari
     ...(unit.yielded ? { yielded: true } : {}),
     ...(unit.coating ? { coating: unit.coating } : {}),
     ...marinaraAmmoView(unit),
+    ...(marinaraCanChannel(unit)
+      ? {
+          channel: {
+            element: marinaraChanneled(unit),
+            choices: [...MARINARA_ELEMENTS],
+            ready: !unit.channeledThisTurn,
+            ...(unit.channelManual ? {} : { auto: true }),
+          },
+        }
+      : {}),
     ...(unit.affinities ? { affinities: { ...unit.affinities } } : {}),
     next: Math.round(unit.next),
   };

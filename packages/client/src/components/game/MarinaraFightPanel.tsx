@@ -14,12 +14,23 @@ type Props = {
   over?: boolean;
   /** Loads another ammunition type for a Marksman of the party (Alyssa 2026-11-01): a free action. */
   onLoadAmmo?: (unitId: string, type: string) => void;
+  onChannel?: (unitId: string, element: string) => void;
   busy?: boolean;
 };
 
 const pct = (value: number) => `${value > 0 ? "+" : ""}${Math.round(value * 100)}%`;
 
-export function MarinaraFightPanel({ party, enemies, actorId, growth, loot, over, onLoadAmmo, busy }: Props) {
+export function MarinaraFightPanel({
+  party,
+  enemies,
+  actorId,
+  growth,
+  loot,
+  over,
+  onLoadAmmo,
+  onChannel,
+  busy,
+}: Props) {
   const { t } = useTranslation();
   const units = [...party, ...enemies].filter((unit) => unit.marinara);
   if (!units.length) return null;
@@ -75,6 +86,50 @@ export function MarinaraFightPanel({ party, enemies, actorId, growth, loot, over
                 })}
                 {ammo.auto && (
                   <span className="text-[var(--muted-foreground)]">{t("game.combat.marinara.ammoAuto")}</span>
+                )}
+              </div>
+            );
+          })}
+      {/* Channel Element: a Channeler's element, a bonus action once between their turns; the AI channels its own. */}
+      {!over &&
+        onChannel &&
+        party
+          .filter((unit) => unit.hp > 0 && unit.marinara?.channel)
+          .map((unit) => {
+            const channel = unit.marinara!.channel!;
+            return (
+              <div
+                key={unit.id}
+                className="flex flex-wrap items-center gap-1"
+                role="group"
+                aria-label={t("game.combat.marinara.channel", { name: unit.name })}
+                data-testid="marinara-channel"
+              >
+                <span className="text-[var(--muted-foreground)]">
+                  {t("game.combat.marinara.channel", { name: unit.name })}
+                </span>
+                {channel.choices.map((type) => {
+                  const current = !channel.auto && channel.element === type;
+                  return (
+                    <button
+                      key={type}
+                      type="button"
+                      disabled={channel.auto || busy || current || !channel.ready}
+                      aria-pressed={current}
+                      onClick={() => onChannel(unit.id, type)}
+                      className={
+                        "rounded border px-1.5 py-0.5 disabled:cursor-default " +
+                        (current
+                          ? "border-[var(--primary)] bg-[var(--secondary)] font-medium"
+                          : "border-[var(--border)] disabled:opacity-60")
+                      }
+                    >
+                      {t(`game.combat.marinara.damageType.${type}`, { defaultValue: type })}
+                    </button>
+                  );
+                })}
+                {channel.auto && (
+                  <span className="text-[var(--muted-foreground)]">{t("game.combat.marinara.channelAuto")}</span>
                 )}
               </div>
             );
