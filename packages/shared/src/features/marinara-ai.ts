@@ -105,7 +105,8 @@ export function marinaraAiCandidates(
   } = {},
 ): CombatAiCandidate<MarinaraChoice>[] {
   const tactical = !!options.tactical;
-  const friends = living(all.filter((unit) => unit.side === actor.side));
+  // A friend who surrendered is out of the fight: nobody heals, buffs or covers it.
+  const friends = living(all.filter((unit) => unit.side === actor.side && (!unit.yielded || unit === actor)));
   const foes = living(all.filter((unit) => unit.side !== actor.side));
   if (!foes.length) return [{ action: { optionId: "defend", targetIds: [] }, hold: true }];
   const threatened = foes.some((foe) => !foe.dummy);
