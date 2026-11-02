@@ -100,6 +100,7 @@ export type MarinaraStatusId =
   | "soak"
   | "rend"
   | "windswept"
+  | "sear"
   | "wound"
   | "confuse"
   | "doom"
@@ -221,7 +222,7 @@ export interface MarinaraEffect {
   /** Lowers the target's stat after a hit (Shield Bash stagger, Sundering). */
   onHit?: { stat: MarinaraStat | "damage"; pct: number; duration: number };
   /** Damage counted from another stat; "guard" is Defense or Resistance, whichever is higher
-   *  (Verdict; Alyssa 2026-11-02). */
+   *  (Landslide; Alyssa 2026-11-02). */
   from?: MarinaraStat | "guard";
   /** Extra damage below this share of the target's HP (finishers). */
   finisher?: { below: number; bonus: number };
@@ -315,7 +316,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     sideCooldown: true,
   },
   spellguard: { kind: "buff", target: "party", stat: "resistance", pct: 0.3, duration: 2 },
-  verdict: dmg("magic", 6, { from: "guard" }),
+  landslide: dmg("magic", 6, { from: "guard" }),
   // Balance pass (2026-11-01): the Pure Guard line's taunt; its tank held fewer fights than a Sentinel's.
   "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2, provokes: 2 },
   // Oath of Iron: nobody of the party drops below 1 HP until their next turn.
@@ -535,6 +536,7 @@ const HARMFUL = new Set<MarinaraStatusId>([
   "soak",
   "rend",
   "windswept",
+  "sear",
   "wound",
   "doom",
   "sleep",
@@ -1690,6 +1692,7 @@ export const MARINARA_ELEMENT_MASTERY = {
   soakResistancePct: 0.15,
   rendDamagePct: 0.15,
   windsweptHit: 15,
+  searTakenPct: 0.1,
 } as const;
 
 /** The ailment Element Mastery leaves for each element. */
@@ -1733,7 +1736,10 @@ export const MARINARA_ELEMENT_PHASE = {
   ice: "water",
 } as const satisfies Record<(typeof MARINARA_ELEMENTS)[number], keyof typeof MARINARA_WUXING_OVERCOMES>;
 
-export const MARINARA_ELEMENT_AILMENTS: Record<(typeof MARINARA_ELEMENTS)[number], MarinaraStatusId> = {
+export const MARINARA_ELEMENT_AILMENTS: Record<
+  (typeof MARINARA_ELEMENTS)[number] | "light" | "dark",
+  MarinaraStatusId
+> = {
   fire: "burn",
   ice: "freeze",
   lightning: "shock",
@@ -1742,6 +1748,9 @@ export const MARINARA_ELEMENT_AILMENTS: Record<(typeof MARINARA_ELEMENTS)[number
   water: "soak",
   metal: "rend",
   wind: "windswept",
+  // Light and dark: only a Greater Channel Element caster carrying Element Mastery channels them.
+  light: "sear",
+  dark: "wound",
 };
 
 /** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
@@ -1845,6 +1854,8 @@ export function marinaraHitNumbers(
     (actor.gearPower ?? 0) -
     guard;
   let pct = modTotal(actor, "damage") + modTotal(target, "damage-taken");
+  // Sear (light): the target takes more.
+  if (target.statuses.some((st) => st.status === "sear")) pct += MARINARA_ELEMENT_MASTERY.searTakenPct;
   // Rend (metal): a rent attacker deals less.
   if (actor.statuses.some((st) => st.status === "rend")) pct -= MARINARA_ELEMENT_MASTERY.rendDamagePct;
   for (const ally of living(all.filter((unit) => unit.side === actor.side))) {

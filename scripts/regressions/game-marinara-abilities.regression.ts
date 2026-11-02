@@ -506,6 +506,8 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     ["water", "soak"],
     ["metal", "rend"],
     ["wind", "windswept"],
+    ["light", "sear"],
+    ["dark", "wound"],
   ] as const) {
     master.channeled = element;
     performMarinaraOption(master, sure, [dummy], emAll, ctx(`em-${element}`));
