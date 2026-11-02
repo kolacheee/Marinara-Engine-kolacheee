@@ -239,6 +239,15 @@ export function marinaraBoardTurn(
     const other = t.units.find((one) => one.id === id);
     return other ? Math.abs(other.x - at.x) + Math.abs(other.y - at.y) : Infinity;
   };
+  // A fighter with a foe within a move and its longest reach: one an extra action isn't wasted on.
+  const canStrike = (id: string) => {
+    const one = t.units.find((u) => u.id === id);
+    if (!one || one.hp <= 0) return false;
+    const range = Math.max(one.attackRange.max, ...(one.skills ?? []).map((k) => k.range ?? 0));
+    return t.units.some(
+      (foe) => foe.side !== one.side && foe.hp > 0 && Math.abs(foe.x - one.x) + Math.abs(foe.y - one.y) <= one.movement + range,
+    );
+  };
   const choose = (at: TacticalCoord) =>
     marinaraBoardAiAction(
       s.marinara!,
@@ -247,6 +256,7 @@ export function marinaraBoardTurn(
       normalizeGameDifficulty(s.difficulty),
       from(at),
       tu.attackRange.max,
+      canStrike,
     );
   let to = boardTo;
   let picked = choose(to ?? { x: tu.x, y: tu.y });
