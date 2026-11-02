@@ -165,7 +165,9 @@ export function marinaraCombatSkills(
                 ? ("cooldown" as const)
                 : effect.frontOnly && !marinaraStandsFront(fighter, all)
                   ? ("row" as const)
-                  : ("cost" as const),
+                  : all && effect.kind === "status" && !marinaraTargetsFor(fighter, effect, all).length
+                    ? ("immune" as const)
+                    : ("cost" as const),
           }
         : {}),
     });
@@ -291,7 +293,15 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       ? `a shield absorbed ${event.shielded}${event.shieldLeft ? `, ${event.shieldLeft} left` : ", now broken"}`
       : "",
     ...(event.notes ?? []).map((note) =>
-      note === "Hold Fast" ? "less from Hold Fast" : note === "Kill Zone" ? "more from Kill Zone" : note,
+      note === "Hold Fast"
+        ? "less from Hold Fast"
+        : note === "Kill Zone"
+          ? "more from Kill Zone"
+          : note === "Sanctified" || note === "Aura of Warding"
+            ? `less from ${note}`
+            : note === "rune"
+              ? `${event.type ?? "element"} lent by runes`
+              : note,
     ),
   ]
     .filter(Boolean)
@@ -313,7 +323,9 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "heal":
       return event.status === "regen"
         ? `${actor} regenerates ${event.amount} HP.`
-        : `${actor} heals ${target}${using} for ${event.amount}${event.crit ? ", a blessed heal" : ""}.`;
+        : event.notes?.includes("drain")
+          ? `${actor} drains ${event.amount} HP${skill ? ` (${skill})` : " (gear)"}.`
+          : `${actor} heals ${target}${using} for ${event.amount}${event.crit ? ", a blessed heal" : ""}.`;
     case "status":
       return event.status === "confuse" && event.targetId && event.actorId !== event.targetId && skill === undefined
         ? `${actor} lashes out in confusion at ${target}.`
@@ -447,17 +459,47 @@ function resolveSteal(state: MarinaraDirectorState, event: MarinaraEvent) {
   else event.amount = foe.stolen.gold;
 }
 
+/** A boon on several of one side at once (Rally, War Cry, Fortress) reads as one line, not one per
+ *  friend (Sonnet panel 2026-11-02: "Rally -> Dagny" read as a single target). */
+function boonGroupText(state: MarinaraDirectorState, group: readonly MarinaraEvent[]): string {
+  const first = group[0]!;
+  const actor = nameOf(state, first.actorId);
+  const skill = skillLabel(marinaraFighter(state, first.actorId), first.skillId) ?? "a boon";
+  const names = group.map((event) =>
+    !event.targetId || event.targetId === event.actorId ? "themselves" : nameOf(state, event.targetId),
+  );
+  const list = names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names[0];
+  return `${actor} uses ${skill} on their side: ${list}.`;
+}
+
 function record(state: MarinaraDirectorState, ctx: MarinaraFightContext, log: MarinaraLog, source?: string) {
-  for (const event of ctx.events) {
+  let grouped = 0;
+  for (const [index, event] of ctx.events.entries()) {
     resolveSteal(state, event);
-    log(marinaraEventText(state, event), `marinara:${event.kind}`, event.actorId, source);
+    if (grouped > 0) grouped--;
+    else if (event.kind === "buff") {
+      const group = [event];
+      for (let at = index + 1; at < ctx.events.length; at++) {
+        const next = ctx.events[at]!;
+        if (next.kind !== "buff" || next.actorId !== event.actorId || next.skillId !== event.skillId) break;
+        group.push(next);
+      }
+      if (group.length > 1) {
+        grouped = group.length - 1;
+        log(boonGroupText(state, group), `marinara:${event.kind}`, event.actorId, source);
+      } else log(marinaraEventText(state, event), `marinara:${event.kind}`, event.actorId, source);
+    } else log(marinaraEventText(state, event), `marinara:${event.kind}`, event.actorId, source);
     const credit = (state.credit[event.actorId] ??= { damage: 0, support: 0, foes: [] });
     const target = event.targetId ? marinaraFighter(state, event.targetId) : undefined;
     const actor = marinaraFighter(state, event.actorId);
     if ((event.kind === "hit" || event.kind === "rider") && target && actor && target.side !== actor.side) {
       credit.damage += event.amount ?? 0;
       if (!credit.foes.includes(target.id)) credit.foes.push(target.id);
-    } else if (event.kind === "heal" || event.kind === "revive" || event.kind === "shield")
+    } else if (
+      (event.kind === "heal" && !event.notes?.includes("drain")) ||
+      event.kind === "revive" ||
+      event.kind === "shield"
+    )
       credit.support += event.amount ?? 0;
     else if (
       ["buff", "debuff", "status", "cover", "ward", "taunt", "provoke", "command", "cleanse"].includes(event.kind)

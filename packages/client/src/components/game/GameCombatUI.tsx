@@ -202,7 +202,8 @@ function sanitizeCombatSkills(skills: unknown): Combatant["skills"] {
       skill.unavailable === "cost" ||
       skill.unavailable === "cooldown" ||
       skill.unavailable === "used" ||
-      skill.unavailable === "row"
+      skill.unavailable === "row" ||
+      skill.unavailable === "immune"
     )
       next.unavailable = skill.unavailable;
     if (typeof skill.aims === "string") next.aims = skill.aims as CombatSkill["aims"];
@@ -2437,6 +2438,9 @@ export function GameCombatUI({
                                   ? localizeUi("game.combat.marinara.readyIn", { turns: skill.readyIn })
                                   : null,
                                 skill.unavailable === "row" ? localizeUi("game.combat.marinara.frontRowOnly") : null,
+                                skill.unavailable === "immune"
+                                  ? localizeUi("game.combat.marinara.noneCanBeAffected")
+                                  : null,
                               ]
                                 .filter(Boolean)
                                 .join(" · ")}
@@ -3130,6 +3134,9 @@ export function GameCombatUI({
                             : ""}
                           {skill.unavailable === "row"
                             ? [" · ", localizeUi("game.combat.marinara.frontRowOnly")].join("")
+                            : ""}
+                          {skill.unavailable === "immune"
+                            ? [" · ", localizeUi("game.combat.marinara.noneCanBeAffected")].join("")
                             : ""}
                         </div>
                       </button>
