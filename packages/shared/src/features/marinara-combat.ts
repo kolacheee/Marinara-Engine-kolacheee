@@ -132,6 +132,8 @@ export interface MarinaraEffect {
   damage?: "physical" | "magic";
   /** The skill's own kind of damage before the weapon's Strength-or-Magic rule switched it: a weapon skill
    *  struck with Magic still carries coatings, a spell struck with Strength still doesn't. */
+  /** Weaken: the user gains, in the stat their weapon strikes with, what the debuff takes from the foe. */
+  sapsToUser?: boolean;
   nature?: "physical" | "magic";
   /** Comes from a carried skill: runs on the user's carried stats. */
   carried?: boolean;
@@ -398,7 +400,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   convergence: dmg("magic", 24, { ranged: true, charge: true }),
   // Hexer
   // Weaken: the foe's Strength or Magic, whichever it hits with.
-  weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.2, duration: 3 },
+  weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.2, duration: 3, sapsToUser: true },
   // Balance pass (2026-11-01): 8% -> 6% a turn; a share of max HP grew too big on bosses.
   rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.06 },
   // Wither also wounds (healing halved): the party's anti-heal (Alyssa 2026-11-01, item 8).
@@ -2630,6 +2632,15 @@ function act(
             : effect.stat!;
         addMod(target, stat, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skillId ?? "debuff", actor.id);
         if (skill?.id === "mark-prey") target.marked = (effect.duration ?? 3) + durationBonus;
+        // Weaken saps (Alyssa 2026-11-02): what the foe loses, the user gains in the stat they strike with.
+        if (effect.stat === "best-attack" && effect.sapsToUser)
+          addMod(
+            actor,
+            marinaraWeaponStat(actor),
+            -(effect.pct ?? 0),
+            (effect.duration ?? 1) + durationBonus,
+            `${skillId ?? "debuff"}:sap`,
+          );
         ctx.events.push({ kind: "debuff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
         if (
           effect.applies &&
