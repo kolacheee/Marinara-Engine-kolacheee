@@ -1294,7 +1294,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "magic",
           3,
-          "Saps 20% of one foe's Strength or Magic, whichever is higher, for 3 turns.",
+          "Saps 20% of target foe's Strength or Magic, whichever is higher, for 3 turns.",
           true,
         ),
         active(
