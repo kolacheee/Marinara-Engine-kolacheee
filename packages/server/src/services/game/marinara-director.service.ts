@@ -329,7 +329,9 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
         ? `${actor} siphons ${target}'s ${event.status} boost.`
         : `${actor} drains ${event.amount} MP from ${target}.`;
     case "channel":
-      return `${actor} channels ${event.type}.`;
+      return event.type === "arcane"
+        ? `${actor} lets their element go, back to raw magic.`
+        : `${actor} channels ${event.type}.`;
   }
 }
 

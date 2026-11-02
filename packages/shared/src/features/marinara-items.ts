@@ -1134,7 +1134,7 @@ const COATING_NAMES: Record<string, MarinaraNames> = {
 };
 
 /** Marksman ammunition, by the type it shoots, per setting. */
-const AMMO_NAMES: Record<MarinaraDamageType, MarinaraNames> = {
+const AMMO_NAMES: Record<Exclude<MarinaraDamageType, "arcane">, MarinaraNames> = {
   slash: names(
     "Broadhead Ammo",
     "Broadhead Arrows",
@@ -1531,7 +1531,7 @@ export const MARINARA_CONSUMABLES: readonly MarinaraConsumableDef[] = [
   ),
   // Ammunition: a Marksman's bow or gun shoots any type the party owns (Alyssa 2026-11-01). Kept, not
   // spent, so it costs more than a use-once item: martial types a little, elements more.
-  ...MARINARA_DAMAGE_TYPES.map((type) =>
+  ...MARINARA_DAMAGE_TYPES.filter((type) => type !== "arcane").map((type) =>
     consumable({
       id: `ammo-${type}`,
       tier: 1,

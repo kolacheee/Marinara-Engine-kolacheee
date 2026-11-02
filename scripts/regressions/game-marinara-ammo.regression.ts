@@ -40,8 +40,10 @@ assert.ok(
 );
 assert.equal(MARINARA_ARCHETYPE_TRAITS.marksman, undefined, "no Marksman trait");
 
-// Every damage type is sold, and named in the game's own words.
-for (const type of MARINARA_DAMAGE_TYPES) assert.ok(marinaraItemPrice(`ammo-${type}`)! > 0, `${type} ammo is sold`);
+// Every damage type is sold, and named in the game's own words; raw (arcane) magic has no ammunition.
+for (const type of MARINARA_DAMAGE_TYPES.filter((one) => one !== "arcane"))
+  assert.ok(marinaraItemPrice(`ammo-${type}`)! > 0, `${type} ammo is sold`);
+assert.ok(!marinaraItemPrice("ammo-arcane"), "no arcane ammo");
 const town = marinaraShopCatalog(1, { setting: "fantasy" } as never).map((ware) => ware.id);
 assert.ok(town.includes("ammo-fire") && town.includes("ammo-blunt"), `a fantasy shop sells ammo: ${town.join(",")}`);
 const fireArrows = marinaraItemName("ammo-fire", { setting: "fantasy" } as never);

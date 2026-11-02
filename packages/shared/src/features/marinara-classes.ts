@@ -149,11 +149,19 @@ export const MARINARA_DAMAGE_TYPES = [
   "light",
   "dark",
   "poison",
+  // Raw, non-elemental magic: what a Channeler strikes with once they unchannel (Alyssa 2026-11-02).
+  // No foe has an affinity to it, and no ammunition shoots it.
+  "arcane",
 ] as const;
 export type MarinaraDamageType = (typeof MARINARA_DAMAGE_TYPES)[number];
 export const MARINARA_PHYSICAL_TYPES = ["slash", "pierce", "blunt"] as const satisfies readonly MarinaraDamageType[];
 /** The elements a caster picks between when a spell is "in the caster's element". */
 export const MARINARA_ELEMENTS = ["fire", "ice", "lightning"] as const satisfies readonly MarinaraDamageType[];
+/** What Channel Element can pick: an element, or "arcane" to unchannel and strike with raw magic. */
+export const MARINARA_CHANNEL_CHOICES = [
+  ...MARINARA_ELEMENTS,
+  "arcane",
+] as const satisfies readonly MarinaraDamageType[];
 /**
  * What a skill hits with: a fixed type, the user's equipped weapon (Alyssa 2026-10-31: a Blade with
  * a mace hits blunt, and a carried Power Strike takes the type of whatever its user holds), the
@@ -1101,7 +1109,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "magic",
           0,
-          "Bonus action. Channels fire, ice or lightning. The user's basic attacks and element spells strike with that element until they channel another. Fire until first channeled.",
+          "Bonus action. Channels fire, ice or lightning, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Fire until first channeled.",
         ),
         passive("resonance", "Resonance", 5, "Elemental hits deal 20% more damage to foes weak to that element.", true),
       ],

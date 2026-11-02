@@ -21,6 +21,7 @@
 import {
   MARINARA_ARCHETYPE_ATTACKS,
   MARINARA_ARCHETYPE_BASES,
+  MARINARA_CHANNEL_CHOICES,
   MARINARA_ELEMENTS,
   MARINARA_STAMINA,
   MARINARA_STATS,
@@ -1350,7 +1351,7 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   // Channel Element: element hits are the channeled element only (Alyssa 2026-11-02). One the AI runs
   // that hasn't channeled yet this turn can still pick any, so it weighs them all.
   if (type === "element" && marinaraCanChannel(actor))
-    return !actor.channelManual && !actor.channeledThisTurn ? MARINARA_ELEMENTS : [marinaraChanneled(actor)];
+    return !actor.channelManual && !actor.channeledThisTurn ? MARINARA_CHANNEL_CHOICES : [marinaraChanneled(actor)];
   // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
   const options =
     type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
@@ -1409,7 +1410,7 @@ export function marinaraChanneled(actor: MarinaraFighter): MarinaraDamageType {
  */
 export function marinaraChannelElement(actor: MarinaraFighter, element: MarinaraDamageType): boolean {
   if (!marinaraCanChannel(actor) || actor.channeledThisTurn) return false;
-  if (!(MARINARA_ELEMENTS as readonly string[]).includes(element)) return false;
+  if (!(MARINARA_CHANNEL_CHOICES as readonly string[]).includes(element)) return false;
   actor.channeled = element;
   actor.channeledThisTurn = true;
   return true;
@@ -1790,7 +1791,12 @@ export function marinaraHitNumbers(
   if (multiplier > 1 && hooks.elementWeakPct && (MARINARA_ELEMENTS as readonly string[]).includes(best.type))
     multiplier *= 1 + hooks.elementWeakPct;
   // Attunement: hits in the user's own channeled element.
-  if (hooks.channeledDamagePct && marinaraCanChannel(actor) && best.type === marinaraChanneled(actor))
+  if (
+    hooks.channeledDamagePct &&
+    marinaraCanChannel(actor) &&
+    best.type === marinaraChanneled(actor) &&
+    (MARINARA_ELEMENTS as readonly string[]).includes(best.type)
+  )
     multiplier *= 1 + hooks.channeledDamagePct;
   // Warding Runes and Grand Inscription: the elements bite the warded party less.
   if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
@@ -2263,7 +2269,8 @@ export function performMarinaraOption(
     !actor.channelManual &&
     !actor.channeledThisTurn
   ) {
-    const element = marinaraBestDamageType(MARINARA_ELEMENTS, first.affinities).type;
+    // Raw magic (unchanneled) only when every element does worse: ties go to an element.
+    const element = marinaraBestDamageType(MARINARA_CHANNEL_CHOICES, first.affinities).type;
     if (element !== marinaraChanneled(actor) && marinaraChannelElement(actor, element))
       ctx.events.push({ kind: "channel", actorId: actor.id, type: element });
     else actor.channeledThisTurn = true;
@@ -2989,7 +2996,7 @@ export function marinaraCombatantView(unit: MarinaraFighter, all?: readonly Mari
       ? {
           channel: {
             element: marinaraChanneled(unit),
-            choices: [...MARINARA_ELEMENTS],
+            choices: [...MARINARA_CHANNEL_CHOICES],
             ready: !unit.channeledThisTurn,
             ...(unit.channelManual ? {} : { auto: true }),
           },
