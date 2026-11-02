@@ -177,6 +177,13 @@ export const MARINARA_CHANNEL_CHOICES = [
   ...MARINARA_ELEMENTS,
   "arcane",
 ] as const satisfies readonly MarinaraDamageType[];
+/** Greater Channel Element (Astral Adept, Starweaver) adds light and dark, before raw magic. */
+export const MARINARA_GREATER_CHANNEL_CHOICES = [
+  ...MARINARA_ELEMENTS,
+  "light",
+  "dark",
+  "arcane",
+] as const satisfies readonly MarinaraDamageType[];
 /**
  * What a skill hits with: a fixed type, the user's equipped weapon (Alyssa 2026-10-31: a Blade with
  * a mace hits blunt, and a carried Power Strike takes the type of whatever its user holds), the
@@ -447,6 +454,18 @@ const passive = (
   summary,
   ...(carryPick ? { carryPick } : {}),
 });
+
+/** Greater Channel Element (Alyssa 2026-11-02): the Astral line's Channel Element, light and dark too.
+ *  Skill ids are unique per class, so Starweaver's copy has its own id. */
+const greaterChannel = (id = "greater-channel-element") =>
+  active(
+    id,
+    "Greater Channel Element",
+    1,
+    "magic",
+    0,
+    "Bonus action. Channels fire, ice, lightning, wood, earth, water, metal, wind, light or dark, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Replaces Channel Element.",
+  );
 
 type ClassRow = Omit<MarinaraClassDef, "archetype" | "tier" | "pure"> & { tier?: MarinaraClassTier; pure?: boolean };
 
@@ -1221,6 +1240,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Mages who cast raw starlight that pierces magical defenses.",
       leans: ["magic", "resistance", "skill"],
       skills: [
+        greaterChannel(),
         active(
           "starfall",
           "Starfall",
@@ -1239,6 +1259,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Archmages who gather the power of the stars into a single, devastating spell.",
       leans: ["magic", "resistance", "skill", "speed"],
       skills: [
+        greaterChannel("greater-channel-element-starweaver"),
         active(
           "convergence",
           "Convergence",

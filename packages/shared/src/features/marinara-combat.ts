@@ -22,6 +22,7 @@ import {
   MARINARA_ARCHETYPE_ATTACKS,
   MARINARA_ARCHETYPE_BASES,
   MARINARA_CHANNEL_CHOICES,
+  MARINARA_GREATER_CHANNEL_CHOICES,
   MARINARA_ELEMENTS,
   MARINARA_STAMINA,
   MARINARA_STATS,
@@ -372,6 +373,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Channeler
   // Channel Element is a bonus action taken outside the skill menu (marinaraChannelElement).
   "channel-element": { kind: "none", target: "self" },
+  "greater-channel-element": { kind: "none", target: "self" },
+  "greater-channel-element-starweaver": { kind: "none", target: "self" },
   // More power (Alyssa 2026-11-01): was 6.
   // Hits every foe nearly as hard as one (85% each, not the usual 60%), at a normal turn's weight: the
   // AI cast it 1% of the time against the old Twin Cast's 80% (lab, 2026-11-01).
@@ -1364,7 +1367,9 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   // Channel Element: element hits are the channeled element only (Alyssa 2026-11-02). One the AI runs
   // that hasn't channeled yet this turn can still pick any, so it weighs them all.
   if (type === "element" && marinaraCanChannel(actor))
-    return !actor.channelManual && !actor.channeledThisTurn ? MARINARA_CHANNEL_CHOICES : [marinaraChanneled(actor)];
+    return !actor.channelManual && !actor.channeledThisTurn
+      ? marinaraChannelChoices(actor)
+      : [marinaraChanneled(actor)];
   // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
   const options =
     type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
@@ -1417,6 +1422,13 @@ export function marinaraCanChannel(actor: MarinaraFighter): boolean {
   );
 }
 
+/** What this caster can channel: Greater Channel Element adds light and dark. */
+export function marinaraChannelChoices(actor: MarinaraFighter): readonly MarinaraDamageType[] {
+  return actor.skills.some((skill) => skill.id.startsWith("greater-channel-element"))
+    ? MARINARA_GREATER_CHANNEL_CHOICES
+    : MARINARA_CHANNEL_CHOICES;
+}
+
 /** The element a Channeler-tree caster strikes with now: the channeled one, raw (arcane) magic until they channel. */
 export function marinaraChanneled(actor: MarinaraFighter): MarinaraDamageType {
   return actor.channeled ?? "arcane";
@@ -1428,7 +1440,7 @@ export function marinaraChanneled(actor: MarinaraFighter): MarinaraDamageType {
  */
 export function marinaraChannelElement(actor: MarinaraFighter, element: MarinaraDamageType): boolean {
   if (!marinaraCanChannel(actor) || actor.channeledThisTurn) return false;
-  if (!(MARINARA_CHANNEL_CHOICES as readonly string[]).includes(element)) return false;
+  if (!(marinaraChannelChoices(actor) as readonly string[]).includes(element)) return false;
   actor.channeled = element;
   actor.channeledThisTurn = true;
   return true;
@@ -1867,7 +1879,13 @@ export function marinaraHitNumbers(
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
-  if (multiplier > 1 && hooks.elementWeakPct && (MARINARA_ELEMENTS as readonly string[]).includes(best.type))
+  // A channeled light or dark hit counts as elemental too (Greater Channel Element).
+  const channeledHit = marinaraCanChannel(actor) && best.type === marinaraChanneled(actor) && best.type !== "arcane";
+  if (
+    multiplier > 1 &&
+    hooks.elementWeakPct &&
+    ((MARINARA_ELEMENTS as readonly string[]).includes(best.type) || channeledHit)
+  )
     multiplier *= 1 + hooks.elementWeakPct;
   // Wuxing generating cycle: an element of the phase that feeds this one has left its ailment on the target.
   const phase = (MARINARA_ELEMENT_PHASE as Partial<Record<string, keyof typeof MARINARA_WUXING_FED_BY>>)[best.type];
@@ -1883,13 +1901,7 @@ export function marinaraHitNumbers(
   )
     multiplier *= 1 + MARINARA_WUXING_FEED_PCT;
   // Attunement: hits in the user's own channeled element.
-  if (
-    hooks.channeledDamagePct &&
-    marinaraCanChannel(actor) &&
-    best.type === marinaraChanneled(actor) &&
-    (MARINARA_ELEMENTS as readonly string[]).includes(best.type)
-  )
-    multiplier *= 1 + hooks.channeledDamagePct;
+  if (hooks.channeledDamagePct && channeledHit) multiplier *= 1 + hooks.channeledDamagePct;
   // Warding Runes and Living Runes (and any "element-taken" mod): the elements bite the warded party less.
   if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
     let cut = modTotal(target, "element-taken");
@@ -2366,7 +2378,7 @@ export function performMarinaraOption(
     !actor.channeledThisTurn
   ) {
     // Raw magic (unchanneled) only when every element does worse: ties go to an element.
-    const element = marinaraBestDamageType(MARINARA_CHANNEL_CHOICES, first.affinities).type;
+    const element = marinaraBestDamageType(marinaraChannelChoices(actor), first.affinities).type;
     if (element !== marinaraChanneled(actor) && marinaraChannelElement(actor, element))
       ctx.events.push({ kind: "channel", actorId: actor.id, type: element });
     else actor.channeledThisTurn = true;
@@ -3092,7 +3104,7 @@ export function marinaraCombatantView(unit: MarinaraFighter, all?: readonly Mari
       ? {
           channel: {
             element: marinaraChanneled(unit),
-            choices: [...MARINARA_CHANNEL_CHOICES],
+            choices: [...marinaraChannelChoices(unit)],
             ready: !unit.channeledThisTurn,
             ...(unit.channelManual ? {} : { auto: true }),
           },
