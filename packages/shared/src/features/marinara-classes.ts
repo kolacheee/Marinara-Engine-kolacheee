@@ -706,7 +706,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "resistance",
           8,
-          "Deals light damage to one foe based on the user's Defense or Resistance, whichever is higher.",
+          "Deals light magic damage to one foe based on the user's Defense or Resistance, whichever is higher.",
           true,
         ),
         passive("elder-oath", "Elder Oath", 24, "Increases Resistance by 50%. Grants immunity to Doom and Sleep."),
