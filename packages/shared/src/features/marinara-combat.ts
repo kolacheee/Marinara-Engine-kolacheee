@@ -149,8 +149,8 @@ export interface MarinaraEffect {
   spread?: number;
   /** This area attack's own share per foe, in place of MARINARA_TUNING.areaSpreadPct (Tempest). */
   areaPct?: number;
-  /** Vanish: attacks on the user are automatically evaded until their next turn. It can still be
-   *  targeted, so Provoke and Challenge still pull foes onto it (evasion tanking). */
+  /** Vanish: +40 evasion until the user's next turn. They can still be targeted, so Provoke and
+   *  Challenge still pull foes onto them (evasion tanking). */
   hide?: boolean;
   /** A song: re-cast while it lasts, it adds a verse (this much more, up to `most` verses) to every
    *  stat it changes, and starts its turns again (Cantor). */
@@ -1547,6 +1547,9 @@ export function marinaraOption(
  * Who an effect can be aimed at. In Classic, a taunt or a provoker forces the pick; a vanished
  * unit can't be picked out while anyone else is there. Tactical leaves reach to the board.
  */
+/** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
+export const MARINARA_VANISH_EVADE = 40;
+
 export function marinaraTargetsFor(
   actor: MarinaraFighter,
   effect: MarinaraEffect,
@@ -1699,6 +1702,7 @@ export function marinaraHitNumbers(
     marinaraEffectiveStat(target, "speed", all) * 2 +
     marinaraEffectiveStat(target, "luck", all) +
     (hooksOf(target).evadeBonus ?? 0) +
+    (target.hidden ? MARINARA_VANISH_EVADE : 0) +
     Math.min(30, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0));
   const hitChance = Math.max(
     MARINARA_MIN_HIT_CHANCE,
@@ -1727,9 +1731,7 @@ export function marinaraHitNumbers(
     ),
   );
   const asleep = target.statuses.some((s) => s.status === "sleep");
-  // Vanish: every attack on the user misses until their next turn, even while asleep.
-  const finalHit = target.hidden && target.side !== actor.side ? 0 : asleep ? 100 : hitChance;
-  return { damage, hitChance: finalHit, critChance, multiplier, type: best.type, rider };
+  return { damage, hitChance: asleep ? 100 : hitChance, critChance, multiplier, type: best.type, rider };
 }
 
 /** Expected damage of one use on one target, for choosing; the real roll happens when it is used. */
