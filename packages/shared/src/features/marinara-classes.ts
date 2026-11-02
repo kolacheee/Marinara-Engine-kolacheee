@@ -367,6 +367,8 @@ export interface MarinaraSkillDef {
   /** Designed to be worth carrying into other classes. Any skill can be carried. */
   carryPick?: boolean;
   summary: string;
+  /** The summary for a character who can channel light and dark (Element Mastery's extra ailments). */
+  summaryWithLightDark?: string;
 }
 
 export interface MarinaraClassDef {
@@ -401,7 +403,7 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   "sweeping-ruin": "weapon",
   arsenal: "any-physical",
   "thousand-edges": "weapon",
-  verdict: "earth",
+  landslide: "earth",
   backstab: "weapon",
   "hit-and-run": "weapon",
   shadowstep: "dark",
@@ -454,6 +456,14 @@ const passive = (
   summary,
   ...(carryPick ? { carryPick } : {}),
 });
+
+/** Element Mastery's text, with or without the light and dark ailments. */
+const elementMasteryText = (lightDark: boolean) =>
+  "Hits in the channeled element inflict an ailment for 2 turns. Fire inflicts Burn (loses 4% of max HP a turn). Ice inflicts Freeze (Speed reduced by 15%). Lightning inflicts Shock (attacks against them gain +10% critical chance). Wood inflicts Entangle (their hit chance reduced by 15%). Earth inflicts Crumble (Defense reduced by 15%). Water inflicts Soak (Resistance reduced by 15%). Metal inflicts Rend (damage dealt reduced by 15%). Wind inflicts Windswept (attacks against them gain +15% hit chance). " +
+  (lightDark
+    ? "Light inflicts Sear (damage taken increased by 10%). Dark inflicts Wound (healing received halved). "
+    : "") +
+  "Further hits renew the time instead of stacking.";
 
 /** Greater Channel Element (Alyssa 2026-11-02): the Astral line's Channel Element, light and dark too.
  *  Skill ids are unique per class, so Starweaver's copy has its own id. */
@@ -735,13 +745,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "elder-warden",
       label: "Elder Warden",
       from: "warden",
-      role: "Veteran Wardens whose resistance to magic has become a weapon of judgement.",
+      role: "Veteran Wardens whose endurance has become a weapon as heavy as the earth itself.",
       leans: ["resistance", "hp", "defense"],
       tune: { resistance: 20 },
       skills: [
         active(
-          "verdict",
-          "Verdict",
+          "landslide",
+          "Landslide",
           20,
           "resistance",
           8,
@@ -1155,12 +1165,11 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Masters of the elements whose spells scorch, freeze, shock, bind, crush, drown, rend and scatter all they touch.",
       leans: ["magic", "skill"],
       skills: [
-        passive(
-          "element-mastery",
-          "Element Mastery",
-          10,
-          "Hits in the channeled element inflict an ailment for 2 turns. Fire inflicts Burn (loses 4% of max HP a turn). Ice inflicts Freeze (Speed reduced by 15%). Lightning inflicts Shock (attacks against them gain +10% critical chance). Wood inflicts Entangle (their hit chance reduced by 15%). Earth inflicts Crumble (Defense reduced by 15%). Water inflicts Soak (Resistance reduced by 15%). Metal inflicts Rend (damage dealt reduced by 15%). Wind inflicts Windswept (attacks against them gain +15% hit chance). Further hits renew the time instead of stacking.",
-        ),
+        {
+          ...passive("element-mastery", "Element Mastery", 10, elementMasteryText(false)),
+          // Light and dark show only to a character who can channel them (Alyssa 2026-11-02).
+          summaryWithLightDark: elementMasteryText(true),
+        },
         passive("attunement", "Attunement", 15, "Increases damage in the channeled element by 15%.", true),
       ],
     },
@@ -1927,6 +1936,18 @@ function promotionCarries(progression: MarinaraProgression, def: MarinaraClassDe
 }
 
 /** Every skill the character has learned, in any class. */
+/** Whether this character can channel light and dark: they learned Greater Channel Element. */
+export function marinaraCanChannelLightDark(progression: MarinaraProgression): boolean {
+  return marinaraLearnedSkills(progression).some((skill) => skill.id.startsWith("greater-channel-element"));
+}
+
+/** A skill's text for this character: Element Mastery names light and dark only to those who channel them. */
+export function marinaraSkillSummary(skill: MarinaraSkillDef, progression?: MarinaraProgression): string {
+  return skill.summaryWithLightDark && progression && marinaraCanChannelLightDark(progression)
+    ? skill.summaryWithLightDark
+    : skill.summary;
+}
+
 export function marinaraLearnedSkills(progression: MarinaraProgression): Array<MarinaraSkillDef & { classId: string }> {
   return Object.entries(progression.classLevels).flatMap(([classId, classLevel]) =>
     (marinaraClass(classId)?.skills ?? [])
