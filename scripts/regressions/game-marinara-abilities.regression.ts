@@ -136,6 +136,23 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.equal(ally.hp, hp, "three hits taken by decoys");
   performMarinaraOption(foe, hit, [ally], all, ctx("d4"));
   assert.ok(ally.hp < hp, "the fourth lands");
+  // A miss doesn't use up a decoy (Alyssa 2026-11-02: only hits that would land).
+  shade.decoys = 1;
+  const miss = {
+    id: null,
+    skill: null,
+    effect: { kind: "damage", target: "enemy", basic: true, hitBonus: -1000 },
+  } as never;
+  let misses = 0;
+  for (let i = 0; i < 8; i++) {
+    shade.decoys = 1;
+    const c = ctx(`dmiss${i}`);
+    performMarinaraOption(foe, miss, [ally], all, c);
+    if (!c.events.some((e) => e.kind === "miss")) continue;
+    misses++;
+    assert.equal(shade.decoys, 1, "a miss leaves the decoy");
+  }
+  assert.ok(misses > 0, "some attacks missed");
 }
 
 // Undying Light: every downed ally gets up at half HP.
