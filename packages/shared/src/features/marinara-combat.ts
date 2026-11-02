@@ -170,6 +170,9 @@ export interface MarinaraEffect {
   drain?: number;
   /** Timeline weight of the action: 1 normal, more for heavy actions. */
   weight?: number;
+  /** The user's Speed changes by this share until its next turn (Alyssa 2026-11-02: heavy skills
+   *  say "Reduces the user's Speed by 25% until its next turn", not "delays its next turn"). */
+  speedUntilNext?: number;
   /** Takes a turn of charging before it lands. */
   charge?: boolean;
   cooldown?: number;
@@ -256,7 +259,7 @@ export function marinaraCompanionBonus(companion: { level?: number; tier?: Marin
 /** What every active class skill does. Steal takes something from a foe, kept with the fight's loot. */
 export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Blade
-  "power-strike": dmg("strength", 9, { weight: 1.3 }),
+  "power-strike": dmg("strength", 9, { speedUntilNext: -0.25 }),
   flurry: dmg("strength", 4, { hits: 2 }),
   "last-cut": dmg("strength", 10, { critBonus: 30, finisher: { below: 0.5, bonus: 0.5 } }),
   // Balance pass (2026-11-01): it missed evasive foes too often, and opens a Wound (the party's anti-heal).
@@ -267,12 +270,12 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   }),
   "sweeping-ruin": dmg("strength", 13, {
     target: "front-row",
-    weight: 1.2,
+    speedUntilNext: -0.2,
     onHit: { stat: "damage", pct: -0.15, duration: 2 },
   }),
   arsenal: dmg("strength", 8, { pierce: 0.3 }),
   // Every enemy in reach: the front row in Classic (every adjacent enemy in Tactical).
-  "thousand-edges": dmg("strength", 7, { target: "front-row", weight: 1.3, cooldown: 3 }),
+  "thousand-edges": dmg("strength", 7, { target: "front-row", speedUntilNext: -0.25, cooldown: 3 }),
   // Guard
   cover: { kind: "cover", target: "ally", duration: 1 },
   provoke: { kind: "provoke", target: "self", duration: 2 },
@@ -308,7 +311,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     bonusAction: true,
     cooldown: 2,
   },
-  "hit-and-run": dmg("strength", 5, { weight: 0.6 }),
+  "hit-and-run": dmg("strength", 5, { speedUntilNext: 0.6 }),
   "double-time": { kind: "extra-turn", target: "self", cooldown: 3 },
   shadowstep: dmg("strength", 9, { ranged: true, critBonus: 10 }),
   // Thousand Shadows: three decoys take the next three hits on the party (for 3 of the user's turns).
@@ -322,7 +325,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     oncePerFight: true,
   },
   // Marksman
-  "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, weight: 1.2 }),
+  "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, speedUntilNext: -0.2 }),
   pierce: dmg("strength", 7, { ranged: true, pierce: 0.5 }),
   headshot: dmg("strength", 20, { ranged: true, charge: true, critBonus: 25 }),
   // A bonus action (lab 2026-11-01: marking ate 54-73% of a Tracker's turns for 6% of party damage).
@@ -336,7 +339,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "ruinous-barrage": dmg("strength", 13, {
     ranged: true,
     target: "all-enemies",
-    weight: 1.3,
+    speedUntilNext: -0.25,
     cooldown: 3,
     onHit: { stat: "defense", pct: -0.25, duration: 2 },
   }),
@@ -403,7 +406,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Mender
   mend: { kind: "heal", target: "ally", scales: "magic", power: 8 },
   revive: { kind: "revive", target: "downed-ally", power: 0.25, cooldown: 3 },
-  sanctuary: { kind: "heal", target: "party", scales: "magic", power: 5, weight: 1.2, cleanse: "one" },
+  sanctuary: { kind: "heal", target: "party", scales: "magic", power: 5, speedUntilNext: -0.2, cleanse: "one" },
   remedy: { kind: "heal", target: "ally", scales: "magic", power: 5, cleanse: "all" },
   purify: { kind: "cleanse", target: "ally", cleanse: "all" },
   "elixir-rain": { kind: "status", target: "party", status: "regen", chance: 1, duration: 3, power: 0.07 },
@@ -1178,8 +1181,10 @@ export interface MarinaraFightContext {
 const living = (units: readonly MarinaraFighter[]) => units.filter((unit) => unit.hp > 0);
 const healFactor = (unit: MarinaraFighter) =>
   unit.statuses.some((s) => s.status === "wound") ? MARINARA_TUNING.woundHealing : 1;
-const turnLength = (unit: MarinaraFighter, all: readonly MarinaraFighter[]) => {
-  let length = MARINARA_TUNING.timeline / (marinaraEffectiveStat(unit, "speed", all) + MARINARA_TUNING.speedFloor);
+const turnLength = (unit: MarinaraFighter, all: readonly MarinaraFighter[], speedPct = 0) => {
+  let length =
+    MARINARA_TUNING.timeline /
+    (marinaraEffectiveStat(unit, "speed", all) * (1 + speedPct) + MARINARA_TUNING.speedFloor);
   length *= 1 + (hooksOf(unit).turnPct ?? 0);
   // Slow Time: a debuffed fighter acts later while a foe of its holds time back.
   if (marinaraDebuffed(unit)) {
@@ -2090,6 +2095,9 @@ export function performMarinaraOption(
   const hooks = hooksOf(actor);
   const extraWeight = (option.effect.weight ?? 1) - 1;
   actor.next += turnLength(actor, all) * extraWeight;
+  // Speed until its next turn: the wait to that turn is timed at the changed Speed.
+  if (option.effect.speedUntilNext)
+    actor.next += turnLength(actor, all, option.effect.speedUntilNext) - turnLength(actor, all);
   if (option.skill) {
     const { resource, cost } = marinaraSkillCost(actor, option.skill);
     if (resource === "mp") {
@@ -2800,4 +2808,9 @@ export interface MarinaraFightGrowth {
   tamed?: string;
   /** Their stable was full: the player picks one to release on their sheet. */
   stableFull?: boolean;
+}
+
+/** How long an action holds its user, against a plain action's 1 (for the AI's damage per time). */
+export function marinaraActionWeight(effect: MarinaraEffect): number {
+  return (effect.weight ?? 1) / (1 + (effect.speedUntilNext ?? 0));
 }

@@ -18,6 +18,7 @@ import type { GameDifficulty } from "./combat-conditions.js";
 import { MARINARA_ELEMENTS, marinaraAffinityMultiplier, marinaraClass } from "./marinara-classes.js";
 import {
   MARINARA_TUNING,
+  marinaraActionWeight,
   marinaraBasicAttack,
   marinaraDebuffBurden,
   marinaraEffectiveStat,
@@ -121,7 +122,7 @@ export function marinaraAiCandidates(
     targets: readonly MarinaraFighter[],
     parts: Omit<CombatAiCandidate<MarinaraChoice>, "action">,
   ) => {
-    const weight = option.effect.weight ?? 1;
+    const weight = marinaraActionWeight(option.effect);
     const price = option.skill ? marinaraSkillCost(actor, option.skill) : null;
     const pool = price?.resource === "mp" ? actor.maxMp : actor.maxStamina;
     // MP never comes back in a fight; stamina does, so it is cheaper to spend. MP gets dearer as it
