@@ -1589,7 +1589,7 @@ function singVerse(unit: MarinaraFighter, effect: MarinaraEffect, turns: number,
     const mod = unit.mods.find((m) => m.source === source && m.stat === stat);
     if (!mod) continue;
     mod.pct = Math.min(pct + verses.pct * verses.most, mod.pct + verses.pct);
-    mod.turns = Math.max(mod.turns, turns);
+    mod.turns = Math.max(mod.turns, ownTurns(stat, turns));
   }
 }
 
@@ -1604,8 +1604,19 @@ function modTotal(unit: MarinaraFighter, stat: string): number {
   return unit.mods.filter((mod) => mod.stat === stat).reduce((sum, mod) => sum + mod.pct, 0);
 }
 
+/**
+ * Stats that only count on the holder's own actions. Effects count down at the start of the holder's
+ * turn, before it acts, so these get one more tick: "for 2 rounds" is two of the holder's own turns
+ * (Alyssa 2026-11-02: Rally "for 2 rounds" boosted each ally's next action only, then fell off and
+ * was recast every other turn). Guard stats work during the foes' turns and keep their count.
+ */
+const OWN_ACTION_STATS: ReadonlySet<string> = new Set(["damage", "strength", "magic", "skill", "speed", "imbue"]);
+const ownTurns = (stat: string, turns: number) => (OWN_ACTION_STATS.has(stat) ? turns + 1 : turns);
+
 function addMod(unit: MarinaraFighter, stat: string, pct: number, turns: number, source: string, by?: string) {
   if (pct < 0 && hooksOf(unit).debuffImmune) return;
+  // Entrench lasts until the Guard's next turn by design; a stolen buff keeps the turns it had left.
+  if (source !== "entrench" && !source.startsWith("siphon:")) turns = ownTurns(stat, turns);
   const existing = unit.mods.find((mod) => mod.source === source && mod.stat === stat);
   if (existing) existing.turns = Math.max(existing.turns, turns);
   else unit.mods.push({ stat, pct, turns, source, ...(by ? { by } : {}) });
