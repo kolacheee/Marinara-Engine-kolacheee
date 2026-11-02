@@ -11,6 +11,7 @@ import {
   marinaraEffectiveStat,
   marinaraHitNumbers,
   marinaraOption,
+  marinaraTargetsFor,
   performMarinaraOption,
   type MarinaraFightContext,
   type MarinaraFighter,
@@ -317,6 +318,24 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   const second = ctx("rf2");
   performMarinaraOption(foe, hit, [tank], all, second);
   assert.equal(shots(second), 0, "only once between the shooter's turns");
+}
+
+// Vanish (Alyssa 2026-11-02): still targetable, so Provoke/Challenge pull foes onto the user, but
+// every attack on them is evaded until their next turn.
+{
+  const rogue = unit("vn", "party", ["vanish"]);
+  const ally = unit("al", "party");
+  const foe = unit("f", "enemy");
+  const all = [rogue, ally, foe];
+  use(rogue, "vanish", [rogue], all);
+  assert.ok(rogue.hidden, "Vanish hides the user");
+  const basic = marinaraOption(foe, null, all)!.effect;
+  assert.ok(marinaraTargetsFor(foe, basic, all).includes(rogue), "a vanished user can still be targeted");
+  assert.equal(marinaraHitNumbers(foe, rogue, { ...basic, hitBonus: 1000 }, all).hitChance, 0, "attacks are evaded");
+  const before = rogue.hp;
+  const hit = { id: null, skill: null, effect: { ...basic, hitBonus: 1000 } } as never;
+  performMarinaraOption(foe, hit, [rogue], all, ctx("vn1"));
+  assert.equal(rogue.hp, before, "no damage while vanished");
 }
 
 console.log("game-marinara-abilities: ok");
