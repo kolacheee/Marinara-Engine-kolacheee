@@ -401,4 +401,15 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   }
 }
 
+// Pierce (Alyssa 2026-11-02): uses the higher of Strength and Magic, so magic users pierce Resistance.
+{
+  const caster = unit("pc", "party", ["pierce"]);
+  caster.stats.magic = caster.stats.strength + 20;
+  const option = marinaraOption(caster, "pierce", [caster])!;
+  assert.equal(option.effect.damage, "magic", "a magic user's Pierce deals magic damage");
+  const fighter = unit("pf", "party", ["pierce"]);
+  fighter.stats.strength = fighter.stats.magic + 20;
+  assert.equal(marinaraOption(fighter, "pierce", [fighter])!.effect.damage, "physical", "a fighter's stays physical");
+}
+
 console.log("game-marinara-abilities: ok");

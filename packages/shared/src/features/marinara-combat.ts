@@ -121,6 +121,9 @@ export interface MarinaraEffect {
   critBonus?: number;
   /** Share of the target's Defense or Resistance ignored. */
   pierce?: number;
+  /** Strikes with the user's higher of Strength and Magic: magic damage (against Resistance) when
+   *  Magic is higher (Pierce; Alyssa 2026-11-02, so magic users benefit too). */
+  adaptive?: boolean;
   /** Reaches the back row at full damage from anywhere. */
   ranged?: boolean;
   /** Buff/debuff: stat changed by a share, for `duration` of the target's turns. */
@@ -330,7 +333,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   },
   // Marksman
   "aimed-shot": dmg("strength", 8, { ranged: true, hitBonus: 30, speedUntilNext: -0.2 }),
-  pierce: dmg("strength", 7, { ranged: true, pierce: 0.5 }),
+  pierce: dmg("strength", 7, { ranged: true, pierce: 0.5, adaptive: true }),
   headshot: dmg("strength", 20, { ranged: true, charge: true, critBonus: 25 }),
   // A bonus action (lab 2026-11-01: marking ate 54-73% of a Tracker's turns for 6% of party damage).
   "mark-prey": { kind: "debuff", target: "enemy", stat: "damage-taken", pct: 0.35, duration: 3, bonusAction: true },
@@ -1455,8 +1458,10 @@ export function marinaraSkillEffect(unit: MarinaraFighter, skill: MarinaraSkillD
   // guarding stat or HP).
   if (base.companion && !unit.companion) return null;
   const sicFrom = base.companion && unit.companion ? companionAttackStat(unit.companion.stat) : undefined;
+  const asMagic = base.adaptive && unit.stats.magic > unit.stats.strength;
   return {
     ...base,
+    ...(asMagic ? { scales: "magic" as const, damage: "magic" as const } : {}),
     ...(sicFrom ? { from: sicFrom } : {}),
     ...(skill.damage ? { type: skill.damage } : {}),
     ...(unit.carriedIds?.includes(skill.id) ? { carried: true } : {}),
