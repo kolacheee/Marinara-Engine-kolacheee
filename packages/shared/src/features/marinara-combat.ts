@@ -1368,12 +1368,17 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   return runes.length ? [...new Set([...options, ...runes])] : options;
 }
 
-/** The elements rune buffs lend this fighter's weapon attacks and skills: each caster's channeled one. */
+/**
+ * The elements rune buffs lend this fighter's weapon attacks and skills: each caster's channeled one.
+ * A caster who was unchanneled lends none (Alyssa 2026-11-02); Grand Inscription's damage still counts.
+ */
 function imbueElements(actor: MarinaraFighter, type: string): MarinaraDamageType[] {
   if (type !== "weapon" && type !== "any-physical") return [];
-  return [
-    ...new Set(actor.mods.filter((mod) => mod.stat === "imbue" && mod.pct > 0).map((mod) => mod.element ?? "arcane")),
-  ];
+  const lent = actor.mods
+    .filter((mod) => mod.stat === "imbue" && mod.pct > 0)
+    .map((mod) => mod.element)
+    .filter((element): element is MarinaraDamageType => !!element && element !== "arcane");
+  return [...new Set(lent)];
 }
 
 /**
