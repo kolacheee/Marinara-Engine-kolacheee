@@ -437,6 +437,20 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(marinaraChannelElement(mage, "ice"), "channels ice");
   assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "ice", "basic attacks strike with ice");
   assert.equal(marinaraChannelElement(mage, "lightning"), false, "once between their turns");
+  // Greater Channel Element (Astral Adept, Starweaver): light and dark too.
+  {
+    const adept = buildMarinaraEnemy({ id: "aa", name: "aa", level: 10, tier: "standard", archetype: "channeler" });
+    adept.classId = "astral-adept";
+    assert.equal(marinaraChannelElement(adept, "light"), false, "plain Channel Element has no light");
+    adept.skills = [...adept.skills, skill("greater-channel-element")];
+    assert.ok(marinaraChannelElement(adept, "dark"), "Greater Channel Element channels dark");
+    assert.ok(
+      MARINARA_CLASSES.filter((def) => def.id === "astral-adept" || def.id === "starweaver").every((def) =>
+        def.skills.some((one) => one.id.startsWith("greater-channel-element")),
+      ),
+      "Astral Adept and Starweaver both learn Greater Channel Element",
+    );
+  }
   assert.equal(marinaraChannelElement(mage, "slash" as never), false, "only elements");
   // Run by the AI, a caster channels the element its target fears as it strikes, once a turn.
   const ai = buildMarinaraEnemy({ id: "ai", name: "ai", level: 10, tier: "standard", archetype: "channeler" });
