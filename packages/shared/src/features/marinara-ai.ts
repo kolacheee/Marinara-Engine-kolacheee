@@ -302,12 +302,13 @@ export function marinaraAiCandidates(
               value += elementalIncoming() * Math.abs(also.pct) * (effect.duration ?? 1) * 0.8;
           }
         } else if (effect.exposeNext) {
-          if (actor.exposeNext) break;
+          if (actor.exposeNext || actor.critNext) break;
           const others = friends
             .filter((u) => u.id !== actor.id)
             .reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
           value =
-            bestDamage(actor, all, tactical) * (effect.pct ?? 0) +
+            // Vanish: the next hit is a sure critical.
+            (effect.critNext ? bestDamage(actor, all, tactical) * (MARINARA_TUNING.critMultiplier - 1) : 0) +
             others * effect.exposeNext * 2 * 0.6 +
             (threatened ? actor.maxHp * 0.05 : 0);
         } else if (effect.stat === "damage-taken" || effect.stat === "resistance" || effect.stat === "defense") {

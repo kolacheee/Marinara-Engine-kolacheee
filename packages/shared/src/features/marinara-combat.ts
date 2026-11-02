@@ -24,6 +24,7 @@ import {
   MARINARA_CHANNEL_CHOICES,
   MARINARA_GREATER_CHANNEL_CHOICES,
   MARINARA_ELEMENTS,
+  MARINARA_PHYSICAL_TYPES,
   MARINARA_STAMINA,
   MARINARA_STATS,
   MARINARA_POISON_RIDER,
@@ -158,6 +159,7 @@ export interface MarinaraEffect {
     | "element-taken"
     | "deathless"
     | "shadows"
+    | "evasion"
     | "best-attack"
     | "crescendo";
   /** Buff: more stats changed alongside `stat`, for the same turns (Grand Inscription). */
@@ -188,6 +190,8 @@ export interface MarinaraEffect {
   provokes?: number;
   /** The user's next landed hit exposes its target: everyone deals this much more to it for 2 turns. */
   exposeNext?: number;
+  /** Vanish: the user's next hit that lands is a critical hit. */
+  critNext?: boolean;
   /** A landed status also exposes the target (Seal). */
   exposes?: { pct: number; duration: number };
   /** Heals that cleanse: every debuff, or the worst one on each target. */
@@ -329,10 +333,12 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   vanish: {
     kind: "buff",
     target: "self",
-    stat: "damage",
-    pct: 0.6,
+    // The evasion itself comes from `hide` (MARINARA_VANISH_EVADE); the mod only shows it on the sheet.
+    stat: "evasion",
+    pct: 0.4,
     duration: 1,
     hide: true,
+    critNext: true,
     exposeNext: 0.2,
     // A bonus action (Alyssa 2026-11-01): the Phantom vanishes and strikes in the same turn.
     bonusAction: true,
@@ -572,6 +578,8 @@ export interface MarinaraPassiveHooks {
   vanguard?: boolean;
   /** Added to the weakness multiplier. */
   weakBonus?: number;
+  /** Dead Eye: hits on a weakness deal this share more, after the weakness multiplier. */
+  weakDamagePct?: number;
   lifestealPct?: number;
   /** Magic damage the user takes changes by this share (Old Oath). */
   magicTakenPct?: number;
@@ -716,7 +724,7 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   steady: { armorPenPct: 0.2 },
   "return-fire": { coverFire: true },
   "abyssal-will": { spellDamagePct: 0.2 },
-  "dead-eye": { critBonus: 15, weakBonus: 0.25 },
+  "dead-eye": { critBonus: 15, weakDamagePct: 0.25 },
   "old-oath": { statPct: { resistance: 0.3 }, magicTakenPct: -0.2 },
   "read-the-signs": { critBonus: 5, bonusVsMarked: 0.2 },
   "pack-tactics": { partyBonusVsMarked: 0.4 },
@@ -878,6 +886,8 @@ export interface MarinaraFighter {
   marked: number;
   hidden?: boolean;
   exposeNext?: number;
+  /** Vanish: the user's next hit that lands is a critical hit. */
+  critNext?: boolean;
   followThroughUsed?: boolean;
   /** Commanded (Command, Grand Strategy): acts again at once, outside its own place on the timeline. */
   bonusTurns?: number;
@@ -1961,7 +1971,16 @@ export function marinaraHitNumbers(
   const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
+  // Adaptive Grip: an armored foe's resistance to slash, pierce or blunt doesn't count against the user.
+  if (
+    hooks.noPenalty &&
+    multiplier > 0 &&
+    multiplier < 1 &&
+    (MARINARA_PHYSICAL_TYPES as readonly string[]).includes(best.type)
+  )
+    multiplier = 1;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
+  if (multiplier > 1) multiplier *= 1 + (hooks.weakDamagePct ?? 0);
   // A channeled light or dark hit counts as elemental too (Greater Channel Element).
   const channeledHit = marinaraCanChannel(actor) && best.type === marinaraChanneled(actor) && best.type !== "arcane";
   if (
@@ -2010,9 +2029,12 @@ export function marinaraHitNumbers(
   const evade =
     marinaraEffectiveStat(target, "speed", all) * 2 +
     marinaraEffectiveStat(target, "luck", all) +
-    (hooksOf(target).evadeBonus ?? 0) +
-    (target.hidden ? MARINARA_VANISH_EVADE : 0) +
-    Math.min(30, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0));
+    // Adaptive Grip: an evasive foe's own evasion bonuses don't count against the user.
+    (hooks.noPenalty
+      ? 0
+      : (hooksOf(target).evadeBonus ?? 0) +
+        Math.min(30, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0))) +
+    (target.hidden ? MARINARA_VANISH_EVADE : 0);
   const hitChance = Math.max(
     MARINARA_MIN_HIT_CHANCE,
     Math.min(
@@ -2556,9 +2578,9 @@ function performMarinaraOptionNow(
   }
   act(actor, option.skill, option.effect, struck, all, ctx, option.id ?? undefined);
   if (hooks.extraActionEvery && actor.actions % hooks.extraActionEvery === 0) {
-    // Peerless: every third action, another basic attack on the same foe.
-    const foe = struck.find((unit) => unit.hp > 0 && unit.side !== actor.side);
-    if (foe) act(actor, null, marinaraBasicAttack(actor), [foe], all, ctx);
+    // Peerless: every third action grants another action, chosen like any other.
+    actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+    ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "peerless" });
   }
 }
 
@@ -2723,6 +2745,7 @@ function act(
         ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       if (effect.exposeNext) actor.exposeNext = effect.exposeNext;
+      if (effect.critNext) actor.critNext = true;
       break;
     case "debuff":
       for (const target of targets) {
@@ -3022,8 +3045,11 @@ function strikeOnce(
     ctx.events.push({ kind: "decoy", actorId: actor.id, targetId: target.id, skillId, amount: shadow.decoys });
     return;
   }
-  let crit = random() * 100 < critChance;
-  if (crit) {
+  // Vanish: the first hit to land after it is a sure critical.
+  const sureCrit = !!actor.critNext;
+  if (sureCrit) actor.critNext = undefined;
+  let crit = sureCrit || random() * 100 < critChance;
+  if (crit && !sureCrit) {
     const omen = living(all.filter((u) => u.side === target.side)).some((u) => hooksOf(u).enemyCritToMissChance);
     if (omen && random() < 0.5) crit = false;
   }

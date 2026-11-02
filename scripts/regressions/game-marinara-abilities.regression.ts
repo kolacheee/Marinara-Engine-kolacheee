@@ -428,6 +428,72 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(vanishedChance < plainChance, `Vanish makes the user harder to hit (${plainChance} -> ${vanishedChance})`);
 }
 
+// Vanish's text: the user's next hit that lands is a critical hit, and only that one.
+{
+  const rogue = unit("vc", "party", ["vanish"]);
+  const foe = unit("f", "enemy");
+  foe.hp = foe.maxHp = 100000;
+  foe.stats.luck = 200; // no ordinary crits
+  foe.stats.speed = 0;
+  const all = [rogue, foe];
+  use(rogue, "vanish", [rogue], all);
+  assert.equal(rogue.mods.find((m) => m.source === "vanish")?.stat, "evasion", "no hidden damage buff");
+  let tries = 0;
+  const hit = () => {
+    const c = ctx(`vanish-crit-${tries++}`);
+    performMarinaraOption(rogue, marinaraOption(rogue, null, all)!, [foe], all, c);
+    return c.events.find((e) => e.kind === "hit");
+  };
+  let first = hit();
+  for (let n = 0; n < 40 && !first; n++) first = hit();
+  assert.equal(first?.crit, true, "the first hit to land after Vanish crits");
+  let second = hit();
+  for (let n = 0; n < 40 && !second; n++) second = hit();
+  assert.equal(second?.crit, false, "the one after doesn't");
+}
+
+// Dead Eye: a hit on a weakness deals 25% more than it would.
+{
+  const shooter = unit("de", "party");
+  const eye = unit("de2", "party", ["dead-eye"]);
+  const foe = unit("f", "enemy");
+  foe.affinities = { slash: "weak", pierce: "weak", blunt: "weak" };
+  const all = [shooter, eye, foe];
+  const basic = marinaraBasicAttack(shooter);
+  const plain = marinaraHitNumbers(shooter, foe, basic, all).multiplier;
+  const keen = marinaraHitNumbers(eye, foe, basic, all).multiplier;
+  assert.ok(Math.abs(keen / plain - 1.25) < 1e-9, `Dead Eye: 25% more on a weakness (${plain} -> ${keen})`);
+}
+
+// Adaptive Grip: armored (physical resist) and evasive (evasion bonuses) foes gain nothing against the user.
+{
+  const plainHand = unit("ag0", "party");
+  const grip = unit("ag", "party", ["adaptive-grip"]);
+  const foe = unit("f", "enemy", ["light-feet"]);
+  foe.affinities = { slash: "resist", pierce: "resist", blunt: "resist" };
+  const all = [plainHand, grip, foe];
+  const basic = marinaraBasicAttack(grip);
+  const plain = marinaraHitNumbers(plainHand, foe, basic, all);
+  const gripped = marinaraHitNumbers(grip, foe, basic, all);
+  assert.ok(plain.multiplier < 1 && gripped.multiplier === 1, "the armor's resistance doesn't count");
+  assert.equal(gripped.hitChance, Math.min(100, plain.hitChance + 10 + 10), "+10% accuracy, and Light Feet's 10 gone");
+}
+
+// Peerless: every third action grants a full extra action, not a fixed basic attack.
+{
+  const paragon = unit("pg", "party", ["peerless"]);
+  const foe = unit("f", "enemy");
+  foe.hp = foe.maxHp = 100000;
+  const all = [paragon, foe];
+  paragon.actions = 3;
+  performMarinaraOption(paragon, marinaraOption(paragon, null, all)!, [foe], all, ctx());
+  assert.equal(paragon.bonusTurns, 1, "the third action grants another");
+  paragon.bonusTurns = undefined;
+  paragon.actions = 4;
+  performMarinaraOption(paragon, marinaraOption(paragon, null, all)!, [foe], all, ctx());
+  assert.equal(paragon.bonusTurns, undefined, "the fourth doesn't");
+}
+
 // Double Time (Alyssa 2026-11-02): a bonus action that grants one extra action, so two actions that turn.
 {
   const bard = unit("dt", "party", ["double-time"]);
