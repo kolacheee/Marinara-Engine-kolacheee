@@ -1958,7 +1958,9 @@ export function setMarinaraClass(progression: MarinaraProgression, classId: stri
  * 14 and 22 were the weakest bands). The player can change them on the class screen.
  */
 function promotionCarries(progression: MarinaraProgression, def: MarinaraClassDef): string[] {
-  const carried = [...progression.carried];
+  const carried = progression.carried.filter(
+    (id) => !marinaraCarryRedundant({ ...progression, activeClass: def.id }, id),
+  );
   const traits = MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? [];
   const learned = marinaraLearnedSkills(progression);
   for (
@@ -1971,7 +1973,9 @@ function promotionCarries(progression: MarinaraProgression, def: MarinaraClassDe
       .sort((a, b) => Number(!!b.carryPick) - Number(!!a.carryPick) || b.learnedAt - a.learnedAt);
     for (const skill of picks) {
       if (carried.length >= MARINARA_CARRY_SLOTS) return carried;
-      if (!carried.includes(skill.id)) carried.push(skill.id);
+      if (carried.includes(skill.id)) continue;
+      if (marinaraCarryRedundant({ ...progression, activeClass: def.id, carried }, skill.id)) continue;
+      carried.push(skill.id);
     }
   }
   return carried;
@@ -2020,13 +2024,20 @@ export function marinaraClassTraits(classId: string): readonly string[] {
 /** Whether a skill can't be carried because what the character already fights with covers it: Channel
  *  Element beside Greater Channel Element (playtest 2026-11-02: the carry list still offered it). */
 export function marinaraCarryRedundant(progression: MarinaraProgression, skillId: string): boolean {
-  if (skillId !== "channel-element") return false;
   const greater = (id: string) => id.startsWith("greater-channel-element");
-  return (
-    marinaraLearnedSkills(progression).some(
-      (skill) => skill.classId === progression.activeClass && greater(skill.id),
-    ) || progression.carried.some(greater)
-  );
+  if (skillId !== "channel-element" && !greater(skillId)) return false;
+  // What the active class channels with already: its own learned channel skills and its tree trait.
+  const own = [
+    ...marinaraLearnedSkills(progression)
+      .filter((skill) => skill.classId === progression.activeClass)
+      .map((skill) => skill.id),
+    ...marinaraClassTraits(progression.activeClass),
+  ];
+  const others = progression.carried.filter((id) => id !== skillId);
+  // Greater Channel covers Channel Element; one Greater Channel covers another (Astral Adept's on a
+  // Starweaver, playtest 2026-11-02).
+  if (greater(skillId)) return own.some(greater) || others.some(greater);
+  return own.some((id) => id === "channel-element" || greater(id)) || others.some(greater);
 }
 
 /** The skills a character fights with: their active class's learned skills and what they carry. */
@@ -2041,7 +2052,11 @@ export function marinaraUsableSkills(progression: MarinaraProgression): Array<Ma
       (traits.includes(skill.id) && marinaraClass(skill.classId)?.archetype === archetype),
   );
   const carried = learned.filter(
-    (skill) => skill.classId !== progression.activeClass && progression.carried.includes(skill.id),
+    (skill) =>
+      skill.classId !== progression.activeClass &&
+      progression.carried.includes(skill.id) &&
+      // An old save may carry what the active class has itself (Greater Channel on a Starweaver).
+      !marinaraCarryRedundant({ ...progression, carried: [] }, skill.id),
   );
   return [...own, ...carried.slice(0, MARINARA_CARRY_SLOTS)];
 }
