@@ -2640,7 +2640,8 @@ function act(
     case "shield": {
       for (const target of targets) {
         const amount = Math.round((powerStat(actor, "magic", effect, all) + (effect.power ?? 0)) * healScale(actor));
-        target.shield += amount;
+        // Cheaper than a heal (2 MP; Alyssa 2026-11-02), so it doesn't stack: the stronger shield holds.
+        target.shield = Math.max(target.shield, amount);
         ctx.events.push({ kind: "shield", actorId: actor.id, targetId: target.id, skillId, amount });
       }
       break;
