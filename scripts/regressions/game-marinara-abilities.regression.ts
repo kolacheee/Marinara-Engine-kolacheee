@@ -306,6 +306,20 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   );
 }
 
+// Defiance: a hurt ally hits harder.
+{
+  const bearer = unit("sb", "party", ["defiance"]);
+  const ally = unit("al", "party");
+  const foe = unit("f", "enemy");
+  const all = [bearer, ally, foe];
+  const whole = marinaraExpectedHit(ally, foe, marinaraBasicAttack(ally), all);
+  ally.hp = Math.floor(ally.maxHp / 3);
+  assert.ok(
+    marinaraExpectedHit(ally, foe, marinaraBasicAttack(ally), all) > whole,
+    "below half HP the ally deals more",
+  );
+}
+
 // Raise the Banner: frees the party of confusion and keeps it off.
 {
   const bearer = unit("bb", "party", ["raise-the-banner"]);
