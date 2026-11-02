@@ -280,7 +280,7 @@ function unitLine(s: CombatDirectorState, f: NonNullable<CombatDirectorState["ma
   const res = f.maxMp ? ` MP ${f.mp}/${f.maxMp}` : "";
   const sta = f.maxStamina ? ` Sta ${Math.round(f.stamina)}/${f.maxStamina}` : "";
   const pos = s.tactical ? (() => { const u = s.tactical!.units.find((x) => x.id === f.id); return u ? ` at (${u.x},${u.y})` : ""; })() : ` ${f.row}`;
-  return `${f.name}${f.classId ? ` (${cls(f.classId)} L${f.level})` : ` (L${f.level}${f.tier ? ` ${f.tier}` : ""})`}${pos}: HP ${Math.max(0, Math.round(f.hp))}/${f.maxHp}${res}${sta}${st}${f.hp <= 0 ? " DOWN" : ""}`;
+  return `${f.name}${f.classId ? ` (${cls(f.classId)} L${f.level})` : ` (L${f.level}${f.tier ? ` ${f.tier}` : ""})`}${pos}: HP ${Math.max(0, Math.round(f.hp))}/${f.maxHp}${f.shield > 0 ? ` +${Math.round(f.shield)} shield` : ""}${res}${sta}${st}${f.hp <= 0 ? " DOWN" : ""}`;
 }
 function status(s: CombatDirectorState) {
   const fs = s.marinara!.fighters;
