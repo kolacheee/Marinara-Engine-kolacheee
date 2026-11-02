@@ -123,7 +123,9 @@ export function marinaraCombatSkills(
     if (!effect) continue;
     const { resource, cost } = marinaraSkillCost(fighter, skill);
     const cooldown = fighter.cooldowns[skill.id] ?? 0;
-    const used = !!effect.oncePerFight && fighter.used.includes(skill.id);
+    const used =
+      !!(effect.oncePerFight || effect.usesPerFight) &&
+      fighter.used.filter((id) => id === skill.id).length >= (effect.usesPerFight ?? 1);
     // What it would do now, from the fighter's own stats against whoever is in the fight.
     const estimate = all ? marinaraSkillEstimate(fighter, effect, all, tactical) : null;
     out.push({
