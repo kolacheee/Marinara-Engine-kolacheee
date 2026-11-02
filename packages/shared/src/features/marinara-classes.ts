@@ -1327,7 +1327,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           5,
-          "Inflicts Poison on one foe (6% of max HP per turn for 4 turns). 90% success.",
+          "Has a 90% chance to inflict Poison on one foe (6% of max HP per turn for 4 turns).",
         ),
         passive(
           "grave-hunger",
@@ -1389,7 +1389,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "magic",
           5,
-          "Inflicts Sleep on one foe for 3 turns. 75% success. Taking damage wakes the target.",
+          "Has a 75% chance to inflict Sleep on one foe for 3 turns. Taking damage wakes the target.",
           true,
         ),
         passive(
@@ -1414,7 +1414,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           14,
-          "Inflicts Confusion on all foes for 2 turns. 70% success each. Cooldown: 3 turns.",
+          "Has a 70% chance to inflict Confusion on each foe for 2 turns. Cooldown: 3 turns.",
         ),
         passive("nightmare", "Nightmare", 24, "Sleeping foes lose 10% of max HP each turn.", true),
       ],
