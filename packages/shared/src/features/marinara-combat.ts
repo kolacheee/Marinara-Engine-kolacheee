@@ -2543,6 +2543,7 @@ function strikeOnce(
     return;
   }
   const targetHooks = hooksOf(target);
+  // Elusive: a separate 50% dodge before the normal roll, so the first attack halves its hit chance.
   if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound) {
     target.evadedThisRound = true;
     if (random() < 0.5) {

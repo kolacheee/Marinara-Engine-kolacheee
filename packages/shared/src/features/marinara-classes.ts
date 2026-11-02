@@ -880,7 +880,12 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Deals damage to one foe with +10% critical rate. Reaches the back row at full damage.",
           true,
         ),
-        passive("elusive", "Elusive", 15, "The first attack on the user each round has a 50% chance to miss."),
+        passive(
+          "elusive",
+          "Elusive",
+          15,
+          "Halves the hit chance of the first attack on the user after each of their turns.",
+        ),
       ],
     },
     {
