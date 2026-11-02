@@ -2305,7 +2305,11 @@ export const MARINARA_BOSS_RULES = {
   eliteConfuseResist: 0.5,
 };
 
-/** Whether a status can't take hold on this fighter. */
+/** Whether a status can't take hold on this fighter (the AI checks it before trying). */
+export function marinaraShrugsOff(target: MarinaraFighter, status: string): boolean {
+  return shrugsOff(target, status);
+}
+
 function shrugsOff(target: MarinaraFighter, status: string): boolean {
   const hooks = hooksOf(target);
   if (status === "stun" && (hooks.stunImmune === "always" || (hooks.stunImmune && target.hp < target.maxHp / 2)))
@@ -2814,16 +2818,16 @@ function act(
             addMod(target, mod.stat, mod.pct, (effect.duration ?? 1) + durationBonus, `crescendo:${mod.source}`);
         if (effect.steadies) {
           target.statuses = target.statuses.filter((one) => one.status !== "confuse");
-          addMod(target, "steady-heart", 1, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
+          addMod(target, "steady-heart", 1, (effect.duration ?? 1) + durationBonus, skillId ?? "buff");
         }
-        if (effect.verses) singVerse(target, effect, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
-        addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
+        if (effect.verses) singVerse(target, effect, (effect.duration ?? 1) + durationBonus, skillId ?? "buff");
+        addMod(target, effect.stat!, effect.pct ?? 0, (effect.duration ?? 1) + durationBonus, skillId ?? "buff");
         if (effect.stat === "imbue") {
-          const rune = target.mods.find((mod) => mod.stat === "imbue" && mod.source === (skill?.id ?? "buff"));
+          const rune = target.mods.find((mod) => mod.stat === "imbue" && mod.source === (skillId ?? "buff"));
           if (rune) rune.element = marinaraChanneled(actor);
         }
         for (const also of effect.alsoMods ?? [])
-          addMod(target, also.stat, also.pct, (effect.duration ?? 1) + durationBonus, skill?.id ?? "buff");
+          addMod(target, also.stat, also.pct, (effect.duration ?? 1) + durationBonus, skillId ?? "buff");
         ctx.events.push({ kind: "buff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
         // Tempo: a buffed party member's next turn comes sooner.
         const tempo = Math.max(

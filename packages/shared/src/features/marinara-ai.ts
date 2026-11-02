@@ -15,15 +15,23 @@ import {
   type RankedCombatCandidate,
 } from "./combat-ai.js";
 import type { GameDifficulty } from "./combat-conditions.js";
-import { MARINARA_ELEMENTS, marinaraAffinityMultiplier, marinaraClass } from "./marinara-classes.js";
+import {
+  MARINARA_ELEMENTS,
+  marinaraAffinityMultiplier,
+  marinaraBestDamageType,
+  marinaraClass,
+} from "./marinara-classes.js";
 import {
   MARINARA_TUNING,
   marinaraActionWeight,
   marinaraBasicAttack,
+  marinaraCanChannel,
+  marinaraChanneled,
   marinaraDebuffBurden,
   marinaraEffectiveStat,
   marinaraExpectedHit,
   marinaraRowOf,
+  marinaraShrugsOff,
   marinaraSkillCost,
   marinaraStruck,
   marinaraTargetsFor,
@@ -49,6 +57,22 @@ function bestDamage(unit: MarinaraFighter, all: readonly MarinaraFighter[], tact
     if (effect.kind !== "damage") continue;
     for (const target of marinaraTargetsFor(unit, effect, all))
       best = Math.max(best, Math.min(target.hp, marinaraExpectedHit(unit, target, effect, all, tactical)));
+  }
+  return best;
+}
+
+/** The best share of a foe's HP one hit of this fighter's could take now: what one more action is worth,
+ *  in the same terms as a damage candidate. */
+function bestShare(unit: MarinaraFighter, all: readonly MarinaraFighter[], tactical: boolean): number {
+  let best = 0;
+  for (const { effect } of marinaraUsable(unit, all)) {
+    if (effect.kind !== "damage" || effect.charge) continue;
+    for (const target of marinaraTargetsFor(unit, effect, all))
+      if (target.side !== unit.side && target.hp > 0)
+        best = Math.max(
+          best,
+          Math.min(target.hp, marinaraExpectedHit(unit, target, effect, all, tactical)) / Math.max(1, target.maxHp),
+        );
   }
   return best;
 }
@@ -107,6 +131,18 @@ export function marinaraAiCandidates(
   // What a foe's basic blow does to the party on average.
   const incomingFrom = (foe: MarinaraFighter) =>
     friends.reduce((sum, unit) => sum + hit(foe, unit, marinaraBasicAttack(foe)), 0) / Math.max(1, friends.length);
+  // What a foe's hardest hit does to the party on average, and whether it lands on Defense or
+  // Resistance: a guard buff is worth only the blows it stands in front of (review 2026-11-02: Spellguard
+  // was cast every other turn against gels and rats that only hit with their bodies).
+  const hardestFrom = (foe: MarinaraFighter) => {
+    let best = { damage: 0, magic: false };
+    for (const { effect } of marinaraUsable(foe, all)) {
+      if (effect.kind !== "damage") continue;
+      const damage = friends.reduce((sum, unit) => sum + hit(foe, unit, effect), 0) / Math.max(1, friends.length);
+      if (damage > best.damage) best = { damage, magic: effect.damage === "magic" };
+    }
+    return best;
+  };
   // What the foes who hit with an element deal the party a round.
   const elementalIncoming = () =>
     foes
@@ -117,6 +153,9 @@ export function marinaraAiCandidates(
       )
       .reduce((sum, foe) => sum + incomingFrom(foe), 0);
   const out: CombatAiCandidate<MarinaraChoice>[] = [];
+  // A bonus action leaves the turn's action still to take (review 2026-11-02: songs, Mark Prey and
+  // Double Time were weighed against a whole attack, as if they cost the turn, and lost to it).
+  const stillActs = actor.commanded ? 0 : bestShare(actor, all, tactical);
   const add = (
     option: MarinaraOption,
     targets: readonly MarinaraFighter[],
@@ -135,10 +174,11 @@ export function marinaraAiCandidates(
     // A guard's worth also counts as support, so a Guard who isn't protective by temperament still
     // covers and challenges (playtest 2026-11-01: Challenge was never picked).
     const guarded = parts.support === undefined ? (parts.protection ?? 0) * MARINARA_AI_NORM.protectionAsSupport : 0;
+    const free = option.effect.bonusAction && !actor.commanded ? stillActs : 0;
     out.push({
       action: { optionId: option.id, targetIds: targets.map((unit) => unit.id) },
       ...parts,
-      damage: scale(parts.damage),
+      damage: parts.damage === undefined && !free ? undefined : (scale(parts.damage) ?? 0) + free,
       healing: scale(parts.healing),
       support: scale(
         parts.support === undefined && !guarded
@@ -154,6 +194,10 @@ export function marinaraAiCandidates(
     options.reach ? pool.filter((target) => options.reach!(option, target)) : pool;
   for (const option of marinaraUsable(actor, all)) {
     const { effect } = option;
+    // A commanded or extra action grants no further action, so a bonus-action setup (Vanish, a song, Mark
+    // Prey) would spend the whole of it on what the fighter can do for free on its own turn (panel t12: a
+    // Phantom spent a Grand Strategy turn on Vanish and never struck).
+    if (actor.commanded && effect.bonusAction && effect.kind !== "damage") continue;
     // A foe that yielded is the player's to spare or finish: the AI leaves it be.
     const pool = reachable(
       option,
@@ -207,14 +251,18 @@ export function marinaraAiCandidates(
               ? marinaraDebuffBurden(u, all) * 0.6
               : 0;
         const urgency = (u: MarinaraFighter) => (u.hp / u.maxHp < 0.4 ? 2 : u.hp / u.maxHp < 0.7 ? 1 : 0.15);
+        // Nobody hurt and nothing to clean: no heal (Alyssa 2026-11-02).
+        const hurt = (u: MarinaraFighter) => u.hp < u.maxHp || cleaned(u) > 0;
         if (effect.target === "self" || effect.target === "party") {
           const who = effect.target === "self" ? [actor] : friends;
+          if (!who.some(hurt)) break;
           const healing = who.reduce((sum, u) => sum + (healed(u) / u.maxHp) * urgency(u), 0);
           const support = who.reduce((sum, u) => sum + cleaned(u), 0) / friendHp;
           if (healing + support <= 0.02) break;
           add(option, [actor], { healing, support });
         } else {
           for (const target of pool) {
+            if (!hurt(target)) continue;
             const healing = (healed(target) / target.maxHp) * urgency(target);
             const support = cleaned(target) / friendHp;
             if (healing + support <= 0.02) continue;
@@ -284,11 +332,20 @@ export function marinaraAiCandidates(
               else if (mod.stat === "speed") value += bestDamage(u, all, tactical) * mod.pct * 0.4;
             }
         } else if (effect.stat === "imbue") {
+          // The element the runes will carry: the caster channels, before casting, the one most foes are
+          // weakest to (review 2026-11-02: valued unchanneled, as arcane, Edge Runes were worth nothing and
+          // never cast).
+          const score = (element: (typeof MARINARA_ELEMENTS)[number]) =>
+            foes.reduce((sum, foe) => sum + marinaraBestDamageType([element], foe.affinities).multiplier, 0);
+          const runeElement =
+            marinaraCanChannel(actor) && !actor.channelManual && !actor.channeledThisTurn
+              ? [...MARINARA_ELEMENTS].sort((a, b) => score(b) - score(a))[0]!
+              : marinaraChanneled(actor);
           // What the element adds to each imbued fighter's best hit (the whole party for Edge Runes).
           for (const u of who) {
             if (u.mods.some((m) => m.stat === "imbue")) continue;
             const plain = bestDamage(u, all, tactical);
-            u.mods.push({ stat: "imbue", pct: 1, turns: 1, source: "probe" });
+            u.mods.push({ stat: "imbue", pct: 1, turns: 1, source: "probe", element: runeElement });
             const imbued = bestDamage(u, all, tactical);
             u.mods = u.mods.filter((m) => m.source !== "probe");
             value += Math.max(0, imbued - plain) * (effect.duration ?? 3) * 0.8;
@@ -313,8 +370,32 @@ export function marinaraAiCandidates(
             (threatened ? actor.maxHp * 0.05 : 0);
         } else if (effect.stat === "damage-taken" || effect.stat === "resistance" || effect.stat === "defense") {
           if (!threatened) break;
-          const incoming = foes.reduce((sum, foe) => sum + Math.max(eff(foe, "strength"), eff(foe, "magic")), 0);
-          value = incoming * Math.abs(gain) * (effect.duration ?? 1) * 0.8 * (who.length > 1 ? 1 : 0.6);
+          // The damage it keeps off whoever it covers for its turns: a share of every blow for a damage
+          // cut; for more Defense or Resistance, the stat it adds, off each blow that lands on that stat.
+          const stats = [effect.stat, ...(effect.alsoMods ?? []).map((m) => m.stat)];
+          let saved = 0;
+          for (const foe of foes) {
+            const blow = hardestFrom(foe);
+            if (blow.damage <= 0) continue;
+            if (stats.includes("damage-taken")) saved += blow.damage * Math.abs(gain);
+            else {
+              const stat = blow.magic ? "resistance" : "defense";
+              if (!stats.includes(stat)) continue;
+              const added = (who.reduce((sum, u) => sum + eff(u, stat), 0) / Math.max(1, who.length)) * Math.abs(gain);
+              saved += Math.min(blow.damage, added);
+            }
+          }
+          // A foe's blow lands on one of them: on the user alone only if it is the one foes go for.
+          value = saved * (effect.duration ?? 1) * 0.8 * (who.length > 1 ? 1 : effect.provokes ? 1 : 0.6);
+          // Warding Stance also draws the foes: worth what Provoke is.
+          if (effect.provokes && actor.provoking <= 0 && friends.length > 1) {
+            add(option, [actor], {
+              support: value / foeHp,
+              protection: 0.5 + (actor.hp / actor.maxHp) * 0.4,
+              risk: 0.2,
+            });
+            break;
+          }
         } else {
           const dealt = who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
           value = dealt * gain * (effect.duration ?? 1) * 0.7;
@@ -324,7 +405,11 @@ export function marinaraAiCandidates(
         break;
       }
       case "debuff": {
-        const fresh = pool.filter((u) => !u.mods.some((m) => m.source === option.id));
+        // Not on a foe that can't be debuffed (review 2026-11-02).
+        const fresh = pool.filter(
+          (u) =>
+            !u.mods.some((m) => m.source === option.id) && !(u.side !== actor.side && marinaraShrugsOff(u, "debuff")),
+        );
         if (!fresh.length) break;
         // One mark at a time (lab 2026-11-01: Trackers marked every foe in turn, 231 of 314 actions, for
         // 6-8% of the party's damage): the party focuses the one it marked.
@@ -372,7 +457,11 @@ export function marinaraAiCandidates(
           add(option, [actor], { healing: (missing / friendHp) * 0.6 });
           break;
         }
-        const fresh = pool.filter((u) => !u.statuses.some((s) => s.status === effect.status));
+        // Not on one it can't take hold of: a boss shrugs off sleep, stun and confusion (review 2026-11-02:
+        // Rot and Lull were cast at bosses and immune foes).
+        const fresh = pool.filter(
+          (u) => !u.statuses.some((s) => s.status === effect.status) && !marinaraShrugsOff(u, effect.status!),
+        );
         if (!fresh.length) break;
         if ((effect.status === "sleep" || effect.status === "stun" || effect.status === "confuse") && !threatened)
           break;
@@ -479,7 +568,8 @@ export function marinaraAiCandidates(
         break;
       }
       case "extra-turn":
-        add(option, [actor], { damage: (bestDamage(actor, all, tactical) * 0.9) / foeHp });
+        // One more action of the fighter's best (as a bonus action, Double Time also leaves the turn's own).
+        add(option, [actor], { damage: bestShare(actor, all, tactical) * 0.9 });
         break;
       case "command": {
         const others = friends.filter((u) => u.id !== actor.id);
@@ -532,7 +622,17 @@ export function chooseMarinaraAction(
     const attack = candidates.find((c) => c.action.optionId === null);
     if (attack) return attack.action;
   }
-  const unit = { ...profile, hp: actor.hp, maxHp: actor.maxHp };
+  // A patient one waits for its moment in the Engine's other fights (a readied action); a Classic
+  // Marinara turn has no waiting, only Defend, so patience is not a reason to defend (review 2026-11-02:
+  // patient units defended 50% of their turns on both sides). Its own memory of defending still rules
+  // out a second Defend in a row.
+  const patient = profile.tactics.adjective === "patient";
+  const unit = {
+    ...profile,
+    tactics: { ...profile.tactics, ...(patient ? { holds: Math.max(1, profile.tactics.holds ?? 0) } : {}) },
+    hp: actor.hp,
+    maxHp: actor.maxHp,
+  };
   const diff = actor.side === "enemy" ? difficulty : "normal";
   if (options.ranked) {
     const ranking = rankCombatCandidates(unit, candidates, turn, diff);
@@ -541,7 +641,7 @@ export function chooseMarinaraAction(
   }
   const chosen = chooseRankedCombatCandidate(unit, candidates, turn, diff);
   // The unit keeps its memory of what it picked, as `chooseCombatCandidate` leaves it.
-  profile.tactics.holds = unit.tactics.holds;
+  profile.tactics.holds = chosen.candidate.hold ? Math.min(2, (profile.tactics.holds ?? 0) + 1) : 0;
   profile.tactics.targetId = unit.tactics.targetId;
   return chosen.candidate.action;
 }
