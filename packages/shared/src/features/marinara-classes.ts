@@ -530,7 +530,12 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Deals damage to all foes in the front row and reduces the damage of foes hit by 15% for 2 turns. Reduces the user's Speed by 20% until their next turn.",
           true,
         ),
-        passive("unstoppable", "Unstoppable", 24, "Below half HP, nullifies Stun and reduces damage taken by 15%."),
+        passive(
+          "unstoppable",
+          "Unstoppable",
+          24,
+          "Below half HP, grants immunity to Stun and reduces damage taken by 15%.",
+        ),
       ],
     },
     {
@@ -704,7 +709,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Deals light damage to one foe based on the user's Resistance.",
           true,
         ),
-        passive("elder-oath", "Elder Oath", 24, "Increases Resistance by 50%. Nullifies Doom and Sleep."),
+        passive("elder-oath", "Elder Oath", 24, "Increases Resistance by 50%. Grants immunity to Doom and Sleep."),
       ],
     },
     {
@@ -732,7 +737,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "After defending or charging a skill, increases Defense and Resistance by 30% until the user's next turn.",
           true,
         ),
-        passive("immovable", "Immovable", 15, "Nullifies Stun. Increases Defense by 20% while defending."),
+        passive("immovable", "Immovable", 15, "Grants immunity to Stun. Increases Defense by 20% while defending."),
       ],
     },
     {
@@ -1402,7 +1407,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
         ),
         passive("abyssal-will", "Abyssal Will", 22, "Increases spell damage by 20%."),
         // Immunity is a master's gift (Alyssa 2026-11-01): Null moved here from the Nullifier.
-        passive("null", "Null", 25, "Nullifies all debuffs.", true),
+        passive("null", "Null", 25, "Grants immunity to all debuffs.", true),
       ],
     },
   ]),
