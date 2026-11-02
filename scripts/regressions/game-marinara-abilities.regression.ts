@@ -491,6 +491,7 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     ["earth", "crumble"],
     ["water", "soak"],
     ["metal", "rend"],
+    ["wind", "windswept"],
   ] as const) {
     master.channeled = element;
     performMarinaraOption(master, sure, [dummy], emAll, ctx(`em-${element}`));
@@ -507,6 +508,14 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     `Entangle takes 15 off hit chance (${cleanHit.hitChance} -> ${wuxingHit.hitChance})`,
   );
   assert.ok(wuxingHit.damage < cleanHit.damage, "Rend lowers damage dealt");
+  // Windswept: attacks against the target gain 15 hit chance.
+  const sweptHit = marinaraHitNumbers(foe, dummy, marinaraOption(foe, null, [foe, dummy])!.effect, [foe, dummy]);
+  dummy.statuses = dummy.statuses.filter((st) => st.status !== "windswept");
+  const calmHit = marinaraHitNumbers(foe, dummy, marinaraOption(foe, null, [foe, dummy])!.effect, [foe, dummy]);
+  assert.ok(
+    Math.abs(Math.min(100, calmHit.hitChance + 15) - sweptHit.hitChance) < 1e-9,
+    `Windswept adds 15 hit chance against them (${calmHit.hitChance} -> ${sweptHit.hitChance})`,
+  );
   // Resonance: the channeled element deals 20% more to a foe weak to it.
   const plain = marinaraHitNumbers(mage, foe, basic, all);
   mage.skills = [...mage.skills, skill("resonance")];

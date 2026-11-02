@@ -98,6 +98,7 @@ export type MarinaraStatusId =
   | "crumble"
   | "soak"
   | "rend"
+  | "windswept"
   | "wound"
   | "confuse"
   | "doom"
@@ -530,6 +531,7 @@ const HARMFUL = new Set<MarinaraStatusId>([
   "crumble",
   "soak",
   "rend",
+  "windswept",
   "wound",
   "doom",
   "sleep",
@@ -1675,6 +1677,7 @@ export const MARINARA_ELEMENT_MASTERY = {
   crumbleDefensePct: 0.15,
   soakResistancePct: 0.15,
   rendDamagePct: 0.15,
+  windsweptHit: 15,
 } as const;
 
 /** The ailment Element Mastery leaves for each element. */
@@ -1686,6 +1689,7 @@ export const MARINARA_ELEMENT_AILMENTS: Record<(typeof MARINARA_ELEMENTS)[number
   earth: "crumble",
   water: "soak",
   metal: "rend",
+  wind: "windswept",
 };
 
 /** Vanish's evasion bonus until the user's next turn (Alyssa 2026-11-02: auto-evade was too strong). */
@@ -1870,7 +1874,9 @@ export function marinaraHitNumbers(
         marinaraEffectiveStat(actor, "luck", all) / 2 +
         (effect.hitBonus ?? 0) +
         (hooks.hitBonus ?? 0) +
-        (actor.gear?.hit ?? 0) -
+        (actor.gear?.hit ?? 0) +
+        // Windswept (wind): attacks against the target gain hit chance.
+        (target.statuses.some((st) => st.status === "windswept") ? MARINARA_ELEMENT_MASTERY.windsweptHit : 0) -
         // Entangle (wood): the bound attacker's hit chance drops.
         (actor.statuses.some((st) => st.status === "entangle") ? MARINARA_ELEMENT_MASTERY.entangleHit : 0) -
         evade,

@@ -144,6 +144,7 @@ export const MARINARA_STATUSES = [
   "crumble",
   "soak",
   "rend",
+  "windswept",
   "wither",
   "wound",
   "doom",
@@ -683,6 +684,7 @@ const ELEMENT_WARDS: ReadonlyArray<[MarinaraDamageType, string]> = [
   ["earth", "Bedrock"],
   ["water", "Waterproof"],
   ["metal", "Ironskin"],
+  ["wind", "Windbreak"],
   ["light", "Shade"],
   ["dark", "Dawn"],
 ];
@@ -1242,6 +1244,15 @@ const AMMO_NAMES: Record<Exclude<MarinaraDamageType, "arcane">, MarinaraNames> =
     "Steel-Jacket Rounds",
     "Rebar Bolts",
   ),
+  wind: names(
+    "Wind Ammo",
+    "Galefeather Arrows",
+    "Vortex Cells",
+    "Airburst Rounds",
+    "Crane-Feather Arrows",
+    "Whistler Rounds",
+    "Kite-Fin Darts",
+  ),
   dark: names(
     "Shadow Ammo",
     "Shadow Arrows",
@@ -1272,6 +1283,7 @@ const BOMB_ELEMENT_WORDS: Record<string, MarinaraNames> = {
   earth: names("Quake", "Quake", "Seismic", "Concussion", "Earth", "Rockfall", "Rubble"),
   water: names("Tide", "Tide", "Hydro", "Water", "Water", "Flood", "Bilge"),
   metal: names("Shrapnel", "Shrapnel", "Flechette", "Frag", "Metal", "Shrapnel", "Nail"),
+  wind: names("Gale", "Gale", "Vortex", "Blast", "Wind", "Cyclone", "Dust-Devil"),
 };
 const BOMB_NOUNS: Record<MarinaraItemSetting | "neutral", readonly [string, string, string]> = {
   neutral: ["Bomb", "Grenade", "Great Bomb"],
