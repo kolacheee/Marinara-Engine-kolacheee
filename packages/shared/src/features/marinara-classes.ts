@@ -1414,7 +1414,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           14,
-          "Inflicts Confusion on all foes for 2 turns. 70% success each.",
+          "Inflicts Confusion on all foes for 2 turns. 70% success each. Cooldown: 3 turns.",
         ),
         passive("nightmare", "Nightmare", 24, "Sleeping foes lose 10% of max HP each turn.", true),
       ],

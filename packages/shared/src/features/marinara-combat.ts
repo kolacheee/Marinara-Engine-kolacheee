@@ -417,7 +417,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Carrion Lord (the Hexer's front-line master): a heavy drain on one foe, all of it back.
   "carrion-feast": dmg("magic", 14, { ranged: true, drain: 1, cooldown: 2 }),
   lull: { kind: "status", target: "enemy", status: "sleep", chance: 0.75, duration: 3 },
-  "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2 },
+  // Cooldown (Alyssa 2026-11-02): Confusion is strong (half of single-target attacks go at allies).
+  "mass-confusion": { kind: "status", target: "all-enemies", status: "confuse", chance: 0.7, duration: 2, cooldown: 3 },
   siphon: dmg("magic", 8, { ranged: true, pierce: 0.5, siphon: { mpPct: 0.15 } }),
   // Every foe, and the Hexer drinks half of it back: a Hexer can hold the front against a swarm
   // (Alyssa 2026-11-01).
