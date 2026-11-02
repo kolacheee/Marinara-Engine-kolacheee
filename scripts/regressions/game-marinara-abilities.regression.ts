@@ -485,6 +485,28 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     dummy,
   ]).critChance;
   assert.equal(after, Math.min(100, before + 10), "Shock adds a flat 10 critical chance against the target");
+  // The wuxing elements (Alyssa 2026-11-02): wood Entangle, earth Crumble, water Soak, metal Rend.
+  for (const [element, status] of [
+    ["wood", "entangle"],
+    ["earth", "crumble"],
+    ["water", "soak"],
+    ["metal", "rend"],
+  ] as const) {
+    master.channeled = element;
+    performMarinaraOption(master, sure, [dummy], emAll, ctx(`em-${element}`));
+    assert.ok(
+      dummy.statuses.some((st) => st.status === status),
+      `${element} inflicts ${status}`,
+    );
+  }
+  const wuxingHit = marinaraHitNumbers(dummy, foe, marinaraOption(dummy, null, [foe, dummy])!.effect, [foe, dummy]);
+  dummy.statuses = dummy.statuses.filter((st) => st.status !== "entangle" && st.status !== "rend");
+  const cleanHit = marinaraHitNumbers(dummy, foe, marinaraOption(dummy, null, [foe, dummy])!.effect, [foe, dummy]);
+  assert.ok(
+    Math.abs(cleanHit.hitChance - wuxingHit.hitChance - 15) < 1e-9,
+    `Entangle takes 15 off hit chance (${cleanHit.hitChance} -> ${wuxingHit.hitChance})`,
+  );
+  assert.ok(wuxingHit.damage < cleanHit.damage, "Rend lowers damage dealt");
   // Resonance: the channeled element deals 20% more to a foe weak to it.
   const plain = marinaraHitNumbers(mage, foe, basic, all);
   mage.skills = [...mage.skills, skill("resonance")];
