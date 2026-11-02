@@ -1670,11 +1670,20 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       id: "field-captain",
       label: "Field Captain",
       from: "herald",
-      role: "Officers who command allies to act on their order.",
+      role: "Officers who turn the enemy's attention onto the ally best able to take it.",
       leans: ["speed", "skill"],
       skills: [
-        active("command", "Command", 10, "skill", 6, "One ally acts at once.", true),
-        passive("foresight", "Foresight", 15, "Increases the party's Defense by 10%."),
+        // Reworked (Alyssa 2026-11-02): the party's way to tank with someone who has no taunt of their own.
+        active(
+          "draw-fire",
+          "Draw Fire",
+          10,
+          "skill",
+          6,
+          "Target ally draws all foes' single-target attacks onto themselves for 2 turns.",
+          true,
+        ),
+        passive("hold-fast", "Hold Fast", 15, "An ally drawing foes' attacks takes 15% less damage."),
       ],
     },
     {
@@ -1692,7 +1701,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           18,
           "Every ally acts once, at once. Cooldown: 4 turns.",
         ),
-        passive("formation", "Formation", 24, "Increases the party's Defense by 15% while no ally is down.", true),
+        passive(
+          "kill-zone",
+          "Kill Zone",
+          24,
+          "While an ally is drawing foes' attacks, the party deals 15% more damage.",
+          true,
+        ),
       ],
     },
     {

@@ -478,7 +478,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   },
   // Crescendo: every buff the party carries counts twice for a round.
   crescendo: { kind: "buff", target: "party", stat: "crescendo", pct: 0, duration: 1, cooldown: 3, doubles: true },
-  command: { kind: "command", target: "ally" },
+  // Field Captain (reworked 2026-11-02, Alyssa): turns the foes onto an ally who can take it.
+  "draw-fire": { kind: "provoke", target: "ally", duration: 2 },
   "grand-strategy": { kind: "command", target: "party", cooldown: 4 },
   "raise-the-banner": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3, steadies: true },
   "hour-of-heroes": { kind: "command", target: "party", oncePerFight: true },
@@ -660,6 +661,10 @@ export interface MarinaraPassiveHooks {
   evadeBonus?: number;
   /** The party's Defense rises by this share while no one of it is down (Formation). */
   partyDefenseWhileWhole?: number;
+  /** Hold Fast: a provoking ally of the holder takes this much less damage (negative). */
+  partyProvokerTakenPct?: number;
+  /** Kill Zone: while an ally of the holder provokes, the party deals this much more damage. */
+  partyDamageWhileProvoked?: number;
   /** A buff on a party member moves its next turn this share of a turn sooner (Tempo). */
   tempoPct?: number;
   /** The user's turns take this share longer (Heavy Draw). */
@@ -743,8 +748,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   sanctified: { partyMagicTakenPct: -0.15 },
   encore: { buffDurationBonus: 1 },
   tempo: { tempoPct: 0.15 },
-  foresight: { partyDefensePct: 0.1 },
-  formation: { partyDefenseWhileWhole: 0.15 },
+  "hold-fast": { partyProvokerTakenPct: -0.15 },
+  "kill-zone": { partyDamageWhileProvoked: 0.15 },
   inspire: { partyDamageWhileWhole: 0.1 },
   "fortunes-favour": { partyCritBonus: 10 },
 };
@@ -1827,7 +1832,9 @@ export function marinaraTargetsFor(
   if (effect.target === "party") return friends;
   // Guarding or watching over someone means someone else.
   if (effect.target === "ally")
-    return effect.kind === "cover" || effect.kind === "ward" ? friends.filter((unit) => unit !== actor) : friends;
+    return effect.kind === "cover" || effect.kind === "ward" || effect.kind === "provoke"
+      ? friends.filter((unit) => unit !== actor)
+      : friends;
   if (effect.target === "downed-ally") return all.filter((unit) => unit.side === actor.side && unit.hp <= 0);
   // Tame looks past taunts: only a beast it can take.
   if (effect.kind === "tame") return everyFoe.filter(marinaraTameable);
@@ -1919,6 +1926,11 @@ export function marinaraHitNumbers(
     if (allyHooks.partyDamageWhileWhole && all.filter((u) => u.side === actor.side).every((u) => u.hp > 0))
       pct += allyHooks.partyDamageWhileWhole;
     if (target.marked > 0) pct += allyHooks.partyBonusVsMarked ?? 0;
+    if (
+      allyHooks.partyDamageWhileProvoked &&
+      living(all.filter((u) => u.side === actor.side)).some((u) => u.provoking > 0)
+    )
+      pct += allyHooks.partyDamageWhileProvoked;
   }
   if (magic) pct += hooks.spellDamagePct ?? 0;
   pct += (hooks.damagePct ?? 0) + (actor.gear?.damagePct ?? 0);
@@ -1938,6 +1950,7 @@ export function marinaraHitNumbers(
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
     const allyHooks = hooksOf(ally);
     if (magic) pct += allyHooks.partyMagicTakenPct ?? 0;
+    if (target.provoking > 0) pct += allyHooks.partyProvokerTakenPct ?? 0;
     if (marinaraRowOf(target, all) === "back") pct += allyHooks.backRowTakenPct ?? 0;
   }
   if (hooks.heavyDraw) pct += 0.3;
@@ -2762,10 +2775,13 @@ function act(
       actor.covering = targets[0]?.id;
       ctx.events.push({ kind: "cover", actorId: actor.id, targetId: targets[0]?.id, skillId });
       break;
-    case "provoke":
-      actor.provoking = effect.duration ?? 2;
-      ctx.events.push({ kind: "provoke", actorId: actor.id, skillId });
+    case "provoke": {
+      // Draw Fire: an ally provokes in the user's place.
+      const who = effect.target === "ally" ? (targets[0] ?? actor) : actor;
+      who.provoking = effect.duration ?? 2;
+      ctx.events.push({ kind: "provoke", actorId: who.id, skillId });
       break;
+    }
     case "ward":
       actor.wardOn = targets[0]?.id;
       actor.wardTurns = effect.duration ?? 3;
