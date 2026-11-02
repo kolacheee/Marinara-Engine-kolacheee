@@ -1105,15 +1105,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           0,
           "Bonus action. Channels fire, ice or lightning. The user's basic attacks and Channeler spells strike with that element until they channel another. Fire until first channeled.",
         ),
-        active(
-          "imbue-weapon",
-          "Imbue Weapon",
-          5,
-          "magic",
-          3,
-          "For 3 turns, the user's weapon attacks and skills can strike as fire, ice or lightning, whichever the target is weakest to.",
-          true,
-        ),
+        passive("resonance", "Resonance", 5, "Elemental hits deal 20% more damage to foes weak to that element.", true),
       ],
     },
     {

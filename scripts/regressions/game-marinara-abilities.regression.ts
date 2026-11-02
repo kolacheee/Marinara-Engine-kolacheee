@@ -438,6 +438,11 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "ice", "basic attacks strike with ice");
   assert.equal(marinaraChannelElement(mage, "lightning"), false, "once between their turns");
   assert.equal(marinaraChannelElement(mage, "slash" as never), false, "only elements");
+  // Resonance: the channeled element deals 20% more to a foe weak to it.
+  const plain = marinaraHitNumbers(mage, foe, basic, all);
+  mage.skills = [...mage.skills, skill("resonance")];
+  const resonant = marinaraHitNumbers(mage, foe, basic, all);
+  assert.ok(Math.abs(resonant.multiplier / plain.multiplier - 1.2) < 1e-9, "Resonance adds 20% on a weakness");
 }
 
 console.log("game-marinara-abilities: ok");
