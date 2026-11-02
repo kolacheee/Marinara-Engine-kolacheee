@@ -665,9 +665,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   "old-oath": { statPct: { resistance: 0.3 }, magicTakenPct: -0.2 },
   "read-the-signs": { critBonus: 5, bonusVsMarked: 0.2 },
   "pack-tactics": { partyBonusVsMarked: 0.4 },
-  // Heavy Draw: a bigger bow, slower to draw (text: "More damage, acts later").
-  // Heavy Draw: 1 / 1.1765 = 0.85, so 15% fewer turns (Alyssa 2026-11-01: say it as turns, not "longer").
-  "heavy-draw": { heavyDraw: true, turnPct: 0.1765 },
+  // Heavy Draw: a bigger draw, a slower user: plain Speed down (Alyssa 2026-11-02).
+  "heavy-draw": { heavyDraw: true, statPct: { speed: -0.15 } },
   sundering: { hitsLowerDefense: 0.1 },
   attunement: { spellDamagePct: 0.15 },
   overcharge: { critBonus: 10 },

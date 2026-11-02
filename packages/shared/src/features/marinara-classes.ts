@@ -1029,7 +1029,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["strength", "skill"],
       skills: [
         active("volley", "Volley", 10, "strength", 6, "Deals light damage to all foes. Cooldown: 2 turns.", true),
-        passive("heavy-draw", "Heavy Draw", 15, "Increases damage by 30%. The user gets 15% fewer turns."),
+        passive("heavy-draw", "Heavy Draw", 15, "Increases damage by 30% and lowers Speed by 15%."),
       ],
     },
     {
