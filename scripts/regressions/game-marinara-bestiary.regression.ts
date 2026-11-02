@@ -266,4 +266,16 @@ for (const setting of MARINARA_BESTIARY_SETTINGS)
       }
 assert.ok(underFilled / built < 0.05, `${underFilled} of ${built} fights under 70% of budget`);
 
+// A boss is never more than MARINARA_LEVEL_GAP.bossBelow under the party (Sonnet panel r3).
+{
+  const lowBoss = marinaraFitEncounter({
+    setting: "high_fantasy",
+    party: { level: 20, size: 4 },
+    difficulty: "deadly",
+    foes: [{ familyId: "serpent", tier: "boss", level: 13 }],
+  });
+  for (const foe of lowBoss.foes)
+    assert.ok(foe.tier !== "boss" || foe.level >= 17, `boss at level ${foe.level} for a level 20 party`);
+}
+
 console.log(`marinara bestiary: ${MARINARA_BESTIARY.length} families, ${built} built fights checked`);
