@@ -935,7 +935,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "skill",
           0,
-          "Fires at one foe with +30% accuracy. Reduces the user's Speed by 20% until their next turn.",
+          "Attacks one foe with +30% accuracy. Reduces the user's Speed by 20% until their next turn.",
         ),
         passive("true-aim", "True Aim", 5, "Increases accuracy by 15%.", true),
       ],
@@ -947,7 +947,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Precision shooters who put arrows through armor.",
       leans: ["skill"],
       skills: [
-        active("pierce", "Pierce", 10, "skill", 4, "Fires at one foe, ignoring half their Defense.", true),
+        active("pierce", "Pierce", 10, "skill", 4, "Attacks one foe, ignoring half their Defense.", true),
         passive(
           "steady",
           "Steady",
@@ -976,7 +976,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "return-fire",
           "Return Fire",
           24,
-          "Once between the user's turns, shoots back at the first foe to attack the user or an ally, if that foe is in reach.",
+          "Once between the user's turns, attacks the first foe to attack the user or an ally, if that foe is in reach.",
           true,
         ),
       ],
