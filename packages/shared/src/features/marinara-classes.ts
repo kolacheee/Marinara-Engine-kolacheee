@@ -1059,7 +1059,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "strength",
           6,
-          "Deals 60% of a basic attack's damage to every foe, or full damage when only one foe stands. Cooldown: 2 turns.",
+          "Deals 60% of a basic attack's damage to every foe. Cooldown: 2 turns.",
           true,
         ),
         passive("heavy-draw", "Heavy Draw", 15, "Increases damage by 30% and reduces Speed by 15%."),

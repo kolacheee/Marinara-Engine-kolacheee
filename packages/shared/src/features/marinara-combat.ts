@@ -1850,8 +1850,7 @@ export function marinaraSkillEstimate(
     const foes = living(all.filter((unit) => unit.side !== actor.side && !unit.yielded));
     if (!foes.length) return null;
     const area = effect.target === "all-enemies" || effect.target === "front-row";
-    const used =
-      area && foes.length > 1 ? { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct } : effect;
+    const used = area ? { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct } : effect;
     const amounts = foes.map((foe) =>
       Math.max(0, Math.round(marinaraHitNumbers(actor, foe, used, all, tactical).damage)),
     );
@@ -2276,7 +2275,9 @@ function act(
         : 0;
   switch (effect.kind) {
     case "damage": {
-      if ((effect.target === "all-enemies" || effect.target === "front-row") && targets.length > 1)
+      // An area attack always deals its per-foe share, even on a lone foe (Alyssa 2026-11-02: a
+      // single target is what single-target skills are for).
+      if (effect.target === "all-enemies" || effect.target === "front-row")
         effect = { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct };
       for (const target of targets) {
         // Sworn Ward: whoever watches over this target strikes the attacker first, hit or miss.
