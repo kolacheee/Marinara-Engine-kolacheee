@@ -817,7 +817,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "speed",
           8,
-          "Bonus action. Until their next turn, attacks on the user are automatically evaded. Their next hit is a critical hit, and the target takes 20% more damage from all sources for 2 turns. Usable every other turn.",
+          "Bonus action. Increases the user's evasion by 40% until their next turn. Their next hit is a critical hit, and the target takes 20% more damage from all sources for 2 turns. Usable every other turn.",
           true,
         ),
         passive(
