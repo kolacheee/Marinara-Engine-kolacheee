@@ -1986,15 +1986,22 @@ export const MARINARA_BOSS_THREAT_PREMIUM = 1.3;
 export const MARINARA_THREAT_CALIBRATION = 1.2;
 /** How far a foe's level may stray from the party's: never more than 3 above (a boss 5), and foes
  *  more than 8 below aren't worth a fight. */
-export const MARINARA_LEVEL_GAP = { above: 3, bossAbove: 5, below: 8 } as const;
+// A boss stands no more than 3 levels under the party (Sonnet panel r3, 2026-11-02: a level 13 boss
+// against a level 20 party died in a few rounds; past that it is no boss, so it comes as an elite).
+export const MARINARA_LEVEL_GAP = { above: 3, bossAbove: 5, below: 8, bossBelow: 3 } as const;
 
 /** A Brutal game breaks the level cap (Alyssa, 11-01): foes may stand this far above the party, and
  *  the builder lifts them up to `lift` levels on its own. Their worth still grows 1.12x a level, so
  *  the budget holds; the fight just has fewer, stronger foes. */
-export const MARINARA_LEVEL_GAP_BRUTAL = { above: 6, bossAbove: 8, below: 8, lift: 3 } as const;
+export const MARINARA_LEVEL_GAP_BRUTAL = { above: 6, bossAbove: 8, below: 8, bossBelow: 3, lift: 3 } as const;
 
 /** The level gap rules for a party (Brutal games get the wider ones). */
-export function marinaraLevelGap(party: MarinaraEncounterParty): { above: number; bossAbove: number; below: number } {
+export function marinaraLevelGap(party: MarinaraEncounterParty): {
+  above: number;
+  bossAbove: number;
+  below: number;
+  bossBelow: number;
+} {
   return party.brutal ? MARINARA_LEVEL_GAP_BRUTAL : MARINARA_LEVEL_GAP;
 }
 /** A Classic battle has room for six foes. */
@@ -2123,6 +2130,8 @@ export function marinaraCheckEncounter(input: {
     if (foe.level > party.level + above) problems.push(`${label}: more than ${above} levels above the party.`);
     if (foe.level < party.level - gap.below)
       problems.push(`${label}: more than ${gap.below} levels below the party; not worth a fight.`);
+    else if (foe.tier === "boss" && foe.level < party.level - gap.bossBelow)
+      problems.push(`${label}: a boss more than ${gap.bossBelow} levels below the party; make it an elite.`);
     threat += marinaraFoeThreat(family.id, foe.tier, foe.level, party.level);
   }
   for (const tier of MARINARA_ENEMY_TIERS_LIST)
@@ -2222,7 +2231,7 @@ export function marinaraBuildEncounter(input: {
     const lowest = Math.max(
       lead.levels[0],
       MARINARA_TIER_RULES.boss.minLevel,
-      level - marinaraLevelGap(input.party).below,
+      level - marinaraLevelGap(input.party).bossBelow,
     );
     while (worth(boss) > budget && boss.level > lowest) boss.level--;
     const elite = { familyId: lead.id, tier: "elite" as const, level: foeLevel(lead) };
@@ -2374,7 +2383,8 @@ export function marinaraFitEncounter(input: {
     }
     const gap = marinaraLevelGap(party);
     const above = asked.tier === "boss" ? gap.bossAbove : gap.above;
-    let foeLevel = Math.max(level - gap.below, Math.min(level + above, Math.round(asked.level)));
+    const below = asked.tier === "boss" ? gap.bossBelow : gap.below;
+    let foeLevel = Math.max(level - below, Math.min(level + above, Math.round(asked.level)));
     foeLevel = Math.max(family.levels[0], Math.min(marinaraEnemySettingCap(family, setting), foeLevel));
     if (!marinaraEnemyName(family, setting, foeLevel)) {
       changes.push(`Dropped ${family.id}: not found in ${setting} near level ${level}.`);
@@ -2386,6 +2396,7 @@ export function marinaraFitEncounter(input: {
       tier &&
       (!family.tiers.includes(tier) ||
         foeLevel < MARINARA_TIER_RULES[tier].minLevel ||
+        (tier === "boss" && foeLevel < level - gap.bossBelow) ||
         (perTier[tier] ?? 0) >= MARINARA_TIER_RULES[tier].maxPerFight)
     )
       tier = DEMOTE[tier];
@@ -2424,7 +2435,10 @@ export function marinaraFitEncounter(input: {
     if (lower && family.tiers.includes(lower)) {
       foes[index] = { ...top, tier: lower };
       changes.push(`${top.familyId}: ${top.tier} → ${lower} to fit a ${input.difficulty} fight.`);
-    } else if (top.level > level - marinaraLevelGap(party).below && top.level > family.levels[0]) {
+    } else if (
+      top.level > level - marinaraLevelGap(party)[top.tier === "boss" ? "bossBelow" : "below"] &&
+      top.level > family.levels[0]
+    ) {
       foes[index] = { ...top, level: top.level - 1 };
       changes.push(`${top.familyId}: level ${top.level} → ${top.level - 1} to fit a ${input.difficulty} fight.`);
     } else {
