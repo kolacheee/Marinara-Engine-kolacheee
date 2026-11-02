@@ -328,6 +328,8 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       return event.status
         ? `${actor} siphons ${target}'s ${event.status} boost.`
         : `${actor} drains ${event.amount} MP from ${target}.`;
+    case "channel":
+      return `${actor} channels ${event.type}.`;
   }
 }
 

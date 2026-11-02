@@ -752,8 +752,8 @@ export interface MarinaraFighter {
   channeled?: MarinaraDamageType;
   /** Channel Element is a bonus action: once between the user's own turns. */
   channeledThisTurn?: boolean;
-  /** Run by the player: strikes with the channeled element. Otherwise (the AI, foes, harnesses) it
-   *  channels whichever element hurts the target most, hit by hit. */
+  /** Run by the player: channels by hand. Otherwise (the AI, foes, harnesses) it channels, as its bonus
+   *  action, the element its target is weakest to when it strikes with an element. */
   channelManual?: boolean;
   /** Damage type of a unit with no class (a monster). */
   attackType?: MarinaraDamageType;
@@ -1171,7 +1171,8 @@ export type MarinaraEventKind =
   | "tame"
   | "decoy"
   | "oath"
-  | "siphon";
+  | "siphon"
+  | "channel";
 
 /** One thing that happened, for the log and the narration. */
 export interface MarinaraEvent {
@@ -1324,7 +1325,10 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   }
   const type = effect.type ?? "weapon";
   // Channel Element: a Channeler-tree caster's element hits are the channeled element.
-  if (type === "element" && marinaraCanChannel(actor) && actor.channelManual) return [marinaraChanneled(actor)];
+  // Channel Element: element hits are the channeled element only (Alyssa 2026-11-02). One the AI runs
+  // that hasn't channeled yet this turn can still pick any, so it weighs them all.
+  if (type === "element" && marinaraCanChannel(actor))
+    return !actor.channelManual && !actor.channeledThisTurn ? MARINARA_ELEMENTS : [marinaraChanneled(actor)];
   // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
   const options =
     type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
@@ -1356,7 +1360,9 @@ export function marinaraAmmoChoices(actor: MarinaraFighter): MarinaraDamageType[
 
 /** Whether this fighter channels an element: a class of the Channeler tree. */
 export function marinaraCanChannel(actor: MarinaraFighter): boolean {
-  return actor.archetype === "channeler" && !!actor.classId;
+  if (!actor.classId) return false;
+  // A Channeler-tree class, or anyone carrying a Channeler element spell (Tempest, Rune Strike...).
+  return actor.archetype === "channeler" || actor.skills.some((skill) => skill.damage === "element");
 }
 
 /** The element a Channeler-tree caster strikes with now: the channeled one, fire until they channel. */
@@ -2186,6 +2192,20 @@ export function performMarinaraOption(
   // Speed until its next turn: the wait to that turn is timed at the changed Speed.
   if (option.effect.speedUntilNext)
     actor.next += turnLength(actor, all, option.effect.speedUntilNext) - turnLength(actor, all);
+  // An AI-run caster channels, as its bonus action, the element its target is weakest to, then strikes.
+  const first = targets[0];
+  if (
+    option.effect.type === "element" &&
+    first &&
+    marinaraCanChannel(actor) &&
+    !actor.channelManual &&
+    !actor.channeledThisTurn
+  ) {
+    const element = marinaraBestDamageType(MARINARA_ELEMENTS, first.affinities).type;
+    if (element !== marinaraChanneled(actor) && marinaraChannelElement(actor, element))
+      ctx.events.push({ kind: "channel", actorId: actor.id, type: element });
+    else actor.channeledThisTurn = true;
+  }
   if (option.skill) {
     const { resource, cost } = marinaraSkillCost(actor, option.skill);
     if (resource === "mp") {
