@@ -10,10 +10,10 @@
  * levels its tier is played at (base 1 and 10, advanced 10 and 20, master 20 and 30), with many
  * characters each, so the spread of hidden aptitudes shows (p10, median, p90).
  */
+import { pickCarries } from "./carries.js";
 import { writeFileSync } from "node:fs";
 import {
   MARINARA_ARCHETYPES,
-  MARINARA_ARCHETYPE_TRAITS,
   MARINARA_CLASSES,
   MARINARA_STATS,
   marinaraCarriedStat,
@@ -28,6 +28,7 @@ import {
   marinaraLearnedSkills,
   marinaraRandom,
   setMarinaraCarried,
+  marinaraClassTraits,
   marinaraUsableSkills,
   setMarinaraClass,
   type MarinaraAffinities,
@@ -76,7 +77,7 @@ export function buildCharacter(def: MarinaraClassDef, level: number, seed: strin
   }
   // A player carries the best of what earlier classes taught: their marked picks first, then actives.
   // A tree trait the class already keeps (Cover, Hold the Line) takes no carry slot.
-  const traits = MARINARA_ARCHETYPE_TRAITS[marinaraClass(character.activeClass)!.archetype] ?? [];
+  const traits = marinaraClassTraits(character.activeClass);
   const earlier = marinaraLearnedSkills(character).filter(
     (skill) =>
       skill.classId !== character.activeClass &&
@@ -91,10 +92,7 @@ export function buildCharacter(def: MarinaraClassDef, level: number, seed: strin
       Number(b.kind === "active") - Number(a.kind === "active") ||
       b.learnedAt - a.learnedAt,
   );
-  return setMarinaraCarried(
-    character,
-    ranked.slice(0, MARINARA_CARRY_SLOTS).map((skill) => skill.id),
-  );
+  return setMarinaraCarried(character, pickCarries(character, ranked));
 }
 
 export function unitFrom(
@@ -500,7 +498,7 @@ function crossTrained(primary: MarinaraArchetype, secondary: MarinaraArchetype, 
   const advanced = MARINARA_CLASSES.find((def) => def.from === primary && !def.pure)!;
   character = setMarinaraClass(character, advanced.id);
   // A tree trait the class already keeps (Cover, Hold the Line) takes no carry slot.
-  const traits = MARINARA_ARCHETYPE_TRAITS[marinaraClass(character.activeClass)!.archetype] ?? [];
+  const traits = marinaraClassTraits(character.activeClass);
   const earlier = marinaraLearnedSkills(character).filter(
     (skill) =>
       skill.classId !== character.activeClass &&
@@ -515,10 +513,7 @@ function crossTrained(primary: MarinaraArchetype, secondary: MarinaraArchetype, 
       Number(Boolean(b.carryPick)) - Number(Boolean(a.carryPick)) ||
       Number(b.kind === "active") - Number(a.kind === "active"),
   );
-  return setMarinaraCarried(
-    character,
-    ranked.slice(0, MARINARA_CARRY_SLOTS).map((skill) => skill.id),
-  );
+  return setMarinaraCarried(character, pickCarries(character, ranked));
 }
 
 function phase4(count: number): string {
