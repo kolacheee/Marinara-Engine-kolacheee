@@ -519,6 +519,19 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     target.statuses.push({ status: "entangle", duration: 2 });
     const fed = marinaraHitNumbers(mage, target, basic, all2).multiplier;
     assert.ok(Math.abs(fed / cold - 1.15) < 1e-9, `wood feeds fire (${cold} -> ${fed})`);
+    // Lightning and wind are wood, ice is water: fire hits a Shocked foe harder, ice a Rent one.
+    target.statuses = [{ status: "shock", duration: 2 }];
+    assert.ok(
+      Math.abs(marinaraHitNumbers(mage, target, basic, all2).multiplier / cold - 1.15) < 1e-9,
+      "Shock (wood phase) feeds fire",
+    );
+    mage.channeled = "ice";
+    const iceCold = marinaraHitNumbers(mage, target, basic, all2).multiplier;
+    target.statuses = [{ status: "rend", duration: 2 }];
+    assert.ok(
+      Math.abs(marinaraHitNumbers(mage, target, basic, all2).multiplier / iceCold - 1.15) < 1e-9,
+      "metal feeds ice (water phase)",
+    );
     mage.channelManual = saved.manual;
     mage.channeled = saved.channeled;
   }
