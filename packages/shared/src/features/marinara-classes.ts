@@ -1499,7 +1499,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           16,
           "Restores HP to all allies based on the user's Magic and removes one debuff from each. Reduces the user's Speed by 20% until their next turn.",
         ),
-        passive("grace", "Grace", 15, "Healing has a 15% chance to be a critical heal.", true),
+        // From Lightbearer (via Saint), swapped with Grace (Alyssa 2026-11-02).
+        passive("sanctified", "Sanctified", 15, "The party takes 15% less magic damage.", true),
       ],
     },
     {
@@ -1510,8 +1511,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["magic", "resistance", "luck"],
       skills: [
         active("revive", "Revive", 20, "magic", 10, "Revives target downed ally with 25% HP. Cooldown: 3 turns.", true),
-        // Swapped with Lightbearer's Miracle (Alyssa 2026-11-02): Miracle was too strong on the Saint.
-        passive("sanctified", "Sanctified", 24, "The party takes 15% less magic damage.", true),
+        // Swapped with Cleric's Sanctified (Alyssa 2026-11-02).
+        passive("grace", "Grace", 24, "Healing has a 15% chance to be a critical heal."),
       ],
     },
     {
