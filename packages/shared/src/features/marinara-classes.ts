@@ -1109,7 +1109,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "magic",
           0,
-          "Bonus action. Channels fire, ice or lightning, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Fire until first channeled.",
+          "Bonus action. Channels fire, ice or lightning, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it.",
         ),
         passive("resonance", "Resonance", 5, "Elemental hits deal 20% more damage to foes weak to that element.", true),
       ],

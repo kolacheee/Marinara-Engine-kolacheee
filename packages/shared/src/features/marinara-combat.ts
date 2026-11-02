@@ -767,7 +767,7 @@ export interface MarinaraFighter {
   /** Run by the AI: loads whichever owned ammunition hurts the target most, shot by shot. */
   ammoAuto?: boolean;
   /** Channel Element (Alyssa 2026-11-02): the element a Channeler-tree caster has channeled; their
-   *  basic attacks and Channeler-tree element spells strike with it. Absent, fire. */
+   *  basic attacks and Channeler-tree element spells strike with it. Absent, raw (arcane) magic: nothing is channeled until they channel (Alyssa 2026-11-02). */
   channeled?: MarinaraDamageType;
   /** Channel Element is a bonus action: once between the user's own turns. */
   channeledThisTurn?: boolean;
@@ -1374,7 +1374,7 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
 function imbueElements(actor: MarinaraFighter, type: string): MarinaraDamageType[] {
   if (type !== "weapon" && type !== "any-physical") return [];
   return [
-    ...new Set(actor.mods.filter((mod) => mod.stat === "imbue" && mod.pct > 0).map((mod) => mod.element ?? "fire")),
+    ...new Set(actor.mods.filter((mod) => mod.stat === "imbue" && mod.pct > 0).map((mod) => mod.element ?? "arcane")),
   ];
 }
 
@@ -1399,9 +1399,9 @@ export function marinaraCanChannel(actor: MarinaraFighter): boolean {
   );
 }
 
-/** The element a Channeler-tree caster strikes with now: the channeled one, fire until they channel. */
+/** The element a Channeler-tree caster strikes with now: the channeled one, raw (arcane) magic until they channel. */
 export function marinaraChanneled(actor: MarinaraFighter): MarinaraDamageType {
-  return actor.channeled ?? "fire";
+  return actor.channeled ?? "arcane";
 }
 
 /**
