@@ -106,6 +106,8 @@ export function marinaraAiCandidates(
      *  handed to one who can't is wasted on a Defend (Sonnet panel r3: Hour of Heroes' four free
      *  actions all went on Defend). */
     canStrike?: (unitId: string) => boolean;
+    /** On a board: whether one fighter could reach another this round (a move and its reach). */
+    reaches?: (fromId: string, toId: string) => boolean;
   } = {},
 ): CombatAiCandidate<MarinaraChoice>[] {
   const tactical = !!options.tactical;
@@ -537,6 +539,9 @@ export function marinaraAiCandidates(
           break;
         }
         if (!threatened || actor.provoking > 0 || friends.length < 2) break;
+        // On a board a foe that can't get at the provoker ignores it (tactical defeats 2026-11-02: a Guard
+        // provoked every turn while the boss tore into the back line).
+        if (options.reaches && !foes.some((foe) => options.reaches!(foe.id, actor.id))) break;
         add(option, [actor], { protection: 0.5 + (actor.hp / actor.maxHp) * 0.4, risk: 0.2 });
         break;
       case "taunt": {
@@ -625,6 +630,7 @@ export function chooseMarinaraAction(
     tactical?: boolean;
     reach?: (option: MarinaraOption, target: MarinaraFighter) => boolean;
     canStrike?: (unitId: string) => boolean;
+    reaches?: (fromId: string, toId: string) => boolean;
     ranked?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void;
   } = {},
 ): MarinaraChoice {
