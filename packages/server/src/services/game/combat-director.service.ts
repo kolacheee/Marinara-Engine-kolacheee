@@ -20,6 +20,8 @@ import {
   decideTacticalAction,
   decideProfileAction,
   marinaraLoadAmmo,
+  marinaraCanChannel,
+  marinaraChannelElement,
   type CombatAiScoreParts,
   type Combatant,
   type CombatSkill,
@@ -337,6 +339,8 @@ function sync(s: CombatDirectorState) {
     for (const u of s.tactical ? s.tactical.units : s.party) {
       const fighter = side(u as Unit) === "party" ? marinaraFighter(s.marinara, u.id) : undefined;
       if (fighter?.ammoOwned) fighter.ammoAuto = !manual(s, u as Unit);
+      // A Channeler-tree caster the AI runs channels the element each foe fears; one the player runs, by hand.
+      if (fighter && marinaraCanChannel(fighter)) fighter.channelManual = manual(s, u as Unit);
     }
     mirrorMarinaraUnits(
       s.marinara,
@@ -1901,6 +1905,18 @@ export function commandCombatDirector(s: CombatDirectorState, command: DirectedC
       throw new Error("Only a Marksman of the party loads ammunition.");
     if (!marinaraLoadAmmo(fighter, command.ammo)) throw new Error("The party owns no such ammunition.");
     log(s, `${u.name} loads ${command.ammo} ammunition.`, "marinara:ammo", u.id, source);
+    sync(s);
+    return;
+  }
+  // Channel Element: a bonus action, once between the caster's turns (Alyssa 2026-11-02).
+  if (command.type === "channelElement") {
+    const u = get(s, command.unitId);
+    const fighter = s.marinara ? marinaraFighter(s.marinara, command.unitId) : undefined;
+    if (!u || side(u) !== "party" || !fighter || fighter.hp <= 0 || !marinaraCanChannel(fighter))
+      throw new Error("Only a Channeler of the party channels an element.");
+    if (!marinaraChannelElement(fighter, command.element))
+      throw new Error("They already channeled this turn, or that is not an element.");
+    log(s, `${u.name} channels ${command.element}.`, "marinara:channel", u.id, source);
     sync(s);
     return;
   }

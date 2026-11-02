@@ -11,6 +11,7 @@ import {
   marinaraEffectiveStat,
   marinaraHitNumbers,
   marinaraOption,
+  marinaraChannelElement,
   marinaraTargetsFor,
   performMarinaraOption,
   type MarinaraFightContext,
@@ -419,6 +420,24 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
     "strength",
     "a heal with a sword runs on Strength",
   );
+}
+
+// Channel Element (Alyssa 2026-11-02): a Channeler's basic attacks and element spells strike with the
+// channeled element; a bonus action once between their turns; carried element spells find weaknesses.
+{
+  const mage = buildMarinaraEnemy({ id: "ch", name: "ch", level: 10, tier: "standard", archetype: "channeler" });
+  mage.side = "party";
+  mage.classId = "channeler";
+  mage.channelManual = true;
+  const foe = unit("f", "enemy");
+  foe.affinities = { ice: "weak", fire: "resist" };
+  const all = [mage, foe];
+  const basic = marinaraOption(mage, null, all)!.effect;
+  assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "fire", "fire until first channeled");
+  assert.ok(marinaraChannelElement(mage, "ice"), "channels ice");
+  assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "ice", "basic attacks strike with ice");
+  assert.equal(marinaraChannelElement(mage, "lightning"), false, "once between their turns");
+  assert.equal(marinaraChannelElement(mage, "slash" as never), false, "only elements");
 }
 
 console.log("game-marinara-abilities: ok");
