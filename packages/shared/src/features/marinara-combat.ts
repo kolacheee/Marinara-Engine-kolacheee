@@ -1397,6 +1397,21 @@ function powerStat(unit: MarinaraFighter, stat: MarinaraStat, effect: MarinaraEf
   return carried === undefined ? own : Math.max(own, carried * (own / Math.max(1, unit.stats[stat])));
 }
 
+/**
+ * Heals and shields grow with the caster's level as fight HP does (Alyssa 2026-11-02): max HP is
+ * multiplied by marinaraFightHpMultiplier, so a flat Magic-based heal fell from about a third of an
+ * ally's max HP at level 1 to under a fifth at level 30.
+ */
+function healScale(actor: MarinaraFighter): number {
+  return marinaraFightHpMultiplier(actor.level ?? 1) / marinaraFightHpMultiplier(1);
+}
+/** A Magic-based heal: (8 for Mend, 5 for the others) plus half the caster's Magic, scaled by level. */
+function magicHeal(actor: MarinaraFighter, effect: MarinaraEffect, all: readonly MarinaraFighter[]): number {
+  return (
+    (powerStat(actor, "magic", effect, all) * MARINARA_TUNING.healMagicPct + (effect.power ?? 0)) * healScale(actor)
+  );
+}
+
 /** The damage types this effect can hit with; an imbued weapon adds the elements. */
 function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly MarinaraDamageType[] {
   if (!actor.classId) {
@@ -2094,12 +2109,7 @@ export function marinaraSkillEstimate(
     const allies = effect.target === "self" ? [actor] : living(all.filter((unit) => unit.side === actor.side));
     if (!allies.length) return null;
     const amounts = allies.map((ally) =>
-      Math.round(
-        (effect.pctOfMax
-          ? ally.maxHp * effect.pctOfMax
-          : powerStat(actor, "magic", effect, all) * MARINARA_TUNING.healMagicPct + (effect.power ?? 0)) *
-          healFactor(ally),
-      ),
+      Math.round((effect.pctOfMax ? ally.maxHp * effect.pctOfMax : magicHeal(actor, effect, all)) * healFactor(ally)),
     );
     const max = Math.max(...amounts);
     return {
@@ -2589,9 +2599,7 @@ function act(
     }
     case "heal": {
       for (const target of targets) {
-        let amount = effect.pctOfMax
-          ? target.maxHp * effect.pctOfMax
-          : powerStat(actor, "magic", effect, all) * MARINARA_TUNING.healMagicPct + (effect.power ?? 0);
+        let amount = effect.pctOfMax ? target.maxHp * effect.pctOfMax : magicHeal(actor, effect, all);
         const crit = !!hooks.healCrit && random() < 0.15;
         if (crit) amount *= 1.5;
         amount *= healFactor(target);
@@ -2631,7 +2639,7 @@ function act(
     }
     case "shield": {
       for (const target of targets) {
-        const amount = Math.round(powerStat(actor, "magic", effect, all) + (effect.power ?? 0));
+        const amount = Math.round((powerStat(actor, "magic", effect, all) + (effect.power ?? 0)) * healScale(actor));
         target.shield += amount;
         ctx.events.push({ kind: "shield", actorId: actor.id, targetId: target.id, skillId, amount });
       }
