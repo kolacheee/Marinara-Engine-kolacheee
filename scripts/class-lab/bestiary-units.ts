@@ -86,7 +86,7 @@ const LINE_PARTIES: Record<string, string[][]> = {
   classic: [
     ["blade", "duelist", "headsman"],
     ["guard", "sentinel", "stonewall"],
-    ["channeler", "fusionist", "stormcaller"],
+    ["channeler", "elementalist", "stormcaller"],
     ["mender", "cleric", "saint"],
   ],
   skirmish: [

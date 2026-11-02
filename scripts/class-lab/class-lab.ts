@@ -423,7 +423,7 @@ function phase3(count: number): string {
       ["master", 20],
       ["master", 30],
     ] as const) {
-      const reference = tier === "base" ? "channeler" : tier === "advanced" ? "fusionist" : "stormcaller";
+      const reference = tier === "base" ? "channeler" : tier === "advanced" ? "elementalist" : "stormcaller";
       let lo = 0.3;
       let hi = 6;
       for (let step = 0; step < 12; step++) {
@@ -472,7 +472,7 @@ function phase3(count: number): string {
 
 /** The scale that puts the party with a Channeler-line class of this tier and level at about 65% wins. */
 function calibrate(tier: "base" | "advanced" | "master", level: number): number {
-  const reference = tier === "base" ? "channeler" : tier === "advanced" ? "fusionist" : "stormcaller";
+  const reference = tier === "base" ? "channeler" : tier === "advanced" ? "elementalist" : "stormcaller";
   let lo = 0.3;
   let hi = 8;
   for (let step = 0; step < 12; step++) {

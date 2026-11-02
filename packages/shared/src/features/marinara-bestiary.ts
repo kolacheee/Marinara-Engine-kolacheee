@@ -1351,7 +1351,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     summary: "A spellcaster, psion or hacker: elemental bolts from the back row, area fire once grown.",
     mind: "tactical",
     temperaments: ["arrogant", "methodical", "cautious"],
-    classLine: ["channeler", "fusionist", "stormcaller"],
+    classLine: ["channeler", "elementalist", "stormcaller"],
     row: "back",
     abilities: at(["shield-ally", 6]),
     levels: [1, 30],

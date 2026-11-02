@@ -380,7 +380,6 @@ const SKILL_DAMAGE: Record<string, MarinaraSkillDamage> = {
   headshot: "weapon",
   volley: "weapon",
   "ruinous-barrage": "blunt",
-  "twin-cast": "element",
   tempest: "element",
   starfall: "light",
   convergence: "element",
@@ -1109,20 +1108,25 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       ],
     },
     {
-      id: "fusionist",
-      label: "Fusionist",
+      id: "elementalist",
+      label: "Elementalist",
       from: "channeler",
-      role: "Mages who cast two elements at once.",
+      role: "Mages whose element leaves its mark.",
       leans: ["magic", "skill"],
       skills: [
-        active("twin-cast", "Twin Cast", 10, "magic", 6, "Casts two spells on one foe in one action."),
+        passive(
+          "element-mastery",
+          "Element Mastery",
+          10,
+          "Hits in the channeled element add an effect. Fire burns the target for 4% of their max HP a turn for 2 turns. Ice reduces their Speed by 15% for 2 turns. Lightning increases critical rate by 10%. Further hits renew the time instead of stacking.",
+        ),
         passive("attunement", "Attunement", 15, "Increases spell damage by 15%.", true),
       ],
     },
     {
       id: "stormcaller",
       label: "Stormcaller",
-      from: "fusionist",
+      from: "elementalist",
       role: "Weather-callers who strike every foe at once with the channeled element.",
       leans: ["magic", "speed"],
       skills: [
