@@ -433,7 +433,7 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   foe.affinities = { ice: "weak", fire: "resist" };
   const all = [mage, foe];
   const basic = marinaraOption(mage, null, all)!.effect;
-  assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "fire", "fire until first channeled");
+  assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "arcane", "raw magic until first channeled");
   assert.ok(marinaraChannelElement(mage, "ice"), "channels ice");
   assert.equal(marinaraHitNumbers(mage, foe, basic, all).type, "ice", "basic attacks strike with ice");
   assert.equal(marinaraChannelElement(mage, "lightning"), false, "once between their turns");
