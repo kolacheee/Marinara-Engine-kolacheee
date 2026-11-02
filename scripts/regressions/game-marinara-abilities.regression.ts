@@ -8,7 +8,9 @@ import assert from "node:assert/strict";
 import {
   beginMarinaraTurn,
   buildMarinaraEnemy,
+  marinaraBasicAttack,
   marinaraEffectiveStat,
+  marinaraExpectedHit,
   marinaraHitNumbers,
   marinaraOption,
   marinaraChannelElement,
@@ -276,14 +278,32 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(marinaraEffectiveStat(ally, "speed", all) > before * 1.1, "the Speed song doubles");
 }
 
-// Formation: party Defense only while no one is down.
+// Draw Fire / Hold Fast / Kill Zone: an ally draws the foes, takes less, and the party hits harder.
 {
-  const captain = unit("cp", "party", ["formation"]);
-  const ally = unit("al", "party");
-  const all = [captain, ally, unit("f", "enemy")];
-  const whole = marinaraEffectiveStat(captain, "defense", all);
-  ally.hp = 0;
-  assert.ok(marinaraEffectiveStat(captain, "defense", all) < whole, "lost once someone falls");
+  const captain = unit("cp", "party", ["draw-fire", "hold-fast", "kill-zone"]);
+  const tank = unit("tk", "party");
+  const foe = unit("f", "enemy");
+  const all = [captain, tank, foe];
+  const option = marinaraOption(captain, "draw-fire", all);
+  assert.ok(option, "the captain can use Draw Fire");
+  assert.ok(!marinaraTargetsFor(captain, option!.effect, all).includes(captain), "Draw Fire goes on someone else");
+  const hitBefore = marinaraExpectedHit(foe, tank, marinaraBasicAttack(foe), all);
+  const dealtBefore = marinaraExpectedHit(captain, foe, marinaraBasicAttack(captain), all);
+  use(captain, "draw-fire", [tank], all);
+  assert.ok(tank.provoking > 0 && captain.provoking === 0, "the tank provokes, not the captain");
+  assert.deepEqual(
+    marinaraTargetsFor(foe, marinaraBasicAttack(foe), all).map((u) => u.id),
+    ["tk"],
+    "foes must attack the tank",
+  );
+  assert.ok(
+    marinaraExpectedHit(foe, tank, marinaraBasicAttack(foe), all) < hitBefore,
+    "Hold Fast: the tank takes less",
+  );
+  assert.ok(
+    marinaraExpectedHit(captain, foe, marinaraBasicAttack(captain), all) > dealtBefore,
+    "Kill Zone: the party deals more",
+  );
 }
 
 // Raise the Banner: frees the party of confusion and keeps it off.
