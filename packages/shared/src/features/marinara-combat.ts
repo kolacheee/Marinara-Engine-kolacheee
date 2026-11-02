@@ -197,8 +197,9 @@ export interface MarinaraEffect {
   selfDebuff?: { stat: MarinaraStat; pct: number; duration: number };
   /** Lowers the target's stat after a hit (Shield Bash stagger, Sundering). */
   onHit?: { stat: MarinaraStat | "damage"; pct: number; duration: number };
-  /** Damage counted from another stat (Verdict: Resistance). */
-  from?: MarinaraStat;
+  /** Damage counted from another stat; "guard" is Defense or Resistance, whichever is higher
+   *  (Verdict; Alyssa 2026-11-02). */
+  from?: MarinaraStat | "guard";
   /** Extra damage below this share of the target's HP (finishers). */
   finisher?: { below: number; bonus: number };
 }
@@ -291,7 +292,7 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
     sideCooldown: true,
   },
   spellguard: { kind: "buff", target: "party", stat: "resistance", pct: 0.3, duration: 2 },
-  verdict: dmg("magic", 6, { from: "resistance" }),
+  verdict: dmg("magic", 6, { from: "guard" }),
   // Balance pass (2026-11-01): the Pure Guard line's taunt; its tank held fewer fights than a Sentinel's.
   "warding-stance": { kind: "buff", target: "self", stat: "resistance", pct: 0.5, duration: 2, provokes: 2 },
   // Oath of Iron: nobody of the party drops below 1 HP until their next turn.
@@ -1623,7 +1624,12 @@ export function marinaraHitNumbers(
 ): MarinaraHitNumbers {
   const hooks = hooksOf(actor);
   const magic = effect.damage === "magic";
-  const attackStat = effect.from ?? effect.scales ?? (magic ? "magic" : "strength");
+  const attackStat =
+    effect.from === "guard"
+      ? marinaraEffectiveStat(actor, "defense", all) > marinaraEffectiveStat(actor, "resistance", all)
+        ? "defense"
+        : "resistance"
+      : (effect.from ?? effect.scales ?? (magic ? "magic" : "strength"));
   const guard =
     marinaraEffectiveStat(target, magic ? "resistance" : "defense", all) *
     (1 - (effect.pierce ?? 0)) *
