@@ -665,8 +665,8 @@ export interface MarinaraPassiveHooks {
   partyProvokerTakenPct?: number;
   /** Kill Zone: while an ally of the holder provokes, the party deals this much more damage. */
   partyDamageWhileProvoked?: number;
-  /** Defiance: allies of the holder below half HP deal this much more damage. */
-  partyDamageBelowHalf?: number;
+  /** Morale: the holder's side resists each harmful status ailment this share of the time. */
+  partyStatusResistPct?: number;
   /** A buff on a party member moves its next turn this share of a turn sooner (Tempo). */
   tempoPct?: number;
   /** The user's turns take this share longer (Heavy Draw). */
@@ -752,8 +752,8 @@ export const MARINARA_PASSIVES: Record<string, MarinaraPassiveHooks> = {
   tempo: { tempoPct: 0.15 },
   "hold-fast": { partyProvokerTakenPct: -0.15 },
   "kill-zone": { partyDamageWhileProvoked: 0.15 },
-  // Replaced Inspire (Alyssa 2026-11-02): a Standard-Bearer can't keep allies whole, so it rewards the hurt.
-  defiance: { partyDamageBelowHalf: 0.2 },
+  // Replaced Inspire, then Defiance (Alyssa 2026-11-02): useful in any party, no healing needed.
+  morale: { partyStatusResistPct: 0.3 },
   "fortunes-favour": { partyCritBonus: 10 },
 };
 
@@ -1929,7 +1929,6 @@ export function marinaraHitNumbers(
     if (allyHooks.partyDamageWhileWhole && all.filter((u) => u.side === actor.side).every((u) => u.hp > 0))
       pct += allyHooks.partyDamageWhileWhole;
     if (target.marked > 0) pct += allyHooks.partyBonusVsMarked ?? 0;
-    if (actor.hp < actor.maxHp / 2) pct += allyHooks.partyDamageBelowHalf ?? 0;
     if (
       allyHooks.partyDamageWhileProvoked &&
       living(all.filter((u) => u.side === actor.side)).some((u) => u.provoking > 0)
@@ -2221,14 +2220,35 @@ function shrugsOff(target: MarinaraFighter, status: string): boolean {
   );
 }
 
+/**
+ * Morale (Standard-Bearer, Alyssa 2026-11-02): while a holder stands, their side resists each harmful
+ * status ailment some of the time.
+ */
+function moraleHolds(
+  target: MarinaraFighter,
+  status: string,
+  all: readonly MarinaraFighter[],
+  random: () => number,
+): boolean {
+  if (!HARMFUL.has(status as MarinaraStatusId)) return false;
+  const pct = Math.max(
+    0,
+    ...living(all.filter((u) => u.side === target.side)).map((u) => hooksOf(u).partyStatusResistPct ?? 0),
+  );
+  return pct > 0 && random() < pct;
+}
+
 function addStatus(
   target: MarinaraFighter,
   applies: NonNullable<MarinaraEffect["applies"]>,
   bonus: number,
-  by?: string,
+  by: string | undefined,
+  all: readonly MarinaraFighter[],
+  random: () => number,
 ) {
   if (applies.status === "poison" && marinaraAffinityMultiplier(target.affinities, "poison") <= 0) return false;
   if (shrugsOff(target, applies.status)) return false;
+  if (moraleHolds(target, applies.status, all, random)) return false;
   target.statuses = target.statuses.filter((s) => s.status !== applies.status);
   target.statuses.push({
     status: applies.status,
@@ -2725,7 +2745,7 @@ function act(
         if (
           effect.applies &&
           random() < (effect.applies.chance ?? 1) &&
-          addStatus(target, effect.applies, durationBonus, actor.id)
+          addStatus(target, effect.applies, durationBonus, actor.id, all, random)
         )
           ctx.events.push({
             kind: "status",
@@ -2746,7 +2766,10 @@ function act(
         const chance =
           (effect.chance ?? 1) *
           (effect.status === "confuse" && target.tier === "elite" ? 1 - MARINARA_BOSS_RULES.eliteConfuseResist : 1);
-        if (effect.status !== "regen" && (roll > chance || shrugsOff(target, effect.status!))) {
+        if (
+          effect.status !== "regen" &&
+          (roll > chance || shrugsOff(target, effect.status!) || moraleHolds(target, effect.status!, all, random))
+        ) {
           ctx.events.push({ kind: "resist", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
           continue;
         }
@@ -2765,7 +2788,7 @@ function act(
           addMod(target, "damage-taken", effect.exposes.pct, effect.exposes.duration + durationBonus, "exposed");
         ctx.events.push({ kind: "status", actorId: actor.id, targetId: target.id, skillId, status: effect.status });
         // A second status riding on it (Wither's Wound).
-        if (effect.applies && addStatus(target, effect.applies, durationBonus, actor.id))
+        if (effect.applies && addStatus(target, effect.applies, durationBonus, actor.id, all, random))
           ctx.events.push({
             kind: "status",
             actorId: actor.id,
@@ -3039,7 +3062,14 @@ function strikeOnce(
     const status = (MARINARA_ELEMENT_AILMENTS as Partial<Record<string, MarinaraStatusId>>)[type];
     if (
       status &&
-      addStatus(target, { status, duration: m.turns, ...(status === "burn" ? { power: m.burnPct } : {}) }, 0, actor.id)
+      addStatus(
+        target,
+        { status, duration: m.turns, ...(status === "burn" ? { power: m.burnPct } : {}) },
+        0,
+        actor.id,
+        all,
+        random,
+      )
     )
       ctx.events.push({ kind: "debuff", actorId: actor.id, targetId: target.id, status, skillId: "element-mastery" });
   }
@@ -3052,7 +3082,12 @@ function strikeOnce(
     addMod(target, "damage-taken", actor.exposeNext, 2, "exposed");
     actor.exposeNext = undefined;
   }
-  if (effect.applies && amount > 0 && random() < (effect.applies.chance ?? 1) && addStatus(target, effect.applies, 0))
+  if (
+    effect.applies &&
+    amount > 0 &&
+    random() < (effect.applies.chance ?? 1) &&
+    addStatus(target, effect.applies, 0, undefined, all, random)
+  )
     ctx.events.push({ kind: "status", actorId: actor.id, targetId: target.id, skillId, status: effect.applies.status });
   if (hooks.hitsLowerDefense) addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
   if (target.statuses.some((s) => s.status === "sleep"))
