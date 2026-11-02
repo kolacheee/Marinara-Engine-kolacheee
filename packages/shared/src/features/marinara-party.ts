@@ -13,6 +13,7 @@ import {
   createMarinaraProgression,
   isMarinaraPartyTemperament,
   marinaraClass,
+  marinaraClassBody,
   type MarinaraArchetype,
   type MarinaraPartyTemperament,
   type MarinaraProgression,
@@ -312,7 +313,12 @@ export function readMarinaraCardProgression(value: unknown): MarinaraCardProgres
     !MARINARA_STATS.every((stat) => typeof p.stats![stat] === "number")
   )
     return undefined;
-  return value as MarinaraCardProgression;
+  const progression = value as MarinaraCardProgression;
+  // Saves from before 2026-11-02 grew stats with the character level; the body now follows the
+  // active class, so it is recomputed (deterministically) on read.
+  if (!p.classLevels || !p.aptitudes || !MARINARA_STATS.every((stat) => typeof p.aptitudes![stat] === "number"))
+    return progression;
+  return { ...progression, ...marinaraClassBody(progression) };
 }
 
 /** What a fighter takes from its gear. */

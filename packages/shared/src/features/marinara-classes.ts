@@ -1933,11 +1933,11 @@ export function marinaraKeptTraits(progression: MarinaraProgression): readonly s
  * was; a promotion starts at its parent's class level and adds its promotion bonus once.
  */
 export function setMarinaraClass(progression: MarinaraProgression, classId: string): MarinaraProgression {
-  if (progression.classLevels[classId] !== undefined) return { ...progression, activeClass: classId };
+  if (progression.classLevels[classId] !== undefined)
+    return withMarinaraClassBody({ ...progression, activeClass: classId });
   const block = marinaraClassBlock(progression, classId);
   if (block) throw new Error(marinaraClassBlockText(progression, classId, block));
   const def = marinaraClass(classId)!;
-  const bonus = marinaraPromotionBonus(def);
   const startLevel = def.from ? progression.classLevels[def.from]! : 1;
   const promoted: MarinaraProgression = {
     ...progression,
@@ -1946,10 +1946,9 @@ export function setMarinaraClass(progression: MarinaraProgression, classId: stri
     // A promotion keeps the parent class's progress toward its next level (playtest 2026-11-01: starting
     // at 0 left the class a level behind the character, and the next promotion was refused).
     classXp: { ...progression.classXp, [classId]: def.from ? (progression.classXp[def.from] ?? 0) : 0 },
-    stats: statRecord((stat) => progression.stats[stat] + bonus[stat]),
-    expected: statRecord((stat) => progression.expected[stat] + bonus[stat]),
   };
-  return def.from ? { ...promoted, carried: promotionCarries(promoted, def) } : promoted;
+  const bodied = withMarinaraClassBody(promoted);
+  return def.from ? { ...bodied, carried: promotionCarries(bodied, def) } : bodied;
 }
 
 /**
@@ -2095,10 +2094,32 @@ export function rollMarinaraLevelUp(
   random: () => number,
 ): { progression: MarinaraProgression; levelUp: MarinaraLevelUp } {
   const def = marinaraClass(progression.activeClass)!;
-  const growth = marinaraClassGrowth(def);
+  const rolled = rollMarinaraGains(
+    marinaraClassGrowth(def),
+    progression.aptitudes,
+    progression.stats,
+    progression.expected,
+    random,
+  );
+  const level = progression.level + 1;
+  return {
+    progression: { ...progression, level, stats: rolled.stats, expected: rolled.expected },
+    levelUp: { level, gains: rolled.gains },
+  };
+}
+
+/** One level's rolls: each stat d100 under its growth plus aptitude (plus the drift bonus when it has
+ *  fallen behind what it should be); at least `MARINARA_GROWTH_FLOOR` stats rise. */
+function rollMarinaraGains(
+  growth: MarinaraStats,
+  aptitudes: MarinaraStats,
+  stats: MarinaraStats,
+  expected: MarinaraStats,
+  random: () => number,
+): { stats: MarinaraStats; expected: MarinaraStats; gains: Partial<MarinaraStats> } {
   const chance = statRecord((stat) => {
-    const base = Math.max(0, growth[stat] + progression.aptitudes[stat]);
-    const behind = progression.expected[stat] - progression.stats[stat] > MARINARA_DRIFT_GAP;
+    const base = Math.max(0, growth[stat] + aptitudes[stat]);
+    const behind = expected[stat] - stats[stat] > MARINARA_DRIFT_GAP;
     return base + (behind && base > 0 ? MARINARA_DRIFT_BONUS : 0);
   });
   const gains: Partial<MarinaraStats> = {};
@@ -2113,18 +2134,68 @@ export function rollMarinaraLevelUp(
     if (risen() >= MARINARA_GROWTH_FLOOR) break;
     if (!gains[stat] && chance[stat] > 0) gains[stat] = 1;
   }
-  const level = progression.level + 1;
   return {
-    progression: {
-      ...progression,
-      level,
-      stats: statRecord((stat) => progression.stats[stat] + (gains[stat] ?? 0)),
-      expected: statRecord(
-        (stat) => progression.expected[stat] + Math.max(0, growth[stat] + progression.aptitudes[stat]) / 100,
-      ),
-    },
-    levelUp: { level, gains },
+    stats: statRecord((stat) => stats[stat] + (gains[stat] ?? 0)),
+    expected: statRecord((stat) => expected[stat] + Math.max(0, growth[stat] + aptitudes[stat]) / 100),
+    gains,
   };
+}
+
+/** What a character's class bodies roll from: fixed per character, so a class always gives the same body. */
+function marinaraBodySeed(progression: MarinaraProgression): string {
+  return `${progression.primary}:${progression.temperament}:${MARINARA_STATS.map((stat) => progression.aptitudes[stat]).join(",")}`;
+}
+
+/**
+ * A class's body (Alyssa 2026-11-02: "they should have the body stat of whatever class they have
+ * active"): its archetype's start, grown level by level to the class's own level, each level rolled
+ * with the growth of the class in its line that holds it (base to 10, advanced to 20, master past it),
+ * plus each promotion's bonus. Every level of every class rolls from its own seeded stream, so the same
+ * class at the same level is always the same body, however often the character switches.
+ */
+export function marinaraClassBody(
+  progression: MarinaraProgression,
+  classId: string = progression.activeClass,
+): { stats: MarinaraStats; expected: MarinaraStats } {
+  const def = marinaraClass(classId);
+  if (!def) return { stats: { ...progression.stats }, expected: { ...progression.expected } };
+  const line: MarinaraClassDef[] = [];
+  for (let one: MarinaraClassDef | undefined = def; one; one = one.from ? marinaraClass(one.from) : undefined)
+    line.unshift(one);
+  const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, progression.classLevels[classId] ?? 1));
+  let stats = { ...MARINARA_ARCHETYPE_BASES[def.archetype].start };
+  let expected = { ...stats };
+  const promoted = new Set<string>();
+  const promote = (one: MarinaraClassDef) => {
+    if (one.tier === "base" || promoted.has(one.id)) return;
+    promoted.add(one.id);
+    const bonus = marinaraPromotionBonus(one);
+    stats = statRecord((stat) => stats[stat] + bonus[stat]);
+    expected = statRecord((stat) => expected[stat] + bonus[stat]);
+  };
+  const seed = marinaraBodySeed(progression);
+  for (let at = 2; at <= level; at++) {
+    const step = at > MARINARA_PROMOTION_LEVEL.master ? 2 : at > MARINARA_PROMOTION_LEVEL.advanced ? 1 : 0;
+    const holder = line[Math.min(line.length - 1, step)]!;
+    promote(holder);
+    const rolled = rollMarinaraGains(
+      marinaraClassGrowth(holder),
+      progression.aptitudes,
+      stats,
+      expected,
+      marinaraRandom(`body:${seed}:${holder.id}:${at}`),
+    );
+    stats = rolled.stats;
+    expected = rolled.expected;
+  }
+  // A class promoted into at its threshold (Elementalist at 10) has its bonus before its first level.
+  for (const one of line) promote(one);
+  return { stats, expected };
+}
+
+/** The progression with its body set to its active class's (after a switch, a promotion or a class level). */
+export function withMarinaraClassBody(progression: MarinaraProgression): MarinaraProgression {
+  return { ...progression, ...marinaraClassBody(progression) };
 }
 
 /**
@@ -2151,7 +2222,7 @@ export const MARINARA_CLASS_CATCH_UP = { below: 0.5, multiplier: 2 } as const;
 export function awardMarinaraXp(
   progression: MarinaraProgression,
   xp: number,
-  random: () => number,
+  _random?: () => number,
 ): { progression: MarinaraProgression; levelUps: MarinaraLevelUp[] } {
   // Class catch-up (Alyssa 2026-11-01, item 7): a class trained below half the character's level earns
   // double class XP, so trying the secondary tree late isn't a grind from class level 1.
@@ -2168,11 +2239,10 @@ export function awardMarinaraXp(
     },
   };
   const levelUps: MarinaraLevelUp[] = [];
+  // The character's level counts XP, catch-up and encounters; the body grows with the class's level.
   while (next.xp >= MARINARA_XP_PER_LEVEL && next.level < MARINARA_LEVEL_CAP) {
-    next = { ...next, xp: next.xp - MARINARA_XP_PER_LEVEL };
-    const rolled = rollMarinaraLevelUp(next, random);
-    next = rolled.progression;
-    levelUps.push(rolled.levelUp);
+    next = { ...next, xp: next.xp - MARINARA_XP_PER_LEVEL, level: next.level + 1 };
+    levelUps.push({ level: next.level, gains: {} });
   }
   if (next.level >= MARINARA_LEVEL_CAP) next = { ...next, xp: 0 };
   const active = next.activeClass;
@@ -2183,11 +2253,20 @@ export function awardMarinaraXp(
     classLevel++;
   }
   if (classLevel >= MARINARA_LEVEL_CAP) classXp = 0;
-  next = {
+  const before = next.stats;
+  next = withMarinaraClassBody({
     ...next,
     classXp: { ...next.classXp, [active]: classXp },
     classLevels: { ...next.classLevels, [active]: classLevel },
-  };
+  });
+  // What the class's new levels gave, shown with the last level-up (or alone when only the class rose).
+  const gains: Partial<MarinaraStats> = {};
+  for (const stat of MARINARA_STATS)
+    if (next.stats[stat] !== before[stat]) gains[stat] = next.stats[stat] - before[stat];
+  if (Object.keys(gains).length) {
+    if (levelUps.length) levelUps[levelUps.length - 1]!.gains = gains;
+    else levelUps.push({ level: next.level, gains });
+  }
   return { progression: next, levelUps };
 }
 
