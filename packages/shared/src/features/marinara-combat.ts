@@ -1540,7 +1540,13 @@ export function marinaraCanChannel(actor: MarinaraFighter): boolean {
   // A Channeler-tree class, or anyone carrying a Channeler element spell (Tempest...) or rune buff.
   return (
     actor.archetype === "channeler" ||
-    actor.skills.some((skill) => skill.damage === "element" || MARINARA_SKILL_EFFECTS[skill.id]?.stat === "imbue")
+    actor.skills.some(
+      (skill) =>
+        skill.id === "channel-element" ||
+        skill.id.startsWith("greater-channel-element") ||
+        skill.damage === "element" ||
+        MARINARA_SKILL_EFFECTS[skill.id]?.stat === "imbue",
+    )
   );
 }
 

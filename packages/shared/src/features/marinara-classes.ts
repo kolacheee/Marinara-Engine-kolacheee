@@ -1925,8 +1925,7 @@ export function marinaraClassBlockText(progression: MarinaraProgression, classId
 /** The skills every class of the active class's tree keeps (Cover, Hold the Line): they need no
  *  carry slot. */
 export function marinaraKeptTraits(progression: MarinaraProgression): readonly string[] {
-  const archetype = marinaraClass(progression.activeClass)?.archetype;
-  return (archetype && MARINARA_ARCHETYPE_TRAITS[archetype]) || [];
+  return marinaraClassTraits(progression.activeClass);
 }
 
 /**
@@ -2007,14 +2006,36 @@ export function marinaraLearnedSkills(progression: MarinaraProgression): Array<M
  */
 export const MARINARA_ARCHETYPE_TRAITS: Partial<Record<MarinaraArchetype, readonly string[]>> = {
   guard: ["hold-the-line", "cover"],
+  // Every Channeler-tree class channels (Alyssa 2026-11-02); the Pure line has Greater Channel instead.
+  channeler: ["channel-element"],
 };
+
+/** The tree traits a class keeps: its tree's, less Channel Element for the Pure line (Greater Channel). */
+export function marinaraClassTraits(classId: string): readonly string[] {
+  const def = marinaraClass(classId);
+  if (!def) return [];
+  const traits = MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? [];
+  return def.pure ? traits.filter((id) => id !== "channel-element") : traits;
+}
+
+/** Whether a skill can't be carried because what the character already fights with covers it: Channel
+ *  Element beside Greater Channel Element (playtest 2026-11-02: the carry list still offered it). */
+export function marinaraCarryRedundant(progression: MarinaraProgression, skillId: string): boolean {
+  if (skillId !== "channel-element") return false;
+  const greater = (id: string) => id.startsWith("greater-channel-element");
+  return (
+    marinaraLearnedSkills(progression).some(
+      (skill) => skill.classId === progression.activeClass && greater(skill.id),
+    ) || progression.carried.some(greater)
+  );
+}
 
 /** The skills a character fights with: their active class's learned skills and what they carry. */
 
 export function marinaraUsableSkills(progression: MarinaraProgression): Array<MarinaraSkillDef & { classId: string }> {
   const learned = marinaraLearnedSkills(progression);
   const archetype = marinaraClass(progression.activeClass)?.archetype;
-  const traits = (archetype && MARINARA_ARCHETYPE_TRAITS[archetype]) || [];
+  const traits = marinaraClassTraits(progression.activeClass);
   const own = learned.filter(
     (skill) =>
       skill.classId === progression.activeClass ||
@@ -2054,6 +2075,8 @@ export function setMarinaraCarried(progression: MarinaraProgression, skillIds: r
     // A tree trait from the active tree is kept anyway: carried too, it showed twice and took a slot.
     if (kept.includes(id) && marinaraClass(skill.classId)?.archetype === archetype)
       throw new Error(`${skill.label} is kept by every class of this tree; it needs no carry slot.`);
+    if (marinaraCarryRedundant({ ...progression, carried: unique.filter((one) => one !== id) }, id))
+      throw new Error(`${skill.label} isn't needed beside Greater Channel Element.`);
   }
   return { ...progression, carried: unique };
 }
