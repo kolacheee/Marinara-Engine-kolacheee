@@ -2546,15 +2546,6 @@ function strikeOnce(
     ctx.events.push({ kind: "cover", actorId: coverer.id, targetId: target.id });
     target = coverer;
   }
-  // Thousand Shadows: a decoy takes the hit instead, unless the target is stunned or asleep.
-  const shadow = marinaraHelpless(target)
-    ? undefined
-    : living(all.filter((u) => u.side === target.side)).find((u) => (u.decoys ?? 0) > 0);
-  if (shadow) {
-    shadow.decoys! -= 1;
-    ctx.events.push({ kind: "decoy", actorId: actor.id, targetId: target.id, skillId, amount: shadow.decoys });
-    return;
-  }
   const targetHooks = hooksOf(target);
   // Elusive: a separate 50% dodge before the normal roll, so the first attack halves its hit chance.
   if (targetHooks.evadeFirstHitEachRound && !target.evadedThisRound && !marinaraHelpless(target)) {
@@ -2612,6 +2603,15 @@ function strikeOnce(
       ctx.events.push({ kind: "counter", actorId: target.id, targetId: actor.id });
       strike(target, actor, counterAttack(target, targetHooks, all), all, ctx, false);
     }
+    return;
+  }
+  // Thousand Shadows: a decoy takes a hit that would land (not a miss or dodge), unless the target is stunned or asleep.
+  const shadow = marinaraHelpless(target)
+    ? undefined
+    : living(all.filter((u) => u.side === target.side)).find((u) => (u.decoys ?? 0) > 0);
+  if (shadow) {
+    shadow.decoys! -= 1;
+    ctx.events.push({ kind: "decoy", actorId: actor.id, targetId: target.id, skillId, amount: shadow.decoys });
     return;
   }
   let crit = random() * 100 < critChance;

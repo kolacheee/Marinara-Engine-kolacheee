@@ -901,7 +901,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "speed",
           14,
-          "Creates three decoys that take the next three hits on any party member. Once per battle.",
+          "Creates three decoys that take the next three hits that would land on any party member. Once per battle.",
           true,
         ),
         passive(
