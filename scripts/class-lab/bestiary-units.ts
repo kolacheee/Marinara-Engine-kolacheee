@@ -32,6 +32,9 @@ import {
 import {
   buildMarinaraEnemy,
   buildMarinaraPartyFighter,
+  marinaraAmmoChoices,
+  marinaraHitNumbers,
+  marinaraOption,
   registerMarinaraEnemySkills,
   type MarinaraEffect,
   type MarinaraFighter,
@@ -182,6 +185,13 @@ function grown(line: string[], level: number, seed: string): MarinaraProgression
 
 /** Standard gear on the party (marinara-items.ts): armour and weight stats, weapon power. LAB_GEAR=0 leaves it off. */
 export const LAB_GEAR = process.env.LAB_GEAR !== "0";
+/** The ammunition the reference parties own (Alyssa 2026-11-01: bought, loaded by hand): by default
+ *  the six martial and elemental types Ammo Pouch used to give; LAB_AMMO=none for none, or a list. */
+export const LAB_AMMO = (
+  process.env.LAB_AMMO === "none"
+    ? []
+    : (process.env.LAB_AMMO ?? "slash,pierce,blunt,fire,ice,lightning").split(",").filter(Boolean)
+) as MarinaraFighter["ammoOwned"] & string[];
 
 const partyCache = new Map<string, MarinaraFighter[]>();
 
@@ -198,25 +208,38 @@ export function referenceParty(name: string, level: number, seed: string): Marin
 
 function buildReferenceParty(name: string, level: number, seed: string): MarinaraFighter[] {
   const members = (REFERENCE_PARTIES[name] as Array<string[] | string>)!;
-  return members.map((member, n) => {
-    const progression =
-      typeof member === "string"
-        ? harnessGrown(member, level, `${name}:${seed}:${n}`)
-        : grown(member, level, `${name}:${seed}:${n}`);
-    const def = marinaraClass(progression.activeClass)!;
-    if (!LAB_GEAR) return buildMarinaraPartyFighter({ id: `p${n}`, name: def.label, progression });
-    const bonus = marinaraGearBonus(marinaraStandardEquipment(def.archetype, marinaraTierForLevel(level)), {
-      strength: progression.stats.strength,
-    });
-    const gearStats: Partial<MarinaraStats> = { ...bonus.stats };
-    delete gearStats.hp;
-    return buildMarinaraPartyFighter({
-      id: `p${n}`,
-      name: def.label,
-      progression,
-      gearStats,
-      gear: { power: bonus.power, spellPower: bonus.spellPower },
-    });
+  return members.map((member, n) => withAmmo(buildReferenceMember(member, n, name, level, seed)));
+}
+
+function withAmmo(fighter: MarinaraFighter): MarinaraFighter {
+  if (fighter.archetype === "marksman" && LAB_AMMO.length) fighter.ammoOwned = [...LAB_AMMO];
+  return fighter;
+}
+
+function buildReferenceMember(
+  member: string[] | string,
+  n: number,
+  name: string,
+  level: number,
+  seed: string,
+): MarinaraFighter {
+  const progression =
+    typeof member === "string"
+      ? harnessGrown(member, level, `${name}:${seed}:${n}`)
+      : grown(member, level, `${name}:${seed}:${n}`);
+  const def = marinaraClass(progression.activeClass)!;
+  if (!LAB_GEAR) return buildMarinaraPartyFighter({ id: `p${n}`, name: def.label, progression });
+  const bonus = marinaraGearBonus(marinaraStandardEquipment(def.archetype, marinaraTierForLevel(level)), {
+    strength: progression.stats.strength,
+  });
+  const gearStats: Partial<MarinaraStats> = { ...bonus.stats };
+  delete gearStats.hp;
+  return buildMarinaraPartyFighter({
+    id: `p${n}`,
+    name: def.label,
+    progression,
+    gearStats,
+    gear: { power: bonus.power, spellPower: bonus.spellPower },
   });
 }
 
@@ -250,10 +273,9 @@ export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], see
     }
     if (s.stage === "action" && s.actorId) {
       const unit = [...s.party, ...s.enemies].find((u) => u.id === s.actorId)!;
-      commandCombatDirector(s, {
-        type: "classic",
-        action: marinaraAiAction(s.marinara!, unit, s.round, "normal", false),
-      });
+      const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false);
+      loadBestAmmo(s.marinara!.fighters, unit.id, action);
+      commandCombatDirector(s, { type: "classic", action });
     } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
     else commandCombatDirector(s, { type: "continue" });
   }
@@ -268,6 +290,30 @@ export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], see
     downed: s.party.filter((u) => u.hp <= 0).length,
     rounds: s.round,
   };
+}
+
+/** The player playing the leader loads the ammunition that hurts the target most (the AI does it for
+ *  the rest by itself). */
+function loadBestAmmo(
+  fighters: MarinaraFighter[],
+  unitId: string,
+  action: { type: string; skillId?: string; targetId?: string },
+) {
+  const actor = fighters.find((one) => one.id === unitId);
+  const target = action.targetId ? fighters.find((one) => one.id === action.targetId) : undefined;
+  if (!actor || !target || (action.type !== "attack" && action.type !== "skill")) return;
+  const choices = marinaraAmmoChoices(actor);
+  if (!choices.length) return;
+  const option = marinaraOption(actor, action.type === "skill" ? (action.skillId ?? null) : null, fighters);
+  if (!option) return;
+  let best = choices[0]!;
+  let most = -Infinity;
+  for (const type of choices) {
+    actor.ammoLoaded = type;
+    const damage = marinaraHitNumbers(actor, target, option.effect, fighters).damage;
+    if (damage > most) [best, most] = [type, damage];
+  }
+  actor.ammoLoaded = best;
 }
 
 /** A numeric seed from a string key. */
