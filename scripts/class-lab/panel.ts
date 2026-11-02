@@ -429,6 +429,8 @@ function advance(g: Game, f: Fight, autoParty = 0) {
   const s = f.s;
   let autoLeft = autoParty;
   for (let steps = 0; steps < 6000 && !s.outcome; steps++) {
+    // The director keeps only its last 240 log lines; print as we go so a long run loses nothing.
+    if (steps % 20 === 0) for (const line of newLines(f)) say(line);
     if (s.mercy) break;
     if (s.tactical) {
       if (s.stage === "action" && s.actorId) {
