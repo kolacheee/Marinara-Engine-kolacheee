@@ -1698,8 +1698,8 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "Grand Strategy",
           20,
           "skill",
-          18,
-          "Every ally acts once, at once. Cooldown: 4 turns.",
+          6,
+          "Bonus action. Target ally acts at once. Cooldown: 2 turns.",
         ),
         passive(
           "kill-zone",
@@ -1737,7 +1737,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Legendary leaders the party steers by, who turn the tide when it matters.",
       leans: ["luck", "speed", "hp", "skill"],
       skills: [
-        active("hour-of-heroes", "Hour of Heroes", 20, "luck", 20, "Every ally acts once, at once. Once per battle."),
+        active("hour-of-heroes", "Hour of Heroes", 20, "luck", 20, "Every ally acts once, at once. Cooldown: 4 turns."),
         passive("fortunes-favour", "Fortune's Favour", 25, "Increases the party's critical rate by 10%.", true),
       ],
     },

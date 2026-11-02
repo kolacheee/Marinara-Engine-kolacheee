@@ -480,9 +480,10 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   crescendo: { kind: "buff", target: "party", stat: "crescendo", pct: 0, duration: 1, cooldown: 3, doubles: true },
   // Field Captain (reworked 2026-11-02, Alyssa): turns the foes onto an ally who can take it.
   "draw-fire": { kind: "provoke", target: "ally", duration: 2 },
-  "grand-strategy": { kind: "command", target: "party", cooldown: 4 },
+  // Reworked (Alyssa 2026-11-02): the old Command as a bonus action; the whole-party order is Hour of Heroes.
+  "grand-strategy": { kind: "command", target: "ally", cooldown: 2, bonusAction: true },
   "raise-the-banner": { kind: "buff", target: "party", stat: "damage", pct: 0.25, duration: 3, steadies: true },
-  "hour-of-heroes": { kind: "command", target: "party", oncePerFight: true },
+  "hour-of-heroes": { kind: "command", target: "party", cooldown: 4 },
 };
 
 /**
@@ -1835,7 +1836,7 @@ export function marinaraTargetsFor(
   if (effect.target === "party") return friends;
   // Guarding or watching over someone means someone else.
   if (effect.target === "ally")
-    return effect.kind === "cover" || effect.kind === "ward" || effect.kind === "provoke"
+    return effect.kind === "cover" || effect.kind === "ward" || effect.kind === "provoke" || effect.kind === "command"
       ? friends.filter((unit) => unit !== actor)
       : friends;
   if (effect.target === "downed-ally") return all.filter((unit) => unit.side === actor.side && unit.hp <= 0);
@@ -2864,6 +2865,10 @@ function act(
         if (target.id === actor.id || target.hp <= 0) continue;
         target.bonusTurns = (target.bonusTurns ?? 0) + 1;
         ctx.events.push({ kind: "command", actorId: actor.id, targetId: target.id, skillId });
+      }
+      if (effect.bonusAction && !actor.commanded) {
+        actor.bonusTurns = (actor.bonusTurns ?? 0) + 1;
+        ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId });
       }
       break;
   }

@@ -180,7 +180,7 @@ for (const turnOrder of ["side", "initiative"] as const) {
         commanded = true;
         commandCombatDirector(t, {
           type: "tactical",
-          action: { type: "skill", unitId: "hal", skillName: "Grand Strategy", targetId: "hal" } as never,
+          action: { type: "skill", unitId: "hal", skillName: "Grand Strategy", targetId: "ana" } as never,
         });
         continue;
       }
