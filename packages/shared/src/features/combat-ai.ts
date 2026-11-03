@@ -372,6 +372,9 @@ export interface CombatAiCandidate<T> {
   coordination?: number;
   /** What its own data says it goes for first (a ruleset creature's `behavior`, 1.763). */
   focus?: number;
+  /** Damage it keeps off its own side, as a share of a friend's HP: a foe killed before it acts, or held
+   *  down (Classic Marinara, Alyssa 2026-11-03: a dead or stunned foe deals no damage). Weighed as damage. */
+  prevented?: number;
   hold?: boolean;
 }
 
@@ -439,7 +442,17 @@ export interface RankedCombatCandidate<T> {
 /** What each weighed part of a candidate added to its score, after the unit's weights. */
 export type CombatAiScoreParts = Partial<
   Record<
-    "damage" | "finish" | "healing" | "support" | "setup" | "risk" | "cost" | "protection" | "coordination" | "focus",
+    "damage"
+    | "finish"
+    | "healing"
+    | "support"
+    | "setup"
+    | "risk"
+    | "cost"
+    | "protection"
+    | "coordination"
+    | "focus"
+    | "prevented",
     number
   >
 >;
@@ -506,6 +519,7 @@ export function rankCombatCandidates<T>(
     // A disciplined one keeps formation (T1): it goes where its side is going.
     coordination: adjective === "coordinated" ? 1.5 : adjective === "disciplined" ? 1 : 0,
     focus: 1,
+    prevented: 1,
   };
   // What it is bends how it weighs things. A mindless creature knows only to hit; an animal drags down
   // the weakest and minds its own hide once hurt; a genius never ignores the danger it stands in.
@@ -520,6 +534,7 @@ export function rankCombatCandidates<T>(
       protection: 0,
       coordination: 0,
       focus: 0,
+      prevented: 0,
     });
   else if (profile.mind === "instinct") {
     weights.finish *= 2;
@@ -572,7 +587,8 @@ export function rankCombatCandidates<T>(
     (candidate.finish ?? 0) * weights.finish +
     (candidate.healing ?? 0) * weights.healing +
     (candidate.support ?? 0) * weights.support +
-    (candidate.setup ?? 0) * weights.setup;
+    (candidate.setup ?? 0) * weights.setup +
+    (candidate.prevented ?? 0) * weights.prevented;
   const most = Math.max(0, ...candidates.map(gains));
   const stakes = Math.min(1, Math.max(0.1, most / COMBAT_AI_FULL_STAKES));
   const scored = candidates.map((candidate) => {
@@ -590,6 +606,7 @@ export function rankCombatCandidates<T>(
       "protection",
       "coordination",
       "focus",
+      "prevented",
     ] as const) {
       const part = (candidate[key] ?? 0) * weights[key] * (key === "risk" || key === "cost" ? -1 : 1);
       score += part;
