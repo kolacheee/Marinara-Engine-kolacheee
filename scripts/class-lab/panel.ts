@@ -33,6 +33,7 @@ import {
   marinaraClass,
   marinaraClassBlock,
   marinaraLearnedSkills,
+  marinaraSkillsLeftBehind,
   marinaraOpenClasses,
   marinaraRandom,
   marinaraTrees,
@@ -267,9 +268,16 @@ function grow(g: Game, to: number) {
   show(g);
 }
 
-function setClass(g: Game, name: string, classId: string) {
+function setClass(g: Game, name: string, classId: string, confirmed = false) {
   const m = member(g, name);
   const before = m.marinara!.activeClass;
+  // The class screen asks before a switch or promotion that loses skills (Engine 5461c5934); so does the panel.
+  const lost = marinaraSkillsLeftBehind(m.marinara!, classId);
+  if (lost.length && !confirmed) {
+    say(`${m.name} would LOSE these skills by taking ${cls(classId)}: ${lost.map((k) => `${k.label} [${k.id}]`).join(", ")}.`);
+    say(`Carry the ones you want first (\`carryable ${m.name}\`, \`carry ${m.name} <skillId...>\`), or repeat the command with \`confirm\` at the end to go ahead.`);
+    return;
+  }
   m.marinara = setMarinaraClass(m.marinara!, classId) as MarinaraCardProgression;
   save(g);
   say(`${m.name}: ${cls(before)} -> ${cls(classId)} (class level ${m.marinara.classLevels[classId]}).`);
@@ -690,7 +698,7 @@ function tunit(f: Fight, ref: string) {
   console.log(`  Skills (use \`tact ${labels.get(u.id)} skill <n> [target] [x y]\`; range in tiles from where it acts, "reach" = its attack reach):`);
   if (!list.length) console.log("   none yet");
   list.forEach(({ fs, tk, usable }, i) => {
-    const cost = fs.cost ? `${fs.cost} ${fs.resource}` : "free";
+    const cost = fs.cost ? `${fs.cost} ${fs.resource}` : "no cost";
     const aims = tk?.aims ?? (fs as { effect?: { target?: string } }).effect?.target ?? "single";
     const est = tk?.estimate ? ` ~${JSON.stringify(tk.estimate)}` : "";
     if (!tk) return console.log(`   ${i + 1}. ${fs.label} (passive or free action, not a board action) - ${fs.summary}`);
@@ -811,7 +819,7 @@ try {
     case "row": { const gg = need(); const m = member(gg, args[0]!); if (args[1] !== "front" && args[1] !== "back") throw new Error("row <name> front|back"); m.row = args[1]; save(gg); say(`${m.name} will fight in the ${args[1]} row (Classic).`); break; }
     case "grow": grow(need(), Number(args[0])); break;
     case "promote":
-    case "switch": setClass(need(), args[0]!, args[1]!); break;
+    case "switch": setClass(need(), args[0]!, args[1]!, args[2] === "confirm"); break;
     case "carry": setCarry(need(), args[0]!, args.slice(1)); break;
     case "carryable": carryable(need(), args[0]!); break;
     case "fight": startFight(need(), (args[0] as "classic" | "tactical") ?? "classic", (args[1] as MarinaraEncounterDifficulty) ?? "normal", args[2] === "boss"); break;
@@ -887,7 +895,7 @@ try {
   pick <name> <tree> [baseClassId]   primary tree (and optionally start in the secondary tree's base class)
   row <name> front|back              Classic row
   grow <level>                       train the party up to a level in their current classes
-  promote|switch <name> <classId>    take a promotion / switch class (outside fights)
+  promote|switch <name> <classId> [confirm]   take a promotion / switch class (outside fights; asks first if skills would be lost)
   carryable <name> / carry <name> <skillId...>   carried skills (max ${MARINARA_CARRY_SLOTS})
   fight classic|tactical easy|normal|hard|deadly [boss]
   act <n> / auto / auto all          Classic turns
