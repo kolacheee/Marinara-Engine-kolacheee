@@ -542,7 +542,9 @@ function playFight(level: number, n: number) {
                 `STAY r${s.round} ${unit.id} @${unit.x},${unit.y} mv${unit.movement} rng${unit.attackRange.max} path${pathBefore} board ${s.tactical.width}x${s.tactical.height} units ${s.tactical.units
                   .filter((o) => o.hp > 0)
                   .map((o) => `${o.side[0]}${o.id}@${o.x},${o.y}`)
-                  .join(" ")} blocked ${JSON.stringify((s.tactical as { terrain?: unknown }).terrain ?? "").slice(0, 0)}`,
+                  .join(
+                    " ",
+                  )} blocked ${JSON.stringify((s.tactical as { terrain?: unknown }).terrain ?? "").slice(0, 0)}`,
               );
             approach.set(key, (approach.get(key) ?? 0) + 1);
           }
