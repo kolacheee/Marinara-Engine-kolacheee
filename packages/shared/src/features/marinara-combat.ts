@@ -1553,7 +1553,17 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
       return [
         ...new Set([...weaponOptions(actor, type), ...marinaraChannelChoices(actor).filter((one) => one !== "arcane")]),
       ];
-    if (element !== "arcane") return [element];
+    if (element !== "arcane") {
+      // A Marksman's ammunition meets the channel by the five phases (marinaraChanneledShot).
+      const ammo = type === "weapon" || type === "any-physical" ? marinaraAmmoChoices(actor) : [];
+      if (!ammo.length) return [element];
+      const loaded = actor.ammoAuto
+        ? ammo
+        : actor.ammoLoaded && ammo.includes(actor.ammoLoaded)
+          ? [actor.ammoLoaded]
+          : weaponOptions(actor, type);
+      return [...new Set(loaded.map((shot) => marinaraChanneledShot(shot, element)))];
+    }
   }
   const options = weaponOptions(actor, type);
   // Edge Runes / Grand Inscription: weapon attacks and skills also strike in the caster's channeled element.
@@ -1569,6 +1579,44 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
     return runes.length ? [...new Set([...shots, ...runes])] : shots;
   }
   return runes.length ? [...new Set([...options, ...runes])] : options;
+}
+
+type WuxingPhase = keyof typeof MARINARA_WUXING_FED_BY;
+const phaseOf = (type: MarinaraDamageType): WuxingPhase | undefined =>
+  (MARINARA_ELEMENT_PHASE as Partial<Record<string, WuxingPhase>>)[type];
+
+/** Whether an elemental arrow feeds the channeled element (a Wood arrow with Fire channeled). */
+export function marinaraShotFeedsChannel(ammo: MarinaraDamageType, channel: MarinaraDamageType): boolean {
+  const from = phaseOf(ammo);
+  const to = phaseOf(channel);
+  return !!from && !!to && MARINARA_WUXING_FED_BY[to] === from;
+}
+
+/**
+ * What a channeled Marksman's shot strikes as (Alyssa 2026-11-03). A non-elemental arrow (slash,
+ * pierce, blunt, Serrated) takes the channeled element and keeps its riders. An elemental arrow the
+ * channel beats becomes the channeled element: one that feeds it (Wood into Fire) is empowered by
+ * MARINARA_WUXING_FEED_PCT, one it overcomes (Metal under Fire) is plain. An arrow that beats the
+ * channel, one of its own phase, or a light or dark one keeps its own element.
+ */
+export function marinaraChanneledShot(ammo: MarinaraDamageType, channel: MarinaraDamageType): MarinaraDamageType {
+  if (channel === "arcane") return ammo;
+  if ((MARINARA_PHYSICAL_TYPES as readonly string[]).includes(ammo)) return channel;
+  const from = phaseOf(ammo);
+  const to = phaseOf(channel);
+  if (!from || !to || from === to) return ammo;
+  if (MARINARA_WUXING_FED_BY[to] === from || MARINARA_WUXING_OVERCOMES[to] === from) return channel;
+  return ammo;
+}
+
+/** The ammunition a channeled Marksman's weapon hit of this type could have come from. */
+function channeledShotSources(actor: MarinaraFighter, type: MarinaraDamageType): MarinaraDamageType[] {
+  if (!marinaraChannelsWeapon(actor)) return [];
+  const channel = marinaraChanneled(actor);
+  const ammo = marinaraAmmoChoices(actor);
+  if (channel === "arcane" || !ammo.length) return [];
+  const loaded = actor.ammoAuto ? ammo : actor.ammoLoaded && ammo.includes(actor.ammoLoaded) ? [actor.ammoLoaded] : [];
+  return loaded.filter((shot) => marinaraChanneledShot(shot, channel) === type);
 }
 
 /** The weapon in hand decides a weapon hit's type; without gear, the best the class can wield. */
@@ -2206,6 +2254,15 @@ export function marinaraHitNumbers(
     )
   )
     multiplier *= 1 + MARINARA_WUXING_FEED_PCT;
+  // A Marksman's arrow that feeds the channeled element (Wood into Fire) is empowered (Alyssa 2026-11-03).
+  if (
+    multiplier > 0 &&
+    isWeaponHit(effect.type ?? "weapon") &&
+    channeledShotSources(actor, best.type).some((shot) => marinaraShotFeedsChannel(shot, best.type))
+  ) {
+    multiplier *= 1 + MARINARA_WUXING_FEED_PCT;
+    notes.add("fed arrow");
+  }
   // Attunement: hits in the user's own channeled element.
   if (hooks.channeledDamagePct && channeledHit) multiplier *= 1 + hooks.channeledDamagePct;
   // Weakness stacking is capped (Alyssa 2026-11-03, Sonnet panel r3: channel, Resonance, Exploit
@@ -3419,7 +3476,7 @@ function strikeOnce(
   // Serrated ammunition (Alyssa 2026-11-03): a Marksman's pierce shot opens a Wound.
   if (
     actor.ammoWounds &&
-    type === "pierce" &&
+    (type === "pierce" || channeledShotSources(actor, type).includes("pierce")) &&
     amount > 0 &&
     target.hp > 0 &&
     marinaraAmmoChoices(actor).length > 0 &&
