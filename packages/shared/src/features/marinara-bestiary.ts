@@ -2032,6 +2032,18 @@ function interpolate(levels: Record<number, number>, level: number): number | nu
  * worth for its tier at its own level, times the level-gap factor. Families measured in no sample
  * for that tier fall back to their standard worth times the tier's rule.
  */
+/**
+ * Families worth more in a mixed fight than alone: a Guard-tree foe's Challenge, Provoke and Sworn Ward
+ * pin the party on it while the foes behind it work, and a captain's orders lift its whole side. The
+ * single-family measure misses that (verify 2026-11-03: Hard fights with shieldbearers won 80% against
+ * 91% overall, one Hard fight of two shieldbearers, a shooter and a captain 0%).
+ */
+export const MARINARA_ESCORT_PREMIUM: Partial<Record<string, number>> = {
+  shieldbearer: 1.35,
+  "grave-duelist": 1.35,
+  captain: 1.2,
+};
+
 export function marinaraFoeThreat(
   familyId: string,
   tier: MarinaraEnemyTier,
@@ -2045,7 +2057,7 @@ export function marinaraFoeThreat(
     const standard = measured?.standard ? interpolate(measured.standard, level) : null;
     worth = (standard ?? 1) * MARINARA_TIER_RULES[tier].threat;
   }
-  worth *= MARINARA_THREAT_CALIBRATION;
+  worth *= MARINARA_THREAT_CALIBRATION * (MARINARA_ESCORT_PREMIUM[familyId] ?? 1);
   if (tier === "boss") worth *= MARINARA_BOSS_THREAT_PREMIUM;
   return worth * Math.pow(MARINARA_LEVEL_GAP_THREAT, level - partyLevel);
 }
