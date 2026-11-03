@@ -204,7 +204,8 @@ function sanitizeCombatSkills(skills: unknown): Combatant["skills"] {
       skill.unavailable === "used" ||
       skill.unavailable === "row" ||
       skill.unavailable === "immune" ||
-      skill.unavailable === "companion"
+      skill.unavailable === "companion" ||
+      skill.unavailable === "unchanneled"
     )
       next.unavailable = skill.unavailable;
     if (typeof skill.aims === "string") next.aims = skill.aims as CombatSkill["aims"];
@@ -2445,6 +2446,9 @@ export function GameCombatUI({
                                 skill.unavailable === "companion"
                                   ? localizeUi("game.combat.marinara.needsCompanion")
                                   : null,
+                                skill.unavailable === "unchanneled"
+                                  ? localizeUi("game.combat.marinara.channelFirst")
+                                  : null,
                               ]
                                 .filter(Boolean)
                                 .join(" · ")}
@@ -3144,6 +3148,9 @@ export function GameCombatUI({
                             : ""}
                           {skill.unavailable === "companion"
                             ? [" · ", localizeUi("game.combat.marinara.needsCompanion")].join("")
+                            : ""}
+                          {skill.unavailable === "unchanneled"
+                            ? [" · ", localizeUi("game.combat.marinara.channelFirst")].join("")
                             : ""}
                         </div>
                       </button>

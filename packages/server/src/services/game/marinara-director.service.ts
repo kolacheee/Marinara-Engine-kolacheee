@@ -28,6 +28,7 @@ import {
   marinaraSkillEstimate,
   marinaraStruck,
   marinaraTargetsFor,
+  marinaraRuneNeedsChannel,
   marinaraStatusImmune,
   marinaraUsable,
   marinaraStandsFront,
@@ -212,7 +213,9 @@ export function marinaraCombatSkills(
                   ? ("row" as const)
                   : all && effect.kind === "status" && !marinaraTargetsFor(fighter, effect, all).length
                     ? ("immune" as const)
-                    : ("cost" as const),
+                    : marinaraRuneNeedsChannel(fighter, effect)
+                      ? ("unchanneled" as const)
+                      : ("cost" as const),
           }
         : {}),
     });
@@ -343,9 +346,28 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
         ? "less from Hold Fast"
         : note === "Kill Zone"
           ? "more from Kill Zone"
-          : note === "Sanctified" || note === "Aura of Warding" || note === "Unstoppable" || note === "Shield Wall"
+          : [
+                "Sanctified",
+                "Aura of Warding",
+                "Unstoppable",
+                "Shield Wall",
+                "Grave Skin",
+                "Living Runes",
+                "Warding Runes",
+                "Shield Line",
+              ].includes(note)
             ? `less from ${note}`
-            : note === "Bloodrage" || note === "Read the Signs" || note === "Dead Eye" || note === "Attunement"
+            : [
+                  "Bloodrage",
+                  "Read the Signs",
+                  "Dead Eye",
+                  "Attunement",
+                  "Rallying Presence",
+                  "Pack Tactics",
+                  "Battle Rhythm",
+                  "Heavy Draw",
+                  "Exploit Weakness",
+                ].includes(note)
               ? `more from ${note}`
               : note === "Steady"
                 ? "armour partly ignored (Steady)"
@@ -357,9 +379,13 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
                       ? `the critical from ${note.slice(0, -5)}`
                       : note === "Assassinate"
                         ? "finished off by Assassinate"
-                        : note === "rune"
-                          ? `${event.type ?? "element"} lent by runes`
-                          : note,
+                        : note === "Grand Inscription"
+                          ? "more from Grand Inscription"
+                          : note === "Adaptive Grip"
+                            ? "armour's resistance ignored (Adaptive Grip)"
+                            : note === "rune"
+                              ? `${event.type ?? "element"} lent by runes`
+                              : note,
     ),
   ]
     .filter(Boolean)
@@ -371,7 +397,7 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "miss":
       return event.skillId === "steal"
         ? `${actor} fails to steal from ${target}${roll}.`
-        : `${actor} misses ${target}${using}${roll}.`;
+        : `${actor} misses ${target}${using}${event.notes?.includes("Light Feet") ? ", dodged thanks to Light Feet" : ""}${roll}.`;
     case "evade":
       return `${target} slips away from ${actor}'s attack.`;
     case "absorb":
@@ -425,7 +451,7 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "counter":
       return `${actor} strikes back at ${target}.`;
     case "cover":
-      return event.skillId ? `${actor} covers ${target}.` : `${actor} steps in front of ${target}.`;
+      return event.skillId ? `${actor} covers ${target}.` : `${actor} steps in front of ${target} and takes the blow.`;
     case "ward":
       return event.skillId
         ? `${actor} swears to watch over ${target}.`
@@ -456,7 +482,11 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
         ? `${actor} regains ${event.amount} MP (Mana Tide).`
         : event.skillId === "hold-the-line"
           ? `${actor} steps up first (Hold the Line).`
-          : `${actor}'s ${skill ?? "passive"} takes effect.`;
+          : event.skillId === "sundering"
+            ? `${actor}'s blow lowers ${target}'s Defense (Sundering).`
+            : event.status === "bonus-spent"
+              ? `${actor} already used this turn's bonus action, so ${skill ?? "it"} takes the action.`
+              : `${actor}'s ${skill ?? "passive"} takes effect.`;
     case "miracle":
       return `${actor}'s miracle keeps ${target} standing.`;
     case "hold-the-line":
@@ -799,6 +829,22 @@ export function performMarinaraTacticalAction(
         effect.target === "all-enemies" || effect.target === "front-row"
           ? [aim, ...pool.filter((one) => one !== aim && near(aim.id).includes(one.id))]
           : [aim];
+      // Every redirect is said (Sonnet panel r5, 2026-11-03: a Lull aimed at the boss landed on
+      // another foe with no word why).
+      if (picked && picked !== aim && picked.side !== actor.side && effect.target === "enemy") {
+        const what = option.skill?.label ?? "attack";
+        const why =
+          actor.tauntTurns > 0 && actor.tauntedBy === aim.id
+            ? `${aim.name}'s challenge holds ${actor.name}`
+            : aim.provoking > 0
+              ? `${aim.name} provokes and draws it`
+              : `${picked.name} can't be reached from there`;
+        log(
+          `${actor.name}'s ${what} goes to ${aim.name} instead of ${picked.name}: ${why}.`,
+          "marinara:redirect",
+          actor.id,
+        );
+      }
     }
     performMarinaraOption(actor, option, struck, state.fighters, ctx);
   }
@@ -907,6 +953,8 @@ export function marinaraBoardAiAction(
   /** The board's own check: whether this option at this target passes from where the unit will stand
    *  (sight, minimum range, a skill's own range). Without it, distance alone. */
   fits?: (optionId: string | null, targetId: string) => boolean,
+  /** Bound to its provoker or challenger: the lock holds wherever it stands (the board walks it in). */
+  bind?: boolean,
 ): CombatPlayerAction | null {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
@@ -944,13 +992,13 @@ export function marinaraBoardAiAction(
     options.some((option) => reach(option, foe) && !marinaraStatusImmune(foe, option.effect));
   const unforced: Array<() => void> = [];
   for (const foe of state.fighters)
-    if (foe.side !== actor.side && foe.provoking > 0 && !strikes(foe)) {
+    if (!bind && foe.side !== actor.side && foe.provoking > 0 && !strikes(foe)) {
       const turns = foe.provoking;
       foe.provoking = 0;
       unforced.push(() => (foe.provoking = turns));
     }
   const taunter = actor.tauntTurns > 0 && actor.tauntedBy ? marinaraFighter(state, actor.tauntedBy) : undefined;
-  if (actor.tauntTurns > 0 && actor.tauntedBy && (!taunter || !strikes(taunter))) {
+  if (!bind && actor.tauntTurns > 0 && actor.tauntedBy && (!taunter || !strikes(taunter))) {
     const turns = actor.tauntTurns;
     actor.tauntTurns = 0;
     unforced.push(() => (actor.tauntTurns = turns));
@@ -973,7 +1021,7 @@ export function marinaraBoardAiAction(
     // as a target, playtest r39: Pell beside Kingpin while a Vanished Ghost Fixer drew fire): the
     // lock doesn't hold, as above.
     const locked = state.fighters.some((foe) => foe.side !== actor.side && foe.provoking > 0) || actor.tauntTurns > 0;
-    if (locked && ranked.every((one) => one.candidate.action.optionId === "defend")) {
+    if (!bind && locked && ranked.every((one) => one.candidate.action.optionId === "defend")) {
       for (const foe of state.fighters)
         if (foe.side !== actor.side && foe.provoking > 0) {
           const turns = foe.provoking;
