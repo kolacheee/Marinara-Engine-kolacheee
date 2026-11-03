@@ -22,9 +22,11 @@ import {
   buildMarinaraEnemy,
   buildMarinaraPartyFighter,
   marinaraAmmoChoices,
+  marinaraChanneledShot,
   marinaraHitNumbers,
   marinaraLoadAmmo,
   marinaraOption,
+  performMarinaraOption,
 } from "../../packages/shared/src/features/marinara-combat.js";
 import {
   marinaraItemName,
@@ -119,6 +121,53 @@ function member(id: string, primary: "marksman" | "blade") {
     /owns no such/,
     "a Blade loads nothing",
   );
+}
+
+// A Marksman carrying Channel Element (Alyssa 2026-11-03): ammunition meets the channel by the five
+// phases. Non-elemental arrows take the element; an elemental arrow the channel beats becomes it (fed:
+// empowered); one that beats the channel, shares its phase, or is light or dark keeps its own.
+{
+  assert.equal(marinaraChanneledShot("pierce", "fire"), "fire", "a plain arrow takes the channel");
+  assert.equal(marinaraChanneledShot("wood", "fire"), "fire", "Wood feeds Fire: a Fire arrow");
+  assert.equal(marinaraChanneledShot("lightning", "fire"), "fire", "lightning counts as Wood");
+  assert.equal(marinaraChanneledShot("metal", "fire"), "fire", "Fire overcomes Metal");
+  assert.equal(marinaraChanneledShot("earth", "fire"), "earth", "Earth beats Fire: stays Earth");
+  assert.equal(marinaraChanneledShot("water", "fire"), "water", "Water overcomes Fire: stays Water");
+  assert.equal(marinaraChanneledShot("ice", "water"), "ice", "same phase: the arrow's own");
+  assert.equal(marinaraChanneledShot("light", "fire"), "light", "light stays light");
+  assert.equal(marinaraChanneledShot("wood", "arcane"), "wood", "unchanneled: the arrow's own");
+
+  const archer = member("chan", "marksman");
+  const carried = MARINARA_CLASSES.flatMap((def) => def.skills).find((one) => one.id === "channel-element")!;
+  archer.skills = [...archer.skills, { ...carried }];
+  archer.channelManual = true;
+  archer.channeled = "fire";
+  archer.ammoOwned = ["wood", "earth", "pierce"];
+  archer.ammoWounds = true;
+  const foe = buildMarinaraEnemy({ id: "cf", name: "Foe", archetype: "guard", level: 5, tier: "standard" });
+  foe.affinities = {};
+  const all = [archer, foe];
+  const basic = marinaraOption(archer, null, all)!.effect;
+  assert.ok(marinaraLoadAmmo(archer, "earth"));
+  assert.equal(marinaraHitNumbers(archer, foe, basic, all).type, "earth", "Earth arrow with Fire: Earth");
+  assert.ok(marinaraLoadAmmo(archer, "pierce"));
+  const plainFire = marinaraHitNumbers(archer, foe, basic, all);
+  assert.equal(plainFire.type, "fire", "Serrated with Fire: a Fire arrow");
+  assert.ok(marinaraLoadAmmo(archer, "wood"));
+  const fed = marinaraHitNumbers(archer, foe, basic, all);
+  assert.equal(fed.type, "fire", "Wood arrow with Fire: Fire");
+  assert.ok(fed.notes?.includes("fed arrow"), "and empowered");
+  assert.ok(fed.damage > plainFire.damage, `fed ${fed.damage} > plain ${plainFire.damage}`);
+  // A Serrated arrow turned to Fire still opens a Wound.
+  assert.ok(marinaraLoadAmmo(archer, "pierce"));
+  foe.hp = foe.maxHp = 10_000;
+  const option = marinaraOption(archer, null, all)!;
+  let wounded = false;
+  for (let i = 0; i < 20 && !wounded; i++) {
+    performMarinaraOption(archer, option, [foe], all, { random: marinaraRandom(`w${i}`), events: [] });
+    wounded = foe.statuses.some((st) => st.status === "wound");
+  }
+  assert.ok(wounded, "a Serrated Fire arrow wounds");
 }
 
 console.log("game-marinara-ammo: ok");

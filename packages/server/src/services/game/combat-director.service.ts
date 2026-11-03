@@ -14,6 +14,7 @@ import {
   createTacticalCombat,
   currentTacticalActor,
   getMovementRange,
+  canTraverseTile,
   validateTacticalUnitAction,
   performTacticalUnitAction,
   tickTacticalRound,
@@ -53,6 +54,7 @@ import {
   marinaraAiAction,
   marinaraPickReasons,
   keepMarinaraReasons,
+  MARINARA_AI_REASONS_KEPT,
   marinaraTacticalTurnStart,
   performMarinaraTacticalAction,
   marinaraItemPower,
@@ -91,6 +93,17 @@ type Task =
   | { kind: "react"; unitId: string; pendingId: string }
   | { kind: "effect"; pendingId: string };
 type Source = "gm" | "ai" | "manual" | "fallback";
+/** An action the AI chose (its own turn, or a by-hand unit's auto or fallback turn) is played as the AI
+ *  plays it: a Channeler-tree caster channels and a Marksman loads ammunition for it (Sonnet panel r4:
+ *  a companion the AI ran never channeled, because the by-hand setting came back before the action
+ *  resolved; every harness Tactical caster struck raw arcane). */
+function aiPlays(s: CombatDirectorState, unitId: string, source: Source | undefined): void {
+  if (source !== "ai" && source !== "fallback") return;
+  const fighter = s.marinara ? marinaraFighter(s.marinara, unitId) : undefined;
+  if (!fighter || fighter.side !== "party") return;
+  if (marinaraCanChannel(fighter)) fighter.channelManual = false;
+  if (fighter.ammoOwned) fighter.ammoAuto = true;
+}
 /** A Classic foe throws down its arms only below this share of its HP. */
 export const MARINARA_YIELD_BELOW_HP = 0.5;
 
@@ -256,11 +269,46 @@ export function marinaraBoardTurn(
   const t = s.tactical!;
   const board = decideTacticalAction(t, tu) as Extract<TacticalAction, { unitId: string }>;
   const boardTo = board.type === "move" ? board.to : "to" in board ? board.to : undefined;
-  const foes = t.units.filter((one) => one.side !== tu.side && one.hp > 0);
+  // A foe that has yielded or is running can't be targeted (marinaraTargetsFor): walking at it or
+  // standing beside it is no approach (playtest r39: Quill held beside a fleeing Scavenger while the
+  // Hold Guard that challenged it stood two tiles off).
+  const targetable = (one: TacticalUnit) => one.hp > 0 && !s.marinara?.fighters.find((f) => f.id === one.id)?.yielded;
+  const foes = t.units.filter((one) => one.side !== tu.side && targetable(one));
   const from = (at: TacticalCoord) => (id: string) => {
     const other = t.units.find((one) => one.id === id);
     return other ? Math.abs(other.x - at.x) + Math.abs(other.y - at.y) : Infinity;
   };
+  // Steps the unit would walk from a tile to stand beside its nearest foe, round walls and terrain (a
+  // breadth-first fill from the foes): closer by the board's own paths, not as the crow flies (playtest
+  // r38: 0.8% of party turns walked away from, or no nearer to, a foe out of reach).
+  const walk = (() => {
+    const steps = new Map<string, number>();
+    const queue: TacticalCoord[] = [];
+    for (const foe of t.units)
+      if (foe.side !== tu.side && targetable(foe)) {
+        steps.set(`${foe.x},${foe.y}`, 0);
+        queue.push({ x: foe.x, y: foe.y });
+      }
+    for (let i = 0; i < queue.length; i++) {
+      const at = queue[i]!;
+      const d = steps.get(`${at.x},${at.y}`)!;
+      for (const [dx, dy] of [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ] as const) {
+        const next = { x: at.x + dx, y: at.y + dy };
+        const key = `${next.x},${next.y}`;
+        if (steps.has(key)) continue;
+        if (!(next.x === tu.x && next.y === tu.y) && !canTraverseTile(t, tu, next)) continue;
+        steps.set(key, d + 1);
+        queue.push(next);
+      }
+    }
+    return (at: TacticalCoord) =>
+      steps.get(`${at.x},${at.y}`) ?? 1000 + Math.min(...foes.map((foe) => from(at)(foe.id)));
+  })();
   // A fighter with a foe within a move and its longest reach: one an extra action isn't wasted on.
   const reaches = (fromId: string, toId: string) => {
     const one = t.units.find((u) => u.id === fromId);
@@ -271,7 +319,7 @@ export function marinaraBoardTurn(
   };
   const canStrike = (id: string) => {
     const one = t.units.find((u) => u.id === id);
-    return !!one && t.units.some((foe) => foe.side !== one.side && foe.hp > 0 && reaches(id, foe.id));
+    return !!one && t.units.some((foe) => foe.side !== one.side && targetable(foe) && reaches(id, foe.id));
   };
   // The reasons of the pick that stands (a second look from a closer tile replaces the first).
   let reasons: { at: TacticalCoord; ranking: Parameters<typeof marinaraPickReasons>[2] } | undefined;
@@ -287,6 +335,15 @@ export function marinaraBoardTurn(
       canStrike,
       reaches,
       (ranking) => (ranked = ranking),
+      (optionId, targetId) => {
+        const where = at.x === tu.x && at.y === tu.y ? {} : { to: at };
+        const skill = optionId === null ? undefined : tu.skills?.find((one) => one.id === optionId);
+        if (optionId !== null && !skill) return false;
+        const action: Extract<TacticalAction, { unitId: string }> = skill
+          ? { type: "skill", unitId: tu.id, skillName: skill.name, targetId, ...where }
+          : { type: "attack", unitId: tu.id, targetId, ...where };
+        return !validateTacticalUnitAction(t, tu, action);
+      },
     );
     return { picked, ranked };
   };
@@ -309,20 +366,75 @@ export function marinaraBoardTurn(
       return d <= range ? 1000 + d : -d;
     };
     const step = tiles.reduce((best, at) => (score(at) > score(best) ? at : best));
-    const again = decide(step);
-    if (again && again.type !== "defend") {
+    // Where it stands, then the tiles nearest a foe in reach (the farthest first for a ranged unit), until
+    // one has something to do: one look from the farthest tile alone missed a foe right beside it behind
+    // a wall or out of sight, and the board's walk led away (reasons audit r37: 6.5% of party turns after
+    // contact were "advances" with a foe next to the unit).
+    const key = (at: TacticalCoord) => `${at.x},${at.y}`;
+    const looked = new Set([key(to ?? { x: tu.x, y: tu.y })]);
+    const order = [{ x: tu.x, y: tu.y }, ...[...tiles].sort((a, b) => score(b) - score(a))].filter((at) => {
+      if (looked.has(key(at))) return false;
+      looked.add(key(at));
+      return true;
+    });
+    let again: ReturnType<typeof decide> = null;
+    let at = step;
+    for (const tile of order.slice(0, 8)) {
+      if (score(tile) < 1000 && tile !== order[0]) break;
+      const tried = decide(tile);
+      if (tried && tried.type !== "defend") {
+        again = tried;
+        at = tile;
+        break;
+      }
+    }
+    if (again) {
       picked = again;
-      to = step.x === tu.x && step.y === tu.y ? undefined : step;
+      to = at.x === tu.x && at.y === tu.y ? undefined : at;
       // Nothing in reach from anywhere it can stand: the board's own walk, which paths round walls
-      // (a straight-line step stopped both sides at a wall for 60 rounds, playtest 2026-11-01).
+      // (a straight-line step stopped both sides at a wall for 60 rounds, playtest 2026-11-01) - unless
+      // that walk doesn't close in and the straight step does: the board's walk for a self buff or a
+      // kite drifted both sides of a duel round the edges for 60 rounds (stall logs 2026-11-03).
     } else {
       reasons = firstReasons;
-      if (!boardTo) to = step.x === tu.x && step.y === tu.y ? undefined : step;
+      // Nothing to do from anywhere it can stand: the tile its walk brings nearest a foe, or stay put
+      // rather than drift. A tile in reach is no better when nothing lands from it (a wall or cover in
+      // the way): the farthest one led ranged units away from the foe (ai-audit 2026-11-03).
+      const here = { x: tu.x, y: tu.y };
+      const walkIn = tiles.reduce((best, at) => (walk(at) < walk(best) ? at : best), here);
+      const goal = walk(walkIn) < walk(here) ? walkIn : here;
+      to = goal.x === tu.x && goal.y === tu.y ? undefined : goal;
     }
   }
   if (!picked) return board;
+  // A pick on the unit itself (a self or party buff) with every foe out of reach: walk in as Defend
+  // does, rather than the board's drift (stall logs 2026-11-03: a boss cast Rally and wandered the
+  // edges while the last party member did the same).
+  if (picked.type === "skill" && picked.targetId === tu.id && !tu.hasMoved && foes.length) {
+    const nearest = (at: TacticalCoord) => Math.min(...foes.map((foe) => from(at)(foe.id)));
+    const range = Math.max(tu.attackRange.max, ...(tu.skills ?? []).map((k) => k.range ?? 0));
+    const here = { x: tu.x, y: tu.y };
+    if (nearest(to ?? here) > range) {
+      const step = [here, ...getMovementRange(t, tu.id)].reduce((best, at) => (walk(at) < walk(best) ? at : best));
+      if (walk(step) < walk(here) && (!to || walk(to) >= walk(here)))
+        to = step.x === tu.x && step.y === tu.y ? undefined : step;
+    }
+  }
   const where = to ? { to } : {};
   let action: Extract<TacticalAction, { unitId: string }> | undefined;
+  // Defend only to brace against real blows (Alyssa 2026-11-03); a Defend the AI fell back on with
+  // nothing to strike and nothing to brace against is a walk: the unit moves in and waits.
+  const braces = (reasons?.ranking[0]?.candidate.support ?? 0) > 0;
+  if (picked.type === "defend" && !braces && foes.length) {
+    const wait = { type: "wait" as const, unitId: tu.id, ...where };
+    if (!validateTacticalUnitAction(t, tu, wait)) {
+      const text = `AI: ${tu.name} ${to ? "advances" : "holds"}: nothing to strike or brace against from here.`;
+      const m = s.marinara!;
+      m.aiReasons = [...(m.aiReasons ?? []), { unitId: tu.id, round: s.round, text }].slice(-MARINARA_AI_REASONS_KEPT);
+      log(s, text, MARINARA_REASONING_KIND, tu.id, "ai");
+      return wait;
+    }
+  }
   if (picked.type === "defend") action = { type: "defend", unitId: tu.id, ...where };
   else if (picked.type === "attack") action = { type: "attack", unitId: tu.id, targetId: picked.targetId, ...where };
   else if (picked.type === "skill") {
@@ -1211,6 +1323,7 @@ function combatSuggestionReason(parts: CombatAiScoreParts, target?: string, skil
     protection: "stands up for a friend under attack",
     coordination: `joins its side's attack${target ? ` on ${target}` : ""}`,
     focus: `${target ?? "its target"} is the one it most wants down`,
+    prevented: `keeps ${target ?? "a foe"} from striking its side`,
   };
   const reasons = (Object.entries(parts) as Array<[keyof CombatAiScoreParts, number]>)
     .filter(([, part]) => Math.abs(part) >= 0.05)
@@ -1616,6 +1729,7 @@ function effect(s: CombatDirectorState, p: Pending) {
         const two = units.find((x) => x.id === b);
         return one && two ? Math.abs(one.x - two.x) + Math.abs(one.y - two.y) : Infinity;
       };
+      aiPlays(s, tu.id, p.source);
       performMarinaraTacticalAction(s.marinara, tu.id, action, s.seed, marinaraLog(s), near, reach, p.source, apart);
       tu.hasActed = true;
       if (a.type === "defend") tu.defending = true;
@@ -1630,6 +1744,7 @@ function effect(s: CombatDirectorState, p: Pending) {
       guarded.forEach((x, i) => (x.defending = prior[i]!));
       for (const e of events) log(s, e.text, e.kind, e.actorId, p.source, e.message);
     } else if (p.action.classic && s.marinara && p.action.classic.type !== "item") {
+      aiPlays(s, u.id, p.source);
       performMarinaraAction(s.marinara, u.id, p.action.classic, s.seed, false, marinaraLog(s), p.source);
     } else if (p.action.classic) {
       const defended = new Set([...s.defending, ...(p.guarded ?? [])]);
@@ -2089,7 +2204,8 @@ export function commandCombatDirector(s: CombatDirectorState, command: DirectedC
       sync(s);
       return;
     }
-    declare(s, a, "manual");
+    // An action the caller says the AI chose (a harness or an auto turn) is played as the AI plays it.
+    declare(s, a, source === "ai" ? "ai" : "manual");
   } else if (command.type === "continue") {
     if (s.stage === "action" || (s.stage === "select" && s.tactical) || s.window) return;
   }

@@ -28,6 +28,7 @@ import {
   marinaraSkillEstimate,
   marinaraStruck,
   marinaraTargetsFor,
+  marinaraStatusImmune,
   marinaraUsable,
   marinaraStandsFront,
   nextMarinaraActor,
@@ -90,7 +91,7 @@ export interface MarinaraDirectorState {
 }
 
 /** How many AI reasons a fight keeps. */
-const MARINARA_AI_REASONS_KEPT = 600;
+export const MARINARA_AI_REASONS_KEPT = 600;
 
 /** Keeps one AI pick's reasons on the fight state. */
 export function keepMarinaraReasons(
@@ -152,7 +153,26 @@ export function marinaraCombatSkills(
   for (const skill of fighter.skills) {
     if (skill.kind !== "active") continue;
     const effect = marinaraSkillEffect(fighter, skill);
-    if (!effect) continue;
+    if (!effect) {
+      // Sic without a tamed companion is shown, greyed, so the player knows what it waits on (Sonnet
+      // panel r4, 2026-11-03: it simply wasn't there).
+      const base = MARINARA_SKILL_EFFECTS[skill.id];
+      if (base?.companion && !fighter.companion) {
+        const { resource, cost } = marinaraSkillCost(fighter, skill);
+        out.push({
+          id: skill.id,
+          name: skill.label,
+          description: skill.summary,
+          type: boardSkillType(base.kind, base.target),
+          mpCost: resource === "mp" ? cost : 0,
+          ...(resource === "stamina" ? { staminaCost: cost } : {}),
+          power: base.power ?? 0,
+          aims: base.target,
+          unavailable: "companion",
+        });
+      }
+      continue;
+    }
     const { resource, cost } = marinaraSkillCost(fighter, skill);
     const cooldown = fighter.cooldowns[skill.id] ?? 0;
     const used =
@@ -320,11 +340,23 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
         ? "less from Hold Fast"
         : note === "Kill Zone"
           ? "more from Kill Zone"
-          : note === "Sanctified" || note === "Aura of Warding"
+          : note === "Sanctified" || note === "Aura of Warding" || note === "Unstoppable" || note === "Shield Wall"
             ? `less from ${note}`
-            : note === "rune"
-              ? `${event.type ?? "element"} lent by runes`
-              : note,
+            : note === "Bloodrage" || note === "Read the Signs" || note === "Dead Eye" || note === "Attunement"
+              ? `more from ${note}`
+              : note === "Steady"
+                ? "armour partly ignored (Steady)"
+                : note === "Grave Hunger"
+                  ? "Grave Hunger shifting Defense and Resistance"
+                  : note === "True Aim" || note === "Keen Eye"
+                    ? `landed thanks to ${note}`
+                    : note.endsWith(" crit")
+                      ? `the critical from ${note.slice(0, -5)}`
+                      : note === "Assassinate"
+                        ? "finished off by Assassinate"
+                        : note === "rune"
+                          ? `${event.type ?? "element"} lent by runes`
+                          : note,
     ),
   ]
     .filter(Boolean)
@@ -366,7 +398,11 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "tick":
       return `${actor} takes ${event.amount} from ${event.status}.`;
     case "buff":
-      return `${actor} uses ${skill ?? "a boon"}${event.targetId && event.targetId !== event.actorId ? ` on ${target}` : ""}.`;
+      return `${actor} uses ${skill ?? "a boon"}${event.targetId && event.targetId !== event.actorId ? ` on ${target}` : ""}${
+        event.notes?.length
+          ? ` (${event.notes.map((note) => (note === "Encore" ? "Encore: a turn longer" : note === "Tempo" ? "Tempo: acts sooner" : note)).join("; ")})`
+          : ""
+      }.`;
     case "debuff":
       return event.notes?.includes("sap") && event.status
         ? `${actor} saps ${Math.abs(event.amount ?? 0)}% of ${target}'s ${STAT_WORDS[event.status] ?? event.status} with ${skill ?? "a hex"}, and gains it for themselves.`
@@ -411,7 +447,13 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "command":
       return `On ${actor}'s command${skill ? ` (${skill})` : ""}, ${target} acts at once.`;
     case "last-stand":
-      return `${actor} refuses to fall.`;
+      return `${actor} refuses to fall (Last Stand).`;
+    case "passive":
+      return event.skillId === "mana-tide"
+        ? `${actor} regains ${event.amount} MP (Mana Tide).`
+        : event.skillId === "hold-the-line"
+          ? `${actor} steps up first (Hold the Line).`
+          : `${actor}'s ${skill ?? "passive"} takes effect.`;
     case "miracle":
       return `${actor}'s miracle keeps ${target} standing.`;
     case "hold-the-line":
@@ -858,45 +900,91 @@ export function marinaraBoardAiAction(
   /** Whether one fighter could reach another this round (a move and its reach). */
   reaches?: (fromId: string, toId: string) => boolean,
   explain?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void,
+  /** The board's own check: whether this option at this target passes from where the unit will stand
+   *  (sight, minimum range, a skill's own range). Without it, distance alone. */
+  fits?: (optionId: string | null, targetId: string) => boolean,
 ): CombatPlayerAction | null {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
   aiRuns(actor);
+  // Friends within the board's support range (2 tiles, a caster's 3); the user itself, a whole side and the
+  // fallen (whom the board can't aim at; resolution finds them) anywhere.
+  // With the board's check, also sight and minimum range (reasons audit 2026-11-03: 2% of Tactical
+  // turns fell back on the board AI's own move, mostly marksmen aiming past cover or too close).
+  const reach = (option: MarinaraOption, target: MarinaraFighter) =>
+    target.id === actor.id ||
+    option.effect.target === "party" ||
+    option.effect.target === "downed-ally" ||
+    (distance(target.id) <=
+      (option.id === null
+        ? attackRange
+        : (MARINARA_BOARD_SPELL_RANGE[actor.archetype ?? ""] ??
+          (target.side === actor.side ? 2 : Math.max(attackRange, 2)))) &&
+      (!fits || fits(option.id, target.id)));
   // A challenge or a provoker forces the pick only when it can be reached (the board's resolution,
   // performMarinaraTacticalAction): one out of reach doesn't lock out the foes next to the unit
   // (Sonnet panel r3, 2026-11-02: casters beside a foe defended for rounds while a distant Warding
   // Stance foe was the only target they were offered).
-  const farthest = Math.max(attackRange, MARINARA_BOARD_SPELL_RANGE[actor.archetype ?? ""] ?? 2);
+  // Whether anything the unit can do lands on this foe from where it will stand. A lock on a foe it
+  // can't strike (two tiles off a melee unit, past a wall or out of sight) leaves it nothing to do, and
+  // resolution lets the blow go to a foe in reach instead (playtest r38: 0.19% of party turns were
+  // "nothing to strike" beside a foe while a Provoker stood just out of reach).
+  const options = marinaraUsable(actor, state.fighters).filter(
+    (option) =>
+      option.effect.target !== "self" &&
+      option.effect.target !== "party" &&
+      option.effect.target !== "ally" &&
+      option.effect.target !== "downed-ally",
+  );
+  const strikes = (foe: MarinaraFighter) =>
+    options.some((option) => reach(option, foe) && !marinaraStatusImmune(foe, option.effect));
   const unforced: Array<() => void> = [];
   for (const foe of state.fighters)
-    if (foe.side !== actor.side && foe.provoking > 0 && distance(foe.id) > farthest) {
+    if (foe.side !== actor.side && foe.provoking > 0 && !strikes(foe)) {
       const turns = foe.provoking;
       foe.provoking = 0;
       unforced.push(() => (foe.provoking = turns));
     }
-  if (actor.tauntTurns > 0 && actor.tauntedBy && distance(actor.tauntedBy) > farthest) {
+  const taunter = actor.tauntTurns > 0 && actor.tauntedBy ? marinaraFighter(state, actor.tauntedBy) : undefined;
+  if (actor.tauntTurns > 0 && actor.tauntedBy && (!taunter || !strikes(taunter))) {
     const turns = actor.tauntTurns;
     actor.tauntTurns = 0;
     unforced.push(() => (actor.tauntTurns = turns));
   }
-  try {
-    const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
+  const tactics = unit.tactics;
+  const pick = () => {
+    let ranked: Array<RankedCombatCandidate<MarinaraChoice>> = [];
+    const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics }, round, difficulty, {
       tactical: true,
       canStrike,
       reaches,
-      ...(explain ? { explain } : {}),
-      // Friends within the board's support range (2 tiles, a caster's 3); the user itself, a whole side and the
-      // fallen (whom the board can't aim at; resolution finds them) anywhere.
-      reach: (option, target) =>
-        target.id === actor.id ||
-        option.effect.target === "party" ||
-        option.effect.target === "downed-ally" ||
-        distance(target.id) <=
-          (option.id === null
-            ? attackRange
-            : (MARINARA_BOARD_SPELL_RANGE[actor.archetype ?? ""] ??
-              (target.side === actor.side ? 2 : Math.max(attackRange, 2)))),
+      explain: (ranking) => (ranked = ranking),
+      reach,
     });
+    return { choice, ranked };
+  };
+  try {
+    let { choice, ranked } = pick();
+    // A lock that still leaves nothing but Defend (a provoker the board accepts but the AI can't take
+    // as a target, playtest r39: Pell beside Kingpin while a Vanished Ghost Fixer drew fire): the
+    // lock doesn't hold, as above.
+    const locked = state.fighters.some((foe) => foe.side !== actor.side && foe.provoking > 0) || actor.tauntTurns > 0;
+    if (locked && ranked.every((one) => one.candidate.action.optionId === "defend")) {
+      for (const foe of state.fighters)
+        if (foe.side !== actor.side && foe.provoking > 0) {
+          const turns = foe.provoking;
+          foe.provoking = 0;
+          unforced.push(() => (foe.provoking = turns));
+        }
+      if (actor.tauntTurns > 0) {
+        const turns = actor.tauntTurns;
+        actor.tauntTurns = 0;
+        unforced.push(() => (actor.tauntTurns = turns));
+      }
+      const again = pick();
+      if (again.ranked.some((one) => one.candidate.action.optionId !== "defend")) ({ choice, ranked } = again);
+    }
+    explain?.(ranked);
     return marinaraChoiceAction(actor, choice);
   } catch {
     return null;
@@ -906,7 +994,7 @@ export function marinaraBoardAiAction(
 }
 
 /** How small a part of a pick's score is too small to give as a reason. */
-const MARINARA_REASON_FLOOR = 0.05;
+const MARINARA_REASON_FLOOR = 0.005;
 
 /** A ranked choice in words: the option and who it is aimed at. */
 function marinaraChoiceLabel(state: MarinaraDirectorState, actor: MarinaraFighter, choice: MarinaraChoice): string {
@@ -936,10 +1024,11 @@ export function marinaraPickReasons(
   const actor = marinaraFighter(state, actorId);
   const pick = ranking[0];
   if (!actor || !pick) return undefined;
-  const parts = (Object.entries(pick.parts) as Array<[string, number]>)
+  // Every factor of the score, the weighed parts and what temperament, orders and wavering added, so the
+  // line adds up to the score (reasons audit 2026-11-03: unnamed bonuses of up to 0.8).
+  const parts = (Object.entries({ ...pick.parts, ...pick.extras }) as Array<[string, number]>)
     .filter(([, part]) => Math.abs(part) >= MARINARA_REASON_FLOOR)
     .sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]))
-    .slice(0, 3)
     .map(([key, part]) => `${key} ${part >= 0 ? "+" : ""}${part.toFixed(2)}`);
   const runnerUp = ranking.find(
     (one) =>

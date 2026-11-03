@@ -37,6 +37,37 @@ const unit = (id: string, side: "party" | "enemy", archetype: string, skills: st
   return fighter;
 };
 
+// Panel r4 (2026-11-03): Channel Element carried by a Hexer or Mender turns their staff hits too.
+for (const [archetype, own] of [
+  ["hexer", "dark"],
+  ["mender", "light"],
+] as const) {
+  const caster = unit(archetype, "party", archetype, ["channel-element"], archetype);
+  caster.channelManual = true;
+  const foe = unit("Foe", "enemy", "guard");
+  foe.affinities = { water: "weak" };
+  const all = [caster, foe];
+  assert.equal(marinaraHitNumbers(caster, foe, marinaraBasicAttack(caster), all).type, own, `${archetype} unchanneled`);
+  assert.ok(marinaraChannelElement(caster, "water"));
+  assert.equal(
+    marinaraHitNumbers(caster, foe, marinaraBasicAttack(caster), all).type,
+    "water",
+    `${archetype} channeled`,
+  );
+}
+
+// Pierce strikes with the loaded ammunition like any shot (panel r4 thought it didn't).
+{
+  const sniper = unit("Sniper", "party", "marksman", ["pierce"], "sharpshooter");
+  sniper.ammoOwned = ["fire", "water"];
+  const foe = unit("Foe", "enemy", "guard");
+  foe.affinities = {};
+  for (const loaded of ["fire", "water"] as const) {
+    sniper.ammoLoaded = loaded;
+    assert.equal(marinaraHitNumbers(sniper, foe, MARINARA_SKILL_EFFECTS.pierce!, [sniper, foe]).type, loaded);
+  }
+}
+
 // Retaliate: the Def/Res share adds at most 25% over the basic swing.
 {
   const wall = unit("Wall", "party", "guard", ["retaliate"], "sentinel");
