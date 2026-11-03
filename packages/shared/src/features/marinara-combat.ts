@@ -43,7 +43,11 @@ import {
   marinaraClass,
   marinaraCarriedStat,
   marinaraUsableSkills,
+  marinaraSkillById,
+  MARINARA_ARCHETYPE_TRAITS,
+  MARINARA_CARRY_SLOTS,
   expectedMarinaraStats,
+  type MarinaraClassDef,
   type MarinaraAffinities,
   type MarinaraDamageType,
   type MarinaraSkillDamage,
@@ -1076,12 +1080,39 @@ export interface MarinaraEnemySpec {
   affinities?: MarinaraAffinities;
   attackType?: MarinaraDamageType;
   enemySkills?: string[];
+  /** Class skills a humanoid foe carries from other classes, as a player can (Alyssa 2026-11-02: a foe
+   *  labelled with a class fights with that class's kit plus real carried skills). A promoted foe also
+   *  carries the actives of the classes it promoted from; at most MARINARA_CARRY_SLOTS in all. */
+  carriedSkills?: string[];
   /** Per-stat multipliers on the archetype's expected stats, before the tier's (a slime's soft body). */
   statScale?: Partial<MarinaraStats>;
   /** Basic attack reaches the back row at full damage. */
   ranged?: boolean;
   /** Basic attack uses Magic. */
   magic?: boolean;
+}
+
+/** What a humanoid foe carries, as a promoted player would: the actives of the classes it promoted from
+ *  (designed carry picks first, then the latest), then its family's own carries, up to the carry slots.
+ *  The archetype's traits come along free, as every class of the tree keeps them. */
+function marinaraEnemyCarries(def: MarinaraClassDef, picks: readonly string[]): MarinaraSkillDef[] {
+  const out: MarinaraSkillDef[] = [];
+  const add = (skill: MarinaraSkillDef | undefined, trait = false) => {
+    if (!skill || out.some((each) => each.id === skill.id)) return;
+    if (!trait && out.filter((each) => !(MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? []).includes(each.id)).length >= MARINARA_CARRY_SLOTS)
+      return;
+    out.push(skill);
+  };
+  for (let from = def.from ? marinaraClass(def.from) : undefined; from; from = from.from ? marinaraClass(from.from) : undefined)
+    for (const skill of from.skills)
+      if ((MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? []).includes(skill.id)) add(skill, true);
+  for (let from = def.from ? marinaraClass(def.from) : undefined; from; from = from.from ? marinaraClass(from.from) : undefined)
+    for (const skill of [...from.skills]
+      .filter((each) => each.kind === "active")
+      .sort((a, b) => Number(!!b.carryPick) - Number(!!a.carryPick) || b.learnedAt - a.learnedAt))
+      add(skill);
+  for (const id of picks) add(marinaraSkillById(id));
+  return out;
 }
 
 /** A foe built from the same tables as the party: the archetype's expected stats at its level,
@@ -1100,7 +1131,9 @@ export function buildMarinaraEnemy(spec: MarinaraEnemySpec): MarinaraFighter {
   ) as MarinaraStats;
   // The class's skills a character of this level would have learned in it.
   const classLevel = def ? (def.tier === "base" ? Math.min(level, MARINARA_PROMOTION_LEVEL.advanced) : level) : 0;
-  const skills = def ? def.skills.filter((skill) => skill.learnedAt <= classLevel) : [];
+  const own = def ? def.skills.filter((skill) => skill.learnedAt <= classLevel) : [];
+  const carried = def ? marinaraEnemyCarries(def, spec.carriedSkills ?? []) : [];
+  const skills = [...own, ...carried.filter((skill) => !own.some((mine) => mine.id === skill.id))];
   const fighter = makeMarinaraFighter({
     id: spec.id,
     name: spec.name,
@@ -1115,6 +1148,7 @@ export function buildMarinaraEnemy(spec: MarinaraEnemySpec): MarinaraFighter {
     ...(def ? { classId: def.id } : { attackType: spec.attackType ?? "blunt" }),
     ...(spec.affinities ? { affinities: spec.affinities } : {}),
     ...(spec.enemySkills?.length ? { enemySkills: [...spec.enemySkills] } : {}),
+    ...(carried.length ? { carriedIds: carried.map((skill) => skill.id) } : {}),
     tier: spec.tier,
   });
   fighter.maxHp = Math.max(1, Math.round(fighter.maxHp * tier.hp));

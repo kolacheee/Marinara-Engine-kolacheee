@@ -395,7 +395,7 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   ability("clod", "Clod", "A fist of packed earth.", spell(5, "earth", { ranged: false })),
   ability("torrent", "Torrent", "A jet of water.", spell(5, "water")),
   ability("gust", "Gust", "A cutting gust of wind.", spell(5, "wind")),
-  ability("tailwind", "Tailwind", "Its side gains +20% Speed for 2 turns.", {
+  ability("fair-wind", "Fair Wind", "Its side gains +20% Speed for 2 turns.", {
     kind: "buff",
     target: "party",
     stat: "speed",
@@ -702,7 +702,7 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     },
     { minLevel: 5 },
   ),
-  ability("overcharge", "Overcharge", "Runs hot: +30% Speed for 2 turns.", {
+  ability("run-hot", "Run Hot", "Runs hot: +30% Speed for 2 turns.", {
     kind: "buff",
     target: "self",
     stat: "speed",
@@ -795,8 +795,12 @@ export interface MarinaraEnemyFamily {
   rangedBasic?: boolean;
   row: "front" | "back";
   affinities?: MarinaraAffinities;
-  /** Abilities it gains at a level. */
+  /** Abilities it gains at a level (beasts, spirits, machines: bestiary abilities). */
   abilities: ReadonlyArray<{ id: string; from: number }>;
+  /** A humanoid's carried class skills, from a level (Alyssa 2026-11-02: humanoids fight with their
+   *  class kit plus real carried skills, never bestiary-only tricks). Promoted foes also carry their
+   *  earlier classes' actives, as a player does. */
+  carries?: ReadonlyArray<{ id: string; from: number }>;
   levels: readonly [number, number];
   tiers: readonly MarinaraEnemyTier[];
   /** Its names in each setting it lives in, by level band. */
@@ -1187,7 +1191,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     classLine: ["guard", "sentinel", "stonewall"],
     row: "front",
     affinities: { ...BONE, slash: "resist" },
-    abilities: at(["sunder", 1], ["stagger", 12]),
+    abilities: [],
+    carries: at(["power-strike", 1], ["reckless-swing", 12]),
     levels: [5, 30],
     tiers: BIG_TIERS,
     names: {
@@ -1254,7 +1259,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     rangedBasic: true,
     row: "back",
     affinities: { ...wuxingFoe("lightning"), blunt: "weak", poison: "immune", pierce: "resist" },
-    abilities: at(["spark", 1], ["overcharge", 6], ["storm-breath", 12]),
+    abilities: at(["spark", 1], ["run-hot", 6], ["storm-breath", 12]),
     levels: [2, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1372,7 +1377,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     rangedBasic: true,
     row: "back",
     affinities: { ...wuxingFoe("wind"), poison: "immune", pierce: "resist" },
-    abilities: at(["gust", 1], ["tailwind", 6], ["cyclone", 12]),
+    abilities: at(["gust", 1], ["fair-wind", 6], ["cyclone", 12]),
     levels: [2, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1458,7 +1463,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     classLine: ["scout", "shade", "shroud"],
     row: "front",
     affinities: { light: "weak", fire: "weak", dark: "absorb", poison: "immune" },
-    abilities: at(["life-sap", 1], ["bewitch", 10], ["doom-mark", 20]),
+    abilities: [],
+    carries: at(["siphon", 6], ["wither", 12]),
     levels: [4, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1476,7 +1482,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["opportunistic", "cowardly", "cruel"],
     classLine: ["scout", "rogue", "phantom"],
     row: "front",
-    abilities: at(["dirty-trick", 1], ["mark-target", 8]),
+    abilities: [],
+    carries: at(["weaken", 1], ["mark-prey", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1499,7 +1506,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["reckless", "cruel", "arrogant", "disciplined"],
     classLine: ["blade", "bloodsworn", "cleaver"],
     row: "front",
-    abilities: at(["rend", 3], ["war-cry", 8]),
+    abilities: [],
+    carries: at(["flurry", 6], ["rally", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1523,7 +1531,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     classLine: ["guard", "sentinel", "stonewall"],
     row: "front",
     affinities: {},
-    abilities: at(["sunder", 1], ["taser", 10]),
+    abilities: [],
+    carries: at(["power-strike", 4], ["spellguard", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1546,7 +1555,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["patient", "cautious", "opportunistic"],
     classLine: ["marksman", "sharpshooter", "farshot"],
     row: "back",
-    abilities: at(["venom-arrow", 1], ["lock-on", 8], ["suppressing-fire", 12]),
+    abilities: [],
+    carries: at(["wither", 6], ["volley", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1568,7 +1578,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["arrogant", "methodical", "cautious"],
     classLine: ["channeler", "elementalist", "stormcaller"],
     row: "back",
-    abilities: at(["shield-ally", 6]),
+    abilities: [],
+    carries: at(["barrier", 6], ["starfall", 14]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1589,7 +1600,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["fanatical", "cruel", "methodical"],
     classLine: ["hexer", "witch", "carrion-lord"],
     row: "back",
-    abilities: at(["curse", 1], ["life-sap", 6], ["doom-mark", 18]),
+    abilities: [],
+    carries: at(["shadowstep", 6], ["siphon", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1610,7 +1622,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["supportive", "cautious", "fanatical"],
     classLine: ["mender", "cleric", "saint"],
     row: "back",
-    abilities: at(["mend", 1], ["smite", 6]),
+    abilities: [],
+    carries: at(["barrier", 8], ["starfall", 12]),
     levels: [1, 30],
     tiers: LOW_TIERS,
     names: {
@@ -1633,7 +1646,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["coordinated", "disciplined", "arrogant"],
     classLine: ["herald", "field-captain", "marshal"],
     row: "back",
-    abilities: at(["war-cry", 4], ["rally", 8], ["mark-target", 12]),
+    abilities: [],
+    carries: at(["swift-refrain", 8], ["mark-prey", 12]),
     levels: [4, 30],
     tiers: BIG_TIERS,
     names: {
@@ -1655,7 +1669,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     temperaments: ["honourable", "arrogant", "disciplined"],
     classLine: ["scout", "skirmisher", "harrier"],
     row: "front",
-    abilities: at(["stagger", 10]),
+    abilities: [],
+    carries: at(["power-strike", 1], ["flurry", 10]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1703,7 +1718,7 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     rangedBasic: true,
     row: "back",
     affinities: MACHINE,
-    abilities: at(["mark-target", 6], ["overcharge", 10], ["suppressing-fire", 14]),
+    abilities: at(["mark-target", 6], ["run-hot", 10], ["suppressing-fire", 14]),
     levels: [1, 30],
     tiers: ALL_TIERS,
     names: {
@@ -1927,6 +1942,9 @@ export function marinaraEnemySpec(input: {
     ...(family.attackType ? { attackType: family.attackType } : {}),
     ...(family.rangedBasic ? { ranged: true } : {}),
     enemySkills: marinaraEnemyAbilities(family, input.tier, level),
+    ...(classId && family.carries?.length
+      ? { carriedSkills: family.carries.filter((each) => each.from <= level).map((each) => each.id) }
+      : {}),
     mind: family.mind,
     ...(temperament ? { temperament } : {}),
     ...(family.windfall ? { windfall: family.windfall } : {}),
@@ -1968,15 +1986,22 @@ export const MARINARA_BOSS_THREAT_PREMIUM = 1.3;
 export const MARINARA_THREAT_CALIBRATION = 1.2;
 /** How far a foe's level may stray from the party's: never more than 3 above (a boss 5), and foes
  *  more than 8 below aren't worth a fight. */
-export const MARINARA_LEVEL_GAP = { above: 3, bossAbove: 5, below: 8 } as const;
+// A boss stands no more than 3 levels under the party (Sonnet panel r3, 2026-11-02: a level 13 boss
+// against a level 20 party died in a few rounds; past that it is no boss, so it comes as an elite).
+export const MARINARA_LEVEL_GAP = { above: 3, bossAbove: 5, below: 8, bossBelow: 3 } as const;
 
 /** A Brutal game breaks the level cap (Alyssa, 11-01): foes may stand this far above the party, and
  *  the builder lifts them up to `lift` levels on its own. Their worth still grows 1.12x a level, so
  *  the budget holds; the fight just has fewer, stronger foes. */
-export const MARINARA_LEVEL_GAP_BRUTAL = { above: 6, bossAbove: 8, below: 8, lift: 3 } as const;
+export const MARINARA_LEVEL_GAP_BRUTAL = { above: 6, bossAbove: 8, below: 8, bossBelow: 3, lift: 3 } as const;
 
 /** The level gap rules for a party (Brutal games get the wider ones). */
-export function marinaraLevelGap(party: MarinaraEncounterParty): { above: number; bossAbove: number; below: number } {
+export function marinaraLevelGap(party: MarinaraEncounterParty): {
+  above: number;
+  bossAbove: number;
+  below: number;
+  bossBelow: number;
+} {
   return party.brutal ? MARINARA_LEVEL_GAP_BRUTAL : MARINARA_LEVEL_GAP;
 }
 /** A Classic battle has room for six foes. */
@@ -2007,6 +2032,18 @@ function interpolate(levels: Record<number, number>, level: number): number | nu
  * worth for its tier at its own level, times the level-gap factor. Families measured in no sample
  * for that tier fall back to their standard worth times the tier's rule.
  */
+/**
+ * Families worth more in a mixed fight than alone: a Guard-tree foe's Challenge, Provoke and Sworn Ward
+ * pin the party on it while the foes behind it work, and a captain's orders lift its whole side. The
+ * single-family measure misses that (verify 2026-11-03: Hard fights with shieldbearers won 80% against
+ * 91% overall, one Hard fight of two shieldbearers, a shooter and a captain 0%).
+ */
+export const MARINARA_ESCORT_PREMIUM: Partial<Record<string, number>> = {
+  shieldbearer: 1.35,
+  "grave-duelist": 1.35,
+  captain: 1.2,
+};
+
 export function marinaraFoeThreat(
   familyId: string,
   tier: MarinaraEnemyTier,
@@ -2020,7 +2057,7 @@ export function marinaraFoeThreat(
     const standard = measured?.standard ? interpolate(measured.standard, level) : null;
     worth = (standard ?? 1) * MARINARA_TIER_RULES[tier].threat;
   }
-  worth *= MARINARA_THREAT_CALIBRATION;
+  worth *= MARINARA_THREAT_CALIBRATION * (MARINARA_ESCORT_PREMIUM[familyId] ?? 1);
   if (tier === "boss") worth *= MARINARA_BOSS_THREAT_PREMIUM;
   return worth * Math.pow(MARINARA_LEVEL_GAP_THREAT, level - partyLevel);
 }
@@ -2105,6 +2142,8 @@ export function marinaraCheckEncounter(input: {
     if (foe.level > party.level + above) problems.push(`${label}: more than ${above} levels above the party.`);
     if (foe.level < party.level - gap.below)
       problems.push(`${label}: more than ${gap.below} levels below the party; not worth a fight.`);
+    else if (foe.tier === "boss" && foe.level < party.level - gap.bossBelow)
+      problems.push(`${label}: a boss more than ${gap.bossBelow} levels below the party; make it an elite.`);
     threat += marinaraFoeThreat(family.id, foe.tier, foe.level, party.level);
   }
   for (const tier of MARINARA_ENEMY_TIERS_LIST)
@@ -2204,7 +2243,7 @@ export function marinaraBuildEncounter(input: {
     const lowest = Math.max(
       lead.levels[0],
       MARINARA_TIER_RULES.boss.minLevel,
-      level - marinaraLevelGap(input.party).below,
+      level - marinaraLevelGap(input.party).bossBelow,
     );
     while (worth(boss) > budget && boss.level > lowest) boss.level--;
     const elite = { familyId: lead.id, tier: "elite" as const, level: foeLevel(lead) };
@@ -2356,7 +2395,8 @@ export function marinaraFitEncounter(input: {
     }
     const gap = marinaraLevelGap(party);
     const above = asked.tier === "boss" ? gap.bossAbove : gap.above;
-    let foeLevel = Math.max(level - gap.below, Math.min(level + above, Math.round(asked.level)));
+    const below = asked.tier === "boss" ? gap.bossBelow : gap.below;
+    let foeLevel = Math.max(level - below, Math.min(level + above, Math.round(asked.level)));
     foeLevel = Math.max(family.levels[0], Math.min(marinaraEnemySettingCap(family, setting), foeLevel));
     if (!marinaraEnemyName(family, setting, foeLevel)) {
       changes.push(`Dropped ${family.id}: not found in ${setting} near level ${level}.`);
@@ -2368,6 +2408,7 @@ export function marinaraFitEncounter(input: {
       tier &&
       (!family.tiers.includes(tier) ||
         foeLevel < MARINARA_TIER_RULES[tier].minLevel ||
+        (tier === "boss" && foeLevel < level - gap.bossBelow) ||
         (perTier[tier] ?? 0) >= MARINARA_TIER_RULES[tier].maxPerFight)
     )
       tier = DEMOTE[tier];
@@ -2406,7 +2447,10 @@ export function marinaraFitEncounter(input: {
     if (lower && family.tiers.includes(lower)) {
       foes[index] = { ...top, tier: lower };
       changes.push(`${top.familyId}: ${top.tier} → ${lower} to fit a ${input.difficulty} fight.`);
-    } else if (top.level > level - marinaraLevelGap(party).below && top.level > family.levels[0]) {
+    } else if (
+      top.level > level - marinaraLevelGap(party)[top.tier === "boss" ? "bossBelow" : "below"] &&
+      top.level > family.levels[0]
+    ) {
       foes[index] = { ...top, level: top.level - 1 };
       changes.push(`${top.familyId}: level ${top.level} → ${top.level - 1} to fit a ${input.difficulty} fight.`);
     } else {
