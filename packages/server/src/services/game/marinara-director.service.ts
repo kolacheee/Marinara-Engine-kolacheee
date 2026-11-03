@@ -949,6 +949,8 @@ export function marinaraBoardAiAction(
   /** The board's own check: whether this option at this target passes from where the unit will stand
    *  (sight, minimum range, a skill's own range). Without it, distance alone. */
   fits?: (optionId: string | null, targetId: string) => boolean,
+  /** Bound to its provoker or challenger: the lock holds wherever it stands (the board walks it in). */
+  bind?: boolean,
 ): CombatPlayerAction | null {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
@@ -986,13 +988,13 @@ export function marinaraBoardAiAction(
     options.some((option) => reach(option, foe) && !marinaraStatusImmune(foe, option.effect));
   const unforced: Array<() => void> = [];
   for (const foe of state.fighters)
-    if (foe.side !== actor.side && foe.provoking > 0 && !strikes(foe)) {
+    if (!bind && foe.side !== actor.side && foe.provoking > 0 && !strikes(foe)) {
       const turns = foe.provoking;
       foe.provoking = 0;
       unforced.push(() => (foe.provoking = turns));
     }
   const taunter = actor.tauntTurns > 0 && actor.tauntedBy ? marinaraFighter(state, actor.tauntedBy) : undefined;
-  if (actor.tauntTurns > 0 && actor.tauntedBy && (!taunter || !strikes(taunter))) {
+  if (!bind && actor.tauntTurns > 0 && actor.tauntedBy && (!taunter || !strikes(taunter))) {
     const turns = actor.tauntTurns;
     actor.tauntTurns = 0;
     unforced.push(() => (actor.tauntTurns = turns));
@@ -1015,7 +1017,7 @@ export function marinaraBoardAiAction(
     // as a target, playtest r39: Pell beside Kingpin while a Vanished Ghost Fixer drew fire): the
     // lock doesn't hold, as above.
     const locked = state.fighters.some((foe) => foe.side !== actor.side && foe.provoking > 0) || actor.tauntTurns > 0;
-    if (locked && ranked.every((one) => one.candidate.action.optionId === "defend")) {
+    if (!bind && locked && ranked.every((one) => one.candidate.action.optionId === "defend")) {
       for (const foe of state.fighters)
         if (foe.side !== actor.side && foe.provoking > 0) {
           const turns = foe.provoking;
