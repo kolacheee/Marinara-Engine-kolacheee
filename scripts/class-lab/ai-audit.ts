@@ -14,7 +14,8 @@
  *  - defend: a Defend while a damaging option was on the table (counted, not judged).
  * Damage choice: the expected damage of the pick over the best expected damage on the table.
  */
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
+const REASONS_DIR = process.env.REASONS_DIR ?? "/tmp/claude-0/-home-claude/805faa68-532d-520a-b23f-e784a14a01e6/scratchpad/reasons";
 import {
   commandCombatDirector,
   createCombatDirector,
@@ -23,6 +24,7 @@ import {
 } from "../../packages/server/src/services/game/combat-director.service.js";
 import {
   marinaraAiAction,
+  marinaraPickReasons,
   marinaraBoardAiAction,
 } from "../../packages/server/src/services/game/marinara-director.service.js";
 import { decideTacticalAction } from "../../packages/shared/src/features/tactical-combat/index.js";
@@ -75,6 +77,7 @@ interface Tally {
   /** Party skills: turns it was usable, and turns it was picked. */
   avail: Record<string, number>;
   reviveChance: Record<string, number>;
+  reasonLines: number;
   picked: Record<string, number>;
   stallNotes: string[];
   skills: Record<string, Record<string, number>>;
@@ -99,6 +102,7 @@ const tally: Tally = {
   kinds: {},
   avail: {},
   reviveChance: {},
+  reasonLines: 0,
   picked: {},
   stallNotes: [],
   skills: {},
@@ -458,7 +462,12 @@ function playFight(level: number, n: number) {
     }
     if (s.stage === "action" && s.actorId) {
       const unit = [...s.party, ...s.enemies].find((u) => u.id === s.actorId)!;
-      const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false);
+      // The AI's reasons for every pick, as the director logs them with Debug on (Alyssa 2026-11-03: the
+      // reasons log is on for every playtest and fight run).
+      const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false, undefined, (ranking) => {
+        const text = marinaraPickReasons(s.marinara!, unit.id, ranking);
+        if (text) s.log.push({ kind: "marinara:reasoning", text, actorId: unit.id } as never);
+      });
       const actor = fighter(unit.id);
       if (actor)
         audit(s, actor, temperOf(unit.id), {
@@ -471,6 +480,16 @@ function playFight(level: number, n: number) {
     else run(() => commandCombatDirector(s, { type: "continue" }));
   }
   if (process.env.DEBUG && n === 1) for (const l of s.log.slice(0, 60)) console.log(l.actorId, l.kind, l.text);
+  // The whole fight log, AI reasons included, one file per fight (REASONS_DIR, on by default).
+  {
+    const reasons = s.log.filter((l) => l.kind === "marinara:reasoning").length;
+    tally.reasonLines = (tally.reasonLines ?? 0) + reasons;
+    mkdirSync(REASONS_DIR, { recursive: true });
+    writeFileSync(
+      `${REASONS_DIR}/${style}-L${level}-${n}.log`,
+      s.log.map((l) => `${l.kind ?? ""} | ${l.text}`).join("\n") + "\n",
+    );
+  }
   tally.fights++;
   tally.rounds += s.round;
   if (s.outcome === "victory") tally.wins++;
@@ -482,8 +501,11 @@ function playFight(level: number, n: number) {
       marinaraUsable(f, fs).some((o) => o.effect.kind === "damage" && o.effect.damage === "magic"),
     );
     const foesLeft = fs.filter((f) => f.side !== "party" && f.hp > 0);
+    const board = s.tactical
+      ? ` | board ${s.tactical.units.filter((u) => u.hp > 0).map((u) => `${u.id}@${u.x},${u.y}`).join(" ")} ${s.tactical.width}x${s.tactical.height}`
+      : "";
     tally.stallNotes.push(
-      `L${level} ${s.outcome ?? "none"} r${s.round}: party ${alive.map((f) => `${f.classId}(${f.hp}/${f.maxHp} mp${f.mp})`).join(" ")} | magic now ${magicNow.length} | foes ${foesLeft.map((f) => `${f.familyId ?? f.archetype}:${f.tier}(${f.hp}/${f.maxHp})`).join(" ")}`,
+      board + ` L${level} ${s.outcome ?? "none"} r${s.round}: party ${alive.map((f) => `${f.classId}(${f.hp}/${f.maxHp} mp${f.mp})`).join(" ")} | magic now ${magicNow.length} | foes ${foesLeft.map((f) => `${f.familyId ?? f.archetype}:${f.tier}(${f.hp}/${f.maxHp})`).join(" ")}`,
     );
   }
 }
@@ -524,6 +546,7 @@ console.log(
   `damage picks: ${tally.damageChoice.picks}, mean share of best ${((tally.damageChoice.ratioSum / Math.max(1, tally.damageChoice.picks)) * 100).toFixed(0)}%, under 60% of best ${pct(tally.damageChoice.under60, tally.damageChoice.picks)}, physical while magic was 1.5x+ ${tally.damageChoice.physOverMagic}`,
 );
 console.log(`action kinds: ${top(tally.kinds, 30)}`);
+console.log(`AI reasons logged: ${tally.reasonLines} lines (files in ${REASONS_DIR})`);
 console.log("revive chances + commanded actions:", JSON.stringify(tally.reviveChance));
 console.log("party skills, picked / turns usable:");
 console.log(

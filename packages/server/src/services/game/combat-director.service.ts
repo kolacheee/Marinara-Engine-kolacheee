@@ -313,13 +313,33 @@ export function marinaraBoardTurn(
       picked = again;
       to = step.x === tu.x && step.y === tu.y ? undefined : step;
       // Nothing in reach from anywhere it can stand: the board's own walk, which paths round walls
-      // (a straight-line step stopped both sides at a wall for 60 rounds, playtest 2026-11-01).
+      // (a straight-line step stopped both sides at a wall for 60 rounds, playtest 2026-11-01) - unless
+      // that walk doesn't close in and the straight step does: the board's walk for a self buff or a
+      // kite drifted both sides of a duel round the edges for 60 rounds (stall logs 2026-11-03).
     } else {
       reasons = firstReasons;
-      if (!boardTo) to = step.x === tu.x && step.y === tu.y ? undefined : step;
+      const here = nearest({ x: tu.x, y: tu.y });
+      const closes = nearest(step) < here && (!boardTo || nearest(step) < nearest(boardTo));
+      if (!boardTo || (closes && nearest(boardTo) >= here))
+        to = step.x === tu.x && step.y === tu.y ? undefined : step;
     }
   }
   if (!picked) return board;
+  // A pick on the unit itself (a self or party buff) with every foe out of reach: walk in as Defend
+  // does, rather than the board's drift (stall logs 2026-11-03: a boss cast Rally and wandered the
+  // edges while the last party member did the same).
+  if (picked.type === "skill" && picked.targetId === tu.id && !tu.hasMoved && foes.length) {
+    const nearest = (at: TacticalCoord) => Math.min(...foes.map((foe) => from(at)(foe.id)));
+    const range = Math.max(tu.attackRange.max, ...(tu.skills ?? []).map((k) => k.range ?? 0));
+    const here = { x: tu.x, y: tu.y };
+    if (nearest(to ?? here) > range) {
+      const step = [here, ...getMovementRange(t, tu.id)].reduce((best, at) =>
+        nearest(at) < nearest(best) ? at : best,
+      );
+      if (nearest(step) < nearest(here) && (!to || nearest(to) >= nearest(here)))
+        to = step.x === tu.x && step.y === tu.y ? undefined : step;
+    }
+  }
   const where = to ? { to } : {};
   let action: Extract<TacticalAction, { unitId: string }> | undefined;
   if (picked.type === "defend") action = { type: "defend", unitId: tu.id, ...where };
