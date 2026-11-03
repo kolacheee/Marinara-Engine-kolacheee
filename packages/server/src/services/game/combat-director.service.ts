@@ -265,6 +265,8 @@ function logMarinaraReasons(
 export function marinaraBoardTurn(
   s: CombatDirectorState,
   tu: TacticalUnit,
+  /** Not bound to a provoker it has no path to (set on the second look). */
+  free = false,
 ): Extract<TacticalAction, { unitId: string }> {
   const t = s.tactical!;
   const board = decideTacticalAction(t, tu) as Extract<TacticalAction, { unitId: string }>;
@@ -289,7 +291,9 @@ export function marinaraBoardTurn(
       : s
           .marinara!.fighters.filter((one) => one.side !== me.side && one.provoking > 0 && one.hp > 0)
           .map((one) => one.id);
-  const bound = foes.filter((one) => boundIds.includes(one.id)).sort((a, b) => from(tu)(a.id) - from(tu)(b.id))[0];
+  const bound = free
+    ? undefined
+    : foes.filter((one) => boundIds.includes(one.id)).sort((a, b) => from(tu)(a.id) - from(tu)(b.id))[0];
   const goals = bound ? [bound] : foes;
   // Steps the unit would walk from a tile to stand beside its nearest foe, round walls and terrain (a
   // breadth-first fill from the foes): closer by the board's own paths, not as the crow flies (playtest
@@ -441,6 +445,10 @@ export function marinaraBoardTurn(
   // Bound to a provoker or challenger it can't strike, from here or with any ranged blow: it closes in
   // as far as it can and defends (Alyssa 2026-11-03).
   if (picked.type === "defend" && bound && !braces) {
+    // No board path to it at all (its own side boxes it in) and nothing reaches it: the pull has nothing
+    // to act on, and the unit acts freely (r47 matrix: foes drawn to a tank behind its line stood and
+    // defended for 3-5+ turns, 0.5% of foe turns; a tank behind the line froze every foe).
+    if (walk({ x: tu.x, y: tu.y }) >= 1000) return marinaraBoardTurn(s, tu, true);
     const text = `AI: ${tu.name} is drawn to ${bound.name} but can't strike it yet: it closes in and defends.`;
     const m = s.marinara!;
     m.aiReasons = [...(m.aiReasons ?? []), { unitId: tu.id, round: s.round, text }].slice(-MARINARA_AI_REASONS_KEPT);
