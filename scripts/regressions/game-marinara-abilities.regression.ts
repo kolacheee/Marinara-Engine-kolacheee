@@ -548,21 +548,25 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
 // Strength or Magic follows the weapon (Alyssa 2026-11-02): a focus means Magic, anything else Strength.
 {
   const caster = unit("pc", "party", ["pierce"]);
-  caster.gear = { power: 0, spellPower: 8 };
+  caster.gear = { power: 0, spellPower: 8, weaponType: "blunt" };
   const option = marinaraOption(caster, "pierce", [caster])!;
   assert.equal(option.effect.damage, "magic", "Pierce with a focus deals magic damage");
   assert.equal(option.effect.scales, "magic", "and runs on Magic");
   const fighter = unit("pf", "party", ["pierce"]);
-  fighter.gear = { power: 8, spellPower: 0 };
+  fighter.gear = { power: 8, spellPower: 0, weaponType: "slash" };
   fighter.stats.magic = fighter.stats.strength + 50;
   assert.equal(marinaraOption(fighter, "pierce", [fighter])!.effect.damage, "physical", "a sword keeps it on Strength");
   const medic = unit("md", "party", ["mend"]);
-  medic.gear = { power: 8, spellPower: 0 };
+  medic.gear = { power: 8, spellPower: 0, weaponType: "slash" };
   assert.equal(
     marinaraOption(medic, "mend", [medic])!.effect.scales,
     "strength",
     "a heal with a sword runs on Strength",
   );
+  // Armour alone is no weapon: the class decides, so a Mender in robes still heals on Magic.
+  medic.gear = { power: 0, spellPower: 0 };
+  medic.archetype = "mender";
+  assert.equal(marinaraOption(medic, "mend", [medic])!.effect.scales, "magic", "unarmed, the class decides");
 }
 
 // Channel Element (Alyssa 2026-11-02): a Channeler's basic attacks and element spells strike with the
