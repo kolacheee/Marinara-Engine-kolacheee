@@ -81,6 +81,28 @@ export interface MarinaraDirectorState {
   place?: MarinaraItemPlace;
   /** The fight's loot seed, so a stolen thing is the one the loot would have rolled. */
   lootSeed?: string;
+  /**
+   * Why the Engine's AI picked each action, newest last: ALWAYS kept, whoever asked for the pick
+   * (Alyssa 2026-11-03: the AI reasons log MUST be on for ALL playtesting, sims and balance runs; a
+   * harness can't forget it). The director also writes them to its log as "marinara:reasoning".
+   */
+  aiReasons?: Array<{ unitId: string; round: number; text: string }>;
+}
+
+/** How many AI reasons a fight keeps. */
+const MARINARA_AI_REASONS_KEPT = 600;
+
+/** Keeps one AI pick's reasons on the fight state. */
+export function keepMarinaraReasons(
+  state: MarinaraDirectorState,
+  unitId: string,
+  round: number,
+  ranking: ReadonlyArray<RankedCombatCandidate<MarinaraChoice>>,
+): string | undefined {
+  const text = marinaraPickReasons(state, unitId, ranking);
+  if (!text) return undefined;
+  state.aiReasons = [...(state.aiReasons ?? []), { unitId, round, text }].slice(-MARINARA_AI_REASONS_KEPT);
+  return text;
 }
 
 export type MarinaraLog = (text: string, kind: string, actorId?: string, source?: string) => void;
@@ -805,8 +827,15 @@ export function marinaraAiAction(
   aiRuns(actor);
   const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
     tactical,
-    ...(ranked ? { ranked } : {}),
-    ...(explain ? { explain } : {}),
+    ...(ranked
+      ? { ranked }
+      : {
+          // Always explained and kept (the reasons log is never off); the caller hears it too.
+          explain: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => {
+            keepMarinaraReasons(state, unit.id, round, ranking);
+            explain?.(ranking);
+          },
+        }),
   });
   return marinaraChoiceAction(actor, choice);
 }

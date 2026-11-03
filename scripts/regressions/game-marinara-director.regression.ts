@@ -209,6 +209,8 @@ console.log("game-marinara-director: ok");
   const played = playOut(fight(11, 8, ["standard", "standard", "minion"]));
   const reasons = played.log.filter((entry) => entry.kind === "marinara:reasoning");
   assert.ok(reasons.length > 0, "foe picks say why");
+  // Always kept on the fight state too, even for picks a harness asked for itself with no explain.
+  assert.ok((played.marinara!.aiReasons?.length ?? 0) >= reasons.length, "the reasons log is never off");
   assert.match(
     reasons[0]!.text,
     /^AI: .+ picks .+ \(-?\d+\.\d\d.*\)(; runner-up .+ \(-?\d+\.\d\d\)|; no other choice)\.$/,
