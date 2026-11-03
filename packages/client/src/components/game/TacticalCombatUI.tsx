@@ -1,4 +1,5 @@
 import { CombatWeatherSummary } from "./CombatWeatherSummary";
+import { useUIStore } from "../../stores/ui.store";
 import { CombatAiControls } from "./CombatAiControls";
 import { CreatureArtFigure, findCreatureArtIn, useCreatureFacings, useCreaturePacks } from "./CreatureArt";
 // ──────────────────────────────────────────────
@@ -299,6 +300,8 @@ export function TacticalCombatUI({
   playerCombatantId,
   onCombatEnd,
 }: TacticalCombatUIProps) {
+  // The AI's reasons for its Classic Marinara picks show only with Debug on.
+  const debugMode = useUIStore((state) => state.debugMode);
   const { t: localizeUi } = useUiTranslation();
   const { data: manifest } = useGameAssetManifest();
   const assets = manifest?.assets ?? null;
@@ -2027,22 +2030,24 @@ export function TacticalCombatUI({
               </button>
             </div>
             <div className="h-[calc(100%-3.25rem)] overflow-y-auto px-4 py-3 text-xs leading-relaxed">
-              {liveState.log.map((ev, i) => (
-                <p
-                  key={i}
-                  className={cn(
-                    "border-b border-white/5 py-1",
-                    ev.kind === "phase" && "font-bold text-amber-200",
-                    ev.kind === "crit" && "font-semibold text-amber-300",
-                    ev.kind === "defeat" && "text-red-300",
-                    ev.kind === "heal" && "text-emerald-300",
-                    ev.kind === "miss" && "italic text-white/50",
-                  )}
-                >
-                  {ev.message ? localizeUi(ev.message.key, { ...ev.message.params, defaultValue: ev.text }) : ev.text}
-                  {ev.message?.suffixKey && ` ${localizeUi(ev.message.suffixKey)}`}
-                </p>
-              ))}
+              {liveState.log.map((ev, i) =>
+                ev.kind === "reasoning" && !debugMode ? null : (
+                  <p
+                    key={i}
+                    className={cn(
+                      "border-b border-white/5 py-1",
+                      ev.kind === "phase" && "font-bold text-amber-200",
+                      ev.kind === "crit" && "font-semibold text-amber-300",
+                      ev.kind === "defeat" && "text-red-300",
+                      ev.kind === "heal" && "text-emerald-300",
+                      ev.kind === "miss" && "italic text-white/50",
+                    )}
+                  >
+                    {ev.message ? localizeUi(ev.message.key, { ...ev.message.params, defaultValue: ev.text }) : ev.text}
+                    {ev.message?.suffixKey && ` ${localizeUi(ev.message.suffixKey)}`}
+                  </p>
+                ),
+              )}
             </div>
           </div>
         </div>

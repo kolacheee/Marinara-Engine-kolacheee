@@ -797,6 +797,7 @@ export function marinaraAiAction(
   difficulty: GameDifficulty,
   tactical: boolean,
   ranked?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void,
+  explain?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void,
 ): CombatPlayerAction {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return { type: "defend" };
@@ -804,6 +805,7 @@ export function marinaraAiAction(
   const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
     tactical,
     ...(ranked ? { ranked } : {}),
+    ...(explain ? { explain } : {}),
   });
   return marinaraChoiceAction(actor, choice);
 }
@@ -825,6 +827,7 @@ export function marinaraBoardAiAction(
   canStrike?: (unitId: string) => boolean,
   /** Whether one fighter could reach another this round (a move and its reach). */
   reaches?: (fromId: string, toId: string) => boolean,
+  explain?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void,
 ): CombatPlayerAction | null {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
@@ -851,6 +854,7 @@ export function marinaraBoardAiAction(
       tactical: true,
       canStrike,
       reaches,
+      ...(explain ? { explain } : {}),
       // Friends within the board's support range (2 tiles, a caster's 3); the user itself, a whole side and the
       // fallen (whom the board can't aim at; resolution finds them) anywhere.
       reach: (option, target) =>
@@ -869,6 +873,57 @@ export function marinaraBoardAiAction(
   } finally {
     for (const restore of unforced) restore();
   }
+}
+
+/** How small a part of a pick's score is too small to give as a reason. */
+const MARINARA_REASON_FLOOR = 0.05;
+
+/** A ranked choice in words: the option and who it is aimed at. */
+function marinaraChoiceLabel(state: MarinaraDirectorState, actor: MarinaraFighter, choice: MarinaraChoice): string {
+  const option =
+    choice.optionId === "defend"
+      ? "Defend"
+      : choice.optionId === null
+        ? "Attack"
+        : (skillLabel(actor, choice.optionId) ?? choice.optionId);
+  const targets =
+    choice.optionId === "defend"
+      ? []
+      : choice.targetIds.map((id) => (id === actor.id ? "themselves" : nameOf(state, id)));
+  return targets.length ? `${option} on ${targets.join(", ")}` : option;
+}
+
+/**
+ * Why the Engine's AI picked what it did (Debug log; Alyssa's rule from the 5e playtests: every
+ * playtest runs with the AI's reasons): the pick and its score, its two or three largest score parts
+ * with their numbers, and the runner-up with its score. Read back from its own scoring, never a model.
+ */
+export function marinaraPickReasons(
+  state: MarinaraDirectorState,
+  actorId: string,
+  ranking: ReadonlyArray<RankedCombatCandidate<MarinaraChoice>>,
+): string | undefined {
+  const actor = marinaraFighter(state, actorId);
+  const pick = ranking[0];
+  if (!actor || !pick) return undefined;
+  const parts = (Object.entries(pick.parts) as Array<[string, number]>)
+    .filter(([, part]) => Math.abs(part) >= MARINARA_REASON_FLOOR)
+    .sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]))
+    .slice(0, 3)
+    .map(([key, part]) => `${key} ${part >= 0 ? "+" : ""}${part.toFixed(2)}`);
+  const runnerUp = ranking.find(
+    (one) =>
+      marinaraChoiceLabel(state, actor, one.candidate.action) !==
+      marinaraChoiceLabel(state, actor, pick.candidate.action),
+  );
+  return (
+    `AI: ${actor.name} picks ${marinaraChoiceLabel(state, actor, pick.candidate.action)} (${pick.score.toFixed(2)}` +
+    `${parts.length ? `: ${parts.join(", ")}` : ""})` +
+    (runnerUp
+      ? `; runner-up ${marinaraChoiceLabel(state, actor, runnerUp.candidate.action)} (${runnerUp.score.toFixed(2)})`
+      : "; no other choice") +
+    "."
+  );
 }
 
 /** Every Classic action a fighter could take now, one per option and target: a Game Master's menu. */

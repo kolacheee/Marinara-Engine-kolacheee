@@ -78,6 +78,14 @@ const archer = s.tactical!.units.find((u) => u.id === "cy")!;
 assert.equal(archer.attackRange.max, 3, "a Marksman shoots from range on the board");
 assert.equal(s.tactical!.units.find((u) => u.id === "bo")!.attackRange.max, 1, "a Guard fights up close");
 playOut(s);
+// The AI's reasons (Debug only): each board pick says why, and the board log keeps their kind.
+{
+  const reasons = s.log.filter((entry) => entry.kind === "marinara:reasoning");
+  assert.ok(reasons.length > 0, "board picks say why");
+  assert.ok(reasons.every((entry) => entry.text.startsWith("AI: ")));
+  assert.ok(s.tactical!.log.some((entry) => entry.kind === "reasoning"));
+  console.log("  e.g.", reasons[reasons.length - 1]!.text);
+}
 assert.ok(s.outcome === "victory" || s.outcome === "defeat", `ended: ${s.outcome}`);
 assert.ok(
   s.log.some((line) => line.kind === "marinara:hit"),
