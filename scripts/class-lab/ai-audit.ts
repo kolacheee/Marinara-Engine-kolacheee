@@ -29,7 +29,14 @@ import {
   marinaraPickReasons,
   marinaraBoardAiAction,
 } from "../../packages/server/src/services/game/marinara-director.service.js";
-import { decideTacticalAction } from "../../packages/shared/src/features/tactical-combat/index.js";
+import {
+  canTraverseTile,
+  decideTacticalAction,
+  validateTacticalUnitAction,
+} from "../../packages/shared/src/features/tactical-combat/index.js";
+// Tactical turns the AI spent walking (no blow, no guard): where they went and whether a blow was legal
+// from where the unit stood (the r38 playtest's approach checks).
+const approach = new Map<string, number>();
 import { marinaraFightStart } from "../../packages/server/src/services/game/marinara-fight-start.service.js";
 import { MARINARA_CLASSES, marinaraRandom } from "../../packages/shared/src/features/marinara-classes.js";
 import {
@@ -483,6 +490,63 @@ function playFight(level: number, n: number) {
           skillName?: string;
           targetId?: string;
         };
+        if (unit.side === "party") {
+          approach.set("partyTurns", (approach.get("partyTurns") ?? 0) + 1);
+          if (action.type === "wait") {
+            const foesNow = s.tactical.units.filter((o) => o.side !== unit.side && o.hp > 0);
+            const gap = (x: number, y: number) =>
+              Math.min(...foesNow.map((o) => Math.abs(o.x - x) + Math.abs(o.y - y)));
+            const to = (action as { to?: { x: number; y: number } }).to ?? { x: unit.x, y: unit.y };
+            const before = gap(unit.x, unit.y);
+            const after = gap(to.x, to.y);
+            const legal = foesNow.some(
+              (o) =>
+                !validateTacticalUnitAction(s.tactical!, unit, { type: "attack", unitId: unit.id, targetId: o.id }) ||
+                (unit.skills ?? []).some(
+                  (k) =>
+                    !validateTacticalUnitAction(s.tactical!, unit, {
+                      type: "skill",
+                      unitId: unit.id,
+                      skillName: k.name,
+                      targetId: o.id,
+                    }),
+                ),
+            );
+            // Steps by the board's own paths (round walls and other units) to stand beside a foe.
+            const steps = new Map<string, number>();
+            const queue = foesNow.map((o) => ({ x: o.x, y: o.y }));
+            for (const o of queue) steps.set(`${o.x},${o.y}`, 0);
+            for (let i = 0; i < queue.length; i++) {
+              const at = queue[i]!;
+              for (const [dx, dy] of [
+                [1, 0],
+                [-1, 0],
+                [0, 1],
+                [0, -1],
+              ] as const) {
+                const next = { x: at.x + dx, y: at.y + dy };
+                const k = `${next.x},${next.y}`;
+                if (steps.has(k)) continue;
+                if (!(next.x === unit.x && next.y === unit.y) && !canTraverseTile(s.tactical!, unit, next)) continue;
+                steps.set(k, steps.get(`${at.x},${at.y}`)! + 1);
+                queue.push(next);
+              }
+            }
+            const pathBefore = steps.get(`${unit.x},${unit.y}`) ?? 1000 + before;
+            const pathAfter = steps.get(`${to.x},${to.y}`) ?? 1000 + after;
+            const key = `wait:${after < before ? "closer" : after === before ? "same" : "away"}${legal ? ":legal-from-here" : ""}`;
+            const pathKey = `path:${pathAfter < pathBefore ? "closer" : pathAfter === pathBefore ? (to.x === unit.x && to.y === unit.y ? "stays" : "same") : "away"}`;
+            approach.set(pathKey, (approach.get(pathKey) ?? 0) + 1);
+            if (process.env.DEBUG_STAYS && pathKey === "path:stays" && (approach.get(pathKey) ?? 0) <= 12)
+              console.log(
+                `STAY r${s.round} ${unit.id} @${unit.x},${unit.y} mv${unit.movement} rng${unit.attackRange.max} path${pathBefore} board ${s.tactical.width}x${s.tactical.height} units ${s.tactical.units
+                  .filter((o) => o.hp > 0)
+                  .map((o) => `${o.side[0]}${o.id}@${o.x},${o.y}`)
+                  .join(" ")} blocked ${JSON.stringify((s.tactical as { terrain?: unknown }).terrain ?? "").slice(0, 0)}`,
+              );
+            approach.set(key, (approach.get(key) ?? 0) + 1);
+          }
+        }
         const actor = fighter(unit.id);
         if (actor && action.type === "defend") {
           const near = Math.min(
@@ -564,10 +628,18 @@ function playFight(level: number, n: number) {
     );
     const foesLeft = fs.filter((f) => f.side !== "party" && f.hp > 0);
     const board = s.tactical
-      ? ` | yielded ${fs.filter((f) => f.yielded).map((f) => `${f.id}${s.morale?.[f.id]?.yielded ? "(morale)" : "(not in morale)"}`).join(",")}` + ` | board ${s.tactical.units.filter((u) => u.hp > 0).map((u) => `${u.id}@${u.x},${u.y}`).join(" ")} ${s.tactical.width}x${s.tactical.height}`
+      ? ` | yielded ${fs
+          .filter((f) => f.yielded)
+          .map((f) => `${f.id}${s.morale?.[f.id]?.yielded ? "(morale)" : "(not in morale)"}`)
+          .join(",")}` +
+        ` | board ${s.tactical.units
+          .filter((u) => u.hp > 0)
+          .map((u) => `${u.id}@${u.x},${u.y}`)
+          .join(" ")} ${s.tactical.width}x${s.tactical.height}`
       : "";
     tally.stallNotes.push(
-      board + ` L${level} ${s.outcome ?? "none"} r${s.round}: party ${alive.map((f) => `${f.classId}(${f.hp}/${f.maxHp} mp${f.mp})`).join(" ")} | magic now ${magicNow.length} | foes ${foesLeft.map((f) => `${f.familyId ?? f.archetype}:${f.tier}(${f.hp}/${f.maxHp})`).join(" ")}`,
+      board +
+        ` L${level} ${s.outcome ?? "none"} r${s.round}: party ${alive.map((f) => `${f.classId}(${f.hp}/${f.maxHp} mp${f.mp})`).join(" ")} | magic now ${magicNow.length} | foes ${foesLeft.map((f) => `${f.familyId ?? f.archetype}:${f.tier}(${f.hp}/${f.maxHp})`).join(" ")}`,
     );
   }
 }
@@ -586,6 +658,7 @@ console.log(
   `wins ${pct(tally.wins, tally.fights)}, stalls ${pct(tally.stalls, tally.fights)}, rounds ${(tally.rounds / tally.fights).toFixed(1)}`,
 );
 console.log(`turns: party ${tally.partyTurns}, foes ${tally.foeTurns}`);
+console.log(`approach: ${[...approach].map(([k, v]) => `${k} ${v}`).join(", ")}`);
 console.log(
   `renew active buff: party ${tally.renew.party} (${pct(tally.renew.party, tally.partyTurns)} of turns), foes ${tally.renew.foe} (${pct(tally.renew.foe, tally.foeTurns)})  [${top(tally.renew.skills)}]`,
 );

@@ -865,19 +865,45 @@ export function marinaraBoardAiAction(
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
   aiRuns(actor);
+  // Friends within the board's support range (2 tiles, a caster's 3); the user itself, a whole side and the
+  // fallen (whom the board can't aim at; resolution finds them) anywhere.
+  // With the board's check, also sight and minimum range (reasons audit 2026-11-03: 2% of Tactical
+  // turns fell back on the board AI's own move, mostly marksmen aiming past cover or too close).
+  const reach = (option: MarinaraOption, target: MarinaraFighter) =>
+    target.id === actor.id ||
+    option.effect.target === "party" ||
+    option.effect.target === "downed-ally" ||
+    (distance(target.id) <=
+      (option.id === null
+        ? attackRange
+        : (MARINARA_BOARD_SPELL_RANGE[actor.archetype ?? ""] ??
+          (target.side === actor.side ? 2 : Math.max(attackRange, 2)))) &&
+      (!fits || fits(option.id, target.id)));
   // A challenge or a provoker forces the pick only when it can be reached (the board's resolution,
   // performMarinaraTacticalAction): one out of reach doesn't lock out the foes next to the unit
   // (Sonnet panel r3, 2026-11-02: casters beside a foe defended for rounds while a distant Warding
   // Stance foe was the only target they were offered).
-  const farthest = Math.max(attackRange, MARINARA_BOARD_SPELL_RANGE[actor.archetype ?? ""] ?? 2);
+  // Whether anything the unit can do lands on this foe from where it will stand. A lock on a foe it
+  // can't strike (two tiles off a melee unit, past a wall or out of sight) leaves it nothing to do, and
+  // resolution lets the blow go to a foe in reach instead (playtest r38: 0.19% of party turns were
+  // "nothing to strike" beside a foe while a Provoker stood just out of reach).
+  const options = marinaraUsable(actor, state.fighters).filter(
+    (option) =>
+      option.effect.target !== "self" &&
+      option.effect.target !== "party" &&
+      option.effect.target !== "ally" &&
+      option.effect.target !== "downed-ally",
+  );
+  const strikes = (foe: MarinaraFighter) => options.some((option) => reach(option, foe));
   const unforced: Array<() => void> = [];
   for (const foe of state.fighters)
-    if (foe.side !== actor.side && foe.provoking > 0 && distance(foe.id) > farthest) {
+    if (foe.side !== actor.side && foe.provoking > 0 && !strikes(foe)) {
       const turns = foe.provoking;
       foe.provoking = 0;
       unforced.push(() => (foe.provoking = turns));
     }
-  if (actor.tauntTurns > 0 && actor.tauntedBy && distance(actor.tauntedBy) > farthest) {
+  const taunter = actor.tauntTurns > 0 && actor.tauntedBy ? marinaraFighter(state, actor.tauntedBy) : undefined;
+  if (actor.tauntTurns > 0 && actor.tauntedBy && (!taunter || !strikes(taunter))) {
     const turns = actor.tauntTurns;
     actor.tauntTurns = 0;
     unforced.push(() => (actor.tauntTurns = turns));
@@ -888,20 +914,7 @@ export function marinaraBoardAiAction(
       canStrike,
       reaches,
       ...(explain ? { explain } : {}),
-      // Friends within the board's support range (2 tiles, a caster's 3); the user itself, a whole side and the
-      // fallen (whom the board can't aim at; resolution finds them) anywhere.
-      // With the board's check, also sight and minimum range (reasons audit 2026-11-03: 2% of Tactical
-      // turns fell back on the board AI's own move, mostly marksmen aiming past cover or too close).
-      reach: (option, target) =>
-        target.id === actor.id ||
-        option.effect.target === "party" ||
-        option.effect.target === "downed-ally" ||
-        (distance(target.id) <=
-          (option.id === null
-            ? attackRange
-            : (MARINARA_BOARD_SPELL_RANGE[actor.archetype ?? ""] ??
-              (target.side === actor.side ? 2 : Math.max(attackRange, 2)))) &&
-          (!fits || fits(option.id, target.id))),
+      reach,
     });
     return marinaraChoiceAction(actor, choice);
   } catch {
