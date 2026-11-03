@@ -619,7 +619,9 @@ function boardLabels(s: CombatDirectorState) {
 function findUnit(s: CombatDirectorState, ref: string) {
   const labels = boardLabels(s);
   const key = ref.toLowerCase();
-  const u = s.tactical!.units.find((one) => labels.get(one.id) === ref || one.name.toLowerCase() === key || one.name.toLowerCase().startsWith(key));
+  const units = s.tactical!.units;
+  // A board label wins over a name prefix ("c" is foe c, not Corwin: round 5 panel).
+  const u = units.find((one) => labels.get(one.id) === ref) ?? units.find((one) => one.name.toLowerCase() === key) ?? units.find((one) => one.name.toLowerCase().startsWith(key));
   if (!u) throw new Error(`No unit "${ref}" (use its board digit/letter or name).`);
   return u;
 }
