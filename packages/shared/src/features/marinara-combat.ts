@@ -2298,7 +2298,22 @@ export function marinaraHitNumbers(
     pct += 0.3;
     notes.add("Heavy Draw");
   }
-  const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
+  let best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
+  // Serrated ammunition on a target that heals itself: an AI-loaded pierce shot opens a Wound when the
+  // healing it denies (half the target's healing for the Wound's 3 turns) outweighs the damage the
+  // better element would have added (playtest r50: Marksmen loaded the weakness element into
+  // regenerating bosses that healed 500-880 HP a fight, and nobody kept a Wound on them).
+  if (
+    actor.ammoAuto &&
+    actor.ammoWounds &&
+    best.type !== "pierce" &&
+    isWeaponHit(effect.type ?? "weapon") &&
+    damageOptions(actor, effect).includes("pierce")
+  ) {
+    const denied = marinaraSelfHealRate(target) * (1 - MARINARA_TUNING.woundHealing) * 3;
+    const pierce = marinaraBestDamageType(["pierce"], target.affinities);
+    if (denied > 0 && Math.max(0, damage) * (best.multiplier - pierce.multiplier) < denied) best = pierce;
+  }
   // A rune-lent element that won out over the weapon's own type is said in the log (Sonnet panel
   // 2026-11-02: Edge Runes "converted inconsistently"; it takes whichever hits harder).
   if (imbueElements(actor, effect.type ?? "weapon").includes(best.type as MarinaraDamageType)) notes.add("rune");
@@ -2620,9 +2635,43 @@ function shrugsOff(target: MarinaraFighter, status: string): boolean {
 }
 
 /**
- * Morale (Standard-Bearer, Alyssa 2026-11-02): while a holder stands, their side resists each harmful
- * status ailment some of the time.
+ * HP a fighter restores to itself a turn that a Wound would halve: a running regeneration, or one it can
+ * cast (Regenerate, Self-Repair: 3% of max HP a turn). Zero for one that doesn't heal itself, or that is
+ * already wounded for more than this turn (playtest r50: Marksmen auto-loaded the weakness element into
+ * regenerating bosses that healed 500-880 HP, and nobody kept a Wound on them).
  */
+export function marinaraSelfHealRate(unit: MarinaraFighter): number {
+  if (unit.hp <= 0 || unit.statuses.some((st) => st.status === "wound" && st.turns > 1)) return 0;
+  const running = unit.statuses.find((st) => st.status === "regen");
+  if (running) return unit.maxHp * (running.power ?? 0.1);
+  const own = [
+    ...(unit.enemySkills ?? []).map((id) => MARINARA_ENEMY_SKILLS[id] as MarinaraEffect | undefined),
+    ...unit.skills.map((k) => MARINARA_SKILL_EFFECTS[k.id]),
+  ];
+  for (const effect of own)
+    // Cast on and off (a cooldown between): about three turns in five.
+    if (effect?.kind === "status" && effect.status === "regen" && effect.target === "self")
+      return unit.maxHp * (effect.power ?? 0.1) * 0.6;
+  return 0;
+}
+
+/** Whether this blow opens a Wound on the target: the skill's own, or a pierce shot with Serrated ammunition. */
+export function marinaraOpensWound(
+  actor: MarinaraFighter,
+  target: MarinaraFighter,
+  effect: MarinaraEffect,
+  all: readonly MarinaraFighter[],
+  tactical = false,
+): boolean {
+  if (effect.applies?.status === "wound") return true;
+  return (
+    !!actor.ammoWounds &&
+    marinaraAmmoChoices(actor).length > 0 &&
+    isWeaponHit(effect.type ?? "weapon") &&
+    marinaraHitNumbers(actor, target, effect, all, tactical).type === "pierce"
+  );
+}
+
 /** The chance a status skill takes hold on this target, before immunities: the skill's own chance, an
  *  elite's confusion resistance, and the target side's best morale (Sonnet panel r4: the AI weighed Lull
  *  on its listed chance and cast it seven turns running at a foe whose side shrugged most of it off). */
@@ -2642,6 +2691,10 @@ export function marinaraStatusLandChance(
   return chance * (1 - pct);
 }
 
+/**
+ * Morale (Standard-Bearer, Alyssa 2026-11-02): while a holder stands, their side resists each harmful
+ * status ailment some of the time.
+ */
 function moraleHolds(
   target: MarinaraFighter,
   status: string,
