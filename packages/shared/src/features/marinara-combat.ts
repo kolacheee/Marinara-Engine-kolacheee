@@ -2310,9 +2310,12 @@ export function marinaraHitNumbers(
     isWeaponHit(effect.type ?? "weapon") &&
     damageOptions(actor, effect).includes("pierce")
   ) {
-    const denied = marinaraSelfHealRate(target) * (1 - MARINARA_TUNING.woundHealing) * 3;
+    // Unless the better element kills it outright: the kill comes first.
+    const denied = marinaraWoundDenied(target);
     const pierce = marinaraBestDamageType(["pierce"], target.affinities);
-    if (denied > 0 && Math.max(0, damage) * (best.multiplier - pierce.multiplier) < denied) best = pierce;
+    const raw = Math.max(0, damage);
+    if (denied > 0 && raw * best.multiplier < target.hp && raw * (best.multiplier - pierce.multiplier) < denied)
+      best = pierce;
   }
   // A rune-lent element that won out over the weapon's own type is said in the log (Sonnet panel
   // 2026-11-02: Edge Runes "converted inconsistently"; it takes whichever hits harder).
@@ -2653,6 +2656,18 @@ export function marinaraSelfHealRate(unit: MarinaraFighter): number {
     if (effect?.kind === "status" && effect.status === "regen" && effect.target === "self")
       return unit.maxHp * (effect.power ?? 0.1) * 0.6;
   return 0;
+}
+
+/**
+ * Healing a Wound opened now would deny over the next `turns` turns (Alyssa 2026-11-03: Wound comes first
+ * on a regenerating foe, by the healing it prevents over the turns the regen lasts): half of a running
+ * regen for the turns it has left, or half of the regen it casts on and off.
+ */
+export function marinaraWoundDenied(unit: MarinaraFighter, turns = 3): number {
+  const rate = marinaraSelfHealRate(unit);
+  if (rate <= 0) return 0;
+  const running = unit.statuses.find((st) => st.status === "regen");
+  return rate * (1 - MARINARA_TUNING.woundHealing) * (running ? Math.min(turns, running.turns) : turns);
 }
 
 /** Whether this blow opens a Wound on the target: the skill's own, or a pierce shot with Serrated ammunition. */
