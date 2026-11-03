@@ -321,6 +321,7 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
             </div>
             {shown && (
               <ClassDetails
+                key={shown.id}
                 def={shown}
                 progression={progression}
                 busy={busy}
@@ -487,6 +488,9 @@ function ClassDetails({
   const row = progression.row ?? def.row ?? MARINARA_ARCHETYPE_ROWS[def.archetype];
   // What taking this class up would leave behind, said before the button is pressed.
   const leftBehind = current ? [] : marinaraSkillsLeftBehind(progression, def.id);
+  // A change that loses skills asks first, with the list (Sonnet panel r5, 2026-11-03: a line under the
+  // button went unread and testers still lost Element Mastery, Weaken and Wither).
+  const [confirming, setConfirming] = useState(false);
   return (
     <div className="mt-2 space-y-1 rounded-md border border-[var(--border)] p-2" data-testid="marinara-class-details">
       <p>
@@ -536,7 +540,7 @@ function ClassDetails({
         <button
           type="button"
           disabled={busy || !!block}
-          onClick={() => onTake(def.id)}
+          onClick={() => (leftBehind.length > 0 && !confirming ? setConfirming(true) : onTake(def.id))}
           className="min-h-9 rounded-md bg-[var(--primary)] px-3 text-[var(--primary-foreground)] disabled:opacity-60"
         >
           {trained !== undefined
@@ -546,10 +550,45 @@ function ClassDetails({
               : t("game.combat.marinara.sheet.takeUp", { name: def.label })}
         </button>
       )}
-      {!current && !block && leftBehind.length > 0 && (
+      {!current && !block && leftBehind.length > 0 && !confirming && (
         <p className="text-amber-500" data-testid="marinara-left-behind">
           {t("game.combat.marinara.sheet.leftBehind", { skills: leftBehind.map((skill) => skill.label).join(", ") })}
         </p>
+      )}
+      {!current && !block && confirming && leftBehind.length > 0 && (
+        <div
+          role="alertdialog"
+          className="space-y-2 rounded-md border border-amber-500 bg-amber-500/10 p-2"
+          data-testid="marinara-left-behind-confirm"
+        >
+          <p className="font-semibold">{t("game.combat.marinara.sheet.leftBehindTitle", { name: def.label })}</p>
+          <ul className="list-disc pl-5">
+            {leftBehind.map((skill) => (
+              <li key={skill.id}>{skill.label}</li>
+            ))}
+          </ul>
+          <p className="text-[var(--muted-foreground)]">{t("game.combat.marinara.sheet.leftBehindHint")}</p>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => {
+                setConfirming(false);
+                onTake(def.id);
+              }}
+              className="min-h-9 rounded-md bg-amber-600 px-3 text-white disabled:opacity-60"
+            >
+              {t("game.combat.marinara.sheet.leftBehindConfirm")}
+            </button>
+            <button
+              type="button"
+              onClick={() => setConfirming(false)}
+              className="min-h-9 rounded-md border border-[var(--border)] px-3"
+            >
+              {t("game.combat.marinara.sheet.leftBehindCancel")}
+            </button>
+          </div>
+        </div>
       )}
       {block === "class-level" && parent && (
         <p className="text-[var(--muted-foreground)]">

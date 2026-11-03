@@ -679,7 +679,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       role: "Guards who draw attacks onto themselves and strike back at anyone who hits them or their ward.",
       leans: ["hp", "defense"],
       skills: [
-        active("provoke", "Provoke", 10, "defense", 3, "Forces all foes to target the user for 2 turns.", true),
+        active(
+          "provoke",
+          "Provoke",
+          10,
+          "defense",
+          3,
+          "Forces all foes to target the user for 2 turns.",
+          true,
+        ),
         active(
           "sworn-ward",
           "Sworn Ward",
@@ -1204,7 +1212,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           10,
-          "Deals damage to all foes in the channeled element at 70% of a single-target spell, or full damage when only one foe is left. Cooldown: 3 turns.",
+          "Deals damage to all foes in the channeled element at 70% of a single-target spell, or full damage when only one foe is left. In Tactical, it hits the chosen foe (within the spell's reach of 3) and every foe next to it. Cooldown: 3 turns.",
           true,
         ),
         passive("overcharge", "Overcharge", 24, "Increases critical rate by 10%."),
