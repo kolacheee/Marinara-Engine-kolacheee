@@ -354,7 +354,7 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   ability(
     "regenerate",
     "Regenerate",
-    "Knits its wounds: 3% of max HP a turn for 3.",
+    "Knits its wounds: 3% of max HP a turn (at most 35) for 3.",
     {
       kind: "status",
       target: "self",
@@ -691,7 +691,7 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   ability(
     "self-repair",
     "Self-Repair",
-    "Patches itself: 3% of max HP a turn for 3.",
+    "Patches itself: 3% of max HP a turn (at most 35) for 3.",
     {
       kind: "status",
       target: "self",
