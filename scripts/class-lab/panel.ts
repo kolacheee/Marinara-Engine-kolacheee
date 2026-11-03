@@ -108,6 +108,8 @@ interface Fight {
   boss: boolean;
   placing: boolean;
   seenLog: number;
+  /** Units whose ammunition a tester loaded by hand; the panel never reloads these. */
+  handAmmo?: string[];
   s: CombatDirectorState;
   cards: Record<string, unknown>[];
   seed: number;
@@ -480,7 +482,7 @@ function flush(f: Fight, tag: Tag) {
 /** The Tactical leader stays hand-run, so the panel loads a Marksman leader's ammunition as the AI would. */
 function leadAmmo(s: CombatDirectorState, unitId: string, f: Fight) {
   const fi = s.marinara?.fighters.find((x) => x.id === unitId);
-  if (!fi || fi.side !== "party" || !fi.ammoOwned || fi.ammoAuto) return;
+  if (!fi || fi.side !== "party" || !fi.ammoOwned || fi.ammoAuto || f.handAmmo?.includes(unitId)) return;
   const foes = s.marinara!.fighters.filter((x) => x.side !== "party" && x.hp > 0);
   const mult = (a: string | undefined) => (a === "weak" ? 1.5 : a === "resist" ? 0.5 : a === "immune" ? 0 : a === "absorb" ? -1 : 1);
   const score = (el: string) => foes.reduce((sum, foe) => sum + mult((foe.affinities as Record<string, string> | undefined)?.[el]), 0);
@@ -685,6 +687,7 @@ try {
       const f = loadFight();
       if (!f || f.s.tactical || !f.s.actorId) throw new Error("No Classic turn waiting on you.");
       run(f, { type: "loadAmmo", unitId: f.s.actorId, ammo: args[0] } as never, "player");
+      f.handAmmo = [...new Set([...(f.handAmmo ?? []), f.s.actorId])];
       for (const line of newLines(f)) say(line);
       saveFight(f);
       menu(f);
