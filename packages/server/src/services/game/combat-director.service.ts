@@ -438,6 +438,16 @@ export function marinaraBoardTurn(
   // Defend only to brace against real blows (Alyssa 2026-11-03); a Defend the AI fell back on with
   // nothing to strike and nothing to brace against is a walk: the unit moves in and waits.
   const braces = (reasons?.ranking[0]?.candidate.support ?? 0) > 0;
+  // Bound to a provoker or challenger it can't strike, from here or with any ranged blow: it closes in
+  // as far as it can and defends (Alyssa 2026-11-03).
+  if (picked.type === "defend" && bound && !braces) {
+    const text = `AI: ${tu.name} is drawn to ${bound.name} but can't strike it yet: it closes in and defends.`;
+    const m = s.marinara!;
+    m.aiReasons = [...(m.aiReasons ?? []), { unitId: tu.id, round: s.round, text }].slice(-MARINARA_AI_REASONS_KEPT);
+    log(s, text, MARINARA_REASONING_KIND, tu.id, "ai");
+    const guard = { type: "defend" as const, unitId: tu.id, ...where };
+    if (!validateTacticalUnitAction(t, tu, guard)) return guard;
+  }
   if (picked.type === "defend" && !braces && foes.length) {
     const wait = { type: "wait" as const, unitId: tu.id, ...where };
     if (!validateTacticalUnitAction(t, tu, wait)) {
