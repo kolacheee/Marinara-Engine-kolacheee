@@ -1763,6 +1763,15 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
 
 const CLASS_BY_ID = new Map(MARINARA_CLASSES.map((def) => [def.id, def]));
 
+/** A class skill by id, from whichever class teaches it. */
+export function marinaraSkillById(id: string): MarinaraSkillDef | undefined {
+  for (const def of MARINARA_CLASSES) {
+    const skill = def.skills.find((each) => each.id === id);
+    if (skill) return skill;
+  }
+  return undefined;
+}
+
 export function marinaraClass(id: string): MarinaraClassDef | undefined {
   return CLASS_BY_ID.get(id);
 }
