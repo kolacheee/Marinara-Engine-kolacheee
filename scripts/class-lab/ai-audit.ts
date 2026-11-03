@@ -14,8 +14,10 @@
  *  - defend: a Defend while a damaging option was on the table (counted, not judged).
  * Damage choice: the expected damage of the pick over the best expected damage on the table.
  */
+import { keepFightReasons } from "./reasons-log.js";
 import { mkdirSync, writeFileSync } from "node:fs";
-const REASONS_DIR = process.env.REASONS_DIR ?? "/tmp/claude-0/-home-claude/805faa68-532d-520a-b23f-e784a14a01e6/scratchpad/reasons";
+// Also a readable per-fight log (the fight's own log lines, AI reasons included) when REASONS_DIR is set.
+const REASONS_DIR = process.env.REASONS_DIR;
 import {
   commandCombatDirector,
   createCombatDirector,
@@ -172,7 +174,14 @@ function audit(
     const prev = lastPick.get(key);
     const sid = pick.skillId;
     const opt = sid ? options.find((o) => o.id === sid || o.label === sid) : undefined;
-    if (sid && prev && prev.skill === sid && prev.round === s.round - 1 && !actor.commanded && (opt?.effect.cooldown ?? 0) >= 2)
+    if (
+      sid &&
+      prev &&
+      prev.skill === sid &&
+      prev.round === s.round - 1 &&
+      !actor.commanded &&
+      (opt?.effect.cooldown ?? 0) >= 2
+    )
       bump(tally.reviveChance, `cooldownBack2Back:${side}:${sid}`);
     if (!actor.commanded) lastPick.set(key, { skill: sid, round: s.round });
   }
@@ -392,9 +401,23 @@ function playFight(level: number, n: number) {
             const o = clone.tactical!.units.find((u) => u.id === id);
             return o ? Math.abs(o.x - pos.x) + Math.abs(o.y - pos.y) : Infinity;
           };
-          const here = marinaraBoardAiAction(clone.marinara!, cu as never, clone.round, "normal", at(cu), cu.attackRange.max);
+          const here = marinaraBoardAiAction(
+            clone.marinara!,
+            cu as never,
+            clone.round,
+            "normal",
+            at(cu),
+            cu.attackRange.max,
+          );
           const there = board.to
-            ? marinaraBoardAiAction(clone.marinara!, cu as never, clone.round, "normal", at(board.to), cu.attackRange.max)
+            ? marinaraBoardAiAction(
+                clone.marinara!,
+                cu as never,
+                clone.round,
+                "normal",
+                at(board.to),
+                cu.attackRange.max,
+              )
             : null;
           const final = marinaraBoardTurn(structuredClone(s), structuredClone(unit)) as { type: string };
           if (final.type === "defend" && near <= 3 && process.env.DEBUG_TDEF === "2") {
@@ -402,17 +425,53 @@ function playFight(level: number, n: number) {
             const dist = at(cu);
             let count = 0;
             const optsSeen: string[] = [];
-            chooseMarinaraAction(actorF, clone.marinara!.fighters, { ...cu, tactics: cu.tactics! } as never, clone.round, "normal", {
-              tactical: true,
-              reach: (o, t) => {
-                count++;
-                optsSeen.push(`${o.id ?? "atk"}>${t.id}@${dist(t.id)}`);
-                return t.id === actorF.id || dist(t.id) <= 3;
+            chooseMarinaraAction(
+              actorF,
+              clone.marinara!.fighters,
+              { ...cu, tactics: cu.tactics! } as never,
+              clone.round,
+              "normal",
+              {
+                tactical: true,
+                reach: (o, t) => {
+                  count++;
+                  optsSeen.push(`${o.id ?? "atk"}>${t.id}@${dist(t.id)}`);
+                  return t.id === actorF.id || dist(t.id) <= 3;
+                },
+                ranked: (r) =>
+                  console.log(
+                    "  RANK",
+                    r
+                      .slice(0, 5)
+                      .map((x) => `${JSON.stringify(x.candidate.action)}=${x.score.toFixed(2)}`)
+                      .join(" | "),
+                  ),
               },
-              ranked: (r) => console.log("  RANK", r.slice(0, 5).map((x) => `${JSON.stringify(x.candidate.action)}=${x.score.toFixed(2)}`).join(" | ")),
-            });
-            console.log("  FOES", clone.marinara!.fighters.filter((f) => f.side === "enemy").map((f) => `${f.id}:hp${f.hp}/${f.maxHp}:${f.row}:${(f as any).yielded ? "Y" : ""}${(f as any).hidden ? "H" : ""}:${(f.statuses ?? []).map((x: any) => x.id ?? x.kind ?? x).join("+")}`).join(" "), "| TU", clone.tactical!.units.filter((u) => u.side !== unit.side).map((u) => `${u.id}:hp${u.hp}@${u.x},${u.y}`).join(" "));
-            console.log("  REACH", count, optsSeen.slice(0, 12).join(" "), "ids", clone.tactical!.units.map((u) => u.id).join(","), "fighters", clone.marinara!.fighters.map((f) => f.id).join(","));
+            );
+            console.log(
+              "  FOES",
+              clone
+                .marinara!.fighters.filter((f) => f.side === "enemy")
+                .map(
+                  (f) =>
+                    `${f.id}:hp${f.hp}/${f.maxHp}:${f.row}:${(f as any).yielded ? "Y" : ""}${(f as any).hidden ? "H" : ""}:${(f.statuses ?? []).map((x: any) => x.id ?? x.kind ?? x).join("+")}`,
+                )
+                .join(" "),
+              "| TU",
+              clone
+                .tactical!.units.filter((u) => u.side !== unit.side)
+                .map((u) => `${u.id}:hp${u.hp}@${u.x},${u.y}`)
+                .join(" "),
+            );
+            console.log(
+              "  REACH",
+              count,
+              optsSeen.slice(0, 12).join(" "),
+              "ids",
+              clone.tactical!.units.map((u) => u.id).join(","),
+              "fighters",
+              clone.marinara!.fighters.map((f) => f.id).join(","),
+            );
           }
           if (final.type === "defend" && near <= 3)
             console.log(
@@ -432,7 +491,11 @@ function playFight(level: number, n: number) {
               .map((o) => Math.abs(o.x - unit.x) + Math.abs(o.y - unit.y)),
           );
           if (near <= unit.movement + Math.max(1, unit.attackRange.max)) tally.defend.inReach++;
-          if (actor.commanded) bump(tally.reviveChance, `commandedDefend:${near <= unit.movement + Math.max(1, unit.attackRange.max) ? "inReach" : "far"}:${unit.hasMoved ? "moved" : "fresh"}`);
+          if (actor.commanded)
+            bump(
+              tally.reviveChance,
+              `commandedDefend:${near <= unit.movement + Math.max(1, unit.attackRange.max) ? "inReach" : "far"}:${unit.hasMoved ? "moved" : "fresh"}`,
+            );
         }
         if (actor) {
           const skill = action.skillName ? actor.skills.find((k) => k.label === action.skillName) : undefined;
@@ -480,10 +543,9 @@ function playFight(level: number, n: number) {
     else run(() => commandCombatDirector(s, { type: "continue" }));
   }
   if (process.env.DEBUG && n === 1) for (const l of s.log.slice(0, 60)) console.log(l.actorId, l.kind, l.text);
-  // The whole fight log, AI reasons included, one file per fight (REASONS_DIR, on by default).
-  {
-    const reasons = s.log.filter((l) => l.kind === "marinara:reasoning").length;
-    tally.reasonLines = (tally.reasonLines ?? 0) + reasons;
+  keepFightReasons("ai-audit", `${style}:L${level}:${n}`, s);
+  tally.reasonLines = (tally.reasonLines ?? 0) + (s.marinara?.aiReasons?.length ?? 0);
+  if (REASONS_DIR) {
     mkdirSync(REASONS_DIR, { recursive: true });
     writeFileSync(
       `${REASONS_DIR}/${style}-L${level}-${n}.log`,
@@ -546,7 +608,7 @@ console.log(
   `damage picks: ${tally.damageChoice.picks}, mean share of best ${((tally.damageChoice.ratioSum / Math.max(1, tally.damageChoice.picks)) * 100).toFixed(0)}%, under 60% of best ${pct(tally.damageChoice.under60, tally.damageChoice.picks)}, physical while magic was 1.5x+ ${tally.damageChoice.physOverMagic}`,
 );
 console.log(`action kinds: ${top(tally.kinds, 30)}`);
-console.log(`AI reasons logged: ${tally.reasonLines} lines (files in ${REASONS_DIR})`);
+console.log(`AI reasons kept: ${tally.reasonLines} picks`);
 console.log("revive chances + commanded actions:", JSON.stringify(tally.reviveChance));
 console.log("party skills, picked / turns usable:");
 console.log(
