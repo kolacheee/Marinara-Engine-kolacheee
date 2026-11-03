@@ -889,6 +889,8 @@ export interface MarinaraFighter {
   used: string[];
   charging?: { skillId: string; targetId: string };
   lastStandUsed?: boolean;
+  /** Hold the Line's early first turn has been said in the log. */
+  vanguardSaid?: boolean;
   miracleUsed?: boolean;
   evadedThisRound?: boolean;
   counteredThisRound?: boolean;
@@ -1300,7 +1302,8 @@ export type MarinaraEventKind =
   | "decoy"
   | "oath"
   | "siphon"
-  | "channel";
+  | "channel"
+  | "passive";
 
 /** One thing that happened, for the log and the narration. */
 export interface MarinaraEvent {
@@ -1340,6 +1343,8 @@ export interface MarinaraFightContext {
 }
 
 const living = (units: readonly MarinaraFighter[]) => units.filter((unit) => unit.hp > 0);
+/** Whether a fighter has this skill or passive, to name it in the log. */
+const owns = (unit: MarinaraFighter, id: string) => unit.skills.some((skill) => skill.id === id);
 const healFactor = (unit: MarinaraFighter) =>
   unit.statuses.some((s) => s.status === "wound") ? MARINARA_TUNING.woundHealing : 1;
 const turnLength = (unit: MarinaraFighter, all: readonly MarinaraFighter[], speedPct = 0) => {
@@ -1547,11 +1552,13 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
   // Channel Element carried by a non-caster (Alyssa 2026-11-03): their weapon hits, basic attacks and
   // skills alike, strike in the channeled element; unchanneled, the weapon's own type. One the AI runs
   // that hasn't channeled yet this turn weighs every element too.
-  if (marinaraChannelsWeapon(actor) && isWeaponHit(type)) {
+  // A Hexer's or Mender's staff hits and spells convert the same way (Sonnet panel r4, 2026-11-03: Channel
+  // Element carried onto them did nothing).
+  if (marinaraChannelsWeapon(actor) && channelConverts(type)) {
     const element = marinaraChanneled(actor);
     if (!actor.channelManual && !actor.channeledThisTurn)
       return [
-        ...new Set([...weaponOptions(actor, type), ...marinaraChannelChoices(actor).filter((one) => one !== "arcane")]),
+        ...new Set([...ownHitOptions(actor, type), ...marinaraChannelChoices(actor).filter((one) => one !== "arcane")]),
       ];
     if (element !== "arcane") {
       // A Marksman's ammunition meets the channel by the five phases (marinaraChanneledShot).
@@ -1624,6 +1631,16 @@ function weaponOptions(actor: MarinaraFighter, type: MarinaraSkillDamage): reado
   return type === "weapon" && actor.gear?.weaponType
     ? [actor.gear.weaponType]
     : marinaraDamageOptions(type, actor.classId!);
+}
+
+/** What a hit of this type strikes as without a channel: the weapon's type, or the skill's own. */
+function ownHitOptions(actor: MarinaraFighter, type: MarinaraSkillDamage): readonly MarinaraDamageType[] {
+  return isWeaponHit(type) ? weaponOptions(actor, type) : [type as MarinaraDamageType];
+}
+
+/** A hit a carried Channel Element converts: any damage but an element spell (which channels anyway). */
+function channelConverts(type: MarinaraSkillDamage): boolean {
+  return type !== "element";
 }
 
 /** A hit with a weapon: a basic attack or a weapon skill (any physical type). */
@@ -2167,11 +2184,31 @@ export function marinaraHitNumbers(
     (actor.gearPower ?? 0) -
     guard;
   let pct = modTotal(actor, "damage") + modTotal(target, "damage-taken");
+  const notes = new Set<string>();
+  // Passives said in the log when they change a hit (Sonnet panel r4, 2026-11-03: a long list worked
+  // with no visible sign).
+  if (
+    hooks.armorPenPct &&
+    owns(actor, "steady") &&
+    marinaraEffectiveStat(target, magic ? "resistance" : "defense", all) > 0
+  )
+    notes.add("Steady");
+  if (hooks.leechGuardPct && marinaraLeeched(actor, all).length) notes.add("Grave Hunger");
+  if (
+    all.some(
+      (other) =>
+        other.side !== target.side &&
+        other.hp > 0 &&
+        hooksOf(other).leechGuardPct &&
+        marinaraLeeched(other, all).includes(target),
+    ) ||
+    (hooksOf(target).leechGuardPct && marinaraLeeched(target, all).length)
+  )
+    notes.add("Grave Hunger");
   // Sear (light): the target takes more.
   if (target.statuses.some((st) => st.status === "sear")) pct += MARINARA_ELEMENT_MASTERY.searTakenPct;
   // Rend (metal): a rent attacker deals less.
   if (actor.statuses.some((st) => st.status === "rend")) pct -= MARINARA_ELEMENT_MASTERY.rendDamagePct;
-  const notes = new Set<string>();
   for (const ally of living(all.filter((unit) => unit.side === actor.side))) {
     const allyHooks = hooksOf(ally);
     pct += allyHooks.partyDamagePct ?? 0;
@@ -2189,16 +2226,25 @@ export function marinaraHitNumbers(
   if (magic) pct += hooks.spellDamagePct ?? 0;
   pct += (hooks.damagePct ?? 0) + (actor.gear?.damagePct ?? 0);
   if (hooks.damageBelowHalfPct && actor.hp < actor.maxHp / 2) pct += hooks.damageBelowHalfPct;
-  if (hooks.damagePerMissingPct) pct += hooks.damagePerMissingPct * Math.max(0, 1 - actor.hp / actor.maxHp);
+  if (hooks.damagePerMissingPct && actor.hp < actor.maxHp) {
+    pct += hooks.damagePerMissingPct * Math.max(0, 1 - actor.hp / actor.maxHp);
+    if (owns(actor, "bloodrage")) notes.add("Bloodrage");
+  }
   if (actor.enraged) pct += MARINARA_BOSS_RULES.enrageDamagePct;
-  if (target.marked > 0 && hooks.bonusVsMarked) pct += hooks.bonusVsMarked;
+  if (target.marked > 0 && hooks.bonusVsMarked) {
+    pct += hooks.bonusVsMarked;
+    if (owns(actor, "read-the-signs")) notes.add("Read the Signs");
+  }
   if (effect.finisher && target.hp < target.maxHp * effect.finisher.below) pct += effect.finisher.bonus;
   // Backstab: a target busy with one of the user's allies.
   if (effect.flankPct && target.struckBy && target.struckBy !== actor.id) {
     const by = all.find((u) => u.id === target.struckBy);
     if (by && by.side === actor.side) pct += effect.flankPct;
   }
-  if (target.hp < target.maxHp / 2) pct += hooksOf(target).takenBelowHalfPct ?? 0;
+  if (target.hp < target.maxHp / 2 && hooksOf(target).takenBelowHalfPct) {
+    pct += hooksOf(target).takenBelowHalfPct!;
+    if (owns(target, "unstoppable")) notes.add("Unstoppable");
+  }
   if (hooksOf(target).frontTakenPct && marinaraStandsFront(target, all)) pct += hooksOf(target).frontTakenPct!;
   if (magic) pct += hooksOf(target).magicTakenPct ?? 0;
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
@@ -2214,7 +2260,10 @@ export function marinaraHitNumbers(
       pct += allyHooks.partyProvokerTakenPct;
       notes.add("Hold Fast");
     }
-    if (marinaraRowOf(target, all) === "back") pct += allyHooks.backRowTakenPct ?? 0;
+    if (marinaraRowOf(target, all) === "back" && allyHooks.backRowTakenPct) {
+      pct += allyHooks.backRowTakenPct;
+      if (owns(ally, "shield-wall")) notes.add("Shield Wall");
+    }
   }
   if (hooks.heavyDraw) pct += 0.3;
   const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
@@ -2232,7 +2281,10 @@ export function marinaraHitNumbers(
   )
     multiplier = 1;
   if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
-  if (multiplier > 1) multiplier *= 1 + (hooks.weakDamagePct ?? 0);
+  if (multiplier > 1 && hooks.weakDamagePct) {
+    multiplier *= 1 + hooks.weakDamagePct;
+    if (owns(actor, "dead-eye")) notes.add("Dead Eye");
+  }
   // A channeled light or dark hit counts as elemental too (Greater Channel Element).
   const channeledHit = marinaraCanChannel(actor) && best.type === marinaraChanneled(actor) && best.type !== "arcane";
   if (
@@ -2264,7 +2316,10 @@ export function marinaraHitNumbers(
     notes.add("fed arrow");
   }
   // Attunement: hits in the user's own channeled element.
-  if (hooks.channeledDamagePct && channeledHit) multiplier *= 1 + hooks.channeledDamagePct;
+  if (hooks.channeledDamagePct && channeledHit) {
+    multiplier *= 1 + hooks.channeledDamagePct;
+    if (owns(actor, "attunement")) notes.add("Attunement");
+  }
   // Weakness stacking is capped (Alyssa 2026-11-03, Sonnet panel r3: channel, Resonance, Exploit
   // Weakness and Dead Eye together gave basic attacks of 72-126): a weakness hit at most doubles.
   if (best.multiplier > 1 && multiplier > MARINARA_WEAKNESS_CAP) {
@@ -2683,7 +2738,24 @@ export function beginMarinaraTurn(
     }
   }
   const hooks = hooksOf(actor);
-  if (hooks.mpRegenPct) actor.mp = Math.min(actor.maxMp, actor.mp + Math.round(actor.maxMp * hooks.mpRegenPct));
+  if (hooks.mpRegenPct) {
+    const before = actor.mp;
+    actor.mp = Math.min(actor.maxMp, actor.mp + Math.round(actor.maxMp * hooks.mpRegenPct));
+    if (actor.mp > before && owns(actor, "mana-tide"))
+      ctx.events.push({
+        kind: "passive",
+        actorId: actor.id,
+        skillId: "mana-tide",
+        status: "mp",
+        amount: actor.mp - before,
+      });
+  }
+  // Hold the Line in Classic: the Guard acts early in the first round, said on that first turn.
+  if (hooks.vanguard && !actor.vanguardSaid && !ctx.tactical) {
+    actor.vanguardSaid = true;
+    if (owns(actor, "hold-the-line"))
+      ctx.events.push({ kind: "passive", actorId: actor.id, skillId: "hold-the-line", status: "vanguard" });
+  }
   actor.stamina = Math.min(
     actor.maxStamina,
     actor.stamina + Math.max(1, Math.round(actor.maxStamina * MARINARA_STAMINA.regenPct)),
@@ -2807,7 +2879,7 @@ function performMarinaraOptionNow(
   // An AI-run caster channels, as its bonus action, the element its target is weakest to, then strikes.
   const first = targets[0];
   const weaponChannel =
-    marinaraChannelsWeapon(actor) && option.effect.kind === "damage" && isWeaponHit(option.effect.type ?? "weapon");
+    marinaraChannelsWeapon(actor) && option.effect.kind === "damage" && channelConverts(option.effect.type ?? "weapon");
   if (
     (option.effect.type === "element" || weaponChannel) &&
     first &&
@@ -2815,16 +2887,14 @@ function performMarinaraOptionNow(
     !actor.channelManual &&
     !actor.channeledThisTurn
   ) {
-    // Raw magic (unchanneled) only when every element does worse: ties go to an element. A weapon
-    // user unchannels when its weapon's own type hits harder.
-    const choices = weaponChannel
-      ? [
-          ...marinaraChannelChoices(actor).filter((one) => one !== "arcane"),
-          ...weaponOptions(actor, option.effect.type ?? "weapon"),
-        ]
-      : marinaraChannelChoices(actor);
+    // Raw magic (unchanneled) only when every element does worse: ties go to an element. A carrier
+    // unchannels when its weapon's (or skill's) own type hits harder.
+    const channelable = marinaraChannelChoices(actor).filter((one) => one !== "arcane");
+    const own = weaponChannel ? ownHitOptions(actor, option.effect.type ?? "weapon") : [];
+    const choices = weaponChannel ? [...channelable, ...own] : marinaraChannelChoices(actor);
     const best = marinaraBestDamageType(choices, first.affinities).type;
-    const element = (MARINARA_PHYSICAL_TYPES as readonly string[]).includes(best) ? "arcane" : best;
+    const element =
+      (own as readonly string[]).includes(best) && !(channelable as readonly string[]).includes(best) ? "arcane" : best;
     if (element !== marinaraChanneled(actor) && marinaraChannelElement(actor, element))
       ctx.events.push({ kind: "channel", actorId: actor.id, type: element });
     else actor.channeledThisTurn = true;
@@ -3034,12 +3104,27 @@ function act(
         }
         for (const also of effect.alsoMods ?? [])
           addMod(target, also.stat, also.pct, (effect.duration ?? 1) + durationBonus, skillId ?? "buff");
-        ctx.events.push({ kind: "buff", actorId: actor.id, targetId: target.id, skillId, status: effect.stat });
         // Tempo: a buffed party member's next turn comes sooner.
         const tempo = Math.max(
           0,
           ...living(all.filter((u) => u.side === target.side)).map((u) => hooksOf(u).tempoPct ?? 0),
         );
+        const buffNotes = [
+          ...(durationBonus > 0 && owns(actor, "encore") ? ["Encore"] : []),
+          ...(tempo &&
+          target.side === actor.side &&
+          living(all.filter((u) => u.side === target.side)).some((u) => owns(u, "tempo"))
+            ? ["Tempo"]
+            : []),
+        ];
+        ctx.events.push({
+          kind: "buff",
+          actorId: actor.id,
+          targetId: target.id,
+          skillId,
+          status: effect.stat,
+          ...(buffNotes.length ? { notes: buffNotes } : {}),
+        });
         if (tempo && target.side === actor.side) target.next -= turnLength(target, all) * tempo;
       }
       if (effect.decoys) actor.decoys = effect.decoys;
@@ -3315,13 +3400,16 @@ function strikeOnce(
       return;
     }
   }
-  const { damage, hitChance, critChance, multiplier, rider, type, halved, notes } = marinaraHitNumbers(
-    actor,
-    target,
-    effect,
-    all,
-    ctx.tactical,
-  );
+  const {
+    damage,
+    hitChance,
+    critChance,
+    multiplier,
+    rider,
+    type,
+    halved,
+    notes: hitNotes,
+  } = marinaraHitNumbers(actor, target, effect, all, ctx.tactical);
   const hooks = hooksOf(actor);
   const affinity =
     multiplier < 0
@@ -3349,6 +3437,13 @@ function strikeOnce(
     return;
   }
   const roll = random() * 100;
+  const notes = [...(hitNotes ?? [])];
+  // An accuracy passive is named when the hit landed only because of it.
+  const aimed = hooks.hitBonus ?? 0;
+  if (aimed && roll < hitChance && roll >= hitChance - aimed && hitChance < 100) {
+    const by = ["true-aim", "keen-eye"].find((id) => owns(actor, id));
+    if (by) notes.push(by === "true-aim" ? "True Aim" : "Keen Eye");
+  }
   if (roll >= hitChance) {
     target.missesAgainst++;
     ctx.events.push({
@@ -3377,7 +3472,15 @@ function strikeOnce(
   // Vanish: the first hit to land after it is a sure critical.
   const sureCrit = !!actor.critNext;
   if (sureCrit) actor.critNext = undefined;
-  let crit = sureCrit || random() * 100 < critChance;
+  const critRoll = sureCrit ? 0 : random() * 100;
+  let crit = sureCrit || critRoll < critChance;
+  // A crit passive is named when the crit came only from it.
+  const keen = hooks.critBonus ?? 0;
+  if (crit && !sureCrit && keen && critRoll >= critChance - keen) {
+    const by = ["keen-eye", "read-the-signs", "dead-eye"].find((id) => owns(actor, id));
+    if (by)
+      notes.push(`${by === "keen-eye" ? "Keen Eye" : by === "read-the-signs" ? "Read the Signs" : "Dead Eye"} crit`);
+  }
   if (crit && !sureCrit) {
     const omen = living(all.filter((u) => u.side === target.side)).some((u) => hooksOf(u).enemyCritToMissChance);
     if (omen && random() < 0.5) crit = false;
@@ -3390,8 +3493,16 @@ function strikeOnce(
     amount -= absorbed;
     shielded = absorbed;
   }
-  if (hooks.assassinate && crit && target.hp - amount < target.maxHp * 0.15 && target.tier !== "boss")
+  if (
+    hooks.assassinate &&
+    crit &&
+    target.hp - amount < target.maxHp * 0.15 &&
+    target.tier !== "boss" &&
+    target.hp > amount
+  ) {
     amount = target.hp;
+    notes.push("Assassinate");
+  }
   const before = target.hp;
   target.hp -= amount;
   if (actor.side !== target.side) target.struckBy = actor.id;
@@ -3415,7 +3526,7 @@ function strikeOnce(
     ...(affinity ? { affinity } : {}),
     ...(shielded > 0 ? { shielded, shieldLeft: Math.round(target.shield) } : {}),
     ...(halved ? { halved } : {}),
-    ...(notes?.length ? { notes } : {}),
+    ...(notes.length ? { notes: [...new Set(notes)] } : {}),
     chance: Math.round(hitChance),
     roll: Math.floor(roll),
   });

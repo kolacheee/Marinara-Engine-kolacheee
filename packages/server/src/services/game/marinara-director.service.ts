@@ -153,7 +153,26 @@ export function marinaraCombatSkills(
   for (const skill of fighter.skills) {
     if (skill.kind !== "active") continue;
     const effect = marinaraSkillEffect(fighter, skill);
-    if (!effect) continue;
+    if (!effect) {
+      // Sic without a tamed companion is shown, greyed, so the player knows what it waits on (Sonnet
+      // panel r4, 2026-11-03: it simply wasn't there).
+      const base = MARINARA_SKILL_EFFECTS[skill.id];
+      if (base?.companion && !fighter.companion) {
+        const { resource, cost } = marinaraSkillCost(fighter, skill);
+        out.push({
+          id: skill.id,
+          name: skill.label,
+          description: skill.summary,
+          type: boardSkillType(base.kind, base.target),
+          mpCost: resource === "mp" ? cost : 0,
+          ...(resource === "stamina" ? { staminaCost: cost } : {}),
+          power: base.power ?? 0,
+          aims: base.target,
+          unavailable: "companion",
+        });
+      }
+      continue;
+    }
     const { resource, cost } = marinaraSkillCost(fighter, skill);
     const cooldown = fighter.cooldowns[skill.id] ?? 0;
     const used =
@@ -321,11 +340,23 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
         ? "less from Hold Fast"
         : note === "Kill Zone"
           ? "more from Kill Zone"
-          : note === "Sanctified" || note === "Aura of Warding"
+          : note === "Sanctified" || note === "Aura of Warding" || note === "Unstoppable" || note === "Shield Wall"
             ? `less from ${note}`
-            : note === "rune"
-              ? `${event.type ?? "element"} lent by runes`
-              : note,
+            : note === "Bloodrage" || note === "Read the Signs" || note === "Dead Eye" || note === "Attunement"
+              ? `more from ${note}`
+              : note === "Steady"
+                ? "armour partly ignored (Steady)"
+                : note === "Grave Hunger"
+                  ? "Grave Hunger shifting Defense and Resistance"
+                  : note === "True Aim" || note === "Keen Eye"
+                    ? `landed thanks to ${note}`
+                    : note.endsWith(" crit")
+                      ? `the critical from ${note.slice(0, -5)}`
+                      : note === "Assassinate"
+                        ? "finished off by Assassinate"
+                        : note === "rune"
+                          ? `${event.type ?? "element"} lent by runes`
+                          : note,
     ),
   ]
     .filter(Boolean)
@@ -367,7 +398,11 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "tick":
       return `${actor} takes ${event.amount} from ${event.status}.`;
     case "buff":
-      return `${actor} uses ${skill ?? "a boon"}${event.targetId && event.targetId !== event.actorId ? ` on ${target}` : ""}.`;
+      return `${actor} uses ${skill ?? "a boon"}${event.targetId && event.targetId !== event.actorId ? ` on ${target}` : ""}${
+        event.notes?.length
+          ? ` (${event.notes.map((note) => (note === "Encore" ? "Encore: a turn longer" : note === "Tempo" ? "Tempo: acts sooner" : note)).join("; ")})`
+          : ""
+      }.`;
     case "debuff":
       return event.notes?.includes("sap") && event.status
         ? `${actor} saps ${Math.abs(event.amount ?? 0)}% of ${target}'s ${STAT_WORDS[event.status] ?? event.status} with ${skill ?? "a hex"}, and gains it for themselves.`
@@ -412,7 +447,13 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "command":
       return `On ${actor}'s command${skill ? ` (${skill})` : ""}, ${target} acts at once.`;
     case "last-stand":
-      return `${actor} refuses to fall.`;
+      return `${actor} refuses to fall (Last Stand).`;
+    case "passive":
+      return event.skillId === "mana-tide"
+        ? `${actor} regains ${event.amount} MP (Mana Tide).`
+        : event.skillId === "hold-the-line"
+          ? `${actor} steps up first (Hold the Line).`
+          : `${actor}'s ${skill ?? "passive"} takes effect.`;
     case "miracle":
       return `${actor}'s miracle keeps ${target} standing.`;
     case "hold-the-line":

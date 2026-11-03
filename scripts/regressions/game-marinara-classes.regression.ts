@@ -28,6 +28,7 @@ import {
   marinaraRandom,
   marinaraTrees,
   marinaraUsableSkills,
+  marinaraSkillsLeftBehind,
   rollMarinaraAptitudes,
   rollMarinaraLevelUp,
   scaleMarinaraXp,
@@ -152,6 +153,15 @@ assert.ok(duelist.carried.length > 0 && duelist.carried.length <= 4);
 assert.ok(
   duelist.carried.every((id) => marinaraLearnedSkills(leveled).some((s) => s.id === id && s.kind === "active")),
 );
+
+// The class screen warns what a switch leaves behind; a promotion's carry fill counts as kept.
+assert.ok(
+  marinaraSkillsLeftBehind(leveled, "duelist").every(
+    (skill) => !marinaraUsableSkills(duelist).some((s) => s.id === skill.id),
+  ),
+);
+assert.ok(marinaraSkillsLeftBehind(leveled, "mender").length > 0, "a Blade going Mender leaves its kit behind");
+assert.deepEqual(marinaraSkillsLeftBehind(leveled, "blade"), [], "staying put leaves nothing");
 
 // Skills: only the active class's, plus up to four carried from other trained classes.
 leveled = awardMarinaraXp(duelist, 500, random).progression; // Duelist class level 15
