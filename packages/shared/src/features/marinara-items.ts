@@ -1058,7 +1058,7 @@ export type MarinaraConsumableEffect =
   | { kind: "coat"; rider: MarinaraDamageType }
   /** Marksman ammunition (Alyssa 2026-11-01): owning it lets a Marksman's bow or gun shoot this type,
    *  loaded by hand mid-fight (an AI-run one loads the best). Not spent: owning it is having it. */
-  | { kind: "ammo"; type: MarinaraDamageType }
+  | { kind: "ammo"; type: MarinaraDamageType; wounds?: true }
   /** Magic damage of `type`, cast as if by a caster with `marinaraBombMagic(tier)` Magic and
    *  this power; on several foes each takes MARINARA area share (60%). */
   | { kind: "bomb"; type: MarinaraDamageType; power: number; area: boolean }
@@ -1603,6 +1603,24 @@ export const MARINARA_CONSUMABLES: readonly MarinaraConsumableDef[] = [
       summary: `Ammunition: a Marksman's bow or gun can shoot ${type} once the party owns it. Loaded by hand mid-fight; never used up.`,
     }),
   ),
+  // Serrated ammunition (Alyssa 2026-11-03: the Marksman's anti-heal comes as an ammo type): pierce
+  // shots that also open a Wound (healing halved) for 3 turns.
+  consumable({
+    id: "ammo-serrated",
+    tier: 2,
+    effect: { kind: "ammo", type: "pierce", wounds: true },
+    priceMult: 5,
+    names: names(
+      "Serrated Ammo",
+      "Barbed Arrows",
+      "Shredder Flechettes",
+      "Serrated Rounds",
+      "Wolf-Tooth Arrows",
+      "Notched Rounds",
+      "Hacksaw Bolts",
+    ),
+    summary: "Ammunition: a Marksman's pierce shots also open a Wound (healing halved) for 3 turns. Never used up.",
+  }),
   // Bombs: elemental damage that runs on no one's stats
   ...Object.keys(BOMB_ELEMENT_WORDS).flatMap((element) =>
     BOMB_RANKS.map((rank) =>
@@ -1714,6 +1732,17 @@ export function marinaraOwnedAmmo(itemNames: readonly string[]): MarinaraDamageT
     (held.has(def.id) || Object.values(def.names).some((name) => held.has(name.toLowerCase())))
       ? [def.effect.type]
       : [],
+  );
+}
+
+/** Whether the party's bags hold wounding ammunition (Serrated): its Marksmen's pierce shots wound. */
+export function marinaraOwnsWoundingAmmo(itemNames: readonly string[]): boolean {
+  const held = new Set(itemNames.map((name) => name.trim().toLowerCase()));
+  return MARINARA_CONSUMABLES.some(
+    (def) =>
+      def.effect.kind === "ammo" &&
+      !!def.effect.wounds &&
+      (held.has(def.id) || Object.values(def.names).some((name) => held.has(name.toLowerCase()))),
   );
 }
 

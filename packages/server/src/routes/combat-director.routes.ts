@@ -48,6 +48,7 @@ import {
   marinaraLearnedSkills,
   MARINARA_DAMAGE_TYPES,
   marinaraOwnedAmmo,
+  marinaraOwnsWoundingAmmo,
   marinaraReleaseCompanion,
   marinaraSetActiveCompanion,
   marinaraKeptTraits,
@@ -1401,6 +1402,9 @@ export async function combatDirectorRoutes(
             ...marinaraRare(input),
             seed: randomUUID(),
             ammo: marinaraOwnedAmmo(fightItems.lines.flatMap((line) => [line.name, line.ownName ?? line.name])),
+            woundingAmmo: marinaraOwnsWoundingAmmo(
+              fightItems.lines.flatMap((line) => [line.name, line.ownName ?? line.name]),
+            ),
           });
           if (!marinara.party.length) return reply.code(400).send({ error: "Nobody in the party can fight." });
           if (marinara.cards) {
