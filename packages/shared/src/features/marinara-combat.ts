@@ -1049,7 +1049,9 @@ export function buildMarinaraPartyFighter(input: {
     classId: progression.activeClass,
     level: progression.level,
     rangedBasic: input.rangedWeapon ?? RANGED_ARCHETYPES.has(archetype),
-    magicBasic: CASTER_ARCHETYPES.has(archetype),
+    // The weapon in hand decides Strength or Magic for the basic attack too (Alyssa 2026-11-02): a focus
+    // (more spell power than weapon power) casts, any other weapon swings. Unarmed, the class decides.
+    magicBasic: input.gear?.weaponType ? input.gear.spellPower > input.gear.power : CASTER_ARCHETYPES.has(archetype),
     carriedIds,
     ...(input.gear ? { gear: input.gear } : {}),
     carriedStats,
@@ -1810,7 +1812,8 @@ export function marinaraSkillEffect(unit: MarinaraFighter, skill: MarinaraSkillD
 
 /** Strength or Magic, by the weapon in hand: a focus (more spell power than weapon power) is Magic. */
 export function marinaraWeaponStat(unit: MarinaraFighter): "strength" | "magic" {
-  if (unit.gear) return unit.gear.spellPower > unit.gear.power ? "magic" : "strength";
+  // Only a weapon decides: armour or accessories alone leave the fighter unarmed.
+  if (unit.gear?.weaponType) return unit.gear.spellPower > unit.gear.power ? "magic" : "strength";
   return unit.archetype === "channeler" || unit.archetype === "hexer" || unit.archetype === "mender"
     ? "magic"
     : "strength";

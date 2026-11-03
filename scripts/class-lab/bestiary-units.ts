@@ -235,7 +235,11 @@ function buildReferenceMember(
     name: def.label,
     progression,
     gearStats,
-    gear: { power: bonus.power, spellPower: bonus.spellPower },
+    gear: {
+      power: bonus.power,
+      spellPower: bonus.spellPower,
+      ...(bonus.weaponType ? { weaponType: bonus.weaponType } : {}),
+    },
   });
 }
 
