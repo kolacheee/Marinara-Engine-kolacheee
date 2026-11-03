@@ -93,6 +93,17 @@ type Task =
   | { kind: "react"; unitId: string; pendingId: string }
   | { kind: "effect"; pendingId: string };
 type Source = "gm" | "ai" | "manual" | "fallback";
+/** An action the AI chose (its own turn, or a by-hand unit's auto or fallback turn) is played as the AI
+ *  plays it: a Channeler-tree caster channels and a Marksman loads ammunition for it (Sonnet panel r4:
+ *  a companion the AI ran never channeled, because the by-hand setting came back before the action
+ *  resolved; every harness Tactical caster struck raw arcane). */
+function aiPlays(s: CombatDirectorState, unitId: string, source: Source | undefined): void {
+  if (source !== "ai" && source !== "fallback") return;
+  const fighter = s.marinara ? marinaraFighter(s.marinara, unitId) : undefined;
+  if (!fighter || fighter.side !== "party") return;
+  if (marinaraCanChannel(fighter)) fighter.channelManual = false;
+  if (fighter.ammoOwned) fighter.ammoAuto = true;
+}
 /** A Classic foe throws down its arms only below this share of its HP. */
 export const MARINARA_YIELD_BELOW_HP = 0.5;
 
@@ -1718,6 +1729,7 @@ function effect(s: CombatDirectorState, p: Pending) {
         const two = units.find((x) => x.id === b);
         return one && two ? Math.abs(one.x - two.x) + Math.abs(one.y - two.y) : Infinity;
       };
+      aiPlays(s, tu.id, p.source);
       performMarinaraTacticalAction(s.marinara, tu.id, action, s.seed, marinaraLog(s), near, reach, p.source, apart);
       tu.hasActed = true;
       if (a.type === "defend") tu.defending = true;
@@ -1732,6 +1744,7 @@ function effect(s: CombatDirectorState, p: Pending) {
       guarded.forEach((x, i) => (x.defending = prior[i]!));
       for (const e of events) log(s, e.text, e.kind, e.actorId, p.source, e.message);
     } else if (p.action.classic && s.marinara && p.action.classic.type !== "item") {
+      aiPlays(s, u.id, p.source);
       performMarinaraAction(s.marinara, u.id, p.action.classic, s.seed, false, marinaraLog(s), p.source);
     } else if (p.action.classic) {
       const defended = new Set([...s.defending, ...(p.guarded ?? [])]);
@@ -2191,7 +2204,8 @@ export function commandCombatDirector(s: CombatDirectorState, command: DirectedC
       sync(s);
       return;
     }
-    declare(s, a, "manual");
+    // An action the caller says the AI chose (a harness or an auto turn) is played as the AI plays it.
+    declare(s, a, source === "ai" ? "ai" : "manual");
   } else if (command.type === "continue") {
     if (s.stage === "action" || (s.stage === "select" && s.tactical) || s.window) return;
   }
