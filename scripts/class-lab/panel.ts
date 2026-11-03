@@ -57,6 +57,7 @@ import {
   type MarinaraEncounterDifficulty,
 } from "../../packages/shared/src/features/marinara-bestiary.js";
 import type { TacticalUnit } from "../../packages/shared/src/features/tactical-combat/types.js";
+import { getMovementRange, getTargetsInRange } from "../../packages/shared/src/features/tactical-combat/engine.js";
 import {
   marinaraAmmoChoices,
   marinaraCanChannel,
@@ -85,6 +86,8 @@ const EVENTS = `${dir}/events.jsonl`;
 const REASONS = `${dir}/reasons.jsonl`;
 const FIGHTS = `${dir}/fights.jsonl`;
 // Standard setup (playtest thread r41): the party's bags hold every element of ammunition plus Serrated.
+/** Round 5 panel: testers play every party unit's Tactical turn by hand. */
+const HAND = process.env.PANEL_HAND === "1";
 const AMMO = ["fire", "ice", "lightning", "wood", "earth", "water", "metal", "wind"];
 
 interface Member {
@@ -107,6 +110,8 @@ interface Fight {
   difficulty: string;
   boss: boolean;
   placing: boolean;
+  /** Tactical played by hand: the tester gives every party unit's turn (round 5 panel). */
+  hand?: boolean;
   seenLog: number;
   /** Units whose ammunition a tester loaded by hand; the panel never reloads these. */
   handAmmo?: string[];
@@ -402,14 +407,18 @@ function startFight(g: Game, style: "classic" | "tactical", difficulty: Marinara
   // Tactical: the Engine's AI runs the whole party, as AI companions (so they channel and load ammunition
   // themselves); the director's Tactical default is hand-run companions.
   if (style === "tactical") for (const u of s.party) (u as { controller?: string }).controller = "ai";
-  const fight: Fight = { n, style, difficulty, boss, placing: style === "tactical", seenLog: 0, s, cards, seed };
+  const fight: Fight = { n, style, difficulty, boss, placing: style === "tactical", seenLog: 0, s, cards, seed, ...(style === "tactical" && HAND ? { hand: true } : {}) };
   say(`\n=== Fight ${n}: ${style}, ${difficulty}${boss ? ", boss" : ""}, party level ${level}, ${g.setting} ===`);
   if (start.notes.length) say(`Notes: ${start.notes.join(" ")}`);
   for (const f of start.fighters.filter((x) => x.side !== "party"))
     say(`  Foe: ${f.name} (level ${f.level}${f.tier ? `, ${f.tier}` : ""}${f.familyId ? `, ${f.familyId}` : ""}) HP ${f.maxHp}${f.enemySkills?.length ? `, abilities: ${f.enemySkills.join(", ")}` : ""}`);
   if (style === "tactical") {
     board(s);
-    console.log(`\nPlace your party: \`place <name> <x> <y>\` (any open tile in columns 0-${DEPLOY_COLS - 1}), then \`go\`. Tactical turns are played by the Engine's AI for your party (like companions), so placement is your main choice; watch the log.`);
+    console.log(
+      HAND
+        ? `\nPlace your party: \`place <name> <x> <y>\` (any open tile in columns 0-${DEPLOY_COLS - 1}), then \`go\`. You then play every party unit's turn on the board (\`tunit\`, \`tact\`); foes are played by the Engine's AI.`
+        : `\nPlace your party: \`place <name> <x> <y>\` (any open tile in columns 0-${DEPLOY_COLS - 1}), then \`go\`. Tactical turns are played by the Engine's AI for your party (like companions), so placement is your main choice; watch the log.`,
+    );
     saveFight(fight);
     return;
   }
@@ -500,6 +509,7 @@ function advance(g: Game, f: Fight, autoParty = 0) {
     if (steps % 20 === 0) for (const line of newLines(f)) say(line);
     if (s.mercy) break;
     if (s.tactical) {
+      if (f.hand && !s.window && handWaiting(s)) break;
       if (s.stage === "action" && s.actorId) {
         const unit = s.tactical.units.find((u) => u.id === s.actorId) as TacticalUnit;
         leadChannel(s, unit.id);
@@ -533,6 +543,7 @@ function advance(g: Game, f: Fight, autoParty = 0) {
   if (s.outcome) return finish(g, f);
   if (s.round > 60) say("(Fight passed round 60.)");
   saveFight(f);
+  if (f.hand && s.tactical && !s.mercy && handWaiting(s)) return tmenu(f);
   status(s);
   if (s.mercy) {
     const names = s.mercy.foeIds.map((id) => s.marinara!.fighters.find((x) => x.id === id)?.name ?? id);
@@ -593,6 +604,153 @@ function place(g: Game, f: Fight, name: string, x: number, y: number) {
   u.y = y;
   saveFight(f);
   say(`${u.name} placed at (${x},${y})${other ? ` (swapped with ${other.name})` : ""}.`);
+}
+
+// ── Tactical by hand (round 5 panel) ──
+
+/** Board labels: party 1..n, foes a..z, as `board` prints them. */
+function boardLabels(s: CombatDirectorState) {
+  const t = s.tactical!;
+  const labels = new Map<string, string>();
+  t.units.filter((u) => u.side === "party").forEach((u, i) => labels.set(u.id, String(i + 1)));
+  t.units.filter((u) => u.side !== "party").forEach((u, i) => labels.set(u.id, String.fromCharCode(97 + (i % 26))));
+  return labels;
+}
+function findUnit(s: CombatDirectorState, ref: string) {
+  const labels = boardLabels(s);
+  const key = ref.toLowerCase();
+  const u = s.tactical!.units.find((one) => labels.get(one.id) === ref || one.name.toLowerCase() === key || one.name.toLowerCase().startsWith(key));
+  if (!u) throw new Error(`No unit "${ref}" (use its board digit/letter or name).`);
+  return u;
+}
+/** Party units that may still act this phase (or the one whose turn it is). */
+function handReady(s: CombatDirectorState): TacticalUnit[] {
+  const t = s.tactical!;
+  if (s.stage === "action" && s.actorId) {
+    const u = t.units.find((one) => one.id === s.actorId);
+    return u && u.side === "party" ? [u] : [];
+  }
+  if (s.stage !== "select") return [];
+  return t.units.filter((u) => u.side === "party" && u.hp > 0 && !u.hasActed);
+}
+function handWaiting(s: CombatDirectorState) {
+  return !s.outcome && handReady(s).length > 0;
+}
+function handFight() {
+  const f = loadFight();
+  if (!f?.s.tactical || !f.hand) throw new Error("No hand-played Tactical fight (start with PANEL_HAND=1).");
+  if (f.placing) throw new Error("Finish placement with `go` first.");
+  return f;
+}
+function handUnit(f: Fight, ref: string) {
+  const u = findUnit(f.s, ref);
+  if (!handReady(f.s).includes(u)) throw new Error(`${u.name} can't act now. Ready: ${handReady(f.s).map((x) => x.name).join(", ") || "nobody"}.`);
+  return u;
+}
+/** The unit's Classic Marinara skills (labels, costs, summaries) matched to their board skills. */
+function handSkills(f: Fight, u: TacticalUnit) {
+  const fi = f.s.marinara?.fighters.find((x) => x.id === u.id);
+  if (!fi) return [];
+  const usable = new Set(marinaraUsable(fi, f.s.marinara!.fighters).map((o) => o.id));
+  return fi.skills.map((fs) => ({ fs, tk: u.skills.find((k) => k.id === fs.id || k.name === fs.label), usable: usable.has(fs.id) }));
+}
+const dist = (a: { x: number; y: number }, b: { x: number; y: number }) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+
+function tmenu(f: Fight) {
+  const s = f.s;
+  const labels = boardLabels(s);
+  board(s);
+  status(s);
+  const ready = handReady(s);
+  console.log(`\nYour move. Ready: ${ready.map((u) => `${labels.get(u.id)} ${u.name} (${u.x},${u.y})`).join(", ")}.`);
+  console.log("  `tunit <unit>` shows its moves, targets and skills. `tact <unit> attack <target> [x y]` | `skill <n> [target] [x y]` | `defend [x y]` | `wait [x y]` | `move <x> <y>` | `auto` | `end` (end the party phase).");
+  console.log("  Free actions before acting: `channel <unit> <element>`, `ammo <unit> <type>`. `tauto all` hands the rest of the fight to the Engine's AI.");
+}
+
+function tunit(f: Fight, ref: string) {
+  const s = f.s;
+  const t = s.tactical!;
+  const labels = boardLabels(s);
+  const u = findUnit(s, ref);
+  const fi = s.marinara?.fighters.find((x) => x.id === u.id);
+  console.log(`${labels.get(u.id)} ${u.name} (${cls(fi?.classId ?? "")}) at (${u.x},${u.y}), HP ${u.hp}/${u.maxHp}${u.hasMoved ? ", has moved" : ""}${u.hasActed ? ", has acted" : ""}. Attack reach ${JSON.stringify(u.attackRange)}.`);
+  if (fi && marinaraCanChannel(fi)) console.log(`  Channel now: ${marinaraChanneled(fi)}. Choices: ${marinaraChannelChoices(fi).join(", ")}.`);
+  if (fi?.ammoOwned?.length) console.log(`  Ammo loaded: ${fi.ammoLoaded ?? "weapon's own"}. Owned: ${marinaraAmmoChoices(fi).join(", ")}.`);
+  const tiles = u.hasMoved ? [] : getMovementRange(t, u.id);
+  if (tiles.length) {
+    const rows = new Map<number, number[]>();
+    for (const c of tiles) rows.set(c.y, [...(rows.get(c.y) ?? []), c.x]);
+    console.log(`  Can move to (${tiles.length} tiles), by row y: ${[...rows].sort((a, b) => a[0] - b[0]).map(([y, xs]) => `y${y}: x${Math.min(...xs)}-${Math.max(...xs)}`).join("; ")} (gaps are blocked or taken).`);
+  }
+  const now = getTargetsInRange(t, u.id).map((id) => t.units.find((x) => x.id === id)!).filter((x) => x.side !== u.side);
+  console.log(`  Basic attack can hit from here: ${now.map((x) => `${labels.get(x.id)} ${x.name}`).join(", ") || "nobody"}.`);
+  const list = handSkills(f, u);
+  console.log(`  Skills (use \`tact ${labels.get(u.id)} skill <n> [target] [x y]\`; range in tiles from where it acts, "reach" = its attack reach):`);
+  if (!list.length) console.log("   none yet");
+  list.forEach(({ fs, tk, usable }, i) => {
+    const cost = fs.cost ? `${fs.cost} ${fs.resource}` : "free";
+    const aims = tk?.aims ?? (fs as { effect?: { target?: string } }).effect?.target ?? "single";
+    const est = tk?.estimate ? ` ~${JSON.stringify(tk.estimate)}` : "";
+    if (!tk) return console.log(`   ${i + 1}. ${fs.label} (passive or free action, not a board action) - ${fs.summary}`);
+    const why = !usable ? ` UNAVAILABLE${tk?.unavailable ? `: ${tk.unavailable}` : ""}${tk?.readyIn ? ` (${tk.readyIn} turns)` : ""}` : "";
+    console.log(`   ${i + 1}. ${fs.label} [${aims}, range ${tk?.range ?? "reach"}${tk?.areaRadius ? `, area ${tk.areaRadius}` : ""}, ${cost}]${why}${est} - ${fs.summary}`);
+  });
+  console.log("  Units:");
+  for (const x of t.units.filter((one) => one.hp > 0 && one.id !== u.id))
+    console.log(`   ${labels.get(x.id)} ${x.name} (${x.x},${x.y}) HP ${x.hp}/${x.maxHp}, ${dist(u, x)} tiles away`);
+}
+
+function tact(g: Game, f: Fight, ref: string, rest: string[]) {
+  const s = f.s;
+  const u = handUnit(f, ref);
+  const [verb, ...a] = rest;
+  if (verb === "end") {
+    run(f, { type: "tactical", action: { type: "endTurn" } as never }, "player");
+    return advance(g, f);
+  }
+  if (s.stage === "select") run(f, { type: "begin", unitId: u.id }, "player");
+  if (s.stage !== "action" || s.actorId !== u.id) throw new Error(`${u.name} could not start a turn (stunned or asleep?). Try another unit or \`tact ${ref} end\`.`);
+  const coord = (xs?: string, ys?: string) => (xs !== undefined && ys !== undefined ? { to: { x: Number(xs), y: Number(ys) } } : {});
+  let action: Record<string, unknown>;
+  let source: string | undefined;
+  switch (verb) {
+    case "auto":
+      action = marinaraBoardTurn(s, u);
+      source = "ai";
+      break;
+    case "move":
+      action = { type: "move", unitId: u.id, to: { x: Number(a[0]), y: Number(a[1]) } };
+      break;
+    case "attack":
+      action = { type: "attack", unitId: u.id, targetId: findUnit(s, a[0]!).id, ...coord(a[1], a[2]) };
+      break;
+    case "skill": {
+      const list = handSkills(f, u);
+      const pick = /^\d+$/.test(a[0] ?? "") ? list[Number(a[0]) - 1] : list.find((one) => one.fs.label.toLowerCase() === (a[0] ?? "").toLowerCase());
+      const k = pick?.tk;
+      if (!pick) throw new Error("No such skill; see `tunit`.");
+      if (!k) throw new Error(`${pick.fs.label} has no board action (passive or reaction).`);
+      const hasTarget = a[1] !== undefined && !/^\d+$/.test(a[1]);
+      const target = hasTarget ? findUnit(s, a[1]!).id : k.aims === "self" ? u.id : undefined;
+      const [xs, ys] = hasTarget ? [a[2], a[3]] : [a[1], a[2]];
+      action = { type: "skill", unitId: u.id, skillName: k.name, ...(target ? { targetId: target } : {}), ...coord(xs, ys) };
+      break;
+    }
+    case "defend":
+    case "wait":
+      action = { type: verb, unitId: u.id, ...coord(a[0], a[1]) };
+      break;
+    default:
+      throw new Error("tact <unit> attack|skill|defend|wait|move|auto|end ...");
+  }
+  run(f, { type: "tactical", action: action as never }, source ? "auto" : "player", source);
+  if (verb === "move") {
+    for (const line of newLines(f)) say(line);
+    saveFight(f);
+    say(`${u.name} moved to (${u.x},${u.y}); now give its action (\`tact ${ref} attack|skill|defend|wait ...\`).`);
+    return;
+  }
+  advance(g, f);
 }
 
 function finish(g: Game, f: Fight) {
@@ -664,7 +822,7 @@ try {
     }
     case "place": { const f = loadFight(); if (!f) throw new Error("No fight running."); place(need(), f, args[0]!, Number(args[1]), Number(args[2])); break; }
     case "board": { const f = loadFight(); if (!f?.s.tactical) throw new Error("No Tactical fight."); board(f.s); break; }
-    case "go": { const f = loadFight(); if (!f?.s.tactical) throw new Error("No Tactical fight."); f.placing = false; board(f.s); advance(need(), f); break; }
+    case "go": { const f = loadFight(); if (!f?.s.tactical) throw new Error("No Tactical fight."); f.placing = false; if (!f.hand) board(f.s); advance(need(), f); break; }
     case "mercy": {
       const f = loadFight();
       if (!f?.s.mercy) throw new Error("No foe is waiting on mercy.");
@@ -676,6 +834,13 @@ try {
     }
     case "channel": {
       const f = loadFight();
+      if (f?.hand && f.s.tactical) {
+        const u = handUnit(f, args[0]!);
+        run(f, { type: "channelElement", unitId: u.id, element: args[1] } as never, "player");
+        for (const line of newLines(f)) say(line);
+        saveFight(f);
+        break;
+      }
       if (!f || f.s.tactical || !f.s.actorId) throw new Error("No Classic turn waiting on you.");
       run(f, { type: "channelElement", unitId: f.s.actorId, element: args[0] } as never, "player");
       for (const line of newLines(f)) say(line);
@@ -685,12 +850,28 @@ try {
     }
     case "ammo": {
       const f = loadFight();
+      if (f?.hand && f.s.tactical) {
+        const u = handUnit(f, args[0]!);
+        run(f, { type: "loadAmmo", unitId: u.id, ammo: args[1] } as never, "player");
+        f.handAmmo = [...new Set([...(f.handAmmo ?? []), u.id])];
+        for (const line of newLines(f)) say(line);
+        saveFight(f);
+        break;
+      }
       if (!f || f.s.tactical || !f.s.actorId) throw new Error("No Classic turn waiting on you.");
       run(f, { type: "loadAmmo", unitId: f.s.actorId, ammo: args[0] } as never, "player");
       f.handAmmo = [...new Set([...(f.handAmmo ?? []), f.s.actorId])];
       for (const line of newLines(f)) say(line);
       saveFight(f);
       menu(f);
+      break;
+    }
+    case "tunit": { const f = handFight(); tunit(f, args[0]!); break; }
+    case "tact": { const f = handFight(); tact(need(), f, args[0]!, args.slice(1)); break; }
+    case "tauto": {
+      const f = handFight();
+      if (args[0] === "all") { f.hand = false; say("The Engine's AI plays your party for the rest of this fight."); advance(need(), f); break; }
+      tact(need(), f, args[0]!, ["auto"]);
       break;
     }
     case "record": console.log(JSON.stringify(need().record, null, 1)); break;
@@ -710,6 +891,7 @@ try {
   ammo <type>                        Marksman: load owned ammunition (free action, stays loaded)
   mercy spare|finish                 when only surrendered foes are left
   place <name> <x> <y> / board / go  Tactical placement, then the Engine plays it out
+  (hand mode, PANEL_HAND=1) tunit <unit> / tact <unit> <verb ...> / tauto <unit>|all / channel <unit> <el> / ammo <unit> <type>
   status / record`);
   }
 } catch (error) {
