@@ -4,6 +4,7 @@ import {
   type CombatWeather,
   type WorldElementSet,
   forecastTacticalAttack,
+  marinaraUsable,
   hasLineOfSight,
 } from "@marinara-engine/shared";
 import {
@@ -371,6 +372,32 @@ export function marinaraBoardTurn(
   };
   let to = boardTo;
   let picked = decide(to ?? { x: tu.x, y: tu.y });
+  // A Guard weighs covering each friend from a tile beside that friend, not only from where the board's
+  // walk puts it (r53: Rook covered the evasive scout from turn 1, "no other choice", while two foes
+  // tore into the caster two tiles out of its reach; 91% of Tactical deaths with a Guard covering
+  // someone else were of a friend taking more than the one covered).
+  const covers = me
+    ? marinaraUsable(me, s.marinara!.fighters)
+        .filter((o) => o.effect.kind === "cover" && o.id !== null)
+        .map((o) => o.id)
+    : [];
+  if (covers.length && !tu.hasMoved && picked) {
+    const tiles = [{ x: tu.x, y: tu.y }, ...getMovementRange(t, tu.id)];
+    let best = { score: reasons?.ranking[0]?.score ?? -Infinity, at: to, picked, reasons };
+    for (const friend of t.units.filter((u) => u.side === tu.side && u.id !== tu.id && u.hp > 0)) {
+      const near = tiles.filter((at) => from(at)(friend.id) <= 2);
+      if (!near.length) continue;
+      // Of the tiles beside the friend, the one nearest the foes.
+      const at = near.reduce((b, a) => (walk(a) < walk(b) ? a : b));
+      const tried = decide(at);
+      const score = reasons?.ranking[0]?.score ?? -Infinity;
+      if (tried?.type === "skill" && covers.includes(tried.skillId) && score > best.score)
+        best = { score, at: at.x === tu.x && at.y === tu.y ? undefined : at, picked: tried, reasons };
+    }
+    picked = best.picked;
+    to = best.at;
+    reasons = best.reasons;
+  }
   const firstReasons = reasons;
   if (picked?.type === "defend" && !tu.hasMoved && foes.length) {
     // Closest approach: a tile with a foe in reach (the farthest such tile for a ranged unit), else
