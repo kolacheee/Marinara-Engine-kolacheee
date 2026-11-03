@@ -65,7 +65,12 @@ export function outcome(
   let total = 0;
   for (const name of Object.keys(REFERENCE_PARTIES))
     for (let i = 0; i < fightsPerParty; i++) {
-      const fight = playFight(referenceParty(name, level, `${i}`), make(), seedOf(`bl:${key}:${name}:${i}`));
+      const fight = playFight(
+        referenceParty(name, level, `${i}`),
+        make(),
+        seedOf(`bl:${key}:${name}:${i}`),
+        `${key} L${level} ${name}`,
+      );
       lost += fight.lost;
       if (fight.victory) wins++;
       total++;
@@ -136,7 +141,9 @@ function emitTable(out: string, inputs: string[]) {
   for (const tiers of Object.values(table))
     for (const levels of Object.values(tiers)) {
       if (!levels) continue;
-      const keys = Object.keys(levels).map(Number).sort((a, b) => a - b);
+      const keys = Object.keys(levels)
+        .map(Number)
+        .sort((a, b) => a - b);
       const raw = keys.map((key) => levels[key]!);
       for (let i = 1; i < keys.length - 1; i++)
         levels[keys[i]!] = Math.max(raw[i]!, 0.8 * ((raw[i - 1]! + raw[i + 1]!) / 2));

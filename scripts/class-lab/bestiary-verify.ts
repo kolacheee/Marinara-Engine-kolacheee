@@ -59,7 +59,12 @@ export function playEncounter(
       const units = foes.map((foe, j) =>
         enemyFighter(marinaraEnemySpec({ ...foe, setting: setting as never, id: `e${j}` })),
       );
-      const fight = playFight(referenceParty(name, level, `v${i}`), units, seedOf(`verify:${key}:${name}:${i}`));
+      const fight = playFight(
+        referenceParty(name, level, `v${i}`),
+        units,
+        seedOf(`verify:${key}:${name}:${i}`),
+        `${key} L${level} ${name}`,
+      );
       total++;
       if (fight.victory) wins++;
       if (fight.stalled) stalls++;
@@ -172,7 +177,8 @@ function biggestHits(): Array<{
 import { MARINARA_ENEMY_SKILLS } from "../../packages/shared/src/features/marinara-combat.js";
 function enemySkill(id: string) {
   return MARINARA_ENEMY_SKILLS[id] as
-    { kind: string; target: string; ranged?: boolean; spread?: number; hits?: number } | undefined;
+    | { kind: string; target: string; ranged?: boolean; spread?: number; hits?: number }
+    | undefined;
 }
 
 export function report(results: EncounterResult[]): string {
