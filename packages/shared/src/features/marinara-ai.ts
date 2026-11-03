@@ -124,6 +124,10 @@ export function marinaraAiCandidates(
     Math.max(1, units.reduce((sum, unit) => sum + unit.maxHp, 0) / Math.max(1, units.length));
   const friendHp = sideHp(friends);
   const foeHp = sideHp(foes);
+  // What a foe typically stands on: extra damage a buff or a debuff makes the party deal is weighed as a
+  // blow of that size would be, against this unit's own attack (Alyssa 2026-11-03: a buffer or debuffer
+  // weighs whether the team does more damage with it than this unit would by attacking).
+  const foeMeanHp = Math.max(1, foes.reduce((sum, foe) => sum + foe.maxHp, 0) / Math.max(1, foes.length));
   // Who the foes are going for: a friend under attack is worth standing up for.
   const threatenedFriend = friends
     .filter((unit) => unit.id !== actor.id)
@@ -318,6 +322,8 @@ export function marinaraAiCandidates(
         if (!effect.verses && who.some((u) => u.mods.some((m) => m.source === option.id))) break;
         const gain = singing ? effect.verses!.pct : (effect.pct ?? 0);
         let value = 0;
+        // The extra damage it makes the party deal, in HP (weighed as damage, not support).
+        let extra = 0;
         if (effect.stat === "deathless") {
           // Oath of Iron: worth the friends a round of blows could put down.
           if (!threatened) break;
@@ -333,11 +339,11 @@ export function marinaraAiCandidates(
           for (const u of who)
             for (const mod of u.mods) {
               if (mod.pct <= 0 || mod.source.startsWith("crescendo")) continue;
-              if (mod.stat === "damage") value += bestDamage(u, all, tactical) * mod.pct * 0.7;
+              if (mod.stat === "damage") extra += bestDamage(u, all, tactical) * mod.pct * 0.8;
               else if ((mod.stat === "defense" || mod.stat === "resistance") && threatened)
                 value +=
                   (foes.reduce((sum, foe) => sum + incomingFrom(foe), 0) / Math.max(1, who.length)) * mod.pct * 0.5;
-              else if (mod.stat === "speed") value += bestDamage(u, all, tactical) * mod.pct * 0.4;
+              else if (mod.stat === "speed") extra += bestDamage(u, all, tactical) * mod.pct * 0.4;
             }
         } else if (effect.stat === "imbue") {
           // The element the runes will carry: the caster channels, before casting, the one most foes are
@@ -356,13 +362,13 @@ export function marinaraAiCandidates(
             u.mods.push({ stat: "imbue", pct: 1, turns: 1, source: "probe", element: runeElement });
             const imbued = bestDamage(u, all, tactical);
             u.mods = u.mods.filter((m) => m.source !== "probe");
-            value += Math.max(0, imbued - plain) * (effect.duration ?? 3) * 0.8;
+            extra += Math.max(0, imbued - plain) * (effect.duration ?? 3) * 0.8;
           }
           // Grand Inscription's riders: more damage, and less from the elements while threatened.
           for (const also of effect.alsoMods ?? []) {
             if (also.stat === "damage")
-              value +=
-                who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0) * also.pct * (effect.duration ?? 1) * 0.7;
+              extra +=
+                who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0) * also.pct * (effect.duration ?? 1) * 0.8;
             else if (also.stat === "element-taken" && threatened)
               value += elementalIncoming() * Math.abs(also.pct) * (effect.duration ?? 1) * 0.8;
           }
@@ -371,11 +377,11 @@ export function marinaraAiCandidates(
           const others = friends
             .filter((u) => u.id !== actor.id)
             .reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
-          value =
-            // Vanish: the next hit is a sure critical.
+          // Vanish: the next hit is a sure critical, and the foes it slips past are exposed.
+          extra =
             (effect.critNext ? bestDamage(actor, all, tactical) * (MARINARA_TUNING.critMultiplier - 1) : 0) +
-            others * effect.exposeNext * 2 * 0.6 +
-            (threatened ? actor.maxHp * 0.05 : 0);
+            others * effect.exposeNext * 2 * 0.6;
+          value = threatened ? actor.maxHp * 0.05 : 0;
         } else if (effect.stat === "damage-taken" || effect.stat === "resistance" || effect.stat === "defense") {
           if (!threatened) break;
           // The damage it keeps off whoever it covers for its turns: a share of every blow for a damage
@@ -406,10 +412,15 @@ export function marinaraAiCandidates(
           }
         } else {
           const dealt = who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
-          value = dealt * gain * (effect.duration ?? 1) * 0.7;
+          // Rally, War Cry, songs, Strength or Speed up: the party's own blows, bigger for its turns.
+          if (OFFENSIVE_STATS.has(effect.stat ?? "")) extra = dealt * gain * (effect.duration ?? 1) * 0.8;
+          else value = dealt * gain * (effect.duration ?? 1) * 0.7;
         }
-        if (value <= 0) break;
-        add(option, [actor], { support: value / foeHp });
+        if (value <= 0 && extra <= 0) break;
+        add(option, [actor], {
+          ...(extra > 0 ? { damage: extra / foeMeanHp } : {}),
+          ...(value > 0 ? { support: value / foeHp } : {}),
+        });
         break;
       }
       case "debuff": {
@@ -448,10 +459,13 @@ export function marinaraAiCandidates(
                   Math.abs(effect.pct ?? 0) *
                   (effect.duration ?? 1) *
                   0.6) / over;
-        if (effect.target === "all-enemies") add(option, [fresh[0]!], { setup: worth(fresh, foeHp) });
+        // A mark (damage taken up) is the party's extra damage on it: weighed as damage, as an attack is.
+        const part = effect.stat === "damage-taken" ? "damage" : "setup";
+        if (effect.target === "all-enemies")
+          add(option, [fresh[0]!], { [part]: worth(fresh, part === "damage" ? foeMeanHp : foeHp) });
         else
           for (const target of fresh)
-            add(option, [target], { targetId: target.id, setup: worth([target], Math.max(1, target.maxHp)) });
+            add(option, [target], { targetId: target.id, [part]: worth([target], Math.max(1, target.maxHp)) });
         break;
       }
       case "status": {
@@ -529,7 +543,8 @@ export function marinaraAiCandidates(
           // Draw Fire: onto the sturdiest ally standing who isn't drawing them already.
           if (!threatened || friends.length < 2 || friends.some((f) => f.provoking > 0)) break;
           for (const target of pool) {
-            if (target.id === actor.id || target.hp <= 0) continue;
+            // Never onto a friend already low (Alyssa 2026-11-03).
+            if (target.id === actor.id || target.hp <= 0 || target.hp < target.maxHp * 0.5) continue;
             const sturdy =
               (target.hp / target.maxHp) *
               ((eff(target, "defense") + eff(target, "resistance")) /
@@ -595,23 +610,63 @@ export function marinaraAiCandidates(
       }
     }
   }
-  // Defending: a breather that brings stamina back and blunts the next blows. Never twice running,
+  // Defending: +30% Defense and Resistance until the unit's next turn, and a breather for stamina. Worth
+  // the HP it keeps off the unit this round, from the foes that can get at it, over its max HP (as a
+  // blow is worth a share of the foe's): reasons audit 2026-11-03 found Defend winning on a flat
+  // "hurt" bonus or by default over chip damage on 6.6% of Classic party turns. Never twice running,
   // as the Engine's other fights hold it (two walls defending at each other end nothing).
   const hurt = actor.hp / actor.maxHp;
   // A commanded or extra action has no turn to brace for: Defend only when nothing else can be done.
-  if (!options.noDefend && !actor.commanded)
-    out.push({
-      action: { optionId: "defend", targetIds: [] },
-      hold: true,
-      // Bracing buys time for the others to win; the last one standing only puts off the end (Sonnet
-      // panel r3: lone survivors and hurt foes defended for dozens of rounds).
-      support: threatened
-        ? (friends.length > 1 ? (1 - hurt) * 0.15 : 0) + (actor.stamina < actor.maxStamina * 0.3 ? 0.05 : 0)
-        : 0,
-    });
+  if (!options.noDefend && !actor.commanded) {
+    const drawn =
+      actor.provoking > 0
+        ? 1
+        : friends.some((f) => f.covering === actor.id)
+          ? 0
+          : 1 / Math.max(1, friends.length);
+    const hardestOnMe = (foe: MarinaraFighter) => {
+      let most = 0;
+      for (const { effect } of marinaraUsable(foe, all))
+        if (effect.kind === "damage" && !effect.charge) most = Math.max(most, hit(foe, actor, effect));
+      return most;
+    };
+    const attackers = foes.filter(
+      (foe) => !foe.dummy && (!options.reaches || options.reaches(foe.id, actor.id)),
+    );
+    const was = actor.defending;
+    const open = attackers.reduce((sum, foe) => sum + hardestOnMe(foe), 0);
+    actor.defending = true;
+    const braced = attackers.reduce((sum, foe) => sum + hardestOnMe(foe), 0);
+    actor.defending = was;
+    // Bracing buys time for the others to win; the last one standing only puts off the end (Sonnet
+    // panel r3: lone survivors and hurt foes defended for dozens of rounds).
+    const urgency = hurt < 0.4 ? 2 : hurt < 0.7 ? 1.3 : 1;
+    const saved =
+      friends.length > 1 ? (Math.min(actor.hp, Math.max(0, open - braced) * drawn) / actor.maxHp) * urgency : 0;
+    const winded = actor.stamina < actor.maxStamina * 0.3 && marinaraUsable(actor, all).length <= 1 ? 0.05 : 0;
+    // The fight is won by hitting: bracing is a choice only when this round's blows are a real danger to
+    // the unit (a quarter of what it has left), never a default over chip damage (Alyssa 2026-11-03:
+    // "is the objective of fights not to win?").
+    const danger = open * drawn >= actor.hp * 0.25;
+    const support = (danger ? saved * MARINARA_AI_NORM.support : 0) + winded;
+    if (support > 0.005)
+      out.push({ action: { optionId: "defend", targetIds: [] }, hold: true, support });
+  }
   if (!out.length) out.push({ action: { optionId: "defend", targetIds: [] }, hold: true });
   return out;
 }
+
+/** Buffs whose worth is the extra damage the party deals with them. */
+const OFFENSIVE_STATS: ReadonlySet<string> = new Set([
+  "damage",
+  "strength",
+  "magic",
+  "skill",
+  "speed",
+  "best-attack",
+  "accuracy",
+  "crit",
+]);
 
 /** The unit as the Engine's AI reads it: a Classic Marinara fighter under its combatant's tactics. */
 type Profiled = AiCombatant & Required<Pick<AiCombatant, "tactics">>;
