@@ -15,7 +15,9 @@
  * Damage choice: the expected damage of the pick over the best expected damage on the table.
  */
 import { keepFightReasons } from "./reasons-log.js";
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
+// Also a readable per-fight log (the fight's own log lines, AI reasons included) when REASONS_DIR is set.
+const REASONS_DIR = process.env.REASONS_DIR;
 import {
   commandCombatDirector,
   createCombatDirector,
@@ -24,9 +26,17 @@ import {
 } from "../../packages/server/src/services/game/combat-director.service.js";
 import {
   marinaraAiAction,
+  marinaraPickReasons,
   marinaraBoardAiAction,
 } from "../../packages/server/src/services/game/marinara-director.service.js";
-import { decideTacticalAction } from "../../packages/shared/src/features/tactical-combat/index.js";
+import {
+  canTraverseTile,
+  decideTacticalAction,
+  validateTacticalUnitAction,
+} from "../../packages/shared/src/features/tactical-combat/index.js";
+// Tactical turns the AI spent walking (no blow, no guard): where they went and whether a blow was legal
+// from where the unit stood (the r38 playtest's approach checks).
+const approach = new Map<string, number>();
 import { marinaraFightStart } from "../../packages/server/src/services/game/marinara-fight-start.service.js";
 import { MARINARA_CLASSES, marinaraRandom } from "../../packages/shared/src/features/marinara-classes.js";
 import {
@@ -76,6 +86,7 @@ interface Tally {
   /** Party skills: turns it was usable, and turns it was picked. */
   avail: Record<string, number>;
   reviveChance: Record<string, number>;
+  reasonLines: number;
   picked: Record<string, number>;
   stallNotes: string[];
   skills: Record<string, Record<string, number>>;
@@ -100,6 +111,7 @@ const tally: Tally = {
   kinds: {},
   avail: {},
   reviveChance: {},
+  reasonLines: 0,
   picked: {},
   stallNotes: [],
   skills: {},
@@ -478,6 +490,65 @@ function playFight(level: number, n: number) {
           skillName?: string;
           targetId?: string;
         };
+        if (unit.side === "party") {
+          approach.set("partyTurns", (approach.get("partyTurns") ?? 0) + 1);
+          if (action.type === "wait") {
+            const foesNow = s.tactical.units.filter((o) => o.side !== unit.side && o.hp > 0);
+            const gap = (x: number, y: number) =>
+              Math.min(...foesNow.map((o) => Math.abs(o.x - x) + Math.abs(o.y - y)));
+            const to = (action as { to?: { x: number; y: number } }).to ?? { x: unit.x, y: unit.y };
+            const before = gap(unit.x, unit.y);
+            const after = gap(to.x, to.y);
+            const legal = foesNow.some(
+              (o) =>
+                !validateTacticalUnitAction(s.tactical!, unit, { type: "attack", unitId: unit.id, targetId: o.id }) ||
+                (unit.skills ?? []).some(
+                  (k) =>
+                    !validateTacticalUnitAction(s.tactical!, unit, {
+                      type: "skill",
+                      unitId: unit.id,
+                      skillName: k.name,
+                      targetId: o.id,
+                    }),
+                ),
+            );
+            // Steps by the board's own paths (round walls and other units) to stand beside a foe.
+            const steps = new Map<string, number>();
+            const queue = foesNow.map((o) => ({ x: o.x, y: o.y }));
+            for (const o of queue) steps.set(`${o.x},${o.y}`, 0);
+            for (let i = 0; i < queue.length; i++) {
+              const at = queue[i]!;
+              for (const [dx, dy] of [
+                [1, 0],
+                [-1, 0],
+                [0, 1],
+                [0, -1],
+              ] as const) {
+                const next = { x: at.x + dx, y: at.y + dy };
+                const k = `${next.x},${next.y}`;
+                if (steps.has(k)) continue;
+                if (!(next.x === unit.x && next.y === unit.y) && !canTraverseTile(s.tactical!, unit, next)) continue;
+                steps.set(k, steps.get(`${at.x},${at.y}`)! + 1);
+                queue.push(next);
+              }
+            }
+            const pathBefore = steps.get(`${unit.x},${unit.y}`) ?? 1000 + before;
+            const pathAfter = steps.get(`${to.x},${to.y}`) ?? 1000 + after;
+            const key = `wait:${after < before ? "closer" : after === before ? "same" : "away"}${legal ? ":legal-from-here" : ""}`;
+            const pathKey = `path:${pathAfter < pathBefore ? "closer" : pathAfter === pathBefore ? (to.x === unit.x && to.y === unit.y ? "stays" : "same") : "away"}`;
+            approach.set(pathKey, (approach.get(pathKey) ?? 0) + 1);
+            if (process.env.DEBUG_STAYS && pathKey === "path:stays" && (approach.get(pathKey) ?? 0) <= 12)
+              console.log(
+                `STAY r${s.round} ${unit.id} @${unit.x},${unit.y} mv${unit.movement} rng${unit.attackRange.max} path${pathBefore} board ${s.tactical.width}x${s.tactical.height} units ${s.tactical.units
+                  .filter((o) => o.hp > 0)
+                  .map((o) => `${o.side[0]}${o.id}@${o.x},${o.y}`)
+                  .join(
+                    " ",
+                  )} blocked ${JSON.stringify((s.tactical as { terrain?: unknown }).terrain ?? "").slice(0, 0)}`,
+              );
+            approach.set(key, (approach.get(key) ?? 0) + 1);
+          }
+        }
         const actor = fighter(unit.id);
         if (actor && action.type === "defend") {
           const near = Math.min(
@@ -510,7 +581,7 @@ function playFight(level: number, n: number) {
             targetId: action.targetId,
           });
         }
-        run(() => commandCombatDirector(s, { type: "tactical", action: action as never }));
+        run(() => commandCombatDirector(s, { type: "tactical", action: action as never }, "ai"));
       } else if (s.window) run(() => commandCombatDirector(s, { type: "fallback" }, "fallback"));
       else if (s.stage === "select") {
         const next = s.tactical.units.find((u) => u.side === "party" && u.hp > 0 && !u.hasActed);
@@ -520,7 +591,12 @@ function playFight(level: number, n: number) {
     }
     if (s.stage === "action" && s.actorId) {
       const unit = [...s.party, ...s.enemies].find((u) => u.id === s.actorId)!;
-      const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false);
+      // The AI's reasons for every pick, as the director logs them with Debug on (Alyssa 2026-11-03: the
+      // reasons log is on for every playtest and fight run).
+      const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false, undefined, (ranking) => {
+        const text = marinaraPickReasons(s.marinara!, unit.id, ranking);
+        if (text) s.log.push({ kind: "marinara:reasoning", text, actorId: unit.id } as never);
+      });
       const actor = fighter(unit.id);
       if (actor)
         audit(s, actor, temperOf(unit.id), {
@@ -528,12 +604,20 @@ function playFight(level: number, n: number) {
           skillId: action.type === "skill" ? action.skillId : undefined,
           targetId: "targetId" in action ? (action.targetId as string) : undefined,
         });
-      run(() => commandCombatDirector(s, { type: "classic", action }));
+      run(() => commandCombatDirector(s, { type: "classic", action }, "ai"));
     } else if (s.window) run(() => commandCombatDirector(s, { type: "fallback" }, "fallback"));
     else run(() => commandCombatDirector(s, { type: "continue" }));
   }
   if (process.env.DEBUG && n === 1) for (const l of s.log.slice(0, 60)) console.log(l.actorId, l.kind, l.text);
-  keepFightReasons("ai-audit", `L${level}:${n}`, s);
+  keepFightReasons("ai-audit", `${style}:L${level}:${n}`, s);
+  tally.reasonLines = (tally.reasonLines ?? 0) + (s.marinara?.aiReasons?.length ?? 0);
+  if (REASONS_DIR) {
+    mkdirSync(REASONS_DIR, { recursive: true });
+    writeFileSync(
+      `${REASONS_DIR}/${style}-L${level}-${n}.log`,
+      s.log.map((l) => `${l.kind ?? ""} | ${l.text}`).join("\n") + "\n",
+    );
+  }
   tally.fights++;
   tally.rounds += s.round;
   if (s.outcome === "victory") tally.wins++;
@@ -545,8 +629,19 @@ function playFight(level: number, n: number) {
       marinaraUsable(f, fs).some((o) => o.effect.kind === "damage" && o.effect.damage === "magic"),
     );
     const foesLeft = fs.filter((f) => f.side !== "party" && f.hp > 0);
+    const board = s.tactical
+      ? ` | yielded ${fs
+          .filter((f) => f.yielded)
+          .map((f) => `${f.id}${s.morale?.[f.id]?.yielded ? "(morale)" : "(not in morale)"}`)
+          .join(",")}` +
+        ` | board ${s.tactical.units
+          .filter((u) => u.hp > 0)
+          .map((u) => `${u.id}@${u.x},${u.y}`)
+          .join(" ")} ${s.tactical.width}x${s.tactical.height}`
+      : "";
     tally.stallNotes.push(
-      `L${level} ${s.outcome ?? "none"} r${s.round}: party ${alive.map((f) => `${f.classId}(${f.hp}/${f.maxHp} mp${f.mp})`).join(" ")} | magic now ${magicNow.length} | foes ${foesLeft.map((f) => `${f.familyId ?? f.archetype}:${f.tier}(${f.hp}/${f.maxHp})`).join(" ")}`,
+      board +
+        ` L${level} ${s.outcome ?? "none"} r${s.round}: party ${alive.map((f) => `${f.classId}(${f.hp}/${f.maxHp} mp${f.mp})`).join(" ")} | magic now ${magicNow.length} | foes ${foesLeft.map((f) => `${f.familyId ?? f.archetype}:${f.tier}(${f.hp}/${f.maxHp})`).join(" ")}`,
     );
   }
 }
@@ -565,6 +660,7 @@ console.log(
   `wins ${pct(tally.wins, tally.fights)}, stalls ${pct(tally.stalls, tally.fights)}, rounds ${(tally.rounds / tally.fights).toFixed(1)}`,
 );
 console.log(`turns: party ${tally.partyTurns}, foes ${tally.foeTurns}`);
+console.log(`approach: ${[...approach].map(([k, v]) => `${k} ${v}`).join(", ")}`);
 console.log(
   `renew active buff: party ${tally.renew.party} (${pct(tally.renew.party, tally.partyTurns)} of turns), foes ${tally.renew.foe} (${pct(tally.renew.foe, tally.foeTurns)})  [${top(tally.renew.skills)}]`,
 );
@@ -587,6 +683,7 @@ console.log(
   `damage picks: ${tally.damageChoice.picks}, mean share of best ${((tally.damageChoice.ratioSum / Math.max(1, tally.damageChoice.picks)) * 100).toFixed(0)}%, under 60% of best ${pct(tally.damageChoice.under60, tally.damageChoice.picks)}, physical while magic was 1.5x+ ${tally.damageChoice.physOverMagic}`,
 );
 console.log(`action kinds: ${top(tally.kinds, 30)}`);
+console.log(`AI reasons kept: ${tally.reasonLines} picks`);
 console.log("revive chances + commanded actions:", JSON.stringify(tally.reviveChance));
 console.log("party skills, picked / turns usable:");
 console.log(
