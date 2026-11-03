@@ -58,6 +58,12 @@ import {
   type MarinaraProgression,
 } from "./marinara-classes.js";
 
+/**
+ * The most a foe's regeneration heals in one turn (playtest r45: bosses knitting 50-60 HP a turn
+ * dragged fights to 19 rounds in Classic and 29 in Tactical). The party's regeneration is not capped.
+ */
+export const MARINARA_FOE_REGEN_CAP = 35;
+
 export const MARINARA_TUNING = {
   hitBase: 80,
   critMultiplier: 2,
@@ -1583,9 +1589,11 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
       : actor.ammoLoaded && ammo.includes(actor.ammoLoaded)
         ? [actor.ammoLoaded]
         : options;
-    return runes.length ? [...new Set([...shots, ...runes])] : shots;
+    return runes.length ? runes : shots;
   }
-  return runes.length ? [...new Set([...options, ...runes])] : options;
+  // A rune turns the hit to its element, as its text says (Sonnet panel r5, 2026-11-03: taking the
+  // better of the two left weapon hits slash and pierce on neutral foes, so the rune looked dead).
+  return runes.length ? runes : options;
 }
 
 type WuxingPhase = keyof typeof MARINARA_WUXING_FED_BY;
@@ -1662,7 +1670,7 @@ export function marinaraChannelsWeapon(actor: MarinaraFighter): boolean {
  * A caster who was unchanneled lends none (Alyssa 2026-11-02); Grand Inscription's damage still counts.
  */
 function imbueElements(actor: MarinaraFighter, type: string): MarinaraDamageType[] {
-  if (type !== "weapon" && type !== "any-physical") return [];
+  if (!isWeaponHit(type as MarinaraSkillDamage)) return [];
   const lent = actor.mods
     .filter((mod) => mod.stat === "imbue" && mod.pct > 0)
     .map((mod) => mod.element)
@@ -1954,6 +1962,7 @@ export function marinaraUsable(unit: MarinaraFighter, all?: readonly MarinaraFig
     // Steal takes from a foe's loot; the party carries none to take, so a foe never spends a turn on it
     // (bestiary 2026-11-02: human foes now fight with their class kit).
     if (effect.kind === "steal" && unit.side !== "party") continue;
+    if (marinaraRuneNeedsChannel(unit, effect)) continue;
     if (all && effect.kind === "status" && effect.target !== "self" && effect.target !== "party") {
       if (!marinaraTargetsFor(unit, effect, all).length) continue;
     }
@@ -1966,6 +1975,14 @@ export function marinaraUsable(unit: MarinaraFighter, all?: readonly MarinaraFig
     out.push({ id: `enemy:${id}`, label: label ?? id, skill: null, effect, cost: 0 });
   }
   return out;
+}
+
+/**
+ * A rune buff cast by hand while its caster is unchanneled would lend no element (Sonnet panel r5,
+ * 2026-11-03: Edge Runes "did nothing"): it waits until the caster channels one. The AI channels first.
+ */
+export function marinaraRuneNeedsChannel(unit: MarinaraFighter, effect: MarinaraEffect): boolean {
+  return effect.stat === "imbue" && !!unit.channelManual && marinaraChanneled(unit) === "arcane";
 }
 
 /** The option with this id, if the fighter can use it now. */
@@ -2187,6 +2204,8 @@ export function marinaraHitNumbers(
   const notes = new Set<string>();
   // Passives said in the log when they change a hit (Sonnet panel r4, 2026-11-03: a long list worked
   // with no visible sign).
+  if (living(all.filter((unit) => unit.side === target.side)).some((ally) => owns(ally, "shield-line")))
+    notes.add("Shield Line");
   if (
     hooks.armorPenPct &&
     owns(actor, "steady") &&
@@ -2211,10 +2230,16 @@ export function marinaraHitNumbers(
   if (actor.statuses.some((st) => st.status === "rend")) pct -= MARINARA_ELEMENT_MASTERY.rendDamagePct;
   for (const ally of living(all.filter((unit) => unit.side === actor.side))) {
     const allyHooks = hooksOf(ally);
-    pct += allyHooks.partyDamagePct ?? 0;
+    if (allyHooks.partyDamagePct) {
+      pct += allyHooks.partyDamagePct;
+      if (owns(ally, "rallying-presence")) notes.add("Rallying Presence");
+    }
     if (allyHooks.partyDamageWhileWhole && all.filter((u) => u.side === actor.side).every((u) => u.hp > 0))
       pct += allyHooks.partyDamageWhileWhole;
-    if (target.marked > 0) pct += allyHooks.partyBonusVsMarked ?? 0;
+    if (target.marked > 0 && allyHooks.partyBonusVsMarked) {
+      pct += allyHooks.partyBonusVsMarked;
+      if (owns(ally, "pack-tactics")) notes.add("Pack Tactics");
+    }
     if (
       allyHooks.partyDamageWhileProvoked &&
       living(all.filter((u) => u.side === actor.side)).some((u) => u.provoking > 0)
@@ -2225,6 +2250,7 @@ export function marinaraHitNumbers(
   }
   if (magic) pct += hooks.spellDamagePct ?? 0;
   pct += (hooks.damagePct ?? 0) + (actor.gear?.damagePct ?? 0);
+  if (hooks.damagePct && owns(actor, "battle-rhythm")) notes.add("Battle Rhythm");
   if (hooks.damageBelowHalfPct && actor.hp < actor.maxHp / 2) pct += hooks.damageBelowHalfPct;
   if (hooks.damagePerMissingPct && actor.hp < actor.maxHp) {
     pct += hooks.damagePerMissingPct * Math.max(0, 1 - actor.hp / actor.maxHp);
@@ -2245,7 +2271,10 @@ export function marinaraHitNumbers(
     pct += hooksOf(target).takenBelowHalfPct!;
     if (owns(target, "unstoppable")) notes.add("Unstoppable");
   }
-  if (hooksOf(target).frontTakenPct && marinaraStandsFront(target, all)) pct += hooksOf(target).frontTakenPct!;
+  if (hooksOf(target).frontTakenPct && marinaraStandsFront(target, all)) {
+    pct += hooksOf(target).frontTakenPct!;
+    if (owns(target, "grave-skin")) notes.add("Grave Skin");
+  }
   if (magic) pct += hooksOf(target).magicTakenPct ?? 0;
   for (const ally of living(all.filter((unit) => unit.side === target.side))) {
     const allyHooks = hooksOf(ally);
@@ -2265,11 +2294,17 @@ export function marinaraHitNumbers(
       if (owns(ally, "shield-wall")) notes.add("Shield Wall");
     }
   }
-  if (hooks.heavyDraw) pct += 0.3;
+  if (hooks.heavyDraw) {
+    pct += 0.3;
+    notes.add("Heavy Draw");
+  }
   const best = marinaraBestDamageType(damageOptions(actor, effect), target.affinities);
   // A rune-lent element that won out over the weapon's own type is said in the log (Sonnet panel
   // 2026-11-02: Edge Runes "converted inconsistently"; it takes whichever hits harder).
   if (imbueElements(actor, effect.type ?? "weapon").includes(best.type as MarinaraDamageType)) notes.add("rune");
+  // Grand Inscription's +20% (and any party damage boon) is said when it counts.
+  if (actor.mods.some((mod) => mod.stat === "damage" && mod.source === "grand-inscription" && mod.pct > 0))
+    notes.add("Grand Inscription");
   // A basic attack is never walled off: immune and absorb count as resist for it.
   let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   // Adaptive Grip: an armored foe's resistance to slash, pierce or blunt doesn't count against the user.
@@ -2278,9 +2313,14 @@ export function marinaraHitNumbers(
     multiplier > 0 &&
     multiplier < 1 &&
     (MARINARA_PHYSICAL_TYPES as readonly string[]).includes(best.type)
-  )
+  ) {
     multiplier = 1;
-  if (multiplier > 1) multiplier += hooks.weakBonus ?? 0;
+    if (owns(actor, "adaptive-grip")) notes.add("Adaptive Grip");
+  }
+  if (multiplier > 1 && hooks.weakBonus) {
+    multiplier += hooks.weakBonus;
+    if (owns(actor, "exploit-weakness")) notes.add("Exploit Weakness");
+  }
   if (multiplier > 1 && hooks.weakDamagePct) {
     multiplier *= 1 + hooks.weakDamagePct;
     if (owns(actor, "dead-eye")) notes.add("Dead Eye");
@@ -2330,7 +2370,11 @@ export function marinaraHitNumbers(
   if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
     let cut = modTotal(target, "element-taken");
     for (const ally of living(all.filter((unit) => unit.side === target.side)))
-      cut += hooksOf(ally).partyElementTakenPct ?? 0;
+      if (hooksOf(ally).partyElementTakenPct) {
+        cut += hooksOf(ally).partyElementTakenPct!;
+        const by = ["living-runes", "warding-runes"].find((id) => owns(ally, id));
+        if (by) notes.add(by === "living-runes" ? "Living Runes" : "Warding Runes");
+      }
     multiplier *= Math.max(0.1, 1 + cut);
   }
   const melee = !effect.ranged && !magic && !(actor.rangedBasic && effect.basic);
@@ -2725,12 +2769,21 @@ export function beginMarinaraTurn(
         );
         if (healed > 0) {
           caster.hp += healed;
-          ctx.events.push({ kind: "heal", actorId: caster.id, targetId: caster.id, amount: healed });
+          ctx.events.push({
+            kind: "heal",
+            actorId: caster.id,
+            targetId: caster.id,
+            amount: healed,
+            ...(owns(caster, "siphoning-rot") ? { skillId: "siphoning-rot", notes: ["drain"] } : {}),
+          });
         }
       }
     }
     if (status.status === "regen") {
-      const amount = Math.round(actor.maxHp * (status.power ?? 0.1) * healFactor(actor));
+      const share = actor.maxHp * (status.power ?? 0.1);
+      const amount = Math.round(
+        (actor.side === "enemy" ? Math.min(share, MARINARA_FOE_REGEN_CAP) : share) * healFactor(actor),
+      );
       const before = actor.hp;
       actor.hp = Math.min(actor.maxHp, actor.hp + amount);
       if (actor.hp > before)
@@ -3015,6 +3068,10 @@ function act(
   const { random } = ctx;
   const skillId = skill?.id ?? optionId;
   const hooks = hooksOf(actor);
+  // A second bonus-action skill in one turn takes the action itself: said, so it doesn't read as a bug
+  // (Sonnet panel r5, 2026-11-03: Guarding Refrain after Battle Hymn "consumed the action").
+  if (effect.bonusAction && actor.commanded && effect.kind !== "extra-turn" && skill)
+    ctx.events.push({ kind: "passive", actorId: actor.id, skillId, status: "bonus-spent" });
   const durationBonus =
     effect.kind === "debuff" || effect.kind === "status"
       ? (hooks.debuffDurationBonus ?? 0)
@@ -3465,11 +3522,14 @@ function strikeOnce(
   }
   if (roll >= hitChance) {
     target.missesAgainst++;
+    const dodge = hooksOf(target).evadeBonus ?? 0;
+    const lightFeet = dodge > 0 && roll < hitChance + dodge && owns(target, "light-feet") && !hooks.noPenalty;
     ctx.events.push({
       kind: "miss",
       actorId: actor.id,
       targetId: target.id,
       skillId,
+      ...(lightFeet ? { notes: ["Light Feet"] } : {}),
       chance: Math.round(hitChance),
       roll: Math.floor(roll),
     });
@@ -3493,16 +3553,22 @@ function strikeOnce(
   if (sureCrit) actor.critNext = undefined;
   const critRoll = sureCrit ? 0 : random() * 100;
   let crit = sureCrit || critRoll < critChance;
-  // A crit passive is named when the crit came only from it.
-  const keen = hooks.critBonus ?? 0;
-  if (crit && !sureCrit && keen && critRoll >= critChance - keen) {
-    const by = ["keen-eye", "read-the-signs", "dead-eye"].find((id) => owns(actor, id));
-    if (by)
-      notes.push(`${by === "keen-eye" ? "Keen Eye" : by === "read-the-signs" ? "Read the Signs" : "Dead Eye"} crit`);
-  }
   if (crit && !sureCrit) {
     const omen = living(all.filter((u) => u.side === target.side)).some((u) => hooksOf(u).enemyCritToMissChance);
     if (omen && random() < 0.5) crit = false;
+  }
+  // A crit passive is named when the crit came only from it.
+  const keen = (hooks.critBonus ?? 0) + (hooks.critVsDebuffed && marinaraDebuffed(target) ? hooks.critVsDebuffed : 0);
+  if (crit && !sureCrit && keen && critRoll >= critChance - keen) {
+    const names: Record<string, string> = {
+      "keen-eye": "Keen Eye",
+      "read-the-signs": "Read the Signs",
+      "dead-eye": "Dead Eye",
+      overcharge: "Overcharge",
+      exploit: "Exploit",
+    };
+    const by = Object.keys(names).filter((id) => owns(actor, id));
+    if (by.length) notes.push(`${by.map((id) => names[id]).join(" and ")} crit`);
   }
   let amount = Math.round(damage * (crit ? MARINARA_TUNING.critMultiplier : 1));
   let shielded = 0;
@@ -3620,7 +3686,17 @@ function strikeOnce(
       skillId: "ammo-serrated",
       status: "wound",
     });
-  if (hooks.hitsLowerDefense) addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
+  if (hooks.hitsLowerDefense) {
+    addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
+    if (owns(actor, "sundering") && target.hp > 0)
+      ctx.events.push({
+        kind: "passive",
+        actorId: actor.id,
+        targetId: target.id,
+        skillId: "sundering",
+        status: "sunder",
+      });
+  }
   if (target.statuses.some((s) => s.status === "sleep"))
     target.statuses = target.statuses.filter((s) => s.status !== "sleep");
   // Follow Through (playtest 2026-11-02): a critical hit counts as well as a kill, once per turn.

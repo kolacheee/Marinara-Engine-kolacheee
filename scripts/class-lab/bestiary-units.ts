@@ -9,10 +9,16 @@ import {
   commandCombatDirector,
   createCombatDirector,
 } from "../../packages/server/src/services/game/combat-director.service.js";
+import { MARINARA_REASONING_KIND } from "../../packages/server/src/services/game/combat-director.service.js";
 import {
   marinaraAiAction,
   marinaraCombatant,
+  marinaraPickReasons,
 } from "../../packages/server/src/services/game/marinara-director.service.js";
+import { appendFileSync, mkdirSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { dirname, join } from "node:path";
+import { gzipSync } from "node:zlib";
 import {
   MARINARA_CARRY_SLOTS,
   MARINARA_PARTY_TEMPERAMENTS,
@@ -253,8 +259,18 @@ export interface PlayedFight {
   stalled: boolean;
 }
 
-/** One fight through the combat director, the Engine's combat AI playing both sides. */
-export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], seed: number): PlayedFight {
+/**
+ * Where every lab fight keeps the AI's reasons (the owner's rule: every playtest, sim and balance
+ * run has the Debug reasons log on, and the logs are kept). One gzip member per fight, appended, so
+ * the file reads with zcat. REASON_LOG sets the path; REASON_LOG=off is refused on purpose.
+ */
+export const REASON_LOG =
+  process.env.REASON_LOG || join(tmpdir(), "marinara-reasons", `bestiary-${process.pid}.log.gz`);
+mkdirSync(dirname(REASON_LOG), { recursive: true });
+
+/** One fight through the combat director, the Engine's combat AI playing both sides, with the AI's
+ *  reasons for every pick (party turns the harness asks for, foe turns the director runs) kept. */
+export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], seed: number, label = ""): PlayedFight {
   const s = createCombatDirector({
     id: `bl${seed}`,
     anchor: "a",
@@ -266,23 +282,42 @@ export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], see
     seed,
     marinara: [...party, ...foes],
   });
+  const reasons: string[] = [];
+  let seen = 0;
+  const collect = () => {
+    for (const entry of s.log)
+      if (entry.id > seen) {
+        seen = entry.id;
+        if (entry.kind === MARINARA_REASONING_KIND) reasons.push(`R${s.round} ${entry.text}`);
+      }
+  };
   for (let step = 0; step < 4000 && !s.outcome; step++) {
+    collect();
     if (s.mercy) {
       commandCombatDirector(s, { type: "mercy", choice: "spare" });
       continue;
     }
     if (s.stage === "action" && s.actorId) {
       const unit = [...s.party, ...s.enemies].find((u) => u.id === s.actorId)!;
-      const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false);
+      const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false, undefined, (ranking) => {
+        const text = marinaraPickReasons(s.marinara!, unit.id, ranking);
+        if (text) reasons.push(`R${s.round} ${text}`);
+      });
       loadBestAmmo(s.marinara!.fighters, unit.id, action);
       commandCombatDirector(s, { type: "classic", action });
     } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
     else commandCombatDirector(s, { type: "continue" });
   }
+  collect();
   const max = s.party.reduce((sum, u) => sum + u.maxHp, 0);
   const left = s.party.reduce((sum, u) => sum + Math.max(0, u.hp), 0);
   const victory = s.outcome === "victory";
   const stalled = Boolean(s.stalled);
+  const head =
+    `=== fight ${seed}${label ? ` ${label}` : ""}: ${party.map((f) => f.name).join(", ")} vs ` +
+    `${foes.map((f) => `${f.name} L${f.level}`).join(", ")} -> ${s.outcome ?? "none"}${stalled ? " (stalled)" : ""}, ` +
+    `round ${s.round}`;
+  appendFileSync(REASON_LOG, gzipSync(`${[head, ...reasons].join("\n")}\n`));
   return {
     victory,
     stalled,

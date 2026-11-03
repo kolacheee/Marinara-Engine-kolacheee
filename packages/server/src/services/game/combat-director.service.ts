@@ -278,17 +278,29 @@ export function marinaraBoardTurn(
     const other = t.units.find((one) => one.id === id);
     return other ? Math.abs(other.x - at.x) + Math.abs(other.y - at.y) : Infinity;
   };
+  // Provoked or challenged: bound to the one who drew it, which it walks toward and strikes, and no other
+  // foe (the skill's text; Sonnet panel r5: six testers called Provoke "a lie" when foes out of the
+  // tank's reach struck the back line instead).
+  const me = s.marinara?.fighters.find((one) => one.id === tu.id);
+  const boundIds = !me
+    ? []
+    : me.tauntTurns > 0 && me.tauntedBy
+      ? [me.tauntedBy]
+      : s
+          .marinara!.fighters.filter((one) => one.side !== me.side && one.provoking > 0 && one.hp > 0)
+          .map((one) => one.id);
+  const bound = foes.filter((one) => boundIds.includes(one.id)).sort((a, b) => from(tu)(a.id) - from(tu)(b.id))[0];
+  const goals = bound ? [bound] : foes;
   // Steps the unit would walk from a tile to stand beside its nearest foe, round walls and terrain (a
   // breadth-first fill from the foes): closer by the board's own paths, not as the crow flies (playtest
   // r38: 0.8% of party turns walked away from, or no nearer to, a foe out of reach).
   const walk = (() => {
     const steps = new Map<string, number>();
     const queue: TacticalCoord[] = [];
-    for (const foe of t.units)
-      if (foe.side !== tu.side && targetable(foe)) {
-        steps.set(`${foe.x},${foe.y}`, 0);
-        queue.push({ x: foe.x, y: foe.y });
-      }
+    for (const foe of goals) {
+      steps.set(`${foe.x},${foe.y}`, 0);
+      queue.push({ x: foe.x, y: foe.y });
+    }
     for (let i = 0; i < queue.length; i++) {
       const at = queue[i]!;
       const d = steps.get(`${at.x},${at.y}`)!;
@@ -307,7 +319,7 @@ export function marinaraBoardTurn(
       }
     }
     return (at: TacticalCoord) =>
-      steps.get(`${at.x},${at.y}`) ?? 1000 + Math.min(...foes.map((foe) => from(at)(foe.id)));
+      steps.get(`${at.x},${at.y}`) ?? 1000 + Math.min(...goals.map((foe) => from(at)(foe.id)));
   })();
   // A fighter with a foe within a move and its longest reach: one an extra action isn't wasted on.
   const reaches = (fromId: string, toId: string) => {
@@ -344,6 +356,7 @@ export function marinaraBoardTurn(
           : { type: "attack", unitId: tu.id, targetId, ...where };
         return !validateTacticalUnitAction(t, tu, action);
       },
+      !!bound,
     );
     return { picked, ranked };
   };
@@ -359,7 +372,7 @@ export function marinaraBoardTurn(
     // Closest approach: a tile with a foe in reach (the farthest such tile for a ranged unit), else
     // the tile nearest any foe.
     const range = Math.max(tu.attackRange.max, ...(tu.skills ?? []).map((k) => k.range ?? 0));
-    const nearest = (at: TacticalCoord) => Math.min(...foes.map((foe) => from(at)(foe.id)));
+    const nearest = (at: TacticalCoord) => Math.min(...goals.map((foe) => from(at)(foe.id)));
     const tiles = [{ x: tu.x, y: tu.y }, ...getMovementRange(t, tu.id)];
     const score = (at: TacticalCoord) => {
       const d = nearest(at);
@@ -411,7 +424,7 @@ export function marinaraBoardTurn(
   // does, rather than the board's drift (stall logs 2026-11-03: a boss cast Rally and wandered the
   // edges while the last party member did the same).
   if (picked.type === "skill" && picked.targetId === tu.id && !tu.hasMoved && foes.length) {
-    const nearest = (at: TacticalCoord) => Math.min(...foes.map((foe) => from(at)(foe.id)));
+    const nearest = (at: TacticalCoord) => Math.min(...goals.map((foe) => from(at)(foe.id)));
     const range = Math.max(tu.attackRange.max, ...(tu.skills ?? []).map((k) => k.range ?? 0));
     const here = { x: tu.x, y: tu.y };
     if (nearest(to ?? here) > range) {
@@ -425,6 +438,16 @@ export function marinaraBoardTurn(
   // Defend only to brace against real blows (Alyssa 2026-11-03); a Defend the AI fell back on with
   // nothing to strike and nothing to brace against is a walk: the unit moves in and waits.
   const braces = (reasons?.ranking[0]?.candidate.support ?? 0) > 0;
+  // Bound to a provoker or challenger it can't strike, from here or with any ranged blow: it closes in
+  // as far as it can and defends (Alyssa 2026-11-03).
+  if (picked.type === "defend" && bound && !braces) {
+    const text = `AI: ${tu.name} is drawn to ${bound.name} but can't strike it yet: it closes in and defends.`;
+    const m = s.marinara!;
+    m.aiReasons = [...(m.aiReasons ?? []), { unitId: tu.id, round: s.round, text }].slice(-MARINARA_AI_REASONS_KEPT);
+    log(s, text, MARINARA_REASONING_KIND, tu.id, "ai");
+    const guard = { type: "defend" as const, unitId: tu.id, ...where };
+    if (!validateTacticalUnitAction(t, tu, guard)) return guard;
+  }
   if (picked.type === "defend" && !braces && foes.length) {
     const wait = { type: "wait" as const, unitId: tu.id, ...where };
     if (!validateTacticalUnitAction(t, tu, wait)) {
@@ -991,6 +1014,12 @@ function moraleTurn(s: CombatDirectorState, u: Unit): boolean {
       }
       leaveFight(s, u, "surrendered");
       return true;
+    }
+    // Nor does a Classic Marinara foe run while still mostly whole, as it doesn't yield (Sonnet panel r5:
+    // a Reflex Champion at 230/230 ran); a treasure foe that only ever runs still may.
+    if (s.marinara && !mine.runsOnly && u.hp >= u.maxHp * MARINARA_YIELD_BELOW_HP) {
+      mine.checked = mine.checked.filter((one) => one !== trigger);
+      continue;
     }
     log(s, `${u.name} loses heart and runs.`, "status", u.id, undefined, {
       key: "game.combat.event.moraleBreaks",
