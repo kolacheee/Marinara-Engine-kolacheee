@@ -269,7 +269,14 @@ export function marinaraAiCandidates(
           // one is worth only the cheap one that would strip it as well (Sonnet panel r4: three 30-MP
           // Convergences charged into a Vault Gorger's decoys).
           let decoys = living(all.filter((u) => u.side === aim.side)).reduce((sum, u) => sum + (u.decoys ?? 0), 0);
-          for (const target of struck) {
+          for (const aimed of struck) {
+            // A guard covering the target takes a single-target blow in its place (Sonnet panel r5: foes hit
+            // a covered healer for 1-4 off the Guard for 14 rounds while the Guard was what they struck).
+            const coverer =
+              effect.target === "enemy"
+                ? living(all.filter((u) => u.side === aimed.side && u.covering === aimed.id))[0]
+                : undefined;
+            const target = coverer ?? aimed;
             const landed = Math.min(target.hp, hit(actor, target, spread));
             const absorbed = decoys > 0 && !marinaraHelpless(target);
             if (absorbed) decoys--;
@@ -387,6 +394,8 @@ export function marinaraAiCandidates(
         let value = 0;
         // The extra damage it makes the party deal, in HP (weighed as damage, not support).
         let extra = 0;
+        // Whether `value` is HP kept off this side (over its own mean HP) or extra damage on the foes'.
+        let kept = true;
         if (effect.stat === "deathless") {
           // Oath of Iron: worth the friends a round of blows could put down.
           if (!threatened) break;
@@ -452,6 +461,9 @@ export function marinaraAiCandidates(
           const stats = [effect.stat, ...(effect.alsoMods ?? []).map((m) => m.stat)];
           let saved = 0;
           for (const foe of foes) {
+            // Only blows that can land this round: a foe out of reach of everyone it covers adds nothing
+            // (Sonnet panel r5: Harden and Fortress cast ten tiles from the party).
+            if (options.reaches && !who.some((u) => options.reaches!(foe.id, u.id))) continue;
             const blow = hardestFrom(foe);
             if (blow.damage <= 0) continue;
             if (stats.includes("damage-taken")) saved += blow.damage * Math.abs(gain);
@@ -463,12 +475,17 @@ export function marinaraAiCandidates(
             }
           }
           // A foe's blow lands on one of them: on the user alone only if it is the one foes go for.
-          value = saved * (effect.duration ?? 1) * 0.8 * (who.length > 1 ? 1 : effect.provokes ? 1 : 0.6);
+          value =
+            saved *
+            (effect.duration ?? 1) *
+            0.8 *
+            (who.length > 1 || effect.provokes || actor.provoking > 0 ? 1 : 1 / Math.max(1, friends.length));
+          if (value <= 0) break;
           // Warding Stance also draws the foes: worth what Provoke is.
           if (effect.provokes && actor.provoking <= 0 && friends.length > 1) {
             add(option, [actor], {
-              support: value / foeHp,
-              protection: 0.5 + (actor.hp / actor.maxHp) * 0.4,
+              support: value / friendHp,
+              protection: 0.2 + (actor.hp / actor.maxHp) * 0.2,
               risk: 0.2,
             });
             break;
@@ -478,12 +495,17 @@ export function marinaraAiCandidates(
           // Rally, War Cry, songs, Strength or Speed up: the party's own blows, bigger for its turns.
           if (OFFENSIVE_STATS.has(effect.stat ?? ""))
             extra = dealt * gain * Math.min(effect.duration ?? 1, roundsLeft) * 0.8;
-          else value = dealt * gain * (effect.duration ?? 1) * 0.7;
+          else {
+            value = dealt * gain * (effect.duration ?? 1) * 0.7;
+            kept = false;
+          }
         }
         if (value <= 0 && extra <= 0) break;
         add(option, [actor], {
           ...(extra > 0 ? { damage: extra / foeMeanHp } : {}),
-          ...(value > 0 ? { support: value / foeHp } : {}),
+          // HP kept off this side over this side's HP (Sonnet panel r5: over the other side's, a boss's Harden
+          // against a party of 150-HP fighters scored as if it saved a third of the boss).
+          ...(value > 0 ? { support: value / (kept ? friendHp : foeHp) } : {}),
         });
         break;
       }
@@ -534,12 +556,23 @@ export function marinaraAiCandidates(
       }
       case "status": {
         if (effect.status === "regen") {
-          if (!threatened || friends.some((u) => u.statuses.some((s) => s.status === "regen"))) break;
-          const missing = friends.reduce(
+          const mending = effect.target === "self" ? [actor] : friends;
+          if (!threatened || mending.some((u) => u.statuses.some((s) => s.status === "regen"))) break;
+          // What it can mend: HP already lost plus the blows due before it runs out, no more (Sonnet panel
+          // r5: Self-Repair at full HP, ten tiles from the party).
+          const missing = mending.reduce(
             (s, u) =>
-              s + Math.min(u.maxHp - u.hp + u.maxHp * 0.2, u.maxHp * (effect.power ?? 0.1) * (effect.duration ?? 1)),
+              s +
+              Math.min(
+                u.maxHp -
+                  u.hp +
+                  (!options.reaches || foes.some((foe) => options.reaches!(foe.id, u.id)) ? incomingOn(u) : 0) *
+                    (effect.duration ?? 1),
+                u.maxHp * (effect.power ?? 0.1) * (effect.duration ?? 1),
+              ),
             0,
           );
+          if (missing <= 0) break;
           add(option, [actor], { healing: (missing / friendHp) * 0.6 });
           break;
         }
@@ -569,12 +602,20 @@ export function marinaraAiCandidates(
                 marinaraStatusLandChance(target, effect, all);
         // Holding a foe down (sleep, stun; confusion about half the time) is worth the blows it loses
         // (Alyssa 2026-11-03: control removes a foe's whole turn).
-        const held = effect.status === "sleep" || effect.status === "stun" ? 1 : effect.status === "confuse" ? 0.5 : 0;
+        // Slow (-30% Speed) takes about a third of a turn off each of the foe's turns it lasts (Sonnet panel
+        // r5: Shriek was valued on the party's raw Strength at setup +9.33 and re-cast for 14 rounds).
+        const held =
+          effect.status === "sleep" || effect.status === "stun"
+            ? 1
+            : effect.status === "confuse"
+              ? 0.5
+              : effect.status === "slow"
+                ? 0.3
+                : 0;
         if (held) {
+          const turns = effect.duration ?? (effect.status === "slow" ? 2 : 1);
           const lost = (u: MarinaraFighter) =>
-            threatOf(u, Math.min(effect.duration ?? 1, Math.max(1, lasts(u)))) *
-            held *
-            marinaraStatusLandChance(u, effect, all);
+            threatOf(u, Math.min(turns, Math.max(1, lasts(u)))) * held * marinaraStatusLandChance(u, effect, all);
           if (effect.target === "all-enemies")
             add(option, [fresh[0]!], { prevented: fresh.reduce((sum, u) => sum + lost(u), 0) });
           else for (const target of fresh) add(option, [target], { targetId: target.id, prevented: lost(target) });
@@ -613,7 +654,8 @@ export function marinaraAiCandidates(
           }, 0);
         for (const target of pool) {
           if (target.id === actor.id || friends.some((f) => f.covering === target.id)) continue;
-          const kept = saved(target);
+          // No more than the friend has left to lose (Sonnet panel r5: a 2-HP minion covered for 10 rounds).
+          const kept = Math.min(saved(target), target.hp);
           if (kept <= 0) continue;
           const danger = 1 - target.hp / target.maxHp;
           add(option, [target], {
