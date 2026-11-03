@@ -662,22 +662,71 @@ export function marinaraAiCandidates(
         // picks it about one time in as many friends as it could pick (all of them when the friend draws
         // the foes), less what they would do to the Guard instead (Sonnet panel r4: Cover on a friend
         // nobody was hitting; tanks spent 60%+ of their turns guarding).
-        const saved = (target: MarinaraFighter) =>
-          foes.reduce((sum, foe) => {
-            if (foe.dummy || (options.reaches && !options.reaches(foe.id, target.id))) return sum;
-            const share = target.provoking > 0 ? 1 : 1 / Math.max(1, friends.length);
-            const basic = marinaraBasicAttack(foe);
-            return sum + Math.max(0, hit(foe, target, basic) - hit(foe, actor, basic)) * share;
-          }, 0);
+        // Each foe's pick follows its own weighing: the friend it hits hardest draws it most, and one its
+        // blow would finish draws it twice as hard (r53: 81-91% of the damage dealers who died with a
+        // Guard on the team fell while it covered a friend taking less; an even share made the evasive
+        // scout look as threatened as the soft caster the foes were tearing into).
+        const blow = (foe: MarinaraFighter, u: MarinaraFighter) => {
+          let most = hit(foe, u, marinaraBasicAttack(foe));
+          for (const { effect } of marinaraUsable(foe, all))
+            if (effect.kind === "damage" && effect.target === "enemy" && !effect.charge)
+              most = Math.max(most, hit(foe, u, effect));
+          return most;
+        };
+        const pull = (foe: MarinaraFighter, u: MarinaraFighter) => {
+          if (options.reaches && !options.reaches(foe.id, u.id)) return 0;
+          const dealt = blow(foe, u);
+          return dealt >= u.hp ? dealt * 2 : dealt;
+        };
+        // The blows each foe is likely to send at the friend before the Guard's next turn: on it, and on
+        // the Guard in its place.
+        const shareOf = (foe: MarinaraFighter, target: MarinaraFighter) =>
+          target.provoking > 0
+            ? 1
+            : pull(foe, target) /
+              Math.max(
+                1,
+                friends.reduce((total, u) => total + pull(foe, u), 0),
+              );
+        const blows = (target: MarinaraFighter) =>
+          foes.reduce(
+            (sum, foe) => {
+              if (foe.dummy || (options.reaches && !options.reaches(foe.id, target.id))) return sum;
+              const share = shareOf(foe, target);
+              return { on: sum.on + blow(foe, target) * share, guard: sum.guard + blow(foe, actor) * share };
+            },
+            { on: 0, guard: 0 },
+          );
+        const mattersOf = (u: MarinaraFighter) =>
+          marinaraUsable(u, all).some((o) => o.effect.kind === "heal" || o.effect.kind === "revive")
+            ? 1.5
+            : 1 + bestDamage(u, all, tactical) / partyDamage;
+        const others = friends.filter((u) => u.id !== actor.id);
+        const averageMatters = Math.max(
+          1,
+          others.reduce((sum, u) => sum + mattersOf(u), 0) / Math.max(1, others.length),
+        );
         for (const target of pool) {
           if (target.id === actor.id || friends.some((f) => f.covering === target.id)) continue;
+          const { on, guard } = blows(target);
           // No more than the friend has left to lose (Sonnet panel r5: a 2-HP minion covered for 10 rounds).
-          const kept = Math.min(saved(target), target.hp);
+          const kept = Math.min(Math.max(0, on - guard), target.hp);
           if (kept <= 0) continue;
           const danger = 1 - target.hp / target.maxHp;
+          // Who comes first (Alyssa 2026-11-03): a friend about to die, then a healer at risk of a sizable
+          // hit, then the damage dealers by their share of the side's damage. Risk is the expected blows
+          // after the friend's own evasion and defences, so an evasive Scout ranks below a Blade unless
+          // it is the one low on HP.
+          const dying = on >= target.hp;
+          const matters = mattersOf(target);
+          // Not when the blows it takes in the friend's place would drop the Guard, unless it is the friend
+          // or the Guard and the friend matters more: a healer always does (Alyssa 2026-11-03).
+          if (guard >= actor.hp && !(dying && matters > mattersOf(actor) * 1.25)) continue;
+          // Relative to the side's average, so the order changes and not how often the Guard covers.
+          const worth = ((dying ? 2 : 1) * matters) / averageMatters;
           add(option, [target], {
-            support: (kept * (1 + danger)) / friendHp,
-            protection: 0.2 + danger * 0.4,
+            support: (kept * (1 + danger) * worth) / friendHp,
+            protection: 0.2 + danger * 0.4 + (dying ? 0.3 : 0),
           });
         }
         break;
