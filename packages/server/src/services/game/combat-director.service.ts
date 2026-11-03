@@ -258,7 +258,11 @@ export function marinaraBoardTurn(
   const t = s.tactical!;
   const board = decideTacticalAction(t, tu) as Extract<TacticalAction, { unitId: string }>;
   const boardTo = board.type === "move" ? board.to : "to" in board ? board.to : undefined;
-  const foes = t.units.filter((one) => one.side !== tu.side && one.hp > 0);
+  // A foe that has yielded or is running can't be targeted (marinaraTargetsFor): walking at it or
+  // standing beside it is no approach (playtest r39: Quill held beside a fleeing Scavenger while the
+  // Hold Guard that challenged it stood two tiles off).
+  const targetable = (one: TacticalUnit) => one.hp > 0 && !s.marinara?.fighters.find((f) => f.id === one.id)?.yielded;
+  const foes = t.units.filter((one) => one.side !== tu.side && targetable(one));
   const from = (at: TacticalCoord) => (id: string) => {
     const other = t.units.find((one) => one.id === id);
     return other ? Math.abs(other.x - at.x) + Math.abs(other.y - at.y) : Infinity;
@@ -270,7 +274,7 @@ export function marinaraBoardTurn(
     const steps = new Map<string, number>();
     const queue: TacticalCoord[] = [];
     for (const foe of t.units)
-      if (foe.side !== tu.side && foe.hp > 0) {
+      if (foe.side !== tu.side && targetable(foe)) {
         steps.set(`${foe.x},${foe.y}`, 0);
         queue.push({ x: foe.x, y: foe.y });
       }
@@ -304,7 +308,7 @@ export function marinaraBoardTurn(
   };
   const canStrike = (id: string) => {
     const one = t.units.find((u) => u.id === id);
-    return !!one && t.units.some((foe) => foe.side !== one.side && foe.hp > 0 && reaches(id, foe.id));
+    return !!one && t.units.some((foe) => foe.side !== one.side && targetable(foe) && reaches(id, foe.id));
   };
   // The reasons of the pick that stands (a second look from a closer tile replaces the first).
   let reasons: { at: TacticalCoord; ranking: Parameters<typeof marinaraPickReasons>[2] } | undefined;
