@@ -581,7 +581,7 @@ function playFight(level: number, n: number) {
             targetId: action.targetId,
           });
         }
-        run(() => commandCombatDirector(s, { type: "tactical", action: action as never }));
+        run(() => commandCombatDirector(s, { type: "tactical", action: action as never }, "ai"));
       } else if (s.window) run(() => commandCombatDirector(s, { type: "fallback" }, "fallback"));
       else if (s.stage === "select") {
         const next = s.tactical.units.find((u) => u.side === "party" && u.hp > 0 && !u.hasActed);
@@ -604,7 +604,7 @@ function playFight(level: number, n: number) {
           skillId: action.type === "skill" ? action.skillId : undefined,
           targetId: "targetId" in action ? (action.targetId as string) : undefined,
         });
-      run(() => commandCombatDirector(s, { type: "classic", action }));
+      run(() => commandCombatDirector(s, { type: "classic", action }, "ai"));
     } else if (s.window) run(() => commandCombatDirector(s, { type: "fallback" }, "fallback"));
     else run(() => commandCombatDirector(s, { type: "continue" }));
   }
