@@ -28,6 +28,7 @@ import {
   marinaraFrontOnly,
   marinaraClassTraits,
   marinaraCarryRedundant,
+  marinaraSkillsLeftBehind,
   marinaraOpenClasses,
   marinaraSecondaryFits,
   marinaraTrees,
@@ -484,6 +485,8 @@ function ClassDetails({
   const tree = t(`game.combat.marinara.archetype.${def.archetype}`);
   // The row this class would fight from: front-only skills sit idle in the back (Alyssa 2026-11-02).
   const row = progression.row ?? def.row ?? MARINARA_ARCHETYPE_ROWS[def.archetype];
+  // What taking this class up would leave behind, said before the button is pressed.
+  const leftBehind = current ? [] : marinaraSkillsLeftBehind(progression, def.id);
   return (
     <div className="mt-2 space-y-1 rounded-md border border-[var(--border)] p-2" data-testid="marinara-class-details">
       <p>
@@ -542,6 +545,11 @@ function ClassDetails({
               ? t("game.combat.marinara.sheet.promoteTo", { name: def.label })
               : t("game.combat.marinara.sheet.takeUp", { name: def.label })}
         </button>
+      )}
+      {!current && !block && leftBehind.length > 0 && (
+        <p className="text-amber-500" data-testid="marinara-left-behind">
+          {t("game.combat.marinara.sheet.leftBehind", { skills: leftBehind.map((skill) => skill.label).join(", ") })}
+        </p>
       )}
       {block === "class-level" && parent && (
         <p className="text-[var(--muted-foreground)]">

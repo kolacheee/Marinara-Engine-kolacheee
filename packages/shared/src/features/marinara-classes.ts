@@ -1092,14 +1092,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           22,
           "strength",
           4,
-          "Bonus action. The user's active companion strikes target foe. Usable every other turn.",
+          "Bonus action. The user's active companion strikes target foe. Usable every other turn. Needs a beast tamed with Tame.",
         ),
         passive("pack-tactics", "Pack Tactics", 24, "The party deals 40% more damage to marked foes.", true),
         passive(
           "bond",
           "Bond",
           26,
-          "The active companion's bonus increases by half, and the rest of the party gains half of it.",
+          "The active companion's bonus increases by half, and the rest of the party gains half of it. Needs a beast tamed with Tame.",
         ),
       ],
     },
@@ -1161,7 +1161,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           1,
           "magic",
           0,
-          "Bonus action. Channels fire, ice, lightning, wood, earth, water, metal or wind, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Outside the Channeler tree, their weapon attacks and weapon skills strike in the channeled element instead (unchanneled, their weapon's own type).",
+          "Bonus action. Channels fire, ice, lightning, wood, earth, water, metal or wind, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Outside the Channeler tree, their basic attacks and damaging skills strike in the channeled element instead (unchanneled, their weapon's or the skill's own type).",
         ),
         passive("resonance", "Resonance", 5, "Elemental hits deal 20% more damage to foes weak to that element.", true),
       ],
@@ -2069,6 +2069,27 @@ export function marinaraUsableSkills(progression: MarinaraProgression): Array<Ma
       !marinaraCarryRedundant({ ...progression, carried: [] }, skill.id),
   );
   return [...own, ...carried.slice(0, MARINARA_CARRY_SLOTS)];
+}
+
+/**
+ * The skills a character uses now that taking up `classId` would leave behind, unless carried: the
+ * warning the class screen shows before a switch or promotion (Sonnet panel r4, 2026-11-03: 8 of 12
+ * testers lost a class's kit at promotion without knowing).
+ */
+export function marinaraSkillsLeftBehind(
+  progression: MarinaraProgression,
+  classId: string,
+): Array<MarinaraSkillDef & { classId: string }> {
+  if (classId === progression.activeClass) return [];
+  let next: MarinaraProgression;
+  try {
+    // The switch itself, so a promotion's own carry fill counts.
+    next = setMarinaraClass(progression, classId);
+  } catch {
+    return [];
+  }
+  const after = new Set(marinaraUsableSkills(next).map((skill) => skill.id));
+  return marinaraUsableSkills(progression).filter((skill) => !after.has(skill.id));
 }
 
 /**
