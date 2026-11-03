@@ -395,35 +395,59 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   ability("clod", "Clod", "A fist of packed earth.", spell(5, "earth", { ranged: false })),
   ability("torrent", "Torrent", "A jet of water.", spell(5, "water")),
   ability("gust", "Gust", "A cutting gust of wind.", spell(5, "wind")),
-  ability("fair-wind", "Fair Wind", "Its side gains +20% Speed for 2 turns.", {
-    kind: "buff",
-    target: "party",
-    stat: "speed",
-    pct: 0.2,
-    duration: 2,
-    ranged: true,
-    cooldown: 5,
-  }, { minLevel: 6 }),
+  ability(
+    "fair-wind",
+    "Fair Wind",
+    "Its side gains +20% Speed for 2 turns.",
+    {
+      kind: "buff",
+      target: "party",
+      stat: "speed",
+      pct: 0.2,
+      duration: 2,
+      ranged: true,
+      cooldown: 5,
+    },
+    { minLevel: 6 },
+  ),
   ability("shrapnel", "Shrapnel", "A spray of metal splinters: two quick hits.", spell(3, "metal", { hits: 2 })),
-  ability("root-snare", "Root Snare", "Roots burst up round one target: slowed for 2 turns.", {
-    kind: "status",
-    target: "enemy",
-    status: "slow",
-    chance: 0.7,
-    duration: 2,
-    ranged: true,
-    cooldown: 4,
-  }, { minLevel: 5 }),
-  ability("undertow", "Undertow", "Drags at the front row: water damage, and each may be slowed for a turn.", spell(5, "water", {
-    target: "front-row",
-    spread: 0.6,
-    applies: { status: "slow", chance: 0.5, duration: 1 },
-    cooldown: 4,
-  }), { minLevel: 6 }),
-  ability("edge-wind", "Edge Wind", "A wind of blades: metal damage, and −20% Defense for 2 turns.", spell(5, "metal", {
-    onHit: { stat: "defense", pct: -0.2, duration: 2 },
-    cooldown: 3,
-  }), { minLevel: 6 }),
+  ability(
+    "root-snare",
+    "Root Snare",
+    "Roots burst up round one target: slowed for 2 turns.",
+    {
+      kind: "status",
+      target: "enemy",
+      status: "slow",
+      chance: 0.7,
+      duration: 2,
+      ranged: true,
+      cooldown: 4,
+    },
+    { minLevel: 5 },
+  ),
+  ability(
+    "undertow",
+    "Undertow",
+    "Drags at the front row: water damage, and each may be slowed for a turn.",
+    spell(5, "water", {
+      target: "front-row",
+      spread: 0.6,
+      applies: { status: "slow", chance: 0.5, duration: 1 },
+      cooldown: 4,
+    }),
+    { minLevel: 6 },
+  ),
+  ability(
+    "edge-wind",
+    "Edge Wind",
+    "A wind of blades: metal damage, and −20% Defense for 2 turns.",
+    spell(5, "metal", {
+      onHit: { stat: "defense", pct: -0.2, duration: 2 },
+      cooldown: 3,
+    }),
+    { minLevel: 6 },
+  ),
   ability(
     "fire-breath",
     "Fire Breath",
@@ -460,36 +484,66 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
     }),
     { minTier: "elite", minLevel: 8 },
   ),
-  ability("thorn-storm", "Thorn Storm", "Whips a storm of thorns over the party, with a turn's wind-up.", spell(9, "wood", {
-    target: "all-enemies",
-    spread: 0.6,
-    charge: true,
-    cooldown: 4,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("quake", "Quake", "Splits the ground under the party, with a turn's wind-up.", spell(9, "earth", {
-    target: "all-enemies",
-    spread: 0.6,
-    charge: true,
-    cooldown: 4,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("tidal-wave", "Tidal Wave", "Brings a wave down on the party, with a turn's wind-up.", spell(9, "water", {
-    target: "all-enemies",
-    spread: 0.6,
-    charge: true,
-    cooldown: 4,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("blade-storm", "Blade Storm", "A whirl of edges over the party, with a turn's wind-up.", spell(9, "metal", {
-    target: "all-enemies",
-    spread: 0.6,
-    charge: true,
-    cooldown: 4,
-  }), { minTier: "elite", minLevel: 8 }),
-  ability("cyclone", "Cyclone", "Spins a cyclone through the party, with a turn's wind-up.", spell(9, "wind", {
-    target: "all-enemies",
-    spread: 0.6,
-    charge: true,
-    cooldown: 4,
-  }), { minTier: "elite", minLevel: 8 }),
+  ability(
+    "thorn-storm",
+    "Thorn Storm",
+    "Whips a storm of thorns over the party, with a turn's wind-up.",
+    spell(9, "wood", {
+      target: "all-enemies",
+      spread: 0.6,
+      charge: true,
+      cooldown: 4,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "quake",
+    "Quake",
+    "Splits the ground under the party, with a turn's wind-up.",
+    spell(9, "earth", {
+      target: "all-enemies",
+      spread: 0.6,
+      charge: true,
+      cooldown: 4,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "tidal-wave",
+    "Tidal Wave",
+    "Brings a wave down on the party, with a turn's wind-up.",
+    spell(9, "water", {
+      target: "all-enemies",
+      spread: 0.6,
+      charge: true,
+      cooldown: 4,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "blade-storm",
+    "Blade Storm",
+    "A whirl of edges over the party, with a turn's wind-up.",
+    spell(9, "metal", {
+      target: "all-enemies",
+      spread: 0.6,
+      charge: true,
+      cooldown: 4,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
+  ability(
+    "cyclone",
+    "Cyclone",
+    "Spins a cyclone through the party, with a turn's wind-up.",
+    spell(9, "wind", {
+      target: "all-enemies",
+      spread: 0.6,
+      charge: true,
+      cooldown: 4,
+    }),
+    { minTier: "elite", minLevel: 8 },
+  ),
   ability(
     "chill-touch",
     "Chill Touch",
@@ -858,7 +912,13 @@ function wuxingFoe(element: PhasedElement): MarinaraAffinities {
   return affinities;
 }
 // Plate is metal: fire and water (rust) get through it, wood, lightning and wind glance off.
-const PLATE: MarinaraAffinities = { ...wuxingFoe("metal"), metal: "resist", slash: "resist", pierce: "resist", blunt: "weak" };
+const PLATE: MarinaraAffinities = {
+  ...wuxingFoe("metal"),
+  metal: "resist",
+  slash: "resist",
+  pierce: "resist",
+  blunt: "weak",
+};
 const GHOST: MarinaraAffinities = {
   slash: "immune",
   pierce: "immune",
@@ -1078,7 +1138,15 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     statScale: { hp: 1.3, strength: 0.9, speed: 0.6, skill: 0.7, defense: 0.5, resistance: 1.0, luck: 0.4 },
     attackType: "blunt",
     row: "front",
-    affinities: { slash: "resist", pierce: "resist", fire: "weak", earth: "weak", water: "resist", ice: "resist", poison: "immune" },
+    affinities: {
+      slash: "resist",
+      pierce: "resist",
+      fire: "weak",
+      earth: "weak",
+      water: "resist",
+      ice: "resist",
+      poison: "immune",
+    },
     abilities: at(["acid-spit", 1], ["regenerate", 12]),
     levels: [1, 30],
     tiers: ALL_TIERS,
@@ -1205,7 +1273,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "cinder-spirit",
     kind: "elemental",
     role: "caster",
-    summary: "Living fire: drinks flame, shrugs off wood and metal, quenched by water and frost, smothered by earth; burns the whole party when grown.",
+    summary:
+      "Living fire: drinks flame, shrugs off wood and metal, quenched by water and frost, smothered by earth; burns the whole party when grown.",
     mind: "instinct",
     temperaments: ["reckless", "territorial"],
     archetype: "channeler",
@@ -1228,7 +1297,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "rime-spirit",
     kind: "elemental",
     role: "caster",
-    summary: "Living frost, of water's phase: drinks cold, shrugs off fire and metal, cracks under earth, wood and hammers.",
+    summary:
+      "Living frost, of water's phase: drinks cold, shrugs off fire and metal, cracks under earth, wood and hammers.",
     mind: "instinct",
     temperaments: ["patient", "territorial"],
     archetype: "channeler",
@@ -1250,7 +1320,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "storm-spirit",
     kind: "elemental",
     role: "caster",
-    summary: "Living lightning, of wood's phase: quick, drinks the storm, shrugs off earth and water, cut by metal and burnt out by fire.",
+    summary:
+      "Living lightning, of wood's phase: quick, drinks the storm, shrugs off earth and water, cut by metal and burnt out by fire.",
     mind: "instinct",
     temperaments: ["reckless", "opportunistic"],
     archetype: "channeler",
@@ -1276,7 +1347,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "grove-spirit",
     kind: "elemental",
     role: "caster",
-    summary: "Living wood: drinks growth, roots a target in place, shrugs off earth and water, felled by metal and burnt by fire; whips thorns over the party when grown.",
+    summary:
+      "Living wood: drinks growth, roots a target in place, shrugs off earth and water, felled by metal and burnt by fire; whips thorns over the party when grown.",
     mind: "instinct",
     temperaments: ["patient", "territorial"],
     archetype: "channeler",
@@ -1299,7 +1371,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "clay-spirit",
     kind: "elemental",
     role: "brute",
-    summary: "Living earth: slow and heavy at the front, drinks stone, shrugs off water and fire, split by wood, lightning, wind and metal; shakes the ground when grown.",
+    summary:
+      "Living earth: slow and heavy at the front, drinks stone, shrugs off water and fire, split by wood, lightning, wind and metal; shakes the ground when grown.",
     mind: "instinct",
     temperaments: ["patient", "territorial"],
     archetype: "guard",
@@ -1321,7 +1394,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "tide-spirit",
     kind: "elemental",
     role: "caster",
-    summary: "Living water: drinks the flood, drags the front row down, shrugs off fire and metal, dammed by earth and drunk by wood; brings a wave over the party when grown.",
+    summary:
+      "Living water: drinks the flood, drags the front row down, shrugs off fire and metal, dammed by earth and drunk by wood; brings a wave over the party when grown.",
     mind: "instinct",
     temperaments: ["patient", "opportunistic"],
     archetype: "channeler",
@@ -1344,7 +1418,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "edge-spirit",
     kind: "elemental",
     role: "skirmisher",
-    summary: "Living metal: quick splinters and edges that strip armour, drinks iron, shrugs off wood and earth, melted by fire and rusted by water; a whirl of blades when grown.",
+    summary:
+      "Living metal: quick splinters and edges that strip armour, drinks iron, shrugs off wood and earth, melted by fire and rusted by water; a whirl of blades when grown.",
     mind: "instinct",
     temperaments: ["reckless", "disciplined"],
     archetype: "channeler",
@@ -1368,7 +1443,8 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
     id: "gale-spirit",
     kind: "elemental",
     role: "skirmisher",
-    summary: "Living wind, of wood's phase: the quickest spirit, drinks the gale, rides over earth and water, cut by metal and burnt out by fire; a cyclone when grown.",
+    summary:
+      "Living wind, of wood's phase: the quickest spirit, drinks the gale, rides over earth and water, cut by metal and burnt out by fire; a cyclone when grown.",
     mind: "instinct",
     temperaments: ["reckless", "opportunistic"],
     archetype: "channeler",
@@ -2022,6 +2098,24 @@ function capGroup(family: MarinaraEnemyFamily): { group: string; cap: number } |
   if (family.classLine?.[0] === "guard") return { group: "taunter", cap: MARINARA_TAUNTER_CAP };
   return null;
 }
+/**
+ * Regenerating foes: room for two a fight, and a regenerating boss takes both (playtest r47, reasons
+ * log on: after the 35-a-turn cap, boss fights with several regenerating escorts still ran 28 rounds
+ * in Tactical against 12, and the stalls were a 1,500-2,000 HP boss with 2-6 regenerators healing
+ * 600-1,000 HP between them).
+ */
+export const MARINARA_REGENERATOR_CAP = 2;
+const REGEN_ABILITIES = new Set(["regenerate", "self-repair"]);
+/** How much of the regenerator room a foe takes: 0 if it can't regenerate at its level. */
+function regenWeight(foe: MarinaraEncounterFoe): number {
+  const family = FAMILY_BY_ID.get(foe.familyId);
+  const regenerates = family?.abilities.some((one) => REGEN_ABILITIES.has(one.id) && one.from <= foe.level);
+  return regenerates ? (foe.tier === "boss" ? MARINARA_REGENERATOR_CAP : 1) : 0;
+}
+function regenRoomFor(foes: readonly MarinaraEncounterFoe[], foe: MarinaraEncounterFoe): boolean {
+  const weight = regenWeight(foe);
+  return !weight || foes.reduce((sum, one) => sum + regenWeight(one), 0) + weight <= MARINARA_REGENERATOR_CAP;
+}
 function groupCount(foes: readonly MarinaraEncounterFoe[], group: string): number {
   return foes.filter((foe) => {
     const family = FAMILY_BY_ID.get(foe.familyId);
@@ -2190,6 +2284,11 @@ export function marinaraCheckEncounter(input: {
     const count = groupCount(foes, group);
     if (count > cap!) problems.push(`${count} ${group} foes; at most ${cap}.`);
   }
+  const regen = foes.reduce((sum, foe) => sum + regenWeight(foe), 0);
+  if (regen > MARINARA_REGENERATOR_CAP)
+    problems.push(
+      `Too many regenerating foes; at most ${MARINARA_REGENERATOR_CAP}, and a regenerating boss counts as both.`,
+    );
   if (foes.length && front === 0) problems.push("Nobody in the front row.");
   const rating = marinaraEncounterRating(threat, party);
   if (rating === "beyond") problems.push(`Threat ${threat.toFixed(1)} is beyond Deadly for this party.`);
@@ -2262,8 +2361,11 @@ export function marinaraBuildEncounter(input: {
   );
   const families = [lead, ...wanted.slice(1)];
   // A lead that comes one to a fight (a leader, a healer, a taunter) brings a family that can fill it out.
-  if (families.length === 1 && capGroup(lead)) {
-    const filler = company.filter((family) => !capGroup(family));
+  const regenLead = regenWeight({ familyId: lead.id, tier: "standard", level }) > 0;
+  if (families.length === 1 && (capGroup(lead) || regenLead)) {
+    const filler = company.filter(
+      (family) => !capGroup(family) && !regenWeight({ familyId: family.id, tier: "standard", level }),
+    );
     if (filler.length) {
       const next = filler[Math.floor(random() * filler.length)]!;
       company.splice(company.indexOf(next), 1);
@@ -2311,7 +2413,10 @@ export function marinaraBuildEncounter(input: {
         (tier) => stand.tiers.includes(tier) && level >= MARINARA_TIER_RULES[tier].minLevel,
       );
       const fits = () =>
-        tiers.find((tier) => cost({ familyId: stand.id, tier, level: foeLevel(stand) }) <= budget - threat);
+        tiers.find((tier) => {
+          const foe = { familyId: stand.id, tier, level: foeLevel(stand) };
+          return regenRoomFor(foes, foe) && cost(foe) <= budget - threat;
+        });
       if (!fits() && foes.length) {
         foes.pop();
         threat = marinaraEncounterThreat(foes, level);
@@ -2335,7 +2440,7 @@ export function marinaraBuildEncounter(input: {
         if (tierCount(tier) >= MARINARA_TIER_RULES[tier].maxPerFight) continue;
         if (roleFull(family)) continue;
         const foe = { familyId: family.id, tier, level: foeLevel(family) };
-        if (cost(foe) <= left) options.push(foe);
+        if (regenRoomFor(foes, foe) && cost(foe) <= left) options.push(foe);
       }
     if (!options.length) break;
     // Prefer standard foes, an elite now and then, minions to fill the last of the budget.
@@ -2472,6 +2577,10 @@ export function marinaraFitEncounter(input: {
     }
     if (foes.length >= MARINARA_MAX_FOES) {
       changes.push(`Dropped ${family.id}: a battle has room for ${MARINARA_MAX_FOES}.`);
+      continue;
+    }
+    if (!regenRoomFor(foes, { familyId: family.id, tier, level: foeLevel })) {
+      changes.push(`Dropped ${family.id}: too many regenerating foes in one fight.`);
       continue;
     }
     perTier[tier] = (perTier[tier] ?? 0) + 1;
