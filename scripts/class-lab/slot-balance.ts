@@ -10,6 +10,7 @@
  * Env: LEVELS=16,26 (else each tier's levels), DIFF=hard,deadly, BOSS=0|1|mix, FRAME=std|noheal,
  * SKILLS=1 (per-skill casts, damage, healing), STYLE=classic|tactical, JSON=out.json.
  */
+import { keepFightReasons } from "./reasons-log.js";
 import { writeFileSync } from "node:fs";
 import {
   commandCombatDirector,
@@ -282,6 +283,7 @@ function playFight(slot: MarinaraClassDef, level: number, n: number, row: Row) {
       tallyLog(() => undefined);
     }
   }
+  keepFightReasons("slot-balance", `${slot.id}:L${level}:${row}:${n}`, s);
   if (process.env.DEBUG && n === 0) for (const l of s.log.slice(0, 80)) console.log(l.actorId, l.kind, l.text);
   row.fights++;
   row.rounds += s.round;

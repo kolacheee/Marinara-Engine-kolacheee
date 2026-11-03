@@ -14,6 +14,7 @@
  *  - defend: a Defend while a damaging option was on the table (counted, not judged).
  * Damage choice: the expected damage of the pick over the best expected damage on the table.
  */
+import { keepFightReasons } from "./reasons-log.js";
 import { writeFileSync } from "node:fs";
 import {
   commandCombatDirector,
@@ -168,7 +169,14 @@ function audit(
     const prev = lastPick.get(key);
     const sid = pick.skillId;
     const opt = sid ? options.find((o) => o.id === sid || o.label === sid) : undefined;
-    if (sid && prev && prev.skill === sid && prev.round === s.round - 1 && !actor.commanded && (opt?.effect.cooldown ?? 0) >= 2)
+    if (
+      sid &&
+      prev &&
+      prev.skill === sid &&
+      prev.round === s.round - 1 &&
+      !actor.commanded &&
+      (opt?.effect.cooldown ?? 0) >= 2
+    )
       bump(tally.reviveChance, `cooldownBack2Back:${side}:${sid}`);
     if (!actor.commanded) lastPick.set(key, { skill: sid, round: s.round });
   }
@@ -388,9 +396,23 @@ function playFight(level: number, n: number) {
             const o = clone.tactical!.units.find((u) => u.id === id);
             return o ? Math.abs(o.x - pos.x) + Math.abs(o.y - pos.y) : Infinity;
           };
-          const here = marinaraBoardAiAction(clone.marinara!, cu as never, clone.round, "normal", at(cu), cu.attackRange.max);
+          const here = marinaraBoardAiAction(
+            clone.marinara!,
+            cu as never,
+            clone.round,
+            "normal",
+            at(cu),
+            cu.attackRange.max,
+          );
           const there = board.to
-            ? marinaraBoardAiAction(clone.marinara!, cu as never, clone.round, "normal", at(board.to), cu.attackRange.max)
+            ? marinaraBoardAiAction(
+                clone.marinara!,
+                cu as never,
+                clone.round,
+                "normal",
+                at(board.to),
+                cu.attackRange.max,
+              )
             : null;
           const final = marinaraBoardTurn(structuredClone(s), structuredClone(unit)) as { type: string };
           if (final.type === "defend" && near <= 3 && process.env.DEBUG_TDEF === "2") {
@@ -398,17 +420,53 @@ function playFight(level: number, n: number) {
             const dist = at(cu);
             let count = 0;
             const optsSeen: string[] = [];
-            chooseMarinaraAction(actorF, clone.marinara!.fighters, { ...cu, tactics: cu.tactics! } as never, clone.round, "normal", {
-              tactical: true,
-              reach: (o, t) => {
-                count++;
-                optsSeen.push(`${o.id ?? "atk"}>${t.id}@${dist(t.id)}`);
-                return t.id === actorF.id || dist(t.id) <= 3;
+            chooseMarinaraAction(
+              actorF,
+              clone.marinara!.fighters,
+              { ...cu, tactics: cu.tactics! } as never,
+              clone.round,
+              "normal",
+              {
+                tactical: true,
+                reach: (o, t) => {
+                  count++;
+                  optsSeen.push(`${o.id ?? "atk"}>${t.id}@${dist(t.id)}`);
+                  return t.id === actorF.id || dist(t.id) <= 3;
+                },
+                ranked: (r) =>
+                  console.log(
+                    "  RANK",
+                    r
+                      .slice(0, 5)
+                      .map((x) => `${JSON.stringify(x.candidate.action)}=${x.score.toFixed(2)}`)
+                      .join(" | "),
+                  ),
               },
-              ranked: (r) => console.log("  RANK", r.slice(0, 5).map((x) => `${JSON.stringify(x.candidate.action)}=${x.score.toFixed(2)}`).join(" | ")),
-            });
-            console.log("  FOES", clone.marinara!.fighters.filter((f) => f.side === "enemy").map((f) => `${f.id}:hp${f.hp}/${f.maxHp}:${f.row}:${(f as any).yielded ? "Y" : ""}${(f as any).hidden ? "H" : ""}:${(f.statuses ?? []).map((x: any) => x.id ?? x.kind ?? x).join("+")}`).join(" "), "| TU", clone.tactical!.units.filter((u) => u.side !== unit.side).map((u) => `${u.id}:hp${u.hp}@${u.x},${u.y}`).join(" "));
-            console.log("  REACH", count, optsSeen.slice(0, 12).join(" "), "ids", clone.tactical!.units.map((u) => u.id).join(","), "fighters", clone.marinara!.fighters.map((f) => f.id).join(","));
+            );
+            console.log(
+              "  FOES",
+              clone
+                .marinara!.fighters.filter((f) => f.side === "enemy")
+                .map(
+                  (f) =>
+                    `${f.id}:hp${f.hp}/${f.maxHp}:${f.row}:${(f as any).yielded ? "Y" : ""}${(f as any).hidden ? "H" : ""}:${(f.statuses ?? []).map((x: any) => x.id ?? x.kind ?? x).join("+")}`,
+                )
+                .join(" "),
+              "| TU",
+              clone
+                .tactical!.units.filter((u) => u.side !== unit.side)
+                .map((u) => `${u.id}:hp${u.hp}@${u.x},${u.y}`)
+                .join(" "),
+            );
+            console.log(
+              "  REACH",
+              count,
+              optsSeen.slice(0, 12).join(" "),
+              "ids",
+              clone.tactical!.units.map((u) => u.id).join(","),
+              "fighters",
+              clone.marinara!.fighters.map((f) => f.id).join(","),
+            );
           }
           if (final.type === "defend" && near <= 3)
             console.log(
@@ -428,7 +486,11 @@ function playFight(level: number, n: number) {
               .map((o) => Math.abs(o.x - unit.x) + Math.abs(o.y - unit.y)),
           );
           if (near <= unit.movement + Math.max(1, unit.attackRange.max)) tally.defend.inReach++;
-          if (actor.commanded) bump(tally.reviveChance, `commandedDefend:${near <= unit.movement + Math.max(1, unit.attackRange.max) ? "inReach" : "far"}:${unit.hasMoved ? "moved" : "fresh"}`);
+          if (actor.commanded)
+            bump(
+              tally.reviveChance,
+              `commandedDefend:${near <= unit.movement + Math.max(1, unit.attackRange.max) ? "inReach" : "far"}:${unit.hasMoved ? "moved" : "fresh"}`,
+            );
         }
         if (actor) {
           const skill = action.skillName ? actor.skills.find((k) => k.label === action.skillName) : undefined;
@@ -471,6 +533,7 @@ function playFight(level: number, n: number) {
     else run(() => commandCombatDirector(s, { type: "continue" }));
   }
   if (process.env.DEBUG && n === 1) for (const l of s.log.slice(0, 60)) console.log(l.actorId, l.kind, l.text);
+  keepFightReasons("ai-audit", `L${level}:${n}`, s);
   tally.fights++;
   tally.rounds += s.round;
   if (s.outcome === "victory") tally.wins++;
