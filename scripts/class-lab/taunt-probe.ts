@@ -11,6 +11,7 @@ import {
 import { marinaraAiAction, marinaraCombatant } from "../../packages/server/src/services/game/marinara-director.service.js";
 import { marinaraEnemySpec } from "../../packages/shared/src/features/marinara-bestiary.js";
 import { enemyFighter, referenceParty, REFERENCE_PARTIES, seedOf } from "./bestiary-units.js";
+import { keepFightReasons } from "./reasons-log.js";
 
 const fights = Number(process.argv[2] ?? 4);
 const level = Number(process.env.LEVEL ?? 30);
@@ -69,6 +70,8 @@ for (const partyName of Object.keys(REFERENCE_PARTIES))
     for (const e of (s as unknown as { log: Array<{ kind?: string; text: string; actorId?: string }> }).log ?? [])
       if (e.actorId && fam.has(e.actorId) && e.kind?.startsWith("marinara:")) bump(foePicks, `${fam.get(e.actorId)} ${e.kind}`);
     for (const f of s.marinara!.fighters) if (f.side === "party" && f.hp <= 0) bump(foePicks, `party downed`);
+    // The AI reasons log is on for every run (Alyssa 2026-11-03).
+    keepFightReasons("taunt-probe", `${partyName}:${k}`, s);
     played++;
     rounds += s.round;
     if (s.outcome === "victory") wins++;

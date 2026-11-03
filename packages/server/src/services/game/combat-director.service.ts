@@ -52,6 +52,7 @@ import {
   marinaraActionProblem,
   marinaraAiAction,
   marinaraPickReasons,
+  keepMarinaraReasons,
   marinaraTacticalTurnStart,
   performMarinaraTacticalAction,
   marinaraItemPower,
@@ -368,7 +369,10 @@ export function marinaraBoardTurn(
     );
     return board;
   }
-  if (reasons) logMarinaraReasons(s, tu.id, reasons.ranking);
+  if (reasons) {
+    keepMarinaraReasons(s.marinara!, tu.id, s.round, reasons.ranking);
+    logMarinaraReasons(s, tu.id, reasons.ranking);
+  }
   return keepingDistance(s, tu, action) ?? action;
 }
 

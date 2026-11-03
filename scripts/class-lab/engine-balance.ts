@@ -4,6 +4,7 @@
  *
  *   node packages/server/node_modules/tsx/dist/cli.mjs scripts/class-lab/engine-balance.ts [fights] [style]
  */
+import { keepFightReasons } from "./reasons-log.js";
 import { marinaraFoeFighters, marinaraPartyFighter } from "../../packages/shared/src/features/marinara-party.js";
 import {
   commandCombatDirector,
@@ -145,6 +146,8 @@ function playOut(s: CombatDirectorState) {
     } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
     else commandCombatDirector(s, { type: "continue" });
   }
+  // The AI reasons log is always kept (Alyssa 2026-11-03: mandatory for every run).
+  keepFightReasons("engine-balance", s.id, s);
   return s;
 }
 
