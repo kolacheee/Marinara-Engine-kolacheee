@@ -288,6 +288,15 @@ export function marinaraBoardTurn(
       canStrike,
       reaches,
       (ranking) => (ranked = ranking),
+      (optionId, targetId) => {
+        const where = at.x === tu.x && at.y === tu.y ? {} : { to: at };
+        const skill = optionId === null ? undefined : tu.skills?.find((one) => one.id === optionId);
+        if (optionId !== null && !skill) return false;
+        const action: Extract<TacticalAction, { unitId: string }> = skill
+          ? { type: "skill", unitId: tu.id, skillName: skill.name, targetId, ...where }
+          : { type: "attack", unitId: tu.id, targetId, ...where };
+        return !validateTacticalUnitAction(t, tu, action);
+      },
     );
     return { picked, ranked };
   };

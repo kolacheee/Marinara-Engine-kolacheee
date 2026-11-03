@@ -858,6 +858,9 @@ export function marinaraBoardAiAction(
   /** Whether one fighter could reach another this round (a move and its reach). */
   reaches?: (fromId: string, toId: string) => boolean,
   explain?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void,
+  /** The board's own check: whether this option at this target passes from where the unit will stand
+   *  (sight, minimum range, a skill's own range). Without it, distance alone. */
+  fits?: (optionId: string | null, targetId: string) => boolean,
 ): CombatPlayerAction | null {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
@@ -887,15 +890,18 @@ export function marinaraBoardAiAction(
       ...(explain ? { explain } : {}),
       // Friends within the board's support range (2 tiles, a caster's 3); the user itself, a whole side and the
       // fallen (whom the board can't aim at; resolution finds them) anywhere.
+      // With the board's check, also sight and minimum range (reasons audit 2026-11-03: 2% of Tactical
+      // turns fell back on the board AI's own move, mostly marksmen aiming past cover or too close).
       reach: (option, target) =>
         target.id === actor.id ||
         option.effect.target === "party" ||
         option.effect.target === "downed-ally" ||
-        distance(target.id) <=
+        (distance(target.id) <=
           (option.id === null
             ? attackRange
             : (MARINARA_BOARD_SPELL_RANGE[actor.archetype ?? ""] ??
-              (target.side === actor.side ? 2 : Math.max(attackRange, 2)))),
+              (target.side === actor.side ? 2 : Math.max(attackRange, 2)))) &&
+          (!fits || fits(option.id, target.id))),
     });
     return marinaraChoiceAction(actor, choice);
   } catch {

@@ -564,7 +564,7 @@ function playFight(level: number, n: number) {
     );
     const foesLeft = fs.filter((f) => f.side !== "party" && f.hp > 0);
     const board = s.tactical
-      ? ` | board ${s.tactical.units.filter((u) => u.hp > 0).map((u) => `${u.id}@${u.x},${u.y}`).join(" ")} ${s.tactical.width}x${s.tactical.height}`
+      ? ` | yielded ${fs.filter((f) => f.yielded).map((f) => `${f.id}${s.morale?.[f.id]?.yielded ? "(morale)" : "(not in morale)"}`).join(",")}` + ` | board ${s.tactical.units.filter((u) => u.hp > 0).map((u) => `${u.id}@${u.x},${u.y}`).join(" ")} ${s.tactical.width}x${s.tactical.height}`
       : "";
     tally.stallNotes.push(
       board + ` L${level} ${s.outcome ?? "none"} r${s.round}: party ${alive.map((f) => `${f.classId}(${f.hp}/${f.maxHp} mp${f.mp})`).join(" ")} | magic now ${magicNow.length} | foes ${foesLeft.map((f) => `${f.familyId ?? f.archetype}:${f.tier}(${f.hp}/${f.maxHp})`).join(" ")}`,
