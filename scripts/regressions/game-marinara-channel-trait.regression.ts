@@ -13,7 +13,11 @@ import {
   setMarinaraCarried,
   type MarinaraProgression,
 } from "../../packages/shared/src/features/marinara-classes.js";
-import { buildMarinaraPartyFighter, marinaraCanChannel } from "../../packages/shared/src/features/marinara-combat.js";
+import {
+  buildMarinaraPartyFighter,
+  marinaraBasicAttack,
+  marinaraCanChannel,
+} from "../../packages/shared/src/features/marinara-combat.js";
 
 const base = createMarinaraProgression({ seed: "ch", primary: "channeler", temperament: "methodical" });
 const at = (activeClass: string, levels: Record<string, number>, carried: string[] = []): MarinaraProgression => ({
@@ -61,3 +65,19 @@ assert.ok(marinaraCanChannel(buildMarinaraPartyFighter({ id: "b", name: "b", pro
 assert.ok(!marinaraCanChannel(buildMarinaraPartyFighter({ id: "b", name: "b", progression: blade })));
 
 console.log("game-marinara-channel-trait: ok");
+
+// The weapon in hand decides the basic attack's stat too (Alyssa 2026-11-02): a Blade with a focus casts,
+// a Channeler with a sword swings, and armour alone leaves the class to decide.
+{
+  const bladeOnly = at("blade", { blade: 5 });
+  const focus = { power: 0, spellPower: 6, weaponType: "blunt" as const };
+  const sword = { power: 6, spellPower: 0, weaponType: "slash" as const };
+  const swing = (p: MarinaraProgression, gear?: Parameters<typeof buildMarinaraPartyFighter>[0]["gear"]) =>
+    marinaraBasicAttack(buildMarinaraPartyFighter({ id: "w", name: "w", progression: p, ...(gear ? { gear } : {}) }));
+  assert.equal(swing(bladeOnly).scales, "strength", "an unarmed Blade swings on Strength");
+  assert.equal(swing(bladeOnly, focus).scales, "magic", "a Blade with a focus casts on Magic");
+  const mage = at("channeler", { channeler: 5 });
+  assert.equal(swing(mage).scales, "magic", "an unarmed Channeler casts on Magic");
+  assert.equal(swing(mage, sword).scales, "strength", "a Channeler with a sword swings on Strength");
+  assert.equal(swing(mage, { power: 0, spellPower: 0 }).scales, "magic", "armour alone is no weapon");
+}
