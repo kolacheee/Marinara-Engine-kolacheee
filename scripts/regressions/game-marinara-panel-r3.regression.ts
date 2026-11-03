@@ -136,4 +136,13 @@ const unit = (id: string, side: "party" | "enemy", skills: string[] = []) => {
   );
 }
 
+// 6. A foe with a Scout kit never spends a turn on Steal (the party has no loot to take).
+{
+  const thief = unit("Thief", "enemy", ["steal"]);
+  const hero = unit("Hero", "party");
+  assert.ok(!marinaraUsable(thief, [thief, hero]).some((option) => option.id === "steal"));
+  const rogue = unit("Rogue", "party", ["steal"]);
+  assert.ok(marinaraUsable(rogue, [rogue, thief]).some((option) => option.id === "steal"));
+}
+
 console.log("game-marinara-panel-r3: ok");

@@ -1099,14 +1099,26 @@ function marinaraEnemyCarries(def: MarinaraClassDef, picks: readonly string[]): 
   const out: MarinaraSkillDef[] = [];
   const add = (skill: MarinaraSkillDef | undefined, trait = false) => {
     if (!skill || out.some((each) => each.id === skill.id)) return;
-    if (!trait && out.filter((each) => !(MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? []).includes(each.id)).length >= MARINARA_CARRY_SLOTS)
+    if (
+      !trait &&
+      out.filter((each) => !(MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? []).includes(each.id)).length >=
+        MARINARA_CARRY_SLOTS
+    )
       return;
     out.push(skill);
   };
-  for (let from = def.from ? marinaraClass(def.from) : undefined; from; from = from.from ? marinaraClass(from.from) : undefined)
+  for (
+    let from = def.from ? marinaraClass(def.from) : undefined;
+    from;
+    from = from.from ? marinaraClass(from.from) : undefined
+  )
     for (const skill of from.skills)
       if ((MARINARA_ARCHETYPE_TRAITS[def.archetype] ?? []).includes(skill.id)) add(skill, true);
-  for (let from = def.from ? marinaraClass(def.from) : undefined; from; from = from.from ? marinaraClass(from.from) : undefined)
+  for (
+    let from = def.from ? marinaraClass(def.from) : undefined;
+    from;
+    from = from.from ? marinaraClass(from.from) : undefined
+  )
     for (const skill of [...from.skills]
       .filter((each) => each.kind === "active")
       .sort((a, b) => Number(!!b.carryPick) - Number(!!a.carryPick) || b.learnedAt - a.learnedAt))
@@ -1837,6 +1849,9 @@ export function marinaraUsable(unit: MarinaraFighter, all?: readonly MarinaraFig
     // A commanded action can't command or take extra actions in turn (it would only spend itself).
     if ((effect.kind === "command" || effect.kind === "extra-turn") && unit.commanded) continue;
     if (effect.frontOnly && !front) continue;
+    // Steal takes from a foe's loot; the party carries none to take, so a foe never spends a turn on it
+    // (bestiary 2026-11-02: human foes now fight with their class kit).
+    if (effect.kind === "steal" && unit.side !== "party") continue;
     if (all && effect.kind === "status" && effect.target !== "self" && effect.target !== "party") {
       if (!marinaraTargetsFor(unit, effect, all).length) continue;
     }
