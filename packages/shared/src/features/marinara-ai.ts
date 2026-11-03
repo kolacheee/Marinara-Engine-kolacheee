@@ -30,6 +30,8 @@ import {
   marinaraDebuffBurden,
   marinaraEffectiveStat,
   marinaraExpectedHit,
+  marinaraHelpless,
+  marinaraStatusLandChance,
   marinaraRowOf,
   marinaraShrugsOff,
   marinaraSkillCost,
@@ -65,13 +67,15 @@ function bestDamage(unit: MarinaraFighter, all: readonly MarinaraFighter[], tact
  *  in the same terms as a damage candidate. */
 function bestShare(unit: MarinaraFighter, all: readonly MarinaraFighter[], tactical: boolean): number {
   let best = 0;
+  const foes = all.filter((one) => one.side !== unit.side && one.hp > 0);
+  const foeMeanHp = Math.max(1, foes.reduce((sum, foe) => sum + foe.maxHp, 0) / Math.max(1, foes.length));
   for (const { effect } of marinaraUsable(unit, all)) {
     if (effect.kind !== "damage" || effect.charge) continue;
     for (const target of marinaraTargetsFor(unit, effect, all))
       if (target.side !== unit.side && target.hp > 0)
         best = Math.max(
           best,
-          Math.min(target.hp, marinaraExpectedHit(unit, target, effect, all, tactical)) / Math.max(1, target.maxHp),
+          Math.min(target.hp, marinaraExpectedHit(unit, target, effect, all, tactical)) / foeMeanHp,
         );
   }
   return best;
@@ -168,8 +172,7 @@ export function marinaraAiCandidates(
   const roundsLeft = Math.max(1, foes.reduce((sum, foe) => sum + foe.hp, 0) / partyDamage);
   // The damage a foe would deal the party over the next `turns` of its turns, as a share of a friend's
   // HP: what killing it now, or holding it down, keeps off (Alyssa 2026-11-03: a dead foe deals none).
-  const threatOf = (foe: MarinaraFighter, turns: number) =>
-    (hardestFrom(foe).damage * Math.max(0, turns)) / friendHp;
+  const threatOf = (foe: MarinaraFighter, turns: number) => (hardestFrom(foe).damage * Math.max(0, turns)) / friendHp;
   // What could land on a friend before its next turn: each foe's hardest blow, shared among the
   // friends it might pick (all of it when the friend draws the foes).
   const incomingOn = (u: MarinaraFighter) =>
@@ -179,6 +182,24 @@ export function marinaraAiCandidates(
       for (const { effect } of marinaraUsable(foe, all))
         if (effect.kind === "damage" && !effect.charge) most = Math.max(most, hit(foe, u, effect));
       return sum + most * (u.provoking > 0 ? 1 : 1 / Math.max(1, friends.length));
+    }, 0);
+  // Drawing every foe onto one friend: the blows that would have landed on the others, less what they
+  // do to the one who draws them, for the turns it lasts (Alyssa 2026-11-03, aggro control; Sonnet
+  // panel r4: Provoke and Draw Fire were weighed flat and filled tanks' turns).
+  const drawnOff = (onto: MarinaraFighter, duration: number) =>
+    foes.reduce((sum, foe) => {
+      if (foe.dummy || (options.reaches && !options.reaches(foe.id, onto.id))) return sum;
+      let pulled = 0;
+      for (const { effect } of marinaraUsable(foe, all)) {
+        if (effect.kind !== "damage" || effect.charge || effect.target !== "enemy") continue;
+        const off =
+          friends.reduce(
+            (s, u) => s + (u.id === onto.id ? 0 : Math.max(0, hit(foe, u, effect) - hit(foe, onto, effect))),
+            0,
+          ) / Math.max(1, friends.length);
+        pulled = Math.max(pulled, off);
+      }
+      return sum + pulled * Math.max(1, Math.min(duration, lasts(foe)));
     }, 0);
   const out: CombatAiCandidate<MarinaraChoice>[] = [];
   // A bonus action leaves the turn's action still to take (review 2026-11-02: songs, Mark Prey and
@@ -244,13 +265,26 @@ export function marinaraAiCandidates(
           let damage = 0;
           let finish = 0;
           let prevented = 0;
+          // Decoys on the target's side (Thousand Shadows) take the next hits that land: a big blow into
+          // one is worth only the cheap one that would strip it as well (Sonnet panel r4: three 30-MP
+          // Convergences charged into a Vault Gorger's decoys).
+          let decoys = living(all.filter((u) => u.side === aim.side)).reduce((sum, u) => sum + (u.decoys ?? 0), 0);
           for (const target of struck) {
-            const expected = Math.min(target.hp, hit(actor, target, spread));
-            damage += expected / Math.max(1, target.maxHp);
+            const landed = Math.min(target.hp, hit(actor, target, spread));
+            const absorbed = decoys > 0 && !marinaraHelpless(target);
+            if (absorbed) decoys--;
+            const expected = absorbed
+              ? Math.min(landed, Math.min(target.hp, hit(actor, target, marinaraBasicAttack(actor)))) * 0.5
+              : landed;
+            // Progress toward winning: the same blow is worth the same on any foe, over the foe side's mean
+            // HP (Sonnet panel r4: 68 on a 1,420-HP boss scored +0.02 over the boss's own HP, and Rally,
+            // Cover and Defend took the turns). Kill shots and focus carry the rest (finish, prevented).
+            damage += expected / foeMeanHp;
             if (expected >= target.hp * 0.95) {
               finish += 0.7;
               // A kill shot: the blows it would have dealt before the party brought it down anyway.
-              if (target.side !== actor.side) prevented += threatOf(target, Math.min(2, Math.max(1, target.hp / partyDamage)));
+              if (target.side !== actor.side)
+                prevented += threatOf(target, Math.min(2, Math.max(1, target.hp / partyDamage)));
             }
           }
           // A charged skill lands a turn later.
@@ -495,7 +529,7 @@ export function marinaraAiCandidates(
           add(option, [fresh[0]!], { [part]: worth(fresh, part === "damage" ? foeMeanHp : foeHp) });
         else
           for (const target of fresh)
-            add(option, [target], { targetId: target.id, [part]: worth([target], Math.max(1, target.maxHp)) });
+            add(option, [target], { targetId: target.id, [part]: worth([target], foeMeanHp) });
         break;
       }
       case "status": {
@@ -520,25 +554,27 @@ export function marinaraAiCandidates(
         const worth = (target: MarinaraFighter) =>
           effect.status === "poison" || effect.status === "wither"
             ? Math.min(target.hp, target.maxHp * (effect.power ?? 0.08) * (effect.duration ?? 3)) *
-              (effect.chance ?? 1) *
+              marinaraStatusLandChance(target, effect, all) *
               (effect.status === "poison" ? marinaraAffinityMultiplier(target.affinities, "poison") : 1)
             : effect.status === "doom"
               ? Math.min(
                   target.hp,
                   target.maxHp * (target.maxHp > 300 ? MARINARA_TUNING.doomBossPct : MARINARA_TUNING.doomPct),
                 ) *
-                (effect.chance ?? 1) *
+                marinaraStatusLandChance(target, effect, all) *
                 0.8
               : Math.max(eff(target, "strength"), eff(target, "magic")) *
                 1.5 *
                 (effect.duration ?? 1) *
-                (effect.chance ?? 1);
+                marinaraStatusLandChance(target, effect, all);
         // Holding a foe down (sleep, stun; confusion about half the time) is worth the blows it loses
         // (Alyssa 2026-11-03: control removes a foe's whole turn).
         const held = effect.status === "sleep" || effect.status === "stun" ? 1 : effect.status === "confuse" ? 0.5 : 0;
         if (held) {
           const lost = (u: MarinaraFighter) =>
-            threatOf(u, Math.min(effect.duration ?? 1, Math.max(1, lasts(u)))) * held * (effect.chance ?? 1);
+            threatOf(u, Math.min(effect.duration ?? 1, Math.max(1, lasts(u)))) *
+            held *
+            marinaraStatusLandChance(u, effect, all);
           if (effect.target === "all-enemies")
             add(option, [fresh[0]!], { prevented: fresh.reduce((sum, u) => sum + lost(u), 0) });
           else for (const target of fresh) add(option, [target], { targetId: target.id, prevented: lost(target) });
@@ -550,7 +586,7 @@ export function marinaraAiCandidates(
           for (const target of fresh) {
             // Damage over time is damage, only slower; holding a foe down is setup.
             const dot = effect.status === "poison" || effect.status === "wither" || effect.status === "doom";
-            const value = worth(target) / Math.max(1, target.maxHp);
+            const value = worth(target) / foeMeanHp;
             add(
               option,
               [target],
@@ -564,16 +600,24 @@ export function marinaraAiCandidates(
         // Worth what the foes' hardest blow would do to them over what it does to the Guard: little
         // when the friend is as hard to hurt as the Guard, a lot for a soft one (playtest 2026-11-01:
         // Guards covered every turn and never struck).
-        const incoming = (unit: MarinaraFighter) =>
-          Math.max(0, ...foes.map((foe) => hit(foe, unit, marinaraBasicAttack(foe))));
-        const own = incoming(actor);
+        // The blows likely to land on the friend before the Guard's next turn: each foe that can get at it
+        // picks it about one time in as many friends as it could pick (all of them when the friend draws
+        // the foes), less what they would do to the Guard instead (Sonnet panel r4: Cover on a friend
+        // nobody was hitting; tanks spent 60%+ of their turns guarding).
+        const saved = (target: MarinaraFighter) =>
+          foes.reduce((sum, foe) => {
+            if (foe.dummy || (options.reaches && !options.reaches(foe.id, target.id))) return sum;
+            const share = target.provoking > 0 ? 1 : 1 / Math.max(1, friends.length);
+            const basic = marinaraBasicAttack(foe);
+            return sum + Math.max(0, hit(foe, target, basic) - hit(foe, actor, basic)) * share;
+          }, 0);
         for (const target of pool) {
           if (target.id === actor.id || friends.some((f) => f.covering === target.id)) continue;
-          const saved = Math.max(0, incoming(target) - own);
-          if (saved <= 0) continue;
+          const kept = saved(target);
+          if (kept <= 0) continue;
           const danger = 1 - target.hp / target.maxHp;
           add(option, [target], {
-            support: (saved * (1 + danger)) / friendHp,
+            support: (kept * (1 + danger)) / friendHp,
             protection: 0.2 + danger * 0.4,
           });
         }
@@ -584,13 +628,19 @@ export function marinaraAiCandidates(
           // Draw Fire: onto the sturdiest ally standing who isn't drawing them already.
           if (!threatened || friends.length < 2 || friends.some((f) => f.provoking > 0)) break;
           for (const target of pool) {
-            // Never onto a friend already low (Alyssa 2026-11-03).
+            // Never onto a friend already low (Alyssa 2026-11-03), nor onto a healer, whose turns keep the
+            // others up (Sonnet panel r4: Draw Fire on the healer).
             if (target.id === actor.id || target.hp <= 0 || target.hp < target.maxHp * 0.5) continue;
-            const sturdy =
-              (target.hp / target.maxHp) *
-              ((eff(target, "defense") + eff(target, "resistance")) /
-                Math.max(1, eff(actor, "defense") + eff(actor, "resistance")));
-            add(option, [target], { targetId: target.id, protection: 0.2 + Math.min(0.6, sturdy * 0.3), risk: 0.1 });
+            if (marinaraUsable(target, all).some((o) => o.effect.kind === "heal" || o.effect.kind === "revive"))
+              continue;
+            const kept = drawnOff(target, effect.duration ?? 1);
+            if (kept <= 0) continue;
+            add(option, [target], {
+              targetId: target.id,
+              support: kept / friendHp,
+              protection: 0.2,
+              risk: 0.1,
+            });
           }
           break;
         }
@@ -598,7 +648,16 @@ export function marinaraAiCandidates(
         // On a board a foe that can't get at the provoker ignores it (tactical defeats 2026-11-02: a Guard
         // provoked every turn while the boss tore into the back line).
         if (options.reaches && !foes.some((foe) => options.reaches!(foe.id, actor.id))) break;
-        add(option, [actor], { protection: 0.5 + (actor.hp / actor.maxHp) * 0.4, risk: 0.2 });
+        {
+          // Worth the blows it pulls off softer friends onto the user (one currency: HP kept off the side).
+          const kept = drawnOff(actor, effect.duration ?? 1);
+          if (kept <= 0) break;
+          add(option, [actor], {
+            support: kept / friendHp,
+            protection: 0.2 + (actor.hp / actor.maxHp) * 0.2,
+            risk: 0.2,
+          });
+        }
         break;
       case "taunt": {
         if (!threatened || friends.length < 2) break;
@@ -607,8 +666,20 @@ export function marinaraAiCandidates(
         const sturdy = actor.row === "front" ? 1 : 0.3;
         for (const target of pool) {
           if (target.tauntTurns > 0) continue;
-          const menace = Math.max(eff(target, "strength"), eff(target, "magic")) / Math.max(1, friendHp);
-          add(option, [target], { targetId: target.id, protection: (0.3 + menace) * sturdy, risk: 0.15 });
+          // The foe's blows on softer friends, landing on the user instead, for the turns it lasts.
+          const basic = marinaraBasicAttack(target);
+          const others = friends.filter((u) => u.id !== actor.id);
+          const off =
+            others.reduce((sum, u) => sum + Math.max(0, hit(target, u, basic) - hit(target, actor, basic)), 0) /
+            Math.max(1, friends.length);
+          const kept = off * Math.max(1, Math.min(effect.duration ?? 2, lasts(target)));
+          if (kept <= 0) continue;
+          add(option, [target], {
+            targetId: target.id,
+            support: (kept / friendHp) * sturdy,
+            protection: 0.2 * sturdy,
+            risk: 0.15,
+          });
         }
         break;
       }
@@ -660,20 +731,14 @@ export function marinaraAiCandidates(
   // A commanded or extra action has no turn to brace for: Defend only when nothing else can be done.
   if (!options.noDefend && !actor.commanded) {
     const drawn =
-      actor.provoking > 0
-        ? 1
-        : friends.some((f) => f.covering === actor.id)
-          ? 0
-          : 1 / Math.max(1, friends.length);
+      actor.provoking > 0 ? 1 : friends.some((f) => f.covering === actor.id) ? 0 : 1 / Math.max(1, friends.length);
     const hardestOnMe = (foe: MarinaraFighter) => {
       let most = 0;
       for (const { effect } of marinaraUsable(foe, all))
         if (effect.kind === "damage" && !effect.charge) most = Math.max(most, hit(foe, actor, effect));
       return most;
     };
-    const attackers = foes.filter(
-      (foe) => !foe.dummy && (!options.reaches || options.reaches(foe.id, actor.id)),
-    );
+    const attackers = foes.filter((foe) => !foe.dummy && (!options.reaches || options.reaches(foe.id, actor.id)));
     const was = actor.defending;
     const open = attackers.reduce((sum, foe) => sum + hardestOnMe(foe), 0);
     actor.defending = true;
@@ -690,8 +755,7 @@ export function marinaraAiCandidates(
     // "is the objective of fights not to win?").
     const danger = open * drawn >= actor.hp * 0.25;
     const support = (danger ? saved * MARINARA_AI_NORM.support : 0) + winded;
-    if (support > 0.005)
-      out.push({ action: { optionId: "defend", targetIds: [] }, hold: true, support });
+    if (support > 0.005) out.push({ action: { optionId: "defend", targetIds: [] }, hold: true, support });
   }
   if (!out.length) out.push({ action: { optionId: "defend", targetIds: [] }, hold: true });
   return out;
@@ -751,20 +815,30 @@ export function chooseMarinaraAction(
     maxHp: actor.maxHp,
   };
   const diff = actor.side === "enemy" ? difficulty : "normal";
+  // Nothing worth its price once weighed (Sonnet panel r4: Starfall for +0.02 at -0.14 MP, Sanctuary
+  // healing nobody, Warding Stance at a net loss, "no other choice"): letting the turn go beats spending
+  // on it. In Classic that is a Defend; on a board, a walk in.
+  const pass = (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) =>
+    !actor.commanded && ranking[0] && ranking[0].score < 0 && ranking[0].candidate.action.optionId !== "defend"
+      ? [{ candidate: { action: { optionId: "defend" as const, targetIds: [] } }, score: 0, parts: {} }, ...ranking]
+      : ranking;
   if (options.ranked) {
-    const ranking = rankCombatCandidates(unit, candidates, turn, diff);
+    const ranking = pass(rankCombatCandidates(unit, candidates, turn, diff));
     options.ranked(ranking);
     return ranking[0]!.candidate.action;
   }
   let chosen: RankedCombatCandidate<MarinaraChoice>;
   if (options.explain) {
     // The same pick `chooseRankedCombatCandidate` makes (its first), with the memory it leaves.
-    const ranking = rankCombatCandidates(unit, candidates, turn, diff);
+    const ranking = pass(rankCombatCandidates(unit, candidates, turn, diff));
     chosen = ranking[0]!;
     unit.tactics.holds = chosen.candidate.hold ? Math.min(2, (unit.tactics.holds ?? 0) + 1) : 0;
     if (chosen.candidate.targetId) unit.tactics.targetId = chosen.candidate.targetId;
     options.explain(ranking);
-  } else chosen = chooseRankedCombatCandidate(unit, candidates, turn, diff);
+  } else {
+    chosen = chooseRankedCombatCandidate(unit, candidates, turn, diff);
+    chosen = pass([chosen])[0]!;
+  }
   // The unit keeps its memory of what it picked, as `chooseCombatCandidate` leaves it.
   profile.tactics.holds = chosen.candidate.hold ? Math.min(2, (profile.tactics.holds ?? 0) + 1) : 0;
   profile.tactics.targetId = unit.tactics.targetId;
