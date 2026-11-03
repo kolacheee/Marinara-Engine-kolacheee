@@ -201,3 +201,43 @@ console.log("game-marinara-director: ok");
   } as Parameters<typeof marinaraEventText>[1]);
   assert.match(missed, /\(rolled 63, needed under 34\)/);
 }
+
+// The AI's reasons (Debug log, Alyssa's playtest rule): every pick the Engine makes for a foe is logged
+// with its score, its largest parts and the runner-up, under its own kind; explaining a pick never
+// changes it.
+{
+  const played = playOut(fight(11, 8, ["standard", "standard", "minion"]));
+  const reasons = played.log.filter((entry) => entry.kind === "marinara:reasoning");
+  assert.ok(reasons.length > 0, "foe picks say why");
+  assert.match(
+    reasons[0]!.text,
+    /^AI: .+ picks .+ \(-?\d+\.\d\d.*\)(; runner-up .+ \(-?\d+\.\d\d\)|; no other choice)\.$/,
+  );
+  const live = fight(12, 8, ["standard", "standard"]);
+  for (let step = 0; step < 40 && !live.outcome; step++) {
+    if (live.stage === "action" && live.actorId) {
+      const unit = [...live.party, ...live.enemies].find((u) => u.id === live.actorId)!;
+      const plain = marinaraAiAction(
+        structuredClone(live.marinara!),
+        structuredClone(unit),
+        live.round,
+        "normal",
+        false,
+      );
+      let told = 0;
+      const explained = marinaraAiAction(
+        structuredClone(live.marinara!),
+        structuredClone(unit),
+        live.round,
+        "normal",
+        false,
+        undefined,
+        () => told++,
+      );
+      assert.deepEqual(explained, plain, "explaining a pick doesn't change it");
+      assert.equal(told, 1);
+      commandCombatDirector(live, { type: "classic", action: plain });
+    } else if (live.window) commandCombatDirector(live, { type: "fallback" }, "fallback");
+    else commandCombatDirector(live, { type: "continue" });
+  }
+}

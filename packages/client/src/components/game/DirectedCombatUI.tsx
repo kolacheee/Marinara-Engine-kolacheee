@@ -24,6 +24,7 @@ import { TacticalCombatUI } from "./TacticalCombatUI";
 import { CombatAiControls } from "./CombatAiControls";
 import { MarinaraFightPanel } from "./MarinaraFightPanel";
 import { cn } from "../../lib/utils";
+import { useUIStore } from "../../stores/ui.store";
 import { GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
 
 type Props = ComponentProps<typeof GameCombatUI> & {
@@ -46,6 +47,8 @@ type Props = ComponentProps<typeof GameCombatUI> & {
 };
 export function DirectedCombatUI(props: Props) {
   const { t, i18n } = useTranslation();
+  // The AI's reasons for its Classic Marinara picks are shown only with Debug on.
+  const debugMode = useUIStore((state) => state.debugMode);
   const {
     session: s,
     error,
@@ -538,13 +541,16 @@ export function DirectedCombatUI(props: Props) {
               <details className="mt-2">
                 <summary className="cursor-pointer py-1">{t("game.combat.director.events")}</summary>
                 <ol className="mt-1 space-y-1 text-xs text-[var(--muted-foreground)]">
-                  {s.log.slice(-12).map((e) => (
-                    <li key={e.id}>
-                      {e.message ? t(e.message.key, { ...e.message.params, defaultValue: e.text }) : e.text}
-                      {e.message?.suffixKey && ` ${t(e.message.suffixKey)}`}
-                      {e.source === "fallback" && ` (${t("game.combat.director.fallbackUsed")})`}
-                    </li>
-                  ))}
+                  {s.log
+                    .filter((e) => debugMode || e.kind !== "marinara:reasoning")
+                    .slice(debugMode ? -24 : -12)
+                    .map((e) => (
+                      <li key={e.id}>
+                        {e.message ? t(e.message.key, { ...e.message.params, defaultValue: e.text }) : e.text}
+                        {e.message?.suffixKey && ` ${t(e.message.suffixKey)}`}
+                        {e.source === "fallback" && ` (${t("game.combat.director.fallbackUsed")})`}
+                      </li>
+                    ))}
                 </ol>
               </details>
             )}

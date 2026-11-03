@@ -632,6 +632,9 @@ export function chooseMarinaraAction(
     canStrike?: (unitId: string) => boolean;
     reaches?: (fromId: string, toId: string) => boolean;
     ranked?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void;
+    /** Told how the pick was weighed (best first; the first is the pick), without changing it: the
+     *  Debug log's reasons (Alyssa's rule: every playtest runs with the AI's reasons). */
+    explain?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void;
   } = {},
 ): MarinaraChoice {
   const candidates = marinaraAiCandidates(actor, all, { ...options, noDefend: (profile.tactics.holds ?? 0) >= 1 });
@@ -657,7 +660,15 @@ export function chooseMarinaraAction(
     options.ranked(ranking);
     return ranking[0]!.candidate.action;
   }
-  const chosen = chooseRankedCombatCandidate(unit, candidates, turn, diff);
+  let chosen: RankedCombatCandidate<MarinaraChoice>;
+  if (options.explain) {
+    // The same pick `chooseRankedCombatCandidate` makes (its first), with the memory it leaves.
+    const ranking = rankCombatCandidates(unit, candidates, turn, diff);
+    chosen = ranking[0]!;
+    unit.tactics.holds = chosen.candidate.hold ? Math.min(2, (unit.tactics.holds ?? 0) + 1) : 0;
+    if (chosen.candidate.targetId) unit.tactics.targetId = chosen.candidate.targetId;
+    options.explain(ranking);
+  } else chosen = chooseRankedCombatCandidate(unit, candidates, turn, diff);
   // The unit keeps its memory of what it picked, as `chooseCombatCandidate` leaves it.
   profile.tactics.holds = chosen.candidate.hold ? Math.min(2, (profile.tactics.holds ?? 0) + 1) : 0;
   profile.tactics.targetId = unit.tactics.targetId;

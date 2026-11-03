@@ -51,6 +51,7 @@ import {
   marinaraActionChoices,
   marinaraActionProblem,
   marinaraAiAction,
+  marinaraPickReasons,
   marinaraTacticalTurnStart,
   performMarinaraTacticalAction,
   marinaraItemPower,
@@ -210,7 +211,8 @@ function log(
   message?: DirectedCombatView["log"][number]["message"],
 ) {
   s.log.push({ id: ++s.serial, text, kind, actorId, source, message });
-  s.log = s.log.slice(-240);
+  // Room for the AI's reasons too (one line per AI pick).
+  s.log = s.log.slice(-360);
 }
 /** A Classic Marinara fight still going after this many rounds is called off. */
 const MARINARA_ROUND_LIMIT = 60;
@@ -219,7 +221,26 @@ const marinaraLog = (s: CombatDirectorState) => (text: string, kind: string, act
   log(s, text, kind, actorId, source as Source | undefined);
 /** Classic Marinara's own turn, for a unit the Engine plays: what its combat AI picks with the shared math. */
 function marinaraTurn(s: CombatDirectorState, u: Unit): CombatPlayerAction {
-  return marinaraAiAction(s.marinara!, u as Combatant, s.round, normalizeGameDifficulty(s.difficulty), !!s.tactical);
+  return marinaraAiAction(
+    s.marinara!,
+    u as Combatant,
+    s.round,
+    normalizeGameDifficulty(s.difficulty),
+    !!s.tactical,
+    undefined,
+    (ranking) => logMarinaraReasons(s, u.id, ranking),
+  );
+}
+/** The log kind of the AI's reasons for a Classic Marinara pick: shown only with Debug on. */
+export const MARINARA_REASONING_KIND = "marinara:reasoning";
+/** Why the Engine's AI picked a Classic Marinara action, on the log (Debug only in the client). */
+function logMarinaraReasons(
+  s: CombatDirectorState,
+  unitId: string,
+  ranking: Parameters<typeof marinaraPickReasons>[2],
+): void {
+  const text = marinaraPickReasons(s.marinara!, unitId, ranking);
+  if (text) log(s, text, MARINARA_REASONING_KIND, unitId, "ai");
 }
 /**
  * Classic Marinara on a board, AI turn: the board AI picks where to stand, the Marinara AI what to
@@ -251,8 +272,11 @@ export function marinaraBoardTurn(
     const one = t.units.find((u) => u.id === id);
     return !!one && t.units.some((foe) => foe.side !== one.side && foe.hp > 0 && reaches(id, foe.id));
   };
-  const choose = (at: TacticalCoord) =>
-    marinaraBoardAiAction(
+  // The reasons of the pick that stands (a second look from a closer tile replaces the first).
+  let reasons: { at: TacticalCoord; ranking: Parameters<typeof marinaraPickReasons>[2] } | undefined;
+  const choose = (at: TacticalCoord) => {
+    let ranked: Parameters<typeof marinaraPickReasons>[2] | undefined;
+    const picked = marinaraBoardAiAction(
       s.marinara!,
       tu as unknown as Combatant,
       s.round,
@@ -261,9 +285,18 @@ export function marinaraBoardTurn(
       tu.attackRange.max,
       canStrike,
       reaches,
+      (ranking) => (ranked = ranking),
     );
+    return { picked, ranked };
+  };
+  const decide = (at: TacticalCoord) => {
+    const { picked, ranked } = choose(at);
+    if (ranked) reasons = { at, ranking: ranked };
+    return picked;
+  };
   let to = boardTo;
-  let picked = choose(to ?? { x: tu.x, y: tu.y });
+  let picked = decide(to ?? { x: tu.x, y: tu.y });
+  const firstReasons = reasons;
   if (picked?.type === "defend" && !tu.hasMoved && foes.length) {
     // Closest approach: a tile with a foe in reach (the farthest such tile for a ranged unit), else
     // the tile nearest any foe.
@@ -275,13 +308,16 @@ export function marinaraBoardTurn(
       return d <= range ? 1000 + d : -d;
     };
     const step = tiles.reduce((best, at) => (score(at) > score(best) ? at : best));
-    const again = choose(step);
+    const again = decide(step);
     if (again && again.type !== "defend") {
       picked = again;
       to = step.x === tu.x && step.y === tu.y ? undefined : step;
       // Nothing in reach from anywhere it can stand: the board's own walk, which paths round walls
       // (a straight-line step stopped both sides at a wall for 60 rounds, playtest 2026-11-01).
-    } else if (!boardTo) to = step.x === tu.x && step.y === tu.y ? undefined : step;
+    } else {
+      reasons = firstReasons;
+      if (!boardTo) to = step.x === tu.x && step.y === tu.y ? undefined : step;
+    }
   }
   if (!picked) return board;
   const where = to ? { to } : {};
@@ -302,7 +338,17 @@ export function marinaraBoardTurn(
       };
   }
   const problem = action ? validateTacticalUnitAction(t, tu, action) : { error: "unknown skill" };
-  if (!action || problem) return board;
+  if (!action || problem) {
+    log(
+      s,
+      `AI: ${tu.name} takes the board AI's own move (its Marinara pick didn't fit the board).`,
+      MARINARA_REASONING_KIND,
+      tu.id,
+      "ai",
+    );
+    return board;
+  }
+  if (reasons) logMarinaraReasons(s, tu.id, reasons.ranking);
   return keepingDistance(s, tu, action) ?? action;
 }
 
@@ -370,7 +416,13 @@ function sync(s: CombatDirectorState) {
     const convert = (u: TacticalUnit): Combatant => ({ ...u, side: side(u) === "party" ? "player" : "enemy" });
     s.party = s.tactical.units.filter((u) => u.side === "party").map(convert);
     s.enemies = s.tactical.units.filter((u) => u.side === "enemy").map(convert);
-    s.tactical.log = s.log.map((e) => ({ kind: "status", text: e.text, actorId: e.actorId, message: e.message }));
+    s.tactical.log = s.log.map((e) => ({
+      // The AI's reasons keep their kind, so the board shows them only with Debug on.
+      kind: e.kind === MARINARA_REASONING_KIND ? ("reasoning" as const) : ("status" as const),
+      text: e.text,
+      actorId: e.actorId,
+      message: e.message,
+    }));
   }
   // A ruleset fight's outcome is the ruleset's own (syncRulesetCombatants): a hero at 0 who is still
   // rolling to live keeps it going, though no unit has hit points left (cloud re-test 2026-10-26).
