@@ -58,6 +58,12 @@ import {
   type MarinaraProgression,
 } from "./marinara-classes.js";
 
+/**
+ * The most a foe's regeneration heals in one turn (playtest r45: bosses knitting 50-60 HP a turn
+ * dragged fights to 19 rounds in Classic and 29 in Tactical). The party's regeneration is not capped.
+ */
+export const MARINARA_FOE_REGEN_CAP = 35;
+
 export const MARINARA_TUNING = {
   hitBase: 80,
   critMultiplier: 2,
@@ -2730,7 +2736,10 @@ export function beginMarinaraTurn(
       }
     }
     if (status.status === "regen") {
-      const amount = Math.round(actor.maxHp * (status.power ?? 0.1) * healFactor(actor));
+      const share = actor.maxHp * (status.power ?? 0.1);
+      const amount = Math.round(
+        (actor.side === "enemy" ? Math.min(share, MARINARA_FOE_REGEN_CAP) : share) * healFactor(actor),
+      );
       const before = actor.hp;
       actor.hp = Math.min(actor.maxHp, actor.hp + amount);
       if (actor.hp > before)
