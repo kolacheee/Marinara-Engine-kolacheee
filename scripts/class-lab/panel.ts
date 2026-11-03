@@ -504,7 +504,7 @@ function advance(g: Game, f: Fight, autoParty = 0) {
         const unit = s.tactical.units.find((u) => u.id === s.actorId) as TacticalUnit;
         leadChannel(s, unit.id);
         leadAmmo(s, unit.id, f);
-        run(f, { type: "tactical", action: marinaraBoardTurn(s, unit) as never }, "engine");
+        run(f, { type: "tactical", action: marinaraBoardTurn(s, unit) as never }, "engine", "ai");
       } else if (s.window) run(f, { type: "fallback" }, "engine", "fallback");
       else if (s.stage === "select") {
         const next = s.tactical.units.filter((u) => u.side === "party" && u.hp > 0 && !u.hasActed);
@@ -525,7 +525,7 @@ function advance(g: Game, f: Fight, autoParty = 0) {
       if (ours && autoLeft > 0) autoLeft--;
       if (ours) leadChannel(s, unit.id);
       const action = marinaraAiAction(s.marinara!, unit, s.round, "normal", false);
-      run(f, { type: "classic", action }, ours ? "auto" : "engine");
+      run(f, { type: "classic", action }, ours ? "auto" : "engine", "ai");
     } else if (s.window) run(f, { type: "fallback" }, "engine", "fallback");
     else run(f, { type: "continue" }, "engine");
   }
