@@ -2012,6 +2012,23 @@ export const MARINARA_MAX_FOES = 6;
  *  furthest past their rating. */
 export const MARINARA_ROLE_CAP: Partial<Record<MarinaraEnemyRole, number>> = { leader: 1, healer: 1 };
 
+/** Guard-tree foes taunt: one per fight, so two can't trade Provoke and keep the party locked on a wall
+ *  every turn while the foes behind it work (taunt probe 2026-11-03: 2 shieldbearers, a shooter and a
+ *  captain won 1 of 15 at L30 Hard). */
+export const MARINARA_TAUNTER_CAP = 1;
+function capGroup(family: MarinaraEnemyFamily): { group: string; cap: number } | null {
+  const roleCap = MARINARA_ROLE_CAP[family.role];
+  if (roleCap !== undefined) return { group: family.role, cap: roleCap };
+  if (family.classLine?.[0] === "guard") return { group: "taunter", cap: MARINARA_TAUNTER_CAP };
+  return null;
+}
+function groupCount(foes: readonly MarinaraEncounterFoe[], group: string): number {
+  return foes.filter((foe) => {
+    const family = FAMILY_BY_ID.get(foe.familyId);
+    return family ? capGroup(family)?.group === group : false;
+  }).length;
+}
+
 function interpolate(levels: Record<number, number>, level: number): number | null {
   const points = Object.entries(levels)
     .map(([at, value]) => [Number(at), value] as const)
@@ -2043,6 +2060,26 @@ export const MARINARA_ESCORT_PREMIUM: Partial<Record<string, number>> = {
   "grave-duelist": 1.35,
   captain: 1.2,
 };
+
+/**
+ * Shooters behind a taunter are worth more: the taunt holds the party's single-target attacks on the
+ * wall while the shooters fire freely, and a Farshot's Return Fire answers every forced hit (taunt probe
+ * 2026-11-03: a shieldbearer, a shooter and a captain at L30 won 35% of Hard fights).
+ */
+export const MARINARA_COVER_PREMIUM = 1.4;
+
+/** What a group of foes is worth together: each foe's worth, with shooters behind a taunter at a premium. */
+export function marinaraEncounterThreat(foes: readonly MarinaraEncounterFoe[], partyLevel: number): number {
+  const covered = foes.some((foe) => {
+    const family = FAMILY_BY_ID.get(foe.familyId);
+    return family ? capGroup(family)?.group === "taunter" : false;
+  });
+  return foes.reduce((sum, foe) => {
+    const worth = marinaraFoeThreat(foe.familyId, foe.tier, foe.level, partyLevel);
+    const shooter = covered && FAMILY_BY_ID.get(foe.familyId)?.role === "shooter";
+    return sum + worth * (shooter ? MARINARA_COVER_PREMIUM : 1);
+  }, 0);
+}
 
 export function marinaraFoeThreat(
   familyId: string,
@@ -2144,14 +2181,14 @@ export function marinaraCheckEncounter(input: {
       problems.push(`${label}: more than ${gap.below} levels below the party; not worth a fight.`);
     else if (foe.tier === "boss" && foe.level < party.level - gap.bossBelow)
       problems.push(`${label}: a boss more than ${gap.bossBelow} levels below the party; make it an elite.`);
-    threat += marinaraFoeThreat(family.id, foe.tier, foe.level, party.level);
   }
+  threat = marinaraEncounterThreat(foes, party.level);
   for (const tier of MARINARA_ENEMY_TIERS_LIST)
     if ((perTier[tier] ?? 0) > MARINARA_TIER_RULES[tier].maxPerFight)
       problems.push(`${perTier[tier]} ${tier} foes; at most ${MARINARA_TIER_RULES[tier].maxPerFight}.`);
-  for (const [role, cap] of Object.entries(MARINARA_ROLE_CAP)) {
-    const count = foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)?.role === role).length;
-    if (count > cap!) problems.push(`${count} ${role} foes; at most ${cap}.`);
+  for (const [group, cap] of [...Object.entries(MARINARA_ROLE_CAP), ["taunter", MARINARA_TAUNTER_CAP] as const]) {
+    const count = groupCount(foes, group);
+    if (count > cap!) problems.push(`${count} ${group} foes; at most ${cap}.`);
   }
   if (foes.length && front === 0) problems.push("Nobody in the front row.");
   const rating = marinaraEncounterRating(threat, party);
@@ -2224,6 +2261,15 @@ export function marinaraBuildEncounter(input: {
     (family) => family !== lead && KIND_GROUPS[family.kind] === KIND_GROUPS[lead.kind] && !wanted.includes(family),
   );
   const families = [lead, ...wanted.slice(1)];
+  // A lead that comes one to a fight (a leader, a healer, a taunter) brings a family that can fill it out.
+  if (families.length === 1 && capGroup(lead)) {
+    const filler = company.filter((family) => !capGroup(family));
+    if (filler.length) {
+      const next = filler[Math.floor(random() * filler.length)]!;
+      company.splice(company.indexOf(next), 1);
+      families.push(next);
+    }
+  }
   while (families.length < 3 && company.length && random() < 0.6) {
     const next = company.splice(Math.floor(random() * company.length), 1)[0]!;
     families.push(next);
@@ -2233,8 +2279,9 @@ export function marinaraBuildEncounter(input: {
   const worth = (foe: MarinaraEncounterFoe) => marinaraFoeThreat(foe.familyId, foe.tier, foe.level, level);
   const add = (foe: MarinaraEncounterFoe) => {
     foes.push(foe);
-    threat += worth(foe);
+    threat = marinaraEncounterThreat(foes, level);
   };
+  const cost = (foe: MarinaraEncounterFoe) => marinaraEncounterThreat([...foes, foe], level) - threat;
   if (input.boss && level >= MARINARA_TIER_RULES.boss.minLevel && lead.tiers.includes("boss")) {
     // A boss asked for (playtest 2026-11-01: dropped when over budget, it came in 3 of 60 Normal fights
     // for a party of 4) comes a level or two lower when that fits, else as an elite of its family to
@@ -2264,9 +2311,10 @@ export function marinaraBuildEncounter(input: {
         (tier) => stand.tiers.includes(tier) && level >= MARINARA_TIER_RULES[tier].minLevel,
       );
       const fits = () =>
-        tiers.find((tier) => worth({ familyId: stand.id, tier, level: foeLevel(stand) }) <= budget - threat);
+        tiers.find((tier) => cost({ familyId: stand.id, tier, level: foeLevel(stand) }) <= budget - threat);
       if (!fits() && foes.length) {
-        threat -= worth(foes.pop()!);
+        foes.pop();
+        threat = marinaraEncounterThreat(foes, level);
       }
       const tier = fits();
       if (tier) add({ familyId: stand.id, tier, level: foeLevel(stand) });
@@ -2274,10 +2322,10 @@ export function marinaraBuildEncounter(input: {
   }
   // Fill: try foes from the chosen families at a tier that fits what's left, until nothing fits.
   const tierCount = (tier: MarinaraEnemyTier) => foes.filter((foe) => foe.tier === tier).length;
-  const roleFull = (family: MarinaraEnemyFamily) =>
-    MARINARA_ROLE_CAP[family.role] !== undefined &&
-    foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)!.role === family.role).length >=
-      MARINARA_ROLE_CAP[family.role]!;
+  const roleFull = (family: MarinaraEnemyFamily) => {
+    const capped = capGroup(family);
+    return !!capped && groupCount(foes, capped.group) >= capped.cap;
+  };
   for (let guard = 0; guard < 40 && foes.length < MARINARA_MAX_FOES; guard++) {
     const left = budget - threat;
     const options: MarinaraEncounterFoe[] = [];
@@ -2287,7 +2335,7 @@ export function marinaraBuildEncounter(input: {
         if (tierCount(tier) >= MARINARA_TIER_RULES[tier].maxPerFight) continue;
         if (roleFull(family)) continue;
         const foe = { familyId: family.id, tier, level: foeLevel(family) };
-        if (worth(foe) <= left) options.push(foe);
+        if (cost(foe) <= left) options.push(foe);
       }
     if (!options.length) break;
     // Prefer standard foes, an elite now and then, minions to fill the last of the budget.
@@ -2417,12 +2465,9 @@ export function marinaraFitEncounter(input: {
       continue;
     }
     if (tier !== asked.tier) changes.push(`${family.id}: ${asked.tier} → ${tier}.`);
-    const roleCap = MARINARA_ROLE_CAP[family.role];
-    if (
-      roleCap !== undefined &&
-      foes.filter((foe) => FAMILY_BY_ID.get(foe.familyId)!.role === family.role).length >= roleCap
-    ) {
-      changes.push(`Dropped ${family.id}: at most ${roleCap} ${family.role} in a fight.`);
+    const capped = capGroup(family);
+    if (capped && groupCount(foes, capped.group) >= capped.cap) {
+      changes.push(`Dropped ${family.id}: at most ${capped.cap} ${capped.group} in a fight.`);
       continue;
     }
     if (foes.length >= MARINARA_MAX_FOES) {
@@ -2433,7 +2478,7 @@ export function marinaraFitEncounter(input: {
     foes.push({ familyId: family.id, tier, level: foeLevel });
   }
   const worth = (foe: MarinaraEncounterFoe) => marinaraFoeThreat(foe.familyId, foe.tier, foe.level, level);
-  const total = () => foes.reduce((sum, foe) => sum + worth(foe), 0);
+  const total = () => marinaraEncounterThreat(foes, level);
   const order = ["trivial", "easy", "normal", "hard", "deadly", "beyond"] as const;
   const over = () => order.indexOf(marinaraEncounterRating(total(), party)) > order.indexOf(input.difficulty);
   for (let guard = 0; guard < 40 && foes.length && over(); guard++) {
