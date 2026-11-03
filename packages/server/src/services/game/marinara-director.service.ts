@@ -90,7 +90,7 @@ export interface MarinaraDirectorState {
 }
 
 /** How many AI reasons a fight keeps. */
-const MARINARA_AI_REASONS_KEPT = 600;
+export const MARINARA_AI_REASONS_KEPT = 600;
 
 /** Keeps one AI pick's reasons on the fight state. */
 export function keepMarinaraReasons(
@@ -906,7 +906,7 @@ export function marinaraBoardAiAction(
 }
 
 /** How small a part of a pick's score is too small to give as a reason. */
-const MARINARA_REASON_FLOOR = 0.05;
+const MARINARA_REASON_FLOOR = 0.005;
 
 /** A ranked choice in words: the option and who it is aimed at. */
 function marinaraChoiceLabel(state: MarinaraDirectorState, actor: MarinaraFighter, choice: MarinaraChoice): string {
@@ -936,10 +936,11 @@ export function marinaraPickReasons(
   const actor = marinaraFighter(state, actorId);
   const pick = ranking[0];
   if (!actor || !pick) return undefined;
-  const parts = (Object.entries(pick.parts) as Array<[string, number]>)
+  // Every factor of the score, the weighed parts and what temperament, orders and wavering added, so the
+  // line adds up to the score (reasons audit 2026-11-03: unnamed bonuses of up to 0.8).
+  const parts = (Object.entries({ ...pick.parts, ...pick.extras }) as Array<[string, number]>)
     .filter(([, part]) => Math.abs(part) >= MARINARA_REASON_FLOOR)
     .sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]))
-    .slice(0, 3)
     .map(([key, part]) => `${key} ${part >= 0 ? "+" : ""}${part.toFixed(2)}`);
   const runnerUp = ranking.find(
     (one) =>

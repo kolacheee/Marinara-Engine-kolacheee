@@ -431,6 +431,9 @@ export interface RankedCombatCandidate<T> {
   candidate: CombatAiCandidate<T>;
   score: number;
   parts: CombatAiScoreParts;
+  /** What the unit's nature, its orders and its wavering added beyond the weighed parts, so a reasons
+   *  log accounts for the whole score (Marinara reasons audit 2026-11-03: "a hidden bonus of about 0.8"). */
+  extras?: Partial<Record<"temperament" | "retreat" | "noise", number>>;
 }
 
 /** What each weighed part of a candidate added to its score, after the unit's weights. */
@@ -594,14 +597,23 @@ export function rankCombatCandidates<T>(
     }
     // Sticking with its target is worth as much as the turn is, and less for a weaker blow at them:
     // never two daggers at disadvantage past a Multiattack beside it (re-test 10).
+    const extras: NonNullable<RankedCombatCandidate<T>["extras"]> = {};
+    let nature = 0;
     if (adjective === "methodical" && profile.targetId !== undefined && candidate.targetId === profile.targetId)
-      score += 0.35 * stakes * (most > 0 ? Math.min(1, gains(candidate) / most) : 1);
-    if (candidate.hold && orders?.posture === "retreat") score += 0.8;
-    if (candidate.hold && (profile.holds ?? 0) < 1 && profile.mind !== "mindless") {
-      if (adjective === "patient") score += 0.65;
-      if (adjective === "cowardly" && wounded) score += 0.8;
+      nature += 0.35 * stakes * (most > 0 ? Math.min(1, gains(candidate) / most) : 1);
+    if (candidate.hold && orders?.posture === "retreat") {
+      score += 0.8;
+      extras.retreat = 0.8;
     }
-    return { candidate, score, parts };
+    if (candidate.hold && (profile.holds ?? 0) < 1 && profile.mind !== "mindless") {
+      if (adjective === "patient") nature += 0.65;
+      if (adjective === "cowardly" && wounded) nature += 0.8;
+    }
+    if (nature) {
+      score += nature;
+      extras.temperament = nature;
+    }
+    return { candidate, score, parts, extras };
   });
   const leading = Math.max(...scored.map((one) => one.score));
   return scored
@@ -610,9 +622,9 @@ export function rankCombatCandidates<T>(
       // wavers past it (re-test 13): two daggers worth 93 hundredths of a Multiattack stay behind it.
       const gained = gains(one.candidate);
       const weaker = one.score < leading && gained > 0 && gained < most * COMBAT_AI_ALIKE;
-      return weaker
-        ? one
-        : { ...one, score: one.score + stakes * combatAiScoreNoise(profile, unit.id, turn, i, difficulty) };
+      if (weaker) return one;
+      const noise = stakes * combatAiScoreNoise(profile, unit.id, turn, i, difficulty);
+      return { ...one, score: one.score + noise, extras: { ...one.extras, noise } };
     })
     .sort((a, b) => b.score - a.score);
 }

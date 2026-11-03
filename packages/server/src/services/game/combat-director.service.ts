@@ -53,6 +53,7 @@ import {
   marinaraAiAction,
   marinaraPickReasons,
   keepMarinaraReasons,
+  MARINARA_AI_REASONS_KEPT,
   marinaraTacticalTurnStart,
   performMarinaraTacticalAction,
   marinaraItemPower,
@@ -343,6 +344,19 @@ export function marinaraBoardTurn(
   }
   const where = to ? { to } : {};
   let action: Extract<TacticalAction, { unitId: string }> | undefined;
+  // Defend only to brace against real blows (Alyssa 2026-11-03); a Defend the AI fell back on with
+  // nothing to strike and nothing to brace against is a walk: the unit moves in and waits.
+  const braces = (reasons?.ranking[0]?.candidate.support ?? 0) > 0;
+  if (picked.type === "defend" && !braces && foes.length) {
+    const wait = { type: "wait" as const, unitId: tu.id, ...where };
+    if (!validateTacticalUnitAction(t, tu, wait)) {
+      const text = `AI: ${tu.name} ${to ? "advances" : "holds"}: nothing to strike or brace against from here.`;
+      const m = s.marinara!;
+      m.aiReasons = [...(m.aiReasons ?? []), { unitId: tu.id, round: s.round, text }].slice(-MARINARA_AI_REASONS_KEPT);
+      log(s, text, MARINARA_REASONING_KIND, tu.id, "ai");
+      return wait;
+    }
+  }
   if (picked.type === "defend") action = { type: "defend", unitId: tu.id, ...where };
   else if (picked.type === "attack") action = { type: "attack", unitId: tu.id, targetId: picked.targetId, ...where };
   else if (picked.type === "skill") {
