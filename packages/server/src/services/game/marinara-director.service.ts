@@ -28,6 +28,7 @@ import {
   marinaraSkillEstimate,
   marinaraStruck,
   marinaraTargetsFor,
+  marinaraStatusImmune,
   marinaraUsable,
   marinaraStandsFront,
   nextMarinaraActor,
@@ -894,7 +895,8 @@ export function marinaraBoardAiAction(
       option.effect.target !== "ally" &&
       option.effect.target !== "downed-ally",
   );
-  const strikes = (foe: MarinaraFighter) => options.some((option) => reach(option, foe));
+  const strikes = (foe: MarinaraFighter) =>
+    options.some((option) => reach(option, foe) && !marinaraStatusImmune(foe, option.effect));
   const unforced: Array<() => void> = [];
   for (const foe of state.fighters)
     if (foe.side !== actor.side && foe.provoking > 0 && !strikes(foe)) {
@@ -908,14 +910,40 @@ export function marinaraBoardAiAction(
     actor.tauntTurns = 0;
     unforced.push(() => (actor.tauntTurns = turns));
   }
-  try {
-    const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics: unit.tactics }, round, difficulty, {
+  const tactics = unit.tactics;
+  const pick = () => {
+    let ranked: Array<RankedCombatCandidate<MarinaraChoice>> = [];
+    const choice = chooseMarinaraAction(actor, state.fighters, { ...unit, tactics }, round, difficulty, {
       tactical: true,
       canStrike,
       reaches,
-      ...(explain ? { explain } : {}),
+      explain: (ranking) => (ranked = ranking),
       reach,
     });
+    return { choice, ranked };
+  };
+  try {
+    let { choice, ranked } = pick();
+    // A lock that still leaves nothing but Defend (a provoker the board accepts but the AI can't take
+    // as a target, playtest r39: Pell beside Kingpin while a Vanished Ghost Fixer drew fire): the
+    // lock doesn't hold, as above.
+    const locked = state.fighters.some((foe) => foe.side !== actor.side && foe.provoking > 0) || actor.tauntTurns > 0;
+    if (locked && ranked.every((one) => one.candidate.action.optionId === "defend")) {
+      for (const foe of state.fighters)
+        if (foe.side !== actor.side && foe.provoking > 0) {
+          const turns = foe.provoking;
+          foe.provoking = 0;
+          unforced.push(() => (foe.provoking = turns));
+        }
+      if (actor.tauntTurns > 0) {
+        const turns = actor.tauntTurns;
+        actor.tauntTurns = 0;
+        unforced.push(() => (actor.tauntTurns = turns));
+      }
+      const again = pick();
+      if (again.ranked.some((one) => one.candidate.action.optionId !== "defend")) ({ choice, ranked } = again);
+    }
+    explain?.(ranked);
     return marinaraChoiceAction(actor, choice);
   } catch {
     return null;
