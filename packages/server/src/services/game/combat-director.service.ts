@@ -1275,6 +1275,7 @@ function combatSuggestionReason(parts: CombatAiScoreParts, target?: string, skil
     protection: "stands up for a friend under attack",
     coordination: `joins its side's attack${target ? ` on ${target}` : ""}`,
     focus: `${target ?? "its target"} is the one it most wants down`,
+    prevented: `keeps ${target ?? "a foe"} from striking its side`,
   };
   const reasons = (Object.entries(parts) as Array<[keyof CombatAiScoreParts, number]>)
     .filter(([, part]) => Math.abs(part) >= 0.05)

@@ -163,6 +163,23 @@ export function marinaraAiCandidates(
           (!!foe.classId && marinaraClass(foe.classId)?.archetype === "channeler"),
       )
       .reduce((sum, foe) => sum + incomingFrom(foe), 0);
+  // About how many rounds the fight has left: the foes' HP over what the party deals a round. A buff
+  // longer than that is partly wasted (Alyssa 2026-11-03: no buffs as the fight ends).
+  const roundsLeft = Math.max(1, foes.reduce((sum, foe) => sum + foe.hp, 0) / partyDamage);
+  // The damage a foe would deal the party over the next `turns` of its turns, as a share of a friend's
+  // HP: what killing it now, or holding it down, keeps off (Alyssa 2026-11-03: a dead foe deals none).
+  const threatOf = (foe: MarinaraFighter, turns: number) =>
+    (hardestFrom(foe).damage * Math.max(0, turns)) / friendHp;
+  // What could land on a friend before its next turn: each foe's hardest blow, shared among the
+  // friends it might pick (all of it when the friend draws the foes).
+  const incomingOn = (u: MarinaraFighter) =>
+    foes.reduce((sum, foe) => {
+      if (foe.dummy) return sum;
+      let most = 0;
+      for (const { effect } of marinaraUsable(foe, all))
+        if (effect.kind === "damage" && !effect.charge) most = Math.max(most, hit(foe, u, effect));
+      return sum + most * (u.provoking > 0 ? 1 : 1 / Math.max(1, friends.length));
+    }, 0);
   const out: CombatAiCandidate<MarinaraChoice>[] = [];
   // A bonus action leaves the turn's action still to take (review 2026-11-02: songs, Mark Prey and
   // Double Time were weighed against a whole attack, as if they cost the turn, and lost to it).
@@ -226,10 +243,15 @@ export function marinaraAiCandidates(
             struck.length > 1 ? { ...effect, spread: effect.areaPct ?? MARINARA_TUNING.areaSpreadPct } : effect;
           let damage = 0;
           let finish = 0;
+          let prevented = 0;
           for (const target of struck) {
             const expected = Math.min(target.hp, hit(actor, target, spread));
             damage += expected / Math.max(1, target.maxHp);
-            if (expected >= target.hp * 0.95) finish += 0.7;
+            if (expected >= target.hp * 0.95) {
+              finish += 0.7;
+              // A kill shot: the blows it would have dealt before the party brought it down anyway.
+              if (target.side !== actor.side) prevented += threatOf(target, Math.min(2, Math.max(1, target.hp / partyDamage)));
+            }
           }
           // A charged skill lands a turn later.
           const later = effect.charge ? 0.5 : 1;
@@ -242,6 +264,7 @@ export function marinaraAiCandidates(
             targetId: area ? undefined : aim.id,
             damage: damage * later,
             finish: finish * later,
+            ...(prevented > 0 ? { prevented: prevented * later } : {}),
             ...(drained > 0 && missing > 0
               ? { healing: (Math.min(missing, drained) / actor.maxHp) * (actor.hp / actor.maxHp < 0.5 ? 2 : 1) * later }
               : {}),
@@ -262,7 +285,13 @@ export function marinaraAiCandidates(
             : effect.cleanse === "one"
               ? marinaraDebuffBurden(u, all) * 0.6
               : 0;
-        const urgency = (u: MarinaraFighter) => (u.hp / u.maxHp < 0.4 ? 2 : u.hp / u.maxHp < 0.7 ? 1 : 0.15);
+        // By threat, not by HP alone (Alyssa 2026-11-03): most for a friend who would go down before its
+        // next turn, less for one low but out of harm's way.
+        const urgency = (u: MarinaraFighter) => {
+          if (threatened && incomingOn(u) >= u.hp) return 3;
+          const share = u.hp / u.maxHp;
+          return share < 0.4 ? 1.5 : share < 0.7 ? 0.8 : 0.15;
+        };
         // Nobody hurt and nothing to clean: no heal (Alyssa 2026-11-02).
         const hurt = (u: MarinaraFighter) => u.hp < u.maxHp || cleaned(u) > 0;
         if (effect.target === "self" || effect.target === "party") {
@@ -362,7 +391,7 @@ export function marinaraAiCandidates(
             u.mods.push({ stat: "imbue", pct: 1, turns: 1, source: "probe", element: runeElement });
             const imbued = bestDamage(u, all, tactical);
             u.mods = u.mods.filter((m) => m.source !== "probe");
-            extra += Math.max(0, imbued - plain) * (effect.duration ?? 3) * 0.8;
+            extra += Math.max(0, imbued - plain) * Math.min(effect.duration ?? 3, roundsLeft) * 0.8;
           }
           // Grand Inscription's riders: more damage, and less from the elements while threatened.
           for (const also of effect.alsoMods ?? []) {
@@ -413,7 +442,8 @@ export function marinaraAiCandidates(
         } else {
           const dealt = who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
           // Rally, War Cry, songs, Strength or Speed up: the party's own blows, bigger for its turns.
-          if (OFFENSIVE_STATS.has(effect.stat ?? "")) extra = dealt * gain * (effect.duration ?? 1) * 0.8;
+          if (OFFENSIVE_STATS.has(effect.stat ?? ""))
+            extra = dealt * gain * Math.min(effect.duration ?? 1, roundsLeft) * 0.8;
           else value = dealt * gain * (effect.duration ?? 1) * 0.7;
         }
         if (value <= 0 && extra <= 0) break;
@@ -503,6 +533,17 @@ export function marinaraAiCandidates(
                 1.5 *
                 (effect.duration ?? 1) *
                 (effect.chance ?? 1);
+        // Holding a foe down (sleep, stun; confusion about half the time) is worth the blows it loses
+        // (Alyssa 2026-11-03: control removes a foe's whole turn).
+        const held = effect.status === "sleep" || effect.status === "stun" ? 1 : effect.status === "confuse" ? 0.5 : 0;
+        if (held) {
+          const lost = (u: MarinaraFighter) =>
+            threatOf(u, Math.min(effect.duration ?? 1, Math.max(1, lasts(u)))) * held * (effect.chance ?? 1);
+          if (effect.target === "all-enemies")
+            add(option, [fresh[0]!], { prevented: fresh.reduce((sum, u) => sum + lost(u), 0) });
+          else for (const target of fresh) add(option, [target], { targetId: target.id, prevented: lost(target) });
+          break;
+        }
         if (effect.target === "all-enemies")
           add(option, [fresh[0]!], { setup: fresh.reduce((sum, u) => sum + worth(u), 0) / foeHp });
         else
