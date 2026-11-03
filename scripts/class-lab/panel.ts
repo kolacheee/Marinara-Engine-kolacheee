@@ -732,7 +732,9 @@ function tact(g: Game, f: Fight, ref: string, rest: string[]) {
       const k = pick?.tk;
       if (!pick) throw new Error("No such skill; see `tunit`.");
       if (!k) throw new Error(`${pick.fs.label} has no board action (passive or reaction).`);
-      const hasTarget = a[1] !== undefined && !/^\d+$/.test(a[1]);
+      // skill <n> [target] [x y]: two trailing numbers are a tile, one or three args start with a target
+      // (party digits are targets too: round 5 panel walked a unit when "3" meant ally 3).
+      const hasTarget = a.length === 2 || a.length >= 4 || (a[1] !== undefined && !/^\d+$/.test(a[1]));
       const target = hasTarget ? findUnit(s, a[1]!).id : k.aims === "self" ? u.id : undefined;
       const [xs, ys] = hasTarget ? [a[2], a[3]] : [a[1], a[2]];
       action = { type: "skill", unitId: u.id, skillName: k.name, ...(target ? { targetId: target } : {}), ...coord(xs, ys) };
