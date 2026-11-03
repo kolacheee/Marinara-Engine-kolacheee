@@ -319,10 +319,31 @@ export function marinaraBoardTurn(
       return d <= range ? 1000 + d : -d;
     };
     const step = tiles.reduce((best, at) => (score(at) > score(best) ? at : best));
-    const again = decide(step);
-    if (again && again.type !== "defend") {
+    // Where it stands, then the tiles nearest a foe in reach (the farthest first for a ranged unit), until
+    // one has something to do: one look from the farthest tile alone missed a foe right beside it behind
+    // a wall or out of sight, and the board's walk led away (reasons audit r37: 6.5% of party turns after
+    // contact were "advances" with a foe next to the unit).
+    const key = (at: TacticalCoord) => `${at.x},${at.y}`;
+    const looked = new Set([key(to ?? { x: tu.x, y: tu.y })]);
+    const order = [{ x: tu.x, y: tu.y }, ...[...tiles].sort((a, b) => score(b) - score(a))].filter((at) => {
+      if (looked.has(key(at))) return false;
+      looked.add(key(at));
+      return true;
+    });
+    let again: ReturnType<typeof decide> = null;
+    let at = step;
+    for (const tile of order.slice(0, 8)) {
+      if (score(tile) < 1000 && tile !== order[0]) break;
+      const tried = decide(tile);
+      if (tried && tried.type !== "defend") {
+        again = tried;
+        at = tile;
+        break;
+      }
+    }
+    if (again) {
       picked = again;
-      to = step.x === tu.x && step.y === tu.y ? undefined : step;
+      to = at.x === tu.x && at.y === tu.y ? undefined : at;
       // Nothing in reach from anywhere it can stand: the board's own walk, which paths round walls
       // (a straight-line step stopped both sides at a wall for 60 rounds, playtest 2026-11-01) - unless
       // that walk doesn't close in and the straight step does: the board's walk for a self buff or a
