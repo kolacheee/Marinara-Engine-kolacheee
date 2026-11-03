@@ -88,6 +88,9 @@ export interface MarinaraDirectorState {
    * harness can't forget it). The director also writes them to its log as "marinara:reasoning".
    */
   aiReasons?: Array<{ unitId: string; round: number; text: string }>;
+  /** Lab and panel harnesses only: when set, every recorded event is copied here (who did what, with
+   *  which skill, for how much) so a harness can measure skills without parsing log text. */
+  eventTap?: MarinaraEvent[];
 }
 
 /** How many AI reasons a fight keeps. */
@@ -513,6 +516,7 @@ function record(state: MarinaraDirectorState, ctx: MarinaraFightContext, log: Ma
         log(boonGroupText(state, group), `marinara:${event.kind}`, event.actorId, source);
       } else log(marinaraEventText(state, event), `marinara:${event.kind}`, event.actorId, source);
     } else log(marinaraEventText(state, event), `marinara:${event.kind}`, event.actorId, source);
+    if (state.eventTap) state.eventTap.push({ ...event });
     const credit = (state.credit[event.actorId] ??= { damage: 0, support: 0, foes: [] });
     const target = event.targetId ? marinaraFighter(state, event.targetId) : undefined;
     const actor = marinaraFighter(state, event.actorId);
