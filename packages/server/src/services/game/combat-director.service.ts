@@ -453,6 +453,17 @@ export function marinaraBoardTurn(
     const m = s.marinara!;
     m.aiReasons = [...(m.aiReasons ?? []), { unitId: tu.id, round: s.round, text }].slice(-MARINARA_AI_REASONS_KEPT);
     log(s, text, MARINARA_REASONING_KIND, tu.id, "ai");
+    // Closer by path if it can still step (r50: a fast foe's second action came here without the walk-in
+    // and defended where it stood).
+    const here = { x: tu.x, y: tu.y };
+    const step = to
+      ? undefined
+      : getMovementRange(t, tu.id).reduce<TacticalCoord | undefined>(
+          (best, at) => (walk(at) < walk(best ?? here) ? at : best),
+          undefined,
+        );
+    const closer = step ? { type: "defend" as const, unitId: tu.id, to: step } : undefined;
+    if (closer && !validateTacticalUnitAction(t, tu, closer)) return closer;
     const guard = { type: "defend" as const, unitId: tu.id, ...where };
     if (!validateTacticalUnitAction(t, tu, guard)) return guard;
   }
