@@ -340,7 +340,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   "oath-of-iron": { kind: "buff", target: "party", stat: "deathless", pct: 1, duration: 1, oncePerFight: true },
   // Scout
   steal: { kind: "steal", target: "enemy" },
-  backstab: dmg("strength", 10, { critBonus: 15, flankPct: 0.5 }),
+  // Opens a Wound (Alyssa 2026-11-03: the Rogue tree's anti-heal, for regenerating walls).
+  backstab: dmg("strength", 10, { critBonus: 15, flankPct: 0.5, applies: { status: "wound", duration: 3 } }),
   vanish: {
     kind: "buff",
     target: "self",
@@ -416,7 +417,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Balance pass (2026-11-01): ignores half of Resistance (was all of it) and every elemental resistance.
   starfall: dmg("magic", 8, { ranged: true, pierce: 0.5 }),
   // A sure hit on its charged turn (playtest 2026-11-02), paid for with a very high MP cost.
-  convergence: dmg("magic", 24, { ranged: true, charge: true, sureHit: true }),
+  // Power 24 to 60 (Alyssa 2026-11-03): at 24 it lagged Starfall on damage per MP.
+  convergence: dmg("magic", 60, { ranged: true, charge: true, sureHit: true }),
   // Hexer
   // Weaken: the foe's Strength or Magic, whichever it hits with.
   weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.25, duration: 3, sapsToUser: true },
@@ -812,6 +814,8 @@ export interface MarinaraFighter {
   ammoOwned?: MarinaraDamageType[];
   /** The ammunition loaded by hand; absent, the weapon's own. */
   ammoLoaded?: MarinaraDamageType;
+  /** The party owns wounding ammunition (Serrated): this Marksman's pierce shots open a Wound. */
+  ammoWounds?: boolean;
   /** Run by the AI: loads whichever owned ammunition hurts the target most, shot by shot. */
   ammoAuto?: boolean;
   /** Channel Element (Alyssa 2026-11-02): the element a Channeler-tree caster has channeled; their
@@ -1538,9 +1542,18 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
     return !actor.channelManual && !actor.channeledThisTurn
       ? marinaraChannelChoices(actor)
       : [marinaraChanneled(actor)];
-  // The weapon in hand decides a weapon hit's type; without gear, the best the class can wield.
-  const options =
-    type === "weapon" && actor.gear?.weaponType ? [actor.gear.weaponType] : marinaraDamageOptions(type, actor.classId);
+  // Channel Element carried by a non-caster (Alyssa 2026-11-03): their weapon hits, basic attacks and
+  // skills alike, strike in the channeled element; unchanneled, the weapon's own type. One the AI runs
+  // that hasn't channeled yet this turn weighs every element too.
+  if (marinaraChannelsWeapon(actor) && isWeaponHit(type)) {
+    const element = marinaraChanneled(actor);
+    if (!actor.channelManual && !actor.channeledThisTurn)
+      return [
+        ...new Set([...weaponOptions(actor, type), ...marinaraChannelChoices(actor).filter((one) => one !== "arcane")]),
+      ];
+    if (element !== "arcane") return [element];
+  }
+  const options = weaponOptions(actor, type);
   // Edge Runes / Grand Inscription: weapon attacks and skills also strike in the caster's channeled element.
   const runes = imbueElements(actor, type);
   // Ammunition: a Marksman's shot is the loaded type, or under the AI the best type owned.
@@ -1554,6 +1567,27 @@ function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly
     return runes.length ? [...new Set([...shots, ...runes])] : shots;
   }
   return runes.length ? [...new Set([...options, ...runes])] : options;
+}
+
+/** The weapon in hand decides a weapon hit's type; without gear, the best the class can wield. */
+function weaponOptions(actor: MarinaraFighter, type: MarinaraSkillDamage): readonly MarinaraDamageType[] {
+  return type === "weapon" && actor.gear?.weaponType
+    ? [actor.gear.weaponType]
+    : marinaraDamageOptions(type, actor.classId!);
+}
+
+/** A hit with a weapon: a basic attack or a weapon skill (any physical type). */
+function isWeaponHit(type: MarinaraSkillDamage): boolean {
+  return type === "weapon" || type === "any-physical" || (MARINARA_PHYSICAL_TYPES as readonly string[]).includes(type);
+}
+
+/** A fighter outside the Channeler tree who carries Channel Element: it channels into their weapon. */
+export function marinaraChannelsWeapon(actor: MarinaraFighter): boolean {
+  return (
+    !!actor.classId &&
+    actor.archetype !== "channeler" &&
+    actor.skills.some((skill) => skill.id === "channel-element" || skill.id.startsWith("greater-channel-element"))
+  );
 }
 
 /**
@@ -1954,6 +1988,13 @@ export const MARINARA_ELEMENT_AILMENTS: Record<
 export const MARINARA_VANISH_EVADE = 40;
 /** Added to a Channeler-tree class's basic attack power (playtest 2026-11-02). */
 export const MARINARA_CHANNELER_BASIC_BONUS = 2;
+/** The most a hit on a weakness is multiplied by, every weakness bonus included (Alyssa 2026-11-03). */
+export const MARINARA_WEAKNESS_CAP = 2;
+
+/** Retaliate's Defense/Resistance share adds at most this much to a counter, over a basic attack's
+ *  power (Alyssa 2026-11-03, Sonnet panel r3: counters of 72-119). */
+export const MARINARA_COUNTER_BONUS_CAP = 0.25;
+
 /** Perfect Evasion's most (playtest 2026-11-02: 30 to 40). */
 export const MARINARA_PERFECT_EVASION_CAP = 40;
 
@@ -2164,6 +2205,12 @@ export function marinaraHitNumbers(
     multiplier *= 1 + MARINARA_WUXING_FEED_PCT;
   // Attunement: hits in the user's own channeled element.
   if (hooks.channeledDamagePct && channeledHit) multiplier *= 1 + hooks.channeledDamagePct;
+  // Weakness stacking is capped (Alyssa 2026-11-03, Sonnet panel r3: channel, Resonance, Exploit
+  // Weakness and Dead Eye together gave basic attacks of 72-126): a weakness hit at most doubles.
+  if (best.multiplier > 1 && multiplier > MARINARA_WEAKNESS_CAP) {
+    multiplier = MARINARA_WEAKNESS_CAP;
+    notes.add("weakness cap");
+  }
   // Warding Runes and Living Runes (and any "element-taken" mod): the elements bite the warded party less.
   if (multiplier > 0 && (MARINARA_ELEMENTS as readonly string[]).includes(best.type)) {
     let cut = modTotal(target, "element-taken");
@@ -2699,15 +2746,25 @@ function performMarinaraOptionNow(
     actor.next += turnLength(actor, all, option.effect.speedUntilNext) - turnLength(actor, all);
   // An AI-run caster channels, as its bonus action, the element its target is weakest to, then strikes.
   const first = targets[0];
+  const weaponChannel =
+    marinaraChannelsWeapon(actor) && option.effect.kind === "damage" && isWeaponHit(option.effect.type ?? "weapon");
   if (
-    option.effect.type === "element" &&
+    (option.effect.type === "element" || weaponChannel) &&
     first &&
     marinaraCanChannel(actor) &&
     !actor.channelManual &&
     !actor.channeledThisTurn
   ) {
-    // Raw magic (unchanneled) only when every element does worse: ties go to an element.
-    const element = marinaraBestDamageType(marinaraChannelChoices(actor), first.affinities).type;
+    // Raw magic (unchanneled) only when every element does worse: ties go to an element. A weapon
+    // user unchannels when its weapon's own type hits harder.
+    const choices = weaponChannel
+      ? [
+          ...marinaraChannelChoices(actor).filter((one) => one !== "arcane"),
+          ...weaponOptions(actor, option.effect.type ?? "weapon"),
+        ]
+      : marinaraChannelChoices(actor);
+    const best = marinaraBestDamageType(choices, first.affinities).type;
+    const element = (MARINARA_PHYSICAL_TYPES as readonly string[]).includes(best) ? "arcane" : best;
     if (element !== marinaraChanneled(actor) && marinaraChannelElement(actor, element))
       ctx.events.push({ kind: "channel", actorId: actor.id, type: element });
     else actor.channeledThisTurn = true;
@@ -3356,6 +3413,23 @@ function strikeOnce(
     addStatus(target, effect.applies, 0, undefined, all, random)
   )
     ctx.events.push({ kind: "status", actorId: actor.id, targetId: target.id, skillId, status: effect.applies.status });
+  // Serrated ammunition (Alyssa 2026-11-03): a Marksman's pierce shot opens a Wound.
+  if (
+    actor.ammoWounds &&
+    type === "pierce" &&
+    amount > 0 &&
+    target.hp > 0 &&
+    marinaraAmmoChoices(actor).length > 0 &&
+    isWeaponHit(effect.type ?? "weapon") &&
+    addStatus(target, { status: "wound", duration: 3 }, 0, actor.id, all, random)
+  )
+    ctx.events.push({
+      kind: "status",
+      actorId: actor.id,
+      targetId: target.id,
+      skillId: "ammo-serrated",
+      status: "wound",
+    });
   if (hooks.hitsLowerDefense) addMod(target, "defense", -hooks.hitsLowerDefense, 2, `sunder:${actor.id}`);
   if (target.statuses.some((s) => s.status === "sleep"))
     target.statuses = target.statuses.filter((s) => s.status !== "sleep");
@@ -3412,13 +3486,22 @@ function mayCounter(unit: MarinaraFighter, hooks: MarinaraPassiveHooks): boolean
   return true;
 }
 
+/** A counter's strike for this fighter (Retaliate's capped bonus included). */
+export function marinaraCounterAttack(unit: MarinaraFighter, all: readonly MarinaraFighter[]): MarinaraEffect {
+  return counterAttack(unit, hooksOf(unit), all);
+}
+
 /** A counter's strike: the basic attack, plus a share of Defense or Resistance for Retaliate. */
 function counterAttack(unit: MarinaraFighter, hooks: MarinaraPassiveHooks, all: readonly MarinaraFighter[]) {
   const basic = marinaraBasicAttack(unit);
   if (!hooks.counterDefensePct) return basic;
   const guard = Math.max(marinaraEffectiveStat(unit, "defense", all), marinaraEffectiveStat(unit, "resistance", all));
-  const extra = guard * hooks.counterDefensePct;
-  return { ...basic, power: (basic.power ?? MARINARA_TUNING.basicPower) + extra };
+  const power = basic.power ?? MARINARA_TUNING.basicPower;
+  // Capped (Alyssa 2026-11-03): at most 25% over the basic attack's own stat and power.
+  const stat = basic.from && basic.from !== "guard" ? basic.from : basic.damage === "magic" ? "magic" : "strength";
+  const swing = marinaraEffectiveStat(unit, stat, all) + power;
+  const extra = Math.min(guard * hooks.counterDefensePct, swing * MARINARA_COUNTER_BONUS_CAP);
+  return { ...basic, power: power + extra };
 }
 
 /** Hold the Line (Tactical): a melee foe moving next to a Guard-tree fighter is stopped there and

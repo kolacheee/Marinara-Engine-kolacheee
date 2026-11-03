@@ -85,6 +85,8 @@ export function marinaraFightStart(input: {
   seed?: string;
   /** The ammunition types the party's bags hold, for its Marksmen's bows and guns. */
   ammo?: readonly MarinaraDamageType[];
+  /** The party owns wounding ammunition (Serrated): its Marksmen's pierce shots wound. */
+  woundingAmmo?: boolean;
 }): MarinaraFightStart {
   const named = input.cards.filter(
     (card): card is Record<string, unknown> & { name: string } =>
@@ -111,6 +113,7 @@ export function marinaraFightStart(input: {
     }
     const fighter = marinaraPartyFighter(member.id, member.name, progression);
     if (input.ammo?.length && fighter.archetype === "marksman") fighter.ammoOwned = [...input.ammo];
+    if (input.woundingAmmo && fighter.archetype === "marksman") fighter.ammoWounds = true;
     fighters.push(fighter);
     keepers.push({ fighter, progression, member });
   }

@@ -225,6 +225,7 @@ function skillLabel(fighter: MarinaraFighter | undefined, id: string | undefined
   if (!id) return undefined;
   if (id.startsWith("enemy:")) return MARINARA_ENEMY_SKILLS[id.slice(6)]?.label ?? id.slice(6);
   if (id === "follow-through") return "Follow Through";
+  if (id === "ammo-serrated") return "serrated ammunition";
   return fighter?.skills.find((s) => s.id === id)?.label ?? marinaraSkillLabel(id);
 }
 
