@@ -2464,6 +2464,25 @@ function shrugsOff(target: MarinaraFighter, status: string): boolean {
  * Morale (Standard-Bearer, Alyssa 2026-11-02): while a holder stands, their side resists each harmful
  * status ailment some of the time.
  */
+/** The chance a status skill takes hold on this target, before immunities: the skill's own chance, an
+ *  elite's confusion resistance, and the target side's best morale (Sonnet panel r4: the AI weighed Lull
+ *  on its listed chance and cast it seven turns running at a foe whose side shrugged most of it off). */
+export function marinaraStatusLandChance(
+  target: MarinaraFighter,
+  effect: MarinaraEffect,
+  all: readonly MarinaraFighter[],
+): number {
+  const chance =
+    (effect.chance ?? 1) *
+    (effect.status === "confuse" && target.tier === "elite" ? 1 - MARINARA_BOSS_RULES.eliteConfuseResist : 1);
+  if (!HARMFUL.has(effect.status as MarinaraStatusId)) return chance;
+  const pct = Math.max(
+    0,
+    ...living(all.filter((u) => u.side === target.side)).map((u) => hooksOf(u).partyStatusResistPct ?? 0),
+  );
+  return chance * (1 - pct);
+}
+
 function moraleHolds(
   target: MarinaraFighter,
   status: string,
