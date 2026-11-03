@@ -24,7 +24,7 @@ import {
 import {
   MARINARA_TUNING,
   marinaraActionWeight,
-  marinaraSelfHealRate,
+  marinaraWoundDenied,
   marinaraOpensWound,
   marinaraBasicAttack,
   marinaraCanChannel,
@@ -289,20 +289,21 @@ export function marinaraAiCandidates(
             // HP (Sonnet panel r4: 68 on a 1,420-HP boss scored +0.02 over the boss's own HP, and Rally,
             // Cover and Defend took the turns). Kill shots and focus carry the rest (finish, prevented).
             damage += expected / foeMeanHp;
-            // A Wound (the skill's own, or a Serrated pierce shot) on one that heals itself: half its healing
-            // for the Wound's turns (playtest r50: no one kept a Wound on regenerating bosses, whose healing
-            // ran 500-880 HP a fight).
+            // A Wound (the skill's own, or a Serrated pierce shot) on one that heals itself: the healing it
+            // prevents over the turns the regen lasts, unless the foe falls before it acts again (Alyssa
+            // 2026-11-03; playtest r50: no one kept a Wound on regenerating bosses, whose healing ran
+            // 500-880 HP a fight).
             if (
               expected > 0 &&
+              expected < target.hp * 0.95 &&
               target.side !== actor.side &&
-              marinaraSelfHealRate(target) > 0 &&
               marinaraOpensWound(actor, target, spread, all, tactical)
             )
               damage +=
-                (marinaraSelfHealRate(target) *
-                  (1 - MARINARA_TUNING.woundHealing) *
-                  Math.min(effect.applies?.duration ?? 3, Math.max(1, lasts(target)))) /
-                foeMeanHp;
+                marinaraWoundDenied(
+                  target,
+                  Math.min(effect.applies?.duration ?? 3, Math.max(1, Math.floor(lasts(target)))),
+                ) / foeMeanHp;
             if (expected >= target.hp * 0.95) {
               finish += 0.7;
               // A kill shot: the blows it would have dealt before the party brought it down anyway.
