@@ -1,7 +1,7 @@
 /**
  * The owner's class calls of 2026-11-04: the Hexer line's HP drains also take MP or stamina (as the
  * user's own class resource), the Herald's Rekindle gives an ally MP or stamina back, Channel Element
- * comes at Channeler class level 10, and the Channeler's first spell Unravel stacks a Resistance cut.
+ * comes at Channeler class level 5, and the Channeler's first spell Unravel stacks a Resistance cut.
  */
 import assert from "node:assert/strict";
 import {
@@ -64,9 +64,9 @@ for (const user of [lord, cleaver]) {
   assert.equal(mage.mp, Math.round(mage.maxMp * 0.25));
 }
 
-// Channel Element at Channeler class level 10; Unravel at 1, its Resistance cut stacks to 15%.
+// Channel Element at Channeler class level 5 (owner, 11-04 11:30); Unravel at 1, its Resistance cut stacks to 15%.
 const channeler = marinaraClass("channeler")!;
-assert.equal(channeler.skills.find((one) => one.id === "channel-element")!.learnedAt, 10);
+assert.equal(channeler.skills.find((one) => one.id === "channel-element")!.learnedAt, 5);
 assert.equal(channeler.skills.find((one) => one.id === "unravel")!.learnedAt, 1);
 {
   const mage = unit("M", "party", "channeler", ["unravel"], "channeler");
