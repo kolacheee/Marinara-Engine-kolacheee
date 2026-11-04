@@ -57,8 +57,11 @@ assert.equal(usable(starweaver).filter((id) => id.startsWith("greater-channel-el
 const staleCarry = { ...starweaver, carried: ["greater-channel-element"] };
 assert.equal(usable(staleCarry).filter((id) => id.startsWith("greater-channel-element")).length, 1);
 
-// A Blade who trained Channeler carries it, and channels.
-const blade = at("blade", { channeler: 5, blade: 5 });
+// Channel Element is learned at Channeler class level 10 (Alyssa 2026-11-04: a free one-level dip was
+// too strong); before that a Blade can't carry it.
+assert.throws(() => setMarinaraCarried(at("blade", { channeler: 9, blade: 5 }), ["channel-element"]));
+// A Blade who trained Channeler to 10 carries it, and channels.
+const blade = at("blade", { channeler: 10, blade: 5 });
 const carrying = setMarinaraCarried(blade, ["channel-element"]);
 assert.ok(usable(carrying).includes("channel-element"));
 assert.ok(marinaraCanChannel(buildMarinaraPartyFighter({ id: "b", name: "b", progression: carrying })));

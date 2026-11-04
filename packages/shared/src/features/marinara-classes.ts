@@ -1164,9 +1164,17 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       tune: { hp: 15 },
       skills: [
         active(
+          "unravel",
+          "Unravel",
+          1,
+          "magic",
+          3,
+          "Strikes target foe with a bolt stronger than a basic attack, in the channeled element, and lowers its Resistance by 5% for 3 turns. Stacks up to 3 times (15%).",
+        ),
+        active(
           "channel-element",
           "Channel Element",
-          1,
+          10,
           "magic",
           0,
           "Bonus action. Channels fire, ice, lightning, wood, earth, water, metal or wind, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Outside the Channeler tree, their basic attacks and damaging skills strike in the channeled element instead (unchanneled, their weapon's or the skill's own type).",
@@ -1332,7 +1340,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           3,
           "Inflicts Wither: the foe loses 5% of max HP each turn for 3 turns. Cannot be resisted. Also inflicts Wound (healing received halved) for 3 turns.",
         ),
-        passive("drain-touch", "Drain Touch", 5, "Restores HP equal to 20% of damage dealt.", true),
+        passive(
+          "drain-touch",
+          "Drain Touch",
+          5,
+          "Restores HP equal to 20% of damage dealt. It also drains MP or stamina equal to 20% of the HP drained, as whichever the user's class runs on.",
+          true,
+        ),
       ],
     },
     // The Hexer's front line (Alyssa 2026-11-01): it stands in front and lives on what it drains,
@@ -1382,7 +1396,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           20,
           "magic",
           10,
-          "Deals heavy dark damage to target foe and saps HP equal to the damage dealt. Cooldown: 2 turns.",
+          "Deals heavy dark damage to target foe and saps HP equal to the damage dealt. Cooldown: 2 turns. It also drains MP or stamina equal to 20% of the HP drained, as whichever the user's class runs on.",
         ),
         active(
           "grave-tithe",
@@ -1390,13 +1404,13 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           22,
           "magic",
           6,
-          "Deals dark damage to all foes and saps HP equal to half the damage dealt. Front row only. Usable every other turn.",
+          "Deals dark damage to all foes and saps HP equal to half the damage dealt. Front row only. Usable every other turn. It also drains MP or stamina equal to 20% of the HP drained, as whichever the user's class runs on.",
         ),
         passive(
           "siphoning-rot",
           "Siphoning Rot",
           24,
-          "The user's Poison and Wither sap HP equal to half the damage they deal.",
+          "The user's Poison and Wither sap HP equal to half the damage they deal. It also drains MP or stamina equal to 20% of the HP drained, as whichever the user's class runs on.",
           true,
         ),
       ],
@@ -1627,6 +1641,14 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       leans: ["luck", "speed"],
       skills: [
         active("rally", "Rally", 1, "luck", 3, "Increases the party's damage by 20% for 2 rounds.", true),
+        active(
+          "rekindle",
+          "Rekindle",
+          3,
+          "luck",
+          4,
+          "Restores 25% of target ally's MP or stamina, whichever their class runs on. Can target the user. Cooldown: 3 turns.",
+        ),
         passive(
           "rallying-presence",
           "Rallying Presence",
