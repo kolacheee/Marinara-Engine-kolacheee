@@ -506,6 +506,12 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       return event.status
         ? `${actor} siphons ${target}'s ${event.status} boost.`
         : `${actor} drains ${event.amount} MP from ${target}.`;
+    case "restore":
+      return `${actor} uses ${skill ?? "a rallying word"} on ${target}: ${event.amount} ${event.status === "mp" ? "MP" : "stamina"} back.`;
+    case "drain-resource":
+      return `${actor} drains ${event.amount} ${event.notes?.[0] === "mp" ? "MP" : "stamina"} from ${target}${skill ? ` (${skill})` : ""}${
+        event.notes?.[0] !== event.status ? `, gaining it as ${event.status === "mp" ? "MP" : "stamina"}` : ""
+      }.`;
     case "channel":
       return event.type === "arcane"
         ? `${actor} lets their element go, back to raw magic.`
@@ -597,7 +603,9 @@ function record(state: MarinaraDirectorState, ctx: MarinaraFightContext, log: Ma
     )
       credit.support += event.amount ?? 0;
     else if (
-      ["buff", "debuff", "status", "cover", "ward", "taunt", "provoke", "command", "cleanse"].includes(event.kind)
+      ["buff", "debuff", "status", "cover", "ward", "taunt", "provoke", "command", "cleanse", "restore"].includes(
+        event.kind,
+      )
     )
       credit.support += 5;
   }

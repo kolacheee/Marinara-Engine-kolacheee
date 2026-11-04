@@ -44,6 +44,7 @@ import {
   type MarinaraFighter,
   type MarinaraOption,
   marinaraVersesOf,
+  marinaraMainResource,
 } from "./marinara-combat.js";
 
 /** One choice: an option (null id: the basic attack, "defend": defending) and whom it is aimed at. */
@@ -375,6 +376,17 @@ export function marinaraAiCandidates(
           const burden = marinaraDebuffBurden(target, all);
           if (burden <= 0) continue;
           add(option, [target], { support: (burden / friendHp) * 1.2 });
+        }
+        break;
+      case "restore":
+        // Rekindle (Alyssa 2026-11-04): worth the turns of skills it gives back to a friend running dry.
+        for (const target of pool) {
+          const resource = marinaraMainResource(target);
+          const max = resource === "mp" ? target.maxMp : target.maxStamina;
+          const now = resource === "mp" ? target.mp : target.stamina;
+          if (max <= 0 || now / max > 0.5) continue;
+          const back = Math.min(max - now, max * (effect.restorePct ?? 0));
+          add(option, [target], { support: (back / max) * (now / max < 0.2 ? 0.8 : 0.4) });
         }
         break;
       case "revive":

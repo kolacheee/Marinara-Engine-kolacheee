@@ -136,6 +136,7 @@ export interface MarinaraEffect {
     | "cleanse"
     | "steal"
     | "tame"
+    | "restore"
     | "none";
   target: MarinaraEffectTarget;
   power?: number;
@@ -242,7 +243,14 @@ export interface MarinaraEffect {
   /** After damage, lowers the user's own stat (Reckless Swing). */
   selfDebuff?: { stat: MarinaraStat; pct: number; duration: number };
   /** Lowers the target's stat after a hit (Shield Bash stagger, Sundering). */
-  onHit?: { stat: MarinaraStat | "damage"; pct: number; duration: number };
+  onHit?: {
+    stat: MarinaraStat | "damage";
+    pct: number;
+    duration: number;
+    /** Stacks up to this many times. */ stacks?: number;
+  };
+  /** Restore: gives the target back this share of its main resource (MP or stamina). */
+  restorePct?: number;
   /** Damage counted from another stat; "guard" is Defense or Resistance, whichever is higher
    *  (Landslide; Alyssa 2026-11-02). */
   from?: MarinaraStat | "guard";
@@ -428,6 +436,16 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // Hexer
   // Weaken: the foe's Strength or Magic, whichever it hits with.
   weaken: { kind: "debuff", target: "enemy", stat: "best-attack", pct: -0.25, duration: 3, sapsToUser: true },
+  // Unravel (Alyssa 2026-11-04): the Channeler's first spell, a single-target bolt a little stronger than
+  // its basic spell, each hit loosening the target's Resistance a little more (5% a stack, up to 3).
+  unravel: dmg("magic", MARINARA_TUNING.basicPower + 5, {
+    ranged: true,
+    type: "element",
+    onHit: { stat: "resistance", pct: -0.05, duration: 3, stacks: 3 },
+  }),
+  // Rekindle (Alyssa 2026-11-04): the Herald gives an ally (or themselves) back a quarter of their MP or
+  // stamina, whichever their class runs on.
+  rekindle: { kind: "restore", target: "ally", restorePct: 0.25, cooldown: 3 },
   // Balance pass (2026-11-01): 8% -> 6% a turn; a share of max HP grew too big on bosses.
   rot: { kind: "status", target: "enemy", status: "poison", chance: 0.9, duration: 4, power: 0.06 },
   // Wither also wounds (healing halved): the party's anti-heal (Alyssa 2026-11-01, item 8).
@@ -1309,7 +1327,9 @@ export type MarinaraEventKind =
   | "oath"
   | "siphon"
   | "channel"
-  | "passive";
+  | "passive"
+  | "restore"
+  | "drain-resource";
 
 /** One thing that happened, for the log and the narration. */
 export interface MarinaraEvent {
@@ -1782,6 +1802,58 @@ function holdOn(unit: MarinaraFighter, ctx: MarinaraFightContext) {
   if (unit.hp > 0 || !unit.mods.some((mod) => mod.stat === "deathless")) return;
   unit.hp = 1;
   ctx.events.push({ kind: "oath", actorId: unit.id });
+}
+
+/** What a drain takes in MP or stamina, as a share of the HP it drained (Alyssa 2026-11-04). */
+export const MARINARA_DRAIN_RESOURCE_PCT = 0.2;
+
+/**
+ * The resource a fighter's class runs on: MP when most of its own class's actives cost MP, else
+ * stamina; a fighter without a class by its archetype (casters MP, the rest stamina).
+ */
+export function marinaraMainResource(unit: MarinaraFighter): "mp" | "stamina" {
+  const def = unit.classId ? marinaraClass(unit.classId) : undefined;
+  const actives = def?.skills.filter((skill) => skill.kind === "active") ?? [];
+  if (actives.length) {
+    const mp = actives.filter((skill) => (skill.resource ?? "mp") === "mp").length;
+    return mp * 2 > actives.length ? "mp" : "stamina";
+  }
+  return unit.archetype === "channeler" || unit.archetype === "hexer" || unit.archetype === "mender" ? "mp" : "stamina";
+}
+
+/**
+ * A Hexer-line drain also takes the target's MP or stamina (its own main one, else the other) and gives
+ * it to the user as their main resource: a Carrion Lord's Grave Tithe fills MP, a Cleaver's stamina.
+ */
+export function marinaraStealResource(
+  actor: MarinaraFighter,
+  target: MarinaraFighter,
+  hpDrained: number,
+  ctx: MarinaraFightContext,
+  skillId?: string,
+): number {
+  const want = Math.round(hpDrained * MARINARA_DRAIN_RESOURCE_PCT);
+  if (want <= 0) return 0;
+  const first = marinaraMainResource(target);
+  const from = (first === "mp" ? target.mp : target.stamina) > 0 ? first : first === "mp" ? "stamina" : "mp";
+  const has = from === "mp" ? target.mp : target.stamina;
+  const taken = Math.min(has, want);
+  if (taken <= 0) return 0;
+  if (from === "mp") target.mp -= taken;
+  else target.stamina -= taken;
+  const to = marinaraMainResource(actor);
+  if (to === "mp") actor.mp = Math.min(actor.maxMp, actor.mp + taken);
+  else actor.stamina = Math.min(actor.maxStamina, actor.stamina + taken);
+  ctx.events.push({
+    kind: "drain-resource",
+    actorId: actor.id,
+    targetId: target.id,
+    skillId,
+    amount: taken,
+    status: to,
+    notes: [from],
+  });
+  return taken;
 }
 
 /** Siphon: takes one of the target's buffs for the user, or drains its MP when it has none. */
@@ -2845,6 +2917,8 @@ export function beginMarinaraTurn(
             ...(owns(caster, "siphoning-rot") ? { skillId: "siphoning-rot", notes: ["drain"] } : {}),
           });
         }
+        if (owns(caster, "siphoning-rot"))
+          marinaraStealResource(caster, actor, (before - Math.max(0, actor.hp)) * feeds, ctx, "siphoning-rot");
       }
     }
     if (status.status === "regen") {
@@ -3200,6 +3274,24 @@ function act(
       }
       break;
     }
+    case "restore":
+      for (const target of targets) {
+        const resource = marinaraMainResource(target);
+        const max = resource === "mp" ? target.maxMp : target.maxStamina;
+        const before = resource === "mp" ? target.mp : target.stamina;
+        const after = Math.min(max, before + Math.round(max * (effect.restorePct ?? 0)));
+        if (resource === "mp") target.mp = after;
+        else target.stamina = after;
+        ctx.events.push({
+          kind: "restore",
+          actorId: actor.id,
+          targetId: target.id,
+          skillId,
+          amount: after - before,
+          status: resource,
+        });
+      }
+      break;
     case "cleanse":
       for (const target of targets) {
         cleanse(target, effect.cleanse ?? "all", all);
@@ -3704,6 +3796,12 @@ function strikeOnce(
   }
 
   if (effect.siphon && target.hp > 0) siphon(actor, target, effect.siphon.mpPct, ctx, skillId);
+  // The Hexer line's HP drains also take MP or stamina (Alyssa 2026-11-04): Carrion Feast, Grave Tithe,
+  // Drain Touch.
+  const hexDrain =
+    (effect.drain ?? 0) + (owns(actor, "drain-touch") ? (MARINARA_PASSIVES["drain-touch"]?.lifestealPct ?? 0) : 0);
+  if (hexDrain > 0 && dealt > 0)
+    marinaraStealResource(actor, target, dealt * hexDrain, ctx, effect.drain ? skillId : "drain-touch");
   const lifesteal = (hooks.lifestealPct ?? 0) + (actor.gear?.lifestealPct ?? 0) + (effect.drain ?? 0);
   if (lifesteal) {
     const before = actor.hp;
@@ -3725,7 +3823,20 @@ function strikeOnce(
         notes: ["drain"],
       });
   }
-  if (effect.onHit) addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, `onhit:${actor.id}`);
+  if (effect.onHit) {
+    const source = `onhit:${actor.id}${effect.onHit.stacks ? `:${skillId ?? ""}` : ""}`;
+    const stacked = effect.onHit.stacks
+      ? target.mods.find((mod) => mod.source === source && mod.stat === effect.onHit!.stat)
+      : undefined;
+    if (stacked) {
+      const most = effect.onHit.pct * effect.onHit.stacks!;
+      stacked.pct =
+        effect.onHit.pct < 0
+          ? Math.max(most, stacked.pct + effect.onHit.pct)
+          : Math.min(most, stacked.pct + effect.onHit.pct);
+      stacked.turns = Math.max(stacked.turns, effect.onHit.duration);
+    } else addMod(target, effect.onHit.stat, effect.onHit.pct, effect.onHit.duration, source);
+  }
   if (actor.exposeNext) {
     addMod(target, "damage-taken", actor.exposeNext, 2, "exposed");
     actor.exposeNext = undefined;
