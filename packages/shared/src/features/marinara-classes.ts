@@ -685,7 +685,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "defense",
           3,
-          "Forces all foes to target the user for 2 turns. In Tactical, a foe that can't strike the user closes in and defends, unless it has no way to get there.",
+          "Forces all foes to target the user for 2 turns. In Tactical, a foe that can't strike the user closes in as far as it can and readies itself (defends, heals or buffs).",
           true,
         ),
         active(
