@@ -1772,7 +1772,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           10,
           "luck",
           6,
-          "Increases the party's damage by 25% for 3 turns. Cures Confusion and grants immunity to it while active.",
+          "Increases the party's damage by 25% for 3 turns. Cures Confusion and grants the party immunity to Confusion while active.",
         ),
         passive("morale", "Morale", 15, "Allies resist status ailments 30% of the time.", true),
       ],
