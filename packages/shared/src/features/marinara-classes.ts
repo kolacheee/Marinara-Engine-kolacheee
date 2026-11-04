@@ -1174,7 +1174,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
         active(
           "channel-element",
           "Channel Element",
-          10,
+          5,
           "magic",
           0,
           "Bonus action. Channels fire, ice, lightning, wood, earth, water, metal or wind, or unchannels to strike with raw, non-elemental magic. The user's basic attacks and element spells strike with that choice until they change it. Outside the Channeler tree, their basic attacks and damaging skills strike in the channeled element instead (unchanneled, their weapon's or the skill's own type).",
