@@ -560,9 +560,20 @@ export function marinaraAiCandidates(
         // A share of HP: for a damage cut, the damage it keeps off the party over the party's HP
         // (playtest 2026-11-01: valued on raw Strength, Weaken beat every other Hexer skill and
         // Wither was never cast); otherwise over the foes' HP, or the one target's.
+        // Where the foe's blows go: onto the friend who challenged it or is provoking, when it can get at
+        // them (combo hunt 2026-11-05: a Blade carrying Weaken spent a third of its turns on it, valued on
+        // the foe's blow on anyone while Provoke sent that foe's 2-damage hits into the Guard).
+        const blowsFrom = (foe: MarinaraFighter) => {
+          const drawn = friends.find(
+            (u) =>
+              (foe.tauntTurns > 0 && foe.tauntedBy === u.id) ||
+              (u.provoking > 0 && (!options.reaches || options.reaches(foe.id, u.id))),
+          );
+          return drawn ? hit(foe, drawn, marinaraBasicAttack(foe)) : incomingFrom(foe);
+        };
         const worth = (targets: readonly MarinaraFighter[], over: number) =>
           effect.stat === "damage" || effect.stat === "best-attack"
-            ? (targets.reduce((sum, foe) => sum + incomingFrom(foe) * turns(foe), 0) * Math.abs(effect.pct ?? 0)) /
+            ? (targets.reduce((sum, foe) => sum + blowsFrom(foe) * turns(foe), 0) * Math.abs(effect.pct ?? 0)) /
               friendHp
             : (effect.stat === "damage-taken"
                 ? // Only for the turns the target lasts once the party turns on it (lab 2026-11-01: Trackers spent
@@ -943,20 +954,20 @@ export function chooseMarinaraAction(
       ? [{ candidate: { action: { optionId: "defend" as const, targetIds: [] } }, score: 0, parts: {} }, ...ranking]
       : ranking;
   if (options.ranked) {
-    const ranking = pass(rankCombatCandidates(unit, candidates, turn, diff));
+    const ranking = pass(rankCombatCandidates(unit, candidates, turn, diff, unit.orders, true));
     options.ranked(ranking);
     return ranking[0]!.candidate.action;
   }
   let chosen: RankedCombatCandidate<MarinaraChoice>;
   if (options.explain) {
     // The same pick `chooseRankedCombatCandidate` makes (its first), with the memory it leaves.
-    const ranking = pass(rankCombatCandidates(unit, candidates, turn, diff));
+    const ranking = pass(rankCombatCandidates(unit, candidates, turn, diff, unit.orders, true));
     chosen = ranking[0]!;
     unit.tactics.holds = chosen.candidate.hold ? Math.min(2, (unit.tactics.holds ?? 0) + 1) : 0;
     if (chosen.candidate.targetId) unit.tactics.targetId = chosen.candidate.targetId;
     options.explain(ranking);
   } else {
-    chosen = chooseRankedCombatCandidate(unit, candidates, turn, diff);
+    chosen = chooseRankedCombatCandidate(unit, candidates, turn, diff, unit.orders, true);
     chosen = pass([chosen])[0]!;
   }
   // The unit keeps its memory of what it picked, as `chooseCombatCandidate` leaves it.

@@ -420,10 +420,11 @@ export function chooseRankedCombatCandidate<T>(
   turn: number,
   difficulty: GameDifficulty = "normal",
   orders: CombatOrders | undefined = unit.orders,
+  holdsLean = false,
 ): RankedCombatCandidate<T> {
   if (!candidates.length) throw new Error("AI needs at least one legal action.");
   const profile = unit.tactics!;
-  const chosen = rankCombatCandidates(unit, candidates, turn, difficulty, orders)[0]!;
+  const chosen = rankCombatCandidates(unit, candidates, turn, difficulty, orders, holdsLean)[0]!;
   profile.holds = chosen.candidate.hold ? Math.min(2, (profile.holds ?? 0) + 1) : 0;
   if (chosen.candidate.targetId) profile.targetId = chosen.candidate.targetId;
   return chosen;
@@ -442,7 +443,7 @@ export interface RankedCombatCandidate<T> {
 /** What each weighed part of a candidate added to its score, after the unit's weights. */
 export type CombatAiScoreParts = Partial<
   Record<
-    "damage"
+    | "damage"
     | "finish"
     | "healing"
     | "support"
@@ -473,6 +474,10 @@ export function rankCombatCandidates<T>(
   turn: number,
   difficulty: GameDifficulty = "normal",
   orders: CombatOrders | undefined = unit.orders,
+  /** Classic Marinara's leans (playtest combo hunt 2026-11-05): a patient or wounded cowardly one's hold
+   *  leans by a share of the best gain on the table instead of a flat sum (a flat +0.80 Defend beat a 0.25
+   *  Cover), and a temperament leans setup by half again at most. */
+  holdsLean = false,
 ): Array<RankedCombatCandidate<T>> {
   const profile = unit.tactics!;
   const adjective = profile.adjective;
@@ -494,8 +499,16 @@ export function rankCombatCandidates<T>(
     support: adjective === "supportive" ? 1.2 : 0.35,
     // An arrogant one (T5) sets nothing up and keeps its best for a foe worth it.
     // A hungry one (T8) takes hold of its prey.
-    setup:
-      adjective === "methodical"
+    // Classic Marinara weighs setup in its one currency (the HP it keeps off or adds): a temperament leans
+    // it by half again, not four to eight times (combo hunt 2026-11-05: a cruel Blade carrying Weaken
+    // spent a third of its turns on it, its fights 12.1 rounds against 8.8 with Wither).
+    setup: holdsLean
+      ? adjective === "arrogant"
+        ? 0.05
+        : adjective === "methodical" || adjective === "hungry" || adjective === "cruel"
+          ? 0.3
+          : 0.2
+      : adjective === "methodical"
         ? 1.6
         : adjective === "hungry"
           ? 1
@@ -623,8 +636,8 @@ export function rankCombatCandidates<T>(
       extras.retreat = 0.8;
     }
     if (candidate.hold && (profile.holds ?? 0) < 1 && profile.mind !== "mindless") {
-      if (adjective === "patient") nature += 0.65;
-      if (adjective === "cowardly" && wounded) nature += 0.8;
+      if (adjective === "patient") nature += holdsLean ? 0.4 * most : 0.65;
+      if (adjective === "cowardly" && wounded) nature += holdsLean ? 0.5 * most : 0.8;
     }
     if (nature) {
       score += nature;
