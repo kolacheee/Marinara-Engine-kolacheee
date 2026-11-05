@@ -377,6 +377,10 @@ export function GameCharacterSheet({
     () => (marinara ? readMarinaraCardProgression(marinara.stored) : undefined),
     [marinara],
   );
+  // Classic shows its own fight HP and MP above, so the tracker's copies would only repeat them.
+  const sheetStats = (card.stats ?? []).filter(
+    (stat) => !marinaraProgression || !/^(hp|health|mp|mana)$/i.test(stat.name.trim()),
+  );
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isAvatarUploading, setIsAvatarUploading] = useState(false);
@@ -688,7 +692,9 @@ export function GameCharacterSheet({
               className="sr-only"
               tabIndex={-1}
             />
-            <div className="min-w-0 flex-1 pr-20 sm:pr-64">
+            {/* On phones the level badge already keeps clear of the corner buttons, so the text needs no
+                padding of its own there (with both, a name was cut to a few letters). */}
+            <div className={cn("min-w-0 flex-1 sm:pr-64", headerLevel == null && "pr-20")}>
               <h2
                 className="scrollbar-hide max-w-full touch-pan-x overflow-x-auto whitespace-nowrap text-lg font-bold text-[var(--foreground)] [-webkit-overflow-scrolling:touch] sm:truncate sm:overflow-hidden"
                 title={card.title}
@@ -697,8 +703,16 @@ export function GameCharacterSheet({
               </h2>
               {marinaraProgression ? (
                 // Classic: the class they fight as, not the story's own label for them.
-                <p className="text-xs font-medium text-[var(--muted-foreground)]">
-                  {marinaraClass(marinaraProgression.activeClass)?.label ?? marinaraProgression.activeClass}
+                <p className="flex flex-wrap gap-x-1.5 text-xs font-medium text-[var(--muted-foreground)]">
+                  <span className="text-[var(--primary)]">
+                    {marinaraClass(marinaraProgression.activeClass)?.label ?? marinaraProgression.activeClass}
+                  </span>
+                  <span className="whitespace-nowrap">
+                    <span aria-hidden="true">· </span>
+                    {localizeUi("game.combat.marinara.sheet2.classLevel", {
+                      level: marinaraProgression.classLevels[marinaraProgression.activeClass] ?? 1,
+                    })}
+                  </span>
                 </p>
               ) : (
                 previewGameCard?.class && (
@@ -1150,7 +1164,7 @@ export function GameCharacterSheet({
             </div>
           )}
 
-          {card.stats && card.stats.length > 0 && (
+          {sheetStats.length > 0 && (
             <div className="border-b border-[var(--marinara-chat-chrome-panel-border)] px-5 py-4">
               <SectionHeader
                 icon={<Shield size={12} />}
@@ -1158,7 +1172,7 @@ export function GameCharacterSheet({
                 className="text-[var(--muted-foreground)]"
               />
               <div className="space-y-2">
-                {card.stats.map((stat) => {
+                {sheetStats.map((stat) => {
                   const max = Math.max(1, stat.max ?? 100);
                   const value = Math.max(0, Math.min(max, stat.value));
                   const width = (value / max) * 100;
