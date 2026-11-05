@@ -47,6 +47,7 @@ import {
   gameDungeonMapFromMetadata,
   GAME_LOOT_GIVEN_LINE,
   GAME_REWARD_PROMPT_LINE,
+  marinaraGameWorldKit,
 } from "@marinara-engine/shared";
 // ──────────────────────────────────────────────
 // Game: Main Surface (rendered by ChatArea when mode === "game")
@@ -1249,6 +1250,11 @@ export function generatedEnemyToCombatant(enemy: CombatEnemy, index: number, fal
       ? { creatureType: enemy.creatureType.trim() }
       : {}),
     ...(enemy.proposed !== undefined ? { proposed: enemy.proposed } : {}),
+    // Classic Marinara classes: the bestiary family and tier the setup gave it (read only by such a game).
+    // Until the fight starts this is the setup's word on the foe, not the screen's view of it.
+    ...(enemy.marinara && typeof enemy.marinara === "object"
+      ? { marinara: enemy.marinara as unknown as Combatant["marinara"] }
+      : {}),
     ...(enemy.surprised === true ? { surprised: true } : {}),
     ...(enemy.inLair === true ? { inLair: true } : {}),
     ...(enemy.start ? { start: enemy.start } : {}),
@@ -9436,7 +9442,16 @@ function GameSurfaceComponent({
     });
   }, [chatMeta.gameCharacterCards, gameRuleset]);
   // A game with no ruleset buys and pays in its setting kit's money (worldgen W6b).
-  const inventoryKit = gameKit;
+  // A Classic Marinara game's shops also sell the item tables' wares for the party's tier.
+  const inventoryKit = useMemo(
+    () =>
+      marinaraGameWorldKit({
+        gameWorldKit: chatMeta.gameWorldKit,
+        gameSetupConfig: chatMeta.gameSetupConfig,
+        gameCharacterCards: chatMeta.gameCharacterCards,
+      }),
+    [chatMeta.gameWorldKit, chatMeta.gameSetupConfig, chatMeta.gameCharacterCards],
+  );
   const inventoryItemBook = useRulesetItemBook(gameRuleset, inventorySheets, chatMeta.gameInventedItems, inventoryKit);
   /** The Use button. One of the ruleset's items with a `use` is used by the Engine first: what it does
    *  to whoever carries it lands on their sheet, it is spent, and the Game Master is told what happened
@@ -12186,6 +12201,7 @@ function GameSurfaceComponent({
         // Out of it alive, their heart gone: the story goes on with them.
         const fledEnemies = summary.enemies.filter((e) => e.left === "fled");
         const yieldedEnemies = summary.enemies.filter((e) => e.left === "surrendered");
+        const tamedEnemies = summary.enemies.filter((e) => e.left === "tamed");
         const partyStatus = summary.party.map((p) => {
           const hpPct = p.maxHp > 0 ? Math.round((p.hp / p.maxHp) * 100) : 0;
           const effects = p.statusEffects.length > 0 ? ` [${p.statusEffects.join(", ")}]` : "";
@@ -12245,6 +12261,10 @@ function GameSurfaceComponent({
         if (yieldedEnemies.length > 0 && !fought) {
           recapLines.push(`Surrendered to the party, alive: ${yieldedEnemies.map((e) => e.name).join(", ")}`);
         }
+        if (tamedEnemies.length > 0)
+          recapLines.push(
+            `Tamed by the party, now a companion that follows them: ${tamedEnemies.map((e) => e.name).join(", ")}`,
+          );
         // The ruleset's own numbers in place of the percentage lines: the fight was not fought on a
         // share of a maximum, so the Game Master is never shown one.
         if (fought) recapLines.push(...rulesetCombatRecapLines(fought.definition, fought.ruleset));
@@ -15084,6 +15104,18 @@ function GameSurfaceComponent({
             }
             ruleset={characterSheetRuleset}
             rulesetPinned={gameRuleset.status !== "none"}
+            {...((chatMeta.gameSetupConfig as { marinaraClasses?: boolean } | undefined)?.marinaraClasses === true &&
+            gameRuleset.status === "none" &&
+            activeChatId
+              ? {
+                  marinara: {
+                    chatId: activeChatId,
+                    stored: findStoredGameCard(partyCards[characterSheetCharId].title).cards[
+                      findStoredGameCard(partyCards[characterSheetCharId].title).index
+                    ]?.marinara,
+                  },
+                }
+              : {})}
           />
         )}
 

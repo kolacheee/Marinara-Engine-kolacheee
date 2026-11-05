@@ -2202,6 +2202,8 @@ const gameSetupConfigSchema = z.object({
   gmBossControl: z.boolean().optional(),
   gmNamedControl: z.boolean().optional(),
   cruelOpponents: z.boolean().optional(),
+  marinaraClasses: z.boolean().optional(),
+  permadeath: z.boolean().optional(),
   playerRunsCompanions: z.boolean().optional(),
   tacticalBattlefield: tacticalBattlefieldSetupSchema.optional(),
   tacticalTurnOrder: z.enum(["side", "initiative"]).optional(),

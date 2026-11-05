@@ -8,6 +8,7 @@ import {
   mergedReplyRoster,
   VIDEO_GENERATION_SETTINGS_KEY,
   type RulesetClocks,
+  marinaraGameWorldKit,
 } from "@marinara-engine/shared";
 import {
   GAME_STARTING_GEAR_TAKEN_KEY,
@@ -5602,7 +5603,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               : normalizeGameInventoryStacks(chatMeta.gameInventory);
           // A game with no ruleset buys, pays and earns in its setting kit's money (worldgen W6b).
           const promptKitItems =
-            chatMeta.gameRuleset == null ? worldKitItems(gameWorldKitFromMetadata(chatMeta)) : undefined;
+            chatMeta.gameRuleset == null ? worldKitItems(marinaraGameWorldKit(chatMeta)) : undefined;
           // What each ruleset item the party holds is, for the Game Master: read when one is held, or
           // when the game has coins in use (its layers may hide them all), so an empty purse is said
           // too (never told one is empty, the Game Master narrates a buy the Engine then refuses).
@@ -10521,7 +10522,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           // A game with no ruleset has its setting kit's market (worldgen W6b).
           const turnKitItems =
             chatMode === "game" && !input.impersonate && chatMeta.gameRuleset == null
-              ? worldKitItems(gameWorldKitFromMetadata(chatMeta))
+              ? worldKitItems(marinaraGameWorldKit(chatMeta))
               : undefined;
           const turnMarket =
             chatMode === "game" && !input.impersonate && turnGameRuleset?.status === "ok"

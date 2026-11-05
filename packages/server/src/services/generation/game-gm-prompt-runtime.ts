@@ -173,6 +173,17 @@ export function gameGmPromptDecisionTexts(chatMetadata: Record<string, unknown>,
 function appendGameCardDetails(parts: string[], card: Record<string, unknown> | undefined): void {
   if (!card) return;
   if (card.class) parts.push(`Class: ${card.class}`);
+  // Beasts they tamed in Classic fights (Tracker): the active one follows them; the rest are kept.
+  const tamed = card.marinara as
+    { companions?: Array<{ id?: unknown; name?: unknown }>; activeCompanion?: unknown } | undefined;
+  const stable = (Array.isArray(tamed?.companions) ? tamed.companions : []).filter(
+    (one) => typeof one?.name === "string" && one.name.trim(),
+  );
+  const active = stable.find((one) => one.id === tamed?.activeCompanion);
+  if (active)
+    parts.push(`Companion: ${String(active.name).trim()} (a beast they tamed; it follows them and helps them fight)`);
+  const kept = stable.filter((one) => one !== active).map((one) => String(one.name).trim());
+  if (kept.length) parts.push(`Other tamed beasts, kept back: ${kept.join(", ")}`);
   if ((card.abilities as string[])?.length) parts.push(`Abilities: ${(card.abilities as string[]).join(", ")}`);
   if ((card.strengths as string[])?.length) parts.push(`Strengths: ${(card.strengths as string[]).join(", ")}`);
   if ((card.weaknesses as string[])?.length) parts.push(`Weaknesses: ${(card.weaknesses as string[]).join(", ")}`);
