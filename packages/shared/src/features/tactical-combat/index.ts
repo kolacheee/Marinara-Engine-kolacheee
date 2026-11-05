@@ -15,6 +15,7 @@ export {
   rollTacticalInitiative,
   getUnit,
   getMovementRange,
+  canTraverseTile,
   getTargetsInRange,
   forecastAttack,
   forecastFrom as forecastTacticalAttack,
