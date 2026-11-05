@@ -206,6 +206,7 @@ import { useQuoteFormatter } from "../../hooks/use-quote-formatter";
 import { LorebookAssignmentSection } from "../lorebooks/LorebookAssignmentSection";
 import { isOverhaulLook, useOverhaulLook, useOverhaulStore } from "../../stores/overhaul.store";
 import { GameModeSheet } from "../overhaul/GameModeSheet";
+import { ClassicCardSection } from "../overhaul/ClassicCardSection";
 import { AddFieldChips, EditorCrumbs, EditorRail, RailMoreMenu } from "../overhaul/EditorRail";
 import { CopyIdLine } from "../overhaul/CopyIdLine";
 import { openLibrarySection } from "../overhaul/library-navigation";
@@ -6540,44 +6541,52 @@ function StatsTab({
       {overhaul ? (
         <>
           <SectionHeader title="Game Mode" />
-          <GameModeSheet
-            rpgEnabled={stats.enabled}
-            onRpgEnabled={(enabled) => update({ enabled })}
-            attributes={stats.attributes}
-            onAttributeChange={(index, patch) => {
-              const [key, value] = Object.entries(patch)[0] ?? [];
-              if (key) updateAttribute(index, key, value as string | number);
-            }}
-            onAddAttribute={addAttribute}
-            onRemoveAttribute={removeAttribute}
-            pools={pools}
-            onPoolChange={updatePool}
-            onAddPool={() => updatePools([...pools, createNewRpgPool(pools)])}
-            onRemovePool={removePool}
-            renderPoolIcon={(i) => {
-              const pool = pools[i];
-              if (!pool) return null;
-              return (
-                <StatIconPicker
-                  value={resolveStatIconAssignment(
-                    trackerCardAppearance.statIcons ?? [],
-                    pool.name,
-                    getStatNameOccurrence(pools, i),
-                  )}
-                  statName={pool.name}
-                  onSelect={(icon) =>
-                    updateStatIcons(
-                      setStatIconAssignment(
+          <ClassicCardSection
+            value={formData.extensions.classic}
+            onChange={(classic) => updateExtension("classic", classic)}
+            description={[formData.description, formData.personality].filter(Boolean).join(" ")}
+            storyOpen={stats.enabled}
+            storyStats={
+              <GameModeSheet
+                rpgEnabled={stats.enabled}
+                onRpgEnabled={(enabled) => update({ enabled })}
+                attributes={stats.attributes}
+                onAttributeChange={(index, patch) => {
+                  const [key, value] = Object.entries(patch)[0] ?? [];
+                  if (key) updateAttribute(index, key, value as string | number);
+                }}
+                onAddAttribute={addAttribute}
+                onRemoveAttribute={removeAttribute}
+                pools={pools}
+                onPoolChange={updatePool}
+                onAddPool={() => updatePools([...pools, createNewRpgPool(pools)])}
+                onRemovePool={removePool}
+                renderPoolIcon={(i) => {
+                  const pool = pools[i];
+                  if (!pool) return null;
+                  return (
+                    <StatIconPicker
+                      value={resolveStatIconAssignment(
                         trackerCardAppearance.statIcons ?? [],
                         pool.name,
                         getStatNameOccurrence(pools, i),
-                        icon ?? undefined,
-                      ),
-                    )
-                  }
-                />
-              );
-            }}
+                      )}
+                      statName={pool.name}
+                      onSelect={(icon) =>
+                        updateStatIcons(
+                          setStatIconAssignment(
+                            trackerCardAppearance.statIcons ?? [],
+                            pool.name,
+                            getStatNameOccurrence(pools, i),
+                            icon ?? undefined,
+                          ),
+                        )
+                      }
+                    />
+                  );
+                }}
+              />
+            }
           />
         </>
       ) : (

@@ -129,6 +129,7 @@ import { AddFieldChips, EditorCrumbs, EditorRail, RailMoreMenu } from "../overha
 import { MariContextChip } from "../chat/MariContextChip";
 import { CopyIdLine } from "../overhaul/CopyIdLine";
 import { GameModeSheet } from "../overhaul/GameModeSheet";
+import { ClassicCardSection } from "../overhaul/ClassicCardSection";
 import { openLibrarySection } from "../overhaul/library-navigation";
 import { EditorSectionAnchor, EditorSectionJumps } from "../ui/EditorSectionJumps";
 import { SettingsSwitch } from "../panels/settings/SettingControls";
@@ -3570,6 +3571,14 @@ function PersonaStatsTab({
     return (
       <div className="space-y-6">
         <SectionHeader title="Game Mode" />
+        <ClassicCardSection
+          value={parsed.classic}
+          onChange={(classic) => {
+            const { classic: _old, ...rest } = parsed;
+            save(classic ? { ...rest, classic } : rest);
+          }}
+          description={formData.description ?? ""}
+        />
         <GameModeSheet
           rpgEnabled={rpgStats.enabled}
           onRpgEnabled={(enabled) => updateRpg({ enabled })}
