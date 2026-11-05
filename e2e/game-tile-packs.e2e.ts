@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { WORLD_GENERATOR_VERSION, WORLD_STARTER_KITS, parseWorldKit } from "@marinara-engine/shared";
@@ -24,6 +24,23 @@ const file = {
   tiles: { grass: [rows("0"), rows("1")], party: [rows("1")] },
 };
 
+/** The tile packs: the Agents panel's section, or in the new desktop layout (no Agents panel) the Agents
+ *  page's Tile packs dialog. */
+async function openTilePacks(page: Page) {
+  const newLayout = await page.evaluate(async () => {
+    const { useOverhaulStore } = await import("/src/stores/overhaul.store.ts" as string);
+    const state = useOverhaulStore.getState();
+    if (state.enabled && state.desktop) {
+      state.setLibraryPage("agents");
+      return true;
+    }
+    const { useUIStore } = await import("/src/stores/ui.store.ts" as string);
+    useUIStore.getState().openRightPanel("agents");
+    return false;
+  });
+  if (newLayout) await page.getByRole("button", { name: "Tile packs", exact: true }).click();
+}
+
 test("a tile pack is imported, chosen for its family, drawn on the overworld, exported and removed", async ({
   page,
   request,
@@ -34,10 +51,7 @@ test("a tile pack is imported, chosen for its family, drawn on the overworld, ex
     await seedUIState(page, { hasCompletedOnboarding: true, sidebarOpen: false, rightPanelOpen: false });
     await page.addInitScript((seen) => localStorage.setItem("marinara:whats-new:seen-version", seen), version);
     await page.goto("/");
-    await page.evaluate(async () => {
-      const { useUIStore } = await import("/src/stores/ui.store.ts" as string);
-      useUIStore.getState().openRightPanel("agents");
-    });
+    await openTilePacks(page);
 
     // Import.
     await expect(page.getByRole("button", { name: "Import a tile pack", exact: true })).toBeVisible({
@@ -103,18 +117,20 @@ test("a tile pack is imported, chosen for its family, drawn on the overworld, ex
     const drawn = page.waitForRequest((req) =>
       req.url().includes("/api/game-tile-packs/pack?id=local%2Fnight-meadows"),
     );
+    await page.keyboard.press("Escape");
+    await page.evaluate(async () => {
+      const { useOverhaulStore } = await import("/src/stores/overhaul.store.ts" as string);
+      useOverhaulStore.getState().setLibraryPage(null);
+    });
     await openGame(page, chatId);
     await expect(page.getByRole("region", { name: "Overworld", exact: true })).toBeVisible({ timeout: 40_000 });
     await drawn;
     await page.screenshot({ path: testInfo.outputPath("tile-packs-overworld.png") });
 
     // Removed: fantasy goes back to its own tiles.
-    await page.evaluate(async () => {
-      const { useUIStore } = await import("/src/stores/ui.store.ts" as string);
-      useUIStore.getState().openRightPanel("agents");
-    });
+    await openTilePacks(page);
     await page.getByRole("button", { name: "Remove Night meadows", exact: true }).click();
-    await page.getByRole("dialog").getByRole("button", { name: "Remove", exact: true }).click();
+    await page.getByRole("dialog").last().getByRole("button", { name: "Remove", exact: true }).click();
     await expect(page.getByText("Fantasy, version 1", { exact: true })).toHaveCount(0);
     expect((await (await request.get("/api/game-tile-packs")).json()).selection).toEqual({});
   } finally {
