@@ -12,6 +12,7 @@ import {
 } from "../../packages/server/src/services/game/combat-director.service.js";
 import {
   marinaraCombatant,
+  marinaraEventText,
   performMarinaraAction,
 } from "../../packages/server/src/services/game/marinara-director.service.js";
 import { marinaraFightEnd } from "../../packages/server/src/services/game/marinara-fight-start.service.js";
@@ -188,6 +189,48 @@ const beasts = (tier: "standard" | "elite" = "standard") =>
   assert.ok(foe.hp < hp, "the companion hits");
   assert.equal(master.bonusTurns, 1, "a bonus action");
   assert.equal(master.cooldowns.sic, 2, "then waits a turn");
+  // The beast bites with its own natural attack, never the keeper's loaded fire arrows or channel
+  // (playtest 2026-11-05).
+  const keeper = hunter("k", ["sic"]);
+  keeper.companion = { name: "Grave-Mound Wolf", stat: "speed", attackType: "slash" };
+  keeper.ammoOwned = ["fire"];
+  keeper.ammoLoaded = "fire";
+  keeper.channeled = "lightning";
+  const target = buildMarinaraEnemy({ id: "f2", name: "Foe", level: 12, tier: "standard" });
+  const events: { kind: string; type?: string }[] = [];
+  performMarinaraOption(keeper, marinaraOption(keeper, "sic", [keeper, target])!, [target], [keeper, target], {
+    random: () => 0.5,
+    events: events as never,
+  });
+  const hit = events.find((one) => one.kind === "hit");
+  assert.equal(hit?.type, "slash", "the wolf's claws, not the keeper's ammo or channel");
+  delete keeper.companion.attackType;
+  keeper.cooldowns = {};
+  keeper.bonusTurns = 0;
+  events.length = 0;
+  performMarinaraOption(keeper, marinaraOption(keeper, "sic", [keeper, target])!, [target], [keeper, target], {
+    random: () => 0.5,
+    events: events as never,
+  });
+  assert.equal(events.find((one) => one.kind === "hit")?.type, "pierce", "a bite when the family names none");
+  // The log names the beast.
+  keeper.companion.name = "Grave-Mound Wolf";
+  const fight = createCombatDirector({
+    id: "sic",
+    anchor: "anchor",
+    party: [marinaraCombatant(keeper)],
+    enemies: [marinaraCombatant(target)],
+    style: "classic",
+    difficulty: "normal",
+    seed: 1,
+    marinara: [keeper, target],
+  });
+  const line = marinaraEventText(fight.marinara!, {
+    ...events.find((one) => one.kind === "hit")!,
+    actorId: "k",
+    targetId: "f2",
+  } as never);
+  assert.match(line, /^k's Grave-Mound Wolf strikes Foe \(Sic\) for \d+ pierce/, line);
 }
 
 // The stable (Alyssa 23:31): up to 8, one active, new ones join; a full stable waits on a release.

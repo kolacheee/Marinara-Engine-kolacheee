@@ -89,6 +89,9 @@ export interface MarinaraDirectorState {
    * harness can't forget it). The director also writes them to its log as "marinara:reasoning".
    */
   aiReasons?: Array<{ unitId: string; round: number; text: string }>;
+  /** Lab and panel harnesses only: when set, every recorded event is copied here (who did what, with
+   *  which skill, for how much) so a harness can measure skills without parsing log text. */
+  eventTap?: MarinaraEvent[];
 }
 
 /** How many AI reasons a fight keeps. */
@@ -390,6 +393,13 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     .join("");
   switch (event.kind) {
     case "hit":
+      // Sic: the beast is the one striking, so the line names it (playtest 2026-11-05: testers couldn't
+      // tell Sic did anything).
+      if (event.skillId === "sic") {
+        const beast = marinaraFighter(state, event.actorId)?.companion?.name;
+        if (beast)
+          return `${actor}'s ${beast} strikes ${target} (Sic) for ${event.amount}${event.type ? ` ${event.type}` : ""}${event.crit ? ", a critical hit" : ""}${how}${rules}${roll}.`;
+      }
       return `${actor} hits ${target}${using} for ${event.amount}${event.type ? ` ${event.type}` : ""}${event.crit ? ", a critical hit" : ""}${how}${rules}${roll}.`;
     case "miss":
       return event.skillId === "steal"
@@ -590,6 +600,7 @@ function record(state: MarinaraDirectorState, ctx: MarinaraFightContext, log: Ma
         log(boonGroupText(state, group), `marinara:${event.kind}`, event.actorId, source);
       } else log(marinaraEventText(state, event), `marinara:${event.kind}`, event.actorId, source);
     } else log(marinaraEventText(state, event), `marinara:${event.kind}`, event.actorId, source);
+    if (state.eventTap) state.eventTap.push({ ...event });
     const credit = (state.credit[event.actorId] ??= { damage: 0, support: 0, foes: [] });
     const target = event.targetId ? marinaraFighter(state, event.targetId) : undefined;
     const actor = marinaraFighter(state, event.actorId);
