@@ -2453,7 +2453,8 @@ function PanelSection({
 
 const TILE_PACK_FAMILIES = new Set(["fantasy", "wuxia", "modern", "jazz_age", "scifi", "wasteland"]);
 
-function TilePacksSection() {
+/** Also shown on the new layout's Agents page, which has no room for the classic panel's sections. */
+export function TilePacksSection() {
   const { t } = useUiTranslation();
   const { data: library } = useTilePackLibrary();
   const choose = useChooseTilePack();
