@@ -303,6 +303,9 @@ export const MARINARA_COMPANION = {
   shared: 0.5,
 } as const;
 
+/** A companion's strike when its family names no natural attack (a bite). */
+export const MARINARA_COMPANION_ATTACK_TYPE: MarinaraDamageType = "pierce";
+
 /** What a companion tamed at this level and rank adds to its keeper's stat, as a share. */
 export function marinaraCompanionBonus(companion: { level?: number; tier?: MarinaraEnemyTier }): number {
   return (
@@ -889,8 +892,9 @@ export interface MarinaraFighter {
   tameable?: { name: string; stat: MarinaraStat; familyId?: string };
   /** Tamed by this fighter: it leaves the fight, pays XP and drops nothing. */
   tamedBy?: string;
-  /** The tamed beast that follows this party member (Tracker): Sic strikes with it. */
-  companion?: { name: string; stat: MarinaraStat };
+  /** The tamed beast that follows this party member (Tracker): Sic strikes with it, with the beast's
+   *  own bite or claw (`attackType`), never the keeper's ammunition, channel or runes. */
+  companion?: { name: string; stat: MarinaraStat; attackType?: MarinaraDamageType };
   /** A boss once below half its HP: it hits harder for the rest of the fight (MARINARA_BOSS_RULES). */
   enraged?: boolean;
   // fight state
@@ -1562,6 +1566,9 @@ function magicHeal(actor: MarinaraFighter, effect: MarinaraEffect, all: readonly
 
 /** The damage types this effect can hit with; an imbued weapon adds the elements. */
 function damageOptions(actor: MarinaraFighter, effect: MarinaraEffect): readonly MarinaraDamageType[] {
+  // Sic: the beast strikes with its own natural attack (playtest 2026-11-05: a wolf's bite came out as the
+  // keeper's loaded fire arrows).
+  if (effect.companion) return [actor.companion?.attackType ?? MARINARA_COMPANION_ATTACK_TYPE];
   if (!actor.classId) {
     if (effect.type && effect.type !== "weapon" && effect.type !== "element" && effect.type !== "any-physical")
       return [effect.type];

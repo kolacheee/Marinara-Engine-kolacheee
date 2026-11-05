@@ -45,6 +45,7 @@ import {
   marinaraEnemyFamily,
   marinaraEnemyName,
   marinaraEnemySpec,
+  marinaraFamilyAttackType,
   marinaraFitEncounter,
   MARINARA_TIER_RULES,
   type MarinaraBestiarySetting,
@@ -424,7 +425,8 @@ export function marinaraApplyCompanions(
   for (const { fighter, progression } of party) {
     const companion = marinaraActiveCompanion(progression);
     if (!companion) continue;
-    fighter.companion = { name: companion.name, stat: companion.stat };
+    const attackType = marinaraFamilyAttackType(companion.familyId);
+    fighter.companion = { name: companion.name, stat: companion.stat, ...(attackType ? { attackType } : {}) };
     if (!MARINARA_COMPANION_CLASSES.includes(progression.activeClass)) continue;
     const bond = fighter.skills.some((skill) => skill.id === "bond");
     const pct = marinaraCompanionBonus(companion) * (bond ? MARINARA_COMPANION.bond : 1);

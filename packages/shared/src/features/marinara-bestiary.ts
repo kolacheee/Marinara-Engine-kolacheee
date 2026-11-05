@@ -1889,6 +1889,11 @@ export const MARINARA_BESTIARY: readonly MarinaraEnemyFamily[] = [
 ];
 
 const FAMILY_BY_ID = new Map(MARINARA_BESTIARY.map((family) => [family.id, family]));
+
+/** A family's natural attack type (a beast's bite or claws), when it names one. */
+export function marinaraFamilyAttackType(familyId: string | undefined): MarinaraDamageType | undefined {
+  return familyId ? FAMILY_BY_ID.get(familyId)?.attackType : undefined;
+}
 export function marinaraEnemyFamily(id: string): MarinaraEnemyFamily | undefined {
   return FAMILY_BY_ID.get(id);
 }
