@@ -61,6 +61,10 @@ async function metadataOf(request: APIRequestContext, chatId: string) {
 /** On a phone the toolbar's buttons sit in the game's actions menu. */
 /** A button in the Game controls window, opened from its bubble (or the phone's Chat tools menu). */
 async function toolbarButton(page: Page, name: string) {
+  // The new layout (desktop) has no game controls window: the map and scene switch sits on the surface.
+  if (await page.locator(".ov-gwrap").first().isVisible()) {
+    return page.locator("[data-ov-view-switch]").getByRole("button", { name, exact: true });
+  }
   const controls = page.locator('.mari-window[data-window="control:game"]');
   // The window may already be open from an earlier click, and then its bubble is not shown.
   await expect(
@@ -167,7 +171,10 @@ test("the party enters the town it is in, walks across it, and the next turn tel
     // window stays open.
     const controls = page.locator('.mari-window[data-window="control:game"]');
     const phone = await page.evaluate(() => matchMedia("(max-width: 767px)").matches);
+    // The new layout has no Game controls window; its switch stays on the surface.
+    const newLayout = await page.locator(".ov-gwrap").first().isVisible();
     const expectControlsAfterSwitch = async () => {
+      if (newLayout) return expect(page.locator("[data-ov-view-switch]")).toBeVisible();
       if (!phone) return expect(controls).toBeVisible();
       await expect(controls).toHaveCount(0);
       await expect(page.locator("[data-chat-tools-menu-button]")).toBeFocused();
@@ -175,14 +182,14 @@ test("the party enters the town it is in, walks across it, and the next turn tel
     await (await toolbarButton(page, "Show the scene")).click();
     await expect(page.getByRole("region", { name: "Town", exact: true })).toBeHidden();
     await expectControlsAfterSwitch();
-    if (!phone) {
+    if (!phone && !newLayout) {
       await controls.getByRole("button", { name: "Pin window", exact: true }).click();
       await expect(controls).toHaveAttribute("data-pinned", "true");
     }
     await (await toolbarButton(page, "Show the overworld")).click();
     await expect(page.getByRole("region", { name: "Town", exact: true })).toBeVisible();
     await expectControlsAfterSwitch();
-    if (!phone) await expect(controls).toHaveAttribute("data-pinned", "true");
+    if (!phone && !newLayout) await expect(controls).toHaveAttribute("data-pinned", "true");
 
     // Leave back to the overworld.
     await page.getByRole("button", { name: "Leave town", exact: true }).click();
