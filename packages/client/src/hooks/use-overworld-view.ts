@@ -637,17 +637,22 @@ async function buildImageAtlas(pack: ImageTilePack): Promise<ImageAtlas> {
 
 /** The view's offset in screen pixels so `at` (world pixels) sits at the middle across and a little above
  *  the middle down (the narration sits at the bottom), kept inside the map; the view may go past its
- *  bottom edge by almost half a screen so nothing on it is under the narration. */
+ *  bottom edge by almost half a screen so nothing on it is under the narration. A map that fits in the
+ *  part of the view above the narration is centred there; one that fits the whole view but not that part
+ *  still scrolls, or its bottom rows would sit under the narration out of reach (a narrow view, such as
+ *  beside a side panel, draws at a smaller scale and many maps fit it). */
 export function overworldCamera(
   at: { x: number; y: number },
   map: { width: number; height: number },
   view: { width: number; height: number },
   scale: number,
 ) {
-  const axis = (mapPx: number, viewPx: number, look: number, share: number, past: number) =>
-    mapPx * scale <= viewPx
-      ? Math.round((mapPx * scale - viewPx) / 2)
-      : Math.round(Math.min(Math.max(0, look * scale - viewPx * share), mapPx * scale - viewPx + past));
+  const axis = (mapPx: number, viewPx: number, look: number, share: number, past: number) => {
+    const span = mapPx * scale;
+    const clear = viewPx - past;
+    if (span <= clear) return Math.round((span - clear) / 2);
+    return Math.round(Math.min(Math.max(0, look * scale - viewPx * share), span - viewPx + past));
+  };
   return {
     x: axis(map.width, view.width, at.x, 0.5, 0),
     y: axis(map.height, view.height, at.y, 0.4, view.height * 0.45),
