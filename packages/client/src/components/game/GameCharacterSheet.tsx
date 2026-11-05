@@ -33,7 +33,7 @@ import { cn, getAvatarCropStyle } from "../../lib/utils";
 import { useBackdropDismiss } from "../../hooks/use-backdrop-dismiss";
 import { GameRulesetSheet } from "./GameRulesetSheet";
 import { MarinaraClassSheet } from "./MarinaraClassSheet";
-import { readMarinaraCardProgression } from "@marinara-engine/shared";
+import { marinaraClass, readMarinaraCardProgression } from "@marinara-engine/shared";
 import { rulesetSheetLevel } from "../../lib/ruleset-sheet-view";
 import { DraftNumberInput } from "../ui/DraftNumberInput";
 import { NEUTRAL_SURFACE_VARIABLES } from "../ui/neutral-surface-styles";
@@ -373,6 +373,10 @@ export function GameCharacterSheet({
           : null,
     [card.level, ruleset, rulesetPinned, marinara],
   );
+  const marinaraProgression = useMemo(
+    () => (marinara ? readMarinaraCardProgression(marinara.stored) : undefined),
+    [marinara],
+  );
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isAvatarUploading, setIsAvatarUploading] = useState(false);
@@ -691,8 +695,15 @@ export function GameCharacterSheet({
               >
                 {card.title}
               </h2>
-              {previewGameCard?.class && (
-                <p className="text-xs font-medium text-[var(--muted-foreground)]">{previewGameCard.class}</p>
+              {marinaraProgression ? (
+                // Classic: the class they fight as, not the story's own label for them.
+                <p className="text-xs font-medium text-[var(--muted-foreground)]">
+                  {marinaraClass(marinaraProgression.activeClass)?.label ?? marinaraProgression.activeClass}
+                </p>
+              ) : (
+                previewGameCard?.class && (
+                  <p className="text-xs font-medium text-[var(--muted-foreground)]">{previewGameCard.class}</p>
+                )
               )}
               {previewGameCard?.shortDescription && !previewGameCard.class && (
                 <p className="text-xs text-[var(--muted-foreground)]">{previewGameCard.shortDescription}</p>
@@ -1083,7 +1094,8 @@ export function GameCharacterSheet({
             </>
           )}
 
-          {!isEditing && hasRpgStats && previewGameCard?.rpgStats && (
+          {/* Classic replaces the story attributes and pools with its own stats (in the class sheet above). */}
+          {!isEditing && !marinaraProgression && hasRpgStats && previewGameCard?.rpgStats && (
             <div className="border-b border-[var(--marinara-chat-chrome-panel-border)] px-5 py-4">
               <SectionHeader
                 icon={<Shield size={12} />}

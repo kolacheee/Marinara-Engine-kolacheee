@@ -219,17 +219,24 @@ export function guessMarinaraArchetype(card: {
 }): MarinaraArchetype {
   const sources = [card.class ?? "", (card.abilities ?? []).join(" "), card.shortDescription ?? ""];
   for (const source of sources) {
-    const text = ` ${source.toLowerCase()} `;
-    let best: { archetype: MarinaraArchetype; at: number } | null = null;
-    for (const archetype of MARINARA_ARCHETYPES) {
-      for (const word of ARCHETYPE_WORDS[archetype]) {
-        const at = text.search(new RegExp(`[^a-z]${word}`));
-        if (at >= 0 && (!best || at < best.at)) best = { archetype, at };
-      }
-    }
-    if (best) return best.archetype;
+    const found = marinaraArchetypeInText(source);
+    if (found) return found;
   }
   return "blade";
+}
+
+/** The archetype the earliest tree word in a text points at, or null when it names none (the library
+ *  card's Game Mode section shows what an Auto starting tree would read). */
+export function marinaraArchetypeInText(source: string): MarinaraArchetype | null {
+  const text = ` ${source.toLowerCase()} `;
+  let best: { archetype: MarinaraArchetype; at: number } | null = null;
+  for (const archetype of MARINARA_ARCHETYPES) {
+    for (const word of ARCHETYPE_WORDS[archetype]) {
+      const at = text.search(new RegExp(`[^a-z]${word}`));
+      if (at >= 0 && (!best || at < best.at)) best = { archetype, at };
+    }
+  }
+  return best?.archetype ?? null;
 }
 
 /** How a card's RPG attributes lean each stat (−1 to 1), for the hidden aptitudes. */
@@ -278,7 +285,47 @@ export function marinaraLeanFromCard(card: {
   return lean;
 }
 
-/** A new party member's progression for this game, from their card and the temperament kept on it. */
+/**
+ * What the author set for Classic games on the library card (Game Mode section, owner's pick 2026-11-05):
+ * the starting tree, unset for the guess from the game card, and up to two stats the character is
+ * strong in and one they are weak in. These lean the hidden aptitudes; the numbers stay the Engine's.
+ */
+export interface MarinaraCardClassic {
+  tree?: MarinaraArchetype;
+  strong?: MarinaraStat[];
+  weak?: MarinaraStat;
+}
+
+export const MARINARA_CLASSIC_STRONG_PICKS = 2;
+
+/** The card's Classic picks, cleaned: unknown trees and stats dropped, a weak stat never also strong. */
+export function readMarinaraCardClassic(value: unknown): MarinaraCardClassic | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const raw = value as { tree?: unknown; strong?: unknown; weak?: unknown };
+  const isStat = (one: unknown): one is MarinaraStat =>
+    typeof one === "string" && (MARINARA_STATS as readonly string[]).includes(one);
+  const tree =
+    typeof raw.tree === "string" && (MARINARA_ARCHETYPES as readonly string[]).includes(raw.tree)
+      ? (raw.tree as MarinaraArchetype)
+      : undefined;
+  const weak = isStat(raw.weak) ? raw.weak : undefined;
+  const strong = Array.isArray(raw.strong)
+    ? [...new Set(raw.strong.filter(isStat))].filter((stat) => stat !== weak).slice(0, MARINARA_CLASSIC_STRONG_PICKS)
+    : [];
+  if (!tree && !weak && strong.length === 0) return undefined;
+  return { ...(tree ? { tree } : {}), ...(strong.length ? { strong } : {}), ...(weak ? { weak } : {}) };
+}
+
+/** How the card's strong and weak picks lean each stat, for the hidden aptitudes. */
+export function marinaraLeanFromClassic(classic: MarinaraCardClassic): Partial<Record<MarinaraStat, number>> {
+  const lean: Partial<Record<MarinaraStat, number>> = {};
+  for (const stat of classic.strong ?? []) lean[stat] = 1;
+  if (classic.weak) lean[classic.weak] = -1;
+  return lean;
+}
+
+/** A new party member's progression for this game, from their card and the temperament kept on it.
+ *  The library card's Classic picks, when it has any, win over the guesses from the game card. */
 export function createMarinaraCardProgression(input: {
   gameId: string;
   card: {
@@ -290,12 +337,14 @@ export function createMarinaraCardProgression(input: {
   };
   temperament: MarinaraPartyTemperament;
   primary?: MarinaraArchetype;
+  classic?: MarinaraCardClassic;
 }): MarinaraCardProgression {
+  const picked = input.classic && (input.classic.strong?.length || input.classic.weak);
   return createMarinaraProgression({
     seed: `${input.gameId}:${input.card.name}`,
-    primary: input.primary ?? guessMarinaraArchetype(input.card),
+    primary: input.primary ?? input.classic?.tree ?? guessMarinaraArchetype(input.card),
     temperament: isMarinaraPartyTemperament(input.temperament) ? input.temperament : "disciplined",
-    lean: marinaraLeanFromCard(input.card),
+    lean: picked ? marinaraLeanFromClassic(input.classic!) : marinaraLeanFromCard(input.card),
   });
 }
 
