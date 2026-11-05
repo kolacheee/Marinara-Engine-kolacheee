@@ -21,6 +21,7 @@ import {
   marinaraFoeFighters,
   marinaraPartyFighter,
   normalizeCharacterLookupName,
+  type MarinaraCardClassic,
   partyTemperamentFallback,
   readMarinaraCardProgression,
   type Combatant,
@@ -83,6 +84,8 @@ export function marinaraFightStart(input: {
   treasure?: boolean;
   /** Seeds the rare encounter roll. */
   seed?: string;
+  /** The Classic picks on the party's library cards, by lookup name, for a progression made now. */
+  classic?: ReadonlyMap<string, MarinaraCardClassic>;
   /** The ammunition types the party's bags hold, for its Marksmen's bows and guns. */
   ammo?: readonly MarinaraDamageType[];
   /** The party owns wounding ammunition (Serrated): its Marksmen's pierce shots wound. */
@@ -107,6 +110,7 @@ export function marinaraFightStart(input: {
         gameId: input.gameId,
         card: (card ?? { name: member.name }) as Parameters<typeof createMarinaraCardProgression>[0]["card"],
         temperament,
+        classic: input.classic?.get(normalizeCharacterLookupName(card?.name ?? member.name)),
       });
       // One with no game card (a summoned beast) fights with a progression drawn for this fight alone.
       if (card) made.set(normalizeCharacterLookupName(card.name), progression);
