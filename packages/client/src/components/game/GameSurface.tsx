@@ -259,6 +259,7 @@ import type {
   GenerateSpatialMapDraftResponse,
   PendingSpatialTransition,
 } from "@marinara-engine/shared";
+import { marinaraClass, marinaraPartyFighter, readMarinaraCardProgression } from "@marinara-engine/shared";
 import type { AvatarCrop, CombatIconChoice, Persona, SceneSegmentEffect } from "@marinara-engine/shared";
 import {
   PROFESSOR_MARI_ID,
@@ -11132,6 +11133,30 @@ function GameSurfaceComponent({
       };
     }
 
+    // Classic: the level, class and fight HP/MP come from the character's progression, so the party list
+    // agrees with the sheet instead of the story's own label and tracker numbers.
+    if (
+      (config as { marinaraClasses?: boolean } | undefined)?.marinaraClasses === true &&
+      gameRuleset.status === "none"
+    ) {
+      for (const [id, card] of Object.entries(cards)) {
+        const progression = readMarinaraCardProgression(findGameCard(card.title)?.marinara);
+        if (!progression) continue;
+        const fighter = marinaraPartyFighter(card.title, card.title, progression);
+        const others = (card.stats ?? []).filter((stat) => !/^(hp|health|mp|mana)$/i.test(stat.name.trim()));
+        cards[id] = {
+          ...card,
+          subtitle: marinaraClass(progression.activeClass)?.label ?? card.subtitle,
+          level: progression.level,
+          stats: [
+            { name: "HP", value: fighter.maxHp, max: fighter.maxHp },
+            { name: "MP", value: fighter.maxMp, max: fighter.maxMp },
+            ...others,
+          ],
+        };
+      }
+    }
+
     return cards;
   }, [
     chatCharacterIds,
@@ -11143,6 +11168,7 @@ function GameSurfaceComponent({
     sessionNumber,
     inventoryItems,
     roomHumans,
+    gameRuleset.status,
   ]);
 
   const handleSaveCharacterSheet = useCallback(

@@ -1257,7 +1257,8 @@ export function CharacterEditor() {
       overhaulHasText(overhaulExt.boxColor) ||
       (Array.isArray(overhaulExt.nameAliases) && overhaulExt.nameAliases.length > 0),
     voice: overhaulHasText(overhaulExt.phoneticName),
-    stats: Boolean((overhaulExt.rpgStats as { enabled?: boolean } | undefined)?.enabled),
+    // Classic picks live in this section too, so a card with only those still shows it.
+    stats: Boolean((overhaulExt.rpgStats as { enabled?: boolean } | undefined)?.enabled) || overhaulExt.classic != null,
     advanced:
       overhaulHasText(formData.system_prompt) ||
       overhaulHasText(formData.post_history_instructions) ||

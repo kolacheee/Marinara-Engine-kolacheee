@@ -142,28 +142,21 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
       </div>
     );
 
-  const active = marinaraClass(progression.activeClass);
-  const classLevel = progression.classLevels[progression.activeClass] ?? 1;
   // What they fight with: the body plus gear and passives, so the sheet matches the battle bars
   // (owner 2026-11-05: HP on the sheet is the fight's HP, not the stored body value).
   const fighter = marinaraPartyFighter(name, name, progression);
 
   return (
     <div className="space-y-3 text-xs" data-testid="marinara-class-sheet">
+      {/* The class and its level sit in the sheet's header, above. */}
       <div className="space-y-1.5">
-        <p className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
-          <span className="text-sm font-semibold text-[var(--primary)]">
-            {active?.label ?? progression.activeClass}
-          </span>
-          <span className="tabular-nums text-[var(--muted-foreground)]">
-            {t("game.combat.marinara.sheet2.classLevel", { level: classLevel })}
-          </span>
-          {progression.fallen && (
+        {progression.fallen && (
+          <p>
             <span className="rounded-full border border-[var(--destructive)] px-2 text-[var(--destructive)]">
               {t("game.combat.marinara.sheet.fallen")}
             </span>
-          )}
-        </p>
+          </p>
+        )}
         <div className="grid max-w-[26rem] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2.5 tabular-nums text-[var(--muted-foreground)]">
           <span>{t("game.combat.marinara.level", { level: progression.level })}</span>
           <span className="h-[0.3125rem] overflow-hidden rounded-full bg-[var(--marinara-chat-chrome-highlight-bg)]">
@@ -214,7 +207,13 @@ export function MarinaraClassSheet({ chatId, name, stored }: Props) {
         ))}
       </div>
 
-      <div role="tabpanel" id={`marinara-sheet-panel-${tab}`} aria-labelledby={`marinara-sheet-tab-${tab}`}>
+      {/* A floor on the panel's height keeps the tab row still while switching tabs on a desktop. */}
+      <div
+        role="tabpanel"
+        className="sm:min-h-[min(26rem,calc(85dvh-22rem))]"
+        id={`marinara-sheet-panel-${tab}`}
+        aria-labelledby={`marinara-sheet-tab-${tab}`}
+      >
         {tab === "status" && (
           <StatusTab progression={progression} fighter={fighter} debug={debugMode} busy={busy} save={save} />
         )}
@@ -438,10 +437,20 @@ function ClassesTab({
     return { text: t("game.combat.marinara.sheet2.open"), kind: "open" };
   };
   const fits = progression.fallen ? [] : marinaraSecondaryFits(progression);
+  const details = (def: MarinaraClassDef) => (
+    <ClassDetails
+      key={def.id}
+      def={def}
+      progression={progression}
+      busy={busy || !!progression.fallen}
+      onTake={(id) => void save({ classId: id })}
+    />
+  );
   return (
     <div className="space-y-3">
       {treePicker}
-      <div className="grid gap-4 sm:grid-cols-2">
+      {/* Two trees sit side by side; a Pure character has one, so the details take the other column. */}
+      <div className="grid items-start gap-4 sm:grid-cols-2">
         {columns.map(({ tree, note }) => (
           <div key={tree} className="space-y-1.5">
             <p className={cn(LABEL, "flex justify-between gap-2")}>
@@ -495,16 +504,9 @@ function ClassesTab({
             })}
           </div>
         ))}
+        {shown && columns.length === 1 && details(shown)}
       </div>
-      {shown && (
-        <ClassDetails
-          key={shown.id}
-          def={shown}
-          progression={progression}
-          busy={busy || !!progression.fallen}
-          onTake={(id) => void save({ classId: id })}
-        />
-      )}
+      {shown && columns.length > 1 && details(shown)}
       {fits.length > 0 && (
         <div className="text-[var(--muted-foreground)]">
           <p className="font-medium">{t("game.combat.marinara.sheet.secondaryFits")}</p>
