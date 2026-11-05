@@ -167,7 +167,6 @@ import { SETTINGS_BUTTON_CLASS, SettingsSwitch } from "../panels/settings/Settin
 import {
   characterOnboardingSchema,
   createDefaultRpgStatPools,
-  findUnresolvedCardVariableUses,
   getOnboardingVariables,
   getRelevantOnboardingVariables,
   hasOnboardingContent,
@@ -2167,16 +2166,6 @@ function OnboardingTab({
     onboarding.cardVariables ?? [],
     "ui.characters.onboarding.issueUnusedCard",
   );
-  // A greeting is shown from the chat's own text, which does not read chat
-  // variables, so a card question's tag there would reach the player as typed.
-  const greetingUses = useMemo(
-    () =>
-      findUnresolvedCardVariableUses(onboarding, [
-        formData.first_mes,
-        ...((formData.alternate_greetings as string[] | undefined) ?? []),
-      ]),
-    [onboarding, formData.first_mes, formData.alternate_greetings],
-  );
 
   // Example answers, like the prompt-override preview: the first option of a
   // choice, the variable's own name for free text.
@@ -2358,20 +2347,6 @@ function OnboardingTab({
                   })
                 }
               />
-              {greetingUses.size > 0 && (
-                <p role="status" className="mt-1.5 flex items-start gap-1 text-[0.625rem] text-[var(--foreground)]">
-                  <AlertTriangle
-                    size="0.625rem"
-                    className="mt-0.5 shrink-0 text-[var(--marinara-app-accent-static)]"
-                    aria-hidden
-                  />
-                  <span>
-                    {localizeUi("ui.characters.onboarding.cardVariableInGreeting", {
-                      value1: [...greetingUses].join(", "),
-                    })}
-                  </span>
-                </p>
-              )}
             </EditorSectionAnchor>
             <EditorSectionAnchor id="character-onboarding-questions">
               <PresetVariablesEditor
@@ -3652,7 +3627,10 @@ function DialogueTab({
   const saveGreetingImages = async () => {
     const characterId = selfCharacterId;
     if (!characterId || greetingImageUrls.length === 0 || bakeImages.isPending) return;
-    const results = await bakeImages.mutateAsync(greetingImageUrls);
+    const results = await bakeImages.mutateAsync({
+      urls: greetingImageUrls,
+      bakedImages: readBakedGreetingImages(formData.extensions),
+    });
     if (useUIStore.getState().characterDetailId !== characterId) return;
     const saved = results.flatMap((result) => (result.file ? [{ file: result.file, url: result.url }] : []));
     const failed = results.filter((result) => !result.file);
