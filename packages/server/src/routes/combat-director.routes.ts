@@ -68,6 +68,7 @@ import {
   partyTemperamentFallback,
   MARINARA_ARCHETYPES,
   type MarinaraArchetype,
+  type MarinaraCardClassic,
   type MarinaraCardProgression,
   type MarinaraPartyTemperament,
   combatTacticsSchema,
@@ -91,6 +92,7 @@ import {
   type RulesetLiveStates,
 } from "@marinara-engine/shared";
 import { createCharactersStorage } from "../services/storage/characters.storage.js";
+import { marinaraCardClassicByName } from "../services/game/marinara-card-classic.service.js";
 import { createChatsStorage, withChatMetadataPatchQueue } from "../services/storage/chats.storage.js";
 import { createGameEngineStateStorage } from "../services/storage/game-engine-state.storage.js";
 import {
@@ -1389,6 +1391,11 @@ export async function combatDirectorRoutes(
         if (setup.marinaraClasses === true && input.style !== "ruleset" && !meta.gameRuleset) {
           marinara = marinaraFightStart({
             gameId: input.chatId,
+            classic: await marinaraCardClassicByName(
+              app.db,
+              chat,
+              (setup as { personaId?: string | null }).personaId ?? null,
+            ),
             cards: Array.isArray(meta.gameCharacterCards) ? meta.gameCharacterCards : [],
             party: input.party as Combatant[],
             enemies: input.enemies.map(({ creature: _c, tier: _t, proposed: _p, ...unit }) => unit) as Combatant[],
@@ -1863,6 +1870,10 @@ export async function combatDirectorRoutes(
     let refusal: string | null = null;
     let progression: unknown = null;
     let dropped: string[] = [];
+    // The library cards' Classic picks, for a progression made here (a primary tree picked before any fight).
+    const classicPicks = input.primary
+      ? await marinaraCardClassicByName(app.db, await chats.getById(input.chatId))
+      : new Map<string, MarinaraCardClassic>();
     const patched = await chats.patchMetadata(
       input.chatId,
       (current) => {
@@ -1893,6 +1904,7 @@ export async function combatDirectorRoutes(
               card: card as unknown as Parameters<typeof createMarinaraCardProgression>[0]["card"],
               temperament: next?.temperament ?? temperament,
               primary: input.primary,
+              classic: classicPicks.get(normalizeCharacterLookupName(name)),
             });
             next = {
               ...made,
