@@ -71,6 +71,10 @@ async function metadataOf(request: APIRequestContext, chatId: string) {
 /** On a phone the toolbar's buttons sit in the game's actions menu. */
 /** A button in the Game controls window, opened from its bubble (or the phone's Chat tools menu). */
 async function toolbarButton(page: Page, name: string) {
+  // The new layout (desktop) has no game controls window: the map and scene switch sits on the surface.
+  if (await page.locator(".ov-gwrap").first().isVisible()) {
+    return page.locator("[data-ov-view-switch]").getByRole("button", { name, exact: true });
+  }
   const controls = page.locator('.mari-window[data-window="control:game"]');
   // The window may already be open from an earlier click, and then its bubble is not shown.
   await expect(

@@ -15319,6 +15319,32 @@ function GameSurfaceComponent({
         {/* The top controls are windows that minimize to bubbles in a row at the top right (below the tactical
           combat bar while it shows, as the old buttons moved down). */}
         {overhaulActive && ovGameSettingsSlot && createPortal(renderOvGameSettings(), ovGameSettingsSlot)}
+      {/* The new layout has no game controls window, and switching between the map and the scene is
+          something a player does all game long: keep the switch on the surface, not only in Chat settings. */}
+      {overhaulActive && !introCinematicActive && !replayActive && (dungeonMapOpen || gameWorld) && (
+        <div className="pointer-events-auto absolute left-3 top-3 z-[30] flex gap-1.5" data-ov-view-switch>
+          {dungeonMapOpen && (
+            <button
+              type="button"
+              onClick={handleToggleDungeonView}
+              className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
+            >
+              {dungeonShown ? <Film size={13} /> : <MapIcon size={13} />}
+              {dungeonShown ? t("game.dungeon.showScene") : t("game.dungeon.show")}
+            </button>
+          )}
+          {gameWorld && !dungeonShown && (
+            <button
+              type="button"
+              onClick={handleToggleWorldView}
+              className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
+            >
+              {overworldShown ? <Film size={13} /> : <MapIcon size={13} />}
+              {overworldShown ? t("game.overworld.showScene") : t("game.overworld.show")}
+            </button>
+          )}
+        </div>
+      )}
         {!introCinematicActive && !replayActive && !boardFightOnScreen && (
           <>
             {!overhaulActive && (
