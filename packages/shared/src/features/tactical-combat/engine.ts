@@ -133,6 +133,8 @@ export function createTacticalCombat(
     made?: TacticalMadeBattlefield;
     /** One unit at a time in a rolled order (combat C6c); by side when absent. */
     turnOrder?: TacticalTurnOrder;
+    /** Columns off a generated small/medium/large board (Classic Marinara: MARINARA_BOARD_NARROWING). */
+    narrow?: number;
   },
 ): TacticalCombatState {
   const difficulty = normalizeGameDifficulty(opts.difficulty);
@@ -161,7 +163,7 @@ export function createTacticalCombat(
   const setupRng = deterministicRng(seed, 0);
   const generated = opts.made
     ? madeTacticalBattlefield(opts.made)
-    : generateTacticalBattlefield(units.length, setupRng, environment, opts.battlefield);
+    : generateTacticalBattlefield(units.length, setupRng, environment, opts.battlefield, opts.narrow ?? 0);
   if (!generated.ok) throw new Error(generated.error);
   const { grid } = generated;
   if (!placeSpawns(grid, units, formation, setupRng, generated.protectedTiles)) {
