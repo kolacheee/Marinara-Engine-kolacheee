@@ -22,6 +22,9 @@ CELL = 48
 PNG = "data:image/png;base64,"
 FAMILIES = ("fantasy", "wuxia", "jazz_age", "modern", "scifi", "wasteland")
 TILE_LOOKS = ("slums", "industry", "city", "suburb", "paddies")
+# Open ground redrawn with a texture (`<look><season>-base.png`, 288 px) and eight small things to scatter
+# over it (`<look><season>-detail-0..7.png`, the tile `decor_<look><season>`).
+DECOR_LOOKS = ("grass", "plains")
 SEASONS = ("", "@spring", "@autumn", "@winter")
 # Settings whose farmland carries one of their own farmsteads among its variants.
 FARMSTEADS = ("fantasy", "wuxia", "jazz_age", "modern")
@@ -55,6 +58,17 @@ def main(out_dir, paths, only):
                     print(f"{family}: {look}{season} incomplete, left as it is")
                     continue
                 made[f"{look}{season}"] = [(Image.open(f).convert("RGBA"), 1, 1) for f in files]
+        for look in DECOR_LOOKS:
+            if look not in only:
+                continue
+            for season in SEASONS:
+                # The ground's own texture, six cells square, and the small things scattered over it.
+                base = os.path.join(out_dir, f"{look}{season}-base.png")
+                if os.path.exists(base) and f"{look}{season}" in pack["tiles"]:
+                    made[f"{look}{season}"] = [(Image.open(base).convert("RGBA"), 6, 6)]
+                files = [os.path.join(out_dir, f"{look}{season}-detail-{i}.png") for i in range(8)]
+                if all(os.path.exists(f) for f in files):
+                    made[f"decor_{look}{season}"] = [(Image.open(f).convert("RGBA"), 1, 1) for f in files]
         if "farmland" in only:
             # Seven field tiles and, in a setting that has one, its farmstead: one cell in eight a farm.
             for season in SEASONS:
@@ -90,7 +104,7 @@ def main(out_dir, paths, only):
         for tid in made:
             pack["tiles"][tid] = []
         for tid, im, x, y, w, h in spots:
-            pack["tiles"][tid].append({"sheet": "built", "x": x, "y": y, **({"w": w, "h": h} if w > 1 else {})})
+            pack["tiles"][tid].append({"sheet": "built", "x": x, "y": y, **({"w": w, "h": h} if w > 1 or h > 1 else {})})
         with open(path, "w") as f:
             f.write(json.dumps(pack, separators=(",", ":")) + "\n")
         print(path, {tid: len(v) for tid, v in made.items()})
@@ -98,7 +112,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", *TILE_LOOKS}
+    only = {"markers", "farmland", *TILE_LOOKS, *DECOR_LOOKS}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))
