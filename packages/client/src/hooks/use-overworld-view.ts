@@ -460,7 +460,24 @@ export function useOverworldAtlas(
         return variants?.length ? Math.min(...variants.map((block) => block.length / 4)) : 0;
       };
       const fringeOf = (look: string) =>
-        seasonal(ready?.edges, `fringe_${look}`) ?? seasonal(ready?.edges, `fringe_${fallbackOf(look) ?? ""}`);
+        seasonal(ready?.fringes, `fringe_${look}`) ?? seasonal(ready?.fringes, `fringe_${fallbackOf(look) ?? ""}`);
+      // A fringe piece's mask on a canvas of its own, made the first time it is drawn.
+      const masks = new Map<number, HTMLCanvasElement | null>();
+      const maskOf = (at: number) => {
+        if (!masks.has(at)) {
+          const mask = document.createElement("canvas");
+          mask.width = mask.height = size;
+          const mctx = mask.getContext("2d");
+          const alpha = ready?.fringeAlpha;
+          if (mctx && alpha) {
+            const pixels = mctx.createImageData(size, size);
+            for (let i = 0; i < size * size; i++) pixels.data[i * 4 + 3] = alpha[at + i]!;
+            mctx.putImageData(pixels, 0, 0);
+          }
+          masks.set(at, mctx && alpha ? mask : null);
+        }
+        return masks.get(at) ?? null;
+      };
       draw.hasFringe = (look) => Boolean(fringeOf(look)?.length);
       draw.fringeRows = (look) => {
         const variants = fringeOf(look);
@@ -471,7 +488,8 @@ export function useOverworldAtlas(
         const variants = fringeOf(look);
         if (!variants?.length || piece < 0 || !ready?.canvas) return false;
         const at = variants[Math.min(variants.length - 1, Math.floor(pick * variants.length))]?.[piece];
-        if (!at) return false;
+        const mask = at === undefined ? null : maskOf(at);
+        if (!mask) return false;
         through ??= document.createElement("canvas");
         if (through.width !== size) through.width = through.height = size;
         const tctx = through.getContext("2d");
@@ -499,25 +517,20 @@ export function useOverworldAtlas(
           draw(tctx, look, (cx + dx) * OVERWORLD_TILE, (cy + dy) * OVERWORLD_TILE, pickAt(cx + dx, cy + dy));
         tctx.setTransform(1, 0, 0, 1, 0, 0);
         tctx.globalCompositeOperation = "destination-in";
-        tctx.drawImage(ready.canvas, at.sx, at.sy, size, size, 0, 0, size, size);
+        tctx.drawImage(mask, 0, 0);
         tctx.globalCompositeOperation = "source-over";
         ctx.drawImage(through, x - half, y - half, OVERWORLD_TILE, OVERWORLD_TILE);
         return true;
       };
-      let pixels: ImageData | null = null;
       draw.fringeCovers = (look, piece, pick, u, v) => {
         const variants = fringeOf(look);
-        if (!variants?.length || piece < 0 || !ready?.canvas) return false;
+        const alpha = ready?.fringeAlpha;
+        if (!variants?.length || piece < 0 || !alpha) return false;
         const at = variants[Math.min(variants.length - 1, Math.floor(pick * variants.length))]?.[piece];
-        if (!at) return false;
-        if (!pixels) {
-          const read = ready.canvas.getContext("2d", { willReadFrequently: true });
-          if (!read) return false;
-          pixels = read.getImageData(0, 0, ready.canvas.width, ready.canvas.height);
-        }
-        const px = at.sx + Math.min(size - 1, Math.max(0, Math.floor(u * size)));
-        const py = at.sy + Math.min(size - 1, Math.max(0, Math.floor(v * size)));
-        return (pixels.data[(py * pixels.width + px) * 4 + 3] ?? 0) >= 128;
+        if (at === undefined) return false;
+        const px = Math.min(size - 1, Math.max(0, Math.floor(u * size)));
+        const py = Math.min(size - 1, Math.max(0, Math.floor(v * size)));
+        return (alpha[at + py * size + px] ?? 0) >= 128;
       };
       draw.centred = (ctx, id, x, y, pick = 0) => {
         const variants = seasonal(ready?.tiles, id) ?? seasonal(ready?.tiles, fallbackOf(id) ?? "");
@@ -666,6 +679,13 @@ interface ImageAtlas {
   /** Each edge tile's variants, each its sixteen pieces (extruded by a pixel, so smoothing never
    *  pulls in a neighbouring piece): where each piece's own pixels start on the atlas. */
   edges?: Record<string, Array<Array<{ sx: number; sy: number }>>>;
+  /** Each fringe tile's variants, each its pieces: where the piece's mask starts in `fringeAlpha`. Fringes
+   *  are only ever masks, and a pack's are many (a block of thirty rows for each look and season), so they
+   *  are kept as their alpha alone rather than on the atlas, which they would push past what a browser
+   *  holds on one canvas. */
+  fringes?: Record<string, number[][]>;
+  /** The fringe pieces' alpha, a tile's size squared for each piece, row by row. */
+  fringeAlpha?: Uint8Array;
   /** The characters' walking blocks, on a canvas of their own (so many big blocks never crowd the
    *  tiles out), each where it is and its frame's cells. */
   charactersCanvas?: HTMLCanvasElement | null;
@@ -695,9 +715,14 @@ async function buildImageAtlas(pack: ImageTilePack): Promise<ImageAtlas> {
   let [x, y, rowHeight] = [0, 0, 0];
   // Edge tiles' pieces, each on its own with a pixel of its own edge around it.
   const pieces: Array<{ id: string; index: number; piece: number; tile: ImageTile; sx: number; sy: number }> = [];
+  const fringePieces: Array<{ id: string; index: number; piece: number; tile: ImageTile }> = [];
   for (const [id, variants] of Object.entries(pack.tiles)) {
     variants.forEach((tile, index) => {
-      if (id.startsWith("edge_") || id.startsWith("fringe_")) {
+      if (id.startsWith("fringe_")) {
+        for (let piece = 0; piece < 4 * (tile.h ?? 4); piece++) fringePieces.push({ id, index, piece, tile });
+        return;
+      }
+      if (id.startsWith("edge_")) {
         for (let piece = 0; piece < 4 * (tile.h ?? 4); piece++) {
           if (x + size + 2 > ROW) [x, y, rowHeight] = [0, y + rowHeight, 0];
           pieces.push({ id, index, piece, tile, sx: x + 1, sy: y + 1 });
@@ -754,6 +779,44 @@ async function buildImageAtlas(pack: ImageTilePack): Promise<ImageAtlas> {
     if (whole.length) edges[id] = whole;
     else delete edges[id];
   }
+  // The fringes' masks: each sheet read back once (never once a piece), sheet by sheet so only one sheet's
+  // pixels are held at a time.
+  const fringes: NonNullable<ImageAtlas["fringes"]> = {};
+  const fringeAlpha = new Uint8Array(fringePieces.length * size * size);
+  fringePieces.sort((a, b) => (a.tile.sheet < b.tile.sheet ? -1 : a.tile.sheet > b.tile.sheet ? 1 : 0));
+  let sheetRead = null as { id: string; data: ImageData | null } | null;
+  let slot = 0;
+  for (const { id, index, piece, tile } of fringePieces) {
+    if (sheetRead?.id !== tile.sheet) {
+      const source = images.get(tile.sheet);
+      let data: ImageData | null = null;
+      if (source) {
+        const read = document.createElement("canvas");
+        [read.width, read.height] = [source.naturalWidth, source.naturalHeight];
+        const rctx = read.getContext("2d", { willReadFrequently: true });
+        if (rctx) {
+          rctx.drawImage(source, 0, 0);
+          data = rctx.getImageData(0, 0, read.width, read.height);
+        }
+      }
+      sheetRead = { id: tile.sheet, data };
+    }
+    const data = sheetRead.data;
+    if (!data) continue;
+    const [px, py] = [(tile.x + (piece % 4)) * size, (tile.y + Math.floor(piece / 4)) * size];
+    if (px + size > data.width || py + size > data.height) continue;
+    const at = slot++ * size * size;
+    for (let row = 0; row < size; row++) {
+      const from = ((py + row) * data.width + px) * 4 + 3;
+      for (let col = 0; col < size; col++) fringeAlpha[at + row * size + col] = data.data[from + col * 4]!;
+    }
+    ((fringes[id] ??= [])[index] ??= [])[piece] = at;
+  }
+  for (const id of Object.keys(fringes)) {
+    const whole = worldWholeEdgeBlocks(fringes[id]!);
+    if (whole.length) fringes[id] = whole;
+    else delete fringes[id];
+  }
   // The characters' blocks (3 frames by 4 rows each), packed the same way on their own canvas.
   let charactersCanvas: HTMLCanvasElement | null = null;
   const characters: NonNullable<ImageAtlas["characters"]> = [];
@@ -783,7 +846,7 @@ async function buildImageAtlas(pack: ImageTilePack): Promise<ImageAtlas> {
     }
   }
   images.clear();
-  return { canvas, tiles, size, charactersCanvas, characters, edges };
+  return { canvas, tiles, size, charactersCanvas, characters, edges, fringes, fringeAlpha };
 }
 
 /** The view's offset in screen pixels so `at` (world pixels) sits at the middle across and a little above

@@ -143,6 +143,28 @@ try {
     for (const id of WORLD_TILE_IDS)
       if (!WORLD_IMAGE_ONLY_TILE_IDS.includes(id)) assert.ok(read.pack.tiles[id]?.length, `${family}: ${id}`);
   }
+  // Each family's built-in art fits the one atlas canvas the client lays it out on (2048 across, at most
+  // 8192 down, what a phone's browser holds), fringes aside (kept as masks): an atlas past it is drawn
+  // plain, as the towns were once fringe blocks grew to thirty rows.
+  for (const family of WORLD_ART_FAMILIES) {
+    const art = JSON.parse(
+      readFileSync(join(repo, `packages/server/src/assets/overworld-art/${family}.json`), "utf8"),
+    ) as { tileSize: number; tiles: Record<string, Array<{ w?: number; h?: number }>> };
+    const size = art.tileSize;
+    let [x, y, rowHeight] = [0, 0, 0];
+    const place = (w: number, h: number) => {
+      if (x + w > 2048) [x, y, rowHeight] = [0, y + rowHeight, 0];
+      x += w;
+      rowHeight = Math.max(rowHeight, h);
+    };
+    for (const [id, variants] of Object.entries(art.tiles))
+      for (const tile of variants) {
+        if (id.startsWith("fringe_")) continue;
+        if (id.startsWith("edge_")) for (let piece = 0; piece < 4 * (tile.h ?? 4); piece++) place(size + 2, size + 2);
+        else place((tile.w ?? 1) * size, (tile.h ?? 1) * size);
+      }
+    assert.ok(y + rowHeight <= 8192, `${family}: its art's atlas is ${y + rowHeight} down, past 8192`);
+  }
   for (const kit of WORLD_STARTER_KITS) {
     assert.ok(
       (WORLD_ART_FAMILIES as readonly string[]).includes(worldKitArtFamily(kit) ?? ""),
