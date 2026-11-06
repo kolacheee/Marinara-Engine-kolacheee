@@ -46,6 +46,25 @@ export function MarinaraFightPanel({
           {order.map((unit) => unit.name).join(" → ")}
         </p>
       )}
+      {/* What landed hits have shown of each foe so far, in sight without opening the fighter list
+          (overnight playtest 2026-11-06: testers kept their own notes of weak spots and resists). */}
+      {!over &&
+        enemies
+          .filter((unit) => unit.hp > 0 && Object.keys(unit.marinara?.affinities ?? {}).length > 0)
+          .map((unit) => (
+            <p key={unit.id} className="text-[var(--muted-foreground)]" data-testid="marinara-learned">
+              <span className="font-medium text-[var(--foreground)]">
+                {t("game.combat.marinara.learned", { name: unit.name })}
+              </span>{" "}
+              {Object.entries(unit.marinara!.affinities!)
+                .map(([type, affinity]) =>
+                  t(`game.combat.marinara.affinity.${affinity}`, {
+                    type: t(`game.combat.marinara.damageType.${type}`, { defaultValue: type }),
+                  }),
+                )
+                .join(", ")}
+            </p>
+          ))}
       {/* A Marksman's ammunition, switched by hand at any time; one the AI runs loads its own. */}
       {!over &&
         onLoadAmmo &&

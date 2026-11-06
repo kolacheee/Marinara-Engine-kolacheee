@@ -829,6 +829,9 @@ export interface MarinaraFighter {
   maxStamina: number;
   stamina: number;
   affinities?: MarinaraAffinities;
+  /** The affinities a landed hit has shown so far this fight ("a weak spot", "resisted", ...): what the
+   *  fight screen shows of a foe (overnight playtest 2026-11-06: testers kept their own notes). */
+  revealed?: MarinaraAffinities;
   /** On a board: the foes next to it, as the director last saw them (Sworn Ward). */
   nearFoes?: string[];
   /** On a board: the foes within a Hexer's spell reach (Grave Hunger). */
@@ -3731,6 +3734,7 @@ function strikeOnce(
             ? "resist"
             : undefined;
   if (multiplier < 0) {
+    target.revealed = { ...target.revealed, [type]: "absorb" };
     const before = target.hp;
     target.hp = Math.round(Math.min(target.maxHp, target.hp - damage));
     ctx.events.push({
@@ -3836,6 +3840,7 @@ function strikeOnce(
     ctx.events.push({ kind: "last-stand", actorId: target.id });
   }
   const dealt = before - Math.max(0, target.hp);
+  if (affinity) target.revealed = { ...target.revealed, [type]: affinity };
   ctx.events.push({
     kind: "hit",
     actorId: actor.id,
@@ -4095,7 +4100,8 @@ export interface MarinaraCombatantView {
   ammo?: { loaded: MarinaraDamageType; choices: MarinaraDamageType[]; auto?: boolean };
   /** Channel Element: the channeled element, the choices, whether it may change now, and AI-run. */
   channel?: { element: MarinaraDamageType; choices: MarinaraDamageType[]; ready: boolean; auto?: boolean };
-  /** Damage types it is known to be weak to, resist, be immune to or absorb. */
+  /** Damage types it is known to be weak to, resist, be immune to or absorb: all of a party member's,
+   *  and of a foe only what landed hits have shown this fight. */
   affinities?: MarinaraAffinities;
   /** Where it stands on the timeline: lower acts sooner. */
   next: number;
@@ -4136,7 +4142,9 @@ export function marinaraCombatantView(unit: MarinaraFighter, all?: readonly Mari
           },
         }
       : {}),
-    ...(unit.affinities ? { affinities: { ...unit.affinities } } : {}),
+    ...((unit.side === "party" ? unit.affinities : unit.revealed)
+      ? { affinities: { ...(unit.side === "party" ? unit.affinities : unit.revealed) } }
+      : {}),
     next: Math.round(unit.next),
   };
 }

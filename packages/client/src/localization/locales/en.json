@@ -3056,6 +3056,7 @@
   "game.combat.marinara.hidden": "Evading",
   "game.combat.marinara.hp": "HP {{hp}}/{{max}}",
   "game.combat.marinara.hpShield": "HP {{hp}}/{{max}} + {{shield}} shield",
+  "game.combat.marinara.learned": "{{name}}:",
   "game.combat.marinara.level": "Lv {{level}}",
   "game.combat.marinara.levelUp": "Level {{level}} ({{gains}})",
   "game.combat.marinara.loot": "Found: {{items}}",
