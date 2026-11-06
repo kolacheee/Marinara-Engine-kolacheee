@@ -419,7 +419,8 @@ export const MARINARA_SKILL_EFFECTS: Record<string, MarinaraEffect> = {
   // More power (Alyssa 2026-11-01): was 6.
   // Hits every foe nearly as hard as one (85% each, not the usual 60%), at a normal turn's weight: the
   // AI cast it 1% of the time against the old Twin Cast's 80% (lab, 2026-11-01).
-  "elemental-lance": dmg("magic", 11, { ranged: true }),
+  // 11 to 16 (playtest A/B 2026-11-06: at 11 Unravel was strictly better and Lance under 1% of picks).
+  "elemental-lance": dmg("magic", 16, { ranged: true }),
   tempest: dmg("magic", 9, { ranged: true, target: "all-enemies", cooldown: 3, areaPct: 0.7, loneFull: true }),
   // Rune Scholar line (Alyssa 2026-11-01): party elemental support. The party's weapon attacks and
   // skills strike in the caster's channeled element (Alyssa 2026-11-02).
