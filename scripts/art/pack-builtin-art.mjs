@@ -24,7 +24,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const shared = await import(pathToFileURL(join(ROOT, "packages/shared/dist/index.js")).href);
 const sharp = createRequire(join(ROOT, "packages/server/package.json"))("sharp");
-const { DUNGEON_SETS, WORLD_ART_FAMILIES, parseTilePack } = shared;
+const { DUNGEON_SETS, WORLD_ART_FAMILIES, WORLD_SQUARE_LOOKS, parseTilePack } = shared;
 
 const args = process.argv.slice(2);
 const onlyAt = args.indexOf("--only");
@@ -48,6 +48,10 @@ const FAMILY_FILES = { fantasy: "town" };
 /** Tiles that are characters, not places: drawn again on their own, never shipped from these packs. */
 const CHARACTER_TILES = new Set(["folk", "party"]);
 const PNG = "data:image/png;base64,";
+/** Modern ground a family's setting has no place for (user, 2026-11-06: suburbs "don't fit in a
+ *  fantasy/historical setting"): left out, so its worlds draw the fields instead (WORLD_GROUND_LOOK_FALLBACK). */
+const MODERN_GROUND = new Set(["suburb", "city", "industry", "slums"]);
+const NO_MODERN_GROUND = new Set(["fantasy", "wuxia"]);
 
 /** Every file under the sources, by name (the first found wins). */
 const files = new Map();
@@ -105,7 +109,13 @@ async function cleanSheets(pack, tiles) {
 async function builtIn(file, id, name, family) {
   const pack = JSON.parse(readFileSync(file, "utf8"));
   const tiles = Object.fromEntries(
-    Object.entries(pack.tiles).filter(([tile]) => !CHARACTER_TILES.has(tile.split("@")[0])),
+    Object.entries(pack.tiles).filter(([tile]) => {
+      const base = tile.split("@")[0];
+      if (CHARACTER_TILES.has(base)) return false;
+      // Square looks (WORLD_SQUARE_LOOKS) are drawn with no fringe.
+      if (base.startsWith("fringe_") && WORLD_SQUARE_LOOKS.includes(base.slice("fringe_".length))) return false;
+      return !(NO_MODERN_GROUND.has(family) && MODERN_GROUND.has(base.replace(/^fringe_/, "")));
+    }),
   );
   const out = {
     tilePackVersion: pack.tilePackVersion,

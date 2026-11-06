@@ -89,6 +89,17 @@ export const WORLD_FRINGE_ORDER: readonly WorldGroundLook[] = Object.freeze([
   "mountains",
 ]);
 
+/** Looks laid out in squares (user, 2026-11-06: "rounded edges on art that rounded edges doesn't make sense
+ *  for, like the suburbs"): fields and built-up ground keep to their cells. They spill no fringe, nothing
+ *  else's fringe or trees spill onto them, and a wood beside one stands on open ground, not on the field. */
+export const WORLD_SQUARE_LOOKS: readonly WorldGroundLook[] = Object.freeze([
+  "farmland",
+  "suburb",
+  "city",
+  "industry",
+  "slums",
+]);
+
 /** Seasons, for drawing only (user, 2026-10-05: "seasonal variants for foliage"). Game Mode keeps no
  *  calendar beyond the game's day count (a kit's calendar names months but gives them no length), so a season
  *  is WORLD_SEASON_DAYS days, the first day of a game the first day of spring. */
@@ -107,6 +118,12 @@ export const WORLD_GROUND_LOOK_FALLBACK: Readonly<Partial<Record<WorldGroundLook
   conifer_forest: "forest",
   autumn_forest: "forest",
   jungle: "forest",
+  // Settings whose art has no modern ground (fantasy, wuxia: user, 2026-11-06, suburbs "don't fit in a
+  // fantasy/historical setting") draw the fields around a town instead.
+  suburb: "farmland",
+  city: "farmland",
+  industry: "farmland",
+  slums: "farmland",
 });
 
 type WorldTerrainKind = (typeof WORLD_TERRAIN_KINDS)[number];

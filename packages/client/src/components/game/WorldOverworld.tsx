@@ -27,6 +27,7 @@ import {
   worldTreelineTrees,
   worldEdgeMask,
   WORLD_FRINGE_ORDER,
+  WORLD_SQUARE_LOOKS,
   worldGroundLooks,
   worldSites,
   worldTrip,
@@ -248,25 +249,30 @@ export function WorldOverworld({
         for (let dx = -1; dx <= 1; dx++) if (lookAt(x + dx, y + dy) !== lookAt(x, y)) return false;
       return true;
     };
+    // Fields and built-up ground keep to their own cells: a wood beside one stands on open ground (grass).
+    const square = new Set<string>(WORLD_SQUARE_LOOKS);
     const besideLook = (x: number, y: number) => {
       const count = new Map<string, number>();
       for (let dy = -1; dy <= 1; dy++)
         for (let dx = -1; dx <= 1; dx++) {
           const other = lookAt(x + dx, y + dy);
-          if (other !== lookAt(x, y)) count.set(other, (count.get(other) ?? 0) + 1);
+          if (other !== lookAt(x, y) && !square.has(other)) count.set(other, (count.get(other) ?? 0) + 1);
         }
-      return [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
+      return [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? "grass";
+    };
+    const groundOf = (x: number, y: number, drawn: string) => {
+      const noise = cellNoise(x, y);
+      inSeason(x, y);
+      if (!drawTile(ctx, drawn, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(99))) {
+        paintGround(ctx, drawn as (typeof looks)[number], x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise);
+      }
     };
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
         const look = drawnLook[y * width + x]!;
-        const drawn = treeLooks.has(look) && !inner(x, y) ? (besideLook(x, y) ?? look) : look;
-        const noise = cellNoise(x, y);
-        inSeason(x, y);
-        if (!drawTile(ctx, drawn, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(99))) {
-          paintGround(ctx, drawn as (typeof looks)[number], x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise);
-        }
+        const drawn = treeLooks.has(look) && !inner(x, y) ? besideLook(x, y) : look;
+        groundOf(x, y, drawn);
         if (water[own] && !waterEdges) {
           paintShore(ctx, x * OVERWORLD_TILE, y * OVERWORLD_TILE, {
             n: !wet(x, y - 1),
@@ -280,7 +286,7 @@ export function WorldOverworld({
     // Fringes: where the pack has one for a look, the look spills past its cells onto the ground beside it,
     // taller ground drawn last so it overhangs.
     for (const look of WORLD_FRINGE_ORDER) {
-      if (!drawTile.hasFringe(look) || !drawnLook.includes(look) || treeLooks.has(look)) continue;
+      if (!drawTile.hasFringe(look) || !drawnLook.includes(look) || treeLooks.has(look) || square.has(look)) continue;
       const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
       // Laid out as an edge tile is: with slanted corners and curved runs where the fringe has them.
       const fringeRows = drawTile.fringeRows(look);
@@ -300,6 +306,27 @@ export function WorldOverworld({
           );
         }
     }
+    // Square looks drawn again over whatever fringe spilled onto them, so their edges stay the cell lines.
+    if (WORLD_FRINGE_ORDER.some((look) => drawTile.hasFringe(look)))
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          const own = cells[y * width + x]!;
+          const look = drawnLook[y * width + x]!;
+          if (!square.has(look) || water[own]) continue;
+          groundOf(x, y, look);
+          // A field's own edge: a thin bank where it meets other ground, so it does not end in a bare cut.
+          if (look !== "farmland") continue;
+          const [px, py, t, bank] = [x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE / 24];
+          const open = (dx: number, dy: number) => {
+            const [nx, ny] = [x + dx, y + dy];
+            return nx >= 0 && ny >= 0 && nx < width && ny < height && drawnLook[ny * width + nx] !== look;
+          };
+          ctx.fillStyle = "rgba(48, 32, 18, 0.55)";
+          if (open(0, -1)) ctx.fillRect(px, py, t, bank);
+          if (open(0, 1)) ctx.fillRect(px, py + t - bank, t, bank);
+          if (open(-1, 0)) ctx.fillRect(px, py, bank, t);
+          if (open(1, 0)) ctx.fillRect(px + t - bank, py, bank, t);
+        }
     /** A dual-grid pass: every corner of the map whose four cells are partly or wholly the terrain. */
     const edgePass = (terrain: "water" | "road", filled: (x: number, y: number) => boolean) => {
       const rows = drawTile.edgeRows(terrain);
@@ -374,6 +401,7 @@ export function WorldOverworld({
         const [cx, cy] = [Math.floor(px), Math.floor(py)];
         if (cx < 0 || cy < 0 || cx >= width || cy >= height) return false;
         if (roads.has(cy * width + cx) || placed.has(cy * width + cx)) return false;
+        if (square.has(drawnLook[cy * width + cx]!)) return false;
         if (isLook(cx, cy) && inner(cx, cy)) return true;
         // The corner whose fringe piece the point lies in.
         const [kx, ky] = [Math.round(px), Math.round(py)];
