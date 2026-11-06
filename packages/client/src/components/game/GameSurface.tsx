@@ -11234,10 +11234,16 @@ function GameSurfaceComponent({
       const updatedCards = [...currentCards];
       if (sanitizedGameCard) {
         if (currentIndex >= 0) {
-          // This editor only knows the fields above. The game's copy of the ruleset sheet lives on
-          // the same card and is edited elsewhere, so it rides along instead of being dropped.
-          const rulesetSheet = currentCards[currentIndex]?.rulesetSheet;
-          updatedCards[currentIndex] = rulesetSheet ? { ...sanitizedGameCard, rulesetSheet } : sanitizedGameCard;
+          // This editor only knows the fields above. What the game owns on the same card and edits
+          // elsewhere rides along instead of being dropped: the ruleset sheet, the Classic progression
+          // (class levels, gear, tamed beasts), the temperament and the multiplayer seat.
+          const existing = currentCards[currentIndex] ?? {};
+          const kept = Object.fromEntries(
+            (
+              ["rulesetSheet", "marinara", "temperament", "temperamentInitial", "multiplayerParticipantId"] as const
+            ).flatMap((field) => (existing[field] != null ? [[field, existing[field]] as const] : [])),
+          );
+          updatedCards[currentIndex] = { ...sanitizedGameCard, ...kept };
         } else {
           updatedCards.push(sanitizedGameCard);
         }

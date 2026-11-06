@@ -3121,7 +3121,8 @@ export function applyGeneratedGameCharacterCards(
     updatedCount += 1;
     const normalizedCard = normalizeGeneratedGameCharacterCard(generatedCard, existingName);
     // The generated card is rebuilt from an allow-list. What the model never writes and the game
-    // owns rides along: the RPG stats and this game's copy of the ruleset sheet.
+    // owns rides along: the RPG stats, this game's copy of the ruleset sheet, the Classic progression
+    // (class levels, gear, tamed beasts) and the multiplayer seat the card belongs to.
     // Its temperament changes only where the model says the story changed it, and the one it started
     // the game with never does.
     return withCardTemperament(
@@ -3129,6 +3130,10 @@ export function applyGeneratedGameCharacterCards(
         ...normalizedCard,
         ...(existingCard.rpgStats ? { rpgStats: existingCard.rpgStats } : {}),
         ...(existingCard.rulesetSheet ? { rulesetSheet: existingCard.rulesetSheet } : {}),
+        ...(existingCard.marinara ? { marinara: existingCard.marinara } : {}),
+        ...(existingCard.multiplayerParticipantId
+          ? { multiplayerParticipantId: existingCard.multiplayerParticipantId }
+          : {}),
       },
       generatedCard.temperament,
       existingCard,
@@ -3136,6 +3141,41 @@ export function applyGeneratedGameCharacterCards(
   });
 
   return { cards, updatedCount };
+}
+
+/**
+ * A session's conclusion is written from the cards read before its (long) model call. What a fight, a
+ * class switch or the Legacy upgrade wrote onto a card meanwhile is the game's own, so each card keeps
+ * the Classic progression the fresh metadata holds for it.
+ */
+export function keepFreshGameOwnedCardFields(
+  next: Array<Record<string, unknown>>,
+  fresh: unknown,
+): Array<Record<string, unknown>> {
+  const freshCards = Array.isArray(fresh) ? (fresh as Array<Record<string, unknown>>) : [];
+  const byName = new Map(
+    freshCards.flatMap((card) =>
+      typeof card.name === "string" && card.name.trim()
+        ? [[normalizeCharacterLookupName(card.name), card] as const]
+        : [],
+    ),
+  );
+  return next.map((card) => {
+    const was = typeof card.name === "string" ? byName.get(normalizeCharacterLookupName(card.name)) : undefined;
+    return was?.marinara ? { ...card, marinara: was.marinara } : card;
+  });
+}
+
+/** The setup a conclusion writes back, keeping the Classic switches the fresh metadata holds (the Legacy
+ *  upgrade may have turned them on while the conclusion was being written). */
+function keepFreshClassicSetup<T extends object>(setup: T, freshMeta: Record<string, unknown>): T {
+  const fresh = (freshMeta.gameSetupConfig ?? null) as { marinaraClasses?: unknown; permadeath?: unknown } | null;
+  if (fresh?.marinaraClasses !== true) return setup;
+  return {
+    ...setup,
+    marinaraClasses: true,
+    ...(fresh.permadeath !== undefined ? { permadeath: fresh.permadeath } : {}),
+  };
 }
 
 /**
@@ -8644,7 +8684,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
 
         conclusionWasStored = true;
         return {
-          ...(syncedSetupConfig ? { gameSetupConfig: syncedSetupConfig } : {}),
+          ...(syncedSetupConfig ? { gameSetupConfig: keepFreshClassicSetup(syncedSetupConfig, freshMeta) } : {}),
           gamePartyCharacterIds: syncedPartyIds,
           gameSessionNumber: sessionNumber,
           gameSessionStatus: "concluded",
@@ -8652,7 +8692,10 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
           gamePlotTwists: appliedConclusion.updatedPlotTwists,
           gamePartyArcs: appliedConclusion.updatedPartyArcs,
           gamePreviousSessionSummaries: [...freshSummaries, appliedConclusion.summary],
-          gameCharacterCards: appliedConclusion.updatedCards,
+          gameCharacterCards: keepFreshGameOwnedCardFields(
+            appliedConclusion.updatedCards,
+            freshMeta.gameCharacterCards,
+          ),
           ...buildSessionPlanMetadataUpdates(freshMeta, appliedConclusion),
           ...buildMoraleMetadataUpdates(freshMeta, appliedConclusion.updatedMorale),
         };
@@ -8818,7 +8861,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
 
         conclusionWasStored = true;
         return {
-          ...(syncedSetupConfig ? { gameSetupConfig: syncedSetupConfig } : {}),
+          ...(syncedSetupConfig ? { gameSetupConfig: keepFreshClassicSetup(syncedSetupConfig, freshMeta) } : {}),
           gamePartyCharacterIds: syncedPartyIds,
           gameSessionNumber: sessionNumber,
           gameSessionStatus: "concluded",
@@ -8826,7 +8869,10 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
           gamePlotTwists: appliedConclusion.updatedPlotTwists,
           gamePartyArcs: appliedConclusion.updatedPartyArcs,
           gamePreviousSessionSummaries: [...freshSummaries, appliedConclusion.summary],
-          gameCharacterCards: appliedConclusion.updatedCards,
+          gameCharacterCards: keepFreshGameOwnedCardFields(
+            appliedConclusion.updatedCards,
+            freshMeta.gameCharacterCards,
+          ),
           ...buildSessionPlanMetadataUpdates(freshMeta, appliedConclusion),
           ...buildMoraleMetadataUpdates(freshMeta, appliedConclusion.updatedMorale),
         };
@@ -9200,7 +9246,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         gamePlotTwists: appliedConclusion.updatedPlotTwists,
         gamePartyArcs: appliedConclusion.updatedPartyArcs,
         gamePreviousSessionSummaries: nextSummaries,
-        gameCharacterCards: appliedConclusion.updatedCards,
+        gameCharacterCards: keepFreshGameOwnedCardFields(appliedConclusion.updatedCards, freshMeta.gameCharacterCards),
         ...buildSessionPlanMetadataUpdates(freshMeta, appliedConclusion),
         ...buildMoraleMetadataUpdates(freshMeta, appliedConclusion.updatedMorale),
       };
@@ -9281,7 +9327,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         gamePlotTwists: appliedConclusion.updatedPlotTwists,
         gamePartyArcs: appliedConclusion.updatedPartyArcs,
         gamePreviousSessionSummaries: nextSummaries,
-        gameCharacterCards: appliedConclusion.updatedCards,
+        gameCharacterCards: keepFreshGameOwnedCardFields(appliedConclusion.updatedCards, freshMeta.gameCharacterCards),
         ...buildSessionPlanMetadataUpdates(freshMeta, appliedConclusion),
         ...buildMoraleMetadataUpdates(freshMeta, appliedConclusion.updatedMorale),
       };
@@ -9877,10 +9923,23 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     return { characterName: targetName, gameCard };
   });
 
+  // ── GET /game/marinara/upgrade-legacy/picks ──
+  // The starting trees the party's library cards picked (their Game Mode section), so the Journal's
+  // upgrade card offers those instead of a guess from the Legacy class.
+  app.get("/marinara/upgrade-legacy/picks", async (req, reply) => {
+    const { chatId } = z.object({ chatId: z.string().min(1) }).parse(req.query);
+    const chat = await createChatsStorage(app.db).getById(chatId);
+    if (!chat) return reply.code(404).send({ error: "Chat not found" });
+    const picks = await legacyUpgradeClassicPicks(app.db, chat);
+    const trees: Record<string, MarinaraArchetype> = {};
+    for (const [name, classic] of picks) if (classic.tree) trees[name] = classic.tree;
+    return { trees };
+  });
+
   // ── POST /game/marinara/upgrade-legacy ──
   // A Legacy game's party moves to Classic classes (owner 2026-11-06): one class each, the secondary
-  // tree from their temperament (read from their Description where the card has none), their Legacy
-  // level carried over. Their Legacy stats stay on their cards.
+  // tree from their temperament (read from their Description where the card has none), starting at the
+  // top of that class. Their Legacy stats stay on their cards. Refused mid-fight.
   app.post("/marinara/upgrade-legacy", async (req, reply) => {
     const input = z
       .object({
