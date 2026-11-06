@@ -56,7 +56,7 @@ function partyCards(meta: Record<string, unknown>): Card[] {
 export function marinaraLegacyUpgradeBlock(meta: Record<string, unknown>): string | null {
   const setup = (meta.gameSetupConfig ?? null) as { marinaraClasses?: unknown } | null;
   if (!setup) return "This game has no setup to upgrade.";
-  if (setup.marinaraClasses === true) return "This game already uses Classic classes.";
+  if (setup.marinaraClasses === true) return "This game already uses MRPG classes.";
   if (meta.gameRuleset) return "A game played with a ruleset keeps its ruleset's sheets.";
   // A fight already under way was set up with Legacy sheets, and classes change only outside battle.
   if (meta.gameActiveState === "combat") return "Finish the fight first: the party upgrades outside battle.";

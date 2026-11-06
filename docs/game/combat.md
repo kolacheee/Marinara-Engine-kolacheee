@@ -1,6 +1,6 @@
 # Game Mode: Combat
 
-Combat in Game Mode comes in two kinds: **Classic** menu battles and **Tactical** grid battles. You choose between them with **Combat Preference** on the setup wizard's **World** step. To change it later, open **Chat Settings**, expand **Combat Style** and pick a **Battle system**. A ruleset that runs its own fights can limit the choices. The Game Master (GM, the AI that runs the game) sets up the encounter and narrates the result. Marinara resolves the battle actions with fixed dice math, so the AI never decides who hits.
+Combat in Game Mode comes in two kinds: **Turn-Based** menu battles and **Tactical** grid battles. You choose between them with **Combat Preference** on the setup wizard's **World** step. To change it later, open **Chat Settings**, expand **Combat Style** and pick a **Battle system**. A ruleset that runs its own fights can limit the choices. The Game Master (GM, the AI that runs the game) sets up the encounter and narrates the result. Marinara resolves the battle actions with fixed dice math, so the AI never decides who hits.
 
 ## Starting an encounter
 
@@ -10,9 +10,9 @@ The screen shows your party on one side and the enemies on the other. Each fight
 
 > **Note:** In a game on a ruleset that resolves its own fights, such as 5e (SRD 5.1), the fight follows the ruleset, not this page. See [Fights on a Ruleset](fighting-on-a-ruleset.md). A ruleset that only lends its sheet to battles keeps the combat here. See [What happens in battles](rulesets.md#what-happens-in-battles).
 
-## Play a Classic battle
+## Play a Turn-Based battle
 
-A Classic battle has no board. All party members take part. You choose the action for one character, the first living party member. The other companions act on their own.
+A Turn-Based battle has no board. All party members take part. You choose the action for one character, the first living party member. The other companions act on their own.
 
 On your turn, pick one action:
 
@@ -68,7 +68,7 @@ On a phone, the action buttons stick to the bottom of the screen. Panels that do
 
 ## How combat math works
 
-Each round is decided by fixed dice math, not by the AI. This keeps combat fair and consistent. A d20 is a twenty-sided die (1 to 20). The initiative, attack and damage rules below are how Classic battles play. They are Marinara's own rules, not those of a ruleset. For Tactical battles, see [Turn order](#turn-order) and [Sight, cover and height](#sight-cover-and-height).
+Each round is decided by fixed dice math, not by the AI. This keeps combat fair and consistent. A d20 is a twenty-sided die (1 to 20). The initiative, attack and damage rules below are how Turn-Based battles play in a **Legacy** game. They are Marinara's own rules, not those of a ruleset. A game on **MRPG** classes fights by its classes' stats and skills instead: see [MRPG classes](mrpg-classes.md). For Tactical battles, see [Turn order](#turn-order) and [Sight, cover and height](#sight-cover-and-height).
 
 **Initiative.** At the start of each round, every fighter rolls a d20 and adds a bonus from their Speed (Speed divided by 5, rounded down). Higher totals act first. A fighter skips the round if frozen, stunned or imprisoned, or if their Speed has dropped to 0.
 
@@ -156,8 +156,8 @@ Both special modes use the current movement allowance and straight (not diagonal
 
 A Tactical battle takes turns in one of two ways:
 
-- **One at a time, by initiative**: every unit gets a place in a rolled order and only the unit whose turn it is can act. The board shows the order. New Overworld RPG games use this.
-- **Your whole party, then the enemies**: each party unit can act, then the enemy phase plays. Classic games use this.
+- **One at a time, by initiative**: every unit gets a place in a rolled order and only the unit whose turn it is can act. The board shows the order. New Overworld games use this.
+- **Your whole party, then the enemies**: each party unit can act, then the enemy phase plays. VN games use this.
 
 To change it, open **Chat Settings**, expand **Combat Style** and pick a **Turn order**. It appears while the **Battle system** is Tactical, unless the game's ruleset runs its own fights. The change applies from the next battle. A battle in progress keeps its order.
 
