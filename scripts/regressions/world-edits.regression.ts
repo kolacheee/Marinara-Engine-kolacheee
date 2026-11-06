@@ -245,8 +245,10 @@ try {
       "its people work there",
     );
     assert.ok(town.homeOf[wren.id], "the person added by hand has a home");
+    // By the building's id: a place that took an empty home keeps that home's id (generator 3's set-back
+    // lots leave fewer free lots, so The Lantern takes one here).
     for (const person of worldCast(game, "e2"))
-      assert.equal(town.workOf[person.id], "e2", `${person.name} works at The Lantern`);
+      assert.equal(town.workOf[person.id], lantern.id, `${person.name} works at The Lantern`);
   }
 
   // ── A town whose settlements have places of their own (a town-scale kit): someone added by hand never
