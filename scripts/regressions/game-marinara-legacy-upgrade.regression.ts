@@ -18,6 +18,10 @@ import {
   marinaraTrees,
   readMarinaraCardProgression,
 } from "../../packages/shared/src/index.js";
+import {
+  applyGeneratedGameCharacterCards,
+  keepFreshGameOwnedCardFields,
+} from "../../packages/server/src/routes/game.routes.js";
 
 const legacy = () => ({
   gameSetupConfig: { genre: "fantasy" },
@@ -128,5 +132,36 @@ assert.ok(
       },
     ),
 );
+
+// Not mid-fight: the fight under way was set up with Legacy sheets.
+assert.match(marinaraLegacyUpgradeBlock({ ...legacy(), gameActiveState: "combat" }) ?? "", /fight/);
+
+// What the upgrade gave survives a session's end: the conclusion rewrites each card from what the model
+// returned, and the Classic progression (and the multiplayer seat) ride along.
+{
+  const done = applyMarinaraLegacyUpgrade(legacy(), {
+    gameId: "game-2",
+    members: [],
+    read: new Map(),
+    classic: new Map(),
+    at: "2026-11-06T14:00:00Z",
+  });
+  assert.ok("patch" in done);
+  const cards = (done.patch.gameCharacterCards as Array<Record<string, unknown>>).map((card) =>
+    card.name === "Wren" ? { ...card, multiplayerParticipantId: "seat-1" } : card,
+  );
+  const concluded = applyGeneratedGameCharacterCards(
+    cards,
+    cards.map((card) => ({ name: card.name, class: "Hero", shortDescription: "Changed by the story." })),
+  ).cards;
+  for (const [index, card] of concluded.entries()) assert.deepEqual(card.marinara, cards[index]!.marinara);
+  assert.equal(concluded.find((card) => card.name === "Wren")!.multiplayerParticipantId, "seat-1");
+
+  // The conclusion was written from cards read before its model call; a progression the game wrote
+  // meanwhile (the upgrade itself, a fight's XP) is the one kept.
+  const stale = legacy().gameCharacterCards as Array<Record<string, unknown>>;
+  const kept = keepFreshGameOwnedCardFields(applyGeneratedGameCharacterCards(stale, stale).cards, cards);
+  for (const [index, card] of kept.entries()) assert.deepEqual(card.marinara, cards[index]!.marinara);
+}
 
 console.log("game-marinara-legacy-upgrade: ok");
