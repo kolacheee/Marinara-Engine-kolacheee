@@ -394,6 +394,40 @@ export function marinaraBoardTurn(
     to = best.at;
     reasons = best.reasons;
   }
+  // A blow that barely scratches its foe (armour, a resisted element) while another foe it could do real
+  // harm to is a move away: look from the tile nearest each other foe too, and strike there when that is
+  // clearly worth more (slice tester s2 2026-11-06: a Headsman hit a Siege Walker for 1 a turn, regen 7,
+  // four rounds running, with the caster boss a few tiles off).
+  const scratch = 0.03;
+  const pickedScore = () => reasons?.ranking[0]?.score ?? -Infinity;
+  if (
+    picked &&
+    (picked.type === "attack" || picked.type === "skill") &&
+    picked.targetId !== tu.id &&
+    !bound &&
+    !tu.hasMoved &&
+    pickedScore() < scratch &&
+    foes.length > 1
+  ) {
+    const tiles = [{ x: tu.x, y: tu.y }, ...getMovementRange(t, tu.id)];
+    let best: { score: number; at: TacticalCoord | undefined; picked: ReturnType<typeof decide>; reasons: typeof reasons } = {
+      score: pickedScore(),
+      at: to,
+      picked,
+      reasons,
+    };
+    for (const foe of foes) {
+      if (foe.id === picked.targetId) continue;
+      const at = tiles.reduce((b, a) => (from(a)(foe.id) < from(b)(foe.id) ? a : b));
+      const tried = decide(at);
+      const score = pickedScore();
+      if (tried && tried.type !== "defend" && score > best.score + 0.02)
+        best = { score, at: at.x === tu.x && at.y === tu.y ? undefined : at, picked: tried, reasons };
+    }
+    picked = best.picked;
+    to = best.at;
+    reasons = best.reasons;
+  }
   const firstReasons = reasons;
   if (picked?.type === "defend" && !tu.hasMoved && foes.length) {
     // Closest approach: a tile with a foe in reach (the farthest such tile for a ranged unit), else
