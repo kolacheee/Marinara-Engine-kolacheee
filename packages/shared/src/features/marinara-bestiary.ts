@@ -145,6 +145,9 @@ export interface MarinaraEnemyAbility {
   /** The lowest tier and level it may be used at (hard control, area breath, Doom). */
   minTier?: MarinaraEnemyTier;
   minLevel?: number;
+  /** Not ready on the foe's first turn: the pack circles before it leaps (playtest b57, reasons log
+   *  on: four Pounces on a full-HP back-row Mender before she could act). */
+  opensCold?: boolean;
 }
 
 const strike = (power: number, extra: Partial<MarinaraEffect> = {}): MarinaraEffect => ({
@@ -170,7 +173,7 @@ const ability = (
   label: string,
   summary: string,
   effect: MarinaraEffect,
-  gate: { minTier?: MarinaraEnemyTier; minLevel?: number } = {},
+  gate: { minTier?: MarinaraEnemyTier; minLevel?: number; opensCold?: boolean } = {},
 ): MarinaraEnemyAbility => ({ id, label, summary, effect, ...gate });
 
 /**
@@ -234,8 +237,9 @@ export const MARINARA_BESTIARY_ABILITIES: readonly MarinaraEnemyAbility[] = [
   ability(
     "pounce",
     "Pounce",
-    "Leaps over the front row: full damage to anyone.",
+    "Leaps over the front row: full damage to anyone. Not on its first turn: the pack circles first.",
     strike(5, { ranged: true, cooldown: 2 }),
+    { opensCold: true },
   ),
   ability(
     "gnaw",
@@ -1964,6 +1968,12 @@ export function marinaraEnemyAbilities(family: MarinaraEnemyFamily, tier: Marina
 
 // ── Building a foe ──
 
+/** Abilities that open cold start on a cooldown that clears after the foe's first turn. */
+function openingCooldowns(ids: readonly string[]): { openingCooldowns?: Record<string, number> } {
+  const cold = ids.filter((id) => ABILITY_BY_ID.get(id)?.opensCold);
+  return cold.length ? { openingCooldowns: Object.fromEntries(cold.map((id) => [`enemy:${id}`, 2])) } : {};
+}
+
 /** A bestiary foe: what the Engine's `buildMarinaraEnemy` takes, plus its family and the combat AI's hints. */
 export type MarinaraBestiaryFoeSpec = MarinaraEnemySpec & {
   familyId: string;
@@ -2023,6 +2033,7 @@ export function marinaraEnemySpec(input: {
     ...(family.attackType ? { attackType: family.attackType } : {}),
     ...(family.rangedBasic ? { ranged: true } : {}),
     enemySkills: marinaraEnemyAbilities(family, input.tier, level),
+    ...openingCooldowns(marinaraEnemyAbilities(family, input.tier, level)),
     ...(classId && family.carries?.length
       ? { carriedSkills: family.carries.filter((each) => each.from <= level).map((each) => each.id) }
       : {}),
@@ -2167,6 +2178,17 @@ export const MARINARA_ESCORT_PREMIUM: Partial<Record<string, number>> = {
  */
 export const MARINARA_COVER_PREMIUM = 1.4;
 
+/**
+ * Pack hunters that leap the line are worth more from level 12: their Pounces stack on one back-row
+ * target, which the single-family measure against a set party underrates (playtest b57, reasons log
+ * on, L12-30 beast-led fights: hounds won 50 of 61 Classic and stalkers 11 of 17, against 100% for
+ * standard fights on Normal).
+ */
+export const MARINARA_PACK_PREMIUM: { from: number; families: Partial<Record<string, number>> } = {
+  from: 12,
+  families: { hound: 1.2, stalker: 1.25 },
+};
+
 /** What a group of foes is worth together: each foe's worth, with shooters behind a taunter at a premium. */
 export function marinaraEncounterThreat(foes: readonly MarinaraEncounterFoe[], partyLevel: number): number {
   const covered = foes.some((foe) => {
@@ -2194,6 +2216,7 @@ export function marinaraFoeThreat(
     worth = (standard ?? 1) * MARINARA_TIER_RULES[tier].threat;
   }
   worth *= MARINARA_THREAT_CALIBRATION * (MARINARA_ESCORT_PREMIUM[familyId] ?? 1);
+  if (level >= MARINARA_PACK_PREMIUM.from) worth *= MARINARA_PACK_PREMIUM.families[familyId] ?? 1;
   if (tier === "boss") worth *= MARINARA_BOSS_THREAT_PREMIUM;
   return worth * Math.pow(MARINARA_LEVEL_GAP_THREAT, level - partyLevel);
 }

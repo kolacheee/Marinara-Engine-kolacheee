@@ -80,6 +80,8 @@ export function enemyFighter(spec: MarinaraBestiaryFoeSpec): MarinaraFighter {
     ...(spec.enemySkills?.length ? { enemySkills: spec.enemySkills } : {}),
     ...(spec.statScale ? { statScale: spec.statScale } : {}),
     ...(spec.ranged ? { ranged: true } : {}),
+    ...(spec.carriedSkills?.length ? { carriedSkills: spec.carriedSkills } : {}),
+    ...(spec.openingCooldowns ? { openingCooldowns: spec.openingCooldowns } : {}),
   });
   // The Engine applies damageScale when it builds the foe; the lab does it with a lasting damage mod.
   const scale = (spec as { damageScale?: number }).damageScale;
@@ -304,7 +306,7 @@ export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], see
         if (text) reasons.push(`R${s.round} ${text}`);
       });
       loadBestAmmo(s.marinara!.fighters, unit.id, action);
-      commandCombatDirector(s, { type: "classic", action });
+      commandCombatDirector(s, { type: "classic", action }, "ai");
     } else if (s.window) commandCombatDirector(s, { type: "fallback" }, "fallback");
     else commandCombatDirector(s, { type: "continue" });
   }
