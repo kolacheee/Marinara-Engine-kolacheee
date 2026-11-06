@@ -2442,9 +2442,8 @@ export function marinaraHitNumbers(
   // Grand Inscription's +20% (and any party damage boon) is said when it counts.
   if (actor.mods.some((mod) => mod.stat === "damage" && mod.source === "grand-inscription" && mod.pct > 0))
     notes.add("Grand Inscription");
-  // A basic attack is never walled off: immune and absorb count as resist for it. Nor is any hit on a
-  // boss (MARINARA_BOSS_DAMAGE_FLOOR).
-  let multiplier = effect.basic || target.tier === "boss" ? Math.max(best.multiplier, 0.5) : best.multiplier;
+  // A basic attack is never walled off: immune and absorb count as resist for it.
+  let multiplier = effect.basic ? Math.max(best.multiplier, 0.5) : best.multiplier;
   // Adaptive Grip: an armored foe's resistance to slash, pierce or blunt doesn't count against the user.
   if (
     hooks.noPenalty &&
@@ -2523,7 +2522,7 @@ export function marinaraHitNumbers(
   const floor = Math.max(
     MARINARA_TUNING.minDamage,
     (powerStat(actor, attackStat, effect, all) + (effect.power ?? MARINARA_TUNING.basicPower)) *
-      (target.tier === "boss" ? MARINARA_BOSS_DAMAGE_FLOOR.minDamagePct : MARINARA_TUNING.minDamagePct),
+      MARINARA_TUNING.minDamagePct,
   );
   const raw = Math.max(floor, damage * (1 + pct)) * (effect.spread ?? 1) * rowFactor;
   // Absorbed damage comes out negative: it heals the target.
@@ -2543,7 +2542,7 @@ export function marinaraHitNumbers(
         Math.min(MARINARA_PERFECT_EVASION_CAP, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0))) +
     (target.hidden ? MARINARA_VANISH_EVADE : 0);
   const hitChance = Math.max(
-    target.tier === "boss" && actor.side !== target.side ? MARINARA_BOSS_HIT_FLOOR : MARINARA_MIN_HIT_CHANCE,
+    MARINARA_MIN_HIT_CHANCE,
     Math.min(
       100,
       MARINARA_TUNING.hitBase +
@@ -2747,21 +2746,6 @@ function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly Marina
  * statuses that would take whole turns from it, and once below half its HP it hits harder for the
  * rest of the fight.
  */
-/**
- * No boss walls a hit off (overnight playtest 2026-11-06, panel r7: a deadly Cinder Hulk took 3 from
- * arrows and Last Cut, "four of five characters can't hurt it"; a ghost boss took 0 from slash skills
- * and 3 from magic): every hit on a boss counts immune and absorb as resist, and its Defense or
- * Resistance takes away at most 70% of the hit's attack and power. Its own commit, to keep or revert.
- */
-export const MARINARA_BOSS_DAMAGE_FLOOR = { minDamagePct: 0.3 };
-
-/**
- * A hit on a boss lands at least this often, however quick the boss (overnight playtest 2026-11-06,
- * panel r7: hard and deadly boss fights ran 28-37 rounds at 25-41% to hit; all four testers named
- * boss fight length a top complaint). Its own commit, to keep or revert.
- */
-export const MARINARA_BOSS_HIT_FLOOR = 60;
-
 export const MARINARA_BOSS_RULES = {
   ignores: ["sleep", "stun", "confuse"] as readonly MarinaraStatusId[],
   enrageBelow: 0.5,
