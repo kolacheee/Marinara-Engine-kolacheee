@@ -22,6 +22,7 @@ import {
   marinaraFoeFighters,
   marinaraPartyFighter,
   normalizeCharacterLookupName,
+  normalizeGameDifficulty,
   type MarinaraCardClassic,
   partyTemperamentFallback,
   readMarinaraCardProgression,
@@ -180,6 +181,9 @@ export function marinaraFightStart(input: {
     if (family && !extra.aiHints?.temperament) extra.aiHints = { ...extra.aiHints, ...family };
     return marinaraCombatant(fighter, extra);
   });
+  // Easy games soften bosses (Alyssa 2026-11-06): hits on them can't be walled off or dodged as often.
+  if (normalizeGameDifficulty(input.difficulty) === "casual")
+    for (const fighter of foes.fighters) if (fighter.tier === "boss") fighter.easyFloors = true;
   fighters.push(...foes.fighters);
   const cards = made.size
     ? input.cards.map((card) => {
