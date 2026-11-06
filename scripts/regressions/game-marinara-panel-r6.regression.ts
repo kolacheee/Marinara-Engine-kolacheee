@@ -255,4 +255,22 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
   assert.ok(fell, "the counter dropped the attacker in some try");
 }
 
+// A cleanse takes debuffs only: a Fortress's lowered damage taken stays, Mark Prey's raised one goes (s11).
+{
+  const mender = unit("M", "party", "mender", ["purify"]);
+  const tank = unit("T", "party", "guard");
+  tank.mods.push({ stat: "damage-taken", pct: -0.3, turns: 2, source: "fortress" });
+  tank.mods.push({ stat: "damage-taken", pct: 0.35, turns: 2, source: "mark-prey" });
+  const events: MarinaraEvent[] = [];
+  performMarinaraOption(mender, marinaraOption(mender, "purify", [mender, tank])!, [tank], [mender, tank], {
+    random: () => 0.5,
+    events,
+  });
+  assert.deepEqual(
+    tank.mods.map((one) => one.source),
+    ["fortress"],
+  );
+  assert.deepEqual(events.find((one) => one.kind === "cleanse")?.notes, ["raised damage taken"]);
+}
+
 console.log("game-marinara-panel-r6: ok");

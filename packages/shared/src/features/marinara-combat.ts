@@ -1462,12 +1462,15 @@ function withSlowTime(
   }
 }
 
+/** Whether a stat change hurts its bearer: less of a stat, or more damage taken (Mark Prey). A
+ *  Fortress's lowered damage taken is a buff (slice tester s11: Purify cleared it). */
+export function marinaraHarmfulMod(mod: { stat: string; pct: number; source?: string }): boolean {
+  return (mod.stat === "damage-taken" ? mod.pct > 0 : mod.pct < 0) && mod.source !== "probe";
+}
+
 /** Whether a fighter carries a debuff or a harmful status. */
 export function marinaraDebuffed(unit: MarinaraFighter): boolean {
-  return (
-    unit.statuses.some((s) => HARMFUL.has(s.status)) ||
-    unit.mods.some((mod) => (mod.stat === "damage-taken" ? mod.pct > 0 : mod.pct < 0) && mod.source !== "probe")
-  );
+  return unit.statuses.some((s) => HARMFUL.has(s.status)) || unit.mods.some(marinaraHarmfulMod);
 }
 
 export function marinaraEffectiveStat(
@@ -2692,7 +2695,7 @@ export function marinaraDebuffBurden(unit: MarinaraFighter, all: readonly Marina
         status.turns *
         (status.status === "sleep" || status.status === "stun" ? 1 : status.status === "confuse" ? 0.5 : 0.3);
   }
-  for (const mod of unit.mods) if (mod.pct < 0) value += Math.abs(mod.pct) * unit.maxHp * 0.15 * mod.turns;
+  for (const mod of unit.mods) if (marinaraHarmfulMod(mod)) value += Math.abs(mod.pct) * unit.maxHp * 0.15 * mod.turns;
   return value;
 }
 
@@ -2701,14 +2704,15 @@ const doomToll = (unit: MarinaraFighter) =>
 
 /** Clears harm off a unit; returns what it cleared, for the log ("slow", "lowered defense"). */
 function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly MarinaraFighter[]): string[] {
-  const named = (mod: { stat: string }) => `lowered ${mod.stat.replace(/-/g, " ")}`;
+  const named = (mod: { stat: string; pct: number }) =>
+    `${mod.pct > 0 ? "raised" : "lowered"} ${mod.stat.replace(/-/g, " ")}`;
   if (how === "all") {
     const cleared = [
       ...unit.statuses.filter((s) => HARMFUL.has(s.status)).map((s) => s.status as string),
-      ...unit.mods.filter((m) => m.pct < 0).map(named),
+      ...unit.mods.filter(marinaraHarmfulMod).map(named),
     ];
     unit.statuses = unit.statuses.filter((s) => !HARMFUL.has(s.status));
-    unit.mods = unit.mods.filter((m) => m.pct >= 0);
+    unit.mods = unit.mods.filter((m) => !marinaraHarmfulMod(m));
     return [...new Set(cleared)];
   }
   let best: { kind: "status" | "mod"; index: number; value: number } | null = null;
@@ -2719,7 +2723,7 @@ function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly Marina
     if (!best || value > best.value) best = { kind: "status", index, value };
   });
   unit.mods.forEach((mod, index) => {
-    if (mod.pct >= 0) return;
+    if (!marinaraHarmfulMod(mod)) return;
     const value = Math.abs(mod.pct) * unit.maxHp * 0.15 * mod.turns;
     if (!best || value > best.value) best = { kind: "mod", index, value };
   });
