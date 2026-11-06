@@ -68,11 +68,11 @@ In a game on **MRPG** classes, the attribute modifier comes from the character's
 | Speed | Acrobatics, Stealth |
 | Skill | Sleight of Hand, Investigation, Perception, Medicine, Survival, Animal Handling, and any skill not listed here |
 | Defense | Endurance, Constitution |
-| Magic | Arcana, History, Nature, Religion, Intelligence |
-| Resistance | Insight, Wisdom |
+| Magic | Arcana, History, Nature, Intelligence |
+| Resistance | Insight, Religion, Wisdom |
 | Luck | Persuasion, Deception, Performance, Charisma |
 
-The check adds a quarter of that stat, rounded down, less one. That is about +1 for a new character's best stat, +2 or +3 at level 10, and +6 at the top.
+The check adds a third of that stat, rounded down, less one. That is about +1 or +2 for a new character's best stat, +3 or +4 at level 10, and +8 at the top.
 
 If the total reaches or beats the DC, the check succeeds. Two rolls override the math:
 
