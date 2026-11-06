@@ -118,6 +118,26 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
   assert.equal(tile(s, "F").hp, hp, "nothing landed");
 }
 
+// Tame on a beast still above 30% HP is refused with the reason, not played as a Defend (slice s5).
+{
+  const tracker = unit("T", "party", "marksman", ["tame"]);
+  const beast = unit("B", "enemy", "blade");
+  beast.tameable = { name: "Hound", stat: "strength" };
+  const s = board([tracker, beast], 5);
+  place(s, "T", "B", 2);
+  s.actorId = "T";
+  s.stage = "action";
+  const name = tile(s, "T").skills!.find((one) => one.id === "tame")!.name;
+  assert.throws(
+    () =>
+      commandCombatDirector(s, {
+        type: "tactical",
+        action: { type: "skill", unitId: "T", skillName: name, targetId: "B" },
+      }),
+    /too strong to tame: only below 30% HP/,
+  );
+}
+
 // Mark Prey reaches 3 tiles, as far as a Marksman's bow; help for a friend stays at 2.
 {
   const hunter = unit("H", "party", "marksman", ["mark-prey"]);
