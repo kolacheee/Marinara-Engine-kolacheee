@@ -118,6 +118,8 @@ export function marinaraAiCandidates(
     canStrike?: (unitId: string) => boolean;
     /** On a board: whether one fighter could reach another this round (a move and its reach). */
     reaches?: (fromId: string, toId: string) => boolean;
+    /** On a board: the chance a readied blow's target is still in its reach when it goes off. */
+    stays?: (option: MarinaraOption, target: MarinaraFighter) => number;
   } = {},
 ): CombatAiCandidate<MarinaraChoice>[] {
   const tactical = !!options.tactical;
@@ -342,7 +344,9 @@ export function marinaraAiCandidates(
             }
           }
           // A charged skill lands a turn later.
-          const later = effect.charge ? 0.5 : 1;
+          // On a board it lands only if the target hasn't stepped out of reach by then (Alyssa 2026-11-06;
+          // r69: foes lost 66% of their readied blows to empty ground, valued as if they would land).
+          const later = effect.charge ? 0.5 * Math.max(0, Math.min(1, options.stays?.(option, aim) ?? 1)) : 1;
           // What it drinks back (Grave Tithe), as healing for the user.
           let drained = 0;
           if (effect.drain)
@@ -1016,6 +1020,7 @@ export function chooseMarinaraAction(
     reach?: (option: MarinaraOption, target: MarinaraFighter) => boolean;
     canStrike?: (unitId: string) => boolean;
     reaches?: (fromId: string, toId: string) => boolean;
+    stays?: (option: MarinaraOption, target: MarinaraFighter) => number;
     ranked?: (ranking: Array<RankedCombatCandidate<MarinaraChoice>>) => void;
     /** Told how the pick was weighed (best first; the first is the pick), without changing it: the
      *  Debug log's reasons (Alyssa's rule: every playtest runs with the AI's reasons). */
