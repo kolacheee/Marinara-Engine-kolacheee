@@ -2252,7 +2252,18 @@ export function advanceCombatDirector(s: CombatDirectorState) {
       }
       // Classic Marinara on a board: the fighter's own turn starts (statuses tick, stamina back); one
       // asleep, stunned or letting a charge go spends it there.
-      if (s.marinara && s.tactical && !marinaraTacticalTurnStart(s.marinara, u.id, s.seed, marinaraLog(s))) {
+      const readiedReach = (targetId: string, skillId: string) => {
+        const from = u as TacticalUnit;
+        const at = s.tactical?.units.find((one) => one.id === targetId);
+        if (!at) return true;
+        const range = from.skills?.find((k) => k.id === skillId)?.range ?? from.attackRange.max;
+        return Math.abs(at.x - from.x) + Math.abs(at.y - from.y) <= range;
+      };
+      if (
+        s.marinara &&
+        s.tactical &&
+        !marinaraTacticalTurnStart(s.marinara, u.id, s.seed, marinaraLog(s), readiedReach)
+      ) {
         (u as TacticalUnit).hasActed = true;
         s.actorId = undefined;
         sync(s);
