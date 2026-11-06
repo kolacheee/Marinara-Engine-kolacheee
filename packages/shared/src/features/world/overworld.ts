@@ -98,6 +98,7 @@ export const WORLD_SQUARE_LOOKS: readonly WorldGroundLook[] = Object.freeze([
   "city",
   "industry",
   "slums",
+  "paddies",
 ]);
 
 /** Seasons, for drawing only (user, 2026-10-05: "seasonal variants for foliage"). Game Mode keeps no
