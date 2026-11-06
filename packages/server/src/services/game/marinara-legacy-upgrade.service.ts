@@ -11,12 +11,19 @@ import {
   COMBAT_PARTY_TEMPERAMENTS,
   gameCardTemperament,
   guessMarinaraArchetype,
+  MARINARA_LEGACY_UPGRADE_LEVEL,
+  marinaraCanEquip,
+  marinaraClass,
+  marinaraGameItemPlace,
+  marinaraLegacyGearFor,
+  marinaraTierForLevel,
   marinaraTrees,
   normalizeCharacterLookupName,
   partyTemperamentFallback,
   readPartyTemperament,
   upgradeMarinaraLegacyCard,
   type CombatPartyTemperament,
+  type GameInventoryStack,
   type MarinaraArchetype,
   type MarinaraCardClassic,
   type MarinaraPartyTemperament,
@@ -106,6 +113,96 @@ export function readMarinaraLegacyTemperaments(answer: unknown): Map<string, Com
   return out;
 }
 
+/** The note an upgraded card keeps its Legacy class and abilities in, as story (owner 2026-11-06). */
+export const MARINARA_LEGACY_NOTE = "Before the upgrade";
+
+/**
+ * The card's text after the upgrade (owner 2026-11-06): its class names the MRPG class it now fights
+ * as, and its Legacy class and abilities move into a note, so the Game Master no longer narrates powers
+ * the new class doesn't have. Strengths, weaknesses and the rest stay as they were.
+ */
+export function withMrpgClassText(
+  card: Record<string, unknown>,
+  progression: { activeClass: string },
+): Record<string, unknown> {
+  const label = marinaraClass(progression.activeClass)?.label;
+  const oldClass = typeof card.class === "string" ? card.class.trim() : "";
+  const abilities = Array.isArray(card.abilities)
+    ? card.abilities.filter((one): one is string => typeof one === "string" && Boolean(one.trim()))
+    : [];
+  const extra =
+    card.extra && typeof card.extra === "object" && !Array.isArray(card.extra)
+      ? (card.extra as Record<string, string>)
+      : {};
+  const note = [
+    oldClass ? `Legacy class: ${oldClass}.` : "",
+    abilities.length ? `Legacy abilities: ${abilities.join("; ")}.` : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  return {
+    ...card,
+    ...(label ? { class: label } : {}),
+    abilities: [],
+    extra: note ? { ...extra, [MARINARA_LEGACY_NOTE]: note } : extra,
+  };
+}
+
+/** One Legacy weapon or armour the upgrade offers an MRPG piece for (owner 2026-11-06). */
+export interface MarinaraLegacyGearOffer {
+  stackId: string;
+  /** The party card that carries it. */
+  holder: string;
+  /** Its name as the player sees it now, which it keeps as its nickname. */
+  from: string;
+  /** The MRPG piece it becomes, and that piece's name in this game. */
+  id: string;
+  slot: "weapon" | "armor";
+  to: string;
+}
+
+/**
+ * The MRPG piece the upgrade offers for each Legacy weapon and armour a party member carries, at the
+ * tier of the level the upgrade starts them at. The player's own bag (no holder) is the player card's.
+ */
+export function marinaraLegacyGearOffers(
+  meta: Record<string, unknown>,
+  stacks: readonly GameInventoryStack[],
+  playerCard: string | null,
+): MarinaraLegacyGearOffer[] {
+  const place = marinaraGameItemPlace(meta);
+  const tier = marinaraTierForLevel(MARINARA_LEGACY_UPGRADE_LEVEL);
+  const party = new Map(partyCards(meta).map((card) => [normalizeCharacterLookupName(card.name), card.name]));
+  const offers: MarinaraLegacyGearOffer[] = [];
+  for (const stack of stacks) {
+    if (stack.item || stack.quantity <= 0) continue;
+    const holder = party.get(
+      stack.holder ? normalizeCharacterLookupName(stack.holder) : normalizeCharacterLookupName(playerCard ?? ""),
+    );
+    if (!holder) continue;
+    const from = stack.nickname ?? stack.name;
+    const piece = marinaraLegacyGearFor(from, tier, place) ?? marinaraLegacyGearFor(stack.name, tier, place);
+    if (!piece) continue;
+    offers.push({ stackId: stack.id, holder, from, id: piece.id, slot: piece.slot, to: piece.name });
+  }
+  return offers;
+}
+
+/** The bags after the accepted offers: each stack becomes its MRPG piece and keeps its Legacy name. */
+function withLegacyGearSwapped(
+  stacks: readonly GameInventoryStack[],
+  offers: readonly MarinaraLegacyGearOffer[],
+): GameInventoryStack[] {
+  const byStack = new Map(offers.map((offer) => [offer.stackId, offer]));
+  return stacks.map((stack) => {
+    const offer = byStack.get(stack.id);
+    if (!offer) return stack;
+    const { nickname: _n, ...rest } = stack;
+    const keep = offer.from.trim() && offer.from.trim().toLowerCase() !== offer.to.toLowerCase();
+    return { ...rest, name: offer.to, ...(keep ? { nickname: offer.from.trim() } : {}) };
+  });
+}
+
 /**
  * The metadata patch that upgrades the game: every party card gets its Classic progression and a kept
  * temperament, and the game turns Classic classes on. Call it inside patchMetadata with fresh metadata.
@@ -119,11 +216,24 @@ export function applyMarinaraLegacyUpgrade(
     read: ReadonlyMap<string, CombatPartyTemperament>;
     classic: ReadonlyMap<string, MarinaraCardClassic>;
     at: string;
+    /** The game's bags, and the gear offers the player took (all of them when absent). */
+    gear?: {
+      stacks: readonly GameInventoryStack[];
+      playerCard: string | null;
+      accepted?: readonly string[];
+    };
   },
-): { patch: Record<string, unknown>; upgraded: MarinaraLegacyUpgraded[] } | { refusal: string } {
+):
+  | { patch: Record<string, unknown>; upgraded: MarinaraLegacyUpgraded[]; stacks?: GameInventoryStack[] }
+  | { refusal: string } {
   const block = marinaraLegacyUpgradeBlock(meta);
   if (block) return { refusal: block };
   const picked = new Map(input.members.map((one) => [normalizeCharacterLookupName(one.name), one.primary]));
+  const offers = input.gear
+    ? marinaraLegacyGearOffers(meta, input.gear.stacks, input.gear.playerCard).filter(
+        (offer) => !input.gear!.accepted || input.gear!.accepted.includes(offer.stackId),
+      )
+    : [];
   const upgraded: MarinaraLegacyUpgraded[] = [];
   const cards = (meta.gameCharacterCards as Record<string, unknown>[]).map((card) => {
     if (typeof card.name !== "string" || !card.name.trim()) return card;
@@ -135,13 +245,21 @@ export function applyMarinaraLegacyUpgrade(
       partyTemperamentFallback(input.gameId, card.name)) as MarinaraPartyTemperament;
     const classic = input.classic.get(key);
     const primary = picked.get(key) ?? classic?.tree ?? guessMarinaraArchetype(card);
-    const progression = upgradeMarinaraLegacyCard({
+    let progression = upgradeMarinaraLegacyCard({
       gameId: input.gameId,
       card: card as unknown as Parameters<typeof upgradeMarinaraLegacyCard>[0]["card"],
       temperament,
       primary,
       ...(classic ? { classic } : {}),
     });
+    // They wear the first swapped weapon and armour of theirs their class can use.
+    const equipment: { weapon?: string; armor?: string } = {};
+    for (const offer of offers) {
+      if (normalizeCharacterLookupName(offer.holder) !== key || equipment[offer.slot]) continue;
+      if (marinaraCanEquip(progression.activeClass, offer.id, offer.slot)) equipment[offer.slot] = offer.id;
+    }
+    if (equipment.weapon || equipment.armor)
+      progression = { ...progression, equipment: { ...equipment, accessories: [] } };
     upgraded.push({
       name: card.name,
       level: progression.level,
@@ -151,14 +269,19 @@ export function applyMarinaraLegacyUpgrade(
       temperamentFrom: kept ? "card" : read ? "description" : "drawn",
     });
     const withTemperament = kept ? card : withCardTemperament(card, temperament, null);
-    return { ...withTemperament, marinara: progression };
+    return { ...withMrpgClassText(withTemperament, progression), marinara: progression };
   });
   return {
     patch: {
       gameCharacterCards: cards,
       gameSetupConfig: { ...(meta.gameSetupConfig as Record<string, unknown>), marinaraClasses: true },
-      gameMarinaraLegacyUpgrade: { at: input.at, members: upgraded },
+      gameMarinaraLegacyUpgrade: {
+        at: input.at,
+        members: upgraded,
+        ...(offers.length ? { gear: offers.map(({ holder, from, to }) => ({ holder, from, to })) } : {}),
+      },
     },
     upgraded,
+    ...(input.gear && offers.length ? { stacks: withLegacyGearSwapped(input.gear.stacks, offers) } : {}),
   };
 }

@@ -71,6 +71,11 @@ export interface PartyChangeTag {
   copyOf?: string;
   /** A condition of the game's ruleset the copy holds from the start. */
   condition?: string;
+  /** MRPG games (owner 2026-11-06): the level the Game Master has a late joiner come in at. */
+  level?: number;
+  /** MRPG games: their growths and stats off the norm, as written ("strength+30, speed+20"). */
+  growths?: string;
+  stats?: string;
 }
 
 export interface ReadableTag {
@@ -349,7 +354,7 @@ function parsePartyCharacterName(body: string): string {
   const unquoted = quoted ? null : /(?:character|name)\s*=\s*([^,\]]+)/i.exec(body);
   const rawName = quoted?.[1] ?? unquoted?.[1] ?? body;
   return rawName
-    .replace(/\s+(?:change|copy_of|condition)\s*=.*$/i, "")
+    .replace(/\s+(?:change|copy_of|condition|level|growths|stats)\s*=.*$/i, "")
     .trim()
     .replace(/^["']|["']$/g, "");
 }
@@ -364,7 +369,20 @@ function parsePartyChangeTagBody(body: string, fallbackChange?: "add" | "remove"
     (new RegExp(`${name}\\s*=\\s*"([^"]+)"`, "i").exec(body)?.[1] ?? "").trim() || undefined;
   const copyOf = change === "add" ? attribute("copy_of") : undefined;
   const condition = copyOf ? attribute("condition") : undefined;
-  return { characterName, change, ...(copyOf ? { copyOf } : {}), ...(condition ? { condition } : {}) };
+  // A joiner's MRPG terms: a quoted or bare level, and quoted growths and stats.
+  const levelText = change === "add" && !copyOf ? /\blevel\s*=\s*"?(\d{1,2})"?/i.exec(body)?.[1] : undefined;
+  const level = levelText ? Number(levelText) : undefined;
+  const growths = change === "add" && !copyOf ? attribute("growths") : undefined;
+  const stats = change === "add" && !copyOf ? attribute("stats") : undefined;
+  return {
+    characterName,
+    change,
+    ...(copyOf ? { copyOf } : {}),
+    ...(condition ? { condition } : {}),
+    ...(level ? { level } : {}),
+    ...(growths ? { growths } : {}),
+    ...(stats ? { stats } : {}),
+  };
 }
 
 /** Match a legacy flat-tag body with one forward scan, including malformed input. */

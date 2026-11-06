@@ -2002,7 +2002,21 @@ export async function combatDirectorRoutes(
           return {};
         }
         progression = next;
-        return { gameCharacterCards: cards.map((card, i) => (i === index ? { ...card, marinara: next } : card)) };
+        // A card whose class text names its MRPG class (an upgraded Legacy card) follows a class change.
+        const was = readMarinaraCardProgression(cards[index]!.marinara);
+        const wasLabel = was ? marinaraClass(was.activeClass)?.label : undefined;
+        const nowLabel = marinaraClass(next.activeClass)?.label;
+        return {
+          gameCharacterCards: cards.map((card, i) =>
+            i !== index
+              ? card
+              : {
+                  ...card,
+                  ...(wasLabel && nowLabel && card.class === wasLabel ? { class: nowLabel } : {}),
+                  marinara: next,
+                },
+          ),
+        };
       },
       { touchUpdatedAt: false },
     );

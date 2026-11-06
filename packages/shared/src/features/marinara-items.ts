@@ -2521,3 +2521,119 @@ export function marinaraItemIdByName(name: string, place: MarinaraItemPlace): st
     (id) => marinaraItemInPlace(id, place) && marinaraItemName(id, place).toLowerCase() === wanted,
   );
 }
+
+// ── Legacy gear (owner 2026-11-06) ──
+// A Legacy game's weapons and armour are free-text items no MRPG class can wear. The upgrade offers each
+// one the nearest MRPG piece: the family its name points at, at the tier of its carrier's level. The
+// Legacy name stays on the stack as its nickname, so an heirloom keeps its name and gains MRPG stats.
+
+/** Words a Legacy weapon or armour may be called by, and the family each points at. */
+const LEGACY_GEAR_WORDS: ReadonlyArray<readonly [string, string]> = [
+  // Every family's own names, in every setting.
+  ...MARINARA_WEAPON_FAMILIES.flatMap((family) =>
+    Object.values(family.names).map((name) => [name.toLowerCase(), family.id] as const),
+  ),
+  ...MARINARA_ARMOUR_FAMILIES.flatMap((family) =>
+    Object.values(family.names).map((name) => [name.toLowerCase(), family.id] as const),
+  ),
+  // Common words for them.
+  ...([
+    ["sword", "longblade"],
+    ["blade", "longblade"],
+    ["longsword", "longblade"],
+    ["shortsword", "longblade"],
+    ["sabre", "longblade"],
+    ["saber", "longblade"],
+    ["scimitar", "longblade"],
+    ["cutlass", "longblade"],
+    ["falchion", "longblade"],
+    ["katana", "longblade"],
+    ["axe", "longblade"],
+    ["hatchet", "longblade"],
+    ["greataxe", "greatblade"],
+    ["battleaxe", "greatblade"],
+    ["battle axe", "greatblade"],
+    ["zweihander", "greatblade"],
+    ["two-handed sword", "greatblade"],
+    ["estoc", "rapier"],
+    ["foil", "rapier"],
+    ["dagger", "knife"],
+    ["dirk", "knife"],
+    ["kris", "knife"],
+    ["shiv", "stiletto"],
+    ["javelin", "spear"],
+    ["trident", "spear"],
+    ["lance", "pike"],
+    ["glaive", "pike"],
+    ["polearm", "pike"],
+    ["pike", "pike"],
+    ["club", "mace"],
+    ["cudgel", "mace"],
+    ["flail", "mace"],
+    ["morningstar", "mace"],
+    ["morning star", "mace"],
+    ["hammer", "maul"],
+    ["warhammer", "maul"],
+    ["quarterstaff", "staff"],
+    ["rod", "staff"],
+    ["sceptre", "wand"],
+    ["scepter", "wand"],
+    ["grimoire", "wand"],
+    ["spellbook", "wand"],
+    ["holy symbol", "censer"],
+    ["shortbow", "bow"],
+    ["gun", "bow"],
+    ["handgun", "bow"],
+    ["musket", "greatbow"],
+    ["rifle", "greatbow"],
+    ["shotgun", "sling"],
+    ["breastplate", "plate"],
+    ["cuirass", "plate"],
+    ["full plate", "plate"],
+    ["platemail", "plate"],
+    ["plate armor", "plate"],
+    ["plate armour", "plate"],
+    ["chainmail", "mail"],
+    ["chain mail", "mail"],
+    ["chain shirt", "mail"],
+    ["scale mail", "mail"],
+    ["brigandine", "mail"],
+    ["armor", "mail"],
+    ["armour", "mail"],
+    ["leather", "leathers"],
+    ["leather armor", "leathers"],
+    ["leather armour", "leathers"],
+    ["studded leather", "leathers"],
+    ["hide armor", "leathers"],
+    ["hide armour", "leathers"],
+    ["hide", "leathers"],
+    ["gambeson", "leathers"],
+    ["jerkin", "leathers"],
+    ["robe", "robes"],
+    ["vestments", "robes"],
+  ] as const),
+];
+
+/**
+ * The MRPG piece nearest a Legacy weapon or armour, by its name: the family the longest gear word in it
+ * names, at the tier given, if this place has it. Undefined for anything that is no weapon or armour
+ * (a potion, a rope) and for an item that already is an MRPG piece.
+ */
+export function marinaraLegacyGearFor(
+  name: string,
+  tier: MarinaraTier,
+  place: MarinaraItemPlace,
+): { id: string; slot: "weapon" | "armor"; name: string } | undefined {
+  const text = ` ${name.toLowerCase().replace(/[^a-z0-9-]+/g, " ")} `;
+  if (!text.trim() || marinaraItemIdByName(name, place)) return undefined;
+  let best: { word: string; family: string } | undefined;
+  for (const [word, family] of LEGACY_GEAR_WORDS) {
+    const bare = word.replace(/[^a-z0-9-]+/g, " ").trim();
+    if (!bare || (!text.includes(` ${bare} `) && !text.includes(` ${bare}s `))) continue;
+    if (!best || bare.length > best.word.length) best = { word: bare, family };
+  }
+  if (!best) return undefined;
+  const id = `${best.family}-t${tier}`;
+  if (!marinaraItemInPlace(id, place)) return undefined;
+  return { id, slot: marinaraItem(id)!.kind === "weapon" ? "weapon" : "armor", name: marinaraItemName(id, place) };
+}
