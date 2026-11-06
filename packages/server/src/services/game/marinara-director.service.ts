@@ -202,6 +202,7 @@ export function marinaraCombatSkills(
         ? { range: MARINARA_BOARD_SPELL_RANGE[fighter.archetype ?? ""] }
         : {}),
       ...(cooldown > 0 ? { readyIn: cooldown } : {}),
+      ...(effect.bonusAction && effect.kind !== "extra-turn" && fighter.commanded ? { takesAction: true } : {}),
       ...(estimate ? { estimate } : {}),
       ...(!usable.has(skill.id)
         ? {

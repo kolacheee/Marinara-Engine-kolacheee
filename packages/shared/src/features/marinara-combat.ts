@@ -894,7 +894,15 @@ export interface MarinaraFighter {
   tamedBy?: string;
   /** The tamed beast that follows this party member (Tracker): Sic strikes with it, with the beast's
    *  own bite or claw (`attackType`), never the keeper's ammunition, channel or runes. */
-  companion?: { name: string; stat: MarinaraStat; attackType?: MarinaraDamageType };
+  companion?: {
+    name: string;
+    stat: MarinaraStat;
+    attackType?: MarinaraDamageType;
+    /** What it adds to its keeper's stat this fight, as a share (none outside the Tracker tree). */
+    lends?: number;
+    /** With Bond, what it adds to the rest of the party's same stat, as a share. */
+    bond?: number;
+  };
   /** A boss once below half its HP: it hits harder for the rest of the fight (MARINARA_BOSS_RULES). */
   enraged?: boolean;
   // fight state

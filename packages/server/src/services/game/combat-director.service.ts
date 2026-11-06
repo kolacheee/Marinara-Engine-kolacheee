@@ -832,6 +832,19 @@ export function createCombatDirector(input: {
     }
     // Bosses act on the timeline like everyone else; extra actions come from their own skills.
     for (const u of directorUnits(s)) if (u.boss) u.boss = { ...u.boss, points: 0 };
+    // Tamed companions say what they lend, as the fight starts (Sonnet panel r6: the bonus went unseen).
+    for (const fighter of s.marinara.fighters) {
+      const beast = fighter.companion;
+      if (!beast?.lends) continue;
+      const stat = beast.stat === "hp" ? "HP" : `${beast.stat[0]!.toUpperCase()}${beast.stat.slice(1)}`;
+      const pct = (share: number) => Math.round(share * 100);
+      log(
+        s,
+        `${fighter.name}'s ${beast.name} lends +${pct(beast.lends)}% ${stat}${beast.bond ? ` (Bond: the rest of the party +${pct(beast.bond)}%)` : ""}.`,
+        "status",
+        fighter.id,
+      );
+    }
     sync(s);
   }
   for (const u of directorUnits(s))
@@ -1082,13 +1095,9 @@ function moraleTurn(s: CombatDirectorState, u: Unit): boolean {
     }
     // Nor does a Classic Marinara foe run while still mostly whole, as it doesn't yield (Sonnet panel r5:
     // a Reflex Champion at 230/230 ran): it is most sure of winning then (Alyssa 2026-11-04). A coward, and
-    // a treasure foe that only ever runs, still may.
-    if (
-      s.marinara &&
-      !mine.runsOnly &&
-      u.tactics?.adjective !== "cowardly" &&
-      u.hp >= u.maxHp * MARINARA_YIELD_BELOW_HP
-    ) {
+    // a treasure foe that only ever runs, still may. A dragon or fiend, which runs rather than yields, holds
+    // too (Sonnet panel r6: a Crater Wyrm ran at 89% HP); a treasure foe never reaches this check.
+    if (s.marinara && u.tactics?.adjective !== "cowardly" && u.hp >= u.maxHp * MARINARA_YIELD_BELOW_HP) {
       mine.checked = mine.checked.filter((one) => one !== trigger);
       continue;
     }
@@ -1140,7 +1149,27 @@ function validate(s: CombatDirectorState, a: Action): void {
   const u = get(s, a.unitId);
   if (!u || !canAct(u)) throw new Error("Combatant cannot act.");
   if (a.tactical && s.tactical) {
-    const invalid = validateTacticalUnitAction(s.tactical, u as TacticalUnit, a.tactical);
+    let board = a.tactical;
+    // The board can't aim at the fallen, so a Marinara revive aimed at a downed ally is checked by its
+    // own rules plus support range, and the rest of the board's checks run as if aimed at the user
+    // (Sonnet panel r6: hand play got "Invalid skill target." for Revive).
+    if (s.marinara && board.type === "skill" && board.targetId) {
+      const fallen = get(s, board.targetId);
+      if (fallen && fallen.hp <= 0 && side(fallen) === side(u)) {
+        const skillName = board.skillName;
+        const skill = u.skills?.find((k) => k.name === skillName);
+        const problem = skill
+          ? marinaraActionProblem(s.marinara, u.id, { type: "skill", skillId: skill.id, targetId: fallen.id })
+          : "Skill unavailable.";
+        if (problem) throw new Error(problem);
+        const from = board.to ?? (u as TacticalUnit);
+        const at = fallen as TacticalUnit;
+        if (Math.abs(at.x - from.x) + Math.abs(at.y - from.y) > (skill!.range ?? 2))
+          throw new Error(`${fallen.name} is out of support range.`);
+        board = { ...board, targetId: u.id };
+      }
+    }
+    const invalid = validateTacticalUnitAction(s.tactical, u as TacticalUnit, board);
     if (invalid) throw new Error(invalid.error);
   } else if (a.classic && s.marinara) {
     if (a.classic.type === "flee") throw new Error("Unsupported action in this window.");

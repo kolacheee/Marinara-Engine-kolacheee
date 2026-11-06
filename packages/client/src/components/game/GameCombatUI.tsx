@@ -209,6 +209,7 @@ function sanitizeCombatSkills(skills: unknown): Combatant["skills"] {
       skill.unavailable === "unchanneled"
     )
       next.unavailable = skill.unavailable;
+    if (skill.takesAction === true) next.takesAction = true;
     if (typeof skill.aims === "string") next.aims = skill.aims as CombatSkill["aims"];
     const estimate = skill.estimate as CombatSkill["estimate"] | undefined;
     if (
@@ -2450,6 +2451,9 @@ export function GameCombatUI({
                                 skill.unavailable === "unchanneled"
                                   ? localizeUi("game.combat.marinara.channelFirst")
                                   : null,
+                                skill.takesAction && !skill.unavailable
+                                  ? localizeUi("game.combat.marinara.bonusSpent")
+                                  : null,
                               ]
                                 .filter(Boolean)
                                 .join(" · ")}
@@ -3152,6 +3156,9 @@ export function GameCombatUI({
                             : ""}
                           {skill.unavailable === "unchanneled"
                             ? [" · ", localizeUi("game.combat.marinara.channelFirst")].join("")
+                            : ""}
+                          {skill.takesAction && !skill.unavailable
+                            ? [" · ", localizeUi("game.combat.marinara.bonusSpent")].join("")
                             : ""}
                         </div>
                       </button>

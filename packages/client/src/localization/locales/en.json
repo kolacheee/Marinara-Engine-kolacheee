@@ -3006,6 +3006,7 @@
   "game.combat.marinara.archetype.marksman": "Marksman",
   "game.combat.marinara.archetype.mender": "Mender",
   "game.combat.marinara.archetype.scout": "Scout",
+  "game.combat.marinara.bonusSpent": "Bonus already used: this takes your extra action",
   "game.combat.marinara.card.auto": "Auto",
   "game.combat.marinara.card.autoGuess": "reads {{tree}} from the Description",
   "game.combat.marinara.card.autoNone": "no tree in the Description yet, so {{tree}}",

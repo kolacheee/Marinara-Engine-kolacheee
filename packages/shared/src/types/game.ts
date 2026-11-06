@@ -798,6 +798,9 @@ export interface CombatSkill extends CombatAttackTraits {
   readyIn?: number;
   /** Can't be used now (Classic Marinara): not enough MP or stamina, cooling down, or used up. */
   unavailable?: "cost" | "cooldown" | "used" | "row" | "immune" | "companion" | "unchanneled";
+  /** A bonus-action skill offered on the extra action a bonus already gave (Classic Marinara): using it
+   *  takes that action rather than giving another (Sonnet panel r6: Mark Prey then Sic lost the shot). */
+  takesAction?: boolean;
   /** What one use would do now (Classic Marinara): damage per foe or healing per ally, from the user's stats. */
   estimate?: import("../features/marinara-combat.js").MarinaraSkillEstimate;
 }
