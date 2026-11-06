@@ -322,9 +322,9 @@ const MRPG_SKILL_STAT: Record<string, MarinaraStat> = {
   arcana: "magic",
   history: "magic",
   nature: "magic",
-  religion: "magic",
-  // Will.
+  // Will and faith.
   insight: "resistance",
+  religion: "resistance",
   // Charm and fortune.
   deception: "luck",
   performance: "luck",
@@ -344,7 +344,8 @@ export function mrpgStatForSkill(skill: string): MarinaraStat {
   return MRPG_SKILL_STAT[key] ?? "skill";
 }
 
-/** What an MRPG stat adds to a check: a quarter of it, less one. */
+/** What an MRPG stat adds to a check: a third of it, less one (owner 2026-11-06: a level-1 specialty
+ *  reads +1 or +2 on the d20, a level-30 one about +8). */
 export function mrpgCheckModifier(stat: number): number {
-  return Number.isFinite(stat) ? Math.floor(Math.max(0, stat) / 4) - 1 : 0;
+  return Number.isFinite(stat) ? Math.floor(Math.max(0, stat) / 3) - 1 : 0;
 }
