@@ -24,13 +24,13 @@ const file = {
   tiles: { grass: [rows("0"), rows("1")], party: [rows("1")] },
 };
 
-/** The tile packs: the Agents panel's section, or in the new desktop layout (no Agents panel) the Agents
- *  page's Tile packs dialog. */
+/** The tile packs: the Agents panel's section, or in the new layout (no Agents panel) the Agents page's
+ *  Tile packs dialog. */
 async function openTilePacks(page: Page) {
   const newLayout = await page.evaluate(async () => {
     const { useOverhaulStore } = await import("/src/stores/overhaul.store.ts" as string);
     const state = useOverhaulStore.getState();
-    if (state.enabled && state.desktop) {
+    if (state.enabled) {
       state.setLibraryPage("agents");
       return true;
     }
