@@ -44,6 +44,7 @@ import {
   marinaraOption,
   registerMarinaraEnemySkills,
   type MarinaraEffect,
+  type MarinaraEvent,
   type MarinaraFighter,
 } from "../../packages/shared/src/features/marinara-combat.js";
 import {
@@ -272,7 +273,13 @@ mkdirSync(dirname(REASON_LOG), { recursive: true });
 
 /** One fight through the combat director, the Engine's combat AI playing both sides, with the AI's
  *  reasons for every pick (party turns the harness asks for, foe turns the director runs) kept. */
-export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], seed: number, label = ""): PlayedFight {
+export function playFight(
+  party: MarinaraFighter[],
+  foes: MarinaraFighter[],
+  seed: number,
+  label = "",
+  tap?: MarinaraEvent[],
+): PlayedFight {
   const s = createCombatDirector({
     id: `bl${seed}`,
     anchor: "a",
@@ -284,6 +291,7 @@ export function playFight(party: MarinaraFighter[], foes: MarinaraFighter[], see
     seed,
     marinara: [...party, ...foes],
   });
+  if (tap) s.marinara!.eventTap = tap;
   const reasons: string[] = [];
   let seen = 0;
   const collect = () => {
