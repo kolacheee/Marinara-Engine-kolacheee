@@ -1,0 +1,119 @@
+{
+  "sets": {
+    "grass-base": {
+      "total": 4,
+      "passed": 3,
+      "failed": 1,
+      "assessment": "All four checked as 3x3 repeats at 1x and nearest-neighbor 3x, including wrap-centered close views. Summer is calm, dark and lush; autumn is muted brown/olive relative to the brighter plains; winter has blue snow drifts and fine exposed-tip texture. No visible wrap seam or 1-/2-cell grid. Spring alone fails for its flat pale repeat landmark. Grass/plains remain distinguishable by tone and texture."
+    },
+    "plains-base": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "assessment": "All four checked as 3x3 repeats at 1x and nearest-neighbor 3x, including wrap-centered close views. Wraps are continuous, with no visible 1-/2-cell grid or dominant single six-cell landmark at shipping scale. Summer is lighter/yellower than grass; spring has distributed fresh grass tufts; autumn reads as straw grass through its short blade clusters rather than wood or sand; winter retains blue snow texture and stronger tip/streak definition than grass. No blank white winter or distracting speckle."
+    },
+    "grass-detail": {
+      "total": 32,
+      "passed": 29,
+      "failed": 3,
+      "assessment": "All 32 viewed individually at 8x over their matching seasonal base and at 1x, then all eight per season randomly placed once in a 36-cell native-size composite. Passing sprites have clear natural subjects, appropriate seasonal palettes and footprints, transparent backgrounds without visible boxes/halos/fringes, and at least 6px edge clearance. Winter subjects are dead stems, snow-covered stones/stumps or snow-covered ground clusters, with no flowers. No near-identical pair remains among passes. The three non-winter detail-7 variants fail for unreadable internal clutter, rather than mere stylistic preference."
+    },
+    "plains-detail": {
+      "total": 32,
+      "passed": 31,
+      "failed": 1,
+      "assessment": "All 32 viewed individually at 8x over their matching seasonal base and at 1x, then all eight per season randomly placed once in a 36-cell native-size composite. Passing sprites read as distinct tufts, shrubs, flowers/seedheads, rocks, cairns or ground scuffs; seasonal palettes fit their bases, footprint sizes are appropriate, and all have transparent backgrounds with at least 6px clearance. No visible boxes, halos, unwanted fringe, buildings, setting-specific content or winter flowers. Seedhead variants differ in silhouette and head shape enough to ship. Autumn detail-4 fails the native-size noise/readability check."
+    }
+  },
+  "pass": [
+    "grass-base",
+    "grass-detail-0",
+    "grass-detail-1",
+    "grass-detail-2",
+    "grass-detail-3",
+    "grass-detail-4",
+    "grass-detail-5",
+    "grass-detail-6",
+    "grass@autumn-base",
+    "grass@autumn-detail-0",
+    "grass@autumn-detail-1",
+    "grass@autumn-detail-2",
+    "grass@autumn-detail-3",
+    "grass@autumn-detail-4",
+    "grass@autumn-detail-5",
+    "grass@autumn-detail-6",
+    "grass@spring-detail-0",
+    "grass@spring-detail-1",
+    "grass@spring-detail-2",
+    "grass@spring-detail-3",
+    "grass@spring-detail-4",
+    "grass@spring-detail-5",
+    "grass@spring-detail-6",
+    "grass@winter-base",
+    "grass@winter-detail-0",
+    "grass@winter-detail-1",
+    "grass@winter-detail-2",
+    "grass@winter-detail-3",
+    "grass@winter-detail-4",
+    "grass@winter-detail-5",
+    "grass@winter-detail-6",
+    "grass@winter-detail-7",
+    "plains-base",
+    "plains-detail-0",
+    "plains-detail-1",
+    "plains-detail-2",
+    "plains-detail-3",
+    "plains-detail-4",
+    "plains-detail-5",
+    "plains-detail-6",
+    "plains-detail-7",
+    "plains@autumn-base",
+    "plains@autumn-detail-0",
+    "plains@autumn-detail-1",
+    "plains@autumn-detail-2",
+    "plains@autumn-detail-3",
+    "plains@autumn-detail-5",
+    "plains@autumn-detail-6",
+    "plains@autumn-detail-7",
+    "plains@spring-base",
+    "plains@spring-detail-0",
+    "plains@spring-detail-1",
+    "plains@spring-detail-2",
+    "plains@spring-detail-3",
+    "plains@spring-detail-4",
+    "plains@spring-detail-5",
+    "plains@spring-detail-6",
+    "plains@spring-detail-7",
+    "plains@winter-base",
+    "plains@winter-detail-0",
+    "plains@winter-detail-1",
+    "plains@winter-detail-2",
+    "plains@winter-detail-3",
+    "plains@winter-detail-4",
+    "plains@winter-detail-5",
+    "plains@winter-detail-6",
+    "plains@winter-detail-7"
+  ],
+  "fail": [
+    {
+      "name": "grass-detail-7",
+      "problems": "At 8x the supposed low foliage is a dark angular lattice of brown stems, green scraps and isolated cream highlights, without a coherent leaf mass. At 1x it becomes a crunchy brown knot; in critic-r4-1-comp-grass.png it stands out as dark pixel noise rather than a readable ground plant. Redraw as a low clover patch with a few connected leaf clusters, reduce the brown internal lines and remove the stray bright accents. Keep the current footprint and clearance."
+    },
+    {
+      "name": "grass@autumn-detail-7",
+      "problems": "The 8x view is a dense tangle of dark brown loops and disconnected gold/rust pixels, with no clear main plant or object. At 1x, especially near the top of critic-r4-1-comp-grass@autumn.png, it reads as a dark crunchy scribble. Consolidate it into a low connected mass of autumn leaves/clover with a simple outer silhouette and a restrained lower shadow; remove the internal twig grid and floating flecks."
+    },
+    {
+      "name": "grass@spring-base",
+      "problems": "At 1x in the 3x3 tiling, the nearly solid pale lime island around x=120-165, y=20-85 is an immediate six-cell repeat marker. At 3x it also contains a conspicuously flat interior with very little grass texture. Break this island into several lower-contrast, textured drifts and distribute their shapes irregularly across the full 288px tile; preserve the seamless wrap."
+    },
+    {
+      "name": "grass@spring-detail-7",
+      "problems": "At 8x the green loops, gray stones, cream flecks and prominent brown stump compete within one small patch. At 1x the clover/foliage does not resolve, and the detail reads as a busy pile of scraps in critic-r4-1-comp-grass@spring.png. Give it one dominant low foliage silhouette with clear leaf clusters; remove the stump and most of the stones and internal dark lattice. This will also separate its subject from detail-3, which already combines tall grass, stones and a stump."
+    },
+    {
+      "name": "plains@autumn-detail-4",
+      "problems": "At 8x the bare patch has no coherent exposed-earth shape: its pale pebbles and broken straw-colored marks dissolve into the similarly colored base. At 1x in critic-r4-1-comp-plains@autumn.png, the isolated cluster near the right edge reads as yellow speckle rather than a small ground feature. Give the scuff a connected, subdued earth shape with two or three clearly grouped pebbles, and remove the scattered high-light pixels. Keep it softly integrated with the base."
+    }
+  ]
+}
