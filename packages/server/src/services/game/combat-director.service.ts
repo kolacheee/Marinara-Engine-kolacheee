@@ -13,6 +13,7 @@ import {
   combatAiHash,
   shiftCombatTemperament,
   createTacticalCombat,
+  MARINARA_BOARD_NARROWING,
   currentTacticalActor,
   getMovementRange,
   canTraverseTile,
@@ -861,6 +862,8 @@ export function createCombatDirector(input: {
       battlefield: input.battlefield,
       ...(input.made ? { made: input.made } : {}),
       ...(input.turnOrder ? { turnOrder: input.turnOrder } : {}),
+      // Classic Marinara fights a narrower board (overnight playtest 2026-11-06: less walking up).
+      ...(input.marinara?.length ? { narrow: MARINARA_BOARD_NARROWING } : {}),
     });
   if (input.marinara?.length && s.style !== "ruleset") {
     s.marinara = createMarinaraDirectorState(input.marinara, s.seed);

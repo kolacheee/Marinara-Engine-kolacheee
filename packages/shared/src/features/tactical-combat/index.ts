@@ -50,6 +50,7 @@ export {
   TACTICAL_BATTLEFIELD_GENERATOR_VERSION,
   generateTacticalBattlefield,
   gridDimensions,
+  MARINARA_BOARD_NARROWING,
   madeTacticalBattlefield,
   foothillElevation,
   tacticalMadeBoardIssues,
