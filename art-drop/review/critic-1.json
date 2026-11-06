@@ -1,0 +1,255 @@
+{
+  "pass": [
+    "city-0",
+    "city-1",
+    "city-3",
+    "fantasy-marker2",
+    "fantasy-marker3",
+    "jazz_age-marker0",
+    "jazz_age-marker3",
+    "modern-marker0",
+    "modern-marker1",
+    "modern-marker3",
+    "scifi-marker0",
+    "scifi-marker2",
+    "wuxia-marker3"
+  ],
+  "fail": [
+    {
+      "name": "city-2",
+      "problems": "The central tower is tangled with the upper-right building and the tiny roof masses on either side; the connecting dark shapes make the block hard to parse. Separate each complete building silhouette with readable alley/shadow space and simplify the central facades and roof details."
+    },
+    {
+      "name": "city-4",
+      "problems": "All six buildings are squat strips with very shallow facades, giving a low-rise office park rather than the reference's dense tower district. Increase and vary the building heights within the intended reduced scale, and retain full silhouettes and the street margin."
+    },
+    {
+      "name": "city-5",
+      "problems": "This tile has a conspicuous lighter grey rectangular ground patch, which becomes a visible square seam beside the other city tiles. Its roof equipment is also crowded and mottled. Match the surrounding dark street palette and simplify the roofs while separating adjacent building contours."
+    },
+    {
+      "name": "city-6",
+      "problems": "The top and bottom rows collapse into shallow, nearly duplicate roof-and-window strips around two middle towers. Vary the building heights and footprints, give the small blocks complete readable volumes, and remove stray roof/edge pixels."
+    },
+    {
+      "name": "city-7",
+      "problems": "The upper-left building is an almost black broken smear and several roof fixtures fragment into light/dark specks. The varied structures do not share a consistent readable roof/facade treatment. Redraw complete silhouettes, consolidate rooftop equipment and apply consistent top-left lighting."
+    },
+    {
+      "name": "city@winter-0",
+      "problems": "The snow streak between the two tall towers joins their lower edges to the front-row roofs, confusing roof height and ground level. Preserve the summer footprints, keep snow off vertical facades and separate roof caps from ground drifts. The nearly bare outer streets against snowy interiors make the tiles read as isolated squares; use a consistent winter street treatment across tile joins."
+    },
+    {
+      "name": "city@winter-1",
+      "problems": "The diagonal strip crosses the central open space and joins the front roof masses; the side buildings have unrelated angular white wedges. Preserve the summer footprints, keep snow off vertical facades and separate roof caps from ground drifts. The nearly bare outer streets against snowy interiors make the tiles read as isolated squares; use a consistent winter street treatment across tile joins."
+    },
+    {
+      "name": "city@winter-2",
+      "problems": "The white patch on the upper-left tower spills down its facade, while the central and upper-right masses remain difficult to separate. Preserve the summer footprints, keep snow off vertical facades and separate roof caps from ground drifts. The nearly bare outer streets against snowy interiors make the tiles read as isolated squares; use a consistent winter street treatment across tile joins."
+    },
+    {
+      "name": "city@winter-3",
+      "problems": "The front-row roofs are covered in fragmented white bands and dark holes, and the tall towers receive tiny unrelated corner patches. Preserve the summer footprints, keep snow off vertical facades and separate roof caps from ground drifts. The nearly bare outer streets against snowy interiors make the tiles read as isolated squares; use a consistent winter street treatment across tile joins."
+    },
+    {
+      "name": "city@winter-4",
+      "problems": "The low-rise, shallow-facade layout still fails the dense-tower requirement, and the snow reads as repeated angular roof corner patches. Preserve the summer footprints, keep snow off vertical facades and separate roof caps from ground drifts. The nearly bare outer streets against snowy interiors make the tiles read as isolated squares; use a consistent winter street treatment across tile joins."
+    },
+    {
+      "name": "city@winter-5",
+      "problems": "The lighter rectangular ground patch remains a visible seam; dense white zigzags now merge neighbouring roof equipment and alleys. Preserve the summer footprints, keep snow off vertical facades and separate roof caps from ground drifts. The nearly bare outer streets against snowy interiors make the tiles read as isolated squares; use a consistent winter street treatment across tile joins."
+    },
+    {
+      "name": "city@winter-6",
+      "problems": "The top and bottom squat rows remain repetitive, and the central roofs have arbitrary diagonal white bands instead of plane-specific accumulation. Preserve the summer footprints, keep snow off vertical facades and separate roof caps from ground drifts. The nearly bare outer streets against snowy interiors make the tiles read as isolated squares; use a consistent winter street treatment across tile joins."
+    },
+    {
+      "name": "city@winter-7",
+      "problems": "White streaks run down the upper-left building and bridge the middle structures, further confusing already broken silhouettes. Preserve the summer footprints, keep snow off vertical facades and separate roof caps from ground drifts. The nearly bare outer streets against snowy interiors make the tiles read as isolated squares; use a consistent winter street treatment across tile joins."
+    },
+    {
+      "name": "fantasy-marker0",
+      "problems": "The thatch is stippled with isolated midtone pixels, and the vegetation and doorstep merge into a scratchy fringe. Rebuild the roof as connected thatch clusters and simplify the shrubs and ground so the small cottage has clean, deliberate edges."
+    },
+    {
+      "name": "fantasy-marker1",
+      "problems": "The paths, fencing and grass are peppered with tiny high-contrast marks, while both front roofs have broken, mottled shading. Remove the confetti texture, use coherent roof planes and separate the fence from the surrounding bushes with a consistent dark contour."
+    },
+    {
+      "name": "industry-0",
+      "problems": "The upper factory roofs read as mottled vertical strips, and the lower sheds and yard equipment merge into grey-green noise. Redraw complete sawtooth roof silhouettes and identifiable tanks/chimneys with clean light and shadow planes, rather than a dense field of tiny marks."
+    },
+    {
+      "name": "industry-1",
+      "problems": "The two dominant sawtooth roof planes are covered in coarse checker-like mottling, while the right-side equipment is an indistinct ladder of bars. Simplify the roof shading and give tanks, pipes and chimney separate readable silhouettes and consistent dark outlines."
+    },
+    {
+      "name": "industry-2",
+      "problems": "The factory roof, narrow right-hand shed and bottom equipment are crowded into an indistinct grey-green maze. Remove incidental pixels, separate the structures with readable yard space and define the roof ridges and tank contours with connected clusters."
+    },
+    {
+      "name": "industry-3",
+      "problems": "The central factory has a striped, muddled roof, while the left tanks and surrounding yard lose their silhouettes in similarly valued pixels. Rebuild the tanks as clear cylinders and the roof as coherent lit slopes; simplify vegetation and ground marks around them."
+    },
+    {
+      "name": "industry-4",
+      "problems": "The upper sawtooth roof strips run into the straight top pavement boundary without convincing complete end contours, and the bottom-left factory is similarly ragged. Fit fully drawn roof shapes inside the margin and replace checker-like grey texture with clear roof planes and yard separation."
+    },
+    {
+      "name": "industry-5",
+      "problems": "The top tanks and adjacent roof forms are cramped against the inner top boundary, and the central sawtooth roofs are noisy grey zigzags rather than clean volumes. Draw complete tank caps and roof endpoints inside the street margin, with fewer, stronger shading clusters."
+    },
+    {
+      "name": "industry-6",
+      "problems": "The upper factory roof strips terminate against the straight inner top boundary; the two factories repeat almost the same comb-like roof motif. Redraw complete roof ends and introduce a genuinely different compound arrangement with legible tanks, chimney and open yard."
+    },
+    {
+      "name": "industry-7",
+      "problems": "The upper sawtooth factory and lower equipment shed repeat the same visual formula as the other industry tiles, with mottled roofs and fragmented yard details. Change the compound silhouette and equipment placement, and clean the roofs and tanks into readable connected shapes."
+    },
+    {
+      "name": "industry@winter-0",
+      "problems": "The diagonal white bands on the upper roof strips and across the central yard look like a painted overlay, not snow resting on separate surfaces. Preserve the summer layout, clean up the underlying mottled structures, and place snow by roof slope, tank cap and ground plane. Snow stops abruptly inside a completely bare rectangular road border; add a consistent winter street/curb treatment that joins neighbouring tiles."
+    },
+    {
+      "name": "industry@winter-1",
+      "problems": "The two roof snow bands have near-identical diagonal shapes, with thin white strokes continuing onto unrelated right-hand equipment. Preserve the summer layout, clean up the underlying mottled structures, and place snow by roof slope, tank cap and ground plane. Snow stops abruptly inside a completely bare rectangular road border; add a consistent winter street/curb treatment that joins neighbouring tiles."
+    },
+    {
+      "name": "industry@winter-2",
+      "problems": "The bright diagonal roof bands and winding lower-yard streak do not follow the individual roof and tank contours. Preserve the summer layout, clean up the underlying mottled structures, and place snow by roof slope, tank cap and ground plane. Snow stops abruptly inside a completely bare rectangular road border; add a consistent winter street/curb treatment that joins neighbouring tiles."
+    },
+    {
+      "name": "industry@winter-3",
+      "problems": "The broad white marks bridge the left tanks, upper roof edges and neighbouring structures without separating their planes. Preserve the summer layout, clean up the underlying mottled structures, and place snow by roof slope, tank cap and ground plane. Snow stops abruptly inside a completely bare rectangular road border; add a consistent winter street/curb treatment that joins neighbouring tiles."
+    },
+    {
+      "name": "industry@winter-4",
+      "problems": "The matching diagonal bands on both factories repeat mechanically, and white yard streaks merge with the lower roofs. Preserve the summer layout, clean up the underlying mottled structures, and place snow by roof slope, tank cap and ground plane. Snow stops abruptly inside a completely bare rectangular road border; add a consistent winter street/curb treatment that joins neighbouring tiles."
+    },
+    {
+      "name": "industry@winter-5",
+      "problems": "The main roof bands and lower central white ribbon merge different structures and ground into continuous zigzags. Preserve the summer layout, clean up the underlying mottled structures, and place snow by roof slope, tank cap and ground plane. Snow stops abruptly inside a completely bare rectangular road border; add a consistent winter street/curb treatment that joins neighbouring tiles."
+    },
+    {
+      "name": "industry@winter-6",
+      "problems": "The paired factories carry nearly identical diagonal snow stripes, while lower-yard snow merges with building edges. Preserve the summer layout, clean up the underlying mottled structures, and place snow by roof slope, tank cap and ground plane. Snow stops abruptly inside a completely bare rectangular road border; add a consistent winter street/curb treatment that joins neighbouring tiles."
+    },
+    {
+      "name": "industry@winter-7",
+      "problems": "The repeated upper-roof stripes and broad lower-yard white loop obscure equipment and roof boundaries. Preserve the summer layout, clean up the underlying mottled structures, and place snow by roof slope, tank cap and ground plane. Snow stops abruptly inside a completely bare rectangular road border; add a consistent winter street/curb treatment that joins neighbouring tiles."
+    },
+    {
+      "name": "jazz_age-marker1",
+      "problems": "The reference water tower has a broad, dark, largely solid brown shaft; this version replaces it with bright red, visibly open lattice legs. Restore the reference tower silhouette and darker brown mass, retaining small structural details without turning it into a different tower."
+    },
+    {
+      "name": "jazz_age-marker2",
+      "problems": "The blue/slate-roofed rear buildings in the reference have disappeared into an expanded cluster of terracotta-roofed cottages. Restore the contrasting slate roofs and the reference arrangement around the clock tower; the redraw should preserve the original town identity and roof-colour balance."
+    },
+    {
+      "name": "modern-marker2",
+      "problems": "The distinctive green shop awning on the right of the reference is missing, replaced by a pale building with blue windows. Restore that green storefront and its relationship to the red-striped shop on the left; both commercial buildings should remain identifiable beside the church."
+    },
+    {
+      "name": "scifi-marker1",
+      "problems": "White diagonal and zigzag marks fragment all three teal domes, making the glass read as cracked, noisy facets instead of the reference's clear glass volumes. Redraw continuous dome contours and a small number of coherent glass panels/highlights, with cleaner separation from the pale rims."
+    },
+    {
+      "name": "scifi-marker3",
+      "problems": "The reference city is a compact cluster of thick, mostly blunt-topped teal-and-cream towers. The redraw turns it into extremely thin pointed needles on an elaborate concentric base. Restore the broad tower profiles, capped tops and compact skyline; add detail within those masses instead of replacing the architecture."
+    },
+    {
+      "name": "slums-0",
+      "problems": "The lower-left shack and middle row merge into mottled brown blobs; corrugation and wall boundaries are broken into isolated pixels. Redraw the six shacks with connected roof planes and dark, continuous wall edges. Reduce the scattered brown ground pixels."
+    },
+    {
+      "name": "slums-1",
+      "problems": "The left column of shacks and lower-right roof are muddy, with patchwork shading overwhelming their tiny silhouettes. Simplify each roof into two or three connected material clusters and distinguish its shaded wall from the packed-dirt alley."
+    },
+    {
+      "name": "slums-2",
+      "problems": "The six buildings form two nearly identical straight rows of fuzzy rectangles; the roof patches and facades are poorly separated. Vary the footprints and offsets, and redraw the corrugated roofs and shaded walls with clean clusters instead of scattered mottling."
+    },
+    {
+      "name": "slums-3",
+      "problems": "The three paired rows read as repeated brown blobs, especially the middle pair, and the ground is littered with arbitrary single pixels. Give the shacks distinct footprints and legible roof/wall divisions; remove ground speckle that does not describe a specific object."
+    },
+    {
+      "name": "slums-4",
+      "problems": "The courtyard ring contains tiny shapeless grey/brown roofs and disconnected dark flecks instead of clearly constructed shanties. Redraw each perimeter shack with a complete roof and visible wall, using fewer larger clusters; retain the courtyard arrangement but clean its boundaries."
+    },
+    {
+      "name": "slums-5",
+      "problems": "The upper-right compound is a muddled stack of rust patches and the bottom roof loses its wall boundary in the dirt. Clarify which patches belong to each shack, strengthen connected contours and remove the scattered one-pixel rubble."
+    },
+    {
+      "name": "slums-6",
+      "problems": "The broad horizontal alley splits the tile into two sparse stamped rows; several shacks are amorphous brown patches with weak roof edges. Stagger the buildings and use clearer corrugated-metal planes, shaded fronts and continuous outlines."
+    },
+    {
+      "name": "slums-7",
+      "problems": "The nine-roof grid is too regular and its closely packed brown patches merge together; the narrow alleys are difficult to follow. Use fewer better-separated shacks, vary their offsets and materials, and replace speckled texture with deliberate connected roof and wall clusters."
+    },
+    {
+      "name": "slums@winter-0",
+      "problems": "Snow forms one diagonal ribbon between the back roofs and through the central alley, flattening separate roof and ground planes. Keep the summer footprints, but draw snow separately on each roof with intact eaves, visible shaded walls and restrained ground drifts. The completely bare, ruler-straight perimeter band also makes the snow stop at an obvious square; create a shared, seamless winter alley treatment."
+    },
+    {
+      "name": "slums@winter-1",
+      "problems": "The diagonal white strip joins the upper roofs to the centre and lower roofs, obscuring individual shack boundaries. Keep the summer footprints, but draw snow separately on each roof with intact eaves, visible shaded walls and restrained ground drifts. The completely bare, ruler-straight perimeter band also makes the snow stop at an obvious square; create a shared, seamless winter alley treatment."
+    },
+    {
+      "name": "slums@winter-2",
+      "problems": "The broad horizontal snow band through the middle merges roofs, wall edges and the alley into one white bar. Keep the summer footprints, but draw snow separately on each roof with intact eaves, visible shaded walls and restrained ground drifts. The completely bare, ruler-straight perimeter band also makes the snow stop at an obvious square; create a shared, seamless winter alley treatment."
+    },
+    {
+      "name": "slums@winter-3",
+      "problems": "The central white patches bridge the middle shacks and obscure their eaves and the narrow alley. Keep the summer footprints, but draw snow separately on each roof with intact eaves, visible shaded walls and restrained ground drifts. The completely bare, ruler-straight perimeter band also makes the snow stop at an obvious square; create a shared, seamless winter alley treatment."
+    },
+    {
+      "name": "slums@winter-4",
+      "problems": "The snow makes a disconnected star-like pattern around the courtyard, with angular roof patches that do not describe accumulation on each shack. Keep the summer footprints, but draw snow separately on each roof with intact eaves, visible shaded walls and restrained ground drifts. The completely bare, ruler-straight perimeter band also makes the snow stop at an obvious square; create a shared, seamless winter alley treatment."
+    },
+    {
+      "name": "slums@winter-5",
+      "problems": "The zigzag white trail from the upper roofs through the centre and lower-left yard merges structures and ground. Keep the summer footprints, but draw snow separately on each roof with intact eaves, visible shaded walls and restrained ground drifts. The completely bare, ruler-straight perimeter band also makes the snow stop at an obvious square; create a shared, seamless winter alley treatment."
+    },
+    {
+      "name": "slums@winter-6",
+      "problems": "The long middle snow strip and lower-right white patch flatten the alley and adjoining roof/facade boundaries. Keep the summer footprints, but draw snow separately on each roof with intact eaves, visible shaded walls and restrained ground drifts. The completely bare, ruler-straight perimeter band also makes the snow stop at an obvious square; create a shared, seamless winter alley treatment."
+    },
+    {
+      "name": "slums@winter-7",
+      "problems": "The heavy white zigzags merge the tightly packed roofs and make the already regular grid even harder to read. Keep the summer footprints, but draw snow separately on each roof with intact eaves, visible shaded walls and restrained ground drifts. The completely bare, ruler-straight perimeter band also makes the snow stop at an obvious square; create a shared, seamless winter alley treatment."
+    },
+    {
+      "name": "wasteland-marker0",
+      "problems": "The shack is buried in tan/brown stipple: roof corrugation, wall patches and scrap at the base blend together. Restore the reference's clearly separated rusty and grey metal roof panels, simplify surface marks and establish readable dark wall/roof boundaries."
+    },
+    {
+      "name": "wasteland-marker1",
+      "problems": "Tent fabric, shacks, fencing and dirt all share a dense brown scratch texture; the camp entrance and central firepit are difficult to distinguish. Use a stronger olive tent plane, separate the lighter side shelters, and reduce the debris to a few readable silhouettes."
+    },
+    {
+      "name": "wasteland-marker2",
+      "problems": "The broad olive tarp and rust-versus-grey panel contrast of the reference are largely lost in a uniform tan palisade. Roofs and walls are heavily mottled and the central watchtower merges with the surrounding timber. Restore the olive canopy and distinct scrap-metal planes, then simplify the outlines and texture."
+    },
+    {
+      "name": "wasteland-marker3",
+      "problems": "The scrap/rust/salvaged-concrete direction is present, but the interior is an unreadable tangle of dark scaffold lines and tiny tan patches. The gate, roofs and upper tower compete at the same contrast. Group the concrete walls, rusty sheet roofs and supports into distinct large shapes, remove incidental speckle and give the central gate/tower clear silhouettes."
+    },
+    {
+      "name": "wuxia-marker0",
+      "problems": "Roof, bamboo/foliage and the front fence dissolve into brown-green speckle; the fence posts and entrance are much less legible than the reference. Simplify the thatch into bands, give each post an uninterrupted silhouette and separate the doorway from its surroundings."
+    },
+    {
+      "name": "wuxia-marker1",
+      "problems": "The roofs and central courtyard have restless single-pixel stippling, and the front house is crowded by indistinct fence/plant fragments. Clean up the roof clusters and courtyard, and redraw the front house perimeter and fence as readable connected shapes."
+    },
+    {
+      "name": "wuxia-marker2",
+      "problems": "The pale fort walls and steps are covered with mottled intermediate shades, and the roof ridges have ragged alternating highlight pixels. Replace the wall grain with sparse intentional masonry clusters and give the blue roof planes consistent ridge and eave lines."
+    }
+  ]
+}
