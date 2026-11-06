@@ -67,6 +67,24 @@ import { GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
 /** How much larger an image pack's settlement marker is drawn, by the place's tier (hamlet to city). */
 const MARKER_GROWTH = [1.25, 1.75, 2.25, 3] as const;
 
+/** Beyond the world's edge: the ground its border has most of (the sea around an island, open space), and
+ *  whether that is water. */
+function worldBeyond(game: Parameters<typeof worldGroundLooks>[0], world: Parameters<typeof worldGroundCells>[0]) {
+  const looks = worldGroundLooks(game);
+  const cells = worldGroundCells(world);
+  const count = new Map<number, number>();
+  for (let y = 0; y < world.height; y++)
+    for (let x = 0; x < world.width; x++) {
+      // The whole border: the top and bottom rows and the first and last columns.
+      if (y > 0 && y < world.height - 1 && x > 0 && x < world.width - 1) continue;
+      const cell = cells[y * world.width + x]!;
+      count.set(cell, (count.get(cell) ?? 0) + 1);
+    }
+  const cell = [...count].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]?.[0] ?? 0;
+  const wet = (game.kit.terrain?.find((entry) => entry.id === world.terrain[cell])?.kind ?? "open") === "water";
+  return { look: looks[cell] ?? looks[0]!, wet };
+}
+
 /** What the game screen can ask of the overworld: send the real time it has passed so far. */
 export type WorldOverworldHandle = OverworldClockHandle;
 
@@ -209,6 +227,44 @@ export function WorldOverworld({
     const wet = (x: number, y: number) =>
       x < 0 || y < 0 || x >= world.width || y >= world.height ? true : water[cells[y * world.width + x]!]!;
     const { width, height } = world;
+    // Where the sea lies beyond the map's edge, the land along the border gives way to it unevenly (a
+    // coast, not the map's straight edge): border cells up to two deep, by a smooth noise along the edge,
+    // are drawn as water, never a place, a way or the cells beside them.
+    const wetCell: boolean[] = Array.from(cells, (cell) => water[cell]!);
+    if (worldBeyond(game, world).wet && drawTile.hasEdges("water")) {
+      const kept = new Set<number>();
+      const keep = (x: number, y: number) => {
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++)
+            if (x + dx >= 0 && y + dy >= 0 && x + dx < width && y + dy < height) kept.add((y + dy) * width + x + dx);
+      };
+      for (const place of world.places) keep(place.at.x, place.at.y);
+      // The ways as the road pass below lays them.
+      const settledAt = new Set(
+        world.places.filter((place) => place.rank !== undefined).map((place) => place.at.y * width + place.at.x),
+      );
+      const joined = drawTile.hasPiece("road_joined", 0);
+      for (const link of world.links) {
+        const [from, to] = [byId.get(link.from), byId.get(link.to)];
+        if (!from || !to) continue;
+        const skip = (x: number, y: number) => wet(x, y) || settledAt.has(y * width + x);
+        for (const { x, y } of worldRoadCells(from.at, to.at, skip, joined)) keep(x, y);
+      }
+      // Depth along an edge: smooth noise over runs of about five cells, 0 to 2 cells deep.
+      const depth = (edge: number, at: number) => {
+        const [i, f] = [Math.floor(at / 5), (at % 5) / 5];
+        const [a, b] = [cellNoise(i, edge)(83), cellNoise(i + 1, edge)(83)];
+        const t = f * f * (3 - 2 * f);
+        return Math.floor((a + (b - a) * t) * 3);
+      };
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          const at = y * width + x;
+          if (wetCell[at] || kept.has(at)) continue;
+          if (y < depth(0, x) || height - 1 - y < depth(1, x) || x < depth(2, y) || width - 1 - x < depth(3, y))
+            wetCell[at] = true;
+        }
+    }
     /** What follows is drawn in the season the story holds the cell at (x, y) in, or the day's. */
     const inSeason = (x: number, y: number) => {
       if (!heldCells) return;
@@ -234,7 +290,7 @@ export function WorldOverworld({
     for (let y = 0; y < height; y++)
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
-        drawnLook[y * width + x] = looks[waterEdges && water[own] ? (landUnder(x, y) ?? own) : own]!;
+        drawnLook[y * width + x] = looks[waterEdges && wetCell[y * width + x] ? (landUnder(x, y) ?? own) : own]!;
       }
     // A wooded look with trees and a fringe: its own ground only on cells wholly among it, its edge cells
     // painted with the ground beside them, and its trees (after) standing where its fringe would curve, so
@@ -310,9 +366,8 @@ export function WorldOverworld({
     if (WORLD_FRINGE_ORDER.some((look) => drawTile.hasFringe(look)))
       for (let y = 0; y < height; y++)
         for (let x = 0; x < width; x++) {
-          const own = cells[y * width + x]!;
           const look = drawnLook[y * width + x]!;
-          if (!square.has(look) || water[own]) continue;
+          if (!square.has(look) || wetCell[y * width + x]) continue;
           groundOf(x, y, look);
           // A field's own edge: a thin bank where it meets other ground, so it does not end in a bare cut.
           if (look !== "farmland") continue;
@@ -328,11 +383,17 @@ export function WorldOverworld({
           if (open(1, 0)) ctx.fillRect(px + t - bank, py, bank, t);
         }
     /** A dual-grid pass: every corner of the map whose four cells are partly or wholly the terrain. */
-    const edgePass = (terrain: "water" | "road", filled: (x: number, y: number) => boolean) => {
+    // `beyondWet`: the sea beyond the map's edge counts as water, so land on the border gets its shore
+    // instead of a straight cut where the map ends (worked on the map with a ring of water around it).
+    const edgePass = (terrain: "water" | "road", filled: (x: number, y: number) => boolean, beyondWet = false) => {
       const rows = drawTile.edgeRows(terrain);
+      const ringed = (x: number, y: number) =>
+        x < 1 || y < 1 || x > width || y > height ? true : filled(x - 1, y - 1);
       for (let y = 0; y <= height; y++)
         for (let x = 0; x <= width; x++) {
-          const piece = worldEdgePiece(filled, x, y, width, height, rows);
+          const piece = beyondWet
+            ? worldEdgePiece(ringed, x + 1, y + 1, width + 2, height + 2, rows)
+            : worldEdgePiece(filled, x, y, width, height, rows);
           if (piece < 0) continue;
           inSeason(x, y);
           drawTile.edge(
@@ -345,7 +406,7 @@ export function WorldOverworld({
           );
         }
     };
-    if (waterEdges) edgePass("water", (x, y) => water[cells[y * width + x]!]!);
+    if (waterEdges) edgePass("water", (x, y) => wetCell[y * width + x]!, worldBeyond(game, world).wet);
     // Ways over open ground: as road cells with joined road pieces (laid corner to corner) or road edge
     // tiles, else drawn as lines.
     const roadJoined = drawTile.hasPiece("road_joined", 0);
@@ -402,6 +463,18 @@ export function WorldOverworld({
         if (cx < 0 || cy < 0 || cx >= width || cy >= height) return false;
         if (roads.has(cy * width + cx) || placed.has(cy * width + cx)) return false;
         if (square.has(drawnLook[cy * width + cx]!)) return false;
+        // Never in the water (a water cell is drawn over the land under it, which may be the wood's),
+        // nor so near it that the trunk stands past the shore.
+        for (const [dx, dy] of [
+          [0, 0],
+          [-0.3, 0],
+          [0.3, 0],
+          [0, -0.3],
+          [0, 0.3],
+        ] as const) {
+          const [wx, wy] = [Math.floor(px + dx), Math.floor(py + dy)];
+          if (wx >= 0 && wy >= 0 && wx < width && wy < height && wetCell[wy * width + wx]) return false;
+        }
         if (isLook(cx, cy) && inner(cx, cy)) return true;
         // The corner whose fringe piece the point lies in.
         const [kx, ky] = [Math.round(px), Math.round(py)];
@@ -489,30 +562,15 @@ export function WorldOverworld({
 
   // Beyond the world's edge, the ground its edge has most of (the sea around an island, open space).
   const beyond = useMemo(() => {
-    const looks = worldGroundLooks(game);
-    const cells = worldGroundCells(world);
-    const count = new Map<string, number>();
-    for (let y = 0; y < world.height; y++) {
-      for (let x = 0; x < world.width; x++) {
-        // The whole border: the top and bottom rows and the first and last columns.
-        if (y > 0 && y < world.height - 1 && x > 0 && x < world.width - 1) continue;
-        const look = looks[cells[y * world.width + x]!]!;
-        count.set(look, (count.get(look) ?? 0) + 1);
-      }
-    }
-    const look = [...count].sort((a, b) => b[1] - a[1])[0]?.[0] ?? looks[0]!;
+    const { look, wet: wetLook } = worldBeyond(game, world);
     const canvas = document.createElement("canvas");
     canvas.width = canvas.height = OVERWORLD_TILE;
     const ctx = canvas.getContext("2d");
     if (!ctx) return canvas;
     // Water beyond the edge, with water edge tiles, is their middle piece, as the water inside the map is.
-    const lookIndex = looks.indexOf(look as (typeof looks)[number]);
-    const wetLook =
-      lookIndex >= 0 &&
-      (game.kit.terrain?.find((entry) => entry.id === world.terrain[lookIndex])?.kind ?? "open") === "water";
     if (wetLook && drawTile.edge(ctx, "water", WORLD_EDGE_PIECE_BY_MASK[15]!, OVERWORLD_TILE / 2, OVERWORLD_TILE / 2))
       return canvas;
-    if (!drawTile(ctx, look, 0, 0)) paintGround(ctx, look as (typeof looks)[number], 0, 0, cellNoise(0, 0));
+    if (!drawTile(ctx, look, 0, 0)) paintGround(ctx, look, 0, 0, cellNoise(0, 0));
     return canvas;
   }, [drawTile, game, world]);
 
