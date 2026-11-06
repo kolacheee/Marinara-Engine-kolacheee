@@ -9,6 +9,7 @@ import {
   marinaraClassBlock,
   marinaraEnemyFamily,
   marinaraEnemyName,
+  marinaraFoeAiHints,
   marinaraFoeXp,
   marinaraRandom,
   marinaraRollRareEncounter,
@@ -171,7 +172,13 @@ export function marinaraFightStart(input: {
   const byId = new Map(input.enemies.map((unit) => [unit.id, unit]));
   const enemies = foes.fighters.map((fighter) => {
     const unit = byId.get(fighter.id);
-    return marinaraCombatant(fighter, unit ? kept(unit) : {});
+    const extra: Partial<Combatant> = unit ? kept(unit) : {};
+    // A bestiary foe fights with its family's mind and one of its temperaments, unless the story gave one.
+    const family = fighter.familyId
+      ? marinaraFoeAiHints(fighter.familyId, marinaraRandom(`${input.seed ?? input.gameId}:${fighter.id}:temperament`))
+      : undefined;
+    if (family && !extra.aiHints?.temperament) extra.aiHints = { ...extra.aiHints, ...family };
+    return marinaraCombatant(fighter, extra);
   });
   fighters.push(...foes.fighters);
   const cards = made.size

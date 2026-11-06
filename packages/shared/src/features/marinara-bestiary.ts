@@ -1968,6 +1968,21 @@ export function marinaraEnemyAbilities(family: MarinaraEnemyFamily, tier: Marina
 
 // ── Building a foe ──
 
+/**
+ * The combat AI's hints for a bestiary foe: its family's mind, and one of its family's temperaments
+ * drawn with `random`, kept for the fight (Engine review 2026-11-06: the director drew its own, so a
+ * sellsword could come out cowardly and run at full HP). `kept` makes the director use exactly it.
+ */
+export function marinaraFoeAiHints(
+  familyId: string,
+  random: () => number,
+): { mind: CombatMind; temperament: CombatTemperament; kept: true } | undefined {
+  const family = FAMILY_BY_ID.get(familyId);
+  if (!family?.temperaments.length) return undefined;
+  const temperament = family.temperaments[Math.floor(random() * family.temperaments.length)]!;
+  return { mind: family.mind, temperament, kept: true };
+}
+
 /** Abilities that open cold start on a cooldown that clears after the foe's first turn. */
 function openingCooldowns(ids: readonly string[]): { openingCooldowns?: Record<string, number> } {
   const cold = ids.filter((id) => ABILITY_BY_ID.get(id)?.opensCold);
