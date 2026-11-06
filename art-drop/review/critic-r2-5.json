@@ -1,0 +1,234 @@
+{
+  "sets": {
+    "slums": "fail",
+    "industry": "fail",
+    "city": "pass",
+    "suburb": "fail",
+    "farmland": "pass",
+    "farmstead": "pass"
+  },
+  "pass": [
+    "city-0",
+    "city-1",
+    "city-2",
+    "city-3",
+    "city-4",
+    "city-5",
+    "city-6",
+    "city-7",
+    "city@winter-0",
+    "city@winter-1",
+    "city@winter-2",
+    "city@winter-3",
+    "city@winter-4",
+    "city@winter-5",
+    "city@winter-6",
+    "city@winter-7",
+    "fantasy-farmstead",
+    "fantasy-farmstead@autumn",
+    "fantasy-farmstead@spring",
+    "fantasy-farmstead@winter",
+    "farmland-0",
+    "farmland-1",
+    "farmland-2",
+    "farmland-3",
+    "farmland-4",
+    "farmland-5",
+    "farmland-6",
+    "farmland@autumn-0",
+    "farmland@autumn-1",
+    "farmland@autumn-2",
+    "farmland@autumn-3",
+    "farmland@autumn-4",
+    "farmland@autumn-5",
+    "farmland@autumn-6",
+    "farmland@spring-0",
+    "farmland@spring-1",
+    "farmland@spring-2",
+    "farmland@spring-3",
+    "farmland@spring-4",
+    "farmland@spring-5",
+    "farmland@spring-6",
+    "farmland@winter-0",
+    "farmland@winter-1",
+    "farmland@winter-2",
+    "farmland@winter-3",
+    "farmland@winter-4",
+    "farmland@winter-5",
+    "farmland@winter-6",
+    "industry-0",
+    "industry-1",
+    "industry-2",
+    "industry-3",
+    "industry-4",
+    "industry-5",
+    "industry-6",
+    "industry-7",
+    "industry@winter-1",
+    "industry@winter-3",
+    "industry@winter-4",
+    "industry@winter-7",
+    "jazz_age-farmstead",
+    "jazz_age-farmstead@autumn",
+    "jazz_age-farmstead@spring",
+    "jazz_age-farmstead@winter",
+    "modern-farmstead",
+    "modern-farmstead@autumn",
+    "modern-farmstead@spring",
+    "modern-farmstead@winter",
+    "suburb-0",
+    "suburb-1",
+    "suburb-3",
+    "suburb-5",
+    "suburb-6",
+    "suburb@autumn-0",
+    "suburb@autumn-1",
+    "suburb@autumn-3",
+    "suburb@autumn-5",
+    "suburb@autumn-6",
+    "suburb@spring-0",
+    "suburb@spring-1",
+    "suburb@spring-3",
+    "suburb@spring-5",
+    "suburb@spring-6",
+    "suburb@winter-0",
+    "suburb@winter-1",
+    "suburb@winter-3",
+    "suburb@winter-5",
+    "suburb@winter-6",
+    "wuxia-farmstead",
+    "wuxia-farmstead@autumn",
+    "wuxia-farmstead@spring",
+    "wuxia-farmstead@winter"
+  ],
+  "fail": [
+    {
+      "name": "industry@winter-0",
+      "problems": "The three long sawtooth roof planes and the rectangular roof at upper right become uninterrupted pale snow panels. Their summer panel shading disappears, leaving blank sheets in the tiled view. Add restrained two- or three-tone snow accumulation and exposed panel/rib breaks on each plane, retaining the sawtooth geometry and current dark yard."
+    },
+    {
+      "name": "industry@winter-2",
+      "problems": "The large upper-right factory roof becomes a broad, flat blue-white rectangle with only notches along its lower edge. Draw a small number of coherent snow/shadow clusters and exposed roof-panel strips inside that area so it reads as snow on a factory roof rather than an untextured fill. Keep the siding and building positions."
+    },
+    {
+      "name": "industry@winter-5",
+      "problems": "Both arms of the L-shaped hall are filled with large uniform pale snow bands, most visibly the long right-hand roof. Restore roof-plane definition with accumulated snow, shaded edges and occasional exposed material/ribs; the winter treatment must not erase all the hall detail into a blank L."
+    },
+    {
+      "name": "industry@winter-6",
+      "problems": "The broad central arched roof is covered by a nearly uniform pale rectangle that loses the ribbed curved-roof reading of summer. Shade the snow along the curve and reveal a few ribs or melted strips, with coherent accumulation on the upper roof as well. Preserve the chimneys, facade and footprint."
+    },
+    {
+      "name": "slums-0",
+      "problems": "The broad blue roof at upper left spans roughly 20 px, and the blue roof across the middle is also much wider than an 8-14 px shack. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours."
+    },
+    {
+      "name": "slums-1",
+      "problems": "The long rust roof across the upper left and the long blue roof at lower centre are roughly 20 px or more across. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours."
+    },
+    {
+      "name": "slums-2",
+      "problems": "The big blue upper-left roof is roughly 20 px across; the broad brown roof at middle right repeats the oversized shed scale. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours."
+    },
+    {
+      "name": "slums-3",
+      "problems": "The long brown roofs at upper left and lower right are roughly 20 px or more across and dominate the small shelters. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours."
+    },
+    {
+      "name": "slums-4",
+      "problems": "The long blue roof at upper right and the broad brown roof at lower right read as large sheds beside the little central shelters. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours."
+    },
+    {
+      "name": "slums-5",
+      "problems": "The large blue rectangle in the centre is roughly 20 px across and about 15 px deep, substantially bigger than the requested small shack. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours."
+    },
+    {
+      "name": "slums-6",
+      "problems": "The large rust roof at middle right is roughly 20 px across, much larger than the detached-house roofs in the suburb set. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours."
+    },
+    {
+      "name": "slums-7",
+      "problems": "The large blue upper-right roof and broad rust roof below the centre are roughly 20 px across and dominate the composition. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours."
+    },
+    {
+      "name": "slums@winter-0",
+      "problems": "The broad blue roof at upper left spans roughly 20 px, and the blue roof across the middle is also much wider than an 8-14 px shack. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours. Winter also replaces nearly every roof interior with one uninterrupted pale blue-white fill. Add a few deliberate snow highlight/shadow clusters, uneven accumulation over the corrugation and exposed rusty or blue patches; retain readable roof planes and the same summer building footprints. This is visible on the named large roofs even at the 3x district view."
+    },
+    {
+      "name": "slums@winter-1",
+      "problems": "The long rust roof across the upper left and the long blue roof at lower centre are roughly 20 px or more across. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours. Winter also replaces nearly every roof interior with one uninterrupted pale blue-white fill. Add a few deliberate snow highlight/shadow clusters, uneven accumulation over the corrugation and exposed rusty or blue patches; retain readable roof planes and the same summer building footprints. This is visible on the named large roofs even at the 3x district view."
+    },
+    {
+      "name": "slums@winter-2",
+      "problems": "The big blue upper-left roof is roughly 20 px across; the broad brown roof at middle right repeats the oversized shed scale. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours. Winter also replaces nearly every roof interior with one uninterrupted pale blue-white fill. Add a few deliberate snow highlight/shadow clusters, uneven accumulation over the corrugation and exposed rusty or blue patches; retain readable roof planes and the same summer building footprints. This is visible on the named large roofs even at the 3x district view."
+    },
+    {
+      "name": "slums@winter-3",
+      "problems": "The long brown roofs at upper left and lower right are roughly 20 px or more across and dominate the small shelters. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours. Winter also replaces nearly every roof interior with one uninterrupted pale blue-white fill. Add a few deliberate snow highlight/shadow clusters, uneven accumulation over the corrugation and exposed rusty or blue patches; retain readable roof planes and the same summer building footprints. This is visible on the named large roofs even at the 3x district view."
+    },
+    {
+      "name": "slums@winter-4",
+      "problems": "The long blue roof at upper right and the broad brown roof at lower right read as large sheds beside the little central shelters. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours. Winter also replaces nearly every roof interior with one uninterrupted pale blue-white fill. Add a few deliberate snow highlight/shadow clusters, uneven accumulation over the corrugation and exposed rusty or blue patches; retain readable roof planes and the same summer building footprints. This is visible on the named large roofs even at the 3x district view."
+    },
+    {
+      "name": "slums@winter-5",
+      "problems": "The large blue rectangle in the centre is roughly 20 px across and about 15 px deep, substantially bigger than the requested small shack. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours. Winter also replaces nearly every roof interior with one uninterrupted pale blue-white fill. Add a few deliberate snow highlight/shadow clusters, uneven accumulation over the corrugation and exposed rusty or blue patches; retain readable roof planes and the same summer building footprints. This is visible on the named large roofs even at the 3x district view."
+    },
+    {
+      "name": "slums@winter-6",
+      "problems": "The large rust roof at middle right is roughly 20 px across, much larger than the detached-house roofs in the suburb set. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours. Winter also replaces nearly every roof interior with one uninterrupted pale blue-white fill. Add a few deliberate snow highlight/shadow clusters, uneven accumulation over the corrugation and exposed rusty or blue patches; retain readable roof planes and the same summer building footprints. This is visible on the named large roofs even at the 3x district view."
+    },
+    {
+      "name": "slums@winter-7",
+      "problems": "The large blue upper-right roof and broad rust roof below the centre are roughly 20 px across and dominate the composition. Density and the dirt palette are now acceptable, but these roof masses overshoot the brief's roughly 8-14 px shack scale. Split the named large roofs into smaller complete shacks with staggered eaves, patched lean-tos and narrow crooked passages; keep the current density and compatible dirt margins. The three shuffles show the same tidy rows of broad corrugated rectangles, so vary the smaller roof silhouettes as well as their colours. Winter also replaces nearly every roof interior with one uninterrupted pale blue-white fill. Add a few deliberate snow highlight/shadow clusters, uneven accumulation over the corrugation and exposed rusty or blue patches; retain readable roof planes and the same summer building footprints. This is visible on the named large roofs even at the 3x district view."
+    },
+    {
+      "name": "suburb-2",
+      "problems": "A large pond and park occupy the entire upper portion; all three houses are in the single bottom row. BRIEF-2 requires two rows of small detached houses in each suburb tile. Reduce the pond to a garden-scale feature and add a readable upper row of roughly 8-10 px roofs, with gardens and driveways. Preserve compatible perimeter roads and carry the corrected geometry through all four seasons."
+    },
+    {
+      "name": "suburb-4",
+      "problems": "The upper half is dominated by a large L-shaped commercial/service roof and paved forecourt, leaving only two detached houses in the bottom row. That roof is several house widths across and breaks the required small detached-house scale and two-row layout. Replace the oversized complex with individual upper-row houses, gardens and connected drives; retain the perimeter street connections and use the same corrected plan in every season."
+    },
+    {
+      "name": "suburb-7",
+      "problems": "The top two thirds are a park/path network, with only two houses at the bottom. It lacks the required upper row of detached houses and reads as a park tile instead of the specified residential block. Add an upper house row with roughly 8-10 px roofs and distinct planted plots, reducing the park to gardens; keep coherent drive access and match that revised layout in all seasons."
+    },
+    {
+      "name": "suburb@autumn-2",
+      "problems": "A large pond and park occupy the entire upper portion; all three houses are in the single bottom row. BRIEF-2 requires two rows of small detached houses in each suburb tile. Reduce the pond to a garden-scale feature and add a readable upper row of roughly 8-10 px roofs, with gardens and driveways. Preserve compatible perimeter roads and carry the corrected geometry through all four seasons."
+    },
+    {
+      "name": "suburb@autumn-4",
+      "problems": "The upper half is dominated by a large L-shaped commercial/service roof and paved forecourt, leaving only two detached houses in the bottom row. That roof is several house widths across and breaks the required small detached-house scale and two-row layout. Replace the oversized complex with individual upper-row houses, gardens and connected drives; retain the perimeter street connections and use the same corrected plan in every season."
+    },
+    {
+      "name": "suburb@autumn-7",
+      "problems": "The top two thirds are a park/path network, with only two houses at the bottom. It lacks the required upper row of detached houses and reads as a park tile instead of the specified residential block. Add an upper house row with roughly 8-10 px roofs and distinct planted plots, reducing the park to gardens; keep coherent drive access and match that revised layout in all seasons."
+    },
+    {
+      "name": "suburb@spring-2",
+      "problems": "A large pond and park occupy the entire upper portion; all three houses are in the single bottom row. BRIEF-2 requires two rows of small detached houses in each suburb tile. Reduce the pond to a garden-scale feature and add a readable upper row of roughly 8-10 px roofs, with gardens and driveways. Preserve compatible perimeter roads and carry the corrected geometry through all four seasons."
+    },
+    {
+      "name": "suburb@spring-4",
+      "problems": "The upper half is dominated by a large L-shaped commercial/service roof and paved forecourt, leaving only two detached houses in the bottom row. That roof is several house widths across and breaks the required small detached-house scale and two-row layout. Replace the oversized complex with individual upper-row houses, gardens and connected drives; retain the perimeter street connections and use the same corrected plan in every season."
+    },
+    {
+      "name": "suburb@spring-7",
+      "problems": "The top two thirds are a park/path network, with only two houses at the bottom. It lacks the required upper row of detached houses and reads as a park tile instead of the specified residential block. Add an upper house row with roughly 8-10 px roofs and distinct planted plots, reducing the park to gardens; keep coherent drive access and match that revised layout in all seasons."
+    },
+    {
+      "name": "suburb@winter-2",
+      "problems": "A large pond and park occupy the entire upper portion; all three houses are in the single bottom row. BRIEF-2 requires two rows of small detached houses in each suburb tile. Reduce the pond to a garden-scale feature and add a readable upper row of roughly 8-10 px roofs, with gardens and driveways. Preserve compatible perimeter roads and carry the corrected geometry through all four seasons."
+    },
+    {
+      "name": "suburb@winter-4",
+      "problems": "The upper half is dominated by a large L-shaped commercial/service roof and paved forecourt, leaving only two detached houses in the bottom row. That roof is several house widths across and breaks the required small detached-house scale and two-row layout. Replace the oversized complex with individual upper-row houses, gardens and connected drives; retain the perimeter street connections and use the same corrected plan in every season."
+    },
+    {
+      "name": "suburb@winter-7",
+      "problems": "The top two thirds are a park/path network, with only two houses at the bottom. It lacks the required upper row of detached houses and reads as a park tile instead of the specified residential block. Add an upper house row with roughly 8-10 px roofs and distinct planted plots, reducing the park to gardens; keep coherent drive access and match that revised layout in all seasons."
+    }
+  ]
+}

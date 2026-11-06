@@ -1,0 +1,509 @@
+{
+  "sets": {
+    "slums": "fail",
+    "industry": "fail",
+    "city": "fail",
+    "suburb": "fail",
+    "farmland": "fail",
+    "farmstead": "fail"
+  },
+  "pass": [],
+  "fail": [
+    {
+      "name": "city-0",
+      "problems": "The stepped upper-left tower and its small rooftop termination are jagged grey lumps, and the lower roofs have scattered highlights without a clear roof plane. Redraw the stepped silhouette, separate roof from facade and consolidate highlights into deliberate top-left-lit clusters. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints."
+    },
+    {
+      "name": "city-1",
+      "problems": "The far-right tower is a roughly four-pixel-wide, almost tile-height strip; it reads as a thin post and repeats the right-edge device in city-3 and city-6. Replace it with a convincing roof/volume at this map scale and change the block massing. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints."
+    },
+    {
+      "name": "city-2",
+      "problems": "The central diagonal chain of rooftops merges into an irregular grey ridge, making the individual roofs and walls hard to distinguish. Give each building a coherent roof polygon, clean overlap/shadow boundary and a readable street gap. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints."
+    },
+    {
+      "name": "city-3",
+      "problems": "The skinny, segmented tower strip on the right repeats the long right-edge column in city-1, while the other towers use similarly aligned rectangular masses. Replace the strip with a distinct building footprint and give this tile a substantially different block silhouette. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints."
+    },
+    {
+      "name": "city-4",
+      "problems": "The middle buildings overlap as chunky grey slabs with broken pale roof rims, and the lower-left horizontal building has little readable roof depth. Clean the overlaps, establish consistent roof thickness and lighting, and separate the street from facade shadows. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints."
+    },
+    {
+      "name": "city-5",
+      "problems": "The two stacked left towers and three right-hand roof rectangles read as another compartmentalised tower stamp, close in rhythm to city-0. Change the street plan and building footprints, and replace the irregular roof mottling with legible equipment and parapets. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints."
+    },
+    {
+      "name": "city-6",
+      "problems": "The large central courtyard roof has a ragged stepped inner edge and uneven apparent thickness; the thin tower on the right repeats the strip motif in city-1 and city-3. Reconstruct the courtyard roof in consistent perspective and replace that repeated narrow mass. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints."
+    },
+    {
+      "name": "city-7",
+      "problems": "The bottom roof/facade bar and the tall upper-centre slab close off a nearly rectangular building stamp; the left roof junctions are muddy. Open a readable route through the block, vary the outer massing and redraw the roof junctions with clean, consistent planes. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints."
+    },
+    {
+      "name": "city@winter-0",
+      "problems": "The stepped upper-left tower and its small rooftop termination are jagged grey lumps, and the lower roofs have scattered highlights without a clear roof plane. Redraw the stepped silhouette, separate roof from facade and consolidate highlights into deliberate top-left-lit clusters. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints. Snow on the stepped tower and lower roofs is fragmented into bright rubble, and this tile has much weaker roof coverage than the other winter city tiles. Redraw coherent snow caps with consistent coverage across the set. The streets remain blank, dry-looking charcoal with no slush or tracks; add subdued connected slush without turning the ground pale."
+    },
+    {
+      "name": "city@winter-1",
+      "problems": "The far-right tower is a roughly four-pixel-wide, almost tile-height strip; it reads as a thin post and repeats the right-edge device in city-3 and city-6. Replace it with a convincing roof/volume at this map scale and change the block massing. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints. The blue-white roof accents need coherent snow clusters rather than scattered square chips. The streets remain blank, dry-looking charcoal with no slush or tracks; add subdued connected slush without turning the ground pale."
+    },
+    {
+      "name": "city@winter-2",
+      "problems": "The central diagonal chain of rooftops merges into an irregular grey ridge, making the individual roofs and walls hard to distinguish. Give each building a coherent roof polygon, clean overlap/shadow boundary and a readable street gap. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints. The blue-white roof accents need coherent snow clusters rather than scattered square chips. The streets remain blank, dry-looking charcoal with no slush or tracks; add subdued connected slush without turning the ground pale."
+    },
+    {
+      "name": "city@winter-3",
+      "problems": "The skinny, segmented tower strip on the right repeats the long right-edge column in city-1, while the other towers use similarly aligned rectangular masses. Replace the strip with a distinct building footprint and give this tile a substantially different block silhouette. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints. The blue-white roof accents need coherent snow clusters rather than scattered square chips. The streets remain blank, dry-looking charcoal with no slush or tracks; add subdued connected slush without turning the ground pale."
+    },
+    {
+      "name": "city@winter-4",
+      "problems": "The middle buildings overlap as chunky grey slabs with broken pale roof rims, and the lower-left horizontal building has little readable roof depth. Clean the overlaps, establish consistent roof thickness and lighting, and separate the street from facade shadows. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints. The blue-white roof accents need coherent snow clusters rather than scattered square chips. The streets remain blank, dry-looking charcoal with no slush or tracks; add subdued connected slush without turning the ground pale."
+    },
+    {
+      "name": "city@winter-5",
+      "problems": "The two stacked left towers and three right-hand roof rectangles read as another compartmentalised tower stamp, close in rhythm to city-0. Change the street plan and building footprints, and replace the irregular roof mottling with legible equipment and parapets. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints. The blue-white roof accents need coherent snow clusters rather than scattered square chips. The streets remain blank, dry-looking charcoal with no slush or tracks; add subdued connected slush without turning the ground pale."
+    },
+    {
+      "name": "city@winter-6",
+      "problems": "The large central courtyard roof has a ragged stepped inner edge and uneven apparent thickness; the thin tower on the right repeats the strip motif in city-1 and city-3. Reconstruct the courtyard roof in consistent perspective and replace that repeated narrow mass. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints. The blue-white roof accents need coherent snow clusters rather than scattered square chips. The streets remain blank, dry-looking charcoal with no slush or tracks; add subdued connected slush without turning the ground pale."
+    },
+    {
+      "name": "city@winter-7",
+      "problems": "The bottom roof/facade bar and the tall upper-centre slab close off a nearly rectangular building stamp; the left roof junctions are muddy. Open a readable route through the block, vary the outer massing and redraw the roof junctions with clean, consistent planes. The completely featureless charcoal around the block makes the repeated square density boundary obvious at 3x. Use subtle, consistent street texture through both interior and perimeter and less uniformly bounded block footprints. The blue-white roof accents need coherent snow clusters rather than scattered square chips. The streets remain blank, dry-looking charcoal with no slush or tracks; add subdued connected slush without turning the ground pale."
+    },
+    {
+      "name": "fantasy-farmstead",
+      "problems": "The main house has a mottled stair-step thatch roof and an over-busy timber facade; the shed roof merges into the ochre field behind it. Redraw the house as a crisp native-scale thatched volume with clear beam/window clusters, and separate the shed, yard and field. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. The fields are mottled green/ochre patches with weak separation from the yard; define readable parcels and quieter crop rows."
+    },
+    {
+      "name": "fantasy-farmstead@autumn",
+      "problems": "The main house has a mottled stair-step thatch roof and an over-busy timber facade; the shed roof merges into the ochre field behind it. Redraw the house as a crisp native-scale thatched volume with clear beam/window clusters, and separate the shed, yard and field. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. The ochre yard, fields and grass merge into one muddy surface; retain distinct soil, crop and hedge values in autumn."
+    },
+    {
+      "name": "fantasy-farmstead@spring",
+      "problems": "The main house has a mottled stair-step thatch roof and an over-busy timber facade; the shed roof merges into the ochre field behind it. Redraw the house as a crisp native-scale thatched volume with clear beam/window clusters, and separate the shed, yard and field. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. Dense light-green and ochre speckles compete with the small building details; simplify the field texture and separate the yard from the crops."
+    },
+    {
+      "name": "fantasy-farmstead@winter",
+      "problems": "The main house has a mottled stair-step thatch roof and an over-busy timber facade; the shed roof merges into the ochre field behind it. Redraw the house as a crisp native-scale thatched volume with clear beam/window clusters, and separate the shed, yard and field. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. High-contrast white/blue/green confetti obscures ground, fences and roof edges, while the ochre field patches remain visually harsh. Replace it with coherent snow clusters, subdued exposed crops and dirty connected yard tracks."
+    },
+    {
+      "name": "farmland-0",
+      "problems": "The ochre upper-right and brown lower-right fields are rounded mottled blobs; the left half is almost undivided grass. Define two or three cultivated parcels with clear crop-row directions and continuous hedges, rather than scattered dark boundary pixels. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The dense low-contrast mottling muddies the field shapes; use fewer, controlled texture clusters."
+    },
+    {
+      "name": "farmland-1",
+      "problems": "The diagonal green/ochre split reads as two large paint swatches with fragmented dark pixels along the join. Draw a continuous hedgerow between the parcels and simplify the crop texture into intentional rows. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The dense low-contrast mottling muddies the field shapes; use fewer, controlled texture clusters."
+    },
+    {
+      "name": "farmland-2",
+      "problems": "The narrow diagonal brown strip and yellow lower-right patch look like stains across a grass tile, with only a broken dark chain above. Give the parcels purposeful boundaries, readable cultivation patterns and a continuous tree/hedge line. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The dense low-contrast mottling muddies the field shapes; use fewer, controlled texture clusters."
+    },
+    {
+      "name": "farmland-3",
+      "problems": "The upper rectangular lattice and lower curved stripes have weak, confused boundaries; the tan lane blends into the cultivation marks. Separate lane, hedge and crop rows with deliberate value groups and clear junctions. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The dense low-contrast mottling muddies the field shapes; use fewer, controlled texture clusters."
+    },
+    {
+      "name": "farmland-4",
+      "problems": "The upper-left brown patch and thin right-hand ochre strip crowd around an indistinct green centre, and the bottom curved rows look like ripples. Clarify the parcel geometry and replace the wavering texture with consistent crop rows and readable hedges. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The dense low-contrast mottling muddies the field shapes; use fewer, controlled texture clusters."
+    },
+    {
+      "name": "farmland-5",
+      "problems": "Only the upper ochre strip reads as a distinct field; most of the remaining tile is an almost empty grass patch. Split that expanse into the required two or three readable parcels, and define their boundaries with continuous hedges or a tree line. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The dense low-contrast mottling muddies the field shapes; use fewer, controlled texture clusters."
+    },
+    {
+      "name": "farmland-6",
+      "problems": "The left brown bulb and upper ochre patch meet the green parcel in a muddled central knot, and the tan left lane is hard to separate from soil. Clean the junction, use distinct crop-row directions and give the lane and hedges continuous silhouettes. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The dense low-contrast mottling muddies the field shapes; use fewer, controlled texture clusters."
+    },
+    {
+      "name": "farmland@autumn-0",
+      "problems": "The ochre upper-right and brown lower-right fields are rounded mottled blobs; the left half is almost undivided grass. Define two or three cultivated parcels with clear crop-row directions and continuous hedges, rather than scattered dark boundary pixels. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The near-uniform ochre recolouring collapses crops, lane and surrounding ground into one muddy value range. Keep distinct muted soil, crop and hedge values through autumn."
+    },
+    {
+      "name": "farmland@autumn-1",
+      "problems": "The diagonal green/ochre split reads as two large paint swatches with fragmented dark pixels along the join. Draw a continuous hedgerow between the parcels and simplify the crop texture into intentional rows. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The near-uniform ochre recolouring collapses crops, lane and surrounding ground into one muddy value range. Keep distinct muted soil, crop and hedge values through autumn."
+    },
+    {
+      "name": "farmland@autumn-2",
+      "problems": "The narrow diagonal brown strip and yellow lower-right patch look like stains across a grass tile, with only a broken dark chain above. Give the parcels purposeful boundaries, readable cultivation patterns and a continuous tree/hedge line. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The near-uniform ochre recolouring collapses crops, lane and surrounding ground into one muddy value range. Keep distinct muted soil, crop and hedge values through autumn."
+    },
+    {
+      "name": "farmland@autumn-3",
+      "problems": "The upper rectangular lattice and lower curved stripes have weak, confused boundaries; the tan lane blends into the cultivation marks. Separate lane, hedge and crop rows with deliberate value groups and clear junctions. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The near-uniform ochre recolouring collapses crops, lane and surrounding ground into one muddy value range. Keep distinct muted soil, crop and hedge values through autumn."
+    },
+    {
+      "name": "farmland@autumn-4",
+      "problems": "The upper-left brown patch and thin right-hand ochre strip crowd around an indistinct green centre, and the bottom curved rows look like ripples. Clarify the parcel geometry and replace the wavering texture with consistent crop rows and readable hedges. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The near-uniform ochre recolouring collapses crops, lane and surrounding ground into one muddy value range. Keep distinct muted soil, crop and hedge values through autumn."
+    },
+    {
+      "name": "farmland@autumn-5",
+      "problems": "Only the upper ochre strip reads as a distinct field; most of the remaining tile is an almost empty grass patch. Split that expanse into the required two or three readable parcels, and define their boundaries with continuous hedges or a tree line. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The near-uniform ochre recolouring collapses crops, lane and surrounding ground into one muddy value range. Keep distinct muted soil, crop and hedge values through autumn."
+    },
+    {
+      "name": "farmland@autumn-6",
+      "problems": "The left brown bulb and upper ochre patch meet the green parcel in a muddled central knot, and the tan left lane is hard to separate from soil. Clean the junction, use distinct crop-row directions and give the lane and hedges continuous silhouettes. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. The near-uniform ochre recolouring collapses crops, lane and surrounding ground into one muddy value range. Keep distinct muted soil, crop and hedge values through autumn."
+    },
+    {
+      "name": "farmland@spring-0",
+      "problems": "The ochre upper-right and brown lower-right fields are rounded mottled blobs; the left half is almost undivided grass. Define two or three cultivated parcels with clear crop-row directions and continuous hedges, rather than scattered dark boundary pixels. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. Bright, scattered grass/crop pixels make the field surface noisy; keep the reference spring palette but organise texture into crop rows and quieter ground."
+    },
+    {
+      "name": "farmland@spring-1",
+      "problems": "The diagonal green/ochre split reads as two large paint swatches with fragmented dark pixels along the join. Draw a continuous hedgerow between the parcels and simplify the crop texture into intentional rows. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. Bright, scattered grass/crop pixels make the field surface noisy; keep the reference spring palette but organise texture into crop rows and quieter ground."
+    },
+    {
+      "name": "farmland@spring-2",
+      "problems": "The narrow diagonal brown strip and yellow lower-right patch look like stains across a grass tile, with only a broken dark chain above. Give the parcels purposeful boundaries, readable cultivation patterns and a continuous tree/hedge line. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. Bright, scattered grass/crop pixels make the field surface noisy; keep the reference spring palette but organise texture into crop rows and quieter ground."
+    },
+    {
+      "name": "farmland@spring-3",
+      "problems": "The upper rectangular lattice and lower curved stripes have weak, confused boundaries; the tan lane blends into the cultivation marks. Separate lane, hedge and crop rows with deliberate value groups and clear junctions. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. Bright, scattered grass/crop pixels make the field surface noisy; keep the reference spring palette but organise texture into crop rows and quieter ground."
+    },
+    {
+      "name": "farmland@spring-4",
+      "problems": "The upper-left brown patch and thin right-hand ochre strip crowd around an indistinct green centre, and the bottom curved rows look like ripples. Clarify the parcel geometry and replace the wavering texture with consistent crop rows and readable hedges. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. Bright, scattered grass/crop pixels make the field surface noisy; keep the reference spring palette but organise texture into crop rows and quieter ground."
+    },
+    {
+      "name": "farmland@spring-5",
+      "problems": "Only the upper ochre strip reads as a distinct field; most of the remaining tile is an almost empty grass patch. Split that expanse into the required two or three readable parcels, and define their boundaries with continuous hedges or a tree line. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. Bright, scattered grass/crop pixels make the field surface noisy; keep the reference spring palette but organise texture into crop rows and quieter ground."
+    },
+    {
+      "name": "farmland@spring-6",
+      "problems": "The left brown bulb and upper ochre patch meet the green parcel in a muddled central knot, and the tan left lane is hard to separate from soil. Clean the junction, use distinct crop-row directions and give the lane and hedges continuous silhouettes. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. Bright, scattered grass/crop pixels make the field surface noisy; keep the reference spring palette but organise texture into crop rows and quieter ground."
+    },
+    {
+      "name": "farmland@winter-0",
+      "problems": "The ochre upper-right and brown lower-right fields are rounded mottled blobs; the left half is almost undivided grass. Define two or three cultivated parcels with clear crop-row directions and continuous hedges, rather than scattered dark boundary pixels. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. White/blue speckling mixed with dark-green and brown single pixels overwhelms the parcel structure. Use coherent snow cover, exposed furrows and connected tracks instead of all-over confetti."
+    },
+    {
+      "name": "farmland@winter-1",
+      "problems": "The diagonal green/ochre split reads as two large paint swatches with fragmented dark pixels along the join. Draw a continuous hedgerow between the parcels and simplify the crop texture into intentional rows. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. White/blue speckling mixed with dark-green and brown single pixels overwhelms the parcel structure. Use coherent snow cover, exposed furrows and connected tracks instead of all-over confetti."
+    },
+    {
+      "name": "farmland@winter-2",
+      "problems": "The narrow diagonal brown strip and yellow lower-right patch look like stains across a grass tile, with only a broken dark chain above. Give the parcels purposeful boundaries, readable cultivation patterns and a continuous tree/hedge line. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. White/blue speckling mixed with dark-green and brown single pixels overwhelms the parcel structure. Use coherent snow cover, exposed furrows and connected tracks instead of all-over confetti."
+    },
+    {
+      "name": "farmland@winter-3",
+      "problems": "The upper rectangular lattice and lower curved stripes have weak, confused boundaries; the tan lane blends into the cultivation marks. Separate lane, hedge and crop rows with deliberate value groups and clear junctions. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. White/blue speckling mixed with dark-green and brown single pixels overwhelms the parcel structure. Use coherent snow cover, exposed furrows and connected tracks instead of all-over confetti."
+    },
+    {
+      "name": "farmland@winter-4",
+      "problems": "The upper-left brown patch and thin right-hand ochre strip crowd around an indistinct green centre, and the bottom curved rows look like ripples. Clarify the parcel geometry and replace the wavering texture with consistent crop rows and readable hedges. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. White/blue speckling mixed with dark-green and brown single pixels overwhelms the parcel structure. Use coherent snow cover, exposed furrows and connected tracks instead of all-over confetti."
+    },
+    {
+      "name": "farmland@winter-5",
+      "problems": "Only the upper ochre strip reads as a distinct field; most of the remaining tile is an almost empty grass patch. Split that expanse into the required two or three readable parcels, and define their boundaries with continuous hedges or a tree line. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. White/blue speckling mixed with dark-green and brown single pixels overwhelms the parcel structure. Use coherent snow cover, exposed furrows and connected tracks instead of all-over confetti."
+    },
+    {
+      "name": "farmland@winter-6",
+      "problems": "The left brown bulb and upper ochre patch meet the green parcel in a muddled central knot, and the tan left lane is hard to separate from soil. Clean the junction, use distinct crop-row directions and give the lane and hedges continuous silhouettes. The outer grass/snow band does not read as the required half-width edge hedge. Draw compatible hedge segments at tile edges and remove the repeated isolated field-island silhouette visible in all three shuffles. White/blue speckling mixed with dark-green and brown single pixels overwhelms the parcel structure. Use coherent snow cover, exposed furrows and connected tracks instead of all-over confetti."
+    },
+    {
+      "name": "industry-0",
+      "problems": "The left sawtooth hall is a pale diagonal ladder with broken roof edges; the right-hand sheds and equipment collapse into a vertical strip of scraps. Redraw continuous roof planes, clear wall faces and recognisable equipment silhouettes. In all three layouts the absolutely flat grey perimeter separates compounds into repeated rectangular islands. Add restrained pavement detail equally inside and at the edges, and vary the abrupt rectangular compound footprints."
+    },
+    {
+      "name": "industry-1",
+      "problems": "The large upper-left and smaller upper-right tanks have lumpy, inconsistent top ellipses; the centre and lower yard are a jumble of anonymous grey-green fragments. Construct the tanks with clean rim/body/shadow clusters and reduce the yard to readable pipes, crates and access space. In all three layouts the absolutely flat grey perimeter separates compounds into repeated rectangular islands. Add restrained pavement detail equally inside and at the edges, and vary the abrupt rectangular compound footprints."
+    },
+    {
+      "name": "industry-2",
+      "problems": "The three bright diagonal roof bands fuse into a striped slab, and the lower annex is a broken pale bar with indistinct walls. Separate the sawtooth roof planes, establish their common lighting, and give the annex an unbroken roof and wall outline. In all three layouts the absolutely flat grey perimeter separates compounds into repeated rectangular islands. Add restrained pavement detail equally inside and at the edges, and vary the abrupt rectangular compound footprints."
+    },
+    {
+      "name": "industry-3",
+      "problems": "The two left chimneys, central diagonal structures and long right building have broken, uneven silhouettes; the spaces between are filled with unidentifiable specks. Clean the chimney shafts and roof geometry and replace the filler with a clearly organised service yard. In all three layouts the absolutely flat grey perimeter separates compounds into repeated rectangular islands. Add restrained pavement detail equally inside and at the edges, and vary the abrupt rectangular compound footprints."
+    },
+    {
+      "name": "industry-4",
+      "problems": "The two upper cooling-tower forms read as squared, flat grey bins with dark slots. Draw their narrowing bodies, coherent elliptical rims and consistent shadow sides; clarify the anonymous rectangular equipment at lower right. In all three layouts the absolutely flat grey perimeter separates compounds into repeated rectangular islands. Add restrained pavement detail equally inside and at the edges, and vary the abrupt rectangular compound footprints."
+    },
+    {
+      "name": "industry-5",
+      "problems": "The three parallel sheds repeat almost the same long pale roof and mottled dark frontage. Give this compound a distinct plan and roof language, and replace scattered roof pixels with deliberate vents, seams and loading bays. In all three layouts the absolutely flat grey perimeter separates compounds into repeated rectangular islands. Add restrained pavement detail equally inside and at the edges, and vary the abrupt rectangular compound footprints."
+    },
+    {
+      "name": "industry-6",
+      "problems": "The diagonal upper roofs collide in a dense jagged knot, and the lower-left hall has no clean roof/wall separation. Simplify the roof junctions, restore continuous outlines and use fewer, deliberate machinery clusters. In all three layouts the absolutely flat grey perimeter separates compounds into repeated rectangular islands. Add restrained pavement detail equally inside and at the edges, and vary the abrupt rectangular compound footprints."
+    },
+    {
+      "name": "industry-7",
+      "problems": "The supposed siding/yard is a long dark horizontal bar above a row of indistinct grey-green lumps. Make the rails, wagons or stacked materials recognisable at 48px, separate them from the buildings and clean the upper-left roof outline. In all three layouts the absolutely flat grey perimeter separates compounds into repeated rectangular islands. Add restrained pavement detail equally inside and at the edges, and vary the abrupt rectangular compound footprints."
+    },
+    {
+      "name": "industry@winter-0",
+      "problems": "The left sawtooth hall is a pale diagonal ladder with broken roof edges; the right-hand sheds and equipment collapse into a vertical strip of scraps. Redraw continuous roof planes, clear wall faces and recognisable equipment silhouettes. The pale snowy perimeter contrasts with exposed grey interior routes, outlining each compound; dark route segments meet neighbouring snow abruptly. Use the same snow/slush balance and texture at the margin and inside the yard, and replace scattered blue-white pixels with coherent snow and tracks."
+    },
+    {
+      "name": "industry@winter-1",
+      "problems": "The large upper-left and smaller upper-right tanks have lumpy, inconsistent top ellipses; the centre and lower yard are a jumble of anonymous grey-green fragments. Construct the tanks with clean rim/body/shadow clusters and reduce the yard to readable pipes, crates and access space. The pale snowy perimeter contrasts with exposed grey interior routes, outlining each compound; dark route segments meet neighbouring snow abruptly. Use the same snow/slush balance and texture at the margin and inside the yard, and replace scattered blue-white pixels with coherent snow and tracks."
+    },
+    {
+      "name": "industry@winter-2",
+      "problems": "The three bright diagonal roof bands fuse into a striped slab, and the lower annex is a broken pale bar with indistinct walls. Separate the sawtooth roof planes, establish their common lighting, and give the annex an unbroken roof and wall outline. The pale snowy perimeter contrasts with exposed grey interior routes, outlining each compound; dark route segments meet neighbouring snow abruptly. Use the same snow/slush balance and texture at the margin and inside the yard, and replace scattered blue-white pixels with coherent snow and tracks."
+    },
+    {
+      "name": "industry@winter-3",
+      "problems": "The two left chimneys, central diagonal structures and long right building have broken, uneven silhouettes; the spaces between are filled with unidentifiable specks. Clean the chimney shafts and roof geometry and replace the filler with a clearly organised service yard. The pale snowy perimeter contrasts with exposed grey interior routes, outlining each compound; dark route segments meet neighbouring snow abruptly. Use the same snow/slush balance and texture at the margin and inside the yard, and replace scattered blue-white pixels with coherent snow and tracks."
+    },
+    {
+      "name": "industry@winter-4",
+      "problems": "The two upper cooling-tower forms read as squared, flat grey bins with dark slots. Draw their narrowing bodies, coherent elliptical rims and consistent shadow sides; clarify the anonymous rectangular equipment at lower right. The pale snowy perimeter contrasts with exposed grey interior routes, outlining each compound; dark route segments meet neighbouring snow abruptly. Use the same snow/slush balance and texture at the margin and inside the yard, and replace scattered blue-white pixels with coherent snow and tracks."
+    },
+    {
+      "name": "industry@winter-5",
+      "problems": "The three parallel sheds repeat almost the same long pale roof and mottled dark frontage. Give this compound a distinct plan and roof language, and replace scattered roof pixels with deliberate vents, seams and loading bays. The pale snowy perimeter contrasts with exposed grey interior routes, outlining each compound; dark route segments meet neighbouring snow abruptly. Use the same snow/slush balance and texture at the margin and inside the yard, and replace scattered blue-white pixels with coherent snow and tracks."
+    },
+    {
+      "name": "industry@winter-6",
+      "problems": "The diagonal upper roofs collide in a dense jagged knot, and the lower-left hall has no clean roof/wall separation. Simplify the roof junctions, restore continuous outlines and use fewer, deliberate machinery clusters. The pale snowy perimeter contrasts with exposed grey interior routes, outlining each compound; dark route segments meet neighbouring snow abruptly. Use the same snow/slush balance and texture at the margin and inside the yard, and replace scattered blue-white pixels with coherent snow and tracks."
+    },
+    {
+      "name": "industry@winter-7",
+      "problems": "The supposed siding/yard is a long dark horizontal bar above a row of indistinct grey-green lumps. Make the rails, wagons or stacked materials recognisable at 48px, separate them from the buildings and clean the upper-left roof outline. The pale snowy perimeter contrasts with exposed grey interior routes, outlining each compound; dark route segments meet neighbouring snow abruptly. Use the same snow/slush balance and texture at the margin and inside the yard, and replace scattered blue-white pixels with coherent snow and tracks."
+    },
+    {
+      "name": "jazz_age-farmstead",
+      "problems": "The main house's brick, gable trim and doorway break into a busy checker of tan, red and dark pixels; the barn has a similar confused frontage. Simplify both into deliberate roof, wall, opening and shadow clusters that retain the reference brick-house character. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. The fields are mottled green/ochre patches with weak separation from the yard; define readable parcels and quieter crop rows."
+    },
+    {
+      "name": "jazz_age-farmstead@autumn",
+      "problems": "The main house's brick, gable trim and doorway break into a busy checker of tan, red and dark pixels; the barn has a similar confused frontage. Simplify both into deliberate roof, wall, opening and shadow clusters that retain the reference brick-house character. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. The ochre yard, fields and grass merge into one muddy surface; retain distinct soil, crop and hedge values in autumn."
+    },
+    {
+      "name": "jazz_age-farmstead@spring",
+      "problems": "The main house's brick, gable trim and doorway break into a busy checker of tan, red and dark pixels; the barn has a similar confused frontage. Simplify both into deliberate roof, wall, opening and shadow clusters that retain the reference brick-house character. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. Dense light-green and ochre speckles compete with the small building details; simplify the field texture and separate the yard from the crops."
+    },
+    {
+      "name": "jazz_age-farmstead@winter",
+      "problems": "The main house's brick, gable trim and doorway break into a busy checker of tan, red and dark pixels; the barn has a similar confused frontage. Simplify both into deliberate roof, wall, opening and shadow clusters that retain the reference brick-house character. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. High-contrast white/blue/green confetti obscures ground, fences and roof edges, while the ochre field patches remain visually harsh. Replace it with coherent snow clusters, subdued exposed crops and dirty connected yard tracks."
+    },
+    {
+      "name": "modern-farmstead",
+      "problems": "The main house's upper gable, dark roof and pale frontage merge into uneven fragments, and the tiny shed doorway is a dark notch without a clear wall plane. Redraw crisp roof slopes, gable trim and recognisable windows/doors at the target scale. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. The fields are mottled green/ochre patches with weak separation from the yard; define readable parcels and quieter crop rows."
+    },
+    {
+      "name": "modern-farmstead@autumn",
+      "problems": "The main house's upper gable, dark roof and pale frontage merge into uneven fragments, and the tiny shed doorway is a dark notch without a clear wall plane. Redraw crisp roof slopes, gable trim and recognisable windows/doors at the target scale. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. The ochre yard, fields and grass merge into one muddy surface; retain distinct soil, crop and hedge values in autumn."
+    },
+    {
+      "name": "modern-farmstead@spring",
+      "problems": "The main house's upper gable, dark roof and pale frontage merge into uneven fragments, and the tiny shed doorway is a dark notch without a clear wall plane. Redraw crisp roof slopes, gable trim and recognisable windows/doors at the target scale. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. Dense light-green and ochre speckles compete with the small building details; simplify the field texture and separate the yard from the crops."
+    },
+    {
+      "name": "modern-farmstead@winter",
+      "problems": "The main house's upper gable, dark roof and pale frontage merge into uneven fragments, and the tiny shed doorway is a dark notch without a clear wall plane. Redraw crisp roof slopes, gable trim and recognisable windows/doors at the target scale. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. High-contrast white/blue/green confetti obscures ground, fences and roof edges, while the ochre field patches remain visually harsh. Replace it with coherent snow clusters, subdued exposed crops and dirty connected yard tracks."
+    },
+    {
+      "name": "slums-0",
+      "problems": "The separated oval shack groups, especially the two lower groups, read as dark rubble with coloured patches rather than roof planes and walls. Give each shack a legible corrugated roof, a consistent shadow face and an attached lean-to; close the wide straight gaps between groups. The flat, empty dirt perimeter makes this tile a square island in all three shuffles. Carry the same restrained dirt texture through the perimeter and interior alleys, and break the abrupt square density boundary."
+    },
+    {
+      "name": "slums-1",
+      "problems": "The three similarly sized clumps across each row reuse the same dark footprint and patchwork treatment. Break the row rhythm with connected lean-tos and irregular alleys, and replace scattered highlight pixels with deliberate roof seams and recognisable clutter. The flat, empty dirt perimeter makes this tile a square island in all three shuffles. Carry the same restrained dirt texture through the perimeter and interior alleys, and break the abrupt square density boundary."
+    },
+    {
+      "name": "slums-2",
+      "problems": "The large blue roof at upper right and the blue roof at lower right are flat swatches, while the central stack dissolves into indistinct brown fragments. Outline separate roof planes and attached structures, and make the central crooked alley readable. The flat, empty dirt perimeter makes this tile a square island in all three shuffles. Carry the same restrained dirt texture through the perimeter and interior alleys, and break the abrupt square density boundary."
+    },
+    {
+      "name": "slums-3",
+      "problems": "The tightly packed central and lower shacks merge into an undifferentiated brown mass; tiny tan and grey fragments do not read as doors, walls or roof repairs. Separate roof silhouettes with controlled dark clusters and a continuous narrow alley instead of peppering in detail. The flat, empty dirt perimeter makes this tile a square island in all three shuffles. Carry the same restrained dirt texture through the perimeter and interior alleys, and break the abrupt square density boundary."
+    },
+    {
+      "name": "slums-4",
+      "problems": "The centre is a tangle of dark fragments and small blue patches, with no clear distinction between a roof, a wall and discarded material. Redraw the central junction as a readable alley between complete shacks and consolidate the patch highlights. The flat, empty dirt perimeter makes this tile a square island in all three shuffles. Carry the same restrained dirt texture through the perimeter and interior alleys, and break the abrupt square density boundary."
+    },
+    {
+      "name": "slums-5",
+      "problems": "The twelve detached boxes form an especially tidy three-column, four-row housing estate. Replace that regular grid with densely interlocked shacks, uneven extensions, tarps and crooked alleys; vary the roof footprints rather than only their patches. The flat, empty dirt perimeter makes this tile a square island in all three shuffles. Carry the same restrained dirt texture through the perimeter and interior alleys, and break the abrupt square density boundary."
+    },
+    {
+      "name": "slums-6",
+      "problems": "The long blue-grey roof across the upper middle merges with adjacent shacks, and the lower roofs repeat the same rounded dark-blob silhouette. Give the large roof a clear pitch and outline, distinguish the buildings underneath it, and vary the small footprints. The flat, empty dirt perimeter makes this tile a square island in all three shuffles. Carry the same restrained dirt texture through the perimeter and interior alleys, and break the abrupt square density boundary."
+    },
+    {
+      "name": "slums-7",
+      "problems": "The central blue roof and adjoining brown roofs fuse into one muddy cluster, and the bottom band is another row of similar dark boxes. Establish individual roof edges, visible shadow faces and an irregular route through the cluster. The flat, empty dirt perimeter makes this tile a square island in all three shuffles. Carry the same restrained dirt texture through the perimeter and interior alleys, and break the abrupt square density boundary."
+    },
+    {
+      "name": "slums@winter-0",
+      "problems": "The separated oval shack groups, especially the two lower groups, read as dark rubble with coloured patches rather than roof planes and walls. Give each shack a legible corrugated roof, a consistent shadow face and an attached lean-to; close the wide straight gaps between groups. Winter adds high-contrast white/blue confetti to roofs and ground, destroying their separation; the snowy perimeter still outlines a square block. Replace isolated flecks with coherent roof snow, connected dirty tracks and subdued ground clusters that continue through the edges."
+    },
+    {
+      "name": "slums@winter-1",
+      "problems": "The three similarly sized clumps across each row reuse the same dark footprint and patchwork treatment. Break the row rhythm with connected lean-tos and irregular alleys, and replace scattered highlight pixels with deliberate roof seams and recognisable clutter. Winter adds high-contrast white/blue confetti to roofs and ground, destroying their separation; the snowy perimeter still outlines a square block. Replace isolated flecks with coherent roof snow, connected dirty tracks and subdued ground clusters that continue through the edges."
+    },
+    {
+      "name": "slums@winter-2",
+      "problems": "The large blue roof at upper right and the blue roof at lower right are flat swatches, while the central stack dissolves into indistinct brown fragments. Outline separate roof planes and attached structures, and make the central crooked alley readable. Winter adds high-contrast white/blue confetti to roofs and ground, destroying their separation; the snowy perimeter still outlines a square block. Replace isolated flecks with coherent roof snow, connected dirty tracks and subdued ground clusters that continue through the edges."
+    },
+    {
+      "name": "slums@winter-3",
+      "problems": "The tightly packed central and lower shacks merge into an undifferentiated brown mass; tiny tan and grey fragments do not read as doors, walls or roof repairs. Separate roof silhouettes with controlled dark clusters and a continuous narrow alley instead of peppering in detail. Winter adds high-contrast white/blue confetti to roofs and ground, destroying their separation; the snowy perimeter still outlines a square block. Replace isolated flecks with coherent roof snow, connected dirty tracks and subdued ground clusters that continue through the edges."
+    },
+    {
+      "name": "slums@winter-4",
+      "problems": "The centre is a tangle of dark fragments and small blue patches, with no clear distinction between a roof, a wall and discarded material. Redraw the central junction as a readable alley between complete shacks and consolidate the patch highlights. Winter adds high-contrast white/blue confetti to roofs and ground, destroying their separation; the snowy perimeter still outlines a square block. Replace isolated flecks with coherent roof snow, connected dirty tracks and subdued ground clusters that continue through the edges."
+    },
+    {
+      "name": "slums@winter-5",
+      "problems": "The twelve detached boxes form an especially tidy three-column, four-row housing estate. Replace that regular grid with densely interlocked shacks, uneven extensions, tarps and crooked alleys; vary the roof footprints rather than only their patches. Winter adds high-contrast white/blue confetti to roofs and ground, destroying their separation; the snowy perimeter still outlines a square block. Replace isolated flecks with coherent roof snow, connected dirty tracks and subdued ground clusters that continue through the edges."
+    },
+    {
+      "name": "slums@winter-6",
+      "problems": "The long blue-grey roof across the upper middle merges with adjacent shacks, and the lower roofs repeat the same rounded dark-blob silhouette. Give the large roof a clear pitch and outline, distinguish the buildings underneath it, and vary the small footprints. Winter adds high-contrast white/blue confetti to roofs and ground, destroying their separation; the snowy perimeter still outlines a square block. Replace isolated flecks with coherent roof snow, connected dirty tracks and subdued ground clusters that continue through the edges."
+    },
+    {
+      "name": "slums@winter-7",
+      "problems": "The central blue roof and adjoining brown roofs fuse into one muddy cluster, and the bottom band is another row of similar dark boxes. Establish individual roof edges, visible shadow faces and an irregular route through the cluster. Winter adds high-contrast white/blue confetti to roofs and ground, destroying their separation; the snowy perimeter still outlines a square block. Replace isolated flecks with coherent roof snow, connected dirty tracks and subdued ground clusters that continue through the edges."
+    },
+    {
+      "name": "suburb-0",
+      "problems": "The three upper houses and three lower houses sit on the same regularly spaced pads; the middle brown-roof house and lower-right house have broken gable/door clusters. Vary the house footprints and setbacks and redraw each gable and entrance with fewer, clear pixel clusters. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb-1",
+      "problems": "All six houses repeat virtually the same dark gable and cream frontage, with the rear garden strip doing most of the variation. Change the architecture, roof direction and lot widths, and distinguish the entrances from the black facade shadows. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb-2",
+      "problems": "This repeats the three-house upper row of the other tiles, while the lower-right garden is a noisy ladder of green/brown pixels. Replace that filler with a readable garden or outbuilding and vary the upper-row footprints and spacing. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb-3",
+      "problems": "The upper row shares three almost identical dark frontages, and the centre lower brown house is another copy of the same gable. Give the six houses distinct roof silhouettes and reduce the broken fence/garden marks behind and below them. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb-4",
+      "problems": "The generous empty back lawns, single round tree and six equally spaced tiny facades make this a sparse, obvious housing stamp. Vary lot depth, building footprint and tree grouping; redraw the central upper house so the doorway and roof do not merge into a hole. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb-5",
+      "problems": "The three brown roofs across the top and three grey roofs across the bottom are blatant repeated house stamps, including matching front paths. Replace the colour-swapped row template with distinct roof shapes, lot widths, setbacks and garden plans. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb-6",
+      "problems": "The repeated six-house arrangement is surrounded by rectilinear garden/fence marks that compete with the roof edges. Consolidate the garden marks into readable fences and beds and vary the houses instead of decorating the same row template. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb-7",
+      "problems": "The upper-right house is another copy of the main gable and the two small lower-left houses dissolve into jagged black/white marks. Redraw those small houses as readable volumes, vary the row spacing and simplify the busy garden fragments. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@autumn-0",
+      "problems": "The three upper houses and three lower houses sit on the same regularly spaced pads; the middle brown-roof house and lower-right house have broken gable/door clusters. Vary the house footprints and setbacks and redraw each gable and entrance with fewer, clear pixel clusters. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@autumn-1",
+      "problems": "All six houses repeat virtually the same dark gable and cream frontage, with the rear garden strip doing most of the variation. Change the architecture, roof direction and lot widths, and distinguish the entrances from the black facade shadows. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@autumn-2",
+      "problems": "This repeats the three-house upper row of the other tiles, while the lower-right garden is a noisy ladder of green/brown pixels. Replace that filler with a readable garden or outbuilding and vary the upper-row footprints and spacing. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@autumn-3",
+      "problems": "The upper row shares three almost identical dark frontages, and the centre lower brown house is another copy of the same gable. Give the six houses distinct roof silhouettes and reduce the broken fence/garden marks behind and below them. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@autumn-4",
+      "problems": "The generous empty back lawns, single round tree and six equally spaced tiny facades make this a sparse, obvious housing stamp. Vary lot depth, building footprint and tree grouping; redraw the central upper house so the doorway and roof do not merge into a hole. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@autumn-5",
+      "problems": "The three brown roofs across the top and three grey roofs across the bottom are blatant repeated house stamps, including matching front paths. Replace the colour-swapped row template with distinct roof shapes, lot widths, setbacks and garden plans. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@autumn-6",
+      "problems": "The repeated six-house arrangement is surrounded by rectilinear garden/fence marks that compete with the roof edges. Consolidate the garden marks into readable fences and beds and vary the houses instead of decorating the same row template. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@autumn-7",
+      "problems": "The upper-right house is another copy of the main gable and the two small lower-left houses dissolve into jagged black/white marks. Redraw those small houses as readable volumes, vary the row spacing and simplify the busy garden fragments. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@spring-0",
+      "problems": "The three upper houses and three lower houses sit on the same regularly spaced pads; the middle brown-roof house and lower-right house have broken gable/door clusters. Vary the house footprints and setbacks and redraw each gable and entrance with fewer, clear pixel clusters. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@spring-1",
+      "problems": "All six houses repeat virtually the same dark gable and cream frontage, with the rear garden strip doing most of the variation. Change the architecture, roof direction and lot widths, and distinguish the entrances from the black facade shadows. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@spring-2",
+      "problems": "This repeats the three-house upper row of the other tiles, while the lower-right garden is a noisy ladder of green/brown pixels. Replace that filler with a readable garden or outbuilding and vary the upper-row footprints and spacing. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@spring-3",
+      "problems": "The upper row shares three almost identical dark frontages, and the centre lower brown house is another copy of the same gable. Give the six houses distinct roof silhouettes and reduce the broken fence/garden marks behind and below them. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@spring-4",
+      "problems": "The generous empty back lawns, single round tree and six equally spaced tiny facades make this a sparse, obvious housing stamp. Vary lot depth, building footprint and tree grouping; redraw the central upper house so the doorway and roof do not merge into a hole. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@spring-5",
+      "problems": "The three brown roofs across the top and three grey roofs across the bottom are blatant repeated house stamps, including matching front paths. Replace the colour-swapped row template with distinct roof shapes, lot widths, setbacks and garden plans. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@spring-6",
+      "problems": "The repeated six-house arrangement is surrounded by rectilinear garden/fence marks that compete with the roof edges. Consolidate the garden marks into readable fences and beds and vary the houses instead of decorating the same row template. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@spring-7",
+      "problems": "The upper-right house is another copy of the main gable and the two small lower-left houses dissolve into jagged black/white marks. Redraw those small houses as readable volumes, vary the row spacing and simplify the busy garden fragments. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season."
+    },
+    {
+      "name": "suburb@winter-0",
+      "problems": "The three upper houses and three lower houses sit on the same regularly spaced pads; the middle brown-roof house and lower-right house have broken gable/door clusters. Vary the house footprints and setbacks and redraw each gable and entrance with fewer, clear pixel clusters. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season. Snow becomes a high-contrast scatter of blue, white and dark-green pixels, and small roofs lose separation from the lawns. Group snow into readable roof caps, quiet ground texture and connected slushy driveways."
+    },
+    {
+      "name": "suburb@winter-1",
+      "problems": "All six houses repeat virtually the same dark gable and cream frontage, with the rear garden strip doing most of the variation. Change the architecture, roof direction and lot widths, and distinguish the entrances from the black facade shadows. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season. Snow becomes a high-contrast scatter of blue, white and dark-green pixels, and small roofs lose separation from the lawns. Group snow into readable roof caps, quiet ground texture and connected slushy driveways."
+    },
+    {
+      "name": "suburb@winter-2",
+      "problems": "This repeats the three-house upper row of the other tiles, while the lower-right garden is a noisy ladder of green/brown pixels. Replace that filler with a readable garden or outbuilding and vary the upper-row footprints and spacing. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season. Snow becomes a high-contrast scatter of blue, white and dark-green pixels, and small roofs lose separation from the lawns. Group snow into readable roof caps, quiet ground texture and connected slushy driveways."
+    },
+    {
+      "name": "suburb@winter-3",
+      "problems": "The upper row shares three almost identical dark frontages, and the centre lower brown house is another copy of the same gable. Give the six houses distinct roof silhouettes and reduce the broken fence/garden marks behind and below them. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season. Snow becomes a high-contrast scatter of blue, white and dark-green pixels, and small roofs lose separation from the lawns. Group snow into readable roof caps, quiet ground texture and connected slushy driveways."
+    },
+    {
+      "name": "suburb@winter-4",
+      "problems": "The generous empty back lawns, single round tree and six equally spaced tiny facades make this a sparse, obvious housing stamp. Vary lot depth, building footprint and tree grouping; redraw the central upper house so the doorway and roof do not merge into a hole. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season. Snow becomes a high-contrast scatter of blue, white and dark-green pixels, and small roofs lose separation from the lawns. Group snow into readable roof caps, quiet ground texture and connected slushy driveways."
+    },
+    {
+      "name": "suburb@winter-5",
+      "problems": "The three brown roofs across the top and three grey roofs across the bottom are blatant repeated house stamps, including matching front paths. Replace the colour-swapped row template with distinct roof shapes, lot widths, setbacks and garden plans. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season. Snow becomes a high-contrast scatter of blue, white and dark-green pixels, and small roofs lose separation from the lawns. Group snow into readable roof caps, quiet ground texture and connected slushy driveways."
+    },
+    {
+      "name": "suburb@winter-6",
+      "problems": "The repeated six-house arrangement is surrounded by rectilinear garden/fence marks that compete with the roof edges. Consolidate the garden marks into readable fences and beds and vary the houses instead of decorating the same row template. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season. Snow becomes a high-contrast scatter of blue, white and dark-green pixels, and small roofs lose separation from the lawns. Group snow into readable roof caps, quiet ground texture and connected slushy driveways."
+    },
+    {
+      "name": "suburb@winter-7",
+      "problems": "The upper-right house is another copy of the main gable and the two small lower-left houses dissolve into jagged black/white marks. Redraw those small houses as readable volumes, vary the row spacing and simplify the busy garden fragments. All three shuffles show the same six-house rhythm recurring across the district; this file contributes to the set-wide stamped look. Redesign the lot/building silhouettes while keeping the required two rows and preserve the revised layout in every season. Snow becomes a high-contrast scatter of blue, white and dark-green pixels, and small roofs lose separation from the lawns. Group snow into readable roof caps, quiet ground texture and connected slushy driveways."
+    },
+    {
+      "name": "wuxia-farmstead",
+      "problems": "The main building reads as a squat, flat double roof with little of the reference house's swept eaves; the shed is an indistinct dark-roofed box. Draw recognisable curved eave tips and clean roof/wall separation at this scale, then simplify the shed. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. The fields are mottled green/ochre patches with weak separation from the yard; define readable parcels and quieter crop rows."
+    },
+    {
+      "name": "wuxia-farmstead@autumn",
+      "problems": "The main building reads as a squat, flat double roof with little of the reference house's swept eaves; the shed is an indistinct dark-roofed box. Draw recognisable curved eave tips and clean roof/wall separation at this scale, then simplify the shed. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. The ochre yard, fields and grass merge into one muddy surface; retain distinct soil, crop and hedge values in autumn."
+    },
+    {
+      "name": "wuxia-farmstead@spring",
+      "problems": "The main building reads as a squat, flat double roof with little of the reference house's swept eaves; the shed is an indistinct dark-roofed box. Draw recognisable curved eave tips and clean roof/wall separation at this scale, then simplify the shed. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. Dense light-green and ochre speckles compete with the small building details; simplify the field texture and separate the yard from the crops."
+    },
+    {
+      "name": "wuxia-farmstead@winter",
+      "problems": "The main building reads as a squat, flat double roof with little of the reference house's swept eaves; the shed is an indistinct dark-roofed box. Draw recognisable curved eave tips and clean roof/wall separation at this scale, then simplify the shed. The top/side hedges stop inside the tile instead of forming compatible half-width edge hedges; tiled, they outline an isolated plot and the bottom lane ends against unrelated ground in the next row. Fix hedge/ground transitions and give the lane a coherent edge connection. High-contrast white/blue/green confetti obscures ground, fences and roof edges, while the ochre field patches remain visually harsh. Replace it with coherent snow clusters, subdued exposed crops and dirty connected yard tracks."
+    }
+  ]
+}
