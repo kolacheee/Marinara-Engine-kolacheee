@@ -161,9 +161,30 @@ export function TownView({
     const groundAt = (x: number, y: number) =>
       x >= 0 && y >= 0 && x < town.width && y < town.height ? town.ground[y * town.width + x] : undefined;
     const isHedge = (x: number, y: number) => groundAt(x, y) === "h";
+    // Kept clear of the trees sprinkled on open ground: each building's door, and the row in front of it
+    // (a building is drawn facing down), so no tree stands in a doorway or over a front.
+    const clearOfTrees = new Set<number>();
+    // A set-back building's one-cell path out to its street, left as open ground with an image pack: the
+    // pack's building is fitted inside its lot and always faces down, so the path met its roof from behind
+    // or stopped short of its door, a stray stub either way.
+    const doorPaths = new Set<number>();
+    for (const building of town.buildings) {
+      const { x: dx, y: dy } = building.door;
+      const alone = [
+        [dx - 1, dy],
+        [dx + 1, dy],
+        [dx, dy - 1],
+        [dx, dy + 1],
+      ].every(([nx, ny]) => groundAt(nx!, ny!) !== "p");
+      if (drawTile.image && groundAt(dx, dy) === "p" && alone)
+        doorPaths.add(building.door.y * town.width + building.door.x);
+      clearOfTrees.add(building.door.y * town.width + building.door.x);
+      for (let col = building.x; col < building.x + building.w; col++)
+        clearOfTrees.add((building.y + building.h) * town.width + col);
+    }
     for (let y = 0; y < town.height; y++) {
       for (let x = 0; x < town.width; x++) {
-        const cell = town.ground[y * town.width + x];
+        const cell = doorPaths.has(y * town.width + x) ? "." : town.ground[y * town.width + x];
         const pick = cellNoise(x, y)(5);
         // With street edge tiles, streets and the square are under-painted as open ground and drawn by
         // the edge pieces, so they blend into it.
@@ -203,13 +224,14 @@ export function TownView({
           });
         // A tree here and there on the open ground away from the streets, and where a hand layout
         // (worldgen W9h) planted one or dug a well; "o" is open ground kept clear.
-        if (cell === "t" || (cell === "." && pick > 0.86))
+        if (cell === "t" || (cell === "." && pick > 0.86 && !clearOfTrees.has(y * town.width + x)))
           standing.push({ bottom: y, draw: () => drawTile(ctx, "tree", x * T, y * T) });
         if (cell === "w") standing.push({ bottom: y, draw: () => drawTile(ctx, "well", x * T, y * T) });
       }
     }
     // The streets (the square counted as street), then the square over them, as dual-grid passes.
-    const cellOf = (x: number, y: number) => town.ground[y * town.width + x];
+    const cellOf = (x: number, y: number) =>
+      doorPaths.has(y * town.width + x) ? "." : town.ground[y * town.width + x];
     const edgePass = (terrain: "street" | "square" | "road" | "water", filled: (x: number, y: number) => boolean) => {
       const rows = drawTile.edgeRows(terrain);
       for (let y = 0; y <= town.height; y++)
@@ -221,7 +243,8 @@ export function TownView({
     if (waterEdges) edgePass("water", (x, y) => cellOf(x, y) === "~" || cellOf(x, y) === "b");
     if (roadEdges) edgePass("road", (x, y) => cellOf(x, y) === "p");
     if (pathJoined) {
-      const joins = (x: number, y: number) => "psq".includes(groundAt(x, y) ?? "-");
+      const joins = (x: number, y: number) =>
+        !doorPaths.has(y * town.width + x) && "psq".includes(groundAt(x, y) ?? "-");
       const spilling: Array<() => void> = [];
       for (let y = 0; y < town.height; y++)
         for (let x = 0; x < town.width; x++) {
