@@ -4224,3 +4224,50 @@ export interface MarinaraFightGrowth {
 export function marinaraActionWeight(effect: MarinaraEffect): number {
   return (effect.weight ?? 1) / (1 + (effect.speedUntilNext ?? 0));
 }
+
+// ── What the party has learned of foe kinds (owner 2026-11-06) ──
+// A weakness or resistance a landed hit showed is kept for the game, by the foe's kind: its bestiary
+// family, or for a foe outside the bestiary its name without a fight's letter or number ("Bandit B").
+// Meeting that kind again, the fight screen shows it from the first turn.
+
+/** Learned affinities by foe kind, as a game keeps them. */
+export type MarinaraKnownAffinities = Record<string, MarinaraAffinities>;
+
+/** The key a foe's kind is remembered under. */
+export function marinaraFoeKindKey(fighter: Pick<MarinaraFighter, "familyId" | "name">): string {
+  if (fighter.familyId) return `family:${fighter.familyId}`;
+  return `name:${fighter.name
+    .trim()
+    .replace(/\s+(?:[A-Z]|\d+)$/, "")
+    .toLowerCase()}`;
+}
+
+/** Folds what this fight's foes showed into what the game already knew. */
+export function marinaraLearnAffinities(
+  known: MarinaraKnownAffinities | undefined,
+  fighters: readonly MarinaraFighter[],
+): MarinaraKnownAffinities {
+  const next: MarinaraKnownAffinities = { ...(known ?? {}) };
+  for (const fighter of fighters) {
+    if (fighter.side !== "enemy" || !fighter.revealed || !Object.keys(fighter.revealed).length) continue;
+    const key = marinaraFoeKindKey(fighter);
+    next[key] = { ...next[key], ...fighter.revealed };
+  }
+  return next;
+}
+
+/** Shows each foe what the game already learned of its kind: only entries that still hold for it. */
+export function marinaraRecallAffinities(fighters: MarinaraFighter[], known: unknown): void {
+  if (!known || typeof known !== "object") return;
+  const book = known as MarinaraKnownAffinities;
+  for (const fighter of fighters) {
+    if (fighter.side !== "enemy") continue;
+    const remembered = book[marinaraFoeKindKey(fighter)];
+    if (!remembered || typeof remembered !== "object") continue;
+    const actual = fighter.affinities ?? {};
+    const holds = Object.fromEntries(
+      Object.entries(remembered).filter(([type, value]) => actual[type as MarinaraDamageType] === value),
+    ) as MarinaraAffinities;
+    if (Object.keys(holds).length) fighter.revealed = { ...holds, ...fighter.revealed };
+  }
+}
