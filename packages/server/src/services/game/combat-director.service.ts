@@ -1175,6 +1175,15 @@ function validate(s: CombatDirectorState, a: Action): void {
         board = { ...board, targetId: u.id };
       }
     }
+    // A Marinara skill that isn't usable now (cooling down, its cost unpaid, used up) is refused, not
+    // played as a basic attack (slice tester s1, 2026-11-06: Vanish on cooldown came out as a hit).
+    if (s.marinara && board.type === "skill") {
+      const skillName = board.skillName;
+      const skillId = u.skills?.find((k) => k.name === skillName)?.id;
+      const fighter = marinaraFighter(s.marinara, u.id);
+      if (!skillId || !fighter || !marinaraUsable(fighter, s.marinara.fighters).some((one) => one.id === skillId))
+        throw new Error(`${skillName} can't be used now.`);
+    }
     const invalid = validateTacticalUnitAction(s.tactical, u as TacticalUnit, board);
     if (invalid) throw new Error(invalid.error);
   } else if (a.classic && s.marinara) {

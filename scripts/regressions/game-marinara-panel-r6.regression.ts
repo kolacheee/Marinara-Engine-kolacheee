@@ -95,6 +95,28 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
   assert.ok(fallen.hp > 0, "the fallen ally is back up");
 }
 
+// A skill on cooldown sent as a board action is refused, not played as a basic attack (slice s1).
+{
+  const hunter = unit("H", "party", "marksman", ["mark-prey"]);
+  const foe = unit("F", "enemy", "guard");
+  const s = board([hunter, foe], 4);
+  place(s, "H", "F", 2);
+  s.actorId = "H";
+  s.stage = "action";
+  s.marinara!.fighters.find((one) => one.id === "H")!.cooldowns["mark-prey"] = 2;
+  const name = tile(s, "H").skills!.find((one) => one.id === "mark-prey")!.name;
+  const hp = tile(s, "F").hp;
+  assert.throws(
+    () =>
+      commandCombatDirector(s, {
+        type: "tactical",
+        action: { type: "skill", unitId: "H", skillName: name, targetId: "F" },
+      }),
+    /can't be used now/,
+  );
+  assert.equal(tile(s, "F").hp, hp, "nothing landed");
+}
+
 // Mark Prey reaches 3 tiles, as far as a Marksman's bow; help for a friend stays at 2.
 {
   const hunter = unit("H", "party", "marksman", ["mark-prey"]);
