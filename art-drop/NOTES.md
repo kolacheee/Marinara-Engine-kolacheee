@@ -1,3 +1,171 @@
+# Round 4 — operator spring/autumn grass colour correction
+
+Changed only `out/grass@spring-base.png`, `out/grass@autumn-base.png`
+and this note. All **250 other output files**, including both plains bases
+and all seasonal details, remain byte-identical to the operator-review
+starting snapshot. The output inventory remains 252. No commit or push.
+
+Spring grass is now a deeper, cooler fresh green, between the previous lime
+and summer grass. Mean RGB is **(131,167,74)**; mean luminance is **152**,
+between summer grass's **112** and unchanged spring plains' **181**.
+Autumn grass is muted olive with earthy brown patches, clearly greener and
+darker than unchanged straw-orange autumn plains. Mean RGB is **(119,126,67)**;
+mean luminance is **120**, versus autumn plains' **153**. Brown patches use
+**(134,109,64)**.
+
+Two built-in image-tool colour studies guided the correction. Their edit
+instructions were to deepen/cool spring between its old lime and summer,
+and turn autumn ochre into muted olive with brown patches, preserving all
+texture, drifts and wrapping geometry. The selected colours were calibrated
+and transferred as **one-to-one palette replacements on the original pixels**.
+Every original colour-region mask is exactly preserved, including tufts,
+drifts, worn patches, edges and corners; no geometry was repainted.
+
+Checked both opaque 288×288 bases tiled **3×3**, plus horizontal, vertical and
+corner joins at **4×**. Checked all eight unchanged details per season on
+their revised bases at **1× and 4×**, in repeated composites, and at **8×**
+over three different ground crops per detail. No visible seam, rectangular
+backing, fringe or clipping was found. Spring foliage and autumn bronze/brown
+details sit naturally on their new grounds. Checks also verify all 18 tiled
+crops, exact palette-region preservation, opacity, detail transparency and
+clearance, and unchanged workspace hashes outside these three files.
+Temporary proofs, palette mappings and validation are in
+`/tmp/r4-base-colour-review/`; existing review images describe earlier colours.
+Earlier round-four processors would overwrite this colour correction.
+
+---
+
+# Round 4 — critic-r4-1 repairs
+
+Replaced exactly the **five failed files** in `review/critic-r4-1.json`:
+`grass-detail-7.png`, `grass@spring-detail-7.png`,
+`grass@autumn-detail-7.png`, `grass@spring-base.png` and
+`plains@autumn-detail-4.png`. **All 247 other files in `out/` are
+byte-identical** to this request's starting snapshot. The inventory remains
+252 files. Existing workspace work was preserved. No commit or push.
+
+The three clover patches now have a single connected, low silhouette and
+broad readable leaf groups. Brown twig grids, disconnected bright accents,
+stones and the spring stump are removed. Native brushes lighten the upper
+and internal shadow masses, retain lower-side shading and restore a few leaf
+facets. Autumn includes restrained olive leaves among bronze/rust faces.
+Summer retains its exact previous **(7,11)–(41,37)** bounding box and clearance.
+The autumn plains scuff has connected muted earth, two grouped pebble shapes
+and a softened upper edge, without scattered highlight pixels.
+
+Spring grass replaces the large flat lime island with smaller, irregular
+textured drifts across the tile. Its palette excludes the two palest reference
+swatches. It remains brighter than summer grass, with sparse blade clusters
+and shallow tonal contrast. No large blank pale island remains in self-review.
+
+**Method:** five fresh built-in image-tool drawings plus one offset seam
+repaint. Exact prompts: [r4-critic-fix-prompts.json](r4-critic-fix-prompts.json)
+and [r4-critic-fix-seam-prompt.json](r4-critic-fix-seam-prompt.json).
+Source paintings and aligned, mode-reduced and cleaned stages are retained
+under `source-drawings/r4-critic-fix/`. The base is BOX-aligned to 1152×1152,
+locked to existing reference colours and reduced by the mode of **all 16
+samples per 4×4 footprint**. A 144-pixel offset places original boundary joins
+at the centre; the seam repaint is independently reduced and blended only
+into that cross, then palette-locked again. The outer three-pixel source ring
+is preserved exactly, including corners. Details preserve the generated alpha
+silhouettes, reject translucent haze, register on 384×384 canvases and reduce
+by the mode of **all 64 samples per 8×8 footprint**, including transparency.
+Explicit source-guided native brush edits are in
+[r4-critic-fix-native-edits.json](r4-critic-fix-native-edits.json).
+No procedural shapes or noise replace the drawings.
+
+**Re-check:** all eight bases saved tiled **3×3 at 1× and 4×**; all eight
+season/ground combinations saved with eight details on their matching base
+at **1× and 4×**. Inspected the native tiled proofs and composites, the 4×
+composites, and 4× horizontal, vertical and corner-wrap crops. No visible wrap
+seam, clipping, rectangular backing or fringe was found. The new clover reads
+as foliage and the scuff as exposed earth at native size. Proofs:
+`review/r4-critic-fix-{tiled,comp,wrap}-*.png`; the four changed detail close
+views are in `review/r4-critic-fix-replacements.png`. Cell orders are saved in
+[review/r4-critic-fix-orders.json](review/r4-critic-fix-orders.json).
+
+[Validation](review/r4-critic-fix-validation.json) passes the exact five-file
+change scope, 247 protected hashes, unchanged inventory, sizes, opacity/hard
+alpha, zero RGB under transparency, palette membership, minimum six-pixel
+clearance, 20–45% detail coverage, unchanged summer clover bounds, all 72
+literal tiled crops, 64 detail placements, exact 4× enlargements and preserved
+wrapping ring. Rebuild only this repair with
+`PYTHONPATH=/tmp/r4-python python art-drop/process_r4_critic_fix.py` in this
+environment (Pillow/NumPy required). Earlier round-four broad processing
+stages would overwrite the repair. This is visual self-review; there is no
+new independent critic verdict or live in-game check. Repeated tonal patterns
+remain discernible when studying a large map.
+
+---
+
+# Round 4 — grass and plains bases and details
+
+Added all **72 requested PNGs** in `out/`: eight opaque **288×288** bases
+and 64 transparent **48×48** details, covering grass/plains in summer,
+spring, autumn and winter. The **180 pre-existing output files remain
+byte-identical** to the starting snapshot; the resulting inventory is 252.
+No commit or push was made. The operator's no-push instruction supersedes
+the final line of BRIEF-4.md.
+
+The grounds keep dark summer grass distinct from lighter yellow-olive plains.
+Spring is fresh green; autumn grass is darker brown-ochre and plains straw-gold.
+Winter uses pale snow and blue-grey drift shading with exposed dead tips.
+Grass details cover flowers, mossy rock, bush, tall grass, stump, mushroom
+ring, paired boulders and clover. Plains cover dry grass, scrub, flat rock,
+flowers/seed stalks, pebbled scuff, thistle, cairn and trail scuff. Winter
+replaces flowers with dead seed stalks, clover with frosted litter, and the
+mushroom ring with snow-capped stones. All subjects are setting-neutral.
+
+**Method:** each base and each detail has its own built-in image-tool drawing.
+The exact prompts are in [r4-generation-prompts.json](r4-generation-prompts.json).
+Bases are luminance-registered to the reference shade range, palette-locked,
+BOX-aligned to **1152×1152**, then reduced by the **mode of all 16 samples in
+each 4×4 block**. Each base is offset by 144 pixels on both axes and the
+central cross repainted using the image tool. Repaints are independently
+mode-reduced, feathered into that cross and locked again to the reference
+palette. The outer three-pixel ring is preserved exactly from the offset
+painting, retaining continuous source geometry through all wrapping edges
+and corners. Seam prompts: [r4-seam-prompts.json](r4-seam-prompts.json).
+
+Details are drawn larger on flat magenta, keyed including the coloured edge
+fringe, aspect-registered on **384×384** canvases, locked to ground/material
+colours sampled from current references, then reduced by the **mode of all
+64 samples in each 8×8 block**, with transparency participating in the vote.
+Native cleanup removes isolated fringe pixels. A coordinate brush pass
+restores source-drawn thin stems and mushroom stalks lost to voting:
+**389 pixel edits across 24 sprites**. The explicit brush paths are in
+[r4-native-paintover.json](r4-native-paintover.json). Every sprite has hard
+0/255 alpha, zero RGB in transparent pixels and at least the requested
+six clear pixels on every side. No base or sprite was built from procedural
+shapes or noise. Source paintings, registered/aligned canvases, mode votes,
+seam edits and native cleanup stages are retained in `source-drawings/r4/`.
+
+**Review:** saved every base tiled **3×3** and every **6×6-cell** base with
+eight randomly positioned details, one of each variant, at **1×, 4× and 8×**:
+`review/r4-tiled-{ground}-{season}-{scale}x.png` and
+`review/r4-details-{ground}-{season}-{scale}x.png`. Visually inspected each
+native tiled proof, native and 4× detail composite, every sprite in 4× strips,
+and 4× crops across wrapping edges and the repainted joins. The thin-stem
+failure was found in this pass and the composites rebuilt after repair.
+The eight chosen cells in each layout give a density of 8/36, close to 1/5.
+Orders: [review/r4-layout-orders.json](review/r4-layout-orders.json).
+
+[Validation](review/r4-validation.json) checks all 72 sizes, alpha, margins,
+palette membership and uniqueness; the 180 protected hashes; the exact
+252-file inventory; all 72 literal tiled crops; all 64 detail placements;
+exact nearest-neighbour review enlargements; and the preserved wrapping ring.
+Source and output hashes are included. Rebuild stages in
+[process_r4.py](process_r4.py): `prepare`, `bases`, `details`, `cleanup`,
+`review`, `validate`, in that order; requires Pillow and NumPy.
+
+**Limits:** tonal motifs remain recognisable when studying large repeated
+areas, especially spring. Thin plants intentionally have sparse silhouettes.
+This is visual self-review, without an independent critic verdict or a live
+in-game rendering check. No game integration was attempted in this art-only
+checkout.
+
+---
+
 # Paddy farmhouse repair — critic-r3-3 / operator round 2
 
 Replaced only `out/paddies-7.png`, `out/paddies@spring-7.png`,
