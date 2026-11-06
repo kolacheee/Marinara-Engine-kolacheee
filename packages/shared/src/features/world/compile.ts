@@ -13,12 +13,13 @@ import { worldBriefDeepestLayer } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./art-family.js";
 
-export const WORLD_GENERATOR_VERSION = 3;
-/** The generator versions this Engine makes again from a recipe exactly as they were made: 3 sets each
+export const WORLD_GENERATOR_VERSION = 4;
+/** The generator versions this Engine makes again from a recipe exactly as they were made: 4 keeps fields
+ *  and suburbs to small rings around the settlements (worldCultivate), 3 sets each
  *  town lot a cell back from its street with a path from its door out to it, 2 adds sites (caves, ruins,
  *  crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none. A recipe of a
  *  version it reads stays editable and sharable as a recipe. */
-export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3]);
+export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4]);
 export function worldGeneratorReads(version: unknown): boolean {
   return typeof version === "number" && WORLD_GENERATOR_VERSIONS_READ.includes(version);
 }
@@ -232,6 +233,93 @@ function compileGround(seed: number, kit: WorldKit, width: number, height: numbe
     kinds,
   );
   return { terrain, kinds };
+}
+
+// ── Cultivated ground (generator 4) ──
+
+/** Which kit terrains are worked ground: fields (farmland, paddies) or suburbs. By the words in the id,
+ *  in step with the look the overworld gives it (worldTerrainLook; the overworld regression checks they
+ *  agree): an id that reads as another look first is neither. */
+export function worldCultivatedTerrain(terrain: { id: string; kind: string }): "fields" | "suburb" | null {
+  if (terrain.kind !== "open") return null;
+  const words: Array<[RegExp, "fields" | "suburb" | null]> = [
+    [/nebula|asteroid|debris|belt|space|void|vacuum|orbit|dead|bamboo/, null],
+    [/padd|rice/, "fields"],
+    [/ruin|rubble|waste|blight|ash|slum|shanty|industr|factory|dock/, null],
+    [/suburb|residential|village/, "suburb"],
+    [/sprawl|city|urban|core|downtown|corporate|district/, null],
+    [/farm|field|orchard|vineyard|pasture/, "fields"],
+  ];
+  return words.find(([pattern]) => pattern.test(terrain.id))?.[1] ?? null;
+}
+
+/** How far fields and suburbs reach from a settlement, by its tier (0 a hamlet to 3 a city), in cells. */
+const FIELDS_REACH = [0.8, 1.3, 1.8, 2.5];
+const SUBURB_REACH = [0, 0, 1, 1.5];
+
+/**
+ * Fields and suburbs kept to the settlements (user, 2026-11-06: "this is overworld, so farm should be
+ * small and suburbs even smaller, and condensed around settlements"): every cell of a worked terrain away
+ * from them becomes the wild open ground most common around it, then each settlement gets a ragged ring of
+ * fields, and a town or city a tighter ring of suburbs inside it, on open ground only.
+ */
+function worldCultivate(
+  seed: number,
+  terrain: Array<{ id: string; kind: string; share: number }>,
+  kinds: Uint8Array,
+  width: number,
+  height: number,
+  settlements: Array<{ cell: number; tier: number }>,
+) {
+  const worked = terrain.map((entry) => worldCultivatedTerrain(entry));
+  const biggest = (kind: "fields" | "suburb") =>
+    terrain
+      .map((entry, index) => ({ index, share: entry.share }))
+      .filter(({ index }) => worked[index] === kind)
+      .sort((a, b) => b.share - a.share || a.index - b.index)[0]?.index;
+  const [fields, suburb] = [biggest("fields"), biggest("suburb")];
+  if (fields === undefined && suburb === undefined) return;
+  const wild = terrain
+    .map((entry, index) => ({ index, share: entry.share }))
+    .filter(({ index }) => terrain[index]!.kind === "open" && worked[index] === null)
+    .sort((a, b) => b.share - a.share || a.index - b.index);
+  if (wild.length === 0) return;
+  const before = Uint8Array.from(kinds);
+  for (let cell = 0; cell < kinds.length; cell++) {
+    if (worked[before[cell]!] === null) continue;
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    const count = new Map<number, number>();
+    for (let dy = -2; dy <= 2; dy++)
+      for (let dx = -2; dx <= 2; dx++) {
+        const [nx, ny] = [x + dx, y + dy];
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+        const near = before[ny * width + nx]!;
+        if (terrain[near]!.kind === "open" && worked[near] === null) count.set(near, (count.get(near) ?? 0) + 1);
+      }
+    const best = [...count].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0];
+    kinds[cell] = best ? best[0] : wild[0]!.index;
+  }
+  const noise = valueNoise(seed, "cultivated", width, height);
+  const lay = (index: number | undefined, reach: (tier: number) => number, grain: number) => {
+    if (index === undefined) return;
+    for (const { cell, tier } of settlements) {
+      const far = reach(tier);
+      if (far <= 0) continue;
+      const [cx, cy] = [cell % width, Math.floor(cell / width)];
+      const span = Math.ceil(far);
+      for (let dy = -span; dy <= span; dy++)
+        for (let dx = -span; dx <= span; dx++) {
+          const [x, y] = [cx + dx, cy + dy];
+          if (x < 0 || y < 0 || x >= width || y >= height) continue;
+          const at = y * width + x;
+          if (at === cell || terrain[kinds[at]!]!.kind !== "open") continue;
+          // Ragged: the ring's edge moves in and out with the noise, by up to `grain` cells.
+          if (Math.hypot(dx, dy) <= far + (noise[at]! - 0.5) * 2 * grain) kinds[at] = index;
+        }
+    }
+  };
+  lay(fields, (tier) => FIELDS_REACH[tier] ?? 1, 0.6);
+  lay(suburb, (tier) => SUBURB_REACH[tier] ?? 0, 0.4);
 }
 
 // ── Places ──
@@ -579,6 +667,20 @@ export function compileWorld({
       draft.name = name;
     }
   }
+
+  // Generator 4: fields and suburbs only near the settlements, before the ways are laid over the ground.
+  if (generatorVersion >= 4)
+    worldCultivate(
+      seed,
+      terrain,
+      kinds,
+      width,
+      height,
+      settlements.map(({ draft }) => ({
+        cell: draft.cell!,
+        tier: ladder > 1 ? Math.round((draft.size! / (ladder - 1)) * 3) : 3,
+      })),
+    );
 
   const places: WorldPlace[] = drafts.map((draft, index) => {
     const cell = draft.cell ?? 0;

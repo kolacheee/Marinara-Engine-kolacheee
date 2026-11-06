@@ -29,6 +29,8 @@ import {
   applyGamePlaceTags,
   checkWorldBrief,
   compileWorld,
+  worldCultivatedTerrain,
+  worldTerrainLook,
   worldSites,
   createConnectionSchema,
   createLorebookEntrySchema,
@@ -55,7 +57,7 @@ const fantasy = byId.get("high_fantasy")!;
 /** Everything a compiled world must be, whatever the kit, scale or seed. */
 function assertWhole(world: CompiledWorld, kit: WorldKit, what: string) {
   const settlementsDepth = kit.layers.findIndex((layer) => layer.settlements);
-  assert.equal(world.generatorVersion, WORLD_GENERATOR_VERSION);
+  assert.ok(world.generatorVersion >= 3 && world.generatorVersion <= WORLD_GENERATOR_VERSION);
   assert.equal(world.ground.length, world.width * world.height, `${what}: the ground covers the map`);
   assert.deepEqual(
     world.terrain,
@@ -162,12 +164,65 @@ for (const kit of kits) {
   }
 }
 
+// ── Generator 4: fields and suburbs only in small rings around the settlements ──
+{
+  for (const starter of WORLD_STARTER_KITS) {
+    const parsed = parseWorldKit(starter);
+    assert.ok(parsed.ok);
+    for (const entry of parsed.kit.terrain ?? []) {
+      // Worked ground by its id agrees with the look the overworld draws it with.
+      const look = worldTerrainLook(entry);
+      const expected = look === "farmland" || look === "paddies" ? "fields" : look === "suburb" ? "suburb" : null;
+      assert.equal(worldCultivatedTerrain(entry), expected, `${starter.id}/${entry.id}`);
+    }
+  }
+  for (const kitId of ["modern_day", "high_fantasy", "wuxia_xianxia", "the_1920s"]) {
+    const parsed = parseWorldKit(WORLD_STARTER_KITS.find((kit) => kit.id === kitId)!);
+    assert.ok(parsed.ok);
+    const kit = parsed.kit;
+    for (const seed of [1, 4242, 20261002]) {
+      const world = compileWorld({ seed, kit });
+      const old = compileWorld({ seed, kit, generatorVersion: 3 });
+      const settlements = world.places.filter((place) => place.rank !== undefined);
+      const worked = (ground: string, kind: "fields" | "suburb") =>
+        [...ground]
+          .map((cell, at) => ({ at, kind: worldCultivatedTerrain(kit.terrain![parseInt(cell, 36)]!) }))
+          .filter((each) => each.kind === kind);
+      const near = (at: number, reach: number, minRank = 0) =>
+        settlements.some(
+          (place) =>
+            place.rank! >= minRank &&
+            Math.hypot(place.at.x - (at % world.width), place.at.y - Math.floor(at / world.width)) <= reach,
+        );
+      const fields = worked(world.ground, "fields");
+      const label = `${kitId}/${seed}`;
+      assert.ok(fields.length > 0, `${label}: some fields`);
+      assert.ok(fields.length < worked(old.ground, "fields").length / 1.5, `${label}: fewer fields than before`);
+      assert.ok(
+        fields.length < world.ground.length * 0.12,
+        `${label}: fields ${fields.length} of ${world.ground.length}`,
+      );
+      assert.ok(
+        fields.every(({ at }) => near(at, 4.5)),
+        `${label}: fields only around settlements`,
+      );
+      const suburbs = worked(world.ground, "suburb");
+      assert.ok(suburbs.length < fields.length || fields.length === 0, `${label}: fewer suburbs than fields`);
+      assert.ok(
+        suburbs.every(({ at }) => near(at, 2.2, 1)),
+        `${label}: suburbs only right by towns`,
+      );
+    }
+  }
+}
+
 // ── The ground's shares, and the ways and times of travel ──
 {
   const ways = new Set<string>();
   for (const seed of [1, 4242, 0xdeadbeef]) {
-    const world = compileWorld({ seed, kit: fantasy });
-    // Each class of ground covers its share of the map (rounded to whole cells).
+    // Generator 3 (before fields and suburbs kept to the settlements): each class of ground covers its
+    // share of the map (rounded to whole cells).
+    const world = compileWorld({ seed, kit: fantasy, generatorVersion: 3 });
     const total = fantasy.terrain!.reduce((sum, entry) => sum + entry.share, 0);
     fantasy.terrain!.forEach((entry, index) => {
       const cells = [...world.ground].filter((cell) => parseInt(cell, 36) === index).length;
@@ -298,7 +353,8 @@ const brief = {
       each.id === "grassland" ? { ...each, share: 25 } : each.id === "farmland" ? { ...each, share: 15 } : each,
     ),
   };
-  const world = compileWorld({ seed: 20261001, kit: committedKit, brief: checked.brief });
+  // Generator 3: the fingerprints below are its world (version 4 only moves fields and suburbs).
+  const world = compileWorld({ seed: 20261001, kit: committedKit, brief: checked.brief, generatorVersion: 3 });
   assertWhole(world, fantasy, "brief");
   const named = new Map(world.places.map((place) => [place.name, place]));
   const thornmere = named.get("Thornmere")!;
@@ -353,6 +409,7 @@ const brief = {
     seed: 20261001,
     kit: committedKit,
     brief: { ...checked.brief, placeNames: [{ culture: fantasy.cultures[0]!.id, names: ["Other"] }] },
+    generatorVersion: 3,
   });
   assert.equal(renamed.ground, world.ground);
   assert.deepEqual(
