@@ -61,6 +61,7 @@ import { gameDataEditRequestSchema, type GameDataEditIssue } from "@marinara-eng
 import { normalizeGameInventoryStacks } from "@marinara-engine/shared";
 import {
   createMarinaraJoinerProgression,
+  marinaraTemperamentForSister,
   partyTemperamentFallback,
   readMarinaraCardProgression,
   readMarinaraStatAmounts,
@@ -9958,6 +9959,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         level: z.number().int().min(1).max(30).optional(),
         growths: z.string().max(400).optional(),
         stats: z.string().max(400).optional(),
+        sister: z.string().max(40).optional(),
       })
       .parse(req.body);
     const chats = createChatsStorage(app.db);
@@ -9991,20 +9993,39 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       const name = String(card.name);
       const growths = readMarinaraStatAmounts(input.growths);
       const stats = readMarinaraStatAmounts(input.stats);
+      const had = (gameCardTemperament(card)?.initial ??
+        partyTemperamentFallback(input.chatId, name)) as MarinaraPartyTemperament;
+      // The GM picks a room guest's sister tree, through the temperament that opens it (owner 2026-11-06).
+      const temperament = marinaraTemperamentForSister(input.sister, had) ?? had;
+      // A new game starts everyone at level 1; the GM's level counts once the party is under way.
+      const underWay = cards.some((one) => {
+        const progression = readMarinaraCardProgression(one.marinara);
+        return !!progression && (progression.level > 1 || progression.xp > 0);
+      });
       const progression = createMarinaraJoinerProgression({
         gameId: input.chatId,
         card: card as unknown as Parameters<typeof createMarinaraJoinerProgression>[0]["card"],
-        temperament: (gameCardTemperament(card)?.initial ??
-          partyTemperamentFallback(input.chatId, name)) as MarinaraPartyTemperament,
+        temperament,
         ...(classicPicks.get(key) ? { classic: classicPicks.get(key)! } : {}),
         terms: {
-          ...(input.level ? { level: input.level } : {}),
+          ...(input.level && underWay ? { level: input.level } : {}),
           ...(growths ? { growths } : {}),
           ...(stats ? { stats } : {}),
         },
       });
       joined = { name, level: progression.level };
-      return { gameCharacterCards: cards.map((one, i) => (i === index ? { ...one, marinara: progression } : one)) };
+      const sisterSet = temperament !== had || !gameCardTemperament(card);
+      return {
+        gameCharacterCards: cards.map((one, i) =>
+          i === index
+            ? {
+                ...one,
+                marinara: progression,
+                ...(sisterSet ? { temperament, temperamentInitial: temperament } : {}),
+              }
+            : one,
+        ),
+      };
     });
     if (refusal) return reply.code(409).send({ error: refusal });
     return { joined };

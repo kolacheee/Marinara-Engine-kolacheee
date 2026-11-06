@@ -127,6 +127,26 @@ export function isMarinaraPartyTemperament(value: unknown): value is MarinaraPar
   return typeof value === "string" && (MARINARA_PARTY_TEMPERAMENTS as readonly string[]).includes(value);
 }
 
+/**
+ * The starting temperament that opens the sister (secondary) tree the Game Master chose for a room
+ * guest (owner 2026-11-06). `sister` names a tree ("marksman") or a temperament ("cautious"); a
+ * temperament the character already has that opens that tree is kept. Undefined when it names neither.
+ */
+export function marinaraTemperamentForSister(
+  sister: string | null | undefined,
+  current?: MarinaraPartyTemperament | null,
+): MarinaraPartyTemperament | undefined {
+  const key = (sister ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/^honorable$/, "honourable");
+  if (isMarinaraPartyTemperament(key)) return key;
+  const tree = (MARINARA_ARCHETYPES as readonly string[]).includes(key) ? (key as MarinaraArchetype) : null;
+  if (!tree) return undefined;
+  if (current && MARINARA_TEMPERAMENT_TREES[current] === tree) return current;
+  return MARINARA_PARTY_TEMPERAMENTS.find((one) => MARINARA_TEMPERAMENT_TREES[one] === tree);
+}
+
 /** A character's two trees. A temperament that points back at the primary tree makes them Pure:
  *  one tree only, with its pure branch open. */
 export function marinaraTrees(

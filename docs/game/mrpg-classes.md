@@ -34,10 +34,12 @@ The Game Master decides this when the character joins. A newcomer it says nothin
 
 ## Playing with others
 
-In a shared game, each player's character levels up the same way.
+In a shared game, each guest builds their own character when they join the room: a name, a description, a **character concept** for the Game Master, and the same **Game Mode** picks a persona has (starting tree, strong stats and weak stat). Choosing one of your personas fills these in from it. The concept is where you tell the Game Master who your character is and how you would like them to come into the story.
+
+The Game Master then fits the character into the story and picks their sister tree.
 
 - **A new game.** Everyone, host and guests, starts at level 1.
-- **A game already under way.** When a guest sits down whose character has no MRPG class yet, the Game Master welcomes them and decides their starting level, and can give them faster growth or better stats, as for any [newcomer](#newcomers-to-the-party).
+- **A game already under way.** The Game Master also decides the guest's starting level, and can give them faster growth or better stats, as for any [newcomer](#newcomers-to-the-party).
 - **A returning guest.** A guest's character stays in the game when they leave, with its level, gear and tamed beasts. While their player is away, the character sits out fights and earns no experience, and the Game Master leaves them out of scenes. When the guest comes back, they play the same character at the level they left it.
 
 ## Move a Legacy game to MRPG

@@ -25,11 +25,24 @@ function parseJson(value: unknown): unknown {
 /** The party's Classic card picks by lookup name: the chat's characters and its persona. */
 export async function marinaraCardClassicByName(
   db: DB,
-  chat: { characterIds?: unknown; personaId?: string | null } | null | undefined,
+  chat: { characterIds?: unknown; personaId?: string | null; metadata?: unknown } | null | undefined,
   extraPersonaId?: string | null,
 ): Promise<Map<string, MarinaraCardClassic>> {
   const out = new Map<string, MarinaraCardClassic>();
   if (!chat) return out;
+  // A room guest's picks come with the persona they brought (owner 2026-11-06: a guest builds their
+  // character as any player would), kept under the game card bound to them.
+  const meta = parseJson(chat.metadata) as Record<string, unknown> | undefined;
+  const room = meta?.multiplayer as { participants?: unknown } | undefined;
+  const cards = Array.isArray(meta?.gameCharacterCards) ? (meta.gameCharacterCards as Record<string, unknown>[]) : [];
+  for (const participant of Array.isArray(room?.participants) ? room.participants : []) {
+    const seat = participant as { id?: unknown; persona?: { name?: unknown; classic?: unknown } };
+    const classic = readMarinaraCardClassic(seat.persona?.classic);
+    if (!classic || typeof seat.id !== "string") continue;
+    const bound = cards.find((card) => card.multiplayerParticipantId === seat.id);
+    const name = typeof bound?.name === "string" ? bound.name : seat.persona?.name;
+    if (typeof name === "string" && name.trim()) out.set(normalizeCharacterLookupName(name), classic);
+  }
   const storage = createCharactersStorage(db);
   const ids = parseJson(chat.characterIds);
   const characterIds = Array.isArray(ids) ? ids.filter((id): id is string => typeof id === "string") : [];

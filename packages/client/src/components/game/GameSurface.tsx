@@ -5627,6 +5627,7 @@ function GameSurfaceComponent({
           ...(join.level ? { level: join.level } : {}),
           ...(join.growths ? { growths: join.growths } : {}),
           ...(join.stats ? { stats: join.stats } : {}),
+          ...(join.sister ? { sister: join.sister } : {}),
         })
         .then(() => queryClient.invalidateQueries({ queryKey: chatKeys.detail(activeChatId) }))
         .catch((error: unknown) => console.warn("[mrpg_join] not applied:", error));

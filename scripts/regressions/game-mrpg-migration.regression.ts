@@ -25,6 +25,8 @@ import {
   createMarinaraJoinerProgression,
   marinaraClass,
   marinaraLegacyGearFor,
+  marinaraTemperamentForSister,
+  multiplayerPersonaSchema,
   parseGmTags,
   readMarinaraCardProgression,
   readMarinaraStatAmounts,
@@ -221,11 +223,50 @@ assert.equal(bareTag.partyChanges[0]!.level, 4);
   assert.equal(roomMrpgRoster(fresh).partyLevel, 3);
   const brandNew = room("live", true);
   brandNew.gameCharacterCards = [{ name: "Bren", multiplayerParticipantId: "guest-1" } as never];
-  assert.deepEqual(roomMrpgRoster(brandNew).newcomers, [], "a new game starts everyone at level 1");
+  assert.equal(roomMrpgRoster(brandNew).underWay, false, "a new game starts everyone at level 1");
 }
 
-const joinTags = parseGmTags('Welcome! [mrpg_join: character="Bren" level="6" growths="speed+30" stats="luck+4"]');
-assert.deepEqual(joinTags.mrpgJoins, [{ characterName: "Bren", level: 6, growths: "speed+30", stats: "luck+4" }]);
+// 6. A guest builds their own character (picks and concept travel with their persona); the GM picks
+// their sister tree, and their level only once the game is under way.
+{
+  const persona = multiplayerPersonaSchema.parse({
+    name: "Bren",
+    description: "A wandering archer.",
+    classic: { tree: "marksman", strong: ["skill", "speed"], weak: "magic" },
+    concept: "Owes the party's captain a debt.",
+  });
+  assert.equal(persona.classic?.tree, "marksman");
+  assert.ok(!multiplayerPersonaSchema.safeParse({ name: "X", description: "", classic: { tree: "wizard" } }).success);
+  assert.equal(marinaraTemperamentForSister("hexer"), "cruel");
+  assert.equal(marinaraTemperamentForSister("marksman", "cautious"), "cautious", "a fitting temperament is kept");
+  assert.equal(marinaraTemperamentForSister("honorable"), "honourable");
+  assert.equal(marinaraTemperamentForSister("wizard"), undefined);
+  const roster = roomMrpgRoster({
+    gameSetupConfig: { marinaraClasses: true },
+    multiplayer: {
+      version: 1,
+      role: "host",
+      status: "live",
+      participants: [
+        { id: "host-1", isHost: true, persona: { name: "Ayla" } },
+        { id: "guest-1", isHost: false, persona },
+      ],
+    },
+    gameCharacterCards: [
+      { name: "Ayla", multiplayerParticipantId: "host-1" },
+      { name: "Bren", multiplayerParticipantId: "guest-1" },
+    ],
+  });
+  assert.deepEqual(roster.newcomers, ["Bren"], "a new game's guest is onboarded too, for their sister tree");
+  assert.equal(roster.underWay, false);
+}
+
+const joinTags = parseGmTags(
+  'Welcome! [mrpg_join: character="Bren" sister="hexer" level="6" growths="speed+30" stats="luck+4"]',
+);
+assert.deepEqual(joinTags.mrpgJoins, [
+  { characterName: "Bren", level: 6, growths: "speed+30", stats: "luck+4", sister: "hexer" },
+]);
 assert.ok(!joinTags.cleanContent.includes("mrpg_join"), "the tag is stripped from the narration");
 
 console.log("game-mrpg-migration: ok");

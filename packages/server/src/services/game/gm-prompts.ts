@@ -1802,7 +1802,7 @@ export function buildGmFormatReminder(
     mrpg?: boolean;
     /** An MRPG game shared in a room: room players' characters who are away, and newly seated players
      *  the GM brings in with `[mrpg_join]` (owner 2026-11-06). */
-    mrpgRoom?: { away: string[]; newcomers: string[]; partyLevel: number };
+    mrpgRoom?: { away: string[]; newcomers: string[]; partyLevel: number; underWay: boolean };
     /** Special non-scene-advancing address mode inferred from the current player turn prefix. */
     addressMode?: "party" | "gm";
     /** Whether the current player turn already includes a resolved [dice: ...] roll. */
@@ -2313,7 +2313,7 @@ export function buildGmFormatReminder(
             `  A newcomer joining a party already on its way comes in at the level you give with level="N" (1 to 30; level 1 when you give none). Most come in low; a seasoned fighter may come in near the party's level, or above. A raw talent who will grow fast gets growths="strength+30, speed+20" (points of growth per stat, -30 to +50), and one decent from the start gets stats="defense+3, luck+5" (-5 to +10). Stats: strength, magic, skill, speed, defense, resistance, luck, hp. Leave both out for an ordinary recruit.`,
             ...(ctx.mrpgRoom?.newcomers.length
               ? [
-                  `- [mrpg_join: character="Exact Name" level="N" growths="..." stats="..."] - a player who just sat down at the table plays ${ctx.mrpgRoom.newcomers.map((name) => `"${name}"`).join(", ")}, with no MRPG class yet, in a game already under way (the party is level ${ctx.mrpgRoom.partyLevel}). Welcome them into the story, ask them briefly who their character is if you need to, then write this tag once for each: level, growths and stats work as for a newcomer above, and you judge them from who the character is. Never a party_change for a player's own character.`,
+                  `- [mrpg_join: character="Exact Name" sister="tree"${ctx.mrpgRoom.underWay ? ` level="N"` : ""} growths="..." stats="..."] - a guest who sat down at the table plays ${ctx.mrpgRoom.newcomers.map((name) => `"${name}"`).join(", ")}, with no MRPG class yet. They built their character themselves (their description, their concept for you and their own starting tree); you decide how they fit into the story and their sister tree, from who they are: sister= one of blade, guard, scout, marksman, channeler, hexer, mender, herald (their own tree again keeps them pure, in one tree). ${ctx.mrpgRoom.underWay ? `The game is already under way (the party is level ${ctx.mrpgRoom.partyLevel}): level, growths and stats work as for a newcomer above.` : `The game is new, so they start at level 1 like everyone; growths and stats work as for a newcomer above.`} Welcome them into the story, then write this tag once for each, before their first fight. Never a party_change for a player's own character.`,
                 ]
               : []),
           ]

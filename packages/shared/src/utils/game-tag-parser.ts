@@ -83,6 +83,8 @@ export interface MrpgJoinTag {
   level?: number;
   growths?: string;
   stats?: string;
+  /** The sister tree the GM chose for them: a tree, or a temperament that opens one. */
+  sister?: string;
 }
 
 export interface ReadableTag {
@@ -134,7 +136,7 @@ export interface ParsedGmTags {
   /** Characters joining or leaving the party */
   partyChanges: PartyChangeTag[];
   /** MRPG games: a room player's newly joined character brought in at the Game Master's level
-   *  (owner 2026-11-06), as [mrpg_join: character="Name" level="N" growths="…" stats="…"]. */
+   *  (owner 2026-11-06), as [mrpg_join: character="Name" level="N" sister="tree" growths="…" stats="…"]. */
   mrpgJoins: MrpgJoinTag[];
   /** Note or book content for reading display */
   readables: ReadableTag[];
@@ -364,7 +366,7 @@ function parsePartyCharacterName(body: string): string {
   const unquoted = quoted ? null : /(?:character|name)\s*=\s*([^,\]]+)/i.exec(body);
   const rawName = quoted?.[1] ?? unquoted?.[1] ?? body;
   return rawName
-    .replace(/\s+(?:change|copy_of|condition|level|growths|stats)\s*=.*$/i, "")
+    .replace(/\s+(?:change|copy_of|condition|level|growths|stats|sister)\s*=.*$/i, "")
     .trim()
     .replace(/^["']|["']$/g, "");
 }
@@ -852,11 +854,13 @@ export function parseGmTags(content: string): ParsedGmTags {
     const levelText = /\blevel\s*=\s*"?(\d{1,2})"?/i.exec(body)?.[1];
     const growths = attribute("growths");
     const stats = attribute("stats");
+    const sister = (/\bsister\s*=\s*"?([A-Za-z]+)"?/i.exec(body)?.[1] ?? "").trim() || undefined;
     result.mrpgJoins.push({
       characterName,
       ...(levelText ? { level: Number(levelText) } : {}),
       ...(growths ? { growths } : {}),
       ...(stats ? { stats } : {}),
+      ...(sister ? { sister } : {}),
     });
   }
   text = mrpgJoinTags.remaining;
