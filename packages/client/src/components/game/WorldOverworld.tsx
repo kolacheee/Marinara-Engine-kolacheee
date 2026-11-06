@@ -529,7 +529,10 @@ export function WorldOverworld({
       const tier = settlementTier(place, top);
       // An image pack's marker grows with the place (a city near three times a hamlet's size), standing on its cell's
       // bottom, centred across it, so a city reads as one from afar.
-      const grow = drawTile.image ? (MARKER_GROWTH[tier] ?? 1) : 1;
+      // A marker drawn at its own size (several cells, the sprite inside at its size on the map: the built-in
+      // art) is drawn as it is; a one-cell marker is scaled up to it.
+      const id = ruined.has(place.id) ? "ruin" : `marker${tier}`;
+      const grow = drawTile.image && !drawTile.sprite(id) ? (MARKER_GROWTH[tier] ?? 1) : 1;
       const box =
         grow > 1
           ? {
@@ -537,7 +540,6 @@ export function WorldOverworld({
               size: { w: grow * OVERWORLD_TILE, h: grow * OVERWORLD_TILE },
             }
           : null;
-      const id = ruined.has(place.id) ? "ruin" : `marker${tier}`;
       if (!(box ? drawTile(ctx, id, box.at[0], box.at[1], 0, box.size) : drawTile(ctx, id, x, y))) {
         paintSettlement(ctx, place.at.x, place.at.y, tier, ruined.has(place.id), lit);
       }
