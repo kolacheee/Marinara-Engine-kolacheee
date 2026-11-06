@@ -15,7 +15,13 @@ import {
   marinaraCombatant,
 } from "../../packages/server/src/services/game/marinara-director.service.js";
 import { MARINARA_CLASSES } from "../../packages/shared/src/features/marinara-classes.js";
-import { buildMarinaraEnemy, type MarinaraFighter } from "../../packages/shared/src/features/marinara-combat.js";
+import {
+  buildMarinaraEnemy,
+  marinaraOption,
+  performMarinaraOption,
+  type MarinaraEvent,
+  type MarinaraFighter,
+} from "../../packages/shared/src/features/marinara-combat.js";
 import { validateTacticalUnitAction } from "../../packages/shared/src/features/tactical-combat/engine.js";
 import type { TacticalUnit } from "../../packages/shared/src/features/tactical-combat/types.js";
 
@@ -128,6 +134,19 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
     s.log.some((one) => one.text === "K's Ridge Hulk lends +15% HP (Bond: the rest of the party +8%)."),
     s.log.map((one) => one.text).join("\n"),
   );
+}
+
+// A cleanse says what it cleared.
+{
+  const mender = unit("M", "party", "mender", ["purify"]);
+  const ally = unit("A", "party", "blade");
+  ally.statuses.push({ status: "slow", turns: 2 });
+  const events: MarinaraEvent[] = [];
+  performMarinaraOption(mender, marinaraOption(mender, "purify", [mender, ally])!, [ally], [mender, ally], {
+    random: () => 0.5,
+    events,
+  });
+  assert.deepEqual(events.find((one) => one.kind === "cleanse")?.notes, ["slow"]);
 }
 
 console.log("game-marinara-panel-r6: ok");

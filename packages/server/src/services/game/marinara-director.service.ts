@@ -449,7 +449,12 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
             ? `${target} ${STATUS_WORDS[event.status]} (${skill ?? actor}).`
             : `${actor} uses ${skill ?? "a hex"} on ${target}.`;
     case "cleanse":
-      return `${actor} cleanses ${target}${using}.`;
+      // What it cleared, by name (Sonnet panel r6); an empty list means there was nothing to clear.
+      return event.notes
+        ? event.notes.length
+          ? `${skill ?? actor} clears ${target}'s ${event.notes.join(", ")}.`
+          : `${actor} cleanses ${target}${using}: nothing to clear.`
+        : `${actor} cleanses ${target}${using}.`;
     case "shield":
       return `${actor} shields ${target}${using} (${event.amount}).`;
     case "down":
