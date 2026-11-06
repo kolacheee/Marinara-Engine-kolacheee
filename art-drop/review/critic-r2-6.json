@@ -1,0 +1,234 @@
+{
+  "sets": {
+    "slums": "fail",
+    "industry": "pass",
+    "city": "pass",
+    "suburb": "pass",
+    "farmland": "pass",
+    "farmstead": "fail"
+  },
+  "pass": [
+    "city-0",
+    "city-1",
+    "city-2",
+    "city-3",
+    "city-4",
+    "city-5",
+    "city-6",
+    "city-7",
+    "city@winter-0",
+    "city@winter-1",
+    "city@winter-2",
+    "city@winter-3",
+    "city@winter-4",
+    "city@winter-5",
+    "city@winter-6",
+    "city@winter-7",
+    "farmland-0",
+    "farmland-1",
+    "farmland-2",
+    "farmland-3",
+    "farmland-4",
+    "farmland-5",
+    "farmland-6",
+    "farmland@autumn-0",
+    "farmland@autumn-1",
+    "farmland@autumn-2",
+    "farmland@autumn-3",
+    "farmland@autumn-4",
+    "farmland@autumn-5",
+    "farmland@autumn-6",
+    "farmland@spring-0",
+    "farmland@spring-1",
+    "farmland@spring-2",
+    "farmland@spring-3",
+    "farmland@spring-4",
+    "farmland@spring-5",
+    "farmland@spring-6",
+    "farmland@winter-0",
+    "farmland@winter-1",
+    "farmland@winter-2",
+    "farmland@winter-3",
+    "farmland@winter-4",
+    "farmland@winter-5",
+    "farmland@winter-6",
+    "industry-0",
+    "industry-1",
+    "industry-2",
+    "industry-3",
+    "industry-4",
+    "industry-5",
+    "industry-6",
+    "industry-7",
+    "industry@winter-0",
+    "industry@winter-1",
+    "industry@winter-2",
+    "industry@winter-3",
+    "industry@winter-4",
+    "industry@winter-5",
+    "industry@winter-6",
+    "industry@winter-7",
+    "suburb-0",
+    "suburb-1",
+    "suburb-2",
+    "suburb-3",
+    "suburb-4",
+    "suburb-5",
+    "suburb-6",
+    "suburb-7",
+    "suburb@autumn-0",
+    "suburb@autumn-1",
+    "suburb@autumn-2",
+    "suburb@autumn-3",
+    "suburb@autumn-4",
+    "suburb@autumn-5",
+    "suburb@autumn-6",
+    "suburb@autumn-7",
+    "suburb@spring-0",
+    "suburb@spring-1",
+    "suburb@spring-2",
+    "suburb@spring-3",
+    "suburb@spring-4",
+    "suburb@spring-5",
+    "suburb@spring-6",
+    "suburb@spring-7",
+    "suburb@winter-0",
+    "suburb@winter-1",
+    "suburb@winter-2",
+    "suburb@winter-3",
+    "suburb@winter-4",
+    "suburb@winter-5",
+    "suburb@winter-6",
+    "suburb@winter-7"
+  ],
+  "fail": [
+    {
+      "name": "fantasy-farmstead",
+      "problems": "The thatched farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "fantasy-farmstead@autumn",
+      "problems": "The thatched farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "fantasy-farmstead@spring",
+      "problems": "The thatched farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "fantasy-farmstead@winter",
+      "problems": "The thatched farmhouse and shed sit on a closed horizontal blue-grey snowy yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable; the white snowy fields are also acceptable."
+    },
+    {
+      "name": "jazz_age-farmstead",
+      "problems": "The brick farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "jazz_age-farmstead@autumn",
+      "problems": "The brick farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "jazz_age-farmstead@spring",
+      "problems": "The brick farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "jazz_age-farmstead@winter",
+      "problems": "The brick farmhouse and shed sit on a closed horizontal blue-grey snowy yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable; the white snowy fields are also acceptable."
+    },
+    {
+      "name": "modern-farmstead",
+      "problems": "The cream farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "modern-farmstead@autumn",
+      "problems": "The cream farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "modern-farmstead@spring",
+      "problems": "The cream farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "modern-farmstead@winter",
+      "problems": "The cream farmhouse and shed sit on a closed horizontal blue-grey snowy yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable; the white snowy fields are also acceptable."
+    },
+    {
+      "name": "slums-0",
+      "problems": "The top blue/rust/blue boxes and the bottom row of three detached boxes establish regular rows; the tall rust rectangle in the centre remains isolated in bare dirt. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart."
+    },
+    {
+      "name": "slums-1",
+      "problems": "The upper blue/tan/rust row and the three aligned lower blue/rust/tan boxes repeat the same isolated rectangular shelter recipe; broad open passages separate the middle blue roofs. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart."
+    },
+    {
+      "name": "slums-2",
+      "problems": "Four separated roof rows, especially the upper blue/tan/rust/tan group and the blue/tan/rust/blue group below, read as individual stalls laid out on a grid. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart."
+    },
+    {
+      "name": "slums-3",
+      "problems": "The isolated blue boxes at upper left, the large blue box at middle right and the three boxes along the bottom are all separated by clean open corridors; the patch pixels do not break the rectangular silhouettes. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart."
+    },
+    {
+      "name": "slums-4",
+      "problems": "The four detached shelters across the top and four across the bottom establish an orderly camp grid; the central blue patch roof remains a freestanding box instead of part of a crowded shack cluster. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart."
+    },
+    {
+      "name": "slums-5",
+      "problems": "The straight column of detached tan boxes on the left and the repeated small rectangles on the right make tidy rows around the two larger central boxes. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart."
+    },
+    {
+      "name": "slums-6",
+      "problems": "The four isolated boxes across the top, aligned middle tan/blue boxes, and aligned bottom rust/tan/blue boxes repeat the same regular spacing and clean rectangular eaves. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart."
+    },
+    {
+      "name": "slums-7",
+      "problems": "The separated blue/tan boxes in the middle and the four isolated boxes along the bottom produce an especially obvious orderly grid of repeated shelter shapes. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart."
+    },
+    {
+      "name": "slums@winter-0",
+      "problems": "The top blue/rust/blue boxes and the bottom row of three detached boxes establish regular rows; the tall rust rectangle in the centre remains isolated in bare dirt. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart. Snow now has exposed material and shading; preserve that treatment when changing the footprints."
+    },
+    {
+      "name": "slums@winter-1",
+      "problems": "The upper blue/tan/rust row and the three aligned lower blue/rust/tan boxes repeat the same isolated rectangular shelter recipe; broad open passages separate the middle blue roofs. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart. Snow now has exposed material and shading; preserve that treatment when changing the footprints."
+    },
+    {
+      "name": "slums@winter-2",
+      "problems": "Four separated roof rows, especially the upper blue/tan/rust/tan group and the blue/tan/rust/blue group below, read as individual stalls laid out on a grid. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart. Snow now has exposed material and shading; preserve that treatment when changing the footprints."
+    },
+    {
+      "name": "slums@winter-3",
+      "problems": "The isolated blue boxes at upper left, the large blue box at middle right and the three boxes along the bottom are all separated by clean open corridors; the patch pixels do not break the rectangular silhouettes. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart. Snow now has exposed material and shading; preserve that treatment when changing the footprints."
+    },
+    {
+      "name": "slums@winter-4",
+      "problems": "The four detached shelters across the top and four across the bottom establish an orderly camp grid; the central blue patch roof remains a freestanding box instead of part of a crowded shack cluster. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart. Snow now has exposed material and shading; preserve that treatment when changing the footprints."
+    },
+    {
+      "name": "slums@winter-5",
+      "problems": "The straight column of detached tan boxes on the left and the repeated small rectangles on the right make tidy rows around the two larger central boxes. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart. Snow now has exposed material and shading; preserve that treatment when changing the footprints."
+    },
+    {
+      "name": "slums@winter-6",
+      "problems": "The four isolated boxes across the top, aligned middle tan/blue boxes, and aligned bottom rust/tan/blue boxes repeat the same regular spacing and clean rectangular eaves. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart. Snow now has exposed material and shading; preserve that treatment when changing the footprints."
+    },
+    {
+      "name": "slums@winter-7",
+      "problems": "The separated blue/tan boxes in the middle and the four isolated boxes along the bottom produce an especially obvious orderly grid of repeated shelter shapes. All three 3x shuffles show this tile contributing to a stamped, tidy camp rather than the reference's crowded shanties. The corrected shack sizes are acceptable. Join some shelters with offset lean-tos and patched tarps, replace bare gaps with readable salvage/clutter, and stagger the footprints to leave narrow crooked alleys. Retain the matching interior/perimeter dirt and keep every building inside the edge margin. Apply the same footprint changes to its seasonal counterpart. Snow now has exposed material and shading; preserve that treatment when changing the footprints."
+    },
+    {
+      "name": "wuxia-farmstead",
+      "problems": "The upturned-eave farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "wuxia-farmstead@autumn",
+      "problems": "The upturned-eave farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "wuxia-farmstead@spring",
+      "problems": "The upturned-eave farmhouse and shed sit on a closed horizontal tan yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable."
+    },
+    {
+      "name": "wuxia-farmstead@winter",
+      "problems": "The upturned-eave farmhouse and shed sit on a closed horizontal blue-grey snowy yard strip at approximately x=6..40, y=29..33. Both ends stop within the crops; no lane reaches any of the four tile edges. This is visible in isolation and repeats as a disconnected floating yard in every shuffle. Extend a narrow readable lane from the yard to one edge, crossing the boundary at a right angle through a small hedge opening; keep the surrounding two large fields running to the edge. Carry the exact lane/yard geometry through all four seasons. The new edge-to-edge fields, farmhouse size and roof-plus-south-face view are acceptable; the white snowy fields are also acceptable."
+    }
+  ]
+}
