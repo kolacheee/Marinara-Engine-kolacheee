@@ -661,6 +661,8 @@ export function marinaraAiCandidates(
         if (effect.status === "regen") {
           const mending = effect.target === "self" ? [actor] : friends;
           if (!threatened || mending.some((u) => u.statuses.some((s) => s.status === "regen"))) break;
+          // Only once someone it mends is actually hurt, never in advance at full HP (Alyssa 2026-11-06).
+          if (!mending.some((u) => u.hp < u.maxHp)) break;
           // What it can mend: HP already lost plus the blows due before it runs out, no more (Sonnet panel
           // r5: Self-Repair at full HP, ten tiles from the party).
           const missing = mending.reduce(
