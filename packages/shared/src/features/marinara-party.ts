@@ -9,6 +9,7 @@
 
 import {
   MARINARA_ARCHETYPES,
+  MARINARA_LEVEL_CAP,
   MARINARA_PROMOTION_LEVEL,
   MARINARA_STATS,
   MARINARA_XP_PER_LEVEL,
@@ -349,6 +350,92 @@ export function createMarinaraCardProgression(input: {
     temperament: isMarinaraPartyTemperament(input.temperament) ? input.temperament : "disciplined",
     lean: picked ? marinaraLeanFromClassic(input.classic!) : marinaraLeanFromCard(input.card),
   });
+}
+
+/** How far the Game Master may move a late joiner's stats and growths (owner 2026-11-06). */
+export const MARINARA_JOINER_LIMITS = {
+  stat: { min: -5, max: 10 },
+  growth: { min: -30, max: 50 },
+} as const;
+
+/** What the Game Master decided for a late joiner: their level, and stats and growths off the norm. */
+export interface MarinaraJoinerTerms {
+  level?: number;
+  /** Points added to (or taken off) their growth in each stat, in percent: a quick grower's. */
+  growths?: Partial<Record<MarinaraStat, number>>;
+  /** Points added to (or taken off) each stat from the start. */
+  stats?: Partial<Record<MarinaraStat, number>>;
+}
+
+/** Reads "strength+30, speed 20, luck-5" (the tag's form) into stat amounts; anything else is dropped. */
+export function readMarinaraStatAmounts(text: unknown): Partial<Record<MarinaraStat, number>> | undefined {
+  if (typeof text !== "string" || !text.trim()) return undefined;
+  const aliases: Record<string, MarinaraStat> = {
+    str: "strength",
+    mag: "magic",
+    skl: "skill",
+    spd: "speed",
+    def: "defense",
+    defence: "defense",
+    res: "resistance",
+    lck: "luck",
+    lk: "luck",
+  };
+  const out: Partial<Record<MarinaraStat, number>> = {};
+  for (const part of text.split(/[,;]/)) {
+    const match = /^\s*([a-z]+)\s*[:=]?\s*([+-]?\s*\d+)\s*%?\s*$/i.exec(part);
+    if (!match) continue;
+    const word = match[1]!.toLowerCase();
+    const stat = (MARINARA_STATS as readonly string[]).includes(word) ? (word as MarinaraStat) : aliases[word];
+    if (!stat) continue;
+    out[stat] = Number(match[2]!.replace(/\s+/g, ""));
+  }
+  return Object.keys(out).length ? out : undefined;
+}
+
+/**
+ * A character who joins a game on MRPG classes after it began (owner 2026-11-06): at the level the Game
+ * Master gives (FE-style, most come in low and some decent), with any stats and growths it set off the
+ * norm. Growths move their hidden aptitudes; stats ride on top of the class body.
+ */
+export function createMarinaraJoinerProgression(input: {
+  gameId: string;
+  card: Parameters<typeof createMarinaraCardProgression>[0]["card"];
+  temperament: MarinaraPartyTemperament;
+  classic?: MarinaraCardClassic;
+  terms?: MarinaraJoinerTerms;
+}): MarinaraCardProgression {
+  const clamp = (value: number, range: { min: number; max: number }) =>
+    Math.max(range.min, Math.min(range.max, Math.round(value)));
+  let progression = createMarinaraCardProgression({
+    gameId: input.gameId,
+    card: input.card,
+    temperament: input.temperament,
+    ...(input.classic ? { classic: input.classic } : {}),
+  });
+  const growths = input.terms?.growths;
+  if (growths) {
+    progression = {
+      ...progression,
+      aptitudes: Object.fromEntries(
+        MARINARA_STATS.map((stat) => [
+          stat,
+          progression.aptitudes[stat] + clamp(growths[stat] ?? 0, MARINARA_JOINER_LIMITS.growth),
+        ]),
+      ) as MarinaraStats,
+    };
+  }
+  const stats = input.terms?.stats;
+  if (stats) {
+    const statBonus = Object.fromEntries(
+      MARINARA_STATS.flatMap((stat) => (stats[stat] ? [[stat, clamp(stats[stat]!, MARINARA_JOINER_LIMITS.stat)]] : [])),
+    ) as Partial<MarinaraStats>;
+    if (Object.keys(statBonus).length) progression = { ...progression, statBonus };
+  }
+  const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.round(input.terms?.level ?? 1)));
+  const grown = awardMarinaraXp(progression, (level - 1) * MARINARA_XP_PER_LEVEL).progression;
+  // The body is rolled again from the moved aptitudes and the given stats.
+  return { ...grown, ...marinaraClassBody(grown) };
 }
 
 /** The level a Legacy party member starts Classic at (owner 2026-11-06): the top of their starting

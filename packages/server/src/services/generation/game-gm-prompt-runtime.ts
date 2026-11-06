@@ -4,6 +4,7 @@ import {
   gameStoryFromMetadata,
   gameWorldKitFromMetadata,
   gameWorldBattlefields,
+  MARINARA_CLASSES,
   marinaraClass,
   normalizeAgentPromptTemplateOptions,
   readMarinaraCardProgression,
@@ -174,17 +175,20 @@ export function gameGmPromptDecisionTexts(chatMetadata: Record<string, unknown>,
 
 function appendGameCardDetails(parts: string[], card: Record<string, unknown> | undefined): void {
   if (!card) return;
-  if (card.class) parts.push(`Class: ${card.class}`);
-  // Classic classes: the class they fight as and its level, which the fights and the sheet go by. A party
-  // upgraded from Legacy sheets still carries its old class and abilities above as story.
+  // MRPG classes: the class they fight as, which the fights and the sheet go by (owner 2026-11-06). A
+  // class text the story gave them that says something else is kept as their role in the story.
   const progression = readMarinaraCardProgression(card.marinara);
-  const classic = progression && marinaraClass(progression.activeClass);
-  if (progression && classic) {
+  const mrpg = progression && marinaraClass(progression.activeClass);
+  if (progression && mrpg) {
     const level = progression.classLevels?.[progression.activeClass];
     parts.push(
-      `Classic class (what they fight as): ${classic.label}${level ? `, class level ${level}` : ""}; character level ${progression.level}${progression.fallen ? " (fallen)" : ""}`,
+      `Class: ${mrpg.label} (MRPG class${level ? `, class level ${level}` : ""}; character level ${progression.level}${progression.fallen ? "; fallen" : ""})`,
     );
-  }
+    const story = typeof card.class === "string" ? card.class.trim() : "";
+    // An MRPG class name there (the upgrade wrote the one they started in) is no role of its own.
+    if (story && !MARINARA_CLASSES.some((def) => def.label.toLowerCase() === story.toLowerCase()))
+      parts.push(`Role in the story: ${story}`);
+  } else if (card.class) parts.push(`Class: ${card.class}`);
   // Beasts they tamed in Classic fights (Tracker): the active one follows them; the rest are kept.
   const tamed = card.marinara as
     { companions?: Array<{ id?: unknown; name?: unknown }>; activeCompanion?: unknown } | undefined;

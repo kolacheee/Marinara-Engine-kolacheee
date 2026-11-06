@@ -5924,6 +5924,9 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             // A package that brought its own inventory takes the built-in one out of the prompt.
             // Dungeon, cave and station maps are the Overworld RPG's; Classic Game Mode never opens one.
             overworld: gameStyleFromMetadata(chatMeta) === "overworld",
+            mrpg:
+              (chatMeta.gameSetupConfig as { marinaraClasses?: unknown } | undefined)?.marinaraClasses === true &&
+              chatMeta.gameRuleset == null,
             experienceProvidedSystems: capabilityPromptContext.provides,
             // A package that declares GM verbs gets one COMMANDS line each. No package declares a
             // table today, so this renders nothing and the reminder is byte-identical.

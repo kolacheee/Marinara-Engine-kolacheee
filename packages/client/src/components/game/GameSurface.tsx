@@ -3380,6 +3380,15 @@ function GameSurfaceComponent({
           characterName,
           ...(partyChange.copyOf ? { copyOf: partyChange.copyOf } : {}),
           ...(partyChange.condition ? { condition: partyChange.condition } : {}),
+          ...(partyChange.level || partyChange.growths || partyChange.stats
+            ? {
+                mrpg: {
+                  ...(partyChange.level ? { level: partyChange.level } : {}),
+                  ...(partyChange.growths ? { growths: partyChange.growths } : {}),
+                  ...(partyChange.stats ? { stats: partyChange.stats } : {}),
+                },
+              }
+            : {}),
         };
         const forgetCommand = () => processedPartyChangeCommandsRef.current.delete(commandKey);
         if (partyChange.change !== "add") {

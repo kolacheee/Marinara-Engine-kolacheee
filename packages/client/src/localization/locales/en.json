@@ -3074,6 +3074,7 @@
   "game.combat.marinara.legacy.done": "The party now uses Classic classes: {{party}}.",
   "game.combat.marinara.legacy.doneMember": "{{name}} Lv {{level}} ({{trees}})",
   "game.combat.marinara.legacy.failed": "The upgrade failed.",
+  "game.combat.marinara.legacy.gear": "{{from}} becomes MRPG gear ({{to}}) and keeps its name",
   "game.combat.marinara.legacy.intro": "This game uses Legacy sheets, and can keep them. Upgrade to give each party member a Classic class, a sister tree from their temperament, and the top level of their starting class.",
   "game.combat.marinara.legacy.kept": "Their Legacy stats stay on their cards. The upgrade is one-way: the game can't go back to Legacy sheets afterwards.",
   "game.combat.marinara.legacy.level": "Starts at Lv {{level}}, the top of their starting class",

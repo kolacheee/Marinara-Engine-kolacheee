@@ -629,7 +629,8 @@ export function GameSetupWizard({
   // A cruel opponent may strike the fallen (combat AI T3): off unless asked for.
   const [cruelOpponents, setCruelOpponents] = useState(false);
   const [marinaraClasses, setMarinaraClasses] = useState(false);
-  const classicClasses = (isNewGame && !activeExperience) || marinaraClasses;
+  // Every new game is on MRPG classes, an Experience too (owner 2026-11-06).
+  const classicClasses = isNewGame || marinaraClasses;
   const [permadeath, setPermadeath] = useState(false);
   // Companions fight on their own unless the player plays them (Alyssa 2026-10-26): on unless asked.
   const [companionsOnTheirOwn, setCompanionsOnTheirOwn] = useState(true);

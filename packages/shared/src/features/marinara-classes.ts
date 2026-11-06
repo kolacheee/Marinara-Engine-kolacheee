@@ -1863,6 +1863,11 @@ export interface MarinaraProgression {
   expected: MarinaraStats;
   /** Hidden: never shown as numbers. */
   aptitudes: MarinaraStats;
+  /**
+   * Stats the Game Master gave a late joiner on top of their class body (owner 2026-11-06: a Donnel
+   * who is decent from the start). Kept apart because the body is recomputed on every read.
+   */
+  statBonus?: Partial<MarinaraStats>;
   /** Up to four skill ids carried from other trained classes. */
   carried: string[];
 }
@@ -2269,6 +2274,9 @@ export function marinaraClassBody(
   }
   // A class promoted into at its threshold (Elementalist at 10) has its bonus before its first level.
   for (const one of line) promote(one);
+  // What the Game Master gave them on joining rides on top (never under 0).
+  const given = progression.statBonus;
+  if (given) stats = statRecord((stat) => Math.max(0, stats[stat] + (given[stat] ?? 0)));
   return { stats, expected };
 }
 

@@ -58,6 +58,13 @@ import { combatAiHintsSchema, combatTacticsSchema, combatInterruptFields } from 
 import { findRulesetCreature, type RulesetCatalogEntriesById } from "@marinara-engine/shared";
 import { loadRulesetCatalogEntries } from "../services/game/ruleset-catalog.service.js";
 import { gameDataEditRequestSchema, type GameDataEditIssue } from "@marinara-engine/shared";
+import { normalizeGameInventoryStacks } from "@marinara-engine/shared";
+import {
+  createMarinaraJoinerProgression,
+  partyTemperamentFallback,
+  readMarinaraStatAmounts,
+  type MarinaraPartyTemperament,
+} from "@marinara-engine/shared";
 import { buildGameDataEditPatch, sameGameDataValue } from "../services/game/game-data-edit.service.js";
 // ──────────────────────────────────────────────
 // Routes: Game Mode
@@ -128,6 +135,7 @@ import { buildFallbackGameCharacterCard } from "../services/game/game-party-card
 import { withCardTemperament } from "../services/game/party-temperament.service.js";
 import {
   applyMarinaraLegacyUpgrade,
+  marinaraLegacyGearOffers,
   marinaraLegacyNeedsTemperament,
   marinaraLegacyTemperamentPrompt,
   marinaraLegacyUpgradeBlock,
@@ -260,6 +268,7 @@ import {
 } from "../services/game/ruleset-registry.service.js";
 import { getCustomAgentImportPolicy } from "../services/agents/custom-agent-import-policy.service.js";
 import {
+  gamePlayerCardName,
   resolveChatSkillCheck,
   SkillCheckDifficultyError,
   SkillCheckRollerError,
@@ -577,6 +586,7 @@ import {
   playGameSpotifyTrack,
 } from "../services/spotify/game-spotify-music.service.js";
 import {
+  commitGameInventoryChange,
   loadGameFightItems,
   loadGameFightUseEffects,
   loadGameInventoryItemBook,
@@ -2382,6 +2392,15 @@ const recruitPartyMemberSchema = z.object({
   copyOf: z.string().min(1).max(200).optional(),
   /** A condition of the pinned ruleset the copy holds from the start: Simulacrum's halved health. */
   condition: z.string().min(1).max(80).optional(),
+  /** MRPG games (owner 2026-11-06): the level the Game Master has this late joiner come in at, and their
+   *  growths and stats off the norm as it wrote them ("strength+30, speed+20"). */
+  mrpg: z
+    .object({
+      level: z.number().int().min(1).max(30).optional(),
+      growths: z.string().max(400).optional(),
+      stats: z.string().max(400).optional(),
+    })
+    .optional(),
 });
 
 const regenerateCharacterSheetSchema = z.object({
@@ -3128,6 +3147,9 @@ export function applyGeneratedGameCharacterCards(
     return withCardTemperament(
       {
         ...normalizedCard,
+        // An MRPG character's class is the one they fight as, which only the game changes (owner
+        // 2026-11-06): the story may not rename it at a session's end.
+        ...(existingCard.marinara && typeof existingCard.class === "string" ? { class: existingCard.class } : {}),
         ...(existingCard.rpgStats ? { rpgStats: existingCard.rpgStats } : {}),
         ...(existingCard.rulesetSheet ? { rulesetSheet: existingCard.rulesetSheet } : {}),
         ...(existingCard.marinara ? { marinara: existingCard.marinara } : {}),
@@ -9923,17 +9945,24 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     return { characterName: targetName, gameCard };
   });
 
-  // ── GET /game/marinara/upgrade-legacy/picks ──
-  // The starting trees the party's library cards picked (their Game Mode section), so the Journal's
-  // upgrade card offers those instead of a guess from the Legacy class.
-  app.get("/marinara/upgrade-legacy/picks", async (req, reply) => {
+  // ── GET /game/marinara/upgrade-legacy/preview ──
+  // What the Journal's upgrade card offers before the player confirms: the starting trees the party's
+  // library cards picked (their Game Mode section), which come before a guess from the Legacy class,
+  // and the MRPG piece offered for each Legacy weapon and armour they carry (owner 2026-11-06).
+  app.get("/marinara/upgrade-legacy/preview", async (req, reply) => {
     const { chatId } = z.object({ chatId: z.string().min(1) }).parse(req.query);
     const chat = await createChatsStorage(app.db).getById(chatId);
     if (!chat) return reply.code(404).send({ error: "Chat not found" });
+    const meta = parseMeta(chat.metadata);
     const picks = await legacyUpgradeClassicPicks(app.db, chat);
     const trees: Record<string, MarinaraArchetype> = {};
     for (const [name, classic] of picks) if (classic.tree) trees[name] = classic.tree;
-    return { trees };
+    const gear = marinaraLegacyGearOffers(
+      meta,
+      normalizeGameInventoryStacks(meta.gameInventory),
+      await gamePlayerCardName(app.db, chatId, meta, chat.personaId),
+    );
+    return { trees, gear };
   });
 
   // ── POST /game/marinara/upgrade-legacy ──
@@ -9954,6 +9983,8 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
           )
           .max(24)
           .default([]),
+        /** The Legacy gear stacks whose MRPG piece the player took; absent takes every one offered. */
+        gear: z.array(z.string().min(1).max(200)).max(500).optional(),
       })
       .parse(req.body);
     const chats = createChatsStorage(app.db);
@@ -10008,16 +10039,20 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       }
     }
     const classic = await legacyUpgradeClassicPicks(app.db, chat);
+    const playerCard = await gamePlayerCardName(app.db, input.chatId, meta, chat.personaId);
     let outcome: ReturnType<typeof applyMarinaraLegacyUpgrade> | null = null;
-    await chats.patchMetadata(input.chatId, (current) => {
+    // The cards, the setup and the swapped gear are saved in one write, with the bags' own bookkeeping.
+    await commitGameInventoryChange(app.db, input.chatId, (stacks, current) => {
       outcome = applyMarinaraLegacyUpgrade(current, {
         gameId: input.chatId,
         members: input.members,
         read,
         classic,
         at: new Date().toISOString(),
+        gear: { stacks, playerCard, ...(input.gear ? { accepted: input.gear } : {}) },
       });
-      return "patch" in outcome ? outcome.patch : {};
+      if (!("patch" in outcome)) return { stacks, journal: [], value: null };
+      return { stacks: outcome.stacks ?? stacks, journal: [], metadata: outcome.patch, value: null };
     });
     const done = outcome as ReturnType<typeof applyMarinaraLegacyUpgrade> | null;
     if (!done) return reply.code(500).send({ error: "The upgrade did not run" });
@@ -10340,6 +10375,36 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       } catch (error) {
         logger.warn(error, "[game/party/recruit] Failed to generate recruit card, using fallback");
       }
+    }
+
+    // A late joiner in a game on MRPG classes comes in at the level the Game Master gave (level 1 when it
+    // named none), with any growths and stats it set off the norm (owner 2026-11-06).
+    if (
+      existingCardIndex < 0 &&
+      !nextCard.marinara &&
+      (setupConfig as { marinaraClasses?: unknown } | null)?.marinaraClasses === true &&
+      meta.gameRuleset == null
+    ) {
+      const classicPicks = await legacyUpgradeClassicPicks(app.db, chat);
+      const growths = readMarinaraStatAmounts(input.mrpg?.growths);
+      const stats = readMarinaraStatAmounts(input.mrpg?.stats);
+      nextCard = {
+        ...nextCard,
+        marinara: createMarinaraJoinerProgression({
+          gameId: chat.id,
+          card: nextCard as unknown as Parameters<typeof createMarinaraJoinerProgression>[0]["card"],
+          temperament: (gameCardTemperament(nextCard)?.initial ??
+            partyTemperamentFallback(chat.id, recruitName)) as MarinaraPartyTemperament,
+          ...(classicPicks.get(normalizeCharacterLookupName(recruitName))
+            ? { classic: classicPicks.get(normalizeCharacterLookupName(recruitName))! }
+            : {}),
+          terms: {
+            ...(input.mrpg?.level ? { level: input.mrpg.level } : {}),
+            ...(growths ? { growths } : {}),
+            ...(stats ? { stats } : {}),
+          },
+        }),
+      };
     }
 
     // Merge this recruit into the freshest committed party/cards/setup-config from inside the

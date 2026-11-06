@@ -21,6 +21,8 @@ import {
 import { api } from "../../lib/api-client";
 import { chatKeys, useChat } from "../../hooks/use-chats";
 
+type GearOffer = { stackId: string; holder: string; from: string; to: string; slot: "weapon" | "armor" };
+
 type Card = Record<string, unknown> & {
   name: string;
   class?: string;
@@ -63,18 +65,24 @@ export function MarinaraLegacyUpgrade({ chatId }: { chatId: string }) {
     [meta.gameCharacterCards],
   );
   const offered = marinaraLegacyUpgradeOffered(meta);
-  // The starting tree a library card picked in its Game Mode section comes before a guess from the class.
-  const { data: library } = useQuery({
-    queryKey: ["game", "marinara", "upgrade-legacy", "picks", chatId],
+  // What the upgrade offers: the starting tree a library card picked in its Game Mode section (before a
+  // guess from the class), and the MRPG piece for each Legacy weapon and armour (owner 2026-11-06).
+  const { data: preview } = useQuery({
+    queryKey: ["game", "marinara", "upgrade-legacy", "preview", chatId],
     queryFn: () =>
-      api.get<{ trees: Record<string, MarinaraArchetype> }>(
-        `/game/marinara/upgrade-legacy/picks?chatId=${encodeURIComponent(chatId)}`,
+      api.get<{ trees: Record<string, MarinaraArchetype>; gear: GearOffer[] }>(
+        `/game/marinara/upgrade-legacy/preview?chatId=${encodeURIComponent(chatId)}`,
       ),
     enabled: offered && open,
     staleTime: 60_000,
   });
+  const [declined, setDeclined] = useState<Record<string, true>>({});
+  const gearOf = (name: string) =>
+    (preview?.gear ?? []).filter(
+      (offer) => normalizeCharacterLookupName(offer.holder) === normalizeCharacterLookupName(name),
+    );
   const startingTree = (card: Card): MarinaraArchetype =>
-    picks[card.name] ?? library?.trees[normalizeCharacterLookupName(card.name)] ?? guessMarinaraArchetype(card);
+    picks[card.name] ?? preview?.trees[normalizeCharacterLookupName(card.name)] ?? guessMarinaraArchetype(card);
   if (!offered) return null;
   const tree = (id: string) => t(`game.combat.marinara.archetype.${id}`);
 
@@ -90,6 +98,9 @@ export function MarinaraLegacyUpgrade({ chatId }: { chatId: string }) {
           name: card.name,
           primary: startingTree(card),
         })),
+        ...(preview
+          ? { gear: preview.gear.filter((offer) => !declined[offer.stackId]).map((offer) => offer.stackId) }
+          : {}),
       });
       await qc.invalidateQueries({ queryKey: chatKeys.detail(chatId) });
       toast.success(
@@ -169,6 +180,24 @@ export function MarinaraLegacyUpgrade({ chatId }: { chatId: string }) {
                     ))}
                   </select>
                 </label>
+                {gearOf(card.name).map((offer) => (
+                  <label key={offer.stackId} className="flex items-center gap-2 text-white/70">
+                    <input
+                      type="checkbox"
+                      checked={!declined[offer.stackId]}
+                      disabled={busy}
+                      onChange={(event) =>
+                        setDeclined((was) => {
+                          const { [offer.stackId]: _gone, ...rest } = was;
+                          return event.target.checked ? rest : { ...rest, [offer.stackId]: true };
+                        })
+                      }
+                    />
+                    <span className="min-w-0">
+                      {t("game.combat.marinara.legacy.gear", { from: offer.from, to: offer.to })}
+                    </span>
+                  </label>
+                ))}
                 <p className="text-white/55">
                   {!kept
                     ? t("game.combat.marinara.legacy.sisterRead")
