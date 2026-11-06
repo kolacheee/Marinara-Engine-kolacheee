@@ -3929,8 +3929,17 @@ function strikeOnce(
   }
   if (target.statuses.some((s) => s.status === "sleep"))
     target.statuses = target.statuses.filter((s) => s.status !== "sleep");
-  // Follow Through (playtest 2026-11-02): a critical hit counts as well as a kill, once per turn.
-  if (crit && target.hp > 0 && hooks.actOnKill && !actor.followThroughUsed) {
+  // Follow Through (playtest 2026-11-02): a critical hit counts as well as a kill, once per turn; not a
+  // crit the target resisted or shrugged off (slice tester s2, 2026-11-06: a resisted 1-3 damage crit
+  // bought a whole action).
+  if (
+    crit &&
+    target.hp > 0 &&
+    affinity !== "resist" &&
+    affinity !== "immune" &&
+    hooks.actOnKill &&
+    !actor.followThroughUsed
+  ) {
     actor.followThroughUsed = true;
     actor.next -= turnLength(actor, all);
     ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "follow-through" });
