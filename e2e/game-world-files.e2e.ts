@@ -11,7 +11,8 @@ import {
   worldFile,
   worldKitFile,
 } from "@marinara-engine/shared";
-import { openChatTool } from "./chat-settings-tools.js";
+import { openGameJournal } from "./game-journal.js";
+import { wizardNextButton, wizardStepTitle } from "./game-wizard-steps.js";
 import { downloadExport } from "./export-save.js";
 import { openGame } from "./game-ruleset-fight-fixture.js";
 import { seedUIState } from "./ui-state-fixture.js";
@@ -129,11 +130,10 @@ test("a world file comes into a new game's setup with its kit and hand edits, an
   const wizard = await mountWizard(page, testInfo);
   // On to the step with the setting kit.
   const kitLabel = wizard.getByText("Setting kit", { exact: true });
-  const heading = wizard.getByRole("heading", { level: 4 }).first();
   for (let step = 0; step < 6 && !(await kitLabel.isVisible()); step++) {
-    const previous = await heading.innerText();
-    await wizard.getByRole("button", { name: "Next", exact: true }).click();
-    await expect(heading).not.toHaveText(previous);
+    const previous = await wizardStepTitle(wizard);
+    await wizardNextButton(wizard).click();
+    await expect.poll(() => wizardStepTitle(wizard)).not.toBe(previous);
   }
   await expect(kitLabel).toBeVisible();
 
@@ -216,11 +216,10 @@ test("a world from the library comes into a new game's setup with its kit, hand 
   try {
     const wizard = await mountWizard(page, testInfo);
     const kitLabel = wizard.getByText("Setting kit", { exact: true });
-    const heading = wizard.getByRole("heading", { level: 4 }).first();
     for (let step = 0; step < 6 && !(await kitLabel.isVisible()); step++) {
-      const previous = await heading.innerText();
-      await wizard.getByRole("button", { name: "Next", exact: true }).click();
-      await expect(heading).not.toHaveText(previous);
+      const previous = await wizardStepTitle(wizard);
+      await wizardNextButton(wizard).click();
+      await expect.poll(() => wizardStepTitle(wizard)).not.toBe(previous);
     }
     const picker = wizard.getByRole("combobox", { name: "Your worlds", exact: true });
     await expect(picker.locator(`option[value="${libraryId}"]`)).toHaveCount(1);
@@ -262,12 +261,7 @@ test("a game's world downloads from its World tab, hand edits and all", async ({
     });
     expect(meta.ok(), await meta.text()).toBeTruthy();
     await openGame(page, chatId);
-    // The Session window's journal, opened from its bubble (or the phone's Chat tools menu).
-    await expect(
-      page.locator('.mari-window-bubble[data-window="control:session"], [data-chat-tools-menu-button]').first(),
-    ).toBeVisible({ timeout: 40_000 });
-    const session = await openChatTool(page, "control:session");
-    await session.getByRole("button", { name: "Journal", exact: true }).click();
+    await openGameJournal(page);
     await page.getByRole("button", { name: "World", exact: true }).click();
     const downloaded = await download(page, () =>
       page.getByRole("button", { name: "Download the world", exact: true }).click(),

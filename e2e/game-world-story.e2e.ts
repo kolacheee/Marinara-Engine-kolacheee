@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import {
   WORLD_GENERATOR_VERSION,
   WORLD_STARTER_KITS,
@@ -9,7 +9,7 @@ import {
   storyTurn,
   worldCast,
 } from "@marinara-engine/shared";
-import { openChatTool } from "./chat-settings-tools.js";
+import { openGameJournal } from "./game-journal.js";
 import { openGame } from "./game-ruleset-fight-fixture.js";
 
 /**
@@ -94,12 +94,6 @@ const turn = storyTurn(story, {
 if (turn.tripped[0] !== "harbour") throw new Error(`The arrival did not trip: ${turn.tripped.join(", ")}`);
 const opened = `${turn.prepend}The quay smells of tar.`;
 
-/** The journal, opened from the Session window as staging's game controls do. */
-async function openJournal(page: Page) {
-  const session = await openChatTool(page, "control:session");
-  await session.getByRole("button", { name: "Journal", exact: true }).click();
-}
-
 test("a story's scene plays as written before the reply, and the World tab lists its objectives", async ({
   page,
   request,
@@ -145,7 +139,7 @@ test("a story's scene plays as written before the reply, and the World tab lists
     await expect(panel.getByText(harbourmaster.name, { exact: true }).first()).toBeVisible();
     await page.screenshot({ path: testInfo.outputPath("story-scene.png") });
 
-    await openJournal(page);
+    await openGameJournal(page);
     await page.getByRole("button", { name: "World", exact: true }).click();
     await expect(page.getByRole("heading", { name: "Story", exact: true })).toBeVisible({ timeout: 20_000 });
     await expect(page.getByText("The harbour key", { exact: true })).toBeVisible();
