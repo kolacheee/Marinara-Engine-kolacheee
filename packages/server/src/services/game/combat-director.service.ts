@@ -403,15 +403,28 @@ export function marinaraBoardTurn(
       // A readied blow lands only if its target is still in reach when it goes off (Alyssa 2026-11-06):
       // the chance a target stays is the reach it would have to clear over its move, more if it can't
       // move (asleep, stunned) or is a melee fighter already locked in beside the unit.
+      // An area blow goes off at the tile it was aimed at and hits every foe still within a tile of it
+      // (d5302c1ae): it is lost only if all of them leave.
       (option, target) => {
         const one = t.units.find((u) => u.id === target.id);
-        if (!one || marinaraHelpless(target)) return 1;
+        if (!one) return 1;
         const skill = option.id === null ? undefined : tu.skills?.find((k) => k.id === option.id);
         const range = skill?.range ?? tu.attackRange.max;
-        const move = Math.max(0, one.movement ?? 0);
-        const near = Math.abs(one.x - at.x) + Math.abs(one.y - at.y);
-        const odds = Math.min(1, (range + 0.5) / (range + move + 0.5));
-        return one.attackRange.max <= 1 && near <= 1 ? Math.max(odds, 0.5) : odds;
+        const stays = (unit: TacticalUnit, reach: number) => {
+          const fighter = s.marinara!.fighters.find((f) => f.id === unit.id);
+          if (fighter && marinaraHelpless(fighter)) return 1;
+          const move = Math.max(0, unit.movement ?? 0);
+          const near = Math.abs(unit.x - at.x) + Math.abs(unit.y - at.y);
+          const odds = Math.min(1, (reach + 0.5) / (reach + move + 0.5));
+          return unit.attackRange.max <= 1 && near <= 1 ? Math.max(odds, 0.5) : odds;
+        };
+        if (option.effect.target === "all-enemies" || option.effect.target === "front-row") {
+          const inArea = t.units.filter(
+            (u) => u.side === one.side && u.hp > 0 && Math.abs(u.x - one.x) + Math.abs(u.y - one.y) <= 1,
+          );
+          return 1 - inArea.reduce((gone, u) => gone * (1 - stays(u, 1)), 1);
+        }
+        return stays(one, range);
       },
     );
     return { picked, ranked };
