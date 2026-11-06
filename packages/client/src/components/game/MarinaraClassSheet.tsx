@@ -45,6 +45,7 @@ import {
 } from "@marinara-engine/shared";
 import { api } from "../../lib/api-client";
 import { cn } from "../../lib/utils";
+import { MarinaraItemFacts } from "./MarinaraItemFacts";
 import { chatKeys, useChat } from "../../hooks/use-chats";
 import { useUIStore } from "../../stores/ui.store";
 
@@ -709,6 +710,10 @@ function GearTab({
           </option>
         ))}
       </select>
+      <MarinaraItemFacts
+        itemId={value || (slot ? standard[slot] : undefined)}
+        className="text-[var(--muted-foreground)]"
+      />
     </label>
   );
   return (

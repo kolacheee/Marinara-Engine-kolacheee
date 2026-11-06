@@ -2449,3 +2449,75 @@ export function marinaraAllItemIds(): string[] {
     ...MARINARA_CONSUMABLES.map((def) => def.id),
   ];
 }
+
+// ── Item facts ──
+
+/** What an item is and does, for the inventory and the gear slots to show before it is worn. */
+export interface MarinaraItemFacts {
+  kind: MarinaraItemRef["kind"];
+  tier: MarinaraTier;
+  might?: number;
+  spell?: number;
+  hit?: number;
+  crit?: number;
+  range?: "melee" | "ranged";
+  defense?: number;
+  resistance?: number;
+  weight?: number;
+  /** The trees whose classes can use it; absent when anyone can. */
+  archetypes?: readonly MarinaraArchetype[];
+  summary: string;
+}
+
+/** An item's numbers as a fighter wearing it gets them (marinaraGearBonus's math), and its summary. */
+export function marinaraItemFacts(id: string): MarinaraItemFacts | undefined {
+  const item = marinaraItem(id);
+  if (!item) return undefined;
+  if (item.kind === "weapon") {
+    const family = marinaraWeaponFamily(item.family!)!;
+    return {
+      kind: item.kind,
+      tier: item.tier,
+      ...(family.might === null ? {} : { might: Math.max(0, item.tier + family.might + (item.unique?.might ?? 0)) }),
+      ...(family.spell === null ? {} : { spell: Math.max(0, item.tier + family.spell + (item.unique?.spell ?? 0)) }),
+      ...(family.hit ? { hit: family.hit } : {}),
+      ...(family.crit ? { crit: family.crit } : {}),
+      range: family.range,
+      weight: family.weight,
+      archetypes: family.archetypes,
+      summary: item.unique?.summary ?? family.summary,
+    };
+  }
+  if (item.kind === "armour") {
+    const family = marinaraArmourFamily(item.family!)!;
+    const defense = Math.round(item.tier * family.defense);
+    const resistance = Math.round(item.tier * family.resistance);
+    return {
+      kind: item.kind,
+      tier: item.tier,
+      ...(defense ? { defense } : {}),
+      ...(resistance ? { resistance } : {}),
+      weight: family.weight,
+      archetypes: family.archetypes,
+      summary: item.unique?.summary ?? family.summary,
+    };
+  }
+  const def = item.accessory ?? item.unique ?? item.consumable!;
+  const weight = item.accessory?.weight ?? (item.unique?.id === "bellwether" ? 2 : 0);
+  return {
+    kind: item.kind,
+    tier: item.tier,
+    ...(weight ? { weight } : {}),
+    ...(item.accessory?.archetypes?.length ? { archetypes: item.accessory.archetypes } : {}),
+    summary: def.summary,
+  };
+}
+
+/** Which item an inventory stack is, by its name in this place (as marinaraOwnedGear matches them). */
+export function marinaraItemIdByName(name: string, place: MarinaraItemPlace): string | undefined {
+  const wanted = name.trim().toLowerCase();
+  if (!wanted) return undefined;
+  return marinaraAllItemIds().find(
+    (id) => marinaraItemInPlace(id, place) && marinaraItemName(id, place).toLowerCase() === wanted,
+  );
+}

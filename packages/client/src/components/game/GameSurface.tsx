@@ -259,7 +259,12 @@ import type {
   GenerateSpatialMapDraftResponse,
   PendingSpatialTransition,
 } from "@marinara-engine/shared";
-import { marinaraClass, marinaraPartyFighter, readMarinaraCardProgression } from "@marinara-engine/shared";
+import {
+  marinaraClass,
+  marinaraGameItemPlace,
+  marinaraPartyFighter,
+  readMarinaraCardProgression,
+} from "@marinara-engine/shared";
 import type { AvatarCrop, CombatIconChoice, Persona, SceneSegmentEffect } from "@marinara-engine/shared";
 import {
   PROFESSOR_MARI_ID,
@@ -9702,6 +9707,14 @@ function GameSurfaceComponent({
       { action: { label: localizeUi("game.ruleset.startingGear.button"), onClick: () => setInventoryOpen(true) } },
     );
   }, [startingGearOffered, chat.id, startingGearTaken, startingGearWaiting, inventoryItems, localizeUi]);
+  // A Classic game's items show what they do when picked in the inventory (owner 2026-11-06).
+  const inventoryMarinaraPlace = useMemo(
+    () =>
+      (chatMeta.gameSetupConfig as { marinaraClasses?: boolean } | undefined)?.marinaraClasses === true
+        ? marinaraGameItemPlace(chatMeta)
+        : undefined,
+    [chatMeta],
+  );
   const inventoryStartingGear = useMemo(
     () =>
       gameRuleset.status === "ok" && gameRuleset.definition.items?.startingGear?.length
@@ -15017,6 +15030,7 @@ function GameSurfaceComponent({
                   onAddItem={handleAddInventoryItem}
                   itemBook={inventoryItemBook}
                   rulesetDefinition={gameRuleset.status === "ok" ? gameRuleset.definition : undefined}
+                  marinaraPlace={inventoryMarinaraPlace}
                   onAddRulesetItems={handleAddRulesetItems}
                   placeAmong={inventoryPlaceAmong}
                   onWearItem={handleWearInventoryStack}
