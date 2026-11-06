@@ -683,6 +683,13 @@ try {
   assert.ok(agrees((x, y) => y >= 7 - Math.floor(x / 2), 16, "a gentle run") > 4, "a gentle run takes them");
   const diagonal = (x: number, y: number) => x + y >= 9;
   agrees(diagonal, 16, "a 45 degree run");
+  // Ragged shores, with cells of water meeting only at a corner (a diagonal piece, which has no curved
+  // piece, so the pieces beside it keep their crossings at the middle too).
+  for (let seed = 1; seed <= 40; seed++) {
+    const lake = (x: number, y: number) => ((x * 73856093) ^ (y * 19349663) ^ (seed * 83492791)) % 7 < 3;
+    const ragged = (x: number, y: number) => (x - 7.5) ** 2 + (y - 7.5) ** 2 < 30 || lake(x, y);
+    agrees(ragged, 16, `ragged shore ${seed}`);
+  }
   // Away from the map's edge (where it meets the edge's straight run), its corners are the slants.
   for (const [x, y] of [
     [4, 5],

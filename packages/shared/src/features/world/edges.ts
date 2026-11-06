@@ -127,8 +127,18 @@ export function worldEdgePiece(
       if (a === null || b === null) return 0;
       return Math.max(-1, Math.min(1, a + b - 2 * where));
     };
-    const [left, right] = [offset(across, x - 1, y), offset(across, x, y)];
-    const [top, bottom] = [offset(down, y - 1, x), offset(down, y, x)];
+    // A diagonal corner (two cells of the terrain across from each other) has no curved piece, so its
+    // crossings stay at the middle: the piece beside it keeps them there too, or water would show past its
+    // shore in a square. Crossing (k, r) of a column is shared by the corners (k, r) and (k + 1, r); crossing
+    // (j, c) of a row by the corners (c, j) and (c, j + 1).
+    const diagonal = (cx: number, cy: number) => {
+      const m = worldEdgeMask(filled, cx, cy, width, height);
+      return m === 6 || m === 9;
+    };
+    const acrossAt = (k: number, r: number) => (diagonal(k, r) || diagonal(k + 1, r) ? 0 : offset(across, k, r));
+    const downAt = (j: number, c: number) => (diagonal(c, j) || diagonal(c, j + 1) ? 0 : offset(down, j, c));
+    const [left, right] = [acrossAt(x - 1, y), acrossAt(x, y)];
+    const [top, bottom] = [downAt(y - 1, x), downAt(y, x)];
     const curve = (base: number, index: number, a: number, b: number) =>
       base + index * 8 + WORLD_EDGE_CURVE_OFFSETS.findIndex(([oa, ob]) => oa === a && ob === b);
     const straight = CURVE_STRAIGHTS.indexOf(mask);

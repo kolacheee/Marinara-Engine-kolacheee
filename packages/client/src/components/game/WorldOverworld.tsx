@@ -300,9 +300,14 @@ export function WorldOverworld({
     );
     const lookAt = (x: number, y: number) =>
       drawnLook[Math.min(height - 1, Math.max(0, y)) * width + Math.min(width - 1, Math.max(0, x))]!;
+    // A cell in the middle of its look, with no water beside it: water keeps the look of the land under
+    // it, and trees stand back from the shore, so a wood's floor beside water would show bare.
+    const wetAt = (x: number, y: number) =>
+      wetCell[Math.min(height - 1, Math.max(0, y)) * width + Math.min(width - 1, Math.max(0, x))]!;
     const inner = (x: number, y: number) => {
       for (let dy = -1; dy <= 1; dy++)
-        for (let dx = -1; dx <= 1; dx++) if (lookAt(x + dx, y + dy) !== lookAt(x, y)) return false;
+        for (let dx = -1; dx <= 1; dx++)
+          if (lookAt(x + dx, y + dy) !== lookAt(x, y) || wetAt(x + dx, y + dy)) return false;
       return true;
     };
     // Fields and built-up ground keep to their own cells: a wood beside one stands on open ground (grass).
@@ -312,6 +317,8 @@ export function WorldOverworld({
       for (let dy = -1; dy <= 1; dy++)
         for (let dx = -1; dx <= 1; dx++) {
           const other = lookAt(x + dx, y + dy);
+          // Water's own look (a lake with no land beside it) is never the ground under a wood's edge.
+          if (wetAt(x + dx, y + dy) && drawTile.hasEdges("water")) continue;
           if (other !== lookAt(x, y) && !square.has(other)) count.set(other, (count.get(other) ?? 0) + 1);
         }
       return [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? "grass";
@@ -369,18 +376,6 @@ export function WorldOverworld({
           const look = drawnLook[y * width + x]!;
           if (!square.has(look) || wetCell[y * width + x]) continue;
           groundOf(x, y, look);
-          // A field's own edge: a thin hedge where it meets other ground (its art hedges its top and left sides).
-          if (look !== "farmland") continue;
-          const [px, py, t, bank] = [x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE / 48];
-          const open = (dx: number, dy: number) => {
-            const [nx, ny] = [x + dx, y + dy];
-            return nx >= 0 && ny >= 0 && nx < width && ny < height && drawnLook[ny * width + nx] !== look;
-          };
-          ctx.fillStyle = "rgba(34, 48, 26, 0.6)";
-          if (open(0, -1)) ctx.fillRect(px, py, t, bank);
-          if (open(0, 1)) ctx.fillRect(px, py + t - bank, t, bank);
-          if (open(-1, 0)) ctx.fillRect(px, py, bank, t);
-          if (open(1, 0)) ctx.fillRect(px + t - bank, py, bank, t);
         }
     /** A dual-grid pass: every corner of the map whose four cells are partly or wholly the terrain. */
     // `beyondWet`: the sea beyond the map's edge counts as water, so land on the border gets its shore
