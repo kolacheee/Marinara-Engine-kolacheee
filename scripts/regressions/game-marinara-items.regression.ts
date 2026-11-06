@@ -29,6 +29,8 @@ import {
   marinaraFamilyDrops,
   marinaraGearBonus,
   marinaraItem,
+  marinaraItemFacts,
+  marinaraItemIdByName,
   marinaraItemInPlace,
   marinaraItemName,
   marinaraItemPlace,
@@ -486,3 +488,24 @@ console.log("game-marinara-items (equipping) passed");
   assert.ok(fresh.shop!.length < classic.shop!.length);
 }
 console.log("game-marinara-items (shops) passed");
+
+// What an item does is shown before it is worn (owner 2026-11-06): every item has facts, a weapon's
+// numbers are the ones wearing it gives, and an inventory stack's name finds its item again.
+{
+  for (const id of marinaraAllItemIds()) {
+    const facts = marinaraItemFacts(id);
+    assert.ok(facts && facts.summary.trim(), `${id} has a summary to show`);
+  }
+  const sword = marinaraItemFacts("longblade-t3")!;
+  assert.equal(sword.might, marinaraGearBonus({ weapon: "longblade-t3" }).power, "the weapon's might as worn");
+  assert.equal(sword.range, "melee");
+  const plate = marinaraItemFacts("plate-t4")!;
+  assert.equal(plate.defense, marinaraGearBonus({ armor: "plate-t4" }).stats.defense);
+  const fantasy = marinaraItemPlace("fantasy");
+  for (const id of ["longblade-t3", "heal-1", MARINARA_ACCESSORIES[0]!.id]) {
+    const name = marinaraItemName(id, fantasy);
+    assert.equal(marinaraItemIdByName(`  ${name.toUpperCase()} `, fantasy), id, name);
+  }
+  assert.equal(marinaraItemIdByName("A Plain Rock", fantasy), undefined);
+}
+console.log("game-marinara-items (facts) passed");
