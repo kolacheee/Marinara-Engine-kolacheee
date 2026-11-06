@@ -574,8 +574,11 @@ export function marinaraAiCandidates(
           );
           return drawn ? hit(foe, drawn, marinaraBasicAttack(foe)) : incomingFrom(foe);
         };
+        // A Speed cut takes that share of the foe's turns, so of its blows, while it lasts (combo hunt
+        // 2026-11-06: Snare Field was weighed on the foes' raw Strength over their HP and filled 18-26% of a
+        // Huntsmaster's turns).
         const worth = (targets: readonly MarinaraFighter[], over: number) =>
-          effect.stat === "damage" || effect.stat === "best-attack"
+          effect.stat === "damage" || effect.stat === "best-attack" || effect.stat === "speed"
             ? (targets.reduce((sum, foe) => sum + blowsFrom(foe) * turns(foe), 0) * Math.abs(effect.pct ?? 0)) /
               friendHp
             : (effect.stat === "damage-taken"
