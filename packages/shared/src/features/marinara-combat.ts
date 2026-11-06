@@ -834,6 +834,9 @@ export interface MarinaraFighter {
   revealed?: MarinaraAffinities;
   /** On a board: the foes next to it, as the director last saw them (Sworn Ward). */
   nearFoes?: string[];
+  /** Put to sleep and not yet given a turn awake since: it can't be slept again until it has (panel r7:
+   *  Lull kept a lone foe asleep from 540 HP to 41). */
+  slept?: boolean;
   /** On a board: the foes a Return Fire shooter's own shots reach as it stands now. */
   shotFoes?: string[];
   /** On a board: the foes within a Hexer's spell reach (Grave Hunger). */
@@ -2766,6 +2769,8 @@ function shrugsOff(target: MarinaraFighter, status: string): boolean {
   if (hooks.immuneTo?.includes(status as MarinaraStatusId)) return true;
   // Raise the Banner: a steadied fighter can't be confused.
   if (status === "confuse" && target.mods.some((mod) => mod.stat === "steady-heart")) return true;
+  // Once slept, not again until it has had a turn awake.
+  if (status === "sleep" && target.slept) return true;
   return (
     !!hooks.debuffImmune ||
     !!target.gear?.immune?.includes(status) ||
@@ -2872,6 +2877,7 @@ function addStatus(
   if (shrugsOff(target, applies.status)) return false;
   if (moraleHolds(target, applies.status, all, random)) return false;
   target.statuses = target.statuses.filter((s) => s.status !== applies.status);
+  if (applies.status === "sleep") target.slept = true;
   target.statuses.push({
     status: applies.status,
     turns: applies.duration + bonus,
@@ -3047,6 +3053,8 @@ export function beginMarinaraTurn(
     actor.stamina + Math.max(1, Math.round(actor.maxStamina * MARINARA_STAMINA.regenPct)),
   );
   const skips = actor.statuses.find((s) => s.status === "sleep" || s.status === "stun");
+  // A turn awake: it may be slept again.
+  if (!actor.statuses.some((s) => s.status === "sleep")) delete actor.slept;
   tickMods(actor, all);
   if (actor.coatingTurns !== undefined) {
     actor.coatingTurns--;
@@ -3536,6 +3544,7 @@ function act(
           continue;
         }
         target.statuses = target.statuses.filter((s) => s.status !== effect.status);
+        if (effect.status === "sleep") target.slept = true;
         target.statuses.push({
           status: effect.status!,
           turns: (effect.duration ?? 2) + durationBonus,

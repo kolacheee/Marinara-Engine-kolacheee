@@ -301,4 +301,30 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
   assert.ok(!seen.some((one) => one.kind === "counter"), "a foe that yielded doesn't counter");
 }
 
+// Once slept, a foe can't be slept again until it has had a turn awake (panel r7: Lull sleeplock).
+{
+  const hexer = unit("H", "party", "hexer", ["lull"]);
+  const foe = unit("F", "enemy", "blade");
+  const all = [hexer, foe];
+  const lull = () => {
+    const events: MarinaraEvent[] = [];
+    performMarinaraOption(hexer, marinaraOption(hexer, "lull", all)!, [foe], all, { random: () => 0, events });
+    hexer.cooldowns = {};
+    return events;
+  };
+  lull();
+  assert.ok(
+    foe.statuses.some((one) => one.status === "sleep"),
+    "asleep",
+  );
+  assert.equal(marinaraOption(hexer, "lull", all), undefined, "not again while it hasn't woken");
+  foe.statuses = [];
+  beginMarinaraTurn(foe, all, { random: () => 0.5, events: [] });
+  lull();
+  assert.ok(
+    foe.statuses.some((one) => one.status === "sleep"),
+    "after a turn awake it can be slept again",
+  );
+}
+
 console.log("game-marinara-panel-r6: ok");
