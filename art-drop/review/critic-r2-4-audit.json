@@ -1,0 +1,22 @@
+{
+  "reviewed_files": 124,
+  "isolated_view_scale": 6,
+  "resampling": "nearest neighbour",
+  "set_season_groups": 18,
+  "shuffles_per_group": 3,
+  "tiled_grid": [
+    8,
+    2
+  ],
+  "tiled_view_scale": 3,
+  "layout_orders": "critic-r2-4-layout-orders.json",
+  "layouts": "critic-r2-4-tiled-<set>-<season>.png contains all three unscaled 3x views; separate -shuffle1/2/3 images also saved",
+  "out_unchanged": true,
+  "passed": 0,
+  "failed": 124,
+  "technical_checks": "All 124 images are 48x48 and fully opaque. No file is failed merely for RGB/RGBA mode or low palette count.",
+  "view_judgement": "Three-quarter overhead with a visible roof and south/front facade is correct. No file is failed for having front windows or for not being pure top-down.",
+  "season_judgement": "House, building and field geometry visually remains in the same locations across seasons; no seasonal-layout mismatch was found.",
+  "farmstead_judgement": "The house footprints are acceptable; these were not failed as shrunken signposts. Repeating a single setting farmstead in a stress layout is not itself a rejection reason. Failures identify ground treatment, lane/hedge issues and individual architectural detail.",
+  "other_limits": "No transparency, building-edge clipping, blur or anti-aliasing defect is asserted without visual evidence. Farmland colours are muted, not rejected as saturated checkerboards."
+}

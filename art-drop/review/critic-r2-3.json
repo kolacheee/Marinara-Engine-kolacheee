@@ -1,0 +1,489 @@
+{
+  "sets": {
+    "slums": "fail",
+    "industry": "fail",
+    "city": "fail",
+    "suburb": "fail",
+    "farmland": "fail",
+    "farmstead": "fail"
+  },
+  "pass": [
+    "industry-0",
+    "industry-1",
+    "industry-2",
+    "industry-4",
+    "industry-5",
+    "industry-6",
+    "industry-7"
+  ],
+  "fail": [
+    {
+      "name": "city-0",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The long central slab and right-hand tower are mostly vertical facade strips with tiny roof caps; the lower central parallel lines are ambiguous. Shorten the facades, expose larger roof planes, and make the central street or structure readable."
+    },
+    {
+      "name": "city-1",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The central oval-capped tower surrounded by four thin towers repeats the same window-strip vocabulary as 0, 2, 4, 5, 6 and 7. Replace some towers with lower, broader rooftops and a different block plan."
+    },
+    {
+      "name": "city-2",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The central and right-hand towers are nearly full-height window bars, with little overhead roof area. Reduce facade height, vary building footprints, and give the narrow gaps a clear street reading."
+    },
+    {
+      "name": "city-3",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The huge hollow rectangular block has a largely featureless flat roof; the bottom-centre forms collapse into dark bars. Add coherent roof planes, parapets and readable smaller buildings rather than a blank ring with scratchy clutter."
+    },
+    {
+      "name": "city-4",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. Three vertical columns of capped towers repeat the same block formula as 2, 6 and 7. Change the footprints and heights substantially and give the roofs enough area to establish the overhead view."
+    },
+    {
+      "name": "city-5",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The enormous central window strip is topped by an irregular, downward-pointing roof mass whose planes do not read clearly. Redraw the roof with consistent perspective and reduce the facade-dominated silhouette."
+    },
+    {
+      "name": "city-6",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The central gridded slab with thin towers at either side is too close to 2 and 4. Replace the main footprint and massing, increase visible rooftop area, and reduce the regular facade bars."
+    },
+    {
+      "name": "city-7",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The three-column arrangement reuses the narrow capped towers and window bars of 0, 2 and 4. Introduce genuinely different roof footprints, building heights and street routing."
+    },
+    {
+      "name": "city@winter-0",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The long central slab and right-hand tower are mostly vertical facade strips with tiny roof caps; the lower central parallel lines are ambiguous. Shorten the facades, expose larger roof planes, and make the central street or structure readable. Snow is confined to flat pale roof caps; the dark street gaps have virtually no readable slush, tracks or accumulated snow. Add restrained street slush and shaded roof accumulation while retaining dark streets."
+    },
+    {
+      "name": "city@winter-1",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The central oval-capped tower surrounded by four thin towers repeats the same window-strip vocabulary as 0, 2, 4, 5, 6 and 7. Replace some towers with lower, broader rooftops and a different block plan. Snow is confined to flat pale roof caps; the dark street gaps have virtually no readable slush, tracks or accumulated snow. Add restrained street slush and shaded roof accumulation while retaining dark streets."
+    },
+    {
+      "name": "city@winter-2",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The central and right-hand towers are nearly full-height window bars, with little overhead roof area. Reduce facade height, vary building footprints, and give the narrow gaps a clear street reading. Snow is confined to flat pale roof caps; the dark street gaps have virtually no readable slush, tracks or accumulated snow. Add restrained street slush and shaded roof accumulation while retaining dark streets."
+    },
+    {
+      "name": "city@winter-3",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The huge hollow rectangular block has a largely featureless flat roof; the bottom-centre forms collapse into dark bars. Add coherent roof planes, parapets and readable smaller buildings rather than a blank ring with scratchy clutter. Snow is confined to flat pale roof caps; the dark street gaps have virtually no readable slush, tracks or accumulated snow. Add restrained street slush and shaded roof accumulation while retaining dark streets."
+    },
+    {
+      "name": "city@winter-4",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. Three vertical columns of capped towers repeat the same block formula as 2, 6 and 7. Change the footprints and heights substantially and give the roofs enough area to establish the overhead view. Snow is confined to flat pale roof caps; the dark street gaps have virtually no readable slush, tracks or accumulated snow. Add restrained street slush and shaded roof accumulation while retaining dark streets."
+    },
+    {
+      "name": "city@winter-5",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The enormous central window strip is topped by an irregular, downward-pointing roof mass whose planes do not read clearly. Redraw the roof with consistent perspective and reduce the facade-dominated silhouette. Snow is confined to flat pale roof caps; the dark street gaps have virtually no readable slush, tracks or accumulated snow. Add restrained street slush and shaded roof accumulation while retaining dark streets."
+    },
+    {
+      "name": "city@winter-6",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The central gridded slab with thin towers at either side is too close to 2 and 4. Replace the main footprint and massing, increase visible rooftop area, and reduce the regular facade bars. Snow is confined to flat pale roof caps; the dark street gaps have virtually no readable slush, tracks or accumulated snow. Add restrained street slush and shaded roof accumulation while retaining dark streets."
+    },
+    {
+      "name": "city@winter-7",
+      "problems": "FAILS THE SET REPETITION CHECK in all three shuffled layouts: thin vertical window bars, small pale caps and aligned tower bases produce a repeated skyline/icon stamp rather than varied overhead city blocks. Preserve the dark street colour, but rebuild the block massing with broader visible rooftops, shorter facade projections and varied low/high buildings in the reference perspective. The three-column arrangement reuses the narrow capped towers and window bars of 0, 2 and 4. Introduce genuinely different roof footprints, building heights and street routing. Snow is confined to flat pale roof caps; the dark street gaps have virtually no readable slush, tracks or accumulated snow. Add restrained street slush and shaded roof accumulation while retaining dark streets."
+    },
+    {
+      "name": "fantasy-farmstead",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse has a flat tan roof silhouette and a large cream/brown front with almost no roof-plane or wall-plane shading. Redraw it as a small overhead thatched timber farmhouse with coherent eaves, a shaded side and a distinct entrance; the shed also needs a readable roof plane. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "fantasy-farmstead@autumn",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse has a flat tan roof silhouette and a large cream/brown front with almost no roof-plane or wall-plane shading. Redraw it as a small overhead thatched timber farmhouse with coherent eaves, a shaded side and a distinct entrance; the shed also needs a readable roof plane. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "fantasy-farmstead@spring",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse has a flat tan roof silhouette and a large cream/brown front with almost no roof-plane or wall-plane shading. Redraw it as a small overhead thatched timber farmhouse with coherent eaves, a shaded side and a distinct entrance; the shed also needs a readable roof plane. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "fantasy-farmstead@winter",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse has a flat tan roof silhouette and a large cream/brown front with almost no roof-plane or wall-plane shading. Redraw it as a small overhead thatched timber farmhouse with coherent eaves, a shaded side and a distinct entrance; the shed also needs a readable roof plane. The house and shed snow are flat pale caps with little depth; add irregular shaded accumulation without losing the building planes. Remove the nearly uniform blue winter rim around the field."
+    },
+    {
+      "name": "farmland-0",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The large tan lower field and olive upper-right field are broad flat fills with isolated dashes; the small upper-left plot barely reads as a different crop. Use coherent crop rows, stubble or clustered vegetation to distinguish the three plots. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland-1",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The big upper-left field and lower-right field are almost the same olive mottling, so the hedge does most of the work. Give the crops distinct textures and turn one boundary into a readable small lane. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland-2",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The right-hand brown field is nearly featureless, and the small top-right strip is ambiguously separated. Clarify the plot boundaries and give the brown soil purposeful furrows rather than random specks. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland-3",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The two large green fields have almost identical mottling, while the tiny tan corner patches read as leftover gaps. Resolve the composition into two or three clear crops with clean hedge junctions. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland-4",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The upper field and little left plot blend into similar green mottling; the large lower tan plot is mostly empty. Differentiate crop structure and clean up the crowded left-side hedge junction. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland-5",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The central-left, right-hand and lower-right green plots use very similar fills, while tan fragments occupy the corners. Simplify the plot divisions and distinguish crops with deliberate row directions and sizes. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland-6",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The upper-left tan plot and lower green plot are separated by a ragged dark lump rather than a clear hedge or tree group. Define the vegetation silhouette and add coherent agricultural texture inside the fields. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@autumn-0",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The large tan lower field and olive upper-right field are broad flat fills with isolated dashes; the small upper-left plot barely reads as a different crop. Use coherent crop rows, stubble or clustered vegetation to distinguish the three plots. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@autumn-1",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The big upper-left field and lower-right field are almost the same olive mottling, so the hedge does most of the work. Give the crops distinct textures and turn one boundary into a readable small lane. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@autumn-2",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The right-hand brown field is nearly featureless, and the small top-right strip is ambiguously separated. Clarify the plot boundaries and give the brown soil purposeful furrows rather than random specks. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@autumn-3",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The two large green fields have almost identical mottling, while the tiny tan corner patches read as leftover gaps. Resolve the composition into two or three clear crops with clean hedge junctions. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@autumn-4",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The upper field and little left plot blend into similar green mottling; the large lower tan plot is mostly empty. Differentiate crop structure and clean up the crowded left-side hedge junction. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@autumn-5",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The central-left, right-hand and lower-right green plots use very similar fills, while tan fragments occupy the corners. Simplify the plot divisions and distinguish crops with deliberate row directions and sizes. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@autumn-6",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The upper-left tan plot and lower green plot are separated by a ragged dark lump rather than a clear hedge or tree group. Define the vegetation silhouette and add coherent agricultural texture inside the fields. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@spring-0",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The large tan lower field and olive upper-right field are broad flat fills with isolated dashes; the small upper-left plot barely reads as a different crop. Use coherent crop rows, stubble or clustered vegetation to distinguish the three plots. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@spring-1",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The big upper-left field and lower-right field are almost the same olive mottling, so the hedge does most of the work. Give the crops distinct textures and turn one boundary into a readable small lane. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@spring-2",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The right-hand brown field is nearly featureless, and the small top-right strip is ambiguously separated. Clarify the plot boundaries and give the brown soil purposeful furrows rather than random specks. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@spring-3",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The two large green fields have almost identical mottling, while the tiny tan corner patches read as leftover gaps. Resolve the composition into two or three clear crops with clean hedge junctions. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@spring-4",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The upper field and little left plot blend into similar green mottling; the large lower tan plot is mostly empty. Differentiate crop structure and clean up the crowded left-side hedge junction. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@spring-5",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The central-left, right-hand and lower-right green plots use very similar fills, while tan fragments occupy the corners. Simplify the plot divisions and distinguish crops with deliberate row directions and sizes. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@spring-6",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The upper-left tan plot and lower green plot are separated by a ragged dark lump rather than a clear hedge or tree group. Define the vegetation silhouette and add coherent agricultural texture inside the fields. Replace the low-contrast crumbly hedge transitions with deliberate foliage clusters; the current scattered dashes give a soft, muddy reading at 3x."
+    },
+    {
+      "name": "farmland@winter-0",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The large tan lower field and olive upper-right field are broad flat fills with isolated dashes; the small upper-left plot barely reads as a different crop. Use coherent crop rows, stubble or clustered vegetation to distinguish the three plots. Snow has texture, but the nearly uniform blue outer edge becomes a conspicuous winter frame. Continue irregular snow-covered hedge clusters across the join instead of outlining the square."
+    },
+    {
+      "name": "farmland@winter-1",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The big upper-left field and lower-right field are almost the same olive mottling, so the hedge does most of the work. Give the crops distinct textures and turn one boundary into a readable small lane. Snow has texture, but the nearly uniform blue outer edge becomes a conspicuous winter frame. Continue irregular snow-covered hedge clusters across the join instead of outlining the square."
+    },
+    {
+      "name": "farmland@winter-2",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The right-hand brown field is nearly featureless, and the small top-right strip is ambiguously separated. Clarify the plot boundaries and give the brown soil purposeful furrows rather than random specks. Snow has texture, but the nearly uniform blue outer edge becomes a conspicuous winter frame. Continue irregular snow-covered hedge clusters across the join instead of outlining the square."
+    },
+    {
+      "name": "farmland@winter-3",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The two large green fields have almost identical mottling, while the tiny tan corner patches read as leftover gaps. Resolve the composition into two or three clear crops with clean hedge junctions. Snow has texture, but the nearly uniform blue outer edge becomes a conspicuous winter frame. Continue irregular snow-covered hedge clusters across the join instead of outlining the square."
+    },
+    {
+      "name": "farmland@winter-4",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The upper field and little left plot blend into similar green mottling; the large lower tan plot is mostly empty. Differentiate crop structure and clean up the crowded left-side hedge junction. Snow has texture, but the nearly uniform blue outer edge becomes a conspicuous winter frame. Continue irregular snow-covered hedge clusters across the join instead of outlining the square."
+    },
+    {
+      "name": "farmland@winter-5",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The central-left, right-hand and lower-right green plots use very similar fills, while tan fragments occupy the corners. Simplify the plot divisions and distinguish crops with deliberate row directions and sizes. Snow has texture, but the nearly uniform blue outer edge becomes a conspicuous winter frame. Continue irregular snow-covered hedge clusters across the join instead of outlining the square."
+    },
+    {
+      "name": "farmland@winter-6",
+      "problems": "FAILS TILING in all three shuffles: the straight, dense perimeter hedge joins into a rigid 48 px square lattice, visibly different from the thinner, irregular internal hedges. Keep the required half-width edge hedges, but match their combined width, shading and clustered texture to internal hedges, including corner junctions; remove the separate rim. The upper-left tan plot and lower green plot are separated by a ragged dark lump rather than a clear hedge or tree group. Define the vegetation silhouette and add coherent agricultural texture inside the fields. Snow has texture, but the nearly uniform blue outer edge becomes a conspicuous winter frame. Continue irregular snow-covered hedge clusters across the join instead of outlining the square."
+    },
+    {
+      "name": "industry-3",
+      "problems": "The lower-centre and lower-right material heaps are jagged, low-contrast olive blobs that read as muddy vegetation; the elevated conveyor runs into similarly coloured structures without clear supports or a readable belt. Redraw the piles as distinct material masses with directional shading and separate the conveyor, gantry and receiving structure with coherent outlines. The summer ground joins acceptably, but these shapes fail the individual clarity check."
+    },
+    {
+      "name": "industry@winter-0",
+      "problems": "The winter street/yard ground is essentially flat summer-grey with a few isolated blue pixels; there are no convincing accumulations, tracks or slush. Snow is applied as large flat pale fills, losing material and surface depth. Keep the seamless grey street base, but add clustered snowbanks, wheel tracks and slush consistently inside and at margins; shade roof snow and retain visible vertical wall/tank shading. The three sawtooth roof faces and broad right-hand roof are almost featureless pale panels; snow also flattens the front facade. Shade the roof planes separately and keep snow concentrated on upward-facing surfaces."
+    },
+    {
+      "name": "industry@winter-1",
+      "problems": "The winter street/yard ground is essentially flat summer-grey with a few isolated blue pixels; there are no convincing accumulations, tracks or slush. Snow is applied as large flat pale fills, losing material and surface depth. Keep the seamless grey street base, but add clustered snowbanks, wheel tracks and slush consistently inside and at margins; shade roof snow and retain visible vertical wall/tank shading. All four tanks become the same pale barrel with one horizontal dark stripe. Preserve cylindrical side shading and distinguish snow caps from the vertical tank bodies."
+    },
+    {
+      "name": "industry@winter-2",
+      "problems": "The winter street/yard ground is essentially flat summer-grey with a few isolated blue pixels; there are no convincing accumulations, tracks or slush. Snow is applied as large flat pale fills, losing material and surface depth. Keep the seamless grey street base, but add clustered snowbanks, wheel tracks and slush consistently inside and at margins; shade roof snow and retain visible vertical wall/tank shading. The hall roof is a broad flat pale panel and the rail siding remains almost unchanged summer brown. Add roof accumulation and plausible snow/slush alongside the rails and in the yard."
+    },
+    {
+      "name": "industry@winter-3",
+      "problems": "The winter street/yard ground is essentially flat summer-grey with a few isolated blue pixels; there are no convincing accumulations, tracks or slush. Snow is applied as large flat pale fills, losing material and surface depth. Keep the seamless grey street base, but add clustered snowbanks, wheel tracks and slush consistently inside and at margins; shade roof snow and retain visible vertical wall/tank shading. The conveyor becomes an unshaded pale stripe, while the lower material heaps remain ambiguous dark olive blobs. Establish the belt/gantry structure, distinguish the piles with clear silhouettes, and add snow to their upper surfaces."
+    },
+    {
+      "name": "industry@winter-4",
+      "problems": "The winter street/yard ground is essentially flat summer-grey with a few isolated blue pixels; there are no convincing accumulations, tracks or slush. Snow is applied as large flat pale fills, losing material and surface depth. Keep the seamless grey street base, but add clustered snowbanks, wheel tracks and slush consistently inside and at margins; shade roof snow and retain visible vertical wall/tank shading. The cooling towers are whitened down their vertical bodies and the low hall is one pale strip. Restore tower curvature and material shading, with snow on lips, ledges and roof surfaces."
+    },
+    {
+      "name": "industry@winter-5",
+      "problems": "The winter street/yard ground is essentially flat summer-grey with a few isolated blue pixels; there are no convincing accumulations, tracks or slush. Snow is applied as large flat pale fills, losing material and surface depth. Keep the seamless grey street base, but add clustered snowbanks, wheel tracks and slush consistently inside and at margins; shade roof snow and retain visible vertical wall/tank shading. Both the upper hall and tall right-hand wing have large blank pale surfaces. Retain roof-plane shading, add irregular accumulation and exposed patches, and put tracked snow in the central yard."
+    },
+    {
+      "name": "industry@winter-6",
+      "problems": "The winter street/yard ground is essentially flat summer-grey with a few isolated blue pixels; there are no convincing accumulations, tracks or slush. Snow is applied as large flat pale fills, losing material and surface depth. Keep the seamless grey street base, but add clustered snowbanks, wheel tracks and slush consistently inside and at margins; shade roof snow and retain visible vertical wall/tank shading. The barrel-vault roof and upper roof become smooth pale slabs, while the chimney yard has only a few scattered flecks. Restore the vault curvature and add purposeful ground accumulation and tracks."
+    },
+    {
+      "name": "industry@winter-7",
+      "problems": "The winter street/yard ground is essentially flat summer-grey with a few isolated blue pixels; there are no convincing accumulations, tracks or slush. Snow is applied as large flat pale fills, losing material and surface depth. Keep the seamless grey street base, but add clustered snowbanks, wheel tracks and slush consistently inside and at margins; shade roof snow and retain visible vertical wall/tank shading. The silo bodies are pale all the way down, with little distinction between snowy caps and vertical metal. Restore cylinder shading and place snow on caps, pipe tops and ground ledges."
+    },
+    {
+      "name": "jazz_age-farmstead",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse is a flat brick rectangle with two square windows and a blue trapezoid cap; it lacks the reference house's roof depth and architectural character. Add a legible pitched roof, chimney and shaded side, with windows placed on coherent wall planes. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "jazz_age-farmstead@autumn",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse is a flat brick rectangle with two square windows and a blue trapezoid cap; it lacks the reference house's roof depth and architectural character. Add a legible pitched roof, chimney and shaded side, with windows placed on coherent wall planes. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "jazz_age-farmstead@spring",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse is a flat brick rectangle with two square windows and a blue trapezoid cap; it lacks the reference house's roof depth and architectural character. Add a legible pitched roof, chimney and shaded side, with windows placed on coherent wall planes. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "jazz_age-farmstead@winter",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse is a flat brick rectangle with two square windows and a blue trapezoid cap; it lacks the reference house's roof depth and architectural character. Add a legible pitched roof, chimney and shaded side, with windows placed on coherent wall planes. The house and shed snow are flat pale caps with little depth; add irregular shaded accumulation without losing the building planes. Remove the nearly uniform blue winter rim around the field."
+    },
+    {
+      "name": "modern-farmstead",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse reads as a flat cream house symbol: two square windows, a door and a shallow blue roof. Redraw it with a substantial roof plane, shaded side and readable porch or eaves, retaining the roughly 12–16 px footprint. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "modern-farmstead@autumn",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse reads as a flat cream house symbol: two square windows, a door and a shallow blue roof. Redraw it with a substantial roof plane, shaded side and readable porch or eaves, retaining the roughly 12–16 px footprint. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "modern-farmstead@spring",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse reads as a flat cream house symbol: two square windows, a door and a shallow blue roof. Redraw it with a substantial roof plane, shaded side and readable porch or eaves, retaining the roughly 12–16 px footprint. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "modern-farmstead@winter",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The farmhouse reads as a flat cream house symbol: two square windows, a door and a shallow blue roof. Redraw it with a substantial roof plane, shaded side and readable porch or eaves, retaining the roughly 12–16 px footprint. The house and shed snow are flat pale caps with little depth; add irregular shaded accumulation without losing the building planes. Remove the nearly uniform blue winter rim around the field."
+    },
+    {
+      "name": "slums-0",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken tan outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-left rust roof is an oversized slab, and the central blue roof repeats the same broad corrugated shape. Break the large roof into smaller attached shacks and lean-tos at the requested 8–14 px width."
+    },
+    {
+      "name": "slums-1",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken tan outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The central diagonal rust roof dominates the block, while the surrounding roofs use the same parallel stripe treatment. Split it into smaller patched roofs with visible wall faces and narrow, connected alleys."
+    },
+    {
+      "name": "slums-2",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken tan outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The broad upper-left tan roof and lower-right blue roof overwhelm the smaller shacks. Reduce those footprints and replace some uniform stripes with patches, tarps and legible lean-tos."
+    },
+    {
+      "name": "slums-3",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken tan outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-middle rust roof and lower-left rust roof repeat the same large striped slab; the little roof along the bottom is squeezed against the margin. Subdivide the main roofs and reserve a genuine 2–3 px alley clearance."
+    },
+    {
+      "name": "slums-4",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken tan outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-left tan roof is far too broad for an 8–14 px shack, and the right-hand rust roof merges into an angular tarp-like mass. Split both into clearly outlined smaller structures."
+    },
+    {
+      "name": "slums-5",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken tan outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. Three large rust roofs stacked down the left make a repeating ladder of identical roof ribs. Vary their size, orientation and construction, using smaller shack footprints and readable wall planes."
+    },
+    {
+      "name": "slums-6",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken tan outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-left tan roof and middle-right blue roof are oversized smooth silhouettes with repetitive stripes. Split them into small attached shacks with distinct patches and lean-tos."
+    },
+    {
+      "name": "slums-7",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken tan outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-right blue roof, middle-left tan roof and lower-left rust roof are variations of the same broad striped shape. Reduce the large roofs and vary their construction and alley routing."
+    },
+    {
+      "name": "slums@winter-0",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken grey outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-left rust roof is an oversized slab, and the central blue roof repeats the same broad corrugated shape. Break the large roof into smaller attached shacks and lean-tos at the requested 8–14 px width. The roof snow is mostly a blanket of regular cyan stripes and the edge ground is flat grey. Add irregular snow depth, exposed rusty roof patches and tracked/slushy alley texture that continues to the edges."
+    },
+    {
+      "name": "slums@winter-1",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken grey outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The central diagonal rust roof dominates the block, while the surrounding roofs use the same parallel stripe treatment. Split it into smaller patched roofs with visible wall faces and narrow, connected alleys. The roof snow is mostly a blanket of regular cyan stripes and the edge ground is flat grey. Add irregular snow depth, exposed rusty roof patches and tracked/slushy alley texture that continues to the edges."
+    },
+    {
+      "name": "slums@winter-2",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken grey outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The broad upper-left tan roof and lower-right blue roof overwhelm the smaller shacks. Reduce those footprints and replace some uniform stripes with patches, tarps and legible lean-tos. The roof snow is mostly a blanket of regular cyan stripes and the edge ground is flat grey. Add irregular snow depth, exposed rusty roof patches and tracked/slushy alley texture that continues to the edges."
+    },
+    {
+      "name": "slums@winter-3",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken grey outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-middle rust roof and lower-left rust roof repeat the same large striped slab; the little roof along the bottom is squeezed against the margin. Subdivide the main roofs and reserve a genuine 2–3 px alley clearance. The roof snow is mostly a blanket of regular cyan stripes and the edge ground is flat grey. Add irregular snow depth, exposed rusty roof patches and tracked/slushy alley texture that continues to the edges."
+    },
+    {
+      "name": "slums@winter-4",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken grey outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-left tan roof is far too broad for an 8–14 px shack, and the right-hand rust roof merges into an angular tarp-like mass. Split both into clearly outlined smaller structures. The roof snow is mostly a blanket of regular cyan stripes and the edge ground is flat grey. Add irregular snow depth, exposed rusty roof patches and tracked/slushy alley texture that continues to the edges."
+    },
+    {
+      "name": "slums@winter-5",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken grey outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. Three large rust roofs stacked down the left make a repeating ladder of identical roof ribs. Vary their size, orientation and construction, using smaller shack footprints and readable wall planes. The roof snow is mostly a blanket of regular cyan stripes and the edge ground is flat grey. Add irregular snow depth, exposed rusty roof patches and tracked/slushy alley texture that continues to the edges."
+    },
+    {
+      "name": "slums@winter-6",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken grey outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-left tan roof and middle-right blue roof are oversized smooth silhouettes with repetitive stripes. Split them into small attached shacks with distinct patches and lean-tos. The roof snow is mostly a blanket of regular cyan stripes and the edge ground is flat grey. Add irregular snow depth, exposed rusty roof patches and tracked/slushy alley texture that continues to the edges."
+    },
+    {
+      "name": "slums@winter-7",
+      "problems": "FAILS TILING in all three 8x2 shuffles: the nearly unbroken grey outer rim forms a square grid, while the interior alleys are irregular dark/cluttered passages. Carry the same alley shade AND broken ground texture through a 2–3 px building-free edge margin; remove the uniform perimeter strip. The upper-right blue roof, middle-left tan roof and lower-left rust roof are variations of the same broad striped shape. Reduce the large roofs and vary their construction and alley routing. The roof snow is mostly a blanket of regular cyan stripes and the edge ground is flat grey. Add irregular snow depth, exposed rusty roof patches and tracked/slushy alley texture that continues to the edges."
+    },
+    {
+      "name": "suburb-0",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 6: the same roof-colour order, house positions and driveways survive the garden changes."
+    },
+    {
+      "name": "suburb-1",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 7: the same two rows, roof-colour order and driveway positions survive the tree changes."
+    },
+    {
+      "name": "suburb-2",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The upper-right and lower-middle blue-roof houses are the same small house stamp; moving roof colours among the six fixed lots does not create a new layout."
+    },
+    {
+      "name": "suburb-3",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The roofs are recoloured copies on the same six fixed lots; the large top garden shapes do not alter the repeated street and building plan."
+    },
+    {
+      "name": "suburb-4",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The same three houses in each row sit on the same short straight driveways as the other variants; the added garden blobs do not break that rhythm."
+    },
+    {
+      "name": "suburb-5",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The upper and lower rows reuse the same three roof types and the same house spacing; the pink tree and small shed are cosmetic changes."
+    },
+    {
+      "name": "suburb-6",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 0: the six houses, roof-colour order and driveway plan are effectively the same."
+    },
+    {
+      "name": "suburb-7",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 1: the six house positions, roof-colour order and driveways are effectively the same."
+    },
+    {
+      "name": "suburb@autumn-0",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 6: the same roof-colour order, house positions and driveways survive the garden changes."
+    },
+    {
+      "name": "suburb@autumn-1",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 7: the same two rows, roof-colour order and driveway positions survive the tree changes."
+    },
+    {
+      "name": "suburb@autumn-2",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The upper-right and lower-middle blue-roof houses are the same small house stamp; moving roof colours among the six fixed lots does not create a new layout."
+    },
+    {
+      "name": "suburb@autumn-3",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The roofs are recoloured copies on the same six fixed lots; the large top garden shapes do not alter the repeated street and building plan."
+    },
+    {
+      "name": "suburb@autumn-4",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The same three houses in each row sit on the same short straight driveways as the other variants; the added garden blobs do not break that rhythm."
+    },
+    {
+      "name": "suburb@autumn-5",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The upper and lower rows reuse the same three roof types and the same house spacing; the pink tree and small shed are cosmetic changes."
+    },
+    {
+      "name": "suburb@autumn-6",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 0: the six houses, roof-colour order and driveway plan are effectively the same."
+    },
+    {
+      "name": "suburb@autumn-7",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 1: the six house positions, roof-colour order and driveways are effectively the same."
+    },
+    {
+      "name": "suburb@spring-0",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 6: the same roof-colour order, house positions and driveways survive the garden changes."
+    },
+    {
+      "name": "suburb@spring-1",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 7: the same two rows, roof-colour order and driveway positions survive the tree changes."
+    },
+    {
+      "name": "suburb@spring-2",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The upper-right and lower-middle blue-roof houses are the same small house stamp; moving roof colours among the six fixed lots does not create a new layout."
+    },
+    {
+      "name": "suburb@spring-3",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The roofs are recoloured copies on the same six fixed lots; the large top garden shapes do not alter the repeated street and building plan."
+    },
+    {
+      "name": "suburb@spring-4",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The same three houses in each row sit on the same short straight driveways as the other variants; the added garden blobs do not break that rhythm."
+    },
+    {
+      "name": "suburb@spring-5",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The upper and lower rows reuse the same three roof types and the same house spacing; the pink tree and small shed are cosmetic changes."
+    },
+    {
+      "name": "suburb@spring-6",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 0: the six houses, roof-colour order and driveway plan are effectively the same."
+    },
+    {
+      "name": "suburb@spring-7",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 1: the six house positions, roof-colour order and driveways are effectively the same."
+    },
+    {
+      "name": "suburb@winter-0",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 6: the same roof-colour order, house positions and driveways survive the garden changes. The winter roof colours collapse to the same pale house stamp, making that repetition even stronger; use deliberate snow shapes and preserve readable roof planes."
+    },
+    {
+      "name": "suburb@winter-1",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 7: the same two rows, roof-colour order and driveway positions survive the tree changes. The winter roof colours collapse to the same pale house stamp, making that repetition even stronger; use deliberate snow shapes and preserve readable roof planes."
+    },
+    {
+      "name": "suburb@winter-2",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The upper-right and lower-middle blue-roof houses are the same small house stamp; moving roof colours among the six fixed lots does not create a new layout. The winter roof colours collapse to the same pale house stamp, making that repetition even stronger; use deliberate snow shapes and preserve readable roof planes."
+    },
+    {
+      "name": "suburb@winter-3",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The roofs are recoloured copies on the same six fixed lots; the large top garden shapes do not alter the repeated street and building plan. The winter roof colours collapse to the same pale house stamp, making that repetition even stronger; use deliberate snow shapes and preserve readable roof planes."
+    },
+    {
+      "name": "suburb@winter-4",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The same three houses in each row sit on the same short straight driveways as the other variants; the added garden blobs do not break that rhythm. The winter roof colours collapse to the same pale house stamp, making that repetition even stronger; use deliberate snow shapes and preserve readable roof planes."
+    },
+    {
+      "name": "suburb@winter-5",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. The upper and lower rows reuse the same three roof types and the same house spacing; the pink tree and small shed are cosmetic changes. The winter roof colours collapse to the same pale house stamp, making that repetition even stronger; use deliberate snow shapes and preserve readable roof planes."
+    },
+    {
+      "name": "suburb@winter-6",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 0: the six houses, roof-colour order and driveway plan are effectively the same. The winter roof colours collapse to the same pale house stamp, making that repetition even stronger; use deliberate snow shapes and preserve readable roof planes."
+    },
+    {
+      "name": "suburb@winter-7",
+      "problems": "FAILS TILING AND REPETITION in all three shuffles: the unbroken grey perimeter, immediately bordered by an inset rectangular lawn/hedge band, encloses every tile as a framed square. The interior road has a different, broken verge treatment even though the asphalt base colour matches. Use the same road width, verge profile and texture at internal streets and joins; remove the inset rectangular border. All eight variants repeat essentially the same 3-by-2 house positions and central road. Change lot widths, setbacks, house footprints, gardens and driveway routing substantially while keeping each revised layout fixed across seasons. It is especially close to variant 1: the six house positions, roof-colour order and driveways are effectively the same. The winter roof colours collapse to the same pale house stamp, making that repetition even stronger; use deliberate snow shapes and preserve readable roof planes."
+    },
+    {
+      "name": "wuxia-farmstead",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The upturned eaves suggest the setting, but the blue roof is a flat slab above a frontal timber facade. Define the tiled roof planes, ridge and shaded side at this native scale, and give the small shed more than a square front and thin cap. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "wuxia-farmstead@autumn",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The upturned eaves suggest the setting, but the blue roof is a flat slab above a frontal timber facade. Define the tiled roof planes, ridge and shaded side at this native scale, and give the small shed more than a square front and thin cap. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "wuxia-farmstead@spring",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The upturned eaves suggest the setting, but the blue roof is a flat slab above a frontal timber facade. Define the tiled roof planes, ridge and shaded side at this native scale, and give the small shed more than a square front and thin cap. Clean the soft, crumbly field/hedge transitions into intentional pixel clusters and give the nearby crop plots a clear agricultural texture."
+    },
+    {
+      "name": "wuxia-farmstead@winter",
+      "problems": "FAILS TILING in all three shuffles: the straight dense hedge perimeter makes a visible square frame, and the bottom lane ends against the next tile's unbroken top hedge instead of meeting a compatible opening. Match edge hedge width/texture to the internal hedges and design a clean lane/hedge junction with compatible neighbouring tiles. The buildings are large enough, but their flat icon treatment is visibly detached from the mottled field terrain. The upturned eaves suggest the setting, but the blue roof is a flat slab above a frontal timber facade. Define the tiled roof planes, ridge and shaded side at this native scale, and give the small shed more than a square front and thin cap. The house and shed snow are flat pale caps with little depth; add irregular shaded accumulation without losing the building planes. Remove the nearly uniform blue winter rim around the field."
+    }
+  ]
+}
