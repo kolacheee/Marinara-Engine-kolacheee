@@ -10,7 +10,7 @@
 #   a hamlet to a city: MARKER_GROWTH in WorldOverworld.tsx times 48), each set in a 3x3-cell sprite,
 #   standing on its bottom and centred across it, so the overworld draws it at its own size with no
 #   scaling (a sprite of several cells is drawn that many cells big).
-# - tiles: `<look><season>-0..7.png` for slums, industry, city and suburbs, one cell each, every building inside
+# - tiles: `<look><season>-0..7.png` for slums, industry, city, suburbs and (wuxia) rice paddies, one cell each, every building inside
 #   its cell with a street along its edges; for each family that has the look and season.
 # - farmland: `farmland<season>-0..6.png` (fields, hedged along the edges) and `<family>-farmstead<season>.png`.
 # Both go on the sheet `built` (carried on below what it holds), as a pack holds at most sixteen sheets.
@@ -21,7 +21,7 @@ from PIL import Image
 CELL = 48
 PNG = "data:image/png;base64,"
 FAMILIES = ("fantasy", "wuxia", "jazz_age", "modern", "scifi", "wasteland")
-TILE_LOOKS = ("slums", "industry", "city", "suburb")
+TILE_LOOKS = ("slums", "industry", "city", "suburb", "paddies")
 SEASONS = ("", "@spring", "@autumn", "@winter")
 # Settings whose farmland carries one of their own farmsteads among its variants.
 FARMSTEADS = ("fantasy", "wuxia", "jazz_age", "modern")
