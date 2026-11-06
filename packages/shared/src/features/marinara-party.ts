@@ -751,6 +751,8 @@ function marinaraBestiaryFoes(input: {
           ...(spec.enemySkills?.length ? { enemySkills: spec.enemySkills } : {}),
           ...(spec.statScale ? { statScale: spec.statScale } : {}),
           ...(spec.ranged ? { ranged: true } : {}),
+          ...(spec.carriedSkills?.length ? { carriedSkills: spec.carriedSkills } : {}),
+          ...(spec.openingCooldowns ? { openingCooldowns: spec.openingCooldowns } : {}),
         }),
         familyId: foe.familyId,
         ...(spec.windfall ? { windfall: spec.windfall } : {}),

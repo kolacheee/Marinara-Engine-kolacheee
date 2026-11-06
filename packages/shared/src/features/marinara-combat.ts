@@ -1141,6 +1141,8 @@ export interface MarinaraEnemySpec {
   ranged?: boolean;
   /** Basic attack uses Magic. */
   magic?: boolean;
+  /** Cooldowns the foe starts the fight with (bestiary abilities that open cold), by cooldown key. */
+  openingCooldowns?: Record<string, number>;
 }
 
 /** What a humanoid foe carries, as a promoted player would: the actives of the classes it promoted from
@@ -1216,6 +1218,7 @@ export function buildMarinaraEnemy(spec: MarinaraEnemySpec): MarinaraFighter {
   });
   fighter.maxHp = Math.max(1, Math.round(fighter.maxHp * tier.hp));
   fighter.hp = fighter.maxHp;
+  if (spec.openingCooldowns) fighter.cooldowns = { ...spec.openingCooldowns };
   return fighter;
 }
 
