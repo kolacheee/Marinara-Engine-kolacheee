@@ -49,6 +49,7 @@ import {
 } from "../../packages/shared/src/features/marinara-combat.js";
 import {
   MARINARA_BESTIARY_ABILITIES,
+  marinaraFoeAiHints,
   type MarinaraBestiaryFoeSpec,
 } from "../../packages/shared/src/features/marinara-bestiary.js";
 import {
@@ -88,6 +89,7 @@ export function enemyFighter(spec: MarinaraBestiaryFoeSpec): MarinaraFighter {
   const scale = (spec as { damageScale?: number }).damageScale;
   if (scale !== undefined && scale !== 1)
     fighter.mods.push({ stat: "damage", pct: scale - 1, turns: 99999, source: "damage-scale" });
+  fighter.familyId = spec.familyId;
   return fighter;
 }
 
@@ -284,7 +286,13 @@ export function playFight(
     id: `bl${seed}`,
     anchor: "a",
     party: party.map((f) => marinaraCombatant(f)),
-    enemies: foes.map((f) => marinaraCombatant(f)),
+    // Each bestiary foe fights with its family's mind and one of its temperaments, as in the Engine.
+    enemies: foes.map((f) => {
+      const hints = f.familyId
+        ? marinaraFoeAiHints(f.familyId, marinaraRandom(`${seed}:${f.id}:temperament`))
+        : undefined;
+      return marinaraCombatant(f, hints ? { aiHints: hints } : {});
+    }),
     style: "classic",
     gm: false,
     difficulty: "normal",
