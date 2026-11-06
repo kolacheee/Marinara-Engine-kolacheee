@@ -1078,6 +1078,8 @@ export function ChatSettingsDrawer({
   const ovEditing = useOverhaulStore((state) => state.chatSettingsEditing) && overhaulActive;
   // New layout on phones and tablets: the sheet opens on its quick page; Edit mode keeps the classic sections.
   const mobileNavView = useMobileChatSettingsNav((state) => state.view);
+  // A put-back tool asks the sheet to open on it, also when the sheet is already open behind it.
+  const navOpenOn = useMobileChatSettingsNav((state) => state.openOn);
   const confirmMobileResourceRemoval = (event: ReactMouseEvent<HTMLDivElement>) => {
     const button = (event.target as Element | null)?.closest<HTMLElement>("[data-chat-settings-remove-resource]");
     if (!button) return;
@@ -1103,19 +1105,21 @@ export function ChatSettingsDrawer({
   useEffect(() => {
     const nav = useMobileChatSettingsNav.getState();
     if (!overhaulMobile || ovEditing) nav.turnOff();
-    else if (windowOpen && nav.openOn) {
-      // A tool window was just put back: open on All settings, where put-back tools sit (as open
-      // sections at its top), not on the quick page that hides them.
-      const id = nav.openOn;
-      useMobileChatSettingsNav.setState({ openOn: null });
-      nav.showAll();
-      requestAnimationFrame(() =>
-        document
-          .querySelector<HTMLElement>(`[data-docked-chat-control="${CSS.escape(id)}"]`)
-          ?.scrollIntoView({ block: "start" }),
-      );
-    } else if (windowOpen) nav.showQuick();
+    else if (windowOpen) nav.showQuick();
   }, [overhaulMobile, ovEditing, windowOpen]);
+  // A tool window put back into Chat settings asks the sheet to open on All settings, where put-back tools
+  // sit as open sections, not on the quick page that hides them (also when the sheet was already open).
+  useEffect(() => {
+    if (!overhaulMobile || ovEditing || !windowOpen || !navOpenOn) return;
+    const nav = useMobileChatSettingsNav.getState();
+    useMobileChatSettingsNav.setState({ openOn: null });
+    nav.showAll();
+    requestAnimationFrame(() =>
+      document
+        .querySelector<HTMLElement>(`[data-docked-chat-control="${CSS.escape(navOpenOn)}"]`)
+        ?.scrollIntoView({ block: "start" }),
+    );
+  }, [overhaulMobile, ovEditing, windowOpen, navOpenOn]);
   const ovDocked = overhaulDesktop && !ovFloating;
   const [ovScrollEl, setOvScrollEl] = useState<HTMLDivElement | null>(null);
   const setOvGameSettingsSlot = useOverhaulStore((state) => state.setGameSettingsSlot);
