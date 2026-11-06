@@ -2692,7 +2692,11 @@ export function marinaraDebuffBurden(unit: MarinaraFighter, all: readonly Marina
         status.turns *
         (status.status === "sleep" || status.status === "stun" ? 1 : status.status === "confuse" ? 0.5 : 0.3);
   }
-  for (const mod of unit.mods) if (mod.pct < 0) value += Math.abs(mod.pct) * unit.maxHp * 0.15 * mod.turns;
+  // A lowered stat, or more damage taken; less damage taken (Fortress, a ward) is a boon, not a burden
+  // (slice s11 2026-11-06: Purify was cast on a tank right after its Fortress).
+  for (const mod of unit.mods)
+    if (mod.source !== "probe" && (mod.stat === "damage-taken" ? mod.pct > 0 : mod.pct < 0))
+      value += Math.abs(mod.pct) * unit.maxHp * 0.15 * mod.turns;
   return value;
 }
 
