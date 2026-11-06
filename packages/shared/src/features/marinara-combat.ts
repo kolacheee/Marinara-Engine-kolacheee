@@ -2646,9 +2646,19 @@ export function marinaraDebuffBurden(unit: MarinaraFighter, all: readonly Marina
         (status.power ?? 0.05) *
         status.turns *
         (status.status === "poison" ? marinaraAffinityMultiplier(unit.affinities, "poison") : 1);
-    else if (status.status === "wound") value += (unit.maxHp - unit.hp) * 0.3 + unit.maxHp * 0.05;
+    // A Wound costs half of the healing it meets: about one heal's worth (a quarter of max HP) while it
+    // lasts, no more than the HP missing (Sonnet panel r6: Purify on a wound took 13% of healers' turns).
+    else if (status.status === "wound") value += Math.min(unit.maxHp - unit.hp, unit.maxHp * 0.25) * 0.5;
     else if (status.status === "doom") value += Math.min(unit.hp, doomToll(unit));
-    else value += marinaraEffectiveStat(unit, unit.magicBasic ? "magic" : "strength", all) * 1.5 * status.turns;
+    else
+      // A lost turn (sleep, stun) is the unit's blows; confusion about half of them; the rest (slow, the
+      // element marks) take a share of a turn (Sonnet panel r6: Sanctuary and Purify were cast for a slow
+      // as if it cost whole turns, "healing 0" with support +0.2 to +1.2).
+      value +=
+        marinaraEffectiveStat(unit, unit.magicBasic ? "magic" : "strength", all) *
+        1.5 *
+        status.turns *
+        (status.status === "sleep" || status.status === "stun" ? 1 : status.status === "confuse" ? 0.5 : 0.3);
   }
   for (const mod of unit.mods) if (mod.pct < 0) value += Math.abs(mod.pct) * unit.maxHp * 0.15 * mod.turns;
   return value;
