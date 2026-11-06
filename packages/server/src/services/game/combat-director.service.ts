@@ -335,6 +335,33 @@ export function marinaraBoardTurn(
     const one = t.units.find((u) => u.id === id);
     return !!one && t.units.some((foe) => foe.side !== one.side && targetable(foe) && reaches(id, foe.id));
   };
+  let boundHit: boolean | undefined;
+  let boundTile: TacticalCoord | undefined;
+  const hitsBound = () => {
+    if (!bound) return false;
+    if (boundHit !== undefined) return boundHit;
+    const here = { x: tu.x, y: tu.y };
+    const tiles = tu.hasMoved ? [here] : [here, ...getMovementRange(t, tu.id)];
+    const damaging = new Set(
+      (me ? marinaraUsable(me, s.marinara!.fighters) : [])
+        .filter((o) => o.effect.kind === "damage" && o.id !== null)
+        .map((o) => o.id as string),
+    );
+    const blows: Array<Extract<TacticalAction, { unitId: string }>> = [
+      { type: "attack", unitId: tu.id, targetId: bound.id },
+      ...(tu.skills ?? []).filter((k) => damaging.has(k.id)).map(
+        (k) => ({ type: "skill", unitId: tu.id, skillName: k.name, targetId: bound.id }) as Extract<TacticalAction, { unitId: string }>,
+      ),
+    ];
+    boundTile = tiles.find((at) =>
+      blows.some(
+        (blow) =>
+          !validateTacticalUnitAction(t, tu, at.x === tu.x && at.y === tu.y ? blow : { ...blow, to: at } as typeof blow),
+      ),
+    );
+    boundHit = !!boundTile;
+    return boundHit;
+  };
   // The reasons of the pick that stands (a second look from a closer tile replaces the first).
   let reasons: { at: TacticalCoord; ranking: Parameters<typeof marinaraPickReasons>[2] } | undefined;
   const choose = (at: TacticalCoord) => {
@@ -358,7 +385,10 @@ export function marinaraBoardTurn(
           : { type: "attack", unitId: tu.id, targetId, ...where };
         return !validateTacticalUnitAction(t, tu, action);
       },
-      !!bound,
+      // Provoke variant (b), test only: bound only when a blow on its provoker validates from a tile it
+      // can move to this turn; otherwise it strikes what it can reach, and with nothing to strike still
+      // walks toward the provoker.
+      !!bound && hitsBound(),
     );
     return { picked, ranked };
   };
@@ -369,6 +399,17 @@ export function marinaraBoardTurn(
   };
   let to = boardTo;
   let picked = decide(to ?? { x: tu.x, y: tu.y });
+  // Bound, and a blow on the provoker lands from a tile it can reach this turn but not from the board's
+  // pick: strike from that tile rather than brace and walk off (slice s11 2026-11-06: Ironbristle B left
+  // two targets beside it to "close in" on a provoker it could have struck).
+  if (picked?.type === "defend" && bound && hitsBound() && boundTile && !tu.hasMoved) {
+    const kept = reasons;
+    const tried = decide(boundTile);
+    if (tried && tried.type !== "defend") {
+      picked = tried;
+      to = boundTile.x === tu.x && boundTile.y === tu.y ? undefined : boundTile;
+    } else reasons = kept;
+  }
   // A Guard weighs covering each friend from a tile beside that friend, not only from where the board's
   // walk puts it (r53: Rook covered the evasive scout from turn 1, "no other choice", while two foes
   // tore into the caster two tiles out of its reach; 91% of Tactical deaths with a Guard covering
@@ -1263,11 +1304,33 @@ function validate(s: CombatDirectorState, a: Action): void {
       // Its target by Marinara's rules too (Tame below 30% HP, a challenge), so it can't come out as a
       // Defend (slice tester s5). Aimed at the user, it's a self, party or area skill, or the AI's revive.
       if (board.targetId && board.targetId !== u.id) {
-        const problem = marinaraActionProblem(s.marinara, u.id, {
-          type: "skill",
-          skillId,
-          targetId: board.targetId,
-        });
+        // Provoke variant (b), test only: on the board a provoke or challenge doesn't refuse a blow on
+        // another foe; resolution sends it to the one who drew it when that one is in reach.
+        const lifted: Array<() => void> = [];
+        const aimed = marinaraFighter(s.marinara, board.targetId);
+        if (aimed && aimed.side !== fighter.side) {
+          for (const one of s.marinara.fighters)
+            if (one.side !== fighter.side && one.provoking > 0) {
+              const turns = one.provoking;
+              one.provoking = 0;
+              lifted.push(() => (one.provoking = turns));
+            }
+          if (fighter.tauntTurns > 0) {
+            const turns = fighter.tauntTurns;
+            fighter.tauntTurns = 0;
+            lifted.push(() => (fighter.tauntTurns = turns));
+          }
+        }
+        let problem: string | null;
+        try {
+          problem = marinaraActionProblem(s.marinara, u.id, {
+            type: "skill",
+            skillId,
+            targetId: board.targetId,
+          });
+        } finally {
+          for (const restore of lifted) restore();
+        }
         if (problem) throw new Error(problem);
       }
     }
