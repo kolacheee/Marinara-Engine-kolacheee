@@ -38,6 +38,7 @@ import {
   worldSetOutFrom,
   worldTerrainLook,
   WORLD_GROUND_LOOK_FALLBACK,
+  WORLD_SQUARE_LOOKS,
   worldWalkJoined,
   worldWalkTags,
   worldWalkText,
@@ -164,6 +165,14 @@ try {
         else place((tile.w ?? 1) * size, (tile.h ?? 1) * size);
       }
     assert.ok(y + rowHeight <= 8192, `${family}: its art's atlas is ${y + rowHeight} down, past 8192`);
+    // Fields and built-up ground are drawn square: no art carries a fringe for them. Fantasy and wuxia
+    // carry no modern ground, so a village or a city ward there draws the fields around a town.
+    for (const look of WORLD_SQUARE_LOOKS) assert.ok(!art.tiles[`fringe_${look}`], `${family}: fringe_${look}`);
+    if (family === "fantasy" || family === "wuxia")
+      for (const look of ["suburb", "city", "industry", "slums"] as const) {
+        assert.ok(!Object.keys(art.tiles).some((id) => id.split("@")[0] === look), `${family}: ${look}`);
+        assert.equal(WORLD_GROUND_LOOK_FALLBACK[look], "farmland");
+      }
   }
   for (const kit of WORLD_STARTER_KITS) {
     assert.ok(
