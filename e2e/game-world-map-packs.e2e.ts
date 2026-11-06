@@ -13,6 +13,7 @@ import {
 import { openGame } from "./game-ruleset-fight-fixture.js";
 import { seedUIState } from "./ui-state-fixture.js";
 import { prepareViteFixtureDependencies } from "./vite-fixture-dependencies.js";
+import { wizardNextButton, wizardStepTitle } from "./game-wizard-steps.js";
 
 /**
  * Experience map packs (worldgen W9e), on screen: with an Experience that ships one turned on, the setup
@@ -164,11 +165,12 @@ test("an Experience's map pack sets the kit and offers only its maps, and lets g
   await chooseConnection(page, wizard.locator("[data-connection-value]").first(), "wizard-connection");
   await wizard.getByRole("button", { name: "Show", exact: true }).click();
   await wizard.getByRole("switch", { name: "River Experience", exact: true }).click();
-  const heading = wizard.getByRole("heading", { level: 4 }).first();
   const go = async (direction: "Next" | "Back") => {
-    const previous = await heading.innerText();
-    await wizard.getByRole("button", { name: direction, exact: true }).click();
-    await expect(heading).not.toHaveText(previous);
+    const previous = await wizardStepTitle(wizard);
+    await (
+      direction === "Next" ? wizardNextButton(wizard) : wizard.getByRole("button", { name: direction, exact: true })
+    ).click();
+    await expect.poll(() => wizardStepTitle(wizard)).not.toBe(previous);
   };
   const kitLabel = wizard.getByText("Setting kit", { exact: true });
   for (let step = 0; step < 6 && !(await kitLabel.isVisible()); step++) await go("Next");
@@ -226,11 +228,10 @@ test("an Experience whose map pack Marinara cannot read cannot start a game, and
   await chooseConnection(page, wizard.locator("[data-connection-value]").first(), "wizard-connection");
   await wizard.getByRole("button", { name: "Show", exact: true }).click();
   await wizard.getByRole("switch", { name: "River Experience", exact: true }).click();
-  const heading = wizard.getByRole("heading", { level: 4 }).first();
   const next = async () => {
-    const previous = await heading.innerText();
-    await wizard.getByRole("button", { name: "Next", exact: true }).click();
-    await expect(heading).not.toHaveText(previous);
+    const previous = await wizardStepTitle(wizard);
+    await wizardNextButton(wizard).click();
+    await expect.poll(() => wizardStepTitle(wizard)).not.toBe(previous);
   };
   const kitLabel = wizard.getByText("Setting kit", { exact: true });
   for (let step = 0; step < 6 && !(await kitLabel.isVisible()); step++) await next();
