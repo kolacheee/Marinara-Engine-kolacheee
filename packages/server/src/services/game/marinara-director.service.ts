@@ -683,6 +683,10 @@ function aimedAt(
   if (!pool.includes(target)) {
     if (actor.tauntTurns > 0 && actor.tauntedBy && effect.target === "enemy")
       return `${nameOf(state, actor.tauntedBy)} has challenged ${actor.name}: it must be the target.`;
+    // A provoker draws the blows (slice tester s8: an attack on another foe came out as Defend).
+    const provokers = pool.filter((one) => one.provoking > 0);
+    if (effect.target === "enemy" && provokers.length && provokers.length === pool.length)
+      return `${provokers.map((one) => one.name).join(" or ")} draws ${actor.name}'s blows: strike ${provokers.length > 1 ? "one of them" : "it"} instead.`;
     // Said, not a wasted turn (slice tester s5, 2026-11-06: Tame on a whole beast came out as Defend).
     if (effect.kind === "tame")
       return target.tameable

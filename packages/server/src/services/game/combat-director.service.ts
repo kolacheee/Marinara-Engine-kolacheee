@@ -1214,6 +1214,23 @@ function validate(s: CombatDirectorState, a: Action): void {
         board = { ...board, targetId: u.id };
       }
     }
+    // An attack its rules refuse (a provoker drawing the blows) is refused with the reason, not played
+    // as a Defend (slice tester s8).
+    // Only when the provoker can be struck from where it will stand: one out of reach lets the blow go to
+    // a foe in reach (performMarinaraTacticalAction).
+    if (s.marinara && board.type === "attack") {
+      const problem = marinaraActionProblem(s.marinara, u.id, { type: "attack", targetId: board.targetId });
+      const from = board.to ?? (u as TacticalUnit);
+      const max = (u as TacticalUnit).attackRange.max;
+      const reachable = s.tactical.units.some(
+        (one) =>
+          one.side !== (u as TacticalUnit).side &&
+          one.hp > 0 &&
+          (marinaraFighter(s.marinara!, one.id)?.provoking ?? 0) > 0 &&
+          Math.abs(one.x - from.x) + Math.abs(one.y - from.y) <= max,
+      );
+      if (problem && reachable) throw new Error(problem);
+    }
     // A Marinara skill that isn't usable now (cooling down, its cost unpaid, used up) is refused, not
     // played as a basic attack (slice tester s1, 2026-11-06: Vanish on cooldown came out as a hit).
     if (s.marinara && board.type === "skill") {

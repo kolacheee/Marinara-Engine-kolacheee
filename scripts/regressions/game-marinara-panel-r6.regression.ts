@@ -138,6 +138,23 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
   );
 }
 
+// An attack on another foe while a provoker in reach draws the blows is refused with the reason (s8).
+{
+  const blade = unit("B", "party", "blade");
+  const bastion = unit("P", "enemy", "guard");
+  const other = unit("O", "enemy", "scout");
+  const s = board([blade, bastion, other], 6);
+  place(s, "B", "P", 1);
+  place(s, "B", "O", 1);
+  s.marinara!.fighters.find((one) => one.id === "P")!.provoking = 2;
+  s.actorId = "B";
+  s.stage = "action";
+  assert.throws(
+    () => commandCombatDirector(s, { type: "tactical", action: { type: "attack", unitId: "B", targetId: "O" } }),
+    /P draws B's blows: strike it instead/,
+  );
+}
+
 // Mark Prey reaches 3 tiles, as far as a Marksman's bow; help for a friend stays at 2.
 {
   const hunter = unit("H", "party", "marksman", ["mark-prey"]);
@@ -208,6 +225,34 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
   captain.hp = 0;
   beginMarinaraTurn(tank, all, c);
   assert.equal(tank.provoking, 0, "with the caster down, its own turns count it");
+}
+
+// A counter that drops the attacker ends its flurry: no blow from the fallen (slice tester s8).
+{
+  const blade = unit("B", "party", "blade", ["flurry"]);
+  const guard = unit("G", "enemy", "guard", ["retaliate"]);
+  guard.hp = guard.maxHp = 100000;
+  blade.hp = 1;
+  blade.stats.defense = 0;
+  const all = [blade, guard];
+  let fell = false;
+  for (let n = 0; n < 30 && !fell; n++) {
+    blade.hp = 1;
+    const events: MarinaraEvent[] = [];
+    let r = n;
+    performMarinaraOption(blade, marinaraOption(blade, "flurry", all)!, [guard], all, {
+      random: () => (r = (r * 9301 + 49297) % 233280) / 233280,
+      events,
+    });
+    const down = events.findIndex((one) => one.kind === "down" && one.targetId === "B");
+    if (down < 0) continue;
+    fell = true;
+    assert.ok(
+      !events.slice(down + 1).some((one) => one.actorId === "B" && (one.kind === "hit" || one.kind === "miss")),
+      "no swing after it fell",
+    );
+  }
+  assert.ok(fell, "the counter dropped the attacker in some try");
 }
 
 console.log("game-marinara-panel-r6: ok");
