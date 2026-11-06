@@ -1103,7 +1103,18 @@ export function ChatSettingsDrawer({
   useEffect(() => {
     const nav = useMobileChatSettingsNav.getState();
     if (!overhaulMobile || ovEditing) nav.turnOff();
-    else if (windowOpen) nav.showQuick();
+    else if (windowOpen && nav.openOn) {
+      // A tool window was just put back: open on All settings, where put-back tools sit (as open
+      // sections at its top), not on the quick page that hides them.
+      const id = nav.openOn;
+      useMobileChatSettingsNav.setState({ openOn: null });
+      nav.showAll();
+      requestAnimationFrame(() =>
+        document
+          .querySelector<HTMLElement>(`[data-docked-chat-control="${CSS.escape(id)}"]`)
+          ?.scrollIntoView({ block: "start" }),
+      );
+    } else if (windowOpen) nav.showQuick();
   }, [overhaulMobile, ovEditing, windowOpen]);
   const ovDocked = overhaulDesktop && !ovFloating;
   const [ovScrollEl, setOvScrollEl] = useState<HTMLDivElement | null>(null);

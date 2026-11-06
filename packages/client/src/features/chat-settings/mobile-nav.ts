@@ -17,6 +17,10 @@ interface MobileChatSettingsNavState {
   back: "quick" | "all";
   /** How far the All settings list was scrolled when a page opened from it. */
   listScroll: number;
+  /** A section the sheet should open on next time it opens, instead of the quick page. */
+  openOn: string | null;
+  /** Opens the sheet on `id` next time (a tool window put back into Chat settings lands on its page). */
+  requestOpenOn: (id: string) => void;
   showQuick: () => void;
   showAll: () => void;
   showPage: (id: string) => void;
@@ -33,6 +37,8 @@ export const useMobileChatSettingsNav = create<MobileChatSettingsNavState>()((se
   page: null,
   back: "all",
   listScroll: 0,
+  openOn: null,
+  requestOpenOn: (openOn) => set({ openOn }),
   showQuick: () => set({ view: "quick", page: null }),
   showAll: () => set({ view: "all", page: null }),
   showPage: (page) => {

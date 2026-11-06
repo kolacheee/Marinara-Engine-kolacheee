@@ -38,6 +38,8 @@ import {
   useFloatingWindowStore,
 } from "../../stores/floating-window.store";
 import { readChatWindowArea, readCssPixels } from "./chat-settings-window";
+import { useOverhaulStore } from "../../stores/overhaul.store";
+import { useMobileChatSettingsNav } from "../../features/chat-settings/mobile-nav";
 
 const TRACKER_CLEARANCE_VARIABLE = "--tracker-panel-overlay-clearance";
 
@@ -153,6 +155,10 @@ export function ChatControlWindow({
     setSectionExpanded(id, true);
     windows.saveLayout(id, { ...layout, docked: true });
     windows.closeWindow(id);
+    // The phone/tablet new layout opens Chat settings on a quick page that hides put-back tools.
+    if (useOverhaulStore.getState().enabled && !useOverhaulStore.getState().desktop) {
+      useMobileChatSettingsNav.getState().requestOpenOn(id);
+    }
     windows.openWindow(CHAT_SETTINGS_WINDOW_ID, null, { focus: false });
   };
   const popOut = (layout: WindowLayout) => {

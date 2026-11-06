@@ -40,6 +40,7 @@ import { hasActiveTextSelection } from "../../lib/text-selection";
 import { readChatMetadata } from "../../lib/chat-wizard-defaults";
 import { useChatWindowLayout } from "../../hooks/use-chat-window-layout";
 import { ChatSettingsBubble } from "./ChatSettingsBubble";
+import { ChatToolsMenu } from "./ChatToolsMenu";
 import { useOverhaulActive, useOverhaulMobile } from "../../stores/overhaul.store";
 import { ChatWindowWelcomeModal } from "../modals/ChatWindowWelcomeModal";
 import { useGameModeStore } from "../../stores/game-mode.store";
@@ -194,7 +195,12 @@ import {
 import { useTranslation as useUiTranslation } from "react-i18next";
 import { ChatResourceDropOverlay } from "./ChatResourceDropOverlay";
 import { ChatHelpOverlay } from "./ChatHelpOverlay";
-import { CHAT_SETTINGS_WINDOW_ID, useFloatingWindowStore } from "../../stores/floating-window.store";
+import {
+  CHAT_SETTINGS_WINDOW_ID,
+  PHONE_LAYOUT_QUERY,
+  useFloatingWindowStore,
+} from "../../stores/floating-window.store";
+import { useMatchMedia } from "../../hooks/use-match-media";
 import { useCombatScreenStore } from "../../stores/combat-screen.store";
 import { readChatHelpMode } from "../../lib/chat-help-events";
 
@@ -610,6 +616,7 @@ export const ChatArea = memo(function ChatArea({
   const overhaulDesktop = useOverhaulActive();
   const overhaulMobile = useOverhaulMobile();
   const overhaulActive = overhaulDesktop || overhaulMobile;
+  const phoneLayout = useMatchMedia(PHONE_LAYOUT_QUERY);
   // A fight on a board takes the whole chat area, so the settings bubble steps aside while the combat
   // pane holds the corner it sits in, and comes back when the pane is put away. The fight's top-bar
   // controls open Chat Settings either way.
@@ -632,6 +639,11 @@ export const ChatArea = memo(function ChatArea({
         mode={readChatMode(chat)}
         advancedMemory={normalizeAdvancedMemorySettings(metadata.advancedMemory).enabled}
       />
+    ) : chat && chatSettingsHosted && !combatPaneOnScreen && overhaulMobile && phoneLayout ? (
+      // The mobile overhaul opens Chat settings from its top bar, but a phone gathers the chat's other
+      // tool windows (a game's controls: map and scene, session, volume, assets) into the Chat tools menu
+      // that rode along with the settings bubble. Keep that menu, or those tools have no way in.
+      <ChatToolsMenu key={chat.id} />
     ) : null;
   if (chat && (metadata.multiplayerSetup === true || metadata.multiplayer)) {
     return (
