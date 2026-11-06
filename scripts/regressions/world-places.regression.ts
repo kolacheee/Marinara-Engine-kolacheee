@@ -290,7 +290,15 @@ const brief = {
   const checked = checkWorldBrief(fantasy, brief);
   assert.ok(checked.ok);
   assert.deepEqual(checked.repairs, []);
-  const world = compileWorld({ seed: 20261001, kit: fantasy, brief: checked.brief });
+  // Made from the fantasy kit as it stood when it was committed (a game keeps the kit it was made with), so the
+  // kit's own shares can change for new games without moving it.
+  const committedKit = {
+    ...fantasy,
+    terrain: fantasy.terrain.map((each) =>
+      each.id === "grassland" ? { ...each, share: 25 } : each.id === "farmland" ? { ...each, share: 15 } : each,
+    ),
+  };
+  const world = compileWorld({ seed: 20261001, kit: committedKit, brief: checked.brief });
   assertWhole(world, fantasy, "brief");
   const named = new Map(world.places.map((place) => [place.name, place]));
   const thornmere = named.get("Thornmere")!;
@@ -319,7 +327,7 @@ const brief = {
   // generator version (worlds in play pin theirs), and this fingerprint moves with it.
   // Version 1 is made exactly as it was (games in play on it are made again from their recipes), and
   // version 2 is version 1 with its sites after it.
-  const versionOne = compileWorld({ seed: 20261001, kit: fantasy, brief: checked.brief, generatorVersion: 1 });
+  const versionOne = compileWorld({ seed: 20261001, kit: committedKit, brief: checked.brief, generatorVersion: 1 });
   const fingerprint = createHash("sha256").update(JSON.stringify(versionOne)).digest("hex");
   assert.equal(
     fingerprint,
@@ -343,7 +351,7 @@ const brief = {
   // Names never move the ground or the places.
   const renamed = compileWorld({
     seed: 20261001,
-    kit: fantasy,
+    kit: committedKit,
     brief: { ...checked.brief, placeNames: [{ culture: fantasy.cultures[0]!.id, names: ["Other"] }] },
   });
   assert.equal(renamed.ground, world.ground);
