@@ -66,6 +66,18 @@ A persona **Stats** tab has two separate blocks, each with its own switch.
 - **Persona Status Bars**, turned on with **Enable Persona Stats**, track physical and mental needs. The starter bars are Satiety, Energy, Hygiene and Mood, each at 100 of 100. Under **Status Bars**, each bar has a name, current value, maximum and color. Click **Add** to create one and the X to remove one.
 - **Enable RPG Attributes** works like a character card. It gives your persona **Pools** (starting with HP and MP at 100 of 100) and **Attributes** (starting with STR, DEX, CON, INT, WIS and CHA at 10).
 
+### MRPG picks on a card
+
+Both **Stats** tabs have a **Game Mode** section with an **MRPG** block, for games on MRPG classes (every new game). A game rolls each character's MRPG stats afresh, so the card holds no numbers, only three picks:
+
+- **Starting tree**: the tree the character starts in. **Auto** reads it from the card's description and personality, and shows which tree that gives.
+- **Strong in**: up to two stats the character grows well in.
+- **Weak in**: one stat they grow poorly in.
+
+The block previews the class a new game starts them as, at level 1, with its row and starting HP, MP and Stamina. The strong and weak picks lean the character's hidden growth in each game. Their sister tree comes from their temperament in the game, not from the card. See [Game Mode: MRPG Classes](../game/mrpg-classes.md#choose-a-characters-trees).
+
+On a character card, **Story stats for Legacy games** below it folds away the RPG attributes described above. Only Legacy games use them.
+
 ### Game Mode Icon
 
 Both **Stats** tabs have a **Game Mode Icon** block. It sets the picture on this character's or persona's round token on the board in a Game Mode fight. A small token beside the choices shows what the board will draw.
