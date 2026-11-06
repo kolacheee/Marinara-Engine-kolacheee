@@ -18,6 +18,7 @@ import {
   type Lorebook,
 } from "@marinara-engine/shared";
 import { useUIStore } from "../../stores/ui.store";
+import { TilePacksDialog } from "./TilePacksDialog";
 import { useOverhaulMobile, useOverhaulStore } from "../../stores/overhaul.store";
 import { useLorebooks, useUpdateLorebook } from "../../hooks/use-lorebooks";
 import { usePresets } from "../../hooks/use-presets";
@@ -914,6 +915,7 @@ export function useOvAgentRows() {
 }
 
 export function AgentsLanding() {
+  const [tilePacksOpen, setTilePacksOpen] = useState(false);
   const localize = useLocalizedUiText();
   const { rows: data } = useOvAgentRows();
   const { data: connections } = useConnections();
@@ -948,7 +950,15 @@ export function AgentsLanding() {
           <button type="button" className="ov-btn" onClick={() => openAgentCatalog()}>
             {localize("Download Agents")}
           </button>
+          <button type="button" className="ov-btn" onClick={() => setTilePacksOpen(true)}>
+            {localize("Tile packs")}
+          </button>
           <NewButton label={localize("New")} onClick={() => openAgentDetail("__new__")} />
+          <TilePacksDialog
+            open={tilePacksOpen}
+            onClose={() => setTilePacksOpen(false)}
+            title={localize("Tile packs")}
+          />
         </>
       }
       searchPlaceholder={localize("Search agents")}

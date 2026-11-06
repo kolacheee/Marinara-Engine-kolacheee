@@ -6,9 +6,9 @@
 // grouped the way you think about the items; the clicked item opens on the
 // right in its usual editor. One Library tab per section, not one per item.
 // ──────────────────────────────────────────────
-import { Suspense, lazy, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { ChevronDown, Download, Map as MapIcon, Plus, Search } from "lucide-react";
-import { Modal } from "../ui/Modal";
+import { TilePacksDialog } from "./TilePacksDialog";
 import { PROVIDERS, type APIConnection, type APIProvider } from "@marinara-engine/shared";
 import { useUIStore } from "../../stores/ui.store";
 import { useChatStore } from "../../stores/chat.store";
@@ -348,12 +348,6 @@ const AGENT_GROUPS: Array<{ id: string; label: string; match: (row: { phase: str
   { id: "post", label: "After the reply", match: (row) => !row.app && row.phase === "post_processing" },
 ];
 
-// The tile packs Game Mode's overworld and towns are drawn with live in the classic Agents panel; the new
-// layout's Agents page opens the same section in a dialog.
-const TilePacksSection = lazy(() =>
-  import("../panels/AgentsPanel").then((module) => ({ default: module.TilePacksSection })),
-);
-
 export function OvAgentsViewer({ children }: { children: ReactNode }) {
   const localize = useLocalizedUiText();
   const { rows } = useOvAgentRows();
@@ -428,16 +422,7 @@ export function OvAgentsViewer({ children }: { children: ReactNode }) {
       emptyDetail={localize("Pick an agent on the left, or download some.")}
     >
       {children}
-      <Modal
-        open={tilePacksOpen}
-        onClose={() => setTilePacksOpen(false)}
-        title={localize("Tile packs")}
-        width="max-w-md"
-      >
-        <Suspense fallback={null}>
-          <TilePacksSection />
-        </Suspense>
-      </Modal>
+      <TilePacksDialog open={tilePacksOpen} onClose={() => setTilePacksOpen(false)} title={localize("Tile packs")} />
     </OvViewer>
   );
 }
