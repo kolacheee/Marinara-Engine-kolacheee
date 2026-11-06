@@ -141,6 +141,16 @@ const beasts = (tier: "standard" | "elite" = "standard") =>
   assert.equal(kept.activeCompanion, kept.companions?.[0]?.id, "the first one tamed is active");
   assert.ok(kept.xp > 0, "and it paid XP");
   assert.equal(end.growth[0]?.tamed, dog!.tameable!.name, "the fight's end says so");
+  // Once Tame lands the beast is kept, even if the fight is then lost (Sonnet panel r6).
+  const lost = marinaraFightEnd({
+    state: s.marinara!,
+    outcome: "defeat",
+    cards: [{ name: "t", marinara: progression }],
+    seed: 2,
+    permadeath: false,
+  });
+  const keptAnyway = lost.cards?.[0]?.marinara as MarinaraCardProgression;
+  assert.equal(keptAnyway.companions?.[0]?.name, dog!.tameable!.name, "a lost fight keeps the tamed beast");
 }
 
 // The companion's bonus: +10% to its stat with a Tracker-tree class active, Bond 20% and half to all.

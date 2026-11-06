@@ -235,11 +235,9 @@ export function marinaraFightEnd(input: {
     );
     const fell = input.permadeath && fighter.hp <= 0 && input.outcome !== "defeat";
     // A beast this fighter tamed joins their stable, or waits on a release when it is full (Tracker,
-    // Alyssa 23:31). Kept unless the fight was lost.
-    const beast =
-      input.outcome !== "defeat"
-        ? [...(input.state.left ?? [])].reverse().find((one) => one.tamedBy === fighter.id && one.tameable)
-        : undefined;
+    // Alyssa 23:31). Kept even when the fight is then lost: once Tame lands, the beast is theirs (Sonnet
+    // panel r6: every tester who lost one hated it; proposed for the owner's call, drop this to revert).
+    const beast = [...(input.state.left ?? [])].reverse().find((one) => one.tamedBy === fighter.id && one.tameable);
     const companion = beast?.tameable
       ? {
           id: `${beast.tameable.familyId ?? "beast"}-${beast.id}-${input.seed}`,
