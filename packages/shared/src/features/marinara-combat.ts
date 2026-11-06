@@ -2211,14 +2211,17 @@ export function marinaraTargetsFor(
   if (taunter && (effect.target === "enemy" || effect.target === "front-row")) return takes([taunter]);
   const provokers = foes.filter((unit) => unit.provoking > 0);
   if (effect.target === "enemy" && provokers.length) return takes(provokers);
-  // An area blow while someone provokes is aimed at the provoker, and a front-row sweep only when it is
-  // in that row (slice tester s3, 2026-11-06: "Tail Sweep on Quenna" with Bryony provoking read as
-  // Provoke failing; Alyssa 2026-11-03: a provoked foe strikes the tank).
-  if (provokers.length && (effect.target === "front-row" || effect.target === "all-enemies")) {
-    const aimed =
-      effect.target === "front-row" ? provokers.filter((unit) => marinaraRowOf(unit, all) === "front") : provokers;
-    if (aimed.length || effect.target === "front-row") return takes(aimed);
-  }
+  // A front-row sweep while someone provokes only when a provoker stands in that row, and then it sweeps
+  // the row as ever; an area blow still lands on every foe, and on the board it is aimed at the provoker
+  // (slice tester s3, 2026-11-06: "Tail Sweep on Quenna" with Bryony provoking read as Provoke failing;
+  // Alyssa 2026-11-03: a provoked foe strikes the tank). Locking the whole area to the provoker cut a
+  // provoked foe's Tempest to one target and its basic blow had no foe to fall back on (slice s8).
+  if (
+    provokers.length &&
+    effect.target === "front-row" &&
+    !provokers.some((unit) => marinaraRowOf(unit, all) === "front")
+  )
+    return [];
   return takes(foes);
 }
 
