@@ -160,7 +160,12 @@ const beasts = (tier: "standard" | "elite" = "standard") =>
   const bonus = marinaraCompanionBonus(one);
   assert.ok(Math.abs(keeper.stats.speed - speed * (1 + bonus)) < 1e-9, "the bonus to the keeper's Speed");
   assert.equal(friend.stats.speed, speed, "nobody else without Bond");
-  assert.deepEqual(keeper.companion, companion, "the keeper has its companion for Sic");
+  assert.deepEqual(
+    { name: keeper.companion?.name, stat: keeper.companion?.stat },
+    companion,
+    "the keeper has its companion for Sic",
+  );
+  assert.equal(keeper.companion?.lends, bonus, "and what it lends is kept for the fight-start line");
   const off = make("o");
   marinaraApplyCompanions([{ fighter: off, progression: { ...base, activeClass: "marksman", ...stabled } }]);
   assert.equal(off.stats.speed, speed, "no bonus outside the Tracker tree");

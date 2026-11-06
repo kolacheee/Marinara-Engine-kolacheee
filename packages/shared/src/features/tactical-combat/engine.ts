@@ -964,7 +964,10 @@ export function validateTacticalUnitAction(
         // A unit aiming at itself is where it will stand, not where it stood.
         const at = target.id === unit.id ? fromTile : target;
         const d = manhattan(fromTile, at);
-        if (d > (skill.range ?? 2)) return { ok: false, error: `${target.name} is out of support range.` };
+        // A debuff reaches as far as the unit's attacks (Sonnet panel r6: a Marksman's Mark Prey and Tame
+        // stopped at 2 tiles while its bow reached 3); help for friends stays at 2.
+        const reach = skill.range ?? (wantAlly ? 2 : Math.max(unit.attackRange.max, 2));
+        if (d > reach) return { ok: false, error: `${target.name} is out of ${wantAlly ? "support" : "skill"} range.` };
         if (!hasLineOfSight(next.grid, fromTile, at)) return { ok: false, error: `${target.name} is out of sight.` };
       }
       break;

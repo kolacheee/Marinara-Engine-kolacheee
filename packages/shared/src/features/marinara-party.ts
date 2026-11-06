@@ -480,6 +480,9 @@ export function marinaraApplyCompanions(
     const bond = fighter.skills.some((skill) => skill.id === "bond");
     const pct = marinaraCompanionBonus(companion) * (bond ? MARINARA_COMPANION.bond : 1);
     raise(fighter, companion.stat, pct);
+    // Said at the fight's start (Sonnet panel r6: most testers never noticed the bonus).
+    fighter.companion.lends = pct;
+    if (bond) fighter.companion.bond = pct * MARINARA_COMPANION.shared;
     if (bond)
       for (const other of party)
         if (other.fighter !== fighter) raise(other.fighter, companion.stat, pct * MARINARA_COMPANION.shared);
