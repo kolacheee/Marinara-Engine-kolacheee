@@ -10,6 +10,7 @@
 // ──────────────────────────────────────────────
 
 import {
+  MARINARA_TAME,
   MARINARA_SKILL_EFFECTS,
   MARINARA_ENEMY_SKILLS,
   MARINARA_COATING_TURNS,
@@ -682,6 +683,11 @@ function aimedAt(
   if (!pool.includes(target)) {
     if (actor.tauntTurns > 0 && actor.tauntedBy && effect.target === "enemy")
       return `${nameOf(state, actor.tauntedBy)} has challenged ${actor.name}: it must be the target.`;
+    // Said, not a wasted turn (slice tester s5, 2026-11-06: Tame on a whole beast came out as Defend).
+    if (effect.kind === "tame")
+      return target.tameable
+        ? `${target.name} is too strong to tame: only below ${Math.round(MARINARA_TAME.belowHp * 100)}% HP.`
+        : `${target.name} can't be tamed.`;
     return "Invalid target.";
   }
   return [target];

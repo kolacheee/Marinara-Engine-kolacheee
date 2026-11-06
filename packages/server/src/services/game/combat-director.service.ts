@@ -410,7 +410,12 @@ export function marinaraBoardTurn(
     foes.length > 1
   ) {
     const tiles = [{ x: tu.x, y: tu.y }, ...getMovementRange(t, tu.id)];
-    let best: { score: number; at: TacticalCoord | undefined; picked: ReturnType<typeof decide>; reasons: typeof reasons } = {
+    let best: {
+      score: number;
+      at: TacticalCoord | undefined;
+      picked: ReturnType<typeof decide>;
+      reasons: typeof reasons;
+    } = {
       score: pickedScore(),
       at: to,
       picked,
@@ -1217,6 +1222,16 @@ function validate(s: CombatDirectorState, a: Action): void {
       const fighter = marinaraFighter(s.marinara, u.id);
       if (!skillId || !fighter || !marinaraUsable(fighter, s.marinara.fighters).some((one) => one.id === skillId))
         throw new Error(`${skillName} can't be used now.`);
+      // Its target by Marinara's rules too (Tame below 30% HP, a challenge), so it can't come out as a
+      // Defend (slice tester s5). Aimed at the user, it's a self, party or area skill, or the AI's revive.
+      if (board.targetId && board.targetId !== u.id) {
+        const problem = marinaraActionProblem(s.marinara, u.id, {
+          type: "skill",
+          skillId,
+          targetId: board.targetId,
+        });
+        if (problem) throw new Error(problem);
+      }
     }
     const invalid = validateTacticalUnitAction(s.tactical, u as TacticalUnit, board);
     if (invalid) throw new Error(invalid.error);
