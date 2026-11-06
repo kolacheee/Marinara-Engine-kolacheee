@@ -1943,7 +1943,20 @@ function effect(s: CombatDirectorState, p: Pending) {
         return one && two ? Math.abs(one.x - two.x) + Math.abs(one.y - two.y) : Infinity;
       };
       aiPlays(s, tu.id, p.source);
-      performMarinaraTacticalAction(s.marinara, tu.id, action, s.seed, marinaraLog(s), near, reach, p.source, apart);
+      const rangeOf = (id: string) =>
+        (units.find((one) => one.id === id) as TacticalUnit | undefined)?.attackRange.max ?? 1;
+      performMarinaraTacticalAction(
+        s.marinara,
+        tu.id,
+        action,
+        s.seed,
+        marinaraLog(s),
+        near,
+        reach,
+        p.source,
+        apart,
+        rangeOf,
+      );
       tu.hasActed = true;
       if (a.type === "defend") tu.defending = true;
       queueMarinaraBonusTurns(s);

@@ -834,6 +834,8 @@ export interface MarinaraFighter {
   revealed?: MarinaraAffinities;
   /** On a board: the foes next to it, as the director last saw them (Sworn Ward). */
   nearFoes?: string[];
+  /** On a board: the foes a Return Fire shooter's own shots reach as it stands now. */
+  shotFoes?: string[];
   /** On a board: the foes within a Hexer's spell reach (Grave Hunger). */
   spellFoes?: string[];
   /** Carried skill ids, and the stats they run on (best-trained class). */
@@ -2891,6 +2893,14 @@ export function marinaraFrontOnly(skillId: string): boolean {
   return !!(MARINARA_PASSIVES[skillId]?.frontTakenPct || MARINARA_SKILL_EFFECTS[skillId]?.frontOnly);
 }
 
+/** Follow Through's extra action: sooner on the Classic timeline; on a board, a bonus action, as only
+ *  those come round there (panel r7, 2026-11-06: on the board it gave nothing). */
+function followThrough(actor: MarinaraFighter, all: readonly MarinaraFighter[], ctx: MarinaraFightContext): void {
+  if (ctx.tactical) marinaraGrantBonus(actor, all);
+  else actor.next -= turnLength(actor, all);
+  ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "follow-through" });
+}
+
 /** Grants a fighter extra actions, queued after any already granted. */
 export function marinaraGrantBonus(unit: MarinaraFighter, all: readonly MarinaraFighter[], count = 1): void {
   if (!unit.bonusTurns) unit.bonusAt = Math.max(0, ...all.map((other) => other.bonusAt ?? 0)) + 1;
@@ -3678,6 +3688,8 @@ function returnFire(
     (u) =>
       hooksOf(u).coverFire &&
       !u.counteredThisRound &&
+      !u.yielded &&
+      (!u.shotFoes || u.shotFoes.includes(attacker.id)) &&
       !u.statuses.some((s) => s.status === "sleep" || s.status === "stun") &&
       marinaraWarderReaches(u, attacker, all),
   );
@@ -3770,7 +3782,14 @@ function strikeOnce(
       chance: Math.round(hitChance),
       roll: Math.floor(roll),
     });
-    if (canBeCountered && !effect.ranged && targetHooks.counter && target.hp > 0 && mayCounter(target, targetHooks)) {
+    if (
+      canBeCountered &&
+      !effect.ranged &&
+      targetHooks.counter &&
+      target.hp > 0 &&
+      !target.yielded &&
+      mayCounter(target, targetHooks)
+    ) {
       ctx.events.push({ kind: "counter", actorId: target.id, targetId: actor.id });
       strike(target, actor, counterAttack(target, targetHooks, all), all, ctx, false);
     }
@@ -3971,8 +3990,7 @@ function strikeOnce(
     !actor.followThroughUsed
   ) {
     actor.followThroughUsed = true;
-    actor.next -= turnLength(actor, all);
-    ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "follow-through" });
+    followThrough(actor, all, ctx);
   }
   if (target.hp <= 0) {
     target.hp = 0;
@@ -3982,8 +4000,7 @@ function strikeOnce(
     // Follow Through: a kill gives a whole new action, once per turn.
     if (hooks.actOnKill && !actor.followThroughUsed) {
       actor.followThroughUsed = true;
-      actor.next -= turnLength(actor, all);
-      ctx.events.push({ kind: "extra-turn", actorId: actor.id, skillId: "follow-through" });
+      followThrough(actor, all, ctx);
     }
     const savior = living(all.filter((u) => u.side === target.side)).find((u) => hooksOf(u).miracle && !u.miracleUsed);
     if (savior && target.side === "party") {
@@ -4000,6 +4017,7 @@ function strikeOnce(
     reachesBack &&
     targetHooks.counter === "always" &&
     target.hp > 0 &&
+    !target.yielded &&
     mayCounter(target, targetHooks)
   ) {
     ctx.events.push({ kind: "counter", actorId: target.id, targetId: actor.id });
