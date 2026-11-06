@@ -428,7 +428,8 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   assert.ok(vanishedChance < plainChance, `Vanish makes the user harder to hit (${plainChance} -> ${vanishedChance})`);
 }
 
-// Vanish's text: the user's next hit that lands is a critical hit, and only that one.
+// Vanish's text: the user's next hit that lands gets +40 crit chance, and only that one (playtest A/B
+// 2026-11-06: no longer a sure crit).
 {
   const rogue = unit("vc", "party", ["vanish"]);
   const foe = unit("f", "enemy");
@@ -439,17 +440,26 @@ const status = (target: MarinaraFighter, which: "stun" | "sleep" | "doom" | "poi
   use(rogue, "vanish", [rogue], all);
   assert.equal(rogue.mods.find((m) => m.source === "vanish")?.stat, "evasion", "no hidden damage buff");
   let tries = 0;
-  const hit = () => {
-    const c = ctx(`vanish-crit-${tries++}`);
-    performMarinaraOption(rogue, marinaraOption(rogue, null, all)!, [foe], all, c);
-    return c.events.find((e) => e.kind === "hit");
+  const landed = (vanished: boolean) => {
+    for (let n = 0; n < 40; n++) {
+      if (vanished) rogue.critNext = true;
+      const c = ctx(`vanish-crit-${tries++}`);
+      performMarinaraOption(rogue, marinaraOption(rogue, null, all)!, [foe], all, c);
+      const hit = c.events.find((e) => e.kind === "hit");
+      if (hit) return hit;
+    }
+    throw new Error("nothing landed");
   };
-  let first = hit();
-  for (let n = 0; n < 40 && !first; n++) first = hit();
-  assert.equal(first?.crit, true, "the first hit to land after Vanish crits");
-  let second = hit();
-  for (let n = 0; n < 40 && !second; n++) second = hit();
-  assert.equal(second?.crit, false, "the one after doesn't");
+  let crits = 0;
+  for (let n = 0; n < 300; n++) if (landed(true).crit) crits++;
+  assert.ok(crits > 300 * 0.28 && crits < 300 * 0.52, `about 40% of Vanish hits crit (${crits}/300)`);
+  rogue.critNext = undefined;
+  let plain = 0;
+  for (let n = 0; n < 100; n++) if (landed(false).crit) plain++;
+  assert.equal(plain, 0, "without it, no crits on this foe");
+  rogue.critNext = true;
+  landed(true);
+  assert.equal(rogue.critNext, undefined, "used up by the hit that lands");
 }
 
 // Dead Eye: a hit on a weakness deals 25% more than it would.
