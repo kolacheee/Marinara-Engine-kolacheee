@@ -369,14 +369,14 @@ export function WorldOverworld({
           const look = drawnLook[y * width + x]!;
           if (!square.has(look) || wetCell[y * width + x]) continue;
           groundOf(x, y, look);
-          // A field's own edge: a thin bank where it meets other ground, so it does not end in a bare cut.
+          // A field's own edge: a thin hedge where it meets other ground (its art hedges its top and left sides).
           if (look !== "farmland") continue;
-          const [px, py, t, bank] = [x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE / 24];
+          const [px, py, t, bank] = [x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE / 48];
           const open = (dx: number, dy: number) => {
             const [nx, ny] = [x + dx, y + dy];
             return nx >= 0 && ny >= 0 && nx < width && ny < height && drawnLook[ny * width + nx] !== look;
           };
-          ctx.fillStyle = "rgba(48, 32, 18, 0.55)";
+          ctx.fillStyle = "rgba(34, 48, 26, 0.6)";
           if (open(0, -1)) ctx.fillRect(px, py, t, bank);
           if (open(0, 1)) ctx.fillRect(px, py + t - bank, t, bank);
           if (open(-1, 0)) ctx.fillRect(px, py, bank, t);
