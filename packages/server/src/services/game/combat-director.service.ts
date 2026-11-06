@@ -434,6 +434,21 @@ export function marinaraBoardTurn(
     to = best.at;
     reasons = best.reasons;
   }
+  // A self skill worth nothing (a mindless golem's Harden, an ooze's Regenerate: their kind weighs only
+  // blows) is no reason to stand still: it is treated as nothing to do, so the unit looks for a tile to
+  // strike from and otherwise walks in (r65 2026-11-06: 2.5% of Tactical foe turns were "Harden (0.00); no
+  // other choice").
+  let idle = false;
+  if (
+    picked?.type === "skill" &&
+    picked.targetId === tu.id &&
+    (reasons?.ranking[0]?.score ?? 0) < 0.005 &&
+    foes.length &&
+    !bound
+  ) {
+    picked = { type: "defend" };
+    idle = true;
+  }
   const firstReasons = reasons;
   if (picked?.type === "defend" && !tu.hasMoved && foes.length) {
     // Closest approach: a tile with a foe in reach (the farthest such tile for a ranged unit), else
@@ -462,7 +477,10 @@ export function marinaraBoardTurn(
     for (const tile of order.slice(0, 8)) {
       if (score(tile) < 1000 && tile !== order[0]) break;
       const tried = decide(tile);
-      if (tried && tried.type !== "defend") {
+      // The same worthless self skill from another tile is still nothing to do.
+      const worthless =
+        idle && tried?.type === "skill" && tried.targetId === tu.id && (reasons?.ranking[0]?.score ?? 0) < 0.005;
+      if (tried && tried.type !== "defend" && !worthless) {
         again = tried;
         at = tile;
         break;
@@ -528,7 +546,7 @@ export function marinaraBoardTurn(
   let action: Extract<TacticalAction, { unitId: string }> | undefined;
   // Defend only to brace against real blows (Alyssa 2026-11-03); a Defend the AI fell back on with
   // nothing to strike and nothing to brace against is a walk: the unit moves in and waits.
-  const braces = (reasons?.ranking[0]?.candidate.support ?? 0) > 0;
+  const braces = !idle && (reasons?.ranking[0]?.candidate.support ?? 0) > 0;
   // Bound to a provoker or challenger it can't strike, from here or with any ranged blow: it closes in
   // as far as it can and defends (Alyssa 2026-11-03).
   if (picked.type === "defend" && bound) {
