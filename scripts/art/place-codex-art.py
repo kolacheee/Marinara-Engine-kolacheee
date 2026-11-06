@@ -61,6 +61,7 @@ def main(out_dir, paths, only):
                 if f"farmland{season}" not in pack["tiles"]:
                     continue
                 files = [os.path.join(out_dir, f"farmland{season}-{i}.png") for i in range(7)]
+                files = [f for f in files if os.path.exists(f)]  # a layout still being redrawn is left out
                 if family in FARMSTEADS:
                     files.append(os.path.join(out_dir, f"{family}-farmstead{season}.png"))
                 made[f"farmland{season}"] = [(Image.open(f).convert("RGBA"), 1, 1) for f in files]
