@@ -1092,6 +1092,9 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
       from: "tracker",
       role: "Masters of the hunt who slow their prey and send the whole pack after it.",
       leans: ["skill", "speed", "luck"],
+      // Its leans took nothing for its bow or its hide: at level 30 its shots did 3-4 to armour and it had
+      // 108 HP (Sonnet panel r6). Strength and HP as its master siblings have them.
+      tune: { strength: 15, hp: 15 },
       skills: [
         active("snare-field", "Snare Field", 20, "skill", 10, "Reduces all foes' Speed by 30% for 2 turns."),
         active(
