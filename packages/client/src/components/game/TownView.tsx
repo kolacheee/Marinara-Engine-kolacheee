@@ -733,7 +733,7 @@ export function TownView({
               <button
                 type="button"
                 onClick={() => setInside(null)}
-                className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
+                className="flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold max-sm:px-2 text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
               >
                 <ArrowLeft size={13} />
                 {t("game.town.goOutside")}
@@ -742,7 +742,7 @@ export function TownView({
             <button
               type="button"
               onClick={onLeave}
-              className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
+              className="flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold max-sm:px-2 text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
             >
               <ArrowLeft size={13} />
               {t("game.town.leave")}
@@ -750,7 +750,7 @@ export function TownView({
             <button
               type="button"
               onClick={() => setPlacesOpen((open) => !open)}
-              className="flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
+              className="flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold max-sm:px-2 text-white/85 shadow-lg backdrop-blur-md transition-colors hover:bg-black/80 hover:text-white"
               aria-expanded={placesOpen}
             >
               <MapPin size={13} />
@@ -786,19 +786,21 @@ export function TownView({
           )}
         </div>
 
-        <div className="pointer-events-none absolute left-1/2 top-16 max-sm:top-28 z-10 max-w-[60%] -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-center text-xs font-semibold text-white shadow-lg">
-          {inside
-            ? t("game.town.insideOf", { name: spotTitle(inside), town: settlement?.name ?? "" })
-            : settlement?.name}
-        </div>
-        {!walking && visited && (
-          <div
-            className="pointer-events-none absolute left-1/2 top-24 max-sm:top-36 z-10 max-w-[60%] -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-center text-xs text-white/85 shadow-lg"
-            role="status"
-          >
-            {t("game.town.walked", { name: visited })}
+        <div className="pointer-events-none absolute left-1/2 top-16 z-10 flex w-max max-w-[60%] -translate-x-1/2 flex-col items-center gap-1.5 max-sm:top-28 max-sm:max-w-[90%]">
+          <div className="rounded-full bg-black/70 px-3 py-1 text-center text-xs font-semibold text-white shadow-lg">
+            {inside
+              ? t("game.town.insideOf", { name: spotTitle(inside), town: settlement?.name ?? "" })
+              : settlement?.name}
           </div>
-        )}
+          {!walking && visited && (
+            <div
+              className="rounded-full bg-black/70 px-3 py-1 text-center text-xs text-white/85 shadow-lg"
+              role="status"
+            >
+              {t("game.town.walked", { name: visited })}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

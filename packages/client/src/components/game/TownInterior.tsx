@@ -49,14 +49,13 @@ export function TownInterior({ chatId, town, buildingId, hour, darkness, drawTil
 
   const people = useMemo(() => (interior ? worldInteriorPeopleAt(town, interior, hour) : []), [hour, interior, town]);
   // The rooms fit above the narration, which covers the lower part of the view, under the top bar.
-  const top = 96;
+  // Below the town's buttons, its name and the latest walk's note (more of the top on a phone).
+  const top = size.width < 640 ? 212 : 132;
   const room = { width: size.width - 32, height: Math.max(120, size.height * 0.58 - top) };
-  const scale = interior
-    ? Math.max(
-        1,
-        Math.min(6, Math.floor(Math.min(room.width / (interior.width * T), room.height / (interior.height * T)))),
-      )
-    : 2;
+  // Whole steps for drawn tiles, which stay crisp; an image pack's art is drawn smooth, so it fills the room's
+  // space at any scale rather than dropping to a whole step far smaller (a phone's room was a third of it).
+  const fit = interior ? Math.min(room.width / (interior.width * T), room.height / (interior.height * T)) : 2;
+  const scale = interior ? Math.max(1, Math.min(6, drawTile.image ? fit : Math.floor(fit))) : 2;
   const cell = T * scale;
   const origin = interior
     ? {
