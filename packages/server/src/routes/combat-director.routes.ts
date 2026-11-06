@@ -47,7 +47,9 @@ import {
   normalizeCharacterLookupName,
   marinaraLearnedSkills,
   MARINARA_DAMAGE_TYPES,
+  marinaraLearnAffinities,
   marinaraOwnedAmmo,
+  marinaraRecallAffinities,
   marinaraOwnsWoundingAmmo,
   marinaraReleaseCompanion,
   marinaraSetActiveCompanion,
@@ -1154,7 +1156,14 @@ export async function combatDirectorRoutes(
                 permadeath: (current.gameSetupConfig as { permadeath?: boolean } | undefined)?.permadeath === true,
               });
               marinara.growth = end.growth;
-              return end.cards ? { gameCharacterCards: end.cards } : {};
+              // What landed hits showed of each foe's kind is kept for the game's later fights.
+              const known = marinaraLearnAffinities(
+                current.gameMarinaraKnown && typeof current.gameMarinaraKnown === "object"
+                  ? (current.gameMarinaraKnown as Record<string, never>)
+                  : undefined,
+                [...marinara.fighters, ...(marinara.left ?? [])],
+              );
+              return { ...(end.cards ? { gameCharacterCards: end.cards } : {}), gameMarinaraKnown: known };
             },
             { metadataQueueHeld: true, touchUpdatedAt: false },
           );
@@ -1433,6 +1442,8 @@ export async function combatDirectorRoutes(
               { touchUpdatedAt: false },
             );
           }
+          // What the party already learned of these foes' kinds shows from the first turn (owner 2026-11-06).
+          marinaraRecallAffinities(marinara.fighters, meta.gameMarinaraKnown);
           for (const note of marinara.notes) logger.info("[combat-director/start] %s", note);
         }
         const state = createCombatDirector({
