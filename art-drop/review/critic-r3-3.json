@@ -1,0 +1,53 @@
+{
+  "sets": {
+    "paddies": "fail"
+  },
+  "pass": [
+    "paddies-0",
+    "paddies-1",
+    "paddies-2",
+    "paddies-3",
+    "paddies-4",
+    "paddies-5",
+    "paddies-6",
+    "paddies@spring-0",
+    "paddies@spring-1",
+    "paddies@spring-2",
+    "paddies@spring-3",
+    "paddies@spring-4",
+    "paddies@spring-5",
+    "paddies@spring-6",
+    "paddies@autumn-0",
+    "paddies@autumn-1",
+    "paddies@autumn-2",
+    "paddies@autumn-3",
+    "paddies@autumn-4",
+    "paddies@autumn-5",
+    "paddies@autumn-6",
+    "paddies@winter-0",
+    "paddies@winter-1",
+    "paddies@winter-2",
+    "paddies@winter-3",
+    "paddies@winter-4",
+    "paddies@winter-5",
+    "paddies@winter-6"
+  ],
+  "fail": [
+    {
+      "name": "paddies-7",
+      "problems": "At 8x nearest-neighbour beside both wuxia references, the roof remains mask-like: dark notches in the pale upper band resemble eyes, and the repeated light rectangles across the lower grey band resemble teeth. The broad squared U-shaped rim does not establish a clear sloping tiled roof with distinct upturned eave tips. The pale front wall and right-hand doorway help, but the building does not meet the required unambiguous wuxia-house read. The buffalo, yard, full containment, crisp pixels and tile-edge joins are acceptable."
+    },
+    {
+      "name": "paddies@spring-7",
+      "problems": "At 8x nearest-neighbour beside both wuxia references, the roof remains mask-like: dark notches in the pale upper band resemble eyes, and the repeated light rectangles across the lower grey band resemble teeth. The broad squared U-shaped rim does not establish a clear sloping tiled roof with distinct upturned eave tips. The pale front wall and right-hand doorway help, but the building does not meet the required unambiguous wuxia-house read. The buffalo, yard, full containment, crisp pixels and tile-edge joins are acceptable."
+    },
+    {
+      "name": "paddies@autumn-7",
+      "problems": "At 8x nearest-neighbour beside both wuxia references, the roof remains mask-like: dark notches in the pale upper band resemble eyes, and the repeated light rectangles across the lower grey band resemble teeth. The broad squared U-shaped rim does not establish a clear sloping tiled roof with distinct upturned eave tips. The pale front wall and right-hand doorway help, but the building does not meet the required unambiguous wuxia-house read. The buffalo, yard, full containment, crisp pixels and tile-edge joins are acceptable."
+    },
+    {
+      "name": "paddies@winter-7",
+      "problems": "At 8x nearest-neighbour beside both wuxia references, the roof remains mask-like: dark notches in the pale upper band resemble eyes, and the repeated light rectangles across the lower grey band resemble teeth. The broad squared U-shaped rim does not establish a clear sloping tiled roof with distinct upturned eave tips. The pale front wall and right-hand doorway help, but the building does not meet the required unambiguous wuxia-house read. The buffalo, yard, full containment, crisp pixels and tile-edge joins are acceptable. Snow strengthens the face read by turning the upper roof into a white patch around the dark marks."
+    }
+  ]
+}
