@@ -28,6 +28,8 @@ import {
   marinaraWoundDenied,
   marinaraOpensWound,
   marinaraBasicAttack,
+  marinaraCounterAttack,
+  marinaraPassiveHooks,
   marinaraCanChannel,
   marinaraChanneled,
   marinaraDebuffBurden,
@@ -283,6 +285,10 @@ export function marinaraAiCandidates(
           let damage = 0;
           let finish = 0;
           let prevented = 0;
+          // What striking back costs the user: a foe with Retaliate answers every blow it lives through and
+          // can reach back at (panel r7 2026-11-06: a Patriarch hit a covering Retaliate tank for 2 and took
+          // 26 back, three rounds running).
+          let struckBack = 0;
           // Decoys on the target's side (Thousand Shadows) take the next hits that land: a big blow into
           // one is worth only the cheap one that would strip it as well (Sonnet panel r4: three 30-MP
           // Convergences charged into a Vault Gorger's decoys).
@@ -320,6 +326,14 @@ export function marinaraAiCandidates(
                   target,
                   Math.min(effect.applies?.duration ?? 3, Math.max(1, Math.floor(lasts(target)))),
                 ) / foeMeanHp;
+            if (
+              target.side !== actor.side &&
+              expected < target.hp * 0.95 &&
+              marinaraPassiveHooks(target.skills).counter === "always" &&
+              !(marinaraPassiveHooks(target.skills).counterOncePerRound && target.counteredThisRound) &&
+              (!spread.ranged || target.rangedBasic || Boolean(target.magicBasic))
+            )
+              struckBack += Math.min(actor.hp, hit(target, actor, marinaraCounterAttack(target, all)));
             if (expected >= target.hp * 0.95) {
               finish += 0.7;
               // A kill shot: the blows it would have dealt before the party brought it down anyway.
@@ -339,6 +353,7 @@ export function marinaraAiCandidates(
             damage: damage * later,
             finish: finish * later,
             ...(prevented > 0 ? { prevented: prevented * later } : {}),
+            ...(struckBack > 0 ? { risk: struckBack / friendHp } : {}),
             ...(drained > 0 && missing > 0
               ? { healing: (Math.min(missing, drained) / actor.maxHp) * (actor.hp / actor.maxHp < 0.5 ? 2 : 1) * later }
               : {}),
@@ -608,7 +623,12 @@ export function marinaraAiCandidates(
                   // Its turns count down on the foe's own turns: a fast foe sheds it before the party has had
                   // as many (slice tester s3, 2026-11-06: Mark Prey re-cast on a fast Vulture round after round).
                   friends.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0) *
-                  (effect.pct ?? 0) *
+                  // Pack Tactics adds its bonus on a marked foe (panel r7 2026-11-06: Snare Field beat Mark
+                  // Prey with Pack Tactics' +40% on the table).
+                  ((effect.pct ?? 0) +
+                    (option.id === "mark-prey"
+                      ? Math.max(0, ...friends.map((u) => marinaraPassiveHooks(u.skills).partyBonusVsMarked ?? 0))
+                      : 0)) *
                   Math.min(
                     ...targets.map((foe) =>
                       Math.max(
@@ -828,7 +848,9 @@ export function marinaraAiCandidates(
           }
           break;
         }
-        if (!threatened || actor.provoking > 0 || friends.length < 2) break;
+        // Not while a friend already draws them (Draw Fire): two provokers draw no more blows than one (panel
+        // r7 2026-11-06: Garrick stacked Provoke and Challenge on a dragon Draw Fire was already pulling).
+        if (!threatened || friends.some((f) => f.provoking > 0) || friends.length < 2) break;
         // On a board a foe that can't get at the provoker ignores it (tactical defeats 2026-11-02: a Guard
         // provoked every turn while the boss tore into the back line).
         if (options.reaches && !foes.some((foe) => options.reaches!(foe.id, actor.id))) break;
@@ -862,6 +884,8 @@ export function marinaraAiCandidates(
         const sturdy = actor.row === "front" ? 1 : 0.3;
         for (const target of pool) {
           if (target.tauntTurns > 0) continue;
+          // Already drawn to a provoking friend it can get at: a challenge pulls nothing more.
+          if (friends.some((f) => f.provoking > 0 && (!options.reaches || options.reaches(target.id, f.id)))) continue;
           // The foe's blows on softer friends, landing on the user instead, for the turns it lasts.
           const basic = marinaraBasicAttack(target);
           const others = friends.filter((u) => u.id !== actor.id);
