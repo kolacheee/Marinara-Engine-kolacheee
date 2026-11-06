@@ -23,6 +23,7 @@ import {
   worldRoadCells,
   worldEdgePiece,
   worldJoinedPieces,
+  WORLD_DECOR_LOOKS,
   WORLD_TREELINE_LOOKS,
   worldTreelineTrees,
   worldEdgeMask,
@@ -490,6 +491,26 @@ export function WorldOverworld({
           for (const tree of worldTreelineTrees(onFloor, x, y)) trees.push({ ...tree, look });
         }
     }
+    // Small things on open ground (a flower clump, a rock, a bush): about one cell in five wholly inside
+    // its look, never on or beside a road or a place, so nothing is cut by another ground's edge.
+    const nearWay = (x: number, y: number) => {
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) {
+          const at = (y + dy) * width + (x + dx);
+          if (roads.has(at) || placed.has(at)) return true;
+        }
+      return false;
+    };
+    for (let y = 0; y < height; y++)
+      for (let x = 0; x < width; x++) {
+        const look = drawnLook[y * width + x]!;
+        if (!(WORLD_DECOR_LOOKS as readonly string[]).includes(look)) continue;
+        const noise = cellNoise(x, y);
+        if (noise(61) >= 0.2 || !inner(x, y) || nearWay(x, y)) continue;
+        inSeason(x, y);
+        drawTile(ctx, `decor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(67));
+      }
+    drawTile.setCellSeason(undefined);
     return { canvas, trees };
   }, [byId, drawTile, game, heldCells, kit.travel, resolution, world]);
   const markers = useMemo(() => {

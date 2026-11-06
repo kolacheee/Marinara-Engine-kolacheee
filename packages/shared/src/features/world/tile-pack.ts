@@ -111,6 +111,11 @@ export const WORLD_TREELINE_LOOKS = Object.freeze([
   "bamboo",
 ] as const);
 
+/** Open ground with small things scattered over it (image packs; user, 2026-11-06, plains "mixed up a bit
+ *  with some small details"): `decor_<look>` is up to eight one-cell sprites (a flower clump, a rock, a
+ *  bush), each inside its cell, drawn over about one cell in five of the look away from its edges. */
+export const WORLD_DECOR_LOOKS = Object.freeze(["grass", "plains"] as const);
+
 /** Every tile the overworld, the towns and the maps of places draw. */
 export const WORLD_TILE_IDS = Object.freeze([
   ...WORLD_GROUND_LOOKS,
@@ -183,6 +188,8 @@ export const WORLD_TILE_IDS = Object.freeze([
   ...WORLD_TOWN_PROPS,
   // Trees standing on a wooded look (image packs; WORLD_TREELINE_LOOKS).
   ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
+  // Small things on open ground (image packs; WORLD_DECOR_LOOKS).
+  ...WORLD_DECOR_LOOKS.map((look) => `decor_${look}` as const),
   // Maps of places (image packs; map editor Phase 3): a cave, dungeon or station set's floor, wall and liquid,
   // the liquid's edges, and eight props (WORLD_DUNGEON_PROP_COUNT; the sixth, dn_prop5, is the way out). Generic
   // ids, so one map plays with any set's pack.
@@ -236,6 +243,7 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "in_drawers",
   ...WORLD_FURNITURE_SPRITES,
   ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
+  ...WORLD_DECOR_LOOKS.map((look) => `decor_${look}` as const),
   ...WORLD_TOWN_PROPS,
   ...dungeonTileIds(),
 ]);
@@ -740,6 +748,7 @@ export const WORLD_SEASONAL_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "town_ground",
   "tree",
   ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
+  ...WORLD_DECOR_LOOKS.map((look) => `decor_${look}` as const),
 ]);
 const IMAGE_KNOWN = new Set<string>([
   ...WORLD_TILE_IDS,
