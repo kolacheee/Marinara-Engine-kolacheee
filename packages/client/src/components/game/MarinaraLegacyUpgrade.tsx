@@ -12,7 +12,7 @@ import {
   MARINARA_ARCHETYPES,
   gameCardTemperament,
   guessMarinaraArchetype,
-  marinaraLegacyLevel,
+  MARINARA_LEGACY_UPGRADE_LEVEL,
   marinaraTrees,
   type MarinaraArchetype,
   type MarinaraPartyTemperament,
@@ -62,7 +62,6 @@ export function MarinaraLegacyUpgrade({ chatId }: { chatId: string }) {
     [meta.gameCharacterCards],
   );
   if (!marinaraLegacyUpgradeOffered(meta)) return null;
-  const session = typeof meta.gameSessionNumber === "number" ? meta.gameSessionNumber : null;
   const tree = (id: string) => t(`game.combat.marinara.archetype.${id}`);
 
   const upgrade = async () => {
@@ -136,7 +135,7 @@ export function MarinaraLegacyUpgrade({ chatId }: { chatId: string }) {
                 <div className="flex items-baseline justify-between gap-2">
                   <span className="font-medium text-white/85">{card.name}</span>
                   <span className="text-white/55">
-                    {t("game.combat.marinara.legacy.level", { level: marinaraLegacyLevel(card, session) })}
+                    {t("game.combat.marinara.legacy.level", { level: MARINARA_LEGACY_UPGRADE_LEVEL })}
                   </span>
                 </div>
                 <label className="flex items-center gap-2">

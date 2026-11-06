@@ -11,7 +11,6 @@ import {
   COMBAT_PARTY_TEMPERAMENTS,
   gameCardTemperament,
   guessMarinaraArchetype,
-  marinaraLegacyLevel,
   marinaraTrees,
   normalizeCharacterLookupName,
   partyTemperamentFallback,
@@ -117,7 +116,6 @@ export function applyMarinaraLegacyUpgrade(
     /** Temperaments read from Descriptions now, by lookup name. */
     read: ReadonlyMap<string, CombatPartyTemperament>;
     classic: ReadonlyMap<string, MarinaraCardClassic>;
-    sessionNumber?: number | null;
     at: string;
   },
 ): { patch: Record<string, unknown>; upgraded: MarinaraLegacyUpgraded[] } | { refusal: string } {
@@ -134,13 +132,11 @@ export function applyMarinaraLegacyUpgrade(
       read ??
       partyTemperamentFallback(input.gameId, card.name)) as MarinaraPartyTemperament;
     const classic = input.classic.get(key);
-    const level = marinaraLegacyLevel(card as Parameters<typeof marinaraLegacyLevel>[0], input.sessionNumber);
     const primary = picked.get(key) ?? classic?.tree ?? guessMarinaraArchetype(card);
     const progression = upgradeMarinaraLegacyCard({
       gameId: input.gameId,
       card: card as unknown as Parameters<typeof upgradeMarinaraLegacyCard>[0]["card"],
       temperament,
-      level,
       primary,
       ...(classic ? { classic } : {}),
     });

@@ -9956,7 +9956,6 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         members: input.members,
         read,
         classic,
-        sessionNumber: currentGameSessionNumber(current),
         at: new Date().toISOString(),
       });
       return "patch" in outcome ? outcome.patch : {};
