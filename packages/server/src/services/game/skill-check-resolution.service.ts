@@ -1,5 +1,6 @@
 import { gamePartyRoster, rulesetAdvancementTurnStart } from "./ruleset-sheet-turn.service.js";
 import { currentRoomGeneration, roomHostIdentity } from "../multiplayer/generation-policy.js";
+import { marinaraCardClassicByName } from "./marinara-card-classic.service.js";
 // ──────────────────────────────────────────────
 // Service: Skill Check Resolution (chat-scoped)
 //
@@ -80,6 +81,11 @@ import {
   rulesetCheckStance,
   rulesetSheetDead,
   readMarinaraCardProgression,
+  createMarinaraCardProgression,
+  gameCardTemperament,
+  partyTemperamentFallback,
+  type MarinaraCardClassic,
+  type MarinaraPartyTemperament,
   type MarinaraStats,
 } from "@marinara-engine/shared";
 import { loadGameInventoryItemBook } from "./game-inventory.service.js";
@@ -540,6 +546,10 @@ export async function loadSkillCheckModifierContext(
     );
   }
 
+  const mrpgGame =
+    (meta.gameSetupConfig as { marinaraClasses?: unknown } | null | undefined)?.marinaraClasses === true &&
+    meta.gameRuleset == null;
+  const mrpgPreview = mrpgGame ? { gameId: chatId, classic: await marinaraCardClassicByName(db, chat) } : undefined;
   let roomCharacters: SkillCheckModifierContext["roomCharacters"];
   const room = currentRoomGeneration();
   if (room) {
@@ -555,7 +565,7 @@ export async function loadSkillCheckModifierContext(
       if (matches.length > 1) continue;
       const stats = matches[0]?.rpgStats as { attributes?: Array<{ name: string; value: number }> } | undefined;
       const isHost = key === normalizeCharacterLookupName(roomHostIdentity()?.name ?? "");
-      const mrpg = mrpgStatsOf(meta, matches[0]);
+      const mrpg = mrpgStatsOf(meta, matches[0], mrpgPreview);
       roomCharacters.set(key, {
         skills: isHost ? skills : null,
         attributes: isHost ? attributes : null,
@@ -565,7 +575,7 @@ export async function loadSkillCheckModifierContext(
     }
   }
   const playerCard = await findPlayerCharacterCard(db, cards, chat?.personaId, meta, chatId);
-  const playerMrpg = mrpgStatsOf(meta, playerCard);
+  const playerMrpg = mrpgStatsOf(meta, playerCard, mrpgPreview);
   if (attributes && !playerMrpg)
     return { skills, attributes, sheetAttributes: {}, ...(roomCharacters ? { roomCharacters } : {}) };
   const rpgStats = playerCard?.rpgStats as { attributes?: Array<{ name: string; value: number }> } | undefined;
@@ -1916,12 +1926,28 @@ function rulesetVouchesFor(ruleset: SkillCheckRulesetContext, tag: SkillCheckTag
   return result.success === (autoSuccess ? true : autoFailure ? false : result.total >= result.dc);
 }
 
-/** A card's MRPG stats, in a game on MRPG classes without a ruleset; undefined otherwise. */
-function mrpgStatsOf(meta: Record<string, unknown>, card: Record<string, unknown> | null | undefined) {
+/** A card's MRPG stats, in a game on MRPG classes without a ruleset; undefined otherwise. A card with no
+ *  progression yet (no fight so far) gets the stats its first fight will give it: the same seed, tree
+ *  picks and temperament, so a check before any fight never falls back to a Legacy sheet's numbers
+ *  (owner 2026-11-06). */
+function mrpgStatsOf(
+  meta: Record<string, unknown>,
+  card: Record<string, unknown> | null | undefined,
+  preview?: { gameId: string; classic: ReadonlyMap<string, MarinaraCardClassic> },
+) {
   const setup = (meta.gameSetupConfig ?? null) as { marinaraClasses?: unknown } | null;
   if (setup?.marinaraClasses !== true || meta.gameRuleset != null || !card) return undefined;
   const progression = readMarinaraCardProgression(card.marinara);
-  return progression && !progression.fallen ? progression.stats : undefined;
+  if (progression) return progression.fallen ? undefined : progression.stats;
+  const name = typeof card.name === "string" ? card.name.trim() : "";
+  if (!preview || !name) return undefined;
+  return createMarinaraCardProgression({
+    gameId: preview.gameId,
+    card: card as unknown as Parameters<typeof createMarinaraCardProgression>[0]["card"],
+    temperament: (gameCardTemperament(card)?.initial ??
+      partyTemperamentFallback(preview.gameId, name)) as MarinaraPartyTemperament,
+    classic: preview.classic.get(normalizeCharacterLookupName(name)),
+  }).stats;
 }
 
 /** Roll one check against an already-loaded chat context. */
