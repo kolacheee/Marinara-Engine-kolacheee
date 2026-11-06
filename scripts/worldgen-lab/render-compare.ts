@@ -2,10 +2,11 @@
 import { writeFileSync } from "node:fs";
 import { WORLD_STARTER_KITS, compileWorld, parseWorldKit, worldTerrainLook } from "../../packages/shared/src/index.js";
 
-const [kitId = "high_fantasy", seedText = "4242", out = "compare.html"] = process.argv.slice(2);
+const [kitId = "high_fantasy", seedText = "4242", out = "compare.html", left = "4", right = "5", scale = ""] =
+  process.argv.slice(2);
 const parsed = parseWorldKit(WORLD_STARTER_KITS.find((kit) => kit.id === kitId)!);
 if (!parsed.ok) throw new Error("kit");
-const kit = parsed.kit;
+const kit = scale ? { ...parsed.kit, scale: scale as typeof parsed.kit.scale } : parsed.kit;
 const COLORS: Record<string, string> = {
   grass: "#9cc46b",
   plains: "#c8cf86",
@@ -25,7 +26,7 @@ const COLORS: Record<string, string> = {
   scrub: "#b7a77a",
   wasteland: "#a08a6a",
 };
-const S = 9;
+const S = Number(process.env.CELL ?? 9);
 function svg(version: number) {
   const world = compileWorld({ seed: Number(seedText), kit, generatorVersion: version });
   const looks = world.terrain.map((id) => worldTerrainLook(kit.terrain!.find((t) => t.id === id)!));
@@ -45,9 +46,9 @@ function svg(version: number) {
     const port = p.tags.includes("port");
     body += `<circle cx="${p.at.x * S + S / 2}" cy="${p.at.y * S + S / 2}" r="${r}" fill="${port ? "#fff" : "#c0392b"}" stroke="#111" stroke-width="1.2"/>`;
   }
-  return `<figure style="margin:0 12px;font:14px sans-serif"><svg width="${world.width * S}" height="${world.height * S}">${body}</svg><figcaption>Generator ${version}${version === 5 ? ": placed by site" : ": today"}</figcaption></figure>`;
+  return `<figure style="margin:0 12px;font:14px sans-serif"><svg width="${world.width * S}" height="${world.height * S}">${body}</svg><figcaption>Generator ${version}</figcaption></figure>`;
 }
 writeFileSync(
   out,
-  `<html><body style="background:#fff;display:flex;padding:12px">${svg(4)}${svg(5)}</body><p style="font:13px sans-serif;padding:0 24px">Dots sized by rank; white dots are tagged port. Lines are links.</p></html>`,
+  `<html><body style="background:#fff;display:flex;padding:12px">${svg(Number(left))}${svg(Number(right))}</body><p style="font:13px sans-serif;padding:0 24px">Dots sized by rank; white dots are tagged port. Lines are links.</p></html>`,
 );

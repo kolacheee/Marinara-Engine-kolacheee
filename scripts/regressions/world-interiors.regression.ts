@@ -586,7 +586,12 @@ try {
   let tavernTown: WorldTown | undefined;
   for (const place of fantasy.world.places.filter((each) => each.rank !== undefined)) {
     const town = worldTown(fantasy, place.id)!;
-    if (town.buildings.some((b) => b.kind !== "home" && worldInteriorUse(b) === "tavern")) tavernTown = town;
+    // The busiest such town, so a dusk crowd big enough to fill the square, the tavern and the homes.
+    if (
+      town.buildings.some((b) => b.kind !== "home" && worldInteriorUse(b) === "tavern") &&
+      (!tavernTown || town.people.length > tavernTown.people.length)
+    )
+      tavernTown = town;
   }
   assert.ok(tavernTown, "a town with a tavern");
   const tavern = tavernTown.buildings.find((b) => b.kind !== "home" && worldInteriorUse(b) === "tavern")!;
