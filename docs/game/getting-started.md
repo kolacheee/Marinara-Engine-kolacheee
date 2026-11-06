@@ -38,7 +38,7 @@ If it did not work, see [World generation fails with a JSON or 422 error](#world
 | --- | --- |
 | **Connection** | **Game Name**, the **Model** that runs the GM, and an optional **Scene effects model**. The **Game Mode** card shows **VN** only for now (see [VN or Overworld](#vn-or-overworld)). |
 | **World** | Genre, setting, tone, difficulty, content rating and language. **Combat Preference** is **Turn-Based** or **Tactical**. Every new game plays on **MRPG** (Marinara RPG) classes (see [MRPG classes](mrpg-classes.md)). When a ruleset is installed, a **Rules** choice appears (see [Choose rules](#choose-rules)). |
-| **Party** | Your persona (the character you play), **Game Master Mode**, party members and **GM intro message** (see [The GM intro message](#the-gm-intro-message)). |
+| **Party** | Your persona (the character you play), **Game Master Mode**, party members and **GM intro message** (see [The GM intro message](#the-gm-intro-message)). Each member's starting MRPG tree comes from the **Game Mode** section of their card (see [Choose a character's trees](mrpg-classes.md#choose-a-characters-trees)). |
 | **Goals** | What you want from the adventure. |
 | **Lorebooks** | Lorebooks the GM treats as canon. A lorebook is a set of background world facts. See [Lorebooks](../lorebooks/overview.md). |
 | **Features** | **Enable Agents**, then a card for each downloaded agent (**Illustrator**, **Music DJ**, **Lorebook Keeper**), plus **Custom HUD Widgets**, **Quick Time Events** and **Start Muted**. |
@@ -46,7 +46,7 @@ If it did not work, see [World generation fails with a JSON or 422 error](#world
 
 The ideas offered under the setting and goals change each time the wizard opens. In a Tactical game, the GM writes a short brief for each fight and Marinara builds a board from it. See [Combat](combat.md#tactical-battles-and-terrain).
 
-The **World** step also has combat options for bosses. **GM directs bosses** is on by default. It lets the GM decide boss turns using your GM connection, which may take a moment. Ordinary enemies decide on their own, unless **GM directs bosses** is on and the game's ruleset gives the opposition to the Game Master (see [Game Master text](../extending/ruleset-sheets.md#game-master-text)). While **GM directs bosses** is on, **Game Master also plays named and brilliant opponents** (on by default) lets the GM play named characters and very clever foes too. Two more options are always shown: **Companions fight on their own** (on by default; turn it off to play the whole party yourself) and **Let cruel opponents strike the fallen** (off by default). See [Combat](combat.md).
+The **World** step also has combat options for bosses. **GM directs bosses** is on by default. It lets the GM decide boss turns using your GM connection, which may take a moment. Ordinary enemies decide on their own, unless **GM directs bosses** is on and the game's ruleset gives the opposition to the Game Master (see [Game Master text](../extending/ruleset-sheets.md#game-master-text)). While **GM directs bosses** is on, **Game Master also plays named and brilliant opponents** (on by default) lets the GM play named characters and very clever foes too. Two more options are always shown: **Companions fight on their own** (on by default; turn it off to play the whole party yourself) and **Let cruel opponents strike the fallen** (off by default). A new game also offers **Permadeath** (off by default): a party member who falls in a fight and is not saved before it ends is gone for good. See [Combat](combat.md).
 
 With the **Hierarchical Maps** agent downloaded (now called World Maps, see [World Maps](../agents/hierarchical-maps.md)) and **Enable Agents** on, the **Features** step can also draft a **Hierarchical world map**, use a saved map template or link a shared world.
 
@@ -56,7 +56,7 @@ With the **Hierarchical Maps** agent downloaded (now called World Maps, see [Wor
 | --- | --- | --- |
 | Genre | Fantasy | Several allowed, plus your own. A setting kit picked first sets its own. |
 | Tone | Heroic | Several allowed. |
-| Difficulty | Normal | **Casual**, **Normal**, **Hard** or **Brutal**. Higher settings make enemy attacks hit harder (see [Combat](combat.md#difficulty-scaling)). |
+| Difficulty | Normal | **Casual**, **Normal**, **Hard** or **Brutal**. Higher settings make fights harder: more and tougher foes in an MRPG game (see [Battles in an MRPG game](combat.md#battles-in-an-mrpg-game)), harder-hitting enemies in a Legacy game (see [Difficulty scaling](combat.md#difficulty-scaling)). |
 | Content Rating | SFW | **SFW** or **NSFW**. NSFW only permits adult content, it does not force it. |
 | Language | English | All in-game text is written in this language. |
 | Game Master Mode | Standalone GM | **Character GM** uses one of your character cards as the GM. |
@@ -182,7 +182,7 @@ Some models stay upbeat. Add a clear instruction in the wizard's preferences fie
 ## Where each topic lives
 
 - [Game Mode: Combat](combat.md): encounters, the action menu, damage math and quick-time events.
-- [Game Mode: MRPG Classes](mrpg-classes.md): classes, levels and the sheet, newcomers, and moving a Legacy game over.
+- [Game Mode: MRPG Classes](mrpg-classes.md): choosing classes, stats, levels and promotions, the class sheet, shared games, and moving a Legacy game over.
 - [Game Mode: Party and NPCs](party-and-npcs.md): Character Profiles, sheets and the Adventure Journal.
 - [Game Mode: Sessions and Saves](sessions-and-saves.md): ending and starting sessions, history and checkpoints.
 - [Game Mode: Map, Time, and Weather](map-time-weather.md): map views, the clock, weather and morale.
