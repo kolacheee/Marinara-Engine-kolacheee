@@ -353,7 +353,10 @@ export function marinaraAiCandidates(
             damage: damage * later,
             finish: finish * later,
             ...(prevented > 0 ? { prevented: prevented * later } : {}),
-            ...(struckBack > 0 ? { risk: struckBack / friendHp } : {}),
+            // At most a quarter of the blow's own worth (a cautious one weighs risk twice): it steers the blow onto a foe that won't strike back, and
+            // never makes bracing in place look better than swinging (r65 2026-11-06: weak foes facing a
+            // Retaliate party defended on 2.9% of their turns, gaining nothing).
+            ...(struckBack > 0 ? { risk: Math.min(struckBack / friendHp, damage * later * 0.25) } : {}),
             ...(drained > 0 && missing > 0
               ? { healing: (Math.min(missing, drained) / actor.maxHp) * (actor.hp / actor.maxHp < 0.5 ? 2 : 1) * later }
               : {}),
