@@ -226,7 +226,7 @@ for (const kit of kits) {
   for (const kit of kits) {
     for (const seed of [1, 4242, 20261002]) {
       const label = `${kit.id}/${seed}`;
-      const world = compileWorld({ seed, kit });
+      const world = compileWorld({ seed, kit, generatorVersion: 5 });
       const old = compileWorld({ seed, kit, generatorVersion: 4 });
       assert.equal(world.generatorVersion, 5);
       assertWhole(world, kit, label);
@@ -261,6 +261,91 @@ for (const kit of kits) {
   assert.ok(waterside.v5 > 2.5 * waterside.v4, `waterside ${waterside.v4} -> ${waterside.v5} of ${count}`);
   assert.ok(poor.v5 * 4 < poor.v4, `on poor ground ${poor.v4} -> ${poor.v5} of ${count}`);
   // Versions 1-4 are made exactly as they were (their own fingerprints below).
+}
+
+// ── Generator 6: ground shaped as land is made (plates and ranges, seas, winds, ground by role) ──
+{
+  const components = (on: (at: number) => boolean, width: number, height: number) => {
+    const seen = new Uint8Array(width * height);
+    const parts: number[][] = [];
+    for (let start = 0; start < width * height; start++) {
+      if (!on(start) || seen[start]) continue;
+      const part = [start];
+      seen[start] = 1;
+      for (let i = 0; i < part.length; i++) {
+        const [x, y] = [part[i]! % width, Math.floor(part[i]! / width)];
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++) {
+            const [nx, ny] = [x + dx, y + dy];
+            const at = ny * width + nx;
+            if (nx < 0 || ny < 0 || nx >= width || ny >= height || seen[at] || !on(at)) continue;
+            seen[at] = 1;
+            part.push(at);
+          }
+      }
+      parts.push(part);
+    }
+    return parts;
+  };
+  const tally = { v5: { blobs: 0, foothills: 0, hills: 0 }, v6: { blobs: 0, foothills: 0, hills: 0 } };
+  for (const kitId of ["high_fantasy", "wuxia_xianxia", "the_1920s"]) {
+    const kit = byId.get(kitId)!;
+    for (const scale of ["region", "realm", "world"] as const) {
+      for (const seed of [1, 4242, 20261002]) {
+        const scaled = { ...kit, scale };
+        const label = `${kitId}/${scale}/${seed}`;
+        const world = compileWorld({ seed, kit: scaled });
+        assert.equal(world.generatorVersion, 6);
+        assertWhole(world, scaled, label);
+        const total = kit.terrain!.reduce((sum, entry) => sum + entry.share, 0);
+        for (const kind of ["water", "barrier"] as const) {
+          // The kit's shares still decide how much is water and how much is mountain.
+          const want = kit.terrain!.filter((entry) => entry.kind === kind).reduce((sum, entry) => sum + entry.share, 0);
+          const cells = [...world.ground].filter((cell) => kit.terrain![parseInt(cell, 36)]!.kind === kind).length;
+          assert.equal(cells, Math.round((want / total) * world.ground.length), `${label}: ${kind} share`);
+        }
+        for (const [key, each] of [
+          ["v5", compileWorld({ seed, kit: scaled, generatorVersion: 5 })],
+          ["v6", world],
+        ] as const) {
+          const at = (cell: number) => kit.terrain![parseInt(each.ground[cell]!, 36)]!;
+          tally[key].blobs += components((cell) => at(cell).kind === "water", each.width, each.height).length;
+          for (let cell = 0; cell < each.ground.length; cell++) {
+            if (!/hill/.test(at(cell).id)) continue;
+            tally[key].hills++;
+            const [x, y] = [cell % each.width, Math.floor(cell / each.width)];
+            let near = false;
+            for (let dy = -2; dy <= 2 && !near; dy++)
+              for (let dx = -2; dx <= 2 && !near; dx++) {
+                const [nx, ny] = [x + dx, y + dy];
+                if (
+                  nx >= 0 &&
+                  ny >= 0 &&
+                  nx < each.width &&
+                  ny < each.height &&
+                  at(ny * each.width + nx).kind === "barrier"
+                )
+                  near = true;
+              }
+            if (near) tally[key].foothills++;
+          }
+        }
+      }
+    }
+  }
+  // Seas and lakes rather than scattered pools, and hills that rise into the ranges.
+  assert.ok(tally.v6.blobs * 1.3 < tally.v5.blobs, `bodies of water ${tally.v5.blobs} -> ${tally.v6.blobs}`);
+  const foothills = (each: { foothills: number; hills: number }) => each.foothills / each.hills;
+  assert.ok(
+    foothills(tally.v6) > 1.6 * foothills(tally.v5),
+    `foothills ${foothills(tally.v5)} -> ${foothills(tally.v6)}`,
+  );
+  // Space keeps the plain ground: it has no land to shape.
+  const space = byId.get("space_opera")!;
+  assert.equal(
+    compileWorld({ seed: 9, kit: space }).ground,
+    compileWorld({ seed: 9, kit: space, generatorVersion: 5 }).ground,
+  );
 }
 
 // ── The ground's shares, and the ways and times of travel ──

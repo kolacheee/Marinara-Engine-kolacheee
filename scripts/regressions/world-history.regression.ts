@@ -222,7 +222,7 @@ const fantasy = kits.find((kit) => kit.id === "high_fantasy")!;
   const fingerprint = createHash("sha256").update(JSON.stringify(history)).digest("hex");
   assert.equal(
     fingerprint,
-    "b198354540843a807c054ee9f6f6c1349105922d12e84df5f4566db96eafedb5",
+    "b375e64900b31f1f9926b97e92a4f62b8d754599c1e18794b5df675e8d21a846",
     "the committed history",
   );
 

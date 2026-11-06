@@ -13,15 +13,17 @@ import { worldBriefDeepestLayer } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./art-family.js";
 
-export const WORLD_GENERATOR_VERSION = 5;
-/** The generator versions this Engine makes again from a recipe exactly as they were made: 5 puts
+export const WORLD_GENERATOR_VERSION = 6;
+/** The generator versions this Engine makes again from a recipe exactly as they were made: 6 shapes the
+ *  ground as land is made (plates and mountain ranges, seas and lakes, winds and rain shadows, ground by
+ *  role: compileShapedGround), 5 puts
  *  settlements where people settle (by water, on good ground, the biggest on the best sites, spaced as
  *  market towns are) and gives them tags their ground fits (no port without water), 4 keeps fields
  *  and suburbs to small rings around the settlements (worldCultivate), 3 sets each
  *  town lot a cell back from its street with a path from its door out to it, 2 adds sites (caves, ruins,
  *  crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none. A recipe of a
  *  version it reads stays editable and sharable as a recipe. */
-export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5]);
+export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6]);
 export function worldGeneratorReads(version: unknown): boolean {
   return typeof version === "number" && WORLD_GENERATOR_VERSIONS_READ.includes(version);
 }
@@ -232,6 +234,312 @@ function compileGround(seed: number, kit: WorldKit, width: number, height: numbe
     sorted.slice(waterCount, sorted.length - barrierCount),
     moisture,
     classes.filter((entry) => entry.kind === "open"),
+    kinds,
+  );
+  return { terrain, kinds };
+}
+
+// ── Shaped ground (generator 6): plates, ranges, winds and biomes ──
+
+/** How many crustal plates a map of each scale is cut into. */
+const PLATES = { site: 3, town: 3, region: 5, realm: 7, world: 11, sector: 6 } as const;
+
+/** Where an open ground class sits from driest to wettest, read from its id; unknown words sit mid-way. */
+function wetness(id: string): number {
+  const order: Array<[RegExp, number]> = [
+    [/desert|dune|sand/, 0],
+    [/waste|blight|ash|crater|dead|ruin|rubble/, 1],
+    [/scrub|brush|heath|badland/, 2],
+    [/prairie|plain|steppe|savanna/, 3],
+    [/grass|meadow|pasture/, 4],
+    [/farm|field|orchard|vineyard|suburb|residential|village|padd|rice/, 5],
+    [/autumn|maple|birch/, 6],
+    [/forest|wood|grove|taiga|conifer|pine|spruce|boreal|firs?\b/, 6.5],
+    [/bamboo/, 7],
+    [/jungle|rainforest|tropic/, 8],
+  ];
+  return order.find(([words]) => words.test(id))?.[1] ?? 4.5;
+}
+
+/**
+ * The ground as land is made: the map is cut into a few crustal plates, each continental (high) or oceanic
+ * (low), drifting their own way; where two meet head on the land is pushed up into a range along the seam,
+ * with gaps where the noise dips (passes). The kit's shares still decide how much is water and how much is
+ * mountain, so water fills the oceanic plates and basins and the mountains are the ranges. Wet air blows
+ * in off the water on the prevailing wind (westerlies, or the trade winds and polar easterlies by latitude
+ * on a whole world), drops its rain as it climbs and leaves a dry shadow behind each range. Open ground is
+ * then laid by role: hills on the high ground below the ranges, marshes on wet low ground by the water,
+ * snow where it is cold, and the rest from dry to wet (desert, scrub, plains, grass, fields, forest,
+ * jungle), so forests take the windward slopes and the dry country lies in the lee.
+ */
+function compileShapedGround(seed: number, kit: WorldKit, width: number, height: number) {
+  const terrain = worldTerrainEntries(kit);
+  const count = width * height;
+  const all = Array.from({ length: count }, (_, index) => index);
+  const random = worldStream(seed, "ground", "plates");
+  const total = terrain.reduce((sum, entry) => sum + entry.share, 0);
+  const waterShare =
+    terrain.filter((entry) => entry.kind === "water").reduce((sum, entry) => sum + entry.share, 0) / total;
+
+  // Plates: a centre, a drift, and continental or oceanic; at least one of each where there is water.
+  const plateCount = PLATES[kit.scale];
+  const plates = Array.from({ length: plateCount }, (_, index) => {
+    const angle = random() * Math.PI * 2;
+    const speed = 0.5 + random() * 0.5;
+    return {
+      x: random() * width,
+      y: random() * height,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      land: index === 0 || (index === 1 && waterShare > 0) ? index === 0 : random() > waterShare * 1.1,
+    };
+  });
+  const warp = valueNoise(seed, "plate-warp", width, height);
+  const plateOf = new Uint8Array(count);
+  for (const cell of all) {
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    let best = 0;
+    let bestDistance = Infinity;
+    plates.forEach((plate, index) => {
+      // Ragged seams: the noise bends each plate's reach by up to a fifth of the map.
+      const d =
+        Math.hypot(x - plate.x, y - plate.y) +
+        (warp[cell]! - 0.5) * 0.4 * Math.max(width, height) * ((index % 2) * 2 - 1);
+      if (d < bestDistance) {
+        best = index;
+        bestDistance = d;
+      }
+    });
+    plateOf[cell] = best;
+  }
+  // Seams that close (the plates drive into each other) push up ranges; the push is how hard they meet.
+  const push = new Float64Array(count);
+  const seam: number[] = [];
+  for (const cell of all) {
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    const a = plates[plateOf[cell]!]!;
+    for (const [dx, dy] of [
+      [1, 0],
+      [0, 1],
+      [-1, 0],
+      [0, -1],
+    ] as const) {
+      const [nx, ny] = [x + dx, y + dy];
+      if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+      const other = plateOf[ny * width + nx]!;
+      if (other === plateOf[cell]) continue;
+      const b = plates[other]!;
+      const [nxv, nyv] = [b.x - a.x, b.y - a.y];
+      const length = Math.hypot(nxv, nyv) || 1;
+      const closing = ((a.vx - b.vx) * nxv + (a.vy - b.vy) * nyv) / length;
+      if (closing > push[cell]!) push[cell] = closing;
+    }
+    if (push[cell]! > 0) seam.push(cell);
+  }
+  // Uplift falls off with distance from the seam (breadth grows with the map, and swells and narrows along
+  // it); where the passes noise dips, the range sinks into a gap.
+  const passes = valueNoise(seed, "passes", width, height);
+  const breadth = Math.max(1.5, Math.max(width, height) / 28);
+  const uplift = new Float64Array(count);
+  for (const cell of all) {
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    let lift = 0;
+    for (const at of seam) {
+      const d = Math.hypot(x - (at % width), y - Math.floor(at / width));
+      if (d > breadth * 3) continue;
+      lift = Math.max(lift, push[at]! * Math.exp(-((d / (breadth * (0.5 + passes[at]!))) ** 2)));
+    }
+    uplift[cell] = lift;
+  }
+  // Continental plates stand high and oceanic ones low, eased into each other as shelves.
+  const base = new Float64Array(count);
+  const reach = Math.max(1, Math.round(Math.max(width, height) / 20));
+  for (const cell of all) {
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    let sum = 0;
+    let n = 0;
+    for (let dy = -reach; dy <= reach; dy++)
+      for (let dx = -reach; dx <= reach; dx++) {
+        const [nx, ny] = [x + dx, y + dy];
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+        sum += plates[plateOf[ny * width + nx]!]!.land ? 1 : 0;
+        n++;
+      }
+    base[cell] = sum / n;
+  }
+  const rough = valueNoise(seed, "elevation", width, height);
+  const elevation = new Float64Array(count);
+  for (const cell of all)
+    elevation[cell] = base[cell]! * 0.55 + rough[cell]! * 0.45 + uplift[cell]! * (0.15 + 0.85 * passes[cell]!) * 0.9;
+
+  const sorted = byValue(elevation, all);
+  const shareOfKind = (kind: string) =>
+    terrain.filter((entry) => entry.kind === kind).reduce((sum, entry) => sum + entry.share, 0);
+  const waterCount = Math.round((shareOfKind("water") / total) * count);
+  const barrierCount = Math.round((shareOfKind("barrier") / total) * count);
+  const isWater = new Uint8Array(count);
+  for (const cell of sorted.slice(0, waterCount)) isWater[cell] = 1;
+  const isBarrier = new Uint8Array(count);
+  for (const cell of sorted.slice(count - barrierCount)) isBarrier[cell] = 1;
+
+  // Winds: from the west on a region or realm (veering by the seed); on a whole world, by latitude.
+  const veer = (random() - 0.5) * 0.8;
+  const windAt = (y: number): [number, number] => {
+    if (kit.scale !== "world") return [Math.cos(veer), Math.sin(veer)];
+    const latitude = Math.abs((y / (height - 1)) * 140 - 70);
+    const toward = latitude < 30 || latitude >= 60 ? -1 : 1;
+    return [toward, 0];
+  };
+  // Moisture carried on the wind: full over water, rained out as the air climbs, a little lost each step.
+  let carried = new Float64Array(count).fill(0.5);
+  const rain = new Float64Array(count);
+  const sample = (field: Float64Array, x: number, y: number) => {
+    const cx = Math.min(width - 1, Math.max(0, x));
+    const cy = Math.min(height - 1, Math.max(0, y));
+    const [x0, y0] = [Math.floor(cx), Math.floor(cy)];
+    const [x1, y1] = [Math.min(width - 1, x0 + 1), Math.min(height - 1, y0 + 1)];
+    const [fx, fy] = [cx - x0, cy - y0];
+    const at = (xx: number, yy: number) => field[yy * width + xx]!;
+    return (at(x0, y0) * (1 - fx) + at(x1, y0) * fx) * (1 - fy) + (at(x0, y1) * (1 - fx) + at(x1, y1) * fx) * fy;
+  };
+  const steps = Math.max(width, height);
+  for (let step = 0; step < steps; step++) {
+    const next = new Float64Array(count);
+    for (const cell of all) {
+      if (isWater[cell]) {
+        next[cell] = 1;
+        continue;
+      }
+      const [x, y] = [cell % width, Math.floor(cell / width)];
+      const [wx, wy] = windAt(y);
+      const upwind = sample(carried, x - wx, y - wy);
+      const climb = Math.max(0, elevation[cell]! - sample(elevation, x - wx, y - wy));
+      const fall = Math.min(upwind, upwind * (0.04 + climb * 6 + (isBarrier[cell] ? 0.25 : 0)));
+      next[cell] = upwind - fall;
+      if (step === steps - 1) rain[cell] = fall;
+    }
+    carried = next;
+  }
+  const wobble = valueNoise(seed, "moisture", width, height);
+  const moisture = new Float64Array(count);
+  {
+    // Rain smoothed over a couple of cells, so a shore that takes the first rain is not a band of its own.
+    const raw = new Float64Array(count);
+    for (const cell of all) raw[cell] = carried[cell]! * 0.55 + rain[cell]! * 2.5;
+    for (const cell of all) {
+      const [x, y] = [cell % width, Math.floor(cell / width)];
+      let sum = 0;
+      let n = 0;
+      for (let dy = -2; dy <= 2; dy++)
+        for (let dx = -2; dx <= 2; dx++) {
+          const [nx, ny] = [x + dx, y + dy];
+          if (nx < 0 || ny < 0 || nx >= width || ny >= height || isWater[ny * width + nx]) continue;
+          sum += raw[ny * width + nx]!;
+          n++;
+        }
+      moisture[cell] = (n ? sum / n : raw[cell]!) + wobble[cell]! * 0.6;
+    }
+  }
+  // Patches: what breaks the hills and marshes into pieces rather than a band round every range and shore.
+  // (Ranked to an even spread from 0 to 1: value noise bunches round the middle, too weak to break a band.)
+  const patches = new Float64Array(count);
+  {
+    const raw = valueNoise(seed, "patches", width, height);
+    byValue(raw, all).forEach((cell, rank) => (patches[cell] = rank / (count - 1)));
+  }
+  // Cold: up the mountains, and toward the poles on a whole world.
+  const cold = new Float64Array(count);
+  for (const cell of all) {
+    const y = Math.floor(cell / width);
+    const latitude = kit.scale === "world" ? Math.abs((y / (height - 1)) * 140 - 70) / 70 : 0.3;
+    cold[cell] = latitude * 0.7 + elevation[cell]! * 0.6 + wobble[cell]! * 0.1;
+  }
+
+  const kinds = new Uint8Array(count);
+  // Water: lakes in the small closed bodies, seas in the big ones.
+  const waterCells = all.filter((cell) => isWater[cell]);
+  const body = new Float64Array(count);
+  {
+    const seen = new Uint8Array(count);
+    for (const start of waterCells) {
+      if (seen[start]) continue;
+      const part = [start];
+      seen[start] = 1;
+      for (let i = 0; i < part.length; i++) {
+        const [x, y] = [part[i]! % width, Math.floor(part[i]! / width)];
+        for (const [dx, dy] of [
+          [1, 0],
+          [0, 1],
+          [-1, 0],
+          [0, -1],
+        ] as const) {
+          const [nx, ny] = [x + dx, y + dy];
+          if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+          const at = ny * width + nx;
+          if (isWater[at] && !seen[at]) {
+            seen[at] = 1;
+            part.push(at);
+          }
+        }
+      }
+      for (const cell of part) body[cell] = part.length + rough[cell]! * 0.5;
+    }
+  }
+  const lakeWords = /lake|pond|river|loch|lagoon|canal|toxic/;
+  const waterClasses = terrain
+    .map((entry, index) => ({ index, share: entry.share, kind: entry.kind, lake: lakeWords.test(entry.id) }))
+    .filter((entry) => entry.kind === "water")
+    .sort((a, b) => Number(b.lake) - Number(a.lake) || a.index - b.index);
+  shareOut(waterCells, body, waterClasses, kinds);
+  shareOut(
+    all.filter((cell) => isBarrier[cell]),
+    moisture,
+    terrain
+      .map((entry, index) => ({ index, share: entry.share, kind: entry.kind }))
+      .filter((entry) => entry.kind === "barrier"),
+    kinds,
+  );
+  // Open ground by role.
+  let open = all.filter((cell) => !isWater[cell] && !isBarrier[cell]);
+  const openClasses = terrain.map((entry, index) => ({ ...entry, index })).filter((entry) => entry.kind === "open");
+  const take = (test: RegExp, value: (cell: number) => number) => {
+    const chosen = openClasses.filter((entry) => test.test(entry.id));
+    if (!chosen.length) return;
+    const want = Math.round((chosen.reduce((sum, entry) => sum + entry.share, 0) / total) * count);
+    const values = new Float64Array(count);
+    for (const cell of open) values[cell] = -value(cell);
+    const ranked = byValue(values, open).slice(0, Math.min(want, open.length));
+    const picked = new Set(ranked);
+    shareOut(
+      ranked,
+      moisture,
+      chosen.map((entry) => ({ index: entry.index, share: entry.share })),
+      kinds,
+    );
+    open = open.filter((cell) => !picked.has(cell));
+    for (const entry of chosen) openClasses.splice(openClasses.indexOf(entry), 1);
+  };
+  const nearWater = (cell: number) => {
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    for (let dy = -2; dy <= 2; dy++)
+      for (let dx = -2; dx <= 2; dx++) {
+        const [nx, ny] = [x + dx, y + dy];
+        if (nx >= 0 && ny >= 0 && nx < width && ny < height && isWater[ny * width + nx]) return 1;
+      }
+    return 0;
+  };
+  take(/hill|highland|moor|upland/, (cell) => elevation[cell]! + patches[cell]! * 0.4);
+  take(/snow|tundra|\bice\b|glacier|frost/, (cell) => cold[cell]!);
+  take(
+    /marsh|swamp|bog|\bfen|wetland/,
+    (cell) => moisture[cell]! * 0.2 + nearWater(cell) * 0.25 - elevation[cell]! * 0.3 + (1 - patches[cell]!),
+  );
+  shareOut(
+    open,
+    moisture,
+    openClasses
+      .sort((a, b) => wetness(a.id) - wetness(b.id) || a.index - b.index)
+      .map((entry) => ({ index: entry.index, share: entry.share })),
     kinds,
   );
   return { terrain, kinds };
@@ -531,7 +839,14 @@ export function compileWorld({
 }: WorldCompileInput): CompiledWorld {
   seed = seed >>> 0;
   const [width, height] = GROUND_SIZE[kit.scale];
-  const { terrain, kinds } = compileGround(seed, kit, width, height);
+  // Generator 6 shapes the ground as land is made (plates, ranges, winds); space (a sector, or a kit whose
+  // ground is open space) keeps the plain noise, having no land to shape.
+  const { terrain, kinds } =
+    generatorVersion >= 6 &&
+    kit.scale !== "sector" &&
+    !worldTerrainEntries(kit).some((entry) => /space|void|vacuum|nebula|orbit/.test(entry.id))
+      ? compileShapedGround(seed, kit, width, height)
+      : compileGround(seed, kit, width, height);
   const kindOf = (cell: number) => terrain[kinds[cell]!]!.kind;
   const settlementsDepth = kit.layers.findIndex((layer) => layer.settlements);
   const deepest = worldBriefDeepestLayer(kit);
