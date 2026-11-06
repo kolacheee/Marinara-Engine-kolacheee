@@ -843,6 +843,11 @@ export function performMarinaraTacticalAction(
       const pool = marinaraTargetsFor(actor, effect, state.fighters);
       const picked = aimedAt;
       let aim = picked && pool.includes(picked) ? picked : undefined;
+      // An area blow from a provoked foe is centred on the provoker when it can reach it.
+      if (effect.target === "all-enemies" || effect.target === "front-row") {
+        const provoker = pool.find((one) => one.provoking > 0 && reach(one.id));
+        if (provoker) aim = provoker;
+      }
       // A challenge or a provoker forces the pick only when it can be reached from where the unit
       // stands; otherwise the board's pick stands (a foe it can't reach can't be made its target).
       if (!aim && picked && picked.hp > 0 && picked.side !== actor.side && effect.target !== "ally") {

@@ -174,6 +174,17 @@ export function marinaraAiCandidates(
   // About how many rounds the fight has left: the foes' HP over what the party deals a round. A buff
   // longer than that is partly wasted (Alyssa 2026-11-03: no buffs as the fight ends).
   const roundsLeft = Math.max(1, foes.reduce((sum, foe) => sum + foe.hp, 0) / partyDamage);
+  // And how many this side has left: its HP over what the foes deal a round. A debuff that outlasts the
+  // side that cast it pays nothing for its last turns (r61 2026-11-06: human foes with carried skills cast
+  // Weaken and Mark Prey in fights they had two rounds to live, and Classic L3-8 got 4 points easier).
+  const ownRoundsLeft = Math.max(
+    1,
+    friends.reduce((sum, unit) => sum + unit.hp, 0) /
+      Math.max(
+        1,
+        foes.reduce((sum, foe) => sum + bestDamage(foe, all, tactical), 0),
+      ),
+  );
   // The damage a foe would deal the party over the next `turns` of its turns, as a share of a friend's
   // HP: what killing it now, or holding it down, keeps off (Alyssa 2026-11-03: a dead foe deals none).
   const threatOf = (foe: MarinaraFighter, turns: number) => (hardestFrom(foe).damage * Math.max(0, turns)) / friendHp;
@@ -567,7 +578,7 @@ export function marinaraAiCandidates(
         if ((effect.stat === "damage" || effect.stat === "best-attack" || effect.stat === "speed") && !threatened)
           break;
         // Lasts as long as its duration or the foe, whichever ends first.
-        const turns = (foe: MarinaraFighter) => Math.max(1, Math.min(effect.duration ?? 1, lasts(foe)));
+        const turns = (foe: MarinaraFighter) => Math.max(1, Math.min(effect.duration ?? 1, lasts(foe), ownRoundsLeft));
         // A share of HP: for a damage cut, the damage it keeps off the party over the party's HP
         // (playtest 2026-11-01: valued on raw Strength, Weaken beat every other Hexer skill and
         // Wither was never cast); otherwise over the foes' HP, or the one target's.
@@ -605,6 +616,7 @@ export function marinaraAiCandidates(
                         Math.min(
                           (effect.duration ?? 1) * Math.min(1.5, friendSpeed / Math.max(1, speedOf(foe))),
                           foe.hp / partyDamage,
+                          ownRoundsLeft,
                         ),
                       ),
                     ),
@@ -744,11 +756,13 @@ export function marinaraAiCandidates(
         const shareOf = (foe: MarinaraFighter, target: MarinaraFighter) => {
           const drawn = drawnTo(foe);
           if (drawn) return drawn.id === target.id ? 1 : 0;
-          return pull(foe, target) /
-              Math.max(
-                1,
-                friends.reduce((total, u) => total + pull(foe, u), 0),
-              );
+          return (
+            pull(foe, target) /
+            Math.max(
+              1,
+              friends.reduce((total, u) => total + pull(foe, u), 0),
+            )
+          );
         };
         const blows = (target: MarinaraFighter) =>
           foes.reduce(
