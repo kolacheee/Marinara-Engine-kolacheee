@@ -565,7 +565,10 @@ export function rankCombatCandidates<T>(
       weights.finish *= 1.3;
     } else if (profile.role === "marksman") weights.risk = Math.max(weights.risk * 1.5, 0.9);
     else if (profile.role === "spellcaster") weights.cost = Math.max(weights.cost, 0.4);
-    else if (profile.role === "controller") weights.setup = Math.max(weights.setup, 1.2);
+    // Classic Marinara's leans stay leans: a controller sets up as a methodical one does (r61 2026-11-06:
+    // any foe carrying a debuff and no buff was a controller and weighed setup six times over, so human
+    // foes spent their turns on Weaken and Mark Prey in fights a blow would have served better).
+    else if (profile.role === "controller") weights.setup = Math.max(weights.setup, holdsLean ? 0.3 : 1.2);
     else if (profile.role === "supporter") weights.support = Math.max(weights.support, 0.8);
     else if (profile.role === "solo") {
       // Save an arrogant one (T5), which holds its best back until the fight proves worth it. It still
