@@ -72,7 +72,7 @@ In a game on **MRPG** classes, the attribute modifier comes from the character's
 | Resistance | Insight, Religion, Wisdom |
 | Luck | Persuasion, Deception, Performance, Charisma |
 
-The check adds a third of that stat, rounded down, less one. That is about +1 or +2 for a new character's best stat, +3 or +4 at level 10, and +8 at the top.
+The check adds a fifth of that stat, rounded down, up to +5. That is about +1 for a new character's best stat, +2 or +3 at level 10, and +5 at the top. A weak stat adds nothing.
 
 If the total reaches or beats the DC, the check succeeds. Two rolls override the math:
 

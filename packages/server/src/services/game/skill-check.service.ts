@@ -344,8 +344,9 @@ export function mrpgStatForSkill(skill: string): MarinaraStat {
   return MRPG_SKILL_STAT[key] ?? "skill";
 }
 
-/** What an MRPG stat adds to a check: a third of it, less one (owner 2026-11-06: a level-1 specialty
- *  reads +1 or +2 on the d20, a level-30 one about +8). */
+/** What an MRPG stat adds to a check: a fifth of it, at most +5 (owner 2026-11-06 19:53: a level-30
+ *  specialty reads +5, a level-1 one +1, a level-10 one +2 or +3; a weak stat adds nothing). */
+export const MRPG_CHECK_MODIFIER_MAX = 5;
 export function mrpgCheckModifier(stat: number): number {
-  return Number.isFinite(stat) ? Math.floor(Math.max(0, stat) / 3) - 1 : 0;
+  return Number.isFinite(stat) ? Math.min(MRPG_CHECK_MODIFIER_MAX, Math.floor(Math.max(0, stat) / 5)) : 0;
 }
