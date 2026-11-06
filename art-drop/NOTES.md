@@ -1,3 +1,66 @@
+# Round 2 — critic-r2-7 plus owner rural override (r2-9 delivery)
+
+Redrew **all 44 farmland/farmstead PNGs** in `out/`: seven field layouts and
+four setting-specific farmsteads, each in summer, spring, autumn and winter.
+The owner's rural override includes the critic's passed rural files. **All
+104 other PNGs are byte-identical to this pass's starting workspace**:
+24 markers, 16 city, 16 industry, 16 slums and 32 suburbs. Earlier uncommitted
+work was preserved. No commit or push was made.
+
+Two new continuous district paintings are retained in the gitignored
+`source-drawings/r2-9/`: a summer district and its winter edit. The built-in
+image tool was used; exact prompts are in
+[r2-9-generation-prompts.json](r2-9-generation-prompts.json).
+The 1448×1086 paintings are area/BOX-aligned to **1536×1152**, four by three
+**384 px cells**. Palette locking precedes **8×8 mode voting**: every one of
+64 source samples votes for each output pixel. Nearest-neighbour is used only
+for review enlargement. Saved aligned, voted and cleaned districts make each
+stage inspectable. Spring/autumn map materials on the cleaned summer geometry.
+
+Native paintover removes noisy source detail, reinforces straight crop rows,
+flattens roof planes, and gives the 15 px farmhouse roofs one-pixel outlines
+and upper-left highlights. Short south facades have doors and windows; each
+farm has a separate low shed, compact yard and connected lane. Orchards retain
+angular trees in rows; the ploughed tile retains its short tree line.
+
+Fields extend to the **one-pixel edge hedge with no grass strip**. Every
+field boundary and lane is orthogonal to the tile edges. Internal hedges use
+the same material, phase and two-pixel weight as two joined boundary halves.
+Shared three-pixel access gates give every rural tile the same edge profile;
+all farm lanes leave through the south gate. A neighbouring crop field may
+start directly beyond a gate; these are farm-access openings, not a road
+routing tileset.
+
+The seven field plans now differ in their divisions, proportions and crop
+directions. Critic-failed variant **6 has three unequal rectangular fields**,
+a north–south lane offset to the right and an east-only branch. It no longer
+repeats variant 0's broad horizontal division. Geometry is retained across all
+four seasons. Winter fields are **white**, with dark exposed furrows, stubble,
+hedges and trunks. White snow covers **75–84%** of field interiors, including
+the orchard/tree-line tiles. Roof snow follows the summer roof geometry.
+
+**Review:** inspected three independent random, unguttered **8×2** layouts
+for every set/season, mixed farmsteads and each setting mixed with fields:
+**102 layouts**, `review/r2-9-tiled-*.png`; three-shuffle boards and six overview
+pages are alongside them. The first audit caught similar winter soil/crop
+patterns; soil furrows and stubble were revised before the final review.
+Orders: [review/r2-9-layout-orders.json](review/r2-9-layout-orders.json).
+[Validation](review/r2-9-validation.json) passes the exact 44-file scope,
+104 protected hashes, 148-file inventory, 48×48 opacity/uniqueness, 44 exact
+district crops, **484 ordered rural edge pairings**, 22 spring/autumn material
+mappings, all 16 connected farmstead lane exits and every review-layout crop.
+Variant 0/6 pixel agreement is 38.7% in summer/spring/autumn and 72.1% in winter;
+the visible geometry, rather than that number alone, was checked.
+Sources/output hashes: [review/r2-9-source-audit.json](review/r2-9-source-audit.json).
+Rebuild: `python art-drop/process_r2_9.py`, then `python art-drop/review_r2_9.py`.
+
+**Remaining limits:** the thin boundary hedges still make a regular lattice
+visible in some snowy shuffles, and seven field layouts repeat on a large map.
+This is visual self-review, without a new independent critic verdict or a live
+in-game check. Earlier delivery notes and review images describe earlier art.
+
+---
+
 # Round 2 — critic-r2-6 plus owner rural override (r2-8 delivery)
 
 Replaced **60 PNGs in `out/` from this pass's starting workspace**: all 16
