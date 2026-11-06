@@ -480,6 +480,10 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
       return `${actor} defends.`;
     case "charge":
       return `${actor} readies ${skill ?? "a heavy blow"} at ${target}.`;
+    case "charge-lost":
+      return event.status === "reach"
+        ? `${actor}'s ${skill ?? "readied blow"} goes off at empty ground: ${target} moved out of reach.`
+        : `${actor}'s ${skill ?? "readied blow"} is lost (${event.status === "stun" ? "stunned" : "put to sleep"}).`;
     case "extra-turn": {
       // A bonus-action skill leaves the user their action; anything else grants one more.
       const effect = event.skillId ? MARINARA_SKILL_EFFECTS[event.skillId] : undefined;
@@ -759,11 +763,27 @@ export function marinaraTacticalTurnStart(
   unitId: string,
   seed: number,
   log: MarinaraLog,
+  /** On the board: whether the readied blow still reaches its target from where the unit stands. */
+  reaches?: (targetId: string, skillId: string) => boolean,
 ): boolean {
   const actor = marinaraFighter(state, unitId);
   if (!actor || actor.hp <= 0) return false;
   const ctx = context(state, seed, true);
   const start = beginMarinaraTurn(actor, state.fighters, ctx);
+  // A telegraphed blow lands only where its target still is in reach (Alyssa 2026-11-06): one that
+  // moved away dodged it, and the turn is spent.
+  const aimed = start.release && marinaraFighter(state, start.release.targetId);
+  if (start.release && aimed && aimed.hp > 0 && reaches && !reaches(aimed.id, start.release.skillId)) {
+    ctx.events.push({
+      kind: "charge-lost",
+      actorId: actor.id,
+      targetId: aimed.id,
+      skillId: start.release.skillId,
+      status: "reach",
+    });
+    record(state, ctx, log);
+    return false;
+  }
   record(state, ctx, log);
   if (start.release) {
     const release = { ...context(state, seed, true), grouped: false };

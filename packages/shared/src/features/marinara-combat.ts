@@ -941,6 +941,8 @@ export interface MarinaraFighter {
   /** Skills used once per fight that have been used. */
   used: string[];
   charging?: { skillId: string; targetId: string };
+  /** Slept or stunned while readying a blow: it is lost (Alyssa 2026-11-06). */
+  chargeBroken?: string;
   lastStandUsed?: boolean;
   /** Hold the Line's early first turn has been said in the log. */
   vanguardSaid?: boolean;
@@ -1348,6 +1350,9 @@ export type MarinaraEventKind =
   | "skip"
   | "defend"
   | "charge"
+  /** A readied blow that didn't go off: slept or stunned before it could, or (on a board) its target
+   *  moved out of reach (`status`: the hard CC, or "reach"). */
+  | "charge-lost"
   | "extra-turn"
   | "command"
   | "last-stand"
@@ -2897,6 +2902,8 @@ function addStatus(
   if (moraleHolds(target, applies.status, all, random)) return false;
   target.statuses = target.statuses.filter((s) => s.status !== applies.status);
   if (applies.status === "sleep") target.slept = true;
+  if ((applies.status === "sleep" || applies.status === "stun") && target.charging)
+    target.chargeBroken = applies.status;
   target.statuses.push({
     status: applies.status,
     turns: applies.duration + bonus,
@@ -3103,6 +3110,18 @@ export function beginMarinaraTurn(
   actor.covering = undefined; // Cover lasts until the coverer's next turn.
   if (actor.wardTurns > 0) actor.wardTurns--;
   for (const id of Object.keys(actor.cooldowns)) actor.cooldowns[id] = Math.max(0, actor.cooldowns[id]! - 1);
+  // Hard CC breaks a readied blow (Alyssa 2026-11-06): slept or stunned before it went off, it's lost.
+  if (actor.charging && (skips || actor.chargeBroken)) {
+    ctx.events.push({
+      kind: "charge-lost",
+      actorId: actor.id,
+      targetId: actor.charging.targetId,
+      skillId: actor.charging.skillId,
+      status: actor.chargeBroken ?? skips?.status,
+    });
+    actor.charging = undefined;
+  }
+  delete actor.chargeBroken;
   if (skips) {
     ctx.events.push({ kind: "skip", actorId: actor.id, status: skips.status });
     return { acts: false };
@@ -3564,6 +3583,8 @@ function act(
         }
         target.statuses = target.statuses.filter((s) => s.status !== effect.status);
         if (effect.status === "sleep") target.slept = true;
+        if ((effect.status === "sleep" || effect.status === "stun") && target.charging)
+          target.chargeBroken = effect.status;
         target.statuses.push({
           status: effect.status!,
           turns: (effect.duration ?? 2) + durationBonus,

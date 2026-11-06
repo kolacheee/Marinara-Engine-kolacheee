@@ -11,8 +11,11 @@ import {
   type CombatDirectorState,
 } from "../../packages/server/src/services/game/combat-director.service.js";
 import {
+  createMarinaraDirectorState,
   marinaraCombatSkills,
   marinaraCombatant,
+  marinaraFighter as marinaraFighterOfMaybe,
+  marinaraTacticalTurnStart,
 } from "../../packages/server/src/services/game/marinara-director.service.js";
 import { MARINARA_CLASSES } from "../../packages/shared/src/features/marinara-classes.js";
 import {
@@ -33,6 +36,8 @@ const skill = (id: string) => {
   }
   throw new Error(`no skill ${id}`);
 };
+const marinaraFighterOf = (state: Parameters<typeof marinaraFighterOfMaybe>[0], id: string) =>
+  marinaraFighterOfMaybe(state, id)!;
 const unit = (id: string, side: "party" | "enemy", archetype: string, skills: string[] = []) => {
   const fighter = buildMarinaraEnemy({ id, name: id, level: 20, tier: "standard", archetype: archetype as never });
   fighter.side = side;
@@ -325,6 +330,49 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
     foe.statuses.some((one) => one.status === "sleep"),
     "after a turn awake it can be slept again",
   );
+}
+
+// A readied blow lands only if the target is still in reach and the readier wasn't slept or stunned
+// meanwhile (owner 2026-11-06): woken early it still loses the blow; on the board a target that walked
+// away takes nothing.
+{
+  const hexer = unit("H", "party", "hexer", ["lull"]);
+  const foe = unit("F", "enemy", "blade");
+  const all = [hexer, foe];
+  foe.charging = { skillId: "heavy-blow", targetId: hexer.id };
+  performMarinaraOption(hexer, marinaraOption(hexer, "lull", all)!, [foe], all, { random: () => 0, events: [] });
+  foe.statuses = [];
+  const events: MarinaraEvent[] = [];
+  const start = beginMarinaraTurn(foe, all, { random: () => 0.5, events });
+  assert.equal(start.release, undefined, "a slept readier loses the blow even once woken");
+  assert.equal(foe.charging, undefined);
+  assert.equal(events.find((one) => one.kind === "charge-lost")?.status, "sleep");
+
+  const release = (inReach: boolean) => {
+    const runner = unit("R", "party", "scout");
+    runner.hp = runner.maxHp = 100000;
+    const caster = unit("C", "enemy", "channeler", ["convergence"]);
+    caster.charging = { skillId: "convergence", targetId: runner.id };
+    const state = createMarinaraDirectorState([runner, caster], 7);
+    const lines: string[] = [];
+    const acts = marinaraTacticalTurnStart(
+      state,
+      caster.id,
+      7,
+      (text) => lines.push(text),
+      () => inReach,
+    );
+    assert.equal(acts, false, "the turn is spent either way");
+    return { runner: marinaraFighterOf(state, runner.id), lines };
+  };
+  const away = release(false);
+  assert.equal(away.runner.hp, away.runner.maxHp, "out of reach: nothing lands");
+  assert.ok(
+    away.lines.some((line) => line.includes("goes off at empty ground")),
+    away.lines.join(" | "),
+  );
+  const near = release(true);
+  assert.ok(near.runner.hp < near.runner.maxHp, "still in reach: it lands");
 }
 
 console.log("game-marinara-panel-r6: ok");
