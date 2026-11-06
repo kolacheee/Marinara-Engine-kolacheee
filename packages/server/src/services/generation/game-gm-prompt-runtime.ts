@@ -4,7 +4,9 @@ import {
   gameStoryFromMetadata,
   gameWorldKitFromMetadata,
   gameWorldBattlefields,
+  marinaraClass,
   normalizeAgentPromptTemplateOptions,
+  readMarinaraCardProgression,
   normalizeTextForMatch,
   resolveGameSetupArtStylePrompt,
   rulesetBestiaryNamedIn,
@@ -173,6 +175,16 @@ export function gameGmPromptDecisionTexts(chatMetadata: Record<string, unknown>,
 function appendGameCardDetails(parts: string[], card: Record<string, unknown> | undefined): void {
   if (!card) return;
   if (card.class) parts.push(`Class: ${card.class}`);
+  // Classic classes: the class they fight as and its level, which the fights and the sheet go by. A party
+  // upgraded from Legacy sheets still carries its old class and abilities above as story.
+  const progression = readMarinaraCardProgression(card.marinara);
+  const classic = progression && marinaraClass(progression.activeClass);
+  if (progression && classic) {
+    const level = progression.classLevels?.[progression.activeClass];
+    parts.push(
+      `Classic class (what they fight as): ${classic.label}${level ? `, class level ${level}` : ""}; character level ${progression.level}${progression.fallen ? " (fallen)" : ""}`,
+    );
+  }
   // Beasts they tamed in Classic fights (Tracker): the active one follows them; the rest are kept.
   const tamed = card.marinara as
     { companions?: Array<{ id?: unknown; name?: unknown }>; activeCompanion?: unknown } | undefined;
