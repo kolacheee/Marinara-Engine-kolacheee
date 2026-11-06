@@ -2678,11 +2678,17 @@ export function marinaraDebuffBurden(unit: MarinaraFighter, all: readonly Marina
 const doomToll = (unit: MarinaraFighter) =>
   Math.round(unit.maxHp * (unit.maxHp > 300 ? MARINARA_TUNING.doomBossPct : MARINARA_TUNING.doomPct));
 
-function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly MarinaraFighter[]) {
+/** Clears harm off a unit; returns what it cleared, for the log ("slow", "lowered defense"). */
+function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly MarinaraFighter[]): string[] {
+  const named = (mod: { stat: string }) => `lowered ${mod.stat.replace(/-/g, " ")}`;
   if (how === "all") {
+    const cleared = [
+      ...unit.statuses.filter((s) => HARMFUL.has(s.status)).map((s) => s.status as string),
+      ...unit.mods.filter((m) => m.pct < 0).map(named),
+    ];
     unit.statuses = unit.statuses.filter((s) => !HARMFUL.has(s.status));
     unit.mods = unit.mods.filter((m) => m.pct >= 0);
-    return;
+    return [...new Set(cleared)];
   }
   let best: { kind: "status" | "mod"; index: number; value: number } | null = null;
   unit.statuses.forEach((status, index) => {
@@ -2697,9 +2703,9 @@ function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly Marina
     if (!best || value > best.value) best = { kind: "mod", index, value };
   });
   const picked = best as { kind: "status" | "mod"; index: number } | null;
-  if (!picked) return;
-  if (picked.kind === "status") unit.statuses.splice(picked.index, 1);
-  else unit.mods.splice(picked.index, 1);
+  if (!picked) return [];
+  if (picked.kind === "status") return [unit.statuses.splice(picked.index, 1)[0]!.status];
+  return [named(unit.mods.splice(picked.index, 1)[0]!)];
 }
 
 /**
@@ -3287,7 +3293,7 @@ function act(
         const crit = !!hooks.healCrit && random() < 0.15;
         if (crit) amount *= 1.5;
         amount *= healFactor(target);
-        if (effect.cleanse) cleanse(target, effect.cleanse, all);
+        const cleared = effect.cleanse ? cleanse(target, effect.cleanse, all) : [];
         const before = target.hp;
         target.hp = Math.round(Math.min(target.maxHp, target.hp + amount));
         if (hooks.overheal) target.shield += Math.max(0, before + amount - target.maxHp) * 0.5;
@@ -3299,6 +3305,9 @@ function act(
           amount: target.hp - before,
           crit,
         });
+        // What it cleared is said (panel r6: "heals X for 0" read as a wasted cast).
+        if (cleared.length)
+          ctx.events.push({ kind: "cleanse", actorId: actor.id, targetId: target.id, skillId, notes: cleared });
       }
       break;
     }
@@ -3322,8 +3331,8 @@ function act(
       break;
     case "cleanse":
       for (const target of targets) {
-        cleanse(target, effect.cleanse ?? "all", all);
-        ctx.events.push({ kind: "cleanse", actorId: actor.id, targetId: target.id, skillId });
+        const cleared = cleanse(target, effect.cleanse ?? "all", all);
+        ctx.events.push({ kind: "cleanse", actorId: actor.id, targetId: target.id, skillId, notes: cleared });
       }
       break;
     case "revive": {
