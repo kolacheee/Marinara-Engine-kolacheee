@@ -547,7 +547,7 @@ export const MARINARA_CLASSES: readonly MarinaraClassDef[] = [
           "follow-through",
           "Follow Through",
           24,
-          "Once per turn, defeating a foe or landing a critical hit grants another action.",
+          "Once per turn, defeating a foe or landing a critical hit the foe doesn't resist grants another action.",
         ),
       ],
     },
