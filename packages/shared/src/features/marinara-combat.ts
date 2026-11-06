@@ -917,6 +917,9 @@ export interface MarinaraFighter {
   shield: number;
   covering?: string;
   provoking: number;
+  /** Draw Fire: whose turns count this unit's `provoking` down (the caster's), so it lasts as long as a
+   *  self-cast Provoke whoever acts first (slice tester s4, 2026-11-06: it held one foe phase). */
+  provokeClock?: string;
   /** Taunted: must target this unit while `tauntTurns` lasts. */
   tauntedBy?: string;
   tauntTurns: number;
@@ -3037,7 +3040,14 @@ export function beginMarinaraTurn(
   actor.next += turnLength(actor, all);
   // A wait timed while debuffed under Slow Time is already slowed.
   actor.waitSlowed = marinaraDebuffed(actor) && slowTimeOn(actor, all) > 0;
-  if (actor.provoking > 0) actor.provoking--;
+  // Its own turns count it down unless Draw Fire's caster does (and still can).
+  const clock = actor.provokeClock && all.some((u) => u.id === actor.provokeClock && u.hp > 0);
+  if (actor.provoking > 0 && !clock) actor.provoking--;
+  for (const held of all)
+    if (held.provokeClock === actor.id && held.provoking > 0) {
+      held.provoking--;
+      if (!held.provoking) delete held.provokeClock;
+    }
   if (actor.tauntTurns > 0) actor.tauntTurns--;
   actor.covering = undefined; // Cover lasts until the coverer's next turn.
   if (actor.wardTurns > 0) actor.wardTurns--;
@@ -3414,6 +3424,7 @@ function act(
       if (effect.decoys) actor.decoys = effect.decoys;
       if (effect.hide) actor.hidden = true;
       if (effect.provokes) {
+        if (actor.provoking < effect.provokes) delete actor.provokeClock;
         actor.provoking = Math.max(actor.provoking, effect.provokes);
         ctx.events.push({ kind: "provoke", actorId: actor.id, skillId });
       }
@@ -3528,6 +3539,8 @@ function act(
       // Draw Fire: an ally provokes in the user's place.
       const who = effect.target === "ally" ? (targets[0] ?? actor) : actor;
       who.provoking = effect.duration ?? 2;
+      if (who !== actor) who.provokeClock = actor.id;
+      else delete who.provokeClock;
       ctx.events.push({ kind: "provoke", actorId: who.id, skillId });
       break;
     }

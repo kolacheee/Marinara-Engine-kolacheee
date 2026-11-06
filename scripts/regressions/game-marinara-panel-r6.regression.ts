@@ -16,6 +16,7 @@ import {
 } from "../../packages/server/src/services/game/marinara-director.service.js";
 import { MARINARA_CLASSES } from "../../packages/shared/src/features/marinara-classes.js";
 import {
+  beginMarinaraTurn,
   buildMarinaraEnemy,
   marinaraOption,
   performMarinaraOption,
@@ -169,6 +170,24 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
     events,
   });
   assert.deepEqual(events.find((one) => one.kind === "cleanse")?.notes, ["slow"]);
+}
+
+// Draw Fire counts down on the caster's turns, so an ally who acts first still holds 2 of them (slice s4).
+{
+  const captain = unit("C", "party", "herald", ["draw-fire"]);
+  const tank = unit("T", "party", "guard");
+  const foe = unit("F", "enemy", "blade");
+  const all = [captain, tank, foe];
+  const c = { random: () => 0.5, events: [] as MarinaraEvent[] };
+  performMarinaraOption(captain, marinaraOption(captain, "draw-fire", all)!, [tank], all, c);
+  assert.equal(tank.provoking, 2);
+  beginMarinaraTurn(tank, all, c);
+  assert.equal(tank.provoking, 2, "the tank's own turn doesn't count it down");
+  beginMarinaraTurn(captain, all, c);
+  assert.equal(tank.provoking, 1, "the caster's does");
+  captain.hp = 0;
+  beginMarinaraTurn(tank, all, c);
+  assert.equal(tank.provoking, 0, "with the caster down, its own turns count it");
 }
 
 console.log("game-marinara-panel-r6: ok");
