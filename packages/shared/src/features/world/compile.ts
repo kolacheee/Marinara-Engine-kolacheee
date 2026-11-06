@@ -13,13 +13,15 @@ import { worldBriefDeepestLayer } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./art-family.js";
 
-export const WORLD_GENERATOR_VERSION = 4;
-/** The generator versions this Engine makes again from a recipe exactly as they were made: 4 keeps fields
+export const WORLD_GENERATOR_VERSION = 5;
+/** The generator versions this Engine makes again from a recipe exactly as they were made: 5 puts
+ *  settlements where people settle (by water, on good ground, the biggest on the best sites, spaced as
+ *  market towns are) and gives them tags their ground fits (no port without water), 4 keeps fields
  *  and suburbs to small rings around the settlements (worldCultivate), 3 sets each
  *  town lot a cell back from its street with a path from its door out to it, 2 adds sites (caves, ruins,
  *  crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none. A recipe of a
  *  version it reads stays editable and sharable as a recipe. */
-export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4]);
+export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5]);
 export function worldGeneratorReads(version: unknown): boolean {
   return typeof version === "number" && WORLD_GENERATOR_VERSIONS_READ.includes(version);
 }
@@ -398,6 +400,128 @@ function shareChildren(parents: number, total: number, random: () => number): nu
   return counts;
 }
 
+// ── Site and situation (generator 5): where people settle ──
+
+/** Ground words, read from a terrain's id as the overworld reads its look. */
+const FERTILE_GROUND = /grass|plain|prairie|farm|field|padd|rice|meadow|steppe|pasture|orchard|vineyard|suburb/;
+const POOR_GROUND =
+  /marsh|swamp|bog|\bfen|wetland|desert|dune|snow|tundra|\bice\b|glacier|toxic|waste|blight|dead|crater|ash/;
+const WOODED_GROUND = /forest|wood|grove|bamboo|jungle|taiga|conifer|pine/;
+const HILL_GROUND = /hill|highland|moor|upland/;
+
+/** How good each cell is to settle on (site): fresh water or a shore beside it, fertile ground under and
+ *  around it, a mix of ground to draw on (fields, wood, water), and not at the edge of the known map. */
+function siteValues(terrain: Array<{ id: string; kind: string }>, kinds: Uint8Array, width: number, height: number) {
+  const out = new Float64Array(width * height);
+  const kindAt = (x: number, y: number) =>
+    x < 0 || y < 0 || x >= width || y >= height ? null : terrain[kinds[y * width + x]!]!;
+  // Fields and suburbs are laid around the settlements after they are placed (generator 4), so the
+  // ground under a worked terrain reads as plain open ground here, neither good nor bad.
+  const fertile = (entry: { id: string; kind: string }) =>
+    !worldCultivatedTerrain(entry) && FERTILE_GROUND.test(entry.id);
+  const own = (entry: { id: string; kind: string }) =>
+    worldCultivatedTerrain(entry)
+      ? 0.5
+      : fertile(entry)
+        ? 1
+        : POOR_GROUND.test(entry.id)
+          ? -1.5
+          : HILL_GROUND.test(entry.id)
+            ? 0.4
+            : WOODED_GROUND.test(entry.id)
+              ? 0.1
+              : 0.5;
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const here = kindAt(x, y)!;
+      let value = own(here);
+      let water1 = false;
+      let water2 = false;
+      const around = new Set<string>();
+      let fertileCount = 0;
+      for (let dy = -2; dy <= 2; dy++)
+        for (let dx = -2; dx <= 2; dx++) {
+          const entry = kindAt(x + dx, y + dy);
+          if (!entry || (dx === 0 && dy === 0)) continue;
+          const ring = Math.max(Math.abs(dx), Math.abs(dy));
+          around.add(entry.id);
+          if (entry.kind === "water") ring === 1 ? (water1 = true) : (water2 = true);
+          if (fertile(entry)) fertileCount++;
+        }
+      // A shore or a lakeside is the strongest pull; a day's walk from water still counts for something.
+      value += water1 ? 1.2 : water2 ? 0.5 : 0;
+      value += Math.min(1, fertileCount / 12);
+      value += 0.1 * Math.min(4, around.size - 1);
+      if (x < 2 || y < 2 || x >= width - 2 || y >= height - 2) value -= 1;
+      out[y * width + x] = value;
+    }
+  }
+  return out;
+}
+
+/** Settlements onto their area's cells, biggest first: each takes a good site (site value) that keeps
+ *  clear of the places already set, the bigger ones further apart, as market towns share out the land
+ *  between them (central places). Of the few best cells, the stream picks one. */
+function settleCells(
+  candidates: number[],
+  ranks: number[],
+  taken: number[],
+  site: Float64Array,
+  width: number,
+  random: () => number,
+): number[] {
+  const chosen = new Array<number>(ranks.length);
+  if (candidates.length === 0) return [];
+  const order = ranks.map((rank, index) => ({ rank, index })).sort((a, b) => b.rank - a.rank || a.index - b.index);
+  const top = Math.max(...ranks);
+  // The spacing a settlement's market area asks for: the area shared evenly, wider for each rank up.
+  const even = Math.sqrt(candidates.length / ranks.length);
+  const near = candidates.map(() => Infinity);
+  const nearBig = candidates.map(() => Infinity);
+  const set = (cell: number, big: boolean) =>
+    candidates.forEach((other, index) => {
+      const d = Math.hypot((cell % width) - (other % width), Math.floor(cell / width) - Math.floor(other / width));
+      if (d < near[index]!) near[index] = d;
+      if (big && d < nearBig[index]!) nearBig[index] = d;
+    });
+  for (const cell of taken) set(cell, false);
+  const used = new Set(taken);
+  for (const { rank, index } of order) {
+    const wanted = even * (0.75 + 0.25 * rank);
+    const wantedBig = even * (0.8 + 0.4 * rank);
+    const big = rank >= Math.max(1, top - 1);
+    const scored = candidates
+      .map((cell, position) => {
+        if (used.has(cell)) return { cell, score: -Infinity };
+        const crowd = Math.min(1, near[position]! / wanted);
+        const crowdBig = big ? Math.min(1, nearBig[position]! / wantedBig) : 1;
+        return { cell, score: site[cell]! + 3 * (crowd - 1) + 3 * (crowdBig - 1) };
+      })
+      .sort((a, b) => b.score - a.score || a.cell - b.cell);
+    const best = scored.slice(0, Math.min(4, scored.length)).filter((entry) => entry.score > -Infinity);
+    const cell = best.length ? best[Math.floor(random() * best.length)]!.cell : pick(candidates, random);
+    chosen[index] = cell;
+    used.add(cell);
+    set(cell, big);
+  }
+  return chosen;
+}
+
+/** What a settlement's tag needs of the ground around it, read from the tag's words: a port needs water
+ *  beside it, a mine hills or mountains near, a forest tag woods beside it, a farm tag fields. */
+const TAG_SITUATIONS: Array<[RegExp, "water" | "heights" | "woods" | "fields"]> = [
+  [/port|harbo|dock|wharf|pier|beach|fish|ferry|shipyard|lighthouse/, "water"],
+  [/mine|mining|quarry|mountain|pass\b|peak/, "heights"],
+  [/forest|woods|bamboo|lumber|grove/, "woods"],
+  [/farm|field|agricult|orchard|vineyard|ranch|padd/, "fields"],
+];
+const SPACE_TAGS = /spaceport|space|orbital|jump|gate/;
+
+export function worldTagSituation(tag: string) {
+  if (SPACE_TAGS.test(tag)) return undefined;
+  return TAG_SITUATIONS.find(([words]) => words.test(tag))?.[1];
+}
+
 export function compileWorld({
   seed,
   kit,
@@ -498,6 +622,40 @@ export function compileWorld({
     }
   }
 
+  // Sizes come from their own stream and never from where a settlement is, so generator 5 sizes them
+  // first and puts the biggest on the best sites; earlier generators size them after placing them.
+  function sizeSettlements() {
+    const settlements = atDepth(settlementsDepth);
+    const ladder = kit.sizes.length;
+    const top =
+      kit.scale === "site" ? Math.min(1, ladder - 1) : kit.scale === "town" ? Math.floor((ladder - 1) / 2) : ladder - 1;
+    {
+      const random = worldStream(seed, "sizes");
+      for (const { draft } of settlements) if (draft.brief?.size) draft.size = sizeIndex.get(draft.brief.size);
+      const unsized = settlements
+        .filter(({ draft }) => draft.size === undefined)
+        .map((entry) => ({ ...entry, order: random() }))
+        .sort((a, b) => a.order - b.order);
+      // One top place for each outermost place, twice as many at each rank below, the rest smallest.
+      let quota = Math.max(1, topTarget - settlements.filter(({ draft }) => draft.size === top).length);
+      let rank = top;
+      for (const { draft } of unsized) {
+        while (quota <= 0 && rank > 0) {
+          rank--;
+          quota = Math.max(
+            1,
+            2 ** (top - rank) * topTarget - settlements.filter(({ draft: other }) => other.size === rank).length,
+          );
+        }
+        draft.size = rank;
+        quota--;
+      }
+    }
+  }
+  const siteAware = generatorVersion >= 5;
+  if (siteAware) sizeSettlements();
+  const site = siteAware ? siteValues(terrain, kinds, width, height) : null;
+
   // ── Where everything is: nested patches of ground, and settlements on open ground ──
   const allCells = Array.from({ length: width * height }, (_, index) => index);
   for (let depth = 0; depth <= settlementsDepth; depth++) {
@@ -510,7 +668,17 @@ export function compileWorld({
       const area = parent === null ? allCells : (drafts[parent]!.cells ?? allCells);
       const open = area.filter((cell) => kindOf(cell) === "open");
       const candidates = open.length > 0 ? open : area.length > 0 ? area : allCells;
-      const cells = spreadCells(candidates, members.length, taken, width, random);
+      const cells =
+        site && depth === settlementsDepth
+          ? settleCells(
+              candidates,
+              members.map((member) => drafts[member]!.size ?? 0),
+              taken,
+              site,
+              width,
+              random,
+            )
+          : spreadCells(candidates, members.length, taken, width, random);
       taken.push(...cells);
       if (depth < settlementsDepth) {
         const parts = partition(area.length > 0 ? area : allCells, cells, width);
@@ -540,30 +708,7 @@ export function compileWorld({
   // ── Settlements: size on the kit's ladder (few big, many small), prosperity, tags ──
   const settlements = atDepth(settlementsDepth);
   const ladder = kit.sizes.length;
-  const top =
-    kit.scale === "site" ? Math.min(1, ladder - 1) : kit.scale === "town" ? Math.floor((ladder - 1) / 2) : ladder - 1;
-  {
-    const random = worldStream(seed, "sizes");
-    for (const { draft } of settlements) if (draft.brief?.size) draft.size = sizeIndex.get(draft.brief.size);
-    const unsized = settlements
-      .filter(({ draft }) => draft.size === undefined)
-      .map((entry) => ({ ...entry, order: random() }))
-      .sort((a, b) => a.order - b.order);
-    // One top place for each outermost place, twice as many at each rank below, the rest smallest.
-    let quota = Math.max(1, topTarget - settlements.filter(({ draft }) => draft.size === top).length);
-    let rank = top;
-    for (const { draft } of unsized) {
-      while (quota <= 0 && rank > 0) {
-        rank--;
-        quota = Math.max(
-          1,
-          2 ** (top - rank) * topTarget - settlements.filter(({ draft: other }) => other.size === rank).length,
-        );
-      }
-      draft.size = rank;
-      quota--;
-    }
-  }
+  if (!siteAware) sizeSettlements();
   {
     const random = worldStream(seed, "prosperity");
     for (const { draft } of settlements) {
@@ -574,6 +719,29 @@ export function compileWorld({
   {
     const random = worldStream(seed, "tags");
     const kitTags = kit.placeTags.map((tag) => tag.id);
+    const situationOf = (cell: number) => {
+      const fits = new Set<string>();
+      const [x0, y0] = [cell % width, Math.floor(cell / width)];
+      for (let dy = -2; dy <= 2; dy++)
+        for (let dx = -2; dx <= 2; dx++) {
+          const [x, y] = [x0 + dx, y0 + dy];
+          if (x < 0 || y < 0 || x >= width || y >= height) continue;
+          const entry = terrain[kinds[y * width + x]!]!;
+          const beside = Math.max(Math.abs(dx), Math.abs(dy)) <= 1;
+          if (beside && entry.kind === "water") fits.add("water");
+          if (entry.kind === "barrier" || HILL_GROUND.test(entry.id) || /asteroid|debris/.test(entry.id))
+            fits.add("heights");
+          if (beside && WOODED_GROUND.test(entry.id)) fits.add("woods");
+          // A farm needs workable ground beside it: fields, or open ground that is neither wood nor waste.
+          if (
+            beside &&
+            (FERTILE_GROUND.test(entry.id) ||
+              (entry.kind === "open" && !WOODED_GROUND.test(entry.id) && !POOR_GROUND.test(entry.id)))
+          )
+            fits.add("fields");
+        }
+      return fits;
+    };
     for (const { draft } of settlements) {
       if (draft.brief?.tags.length) {
         draft.tags = [...draft.brief.tags];
@@ -582,7 +750,26 @@ export function compileWorld({
       const roll = random();
       const count = kitTags.length === 0 ? 0 : roll < 0.3 ? 0 : roll < 0.8 ? 1 : 2;
       const tags = new Set<string>();
-      while (tags.size < Math.min(count, kitTags.length)) tags.add(pick(kitTags, random));
+      if (!siteAware) {
+        while (tags.size < Math.min(count, kitTags.length)) tags.add(pick(kitTags, random));
+      } else {
+        // Situation (generator 5): a tag the ground around it fits is likelier, one it does not fit never
+        // drawn, and a sizable settlement on a shore is mostly a port when the kit has one.
+        const fits = situationOf(draft.cell!);
+        const weights = kitTags.map((tag): number => {
+          const needs = worldTagSituation(tag);
+          return !needs ? 1 : fits.has(needs) ? 3 : 0;
+        });
+        const port = kitTags.find((tag) => worldTagSituation(tag) === "water");
+        if (port && fits.has("water") && (draft.size ?? 0) >= 1 && random() < 0.6) tags.add(port);
+        while (tags.size < count) {
+          const total = weights.reduce((sum, weight, index) => sum + (tags.has(kitTags[index]!) ? 0 : weight), 0);
+          if (total <= 0) break;
+          let at = random() * total;
+          const next = kitTags.findIndex((tag, index) => !tags.has(tag) && (at -= weights[index]!) < 0);
+          tags.add(kitTags[next < 0 ? kitTags.length - 1 : next]!);
+        }
+      }
       draft.tags = [...tags];
     }
   }

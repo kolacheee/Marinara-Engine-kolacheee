@@ -30,6 +30,7 @@ import {
   checkWorldBrief,
   compileWorld,
   worldCultivatedTerrain,
+  worldTagSituation,
   worldTerrainLook,
   worldSites,
   createConnectionSchema,
@@ -214,6 +215,52 @@ for (const kit of kits) {
       );
     }
   }
+}
+
+// ── Generator 5: settlements on their sites, tagged for their ground ──
+{
+  let waterside = { v4: 0, v5: 0 };
+  let poor = { v4: 0, v5: 0 };
+  let count = 0;
+  const poorGround = /marsh|swamp|bog|desert|dune|snow|tundra|toxic|waste|blight|dead|crater/;
+  for (const kit of kits) {
+    for (const seed of [1, 4242, 20261002]) {
+      const label = `${kit.id}/${seed}`;
+      const world = compileWorld({ seed, kit });
+      const old = compileWorld({ seed, kit, generatorVersion: 4 });
+      assert.equal(world.generatorVersion, 5);
+      assertWhole(world, kit, label);
+      const terrainAt = (each: CompiledWorld, x: number, y: number) =>
+        kit.terrain?.[parseInt(each.ground[y * each.width + x] ?? "0", 36)];
+      const besideWater = (each: CompiledWorld, place: { at: { x: number; y: number } }) => {
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++)
+            if (terrainAt(each, place.at.x + dx, place.at.y + dy)?.kind === "water") return true;
+        return false;
+      };
+      for (const [key, each] of [
+        ["v4", old],
+        ["v5", world],
+      ] as const) {
+        const settlements = each.places.filter((place) => place.rank !== undefined);
+        if (key === "v5") count += settlements.length;
+        waterside[key] += settlements.filter((place) => besideWater(each, place)).length;
+        poor[key] += settlements.filter((place) =>
+          poorGround.test(terrainAt(each, place.at.x, place.at.y)?.id ?? ""),
+        ).length;
+      }
+      // A port, a harbour, a dockyard or a beach is never drawn for a settlement with no water beside it.
+      for (const place of world.places.filter((each) => each.rank !== undefined && !each.named)) {
+        for (const tag of place.tags)
+          if (worldTagSituation(tag) === "water")
+            assert.ok(besideWater(world, place), `${label}: ${place.name} is tagged ${tag} with no water beside it`);
+      }
+    }
+  }
+  // Across every kit, far more settlements stand by water and far fewer on poor ground than before.
+  assert.ok(waterside.v5 > 2.5 * waterside.v4, `waterside ${waterside.v4} -> ${waterside.v5} of ${count}`);
+  assert.ok(poor.v5 * 4 < poor.v4, `on poor ground ${poor.v4} -> ${poor.v5} of ${count}`);
+  // Versions 1-4 are made exactly as they were (their own fingerprints below).
 }
 
 // ── The ground's shares, and the ways and times of travel ──

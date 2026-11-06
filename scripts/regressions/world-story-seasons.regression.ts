@@ -53,7 +53,9 @@ const checked = checkWorldBrief(kit, {
 assert.ok(checked.ok, JSON.stringify(checked));
 const stored = {
   seed: 7,
-  generatorVersion: WORLD_GENERATOR_VERSION,
+  // Generator 4's layout: the map checks below need Thrushwick to be a leaf (generator 5 puts a crypt
+  // beside it, so the map shows the crypt's season there instead).
+  generatorVersion: Math.min(4, WORLD_GENERATOR_VERSION),
   grounding: "expand" as const,
   brief: checked.brief,
 };

@@ -133,7 +133,7 @@ for (const kit of kits) {
 assert.ok(wars > 0, "turbulent worlds do come to blows");
 assert.equal(
   fingerprint.digest("hex"),
-  "76d3890fe3101c812ca0add938acc563c2ae038b401f44ae941845110bdedc55",
+  "f795cb3a3d6d0fa09ad514f3cfa37973b7763fa7324d67e595515d182cdd1e90",
   "the living world is deterministic; regenerate this only for an intended engine change (and bump the generator version)",
 );
 
@@ -313,7 +313,23 @@ for (const seed of [1, 2, 3, 4, 5, 6]) {
   assert.ok(said.includes(`[world: hold="${id}" ground="no-sense" note="it would make no sense" result="ok"]`), said);
   assert.ok(said.includes(`[world: hold="${id}" ground="no-agency" result="refused" reason="held"]`), said);
   // Held, the war that would have come never does; let go, it is pending again.
-  assert.ok(!warBetween(game, play(game, weeks(104), [...replies, said]), groups, 30 * WORLD_STEP_DAYS), "held");
+  // (A war only from a new tension between them that brews after it, never from the held one.)
+  {
+    const news = presentOf(game, play(game, weeks(104), [...replies, said])).news;
+    const between = (text: string) => groups.every((group) => text.includes(group));
+    for (const war of news.filter((each) => each.severe && each.day > 30 * WORLD_STEP_DAYS && between(each.text)))
+      assert.ok(
+        news.some(
+          (each) =>
+            each.brewing &&
+            each.pending !== id &&
+            each.day > 30 * WORLD_STEP_DAYS &&
+            each.day <= war.day &&
+            between(each.text),
+        ),
+        "held",
+      );
+  }
   const released = play(game, [`[world: release="${id}"]`], [...replies, said]);
   assert.ok(released.at(-1)!.includes('result="ok"'), released.at(-1));
   assert.equal(presentOf(game, released).pending.find((each) => each.id === id)?.held, undefined);

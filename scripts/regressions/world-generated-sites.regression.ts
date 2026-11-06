@@ -64,13 +64,14 @@ const briefOf = (kit: ReturnType<typeof parseWorldKit> & { ok: true }) =>
   });
 
 try {
-  assert.equal(WORLD_GENERATOR_VERSION, 4);
+  assert.equal(WORLD_GENERATOR_VERSION, 5);
   assert.ok(
     worldGeneratorReads(1) &&
       worldGeneratorReads(2) &&
       worldGeneratorReads(3) &&
       worldGeneratorReads(4) &&
-      !worldGeneratorReads(5) &&
+      worldGeneratorReads(5) &&
+      !worldGeneratorReads(6) &&
       !worldGeneratorReads("2"),
   );
 
@@ -96,7 +97,11 @@ try {
       const v3 = compileWorld({ seed, kit, brief: checked.brief, generatorVersion: 3 });
       // Version 4 moves only which open ground is fields or suburbs: places, sites and ways stay.
       assert.deepEqual(
-        { ...compileWorld({ seed, kit, brief: checked.brief }), generatorVersion: 3, ground: v3.ground },
+        {
+          ...compileWorld({ seed, kit, brief: checked.brief, generatorVersion: 4 }),
+          generatorVersion: 3,
+          ground: v3.ground,
+        },
         v3,
         `${label}: version 4 keeps version 3's places and ways`,
       );
@@ -205,7 +210,8 @@ try {
   assert.ok(worldSites(gameWorldFromMetadata(recipe(2))!).length > 0, "a version 2 recipe has them");
   assert.ok(gameWorldFromMetadata(recipe(3)), "a version 3 recipe reads");
   assert.ok(gameWorldFromMetadata(recipe(4)), "a version 4 recipe reads");
-  assert.equal(gameWorldFromMetadata(recipe(5)), null, "a version this Engine does not know is refused");
+  assert.ok(gameWorldFromMetadata(recipe(5)), "a version 5 recipe reads");
+  assert.equal(gameWorldFromMetadata(recipe(6)), null, "a version this Engine does not know is refused");
 
   // A version 1 world read in a new game's setup (a world file, a setup file, a library world, a map
   // pack) is made again as version 1; a new seed or brief makes a version 2 world.
