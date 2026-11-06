@@ -526,7 +526,12 @@ export function marinaraAiCandidates(
             break;
           }
         } else {
-          const dealt = who.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
+          // More Speed brings turns sooner by its share of the turn rate, which the speed floor dilutes:
+          // +20% Speed on a Speed-15 fighter is +12% turns, not +20% damage (slice tester s4 2026-11-06: a
+          // foe's Fair Wind outscored a blow on a nearly beaten party).
+          const rate = (u: MarinaraFighter) =>
+            effect.stat === "speed" ? eff(u, "speed") / (eff(u, "speed") + MARINARA_TUNING.speedFloor) : 1;
+          const dealt = who.reduce((sum, u) => sum + bestDamage(u, all, tactical) * rate(u), 0);
           // Rally, War Cry, songs, Strength or Speed up: the party's own blows, bigger for its turns.
           if (OFFENSIVE_STATS.has(effect.stat ?? ""))
             extra = dealt * gain * Math.min(effect.duration ?? 1, roundsLeft) * 0.8;
