@@ -3300,7 +3300,8 @@ function act(
         }
         if (actor.hp <= 0) break;
         for (let i = 0; i < (effect.hits ?? 1); i++) {
-          if (target.hp <= 0) break;
+          // A counter that drops the attacker ends its flurry (slice tester s8: a fallen Brood bit again).
+          if (target.hp <= 0 || actor.hp <= 0) break;
           strike(actor, target, effect, all, ctx, true, skillId);
         }
       }
