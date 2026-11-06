@@ -47,3 +47,29 @@ export async function marinaraCardClassicByName(
   }
   return out;
 }
+
+/** The party's library Descriptions by lookup name (characters and persona), for reading temperaments. */
+export async function partyLibraryDescriptions(
+  db: DB,
+  chat: { characterIds?: unknown; personaId?: string | null } | null | undefined,
+): Promise<Map<string, string>> {
+  const out = new Map<string, string>();
+  if (!chat) return out;
+  const storage = createCharactersStorage(db);
+  const ids = parseJson(chat.characterIds);
+  const characterIds = Array.isArray(ids) ? ids.filter((id): id is string => typeof id === "string") : [];
+  for (const row of await storage.getByIds(characterIds)) {
+    const data = parseJson(row.data) as { name?: unknown; description?: unknown; personality?: unknown } | undefined;
+    if (typeof data?.name !== "string") continue;
+    const text = [data.description, data.personality].filter((one) => typeof one === "string" && one.trim()).join("\n");
+    if (text) out.set(normalizeCharacterLookupName(data.name), text);
+  }
+  if (chat.personaId) {
+    const persona = await storage.getPersona(chat.personaId);
+    const text = [persona?.description, (persona as { personality?: unknown } | undefined)?.personality]
+      .filter((one): one is string => typeof one === "string" && Boolean(one.trim()))
+      .join("\n");
+    if (persona?.name && text) out.set(normalizeCharacterLookupName(persona.name), text);
+  }
+  return out;
+}

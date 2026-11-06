@@ -70,6 +70,7 @@ import { existsSync, readFileSync } from "fs";
 import { basename, extname, join } from "path";
 import { z } from "zod";
 import { partialInput } from "@marinara-engine/shared";
+import { MARINARA_ARCHETYPES, type MarinaraArchetype } from "@marinara-engine/shared";
 import { estimateTextTokens, sliceTextToTokenBudget } from "@marinara-engine/shared";
 import { carryGameInventory, rulesetInventedItemRef } from "@marinara-engine/shared";
 import { eq } from "../db/file-query.js";
@@ -125,6 +126,17 @@ import { createConnectionsStorage } from "../services/storage/connections.storag
 import { createCharactersStorage } from "../services/storage/characters.storage.js";
 import { buildFallbackGameCharacterCard } from "../services/game/game-party-cards.js";
 import { withCardTemperament } from "../services/game/party-temperament.service.js";
+import {
+  applyMarinaraLegacyUpgrade,
+  marinaraLegacyNeedsTemperament,
+  marinaraLegacyTemperamentPrompt,
+  marinaraLegacyUpgradeBlock,
+  readMarinaraLegacyTemperaments,
+} from "../services/game/marinara-legacy-upgrade.service.js";
+import {
+  marinaraCardClassicByName as legacyUpgradeClassicPicks,
+  partyLibraryDescriptions,
+} from "../services/game/marinara-card-classic.service.js";
 import { createCharacterGalleryStorage } from "../services/storage/character-gallery.storage.js";
 import { createPersonaGalleryStorage } from "../services/storage/persona-gallery.storage.js";
 import { createGalleryStorage } from "../services/storage/gallery.storage.js";
@@ -9863,6 +9875,101 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
 
     logger.info("[game/character-sheet/regenerate] Generated draft sheet for %s in chat %s", targetName, input.chatId);
     return { characterName: targetName, gameCard };
+  });
+
+  // ── POST /game/marinara/upgrade-legacy ──
+  // A Legacy game's party moves to Classic classes (owner 2026-11-06): one class each, the secondary
+  // tree from their temperament (read from their Description where the card has none), their Legacy
+  // level carried over. Their Legacy stats stay on their cards.
+  app.post("/marinara/upgrade-legacy", async (req, reply) => {
+    const input = z
+      .object({
+        chatId: z.string().min(1),
+        connectionId: z.string().optional(),
+        members: z
+          .array(
+            z.object({
+              name: z.string().min(1).max(200),
+              primary: z.enum(MARINARA_ARCHETYPES as unknown as [MarinaraArchetype, ...MarinaraArchetype[]]).optional(),
+            }),
+          )
+          .max(24)
+          .default([]),
+      })
+      .parse(req.body);
+    const chats = createChatsStorage(app.db);
+    const connections = createConnectionsStorage(app.db);
+    const chat = await chats.getById(input.chatId);
+    if (!chat) return reply.code(404).send({ error: "Chat not found" });
+    if ((chat.mode as string) !== "game") return reply.code(400).send({ error: "Only a game can be upgraded" });
+    const meta = parseMeta(chat.metadata);
+    const block = marinaraLegacyUpgradeBlock(meta);
+    if (block) return reply.code(409).send({ error: block });
+
+    // Temperaments the cards don't have yet are read from the Descriptions, as a new card's would be.
+    const needed = marinaraLegacyNeedsTemperament(meta);
+    let read = new Map<string, import("@marinara-engine/shared").CombatPartyTemperament>();
+    let readFailed = false;
+    if (needed.length) {
+      try {
+        const descriptions = await partyLibraryDescriptions(app.db, chat);
+        const prompt = marinaraLegacyTemperamentPrompt(needed, descriptions);
+        const { conn, baseUrl, defaultGenerationParameters } = await resolveConnection(
+          connections,
+          input.connectionId,
+          chat,
+        );
+        const generationParameters = resolveStoredGameGenerationParameters(meta, defaultGenerationParameters);
+        const requestOptions = gameGenOptions(
+          conn.model,
+          {
+            temperature: 0.2,
+            maxTokens: 600,
+            signal: createResponseAbortSignal(reply, getChatGenerationTimeoutMs(), "Classic upgrade temperaments"),
+          },
+          generationParameters,
+          conn.provider,
+        );
+        const provider = await createGameMainProvider(connections, conn, baseUrl);
+        const result = await runGameChatComplete(
+          provider,
+          [
+            { role: "system", content: prompt.system, contextKind: "prompt" },
+            { role: "user", content: prompt.user, contextKind: "prompt" },
+          ],
+          requestOptions,
+          "Classic upgrade temperaments",
+        );
+        const extraction = extractLeadingThinkingBlocks(result.content ?? "", generationParameters?.customThinkingTags);
+        read = readMarinaraLegacyTemperaments(parseJSON(extraction.content));
+      } catch (error) {
+        // A party member the model couldn't read gets the game's drawn temperament, and the player is told.
+        readFailed = true;
+        logger.warn(error, "[game/marinara/upgrade-legacy] Reading temperaments failed for chat %s", input.chatId);
+      }
+    }
+    const classic = await legacyUpgradeClassicPicks(app.db, chat);
+    let outcome: ReturnType<typeof applyMarinaraLegacyUpgrade> | null = null;
+    await chats.patchMetadata(input.chatId, (current) => {
+      outcome = applyMarinaraLegacyUpgrade(current, {
+        gameId: input.chatId,
+        members: input.members,
+        read,
+        classic,
+        sessionNumber: currentGameSessionNumber(current),
+        at: new Date().toISOString(),
+      });
+      return "patch" in outcome ? outcome.patch : {};
+    });
+    const done = outcome as ReturnType<typeof applyMarinaraLegacyUpgrade> | null;
+    if (!done) return reply.code(500).send({ error: "The upgrade did not run" });
+    if ("refusal" in done) return reply.code(409).send({ error: done.refusal });
+    logger.info(
+      "[game/marinara/upgrade-legacy] Upgraded %d party members in chat %s",
+      done.upgraded.length,
+      input.chatId,
+    );
+    return { upgraded: done.upgraded, ...(readFailed ? { temperamentReadFailed: true } : {}) };
   });
 
   // ── POST /game/party/recruit ──
