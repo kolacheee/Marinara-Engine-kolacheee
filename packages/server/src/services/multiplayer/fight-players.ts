@@ -121,15 +121,16 @@ export function roomAwayCharacters(metadata: Record<string, unknown> | null | un
 
 /**
  * What the Game Master is told about a room's players in an MRPG game (owner 2026-11-06): the characters
- * who are away (see `roomAwayCharacters`), and the seated players whose character has no MRPG class yet
- * in a game already under way, whom the GM onboards at the level it judges (`[mrpg_join]`). In a new game
- * (nobody has levelled or earned experience yet) a newcomer simply starts at level 1 with everyone else,
- * so nobody is listed. `partyLevel` is the party's level without the away characters.
+ * who are away (see `roomAwayCharacters`), and the seated guests whose character has no MRPG class yet,
+ * whom the GM onboards with `[mrpg_join]`: it always picks their sister tree, and their growths and stats
+ * if it likes. Their level is its call only once the game is `underWay` (someone has levelled or earned
+ * experience); in a new game they start at level 1 with everyone else. `partyLevel` leaves out the away.
  */
 export function roomMrpgRoster(metadata: Record<string, unknown> | null | undefined): {
   away: string[];
   newcomers: string[];
   partyLevel: number;
+  underWay: boolean;
 } {
   const awayKeys = roomAwayCharacters(metadata);
   const cards = Array.isArray(metadata?.gameCharacterCards) ? metadata.gameCharacterCards.map(record) : [];
@@ -148,7 +149,7 @@ export function roomMrpgRoster(metadata: Record<string, unknown> | null | undefi
     .map(({ progression }) => progression.level);
   const room = record(metadata?.multiplayer);
   const newcomers: string[] = [];
-  if (underWay && room.version === 1 && room.role === "host" && room.status !== "ended") {
+  if (room.version === 1 && room.role === "host" && room.status !== "ended") {
     const participants = Array.isArray(room.participants) ? room.participants.map(record) : [];
     for (const participant of participants) {
       if (participant.isHost === true || participant.joinsNextRound === true || typeof participant.id !== "string")
@@ -157,5 +158,5 @@ export function roomMrpgRoster(metadata: Record<string, unknown> | null | undefi
       if (bound && !readMarinaraCardProgression(bound.marinara)) newcomers.push(bound.name);
     }
   }
-  return { away, newcomers, partyLevel: marinaraPartyLevel(levels) };
+  return { away, newcomers, partyLevel: marinaraPartyLevel(levels), underWay };
 }
