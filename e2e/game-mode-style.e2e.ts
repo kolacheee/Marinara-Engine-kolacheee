@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { WORLD_STARTER_KITS, parseWorldKit } from "@marinara-engine/shared";
 import { seedUIState } from "./ui-state-fixture.js";
 import { prepareViteFixtureDependencies } from "./vite-fixture-dependencies.js";
+import { wizardNextButton, wizardStepTitle } from "./game-wizard-steps.js";
 
 /**
  * Classic Game Mode or the Overworld RPG, on screen: a new game starts on the Overworld, whose World step
@@ -86,17 +87,15 @@ async function mountWizard(page: Page, testInfo: TestInfo): Promise<Locator> {
 
 /** Clicks Next once and waits for the next step's heading. */
 async function next(wizard: Locator) {
-  const heading = wizard.getByRole("heading", { level: 4 }).first();
-  const previous = await heading.innerText();
-  await wizard.getByRole("button", { name: "Next", exact: true }).click();
-  await expect(heading).not.toHaveText(previous);
+  const previous = await wizardStepTitle(wizard);
+  await wizardNextButton(wizard).click();
+  await expect.poll(() => wizardStepTitle(wizard)).not.toBe(previous);
 }
 
 /** Walks on with Next to the step whose heading is `title`. */
 async function stepTo(wizard: Locator, title: string) {
-  const heading = wizard.getByRole("heading", { level: 4 }).first();
-  for (let guard = 0; guard < 8 && (await heading.innerText()) !== title; guard++) await next(wizard);
-  await expect(heading).toHaveText(title);
+  for (let guard = 0; guard < 8 && (await wizardStepTitle(wizard)) !== title; guard++) await next(wizard);
+  expect(await wizardStepTitle(wizard)).toBe(title);
 }
 
 /** Walks on to the last step and starts the game; the setup it started. */
