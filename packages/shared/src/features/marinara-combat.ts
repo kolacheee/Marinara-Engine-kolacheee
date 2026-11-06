@@ -303,6 +303,9 @@ export const MARINARA_COMPANION = {
   shared: 0.5,
 } as const;
 
+/** What Vanish adds to the crit chance of the user's next hit that lands. */
+export const MARINARA_VANISH_CRIT = 40;
+
 /** A companion's strike when its family names no natural attack (a bite). */
 export const MARINARA_COMPANION_ATTACK_TYPE: MarinaraDamageType = "pierce";
 
@@ -3745,18 +3748,20 @@ function strikeOnce(
     ctx.events.push({ kind: "decoy", actorId: actor.id, targetId: target.id, skillId, amount: shadow.decoys });
     return;
   }
-  // Vanish: the first hit to land after it is a sure critical.
-  const sureCrit = !!actor.critNext;
-  if (sureCrit) actor.critNext = undefined;
-  const critRoll = sureCrit ? 0 : random() * 100;
-  let crit = sureCrit || critRoll < critChance;
-  if (crit && !sureCrit) {
+  // Vanish: the first hit to land after it gets +40 crit chance (playtest A/B 2026-11-06: a sure crit
+  // made the Phantom's Vanish + Backstab chain, and foes' one-shots on healers, too strong).
+  const vanished = !!actor.critNext;
+  if (vanished) actor.critNext = undefined;
+  const critRoll = random() * 100;
+  let crit = critRoll < Math.min(100, critChance + (vanished ? MARINARA_VANISH_CRIT : 0));
+  if (crit) {
     const omen = living(all.filter((u) => u.side === target.side)).some((u) => hooksOf(u).enemyCritToMissChance);
     if (omen && random() < 0.5) crit = false;
   }
   // A crit passive is named when the crit came only from it.
   const keen = (hooks.critBonus ?? 0) + (hooks.critVsDebuffed && marinaraDebuffed(target) ? hooks.critVsDebuffed : 0);
-  if (crit && !sureCrit && keen && critRoll >= critChance - keen) {
+  if (crit && vanished && critRoll >= critChance) notes.push("Vanish crit");
+  if (crit && keen && critRoll < critChance && critRoll >= critChance - keen) {
     const names: Record<string, string> = {
       "keen-eye": "Keen Eye",
       "read-the-signs": "Read the Signs",

@@ -23,6 +23,7 @@ import {
 } from "./marinara-classes.js";
 import {
   MARINARA_TUNING,
+  MARINARA_VANISH_CRIT,
   marinaraActionWeight,
   marinaraWoundDenied,
   marinaraOpensWound,
@@ -478,9 +479,11 @@ export function marinaraAiCandidates(
           const others = friends
             .filter((u) => u.id !== actor.id)
             .reduce((sum, u) => sum + bestDamage(u, all, tactical), 0);
-          // Vanish: the next hit is a sure critical, and the foes it slips past are exposed.
+          // Vanish: the next hit gets +40 crit chance, and the foes it slips past are exposed.
           extra =
-            (effect.critNext ? bestDamage(actor, all, tactical) * (MARINARA_TUNING.critMultiplier - 1) : 0) +
+            (effect.critNext
+              ? bestDamage(actor, all, tactical) * (MARINARA_TUNING.critMultiplier - 1) * (MARINARA_VANISH_CRIT / 100)
+              : 0) +
             others * effect.exposeNext * 2 * 0.6;
           value = threatened ? actor.maxHp * 0.05 : 0;
         } else if (effect.stat === "damage-taken" || effect.stat === "resistance" || effect.stat === "defense") {
