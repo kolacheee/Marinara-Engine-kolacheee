@@ -612,6 +612,17 @@ export function WorldOverworld({
           size.width / scale + OVERWORLD_TILE * 3,
           size.height / scale + OVERWORLD_TILE * 3,
         );
+        // Dimmed past the map's edge, so where the map ends reads as its border, not a seam in the land.
+        ctx.fillStyle = "rgba(5, 6, 10, 0.45)";
+        ctx.beginPath();
+        ctx.rect(
+          Math.floor(cam.x / scale / OVERWORLD_TILE - 1) * OVERWORLD_TILE,
+          Math.floor(cam.y / scale / OVERWORLD_TILE - 1) * OVERWORLD_TILE,
+          size.width / scale + OVERWORLD_TILE * 3,
+          size.height / scale + OVERWORLD_TILE * 3,
+        );
+        ctx.rect(0, 0, worldSize.width, worldSize.height);
+        ctx.fill("evenodd");
       }
       // Smooth only where the base is shown smaller than it was drawn (an image pack's art).
       ctx.imageSmoothingEnabled = drawTile.image && resolution > scale * dpr;
@@ -640,7 +651,19 @@ export function WorldOverworld({
       }
       if (layerRef.current) layerRef.current.style.transform = `translate(${-cam.x}px, ${-cam.y}px)`;
     },
-    [beyond, darkness, drawTile, ground, markers, resolution, scale, size.height, size.width],
+    [
+      beyond,
+      darkness,
+      drawTile,
+      ground,
+      markers,
+      resolution,
+      scale,
+      size.height,
+      size.width,
+      worldSize.height,
+      worldSize.width,
+    ],
   );
 
   useEffect(() => {

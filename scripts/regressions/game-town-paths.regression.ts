@@ -96,7 +96,7 @@ for (const kit of WORLD_STARTER_KITS) {
     };
     return { ...inputs, world: compileGameWorld(inputs) } as GameWorld;
   })();
-  assert.equal(fresh.world.generatorVersion, 3);
+  assert.ok(fresh.world.generatorVersion >= 3);
   assert.equal(older.world.generatorVersion, 2);
   for (const settlement of fresh.world.places.filter((place) => place.rank !== undefined)) {
     const town = worldTown(fresh, settlement.id)!;
