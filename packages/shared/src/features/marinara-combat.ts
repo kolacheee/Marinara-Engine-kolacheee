@@ -940,7 +940,8 @@ export interface MarinaraFighter {
   cooldowns: Record<string, number>;
   /** Skills used once per fight that have been used. */
   used: string[];
-  charging?: { skillId: string; targetId: string };
+  /** A readied blow: what, at whom, and on a board the tile it was aimed at (an area goes off there). */
+  charging?: { skillId: string; targetId: string; at?: { x: number; y: number } };
   /** Slept or stunned while readying a blow: it is lost (Alyssa 2026-11-06). */
   chargeBroken?: string;
   lastStandUsed?: boolean;
@@ -2964,7 +2965,7 @@ export function beginMarinaraTurn(
   actor: MarinaraFighter,
   all: MarinaraFighter[],
   ctx: MarinaraFightContext,
-): { acts: boolean; release?: { skillId: string; targetId: string } } {
+): { acts: boolean; release?: NonNullable<MarinaraFighter["charging"]> } {
   delete actor.commanded;
   // A commanded turn is an extra action: nothing ticks and the timeline stays where it was.
   if ((actor.bonusTurns ?? 0) > 0) {
@@ -3142,8 +3143,27 @@ export function releaseMarinaraCharge(
   release: { skillId: string; targetId: string },
   all: MarinaraFighter[],
   ctx: MarinaraFightContext,
+  /** On a board: who stands in the area where it goes off (the board decides; Classic hits the side). */
+  inArea?: readonly string[],
 ): void {
-  withSlowTime(actor, all, () => releaseMarinaraChargeNow(actor, release, all, ctx), ctx);
+  withSlowTime(actor, all, () => releaseMarinaraChargeNow(actor, release, all, ctx, inArea), ctx);
+}
+
+function releasedEffect(actor: MarinaraFighter, skillId: string) {
+  const ability = skillId.startsWith("enemy:") ? MARINARA_ENEMY_SKILLS[skillId.slice("enemy:".length)] : undefined;
+  const skill = ability ? null : (actor.skills.find((s) => s.id === skillId) ?? null);
+  let base: MarinaraEffect | null = skill ? marinaraSkillEffect(actor, skill) : null;
+  if (ability) {
+    const { label: _label, ...effect } = ability;
+    base = effect;
+  }
+  return { ability, skill, effect: base ? { ...base, charge: false } : null };
+}
+
+/** Whether a readied blow is an area one: on a board it goes off at its tile rather than following the one aimed at. */
+export function marinaraChargeIsArea(actor: MarinaraFighter, skillId: string): boolean {
+  const target = releasedEffect(actor, skillId).effect?.target;
+  return target === "all-enemies" || target === "front-row";
 }
 
 function releaseMarinaraChargeNow(
@@ -3151,18 +3171,17 @@ function releaseMarinaraChargeNow(
   release: { skillId: string; targetId: string },
   all: MarinaraFighter[],
   ctx: MarinaraFightContext,
+  inArea?: readonly string[],
 ): void {
-  const ability = release.skillId.startsWith("enemy:")
-    ? MARINARA_ENEMY_SKILLS[release.skillId.slice("enemy:".length)]
-    : undefined;
-  const skill = ability ? null : (actor.skills.find((s) => s.id === release.skillId) ?? null);
-  let base: MarinaraEffect | null = skill ? marinaraSkillEffect(actor, skill) : null;
-  if (ability) {
-    const { label: _label, ...effect } = ability;
-    base = effect;
+  const { ability, skill, effect } = releasedEffect(actor, release.skillId);
+  if (!effect) return;
+  if (inArea) {
+    // On a board an area goes off where it was aimed and lands on every foe still standing in it.
+    const pool = marinaraTargetsFor(actor, effect, all);
+    const struck = pool.filter((one) => inArea.includes(one.id));
+    if (struck.length) act(actor, skill, effect, struck, all, ctx, ability ? release.skillId : undefined);
+    return;
   }
-  if (!base) return;
-  const effect = { ...base, charge: false };
   const target = all.find((u) => u.id === release.targetId && u.hp > 0) ?? marinaraTargetsFor(actor, effect, all)[0];
   if (!target) return;
   // An area lands on everyone in it when it goes off, not only on the one it was aimed at.

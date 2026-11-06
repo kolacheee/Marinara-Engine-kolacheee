@@ -349,14 +349,24 @@ export function marinaraBoardTurn(
     );
     const blows: Array<Extract<TacticalAction, { unitId: string }>> = [
       { type: "attack", unitId: tu.id, targetId: bound.id },
-      ...(tu.skills ?? []).filter((k) => damaging.has(k.id)).map(
-        (k) => ({ type: "skill", unitId: tu.id, skillName: k.name, targetId: bound.id }) as Extract<TacticalAction, { unitId: string }>,
-      ),
+      ...(tu.skills ?? [])
+        .filter((k) => damaging.has(k.id))
+        .map(
+          (k) =>
+            ({ type: "skill", unitId: tu.id, skillName: k.name, targetId: bound.id }) as Extract<
+              TacticalAction,
+              { unitId: string }
+            >,
+        ),
     ];
     boundTile = tiles.find((at) =>
       blows.some(
         (blow) =>
-          !validateTacticalUnitAction(t, tu, at.x === tu.x && at.y === tu.y ? blow : { ...blow, to: at } as typeof blow),
+          !validateTacticalUnitAction(
+            t,
+            tu,
+            at.x === tu.x && at.y === tu.y ? blow : ({ ...blow, to: at } as typeof blow),
+          ),
       ),
     );
     boundHit = !!boundTile;
@@ -2038,6 +2048,12 @@ function effect(s: CombatDirectorState, p: Pending) {
         apart,
         rangeOf,
       );
+      // A blow readied on the board remembers the tile it was aimed at: an area goes off there.
+      const readier = s.marinara.fighters.find((one) => one.id === tu.id);
+      if (readier?.charging && !readier.charging.at) {
+        const mark = units.find((one) => one.id === readier.charging!.targetId);
+        if (mark) readier.charging.at = { x: mark.x, y: mark.y };
+      }
       tu.hasActed = true;
       if (a.type === "defend") tu.defending = true;
       queueMarinaraBonusTurns(s);
@@ -2315,17 +2331,28 @@ export function advanceCombatDirector(s: CombatDirectorState) {
       }
       // Classic Marinara on a board: the fighter's own turn starts (statuses tick, stamina back); one
       // asleep, stunned or letting a charge go spends it there.
-      const readiedReach = (targetId: string, skillId: string) => {
-        const from = u as TacticalUnit;
-        const at = s.tactical?.units.find((one) => one.id === targetId);
-        if (!at) return true;
-        const range = from.skills?.find((k) => k.id === skillId)?.range ?? from.attackRange.max;
-        return Math.abs(at.x - from.x) + Math.abs(at.y - from.y) <= range;
+      const board = s.tactical && {
+        reaches: (targetId: string, skillId: string) => {
+          const from = u as TacticalUnit;
+          const at = s.tactical?.units.find((one) => one.id === targetId);
+          if (!at) return true;
+          const range = from.skills?.find((k) => k.id === skillId)?.range ?? from.attackRange.max;
+          return Math.abs(at.x - from.x) + Math.abs(at.y - from.y) <= range;
+        },
+        // A readied area goes off at the tile it was aimed at, over that tile and the ones next to it
+        // (the board's area, as performMarinaraTacticalAction strikes it).
+        around: (tile: { x: number; y: number } | undefined, targetId: string) => {
+          const center = tile ?? s.tactical?.units.find((one) => one.id === targetId);
+          if (!center) return [];
+          return (s.tactical?.units ?? [])
+            .filter((one) => Math.max(Math.abs(one.x - center.x), Math.abs(one.y - center.y)) <= 1)
+            .map((one) => one.id);
+        },
       };
       if (
         s.marinara &&
         s.tactical &&
-        !marinaraTacticalTurnStart(s.marinara, u.id, s.seed, marinaraLog(s), readiedReach)
+        !marinaraTacticalTurnStart(s.marinara, u.id, s.seed, marinaraLog(s), board || undefined)
       ) {
         (u as TacticalUnit).hasActed = true;
         s.actorId = undefined;
