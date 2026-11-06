@@ -220,9 +220,12 @@ export function marinaraAiCandidates(
     const pool = price?.resource === "mp" ? actor.maxMp : actor.maxStamina;
     // MP never comes back in a fight; stamina does, so it is cheaper to spend. MP gets dearer as it
     // runs low (playtest 2026-11-01: Menders and Maestros spent it all early on top-ups and buffs).
-    const left = price?.resource === "mp" ? Math.max(1, actor.mp) : pool;
+    // Stamina too gets dearer as it runs low, so a skill that adds next to nothing over an attack isn't
+    // cast until the tank is dry (slice tester s2 2026-11-06: Last Cut on an armoured Walker for 3 damage
+    // a cast, stamina 42 to 2).
+    const left = Math.max(1, price?.resource === "mp" ? actor.mp : actor.stamina);
     const cost = price
-      ? (price.cost / Math.max(1, pool)) * (price.resource === "mp" ? Math.sqrt(pool / left) : 0.4)
+      ? (price.cost / Math.max(1, pool)) * Math.sqrt(pool / left) * (price.resource === "mp" ? 1 : 0.4)
       : 0;
     const scale = (value: number | undefined) => (value === undefined ? undefined : value / weight);
     // A guard's worth also counts as support, so a Guard who isn't protective by temperament still
@@ -723,14 +726,25 @@ export function marinaraAiCandidates(
         };
         // The blows each foe is likely to send at the friend before the Guard's next turn: on it, and on
         // the Guard in its place.
-        const shareOf = (foe: MarinaraFighter, target: MarinaraFighter) =>
-          target.provoking > 0
-            ? 1
-            : pull(foe, target) /
+        // A foe drawn to a friend (challenged by it, or provoked by it and able to get at it) sends its
+        // single blows there already, so Cover on anyone else stops none of them; areas aren't Cover's to
+        // stop at all (slice tester s2 2026-11-06: a provoking Guard covered a friend the provoked foes
+        // weren't hitting, valued on their whole blows).
+        const drawnTo = (foe: MarinaraFighter) =>
+          friends.find(
+            (u) =>
+              (foe.tauntTurns > 0 && foe.tauntedBy === u.id) ||
+              (u.provoking > 0 && (!options.reaches || options.reaches(foe.id, u.id))),
+          );
+        const shareOf = (foe: MarinaraFighter, target: MarinaraFighter) => {
+          const drawn = drawnTo(foe);
+          if (drawn) return drawn.id === target.id ? 1 : 0;
+          return pull(foe, target) /
               Math.max(
                 1,
                 friends.reduce((total, u) => total + pull(foe, u), 0),
               );
+        };
         const blows = (target: MarinaraFighter) =>
           foes.reduce(
             (sum, foe) => {
