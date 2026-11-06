@@ -9,7 +9,10 @@
 
 import {
   MARINARA_ARCHETYPES,
+  MARINARA_LEVEL_CAP,
   MARINARA_STATS,
+  MARINARA_XP_PER_LEVEL,
+  awardMarinaraXp,
   createMarinaraProgression,
   isMarinaraPartyTemperament,
   marinaraClass,
@@ -346,6 +349,54 @@ export function createMarinaraCardProgression(input: {
     temperament: isMarinaraPartyTemperament(input.temperament) ? input.temperament : "disciplined",
     lean: picked ? marinaraLeanFromClassic(input.classic!) : marinaraLeanFromCard(input.card),
   });
+}
+
+/**
+ * A Legacy game's level for a party member, to carry into Classic classes: the Level stat on their game
+ * card when it has one (what Legacy fights read), else the game's session number, else 1. Capped at
+ * Classic's level cap.
+ */
+export function marinaraLegacyLevel(
+  card: { rpgStats?: { attributes?: Array<{ name?: unknown; value?: unknown }> } } | null | undefined,
+  sessionNumber?: number | null,
+): number {
+  let level: number | null = null;
+  for (const attribute of card?.rpgStats?.attributes ?? []) {
+    const name = typeof attribute?.name === "string" ? attribute.name.trim().toLowerCase() : "";
+    if (name !== "level" && name !== "lvl") continue;
+    const value = typeof attribute.value === "number" ? attribute.value : Number(attribute.value);
+    if (Number.isFinite(value)) {
+      level = value;
+      break;
+    }
+  }
+  const raw = level ?? (typeof sessionNumber === "number" && Number.isFinite(sessionNumber) ? sessionNumber : 1);
+  return Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.floor(raw)));
+}
+
+/**
+ * A Legacy party member upgraded to Classic classes (owner 2026-11-06): one class, the base class of the
+ * primary tree picked (or guessed from their card), the secondary tree from their temperament, and their
+ * Legacy level carried over as XP earned in that class, so their stats grow along it as level-ups would.
+ */
+export function upgradeMarinaraLegacyCard(input: {
+  gameId: string;
+  card: Parameters<typeof createMarinaraCardProgression>[0]["card"];
+  temperament: MarinaraPartyTemperament;
+  level: number;
+  primary?: MarinaraArchetype;
+  classic?: MarinaraCardClassic;
+}): MarinaraCardProgression {
+  const fresh = createMarinaraCardProgression({
+    gameId: input.gameId,
+    card: input.card,
+    temperament: input.temperament,
+    ...(input.primary ? { primary: input.primary } : {}),
+    ...(input.classic ? { classic: input.classic } : {}),
+  });
+  const level = Math.max(1, Math.min(MARINARA_LEVEL_CAP, Math.floor(input.level)));
+  if (level <= 1) return fresh;
+  return awardMarinaraXp(fresh, (level - 1) * MARINARA_XP_PER_LEVEL).progression;
 }
 
 /** Whether a stored value reads as a progression (written by this Engine). */
