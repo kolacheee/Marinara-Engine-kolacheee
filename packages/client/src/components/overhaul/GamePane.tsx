@@ -12,6 +12,7 @@ import type { AvatarCrop, GameInventoryStack } from "@marinara-engine/shared";
 import { cn, getAvatarCropStyle } from "../../lib/utils";
 import { useOverhaulStore, type OverhaulGamePaneTab } from "../../stores/overhaul.store";
 import { useTranslation as useUiTranslation } from "react-i18next";
+import { useGameModeStore } from "../../stores/game-mode.store";
 import { useLocalizedUiText } from "../../localization/use-localized-ui-text";
 
 export interface OvGamePaneMember {
@@ -85,6 +86,7 @@ function PartyTab({
   inventory: GameInventoryStack[];
 }) {
   const { t: localizeUi } = useUiTranslation();
+  const localize = useLocalizedUiText();
   const [picked, setPicked] = useState<string | null>(null);
   const selected = members.find((member) => member.id === picked) ?? members[0];
   if (!members.length) return <p className="ov-gpane__empty">{localizeUi("ui.overhaul.partytab.noPartyMembersYet")}</p>;
@@ -140,7 +142,20 @@ function PartyTab({
       </table>
       {selected ? (
         <div className="ov-gpane__detail">
-          <p className="ov-gpane__label">{selected.name}</p>
+          <p className="ov-gpane__label ov-gpane__label--row">
+            <span>{selected.name}</span>
+            {/* The full character sheet (Classic classes, skills and gear live there); the party bar that
+                opened it is hidden in this layout. */}
+            {card ? (
+              <button
+                type="button"
+                className="ov-gpane__open"
+                onClick={() => useGameModeStore.getState().openCharacterSheet(selected.id)}
+              >
+                {localize("Open sheet")}
+              </button>
+            ) : null}
+          </p>
           {otherStats.length ? (
             <div className="ov-gpane__stats">
               {otherStats.map((stat) => (

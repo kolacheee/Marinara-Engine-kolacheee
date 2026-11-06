@@ -60,6 +60,20 @@ The check rolls one d20 and adds two modifiers:
 - A skill modifier, from the skill level the game tracks for your character. It is 0 if the game has no level for that skill yet.
 - An attribute modifier, from the skill's governing attribute. Each skill maps to one automatically: Stealth uses Dexterity, Perception uses Wisdom, Persuasion uses Charisma. A skill Marinara does not recognize uses Intelligence.
 
+In a game on **MRPG** classes, the attribute modifier comes from the character's MRPG stats instead, the ones their active class gives them (see [MRPG classes](mrpg-classes.md)). Any Legacy attributes still on an upgraded card are not used. Each skill leans on one stat:
+
+| Stat | Skills |
+| --- | --- |
+| Strength | Athletics, Intimidation |
+| Speed | Acrobatics, Stealth |
+| Skill | Sleight of Hand, Investigation, Perception, Medicine, Survival, Animal Handling, and any skill not listed here |
+| Defense | Endurance, Constitution |
+| Magic | Arcana, History, Nature, Intelligence |
+| Resistance | Insight, Religion, Wisdom |
+| Luck | Persuasion, Deception, Performance, Charisma |
+
+The check adds a fifth of that stat, rounded down, up to +5. That is about +1 for a new character's best stat, +2 or +3 at level 10, and +5 at the top. A weak stat adds nothing.
+
 If the total reaches or beats the DC, the check succeeds. Two rolls override the math:
 
 - A natural 20 is a **CRITICAL SUCCESS** and always passes.
