@@ -791,6 +791,8 @@ export function performMarinaraTacticalAction(
   source?: string,
   /** Tiles between two units on the board. */
   apart?: (a: string, b: string) => number,
+  /** A unit's attack reach on the board, in tiles. */
+  rangeOf?: (id: string) => number,
 ): void {
   const actor = marinaraFighter(state, unitId);
   if (!actor) throw new Error("Combatant cannot act.");
@@ -802,6 +804,11 @@ export function performMarinaraTacticalAction(
       if (apart && fighter.skills.some((skill) => skill.id === "grave-hunger"))
         fighter.spellFoes = state.fighters
           .filter((foe) => foe.side !== fighter.side && apart(fighter.id, foe.id) <= MARINARA_BOARD_SPELL_RANGE.hexer!)
+          .map((foe) => foe.id);
+      // Return Fire answers only an attacker its own shots reach on the board (panel r7: across the map).
+      if (apart && rangeOf && fighter.skills.some((skill) => skill.id === "return-fire"))
+        fighter.shotFoes = state.fighters
+          .filter((foe) => foe.side !== fighter.side && apart(fighter.id, foe.id) <= rangeOf(fighter.id))
           .map((foe) => foe.id);
     }
   const ctx = { ...context(state, seed, true), grouped: false };

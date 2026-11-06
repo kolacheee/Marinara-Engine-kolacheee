@@ -273,4 +273,32 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
   assert.deepEqual(events.find((one) => one.kind === "cleanse")?.notes, ["raised damage taken"]);
 }
 
+// Panel r7: Follow Through on a board gives a bonus action (the board's only extra turns); a foe that
+// yielded doesn't strike back.
+{
+  const blade = unit("B", "party", "blade", ["follow-through"]);
+  const foe = unit("F", "enemy", "guard");
+  foe.hp = 1;
+  const all = [blade, foe];
+  const events: MarinaraEvent[] = [];
+  performMarinaraOption(blade, marinaraOption(blade, null, all)!, [foe], all, {
+    random: () => 0.01,
+    events,
+    tactical: true,
+  });
+  assert.equal(foe.hp, 0);
+  assert.equal(blade.bonusTurns, 1, "a bonus action on the board");
+  const guard = unit("G", "enemy", "guard", ["retaliate"]);
+  guard.hp = guard.maxHp = 100000;
+  guard.yielded = true;
+  const striker = unit("S", "party", "blade");
+  const seen: MarinaraEvent[] = [];
+  for (let n = 0; n < 10; n++)
+    performMarinaraOption(striker, marinaraOption(striker, null, [striker, guard])!, [guard], [striker, guard], {
+      random: () => 0.3,
+      events: seen,
+    });
+  assert.ok(!seen.some((one) => one.kind === "counter"), "a foe that yielded doesn't counter");
+}
+
 console.log("game-marinara-panel-r6: ok");
