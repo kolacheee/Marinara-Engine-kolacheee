@@ -5614,6 +5614,24 @@ function GameSurfaceComponent({
       handlePartyChangeCommands(msg.id, tags.partyChanges);
     }
 
+    // A room player brought into an MRPG game under way at the level the Game Master gave them.
+    for (const join of tags.mrpgJoins) {
+      const name = join.characterName.trim();
+      const commandKey = `${msg.id}:mrpg_join:${normalizeTextForMatch(name)}`;
+      if (!name || processedPartyChangeCommandsRef.current.has(commandKey)) continue;
+      processedPartyChangeCommandsRef.current.add(commandKey);
+      void api
+        .post("/game/marinara/join", {
+          chatId: activeChatId,
+          name,
+          ...(join.level ? { level: join.level } : {}),
+          ...(join.growths ? { growths: join.growths } : {}),
+          ...(join.stats ? { stats: join.stats } : {}),
+        })
+        .then(() => queryClient.invalidateQueries({ queryKey: chatKeys.detail(activeChatId) }))
+        .catch((error: unknown) => console.warn("[mrpg_join] not applied:", error));
+    }
+
     if (directAddressMode) {
       console.warn("[scene-wrapup] skipping scene analysis for direct %s address", directAddressMode);
       markSceneReady(msg.id);

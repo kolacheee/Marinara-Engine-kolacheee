@@ -78,6 +78,13 @@ export interface PartyChangeTag {
   stats?: string;
 }
 
+export interface MrpgJoinTag {
+  characterName: string;
+  level?: number;
+  growths?: string;
+  stats?: string;
+}
+
 export interface ReadableTag {
   type: "note" | "book";
   content: string;
@@ -126,6 +133,9 @@ export interface ParsedGmTags {
   inventoryUpdates: InventoryTag[];
   /** Characters joining or leaving the party */
   partyChanges: PartyChangeTag[];
+  /** MRPG games: a room player's newly joined character brought in at the Game Master's level
+   *  (owner 2026-11-06), as [mrpg_join: character="Name" level="N" growths="…" stats="…"]. */
+  mrpgJoins: MrpgJoinTag[];
   /** Note or book content for reading display */
   readables: ReadableTag[];
 }
@@ -435,6 +445,7 @@ export function parseSegmentInventoryUpdates(content: string): SegmentInventoryU
   source = extractFlatTags(source, /\[element_attack:/gi).remaining;
   source = extractFlatTags(source, /\[party_change:/gi).remaining;
   source = extractFlatTags(source, /\[party_add:/gi).remaining;
+  source = extractFlatTags(source, /\[mrpg_join:/gi).remaining;
   source = source.replace(/\[party-turn\]/gi, "");
   source = source.replace(/\[party-chat\]/gi, "");
   source = extractFlatTags(source, /\[dice:/gi).remaining;
@@ -589,6 +600,7 @@ export function parseGmTags(content: string): ParsedGmTags {
     combatStatuses: [],
     inventoryUpdates: [],
     partyChanges: [],
+    mrpgJoins: [],
     readables: [],
   };
 
@@ -830,6 +842,25 @@ export function parseGmTags(content: string): ParsedGmTags {
   }
   text = partyAddTags.remaining;
 
+  // [mrpg_join: character="Name" level="N" growths="…" stats="…"] — a room player's new character
+  const mrpgJoinTags = extractFlatTags(text, /\[mrpg_join:/gi);
+  for (const { body } of mrpgJoinTags.matches) {
+    const characterName = parsePartyCharacterName(body);
+    if (!characterName) continue;
+    const attribute = (name: string) =>
+      (new RegExp(`${name}\\s*=\\s*"([^"]+)"`, "i").exec(body)?.[1] ?? "").trim() || undefined;
+    const levelText = /\blevel\s*=\s*"?(\d{1,2})"?/i.exec(body)?.[1];
+    const growths = attribute("growths");
+    const stats = attribute("stats");
+    result.mrpgJoins.push({
+      characterName,
+      ...(levelText ? { level: Number(levelText) } : {}),
+      ...(growths ? { growths } : {}),
+      ...(stats ? { stats } : {}),
+    });
+  }
+  text = mrpgJoinTags.remaining;
+
   // [Note: content] or [Book: content] — readable documents (balanced brackets)
   {
     const { contents: noteContents, remaining: afterNotes } = extractBalancedTags(text, "[Note:");
@@ -880,6 +911,7 @@ export function stripGmTags(content: string): string {
   text = extractFlatTags(text, /\[inventory:/gi).remaining;
   text = extractFlatTags(text, /\[party_change:/gi).remaining;
   text = extractFlatTags(text, /\[party_add:/gi).remaining;
+  text = extractFlatTags(text, /\[mrpg_join:/gi).remaining;
   text = text.replace(/\[party-turn\]/gi, "");
   text = text.replace(/\[party-chat\]/gi, "");
   text = extractFlatTags(text, /\[dice:/gi).remaining;

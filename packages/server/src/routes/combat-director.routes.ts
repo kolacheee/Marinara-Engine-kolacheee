@@ -155,6 +155,7 @@ import { buildPartyNpcId } from "../services/generation/game-party-utils.js";
 import { gamePartyRoster } from "../services/game/ruleset-sheet-turn.service.js";
 import {
   ROOM_GUEST_FIGHT_CONTROLLER,
+  roomAwayCharacters,
   roomFightPlayers,
   roomPlayersByName,
 } from "../services/multiplayer/fight-players.js";
@@ -1417,6 +1418,7 @@ export async function combatDirectorRoutes(
             ...(marinaraEncounter(input) ? { encounter: marinaraEncounter(input)! } : {}),
             ...marinaraRare(input),
             seed: randomUUID(),
+            away: roomAwayCharacters(meta),
             ammo: marinaraOwnedAmmo(fightItems.lines.flatMap((line) => [line.name, line.ownName ?? line.name])),
             woundingAmmo: marinaraOwnsWoundingAmmo(
               fightItems.lines.flatMap((line) => [line.name, line.ownName ?? line.name]),
