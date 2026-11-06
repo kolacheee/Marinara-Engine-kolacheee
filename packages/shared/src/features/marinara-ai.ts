@@ -820,8 +820,20 @@ export function marinaraAiCandidates(
         if (options.reaches && !foes.some((foe) => options.reaches!(foe.id, actor.id))) break;
         {
           // Worth the blows it pulls off softer friends onto the user (one currency: HP kept off the side).
-          const kept = drawnOff(actor, effect.duration ?? 1);
+          let kept = drawnOff(actor, effect.duration ?? 1);
           if (kept <= 0) break;
+          // Every foe that can get at the user hits it with its hardest single blow: not when a round of
+          // that would drop it, and worth no more than the turns it can stand (slice tester s7 2026-11-06:
+          // a Stonewall at 35 HP provoked into 44 wind damage a round and fell the turn after).
+          const drawn = foes.reduce((sum, foe) => {
+            if (foe.dummy || (options.reaches && !options.reaches(foe.id, actor.id))) return sum;
+            let most = hit(foe, actor, marinaraBasicAttack(foe));
+            for (const { effect: e } of marinaraUsable(foe, all))
+              if (e.kind === "damage" && e.target === "enemy" && !e.charge) most = Math.max(most, hit(foe, actor, e));
+            return sum + most;
+          }, 0);
+          if (drawn >= actor.hp) break;
+          kept *= Math.min(1, actor.hp / Math.max(1, drawn * (effect.duration ?? 1)));
           add(option, [actor], {
             support: kept / friendHp,
             protection: 0.2 + (actor.hp / actor.maxHp) * 0.2,
