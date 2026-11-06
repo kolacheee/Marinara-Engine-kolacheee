@@ -1,3 +1,122 @@
+# Paddy farmhouse repair — critic-r3-3 / operator round 2
+
+Replaced only `out/paddies-7.png`, `out/paddies@spring-7.png`,
+`out/paddies@autumn-7.png` and `out/paddies@winter-7.png`.
+**All 176 other output files are byte-identical** to this request's starting
+snapshot, and the 180-file inventory is unchanged. Only these four PNGs and
+this note were changed in the workspace. No commit or push.
+
+The **16×13 px** house now has a broad sloping grey tiled roof, a narrow back
+ridge, three tile courses, a darker right hip plane and lifted front eave tips
+at both ends. A short pale plaster facade has timber posts and one off-centre
+dark door, without windows. The architecture follows `out/wuxia-farmstead.png`
+and `reference/wuxia-house.png`. Summer, spring and autumn use identical house
+pixels; winter keeps the same silhouette and adds roof snow while exposing
+lower tile courses and the curled eaves. The existing packed-earth courtyard,
+water jar, six-pixel buffalo body and curved horns remain unchanged.
+
+**Method:** four built-in image-tool district edits, using the current seamless
+4×2 district on the 48 px grid at 8× working scale. The prompt set replaces only
+the farmhouse and explicitly asks for a sloping roof, raised ridge, three tile
+courses, lifted eaves, short plaster wall and one door; the seasonal prompts
+preserve this geometry and add winter roof snow. Architecture crops were
+AREA/BOX-aligned to 128×104, locked to an explicit material palette, then
+reduced by the **mode of all 64 samples per 8×8 footprint**. Native hand cleanup
+clarifies the ridge, roof courses, eave tips, posts and doorway. The summer
+geometry is shared across partners; winter accumulation is traced from its
+registered mode vote. Only local `(9,8)..(24,21)` was repainted, including removal
+of the previous building's base. Every pixel outside that rectangle, including
+the surrounding paddies, seasonal crops, bunds and yard objects, is unchanged.
+The four cleaned 192×96 district assemblies retain the seven untouched cells.
+
+**Review:** viewed each final saved PNG at exactly **8× nearest-neighbour** and
+compared the quartet with the wuxia farmstead at the same scale. The sloping
+roof, separate short wall/door and buffalo read clearly in the self-review.
+Also viewed **three independent randomized, unguttered 8×2 layouts per season**
+at 3× (twelve layouts). Seasonal house positions match and the unchanged bunds
+join as before. Validation checks 48×48 size, full opacity, exact four-output
+change scope, unchanged inventory, identical non-winter architecture, and
+pixel-for-pixel preservation outside the house rectangle.
+
+Sources, exact prompts, aligned crops, mode votes, native cleanup, 8× saved-file
+views, comparison, twelve tiled layouts, random orders and validation are in
+`/tmp/paddies-house-r3/`, outside the repository. This supersedes the previous
+mask-like farmhouse repair; existing repository source paintings and review
+boards are historical and were not rewritten. Rerunning earlier processing
+scripts would overwrite this four-file repair. This is a visual self-review,
+not a new independent critic verdict or an in-game check.
+
+---
+
+# Round 3 — operator paddy repair
+
+Revised all **32 opaque 48×48 paddy tiles** in `out/`, preserving the eight
+plot layouts across spring, summer, autumn and winter. **All 148 non-paddy
+files are byte-identical** to the operator-review starting snapshot; the
+180-file output inventory is unchanged. No commit or push.
+
+Autumn now has warm yellow-gold rice-head clusters, darker brown bunds and
+narrow wet channels. Variant 3's bottom-right quarter and variant 4's bottom
+strip are pale harvested stubble, with respectively three and two larger
+flared sheaf bundles and dark ties. Winter retains white snow with broken
+pale blue-grey/neutral drift shading, readable brown stubble rows and dark
+bund shadows. Its main snow colours `#ecf5fa`, `#f8fbf9` and `#d5e5f1` match
+`out/farmland@winter-*.png` and the cool whites of
+`reference/modern-grass@winter.png`. These pale shades are snow shadows;
+there is no blue water/ice material. The previous all-neutral, nearly blank
+winter treatment is superseded.
+
+Every season shares a **16 px grey tiled farmhouse roof**, lifted ridge/eave
+tips, short pale plaster wall, dark doorway, packed-earth courtyard and a
+separate horned buffalo. The yard stays at local `(7,7)..(26,29)`, fully inside
+the cell, and a two-pixel bund path reaches it from the west boundary.
+All interior divisions have a lit top and dark shadow side, normally two
+pixels wide; the two original raised footpaths remain three pixels. Each
+cell edge has only a one-pixel half-bund, so joined tiles make a two-pixel
+bund without an extra border or verge. Plot rectangles and path positions
+are identical across seasons.
+
+**Method:** two new full-bleed 4×2 district edits, retaining the 48 px grid
+and existing layouts, followed by BOX/area alignment to 1536×768, fixed
+material palettes and the **mode of all 64 samples in each 8×8 footprint**.
+Spring/summer retain the existing district votes and crop artwork. Native
+paintover repairs bunds, harvested plots, sheaf silhouettes, roof tiles,
+plaster/door contrast, yard corners and buffalo anatomy. House/yard crops
+are separately mode-voted before cleanup; no marker is resized into a paddy.
+The cleaned 192×96 districts are literally cut into their eight cells.
+Sources, aligned canvases, mode votes, cleaned districts and house stages:
+`source-drawings/operator-paddies/`. Exact built-in tool prompts:
+[operator-paddies-generation-prompts.json](operator-paddies-generation-prompts.json).
+The earlier `r3` sources are preserved.
+
+**Review:** visually checked three independent randomized, unguttered **8×2
+orders per season at exactly 3×**: twelve images, saved in
+`review/operator-paddies/tiled-*-shuffle*.png` and collected in the four
+`board-*.png` files. Native review prompted removal of overlapping old sheaf
+fragments, cleaner bundle ties, symmetric lifted eaves, softer yard corners
+and clearer buffalo horns. The final boards were checked after these fixes.
+Orders: [layout-orders.json](review/operator-paddies/layout-orders.json).
+
+[Validation](review/operator-paddies/validation.json) checks the exact 32-file
+change scope, all 148 protected hashes, unchanged inventory, unique opaque
+48×48 outputs, 32 literal district crops, every internal bund trace, all 256
+ordered variant seam pairs on both axes, and all 192 saved review cells.
+Winter field interiors retain over 80% snow, over 8% drift shading and visible
+stubble, with no water material. The report includes material fractions and
+source/output hashes. Starting hashes:
+[before-hashes.json](review/operator-paddies/before-hashes.json).
+
+Rebuild the operator repair with:
+`python art-drop/process_operator_paddies.py`.
+This writes only the 32 paddies inside `out/`, plus source/review stages
+outside it. Running the older `process_r3.py` would restore the superseded art.
+
+**Limits:** eight layouts still repeat over a large map; buffalo horns and
+sheaf ties are tiny at native size. This was a visual self-review of the
+requested map-scale boards, not an independent critic pass or live-game check.
+
+---
+
 # Round 2 — critic-r2-7 plus owner rural override (r2-9 delivery)
 
 Redrew **all 44 farmland/farmstead PNGs** in `out/`: seven field layouts and

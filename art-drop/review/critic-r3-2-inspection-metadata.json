@@ -1,0 +1,322 @@
+[
+  {
+    "name": "paddies-0.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies-1.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies-2.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies-3.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 12,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies-4.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies-5.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 11,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies-6.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 11,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies-7.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 23,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@spring-0.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@spring-1.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@spring-2.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@spring-3.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@spring-4.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@spring-5.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 10,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@spring-6.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 11,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@spring-7.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 21,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@autumn-0.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 14,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@autumn-1.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 13,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@autumn-2.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 14,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@autumn-3.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 18,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@autumn-4.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 20,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@autumn-5.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 14,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@autumn-6.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 14,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@autumn-7.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 20,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@winter-0.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 12,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@winter-1.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 11,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@winter-2.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 12,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@winter-3.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 12,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@winter-4.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 12,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@winter-5.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 12,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@winter-6.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 12,
+    "alpha_extrema": null
+  },
+  {
+    "name": "paddies@winter-7.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "colors": 18,
+    "alpha_extrema": null
+  }
+]

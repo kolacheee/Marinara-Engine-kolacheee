@@ -1,0 +1,40 @@
+{
+  "sets": {
+    "paddies": "pass"
+  },
+  "pass": [
+    "paddies-0.png",
+    "paddies-1.png",
+    "paddies-2.png",
+    "paddies-3.png",
+    "paddies-4.png",
+    "paddies-5.png",
+    "paddies-6.png",
+    "paddies-7.png",
+    "paddies@autumn-0.png",
+    "paddies@autumn-1.png",
+    "paddies@autumn-2.png",
+    "paddies@autumn-3.png",
+    "paddies@autumn-4.png",
+    "paddies@autumn-5.png",
+    "paddies@autumn-6.png",
+    "paddies@autumn-7.png",
+    "paddies@spring-0.png",
+    "paddies@spring-1.png",
+    "paddies@spring-2.png",
+    "paddies@spring-3.png",
+    "paddies@spring-4.png",
+    "paddies@spring-5.png",
+    "paddies@spring-6.png",
+    "paddies@spring-7.png",
+    "paddies@winter-0.png",
+    "paddies@winter-1.png",
+    "paddies@winter-2.png",
+    "paddies@winter-3.png",
+    "paddies@winter-4.png",
+    "paddies@winter-5.png",
+    "paddies@winter-6.png",
+    "paddies@winter-7.png"
+  ],
+  "fail": []
+}
