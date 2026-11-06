@@ -2538,7 +2538,7 @@ export function marinaraHitNumbers(
         Math.min(MARINARA_PERFECT_EVASION_CAP, target.missesAgainst * (hooksOf(target).evasionStacking ?? 0))) +
     (target.hidden ? MARINARA_VANISH_EVADE : 0);
   const hitChance = Math.max(
-    MARINARA_MIN_HIT_CHANCE,
+    target.tier === "boss" && actor.side !== target.side ? MARINARA_BOSS_HIT_FLOOR : MARINARA_MIN_HIT_CHANCE,
     Math.min(
       100,
       MARINARA_TUNING.hitBase +
@@ -2749,6 +2749,13 @@ function cleanse(unit: MarinaraFighter, how: "all" | "one", all: readonly Marina
  * Resistance takes away at most 70% of the hit's attack and power. Its own commit, to keep or revert.
  */
 export const MARINARA_BOSS_DAMAGE_FLOOR = { minDamagePct: 0.3 };
+
+/**
+ * A hit on a boss lands at least this often, however quick the boss (overnight playtest 2026-11-06,
+ * panel r7: hard and deadly boss fights ran 28-37 rounds at 25-41% to hit; all four testers named
+ * boss fight length a top complaint). Its own commit, to keep or revert.
+ */
+export const MARINARA_BOSS_HIT_FLOOR = 60;
 
 export const MARINARA_BOSS_RULES = {
   ignores: ["sleep", "stun", "confuse"] as readonly MarinaraStatusId[],
