@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+# ──────────────────────────────────────────────
+# Places art Codex drew for the overworld (branch art/overworld-codex-2026-11-06, art-drop/out) into the
+# built-in packs.
+#
+#   python3 scripts/art/place-codex-art.py <art-drop/out> packages/server/src/assets/overworld-art/*.json [--only markers,tiles]
+#   node scripts/art/pack-builtin-art.mjs <dir with the results as pack-<family>.json>   # clears unread pixels
+#
+# - markers: `<family>-marker0..3.png`, drawn at the size they show on the map (60, 84, 108 and 144 px for
+#   a hamlet to a city: MARKER_GROWTH in WorldOverworld.tsx times 48), each set in a 3x3-cell sprite,
+#   standing on its bottom and centred across it, so the overworld draws it at its own size with no
+#   scaling (a sprite of several cells is drawn that many cells big).
+# - tiles: `<look>-0..7.png` and `<look>@winter-0..7.png` for slums, industry and city, one cell each, every
+#   building inside its cell with a street along its edges; for each family that has the look.
+# Both go on the sheet `built` (carried on below what it holds), as a pack holds at most sixteen sheets.
+# ──────────────────────────────────────────────
+import base64, io, json, os, sys
+from PIL import Image
+
+CELL = 48
+PNG = "data:image/png;base64,"
+FAMILIES = ("fantasy", "wuxia", "jazz_age", "modern", "scifi", "wasteland")
+TILE_LOOKS = ("slums", "industry", "city")
+
+
+def main(out_dir, paths, only):
+    for path in paths:
+        family = os.path.basename(path)[: -len(".json")]
+        if family not in FAMILIES:
+            continue
+        pack = json.load(open(path))
+        sheets = {
+            s["id"]: Image.open(io.BytesIO(base64.b64decode(s["png"][len(PNG) :]))).convert("RGBA")
+            for s in pack["sheets"]
+        }
+        made = {}  # tile id -> [(image, w, h)] in cells
+        if "markers" in only:
+            for tier in range(4):
+                art = Image.open(os.path.join(out_dir, f"{family}-marker{tier}.png")).convert("RGBA")
+                box = Image.new("RGBA", (3 * CELL, 3 * CELL))
+                box.alpha_composite(art, ((3 * CELL - art.width) // 2, 3 * CELL - art.height))
+                made[f"marker{tier}"] = [(box, 3, 3)]
+        if "tiles" in only:
+            for look in TILE_LOOKS:
+                if look not in pack["tiles"]:
+                    continue
+                for season in ("", "@winter"):
+                    files = [os.path.join(out_dir, f"{look}{season}-{i}.png") for i in range(8)]
+                    if not all(os.path.exists(f) for f in files):
+                        continue
+                    made[f"{look}{season}"] = [(Image.open(f).convert("RGBA"), 1, 1) for f in files]
+        if not made:
+            continue
+        old = sheets.get("built")
+        across = max(12, (old.width // CELL) if old else 0)
+        x, y, row_h, spots = 0, (old.height // CELL) if old else 0, 0, []
+        for tid, variants in made.items():
+            for im, w, h in variants:
+                if x + w > across:
+                    x, y, row_h = 0, y + row_h, 0
+                spots.append((tid, im, x, y, w, h))
+                x += w
+                row_h = max(row_h, h)
+        sheet = Image.new("RGBA", (across * CELL, (y + row_h) * CELL))
+        if old:
+            sheet.alpha_composite(old, (0, 0))
+        for tid, im, x, y, w, h in spots:
+            sheet.alpha_composite(im, (x * CELL, y * CELL))
+        buf = io.BytesIO()
+        sheet.save(buf, "PNG", optimize=True)
+        pack["sheets"] = [s for s in pack["sheets"] if s["id"] != "built"] + [
+            {"id": "built", "png": PNG + base64.b64encode(buf.getvalue()).decode(), "width": sheet.width, "height": sheet.height}
+        ]
+        for tid in made:
+            pack["tiles"][tid] = []
+        for tid, im, x, y, w, h in spots:
+            pack["tiles"][tid].append({"sheet": "built", "x": x, "y": y, **({"w": w, "h": h} if w > 1 else {})})
+        with open(path, "w") as f:
+            f.write(json.dumps(pack, separators=(",", ":")) + "\n")
+        print(path, {tid: len(v) for tid, v in made.items()})
+
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    only = {"markers", "tiles"}
+    if "--only" in args:
+        at = args.index("--only")
+        only = set(args[at + 1].split(","))
+        del args[at : at + 2]
+    main(args[0], args[1:], only)
