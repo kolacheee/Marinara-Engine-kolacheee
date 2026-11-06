@@ -913,13 +913,13 @@ export function WorldOverworld({
         </div>
 
         {walking && (
-          <div className="pointer-events-none absolute left-1/2 top-16 z-10 -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white shadow-lg">
+          <div className="pointer-events-none absolute left-1/2 top-16 max-sm:top-28 z-10 -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white shadow-lg">
             <span ref={walkChipRef} />
           </div>
         )}
         {!walking && walkedTo && (
           <div
-            className="pointer-events-none absolute left-1/2 top-16 z-10 max-w-[60%] -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-center text-xs text-white/85 shadow-lg"
+            className="pointer-events-none absolute left-1/2 top-16 max-sm:top-28 z-10 max-w-[60%] -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-center text-xs text-white/85 shadow-lg"
             role="status"
           >
             {t("game.overworld.walked", { name: walkedTo.name })}

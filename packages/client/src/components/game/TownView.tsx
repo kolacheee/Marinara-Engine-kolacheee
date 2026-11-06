@@ -786,14 +786,14 @@ export function TownView({
           )}
         </div>
 
-        <div className="pointer-events-none absolute left-1/2 top-16 z-10 max-w-[60%] -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-center text-xs font-semibold text-white shadow-lg">
+        <div className="pointer-events-none absolute left-1/2 top-16 max-sm:top-28 z-10 max-w-[60%] -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-center text-xs font-semibold text-white shadow-lg">
           {inside
             ? t("game.town.insideOf", { name: spotTitle(inside), town: settlement?.name ?? "" })
             : settlement?.name}
         </div>
         {!walking && visited && (
           <div
-            className="pointer-events-none absolute left-1/2 top-24 z-10 max-w-[60%] -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-center text-xs text-white/85 shadow-lg"
+            className="pointer-events-none absolute left-1/2 top-24 max-sm:top-36 z-10 max-w-[60%] -translate-x-1/2 rounded-full bg-black/70 px-3 py-1 text-center text-xs text-white/85 shadow-lg"
             role="status"
           >
             {t("game.town.walked", { name: visited })}
