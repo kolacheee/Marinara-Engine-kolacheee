@@ -1800,6 +1800,9 @@ export function buildGmFormatReminder(
     /** A game on MRPG classes without a ruleset: a joiner's party_change may carry their level, growths
      *  and stats (owner 2026-11-06). */
     mrpg?: boolean;
+    /** An MRPG game shared in a room: room players' characters who are away, and newly seated players
+     *  the GM brings in with `[mrpg_join]` (owner 2026-11-06). */
+    mrpgRoom?: { away: string[]; newcomers: string[]; partyLevel: number };
     /** Special non-scene-advancing address mode inferred from the current player turn prefix. */
     addressMode?: "party" | "gm";
     /** Whether the current player turn already includes a resolved [dice: ...] roll. */
@@ -2308,6 +2311,16 @@ export function buildGmFormatReminder(
       ...(ctx.mrpg
         ? [
             `  A newcomer joining a party already on its way comes in at the level you give with level="N" (1 to 30; level 1 when you give none). Most come in low; a seasoned fighter may come in near the party's level, or above. A raw talent who will grow fast gets growths="strength+30, speed+20" (points of growth per stat, -30 to +50), and one decent from the start gets stats="defense+3, luck+5" (-5 to +10). Stats: strength, magic, skill, speed, defense, resistance, luck, hp. Leave both out for an ordinary recruit.`,
+            ...(ctx.mrpgRoom?.newcomers.length
+              ? [
+                  `- [mrpg_join: character="Exact Name" level="N" growths="..." stats="..."] - a player who just sat down at the table plays ${ctx.mrpgRoom.newcomers.map((name) => `"${name}"`).join(", ")}, with no MRPG class yet, in a game already under way (the party is level ${ctx.mrpgRoom.partyLevel}). Welcome them into the story, ask them briefly who their character is if you need to, then write this tag once for each: level, growths and stats work as for a newcomer above, and you judge them from who the character is. Never a party_change for a player's own character.`,
+                ]
+              : []),
+          ]
+        : []),
+      ...(ctx.mrpgRoom?.away.length
+        ? [
+            `- Away: ${ctx.mrpgRoom.away.map((name) => `"${name}"`).join(", ")}. Their player isn't at the table: leave them out of scenes and fights, and never speak or act for them. They come back as they were when their player returns.`,
           ]
         : []),
       `- [party_change: character="New Name" change="add" copy_of="Party Member" condition="Condition"] - a copy of that party member joins under the new name, with their sheet, holding the ruleset's condition from the start (a Simulacrum). copy_of may instead name a creature of the ruleset's bestiary (a beast or a stranger copied), who joins and fights as that creature. condition is optional.`,

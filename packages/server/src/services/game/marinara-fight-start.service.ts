@@ -92,6 +92,8 @@ export function marinaraFightStart(input: {
   ammo?: readonly MarinaraDamageType[];
   /** The party owns wounding ammunition (Serrated): its Marksmen's pierce shots wound. */
   woundingAmmo?: boolean;
+  /** Room players' characters whose player isn't here, by lookup name: they sit this fight out. */
+  away?: ReadonlySet<string>;
 }): MarinaraFightStart {
   const named = input.cards.filter(
     (card): card is Record<string, unknown> & { name: string } =>
@@ -105,6 +107,7 @@ export function marinaraFightStart(input: {
     const card = gameCardFor(named, member.name);
     let progression = readMarinaraCardProgression(card?.marinara);
     if (card && progression?.fallen) continue;
+    if (card && input.away?.has(normalizeCharacterLookupName(card.name))) continue;
     if (!progression) {
       const temperament = (gameCardTemperament(card)?.initial ??
         partyTemperamentFallback(input.gameId, card?.name ?? member.name)) as MarinaraPartyTemperament;

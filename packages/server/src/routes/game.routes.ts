@@ -62,6 +62,7 @@ import { normalizeGameInventoryStacks } from "@marinara-engine/shared";
 import {
   createMarinaraJoinerProgression,
   partyTemperamentFallback,
+  readMarinaraCardProgression,
   readMarinaraStatAmounts,
   type MarinaraPartyTemperament,
 } from "@marinara-engine/shared";
@@ -9943,6 +9944,70 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
 
     logger.info("[game/character-sheet/regenerate] Generated draft sheet for %s in chat %s", targetName, input.chatId);
     return { characterName: targetName, gameCard };
+  });
+
+  // ── POST /game/marinara/join ──
+  // A room player who joins an MRPG game already under way is brought in by the Game Master
+  // ([mrpg_join], owner 2026-11-06): their character starts at the level it gives, with any growths and
+  // stats off the norm. Only a character with no MRPG level yet: a returning player keeps the one they had.
+  app.post("/marinara/join", async (req, reply) => {
+    const input = z
+      .object({
+        chatId: z.string().min(1),
+        name: z.string().min(1).max(200),
+        level: z.number().int().min(1).max(30).optional(),
+        growths: z.string().max(400).optional(),
+        stats: z.string().max(400).optional(),
+      })
+      .parse(req.body);
+    const chats = createChatsStorage(app.db);
+    const chat = await chats.getById(input.chatId);
+    if (!chat) return reply.code(404).send({ error: "Chat not found" });
+    const classicPicks = await legacyUpgradeClassicPicks(app.db, chat);
+    let refusal: string | null = null;
+    let joined: { name: string; level: number } | null = null;
+    await chats.patchMetadata(input.chatId, (current) => {
+      const setup = (current.gameSetupConfig ?? null) as { marinaraClasses?: unknown } | null;
+      if (setup?.marinaraClasses !== true || current.gameRuleset != null) {
+        refusal = "This game doesn't use MRPG classes.";
+        return {};
+      }
+      const cards = Array.isArray(current.gameCharacterCards)
+        ? (current.gameCharacterCards as Array<Record<string, unknown>>)
+        : [];
+      const key = normalizeCharacterLookupName(input.name);
+      const index = cards.findIndex(
+        (card) => typeof card.name === "string" && normalizeCharacterLookupName(card.name) === key,
+      );
+      if (index < 0) {
+        refusal = "No party member has that name.";
+        return {};
+      }
+      const card = cards[index]!;
+      if (readMarinaraCardProgression(card.marinara)) {
+        refusal = "They already have their MRPG level.";
+        return {};
+      }
+      const name = String(card.name);
+      const growths = readMarinaraStatAmounts(input.growths);
+      const stats = readMarinaraStatAmounts(input.stats);
+      const progression = createMarinaraJoinerProgression({
+        gameId: input.chatId,
+        card: card as unknown as Parameters<typeof createMarinaraJoinerProgression>[0]["card"],
+        temperament: (gameCardTemperament(card)?.initial ??
+          partyTemperamentFallback(input.chatId, name)) as MarinaraPartyTemperament,
+        ...(classicPicks.get(key) ? { classic: classicPicks.get(key)! } : {}),
+        terms: {
+          ...(input.level ? { level: input.level } : {}),
+          ...(growths ? { growths } : {}),
+          ...(stats ? { stats } : {}),
+        },
+      });
+      joined = { name, level: progression.level };
+      return { gameCharacterCards: cards.map((one, i) => (i === index ? { ...one, marinara: progression } : one)) };
+    });
+    if (refusal) return reply.code(409).send({ error: refusal });
+    return { joined };
   });
 
   // ── GET /game/marinara/upgrade-legacy/preview ──

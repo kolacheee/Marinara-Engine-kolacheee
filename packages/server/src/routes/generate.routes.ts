@@ -26,6 +26,7 @@ import {
   runWithRoomGeneration,
   type GenerationRoomContext,
 } from "../services/multiplayer/generation-policy.js";
+import { roomMrpgRoster } from "../services/multiplayer/fight-players.js";
 import { appendLorebookImageMessages, type LorebookImageNotice } from "../services/generation/lorebook-image-prompt.js";
 import { withLorebookImageCompatibility } from "../services/llm/lorebook-image-provider.js";
 import { fixedTextProvider } from "../services/llm/fixed-text-provider.js";
@@ -5927,6 +5928,11 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             mrpg:
               (chatMeta.gameSetupConfig as { marinaraClasses?: unknown } | undefined)?.marinaraClasses === true &&
               chatMeta.gameRuleset == null,
+            ...((chatMeta.gameSetupConfig as { marinaraClasses?: unknown } | undefined)?.marinaraClasses === true &&
+            chatMeta.gameRuleset == null &&
+            chatMeta.multiplayer
+              ? { mrpgRoom: roomMrpgRoster(chatMeta as Record<string, unknown>) }
+              : {}),
             experienceProvidedSystems: capabilityPromptContext.provides,
             // A package that declares GM verbs gets one COMMANDS line each. No package declares a
             // table today, so this renders nothing and the reminder is byte-identical.

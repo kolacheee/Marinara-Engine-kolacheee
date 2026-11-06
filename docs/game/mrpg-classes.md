@@ -32,6 +32,14 @@ Someone who joins after the game began comes in at the level the Game Master giv
 
 The Game Master decides this when the character joins. A newcomer it says nothing about starts at level 1.
 
+## Playing with others
+
+In a shared game, each player's character levels up the same way.
+
+- **A new game.** Everyone, host and guests, starts at level 1.
+- **A game already under way.** When a guest sits down whose character has no MRPG class yet, the Game Master welcomes them and decides their starting level, and can give them faster growth or better stats, as for any [newcomer](#newcomers-to-the-party).
+- **A returning guest.** A guest's character stays in the game when they leave, with its level, gear and tamed beasts. While their player is away, the character sits out fights and earns no experience, and the Game Master leaves them out of scenes. When the guest comes back, they play the same character at the level they left it.
+
 ## Move a Legacy game to MRPG
 
 A Legacy game keeps its Legacy sheets for as long as you want. To move it over, open the **Journal**, and on the **All** tab find the **MRPG classes** card. Select **Upgrade**.

@@ -5,6 +5,8 @@
  * 2. A check outside battle in an MRPG game reads the MRPG stats.
  * 3. A late joiner comes in at the level the Game Master gives, with growths and stats it set off the norm.
  * 4. The upgrade offers the nearest MRPG piece for each Legacy weapon and armour.
+ * 5. Multiplayer: a guest who played to level 3 and left comes back as that level-3 character after the
+ *    host went on alone; one who sits down in a game under way is onboarded by the GM with [mrpg_join].
  */
 import assert from "node:assert/strict";
 import {
@@ -14,6 +16,9 @@ import {
 } from "../../packages/server/src/services/game/marinara-legacy-upgrade.service.js";
 import { applyGeneratedGameCharacterCards } from "../../packages/server/src/routes/game.routes.js";
 import { mrpgCheckModifier, mrpgStatForSkill } from "../../packages/server/src/services/game/skill-check.service.js";
+import { marinaraFightStart } from "../../packages/server/src/services/game/marinara-fight-start.service.js";
+import { roomAwayCharacters, roomMrpgRoster } from "../../packages/server/src/services/multiplayer/fight-players.js";
+import type { Combatant } from "../../packages/shared/src/types/game.js";
 import { resolveSkillCheckWithContext } from "../../packages/server/src/services/game/skill-check-resolution.service.js";
 import {
   createMarinaraCardProgression,
@@ -142,5 +147,85 @@ assert.deepEqual(tags.partyChanges[0], { characterName: "Donnel", change: "add",
 const bareTag = parseGmTags("[party_change: character=Donnel change=add level=4]");
 assert.equal(bareTag.partyChanges[0]!.characterName, "Donnel");
 assert.equal(bareTag.partyChanges[0]!.level, 4);
+
+// 5. A recurring guest. Host Ayla and guest Bren played to level 3 together; the room ended and Ayla
+// fights on alone. Bren's card keeps level 3, sits the host's fights out, and is theirs again on return.
+{
+  const level3 = (name: string) => {
+    const base = createMarinaraCardProgression({ gameId: "g-room", card: { name }, temperament: "reckless" });
+    return { ...base, level: 3, xp: 0 };
+  };
+  const room = (status: "live" | "ended", guestSeated: boolean) => ({
+    gameSetupConfig: { marinaraClasses: true },
+    multiplayer: {
+      version: 1,
+      role: "host",
+      status,
+      participants: [
+        { id: "host-1", isHost: true, persona: { name: "Ayla" } },
+        ...(guestSeated ? [{ id: "guest-1", isHost: false, persona: { name: "Bren" } }] : []),
+      ],
+    },
+    gameCharacterCards: [
+      { name: "Ayla", multiplayerParticipantId: "host-1", marinara: level3("Ayla") },
+      { name: "Bren", multiplayerParticipantId: "guest-1", marinara: level3("Bren") },
+      { name: "Mira", marinara: level3("Mira") },
+    ],
+  });
+  assert.deepEqual([...roomAwayCharacters(room("live", true))], [], "everyone seated is here");
+  assert.deepEqual([...roomAwayCharacters(room("ended", true))], ["bren"], "an ended room leaves the guest away");
+  assert.deepEqual([...roomAwayCharacters(room("live", false))], ["bren"], "a guest who left is away");
+  assert.deepEqual([...roomAwayCharacters({ gameCharacterCards: [] })], [], "a solo game has nobody away");
+  const unit = (id: string, name: string, side: "player" | "enemy"): Combatant =>
+    ({
+      id,
+      name,
+      side,
+      hp: 20,
+      maxHp: 20,
+      mp: 0,
+      maxMp: 0,
+      attack: 5,
+      defense: 5,
+      speed: 5,
+      level: 1,
+      skills: [],
+    }) as Combatant;
+  const solo = room("ended", true);
+  const start = marinaraFightStart({
+    gameId: "g-room",
+    cards: solo.gameCharacterCards,
+    party: [unit("p1", "Ayla", "player"), unit("p2", "Bren", "player"), unit("p3", "Mira", "player")],
+    enemies: [unit("e1", "Wolf", "enemy")],
+    difficulty: "normal",
+    storyFight: true,
+    away: roomAwayCharacters(solo),
+  });
+  assert.deepEqual(
+    start.party.map((one) => one.name),
+    ["Ayla", "Mira"],
+    "the away guest's character sits the host's fights out, so earns no experience",
+  );
+  const roster = roomMrpgRoster(solo);
+  assert.deepEqual(roster.away, ["Bren"]);
+  assert.deepEqual(roster.newcomers, [], "a returning guest is never onboarded again");
+  // Back at the table, Bren is seated and keeps level 3.
+  const back = room("live", true);
+  assert.deepEqual(roomMrpgRoster(back).away, []);
+  assert.equal(readMarinaraCardProgression(back.gameCharacterCards[1]!.marinara)!.level, 3);
+
+  // A new guest with no MRPG class in a game under way is listed for the GM; in a new game nobody is.
+  const fresh = room("live", true);
+  fresh.gameCharacterCards[1] = { name: "Bren", multiplayerParticipantId: "guest-1" } as never;
+  assert.deepEqual(roomMrpgRoster(fresh).newcomers, ["Bren"]);
+  assert.equal(roomMrpgRoster(fresh).partyLevel, 3);
+  const brandNew = room("live", true);
+  brandNew.gameCharacterCards = [{ name: "Bren", multiplayerParticipantId: "guest-1" } as never];
+  assert.deepEqual(roomMrpgRoster(brandNew).newcomers, [], "a new game starts everyone at level 1");
+}
+
+const joinTags = parseGmTags('Welcome! [mrpg_join: character="Bren" level="6" growths="speed+30" stats="luck+4"]');
+assert.deepEqual(joinTags.mrpgJoins, [{ characterName: "Bren", level: 6, growths: "speed+30", stats: "luck+4" }]);
+assert.ok(!joinTags.cleanContent.includes("mrpg_join"), "the tag is stripped from the narration");
 
 console.log("game-mrpg-migration: ok");
