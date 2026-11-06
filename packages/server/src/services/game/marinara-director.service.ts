@@ -1018,6 +1018,8 @@ export function marinaraBoardAiAction(
   fits?: (optionId: string | null, targetId: string) => boolean,
   /** Bound to its provoker or challenger: the lock holds wherever it stands (the board walks it in). */
   bind?: boolean,
+  /** On the board: the chance a readied blow's target is still in reach when it goes off. */
+  stays?: (option: MarinaraOption, target: MarinaraFighter) => number,
 ): CombatPlayerAction | null {
   const actor = marinaraFighter(state, unit.id);
   if (!actor || !unit.tactics) return null;
@@ -1073,6 +1075,7 @@ export function marinaraBoardAiAction(
       tactical: true,
       canStrike,
       reaches,
+      stays,
       explain: (ranking) => (ranked = ranking),
       reach,
     });

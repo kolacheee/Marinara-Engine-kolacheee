@@ -14,6 +14,7 @@ import {
   shiftCombatTemperament,
   createTacticalCombat,
   MARINARA_BOARD_NARROWING,
+  marinaraHelpless,
   currentTacticalActor,
   getMovementRange,
   canTraverseTile,
@@ -349,14 +350,24 @@ export function marinaraBoardTurn(
     );
     const blows: Array<Extract<TacticalAction, { unitId: string }>> = [
       { type: "attack", unitId: tu.id, targetId: bound.id },
-      ...(tu.skills ?? []).filter((k) => damaging.has(k.id)).map(
-        (k) => ({ type: "skill", unitId: tu.id, skillName: k.name, targetId: bound.id }) as Extract<TacticalAction, { unitId: string }>,
-      ),
+      ...(tu.skills ?? [])
+        .filter((k) => damaging.has(k.id))
+        .map(
+          (k) =>
+            ({ type: "skill", unitId: tu.id, skillName: k.name, targetId: bound.id }) as Extract<
+              TacticalAction,
+              { unitId: string }
+            >,
+        ),
     ];
     boundTile = tiles.find((at) =>
       blows.some(
         (blow) =>
-          !validateTacticalUnitAction(t, tu, at.x === tu.x && at.y === tu.y ? blow : { ...blow, to: at } as typeof blow),
+          !validateTacticalUnitAction(
+            t,
+            tu,
+            at.x === tu.x && at.y === tu.y ? blow : ({ ...blow, to: at } as typeof blow),
+          ),
       ),
     );
     boundHit = !!boundTile;
@@ -389,6 +400,19 @@ export function marinaraBoardTurn(
       // can move to this turn; otherwise it strikes what it can reach, and with nothing to strike still
       // walks toward the provoker.
       !!bound && hitsBound(),
+      // A readied blow lands only if its target is still in reach when it goes off (Alyssa 2026-11-06):
+      // the chance a target stays is the reach it would have to clear over its move, more if it can't
+      // move (asleep, stunned) or is a melee fighter already locked in beside the unit.
+      (option, target) => {
+        const one = t.units.find((u) => u.id === target.id);
+        if (!one || marinaraHelpless(target)) return 1;
+        const skill = option.id === null ? undefined : tu.skills?.find((k) => k.id === option.id);
+        const range = skill?.range ?? tu.attackRange.max;
+        const move = Math.max(0, one.movement ?? 0);
+        const near = Math.abs(one.x - at.x) + Math.abs(one.y - at.y);
+        const odds = Math.min(1, (range + 0.5) / (range + move + 0.5));
+        return one.attackRange.max <= 1 && near <= 1 ? Math.max(odds, 0.5) : odds;
+      },
     );
     return { picked, ranked };
   };
