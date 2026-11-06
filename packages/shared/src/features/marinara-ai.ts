@@ -577,6 +577,8 @@ export function marinaraAiCandidates(
         // A Speed cut takes that share of the foe's turns, so of its blows, while it lasts (combo hunt
         // 2026-11-06: Snare Field was weighed on the foes' raw Strength over their HP and filled 18-26% of a
         // Huntsmaster's turns).
+        const speedOf = (u: MarinaraFighter) => eff(u, "speed") + MARINARA_TUNING.speedFloor;
+        const friendSpeed = friends.reduce((sum, u) => sum + speedOf(u), 0) / Math.max(1, friends.length);
         const worth = (targets: readonly MarinaraFighter[], over: number) =>
           effect.stat === "damage" || effect.stat === "best-attack" || effect.stat === "speed"
             ? (targets.reduce((sum, foe) => sum + blowsFrom(foe) * turns(foe), 0) * Math.abs(effect.pct ?? 0)) /
@@ -584,9 +586,21 @@ export function marinaraAiCandidates(
             : (effect.stat === "damage-taken"
                 ? // Only for the turns the target lasts once the party turns on it (lab 2026-11-01: Trackers spent
                   // 54% of their turns marking).
+                  // Its turns count down on the foe's own turns: a fast foe sheds it before the party has had
+                  // as many (slice tester s3, 2026-11-06: Mark Prey re-cast on a fast Vulture round after round).
                   friends.reduce((sum, u) => sum + bestDamage(u, all, tactical), 0) *
                   (effect.pct ?? 0) *
-                  Math.min(...targets.map((foe) => Math.max(1, Math.min(effect.duration ?? 1, foe.hp / partyDamage))))
+                  Math.min(
+                    ...targets.map((foe) =>
+                      Math.max(
+                        1,
+                        Math.min(
+                          (effect.duration ?? 1) * Math.min(1.5, friendSpeed / Math.max(1, speedOf(foe))),
+                          foe.hp / partyDamage,
+                        ),
+                      ),
+                    ),
+                  )
                 : targets.reduce((sum, foe) => sum + Math.max(eff(foe, "strength"), eff(foe, "magic")), 0) *
                   Math.abs(effect.pct ?? 0) *
                   (effect.duration ?? 1) *
