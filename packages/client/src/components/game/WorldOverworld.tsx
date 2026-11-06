@@ -63,6 +63,9 @@ import {
 import { cn } from "../../lib/utils";
 import { GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
 
+/** How much larger an image pack's settlement marker is drawn, by the place's tier (hamlet to city). */
+const MARKER_GROWTH = [1.25, 1.75, 2.25, 3] as const;
+
 /** What the game screen can ask of the overworld: send the real time it has passed so far. */
 export type WorldOverworldHandle = OverworldClockHandle;
 
@@ -423,7 +426,18 @@ export function WorldOverworld({
         return;
       }
       const tier = settlementTier(place, top);
-      if (!drawTile(ctx, ruined.has(place.id) ? "ruin" : `marker${tier}`, x, y)) {
+      // An image pack's marker grows with the place (a city near three times a hamlet's size), standing on its cell's
+      // bottom, centred across it, so a city reads as one from afar.
+      const grow = drawTile.image ? (MARKER_GROWTH[tier] ?? 1) : 1;
+      const box =
+        grow > 1
+          ? {
+              at: [x - ((grow - 1) * OVERWORLD_TILE) / 2, y - (grow - 1) * OVERWORLD_TILE] as const,
+              size: { w: grow * OVERWORLD_TILE, h: grow * OVERWORLD_TILE },
+            }
+          : null;
+      const id = ruined.has(place.id) ? "ruin" : `marker${tier}`;
+      if (!(box ? drawTile(ctx, id, box.at[0], box.at[1], 0, box.size) : drawTile(ctx, id, x, y))) {
         paintSettlement(ctx, place.at.x, place.at.y, tier, ruined.has(place.id), lit);
       }
     };
