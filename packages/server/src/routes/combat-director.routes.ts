@@ -1926,7 +1926,7 @@ export async function combatDirectorRoutes(
         }
         if (!next) {
           refusal =
-            "This party member has no Classic Marinara class yet. Pick their main tree, or they get one on their first fight.";
+            "This party member has no MRPG class yet. Pick their main tree, or they get one on their first fight.";
           return {};
         }
         if (input.row !== undefined) {

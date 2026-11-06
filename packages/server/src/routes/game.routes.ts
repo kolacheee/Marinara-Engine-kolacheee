@@ -6558,12 +6558,12 @@ function gameStyleWorldIssue(config: {
 }): string | null {
   if (config.gameStyle === "overworld") {
     return config.world == null || (config.worldKit == null && config.worldSnapshot == null)
-      ? "An Overworld RPG game needs a setting kit and a world: choose Classic for a game without one."
+      ? "An Overworld game needs a setting kit and a world: choose VN for a game without one."
       : null;
   }
   if (config.gameStyle !== "classic") return null;
   return config.worldKit != null || config.world != null || config.worldSnapshot != null || config.story != null
-    ? "A Classic game has no setting kit or world: choose the Overworld RPG for one."
+    ? "A VN game has no setting kit or world: choose Overworld for one."
     : null;
 }
 
@@ -12626,7 +12626,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         return reply.status(409).send({ error: "This game's Experience decides its world." });
       }
       if (meta.gameStyle === "classic") {
-        return reply.status(409).send({ error: "A Classic game has no world." });
+        return reply.status(409).send({ error: "A VN game has no world." });
       }
       const read = readNewGameWorld(body.data);
       if (!read.ok) return reply.status(400).send({ error: read.error, code: read.code });
