@@ -271,8 +271,7 @@ export function resolveSkillCheck(input: SkillCheckInput): SkillCheckResult {
 // ── MRPG (Marinara RPG classes) checks ──
 // Owner 2026-11-06: in a game on MRPG classes, a check outside battle reads the character's MRPG stats
 // (their active class's body), not the Legacy attributes a card may still carry. The stats run 0 to
-// about 30 over thirty levels, so a check adds a quarter of the stat, less one: about +1 for a starting
-// character's best stat, +2 to +3 at level 10, +6 at the top.
+// about 30 over thirty levels, so a check adds a fifth of the stat, at most +5 (see mrpgCheckModifier).
 
 /** The MRPG stat a check leans on, by the skill or attribute it names. */
 const MRPG_SKILL_STAT: Record<string, MarinaraStat> = {
