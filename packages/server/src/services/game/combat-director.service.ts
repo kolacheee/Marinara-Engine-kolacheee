@@ -832,6 +832,12 @@ export function createCombatDirector(input: {
     }
     // Bosses act on the timeline like everyone else; extra actions come from their own skills.
     for (const u of directorUnits(s)) if (u.boss) u.boss = { ...u.boss, points: 0 };
+    // Each party member's passives are named as the fight starts: the always-on ones (Fleet, Tailwind,
+    // Deep Well) have no moment of their own in the log (Sonnet panel r6: testers never saw them work).
+    for (const fighter of s.marinara.fighters.filter((one) => one.side === "party")) {
+      const passives = fighter.skills.filter((one) => one.kind === "passive").map((one) => one.label);
+      if (passives.length) log(s, `${fighter.name}'s passives in play: ${passives.join(", ")}.`, "status", fighter.id);
+    }
     // Tamed companions say what they lend, as the fight starts (Sonnet panel r6: the bonus went unseen).
     for (const fighter of s.marinara.fighters) {
       const beast = fighter.companion;

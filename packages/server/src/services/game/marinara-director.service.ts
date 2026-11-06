@@ -417,7 +417,7 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
         ? `${actor} regenerates ${event.amount} HP.`
         : event.notes?.includes("drain")
           ? `${actor} drains ${event.amount} HP${skill ? ` (${skill})` : " (gear)"}.`
-          : `${actor} heals ${target}${using} for ${event.amount}${event.crit ? ", a blessed heal" : ""}.`;
+          : `${actor} heals ${target}${using} for ${event.amount}${event.crit ? ", a blessed heal (Grace)" : ""}.`;
     case "status":
       return event.status === "confuse" && event.targetId && event.actorId !== event.targetId && skill === undefined
         ? `${actor} lashes out in confusion at ${target}.`

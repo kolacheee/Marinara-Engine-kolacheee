@@ -2436,8 +2436,11 @@ export function marinaraHitNumbers(
     multiplier > 1 &&
     hooks.elementWeakPct &&
     ((MARINARA_ELEMENTS as readonly string[]).includes(best.type) || channeledHit)
-  )
+  ) {
     multiplier *= 1 + hooks.elementWeakPct;
+    // Named in the log (Sonnet panel r6: testers never saw it).
+    if (owns(actor, "resonance")) notes.add("Resonance");
+  }
   // Wuxing generating cycle: an element of the phase that feeds this one has left its ailment on the target.
   const phase = (MARINARA_ELEMENT_PHASE as Partial<Record<string, keyof typeof MARINARA_WUXING_FED_BY>>)[best.type];
   const feeder = phase ? MARINARA_WUXING_FED_BY[phase] : undefined;
@@ -3740,6 +3743,7 @@ function strikeOnce(
       "read-the-signs": "Read the Signs",
       "dead-eye": "Dead Eye",
       overcharge: "Overcharge",
+      "keen-edge": "Keen Edge",
       exploit: "Exploit",
     };
     const by = Object.keys(names).filter((id) => owns(actor, id));
