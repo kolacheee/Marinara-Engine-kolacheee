@@ -355,13 +355,10 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
     caster.charging = { skillId: "convergence", targetId: runner.id };
     const state = createMarinaraDirectorState([runner, caster], 7);
     const lines: string[] = [];
-    const acts = marinaraTacticalTurnStart(
-      state,
-      caster.id,
-      7,
-      (text) => lines.push(text),
-      () => inReach,
-    );
+    const acts = marinaraTacticalTurnStart(state, caster.id, 7, (text) => lines.push(text), {
+      reaches: () => inReach,
+      around: () => [],
+    });
     assert.equal(acts, false, "the turn is spent either way");
     return { runner: marinaraFighterOf(state, runner.id), lines };
   };
@@ -373,6 +370,35 @@ const place = (s: CombatDirectorState, from: string, id: string, gap: number) =>
   );
   const near = release(true);
   assert.ok(near.runner.hp < near.runner.maxHp, "still in reach: it lands");
+
+  // A readied area (Quake) goes off at the tile it was aimed at and lands on whoever still stands in
+  // it, not on the one who walked away (playtest r69); with nobody left there it hits nothing.
+  const quake = (inArea: (ids: { mark: string; stayer: string }) => string[]) => {
+    const mark = unit("M", "party", "scout");
+    const stayer = unit("S", "party", "guard");
+    for (const one of [mark, stayer]) one.hp = one.maxHp = 100000;
+    const golem = unit("G", "enemy", "guard");
+    golem.charging = { skillId: "enemy:quake", targetId: mark.id, at: { x: 3, y: 3 } };
+    const state = createMarinaraDirectorState([mark, stayer, golem], 9);
+    const lines: string[] = [];
+    marinaraTacticalTurnStart(state, golem.id, 9, (text) => lines.push(text), {
+      reaches: () => false,
+      around: (at) => {
+        assert.deepEqual(at, { x: 3, y: 3 }, "it goes off at the tile it was aimed at");
+        return inArea({ mark: mark.id, stayer: stayer.id });
+      },
+    });
+    return { mark: marinaraFighterOf(state, mark.id), stayer: marinaraFighterOf(state, stayer.id), lines };
+  };
+  const stayed = quake(({ stayer }) => [stayer]);
+  assert.equal(stayed.mark.hp, stayed.mark.maxHp, "the one who walked away is spared");
+  assert.ok(stayed.stayer.hp < stayed.stayer.maxHp, "the one still in the area is hit");
+  const empty = quake(() => []);
+  assert.equal(empty.stayer.hp, empty.stayer.maxHp);
+  assert.ok(
+    empty.lines.some((line) => line.includes("nobody is left where it was aimed")),
+    empty.lines.join(" | "),
+  );
 }
 
 console.log("game-marinara-panel-r6: ok");

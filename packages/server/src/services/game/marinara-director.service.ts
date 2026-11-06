@@ -35,6 +35,7 @@ import {
   marinaraStandsFront,
   nextMarinaraActor,
   performMarinaraOption,
+  marinaraChargeIsArea,
   releaseMarinaraCharge,
   startMarinaraClock,
   registerMarinaraEnemySkills,
@@ -483,7 +484,9 @@ export function marinaraEventText(state: MarinaraDirectorState, event: MarinaraE
     case "charge-lost":
       return event.status === "reach"
         ? `${actor}'s ${skill ?? "readied blow"} goes off at empty ground: ${target} moved out of reach.`
-        : `${actor}'s ${skill ?? "readied blow"} is lost (${event.status === "stun" ? "stunned" : "put to sleep"}).`;
+        : event.status === "area"
+          ? `${actor}'s ${skill ?? "readied blow"} goes off at empty ground: nobody is left where it was aimed.`
+          : `${actor}'s ${skill ?? "readied blow"} is lost (${event.status === "stun" ? "stunned" : "put to sleep"}).`;
     case "extra-turn": {
       // A bonus-action skill leaves the user their action; anything else grants one more.
       const effect = event.skillId ? MARINARA_SKILL_EFFECTS[event.skillId] : undefined;
@@ -763,32 +766,53 @@ export function marinaraTacticalTurnStart(
   unitId: string,
   seed: number,
   log: MarinaraLog,
-  /** On the board: whether the readied blow still reaches its target from where the unit stands. */
-  reaches?: (targetId: string, skillId: string) => boolean,
+  /** On the board: whether a readied single-target blow still reaches its target from where the unit
+   *  stands, and who stands in the area of a readied area blow where it goes off. */
+  board?: {
+    reaches: (targetId: string, skillId: string) => boolean;
+    around: (at: { x: number; y: number } | undefined, targetId: string) => string[];
+  },
 ): boolean {
   const actor = marinaraFighter(state, unitId);
   if (!actor || actor.hp <= 0) return false;
   const ctx = context(state, seed, true);
   const start = beginMarinaraTurn(actor, state.fighters, ctx);
-  // A telegraphed blow lands only where its target still is in reach (Alyssa 2026-11-06): one that
-  // moved away dodged it, and the turn is spent.
-  const aimed = start.release && marinaraFighter(state, start.release.targetId);
-  if (start.release && aimed && aimed.hp > 0 && reaches && !reaches(aimed.id, start.release.skillId)) {
-    ctx.events.push({
-      kind: "charge-lost",
-      actorId: actor.id,
-      targetId: aimed.id,
-      skillId: start.release.skillId,
-      status: "reach",
-    });
+  const release = start.release;
+  if (release && board) {
+    // A telegraphed blow lands only where its target still is (owner 2026-11-06). A single-target one
+    // misses a target that walked out of reach; an area one goes off at the tile it was aimed at and
+    // lands on every foe still standing in it (playtest r69: a Quake hit nobody once its mark moved).
+    const area = marinaraChargeIsArea(actor, release.skillId);
+    const aimed = marinaraFighter(state, release.targetId);
+    const inArea = area
+      ? board.around(release.at, release.targetId).filter((id) => {
+          const one = marinaraFighter(state, id);
+          return !!one && one.hp > 0 && one.side !== actor.side;
+        })
+      : undefined;
+    const lost = area ? !inArea!.length : !!aimed && aimed.hp > 0 && !board.reaches(aimed.id, release.skillId);
+    if (lost) {
+      ctx.events.push({
+        kind: "charge-lost",
+        actorId: actor.id,
+        targetId: release.targetId,
+        skillId: release.skillId,
+        status: area ? "area" : "reach",
+      });
+      record(state, ctx, log);
+      return false;
+    }
     record(state, ctx, log);
+    const go = { ...context(state, seed, true), grouped: false };
+    releaseMarinaraCharge(actor, release, state.fighters, go, inArea);
+    record(state, go, log);
     return false;
   }
   record(state, ctx, log);
-  if (start.release) {
-    const release = { ...context(state, seed, true), grouped: false };
-    releaseMarinaraCharge(actor, start.release, state.fighters, release);
-    record(state, release, log);
+  if (release) {
+    const go = { ...context(state, seed, true), grouped: false };
+    releaseMarinaraCharge(actor, release, state.fighters, go);
+    record(state, go, log);
     return false;
   }
   return start.acts;
