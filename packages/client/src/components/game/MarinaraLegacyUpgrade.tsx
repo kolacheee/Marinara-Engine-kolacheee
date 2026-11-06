@@ -1,10 +1,10 @@
 // ──────────────────────────────────────────────
 // Journal: a Legacy game's way to Classic classes (owner 2026-11-06). Legacy sheets stay for as long as
 // the players want them; this moves the party over when they choose to: one class each, the sister tree
-// from their temperament, their Legacy level carried over.
+// from their temperament, starting at the top of that class. One-way.
 // ──────────────────────────────────────────────
 import { useMemo, useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { Swords } from "lucide-react";
@@ -13,6 +13,7 @@ import {
   gameCardTemperament,
   guessMarinaraArchetype,
   MARINARA_LEGACY_UPGRADE_LEVEL,
+  normalizeCharacterLookupName,
   marinaraTrees,
   type MarinaraArchetype,
   type MarinaraPartyTemperament,
@@ -61,7 +62,20 @@ export function MarinaraLegacyUpgrade({ chatId }: { chatId: string }) {
       ),
     [meta.gameCharacterCards],
   );
-  if (!marinaraLegacyUpgradeOffered(meta)) return null;
+  const offered = marinaraLegacyUpgradeOffered(meta);
+  // The starting tree a library card picked in its Game Mode section comes before a guess from the class.
+  const { data: library } = useQuery({
+    queryKey: ["game", "marinara", "upgrade-legacy", "picks", chatId],
+    queryFn: () =>
+      api.get<{ trees: Record<string, MarinaraArchetype> }>(
+        `/game/marinara/upgrade-legacy/picks?chatId=${encodeURIComponent(chatId)}`,
+      ),
+    enabled: offered && open,
+    staleTime: 60_000,
+  });
+  const startingTree = (card: Card): MarinaraArchetype =>
+    picks[card.name] ?? library?.trees[normalizeCharacterLookupName(card.name)] ?? guessMarinaraArchetype(card);
+  if (!offered) return null;
   const tree = (id: string) => t(`game.combat.marinara.archetype.${id}`);
 
   const upgrade = async () => {
@@ -74,7 +88,7 @@ export function MarinaraLegacyUpgrade({ chatId }: { chatId: string }) {
         chatId,
         members: cards.map((card) => ({
           name: card.name,
-          primary: picks[card.name] ?? guessMarinaraArchetype(card),
+          primary: startingTree(card),
         })),
       });
       await qc.invalidateQueries({ queryKey: chatKeys.detail(chatId) });
@@ -127,7 +141,7 @@ export function MarinaraLegacyUpgrade({ chatId }: { chatId: string }) {
       {open && (
         <div className="mt-3 space-y-2">
           {cards.map((card) => {
-            const primary = picks[card.name] ?? guessMarinaraArchetype(card);
+            const primary = startingTree(card);
             const kept = gameCardTemperament(card);
             const secondary = kept ? marinaraTrees(primary, kept.initial as MarinaraPartyTemperament).secondary : null;
             return (

@@ -4,8 +4,8 @@
 // A game made without Classic classes keeps its Legacy sheets for as long as its players want. Its
 // Journal offers the upgrade: every party member gets one class (the base class of a primary tree the
 // player picks, guessed from their card), a secondary tree from their temperament (read from their
-// Description when the card has none yet), and their Legacy level carried over as XP in that class.
-// Their Legacy stats stay on the card, untouched.
+// Description when the card has none yet), starting at the top of that class (level 10, owner
+// 2026-11-06). Their Legacy stats stay on the card, untouched. One-way: there is no way back.
 // ──────────────────────────────────────────────
 import {
   COMBAT_PARTY_TEMPERAMENTS,
@@ -51,6 +51,8 @@ export function marinaraLegacyUpgradeBlock(meta: Record<string, unknown>): strin
   if (!setup) return "This game has no setup to upgrade.";
   if (setup.marinaraClasses === true) return "This game already uses Classic classes.";
   if (meta.gameRuleset) return "A game played with a ruleset keeps its ruleset's sheets.";
+  // A fight already under way was set up with Legacy sheets, and classes change only outside battle.
+  if (meta.gameActiveState === "combat") return "Finish the fight first: the party upgrades outside battle.";
   if (partyCards(meta).length === 0) return "This game has no party sheets to upgrade yet.";
   return null;
 }
