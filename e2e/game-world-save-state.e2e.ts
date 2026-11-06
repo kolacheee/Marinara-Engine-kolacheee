@@ -11,6 +11,7 @@ import {
   worldKitFile,
   worldSnapshot,
 } from "@marinara-engine/shared";
+import { wizardNextButton, wizardStepTitle } from "./game-wizard-steps.js";
 import { downloadExport } from "./export-save.js";
 import { seedUIState } from "./ui-state-fixture.js";
 import { prepareViteFixtureDependencies } from "./vite-fixture-dependencies.js";
@@ -113,11 +114,10 @@ test("a world file another generator made comes into setup as it was made, until
   test.setTimeout(120_000);
   const wizard = await mountWizard(page, testInfo);
   const kitLabel = wizard.getByText("Setting kit", { exact: true });
-  const heading = wizard.getByRole("heading", { level: 4 }).first();
   for (let step = 0; step < 6 && !(await kitLabel.isVisible()); step++) {
-    const previous = await heading.innerText();
-    await wizard.getByRole("button", { name: "Next", exact: true }).click();
-    await expect(heading).not.toHaveText(previous);
+    const previous = await wizardStepTitle(wizard);
+    await wizardNextButton(wizard).click();
+    await expect.poll(() => wizardStepTitle(wizard)).not.toBe(previous);
   }
   await wizard
     .getByLabel("Import a world file", { exact: true })
