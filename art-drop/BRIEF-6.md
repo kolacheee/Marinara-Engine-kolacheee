@@ -98,3 +98,12 @@ ground texture plus standing landmarks.
   - Towers: tall arcologies and lit corporate towers.
   - Stacks: smokestacks, cooling towers and gas holders.
   - The game scatters them sparsely over city and industry cells.
+
+## A2. Crater props, redo after the in-game check (added 09:13)
+On the map the props read as tiny black specks. Redraw `crater-prop-0..7.png` at the same sizes:
+- **Fill:** the 96 px ones (4-7) fill about 85% of their square, and the 48 px ones (0-3) about 80%.
+- **Rim and apron:** a clearly visible white rim at about 55-60% alpha on the top-left half, with a soft light ejecta apron fading out around the bowl.
+- **Bowl:** dark at 55-65% alpha, but with a gradient, not a flat blot, so it reads as a hollow and not a hole.
+- **Streaks:** a few short radial ejecta streaks, both light and dark.
+- **Unchanged:** pure shading with no hue, edges fading to zero alpha, ragged blast scars, two pit clusters.
+- **QC:** check them over wasteland dirt and over snow at 1x.
