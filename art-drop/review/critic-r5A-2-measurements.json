@@ -1,0 +1,290 @@
+{
+  "mountains-peak-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      3,
+      5,
+      44,
+      46
+    ],
+    "width": 41,
+    "height": 41,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains-peak-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      4,
+      9,
+      44,
+      46
+    ],
+    "width": 40,
+    "height": 37,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains-peak-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      6,
+      7,
+      42,
+      46
+    ],
+    "width": 36,
+    "height": 39,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains-peak-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      8,
+      16,
+      39,
+      46
+    ],
+    "width": 31,
+    "height": 30,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains-peak-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      9,
+      14,
+      39,
+      46
+    ],
+    "width": 30,
+    "height": 32,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains-peak-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      10,
+      19,
+      37,
+      46
+    ],
+    "width": 27,
+    "height": 27,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains-peak-6": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      12,
+      28,
+      35,
+      46
+    ],
+    "width": 23,
+    "height": 18,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains-peak-7": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      14,
+      25,
+      34,
+      46
+    ],
+    "width": 20,
+    "height": 21,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains@winter-peak-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      3,
+      5,
+      45,
+      46
+    ],
+    "width": 42,
+    "height": 41,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains@winter-peak-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      4,
+      8,
+      44,
+      46
+    ],
+    "width": 40,
+    "height": 38,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains@winter-peak-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      6,
+      6,
+      42,
+      46
+    ],
+    "width": 36,
+    "height": 40,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains@winter-peak-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      8,
+      16,
+      39,
+      46
+    ],
+    "width": 31,
+    "height": 30,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains@winter-peak-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      10,
+      14,
+      39,
+      46
+    ],
+    "width": 29,
+    "height": 32,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains@winter-peak-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      11,
+      19,
+      37,
+      46
+    ],
+    "width": 26,
+    "height": 27,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains@winter-peak-6": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      12,
+      28,
+      35,
+      46
+    ],
+    "width": 23,
+    "height": 18,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  },
+  "mountains@winter-peak-7": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      14,
+      25,
+      34,
+      46
+    ],
+    "width": 20,
+    "height": 21,
+    "alpha_levels": [
+      0,
+      255
+    ]
+  }
+}

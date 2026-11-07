@@ -1,0 +1,54 @@
+{
+  "sets": {
+    "mountains-base": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "assessment": "PASS both bases; keep them as they are. Both SHA-256 hashes match review 3, retaining their prior passes under the calibration and operator instruction. Rebuilt and inspected the 3x3 repeats at 1x and 4x, supplemented by exact 4x phase-shifted seam-crossing viewports. Inspected all pixels of each base at 8x in four quadrants. Both are opaque 288x288. Summer has coherent scree, cracks, small shaded boulders and sparse muted green tufts without standing peaks. Winter has directional snow texture with exposed dark rock, rather than a blank white field. The texture recurs across a 3x3 test, as any repeated tile does, but no concrete new seam, distracting cell grid or rejectable repeat was found. No new blur, antialiasing, noise or palette defect justifies overturning either prior pass."
+    },
+    "mountains-peak": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "assessment": "PASS all eight. Peaks 0,1,3,4,5 are byte-identical to their review-3 passes; no concrete new defect found. Changed peaks 2,6,7 now resolve their specific vegetation failures: 21,14,5 muted green pixels respectively, all on rows 40-47 and attached to the silhouette. Each patch is readable against its ground at native scale, with no detached fringe, halo or new contour damage at 8x. The additions remain restrained beside the approved grass and plains details. All eight are transparent 48x48, use binary alpha, have one connected silhouette, and are centered within 0.5px with feet on rows 44-45. Widths are 41,38,37 / 30,29,26 / 21,18px, meeting the three big, three medium, two small tiers; big heights are 40,35,36px. Warmer mid grey-brown lit left faces contrast with cool dark right faces and mountains-base. Peaks 0 and 2 have double summits; 1 supplies a broad ridge shoulder, 3 a flat-topped crag, and 6 a rounded knoll. Dense overlap and the ragged edge read as a jagged range rather than egg-crate wallpaper or near-identical sharp cones. No rejectable near-duplicates, muddy faces, reversed lighting, blur, antialiasing, loose noise, halo or approved-palette clash found.",
+      "changed_files": {
+        "mountains-peak-2": "PASS: attached olive grass now breaks the lower rock edge; 37px massif and double summit preserved.",
+        "mountains-peak-6": "PASS: attached olive tuft now anchors the foot; 21px rounded knoll preserved.",
+        "mountains-peak-7": "PASS: small attached olive patch is visible at the foot; 18px stepped knoll preserved."
+      }
+    },
+    "mountains@winter-peak": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "assessment": "PASS all eight; all SHA-256 hashes match their review-3 passes, with no concrete new defect. Re-examined each at 8x on neutral and snowy ground, and at 1x/4x in the randomized 8x2 strip, dense lattice and ragged range. All are transparent 48x48 with binary alpha, one connected silhouette, centered placement, feet on rows 44-45 and the required three width tiers. Bold white snow caps occupy the upper half; these are snowy mountains rather than a light dusting. Cool snow shading preserves top-left lighting, with exposed rock on the lower slopes and dark right face. Snow follows the varied double summits, shoulder, flat crag and knolls. Overlap preserves recognizable range silhouettes. Dark outlines remain crisp rather than pale fringes; no new blur, antialiasing, noise, near-duplicate or seasonal inconsistency found. The snow ramp agrees with approved winter grass/plains bases and details, roof snow and paddies."
+    },
+    "review-scope": {
+      "total": 18,
+      "passed": 18,
+      "failed": 0,
+      "assessment": "Exactly BRIEF-5 Part A is judged: two bases and sixteen peak sprites. Fifteen previous passes are unchanged and retained; the three previous failures changed and now pass for the concrete repairs above. Visually compared the named current-fantasy-mountains.png, current-fantasy-mountains@winter.png and current-fantasy-treeline_forest.png references, all approved setting markers, round-2 cells/farmsteads, seasonal paddies, and seasonal grass/plains bases with their details. The reference trees were composited as a dense forest and inspected at 1x/4x to check the standing-sprite overlap model; they are not Part D submissions. Both bases were tiled 3x3 and examined at 1x/4x; both peak sets were randomly shuffled into 8x2 one-cell ground composites and examined at 1x/4x. Both seasons were examined on a full 288x288 lattice and a ragged curved range edge at 1x/4x: horizontal spacing 24px, rows 16px apart, alternate rows offset 12px, later rows over earlier ones. A second lattice random seed was checked at 1x. Every Part A file was also inspected at exact 8x, with bases divided into four viewports to avoid downsampling. Enlargements use nearest-neighbor. Comparison boards and native/4x context views support the palette and style assessment. No Part B/C/D file receives a verdict: Swiss-cheese craters, classical ruins, stamped cyberpunk grids, flat orange autumn and identical tree crowns belong to those other parts. All composites are saved as art-drop/review/critic-r5A-4-*.png. Hashes of every one of the 270 out/ PNGs are unchanged during this review; nothing in out/ was edited."
+    }
+  },
+  "pass": [
+    "mountains-base",
+    "mountains-peak-0",
+    "mountains-peak-1",
+    "mountains-peak-2",
+    "mountains-peak-3",
+    "mountains-peak-4",
+    "mountains-peak-5",
+    "mountains-peak-6",
+    "mountains-peak-7",
+    "mountains@winter-base",
+    "mountains@winter-peak-0",
+    "mountains@winter-peak-1",
+    "mountains@winter-peak-2",
+    "mountains@winter-peak-3",
+    "mountains@winter-peak-4",
+    "mountains@winter-peak-5",
+    "mountains@winter-peak-6",
+    "mountains@winter-peak-7"
+  ],
+  "fail": []
+}
