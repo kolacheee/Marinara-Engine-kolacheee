@@ -839,7 +839,7 @@ export async function encounterRulesetBrief(
 }
 
 /** The bestiary the GM picks Classic Marinara foes from: the setting's families at the party's level. */
-function marinaraEncounterBrief(
+export function marinaraEncounterBrief(
   chatMeta: Record<string, any> | null | undefined,
   setupConfig: Record<string, any> | null | undefined,
   hasRuleset: boolean,
