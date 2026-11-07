@@ -21,6 +21,7 @@ import {
   WORLD_EDGE_PIECE_BY_MASK,
   worldGroundCells,
   worldRoadCells,
+  worldPathCells,
   worldEdgePiece,
   worldJoinedPieces,
   WORLD_DECOR_LOOKS,
@@ -250,7 +251,10 @@ export function WorldOverworld({
         const [from, to] = [byId.get(link.from), byId.get(link.to)];
         if (!from || !to) continue;
         const skip = (x: number, y: number) => wet(x, y) || settledAt.has(y * width + x);
-        for (const { x, y } of worldRoadCells(from.at, to.at, skip, joined)) keep(x, y);
+        const cellsOn = link.path
+          ? worldPathCells(link.path, width, skip, joined)
+          : worldRoadCells(from.at, to.at, skip, joined);
+        for (const { x, y } of cellsOn) keep(x, y);
       }
       // Depth along an edge: smooth noise over runs of about five cells, 0 to 2 cells deep.
       const depth = (edge: number, at: number) => {
@@ -408,16 +412,17 @@ export function WorldOverworld({
     // to the shore it runs into (a little past it, under the water's edge), the river it joins, or past
     // the map's edge.
     const riverCells = new Set<number>();
-    const riverStretches = new Map<number, Array<readonly [number, number, number, number]>>();
-    /** Whether a point (in cells) is on a river or its bank. */
+    // Each stretch of each river as drawn (in cells, with its half width), kept by the cell it starts in.
+    const riverStretches = new Map<number, Array<readonly [number, number, number, number, number]>>();
+    /** Whether a point (in cells) stands on a river as drawn, or within a third of a cell of its bank. */
     const byRiver = (px: number, py: number) => {
       const [cx, cy] = [Math.floor(px), Math.floor(py)];
       for (let dy = -1; dy <= 1; dy++)
         for (let dx = -1; dx <= 1; dx++)
-          for (const [ax, ay, bx, by] of riverStretches.get((cy + dy) * width + cx + dx) ?? []) {
+          for (const [ax, ay, bx, by, half] of riverStretches.get((cy + dy) * width + cx + dx) ?? []) {
             const [vx, vy] = [bx - ax, by - ay];
             const t = Math.max(0, Math.min(1, ((px - ax) * vx + (py - ay) * vy) / (vx * vx + vy * vy || 1)));
-            if (Math.hypot(px - (ax + vx * t), py - (ay + vy * t)) < 0.8) return true;
+            if (Math.hypot(px - (ax + vx * t), py - (ay + vy * t)) < half + 0.3) return true;
           }
       return false;
     };
@@ -453,17 +458,6 @@ export function WorldOverworld({
           }
         }
         for (const cell of river.path) if (!wetCell[cell]) riverCells.add(cell);
-        // Each stretch of the river, kept by the cells it runs through, so no tree stands on it.
-        for (let i = 0; i < river.path.length - 1; i++) {
-          const [a, b] = [river.path[i]!, river.path[i + 1]!];
-          const stretch = [
-            (a % width) + 0.5,
-            Math.floor(a / width) + 0.5,
-            (b % width) + 0.5,
-            Math.floor(b / width) + 0.5,
-          ] as const;
-          for (const cell of [a, b]) riverStretches.set(cell, [...(riverStretches.get(cell) ?? []), stretch]);
-        }
         return { points, mouth: wetCell[last] === true };
       });
       // The rivers in the colour the sea is drawn in: a water cell with water all round it, sampled.
@@ -499,7 +493,19 @@ export function WorldOverworld({
       } catch {
         // A canvas the browser will not read back keeps the plain blue.
       }
-      paintRivers(ctx, courses, waterColour, waterPattern);
+      for (const drawn of paintRivers(ctx, courses, waterColour, waterPattern))
+        for (let i = 1; i < drawn.length; i++) {
+          const [a, b] = [drawn[i - 1]!, drawn[i]!];
+          const stretch = [
+            a.x / OVERWORLD_TILE,
+            a.y / OVERWORLD_TILE,
+            b.x / OVERWORLD_TILE,
+            b.y / OVERWORLD_TILE,
+            Math.max(a.w, b.w) / 2 / OVERWORLD_TILE,
+          ] as const;
+          const cell = Math.floor(stretch[1]) * width + Math.floor(stretch[0]);
+          riverStretches.set(cell, [...(riverStretches.get(cell) ?? []), stretch]);
+        }
     }
     // Ways over open ground: as road cells with joined road pieces (laid corner to corner) or road edge
     // tiles, else drawn as lines.
@@ -517,8 +523,24 @@ export function WorldOverworld({
       if (!from || !to) continue;
       const crosses = kit.travel.find((way) => way.id === link.way)?.crosses ?? "open";
       if (roadEdges && crosses === "open") {
-        const cellsOn = worldRoadCells(from.at, to.at, (x, y) => wet(x, y) || settled.has(y * width + x), roadJoined);
+        const skip = (x: number, y: number) => wet(x, y) || settled.has(y * width + x);
+        // A way laid along the land (generator 8) runs over its own cells; an older one, straight.
+        const cellsOn = link.path
+          ? worldPathCells(link.path, width, skip, roadJoined)
+          : worldRoadCells(from.at, to.at, skip, roadJoined);
         for (const { x, y } of cellsOn) roads.add(y * width + x);
+        continue;
+      }
+      if (link.path) {
+        for (let i = 1; i < link.path.length; i++) {
+          const [a, b] = [link.path[i - 1]!, link.path[i]!];
+          paintWay(
+            ctx,
+            { x: a % width, y: Math.floor(a / width) },
+            { x: b % width, y: Math.floor(b / width) },
+            crosses,
+          );
+        }
         continue;
       }
       paintWay(ctx, from.at, to.at, crosses);
@@ -868,9 +890,26 @@ export function WorldOverworld({
         toast.error(error instanceof Error && error.message ? error.message : t("game.overworld.walkFailed"));
         return;
       }
-      const points = result.route.path.flatMap((id) => {
+      // Along each leg's road where it is laid along the land (generator 8), else straight between places.
+      const points: Array<{ x: number; y: number }> = [];
+      result.route.path.forEach((id, index) => {
         const place = byId.get(id);
-        return place ? [centre(place)] : [];
+        if (!place) return;
+        const before = index > 0 ? result.route.path[index - 1] : undefined;
+        const link = before
+          ? world.links.find(
+              (each) => (each.from === before && each.to === id) || (each.from === id && each.to === before),
+            )
+          : undefined;
+        if (link?.path) {
+          const cells = link.from === id ? [...link.path].reverse() : link.path;
+          for (const cell of cells.slice(1, -1))
+            points.push({
+              x: (cell % world.width) * OVERWORLD_TILE + OVERWORLD_TILE / 2,
+              y: Math.floor(cell / world.width) * OVERWORLD_TILE + OVERWORLD_TILE / 2,
+            });
+        }
+        points.push(centre(place));
       });
       const lengths = points
         .slice(1)
@@ -928,7 +967,7 @@ export function WorldOverworld({
       };
       frameRef.current = requestAnimationFrame(frame);
     },
-    [byId, canWalk, chatId, flush, t, time, walkMutation],
+    [byId, canWalk, chatId, flush, t, time, walkMutation, world],
   );
 
   const tripText = (days: number) =>

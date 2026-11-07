@@ -140,7 +140,17 @@ const compiledSchema = z
       .regex(/^[0-9a-z]*$/, "The ground is one of 0-9 or a-z for each cell"),
     places: z.array(placeSchema).max(20_000),
     links: z
-      .array(z.object({ from: id, to: id, way: id, days: z.number().finite().min(0).max(100_000) }).strict())
+      .array(
+        z
+          .object({
+            from: id,
+            to: id,
+            way: id,
+            days: z.number().finite().min(0).max(100_000),
+            path: z.array(z.number().int().min(0).max(16_000_000)).min(1).max(100_000).optional(),
+          })
+          .strict(),
+      )
       .max(100_000),
     startId: id,
     rivers: z
@@ -148,7 +158,7 @@ const compiledSchema = z
         z
           .object({
             path: z.array(z.number().int().min(0).max(16_000_000)).min(1).max(100_000),
-            width: z.array(z.number().int().min(1).max(3)).max(100_000),
+            width: z.array(z.number().int().min(1).max(5)).max(100_000),
           })
           .strict(),
       )
@@ -304,6 +314,8 @@ const snapshotShape = z
         )
       )
         issue(`${label}: a river runs off the ground`);
+      if (world.links.some((link) => link.path?.some((cell) => cell >= cells)))
+        issue(`${label}: a road runs off the ground`);
       if (world.resources?.some((resource) => resource.at.x >= world.width || resource.at.y >= world.height))
         issue(`${label}: a resource lies off the ground`);
     }

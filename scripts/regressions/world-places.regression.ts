@@ -358,7 +358,7 @@ for (const kit of kits) {
       for (const seed of [1, 4242, 20261002]) {
         const scaled = { ...kit, scale };
         const label = `${kitId}/${scale}/${seed}`;
-        const world = compileWorld({ seed, kit: scaled });
+        const world = compileWorld({ seed, kit: scaled, generatorVersion: 7 });
         assert.equal(world.generatorVersion, 7);
         assertWhole(world, scaled, label);
         const before = compileWorld({ seed, kit: scaled, generatorVersion: 6 });
@@ -432,6 +432,68 @@ for (const kit of kits) {
   assert.equal(compileWorld({ seed: 9, kit: byId.get("space_opera")! }).rivers, undefined);
   // Generator 6 worlds are made exactly as before: no rivers, no resources.
   assert.equal(compileWorld({ seed: 4, kit: byId.get("high_fantasy")!, generatorVersion: 6 }).rivers, undefined);
+}
+
+// ── Generator 8: roads laid along the land ──
+{
+  let [routed, onPeaks, roadCells, detour] = [0, 0, 0, 0];
+  for (const kitId of ["high_fantasy", "wuxia_xianxia", "the_1920s", "modern_day"]) {
+    const kit = byId.get(kitId)!;
+    for (const scale of ["region", "realm", "world"] as const) {
+      for (const seed of [1, 4242, 20261002]) {
+        const scaled = { ...kit, scale };
+        const label = `${kitId}/${scale}/${seed}`;
+        const world = compileWorld({ seed, kit: scaled });
+        assert.equal(world.generatorVersion, 8);
+        assertWhole(world, scaled, label);
+        const before = compileWorld({ seed, kit: scaled, generatorVersion: 7 });
+        // The same places and the same pairs of them linked; only the ways between them change.
+        assert.deepEqual(
+          world.places.map((place) => [place.id, place.at.x, place.at.y]),
+          before.places.map((place) => [place.id, place.at.x, place.at.y]),
+          label,
+        );
+        assert.deepEqual(
+          world.links.map((link) => `${link.from}-${link.to}`),
+          before.links.map((link) => `${link.from}-${link.to}`),
+          label,
+        );
+        const places = new Map(world.places.map((place) => [place.id, place]));
+        const kindAt = (cell: number) => kit.terrain![parseInt(world.ground[cell]!, 36)]!.kind;
+        for (const link of world.links) {
+          if (!link.path) continue;
+          routed++;
+          const [from, to] = [places.get(link.from)!, places.get(link.to)!];
+          const path = link.path;
+          // From one settlement to the other, a step at a time, never through water.
+          assert.equal(path[0], from.at.y * world.width + from.at.x, `${label}: a road starts off its town`);
+          assert.equal(path[path.length - 1], to.at.y * world.width + to.at.x, `${label}: a road ends off its town`);
+          let length = 0;
+          for (let i = 1; i < path.length; i++) {
+            const [a, b] = [path[i - 1]!, path[i]!];
+            const [dx, dy] = [
+              Math.abs((a % world.width) - (b % world.width)),
+              Math.abs(Math.floor(a / world.width) - Math.floor(b / world.width)),
+            ];
+            assert.ok(Math.max(dx, dy) === 1, `${label}: a road jumps`);
+            length += dx && dy ? Math.SQRT2 : 1;
+          }
+          for (const cell of path.slice(1, -1)) assert.notEqual(kindAt(cell), "water", `${label}: a road at sea`);
+          roadCells += path.length;
+          onPeaks += path.filter((cell) => kindAt(cell) === "barrier").length;
+          detour += length / Math.hypot(from.at.x - to.at.x, from.at.y - to.at.y);
+        }
+      }
+    }
+  }
+  // Roads keep off the mountains, bending a little as roads do rather than winding far round.
+  assert.ok(routed > 100, `${routed} roads`);
+  assert.ok(onPeaks / roadCells < 0.03, `on the peaks ${onPeaks} of ${roadCells}`);
+  assert.ok(detour / routed > 1.03 && detour / routed < 1.4, `detour ${detour / routed}`);
+  // Generator 7 worlds keep their straight ways.
+  assert.ok(
+    compileWorld({ seed: 4, kit: byId.get("high_fantasy")!, generatorVersion: 7 }).links.every((link) => !link.path),
+  );
 }
 
 // ── The ground's shares, and the ways and times of travel ──
