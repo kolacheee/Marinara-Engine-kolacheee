@@ -16,6 +16,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 
 import {
+  WORLD_GENERATOR_VERSION,
   WORLD_BUILD_UP,
   WORLD_STARTER_KITS,
   applyWorldHistoryTags,
@@ -289,7 +290,7 @@ const fantasy = kits.find((kit) => kit.id === "high_fantasy")!;
     const kit = { ...kits.find((each) => each.id === kitId)!, scale: "realm" as const };
     for (const seed of [3, 4242, 90210]) {
       const game = rivalWorld(kit, seed);
-      assert.equal(game.world.generatorVersion, 9);
+      assert.equal(game.world.generatorVersion, WORLD_GENERATOR_VERSION);
       const history = worldHistory(game);
       const water = new Set(
         game.world.terrain.flatMap((id, index) =>

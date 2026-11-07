@@ -64,7 +64,7 @@ const briefOf = (kit: ReturnType<typeof parseWorldKit> & { ok: true }) =>
   });
 
 try {
-  assert.equal(WORLD_GENERATOR_VERSION, 9);
+  assert.equal(WORLD_GENERATOR_VERSION, 10);
   assert.ok(
     worldGeneratorReads(1) &&
       worldGeneratorReads(2) &&
@@ -75,7 +75,8 @@ try {
       worldGeneratorReads(7) &&
       worldGeneratorReads(8) &&
       worldGeneratorReads(9) &&
-      !worldGeneratorReads(10) &&
+      worldGeneratorReads(10) &&
+      !worldGeneratorReads(11) &&
       !worldGeneratorReads("2"),
   );
 
@@ -219,7 +220,8 @@ try {
   assert.ok(gameWorldFromMetadata(recipe(7)), "a version 7 recipe reads");
   assert.ok(gameWorldFromMetadata(recipe(8)), "a version 8 recipe reads");
   assert.ok(gameWorldFromMetadata(recipe(9)), "a version 9 recipe reads");
-  assert.equal(gameWorldFromMetadata(recipe(10)), null, "a version this Engine does not know is refused");
+  assert.ok(gameWorldFromMetadata(recipe(10)), "a version 10 recipe reads");
+  assert.equal(gameWorldFromMetadata(recipe(11)), null, "a version this Engine does not know is refused");
 
   // A version 1 world read in a new game's setup (a world file, a setup file, a library world, a map
   // pack) is made again as version 1; a new seed or brief makes a version 2 world.

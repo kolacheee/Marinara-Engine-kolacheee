@@ -24,8 +24,9 @@ import {
   worldStepCost,
 } from "./land.js";
 
-export const WORLD_GENERATOR_VERSION = 9;
-/** The generator versions this Engine makes again from a recipe exactly as they were made: 9 grows the
+export const WORLD_GENERATOR_VERSION = 10;
+/** The generator versions this Engine makes again from a recipe exactly as they were made: 10 keeps a
+ *  built-up setting's city to the settlements, with open ground between (worldUrbanize), 9 grows the
  *  world's history out of its land (the oldest towns on the best sites, growth on harbours, roads and ore,
  *  lost places that failed for a reason: history-land.ts; the map is 8's), 8 lays the
  *  roads along the land (round the ranges, through the passes, over the rivers where they must, joining into
@@ -40,7 +41,7 @@ export const WORLD_GENERATOR_VERSION = 9;
  *  town lot a cell back from its street with a path from its door out to it, 2 adds sites (caves, ruins,
  *  crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none. A recipe of a
  *  version it reads stays editable and sharable as a recipe. */
-export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 export function worldGeneratorReads(version: unknown): boolean {
   return typeof version === "number" && WORLD_GENERATOR_VERSIONS_READ.includes(version);
 }
@@ -656,6 +657,118 @@ function worldCultivate(
   lay(suburb, (tier) => SUBURB_REACH[tier] ?? 0, 0.4);
 }
 
+/** A built-up terrain's part in a city (open ground only): its core, the sprawl around it, the slums at its
+ *  edge, or its industry. */
+export function worldUrbanTerrain(terrain: {
+  id: string;
+  kind: string;
+}): "core" | "sprawl" | "slums" | "industry" | null {
+  if (terrain.kind !== "open") return null;
+  const words: Array<[RegExp, "core" | "sprawl" | "slums" | "industry"]> = [
+    [/slum|shanty|favela|squat/, "slums"],
+    [/industr|factory|factories|dock|refiner|foundr|mill/, "industry"],
+    [/core|downtown|corporate|arcolog|financial/, "core"],
+    [/sprawl|city|urban|district|metro/, "sprawl"],
+  ];
+  return words.find(([pattern]) => pattern.test(terrain.id))?.[1] ?? null;
+}
+
+/** How far a city's parts reach from a settlement, by its tier (0 a hamlet to 3 a city), in cells. */
+const SPRAWL_REACH = [1, 1.8, 2.8, 4];
+const CORE_REACH = [0, 0, 0.9, 1.6];
+const SLUMS_BAND = [0.8, 1, 1.3, 1.6];
+
+/**
+ * A city kept to its settlements (user, 2026-11-07, on the cyberpunk map wall to wall with city: "what's
+ * going on with the sci-fi world???"): in a setting whose open ground is mostly built-up, every built-up
+ * cell becomes the open ground most common around it (the badlands between the cities), then each settlement
+ * gets a ragged sprawl, slums in a broken band round its edge, industry by the water and in patches, and a
+ * town or city a core at its heart. A setting with no open ground but its city keeps the map as it was.
+ */
+function worldUrbanize(
+  seed: number,
+  terrain: Array<{ id: string; kind: string; share: number }>,
+  kinds: Uint8Array,
+  width: number,
+  height: number,
+  settlements: Array<{ cell: number; tier: number }>,
+) {
+  const part = terrain.map((entry) => worldUrbanTerrain(entry));
+  const open = terrain.reduce((sum, entry) => sum + (entry.kind === "open" ? entry.share : 0), 0);
+  const built = terrain.reduce((sum, entry, index) => sum + (part[index] ? entry.share : 0), 0);
+  if (open <= 0 || built / open <= 0.5) return;
+  const biggest = (which: "core" | "sprawl" | "slums" | "industry") =>
+    terrain
+      .map((entry, index) => ({ index, share: entry.share }))
+      .filter(({ index }) => part[index] === which)
+      .sort((a, b) => b.share - a.share || a.index - b.index)[0]?.index;
+  const wild = terrain
+    .map((entry, index) => ({ index, share: entry.share }))
+    .filter(({ index }) => terrain[index]!.kind === "open" && part[index] === null)
+    .sort((a, b) => b.share - a.share || a.index - b.index);
+  if (wild.length === 0) return;
+  const before = Uint8Array.from(kinds);
+  for (let cell = 0; cell < kinds.length; cell++) {
+    if (part[before[cell]!] === null) continue;
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    const count = new Map<number, number>();
+    for (let dy = -2; dy <= 2; dy++)
+      for (let dx = -2; dx <= 2; dx++) {
+        const [nx, ny] = [x + dx, y + dy];
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+        const near = before[ny * width + nx]!;
+        if (terrain[near]!.kind === "open" && part[near] === null) count.set(near, (count.get(near) ?? 0) + 1);
+      }
+    const best = [...count].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0];
+    kinds[cell] = best ? best[0] : wild[0]!.index;
+  }
+  const [core, sprawl, slums, industry] = [biggest("core"), biggest("sprawl"), biggest("slums"), biggest("industry")];
+  const noise = valueNoise(seed, "urban", width, height);
+  const patches = valueNoise(seed, "urban-industry", width, height);
+  const wet = (x: number, y: number) =>
+    x >= 0 && y >= 0 && x < width && y < height && terrain[kinds[y * width + x]!]!.kind === "water";
+  const isOpen = (at: number) => terrain[kinds[at]!]!.kind === "open";
+  // Outermost first, each part laid over the one before it.
+  const lay = (
+    index: number | undefined,
+    reach: (tier: number) => number,
+    grain: number,
+    keep?: (at: number) => boolean,
+  ) => {
+    if (index === undefined) return;
+    for (const { cell, tier } of settlements) {
+      const far = reach(tier);
+      if (far <= 0) continue;
+      const [cx, cy] = [cell % width, Math.floor(cell / width)];
+      const span = Math.ceil(far + grain);
+      for (let dy = -span; dy <= span; dy++)
+        for (let dx = -span; dx <= span; dx++) {
+          const [x, y] = [cx + dx, cy + dy];
+          if (x < 0 || y < 0 || x >= width || y >= height) continue;
+          const at = y * width + x;
+          if (!isOpen(at) || (keep && !keep(at))) continue;
+          if (Math.hypot(dx, dy) <= far + (noise[at]! - 0.5) * 2 * grain) kinds[at] = index;
+        }
+    }
+  };
+  const sprawlAt = (tier: number) => SPRAWL_REACH[tier] ?? 1;
+  // The slums: a broken band past the sprawl's edge (where the noise is high), else nothing.
+  lay(
+    slums,
+    (tier) => sprawlAt(tier) + (SLUMS_BAND[tier] ?? 1),
+    0.5,
+    (at) => noise[at]! > 0.42,
+  );
+  lay(sprawl ?? core, sprawlAt, 0.8);
+  // Industry on the sprawl's waterfront and in a few patches of it.
+  lay(industry, sprawlAt, 0.8, (at) => {
+    const [x, y] = [at % width, Math.floor(at / width)];
+    const shore = wet(x - 1, y) || wet(x + 1, y) || wet(x, y - 1) || wet(x, y + 1);
+    return (shore && patches[at]! > 0.3) || patches[at]! > 0.72;
+  });
+  lay(core ?? sprawl, (tier) => CORE_REACH[tier] ?? 0, 0.3);
+}
+
 // ── Places ──
 
 interface Draft {
@@ -1227,6 +1340,19 @@ export function compileWorld({
   // Generator 4: fields and suburbs only near the settlements, before the ways are laid over the ground.
   if (generatorVersion >= 4)
     worldCultivate(
+      seed,
+      terrain,
+      kinds,
+      width,
+      height,
+      settlements.map(({ draft }) => ({
+        cell: draft.cell!,
+        tier: ladder > 1 ? Math.round((draft.size! / (ladder - 1)) * 3) : 3,
+      })),
+    );
+  // Generator 10: a built-up setting's city only around its settlements.
+  if (generatorVersion >= 10)
+    worldUrbanize(
       seed,
       terrain,
       kinds,
