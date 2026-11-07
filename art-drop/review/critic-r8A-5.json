@@ -1,0 +1,148 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-8.md, current Part A: Ground. Only its two explicitly named street bases receive verdicts.",
+      "files": [
+        "scifi-street-base",
+        "scifi-street@winter-base"
+      ],
+      "calibration": "Good enough to ship next to the approved art. Summer is byte-identical to its critic-r8A-4 pass; that pass is retained. Winter changed and receives a fresh visual assessment, with previous failures reconsidered rather than copied forward.",
+      "not_applicable": "Current Part A contains no peaks, one-cell tile sets, trees, craters, ruins or autumn variants. Peak lattice/range, random 8x2 one-cell tiling and forest composites therefore have no applicable Part A input. Egg-crate peaks, Swiss-cheese craters, classical ruins, flat orange autumn and identical crowns cannot occur in this two-base scope. No verdicts were assigned to other parts.",
+      "block_qc_limit": "The common QC asks for city, slum and industry blocks. None of the scifi-city-bldg-*, scifi-slums-bldg-* or scifi-industry-bldg-* props named in Parts B-D exist in out/. Full block QC, including a standing slum block, is therefore unavailable. As a limited ground-context check, densely planted existing seasonal city towers and industry stacks were composited in depth order over both bases with an exposed lane, at 1x and 4x. These scenes test ground readability and compatibility; they do not approve missing building sets or certify a completed city/slum/industry block.",
+      "references": "Current Part A names no separate reference image. The brief explicitly retains the existing city towers and industry stacks; both seasonal sets were used in context. Also compared reference/scifi-marker0..3.png and scifi-ground.png, approved out/marker3 examples for all six settings, round-2 city/slums/industry/farmland examples, all four paddy seasons, and summer/spring/autumn/winter grass and plains bases with two matching details each. Native and 4x comparison boards saved."
+    },
+    "technical": {
+      "scifi-street-base": {
+        "size": [
+          288,
+          288
+        ],
+        "alpha_range": [
+          255,
+          255
+        ],
+        "rgba_colours": 12,
+        "dominant_colour_percent": 40.84,
+        "sha256": "61ca8c4a5cd6b06e4c49c9e29cba8446fe8cc4a803ab49ea6ea72549cf32b6af",
+        "changed_since_r8A_4": false
+      },
+      "scifi-street@winter-base": {
+        "size": [
+          288,
+          288
+        ],
+        "alpha_range": [
+          255,
+          255
+        ],
+        "rgba_colours": 23,
+        "dominant_colour_percent": 59.24,
+        "sha256": "4eda2bc81e47395782ab1a1c7adf2413e039cff2917357d852bd4da9510740f6",
+        "changed_since_r8A_4": true
+      }
+    },
+    "shared_checks": {
+      "dimensions_opacity_content": "Both exactly 288x288 and fully opaque. Neither contains a building. Ground paving, grates, worn markings and small muted cyan/magenta reflections are present. The transparent-sprite outline, foot anchor and perimeter placement rules do not apply to these explicitly opaque ground bases.",
+      "tiling": "Inspected literal, unrotated 3x3 repetitions at 1x and 4x for both bases, half-width/height wraps at 1x/4x, and exact 4x four-tile junction crops. No hard horizontal/vertical boundary seam or rectangular frame found. No stamped cyberpunk paving grid. Winter fails for recognisable repeated interior motifs, as detailed in its verdict.",
+      "pixel_quality": "Inspected every source pixel of each file in four non-overlapping 144x144 quadrant views at exact nearest-neighbour 8x. Full 8x images are also saved. Hard pixel clusters and discrete compact palettes; no interpolation blur, antialiasing ramps, fringe or halo defect found. Low-contrast fine texture remains subordinate; no separate rejection for general noise.",
+      "lighting": "Grate rims and selected slush rims are lightest toward the upper left, with dark recesses. No concrete violation of top-left light found.",
+      "palette": "Cool dark wet asphalt, muted cyan/magenta glints and neutral dirty snow fit the neon landmarks and keep their silhouettes readable. The much lighter named scifi-ground reference does not override the explicit dark-asphalt requirement. Winter ground need not be as white as open-country snow or snow-covered rooftops. No separate palette-clash failure.",
+      "seasonal_identity_duplicates": "The files are visibly distinct, not duplicate images or a global tint swap. Winter is not blank. The revised connected grey slush masses, compressed light rims and darker melt margins read more clearly as a dirty thawing street. Broad paired broken wet ruts in the left-middle patch now have slush shoulders and are more plausible than the old isolated cuts. Those former material/track failures are not carried forward independently. Their motif repetition remains a shipping defect.",
+      "context": "Viewed city-tower and industry-stack scenes at native size and 4x, including exact 4x context crops. The ground stays beneath the standing silhouettes. Winter repetitive slush shapes remain evident in exposed streets. Missing building sets prevent the complete common block QC, as stated in scope."
+    },
+    "scifi-street-base": {
+      "status": "pass",
+      "prior_pass_preserved": true,
+      "assessment": "Byte-identical to the critic-r8A-4 pass. Dark wet asphalt, restrained irregular paving, faint worn lane fragments, grates and modest neon puddles remain suitable ground beneath landmarks. Repetition can be located by deliberate searching, but no concrete new rejection-level defect was found in tiling, pixel edges, lighting, palette, size or context. Retain the established pass."
+    },
+    "scifi-street@winter-base": {
+      "status": "fail",
+      "improvements": "Broader varied slush masses replace the previous mostly narrow diagonal streaks. Grey centres, selective compressed rims, snow against grate edges and wider broken paired wet ruts improve winter identity and physical readability. This is a real improvement; the former three complaints are not all repeated by default.",
+      "assessment": "The brightened, distinctive slush islands and rut cluster still expose the 288 px repeat. That specific remaining defect prevents shipping next to the approved art.",
+      "problems": "Conspicuous repeated slush/track motifs still make the winter ground read as patterned wallpaper. In the unrotated 3x3 at both 1x and 4x, the tall lobed patch around x105-185/y0-77, the paired diagonal ruts and surrounding slush around x30-100/y80-173, and the broad two-lobed patch around x180-270/y199-258 recur in easily followed rows every 288 px. These are source coordinates, measured from the top left. The brighter new grey centres make these landmarks stand out more than the quieter summer texture. The pattern also shows in open lanes and gaps in the tower/stack context composites; it is not just a magnification-only objection. The boundary joins themselves are clean. Reduce the salience of these three particular silhouettes: flatten some of their bright centres, break or merge their outlines into quieter surrounding slush, and vary the orientation, scale and spacing of the remaining masses so they do not all become individually recognisable islands. Keep enough neutral-grey snow and readable wet ruts to preserve the improvements in this revision. Do not fix this by adding speckles, drawing a paving grid, or returning everything to near-asphalt values. Retest the literal unrotated 3x3 and exposed lanes; success means the repeated arrangement no longer catches the eye at native scale.",
+      "evidence": [
+        "critic-r8A-5-winter-base-3x3-1x.png",
+        "critic-r8A-5-winter-base-3x3-4x.png",
+        "critic-r8A-5-winter-repeat-locator-1x.png",
+        "critic-r8A-5-winter-repeat-locator-4x.png",
+        "critic-r8A-5-winter-individual-4x.png",
+        "critic-r8A-5-winter-quadrant-0-0-8x.png",
+        "critic-r8A-5-winter-quadrant-1-0-8x.png",
+        "critic-r8A-5-winter-quadrant-0-1-8x.png",
+        "critic-r8A-5-winter-quadrant-1-1-8x.png",
+        "critic-r8A-5-winter-city-landmark-context-1x.png",
+        "critic-r8A-5-winter-city-context-window-4x.png",
+        "critic-r8A-5-winter-industry-landmark-context-1x.png",
+        "critic-r8A-5-winter-industry-context-window-4x.png"
+      ]
+    },
+    "evidence": {
+      "prefix": "art-drop/review/critic-r8A-5-",
+      "png_files": [
+        "critic-r8A-5-approved-comparison-1x.png",
+        "critic-r8A-5-approved-comparison-4x.png",
+        "critic-r8A-5-approved-grass-4x.png",
+        "critic-r8A-5-approved-markers-4x.png",
+        "critic-r8A-5-approved-plains-4x.png",
+        "critic-r8A-5-approved-round2-4x.png",
+        "critic-r8A-5-named-ground-4x.png",
+        "critic-r8A-5-named-markers-4x.png",
+        "critic-r8A-5-scifi-references-1x.png",
+        "critic-r8A-5-scifi-references-4x.png",
+        "critic-r8A-5-summer-base-3x3-1x.png",
+        "critic-r8A-5-summer-base-3x3-4x.png",
+        "critic-r8A-5-summer-city-context-window-4x.png",
+        "critic-r8A-5-summer-city-landmark-context-1x.png",
+        "critic-r8A-5-summer-city-landmark-context-4x.png",
+        "critic-r8A-5-summer-four-tile-join-4x.png",
+        "critic-r8A-5-summer-individual-1x.png",
+        "critic-r8A-5-summer-individual-4x.png",
+        "critic-r8A-5-summer-individual-8x.png",
+        "critic-r8A-5-summer-industry-context-window-4x.png",
+        "critic-r8A-5-summer-industry-landmark-context-1x.png",
+        "critic-r8A-5-summer-industry-landmark-context-4x.png",
+        "critic-r8A-5-summer-quadrant-0-0-8x.png",
+        "critic-r8A-5-summer-quadrant-0-1-8x.png",
+        "critic-r8A-5-summer-quadrant-1-0-8x.png",
+        "critic-r8A-5-summer-quadrant-1-1-8x.png",
+        "critic-r8A-5-summer-wrap-1x.png",
+        "critic-r8A-5-summer-wrap-4x.png",
+        "critic-r8A-5-winter-base-3x3-1x.png",
+        "critic-r8A-5-winter-base-3x3-4x.png",
+        "critic-r8A-5-winter-city-context-window-4x.png",
+        "critic-r8A-5-winter-city-landmark-context-1x.png",
+        "critic-r8A-5-winter-city-landmark-context-4x.png",
+        "critic-r8A-5-winter-four-tile-join-4x.png",
+        "critic-r8A-5-winter-individual-1x.png",
+        "critic-r8A-5-winter-individual-4x.png",
+        "critic-r8A-5-winter-individual-8x.png",
+        "critic-r8A-5-winter-industry-context-window-4x.png",
+        "critic-r8A-5-winter-industry-landmark-context-1x.png",
+        "critic-r8A-5-winter-industry-landmark-context-4x.png",
+        "critic-r8A-5-winter-quadrant-0-0-8x.png",
+        "critic-r8A-5-winter-quadrant-0-1-8x.png",
+        "critic-r8A-5-winter-quadrant-1-0-8x.png",
+        "critic-r8A-5-winter-quadrant-1-1-8x.png",
+        "critic-r8A-5-winter-repeat-locator-1x.png",
+        "critic-r8A-5-winter-repeat-locator-4x.png",
+        "critic-r8A-5-winter-wrap-1x.png",
+        "critic-r8A-5-winter-wrap-4x.png"
+      ],
+      "scaling": "Nearest-neighbour only. Native/4x 3x3 repetitions, individual views, wrap tests, landmark contexts, exact 4x junction/context crops and reference boards. Full 8x originals plus four exact 8x quadrants cover every Part A source pixel. Gold rectangles on the repeat locator are review annotations only."
+    },
+    "source_integrity": {
+      "all_out_pngs_unchanged": true,
+      "checked_png_count": 508,
+      "baseline": "critic-r8A-5-out-before-hashes.json"
+    }
+  },
+  "pass": [
+    "scifi-street-base"
+  ],
+  "fail": [
+    {
+      "name": "scifi-street@winter-base",
+      "problems": "Conspicuous repeated slush/track motifs still make the winter ground read as patterned wallpaper. In the unrotated 3x3 at both 1x and 4x, the tall lobed patch around x105-185/y0-77, the paired diagonal ruts and surrounding slush around x30-100/y80-173, and the broad two-lobed patch around x180-270/y199-258 recur in easily followed rows every 288 px. These are source coordinates, measured from the top left. The brighter new grey centres make these landmarks stand out more than the quieter summer texture. The pattern also shows in open lanes and gaps in the tower/stack context composites; it is not just a magnification-only objection. The boundary joins themselves are clean. Reduce the salience of these three particular silhouettes: flatten some of their bright centres, break or merge their outlines into quieter surrounding slush, and vary the orientation, scale and spacing of the remaining masses so they do not all become individually recognisable islands. Keep enough neutral-grey snow and readable wet ruts to preserve the improvements in this revision. Do not fix this by adding speckles, drawing a paving grid, or returning everything to near-asphalt values. Retest the literal unrotated 3x3 and exposed lanes; success means the repeated arrangement no longer catches the eye at native scale."
+    }
+  ]
+}
