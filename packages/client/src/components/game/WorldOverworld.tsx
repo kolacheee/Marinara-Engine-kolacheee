@@ -944,7 +944,10 @@ export function WorldOverworld({
         if (!look || wetCell[y * width + x]) continue;
         const noise = cellNoise(x, y);
         if (noise(63) >= 0.65) continue;
-        const large = noise(62) < 0.55;
+        // A large one spills half a cell round it, so never beside water (its pools would lie over the lake).
+        let shore = false;
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (wetAt(x + dx, y + dy)) shore = true;
+        const large = !shore && noise(62) < 0.55;
         const piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
         inSeason(x, y);
         drawTile.piece(
