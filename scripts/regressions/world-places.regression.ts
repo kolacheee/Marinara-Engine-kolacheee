@@ -443,7 +443,7 @@ for (const kit of kits) {
       for (const seed of [1, 4242, 20261002]) {
         const scaled = { ...kit, scale };
         const label = `${kitId}/${scale}/${seed}`;
-        const world = compileWorld({ seed, kit: scaled });
+        const world = compileWorld({ seed, kit: scaled, generatorVersion: 8 });
         assert.equal(world.generatorVersion, 8);
         assertWhole(world, scaled, label);
         const before = compileWorld({ seed, kit: scaled, generatorVersion: 7 });

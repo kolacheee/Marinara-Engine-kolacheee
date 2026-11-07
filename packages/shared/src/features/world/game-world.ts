@@ -19,6 +19,7 @@ import { worldEditsFightable } from "./battlefield-maps.js";
 import { WORLD_RESOURCE_WORDS } from "./land.js";
 import { worldCast, worldCastSize, worldPersonSheet } from "./people.js";
 import { worldHistory, worldHistoryLine, worldNotablePast, worldPlacePast } from "./history.js";
+import { worldPeopleLines, worldPeoples, worldPeoplesNear } from "./peoples.js";
 import {
   worldAddedPlace,
   worldBrewingNear,
@@ -266,6 +267,13 @@ export function worldOverviewPromptText(game: GameWorld): string {
       const past = worldNotablePast(history);
       return past.length ? [`- The past:`, ...past.map((event) => `  - ${worldHistoryLine(event)}`)] : [];
     })(),
+    ...(() => {
+      // Generator 9: the peoples who are not human, one line each; their rules come with the places near them.
+      const peoples = worldPeoples(kit, world);
+      return peoples.length
+        ? [`- Not human:`, ...peoples.flatMap((people) => worldPeopleLines(people, false).map((line) => `  ${line}`))]
+        : [];
+    })(),
     `To recall the past of a place or group not shown here, write [history: place="Name"] or [history: group="Name"]; the answer comes with your next turn.`,
     worldLedgerInstructions(game),
     `Use these places and names. When the party goes somewhere, say where with [place: name="..."], using a name from this world when it is one; a place this world does not list (a farmhouse, a camp, a ship) gets a name of its own.`,
@@ -348,6 +356,11 @@ export function worldWhereYouAreText(
         }.`,
       );
     }
+    // Generator 9: the peoples who live nearby, the nearest in full.
+    const peoples = worldPeoples(kit, world);
+    worldPeoplesNear(peoples, home)
+      .slice(0, 2)
+      .forEach((people, index) => lines.push(...worldPeopleLines(people, index === 0, peoples)));
     const past = worldPlacePast(history, home, 4);
     if (past.length) lines.push(`- Its past: ${past.map(worldHistoryLine).join(" ")}`);
     // What the party has done here, latest last.
