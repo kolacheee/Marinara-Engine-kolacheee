@@ -59,7 +59,9 @@ const gameOf = (id: string, seed: number): GameWorld => {
     })),
   });
   assert.ok(checked.ok);
-  const inputs = { kit, seed, grounding: "expand" as const, brief: checked.brief };
+  // Town edits on a world as generator 6 lays it out (the city and its free lots these checks use); the
+  // generator's own checks are in world-places.
+  const inputs = { kit, seed, grounding: "expand" as const, brief: checked.brief, generatorVersion: 6 };
   return { ...inputs, world: compileGameWorld(inputs) };
 };
 const withEdits = (game: GameWorld, edits: WorldEdits): GameWorld => {

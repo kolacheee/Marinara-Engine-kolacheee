@@ -294,7 +294,7 @@ for (const kit of kits) {
       for (const seed of [1, 4242, 20261002]) {
         const scaled = { ...kit, scale };
         const label = `${kitId}/${scale}/${seed}`;
-        const world = compileWorld({ seed, kit: scaled });
+        const world = compileWorld({ seed, kit: scaled, generatorVersion: 6 });
         assert.equal(world.generatorVersion, 6);
         assertWhole(world, scaled, label);
         const total = kit.terrain!.reduce((sum, entry) => sum + entry.share, 0);
@@ -346,6 +346,91 @@ for (const kit of kits) {
     compileWorld({ seed: 9, kit: space }).ground,
     compileWorld({ seed: 9, kit: space, generatorVersion: 5 }).ground,
   );
+}
+
+// ── Generator 7: rivers down the shaped ground, and the resources settlements grow around ──
+{
+  const riverside = [0, 0];
+  const near = [0, 0];
+  for (const kitId of ["high_fantasy", "wuxia_xianxia", "the_1920s", "modern_day"]) {
+    const kit = byId.get(kitId)!;
+    for (const scale of ["region", "realm", "world"] as const) {
+      for (const seed of [1, 4242, 20261002]) {
+        const scaled = { ...kit, scale };
+        const label = `${kitId}/${scale}/${seed}`;
+        const world = compileWorld({ seed, kit: scaled });
+        assert.equal(world.generatorVersion, 7);
+        assertWhole(world, scaled, label);
+        const before = compileWorld({ seed, kit: scaled, generatorVersion: 6 });
+        // The ground is the same land as generator 6 shaped; only where people settle on it moves.
+        assert.equal(world.terrain.join(), before.terrain.join(), label);
+        assert.ok(world.rivers?.length, `${label}: rivers`);
+        assert.ok(world.resources?.length, `${label}: resources`);
+        const kindAt = (cell: number) => kit.terrain![parseInt(world.ground[cell]!, 36)]!.kind;
+        const rivers = world.rivers!;
+        const riverCells = new Set(rivers.flatMap((river) => river.path.slice(0, -1)));
+        for (const river of rivers) {
+          assert.equal(river.width.length, river.path.length, label);
+          // Every river runs cell to neighbouring cell and ends in water, another river or off the map.
+          for (let i = 1; i < river.path.length; i++) {
+            const [a, b] = [river.path[i - 1]!, river.path[i]!];
+            const step = Math.max(
+              Math.abs((a % world.width) - (b % world.width)),
+              Math.abs(Math.floor(a / world.width) - Math.floor(b / world.width)),
+            );
+            assert.equal(step, 1, `${label}: a river jumps`);
+          }
+          const last = river.path[river.path.length - 1]!;
+          const [x, y] = [last % world.width, Math.floor(last / world.width)];
+          assert.ok(
+            kindAt(last) === "water" ||
+              riverCells.has(last) ||
+              x === 0 ||
+              y === 0 ||
+              x === world.width - 1 ||
+              y === world.height - 1,
+            `${label}: a river ends nowhere`,
+          );
+          for (const cell of river.path.slice(0, -1)) assert.notEqual(kindAt(cell), "water", `${label}: a river at sea`);
+        }
+        for (const resource of world.resources!) {
+          const cell = resource.at.y * world.width + resource.at.x;
+          if (resource.kind === "fish") assert.equal(kindAt(cell), "water", `${label}: fishing on land`);
+          else assert.notEqual(kindAt(cell), "water", `${label}: ${resource.kind} at sea`);
+          if (resource.kind === "ford" || resource.kind === "falls")
+            assert.ok(riverCells.has(cell), `${label}: a ${resource.kind} off the river`);
+        }
+        const settlements = world.places.filter((place) => place.rank !== undefined);
+        const wetBeside = (place: (typeof settlements)[number]) => {
+          for (let dy = -1; dy <= 1; dy++)
+            for (let dx = -1; dx <= 1; dx++) {
+              const [x, y] = [place.at.x + dx, place.at.y + dy];
+              if (x < 0 || y < 0 || x >= world.width || y >= world.height) continue;
+              if (riverCells.has(y * world.width + x) || kindAt(y * world.width + x) === "water") return true;
+            }
+          return false;
+        };
+        riverside[0] += settlements.length;
+        riverside[1] += settlements.filter(wetBeside).length;
+        near[0] += settlements.length;
+        near[1] += settlements.filter((place) =>
+          world.resources!.some(
+            (resource) =>
+              resource.kind !== "ford" &&
+              Math.max(Math.abs(resource.at.x - place.at.x), Math.abs(resource.at.y - place.at.y)) <= 2,
+          ),
+        ).length;
+      }
+    }
+  }
+  // Most towns stand on a river or a shore, and most beside something they live by.
+  assert.ok(riverside[1] / riverside[0] > 0.55, `by water ${riverside[1]} of ${riverside[0]}`);
+  assert.ok(near[1] / near[0] > 0.5, `by a resource ${near[1]} of ${near[0]}`);
+  // A town and a site have no rivers; space has none.
+  assert.equal(compileWorld({ seed: 4, kit: { ...byId.get("high_fantasy")!, scale: "town" } }).rivers, undefined);
+  assert.equal(compileWorld({ seed: 9, kit: byId.get("space_opera")! }).rivers, undefined);
+  // Generator 6 worlds are made exactly as before: no rivers, no resources.
+  assert.equal(compileWorld({ seed: 4, kit: byId.get("high_fantasy")!, generatorVersion: 6 }).rivers, undefined);
 }
 
 // ── The ground's shares, and the ways and times of travel ──

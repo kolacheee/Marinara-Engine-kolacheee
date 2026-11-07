@@ -61,6 +61,7 @@ import {
   paintSite,
   paintShore,
   paintWay,
+  paintRivers,
 } from "../../lib/overworld-paint";
 import { cn } from "../../lib/utils";
 import { GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
@@ -403,6 +404,98 @@ export function WorldOverworld({
         }
     };
     if (waterEdges) edgePass("water", (x, y) => wetCell[y * width + x]!, worldBeyond(game, world).wet);
+    // Rivers (world generator 7), over the ground and its shores and under the roads: each from its source
+    // to the shore it runs into (a little past it, under the water's edge), the river it joins, or past
+    // the map's edge.
+    const riverCells = new Set<number>();
+    const riverStretches = new Map<number, Array<readonly [number, number, number, number]>>();
+    /** Whether a point (in cells) is on a river or its bank. */
+    const byRiver = (px: number, py: number) => {
+      const [cx, cy] = [Math.floor(px), Math.floor(py)];
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++)
+          for (const [ax, ay, bx, by] of riverStretches.get((cy + dy) * width + cx + dx) ?? []) {
+            const [vx, vy] = [bx - ax, by - ay];
+            const t = Math.max(0, Math.min(1, ((px - ax) * vx + (py - ay) * vy) / (vx * vx + vy * vy || 1)));
+            if (Math.hypot(px - (ax + vx * t), py - (ay + vy * t)) < 0.8) return true;
+          }
+      return false;
+    };
+    if (world.rivers?.length) {
+      const centre = (cell: number) => ({
+        x: (cell % width) * OVERWORLD_TILE + OVERWORLD_TILE / 2,
+        y: Math.floor(cell / width) * OVERWORLD_TILE + OVERWORLD_TILE / 2,
+      });
+      const courses = world.rivers.map((river) => {
+        const points = river.path.map((cell, index) => ({ ...centre(cell), size: river.width[index] ?? 1 }));
+        // A river never runs ruler-straight: each bend point between the ends is set off its line a little,
+        // across the river's way, by its own cell's noise (the same world always winds the same way).
+        for (let i = 1; i < points.length - 1; i++) {
+          const [a, b] = [centre(river.path[i - 1]!), centre(river.path[i + 1]!)];
+          const length = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+          // A slow swing along the river (bends a few cells long) and a little wobble of each cell's own.
+          const phase = cellNoise(river.path[0]! % width, Math.floor(river.path[0]! / width))(97) * Math.PI * 2;
+          const shift =
+            Math.sin(i * 0.8 + phase) * 0.45 +
+            (cellNoise(river.path[i]! % width, Math.floor(river.path[i]! / width))(91) - 0.5) * 0.4;
+          points[i]!.x += (-(b.y - a.y) / length) * shift * OVERWORLD_TILE;
+          points[i]!.y += ((b.x - a.x) / length) * shift * OVERWORLD_TILE;
+        }
+        const last = river.path[river.path.length - 1]!;
+        if (points.length >= 2 && wetCell[last]) {
+          const [a, b] = [points[points.length - 2]!, points[points.length - 1]!];
+          points[points.length - 1] = { ...b, x: a.x + (b.x - a.x) * 0.7, y: a.y + (b.y - a.y) * 0.7 };
+        } else if (points.length >= 2) {
+          const [lx, ly] = [last % width, Math.floor(last / width)];
+          if (lx === 0 || ly === 0 || lx === width - 1 || ly === height - 1) {
+            const [a, b] = [points[points.length - 2]!, points[points.length - 1]!];
+            points.push({ ...b, x: b.x + (b.x - a.x), y: b.y + (b.y - a.y) });
+          }
+        }
+        for (const cell of river.path) if (!wetCell[cell]) riverCells.add(cell);
+        // Each stretch of the river, kept by the cells it runs through, so no tree stands on it.
+        for (let i = 0; i < river.path.length - 1; i++) {
+          const [a, b] = [river.path[i]!, river.path[i + 1]!];
+          const stretch = [(a % width) + 0.5, Math.floor(a / width) + 0.5, (b % width) + 0.5, Math.floor(b / width) + 0.5] as const;
+          for (const cell of [a, b]) riverStretches.set(cell, [...(riverStretches.get(cell) ?? []), stretch]);
+        }
+        return { points, mouth: wetCell[last] === true };
+      });
+      // The rivers in the colour the sea is drawn in: a water cell with water all round it, sampled.
+      let waterColour = "#4a7fb5";
+      let waterPattern: CanvasPattern | null = null;
+      try {
+        const deep = [...wetCell.keys()].find((cell) => {
+          const [x, y] = [cell % width, Math.floor(cell / width)];
+          if (x < 1 || y < 1 || x >= width - 1 || y >= height - 1) return false;
+          for (let dy = -1; dy <= 1; dy++)
+            for (let dx = -1; dx <= 1; dx++) if (!wetCell[(y + dy) * width + x + dx]) return false;
+          return true;
+        });
+        if (deep !== undefined) {
+          const [x, y] = [deep % width, Math.floor(deep / width)];
+          const size = Math.max(1, Math.round(OVERWORLD_TILE * resolution));
+          const data = ctx.getImageData(x * size, y * size, size, size).data;
+          let [r, g, b, n] = [0, 0, 0, 0];
+          for (let i = 0; i < data.length; i += 4) {
+            r += data[i]!;
+            g += data[i + 1]!;
+            b += data[i + 2]!;
+            n++;
+          }
+          if (n) waterColour = `rgb(${Math.round(r / n)}, ${Math.round(g / n)}, ${Math.round(b / n)})`;
+          // The sea's own ripples, so a river reads as the same water, not a painted line.
+          const tile = document.createElement("canvas");
+          [tile.width, tile.height] = [size, size];
+          tile.getContext("2d")?.putImageData(ctx.getImageData(x * size, y * size, size, size), 0, 0);
+          waterPattern = ctx.createPattern(tile, "repeat");
+          waterPattern?.setTransform(new DOMMatrix().scale(1 / resolution));
+        }
+      } catch {
+        // A canvas the browser will not read back keeps the plain blue.
+      }
+      paintRivers(ctx, courses, waterColour, waterPattern);
+    }
     // Ways over open ground: as road cells with joined road pieces (laid corner to corner) or road edge
     // tiles, else drawn as lines.
     const roadJoined = drawTile.hasPiece("road_joined", 0);
@@ -457,7 +550,7 @@ export function WorldOverworld({
       const onFloor = (px: number, py: number) => {
         const [cx, cy] = [Math.floor(px), Math.floor(py)];
         if (cx < 0 || cy < 0 || cx >= width || cy >= height) return false;
-        if (roads.has(cy * width + cx) || placed.has(cy * width + cx)) return false;
+        if (roads.has(cy * width + cx) || placed.has(cy * width + cx) || byRiver(px, py)) return false;
         if (square.has(drawnLook[cy * width + cx]!)) return false;
         // Never in the water (a water cell is drawn over the land under it, which may be the wood's),
         // nor so near it that the trunk stands past the shore.
@@ -497,7 +590,7 @@ export function WorldOverworld({
       for (let dy = -1; dy <= 1; dy++)
         for (let dx = -1; dx <= 1; dx++) {
           const at = (y + dy) * width + (x + dx);
-          if (roads.has(at) || placed.has(at)) return true;
+          if (roads.has(at) || placed.has(at) || riverCells.has(at)) return true;
         }
       return false;
     };

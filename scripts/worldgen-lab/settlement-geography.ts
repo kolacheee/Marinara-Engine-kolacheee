@@ -11,6 +11,10 @@
  *   R           Clark-Evans nearest-neighbour ratio over all settlements (1 random, >1 regular like central places)
  *   Rtop        the same over the top two ranks only
  *   barrierWay  links whose straight line crosses mountains (lower)
+ *   wetside     settlements with water or a river within 1 cell (generator 7 rivers count)
+ *   resource    settlements with a resource (generator 7) within 2 cells
+ *   riverEnd    rivers that end in water, another river or the map's edge (must be 1)
+ *   riverCells  share of the land that is river
  */
 import {
   WORLD_STARTER_KITS,
@@ -31,13 +35,15 @@ const FOREST = /forest|wood|grove|bamboo|jungle|taiga|conifer/;
 const HILLY = /hill|highland|moor|upland|mountain|asteroid/;
 const FERTILE = /grass|plain|prairie|farm|field|padd|rice|meadow|steppe|suburb/;
 const TAG_NEEDS: Array<[RegExp, (n: Need) => boolean]> = [
-  [/^(port|harbor|dockyard|beach|river_port)$/, (n) => n.water1],
+  [/^(port|harbor|dockyard|beach)$/, (n) => n.water1],
+  [/^(river_port|ferry)$/, (n) => n.water1 || n.river1],
   [/^(mine|sacred_mountain|border_pass|mining)$/, (n) => n.barrier2 || n.hilly2],
   [/^(forest_edge|bamboo_forest|woods_at_the_edge_of_town)$/, (n) => n.forest1],
   [/^(farmland|farm|agriculture)$/, (n) => n.fertile1],
 ];
 interface Need {
   water1: boolean;
+  river1: boolean;
   barrier2: boolean;
   hilly2: boolean;
   forest1: boolean;
@@ -64,11 +70,18 @@ function measure(world: CompiledWorld, kit: WorldKit) {
   const maxRank = Math.max(...settlements.map((s) => s.rank!));
   const big = settlements.filter((s) => s.rank! >= maxRank - 1);
   const small = settlements.filter((s) => s.rank === 0);
+  const riverCells = new Set((world.rivers ?? []).flatMap((r) => r.path));
+  const riverNear = (p: (typeof settlements)[number]) => {
+    for (let dy = -1; dy <= 1; dy++)
+      for (let dx = -1; dx <= 1; dx++) if (riverCells.has((p.at.y + dy) * width + p.at.x + dx)) return true;
+    return false;
+  };
   let tags = 0;
   let miss = 0;
   for (const p of settlements) {
     const need: Need = {
       water1: water1(p),
+      river1: riverNear(p),
       barrier2: near(p.at.x, p.at.y, 2, (t) => t.kind === "barrier"),
       hilly2: near(p.at.x, p.at.y, 2, (t) => HILLY.test(t.id)),
       forest1: near(p.at.x, p.at.y, 1, (t) => FOREST.test(t.id)),
@@ -115,7 +128,24 @@ function measure(world: CompiledWorld, kit: WorldKit) {
   }
   const share = (group: typeof settlements, test: (p: (typeof settlements)[number]) => boolean) =>
     group.length ? group.filter(test).length / group.length : NaN;
+  const resourceNear = (p: (typeof settlements)[number]) =>
+    (world.resources ?? []).some((r) => r.kind !== "ford" && Math.max(Math.abs(r.at.x - p.at.x), Math.abs(r.at.y - p.at.y)) <= 2);
+  const rivers = world.rivers ?? [];
+  const ends = rivers.filter((r) => {
+    const last = r.path[r.path.length - 1]!;
+    const [x, y] = [last % width, Math.floor(last / width)];
+    return (
+      terrain[kinds[last]!]?.kind === "water" ||
+      x === 0 || y === 0 || x === width - 1 || y === height - 1 ||
+      rivers.some((o) => o !== r && o.path.slice(0, -1).includes(last))
+    );
+  }).length;
+  const landCells = kinds.filter((k) => terrain[k]?.kind !== "water").length;
   return {
+    wetside: share(settlements, (p) => water1(p) || riverNear(p)),
+    resource: world.resources ? share(settlements, resourceNear) : NaN,
+    riverEnd: rivers.length ? ends / rivers.length : NaN,
+    riverCells: world.rivers ? [...riverCells].filter((c) => terrain[kinds[c]!]?.kind !== "water").length / landCells : NaN,
     waterside: hasWater ? share(settlements, water1) : NaN,
     poorGround: share(settlements, (p) => POOR.test(terrain[at(p.at.x, p.at.y)]?.id ?? "")),
     bigWater: hasWater ? share(big, water1) : NaN,

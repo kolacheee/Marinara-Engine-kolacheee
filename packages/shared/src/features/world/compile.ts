@@ -12,9 +12,19 @@ import type { WorldBrief, WorldBriefPlace } from "../../schemas/world-brief.sche
 import { worldBriefDeepestLayer } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./art-family.js";
+import type { WorldLandFields, WorldResource, WorldRiver } from "./land.js";
+import {
+  WORLD_RESOURCE_TAG_WORDS,
+  worldDrainage,
+  worldLandPull,
+  worldResources,
+  worldRoadFords,
+} from "./land.js";
 
-export const WORLD_GENERATOR_VERSION = 6;
-/** The generator versions this Engine makes again from a recipe exactly as they were made: 6 shapes the
+export const WORLD_GENERATOR_VERSION = 7;
+/** The generator versions this Engine makes again from a recipe exactly as they were made: 7 runs rivers
+ *  down the shaped ground and marks the resources settlements grow around (harbours, passes, ore, salt,
+ *  timber, fishing waters, rich river soil, falls, fords), drawing settlements to them (land.ts), 6 shapes the
  *  ground as land is made (plates and mountain ranges, seas and lakes, winds and rain shadows, ground by
  *  role: compileShapedGround), 5 puts
  *  settlements where people settle (by water, on good ground, the biggest on the best sites, spaced as
@@ -23,7 +33,7 @@ export const WORLD_GENERATOR_VERSION = 6;
  *  town lot a cell back from its street with a path from its door out to it, 2 adds sites (caves, ruins,
  *  crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none. A recipe of a
  *  version it reads stays editable and sharable as a recipe. */
-export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6]);
+export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6, 7]);
 export function worldGeneratorReads(version: unknown): boolean {
   return typeof version === "number" && WORLD_GENERATOR_VERSIONS_READ.includes(version);
 }
@@ -78,6 +88,10 @@ export interface CompiledWorld {
   links: WorldLink[];
   /** Where the party starts: a settlement, or the place inside one the brief starts it in. */
   startId: string;
+  /** Generator 7: the rivers, each from its source to where it ends (cells, y * width + x). */
+  rivers?: WorldRiver[];
+  /** Generator 7: the resources settlements grow around, and the fords where the ways cross rivers. */
+  resources?: WorldResource[];
 }
 
 export interface WorldCompileInput {
@@ -542,7 +556,7 @@ function compileShapedGround(seed: number, kit: WorldKit, width: number, height:
       .map((entry) => ({ index: entry.index, share: entry.share })),
     kinds,
   );
-  return { terrain, kinds };
+  return { terrain, kinds, land: { elevation, moisture, uplift, isWater, isBarrier } };
 }
 
 // ── Cultivated ground (generator 4) ──
@@ -824,6 +838,8 @@ const TAG_SITUATIONS: Array<[RegExp, "water" | "heights" | "woods" | "fields"]> 
   [/farm|field|agricult|orchard|vineyard|ranch|padd/, "fields"],
 ];
 const SPACE_TAGS = /spaceport|space|orbital|jump|gate/;
+/** Water tags a river town can carry (generator 7): a river port, a ferry; not a sea port or a beach. */
+const RIVER_TAGS = /river|ferry|canal/;
 
 export function worldTagSituation(tag: string) {
   if (SPACE_TAGS.test(tag)) return undefined;
@@ -841,12 +857,22 @@ export function compileWorld({
   const [width, height] = GROUND_SIZE[kit.scale];
   // Generator 6 shapes the ground as land is made (plates, ranges, winds); space (a sector, or a kit whose
   // ground is open space) keeps the plain noise, having no land to shape.
-  const { terrain, kinds } =
+  const shaped =
     generatorVersion >= 6 &&
     kit.scale !== "sector" &&
     !worldTerrainEntries(kit).some((entry) => /space|void|vacuum|nebula|orbit/.test(entry.id))
       ? compileShapedGround(seed, kit, width, height)
-      : compileGround(seed, kit, width, height);
+      : null;
+  const { terrain, kinds } = shaped ?? compileGround(seed, kit, width, height);
+  // Generator 7: rivers down the shaped ground, and the resources settlements grow around, on a map big
+  // enough to hold them (a region and up; a town or a site is too small a piece of land).
+  const landFields: WorldLandFields | null =
+    generatorVersion >= 7 && shaped && (kit.scale === "region" || kit.scale === "realm" || kit.scale === "world")
+      ? { width, height, ...shaped.land, groundId: (cell: number) => terrain[kinds[cell]!]!.id }
+      : null;
+  const drainage = landFields ? worldDrainage(landFields) : null;
+  const resources: WorldResource[] =
+    landFields && drainage ? worldResources(landFields, drainage, worldStream(seed, "resources")) : [];
   const kindOf = (cell: number) => terrain[kinds[cell]!]!.kind;
   const settlementsDepth = kit.layers.findIndex((layer) => layer.settlements);
   const deepest = worldBriefDeepestLayer(kit);
@@ -970,6 +996,10 @@ export function compileWorld({
   const siteAware = generatorVersion >= 5;
   if (siteAware) sizeSettlements();
   const site = siteAware ? siteValues(terrain, kinds, width, height) : null;
+  if (site && drainage) {
+    const pull = worldLandPull(width, height, drainage, resources);
+    for (let cell = 0; cell < site.length; cell++) site[cell] = site[cell]! + pull[cell]!;
+  }
 
   // ── Where everything is: nested patches of ground, and settlements on open ground ──
   const allCells = Array.from({ length: width * height }, (_, index) => index);
@@ -1044,6 +1074,8 @@ export function compileWorld({
           const entry = terrain[kinds[y * width + x]!]!;
           const beside = Math.max(Math.abs(dx), Math.abs(dy)) <= 1;
           if (beside && entry.kind === "water") fits.add("water");
+          // Generator 7: a river big enough to sail beside it (for a river port, a ferry; not a sea port).
+          if (beside && (drainage?.riverAt.get(y * width + x) ?? 0) >= 2) fits.add("river");
           if (entry.kind === "barrier" || HILL_GROUND.test(entry.id) || /asteroid|debris/.test(entry.id))
             fits.add("heights");
           if (beside && WOODED_GROUND.test(entry.id)) fits.add("woods");
@@ -1071,18 +1103,30 @@ export function compileWorld({
         // Situation (generator 5): a tag the ground around it fits is likelier, one it does not fit never
         // drawn, and a sizable settlement on a shore is mostly a port when the kit has one.
         const fits = situationOf(draft.cell!);
-        const weights = kitTags.map((tag): number => {
+        const fitsTag = (tag: string) => {
           const needs = worldTagSituation(tag);
-          return !needs ? 1 : fits.has(needs) ? 3 : 0;
-        });
-        const port = kitTags.find((tag) => worldTagSituation(tag) === "water");
-        if (port && fits.has("water") && (draft.size ?? 0) >= 1 && random() < 0.6) tags.add(port);
+          return !needs || fits.has(needs) || (needs === "water" && fits.has("river") && RIVER_TAGS.test(tag));
+        };
+        const weights = kitTags.map((tag): number => (!worldTagSituation(tag) ? 1 : fitsTag(tag) ? 3 : 0));
+        const port =
+          kitTags.find((tag) => worldTagSituation(tag) === "water" && fits.has("water")) ??
+          kitTags.find((tag) => worldTagSituation(tag) === "water" && fitsTag(tag));
+        if (port && (draft.size ?? 0) >= 1 && random() < 0.6) tags.add(port);
         while (tags.size < count) {
           const total = weights.reduce((sum, weight, index) => sum + (tags.has(kitTags[index]!) ? 0 : weight), 0);
           if (total <= 0) break;
           let at = random() * total;
           const next = kitTags.findIndex((tag, index) => !tags.has(tag) && (at -= weights[index]!) < 0);
           tags.add(kitTags[next < 0 ? kitTags.length - 1 : next]!);
+        }
+        // Generator 7: a resource beside it is what it lives by, so it carries the setting's tag for it
+        // (one its ground fits).
+        const [x0, y0] = [draft.cell! % width, Math.floor(draft.cell! / width)];
+        for (const resource of resources) {
+          if (tags.size >= 3) break;
+          if (Math.max(Math.abs(resource.at.x - x0), Math.abs(resource.at.y - y0)) > 1) continue;
+          const tag = kitTags.find((each) => WORLD_RESOURCE_TAG_WORDS[resource.kind].test(each) && fitsTag(each));
+          if (tag) tags.add(tag);
         }
       }
       draft.tags = [...tags];
@@ -1211,6 +1255,36 @@ export function compileWorld({
     places.filter((place) => place.depth === settlementsDepth),
   );
 
+  // Generator 7: a ford where a way over open ground crosses a river, and the settlements beside it a
+  // crossing (its tag, where the setting has one).
+  if (drainage) {
+    const settledCells = new Set(settlementIdsCells());
+    const overland = links.filter(
+      (link) => (kit.travel.find((way) => way.id === link.way)?.crosses ?? "open") === "open",
+    );
+    const at = new Map(places.map((place) => [place.id, place.at]));
+    const fords = worldRoadFords(
+      width,
+      height,
+      drainage.riverAt,
+      overland.map((link) => ({ from: at.get(link.from)!, to: at.get(link.to)! })),
+      settledCells,
+      (cell) => kindOf(cell) === "water",
+    );
+    resources.push(...fords);
+    const crossing = kit.placeTags.map((tag) => tag.id).find((tag) => WORLD_RESOURCE_TAG_WORDS.ford.test(tag));
+    if (crossing)
+      for (const place of places) {
+        if (place.depth !== settlementsDepth || place.named || place.tags.length >= 3 || place.tags.includes(crossing))
+          continue;
+        if (fords.some((ford) => Math.max(Math.abs(ford.at.x - place.at.x), Math.abs(ford.at.y - place.at.y)) <= 1))
+          place.tags.push(crossing);
+      }
+  }
+  function settlementIdsCells() {
+    return places.filter((place) => place.depth === settlementsDepth).map((place) => place.at.y * width + place.at.x);
+  }
+
   // Where the party starts: the brief's starting place (or the first settlement inside it), else the
   // biggest settlement of the first outermost place.
   const startBrief = briefPlaces.find((place) => place.start);
@@ -1250,6 +1324,7 @@ export function compileWorld({
     places,
     links,
     startId: (startFrom ?? fallback).id,
+    ...(drainage ? { rivers: drainage.rivers, resources } : {}),
   };
 }
 
