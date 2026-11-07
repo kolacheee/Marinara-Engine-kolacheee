@@ -1,0 +1,29 @@
+{
+  "out_png_count_before": 270,
+  "out_png_count_after": 270,
+  "out_unchanged": true,
+  "changed_files": [],
+  "part_a_files": [
+    "mountains-base",
+    "mountains@winter-base",
+    "mountains-peak-0",
+    "mountains-peak-1",
+    "mountains-peak-2",
+    "mountains-peak-3",
+    "mountains-peak-4",
+    "mountains-peak-5",
+    "mountains-peak-6",
+    "mountains-peak-7",
+    "mountains@winter-peak-0",
+    "mountains@winter-peak-1",
+    "mountains@winter-peak-2",
+    "mountains@winter-peak-3",
+    "mountains@winter-peak-4",
+    "mountains@winter-peak-5",
+    "mountains@winter-peak-6",
+    "mountains@winter-peak-7"
+  ],
+  "reviewed_part_a_count": 18,
+  "passed": 15,
+  "failed": 3
+}

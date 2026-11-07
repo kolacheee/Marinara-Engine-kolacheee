@@ -1,0 +1,59 @@
+{
+  "sets": {
+    "mountains-base": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "assessment": "PASS both bases. SHA-256 matches critic-r5A-2 for both files; their passes are retained, as required by the calibration and operator. Each is opaque 288x288. Rebuilt and visually inspected full 3x3 repeats at 1x and 4x, with an exact-scale 4x phase-shifted wrap-crossing viewport. Inspected every base pixel at 8x in four quadrants. Summer retains coherent scree, cracks, small boulders and sparse green tufts without peaks. Winter has textured directional snow with scattered exposed rock, not blank white or the former large rock-island camouflage. No concrete new seam, 48px grid, conspicuous repeat, blur, antialiasing, static or palette defect found. Both remain compatible with approved grass/plains and the revised ranges. Leave these files as they are."
+    },
+    "mountains-peak": {
+      "total": 8,
+      "passed": 5,
+      "failed": 3,
+      "assessment": "PASS 0,1,3,4,5; FAIL 2,6,7 for the specific missing foot vegetation below. All eight have changed since critic-r5A-2, so the old passes do not automatically carry forward. Each was examined individually at 1x and 8x on neutral and matching rock, in a shuffled 8x2 one-cell composite at 1x/4x, and in dense and ragged-edge ranges at 1x/4x. All are 48x48 with binary alpha, a single 8-connected silhouette, centered within 0.5px, feet on rows 44-45. Widths 41,38,37 / 30,29,26 / 21,18px meet the 3 big/3 medium/2 small tiers; the large heights are 40,35,36px. Warmer mid grey-brown left faces and clearly darker cool right faces now resolve the icy summer-colour problem and separate from the base. Peaks 0,1,2 provide double summits or ridge shoulders, 3 is a flat-topped crag, and 6 supplies a rounded knoll. The prescribed overlap reads as an irregular jagged range rather than egg-crate peaks or a bed of identical cones. Passing files have at least a little attached muted-green vegetation at the foot; 3/4/5 use much smaller accents than 0/1, which is acceptable under the shipping calibration. No rejectable near-duplicates, reversed lighting, loose fringe, halos, filtered pixels, incoherent noise or palette clash found. The three failures need localized vegetation additions, not a range redraw."
+    },
+    "mountains@winter-peak": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "assessment": "PASS all eight revised winter peaks. These files also changed since critic-r5A-2 and were re-reviewed. Each inspected at native scale and exact 8x on neutral/snowy ground, in the randomized 8x2 composite at 1x/4x, on the 24px-by-16px staggered lattice at 1x/4x and on a ragged curved range edge at 1x/4x. All are transparent 48x48 with binary alpha, single connected silhouettes, centered feet on rows 44-45, and the same required width tiers as summer. Bold white caps now cover the upper half rather than a dusting; blue-grey snow planes retain top-left lighting, with rock mainly on lower slopes and the dark right face. The caps preserve double summits, ridge shoulders, the flat crag and rounded knoll. Dense overlap has enough silhouette and height variation to read as a snowy mountainous range. The narrow dark outlines remain crisp and are compatible with the approved outlined markers; no pale fringe/halo, antialiasing, blur, noise, blank winter, near-duplicate rejection or seasonal palette clash found. The snow ramp fits approved winter grass/plains, details, roof snow and paddies."
+    },
+    "review-scope": {
+      "total": 18,
+      "passed": 15,
+      "failed": 3,
+      "assessment": "Verdicts cover exactly BRIEF-5 Part A: two bases and sixteen standing peak sprites. Named current-fantasy-mountains.png, current-fantasy-mountains@winter.png and current-fantasy-treeline_forest.png references were visually inspected. The eight reference trees were also composited into a dense forest and inspected at 1x/4x to test the standing-sprite overlap model; they are reference material, not Part D submissions. Approved markers in all six settings, round-2 tiles and farmsteads, all seasonal paddies, and grass/plains bases with all details were inspected on comparison boards. Summer/winter ranges were checked beside approved art at 1x and in four exact 4x context viewports per season. Lattices fill a 288x288 (6x6 cell) base with 24px column spacing, 16px row spacing, alternate rows shifted 12px and later rows drawn over earlier ones; a second random seed was additionally checked at 1x. All enlargements use nearest-neighbor. All new composites are saved as critic-r5A-3-*.png. Parts B/C/D are excluded: Swiss-cheese craters, classical ruins, cyberpunk stamps, autumn colour mix and tree-crown variety are not grounds for verdicts on nonexistent Part A submissions. Both unchanged prior-pass bases stay passed. Only changed summer peaks 2,6,7 fail, for the concrete new operator-required vegetation omission."
+    }
+  },
+  "pass": [
+    "mountains-base",
+    "mountains@winter-base",
+    "mountains-peak-0",
+    "mountains-peak-1",
+    "mountains-peak-3",
+    "mountains-peak-4",
+    "mountains-peak-5",
+    "mountains@winter-peak-0",
+    "mountains@winter-peak-1",
+    "mountains@winter-peak-2",
+    "mountains@winter-peak-3",
+    "mountains@winter-peak-4",
+    "mountains@winter-peak-5",
+    "mountains@winter-peak-6",
+    "mountains@winter-peak-7"
+  ],
+  "fail": [
+    {
+      "name": "mountains-peak-2",
+      "problems": "Missing the operator-required green/grass at the foot: this broad massif is entirely bare rock, including its lower edge on rows 44-45. The omission is visible on the isolated 1x/4x ground composite and confirmed at 8x; there are zero green pixels. Add a small attached, muted olive-green grass cluster/skirt at the foot, matching peaks 0/1 and the approved grass palette. Keep the warm lit face, cool dark right face, dark contour and existing 37px-wide silhouette."
+    },
+    {
+      "name": "mountains-peak-6",
+      "problems": "Missing the operator-required green/grass at the foot: this rounded knoll ends in an unbroken bare-rock/dark base on row 45 and has zero green pixels. Add a restrained attached olive-green tuft or short grass skirt at the bottom, readable at 1x against mountains-base. Preserve the rounded 21px-wide silhouette, centered placement and binary transparency."
+    },
+    {
+      "name": "mountains-peak-7",
+      "problems": "Missing the operator-required green/grass at the foot: the small stepped knoll has a completely bare-rock lower edge on row 45, with zero green pixels. Add a small attached muted-green grass patch along the foot, using the same olive ramp as the passing summer peaks; check its visibility in the 1x ground and lattice composites. Preserve its 18px width, dark right face and centered foot."
+    }
+  ]
+}

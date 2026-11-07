@@ -1,0 +1,342 @@
+{
+  "mountains-base": {
+    "sha256": "395e322676f89147e0c94874f9c829398f506bffc7d641008a3b800211514eae",
+    "unchanged_since_review_1": true,
+    "size": [
+      288,
+      288
+    ],
+    "alpha_levels": [
+      255
+    ],
+    "opaque_bbox": [
+      0,
+      0,
+      288,
+      288
+    ],
+    "visible_colors": 12
+  },
+  "mountains-peak-0": {
+    "sha256": "6e4b206bc6b0a52f84550b32e38bb8fd7d329e9a9f0fe7cb4a330decf4fab5fd",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      3,
+      5,
+      44,
+      46
+    ],
+    "visible_colors": 11
+  },
+  "mountains-peak-1": {
+    "sha256": "331aae49c5e00f22e62954605322a5daf8437e2c203ce5ba6664a9e48f5efb75",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      4,
+      9,
+      44,
+      46
+    ],
+    "visible_colors": 10
+  },
+  "mountains-peak-2": {
+    "sha256": "f1527c37b2461b46e59ad271848ed4462517f567fa5067e2da9801b475405e90",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      6,
+      7,
+      42,
+      46
+    ],
+    "visible_colors": 11
+  },
+  "mountains-peak-3": {
+    "sha256": "64937b241b783c9a42f5648e4ca65aea7d21e427f47d6de4570920b81440c09d",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      8,
+      16,
+      39,
+      46
+    ],
+    "visible_colors": 10
+  },
+  "mountains-peak-4": {
+    "sha256": "77172b5b89558e08767864a82d09bdac034ae614be5aad4b6e114ce2cb524a69",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      9,
+      14,
+      39,
+      46
+    ],
+    "visible_colors": 10
+  },
+  "mountains-peak-5": {
+    "sha256": "4380e2d433ef5ad16d1776b36e2a731a147feebdd095f8cdfdd349b18f5cefce",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      10,
+      19,
+      37,
+      46
+    ],
+    "visible_colors": 10
+  },
+  "mountains-peak-6": {
+    "sha256": "5dd7c2855fb22353cdf3a07e6e7a0534b2db0e111b0c207a73bb40bccd8f7b9b",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      12,
+      28,
+      35,
+      46
+    ],
+    "visible_colors": 10
+  },
+  "mountains-peak-7": {
+    "sha256": "6c9580b4345ccc6a2fc6eb9650c417b916dd0bb692ea17dec6d5a9a380dec8bc",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      14,
+      25,
+      34,
+      46
+    ],
+    "visible_colors": 9
+  },
+  "mountains@winter-base": {
+    "sha256": "bdbca4a6a1e9cefb1674418d16373c103dc008d128dcd859e4e1f8337028020e",
+    "unchanged_since_review_1": false,
+    "size": [
+      288,
+      288
+    ],
+    "alpha_levels": [
+      255
+    ],
+    "opaque_bbox": [
+      0,
+      0,
+      288,
+      288
+    ],
+    "visible_colors": 19
+  },
+  "mountains@winter-peak-0": {
+    "sha256": "eb035ed29fe9714b8de1535a84a8b094044a492b8d7c61f512e9d03ac08dc58d",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      3,
+      5,
+      45,
+      46
+    ],
+    "visible_colors": 15
+  },
+  "mountains@winter-peak-1": {
+    "sha256": "9cc79ff395e3806131289bbe1794671b301d7460c5dcba7536ec27ab1a77ddca",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      4,
+      8,
+      44,
+      46
+    ],
+    "visible_colors": 16
+  },
+  "mountains@winter-peak-2": {
+    "sha256": "160957ad6d2fe0f0e7598c76f98176240d2024217c5428cad37e1ba20072e31c",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      6,
+      6,
+      42,
+      46
+    ],
+    "visible_colors": 15
+  },
+  "mountains@winter-peak-3": {
+    "sha256": "7c2eb4d55bca5449982bddb35196331f9bfa2427d7de65f4b7c3cf851eb32101",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      8,
+      16,
+      39,
+      46
+    ],
+    "visible_colors": 12
+  },
+  "mountains@winter-peak-4": {
+    "sha256": "b8c96340c997de4be5a94eaae9aa1bf090756a4b5f110a5d3de17341bfec80c5",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      10,
+      14,
+      39,
+      46
+    ],
+    "visible_colors": 14
+  },
+  "mountains@winter-peak-5": {
+    "sha256": "b83fb67542675ae1e1a8b1dd2962a438416e2a6799f50eb0efd8a23dff95da08",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      11,
+      19,
+      37,
+      46
+    ],
+    "visible_colors": 13
+  },
+  "mountains@winter-peak-6": {
+    "sha256": "bbb4f2ea144161ff1f23c6fa75c89419c8e49ee35c3975ccb1a7b72be795679d",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      12,
+      28,
+      35,
+      46
+    ],
+    "visible_colors": 10
+  },
+  "mountains@winter-peak-7": {
+    "sha256": "ed4e974667928d9ac573e0deb4b47092c6db9a1b9867ce255759569bcb900da1",
+    "unchanged_since_review_1": true,
+    "size": [
+      48,
+      48
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      14,
+      25,
+      34,
+      46
+    ],
+    "visible_colors": 12
+  }
+}

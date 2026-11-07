@@ -1,0 +1,53 @@
+{
+  "sets": {
+    "mountains-base": {
+      "total": 2,
+      "passed": 1,
+      "failed": 1,
+      "assessment": "Both opaque 288x288 bases checked in 3x3 repeats at 1x and nearest-neighbor 4x, at the wrap intersection at 4x, and across all four quadrants at exact 8x. Both have crisp palette-limited pixels, continuous wraps, no peaks, and appropriate small rock/scree/crack scale. Summer passes: distributed rubble and sparse muted green tufts remain subordinate to the standing peaks; no conspicuous cell grid or dominant repeating landmark at native scale. Winter has textured blue-white snow, exposed rock, and a palette compatible with approved winter grass/plains and detail sprites, but its high-contrast rock islands reveal the texture repeat and fail."
+    },
+    "mountains-peak": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "assessment": "Each sprite checked at native scale and exact nearest-neighbor 8x on a dark neutral and its matching base; all eight also checked in a shuffled 8x2 one-cell composite at 1x/4x. Checked a full 288x288 lattice at 1x/4x (24px horizontal spacing, 16px row spacing, alternating 12px offsets, later rows painted in front), a second random seed at 1x, and a ragged curved range boundary at 1x/4x. All files are 48x48 with binary transparency, one connected silhouette, centered feet ending on row 45. Widths in index order: 41,40,36,31,30,27,23,20px; big-peak heights 41,37,39px. The required 3 big/3 medium/2 small tiers are present. Split summits, ridged buttresses, single spires and two different knolls provide enough silhouette variety for shipping; the two single-spire variants differ in scale, side outcrop and face construction rather than being duplicate stamps. Lit left faces and dark right faces give consistent top-left illumination, with crisp dark contours and no halo, loose fringe or antialiasing. Muted warm-gray rocks and sparse green foot pixels fit the approved art. The dense interior is busy but reads as overlapping crags; the ragged silhouette avoids the old regular egg-crate cones."
+    },
+    "mountains@winter-peak": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "assessment": "All eight checked individually at 1x/8x on neutral and snowy ground, shuffled as an 8x2 strip at 1x/4x, crowded on the specified 24x16 staggered lattice at 1x/4x, with a second native-scale random seed, and along the curved range edge at 1x/4x. All are 48x48 with binary alpha, connected silhouettes, centered feet on row 45; widths 42,40,36,31,29,26,23,20px preserve the requested size tiers. Snow forms crisp caps and ledges across the upper portions while the shadow faces retain dark exposed rock. The range remains visibly rocky beneath snow and retains the summer silhouette variety. No blank winter, seasonal shape mismatch, blur, halo, stray disconnected pixels or opposing light direction found. Snow colors fit the approved winter grass/plains, paddies and building roofs. The rejected base pattern is assessed separately; it does not require repainting these sprites."
+    },
+    "review-scope": {
+      "total": 18,
+      "passed": 17,
+      "failed": 1,
+      "assessment": "Only BRIEF-5 Part A submissions receive verdicts. The named current-fantasy-mountains summer/winter images and current-fantasy-treeline_forest sheet were inspected as references; the latter was also composited as a dense forest at 1x/4x to check the intended standing-sprite model. Approved out/ markers (all settings and sizes), round-2 tiles/farmsteads, all seasonal paddies, and grass/plains bases and detail sprites were viewed on reference boards, with summer/winter context comparisons at 1x/4x. No Part B/C/D assets are included in pass/fail. Their craters/ruins/cyberpunk/autumn-crown requirements are not Part A requirements. critic-r5A-0.json does not exist, so no prior unchanged passes apply. Composites use the critic-r5A-1- prefix and nearest-neighbor enlargement. Source hashes are recorded separately; out/ was read only."
+    }
+  },
+  "pass": [
+    "mountains-base",
+    "mountains-peak-0",
+    "mountains-peak-1",
+    "mountains-peak-2",
+    "mountains-peak-3",
+    "mountains-peak-4",
+    "mountains-peak-5",
+    "mountains-peak-6",
+    "mountains-peak-7",
+    "mountains@winter-peak-0",
+    "mountains@winter-peak-1",
+    "mountains@winter-peak-2",
+    "mountains@winter-peak-3",
+    "mountains@winter-peak-4",
+    "mountains@winter-peak-5",
+    "mountains@winter-peak-6",
+    "mountains@winter-peak-7"
+  ],
+  "fail": [
+    {
+      "name": "mountains@winter-base",
+      "problems": "The 3x3 native-size repeat exposes a conspicuous 288px wallpaper pattern: the large branched bare-rock island around x=20..120,y=25..105 and the broad lower-right island around x=170..275,y=175..265 recur as matching dark shapes in every repeat. Their strong contrast with the snow creates repeated rows/diagonal chains even though the wrap itself is continuous; this is visible at 1x and confirmed at 4x. Break up and partially snow over those large lobed islands, distribute smaller exposed-rock areas at irregular spacing, and reduce the dominant island-to-snow contrast without removing the rock/snow texture. Recheck the 3x3 repeat at native scale and the sparse ragged range edge; it should read as rocky snowfield rather than a repeated camouflage stencil."
+    }
+  ]
+}

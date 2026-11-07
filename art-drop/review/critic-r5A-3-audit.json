@@ -1,0 +1,468 @@
+{
+  "mountains-base": {
+    "size": [
+      288,
+      288
+    ],
+    "bbox": [
+      0,
+      0,
+      288,
+      288
+    ],
+    "alpha_levels": [
+      255
+    ],
+    "sha256": "395e322676f89147e0c94874f9c829398f506bffc7d641008a3b800211514eae",
+    "unchanged_since_review_2": true
+  },
+  "mountains-peak-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      3,
+      6,
+      44,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "10dba5ea6b489df893fef8aea45d84718995d98031eaf3575c9ed0d5cf99ca6c",
+    "unchanged_since_review_2": false,
+    "width": 41,
+    "height": 40,
+    "foot_last_row": 45,
+    "centering_offset": -0.5,
+    "components_8_connected": [
+      1094
+    ],
+    "green_pixels": 37,
+    "green_pixels_on_rows_40_47": 37
+  },
+  "mountains-peak-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      5,
+      11,
+      43,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "7a2ab0111f6cc87c22fe2325c054df95a1c17868dd2e630b4bb7522c9aba4333",
+    "unchanged_since_review_2": false,
+    "width": 38,
+    "height": 35,
+    "foot_last_row": 45,
+    "centering_offset": 0.0,
+    "components_8_connected": [
+      806
+    ],
+    "green_pixels": 19,
+    "green_pixels_on_rows_40_47": 19
+  },
+  "mountains-peak-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      5,
+      10,
+      42,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "9f28c2c143451f8860de3a5c0cf621a24f5d55da3f92a66f9757f4445970442b",
+    "unchanged_since_review_2": false,
+    "width": 37,
+    "height": 36,
+    "foot_last_row": 45,
+    "centering_offset": -0.5,
+    "components_8_connected": [
+      828
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains-peak-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      9,
+      18,
+      39,
+      45
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "90e71230c4b8ec7b7611574d3ae5223221f5674552b98875cc1a12edf9b2e0fc",
+    "unchanged_since_review_2": false,
+    "width": 30,
+    "height": 27,
+    "foot_last_row": 44,
+    "centering_offset": 0.0,
+    "components_8_connected": [
+      613
+    ],
+    "green_pixels": 6,
+    "green_pixels_on_rows_40_47": 6
+  },
+  "mountains-peak-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      9,
+      16,
+      38,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "7f37e86f66521d67eacd178bd31eae23eea1745cc9b33bbacd9068457a99c01c",
+    "unchanged_since_review_2": false,
+    "width": 29,
+    "height": 30,
+    "foot_last_row": 45,
+    "centering_offset": -0.5,
+    "components_8_connected": [
+      499
+    ],
+    "green_pixels": 4,
+    "green_pixels_on_rows_40_47": 4
+  },
+  "mountains-peak-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      11,
+      21,
+      37,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "74c5b6cd34f538ecb3d4053b6ea3ddb156927591b34f1b764122178266b9865d",
+    "unchanged_since_review_2": false,
+    "width": 26,
+    "height": 25,
+    "foot_last_row": 45,
+    "centering_offset": 0.0,
+    "components_8_connected": [
+      428
+    ],
+    "green_pixels": 2,
+    "green_pixels_on_rows_40_47": 2
+  },
+  "mountains-peak-6": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      13,
+      28,
+      34,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "2bb5481ce52a03416c7f42393e36f5d12670701960924f790dbd90c777b0ab03",
+    "unchanged_since_review_2": false,
+    "width": 21,
+    "height": 18,
+    "foot_last_row": 45,
+    "centering_offset": -0.5,
+    "components_8_connected": [
+      252
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains-peak-7": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      15,
+      29,
+      33,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "1112bd198bbb6de1623aa3a02d59700073eeaad8d95bd2cb1f1d0edbebafafed",
+    "unchanged_since_review_2": false,
+    "width": 18,
+    "height": 17,
+    "foot_last_row": 45,
+    "centering_offset": 0.0,
+    "components_8_connected": [
+      218
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains@winter-base": {
+    "size": [
+      288,
+      288
+    ],
+    "bbox": [
+      0,
+      0,
+      288,
+      288
+    ],
+    "alpha_levels": [
+      255
+    ],
+    "sha256": "bdbca4a6a1e9cefb1674418d16373c103dc008d128dcd859e4e1f8337028020e",
+    "unchanged_since_review_2": true
+  },
+  "mountains@winter-peak-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      3,
+      6,
+      44,
+      45
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "9bfd1c690a5925f2f197122983e086dd848136b897f82cfb6553cfd1713d3809",
+    "unchanged_since_review_2": false,
+    "width": 41,
+    "height": 39,
+    "foot_last_row": 44,
+    "centering_offset": -0.5,
+    "components_8_connected": [
+      1088
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains@winter-peak-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      5,
+      11,
+      43,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "7d520955fff46ea1b87d686c6f5650c3ed5ac5bf9fdfc9b158a407af4d7fede3",
+    "unchanged_since_review_2": false,
+    "width": 38,
+    "height": 35,
+    "foot_last_row": 45,
+    "centering_offset": 0.0,
+    "components_8_connected": [
+      794
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains@winter-peak-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      5,
+      10,
+      42,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "fc19964af7352c26cd78426c4e70f173394a33a527e414b3fe676d93b3adde8f",
+    "unchanged_since_review_2": false,
+    "width": 37,
+    "height": 36,
+    "foot_last_row": 45,
+    "centering_offset": -0.5,
+    "components_8_connected": [
+      828
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains@winter-peak-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      9,
+      18,
+      39,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "ad03f551cc588e26ba530d80bdcbcb1bf2d148c209709f259741601d24dd5764",
+    "unchanged_since_review_2": false,
+    "width": 30,
+    "height": 28,
+    "foot_last_row": 45,
+    "centering_offset": 0.0,
+    "components_8_connected": [
+      614
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains@winter-peak-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      9,
+      15,
+      38,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "9653893de13499cf674bed4b1e33dbdd87a9a290ce62a4033fec405787975e0f",
+    "unchanged_since_review_2": false,
+    "width": 29,
+    "height": 31,
+    "foot_last_row": 45,
+    "centering_offset": -0.5,
+    "components_8_connected": [
+      498
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains@winter-peak-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      11,
+      21,
+      37,
+      45
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "28d166314cd9bdd8c714cf26ee41c71d97c35c100edd2897e85b5458949e4c49",
+    "unchanged_since_review_2": false,
+    "width": 26,
+    "height": 24,
+    "foot_last_row": 44,
+    "centering_offset": 0.0,
+    "components_8_connected": [
+      425
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains@winter-peak-6": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      13,
+      28,
+      34,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "8d75de5c385bbc1adce2bd87047ebcedd43412ebe8967845572b2c7c1e8b58a6",
+    "unchanged_since_review_2": false,
+    "width": 21,
+    "height": 18,
+    "foot_last_row": 45,
+    "centering_offset": -0.5,
+    "components_8_connected": [
+      251
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  },
+  "mountains@winter-peak-7": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      15,
+      29,
+      33,
+      46
+    ],
+    "alpha_levels": [
+      0,
+      255
+    ],
+    "sha256": "7869c2c6eac6957c30c42fa71be4a2cb7ba48a6dd576c5227f9b6ba84739a756",
+    "unchanged_since_review_2": false,
+    "width": 18,
+    "height": 17,
+    "foot_last_row": 45,
+    "centering_offset": 0.0,
+    "components_8_connected": [
+      217
+    ],
+    "green_pixels": 0,
+    "green_pixels_on_rows_40_47": 0
+  }
+}
