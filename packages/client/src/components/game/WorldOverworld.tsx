@@ -318,7 +318,7 @@ export function WorldOverworld({
     const builtLooks = new Set<string>(
       WORLD_BUILDING_LOOKS.filter((look) => drawTile.hasPiece(`buildings_${look}`, 0)),
     );
-    const coveredLooks = new Set<string>([...[...treeLooks].filter((look) => look !== "mountains"), ...builtLooks]);
+    const coveredLooks = new Set<string>([...treeLooks].filter((look) => look !== "mountains"));
     const lookAt = (x: number, y: number) =>
       drawnLook[Math.min(height - 1, Math.max(0, y)) * width + Math.min(width - 1, Math.max(0, x))]!;
     // A cell in the middle of its look, with no water beside it: water keeps the look of the land under
@@ -366,9 +366,13 @@ export function WorldOverworld({
     // Each field of a prop look becomes one open ground (the one most of its border has), so its cells meet
     // the ground round them through that ground's own fringes, not in squares; the props go over it after.
     const propCells = new Map<number, string>();
+    // Built-up looks the same way (the owner, 2026-11-07: the street "blob underneath" looked wrong): their
+    // ground is the open ground round them, their buildings stand on it, and lanes run in to their places.
+    const builtCells = new Map<number, string>();
     for (let start = 0; start < drawnLook.length; start++) {
       const look = drawnLook[start]!;
-      if (!propLooks.has(look) || propCells.has(start)) continue;
+      const fieldCells = builtLooks.has(look) ? builtCells : propCells;
+      if ((!propLooks.has(look) && !builtLooks.has(look)) || fieldCells.has(start)) continue;
       const field = [start];
       const seen = new Set<number>(field);
       const border = new Map<string, number>();
@@ -389,7 +393,7 @@ export function WorldOverworld({
           }
       }
       const ground = [...border].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? commonOpen;
-      for (const at of field) propCells.set(at, look);
+      for (const at of field) fieldCells.set(at, look);
       if (!WORLD_PROP_KEEPS_GROUND.includes(look)) for (const at of field) drawnLook[at] = ground;
     }
     const groundOf = (x: number, y: number, drawn: string) => {
@@ -722,6 +726,62 @@ export function WorldOverworld({
       }
       for (const drawPieces of spilling) drawPieces();
     } else if (roads.size) edgePass("road", (x, y) => roads.has(y * width + x));
+    // Lanes through built-up ground (the owner, 2026-11-07: "tiny roads centralizing around the city ... like a
+    // highway system"): from each settlement out along the eight ways as far as its built-up ground runs,
+    // drawn as the pack's path, joining the roads they meet.
+    const lanes = new Set<number>();
+    if (builtCells.size && drawTile.hasPiece("path_joined", 0)) {
+      // One hub to a cluster: a settlement's lanes only where no larger one (or an equal one listed first)
+      // stands within three cells, so a city of neighbouring places is not cut into a grid.
+      const hubs = world.places.filter(
+        (place, index) =>
+          place.rank !== undefined &&
+          !world.places.some(
+            (other, otherIndex) =>
+              other !== place &&
+              other.rank !== undefined &&
+              Math.max(Math.abs(other.at.x - place.at.x), Math.abs(other.at.y - place.at.y)) <= 3 &&
+              (other.rank > place.rank! || (other.rank === place.rank && otherIndex < index)),
+          ),
+      );
+      for (const place of hubs) {
+        const builtAt = (x: number, y: number) =>
+          x >= 0 && y >= 0 && x < width && y < height && builtCells.has(y * width + x) && !wetCell[y * width + x];
+        let near = false;
+        for (let dy = -2; dy <= 2; dy++)
+          for (let dx = -2; dx <= 2; dx++) if (builtAt(place.at.x + dx, place.at.y + dy)) near = true;
+        if (!near) continue;
+        for (const [dx, dy] of [
+          [1, 0],
+          [-1, 0],
+          [0, 1],
+          [0, -1],
+          [1, 1],
+          [1, -1],
+          [-1, 1],
+          [-1, -1],
+        ] as const)
+          for (let k = 1; k <= 8; k++) {
+            const [x, y] = [place.at.x + dx * k, place.at.y + dy * k];
+            if (!builtAt(x, y)) {
+              if (k > 1) break;
+              continue;
+            }
+            lanes.add(y * width + x);
+          }
+      }
+      for (const at of roads) lanes.delete(at);
+      const joins = (x: number, y: number) =>
+        x >= 0 && y >= 0 && x < width && y < height && (lanes.has(y * width + x) || roads.has(y * width + x));
+      for (const at of lanes) {
+        const [x, y] = [at % width, Math.floor(at / width)];
+        const pick = cellNoise(x, y)(74);
+        const has = (piece: number) => drawTile.hasPiece("path_joined", piece, pick);
+        inSeason(x, y);
+        for (const piece of worldJoinedPieces(joins, x, y, has))
+          drawTile.piece(ctx, "path_joined", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, pick);
+      }
+    }
     // Bridges where a road crosses a river (the owner, 2026-11-07: "bridges that go over water instead of
     // path"), over the road's own piece on that cell.
     if (roads.size && drawTile.hasPiece("road_bridge", 0)) {
@@ -853,7 +913,7 @@ export function WorldOverworld({
       const free = (x: number, y: number) => {
         if (x < 0 || y < 0 || x >= width || y >= height) return false;
         const at = y * width + x;
-        if (drawnLook[at] !== look || wetCell[at] || roads.has(at) || taken.has(at)) return false;
+        if (builtCells.get(at) !== look || wetCell[at] || roads.has(at) || lanes.has(at) || taken.has(at)) return false;
         // Clear of its places, except the row behind one (drawn behind its marker, so the city closes round it).
         for (const place of marked) {
           const [dx, dy] = [x - place.at.x, y - place.at.y];
@@ -931,7 +991,7 @@ export function WorldOverworld({
       for (let y = 0; y < height; y++)
         for (let x = 0; x < width; x++) {
           const at = y * width + x;
-          if (drawnLook[at] !== look || wetCell[at] || roads.has(at) || placed.has(at)) continue;
+          if (builtCells.get(at) !== look || wetCell[at] || roads.has(at) || lanes.has(at) || placed.has(at)) continue;
           const noise = cellNoise(x, y);
           if (noise(71) >= 0.25) continue;
           trees.push({
@@ -1001,7 +1061,7 @@ export function WorldOverworld({
           if (x < 0 || y < 0 || x >= width || y >= height) continue;
           const at = y * width + x;
           const look = drawnLook[at]!;
-          if (wetCell[at] || roads.has(at) || placed.has(at) || builtLooks.has(look) || square.has(look)) continue;
+          if (wetCell[at] || roads.has(at) || placed.has(at) || builtCells.has(at) || square.has(look)) continue;
           const noise = cellNoise(x, y);
           const reach = Math.hypot(dx, dy);
           if (reach > 1.6 || noise(67) > (reach < 0.5 ? 1 : 0.7)) continue;
