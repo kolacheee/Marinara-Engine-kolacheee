@@ -1,0 +1,565 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-7.md Part D, global 48/96 layout and final SIZE NOTE",
+      "reviewed_files": [
+        "dunes-prop-0",
+        "dunes-prop-1",
+        "dunes-prop-2",
+        "dunes-prop-3",
+        "dunes-prop-4",
+        "dunes-prop-5",
+        "dunes-prop-6",
+        "dunes-prop-7",
+        "dunes@winter-prop-0",
+        "dunes@winter-prop-1",
+        "dunes@winter-prop-2",
+        "dunes@winter-prop-3",
+        "dunes@winter-prop-4",
+        "dunes@winter-prop-5",
+        "dunes@winter-prop-6",
+        "dunes@winter-prop-7"
+      ],
+      "named_visual_references": "Part D names no separate reference image. Part C current-fantasy-hills.png is outside this scope.",
+      "comparison_only": "Approved art is used for calibration and integration, with verdicts restricted to the 16 Part D files.",
+      "prior_review": "art-drop/review/critic-r7D-1.json",
+      "unchanged_prior_passes": [
+        "dunes-prop-0",
+        "dunes-prop-1",
+        "dunes-prop-2",
+        "dunes-prop-4",
+        "dunes-prop-5",
+        "dunes-prop-6",
+        "dunes@winter-prop-0",
+        "dunes@winter-prop-1",
+        "dunes@winter-prop-2",
+        "dunes@winter-prop-4",
+        "dunes@winter-prop-5",
+        "dunes@winter-prop-6"
+      ],
+      "changed_files": [
+        "dunes-prop-3",
+        "dunes-prop-7",
+        "dunes@winter-prop-3",
+        "dunes@winter-prop-7"
+      ],
+      "calibration": "Good enough to ship beside approved art; no perfection-only failures.",
+      "out_directory_unchanged": true
+    },
+    "dunes-summer": {
+      "status": "pass",
+      "files": [
+        "dunes-prop-0",
+        "dunes-prop-1",
+        "dunes-prop-2",
+        "dunes-prop-3",
+        "dunes-prop-4",
+        "dunes-prop-5",
+        "dunes-prop-6",
+        "dunes-prop-7"
+      ],
+      "pass_count": 8,
+      "fail_count": 0
+    },
+    "dunes-winter": {
+      "status": "pass",
+      "files": [
+        "dunes@winter-prop-0",
+        "dunes@winter-prop-1",
+        "dunes@winter-prop-2",
+        "dunes@winter-prop-3",
+        "dunes@winter-prop-4",
+        "dunes@winter-prop-5",
+        "dunes@winter-prop-6",
+        "dunes@winter-prop-7"
+      ],
+      "pass_count": 8,
+      "fail_count": 0
+    },
+    "checks": {
+      "individual_visual_review": "Every Part D file inspected on six surfaces at native 1x and nearest-neighbor 4x, and individually at exact 8x on neutral sand and approved seasonal plains. Transparent shading has intentional stepped alpha; no resampling blur, colored fringe, accidental halo or noisy off-grid marks found.",
+      "one_cell_random_8x2": "Both seasons: props 0-3 each occur four times in a deterministic shuffled 8x2 layout, viewed at 1x and 4x on neutral sand, approved wasteland and seasonal plains. No tile seams, opaque background panels, cut-off ripple perimeter or additional square grid. Repeated source silhouettes remain identifiable, as expected when four variants fill sixteen slots, but no new seam or stamped field boundary warrants rejection.",
+      "large_props_and_scatter": "Every 96x96 prop tested at 1x/4x on all six surfaces; mixed-size scatter viewed at both scales on approved wasteland and snow. Crescents, long ridges and a cluster remain distinct and readable; no egg-crate bump packing or Swiss-cheese crater read. The repaired large ripple field blends at the perimeter.",
+      "bases_3x3": "Not applicable to the Part D deliverables: no base tiles. As integration controls, five approved grass/plains/snow/wasteland bases were tiled 3x3 and saved at 1x/4x. Full native controls and exact 1x/4x four-way join crops were inspected to separate underlying ground texture from overlay boundaries. These comparison bases receive no verdict.",
+      "peak_lattice_or_range": "Not applicable: Part D contains no peaks. Dune clusters were evaluated in the mixed-size scatter rather than inventing mountain assets outside scope.",
+      "trees_composited_in_forest": "Not applicable: Part D contains no trees.",
+      "dimensions_placement": "All 16 are RGBA PNGs: indices 0-3 are 48x48 and 4-7 are 96x96. Nonzero-alpha bounds span approximately 75-81% of each small canvas axis and 83-86.5% of each large axis. All borders are transparent; no clipped horns, misplaced sprites or undersized specks.",
+      "shape_mix_and_duplicates": "0 hooked crescent, 1 swept pointed dune, 2 sinuous ridge, 3 small ripple-only field, 4 double crescent, 5 branching long ridge, 6 three-dune cluster, 7 large ripple-only field. Required mix and exactly two ripple-only variants are present. Related dune forms have sufficiently distinct silhouettes, sizes and arrangements; no near-duplicate rejection.",
+      "lighting_alpha_and_palette": "Visible RGB values are exclusively pure white and pure black. Main dunes have upper-left lit windward slopes and lower/right dark lee faces, with crisp interior crests and fading exterior shading. Light/dark contrast integrates with sand/desert neutral fills, approved wasteland, grass, plains and snow. No baked sand color or palette clash. Fine ripples use lighter contrast than major lee faces, appropriate to their scale.",
+      "winter": "All eight winter sprites have the same occupied-pixel masks as their summer partners. Changed pixels by index: [6,6,6,6,14,16,16,18], all sparse white crest dusting. Seasonal snow-ground views retain dark relief and fine ripples; no blank winter, misplaced blanket snow or inconsistent form.",
+      "approved_art_comparison": "Compared against all out/ markers, representative summer/winter round-2 city/industry/slums/suburb/farmland tiles, all paddy variants, and all seasonal grass/plains bases and details. Dunes meet the approved art at a compatible native pixel scale, light direction and restrained detail level. Transparent slope fades are required by Part D and are judged as shading rather than as forbidden solid-sprite anti-aliasing.",
+      "other_listed_failure_patterns": "Classical ruins, stamped cyberpunk grids, flat orange autumn and identical crowns are not applicable to these dune overlays. No files from those other categories were reviewed for verdicts.",
+      "prior_pass_rule": "SHA-256 comparison against critic-r7D-1-audit.json confirms all 12 prior passes unchanged; all remain passed. Only the four prior ripple-field failures changed, and their specific endpoint/perimeter defects are resolved."
+    },
+    "per_file": {
+      "dunes-prop-0": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "acb1da58583b3746abfe72848fc6eb6b462c9a5923363de49be13ca3fed6bcfd",
+        "canvas": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          3,
+          5,
+          42,
+          42
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: compact hooked barchan with a crisp interior crest, broad lit northwest slope, readable southeast lee face and fading horns. Distinct from the triangular ridge and long ridge; no colored fringe on the tested grounds."
+      },
+      "dunes-prop-1": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "a05266fbb2d60a53400d87bc0ef1fd76b92a90d5a8116d54ab69bb612c2141a1",
+        "canvas": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          4,
+          6,
+          42,
+          42
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: swept, triangular dune with a curved crest and a clear dark lee plane. Its pointed silhouette remains readable at 1x and differs substantially from 0/2. Footprint and fading outer slopes are appropriate."
+      },
+      "dunes-prop-2": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "7218c656c2ffe954f14ff4565f2ce54fd6ff59965b7d16be8d34f264178e2ffd",
+        "canvas": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          4,
+          5,
+          43,
+          43
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: slim sinuous ridge, with a 55% black shadow core (16 pixels at alpha 140), lighter adjoining shading and a legible lit flank. Narrower than the other dune types but still readable on native sand/wasteland; it is not rejected for the intended feathered alpha."
+      },
+      "dunes-prop-3": {
+        "status": "pass",
+        "unchanged_since_review_1": false,
+        "previous_status": "fail",
+        "sha256": "c70f1284984ff7fd184951b1eaf1e48f580033e2eefec96c1fd91b6eef2fba5f",
+        "canvas": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          5,
+          5,
+          42,
+          43
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass after revision: the ripple tips now step down through alpha 24/16/8, with staggered lengths and faint outside strokes. The field reads as fine wind ripples at 1x and avoids a hard patch boundary in the 8x2 layout. Crisp interior crests remain legible on sand, wasteland and plains at 4x/8x; the former square-ended stamp defect is resolved."
+      },
+      "dunes-prop-4": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "125080a62b84bb21b92cb82a5860c6285462d992f07c13f64b77f3529c4d6e3f",
+        "canvas": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          6,
+          7,
+          88,
+          87
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: broad double-dune composition, with a dominant arch and smaller rear crescent. Clear lit/lee separation, varied scale, transparent interior ground and faded exterior slopes; fills approximately 85% of its 96px canvas."
+      },
+      "dunes-prop-5": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "bfb0eb656bb0e852bf6658782fa016e5cbd4e563d74b88c2e1d33b5bb11a083f",
+        "canvas": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          6,
+          8,
+          89,
+          88
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: long branching ridge with a strong diagonal flow, tapered ends and restrained fine ripples. Its silhouette differs from the rounded crescent sets and remains legible on approved textured terrain."
+      },
+      "dunes-prop-6": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "600210e1176eb30c5ff2350a5d6046a4a6b02bc23b0f5fde9d0855b2d40f8884",
+        "canvas": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          6,
+          7,
+          87,
+          89
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: three crescents of unequal scale, joined by drifting slopes. Reads as a dune cluster rather than identical bumps or crater holes. Lit outer slopes, dark inner lee faces and dissolving outer edges survive the native scatter."
+      },
+      "dunes-prop-7": {
+        "status": "pass",
+        "unchanged_since_review_1": false,
+        "previous_status": "fail",
+        "sha256": "56f55c5cdc3307aa5d6877c677ebdf315ef8defcb0a5b2092d31822491626c7b",
+        "canvas": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          7,
+          7,
+          90,
+          89
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass after revision: varied ripple lengths, gaps and directions break up the former ladder-like field. Low-alpha tails and lighter peripheral rows dissolve into the ground; the interior waves retain enough definition without looking like equally weighted scratches. No rectangular perimeter or cell grid emerges in the mixed-size scatter at 1x/4x. Its open, irregular composition is sufficiently different from the small ripple field."
+      },
+      "dunes@winter-prop-0": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "a166232b6d59e95a663a5b899cdcf548474e7ef96d5dcb17fccfbb2919b7ef39",
+        "canvas": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          3,
+          5,
+          42,
+          42
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: compact hooked barchan with a crisp interior crest, broad lit northwest slope, readable southeast lee face and fading horns. Distinct from the triangular ridge and long ridge; no colored fringe on the tested grounds. Winter retains the summer shape and adds only brighter crest pixels, as requested; the lee form remains visible on textured snow."
+      },
+      "dunes@winter-prop-1": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "d89659ec8be7bda8588e3dcec42631e6881008c99dc078edaeed77dcd76c18d8",
+        "canvas": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          4,
+          6,
+          42,
+          42
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: swept, triangular dune with a curved crest and a clear dark lee plane. Its pointed silhouette remains readable at 1x and differs substantially from 0/2. Footprint and fading outer slopes are appropriate. Winter retains the summer shape and adds only brighter crest pixels, as requested; the lee form remains visible on textured snow."
+      },
+      "dunes@winter-prop-2": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "8048617313187c6db90bd66e6704c66eab7518dc285b50b0d62e295fba55f611",
+        "canvas": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          4,
+          5,
+          43,
+          43
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: slim sinuous ridge, with a 55% black shadow core (16 pixels at alpha 140), lighter adjoining shading and a legible lit flank. Narrower than the other dune types but still readable on native sand/wasteland; it is not rejected for the intended feathered alpha. Winter retains the summer shape and adds only brighter crest pixels, as requested; the lee form remains visible on textured snow."
+      },
+      "dunes@winter-prop-3": {
+        "status": "pass",
+        "unchanged_since_review_1": false,
+        "previous_status": "fail",
+        "sha256": "dd0d5e797cb92aabb9e35c38baf0dee7b552f62a21b4c56d1511367031156614",
+        "canvas": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          5,
+          5,
+          42,
+          43
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass after revision: inherits the corrected summer field and its tapered endpoints, with six brighter white crest pixels. On approved snow the dark ripple segments remain readable and fade at their tips instead of ending as blunt dashes. Same occupied mask as summer; sparse snow dusting is consistent with the brief."
+      },
+      "dunes@winter-prop-4": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "6ab27be4dc7182c350090de72ffb26fb7f20a49b611cab55786ba7433efad0c6",
+        "canvas": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          6,
+          7,
+          88,
+          87
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: broad double-dune composition, with a dominant arch and smaller rear crescent. Clear lit/lee separation, varied scale, transparent interior ground and faded exterior slopes; fills approximately 85% of its 96px canvas. Winter retains the summer shape and adds only brighter crest pixels, as requested; the lee form remains visible on textured snow."
+      },
+      "dunes@winter-prop-5": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "7fba5918db5d68553d9ba03b3accc15879994954cf66540f7c8ae1dad874e2e2",
+        "canvas": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          6,
+          8,
+          89,
+          88
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: long branching ridge with a strong diagonal flow, tapered ends and restrained fine ripples. Its silhouette differs from the rounded crescent sets and remains legible on approved textured terrain. Winter retains the summer shape and adds only brighter crest pixels, as requested; the lee form remains visible on textured snow."
+      },
+      "dunes@winter-prop-6": {
+        "status": "pass",
+        "unchanged_since_review_1": true,
+        "previous_status": "pass",
+        "sha256": "09569cde7f1c38cf7a72e25e2b819b48b325ed52aeb9b06f780ce057548389d3",
+        "canvas": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          6,
+          7,
+          87,
+          89
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass: three crescents of unequal scale, joined by drifting slopes. Reads as a dune cluster rather than identical bumps or crater holes. Lit outer slopes, dark inner lee faces and dissolving outer edges survive the native scatter. Winter retains the summer shape and adds only brighter crest pixels, as requested; the lee form remains visible on textured snow."
+      },
+      "dunes@winter-prop-7": {
+        "status": "pass",
+        "unchanged_since_review_1": false,
+        "previous_status": "fail",
+        "sha256": "0465663c849872ee2474a2adc3e9c77bedfd9ff689d3593ac57999763055b39b",
+        "canvas": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          7,
+          7,
+          90,
+          89
+        ],
+        "border_nontransparent_pixels": 0,
+        "hued_visible_pixels": 0,
+        "inspected_scales": [
+          1,
+          4,
+          8
+        ],
+        "finding": "Pass after revision: inherits the irregular, graduated summer ripple field and adds 18 brighter crest pixels. The long interior waves remain crisp but dissolve at their ends and outer rows. On approved snow, the scatter no longer exposes a detached hard-bordered scratch patch; the winter field is neither blank nor a different shape."
+      }
+    },
+    "composites": [
+      "critic-r7D-2-approved-grass-1x.png",
+      "critic-r7D-2-approved-grass-4x.png",
+      "critic-r7D-2-approved-markers-1x.png",
+      "critic-r7D-2-approved-markers-4x.png",
+      "critic-r7D-2-approved-paddies-1x.png",
+      "critic-r7D-2-approved-paddies-4x.png",
+      "critic-r7D-2-approved-plains-1x.png",
+      "critic-r7D-2-approved-plains-4x.png",
+      "critic-r7D-2-approved-round2-1x.png",
+      "critic-r7D-2-approved-round2-4x.png",
+      "critic-r7D-2-background-joins-1x.png",
+      "critic-r7D-2-background-joins-4x.png",
+      "critic-r7D-2-dunes-prop-0-8x.png",
+      "critic-r7D-2-dunes-prop-1-8x.png",
+      "critic-r7D-2-dunes-prop-2-8x.png",
+      "critic-r7D-2-dunes-prop-3-8x.png",
+      "critic-r7D-2-dunes-prop-4-8x.png",
+      "critic-r7D-2-dunes-prop-5-8x.png",
+      "critic-r7D-2-dunes-prop-6-8x.png",
+      "critic-r7D-2-dunes-prop-7-8x.png",
+      "critic-r7D-2-dunes@winter-prop-0-8x.png",
+      "critic-r7D-2-dunes@winter-prop-1-8x.png",
+      "critic-r7D-2-dunes@winter-prop-2-8x.png",
+      "critic-r7D-2-dunes@winter-prop-3-8x.png",
+      "critic-r7D-2-dunes@winter-prop-4-8x.png",
+      "critic-r7D-2-dunes@winter-prop-5-8x.png",
+      "critic-r7D-2-dunes@winter-prop-6-8x.png",
+      "critic-r7D-2-dunes@winter-prop-7-8x.png",
+      "critic-r7D-2-grass-base-3x3-control-1x.png",
+      "critic-r7D-2-grass-base-3x3-control-4x.png",
+      "critic-r7D-2-grass@winter-base-3x3-control-1x.png",
+      "critic-r7D-2-grass@winter-base-3x3-control-4x.png",
+      "critic-r7D-2-plains-base-3x3-control-1x.png",
+      "critic-r7D-2-plains-base-3x3-control-4x.png",
+      "critic-r7D-2-plains@winter-base-3x3-control-1x.png",
+      "critic-r7D-2-plains@winter-base-3x3-control-4x.png",
+      "critic-r7D-2-summer-large-surfaces-1x.png",
+      "critic-r7D-2-summer-large-surfaces-4x.png",
+      "critic-r7D-2-summer-random8x2-plains-base-1x.png",
+      "critic-r7D-2-summer-random8x2-plains-base-4x.png",
+      "critic-r7D-2-summer-random8x2-sand-neutral-1x.png",
+      "critic-r7D-2-summer-random8x2-sand-neutral-4x.png",
+      "critic-r7D-2-summer-random8x2-wasteland-wasteland-base-1x.png",
+      "critic-r7D-2-summer-random8x2-wasteland-wasteland-base-4x.png",
+      "critic-r7D-2-summer-scatter-1x.png",
+      "critic-r7D-2-summer-scatter-4x.png",
+      "critic-r7D-2-summer-small-surfaces-1x.png",
+      "critic-r7D-2-summer-small-surfaces-4x.png",
+      "critic-r7D-2-wasteland-wasteland-base-3x3-control-1x.png",
+      "critic-r7D-2-wasteland-wasteland-base-3x3-control-4x.png",
+      "critic-r7D-2-winter-large-surfaces-1x.png",
+      "critic-r7D-2-winter-large-surfaces-4x.png",
+      "critic-r7D-2-winter-random8x2-plains@winter-base-1x.png",
+      "critic-r7D-2-winter-random8x2-plains@winter-base-4x.png",
+      "critic-r7D-2-winter-random8x2-sand-neutral-1x.png",
+      "critic-r7D-2-winter-random8x2-sand-neutral-4x.png",
+      "critic-r7D-2-winter-random8x2-wasteland-wasteland-base-1x.png",
+      "critic-r7D-2-winter-random8x2-wasteland-wasteland-base-4x.png",
+      "critic-r7D-2-winter-scatter-1x.png",
+      "critic-r7D-2-winter-scatter-4x.png",
+      "critic-r7D-2-winter-small-surfaces-1x.png",
+      "critic-r7D-2-winter-small-surfaces-4x.png"
+    ],
+    "audit": "critic-r7D-2-audit.json"
+  },
+  "pass": [
+    "dunes-prop-0",
+    "dunes-prop-1",
+    "dunes-prop-2",
+    "dunes-prop-3",
+    "dunes-prop-4",
+    "dunes-prop-5",
+    "dunes-prop-6",
+    "dunes-prop-7",
+    "dunes@winter-prop-0",
+    "dunes@winter-prop-1",
+    "dunes@winter-prop-2",
+    "dunes@winter-prop-3",
+    "dunes@winter-prop-4",
+    "dunes@winter-prop-5",
+    "dunes@winter-prop-6",
+    "dunes@winter-prop-7"
+  ],
+  "fail": []
+}
