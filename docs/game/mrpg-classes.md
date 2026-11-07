@@ -155,4 +155,4 @@ The upgrade is not offered during a fight. Finish the fight first. A game played
 - [Game Mode: Combat](combat.md)
 - [Game Mode: Party and NPCs](party-and-npcs.md)
 - [Game Mode: Dice and Skill Checks](dice-and-skill-checks.md)
-- [Character Colors and Story Stats](../characters/colors-and-stats.md)
+- [Character Colors and Roleplay Stats](../characters/colors-and-stats.md)
