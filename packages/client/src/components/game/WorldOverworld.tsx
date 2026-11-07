@@ -671,6 +671,36 @@ export function WorldOverworld({
           riverStretches.set(cell, [...(riverStretches.get(cell) ?? []), stretch]);
         }
     }
+    // Props over their ground (crater scars, ruins, a marsh's pools and reeds): about two cells in three, half
+    // of them large (two cells by two, spilling onto their neighbours).
+    // Under the ways (laid after), and the ground's own swells (craters, hills, dunes) before what stands on it
+    // (ruins, a marsh's reeds), so a dune never lies over a ruin (the owner, 2026-11-07).
+    for (const pass of [0, 1])
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          const look = propCells.get(y * width + x);
+          if (!look || wetCell[y * width + x]) continue;
+          if ((look === "ruins" || look === "marsh") !== (pass === 1)) continue;
+          const noise = cellNoise(x, y);
+          // Hills stand apart (a slope every cell reads as a heap of lumps), the rest about two cells in three.
+          if (noise(63) >= (look === "hills" ? 0.35 : 0.65)) continue;
+          // A large one spills half a cell round it, so never beside water (its pools would lie over the lake).
+          let shore = false;
+          for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (wetAt(x + dx, y + dy)) shore = true;
+          const large = !shore && noise(62) < 0.55;
+          let piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
+          // A hill field's last pieces are boulder piles: one in four of them stays, the rest are mounds.
+          if (look === "hills" && piece % 4 === 3 && noise(60) < 0.75) piece -= 1 + Math.floor(noise(59) * 3);
+          inSeason(x, y);
+          drawTile.piece(
+            ctx,
+            WORLD_PROP_LOOK_TILES[look as keyof typeof WORLD_PROP_LOOK_TILES],
+            piece,
+            x * OVERWORLD_TILE,
+            y * OVERWORLD_TILE,
+            noise(66),
+          );
+        }
     // Ways over open ground: as road cells with joined road pieces (laid corner to corner) or road edge
     // tiles, else drawn as lines.
     const roadJoined = drawTile.hasPiece("road_joined", 0);
@@ -706,10 +736,94 @@ export function WorldOverworld({
       }
       paintWay(ctx, from.at, to.at, crosses);
     }
+    // Lanes through built-up ground (the owner, 2026-11-07: "tiny roads centralizing around the city ... like a
+    // highway system"), joining the roads they branch from.
+    const lanes = new Set<number>();
+    // Its own lane art where the pack has it, else the town path.
+    const laneId = drawTile.hasPiece("lane_joined", 0) ? "lane_joined" : "path_joined";
+    if (builtCells.size && drawTile.hasPiece(laneId, 0)) {
+      // Ring streets round each town (the owner, 2026-11-07, of spokes and then of branches: "don't look very
+      // good ... both the tile and the shape"): a lane runs round the town two cells out through its built-up
+      // ground (a big town's built-up ground reaches a second ring four cells out), so the main roads cross the
+      // rings and no lane is a stub into empty ground.
+      const AXES = [
+        [1, 0],
+        [0, 1],
+        [-1, 0],
+        [0, -1],
+      ] as const;
+      const placeAt = new Set(world.places.map((place) => place.at.y * width + place.at.x));
+      const builtAt = (x: number, y: number) =>
+        x >= 0 && y >= 0 && x < width && y < height && builtCells.has(y * width + x) && !wetCell[y * width + x];
+      const wayAt = (x: number, y: number) =>
+        x >= 0 && y >= 0 && x < width && y < height && (lanes.has(y * width + x) || roads.has(y * width + x));
+      for (const place of world.places) {
+        if (place.rank === undefined) continue;
+        const { x: cx, y: cy } = place.at;
+        for (const radius of [2, 4]) {
+          // The ring's cells in order round the square.
+          const ring: Array<[number, number]> = [];
+          for (let i = -radius; i < radius; i++) ring.push([cx + i, cy - radius]);
+          for (let i = -radius; i < radius; i++) ring.push([cx + radius, cy + i]);
+          for (let i = radius; i > -radius; i--) ring.push([cx + i, cy + radius]);
+          for (let i = radius; i > -radius; i--) ring.push([cx - radius, cy + i]);
+          // A ring mostly through built-up ground, run on round the town through its fields too (not water).
+          const built = ring.filter(([x, y]) => builtAt(x, y) || roads.has(y * width + x)).length;
+          if (built < ring.length * 0.5) continue;
+          const on = ring.map(
+            ([x, y]) =>
+              x >= 0 && y >= 0 && x < width && y < height && !wetCell[y * width + x] && !placeAt.has(y * width + x),
+          );
+          // Its arcs: runs round the ring between water, each kept only where a road crosses or meets it (a
+          // whole ring is a loop the roads cross).
+          const start = on.indexOf(false);
+          if (start < 0) {
+            for (const [x, y] of ring) if (!roads.has(y * width + x)) lanes.add(y * width + x);
+            continue;
+          }
+          let arc: Array<[number, number]> = [];
+          const close = () => {
+            // Road to road: the ends trimmed back to where a road meets it, so no end runs on into nothing.
+            const meets = ([x, y]: [number, number]) =>
+              roads.has(y * width + x) || AXES.some(([ax, ay]) => roads.has((y + ay) * width + x + ax));
+            const first = arc.findIndex(meets);
+            const last = arc.findLastIndex(meets);
+            const run = arc.slice(first, last + 1);
+            const own = run.filter(([x, y]) => !roads.has(y * width + x));
+            // Nor a hook between two bends of one road.
+            const span =
+              first < 0 ? 0 : Math.abs(arc[first]![0] - arc[last]![0]) + Math.abs(arc[first]![1] - arc[last]![1]);
+            if (own.length >= 3 && span >= 4) for (const [x, y] of own) lanes.add(y * width + x);
+            arc = [];
+          };
+          for (let k = 1; k <= ring.length; k++) {
+            const i = (start + k) % ring.length;
+            if (on[i]) arc.push(ring[i]!);
+            else close();
+          }
+        }
+      }
+      // No two-by-two of way: a lane cell that squares with its neighbours goes.
+      for (const at of [...lanes]) {
+        const [x, y] = [at % width, Math.floor(at / width)];
+        if (
+          [
+            [-1, -1],
+            [1, -1],
+            [-1, 1],
+            [1, 1],
+          ].some(([sx, sy]) => wayAt(x + sx!, y) && wayAt(x, y + sy!) && wayAt(x + sx!, y + sy!))
+        )
+          lanes.delete(at);
+      }
+      for (const at of roads) lanes.delete(at);
+    }
     if (roads.size && roadJoined) {
       // Flat on the ground, each road cell's pieces by its road neighbours; pieces that spill past their
       // cells (the diagonal ones) after the rest.
-      const isRoad = (x: number, y: number) => x >= 0 && y >= 0 && x < width && y < height && roads.has(y * width + x);
+      // A lane counts as a neighbour, so the road opens a junction toward it.
+      const isRoad = (x: number, y: number) =>
+        x >= 0 && y >= 0 && x < width && y < height && (roads.has(y * width + x) || lanes.has(y * width + x));
       const spilling: Array<() => void> = [];
       for (const at of roads) {
         const [x, y] = [at % width, Math.floor(at / width)];
@@ -726,53 +840,7 @@ export function WorldOverworld({
       }
       for (const drawPieces of spilling) drawPieces();
     } else if (roads.size) edgePass("road", (x, y) => roads.has(y * width + x));
-    // Lanes through built-up ground (the owner, 2026-11-07: "tiny roads centralizing around the city ... like a
-    // highway system"): from each settlement out along the eight ways as far as its built-up ground runs,
-    // drawn as the pack's path, joining the roads they meet.
-    const lanes = new Set<number>();
-    // Its own lane art where the pack has it, else the town path.
-    const laneId = drawTile.hasPiece("lane_joined", 0) ? "lane_joined" : "path_joined";
     if (builtCells.size && drawTile.hasPiece(laneId, 0)) {
-      // One hub to a cluster: a settlement's lanes only where no larger one (or an equal one listed first)
-      // stands within three cells, so a city of neighbouring places is not cut into a grid.
-      const hubs = world.places.filter(
-        (place, index) =>
-          place.rank !== undefined &&
-          !world.places.some(
-            (other, otherIndex) =>
-              other !== place &&
-              other.rank !== undefined &&
-              Math.max(Math.abs(other.at.x - place.at.x), Math.abs(other.at.y - place.at.y)) <= 3 &&
-              (other.rank > place.rank! || (other.rank === place.rank && otherIndex < index)),
-          ),
-      );
-      for (const place of hubs) {
-        const builtAt = (x: number, y: number) =>
-          x >= 0 && y >= 0 && x < width && y < height && builtCells.has(y * width + x) && !wetCell[y * width + x];
-        let near = false;
-        for (let dy = -2; dy <= 2; dy++)
-          for (let dx = -2; dx <= 2; dx++) if (builtAt(place.at.x + dx, place.at.y + dy)) near = true;
-        if (!near) continue;
-        for (const [dx, dy] of [
-          [1, 0],
-          [-1, 0],
-          [0, 1],
-          [0, -1],
-          [1, 1],
-          [1, -1],
-          [-1, 1],
-          [-1, -1],
-        ] as const)
-          for (let k = 1; k <= 8; k++) {
-            const [x, y] = [place.at.x + dx * k, place.at.y + dy * k];
-            if (!builtAt(x, y)) {
-              if (k > 1) break;
-              continue;
-            }
-            lanes.add(y * width + x);
-          }
-      }
-      for (const at of roads) lanes.delete(at);
       const joins = (x: number, y: number) =>
         x >= 0 && y >= 0 && x < width && y < height && (lanes.has(y * width + x) || roads.has(y * width + x));
       for (const at of lanes) {
@@ -1024,32 +1092,6 @@ export function WorldOverworld({
         if (noise(61) >= 0.2 || !inner(x, y) || nearWay(x, y) || propCells.has(y * width + x)) continue;
         inSeason(x, y);
         drawTile(ctx, `decor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(67));
-      }
-    // Props over their ground (crater scars, ruins, a marsh's pools and reeds): about two cells in three, half
-    // of them large (two cells by two, spilling onto their neighbours).
-    for (let y = 0; y < height; y++)
-      for (let x = 0; x < width; x++) {
-        const look = propCells.get(y * width + x);
-        if (!look || wetCell[y * width + x]) continue;
-        const noise = cellNoise(x, y);
-        // Hills stand apart (a slope every cell reads as a heap of lumps), the rest about two cells in three.
-        if (noise(63) >= (look === "hills" ? 0.35 : 0.65)) continue;
-        // A large one spills half a cell round it, so never beside water (its pools would lie over the lake).
-        let shore = false;
-        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (wetAt(x + dx, y + dy)) shore = true;
-        const large = !shore && noise(62) < 0.55;
-        let piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
-        // A hill field's last pieces are boulder piles: one in four of them stays, the rest are mounds.
-        if (look === "hills" && piece % 4 === 3 && noise(60) < 0.75) piece -= 1 + Math.floor(noise(59) * 3);
-        inSeason(x, y);
-        drawTile.piece(
-          ctx,
-          WORLD_PROP_LOOK_TILES[look as keyof typeof WORLD_PROP_LOOK_TILES],
-          piece,
-          x * OVERWORLD_TILE,
-          y * OVERWORLD_TILE,
-          noise(66),
-        );
       }
     // Ruins where history says a place stood and fell (the owner, 2026-11-07: does their placement "make
     // sense ... there was a civilization there at some point?"): a cluster round each lost place, on open
