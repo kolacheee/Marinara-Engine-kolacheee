@@ -93,7 +93,11 @@ function worldBeyond(game: Parameters<typeof worldGroundLooks>[0], world: Parame
       count.set(cell, (count.get(cell) ?? 0) + 1);
     }
   const cell = [...count].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]?.[0] ?? 0;
-  const wet = (game.kit.terrain?.find((entry) => entry.id === world.terrain[cell])?.kind ?? "open") === "water";
+  // An Earth world (the Earth seed) is cut from real land: its border is the real coast, never a ragged
+  // one drawn over it.
+  const wet =
+    !game.brief.earth &&
+    (game.kit.terrain?.find((entry) => entry.id === world.terrain[cell])?.kind ?? "open") === "water";
   return { look: looks[cell] ?? looks[0]!, wet };
 }
 

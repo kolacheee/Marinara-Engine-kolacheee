@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { useTranslation as useUiTranslation } from "react-i18next";
 import { Download, Shuffle, Sparkles } from "lucide-react";
 import {
+  WORLD_EARTH_AREAS,
   WORLD_GENERATOR_VERSION,
   worldGeneratorReads,
   checkStoryScript,
@@ -25,6 +26,7 @@ import {
   type WorldCanonMore,
   type WorldBriefInput,
   type WorldBriefPlace,
+  type WorldEarth,
   type WorldKit,
   gameWorldFromSnapshot,
   worldSnapshot,
@@ -53,6 +55,9 @@ export interface WorldDraft {
   canonMore?: WorldCanonMore;
   /** The brief the model wrote, as the player has changed it; null until one is written. */
   brief: WorldBriefInput | null;
+  /** The Earth seed: the world is the real Earth, around the brief's real places or the named area, in a
+   *  year for a historical setting. Absent for a world drawn from the seed. */
+  earth?: { area?: string; year?: number };
   /** The hand edits (worldgen W9c) of a world read from a file, and the seed, grounding and brief they
    *  were made for: kept while those stay as they are and the edits fit them. */
   edits?: WorldEdits;
@@ -130,6 +135,15 @@ export const newWorldDraft = (): WorldDraft => ({
   brief: null,
 });
 
+/** The brief of a draft none has been written for yet: the kit and the lore alone. */
+const emptyBrief = (kit: WorldKit, draft: WorldDraft): WorldBriefInput => ({
+  briefVersion: 1 as const,
+  premise: kit.summary,
+  places: draft.canon,
+  placeNames: [],
+  events: draft.canonEvents ?? [],
+});
+
 /** The world a draft makes, or why it cannot be made yet. A draft with no brief yet is a world of the
  *  kit and the lore alone, with the kit's own summary as its premise. */
 export function worldDraftConfig(
@@ -183,13 +197,7 @@ export function worldDraftConfig(
       ...(draft.story && !storyFits ? { storyLeftOut: true as const } : {}),
     };
   }
-  const brief = draft.brief ?? {
-    briefVersion: 1 as const,
-    premise: kit.summary,
-    places: draft.canon,
-    placeNames: [],
-    events: draft.canonEvents ?? [],
-  };
+  const brief = draft.brief ?? emptyBrief(kit, draft);
   const checked = checkWorldBrief(kit, brief);
   if (!checked.ok) return { ok: false, issues: checked.issues };
   // Hand edits are made for one compile: they stay while they fit it, and are left out once the seed or
@@ -337,7 +345,7 @@ export function GameSetupWorldChooser({
         }),
     );
   const writeBrief = () =>
-    ask<{ brief: WorldBriefInput; repairs: string[] }>(
+    ask<{ brief: WorldBriefInput; repairs: string[]; earthMissing?: boolean }>(
       "brief",
       "/game/world-brief",
       {
@@ -347,15 +355,42 @@ export function GameSetupWorldChooser({
         canonEvents: draft!.canonEvents ?? [],
         canonMore: draft!.canonMore ?? {},
         grounding: draft!.grounding,
+        ...(draft!.earth ? { earth: draft!.earth } : {}),
       },
       (value, into) => {
         into.brief = value.brief;
       },
       (value) =>
-        value.repairs.length
-          ? t("game.world.setup.briefRepaired", { count: value.repairs.length })
-          : t("game.world.setup.briefWritten"),
+        value.earthMissing
+          ? t("game.world.setup.earthMissing")
+          : value.repairs.length
+            ? t("game.world.setup.briefRepaired", { count: value.repairs.length })
+            : t("game.world.setup.briefWritten"),
     );
+  // The Earth seed again, after the area, the year or the brief's places change.
+  const placeOnEarth = () =>
+    ask<{ earth: WorldEarth }>(
+      "brief",
+      "/game/world-earth",
+      {
+        kit,
+        ...(draft!.brief ? { brief: draft!.brief } : {}),
+        names: draft!.canon.map((place) => place.name),
+        ...(draft!.earth ?? {}),
+      },
+      (value, into) => {
+        into.brief = { ...(into.brief ?? emptyBrief(kit, into)), earth: value.earth };
+      },
+      (value) => t("game.world.setup.earthPlaced", { area: value.earth.area ?? "" }),
+    );
+  const setEarth = (on: boolean) =>
+    edit((next) => {
+      if (on) next.earth = next.earth ?? {};
+      else {
+        delete next.earth;
+        if (next.brief) delete next.brief.earth;
+      }
+    });
 
   const settlementsDepth = kit.layers.findIndex((layer) => layer.settlements);
   const sizeLabel = (id: string | undefined) => kit.sizes.find((size) => size.id === id)?.label ?? id ?? "";
@@ -437,6 +472,89 @@ export function GameSetupWorldChooser({
               {t("game.world.setup.download")}
             </button>
           </div>
+          {kit.scale === "sector" ? null : (
+            <div className="space-y-1.5">
+              <div className="flex flex-wrap items-end gap-2">
+                <div className="min-w-0 flex-1">
+                  <label htmlFor="world-earth" className={FIELD_LABEL}>
+                    {t("game.world.setup.earth")}
+                  </label>
+                  <select
+                    id="world-earth"
+                    value={draft.earth ? "earth" : "seed"}
+                    onChange={(event) => setEarth(event.target.value === "earth")}
+                    className={INPUT}
+                  >
+                    <option value="seed">{t("game.world.setup.earthDrawn")}</option>
+                    <option value="earth">{t("game.world.setup.earthReal")}</option>
+                  </select>
+                </div>
+                {draft.earth && (
+                  <>
+                    <div className="min-w-0 flex-1">
+                      <label htmlFor="world-earth-area" className={FIELD_LABEL}>
+                        {t("game.world.setup.earthArea")}
+                      </label>
+                      <select
+                        id="world-earth-area"
+                        value={draft.earth.area ?? ""}
+                        onChange={(event) =>
+                          edit((next) => {
+                            if (event.target.value) next.earth!.area = event.target.value;
+                            else delete next.earth!.area;
+                          })
+                        }
+                        className={INPUT}
+                      >
+                        <option value="">{t("game.world.setup.earthAreaAuto")}</option>
+                        {WORLD_EARTH_AREAS.map((area) => (
+                          <option key={area.id} value={area.id}>
+                            {area.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="w-36">
+                      <label htmlFor="world-earth-year" className={FIELD_LABEL}>
+                        {t("game.world.setup.earthYear")}
+                      </label>
+                      <input
+                        id="world-earth-year"
+                        inputMode="numeric"
+                        value={draft.earth.year ?? ""}
+                        onChange={(event) =>
+                          edit((next) => {
+                            const year = Number.parseInt(event.target.value, 10);
+                            if (Number.isFinite(year) && year >= -5000 && year <= 3000) next.earth!.year = year;
+                            else delete next.earth!.year;
+                          })
+                        }
+                        className={INPUT}
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => void placeOnEarth()}
+                      disabled={busy !== null}
+                      className={cn(
+                        GAME_SETUP_GHOST_BUTTON_CLASS,
+                        "ring-1 ring-[var(--border)] disabled:cursor-not-allowed disabled:opacity-50",
+                      )}
+                    >
+                      {t("game.world.setup.earthPlace")}
+                    </button>
+                  </>
+                )}
+              </div>
+              {draft.earth && (
+                <p className="text-[var(--muted-foreground)]">
+                  {draft.brief?.earth?.area
+                    ? t("game.world.setup.earthPlaced", { area: draft.brief.earth.area })
+                    : t("game.world.setup.earthHelp")}
+                </p>
+              )}
+            </div>
+          )}
           {config?.ok && config.world.edits && (
             <p className="text-[var(--muted-foreground)]">{t("game.world.setup.handEdits")}</p>
           )}
