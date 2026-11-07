@@ -298,6 +298,9 @@ export interface MarinaraCardClassic {
   tree?: MarinaraArchetype;
   strong?: MarinaraStat[];
   weak?: MarinaraStat;
+  /** Set once the card's guided MRPG builder was finished, so the card shows its picks and not the
+   *  builder, even when every pick was left on Auto. */
+  built?: true;
 }
 
 export const MARINARA_CLASSIC_STRONG_PICKS = 2;
@@ -305,7 +308,7 @@ export const MARINARA_CLASSIC_STRONG_PICKS = 2;
 /** The card's Classic picks, cleaned: unknown trees and stats dropped, a weak stat never also strong. */
 export function readMarinaraCardClassic(value: unknown): MarinaraCardClassic | undefined {
   if (!value || typeof value !== "object") return undefined;
-  const raw = value as { tree?: unknown; strong?: unknown; weak?: unknown };
+  const raw = value as { tree?: unknown; strong?: unknown; weak?: unknown; built?: unknown };
   const isStat = (one: unknown): one is MarinaraStat =>
     typeof one === "string" && (MARINARA_STATS as readonly string[]).includes(one);
   const tree =
@@ -316,8 +319,14 @@ export function readMarinaraCardClassic(value: unknown): MarinaraCardClassic | u
   const strong = Array.isArray(raw.strong)
     ? [...new Set(raw.strong.filter(isStat))].filter((stat) => stat !== weak).slice(0, MARINARA_CLASSIC_STRONG_PICKS)
     : [];
-  if (!tree && !weak && strong.length === 0) return undefined;
-  return { ...(tree ? { tree } : {}), ...(strong.length ? { strong } : {}), ...(weak ? { weak } : {}) };
+  const built = raw.built === true;
+  if (!tree && !weak && strong.length === 0 && !built) return undefined;
+  return {
+    ...(tree ? { tree } : {}),
+    ...(strong.length ? { strong } : {}),
+    ...(weak ? { weak } : {}),
+    ...(built ? { built: true as const } : {}),
+  };
 }
 
 /** How the card's strong and weak picks lean each stat, for the hidden aptitudes. */

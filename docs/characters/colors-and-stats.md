@@ -68,15 +68,17 @@ A persona **Stats** tab has two separate blocks, each with its own switch.
 
 ### MRPG picks on a card
 
-Both **Stats** tabs have a **Game Mode** section with an **MRPG** block, for games on MRPG classes (every new game). A game rolls each character's MRPG stats afresh, so the card holds no numbers, only three picks:
+Both **Stats** tabs have a **Game Mode** section with an **MRPG** block, for games on MRPG classes (every new game). A game rolls each character's MRPG stats afresh, so the card holds no numbers, only three picks. A guided builder asks for them one step at a time:
 
-- **Starting tree**: the tree the character starts in. **Auto** reads it from the card's description and personality, and shows which tree that gives.
-- **Strong in**: up to two stats the character grows well in.
-- **Weak in**: one stat they grow poorly in.
+1. **Tree**: the tree the character starts in. **Auto** reads it from the card's description and personality, and shows which tree that gives.
+2. **Strong in**: up to two stats the character grows well in. Each stat says what it does.
+3. **Weak in**: one stat they grow poorly in, or none.
+4. **Story** (character cards only): the pools and attributes described above. Roleplay chats and Legacy games use them. An MRPG game uses the class block instead and never builds a sheet from them.
+5. **Review**: the class a new game starts them as, at level 1, with its row, every stat, MP and Stamina.
 
-The block previews the class a new game starts them as, at level 1, with its row and starting HP, MP and Stamina. The strong and weak picks lean the character's hidden growth in each game. Their sister tree comes from their temperament in the game, not from the card. See [Game Mode: MRPG Classes](../game/mrpg-classes.md#choose-a-characters-trees).
+Every pick is kept as you make it, and **Back**, **Next** and the step names move between steps. Click **Finish** on the last step. The block then shows the review: the starting class and its stats, with the strong and weak ones marked, and a **Story stats** row. Click **Edit** to run the builder again, or the **Story stats** row to go straight to that step. Save the card as usual to keep the changes.
 
-On a character card, **Story stats** below it folds away the pools and attributes described above. Roleplay chats and Legacy games use them. An MRPG game uses the class block instead and never builds a sheet from them.
+The strong and weak picks lean the character's hidden growth in each game. Their sister tree comes from their temperament in the game, not from the card. See [Game Mode: MRPG Classes](../game/mrpg-classes.md#choose-a-characters-trees).
 
 ### Game Mode Icon
 
