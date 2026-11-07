@@ -26,11 +26,13 @@ export const TILE_PACK_CLEAR = ".";
 export const TILE_PACK_MAX_VARIANTS = 8;
 /** The largest share file the Engine reads: a drawn pack, and an image pack. */
 export const TILE_PACK_MAX_BYTES = 1_000_000;
-export const TILE_PACK_IMAGE_MAX_BYTES = 6_000_000;
+// Doubled 2026-11-07: the built-in packs outgrew 6 MB and 16.7 M pixels once the overworld moved to props
+// (buildings, ruins, farmsteads) over plain ground, four seasons each.
+export const TILE_PACK_IMAGE_MAX_BYTES = 12_000_000;
 /** A whole image pack's file: its sheets, and room for its names and tiles beside them. */
 export const TILE_PACK_IMAGE_FILE_MAX_BYTES = TILE_PACK_IMAGE_MAX_BYTES + 300_000;
 /** The most pixels an image pack's sheets hold together (what a browser decodes to draw them). */
-export const TILE_PACK_IMAGE_MAX_PIXELS = 16_777_216;
+export const TILE_PACK_IMAGE_MAX_PIXELS = 33_554_432;
 /** An image pack's cells, in pixels: the fewest and the most. */
 export const TILE_PACK_IMAGE_CELL = [16, 96] as const;
 /** An image pack's sheets: how many, how big each is across and down, and the most cells a sprite spans. */
