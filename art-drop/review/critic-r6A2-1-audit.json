@@ -1,0 +1,313 @@
+{
+  "scope": [
+    "crater-prop-0",
+    "crater-prop-1",
+    "crater-prop-2",
+    "crater-prop-3",
+    "crater-prop-4",
+    "crater-prop-5",
+    "crater-prop-6",
+    "crater-prop-7"
+  ],
+  "previous_A2_verdict_exists": false,
+  "metrics": {
+    "crater-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "sha256": "e1d3e3cb6e12d56a03434bf7ca933425e5865c110c2041d6080b876891f0833a",
+      "visible_bbox": [
+        5,
+        6,
+        43,
+        43
+      ],
+      "alpha_ge_28_bbox": [
+        8,
+        8,
+        42,
+        41
+      ],
+      "visible_width_fraction": 0.792,
+      "visible_height_fraction": 0.771,
+      "alpha_values": [
+        0,
+        24,
+        52,
+        76,
+        100,
+        128,
+        148,
+        153,
+        166
+      ],
+      "non_neutral_visible_pixels": 0,
+      "max_alpha": 166,
+      "max_white_alpha": 153,
+      "max_black_alpha": 166,
+      "border_nonzero": 0
+    },
+    "crater-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "sha256": "20974e208efcb5a799a5b56614514a58b402fe90e8a6ea74ca84d62ed536b924",
+      "visible_bbox": [
+        5,
+        5,
+        43,
+        43
+      ],
+      "alpha_ge_28_bbox": [
+        6,
+        7,
+        41,
+        42
+      ],
+      "visible_width_fraction": 0.792,
+      "visible_height_fraction": 0.792,
+      "alpha_values": [
+        0,
+        24,
+        52,
+        76,
+        100,
+        128,
+        148,
+        153,
+        166
+      ],
+      "non_neutral_visible_pixels": 0,
+      "max_alpha": 166,
+      "max_white_alpha": 153,
+      "max_black_alpha": 166,
+      "border_nonzero": 0
+    },
+    "crater-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "sha256": "5adeb970b41393e7f44a7a63c41cd9387dd0177e1510147b11d460eecf6cacec",
+      "visible_bbox": [
+        5,
+        5,
+        43,
+        43
+      ],
+      "alpha_ge_28_bbox": [
+        7,
+        6,
+        40,
+        40
+      ],
+      "visible_width_fraction": 0.792,
+      "visible_height_fraction": 0.792,
+      "alpha_values": [
+        0,
+        24,
+        52,
+        76,
+        100,
+        128,
+        148,
+        153,
+        166
+      ],
+      "non_neutral_visible_pixels": 0,
+      "max_alpha": 166,
+      "max_white_alpha": 153,
+      "max_black_alpha": 166,
+      "border_nonzero": 0
+    },
+    "crater-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "sha256": "0a6ce7b5d51dda6ab343161ed6b56a01264c4615ca791456c4d83b0294abd529",
+      "visible_bbox": [
+        5,
+        5,
+        42,
+        43
+      ],
+      "alpha_ge_28_bbox": [
+        7,
+        7,
+        40,
+        41
+      ],
+      "visible_width_fraction": 0.771,
+      "visible_height_fraction": 0.792,
+      "alpha_values": [
+        0,
+        24,
+        52,
+        76,
+        100,
+        128,
+        148,
+        153,
+        166
+      ],
+      "non_neutral_visible_pixels": 0,
+      "max_alpha": 166,
+      "max_white_alpha": 153,
+      "max_black_alpha": 166,
+      "border_nonzero": 0
+    },
+    "crater-prop-4": {
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "a47290057500c76295066280fbc2a71811356fa41e99388593b4042f69a46a49",
+      "visible_bbox": [
+        7,
+        7,
+        89,
+        89
+      ],
+      "alpha_ge_28_bbox": [
+        9,
+        8,
+        86,
+        88
+      ],
+      "visible_width_fraction": 0.854,
+      "visible_height_fraction": 0.854,
+      "alpha_values": [
+        0,
+        24,
+        52,
+        76,
+        100,
+        128,
+        148,
+        153,
+        166
+      ],
+      "non_neutral_visible_pixels": 0,
+      "max_alpha": 166,
+      "max_white_alpha": 153,
+      "max_black_alpha": 166,
+      "border_nonzero": 0
+    },
+    "crater-prop-5": {
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "ce1232db2910d6345a8d03e2d074df26255d25aaa90f752b92b4e1b4855a8c57",
+      "visible_bbox": [
+        7,
+        7,
+        89,
+        89
+      ],
+      "alpha_ge_28_bbox": [
+        9,
+        10,
+        86,
+        85
+      ],
+      "visible_width_fraction": 0.854,
+      "visible_height_fraction": 0.854,
+      "alpha_values": [
+        0,
+        24,
+        52,
+        76,
+        100,
+        128,
+        148,
+        153,
+        166
+      ],
+      "non_neutral_visible_pixels": 0,
+      "max_alpha": 166,
+      "max_white_alpha": 153,
+      "max_black_alpha": 166,
+      "border_nonzero": 0
+    },
+    "crater-prop-6": {
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "97431786e1345d9a4dd9eae01da09b841a4151efd308dc5e90c8000ef00a4561",
+      "visible_bbox": [
+        7,
+        7,
+        89,
+        89
+      ],
+      "alpha_ge_28_bbox": [
+        9,
+        9,
+        86,
+        88
+      ],
+      "visible_width_fraction": 0.854,
+      "visible_height_fraction": 0.854,
+      "alpha_values": [
+        0,
+        24,
+        52,
+        76,
+        100,
+        128,
+        148,
+        153,
+        166
+      ],
+      "non_neutral_visible_pixels": 0,
+      "max_alpha": 166,
+      "max_white_alpha": 153,
+      "max_black_alpha": 166,
+      "border_nonzero": 0
+    },
+    "crater-prop-7": {
+      "size": [
+        96,
+        96
+      ],
+      "sha256": "6e7ded271364b9582216553b61d0834047c479e7829d8a0b102aec6d97246702",
+      "visible_bbox": [
+        7,
+        7,
+        89,
+        89
+      ],
+      "alpha_ge_28_bbox": [
+        9,
+        9,
+        85,
+        86
+      ],
+      "visible_width_fraction": 0.854,
+      "visible_height_fraction": 0.854,
+      "alpha_values": [
+        0,
+        24,
+        52,
+        76,
+        100,
+        128,
+        148,
+        153,
+        166
+      ],
+      "non_neutral_visible_pixels": 0,
+      "max_alpha": 166,
+      "max_white_alpha": 153,
+      "max_black_alpha": 166,
+      "border_nonzero": 0
+    }
+  },
+  "random_seed_one_cell": 6201,
+  "random_seed_scatter": 6202
+}

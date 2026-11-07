@@ -1,0 +1,62 @@
+{
+  "sets": {
+    "crater_props_A2": {
+      "status": "pass",
+      "files": [
+        "crater-prop-0",
+        "crater-prop-1",
+        "crater-prop-2",
+        "crater-prop-3",
+        "crater-prop-4",
+        "crater-prop-5",
+        "crater-prop-6",
+        "crater-prop-7"
+      ],
+      "brief": "art-drop/BRIEF-6.md Part A2, including unchanged requirements inherited from Part A",
+      "previous_verdict": "art-drop/review/critic-r6A2-0.json does not exist; no prior A2 passes to preserve.",
+      "checks": {
+        "scope": "Only crater-prop-0 through crater-prop-7 receive verdicts. Other art is reference/calibration only.",
+        "required_dirt_and_snow": "All eight composited over out/wasteland-wasteland-base.png and out/wasteland-wasteland@winter-base.png and visually inspected at native 1x and nearest-neighbour 4x.",
+        "individual_8x": "All eight inspected at nearest-neighbour 8x over a neutral background; per-file dirt and snow detail sheets also saved. Additional isolated dirt/snow inspections used for the rim-light and cluster concerns.",
+        "random_one_cell_8x2": "Props 0-3 randomly arranged as a contiguous 8-column by 2-row field on dirt and snow, inspected at 1x and 4x. No clipping or sprite-edge seams. Repeated instances are detectable at this artificial density, but the four silhouettes remain distinct and no enclosing tile frame appears.",
+        "placement_and_repeat": "All eight tested in identical seeded jittered layouts on dirt and snow at 1x and 4x, including the 96px sprites centred on cell centres and spilling beyond a cell. No square boundary or regular stamp grid in the sprites.",
+        "dimensions_and_fill": "0-3 are RGBA 48x48 with nonzero-alpha extents approximately 77-79% of each axis; 4-7 are RGBA 96x96 with 85.4% extents on both axes. These meet the approximate 80%/85% fill requirement.",
+        "shading_and_alpha": "All visible source pixels are neutral (R=G=B); brightest white alpha reaches 153/255 (60%), darkest black alpha reaches 166/255 (65%). Multiple discrete alpha levels produce bowl gradients and fading aprons. All outermost borders are fully transparent.",
+        "pixel_quality": "No resampling blur, uncontrolled anti-aliasing, chromatic fringe, stray opaque border, or incompatible outline weight found. Stepped partial-alpha apron levels are intentional shading required by the brief.",
+        "lighting_and_palette": "Top-left rim lighting and upper-left interior shadow/lighter opposite bowl are consistent with a hollow under top-left light. Neutral shading inherits dirt, green ground and blue-white snow colours rather than introducing a separate palette.",
+        "winter": "The shared sprites remain visible and retain rim/bowl depth on both wasteland snow and the approved winter grass. No blank winter version or season-specific silhouette mismatch applies.",
+        "clusters_and_duplicates": "Exactly two pit clusters: 3 and 7. Unequal sizes, irregular spacing and shared ejecta avoid an even Swiss-cheese texture. No near-duplicate pair warrants rejection; 4 and 6 share a family but have different outlines and ledges.",
+        "approved_context": "Compared with all six settings of approved markers; representative approved round-2 city, slums, industry, suburb, farmland and paddies; all seasonal grass/plains bases with all eight seasonal details. Ground composites additionally check grass, plains and winter grass at 1x/4x.",
+        "not_applicable": "Part A2 contains no seamless base textures, peaks/ridges, trees, ruins, city textures or autumn crowns. Therefore 3x3 base tiling, peak lattices/ranges, forest tree composites, egg-crate peaks, classical ruins, stamped cyberpunk streets, flat-orange autumn foliage and identical crowns are outside this verdict scope."
+      },
+      "reference_panels": [
+        "art-drop/reference/current-wasteland-wasteland.png",
+        "art-drop/reference/current-wasteland-craters.png",
+        "art-drop/reference/current-wasteland-scrub@winter.png",
+        "art-drop/reference/wasteland-ground.png"
+      ],
+      "per_file": {
+        "crater-prop-0": "Pass at 1x/4x and isolated 8x: compact, irregular bowl with a broken upper-left rim; stepped interior shading remains legible on dirt and snow. The near-round silhouette has enough edge damage and asymmetric rubble to avoid a clean moon-crater ring.",
+        "crater-prop-1": "Pass at 1x/4x and isolated 8x: a narrow diagonal blast gouge, distinct from 0 and 2; lit upper-left lip, graded hollow and tapered ejecta remain readable without a rectangular footprint.",
+        "crater-prop-2": "Pass at 1x/4x and isolated 8x: asymmetric open-sided scar with a short dark lower ejecta spur. Isolated dirt/snow and neutral-background checks confirm upper-left rim highlights and a lighter lower-right bowl; the lower-left highlight does not reverse the lighting.",
+        "crater-prop-3": "Pass at 1x/4x and isolated 8x: three unequal small pits form the first cluster. Their dark upper-left interiors and lighter floors survive on snow; the shared disturbed apron and differing sizes avoid an evenly punched Swiss-cheese pattern.",
+        "crater-prop-4": "Pass at 1x/4x and isolated 8x: large broad bowl with a broken, raised upper-left lip, internal ledges and short outward light/dark streaks. The graded floor reads as a depression, not a uniform black disc.",
+        "crater-prop-5": "Pass at 1x/4x and isolated 8x: elongated, connected double-lobed scar with an uneven saddle. Its strong diagonal silhouette is distinct from 4 and 6; the translucent apron fades without a pasted-on edge.",
+        "crater-prop-6": "Pass at 1x/4x and isolated 8x: angular, torn bowl with a high fractured upper-left edge and a lower-right ejecta fan. Its open, angular contour and interior cuts distinguish it from the rounder 4.",
+        "crater-prop-7": "Pass at 1x/4x and isolated 8x: the second cluster uses five unequal pits in a shared ragged apron, with varied shapes, depths and spacing. It stays a localized blast cluster rather than a regular perforated ground texture."
+      },
+      "evidence_prefix": "art-drop/review/critic-r6A2-1-"
+    }
+  },
+  "pass": [
+    "crater-prop-0",
+    "crater-prop-1",
+    "crater-prop-2",
+    "crater-prop-3",
+    "crater-prop-4",
+    "crater-prop-5",
+    "crater-prop-6",
+    "crater-prop-7"
+  ],
+  "fail": []
+}
