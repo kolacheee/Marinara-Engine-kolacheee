@@ -258,7 +258,7 @@ export function marinaraEquipmentForClass(
 export function marinaraGameWorldKit(metadata: Record<string, unknown> | null | undefined): WorldKit | null {
   const kit = gameWorldKitFromMetadata(metadata);
   const setup = (metadata?.gameSetupConfig ?? undefined) as { marinaraClasses?: unknown } | undefined;
-  if (!kit?.money || setup?.marinaraClasses !== true) return kit;
+  if (!kit?.money || setup?.marinaraClasses !== true || metadata?.gameRuleset != null) return kit;
   const cards = Array.isArray(metadata?.gameCharacterCards) ? (metadata!.gameCharacterCards as unknown[]) : [];
   const levels = cards.flatMap((card) => {
     const level = (card as { marinara?: { level?: unknown } } | null)?.marinara?.level;
