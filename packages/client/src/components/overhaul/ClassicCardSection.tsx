@@ -3,13 +3,14 @@
 //
 // MRPG stats are rolled fresh for every game, so the card holds no numbers: only the starting tree
 // (or Auto, read from the card's text) and up to two stats the character is strong in and one they
-// are weak in, which lean the hidden growth. The story stats for games without MRPG come last.
+// are weak in, which lean the hidden growth. The roleplay stats sit in their own section (owner
+// 2026-11-07: they are not Game Mode).
 //
 // Owner 2026-11-07: set up as a guided builder like the ruleset one, one question a step. Once
 // finished, the card shows the character as a new game starts them, with Edit to run the builder
 // again. Every pick saves as it is made, so leaving halfway loses nothing.
 // ──────────────────────────────────────────────
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   MARINARA_ARCHETYPES,
@@ -30,14 +31,12 @@ import {
 import { Check, ChevronLeft, ChevronRight, Pencil } from "lucide-react";
 import { cn } from "../../lib/utils";
 
-type BuilderStep = "tree" | "strong" | "weak" | "story" | "review";
+type BuilderStep = "tree" | "strong" | "weak" | "review";
 
 export function ClassicCardSection({
   value,
   onChange,
   description,
-  storyStats,
-  storySummary,
 }: {
   /** What the card stores (extensions.classic, or personaStats.classic). */
   value: unknown;
@@ -45,11 +44,6 @@ export function ClassicCardSection({
   onChange: (next: MarinaraCardClassic | undefined) => void;
   /** The card text an Auto starting tree is read from. */
   description: string;
-  /** The story-stat editor for games without MRPG, the builder's last question. A persona leaves it
-   *  out: its tracker bars count in every game, so its sheet stays open under this section. */
-  storyStats?: ReactNode;
-  /** One line on the story stats for the finished card ("Off", or the attributes it tracks). */
-  storySummary?: string;
 }) {
   const { t } = useTranslation();
   const classic = readMarinaraCardClassic(value) ?? {};
@@ -67,7 +61,7 @@ export function ClassicCardSection({
     ? t("game.combat.marinara.card.autoGuess", { tree: treeName(guessed) })
     : t("game.combat.marinara.card.autoNone", { tree: treeName("blade") });
 
-  const steps: BuilderStep[] = ["tree", "strong", "weak", ...(storyStats ? (["story"] as const) : []), "review"];
+  const steps: BuilderStep[] = ["tree", "strong", "weak", "review"];
   const at = Math.max(0, steps.indexOf(step));
   const stepLabel = (one: BuilderStep) => t(`game.combat.marinara.card.step.${one}`);
   // What each step holds now, under its name in the step list.
@@ -76,7 +70,6 @@ export function ClassicCardSection({
     if (one === "strong")
       return strong.length ? strong.map(statName).join(", ") : t("game.combat.marinara.card.nonePicked");
     if (one === "weak") return classic.weak ? statName(classic.weak) : t("game.combat.marinara.card.nonePicked");
-    if (one === "story") return storySummary ?? null;
     return null;
   };
 
@@ -97,8 +90,8 @@ export function ClassicCardSection({
     save({ ...classic, built: true });
     setEditing(false);
   };
-  const edit = (from: BuilderStep = "tree") => {
-    setStep(from);
+  const edit = () => {
+    setStep("tree");
     setEditing(true);
   };
 
@@ -166,7 +159,7 @@ export function ClassicCardSection({
             <span>{t("game.combat.marinara.card.title")}</span>
             <small>· {t("game.combat.marinara.card.note")}</small>
           </div>
-          <button type="button" className="ov-classic__edit" onClick={() => edit()}>
+          <button type="button" className="ov-classic__edit" onClick={edit}>
             <Pencil size={13} aria-hidden="true" />
             {t("game.combat.marinara.card.edit")}
           </button>
@@ -179,13 +172,6 @@ export function ClassicCardSection({
           {statGrid}
           <p className="ov-classic__help">{t("game.combat.marinara.card.help")}</p>
         </div>
-        {storyStats ? (
-          <button type="button" className="ov-classic__row" onClick={() => edit("story")}>
-            <span>{t("game.combat.marinara.card.story")}</span>
-            <small>{storySummary}</small>
-            <ChevronRight size={14} aria-hidden="true" />
-          </button>
-        ) : null}
       </div>
     );
   }
@@ -248,8 +234,6 @@ export function ClassicCardSection({
       <div className="ov-classic__choices">{statTiles("strong")}</div>
     ) : step === "weak" ? (
       <div className="ov-classic__choices">{statTiles("weak")}</div>
-    ) : step === "story" ? (
-      <div className="ov-classic__story">{storyStats}</div>
     ) : (
       <div className="ov-classic__card">
         {identity}

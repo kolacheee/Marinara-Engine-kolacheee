@@ -9949,34 +9949,6 @@ input.ov-edhead__title:focus {
   color: var(--ov-dim);
   font-size: 0.75rem;
 }
-.ov-classic__row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--ov-line);
-  border-radius: 0.875rem;
-  color: var(--ov-text);
-  font-size: 0.8125rem;
-  text-align: left;
-}
-.ov-classic__row:hover {
-  background: var(--ov-hover);
-}
-.ov-classic__row small {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  color: var(--ov-dim);
-  font-size: 0.75rem;
-  text-align: right;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.ov-classic__row svg {
-  flex: none;
-  color: var(--ov-dim);
-}
 
 /* Connections: On this device rows (built-in model, local voice engines). */
 .ov-conn__device .ov-conn__acct b {
