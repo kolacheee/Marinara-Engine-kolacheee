@@ -461,6 +461,8 @@ console.log("game-marinara-items (equipping) passed");
   assert.deepEqual(marinaraGameWorldKit(plainMeta)?.shop, kit.shop);
   const meta = { gameWorldKit: kit, gameSetupConfig: { marinaraClasses: true }, gameCharacterCards: [card(12)] };
   const classic = marinaraGameWorldKit(meta)!;
+  // A ruleset game's market stays its kit's own, whatever its MRPG switch says (every new game sets it).
+  assert.deepEqual(marinaraGameWorldKit({ ...meta, gameRuleset: { id: "dnd-5e" } })?.shop, kit.shop);
   assert.ok(classic.shop!.length > (kit.shop?.length ?? 0), "a Classic game's shop sells the tables' wares");
   const names = classic.shop!.map((thing) => thing.name.toLowerCase());
   assert.equal(new Set(names).size, names.length, "every ware has its own name");
