@@ -1,4 +1,4 @@
-# Character Colors and RPG Stats
+# Character Colors and Story Stats
 
 The **Colors** and **Stats** tabs appear in both the Character Editor and the Persona Editor. Colors change how a character or persona looks in chat. Stats set up values you can track, such as health or hunger.
 
@@ -52,7 +52,7 @@ The character and persona **Stats** tabs are laid out differently.
 
 ### Character stats
 
-A character has one switch, **Enable RPG Stats**. Off, nothing below is shown or sent. On, two sections appear:
+A character has one switch, **Enable story stats**. Off, nothing below is shown or sent. On, two sections appear:
 
 - **Pools** are named bars with a current value, a maximum and a color. New characters start with HP and MP, each at 100 of 100.
 - **Attributes** are named numbers. New characters start with STR, DEX, CON, INT, WIS and CHA, each at 10.
@@ -64,7 +64,7 @@ Click **Add** to create a pool or attribute, and the X on a row to remove it.
 A persona **Stats** tab has two separate blocks, each with its own switch.
 
 - **Persona Status Bars**, turned on with **Enable Persona Stats**, track physical and mental needs. The starter bars are Satiety, Energy, Hygiene and Mood, each at 100 of 100. Under **Status Bars**, each bar has a name, current value, maximum and color. Click **Add** to create one and the X to remove one.
-- **Enable RPG Attributes** works like a character card. It gives your persona **Pools** (starting with HP and MP at 100 of 100) and **Attributes** (starting with STR, DEX, CON, INT, WIS and CHA at 10).
+- **Enable story stats** works like a character card. It gives your persona **Pools** (starting with HP and MP at 100 of 100) and **Attributes** (starting with STR, DEX, CON, INT, WIS and CHA at 10).
 
 ### MRPG picks on a card
 
@@ -76,7 +76,7 @@ Both **Stats** tabs have a **Game Mode** section with an **MRPG** block, for gam
 
 The block previews the class a new game starts them as, at level 1, with its row and starting HP, MP and Stamina. The strong and weak picks lean the character's hidden growth in each game. Their sister tree comes from their temperament in the game, not from the card. See [Game Mode: MRPG Classes](../game/mrpg-classes.md#choose-a-characters-trees).
 
-On a character card, **Story stats for Legacy games** below it folds away the RPG attributes described above. Only Legacy games use them.
+On a character card, **Story stats** below it folds away the pools and attributes described above. Roleplay chats and Legacy games use them. An MRPG game uses the class block instead and never builds a sheet from them.
 
 ### Game Mode Icon
 
@@ -107,7 +107,7 @@ Some rulesets ship ready-made spells, attacks and features. Lists they fill have
 
 A sheet for a ruleset you do not have installed is kept. It shows as one line with a **Remove** button, is never sent to the AI, becomes editable again when you install that ruleset, and travels with the card when you export it. A sheet for an installed ruleset that this version cannot read, such as one saved by a newer version, is also kept as it is. Its entry offers **Remove this sheet** only, so a new sheet can never overwrite it by accident. Each sheet is limited to 64 KB.
 
-Ruleset sheets are separate from **Enable RPG Stats** and **Enable RPG Attributes**. A game on Marinara's own rules ignores them. A game on a ruleset uses the sheet instead of the Attributes above for its checks.
+Ruleset sheets are separate from **Enable story stats**. A game on Marinara's own rules ignores them. A game on a ruleset uses the sheet instead of the Attributes above for its checks.
 
 ## How agents update your stats
 
@@ -117,7 +117,7 @@ The **Stats** tab sets the chat's starting state. Agents update only tracker-own
 | --- | --- |
 | Character **Pools** such as HP | The **Character Tracker** agent, from combat, healing and story events. It does not track the player's persona. |
 | **Persona Status Bars** | The **Persona Stats** agent, after each message. |
-| **RPG Attributes** such as STR and DEX | No agent. They are sent with the card for combat and Game Mode, and for optional rolls in Roleplay or Game Mode. |
+| **Story stats** such as STR and DEX | No agent. They are sent with the card for combat and Game Mode, and for optional rolls in Roleplay or Game Mode. |
 
 If you do not turn on the matching agent, tracker-owned values stay at the defaults you set. The **Stats** tab alone updates nothing during play. To turn these agents on, see [Downloadable Agents Reference](../agents/built-in-agents.md).
 
