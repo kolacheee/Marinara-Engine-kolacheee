@@ -1,0 +1,400 @@
+{
+  "sets": {
+    "_review": {
+      "scope": "BRIEF-10.md Part 3 only: jazz_age street bases; city 0..15; slums 0..11; industry 0..9; summer and winter. Approved assets are comparison material, not review targets.",
+      "file_count": 78,
+      "pass_count": 43,
+      "fail_count": 35,
+      "calibration": "Ship beside approved art. Intentional weathering and small-scale simplification are allowed; failures identify repeat landmarks, lost structural readability or excessive high-contrast fragmentation, not a demand for smooth or perfect geometry.",
+      "prior_review": "art-drop/review/critic-r103-0.json does not exist; no inherited pass decisions.",
+      "checks": {
+        "base_3x3": "Both full repeats inspected at 1x and 4x, plus wrap-cross enlargements; base files also inspected at 8x.",
+        "dense_to_sparse": "All three categories in both seasons composited on the corresponding street base, dense through sparse, and inspected at 1x and 4x.",
+        "one_cell_random_8x2": "All three 48x48 categories in both seasons inspected in seeded random 8-across, 2-down composites at 1x and 4x. These are transparent building props, so separation between buildings is not itself a tiling defect.",
+        "individual_8x": "Every Part 3 file inspected at 8x; sprite pages use the full file extent, season/category/size in filename and index labels. All sprites also inspected on street contact sheets at 1x and 4x.",
+        "technical": "All 78 required files present. Dimensions correct; both bases fully opaque; all 76 sprites binary alpha only, bottom aligned with 2 transparent rows and centred within reasonable pixel tolerance. Exterior boundary pixels use the same dark outline colour. No blur, alpha antialiasing, matte fringe, halo, clipped canvas edge, blank winter, exact duplicate or material lighting/palette clash found.",
+        "diversity": "Reviewed side by side within city, slums and industry. Distinct silhouettes/uses; the repeated copies in random composites are deliberate test placements, not extra source variants.",
+        "references": "Viewed reference/jazz_age-marker0..3.png and reference/jazz_age-house.png, plus approved out markers, round-2 city/slums/industry summer/winter, all seasonal paddies, and grass/plains bases and details. Additional marker-density comparison plates show approved jazz_age markers beside Part 3 buildings.",
+        "not_applicable": "Part 3 has no peaks, craters, ruins, cyberpunk tiles, autumn assets or tree sprites. Peak lattice/range, forest tree composition, egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grid, flat orange autumn and identical crowns are not applicable; no assets outside Part 3 were given pass/fail verdicts."
+      },
+      "composite_prefix": "art-drop/review/critic-r103-1-",
+      "source_sha256": {
+        "jazz_age-city-bldg-0": "9aab288c205b14fd1e157731a20340e24894e2dc0d512270776fc5ce6c27b72d",
+        "jazz_age-city-bldg-1": "ef3e898a82d99ffbdc572d07a59d3b6b900e358d649068098a9947a965adf2cd",
+        "jazz_age-city-bldg-10": "0e8ae3a5c656b2f4e62f5f702f2d142e7ded151b0d6831a4a3c516977b2e3a7f",
+        "jazz_age-city-bldg-11": "4d7d4cc0ec672f9805c94883a5a69c24332d6c2260dd7746d5d824fb9f535570",
+        "jazz_age-city-bldg-12": "67e6b65e28e2d9d61df9c7bfd574790ce4e5acf484cb76733cb50cfc657d883d",
+        "jazz_age-city-bldg-13": "db409532bdb3ff54cfdf419f3ac7b6cdac2421328a7791a6581ad3d0d12d5c2a",
+        "jazz_age-city-bldg-14": "9eca0e60d0e0b304de7c806b00d9a2fda5269438957aed10d4ccd75b6507b8e5",
+        "jazz_age-city-bldg-15": "ce985bdf4e6d10fbe999b70ffc87d5ad48d93fd7977d60c3ef4682f3172ee15d",
+        "jazz_age-city-bldg-2": "fced8e296de8f7499db75730bbb4f8c5118d7c64496be5a44ec006195859275a",
+        "jazz_age-city-bldg-3": "fa082914dbd406c2a84b71fd611f0e8a731d3f8520182b3e58a4756ab1f4ba31",
+        "jazz_age-city-bldg-4": "b83d3d45dffb7585ed38da5c657a6cc8e9ae3a163e1f9c2a0181046b868e30f5",
+        "jazz_age-city-bldg-5": "41f388fc74e1dfdfdc6f524bc20dc29ed707c41cda8bbcc8cf8462c882c75eac",
+        "jazz_age-city-bldg-6": "a3fd8e2e3f9132bdcfbacaf84f536f18cd1b3261cadd30679e3bd93a693791b3",
+        "jazz_age-city-bldg-7": "9664ea082db800738a52cf05e84de947757bdcbb9f00a160346be0a38a00d94d",
+        "jazz_age-city-bldg-8": "5b2ad637e8abf03231bcdf25bafcc230d6ca65f6029210f4875e9fceaf819d08",
+        "jazz_age-city-bldg-9": "078a2b3bd297680d9ccbaeab1161c4db3f15932af96994d6702691244692ed02",
+        "jazz_age-city@winter-bldg-0": "790aeb8dcf9e6d4fa96c2e1fd76d9e733b94a376f8cbf2064593fa9169ed491e",
+        "jazz_age-city@winter-bldg-1": "1f1a694ad0b600735cab9bf893f1d91262b8c713074c58f1ee370f2d6172f37c",
+        "jazz_age-city@winter-bldg-10": "69f00a6df2850a3c1bec5113e0c6a6b1099759612c52fd44c7283bbe9c9bf41a",
+        "jazz_age-city@winter-bldg-11": "03c35bbaf48e12ce18ae7c57c7d45d9dc17bba4330b254daaa457f26f16a8ae6",
+        "jazz_age-city@winter-bldg-12": "1d38d28abbfab6b1164b1434ca342e33cd29f2157e90d165f9be495f64097035",
+        "jazz_age-city@winter-bldg-13": "f0079eebc1749d94c1725769db36ee42983ce5083f28175d2c4c7b0b241e0fc4",
+        "jazz_age-city@winter-bldg-14": "de2504aa4798285a03a6b6ffc774b7eadb453b26a8c69ea73e33e673adb257b5",
+        "jazz_age-city@winter-bldg-15": "fbab9e18747e3438d22095ccd69cb17fdaf7694b55be6e33e12aefdaaa1cfbc4",
+        "jazz_age-city@winter-bldg-2": "f1ebb82d00122d91a0d944be5cac11dcf29e072b3bd0eb71dc3ecaee3cd57771",
+        "jazz_age-city@winter-bldg-3": "ee3efb2b4cb8ee42525da0521739b5eca974c98b9e24eb615400c4d5c28dd5da",
+        "jazz_age-city@winter-bldg-4": "887962e2e0cb281b6264403ccf1f4fd76e30ec95254bf5fbb8c16eb85db9d268",
+        "jazz_age-city@winter-bldg-5": "348674b2bdab4093bde5eeab59f9250f7176b71630d2ed2a40640ae44a0ec9a0",
+        "jazz_age-city@winter-bldg-6": "bfb7c6a01d43ff2353b7f4935322cc0b18715956d54ffb068bac9e1adf67dddb",
+        "jazz_age-city@winter-bldg-7": "b7fea43433e671dee28c015cf35cd31d1941ac260fbdd2f698b94b74d36b27e2",
+        "jazz_age-city@winter-bldg-8": "7175c72b19fe716c12b7f419469d78a985d70e7d1a0e8a071b85b041be8dfa4e",
+        "jazz_age-city@winter-bldg-9": "8ff211f2507535c45660f5e43408651be2382c0503aac7edfc9b6819f8eeaaf2",
+        "jazz_age-industry-bldg-0": "a717ca7fcd39ac2b4634e1147f64d31db234c513ce8858408cdf8fc2cd6389bd",
+        "jazz_age-industry-bldg-1": "5c65083658b13359c4b73c5f2300ab30df279b67079bb0a90a290bdefecf4a90",
+        "jazz_age-industry-bldg-2": "55185f8f40a2dd12bdceaf05da02d8c73b42187a9998844114e90c2c90898c17",
+        "jazz_age-industry-bldg-3": "a6382d4e54f18828c801a4bcd466e0bb79424a3c64b3d47ad6c9c2c23cb2ebfc",
+        "jazz_age-industry-bldg-4": "2ef02b386b69760551628a345574906b55ba66b5d4fbf8d00ed691fa7bf87c95",
+        "jazz_age-industry-bldg-5": "930f1050d03ff525d0dc249f1b6eb0cc443451feb32a792a46ca22a05d54987b",
+        "jazz_age-industry-bldg-6": "aa0b8dbc886e85864d2139beb71aa6572eaac53831064b23b8b6265d98198830",
+        "jazz_age-industry-bldg-7": "b9677cb2306b9d3f66fc503845588fe42a95d9b74e9e82a80fd8c3369bd56795",
+        "jazz_age-industry-bldg-8": "11b74922ab2f14265107a80930c0ea17f99611ce71575e7b917d5615463794c1",
+        "jazz_age-industry-bldg-9": "ca0fb33dba7280bc02ebf39742b2e48a11f7cc1306584c6764aa00bf34faa1ef",
+        "jazz_age-industry@winter-bldg-0": "68a55dc444dd41231728763d0fef910f2d0fdae6d906255980a79da8e9d120e8",
+        "jazz_age-industry@winter-bldg-1": "635663912e17a00a8ea558a776b9f5f84850dd2a32a11b30ca2be634242d75c1",
+        "jazz_age-industry@winter-bldg-2": "723e9a2ed1c0000bf3068b9b9e2c488191a721801b676c2722a62a68577e2d3a",
+        "jazz_age-industry@winter-bldg-3": "253969e3353ebe543b65ca7ac1125fc33542e1bc07a6024bdafd5a6ed052b981",
+        "jazz_age-industry@winter-bldg-4": "23ec1df717c646f85311fa8594d129b1172d4bb7c70bf2cc0c7b586732bc5bf7",
+        "jazz_age-industry@winter-bldg-5": "0fc2605e748ce37f91a18ff76bf4a5ed7d1ba7c4af8b69cb38c0a5279829ca4d",
+        "jazz_age-industry@winter-bldg-6": "3be96c57c47cf25ca801dae1f9feaf3390822f52ddbddff75d1b2fe6c04b9925",
+        "jazz_age-industry@winter-bldg-7": "6147256b70cef2a9a397f7215f9c5eae8387f05af980d0ee1b72bcb76bfc8699",
+        "jazz_age-industry@winter-bldg-8": "a37334ddaae9297c783fd9bec23fc6154765822441c9fa4192d57985029f71a2",
+        "jazz_age-industry@winter-bldg-9": "c304797ce8cb7fec511b63e247f574a3477b25a99d297020927347fb6b36b5b7",
+        "jazz_age-slums-bldg-0": "2cbaeadda996abb75329314a785e27955f50fc183214c32d1a14389d9e82f9c3",
+        "jazz_age-slums-bldg-1": "d99d29a883135b31b6b81ee4b3a4a856e2cebc9e9ccf77f0538f0f1719704da8",
+        "jazz_age-slums-bldg-10": "5779d8d556f5bbed2285139587bed7053d436db88c53606fb1052308f0e473fd",
+        "jazz_age-slums-bldg-11": "7813b89af19625752c994185462bab468a5e3fa801e2de54e5df38a4876d43ca",
+        "jazz_age-slums-bldg-2": "3d56d27d1197cc0cec42e1e800cc89168497be8b20eb7fdbf483da2be883be51",
+        "jazz_age-slums-bldg-3": "037e3f571073934e3ae5b2c15ec2dbcb1dddbd6e879a83ad2dc8c59449e67af1",
+        "jazz_age-slums-bldg-4": "56b8bf8119bfb3774788179829b1d57a25949fd9501f025eae83010d04bf99fa",
+        "jazz_age-slums-bldg-5": "1203b7a5ca904769277f338a5d024077fa80e6dfdef59a3bfa6daf2323153f2c",
+        "jazz_age-slums-bldg-6": "3a521de3f9753281079e1461c07317597446c5dbf54d3cdb69297f6f08d1b706",
+        "jazz_age-slums-bldg-7": "f9f32c8340ad5b0c2a14d7827e0e31d2b792fe473ecd113bf8765b0cddd8f35e",
+        "jazz_age-slums-bldg-8": "bc284e3097795b68d4fba770bf53f45c06ff0c712cf4dcd3aeeccedd38c6a88c",
+        "jazz_age-slums-bldg-9": "b555283e5b86742adffdcb1bed0216445bb3bde9f9881435cb8022d300920871",
+        "jazz_age-slums@winter-bldg-0": "6a96fb5efb0d50bef2a301ddaca7f0d282304aa77d94fd149c806a678be7c9d7",
+        "jazz_age-slums@winter-bldg-1": "f31364df5a1f6d0e641a1517271a4f438734b020e13df4e6bd1053c58d669b50",
+        "jazz_age-slums@winter-bldg-10": "ff3ecc252792f8eeb38d772d6f15bc6755971a5b2a1ad197de4cdcdbfcc1081c",
+        "jazz_age-slums@winter-bldg-11": "a10d00ef6a37f061844604b21b7e1b2367671943f3028a461b3c87b155d797da",
+        "jazz_age-slums@winter-bldg-2": "422c359c6fc3547eeb3c178b74aaed290bb2dc8eb082865ec134ba8f4a91b0cf",
+        "jazz_age-slums@winter-bldg-3": "6794deae2b01beaec78cae89c2fe15c2ec17a6e803baa0b41bf4970a50e62c13",
+        "jazz_age-slums@winter-bldg-4": "47e646c12be1e94bc46a009a1a749cf6209966625bcb44acfbabf734f506a3ca",
+        "jazz_age-slums@winter-bldg-5": "a763b0a9324e54dd594ade736b75bd88695ef7b894a4fbf8501ffefe7ad1bd09",
+        "jazz_age-slums@winter-bldg-6": "3ef15a29251be635f60effd49f81c23939a63a7ebdae98a9b3c1787d26f08fa8",
+        "jazz_age-slums@winter-bldg-7": "d2c966f19fee243bebc0d1e1f34ed539a8434a3b4f45f3bc763d997d423c1a7a",
+        "jazz_age-slums@winter-bldg-8": "befd41380275c4d24794b03f4e591a63e6445d9c852444a1729c24b4939c74d8",
+        "jazz_age-slums@winter-bldg-9": "31cf3ad2c2829376f054cdcfbb996d5966346170ff4be28d74e1aa04e01fde9a",
+        "jazz_age-street-base": "15d9827d6d9c0f95db257cfbb5366d0ad2236c2307c8ccf70820571e05f5a208",
+        "jazz_age-street@winter-base": "0a3ef450922b46dc5a7f0db4def40c45e5d71a416a5e2bd235384b2da048b8fe"
+      }
+    },
+    "jazz_age-street": {
+      "status": "fail",
+      "files": [
+        "jazz_age-street-base",
+        "jazz_age-street@winter-base"
+      ],
+      "pass_count": 0,
+      "fail_count": 2,
+      "assessment": "Edge joins have no hard border/frame; both fail because identifiable motifs repeat. Winter also fails the calm-background requirement."
+    },
+    "jazz_age-city": {
+      "status": "fail",
+      "files": [
+        "jazz_age-city-bldg-0",
+        "jazz_age-city-bldg-1",
+        "jazz_age-city-bldg-10",
+        "jazz_age-city-bldg-11",
+        "jazz_age-city-bldg-12",
+        "jazz_age-city-bldg-13",
+        "jazz_age-city-bldg-14",
+        "jazz_age-city-bldg-15",
+        "jazz_age-city-bldg-2",
+        "jazz_age-city-bldg-3",
+        "jazz_age-city-bldg-4",
+        "jazz_age-city-bldg-5",
+        "jazz_age-city-bldg-6",
+        "jazz_age-city-bldg-7",
+        "jazz_age-city-bldg-8",
+        "jazz_age-city-bldg-9",
+        "jazz_age-city@winter-bldg-0",
+        "jazz_age-city@winter-bldg-1",
+        "jazz_age-city@winter-bldg-10",
+        "jazz_age-city@winter-bldg-11",
+        "jazz_age-city@winter-bldg-12",
+        "jazz_age-city@winter-bldg-13",
+        "jazz_age-city@winter-bldg-14",
+        "jazz_age-city@winter-bldg-15",
+        "jazz_age-city@winter-bldg-2",
+        "jazz_age-city@winter-bldg-3",
+        "jazz_age-city@winter-bldg-4",
+        "jazz_age-city@winter-bldg-5",
+        "jazz_age-city@winter-bldg-6",
+        "jazz_age-city@winter-bldg-7",
+        "jazz_age-city@winter-bldg-8",
+        "jazz_age-city@winter-bldg-9"
+      ],
+      "pass_count": 14,
+      "fail_count": 18,
+      "assessment": "Palette, outline, placement and seasonal coverage pass. Failed files lose window/cornice/fire-escape structure or carry excessive facade fragmentation. Passing files retain a clear identity and coherent large shapes in both isolated and dense tests."
+    },
+    "jazz_age-slums": {
+      "status": "fail",
+      "files": [
+        "jazz_age-slums-bldg-0",
+        "jazz_age-slums-bldg-1",
+        "jazz_age-slums-bldg-10",
+        "jazz_age-slums-bldg-11",
+        "jazz_age-slums-bldg-2",
+        "jazz_age-slums-bldg-3",
+        "jazz_age-slums-bldg-4",
+        "jazz_age-slums-bldg-5",
+        "jazz_age-slums-bldg-6",
+        "jazz_age-slums-bldg-7",
+        "jazz_age-slums-bldg-8",
+        "jazz_age-slums-bldg-9",
+        "jazz_age-slums@winter-bldg-0",
+        "jazz_age-slums@winter-bldg-1",
+        "jazz_age-slums@winter-bldg-10",
+        "jazz_age-slums@winter-bldg-11",
+        "jazz_age-slums@winter-bldg-2",
+        "jazz_age-slums@winter-bldg-3",
+        "jazz_age-slums@winter-bldg-4",
+        "jazz_age-slums@winter-bldg-5",
+        "jazz_age-slums@winter-bldg-6",
+        "jazz_age-slums@winter-bldg-7",
+        "jazz_age-slums@winter-bldg-8",
+        "jazz_age-slums@winter-bldg-9"
+      ],
+      "pass_count": 14,
+      "fail_count": 10,
+      "assessment": "Weathered brick tenements and low patched shelters fit the setting. Failed files have unreadable structural tangles, beyond acceptable slum clutter. The passing shelters/blocks retain identifiable roofs, openings and supports at 1x."
+    },
+    "jazz_age-industry": {
+      "status": "fail",
+      "files": [
+        "jazz_age-industry-bldg-0",
+        "jazz_age-industry-bldg-1",
+        "jazz_age-industry-bldg-2",
+        "jazz_age-industry-bldg-3",
+        "jazz_age-industry-bldg-4",
+        "jazz_age-industry-bldg-5",
+        "jazz_age-industry-bldg-6",
+        "jazz_age-industry-bldg-7",
+        "jazz_age-industry-bldg-8",
+        "jazz_age-industry-bldg-9",
+        "jazz_age-industry@winter-bldg-0",
+        "jazz_age-industry@winter-bldg-1",
+        "jazz_age-industry@winter-bldg-2",
+        "jazz_age-industry@winter-bldg-3",
+        "jazz_age-industry@winter-bldg-4",
+        "jazz_age-industry@winter-bldg-5",
+        "jazz_age-industry@winter-bldg-6",
+        "jazz_age-industry@winter-bldg-7",
+        "jazz_age-industry@winter-bldg-8",
+        "jazz_age-industry@winter-bldg-9"
+      ],
+      "pass_count": 15,
+      "fail_count": 5,
+      "assessment": "Factory, sawtooth hall, silo and workshop silhouettes are suitably varied and match the brick/slate family. Fail the small trestle tower and muddy loading front in both seasons, plus the fragmented winter roof on industry-7. The remaining factories and utility sprites read clearly in the required composites."
+    }
+  },
+  "pass": [
+    "jazz_age-city-bldg-0",
+    "jazz_age-city-bldg-10",
+    "jazz_age-city-bldg-13",
+    "jazz_age-city-bldg-2",
+    "jazz_age-city-bldg-3",
+    "jazz_age-city-bldg-4",
+    "jazz_age-city-bldg-5",
+    "jazz_age-city@winter-bldg-0",
+    "jazz_age-city@winter-bldg-10",
+    "jazz_age-city@winter-bldg-13",
+    "jazz_age-city@winter-bldg-2",
+    "jazz_age-city@winter-bldg-3",
+    "jazz_age-city@winter-bldg-4",
+    "jazz_age-city@winter-bldg-5",
+    "jazz_age-industry-bldg-0",
+    "jazz_age-industry-bldg-2",
+    "jazz_age-industry-bldg-4",
+    "jazz_age-industry-bldg-5",
+    "jazz_age-industry-bldg-6",
+    "jazz_age-industry-bldg-7",
+    "jazz_age-industry-bldg-8",
+    "jazz_age-industry-bldg-9",
+    "jazz_age-industry@winter-bldg-0",
+    "jazz_age-industry@winter-bldg-2",
+    "jazz_age-industry@winter-bldg-4",
+    "jazz_age-industry@winter-bldg-5",
+    "jazz_age-industry@winter-bldg-6",
+    "jazz_age-industry@winter-bldg-8",
+    "jazz_age-industry@winter-bldg-9",
+    "jazz_age-slums-bldg-0",
+    "jazz_age-slums-bldg-1",
+    "jazz_age-slums-bldg-11",
+    "jazz_age-slums-bldg-3",
+    "jazz_age-slums-bldg-4",
+    "jazz_age-slums-bldg-6",
+    "jazz_age-slums-bldg-7",
+    "jazz_age-slums@winter-bldg-0",
+    "jazz_age-slums@winter-bldg-1",
+    "jazz_age-slums@winter-bldg-11",
+    "jazz_age-slums@winter-bldg-3",
+    "jazz_age-slums@winter-bldg-4",
+    "jazz_age-slums@winter-bldg-6",
+    "jazz_age-slums@winter-bldg-7"
+  ],
+  "fail": [
+    {
+      "name": "jazz_age-city-bldg-1",
+      "problems": "The narrow front loses its window structure: cream trim, grey panes and brick specks interlock into a mottled zigzag instead of distinct storeys. This remains muddy at 1x beside city-0 and the approved markers. Redraw the window openings as stable dark clusters, align their sills and suppress brick highlights immediately around them."
+    },
+    {
+      "name": "jazz_age-city-bldg-11",
+      "problems": "The front windows collapse into ochre/cream patches close in value to the trim, and the broken sills interrupt the floor rhythm. At 1x the facade becomes a ladder of light bands without clear window recesses. Give each opening a coherent darker interior, straighten the repeated lintels/sills and remove the pale pixels cutting through the panes."
+    },
+    {
+      "name": "jazz_age-city-bldg-12",
+      "problems": "The large Deco complex is much more stippled than the approved marker: its brick wing, vertical glazing and pale trim dissolve into interleaved light/dark flecks at 1x and 4x. Simplify the wing into clear window rows and uninterrupted masonry piers, straighten the tall recesses and reserve bright pixels for connected edges rather than scattered facade dots."
+    },
+    {
+      "name": "jazz_age-city-bldg-14",
+      "problems": "The courtyard block has excessive alternating cream/dark brick and window fragments across both wings and the rear wall. At 1x those surfaces turn into a crunchy mesh, obscuring the openings and courtyard depth. Flatten the wall midtones, rebuild bounded dark windows and connect the main cornice lines; preserve the courtyard silhouette rather than adding more tiny texture."
+    },
+    {
+      "name": "jazz_age-city-bldg-15",
+      "problems": "The station-like block has noisy, broken glazing: bright mullion chips and dark/ochre specks interrupt the tall central panes and the side windows. The front reads as a patterned mesh beside the approved Deco marker. Rebuild the three main glazed openings as continuous dark recesses with a small number of regular mullions, and quiet the adjacent brick texture."
+    },
+    {
+      "name": "jazz_age-city-bldg-6",
+      "problems": "The walk-up facade is overbroken: pale cornice fragments, brown window openings and tiny brick highlights compete across every floor. At 1x it reads as a vertically striped speckled slab. Restore continuous floor bands, consolidate each window into a dark opening and remove the isolated light masonry pixels between windows."
+    },
+    {
+      "name": "jazz_age-city-bldg-7",
+      "problems": "The defining Art Deco window strips are jagged checkerboard chains of white, blue-grey and dark pixels. They shimmer rather than read as straight recessed glazing, especially against the much cleaner long window strips in approved jazz_age-marker3. Make each recess continuous, with straight mullions and a consistent shadow edge; keep masonry texture off those strips."
+    },
+    {
+      "name": "jazz_age-city-bldg-8",
+      "problems": "The green-roofed block has inconsistent window openings: the upper and middle rows break into offset dark bites and pale fragments, while the right-hand stack merges with the corner trim. Rebuild aligned, bounded window clusters and clean continuous sills; reduce the facade flecks so the storeys read before the brick texture."
+    },
+    {
+      "name": "jazz_age-city-bldg-9",
+      "problems": "The central fire escape is a brown/gold knot of diagonals with no readable sequence of platforms and stair flights. It merges into the windows and brickwork at 1x. Redraw a simple connected zigzag with clear horizontal landings, a consistent rail value and negative space between the escape and the wall."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-1",
+      "problems": "The narrow front loses its window structure: cream trim, grey panes and brick specks interlock into a mottled zigzag instead of distinct storeys. This remains muddy at 1x beside city-0 and the approved markers. Redraw the window openings as stable dark clusters, align their sills and suppress brick highlights immediately around them. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-11",
+      "problems": "The front windows collapse into ochre/cream patches close in value to the trim, and the broken sills interrupt the floor rhythm. At 1x the facade becomes a ladder of light bands without clear window recesses. Give each opening a coherent darker interior, straighten the repeated lintels/sills and remove the pale pixels cutting through the panes. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-12",
+      "problems": "The large Deco complex is much more stippled than the approved marker: its brick wing, vertical glazing and pale trim dissolve into interleaved light/dark flecks at 1x and 4x. Simplify the wing into clear window rows and uninterrupted masonry piers, straighten the tall recesses and reserve bright pixels for connected edges rather than scattered facade dots. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-14",
+      "problems": "The courtyard block has excessive alternating cream/dark brick and window fragments across both wings and the rear wall. At 1x those surfaces turn into a crunchy mesh, obscuring the openings and courtyard depth. Flatten the wall midtones, rebuild bounded dark windows and connect the main cornice lines; preserve the courtyard silhouette rather than adding more tiny texture. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-15",
+      "problems": "The station-like block has noisy, broken glazing: bright mullion chips and dark/ochre specks interrupt the tall central panes and the side windows. The front reads as a patterned mesh beside the approved Deco marker. Rebuild the three main glazed openings as continuous dark recesses with a small number of regular mullions, and quiet the adjacent brick texture. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-6",
+      "problems": "The walk-up facade is overbroken: pale cornice fragments, brown window openings and tiny brick highlights compete across every floor. At 1x it reads as a vertically striped speckled slab. Restore continuous floor bands, consolidate each window into a dark opening and remove the isolated light masonry pixels between windows. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-7",
+      "problems": "The defining Art Deco window strips are jagged checkerboard chains of white, blue-grey and dark pixels. They shimmer rather than read as straight recessed glazing, especially against the much cleaner long window strips in approved jazz_age-marker3. Make each recess continuous, with straight mullions and a consistent shadow edge; keep masonry texture off those strips. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-8",
+      "problems": "The green-roofed block has inconsistent window openings: the upper and middle rows break into offset dark bites and pale fragments, while the right-hand stack merges with the corner trim. Rebuild aligned, bounded window clusters and clean continuous sills; reduce the facade flecks so the storeys read before the brick texture. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-city@winter-bldg-9",
+      "problems": "The central fire escape is a brown/gold knot of diagonals with no readable sequence of platforms and stair flights. It merges into the windows and brickwork at 1x. Redraw a simple connected zigzag with clear horizontal landings, a consistent rail value and negative space between the escape and the wall. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-industry-bldg-1",
+      "problems": "The water tower support frame is a crooked dark knot: legs, cross-bracing and the short connection to the shed do not resolve into a clear stable trestle at 1x. Compare the clean timber support in approved jazz_age-marker1. Redraw two continuous legs, simple connected cross-bracing and an unambiguous tank-to-frame connection; preserve open ground between the legs."
+    },
+    {
+      "name": "jazz_age-industry-bldg-3",
+      "problems": "The loading/working front beneath the awning is an undifferentiated dark-brown patch broken by small red and olive flecks. At 1x it does not resolve into a bay, doors or identifiable machinery. Choose one clear opening and a few solid structural/equipment clusters, separate them with negative space and remove the tiny competing texture pixels."
+    },
+    {
+      "name": "jazz_age-industry@winter-bldg-1",
+      "problems": "The water tower support frame is a crooked dark knot: legs, cross-bracing and the short connection to the shed do not resolve into a clear stable trestle at 1x. Compare the clean timber support in approved jazz_age-marker1. Redraw two continuous legs, simple connected cross-bracing and an unambiguous tank-to-frame connection; preserve open ground between the legs. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-industry@winter-bldg-3",
+      "problems": "The loading/working front beneath the awning is an undifferentiated dark-brown patch broken by small red and olive flecks. At 1x it does not resolve into a bay, doors or identifiable machinery. Choose one clear opening and a few solid structural/equipment clusters, separate them with negative space and remove the tiny competing texture pixels. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-industry@winter-bldg-7",
+      "problems": "The winter snow breaks the large factory roof into a high-contrast checker of isolated dark holes and tiny white/blue pieces. This roof becomes noisy in the 1x dense scene, unlike the more coherent summer roof. Group the snow into connected roof-plane masses, keep the skylights/vents as a few clearly bounded openings and remove the scattered one-pixel dark and white interruptions."
+    },
+    {
+      "name": "jazz_age-slums-bldg-10",
+      "problems": "The front of the tall tenement and the space beneath the connecting canopy are congested with broken diagonal rail, window and brick marks. The escape/support structure becomes a mottled patch at 1x. Use continuous dark rail/support clusters, recover clear window openings and a shadow gap beneath the canopy, and remove competing light brick specks."
+    },
+    {
+      "name": "jazz_age-slums-bldg-2",
+      "problems": "The front fire-escape/window area is a tangle of offset slate, brown and pale diagonal pixels. The stair structure cannot be separated from the openings at 1x. Simplify it into connected landings and one clear stair run, or remove it and restore clean dark windows; retain the attached shed silhouette."
+    },
+    {
+      "name": "jazz_age-slums-bldg-5",
+      "problems": "The narrow tenement facade is mottled rather than articulated: the stair/window marks break into cream and brown fragments with no clear repeated openings. At 1x it is hard to tell windows from damaged plaster. Establish dark window recesses first, then add a small, connected escape/landing shape and fewer weathering patches."
+    },
+    {
+      "name": "jazz_age-slums-bldg-8",
+      "problems": "The centre of the clustered tenements turns into a muddy brown mass: the stairs, doors, leaning roofs and courtyard clutter are not separated by usable shadow gaps. In the dense scene the middle disappears entirely. Rebuild the courtyard as a clear negative space, connect the stairs to visible landings and use larger, simpler roof and doorway clusters."
+    },
+    {
+      "name": "jazz_age-slums-bldg-9",
+      "problems": "The central escape and lower lean-to supports collapse into a dark lattice of brick-coloured fragments. There is no clean, readable stair route through the facade at 1x. Draw connected landings/flights in one dark structural value, separate the windows behind them and simplify the lower shelter supports and debris."
+    },
+    {
+      "name": "jazz_age-slums@winter-bldg-10",
+      "problems": "The front of the tall tenement and the space beneath the connecting canopy are congested with broken diagonal rail, window and brick marks. The escape/support structure becomes a mottled patch at 1x. Use continuous dark rail/support clusters, recover clear window openings and a shadow gap beneath the canopy, and remove competing light brick specks. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-slums@winter-bldg-2",
+      "problems": "The front fire-escape/window area is a tangle of offset slate, brown and pale diagonal pixels. The stair structure cannot be separated from the openings at 1x. Simplify it into connected landings and one clear stair run, or remove it and restore clean dark windows; retain the attached shed silhouette. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-slums@winter-bldg-5",
+      "problems": "The narrow tenement facade is mottled rather than articulated: the stair/window marks break into cream and brown fragments with no clear repeated openings. At 1x it is hard to tell windows from damaged plaster. Establish dark window recesses first, then add a small, connected escape/landing shape and fewer weathering patches. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-slums@winter-bldg-8",
+      "problems": "The centre of the clustered tenements turns into a muddy brown mass: the stairs, doors, leaning roofs and courtyard clutter are not separated by usable shadow gaps. In the dense scene the middle disappears entirely. Rebuild the courtyard as a clear negative space, connect the stairs to visible landings and use larger, simpler roof and doorway clusters. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-slums@winter-bldg-9",
+      "problems": "The central escape and lower lean-to supports collapse into a dark lattice of brick-coloured fragments. There is no clean, readable stair route through the facade at 1x. Draw connected landings/flights in one dark structural value, separate the windows behind them and simplify the lower shelter supports and debris. In this winter version, simplify snow to connected ledge/roof caps so it does not add more white chips inside the same muddled structure."
+    },
+    {
+      "name": "jazz_age-street-base",
+      "problems": "The 3x3 repeat is visible at 1x and 4x: the paired pale wear dashes, upper-right three-slab patch and dark puddle recur in aligned rows every 288 px. There is no hard edge frame, but those landmarks advertise the tile period, especially in sparse streets. Reduce the pale dash contrast and slab outlines, and break up/redistribute the large dark patches so the repeated base stays quiet."
+    },
+    {
+      "name": "jazz_age-street@winter-base",
+      "problems": "The 3x3 and sparse street scenes expose a loud repeating diagonal slush pattern. Long blue-grey streaks, dark islands and exposed slab clusters recur as the same 288 px stamp; the high-contrast stippling also competes with the small buildings. Keep dark pavement, but use fewer, broader, quieter snow/slush masses, interrupt the parallel diagonal runs and remove the repeated accent landmarks."
+    }
+  ]
+}
