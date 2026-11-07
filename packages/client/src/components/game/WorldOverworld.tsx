@@ -27,6 +27,7 @@ import {
   WORLD_DECOR_LOOKS,
   WORLD_TREELINE_LOOKS,
   worldTreelineTrees,
+  worldRangePeaks,
   worldEdgeMask,
   WORLD_FRINGE_ORDER,
   WORLD_SQUARE_LOOKS,
@@ -304,6 +305,9 @@ export function WorldOverworld({
     const treeLooks = new Set<string>(
       WORLD_TREELINE_LOOKS.filter((look) => drawTile.hasPiece(`treeline_${look}`, 0) && drawTile.hasFringe(look)),
     );
+    // Looks whose trees hide their ground's edge, so the edge is drawn as the ground beside them. A range's
+    // peaks stand apart, so its rock keeps its own fringe and the peaks stand on it.
+    const coveredLooks = new Set<string>([...treeLooks].filter((look) => look !== "mountains"));
     const lookAt = (x: number, y: number) =>
       drawnLook[Math.min(height - 1, Math.max(0, y)) * width + Math.min(width - 1, Math.max(0, x))]!;
     // A cell in the middle of its look, with no water beside it: water keeps the look of the land under
@@ -340,7 +344,7 @@ export function WorldOverworld({
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
         const look = drawnLook[y * width + x]!;
-        const drawn = treeLooks.has(look) && !inner(x, y) ? besideLook(x, y) : look;
+        const drawn = coveredLooks.has(look) && !inner(x, y) ? besideLook(x, y) : look;
         groundOf(x, y, drawn);
         if (water[own] && !waterEdges) {
           paintShore(ctx, x * OVERWORLD_TILE, y * OVERWORLD_TILE, {
@@ -355,7 +359,8 @@ export function WorldOverworld({
     // Fringes: where the pack has one for a look, the look spills past its cells onto the ground beside it,
     // taller ground drawn last so it overhangs.
     for (const look of WORLD_FRINGE_ORDER) {
-      if (!drawTile.hasFringe(look) || !drawnLook.includes(look) || treeLooks.has(look) || square.has(look)) continue;
+      if (!drawTile.hasFringe(look) || !drawnLook.includes(look) || coveredLooks.has(look) || square.has(look))
+        continue;
       const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
       // Laid out as an edge tile is: with slanted corners and curved runs where the fringe has them.
       const fringeRows = drawTile.fringeRows(look);
@@ -608,7 +613,8 @@ export function WorldOverworld({
             for (let dx = -1; dx <= 1 && !near; dx++)
               near = x + dx >= 0 && y + dy >= 0 && x + dx < width && y + dy < height && isLook(x + dx, y + dy);
           if (!near) continue;
-          for (const tree of worldTreelineTrees(onFloor, x, y)) trees.push({ ...tree, look });
+          const plant = look === "mountains" ? worldRangePeaks : worldTreelineTrees;
+          for (const tree of plant(onFloor, x, y)) trees.push({ ...tree, look });
         }
     }
     // Small things on open ground (a flower clump, a rock, a bush): about one cell in five wholly inside
@@ -684,12 +690,13 @@ export function WorldOverworld({
     const standing: Array<{ base: number; draw: () => void }> = trees.map((tree) => ({
       base: tree.y,
       draw: () =>
+        // A range's peaks are two cells by two, a wood's trees one cell; each stands on its foot.
         drawTile.piece(
           ctx,
           `treeline_${tree.look}`,
           tree.pick,
-          tree.x * OVERWORLD_TILE - OVERWORLD_TILE / 2,
-          tree.y * OVERWORLD_TILE - (OVERWORLD_TILE * 46) / 48,
+          tree.x * OVERWORLD_TILE - (tree.look === "mountains" ? OVERWORLD_TILE : OVERWORLD_TILE / 2),
+          tree.y * OVERWORLD_TILE - ((tree.look === "mountains" ? 2 : 1) * OVERWORLD_TILE * 46) / 48,
         ),
     }));
     for (const { place } of settlements) standing.push({ base: place.at.y + 1, draw: () => drawPlace(place) });
