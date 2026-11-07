@@ -19,7 +19,7 @@ import { worldEditsFightable } from "./battlefield-maps.js";
 import { WORLD_RESOURCE_WORDS } from "./land.js";
 import { worldCast, worldCastSize, worldPersonSheet } from "./people.js";
 import { worldHistory, worldHistoryLine, worldNotablePast, worldPlacePast } from "./history.js";
-import { worldPeopleLines, worldPeoples, worldPeoplesNear } from "./peoples.js";
+import { worldAddedPeoples, worldPeopleLines, worldPeoples, worldPeoplesNear } from "./peoples.js";
 import {
   worldAddedPlace,
   worldBrewingNear,
@@ -269,7 +269,7 @@ export function worldOverviewPromptText(game: GameWorld): string {
     })(),
     ...(() => {
       // Generator 9: the peoples who are not human, one line each; their rules come with the places near them.
-      const peoples = worldPeoples(kit, world);
+      const peoples = worldPeoples(kit, world, brief.peoples);
       return peoples.length
         ? [`- Not human:`, ...peoples.flatMap((people) => worldPeopleLines(people, false).map((line) => `  ${line}`))]
         : [];
@@ -307,7 +307,7 @@ export function worldWhereYouAreText(
   game: GameWorld,
   at: { place?: WorldPlace; name?: string; met?: ReadonlySet<string>; present?: WorldPresent },
 ): string {
-  const { kit, world } = game;
+  const { kit, world, brief } = game;
   const present = at.present;
   const byId = new Map(world.places.map((place) => [place.id, place]));
   // A place the story added is told as a place inside the world place it was added in.
@@ -357,7 +357,16 @@ export function worldWhereYouAreText(
       );
     }
     // Generator 9: the peoples who live nearby, the nearest in full.
-    const peoples = worldPeoples(kit, world);
+    // The ones the story brought in are among them, with their own past.
+    const peoples = [
+      ...worldPeoples(kit, world, brief.peoples),
+      ...worldAddedPeoples(
+        kit,
+        world,
+        brief.peoples,
+        (present?.peoples ?? []).map((people) => ({ ...people, allies: [], rivals: [] })),
+      ),
+    ];
     worldPeoplesNear(peoples, home)
       .slice(0, 2)
       .forEach((people, index) => lines.push(...worldPeopleLines(people, index === 0, peoples)));

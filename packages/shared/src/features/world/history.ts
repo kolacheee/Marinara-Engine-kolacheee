@@ -361,7 +361,9 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
   const cohesion = new Map(groups.map((group) => [group.name, 0.5]));
   const walled = new Set<string>();
   const softened = new Set<string>();
-  const hostilePeoples = landed ? worldPeoples(kit, world).filter((people) => people.stance === "hostile") : [];
+  const hostilePeoples = landed
+    ? worldPeoples(kit, world, brief.peoples).filter((people) => people.stance === "hostile")
+    : [];
   const hemmed = (place: WorldPlace) => {
     let [closed, all, wet] = [0, 0, 0];
     for (let dy = -3; dy <= 3; dy++)
@@ -784,7 +786,7 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
   if (landed) {
     const peopleRandom = worldStream(seed, "history", "peoples");
     const kindFor = (kinds: WorldChangeKind[]) => kinds.find((kind) => on(kind));
-    for (const people of worldPeoples(kit, world)) {
+    for (const people of worldPeoples(kit, world, brief.peoples)) {
       const near = settlements.find((place) => place.id === people.nearId);
       if (!near) continue;
       const since = founded.get(near.id) ?? span;

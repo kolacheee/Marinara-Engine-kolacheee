@@ -17,25 +17,23 @@
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import type { CompiledWorld, WorldPlace } from "./compile.js";
 import { worldStream, worldTerrainEntries } from "./compile.js";
+import {
+  WORLD_PEOPLE_ARCHETYPES,
+  WORLD_PEOPLE_TEMPERS,
+  type WorldBriefPeople,
+} from "../../schemas/world-brief.schema.js";
 
-export const WORLD_PEOPLE_ARCHETYPES = Object.freeze([
-  "hidden",
-  "bargainer",
-  "tempter",
-  "trickster",
-  "warden",
-  "devourer",
-  "watcher",
-  "elder",
-] as const);
+export { WORLD_PEOPLE_ARCHETYPES, WORLD_PEOPLE_TEMPERS };
+
 export type WorldPeopleArchetype = (typeof WORLD_PEOPLE_ARCHETYPES)[number];
-export const WORLD_PEOPLE_TEMPERS = Object.freeze(["malevolent", "untrustworthy", "aloof", "kindly"] as const);
 export type WorldPeopleTemper = (typeof WORLD_PEOPLE_TEMPERS)[number];
 export const WORLD_PEOPLE_STANCES = Object.freeze(["friendly", "wary", "aloof", "hostile"] as const);
 export type WorldPeopleStance = (typeof WORLD_PEOPLE_STANCES)[number];
 
 export interface WorldPeople {
   id: string;
+  /** Brought in by the story in play: the world's history never told their past, so it is told with them. */
+  added?: true;
   /** What they are called ("the Hollvar", "the Neighbours"), and what humans call them. */
   name: string;
   nick: string;
@@ -2245,11 +2243,85 @@ const ARCHETYPE_WEIGHTS: Record<Frame, Record<WorldPeopleArchetype, number>> = {
 function peopleFrame(kit: WorldKit): { count: number; frame: Frame } {
   const text = JSON.stringify(kit).toLowerCase();
   const uncanny = /supernatural|hidden world|magic|fae|spirit|occult|monster|undead/.test(text);
-  if (kit.family === "scifi") return { count: kit.scale === "sector" || /alien/.test(text) ? 3 : 0, frame: "species" };
-  if (kit.family === "wuxia") return { count: 3, frame: "china" };
-  if (kit.family === "fantasy") return { count: 3, frame: "europe" };
-  if (kit.family === "wasteland") return { count: 2, frame: "wasteland" };
-  return { count: uncanny ? 2 : 0, frame: "modern" };
+  // A bigger world has room for more of them: a region's three are a realm's five and a world's eight.
+  const scaled = (count: number) => (count ? Math.max(1, Math.round(count * PEOPLES_BY_SCALE[kit.scale])) : 0);
+  if (kit.family === "scifi")
+    return { count: scaled(kit.scale === "sector" || /alien/.test(text) ? 3 : 0), frame: "species" };
+  if (kit.family === "wuxia") return { count: scaled(3), frame: "china" };
+  if (kit.family === "fantasy") return { count: scaled(3), frame: "europe" };
+  if (kit.family === "wasteland") return { count: scaled(2), frame: "wasteland" };
+  return { count: scaled(uncanny ? 2 : 0), frame: "modern" };
+}
+const PEOPLES_BY_SCALE = { site: 0.67, town: 1, region: 1, realm: 1.67, world: 2.67, sector: 2 } as const;
+
+const STOP = new Set(
+  "their them they that this with from which who whom what when where have will were been into over under about other others people peoples folk folks beings being things thing anyone ones some every never always only more most like live lives living".split(
+    " ",
+  ),
+);
+const words = (text: string) =>
+  new Set(
+    text
+      .toLowerCase()
+      .split(/[^a-z]+/)
+      .filter((word) => word.length >= 4 && !STOP.has(word))
+      .map((word) => word.replace(/(es|s)$/, "")),
+  );
+
+/** The lore a written people's words match best (the river-folk's rusalki, the giants' trolls), if any
+ *  matches at all: what it says fills in what the brief leaves out, and nothing that would not fit. */
+function matchVariant(
+  people: WorldBriefPeople,
+  frame: Frame,
+): { archetype: WorldPeopleArchetype; variant: Variant } | undefined {
+  const said = words([people.name, people.kind, people.form, people.want, people.note].join(" "));
+  let best: { archetype: WorldPeopleArchetype; variant: Variant; score: number } | undefined;
+  for (const archetype of WORLD_PEOPLE_ARCHETYPES) {
+    if (people.archetype && people.archetype !== archetype) continue;
+    for (const variant of ARCHETYPES[archetype].variants[frame] ?? []) {
+      // What the lore calls them counts twice what it says they look like; one shared look is not enough.
+      const named = words([variant.kind, ...variant.nicks].join(" "));
+      const looks = words(variant.forms.join(" "));
+      const score = [...said].reduce((sum, word) => sum + (named.has(word) ? 2 : looks.has(word) ? 1 : 0), 0);
+      if (score >= 2 && (!best || score > best.score)) best = { archetype, variant, score };
+    }
+  }
+  return best && { archetype: best.archetype, variant: best.variant };
+}
+
+/** A written people no lore matches: only what fits any people, and what the brief says. */
+function bareVariant(people: WorldBriefPeople): Variant {
+  return {
+    kind: people.kind,
+    nicks: [people.name],
+    forms: [""],
+    haunts: ["a hidden place near {near}"],
+    rules: [],
+    wants: [""],
+    offers: [""],
+    wards: [""],
+    roles: ["one of them who deals with humans"],
+    deeds: [
+      "!Folk of {near} who went near the home of the {name} were not seen again.",
+      "~A trader of {near} struck a bargain with the {name}, and his family still keeps its terms.",
+      "~The {name} warned {near} of a flood the year before it came.",
+    ],
+  };
+}
+
+/** What kind of people the brief's words describe, when it does not say: the first folklore role they fit. */
+function guessArchetype(people: WorldBriefPeople): WorldPeopleArchetype {
+  const text = [people.kind, people.form, people.want, people.note].join(" ").toLowerCase();
+  const signs: Array<[WorldPeopleArchetype, RegExp]> = [
+    ["devourer", /\b(eat|eats|devour|hunt|hunts|prey|predator|hunger|swarm|consum)/],
+    ["tempter", /\b(tempt|seduc|lure|lures|desire|beaut|lover)/],
+    ["bargainer", /\b(trade|trader|merchant|bargain|deal|deals|pact|contract|broker)/],
+    ["trickster", /\b(trick|prank|mischie|riddle|joke|fool)/],
+    ["warden", /\b(guard|guardian|protect|keep|keeper|warden|defend|sacred)/],
+    ["watcher", /\b(watch|observ|study|record|scout|spy)/],
+    ["elder", /\b(ancient|elder|old race|first|precursor|before (us|humans|men))/],
+  ];
+  return signs.find(([, sign]) => sign.test(text))?.[0] ?? "hidden";
 }
 
 // ── Names: the setting's own sound, short enough to say at the table ──
@@ -2533,14 +2605,56 @@ const LURES: Record<WorldPeopleArchetype, string> = {
 const cache = new Map<string, WorldPeople[]>();
 
 /** The world's non-human peoples (generator 9), the same for the same world every time. */
-export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[] {
+export function worldPeoples(
+  kit: WorldKit,
+  world: CompiledWorld,
+  written: readonly WorldBriefPeople[] = [],
+): WorldPeople[] {
+  return buildPeoples(kit, world, written);
+}
+
+/**
+ * Peoples the story brings in during play (a Game Master's `[world: fact="people"]`), made the same way
+ * as the world's own the first time they appear, each from its own name's dice, so one added later never
+ * changes those before it. Their home is by the place they were brought in at, away from the world's own.
+ */
+export function worldAddedPeoples(
+  kit: WorldKit,
+  world: CompiledWorld,
+  written: readonly WorldBriefPeople[],
+  added: readonly WorldBriefPeople[],
+): WorldPeople[] {
+  const out: WorldPeople[] = [];
+  for (const spec of added) {
+    const avoid = [...worldPeoples(kit, world, written), ...out];
+    out.push(...buildPeoples(kit, world, [spec], { stream: spec.name.toLowerCase(), avoid }));
+  }
+  return out;
+}
+
+function buildPeoples(
+  kit: WorldKit,
+  world: CompiledWorld,
+  written: readonly WorldBriefPeople[],
+  story?: { stream: string; avoid: readonly WorldPeople[] },
+): WorldPeople[] {
   if (world.generatorVersion < 9) return [];
   const { count, frame } = peopleFrame(kit);
-  if (!count) return [];
-  const key = JSON.stringify([world.seed, world.generatorVersion, kit.id, kit.family, kit.scale, world.ground.length]);
+  if (!count && !written.length) return [];
+  const key = JSON.stringify([
+    story?.stream,
+    story?.avoid.map((people) => people.id),
+    world.seed,
+    world.generatorVersion,
+    kit.id,
+    kit.family,
+    kit.scale,
+    world.ground.length,
+    written,
+  ]);
   const hit = cache.get(key);
   if (hit) return hit;
-  const random = worldStream(world.seed, "peoples");
+  const random = story ? worldStream(world.seed, "peoples", "added", story.stream) : worldStream(world.seed, "peoples");
   const pick = <T>(items: readonly T[]) => items[Math.floor(random() * items.length)]!;
   const pickSome = <T>(items: readonly T[], n: number) =>
     items
@@ -2564,20 +2678,55 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
   const used = new Set<WorldPeopleArchetype>();
   const usedParts = new Set<string>();
   const usedLines = new Set<string>();
-  const tradition = frame === "europe" ? weighted(TRADITION_WEIGHTS, random) : undefined;
+  let tradition = frame === "europe" ? weighted(TRADITION_WEIGHTS, random) : undefined;
+  const traditions = new Set(tradition ? [tradition] : []);
   const homes: Array<{ x: number; y: number }> = [];
   const peoples: WorldPeople[] = [];
-  for (let index = 0; index < count && settlements.length; index++) {
-    const weights = { ...ARCHETYPE_WEIGHTS[frame] };
-    for (const each of WORLD_PEOPLE_ARCHETYPES) {
-      const variants = ARCHETYPES[each].variants[frame] ?? [];
-      if (used.has(each) || !variants.some((variant) => !tradition || variant.from === tradition)) weights[each] = 0;
+  // The brief's own peoples first, as written; the world draws more only to make up its number, each of a
+  // kind none of the others is.
+  for (const people of written) taken.add(people.name.toLowerCase().replace(/^the /, ""));
+  for (const people of story?.avoid ?? []) {
+    taken.add(people.name.toLowerCase());
+    taken.add(people.figure.name.toLowerCase());
+    homes.push(people.home);
+  }
+  const specs: Array<WorldBriefPeople | undefined> = [];
+  const total = story ? written.length : written.length + Math.max(0, count - written.length);
+  for (let index = 0; index < total && settlements.length; index++) {
+    const spec = written[index];
+    let archetype: WorldPeopleArchetype;
+    let variant: Variant;
+    if (spec) {
+      const match = matchVariant(spec, frame);
+      archetype = spec.archetype ?? match?.archetype ?? guessArchetype(spec);
+      used.add(archetype);
+      variant = match?.archetype === archetype ? match.variant : bareVariant(spec);
+    } else {
+      const open = () => {
+        const weights = { ...ARCHETYPE_WEIGHTS[frame] };
+        for (const each of WORLD_PEOPLE_ARCHETYPES) {
+          const variants = ARCHETYPES[each].variants[frame] ?? [];
+          if (used.has(each) || !variants.some((variant) => !tradition || variant.from === tradition))
+            weights[each] = 0;
+        }
+        return weights;
+      };
+      let weights = open();
+      // A big fantasy world that runs out of one tradition's beings takes in a neighbouring tradition's,
+      // as a realm spans more than one people's lore.
+      while (!Object.values(weights).some((weight) => weight > 0) && tradition) {
+        const left = Object.fromEntries(Object.entries(TRADITION_WEIGHTS).filter(([each]) => !traditions.has(each)));
+        if (!Object.keys(left).length) break;
+        tradition = weighted(left, random);
+        traditions.add(tradition);
+        weights = open();
+      }
+      if (!Object.values(weights).some((weight) => weight > 0)) break;
+      archetype = weighted(weights, random);
+      used.add(archetype);
+      variant = pick(ARCHETYPES[archetype].variants[frame]!.filter((each) => !tradition || each.from === tradition));
     }
-    if (!Object.values(weights).some((weight) => weight > 0)) break;
-    const archetype = weighted(weights, random);
-    used.add(archetype);
     const kind = ARCHETYPES[archetype];
-    const variant = pick(kind.variants[frame]!.filter((each) => !tradition || each.from === tradition));
     // At most one malevolent people a world besides its devourers, so a world always has someone to deal with.
     const tempers = { ...(variant.temper ?? kind.temper) };
     if (
@@ -2585,7 +2734,11 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
       peoples.some((other) => other.temper === "malevolent" && other.archetype !== "devourer")
     )
       delete tempers.malevolent;
-    const temper = weighted(Object.keys(tempers).length ? tempers : { aloof: 1 }, random);
+    const temper = spec?.temper ?? weighted(Object.keys(tempers).length ? tempers : { aloof: 1 }, random);
+    // A people the brief places lives by that place.
+    const anchor = spec?.home
+      ? world.places.find((place) => place.name.toLowerCase() === spec.home!.toLowerCase())
+      : undefined;
     // A home on their ground: the best fitting cell of the open map, remote ones far from towns and
     // roads, others near a town, and apart from the other peoples.
     let best = { cell: -1, score: -Infinity };
@@ -2601,7 +2754,8 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
         (ground.length - fit) * 2 +
         (kind.remote ? Math.min(6, town) * 0.5 - (roads.has(cell) ? 2 : 0) : -Math.abs(town - 2.5)) +
         Math.min(8, apart) * 0.4 +
-        random() * 1.5;
+        random() * 1.5 -
+        (anchor ? Math.hypot(anchor.at.x - x, anchor.at.y - y) * 3 : 0);
       if (score > best.score) best = { cell, score };
     }
     if (best.cell < 0) continue;
@@ -2670,11 +2824,11 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
         line,
       ),
     );
-    if (harms && (temper === "aloof" || temper === "kindly")) finalTemper = "untrustworthy";
+    if (harms && !spec?.temper && (temper === "aloof" || temper === "kindly")) finalTemper = "untrustworthy";
     const sound: Sound = frame === "species" ? "species" : ((tradition as Sound | undefined) ?? "north");
     const own = frame === "europe" || frame === "species" ? syllableName(sound, random, taken) : undefined;
     const nick = pick(variant.nicks);
-    const name = own ?? nick.replace(/^the /, "");
+    const name = spec ? spec.name.replace(/^the /i, "") : (own ?? nick.replace(/^the /, ""));
     const personName = (outsider = false) => {
       for (let attempt = 0; attempt < 12; attempt++) {
         const full =
@@ -2714,18 +2868,21 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
       temper === "malevolent" && !variant.offers.some((each) => each.startsWith("!"))
         ? LURES[archetype]
         : at(pick(offers));
+    specs.push(spec);
     peoples.push({
-      id: `people-${index}`,
+      id: story ? `people-added-${story.stream.replace(/[^a-z0-9]+/g, "-")}` : `people-${index}`,
+      ...(story ? { added: true as const } : {}),
       name,
-      nick,
+      nick: spec ? `the ${name}` : nick,
       archetype,
-      kind: variant.kind,
+      kind: spec?.kind ?? variant.kind,
       temper: finalTemper,
       stance: harms && finalTemper === "untrustworthy" ? "wary" : pick(STANCE[finalTemper]),
-      form,
-      nature,
-      rules: rules.map(at),
-      want,
+      // What the brief says of them stands; the world's lore fills in only what it leaves out.
+      form: spec?.form ?? form,
+      nature: spec?.note ? [spec.note, ...nature] : nature,
+      rules: (spec ? rules.slice(0, 1) : rules).map(at),
+      want: spec?.want ?? want,
       offer,
       ward: at(pick(variant.wards)),
       figure: {
@@ -2762,8 +2919,20 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
         : a.archetype === "devourer"
           ? ["cannot get at the {other}, and leave them be", "pay the {other} no mind"]
           : ["pay the {other} no mind", "cannot get at the {other}, and leave them be"];
-      a.relations.push({ id: b.id, text: fromA });
-      b.relations.push({ id: a.id, text: fromB });
+      // Allies and rivals the brief gives are how they stand.
+      const [specA, specB] = [specs[i], specs[peoples.indexOf(b)]];
+      const said = (x: WorldBriefPeople | undefined, y: WorldBriefPeople | undefined, list: "allies" | "rivals") =>
+        !!x &&
+        !!y &&
+        (x[list].some((name) => name.toLowerCase() === y.name.toLowerCase()) ||
+          y[list].some((name) => name.toLowerCase() === x.name.toLowerCase()));
+      const [toA, toB] = said(specA, specB, "allies")
+        ? ["are allied with the {other}", "are allied with the {other}"]
+        : said(specA, specB, "rivals")
+          ? ["are old enemies of the {other}", "are old enemies of the {other}"]
+          : [fromA, fromB];
+      a.relations.push({ id: b.id, text: toA });
+      b.relations.push({ id: a.id, text: toB });
     }
   }
   cache.set(key, peoples);
@@ -2784,18 +2953,20 @@ export function worldPeopleLines(people: WorldPeople, full: boolean, all: readon
     people.name === people.nick.replace(/^the /, "")
       ? `The ${people.name}`
       : `The ${people.name} (called ${people.nick})`;
-  const head = `- ${named}, ${people.kind}, found at ${people.haunt}; ${standingWords(people)}. ${people.form}`;
+  const head =
+    `- ${named}, ${people.kind}, found at ${people.haunt}; ${standingWords(people)}. ${people.form}`.trimEnd();
   if (!full) return [head];
   const byId = new Map(all.map((other) => [other.id, other]));
   return [
     head,
     ...people.nature.map((line) => `  - ${line}`),
     ...people.rules.map((rule) => `  - Rule: ${rule}`),
-    `  - Want now: ${people.want}.`,
-    `  - They offer ${people.offer}.`,
-    `  - Warded by ${people.ward}.`,
+    ...(people.want ? [`  - Want now: ${people.want.replace(/\.$/, "")}.`] : []),
+    ...(people.offer ? [`  - They offer ${people.offer}.`] : []),
+    ...(people.ward ? [`  - Warded by ${people.ward}.`] : []),
     `  - One of them: ${people.figure.name}, ${people.figure.role}. ${capital(people.figure.name)} ${people.figure.quirk}.`,
     ...(people.contact ? [`  - Who knows them: ${people.contact.name}, ${people.contact.role}.`] : []),
+    ...(people.added && people.deeds.length ? [`  - Their past: ${people.deeds.slice(0, 2).join(" ")}`] : []),
     ...people.relations.flatMap((each) =>
       byId.has(each.id) ? [`  - They ${each.text.replaceAll("{other}", byId.get(each.id)!.name)}.`] : [],
     ),
