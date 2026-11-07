@@ -128,12 +128,38 @@ export const WORLD_PROP_LOOK_TILES = Object.freeze({
   craters: "crater_props",
   ruins: "ruins_props",
   marsh: "marsh_props",
+  hills: "hills_props",
+  // Dunes keep the desert's own sand under them (WORLD_PROP_KEEPS_GROUND).
+  desert: "dune_props",
 } as const);
+/** Prop looks drawn over their own ground, not the ground round them. */
+export const WORLD_PROP_KEEPS_GROUND: readonly string[] = Object.freeze(["desert"]);
 export const WORLD_PROP_TILE_IDS = Object.freeze(Object.values(WORLD_PROP_LOOK_TILES));
-/** A wood's floor under its trees, `floor_<look>` (image packs). */
-export const WORLD_FLOOR_TILE_IDS = Object.freeze(
-  WORLD_TREELINE_LOOKS.filter((look) => look !== "mountains").map((look) => `floor_${look}` as const),
-);
+/** Built-up looks drawn as buildings standing over street ground where a pack has them (the owner,
+ *  2026-11-07, of the cyberpunk city: "make buildings as props and use that instead"), like a wood's trees:
+ *  `buildings_<look>`, each piece where WORLD_BUILDING_PIECES puts it, over `floor_<look>`. */
+export const WORLD_BUILDING_LOOKS = Object.freeze(["city", "slums", "industry"] as const);
+type Rect = { x: number; y: number; w: number; h: number };
+const buildingRow = (count: number, y: number, w: number, h: number): Rect[] =>
+  Array.from({ length: count }, (_, i) => ({ x: i * w, y, w, h }));
+/** Where each building lies in its block, in cells: small ones a cell, medium one by two, large two by two. */
+export const WORLD_BUILDING_PIECES: Readonly<Record<string, readonly Rect[]>> = Object.freeze({
+  buildings_city: [...buildingRow(6, 0, 1, 1), ...buildingRow(6, 1, 1, 2), ...buildingRow(4, 3, 2, 2)],
+  buildings_slums: [...buildingRow(8, 0, 1, 1), ...buildingRow(4, 1, 2, 2)],
+  buildings_industry: [...buildingRow(6, 0, 1, 1), ...buildingRow(4, 1, 2, 2)],
+});
+export const WORLD_BUILDING_TILE_IDS = Object.freeze(WORLD_BUILDING_LOOKS.map((look) => `buildings_${look}` as const));
+const blockOf = (id: string): readonly [number, number] => {
+  const pieces = WORLD_BUILDING_PIECES[id]!;
+  return [Math.max(...pieces.map((p) => p.x + p.w)), Math.max(...pieces.map((p) => p.y + p.h))];
+};
+
+/** A wood's floor under its trees, or the street under a built-up look's buildings, `floor_<look>` (image
+ *  packs). */
+export const WORLD_FLOOR_TILE_IDS = Object.freeze([
+  ...WORLD_TREELINE_LOOKS.filter((look) => look !== "mountains").map((look) => `floor_${look}` as const),
+  ...WORLD_BUILDING_LOOKS.map((look) => `floor_${look}` as const),
+]);
 
 /** Open ground with small things scattered over it (image packs; user, 2026-11-06, plains "mixed up a bit
  *  with some small details"): `decor_<look>` is up to eight one-cell sprites (a flower clump, a rock, a
@@ -219,6 +245,7 @@ export const WORLD_TILE_IDS = Object.freeze([
   // two by two), shading only, so they take its colour.
   ...WORLD_STANDING_TILE_IDS,
   ...WORLD_PROP_TILE_IDS,
+  ...WORLD_BUILDING_TILE_IDS,
   // A wood's floor under its trees (image packs; user, 2026-11-07: the old texture "looks a bit weird
   // underneath the trees"), a texture as the ground's.
   ...WORLD_FLOOR_TILE_IDS,
@@ -271,6 +298,7 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "road_bridge",
   ...WORLD_STANDING_TILE_IDS,
   ...WORLD_PROP_TILE_IDS,
+  ...WORLD_BUILDING_TILE_IDS,
   ...WORLD_FLOOR_TILE_IDS,
   "in_wall_face",
   "in_wall_divider",
@@ -307,6 +335,7 @@ export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number
   standing_city: [4, 4],
   standing_industry: [4, 4],
   ...Object.fromEntries(WORLD_PROP_TILE_IDS.map((id) => [id, [8, 3] as const])),
+  ...Object.fromEntries(WORLD_BUILDING_TILE_IDS.map((id) => [id, blockOf(id)])),
   in_wall_top: [4, 4],
   dn_wall_top: [4, 4],
   ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [4, 2] as const])),
@@ -342,6 +371,7 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
     standing_city: [[4, 4]],
     standing_industry: [[4, 4]],
     ...Object.fromEntries(WORLD_PROP_TILE_IDS.map((id) => [id, [[8, 3] as const]])),
+    ...Object.fromEntries(WORLD_BUILDING_TILE_IDS.map((id) => [id, [blockOf(id)]])),
     in_wall_top: [[4, 4]],
     dn_wall_top: [[4, 4]],
     ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [[4, 2] as const]])),
@@ -534,6 +564,11 @@ export function worldTilePiece(
     return piece < 8 && w >= 6 && h >= 8 ? { x: (piece % 2) * 3, y: Math.floor(piece / 2) * 2, w: 3, h: 2 } : null;
   if (id === "standing_city" || id === "standing_industry")
     return piece < 8 && w >= 4 && h >= 4 ? { x: piece % 4, y: Math.floor(piece / 4) * 2, w: 1, h: 2 } : null;
+  if (WORLD_BUILDING_PIECES[id]) {
+    const at = WORLD_BUILDING_PIECES[id]![piece];
+    const [bw, bh] = blockOf(id);
+    return at && w >= bw && h >= bh ? at : null;
+  }
   if ((WORLD_PROP_TILE_IDS as readonly string[]).includes(id)) {
     if (piece < 4) return w >= 4 ? { x: piece, y: 0, w: 1, h: 1 } : null;
     return piece < 8 && w >= 8 && h >= 3 ? { x: (piece - 4) * 2, y: 1, w: 2, h: 2 } : null;
@@ -898,6 +933,7 @@ export const WORLD_SEASONAL_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   ...WORLD_STANDING_TILE_IDS,
   ...WORLD_FLOOR_TILE_IDS,
   ...WORLD_PROP_TILE_IDS,
+  ...WORLD_BUILDING_TILE_IDS,
 ]);
 const IMAGE_KNOWN = new Set<string>([
   ...WORLD_TILE_IDS,
