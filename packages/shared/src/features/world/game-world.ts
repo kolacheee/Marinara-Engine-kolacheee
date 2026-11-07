@@ -285,7 +285,7 @@ export function worldLandLines(world: GameWorld["world"], place: WorldPlace): st
     each.path.forEach((cell, index) => {
       if (near(cell % world.width, Math.floor(cell / world.width), 1)) river = Math.max(river, each.width[index] ?? 1);
     });
-  if (river) lines.push(`- ${river >= 3 ? "On a great river" : river === 2 ? "On a river" : "Beside a stream"}.`);
+  if (river) lines.push(`- ${river >= 5 ? "On a great river" : river >= 3 ? "On a river" : "Beside a stream"}.`);
   const kinds = [
     ...new Set((world.resources ?? []).filter((each) => near(each.at.x, each.at.y, 2)).map((each) => each.kind)),
   ];

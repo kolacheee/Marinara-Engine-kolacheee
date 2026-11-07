@@ -281,7 +281,7 @@ export interface RiverCourse {
 }
 
 /** How wide a river of each size is drawn, in pixels of a 16 pixel cell. */
-const RIVER_WIDTH = [0, 4, 6, 9] as const;
+const RIVER_WIDTH = [0, 3.5, 5, 7, 10, 13] as const;
 
 /** Rounds a course's corners (Chaikin's cutting, three times), keeping its two ends where they are. */
 function smoothCourse(points: Array<{ x: number; y: number; w: number }>) {
@@ -313,13 +313,18 @@ function darker(color: string, share: number): string {
 /** The rivers: a bank a shade darker than the water, then the water in the sea's own colour, over all of
  *  them in turn (so where one joins another the two run together), widening smoothly from a thin source
  *  as they gather water. A river's mouth runs out into the sea without a bank, so it opens into it. */
-export function paintRivers(ctx: Ctx, courses: RiverCourse[], water: string, ripples?: CanvasPattern | null) {
+export function paintRivers(
+  ctx: Ctx,
+  courses: RiverCourse[],
+  water: string,
+  ripples?: CanvasPattern | null,
+): Array<Array<{ x: number; y: number; w: number }>> {
   const smooth = courses.map((course) => {
     const points = course.points.map((point, index) => ({
       x: point.x,
       y: point.y,
-      // A source starts as a trickle and reaches its size within three cells.
-      w: RIVER_WIDTH[Math.min(3, Math.max(1, point.size)) as 1 | 2 | 3] * Math.min(1, 0.45 + index * 0.2),
+      // A source starts as a trickle and reaches its size within four cells.
+      w: RIVER_WIDTH[Math.min(5, Math.max(1, point.size)) as 1 | 2 | 3 | 4 | 5] * Math.min(1, 0.25 + index * 0.19),
     }));
     return { points: smoothCourse(points), mouth: course.mouth === true, cut: points.length };
   });
@@ -343,4 +348,6 @@ export function paintRivers(ctx: Ctx, courses: RiverCourse[], water: string, rip
   };
   stroke(darker(water, 0.45), 2, true);
   stroke(ripples ?? water, 0, false);
+  // The rivers as drawn (pixel points and widths), so what stands on the ground keeps off them.
+  return smooth.map((each) => each.points);
 }

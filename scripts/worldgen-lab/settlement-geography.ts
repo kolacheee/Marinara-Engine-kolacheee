@@ -15,6 +15,10 @@
  *   resource    settlements with a resource (generator 7) within 2 cells
  *   riverEnd    rivers that end in water, another river or the map's edge (must be 1)
  *   riverCells  share of the land that is river
+ *   detour      a road's length over its straight line (generator 8 lays them along the land; ~1.1-1.4 real)
+ *   roadPeak    share of road cells on mountains (lower: roads go round or through passes)
+ *   trunk       share of road cells that two or more roads share (roads joining into trunks)
+ *   crossings   river crossings per road
  */
 import {
   WORLD_STARTER_KITS,
@@ -146,7 +150,36 @@ function measure(world: CompiledWorld, kit: WorldKit) {
     );
   }).length;
   const landCells = kinds.filter((k) => terrain[k]?.kind !== "water").length;
+  const routed = world.links.filter((link) => link.path);
+  const roadUse = new Map<number, number>();
+  for (const link of routed) for (const cell of link.path!) roadUse.set(cell, (roadUse.get(cell) ?? 0) + 1);
+  const detours = routed.map((link) => {
+    const a = byId.get(link.from)!;
+    const b = byId.get(link.to)!;
+    let length = 0;
+    for (let i = 1; i < link.path!.length; i++) {
+      const [p, q] = [link.path![i - 1]!, link.path![i]!];
+      length += p % width !== q % width && Math.floor(p / width) !== Math.floor(q / width) ? Math.SQRT2 : 1;
+    }
+    return length / Math.max(1, Math.hypot(a.at.x - b.at.x, a.at.y - b.at.y));
+  });
+  const crossings = routed.map((link) => {
+    let n = 0;
+    let on = false;
+    for (const cell of link.path!) {
+      const river = riverCells.has(cell) && terrain[kinds[cell]!]?.kind !== "water";
+      if (river && !on) n++;
+      on = river;
+    }
+    return n;
+  });
   return {
+    detour: routed.length ? detours.reduce((s, d) => s + d, 0) / detours.length : NaN,
+    roadPeak: roadUse.size
+      ? [...roadUse.keys()].filter((c) => terrain[kinds[c]!]?.kind === "barrier").length / roadUse.size
+      : NaN,
+    trunk: roadUse.size ? [...roadUse.values()].filter((n) => n >= 2).length / roadUse.size : NaN,
+    crossings: routed.length ? crossings.reduce((s, d) => s + d, 0) / routed.length : NaN,
     wetside: share(settlements, (p) => water1(p) || riverNear(p)),
     resource: world.resources ? share(settlements, resourceNear) : NaN,
     riverEnd: rivers.length ? ends / rivers.length : NaN,

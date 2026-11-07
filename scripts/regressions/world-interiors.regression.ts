@@ -604,6 +604,9 @@ try {
   const evening = new Map<string, number>();
   for (const person of tavernTown.people) {
     if (tavernTown.workOf[person.id] === tavern.id) continue;
+    // Who works in another tavern keeps a tavern's hours (home until it opens at eleven).
+    const work = tavernTown.buildings.find((b) => b.id === tavernTown!.workOf[person.id]);
+    if (work && work.kind !== "home" && worldInteriorUse(work) === "tavern") continue;
     const where = worldTownWhere(tavernTown, person.id, 19);
     const kind =
       where === "square"

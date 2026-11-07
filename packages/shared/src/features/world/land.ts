@@ -28,8 +28,8 @@ export interface WorldResource {
 }
 
 /** A river, from its source down to where it ends: its last cell is the water it flows into, the river it
- *  joins, or a cell on the map's edge it flows off. `width` is each cell's size, 1 a stream to 3 a great
- *  river. */
+ *  joins, or a cell on the map's edge it flows off. `width` is each cell's size, 1 a stream to 5 a great
+ *  river (each size about twice the water of the one below). */
 export interface WorldRiver {
   path: number[];
   width: number[];
@@ -217,7 +217,9 @@ export function worldDrainage(land: WorldLandFields): WorldDrainage {
   const riverCount = Math.round(landCells.length * RIVER_SHARE);
   const threshold = riverCount > 0 ? flow[ranked[riverCount - 1]!]! : Infinity;
   const isRiver = (cell: number) => cell >= 0 && !isWater[cell] && flow[cell]! >= threshold;
-  const widthOf = (cell: number) => (flow[cell]! >= threshold * 5 ? 3 : flow[cell]! >= threshold * 2.2 ? 2 : 1);
+  // A river's size by how much it gathers against the least a river does: doubling it is a size up, 1 a stream
+  // to 5 a great river.
+  const widthOf = (cell: number) => Math.min(5, 1 + Math.floor(Math.log2(Math.max(1, flow[cell]! / threshold))));
   const fed = new Uint8Array(count);
   for (const cell of landCells) if (isRiver(cell) && isRiver(down[cell]!)) fed[down[cell]!] = 1;
   const sources = landCells
@@ -421,7 +423,7 @@ export function worldLandPull(
         const [x, y] = [cx + dx, cy + dy];
         if (x < 0 || y < 0 || x >= width || y >= height) continue;
         const at = y * width + x;
-        riverNear[at] = Math.max(riverNear[at]!, (dx || dy ? 0.9 : 1.2) + (size - 1) * 0.2);
+        riverNear[at] = Math.max(riverNear[at]!, (dx || dy ? 0.9 : 1.2) + (size - 1) * 0.1);
       }
   }
   for (let cell = 0; cell < pull.length; cell++) pull[cell] = pull[cell]! + riverNear[cell]!;
@@ -440,13 +442,16 @@ export function worldRoadFords(
   width: number,
   height: number,
   riverAt: ReadonlyMap<number, number>,
-  ways: ReadonlyArray<{ from: { x: number; y: number }; to: { x: number; y: number } }>,
+  ways: ReadonlyArray<{ from: { x: number; y: number }; to: { x: number; y: number }; path?: readonly number[] }>,
   settled: ReadonlySet<number>,
   wet: (cell: number) => boolean,
 ): WorldResource[] {
   const fords = new Set<number>();
   for (const way of ways) {
-    const cells = worldRoadCells(way.from, way.to, (x, y) => wet(y * width + x) || settled.has(y * width + x));
+    // A way laid along the land (generator 8) crosses where its own cells do; an older one, on its line.
+    const cells = way.path
+      ? way.path.filter((cell) => !settled.has(cell)).map((cell) => ({ x: cell % width, y: Math.floor(cell / width) }))
+      : worldRoadCells(way.from, way.to, (x, y) => wet(y * width + x) || settled.has(y * width + x));
     let onRiver = false;
     for (const { x, y } of cells) {
       if (x < 0 || y < 0 || x >= width || y >= height) continue;
@@ -465,4 +470,184 @@ export function worldRoadFords(
     kept.push(cell);
   }
   return kept.map((cell) => ({ kind: "ford" as const, at: { x: cell % width, y: Math.floor(cell / width) } }));
+}
+
+// ──────────────────────────────────────────────
+// Roads that follow the land (world generator 8): each way over land is laid along the cheapest line over
+// the ground, not the straight one, so it bends round a range and through its pass, keeps out of the
+// marsh, crosses a river where it must, and, laid shortest first, later roads join the ones already there
+// (trunk roads and branches, as roads grow). Only the ground and the rivers decide it, so the edit layer
+// lays it again the same way.
+// ──────────────────────────────────────────────
+
+/** What a step onto a cell of each ground costs, against a step over open fields. */
+export function worldStepCost(id: string, kind: string): number {
+  if (kind === "water") return Infinity;
+  if (kind === "barrier") return 9;
+  if (/suburb|city|industr|slum|town/.test(id)) return 0.8;
+  if (/marsh|swamp|bog|\bfen|wetland/.test(id)) return 3.2;
+  if (HILL.test(id)) return 2.2;
+  if (/snow|tundra|\bice\b|glacier|desert|dune|waste|crater|rubble/.test(id)) return 2;
+  if (WOODED.test(id)) return 1.7;
+  if (FERTILE.test(id)) return 1;
+  return 1.2;
+}
+
+/** A heap of cells by the cost each was pushed with, lowest first, ties by cell. */
+class PairHeap {
+  private cells: number[] = [];
+  private keys: number[] = [];
+  get size() {
+    return this.cells.length;
+  }
+  private less(a: number, b: number) {
+    const [ka, kb] = [this.keys[a]!, this.keys[b]!];
+    return ka < kb || (ka === kb && this.cells[a]! < this.cells[b]!);
+  }
+  private swap(a: number, b: number) {
+    [this.cells[a], this.cells[b]] = [this.cells[b]!, this.cells[a]!];
+    [this.keys[a], this.keys[b]] = [this.keys[b]!, this.keys[a]!];
+  }
+  push(cell: number, key: number) {
+    this.cells.push(cell);
+    this.keys.push(key);
+    let at = this.cells.length - 1;
+    while (at > 0) {
+      const up = (at - 1) >> 1;
+      if (!this.less(at, up)) break;
+      this.swap(at, up);
+      at = up;
+    }
+  }
+  pop(): number {
+    const top = this.cells[0]!;
+    const [cell, key] = [this.cells.pop()!, this.keys.pop()!];
+    if (this.cells.length) {
+      this.cells[0] = cell;
+      this.keys[0] = key;
+      let at = 0;
+      for (;;) {
+        const [l, r] = [at * 2 + 1, at * 2 + 2];
+        let least = at;
+        if (l < this.cells.length && this.less(l, least)) least = l;
+        if (r < this.cells.length && this.less(r, least)) least = r;
+        if (least === at) break;
+        this.swap(at, least);
+        at = least;
+      }
+    }
+    return top;
+  }
+}
+
+/** A road already laid costs this share of its ground to travel again (so roads join into trunks). */
+const ROAD_REUSE = 0.45;
+/** Crossing a river where no road crosses it yet: a ford to find or a bridge to build. */
+const RIVER_CROSSING = 2.5;
+/** Running along a river's bank, where a road would be under its floods: kept a cell off it where it can. */
+const RIVER_BANK = 0.6;
+
+/**
+ * The cheapest line over the land from one cell to another, eight ways (a corner step costs its length),
+ * or null when water cuts them off. `road` holds the cells roads already run over.
+ */
+export function worldLandPath(
+  width: number,
+  height: number,
+  cost: Float64Array,
+  river: ReadonlySet<number>,
+  road: ReadonlySet<number>,
+  from: number,
+  to: number,
+): number[] | null {
+  const count = width * height;
+  const best = new Float64Array(count).fill(Infinity);
+  const back = new Int32Array(count).fill(-1);
+  // Entries keep the cost they were pushed with (a cell's best only falls, and a stale entry is skipped).
+  const heap = new PairHeap();
+  best[from] = 0;
+  heap.push(from, 0);
+  const done = new Uint8Array(count);
+  const [tx, ty] = [to % width, Math.floor(to / width)];
+  const besideRiver = (x: number, y: number) => {
+    for (const [dx, dy] of NEIGHBOURS) {
+      const [nx, ny] = [x + dx, y + dy];
+      if (nx >= 0 && ny >= 0 && nx < width && ny < height && river.has(ny * width + nx)) return true;
+    }
+    return false;
+  };
+  while (heap.size) {
+    const cell = heap.pop();
+    if (done[cell]) continue;
+    done[cell] = 1;
+    if (cell === to) break;
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    for (const [dx, dy] of NEIGHBOURS) {
+      const [nx, ny] = [x + dx, y + dy];
+      if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+      const next = ny * width + nx;
+      if (done[next]) continue;
+      let step = next === to ? 1 : cost[next]!;
+      if (!Number.isFinite(step)) continue;
+      if (road.has(next)) step *= ROAD_REUSE;
+      else if (river.has(next) && !river.has(cell)) step += RIVER_CROSSING;
+      else if (!river.has(next) && besideRiver(nx, ny)) step += RIVER_BANK;
+      // A corner step costs its length, and never cuts between two cells it cannot cross.
+      if (dx && dy) {
+        if (!Number.isFinite(cost[y * width + nx]!) || !Number.isFinite(cost[ny * width + x]!)) continue;
+        step *= Math.SQRT2;
+      }
+      // A hair of the distance left, so of equally cheap lines the straighter one is kept.
+      const total = best[cell]! + step + Math.hypot(tx - nx, ty - ny) * 1e-6;
+      if (total < best[next]!) {
+        best[next] = total;
+        back[next] = cell;
+        heap.push(next, total);
+      }
+    }
+  }
+  if (!Number.isFinite(best[to]!)) return null;
+  const path = [to];
+  while (path[path.length - 1] !== from) path.push(back[path[path.length - 1]!]!);
+  return path.reverse();
+}
+
+/** A path's length in cells (a corner step is the square root of two). */
+export function worldPathLength(path: readonly number[], width: number): number {
+  let length = 0;
+  for (let i = 1; i < path.length; i++) {
+    const [a, b] = [path[i - 1]!, path[i]!];
+    length += a % width !== b % width && Math.floor(a / width) !== Math.floor(b / width) ? Math.SQRT2 : 1;
+  }
+  return length;
+}
+
+/** A routed way's cells as the map lays its road (generator 8), from `from` to `to`, leaving out the cells
+ *  `skip` names (water, a settlement's own cell). A road of four-way pieces gets a cell at each corner step,
+ *  the one of the two beside it that is not skipped, so it never pinches to a diagonal; `diagonal` keeps
+ *  the corner steps, for a pack whose road joins corner to corner. */
+export function worldPathCells(
+  path: readonly number[],
+  width: number,
+  skip: (x: number, y: number) => boolean,
+  diagonal = false,
+): Array<{ x: number; y: number }> {
+  const out: Array<{ x: number; y: number }> = [];
+  const push = (x: number, y: number) => {
+    if (!skip(x, y)) out.push({ x, y });
+  };
+  path.forEach((cell, index) => {
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    if (index > 0 && !diagonal) {
+      const before = path[index - 1]!;
+      const [px, py] = [before % width, Math.floor(before / width)];
+      if (px !== x && py !== y) {
+        // Round the corner by whichever side is open: across first, else down first.
+        if (!skip(x, py)) push(x, py);
+        else push(px, y);
+      }
+    }
+    push(x, y);
+  });
+  return out;
 }

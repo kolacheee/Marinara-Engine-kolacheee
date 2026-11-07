@@ -13,10 +13,21 @@ import { worldBriefDeepestLayer } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./art-family.js";
 import type { WorldLandFields, WorldResource, WorldRiver } from "./land.js";
-import { WORLD_RESOURCE_TAG_WORDS, worldDrainage, worldLandPull, worldResources, worldRoadFords } from "./land.js";
+import {
+  WORLD_RESOURCE_TAG_WORDS,
+  worldDrainage,
+  worldLandPath,
+  worldLandPull,
+  worldPathLength,
+  worldResources,
+  worldRoadFords,
+  worldStepCost,
+} from "./land.js";
 
-export const WORLD_GENERATOR_VERSION = 7;
-/** The generator versions this Engine makes again from a recipe exactly as they were made: 7 runs rivers
+export const WORLD_GENERATOR_VERSION = 8;
+/** The generator versions this Engine makes again from a recipe exactly as they were made: 8 lays the
+ *  roads along the land (round the ranges, through the passes, over the rivers where they must, joining into
+ *  trunk roads: worldLandPath), 7 runs rivers
  *  down the shaped ground and marks the resources settlements grow around (harbours, passes, ore, salt,
  *  timber, fishing waters, rich river soil, falls, fords), drawing settlements to them (land.ts), 6 shapes the
  *  ground as land is made (plates and mountain ranges, seas and lakes, winds and rain shadows, ground by
@@ -27,7 +38,7 @@ export const WORLD_GENERATOR_VERSION = 7;
  *  town lot a cell back from its street with a path from its door out to it, 2 adds sites (caves, ruins,
  *  crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none. A recipe of a
  *  version it reads stays editable and sharable as a recipe. */
-export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6, 7]);
+export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6, 7, 8]);
 export function worldGeneratorReads(version: unknown): boolean {
   return typeof version === "number" && WORLD_GENERATOR_VERSIONS_READ.includes(version);
 }
@@ -68,6 +79,9 @@ export interface WorldLink {
   way: string;
   /** The trip's length in the kit's days. */
   days: number;
+  /** Generator 8: the cells a way over land runs along, from `from` to `to` (y * width + x), laid along the
+   *  land rather than straight. */
+  path?: number[];
 }
 
 export interface CompiledWorld {
@@ -1069,7 +1083,7 @@ export function compileWorld({
           const beside = Math.max(Math.abs(dx), Math.abs(dy)) <= 1;
           if (beside && entry.kind === "water") fits.add("water");
           // Generator 7: a river big enough to sail beside it (for a river port, a ferry; not a sea port).
-          if (beside && (drainage?.riverAt.get(y * width + x) ?? 0) >= 2) fits.add("river");
+          if (beside && (drainage?.riverAt.get(y * width + x) ?? 0) >= 3) fits.add("river");
           if (entry.kind === "barrier" || HILL_GROUND.test(entry.id) || /asteroid|debris/.test(entry.id))
             fits.add("heights");
           if (beside && WOODED_GROUND.test(entry.id)) fits.add("woods");
@@ -1247,6 +1261,7 @@ export function compileWorld({
     terrain,
     width,
     places.filter((place) => place.depth === settlementsDepth),
+    generatorVersion >= 8 && drainage ? { rivers: new Set(drainage.riverAt.keys()) } : undefined,
   );
 
   // Generator 7: a ford where a way over open ground crosses a river, and the settlements beside it a
@@ -1254,14 +1269,14 @@ export function compileWorld({
   if (drainage) {
     const settledCells = new Set(settlementIdsCells());
     const overland = links.filter(
-      (link) => (kit.travel.find((way) => way.id === link.way)?.crosses ?? "open") === "open",
+      (link) => link.path || (kit.travel.find((way) => way.id === link.way)?.crosses ?? "open") === "open",
     );
     const at = new Map(places.map((place) => [place.id, place.at]));
     const fords = worldRoadFords(
       width,
       height,
       drainage.riverAt,
-      overland.map((link) => ({ from: at.get(link.from)!, to: at.get(link.to)! })),
+      overland.map((link) => ({ from: at.get(link.from)!, to: at.get(link.to)!, path: link.path })),
       settledCells,
       (cell) => kindOf(cell) === "water",
     );
@@ -1417,9 +1432,12 @@ function compileSites(
 export function compileLinks(
   kit: WorldKit,
   kinds: Uint8Array,
-  terrain: Array<{ kind: string }>,
+  terrain: Array<{ kind: string; id?: string }>,
   width: number,
   settlements: WorldPlace[],
+  /** Generator 8: lay the ways over land along the land (round ranges, through passes, over rivers where
+   *  they must), the rivers' cells given. */
+  routed?: { rivers: ReadonlySet<number> },
 ): WorldLink[] {
   if (settlements.length < 2) return [];
   const distance = (a: WorldPlace, b: WorldPlace) => Math.hypot(a.at.x - b.at.x, a.at.y - b.at.y);
@@ -1475,31 +1493,82 @@ export function compileLinks(
         undefined,
       );
   const daysPerCell = WORLD_DAYS_PER_CELL[kit.scale];
-  return edges
-    .sort((left, right) => left[0] - right[0] || left[1] - right[1])
-    .map(([a, b]) => {
-      const from = settlements[a]!;
-      const to = settlements[b]!;
-      // What the straight line between them crosses decides the way: a barrier needs a way that
-      // crosses anything (the kit's first), mostly water the fastest boat, otherwise the fastest way
-      // over open ground.
-      const steps = Math.max(1, Math.ceil(distance(from, to)));
+  edges.sort((left, right) => left[0] - right[0] || left[1] - right[1]);
+  if (routed) return routeLinks(edges);
+  return edges.map(([a, b]) => {
+    const from = settlements[a]!;
+    const to = settlements[b]!;
+    // What the straight line between them crosses decides the way: a barrier needs a way that
+    // crosses anything (the kit's first), mostly water the fastest boat, otherwise the fastest way
+    // over open ground.
+    const steps = Math.max(1, Math.ceil(distance(from, to)));
+    let water = 0;
+    let barrier = false;
+    for (let step = 0; step <= steps; step++) {
+      const x = Math.round(from.at.x + ((to.at.x - from.at.x) * step) / steps);
+      const y = Math.round(from.at.y + ((to.at.y - from.at.y) * step) / steps);
+      const kind = terrain[kinds[y * width + x]!]!.kind;
+      if (kind === "barrier") barrier = true;
+      if (kind === "water") water++;
+    }
+    const overWater = water / (steps + 1) > 0.3;
+    const way =
+      (barrier ? first("any") : overWater ? (fastest("water") ?? first("any")) : fastest("open")) ??
+      first("open") ??
+      fastest("any") ??
+      ways[0]!;
+    const days = Math.round(((distance(from, to) * daysPerCell) / way.speed) * 100) / 100;
+    return { from: from.id, to: to.id, way: way.id, days };
+  });
+
+  /** Generator 8: the ways laid along the land, shortest first so the longer ones join them. */
+  function routeLinks(sorted: Array<[number, number]>): WorldLink[] {
+    const height = kinds.length / width;
+    const cost = Float64Array.from(kinds, (index) => {
+      const entry = terrain[index]!;
+      return worldStepCost(entry.id ?? "", entry.kind);
+    });
+    const road = new Set<number>();
+    const cellOf = (place: WorldPlace) => place.at.y * width + place.at.x;
+    const laid = new Map<string, WorldLink>();
+    const byLength = [...sorted].sort(
+      (left, right) =>
+        distance(settlements[left[0]]!, settlements[left[1]]!) -
+          distance(settlements[right[0]]!, settlements[right[1]]!) ||
+        left[0] - right[0] ||
+        left[1] - right[1],
+    );
+    for (const [a, b] of byLength) {
+      const [from, to] = [settlements[a]!, settlements[b]!];
+      const straight = distance(from, to);
+      const steps = Math.max(1, Math.ceil(straight));
       let water = 0;
-      let barrier = false;
       for (let step = 0; step <= steps; step++) {
         const x = Math.round(from.at.x + ((to.at.x - from.at.x) * step) / steps);
         const y = Math.round(from.at.y + ((to.at.y - from.at.y) * step) / steps);
-        const kind = terrain[kinds[y * width + x]!]!.kind;
-        if (kind === "barrier") barrier = true;
-        if (kind === "water") water++;
+        if (terrain[kinds[y * width + x]!]!.kind === "water") water++;
       }
-      const overWater = water / (steps + 1) > 0.3;
-      const way =
-        (barrier ? first("any") : overWater ? (fastest("water") ?? first("any")) : fastest("open")) ??
-        first("open") ??
-        fastest("any") ??
-        ways[0]!;
-      const days = Math.round(((distance(from, to) * daysPerCell) / way.speed) * 100) / 100;
-      return { from: from.id, to: to.id, way: way.id, days };
-    });
+      const path = worldLandPath(width, height, cost, routed!.rivers, road, cellOf(from), cellOf(to));
+      const length = path ? worldPathLength(path, width) : Infinity;
+      // Over the water when there is no way round by land, or the way round is far longer than sailing.
+      const boat = fastest("water");
+      const sail = boat && water / (steps + 1) > 0.3 && length > straight * 1.6;
+      let way: (typeof ways)[number];
+      let cells: number[] | undefined;
+      if (!path || sail) {
+        way = (boat ?? first("any") ?? fastest("open") ?? ways[0])!;
+      } else {
+        // Over the mountains (a pass the land leaves no way round) by the way that crosses anything.
+        const climbs = path.some((cell) => terrain[kinds[cell]!]!.kind === "barrier");
+        way = ((climbs ? first("any") : fastest("open")) ?? first("open") ?? fastest("any") ?? ways[0])!;
+        if (way.crosses === "open" || climbs) {
+          cells = path;
+          for (const cell of path) road.add(cell);
+        }
+      }
+      const days = Math.round((((cells ? length : straight) * daysPerCell) / way.speed) * 100) / 100;
+      laid.set(`${a}:${b}`, { from: from.id, to: to.id, way: way.id, days, ...(cells ? { path: cells } : {}) });
+    }
+    return sorted.map(([a, b]) => laid.get(`${a}:${b}`)!);
+  }
 }

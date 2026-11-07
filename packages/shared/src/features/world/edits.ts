@@ -520,6 +520,10 @@ export function applyWorldEdits(
         world.terrain.map((id) => terrain.find((entry) => entry.id === id) ?? { kind: "open" }),
         width,
         places.filter((place) => place.depth === settlementsDepth),
+        // A world whose roads follow the land (generator 8) lays them again the same way.
+        world.generatorVersion >= 8 && world.rivers
+          ? { rivers: new Set(world.rivers.flatMap((river) => river.path.slice(0, -1))) }
+          : undefined,
       )
     : world.links;
   return { ...world, ground, places, links };
