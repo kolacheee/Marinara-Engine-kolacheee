@@ -1,0 +1,553 @@
+{
+  "sets": {
+    "qc": {
+      "scope": "Only BRIEF-7.md Part B: marsh-prop-0..7 and marsh@winter-prop-0..7. Approved art and references are comparison context only; no other file receives a verdict.",
+      "calibration": "Good enough to ship beside the approved art. Deliberate stepped alpha falloff is required for these overlays and is not itself a blur, antialiasing or halo defect.",
+      "brief_requirements": "RGBA overlays. Indices 0-3 are 48x48; 4-7 are 96x96 and span about 85% of their square. Summer dark still pools with lit rims, solid reeds/cattails, lily pads and translucent mud/water near 60% alpha. Winter matching pale cracked ice and dry reeds. No hard pool outline or ground square. Shared top-left light and approved pixel scale.",
+      "previous_review": {
+        "path": "art-drop/review/critic-r7B-1.json",
+        "changed_previous_failures": [
+          "marsh-prop-0",
+          "marsh-prop-3",
+          "marsh-prop-4",
+          "marsh-prop-7"
+        ],
+        "unchanged_previous_passes": [
+          "marsh-prop-1",
+          "marsh-prop-2",
+          "marsh-prop-5",
+          "marsh-prop-6",
+          "marsh@winter-prop-0",
+          "marsh@winter-prop-1",
+          "marsh@winter-prop-2",
+          "marsh@winter-prop-3",
+          "marsh@winter-prop-4",
+          "marsh@winter-prop-5",
+          "marsh@winter-prop-6",
+          "marsh@winter-prop-7"
+        ],
+        "previous_pass_reversals": [],
+        "result": "All twelve unchanged passes retained after visual reinspection. All four changed former failures now pass; their per-file assessments explain the repaired lit banks."
+      },
+      "performed": [
+        "All sixteen complete sprites visually inspected at exact nearest-neighbour 8x, on seasonal approved grass/snow and checkerboard. Each has a separately saved proof named after the full subject stem.",
+        "All sixteen inspected on neutral dirt and sand test swatches, approved grass, approved plains and approved snow; full four-row small and large sheets at native 1x and nearest-neighbour 4x. Rows run 0-3 or 4-7; columns are labeled dirt, grass, plains, sand, snow.",
+        "Four deterministic random 8x2 one-cell tilings, at both 1x and 4x: summer and winter props over grass and snow. Each small variant appears four times. No grid lines or cell frames were drawn.",
+        "Both seasons inspected at 1x and 4x in irregular mixed-size scatter, using all eight variants with four large and four small props. Repeated over the cracked-dirt reference, also at 1x and 4x. All sprites fully visible.",
+        "Approved grass/plains summer/winter context bases rendered in literal 3x3 repeats at 1x and 4x. Native full repeats and exact 4x four-way wrap crops inspected to distinguish substrate motifs from prop repetition.",
+        "Compared all 24 approved markers; summer slums, industry and city; winter counterparts; four seasonal suburb and farmland sets and their farmsteads; all four seasonal paddy sets; all four seasonal grass/plains bases and all eight details of each. No verdicts assigned to these comparison files.",
+        "Compared the approved crater overlay treatment, plus current-wasteland-craters and current-fantasy-hills references as context for the brief-wide overlay approach. Part B names no additional reference image.",
+        "Checked seams/backings, repeated silhouettes, pixel clarity, noise, edge fade versus fringe/halo, margin/size, top-left lighting, palette compatibility, solid plants, water/mud alpha and summer/winter continuity."
+      ],
+      "not_applicable": {
+        "Part_B_base_3x3": "No Part B base deliverables exist. Approved bases were tiled as comparison context only.",
+        "peak_lattice_or_range": "Part B has no peaks, so there is no peak range or lattice input. Egg-crate peaks cannot be assigned to these marsh files.",
+        "trees_in_a_forest": "Part B has no trees or crowns. Marsh placement is tested by mixed reed/pool scatter instead.",
+        "other_subject_specific_failures": "No craters, ruins, cyberpunk district or autumn files occur in Part B. Swiss-cheese craters, classical ruins, stamped cyberpunk grids, flat orange autumn and identical tree crowns are outside this verdict scope."
+      },
+      "findings": {
+        "edges_and_pixels": "No clipped foliage, opaque ground square, foreign-colour key residue or detached fringe found. Transparent RGB is zero in all sixteen. Discrete alpha edge levels blend pools and mud into the substrate; solid reed/cattail silhouettes retain crisp stepped pixels.",
+        "alpha": "Summer pool/mud cores include alpha 153/255 (60%). Their falloff uses discrete lower-alpha bands. Plants include fully opaque pixels. Winter ice has denser pale interiors and retains fading edges.",
+        "placement": "All native dimensions match. The large nonzero-alpha bounds span 80-82 px, approximately 83-85% of 96, with clear margins. No cropped tips or pool edges.",
+        "repetition": "The 8x2 layout exposes repeated occurrences, particularly the tall cattail fan, as expected from four cell-centered scatter sprites. There is no baked square/frame or joined edge seam. Unequal pool footprints and reed arrangements stay distinct; irregular mixed-size scatter removes the placement lattice. No near-duplicate variants found.",
+        "light_and_palette": "Summer olive foliage and ochre cattail heads fit approved natural details and paddies. Lit reed sides face upper-left, roots/right sides are darker. The four repaired pools now have selective upper-left bank accents. Winter straw plants and blue-grey ice fit the approved snow palette.",
+        "winter": "Every winter is populated and corresponds to its summer footprint. Pools become pale cracked ice, green plants become dry reeds, and the reed-only variant remains a valid reed-only variant."
+      },
+      "proof_pattern": "art-drop/review/critic-r7B-2-*.png",
+      "proof_png_count": 86,
+      "source_preservation": {
+        "writes_under_out": false,
+        "all_out_png_hashes_unchanged_during_review": true,
+        "out_png_count": 648,
+        "snapshot": "art-drop/review/critic-r7B-2-source-hashes.json"
+      }
+    },
+    "summer": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "files": {
+        "marsh-prop-0": {
+          "verdict": "pass",
+          "assessment": "Pass after repair. The broken pale bank across the upper-left of the notched pond now separates bank from water at 1x on grass, plains and dirt. Small adjacent surface glints support a horizontal water plane. The accent stays subordinate to the cattail clump; the exterior still fades instead of becoming an outline.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            4,
+            5,
+            44,
+            41
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "05d0e9e7633167f43a43ff29306f3248b611858f346ae38a81579d263e224cd6",
+          "unchanged_since_previous_review": false,
+          "previous_verdict": "fail",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh-prop-0-8x.png"
+        },
+        "marsh-prop-1": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. The upright cattail fan has clear brown heads, lit left leaf edges and dark root contact. It stays readable against grass, sand and snow, with no square backing or chopped tips.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            5,
+            4,
+            43,
+            44
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "59b000bc0e190c0c72d5f0b5cd12c0a77cabe10de574062451b70e50e2638a78",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh-prop-1-8x.png"
+        },
+        "marsh-prop-2": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. Two shallow wet mud patches, a brown connecting strip and three tiny rush groups remain separate at 1x. Low contrast is appropriate for this mud-focused variant; it is not being judged as a large deep-water pool.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            5,
+            10,
+            44,
+            39
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "0ab9207dc25c86a451dbfe63a3d10853a887a170f9672dc09e4a8d38a38c64ec",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh-prop-2-8x.png"
+        },
+        "marsh-prop-3": {
+          "verdict": "pass",
+          "assessment": "Pass after repair. Short pale clusters now catch the top of the raised right lobe and the left bend of the crescent, with a restrained interior glint. Those marks give the dark crescent a lit bank at 1x; they are distinguishable from the green lily pads. No continuous bright contour was added.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            4,
+            10,
+            43,
+            38
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "0339bb588b1bf8de7dba7cc30fa752c568f9d5d22aa71d13aa3f4bbecaa83265",
+          "unchanged_since_previous_review": false,
+          "previous_verdict": "fail",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh-prop-3-8x.png"
+        },
+        "marsh-prop-4": {
+          "verdict": "pass",
+          "assessment": "Pass after repair. The broad pool now has interrupted warm light-bank pixels along its top-left shoulder and a short cooler glint below the left reed stand. At 1x the open dark water remains quiet but reads as a pool bounded by an illuminated bank. This meets the lit-rim requirement without tracing the full irregular perimeter. The reeds and unequal pad clusters keep it distinct from the other large props.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            8,
+            7,
+            88,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "2158e4603d73efb6e2b6bc472e89ae84bb5e431e57d19029ef763f7595521873",
+          "unchanged_since_previous_review": false,
+          "previous_verdict": "fail",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh-prop-4-8x.png"
+        },
+        "marsh-prop-5": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. Two unequal pools, exposed connecting mud, small surface glints and asymmetric reed groups retain a clear shallow-water read. Pads and reeds remain crisp, and the outside wet edge fades on each substrate.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            8,
+            7,
+            89,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "76ab7db364a2ecdfc71ae4e3656b5328565362586b794867f6d3f4f7a4873a66",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh-prop-5-8x.png"
+        },
+        "marsh-prop-6": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. Three reed stands have different sizes and leaf/head arrangements. Left-side highlights and darker roots give the solid foliage volume; wet mud and small water patches remain subordinate. No duplicated crown or clump silhouette problem.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            7,
+            7,
+            88,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "28ea3b8ee63d4a2ac210162b5c4c5a224033e82bbd45d11b1b531210f3d24cc2",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh-prop-6-8x.png"
+        },
+        "marsh-prop-7": {
+          "verdict": "pass",
+          "assessment": "Pass after repair. The upper-left bank of the hooked lagoon now has short pale edge clusters and a small glint beneath the tall left reeds. At 1x these separate the bank from the dark hooked water rather than relying on the lily pads alone. The lower arm stays subdued and the exterior fade is retained.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            7,
+            7,
+            88,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "b284afe3bd58680553a4793c7752e397e944dd9fc5655693b7f19ef52d2275c1",
+          "unchanged_since_previous_review": false,
+          "previous_verdict": "fail",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh-prop-7-8x.png"
+        }
+      }
+    },
+    "winter": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "files": {
+        "marsh@winter-prop-0": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. The matching notched pond contains pale ice, a branching dark fissure and lighter upper-left ice marks. Dry reeds and exposed muddy contact preserve the summer placement. It is readable on approved snow at 1x.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            4,
+            5,
+            44,
+            41
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "d86731d3da06a9098ebaafca46c344c9f7d63ad2bf022254d9352d01263193b0",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh@winter-prop-0-8x.png"
+        },
+        "marsh@winter-prop-1": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. A complete straw-brown cattail fan with dark heads and root contact, corresponding to the summer reed-only prop. It is not blank and does not require an invented frozen pool.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            5,
+            4,
+            44,
+            44
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            88,
+            144,
+            255
+          ],
+          "sha256": "64b2b1a99caba05d530201417e9ec80e4946ce225996e3c62e8c622abd070ac0",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh@winter-prop-1-8x.png"
+        },
+        "marsh@winter-prop-2": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. Both shallow patches freeze to pale ice with small angular fissures, while dry shoots and the muddy connection remain visible. The quiet small sprite survives native snow and dirt composites.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            5,
+            10,
+            44,
+            39
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "2f697bdb0178f4e5b0b8f69891922a493796af8e497dc482f227811af1d0ae14",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh@winter-prop-2-8x.png"
+        },
+        "marsh@winter-prop-3": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. The crescent footprint survives with an angular upper crack, a lower ice mark and dry reeds at the left end. The light ice separates sufficiently from blue-white snow without a hard perimeter.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            4,
+            10,
+            43,
+            38
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            144,
+            192,
+            216,
+            255
+          ],
+          "sha256": "d08731710b7de2585e28d517fa31bac2c88f7063071ccd6238bc5713cb24643c",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh@winter-prop-3-8x.png"
+        },
+        "marsh@winter-prop-4": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. The broad matching frozen pool has two crack groups, pale ice bands, exposed bank and two dry reed stands. The white-blue palette fits approved winter bases and paddies; the pool does not disappear into snow.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            7,
+            7,
+            88,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "694651571262ff7781a38ffa1a03341cc8d313d4d15dbd3fbfaca4744e77ce98",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh@winter-prop-4-8x.png"
+        },
+        "marsh@winter-prop-5": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. Two unequal frozen pools retain the mud connection and varied dry reed stands. Distinct crack groups and restrained ice bands prevent a blank winter or a simple white repaint.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            8,
+            7,
+            89,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "9b4f1afb7e9bd13f3df125ee268bc7e3de572973915263d0ba26c5f7cfa886ae",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh@winter-prop-5-8x.png"
+        },
+        "marsh@winter-prop-6": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. Three unequal dry reed stands retain their summer positions and sit over muddy frozen patches. Dark roots, straw highlights and small fissures remain legible at 1x; no clipping or foreign fringe appears at 8x.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            7,
+            7,
+            89,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "72d74192878a6bd83ec6d94160d066101b73931ecab48d68b1ea846d3d2ebc6e",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh@winter-prop-6-8x.png"
+        },
+        "marsh@winter-prop-7": {
+          "verdict": "pass",
+          "assessment": "Retained pass, byte-identical. The lagoon keeps its hooked summer footprint with cracks at the upper bend and lower arm, pale upper reflections and dry reeds. Its shape remains distinguishable from the other frozen pools in scatter.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            8,
+            8,
+            89,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "84bb9baff7592320b5e955eb2dabcfa993551b876d8a90f1acf48f596fda1bde",
+          "unchanged_since_previous_review": true,
+          "previous_verdict": "pass",
+          "proof_8x": "art-drop/review/critic-r7B-2-marsh@winter-prop-7-8x.png"
+        }
+      }
+    }
+  },
+  "pass": [
+    "marsh-prop-0",
+    "marsh-prop-1",
+    "marsh-prop-2",
+    "marsh-prop-3",
+    "marsh-prop-4",
+    "marsh-prop-5",
+    "marsh-prop-6",
+    "marsh-prop-7",
+    "marsh@winter-prop-0",
+    "marsh@winter-prop-1",
+    "marsh@winter-prop-2",
+    "marsh@winter-prop-3",
+    "marsh@winter-prop-4",
+    "marsh@winter-prop-5",
+    "marsh@winter-prop-6",
+    "marsh@winter-prop-7"
+  ],
+  "fail": []
+}

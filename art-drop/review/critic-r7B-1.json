@@ -1,0 +1,491 @@
+{
+  "sets": {
+    "qc": {
+      "scope": "BRIEF-7.md Part B only: marsh-prop-0..7 and marsh@winter-prop-0..7. All other art is comparison/context only and receives no verdict.",
+      "standard": "Good enough to ship beside the approved art; deliberate transparent shoreline fading is allowed by Part B and is not itself counted as blur or antialiasing.",
+      "previous_review": "art-drop/review/critic-r7B-0.json does not exist. No previous-pass reversals.",
+      "brief_requirements": "Transparent overlays shared by every setting. Indices 0-3: 48x48; 4-7: 96x96, about 85% span. Summer dark translucent water/mud, lit pool rims, solid reeds/cattails and lily pads; winter corresponding pale cracked ice and dry reeds. No hard pool outline or ground square.",
+      "performed": [
+        "All sixteen complete files inspected at exact nearest-neighbour 8x, paired over their seasonal approved grass base and checkerboard.",
+        "All sixteen over cracked dirt, approved grass, approved plains, flat sand test swatch and approved snow; complete small/large surface sheets viewed at native 1x and nearest-neighbour 4x.",
+        "Four deterministic random 8x2 strips: summer and winter one-cell props over grass and snow, all four small variants four times each; viewed at 1x and 4x. These are transparent scatter props, not opaque edge-joining tiles.",
+        "Both seasons: irregular mixed-size scatter using all eight props, half large, with complete unclipped sprites; viewed at 1x and 4x.",
+        "Approved grass/plains summer/winter bases checked in literal 3x3 repeats at 1x and 4x, with separately enlarged four-way wrap crops, as context only. No Part B base deliverables exist.",
+        "Compared all 24 approved out markers, eight slums/industry/city tiles, all seven farmland tiles, all four seasonal paddy sets, all four seasonal grass/plains bases and all eight details per season. Also inspected the brief-wide crater overlay precedent and current crater/hill reference atlases.",
+        "Checked pixel clarity, edge fade versus unintended halo, alpha/key residue, noise, shape readability, size/margins, light direction, palette, duplicate silhouettes and summer/winter correspondence."
+      ],
+      "not_applicable": {
+        "peak_lattice_or_range": "Part B has no peaks; no egg-crate peak test inputs.",
+        "trees_in_forest": "Part B has no trees or crowns; mixed marsh scatter is its appropriate placement composite.",
+        "other_subject_specific_failures": "No crater, ruin, cyberpunk district or autumn deliverables occur in Part B. Swiss-cheese craters, classical ruins, stamped cyberpunk grids, flat orange autumn and identical crowns cannot be assigned to these sixteen marsh files."
+      },
+      "common_findings": {
+        "format_and_placement": "Every subject has the required native dimensions and clear margins. Large occupied bounds span 80-82 pixels (about 83-85% of 96). No cropped stalks or square backing found.",
+        "alpha_and_edges": "Summer water/mud uses a 153/255 interior with discrete 144/104/56/24 edge levels; winter ice reaches 216/255 and also fades in discrete steps. Solid plant pixels are present. Transparent RGB is zero in all sixteen; no magenta residue or foreign fringe found. The intended translucent edge fade is acceptable.",
+        "repetition": "The four small silhouettes and four large silhouettes are distinguishable. A four-variant cell strip necessarily reveals repeated placements, but there is no opaque tile boundary or baked square grid; irregular mixed-size scatter removes the strip layout. The approved bases retain their own discoverable motif repeats; these are not defects assigned to marsh overlays.",
+        "lighting_and_palette": "Reed highlights generally face top-left, with darker right/root clusters. Olive summer foliage, ochre heads, straw winter foliage and pale blue-grey ice fit the comparison art. Four summer pool banks are too weak to meet the lit-rim requirement; these are individually failed.",
+        "winter": "All eight winters are populated and correspond to their summer design; water becomes pale ice with visible angular fissures, and green reeds become dry straw. The reed-only index 1 correctly remains reed-only."
+      },
+      "proof_files": "All review PNGs use art-drop/review/critic-r7B-1-*.png. 8x individual filenames contain the exact subject stem. Surface, 8x2, mixed-scatter and reference proofs are named by subject and scale.",
+      "source_preservation": {
+        "writes_under_out": false,
+        "all_sixteen_reviewed_sources_byte_unchanged": true,
+        "unrelated_external_changes_detected": [
+          "scifi-street@winter-base.png"
+        ]
+      }
+    },
+    "summer": {
+      "pass_count": 4,
+      "fail_count": 4,
+      "files": {
+        "marsh-prop-0": {
+          "verdict": "fail",
+          "assessment": "Fail: weak water-plane/shore separation; see fail entry.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            4,
+            5,
+            44,
+            41
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "73dc81dabcbea7ed8458b931ebdd6d4ee23d889b2f1e74f2a6292dd3dac8c96b"
+        },
+        "marsh-prop-1": {
+          "verdict": "pass",
+          "assessment": "Pass: distinct upright cattail fan, readable solid stalks and ochre heads; no rectangular backing, and the root contact remains grounded on all five surfaces.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            5,
+            4,
+            43,
+            44
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "59b000bc0e190c0c72d5f0b5cd12c0a77cabe10de574062451b70e50e2638a78"
+        },
+        "marsh-prop-2": {
+          "verdict": "pass",
+          "assessment": "Pass: intentionally shallow muddy puddles rather than a deep pond. The two dark wet patches, earth bridge, small glints and three rush groups remain distinguishable at native size. The quiet contrast is appropriate for this mud-focused variant.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            5,
+            10,
+            44,
+            39
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "0ab9207dc25c86a451dbfe63a3d10853a887a170f9672dc09e4a8d38a38c64ec"
+        },
+        "marsh-prop-3": {
+          "verdict": "fail",
+          "assessment": "Fail: crescent pool lacks a legible lit bank; see fail entry.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            4,
+            10,
+            43,
+            38
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "5b8ab13399bf64e1de969aab1a2158856272aab6748b5ed6a6f3470ee8520b07"
+        },
+        "marsh-prop-4": {
+          "verdict": "fail",
+          "assessment": "Fail: broad water shape lacks a legible lit bank; see fail entry.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            8,
+            7,
+            88,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "743c8013ce2ce86dcc1247c264163e9461897da948073802956740e5b19318a0"
+        },
+        "marsh-prop-5": {
+          "verdict": "pass",
+          "assessment": "Pass: two separate pools, a lighter exposed mud connection and short pale water marks distinguish bank from water at 1x. The asymmetric reeds/pads avoid the broad flat-fill problem of 4.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            8,
+            7,
+            89,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "76ab7db364a2ecdfc71ae4e3656b5328565362586b794867f6d3f4f7a4873a66"
+        },
+        "marsh-prop-6": {
+          "verdict": "pass",
+          "assessment": "Pass: three unequal reed groups provide a strong, varied silhouette. Their lit left leaf edges, darker right/root clusters and subordinate translucent wet mud survive the native scatter test.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            7,
+            7,
+            88,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "28ea3b8ee63d4a2ac210162b5c4c5a224033e82bbd45d11b1b531210f3d24cc2"
+        },
+        "marsh-prop-7": {
+          "verdict": "fail",
+          "assessment": "Fail: hooked water shape lacks a legible lit bank; see fail entry.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            7,
+            7,
+            88,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            104,
+            144,
+            153,
+            255
+          ],
+          "sha256": "347b45ac277d2940d5a08f08ef10a4524d35ad525393f504564392147813a1fe"
+        }
+      }
+    },
+    "winter": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "files": {
+        "marsh@winter-prop-0": {
+          "verdict": "pass",
+          "assessment": "Pass: same notched pond/reed layout as summer; pale ice, a branching crack, exposed brown shoreline and dry stalks stay readable on snow.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            4,
+            5,
+            44,
+            41
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "d86731d3da06a9098ebaafca46c344c9f7d63ad2bf022254d9352d01263193b0"
+        },
+        "marsh@winter-prop-1": {
+          "verdict": "pass",
+          "assessment": "Pass: a complete dry cattail fan corresponding to the summer reed-only prop. It does not need an invented pool; root contact and straw/dark-brown separation work on snow.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            5,
+            4,
+            44,
+            44
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            88,
+            144,
+            255
+          ],
+          "sha256": "64b2b1a99caba05d530201417e9ec80e4946ce225996e3c62e8c622abd070ac0"
+        },
+        "marsh@winter-prop-2": {
+          "verdict": "pass",
+          "assessment": "Pass: both shallow puddles are frozen, with small angular dark fissures, pale ice marks, dry shoots and the retained mud bridge. Quiet but not blank or erased.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            5,
+            10,
+            44,
+            39
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "2f697bdb0178f4e5b0b8f69891922a493796af8e497dc482f227811af1d0ae14"
+        },
+        "marsh@winter-prop-3": {
+          "verdict": "pass",
+          "assessment": "Pass: crescent footprint retained; the branching upper fissure, lower ice mark, pale left-side highlight and small dry reed give a coherent frozen-pool read.",
+          "size": [
+            48,
+            48
+          ],
+          "occupied_bbox_exclusive": [
+            4,
+            10,
+            43,
+            38
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            144,
+            192,
+            216,
+            255
+          ],
+          "sha256": "d08731710b7de2585e28d517fa31bac2c88f7063071ccd6238bc5713cb24643c"
+        },
+        "marsh@winter-prop-4": {
+          "verdict": "pass",
+          "assessment": "Pass: broad matching ice footprint, multiple angular cracks, grouped pale reflections and two dry reed stands. It retains useful contrast against the blue-white approved snow without a hard pool outline.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            7,
+            7,
+            88,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "694651571262ff7781a38ffa1a03341cc8d313d4d15dbd3fbfaca4744e77ce98"
+        },
+        "marsh@winter-prop-5": {
+          "verdict": "pass",
+          "assessment": "Pass: both matching pools contain fissures, with exposed connecting mud and varied dry reed groups. Neither pool disappears into the snow.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            8,
+            7,
+            89,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "9b4f1afb7e9bd13f3df125ee268bc7e3de572973915263d0ba26c5f7cfa886ae"
+        },
+        "marsh@winter-prop-6": {
+          "verdict": "pass",
+          "assessment": "Pass: three unequal straw clumps, matching wet-ground footprint and small cracked ice patches. The grouped highlights and dark root contact fit the approved natural-detail rendering.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            7,
+            7,
+            89,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "72d74192878a6bd83ec6d94160d066101b73931ecab48d68b1ea846d3d2ebc6e"
+        },
+        "marsh@winter-prop-7": {
+          "verdict": "pass",
+          "assessment": "Pass: matching hooked lagoon, cracks at the left bend and lower arm, pale upper reflections and dry reeds. The winter shape is distinct from the surrounding snow and from the other pools.",
+          "size": [
+            96,
+            96
+          ],
+          "occupied_bbox_exclusive": [
+            8,
+            8,
+            89,
+            89
+          ],
+          "alpha_levels": [
+            0,
+            24,
+            40,
+            56,
+            88,
+            104,
+            144,
+            153,
+            192,
+            216,
+            255
+          ],
+          "sha256": "84bb9baff7592320b5e955eb2dabcfa993551b876d8a90f1acf48f596fda1bde"
+        }
+      }
+    }
+  },
+  "pass": [
+    "marsh-prop-1",
+    "marsh-prop-2",
+    "marsh-prop-5",
+    "marsh-prop-6",
+    "marsh@winter-prop-0",
+    "marsh@winter-prop-1",
+    "marsh@winter-prop-2",
+    "marsh@winter-prop-3",
+    "marsh@winter-prop-4",
+    "marsh@winter-prop-5",
+    "marsh@winter-prop-6",
+    "marsh@winter-prop-7"
+  ],
+  "fail": [
+    {
+      "name": "marsh-prop-0",
+      "problems": "The small pond has no readable top-left lit shoreline. In the grass/plains 1x surface proofs and random strip, its water merges into a mottled dark ground stain; the pale marks are lily pads or isolated surface flecks, not a lit rim. Add a short, coherent cluster of lighter bank pixels just inside the upper-left fading edge, with a small adjacent water glint. Preserve the translucent interior and the fade; do not outline the whole pool."
+    },
+    {
+      "name": "marsh-prop-3",
+      "problems": "The crescent pool reads as a flat dark crescent with green dots at 1x. Its top/left bank has essentially the same dark-to-transparent falloff as its unlit side, so it misses the explicitly requested lit rim. Give selected upper-left shoreline sections a narrow, broken light accent and a darker inner water edge. Keep the outside fade and avoid a continuous hard contour."
+    },
+    {
+      "name": "marsh-prop-4",
+      "problems": "The broad pool is an almost uniform dark green patch at map scale. The tiny ochre marks and lily pads do not establish an illuminated upper-left bank; the large exposed top/left shoreline remains a diffuse stain even in the 4x surface and 8x individual proofs. Draw a few connected, restrained light-bank clusters along that shore, with short water glints, so the pool has a clear horizontal water surface without adding a hard perimeter or losing its roughly 60% alpha."
+    },
+    {
+      "name": "marsh-prop-7",
+      "problems": "The hooked lagoon has a readable footprint but lacks the required lit rim: its long upper-left bend fades uniformly into grass/plains, leaving a dark C-shaped stain decorated with bright pads. Separate a few top-left bank segments from the dark water with deliberate light pixel clusters and one or two quiet surface glints. Keep the unlit shore subdued and all outer edges fading; do not turn the repair into a bright outline."
+    }
+  ]
+}
