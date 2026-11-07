@@ -1,0 +1,255 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-9.md, Part B only: suburb<season>-yard-0..7.png; 32 files.",
+      "calibration": "Good enough to ship beside the approved art. Native-size readability decides the verdict; magnification checks pixel construction. No failure quota.",
+      "previous_review": "art-drop/review/critic-r9B-0.json does not exist. No prior pass is being reversed.",
+      "references": [
+        "art-drop/BRIEF-9.md (Part B, inherited style/scale and neighbourhood QC)",
+        "art-drop/BRIEF-8.md (standing-prop style context)",
+        "art-drop/out/modern-marker0..3.png",
+        "art-drop/out/jazz_age-marker0..3.png",
+        "art-drop/out/city-0.png and city@winter-0.png",
+        "art-drop/out/industry-0.png and industry@winter-0.png",
+        "art-drop/out/slums-0.png and slums@winter-0.png",
+        "art-drop/out/farmland-0.png and farmland@winter-0.png",
+        "art-drop/out/modern-farmstead<season>.png and jazz_age-farmstead<season>.png (summer/winter comparison)",
+        "art-drop/out/paddies<season>-0.png and -4.png",
+        "art-drop/out/grass<season>-base.png and -detail-0.png",
+        "art-drop/out/plains<season>-base.png and -detail-0.png",
+        "art-drop/out/suburb<season>-house-0..11.png (scale and neighbourhood context only)",
+        "art-drop/out/forest<season>-floor-base.png (forest composite backdrop only)",
+        "art-drop/reference/road-modern.png",
+        "art-drop/reference/modern-house.png",
+        "art-drop/reference/jazz_age-house.png",
+        "art-drop/reference/suburbs-now-in-game.png",
+        "art-drop/reference/current-fantasy-treeline_forest.png",
+        "art-drop/reference/current-fantasy-treeline_forest@autumn.png"
+      ],
+      "not_applicable": {
+        "peak_lattice_or_range": "No peaks or mountain sprites occur in Part B. No peak lattice or egg-crate verdict is invented.",
+        "target_base_tiling": "No base textures occur in Part B. Literal 3x3 repeats of the approved grass/plains backgrounds were saved for context; only yard files receive verdicts.",
+        "craters_ruins_cyberpunk": "Part B has no crater, ruin or cyberpunk assets. None of the yard props introduces Swiss-cheese craters, classical columns or a stamped neon city grid."
+      }
+    },
+    "checks": {
+      "individuals": "All 32 targets viewed at native 1x and nearest-neighbour 4x on matching seasonal grass; every file also viewed at 8x, full 48x48 source canvas, in labelled groups 0-3 and 4-7 on alternating light/olive backgrounds. The 8x sheets retain every pixel. No interpolated enlargement was used.",
+      "neighbourhood": "Four 384x288 seasonal scenes viewed at 1x/4x: approved grass, a continuous horizontal road from road-modern.png, all 12 house designs, each yard prop twice, varied setbacks and empty outer corner slots. Houses are context only. Yard props sit in proportion and do not bring cell backings or street-grid stamps. The two winter failures remain unreadable in this context.",
+      "random_8x2": "Four literal 8-column by 2-row prop layouts viewed at 1x/4x. Each row is a separately shuffled permutation of all eight designs (seed 901); layout order is recorded in critic-r9B-1-audit.json. Transparent cells produce no tile joins, rectangular matte or clipping. Reuse does not produce an objectionable baked-in grid at intended yard density.",
+      "forest": "The four seasonal tree-cluster sprites were composited in 288x192 forests and viewed at 1x/4x. Seeded offsets, overlapping rows, later-row occlusion and a thinning edge expose outlines and crown relationships. No pale fringe or square base appears. Within each cluster, the tall rear crown, broad left crown and small right crown differ in size and contour; they are not three cloned crowns. Dense reuse of the single yard-cluster design is a stress test, not an expansion of Part B into a forest-variant brief.",
+      "base_context": "Approved seasonal grass and plains were each repeated literally 3x3 (864x864), saved at 1x and 4x. All eight full 1x repeats and exact 4x crops of their four-way joins were inspected. Broad pre-existing ground motifs recur, especially spring/plains; no new seam or ground repeat is attributed to the transparent yard props. The approved bases receive no new verdict.",
+      "dimensions_and_placement": "All 32 are 48x48 RGBA. Painted widths are 24-28 px (50-58% of the cell), consistent with the revised 50-60% scale. Painted heights are 14-26 px, appropriately lower for a hedge, car or fence than for a shed/tree. Every painted bottom is y=46; horizontal centres are x=23 or 23.5. No clipping or misplaced anchor.",
+      "edges_blur_and_noise": "All alpha values are 0 or 255, transparent RGB is zero, and every target has one 8-connected painted component. Visual 8x inspection finds crisp deliberate pixel clusters, dark contours, no antialiased ramp, blur, detached specks, matte halo or key-colour fringe. Shed shingles and garden vegetation remain structured at 1x rather than salt-and-pepper noise.",
+      "light_and_palette": "Top/left highlight planes and darker right/lower planes agree with the top-left light of the approved modern/jazz_age markers. Cream/brown structures, muted terracotta roofs, olive foliage, blue-green water and blue-grey snow sit beside the approved round-2 art, paddies and seasonal ground/details without an unapproved neon or saturated palette intrusion.",
+      "duplicates": "No same-season exact duplicates. All eight functions have distinct silhouettes. Identical spring/autumn shed, car and fence files are reasonable persistence of non-vegetated objects, not missing seasonal foliage treatment. Vegetation changes in the remaining spring/autumn props; winter is painted differently in every index.",
+      "seasons": "Autumn foliage retains light/shadow and mixes ochre, rust, brown and remaining green; it is not a flat orange fill. Winter hedge, shed, playground, trees, car and fence retain material/structural cues beneath snow. The winter pool and vegetable patch erase too much of the identifying structure and fail separately below.",
+      "style_and_subjects": "All eight requested prop types are present. The parked car is a generic boxy vintage form compatible with jazz_age and modern; no satellite dish, clearly modern vehicle, fantasy accessory or cyberpunk equipment appears.",
+      "evidence": "Composites use the art-drop/review/critic-r9B-1-*.png prefix. Detailed bboxes, palette counts, connected components, shuffled orders and SHA-256 hashes are in critic-r9B-1-audit.json."
+    },
+    "hedge_row": {
+      "files": [
+        "suburb-yard-0",
+        "suburb@spring-yard-0",
+        "suburb@autumn-yard-0",
+        "suburb@winter-yard-0"
+      ],
+      "status": "pass",
+      "review": "Low irregular hedge with an olive upper highlight and dark green underside. Reads at native size without a rectangular ground patch. Spring greens, mixed autumn ochre/green and winter snow with an exposed hedge underside remain identifiable."
+    },
+    "garden_shed": {
+      "files": [
+        "suburb-yard-1",
+        "suburb@spring-yard-1",
+        "suburb@autumn-yard-1",
+        "suburb@winter-yard-1"
+      ],
+      "status": "pass",
+      "review": "A small gabled timber shed with a readable door, window, cream siding and terracotta roof. Its 24 px width is 50% of the cell and remains smaller than the houses. Roof texture holds at 8x, and winter snow preserves the front and side walls."
+    },
+    "pool": {
+      "files": [
+        "suburb-yard-2",
+        "suburb@spring-yard-2",
+        "suburb@autumn-yard-2",
+        "suburb@winter-yard-2"
+      ],
+      "status": "mixed",
+      "review": "Summer/spring/autumn have a clear blue-green water plane, pale coping, darker back rim and warm outer edge. Those three pass the neighbourhood, shuffled-cell and 8x checks. Winter loses the recessed basin and continuous inner boundary and fails."
+    },
+    "playground": {
+      "files": [
+        "suburb-yard-3",
+        "suburb@spring-yard-3",
+        "suburb@autumn-yard-3",
+        "suburb@winter-yard-3"
+      ],
+      "status": "pass",
+      "review": "The framed play structure and separate terracotta slide remain legible at 1x; dark support edges and the pale slide highlight separate the parts at 4x/8x. Autumn vegetation changes are restrained. Winter retains the support frame, ladder/slide silhouette and exposed slide material."
+    },
+    "vegetable_patch": {
+      "files": [
+        "suburb-yard-4",
+        "suburb@spring-yard-4",
+        "suburb@autumn-yard-4",
+        "suburb@winter-yard-4"
+      ],
+      "status": "mixed",
+      "review": "Growing-season crops/seedlings, brown soil rows and supports distinguish the bed at 1x, with spring intentionally less grown and autumn retaining shaded warm foliage and green crop accents. Winter flattens the garden to snow plus one stake and fails."
+    },
+    "small_tree_cluster": {
+      "files": [
+        "suburb-yard-5",
+        "suburb@spring-yard-5",
+        "suburb@autumn-yard-5",
+        "suburb@winter-yard-5"
+      ],
+      "status": "pass",
+      "review": "Three crowns differ in height, width and outline, with visible brown trunks and coherent top-left foliage shading. Forest overlaps remain clean. Autumn combines shaded orange/ochre crowns with a green smaller tree. Winter retains all three crown silhouettes and exposed trunk structure, rather than a blank white replacement."
+    },
+    "parked_car": {
+      "files": [
+        "suburb-yard-6",
+        "suburb@spring-yard-6",
+        "suburb@autumn-yard-6",
+        "suburb@winter-yard-6"
+      ],
+      "status": "pass",
+      "review": "Compact brown boxy car with a blue-grey roof, pale windows/headlamp area, dark wheels and readable hood/cabin separation. Generic vintage form fits both intended settings. Winter snow leaves windows, body, wheels and the same silhouette readable."
+    },
+    "picket_fence_corner": {
+      "files": [
+        "suburb-yard-7",
+        "suburb@spring-yard-7",
+        "suburb@autumn-yard-7",
+        "suburb@winter-yard-7"
+      ],
+      "status": "pass",
+      "review": "Two receding runs meet at a readable corner. Light picket faces and darker side/post pixels give the small cream fence depth; pointed tops and gaps remain clear at map size. Winter adds snow accents while preserving the fence geometry."
+    },
+    "integrity": {
+      "out_png_count": 696,
+      "all_out_png_sha256_unchanged": true,
+      "target_count": 32,
+      "pass_count": 30,
+      "fail_count": 2,
+      "composites": [
+        "critic-r9B-1-approved-art-comparison-1x.png",
+        "critic-r9B-1-approved-art-comparison-4x.png",
+        "critic-r9B-1-approved-ground-round2-comparison-1x.png",
+        "critic-r9B-1-approved-ground-round2-comparison-4x.png",
+        "critic-r9B-1-autumn-grass-3x3-1x.png",
+        "critic-r9B-1-autumn-grass-3x3-4x.png",
+        "critic-r9B-1-autumn-grass-join-4x.png",
+        "critic-r9B-1-autumn-individuals-0-3-8x.png",
+        "critic-r9B-1-autumn-individuals-1x.png",
+        "critic-r9B-1-autumn-individuals-4-7-8x.png",
+        "critic-r9B-1-autumn-individuals-4x.png",
+        "critic-r9B-1-autumn-neighbourhood-1x.png",
+        "critic-r9B-1-autumn-neighbourhood-4x.png",
+        "critic-r9B-1-autumn-plains-3x3-1x.png",
+        "critic-r9B-1-autumn-plains-3x3-4x.png",
+        "critic-r9B-1-autumn-plains-join-4x.png",
+        "critic-r9B-1-autumn-random-8x2-1x.png",
+        "critic-r9B-1-autumn-random-8x2-4x.png",
+        "critic-r9B-1-autumn-tree-clusters-forest-1x.png",
+        "critic-r9B-1-autumn-tree-clusters-forest-4x.png",
+        "critic-r9B-1-named-style-references-1x.png",
+        "critic-r9B-1-named-style-references-4x.png",
+        "critic-r9B-1-road-source-4x.png",
+        "critic-r9B-1-spring-grass-3x3-1x.png",
+        "critic-r9B-1-spring-grass-3x3-4x.png",
+        "critic-r9B-1-spring-grass-join-4x.png",
+        "critic-r9B-1-spring-individuals-0-3-8x.png",
+        "critic-r9B-1-spring-individuals-1x.png",
+        "critic-r9B-1-spring-individuals-4-7-8x.png",
+        "critic-r9B-1-spring-individuals-4x.png",
+        "critic-r9B-1-spring-neighbourhood-1x.png",
+        "critic-r9B-1-spring-neighbourhood-4x.png",
+        "critic-r9B-1-spring-plains-3x3-1x.png",
+        "critic-r9B-1-spring-plains-3x3-4x.png",
+        "critic-r9B-1-spring-plains-join-4x.png",
+        "critic-r9B-1-spring-random-8x2-1x.png",
+        "critic-r9B-1-spring-random-8x2-4x.png",
+        "critic-r9B-1-spring-tree-clusters-forest-1x.png",
+        "critic-r9B-1-spring-tree-clusters-forest-4x.png",
+        "critic-r9B-1-summer-grass-3x3-1x.png",
+        "critic-r9B-1-summer-grass-3x3-4x.png",
+        "critic-r9B-1-summer-grass-join-4x.png",
+        "critic-r9B-1-summer-individuals-0-3-8x.png",
+        "critic-r9B-1-summer-individuals-1x.png",
+        "critic-r9B-1-summer-individuals-4-7-8x.png",
+        "critic-r9B-1-summer-individuals-4x.png",
+        "critic-r9B-1-summer-neighbourhood-1x.png",
+        "critic-r9B-1-summer-neighbourhood-4x.png",
+        "critic-r9B-1-summer-plains-3x3-1x.png",
+        "critic-r9B-1-summer-plains-3x3-4x.png",
+        "critic-r9B-1-summer-plains-join-4x.png",
+        "critic-r9B-1-summer-random-8x2-1x.png",
+        "critic-r9B-1-summer-random-8x2-4x.png",
+        "critic-r9B-1-summer-tree-clusters-forest-1x.png",
+        "critic-r9B-1-summer-tree-clusters-forest-4x.png",
+        "critic-r9B-1-winter-grass-3x3-1x.png",
+        "critic-r9B-1-winter-grass-3x3-4x.png",
+        "critic-r9B-1-winter-grass-join-4x.png",
+        "critic-r9B-1-winter-individuals-0-3-8x.png",
+        "critic-r9B-1-winter-individuals-1x.png",
+        "critic-r9B-1-winter-individuals-4-7-8x.png",
+        "critic-r9B-1-winter-individuals-4x.png",
+        "critic-r9B-1-winter-neighbourhood-1x.png",
+        "critic-r9B-1-winter-neighbourhood-4x.png",
+        "critic-r9B-1-winter-plains-3x3-1x.png",
+        "critic-r9B-1-winter-plains-3x3-4x.png",
+        "critic-r9B-1-winter-plains-join-4x.png",
+        "critic-r9B-1-winter-random-8x2-1x.png",
+        "critic-r9B-1-winter-random-8x2-4x.png",
+        "critic-r9B-1-winter-readability-evidence-1x.png",
+        "critic-r9B-1-winter-readability-evidence-4x.png",
+        "critic-r9B-1-winter-readability-evidence-8x.png",
+        "critic-r9B-1-winter-tree-clusters-forest-1x.png",
+        "critic-r9B-1-winter-tree-clusters-forest-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "suburb-yard-0",
+    "suburb-yard-1",
+    "suburb-yard-2",
+    "suburb-yard-3",
+    "suburb-yard-4",
+    "suburb-yard-5",
+    "suburb-yard-6",
+    "suburb-yard-7",
+    "suburb@spring-yard-0",
+    "suburb@spring-yard-1",
+    "suburb@spring-yard-2",
+    "suburb@spring-yard-3",
+    "suburb@spring-yard-4",
+    "suburb@spring-yard-5",
+    "suburb@spring-yard-6",
+    "suburb@spring-yard-7",
+    "suburb@autumn-yard-0",
+    "suburb@autumn-yard-1",
+    "suburb@autumn-yard-2",
+    "suburb@autumn-yard-3",
+    "suburb@autumn-yard-4",
+    "suburb@autumn-yard-5",
+    "suburb@autumn-yard-6",
+    "suburb@autumn-yard-7",
+    "suburb@winter-yard-0",
+    "suburb@winter-yard-1",
+    "suburb@winter-yard-3",
+    "suburb@winter-yard-5",
+    "suburb@winter-yard-6",
+    "suburb@winter-yard-7"
+  ],
+  "fail": [
+    {
+      "name": "suburb@winter-yard-2",
+      "problems": "FAIL: winter snow erases the pool basin. At 1x on winter grass, and in the neighbourhood/random 8x2 proofs, this reads as an irregular white mound with orange feet rather than a pool. At 4x/8x the pale blue interior, coping and snow spill into one continuous surface; only a short dark back rim remains, and the front/side inner boundary has disappeared. Keep the winter treatment, but restore a continuous readable coping/inner rim, a darker blue-grey recessed ice or pool-cover plane, and a clear front/side lip. Confine snow to the rim and surrounding shrubs so the basin retains its rectangular perspective. Evidence: critic-r9B-1-winter-readability-evidence-{1,4,8}x.png and winter-neighbourhood-{1,4}x.png."
+    },
+    {
+      "name": "suburb@winter-yard-4",
+      "problems": "FAIL: the vegetable patch becomes a nearly blank snow slab with one upright stick. At native 1x the crop rows, plants and trellis structure that identify the other three seasons are gone; the 4x/8x views show a broad uninterrupted snow fill inside a thin brown edge, with no bed divisions or recognizable garden structure. Preserve the snow-covered dormant bed, but expose two or three dark soil/furrow breaks, a few brown dormant stalks and the second support/crosspiece from the growing-season patch. It must read as a winter vegetable garden without needing the summer file beside it. Evidence: critic-r9B-1-winter-readability-evidence-{1,4,8}x.png and winter-random-8x2-{1,4}x.png."
+    }
+  ]
+}

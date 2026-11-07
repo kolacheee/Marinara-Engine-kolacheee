@@ -1,0 +1,183 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-9.md Part B only: 8 yard props in four seasons, 32 transparent 48x48 PNGs. Part A houses are scale/neighbourhood context, not verdict targets.",
+      "calibration": "Good enough to ship beside the approved art; all 32 viewed at 1x, exact nearest-neighbour 4x and full-canvas 8x. No failure quota.",
+      "previous_review": "critic-r9B-1.json and its per-file SHA-256 audit were checked. All 30 prior passes are byte-for-byte unchanged and retain their passes. Only suburb@winter-yard-2 and suburb@winter-yard-4 changed. No concrete new defect was found in the unchanged files.",
+      "references": [
+        "BRIEF-9.md, inherited standing-prop style in BRIEF-8.md, and approved round-2 context in BRIEF-2.md",
+        "out/modern-marker0..3.png and out/jazz_age-marker0..3.png",
+        "reference/modern-house.png and reference/jazz_age-house.png",
+        "reference/current-fantasy-treeline_forest.png and current-fantasy-treeline_forest@autumn.png",
+        "reference/road-modern.png",
+        "out/city-0.png, industry-0.png, slums-0.png, farmland-0.png and their @winter counterparts",
+        "out/modern-farmstead.png, jazz_age-farmstead.png and their @winter counterparts",
+        "out/paddies<season>-0.png and -4.png in all four seasons",
+        "out/grass<season>-base.png, grass<season>-detail-0.png, plains<season>-base.png and plains<season>-detail-0.png in all four seasons",
+        "out/suburb<season>-house-0..11.png for scale and neighbourhood context",
+        "out/forest<season>-floor-base.png as the forest-composite backdrop"
+      ],
+      "not_applicable": {
+        "peak_lattice_or_range": "Part B contains no peaks. No peak composite or egg-crate verdict applies.",
+        "target_bases": "Part B contains no bases. Literal 3x3 repeats of the approved grass/plains are background checks only; those files receive no verdict.",
+        "craters_ruins_cyberpunk": "No craters, ruins or cyberpunk assets occur in Part B. No Swiss-cheese crater, classical-ruin architecture or neon street grid is introduced by these props."
+      }
+    },
+    "checks": {
+      "individuals": "All four seasonal 1x and 4x individual strips inspected; all eight 8x group sheets inspected, covering every source pixel of every target. Olive/light neutral backgrounds expose edges independently of seasonal grass.",
+      "neighbourhood": "Four 384x288 road-and-grass neighbourhoods inspected at 1x and 4x. Each includes all 12 house designs and each yard prop twice, varied setbacks and a thinning outer edge. The yards remain subordinate to the houses, with distinguishable silhouettes and no rectangular ground backing. The two repaired winter subjects remain identifiable among houses without consulting their summer images.",
+      "random_8x2": "All four literal eight-column/two-row layouts inspected at 1x/4x. Each row is a separately shuffled permutation of the eight props (seed 901; orders in audit). No cell frames, seams, opaque square backing or clipped edges. The eight functions do not become near-duplicate stamps at neighbourhood density.",
+      "forest": "All four seasonal tree-cluster forests inspected at 1x/4x, with overlapping crowns, jitter, row occlusion and a loose edge. Crowns within a cluster have different sizes, heights and contours; no matte fringe appears between overlapping sprites. Repeating this single yard design over an entire forest makes its three-tree arrangement perceptible, especially in autumn. This is an intentionally dense stress test; at the brief's scattered yard density it does not read as a stamped pattern and does not justify reversing the unchanged prior pass.",
+      "base_3x3": "Eight approved grass/plains bases repeated literally 3x3 and saved at 1x/4x. Inspected every complete 1x repeat and exact 4x crops across their four-way joins. Pre-existing diagonal ground motifs recur, especially on spring/plains; no new rectangular seam or tile grid is caused by transparent yard sprites. These approved backgrounds are outside the verdict scope.",
+      "size_and_placement": "All 32 are 48x48 RGBA. Painted widths are 24-28 px, 50-58% of the cell, consistent with the revised 50-60% scale. Heights are 14-26 px, allowing low hedge/car/fence silhouettes. Bottom painted row is y=46 in every file, horizontal centres x=23 or 23.5. Both repaired sprites are 27 px wide; winter pool 21 px high, winter garden 24 px high. No clipped edge or misplaced foot.",
+      "edges_and_pixels": "All alpha values are exactly 0/255; hidden transparent RGB is zero. Every sprite has one 8-connected painted component. Visual 8x inspection finds crisp pixel clusters, no blur, antialiasing, detached specks, key-colour fringe or pale matte halo. Texture does not dissolve into noisy speckle at native size.",
+      "light_and_palette": "Upper/left planes are lighter and right/lower planes darker, consistent with the approved top-left light. Muted olive foliage, cream wood, terracotta/brown structures, blue-grey car roof and cool snow fit the modern/jazz_age markers and the approved round-2, paddies and ground/detail palettes. The new frozen pool uses the established slate-blue family, without a saturated cyan intrusion.",
+      "duplicates": "No same-season exact duplicates; all eight subjects have distinct functions and silhouettes. Spring/autumn copies of the non-vegetated shed, car and fence are intentional seasonal persistence, not redundant within-season variants. The three crowns in a cluster are not identical clones.",
+      "seasons": "Autumn retains ochre highlights, rust/brown shadows and a smaller green tree, avoiding a flat orange fill. All eight winter sprites preserve structural or material cues. Pool and garden now retain subject-specific interior structure under snow; neither is a blank white substitute.",
+      "subjects": "All requested subjects are present: hedge, shed, pool, playground, vegetable garden, small trees, parked car and fence corner. The car is a generic boxy vintage form compatible with both intended settings. No satellite dishes, fantasy accessories or cyberpunk details.",
+      "repair_comparison": "Before/current winter pool and garden compared at 1x/4x/8x in winter-repair-comparison proofs. Before panels are taken from the preserved critic-r9B-1 proof; current panels use current out files. Current winter neighbourhood/random and individual 8x proofs independently confirm the repair."
+    },
+    "hedge_row": {
+      "files": [
+        "suburb-yard-0",
+        "suburb@spring-yard-0",
+        "suburb@autumn-yard-0",
+        "suburb@winter-yard-0"
+      ],
+      "status": "pass",
+      "review": "The low, irregular leafy silhouette reads at native size. An upper olive highlight and darker underside provide volume; autumn retains shaded mixed foliage, winter an exposed green lower edge. Clean anchor and no tile backing. All four unchanged prior passes retained."
+    },
+    "garden_shed": {
+      "files": [
+        "suburb-yard-1",
+        "suburb@spring-yard-1",
+        "suburb@autumn-yard-1",
+        "suburb@winter-yard-1"
+      ],
+      "status": "pass",
+      "review": "Readable gable, terracotta shingles, cream siding, door and window, smaller than the houses. Winter preserves the walls beneath a shaded roof snow cap. Roof marks stay clustered rather than noisy. All four unchanged prior passes retained."
+    },
+    "pool": {
+      "files": [
+        "suburb-yard-2",
+        "suburb@spring-yard-2",
+        "suburb@autumn-yard-2",
+        "suburb@winter-yard-2"
+      ],
+      "status": "pass",
+      "review": "Summer/spring/autumn retain their unchanged passes: clear water, coping and outer lip. Repaired winter now passes: a continuous dark inner outline encloses a slate-blue ice plane; small reflections remain restrained; pale coping and the front/right lip separate the recess from snow. At 1x on winter grass it reads as a frozen pool rather than a snow mound. The 4x/8x construction and repeated neighbourhood/random appearances preserve that distinction."
+    },
+    "playground": {
+      "files": [
+        "suburb-yard-3",
+        "suburb@spring-yard-3",
+        "suburb@autumn-yard-3",
+        "suburb@winter-yard-3"
+      ],
+      "status": "pass",
+      "review": "Support frame, swing area and separate warm slide retain their identity at native size. Thin supports survive 8x inspection without stray fringe pixels. Winter leaves exposed timber and slide surfaces beneath snow. All four unchanged prior passes retained."
+    },
+    "vegetable_patch": {
+      "files": [
+        "suburb-yard-4",
+        "suburb@spring-yard-4",
+        "suburb@autumn-yard-4",
+        "suburb@winter-yard-4"
+      ],
+      "status": "pass",
+      "review": "Summer/spring/autumn retain their unchanged passes: soil, crops or seedlings, and supports identify the patch. Repaired winter now passes: dark furrow/soil breaks divide the snow into rows, brown dormant stems interrupt the white, and two rear supports are joined by a crosspiece. This gives a recognizable dormant garden at 1x instead of the old white slab and single stick. At 4x/8x its bed edge and row structure remain coherent."
+    },
+    "small_tree_cluster": {
+      "files": [
+        "suburb-yard-5",
+        "suburb@spring-yard-5",
+        "suburb@autumn-yard-5",
+        "suburb@winter-yard-5"
+      ],
+      "status": "pass",
+      "review": "Tall rear, broad left and small right crowns differ in outline and size. Exposed brown trunks, upper-left highlights and darker lower planes retain volume. Autumn keeps shaded rust/ochre crowns plus a green smaller crown; winter retains all three trees and trunks. Clean forest overlaps at 1x/4x. All four unchanged prior passes retained."
+    },
+    "parked_car": {
+      "files": [
+        "suburb-yard-6",
+        "suburb@spring-yard-6",
+        "suburb@autumn-yard-6",
+        "suburb@winter-yard-6"
+      ],
+      "status": "pass",
+      "review": "The brown boxy body, slate roof, pale windows/headlamp and dark wheels separate at native size. Generic vintage styling suits both modern and jazz_age. Snow leaves the cabin and body legible. All four unchanged prior passes retained."
+    },
+    "picket_fence_corner": {
+      "files": [
+        "suburb-yard-7",
+        "suburb@spring-yard-7",
+        "suburb@autumn-yard-7",
+        "suburb@winter-yard-7"
+      ],
+      "status": "pass",
+      "review": "Two receding runs meet at a legible corner, with pointed pickets, pale faces, darker side pixels and readable gaps. Snow accents retain the geometry. All four unchanged prior passes retained."
+    },
+    "integrity": {
+      "target_count": 32,
+      "pass_count": 32,
+      "fail_count": 0,
+      "unchanged_prior_pass_count": 30,
+      "changed_since_prior_review": [
+        "suburb@winter-yard-2",
+        "suburb@winter-yard-4"
+      ],
+      "new_failures_in_unchanged_files": [],
+      "all_target_png_sha256_unchanged": true,
+      "review_writes_out_files": false,
+      "all_out_png_sha256_unchanged": false,
+      "observed_concurrent_non_target_changes": [
+        "hills-prop-1.png",
+        "hills-prop-5.png",
+        "hills@winter-prop-1.png",
+        "hills@winter-prop-5.png",
+        "hills@winter-prop-6.png"
+      ],
+      "concurrency_note": "This review writes only critic-r9B-2 files in review/. Unrelated hill files changed in the shared checkout after the initial hash snapshot; none is a Part B file or used in these composites. All 32 targets and every other reviewed source remain unchanged.",
+      "out_png_count": 696,
+      "composite_count": 77,
+      "composite_prefix": "art-drop/review/critic-r9B-2-*.png",
+      "audit": "art-drop/review/critic-r9B-2-audit.json",
+      "nearest_neighbour_pairs_verified": 31
+    }
+  },
+  "pass": [
+    "suburb-yard-0",
+    "suburb-yard-1",
+    "suburb-yard-2",
+    "suburb-yard-3",
+    "suburb-yard-4",
+    "suburb-yard-5",
+    "suburb-yard-6",
+    "suburb-yard-7",
+    "suburb@spring-yard-0",
+    "suburb@spring-yard-1",
+    "suburb@spring-yard-2",
+    "suburb@spring-yard-3",
+    "suburb@spring-yard-4",
+    "suburb@spring-yard-5",
+    "suburb@spring-yard-6",
+    "suburb@spring-yard-7",
+    "suburb@autumn-yard-0",
+    "suburb@autumn-yard-1",
+    "suburb@autumn-yard-2",
+    "suburb@autumn-yard-3",
+    "suburb@autumn-yard-4",
+    "suburb@autumn-yard-5",
+    "suburb@autumn-yard-6",
+    "suburb@autumn-yard-7",
+    "suburb@winter-yard-0",
+    "suburb@winter-yard-1",
+    "suburb@winter-yard-2",
+    "suburb@winter-yard-3",
+    "suburb@winter-yard-4",
+    "suburb@winter-yard-5",
+    "suburb@winter-yard-6",
+    "suburb@winter-yard-7"
+  ],
+  "fail": []
+}
