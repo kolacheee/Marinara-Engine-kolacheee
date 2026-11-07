@@ -6546,7 +6546,15 @@ function StatsTab({
             value={formData.extensions.classic}
             onChange={(classic) => updateExtension("classic", classic)}
             description={[formData.description, formData.personality].filter(Boolean).join(" ")}
-            storyOpen={stats.enabled}
+            storySummary={
+              stats.enabled
+                ? localizeUi("game.combat.marinara.card.storyOn", {
+                    list: [...stats.attributes.map((one) => one.name), ...pools.map((pool) => pool.name)]
+                      .filter(Boolean)
+                      .join(", "),
+                  })
+                : localizeUi("game.combat.marinara.card.storyOff")
+            }
             storyStats={
               <GameModeSheet
                 rpgEnabled={stats.enabled}

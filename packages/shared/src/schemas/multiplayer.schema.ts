@@ -31,6 +31,7 @@ export const multiplayerPersonaSchema = z
         tree: z.enum(MARINARA_ARCHETYPES).optional(),
         strong: z.array(z.enum(MARINARA_STATS)).max(2).optional(),
         weak: z.enum(MARINARA_STATS).optional(),
+        built: z.literal(true).optional(),
       })
       .strict()
       .optional(),

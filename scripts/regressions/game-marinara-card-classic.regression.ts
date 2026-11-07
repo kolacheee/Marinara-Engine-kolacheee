@@ -44,6 +44,13 @@ try {
     { tree: "marksman", strong: ["speed", "luck"], weak: "skill" },
   );
   assert.equal(party.readMarinaraCardClassic({ tree: "wizard", strong: [] }), undefined, "nothing picked");
+  // A finished builder is kept even when every pick was left on Auto, so the card shows its picks.
+  assert.deepEqual(party.readMarinaraCardClassic({ built: true }), { built: true }, "built with nothing picked");
+  assert.deepEqual(
+    party.readMarinaraCardClassic({ built: "yes", weak: "luck" }),
+    { weak: "luck" },
+    "built is only true",
+  );
   assert.equal(party.marinaraArchetypeInText("A soft-spoken archer from the marsh"), "marksman");
   assert.equal(party.marinaraArchetypeInText("A baker"), null, "no tree words reads as none");
 
