@@ -1,0 +1,1610 @@
+{
+  "fantasy-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "e041bb7f283982b9e5ee34c54611fced77e6e8c0d3da65495c75c1f77eff84b0",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      7,
+      48,
+      44
+    ],
+    "opaque_pixels": 1695,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "fantasy-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "b0c7e0b831e0406a4ff621ddf6e44d11a5c61234fe15151a1287fdd0415e0c8c",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      8,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1564,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "fantasy-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "7f67b7ef603c0fbfd5b3aead73f6df18a48d894e6e8547d06ecff72a3383af0d",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1571,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 87,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "fantasy-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "c199e4f4932c50e6b790fad8123f199065d3cd0f52f27ed03ab17ba1c631be49",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1699,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 78,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "fantasy-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "75f83b36f18ad4805b3bcaee0cf0b1d2d986d982f51d4eb199935451c8e86767",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      6,
+      48,
+      44
+    ],
+    "opaque_pixels": 1729,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 744,
+    "exact_duplicates": []
+  },
+  "fantasy-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "08999ae23a882a991c857cc38e0997bb611d237186738de8f60e7f6a9f6461ce",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      8,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1592,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 793,
+    "exact_duplicates": []
+  },
+  "fantasy-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "3cd1e524eede55cdb2aa85f2df0cddfeeedfc01c86611b725eaebed7c5e29130",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 17,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1588,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 87,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 678,
+    "exact_duplicates": []
+  },
+  "fantasy-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "3b0f1e26b1f96cb39e4a74ec48e14c028cbe3765a3863f727cd064a2f9e5ac3f",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1716,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 78,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 399,
+    "exact_duplicates": []
+  },
+  "wuxia-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "634afeb69d3357abb8d46c6f140e47eb8e75a3f239dedcdb01a9459aaadb0cb8",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 18,
+    "bbox": [
+      0,
+      7,
+      48,
+      44
+    ],
+    "opaque_pixels": 1598,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "wuxia-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "22b4e0dcb8622cc21f04b09b008855e53b2d23244433cb3196b22ac0a078d563",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 20,
+    "bbox": [
+      8,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1505,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "wuxia-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "ae72d871c7f110698d5bc6a6e119a4a1d284b0aa3d82bf65937cf6a47164f513",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 18,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1637,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 83,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "wuxia-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "4924bcd9b8b48de9d2bee62550a91710585e7ce1759bf81920333a25a496c4d7",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 17,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1647,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 77,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "wuxia-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "10a48e81ed796f360877fe58785b91e843167fc17a127bc60992840d5b95089c",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 20,
+    "bbox": [
+      0,
+      7,
+      48,
+      44
+    ],
+    "opaque_pixels": 1620,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 506,
+    "exact_duplicates": []
+  },
+  "wuxia-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "e73a1cf6577a75caee350ea89965ca9004044a4dda469159669b4e7bb137c892",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 18,
+    "bbox": [
+      8,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1503,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 584,
+    "exact_duplicates": []
+  },
+  "wuxia-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "313cf0f7943ed30f9acd3bf7b94e6b7f6be154a5c59d8008b059ca7ec19af058",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 20,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1638,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 83,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 903,
+    "exact_duplicates": []
+  },
+  "wuxia-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "0a9a1fabc90e8b959fd827ed7de03a0a6091a6bba2767e05f8651f9f07a69c92",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 19,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1653,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 77,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 755,
+    "exact_duplicates": []
+  },
+  "jazz_age-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "2482437bb445ad6630415c5e15ffbf0c051e1c5cc6b7c9ec611e865d449271d5",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 15,
+    "bbox": [
+      0,
+      6,
+      48,
+      45
+    ],
+    "opaque_pixels": 1793,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "jazz_age-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "afdb2e9e9ef042ed6b574b71388ca317669cfc69828acd71835d5e85194e5eda",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 15,
+    "bbox": [
+      7,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1678,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "jazz_age-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "49fb16660dafc116997e4a294b84ef77c6bf4d1598422a87af2bfde81d309e01",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1608,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 78,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "jazz_age-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "c7256bfcd448be86175d3ac169dcd9a8526fd28e2c82999fe5345016c2aff193",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1784,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 87,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "jazz_age-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "c0c51bd9eedab20b09676895abdf3a39ce3faaf921ebb41c8475fd649424a0ec",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 18,
+    "bbox": [
+      0,
+      5,
+      48,
+      44
+    ],
+    "opaque_pixels": 1811,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 431,
+    "exact_duplicates": []
+  },
+  "jazz_age-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "b2f4a28b77f92934247d2677ce5d21f376e7c01ea65c1469b63b7a01a5ec5e33",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      7,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1709,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 674,
+    "exact_duplicates": []
+  },
+  "jazz_age-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "ef142534c5b966a0fd4e1438c40b19c7db4ee09c5802af317f5bb8a43dd8f6df",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 15,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1608,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 79,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 754,
+    "exact_duplicates": []
+  },
+  "jazz_age-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "28cc2d188435ffdc127839fd5834957e5eac3b3908826884df1614899ad2ade4",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1787,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 86,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 584,
+    "exact_duplicates": []
+  },
+  "modern-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "57735c0964ae0bb175552100fd5b54ea1e043ddea45693c446742b224d523ff6",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 12,
+    "bbox": [
+      0,
+      8,
+      48,
+      42
+    ],
+    "opaque_pixels": 1553,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "modern-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "547cb0e21d0b232d93004431b8c6f5320c6c85923134e767b612fde10826d267",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      8,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1513,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "modern-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "7cdc80ae7f0b49520172bc0dca11d37c5ca8ae909953844166d274cf93aa4a23",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 12,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1548,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 84,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "modern-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "35d8158a8a667d92ab0abd91d457ae129d08dc69bdd6dda065700580d043b6a9",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 10,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1679,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 75,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "modern-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "f7f3c52a0c70fb52e2748b1816aad51f5a2ad7c7b6e8414ceebaa1479a83c999",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      8,
+      48,
+      42
+    ],
+    "opaque_pixels": 1564,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 303,
+    "exact_duplicates": []
+  },
+  "modern-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "e6accef3c532505098f19d20296542ae2b10bfa8bc4f39f6f911f745c6412528",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 15,
+    "bbox": [
+      8,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1534,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 363,
+    "exact_duplicates": []
+  },
+  "modern-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "a92dd4c2e780c59121d8673156ad9625e30d397ead2106dc85cfc42923069b07",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1553,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 84,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 403,
+    "exact_duplicates": []
+  },
+  "modern-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "8ccd2c1cf4aa790779a8ef3c308a8d0a5c40cfb5ed03ae642229f98c9876bae7",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1679,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 75,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 1372,
+    "exact_duplicates": []
+  },
+  "scifi-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "ce622046df0a28fccf98b9429d59b67d1d57a6e0333ea670f9edbb508580400f",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      9,
+      48,
+      42
+    ],
+    "opaque_pixels": 1541,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "scifi-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "377cec2ad70efbd921629dd1b905856aed6f8287acc6e059147fffd0b7f2bd93",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      8,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1581,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "scifi-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "a5c7221ccfebbfac79dfea103834ed06d9c6780d50346dcb931159ba81e8a84a",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 15,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1679,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 76,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "scifi-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "0377ac9be3575f96aa15e13a83e4fd5a67673a12e373027faa1cfc0bde86b943",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1690,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 76,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "scifi-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "808a8d49bcf69ca5cc53c4a0e7b03da3e2640ed4392041a6cf022713aa87b5a5",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      8,
+      48,
+      42
+    ],
+    "opaque_pixels": 1572,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 878,
+    "exact_duplicates": []
+  },
+  "scifi-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "94ff2458b408c6aa4f20786fc1cfaf6e185c3178fbee3a41b439d45116b7a624",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      8,
+      0,
+      43,
+      48
+    ],
+    "opaque_pixels": 1596,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 252,
+    "exact_duplicates": []
+  },
+  "scifi-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "e3347532e3a65c4207d9e747cdb601d31a9e76532722f928952adb4e9d7d3af0",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1683,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 75,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 298,
+    "exact_duplicates": []
+  },
+  "scifi-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "b1d8fbe95a6ba9e52a17c22638fd8f28bb70b5f4a0ce33574c552843d0fedeca",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1691,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 75,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 720,
+    "exact_duplicates": []
+  },
+  "wasteland-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "cc3546db98aa75840f805e1c124eaeba4366acc965f21abdb5f6f9f056087f7b",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 17,
+    "bbox": [
+      0,
+      8,
+      48,
+      43
+    ],
+    "opaque_pixels": 1585,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "wasteland-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "5c4c8337135a2d6c5b7999522e7e068bf54d58f85c18375a8dfb5fa6a76f1006",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 17,
+    "bbox": [
+      9,
+      0,
+      42,
+      48
+    ],
+    "opaque_pixels": 1572,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "wasteland-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "7ab3848bfcecc464fc746122710c35c74b6115fb8ffcdf2f4d6c3d004ecc08e4",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1630,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 80,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "wasteland-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "0fc0d2712f03996343d567e04eab215c9b349d00650b774b12dad906cf649d37",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1574,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 84,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "exact_duplicates": []
+  },
+  "wasteland-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "c5301bce7c0ccaffbc89895f34404349b0f400285a943964ea4f125d35fba6cf",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 18,
+    "bbox": [
+      0,
+      7,
+      48,
+      43
+    ],
+    "opaque_pixels": 1638,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 526,
+    "exact_duplicates": []
+  },
+  "wasteland-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "2302a7cd3f114dd5f865c29777e3dba36dc0539d8b148e69637f47d2ed2049f4",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 19,
+    "bbox": [
+      9,
+      0,
+      42,
+      48
+    ],
+    "opaque_pixels": 1574,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 144,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 525,
+    "exact_duplicates": []
+  },
+  "wasteland-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "b670b5239dc3fce3eb61086d5c9be9bbf8e8aa77157511a2849f22a8887264f9",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 19,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1648,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 80,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 537,
+    "exact_duplicates": []
+  },
+  "wasteland-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "d04923cb5ff831fd465213c28393a1bee1fc98c3bed2d1910e9b9d52efcf0221",
+    "alpha_values": [
+      0,
+      102,
+      255
+    ],
+    "opaque_colors": 18,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1590,
+    "unchanged_since_review_2": false,
+    "partial_alpha_pixels": 84,
+    "shadow_colors": [
+      [
+        0,
+        0,
+        0,
+        102
+      ]
+    ],
+    "mode": "RGBA",
+    "shadow_is_black_40_percent": true,
+    "season_changed_pixels": 643,
+    "exact_duplicates": []
+  }
+}
