@@ -1,0 +1,117 @@
+{
+  "sets": {
+    "r11_city_lanes": {
+      "files": [
+        "jazz_age-lane",
+        "modern-lane",
+        "scifi-lane",
+        "wasteland-lane"
+      ],
+      "status": "fail",
+      "standard": "Good enough to ship beside the approved art; required exact path footprint is a separate mandatory gate.",
+      "previous_review": "critic-r11L-0.json does not exist; no prior passes to preserve.",
+      "layout": {
+        "jazz_age": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 9,
+          "sha256": "74bfbd2198726116686726ae19f02ee06390006f7c742ce222cdea0d80d1bd03",
+          "colors_outside_family_road_palette": 0,
+          "join_evidence": "Straight tile index 10, sheet x=96 and x=143, y=117..123: six of seven core pixels in each boundary column are RGB(115,100,77), versus dominant interior RGB(110,94,69). Repetition makes a two-column transverse brightness band every 48 pixels."
+        },
+        "modern": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 5,
+          "sha256": "79dd4cfc09d3a0633a79e2bddf1876e593dba7fb3839b885d468d590b46aca95",
+          "colors_outside_family_road_palette": 0
+        },
+        "scifi": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 5,
+          "sha256": "eca8beb469307a960091776bd24dcc73cbca1067ab51927a033ee681ea3066dc",
+          "colors_outside_family_road_palette": 0
+        },
+        "wasteland": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 8,
+          "sha256": "474b59a7f80694651de87935888c81cdb0fa89a304cbf36e2876ecd482835eef",
+          "colors_outside_family_road_palette": 0
+        }
+      },
+      "checks_performed": [
+        "All four source sheets inspected at native 1x, with every source pixel included in six nearest-neighbour 8x bands per file; 4x inspection bands also saved.",
+        "Cross, T, bend and diagonal run assembled at the original 48 px grid, on grass-base and wasteland-wasteland-base, beside the matching road strip and with a direct lane-to-road junction; viewed at 1x and 4x.",
+        "Eight-piece horizontal runs, seven-piece vertical runs and extended diagonal runs checked at 1x and 4x; straight-join evidence saved at 1x, 4x and 8x.",
+        "Seeded random 8x2 layouts checked at 1x and 4x on both grounds; shared edges use matching N/E/S/W connections rather than arbitrary incompatible pieces.",
+        "Programmatic whole-sheet dimensions, fully opaque mask, nonzero mask and exact alpha-channel equality against each named path reference; all four pass with zero mismatches and zero partial-alpha pixels.",
+        "Family road palette membership checked programmatically: all four use only their corresponding road colours.",
+        "Compared against the named road/path sheets and representative approved family markers, round-2 city/slums/industry, paddies, grass/plains bases and details.",
+        "Checked blur, antialiasing, alpha fringe/halo, placement/width, seams, repeat rhythm, texture scale, road colour/material matching, kerbs, cyan frequency, cracks and sand."
+      ],
+      "not_applicable": "The brief requests four summer lane atlases only, used all year. No candidate bases, peaks, trees, ruins, craters, autumn crowns or winter assets are in scope; 3x3 candidate-base tiling, peak lattices and forest composites therefore do not apply. Approved art is comparison material, not re-reviewed for verdicts.",
+      "passing_files": {
+        "modern-lane": "PASS: exact footprint; hard pixel edges; narrow grey asphalt uses the road fill and reads as its smaller branch on both grounds. Thin light outer kerb and dark inner line remain readable. Tested joins have no transverse line or brightness step; granular texture is restrained at native size. No halo or palette clash.",
+        "scifi-lane": "PASS: exact footprint; dark blue-grey asphalt and kerb values match the road. Sparse faint cyan accents occur on selected pieces, not every piece. Cross/T/bend/diagonal and random networks remain continuous, without importing the road panel grid as repeated lane seams. Flat surface is consistent with the road reference; no blur, halo or palette clash."
+      },
+      "evidence_glob": "art-drop/review/critic-r11L-1-*.png",
+      "out_unchanged": true
+    }
+  },
+  "pass": [
+    "modern-lane",
+    "scifi-lane"
+  ],
+  "fail": [
+    {
+      "name": "jazz_age-lane",
+      "problems": "FAIL continuity and material matching. Repeating straight tile 10 produces a pale transverse stitch every 48 px, visible at 1x and obvious at 4x/8x; its two boundary columns use RGB(115,100,77) across most of the core instead of the interior RGB(110,94,69). Diagonal runs also have repeating light patches/brightness steps. Remove the across-lane boundary bands and carry the surface texture through joins, retaining the exact alpha mask. At the road junction the lane is dark brown while the main road is tan: lane dominant fill RGB(110,94,69), road RGB(141,121,88). Rebalance the surface/kerb use of the road palette so the branch reads as the same network without that abrupt material/value change. Evidence: critic-r11L-1-jazz_age-straight-join-evidence-{1,4,8}x.png and both cross-T-bend-diagonal-road composites."
+    },
+    {
+      "name": "wasteland-lane",
+      "problems": "FAIL the required cracked-asphalt/sand treatment. Beside the road strip, the lane reads as granular grey paving: the main road has connected branching fissures, while the lane largely replaces them with small disconnected dark chips and speckle. The diagonal pieces repeat short transverse dark strokes, giving the same damage cadence down the run instead of an irregular crack network. Sand drifting inward over the edges is not legible at 1x on either grass or wasteland; the few lighter pixels disappear into the grit. Paint fewer, readable branching cracks that continue through piece boundaries and several restrained warm sand tongues over the asphalt margin using the family road palette. Keep every edit within the unchanged path mask; do not widen, relocate, or add outside pixels. Evidence: critic-r11L-1-wasteland-sheet-rows-04-07-8x.png, repeated-runs composites, and both cross-T-bend-diagonal-road composites."
+    }
+  ]
+}

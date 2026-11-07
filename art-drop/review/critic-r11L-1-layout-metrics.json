@@ -1,0 +1,66 @@
+{
+  "jazz_age": {
+    "size": [
+      192,
+      1104
+    ],
+    "path_size": [
+      192,
+      1104
+    ],
+    "opaque_mask_mismatches": 0,
+    "nonzero_mask_mismatches": 0,
+    "alpha_mismatches": 0,
+    "partial_alpha_pixels": 0,
+    "colors": 9,
+    "sha256": "74bfbd2198726116686726ae19f02ee06390006f7c742ce222cdea0d80d1bd03"
+  },
+  "modern": {
+    "size": [
+      192,
+      1104
+    ],
+    "path_size": [
+      192,
+      1104
+    ],
+    "opaque_mask_mismatches": 0,
+    "nonzero_mask_mismatches": 0,
+    "alpha_mismatches": 0,
+    "partial_alpha_pixels": 0,
+    "colors": 5,
+    "sha256": "79dd4cfc09d3a0633a79e2bddf1876e593dba7fb3839b885d468d590b46aca95"
+  },
+  "scifi": {
+    "size": [
+      192,
+      1104
+    ],
+    "path_size": [
+      192,
+      1104
+    ],
+    "opaque_mask_mismatches": 0,
+    "nonzero_mask_mismatches": 0,
+    "alpha_mismatches": 0,
+    "partial_alpha_pixels": 0,
+    "colors": 5,
+    "sha256": "eca8beb469307a960091776bd24dcc73cbca1067ab51927a033ee681ea3066dc"
+  },
+  "wasteland": {
+    "size": [
+      192,
+      1104
+    ],
+    "path_size": [
+      192,
+      1104
+    ],
+    "opaque_mask_mismatches": 0,
+    "nonzero_mask_mismatches": 0,
+    "alpha_mismatches": 0,
+    "partial_alpha_pixels": 0,
+    "colors": 8,
+    "sha256": "474b59a7f80694651de87935888c81cdb0fa89a304cbf36e2876ecd482835eef"
+  }
+}

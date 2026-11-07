@@ -1,0 +1,288 @@
+{
+  "sets": {
+    "round11_lanes": {
+      "brief": "art-drop/BRIEF-11.md, including owner continuity feedback and operator exact-path-layout requirement",
+      "scope": [
+        "jazz_age-lane",
+        "modern-lane",
+        "scifi-lane",
+        "wasteland-lane"
+      ],
+      "calibration": "Good enough to ship beside approved art. All three unchanged r11L-5 passes are retained. Only the changed Wasteland sheet is regraded; its former readability defect is resolved, but its newly strengthened repeated fissure fails the explicit visible-repeat criterion.",
+      "layout_metrics": {
+        "jazz_age": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 4,
+          "colors_outside_family_road_palette": 0,
+          "top_colors": [
+            {
+              "rgb": [
+                141,
+                121,
+                88
+              ],
+              "pixels": 16790
+            },
+            {
+              "rgb": [
+                154,
+                133,
+                98
+              ],
+              "pixels": 6880
+            },
+            {
+              "rgb": [
+                110,
+                94,
+                69
+              ],
+              "pixels": 6777
+            },
+            {
+              "rgb": [
+                123,
+                106,
+                79
+              ],
+              "pixels": 1912
+            }
+          ],
+          "sha256": "47555fe38fd66a5653d5ee2a9794491f7dbd1db14b4ffb23747852b839fe4c5d",
+          "unchanged_since_r11L_5": true
+        },
+        "modern": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 5,
+          "colors_outside_family_road_palette": 0,
+          "top_colors": [
+            {
+              "rgb": [
+                103,
+                102,
+                100
+              ],
+              "pixels": 14848
+            },
+            {
+              "rgb": [
+                116,
+                114,
+                108
+              ],
+              "pixels": 8430
+            },
+            {
+              "rgb": [
+                69,
+                69,
+                67
+              ],
+              "pixels": 6777
+            },
+            {
+              "rgb": [
+                89,
+                88,
+                86
+              ],
+              "pixels": 2078
+            },
+            {
+              "rgb": [
+                90,
+                89,
+                84
+              ],
+              "pixels": 226
+            }
+          ],
+          "sha256": "79dd4cfc09d3a0633a79e2bddf1876e593dba7fb3839b885d468d590b46aca95",
+          "unchanged_since_r11L_5": true
+        },
+        "scifi": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 5,
+          "colors_outside_family_road_palette": 0,
+          "top_colors": [
+            {
+              "rgb": [
+                63,
+                68,
+                70
+              ],
+              "pixels": 17582
+            },
+            {
+              "rgb": [
+                49,
+                53,
+                55
+              ],
+              "pixels": 6844
+            },
+            {
+              "rgb": [
+                32,
+                37,
+                39
+              ],
+              "pixels": 6777
+            },
+            {
+              "rgb": [
+                61,
+                67,
+                69
+              ],
+              "pixels": 1120
+            },
+            {
+              "rgb": [
+                49,
+                144,
+                137
+              ],
+              "pixels": 36
+            }
+          ],
+          "sha256": "eca8beb469307a960091776bd24dcc73cbca1067ab51927a033ee681ea3066dc",
+          "unchanged_since_r11L_5": true
+        },
+        "wasteland": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 4,
+          "colors_outside_family_road_palette": 0,
+          "top_colors": [
+            {
+              "rgb": [
+                105,
+                100,
+                91
+              ],
+              "pixels": 20197
+            },
+            {
+              "rgb": [
+                73,
+                70,
+                65
+              ],
+              "pixels": 8026
+            },
+            {
+              "rgb": [
+                94,
+                90,
+                83
+              ],
+              "pixels": 3025
+            },
+            {
+              "rgb": [
+                116,
+                109,
+                97
+              ],
+              "pixels": 1111
+            }
+          ],
+          "sha256": "5ebe3e316ffb2679352ecb44b959874182f11f80ba373acc4ffecd599f3f3d0d",
+          "unchanged_since_r11L_5": false
+        }
+      },
+      "checks_performed": [
+        "Compared each lane against its own family-path_joined.png programmatically: exact 192x1104 size and complete alpha-array equality, with zero opaque-mask, nonzero-mask or alpha-value differences. All 92 cells of the 4x23 atlas retain the required path positions and widths. No partial alpha in any candidate.",
+        "Compared every opaque RGB colour to its family-road_joined.png: zero colours outside the reference palette. Visually inspected native path/lane/road triptychs for all four families.",
+        "Inspected every candidate source pixel at nearest-neighbour 8x in six consecutive atlas bands, rows 00..22. Saved all bands at 1x, 4x and 8x. Inspected complete candidate sheets at native size in the reference triptychs.",
+        "Built and visually inspected the brief-required cross, T, bend and SW/NE diagonal run on both approved grounds, grass-base and wasteland-wasteland-base, at 1x and 4x for every family. Each scene includes its own main-road strip and direct lane-to-road junction. Source pieces are unrotated 48px crops placed on integer grid coordinates.",
+        "Built and visually inspected seeded compatible random 8x2 lane networks on both grounds for all four families at 1x and 4x. Seed 111 and tile indices are recorded in critic-r11L-6-random-layout.json. Shared cardinal connections agree; the test does not manufacture mismatched joins.",
+        "Inspected eight-piece horizontal lane/main-road repeat comparisons on both grounds at 1x and 4x for all four families. Inspected Wasteland horizontal, vertical and diagonal long runs on both grounds at 1x and 4x. Additional Wasteland horizontal crack-focus evidence is saved and inspected at 1x/4x/8x, and prior/current horizontal crack comparisons at 1x/4x isolate the changed defect.",
+        "Compared approved marker0 samples from the four relevant families, all round-2 city/industry/slums summer and winter tiles, all four seasons of paddies, and all grass/plains seasonal details over matching base crops at 1x and 4x. Approved art serves as a style control and receives no verdict.",
+        "Generated 3x3 controls for grass/plains bases in every season and the wasteland ground, with separate 4x wrap-junction crops. Visually inspected summer grass/plains and wasteland 3x3 controls at 1x and their wrap junctions at 4x. There are no candidate bases in BRIEF-11.",
+        "Checked physical seams, gaps, brightness steps, per-piece borders, bevels, distracting repeats, grid cadence, blur, anti-aliasing, noise, muddy forms, placement, fringe/halo pixels, palette compatibility, lighting consistency and material readability. Required matching atlas geometry and necessary join variants are not graded as near-duplicate art.",
+        "Rehashed every out/ PNG after review and compared it with the stored source inventory: zero changes. All scripts, metrics, evidence images and verdicts were written only under art-drop/review/."
+      ],
+      "not_applicable": "BRIEF-11 requests only four lane atlases (summer art used all year), not candidate bases, one-cell terrain variants, peaks, trees, craters, ruins, autumn crowns or winter variants. Candidate 3x3 base grading, peak lattice/range and forest composites, egg-crate peaks, Swiss-cheese craters, classical ruins, flat-orange autumn, identical crowns and blank winter are therefore outside this review scope. No unrelated out/ file was graded. Approved base controls and compatible 8x2 lane networks were generated as supplementary checks.",
+      "file_verdicts": {
+        "jazz_age-lane": {
+          "verdict": "pass",
+          "reason": "Byte-identical to the r11L-5 pass. Full 8x atlas inspection and fresh 1x/4x network, junction and repeat checks show no concrete new defect. The warm macadam colour comes from the named family road itself; pale kerbs and darker inner edges remain continuous."
+        },
+        "modern-lane": {
+          "verdict": "pass",
+          "reason": "Byte-identical to the r11L-5 pass. Grey asphalt, thin light kerbs and crisp dark inner edges survive 1x/4x junction and random-network checks and full 8x atlas inspection. No new slab seam, halo, material mismatch or distracting repeat found."
+        },
+        "scifi-lane": {
+          "verdict": "pass",
+          "reason": "Byte-identical to the r11L-5 pass. Quiet dark asphalt and sparse cyan glints survive the fresh 1x/4x networks and full 8x atlas inspection. The lane has no stamped panel grid; panel joints in the wider main-road control belong to the reference."
+        },
+        "wasteland-lane": {
+          "verdict": "fail",
+          "resolved": "Required cracked-asphalt readability is restored. Exact layout/alpha, crisp pixels, family-road palette, subdued edge sand and physical network joins pass.",
+          "remaining": "The strengthened tile-10 fissure creates a conspicuous 48px interior stamp cadence in repeated horizontal runs; see the actionable fail entry."
+        }
+      },
+      "evidence_glob": "art-drop/review/critic-r11L-6-*.png",
+      "reviewed_candidates_unchanged_during_review": true,
+      "out_written_by_this_review": false,
+      "out_digest_changes_during_review": [],
+      "out_png_count_verified": 874
+    }
+  },
+  "pass": [
+    "jazz_age-lane",
+    "modern-lane",
+    "scifi-lane"
+  ],
+  "fail": [
+    {
+      "name": "wasteland-lane",
+      "problems": "FAIL repeated damage stamp: the revised cracking fixes r11L-5's missing material readability, but the horizontal straight now repeats a recognizable hooked/descending fissure once per 48px piece. In zero-based tile 10 (sheet x=96..143, y=96..143), the dark core runs through local x=19..35, y=22..25, followed by detached dark ticks around x=41..43. Repeating that piece eight times makes eight evenly spaced copies of the same little glyph, visible at 1x on both grass and wasteland; 4x/8x confirms the repeated interior motif. This is a texture-repeat failure, not an alpha gap or a transverse join line. Evidence: critic-r11L-6-wasteland-{grass-base,wasteland-wasteland-base}-crack-repeat-focus-{1,4,8}x.png, critic-r11L-6-wasteland-both-grounds-horizontal-repeat-{1,4}x.png and critic-r11L-6-wasteland-tile10-8x.png. The previous/current comparison (previous above, current below) shows the new dark stamp clearly. Rework the straight-piece damage so no single central hooked motif dominates every cell: redistribute it into shorter, unequal, offset angular fissures; reserve the darkest core for a few pixels, use the road midtone for the connecting wear, and bring some subdued texture toward the piece boundaries. Keep enough connected fracture structure to remain readable as cracked asphalt at native size. Recheck the unannotated eight-piece run at 1x on both grounds until the regular dark-glyph cadence stops attracting the eye. Preserve the existing sand, road palette, exact path alpha footprint, width and every piece's atlas position; do not add slab borders or restore paired transverse slash/fork stamps."
+    }
+  ]
+}
