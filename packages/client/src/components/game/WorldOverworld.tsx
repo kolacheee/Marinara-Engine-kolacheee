@@ -671,7 +671,9 @@ export function WorldOverworld({
         return drawTile.fringeCovers(look, piece, cellNoise(kx, ky)(79), px - kx + 0.5, py - ky + 0.5);
       };
       const ridged = look === "mountains" && drawTile.hasPiece("mountain_ridges", 0);
-      const pined = look === "mountains" && drawTile.hasPiece("mountain_pines", 0);
+      // The range's own pines, else the pack's conifers.
+      const pineId = drawTile.hasPiece("mountain_pines", 0) ? "mountain_pines" : "treeline_conifer_forest";
+      const pined = look === "mountains" && drawTile.hasPiece(pineId, 0);
       const [ranges, peaks, pines]: Array<typeof trees> = [[], [], []];
       for (let y = 0; y < height; y++)
         for (let x = 0; x < width; x++) {
@@ -697,7 +699,7 @@ export function WorldOverworld({
           if (pined && isLook(x, y) && !inner(x, y))
             for (const pine of worldTreelineTrees(onFloor, x, y))
               if (cellNoise(Math.floor(pine.x * 4), Math.floor(pine.y * 4))(57) < 0.45)
-                pines.push({ ...pine, id: "mountain_pines", w: 1, h: 1 });
+                pines.push({ ...pine, id: pineId, w: 1, h: 1 });
         }
       if (look === "mountains") {
         trees.push(...ranges);
@@ -727,15 +729,15 @@ export function WorldOverworld({
         inSeason(x, y);
         drawTile(ctx, `decor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(67));
       }
-    // Crater scars over their ground: about two cells in three, a large one (two cells by two, spilling onto
-    // its neighbours) only where the field goes on all round.
+    // Crater scars over their ground: about two cells in three, half of them large (two cells by two,
+    // spilling onto their neighbours).
     if (propLooks.has("craters"))
       for (let y = 0; y < height; y++)
         for (let x = 0; x < width; x++) {
           if (drawnLook[y * width + x] !== "craters" || wetCell[y * width + x]) continue;
           const noise = cellNoise(x, y);
           if (noise(63) >= 0.65) continue;
-          const large = (x + 2 * y) % 3 === 0 && inner(x, y);
+          const large = noise(62) < 0.55;
           const piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
           inSeason(x, y);
           drawTile.piece(ctx, "crater_props", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(66));
