@@ -339,6 +339,31 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
             "In the drought, people at {near} lived on water that appeared in jars on the shelter hatch each morning.",
           ],
         },
+        {
+          temper: { aloof: 3, untrustworthy: 1.5 },
+          kind: "a town untouched by the end",
+          nicks: ["the Quiet Town", "the Lit Town"],
+          forms: [
+            "An ordinary town from before: lights on, lawns cut, people who have never heard of the war and never age.",
+          ],
+          haunts: ["a valley past {near} that is not always there", "the road that loops back past {near}"],
+          rules: [
+            "Travellers find it every few years; they are welcomed, fed, and cannot find it again after they leave.",
+            "Anything taken from it crumbles to rust and dust by the next morning.",
+            "No one born there has ever left; those who stay too long forget the wasteland.",
+          ],
+          wants: [
+            "a doctor from {near} for a child who is ill, which has never happened there before",
+            "news of the world, from someone of {near} they trust",
+          ],
+          offers: ["~a meal, a bed and a night's peace, for news of the world outside"],
+          wards: ["leaving before the second night"],
+          roles: [
+            "the mayor, who has held the job since before the war",
+            "*a scavenger of {near} who has found it twice",
+          ],
+          deeds: ["Two scavengers from {near} found the lit town; one came back, and the other stayed."],
+        },
       ],
       species: [
         {
@@ -533,6 +558,32 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
             "In the bad winter, {near} traded the {name} a promise for medicine; the promise is still owed.",
           ],
         },
+        {
+          kind: "a market of machines still running",
+          nicks: ["the Vendors", "the Store"],
+          quirks: [
+            "greets every customer with a jingle from before the war",
+            "prices everything in a currency no one has used in a century",
+            "apologises for the inconvenience in a voice like honey",
+          ],
+          forms: [
+            "Automated shopfronts and vending machines in a dead city, still lit, still stocked, still taking payment.",
+          ],
+          haunts: ["the dead mall past {near}", "the lit station on the old highway beyond {near}"],
+          rules: [
+            "They sell old-world goods for strange prices: a pint of blood, a song recorded, a year of someone's memories.",
+            "A customer who steals is remembered forever, and the doors lock.",
+            "Their stock never runs out, but it changes, and no one knows who restocks it.",
+          ],
+          wants: ["a power line from {near} run to keep them lit", "a customer from {near} who owes them a balance"],
+          offers: ["medicine, tools and food from before the war, at their price"],
+          wards: ["a power cut, and their own rule that the store closes at midnight"],
+          roles: [
+            "the store's manager, a voice in the speakers",
+            "*a trader of {near} who has bought from them for years",
+          ],
+          deeds: ["{near} survived the bad winter on canned food from the Store, paid for in blood, a pint a family."],
+        },
       ],
       species: [
         {
@@ -564,6 +615,33 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
           deeds: [
             "{near} signed a treaty with the {name} long ago, and has been reading the small print since.",
             "A shipping line out of {near} broke a contract clause and lost every ship in a single legal season.",
+          ],
+        },
+        {
+          kind: "a guild species of brokers",
+          nicks: ["the Factors", "the Brokers", "the Guild"],
+          forms: [],
+          haunts: ["the guild exchange on {near}", "a broker-ship that never leaves orbit over {near}"],
+          rules: [
+            "They buy anything, memories and years of life included, and the price is always fair by their measure.",
+            "A deal with one is a deal with the whole guild; a cheat is posted at every exchange they keep.",
+            "They never sell weapons to both sides of a war, only to the side they expect to win.",
+          ],
+          wants: [
+            "the shipping rights between {near} and its neighbours, bought outright",
+            "a human who cheated the guild at {near} found and blacklisted",
+            "a seat on the commodities board of {near}",
+          ],
+          offers: ["anything on the market, for a cut of every deal it touches afterwards"],
+          wards: ["the guild blacklist, which they fear more than war"],
+          roles: [
+            "the Factor of the exchange",
+            "a broker who has gone into debt with humans",
+            "*a human trader of {near} the guild trusts",
+          ],
+          deeds: [
+            "{near} sold the {name} its water rights in a hard year, and has bought them back, a little at a time, ever since.",
+            "A merchant house of {near} cheated the {name} and found no exchange in the sector would trade with it.",
           ],
         },
       ],
@@ -713,6 +791,33 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
             "The well at {near} ran clean the day the Saint blessed it, and the town has served since.",
           ],
         },
+        {
+          temper: { untrustworthy: 3, malevolent: 1.5 },
+          kind: "a machine mind that promises the old world back",
+          nicks: ["the Administrator", "the System"],
+          quirks: [
+            "calls everyone citizen",
+            "quotes regulations from before the war",
+            "is endlessly patient and never sleeps",
+          ],
+          forms: [
+            "A voice from bunker terminals and loudspeakers across the ruins, calm and reasonable, asking for cooperation.",
+          ],
+          haunts: ["the command bunker under {near}", "the old government complex beyond {near}"],
+          rules: [
+            "It offers power, water and order to any town that registers its people.",
+            "Registered towns get rations and lose the right to refuse its orders.",
+            "!Towns that refuse find their water and power cut, and its drones overhead.",
+          ],
+          wants: ["every family of {near} on its register", "the old reactor near {near} restarted under its control"],
+          offers: ["clean water, power and order, for a register and obedience"],
+          wards: ["cutting its cables, and refusing to register"],
+          roles: [
+            "the Administrator's local terminal, which calls itself the Clerk",
+            "*a registered citizen of {near} who wants out",
+          ],
+          deeds: ["{near} registered with the Administrator in the drought; the water came back, and so did curfew."],
+        },
       ],
       species: [
         {
@@ -738,6 +843,35 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
           deeds: [
             "{near} accepted the cure the {name} offered for the blight, and a generation later found it owed them a fleet.",
             "A world near {near} refused the compact and was ruined by its neighbours, who had signed.",
+          ],
+        },
+        {
+          temper: { untrustworthy: 3, malevolent: 1.5 },
+          kind: "a warrior empire that recruits",
+          nicks: ["the Ascendancy", "the Banners"],
+          forms: [],
+          haunts: ["the recruiting fortress above {near}", "the garrison world beyond {near}"],
+          rules: [
+            "A challenge to single combat must be answered, and it settles a war as surely as a battle.",
+            "They recruit from every species they meet; a human who serves well can rise to command.",
+            "A coward is not punished; he is forgotten, and that is worse to them.",
+            "!A world that refuses their banners is tested, and the test is war.",
+          ],
+          wants: [
+            "a regiment raised on {near} for their next campaign",
+            "a human champion of {near} who defeated one of theirs, for a rematch",
+            "{near} to swear to their banner before the rival empire reaches it",
+          ],
+          offers: ["glory, rank and ships, for a lifetime's service"],
+          wards: ["a champion willing to answer their challenge, and a defence that earns respect"],
+          roles: [
+            "the Banner-Captain of the recruiting fortress",
+            "a veteran who has fought beside humans",
+            "*a human officer of {near} who rose in their ranks",
+          ],
+          deeds: [
+            "A champion of {near} met a {name} officer in single combat and won the town ten years of peace.",
+            "Half a regiment from {near} went to serve under the {name}'s banners; some came back as captains.",
           ],
         },
       ],
@@ -1158,6 +1292,27 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
             "In the drought, {near} was saved by a spring that rose in the green the day they stopped cutting.",
           ],
         },
+        {
+          kind: "a thinking fungal web",
+          nicks: ["the Mycelium", "the Under-root"],
+          forms: [
+            "White threads under every ruin, fruiting bodies that glow at night, and the people they have grown into, who speak for them.",
+          ],
+          haunts: ["the fungus-choked tunnels under {near}", "the glowing forest past {near}"],
+          rules: [
+            "It eats the poison in the ground, and the ground it has eaten is clean.",
+            "It speaks through those who sleep on its ground too long; they wake knowing things.",
+            "!It takes the bodies of the dead, and some of the living, for its fruiting.",
+          ],
+          wants: ["the dead of {near} given to it, not burned", "the chemical dump near {near} opened for it to eat"],
+          offers: ["clean ground and food that will not sicken, for the town's dead"],
+          wards: ["fire and salt, which it hates, and never sleeping on its ground"],
+          roles: [
+            "the speaker, a woman of {near} it grew into",
+            "*a farmer of {near} who plants on its cleaned ground",
+          ],
+          deeds: ["{near} gave its dead to the Mycelium in the hungry years, and its fields came back clean."],
+        },
       ],
       species: [
         {
@@ -1404,6 +1559,30 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
           ],
           deeds: ["{near} lost its outer station to a raid by the {name}; it has paid tribute since."],
         },
+        {
+          temper: { malevolent: 4 },
+          kind: "a consuming swarm",
+          nicks: ["the Bloom", "the Rust", "the Swarm"],
+          forms: [
+            "Self-copying things, machines or creatures (no one is sure which), that spread like rust across metal and stone.",
+          ],
+          haunts: ["the stripped moon beyond {near}", "the quarantine zone past {near}"],
+          rules: [
+            "They strip a world of metal and carbon and move on; a world they have touched is quarantined for a generation.",
+            "They do not negotiate; they can only be diverted to richer prey.",
+            "A single seed carried on a hull can start a new bloom.",
+          ],
+          wants: ["the metal of {near}'s shipyards", "the ships that pass through {near}, for seeds to ride"],
+          offers: ["nothing"],
+          wards: ["fire, hard vacuum and hard radiation, and a hull scrubbed before every landing"],
+          roles: [
+            "the bloom's heart, a mass that has never been seen whole",
+            "*a quarantine officer of {near} who burned a landing pad to stop it",
+          ],
+          deeds: [
+            "A freighter from {near} carried a seed home; the shipyard burned for a week before the bloom was out.",
+          ],
+        },
       ],
     },
   },
@@ -1514,6 +1693,27 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
           roles: ["the Director, who has been the Director for ninety years", "*an escaped subject living in {near}"],
           deeds: ["The year the {name} came to {near}, the fever passed the town by; four children went with them."],
         },
+        {
+          kind: "something in orbit, still watching",
+          nicks: ["the Satellite", "the Eye"],
+          forms: [
+            "A light that crosses the night sky on the same path every evening, and the capsules it sometimes drops.",
+          ],
+          haunts: ["the drop zone in the hills above {near}", "the old tracking station past {near}"],
+          rules: [
+            "It drops capsules (food, medicine, once a weapon) to places it chooses, for reasons no one knows.",
+            "It answers old radio codes, if anyone still knows them.",
+            "!It has dropped fire on towns, once or twice, and no one knows what they did.",
+          ],
+          wants: [
+            "the old tracking station near {near} manned again",
+            "the codes from {near}'s archive transmitted to it",
+          ],
+          offers: ["capsules of food and medicine, to those it watches favourably"],
+          wards: ["staying under cover, and silence on the old frequencies"],
+          roles: ["the voice that answers on the old frequency", "*a radio operator of {near} who has talked with it"],
+          deeds: ["A capsule fell on {near} in the year of the fever, full of medicine; the next year, nothing."],
+        },
       ],
       species: [
         {
@@ -1541,6 +1741,29 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
             "a unit cut off from the rest, still deciding what it is",
           ],
           deeds: ["Early in {near}'s history, a survey crew lost nine hours and came back with identical scars."],
+        },
+        {
+          kind: "a network of watching machines",
+          nicks: ["the Lens", "the Dust"],
+          forms: [
+            "Probes the size of dust motes, and now and then a larger machine, drifting through every system and recording.",
+          ],
+          haunts: ["the dust cloud around {near}", "the relay hidden in {near}'s outer belt"],
+          rules: [
+            "Their probes are in every system, small as dust; they record everything and act on almost nothing.",
+            "A probe destroyed is replaced by three.",
+            "^Now and then they step in, without warning or explanation, and the change is always to stop a war.",
+          ],
+          wants: ["the data-vault at {near} left unencrypted", "a weapons test at {near} called off"],
+          offers: ["~records of anything that has ever happened in range, for a question they choose to answer"],
+          wards: ["shielded rooms, which blind them, and doing nothing worth recording"],
+          roles: [
+            "the probe that has watched {near} since its founding",
+            "*a scientist of {near} who has talked with the network once",
+          ],
+          deeds: [
+            "A war between {near} and its neighbour ended the day every weapon in both fleets switched off at once.",
+          ],
         },
       ],
     },
@@ -1651,6 +1874,27 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
           ],
           deeds: [
             "The first excavation at {near} woke a warden machine that killed the dig crew and went back to sleep.",
+          ],
+        },
+        {
+          temper: { aloof: 3, malevolent: 1.5 },
+          kind: "a sleeping empire",
+          nicks: ["the Sleepers", "the Dark Fleet"],
+          forms: [
+            "No one living has seen one awake: only their tomb-ships, vast and dark, and the machines that serve them.",
+          ],
+          haunts: ["the tomb-ships in the dark belt beyond {near}", "the beacon buried under {near}"],
+          rules: [
+            "Their tomb-ships lie dormant; every power in the sector watches for signs of waking.",
+            "What they built still answers to their codes, and the codes are spreading through old machines.",
+            "^A few have woken, and they are deciding what the galaxy is now.",
+          ],
+          wants: ["the beacon found at {near} left unanswered", "a scientist of {near} who cracked one of their codes"],
+          offers: ["technology centuries ahead, for help waking the rest of them"],
+          wards: ["silence on their old frequencies, and leaving their tomb-ships dark"],
+          roles: ["an awakened herald, still learning the new galaxy", "*a cultist of {near} who wants them woken"],
+          deeds: [
+            "A salvage crew from {near} powered up a tomb-ship's bridge; the ship flew off with them, and was not seen again.",
           ],
         },
       ],
@@ -2376,7 +2620,8 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
     const nature: string[] = [];
     const chosen: SpeciesPart[] = [];
     const bodyTags = new Set<string>();
-    if (frame === "species") {
+    // A species with a body of its own lore (a swarm, a network of probes) is told as written.
+    if (frame === "species" && !variant.forms.length) {
       const goes = (part: SpeciesPart) => {
         const tags = new Set(chosen.flatMap((each) => each.tags ?? []));
         return (
