@@ -698,6 +698,11 @@ const characterPick = (personId: string) =>
 
 /** An image pack's tiles copied onto one canvas, packed in rows: the sheets are decoded, read once and
  *  let go. */
+/** A tile's tallest variant, in cells (an edge tile's pieces one cell each). */
+function tallestOf(variants: readonly ImageTile[]): number {
+  return Math.max(0, ...variants.map((tile) => (tile.h ?? 1) + ((tile.w ?? 1) > 1 ? 0.5 : 0)));
+}
+
 async function buildImageAtlas(pack: ImageTilePack): Promise<ImageAtlas> {
   const size = pack.tileSize;
   const images = new Map<string, HTMLImageElement>(
@@ -716,7 +721,11 @@ async function buildImageAtlas(pack: ImageTilePack): Promise<ImageAtlas> {
   // Edge tiles' pieces, each on its own with a pixel of its own edge around it.
   const pieces: Array<{ id: string; index: number; piece: number; tile: ImageTile; sx: number; sy: number }> = [];
   const fringePieces: Array<{ id: string; index: number; piece: number; tile: ImageTile }> = [];
-  for (const [id, variants] of Object.entries(pack.tiles)) {
+  // Tallest first, so each row is filled by tiles of its height and no tall one leaves a row mostly empty.
+  const tallestFirst = Object.entries(pack.tiles).sort(
+    ([a, av], [b, bv]) => tallestOf(bv) - tallestOf(av) || (a < b ? -1 : a > b ? 1 : 0),
+  );
+  for (const [id, variants] of tallestFirst) {
     variants.forEach((tile, index) => {
       if (id.startsWith("fringe_")) {
         for (let piece = 0; piece < 4 * (tile.h ?? 4); piece++) fringePieces.push({ id, index, piece, tile });
@@ -731,9 +740,10 @@ async function buildImageAtlas(pack: ImageTilePack): Promise<ImageAtlas> {
         }
         return;
       }
-      const [w, h] = [(tile.w ?? 1) * size, (tile.h ?? 1) * size];
+      // A pixel clear all round, so a sprite drawn scaled never picks up its neighbour's edge.
+      const [w, h] = [(tile.w ?? 1) * size + 2, (tile.h ?? 1) * size + 2];
       if (x + w > ROW) [x, y, rowHeight] = [0, y + rowHeight, 0];
-      placed.push({ id, index, tile, sx: x, sy: y });
+      placed.push({ id, index, tile, sx: x + 1, sy: y + 1 });
       x += w;
       rowHeight = Math.max(rowHeight, h);
     });

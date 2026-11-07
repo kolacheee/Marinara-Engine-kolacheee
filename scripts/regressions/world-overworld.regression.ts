@@ -158,13 +158,20 @@ try {
       x += w;
       rowHeight = Math.max(rowHeight, h);
     };
-    for (const [id, variants] of Object.entries(art.tiles))
+    // As the overworld lays its atlas: tallest first (buildImageAtlas).
+    const tallest = (variants: Array<{ w?: number; h?: number }>) =>
+      Math.max(0, ...variants.map((tile) => (tile.h ?? 1) + ((tile.w ?? 1) > 1 ? 0.5 : 0)));
+    const ordered = Object.entries(art.tiles).sort(
+      ([a, av], [b, bv]) => tallest(bv) - tallest(av) || (a < b ? -1 : a > b ? 1 : 0),
+    );
+    for (const [id, variants] of ordered)
       for (const tile of variants) {
         if (id.startsWith("fringe_")) continue;
         if (id.startsWith("edge_")) for (let piece = 0; piece < 4 * (tile.h ?? 4); piece++) place(size + 2, size + 2);
-        else place((tile.w ?? 1) * size, (tile.h ?? 1) * size);
+        else place((tile.w ?? 1) * size + 2, (tile.h ?? 1) * size + 2);
       }
     assert.ok(y + rowHeight <= 8192, `${family}: its art's atlas is ${y + rowHeight} down, past 8192`);
+    console.log(`${family}: atlas ${y + rowHeight} of 8192`);
     // Fields and built-up ground are drawn square: no art carries a fringe for them. Fantasy and wuxia
     // carry no modern ground, so a village or a city ward there draws the fields around a town.
     for (const look of WORLD_SQUARE_LOOKS) assert.ok(!art.tiles[`fringe_${look}`], `${family}: fringe_${look}`);

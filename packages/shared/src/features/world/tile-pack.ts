@@ -293,11 +293,11 @@ export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number
   bridge_diag: [6, 4],
   bridge_turn: [2, 2],
   road_bridge: [4, 1],
-  mountain_ridges: [12, 4],
+  mountain_ridges: [6, 8],
   mountain_pines: [4, 2],
   standing_city: [4, 4],
   standing_industry: [4, 4],
-  crater_props: [12, 2],
+  crater_props: [8, 3],
   in_wall_top: [4, 4],
   dn_wall_top: [4, 4],
   ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [4, 2] as const])),
@@ -328,11 +328,11 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
     bridge_diag: [[6, 4]],
     bridge_turn: [[2, 2]],
     road_bridge: [[4, 1]],
-    mountain_ridges: [[12, 4]],
+    mountain_ridges: [[6, 8]],
     mountain_pines: [[4, 2]],
     standing_city: [[4, 4]],
     standing_industry: [[4, 4]],
-    crater_props: [[12, 2]],
+    crater_props: [[8, 3]],
     in_wall_top: [[4, 4]],
     dn_wall_top: [[4, 4]],
     ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [[4, 2] as const]])),
@@ -522,12 +522,12 @@ export function worldTilePiece(
   if (id === "treeline_mountains")
     return piece < 8 && w >= 8 && h >= 4 ? { x: (piece % 4) * 2, y: Math.floor(piece / 4) * 2, w: 2, h: 2 } : null;
   if (id === "mountain_ridges")
-    return piece < 8 && w >= 12 && h >= 4 ? { x: (piece % 4) * 3, y: Math.floor(piece / 4) * 2, w: 3, h: 2 } : null;
+    return piece < 8 && w >= 6 && h >= 8 ? { x: (piece % 2) * 3, y: Math.floor(piece / 2) * 2, w: 3, h: 2 } : null;
   if (id === "standing_city" || id === "standing_industry")
     return piece < 8 && w >= 4 && h >= 4 ? { x: piece % 4, y: Math.floor(piece / 4) * 2, w: 1, h: 2 } : null;
   if (id === "crater_props") {
     if (piece < 4) return w >= 4 ? { x: piece, y: 0, w: 1, h: 1 } : null;
-    return piece < 8 && w >= 12 && h >= 2 ? { x: 4 + (piece - 4) * 2, y: 0, w: 2, h: 2 } : null;
+    return piece < 8 && w >= 8 && h >= 3 ? { x: (piece - 4) * 2, y: 1, w: 2, h: 2 } : null;
   }
   if (id === "bridge_diag")
     return piece < 6 && w >= 6 && h >= 4 ? { x: (piece % 3) * 2, y: Math.floor(piece / 3) * 2, w: 2, h: 2 } : null;

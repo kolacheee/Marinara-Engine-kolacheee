@@ -132,12 +132,12 @@ def main(out_dir, paths, only):
             standing("road_bridge", [f"{{family}}-bridge-{o}{{season}}.png" for o in ("h", "v", "d1", "d2")],
                      [(i, 0, 1, 1) for i in range(4)])
         if "craters" in only:
-            # Crater scars, shading only: four of one cell, then four of two by two.
+            # Crater scars, shading only: four of one cell, then a row of four of two by two.
             standing("crater_props", [f"crater-prop-{i}{{season}}.png" for i in range(8)],
-                     [(i, 0, 1, 1) for i in range(4)] + [(4 + 2 * i, 0, 2, 2) for i in range(4)])
+                     [(i, 0, 1, 1) for i in range(4)] + [(2 * i, 1, 2, 2) for i in range(4)])
         if "mountains" in only:
             standing("mountain_ridges", [f"mountains{{season}}-ridge-{i}.png" for i in range(8)],
-                     [((i % 4) * 3, (i // 4) * 2, 3, 2) for i in range(8)])
+                     [((i % 2) * 3, (i // 2) * 2, 3, 2) for i in range(8)])
             standing("mountain_pines", [f"mountains{{season}}-pine-{i}.png" for i in range(8)],
                      [(i % 4, i // 4, 1, 1) for i in range(8)])
         if "forest" in only:
