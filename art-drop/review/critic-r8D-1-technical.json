@@ -1,0 +1,382 @@
+{
+  "scifi-industry-bldg-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      7,
+      3,
+      40,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 17,
+    "nontransparent_pixels": 1151,
+    "sha256": "35620632ef229d6da1f3ef9bc9e20de4eb73b5965656f7ef568442747566ac35"
+  },
+  "scifi-industry-bldg-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      1,
+      18,
+      47,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 21,
+    "nontransparent_pixels": 980,
+    "sha256": "abbbdd76c7dec0a207c02044dea8baaffbcc93cc69a3c06e865b89dbddb45b22"
+  },
+  "scifi-industry-bldg-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      8,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 19,
+    "nontransparent_pixels": 1365,
+    "sha256": "8ac561000dfff65404b13107bb11b7221f3ddd0121deb07dd51765f665e61de3"
+  },
+  "scifi-industry-bldg-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      5,
+      2,
+      42,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 18,
+    "nontransparent_pixels": 782,
+    "sha256": "7811338c2411791c6a2ee4912fe372fef2939311a086874db5fd56c51d35e23b"
+  },
+  "scifi-industry-bldg-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      2,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 21,
+    "nontransparent_pixels": 1086,
+    "sha256": "7609dd783e727ffca80821921c044599b17ecd70d68c996a97884cf3d075084b"
+  },
+  "scifi-industry-bldg-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      10,
+      45,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 20,
+    "nontransparent_pixels": 1156,
+    "sha256": "704a36744bdbd7fc4d7a7ad56c6da2c6e6b64d9d992a7bf1fe9f4d6bd53f8b22"
+  },
+  "scifi-industry-bldg-6": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      6,
+      17,
+      90,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 28,
+    "nontransparent_pixels": 4920,
+    "sha256": "3fe09d58570eb7f11f15651af0d05d7510f64048d5956881a54b86b238452cb4"
+  },
+  "scifi-industry-bldg-7": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      14,
+      16,
+      82,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 24,
+    "nontransparent_pixels": 3743,
+    "sha256": "87f00ef53300957289596b2c80a5575f7c03514375272cb94c9419e7474cd14e"
+  },
+  "scifi-industry-bldg-8": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      20,
+      93,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 22,
+    "nontransparent_pixels": 5550,
+    "sha256": "91599d4dcaf2416e2633d9f880ffa6f3763d36e8cdfc3d4786dfc61e015f30f7"
+  },
+  "scifi-industry-bldg-9": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      21,
+      93,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 26,
+    "nontransparent_pixels": 4479,
+    "sha256": "3d1c57ae0c456477c4d46d651e16859537fc66b6a13eeba41681efba86f675fb"
+  },
+  "scifi-industry@winter-bldg-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      8,
+      3,
+      40,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 18,
+    "nontransparent_pixels": 1154,
+    "sha256": "df2504d03d00007df7191a244d0453820779a29ee86432623a78a5c80c8fe8e7"
+  },
+  "scifi-industry@winter-bldg-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      1,
+      17,
+      47,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 22,
+    "nontransparent_pixels": 989,
+    "sha256": "5a6bec0bf2cd41e46b00cdc0b8f1459e916d358e32e339692305289cc5f534db"
+  },
+  "scifi-industry@winter-bldg-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      9,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 21,
+    "nontransparent_pixels": 1362,
+    "sha256": "708158f1da36500ea0e1e00cf3d35547cd7b7f9fd0004fd2d4a26cb804a5755b"
+  },
+  "scifi-industry@winter-bldg-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      5,
+      3,
+      42,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 23,
+    "nontransparent_pixels": 793,
+    "sha256": "d775a229a49f3b611960d7f563490f84f39e36830983dcb367f493d2fad47de4"
+  },
+  "scifi-industry@winter-bldg-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      2,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 24,
+    "nontransparent_pixels": 1093,
+    "sha256": "07fe12ddf95fa78445df2d85171e6651ddde7edcebfc55f201d428909b9e4f4d"
+  },
+  "scifi-industry@winter-bldg-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      10,
+      45,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 20,
+    "nontransparent_pixels": 1157,
+    "sha256": "a377ce44a0b1291c2bdd0e486a007a5aff1e83ba74b160fa84d0262b254e8760"
+  },
+  "scifi-industry@winter-bldg-6": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      6,
+      17,
+      90,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 29,
+    "nontransparent_pixels": 4927,
+    "sha256": "727487626cd5819ea2d1fef5aef987b0890f990080213765dcc93f002edb8e29"
+  },
+  "scifi-industry@winter-bldg-7": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      14,
+      16,
+      82,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 26,
+    "nontransparent_pixels": 3749,
+    "sha256": "f8979f885d31db8e8d96d374c3f665c041bc576df5f31b6b6dba02c6120c2706"
+  },
+  "scifi-industry@winter-bldg-8": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      20,
+      93,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 25,
+    "nontransparent_pixels": 5561,
+    "sha256": "0cbaf3234895225401bc96e07803630ba17ecde6c215f95c305267c50fa74b7d"
+  },
+  "scifi-industry@winter-bldg-9": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      3,
+      21,
+      93,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 28,
+    "nontransparent_pixels": 4477,
+    "sha256": "996ee2bb536f34e316a4d5650e15d2ceefcd6ffd2fc2cf87cf01217c63cdb242"
+  }
+}
