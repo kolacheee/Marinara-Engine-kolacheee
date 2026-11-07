@@ -79,7 +79,7 @@ Every pick is kept as you make it, and **Back**, **Next** and the step names mov
 
 The strong and weak picks lean the character's hidden growth in each game. Their sister tree comes from their temperament in the game, not from the card. See [Game Mode: MRPG Classes](../game/mrpg-classes.md#choose-a-characters-trees).
 
-The **Story stats** below the block are the pools and attributes described above. Roleplay chats and Legacy games use them. An MRPG game uses the MRPG block instead and never builds a sheet from them.
+The **Roleplay Stats** below the block are the pools and attributes described above. Roleplay chats and Legacy games use them. An MRPG game uses the MRPG block instead and never builds a sheet from them.
 
 ### Game Mode Icon
 
