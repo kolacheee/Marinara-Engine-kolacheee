@@ -679,14 +679,17 @@ export function WorldOverworld({
       for (let y = 0; y < height; y++)
         for (let x = 0; x < width; x++) {
           const look = propCells.get(y * width + x);
-          if (!look || wetCell[y * width + x]) continue;
+          // Nor on a river (its rubble would lie over the stream).
+          if (!look || wetCell[y * width + x] || riverCells.has(y * width + x)) continue;
           if ((look === "ruins" || look === "marsh") !== (pass === 1)) continue;
           const noise = cellNoise(x, y);
           // Hills stand apart (a slope every cell reads as a heap of lumps), the rest about two cells in three.
           if (noise(63) >= (look === "hills" ? 0.35 : 0.65)) continue;
           // A large one spills half a cell round it, so never beside water (its pools would lie over the lake).
           let shore = false;
-          for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (wetAt(x + dx, y + dy)) shore = true;
+          for (let dy = -1; dy <= 1; dy++)
+            for (let dx = -1; dx <= 1; dx++)
+              if (wetAt(x + dx, y + dy) || riverCells.has((y + dy) * width + x + dx)) shore = true;
           const large = !shore && noise(62) < 0.55;
           let piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
           // A hill field's last pieces are boulder piles: one in four of them stays, the rest are mounds.
@@ -1105,12 +1108,22 @@ export function WorldOverworld({
           if (x < 0 || y < 0 || x >= width || y >= height) continue;
           const at = y * width + x;
           const look = drawnLook[at]!;
-          if (wetCell[at] || roads.has(at) || placed.has(at) || builtCells.has(at) || square.has(look)) continue;
+          if (
+            wetCell[at] ||
+            riverCells.has(at) ||
+            roads.has(at) ||
+            placed.has(at) ||
+            builtCells.has(at) ||
+            square.has(look)
+          )
+            continue;
           const noise = cellNoise(x, y);
           const reach = Math.hypot(dx, dy);
           if (reach > 1.6 || noise(67) > (reach < 0.5 ? 1 : 0.7)) continue;
           let shore = false;
-          for (let ny = -1; ny <= 1; ny++) for (let nx = -1; nx <= 1; nx++) if (wetAt(x + nx, y + ny)) shore = true;
+          for (let ny = -1; ny <= 1; ny++)
+            for (let nx = -1; nx <= 1; nx++)
+              if (wetAt(x + nx, y + ny) || riverCells.has((y + ny) * width + x + nx)) shore = true;
           // The heart of the place a large ruin (a shell, a fallen tower), the rest smaller rubble round it.
           const piece = reach < 0.5 && !shore ? 4 + Math.floor(noise(68) * 4) : next++ % 4;
           inSeason(x, y);
