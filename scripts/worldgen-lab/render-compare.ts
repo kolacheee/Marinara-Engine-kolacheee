@@ -32,8 +32,11 @@ function svg(version: number) {
   const looks = world.terrain.map((id) => worldTerrainLook(kit.terrain!.find((t) => t.id === id)!));
   let body = "";
   for (let i = 0; i < world.ground.length; i++) {
-    const look = looks[parseInt(world.ground[i]!, 36)]!;
-    body += `<rect x="${(i % world.width) * S}" y="${Math.floor(i / world.width) * S}" width="${S}" height="${S}" fill="${COLORS[look] ?? "#999"}"/>`;
+    const index = parseInt(world.ground[i]!, 36);
+    const look = looks[index]!;
+    // Ruins drawn dark violet, so where they lie shows at a glance.
+    const fill = /ruin/.test(world.terrain[index] ?? "") ? "#4b2a6b" : (COLORS[look] ?? "#999");
+    body += `<rect x="${(i % world.width) * S}" y="${Math.floor(i / world.width) * S}" width="${S}" height="${S}" fill="${fill}"/>`;
   }
   const centre = (cell: number) => [(cell % world.width) * S + S / 2, Math.floor(cell / world.width) * S + S / 2];
   for (const river of world.rivers ?? []) {

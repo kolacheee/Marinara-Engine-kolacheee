@@ -685,6 +685,106 @@ const SLUMS_BAND = [0.8, 1, 1.3, 1.6];
  * gets a ragged sprawl, slums in a broken band round its edge, industry by the water and in patches, and a
  * town or city a core at its heart. A setting with no open ground but its city keeps the map as it was.
  */
+/**
+ * Generator 10: a setting's ruins where the old world's towns and roads stood, not scattered by weight.
+ * The same share of the ground stays ruins, but laid by what was there: the bones of the old towns the
+ * living ones are built on, the old highways' verges, and a few dead cities, each on a river or a shore
+ * where cities stand, away from today's settlements. The rest of the ground it held becomes the open
+ * ground around it.
+ */
+function worldRuinsLaid(
+  seed: number,
+  terrain: Array<{ id: string; kind: string }>,
+  kinds: Uint8Array,
+  width: number,
+  height: number,
+  settlements: Array<{ cell: number; tier: number }>,
+  highways: number[][],
+  rivers: ReadonlySet<number>,
+) {
+  const ruin = terrain.findIndex((entry) => entry.kind === "open" && /\bruin/i.test(entry.id));
+  if (ruin < 0) return;
+  const total = kinds.reduce((sum, kind) => sum + (kind === ruin ? 1 : 0), 0);
+  if (!total) return;
+  const isOpen = (at: number) => terrain[kinds[at]!]!.kind === "open";
+  const plain = terrain
+    .map((entry, index) => ({
+      index,
+      cells: entry.kind === "open" && index !== ruin ? kinds.filter((kind) => kind === index).length : -1,
+    }))
+    .sort((a, b) => b.cells - a.cells || a.index - b.index)[0]!;
+  if (plain.cells < 0) return;
+  // Each ruin cell first becomes the open ground most of its neighbours are (else the commonest).
+  const before = Uint8Array.from(kinds);
+  for (let cell = 0; cell < kinds.length; cell++) {
+    if (before[cell] !== ruin) continue;
+    const [x, y] = [cell % width, Math.floor(cell / width)];
+    const count = new Map<number, number>();
+    for (let dy = -2; dy <= 2; dy++)
+      for (let dx = -2; dx <= 2; dx++) {
+        const [nx, ny] = [x + dx, y + dy];
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+        const near = before[ny * width + nx]!;
+        if (near !== ruin && terrain[near]!.kind === "open") count.set(near, (count.get(near) ?? 0) + 1);
+      }
+    const best = [...count].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0];
+    kinds[cell] = best ? best[0] : plain.index;
+  }
+  const score = new Float64Array(kinds.length);
+  const noise = valueNoise(seed, "ruins", width, height);
+  const settled = new Set(settlements.map(({ cell }) => cell));
+  const spread = (cx: number, cy: number, reach: number, weight: number) => {
+    const span = Math.ceil(reach);
+    for (let dy = -span; dy <= span; dy++)
+      for (let dx = -span; dx <= span; dx++) {
+        const [x, y] = [cx + dx, cy + dy];
+        if (x < 0 || y < 0 || x >= width || y >= height) continue;
+        const distance = Math.hypot(dx, dy);
+        if (distance <= reach) score[y * width + x] = score[y * width + x]! + weight * (1 - distance / (reach + 1));
+      }
+  };
+  // The living towns stand on the old ones: the bigger the town, the wider the old city around it.
+  for (const { cell, tier } of settlements) spread(cell % width, Math.floor(cell / width), 2 + tier * 0.7, 4);
+  // The old highways' verges: wrecks, toll houses and fallen overpasses.
+  for (const path of highways) for (const cell of path) spread(cell % width, Math.floor(cell / width), 0.5, 1.5);
+  // A few dead cities where cities stand (a river or a shore), far from the living.
+  const random = worldStream(seed, "ruins");
+  const wet = (at: number) => {
+    const [x, y] = [at % width, Math.floor(at / width)];
+    for (let dy = -1; dy <= 1; dy++)
+      for (let dx = -1; dx <= 1; dx++) {
+        const [nx, ny] = [x + dx, y + dy];
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+        const near = ny * width + nx;
+        if (rivers.has(near) || terrain[kinds[near]!]!.kind === "water") return true;
+      }
+    return false;
+  };
+  const sites: number[] = [];
+  const wanted = Math.max(2, Math.round(kinds.length / 900));
+  const far = (at: number, from: Iterable<number>, reach: number) => {
+    for (const other of from)
+      if (Math.hypot((other % width) - (at % width), Math.floor(other / width) - Math.floor(at / width)) < reach)
+        return false;
+    return true;
+  };
+  const candidates = [...kinds.keys()]
+    .filter((at) => isOpen(at) && wet(at) && far(at, settled, 5))
+    .map((at) => ({ at, order: noise[at]! + random() * 0.3 }))
+    .sort((a, b) => b.order - a.order || a.at - b.at);
+  for (const { at } of candidates) {
+    if (sites.length >= wanted) break;
+    if (far(at, sites, 8)) sites.push(at);
+  }
+  for (const at of sites) spread(at % width, Math.floor(at / width), 4, 5);
+  // The same share of ruins as the setting asked for, on the cells that held most, never on a town.
+  const order = [...kinds.keys()]
+    .filter((at) => isOpen(at) && !settled.has(at))
+    .map((at) => ({ at, value: score[at]! + noise[at]! * 1.2 }))
+    .sort((a, b) => b.value - a.value || a.at - b.at);
+  for (const { at } of order.slice(0, total)) kinds[at] = ruin;
+}
+
 function worldUrbanize(
   seed: number,
   terrain: Array<{ id: string; kind: string; share: number }>,
@@ -1393,6 +1493,28 @@ export function compileWorld({
       ? { rivers: new Set(drainage.riverAt.keys()), crossOnly: generatorVersion >= 10 }
       : undefined,
   );
+
+  // Generator 10: ruins where the old world's towns and highways stood.
+  if (generatorVersion >= 10) {
+    const fast = [...kit.travel]
+      .filter((way) => (way.crosses ?? "open") === "open")
+      .sort((a, b) => (b.speed ?? 1) - (a.speed ?? 1))[0];
+    worldRuinsLaid(
+      seed,
+      terrain.map((entry, index) => ({ id: entry.id ?? String(index), kind: entry.kind })),
+      kinds,
+      width,
+      height,
+      settlements.map(({ draft }) => ({
+        cell: draft.cell!,
+        tier: ladder > 1 ? Math.round((draft.size! / (ladder - 1)) * 3) : 3,
+      })),
+      links
+        .filter((link) => link.path && (/highway|motorway|freeway|interstate/i.test(link.way) || link.way === fast?.id))
+        .map((link) => link.path!),
+      new Set(drainage?.riverAt.keys() ?? []),
+    );
+  }
 
   // Generator 7: a ford where a way over open ground crosses a river, and the settlements beside it a
   // crossing (its tag, where the setting has one).

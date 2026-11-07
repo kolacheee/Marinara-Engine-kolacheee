@@ -525,6 +525,68 @@ for (const kit of kits) {
   assert.ok(older > 0, "generator 9 worlds keep their roads as they were");
 }
 
+// ── Generator 10: ruins where the old world's towns and highways stood ──
+{
+  const kit = byId.get("post_apocalyptic")!;
+  let [nearTowns, nearOdds, onRoads, roadOdds, cities] = [0, 0, 0, 0, 0];
+  for (const scale of ["region", "realm"] as const) {
+    for (const seed of [1, 31, 4242]) {
+      const scaled = { ...kit, scale };
+      const label = `ruins ${scale}/${seed}`;
+      const world = compileWorld({ seed, kit: scaled, generatorVersion: 10 });
+      const old = compileWorld({ seed, kit: scaled, generatorVersion: 9 });
+      const ruin = world.terrain.findIndex((id) => /ruin/.test(id)).toString(36);
+      const count = (ground: string) => [...ground].filter((char) => char === ruin).length;
+      assert.equal(count(world.ground), count(old.ground), `${label}: the same share of ruins`);
+      const towns = world.places.filter((place) => place.rank !== undefined);
+      const isRuin = (cell: number) => world.ground[cell] === ruin;
+      const open = Array.from({ length: world.ground.length }, (_, cell) => cell).filter(
+        (cell) => kit.terrain![parseInt(world.ground[cell]!, 36)]!.kind === "open",
+      );
+      const share = count(world.ground) / open.length;
+      const distance = (cell: number) =>
+        Math.min(
+          ...towns.map((town) =>
+            Math.hypot((cell % world.width) - town.at.x, Math.floor(cell / world.width) - town.at.y),
+          ),
+        );
+      const ring = open.filter(
+        (cell) => distance(cell) <= 2 && !towns.some((town) => town.at.y * world.width + town.at.x === cell),
+      );
+      nearTowns += ring.filter(isRuin).length / ring.length;
+      nearOdds += share;
+      const road = new Set(world.links.flatMap((link) => link.path ?? []));
+      const verge = open.filter((cell) => road.has(cell) && distance(cell) > 4);
+      if (verge.length) {
+        onRoads += verge.filter(isRuin).length / verge.length;
+        roadOdds += share;
+      }
+      // A dead city: ruins far from today's towns, in one body of five cells or more.
+      const far = new Set(open.filter((cell) => isRuin(cell) && distance(cell) >= 5));
+      const seen = new Set<number>();
+      for (const start of far) {
+        if (seen.has(start)) continue;
+        let size = 0;
+        const stack = [start];
+        seen.add(start);
+        while (stack.length) {
+          const cell = stack.pop()!;
+          size++;
+          for (const next of [cell - 1, cell + 1, cell - world.width, cell + world.width])
+            if (far.has(next) && !seen.has(next)) (seen.add(next), stack.push(next));
+        }
+        if (size >= 5) {
+          cities++;
+          break;
+        }
+      }
+    }
+  }
+  assert.ok(nearTowns > nearOdds * 2.5, `ruins hug the towns: ${nearTowns} against ${nearOdds}`);
+  assert.ok(onRoads > roadOdds * 1.5, `ruins line the highways: ${onRoads} against ${roadOdds}`);
+  assert.ok(cities >= 5, `dead cities away from the towns in most worlds (${cities} of 6)`);
+}
+
 // ── The ground's shares, and the ways and times of travel ──
 {
   const ways = new Set<string>();
