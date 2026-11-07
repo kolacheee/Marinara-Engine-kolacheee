@@ -15,6 +15,7 @@ import {
   type WorldBrief,
   type WorldBriefEvent,
   type WorldBriefPlace,
+  type WorldCanonMore,
   type WorldKit,
 } from "@marinara-engine/shared";
 
@@ -54,6 +55,8 @@ export interface WorldBriefWritingInput {
   canon?: WorldBriefPlace[];
   /** Dated events read from the player's lore (worldgen W3), which the brief keeps exactly. */
   canonEvents?: WorldBriefEvent[];
+  /** Groups, peoples, cultures and faiths read from the player's lore, which the brief keeps exactly. */
+  canonMore?: WorldCanonMore;
   /** Strict: the lore's places and nothing invented beside them. */
   strict?: boolean;
 }
@@ -64,7 +67,7 @@ export function buildWorldBriefPrompt(input: WorldBriefWritingInput): { system: 
   const kindsOn = WORLD_CHANGE_KINDS.filter((kind) => input.kit.change.kinds[kind].on);
   const system = [
     `You write the brief of a role-playing game's world: what exists in it, in the words of its setting. Code lays the world out from your brief, so say what exists and what it is like, never where it lies on a map.`,
-    `Return one JSON object only: {"briefVersion": 1, "premise": "...", "places": [...], "placeNames": [...], "groups": [...], "peoples": [...], "peopleNames": [...], "events": [...]}. No prose, no code fences.`,
+    `Return one JSON object only: {"briefVersion": 1, "premise": "...", "places": [...], "placeNames": [...], "groups": [...], "peoples": [...], "folk": [...], "faiths": [...], "peopleNames": [...], "events": [...]}. No prose, no code fences.`,
     `Rules:`,
     `- "premise": the present day as the game begins, in one or two sentences: name a cause and a person or group, not a mood. At most 600 characters.`,
     `- "places": the major places, each {"name", "layer", "parent", "size", "tags", "note", "start"}. "layer" is a layer id below; "parent" is the name of another place in this list in an outer layer; "size" (settlements only) is a size id; "tags" are tag ids; "note" is one line of at most 240 characters. Mark the one place the party starts in with "start": true.`,
@@ -74,6 +77,8 @@ export function buildWorldBriefPrompt(input: WorldBriefWritingInput): { system: 
     `- "placeNames": for each culture id, a list of 40 to 120 names for the places code draws, {"culture": id, "names": [...]}, in that culture's own sound as its naming note says. Names are new: not names already used in "places", not famous names from well-known fiction, and never the same few names models reach for.`,
     `- "groups": the 3 to 12 groups the present day turns on, each {"name", "kind", "seat", "note", "allies", "rivals"}: "kind" is a kind of group id below (households and shops count as well as powers); "seat" is the name of a place in "places"; "note" is what it wants, in one line; "allies" and "rivals" are names of other groups here.`,
     `- "peoples": every non-human people, race or species the setting describes (none when it describes none; humans are not one), up to ${WORLD_BRIEF_LIMITS.peoples}, each {"name", "kind", "archetype", "temper", "form", "want", "note", "home", "allies", "rivals"}: "kind" what they are in a few words; "archetype" the folklore role they fit most, one of ${WORLD_PEOPLE_ARCHETYPES.join(", ")}; "temper" how they treat humans, one of ${WORLD_PEOPLE_TEMPERS.join(", ")}; "form", "want" and "note" one line each, in the setting's own terms; "home" the name of a place in "places" they live by; "allies" and "rivals" names of other peoples here. Code adds peoples of its own only to fill out a world with fewer.`,
+    `- "folk": the setting's own human cultures (nations, clans, peoples of a land), up to ${WORLD_BRIEF_LIMITS.folk}, each {"name", "note", "places"}: "note" their ways, look and tongue in one line; "places" names from "places" that are theirs (a place inside one is theirs too).`,
+    `- "faiths": the setting's faiths, 1 to ${WORLD_BRIEF_LIMITS.faiths} (a world without gods still has beliefs), each {"name", "note", "holy", "followers", "groups"}: "note" what its followers believe and do, in one line; "holy" names from "places" holy to it, where it began first; "followers" names from "folk" and "peoples" who keep it; "groups" names from "groups" that serve it.`,
     `- "peopleNames": for each culture id, the names its people are given, {"culture": id, "given": [...], "family": [...], "order": "given-family" | "family-given" | "given"}: 60 to 150 given names and 40 to 150 family names (none when the culture has no family names), in that culture's own sound and order as its naming note says. Varied: no name twice, not the same few names models reach for, not famous characters' names.`,
     `- "events": up to 10 notable events of the world's past, each {"yearsAgo", "kind", "text", "places", "groups"}: "yearsAgo" a whole number of years before the present; "kind" one of ${kindsOn.join(", ")} (only these: this world has no others); "text" what happened in one line; "places" and "groups" names from "places" and "groups". The world's history is written around them.`,
     `- Use only the ids listed below. ${TEXT_RULE}`,
@@ -101,6 +106,15 @@ export function buildWorldBriefPrompt(input: WorldBriefWritingInput): { system: 
           JSON.stringify(canonEvents),
         ]
       : []),
+    ...(["groups", "peoples", "folk", "faiths"] as const).flatMap((key) =>
+      input.canonMore?.[key]?.length
+        ? [
+            ``,
+            `These ${key} come from the player's lore and are fixed. Include each exactly as given in "${key}", and the places and names they refer to:`,
+            JSON.stringify(input.canonMore[key]),
+          ]
+        : [],
+    ),
   ].join("\n");
   return { system, user };
 }
@@ -111,10 +125,14 @@ export function readWrittenWorldBrief(
   data: unknown,
   canon: WorldBriefPlace[] = [],
   canonEvents: WorldBriefEvent[] = [],
+  canonMore: WorldCanonMore = {},
 ): { ok: true; brief: WorldBrief; repairs: string[] } | { ok: false; issues: string[] } {
   if (!data || typeof data !== "object" || Array.isArray(data))
     return { ok: false, issues: ["brief: Not a JSON object"] };
-  return checkWorldBrief(kit, withCanon({ ...(data as Record<string, unknown>), briefVersion: 1 }, canon, canonEvents));
+  return checkWorldBrief(
+    kit,
+    withCanon({ ...(data as Record<string, unknown>), briefVersion: 1 }, canon, canonEvents, canonMore),
+  );
 }
 
 export function worldBriefRepairPrompt(issues: string[]): string {
@@ -155,11 +173,16 @@ export function loreBatches(entries: LoreEntryText[], budget = 12_000): LoreEntr
 
 export function buildWorldCanonPrompt(kit: WorldKit, batch: LoreEntryText[]): { system: string; user: string } {
   const system = [
-    `You read a player's lore for a role-playing game and list every place it states: what the lore says exists, nothing more.`,
-    `Return one JSON object only: {"places": [{"name", "layer", "parent", "size", "tags", "note", "lore"}], "events": [{"yearsAgo", "kind", "text", "places", "groups", "lore"}]}. No prose, no code fences.`,
+    `You read a player's lore for a role-playing game and list every place, group, people, culture, faith and dated event it states: what the lore says exists, nothing more.`,
+    `Return one JSON object only: {"places": [{"name", "layer", "parent", "size", "tags", "note", "lore"}], "events": [{"yearsAgo", "kind", "text", "places", "groups", "lore"}], "groups": [{"name", "kind", "seat", "note", "lore"}], "peoples": [{"name", "kind", "archetype", "temper", "form", "want", "note", "home", "lore"}], "folk": [{"name", "note", "places", "lore"}], "faiths": [{"name", "note", "holy", "followers", "groups", "lore"}]}. No prose, no code fences.`,
+    `- Cities, towns and villages are places in the settlements layer: give each the size id the lore makes clear (a capital or great city the biggest).`,
     `- "layer" is a layer id below, the one the place fits; "parent" is the name of the place it lies in when the lore says so; "size" (settlements only) is a size id when the lore makes it clear; "tags" are tag ids the lore supports; "note" is one line of at most 240 characters in the lore's own terms; "lore" lists the ids of the entries that state the place.`,
     `- "events" are the dated events the lore states (a founding, a war, a flood, a coronation): "yearsAgo" how many years before the present, as the lore dates it; "kind" one of ${WORLD_CHANGE_KINDS.join(", ")}; "text" what happened in one line in the lore's own terms; "places" and "groups" the names it involves; "lore" the entry ids. Only events the lore dates.`,
-    `- List a place or an event only when the lore states it. Invent nothing. Leave a field out rather than guess.`,
+    `- "groups" are the powers and bodies the lore names (kingdoms' rulers, houses, guilds, orders, churches and temples, gangs): "kind" a kind of group id below; "seat" the place it sits in; "note" what it wants or does.`,
+    `- "peoples" are the non-human peoples, races and species the lore describes (humans are not one): "kind" what they are in a few words; "archetype" one of ${WORLD_PEOPLE_ARCHETYPES.join(", ")}; "temper" how they treat humans, one of ${WORLD_PEOPLE_TEMPERS.join(", ")}; "form", "want", "note" one line each; "home" the place they live by.`,
+    `- "folk" are the human cultures the lore describes (nations, clans, the people of a land): "note" their ways, look and tongue in one line; "places" the places that are theirs.`,
+    `- "faiths" are the religions, cults and beliefs the lore describes: "note" what they hold and do; "holy" places holy to them; "followers" the folk or peoples who keep them; "groups" the groups that serve them.`,
+    `- List anything only when the lore states it. Invent nothing. Leave a field out rather than guess. "lore" is always the ids of the entries that state it.`,
     `- Use only the ids listed below. ${TEXT_RULE}`,
   ].join("\n");
   const user = [
@@ -179,32 +202,41 @@ export function mergeWorldCanon(
   kit: WorldKit,
   batches: unknown[],
   readIds: ReadonlySet<string>,
-): { places: WorldBriefPlace[]; events: WorldBriefEvent[]; repairs: string[] } {
-  const merged = new Map<string, Record<string, unknown>>();
-  for (const batch of batches) {
-    const places =
-      batch && typeof batch === "object" && Array.isArray((batch as { places?: unknown }).places)
-        ? ((batch as { places: unknown[] }).places as unknown[])
-        : [];
-    for (const raw of places) {
-      if (!raw || typeof raw !== "object" || typeof (raw as { name?: unknown }).name !== "string") continue;
-      const place = raw as Record<string, unknown>;
-      const key = String(place.name).trim().toLowerCase();
-      const lore = Array.isArray(place.lore) ? place.lore.map(String).filter((id) => readIds.has(id)) : [];
-      const earlier = merged.get(key);
-      merged.set(key, {
-        ...place,
-        ...earlier,
-        lore: [...new Set([...((earlier?.lore as string[] | undefined) ?? []), ...lore])].slice(0, 20),
-      });
+): { places: WorldBriefPlace[]; events: WorldBriefEvent[]; repairs: string[] } & Required<WorldCanonMore> {
+  // Each list one item per name: a later mention adds its lore entries and fills what the first left out.
+  const gather = (key: "places" | "groups" | "peoples" | "folk" | "faiths", limit: number) => {
+    const merged = new Map<string, Record<string, unknown>>();
+    for (const batch of batches) {
+      const items =
+        batch && typeof batch === "object" && Array.isArray((batch as Record<string, unknown>)[key])
+          ? ((batch as Record<string, unknown[]>)[key] as unknown[])
+          : [];
+      for (const raw of items) {
+        if (!raw || typeof raw !== "object" || typeof (raw as { name?: unknown }).name !== "string") continue;
+        const item = raw as Record<string, unknown>;
+        const name = String(item.name).trim().toLowerCase();
+        const lore = Array.isArray(item.lore) ? item.lore.map(String).filter((id) => readIds.has(id)) : [];
+        const earlier = merged.get(name);
+        merged.set(name, {
+          ...item,
+          ...earlier,
+          lore: [...new Set([...((earlier?.lore as string[] | undefined) ?? []), ...lore])].slice(0, 20),
+        });
+      }
     }
-  }
+    return [...merged.values()].slice(0, limit);
+  };
   const checked = checkWorldBrief(kit, {
     briefVersion: 1,
     premise: "canon",
-    places: [...merged.values()].slice(0, WORLD_BRIEF_LIMITS.places),
+    places: gather("places", WORLD_BRIEF_LIMITS.places),
+    groups: gather("groups", WORLD_BRIEF_LIMITS.groups),
+    peoples: gather("peoples", WORLD_BRIEF_LIMITS.peoples),
+    folk: gather("folk", WORLD_BRIEF_LIMITS.folk),
+    faiths: gather("faiths", WORLD_BRIEF_LIMITS.faiths),
   });
-  if (!checked.ok) return { places: [], events: [], repairs: checked.issues };
+  if (!checked.ok)
+    return { places: [], events: [], groups: [], peoples: [], folk: [], faiths: [], repairs: checked.issues };
   // Dated events, one per text, each read on its own: an event that is not one is left out with a
   // note. Their places must be the lore's places; the groups they name are kept for the brief, which
   // is told to include them.
@@ -235,6 +267,10 @@ export function mergeWorldCanon(
   return {
     places: checked.brief.places.map(({ start: _start, ...place }) => place),
     events: [...events.values()].slice(0, WORLD_BRIEF_LIMITS.events),
+    groups: checked.brief.groups,
+    peoples: checked.brief.peoples,
+    folk: checked.brief.folk,
+    faiths: checked.brief.faiths,
     repairs,
   };
 }

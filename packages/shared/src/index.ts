@@ -93,6 +93,7 @@ export * from "./features/world/people.js";
 export * from "./features/world/history.js";
 export * from "./features/world/history-land.js";
 export * from "./features/world/peoples.js";
+export * from "./features/world/faiths.js";
 export * from "./features/world/ledger.js";
 export * from "./features/world/engine.js";
 export * from "./features/world/loot.js";

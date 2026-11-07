@@ -18,6 +18,11 @@ import {
   type WorldEdits,
   type WorldBrief,
   type WorldBriefEvent,
+  type WorldBriefFaith,
+  type WorldBriefFolk,
+  type WorldBriefGroup,
+  type WorldBriefPeople,
+  type WorldCanonMore,
   type WorldBriefInput,
   type WorldBriefPlace,
   type WorldKit,
@@ -43,6 +48,9 @@ export interface WorldDraft {
   /** The dated events read from the lore (worldgen W3), kept exactly by the brief. Absent in drafts
    *  made before events were read. */
   canonEvents?: WorldBriefEvent[];
+  /** The groups, peoples, cultures and faiths read from the lore, kept exactly by the brief. Absent in
+   *  drafts made before they were read. */
+  canonMore?: WorldCanonMore;
   /** The brief the model wrote, as the player has changed it; null until one is written. */
   brief: WorldBriefInput | null;
   /** The hand edits (worldgen W9c) of a world read from a file, and the seed, grounding and brief they
@@ -297,6 +305,10 @@ export function GameSetupWorldChooser({
     ask<{
       places: WorldBriefPlace[];
       events: WorldBriefEvent[];
+      groups: WorldBriefGroup[];
+      peoples: WorldBriefPeople[];
+      folk: WorldBriefFolk[];
+      faiths: WorldBriefFaith[];
       repairs: string[];
       entriesRead: number;
       entriesLeft: number;
@@ -312,8 +324,10 @@ export function GameSetupWorldChooser({
       (value, into) => {
         into.canon = value.places;
         into.canonEvents = value.events;
+        into.canonMore = { groups: value.groups, peoples: value.peoples, folk: value.folk, faiths: value.faiths };
         // A brief already written takes the lore read now, so it never drifts from what is shown.
-        if (into.brief) into.brief = withWorldCanon(into.brief, value.places, value.events) as WorldBriefInput;
+        if (into.brief)
+          into.brief = withWorldCanon(into.brief, value.places, value.events, into.canonMore) as WorldBriefInput;
       },
       (value) =>
         t(value.entriesLeft > 0 ? "game.world.setup.loreReadSome" : "game.world.setup.loreRead", {
@@ -326,7 +340,14 @@ export function GameSetupWorldChooser({
     ask<{ brief: WorldBriefInput; repairs: string[] }>(
       "brief",
       "/game/world-brief",
-      { ...request!, kit, canon: draft!.canon, canonEvents: draft!.canonEvents ?? [], grounding: draft!.grounding },
+      {
+        ...request!,
+        kit,
+        canon: draft!.canon,
+        canonEvents: draft!.canonEvents ?? [],
+        canonMore: draft!.canonMore ?? {},
+        grounding: draft!.grounding,
+      },
       (value, into) => {
         into.brief = value.brief;
       },

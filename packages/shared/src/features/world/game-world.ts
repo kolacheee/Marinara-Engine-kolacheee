@@ -19,6 +19,7 @@ import { worldEditsFightable } from "./battlefield-maps.js";
 import { WORLD_RESOURCE_WORDS } from "./land.js";
 import { worldCast, worldCastSize, worldPersonSheet } from "./people.js";
 import { worldHistory, worldHistoryLine, worldNotablePast, worldPlacePast } from "./history.js";
+import { worldFaithsAt, worldFolkAndFaithLines, worldFolkOf } from "./faiths.js";
 import { worldAddedPeoples, worldPeopleLines, worldPeoples, worldPeoplesNear } from "./peoples.js";
 import {
   worldAddedPlace,
@@ -267,6 +268,8 @@ export function worldOverviewPromptText(game: GameWorld): string {
       const past = worldNotablePast(history);
       return past.length ? [`- The past:`, ...past.map((event) => `  - ${worldHistoryLine(event)}`)] : [];
     })(),
+    // The setting's own cultures and faiths, mostly from the player's lore.
+    ...worldFolkAndFaithLines(world, brief),
     ...(() => {
       // Generator 9: the peoples who are not human, one line each; their rules come with the places near them.
       const peoples = worldPeoples(kit, world, brief.peoples);
@@ -342,6 +345,14 @@ export function worldWhereYouAreText(
       place.rank !== undefined ? place : (chain.find((each) => each.rank !== undefined) ?? place),
     ),
   );
+  // Whose people live here, and what they believe.
+  const folk = worldFolkOf(world, brief, place);
+  if (folk) lines.push(`- Its people: ${folk.name}${folk.note ? `, ${folk.note.replace(/\.$/, "")}` : ""}.`);
+  const faiths = worldFaithsAt(world, brief, place);
+  for (const faith of faiths.holy)
+    lines.push(`- Holy to ${faith.name}${faith.note ? `: ${faith.note.replace(/\.$/, "")}` : ""}.`);
+  const kept = faiths.kept.filter((faith) => !faiths.holy.includes(faith));
+  if (kept.length) lines.push(`- They keep ${kept.map((faith) => faith.name).join(" and ")}.`);
   // Who keeps it now, and its past (worldgen W3), told for the settlement it is in.
   const history = worldHistory(game);
   const home = place.rank !== undefined ? place : chain.find((each) => each.rank !== undefined);
