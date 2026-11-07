@@ -396,22 +396,22 @@ export function WorldOverworld({
       for (const at of field) fieldCells.set(at, look);
       if (!WORLD_PROP_KEEPS_GROUND.includes(look)) for (const at of field) drawnLook[at] = ground;
     }
-    const groundOf = (x: number, y: number, drawn: string) => {
+    const groundOf = (x: number, y: number, drawn: string, on: CanvasRenderingContext2D = ctx) => {
       const noise = cellNoise(x, y);
       inSeason(x, y);
-      if (!drawTile(ctx, drawn, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(99))) {
-        paintGround(ctx, drawn as (typeof looks)[number], x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise);
+      if (!drawTile(on, drawn, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(99))) {
+        paintGround(on, drawn as (typeof looks)[number], x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise);
       }
     };
     // A wood's floor under its trees: the pack's own where it has one, else its ground in shade (the owner,
     // 2026-11-07: the old texture "looks a bit weird underneath the trees").
-    const floorOf = (x: number, y: number, look: string) => {
+    const floorOf = (x: number, y: number, look: string, on: CanvasRenderingContext2D = ctx) => {
       inSeason(x, y);
-      if (drawTile(ctx, `floor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, cellNoise(x, y)(99))) return;
-      groundOf(x, y, look);
+      if (drawTile(on, `floor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, cellNoise(x, y)(99))) return;
+      groundOf(x, y, look, on);
       // A light wood (bamboo) only a little, so the gaps by its rivers don't open dark.
-      ctx.fillStyle = look === "bamboo" ? "rgba(10, 22, 14, 0.2)" : "rgba(10, 22, 14, 0.55)";
-      ctx.fillRect(x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE);
+      on.fillStyle = look === "bamboo" ? "rgba(10, 22, 14, 0.2)" : "rgba(10, 22, 14, 0.55)";
+      on.fillRect(x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE);
     };
     // A wood's floor lies only inside it, off its roads and back from its places (the trees stand clear of
     // them, so the ground beside shows there instead).
@@ -434,6 +434,32 @@ export function WorldOverworld({
             if (x + dx >= 0 && y + dy >= 0 && x + dx < width && y + dy < height)
               clearing.add((y + dy) * width + x + dx);
       }
+    // Soft ground fades the same way instead of a hard fringe (the owner, 2026-11-07, of the sand's stepped
+    // edge: "can tiles bordering deserts not have the fade effect like forest and grassland did").
+    const softGround = new Set<string>(["desert"]);
+    const softAt = (x: number, y: number) =>
+      x >= 0 &&
+      y >= 0 &&
+      x < width &&
+      y < height &&
+      !wetCell[y * width + x] &&
+      softGround.has(drawnLook[y * width + x]!);
+    // Its cells wholly among it (water aside): the edge cells are drawn as the ground beside, and the soft
+    // ground fades out over them from these, so its outline is a gradient, never a step of whole cells.
+    const softInner = (x: number, y: number) => {
+      if (!softAt(x, y)) return false;
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) {
+          const [nx, ny] = [x + dx, y + dy];
+          if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+          if (!softAt(nx, ny) && !wetCell[ny * width + nx]) return false;
+        }
+      return true;
+    };
+    const softBeside = (x: number, y: number) => {
+      const beside = besideLook(x, y);
+      return openGround(beside) && !softGround.has(beside) ? beside : commonOpen;
+    };
     // A built-up look's street runs over all its cells, right up to its places and its edge (its rings are
     // narrow, so an inner-only street would leave its buildings standing on the open ground beside).
     const floorAt = (x: number, y: number) =>
@@ -449,7 +475,12 @@ export function WorldOverworld({
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
         const look = drawnLook[y * width + x]!;
-        const drawn = coveredLooks.has(look) && !floorAt(x, y) ? besideLook(x, y) : look;
+        const drawn =
+          coveredLooks.has(look) && !floorAt(x, y)
+            ? besideLook(x, y)
+            : softAt(x, y) && !softInner(x, y)
+              ? softBeside(x, y)
+              : look;
         if (coveredLooks.has(drawn) && drawn === look) floorOf(x, y, look);
         else groundOf(x, y, drawn);
         if (water[own] && !waterEdges) {
@@ -477,36 +508,48 @@ export function WorldOverworld({
       if (lctx && mctx)
         for (let y = 0; y < height; y++)
           for (let x = 0; x < width; x++) {
-            if (floorAt(x, y) || wetCell[y * width + x]) continue;
-            const near: Array<[number, number, string]> = [];
+            if (floorAt(x, y) || softInner(x, y) || wetCell[y * width + x]) continue;
+            // What fades in here, by look: a wood's floor, or soft ground (sand) from its cells beside.
+            const near = new Map<string, Array<[number, number]>>();
             for (let dy = -1; dy <= 1; dy++)
-              for (let dx = -1; dx <= 1; dx++)
-                if ((dx || dy) && floorAt(x + dx, y + dy)) near.push([dx, dy, drawnLook[(y + dy) * width + x + dx]!]);
-            if (!near.length) continue;
-            mctx.setTransform(resolution, 0, 0, resolution, 0, 0);
-            mctx.clearRect(0, 0, T, T);
-            mctx.globalCompositeOperation = "lighter";
-            for (const [dx, dy, nearLook] of near) {
-              const [gx, gy] = [(dx + 0.5) * T, (dy + 0.5) * T];
-              // A street fades in a shorter reach than a wood's floor: past its buildings it is bare asphalt.
-              const reach = builtLooks.has(nearLook) ? 0.9 : 1.25;
-              const fade = mctx.createRadialGradient(gx, gy, T * 0.45, gx, gy, T * reach);
-              fade.addColorStop(0, "rgba(0,0,0,0.9)");
-              fade.addColorStop(1, "rgba(0,0,0,0)");
-              mctx.fillStyle = fade;
-              mctx.fillRect(0, 0, T, T);
+              for (let dx = -1; dx <= 1; dx++) {
+                if (!dx && !dy) continue;
+                const [nx, ny] = [x + dx, y + dy];
+                const nearLook = floorAt(nx, ny)
+                  ? drawnLook[ny * width + nx]!
+                  : softInner(nx, ny)
+                    ? drawnLook[ny * width + nx]!
+                    : undefined;
+                if (nearLook) near.set(nearLook, [...(near.get(nearLook) ?? []), [dx, dy]]);
+              }
+            for (const [look, from] of near) {
+              mctx.setTransform(resolution, 0, 0, resolution, 0, 0);
+              mctx.globalCompositeOperation = "source-over";
+              mctx.clearRect(0, 0, T, T);
+              mctx.globalCompositeOperation = "lighter";
+              for (const [dx, dy] of from) {
+                // Each source's centre nudged by its own noise, so the edge wanders rather than steps.
+                const wobble = cellNoise(x + dx, y + dy);
+                const [gx, gy] = [(dx + 0.5 + (wobble(41) - 0.5) * 0.4) * T, (dy + 0.5 + (wobble(42) - 0.5) * 0.4) * T];
+                // A street fades in a shorter reach than a wood's floor: past its buildings it is bare asphalt.
+                const reach = builtLooks.has(look) ? 0.9 : softGround.has(look) ? 1.5 : 1.25;
+                const fade = mctx.createRadialGradient(gx, gy, T * 0.45, gx, gy, T * reach);
+                fade.addColorStop(0, "rgba(0,0,0,0.9)");
+                fade.addColorStop(1, "rgba(0,0,0,0)");
+                mctx.fillStyle = fade;
+                mctx.fillRect(0, 0, T, T);
+              }
+              lctx.setTransform(resolution, 0, 0, resolution, -x * T * resolution, -y * T * resolution);
+              lctx.globalCompositeOperation = "source-over";
+              lctx.clearRect(x * T, y * T, T, T);
+              if (softGround.has(look) && !coveredLooks.has(look)) groundOf(x, y, look, lctx);
+              else floorOf(x, y, look, lctx);
+              lctx.setTransform(1, 0, 0, 1, 0, 0);
+              lctx.globalCompositeOperation = "destination-in";
+              lctx.drawImage(mask, 0, 0);
+              lctx.globalCompositeOperation = "source-over";
+              ctx.drawImage(layer, x * T, y * T, T, T);
             }
-            const look = near[0]![2];
-            lctx.setTransform(resolution, 0, 0, resolution, -x * T * resolution, -y * T * resolution);
-            lctx.globalCompositeOperation = "source-over";
-            lctx.clearRect(x * T, y * T, T, T);
-            inSeason(x, y);
-            if (!drawTile(lctx, `floor_${look}`, x * T, y * T, cellNoise(x, y)(99))) continue;
-            lctx.setTransform(1, 0, 0, 1, 0, 0);
-            lctx.globalCompositeOperation = "destination-in";
-            lctx.drawImage(mask, 0, 0);
-            lctx.globalCompositeOperation = "source-over";
-            ctx.drawImage(layer, x * T, y * T, T, T);
           }
     }
     // Fringes: where the pack has one for a look, the look spills past its cells onto the ground beside it,
@@ -517,10 +560,12 @@ export function WorldOverworld({
         !drawnLook.includes(look) ||
         coveredLooks.has(look) ||
         square.has(look) ||
+        softGround.has(look) ||
         (propLooks.has(look) && !WORLD_PROP_KEEPS_GROUND.includes(look))
       )
         continue;
-      const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
+      // Soft ground counts as the look, so no fringe spills over it (it fades in over the look instead).
+      const isLook = (x: number, y: number) => drawnLook[y * width + x] === look || softAt(x, y);
       // Laid out as an edge tile is: with slanted corners and curved runs where the fringe has them.
       const fringeRows = drawTile.fringeRows(look);
       for (let y = 0; y <= height; y++)
@@ -673,15 +718,28 @@ export function WorldOverworld({
     }
     // Props over their ground (crater scars, ruins, a marsh's pools and reeds): about two cells in three, half
     // of them large (two cells by two, spilling onto their neighbours).
-    // Under the ways (laid after), and the ground's own swells (craters, hills, dunes) before what stands on it
-    // (ruins, a marsh's reeds), so a dune never lies over a ruin (the owner, 2026-11-07).
-    for (const pass of [0, 1])
+    // The ground's own swells (craters, hills, dunes) under the ways; what stands on it (ruins, a marsh's
+    // reeds) after them, a cell clear of every road and lane, so no dune lies over a ruin and no road over
+    // either (the owner, 2026-11-07).
+    // A road or lane on or beside the cell.
+    const byWay = (x: number, y: number) => {
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) {
+          const at = (y + dy) * width + x + dx;
+          if (roads.has(at) || lanes.has(at)) return true;
+        }
+      return false;
+    };
+    const drawProps = (pass: 0 | 1) => {
       for (let y = 0; y < height; y++)
         for (let x = 0; x < width; x++) {
           const look = propCells.get(y * width + x);
           // Nor on a river (its rubble would lie over the stream).
           if (!look || wetCell[y * width + x] || riverCells.has(y * width + x)) continue;
           if ((look === "ruins" || look === "marsh") !== (pass === 1)) continue;
+          if (pass === 1 && byWay(x, y)) continue;
+          // Dunes only where the sand is whole (its edge cells fade into the ground beside).
+          if (softGround.has(look) && !softInner(x, y)) continue;
           const noise = cellNoise(x, y);
           // Hills stand apart (a slope every cell reads as a heap of lumps), the rest about two cells in three.
           if (noise(63) >= (look === "hills" ? 0.35 : 0.65)) continue;
@@ -704,6 +762,8 @@ export function WorldOverworld({
             noise(66),
           );
         }
+    };
+    drawProps(0);
     // Ways over open ground: as road cells with joined road pieces (laid corner to corner) or road edge
     // tiles, else drawn as lines.
     const roadJoined = drawTile.hasPiece("road_joined", 0);
@@ -806,6 +866,65 @@ export function WorldOverworld({
           }
         }
       }
+      // Lanes into the clusters of buildings the roads pass by (the owner, 2026-11-07: "the road should lead
+      // into the clusters of buildings, no?"): while some built-up cell lies three steps or more from any way,
+      // a lane runs from the nearest way into the deepest such cell (far from the ways, well inside its
+      // buildings), never over water, a river or a place.
+      const passable = (at: number) => !wetCell[at] && !placeAt.has(at) && (!riverCells.has(at) || roads.has(at));
+      const depth = new Map<number, number>();
+      for (const at of builtCells.keys()) {
+        const [x, y] = [at % width, Math.floor(at / width)];
+        let d = 0;
+        for (let r = 1; r <= 3; r++) {
+          let whole = true;
+          for (let dy = -r; dy <= r && whole; dy++)
+            for (let dx = -r; dx <= r; dx++) {
+              const [nx, ny] = [x + dx, y + dy];
+              if (nx < 0 || ny < 0 || nx >= width || ny >= height || !builtCells.has(ny * width + nx)) whole = false;
+            }
+          if (!whole) break;
+          d = r;
+        }
+        depth.set(at, d);
+      }
+      for (let round = 0; round < 16; round++) {
+        // Steps from the nearest way, and the step back toward it.
+        const steps = new Map<number, number>();
+        const toward = new Map<number, number>();
+        const queue: number[] = [];
+        for (const at of [...roads, ...lanes]) {
+          steps.set(at, 0);
+          queue.push(at);
+        }
+        for (let i = 0; i < queue.length; i++) {
+          const at = queue[i]!;
+          const [x, y] = [at % width, Math.floor(at / width)];
+          for (const [ax, ay] of AXES) {
+            const [nx, ny] = [x + ax, y + ay];
+            if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+            const next = ny * width + nx;
+            if (steps.has(next) || !passable(next)) continue;
+            steps.set(next, steps.get(at)! + 1);
+            toward.set(next, at);
+            queue.push(next);
+          }
+        }
+        let best: number | undefined;
+        let bestScore = -1;
+        for (const [at, d] of depth) {
+          const far = steps.get(at);
+          if (far === undefined || far < 3 || placeAt.has(at) || !passable(at)) continue;
+          const score = Math.min(far, 4) + d * 1.5;
+          if (score > bestScore) [best, bestScore] = [at, score];
+        }
+        if (best === undefined) break;
+        for (
+          let at: number | undefined = best;
+          at !== undefined && !roads.has(at) && !lanes.has(at);
+          at = toward.get(at)
+        )
+          lanes.add(at);
+      }
       // No two-by-two of way: a lane cell that squares with its neighbours goes.
       for (const at of [...lanes]) {
         const [x, y] = [at % width, Math.floor(at / width)];
@@ -879,6 +998,7 @@ export function WorldOverworld({
         drawTile.piece(ctx, "road_bridge", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, pick);
       }
     }
+    drawProps(1);
     drawTile.setCellSeason(undefined);
     // The trees on wooded looks that have them, with the markers: on the look's floor as drawn through its
     // fringe (so they follow its curved edge), never on a road or a place.
@@ -1111,7 +1231,7 @@ export function WorldOverworld({
           if (
             wetCell[at] ||
             riverCells.has(at) ||
-            roads.has(at) ||
+            byWay(x, y) ||
             placed.has(at) ||
             builtCells.has(at) ||
             square.has(look)
