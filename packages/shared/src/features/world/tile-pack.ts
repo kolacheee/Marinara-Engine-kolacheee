@@ -114,6 +114,18 @@ export const WORLD_TREELINE_LOOKS = Object.freeze([
   "mountains",
 ] as const);
 
+/** Standing sprites over the overworld besides a wood's trees (image packs), each in `piece` order. */
+export const WORLD_STANDING_TILE_IDS = Object.freeze([
+  "mountain_ridges",
+  "mountain_pines",
+  "standing_city",
+  "standing_industry",
+] as const);
+/** A wood's floor under its trees, `floor_<look>` (image packs). */
+export const WORLD_FLOOR_TILE_IDS = Object.freeze(
+  WORLD_TREELINE_LOOKS.filter((look) => look !== "mountains").map((look) => `floor_${look}` as const),
+);
+
 /** Open ground with small things scattered over it (image packs; user, 2026-11-06, plains "mixed up a bit
  *  with some small details"): `decor_<look>` is up to eight one-cell sprites (a flower clump, a rock, a
  *  bush), each inside its cell, drawn over about one cell in five of the look away from its edges. */
@@ -188,6 +200,19 @@ export const WORLD_TILE_IDS = Object.freeze([
   "bridge_ew",
   "bridge_diag",
   "bridge_turn",
+  // A road's bridge over a river on the overworld (image packs; user, 2026-11-07: "bridges that go over water
+  // instead of path"): one cell a piece, the road running west-east, north-south, north-west to south-east and
+  // north-east to south-west (worldRoadBridgePiece).
+  "road_bridge",
+  // Standing sprites and props over the overworld's ground (image packs; user, 2026-11-07 review): a range's
+  // ridges (eight, three cells by two) and foothill pines (eight, one cell), a built-up look's landmarks
+  // (eight, one cell by two), and crater scars laid over the ground beside them (four of one cell, four of
+  // two by two), shading only, so they take its colour.
+  ...WORLD_STANDING_TILE_IDS,
+  "crater_props",
+  // A wood's floor under its trees (image packs; user, 2026-11-07: the old texture "looks a bit weird
+  // underneath the trees"), a texture as the ground's.
+  ...WORLD_FLOOR_TILE_IDS,
   ...WORLD_TOWN_PROPS,
   // Trees standing on a wooded look (image packs; WORLD_TREELINE_LOOKS).
   ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
@@ -205,6 +230,7 @@ export type WorldTileId = (typeof WORLD_TILE_IDS)[number];
  *  such variant is the pattern; the others are left aside, since mixing two would show where they meet. */
 export const WORLD_PATTERN_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   ...WORLD_GROUND_LOOKS,
+  ...WORLD_FLOOR_TILE_IDS,
   "town_ground",
   "street",
   "square",
@@ -233,6 +259,10 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "bridge_ew",
   "bridge_diag",
   "bridge_turn",
+  "road_bridge",
+  ...WORLD_STANDING_TILE_IDS,
+  "crater_props",
+  ...WORLD_FLOOR_TILE_IDS,
   "in_wall_face",
   "in_wall_divider",
   "in_wall_top",
@@ -262,6 +292,12 @@ export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number
   bridge_ew: [3, 1],
   bridge_diag: [6, 4],
   bridge_turn: [2, 2],
+  road_bridge: [4, 1],
+  mountain_ridges: [12, 4],
+  mountain_pines: [4, 2],
+  standing_city: [4, 4],
+  standing_industry: [4, 4],
+  crater_props: [12, 2],
   in_wall_top: [4, 4],
   dn_wall_top: [4, 4],
   ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [4, 2] as const])),
@@ -291,6 +327,12 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
     bridge_ew: [[3, 1]],
     bridge_diag: [[6, 4]],
     bridge_turn: [[2, 2]],
+    road_bridge: [[4, 1]],
+    mountain_ridges: [[12, 4]],
+    mountain_pines: [[4, 2]],
+    standing_city: [[4, 4]],
+    standing_industry: [[4, 4]],
+    crater_props: [[12, 2]],
     in_wall_top: [[4, 4]],
     dn_wall_top: [[4, 4]],
     ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [[4, 2] as const]])),
@@ -360,6 +402,59 @@ export function worldRangePeaks(
   return peaks;
 }
 
+/** The ridges standing in a cell of a range (its pack's `mountain_ridges`, each three cells wide and two
+ *  tall, a chain of peaks): staggered rows 40 pixels apart, 96 apart along a row (every other row shifted
+ *  48), each nudged up to 6 pixels each way, kept where its foot, the points 56 pixels to each side and 20 up
+ *  over its shoulders are on the range's floor, so neighbours overlap by a cell and read as one range. Fields
+ *  as worldTreelineTrees, the foot in cells. */
+export function worldRangeRidges(
+  onFloor: (x: number, y: number) => boolean,
+  x: number,
+  y: number,
+): Array<{ x: number; y: number; pick: number }> {
+  const ridges: Array<{ x: number; y: number; pick: number }> = [];
+  const px = 1 / 48;
+  for (let line = Math.ceil((y * 48 - 30) / 40); line * 40 + 30 < (y + 1) * 48; line++) {
+    const shift = ((line % 2) + 2) % 2 === 0 ? 0 : 48;
+    const salt = line * 11 + 3;
+    for (let start = Math.floor((x * 48 - shift) / 96) * 96 + shift; start < (x + 1) * 48; start += 96) {
+      if (start < x * 48) continue;
+      const tx = (start + (treeHash(start, line, salt) - 0.5) * 12) * px;
+      const ty = (line * 40 + 30 + (treeHash(start, line, salt + 1) - 0.5) * 12) * px;
+      const fits = [
+        [0, 0],
+        [-56, 0],
+        [56, 0],
+        [-28, -20],
+        [28, -20],
+        [0, -24],
+      ].every(([dx, dy]) => onFloor(tx + dx! * px, ty + dy! * px));
+      if (fits) ridges.push({ x: tx, y: ty, pick: Math.floor(treeHash(start, line, salt + 2) * 8) });
+    }
+  }
+  return ridges;
+}
+
+/** Which `road_bridge` piece carries a road over the cell at (x, y): along its road neighbours, west-east (0),
+ *  north-south (1), north-west to south-east (2) or north-east to south-west (3); across the river's run where
+ *  the road neighbours say nothing (a lone cell, a turn), else west-east. */
+export function worldRoadBridgePiece(
+  isRoad: (x: number, y: number) => boolean,
+  x: number,
+  y: number,
+  riverAcross?: "ns" | "ew",
+): number {
+  const [n, e, s, w] = [isRoad(x, y - 1), isRoad(x + 1, y), isRoad(x, y + 1), isRoad(x - 1, y)];
+  if ((w || e) && !(n || s)) return 0;
+  if ((n || s) && !(w || e)) return 1;
+  if (!(n || e || s || w)) {
+    const [nw, se, ne, sw] = [isRoad(x - 1, y - 1), isRoad(x + 1, y + 1), isRoad(x + 1, y - 1), isRoad(x - 1, y + 1)];
+    if ((nw || se) && !(ne || sw)) return 2;
+    if ((ne || sw) && !(nw || se)) return 3;
+  }
+  return riverAcross === "ns" ? 0 : riverAcross === "ew" ? 1 : 0;
+}
+
 /** A number in [0, 1) for a cell and a salt, the same every time. */
 function treeHash(x: number, y: number, salt: number): number {
   let h = Math.imul(x + 0x9e37, 0x85ebca6b) ^ Math.imul(y + 0x7f4a, 0xc2b2ae35) ^ Math.imul(salt + 1, 0x27d4eb2f);
@@ -426,6 +521,14 @@ export function worldTilePiece(
   }
   if (id === "treeline_mountains")
     return piece < 8 && w >= 8 && h >= 4 ? { x: (piece % 4) * 2, y: Math.floor(piece / 4) * 2, w: 2, h: 2 } : null;
+  if (id === "mountain_ridges")
+    return piece < 8 && w >= 12 && h >= 4 ? { x: (piece % 4) * 3, y: Math.floor(piece / 4) * 2, w: 3, h: 2 } : null;
+  if (id === "standing_city" || id === "standing_industry")
+    return piece < 8 && w >= 4 && h >= 4 ? { x: piece % 4, y: Math.floor(piece / 4) * 2, w: 1, h: 2 } : null;
+  if (id === "crater_props") {
+    if (piece < 4) return w >= 4 ? { x: piece, y: 0, w: 1, h: 1 } : null;
+    return piece < 8 && w >= 12 && h >= 2 ? { x: 4 + (piece - 4) * 2, y: 0, w: 2, h: 2 } : null;
+  }
   if (id === "bridge_diag")
     return piece < 6 && w >= 6 && h >= 4 ? { x: (piece % 3) * 2, y: Math.floor(piece / 3) * 2, w: 2, h: 2 } : null;
   return piece < w * h ? { x: piece % w, y: Math.floor(piece / w), w: 1, h: 1 } : null;
@@ -782,6 +885,9 @@ export const WORLD_SEASONAL_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "tree",
   ...WORLD_TREELINE_LOOKS.map((look) => `treeline_${look}` as const),
   ...WORLD_DECOR_LOOKS.map((look) => `decor_${look}` as const),
+  "road_bridge",
+  ...WORLD_STANDING_TILE_IDS,
+  ...WORLD_FLOOR_TILE_IDS,
 ]);
 const IMAGE_KNOWN = new Set<string>([
   ...WORLD_TILE_IDS,
