@@ -265,6 +265,8 @@ export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number
   in_wall_top: [4, 4],
   dn_wall_top: [4, 4],
   ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [4, 2] as const])),
+  // A range's eight peaks, each two cells by two (worldRangePeaks).
+  treeline_mountains: [8, 4],
 });
 /** Every size a block tile's variant may be, the whole block first: a joined hedge may stop after its
  *  sixteen straight pieces (4 by 4) or its curved corners (4 by 5), and draws straight where it has no more. */
@@ -292,6 +294,7 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
     in_wall_top: [[4, 4]],
     dn_wall_top: [[4, 4]],
     ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [[4, 2] as const]])),
+    treeline_mountains: [[8, 4]],
   },
 );
 
@@ -330,6 +333,31 @@ export function worldTreelineTrees(
       trees.push({ x: tx, y: ty, pick: Math.floor(treeHash(x, y, salt + 2) * 8) });
     }
   return trees;
+}
+
+/** The peaks standing in a cell of a range (its look's `treeline_mountains`, each peak two cells by two): a
+ *  sparser staggered lattice than a wood's (48 pixels apart along a row, rows 30 apart, every other row
+ *  shifted 24), each nudged up to 4 pixels each way, kept where its foot and the points 14 pixels to each
+ *  side and 10 up are on the range's floor. Fields as worldTreelineTrees. */
+export function worldRangePeaks(
+  onFloor: (x: number, y: number) => boolean,
+  x: number,
+  y: number,
+): Array<{ x: number; y: number; pick: number }> {
+  const peaks: Array<{ x: number; y: number; pick: number }> = [];
+  const px = 1 / 48;
+  // Rows run on across cells: the rows whose line falls in this cell.
+  for (let line = Math.ceil((y * 48 - 20) / 30); line * 30 + 20 < (y + 1) * 48; line++) {
+    const shift = ((line % 2) + 2) % 2 === 0 ? 0 : 24;
+    const ty0 = (line * 30 + 20) * px;
+    const salt = line * 7;
+    const tx = x + (12 + shift + (treeHash(x, line, salt) - 0.5) * 8) * px;
+    const ty = ty0 + (treeHash(x, line, salt + 1) - 0.5) * 8 * px;
+    if (!onFloor(tx, ty) || !onFloor(tx - 14 * px, ty) || !onFloor(tx + 14 * px, ty) || !onFloor(tx, ty - 10 * px))
+      continue;
+    peaks.push({ x: tx, y: ty, pick: Math.floor(treeHash(x, line, salt + 2) * 8) });
+  }
+  return peaks;
 }
 
 /** A number in [0, 1) for a cell and a salt, the same every time. */
@@ -396,6 +424,8 @@ export function worldTilePiece(
     const at = piece - 20;
     return at < 18 && h >= 23 ? { x: (at % 2) * 2, y: 5 + Math.floor(at / 2) * 2, w: 2, h: 2 } : null;
   }
+  if (id === "treeline_mountains")
+    return piece < 8 && w >= 8 && h >= 4 ? { x: (piece % 4) * 2, y: Math.floor(piece / 4) * 2, w: 2, h: 2 } : null;
   if (id === "bridge_diag")
     return piece < 6 && w >= 6 && h >= 4 ? { x: (piece % 3) * 2, y: Math.floor(piece / 3) * 2, w: 2, h: 2 } : null;
   return piece < w * h ? { x: piece % w, y: Math.floor(piece / w), w: 1, h: 1 } : null;
