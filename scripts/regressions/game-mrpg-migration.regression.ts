@@ -111,7 +111,7 @@ assert.equal(readMarinaraCardProgression(ossian.marinara)!.equipment?.weapon, "s
 assert.equal(mrpgStatForSkill("Stealth"), "speed");
 assert.equal(mrpgStatForSkill("Persuasion check"), "luck");
 assert.equal(mrpgStatForSkill("Lockpicking"), "skill");
-assert.deepEqual([1, 7, 11, 20, 28, 40].map(mrpgCheckModifier), [0, 1, 2, 4, 5, 5]);
+assert.deepEqual([1, 5, 8, 13, 20, 28, 40].map(mrpgCheckModifier), [-1, 0, 1, 2, 3, 5, 5]);
 assert.equal(mrpgStatForSkill("Religion"), "resistance", "faith reads Resistance (owner 2026-11-06)");
 const stats = { hp: 30, strength: 4, magic: 2, skill: 8, speed: 26, defense: 6, resistance: 3, luck: 9 };
 const rolled = resolveSkillCheckWithContext(
@@ -119,7 +119,7 @@ const rolled = resolveSkillCheckWithContext(
   { skill: "Stealth", dc: 12 },
   () => 10,
 );
-assert.equal(rolled.modifier, 5, "Speed 26 counts, not the Legacy Dexterity");
+assert.equal(rolled.modifier, 4, "Speed 26 counts, not the Legacy Dexterity");
 
 // 3. Joiners: the level given, growths moving their hidden aptitudes, stats on top of the body.
 const card = { name: "Donnel" };
