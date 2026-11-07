@@ -6504,7 +6504,9 @@ export function parseRoomGameConfig(value: unknown): GameSetupConfig {
   if (!isOverworldGamesEnabled() && (asked.worldKit || asked.world || asked.gameStyle === "overworld")) {
     throw new Error("Overworld games are not available on this server yet.");
   }
-  const { worldSnapshot, ...config } = gameSetupConfigSchema.parse(value);
+  const { worldSnapshot, ...parsedConfig } = gameSetupConfigSchema.parse(value);
+  // A room's new game plays MRPG too (owner 2026-11-06): never Legacy.
+  const config: typeof parsedConfig = { ...parsedConfig, marinaraClasses: true };
   if (config.gameExperienceId) throw new Error("Package Game Experiences are unavailable in shared rooms.");
   const styleIssue = gameStyleWorldIssue({ ...config, worldSnapshot });
   if (styleIssue) throw new Error(styleIssue);
@@ -7261,6 +7263,9 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     const { worldSnapshot: _sentSnapshot, ...setupInput } = parsedCreateGameInput.setupConfig;
     const setupConfig: GameSetupConfig = {
       ...setupInput,
+      // Every new game plays MRPG (owner 2026-11-06): Legacy stays only in games made before, whatever a
+      // client or an imported setup sends. A ruleset game plays its ruleset's sheets regardless.
+      marinaraClasses: true,
       ...(gameRuleset ? { ruleset: gameRuleset } : {}),
       // The setup's own copy carries the world as read, never the brief as sent, nor its snapshot.
       world: gameWorld ?? undefined,

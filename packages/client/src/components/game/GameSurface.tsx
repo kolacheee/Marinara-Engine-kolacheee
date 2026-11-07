@@ -9741,7 +9741,8 @@ function GameSurfaceComponent({
   // A Classic game's items show what they do when picked in the inventory (owner 2026-11-06).
   const inventoryMarinaraPlace = useMemo(
     () =>
-      (chatMeta.gameSetupConfig as { marinaraClasses?: boolean } | undefined)?.marinaraClasses === true
+      (chatMeta.gameSetupConfig as { marinaraClasses?: boolean } | undefined)?.marinaraClasses === true &&
+      chatMeta.gameRuleset == null
         ? marinaraGameItemPlace(chatMeta)
         : undefined,
     [chatMeta],
