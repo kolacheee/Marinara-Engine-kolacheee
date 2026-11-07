@@ -391,7 +391,8 @@ export function WorldOverworld({
       inSeason(x, y);
       if (drawTile(ctx, `floor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, cellNoise(x, y)(99))) return;
       groundOf(x, y, look);
-      ctx.fillStyle = "rgba(10, 22, 14, 0.55)";
+      // A light wood (bamboo) only a little, so the gaps by its rivers don't open dark.
+      ctx.fillStyle = look === "bamboo" ? "rgba(10, 22, 14, 0.2)" : "rgba(10, 22, 14, 0.55)";
       ctx.fillRect(x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE);
     };
     for (let y = 0; y < height; y++) {
@@ -635,6 +636,13 @@ export function WorldOverworld({
       for (const at of roads) {
         if (!riverCells.has(at)) continue;
         const [x, y] = [at % width, Math.floor(at / width)];
+        // A crossing, not a road running along the river: at most one of its road neighbours on the river too
+        // (a diagonal crossing takes two cells).
+        let onRiver = 0;
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++)
+            if ((dx || dy) && isRoad(x + dx, y + dy) && riverCells.has((y + dy) * width + x + dx)) onRiver++;
+        if (onRiver > 1) continue;
         // The river's run through the cell, for a road that only turns there.
         const along = (dx: number, dy: number) => riverCells.has((y + dy) * width + x + dx);
         const across = along(0, -1) || along(0, 1) ? "ns" : along(-1, 0) || along(1, 0) ? "ew" : undefined;
