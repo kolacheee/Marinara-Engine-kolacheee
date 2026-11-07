@@ -5,14 +5,15 @@ Same approach as BRIEF-8: individual sprites planted like trees over a plain gro
 **Style:** these houses are used only in the modern and jazz_age (1920s) settings. Draw a timeless style that fits both: brick and clapboard homes, bungalows and small cottages. No cyberpunk, wasteland or fantasy details, no cars that are clearly modern (keep any car generic and boxy), and no satellite dishes.
 
 ## A. Houses, `suburb<season>-house-0..11.png`, 48x48, standing on the bottom-centre
-- Detached homes, each roof about 12-16 px across. Gable, hip and flat roofs in several roof colours (red tile, grey slate, brown shingle, dark blue). Some have a garage, a porch, a chimney, a tree beside them, a small fenced yard, or a driveway stub leading down to the bottom edge.
+- **SIZE (revised 20:40 after in-game QC):** each house is 30-36 px wide and 28-36 px tall, filling about 65-75% of the cell, so it isn't a speck on the map (a cell is about 27 px on screen).
+- Detached homes with real detail: windows, doors, a porch or garage, a chimney, and a side tree. Gable, hip and flat roofs in several roof colours (red tile, grey slate, brown shingle, dark blue). Some have a garage, a porch, a chimney, a tree beside them, a small fenced yard, or a driveway stub leading down to the bottom edge.
 - 2 of the 12 are small community pieces: a corner shop and a little church or school.
 - Every house is clearly different in footprint and roof.
 - Snow on the roofs in winter. In autumn, the side trees turn colour.
 
 ## B. Garden and yard props, `suburb<season>-yard-0..7.png`, 48x48
 - A hedge row, a garden shed, a pool, a playground, a vegetable patch, a cluster of small trees, a parked car, a picket fence corner.
-- Small, filling about 40-60% of the cell.
+- **SIZE (revised):** in proportion to the new houses, filling about 50-60% of the cell.
 
 ## Ground
 Use the existing grass bases. The game draws streets as roads. No suburb ground texture is needed.
