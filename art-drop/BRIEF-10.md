@@ -8,8 +8,8 @@ Seasons: built-up looks (parts 1-5) are summer (no suffix) and `@winter`. Parts 
 
 | Part | Family | Character |
 |---|---|---|
-| 1 | fantasy | timber-framed and stone medieval houses, thatch and slate roofs, a guild hall, a market stall, a smithy, mills and workshops for industry, hovels and lean-tos for slums |
-| 2 | wuxia | grey-tile and upturned-eave houses, courtyards, a pagoda-roofed hall, teahouses, kilns, dye works and rice mills for industry, thatched hovels for slums |
+| ~~1~~ | ~~fantasy~~ (dropped: no built-up looks in the fantasy pack) | timber-framed and stone medieval houses, thatch and slate roofs, a guild hall, a market stall, a smithy, mills and workshops for industry, hovels and lean-tos for slums |
+| ~~2~~ | ~~wuxia~~ (dropped: no built-up looks in the wuxia pack) | grey-tile and upturned-eave houses, courtyards, a pagoda-roofed hall, teahouses, kilns, dye works and rice mills for industry, thatched hovels for slums |
 | 3 | jazz_age | 1920s brick walk-ups, shopfronts with awnings, art deco blocks, a theatre, brick factories with sawtooth roofs and water towers, tenement shacks for slums |
 | 4 | modern | contemporary low and mid-rise blocks, glass offices, a mall, a parking deck, warehouses and plants, makeshift housing for slums |
 | 5 | wasteland | scrap-built shacks, patched concrete ruins turned into homes, a rusted water tower, a scrap foundry, tarp markets |
