@@ -544,6 +544,9 @@ class PairHeap {
 const ROAD_REUSE = 0.45;
 /** Crossing a river where no road crosses it yet: a ford to find or a bridge to build. */
 const RIVER_CROSSING = 2.5;
+/** Generator 10: each further step along a river, so a road crosses in one cell (two on a diagonal), on a
+ *  bridge, and never runs down the water. */
+const RIVER_ALONG = 6;
 /** Running along a river's bank, where a road would be under its floods: kept a cell off it where it can. */
 const RIVER_BANK = 0.6;
 
@@ -559,6 +562,8 @@ export function worldLandPath(
   road: ReadonlySet<number>,
   from: number,
   to: number,
+  /** Generator 10: a road crosses a river and never runs along it. */
+  crossOnly = false,
 ): number[] | null {
   const count = width * height;
   const best = new Float64Array(count).fill(Infinity);
@@ -589,7 +594,11 @@ export function worldLandPath(
       if (done[next]) continue;
       let step = next === to ? 1 : cost[next]!;
       if (!Number.isFinite(step)) continue;
-      if (road.has(next)) step *= ROAD_REUSE;
+      if (crossOnly && river.has(next)) {
+        // A bridge another road laid is used again; a river cell after a river cell is the road on the water.
+        if (road.has(next)) step *= ROAD_REUSE;
+        step += river.has(cell) ? RIVER_ALONG : road.has(next) ? 0 : RIVER_CROSSING;
+      } else if (road.has(next)) step *= ROAD_REUSE;
       else if (river.has(next) && !river.has(cell)) step += RIVER_CROSSING;
       else if (!river.has(next) && besideRiver(nx, ny)) step += RIVER_BANK;
       // A corner step costs its length, and never cuts between two cells it cannot cross.

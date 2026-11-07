@@ -522,7 +522,10 @@ export function applyWorldEdits(
         places.filter((place) => place.depth === settlementsDepth),
         // A world whose roads follow the land (generator 8) lays them again the same way.
         world.generatorVersion >= 8 && world.rivers
-          ? { rivers: new Set(world.rivers.flatMap((river) => river.path.slice(0, -1))) }
+          ? {
+              rivers: new Set(world.rivers.flatMap((river) => river.path.slice(0, -1))),
+              crossOnly: world.generatorVersion >= 10,
+            }
           : undefined,
       )
     : world.links;

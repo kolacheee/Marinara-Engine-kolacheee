@@ -1389,7 +1389,9 @@ export function compileWorld({
     terrain,
     width,
     places.filter((place) => place.depth === settlementsDepth),
-    generatorVersion >= 8 && drainage ? { rivers: new Set(drainage.riverAt.keys()) } : undefined,
+    generatorVersion >= 8 && drainage
+      ? { rivers: new Set(drainage.riverAt.keys()), crossOnly: generatorVersion >= 10 }
+      : undefined,
   );
 
   // Generator 7: a ford where a way over open ground crosses a river, and the settlements beside it a
@@ -1565,7 +1567,7 @@ export function compileLinks(
   settlements: WorldPlace[],
   /** Generator 8: lay the ways over land along the land (round ranges, through passes, over rivers where
    *  they must), the rivers' cells given. */
-  routed?: { rivers: ReadonlySet<number> },
+  routed?: { rivers: ReadonlySet<number>; crossOnly?: boolean },
 ): WorldLink[] {
   if (settlements.length < 2) return [];
   const distance = (a: WorldPlace, b: WorldPlace) => Math.hypot(a.at.x - b.at.x, a.at.y - b.at.y);
@@ -1676,7 +1678,16 @@ export function compileLinks(
         const y = Math.round(from.at.y + ((to.at.y - from.at.y) * step) / steps);
         if (terrain[kinds[y * width + x]!]!.kind === "water") water++;
       }
-      const path = worldLandPath(width, height, cost, routed!.rivers, road, cellOf(from), cellOf(to));
+      const path = worldLandPath(
+        width,
+        height,
+        cost,
+        routed!.rivers,
+        road,
+        cellOf(from),
+        cellOf(to),
+        routed!.crossOnly ?? false,
+      );
       const length = path ? worldPathLength(path, width) : Infinity;
       // Over the water when there is no way round by land, or the way round is far longer than sailing.
       const boat = fastest("water");
