@@ -154,9 +154,9 @@ def main(out_dir, paths, only):
                     f = os.path.join(out_dir, f"scifi-{look}{season}-base.png")
                     if os.path.exists(f):
                         made[f"{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
-            standing("standing_city", [f"scifi-city-tower-{i}{{season}}.png" for i in range(8)],
+            standing("standing_city", [f"scifi-city{{season}}-tower-{i}.png" for i in range(8)],
                      [(i % 4, (i // 4) * 2, 1, 2) for i in range(8)])
-            standing("standing_industry", [f"scifi-industry-stack-{i}{{season}}.png" for i in range(8)],
+            standing("standing_industry", [f"scifi-industry{{season}}-stack-{i}.png" for i in range(8)],
                      [(i % 4, (i // 4) * 2, 1, 2) for i in range(8)])
         if "farmland" in only:
             # Seven field tiles and, in a setting that has one, its farmstead: one cell in eight a farm.
