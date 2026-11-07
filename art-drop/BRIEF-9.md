@@ -2,6 +2,8 @@
 
 Same approach as BRIEF-8: individual sprites planted like trees over a plain ground, replacing the one-cell suburb tiles. Transparent PNGs in `art-drop/out/`, in the house style of the approved markers and the town markers: three-quarter overhead, top-left light, 1 px dark outline. Four seasons: no suffix, `@spring`, `@autumn` and `@winter`.
 
+**Style:** these houses are used only in the modern and jazz_age (1920s) settings. Draw a timeless style that fits both: brick and clapboard homes, bungalows and small cottages. No cyberpunk, wasteland or fantasy details, no cars that are clearly modern (keep any car generic and boxy), and no satellite dishes.
+
 ## A. Houses, `suburb<season>-house-0..11.png`, 48x48, standing on the bottom-centre
 - Detached homes, each roof about 12-16 px across. Gable, hip and flat roofs in several roof colours (red tile, grey slate, brown shingle, dark blue). Some have a garage, a porch, a chimney, a tree beside them, a small fenced yard, or a driveway stub leading down to the bottom edge.
 - 2 of the 12 are small community pieces: a corner shop and a little church or school.
