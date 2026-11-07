@@ -1647,3 +1647,51 @@ The complete starting-file hash audit allows only these two outputs, these
 four new review sheets and this note. All approved ruins and plain wasteland
 textures, other outputs and earlier proofs retain their starting bytes.
 **No commit or push.**
+
+---
+
+# In-game correction — summer forest crown greens
+
+Recoloured crown RGB only in `out/treeline_forest-0.png` through
+`out/treeline_forest-7.png` (the eight filenames without a season suffix).
+Each crown now uses exactly three mid/dark greens, with warmer forest greens
+on 0/2/4/6 and cooler greens on 1/3/5/7. Yellow, olive-yellow and lime foliage
+colours are removed. The lightest green is restricted to existing light
+foliage pixels in the upper-left 46% of crown width and upper 30% of crown
+height; it covers at most 5% of each crown. All other crown pixels use the
+two darker shades. This is an exact pixel palette edit, with no resampling.
+
+| Tree | Dark | Mid | Small top-left highlight | Highlight pixels / crown pixels |
+| --- | --- | --- | --- | --- |
+| 0 | `#20402a` | `#305934` | `#4c6f42` | 29 / 585 |
+| 1 | `#1d3b34` | `#2c5445` | `#436a55` | 30 / 602 |
+| 2 | `#234329` | `#345c35` | `#4e7241` | 32 / 644 |
+| 3 | `#1d3d2c` | `#2d5738` | `#456d48` | 24 / 493 |
+| 4 | `#1f402b` | `#305937` | `#496e44` | 28 / 563 |
+| 5 | `#1b3c30` | `#29553f` | `#426c4f` | 2 / 475 |
+| 6 | `#224128` | `#335932` | `#4c6e3e` | 25 / 515 |
+| 7 | `#1c3c34` | `#2b5345` | `#426954` | 23 / 472 |
+
+**Verification:** compared reloaded final PNGs with pre-edit file copies.
+All eight remain 48×48 RGBA. Every alpha channel is byte-identical; every
+non-crown RGBA pixel, including outlines, trunks and hidden transparent RGB,
+is byte-identical. The changed-pixel set equals the original foliage-palette
+mask exactly, so shapes, sizes, pixel positions and transparent backgrounds
+are unchanged. Each crown contains exactly its three listed greens.
+
+**Visual check:** inspected all eight final trees at native 1× and exact
+nearest-neighbour 8× on `out/grass-base.png` and the companion reference
+grounds `reference/current-grass.png` and `reference/fantasy-ground.png`.
+The requested `reference/current-fantasy-treeline_forest.png` is a transparent
+192×96 tree sheet, with no ground texture; used the companion grounds for
+that check and also viewed all eight original reference trees above the new
+set on reference grass. Inspected dense native-scale forest composites on
+reference grass and grass-base: crowns read green, with cooler/warmer variety
+and restrained top-left highlights. This was asset-composite review.
+
+Before copies, masks, palette-edit script, 1×/8× proofs, per-file alpha and
+non-crown SHA-256 evidence, and full starting-file hash audit are retained in
+`/tmp/summer-crown-recolour/`, outside the checkout. Only these eight summer
+PNGs and this appended note changed; all autumn files, bases, references,
+earlier reviews and other pre-existing files retain their starting bytes.
+No files were added to the checkout. **No commit or push.**
