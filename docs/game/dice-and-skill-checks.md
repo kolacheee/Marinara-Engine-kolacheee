@@ -72,7 +72,7 @@ In a game on **MRPG** classes, which is every new game, the stat modifier comes 
 | Speed | Acrobatics, Stealth |
 | Skill | Sleight of Hand, Investigation, Perception, Medicine, Survival, Animal Handling, and any skill not listed here |
 | Defense | Endurance, Constitution |
-| Magic | Arcana, History, Nature, Intelligence |
+The check adds a fifth of that stat above 3, rounded down, from -1 to +5. A weak stat (2 or less) takes 1 off, an ordinary one adds nothing, a new character's best stat adds about +1, a level-10 one +2, and the best at the top +5.
 | Resistance | Insight, Religion, Wisdom |
 | Luck | Persuasion, Deception, Performance, Charisma |
 
