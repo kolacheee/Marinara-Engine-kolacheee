@@ -255,7 +255,7 @@ const PERSONA_RPG_ATTRIBUTES_HELP =
 const OVERHAUL_SECTION_LABELS: Record<TabId, string> = {
   metadata: "Details",
   card: "The Card",
-  convo: "Convo profile",
+  convo: "Convo Profile",
   lorebook: "Lorebook",
   sprites: "Sprites",
   gallery: "Gallery",
@@ -263,7 +263,10 @@ const OVERHAUL_SECTION_LABELS: Record<TabId, string> = {
   rpstats: "Roleplay Stats",
   stats: "Game Mode",
 };
-const OVERHAUL_TAB_ORDER = [...TABS.filter((tab) => tab.id !== "metadata"), TABS[0]];
+// The mode sections sit together, in mode order (owner 2026-11-07).
+const OVERHAUL_TAB_ORDER = (
+  ["card", "lorebook", "sprites", "gallery", "colors", "convo", "rpstats", "stats", "metadata"] as const
+).map((id) => TABS.find((tab) => tab.id === id)!);
 const OVERHAUL_OPTIONAL_CARD_FIELDS = [
   { id: "summary", label: "Summary" },
   { id: "personality", label: "Personality" },
