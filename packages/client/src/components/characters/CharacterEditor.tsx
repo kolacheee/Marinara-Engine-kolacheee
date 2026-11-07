@@ -240,7 +240,7 @@ const OVERHAUL_SECTION_LABELS: Record<TabId, string> = {
   metadata: "Details",
   card: "The Card",
   onboarding: "Onboarding",
-  convo: "Convo profile",
+  convo: "Convo Profile",
   lorebook: "Lorebook",
   sprites: "Sprites",
   gallery: "Gallery",
@@ -252,11 +252,23 @@ const OVERHAUL_SECTION_LABELS: Record<TabId, string> = {
 };
 
 /** UI overhaul: the card comes first; Details (creator, version…) sits near the end. */
-const OVERHAUL_TAB_ORDER = [
-  ...TABS.filter((tab) => tab.id !== "metadata" && tab.id !== "advanced"),
-  TABS[0],
-  TABS[TABS.length - 1],
-];
+const OVERHAUL_TAB_ORDER = (
+  [
+    "card",
+    "onboarding",
+    "lorebook",
+    "sprites",
+    "gallery",
+    "colors",
+    "voice",
+    // The mode sections sit together, in mode order (owner 2026-11-07).
+    "convo",
+    "rpstats",
+    "stats",
+    "metadata",
+    "advanced",
+  ] as const
+).map((id) => TABS.find((tab) => tab.id === id)!);
 
 /** UI overhaul: card fields that only show once they hold text or are added. */
 const OVERHAUL_OPTIONAL_CARD_FIELDS = [
