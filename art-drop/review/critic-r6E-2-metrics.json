@@ -1,0 +1,1037 @@
+{
+  "files": {
+    "scifi-city-base": {
+      "size": [
+        288,
+        288
+      ],
+      "bbox": [
+        0,
+        0,
+        288,
+        288
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        255
+      ],
+      "opaque_components": [
+        82944
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "a8ff57823dbdff13532132ce175a87f2b9655f4d3831a6618a822921cad9fd02",
+      "prior_verdict": "fail",
+      "changed_since_prior": true,
+      "edge_mean_rgb_step": {
+        "left_right_wrap": 9.302,
+        "top_bottom_wrap": 23.832,
+        "interior_horizontal": 8.272,
+        "interior_vertical": 10.328
+      }
+    },
+    "scifi-city@winter-base": {
+      "size": [
+        288,
+        288
+      ],
+      "bbox": [
+        0,
+        0,
+        288,
+        288
+      ],
+      "palette_entries": 19,
+      "alpha_values": [
+        255
+      ],
+      "opaque_components": [
+        82944
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "9eaa86dc24ba4d767b3f2395bc243f96f47a3c72b584ea35ce8aad5cf2652d41",
+      "prior_verdict": "fail",
+      "changed_since_prior": true,
+      "edge_mean_rgb_step": {
+        "left_right_wrap": 13.012,
+        "top_bottom_wrap": 6.334,
+        "interior_horizontal": 7.384,
+        "interior_vertical": 10.392
+      }
+    },
+    "scifi-slums-base": {
+      "size": [
+        288,
+        288
+      ],
+      "bbox": [
+        0,
+        0,
+        288,
+        288
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        255
+      ],
+      "opaque_components": [
+        82944
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "24f4cd99556eea7bf65b6d853a7e31cad01f126baf999911728636a7ec61acd1",
+      "prior_verdict": "fail",
+      "changed_since_prior": true,
+      "edge_mean_rgb_step": {
+        "left_right_wrap": 13.978,
+        "top_bottom_wrap": 20.162,
+        "interior_horizontal": 10.669,
+        "interior_vertical": 15.231
+      }
+    },
+    "scifi-slums@winter-base": {
+      "size": [
+        288,
+        288
+      ],
+      "bbox": [
+        0,
+        0,
+        288,
+        288
+      ],
+      "palette_entries": 20,
+      "alpha_values": [
+        255
+      ],
+      "opaque_components": [
+        82944
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "6ce92e5c9b2e8a585b03767667ffc8b47ff57fcd9f7f86930bfb341fc28e1f99",
+      "prior_verdict": "fail",
+      "changed_since_prior": true,
+      "edge_mean_rgb_step": {
+        "left_right_wrap": 17.282,
+        "top_bottom_wrap": 28.979,
+        "interior_horizontal": 10.49,
+        "interior_vertical": 15.411
+      }
+    },
+    "scifi-industry-base": {
+      "size": [
+        288,
+        288
+      ],
+      "bbox": [
+        0,
+        0,
+        288,
+        288
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        255
+      ],
+      "opaque_components": [
+        82944
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "5c9ccef8b4f2414235db2dac769ebb58b0a8bfb6f3852de71afe3bad67cfe35e",
+      "prior_verdict": "pass",
+      "changed_since_prior": false,
+      "edge_mean_rgb_step": {
+        "left_right_wrap": 27.476,
+        "top_bottom_wrap": 22.375,
+        "interior_horizontal": 27.48,
+        "interior_vertical": 30.258
+      }
+    },
+    "scifi-industry@winter-base": {
+      "size": [
+        288,
+        288
+      ],
+      "bbox": [
+        0,
+        0,
+        288,
+        288
+      ],
+      "palette_entries": 20,
+      "alpha_values": [
+        255
+      ],
+      "opaque_components": [
+        82944
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "8d143d67b36bb463316a4122b0c3c245fd8c0f8e40aa510526ab88651dda6a28",
+      "prior_verdict": "fail",
+      "changed_since_prior": true,
+      "edge_mean_rgb_step": {
+        "left_right_wrap": 20.904,
+        "top_bottom_wrap": 7.147,
+        "interior_horizontal": 11.43,
+        "interior_vertical": 14.275
+      }
+    },
+    "scifi-city-tower-0": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        7,
+        9,
+        41,
+        95
+      ],
+      "palette_entries": 13,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1744
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "546d9aa7ac56f3051241c4067ff0aeec583d28484b64e8468fa3c3e71431a056",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city-tower-1": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        9,
+        9,
+        39,
+        95
+      ],
+      "palette_entries": 13,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1749
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "b3acd2b1ee53dcbc40f2987ea233e7a6d68debc36be8a163ac569f339be51646",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city-tower-2": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        19,
+        44,
+        95
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1615
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "469d90859378645f392cb5bb595c25516bade02256c3650ac1ed39b8e34e515e",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city-tower-3": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        10,
+        44,
+        95
+      ],
+      "palette_entries": 12,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1903
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "c81f78b6ec34c924e5270cfa08d0bcb5263e9cbfe0b54708eae6852060b29030",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city-tower-4": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        21,
+        44,
+        95
+      ],
+      "palette_entries": 13,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1555
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "8da3d2b0d942b8b3c0883423204466fa8605ad5be013d4b580a4b30d7e087b23",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city-tower-5": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        8,
+        10,
+        40,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1722
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "51d9c4676e0669c7e74a87524cdb0803ebc01c0c2b527284d7b98c6b3a939344",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city-tower-6": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        17,
+        44,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1955
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "53fba48db6902f8f07a16062bcc1ffc9cc528d99e8e56b53dd615d28682268c9",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city-tower-7": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        7,
+        9,
+        41,
+        95
+      ],
+      "palette_entries": 13,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1898
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "05f1457c18e53646c8ce09e575b2790d4427ae8a4a1176984273ca100e2f765c",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city@winter-tower-0": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        7,
+        9,
+        41,
+        95
+      ],
+      "palette_entries": 14,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1676
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "d5281d81a5a8fe00654f114d9dda69c104cd0ce85ec670872b8263dfa7da88b4",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city@winter-tower-1": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        9,
+        9,
+        39,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1721
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "b85840b5a11fc1c9a51166980c41b9d2aae827e226bce5234e4473e418bc23fb",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city@winter-tower-2": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        18,
+        44,
+        95
+      ],
+      "palette_entries": 19,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1601
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "2f84a572d10f2cf40e63ccfd8f0af06a12d60b3e368b4d80235651306c15f81a",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city@winter-tower-3": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        10,
+        44,
+        95
+      ],
+      "palette_entries": 14,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1923
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "b705b565f5a42fefd05ae34dc4bf960f37f9b90f4438876ea566a61830556c91",
+      "prior_verdict": "fail",
+      "changed_since_prior": true
+    },
+    "scifi-city@winter-tower-4": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        20,
+        44,
+        95
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1564
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "756f1d948541ab98dd7f79c1cfd0c5859d641514c7012906d5ff99104b5c0de3",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city@winter-tower-5": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        8,
+        10,
+        40,
+        95
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1689
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "be800a3a82f63466072ac2d76e99a894d105d73b4a3a659e5ce7fc9479887810",
+      "prior_verdict": "fail",
+      "changed_since_prior": true
+    },
+    "scifi-city@winter-tower-6": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        17,
+        44,
+        95
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1874
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "21119241d3cf3020861b7d5f10268e48d5dfc301599d0f142bbbe9383bc0f524",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-city@winter-tower-7": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        7,
+        9,
+        41,
+        95
+      ],
+      "palette_entries": 16,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1883
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "ee4d4a1747b1ac7f8850489fa9f5f8ffbe6636095ed9b5c8a73506b12deebff7",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry-stack-0": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        11,
+        9,
+        37,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1009
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "a2817493a0a97803162fa783722975432c465cf04cc261d0d308752022740e29",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry-stack-1": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        31,
+        44,
+        95
+      ],
+      "palette_entries": 11,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1537
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "57ef3ec6785a00aab535d789249080a0d2ef189e16bcd6cc7e923d05a517cd65",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry-stack-2": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        6,
+        9,
+        41,
+        95
+      ],
+      "palette_entries": 14,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        2242
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "d566757eb41a2f18b0b5bc7939559ccc074bfb03e47a6d4eaaf65c78a512de66",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry-stack-3": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        6,
+        9,
+        42,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1295
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "5fe0c978b33d0706a41d0bd6681d517b4f37093118cad87b4421127b152aed04",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry-stack-4": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        9,
+        9,
+        39,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1374
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "905ec3fdece8db950ab6eb7ed3f9174203dc67767f57040bfcb5ee0a9025793e",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry-stack-5": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        36,
+        44,
+        95
+      ],
+      "palette_entries": 13,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1571
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "48b138559cae43dda8172a06601056b9074a4af8ce5140614053ff4891a26648",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry-stack-6": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        7,
+        9,
+        41,
+        95
+      ],
+      "palette_entries": 12,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1649
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "817fdc009014ece501e00ffd6f0281f0c120703a68fa22a905b8bc334a64c194",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry-stack-7": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        12,
+        44,
+        95
+      ],
+      "palette_entries": 16,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1709
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "8c365cc2f6068402c49b33b63d1ac48d1a10d69768f7047430b79061e42180dc",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry@winter-stack-0": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        11,
+        10,
+        36,
+        95
+      ],
+      "palette_entries": 18,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1031
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "7983b292f20700f2ae2a5eec8654cd24a9d8c3f2d3142dd683d9fa6615bd59f8",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry@winter-stack-1": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        30,
+        44,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1564
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "8c5eef7a453574f4d578ce7f146e17e57ee16659aeff9c87a69bc2802a168db8",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry@winter-stack-2": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        6,
+        9,
+        42,
+        95
+      ],
+      "palette_entries": 16,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        2258
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "9abfd17ada7a07424a66c6d133010c05acf53988a194e55fbb2ae4f57c5ab930",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry@winter-stack-3": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        6,
+        9,
+        42,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1370
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "e0e60299964bfb5c0d0b32bbb94d79a5ea1184a249f6650c16a768fa22a41a77",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry@winter-stack-4": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        9,
+        9,
+        39,
+        95
+      ],
+      "palette_entries": 19,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1417
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "7f7013e4fef832cf98793c9dbee78510fc41ce8e50c9980aebd27c3dd2219d61",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry@winter-stack-5": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        35,
+        44,
+        95
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1594
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "857cc8d08d23807e678b9e2cda5f7ea49d2d737005ae2f3acd8180690e7c501e",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry@winter-stack-6": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        7,
+        10,
+        41,
+        95
+      ],
+      "palette_entries": 15,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1677
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "40562df2c43b566d9d584595127b219b7dae66302314735b303c85c2e82cf0d8",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    },
+    "scifi-industry@winter-stack-7": {
+      "size": [
+        48,
+        96
+      ],
+      "bbox": [
+        4,
+        13,
+        43,
+        95
+      ],
+      "palette_entries": 17,
+      "alpha_values": [
+        0,
+        255
+      ],
+      "opaque_components": [
+        1719
+      ],
+      "hidden_rgb_pixels": 0,
+      "sha256": "d558ae96361b5a14771eea5c012d1ca797cfc5e9c8c5c987180c5a28439e472b",
+      "prior_verdict": "pass",
+      "changed_since_prior": false
+    }
+  },
+  "evidence": [
+    "critic-r6E-2-scifi-city-base-3x3-1x.png",
+    "critic-r6E-2-scifi-city-base-3x3-4x.png",
+    "critic-r6E-2-scifi-city-base-wrap-viewport-4x.png",
+    "critic-r6E-2-scifi-city-base-8x.png",
+    "critic-r6E-2-scifi-city-base-quadrant-0-8x.png",
+    "critic-r6E-2-scifi-city-base-quadrant-1-8x.png",
+    "critic-r6E-2-scifi-city-base-quadrant-2-8x.png",
+    "critic-r6E-2-scifi-city-base-quadrant-3-8x.png",
+    "critic-r6E-2-scifi-city@winter-base-3x3-1x.png",
+    "critic-r6E-2-scifi-city@winter-base-3x3-4x.png",
+    "critic-r6E-2-scifi-city@winter-base-wrap-viewport-4x.png",
+    "critic-r6E-2-scifi-city@winter-base-8x.png",
+    "critic-r6E-2-scifi-city@winter-base-quadrant-0-8x.png",
+    "critic-r6E-2-scifi-city@winter-base-quadrant-1-8x.png",
+    "critic-r6E-2-scifi-city@winter-base-quadrant-2-8x.png",
+    "critic-r6E-2-scifi-city@winter-base-quadrant-3-8x.png",
+    "critic-r6E-2-scifi-slums-base-3x3-1x.png",
+    "critic-r6E-2-scifi-slums-base-3x3-4x.png",
+    "critic-r6E-2-scifi-slums-base-wrap-viewport-4x.png",
+    "critic-r6E-2-scifi-slums-base-8x.png",
+    "critic-r6E-2-scifi-slums-base-quadrant-0-8x.png",
+    "critic-r6E-2-scifi-slums-base-quadrant-1-8x.png",
+    "critic-r6E-2-scifi-slums-base-quadrant-2-8x.png",
+    "critic-r6E-2-scifi-slums-base-quadrant-3-8x.png",
+    "critic-r6E-2-scifi-slums@winter-base-3x3-1x.png",
+    "critic-r6E-2-scifi-slums@winter-base-3x3-4x.png",
+    "critic-r6E-2-scifi-slums@winter-base-wrap-viewport-4x.png",
+    "critic-r6E-2-scifi-slums@winter-base-8x.png",
+    "critic-r6E-2-scifi-slums@winter-base-quadrant-0-8x.png",
+    "critic-r6E-2-scifi-slums@winter-base-quadrant-1-8x.png",
+    "critic-r6E-2-scifi-slums@winter-base-quadrant-2-8x.png",
+    "critic-r6E-2-scifi-slums@winter-base-quadrant-3-8x.png",
+    "critic-r6E-2-scifi-industry-base-3x3-1x.png",
+    "critic-r6E-2-scifi-industry-base-3x3-4x.png",
+    "critic-r6E-2-scifi-industry-base-wrap-viewport-4x.png",
+    "critic-r6E-2-scifi-industry-base-8x.png",
+    "critic-r6E-2-scifi-industry-base-quadrant-0-8x.png",
+    "critic-r6E-2-scifi-industry-base-quadrant-1-8x.png",
+    "critic-r6E-2-scifi-industry-base-quadrant-2-8x.png",
+    "critic-r6E-2-scifi-industry-base-quadrant-3-8x.png",
+    "critic-r6E-2-scifi-industry@winter-base-3x3-1x.png",
+    "critic-r6E-2-scifi-industry@winter-base-3x3-4x.png",
+    "critic-r6E-2-scifi-industry@winter-base-wrap-viewport-4x.png",
+    "critic-r6E-2-scifi-industry@winter-base-8x.png",
+    "critic-r6E-2-scifi-industry@winter-base-quadrant-0-8x.png",
+    "critic-r6E-2-scifi-industry@winter-base-quadrant-1-8x.png",
+    "critic-r6E-2-scifi-industry@winter-base-quadrant-2-8x.png",
+    "critic-r6E-2-scifi-industry@winter-base-quadrant-3-8x.png",
+    "critic-r6E-2-tower-0-3-8x.png",
+    "critic-r6E-2-tower-4-7-8x.png",
+    "critic-r6E-2-tower-alpha-1x.png",
+    "critic-r6E-2-tower-alpha-4x.png",
+    "critic-r6E-2-tower-sparse-context-1x.png",
+    "critic-r6E-2-tower-sparse-context-4x.png",
+    "critic-r6E-2-tower-sparse-half-0-4x.png",
+    "critic-r6E-2-tower-sparse-half-1-4x.png",
+    "critic-r6E-2-tower@winter-0-3-8x.png",
+    "critic-r6E-2-tower@winter-4-7-8x.png",
+    "critic-r6E-2-tower@winter-alpha-1x.png",
+    "critic-r6E-2-tower@winter-alpha-4x.png",
+    "critic-r6E-2-tower@winter-sparse-context-1x.png",
+    "critic-r6E-2-tower@winter-sparse-context-4x.png",
+    "critic-r6E-2-tower@winter-sparse-half-0-4x.png",
+    "critic-r6E-2-tower@winter-sparse-half-1-4x.png",
+    "critic-r6E-2-stack-0-3-8x.png",
+    "critic-r6E-2-stack-4-7-8x.png",
+    "critic-r6E-2-stack-alpha-1x.png",
+    "critic-r6E-2-stack-alpha-4x.png",
+    "critic-r6E-2-stack-sparse-context-1x.png",
+    "critic-r6E-2-stack-sparse-context-4x.png",
+    "critic-r6E-2-stack-sparse-half-0-4x.png",
+    "critic-r6E-2-stack-sparse-half-1-4x.png",
+    "critic-r6E-2-stack@winter-0-3-8x.png",
+    "critic-r6E-2-stack@winter-4-7-8x.png",
+    "critic-r6E-2-stack@winter-alpha-1x.png",
+    "critic-r6E-2-stack@winter-alpha-4x.png",
+    "critic-r6E-2-stack@winter-sparse-context-1x.png",
+    "critic-r6E-2-stack@winter-sparse-context-4x.png",
+    "critic-r6E-2-stack@winter-sparse-half-0-4x.png",
+    "critic-r6E-2-stack@winter-sparse-half-1-4x.png",
+    "critic-r6E-2-antenna-season-pairs-1x.png",
+    "critic-r6E-2-antenna-season-pairs-4x.png",
+    "critic-r6E-2-antenna-season-pairs-8x.png",
+    "critic-r6E-2-references-1x.png",
+    "critic-r6E-2-references-4x.png",
+    "critic-r6E-2-approved-sprites-1x.png",
+    "critic-r6E-2-approved-sprites-4x.png",
+    "critic-r6E-2-approved-ground-comparison-1x.png",
+    "critic-r6E-2-approved-ground-comparison-4x.png"
+  ]
+}

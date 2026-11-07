@@ -1,0 +1,1201 @@
+{
+  "sets": {
+    "_review": {
+      "scope": "BRIEF-6.md Part E only: six 288x288 district bases and 32 transparent 48x96 standing landmarks. Reference/approved art is comparison material, not additional review scope. Winter landmarks use the existing season-before-kind filenames.",
+      "file_count": 38,
+      "pass_count": 38,
+      "fail_count": 0,
+      "calibration": "Good enough to ship next to the approved art. Full repeats and native context determine whether enlarged irregularities are blocking; hard pixel edges alone are not proof of good drawing. Simplified background roofs and intentionally dim industrial equipment are acceptable when their masses read at 1x. No required quota of failures.",
+      "prior_review": {
+        "file": "critic-r6E-2.json",
+        "changed_files": [
+          "scifi-city-base",
+          "scifi-city@winter-base"
+        ],
+        "unchanged_prior_passes_retained": [
+          "scifi-slums-base",
+          "scifi-slums@winter-base",
+          "scifi-industry-base",
+          "scifi-industry@winter-base",
+          "scifi-city-tower-0",
+          "scifi-city-tower-1",
+          "scifi-city-tower-2",
+          "scifi-city-tower-3",
+          "scifi-city-tower-4",
+          "scifi-city-tower-5",
+          "scifi-city-tower-6",
+          "scifi-city-tower-7",
+          "scifi-city@winter-tower-0",
+          "scifi-city@winter-tower-1",
+          "scifi-city@winter-tower-2",
+          "scifi-city@winter-tower-3",
+          "scifi-city@winter-tower-4",
+          "scifi-city@winter-tower-5",
+          "scifi-city@winter-tower-6",
+          "scifi-city@winter-tower-7",
+          "scifi-industry-stack-0",
+          "scifi-industry-stack-1",
+          "scifi-industry-stack-2",
+          "scifi-industry-stack-3",
+          "scifi-industry-stack-4",
+          "scifi-industry-stack-5",
+          "scifi-industry-stack-6",
+          "scifi-industry-stack-7",
+          "scifi-industry@winter-stack-0",
+          "scifi-industry@winter-stack-1",
+          "scifi-industry@winter-stack-2",
+          "scifi-industry@winter-stack-3",
+          "scifi-industry@winter-stack-4",
+          "scifi-industry@winter-stack-5",
+          "scifi-industry@winter-stack-6",
+          "scifi-industry@winter-stack-7"
+        ],
+        "new_defects_on_unchanged_prior_passes": []
+      },
+      "references": [
+        "art-drop/BRIEF-6.md global style and Part E",
+        "art-drop/reference/current-scifi-city.png",
+        "art-drop/reference/current-scifi-slums.png",
+        "art-drop/reference/current-scifi-industry.png",
+        "art-drop/reference/scifi-ground.png",
+        "art-drop/reference/scifi-marker0..3.png",
+        "approved art-drop/out/scifi-marker0..3.png and fantasy/wuxia/modern/wasteland-marker1.png",
+        "approved round-2 out/city, slums, industry, suburb and farmland samples",
+        "approved out/paddies summer/winter samples",
+        "approved out/grass and plains bases and detail samples"
+      ],
+      "qc": {
+        "base_3x3_1x_and_4x": "All six literal 3x3 repeats saved at 864x864 native and 3456x3456 nearest-neighbour 4x. Inspected every complete native repeat; inspected the unique tile and all four adjoining wrap boundaries at exact 4x using the 384x384-native wrap viewports (1536x1536). No visible join, perimeter street, 48px street frame or regular city grid. Repetition of the 288px source can be located when deliberately matching motifs, but no longer forms the conspicuous continuous olive wave that failed the previous city summer base.",
+        "individual_8x": "Every one of the 38 files visually inspected at 8x. All six complete bases saved at 8x; four exact 144x144-native quadrants per base inspected at 1152x1152, covering every base pixel. All 32 complete landmarks inspected on labelled 8x sheets, eight sheets of four sprites, both seasons.",
+        "standing_landmark_context_1x_and_4x": "All eight towers and all eight stacks sparsely composited on their matching district bases in both seasons. All four complete 576x384 native contexts inspected at 1x and both 4x halves of each context inspected, covering every landmark. Silhouettes, entrances and bases remain readable without a backing rectangle or fringe; background roof simplification gives the city landmarks adequate separation.",
+        "dimensions_placement": "Six bases are exactly 288x288, fully opaque. Thirty-two landmarks are exactly 48x96, stand near horizontal centre, end at native row 94 and retain canvas margins. No cropped antenna, wrong canvas, floating foot or displaced winter anchor. Winter towers 3 and 5 retain the previously repaired full antennas.",
+        "alpha_fringe_halo": "Every landmark has alpha exactly 0/255, a single 8-connected opaque component, and zero hidden RGB pixels. Inspected all 32 over pale, near-black and neutral backgrounds at 4x and neutral at 8x. No matte halo, fringe, detached opaque island or antialiased edge found.",
+        "blur_antialias_noise_muddy_shapes": "Hard native pixels and limited palettes (11-20 colours including transparency across this set) remain intact. No blur or antialiasing. Revised city dominant roofs now have broad deliberate rectangular/stepped planes, a readable top-to-front transition and sparing rooftop fixtures. Small irregular secondary roof contours do not turn the native district into lumps. Slums use broad metal/tarp patches; industrial detail follows equipment and pipework rather than random all-over speckle. No new blocking noise defect on unchanged prior passes.",
+        "lighting_palette": "Checked against reference/current-scifi district strips, scifi ground/markers and approved out markers, round-2 city/slums/industry/suburb/farmland, paddies and grass/plains bases/details. Top/left planes are lit and right/front faces shaded. Muted grey-green metal, cream landmark trim, dark blue-green ground and restrained cyan/magenta/gold lights belong with the approved scifi art. Deliberately darker district snow does not introduce an unrelated colour ramp or reverse the light.",
+        "duplicates": "No exact raster duplicates among the 38 files. Compared all eight silhouettes per landmark family in summer/winter lineups: tiered, globe, wedge, linked-tower, terraces, observation-deck, fins and spiral towers; single chimney, cooling tower, framed gas holder, twin chimneys, refinery column, squat cooling group, spherical holder and tank cluster stacks. Shared materials do not conceal near-identical silhouettes.",
+        "winter": "Each winter district preserves its summer layout and populated character. City broad snow patches sit within roof planes while exposed grey roofing and dark walls remain visible; plazas and planted pockets keep their locations. Slums retain coloured tarps/metal under varied roof snow. Industry retains tanks, sheds and dim pipework under grouped snow caps. All landmarks preserve identifiable structures and put snow on ledges/tops. No blank winter, missing structure or incompatible seasonal palette found.",
+        "peak_lattice_or_range": "Not applicable: Part E contains no peaks or ridges. Part C was not reviewed.",
+        "random_8x2_one_cell_tiles": "Not applicable: Part E replaces the legacy one-cell district tiles with six 288x288 bases and 48x96 transparent landmarks. Legacy scifi-city/slums/industry-0..7 are outside Part E. Standing landmarks were tested sparsely over district ground, not falsely treated as edge-to-edge terrain tiles.",
+        "trees_in_forest": "Not applicable: Part E contains no trees or forest floors. No Parts C/D tree or forest file reviewed.",
+        "brief_specific_traps": "Stamped cyberpunk grid, edge roads and prominent repeated district motifs checked in all six repeated bases. Egg-crate peaks, Swiss-cheese craters, classical ruins, flat orange autumn and identical crowns refer to asset types absent from Part E; they do not authorize verdicts on unrelated files."
+      },
+      "evidence": [
+        "critic-r6E-3-scifi-city-base-3x3-1x.png",
+        "critic-r6E-3-scifi-city-base-3x3-4x.png",
+        "critic-r6E-3-scifi-city-base-wrap-viewport-4x.png",
+        "critic-r6E-3-scifi-city-base-8x.png",
+        "critic-r6E-3-scifi-city-base-quadrant-0-8x.png",
+        "critic-r6E-3-scifi-city-base-quadrant-1-8x.png",
+        "critic-r6E-3-scifi-city-base-quadrant-2-8x.png",
+        "critic-r6E-3-scifi-city-base-quadrant-3-8x.png",
+        "critic-r6E-3-scifi-city@winter-base-3x3-1x.png",
+        "critic-r6E-3-scifi-city@winter-base-3x3-4x.png",
+        "critic-r6E-3-scifi-city@winter-base-wrap-viewport-4x.png",
+        "critic-r6E-3-scifi-city@winter-base-8x.png",
+        "critic-r6E-3-scifi-city@winter-base-quadrant-0-8x.png",
+        "critic-r6E-3-scifi-city@winter-base-quadrant-1-8x.png",
+        "critic-r6E-3-scifi-city@winter-base-quadrant-2-8x.png",
+        "critic-r6E-3-scifi-city@winter-base-quadrant-3-8x.png",
+        "critic-r6E-3-scifi-slums-base-3x3-1x.png",
+        "critic-r6E-3-scifi-slums-base-3x3-4x.png",
+        "critic-r6E-3-scifi-slums-base-wrap-viewport-4x.png",
+        "critic-r6E-3-scifi-slums-base-8x.png",
+        "critic-r6E-3-scifi-slums-base-quadrant-0-8x.png",
+        "critic-r6E-3-scifi-slums-base-quadrant-1-8x.png",
+        "critic-r6E-3-scifi-slums-base-quadrant-2-8x.png",
+        "critic-r6E-3-scifi-slums-base-quadrant-3-8x.png",
+        "critic-r6E-3-scifi-slums@winter-base-3x3-1x.png",
+        "critic-r6E-3-scifi-slums@winter-base-3x3-4x.png",
+        "critic-r6E-3-scifi-slums@winter-base-wrap-viewport-4x.png",
+        "critic-r6E-3-scifi-slums@winter-base-8x.png",
+        "critic-r6E-3-scifi-slums@winter-base-quadrant-0-8x.png",
+        "critic-r6E-3-scifi-slums@winter-base-quadrant-1-8x.png",
+        "critic-r6E-3-scifi-slums@winter-base-quadrant-2-8x.png",
+        "critic-r6E-3-scifi-slums@winter-base-quadrant-3-8x.png",
+        "critic-r6E-3-scifi-industry-base-3x3-1x.png",
+        "critic-r6E-3-scifi-industry-base-3x3-4x.png",
+        "critic-r6E-3-scifi-industry-base-wrap-viewport-4x.png",
+        "critic-r6E-3-scifi-industry-base-8x.png",
+        "critic-r6E-3-scifi-industry-base-quadrant-0-8x.png",
+        "critic-r6E-3-scifi-industry-base-quadrant-1-8x.png",
+        "critic-r6E-3-scifi-industry-base-quadrant-2-8x.png",
+        "critic-r6E-3-scifi-industry-base-quadrant-3-8x.png",
+        "critic-r6E-3-scifi-industry@winter-base-3x3-1x.png",
+        "critic-r6E-3-scifi-industry@winter-base-3x3-4x.png",
+        "critic-r6E-3-scifi-industry@winter-base-wrap-viewport-4x.png",
+        "critic-r6E-3-scifi-industry@winter-base-8x.png",
+        "critic-r6E-3-scifi-industry@winter-base-quadrant-0-8x.png",
+        "critic-r6E-3-scifi-industry@winter-base-quadrant-1-8x.png",
+        "critic-r6E-3-scifi-industry@winter-base-quadrant-2-8x.png",
+        "critic-r6E-3-scifi-industry@winter-base-quadrant-3-8x.png",
+        "critic-r6E-3-tower-0-3-8x.png",
+        "critic-r6E-3-tower-4-7-8x.png",
+        "critic-r6E-3-tower-alpha-1x.png",
+        "critic-r6E-3-tower-alpha-4x.png",
+        "critic-r6E-3-tower-sparse-context-1x.png",
+        "critic-r6E-3-tower-sparse-context-4x.png",
+        "critic-r6E-3-tower-sparse-half-0-4x.png",
+        "critic-r6E-3-tower-sparse-half-1-4x.png",
+        "critic-r6E-3-tower@winter-0-3-8x.png",
+        "critic-r6E-3-tower@winter-4-7-8x.png",
+        "critic-r6E-3-tower@winter-alpha-1x.png",
+        "critic-r6E-3-tower@winter-alpha-4x.png",
+        "critic-r6E-3-tower@winter-sparse-context-1x.png",
+        "critic-r6E-3-tower@winter-sparse-context-4x.png",
+        "critic-r6E-3-tower@winter-sparse-half-0-4x.png",
+        "critic-r6E-3-tower@winter-sparse-half-1-4x.png",
+        "critic-r6E-3-stack-0-3-8x.png",
+        "critic-r6E-3-stack-4-7-8x.png",
+        "critic-r6E-3-stack-alpha-1x.png",
+        "critic-r6E-3-stack-alpha-4x.png",
+        "critic-r6E-3-stack-sparse-context-1x.png",
+        "critic-r6E-3-stack-sparse-context-4x.png",
+        "critic-r6E-3-stack-sparse-half-0-4x.png",
+        "critic-r6E-3-stack-sparse-half-1-4x.png",
+        "critic-r6E-3-stack@winter-0-3-8x.png",
+        "critic-r6E-3-stack@winter-4-7-8x.png",
+        "critic-r6E-3-stack@winter-alpha-1x.png",
+        "critic-r6E-3-stack@winter-alpha-4x.png",
+        "critic-r6E-3-stack@winter-sparse-context-1x.png",
+        "critic-r6E-3-stack@winter-sparse-context-4x.png",
+        "critic-r6E-3-stack@winter-sparse-half-0-4x.png",
+        "critic-r6E-3-stack@winter-sparse-half-1-4x.png",
+        "critic-r6E-3-antenna-season-pairs-1x.png",
+        "critic-r6E-3-antenna-season-pairs-4x.png",
+        "critic-r6E-3-antenna-season-pairs-8x.png",
+        "critic-r6E-3-references-1x.png",
+        "critic-r6E-3-references-4x.png",
+        "critic-r6E-3-approved-sprites-1x.png",
+        "critic-r6E-3-approved-sprites-4x.png",
+        "critic-r6E-3-approved-ground-comparison-1x.png",
+        "critic-r6E-3-approved-ground-comparison-4x.png"
+      ],
+      "out_integrity": "All 474 PNGs in art-drop/out/ remain byte-identical to the snapshot taken before generating this review. Only art-drop/review/ was written."
+    },
+    "scifi-city-bases": {
+      "pass": [
+        "scifi-city-base",
+        "scifi-city@winter-base"
+      ],
+      "fail": [],
+      "assessment": "Both revised files now pass. Summer breaks the former S-shaped olive corridor into isolated, unequal planted strips/pockets and paved courts, so the native 3x3 no longer makes horizontal green waves. The dominant forked/branching footprints now read as deliberate connected roof planes with straight or consistent stepped edges and dark front walls; small vents help identify rooftops without restoring interior noise. The paved open spaces are distinguishable from narrow alleys. Winter applies broad snow within the same rebuilt planes and preserves exposed roofing and shadowed walls, so the former snow-topped lumps read as architecture. Neither season needs a regular road grid to connect the district. Remaining simplified secondary footprints are acceptable small-scale background art at the shipping bar, confirmed with sparse towers at 1x/4x and complete 8x inspection.",
+      "files": {
+        "scifi-city-base": {
+          "size": [
+            288,
+            288
+          ],
+          "bbox": [
+            0,
+            0,
+            288,
+            288
+          ],
+          "palette_entries": 16,
+          "alpha_values": [
+            255
+          ],
+          "opaque_components": [
+            82944
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "aab967b68801705bb9601a06abddd6c9d5fa0a1f1b840a649e9eed6646eaed4c",
+          "prior_verdict": "fail",
+          "changed_since_prior": true
+        },
+        "scifi-city@winter-base": {
+          "size": [
+            288,
+            288
+          ],
+          "bbox": [
+            0,
+            0,
+            288,
+            288
+          ],
+          "palette_entries": 20,
+          "alpha_values": [
+            255
+          ],
+          "opaque_components": [
+            82944
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "a461409dd334f6a74acbddf6b697b5281262e19b27e4c744bea1133b6bb1d1e0",
+          "prior_verdict": "fail",
+          "changed_since_prior": true
+        }
+      }
+    },
+    "scifi-slums-bases": {
+      "pass": [
+        "scifi-slums-base",
+        "scifi-slums@winter-base"
+      ],
+      "fail": [],
+      "assessment": "Both retain unchanged prior passes. Packed crooked shacks, broad muted metal/rust/tarp planes and narrow irregular gaps read at native scale. Three-by-three and enlarged wrap checks show no cell frame or straight perimeter street. Rough tarp edges are appropriate to the material. Winter keeps the summer geometry and exposed coloured roofing under varied grouped snow patches. Complete 8x checks found no concrete new blocking defect.",
+      "files": {
+        "scifi-slums-base": {
+          "size": [
+            288,
+            288
+          ],
+          "bbox": [
+            0,
+            0,
+            288,
+            288
+          ],
+          "palette_entries": 17,
+          "alpha_values": [
+            255
+          ],
+          "opaque_components": [
+            82944
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "24f4cd99556eea7bf65b6d853a7e31cad01f126baf999911728636a7ec61acd1",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-slums@winter-base": {
+          "size": [
+            288,
+            288
+          ],
+          "bbox": [
+            0,
+            0,
+            288,
+            288
+          ],
+          "palette_entries": 20,
+          "alpha_values": [
+            255
+          ],
+          "opaque_components": [
+            82944
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "6ce92e5c9b2e8a585b03767667ffc8b47ff57fcd9f7f86930bfb341fc28e1f99",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        }
+      }
+    },
+    "scifi-industry-bases": {
+      "pass": [
+        "scifi-industry-base",
+        "scifi-industry@winter-base"
+      ],
+      "fail": [],
+      "assessment": "Both retain unchanged prior passes. Distinct tanks, pitched sheds and connecting machinery read as industrial ground, with the pipework following equipment rather than a stamped street grid. Summer is busy but organized around readable equipment masses; winter groups snow on tops and keeps secondary pipework dim. Native repeats, 4x wraps, complete 8x checks and all eight sparse stack placements show no concrete new blocking defect.",
+      "files": {
+        "scifi-industry-base": {
+          "size": [
+            288,
+            288
+          ],
+          "bbox": [
+            0,
+            0,
+            288,
+            288
+          ],
+          "palette_entries": 17,
+          "alpha_values": [
+            255
+          ],
+          "opaque_components": [
+            82944
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "5c9ccef8b4f2414235db2dac769ebb58b0a8bfb6f3852de71afe3bad67cfe35e",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-base": {
+          "size": [
+            288,
+            288
+          ],
+          "bbox": [
+            0,
+            0,
+            288,
+            288
+          ],
+          "palette_entries": 20,
+          "alpha_values": [
+            255
+          ],
+          "opaque_components": [
+            82944
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "8d143d67b36bb463316a4122b0c3c245fd8c0f8e40aa510526ab88651dda6a28",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        }
+      }
+    },
+    "scifi-city-towers": {
+      "pass": [
+        "scifi-city-tower-0",
+        "scifi-city-tower-1",
+        "scifi-city-tower-2",
+        "scifi-city-tower-3",
+        "scifi-city-tower-4",
+        "scifi-city-tower-5",
+        "scifi-city-tower-6",
+        "scifi-city-tower-7",
+        "scifi-city@winter-tower-0",
+        "scifi-city@winter-tower-1",
+        "scifi-city@winter-tower-2",
+        "scifi-city@winter-tower-3",
+        "scifi-city@winter-tower-4",
+        "scifi-city@winter-tower-5",
+        "scifi-city@winter-tower-6",
+        "scifi-city@winter-tower-7"
+      ],
+      "fail": [],
+      "assessment": "All sixteen retain unchanged prior passes. Eight distinct architectural silhouettes, marker-compatible cream/grey-green planes and restrained lights. Their near-bottom-centre feet, full antennas and hard-alpha contours survive 8x inspection, pale/dark alpha proofs and sparse native/4x placement on the revised city ground. Winter snow sits on tiers and ledges while preserving structure. No concrete new blocking defect.",
+      "files": {
+        "scifi-city-tower-0": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            9,
+            41,
+            95
+          ],
+          "palette_entries": 13,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1744
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "546d9aa7ac56f3051241c4067ff0aeec583d28484b64e8468fa3c3e71431a056",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city-tower-1": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            9,
+            9,
+            39,
+            95
+          ],
+          "palette_entries": 13,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1749
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "b3acd2b1ee53dcbc40f2987ea233e7a6d68debc36be8a163ac569f339be51646",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city-tower-2": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            19,
+            44,
+            95
+          ],
+          "palette_entries": 17,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1615
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "469d90859378645f392cb5bb595c25516bade02256c3650ac1ed39b8e34e515e",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city-tower-3": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            10,
+            44,
+            95
+          ],
+          "palette_entries": 12,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1903
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "c81f78b6ec34c924e5270cfa08d0bcb5263e9cbfe0b54708eae6852060b29030",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city-tower-4": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            21,
+            44,
+            95
+          ],
+          "palette_entries": 13,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1555
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "8da3d2b0d942b8b3c0883423204466fa8605ad5be013d4b580a4b30d7e087b23",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city-tower-5": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            8,
+            10,
+            40,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1722
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "51d9c4676e0669c7e74a87524cdb0803ebc01c0c2b527284d7b98c6b3a939344",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city-tower-6": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            17,
+            44,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1955
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "53fba48db6902f8f07a16062bcc1ffc9cc528d99e8e56b53dd615d28682268c9",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city-tower-7": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            9,
+            41,
+            95
+          ],
+          "palette_entries": 13,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1898
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "05f1457c18e53646c8ce09e575b2790d4427ae8a4a1176984273ca100e2f765c",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city@winter-tower-0": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            9,
+            41,
+            95
+          ],
+          "palette_entries": 14,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1676
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "d5281d81a5a8fe00654f114d9dda69c104cd0ce85ec670872b8263dfa7da88b4",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city@winter-tower-1": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            9,
+            9,
+            39,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1721
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "b85840b5a11fc1c9a51166980c41b9d2aae827e226bce5234e4473e418bc23fb",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city@winter-tower-2": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            18,
+            44,
+            95
+          ],
+          "palette_entries": 19,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1601
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "2f84a572d10f2cf40e63ccfd8f0af06a12d60b3e368b4d80235651306c15f81a",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city@winter-tower-3": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            10,
+            44,
+            95
+          ],
+          "palette_entries": 14,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1923
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "b705b565f5a42fefd05ae34dc4bf960f37f9b90f4438876ea566a61830556c91",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city@winter-tower-4": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            20,
+            44,
+            95
+          ],
+          "palette_entries": 17,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1564
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "756f1d948541ab98dd7f79c1cfd0c5859d641514c7012906d5ff99104b5c0de3",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city@winter-tower-5": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            8,
+            10,
+            40,
+            95
+          ],
+          "palette_entries": 17,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1689
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "be800a3a82f63466072ac2d76e99a894d105d73b4a3a659e5ce7fc9479887810",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city@winter-tower-6": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            17,
+            44,
+            95
+          ],
+          "palette_entries": 17,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1874
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "21119241d3cf3020861b7d5f10268e48d5dfc301599d0f142bbbe9383bc0f524",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-city@winter-tower-7": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            9,
+            41,
+            95
+          ],
+          "palette_entries": 16,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1883
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "ee4d4a1747b1ac7f8850489fa9f5f8ffbe6636095ed9b5c8a73506b12deebff7",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        }
+      }
+    },
+    "scifi-industry-stacks": {
+      "pass": [
+        "scifi-industry-stack-0",
+        "scifi-industry-stack-1",
+        "scifi-industry-stack-2",
+        "scifi-industry-stack-3",
+        "scifi-industry-stack-4",
+        "scifi-industry-stack-5",
+        "scifi-industry-stack-6",
+        "scifi-industry-stack-7",
+        "scifi-industry@winter-stack-0",
+        "scifi-industry@winter-stack-1",
+        "scifi-industry@winter-stack-2",
+        "scifi-industry@winter-stack-3",
+        "scifi-industry@winter-stack-4",
+        "scifi-industry@winter-stack-5",
+        "scifi-industry@winter-stack-6",
+        "scifi-industry@winter-stack-7"
+      ],
+      "fail": [],
+      "assessment": "All sixteen retain unchanged prior passes. Distinct chimney, cooling-tower, gas-holder and refinery configurations; supports and pipe connections remain readable. Muted metal, top-left light, clean hard-alpha boundaries and near-bottom-centre anchors fit the approved art. Both seasons inspected at 8x, on three alpha backgrounds at 4x and sparsely over industry at 1x/4x. No concrete new blocking defect.",
+      "files": {
+        "scifi-industry-stack-0": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            11,
+            9,
+            37,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1009
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "a2817493a0a97803162fa783722975432c465cf04cc261d0d308752022740e29",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry-stack-1": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            31,
+            44,
+            95
+          ],
+          "palette_entries": 11,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1537
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "57ef3ec6785a00aab535d789249080a0d2ef189e16bcd6cc7e923d05a517cd65",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry-stack-2": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            6,
+            9,
+            41,
+            95
+          ],
+          "palette_entries": 14,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            2242
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "d566757eb41a2f18b0b5bc7939559ccc074bfb03e47a6d4eaaf65c78a512de66",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry-stack-3": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            6,
+            9,
+            42,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1295
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "5fe0c978b33d0706a41d0bd6681d517b4f37093118cad87b4421127b152aed04",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry-stack-4": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            9,
+            9,
+            39,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1374
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "905ec3fdece8db950ab6eb7ed3f9174203dc67767f57040bfcb5ee0a9025793e",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry-stack-5": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            36,
+            44,
+            95
+          ],
+          "palette_entries": 13,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1571
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "48b138559cae43dda8172a06601056b9074a4af8ce5140614053ff4891a26648",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry-stack-6": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            9,
+            41,
+            95
+          ],
+          "palette_entries": 12,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1649
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "817fdc009014ece501e00ffd6f0281f0c120703a68fa22a905b8bc334a64c194",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry-stack-7": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            12,
+            44,
+            95
+          ],
+          "palette_entries": 16,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1709
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "8c365cc2f6068402c49b33b63d1ac48d1a10d69768f7047430b79061e42180dc",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-stack-0": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            11,
+            10,
+            36,
+            95
+          ],
+          "palette_entries": 18,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1031
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "7983b292f20700f2ae2a5eec8654cd24a9d8c3f2d3142dd683d9fa6615bd59f8",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-stack-1": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            30,
+            44,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1564
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "8c5eef7a453574f4d578ce7f146e17e57ee16659aeff9c87a69bc2802a168db8",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-stack-2": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            6,
+            9,
+            42,
+            95
+          ],
+          "palette_entries": 16,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            2258
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "9abfd17ada7a07424a66c6d133010c05acf53988a194e55fbb2ae4f57c5ab930",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-stack-3": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            6,
+            9,
+            42,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1370
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "e0e60299964bfb5c0d0b32bbb94d79a5ea1184a249f6650c16a768fa22a41a77",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-stack-4": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            9,
+            9,
+            39,
+            95
+          ],
+          "palette_entries": 19,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1417
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "7f7013e4fef832cf98793c9dbee78510fc41ce8e50c9980aebd27c3dd2219d61",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-stack-5": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            35,
+            44,
+            95
+          ],
+          "palette_entries": 17,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1594
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "857cc8d08d23807e678b9e2cda5f7ea49d2d737005ae2f3acd8180690e7c501e",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-stack-6": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            10,
+            41,
+            95
+          ],
+          "palette_entries": 15,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1677
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "40562df2c43b566d9d584595127b219b7dae66302314735b303c85c2e82cf0d8",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        },
+        "scifi-industry@winter-stack-7": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            4,
+            13,
+            43,
+            95
+          ],
+          "palette_entries": 17,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_components": [
+            1719
+          ],
+          "hidden_rgb_pixels": 0,
+          "sha256": "d558ae96361b5a14771eea5c012d1ca797cfc5e9c8c5c987180c5a28439e472b",
+          "prior_verdict": "pass",
+          "changed_since_prior": false
+        }
+      }
+    }
+  },
+  "pass": [
+    "scifi-city-base",
+    "scifi-city-tower-0",
+    "scifi-city-tower-1",
+    "scifi-city-tower-2",
+    "scifi-city-tower-3",
+    "scifi-city-tower-4",
+    "scifi-city-tower-5",
+    "scifi-city-tower-6",
+    "scifi-city-tower-7",
+    "scifi-city@winter-base",
+    "scifi-city@winter-tower-0",
+    "scifi-city@winter-tower-1",
+    "scifi-city@winter-tower-2",
+    "scifi-city@winter-tower-3",
+    "scifi-city@winter-tower-4",
+    "scifi-city@winter-tower-5",
+    "scifi-city@winter-tower-6",
+    "scifi-city@winter-tower-7",
+    "scifi-industry-base",
+    "scifi-industry-stack-0",
+    "scifi-industry-stack-1",
+    "scifi-industry-stack-2",
+    "scifi-industry-stack-3",
+    "scifi-industry-stack-4",
+    "scifi-industry-stack-5",
+    "scifi-industry-stack-6",
+    "scifi-industry-stack-7",
+    "scifi-industry@winter-base",
+    "scifi-industry@winter-stack-0",
+    "scifi-industry@winter-stack-1",
+    "scifi-industry@winter-stack-2",
+    "scifi-industry@winter-stack-3",
+    "scifi-industry@winter-stack-4",
+    "scifi-industry@winter-stack-5",
+    "scifi-industry@winter-stack-6",
+    "scifi-industry@winter-stack-7",
+    "scifi-slums-base",
+    "scifi-slums@winter-base"
+  ],
+  "fail": []
+}
