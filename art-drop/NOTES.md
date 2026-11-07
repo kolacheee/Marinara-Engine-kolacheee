@@ -1596,3 +1596,54 @@ in-game renderer check. No commit or push.
 - `art-drop/review/r5D-summer-sprites-4x.png`
 - `art-drop/review/r5D-summer-sprites-8x.png`
 - `art-drop/NOTES.md`
+
+
+---
+
+# Operator correction — wasteland bowl craters
+
+Replaced only `out/wasteland-craters-base.png` and
+`out/wasteland-craters@winter-base.png`. Both remain 288×288 opaque RGB.
+Four unequal round-to-irregular excavated bowls replace the narrow cuts:
+the largest raised-rim footprint is approximately 70–80 px across, and the
+smallest about 25–30 px. Broad dark interiors, lit far rims under top-left
+light, broken raised stone rims and fading grey-black ash distinguish the
+bowls from surface cracks. Uneven scorch patches, short branching cracks
+and rubble break up the summer gaps.
+
+Winter has settled snow over earth and rubble, dark stone showing through
+snow-capped rims, grey slush and partial snow tongues inside the bowls.
+The busy diagonal snow-ridge draft was rejected in favour of broad quiet
+snow patches with subtle buried ash, occasional cracks and sparse debris.
+
+The arrangement has four different footprints without the previous three-pit
+triangle. A toroidal shift puts the medium and lower bowls across the right
+and bottom boundaries; both halves come from the same continuous painting.
+Half-offset ground repairs remove the original joins. A first repair's long
+zigzag ridge was rejected. Size corrections were checked after native
+registration, including the winter snow-covered outer rims.
+
+Paintings were registered, reduced by the exact mode of all sixteen samples
+per 4×4 footprint, and locked to the existing earth/stone/snow palette.
+The selected large summer bowl uses a 120 px source crop registered to a
+96 px patch, including its surrounding ash; its rim itself is smaller.
+Low-error cuts preserve the repaired ground around the corrected paintings.
+No procedural crater shapes or noise were constructed. Sources, exact prompt
+set, registration stages and processing scripts are in `/tmp/crater-redraw/`.
+
+Inspected both final literal 3×3 repeats at native 1× and exact nearest-neighbour
+4×, plus individual 4× tiles and wrap crossings. Bowls stay readable and
+edge-crossing rims remain continuous. These are visual self-checks; no new
+independent critic or live in-game check was run. The fixed 288 px repeat
+remains locatable in a large field.
+
+Saved review sheets:
+- `review/operator-craters-summer-3x3-1x.png`
+- `review/operator-craters-summer-3x3-4x.png`
+- `review/operator-craters-winter-3x3-1x.png`
+- `review/operator-craters-winter-3x3-4x.png`
+
+The complete starting-file hash audit allows only these two outputs, these
+four new review sheets and this note. All approved ruins and plain wasteland
+textures, other outputs and earlier proofs retain their starting bytes.
+**No commit or push.**
