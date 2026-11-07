@@ -840,17 +840,25 @@ export function WorldOverworld({
       const yardsFrom = WORLD_BUILDING_YARDS[id] ?? pieces.length;
       const yards = pieces.flatMap((_, index) => (index >= yardsFrom ? [index] : []));
       const [small, medium, large] = [bySize(1, 1).filter((index) => index < yardsFrom), bySize(1, 2), bySize(2, 2)];
-      // Suburbs lie looser than a city, and thin out towards their edge.
-      const gapAt = (x: number, y: number) => (yards.length ? (inner(x, y) ? 0.3 : 0.5) : 0.06);
+      // Suburbs lie looser than a city.
+      const gap = yards.length ? 0.25 : 0.03;
       const taken = new Set<number>();
       const free = (x: number, y: number) => {
         if (x < 0 || y < 0 || x >= width || y >= height) return false;
         const at = y * width + x;
         if (drawnLook[at] !== look || wetCell[at] || roads.has(at) || taken.has(at)) return false;
         // Clear of its places, except the row behind one (drawn behind its marker, so the city closes round it).
-        for (const place of marked)
-          if (Math.hypot(place.at.x - x, place.at.y - y) < 1.5 && !(y < place.at.y && Math.abs(place.at.x - x) >= 1))
+        for (const place of marked) {
+          const [dx, dy] = [x - place.at.x, y - place.at.y];
+          // A suburb is a ring a cell or two round its town: its houses may stand beside the marker and
+          // behind it (drawn behind it), only never on it or in the row before it.
+          if (
+            yards.length
+              ? Math.abs(dx) <= 1 && (dy === 0 ? dx === 0 : dy === 1)
+              : Math.hypot(dx, dy) < 1.5 && !(dy < 0 && Math.abs(dx) >= 1)
+          )
             return false;
+        }
         return true;
       };
       for (let y = 0; y < height; y++)
@@ -858,7 +866,7 @@ export function WorldOverworld({
           if (!free(x, y)) continue;
           const noise = cellNoise(x, y);
           const pick = (from: number[]) => from[Math.floor(noise(82) * from.length)]!;
-          if (noise(81) < gapAt(x, y)) {
+          if (noise(81) < gap) {
             if (yards.length && noise(86) < 0.6) {
               taken.add(y * width + x);
               trees.push({ x: x + 0.5 + (noise(85) - 0.5) * 0.2, y: y + 0.95, id, pick: pick(yards), w: 1, h: 1 });
@@ -877,20 +885,32 @@ export function WorldOverworld({
             continue;
           }
           taken.add(y * width + x);
-          const tall = medium.length && noise(84) < 0.4;
-          // Shacks are small (half a cell): two to a cell, one behind the other, so a slum reads packed.
-          if (look === "slums") {
-            trees.push({ x: x + 0.3, y: y + 0.55, id, pick: small[Math.floor(noise(87) * small.length)]!, w: 1, h: 1 });
-            trees.push({ x: x + 0.7, y: y + 0.97, id, pick: pick(small), w: 1, h: 1 });
-            continue;
-          }
-          trees.push({
-            x: x + 0.5 + (noise(85) - 0.5) * 0.12,
-            y: y + 0.95,
-            id,
-            pick: pick(tall ? medium : small),
-            w: 1,
-            h: tall ? 2 : 1,
+          // Packed like a wood's trees (the owner, 2026-11-07: "placed more densely"): two or three to a cell,
+          // staggered and overlapping, the tall ones toward the middle of the district and small ones at its edge.
+          const pickOf = (from: number[], salt: number) => from[Math.floor(noise(salt) * from.length)]!;
+          const core = inner(x, y);
+          const spots: Array<[number, number]> = yards.length
+            ? [[0.5 + (noise(85) - 0.5) * 0.12, 0.95]]
+            : look === "industry"
+              ? [
+                  [0.3, 0.55],
+                  [0.72, 0.97],
+                ]
+              : [
+                  [0.25, 0.5],
+                  [0.75, 0.58],
+                  [0.5, 0.97],
+                ];
+          spots.forEach(([sx, sy], at) => {
+            const tall = medium.length > 0 && at === spots.length - 1 && noise(84) < (core ? 0.55 : 0.15);
+            trees.push({
+              x: x + sx + (noise(88 + at) - 0.5) * 0.1,
+              y: y + sy,
+              id,
+              pick: tall ? pickOf(medium, 90 + at) : pickOf(small, 94 + at),
+              w: 1,
+              h: tall ? 2 : 1,
+            });
           });
         }
     }
