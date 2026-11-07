@@ -1,0 +1,386 @@
+{
+  "mountains-peak-0": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      7,
+      20,
+      89,
+      94
+    ],
+    "visible_width": 82,
+    "visible_height": 74,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "sha256": "be06a2252b2d6db20b6e731af90b42ca7ad0a8cf878bbf6e8700452bd8300ac8",
+    "connected_component_sizes_8way": [
+      3999
+    ]
+  },
+  "mountains-peak-1": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      8,
+      28,
+      88,
+      94
+    ],
+    "visible_width": 80,
+    "visible_height": 66,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "sha256": "c393e85cfa1be24ad486f7b7ec1aaa69b1d2428ad0a5ace4327b8afbaf7a4677",
+    "connected_component_sizes_8way": [
+      3367
+    ]
+  },
+  "mountains-peak-2": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      10,
+      27,
+      86,
+      94
+    ],
+    "visible_width": 76,
+    "visible_height": 67,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "sha256": "67e24ecdc2deedcc25c8a92e1cf75d0fb92b7f0970987d6042f1feefad3516ef",
+    "connected_component_sizes_8way": [
+      3151
+    ]
+  },
+  "mountains-peak-3": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      18,
+      41,
+      78,
+      94
+    ],
+    "visible_width": 60,
+    "visible_height": 53,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "sha256": "415929d5f8edb0f94d37c0a04b819ac9355609be7a251ec6bf5ee560d63a7025",
+    "connected_component_sizes_8way": [
+      2286
+    ]
+  },
+  "mountains-peak-4": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      22,
+      35,
+      74,
+      94
+    ],
+    "visible_width": 52,
+    "visible_height": 59,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "sha256": "b35eaa23e2235741f6502060a52dc12ee30af997ceb039c84d80d7b62b3dee73",
+    "connected_component_sizes_8way": [
+      1353
+    ]
+  },
+  "mountains-peak-5": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      22,
+      49,
+      74,
+      94
+    ],
+    "visible_width": 52,
+    "visible_height": 45,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "sha256": "64ceb90674986747ee862d292fbfd297afc62efc789ceb1d92f3065202d423a5",
+    "connected_component_sizes_8way": [
+      1399
+    ]
+  },
+  "mountains-peak-6": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      65,
+      68,
+      94
+    ],
+    "visible_width": 40,
+    "visible_height": 29,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "sha256": "2d2c6248eedc6364816c188df6fd37a312cc66827fb22e35db2f8fc6225963c2",
+    "connected_component_sizes_8way": [
+      760
+    ]
+  },
+  "mountains-peak-7": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      30,
+      63,
+      66,
+      94
+    ],
+    "visible_width": 36,
+    "visible_height": 31,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "sha256": "15809742ef6e7090872928555378cbae751309816cf6f9e1f4bbf5fcef6338a3",
+    "connected_component_sizes_8way": [
+      675
+    ]
+  },
+  "mountains@winter-peak-0": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      7,
+      20,
+      89,
+      94
+    ],
+    "visible_width": 82,
+    "visible_height": 74,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "sha256": "528443b085d8022ae63a054f7f09ab819530e2fbb74a02785488d32d72d79d14",
+    "connected_component_sizes_8way": [
+      3995
+    ]
+  },
+  "mountains@winter-peak-1": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      8,
+      28,
+      88,
+      94
+    ],
+    "visible_width": 80,
+    "visible_height": 66,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "sha256": "23642530d4e5104acb88cb3253d9624e6ea370c5a00d987ba6006b037c66036e",
+    "connected_component_sizes_8way": [
+      3362
+    ]
+  },
+  "mountains@winter-peak-2": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      10,
+      26,
+      86,
+      94
+    ],
+    "visible_width": 76,
+    "visible_height": 68,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "sha256": "3fb37bb83bb67143d2ffe1a1b8183c9934a7c6d1e2b01290992b274423c695ac",
+    "connected_component_sizes_8way": [
+      3159
+    ]
+  },
+  "mountains@winter-peak-3": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      18,
+      41,
+      78,
+      94
+    ],
+    "visible_width": 60,
+    "visible_height": 53,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "sha256": "a73c5a7b495c8c525802d5ca26cde527d6a7bfcc645cce4de934270dd1ea5ca7",
+    "connected_component_sizes_8way": [
+      2289
+    ]
+  },
+  "mountains@winter-peak-4": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      22,
+      35,
+      74,
+      94
+    ],
+    "visible_width": 52,
+    "visible_height": 59,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 15,
+    "sha256": "e4b54eff43961262a8235acad2375f67d0213d22454bdb29274ffa8015e290cc",
+    "connected_component_sizes_8way": [
+      1350
+    ]
+  },
+  "mountains@winter-peak-5": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      22,
+      49,
+      74,
+      94
+    ],
+    "visible_width": 52,
+    "visible_height": 45,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "sha256": "575f22ea008c02b91c273c9cea5112cf6137c167a57106e99ca13240e7643843",
+    "connected_component_sizes_8way": [
+      1402
+    ]
+  },
+  "mountains@winter-peak-6": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      28,
+      65,
+      68,
+      94
+    ],
+    "visible_width": 40,
+    "visible_height": 29,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "sha256": "24be8afcf4a6aa928392a0bc99d9b7099188702098fc66c4ffe9a293c2c6ed3a",
+    "connected_component_sizes_8way": [
+      766
+    ]
+  },
+  "mountains@winter-peak-7": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      30,
+      63,
+      66,
+      94
+    ],
+    "visible_width": 36,
+    "visible_height": 31,
+    "foot_row": 93,
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 14,
+    "sha256": "a39f62dd6d49f3e828610f3a940b77283f9c984fbd2cd65dfd3dd7cbb5206841",
+    "connected_component_sizes_8way": [
+      676
+    ]
+  }
+}

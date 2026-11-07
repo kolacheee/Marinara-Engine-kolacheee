@@ -1,0 +1,92 @@
+{
+  "wasteland-craters-base": {
+    "size": [
+      288,
+      288
+    ],
+    "mode": "RGB",
+    "opaque": true,
+    "colors": 10,
+    "sha256": "196c74e4eb5c8067c2388a0c29fefc5deeedd912858686841135cae7837226a7",
+    "changed_since_review_4": true,
+    "wrap_mean_rgb_delta_x": 2.7083333333333335,
+    "wrap_mean_rgb_delta_y": 2.2141203703703702,
+    "internal_mean_rgb_delta_x": 2.1509710930442636,
+    "internal_mean_rgb_delta_y": 2.780854787714544
+  },
+  "wasteland-craters@winter-base": {
+    "size": [
+      288,
+      288
+    ],
+    "mode": "RGB",
+    "opaque": true,
+    "colors": 28,
+    "sha256": "1a8d26aaba783c12735c4093ee88634e854724c72ee6f4b89e99fb098638e59f",
+    "changed_since_review_4": true,
+    "wrap_mean_rgb_delta_x": 4.868055555555555,
+    "wrap_mean_rgb_delta_y": 7.777777777777778,
+    "internal_mean_rgb_delta_x": 6.197525487159633,
+    "internal_mean_rgb_delta_y": 9.510025487159634
+  },
+  "wasteland-ruins-base": {
+    "size": [
+      288,
+      288
+    ],
+    "mode": "RGB",
+    "opaque": true,
+    "colors": 19,
+    "sha256": "e3cf515b5e3005721cb71671c6ebb6f60627bfd957b6581c153d172a8d1a7a3a",
+    "changed_since_review_4": false,
+    "wrap_mean_rgb_delta_x": 7.891203703703703,
+    "wrap_mean_rgb_delta_y": 7.6342592592592595,
+    "internal_mean_rgb_delta_x": 9.10075493612079,
+    "internal_mean_rgb_delta_y": 10.0954316686024
+  },
+  "wasteland-ruins@winter-base": {
+    "size": [
+      288,
+      288
+    ],
+    "mode": "RGB",
+    "opaque": true,
+    "colors": 31,
+    "sha256": "738fdb058e5947daa365e7ecfe8943f6de5877106e9f3441e016480c02d33479",
+    "changed_since_review_4": false,
+    "wrap_mean_rgb_delta_x": 3.752314814814815,
+    "wrap_mean_rgb_delta_y": 5.341435185185185,
+    "internal_mean_rgb_delta_x": 5.554176345334882,
+    "internal_mean_rgb_delta_y": 7.129585269066976
+  },
+  "wasteland-wasteland-base": {
+    "size": [
+      288,
+      288
+    ],
+    "mode": "RGB",
+    "opaque": true,
+    "colors": 11,
+    "sha256": "6cb99a3934df12b2b2e4f7a8fe77aea0fdc94332ad2c010e7b73e9ce95c5b821",
+    "changed_since_review_4": false,
+    "wrap_mean_rgb_delta_x": 4.233796296296297,
+    "wrap_mean_rgb_delta_y": 4.194444444444445,
+    "internal_mean_rgb_delta_x": 4.445597819073429,
+    "internal_mean_rgb_delta_y": 4.852472899728998
+  },
+  "wasteland-wasteland@winter-base": {
+    "size": [
+      288,
+      288
+    ],
+    "mode": "RGB",
+    "opaque": true,
+    "colors": 29,
+    "sha256": "b140dcbc8b87d165c6629030c628b080c56a540ab91c9b34b951f7b8a9cb6cfe",
+    "changed_since_review_4": false,
+    "wrap_mean_rgb_delta_x": 4.864583333333333,
+    "wrap_mean_rgb_delta_y": 5.960648148148148,
+    "internal_mean_rgb_delta_x": 5.1785996580203895,
+    "internal_mean_rgb_delta_y": 6.685314234094722
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "sets": {
+    "review": {
+      "scope": "Only the six files explicitly named in BRIEF-5.md Part B. Other assets are comparison material, not verdicts.",
+      "calibration": "Good enough to ship beside the approved art. No failure is based merely on detecting mathematically inevitable periodicity after searching: the rejected repeats are readily traceable landmark rows at native scale. Low-contrast ground mottling is acceptable.",
+      "previous_review": "Read critic-r5B-1.json and compared SHA-256 hashes. Both previously passing plain wasteland bases are unchanged; both remain passed. All four previously failed crater/ruin files changed and were reviewed anew. The old dominant pylon and Swiss-cheese complaints were not automatically copied forward.",
+      "performed": [
+        "Inspected all six complete 3x3 tiled composites at native 1x and nearest-neighbour 4x.",
+        "Inspected a 384x384 source-pixel region of each tiled composite at exact 4x, spanning a complete texture period plus both wrap directions, to supplement the large overview sheets.",
+        "Inspected each complete source at exact nearest-neighbour 8x in four non-overlapping 144x144 source-pixel quadrants; full 8x source sheets also saved.",
+        "Inspected all six four-way wrap intersections at exact 4x without grid overlays.",
+        "Compared summer and winter together, including crater/ruin identity and consistent snow over all three terrain families.",
+        "Compared all five named current-wasteland references, all approved setting markers, round-2 city/slums/industry/suburb/farmland variants, all paddies seasons, and grass/plains bases with all eight details in each season.",
+        "Checked size, opacity, important wrap-edge clipping, landmark scale and placement, pixel clusters, blur/anti-aliasing, noise, shape legibility, outline/fringe/halo contamination, top-left light, palette compatibility, near-duplicate motifs and native-scale repetition."
+      ],
+      "not_applicable": {
+        "peak_lattice_or_range": "Part B has no peaks; no Part A/A2 files reviewed.",
+        "random_8x2_one_cell_tiles": "Part B has no 48x48 one-cell tiles; all six inputs are 288x288 bases and received 3x3 tiling checks.",
+        "forest_tree_composite": "Part B has no trees; no Part D files reviewed.",
+        "other_parts_specific_failures": "Egg-crate peaks, stamped cyberpunk grids, flat orange autumn and identical crowns belong to Parts A/C/D and do not apply to these six files."
+      },
+      "technical_findings": "All six files are 288x288 RGB and fully opaque, with 11-38 colours. No disqualifying hard wrap seam, important clipped prop, anti-aliased contour, resampling blur, stray transparency fringe, foreign-colour halo, reversed top-left lighting or clash with approved warm earth/blue-white snow was found. Ash halos are intentional subject matter, not transparency fringes. The failures are shape legibility and composition; muted palette transitions alone are not called blur.",
+      "reference_findings": "The many evenly spaced round lunar holes and clean classical columns in the old references are gone. Modern wrecks, exposed reinforcement, slab thickness and broken metal establish collapse. All three new terrain families now receive snow, compatible with the approved winter grass/plains and the named snowy wasteland references. More snow than bare ground is appropriate; retaining terrain identity is still required.",
+      "near_duplicate_findings": "The six files are not accidental duplicate images. The ruin wall/slab groups are too similar in footprint and visual weight; crater winter loses too much distinction from generic snow-and-debris ground. Seasonal pairs intentionally retain their underlying terrain.",
+      "evidence": "All newly saved PNGs have prefix critic-r5B-2-. Per file: -3x3-1x, -3x3-4x, -inspection-4x, -wrap-4x, -8x, and -quadrant-1..4-8x. Comparison boards: seasons-1x, references-1x, approved-markers-1x, approved-round2-paddies-1x, approved-ground-details-1x, house-style-summer-1x, house-style-winter-1x.",
+      "out_integrity": "SHA-256 verified all 276 files under art-drop/out/ unchanged during this review; no source art edited."
+    },
+    "craters": {
+      "files": [
+        "wasteland-craters-base",
+        "wasteland-craters@winter-base"
+      ],
+      "status": "fail",
+      "observations": "Quieter, irregular scars replace the old repeated dark rings, and snow is no longer missing. However, several scars have become muddy, incomplete surface marks; winter particularly loses the bowl shape while retaining a conspicuous large exposed-patch repeat."
+    },
+    "ruins": {
+      "files": [
+        "wasteland-ruins-base",
+        "wasteland-ruins@winter-base"
+      ],
+      "status": "fail",
+      "observations": "Modern collapse is readable and the pylon is no longer the giant dark emblem. Wall/slab groups and rusted-car anchors still expose the repeated composition at 1x, especially under snow. More small rubble has not resolved the similarity and spacing of the main groups."
+    },
+    "wasteland": {
+      "files": [
+        "wasteland-wasteland-base",
+        "wasteland-wasteland@winter-base"
+      ],
+      "status": "pass",
+      "observations": "Both passes are preserved from review 1 and supported by fresh inspection. Summer has restrained, broken cracks, drifts, sparse weeds and debris; its low-contrast mottling remains ground texture rather than a distracting grid. At 4x the wrap transitions stay within ordinary internal variation. At 8x pixels remain discrete and the restrained palette is compatible with approved ground. Winter retains cracks and small debris through shaped blue-shadowed snow, is not blank, and agrees with the approved snowy ground family. No concrete new disqualifying defect found."
+    },
+    "source_audit": {
+      "wasteland-craters-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 15,
+        "sha256": "298682eb96bd81970d45ae289a33bc04c94852b651a310a173e9c9542c1a5310",
+        "changed_since_review_1": true,
+        "wrap_mean_rgb_delta_x": 3.6875,
+        "wrap_mean_rgb_delta_y": 3.3796296296296298,
+        "internal_mean_rgb_delta_x": 4.26772002839076,
+        "internal_mean_rgb_delta_y": 4.691686024003097
+      },
+      "wasteland-craters@winter-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 31,
+        "sha256": "e2ba8a153d2b1df574c0d3e0aad65b42e203902d7302f7ee3c24777628c6c6e2",
+        "changed_since_review_1": true,
+        "wrap_mean_rgb_delta_x": 3.341435185185185,
+        "wrap_mean_rgb_delta_y": 5.232638888888889,
+        "internal_mean_rgb_delta_x": 5.604880468447542,
+        "internal_mean_rgb_delta_y": 7.828957768744354
+      },
+      "wasteland-ruins-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 20,
+        "sha256": "457762173f3602a9be86eb34b657fc495935ebde07c5fb6bc991b7af02292a4b",
+        "changed_since_review_1": true,
+        "wrap_mean_rgb_delta_x": 7.467592592592593,
+        "wrap_mean_rgb_delta_y": 9.6875,
+        "internal_mean_rgb_delta_x": 10.748515937540327,
+        "internal_mean_rgb_delta_y": 12.340616531165312
+      },
+      "wasteland-ruins@winter-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 38,
+        "sha256": "ded06896599a925a37cfb86126010bd49cbc7ac4d8c0140b8792d95f835cabb8",
+        "changed_since_review_1": true,
+        "wrap_mean_rgb_delta_x": 7.868055555555555,
+        "wrap_mean_rgb_delta_y": 14.916666666666666,
+        "internal_mean_rgb_delta_x": 19.228085882049296,
+        "internal_mean_rgb_delta_y": 24.02618079752226
+      },
+      "wasteland-wasteland-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 11,
+        "sha256": "6cb99a3934df12b2b2e4f7a8fe77aea0fdc94332ad2c010e7b73e9ce95c5b821",
+        "changed_since_review_1": false,
+        "wrap_mean_rgb_delta_x": 4.233796296296297,
+        "wrap_mean_rgb_delta_y": 4.194444444444445,
+        "internal_mean_rgb_delta_x": 4.445597819073429,
+        "internal_mean_rgb_delta_y": 4.852472899728998
+      },
+      "wasteland-wasteland@winter-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 29,
+        "sha256": "b140dcbc8b87d165c6629030c628b080c56a540ab91c9b34b951f7b8a9cb6cfe",
+        "changed_since_review_1": false,
+        "wrap_mean_rgb_delta_x": 4.864583333333333,
+        "wrap_mean_rgb_delta_y": 5.960648148148148,
+        "internal_mean_rgb_delta_x": 5.1785996580203895,
+        "internal_mean_rgb_delta_y": 6.685314234094722
+      }
+    }
+  },
+  "pass": [
+    "wasteland-wasteland-base",
+    "wasteland-wasteland@winter-base"
+  ],
+  "fail": [
+    {
+      "name": "wasteland-craters-base",
+      "problems": "The contrast reduction has weakened the subject as well as the repeat. At 1x the large scar around (175,85) has a readable dark back lip, but the scars around (60,165) and (220,220) mostly dissolve into the same diagonal dust strokes as the surrounding earth. At 4x/8x those smaller forms have disconnected rubble and dark smudges rather than a legible recessed floor and an irregular enclosing rim; the lower-right one reads as a little rocky ridge. This does not reliably deliver 2-4 readable blast craters at map scale. Give at least two scars connected, differently shaped floors with short dark inward-facing back walls and broken rubble lips; let one side be filled or collapsed, but preserve the depression. Use broad, subdued ash patches rather than adding fine speckles or restoring three equally dark rings. Keep the quiet ground and clean wrap, and retest the whole 3x3 at 1x so improving readability does not recreate the old three-hole wallpaper."
+    },
+    {
+      "name": "wasteland-craters@winter-base",
+      "problems": "Snow largely erases crater depth. At 1x and 4x the three locations are exposed grey-brown dirt/rubble patches, with the largest around (175,85) reading as a diagonal rake of stones rather than a snow-filled bowl. The smaller lower-right patch has almost no surviving concavity. At 8x the exposed ash breaks into many little disconnected flecks; these describe surface scatter rather than a crater floor. Across the native 3x3, the same large rake-shaped patch also makes an obvious repeating row every 288 pixels. Preserve a broad, blue-shadowed recessed snow floor and a partial dark inner back wall in at least two differently shaped craters, cap the raised rubble separately, and consolidate peripheral ash into quieter irregular patches. Break up the large patch silhouette and balance its contrast against the other scars. Winter coverage and the blue-white palette are good; do not solve the repeat by making every crater disappear."
+    },
+    {
+      "name": "wasteland-ruins-base",
+      "problems": "The pylon is now smaller and integrated, but the repeated landmark arrangement still advertises the 288px tile at 1x. Follow the broad northwest wall/slab group around (55,40), the orange car group below it around (50,95), and the upright wall groups across the middle and lower part: each repeats as the same readily traceable rows in the 3x3. At 4x/8x too many groups use a similar thin, roughly cell-wide upright wall, a flat slab in front, and a loose pebble skirt; the added scatter does not sufficiently vary that destruction profile. Break down or bury two of those upright walls, join some remains into one larger overlapping collapse, and leave a genuinely broader quiet dirt gap elsewhere. Vary the remaining slab angles, wall heights and car exposure rather than distributing more small debris uniformly. Keep the modern rebar, wrecks and reduced pylon; the classical-ruin problem is fixed, but the current repeated cluster layout is still too conspicuous to ship as continuous terrain."
+    },
+    {
+      "name": "wasteland-ruins@winter-base",
+      "problems": "At native 3x3 scale the northwest wall and white slab, the rusted car below it, and the other white slab/upright-wall groups form a conspicuous repeating diagram. Snow increases separation between these near-similar wall/slab footprints and the ground, making the rows easier to follow than in summer. The 4x and 8x views also show dense little dark rubble outlines between almost every group, so there is little quiet snow to interrupt the repeated silhouettes. Apply the summer cluster/spacing changes to the same underlying ruins, fully bury selected small walls and slabs, and retain fewer, broader groups of exposed rubble with unequal snow gaps. Vary which parts of each wreck remain exposed instead of giving every fragment an equally crisp snow cap and dark perimeter. Preserve the coherent snow colours and visible modern structures; this fails for repeated composition and excessive small exposed fragments, not for blank winter or a palette clash."
+    }
+  ]
+}

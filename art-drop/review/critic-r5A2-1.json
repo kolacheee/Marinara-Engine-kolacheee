@@ -1,0 +1,170 @@
+{
+  "sets": {
+    "mountains-peak": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "assessment": "PASS all eight. All are transparent 96x96 with binary alpha, one connected silhouette, symmetric horizontal bounds around x=47.5, and feet on row 93. Widths are 82,80,76 / 60,52,52 / 40,36px; big heights are 74,66,67px. Native single-pixel contour and strata detail is present; no doubled-pixel upscale pattern was observed. The silhouettes include unequal double summits, a central triple crag, a broad ridge shoulder, a plateau, a sharp spike and two different knolls. Cool grey lit left faces contrast against dark right faces and the brown base. Dark outlines read cleanly on both light and dark mattes. Texture follows the rock planes; no rejectable blur, antialiasing, detached pixels, pale halo, muddy silhouette, near-duplicate or palette clash with approved art was found. Both randomized A2 lattices and the ragged edge were examined at exact 1x/4x; individual sprites were examined at 1x/4x/8x. The overlapping crowd has a jagged varied skyline and recognisable rock masses rather than identical cones or an egg-crate pattern. Restrained olive grass at the feet anchors each summer sprite and agrees with the approved vegetation. The strong pale rock bands remain rock strata rather than unintended white fringe.",
+      "files": {
+        "mountains-peak-0": {
+          "verdict": "pass",
+          "assessment": "82x74 double massif: unequal summits and deep saddle stay legible under overlap; left planes and diagonal strata lead into a dark right face. Attached olive skirt grounds the summer foot.",
+          "visible_width": 82,
+          "visible_height": 74,
+          "foot_row": 93
+        },
+        "mountains-peak-1": {
+          "verdict": "pass",
+          "assessment": "80x66 broad ridge shoulder: asymmetric long rising left slope and blunt high end differ clearly from the double massifs; no cone silhouette. Attached olive skirt grounds the summer foot.",
+          "visible_width": 80,
+          "visible_height": 66,
+          "foot_row": 93
+        },
+        "mountains-peak-2": {
+          "verdict": "pass",
+          "assessment": "76x67 triple crag (68px tall in winter): tall central summit and lower side spurs provide a distinct silhouette; no detached summit pixels. Attached olive skirt grounds the summer foot.",
+          "visible_width": 76,
+          "visible_height": 67,
+          "foot_row": 93
+        },
+        "mountains-peak-3": {
+          "verdict": "pass",
+          "assessment": "60x53 flat-topped crag: wide irregular plateau and broken vertical buttresses remain readable; sufficiently different from the small rounded knoll. Attached olive skirt grounds the summer foot.",
+          "visible_width": 60,
+          "visible_height": 53,
+          "foot_row": 93
+        },
+        "mountains-peak-4": {
+          "verdict": "pass",
+          "assessment": "52x59 sharp spike: narrow off-centre tip over a centred broad foot; clean single-pixel steps, dark right face and subsidiary right crag survive map zoom. Attached olive skirt grounds the summer foot.",
+          "visible_width": 52,
+          "visible_height": 59,
+          "foot_row": 93
+        },
+        "mountains-peak-5": {
+          "verdict": "pass",
+          "assessment": "52x45 ridge shoulder: stepped double outcrop and low right shelf provide a lower, wider medium shape rather than another pointed cone. Attached olive skirt grounds the summer foot.",
+          "visible_width": 52,
+          "visible_height": 45,
+          "foot_row": 93
+        },
+        "mountains-peak-6": {
+          "verdict": "pass",
+          "assessment": "40x29 knoll: rounded upper slab and chunky lower rocks read as a small formation; clearly separated in scale from the massifs. Attached olive skirt grounds the summer foot.",
+          "visible_width": 40,
+          "visible_height": 29,
+          "foot_row": 93
+        },
+        "mountains-peak-7": {
+          "verdict": "pass",
+          "assessment": "36x31 knoll: angular stepped shoulder and small point differ from rounded knoll 6; silhouette is compact and bottom-centred. Attached olive skirt grounds the summer foot.",
+          "visible_width": 36,
+          "visible_height": 31,
+          "foot_row": 93
+        }
+      }
+    },
+    "mountains@winter-peak": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "assessment": "PASS all eight. All are transparent 96x96 with binary alpha, one connected silhouette, symmetric horizontal bounds around x=47.5, and feet on row 93. Widths are 82,80,76 / 60,52,52 / 40,36px; big heights are 74,66,67px. Native single-pixel contour and strata detail is present; no doubled-pixel upscale pattern was observed. The silhouettes include unequal double summits, a central triple crag, a broad ridge shoulder, a plateau, a sharp spike and two different knolls. Cool grey lit left faces contrast against dark right faces and the brown base. Dark outlines read cleanly on both light and dark mattes. Texture follows the rock planes; no rejectable blur, antialiasing, detached pixels, pale halo, muddy silhouette, near-duplicate or palette clash with approved art was found. Both randomized A2 lattices and the ragged edge were examined at exact 1x/4x; individual sprites were examined at 1x/4x/8x. The overlapping crowd has a jagged varied skyline and recognisable rock masses rather than identical cones or an egg-crate pattern. Winter preserves the same formation sizes and placement; peak 2 is 68px tall. Bold connected white caps follow the upper third to half and horizontal ledges, with grey-blue snow shade, exposed lower slopes and substantial dark right-face rock. Small caps are simple at this scale but retain contours and exposed stone. Snow at the feet joins the approved snowy ground without a pale matte halo; the season is neither blank nor just a global white recolour.",
+      "files": {
+        "mountains@winter-peak-0": {
+          "verdict": "pass",
+          "assessment": "82x74 double massif: unequal summits and deep saddle stay legible under overlap; left planes and diagonal strata lead into a dark right face. Snow is shaped to the top and ledges, with exposed shadow-side rock.",
+          "visible_width": 82,
+          "visible_height": 74,
+          "foot_row": 93
+        },
+        "mountains@winter-peak-1": {
+          "verdict": "pass",
+          "assessment": "80x66 broad ridge shoulder: asymmetric long rising left slope and blunt high end differ clearly from the double massifs; no cone silhouette. Snow is shaped to the top and ledges, with exposed shadow-side rock.",
+          "visible_width": 80,
+          "visible_height": 66,
+          "foot_row": 93
+        },
+        "mountains@winter-peak-2": {
+          "verdict": "pass",
+          "assessment": "76x67 triple crag (68px tall in winter): tall central summit and lower side spurs provide a distinct silhouette; no detached summit pixels. Snow is shaped to the top and ledges, with exposed shadow-side rock.",
+          "visible_width": 76,
+          "visible_height": 68,
+          "foot_row": 93
+        },
+        "mountains@winter-peak-3": {
+          "verdict": "pass",
+          "assessment": "60x53 flat-topped crag: wide irregular plateau and broken vertical buttresses remain readable; sufficiently different from the small rounded knoll. Snow is shaped to the top and ledges, with exposed shadow-side rock.",
+          "visible_width": 60,
+          "visible_height": 53,
+          "foot_row": 93
+        },
+        "mountains@winter-peak-4": {
+          "verdict": "pass",
+          "assessment": "52x59 sharp spike: narrow off-centre tip over a centred broad foot; clean single-pixel steps, dark right face and subsidiary right crag survive map zoom. Snow is shaped to the top and ledges, with exposed shadow-side rock.",
+          "visible_width": 52,
+          "visible_height": 59,
+          "foot_row": 93
+        },
+        "mountains@winter-peak-5": {
+          "verdict": "pass",
+          "assessment": "52x45 ridge shoulder: stepped double outcrop and low right shelf provide a lower, wider medium shape rather than another pointed cone. Snow is shaped to the top and ledges, with exposed shadow-side rock.",
+          "visible_width": 52,
+          "visible_height": 45,
+          "foot_row": 93
+        },
+        "mountains@winter-peak-6": {
+          "verdict": "pass",
+          "assessment": "40x29 knoll: rounded upper slab and chunky lower rocks read as a small formation; clearly separated in scale from the massifs. Snow is shaped to the top and ledges, with exposed shadow-side rock.",
+          "visible_width": 40,
+          "visible_height": 29,
+          "foot_row": 93
+        },
+        "mountains@winter-peak-7": {
+          "verdict": "pass",
+          "assessment": "36x31 knoll: angular stepped shoulder and small point differ from rounded knoll 6; silhouette is compact and bottom-centred. Snow is shaped to the top and ledges, with exposed shadow-side rock.",
+          "visible_width": 36,
+          "visible_height": 31,
+          "foot_row": 93
+        }
+      }
+    },
+    "approved-base-context": {
+      "assessment": "The two bases are explicitly approved and stay under Part A2. They are context, not additional A2 pass/fail entries. Rebuilt and visually inspected both 3x3 repeats at 1x and 4x. Both are opaque 288x288. Summer has rock, scree, small boulders and sparse tufts; winter has directional snow texture with exposed rock. Individual boulder clusters recur in the deliberately repeated 3x3 diagnostic, but no straight join or cell-boundary grid is introduced by the peak sprites. Peak overlap breaks up the exposed-ground recurrence in the actual range composites. No base changes are requested."
+    },
+    "review-scope": {
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "assessment": "Only BRIEF-5 Part A2 receives verdicts: mountains-peak-0..7 and mountains@winter-peak-0..7, without .png. critic-r5A2-0.json does not exist. The named old summer/winter mountain references were compared for the egg-crate failure; the named current-fantasy-treeline_forest reference was also planted as a forest and inspected at 1x/4x to check the standing-sprite overlap model. Approved markers, round-2 city/industry/slums/suburb/farmland cells, paddies, grass/plains bases and details supplied pixel density, outline, lighting and palette context. No Part B/C/D files are judged: crater scale, classical ruins, cyberpunk grids, autumn hues and crown variety belong to those parts.",
+      "checks": {
+        "base_tiling": "Summer and winter: full 3x3 at 1x and 4x; context only.",
+        "peak_lattice": "Summer and winter: 288x288 base; 48px horizontal spacing, 30px row spacing, 24px alternating row shift, later rows painted over earlier rows. Two randomized arrangements checked at 1x and 4x.",
+        "ragged_range": "Summer and winter: irregular occupied range over approved grass/snow, checked at 1x and 4x. The hard polygon ground-mask boundary in the summer diagnostic is a composite construction aid, not part of any submitted sprite.",
+        "individual_pixels": "Every A2 sprite examined at exact 1x, 4x and 8x, using nearest-neighbour enlargement and checkered transparency backing; light/dark matte tests checked at 1x.",
+        "random_8x2": "No one-cell submissions exist in A2. Supplemental shuffled 8x2 strips use each full 96x96 two-cell peak twice without shrinking, examined at 1x/4x.",
+        "forest": "Named reference tree sheet planted over approved grass and examined at 1x/4x; reference only, no Part D verdict.",
+        "numeric": "96x96; all alpha values 0/255; one 8-connected opaque component each; required 3/3/2 width tiers; big height limits met; horizontal centres x=47.5; all feet y=93.",
+        "integrity": "All out/ PNGs SHA-256 checked before and after; see critic-r5A2-1-integrity.json. All composites use critic-r5A2-1-*.png under review/."
+      }
+    }
+  },
+  "pass": [
+    "mountains-peak-0",
+    "mountains-peak-1",
+    "mountains-peak-2",
+    "mountains-peak-3",
+    "mountains-peak-4",
+    "mountains-peak-5",
+    "mountains-peak-6",
+    "mountains-peak-7",
+    "mountains@winter-peak-0",
+    "mountains@winter-peak-1",
+    "mountains@winter-peak-2",
+    "mountains@winter-peak-3",
+    "mountains@winter-peak-4",
+    "mountains@winter-peak-5",
+    "mountains@winter-peak-6",
+    "mountains@winter-peak-7"
+  ],
+  "fail": []
+}

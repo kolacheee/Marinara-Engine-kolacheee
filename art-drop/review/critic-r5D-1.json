@@ -1,0 +1,143 @@
+{
+  "sets": {
+    "treeline_forest": {
+      "verdict": "pass",
+      "files": [
+        "treeline_forest-0",
+        "treeline_forest-1",
+        "treeline_forest-2",
+        "treeline_forest-3",
+        "treeline_forest-4",
+        "treeline_forest-5",
+        "treeline_forest-6",
+        "treeline_forest-7"
+      ],
+      "checks": {
+        "individual_pixels": "All eight inspected at 8x on light checker, dark neutral and approved seasonal grass. Hard pixel clusters, no blur, anti-aliased edges, fringe, halo, or detached speck noise visible. Every sprite has one 8-connected opaque component and alpha values only 0/255.",
+        "size_and_placement": "All eight are 48x48 RGBA, transparent outside the tree, fully inside their cells. Trunk bases end on row 44 and are centred around x=23/24; this matches the named reference sheet, whose tree feet normally end on row 44 (one on 45). The three blank bottom rows are not a placement failure.",
+        "light": "Upper-left foliage and trunk highlights, with deeper lower/right masses, remain consistent with the approved art.",
+        "random_8x2": "Viewed at native 1x and nearest-neighbour 4x. Each sprite occurs twice in a seeded shuffle. Silhouette differences remain readable; no accidental rectangular border or cell-edge cut-off.",
+        "forest": "Viewed dense jittered forest, an additional fixed 24px-by-16px staggered lattice, and a ragged forest edge at 1x and 4x. Later rows cover earlier rows. Crown masses remain legible under overlap; no asset-imposed square grid, uniform crown stamp or repeated texture seam warrants rejection. The imposed lattice has the expected staggered placement, without turning into identical crown wallpaper.",
+        "approved_art": "Compared at 1x and 4x with out/ markers across all six settings; round-2 city, suburb, slums, industry, farmland and farmstead examples; paddies; summer/autumn grass and plains bases and details. Pixel density, muted colours and dark accents sit comfortably beside these. Comparison assets were not assigned new verdicts.",
+        "other_parts": "3x3 seamless-base tiling, mountain range QC, crater/ruin/cyberpunk checks and winter consistency are not applicable: Part D contains only summer and autumn transparent tree sprites. No files from Parts A, A2, B or C were reviewed.",
+        "brief": "Pass: round crowns 0/3/6, tall ovals 1/4/7, and two-lobed crowns 2/5, in olive/yellow-green, sage and dark green families. Reusing a crown class does not make these near-duplicates; edges, clumps, proportions and palette differ visibly."
+      },
+      "file_observations": {
+        "treeline_forest-0": "Round olive crown with an irregular lower edge and separate lit clumps; the right-hand shadow and visible fork read at 1x.",
+        "treeline_forest-1": "Tall sage oval, narrow enough to contrast with the round crowns; broad upper-left highlights remain readable in the forest.",
+        "treeline_forest-2": "Wide yellow-green two-lobed crown with a clear saddle and fork; distinct from the upward-sweeping, darker tree 5.",
+        "treeline_forest-3": "Round dark-green crown with offset upper mass and hanging right lobe; distinguishable from the olive round variants in silhouette and value.",
+        "treeline_forest-4": "Tall olive oval with stacked, asymmetric lobes; its colour and clump arrangement distinguish it from sage ovals 1 and 7.",
+        "treeline_forest-5": "Dark-green two-lobed crown with a low left mass and raised right mass; asymmetric fork and silhouette survive sparse and dense placement.",
+        "treeline_forest-6": "Round yellow-green crown with a large upper-left leaf mass and an open, shadowed lower centre; distinguishable from the more fragmented tree 0.",
+        "treeline_forest-7": "Tall sage crown with a bent upper tuft, notched left side and uneven right contour; distinct clumps from the smoother oval 1."
+      },
+      "named_reference": "art-drop/reference/current-fantasy-treeline_forest.png",
+      "composites": [
+        "critic-r5D-1-approved-style-farms-slums-1x.png",
+        "critic-r5D-1-approved-style-farms-slums-4x.png",
+        "critic-r5D-1-approved-style-ground-paddies-1x.png",
+        "critic-r5D-1-approved-style-ground-paddies-4x.png",
+        "critic-r5D-1-approved-style-markers-round2-1x.png",
+        "critic-r5D-1-approved-style-markers-round2-4x.png",
+        "critic-r5D-1-named-references-1x.png",
+        "critic-r5D-1-named-references-4x.png",
+        "critic-r5D-1-summer-edge-1x.png",
+        "critic-r5D-1-summer-edge-4x.png",
+        "critic-r5D-1-summer-fixed-lattice-forest-1x.png",
+        "critic-r5D-1-summer-fixed-lattice-forest-4x.png",
+        "critic-r5D-1-summer-forest-1x.png",
+        "critic-r5D-1-summer-forest-4x.png",
+        "critic-r5D-1-summer-random-8x2-1x.png",
+        "critic-r5D-1-summer-random-8x2-4x.png",
+        "critic-r5D-1-summer-sprites-0-3-1x.png",
+        "critic-r5D-1-summer-sprites-0-3-4x.png",
+        "critic-r5D-1-summer-sprites-0-3-8x.png",
+        "critic-r5D-1-summer-sprites-4-7-1x.png",
+        "critic-r5D-1-summer-sprites-4-7-4x.png",
+        "critic-r5D-1-summer-sprites-4-7-8x.png"
+      ],
+      "calibration": "Good enough to ship beside the approved art. No concrete redraw defect found after the required visual checks.",
+      "previous_review": "critic-r5D-0.json does not exist; no previous pass was overturned."
+    },
+    "treeline_forest@autumn": {
+      "verdict": "pass",
+      "files": [
+        "treeline_forest@autumn-0",
+        "treeline_forest@autumn-1",
+        "treeline_forest@autumn-2",
+        "treeline_forest@autumn-3",
+        "treeline_forest@autumn-4",
+        "treeline_forest@autumn-5",
+        "treeline_forest@autumn-6",
+        "treeline_forest@autumn-7"
+      ],
+      "checks": {
+        "individual_pixels": "All eight inspected at 8x on light checker, dark neutral and approved seasonal grass. Hard pixel clusters, no blur, anti-aliased edges, fringe, halo, or detached speck noise visible. Every sprite has one 8-connected opaque component and alpha values only 0/255.",
+        "size_and_placement": "All eight are 48x48 RGBA, transparent outside the tree, fully inside their cells. Trunk bases end on row 44 and are centred around x=23/24; this matches the named reference sheet, whose tree feet normally end on row 44 (one on 45). The three blank bottom rows are not a placement failure.",
+        "light": "Upper-left foliage and trunk highlights, with deeper lower/right masses, remain consistent with the approved art.",
+        "random_8x2": "Viewed at native 1x and nearest-neighbour 4x. Each sprite occurs twice in a seeded shuffle. Silhouette differences remain readable; no accidental rectangular border or cell-edge cut-off.",
+        "forest": "Viewed dense jittered forest, an additional fixed 24px-by-16px staggered lattice, and a ragged forest edge at 1x and 4x. Later rows cover earlier rows. Crown masses remain legible under overlap; no asset-imposed square grid, uniform crown stamp or repeated texture seam warrants rejection. The imposed lattice has the expected staggered placement, without turning into identical crown wallpaper.",
+        "approved_art": "Compared at 1x and 4x with out/ markers across all six settings; round-2 city, suburb, slums, industry, farmland and farmstead examples; paddies; summer/autumn grass and plains bases and details. Pixel density, muted colours and dark accents sit comfortably beside these. Comparison assets were not assigned new verdicts.",
+        "other_parts": "3x3 seamless-base tiling, mountain range QC, crater/ruin/cyberpunk checks and winter consistency are not applicable: Part D contains only summer and autumn transparent tree sprites. No files from Parts A, A2, B or C were reviewed.",
+        "brief": "Pass: exactly three muted orange trees (0/1/2), two reds (3/4), two golds (5/6), and one still green (7). The forest retains distinct light/shadow clumps and mixed hues at 1x instead of becoming the reference flat orange slab."
+      },
+      "file_observations": {
+        "treeline_forest@autumn-0": "Muted orange round crown; warm upper-left highlights and darker right/lower clumps retain volume.",
+        "treeline_forest@autumn-1": "Muted orange tall oval; narrow silhouette breaks up the orange round and wide crowns.",
+        "treeline_forest@autumn-2": "Muted orange two-lobed crown; the deep upper saddle remains visible at map scale.",
+        "treeline_forest@autumn-3": "Muted red round crown; clearly separated from the orange family without a neon or pink highlight clash.",
+        "treeline_forest@autumn-4": "Muted red tall oval; narrow taper and diagonal clumps separate it from round red tree 3.",
+        "treeline_forest@autumn-5": "Gold two-lobed crown with unequal heights; the distinct dark lower mass keeps it from flattening into the gold ground.",
+        "treeline_forest@autumn-6": "Gold round crown with a brighter upper-left cluster and darker lower-right mass; distinct from the wide gold tree 5.",
+        "treeline_forest@autumn-7": "Still-green tall crown; reads as living green foliage, not a snow-covered winter tree, and supplies the required autumn green minority."
+      },
+      "named_reference": "art-drop/reference/current-fantasy-treeline_forest@autumn.png",
+      "composites": [
+        "critic-r5D-1-approved-style-farms-slums-1x.png",
+        "critic-r5D-1-approved-style-farms-slums-4x.png",
+        "critic-r5D-1-approved-style-ground-paddies-1x.png",
+        "critic-r5D-1-approved-style-ground-paddies-4x.png",
+        "critic-r5D-1-approved-style-markers-round2-1x.png",
+        "critic-r5D-1-approved-style-markers-round2-4x.png",
+        "critic-r5D-1-autumn-edge-1x.png",
+        "critic-r5D-1-autumn-edge-4x.png",
+        "critic-r5D-1-autumn-fixed-lattice-forest-1x.png",
+        "critic-r5D-1-autumn-fixed-lattice-forest-4x.png",
+        "critic-r5D-1-autumn-forest-1x.png",
+        "critic-r5D-1-autumn-forest-4x.png",
+        "critic-r5D-1-autumn-random-8x2-1x.png",
+        "critic-r5D-1-autumn-random-8x2-4x.png",
+        "critic-r5D-1-autumn-sprites-0-3-1x.png",
+        "critic-r5D-1-autumn-sprites-0-3-4x.png",
+        "critic-r5D-1-autumn-sprites-0-3-8x.png",
+        "critic-r5D-1-autumn-sprites-4-7-1x.png",
+        "critic-r5D-1-autumn-sprites-4-7-4x.png",
+        "critic-r5D-1-autumn-sprites-4-7-8x.png",
+        "critic-r5D-1-named-references-1x.png",
+        "critic-r5D-1-named-references-4x.png"
+      ],
+      "calibration": "Good enough to ship beside the approved art. No concrete redraw defect found after the required visual checks.",
+      "previous_review": "critic-r5D-0.json does not exist; no previous pass was overturned."
+    }
+  },
+  "pass": [
+    "treeline_forest-0",
+    "treeline_forest-1",
+    "treeline_forest-2",
+    "treeline_forest-3",
+    "treeline_forest-4",
+    "treeline_forest-5",
+    "treeline_forest-6",
+    "treeline_forest-7",
+    "treeline_forest@autumn-0",
+    "treeline_forest@autumn-1",
+    "treeline_forest@autumn-2",
+    "treeline_forest@autumn-3",
+    "treeline_forest@autumn-4",
+    "treeline_forest@autumn-5",
+    "treeline_forest@autumn-6",
+    "treeline_forest@autumn-7"
+  ],
+  "fail": []
+}
