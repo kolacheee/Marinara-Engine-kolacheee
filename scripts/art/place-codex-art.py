@@ -99,10 +99,17 @@ def main(out_dir, paths, only):
                     continue
                 if look != "mountains" and tid not in pack["tiles"] and f"treeline_{look}" not in pack["tiles"]:
                     continue
-                block = Image.new("RGBA", (4 * CELL, 2 * CELL))
+                # Each sprite one cell (trees) or two by two (a range's peaks, 96 px).
+                span = 2 if look == "mountains" else 1
+                block = Image.new("RGBA", (4 * span * CELL, 2 * span * CELL))
                 for i, f in enumerate(files):
-                    block.alpha_composite(Image.open(f).convert("RGBA"), ((i % 4) * CELL, (i // 4) * CELL))
-                made[tid] = [(block, 4, 2)]
+                    art = Image.open(f).convert("RGBA")
+                    if art.width < span * CELL:  # a smaller drawing stands on the foot of its slot
+                        slot = Image.new("RGBA", (span * CELL, span * CELL))
+                        slot.alpha_composite(art, ((span * CELL - art.width) // 2, span * CELL - art.height))
+                        art = slot
+                    block.alpha_composite(art, ((i % 4) * span * CELL, (i // 4) * span * CELL))
+                made[tid] = [(block, 4 * span, 2 * span)]
         if "farmland" in only:
             # Seven field tiles and, in a setting that has one, its farmstead: one cell in eight a farm.
             for season in SEASONS:
