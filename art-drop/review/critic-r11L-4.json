@@ -1,0 +1,305 @@
+{
+  "sets": {
+    "round11_lanes": {
+      "brief": "art-drop/BRIEF-11.md, including owner continuity feedback and operator exact path-layout requirement",
+      "scope": [
+        "jazz_age-lane",
+        "modern-lane",
+        "scifi-lane",
+        "wasteland-lane"
+      ],
+      "calibration": "Good enough to ship next to approved art; unchanged prior passes remain passed unless a concrete new defect is found.",
+      "layout_metrics": {
+        "jazz_age": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 4,
+          "colors_outside_family_road_palette": 0,
+          "top_colors": [
+            {
+              "rgb": [
+                141,
+                121,
+                88
+              ],
+              "pixels": 16790
+            },
+            {
+              "rgb": [
+                154,
+                133,
+                98
+              ],
+              "pixels": 6880
+            },
+            {
+              "rgb": [
+                110,
+                94,
+                69
+              ],
+              "pixels": 6777
+            },
+            {
+              "rgb": [
+                123,
+                106,
+                79
+              ],
+              "pixels": 1912
+            }
+          ],
+          "sha256": "47555fe38fd66a5653d5ee2a9794491f7dbd1db14b4ffb23747852b839fe4c5d",
+          "unchanged_since_previous_review": true
+        },
+        "modern": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 5,
+          "colors_outside_family_road_palette": 0,
+          "top_colors": [
+            {
+              "rgb": [
+                103,
+                102,
+                100
+              ],
+              "pixels": 14848
+            },
+            {
+              "rgb": [
+                116,
+                114,
+                108
+              ],
+              "pixels": 8430
+            },
+            {
+              "rgb": [
+                69,
+                69,
+                67
+              ],
+              "pixels": 6777
+            },
+            {
+              "rgb": [
+                89,
+                88,
+                86
+              ],
+              "pixels": 2078
+            },
+            {
+              "rgb": [
+                90,
+                89,
+                84
+              ],
+              "pixels": 226
+            }
+          ],
+          "sha256": "79dd4cfc09d3a0633a79e2bddf1876e593dba7fb3839b885d468d590b46aca95",
+          "unchanged_since_previous_review": true
+        },
+        "scifi": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 5,
+          "colors_outside_family_road_palette": 0,
+          "top_colors": [
+            {
+              "rgb": [
+                63,
+                68,
+                70
+              ],
+              "pixels": 17582
+            },
+            {
+              "rgb": [
+                49,
+                53,
+                55
+              ],
+              "pixels": 6844
+            },
+            {
+              "rgb": [
+                32,
+                37,
+                39
+              ],
+              "pixels": 6777
+            },
+            {
+              "rgb": [
+                61,
+                67,
+                69
+              ],
+              "pixels": 1120
+            },
+            {
+              "rgb": [
+                49,
+                144,
+                137
+              ],
+              "pixels": 36
+            }
+          ],
+          "sha256": "eca8beb469307a960091776bd24dcc73cbca1067ab51927a033ee681ea3066dc",
+          "unchanged_since_previous_review": true
+        },
+        "wasteland": {
+          "size": [
+            192,
+            1104
+          ],
+          "path_size": [
+            192,
+            1104
+          ],
+          "opaque_mask_mismatches": 0,
+          "nonzero_mask_mismatches": 0,
+          "alpha_mismatches": 0,
+          "partial_alpha_pixels": 0,
+          "colors": 6,
+          "colors_outside_family_road_palette": 0,
+          "top_colors": [
+            {
+              "rgb": [
+                105,
+                100,
+                91
+              ],
+              "pixels": 18163
+            },
+            {
+              "rgb": [
+                73,
+                70,
+                65
+              ],
+              "pixels": 8098
+            },
+            {
+              "rgb": [
+                94,
+                90,
+                83
+              ],
+              "pixels": 4411
+            },
+            {
+              "rgb": [
+                116,
+                109,
+                97
+              ],
+              "pixels": 1381
+            },
+            {
+              "rgb": [
+                63,
+                59,
+                55
+              ],
+              "pixels": 304
+            },
+            {
+              "rgb": [
+                82,
+                78,
+                71
+              ],
+              "pixels": 2
+            }
+          ],
+          "sha256": "3b032fc709b4e721ab5bcefa11b1ca4b96777e8f9a3e8dd6c93d762ca7acb097",
+          "unchanged_since_previous_review": false
+        }
+      },
+      "checks_performed": [
+        "Programmatically checked every pixel against each family-path_joined.png: all four sheets are 192x1104, 4 columns by 23 rows of 48px cells. Zero opaque-mask, nonzero-mask or alpha-value mismatches. Every piece retains the exact position, footprint, width and geometry. All alpha is binary, with no partial-alpha fringe.",
+        "Programmatically checked opaque RGB colours against each family-road_joined.png palette: zero outside colours in all four lanes. Viewed full path/lane/road triptychs at 1x, and matching road strips beside lane strips at 1x and nearest-neighbour 4x.",
+        "Viewed all four full candidate atlases at 1x and every source pixel at nearest-neighbour 8x in six bands per file (rows 00-03, 04-07, 08-11, 12-15, 16-19, 20-22). Saved the same source bands at 1x and 4x.",
+        "Built and viewed cross, T, bend and SW/NE diagonal layouts for each family on grass-base and wasteland-wasteland-base at 1x and 4x, including its main road strip and a direct lane-to-road junction. Used exact source cells without rotation, painting or geometry changes.",
+        "Built and viewed seeded random 8x2 lane networks for all four families on both grounds at 1x and 4x. Shared cardinal edges agree. Seed and cell indices are recorded in critic-r11L-4-random-layout.json; mismatched source cells were not assembled and blamed for gaps.",
+        "Viewed eight-piece horizontal lane/road repeat comparisons on both grounds at 1x and 4x. Viewed wasteland long horizontal, vertical and diagonal repeats on both grounds at 1x/4x and focused straight-run texture at 8x.",
+        "Compared approved family markers, round-2 city/slums/industry tiles, paddies, grass/plains bases and details on approved-style-comparison at 1x/4x. Checked scale, palette, pixel sharpness, material clarity, edging, light consistency, per-piece borders, seams, repeat rhythm, halos, noise and shape clarity.",
+        "Scifi retains a quiet dark surface with sparse cyan glints and no stamped panel grid. Jazz_age follows the actual warm tan main-road palette; its unchanged approved pass is not reversed merely because the prose calls the road dark macadam.",
+        "Wasteland now has 1381 sand-colour pixels instead of the previous 25 and visible angular damage. The previous near-blank material complaint is resolved. Current rejection is the conspicuous repeated damage motif, independently checked at native size.",
+        "Rehashed all out/ PNGs after review. No reviewed candidate changed during review. This workflow wrote only review/ files."
+      ],
+      "not_applicable": "BRIEF-11 has only four summer lane atlases used all year. There are no candidate bases, peaks, one-cell terrain variants, trees, craters, ruins or seasonal crowns to grade. Candidate-base 3x3 tiling, peak lattice/range, forest compositions, winter coverage, egg-crate peaks, Swiss-cheese craters, classical ruins, flat orange autumn and identical crowns do not apply. Requested 8x2 testing was nevertheless performed as compatible random lane networks. Approved grounds were tiled as backgrounds, not regraded.",
+      "file_verdicts": {
+        "jazz_age-lane": {
+          "verdict": "pass",
+          "reason": "SHA-256 identical to prior passing review. Road-family warm surface, pale kerb and dark inner edge; required networks remain continuous at 1x/4x; full 8x inspection remains clean. No concrete new defect."
+        },
+        "modern-lane": {
+          "verdict": "pass",
+          "reason": "SHA-256 identical to prior passing review. Grey road-family asphalt, thin light kerb and dark inner edge. All required networks and full 8x inspection pass; no new defect."
+        },
+        "scifi-lane": {
+          "verdict": "pass",
+          "reason": "SHA-256 identical to prior passing review. Dark blue-grey road-family surface, sparse cyan glints, crisp edges and no panel-grid rhythm. All required networks and full 8x inspection pass; no new defect."
+        },
+        "wasteland-lane": {
+          "verdict": "fail",
+          "resolved": "Exact silhouette, placement, width, binary alpha, palette and physical joins pass. Cracks and sand are now readable; the prior under-described material problem is resolved.",
+          "remaining": "Repeated paired slashes on tile 10 and repeated diagonal/vertical fork motifs create an artificial damage cadence at native size. See actionable fail entry."
+        }
+      },
+      "evidence_glob": "art-drop/review/critic-r11L-4-*.png",
+      "reviewed_candidates_unchanged_during_review": true,
+      "out_written_by_this_review": false,
+      "out_digest_changes_during_review": [
+        "modern-street@winter-base.png"
+      ]
+    }
+  },
+  "pass": [
+    "jazz_age-lane",
+    "modern-lane",
+    "scifi-lane"
+  ],
+  "fail": [
+    {
+      "name": "wasteland-lane",
+      "problems": "FAIL conspicuous damage repetition. The revised cracks and sand now read as weathered asphalt, but the repeated straight piece produces a regular dark stitch at 1x on both grass and wasteland. In zero-based tile 10 (sheet x=96..143, y=96..143), the two descending dark slashes at local x=14..19/y=19..22 and x=38..43/y=20..22 recur about 24 pixels apart along the eight-piece run. The paired low-contrast sand patches reinforce that fixed cadence. The longer diagonal also repeats the same prominent kinked/branching fissures, and the vertical run repeats its central fork. This is a surface-texture stamp, not an alpha-mask gap or a complaint about the mandatory inherited outline. Reduce the contrast and length of the regularly spaced transverse slashes; replace the repeated fork/chevron emphasis with finer, broken, mainly lengthwise fissures and restrained asymmetric edge sand. Keep the newly legible material, but make the strongest motifs quiet enough that a single repeated 48px piece does not advertise its spacing at native size. Recheck eight horizontal, vertical and diagonal pieces on both grounds at 1x. Keep the already exact path mask, width, piece positions and family-road palette. Evidence: critic-r11L-4-all-grass-base-repeat-strips-1x.png, critic-r11L-4-all-wasteland-wasteland-base-repeat-strips-1x.png, critic-r11L-4-wasteland-*-repeated-runs-{1,4}x.png, and critic-r11L-4-wasteland-*-four-piece-texture-detail-{1,4,8}x.png."
+    }
+  ]
+}

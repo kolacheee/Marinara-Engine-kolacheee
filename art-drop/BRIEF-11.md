@@ -20,3 +20,11 @@ dark main road (`reference/joined/<family>-road_joined.png`).
 ## QC
 Tile a cross, a T, a bend and a diagonal run onto `out/wasteland-wasteland-base.png` and `out/grass-base.png` at 1x
 next to a strip of the road: the lane must read as a smaller road of the same network.
+
+## Owner feedback, 22:28 (applies to the critic too)
+In game, the borrowed path art reads as pale, segmented slabs with a visible joint line at every piece, like a row of tiles. The new lanes must look continuous:
+- No joint lines, gaps or brightness steps where pieces meet.
+- No per-piece border or bevel.
+- Texture that flows across piece boundaries.
+- A dark surface matching the main road, so a lane reads as a narrower branch of the same road and not a pale overlay.
+Fail any lane sheet where a repeated run of pieces shows a seam rhythm at 1x.
