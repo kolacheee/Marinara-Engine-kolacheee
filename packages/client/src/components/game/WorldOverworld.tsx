@@ -976,7 +976,9 @@ export function WorldOverworld({
         let shore = false;
         for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (wetAt(x + dx, y + dy)) shore = true;
         const large = !shore && noise(62) < 0.55;
-        const piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
+        let piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
+        // A hill field's last pieces are boulder piles: one in four of them stays, the rest are mounds.
+        if (look === "hills" && piece % 4 === 3 && noise(60) < 0.75) piece -= 1 + Math.floor(noise(59) * 3);
         inSeason(x, y);
         drawTile.piece(
           ctx,
