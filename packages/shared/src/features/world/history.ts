@@ -133,6 +133,26 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
         return [...settlements].sort((a, b) => age.get(b.id)! - age.get(a.id)! || a.id.localeCompare(b.id));
       })()
     : [...settlements].sort((a, b) => b.rank! - a.rank! || a.id.localeCompare(b.id));
+  // Generator 9: a town is mostly founded by settlers from an older town of its own people, one the way
+  // between them reaches (as colonies went out along coasts and rivers), else the nearest such town.
+  const linked = new Map<string, string[]>();
+  for (const link of world.links) {
+    linked.set(link.from, [...(linked.get(link.from) ?? []), link.to]);
+    linked.set(link.to, [...(linked.get(link.to) ?? []), link.from]);
+  }
+  const motherOf = (place: WorldPlace, year: number) => {
+    const elders = settlements.filter(
+      (each) => each.culture === place.culture && (founded.get(each.id) ?? 0) >= year + 3,
+    );
+    const ways = elders.filter((each) => linked.get(place.id)?.includes(each.id));
+    if (ways.length)
+      return [...ways].sort((a, b) => founded.get(b.id)! - founded.get(a.id)! || a.id.localeCompare(b.id))[0];
+    const farthest = Math.max(world.width, world.height) / 6;
+    return elders
+      .map((each) => ({ each, distance: Math.hypot(each.at.x - place.at.x, each.at.y - place.at.y) }))
+      .filter((each) => each.distance <= farthest)
+      .sort((a, b) => a.distance - b.distance || a.each.id.localeCompare(b.each.id))[0]?.each;
+  };
   foundingOrder.forEach((place, position) => {
     const share = 1 - place.rank! / (maxRank + 1);
     const year = landed
@@ -143,11 +163,12 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
           ),
         )
       : Math.max(1, Math.round(span - share * span * 0.8 * foundingRandom()));
+    const mother = landed ? motherOf(place, year) : undefined;
     founded.set(place.id, year);
     add({
       yearsAgo: year,
       kind: "founding",
-      text: `${place.name} was founded, ${aWord(sizes[0]!.label)}.`,
+      text: `${place.name} was founded, ${aWord(sizes[0]!.label)}${mother ? `, by settlers from ${mother.name}` : ""}.`,
       places: [place.id],
       groups: [],
     });
@@ -168,6 +189,32 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
       });
     }
   });
+
+  // Generator 9: where a way joins towns of two peoples, the bigger sends settlers and trade down it, and
+  // its speech is heard in the smaller town's market (a few such meetings, the busiest ways first).
+  if (landed && kit.cultures.length > 1) {
+    const contactRandom = worldStream(seed, "history", "contact");
+    const label = (id: string) => kit.cultures.find((culture) => culture.id === id)?.label ?? id;
+    const kind = (["everyday", "fortunes", "lives"] as const).find((each) => on(each));
+    const meetings = world.links
+      .map((link) => [link.from, link.to].map((id) => settlements.find((place) => place.id === id)))
+      .filter((ends): ends is [WorldPlace, WorldPlace] => !!ends[0] && !!ends[1] && ends[0].culture !== ends[1].culture)
+      .map((ends) => ends.sort((a, b) => b.rank! - a.rank! || a.id.localeCompare(b.id)))
+      .sort((a, b) => b[0].rank! + b[1].rank! - (a[0].rank! + a[1].rank!) || a[1].id.localeCompare(b[1].id));
+    const met = new Set<string>();
+    for (const [big, small] of meetings) {
+      if (!kind || met.has(small.id) || met.size >= 3) continue;
+      met.add(small.id);
+      const since = Math.min(founded.get(big.id) ?? span, founded.get(small.id) ?? span);
+      add({
+        yearsAgo: Math.max(1, Math.round(since * (0.3 + contactRandom() * 0.5))),
+        kind,
+        text: `${small.name} took in settlers from ${big.name}, ${label(big.culture)} among ${label(small.culture)}; their speech is heard in its market still.`,
+        places: [small.id, big.id],
+        groups: [],
+      });
+    }
+  }
 
   // ── Groups: founded at their seats, led, and at peace or odds with each other ──
   const groupRandom = worldStream(seed, "history", "groups");
@@ -307,6 +354,27 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
     return false;
   };
   const prosperity = new Map(settlements.map((place) => [place.id, 50]));
+  // Generator 9: how well each group holds together (asabiya, after Ibn Khaldun and Turchin). It grows
+  // where its towns face an enemy, most where that enemy is another people, and wears away in a long-safe
+  // heartland; in a war the side that holds together better mostly wins. A town hemmed in by heights or
+  // water whose keeper loses it stays as the winner's subjects; one with open country behind it empties.
+  const cohesion = new Map(groups.map((group) => [group.name, 0.5]));
+  const walled = new Set<string>();
+  const softened = new Set<string>();
+  const hostilePeoples = landed ? worldPeoples(kit, world).filter((people) => people.stance === "hostile") : [];
+  const hemmed = (place: WorldPlace) => {
+    let [closed, all, wet] = [0, 0, 0];
+    for (let dy = -3; dy <= 3; dy++)
+      for (let dx = -3; dx <= 3; dx++) {
+        const [x, y] = [place.at.x + dx, place.at.y + dy];
+        all++;
+        if (x < 0 || y < 0 || x >= world.width || y >= world.height) continue;
+        const ground = parseInt(world.ground[y * world.width + x]!, 36);
+        if (water.has(ground)) wet++;
+        if (water.has(ground) || barrier.has(ground)) closed++;
+      }
+    return closed / all >= 0.4 ? (wet * 2 > closed ? "water" : "heights") : undefined;
+  };
   const alive = (group: (typeof groups)[number], year: number) => group.year >= year;
   for (let year = span; year >= 1; year--) {
     const random = worldStream(seed, "history", "year", year);
@@ -441,6 +509,73 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
       }
     }
 
+    if (landed) {
+      const frontierRandom = worldStream(seed, "history", "frontier", year);
+      for (const group of living) {
+        const kept = existing.filter((place) => keepers.get(place.id) === group.name);
+        if (!kept.length) continue;
+        let edge = 0;
+        for (const place of kept) {
+          // The nearest enemy town within reach, or a hostile people's home close by.
+          const foe = existing
+            .filter((other) => {
+              const keeper = keepers.get(other.id);
+              return (
+                keeper &&
+                keeper !== group.name &&
+                living.some((each) => each.name === keeper) &&
+                (relations.get(pairKey(group.name, keeper)) ?? 0) < -20 &&
+                Math.hypot(other.at.x - place.at.x, other.at.y - place.at.y) <= reach * 0.6
+              );
+            })
+            .sort(
+              (a, b) =>
+                Math.hypot(a.at.x - place.at.x, a.at.y - place.at.y) -
+                  Math.hypot(b.at.x - place.at.x, b.at.y - place.at.y) || a.id.localeCompare(b.id),
+            )[0];
+          const beast = hostilePeoples.find(
+            (people) => Math.hypot(people.home.x - place.at.x, people.home.y - place.at.y) <= 6,
+          );
+          if (!foe && !beast) continue;
+          edge += foe && foe.culture !== place.culture ? 2 : 1;
+          if (walled.has(place.id) || frontierRandom() > 0.15) continue;
+          const foeName = foe ? keepers.get(foe.id)! : `the ${beast!.name}`;
+          const kind = (
+            beast && !foe ? (["crime", "conflict", "everyday"] as const) : (["rivalry", "conflict"] as const)
+          ).find((each) => on(each));
+          if (!kind) continue;
+          walled.add(place.id);
+          add({
+            yearsAgo: year,
+            kind,
+            text: foe
+              ? `${place.name} raised walls against ${foeName}${foe.culture !== place.culture ? `, whose people were strangers to it` : ""}.`
+              : `${place.name} set a watch against ${foeName}.`,
+            places: [place.id],
+            groups: foe ? [group.name, foeName] : [group.name],
+            ...(kind === "conflict" ? { brewing: true as const } : {}),
+          });
+        }
+        const share = Math.min(1, edge / kept.length);
+        const now = cohesion.get(group.name)!;
+        const next = Math.max(0.05, Math.min(0.95, now + 0.12 * now * (1 - now) * share - 0.02 * now * (1 - share)));
+        cohesion.set(group.name, next);
+        // A heartland long safe grows soft: told once, until a border hardens it again.
+        if (next > 0.4) softened.delete(group.name);
+        if (next < 0.2 && !softened.has(group.name) && group.year - year >= 30 && on("leadership")) {
+          softened.add(group.name);
+          const seat = group.seatId ? settlements.find((place) => place.id === group.seatId) : undefined;
+          add({
+            yearsAgo: year,
+            kind: "leadership",
+            text: `Long safe from any border, the heads of ${group.name}${seat ? ` at ${seat.name}` : ""} fell to quarrelling among themselves.`,
+            places: seat ? [seat.id] : [],
+            groups: [group.name],
+          });
+        }
+      }
+    }
+
     // Conflict: tension that has brewed long enough becomes a war over a place one side keeps.
     if (on("conflict")) {
       for (const a of living) {
@@ -474,8 +609,30 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
                 .map((each) => ({ each, worth: worldWarStake(each, assets.get(each.id)).value + random() * 0.8 }))
                 .sort((x, y) => y.worth - x.worth || x.each.id.localeCompare(y.each.id))[0]!.each
             : pick(contested, random);
-          const winner = random() < 0.5 ? a : b;
+          const [holdA, holdB] = [cohesion.get(a.name)!, cohesion.get(b.name)!];
+          const odds = landed ? Math.max(0.15, Math.min(0.85, holdA / (holdA + holdB))) : 0.5;
+          const winner = random() < odds ? a : b;
           const loser = winner === a ? b : a;
+          // Generator 9: what became of its people, by the land around it.
+          const shut = landed ? hemmed(place) : undefined;
+          const refuge = landed
+            ? existing
+                .filter((each) => each !== place && keepers.get(each.id) === loser.name)
+                .sort(
+                  (x, y) =>
+                    Math.hypot(x.at.x - place.at.x, x.at.y - place.at.y) -
+                      Math.hypot(y.at.x - place.at.x, y.at.y - place.at.y) || x.id.localeCompare(y.id),
+                )[0]
+            : undefined;
+          const after = shut
+            ? `; hemmed in by the ${shut}, its people stayed and became ${winner.name}'s subjects`
+            : refuge
+              ? `; many of its people fled to ${refuge.name}`
+              : "";
+          const held =
+            landed && Math.abs(holdA - holdB) > 0.2 && cohesion.get(winner.name)! > cohesion.get(loser.name)!
+              ? `, its border towns holding together better,`
+              : "";
           keepers.set(place.id, winner.name);
           prosperity.set(place.id, Math.max(0, prosperity.get(place.id)! - 25));
           relations.set(pairKey(a.name, b.name), -20);
@@ -484,7 +641,7 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
             yearsAgo: year,
             kind: "conflict",
             text: landed
-              ? `${winner.name} and ${loser.name} went to war ${worldWarStake(place, assets.get(place.id)).phrase}; ${winner.name} took ${place.name}.`
+              ? `${winner.name} and ${loser.name} went to war ${worldWarStake(place, assets.get(place.id)).phrase}; ${winner.name}${held} took ${place.name}${after}.`
               : `${winner.name} and ${loser.name} went to war; ${winner.name} took ${place.name}.`,
             places: [place.id],
             groups: [winner.name, loser.name],
