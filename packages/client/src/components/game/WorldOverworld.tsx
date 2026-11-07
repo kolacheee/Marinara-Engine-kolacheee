@@ -358,7 +358,11 @@ export function WorldOverworld({
         .map(([look]) => look),
     );
     const openGround = (look: string) =>
-      !square.has(look) && !propLooks.has(look) && !coveredLooks.has(look) && look !== "mountains";
+      !square.has(look) &&
+      !propLooks.has(look) &&
+      !builtLooks.has(look) &&
+      !coveredLooks.has(look) &&
+      look !== "mountains";
     // The open ground most of the map has, for a prop look with none near it.
     const commonOpen = (() => {
       const count = new Map<string, number>();
