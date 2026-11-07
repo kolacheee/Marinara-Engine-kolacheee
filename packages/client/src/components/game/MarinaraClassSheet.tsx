@@ -351,8 +351,8 @@ function Companions({ progression, busy, save }: { progression: MarinaraCardProg
                 <span className="text-[var(--muted-foreground)]">
                   {t(`game.combat.marinara.stat.${one.stat}`, { defaultValue: one.stat })} +
                   {Math.round(marinaraCompanionBonus(one) * 100)}%
-                  {one.level ? ` · ${t("game.combat.marinara.level", { level: one.level })}` : ""}
-                  {one.tier && one.tier !== "standard" ? ` · ${t(`game.combat.marinara.tier.${one.tier}`)}` : ""}
+                  {one.level ? <> · {t("game.combat.marinara.level", { level: one.level })}</> : null}
+                  {one.tier && one.tier !== "standard" ? <> · {t(`game.combat.marinara.tier.${one.tier}`)}</> : null}
                 </span>
               </span>
               {isActive ? (
@@ -583,7 +583,7 @@ function SkillsTab({ progression, busy, save }: { progression: MarinaraCardProgr
                   )}
                   <span className="block text-[var(--muted-foreground)]">
                     {marinaraSkillSummary(skill, progression)}
-                    {idle(skill.id) ? ` ${t("game.combat.marinara.sheet.frontOnlyIdle")}` : ""}
+                    {idle(skill.id) ? <> {t("game.combat.marinara.sheet.frontOnlyIdle")}</> : null}
                   </span>
                 </span>
                 <span className="whitespace-nowrap text-right text-[var(--muted-foreground)]">
@@ -631,7 +631,7 @@ function SkillsTab({ progression, busy, save }: { progression: MarinaraCardProgr
                     <span className="text-[var(--muted-foreground)]">· {marinaraClass(skill.classId)?.label}</span>
                     <span className="block text-[var(--muted-foreground)]">
                       {marinaraSkillSummary(skill, progression)}
-                      {idle(skill.id) ? ` ${t("game.combat.marinara.sheet.frontOnlyIdle")}` : ""}
+                      {idle(skill.id) ? <> {t("game.combat.marinara.sheet.frontOnlyIdle")}</> : null}
                     </span>
                   </span>
                 </label>
