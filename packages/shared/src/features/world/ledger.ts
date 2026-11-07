@@ -25,6 +25,8 @@ import {
 } from "./engine.js";
 import type { GameWorld } from "./game-world.js";
 import { worldHistory } from "./history.js";
+import { worldPeoples, type WorldPeopleTemper } from "./peoples.js";
+import { WORLD_PEOPLE_TEMPERS } from "../../schemas/world-brief.schema.js";
 
 /** What the story can do to a world, and the kind of change each one is. */
 export const WORLD_DEED_KINDS = Object.freeze({
@@ -46,7 +48,9 @@ const DEEDS = Object.keys(WORLD_DEED_KINDS) as WorldDeed[];
 
 export interface WorldLedgerEntry {
   deed?: WorldDeed;
-  fact?: "place" | "group";
+  fact?: "place" | "group" | "people";
+  /** A people's temper, when the story says it (generator 9). */
+  temper?: string;
   /** The group a deed is done to, or the first of two. */
   group?: string;
   /** The second group of `befriend` and `set_against`. */
@@ -90,6 +94,9 @@ export interface WorldPresent extends WorldEngineState {
   standing: Record<string, number>;
   /** Places the story added. */
   places: Array<{ id: string; name: string; parentId: string }>;
+  /** Peoples who are not human the story brought in (generator 9): what they are, and the world place
+   *  they live by. Missing from a fold made before them. */
+  peoples?: Array<{ name: string; kind: string; home: string; temper?: WorldPeopleTemper; note?: string }>;
   /** What the story did at each place, oldest first. */
   done: Record<string, string[]>;
   /** Every deed at a known place in the order it was done, across places. */
@@ -184,6 +191,7 @@ export function applyWorldTags(content: string, game: GameWorld, before: WorldLe
       "who",
       "seat",
       "note",
+      "temper",
     ] as const) {
       const value = values.get(key);
       if (value) (entry as Record<string, string>)[key] = value;
@@ -192,6 +200,24 @@ export function applyWorldTags(content: string, game: GameWorld, before: WorldLe
     const placeName = (value: string | undefined) => (value ? places.get(value.toLowerCase()) : undefined);
     const groupName = (value: string | undefined) => (value ? groups.get(value.toLowerCase()) : undefined);
 
+    // A people the story brings in: a name no people of the world has, what they are, and where they live.
+    if (entry.fact === "people") {
+      if (!entry.name || !entry.kind) return refuse("unreadable");
+      const own = worldPeoples(game.kit, game.world, game.brief.peoples).map((people) => people.name);
+      const all = [
+        ...own,
+        ...game.brief.peoples.map((people) => people.name),
+        ...(present.peoples ?? []).map((people) => people.name),
+      ];
+      const bare = (name: string) => name.toLowerCase().replace(/^the /, "");
+      if (all.some((name) => bare(name) === bare(entry.name!))) return refuse("exists");
+      const inside = placeName(entry.in);
+      if (!inside) return refuse("unknown-place");
+      entry.in = inside;
+      if (entry.temper && !WORLD_PEOPLE_TEMPERS.some((temper) => temper === entry.temper)) delete entry.temper;
+      ledger.push(entry);
+      return serialize(entry, { result: "ok" });
+    }
     if (entry.fact === "place" || entry.fact === "group") {
       if (!entry.name) return refuse("unreadable");
       if (entry.fact === "place") {
@@ -393,6 +419,7 @@ function foldPresent(
         standing: {},
         gone: [],
         places: [],
+        peoples: [],
         groups: [],
         done: {},
         deeds: [],
@@ -472,6 +499,20 @@ function foldPresent(
       const parentId =
         byName.get(key)?.id ?? present.places.find((place) => place.name.toLowerCase() === key)?.parentId;
       if (parentId) present.places.push({ id: `x${present.places.length + 1}`, name: entry.name, parentId });
+      continue;
+    }
+    if (entry.fact === "people" && entry.name && entry.kind && entry.in) {
+      // They live by the world place they were brought in at, or the one an added place is within.
+      const home = game.world.places.find((place) => place.id === worldPlaceId(entry.in))?.name;
+      const temper = WORLD_PEOPLE_TEMPERS.find((each) => each === entry.temper);
+      if (home)
+        (present.peoples ??= []).push({
+          name: entry.name,
+          kind: entry.kind,
+          home,
+          ...(temper ? { temper } : {}),
+          ...(entry.note ? { note: entry.note } : {}),
+        });
       continue;
     }
     if (entry.fact === "group" && entry.name && entry.kind) {
@@ -561,6 +602,11 @@ export function worldLedgerInstructions(game: GameWorld): string {
     ...(toPlace ? [`- To a place: [world: deed="..." place="Name"] for ${toPlace}.`] : []),
     ...(on("take") ? [`- A place taken for a group: [world: deed="take" place="Name" group="Name"].`] : []),
     `- A place or group the story brings in: [world: fact="place" name="Name" in="Where it is"] or [world: fact="group" name="Name" kind="${game.kit.groupKinds[0]!.id}" seat="Where"], kind one of ${game.kit.groupKinds.map((kind) => kind.id).join(", ")}.`,
+    ...(game.world.generatorVersion >= 9
+      ? [
+          `- A people who are not human the story brings in, new to this world: [world: fact="people" name="Name" kind="what they are, in a few words" in="Where they live" temper="${WORLD_PEOPLE_TEMPERS.join('" | "')}" note="anything else"]. Their ways and past are made for them, and told to you from then on.`,
+        ]
+      : []),
     `- When time passes in the story (a journey, a night's rest, a wait), say how long: [world: days="N"]. The world goes on with its own business a week at a time, and its news reaches the party as it travels.`,
     ...(kindsOn.length
       ? [

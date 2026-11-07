@@ -18,7 +18,21 @@ export const WORLD_BRIEF_LIMITS = Object.freeze({
   peopleNames: 150,
   allPeopleNames: 1500,
   events: 30,
+  peoples: 12,
 });
+/** The kinds of non-human people a world has (generator 9), after folklore's: those who hide, bargain,
+ *  tempt, trick, guard, devour, watch, or are older than everyone. */
+export const WORLD_PEOPLE_ARCHETYPES = Object.freeze([
+  "hidden",
+  "bargainer",
+  "tempter",
+  "trickster",
+  "warden",
+  "devourer",
+  "watcher",
+  "elder",
+] as const);
+export const WORLD_PEOPLE_TEMPERS = Object.freeze(["malevolent", "untrustworthy", "aloof", "kindly"] as const);
 /** How a culture puts a person's names together. */
 export const WORLD_NAME_ORDERS = Object.freeze(["given-family", "family-given", "given"] as const);
 
@@ -60,6 +74,30 @@ const briefGroup = z
   })
   .strict();
 
+/** A non-human people the setting has (generator 9): the brief's own, laid out and given a past by code
+ *  like the peoples a world draws for itself. */
+const briefPeople = z
+  .object({
+    name: placeName,
+    /** What they are, in a few words: "hill-folk who live in the rocks", "a hive species". */
+    kind: promptSafeText(80),
+    archetype: z.enum(WORLD_PEOPLE_ARCHETYPES).optional(),
+    temper: z.enum(WORLD_PEOPLE_TEMPERS).optional(),
+    /** What they look like, in one line. */
+    form: promptSafeText(240).optional(),
+    /** What they want now, in one line. */
+    want: promptSafeText(240).optional(),
+    /** Anything else the setting says of them, in one line. */
+    note: promptSafeText(240).optional(),
+    /** The name of the brief place they live near. */
+    home: placeName.optional(),
+    allies: z.array(placeName).max(8).default([]),
+    rivals: z.array(placeName).max(8).default([]),
+    /** The lore entries they come from, when read from the player's lore. */
+    lore: z.array(z.string().max(64)).max(20).optional(),
+  })
+  .strict();
+
 /** A dated event of the world's past (worldgen W3): a fixed point its history is steered through. */
 const briefEvent = z
   .object({
@@ -92,6 +130,8 @@ export const worldBriefSchema = z
     events: z.array(briefEvent).max(WORLD_BRIEF_LIMITS.events).default([]),
     /** The groups that matter (worldgen W2): powers and the everyday groups the premise turns on. */
     groups: z.array(briefGroup).max(WORLD_BRIEF_LIMITS.groups).default([]),
+    /** The setting's non-human peoples (generator 9); the world draws more only to fill out its number. */
+    peoples: z.array(briefPeople).max(WORLD_BRIEF_LIMITS.peoples).default([]),
     /** Names for the people the compile draws, per culture, in that culture's own sound and order. */
     peopleNames: z
       .array(
@@ -120,6 +160,7 @@ export type WorldBriefInput = z.input<typeof worldBriefSchema>;
 export type WorldBriefPlace = WorldBrief["places"][number];
 export type WorldBriefGroup = WorldBrief["groups"][number];
 export type WorldBriefEvent = WorldBrief["events"][number];
+export type WorldBriefPeople = WorldBrief["peoples"][number];
 
 /** The deepest layer a brief may place: the settlements layer, and for a world of one site or one
  *  town the layer inside it too, since that town is the whole world. */
@@ -275,7 +316,37 @@ export function checkWorldBrief(
     }
     events.push({ ...event, places: placesKnown, groups: groupsKnown });
   }
-  return { ok: true, brief: { ...parsed.data, places, placeNames, peopleNames, groups, events }, repairs };
+  // Peoples keep a name of their own, a home among the brief's places, and ties only to each other.
+  const peopleKeys = new Set<string>();
+  const peoples: WorldBrief["peoples"] = [];
+  for (const people of parsed.data.peoples) {
+    const key = people.name.toLowerCase();
+    if (peopleKeys.has(key) || seen.has(key) || groupNames.has(key)) {
+      repairs.push(`${people.name}: left out, the name is already used`);
+      continue;
+    }
+    peopleKeys.add(key);
+    const next = { ...people };
+    if (people.home !== undefined && !seen.has(people.home.toLowerCase())) {
+      repairs.push(`${people.name}: "${people.home}" is not one of the brief's places, the compile finds their home`);
+      delete next.home;
+    }
+    peoples.push(next);
+  }
+  for (const people of peoples) {
+    const known = (name: string) =>
+      peopleKeys.has(name.toLowerCase()) && name.toLowerCase() !== people.name.toLowerCase();
+    if (![...people.allies, ...people.rivals].every(known)) {
+      repairs.push(`${people.name}: an ally or rival that is not one of the brief's peoples was left out`);
+    }
+    people.allies = people.allies.filter(known);
+    people.rivals = people.rivals.filter(known);
+  }
+  return {
+    ok: true,
+    brief: { ...parsed.data, places, placeNames, peopleNames, groups, peoples, events },
+    repairs,
+  };
 }
 
 const nameOf = (item: unknown) =>
