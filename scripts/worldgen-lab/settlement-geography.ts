@@ -129,14 +129,19 @@ function measure(world: CompiledWorld, kit: WorldKit) {
   const share = (group: typeof settlements, test: (p: (typeof settlements)[number]) => boolean) =>
     group.length ? group.filter(test).length / group.length : NaN;
   const resourceNear = (p: (typeof settlements)[number]) =>
-    (world.resources ?? []).some((r) => r.kind !== "ford" && Math.max(Math.abs(r.at.x - p.at.x), Math.abs(r.at.y - p.at.y)) <= 2);
+    (world.resources ?? []).some(
+      (r) => r.kind !== "ford" && Math.max(Math.abs(r.at.x - p.at.x), Math.abs(r.at.y - p.at.y)) <= 2,
+    );
   const rivers = world.rivers ?? [];
   const ends = rivers.filter((r) => {
     const last = r.path[r.path.length - 1]!;
     const [x, y] = [last % width, Math.floor(last / width)];
     return (
       terrain[kinds[last]!]?.kind === "water" ||
-      x === 0 || y === 0 || x === width - 1 || y === height - 1 ||
+      x === 0 ||
+      y === 0 ||
+      x === width - 1 ||
+      y === height - 1 ||
       rivers.some((o) => o !== r && o.path.slice(0, -1).includes(last))
     );
   }).length;
@@ -145,7 +150,9 @@ function measure(world: CompiledWorld, kit: WorldKit) {
     wetside: share(settlements, (p) => water1(p) || riverNear(p)),
     resource: world.resources ? share(settlements, resourceNear) : NaN,
     riverEnd: rivers.length ? ends / rivers.length : NaN,
-    riverCells: world.rivers ? [...riverCells].filter((c) => terrain[kinds[c]!]?.kind !== "water").length / landCells : NaN,
+    riverCells: world.rivers
+      ? [...riverCells].filter((c) => terrain[kinds[c]!]?.kind !== "water").length / landCells
+      : NaN,
     waterside: hasWater ? share(settlements, water1) : NaN,
     poorGround: share(settlements, (p) => POOR.test(terrain[at(p.at.x, p.at.y)]?.id ?? "")),
     bigWater: hasWater ? share(big, water1) : NaN,

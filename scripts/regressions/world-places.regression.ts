@@ -391,7 +391,8 @@ for (const kit of kits) {
               y === world.height - 1,
             `${label}: a river ends nowhere`,
           );
-          for (const cell of river.path.slice(0, -1)) assert.notEqual(kindAt(cell), "water", `${label}: a river at sea`);
+          for (const cell of river.path.slice(0, -1))
+            assert.notEqual(kindAt(cell), "water", `${label}: a river at sea`);
         }
         for (const resource of world.resources!) {
           const cell = resource.at.y * world.width + resource.at.x;

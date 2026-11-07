@@ -456,7 +456,12 @@ export function WorldOverworld({
         // Each stretch of the river, kept by the cells it runs through, so no tree stands on it.
         for (let i = 0; i < river.path.length - 1; i++) {
           const [a, b] = [river.path[i]!, river.path[i + 1]!];
-          const stretch = [(a % width) + 0.5, Math.floor(a / width) + 0.5, (b % width) + 0.5, Math.floor(b / width) + 0.5] as const;
+          const stretch = [
+            (a % width) + 0.5,
+            Math.floor(a / width) + 0.5,
+            (b % width) + 0.5,
+            Math.floor(b / width) + 0.5,
+          ] as const;
           for (const cell of [a, b]) riverStretches.set(cell, [...(riverStretches.get(cell) ?? []), stretch]);
         }
         return { points, mouth: wetCell[last] === true };

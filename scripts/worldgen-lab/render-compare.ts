@@ -42,7 +42,17 @@ function svg(version: number) {
       body += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2f6fb0" stroke-width="${0.8 + river.width[i]! * 0.9}" stroke-linecap="round"/>`;
     }
   }
-  const LETTER: Record<string, string> = { harbor: "H", pass: "P", ore: "O", salt: "S", timber: "T", fish: "F", fertile: "R", falls: "W", ford: "+" };
+  const LETTER: Record<string, string> = {
+    harbor: "H",
+    pass: "P",
+    ore: "O",
+    salt: "S",
+    timber: "T",
+    fish: "F",
+    fertile: "R",
+    falls: "W",
+    ford: "+",
+  };
   for (const r of world.resources ?? [])
     body += `<text x="${r.at.x * S + S / 2}" y="${r.at.y * S + S * 0.8}" font-size="${S * 0.95}" font-weight="700" text-anchor="middle" fill="#111" stroke="#fff" stroke-width="2" paint-order="stroke">${LETTER[r.kind]}</text>`;
   const byId = new Map(world.places.map((p) => [p.id, p]));
