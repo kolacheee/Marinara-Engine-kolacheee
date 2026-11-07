@@ -1,0 +1,1543 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-9.md Part A only: suburb<season>-house-0..11, 48 files. Part B yard props and earlier terrain receive no verdict.",
+      "calibration": "Good enough to ship beside approved art, assessed at intended size before magnification; no invented failure quota.",
+      "references": [
+        "art-drop/BRIEF-8.md (standing-prop/style context)",
+        "art-drop/reference/modern-house.png",
+        "art-drop/reference/jazz_age-house.png",
+        "art-drop/reference/suburbs-now-in-game.png",
+        "art-drop/reference/road-modern.png",
+        "art-drop/out/modern-marker0..2.png",
+        "art-drop/out/jazz_age-marker0..2.png",
+        "art-drop/out/city-0.png",
+        "art-drop/out/industry-0.png",
+        "art-drop/out/slums-0.png",
+        "art-drop/out/farmland-0.png",
+        "art-drop/out/paddies<season>-0.png",
+        "art-drop/out/grass<season>-base.png and -detail-0.png",
+        "art-drop/out/plains<season>-base.png and -detail-0.png"
+      ],
+      "previous_review": "critic-r9A-1.json: 42 passes are byte-for-byte unchanged and remain passed. The six previously failed files have changed and were freshly assessed. No new defect was found that warrants reversing an unchanged pass.",
+      "not_applicable": {
+        "peak_lattice_or_range": "Part A contains no peaks; egg-crate mountain testing has no target.",
+        "forest_composite": "Part A contains no standalone tree sprites or crowns to assemble into a forest. Attached trees on houses 2 and 7 were inspected in all seasonal neighbourhoods and at 8x.",
+        "target_base_3x3": "Part A contains no base textures. Approved grass/plains were repeated 3x3 for context only; their verdict is not reopened.",
+        "craters_ruins_cyberpunk": "No crater, ruin or cyberpunk tile is a Part A target. Houses contain none of the listed Swiss-cheese, classical-ruin or stamped cyberpunk motifs."
+      }
+    },
+    "checks": {
+      "individuals": "All 48 viewed on seasonal grass at native 1x and exact nearest-neighbour 4x; each also viewed at exact 8x in groups 0-3, 4-7, 8-11 on alternating dark/light backgrounds. 8x crops retain all painted pixels (source x=6..41,y=20..47), trimming only transparent padding. No interpolated resize was used.",
+      "neighbourhood": "Four 288x240 scenes viewed at 1x/4x on matching approved grass, with a continuous crossroad taken from road-modern.png. Each contains all twelve designs and eight residential repetitions, with varied setbacks and four empty corner slots. Whole transparent props read as a calm neighbourhood, with no cell backings, sprite join seams or baked-in street grid. Loose row placement is intentional under the brief, not a stamped ground pattern.",
+      "random_8x2": "Four seeded 8-across by 2-down arrangements viewed at 1x/4x. Each includes every design and repeated 0/2/7/9. Repeated instances do not expose opaque cell borders, clipping, halo pixels or unacceptable visual noise. These are prop arrangements, not seamless tile claims.",
+      "reference_bases": "Saved literal unrotated 3x3 repeats of approved grass and plains in all four seasons at 1x/4x. Viewed full repeats at 1x and four-way junction crops at exact 4x. Their broad motifs repeat, especially spring/plains; those pre-existing reference patterns are not attributed to the transparent houses.",
+      "edges": "All target alpha values are 0 or 255. Each sprite has one 8-connected painted silhouette, with no detached specks. Alternating-background 8x inspection finds no pale matte outline, coloured key fringe, halo or softened contour.",
+      "size_and_anchor": "All 48 are 48x48 RGBA. Painted horizontal centres are x=23 or 23.5; every painted bottom is y=46, leaving one transparent bottom row. No upper or side clipping. Roofs retain the small map-prop scale, with broad bungalow/wing exceptions consistent with the varied-footprint brief.",
+      "shape_and_duplicates": "Twelve distinct silhouettes/footprints remain legible: compact red cottage, dormered cottage, tree/gable home, tall brick home, long bungalow/garage, crossed gables, flat-roof brick home, porch/tree home, blue-roof cottage, wide low hip-roof bungalow, awning shop, small church. No within-season exact or visually rejected near-duplicates. Matching architecture across seasons is intentional. Side trees on 2/7 differ in shape and placement.",
+      "light_palette_and_noise": "Warm brick/cream walls, muted red/brown/slate roofs and dark contours sit with approved modern/jazz_age markers, round-2 city/industry/slums/farmland, paddies and grass/plains details. Top-left highlights and darker side/eave planes are coherent at map size. Fine facade pixels on unchanged designs were rechecked in context; they do not become isolated noise demanding a new rejection.",
+      "seasons": "Autumn recolours attached trees and small vegetation while retaining shaded roof/wall architecture; it is not a blanket flat-orange treatment. Winter has snow on every roof, exposed material/shadow and identifiable walls/openings rather than blank white replacements. Repaired side trees on winter 2/7 are predominantly snow-covered with brown structure, no return to a full summer-green deciduous crown.",
+      "timeless_style": "Shop 10 and church 11 supply the two community pieces. Brick/clapboard cottages, bungalows, chimneys, porches and muted roofs fit modern and jazz_age; no satellite dish, clearly modern car, fantasy prop or cyberpunk equipment appears."
+    },
+    "repaired_files": {
+      "suburb-house-9": {
+        "status": "pass",
+        "reason": "The former olive/slate roof speckles have been removed. A broad muted light roof plane, restrained horizontal shingle/ridge accents and a darker right slope now separate cleanly from the dark eave/window band and brick/cream facade. The low wide bungalow reads as a house at 1x, holds up at 4x/8x, and stays distinct from the tall flat-roof design 6.",
+        "evidence": [
+          "critic-r9A-2-repaired-season-comparison-1x.png",
+          "critic-r9A-2-repaired-season-comparison-4x.png",
+          "critic-r9A-2-repaired-season-comparison-8x.png"
+        ]
+      },
+      "suburb@spring-house-9": {
+        "status": "pass",
+        "reason": "The former olive/slate roof speckles have been removed. A broad muted light roof plane, restrained horizontal shingle/ridge accents and a darker right slope now separate cleanly from the dark eave/window band and brick/cream facade. The low wide bungalow reads as a house at 1x, holds up at 4x/8x, and stays distinct from the tall flat-roof design 6.",
+        "evidence": [
+          "critic-r9A-2-repaired-season-comparison-1x.png",
+          "critic-r9A-2-repaired-season-comparison-4x.png",
+          "critic-r9A-2-repaired-season-comparison-8x.png"
+        ]
+      },
+      "suburb@autumn-house-9": {
+        "status": "pass",
+        "reason": "The former olive/slate roof speckles have been removed. A broad muted light roof plane, restrained horizontal shingle/ridge accents and a darker right slope now separate cleanly from the dark eave/window band and brick/cream facade. The low wide bungalow reads as a house at 1x, holds up at 4x/8x, and stays distinct from the tall flat-roof design 6.",
+        "evidence": [
+          "critic-r9A-2-repaired-season-comparison-1x.png",
+          "critic-r9A-2-repaired-season-comparison-4x.png",
+          "critic-r9A-2-repaired-season-comparison-8x.png"
+        ]
+      },
+      "suburb@winter-house-2": {
+        "status": "pass",
+        "reason": "The right-side autumn-deciduous crown is now predominantly pale snow with blue-grey shading and a brown lower/trunk structure. It no longer restores the full summer-green leaf mass. The small dormant crown reads beside the correctly snowed house at 1x and survives 4x/8x without fringe or detached pixels.",
+        "evidence": [
+          "critic-r9A-2-repaired-season-comparison-1x.png",
+          "critic-r9A-2-repaired-season-comparison-4x.png",
+          "critic-r9A-2-repaired-season-comparison-8x.png"
+        ]
+      },
+      "suburb@winter-house-7": {
+        "status": "pass",
+        "reason": "The upper-left autumn-deciduous crown is now predominantly pale snow with blue-grey shading and a brown lower/trunk structure. It no longer restores the full summer-green leaf mass. The small dormant crown reads beside the correctly snowed house at 1x and survives 4x/8x without fringe or detached pixels.",
+        "evidence": [
+          "critic-r9A-2-repaired-season-comparison-1x.png",
+          "critic-r9A-2-repaired-season-comparison-4x.png",
+          "critic-r9A-2-repaired-season-comparison-8x.png"
+        ]
+      },
+      "suburb@winter-house-9": {
+        "status": "pass",
+        "reason": "The former mottled snow cap is now a coherent pale roof plane with a darker blue right slope, continuous dark outline/eave and a separate cream facade/window band. The exposed brick, pale entry and low wide footprint remain identifiable at 1x; 4x/8x show deliberate clusters rather than grey/tan islands. The snow treatment stays registered to the summer roof.",
+        "evidence": [
+          "critic-r9A-2-repaired-season-comparison-1x.png",
+          "critic-r9A-2-repaired-season-comparison-4x.png",
+          "critic-r9A-2-repaired-season-comparison-8x.png"
+        ]
+      }
+    },
+    "summer": {
+      "status": "pass",
+      "files": [
+        "suburb-house-0",
+        "suburb-house-1",
+        "suburb-house-2",
+        "suburb-house-3",
+        "suburb-house-4",
+        "suburb-house-5",
+        "suburb-house-6",
+        "suburb-house-7",
+        "suburb-house-8",
+        "suburb-house-9",
+        "suburb-house-10",
+        "suburb-house-11"
+      ],
+      "pass_count": 12,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r9A-2-summer-houses-0-3-8x.png",
+        "critic-r9A-2-summer-houses-4-7-8x.png",
+        "critic-r9A-2-summer-houses-8-11-8x.png",
+        "critic-r9A-2-summer-individuals-1x.png",
+        "critic-r9A-2-summer-individuals-4x.png",
+        "critic-r9A-2-summer-neighbourhood-1x.png",
+        "critic-r9A-2-summer-neighbourhood-4x.png",
+        "critic-r9A-2-summer-palette-context-1x.png",
+        "critic-r9A-2-summer-palette-context-4x.png",
+        "critic-r9A-2-summer-random-8x2-1x.png",
+        "critic-r9A-2-summer-random-8x2-4x.png"
+      ]
+    },
+    "spring": {
+      "status": "pass",
+      "files": [
+        "suburb@spring-house-0",
+        "suburb@spring-house-1",
+        "suburb@spring-house-2",
+        "suburb@spring-house-3",
+        "suburb@spring-house-4",
+        "suburb@spring-house-5",
+        "suburb@spring-house-6",
+        "suburb@spring-house-7",
+        "suburb@spring-house-8",
+        "suburb@spring-house-9",
+        "suburb@spring-house-10",
+        "suburb@spring-house-11"
+      ],
+      "pass_count": 12,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r9A-2-spring-houses-0-3-8x.png",
+        "critic-r9A-2-spring-houses-4-7-8x.png",
+        "critic-r9A-2-spring-houses-8-11-8x.png",
+        "critic-r9A-2-spring-individuals-1x.png",
+        "critic-r9A-2-spring-individuals-4x.png",
+        "critic-r9A-2-spring-neighbourhood-1x.png",
+        "critic-r9A-2-spring-neighbourhood-4x.png",
+        "critic-r9A-2-spring-palette-context-1x.png",
+        "critic-r9A-2-spring-palette-context-4x.png",
+        "critic-r9A-2-spring-random-8x2-1x.png",
+        "critic-r9A-2-spring-random-8x2-4x.png"
+      ]
+    },
+    "autumn": {
+      "status": "pass",
+      "files": [
+        "suburb@autumn-house-0",
+        "suburb@autumn-house-1",
+        "suburb@autumn-house-2",
+        "suburb@autumn-house-3",
+        "suburb@autumn-house-4",
+        "suburb@autumn-house-5",
+        "suburb@autumn-house-6",
+        "suburb@autumn-house-7",
+        "suburb@autumn-house-8",
+        "suburb@autumn-house-9",
+        "suburb@autumn-house-10",
+        "suburb@autumn-house-11"
+      ],
+      "pass_count": 12,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r9A-2-autumn-houses-0-3-8x.png",
+        "critic-r9A-2-autumn-houses-4-7-8x.png",
+        "critic-r9A-2-autumn-houses-8-11-8x.png",
+        "critic-r9A-2-autumn-individuals-1x.png",
+        "critic-r9A-2-autumn-individuals-4x.png",
+        "critic-r9A-2-autumn-neighbourhood-1x.png",
+        "critic-r9A-2-autumn-neighbourhood-4x.png",
+        "critic-r9A-2-autumn-palette-context-1x.png",
+        "critic-r9A-2-autumn-palette-context-4x.png",
+        "critic-r9A-2-autumn-random-8x2-1x.png",
+        "critic-r9A-2-autumn-random-8x2-4x.png"
+      ]
+    },
+    "winter": {
+      "status": "pass",
+      "files": [
+        "suburb@winter-house-0",
+        "suburb@winter-house-1",
+        "suburb@winter-house-2",
+        "suburb@winter-house-3",
+        "suburb@winter-house-4",
+        "suburb@winter-house-5",
+        "suburb@winter-house-6",
+        "suburb@winter-house-7",
+        "suburb@winter-house-8",
+        "suburb@winter-house-9",
+        "suburb@winter-house-10",
+        "suburb@winter-house-11"
+      ],
+      "pass_count": 12,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r9A-2-winter-houses-0-3-8x.png",
+        "critic-r9A-2-winter-houses-4-7-8x.png",
+        "critic-r9A-2-winter-houses-8-11-8x.png",
+        "critic-r9A-2-winter-individuals-1x.png",
+        "critic-r9A-2-winter-individuals-4x.png",
+        "critic-r9A-2-winter-neighbourhood-1x.png",
+        "critic-r9A-2-winter-neighbourhood-4x.png",
+        "critic-r9A-2-winter-palette-context-1x.png",
+        "critic-r9A-2-winter-palette-context-4x.png",
+        "critic-r9A-2-winter-random-8x2-1x.png",
+        "critic-r9A-2-winter-random-8x2-4x.png"
+      ]
+    },
+    "audit": {
+      "reviewed": 48,
+      "passed": 48,
+      "failed": 0,
+      "unchanged_prior_passes": [
+        "suburb-house-0",
+        "suburb-house-1",
+        "suburb-house-2",
+        "suburb-house-3",
+        "suburb-house-4",
+        "suburb-house-5",
+        "suburb-house-6",
+        "suburb-house-7",
+        "suburb-house-8",
+        "suburb-house-10",
+        "suburb-house-11",
+        "suburb@spring-house-0",
+        "suburb@spring-house-1",
+        "suburb@spring-house-2",
+        "suburb@spring-house-3",
+        "suburb@spring-house-4",
+        "suburb@spring-house-5",
+        "suburb@spring-house-6",
+        "suburb@spring-house-7",
+        "suburb@spring-house-8",
+        "suburb@spring-house-10",
+        "suburb@spring-house-11",
+        "suburb@autumn-house-0",
+        "suburb@autumn-house-1",
+        "suburb@autumn-house-2",
+        "suburb@autumn-house-3",
+        "suburb@autumn-house-4",
+        "suburb@autumn-house-5",
+        "suburb@autumn-house-6",
+        "suburb@autumn-house-7",
+        "suburb@autumn-house-8",
+        "suburb@autumn-house-10",
+        "suburb@autumn-house-11",
+        "suburb@winter-house-0",
+        "suburb@winter-house-1",
+        "suburb@winter-house-3",
+        "suburb@winter-house-4",
+        "suburb@winter-house-5",
+        "suburb@winter-house-6",
+        "suburb@winter-house-8",
+        "suburb@winter-house-10",
+        "suburb@winter-house-11"
+      ],
+      "changed_since_previous_review": [
+        "suburb-house-9",
+        "suburb@spring-house-9",
+        "suburb@autumn-house-9",
+        "suburb@winter-house-2",
+        "suburb@winter-house-7",
+        "suburb@winter-house-9"
+      ],
+      "newly_reversed_prior_passes": [],
+      "target_files_unchanged_during_review": true,
+      "concurrent_non_target_changes": [
+        "marsh-prop-0.png",
+        "marsh-prop-3.png",
+        "marsh-prop-4.png",
+        "marsh-prop-7.png"
+      ],
+      "writes": "Only critic-r9A-2-*.png and critic-r9A-2.json in art-drop/review/ were retained in the workspace. No art-drop/out/ file was written.",
+      "source_sha256": {
+        "suburb-house-0": "7d3b571ceebcd4297935f055446a44b87b21a509207b5809a93576e8e02731d9",
+        "suburb-house-1": "9fbf5073b582a1b780834e5fb691cf68d1e422b9214a7e8e19d97263df1ec27a",
+        "suburb-house-2": "41985d2f5bfd43e1730dd4fb64dd15acca49f6402bb03b2c6c545deb4404424e",
+        "suburb-house-3": "ab280097308f5d13219522a0d02557195cbb580c22723f9467d807540e2e0d99",
+        "suburb-house-4": "fd174236b6df465c1311c569574a413d1c7e472abf4e586d343ba5aea5a35c25",
+        "suburb-house-5": "303962f657d0e68e9c809a5f6cd1b86cad4f80654ad5898f08596d3ae62155e9",
+        "suburb-house-6": "5e77ad1243930bb29f944f9f850736aaaceccd37b2b8e733d13305793fa18233",
+        "suburb-house-7": "e843c7a2e454d1f8f01f84a8b6cbec2a5a654cb6ae03e73353fb9e9dd3399118",
+        "suburb-house-8": "b82afcc8132397d3fc00091d8a4ca4bcecd78ed27fc61a140cb8e5efd12d9fdb",
+        "suburb-house-9": "c70c991edef119d3fd78e21fa976f6f84a3b8259dec1c20cc04cf660d505fed0",
+        "suburb-house-10": "643b0850703237666f53847a7f1d4abd3e8d030f0e74d465f2e8d635f6661bbd",
+        "suburb-house-11": "746ed6500d27722e3b2d20ddd5b4a6024ddaae2b790a9892e997b77f325d8a4b",
+        "suburb@spring-house-0": "00a5c14170afaeef61e87af4fee2c2056b98499da445a2afa5dd20bf7051c330",
+        "suburb@spring-house-1": "b1f4aacd077f74f47071ab2aef21d75c790afa89d271d2f7ae85b3d5a325c3dc",
+        "suburb@spring-house-2": "f70e7e137eaf0ee198fe8be26afbafe174db311897ab514c4ed68082e401626e",
+        "suburb@spring-house-3": "ab280097308f5d13219522a0d02557195cbb580c22723f9467d807540e2e0d99",
+        "suburb@spring-house-4": "66cf2b8afadf3100c4da00a825c19f38ea257fba68f3dae725646a70d09c6302",
+        "suburb@spring-house-5": "866851ce7869a85e1f426df9cb739bafdcfde09847742e5ef2c06aae93f75d0f",
+        "suburb@spring-house-6": "69f9419e5d6de94df088bd29f87e2a6a74f95753d5db0bc4165a5c434a5ef865",
+        "suburb@spring-house-7": "8f8ec859745bb889ad4430b17b486e0cd16bb3ddafd53f9fb154ba00217bfd4b",
+        "suburb@spring-house-8": "5f1adbec7b859f26757d1e293b5346c68373df29a8f9dbc783faebdbdb647940",
+        "suburb@spring-house-9": "4ce49bb77442e3f77af2924598c839d03f1bf1e1aacad763172f0f45184c2b09",
+        "suburb@spring-house-10": "019b6df7a237294036be1a15f4f2a3df759564e123b9693e16dfa01354a6afbb",
+        "suburb@spring-house-11": "01060a4c8a96742c22b0dba4161e38bdec80adfc7c7c240ce7f54bc1271496af",
+        "suburb@autumn-house-0": "041c90dfef4dd0e1f659e96b0520f87afb77b66259c16725fca8d2a6273fae78",
+        "suburb@autumn-house-1": "6ab6d2d2be55b6e37c7d6346efe819100c985ac60f8e10f95fe3dd87a8d370f9",
+        "suburb@autumn-house-2": "fffbadc98a32615c39eaa1e80762e161407ec0974e1a3b8fbf2789b4938dec55",
+        "suburb@autumn-house-3": "ab280097308f5d13219522a0d02557195cbb580c22723f9467d807540e2e0d99",
+        "suburb@autumn-house-4": "5ee6302b1cc44315074d43a8638bee56f8446669df891919ecd78948e31af0f6",
+        "suburb@autumn-house-5": "c575785a04bdf4937c7facee1667139f9a7dae6e67abfa1089f83150a3532c2d",
+        "suburb@autumn-house-6": "37f7a3a54ca1c36de438c9bf843539977c787a29045a093659393a75cbbe6d30",
+        "suburb@autumn-house-7": "99250e7df9bde6c0cceefd80b761cce5fe6560b9fa9f4e7327a7bf089482683a",
+        "suburb@autumn-house-8": "476f2853a7552ad44e383e4fc3ba5be853969f7089f138d99fb01dddae87a160",
+        "suburb@autumn-house-9": "beab15ced5c34b3b4c50bfbb81180d2092d0afcc1702db2f0128ed310380902a",
+        "suburb@autumn-house-10": "2c6e94cbbd38b4f2e8968b3eebc3aa08f8d7ffc7cdb5d9e0432ef05cdb4db7ff",
+        "suburb@autumn-house-11": "f121da1e3b6cb35da8d64bdd0665772fc2dce46c9ce794852c8a57a86ff45eda",
+        "suburb@winter-house-0": "5bd0a2d7166d40ef5382cc0e59bd6d4168121f59ac5190c983042ceeeee4f40e",
+        "suburb@winter-house-1": "81e4104f7a1c4e35539d4d03106b41830a13c36568939145200d736cd4a85f6f",
+        "suburb@winter-house-2": "1668cf48c352b66cb7bb952643bad0722fb2118ed4a06b3ba857a0abcc7e2f32",
+        "suburb@winter-house-3": "d5d58fc6c588f24222c2f0732099daca0df11a96dffeb9743a69726c764b3a36",
+        "suburb@winter-house-4": "1dcd419567ac178bfba75d946a8e5164ee2e860b7b264abb0408ae6f50b6f990",
+        "suburb@winter-house-5": "82ec9616204e9e77a2d1152a5eebc786e63e207459fcf3ca4e6610a9ab18d7b4",
+        "suburb@winter-house-6": "6a457b8ee89b773094a0e29df5e69158099ca1f89f7f7a60e415be7b27cfb90b",
+        "suburb@winter-house-7": "051f7cc734ad2e282c08588428d9747aebb184c136e254c0420f7b49ec716f7b",
+        "suburb@winter-house-8": "33b4a4725335ae7b8cf664838defa7a25777539ac21f602300eb33aec87e0b08",
+        "suburb@winter-house-9": "78af0b524d5ae8e00816b748876aeff8bf3809b97487952b5784e092c03780af",
+        "suburb@winter-house-10": "56b54872f626775b9a1143789f3943cab10ef74c1c8f8513cf1da5a5d9a5b11f",
+        "suburb@winter-house-11": "215850960e0102fb14d359437256607a5d107783bfbf22bff8afc33e34b3dc62"
+      },
+      "technical": {
+        "suburb-house-0": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            31,
+            32,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "7d3b571ceebcd4297935f055446a44b87b21a509207b5809a93576e8e02731d9"
+        },
+        "suburb-house-1": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            31,
+            33,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "9fbf5073b582a1b780834e5fb691cf68d1e422b9214a7e8e19d97263df1ec27a"
+        },
+        "suburb-house-2": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            28,
+            35,
+            47
+          ],
+          "opaque_colors": 17,
+          "sha256": "41985d2f5bfd43e1730dd4fb64dd15acca49f6402bb03b2c6c545deb4404424e"
+        },
+        "suburb-house-3": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            16,
+            23,
+            31,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "ab280097308f5d13219522a0d02557195cbb580c22723f9467d807540e2e0d99"
+        },
+        "suburb-house-4": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            12,
+            34,
+            36,
+            47
+          ],
+          "opaque_colors": 17,
+          "sha256": "fd174236b6df465c1311c569574a413d1c7e472abf4e586d343ba5aea5a35c25"
+        },
+        "suburb-house-5": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            14,
+            28,
+            34,
+            47
+          ],
+          "opaque_colors": 20,
+          "sha256": "303962f657d0e68e9c809a5f6cd1b86cad4f80654ad5898f08596d3ae62155e9"
+        },
+        "suburb-house-6": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            30,
+            32,
+            47
+          ],
+          "opaque_colors": 14,
+          "sha256": "5e77ad1243930bb29f944f9f850736aaaceccd37b2b8e733d13305793fa18233"
+        },
+        "suburb-house-7": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            30,
+            34,
+            47
+          ],
+          "opaque_colors": 17,
+          "sha256": "e843c7a2e454d1f8f01f84a8b6cbec2a5a654cb6ae03e73353fb9e9dd3399118"
+        },
+        "suburb-house-8": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            27,
+            35,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "b82afcc8132397d3fc00091d8a4ca4bcecd78ed27fc61a140cb8e5efd12d9fdb"
+        },
+        "suburb-house-9": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            12,
+            31,
+            35,
+            47
+          ],
+          "opaque_colors": 8,
+          "sha256": "c70c991edef119d3fd78e21fa976f6f84a3b8259dec1c20cc04cf660d505fed0"
+        },
+        "suburb-house-10": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            14,
+            28,
+            33,
+            47
+          ],
+          "opaque_colors": 19,
+          "sha256": "643b0850703237666f53847a7f1d4abd3e8d030f0e74d465f2e8d635f6661bbd"
+        },
+        "suburb-house-11": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            29,
+            32,
+            47
+          ],
+          "opaque_colors": 19,
+          "sha256": "746ed6500d27722e3b2d20ddd5b4a6024ddaae2b790a9892e997b77f325d8a4b"
+        },
+        "suburb@spring-house-0": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            31,
+            32,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "00a5c14170afaeef61e87af4fee2c2056b98499da445a2afa5dd20bf7051c330"
+        },
+        "suburb@spring-house-1": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            31,
+            33,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "b1f4aacd077f74f47071ab2aef21d75c790afa89d271d2f7ae85b3d5a325c3dc"
+        },
+        "suburb@spring-house-2": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            28,
+            35,
+            47
+          ],
+          "opaque_colors": 18,
+          "sha256": "f70e7e137eaf0ee198fe8be26afbafe174db311897ab514c4ed68082e401626e"
+        },
+        "suburb@spring-house-3": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            16,
+            23,
+            31,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "ab280097308f5d13219522a0d02557195cbb580c22723f9467d807540e2e0d99"
+        },
+        "suburb@spring-house-4": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            12,
+            34,
+            36,
+            47
+          ],
+          "opaque_colors": 18,
+          "sha256": "66cf2b8afadf3100c4da00a825c19f38ea257fba68f3dae725646a70d09c6302"
+        },
+        "suburb@spring-house-5": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            14,
+            28,
+            34,
+            47
+          ],
+          "opaque_colors": 18,
+          "sha256": "866851ce7869a85e1f426df9cb739bafdcfde09847742e5ef2c06aae93f75d0f"
+        },
+        "suburb@spring-house-6": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            30,
+            32,
+            47
+          ],
+          "opaque_colors": 15,
+          "sha256": "69f9419e5d6de94df088bd29f87e2a6a74f95753d5db0bc4165a5c434a5ef865"
+        },
+        "suburb@spring-house-7": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            30,
+            34,
+            47
+          ],
+          "opaque_colors": 17,
+          "sha256": "8f8ec859745bb889ad4430b17b486e0cd16bb3ddafd53f9fb154ba00217bfd4b"
+        },
+        "suburb@spring-house-8": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            27,
+            35,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "5f1adbec7b859f26757d1e293b5346c68373df29a8f9dbc783faebdbdb647940"
+        },
+        "suburb@spring-house-9": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            12,
+            31,
+            35,
+            47
+          ],
+          "opaque_colors": 8,
+          "sha256": "4ce49bb77442e3f77af2924598c839d03f1bf1e1aacad763172f0f45184c2b09"
+        },
+        "suburb@spring-house-10": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            14,
+            28,
+            33,
+            47
+          ],
+          "opaque_colors": 20,
+          "sha256": "019b6df7a237294036be1a15f4f2a3df759564e123b9693e16dfa01354a6afbb"
+        },
+        "suburb@spring-house-11": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            29,
+            32,
+            47
+          ],
+          "opaque_colors": 20,
+          "sha256": "01060a4c8a96742c22b0dba4161e38bdec80adfc7c7c240ce7f54bc1271496af"
+        },
+        "suburb@autumn-house-0": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            31,
+            32,
+            47
+          ],
+          "opaque_colors": 14,
+          "sha256": "041c90dfef4dd0e1f659e96b0520f87afb77b66259c16725fca8d2a6273fae78"
+        },
+        "suburb@autumn-house-1": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            31,
+            33,
+            47
+          ],
+          "opaque_colors": 14,
+          "sha256": "6ab6d2d2be55b6e37c7d6346efe819100c985ac60f8e10f95fe3dd87a8d370f9"
+        },
+        "suburb@autumn-house-2": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            28,
+            35,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "fffbadc98a32615c39eaa1e80762e161407ec0974e1a3b8fbf2789b4938dec55"
+        },
+        "suburb@autumn-house-3": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            16,
+            23,
+            31,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "ab280097308f5d13219522a0d02557195cbb580c22723f9467d807540e2e0d99"
+        },
+        "suburb@autumn-house-4": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            12,
+            34,
+            36,
+            47
+          ],
+          "opaque_colors": 17,
+          "sha256": "5ee6302b1cc44315074d43a8638bee56f8446669df891919ecd78948e31af0f6"
+        },
+        "suburb@autumn-house-5": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            14,
+            28,
+            34,
+            47
+          ],
+          "opaque_colors": 18,
+          "sha256": "c575785a04bdf4937c7facee1667139f9a7dae6e67abfa1089f83150a3532c2d"
+        },
+        "suburb@autumn-house-6": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            30,
+            32,
+            47
+          ],
+          "opaque_colors": 14,
+          "sha256": "37f7a3a54ca1c36de438c9bf843539977c787a29045a093659393a75cbbe6d30"
+        },
+        "suburb@autumn-house-7": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            30,
+            34,
+            47
+          ],
+          "opaque_colors": 17,
+          "sha256": "99250e7df9bde6c0cceefd80b761cce5fe6560b9fa9f4e7327a7bf089482683a"
+        },
+        "suburb@autumn-house-8": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            27,
+            35,
+            47
+          ],
+          "opaque_colors": 15,
+          "sha256": "476f2853a7552ad44e383e4fc3ba5be853969f7089f138d99fb01dddae87a160"
+        },
+        "suburb@autumn-house-9": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            12,
+            31,
+            35,
+            47
+          ],
+          "opaque_colors": 9,
+          "sha256": "beab15ced5c34b3b4c50bfbb81180d2092d0afcc1702db2f0128ed310380902a"
+        },
+        "suburb@autumn-house-10": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            14,
+            28,
+            33,
+            47
+          ],
+          "opaque_colors": 19,
+          "sha256": "2c6e94cbbd38b4f2e8968b3eebc3aa08f8d7ffc7cdb5d9e0432ef05cdb4db7ff"
+        },
+        "suburb@autumn-house-11": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            29,
+            32,
+            47
+          ],
+          "opaque_colors": 19,
+          "sha256": "f121da1e3b6cb35da8d64bdd0665772fc2dce46c9ce794852c8a57a86ff45eda"
+        },
+        "suburb@winter-house-0": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            31,
+            32,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "5bd0a2d7166d40ef5382cc0e59bd6d4168121f59ac5190c983042ceeeee4f40e"
+        },
+        "suburb@winter-house-1": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            31,
+            33,
+            47
+          ],
+          "opaque_colors": 18,
+          "sha256": "81e4104f7a1c4e35539d4d03106b41830a13c36568939145200d736cd4a85f6f"
+        },
+        "suburb@winter-house-2": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            28,
+            35,
+            47
+          ],
+          "opaque_colors": 18,
+          "sha256": "1668cf48c352b66cb7bb952643bad0722fb2118ed4a06b3ba857a0abcc7e2f32"
+        },
+        "suburb@winter-house-3": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            16,
+            23,
+            31,
+            47
+          ],
+          "opaque_colors": 17,
+          "sha256": "d5d58fc6c588f24222c2f0732099daca0df11a96dffeb9743a69726c764b3a36"
+        },
+        "suburb@winter-house-4": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            12,
+            34,
+            36,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "1dcd419567ac178bfba75d946a8e5164ee2e860b7b264abb0408ae6f50b6f990"
+        },
+        "suburb@winter-house-5": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            14,
+            28,
+            34,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "82ec9616204e9e77a2d1152a5eebc786e63e207459fcf3ca4e6610a9ab18d7b4"
+        },
+        "suburb@winter-house-6": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            30,
+            32,
+            47
+          ],
+          "opaque_colors": 15,
+          "sha256": "6a457b8ee89b773094a0e29df5e69158099ca1f89f7f7a60e415be7b27cfb90b"
+        },
+        "suburb@winter-house-7": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            30,
+            34,
+            47
+          ],
+          "opaque_colors": 20,
+          "sha256": "051f7cc734ad2e282c08588428d9747aebb184c136e254c0420f7b49ec716f7b"
+        },
+        "suburb@winter-house-8": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            13,
+            27,
+            35,
+            47
+          ],
+          "opaque_colors": 16,
+          "sha256": "33b4a4725335ae7b8cf664838defa7a25777539ac21f602300eb33aec87e0b08"
+        },
+        "suburb@winter-house-9": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            12,
+            31,
+            35,
+            47
+          ],
+          "opaque_colors": 9,
+          "sha256": "78af0b524d5ae8e00816b748876aeff8bf3809b97487952b5784e092c03780af"
+        },
+        "suburb@winter-house-10": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            14,
+            28,
+            33,
+            47
+          ],
+          "opaque_colors": 22,
+          "sha256": "56b54872f626775b9a1143789f3943cab10ef74c1c8f8513cf1da5a5d9a5b11f"
+        },
+        "suburb@winter-house-11": {
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_values": [
+            0,
+            255
+          ],
+          "bounds": [
+            15,
+            29,
+            32,
+            47
+          ],
+          "opaque_colors": 17,
+          "sha256": "215850960e0102fb14d359437256607a5d107783bfbf22bff8afc33e34b3dc62"
+        }
+      },
+      "connected_components": {
+        "suburb-house-0": [
+          197
+        ],
+        "suburb-house-1": [
+          211
+        ],
+        "suburb-house-2": [
+          301
+        ],
+        "suburb-house-3": [
+          291
+        ],
+        "suburb-house-4": [
+          241
+        ],
+        "suburb-house-5": [
+          246
+        ],
+        "suburb-house-6": [
+          247
+        ],
+        "suburb-house-7": [
+          275
+        ],
+        "suburb-house-8": [
+          305
+        ],
+        "suburb-house-9": [
+          274
+        ],
+        "suburb-house-10": [
+          290
+        ],
+        "suburb-house-11": [
+          223
+        ],
+        "suburb@spring-house-0": [
+          197
+        ],
+        "suburb@spring-house-1": [
+          211
+        ],
+        "suburb@spring-house-2": [
+          301
+        ],
+        "suburb@spring-house-3": [
+          291
+        ],
+        "suburb@spring-house-4": [
+          241
+        ],
+        "suburb@spring-house-5": [
+          246
+        ],
+        "suburb@spring-house-6": [
+          247
+        ],
+        "suburb@spring-house-7": [
+          275
+        ],
+        "suburb@spring-house-8": [
+          305
+        ],
+        "suburb@spring-house-9": [
+          274
+        ],
+        "suburb@spring-house-10": [
+          290
+        ],
+        "suburb@spring-house-11": [
+          223
+        ],
+        "suburb@autumn-house-0": [
+          197
+        ],
+        "suburb@autumn-house-1": [
+          211
+        ],
+        "suburb@autumn-house-2": [
+          301
+        ],
+        "suburb@autumn-house-3": [
+          291
+        ],
+        "suburb@autumn-house-4": [
+          241
+        ],
+        "suburb@autumn-house-5": [
+          246
+        ],
+        "suburb@autumn-house-6": [
+          247
+        ],
+        "suburb@autumn-house-7": [
+          275
+        ],
+        "suburb@autumn-house-8": [
+          305
+        ],
+        "suburb@autumn-house-9": [
+          274
+        ],
+        "suburb@autumn-house-10": [
+          290
+        ],
+        "suburb@autumn-house-11": [
+          223
+        ],
+        "suburb@winter-house-0": [
+          197
+        ],
+        "suburb@winter-house-1": [
+          211
+        ],
+        "suburb@winter-house-2": [
+          301
+        ],
+        "suburb@winter-house-3": [
+          291
+        ],
+        "suburb@winter-house-4": [
+          241
+        ],
+        "suburb@winter-house-5": [
+          246
+        ],
+        "suburb@winter-house-6": [
+          247
+        ],
+        "suburb@winter-house-7": [
+          275
+        ],
+        "suburb@winter-house-8": [
+          305
+        ],
+        "suburb@winter-house-9": [
+          274
+        ],
+        "suburb@winter-house-10": [
+          290
+        ],
+        "suburb@winter-house-11": [
+          223
+        ]
+      },
+      "composites": [
+        "critic-r9A-2-approved-jazz_age-markers-1x.png",
+        "critic-r9A-2-approved-jazz_age-markers-4x.png",
+        "critic-r9A-2-approved-modern-markers-1x.png",
+        "critic-r9A-2-approved-modern-markers-4x.png",
+        "critic-r9A-2-approved-round2-tiles-1x.png",
+        "critic-r9A-2-approved-round2-tiles-4x.png",
+        "critic-r9A-2-autumn-grass-reference-3x3-1x.png",
+        "critic-r9A-2-autumn-grass-reference-3x3-4x.png",
+        "critic-r9A-2-autumn-grass-reference-junction-1x.png",
+        "critic-r9A-2-autumn-grass-reference-junction-4x.png",
+        "critic-r9A-2-autumn-houses-0-3-8x.png",
+        "critic-r9A-2-autumn-houses-4-7-8x.png",
+        "critic-r9A-2-autumn-houses-8-11-8x.png",
+        "critic-r9A-2-autumn-individuals-1x.png",
+        "critic-r9A-2-autumn-individuals-4x.png",
+        "critic-r9A-2-autumn-neighbourhood-1x.png",
+        "critic-r9A-2-autumn-neighbourhood-4x.png",
+        "critic-r9A-2-autumn-palette-context-1x.png",
+        "critic-r9A-2-autumn-palette-context-4x.png",
+        "critic-r9A-2-autumn-plains-reference-3x3-1x.png",
+        "critic-r9A-2-autumn-plains-reference-3x3-4x.png",
+        "critic-r9A-2-autumn-plains-reference-junction-1x.png",
+        "critic-r9A-2-autumn-plains-reference-junction-4x.png",
+        "critic-r9A-2-autumn-random-8x2-1x.png",
+        "critic-r9A-2-autumn-random-8x2-4x.png",
+        "critic-r9A-2-named-references-1x.png",
+        "critic-r9A-2-named-references-4x.png",
+        "critic-r9A-2-repaired-season-comparison-1x.png",
+        "critic-r9A-2-repaired-season-comparison-4x.png",
+        "critic-r9A-2-repaired-season-comparison-8x.png",
+        "critic-r9A-2-spring-grass-reference-3x3-1x.png",
+        "critic-r9A-2-spring-grass-reference-3x3-4x.png",
+        "critic-r9A-2-spring-grass-reference-junction-1x.png",
+        "critic-r9A-2-spring-grass-reference-junction-4x.png",
+        "critic-r9A-2-spring-houses-0-3-8x.png",
+        "critic-r9A-2-spring-houses-4-7-8x.png",
+        "critic-r9A-2-spring-houses-8-11-8x.png",
+        "critic-r9A-2-spring-individuals-1x.png",
+        "critic-r9A-2-spring-individuals-4x.png",
+        "critic-r9A-2-spring-neighbourhood-1x.png",
+        "critic-r9A-2-spring-neighbourhood-4x.png",
+        "critic-r9A-2-spring-palette-context-1x.png",
+        "critic-r9A-2-spring-palette-context-4x.png",
+        "critic-r9A-2-spring-plains-reference-3x3-1x.png",
+        "critic-r9A-2-spring-plains-reference-3x3-4x.png",
+        "critic-r9A-2-spring-plains-reference-junction-1x.png",
+        "critic-r9A-2-spring-plains-reference-junction-4x.png",
+        "critic-r9A-2-spring-random-8x2-1x.png",
+        "critic-r9A-2-spring-random-8x2-4x.png",
+        "critic-r9A-2-summer-grass-reference-3x3-1x.png",
+        "critic-r9A-2-summer-grass-reference-3x3-4x.png",
+        "critic-r9A-2-summer-grass-reference-junction-1x.png",
+        "critic-r9A-2-summer-grass-reference-junction-4x.png",
+        "critic-r9A-2-summer-houses-0-3-8x.png",
+        "critic-r9A-2-summer-houses-4-7-8x.png",
+        "critic-r9A-2-summer-houses-8-11-8x.png",
+        "critic-r9A-2-summer-individuals-1x.png",
+        "critic-r9A-2-summer-individuals-4x.png",
+        "critic-r9A-2-summer-neighbourhood-1x.png",
+        "critic-r9A-2-summer-neighbourhood-4x.png",
+        "critic-r9A-2-summer-palette-context-1x.png",
+        "critic-r9A-2-summer-palette-context-4x.png",
+        "critic-r9A-2-summer-plains-reference-3x3-1x.png",
+        "critic-r9A-2-summer-plains-reference-3x3-4x.png",
+        "critic-r9A-2-summer-plains-reference-junction-1x.png",
+        "critic-r9A-2-summer-plains-reference-junction-4x.png",
+        "critic-r9A-2-summer-random-8x2-1x.png",
+        "critic-r9A-2-summer-random-8x2-4x.png",
+        "critic-r9A-2-winter-grass-reference-3x3-1x.png",
+        "critic-r9A-2-winter-grass-reference-3x3-4x.png",
+        "critic-r9A-2-winter-grass-reference-junction-1x.png",
+        "critic-r9A-2-winter-grass-reference-junction-4x.png",
+        "critic-r9A-2-winter-houses-0-3-8x.png",
+        "critic-r9A-2-winter-houses-4-7-8x.png",
+        "critic-r9A-2-winter-houses-8-11-8x.png",
+        "critic-r9A-2-winter-individuals-1x.png",
+        "critic-r9A-2-winter-individuals-4x.png",
+        "critic-r9A-2-winter-neighbourhood-1x.png",
+        "critic-r9A-2-winter-neighbourhood-4x.png",
+        "critic-r9A-2-winter-palette-context-1x.png",
+        "critic-r9A-2-winter-palette-context-4x.png",
+        "critic-r9A-2-winter-plains-reference-3x3-1x.png",
+        "critic-r9A-2-winter-plains-reference-3x3-4x.png",
+        "critic-r9A-2-winter-plains-reference-junction-1x.png",
+        "critic-r9A-2-winter-plains-reference-junction-4x.png",
+        "critic-r9A-2-winter-random-8x2-1x.png",
+        "critic-r9A-2-winter-random-8x2-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "suburb-house-0",
+    "suburb-house-1",
+    "suburb-house-2",
+    "suburb-house-3",
+    "suburb-house-4",
+    "suburb-house-5",
+    "suburb-house-6",
+    "suburb-house-7",
+    "suburb-house-8",
+    "suburb-house-9",
+    "suburb-house-10",
+    "suburb-house-11",
+    "suburb@spring-house-0",
+    "suburb@spring-house-1",
+    "suburb@spring-house-2",
+    "suburb@spring-house-3",
+    "suburb@spring-house-4",
+    "suburb@spring-house-5",
+    "suburb@spring-house-6",
+    "suburb@spring-house-7",
+    "suburb@spring-house-8",
+    "suburb@spring-house-9",
+    "suburb@spring-house-10",
+    "suburb@spring-house-11",
+    "suburb@autumn-house-0",
+    "suburb@autumn-house-1",
+    "suburb@autumn-house-2",
+    "suburb@autumn-house-3",
+    "suburb@autumn-house-4",
+    "suburb@autumn-house-5",
+    "suburb@autumn-house-6",
+    "suburb@autumn-house-7",
+    "suburb@autumn-house-8",
+    "suburb@autumn-house-9",
+    "suburb@autumn-house-10",
+    "suburb@autumn-house-11",
+    "suburb@winter-house-0",
+    "suburb@winter-house-1",
+    "suburb@winter-house-2",
+    "suburb@winter-house-3",
+    "suburb@winter-house-4",
+    "suburb@winter-house-5",
+    "suburb@winter-house-6",
+    "suburb@winter-house-7",
+    "suburb@winter-house-8",
+    "suburb@winter-house-9",
+    "suburb@winter-house-10",
+    "suburb@winter-house-11"
+  ],
+  "fail": []
+}
