@@ -272,3 +272,75 @@ export function paintSite(ctx: Ctx, cx: number, cy: number) {
   px(ctx, "#111014", x + 6, y + 9, 4, 5);
   px(ctx, "#111014", x + 7, y + 8, 2, 1);
 }
+
+/** A river's course on the map (world generator 7): its cells as pixel points, each with the river's size
+ *  there (1 a stream to 3 a great river); `mouth` when its last point lies out in the water it runs into. */
+export interface RiverCourse {
+  points: Array<{ x: number; y: number; size: number }>;
+  mouth?: boolean;
+}
+
+/** How wide a river of each size is drawn, in pixels of a 16 pixel cell. */
+const RIVER_WIDTH = [0, 4, 6, 9] as const;
+
+/** Rounds a course's corners (Chaikin's cutting, three times), keeping its two ends where they are. */
+function smoothCourse(points: Array<{ x: number; y: number; w: number }>) {
+  let out = points;
+  for (let pass = 0; pass < 3 && out.length > 2; pass++) {
+    const next = [out[0]!];
+    for (let i = 0; i < out.length - 1; i++) {
+      const [a, b] = [out[i]!, out[i + 1]!];
+      next.push(
+        { x: a.x * 0.75 + b.x * 0.25, y: a.y * 0.75 + b.y * 0.25, w: a.w * 0.75 + b.w * 0.25 },
+        { x: a.x * 0.25 + b.x * 0.75, y: a.y * 0.25 + b.y * 0.75, w: a.w * 0.25 + b.w * 0.75 },
+      );
+    }
+    next.push(out[out.length - 1]!);
+    out = next;
+  }
+  return out;
+}
+
+/** A colour a share darker (0..1), from "#rrggbb" or "rgb(r, g, b)". */
+function darker(color: string, share: number): string {
+  const parts = color.startsWith("#")
+    ? [1, 3, 5].map((at) => parseInt(color.slice(at, at + 2), 16))
+    : (color.match(/\d+/g) ?? ["74", "127", "181"]).slice(0, 3).map(Number);
+  const [r, g, b] = parts.map((part) => Math.round(part * (1 - share)));
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+/** The rivers: a bank a shade darker than the water, then the water in the sea's own colour, over all of
+ *  them in turn (so where one joins another the two run together), widening smoothly from a thin source
+ *  as they gather water. A river's mouth runs out into the sea without a bank, so it opens into it. */
+export function paintRivers(ctx: Ctx, courses: RiverCourse[], water: string, ripples?: CanvasPattern | null) {
+  const smooth = courses.map((course) => {
+    const points = course.points.map((point, index) => ({
+      x: point.x,
+      y: point.y,
+      // A source starts as a trickle and reaches its size within three cells.
+      w: RIVER_WIDTH[Math.min(3, Math.max(1, point.size)) as 1 | 2 | 3] * Math.min(1, 0.45 + index * 0.2),
+    }));
+    return { points: smoothCourse(points), mouth: course.mouth === true, cut: points.length };
+  });
+  const stroke = (color: string | CanvasPattern, extra: number, bank: boolean) => {
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineCap = "round";
+    for (const { points, mouth } of smooth) {
+      // The bank stops short of a mouth's last stretch, out in the water.
+      const end = bank && mouth ? Math.max(2, Math.floor(points.length * 0.94)) : points.length;
+      for (let i = 0; i < end - 1; i++) {
+        const [a, b] = [points[i]!, points[i + 1]!];
+        ctx.lineWidth = (a.w + b.w) / 2 + extra;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  };
+  stroke(darker(water, 0.45), 2, true);
+  stroke(ripples ?? water, 0, false);
+}

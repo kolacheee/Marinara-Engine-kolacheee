@@ -35,6 +35,16 @@ function svg(version: number) {
     const look = looks[parseInt(world.ground[i]!, 36)]!;
     body += `<rect x="${(i % world.width) * S}" y="${Math.floor(i / world.width) * S}" width="${S}" height="${S}" fill="${COLORS[look] ?? "#999"}"/>`;
   }
+  const centre = (cell: number) => [(cell % world.width) * S + S / 2, Math.floor(cell / world.width) * S + S / 2];
+  for (const river of world.rivers ?? []) {
+    for (let i = 0; i < river.path.length - 1; i++) {
+      const [[x1, y1], [x2, y2]] = [centre(river.path[i]!), centre(river.path[i + 1]!)];
+      body += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2f6fb0" stroke-width="${0.8 + river.width[i]! * 0.9}" stroke-linecap="round"/>`;
+    }
+  }
+  const LETTER: Record<string, string> = { harbor: "H", pass: "P", ore: "O", salt: "S", timber: "T", fish: "F", fertile: "R", falls: "W", ford: "+" };
+  for (const r of world.resources ?? [])
+    body += `<text x="${r.at.x * S + S / 2}" y="${r.at.y * S + S * 0.8}" font-size="${S * 0.95}" font-weight="700" text-anchor="middle" fill="#111" stroke="#fff" stroke-width="2" paint-order="stroke">${LETTER[r.kind]}</text>`;
   const byId = new Map(world.places.map((p) => [p.id, p]));
   for (const link of world.links) {
     const a = byId.get(link.from)!,
@@ -50,5 +60,5 @@ function svg(version: number) {
 }
 writeFileSync(
   out,
-  `<html><body style="background:#fff;display:flex;padding:12px">${svg(Number(left))}${svg(Number(right))}</body><p style="font:13px sans-serif;padding:0 24px">Dots sized by rank; white dots are tagged port. Lines are links.</p></html>`,
+  `<html><body style="background:#fff;display:flex;padding:12px">${svg(Number(left))}${svg(Number(right))}</body><p style="font:13px sans-serif;padding:0 24px">Dots sized by rank; white dots are tagged port. Brown lines are links, blue lines rivers. Letters: H harbour, P pass, O ore, S salt, T timber, F fishing, R rich river soil, W falls, + ford.</p></html>`,
 );

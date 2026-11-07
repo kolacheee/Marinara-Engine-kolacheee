@@ -16,6 +16,7 @@ import {
 } from "./compile.js";
 import { applyWorldEdits, checkWorldEdits, worldEditsSchema, worldPlaceNamed, type WorldEdits } from "./edits.js";
 import { worldEditsFightable } from "./battlefield-maps.js";
+import { WORLD_RESOURCE_WORDS } from "./land.js";
 import { worldCast, worldCastSize, worldPersonSheet } from "./people.js";
 import { worldHistory, worldHistoryLine, worldNotablePast, worldPlacePast } from "./history.js";
 import {
@@ -273,6 +274,25 @@ export function worldOverviewPromptText(game: GameWorld): string {
   return lines.join("\n");
 }
 
+/** The river and the resources by a settlement (generator 7), for the GM: what it lives by. */
+export function worldLandLines(world: GameWorld["world"], place: WorldPlace): string[] {
+  if (!world.rivers && !world.resources) return [];
+  const lines: string[] = [];
+  const near = (x: number, y: number, reach: number) =>
+    Math.max(Math.abs(x - place.at.x), Math.abs(y - place.at.y)) <= reach;
+  let river = 0;
+  for (const each of world.rivers ?? [])
+    each.path.forEach((cell, index) => {
+      if (near(cell % world.width, Math.floor(cell / world.width), 1)) river = Math.max(river, each.width[index] ?? 1);
+    });
+  if (river) lines.push(`- ${river >= 3 ? "On a great river" : river === 2 ? "On a river" : "Beside a stream"}.`);
+  const kinds = [
+    ...new Set((world.resources ?? []).filter((each) => near(each.at.x, each.at.y, 2)).map((each) => each.kind)),
+  ];
+  if (kinds.length) lines.push(`- Nearby: ${kinds.map((kind) => WORLD_RESOURCE_WORDS[kind]).join(", ")}.`);
+  return lines;
+}
+
 /** The changing part, for the per-turn reminder: where the party is, and where it can go from there,
  *  as the story has left the world (`present`, worldgen W4). */
 export function worldWhereYouAreText(
@@ -308,6 +328,7 @@ export function worldWhereYouAreText(
   );
   if (place.tags.length) lines.push(`- Known for: ${place.tags.map((tag) => labelOf(kit.placeTags, tag)).join(", ")}.`);
   if (place.note) lines.push(`- ${place.note}`);
+  lines.push(...worldLandLines(world, place.rank !== undefined ? place : (chain.find((each) => each.rank !== undefined) ?? place)));
   // Who keeps it now, and its past (worldgen W3), told for the settlement it is in.
   const history = worldHistory(game);
   const home = place.rank !== undefined ? place : chain.find((each) => each.rank !== undefined);

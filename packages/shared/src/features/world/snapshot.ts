@@ -7,6 +7,7 @@
 // remakes it from the recipe.
 // ──────────────────────────────────────────────
 import { z } from "zod";
+import { WORLD_RESOURCE_KINDS } from "./land.js";
 import { WORLD_CHANGE_KINDS, parseWorldKit, type WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldBriefSchema } from "../../schemas/world-brief.schema.js";
 import { WORLD_GENERATOR_VERSION, WORLD_PROSPERITIES, worldGeneratorReads, type CompiledWorld } from "./compile.js";
@@ -142,6 +143,28 @@ const compiledSchema = z
       .array(z.object({ from: id, to: id, way: id, days: z.number().finite().min(0).max(100_000) }).strict())
       .max(100_000),
     startId: id,
+    rivers: z
+      .array(
+        z
+          .object({
+            path: z.array(z.number().int().min(0).max(16_000_000)).min(1).max(100_000),
+            width: z.array(z.number().int().min(1).max(3)).max(100_000),
+          })
+          .strict(),
+      )
+      .max(10_000)
+      .optional(),
+    resources: z
+      .array(
+        z
+          .object({
+            kind: z.enum(WORLD_RESOURCE_KINDS),
+            at: z.object({ x: z.number().int().min(0), y: z.number().int().min(0) }).strict(),
+          })
+          .strict(),
+      )
+      .max(10_000)
+      .optional(),
   })
   .strict()
   .refine((world) => world.ground.length === world.width * world.height, "The ground does not fill the world");
@@ -274,6 +297,11 @@ const snapshotShape = z
       if (![...world.ground].every((cell) => parseInt(cell, 36) < world.terrain.length)) {
         issue(`${label}: the ground names a terrain it does not have`);
       }
+      const cells = world.width * world.height;
+      if (world.rivers?.some((river) => river.path.some((cell) => cell >= cells) || river.width.length !== river.path.length))
+        issue(`${label}: a river runs off the ground`);
+      if (world.resources?.some((resource) => resource.at.x >= world.width || resource.at.y >= world.height))
+        issue(`${label}: a resource lies off the ground`);
     }
     const shown = snapshot.world ?? snapshot.compiled;
     const places = new Map(shown.places.map((place) => [place.id, place]));
