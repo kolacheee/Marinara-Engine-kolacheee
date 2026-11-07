@@ -1,0 +1,658 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-8.md Part D: Industry, 10 summer + 10 winter props. Exactly these 20 files receive verdicts.",
+      "groups": {
+        "summer_small": [
+          "scifi-industry-bldg-0",
+          "scifi-industry-bldg-1",
+          "scifi-industry-bldg-2",
+          "scifi-industry-bldg-3",
+          "scifi-industry-bldg-4",
+          "scifi-industry-bldg-5"
+        ],
+        "summer_large": [
+          "scifi-industry-bldg-6",
+          "scifi-industry-bldg-7",
+          "scifi-industry-bldg-8",
+          "scifi-industry-bldg-9"
+        ],
+        "winter_small": [
+          "scifi-industry@winter-bldg-0",
+          "scifi-industry@winter-bldg-1",
+          "scifi-industry@winter-bldg-2",
+          "scifi-industry@winter-bldg-3",
+          "scifi-industry@winter-bldg-4",
+          "scifi-industry@winter-bldg-5"
+        ],
+        "winter_large": [
+          "scifi-industry@winter-bldg-6",
+          "scifi-industry@winter-bldg-7",
+          "scifi-industry@winter-bldg-8",
+          "scifi-industry@winter-bldg-9"
+        ]
+      },
+      "prior_review": "art-drop/review/critic-r8D-0.json does not exist; no prior passes to preserve.",
+      "calibration": "Good enough to ship next to the approved art. A pass is based on native-size readability, required scene/tiling checks at 1x/4x and individual 8x inspection, not merely valid dimensions or alpha.",
+      "references": "Shared Round 8 introduction and Part D existing-stack reference: out/scifi-marker0..3, representative scifi-city-tower and scifi-industry-stack sprites. Also compared the six settings marker0 sprites, approved round-2 city/industry/slums tiles in summer/winter, paddies in all four seasons, and grass/plains bases and details in all four seasons. Supplementary predecessor references: reference/scifi-ground, current-industry-pattern and current-scifi-industry. The Part A street is supporting scene ground, not a Part D deliverable.",
+      "out_unchanged": true,
+      "out_pngs_hash_verified": 584
+    },
+    "qc": {
+      "individuals": "All 20 inspected in summer/winter native and exact nearest-neighbour 4x contact sheets; all 20 also examined at exact nearest-neighbour 8x in ten labelled summer/winter pairs. Silhouettes additionally checked on light/dark split backgrounds and grass/snow terrain. No blur, soft alpha, coloured fringe, halo, clipped contour or stray floating pixel found.",
+      "geometry": "0..5 are 48x48, 6..9 are 96x96, in both seasons. Every file has only alpha 0/255. Visible feet end at y=46 or y=94, leaving one bottom canvas row. All visible bounds have clear side margins and sit approximately centred. Every alpha silhouette is one 8-connected component. All 20 hashes differ.",
+      "random_8x2": "Two independent seeded 8x2 arrangements of the six one-cell props in each season, inspected at 1x and 4x. Each arrangement includes all six designs at least twice. Street is composited underneath transparency, without rotating or filtering pixels. No per-cell ground tile, frame or seam is introduced by these props. Repeated instances remain recognisable, but the six designs are not near-duplicate silhouettes.",
+      "industry_blocks": "Summer and winter industry blocks inspected at 1x and 4x. Dense cell-based stress scenes and a second staggered planting with a denser core and thinner perimeter mix small machinery, all four large designs and existing industry stacks. Large designs reserve 2x2 cells and drawing is ordered by bottom/foot row. Four exact 4x quadrant crops per dense and staggered scene avoid display reduction. The factory roofs, tank farm, orange vent and loading gantry remain identifiable next to stacks; mixed planting does not produce a stamped box texture. Deliberate regular spacing in the 8x2 stress layout is not baked into any transparent sprite.",
+      "noise_and_shapes": "Some steel surfaces use small rust/highlight flecks and the pump shelter is busy under its roof. At native size these support recognisable tank/pump/factory shapes; they do not collapse into confetti. Sawtooth hall 6, vent factory 8 and barrel-roof loading hall 9 are separate readable designs. The detail level is close to the existing industry stacks, which are more intricate than the smaller approved ground tiles.",
+      "lighting_palette": "Top-left-facing roof/pipe surfaces carry cream highlights; right/recessed faces use darker slate and teal. Restrained rust/ochre, cyan controls, magenta indicators and the orange furnace match the approved sci-fi landmark palette. The warmer roof on 9 remains industrial ochre, not an out-of-set saturated colour.",
+      "winter": "Each winter file preserves its summer equipment and footprint. Snow is distributed on caps, roof edges, canopy surfaces, pipe ledges and gantry beams, with cool shaded patches; narrow cranes and pipes appropriately retain less snow area. Dark facades, cyan controls, magenta beacons and orange furnace light remain. No winter is blank or replaced by an unrelated silhouette.",
+      "context_ground_3x3": "Both supporting street bases saved as literal unrotated 3x3 repeats at 1x/4x. Inspected the 1x fields and exact 4x wrap-intersection crops. No sharp wrap line was found, but recurring grates, puddles and winter slush motifs reveal the 288px ground repeat. This is an observed out-of-scope Part A ground property, not a defect assigned to any Part D transparent prop.",
+      "not_applicable": "Part D contains no bases, peaks, craters, ruins, trees or autumn variants. Thus no Part D base 3x3 verdict, peak lattice/range composite, forest-tree composite, egg-crate peak test, Swiss-cheese crater test, classical-ruin test, orange-autumn test or identical-crown test has an input. City/slum assets appear only as approved reference context; their separate Part B/C QC is outside this review.",
+      "result": "All 20 meet the shipping bar. No specific rejection-level Part D defect found."
+    },
+    "files": {
+      "scifi-industry-bldg-0": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          7,
+          3,
+          40,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 17,
+        "nontransparent_pixels": 1151,
+        "sha256": "35620632ef229d6da1f3ef9bc9e20de4eb73b5965656f7ef568442747566ac35",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Upright ribbed tank with two bent pipes and a cyan control light; cylindrical cap, ladder and foot pipes remain distinct at native size.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-0-8x.png"
+      },
+      "scifi-industry-bldg-1": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          1,
+          18,
+          47,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 21,
+        "nontransparent_pixels": 980,
+        "sha256": "abbbdd76c7dec0a207c02044dea8baaffbcc93cc69a3c06e865b89dbddb45b22",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Two horizontal pressure vessels on short feet; the differing diameters and visible end caps read clearly and differ from the upright tank and tank farm.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-1-8x.png"
+      },
+      "scifi-industry-bldg-2": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          2,
+          8,
+          46,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 19,
+        "nontransparent_pixels": 1365,
+        "sha256": "8ac561000dfff65404b13107bb11b7221f3ddd0121deb07dd51765f665e61de3",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Small service shed with split sawtooth roof, broad shutter and side equipment; roof planes and shutter separate at native size.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-2-8x.png"
+      },
+      "scifi-industry-bldg-3": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          5,
+          2,
+          42,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 18,
+        "nontransparent_pixels": 782,
+        "sha256": "7811338c2411791c6a2ee4912fe372fef2939311a086874db5fd56c51d35e23b",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Open pipe junction with unequal elbow heights, a cyan gauge and rust-coloured valve tubing; the open silhouette reads as plumbing, not a broken building.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-3-8x.png"
+      },
+      "scifi-industry-bldg-4": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          2,
+          2,
+          46,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 21,
+        "nontransparent_pixels": 1086,
+        "sha256": "7609dd783e727ffca80821921c044599b17ecd70d68c996a97884cf3d075084b",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Loading crane with diagonal trussed boom, hanging hoist, cab and stabiliser feet; the thin hoist is connected, not floating fringe.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-4-8x.png"
+      },
+      "scifi-industry-bldg-5": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          2,
+          10,
+          45,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 20,
+        "nontransparent_pixels": 1156,
+        "sha256": "704a36744bdbd7fc4d7a7ad56c6da2c6e6b64d9d992a7bf1fe9f4d6bd53f8b22",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Open pump shelter with a flat canopy, orange return pipe and two round pump bodies; machinery stays legible beneath the roof at native size.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-5-8x.png"
+      },
+      "scifi-industry-bldg-6": {
+        "size": [
+          96,
+          96
+        ],
+        "bbox": [
+          6,
+          17,
+          90,
+          95
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 28,
+        "nontransparent_pixels": 4920,
+        "sha256": "3fe09d58570eb7f11f15651af0d05d7510f64048d5956881a54b86b238452cb4",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Large three-bay sawtooth hall with external pipes and a front loading door; the roof bays remain strong connected shapes rather than tiny scattered roof fragments.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-6-8x.png"
+      },
+      "scifi-industry-bldg-7": {
+        "size": [
+          96,
+          96
+        ],
+        "bbox": [
+          14,
+          16,
+          82,
+          95
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 24,
+        "nontransparent_pixels": 3743,
+        "sha256": "87f00ef53300957289596b2c80a5575f7c03514375272cb94c9419e7474cd14e",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Tank farm with three unequal upright vessels, a foreground horizontal vessel, ladders and connecting pipes; unequal heights distinguish it from an enlarged tank 0.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-7-8x.png"
+      },
+      "scifi-industry-bldg-8": {
+        "size": [
+          96,
+          96
+        ],
+        "bbox": [
+          2,
+          20,
+          93,
+          95
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 22,
+        "nontransparent_pixels": 5550,
+        "sha256": "91599d4dcaf2416e2633d9f880ffa6f3763d36e8cdfc3d4786dfc61e015f30f7",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Factory with paired gabled roof bays, a large orange glowing grille and cyan side glazing; the hot vent gives a clear focal point distinct from hall 6.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-8-8x.png"
+      },
+      "scifi-industry-bldg-9": {
+        "size": [
+          96,
+          96
+        ],
+        "bbox": [
+          2,
+          21,
+          93,
+          95
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 26,
+        "nontransparent_pixels": 4479,
+        "sha256": "3d1c57ae0c456477c4d46d651e16859537fc66b6a13eeba41681efba86f675fb",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Barrel-roof loading hall with a side gantry and crates; the curved roof and large open gantry distinguish it from both sawtooth factories.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-9-8x.png"
+      },
+      "scifi-industry@winter-bldg-0": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          8,
+          3,
+          40,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 18,
+        "nontransparent_pixels": 1154,
+        "sha256": "df2504d03d00007df7191a244d0453820779a29ee86432623a78a5c80c8fe8e7",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Upright ribbed tank with two bent pipes and a cyan control light; cylindrical cap, ladder and foot pipes remain distinct at native size. Snow is visible on the cap and horizontal pipe surfaces while dark vertical ribs and the cyan control light remain visible.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-0-8x.png",
+        "pixels_changed_from_summer": 559
+      },
+      "scifi-industry@winter-bldg-1": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          1,
+          17,
+          47,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 22,
+        "nontransparent_pixels": 989,
+        "sha256": "5a6bec0bf2cd41e46b00cdc0b8f1459e916d358e32e339692305289cc5f534db",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Two horizontal pressure vessels on short feet; the differing diameters and visible end caps read clearly and differ from the upright tank and tank farm. Snow follows the upper arcs of both vessels and the rear pipe; end caps, rust straps and feet retain the summer design.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-1-8x.png",
+        "pixels_changed_from_summer": 374
+      },
+      "scifi-industry@winter-bldg-2": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          2,
+          9,
+          46,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 21,
+        "nontransparent_pixels": 1362,
+        "sha256": "708158f1da36500ea0e1e00cf3d35547cd7b7f9fd0004fd2d4a26cb804a5755b",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Small service shed with split sawtooth roof, broad shutter and side equipment; roof planes and shutter separate at native size. Snow picks out roof ridges, eaves and side ledges without flattening the two roof planes; the shutter and lit details remain dark and warm.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-2-8x.png",
+        "pixels_changed_from_summer": 362
+      },
+      "scifi-industry@winter-bldg-3": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          5,
+          3,
+          42,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 23,
+        "nontransparent_pixels": 793,
+        "sha256": "d775a229a49f3b611960d7f563490f84f39e36830983dcb367f493d2fad47de4",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Open pipe junction with unequal elbow heights, a cyan gauge and rust-coloured valve tubing; the open silhouette reads as plumbing, not a broken building. Snow sits on elbow tops and flange ledges; the cyan gauge and orange valve tubing remain readable inside the open silhouette.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-3-8x.png",
+        "pixels_changed_from_summer": 551
+      },
+      "scifi-industry@winter-bldg-4": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          2,
+          2,
+          46,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 24,
+        "nontransparent_pixels": 1093,
+        "sha256": "07fe12ddf95fa78445df2d85171e6651ddde7edcebfc55f201d428909b9e4f4d",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Loading crane with diagonal trussed boom, hanging hoist, cab and stabiliser feet; the thin hoist is connected, not floating fringe. Snow is restrained on the narrow boom, cab roof and stabilisers; the truss, hoist and cyan cab light remain visible.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-4-8x.png",
+        "pixels_changed_from_summer": 274
+      },
+      "scifi-industry@winter-bldg-5": {
+        "size": [
+          48,
+          48
+        ],
+        "bbox": [
+          2,
+          10,
+          45,
+          47
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 20,
+        "nontransparent_pixels": 1157,
+        "sha256": "a377ce44a0b1291c2bdd0e486a007a5aff1e83ba74b160fa84d0262b254e8760",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Open pump shelter with a flat canopy, orange return pipe and two round pump bodies; machinery stays legible beneath the roof at native size. Snow follows the shelter canopy and exposed pump edges; the orange return pipe and dark open underside survive.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-5-8x.png",
+        "pixels_changed_from_summer": 431
+      },
+      "scifi-industry@winter-bldg-6": {
+        "size": [
+          96,
+          96
+        ],
+        "bbox": [
+          6,
+          17,
+          90,
+          95
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 29,
+        "nontransparent_pixels": 4927,
+        "sha256": "727487626cd5819ea2d1fef5aef987b0890f990080213765dcc93f002edb8e29",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Large three-bay sawtooth hall with external pipes and a front loading door; the roof bays remain strong connected shapes rather than tiny scattered roof fragments. Snow accumulates along all three roof ridges, eaves and pipe ledges while the broad slate roof faces and front loading door remain legible.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-6-8x.png",
+        "pixels_changed_from_summer": 2140
+      },
+      "scifi-industry@winter-bldg-7": {
+        "size": [
+          96,
+          96
+        ],
+        "bbox": [
+          14,
+          16,
+          82,
+          95
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 26,
+        "nontransparent_pixels": 3749,
+        "sha256": "f8979f885d31db8e8d96d374c3f665c041bc576df5f31b6b6dba02c6120c2706",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Tank farm with three unequal upright vessels, a foreground horizontal vessel, ladders and connecting pipes; unequal heights distinguish it from an enlarged tank 0. Snow caps the different-height tanks and connecting horizontal pipes; dark tank walls, ladders and magenta beacon remain visible.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-7-8x.png",
+        "pixels_changed_from_summer": 1490
+      },
+      "scifi-industry@winter-bldg-8": {
+        "size": [
+          96,
+          96
+        ],
+        "bbox": [
+          2,
+          20,
+          93,
+          95
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 25,
+        "nontransparent_pixels": 5561,
+        "sha256": "0cbaf3234895225401bc96e07803630ba17ecde6c215f95c305267c50fa74b7d",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Factory with paired gabled roof bays, a large orange glowing grille and cyan side glazing; the hot vent gives a clear focal point distinct from hall 6. Snow picks out roof edges, ledges and chimney tops while the orange grille still glows strongly and cyan side windows remain visible.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-8-8x.png",
+        "pixels_changed_from_summer": 2281
+      },
+      "scifi-industry@winter-bldg-9": {
+        "size": [
+          96,
+          96
+        ],
+        "bbox": [
+          3,
+          21,
+          93,
+          95
+        ],
+        "alpha_values": [
+          0,
+          255
+        ],
+        "opaque_colors": 28,
+        "nontransparent_pixels": 4477,
+        "sha256": "996ee2bb536f34e316a4d5650e15d2ceefcd6ffd2fc2cf87cf01217c63cdb242",
+        "alpha_connected_components_8_neighbour": 1,
+        "verdict": "pass",
+        "visual_assessment": "Barrel-roof loading hall with a side gantry and crates; the curved roof and large open gantry distinguish it from both sawtooth factories. White snow highlights follow the curved roof ribs and gantry beam; ochre roof sections, dark loading door, crates and magenta light remain visible.",
+        "edge_and_style_assessment": "Inspected in 1x and 4x contact/scene views and exact 8x pair sheet. Hard dark contour, no visible matte fringe or detached debris. Cream upper-left highlights, slate/teal shaded faces and sparse cyan/magenta/orange lights fit the approved sci-fi stacks. No rejection-level noise, muddy silhouette or reversed light.",
+        "evidence_8x": "critic-r8D-1-pair-9-8x.png",
+        "pixels_changed_from_summer": 1977
+      }
+    },
+    "evidence": {
+      "png_prefix": "art-drop/review/critic-r8D-1-",
+      "pngs": [
+        "critic-r8D-1-landmark-style-reference-1x.png",
+        "critic-r8D-1-landmark-style-reference-4x.png",
+        "critic-r8D-1-markers-spring-autumn-reference-1x.png",
+        "critic-r8D-1-markers-spring-autumn-reference-4x.png",
+        "critic-r8D-1-original-style-reference-1x.png",
+        "critic-r8D-1-original-style-reference-4x.png",
+        "critic-r8D-1-pair-0-8x.png",
+        "critic-r8D-1-pair-1-8x.png",
+        "critic-r8D-1-pair-2-8x.png",
+        "critic-r8D-1-pair-3-8x.png",
+        "critic-r8D-1-pair-4-8x.png",
+        "critic-r8D-1-pair-5-8x.png",
+        "critic-r8D-1-pair-6-8x.png",
+        "critic-r8D-1-pair-7-8x.png",
+        "critic-r8D-1-pair-8-8x.png",
+        "critic-r8D-1-pair-9-8x.png",
+        "critic-r8D-1-summer-approved-terrain-reference-1x.png",
+        "critic-r8D-1-summer-approved-terrain-reference-4x.png",
+        "critic-r8D-1-summer-contact-1x.png",
+        "critic-r8D-1-summer-contact-4x.png",
+        "critic-r8D-1-summer-context-street-3x3-1x.png",
+        "critic-r8D-1-summer-context-street-3x3-4x.png",
+        "critic-r8D-1-summer-context-street-wrap-intersection-4x.png",
+        "critic-r8D-1-summer-dense-industry-block-1x.png",
+        "critic-r8D-1-summer-dense-industry-block-4x.png",
+        "critic-r8D-1-summer-dense-quadrant-0-4x.png",
+        "critic-r8D-1-summer-dense-quadrant-1-4x.png",
+        "critic-r8D-1-summer-dense-quadrant-2-4x.png",
+        "critic-r8D-1-summer-dense-quadrant-3-4x.png",
+        "critic-r8D-1-summer-edge-backgrounds-1x.png",
+        "critic-r8D-1-summer-edge-backgrounds-4x.png",
+        "critic-r8D-1-summer-grass-silhouettes-1x.png",
+        "critic-r8D-1-summer-grass-silhouettes-4x.png",
+        "critic-r8D-1-summer-industry-block-1x.png",
+        "critic-r8D-1-summer-industry-block-4x.png",
+        "critic-r8D-1-summer-random-8x2-seed194-1x.png",
+        "critic-r8D-1-summer-random-8x2-seed194-4x.png",
+        "critic-r8D-1-summer-random-8x2-seed81-1x.png",
+        "critic-r8D-1-summer-random-8x2-seed81-4x.png",
+        "critic-r8D-1-summer-staggered-industry-block-1x.png",
+        "critic-r8D-1-summer-staggered-industry-block-4x.png",
+        "critic-r8D-1-summer-staggered-quadrant-0-4x.png",
+        "critic-r8D-1-summer-staggered-quadrant-1-4x.png",
+        "critic-r8D-1-summer-staggered-quadrant-2-4x.png",
+        "critic-r8D-1-summer-staggered-quadrant-3-4x.png",
+        "critic-r8D-1-winter-approved-terrain-reference-1x.png",
+        "critic-r8D-1-winter-approved-terrain-reference-4x.png",
+        "critic-r8D-1-winter-contact-1x.png",
+        "critic-r8D-1-winter-contact-4x.png",
+        "critic-r8D-1-winter-context-street-3x3-1x.png",
+        "critic-r8D-1-winter-context-street-3x3-4x.png",
+        "critic-r8D-1-winter-context-street-wrap-intersection-4x.png",
+        "critic-r8D-1-winter-dense-industry-block-1x.png",
+        "critic-r8D-1-winter-dense-industry-block-4x.png",
+        "critic-r8D-1-winter-dense-quadrant-0-4x.png",
+        "critic-r8D-1-winter-dense-quadrant-1-4x.png",
+        "critic-r8D-1-winter-dense-quadrant-2-4x.png",
+        "critic-r8D-1-winter-dense-quadrant-3-4x.png",
+        "critic-r8D-1-winter-edge-backgrounds-1x.png",
+        "critic-r8D-1-winter-edge-backgrounds-4x.png",
+        "critic-r8D-1-winter-grass-silhouettes-1x.png",
+        "critic-r8D-1-winter-grass-silhouettes-4x.png",
+        "critic-r8D-1-winter-industry-block-1x.png",
+        "critic-r8D-1-winter-industry-block-4x.png",
+        "critic-r8D-1-winter-random-8x2-seed194-1x.png",
+        "critic-r8D-1-winter-random-8x2-seed194-4x.png",
+        "critic-r8D-1-winter-random-8x2-seed81-1x.png",
+        "critic-r8D-1-winter-random-8x2-seed81-4x.png",
+        "critic-r8D-1-winter-staggered-industry-block-1x.png",
+        "critic-r8D-1-winter-staggered-industry-block-4x.png",
+        "critic-r8D-1-winter-staggered-quadrant-0-4x.png",
+        "critic-r8D-1-winter-staggered-quadrant-1-4x.png",
+        "critic-r8D-1-winter-staggered-quadrant-2-4x.png",
+        "critic-r8D-1-winter-staggered-quadrant-3-4x.png"
+      ],
+      "source_hashes": "critic-r8D-1-out-before-hashes.json",
+      "technical_measurements": "critic-r8D-1-technical.json",
+      "placement_manifests": [
+        "critic-r8D-1-summer-dense-industry-layout.json",
+        "critic-r8D-1-summer-industry-layout.json",
+        "critic-r8D-1-summer-staggered-layout.json",
+        "critic-r8D-1-winter-dense-industry-layout.json",
+        "critic-r8D-1-winter-industry-layout.json",
+        "critic-r8D-1-winter-staggered-layout.json"
+      ]
+    }
+  },
+  "pass": [
+    "scifi-industry-bldg-0",
+    "scifi-industry-bldg-1",
+    "scifi-industry-bldg-2",
+    "scifi-industry-bldg-3",
+    "scifi-industry-bldg-4",
+    "scifi-industry-bldg-5",
+    "scifi-industry-bldg-6",
+    "scifi-industry-bldg-7",
+    "scifi-industry-bldg-8",
+    "scifi-industry-bldg-9",
+    "scifi-industry@winter-bldg-0",
+    "scifi-industry@winter-bldg-1",
+    "scifi-industry@winter-bldg-2",
+    "scifi-industry@winter-bldg-3",
+    "scifi-industry@winter-bldg-4",
+    "scifi-industry@winter-bldg-5",
+    "scifi-industry@winter-bldg-6",
+    "scifi-industry@winter-bldg-7",
+    "scifi-industry@winter-bldg-8",
+    "scifi-industry@winter-bldg-9"
+  ],
+  "fail": []
+}
