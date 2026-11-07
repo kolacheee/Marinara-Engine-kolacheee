@@ -163,18 +163,10 @@ def main(out_dir, paths, only):
                     f = os.path.join(out_dir, f"{look}{season}-floor-base.png")
                     if os.path.exists(f):
                         made[f"floor_{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
-        if "buildings" in only and family == "scifi":
-            # Cyberpunk's built-up looks as buildings over street ground (BRIEF-8): the street is each look's
-            # floor and its ground beside, and the buildings a block each, in WORLD_BUILDING_PIECES' layout.
-            for season in SEASONS:
-                f = os.path.join(out_dir, f"scifi-street{season}-base.png")
-                if os.path.exists(f):
-                    for look in ("city", "slums", "industry"):
-                        # Only a look whose buildings are in: street with nothing on it is no city.
-                        if not os.path.exists(os.path.join(out_dir, f"scifi-{look}{season}-bldg-0.png")):
-                            continue
-                        made[f"floor_{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
-                        made[f"{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
+        if "buildings" in only:
+            # Built-up looks as buildings (BRIEF-8 for scifi, BRIEF-10 for jazz_age, modern and wasteland): each
+            # look's buildings a block, in WORLD_BUILDING_PIECES' layout. They stand on the open ground round
+            # them (the game draws no street under them since 2026-11-07), so the street bases are not used.
             row = lambda count, y, w, h: [(i * w, y, w, h) for i in range(count)]
             layouts = {
                 "city": row(6, 0, 1, 1) + row(6, 1, 1, 2) + row(4, 3, 2, 2),
@@ -182,22 +174,7 @@ def main(out_dir, paths, only):
                 "industry": row(6, 0, 1, 1) + row(4, 1, 2, 2),
             }
             for look, slots in layouts.items():
-                standing(f"buildings_{look}", [f"scifi-{look}{{season}}-bldg-{i}.png" for i in range(len(slots))], slots)
-        if "lanes" in only:
-            # A city's lanes (BRIEF-11), in the joined path's layout: one block, summer, for the whole year.
-            f = os.path.join(out_dir, f"{family}-lane.png")
-            if os.path.exists(f):
-                made["lane_joined"] = [(Image.open(f).convert("RGBA"), 4, 23)]
-        if "suburbs" in only and family in ("modern", "jazz_age"):
-            # Suburbs as houses and yard props over the grass (BRIEF-9): the grass is the suburb's floor and its
-            # ground, twelve houses then eight yard props, in WORLD_BUILDING_PIECES' layout.
-            for season in SEASONS:
-                f = os.path.join(out_dir, f"grass{season}-base.png")
-                if os.path.exists(f) and f"suburb{season}" in pack["tiles"]:
-                    made[f"floor_suburb{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
-                    made[f"suburb{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
-            names = [f"suburb{{season}}-house-{i}.png" for i in range(12)] + [f"suburb{{season}}-yard-{i}.png" for i in range(8)]
-            standing("buildings_suburb", names, [(i % 8, i // 8, 1, 1) for i in range(12)] + [(i, 2, 1, 1) for i in range(8)])
+                standing(f"buildings_{look}", [f"{family}-{look}{{season}}-bldg-{i}.png" for i in range(len(slots))], slots)
         if "city" in only and family == "scifi":
             # Cyberpunk's built-up ground as one texture each, and the landmarks standing over it.
             for look in ("city", "slums", "industry"):
