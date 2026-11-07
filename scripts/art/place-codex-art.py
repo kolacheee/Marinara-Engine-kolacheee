@@ -183,6 +183,11 @@ def main(out_dir, paths, only):
             }
             for look, slots in layouts.items():
                 standing(f"buildings_{look}", [f"scifi-{look}{{season}}-bldg-{i}.png" for i in range(len(slots))], slots)
+        if "lanes" in only:
+            # A city's lanes (BRIEF-11), in the joined path's layout: one block, summer, for the whole year.
+            f = os.path.join(out_dir, f"{family}-lane.png")
+            if os.path.exists(f):
+                made["lane_joined"] = [(Image.open(f).convert("RGBA"), 4, 23)]
         if "suburbs" in only and family in ("modern", "jazz_age"):
             # Suburbs as houses and yard props over the grass (BRIEF-9): the grass is the suburb's floor and its
             # ground, twelve houses then eight yard props, in WORLD_BUILDING_PIECES' layout.
@@ -267,7 +272,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
+    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "lanes", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))

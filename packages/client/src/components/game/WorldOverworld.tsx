@@ -730,7 +730,9 @@ export function WorldOverworld({
     // highway system"): from each settlement out along the eight ways as far as its built-up ground runs,
     // drawn as the pack's path, joining the roads they meet.
     const lanes = new Set<number>();
-    if (builtCells.size && drawTile.hasPiece("path_joined", 0)) {
+    // Its own lane art where the pack has it, else the town path.
+    const laneId = drawTile.hasPiece("lane_joined", 0) ? "lane_joined" : "path_joined";
+    if (builtCells.size && drawTile.hasPiece(laneId, 0)) {
       // One hub to a cluster: a settlement's lanes only where no larger one (or an equal one listed first)
       // stands within three cells, so a city of neighbouring places is not cut into a grid.
       const hubs = world.places.filter(
@@ -776,10 +778,10 @@ export function WorldOverworld({
       for (const at of lanes) {
         const [x, y] = [at % width, Math.floor(at / width)];
         const pick = cellNoise(x, y)(74);
-        const has = (piece: number) => drawTile.hasPiece("path_joined", piece, pick);
+        const has = (piece: number) => drawTile.hasPiece(laneId, piece, pick);
         inSeason(x, y);
         for (const piece of worldJoinedPieces(joins, x, y, has))
-          drawTile.piece(ctx, "path_joined", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, pick);
+          drawTile.piece(ctx, laneId, piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, pick);
       }
     }
     // Bridges where a road crosses a river (the owner, 2026-11-07: "bridges that go over water instead of

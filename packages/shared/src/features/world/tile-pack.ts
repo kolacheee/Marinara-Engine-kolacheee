@@ -237,6 +237,8 @@ export const WORLD_TILE_IDS = Object.freeze([
   "hedge_joined",
   "road_joined",
   "path_joined",
+  // A city's lanes (the owner, 2026-11-07: "tiny roads centralizing around the city"), laid as a path is.
+  "lane_joined",
   "bridge_ns",
   "bridge_ew",
   "bridge_diag",
@@ -297,6 +299,7 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "hedge_joined",
   "road_joined",
   "path_joined",
+  "lane_joined",
   "bridge_ns",
   "bridge_ew",
   "bridge_diag",
@@ -331,6 +334,7 @@ export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number
   hedge_joined: [4, 23],
   road_joined: [4, 23],
   path_joined: [4, 23],
+  lane_joined: [4, 23],
   bridge_ns: [1, 3],
   bridge_ew: [3, 1],
   bridge_diag: [6, 4],
@@ -363,6 +367,11 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
       [4, 4],
     ],
     path_joined: [
+      [4, 23],
+      [4, 5],
+      [4, 4],
+    ],
+    lane_joined: [
       [4, 23],
       [4, 5],
       [4, 4],
@@ -510,7 +519,12 @@ function treeHash(x: number, y: number, salt: number): number {
 
 /** Tiles laid out as `hedge_joined` is (worldTilePiece, worldJoinedPieces): a hedge or fence, a road over
  *  the overworld, a path through town. */
-export const WORLD_JOINED_TILE_IDS: readonly string[] = Object.freeze(["hedge_joined", "road_joined", "path_joined"]);
+export const WORLD_JOINED_TILE_IDS: readonly string[] = Object.freeze([
+  "hedge_joined",
+  "road_joined",
+  "path_joined",
+  "lane_joined",
+]);
 
 /** `hedge_joined`'s curved corners (row 5), by the straight mask they stand in for: north and east, east and
  *  south, south and west, west and north. */
