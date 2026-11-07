@@ -25,6 +25,7 @@ import { worldPlaceNamed } from "./edits.js";
 import { worldPreEdit, type GameWorld } from "./game-world.js";
 import { worldFullName } from "./people.js";
 import { worldPeoples } from "./peoples.js";
+import { worldFaithFits, worldFolkOf } from "./faiths.js";
 import { readGmTagAttributes } from "../../utils/skill-check-tag.js";
 
 /** How many years of history each scale of world has before "now". */
@@ -195,6 +196,7 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
   if (landed && kit.cultures.length > 1) {
     const contactRandom = worldStream(seed, "history", "contact");
     const label = (id: string) => kit.cultures.find((culture) => culture.id === id)?.label ?? id;
+    const folkOr = (place: WorldPlace) => worldFolkOf(world, brief, place)?.name ?? label(place.culture);
     const kind = (["everyday", "fortunes", "lives"] as const).find((each) => on(each));
     const meetings = world.links
       .map((link) => [link.from, link.to].map((id) => settlements.find((place) => place.id === id)))
@@ -209,10 +211,73 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
       add({
         yearsAgo: Math.max(1, Math.round(since * (0.3 + contactRandom() * 0.5))),
         kind,
-        text: `${small.name} took in settlers from ${big.name}, ${label(big.culture)} among ${label(small.culture)}; their speech is heard in its market still.`,
+        text: `${small.name} took in settlers from ${big.name}, ${folkOr(big)} among ${folkOr(small)}; their speech is heard in its market still.`,
         places: [small.id, big.id],
         groups: [],
       });
+    }
+  }
+
+  // Generator 9: each faith takes root at its holy places, then goes on along the ways to the towns whose
+  // people may keep it (as faiths went along the trade roads), a few towns each, in the years after.
+  if (landed && brief.faiths.length) {
+    const faithRandom = worldStream(seed, "history", "faiths");
+    const kind = (["everyday", "lives", "fortunes"] as const).find((each) => on(each));
+    for (const faith of brief.faiths) {
+      if (!kind) break;
+      const holy = faith.holy
+        .map((name) => worldPlaceNamed(world.places, name))
+        .filter((place): place is WorldPlace => !!place);
+      // A holy place that is not a town counts from the town nearest it.
+      const roots = holy.map((place) =>
+        place.rank !== undefined
+          ? place
+          : settlements.reduce((best, each) =>
+              Math.hypot(each.at.x - place.at.x, each.at.y - place.at.y) <
+              Math.hypot(best.at.x - place.at.x, best.at.y - place.at.y)
+                ? each
+                : best,
+            ),
+      );
+      if (!roots.length || !settlements.length) continue;
+      const reached = new Map<string, number>();
+      for (const [index, root] of roots.entries()) {
+        const year = Math.max(2, Math.round((founded.get(root.id) ?? span) * (0.7 + faithRandom() * 0.25)));
+        if (reached.has(root.id)) continue;
+        reached.set(root.id, year);
+        add({
+          yearsAgo: year,
+          kind,
+          text:
+            holy[index]!.id === root.id
+              ? `${faith.name} first took root at ${root.name}.`
+              : `${faith.name} first took root at ${root.name}, by the holy place of ${holy[index]!.name}.`,
+          places: [root.id],
+          groups: [],
+        });
+      }
+      let spread = 0;
+      const queue = [...reached.keys()];
+      while (queue.length && spread < 3) {
+        const next = queue.shift();
+        const from = settlements.find((place) => place.id === next)!;
+        for (const id of linked.get(from.id) ?? []) {
+          const to = settlements.find((place) => place.id === id);
+          if (!to || reached.has(id) || spread >= 3 || !worldFaithFits(world, brief, faith, to)) continue;
+          const year = Math.min(reached.get(from.id)!, founded.get(to.id) ?? span) - 1 - Math.floor(faithRandom() * 8);
+          if (year < 1) continue;
+          reached.set(id, year);
+          queue.push(id);
+          spread++;
+          add({
+            yearsAgo: year,
+            kind,
+            text: `${faith.name} spread from ${from.name} to ${to.name}.`,
+            places: [to.id, from.id],
+            groups: [],
+          });
+        }
+      }
     }
   }
 

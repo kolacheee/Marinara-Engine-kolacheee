@@ -19,6 +19,9 @@ export const WORLD_BRIEF_LIMITS = Object.freeze({
   allPeopleNames: 1500,
   events: 30,
   peoples: 12,
+  /** The setting's own human cultures, and its faiths. */
+  folk: 12,
+  faiths: 12,
 });
 /** The kinds of non-human people a world has (generator 9), after folklore's: those who hide, bargain,
  *  tempt, trick, guard, devour, watch, or are older than everyone. */
@@ -71,6 +74,37 @@ const briefGroup = z
     note: promptSafeText(240).optional(),
     allies: z.array(placeName).max(8).default([]),
     rivals: z.array(placeName).max(8).default([]),
+    /** The lore entries it comes from, when read from the player's lore. */
+    lore: z.array(z.string().max(64)).max(20).optional(),
+  })
+  .strict();
+
+/** One of the setting's own human cultures (a nation, a clan, a people of the plains): who lives where,
+ *  and what they are like. The kit's cultures say how names sound; these say who the people are. */
+const briefFolk = z
+  .object({
+    name: placeName,
+    /** Their ways, look, tongue and naming, in one line. */
+    note: promptSafeText(240).optional(),
+    /** The brief's places that are theirs; a place inside one is theirs too. */
+    places: z.array(placeName).max(12).default([]),
+    lore: z.array(z.string().max(64)).max(20).optional(),
+  })
+  .strict();
+
+/** One of the setting's faiths: what it holds, where it is holy, who keeps it, and the groups that serve it. */
+const briefFaith = z
+  .object({
+    name: placeName,
+    /** What its followers believe and do, in one line. */
+    note: promptSafeText(240).optional(),
+    /** The brief's places holy to it, where it began first. */
+    holy: z.array(placeName).max(6).default([]),
+    /** The brief's cultures or peoples who keep it. */
+    followers: z.array(placeName).max(8).default([]),
+    /** The brief's groups that serve it (a temple, an order, a church). */
+    groups: z.array(placeName).max(4).default([]),
+    lore: z.array(z.string().max(64)).max(20).optional(),
   })
   .strict();
 
@@ -132,6 +166,10 @@ export const worldBriefSchema = z
     groups: z.array(briefGroup).max(WORLD_BRIEF_LIMITS.groups).default([]),
     /** The setting's non-human peoples (generator 9); the world draws more only to fill out its number. */
     peoples: z.array(briefPeople).max(WORLD_BRIEF_LIMITS.peoples).default([]),
+    /** The setting's own human cultures, and the places that are theirs. */
+    folk: z.array(briefFolk).max(WORLD_BRIEF_LIMITS.folk).default([]),
+    /** The setting's faiths. */
+    faiths: z.array(briefFaith).max(WORLD_BRIEF_LIMITS.faiths).default([]),
     /** Names for the people the compile draws, per culture, in that culture's own sound and order. */
     peopleNames: z
       .array(
@@ -161,6 +199,8 @@ export type WorldBriefPlace = WorldBrief["places"][number];
 export type WorldBriefGroup = WorldBrief["groups"][number];
 export type WorldBriefEvent = WorldBrief["events"][number];
 export type WorldBriefPeople = WorldBrief["peoples"][number];
+export type WorldBriefFolk = WorldBrief["folk"][number];
+export type WorldBriefFaith = WorldBrief["faiths"][number];
 
 /** The deepest layer a brief may place: the settlements layer, and for a world of one site or one
  *  town the layer inside it too, since that town is the whole world. */
@@ -342,11 +382,54 @@ export function checkWorldBrief(
     people.allies = people.allies.filter(known);
     people.rivals = people.rivals.filter(known);
   }
+  // Cultures keep only the brief's places; faiths only its places, its cultures and peoples, and its groups.
+  const usedNames = new Set([...seen, ...groupNames, ...peopleKeys]);
+  const folk: WorldBrief["folk"] = [];
+  for (const each of parsed.data.folk) {
+    const key = each.name.toLowerCase();
+    if (usedNames.has(key) || folk.some((other) => other.name.toLowerCase() === key)) {
+      repairs.push(`${each.name}: left out, the name is already used`);
+      continue;
+    }
+    const places = each.places.filter((name) => seen.has(name.toLowerCase()));
+    if (places.length < each.places.length) repairs.push(`${each.name}: a place that is not in the brief was left out`);
+    folk.push({ ...each, places });
+  }
+  const followed = new Set([...folk.map((each) => each.name.toLowerCase()), ...peopleKeys]);
+  const faiths: WorldBrief["faiths"] = [];
+  for (const faith of parsed.data.faiths) {
+    const key = faith.name.toLowerCase();
+    if (usedNames.has(key) || followed.has(key) || faiths.some((other) => other.name.toLowerCase() === key)) {
+      repairs.push(`${faith.name}: left out, the name is already used`);
+      continue;
+    }
+    const next = {
+      ...faith,
+      holy: faith.holy.filter((name) => seen.has(name.toLowerCase())),
+      followers: faith.followers.filter((name) => followed.has(name.toLowerCase())),
+      groups: faith.groups.filter((name) => groupNames.has(name.toLowerCase())),
+    };
+    if (
+      next.holy.length < faith.holy.length ||
+      next.followers.length < faith.followers.length ||
+      next.groups.length < faith.groups.length
+    )
+      repairs.push(`${faith.name}: a place, follower or group that is not in the brief was left out`);
+    faiths.push(next);
+  }
   return {
     ok: true,
-    brief: { ...parsed.data, places, placeNames, peopleNames, groups, peoples, events },
+    brief: { ...parsed.data, places, placeNames, peopleNames, groups, peoples, folk, faiths, events },
     repairs,
   };
+}
+
+/** What the player's lore states besides places and events (worldgen W1): kept exactly by the brief. */
+export interface WorldCanonMore {
+  groups?: WorldBriefGroup[];
+  peoples?: WorldBriefPeople[];
+  folk?: WorldBriefFolk[];
+  faiths?: WorldBriefFaith[];
 }
 
 const nameOf = (item: unknown) =>
@@ -364,10 +447,25 @@ export function withWorldCanon(
   written: unknown,
   canon: WorldBriefPlace[],
   canonEvents: WorldBriefEvent[] = [],
+  more: WorldCanonMore = {},
 ): unknown {
   if (!written || typeof written !== "object" || Array.isArray(written)) return written;
-  if (canon.length === 0 && canonEvents.length === 0) return written;
+  const lists = (["groups", "peoples", "folk", "faiths"] as const).filter((key) => more[key]?.length);
+  if (canon.length === 0 && canonEvents.length === 0 && !lists.length) return written;
   const record = { ...(written as Record<string, unknown>) };
+  // The lore's groups, peoples, cultures and faiths likewise: each replaces the brief's own of its name.
+  const limit = {
+    groups: WORLD_BRIEF_LIMITS.groups,
+    peoples: WORLD_BRIEF_LIMITS.peoples,
+    folk: WORLD_BRIEF_LIMITS.folk,
+    faiths: WORLD_BRIEF_LIMITS.faiths,
+  };
+  for (const key of lists) {
+    const fixed = more[key]! as Array<{ name: string }>;
+    const own = Array.isArray(record[key]) ? (record[key] as unknown[]) : [];
+    const names = new Set(fixed.map((each) => each.name.toLowerCase()));
+    record[key] = [...fixed, ...own.filter((each) => !names.has(nameOf(each)))].slice(0, limit[key]);
+  }
   if (canonEvents.length > 0) {
     const events = Array.isArray(record.events) ? (record.events as unknown[]) : [];
     const texts = new Set(canonEvents.map((event) => event.text.toLowerCase()));

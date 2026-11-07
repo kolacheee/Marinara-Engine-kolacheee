@@ -2427,6 +2427,15 @@ const worldBriefWriteSchema = z.object({
   canon: worldBriefSchema.shape.places.optional(),
   /** Dated events read from the player's lore, kept exactly. */
   canonEvents: worldBriefSchema.shape.events.optional(),
+  /** Groups, peoples, cultures and faiths read from the player's lore, kept exactly. */
+  canonMore: z
+    .object({
+      groups: worldBriefSchema.shape.groups.optional(),
+      peoples: worldBriefSchema.shape.peoples.optional(),
+      folk: worldBriefSchema.shape.folk.optional(),
+      faiths: worldBriefSchema.shape.faiths.optional(),
+    })
+    .optional(),
   grounding: z.enum(WORLD_GROUNDINGS).default("expand"),
   generationParameters: z.unknown().optional(),
   debugMode: z.boolean().optional(),
@@ -10639,7 +10648,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       prompt: buildWorldBriefPrompt({ ...input, canon, canonEvents, strict: input.grounding === "strict" }),
       notJson: "brief: The reply was not JSON",
       read: (data) => {
-        const read = readWrittenWorldBrief(input.kit, data, canon, canonEvents);
+        const read = readWrittenWorldBrief(input.kit, data, canon, canonEvents, input.canonMore ?? {});
         return read.ok ? { ok: true, value: { brief: read.brief, repairs: read.repairs } } : read;
       },
       repair: worldBriefRepairPrompt,
