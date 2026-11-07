@@ -6,6 +6,7 @@ import {
   resolveRoomGenerationPolicy,
 } from "../services/multiplayer/generation-policy.js";
 import { rejectGenerationOutput, type GenerationOutput } from "./generate/sse.js";
+import { loadWorldEarthData } from "../services/game/earth-data.js";
 import { resolveStoredChatOptions, resolveStoredMaxTokens } from "../services/generation/generation-parameters.js";
 import {
   SYMBOL_DICE_NOTATION_MAX_LENGTH,
@@ -376,6 +377,14 @@ import {
   type WorldWalk,
   worldBriefSchema,
   WORLD_GROUNDINGS,
+  WORLD_EARTH_AREAS,
+  sampleWorldEarth,
+  withWorldEarth,
+  worldEarthCentre,
+  worldEarthLocate,
+  worldEarthNames,
+  type WorldBrief,
+  type WorldEarth,
   readReputationTags,
   stripReputationTags,
   checkWorldBrief,
@@ -2415,6 +2424,21 @@ const worldKitWriteSchema = z.object({
   debugMode: z.boolean().optional(),
 });
 
+const earthChoiceSchema = z.object({
+  year: z.number().int().min(-5000).max(3000).optional(),
+  /** A named area (WORLD_EARTH_AREAS), for a setting that names nowhere real. */
+  area: z.string().max(40).optional(),
+});
+
+/** Where an Earth world is (the Earth seed): the real places the brief names, else the named area. */
+const worldEarthSchema = z.object({
+  kit: worldKitSchema,
+  brief: worldBriefSchema.optional(),
+  /** More real places to look for, besides the brief's (the setting's own words). */
+  names: z.array(z.string().max(80)).max(40).optional(),
+  ...earthChoiceSchema.shape,
+});
+
 const worldBriefWriteSchema = z.object({
   connectionId: z.string().min(1).optional(),
   kit: worldKitSchema,
@@ -2437,6 +2461,9 @@ const worldBriefWriteSchema = z.object({
     })
     .optional(),
   grounding: z.enum(WORLD_GROUNDINGS).default("expand"),
+  /** The Earth seed: the world is the real Earth, over the real places the brief names, else the named
+   *  area; in a year, for a historical setting. */
+  earth: earthChoiceSchema.optional(),
   generationParameters: z.unknown().optional(),
   debugMode: z.boolean().optional(),
 });
@@ -6612,6 +6639,24 @@ function withWorldLock<T>(key: string, work: () => Promise<T>): Promise<T> {
 const OLD_GENERATOR_REFUSAL =
   "This world was made by an earlier version of the world generator. It plays on as it was made, but it can no longer be edited.";
 
+/** An Earth world's area (the Earth seed): around the real places the brief names (the start first), else
+ *  the named area; null when there is neither. */
+async function worldEarthFor(
+  kit: WorldKit,
+  brief: WorldBrief | null,
+  choice: { year?: number; area?: string },
+  names: string[] = [],
+): Promise<WorldEarth | null> {
+  if (kit.scale === "sector") return null;
+  const data = await loadWorldEarthData();
+  const found = worldEarthLocate(data, kit.scale, worldEarthNames(brief, names));
+  const area = WORLD_EARTH_AREAS.find((each) => each.id === choice.area);
+  const where = found ?? (area ? { lon: area.lon, lat: area.lat, area: area.label } : null);
+  if (!where) return null;
+  const middle = worldEarthCentre(data, kit.scale, where.lon, where.lat);
+  return sampleWorldEarth(data, { ...middle, scale: kit.scale, area: where.area, year: choice.year });
+}
+
 export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions = {}) {
   registerSequentialGameTasks(app, [
     "/setup",
@@ -10653,11 +10698,28 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       },
       repair: worldBriefRepairPrompt,
     });
+    if (written.ok && input.earth) {
+      const earth = await worldEarthFor(input.kit, written.value.brief, input.earth);
+      return earth
+        ? { ...written.value, brief: withWorldEarth(written.value.brief, earth) }
+        : { ...written.value, earthMissing: true };
+    }
     if (written.ok) return written.value;
     return reply.status(written.status).send({
       error: written.error ?? "The model could not write a world brief that holds together.",
       issues: written.issues,
     });
+  });
+
+  // ── POST /game/world-earth ──
+  // The Earth seed: the real Earth over the area the brief's real places are in (or a named area), sampled
+  // at the kit's scale, to keep with the brief. Nothing is stored here.
+  app.post("/world-earth", async (req, reply) => {
+    const input = worldEarthSchema.parse(req.body);
+    const earth = await worldEarthFor(input.kit, input.brief ?? null, input, input.names ?? []);
+    if (!earth)
+      return reply.status(422).send({ error: "No real place in the setting was found on Earth; pick an area." });
+    return { earth };
   });
 
   // ── POST /game/world-canon ──

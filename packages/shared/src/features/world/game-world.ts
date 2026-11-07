@@ -249,6 +249,15 @@ export function worldOverviewPromptText(game: GameWorld): string {
   const lines = [
     `<world_places>`,
     `This world was made before play; its places are real and keep their names.`,
+    ...(brief.earth
+      ? [
+          `- This is the real Earth, around ${brief.earth.area || "the starting place"}${
+            brief.earth.year !== undefined
+              ? `, in the year ${brief.earth.year < 0 ? `${-brief.earth.year} BC` : brief.earth.year}`
+              : ", in the present day"
+          }: its countries, cities, rivers and land are the real ones, and its past is the real past.`,
+        ]
+      : []),
     `- Now: ${brief.premise}`,
     ...(outer.length ? [`- ${outer.map((place) => describe(kit, place)).join("; ")}.`] : []),
     `- Biggest places: ${biggest.map((place) => describe(kit, place)).join("; ")}.`,
@@ -265,6 +274,8 @@ export function worldOverviewPromptText(game: GameWorld): string {
         ].join(""),
       ),
     ...(() => {
+      // An Earth world's past is the real one, which the Game Master knows; none is invented for it.
+      if (brief.earth) return [];
       const past = worldNotablePast(history);
       return past.length ? [`- The past:`, ...past.map((event) => `  - ${worldHistoryLine(event)}`)] : [];
     })(),
