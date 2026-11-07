@@ -496,6 +496,35 @@ for (const kit of kits) {
   );
 }
 
+// ── Generator 10: a road crosses a river in one cell, on a bridge, and never runs down it ──
+{
+  let [crossings, along, older] = [0, 0, 0];
+  for (const kitId of ["high_fantasy", "wuxia_xianxia", "the_1920s"]) {
+    for (const scale of ["region", "realm"] as const) {
+      for (const seed of [1, 4242, 20261002]) {
+        const scaled = { ...byId.get(kitId)!, scale };
+        for (const version of [10, 9]) {
+          const world = compileWorld({ seed, kit: scaled, generatorVersion: version });
+          const river = new Set((world.rivers ?? []).flatMap((each) => each.path.slice(0, -1)));
+          for (const link of world.links) {
+            const path = link.path ?? [];
+            for (let i = 1; i < path.length; i++) {
+              if (!river.has(path[i]!)) continue;
+              if (version === 10) {
+                if (river.has(path[i - 1]!)) along++;
+                else crossings++;
+              } else if (river.has(path[i - 1]!)) older++;
+            }
+          }
+        }
+      }
+    }
+  }
+  assert.ok(crossings > 30, `${crossings} crossings`);
+  assert.equal(along, 0, "no road runs two river cells on end");
+  assert.ok(older > 0, "generator 9 worlds keep their roads as they were");
+}
+
 // ── The ground's shares, and the ways and times of travel ──
 {
   const ways = new Set<string>();
