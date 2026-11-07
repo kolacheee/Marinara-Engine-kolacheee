@@ -1,0 +1,37 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-8.md, Part A: Ground",
+      "files": [
+        "scifi-street-base",
+        "scifi-street@winter-base"
+      ],
+      "prior_review": "critic-r8A-0.json does not exist; no prior passes to preserve.",
+      "not_applicable": "The current Part A contains no peaks, crater tiles, ruins, one-cell tiles, or trees. Peak lattice/range, 8x2 random one-cell tiling, forest composition, autumn-crown and classical-ruin checks therefore do not apply. No files outside Part A receive verdicts.",
+      "block_qc_limit": "Part B-D building sprites are absent from out/. Full city/slums/industry blocks with the requested new props cannot be tested. Available summer/winter city towers and industry stacks were composited densely over each ground as placement/contrast checks; these are landmark contexts, not a claim that the missing building sets passed."
+    },
+    "street_ground": {
+      "status": "fail",
+      "checks": {
+        "dimensions_and_alpha": "Both are exactly 288x288 and fully opaque (alpha 255 throughout). Summer has 12 RGBA colours; winter has 16.",
+        "base_tiling": "Each was tiled unrotated in a 3x3 at 1x and nearest-neighbour 4x. Both also received a half-width/half-height wrap inspection. No obvious hard boundary seam or edge street frame. Summer stays acceptably quiet; winter exposes a strong repeating diagonal track and busy slush pattern.",
+        "individual_pixels": "Both entire images inspected at 8x, additionally as four 144x144 quadrants enlarged to 1152x1152 so all pixels can be seen at full 8x. Also inspected individually at 1x and 4x. Hard palette steps, no interpolated blur or anti-aliasing. Opaque bases have no transparency fringe or halo.",
+        "placement_and_light": "No baked-in buildings. Grates, worn paint, paving cracks and neon-reflecting wet patches remain subordinate in summer. Grate highlights read from the upper left; no conflicting directional relief found. Ground has no sprite anchor requirement.",
+        "approved_art_comparison": "Compared at native pixel scale against all six setting marker families, approved city/slum/industry/farmland round-2 examples, four-season paddies, four-season grass/plains bases and details, and the existing cyberpunk towers/stacks. Also inspected reference/scifi-marker0..3.png and reference/scifi-ground.png. Dark asphalt and muted magenta/cyan are appropriate for the new brief; a lighter old scifi-ground alone is not grounds for failure. Winter loses the calm, clear value grouping of the approved art.",
+        "seasons_and_duplicates": "Winter is substantially changed, not blank and not a nominal recolour: snow/slush and wet tracks are present, with summer paving and reflections retained. The failure is its noisy, repetitive snow treatment. The two season files are not inappropriate near-duplicates."
+      },
+      "summer_pass_rationale": "Ship-level pass: calm dark wet asphalt, faint broken paint and grates, small cyan/magenta puddle reflections, coherent limited palette, clean native pixels and no objectionable boundary seam. Distinct ground details do recur at the texture period, but their low contrast does not create a dominant stamped grid at 1x or overwhelm the available landmark contexts.",
+      "evidence_prefix": "art-drop/review/critic-r8A-1-",
+      "evidence": "summer/winter-base-3x3-{1,4}x; summer/winter-wrap-{1,4}x; summer/winter-individual-{1,4,8}x; summer/winter-quadrant-{0,1}-{0,1}-8x; summer/winter-city-landmark-context-{1,4}x; summer/winter-industry-landmark-context-{1,4}x; approved-comparison-{1,4}x; scifi-references-{1,4}x."
+    }
+  },
+  "pass": [
+    "scifi-street-base"
+  ],
+  "fail": [
+    {
+      "name": "scifi-street@winter-base",
+      "problems": "At 1x the snow/slush is broken into dense, similarly sized diagonal zigzag flecks across almost the whole ground. It reads as blue-grey camouflage and creates competing texture between the landmarks instead of the calm, low-contrast street required by Part A; 4x and 8x confirm the problem is the authored cluster shapes, not scaling blur. Replace much of this fleck field with broader, simpler connected dirty-snow/slush masses, larger quiet wet-asphalt gaps, and fewer small isolated highlights; keep the brighter snow accents local. The long paired diagonal wet-track motif through the middle repeats every 288 px in both axes, producing an obvious array of matching slashes in the 3x3 at 1x and 4x. Break up and reduce the contrast of that signature motif, vary the lengths and spacing of track fragments, and retest the unrotated 3x3 until the eye no longer follows a repeated diagonal stamp. Preserve the grates, faint paving and neon reflections while simplifying."
+    }
+  ]
+}
