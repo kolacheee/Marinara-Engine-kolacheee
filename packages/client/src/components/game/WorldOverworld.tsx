@@ -25,6 +25,7 @@ import {
   worldEdgePiece,
   worldJoinedPieces,
   WORLD_DECOR_LOOKS,
+  WORLD_PROP_LOOK_TILES,
   WORLD_TREELINE_LOOKS,
   worldTreelineTrees,
   worldRangePeaks,
@@ -338,7 +339,11 @@ export function WorldOverworld({
     // Looks drawn as props over the ground beside them (the owner, 2026-11-07: craters "as like, a prop
     // that goes on top of another tile like flowers are, and the color changes to match the color
     // underneath"): the pack's crater scars are shading only, laid over open ground.
-    const propLooks = new Set<string>(drawTile.hasPiece("crater_props", 0) ? ["craters"] : []);
+    const propLooks = new Set<string>(
+      Object.entries(WORLD_PROP_LOOK_TILES)
+        .filter(([, id]) => drawTile.hasPiece(id, 0))
+        .map(([look]) => look),
+    );
     const openGround = (look: string) =>
       !square.has(look) && !propLooks.has(look) && !coveredLooks.has(look) && look !== "mountains";
     // The open ground most of the map has, for a prop look with none near it.
@@ -840,19 +845,26 @@ export function WorldOverworld({
         inSeason(x, y);
         drawTile(ctx, `decor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(67));
       }
-    // Crater scars over their ground: about two cells in three, half of them large (two cells by two,
-    // spilling onto their neighbours).
-    if (propLooks.has("craters"))
-      for (let y = 0; y < height; y++)
-        for (let x = 0; x < width; x++) {
-          if (propCells.get(y * width + x) !== "craters" || wetCell[y * width + x]) continue;
-          const noise = cellNoise(x, y);
-          if (noise(63) >= 0.65) continue;
-          const large = noise(62) < 0.55;
-          const piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
-          inSeason(x, y);
-          drawTile.piece(ctx, "crater_props", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(66));
-        }
+    // Props over their ground (crater scars, ruins, a marsh's pools and reeds): about two cells in three, half
+    // of them large (two cells by two, spilling onto their neighbours).
+    for (let y = 0; y < height; y++)
+      for (let x = 0; x < width; x++) {
+        const look = propCells.get(y * width + x);
+        if (!look || wetCell[y * width + x]) continue;
+        const noise = cellNoise(x, y);
+        if (noise(63) >= 0.65) continue;
+        const large = noise(62) < 0.55;
+        const piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
+        inSeason(x, y);
+        drawTile.piece(
+          ctx,
+          WORLD_PROP_LOOK_TILES[look as keyof typeof WORLD_PROP_LOOK_TILES],
+          piece,
+          x * OVERWORLD_TILE,
+          y * OVERWORLD_TILE,
+          noise(66),
+        );
+      }
     drawTile.setCellSeason(undefined);
     return { canvas, trees };
   }, [byId, drawTile, game, heldCells, kit.travel, resolution, world]);

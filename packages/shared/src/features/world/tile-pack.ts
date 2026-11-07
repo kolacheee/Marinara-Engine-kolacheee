@@ -121,6 +121,15 @@ export const WORLD_STANDING_TILE_IDS = Object.freeze([
   "standing_city",
   "standing_industry",
 ] as const);
+/** Looks drawn as props laid over the open ground round them (image packs; the owner, 2026-11-07, of craters
+ *  "as like, a prop that goes on top of another tile like flowers are"), by the tile of props each takes: four
+ *  of one cell, then four of two by two. */
+export const WORLD_PROP_LOOK_TILES = Object.freeze({
+  craters: "crater_props",
+  ruins: "ruins_props",
+  marsh: "marsh_props",
+} as const);
+export const WORLD_PROP_TILE_IDS = Object.freeze(Object.values(WORLD_PROP_LOOK_TILES));
 /** A wood's floor under its trees, `floor_<look>` (image packs). */
 export const WORLD_FLOOR_TILE_IDS = Object.freeze(
   WORLD_TREELINE_LOOKS.filter((look) => look !== "mountains").map((look) => `floor_${look}` as const),
@@ -209,7 +218,7 @@ export const WORLD_TILE_IDS = Object.freeze([
   // (eight, one cell by two), and crater scars laid over the ground beside them (four of one cell, four of
   // two by two), shading only, so they take its colour.
   ...WORLD_STANDING_TILE_IDS,
-  "crater_props",
+  ...WORLD_PROP_TILE_IDS,
   // A wood's floor under its trees (image packs; user, 2026-11-07: the old texture "looks a bit weird
   // underneath the trees"), a texture as the ground's.
   ...WORLD_FLOOR_TILE_IDS,
@@ -261,7 +270,7 @@ export const WORLD_IMAGE_ONLY_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "bridge_turn",
   "road_bridge",
   ...WORLD_STANDING_TILE_IDS,
-  "crater_props",
+  ...WORLD_PROP_TILE_IDS,
   ...WORLD_FLOOR_TILE_IDS,
   "in_wall_face",
   "in_wall_divider",
@@ -297,7 +306,7 @@ export const WORLD_TILE_BLOCKS: Readonly<Record<string, readonly [number, number
   mountain_pines: [4, 2],
   standing_city: [4, 4],
   standing_industry: [4, 4],
-  crater_props: [8, 3],
+  ...Object.fromEntries(WORLD_PROP_TILE_IDS.map((id) => [id, [8, 3] as const])),
   in_wall_top: [4, 4],
   dn_wall_top: [4, 4],
   ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [4, 2] as const])),
@@ -332,7 +341,7 @@ export const WORLD_TILE_BLOCK_SIZES: Readonly<Record<string, ReadonlyArray<reado
     mountain_pines: [[4, 2]],
     standing_city: [[4, 4]],
     standing_industry: [[4, 4]],
-    crater_props: [[8, 3]],
+    ...Object.fromEntries(WORLD_PROP_TILE_IDS.map((id) => [id, [[8, 3] as const]])),
     in_wall_top: [[4, 4]],
     dn_wall_top: [[4, 4]],
     ...Object.fromEntries(WORLD_TREELINE_LOOKS.map((look) => [`treeline_${look}`, [[4, 2] as const]])),
@@ -525,7 +534,7 @@ export function worldTilePiece(
     return piece < 8 && w >= 6 && h >= 8 ? { x: (piece % 2) * 3, y: Math.floor(piece / 2) * 2, w: 3, h: 2 } : null;
   if (id === "standing_city" || id === "standing_industry")
     return piece < 8 && w >= 4 && h >= 4 ? { x: piece % 4, y: Math.floor(piece / 4) * 2, w: 1, h: 2 } : null;
-  if (id === "crater_props") {
+  if ((WORLD_PROP_TILE_IDS as readonly string[]).includes(id)) {
     if (piece < 4) return w >= 4 ? { x: piece, y: 0, w: 1, h: 1 } : null;
     return piece < 8 && w >= 8 && h >= 3 ? { x: (piece - 4) * 2, y: 1, w: 2, h: 2 } : null;
   }
@@ -888,6 +897,7 @@ export const WORLD_SEASONAL_TILE_IDS: readonly WorldTileId[] = Object.freeze([
   "road_bridge",
   ...WORLD_STANDING_TILE_IDS,
   ...WORLD_FLOOR_TILE_IDS,
+  ...WORLD_PROP_TILE_IDS,
 ]);
 const IMAGE_KNOWN = new Set<string>([
   ...WORLD_TILE_IDS,

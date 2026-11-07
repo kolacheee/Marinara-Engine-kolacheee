@@ -84,7 +84,9 @@ def main(out_dir, paths, only):
                 continue
             for season in SEASONS:
                 # A ground's texture, six cells square: the setting's own, else the shared one.
-                for base in (f"{family}-{look}{season}-base.png", f"{look}{season}-base.png"):
+                # Cyberpunk's badlands are the wasteland's own ground.
+                fallback = (f"wasteland-{look}{season}-base.png",) if family == "scifi" and look == "wasteland" else ()
+                for base in (f"{family}-{look}{season}-base.png", f"{look}{season}-base.png", *fallback):
                     if os.path.exists(os.path.join(out_dir, base)):
                         made[f"{look}{season}"] = [(Image.open(os.path.join(out_dir, base)).convert("RGBA"), 6, 6)]
                         break
@@ -134,6 +136,14 @@ def main(out_dir, paths, only):
         if "craters" in only:
             # Crater scars, shading only: four of one cell, then a row of four of two by two.
             standing("crater_props", [f"crater-prop-{i}{{season}}.png" for i in range(8)],
+                     [(i, 0, 1, 1) for i in range(4)] + [(2 * i, 1, 2, 2) for i in range(4)])
+        if "ruins" in only:
+            # Ruins as props: the old world's for the settings near ours, fallen stone for the older ones.
+            kind = "fantasy" if family in ("fantasy", "wuxia") else "wasteland"
+            standing("ruins_props", [f"{kind}-ruins{{season}}-prop-{i}.png" for i in range(8)],
+                     [(i, 0, 1, 1) for i in range(4)] + [(2 * i, 1, 2, 2) for i in range(4)])
+        if "marsh" in only:
+            standing("marsh_props", [f"marsh{{season}}-prop-{i}.png" for i in range(8)],
                      [(i, 0, 1, 1) for i in range(4)] + [(2 * i, 1, 2, 2) for i in range(4)])
         if "mountains" in only:
             standing("mountain_ridges", [f"mountains{{season}}-ridge-{i}.png" for i in range(8)],
@@ -221,7 +231,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", "bridges", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
+    only = {"markers", "farmland", "bridges", "marsh", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))
