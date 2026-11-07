@@ -138,7 +138,7 @@ export const WORLD_PROP_TILE_IDS = Object.freeze(Object.values(WORLD_PROP_LOOK_T
 /** Built-up looks drawn as buildings standing over street ground where a pack has them (the owner,
  *  2026-11-07, of the cyberpunk city: "make buildings as props and use that instead"), like a wood's trees:
  *  `buildings_<look>`, each piece where WORLD_BUILDING_PIECES puts it, over `floor_<look>`. */
-export const WORLD_BUILDING_LOOKS = Object.freeze(["city", "slums", "industry"] as const);
+export const WORLD_BUILDING_LOOKS = Object.freeze(["city", "slums", "industry", "suburb"] as const);
 type Rect = { x: number; y: number; w: number; h: number };
 const buildingRow = (count: number, y: number, w: number, h: number): Rect[] =>
   Array.from({ length: count }, (_, i) => ({ x: i * w, y, w, h }));
@@ -147,7 +147,11 @@ export const WORLD_BUILDING_PIECES: Readonly<Record<string, readonly Rect[]>> = 
   buildings_city: [...buildingRow(6, 0, 1, 1), ...buildingRow(6, 1, 1, 2), ...buildingRow(4, 3, 2, 2)],
   buildings_slums: [...buildingRow(8, 0, 1, 1), ...buildingRow(4, 1, 2, 2)],
   buildings_industry: [...buildingRow(6, 0, 1, 1), ...buildingRow(4, 1, 2, 2)],
+  // Suburbs (the owner, 2026-11-07: "Surely suburbs, at least"): twelve houses, then eight yard props.
+  buildings_suburb: [...buildingRow(8, 0, 1, 1), ...buildingRow(4, 1, 1, 1), ...buildingRow(8, 2, 1, 1)],
 });
+/** The first yard prop in a building block (a hedge, a shed, a pool), drawn in the gaps between its houses. */
+export const WORLD_BUILDING_YARDS: Readonly<Record<string, number>> = Object.freeze({ buildings_suburb: 12 });
 export const WORLD_BUILDING_TILE_IDS = Object.freeze(WORLD_BUILDING_LOOKS.map((look) => `buildings_${look}` as const));
 const blockOf = (id: string): readonly [number, number] => {
   const pieces = WORLD_BUILDING_PIECES[id]!;
