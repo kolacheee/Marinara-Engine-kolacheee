@@ -28,6 +28,8 @@ import {
   WORLD_TREELINE_LOOKS,
   worldTreelineTrees,
   worldRangePeaks,
+  worldRangeRidges,
+  worldRoadBridgePiece,
   worldEdgeMask,
   WORLD_FRINGE_ORDER,
   WORLD_SQUARE_LOOKS,
@@ -215,11 +217,13 @@ export function WorldOverworld({
   );
   const { canvas: ground, trees } = useMemo(() => {
     const canvas = document.createElement("canvas");
-    if (drawTile.loading) return { canvas, trees: [] as Array<{ x: number; y: number; look: string; pick: number }> };
+    if (drawTile.loading)
+      return { canvas, trees: [] as Array<{ x: number; y: number; id: string; pick: number; w: number; h: number }> };
     canvas.width = world.width * OVERWORLD_TILE * resolution;
     canvas.height = world.height * OVERWORLD_TILE * resolution;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return { canvas, trees: [] as Array<{ x: number; y: number; look: string; pick: number }> };
+    if (!ctx)
+      return { canvas, trees: [] as Array<{ x: number; y: number; id: string; pick: number; w: number; h: number }> };
     ctx.scale(resolution, resolution);
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = "high";
@@ -244,14 +248,11 @@ export function WorldOverworld({
       };
       for (const place of world.places) keep(place.at.x, place.at.y);
       // The ways as the road pass below lays them.
-      const settledAt = new Set(
-        world.places.filter((place) => place.rank !== undefined).map((place) => place.at.y * width + place.at.x),
-      );
       const joined = drawTile.hasPiece("road_joined", 0);
       for (const link of world.links) {
         const [from, to] = [byId.get(link.from), byId.get(link.to)];
         if (!from || !to) continue;
-        const skip = (x: number, y: number) => wet(x, y) || settledAt.has(y * width + x);
+        const skip = (x: number, y: number) => wet(x, y);
         const cellsOn = link.path
           ? worldPathCells(link.path, width, skip, joined)
           : worldRoadCells(from.at, to.at, skip, joined);
@@ -329,9 +330,39 @@ export function WorldOverworld({
           const other = lookAt(x + dx, y + dy);
           // Water's own look (a lake with no land beside it) is never the ground under a wood's edge.
           if (wetAt(x + dx, y + dy) && drawTile.hasEdges("water")) continue;
-          if (other !== lookAt(x, y) && !square.has(other)) count.set(other, (count.get(other) ?? 0) + 1);
+          if (other !== lookAt(x, y) && !square.has(other) && !propLooks.has(other))
+            count.set(other, (count.get(other) ?? 0) + 1);
         }
       return [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? "grass";
+    };
+    // Looks drawn as props over the ground beside them (the owner, 2026-11-07: craters "as like, a prop
+    // that goes on top of another tile like flowers are, and the color changes to match the color
+    // underneath"): the pack's crater scars are shading only, laid over open ground.
+    const propLooks = new Set<string>(drawTile.hasPiece("crater_props", 0) ? ["craters"] : []);
+    const openGround = (look: string) =>
+      !square.has(look) && !propLooks.has(look) && !coveredLooks.has(look) && look !== "mountains";
+    // The open ground most of the map has, for a prop look with none near it.
+    const commonOpen = (() => {
+      const count = new Map<string, number>();
+      drawnLook.forEach((look, at) => {
+        if (!wetCell[at] && openGround(look)) count.set(look, (count.get(look) ?? 0) + 1);
+      });
+      return [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? "grass";
+    })();
+    /** The open ground nearest the cell at (x, y), most of it within the nearest ring that has any. */
+    const groundNear = (x: number, y: number) => {
+      for (let r = 1; r <= 4; r++) {
+        const count = new Map<string, number>();
+        for (let dy = -r; dy <= r; dy++)
+          for (let dx = -r; dx <= r; dx++) {
+            if (Math.max(Math.abs(dx), Math.abs(dy)) !== r || wetAt(x + dx, y + dy)) continue;
+            const other = lookAt(x + dx, y + dy);
+            if (openGround(other)) count.set(other, (count.get(other) ?? 0) + 1);
+          }
+        const best = [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
+        if (best) return best;
+      }
+      return commonOpen;
     };
     const groundOf = (x: number, y: number, drawn: string) => {
       const noise = cellNoise(x, y);
@@ -340,12 +371,26 @@ export function WorldOverworld({
         paintGround(ctx, drawn as (typeof looks)[number], x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise);
       }
     };
+    // A wood's floor under its trees: the pack's own where it has one, else its ground in shade (the owner,
+    // 2026-11-07: the old texture "looks a bit weird underneath the trees").
+    const floorOf = (x: number, y: number, look: string) => {
+      inSeason(x, y);
+      if (drawTile(ctx, `floor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, cellNoise(x, y)(99))) return;
+      groundOf(x, y, look);
+      ctx.fillStyle = "rgba(10, 22, 14, 0.55)";
+      ctx.fillRect(x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE);
+    };
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
         const look = drawnLook[y * width + x]!;
-        const drawn = coveredLooks.has(look) && !inner(x, y) ? besideLook(x, y) : look;
-        groundOf(x, y, drawn);
+        const drawn = propLooks.has(look)
+          ? groundNear(x, y)
+          : coveredLooks.has(look) && !inner(x, y)
+            ? besideLook(x, y)
+            : look;
+        if (coveredLooks.has(drawn) && drawn === look) floorOf(x, y, look);
+        else groundOf(x, y, drawn);
         if (water[own] && !waterEdges) {
           paintShore(ctx, x * OVERWORLD_TILE, y * OVERWORLD_TILE, {
             n: !wet(x, y - 1),
@@ -359,7 +404,13 @@ export function WorldOverworld({
     // Fringes: where the pack has one for a look, the look spills past its cells onto the ground beside it,
     // taller ground drawn last so it overhangs.
     for (const look of WORLD_FRINGE_ORDER) {
-      if (!drawTile.hasFringe(look) || !drawnLook.includes(look) || coveredLooks.has(look) || square.has(look))
+      if (
+        !drawTile.hasFringe(look) ||
+        !drawnLook.includes(look) ||
+        coveredLooks.has(look) ||
+        square.has(look) ||
+        propLooks.has(look)
+      )
         continue;
       const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
       // Laid out as an edge tile is: with slanted corners and curved runs where the fringe has them.
@@ -517,18 +568,15 @@ export function WorldOverworld({
     const roadJoined = drawTile.hasPiece("road_joined", 0);
     const roadEdges = roadJoined || drawTile.hasEdges("road");
     const roads = new Set<number>();
-    // Settlements' own cells (from the world, not the list sorted by where the party is, so an arrival
-    // never draws the ground again).
-    const settled = new Set(
-      world.places.filter((place) => place.rank !== undefined).map((place) => place.at.y * width + place.at.x),
-    );
     for (const link of world.links) {
       const from = byId.get(link.from);
       const to = byId.get(link.to);
       if (!from || !to) continue;
       const crosses = kit.travel.find((way) => way.id === link.way)?.crosses ?? "open";
       if (roadEdges && crosses === "open") {
-        const skip = (x: number, y: number) => wet(x, y) || settled.has(y * width + x);
+        // Through the settlements too (the owner, 2026-11-07: "paths should go through and under
+        // settlements"): the marker stands over the road's end.
+        const skip = (x: number, y: number) => wet(x, y);
         // A way laid along the land (generator 8) runs over its own cells; an older one, straight.
         const cellsOn = link.path
           ? worldPathCells(link.path, width, skip, roadJoined)
@@ -570,11 +618,28 @@ export function WorldOverworld({
       }
       for (const drawPieces of spilling) drawPieces();
     } else if (roads.size) edgePass("road", (x, y) => roads.has(y * width + x));
+    // Bridges where a road crosses a river (the owner, 2026-11-07: "bridges that go over water instead of
+    // path"), over the road's own piece on that cell.
+    if (roads.size && drawTile.hasPiece("road_bridge", 0)) {
+      const isRoad = (x: number, y: number) => x >= 0 && y >= 0 && x < width && y < height && roads.has(y * width + x);
+      for (const at of roads) {
+        if (!riverCells.has(at)) continue;
+        const [x, y] = [at % width, Math.floor(at / width)];
+        // The river's run through the cell, for a road that only turns there.
+        const along = (dx: number, dy: number) => riverCells.has((y + dy) * width + x + dx);
+        const across = along(0, -1) || along(0, 1) ? "ns" : along(-1, 0) || along(1, 0) ? "ew" : undefined;
+        const piece = worldRoadBridgePiece(isRoad, x, y, across);
+        const pick = cellNoise(x, y)(73);
+        if (!drawTile.hasPiece("road_bridge", piece, pick)) continue;
+        inSeason(x, y);
+        drawTile.piece(ctx, "road_bridge", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, pick);
+      }
+    }
     drawTile.setCellSeason(undefined);
     // The trees on wooded looks that have them, with the markers: on the look's floor as drawn through its
     // fringe (so they follow its curved edge), never on a road or a place.
     const placed = new Set(world.places.map((place) => place.at.y * width + place.at.x));
-    const trees: Array<{ x: number; y: number; look: string; pick: number }> = [];
+    const trees: Array<{ x: number; y: number; id: string; pick: number; w: number; h: number }> = [];
     for (const look of treeLooks) {
       if (!drawnLook.includes(look)) continue;
       const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
@@ -605,6 +670,9 @@ export function WorldOverworld({
         const piece = worldEdgePiece(isLook, kx, ky, width, height, fringeRows);
         return drawTile.fringeCovers(look, piece, cellNoise(kx, ky)(79), px - kx + 0.5, py - ky + 0.5);
       };
+      const ridged = look === "mountains" && drawTile.hasPiece("mountain_ridges", 0);
+      const pined = look === "mountains" && drawTile.hasPiece("mountain_pines", 0);
+      const [ranges, peaks, pines]: Array<typeof trees> = [[], [], []];
       for (let y = 0; y < height; y++)
         for (let x = 0; x < width; x++) {
           // The look's cells and those its fringe reaches onto.
@@ -613,9 +681,32 @@ export function WorldOverworld({
             for (let dx = -1; dx <= 1 && !near; dx++)
               near = x + dx >= 0 && y + dy >= 0 && x + dx < width && y + dy < height && isLook(x + dx, y + dy);
           if (!near) continue;
-          const plant = look === "mountains" ? worldRangePeaks : worldTreelineTrees;
-          for (const tree of plant(onFloor, x, y)) trees.push({ ...tree, look });
+          if (look !== "mountains") {
+            for (const tree of worldTreelineTrees(onFloor, x, y))
+              trees.push({ ...tree, id: `treeline_${look}`, w: 1, h: 1 });
+            continue;
+          }
+          // A range (the owner, 2026-11-07: peaks alone read as "a bunch of randomly placed tall rocks"):
+          // chains of peaks standing in overlapping rows where the pack has them, single peaks where no chain
+          // fits, and pines on the foothills where the range meets other ground.
+          if (ridged)
+            for (const ridge of worldRangeRidges(onFloor, x, y))
+              ranges.push({ ...ridge, id: "mountain_ridges", w: 3, h: 2 });
+          for (const peak of worldRangePeaks(onFloor, x, y))
+            peaks.push({ ...peak, id: "treeline_mountains", w: 2, h: 2 });
+          if (pined && isLook(x, y) && !inner(x, y))
+            for (const pine of worldTreelineTrees(onFloor, x, y))
+              if (cellNoise(Math.floor(pine.x * 4), Math.floor(pine.y * 4))(57) < 0.45)
+                pines.push({ ...pine, id: "mountain_pines", w: 1, h: 1 });
         }
+      if (look === "mountains") {
+        trees.push(...ranges);
+        // A peak only where no chain stands already.
+        for (const peak of peaks)
+          if (!ranges.some((ridge) => Math.abs(ridge.x - peak.x) < 1.7 && Math.abs(ridge.y - peak.y) < 0.75))
+            trees.push(peak);
+        trees.push(...pines);
+      }
     }
     // Small things on open ground (a flower clump, a rock, a bush): about one cell in five wholly inside
     // its look, never on or beside a road or a place, so nothing is cut by another ground's edge.
@@ -636,6 +727,19 @@ export function WorldOverworld({
         inSeason(x, y);
         drawTile(ctx, `decor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(67));
       }
+    // Crater scars over their ground: about two cells in three, a large one (two cells by two, spilling onto
+    // its neighbours) only where the field goes on all round.
+    if (propLooks.has("craters"))
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          if (drawnLook[y * width + x] !== "craters" || wetCell[y * width + x]) continue;
+          const noise = cellNoise(x, y);
+          if (noise(63) >= 0.65) continue;
+          const large = (x + 2 * y) % 3 === 0 && inner(x, y);
+          const piece = large ? 4 + Math.floor(noise(64) * 4) : Math.floor(noise(65) * 4);
+          inSeason(x, y);
+          drawTile.piece(ctx, "crater_props", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(66));
+        }
     drawTile.setCellSeason(undefined);
     return { canvas, trees };
   }, [byId, drawTile, game, heldCells, kit.travel, resolution, world]);
@@ -690,13 +794,14 @@ export function WorldOverworld({
     const standing: Array<{ base: number; draw: () => void }> = trees.map((tree) => ({
       base: tree.y,
       draw: () =>
-        // A range's peaks are two cells by two, a wood's trees one cell; each stands on its foot.
+        // Each stands on its foot, centred across it (a wood's tree one cell, a range's peak two by two, a
+        // chain of peaks three by two); the piece is drawn centred on the cell given.
         drawTile.piece(
           ctx,
-          `treeline_${tree.look}`,
+          tree.id,
           tree.pick,
-          tree.x * OVERWORLD_TILE - (tree.look === "mountains" ? OVERWORLD_TILE : OVERWORLD_TILE / 2),
-          tree.y * OVERWORLD_TILE - ((tree.look === "mountains" ? 2 : 1) * OVERWORLD_TILE * 46) / 48,
+          tree.x * OVERWORLD_TILE - OVERWORLD_TILE / 2,
+          tree.y * OVERWORLD_TILE - (tree.h * OVERWORLD_TILE * 46) / 48 + ((tree.h - 1) * OVERWORLD_TILE) / 2,
         ),
     }));
     for (const { place } of settlements) standing.push({ base: place.at.y + 1, draw: () => drawPlace(place) });

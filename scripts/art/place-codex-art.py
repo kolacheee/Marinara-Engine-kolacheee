@@ -110,6 +110,54 @@ def main(out_dir, paths, only):
                         art = slot
                     block.alpha_composite(art, ((i % 4) * span * CELL, (i // 4) * span * CELL))
                 made[tid] = [(block, 4 * span, 2 * span)]
+        def block(files, slots, size):
+            """Sprites laid in a block left to right, top to bottom, each slot `size` cells (w, h), standing on
+            its foot and centred across it when drawn smaller."""
+            cols = max(x + w for x, _, w, _ in slots)
+            rows = max(y + h for _, y, _, h in slots)
+            out = Image.new("RGBA", (cols * CELL, rows * CELL))
+            for f, (x, y, w, h) in zip(files, slots):
+                art = Image.open(f).convert("RGBA")
+                out.alpha_composite(art, (x * CELL + (w * CELL - art.width) // 2, y * CELL + h * CELL - art.height))
+            return out, cols, rows
+
+        def standing(tid, names, slots):
+            for season in SEASONS:
+                files = [os.path.join(out_dir, n.format(season=season, family=family)) for n in names]
+                if all(os.path.exists(f) for f in files):
+                    made[f"{tid}{season}"] = [block(files, slots, None)]
+
+        if "bridges" in only:
+            # A road's bridge over a river, one cell each: west-east, north-south, and the two diagonals.
+            standing("road_bridge", [f"{{family}}-bridge-{o}{{season}}.png" for o in ("h", "v", "d1", "d2")],
+                     [(i, 0, 1, 1) for i in range(4)])
+        if "craters" in only:
+            # Crater scars, shading only: four of one cell, then four of two by two.
+            standing("crater_props", [f"crater-prop-{i}{{season}}.png" for i in range(8)],
+                     [(i, 0, 1, 1) for i in range(4)] + [(4 + 2 * i, 0, 2, 2) for i in range(4)])
+        if "mountains" in only:
+            standing("mountain_ridges", [f"mountains{{season}}-ridge-{i}.png" for i in range(8)],
+                     [((i % 4) * 3, (i // 4) * 2, 3, 2) for i in range(8)])
+            standing("mountain_pines", [f"mountains{{season}}-pine-{i}.png" for i in range(8)],
+                     [(i % 4, i // 4, 1, 1) for i in range(8)])
+        if "forest" in only:
+            # A wood's floor under its trees, six cells square.
+            for look in ("forest", "conifer_forest"):
+                for season in SEASONS:
+                    f = os.path.join(out_dir, f"{look}{season}-floor-base.png")
+                    if os.path.exists(f):
+                        made[f"floor_{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
+        if "city" in only and family == "scifi":
+            # Cyberpunk's built-up ground as one texture each, and the landmarks standing over it.
+            for look in ("city", "slums", "industry"):
+                for season in SEASONS:
+                    f = os.path.join(out_dir, f"scifi-{look}{season}-base.png")
+                    if os.path.exists(f):
+                        made[f"{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
+            standing("standing_city", [f"scifi-city-tower-{i}{{season}}.png" for i in range(8)],
+                     [(i % 4, (i // 4) * 2, 1, 2) for i in range(8)])
+            standing("standing_industry", [f"scifi-industry-stack-{i}{{season}}.png" for i in range(8)],
+                     [(i % 4, (i // 4) * 2, 1, 2) for i in range(8)])
         if "farmland" in only:
             # Seven field tiles and, in a setting that has one, its farmstead: one cell in eight a farm.
             for season in SEASONS:
@@ -173,7 +221,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
+    only = {"markers", "farmland", "bridges", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))
