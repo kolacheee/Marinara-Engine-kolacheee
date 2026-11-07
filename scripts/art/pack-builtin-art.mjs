@@ -65,43 +65,71 @@ const walk = (dir) => {
 for (const source of sources) walk(source);
 const find = (...names) => names.map((name) => files.get(name)).find(Boolean);
 
-/** The sheets with only what the tiles read: every other pixel cleared, each trimmed to the cells read
- *  (a sheet nothing reads is dropped). */
+/** The sheets with only what the tiles read, packed again: each distinct cell block a tile reads is copied
+ *  onto fresh sheets (tallest first, in rows), and the tiles pointed at their new places, so the pack holds
+ *  no unread pixels and stays under the pixel cap (TILE_PACK_IMAGE_MAX_PIXELS) as the art grows. */
+const SHEET_CELLS = 42;
 async function cleanSheets(pack, tiles) {
   const cell = pack.tileSize;
-  const rects = new Map();
+  const raw = new Map();
+  for (const sheet of pack.sheets) raw.set(sheet.id, sheet);
+  const decoded = new Map();
+  const pixelsOf = async (id) => {
+    if (!decoded.has(id)) {
+      const input = Buffer.from(raw.get(id).png.slice(PNG.length), "base64");
+      decoded.set(id, await sharp(input).ensureAlpha().png().toBuffer());
+    }
+    return decoded.get(id);
+  };
+  // Each distinct block read, once.
+  const blocks = new Map();
   for (const variants of Object.values(tiles))
     for (const v of variants) {
-      const list = rects.get(v.sheet) ?? [];
-      list.push([v.x * cell, v.y * cell, (v.w ?? 1) * cell, (v.h ?? 1) * cell]);
-      rects.set(v.sheet, list);
+      const key = `${v.sheet}:${v.x}:${v.y}:${v.w ?? 1}:${v.h ?? 1}`;
+      if (!blocks.has(key)) blocks.set(key, { sheet: v.sheet, x: v.x, y: v.y, w: v.w ?? 1, h: v.h ?? 1 });
     }
+  const order = [...blocks.values()].sort((a, b) => b.h - a.h || b.w - a.w);
+  const out = [];
+  let [x, y, rowH] = [0, 0, 0];
+  const open = () => {
+    out.push({ id: `art${out.length}`, parts: [], height: 0, width: 0 });
+    [x, y, rowH] = [0, 0, 0];
+  };
+  open();
+  for (const block of order) {
+    if (x + block.w > SHEET_CELLS) [x, y, rowH] = [0, y + rowH, 0];
+    if (y + block.h > SHEET_CELLS) open();
+    const sheet = out[out.length - 1];
+    block.to = { sheet: sheet.id, x, y };
+    sheet.parts.push(block);
+    sheet.width = Math.max(sheet.width, x + block.w);
+    sheet.height = Math.max(sheet.height, y + block.h);
+    x += block.w;
+    rowH = Math.max(rowH, block.h);
+  }
   const sheets = [];
-  for (const sheet of pack.sheets) {
-    const read = rects.get(sheet.id);
-    if (!read) continue;
-    const input = Buffer.from(sheet.png.slice(PNG.length), "base64");
-    const { data, info } = await sharp(input).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-    const kept = Buffer.alloc(data.length);
-    let [right, bottom] = [0, 0];
-    for (const [x, y, w, h] of read) {
-      const [x1, y1] = [Math.min(info.width, x + w), Math.min(info.height, y + h)];
-      for (let row = y; row < y1; row++)
-        data.copy(kept, (row * info.width + x) * 4, (row * info.width + x) * 4, (row * info.width + x1) * 4);
-      right = Math.max(right, x1);
-      bottom = Math.max(bottom, y1);
+  for (const sheet of out) {
+    if (!sheet.parts.length) continue;
+    const layers = [];
+    for (const part of sheet.parts) {
+      const piece = await sharp(await pixelsOf(part.sheet))
+        .extract({ left: part.x * cell, top: part.y * cell, width: part.w * cell, height: part.h * cell })
+        .png()
+        .toBuffer();
+      layers.push({ input: piece, left: part.to.x * cell, top: part.to.y * cell });
     }
-    const output = await sharp(kept, { raw: { width: info.width, height: info.height, channels: 4 } })
-      .extract({ left: 0, top: 0, width: right, height: bottom })
+    const [width, height] = [sheet.width * cell, sheet.height * cell];
+    const png = await sharp({ create: { width, height, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+      .composite(layers)
       .png({ compressionLevel: 9 })
       .toBuffer();
-    sheets.push({
-      ...sheet,
-      png: `${PNG}${output.toString("base64")}`,
-      ...("width" in sheet ? { width: right } : {}),
-      ...("height" in sheet ? { height: bottom } : {}),
-    });
+    sheets.push({ id: sheet.id, png: `${PNG}${png.toString("base64")}`, width, height });
   }
+  for (const variants of Object.values(tiles))
+    for (const v of variants) {
+      const to = blocks.get(`${v.sheet}:${v.x}:${v.y}:${v.w ?? 1}:${v.h ?? 1}`).to;
+      Object.assign(v, to);
+    }
   return sheets;
 }
 

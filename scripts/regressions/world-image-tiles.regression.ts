@@ -4,7 +4,7 @@
  *   - A pack is PNG sheets on a grid of cells (a multiple of 16 pixels) and every tile a rect of whole
  *     cells in one of them: one cell, or a sprite of several. A sheet that is not a whole, undamaged PNG
  *     of its stated size, a rect past its sheet's edge, an unknown sheet, two sheets with one id, a cell
- *     size that is no multiple of 16, sheets over 16 megapixels together or over 6 MB are refused; a tile
+ *     size that is no multiple of 16, sheets over 32 megapixels together or over 12 MB are refused; a tile
  *     the Engine does not draw is left out and noted. Drawn (v1) packs read as before.
  *   - The library keeps an image pack like a drawn one (saved, imported, exported, chosen), its sheets
  *     re-encoded by the Engine where it can; the list says which packs are images; an image pack keeps
@@ -131,30 +131,28 @@ try {
     /spans 9 by 1 cells; at most 8 each way/,
     "a sprite wider than eight cells",
   );
-  // 16 megapixels across all sheets: five of 2048 x 2048 (about 21) is too many.
+  // 32 megapixels across all sheets: nine of 2048 x 2048 (about 38) is too many.
   const wide = pngDataUrl(pngBytes(2048, 2048, () => [0, 0, 0, 0]));
   refused(
     imageTilePack({
-      sheets: Array.from({ length: 5 }, (_, at) => ({ id: `s${at}`, png: wide, width: 2048, height: 2048 })),
+      sheets: Array.from({ length: 9 }, (_, at) => ({ id: `s${at}`, png: wide, width: 2048, height: 2048 })),
       tiles: { grass: [{ sheet: "s0", x: 0, y: 0 }] },
     }),
-    /16,777,216 pixels/,
-    "sheets over 16 megapixels",
+    /33,554,432 pixels/,
+    "sheets over 32 megapixels",
   );
-  // Over 6 MB of sheets.
+  // Over 12 MB of sheets: copies of one sheet, each under the cap, together over it.
   const noisy = pngBytes(1000, 1000, (x, y) => [(x * 7919 + y * 104729) % 251, (x * y) % 253, (x ^ y) % 255, 255]);
   const heavy = pngDataUrl(noisy);
-  assert.ok(
-    heavy.length < TILE_PACK_IMAGE_MAX_BYTES && heavy.length * 2 > TILE_PACK_IMAGE_MAX_BYTES,
-    `${heavy.length}`,
-  );
+  assert.ok(heavy.length < TILE_PACK_IMAGE_MAX_BYTES, `${heavy.length}`);
+  const copies = Math.floor(TILE_PACK_IMAGE_MAX_BYTES / heavy.length) + 1;
   refused(
     imageTilePack({
-      sheets: Array.from({ length: 2 }, (_, at) => ({ id: `s${at}`, png: heavy, width: 1000, height: 1000 })),
+      sheets: Array.from({ length: copies }, (_, at) => ({ id: `s${at}`, png: heavy, width: 1000, height: 1000 })),
       tiles: { grass: [{ sheet: "s0", x: 0, y: 0 }] },
     }),
     /The sheets are larger than a tile pack can be/,
-    "sheets over 6 MB",
+    "sheets over 12 MB",
   );
   // Sheets just under the cap: the whole file (names and tiles beside them) is still read.
   const near = pngBytes(48, 48, () => [1, 2, 3, 255]);
