@@ -25,3 +25,18 @@ them large, on the open ground around that area, so the art must sit naturally o
   mud as see-through shading over the ground (dark at about 60% alpha), and reeds as solid sprites.
 - Winter: frozen pools (pale, cracked ice) with dry reeds.
 - Pools must fade at their edges, with no hard outline.
+
+## C. Hills and boulders (shared by every setting; owner OK 2026-11-07 16:44)
+- **Files:** `hills-prop-0..7.png` and `hills@winter-prop-0..7.png`, in the same 48/96 layout.
+- **Rolling hills:** grassy hummocks drawn as see-through SHADING over the ground, like the craters. A lit top-left slope (white at about 35-45% alpha), a shaded bottom-right flank (black at about 40-55% alpha), and a soft contact shadow. That way they take on whatever ground they sit on (grass, plains, sand, snow).
+- **Mix:** 3 single round hills, 2 hill pairs or chains, 1 hill with a small rocky outcrop on top, and 2 boulder clusters (solid grey stones with their own colour, a 1 px outline and a contact shadow).
+- **Edges:** fade to zero alpha with no outline, except on the solid rocks.
+- **Winter:** the same shading, with a few small snow highlights on the lit slopes and the rocks snow-capped.
+- Compare with `reference/current-fantasy-hills.png`. The new ones must read as soft rolling hills from the map, not as bumps or blobs.
+
+## D. Dunes (shared by every setting)
+- **Files:** `dunes-prop-0..7.png` and `dunes@winter-prop-0..7.png`, in the same 48/96 layout.
+- **Shape:** wind-shaped sand dunes as see-through SHADING: a crisp curved crest line, a lit windward slope (white at about 30-40% alpha) and a dark lee face (black at about 45-55% alpha), plus fine ripple lines.
+- **Mix:** crescent (barchan) dunes, long ridges and a dune cluster. Two of them are ripple fields only.
+- **Rules:** no hue of their own, so they take on the colour of sand, desert or wasteland ground. Edges fade to zero.
+- **Winter:** the same shapes with snow-dusted crests (a few brighter white pixels along the crest).
