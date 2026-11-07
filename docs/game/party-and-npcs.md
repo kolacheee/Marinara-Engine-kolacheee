@@ -45,7 +45,7 @@ A new character may show "Character data will populate as the story progresses."
 1. Open the character's sheet and click **Edit card**.
 2. Change what you need:
    - **Class** and a short description under **Sheet Details**.
-   - **Story stats** (Legacy games): turn on **Enable** to track pools and attributes. **Add Pool** adds a bar (name, current value, max value, color). **Add Attribute** adds a score such as STR. A game on MRPG classes does not use them for checks or fights.
+   - **Roleplay Stats** (Legacy games): turn on **Enable** to track pools and attributes. **Add Pool** adds a bar (name, current value, max value, color). **Add Attribute** adds a score such as STR. A game on MRPG classes does not use them for checks or fights.
    - **Abilities**, **Strengths** and **Weaknesses**: **Add** appends a line.
    - **Details**: **Add Detail** adds a labeled fact.
 3. Click **Save Sheet**. Click **Cancel** to discard your changes.
