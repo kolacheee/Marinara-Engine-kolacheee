@@ -1,0 +1,1260 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-8.md, Part B: City buildings, 16 + 16 winter. Exactly these 32 files receive verdicts.",
+      "files": [
+        "scifi-city-bldg-0",
+        "scifi-city-bldg-1",
+        "scifi-city-bldg-2",
+        "scifi-city-bldg-3",
+        "scifi-city-bldg-4",
+        "scifi-city-bldg-5",
+        "scifi-city-bldg-6",
+        "scifi-city-bldg-7",
+        "scifi-city-bldg-8",
+        "scifi-city-bldg-9",
+        "scifi-city-bldg-10",
+        "scifi-city-bldg-11",
+        "scifi-city-bldg-12",
+        "scifi-city-bldg-13",
+        "scifi-city-bldg-14",
+        "scifi-city-bldg-15",
+        "scifi-city@winter-bldg-0",
+        "scifi-city@winter-bldg-1",
+        "scifi-city@winter-bldg-2",
+        "scifi-city@winter-bldg-3",
+        "scifi-city@winter-bldg-4",
+        "scifi-city@winter-bldg-5",
+        "scifi-city@winter-bldg-6",
+        "scifi-city@winter-bldg-7",
+        "scifi-city@winter-bldg-8",
+        "scifi-city@winter-bldg-9",
+        "scifi-city@winter-bldg-10",
+        "scifi-city@winter-bldg-11",
+        "scifi-city@winter-bldg-12",
+        "scifi-city@winter-bldg-13",
+        "scifi-city@winter-bldg-14",
+        "scifi-city@winter-bldg-15"
+      ],
+      "calibration": "Good enough to ship alongside the approved art. Every file visually rechecked at native scale, 4x and full-source nearest-neighbour 8x. Shared architecture, pixel staircases and functional empty landing space are not independently failures.",
+      "other_parts": "Part A street bases and retained city towers are context only. No verdicts on Parts A, C or D or any approved comparison asset.",
+      "inapplicable_checks": {
+        "peak_lattice_or_range": "No peaks, ridges or mountain bases in Part B; no applicable inputs.",
+        "forest_tree_composite": "No standalone tree files in Part B. Building 15 is a complete park amenity, not a forest tree sprite. Its three unequal crowns were checked together in the park and in the planted city at 1x/4x, and the entire park was checked at 8x.",
+        "other_named_failure_modes": "Egg-crate peaks, Swiss-cheese craters, classical ruins and flat orange autumn have no Part B inputs. Autumn is not required. Stamped cyberpunk grid, winter consistency and identical park crowns are applicable and were checked."
+      }
+    },
+    "prior_review": {
+      "path": "art-drop/review/critic-r8B-1.json",
+      "unchanged": [
+        "scifi-city-bldg-0",
+        "scifi-city-bldg-1",
+        "scifi-city-bldg-2",
+        "scifi-city-bldg-3",
+        "scifi-city-bldg-4",
+        "scifi-city-bldg-5",
+        "scifi-city-bldg-6",
+        "scifi-city-bldg-7",
+        "scifi-city-bldg-8",
+        "scifi-city-bldg-9",
+        "scifi-city-bldg-10",
+        "scifi-city-bldg-11",
+        "scifi-city-bldg-12",
+        "scifi-city-bldg-14",
+        "scifi-city-bldg-15",
+        "scifi-city@winter-bldg-0",
+        "scifi-city@winter-bldg-1",
+        "scifi-city@winter-bldg-2",
+        "scifi-city@winter-bldg-3",
+        "scifi-city@winter-bldg-4",
+        "scifi-city@winter-bldg-5",
+        "scifi-city@winter-bldg-6",
+        "scifi-city@winter-bldg-7",
+        "scifi-city@winter-bldg-8",
+        "scifi-city@winter-bldg-9",
+        "scifi-city@winter-bldg-10",
+        "scifi-city@winter-bldg-11",
+        "scifi-city@winter-bldg-12",
+        "scifi-city@winter-bldg-14",
+        "scifi-city@winter-bldg-15"
+      ],
+      "changed": [
+        "scifi-city-bldg-13",
+        "scifi-city@winter-bldg-13"
+      ],
+      "prior_passes_retained": 30,
+      "new_defects_overriding_prior_passes": [],
+      "resolution": "All 30 previous passes are byte-for-byte unchanged and stay passed. The two previously failed hologram plazas changed; both now pass the renewed isolated and city-context checks."
+    },
+    "groups": {
+      "summer_small": [
+        "scifi-city-bldg-0",
+        "scifi-city-bldg-1",
+        "scifi-city-bldg-2",
+        "scifi-city-bldg-3",
+        "scifi-city-bldg-4",
+        "scifi-city-bldg-5"
+      ],
+      "winter_small": [
+        "scifi-city@winter-bldg-0",
+        "scifi-city@winter-bldg-1",
+        "scifi-city@winter-bldg-2",
+        "scifi-city@winter-bldg-3",
+        "scifi-city@winter-bldg-4",
+        "scifi-city@winter-bldg-5"
+      ],
+      "summer_medium": [
+        "scifi-city-bldg-6",
+        "scifi-city-bldg-7",
+        "scifi-city-bldg-8",
+        "scifi-city-bldg-9",
+        "scifi-city-bldg-10",
+        "scifi-city-bldg-11"
+      ],
+      "winter_medium": [
+        "scifi-city@winter-bldg-6",
+        "scifi-city@winter-bldg-7",
+        "scifi-city@winter-bldg-8",
+        "scifi-city@winter-bldg-9",
+        "scifi-city@winter-bldg-10",
+        "scifi-city@winter-bldg-11"
+      ],
+      "summer_large": [
+        "scifi-city-bldg-12",
+        "scifi-city-bldg-13",
+        "scifi-city-bldg-14",
+        "scifi-city-bldg-15"
+      ],
+      "winter_large": [
+        "scifi-city@winter-bldg-12",
+        "scifi-city@winter-bldg-13",
+        "scifi-city@winter-bldg-14",
+        "scifi-city@winter-bldg-15"
+      ]
+    },
+    "checks": {
+      "references": "Viewed the named retained scifi-city-tower-0..7 and winter variants, reference/scifi-marker0..3, approved out/scifi-marker0..3, and representative approved fantasy/wuxia/jazz_age/modern/wasteland markers. Compared representative approved round-2 city/slums/industry/farmland tiles, four-season paddies, and four-season grass/plains bases with their details composited. Reference/comparison sheets saved under this review prefix; these assets receive no new verdicts.",
+      "dimensions_anchor": "All 0-5 are 48x48; 6-11 are 48x96; 12-15 are 96x96. Opaque extents finish at y46 for small or y94 for medium/large, leaving one transparent bottom row. Horizontal bounds are centred within approximately 1 pixel. No clipping or incorrect footprint found.",
+      "alpha_edges_8x": "All 32 complete sprites viewed at exact 8x on olive-grey and seasonal street backgrounds. Alpha is binary (0/255) throughout; 15-23 visible RGB colours per file. Pixel clusters and perimeter steps remain hard and intentional. No blur, soft AA, matte fringe, detached halo or rejection-level noise found. Bright winter snow pixels are surface clusters, not a soft outline.",
+      "lighting_palette": "Top and left receiving planes are light; receding right faces and openings are darker. Cyan/magenta emission is local and consistent with the neon brief. Cool grey/teal structure, cream trim and warm windows fit the retained towers and approved markers; winter blue-grey shadows fit approved snow. No concrete light reversal or palette clash.",
+      "silhouette_near_duplicates": "Compared all designs side by side at 1x/4x, and summer/winter pairs. Six small and six medium buildings differ through arches, wedges, cylinders, setbacks, stairs, roof equipment and signs. Large megablock/plaza/pad/park differ in footprint and function. Shared trim and windows do not make the silhouettes near-duplicates. No duplicated crown stamp in park 15.",
+      "one_cell_8x2": "Both seasons: exact 384x96 random strips, 8 columns x 2 rows of 48x48 cells, fixed seed 8101, including every small variant. Viewed 1x/4x with no flips or rotations. A chance run of three kiosks makes repetition recognisable, but there is no connected tile border, repeated panel frame or circuit pattern across cells. No sprite-level stamped-grid failure. Medium/large props checked in city scenes rather than forced into 48x48 cells.",
+      "dense_city": "Both seasons: 576x480 scene on seasonal street ground, all 16 Part B designs and all 8 retained towers, plus 40 repeated small/medium props (64 total). Large props reserve 2x2 cells, bottom-depth sorted like planted trees, with a 96px road corridor. Inspected at 1x and four complete 4x quadrant views. Roofs, fronts and signs remain readable; distinct heights and footprints avoid a single repeated box texture. Revised plaza 13 is legible in context and does not become an opaque cyan icon. Scene occupancy/camera spacing is contextual, not a new asset specification.",
+      "base_3x3_context": "Part B has no bases. For ground context, saved literal 3x3 repeats of both Part A street bases at 1x and 4x; viewed the full native repeats and enlarged join/source-tile windows. Repeated grates, puddles and winter slush patches are visible in the bare ground, especially winter. These are Part A material and cannot fail a Part B building. No building border creates a seam or joins neighbouring sprites into a continuous stamped grid.",
+      "winter": "All 16 winter exports are populated, match their summer design, carry snow on receiving roofs/ledges/planters and retain neon plus warm/cool windows. Park crowns are snowy but distinct. Landing-pad centre is intentionally clear operational space; rim/cabin/ramp snow makes winter readable. No blank or inconsistent winter.",
+      "hologram_retest": "Viewed revised summer/winter 13 at native size, 4x and 8x, on both backgrounds, in seasonal dense blocks, and against reconstructed prior-review pixel views. Bright cores/highlights, darker receding planes and projection breaks remove the old uniformly filled, heavily outlined pasted-glyph problem. Both pass."
+    },
+    "files": {
+      "scifi-city-bldg-0": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            2,
+            6,
+            45,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 20,
+          "sha256": "9080a8b214336ce81dd8a4d97abdbafe7448747ac03406261b05e1d6dabac07e"
+        },
+        "assessment": "Low asymmetric shop, magenta awning, warm storefront and projecting roof equipment remain legible at native size. Distinct from the other five small buildings.",
+        "evidence": [
+          "critic-r8B-2-summer-small-4x.png",
+          "critic-r8B-2-summer-bldg-0-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-1": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            12,
+            41,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 15,
+          "sha256": "74243655f80f7323d9e0e5c12a11c744890137ca399f51a77b599b8a60944f6c"
+        },
+        "assessment": "Round kiosk and narrow aerial give a clear small silhouette. Glass, roof rim and door separate at native size; the outline is clean.",
+        "evidence": [
+          "critic-r8B-2-summer-small-4x.png",
+          "critic-r8B-2-summer-bldg-1-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-2": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            3,
+            4,
+            45,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 18,
+          "sha256": "a6f94c461a8c7d6af1d8cc50f540433e6bb297e95e0b95813dbd3c82851b9509"
+        },
+        "assessment": "Two-storey shop with a stepped upper roof, side stair and vertical sign. Warm and cool windows are separated rather than speckled randomly.",
+        "evidence": [
+          "critic-r8B-2-summer-small-4x.png",
+          "critic-r8B-2-summer-bldg-2-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-3": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            12,
+            43,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 15,
+          "sha256": "da39625f50fa3a154420e83ae6395274007896fa25efd6720e09e3f1519ab3a5"
+        },
+        "assessment": "Arched ribbed roof and central entrance distinguish this low block. Roof ribs converge consistently and remain readable in the random strip.",
+        "evidence": [
+          "critic-r8B-2-summer-small-4x.png",
+          "critic-r8B-2-summer-bldg-3-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-4": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            9,
+            41,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 19,
+          "sha256": "656347c46eec653e31c2adb9261e5d243e951f77163593eff75925a2d10a00bb"
+        },
+        "assessment": "Narrow wedge roof and front canopy make a distinctly different silhouette. The cyan roof panel stays within the roof plane; no detached fringe or reversed light.",
+        "evidence": [
+          "critic-r8B-2-summer-small-4x.png",
+          "critic-r8B-2-summer-bldg-4-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-5": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            4,
+            3,
+            44,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 17,
+          "sha256": "f06d2cf03a4db8edfd117db73b9de479e9c8df77f243b846a05888bb99e1985e"
+        },
+        "assessment": "Three offset glazed tiers remain distinct from the two-storey shop and stepped medium blocks. Strong cool window masses are balanced by warm windows and dark framing.",
+        "evidence": [
+          "critic-r8B-2-summer-small-4x.png",
+          "critic-r8B-2-summer-bldg-5-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-6": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            19,
+            41,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 18,
+          "sha256": "8c2a680b979a965b06450457c83c55b21771bd9f48607c1f32f449035fbf5c95"
+        },
+        "assessment": "Tall narrow terraced block with roof vents and vertical magenta billboard. Warm window rhythm is readable, not random noise; setbacks are clear.",
+        "evidence": [
+          "critic-r8B-2-summer-medium-4x.png",
+          "critic-r8B-2-summer-bldg-6-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-7": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            5,
+            24,
+            42,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 20,
+          "sha256": "50fb083848d76ddc17ef5478549d9c159311306dd13270ca3b90fbcc3a07409a"
+        },
+        "assessment": "Rounded glazed mid-rise with a broad roof deck, antenna and raised rooftop enclosure. Alternating warm and cool window bands read cleanly in context.",
+        "evidence": [
+          "critic-r8B-2-summer-medium-4x.png",
+          "critic-r8B-2-summer-bldg-7-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-8": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            6,
+            16,
+            42,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 17,
+          "sha256": "1637cdb5f810b142daa5e73131e0d95f08e8792f3aa380da4b8c674c376dee37"
+        },
+        "assessment": "Split roofline, rooftop sign/dome and exterior zigzag stair give an unmistakably different profile. Stair is small but coherent at native size.",
+        "evidence": [
+          "critic-r8B-2-summer-medium-4x.png",
+          "critic-r8B-2-summer-bldg-8-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-9": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            2,
+            41,
+            46,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 16,
+          "sha256": "1bfd3d8afac2e8f7c4ab76e6e24018ec6fb86aef5413e88d99079cb2d9c51140"
+        },
+        "assessment": "Shorter mid-rise with paired roof vents and a large side billboard. Its lower height and offset mass distinguish it from 6 and 10; the blank sign face is an acceptable small sign.",
+        "evidence": [
+          "critic-r8B-2-summer-medium-4x.png",
+          "critic-r8B-2-summer-bldg-9-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-10": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            2,
+            26,
+            45,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 19,
+          "sha256": "ddc2faa08dc94ee1aca5090991c9ff7546c5bcb410932a7890c5e25341d0e5ac"
+        },
+        "assessment": "Broad tapering terraced mid-rise with planted ledges and roof machinery. Similar construction language to 6, but different width, setbacks, roofline and signage; not a near-duplicate.",
+        "evidence": [
+          "critic-r8B-2-summer-medium-4x.png",
+          "critic-r8B-2-summer-bldg-10-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-11": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            18,
+            40,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 16,
+          "sha256": "a2a0c85c3d7e3d7dbd57d9b8a4451ac8df9ad85038fce19b14856e088b4b0a25"
+        },
+        "assessment": "Round-cornered office block with dish and aerial, cyan glazing and magenta belt. Dish is crisp and the building differs clearly from the roof-deck cylinder 7.",
+        "evidence": [
+          "critic-r8B-2-summer-medium-4x.png",
+          "critic-r8B-2-summer-bldg-11-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-12": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            3,
+            34,
+            93,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 20,
+          "sha256": "b6f56449887091f5fc7f032cc76b2b8f6d8177de250ca77a83c99b648e274c77"
+        },
+        "assessment": "Wide U-shaped megablock with recessed court, multiple wings and shops. Court, wings and storefronts remain separable at native scale; acceptable detail density beside the retained towers.",
+        "evidence": [
+          "critic-r8B-2-summer-large-4x.png",
+          "critic-r8B-2-summer-bldg-12-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-13": {
+        "status": "pass",
+        "prior_status": "fail",
+        "changed_since_prior": true,
+        "technical": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            4,
+            34,
+            92,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 21,
+          "sha256": "8fb1f72bccbd9f2385957cc3728a4d2439d60abe8612240dcb6f80da95f88707"
+        },
+        "assessment": "PASS after revision. The old single-colour cyan glyph and heavy surrounding dark stroke have been replaced by pale cyan highlight clusters, mid-cyan faces, darker receding edges and deliberate short breaks in the right upright. The central crossing and lower diagonal now separate into an angular projected sculpture rather than a flat pasted sign. A small cyan mark at the pedestal reinforces the projection. At 1x the luminous outline is immediately distinct from the grey plaza; at 4x and 8x the changes remain crisp, with no fuzzy glow, stray fringe, extra noise or palette clash. The plaza, planters and lamps retain readable scale and top-left shading. This resolves the concrete r8B-1 failure; a more elaborate hologram is not necessary to ship.",
+        "evidence": [
+          "critic-r8B-2-summer-large-4x.png",
+          "critic-r8B-2-summer-bldg-13-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-14": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            4,
+            31,
+            91,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 19,
+          "sha256": "c8d1996fde3d3a8e96e308f3ed0fcc7ff2a51fdcab549a4e26e1c190e992e1ea"
+        },
+        "assessment": "Landing platform reads immediately from its large clear deck, cyan broken ring, control cabin and access ramp. The calm central fill is functional landing space, not muddy or unfinished texture.",
+        "evidence": [
+          "critic-r8B-2-summer-large-4x.png",
+          "critic-r8B-2-summer-bldg-14-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city-bldg-15": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            5,
+            35,
+            91,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 19,
+          "sha256": "a8f016d5f0efd2c6c37c6a009b6a2d85477fafe149d3e4eae88497d9e283838a"
+        },
+        "assessment": "Small landscaped park reads as paths, raised planters, fountain and trees. Crowns differ in width, height and lobe arrangement; they are not identical stamps. Broad foliage clusters fit the limited sprite scale.",
+        "evidence": [
+          "critic-r8B-2-summer-large-4x.png",
+          "critic-r8B-2-summer-bldg-15-edges-8x.png",
+          "critic-r8B-2-summer-city-block-1x.png",
+          "critic-r8B-2-summer-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-0": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            2,
+            5,
+            46,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 22,
+          "sha256": "fbec136c051dec375dc4e806ac43ca6307926a3fece1fe27bed466d4b09fc51c"
+        },
+        "assessment": "Low asymmetric shop, magenta awning, warm storefront and projecting roof equipment remain legible at native size. Distinct from the other five small buildings. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-small-4x.png",
+          "critic-r8B-2-winter-bldg-0-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-1": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            11,
+            41,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 17,
+          "sha256": "c4606523b352b1b74d828891fecdb4a927ee0aef20237273e9ade39bedad591d"
+        },
+        "assessment": "Round kiosk and narrow aerial give a clear small silhouette. Glass, roof rim and door separate at native size; the outline is clean. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-small-4x.png",
+          "critic-r8B-2-winter-bldg-1-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-2": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            3,
+            3,
+            45,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 19,
+          "sha256": "7bdffcbde69c7c334869ded2910b3661c04bc4997c06e908537f8a61ca36ea54"
+        },
+        "assessment": "Two-storey shop with a stepped upper roof, side stair and vertical sign. Warm and cool windows are separated rather than speckled randomly. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-small-4x.png",
+          "critic-r8B-2-winter-bldg-2-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-3": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            12,
+            43,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 17,
+          "sha256": "eb58ed31e477821f153250d7071d0676f06460b6dcc7c2bbb7edc6a4f3eac45a"
+        },
+        "assessment": "Arched ribbed roof and central entrance distinguish this low block. Roof ribs converge consistently and remain readable in the random strip. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-small-4x.png",
+          "critic-r8B-2-winter-bldg-3-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-4": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            8,
+            41,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 17,
+          "sha256": "440729fe60e671d40795b45843ac1d509007571992bb00b6c18ef456501062ef"
+        },
+        "assessment": "Narrow wedge roof and front canopy make a distinctly different silhouette. The cyan roof panel stays within the roof plane; no detached fringe or reversed light. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-small-4x.png",
+          "critic-r8B-2-winter-bldg-4-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-5": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            4,
+            2,
+            44,
+            47
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 19,
+          "sha256": "3ecb73ec1e574ffd6e23d615ffb29c44fcee022f4675bc60be7bcefa36c8c28b"
+        },
+        "assessment": "Three offset glazed tiers remain distinct from the two-storey shop and stepped medium blocks. Strong cool window masses are balanced by warm windows and dark framing. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-small-4x.png",
+          "critic-r8B-2-winter-bldg-5-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-6": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            18,
+            41,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 21,
+          "sha256": "0eb106f1a8f07524be5cb46585b9e8e39e73e137c263a87fdbb787775801f79b"
+        },
+        "assessment": "Tall narrow terraced block with roof vents and vertical magenta billboard. Warm window rhythm is readable, not random noise; setbacks are clear. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-medium-4x.png",
+          "critic-r8B-2-winter-bldg-6-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-7": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            5,
+            24,
+            42,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 21,
+          "sha256": "28dab5638ae810915124c00c63670a33443e5f1f49d614e81ae00e375d96c28d"
+        },
+        "assessment": "Rounded glazed mid-rise with a broad roof deck, antenna and raised rooftop enclosure. Alternating warm and cool window bands read cleanly in context. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-medium-4x.png",
+          "critic-r8B-2-winter-bldg-7-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-8": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            6,
+            16,
+            42,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 20,
+          "sha256": "f06268bf395db9fa0ce5e9218d14f81f0b5f3d4fa92fcf08162d6ce889289b89"
+        },
+        "assessment": "Split roofline, rooftop sign/dome and exterior zigzag stair give an unmistakably different profile. Stair is small but coherent at native size. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-medium-4x.png",
+          "critic-r8B-2-winter-bldg-8-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-9": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            2,
+            40,
+            46,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 18,
+          "sha256": "51c5c97eb7894ac1bbbabd68d3e35deb2f64f603eff75935743c608fb1c6253a"
+        },
+        "assessment": "Shorter mid-rise with paired roof vents and a large side billboard. Its lower height and offset mass distinguish it from 6 and 10; the blank sign face is an acceptable small sign. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-medium-4x.png",
+          "critic-r8B-2-winter-bldg-9-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-10": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            2,
+            26,
+            45,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 20,
+          "sha256": "a375d07aa2928d8f22101d56b5a023ca56398a5dd542807f9a3d5b5007203cf0"
+        },
+        "assessment": "Broad tapering terraced mid-rise with planted ledges and roof machinery. Similar construction language to 6, but different width, setbacks, roofline and signage; not a near-duplicate. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-medium-4x.png",
+          "critic-r8B-2-winter-bldg-10-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-11": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            48,
+            96
+          ],
+          "bbox": [
+            7,
+            17,
+            40,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 17,
+          "sha256": "25bac44f0ac70a573b7e4626d476048ba93e18498f4b399c3ddc9053b8233d7d"
+        },
+        "assessment": "Round-cornered office block with dish and aerial, cyan glazing and magenta belt. Dish is crisp and the building differs clearly from the roof-deck cylinder 7. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-medium-4x.png",
+          "critic-r8B-2-winter-bldg-11-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-12": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            3,
+            33,
+            93,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 23,
+          "sha256": "93ee35d848d75344d8d7214b551121bc2367dd9e06c92c73e970da1f76819840"
+        },
+        "assessment": "Wide U-shaped megablock with recessed court, multiple wings and shops. Court, wings and storefronts remain separable at native scale; acceptable detail density beside the retained towers. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-large-4x.png",
+          "critic-r8B-2-winter-bldg-12-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-13": {
+        "status": "pass",
+        "prior_status": "fail",
+        "changed_since_prior": true,
+        "technical": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            4,
+            34,
+            91,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 22,
+          "sha256": "b5133b92a17e6a112ed71158822026b85f30cd37573f59735ed820a4e26d9f9e"
+        },
+        "assessment": "PASS after revision. The old single-colour cyan glyph and heavy surrounding dark stroke have been replaced by pale cyan highlight clusters, mid-cyan faces, darker receding edges and deliberate short breaks in the right upright. The central crossing and lower diagonal now separate into an angular projected sculpture rather than a flat pasted sign. A small cyan mark at the pedestal reinforces the projection. At 1x the luminous outline is immediately distinct from the grey plaza; at 4x and 8x the changes remain crisp, with no fuzzy glow, stray fringe, extra noise or palette clash. The plaza, planters and lamps retain readable scale and top-left shading. This resolves the concrete r8B-1 failure; a more elaborate hologram is not necessary to ship. Snow remains on the plaza rims, planters and lamps; the projection remains lit and the design matches summer.",
+        "evidence": [
+          "critic-r8B-2-winter-large-4x.png",
+          "critic-r8B-2-winter-bldg-13-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-14": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            4,
+            30,
+            92,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 22,
+          "sha256": "262fd6e2ba04f909f107b03e76fee7194e18ad1740b99c0e95ae6306aa926a10"
+        },
+        "assessment": "Landing platform reads immediately from its large clear deck, cyan broken ring, control cabin and access ramp. The calm central fill is functional landing space, not muddy or unfinished texture. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-large-4x.png",
+          "critic-r8B-2-winter-bldg-14-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      },
+      "scifi-city@winter-bldg-15": {
+        "status": "pass",
+        "prior_status": "pass",
+        "changed_since_prior": false,
+        "technical": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            5,
+            35,
+            90,
+            95
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "opaque_colours": 20,
+          "sha256": "a38734099611bf739c1dc7e5e277599fc1bd5a42c8f9cd6de1a7924379e65607"
+        },
+        "assessment": "Small landscaped park reads as paths, raised planters, fountain and trees. Crowns differ in width, height and lobe arrangement; they are not identical stamps. Broad foliage clusters fit the limited sprite scale. Snow follows the corresponding roofs/ledges or landscape surfaces, retains blue-grey shadow clusters and leaves the defining architecture and neon readable. This is a visible seasonal treatment, not a blank export or global tint.",
+        "evidence": [
+          "critic-r8B-2-winter-large-4x.png",
+          "critic-r8B-2-winter-bldg-15-edges-8x.png",
+          "critic-r8B-2-winter-city-block-1x.png",
+          "critic-r8B-2-winter-city-block-4x.png"
+        ]
+      }
+    },
+    "evidence": {
+      "prefix": "art-drop/review/critic-r8B-2-",
+      "scaling": "Review composites only. Integer nearest-neighbour enlargement; no source art was edited. 8x files contain the full sprite twice on different backgrounds. Large 4x scenes have saved inspection crops. Before images in the hologram comparison are reconstructed from the old review 8x panels, not written back into out/.",
+      "png_files": [
+        "critic-r8B-2-approved-comparison-1x.png",
+        "critic-r8B-2-approved-comparison-4x.png",
+        "critic-r8B-2-approved-grass-4x.png",
+        "critic-r8B-2-approved-markers-4x.png",
+        "critic-r8B-2-approved-markers-panel-0-4x.png",
+        "critic-r8B-2-approved-markers-panel-1-4x.png",
+        "critic-r8B-2-approved-markers-panel-2-4x.png",
+        "critic-r8B-2-approved-plains-4x.png",
+        "critic-r8B-2-approved-round2-4x.png",
+        "critic-r8B-2-hologram-before-after-1x.png",
+        "critic-r8B-2-hologram-before-after-4x.png",
+        "critic-r8B-2-original-reference-markers-4x.png",
+        "critic-r8B-2-scifi-reference-markers-1x.png",
+        "critic-r8B-2-scifi-reference-markers-4x.png",
+        "critic-r8B-2-summer-bldg-0-edges-8x.png",
+        "critic-r8B-2-summer-bldg-1-edges-8x.png",
+        "critic-r8B-2-summer-bldg-10-edges-8x.png",
+        "critic-r8B-2-summer-bldg-11-edges-8x.png",
+        "critic-r8B-2-summer-bldg-12-edges-8x.png",
+        "critic-r8B-2-summer-bldg-13-edges-8x.png",
+        "critic-r8B-2-summer-bldg-14-edges-8x.png",
+        "critic-r8B-2-summer-bldg-15-edges-8x.png",
+        "critic-r8B-2-summer-bldg-2-edges-8x.png",
+        "critic-r8B-2-summer-bldg-3-edges-8x.png",
+        "critic-r8B-2-summer-bldg-4-edges-8x.png",
+        "critic-r8B-2-summer-bldg-5-edges-8x.png",
+        "critic-r8B-2-summer-bldg-6-edges-8x.png",
+        "critic-r8B-2-summer-bldg-7-edges-8x.png",
+        "critic-r8B-2-summer-bldg-8-edges-8x.png",
+        "critic-r8B-2-summer-bldg-9-edges-8x.png",
+        "critic-r8B-2-summer-city-block-1x.png",
+        "critic-r8B-2-summer-city-block-4x.png",
+        "critic-r8B-2-summer-city-block-q00-4x.png",
+        "critic-r8B-2-summer-city-block-q01-4x.png",
+        "critic-r8B-2-summer-city-block-q10-4x.png",
+        "critic-r8B-2-summer-city-block-q11-4x.png",
+        "critic-r8B-2-summer-city-block-window-1x.png",
+        "critic-r8B-2-summer-city-block-window-4x.png",
+        "critic-r8B-2-summer-context-ground-3x3-1x.png",
+        "critic-r8B-2-summer-context-ground-3x3-4x.png",
+        "critic-r8B-2-summer-context-ground-join-4x.png",
+        "critic-r8B-2-summer-context-ground-q00-4x.png",
+        "critic-r8B-2-summer-context-ground-q01-4x.png",
+        "critic-r8B-2-summer-context-ground-q10-4x.png",
+        "critic-r8B-2-summer-context-ground-q11-4x.png",
+        "critic-r8B-2-summer-large-1x.png",
+        "critic-r8B-2-summer-large-4x.png",
+        "critic-r8B-2-summer-large-street-1x.png",
+        "critic-r8B-2-summer-large-street-4x.png",
+        "critic-r8B-2-summer-medium-1x.png",
+        "critic-r8B-2-summer-medium-4x.png",
+        "critic-r8B-2-summer-overview-1x.png",
+        "critic-r8B-2-summer-overview-4x.png",
+        "critic-r8B-2-summer-retained-towers-1x.png",
+        "critic-r8B-2-summer-retained-towers-4x.png",
+        "critic-r8B-2-summer-small-1x.png",
+        "critic-r8B-2-summer-small-4x.png",
+        "critic-r8B-2-summer-small-random-8x2-1x.png",
+        "critic-r8B-2-summer-small-random-8x2-4x.png",
+        "critic-r8B-2-winter-bldg-0-edges-8x.png",
+        "critic-r8B-2-winter-bldg-1-edges-8x.png",
+        "critic-r8B-2-winter-bldg-10-edges-8x.png",
+        "critic-r8B-2-winter-bldg-11-edges-8x.png",
+        "critic-r8B-2-winter-bldg-12-edges-8x.png",
+        "critic-r8B-2-winter-bldg-13-edges-8x.png",
+        "critic-r8B-2-winter-bldg-14-edges-8x.png",
+        "critic-r8B-2-winter-bldg-15-edges-8x.png",
+        "critic-r8B-2-winter-bldg-2-edges-8x.png",
+        "critic-r8B-2-winter-bldg-3-edges-8x.png",
+        "critic-r8B-2-winter-bldg-4-edges-8x.png",
+        "critic-r8B-2-winter-bldg-5-edges-8x.png",
+        "critic-r8B-2-winter-bldg-6-edges-8x.png",
+        "critic-r8B-2-winter-bldg-7-edges-8x.png",
+        "critic-r8B-2-winter-bldg-8-edges-8x.png",
+        "critic-r8B-2-winter-bldg-9-edges-8x.png",
+        "critic-r8B-2-winter-city-block-1x.png",
+        "critic-r8B-2-winter-city-block-4x.png",
+        "critic-r8B-2-winter-city-block-q00-4x.png",
+        "critic-r8B-2-winter-city-block-q01-4x.png",
+        "critic-r8B-2-winter-city-block-q10-4x.png",
+        "critic-r8B-2-winter-city-block-q11-4x.png",
+        "critic-r8B-2-winter-city-block-window-1x.png",
+        "critic-r8B-2-winter-city-block-window-4x.png",
+        "critic-r8B-2-winter-context-ground-3x3-1x.png",
+        "critic-r8B-2-winter-context-ground-3x3-4x.png",
+        "critic-r8B-2-winter-context-ground-join-4x.png",
+        "critic-r8B-2-winter-context-ground-q00-4x.png",
+        "critic-r8B-2-winter-context-ground-q01-4x.png",
+        "critic-r8B-2-winter-context-ground-q10-4x.png",
+        "critic-r8B-2-winter-context-ground-q11-4x.png",
+        "critic-r8B-2-winter-large-1x.png",
+        "critic-r8B-2-winter-large-4x.png",
+        "critic-r8B-2-winter-large-street-1x.png",
+        "critic-r8B-2-winter-large-street-4x.png",
+        "critic-r8B-2-winter-medium-1x.png",
+        "critic-r8B-2-winter-medium-4x.png",
+        "critic-r8B-2-winter-overview-1x.png",
+        "critic-r8B-2-winter-overview-4x.png",
+        "critic-r8B-2-winter-retained-towers-1x.png",
+        "critic-r8B-2-winter-retained-towers-4x.png",
+        "critic-r8B-2-winter-small-1x.png",
+        "critic-r8B-2-winter-small-4x.png",
+        "critic-r8B-2-winter-small-random-8x2-1x.png",
+        "critic-r8B-2-winter-small-random-8x2-4x.png"
+      ]
+    },
+    "source_integrity": {
+      "all_out_pngs_unchanged": true,
+      "checked_png_count": 540,
+      "baseline": "critic-r8B-2-out-before-hashes.json"
+    }
+  },
+  "pass": [
+    "scifi-city-bldg-0",
+    "scifi-city-bldg-1",
+    "scifi-city-bldg-2",
+    "scifi-city-bldg-3",
+    "scifi-city-bldg-4",
+    "scifi-city-bldg-5",
+    "scifi-city-bldg-6",
+    "scifi-city-bldg-7",
+    "scifi-city-bldg-8",
+    "scifi-city-bldg-9",
+    "scifi-city-bldg-10",
+    "scifi-city-bldg-11",
+    "scifi-city-bldg-12",
+    "scifi-city-bldg-13",
+    "scifi-city-bldg-14",
+    "scifi-city-bldg-15",
+    "scifi-city@winter-bldg-0",
+    "scifi-city@winter-bldg-1",
+    "scifi-city@winter-bldg-2",
+    "scifi-city@winter-bldg-3",
+    "scifi-city@winter-bldg-4",
+    "scifi-city@winter-bldg-5",
+    "scifi-city@winter-bldg-6",
+    "scifi-city@winter-bldg-7",
+    "scifi-city@winter-bldg-8",
+    "scifi-city@winter-bldg-9",
+    "scifi-city@winter-bldg-10",
+    "scifi-city@winter-bldg-11",
+    "scifi-city@winter-bldg-12",
+    "scifi-city@winter-bldg-13",
+    "scifi-city@winter-bldg-14",
+    "scifi-city@winter-bldg-15"
+  ],
+  "fail": []
+}
