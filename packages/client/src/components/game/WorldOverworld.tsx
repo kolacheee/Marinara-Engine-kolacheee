@@ -395,11 +395,26 @@ export function WorldOverworld({
       ctx.fillStyle = look === "bamboo" ? "rgba(10, 22, 14, 0.2)" : "rgba(10, 22, 14, 0.55)";
       ctx.fillRect(x * OVERWORLD_TILE, y * OVERWORLD_TILE, OVERWORLD_TILE, OVERWORLD_TILE);
     };
+    // A wood's floor lies only inside it, off its roads and back from its places (the trees stand clear of
+    // them, so the ground beside shows there instead).
+    const clearing = new Set<number>();
+    for (const place of world.places)
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) clearing.add((place.at.y + dy) * width + place.at.x + dx);
+    for (const link of world.links) for (const at of link.path ?? []) clearing.add(at);
+    const floorAt = (x: number, y: number) =>
+      x >= 0 &&
+      y >= 0 &&
+      x < width &&
+      y < height &&
+      coveredLooks.has(drawnLook[y * width + x]!) &&
+      inner(x, y) &&
+      !clearing.has(y * width + x);
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
         const look = drawnLook[y * width + x]!;
-        const drawn = coveredLooks.has(look) && !inner(x, y) ? besideLook(x, y) : look;
+        const drawn = coveredLooks.has(look) && !floorAt(x, y) ? besideLook(x, y) : look;
         if (coveredLooks.has(drawn) && drawn === look) floorOf(x, y, look);
         else groundOf(x, y, drawn);
         if (water[own] && !waterEdges) {
@@ -411,6 +426,51 @@ export function WorldOverworld({
           });
         }
       }
+    }
+    // The floor fades into the ground beside it (the owner, 2026-11-07: its hard edge "looks really
+    // unnatural"): over each cell next to a floor, the floor again, its alpha falling away from the floor's
+    // cells over most of a cell.
+    {
+      const T = OVERWORLD_TILE;
+      const make = () => {
+        const each = document.createElement("canvas");
+        each.width = each.height = Math.ceil(T * resolution);
+        return each;
+      };
+      const [layer, mask] = [make(), make()];
+      const [lctx, mctx] = [layer.getContext("2d"), mask.getContext("2d")];
+      if (lctx && mctx)
+        for (let y = 0; y < height; y++)
+          for (let x = 0; x < width; x++) {
+            if (floorAt(x, y) || wetCell[y * width + x]) continue;
+            const near: Array<[number, number, string]> = [];
+            for (let dy = -1; dy <= 1; dy++)
+              for (let dx = -1; dx <= 1; dx++)
+                if ((dx || dy) && floorAt(x + dx, y + dy)) near.push([dx, dy, drawnLook[(y + dy) * width + x + dx]!]);
+            if (!near.length) continue;
+            mctx.setTransform(resolution, 0, 0, resolution, 0, 0);
+            mctx.clearRect(0, 0, T, T);
+            mctx.globalCompositeOperation = "lighter";
+            for (const [dx, dy] of near) {
+              const [gx, gy] = [(dx + 0.5) * T, (dy + 0.5) * T];
+              const fade = mctx.createRadialGradient(gx, gy, T * 0.45, gx, gy, T * 1.25);
+              fade.addColorStop(0, "rgba(0,0,0,0.9)");
+              fade.addColorStop(1, "rgba(0,0,0,0)");
+              mctx.fillStyle = fade;
+              mctx.fillRect(0, 0, T, T);
+            }
+            const look = near[0]![2];
+            lctx.setTransform(resolution, 0, 0, resolution, -x * T * resolution, -y * T * resolution);
+            lctx.globalCompositeOperation = "source-over";
+            lctx.clearRect(x * T, y * T, T, T);
+            inSeason(x, y);
+            if (!drawTile(lctx, `floor_${look}`, x * T, y * T, cellNoise(x, y)(99))) continue;
+            lctx.setTransform(1, 0, 0, 1, 0, 0);
+            lctx.globalCompositeOperation = "destination-in";
+            lctx.drawImage(mask, 0, 0);
+            lctx.globalCompositeOperation = "source-over";
+            ctx.drawImage(layer, x * T, y * T, T, T);
+          }
     }
     // Fringes: where the pack has one for a look, the look spills past its cells onto the ground beside it,
     // taller ground drawn last so it overhangs.
@@ -666,6 +726,16 @@ export function WorldOverworld({
         const [cx, cy] = [Math.floor(px), Math.floor(py)];
         if (cx < 0 || cy < 0 || cx >= width || cy >= height) return false;
         if (roads.has(cy * width + cx) || placed.has(cy * width + cx) || byRiver(px, py)) return false;
+        // Clear of the roads and places beside it too (the owner, 2026-11-07: trees hid a settlement and a
+        // path): no trunk within most of a cell of a road's middle, nor within two cells of a place's.
+        for (let dy = -2; dy <= 2; dy++)
+          for (let dx = -2; dx <= 2; dx++) {
+            const [nx, ny] = [cx + dx, cy + dy];
+            if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+            const far = Math.hypot(px - (nx + 0.5), py - (ny + 0.5));
+            if (far < 0.85 && roads.has(ny * width + nx)) return false;
+            if (far < 1.9 && placed.has(ny * width + nx)) return false;
+          }
         if (square.has(drawnLook[cy * width + cx]!)) return false;
         // Never in the water (a water cell is drawn over the land under it, which may be the wood's),
         // nor so near it that the trunk stands past the shore.
@@ -727,6 +797,29 @@ export function WorldOverworld({
             trees.push(peak);
         trees.push(...pines);
       }
+    }
+    // Landmarks over built-up ground where the pack has them (a city's towers, industry's stacks and cooling
+    // towers): about one cell in four, standing on its foot near the cell's bottom, never on a road or a place.
+    for (const [look, id] of [
+      ["city", "standing_city"],
+      ["industry", "standing_industry"],
+    ] as const) {
+      if (!drawTile.hasPiece(id, 0)) continue;
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          const at = y * width + x;
+          if (drawnLook[at] !== look || wetCell[at] || roads.has(at) || placed.has(at)) continue;
+          const noise = cellNoise(x, y);
+          if (noise(71) >= 0.25) continue;
+          trees.push({
+            x: x + 0.3 + noise(72) * 0.4,
+            y: y + 0.8 + noise(73) * 0.15,
+            id,
+            pick: Math.floor(noise(74) * 8),
+            w: 1,
+            h: 2,
+          });
+        }
     }
     // Small things on open ground (a flower clump, a rock, a bush): about one cell in five wholly inside
     // its look, never on or beside a road or a place, so nothing is cut by another ground's edge.
