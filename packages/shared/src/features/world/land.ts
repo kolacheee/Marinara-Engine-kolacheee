@@ -220,7 +220,9 @@ export function worldDrainage(land: WorldLandFields): WorldDrainage {
   const widthOf = (cell: number) => (flow[cell]! >= threshold * 5 ? 3 : flow[cell]! >= threshold * 2.2 ? 2 : 1);
   const fed = new Uint8Array(count);
   for (const cell of landCells) if (isRiver(cell) && isRiver(down[cell]!)) fed[down[cell]!] = 1;
-  const sources = landCells.filter((cell) => isRiver(cell) && !fed[cell]).sort((a, b) => filled[b]! - filled[a]! || a - b);
+  const sources = landCells
+    .filter((cell) => isRiver(cell) && !fed[cell])
+    .sort((a, b) => filled[b]! - filled[a]! || a - b);
   const claimed = new Uint8Array(count);
   const rivers: WorldRiver[] = [];
   const riverAt = new Map<number, number>();
@@ -247,7 +249,10 @@ export function worldDrainage(land: WorldLandFields): WorldDrainage {
       path.push(ending);
     }
     for (const each of path) if (!isWater[each]) riverAt.set(each, Math.max(riverAt.get(each) ?? 0, widthOf(each)));
-    rivers.push({ path, width: path.map((each) => (isWater[each] ? widthOf(path[path.length - 2] ?? each) : widthOf(each))) });
+    rivers.push({
+      path,
+      width: path.map((each) => (isWater[each] ? widthOf(path[path.length - 2] ?? each) : widthOf(each))),
+    });
   }
   return { down, flow, rivers, riverAt, confluences, mouths };
 }
@@ -258,11 +263,7 @@ export function worldDrainage(land: WorldLandFields): WorldDrainage {
  * beside water to float it on, fishing waters shallow water near land, rich soil the lowland beside a
  * river, falls a river's steepest drop), a few cells apart, by the stream's jitter among near equals.
  */
-export function worldResources(
-  land: WorldLandFields,
-  drainage: WorldDrainage,
-  random: () => number,
-): WorldResource[] {
+export function worldResources(land: WorldLandFields, drainage: WorldDrainage, random: () => number): WorldResource[] {
   const { width, height, elevation, moisture, uplift, isWater, isBarrier, groundId } = land;
   const count = width * height;
   const around = (cell: number, r: number, test: (other: number) => boolean) => {
@@ -328,7 +329,10 @@ export function worldResources(
           return other >= 0 && isBarrier[other] === 1;
         });
       const pinched =
-        (wall(1, 0) && wall(-1, 0)) || (wall(0, 1) && wall(0, -1)) || (wall(1, 1) && wall(-1, -1)) || (wall(1, -1) && wall(-1, 1));
+        (wall(1, 0) && wall(-1, 0)) ||
+        (wall(0, 1) && wall(0, -1)) ||
+        (wall(1, 1) && wall(-1, -1)) ||
+        (wall(1, -1) && wall(-1, 1));
       return pinched ? around(cell, 2, (o) => isBarrier[o] === 1) / 6 : -Infinity;
     },
     ore: (cell) => {
@@ -348,7 +352,12 @@ export function worldResources(
       if (!isWater[cell]) return -Infinity;
       const shore = around(cell, 1, (o) => !isWater[o]);
       if (!shore) return -Infinity;
-      return 1 - Math.abs(shore - 3) / 3 + (body[cell]! < 60 ? 0.4 : 0) + around(cell, 2, (o) => drainage.mouths.has(o)) * 0.6;
+      return (
+        1 -
+        Math.abs(shore - 3) / 3 +
+        (body[cell]! < 60 ? 0.4 : 0) +
+        around(cell, 2, (o) => drainage.mouths.has(o)) * 0.6
+      );
     },
     fertile: (cell) => {
       if (!openLand(cell) || POOR.test(groundId(cell)) || WOODED.test(groundId(cell))) return -Infinity;

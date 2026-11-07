@@ -298,7 +298,11 @@ const snapshotShape = z
         issue(`${label}: the ground names a terrain it does not have`);
       }
       const cells = world.width * world.height;
-      if (world.rivers?.some((river) => river.path.some((cell) => cell >= cells) || river.width.length !== river.path.length))
+      if (
+        world.rivers?.some(
+          (river) => river.path.some((cell) => cell >= cells) || river.width.length !== river.path.length,
+        )
+      )
         issue(`${label}: a river runs off the ground`);
       if (world.resources?.some((resource) => resource.at.x >= world.width || resource.at.y >= world.height))
         issue(`${label}: a resource lies off the ground`);

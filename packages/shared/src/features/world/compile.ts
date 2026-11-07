@@ -13,13 +13,7 @@ import { worldBriefDeepestLayer } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./art-family.js";
 import type { WorldLandFields, WorldResource, WorldRiver } from "./land.js";
-import {
-  WORLD_RESOURCE_TAG_WORDS,
-  worldDrainage,
-  worldLandPull,
-  worldResources,
-  worldRoadFords,
-} from "./land.js";
+import { WORLD_RESOURCE_TAG_WORDS, worldDrainage, worldLandPull, worldResources, worldRoadFords } from "./land.js";
 
 export const WORLD_GENERATOR_VERSION = 7;
 /** The generator versions this Engine makes again from a recipe exactly as they were made: 7 runs rivers

@@ -328,7 +328,12 @@ export function worldWhereYouAreText(
   );
   if (place.tags.length) lines.push(`- Known for: ${place.tags.map((tag) => labelOf(kit.placeTags, tag)).join(", ")}.`);
   if (place.note) lines.push(`- ${place.note}`);
-  lines.push(...worldLandLines(world, place.rank !== undefined ? place : (chain.find((each) => each.rank !== undefined) ?? place)));
+  lines.push(
+    ...worldLandLines(
+      world,
+      place.rank !== undefined ? place : (chain.find((each) => each.rank !== undefined) ?? place),
+    ),
+  );
   // Who keeps it now, and its past (worldgen W3), told for the settlement it is in.
   const history = worldHistory(game);
   const home = place.rank !== undefined ? place : chain.find((each) => each.rank !== undefined);
