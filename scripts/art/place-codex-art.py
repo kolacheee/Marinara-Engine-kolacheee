@@ -158,9 +158,10 @@ def main(out_dir, paths, only):
                      [(i % 4, i // 4, 1, 1) for i in range(8)])
         if "forest" in only:
             # A wood's floor under its trees, six cells square.
-            for look in ("forest", "conifer_forest"):
+            # (Codex names the dead wood's floor "deadforest".)
+            for look, name in (("forest", "forest"), ("conifer_forest", "conifer_forest"), ("dead_forest", "deadforest")):
                 for season in SEASONS:
-                    f = os.path.join(out_dir, f"{look}{season}-floor-base.png")
+                    f = os.path.join(out_dir, f"{name}{season}-floor-base.png")
                     if os.path.exists(f):
                         made[f"floor_{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
         if "buildings" in only:
