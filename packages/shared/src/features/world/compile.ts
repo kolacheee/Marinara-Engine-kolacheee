@@ -8,10 +8,17 @@
 // made with.
 // ──────────────────────────────────────────────
 import { mulberry32 } from "../tactical-combat/rng.js";
-import type { WorldBrief, WorldBriefPlace } from "../../schemas/world-brief.schema.js";
+import type { WorldBrief, WorldBriefPlace, WorldEarth } from "../../schemas/world-brief.schema.js";
 import { worldBriefDeepestLayer } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { worldKitArtFamily } from "./art-family.js";
+import {
+  WORLD_EARTH_KM_PER_DAY,
+  worldEarthDrainage,
+  worldEarthFields,
+  worldEarthGround,
+  worldEarthSizeRank,
+} from "./earth.js";
 import type { WorldLandFields, WorldResource, WorldRiver } from "./land.js";
 import {
   WORLD_RESOURCE_TAG_WORDS,
@@ -137,7 +144,8 @@ const between = (low: number, high: number, random: () => number) => low + Math.
 
 // ── Scale ──
 
-const GROUND_SIZE = {
+/** Each scale's map, in cells across and down. */
+export const WORLD_GROUND_SIZE = {
   site: [24, 16],
   town: [32, 24],
   region: [48, 32],
@@ -604,7 +612,7 @@ function worldCultivate(
   kinds: Uint8Array,
   width: number,
   height: number,
-  settlements: Array<{ cell: number; tier: number }>,
+  settlements: Array<{ cell: number; tier: number; reach?: { fields: number; suburb: number } }>,
 ) {
   const worked = terrain.map((entry) => worldCultivatedTerrain(entry));
   const biggest = (kind: "fields" | "suburb") =>
@@ -635,10 +643,16 @@ function worldCultivate(
     kinds[cell] = best ? best[0] : wild[0]!.index;
   }
   const noise = valueNoise(seed, "cultivated", width, height);
-  const lay = (index: number | undefined, reach: (tier: number) => number, grain: number) => {
+  const lay = (
+    index: number | undefined,
+    kind: "fields" | "suburb",
+    reach: (tier: number) => number,
+    grain: number,
+  ) => {
     if (index === undefined) return;
-    for (const { cell, tier } of settlements) {
-      const far = reach(tier);
+    for (const { cell, tier, reach: real } of settlements) {
+      // A real city (the Earth seed) reaches as far as it really does, when that is further.
+      const far = Math.max(reach(tier), real?.[kind] ?? 0);
       if (far <= 0) continue;
       const [cx, cy] = [cell % width, Math.floor(cell / width)];
       const span = Math.ceil(far);
@@ -648,13 +662,16 @@ function worldCultivate(
           if (x < 0 || y < 0 || x >= width || y >= height) continue;
           const at = y * width + x;
           if (at === cell || terrain[kinds[at]!]!.kind !== "open") continue;
-          // Ragged: the ring's edge moves in and out with the noise, by up to `grain` cells.
-          if (Math.hypot(dx, dy) <= far + (noise[at]! - 0.5) * 2 * grain) kinds[at] = index;
+          // Ragged: the ring's edge moves in and out with the noise, by up to `grain` cells. A real city
+          // wider than a few cells keeps its parks and woods (where the noise is lowest).
+          const inside = Math.hypot(dx, dy);
+          if (far > 3 && inside > 1.5 && noise[at]! < 0.33) continue;
+          if (inside <= far + (noise[at]! - 0.5) * 2 * grain) kinds[at] = index;
         }
     }
   };
-  lay(fields, (tier) => FIELDS_REACH[tier] ?? 1, 0.6);
-  lay(suburb, (tier) => SUBURB_REACH[tier] ?? 0, 0.4);
+  lay(fields, "fields", (tier) => FIELDS_REACH[tier] ?? 1, 0.6);
+  lay(suburb, "suburb", (tier) => SUBURB_REACH[tier] ?? 0, 0.4);
 }
 
 /** A built-up terrain's part in a city (open ground only): its core, the sprawl around it, the slums at its
@@ -882,6 +899,8 @@ interface Draft {
   size?: number;
   prosperity?: WorldProsperity;
   tags?: string[];
+  /** The Earth seed: a real city's people. */
+  pop?: number;
 }
 
 /** Picks well-spread cells: of a handful of candidates, the one furthest from those already taken. */
@@ -1077,23 +1096,49 @@ export function compileWorld({
   generatorVersion = WORLD_GENERATOR_VERSION,
 }: WorldCompileInput): CompiledWorld {
   seed = seed >>> 0;
-  const [width, height] = GROUND_SIZE[kit.scale];
+  const [width, height] = WORLD_GROUND_SIZE[kit.scale];
   // Generator 6 shapes the ground as land is made (plates, ranges, winds); space (a sector, or a kit whose
   // ground is open space) keeps the plain noise, having no land to shape.
-  const shaped =
-    generatorVersion >= 6 &&
-    kit.scale !== "sector" &&
-    !worldTerrainEntries(kit).some((entry) => /space|void|vacuum|nebula|orbit/.test(entry.id))
+  // The Earth seed: the real Earth over the brief's area, when it was sampled at this scale.
+  const earth =
+    generatorVersion >= 10 && brief?.earth && brief.earth.scale === kit.scale && kit.scale !== "sector"
+      ? brief.earth
+      : null;
+  const earthFields = earth
+    ? worldEarthFields(earth, width, height, WORLD_DAYS_PER_CELL[kit.scale] * WORLD_EARTH_KM_PER_DAY)
+    : null;
+  const earthGround =
+    earth && earthFields
+      ? worldEarthGround(
+          worldTerrainEntries(kit),
+          earthFields,
+          width,
+          height,
+          wetness,
+          (entry) => !!worldCultivatedTerrain(entry) || !!worldUrbanTerrain(entry),
+          valueNoise(seed, "earth", width, height),
+          WORLD_DAYS_PER_CELL[kit.scale] * WORLD_EARTH_KM_PER_DAY,
+        )
+      : null;
+  const shaped = earthGround
+    ? { terrain: worldTerrainEntries(kit), ...earthGround }
+    : generatorVersion >= 6 &&
+        kit.scale !== "sector" &&
+        !worldTerrainEntries(kit).some((entry) => /space|void|vacuum|nebula|orbit/.test(entry.id))
       ? compileShapedGround(seed, kit, width, height)
       : null;
   const { terrain, kinds } = shaped ?? compileGround(seed, kit, width, height);
   // Generator 7: rivers down the shaped ground, and the resources settlements grow around, on a map big
-  // enough to hold them (a region and up; a town or a site is too small a piece of land).
+  // enough to hold them (a region and up; a town or a site is too small a piece of land). On Earth, the
+  // real rivers, at any scale.
   const landFields: WorldLandFields | null =
-    generatorVersion >= 7 && shaped && (kit.scale === "region" || kit.scale === "realm" || kit.scale === "world")
+    generatorVersion >= 7 &&
+    shaped &&
+    (earthGround || kit.scale === "region" || kit.scale === "realm" || kit.scale === "world")
       ? { width, height, ...shaped.land, groundId: (cell: number) => terrain[kinds[cell]!]!.id }
       : null;
-  const drainage = landFields ? worldDrainage(landFields) : null;
+  const ranDown = landFields ? worldDrainage(landFields) : null;
+  const drainage = ranDown && earth && earthGround ? worldEarthDrainage(landFields!, ranDown, earth) : ranDown;
   const resources: WorldResource[] =
     landFields && drainage ? worldResources(landFields, drainage, worldStream(seed, "resources")) : [];
   const kindOf = (cell: number) => terrain[kinds[cell]!]!.kind;
@@ -1118,72 +1163,270 @@ export function compileWorld({
   const nameKey = (name: string) => name.toLowerCase();
   const briefIndex = new Map<string, number>();
 
-  for (let depth = 0; depth <= Math.min(settlementsDepth, deepest); depth++) {
-    const own = briefPlaces.filter((place) => depthOfLayer.get(place.layer) === depth);
-    const target =
-      depth === settlementsDepth
-        ? settlementTarget
-        : depth === 0
-          ? topTarget
-          : strict
-            ? 0
-            : Math.round(topTarget * fanout ** depth);
-    const parents = depth === 0 ? [] : atDepth(depth - 1);
-    const count = Math.max(target, own.length, parents.length);
-    const random = worldStream(seed, "places", depth);
-    // The brief's places first, each in its parent when it names one, then drawn places, so every
-    // parent has at least one child and the rest are shared out by seeded weights.
-    const parentOf = (place: WorldBriefPlace) => {
-      if (!place.parent) return undefined;
-      const parentIndex = briefIndex.get(nameKey(place.parent));
-      // A parent more than one layer out is reached through one of its children at this layer's
-      // parent depth; the compile keeps it simple and puts the place under the named place's first
-      // child at that depth, or the named place itself when it is the layer just above.
-      if (parentIndex === undefined) return undefined;
-      let at = parentIndex;
-      while (drafts[at]!.depth < depth - 1) {
-        const child = drafts.findIndex((draft) => draft.parent === at);
-        if (child < 0) break;
-        at = child;
+  if (earth && earthGround) {
+    earthDrafts();
+  } else {
+    for (let depth = 0; depth <= Math.min(settlementsDepth, deepest); depth++) {
+      const own = briefPlaces.filter((place) => depthOfLayer.get(place.layer) === depth);
+      const target =
+        depth === settlementsDepth
+          ? settlementTarget
+          : depth === 0
+            ? topTarget
+            : strict
+              ? 0
+              : Math.round(topTarget * fanout ** depth);
+      const parents = depth === 0 ? [] : atDepth(depth - 1);
+      const count = Math.max(target, own.length, parents.length);
+      const random = worldStream(seed, "places", depth);
+      // The brief's places first, each in its parent when it names one, then drawn places, so every
+      // parent has at least one child and the rest are shared out by seeded weights.
+      const parentOf = (place: WorldBriefPlace) => {
+        if (!place.parent) return undefined;
+        const parentIndex = briefIndex.get(nameKey(place.parent));
+        // A parent more than one layer out is reached through one of its children at this layer's
+        // parent depth; the compile keeps it simple and puts the place under the named place's first
+        // child at that depth, or the named place itself when it is the layer just above.
+        if (parentIndex === undefined) return undefined;
+        let at = parentIndex;
+        while (drafts[at]!.depth < depth - 1) {
+          const child = drafts.findIndex((draft) => draft.parent === at);
+          if (child < 0) break;
+          at = child;
+        }
+        return drafts[at]!.depth === depth - 1 ? at : undefined;
+      };
+      const assigned: Array<{ parent: number | null; brief?: WorldBriefPlace }> = own.map((place) => ({
+        parent: depth === 0 ? null : (parentOf(place) ?? null),
+        brief: place,
+      }));
+      const drawn = count - own.length;
+      if (depth === 0) {
+        for (let index = 0; index < drawn; index++) assigned.push({ parent: null });
+      } else {
+        const children = new Map<number, number>();
+        for (const entry of assigned)
+          if (entry.parent !== null) children.set(entry.parent, (children.get(entry.parent) ?? 0) + 1);
+        // Places the brief left without a parent are counted with the drawn ones.
+        const unplaced = assigned.filter((entry) => entry.parent === null);
+        const shares = shareChildren(parents.length, drawn + unplaced.length, random);
+        const slots: number[] = [];
+        parents.forEach(({ index }, position) => {
+          const owed = Math.max(0, shares[position]! - (children.get(index) ?? 0));
+          for (let n = 0; n < owed; n++) slots.push(index);
+        });
+        // Every parent with no child yet takes one of the slots first.
+        const shuffled = slots
+          .map((slot) => ({ slot, order: random() }))
+          .sort((a, b) => a.order - b.order)
+          .map((entry) => entry.slot);
+        for (const entry of unplaced) entry.parent = shuffled.shift() ?? parents[0]!.index;
+        for (const parentIndex of shuffled) assigned.push({ parent: parentIndex });
+        for (const { index } of parents) {
+          if (!assigned.some((entry) => entry.parent === index)) assigned.push({ parent: index });
+        }
       }
-      return drafts[at]!.depth === depth - 1 ? at : undefined;
+      // Siblings are kept together, in the order of their parents.
+      assigned.sort((left, right) => (left.parent ?? -1) - (right.parent ?? -1));
+      for (const entry of assigned) {
+        drafts.push({ depth, parent: entry.parent, ...(entry.brief ? { brief: entry.brief } : {}) });
+        if (entry.brief) briefIndex.set(nameKey(entry.brief.name), drafts.length - 1);
+      }
+    }
+  }
+
+  /**
+   * The Earth seed's tree of places: the real cities in the area (the brief's own where it names them, then
+   * the biggest, spaced as the scale spaces towns), in their real countries and states, each country and
+   * state the ground nearest its cities. A place of the brief that is no real city is set on open ground
+   * near the others; a layer deeper than a state is one part of it, named as the setting names places.
+   */
+  function earthDrafts() {
+    type City = WorldEarth["cities"][number];
+    const area = width * height;
+    const nearestOpen = (cell: number) => {
+      if (kindOf(cell) === "open") return cell;
+      const [x0, y0] = [cell % width, Math.floor(cell / width)];
+      for (let r = 1; r <= 3; r++)
+        for (let dy = -r; dy <= r; dy++)
+          for (let dx = -r; dx <= r; dx++) {
+            const [x, y] = [x0 + dx, y0 + dy];
+            if (x >= 0 && y >= 0 && x < width && y < height && kindOf(y * width + x) === "open") return y * width + x;
+          }
+      return cell;
     };
-    const assigned: Array<{ parent: number | null; brief?: WorldBriefPlace }> = own.map((place) => ({
-      parent: depth === 0 ? null : (parentOf(place) ?? null),
-      brief: place,
-    }));
-    const drawn = count - own.length;
-    if (depth === 0) {
-      for (let index = 0; index < drawn; index++) assigned.push({ parent: null });
-    } else {
-      const children = new Map<number, number>();
-      for (const entry of assigned)
-        if (entry.parent !== null) children.set(entry.parent, (children.get(entry.parent) ?? 0) + 1);
-      // Places the brief left without a parent are counted with the drawn ones.
-      const unplaced = assigned.filter((entry) => entry.parent === null);
-      const shares = shareChildren(parents.length, drawn + unplaced.length, random);
-      const slots: number[] = [];
-      parents.forEach(({ index }, position) => {
-        const owed = Math.max(0, shares[position]! - (children.get(index) ?? 0));
-        for (let n = 0; n < owed; n++) slots.push(index);
-      });
-      // Every parent with no child yet takes one of the slots first.
-      const shuffled = slots
-        .map((slot) => ({ slot, order: random() }))
-        .sort((a, b) => a.order - b.order)
-        .map((entry) => entry.slot);
-      for (const entry of unplaced) entry.parent = shuffled.shift() ?? parents[0]!.index;
-      for (const parentIndex of shuffled) assigned.push({ parent: parentIndex });
-      for (const { index } of parents) {
-        if (!assigned.some((entry) => entry.parent === index)) assigned.push({ parent: index });
+    const cities = earth!.cities
+      .filter((city) => city.cell < area)
+      .map((city) => ({ ...city, cell: nearestOpen(city.cell) }));
+    const byName = new Map<string, City>();
+    for (const city of cities) if (!byName.has(nameKey(city.name))) byName.set(nameKey(city.name), city);
+    type Pick = { city?: City; brief?: WorldBriefPlace; cell: number };
+    const picks: Pick[] = [];
+    const taken = new Set<number>();
+    const own = briefPlaces.filter((place) => depthOfLayer.get(place.layer) === settlementsDepth);
+    for (const place of own) {
+      const city = byName.get(nameKey(place.name));
+      if (city && !picks.some((pick) => pick.city === city) && !taken.has(city.cell)) {
+        picks.push({ city, brief: place, cell: city.cell });
+        taken.add(city.cell);
+      } else picks.push({ brief: place, cell: -1 });
+    }
+    const gap = kit.scale === "town" || kit.scale === "site" ? 1 : 2;
+    const apart = (cell: number) =>
+      [...taken].every(
+        (other) =>
+          Math.max(
+            Math.abs((other % width) - (cell % width)),
+            Math.abs(Math.floor(other / width) - Math.floor(cell / width)),
+          ) >= gap,
+      );
+    if (!strict)
+      for (const city of cities) {
+        if (picks.length >= settlementTarget) break;
+        if (picks.some((pick) => pick.city === city) || kindOf(city.cell) !== "open" || !apart(city.cell)) continue;
+        picks.push({ city, cell: city.cell });
+        taken.add(city.cell);
       }
+    const random = worldStream(seed, "earth", "places");
+    const openCells = Array.from({ length: area }, (_, cell) => cell).filter((cell) => kindOf(cell) === "open");
+    const freeCell = () =>
+      spreadCells(
+        openCells.filter((cell) => !taken.has(cell)),
+        1,
+        [...taken],
+        width,
+        random,
+      )[0] ?? 0;
+    if (!picks.length) picks.push({ cell: -1 });
+    for (const pick of picks)
+      if (pick.cell < 0) {
+        pick.cell = freeCell();
+        taken.add(pick.cell);
+      }
+
+    // Each settlement's place in the layers above it: the brief's own parents, else its country and state.
+    const chains = picks.map((pick) => {
+      const chain: Array<string | undefined> = Array.from({ length: settlementsDepth }, () => undefined);
+      let parent = pick.brief?.parent;
+      for (let guard = 0; parent && guard < 12; guard++) {
+        const place = briefPlaces.find((each) => nameKey(each.name) === nameKey(parent!));
+        if (!place) break;
+        const depth = depthOfLayer.get(place.layer);
+        if (depth !== undefined && depth < settlementsDepth) chain[depth] ??= place.name;
+        parent = place.parent;
+      }
+      if (pick.city && settlementsDepth > 0) chain[0] ??= pick.city.country;
+      if (pick.city && settlementsDepth > 1) chain[1] ??= pick.city.state ?? pick.city.country;
+      return chain;
+    });
+    // A place with no real city of its own is in the country and state of the nearest that has one.
+    const distance = (a: number, b: number) =>
+      Math.hypot((a % width) - (b % width), Math.floor(a / width) - Math.floor(b / width));
+    picks.forEach((pick, index) => {
+      if (pick.city) return;
+      const near = picks
+        .map((other, at) => ({ other, at }))
+        .filter(({ other }) => other.city)
+        .sort((a, b) => distance(a.other.cell, pick.cell) - distance(b.other.cell, pick.cell))[0];
+      if (near) chains[index] = chains[index]!.map((name, depth) => name ?? chains[near.at]![depth]);
+    });
+    const keyOf = (chain: Array<string | undefined>, depth: number) =>
+      chain
+        .slice(0, depth + 1)
+        .map((name) => (name ? nameKey(name) : "?"))
+        .join("|");
+    const draftOf = new Map<string, number>();
+    for (let depth = 0; depth < settlementsDepth; depth++)
+      picks.forEach((_, index) => {
+        const key = keyOf(chains[index]!, depth);
+        if (draftOf.has(key)) return;
+        const name = chains[index]![depth];
+        const own = name
+          ? briefPlaces.find(
+              (place) => depthOfLayer.get(place.layer) === depth && nameKey(place.name) === nameKey(name),
+            )
+          : undefined;
+        drafts.push({
+          depth,
+          parent: depth === 0 ? null : draftOf.get(keyOf(chains[index]!, depth - 1))!,
+          ...(own ? { brief: own } : {}),
+          ...(name ? { name: own?.name ?? name } : {}),
+        });
+        draftOf.set(key, drafts.length - 1);
+        if (own) briefIndex.set(nameKey(own.name), drafts.length - 1);
+      });
+    const capital = kit.sizes.findIndex((size) => /capital/i.test(size.id));
+    picks.forEach((pick, index) => {
+      const own = pick.brief?.size !== undefined ? sizeIndex.get(pick.brief.size) : undefined;
+      const size =
+        own ??
+        (pick.city?.capital && capital >= 0
+          ? capital
+          : pick.city
+            ? Math.min(
+                capital >= 0 ? capital - 1 : kit.sizes.length - 1,
+                worldEarthSizeRank(pick.city.pop, kit.sizes.length),
+              )
+            : 0);
+      drafts.push({
+        depth: settlementsDepth,
+        parent: settlementsDepth === 0 ? null : draftOf.get(keyOf(chains[index]!, settlementsDepth - 1))!,
+        ...(pick.brief ? { brief: pick.brief } : {}),
+        ...(pick.brief || pick.city ? { name: pick.brief?.name ?? pick.city!.name } : {}),
+        cell: pick.cell,
+        size: Math.max(0, size),
+        ...(pick.city ? { pop: pick.city.pop } : {}),
+      });
+      if (pick.brief) briefIndex.set(nameKey(pick.brief.name), drafts.length - 1);
+    });
+    // The brief's places above the settlements that hold none of them: on open ground, in the place it
+    // names (or the first at the layer above).
+    for (let depth = 0; depth < settlementsDepth; depth++)
+      for (const place of briefPlaces.filter((each) => depthOfLayer.get(each.layer) === depth)) {
+        if (briefIndex.has(nameKey(place.name))) continue;
+        const parent =
+          depth === 0
+            ? null
+            : (briefIndex.get(nameKey(place.parent ?? "")) ?? drafts.findIndex((draft) => draft.depth === depth - 1));
+        const cell = freeCell();
+        taken.add(cell);
+        drafts.push({
+          depth,
+          parent: parent !== null && parent >= 0 ? parent : null,
+          brief: place,
+          cell,
+          cells: [cell],
+        });
+        briefIndex.set(nameKey(place.name), drafts.length - 1);
+      }
+    // Each place above the settlements holds the ground nearest its settlements, and stands at its biggest.
+    const settled = drafts
+      .map((draft, index) => ({ draft, index }))
+      .filter(({ draft }) => draft.depth === settlementsDepth);
+    const ancestors = (index: number) => {
+      const out: number[] = [];
+      for (let at = drafts[index]!.parent; at !== null && out.length < 12; at = drafts[at]!.parent) out.push(at);
+      return out;
+    };
+    const holds = new Map<number, number[]>();
+    for (let cell = 0; cell < area; cell++) {
+      let best = settled[0]!;
+      for (const entry of settled)
+        if (distance(entry.draft.cell!, cell) < distance(best.draft.cell!, cell)) best = entry;
+      for (const at of ancestors(best.index)) holds.set(at, [...(holds.get(at) ?? []), cell]);
     }
-    // Siblings are kept together, in the order of their parents.
-    assigned.sort((left, right) => (left.parent ?? -1) - (right.parent ?? -1));
-    for (const entry of assigned) {
-      drafts.push({ depth, parent: entry.parent, ...(entry.brief ? { brief: entry.brief } : {}) });
-      if (entry.brief) briefIndex.set(nameKey(entry.brief.name), drafts.length - 1);
-    }
+    drafts.forEach((draft, index) => {
+      if (draft.depth >= settlementsDepth || draft.cell !== undefined) return;
+      const mine = settled.filter(({ index: at }) => ancestors(at).includes(index));
+      const seat = mine.reduce((a, b) => ((b.draft.size ?? 0) > (a.draft.size ?? 0) ? b : a), mine[0]!);
+      draft.cell = seat.draft.cell!;
+      draft.cells = holds.get(index) ?? [draft.cell];
+      // A part of a state is named for its seat: "Xuzhou Prefecture".
+      if (!draft.name && seat.draft.name) {
+        const label = kit.layers[draft.depth]!.label;
+        draft.name = `${seat.draft.name} ${label.charAt(0).toUpperCase()}${label.slice(1)}`;
+      }
+    });
   }
 
   // Sizes come from their own stream and never from where a settlement is, so generator 5 sizes them
@@ -1217,7 +1460,7 @@ export function compileWorld({
     }
   }
   const siteAware = generatorVersion >= 5;
-  if (siteAware) sizeSettlements();
+  if (siteAware && !earthGround) sizeSettlements();
   const site = siteAware ? siteValues(terrain, kinds, width, height) : null;
   if (site && drainage) {
     const pull = worldLandPull(width, height, drainage, resources);
@@ -1226,7 +1469,7 @@ export function compileWorld({
 
   // ── Where everything is: nested patches of ground, and settlements on open ground ──
   const allCells = Array.from({ length: width * height }, (_, index) => index);
-  for (let depth = 0; depth <= settlementsDepth; depth++) {
+  for (let depth = 0; depth <= (earthGround ? -1 : settlementsDepth); depth++) {
     const random = worldStream(seed, "positions", depth);
     const groups = new Map<number | null, number[]>();
     for (const { draft, index } of atDepth(depth))
@@ -1394,7 +1637,10 @@ export function compileWorld({
 
   // ── Names: the brief's own, then each culture's pool, then the layer's word and a number ──
   {
-    const used = new Set(briefPlaces.map((place) => nameKey(place.name)));
+    const used = new Set([
+      ...briefPlaces.map((place) => nameKey(place.name)),
+      ...drafts.flatMap((draft) => (draft.name ? [nameKey(draft.name)] : [])),
+    ]);
     const pools = new Map(
       (brief?.placeNames ?? []).map((group) => {
         const random = worldStream(seed, "names", group.culture);
@@ -1413,6 +1659,8 @@ export function compileWorld({
         draft.name = draft.brief.name;
         continue;
       }
+      // On Earth, a real place keeps its real name.
+      if (draft.name) continue;
       const pool = [pools.get(draft.culture ?? "") ?? [], ...pools.values()];
       let name: string | undefined;
       for (const names of pool) {
@@ -1438,6 +1686,14 @@ export function compileWorld({
   }
 
   // Generator 4: fields and suburbs only near the settlements, before the ways are laid over the ground.
+  // On Earth a real city's built-up ground is as wide as its people make it (about 5.5 km across a
+  // million, 34 km for Tokyo's 37), with its fields a few kilometres further.
+  const kmPerCell = WORLD_DAYS_PER_CELL[kit.scale] * WORLD_EARTH_KM_PER_DAY;
+  const realReach = (draft: Draft) => {
+    if (!draft.pop) return undefined;
+    const suburb = Math.sqrt(draft.pop) / 180 / kmPerCell;
+    return { suburb, fields: suburb + 3 / kmPerCell };
+  };
   if (generatorVersion >= 4)
     worldCultivate(
       seed,
@@ -1448,6 +1704,7 @@ export function compileWorld({
       settlements.map(({ draft }) => ({
         cell: draft.cell!,
         tier: ladder > 1 ? Math.round((draft.size! / (ladder - 1)) * 3) : 3,
+        ...(realReach(draft) ? { reach: realReach(draft)! } : {}),
       })),
     );
   // Generator 10: a built-up setting's city only around its settlements.
