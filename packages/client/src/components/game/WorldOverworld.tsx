@@ -476,9 +476,11 @@ export function WorldOverworld({
             mctx.setTransform(resolution, 0, 0, resolution, 0, 0);
             mctx.clearRect(0, 0, T, T);
             mctx.globalCompositeOperation = "lighter";
-            for (const [dx, dy] of near) {
+            for (const [dx, dy, nearLook] of near) {
               const [gx, gy] = [(dx + 0.5) * T, (dy + 0.5) * T];
-              const fade = mctx.createRadialGradient(gx, gy, T * 0.45, gx, gy, T * 1.25);
+              // A street fades in a shorter reach than a wood's floor: past its buildings it is bare asphalt.
+              const reach = builtLooks.has(nearLook) ? 0.9 : 1.25;
+              const fade = mctx.createRadialGradient(gx, gy, T * 0.45, gx, gy, T * reach);
               fade.addColorStop(0, "rgba(0,0,0,0.9)");
               fade.addColorStop(1, "rgba(0,0,0,0)");
               mctx.fillStyle = fade;
@@ -826,6 +828,9 @@ export function WorldOverworld({
     // Buildings over built-up ground (the owner, 2026-11-07: "make buildings as props"), one to a cell like a
     // wood's trees: a large one (two by two) where its four cells are free, else a mid-rise or a small one, a
     // gap now and then for the street; none on a road, nor so near a place that it hides its marker.
+    // Only the places with a marker on the map (settlements and sites) keep buildings back: a city's own
+    // districts and streets are places too, and kept clear they left empty lots all over it.
+    const marked = world.places.filter((place) => place.rank !== undefined || siteIds.has(place.id));
     for (const look of builtLooks) {
       const id = `buildings_${look}`;
       const pieces = WORLD_BUILDING_PIECES[id]!;
@@ -842,7 +847,10 @@ export function WorldOverworld({
         if (x < 0 || y < 0 || x >= width || y >= height) return false;
         const at = y * width + x;
         if (drawnLook[at] !== look || wetCell[at] || roads.has(at) || taken.has(at)) return false;
-        for (const place of world.places) if (Math.hypot(place.at.x - x, place.at.y - y) < 1.5) return false;
+        // Clear of its places, except the row behind one (drawn behind its marker, so the city closes round it).
+        for (const place of marked)
+          if (Math.hypot(place.at.x - x, place.at.y - y) < 1.5 && !(y < place.at.y && Math.abs(place.at.x - x) >= 1))
+            return false;
         return true;
       };
       for (let y = 0; y < height; y++)
@@ -870,6 +878,12 @@ export function WorldOverworld({
           }
           taken.add(y * width + x);
           const tall = medium.length && noise(84) < 0.4;
+          // Shacks are small (half a cell): two to a cell, one behind the other, so a slum reads packed.
+          if (look === "slums") {
+            trees.push({ x: x + 0.3, y: y + 0.55, id, pick: small[Math.floor(noise(87) * small.length)]!, w: 1, h: 1 });
+            trees.push({ x: x + 0.7, y: y + 0.97, id, pick: pick(small), w: 1, h: 1 });
+            continue;
+          }
           trees.push({
             x: x + 0.5 + (noise(85) - 0.5) * 0.12,
             y: y + 0.95,
@@ -944,7 +958,7 @@ export function WorldOverworld({
       }
     drawTile.setCellSeason(undefined);
     return { canvas, trees };
-  }, [byId, drawTile, game, heldCells, kit.travel, resolution, world]);
+  }, [byId, drawTile, game, heldCells, kit.travel, resolution, siteIds, world]);
   const markers = useMemo(() => {
     const canvas = document.createElement("canvas");
     if (drawTile.loading) return canvas;

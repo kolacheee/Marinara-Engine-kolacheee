@@ -756,11 +756,25 @@ async function buildImageAtlas(pack: ImageTilePack): Promise<ImageAtlas> {
   const ctx = canvas.getContext("2d");
   if (!ctx) return { canvas: null, tiles: {}, size };
   const tiles: ImageAtlas["tiles"] = {};
+  const patternIds = new Set<string>(WORLD_PATTERN_TILE_IDS);
   for (const { id, index, tile, sx, sy } of placed) {
     const source = images.get(tile.sheet);
     if (!source) continue;
     const [w, h] = [tile.w ?? 1, tile.h ?? 1];
-    ctx.drawImage(source, tile.x * size, tile.y * size, w * size, h * size, sx, sy, w * size, h * size);
+    const [ox, oy, ow, oh] = [tile.x * size, tile.y * size, w * size, h * size];
+    ctx.drawImage(source, ox, oy, ow, oh, sx, sy, ow, oh);
+    // A ground pattern's pixel round it is its opposite edge (it tiles), so its block's outer cells, drawn
+    // smoothed, pick up the ground beyond and not the clear gutter: no faint line where the pattern repeats.
+    if (patternIds.has(id.split("@")[0]!)) {
+      ctx.drawImage(source, ox + ow - 1, oy, 1, oh, sx - 1, sy, 1, oh);
+      ctx.drawImage(source, ox, oy, 1, oh, sx + ow, sy, 1, oh);
+      ctx.drawImage(source, ox, oy + oh - 1, ow, 1, sx, sy - 1, ow, 1);
+      ctx.drawImage(source, ox, oy, ow, 1, sx, sy + oh, ow, 1);
+      ctx.drawImage(source, ox + ow - 1, oy + oh - 1, 1, 1, sx - 1, sy - 1, 1, 1);
+      ctx.drawImage(source, ox, oy + oh - 1, 1, 1, sx + ow, sy - 1, 1, 1);
+      ctx.drawImage(source, ox + ow - 1, oy, 1, 1, sx - 1, sy + oh, 1, 1);
+      ctx.drawImage(source, ox, oy, 1, 1, sx + ow, sy + oh, 1, 1);
+    }
     (tiles[id] ??= [])[index] = { sx, sy, w, h };
   }
   const edges: NonNullable<ImageAtlas["edges"]> = {};
