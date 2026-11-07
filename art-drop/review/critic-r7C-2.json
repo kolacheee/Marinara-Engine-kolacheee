@@ -1,0 +1,681 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-7.md Part C, including global 48/96 layout and final size note",
+      "reviewed_files": [
+        "hills-prop-0",
+        "hills-prop-1",
+        "hills-prop-2",
+        "hills-prop-3",
+        "hills-prop-4",
+        "hills-prop-5",
+        "hills-prop-6",
+        "hills-prop-7",
+        "hills@winter-prop-0",
+        "hills@winter-prop-1",
+        "hills@winter-prop-2",
+        "hills@winter-prop-3",
+        "hills@winter-prop-4",
+        "hills@winter-prop-5",
+        "hills@winter-prop-6",
+        "hills@winter-prop-7"
+      ],
+      "comparison_only": "reference/current-fantasy-hills.png; approved out/ markers, round-2 city/industry/slums/suburb/farmland tiles, paddies, grass/plains bases and all eight summer/winter details. No verdicts on other parts or approved context.",
+      "prior_review": "art-drop/review/critic-r7C-1.json",
+      "unchanged_prior_passes_retained": [
+        "hills-prop-0",
+        "hills-prop-2",
+        "hills-prop-3",
+        "hills-prop-4",
+        "hills-prop-6",
+        "hills-prop-7",
+        "hills@winter-prop-0",
+        "hills@winter-prop-2",
+        "hills@winter-prop-3",
+        "hills@winter-prop-4",
+        "hills@winter-prop-7"
+      ],
+      "changed_since_prior_review": [
+        "hills-prop-1",
+        "hills-prop-5",
+        "hills@winter-prop-1",
+        "hills@winter-prop-5",
+        "hills@winter-prop-6"
+      ],
+      "new_defects_reversing_prior_passes": [],
+      "out_directory_unchanged": true,
+      "calibration": "Good enough to ship beside the approved art. Soft stepped alpha is required terrain shading; it is not failed merely for being low contrast or lacking a solid outline."
+    },
+    "hills-summer": {
+      "status": "pass",
+      "files": [
+        "hills-prop-0",
+        "hills-prop-1",
+        "hills-prop-2",
+        "hills-prop-3",
+        "hills-prop-4",
+        "hills-prop-5",
+        "hills-prop-6",
+        "hills-prop-7"
+      ],
+      "pass_count": 8,
+      "fail_count": 0
+    },
+    "hills-winter": {
+      "status": "pass",
+      "files": [
+        "hills@winter-prop-0",
+        "hills@winter-prop-1",
+        "hills@winter-prop-2",
+        "hills@winter-prop-3",
+        "hills@winter-prop-4",
+        "hills@winter-prop-5",
+        "hills@winter-prop-6",
+        "hills@winter-prop-7"
+      ],
+      "pass_count": 8,
+      "fail_count": 0
+    },
+    "mix": {
+      "single_round_hills": [
+        0,
+        1,
+        2
+      ],
+      "hill_pairs_or_chains": [
+        4,
+        5
+      ],
+      "hill_with_small_rocky_outcrop": [
+        6
+      ],
+      "boulder_clusters": [
+        3,
+        7
+      ],
+      "result": "All requested roles present in both seasons. The revised 1 is sufficiently distinct from 0/2; 4 and 5 have different arrangements; the two rock clusters have different silhouettes and stone arrangements."
+    },
+    "checks": {
+      "dimensions_placement": "All 16 are RGBA PNGs: 0-3 are 48x48; 4-7 are 96x96. All four outer edges are fully transparent, with no clipping. Small widths cover 79.2-81.2% and large widths 83.3-85.4%; these meet the approximate footprint targets. Lower vertical coverage is the oblique ground footprint, not an undersized square asset.",
+      "base_3x3": "No Part C base deliverables. For ground/context QC, repeated each approved summer/winter grass/plains 288x288 base exactly 3x3; saved and viewed 1x/4x composites and inspected exact 4x seam-cross crops. Approved host texture is context; overlays do not introduce cell borders.",
+      "one_cell_random_8x2": {
+        "status": "pass",
+        "method": "Props 0-3 each occur four times in deterministic shuffled 8x2 grids of 48px cells, over approved grass and plains for both seasons. Saved and inspected at 1x and nearest-neighbour 4x. No square seam or stamped cell grid; revised prop-1 remains distinct. Repeated instances of the same asset are expected in this forced dense test.",
+        "row_major_prop_indices": [
+          0,
+          2,
+          3,
+          3,
+          2,
+          1,
+          0,
+          0,
+          1,
+          3,
+          0,
+          2,
+          1,
+          1,
+          3,
+          2
+        ]
+      },
+      "all_surfaces": "Every file composited without resizing onto approved summer grass, summer plains, wasteland soil, winter grass and winter plains, and inspected at 1x/4x. The snow hosts were used to decide winter relief and rock anchoring; summer props on snow are additional diagnostics, with their prior unchanged passes retained.",
+      "scatter": "Mixed scatter contains all eight props per season and equal numbers of small and large instances. Saved and inspected at 1x/4x. No clipping, accidental grid or shape ambiguity below the shipping threshold. Revised summer chain reads as soft linked relief; winter chain and corrected outcrop remain grounded.",
+      "every_file_8x": "All 16 files separately composited onto the season-appropriate approved grass base, enlarged exactly 8x with nearest-neighbour, saved and visually inspected. No resampling was applied to source art.",
+      "alpha_fringe_blur_noise": "Dark, light and sand-colour diagnostic sheets saved and inspected at 1x/4x, supplemented by individual 8x views. No unwanted matte/fringe, detached edge noise, hard hill outline, colored ground square, blur from filtering or accidental antialiasing. Hill shading uses discrete neutral white/black alpha steps; intermediate alpha is intentional soft relief/fade. Solid stone and snow pixels stay crisp.",
+      "light_palette": "Top-left highlights and lower-right dark flanks agree across both seasons and with the approved art. Grey boulders and pale blue-white snow fit approved stone details and markers. Neutral hill shading adopts green, tan and snow host colors without a hue clash.",
+      "winter": "All winter files retain terrain/stone information and are nonblank. Snow highlights are sparse; the boulder clusters and outcrop have caps. The revised chain has lower, smoother relief, and the revised outcrop has a contact connection to its hill on both approved snow hosts.",
+      "reference_style": "Viewed named hills reference and approved comparison sheets at 1x/4x. The new hill shading gives readable rolling terrain at native scale; the solid boulders have comparable deliberate facets and selective one-pixel dark contours. No near-duplicate requiring another redraw remains among the revised files.",
+      "peak_lattice_or_range": "Not applicable: Part C contains hills/boulder overlays only, no mountain peak or range assets. A peak lattice would test a different part.",
+      "forest_tree_composite": "Not applicable: no trees or forest files in Part C.",
+      "other_named_failure_modes": "Egg-crate mountain peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk city grids, flat-orange autumn and identical tree crowns are outside this Part C file list. No verdict on those unrelated assets is implied.",
+      "pass_evidence": {
+        "hills-prop-0": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. A low oval hill with a readable lit slope and shaded toe at 1x; discrete alpha steps fade cleanly on green, tan and pale backings. Serves as the retained single-hill silhouette when prop-1 is replaced.",
+        "hills-prop-1": "Revised footprint is 38x28 px, noticeably rounder and taller than the retained low oblique prop-0. The crown is a broad curved light mass with a rounded lower-right flank, rather than the old repeated thin crest. It is distinguishable from both 0 and 2 at 1x in the grass/plains 8x2 layouts. Clean neutral alpha steps at 8x; no perimeter outline or halo on dark/light/sand diagnostics.",
+        "hills-prop-2": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Broader, shorter crown than prop-0; round mound remains legible in random layouts. Ground shows through the neutral shading; no hard perimeter, fringe or light-direction conflict.",
+        "hills-prop-3": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Compact solid boulder cluster has clear overlapping stones, crisp facets, a thin selective dark outline and grounded foot. Cool greys are compatible with the approved stone details; no halo on light or dark backings.",
+        "hills-prop-4": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Two unequal rounded hills read as a pair at native scale. Their saddle and separate shadow toes remain understandable on snow; no cell frame or clipping. Sparse winter marks remain small highlights.",
+        "hills-prop-5": "The former high central platform has been replaced by a lower broad chain: three unequal curved crowns meet through soft saddles. Its 80x50 px footprint has a continuous, gradually fading lower-right slope instead of the former abrupt central wall and terrace-like foot. Reads as a rolling chain in the native scatter and on grass, plains and tan soil. At 4x/8x the regular alpha steps support the volume without noise or a hard outline.",
+        "hills-prop-6": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Summer rocky hill reads as a single mound with a small outcrop seated at its lit crest on grass/plains/tan soil. No ground square; neutral shading preserves the host hue. The snow-specific anchoring failure is recorded separately.",
+        "hills-prop-7": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Distinct large multi-stone cluster fills the intended width, with clear flat and upright rocks, coherent top-left facets, one-pixel contour accents and a contact shadow. Winter retains the geometry with coherent snow caps.",
+        "hills@winter-prop-0": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. A low oval hill with a readable lit slope and shaded toe at 1x; discrete alpha steps fade cleanly on green, tan and pale backings. Serves as the retained single-hill silhouette when prop-1 is replaced.",
+        "hills@winter-prop-1": "Carries the revised rounder summer silhouette into winter. The curved shaded flank remains readable on both approved snow bases at 1x, and the sparse snow marks remain on the lit slope. Distinguishable from 0 and 2 in both randomized 8x2 snow layouts; no blank winter or accidental colored edge at 8x.",
+        "hills@winter-prop-2": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Broader, shorter crown than prop-0; round mound remains legible in random layouts. Ground shows through the neutral shading; no hard perimeter, fringe or light-direction conflict.",
+        "hills@winter-prop-3": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Compact solid boulder cluster has clear overlapping stones, crisp facets, a thin selective dark outline and grounded foot. Cool greys are compatible with the approved stone details; no halo on light or dark backings.",
+        "hills@winter-prop-4": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Two unequal rounded hills read as a pair at native scale. Their saddle and separate shadow toes remain understandable on snow; no cell frame or clipping. Sparse winter marks remain small highlights.",
+        "hills@winter-prop-5": "Uses the corrected lower summer chain. On both snow bases, 1x/4x surface sheets and the native scatter show a low curved bank with shallow changes in height; the old tall central cliff is gone. The three connected relief changes remain visible through the shaded flank even where white highlights blend into snow. The 8x view shows broad graduated transitions rather than stacked hard foot terraces. Acceptable as the requested hill chain, rather than requiring three isolated hill icons.",
+        "hills@winter-prop-6": "Outcrop has moved down onto the visible near shoulder. Its compact dark contact foot now joins the hill shading immediately below/right; the previous empty snow gap is removed. At 1x on both snow hosts and in the scatter the rock belongs to the hill, with the connection confirmed at 4x/8x and on the flat pale diagnostic. Rock retains a small blue-white cap, the hill retains relief, and the added connection introduces no ground square or perimeter halo.",
+        "hills@winter-prop-7": "Unchanged SHA-256 from review 1; prior pass retained and rechecked at 1x/4x/8x. Distinct large multi-stone cluster fills the intended width, with clear flat and upright rocks, coherent top-left facets, one-pixel contour accents and a contact shadow. Winter retains the geometry with coherent snow caps."
+      },
+      "evidence_prefix": "art-drop/review/critic-r7C-2-",
+      "composites": [
+        "critic-r7C-2-approved-style-1x.png",
+        "critic-r7C-2-approved-style-4x.png",
+        "critic-r7C-2-grass-base-3x3-1x.png",
+        "critic-r7C-2-grass-base-3x3-4x.png",
+        "critic-r7C-2-grass-base-seam-cross-1x.png",
+        "critic-r7C-2-grass-base-seam-cross-4x.png",
+        "critic-r7C-2-grass@winter-base-3x3-1x.png",
+        "critic-r7C-2-grass@winter-base-3x3-4x.png",
+        "critic-r7C-2-grass@winter-base-seam-cross-1x.png",
+        "critic-r7C-2-grass@winter-base-seam-cross-4x.png",
+        "critic-r7C-2-individual-hills-prop-0-8x.png",
+        "critic-r7C-2-individual-hills-prop-1-8x.png",
+        "critic-r7C-2-individual-hills-prop-2-8x.png",
+        "critic-r7C-2-individual-hills-prop-3-8x.png",
+        "critic-r7C-2-individual-hills-prop-4-8x.png",
+        "critic-r7C-2-individual-hills-prop-5-8x.png",
+        "critic-r7C-2-individual-hills-prop-6-8x.png",
+        "critic-r7C-2-individual-hills-prop-7-8x.png",
+        "critic-r7C-2-individual-hills@winter-prop-0-8x.png",
+        "critic-r7C-2-individual-hills@winter-prop-1-8x.png",
+        "critic-r7C-2-individual-hills@winter-prop-2-8x.png",
+        "critic-r7C-2-individual-hills@winter-prop-3-8x.png",
+        "critic-r7C-2-individual-hills@winter-prop-4-8x.png",
+        "critic-r7C-2-individual-hills@winter-prop-5-8x.png",
+        "critic-r7C-2-individual-hills@winter-prop-6-8x.png",
+        "critic-r7C-2-individual-hills@winter-prop-7-8x.png",
+        "critic-r7C-2-plains-base-3x3-1x.png",
+        "critic-r7C-2-plains-base-3x3-4x.png",
+        "critic-r7C-2-plains-base-seam-cross-1x.png",
+        "critic-r7C-2-plains-base-seam-cross-4x.png",
+        "critic-r7C-2-plains@winter-base-3x3-1x.png",
+        "critic-r7C-2-plains@winter-base-3x3-4x.png",
+        "critic-r7C-2-plains@winter-base-seam-cross-1x.png",
+        "critic-r7C-2-plains@winter-base-seam-cross-4x.png",
+        "critic-r7C-2-reference-current-fantasy-hills-1x.png",
+        "critic-r7C-2-reference-current-fantasy-hills-4x.png",
+        "critic-r7C-2-summer-8x2-random-grass-base-1x.png",
+        "critic-r7C-2-summer-8x2-random-grass-base-4x.png",
+        "critic-r7C-2-summer-8x2-random-plains-base-1x.png",
+        "critic-r7C-2-summer-8x2-random-plains-base-4x.png",
+        "critic-r7C-2-summer-alpha-dark-1x.png",
+        "critic-r7C-2-summer-alpha-dark-4x.png",
+        "critic-r7C-2-summer-alpha-light-1x.png",
+        "critic-r7C-2-summer-alpha-light-4x.png",
+        "critic-r7C-2-summer-alpha-sand-1x.png",
+        "critic-r7C-2-summer-alpha-sand-4x.png",
+        "critic-r7C-2-summer-approved-details-paddies-1x.png",
+        "critic-r7C-2-summer-approved-details-paddies-4x.png",
+        "critic-r7C-2-summer-scatter-1x.png",
+        "critic-r7C-2-summer-scatter-4x.png",
+        "critic-r7C-2-summer-surfaces-grass-base-1x.png",
+        "critic-r7C-2-summer-surfaces-grass-base-4x.png",
+        "critic-r7C-2-summer-surfaces-grass@winter-base-1x.png",
+        "critic-r7C-2-summer-surfaces-grass@winter-base-4x.png",
+        "critic-r7C-2-summer-surfaces-plains-base-1x.png",
+        "critic-r7C-2-summer-surfaces-plains-base-4x.png",
+        "critic-r7C-2-summer-surfaces-plains@winter-base-1x.png",
+        "critic-r7C-2-summer-surfaces-plains@winter-base-4x.png",
+        "critic-r7C-2-summer-surfaces-wasteland-wasteland-base-1x.png",
+        "critic-r7C-2-summer-surfaces-wasteland-wasteland-base-4x.png",
+        "critic-r7C-2-winter-8x2-random-grass@winter-base-1x.png",
+        "critic-r7C-2-winter-8x2-random-grass@winter-base-4x.png",
+        "critic-r7C-2-winter-8x2-random-plains@winter-base-1x.png",
+        "critic-r7C-2-winter-8x2-random-plains@winter-base-4x.png",
+        "critic-r7C-2-winter-alpha-dark-1x.png",
+        "critic-r7C-2-winter-alpha-dark-4x.png",
+        "critic-r7C-2-winter-alpha-light-1x.png",
+        "critic-r7C-2-winter-alpha-light-4x.png",
+        "critic-r7C-2-winter-alpha-sand-1x.png",
+        "critic-r7C-2-winter-alpha-sand-4x.png",
+        "critic-r7C-2-winter-approved-details-paddies-1x.png",
+        "critic-r7C-2-winter-approved-details-paddies-4x.png",
+        "critic-r7C-2-winter-scatter-1x.png",
+        "critic-r7C-2-winter-scatter-4x.png",
+        "critic-r7C-2-winter-surfaces-grass-base-1x.png",
+        "critic-r7C-2-winter-surfaces-grass-base-4x.png",
+        "critic-r7C-2-winter-surfaces-grass@winter-base-1x.png",
+        "critic-r7C-2-winter-surfaces-grass@winter-base-4x.png",
+        "critic-r7C-2-winter-surfaces-plains-base-1x.png",
+        "critic-r7C-2-winter-surfaces-plains-base-4x.png",
+        "critic-r7C-2-winter-surfaces-plains@winter-base-1x.png",
+        "critic-r7C-2-winter-surfaces-plains@winter-base-4x.png",
+        "critic-r7C-2-winter-surfaces-wasteland-wasteland-base-1x.png",
+        "critic-r7C-2-winter-surfaces-wasteland-wasteland-base-4x.png"
+      ]
+    },
+    "measurements": {
+      "hills-prop-0": {
+        "size": [
+          48,
+          48
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          6,
+          12,
+          44,
+          36
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "6817a88862eb870f652697db22694c642b01c0f2504a0bacd2c2968074eaf498",
+        "changed_since_review_1": false,
+        "visible_colors": 12,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112
+        ]
+      },
+      "hills-prop-1": {
+        "size": [
+          48,
+          48
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          6,
+          10,
+          44,
+          38
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "55a9b559e7180215e29bdf86d8de3abb1bd3182749e13a447169e950a2d98316",
+        "changed_since_review_1": true,
+        "visible_colors": 13,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112
+        ]
+      },
+      "hills-prop-2": {
+        "size": [
+          48,
+          48
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          6,
+          12,
+          44,
+          36
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "94c2388805162ce4bb6d7fa8435ca8472b927d2cce464a103ecb8f9145ddaf73",
+        "changed_since_review_1": false,
+        "visible_colors": 12,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96
+        ]
+      },
+      "hills-prop-3": {
+        "size": [
+          48,
+          48
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          4,
+          8,
+          43,
+          40
+        ],
+        "width_coverage_percent": 81.2,
+        "sha256": "2b08e7f235d254a6f7dbbc8d90eb08953541633d6d233df34f30e529b95c40fb",
+        "changed_since_review_1": false,
+        "visible_colors": 7,
+        "alpha_levels": [
+          0,
+          64,
+          255
+        ]
+      },
+      "hills-prop-4": {
+        "size": [
+          96,
+          96
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          9,
+          20,
+          89,
+          76
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "bb14702d9e0605182c72be78b3febc04e297c22079d5b1183407662c649d657c",
+        "changed_since_review_1": false,
+        "visible_colors": 13,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112
+        ]
+      },
+      "hills-prop-5": {
+        "size": [
+          96,
+          96
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          9,
+          23,
+          89,
+          73
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "ba891de2429a08ddd86842c898e54d988e09082b199ebfe2d262bb4b7c12ab22",
+        "changed_since_review_1": true,
+        "visible_colors": 13,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112
+        ]
+      },
+      "hills-prop-6": {
+        "size": [
+          96,
+          96
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          9,
+          26,
+          89,
+          70
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "09119353a60f95099a6e80796fe729be9ca5a9484334640c4cc884fc39e29b42",
+        "changed_since_review_1": false,
+        "visible_colors": 16,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          255
+        ]
+      },
+      "hills-prop-7": {
+        "size": [
+          96,
+          96
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          7,
+          15,
+          89,
+          81
+        ],
+        "width_coverage_percent": 85.4,
+        "sha256": "df2893f99ddabf110b8830d0b8348a6cedf6c792f691406d9b9eb50785b9426b",
+        "changed_since_review_1": false,
+        "visible_colors": 9,
+        "alpha_levels": [
+          0,
+          64,
+          96,
+          255
+        ]
+      },
+      "hills@winter-prop-0": {
+        "size": [
+          48,
+          48
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          6,
+          12,
+          44,
+          36
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "bd251cf2c850f351fe46d37ee69f52d10465cd3548638e646f68e2fa6b718182",
+        "changed_since_review_1": false,
+        "visible_colors": 15,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112,
+          255
+        ]
+      },
+      "hills@winter-prop-1": {
+        "size": [
+          48,
+          48
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          6,
+          10,
+          44,
+          38
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "15efef00df31c7cd9db72a52e8a62393ecea870c4fc3d56af52d4bde1d95ca55",
+        "changed_since_review_1": true,
+        "visible_colors": 15,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112,
+          255
+        ]
+      },
+      "hills@winter-prop-2": {
+        "size": [
+          48,
+          48
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          6,
+          12,
+          44,
+          36
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "9c3a73efc9a8514ecf40de9ca764af50773ac43719b54ef1649f6f2f6886c937",
+        "changed_since_review_1": false,
+        "visible_colors": 15,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          255
+        ]
+      },
+      "hills@winter-prop-3": {
+        "size": [
+          48,
+          48
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          4,
+          8,
+          43,
+          40
+        ],
+        "width_coverage_percent": 81.2,
+        "sha256": "c76700c14bc1139ef92f86124e903ca8dfbb215069bd005ef2472aeb99ce3501",
+        "changed_since_review_1": false,
+        "visible_colors": 10,
+        "alpha_levels": [
+          0,
+          64,
+          255
+        ]
+      },
+      "hills@winter-prop-4": {
+        "size": [
+          96,
+          96
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          9,
+          20,
+          89,
+          76
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "aea6e0ecdef77086cc3be8acbf0dd1e49ea44fd959654bdd58624bcf14492344",
+        "changed_since_review_1": false,
+        "visible_colors": 15,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112,
+          255
+        ]
+      },
+      "hills@winter-prop-5": {
+        "size": [
+          96,
+          96
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          9,
+          23,
+          89,
+          73
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "3aa41518cb30acd28977fe2cc102f22beb12b74b5cb7da26a9fa4e1647b95ef1",
+        "changed_since_review_1": true,
+        "visible_colors": 16,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112,
+          255
+        ]
+      },
+      "hills@winter-prop-6": {
+        "size": [
+          96,
+          96
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          9,
+          30,
+          89,
+          70
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "98ed35bc919bd8a415e27ff1446daf54522123efffe37a3a1adfaefbdd80c4f2",
+        "changed_since_review_1": true,
+        "visible_colors": 20,
+        "alpha_levels": [
+          0,
+          16,
+          32,
+          48,
+          64,
+          80,
+          96,
+          112,
+          128,
+          140,
+          255
+        ]
+      },
+      "hills@winter-prop-7": {
+        "size": [
+          96,
+          96
+        ],
+        "mode": "RGBA",
+        "alpha_bbox": [
+          7,
+          15,
+          89,
+          81
+        ],
+        "width_coverage_percent": 85.4,
+        "sha256": "fb2df5fadef588d01ff7e95b574e6ebe6d4ef6c3061cfe31dcb853b5354f49de",
+        "changed_since_review_1": false,
+        "visible_colors": 12,
+        "alpha_levels": [
+          0,
+          64,
+          96,
+          255
+        ]
+      }
+    }
+  },
+  "pass": [
+    "hills-prop-0",
+    "hills-prop-1",
+    "hills-prop-2",
+    "hills-prop-3",
+    "hills-prop-4",
+    "hills-prop-5",
+    "hills-prop-6",
+    "hills-prop-7",
+    "hills@winter-prop-0",
+    "hills@winter-prop-1",
+    "hills@winter-prop-2",
+    "hills@winter-prop-3",
+    "hills@winter-prop-4",
+    "hills@winter-prop-5",
+    "hills@winter-prop-6",
+    "hills@winter-prop-7"
+  ],
+  "fail": []
+}
