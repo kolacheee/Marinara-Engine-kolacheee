@@ -1,3 +1,697 @@
+# Round 5 — Part A2: native 96 px mountains
+
+Replaced only the sixteen Part A2 peak sprites with fresh **96×96 RGBA**
+drawings. Indices 0–2 are large massifs (double summit, long ridge shoulder,
+three crests); 3–5 are medium forms (flat crag, sharp spike, crooked ridge);
+6–7 are small rounded/stepped rocky knolls. Final widths are **82, 80, 76,
+60, 52, 52, 40 and 36 px** in both seasons. Large heights are 66–74 px.
+All feet end on **row 93**, centred exactly in the cell. Summer uses lighter
+cool-grey left faces, dark slate right faces, strata and attached olive grass.
+Winter has bold upper snow caps, blue-white shade and exposed shadow-side rock.
+The two approved mountain bases and every other output remain byte-identical.
+No commit or push.
+
+**Method:** sixteen separate built-in image-tool drawings, with each winter
+painting based on its corresponding new summer landform. No old 48 px sprite
+was enlarged. Solid magenta is removed with hard alpha before registration
+on **768×768** canvases. Each native pixel is the exact raw RGBA mode of all
+**64 samples** in its 8×8 footprint, followed by an explicit cool-rock,
+olive/snow palette lock. Disconnected key specks are removed and the contour
+is resolved at one native pixel. A coordinate brush pass trims side/foot
+whiskers and repairs the resulting outline: **38 native pixel edits**.
+Alpha is 0/255; transparent RGB is zero. Code registers, reduces, cleans and
+composites the drawings; it does not construct mountain shapes or noise.
+
+**QC:** read the full fifth brief, earlier briefs and named reference images;
+compared approved markers, round-2 tiles, paddies and all seasonal grass/plains.
+Inspected contact sheets, dense ranges and ragged edges at **1× and exact
+nearest-neighbour 4×**, and individual sprites at **8×**. Lattice spacing is
+**48 px horizontally, 30 px between rows, alternate rows shifted 24 px**;
+later rows cover earlier rows. The 288×288 map crop has overscan, avoiding
+artificial empty borders. Broad and low forms break up the pointed skyline;
+light rock separates from the brown base, and winter reads as snow on rock.
+The first edge proof's square ground boundary was replaced with a curved
+review mask; no terrain asset was changed. Rechecked both unchanged bases
+in literal **3×3** repeats and enlarged wrap intersections. No hard wrap seam,
+key fringe, rectangular sprite backing or clipped sprite was found.
+
+Validation passes native dimensions, all size bands, bottom/centre placement,
+connected silhouettes, palette membership, hard alpha/zero hidden RGB,
+one-pixel contours, all sixteen exact mode reductions, upper snow coverage,
+18 repeat crops, exact 4× proof scaling and the complete workspace hash scope.
+Only these sixteen outputs, fourteen new review PNGs and this note changed.
+This is a **self-review critic loop**; no new independent critic verdict or
+live in-game check is available in this art-only checkout.
+
+Sources, exact prompt set (`generation-all.json`), registered/mode stages,
+`hand-edits.json`, processing/review/validation scripts and `validation.json`
+are retained outside the checkout in **`/tmp/r5A2-work/`**.
+
+Every file written (relative to the checkout):
+
+- `art-drop/out/mountains-peak-0.png`
+- `art-drop/out/mountains-peak-1.png`
+- `art-drop/out/mountains-peak-2.png`
+- `art-drop/out/mountains-peak-3.png`
+- `art-drop/out/mountains-peak-4.png`
+- `art-drop/out/mountains-peak-5.png`
+- `art-drop/out/mountains-peak-6.png`
+- `art-drop/out/mountains-peak-7.png`
+- `art-drop/out/mountains@winter-peak-0.png`
+- `art-drop/out/mountains@winter-peak-1.png`
+- `art-drop/out/mountains@winter-peak-2.png`
+- `art-drop/out/mountains@winter-peak-3.png`
+- `art-drop/out/mountains@winter-peak-4.png`
+- `art-drop/out/mountains@winter-peak-5.png`
+- `art-drop/out/mountains@winter-peak-6.png`
+- `art-drop/out/mountains@winter-peak-7.png`
+- `art-drop/review/r5A2-peaks-1x.png`
+- `art-drop/review/r5A2-peaks-4x.png`
+- `art-drop/review/r5A2-summer-base-3x3-1x.png`
+- `art-drop/review/r5A2-summer-base-3x3-4x.png`
+- `art-drop/review/r5A2-summer-lattice-1x.png`
+- `art-drop/review/r5A2-summer-lattice-4x.png`
+- `art-drop/review/r5A2-summer-ragged-edge-1x.png`
+- `art-drop/review/r5A2-summer-ragged-edge-4x.png`
+- `art-drop/review/r5A2-winter-base-3x3-1x.png`
+- `art-drop/review/r5A2-winter-base-3x3-4x.png`
+- `art-drop/review/r5A2-winter-lattice-1x.png`
+- `art-drop/review/r5A2-winter-lattice-4x.png`
+- `art-drop/review/r5A2-winter-ragged-edge-1x.png`
+- `art-drop/review/r5A2-winter-ragged-edge-4x.png`
+- `art-drop/NOTES.md`
+
+---
+
+# Round 5 — Part B: critic-r5B-6 redraw
+
+Redrew only `out/wasteland-craters-base.png` and
+`out/wasteland-craters@winter-base.png`, the two failed assets. The four
+passing Part B bases and all 274 other outputs retain their starting bytes.
+Supplied critic verdicts/composites, briefs and unrelated files are unchanged.
+**No commit or push.**
+
+Four unequal blast depressions replace the isolated three-pit triangle.
+Their positions extend through the upper, right, lower and left portions of
+the tile, interrupting the former broad crater-free horizontal wrap band.
+The broad upper pit has a mostly collapsed front and two separated rear-wall
+sections; the horizontal right pit opens into a collapsed end; the narrow
+lower excavation has a nearly vertical axis and a wide ramp interrupting its
+left wall; the small left hollow is shallow and mostly filled. Connected
+recessed floors, inward shadows, broken rubble and quiet ash remain. A first
+draft's oversized rims and repeated bright rubble fronts were revised.
+
+Winter follows the summer footprints with different amounts of burial.
+Selected inward walls remain exposed above connected blue-shadowed snow
+floors, while other lip sections disappear under accumulation. Broader,
+quieter snow fields and lower drift relief replace the previous dense short
+shaded ridges. The shared blue-white palette and exposed earth/rubble keep
+the seasonal identity beside the passing winter bases.
+
+**Same method:** built-in image-tool paintings and targeted revisions,
+BOX registration to 1152×1152, exact RGB mode voting over all sixteen source
+samples per 4×4 footprint, and the existing explicit earth/snow palette.
+Half-offset image-painted wrap repairs use the existing narrow central cross
+and low-error hard cuts. Code registers, reduces, palette-locks and composites
+the paintings; it does not draw terrain shapes or noise.
+
+**QC:** rebuilt all fifteen existing `review/r5B-*.png` composites in their
+original layouts. Seven dependent proofs changed; the eight ruin/plain
+wasteland repeat proofs reproduce their previous bytes. Viewed both final
+unmarked native 3×3 repeats, the seasonal board, all eight source quadrants
+at exact 8× and both four-way wrap crossings at 8×. No hard wrap seam or
+important clipped form was found. Individual features remain locatable when
+searching a large repeated field. This is visual self-review, without a new
+independent critic verdict or live in-game check.
+
+Validation checks the exact two-output/seven-proof/note change scope,
+unchanged file inventory and protected hashes, 288×288 RGB opacity, palette
+membership, all four registered mode reductions, 54 repeat placements and
+exact QC enlargements. Paintings, exact prompts, scripts and inspection
+images are outside the checkout in **`/tmp/r5B-critic6-fix/`**, including
+`generation.json`, `process.py`, `seam_lib.py`, `deliver.py`, `validate.py`
+and `validation.json`.
+
+---
+
+# Round 5 — Part B: critic-r5B-5 redraw
+
+Redrew only `out/wasteland-craters-base.png` and
+`out/wasteland-craters@winter-base.png`, the two failed assets. All four
+passing Part B bases and every other output retain their starting bytes
+(274 protected outputs in total).
+Supplied critic verdicts/composites, briefs and unrelated files are unchanged.
+**No commit or push.**
+
+Summer restores three connected, unequal blast depressions: a broad angular
+upper pit, a taller lower-left excavation with a collapsed ramp interrupting
+its wall, and a smaller shallow oblique hollow. Each has a continuous recessed
+floor, a dark inward wall, unequal broken rubble lips and grouped ejecta.
+Quiet ash stays subordinate to pit relief. The largest rim is about two cells
+across. An oversized first draft was redrawn smaller, then clean slab-like
+caps were repainted as fractured earth and rubble. Different floor outlines,
+axes and degrees of rim collapse avoid three copies of one C-shaped bowl.
+
+Winter follows those same footprints. Connected blue-shadowed snow floors
+sit below exposed inward walls; snow bridges selected lip sections and buries
+unequal amounts of rim. The small hollow is most buried, while the taller
+left pit retains more exposed wall. Existing blue-white snow hues, drift
+texture and top-left illumination are retained. Relief remains visible in
+native 3×3 tilings instead of dissolving into unrelated snowy ridges.
+
+**Same method:** built-in image-tool paintings and targeted revisions,
+BOX registration to 1152×1152, exact RGB mode voting over all sixteen source
+samples per 4×4 footprint, and the existing explicit earth/snow palette.
+Half-offset image-painted wrap repairs use the existing narrow central cross
+and low-error hard cuts. Code registers, reduces, palette-locks and composites
+the paintings; it does not draw terrain shapes or noise.
+
+**QC:** rebuilt all fifteen existing `review/r5B-*.png` composites in their
+original layouts. Seven dependent proofs changed; the eight ruin/plain
+wasteland repeat proofs reproduce their previous bytes. Inspected both final
+native 3×3 repeats, the seasonal board, all eight source quadrants at exact
+8× and both four-way wrap crossings at 8×. No hard wrap seam or important
+clipped form was found. Repeated crater locations remain discoverable in
+large tiled fields. This is visual self-review, not a new independent critic
+verdict or a live in-game check.
+
+Validation checks the exact two-output/seven-proof/note change scope,
+unchanged file inventory and protected hashes, 288×288 RGB opacity, palette
+membership, all four registered mode reductions, 54 repeat placements and
+exact QC enlargements. Paintings, exact prompts, scripts and inspection
+images are outside the checkout in **`/tmp/r5B-critic5-fix/`**, including
+`generation.json`, `process.py`, `seam_lib.py`, `deliver.py`, `validate.py`
+and `validation.json`.
+
+---
+
+# Round 5 — Part B: critic-r5B-4 redraw
+
+Redrew only the two failed assets in `out/`:
+`wasteland-craters-base.png` and `wasteland-craters@winter-base.png`.
+The four passing Part B bases and all 274 other outputs retain their starting
+bytes. Supplied critic verdicts/composites, briefs and other existing files
+are unchanged. **No commit or push.**
+
+The former wide C-shaped bowl and right-lip rubble knot are replaced by a
+narrower, irregular excavation with short, separated inward-shadow shelves
+and broad collapsed earth slopes. Rim stones are redistributed into low
+fragments. The lower-left diagonal scar is shortened, widened and partly
+filled; disconnected ash tongues and earth passages replace its attached
+blotch. The third depression has a broader angular floor and different rim
+exposure. Three unequal, eroded depressions remain, without the former
+bowl/scar/blotch badge. An initial revision still repeated too strongly at
+native scale and was repainted before delivery.
+
+Winter follows the revised landforms. Asymmetric drifts partly bury their
+floors and unequal rim sections, connecting the recesses to surrounding snow
+and interrupting the former isolated blue bowl. Short inward shadows,
+scattered exposed rubble and textured blue-white accumulation retain the
+crater terrain's identity and the established winter palette.
+
+**Same method:** built-in image-tool paintings and targeted revisions,
+BOX registration to 1152×1152, exact RGB mode voting over all sixteen source
+samples per 4×4 footprint, and the existing explicit earth/snow palette.
+Half-offset image-painted wrap repairs use narrow central crosses and
+low-error hard cuts. Code registers, reduces, palette-locks and composites
+the paintings; it does not draw terrain shapes or noise.
+
+**QC:** rebuilt all fifteen existing `review/r5B-*.png` composites in their
+original layouts. Seven dependent proofs changed; the eight ruin/plain
+wasteland repeat proofs reproduce their previous bytes. Viewed both final
+native 3×3 repeats, the seasonal board, all eight source quadrants at exact
+8× and both four-way wrap crossings at 8×. No hard wrap seam or important
+clipped form was found. This is visual self-review, not a new independent
+critic verdict or an in-game check; deliberate comparison can still locate
+individual forms in a repeated texture.
+
+Validation checks the exact two-output/seven-proof/note change scope,
+unchanged file inventory and protected hashes, 288×288 RGB opacity, palette
+membership, all four registered mode reductions, 54 repeat placements and
+exact QC enlargements. Paintings, exact prompts, scripts, inspection images
+and validation are retained outside the checkout in **`/tmp/r5B-critic4-fix/`**
+(`generation.json`, `process.py`, `seam_lib.py`, `deliver.py`, `validate.py`,
+`validation.json`).
+
+---
+
+# Round 5 — Part B: critic-r5B-3 redraw
+
+Redrew only the four failed bases: summer and winter `wasteland-craters`
+and `wasteland-ruins`. The passing plain wasteland pair, all 272 other
+outputs, supplied critic verdicts/composites, briefs and other workspace
+files retain their starting bytes. **No commit or push.**
+
+Craters replace the descending three-lobed footprint with separate unequal
+depressions: a broad shallow bowl, a narrower rubble-filled gouge and a
+small nearly filled hollow. Their axes, depth and exposed lip lengths differ.
+Broad asymmetrical ash patches and grouped rim stones replace dust-coloured
+smears. The long dark secondary lip was shortened and partly collapsed after
+native repeat inspection. Winter preserves the landforms with broad blue
+recessed floors, differently buried rim sections, a collapsed snow slope and
+unequal bowl accumulation. An oversized winter bowl draft was corrected.
+
+Ruins dismantle the upright-wall/car/long-slab badge. Low fractured concrete
+and unequal rubble masses now occupy the upper-right as well as the other
+quadrants, with varied slab axes and connected dirt passages. The two small
+rusty husks are separated; exposed rebar and broken fallen-pylon fragments
+retain modern identity. Winter completely buries selected wall shards and
+much of a long slab, blends many faces into deeper drifts, and retains unequal
+secondary exposures throughout the field instead of isolating one landmark.
+
+**Same method:** built-in image-tool paintings and targeted paint revisions,
+BOX registration to 1152×1152, exact RGB mode voting over all sixteen samples
+per 4×4 footprint, and the existing explicit earth/concrete/rust/snow palette.
+Half-offset image-painted wrap repairs use narrow central crosses and
+low-error hard cuts. Code registers, reduces, palette-locks and composites
+the paintings; it does not draw terrain shapes or noise.
+
+**QC:** rebuilt all fifteen existing `review/r5B-*.png` composites in their
+original layouts. Eleven dependent proofs changed; the four plain wasteland
+repeat proofs reproduce their previous bytes. Viewed the four final native
+3×3 repeats, seasonal comparison, all sixteen quadrants at exact 8× and all
+four wrap intersections at 8×. No hard wrap seam or important clipped object
+was found. This is visual self-review, not a new independent critic pass or
+an in-game check; individual features remain locatable in a repeated texture.
+
+Validation checks exact four-output/eleven-proof/note change scope, unchanged
+workspace inventory and protected hashes, 288×288 RGB opacity, palette
+membership, all eight registered mode reductions, 54 repeat placements and
+exact proof enlargements. Working paintings, prompts, processing scripts,
+inspection images and validation are outside the checkout in
+**`/tmp/r5B-critic3-fix/`** (`generation-all.json`, `process.py`, `seam_lib.py`,
+`deliver.py`, `validate.py`, `validation.json`).
+
+---
+
+# Round 5 — Part B: critic-r5B-2 redraw
+
+Replaced only the **four failed bases** in `out/`: both seasons of
+`wasteland-craters` and `wasteland-ruins`. The two passing plain wasteland
+bases, every other output, and the supplied critic verdicts/evidence are
+byte-identical to the start of this request. **No commit or push.**
+
+Craters have connected recessed floors, short inward-facing back walls and
+broken rubble lips, with dusty collapsed sides instead of complete rings.
+The larger irregular bowl, elongated shallow excavation and small adjoining
+scars have unequal profiles and contrast; the largest rim stays below two
+48 px cells across. A draft with three complete oval rings was revised after
+native tiled inspection. Winter retains broad blue-shadowed snow floors
+below separately snow-capped rims and exposed inner walls; ash is grouped
+into quiet patches rather than disconnected floor flecks.
+
+Ruins replace the repeated upright-wall/slab islands with an overlapping
+low collapse, differently angled concrete plates, buried footings and one
+remaining jagged wall. A broad connected dirt gap interrupts the rubble.
+Rebar, small broken fallen-pylon sections and two differently exposed rusty
+wrecks remain. Winter fully buries many smaller pieces, merges slab snow into
+surrounding drifts and leaves unequal broad quiet snow gaps; it no longer
+gives every pebble a dark perimeter and separate white cap.
+
+**Same method:** built-in image-tool paintings and targeted revisions,
+BOX registration to 1152×1152, exact RGB mode voting over all sixteen samples
+of each 4×4 footprint, and the existing explicit earth/concrete/rust/snow
+palette. Half-offset image-painted wrap repairs use the established narrow
+cross and low-error hard cuts. Code only registers, reduces, palette-locks
+and composites the paintings; it does not construct the terrain.
+
+**QC:** regenerated all fifteen existing `review/r5B-*.png` composites in
+their original layouts. Eleven dependent proofs change; the four plain
+wasteland repeat proofs reproduce their existing bytes. Inspected all four
+new native 3×3 repeats, the seasonal board, all sixteen source quadrants at
+exact nearest-neighbour 8× and all four wrap intersections at 8×. No hard
+wrap seam or clipped important structure was found. Recognizable features
+can still be traced across a large repeated field; this is visual self-review,
+not a new independent critic pass or an in-game check.
+
+Validation checks the exact four-output scope, all protected workspace
+hashes, unchanged file inventory, 288×288 RGB opacity and palette membership,
+all eight registered mode reductions, all 54 repeat placements and exact QC
+enlargements. Only the four failed bases, eleven dependent QC PNGs and this
+note changed. Sources, exact prompts, processing and validation are retained
+outside the checkout in **`/tmp/r5B-critic2-fix/`** (`generation.json`,
+`process.py`, `seam_lib.py`, `deliver.py`, `validate.py`, `validation.json`).
+
+---
+
+# Round 5 — Part B: critic-r5B-1 redraw
+
+Redrew only the **four failed bases**: `wasteland-craters-base.png`,
+`wasteland-craters@winter-base.png`, `wasteland-ruins-base.png` and
+`wasteland-ruins@winter-base.png` in `out/`. The two passing plain wasteland
+bases and every other output remain byte-identical to this request's start.
+The supplied critic verdict and its evidence images are unchanged.
+
+Craters now have three different profiles: a recessed broken bowl, a broad
+shallow collapsed scar and a small almost-filled hollow. The largest whole rim
+is below two 48 px cells across. Discontinuous rims, filled sides, subdued
+shadows and irregular ash patches replace the former dark triangle. Winter
+keeps those landforms, with snow-filled interiors, shaped caps on remaining
+rim rocks, grouped ash/rubble exposures and quieter snow between them. A second
+winter paint revision removed the draft's overly dark, continuous crater lips.
+
+Ruins retain modern concrete, thin rebar and two partially buried rusty cars.
+The former large intact fallen pylon is broken into small, separated lattice
+fragments embedded in broader rubble footprints. Walls, fallen panels and low
+foundation remnants have different collapse profiles; overlapping slabs, cars
+and walls have unequal gaps. Winter follows the same structures, with snow
+interrupting the lattice fragments and varying the exposure of wreckage.
+
+**Same method:** built-in image-tool paintings and targeted revisions,
+BOX-registered to 1152×1152, then exact RGB mode voting over all 16 samples
+of every 4×4 footprint to produce 288×288 pixels. Explicit earth, concrete,
+charcoal, muted rust and blue-white snow ramps lock the palette. Two additional
+blue-grey snow shades retain the winter paintings' soft recessed shadows.
+Half-offset image-painted wrap repairs use the established narrow cross and
+low-error hard cuts. Code registers, reduces, palette-locks and composites the
+paintings; it does not construct the terrain from shapes or noise.
+
+**QC:** rebuilt all fifteen existing `review/r5B-*.png` composites with the
+original layouts. Eleven dependent PNGs changed; the four plain wasteland
+repeat proofs reproduce their existing bytes. Visually checked all four new
+3×3 repeats at native 1×, the seasonal board, full assets at exact nearest-
+neighbour 8×, and four-tile wrap intersections at 8×. The repeating dark crater
+triangle and intact pylon emblem are removed; no hard wrap seam or clipped
+important structure was found. Remaining individual rubble/ash arrangements
+can still be located by deliberate comparison across a repeated texture.
+This is visual self-review, **not a new independent critic pass**; it supersedes
+the earlier delivery note's claim that all six passed the final review.
+
+Validation verifies the exact four-output change scope, all protected files,
+unchanged file inventory, 288×288 RGB opacity and palette membership, all eight
+registered mode reductions, all 54 repeat placements and exact proof scaling.
+Only the four failed bases, eleven dependent QC PNGs and this note changed.
+Sources, exact prompts, processing scripts, full-size inspection proofs and
+validation are retained in **`/tmp/r5B-critic1-fix/`** (`generation.json`,
+`process.py`, `seam_lib.py`, `deliver.py`, `validate.py`, `validation.json`).
+Live in-game rendering was unavailable. **No commit or push.**
+
+---
+
+# Round 5 — Part B: wasteland ground
+
+Delivered only the six requested **288×288 opaque RGB** wasteland bases.
+Craters have three unequal irregular blast excavations, rubble rims and ash;
+the largest rim is approximately 80–85 native pixels across, below two cells.
+Ruins contain collapsed modern concrete, exposed rebar, two rusted car husks,
+cracked asphalt and one fallen steel pylon. Important forms remain inside the
+wrap. Dry wasteland has quiet cracked earth, uneven dust pools, sparse dead
+weeds and debris. All three winter grounds carry textured blue-white snow
+with exposed earth and rubble; snow-palette coverage is approximately 67%,
+78% and 97%, respectively.
+
+**Method:** separate built-in image-tool paintings, plus painted scale,
+seasonal and seam revisions. Each source is BOX-registered to **1152×1152**;
+the exact RGB mode of all **16 samples** in every 4×4 footprint produces its
+288×288 pixel. Explicit warm-earth, charcoal, concrete, muted rust and approved
+blue-white snow ramps lock the palette afterward. Half-offset image-painted
+seam repairs use narrow central crosses and low-error hard cuts; code only
+registers, reduces, palette-locks and composites the paintings. Native hand
+cleanup follows the two existing car roof/bonnet planes with **87 muted rust
+pixels**, preserving their dark windows, wheels and silhouettes. No terrain
+was constructed from code shapes or noise. No transparent sprites belong to
+Part B, so key-colour extraction and sprite-placement rules are inapplicable.
+
+**QC:** the independent critic first requested more visible car rust and a
+break in the dry ground's long diagonal dust ribbons. Both were corrected;
+a square interior splice was rejected and replaced with a new painted ground
+and separate wrap repair. The final independent review **passes all six**.
+Inspected every saved 3×3 repeat at **1× and exact nearest-neighbour 4×**, the
+seasonal comparison at **1×, 4× and 8×**, and native detail crops at **8×**.
+No hard join, rectangular splice, cut important object or cell grid was found.
+Distinct craters and the pylon remain recognizable repeated motifs in large
+fields; a single texture cannot eliminate that repetition entirely.
+
+Validation checks dimensions, opacity, palette membership, every registered
+mode reduction, all nine placements in each repeat, exact proof scaling and
+full workspace file hashes. Only the six bases, fifteen requested QC PNGs and
+this note were written in the checkout. An external edit appended Part A2 to
+BRIEF-5.md during the run; it was read and left untouched. Every other starting
+file is byte-identical. Sources, all exact prompts, processing scripts, hand
+edit coordinates and validation are retained in **`/tmp/r5B-work/`**
+(`generation.json`, `hand-edits.json`, `validation.json`).
+
+**Limit:** live in-game rendering is unavailable in this art-only checkout.
+No commit or push.
+
+Files written for Part B:
+
+- `art-drop/out/wasteland-craters-base.png`
+- `art-drop/out/wasteland-craters@winter-base.png`
+- `art-drop/out/wasteland-ruins-base.png`
+- `art-drop/out/wasteland-ruins@winter-base.png`
+- `art-drop/out/wasteland-wasteland-base.png`
+- `art-drop/out/wasteland-wasteland@winter-base.png`
+- `art-drop/review/r5B-craters-summer-tiled-1x.png`
+- `art-drop/review/r5B-craters-summer-tiled-4x.png`
+- `art-drop/review/r5B-craters-winter-tiled-1x.png`
+- `art-drop/review/r5B-craters-winter-tiled-4x.png`
+- `art-drop/review/r5B-ruins-summer-tiled-1x.png`
+- `art-drop/review/r5B-ruins-summer-tiled-4x.png`
+- `art-drop/review/r5B-ruins-winter-tiled-1x.png`
+- `art-drop/review/r5B-ruins-winter-tiled-4x.png`
+- `art-drop/review/r5B-seasons-1x.png`
+- `art-drop/review/r5B-seasons-4x.png`
+- `art-drop/review/r5B-seasons-8x.png`
+- `art-drop/review/r5B-wasteland-summer-tiled-1x.png`
+- `art-drop/review/r5B-wasteland-summer-tiled-4x.png`
+- `art-drop/review/r5B-wasteland-winter-tiled-1x.png`
+- `art-drop/review/r5B-wasteland-winter-tiled-4x.png`
+- `art-drop/NOTES.md`
+
+---
+
+# Round 5 — Part A critic-r5A-3 foot repairs
+
+Repaired only the three failed outputs: **`out/mountains-peak-2.png`**,
+**`out/mountains-peak-6.png`** and **`out/mountains-peak-7.png`**. They now
+have attached muted olive grass at the foot: **21, 14 and 5 native pixels**,
+respectively, using the same three-colour olive ramp as the passing peaks.
+The broad massif, rounded knoll and stepped knoll retain their exact original
+silhouettes, widths, placement, binary alpha and dark outer contours. Every
+pixel outside the small foot patches is unchanged.
+
+The operator's darker warm summer rock, cool right shadows, varied crests and
+bold upper-half winter caps were already present in this request's starting
+files and passed critic-r5A-3. Those features are preserved. Both mountain
+bases and all **13 passing peak sprites** remain byte-identical, along with
+every other output and all historical critic verdicts/composites.
+
+**Same method:** three individual built-in image-tool edits of the failed
+sprites. Each painting is BOX-registered to its existing bounds on a
+**384×384** canvas; all **64 RGBA samples** in every 8×8 footprint vote for
+the native pixel. Only the resulting olive foot marks are transferred, locked
+to `#3f5134`, `#546b30` and `#677c30`, inside the existing contour. The
+unchanged rock drawing is retained exactly. Sources, exact prompts
+(`generation.json`), processing, edit coordinates and validation are retained
+in **`/tmp/r5A-critic3-fix/`**; no source-stage files were added to the checkout.
+
+Regenerated all **17 existing `review/r5A-*.png` Part A QC composites** with
+the original placements and nearest-neighbour enlargements. Seven proof
+files change: the three peak contact sheets and summer lattice/ragged-edge
+at 1×/4×. The other ten proofs reproduce their original bytes. Checked the
+three repairs individually on neutral and matching rocky ground at **1× and
+8×**, plus both seasonal dense lattices and ragged edges at **1× and 4×**.
+Grass remains visible at native scale; range shapes and seasonal contrast
+are preserved. This is self-review, with no new independent critic verdict.
+
+Validation checks the complete workspace hash scope, exact three-output
+change set, unchanged bases/passing assets, 48×48 dimensions, original alpha
+and contours, foot-only olive edits and exact proof enlargement. Only the
+three failed sprites, seven dependent QC PNGs and this note changed.
+**No commit or push.**
+
+---
+
+# Round 5 — Part A operator peak redraw
+
+Redrew all **16 peak sprites** in `out/mountains-peak-0..7.png` and
+`out/mountains@winter-peak-0..7.png`. Summer has darker warm grey-brown
+lit left faces, cool slate shadow faces on the right and small olive grass
+skirts. Winter has broad white caps across the upper half, with exposed
+rock on the lower slopes and shadow side. Bright snow occupies **71–85%**
+of each winter sprite's visible upper-half pixels, including its dark contour.
+
+Indices **0–2** are broad massifs: unequal twin summits, a long stepped ridge
+shoulder and a broken secondary crest. **3** is a flat-topped crag, **4** a
+leaning angular summit with a low shoulder, **5** a low double ridge,
+**6** a rounded knoll and **7** a squat stepped outcrop. The three size tiers
+are preserved. All sprites remain transparent **48×48** cells, centred within
+one pixel, with feet on rows **44–45** and thin dark contours.
+
+**Same method:** sixteen individual image-tool drawings, with each winter
+drawing painted from its corresponding new summer landform. Solid magenta
+is keyed out, drawings are BOX-registered on **384×384** canvases, and all
+**64 RGBA samples** in each 8×8 footprint vote for the native pixel. Explicit
+warm-rock, cool-shadow, olive and snow palettes, a single connected silhouette
+and a one-pixel contour finish the reductions. Code processes and composites
+the drawings; it does not construct the mountain forms.
+
+Rebuilt exactly the **eight** existing
+`review/r5A-{summer,winter}-{lattice,ragged-edge}-{1,4}x.png` proofs. The
+lattice retains the original placements: 24 px between anchors, rows 16 px
+apart, alternate rows shifted 12 px, later rows drawn over earlier rows.
+Inspected both lattice and ragged-edge proofs at **1× and exact nearest-neighbour
+4×**, plus every individual sprite at **1× and 8×**. Summer now separates from
+the rocky ground; broad crests and low forms interrupt the pointed silhouettes.
+Winter reads as a snow-capped range with exposed lower rock. This is visual
+self-review; the existing independent critic verdict describes the old peaks.
+
+Only these **16 sprites**, **eight requested proofs** and **NOTES.md** changed.
+Both `mountains-base.png` and `mountains@winter-base.png`, all other artwork,
+historical contact sheets and critic files remain byte-identical. Validation
+checks complete workspace hashes, dimensions, size tiers, placement, hard alpha,
+zero transparent RGB, palette membership, connectivity, snow coverage and exact
+4× proof scaling. Source paintings, exact prompts (`generation.json`), scripts,
+extra contact sheets and validation are retained in **`/tmp/r5A-operator-peaks/`**.
+No source-stage files were added to the checkout. **No commit or push.**
+
+---
+
+# Round 5 — Part A critic-r5A-1 repair
+
+Redrew only **`out/mountains@winter-base.png`**, the sole failure in
+`review/critic-r5A-1.json`. The summer base, all sixteen passed peaks and
+every other output remain byte-identical to this request's starting state.
+The critic's verdict and original composites are preserved. No commit or push.
+
+The broad upper-left and lower-right bare-rock islands are snowed over and
+broken into small, irregularly spaced shale fragments and low stones. Pale
+partly buried rock and restrained dark fissures reduce the ground's visual
+contrast, while blue-white drifts and scree retain texture throughout. The
+largest connected rock-palette region falls from 14,173 to 134 native pixels
+(eight-way connectivity, including wrap boundaries); the broad camouflage
+landmarks and their repeated chains are gone in native-scale self-review.
+
+**Same method:** one built-in image-tool redraw, followed by an image-painted
+144-pixel-offset seam repair. Each drawing is BOX-registered to 1152×1152;
+all sixteen samples in each 4×4 footprint vote for its native pixel, then the
+result is locked to the existing explicit rock/snow palette. Seam repairs are
+confined to the central cross with the outer ring preserved. Code registers,
+reduces, palette-locks and composites the paintings; it does not generate
+ground forms from shapes or noise.
+
+Regenerated all **17 existing `review/r5A-*.png` Part A proofs** with their
+original placements: 3×3 base repeats, dense 24×16 staggered lattices, ragged
+edges, wrap views and the peak contact sheet. Summer-only proofs reproduce
+their original bytes. Checked winter at native scale, 4× repeat/join views,
+all four base quadrants at exact 8×, and an additional sparse curved range
+edge at 1×/4×. Self-review finds continuous wraps, crisp pixels and a quiet
+rocky snowfield between the unchanged peaks, without the rejected large
+dark stencil shapes. No new independent critic verdict is claimed.
+
+Source paintings, exact prompts (`generation.json`), processing scripts,
+extra sparse-edge/8× proofs and validation are in
+**`/tmp/r5A-critic-fix/`**. No source-stage files were added to this checkout.
+Validation checks 288×288 opacity, palette membership, literal 3×3 crops,
+nearest-neighbour proof scales and the complete workspace hash scope.
+Only this note, the failed output and its dependent Part A proofs changed.
+
+---
+
+# Round 5 — Part A only: standing mountain ranges
+
+Added the **18 Part A PNGs**: two opaque 288×288 rocky bases and sixteen
+transparent 48×48 peaks, summer and winter. All 252 previously approved
+output files remain byte-identical. Only this note and the 17 `r5A-*.png`
+proofs accompany the new assets. Parts B–D are untouched. No commit or push.
+
+The peak indices are **0–2 large**, **3–5 medium**, **6–7 small knolls**.
+Summer opaque bounds are 41×41, 40×37, 36×39, 31×30, 30×32, 27×27,
+23×18 and 20×21 pixels; winter stays within the same requested size bands.
+Every foot ends on row **45**, centred within one pixel of the cell centre.
+Top-left illumination, warm grey lit faces, charcoal right faces and a
+one-pixel dark contour match the approved marker/ground family. The eight
+silhouettes vary between split summits, fractured ridges, spires and low
+slabs. Winter is separately drawn snow on upper ledges with exposed rock,
+including the dark shadow face; it is not a whole-sprite white recolour.
+
+**Method.** Eighteen individual built-in image-generation drawings, followed
+by two offset seam-repair drawings. Bases are registered to **1152×1152**;
+each native pixel is the mode of all **16 samples** in its 4×4 footprint.
+Key-colour sprites are isolated from solid magenta, registered on **384×384**
+canvases and reduced by the mode of all **64 samples** in each 8×8 footprint,
+including transparency. The results are locked to explicit rock/olive/snow
+palettes sampled from the supplied reference family. Alpha is strictly 0/255,
+RGB under transparency is zero, and no key colour or soft fringe remains.
+Native brush corrections trim the overhanging summit, clarify lit ledges and
+right-side fissures, and restore a single-pixel contour. The bases use
+144-pixel offsets and image-painted seam repairs confined to the central
+cross, tapering into the original texture with its outer ring preserved.
+The art is drawn; code performs registration, pixel processing and review
+compositing rather than constructing its forms or texture from shapes/noise.
+Working source paintings, exact prompts, intermediate reductions, native-edit
+coordinates, scripts and validation are retained in **`/tmp/r5A/`**;
+`generation.json` records every selected source and its prompt. No processing
+scripts or source-stage files were added elsewhere in the checkout.
+
+**QC and critic loop.** Read BRIEF-5 in full, its named image references and
+the earlier briefs; inspected the approved markers, round-2 tiles, paddies,
+grass and plains. Initial reduction review prompted contour/ledge cleanup
+and summit trimming. Initial base wraps prompted the offset seam repaint.
+The first range-edge proof had an overly straight ground boundary; the final
+proof follows the actual planted feet so the sprite contours can be judged.
+Final self-review finds no visible wrap seam, rectangular sprite backing,
+magenta fringe, clipped sprite or cone-wallpaper appearance. All bases were
+inspected tiled **3×3 at 1× and 4×**, including corner/horizontal/vertical join
+close views. Dense **24 px × 16 px staggered lattices**, alternate rows shifted
+12 px, draw later rows over earlier rows; this is six anchors per 48×48-cell
+area. Dense 6×6-cell composites and ragged range edges on the unchanged
+approved seasonal grass were inspected at **1× and 4×**. The sixteen-sprite
+contact sheet was additionally inspected at **8×**.
+
+Validation passes dimensions, opacity, hard alpha, zero transparent RGB,
+palette membership, a single connected silhouette per sprite, size bands,
+bottom/centre placement, every literal 3×3 base crop, exact nearest-neighbour
+4× proofs and hashes of all pre-existing files other than this note.
+
+**Limits.** This is a self-review critic loop, with no new independent critic
+verdict. A live in-game check is unavailable in this art-only checkout.
+A repeated 288-pixel texture remains identifiable when studying a large area;
+the planted variants break the old identical-peak wallpaper. Placement and
+transition behaviour in the game remain the renderer's responsibility.
+
+**Every delivered file (relative to `art-drop/`):**
+
+- `out/mountains-base.png`
+- `out/mountains-peak-0.png`
+- `out/mountains-peak-1.png`
+- `out/mountains-peak-2.png`
+- `out/mountains-peak-3.png`
+- `out/mountains-peak-4.png`
+- `out/mountains-peak-5.png`
+- `out/mountains-peak-6.png`
+- `out/mountains-peak-7.png`
+- `out/mountains@winter-base.png`
+- `out/mountains@winter-peak-0.png`
+- `out/mountains@winter-peak-1.png`
+- `out/mountains@winter-peak-2.png`
+- `out/mountains@winter-peak-3.png`
+- `out/mountains@winter-peak-4.png`
+- `out/mountains@winter-peak-5.png`
+- `out/mountains@winter-peak-6.png`
+- `out/mountains@winter-peak-7.png`
+- `review/r5A-peaks-1x.png`
+- `review/r5A-peaks-4x.png`
+- `review/r5A-peaks-8x.png`
+- `review/r5A-summer-base-3x3-1x.png`
+- `review/r5A-summer-base-3x3-4x.png`
+- `review/r5A-summer-lattice-1x.png`
+- `review/r5A-summer-lattice-4x.png`
+- `review/r5A-summer-ragged-edge-1x.png`
+- `review/r5A-summer-ragged-edge-4x.png`
+- `review/r5A-summer-wrap-4x.png`
+- `review/r5A-winter-base-3x3-1x.png`
+- `review/r5A-winter-base-3x3-4x.png`
+- `review/r5A-winter-lattice-1x.png`
+- `review/r5A-winter-lattice-4x.png`
+- `review/r5A-winter-ragged-edge-1x.png`
+- `review/r5A-winter-ragged-edge-4x.png`
+- `review/r5A-winter-wrap-4x.png`
+- `NOTES.md`
+
+---
+
 # Round 4 — operator spring/autumn grass colour correction
 
 Changed only `out/grass@spring-base.png`, `out/grass@autumn-base.png`
@@ -625,3 +1319,280 @@ Some tiny industrial fittings remain abstract at 48 px. This is a visual
 self-review, not a new pass from the original critic. Live in-game rendering
 was not available in this art-only checkout. Earlier review images describe
 the previous assets.
+
+
+---
+
+# Round 5 — Part C: scifi city, slums and industry
+
+Completed only the 48 Part C tiles: eight city, eight slum and eight industrial
+layouts, each with a matching winter version. All are **48×48 opaque RGB PNGs**.
+City layouts include a merged megablock, paved pocket plaza, landing pad, small
+park, four separate buildings, slab tower/terminal, stepped wings and wedge block.
+Slums use staggered container stacks, patched roofs, tarps, cables, kiosks and
+small courts. Industry includes refinery stacks, cooling towers, a sawtooth hall,
+loading crane, tank farm, power plant, processing basin and pipe-bridge depot.
+Cyan/magenta lights sit within muted steel, concrete, rust and olive materials.
+Winter keeps the same building geometry, with roof/ledge snow and small wet-street
+reflections. All buildings and fittings stop inside a common three-pixel asphalt
+margin; internal streets use the same asphalt, without an enclosing border band.
+
+**Method:** built-in image-tool drawings and targeted repaints, registered to
+**768×768 (16× the native size)**. Normalize source colours to the explicit
+18-colour material palette, vote the exact mode of **all 256 samples** for each
+native pixel, and lock the result to that palette. No nearest-pixel sampling is
+used for reduction. Winter's painted snow is transferred onto the fixed summer
+material layout. A coordinate brush pass makes **120 native pixel edits** to
+repair small windows, signs, tank gauges, pipe lights, detached specks and lost
+reflection streaks. The buildings and equipment come from the drawings; code
+registers, reduces, cleans and composites them. Part C requires no transparent
+sprites, so key removal and sprite-foot placement are not applicable.
+
+**QC:** read all of BRIEF-5, the earlier round briefs and the named current-image
+references; inspected approved markers, round-2 districts, paddies and seasonal
+grass/plains. Reviewed all 30 final composites at **1× and exact nearest-neighbour
+4×**, plus all 48 tiles on **8×** inspection panels. Each of the six district/season
+sets has a shuffled, unguttered **8×2** proof and all eight individual tiles in
+literal **3×3** repeats. Additional proofs compare seasons, mix districts and
+place the new art beside approved style references. The critic loop simplified
+the over-detailed plaza/pad drawings, gave the empty plaza clearer paving and
+seating, improved mode reduction, restored weak neon and repaired vanished glints.
+No hard join seam, separate frame band or building crossing a cell edge was found.
+
+Validation passes all 48 native dimensions, opacity, palette membership,
+uniqueness, common street margins, **110,592 exact mode blocks**, **4,608 ordered
+edge joins**, **432 literal repeat crops**, shuffled proof crops and exact 4×
+scaling. A full before/after workspace hash audit confirms that only the 48 new
+Part C outputs, 30 new `review/r5C-*.png` proofs and this appended note changed.
+All earlier art and other repository files retain their starting bytes.
+**No commit or push.**
+
+**Limits:** this is a self-review critic loop, with no new independent critic
+verdict or live in-game check. The required edge streets still form a lattice,
+and eight layouts necessarily repeat; varied footprints and open courts reduce
+the uniform-stamp effect. Tiny fittings remain simplified at 48 px.
+
+Sources, all 52 drawing/revision prompts (`generation-all.json`), rejected drafts,
+registration/mode stages, `hand-edits.json`, shuffle orders, processing/review/
+validation scripts and `validation.json` are retained outside the checkout at
+**`/tmp/r5C-work/`**.
+
+Every file written in the checkout (79 files):
+
+- `art-drop/out/scifi-city-0.png`
+- `art-drop/out/scifi-city-1.png`
+- `art-drop/out/scifi-city-2.png`
+- `art-drop/out/scifi-city-3.png`
+- `art-drop/out/scifi-city-4.png`
+- `art-drop/out/scifi-city-5.png`
+- `art-drop/out/scifi-city-6.png`
+- `art-drop/out/scifi-city-7.png`
+- `art-drop/out/scifi-city@winter-0.png`
+- `art-drop/out/scifi-city@winter-1.png`
+- `art-drop/out/scifi-city@winter-2.png`
+- `art-drop/out/scifi-city@winter-3.png`
+- `art-drop/out/scifi-city@winter-4.png`
+- `art-drop/out/scifi-city@winter-5.png`
+- `art-drop/out/scifi-city@winter-6.png`
+- `art-drop/out/scifi-city@winter-7.png`
+- `art-drop/out/scifi-slums-0.png`
+- `art-drop/out/scifi-slums-1.png`
+- `art-drop/out/scifi-slums-2.png`
+- `art-drop/out/scifi-slums-3.png`
+- `art-drop/out/scifi-slums-4.png`
+- `art-drop/out/scifi-slums-5.png`
+- `art-drop/out/scifi-slums-6.png`
+- `art-drop/out/scifi-slums-7.png`
+- `art-drop/out/scifi-slums@winter-0.png`
+- `art-drop/out/scifi-slums@winter-1.png`
+- `art-drop/out/scifi-slums@winter-2.png`
+- `art-drop/out/scifi-slums@winter-3.png`
+- `art-drop/out/scifi-slums@winter-4.png`
+- `art-drop/out/scifi-slums@winter-5.png`
+- `art-drop/out/scifi-slums@winter-6.png`
+- `art-drop/out/scifi-slums@winter-7.png`
+- `art-drop/out/scifi-industry-0.png`
+- `art-drop/out/scifi-industry-1.png`
+- `art-drop/out/scifi-industry-2.png`
+- `art-drop/out/scifi-industry-3.png`
+- `art-drop/out/scifi-industry-4.png`
+- `art-drop/out/scifi-industry-5.png`
+- `art-drop/out/scifi-industry-6.png`
+- `art-drop/out/scifi-industry-7.png`
+- `art-drop/out/scifi-industry@winter-0.png`
+- `art-drop/out/scifi-industry@winter-1.png`
+- `art-drop/out/scifi-industry@winter-2.png`
+- `art-drop/out/scifi-industry@winter-3.png`
+- `art-drop/out/scifi-industry@winter-4.png`
+- `art-drop/out/scifi-industry@winter-5.png`
+- `art-drop/out/scifi-industry@winter-6.png`
+- `art-drop/out/scifi-industry@winter-7.png`
+- `art-drop/review/r5C-all-seasons-1x.png`
+- `art-drop/review/r5C-all-seasons-4x.png`
+- `art-drop/review/r5C-city-summer-3x3-1x.png`
+- `art-drop/review/r5C-city-summer-3x3-4x.png`
+- `art-drop/review/r5C-city-summer-tiled-1x.png`
+- `art-drop/review/r5C-city-summer-tiled-4x.png`
+- `art-drop/review/r5C-city-winter-3x3-1x.png`
+- `art-drop/review/r5C-city-winter-3x3-4x.png`
+- `art-drop/review/r5C-city-winter-tiled-1x.png`
+- `art-drop/review/r5C-city-winter-tiled-4x.png`
+- `art-drop/review/r5C-industry-summer-3x3-1x.png`
+- `art-drop/review/r5C-industry-summer-3x3-4x.png`
+- `art-drop/review/r5C-industry-summer-tiled-1x.png`
+- `art-drop/review/r5C-industry-summer-tiled-4x.png`
+- `art-drop/review/r5C-industry-winter-3x3-1x.png`
+- `art-drop/review/r5C-industry-winter-3x3-4x.png`
+- `art-drop/review/r5C-industry-winter-tiled-1x.png`
+- `art-drop/review/r5C-industry-winter-tiled-4x.png`
+- `art-drop/review/r5C-mixed-districts-1x.png`
+- `art-drop/review/r5C-mixed-districts-4x.png`
+- `art-drop/review/r5C-slums-summer-3x3-1x.png`
+- `art-drop/review/r5C-slums-summer-3x3-4x.png`
+- `art-drop/review/r5C-slums-summer-tiled-1x.png`
+- `art-drop/review/r5C-slums-summer-tiled-4x.png`
+- `art-drop/review/r5C-slums-winter-3x3-1x.png`
+- `art-drop/review/r5C-slums-winter-3x3-4x.png`
+- `art-drop/review/r5C-slums-winter-tiled-1x.png`
+- `art-drop/review/r5C-slums-winter-tiled-4x.png`
+- `art-drop/review/r5C-style-comparison-1x.png`
+- `art-drop/review/r5C-style-comparison-4x.png`
+- `art-drop/NOTES.md`
+
+
+---
+
+# Round 5 — Part C: critic-r5C-1 corrections
+
+Redrew only the **27 failed outputs**: `scifi-city@winter-0..7.png`,
+`scifi-slums-{4,6,7}.png`, `scifi-slums@winter-0..7.png`, and
+`scifi-industry@winter-0..7.png`. The **21 passed summer tiles retain their
+starting bytes**. The critic's verdict, audit and historical composites stay
+unchanged, along with all art outside this failed list.
+
+Slums 4, 6 and 7 now have connected, overlapping container/shack masses, broad
+patched roof planes, visible dark wall fronts, windows, attached tarps and narrow
+crooked passages. Their winter partners use the same new housing geometry and
+painted roof snow. The other 21 winter tiles retain every non-asphalt pixel,
+including their existing buildings, outlines, lighting and roof snow.
+
+All 24 winter streets now have coherent dark blue-grey puddles, broken horizontal
+highlights, subdued cyan/plum/magenta reflections beneath lights, and small slush
+and track variations. Final winter tiles contain **124–294 changed street pixels**
+each compared with summer, rather than the previous isolated dots. The outermost
+row/column remains the common charcoal asphalt, and buildings retain their safe
+street clearance. Puddle shapes vary without a continuous perimeter ring.
+
+**Same method:** built-in image drawings and targeted repaints, registered to
+768×768, normalized to the original 18-colour palette, then reduced by voting
+**all 256 samples in each 16×16 block**. No nearest-pixel reduction. Winter snow
+masks transfer onto the fixed summer structures, with bright snow caps and cool
+shading. Separate image-painted street layers use a connected-asphalt mask, so
+roofs, enclosed roof recesses, wall faces and lights cannot become puddles.
+**16 native brush coordinates** restore source-painted horizontal glints lost in
+the mode vote. Every delivered tile remains 48×48, opaque RGB, palette-locked.
+
+**QC:** rebuilt all **30 existing `review/r5C-*.png` composites**; 22 have changed
+pixels and eight summer pass proofs reproduce their original bytes. Inspected
+native 1× layouts, exact 4× shuffles, 8× tile sheets, literal 3×3 repeats, season
+pairs, mixed districts and the approved-style comparison. Three independent
+8×2 shuffle orders per district/season are also retained outside the checkout.
+Validation passes dimensions, opacity, palette membership, unique outputs,
+**69,120 exact source mode blocks**, **4,608 ordered edge joins**, **432 repeat
+crops**, saved shuffle crops, exact 4× scaling, preserved winter structures and
+the full workspace change scope. The final byte changes are exactly **27 failed
+outputs, 22 Part C proof images and this appended note**; no other file changed.
+
+Prompts, all 30 accepted drawing stages, the rejected initial street repaint,
+registration/palette/mode stages, snow and street masks, brush coordinates,
+rebuild/review/check scripts and `validation.json` are retained at
+**`/tmp/r5C-fix/`**. This is visual self-QC following the supplied independent
+critic, without a new independent verdict or a live in-game check.
+**No commit or push.**
+
+
+---
+
+# Round 5 — Part D: forest autumn and crown variety
+
+Delivered only the 16 Part D trees, each 48×48 RGBA with hard 0/255 alpha.
+Summer uses round crowns (0, 3, 6), tall oval crowns (1, 4, 7), and asymmetric
+two-lobed crowns (2, 5), in muted olive, forest-green and sage ramps. Autumn
+is exactly three orange (0–2), two brick/wine red (3–4), two ochre gold (5–6),
+and one still-green (7). Short forked trunks finish on row 44 at the bottom
+centre, like the existing reference sheet; all silhouettes remain inside
+their cells with 4–10 pixels of horizontal clearance. Light is top-left.
+
+Read BRIEF-5 in full, along with BRIEF and rounds 2–4; inspected its named
+current-art references, both existing deciduous forest sheets, the conifer
+reference, approved markers, round-2 districts/farmland/suburbs, paddies,
+and grass/plains. Those approved assets are unchanged.
+
+**Method:** 16 individual built-in image-tool drawings on solid magenta,
+registered to exact 768×768 canvases, palette-locked with separate bark and
+foliage treatment, then reduced by the mode of all 256 samples in each
+16×16 block. Magenta is removed with hard alpha, and every transparent
+pixel has zero RGB. No code-shape or noise construction. Native cleanup
+uses 170 explicitly selected pixel edits to restore neutral bark, close
+lower contours and trim two left-heavy roots. The source drawings, exact
+prompts, registration and palette stages, mode reductions, brush coordinates,
+processing/review scripts and validation are retained in `/tmp/r5D/`; prompt
+set: `/tmp/r5D/prompts.json`.
+
+**QC / correction loop:** first reduced-sheet review caught tan leaf mapping
+in the still-green autumn tree and weak bark/contours. Corrected the palette
+mask, made the native edits, rebuilt all proofs, and inspected the final
+sprite sheets, hard-alpha checker, dense staggered forests, ragged forest
+edges and approved-style comparison at 1× and 4×. Also inspected all trees
+at 8×. Dense composites use 24 px horizontal and 16 px vertical spacing,
+alternate rows shifted 12 px, with later rows over earlier rows. Autumn
+now has readable mixed crowns instead of one orange slab. No base texture
+is part of D, so no new base or 3×3 base-seam edit was needed; composites
+use the approved grass bases unchanged.
+
+Validation passes all 36,864 exact mode blocks, palette membership, binary
+alpha, clean transparent RGB, 16 unique sprites, a single connected tree
+per file, centred roots on row 44 and exact nearest-neighbour proof scales.
+The full art-drop byte audit permits only the files listed below: 16 sprites,
+18 review PNGs and this appended note. All pre-existing unrelated files
+retain their starting bytes.
+
+**Limits:** visual self-QC only; no independent critic verdict or live
+in-game renderer check. No commit or push.
+
+**Files written:**
+- `art-drop/out/treeline_forest-0.png`
+- `art-drop/out/treeline_forest-1.png`
+- `art-drop/out/treeline_forest-2.png`
+- `art-drop/out/treeline_forest-3.png`
+- `art-drop/out/treeline_forest-4.png`
+- `art-drop/out/treeline_forest-5.png`
+- `art-drop/out/treeline_forest-6.png`
+- `art-drop/out/treeline_forest-7.png`
+- `art-drop/out/treeline_forest@autumn-0.png`
+- `art-drop/out/treeline_forest@autumn-1.png`
+- `art-drop/out/treeline_forest@autumn-2.png`
+- `art-drop/out/treeline_forest@autumn-3.png`
+- `art-drop/out/treeline_forest@autumn-4.png`
+- `art-drop/out/treeline_forest@autumn-5.png`
+- `art-drop/out/treeline_forest@autumn-6.png`
+- `art-drop/out/treeline_forest@autumn-7.png`
+- `art-drop/review/r5D-alpha-1x.png`
+- `art-drop/review/r5D-alpha-4x.png`
+- `art-drop/review/r5D-autumn-edge-1x.png`
+- `art-drop/review/r5D-autumn-edge-4x.png`
+- `art-drop/review/r5D-autumn-forest-1x.png`
+- `art-drop/review/r5D-autumn-forest-4x.png`
+- `art-drop/review/r5D-autumn-sprites-1x.png`
+- `art-drop/review/r5D-autumn-sprites-4x.png`
+- `art-drop/review/r5D-autumn-sprites-8x.png`
+- `art-drop/review/r5D-style-1x.png`
+- `art-drop/review/r5D-style-4x.png`
+- `art-drop/review/r5D-summer-edge-1x.png`
+- `art-drop/review/r5D-summer-edge-4x.png`
+- `art-drop/review/r5D-summer-forest-1x.png`
+- `art-drop/review/r5D-summer-forest-4x.png`
+- `art-drop/review/r5D-summer-sprites-1x.png`
+- `art-drop/review/r5D-summer-sprites-4x.png`
+- `art-drop/review/r5D-summer-sprites-8x.png`
+- `art-drop/NOTES.md`

@@ -1,0 +1,169 @@
+{
+  "sets": {
+    "review": {
+      "scope": "Only the six 288x288 bases named in BRIEF-5.md Part B receive verdicts. References and approved out/ art are comparison material only.",
+      "calibration": "Good enough to ship next to the approved art. Quiet ground mottling and a repeat detectable by deliberate searching are acceptable. Losing the requested terrain subject to hide a repeat is not.",
+      "previous_review": "Compared SHA-256 against critic-r5B-4.json: only the two craters changed. All four unchanged prior passes remain passed; fresh checks found no concrete new defect requiring reversal.",
+      "performed": [
+        "Viewed every complete 3x3 tiling at 1x and its saved nearest-neighbour 4x enlargement. Supplemented the large 4x overviews with exact 4x inspections covering a shifted 384x384 source-pixel area, containing every pixel of a full 288px period and both wrap directions.",
+        "Viewed all source pixels of every file at exact nearest-neighbour 8x using four nonoverlapping 144x144-source-pixel quadrants per file; complete 8x images also saved.",
+        "Viewed all six four-way wrap intersections at exact 4x, without grid or seam overlays.",
+        "Viewed the five current-wasteland references named by Part B: craters, ruins, winter ruins, winter scrub and wasteland.",
+        "Compared with all 24 approved markers, round-2 city/slums/industry/suburb/farmland and farmsteads, paddies in all seasons, and grass/plains bases with all eight details in each season. Also viewed selected material/lighting samples at exact 4x and summer/winter native house-style adjacency sheets.",
+        "Compared summer/winter identity, snow coverage and hue across the three Part B pairs, and compared review-4/review-5 crater pairs in native 2x2 tilings.",
+        "Checked dimensions, opacity, scale, placement and wrap clipping; seams/grid/repeat; blur, anti-aliasing, noise and muddy shapes; fringe/halo pixels; top-left lighting; palette compatibility; duplicate and near-duplicate motifs; winter coverage and consistency; crater count/readability/rubble/ash and modern-collapse content."
+      ],
+      "not_applicable": {
+        "peak_lattice_or_range": "Part B has no peaks; Part A/A2 is outside scope.",
+        "random_8x2_one_cell_tiling": "Part B has no one-cell tiles; all six files received the 3x3 base check.",
+        "trees_in_forest": "Part B has no trees; Part D is outside scope.",
+        "other_parts_specific_problems": "Egg-crate peaks, stamped cyberpunk grids, flat orange autumn and identical crowns are outside the six-file scope."
+      },
+      "technical_findings": "All six files are 288x288 RGB, fully opaque, with 10-31 discrete colours. No disqualifying hard wrap seam, important clipped object, cell grid, resampling blur, anti-aliased contour, foreign-colour fringe/halo or reversed illumination found. Fine ground grain is subordinate at native scale. The changed summer crater shapes are muddy because their relief is fragmented and too close in value to the ground; this is a form/readability failure, not proof of an image-resampling defect.",
+      "palette_and_winter": "Muted dust, concrete and rust agree with approved wasteland markers and round-2 materials. All three winter terrains have blue-white snow with ground or rubble showing. Snow hue and upper-left illumination agree with approved grass/plains and the winter references. The crater winter is not blank or globally snow-inconsistent; it fails because the depressions no longer read beneath the snow.",
+      "repeat_and_duplicates": "No duplicate Part B exports or disqualifying near-duplicate separate terrains found. Seasonal landmark correspondence is intentional. The old conspicuous C-shaped crater stamp is substantially reduced; quiet repeating dust/rock/snow patterns alone are not grounds for failure here. The new crater failure is loss of readable blast depressions. Ruin fragments vary in size, shape and grouping; their unchanged repeat remains within the prior accepted shipping calibration.",
+      "reference_findings": "The Moon/Swiss-cheese array of evenly spaced circular holes is gone, but the crater replacement now falls short of the required 2-4 legible irregular blast craters. Modern ruin slabs, broken walls, bent rebar, rusted car remnants and fallen lattice metal replace the old classical flagstones/columns; no classical-ruin failure.",
+      "evidence": {
+        "png_count": 67,
+        "prefix": "art-drop/review/critic-r5B-5-",
+        "per_file": "-3x3-1x, -3x3-4x, -inspection-4x, -wrap-4x, -8x, -quadrant-1..4-8x",
+        "additional": "references, approved markers, round-2/paddies, farmsteads, grass/plains plus details, exact 4x material comparison, summer/winter house-style adjacency, seasons, wrap-all, and two previous/current crater comparison sheets"
+      },
+      "out_integrity": "SHA-256 verified all 276 files under art-drop/out/ unchanged throughout the review. No source art edited."
+    },
+    "craters": {
+      "files": [
+        "wasteland-craters-base",
+        "wasteland-craters@winter-base"
+      ],
+      "status": "fail",
+      "observations": "Old bowl-stamp cadence is much quieter, but the repair has fragmented the craters into generic rocky ridges. Summer lacks readable pit floors/rims against the ash/dust field; winter buries the same fragmented relief into ordinary diagonal drifts. Neither passes the requested blast-crater identity at native map scale. Specific repairs are in fail[]."
+    },
+    "ruins": {
+      "files": [
+        "wasteland-ruins-base",
+        "wasteland-ruins@winter-base"
+      ],
+      "status": "pass",
+      "unchanged_prior_pass": true,
+      "observations": "Prior passing files are byte-identical. Fresh native/4x tilings, wrap checks and complete 8x inspection show distributed modern debris with readable concrete thickness, damaged outlines, rebar, rusty wrecks and toppled metal. The ground remains continuous across wraps. Fine rubble grain supports the material at map scale. Winter has varied textured drifts with wall faces and metal showing. Palette, illumination and snow remain coherent with the approved art; no concrete new defect."
+    },
+    "wasteland": {
+      "files": [
+        "wasteland-wasteland-base",
+        "wasteland-wasteland@winter-base"
+      ],
+      "status": "pass",
+      "unchanged_prior_pass": true,
+      "observations": "Prior passing files are byte-identical. Dry cracks, broad quiet dust drifts and sparse dead weeds/debris remain legible, with no hard seam or cell grid. Native/4x tilings and complete 8x inspection preserve the approved discrete-cluster ground language. Winter is textured, keeps cracks and small ground exposures, and agrees with approved winter bases. No concrete new defect."
+    },
+    "source_audit": {
+      "wasteland-craters-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 10,
+        "sha256": "196c74e4eb5c8067c2388a0c29fefc5deeedd912858686841135cae7837226a7",
+        "changed_since_review_4": true,
+        "wrap_mean_rgb_delta_x": 2.7083333333333335,
+        "wrap_mean_rgb_delta_y": 2.2141203703703702,
+        "internal_mean_rgb_delta_x": 2.1509710930442636,
+        "internal_mean_rgb_delta_y": 2.780854787714544
+      },
+      "wasteland-craters@winter-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 28,
+        "sha256": "1a8d26aaba783c12735c4093ee88634e854724c72ee6f4b89e99fb098638e59f",
+        "changed_since_review_4": true,
+        "wrap_mean_rgb_delta_x": 4.868055555555555,
+        "wrap_mean_rgb_delta_y": 7.777777777777778,
+        "internal_mean_rgb_delta_x": 6.197525487159633,
+        "internal_mean_rgb_delta_y": 9.510025487159634
+      },
+      "wasteland-ruins-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 19,
+        "sha256": "e3cf515b5e3005721cb71671c6ebb6f60627bfd957b6581c153d172a8d1a7a3a",
+        "changed_since_review_4": false,
+        "wrap_mean_rgb_delta_x": 7.891203703703703,
+        "wrap_mean_rgb_delta_y": 7.6342592592592595,
+        "internal_mean_rgb_delta_x": 9.10075493612079,
+        "internal_mean_rgb_delta_y": 10.0954316686024
+      },
+      "wasteland-ruins@winter-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 31,
+        "sha256": "738fdb058e5947daa365e7ecfe8943f6de5877106e9f3441e016480c02d33479",
+        "changed_since_review_4": false,
+        "wrap_mean_rgb_delta_x": 3.752314814814815,
+        "wrap_mean_rgb_delta_y": 5.341435185185185,
+        "internal_mean_rgb_delta_x": 5.554176345334882,
+        "internal_mean_rgb_delta_y": 7.129585269066976
+      },
+      "wasteland-wasteland-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 11,
+        "sha256": "6cb99a3934df12b2b2e4f7a8fe77aea0fdc94332ad2c010e7b73e9ce95c5b821",
+        "changed_since_review_4": false,
+        "wrap_mean_rgb_delta_x": 4.233796296296297,
+        "wrap_mean_rgb_delta_y": 4.194444444444445,
+        "internal_mean_rgb_delta_x": 4.445597819073429,
+        "internal_mean_rgb_delta_y": 4.852472899728998
+      },
+      "wasteland-wasteland@winter-base": {
+        "size": [
+          288,
+          288
+        ],
+        "mode": "RGB",
+        "opaque": true,
+        "colors": 29,
+        "sha256": "b140dcbc8b87d165c6629030c628b080c56a540ab91c9b34b951f7b8a9cb6cfe",
+        "changed_since_review_4": false,
+        "wrap_mean_rgb_delta_x": 4.864583333333333,
+        "wrap_mean_rgb_delta_y": 5.960648148148148,
+        "internal_mean_rgb_delta_x": 5.1785996580203895,
+        "internal_mean_rgb_delta_y": 6.685314234094722
+      }
+    }
+  },
+  "pass": [
+    "wasteland-ruins-base",
+    "wasteland-ruins@winter-base",
+    "wasteland-wasteland-base",
+    "wasteland-wasteland@winter-base"
+  ],
+  "fail": [
+    {
+      "name": "wasteland-craters-base",
+      "problems": "The revision suppresses the old repeated bowl stamp by losing the craters themselves. At 1x, both the single texture and 3x3 read as mottled, eroded rocky earth with short diagonal ridges; I cannot read 2-4 distinct blast depressions. In the upper-middle/right area (roughly x100-210, y55-115) and lower-left area (roughly x35-110, y145-200), the 4x/8x checks show isolated highlighted rubble strokes and dark wedges, without a coherent floor or inward wall connecting them into a pit. Broad dark ash patches merge into the surrounding brown mottling, so the blast/rubble/ground hierarchy is muddy. Restore 2-4 unequal irregular depressions, each with a readable connected floor, an asymmetric broken rim, inward shadow and several actual rubble clusters; keep the biggest within about 96px. Give each a different axis and degree of rim destruction, distribute them across the texture, and keep ash quieter than the pit relief. Check that the depressions read at native 3x3 scale without recreating the prior dominant C-shaped bowl. More tiny grain or a global contrast reduction will not recover the missing shapes."
+    },
+    {
+      "name": "wasteland-craters@winter-base",
+      "problems": "The snow is textured and its palette agrees with the other winter grounds, but it erases the terrain identity. At 1x/3x3 this reads as a field of wind-sculpted snowy ridges with scattered exposed stone slits, without 2-4 legible snow-filled blast craters. At 4x/8x, the former upper bowl and lower diagonal depression have become disconnected brown/grey ridge fragments; blue shadows follow the general diagonal drifts rather than describing a distinct depressed floor and inward wall. Carry through the summer repair: retain an unequal exposed section of each broken rim, a coherent lower snow-filled floor and a clear inward shadow, with snow bridging only selected parts of the lip. Vary burial between craters. Preserve the existing snow texture, shared winter hue and exposed rubble, but make the pit relief readable at 1x; simply exposing more arbitrary specks will not do it."
+    }
+  ]
+}

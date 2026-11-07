@@ -1,0 +1,219 @@
+{
+  "sets": {
+    "review": {
+      "scope": "BRIEF-5.md Part C only: 48 scifi city/slums/industry tiles, variants 0-7 in summer and winter. Other output art is calibration material only and receives no verdict here.",
+      "calibration": "Good enough to ship beside approved art, not perfection. Deliberate neon and crooked shanty roofs are allowed; palette clashes, illegible rubble, hard framed joins, unreadable wet streets and repeated stamps are not.",
+      "prior_review": {
+        "file": "critic-r5C-1.json",
+        "unchanged_prior_passes_preserved": [
+          "scifi-city-0",
+          "scifi-city-1",
+          "scifi-city-2",
+          "scifi-city-3",
+          "scifi-city-4",
+          "scifi-city-5",
+          "scifi-city-6",
+          "scifi-city-7",
+          "scifi-slums-0",
+          "scifi-slums-1",
+          "scifi-slums-2",
+          "scifi-slums-3",
+          "scifi-slums-5",
+          "scifi-industry-0",
+          "scifi-industry-1",
+          "scifi-industry-2",
+          "scifi-industry-3",
+          "scifi-industry-4",
+          "scifi-industry-5",
+          "scifi-industry-6",
+          "scifi-industry-7"
+        ],
+        "changed_files": [
+          "scifi-city@winter-0",
+          "scifi-city@winter-1",
+          "scifi-city@winter-2",
+          "scifi-city@winter-3",
+          "scifi-city@winter-4",
+          "scifi-city@winter-5",
+          "scifi-city@winter-6",
+          "scifi-city@winter-7",
+          "scifi-slums-4",
+          "scifi-slums-6",
+          "scifi-slums-7",
+          "scifi-slums@winter-0",
+          "scifi-slums@winter-1",
+          "scifi-slums@winter-2",
+          "scifi-slums@winter-3",
+          "scifi-slums@winter-4",
+          "scifi-slums@winter-5",
+          "scifi-slums@winter-6",
+          "scifi-slums@winter-7",
+          "scifi-industry@winter-0",
+          "scifi-industry@winter-1",
+          "scifi-industry@winter-2",
+          "scifi-industry@winter-3",
+          "scifi-industry@winter-4",
+          "scifi-industry@winter-5",
+          "scifi-industry@winter-6",
+          "scifi-industry@winter-7"
+        ],
+        "prior_pass_reversals": [],
+        "result": "All 21 unchanged previous passes remain passed. The 27 previous failures were revised and have now passed fresh visual inspection."
+      },
+      "performed": [
+        "Inspected all six sets in unmarked random 8x2 tilings at exact 1x and nearest-neighbour 4x, seed 51; each variant appears exactly twice. No overlays conceal joins.",
+        "Inspected two additional independent 8x2 shuffles per set (seeds 113 and 209) at native 1x for repeated silhouettes, framed roads and neighbourhood rhythm. Both additional layouts are also saved at 4x.",
+        "Looked at every one of the 48 source files at exact nearest-neighbour 8x in six labelled sheets; labels sit outside the asset pixels.",
+        "Compared the same random orders in summer and winter at 1x and 4x for retained building identity, roof snow and wet-street readability.",
+        "Compared current-scifi-city.png, current-scifi-slums.png and current-scifi-industry.png with the new district art. Compared approved markers, round-2 city/slums/industry/suburb/farmland, paddies, and grass/plains bases with their details. Saved native and enlarged calibration boards and side-by-side district/ground context composites.",
+        "Checked dimensions and full opacity, cell containment and edge streets, seams, visible frames/grid/repeat, near-duplicates, blur, anti-aliasing, noise, muddy shapes, fringe/halo pixels, top-left lighting, palette compatibility, winter coverage, and the specific stamped cyberpunk grid problem."
+      ],
+      "not_applicable": {
+        "3x3_base_tiling": "No base textures are Part C files; no base verdicts or unrelated base QC composites were added.",
+        "peak_lattice_or_range": "No peak sprites in Part C; egg-crate mountain checks belong to Part A/A2.",
+        "forest_composite": "No tree sprites in Part C; identical crowns and flat orange autumn checks belong to Part D.",
+        "craters_and_ruins": "No crater or ruin textures in Part C; Swiss-cheese craters and classical ruins checks belong to Part B."
+      },
+      "pixel_and_technical_findings": "All 48 files are 48x48 and fully opaque, with 11-18 colours per file. Pixel clusters are hard-edged, without disqualifying blur, anti-aliasing or fringe. Buildings fit within cells and leave connected dark edge streets. Snow/puddles do not create a contrasting perimeter. No new reversed light, palette clash or near-duplicate was found in visual inspection; pixel comparison also found no exact duplicates within a season/set. Intended neon reflections are short local street clusters, not a glow halo around the whole building.",
+      "previous_failures_rechecked": "Former sparse slums 4, 6 and 7 have connected housing masses and visible roof/front separation. All 24 revised winter files now have readable broken street texture and local light reflections, rather than isolated stray pixels. Between 124 and 294 pixels of the corresponding summer flat street colour change per winter tile; this measurement supports, rather than substitutes for, the native-scale visual check.",
+      "evidence": "critic-r5C-2-{city,slums,industry}-{summer,winter}-random51-{1x,4x}.png; *-files-8x.png; random113/random209 layouts; all-random and extra-shuffles boards; brief-references, approved-style, approved-markers, approved-ground and house-style composites. critic-r5C-2-audit.json records source hashes, layout orders, prior-pass preservation and technical measurements.",
+      "source_integrity": "No files in art-drop/out/ were edited. All 48 source SHA-256 hashes still match the snapshot taken before the new composites were built.",
+      "verdict": "48 pass, 0 fail. No concrete shipping-level defect remains after the required Part C checks."
+    },
+    "city-summer": {
+      "files": [
+        "scifi-city-0",
+        "scifi-city-1",
+        "scifi-city-2",
+        "scifi-city-3",
+        "scifi-city-4",
+        "scifi-city-5",
+        "scifi-city-6",
+        "scifi-city-7"
+      ],
+      "status": "pass",
+      "observations": "Preserved all eight unchanged prior passes after fresh inspection. Megablock (0), plaza (1), circular landing pad (2), planted courtyard/park (3), four-building split (4), tall tower and low block (5), low commercial buildings (6), and diagonal tower group (7) retain distinct silhouettes. Roof vents, signs, cyan/magenta lighting and restrained structure colours read clearly. The street joins have no contrasting frame; different footprints interrupt the repeated-cell rhythm."
+    },
+    "city-winter": {
+      "files": [
+        "scifi-city@winter-0",
+        "scifi-city@winter-1",
+        "scifi-city@winter-2",
+        "scifi-city@winter-3",
+        "scifi-city@winter-4",
+        "scifi-city@winter-5",
+        "scifi-city@winter-6",
+        "scifi-city@winter-7"
+      ],
+      "status": "pass",
+      "observations": "All eight revised tiles pass. Snow follows the summer roof geometry, with dark facades and exposed roof patches retained. Broken blue-grey puddle shapes and short cyan/magenta reflections beneath lit facades now read as wet streets in the native random map. Snow does not erase the plaza, park, pad or tower silhouettes. Puddle texture is restrained enough to preserve street continuity without a bright border or stamped neon grid."
+    },
+    "slums-summer": {
+      "files": [
+        "scifi-slums-0",
+        "scifi-slums-1",
+        "scifi-slums-2",
+        "scifi-slums-3",
+        "scifi-slums-4",
+        "scifi-slums-5",
+        "scifi-slums-6",
+        "scifi-slums-7"
+      ],
+      "status": "pass",
+      "observations": "Preserved unchanged prior passes 0, 1, 2, 3 and 5. Revisions 4, 6 and 7 now pass: 4 links its formerly separated roof groups into a packed block around narrow passages; 6 has broad overlapping roof planes, visible fronts and patched tarps instead of isolated corner fragments; 7 fills the former central void with connected diagonal housing. At 1x these read as crowded housing rather than rubble islands. Irregular roofs and narrow crooked alleys are appropriate to the brief; the muted patched colours remain compatible with approved container tiles."
+    },
+    "slums-winter": {
+      "files": [
+        "scifi-slums@winter-0",
+        "scifi-slums@winter-1",
+        "scifi-slums@winter-2",
+        "scifi-slums@winter-3",
+        "scifi-slums@winter-4",
+        "scifi-slums@winter-5",
+        "scifi-slums@winter-6",
+        "scifi-slums@winter-7"
+      ],
+      "status": "pass",
+      "observations": "All eight revised tiles pass. Roof snow is broken around roof geometry, leaving patches of coloured tarp and rust visible. Revised housing silhouettes in 4, 6 and 7 remain legible under snow. Wet blue-grey street clusters and short local neon reflections now survive 1x. Snow is distributed across the district without turning it into blank white cells; no new pale perimeter frame appears."
+    },
+    "industry-summer": {
+      "files": [
+        "scifi-industry-0",
+        "scifi-industry-1",
+        "scifi-industry-2",
+        "scifi-industry-3",
+        "scifi-industry-4",
+        "scifi-industry-5",
+        "scifi-industry-6",
+        "scifi-industry-7"
+      ],
+      "status": "pass",
+      "observations": "Preserved all eight unchanged prior passes after fresh inspection. Refinery pipes/stacks (0), cooling towers (1), sawtooth hall (2), loading crane (3), tank farm (4), utility hall/yard (5), processing pool (6), and stack/tank complex (7) retain clearly different footprints. Left-lit volumes, dark right faces, pipe runs, tank rims and small glow accents survive map scale. No near-duplicate plant layouts or framed edge streets."
+    },
+    "industry-winter": {
+      "files": [
+        "scifi-industry@winter-0",
+        "scifi-industry@winter-1",
+        "scifi-industry@winter-2",
+        "scifi-industry@winter-3",
+        "scifi-industry@winter-4",
+        "scifi-industry@winter-5",
+        "scifi-industry@winter-6",
+        "scifi-industry@winter-7"
+      ],
+      "status": "pass",
+      "observations": "All eight revised tiles pass. Snow follows tank tops, roof planes, pipe ledges and crane/plant surfaces while exposed machinery remains identifiable. Broken puddle highlights and restrained cyan/magenta reflections give the dark streets a readable wet surface at 1x and 4x. Cooling-tower voids and processing-pool centres remain dark and readable; winter does not become a blank or uniform recolour."
+    }
+  },
+  "pass": [
+    "scifi-city-0",
+    "scifi-city-1",
+    "scifi-city-2",
+    "scifi-city-3",
+    "scifi-city-4",
+    "scifi-city-5",
+    "scifi-city-6",
+    "scifi-city-7",
+    "scifi-city@winter-0",
+    "scifi-city@winter-1",
+    "scifi-city@winter-2",
+    "scifi-city@winter-3",
+    "scifi-city@winter-4",
+    "scifi-city@winter-5",
+    "scifi-city@winter-6",
+    "scifi-city@winter-7",
+    "scifi-slums-0",
+    "scifi-slums-1",
+    "scifi-slums-2",
+    "scifi-slums-3",
+    "scifi-slums-4",
+    "scifi-slums-5",
+    "scifi-slums-6",
+    "scifi-slums-7",
+    "scifi-slums@winter-0",
+    "scifi-slums@winter-1",
+    "scifi-slums@winter-2",
+    "scifi-slums@winter-3",
+    "scifi-slums@winter-4",
+    "scifi-slums@winter-5",
+    "scifi-slums@winter-6",
+    "scifi-slums@winter-7",
+    "scifi-industry-0",
+    "scifi-industry-1",
+    "scifi-industry-2",
+    "scifi-industry-3",
+    "scifi-industry-4",
+    "scifi-industry-5",
+    "scifi-industry-6",
+    "scifi-industry-7",
+    "scifi-industry@winter-0",
+    "scifi-industry@winter-1",
+    "scifi-industry@winter-2",
+    "scifi-industry@winter-3",
+    "scifi-industry@winter-4",
+    "scifi-industry@winter-5",
+    "scifi-industry@winter-6",
+    "scifi-industry@winter-7"
+  ],
+  "fail": []
+}

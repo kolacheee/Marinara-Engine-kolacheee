@@ -1,0 +1,243 @@
+{
+  "sets": {
+    "review": {
+      "scope": "Only BRIEF-5.md Part C: scifi city, slums and industry, variants 0-7 in summer and winter (48 files). Approved art and references are calibration only.",
+      "calibration": "Good enough to ship beside the approved art. Intentional neon and varied urban footprints are allowed; a wet-street requirement must be visible at native map scale, not merely present as isolated pixels at 8x.",
+      "prior_review": "critic-r5C-0.json does not exist; no earlier passes to preserve.",
+      "performed": [
+        "All six sets inspected in unmarked random 8x2 tiling at native 1x and exact nearest-neighbour 4x (random51); every variant appears twice in each layout.",
+        "Every one of the 48 files inspected at exact nearest-neighbour 8x in labelled four-column sheets.",
+        "Two additional independent random 8x2 layouts per set inspected at 1x for repeated silhouettes and neighbourhood rhythm.",
+        "Summer/winter layouts compared for snow coverage, retained building identity and wet-street readability.",
+        "Compared with current-scifi-city.png, current-scifi-slums.png and current-scifi-industry.png; all 24 approved markers; approved round-2 city/slums/industry/suburb/farmland summer and winter variants; paddies summer and winter; and seasonal grass/plains base crops composited with all eight details.",
+        "Checked 48x48 size, full opacity, edge streets, buildings contained in cells, seams/framing, repeated stamps, near-duplicates, lighting, pixel clusters, blur/anti-aliasing, halos/fringes, palette compatibility and native-scale legibility."
+      ],
+      "not_applicable": {
+        "3x3_bases": "Part C contains no bases.",
+        "peak_lattice_or_range": "Part C contains no peaks; egg-crate peaks are outside this review.",
+        "forest_composite": "Part C contains no tree sprites; identical crowns and flat orange autumn are outside this review.",
+        "craters_and_ruins": "Swiss-cheese craters and classical ruins are outside Part C."
+      },
+      "technical": "All 48 files are 48x48 and fully opaque, with 11-17 colours each. Pixel edges are crisp. No disqualifying anti-aliasing, blur, transparency fringe, reversed light, cut-off building, hard tile join, palette clash or near-duplicate found. The common dark edge ground matches the interior streets; the failures below concern legibility/density and missing readable wet streets, rather than a mismatched border colour.",
+      "evidence": "critic-r5C-1-{city,slums,industry}-{summer,winter}-random51-{1x,4x}.png are the required random-tiling checks; *-files-8x.png show every source file at 8x. Additional random113/random209 layouts, extra-shuffles-1x, brief-references, approved-style, approved-markers, approved-ground and house-style composites are saved with the same prefix.",
+      "source_integrity": "All 48 reviewed PNG hashes still match the first review snapshot. No files in art-drop/out/ were written by this review."
+    },
+    "city-summer": {
+      "files": [
+        "scifi-city-0",
+        "scifi-city-1",
+        "scifi-city-2",
+        "scifi-city-3",
+        "scifi-city-4",
+        "scifi-city-5",
+        "scifi-city-6",
+        "scifi-city-7"
+      ],
+      "status": "pass",
+      "observations": "Megablock (0), pocket plaza (1), large circular pad (2), planted courtyard/park (3), split buildings (4), tower and low block (5), lower commercial footprint (6), and a diagonal tower cluster (7) make genuinely different neighbourhood silhouettes. Muted structural colours and restrained cyan/magenta fit the approved palette. Roads connect without a contrasting frame."
+    },
+    "city-winter": {
+      "files": [
+        "scifi-city@winter-0",
+        "scifi-city@winter-1",
+        "scifi-city@winter-2",
+        "scifi-city@winter-3",
+        "scifi-city@winter-4",
+        "scifi-city@winter-5",
+        "scifi-city@winter-6",
+        "scifi-city@winter-7"
+      ],
+      "status": "fail",
+      "observations": "Megablock (0), pocket plaza (1), large circular pad (2), planted courtyard/park (3), split buildings (4), tower and low block (5), lower commercial footprint (6), and a diagonal tower cluster (7) make genuinely different neighbourhood silhouettes. Muted structural colours and restrained cyan/magenta fit the approved palette. Roads connect without a contrasting frame. Roof snow is visible and follows the summer structures, but the broad dark streets remain visually flat/dry; isolated extra pixels do not read as wet reflective paving at 1x or 4x."
+    },
+    "slums-summer": {
+      "files": [
+        "scifi-slums-0",
+        "scifi-slums-1",
+        "scifi-slums-2",
+        "scifi-slums-3",
+        "scifi-slums-4",
+        "scifi-slums-5",
+        "scifi-slums-6",
+        "scifi-slums-7"
+      ],
+      "status": "fail",
+      "observations": "Variants 0, 1, 2, 3 and 5 retain enough roof mass, patched colour and narrow passages to read as housing. Variants 4, 6 and 7 are too dispersed or fragmented beside the approved container tiles: their silhouettes read as loose clusters of rubble rather than a packed shanty district. Edge ground itself joins correctly."
+    },
+    "slums-winter": {
+      "files": [
+        "scifi-slums@winter-0",
+        "scifi-slums@winter-1",
+        "scifi-slums@winter-2",
+        "scifi-slums@winter-3",
+        "scifi-slums@winter-4",
+        "scifi-slums@winter-5",
+        "scifi-slums@winter-6",
+        "scifi-slums@winter-7"
+      ],
+      "status": "fail",
+      "observations": "Variants 0, 1, 2, 3 and 5 retain enough roof mass, patched colour and narrow passages to read as housing. Variants 4, 6 and 7 are too dispersed or fragmented beside the approved container tiles: their silhouettes read as loose clusters of rubble rather than a packed shanty district. Edge ground itself joins correctly. Roof snow is visible and follows the summer structures, but the broad dark streets remain visually flat/dry; isolated extra pixels do not read as wet reflective paving at 1x or 4x."
+    },
+    "industry-summer": {
+      "files": [
+        "scifi-industry-0",
+        "scifi-industry-1",
+        "scifi-industry-2",
+        "scifi-industry-3",
+        "scifi-industry-4",
+        "scifi-industry-5",
+        "scifi-industry-6",
+        "scifi-industry-7"
+      ],
+      "status": "pass",
+      "observations": "Pipe/refinery plant (0), cooling towers (1), sawtooth-roof hall (2), loading crane (3), tank farm (4), tall utility hall/yard (5), circular processing pool (6), and tanks with a stack (7) are sufficiently distinct. Pipes, rims and left-lit structures survive map zoom; glow accents are controlled."
+    },
+    "industry-winter": {
+      "files": [
+        "scifi-industry@winter-0",
+        "scifi-industry@winter-1",
+        "scifi-industry@winter-2",
+        "scifi-industry@winter-3",
+        "scifi-industry@winter-4",
+        "scifi-industry@winter-5",
+        "scifi-industry@winter-6",
+        "scifi-industry@winter-7"
+      ],
+      "status": "fail",
+      "observations": "Pipe/refinery plant (0), cooling towers (1), sawtooth-roof hall (2), loading crane (3), tank farm (4), tall utility hall/yard (5), circular processing pool (6), and tanks with a stack (7) are sufficiently distinct. Pipes, rims and left-lit structures survive map zoom; glow accents are controlled. Roof snow is visible and follows the summer structures, but the broad dark streets remain visually flat/dry; isolated extra pixels do not read as wet reflective paving at 1x or 4x."
+    }
+  },
+  "pass": [
+    "scifi-city-0",
+    "scifi-city-1",
+    "scifi-city-2",
+    "scifi-city-3",
+    "scifi-city-4",
+    "scifi-city-5",
+    "scifi-city-6",
+    "scifi-city-7",
+    "scifi-slums-0",
+    "scifi-slums-1",
+    "scifi-slums-2",
+    "scifi-slums-3",
+    "scifi-slums-5",
+    "scifi-industry-0",
+    "scifi-industry-1",
+    "scifi-industry-2",
+    "scifi-industry-3",
+    "scifi-industry-4",
+    "scifi-industry-5",
+    "scifi-industry-6",
+    "scifi-industry-7"
+  ],
+  "fail": [
+    {
+      "name": "scifi-city@winter-0",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-city@winter-1",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 1 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-city@winter-2",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-city@winter-3",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 3 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-city@winter-4",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 5 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-city@winter-5",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 7 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-city@winter-6",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 3 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-city@winter-7",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 11 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-slums-4",
+      "problems": "Too sparse for the round-2 slum rule: the left stack and three separated roof groups enclose a large empty central/right area (57% of the summer tile is the single flat street colour). In the 8x2 map this reads as a few detached rubble/shack islands, not packed stacked housing. Expand and join the housing with readable container fronts, lean-tos and tarps, retaining narrow crooked alleys and the edge street."
+    },
+    {
+      "name": "scifi-slums-6",
+      "problems": "The four corner-like shack clusters and tiny isolated central magenta roof leave the cell broken into rubble-like islands. At 1x the small grey/green roof fragments lose the rectangular container fronts and stacked housing silhouette visible in the approved slums. Consolidate the fragments into overlapping, clearly outlined shack/container masses with visible wall faces, and narrow the central gaps."
+    },
+    {
+      "name": "scifi-slums-7",
+      "problems": "The top and bottom housing strips disintegrate into grey/green chips around a broad empty central slot; the isolated central fragments read as debris. At 1x this is a broken rubble stamp rather than a coherent shanty block. Give the two strips continuous, readable roof-and-wall units, stack some housing across the centre, and keep a narrower crooked passage."
+    },
+    {
+      "name": "scifi-slums@winter-0",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-slums@winter-1",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 1 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-slums@winter-2",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 1 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-slums@winter-3",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-slums@winter-4",
+      "problems": "Too sparse for the round-2 slum rule: the left stack and three separated roof groups enclose a large empty central/right area (57% of the summer tile is the single flat street colour). In the 8x2 map this reads as a few detached rubble/shack islands, not packed stacked housing. Expand and join the housing with readable container fronts, lean-tos and tarps, retaining narrow crooked alleys and the edge street. Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-slums@winter-5",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 1 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-slums@winter-6",
+      "problems": "The four corner-like shack clusters and tiny isolated central magenta roof leave the cell broken into rubble-like islands. At 1x the small grey/green roof fragments lose the rectangular container fronts and stacked housing silhouette visible in the approved slums. Consolidate the fragments into overlapping, clearly outlined shack/container masses with visible wall faces, and narrow the central gaps. Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 5 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-slums@winter-7",
+      "problems": "The top and bottom housing strips disintegrate into grey/green chips around a broad empty central slot; the isolated central fragments read as debris. At 1x this is a broken rubble stamp rather than a coherent shanty block. Give the two strips continuous, readable roof-and-wall units, stack some housing across the centre, and keep a narrower crooked passage. Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-industry@winter-0",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 1 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-industry@winter-1",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-industry@winter-2",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-industry@winter-3",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 3 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-industry@winter-4",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 2 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-industry@winter-5",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 4 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-industry@winter-6",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 9 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    },
+    {
+      "name": "scifi-industry@winter-7",
+      "problems": "Winter roof snow passes, but the required wet, reflective streets do not read at 1x or 4x: the dark street field remains essentially identical to summer (only 3 pixels of the flat summer background change). The few added flecks read as stray dots, not reflective paving. Add deliberate broken horizontal puddle highlights and restrained cyan/magenta reflections immediately below light sources, plus a little slush/track variation; preserve the dark street palette and seamless edge joins. Recheck in the random 8x2 layout at 1x."
+    }
+  ]
+}

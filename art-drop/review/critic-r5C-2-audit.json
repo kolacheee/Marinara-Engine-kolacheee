@@ -1,0 +1,1107 @@
+{
+  "files": {
+    "scifi-city-0": {
+      "sha256": "8c7550ad3ec4c9d82cb1a06f676285b67f847870b24a0793e6717af515c7c285",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 14
+    },
+    "scifi-city-1": {
+      "sha256": "cdec70ec26a54654e29197057b08139cf3ad81572adbda934b3136f1f9f1a552",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 12
+    },
+    "scifi-city-2": {
+      "sha256": "81e254e069a2dc78aec54c5723e9b2e865576b250c638ac4d8eceaf6c3743bc9",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 12
+    },
+    "scifi-city-3": {
+      "sha256": "ef9cff148a5ef6d4927b17cf3aee40483808ce33ac0313f4c5987d78ed1837c0",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-city-4": {
+      "sha256": "87fbf7cdc040db85bacd4e8f54a4a7206f4505e178580f96a9fb3e9f23027aa1",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-city-5": {
+      "sha256": "7e10a4f67ca8abba4474e5b9cb2dd079cd0648a55e460e3167f6fd782733b681",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-city-6": {
+      "sha256": "42f36f8ca40bd32bd271f006ee650c2568e41e28dc42c9c04bd065572d7e4a59",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 11
+    },
+    "scifi-city-7": {
+      "sha256": "584ac567eef6e75747270816aba2628e4b01970594509bc0651160f6e5eda6a2",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    },
+    "scifi-city@winter-0": {
+      "sha256": "ebfe473df05cf66815b64292c559e709c890140358178acabce7c5d69a915d57",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 18
+    },
+    "scifi-city@winter-1": {
+      "sha256": "a938aaf488019ace691b6cca1375de627e337514549a2072529344532e496984",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 14
+    },
+    "scifi-city@winter-2": {
+      "sha256": "4242eaae286fad779328db77c60d888facdbd4807d8a0a5ca0e857038fd8a634",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 14
+    },
+    "scifi-city@winter-3": {
+      "sha256": "f0c10ce9907d8df51b5cc18742cfb5e102d35ccbf2da455b6400fdea77047fa7",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    },
+    "scifi-city@winter-4": {
+      "sha256": "167a675da6d191eecf2eb7e339cd34b997e610e112fcf89ab5dc6d32a4e0854e",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 17
+    },
+    "scifi-city@winter-5": {
+      "sha256": "6e52732e56be5d47fbda9dc8f118599658e952a4e09cd5728b24b71d1d6486dd",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-city@winter-6": {
+      "sha256": "49bea0a16581298c531bcb51fda26cbb96ff54d5fc4fccf8157fc7e56cf33da5",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-city@winter-7": {
+      "sha256": "4bd5607aebeae2cd9b0ea513b0bebb590180727b39c3c9a230d80d973a0ecab1",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 17
+    },
+    "scifi-slums-0": {
+      "sha256": "323db88e7e0cdbbf710412bf16c1eba91de8a0a4bf10bd8c7c38536426e70ca1",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-slums-1": {
+      "sha256": "e8a89ba2e367a4644a306e8c7da2616e7a692cd85ad1065e231e119d29aa0b63",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-slums-2": {
+      "sha256": "2bb2c8f103342f60ebe68ff0316224d03c54e929d4e5edb876e92b4af023620f",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 14
+    },
+    "scifi-slums-3": {
+      "sha256": "e968f1241b03cff8058120efba2a8735ea20c3c66beed90f6da42cdefeaeb30c",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    },
+    "scifi-slums-4": {
+      "sha256": "cdef08ef4b1396fc81d1a6990c275b00d23ccad4279e63dc32738d53bdaaa6b0",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-slums-5": {
+      "sha256": "bdf2b95d980c44b5320ee0219296fd1c2a01d1ebd2e98455cb4b43e3407b5971",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 14
+    },
+    "scifi-slums-6": {
+      "sha256": "869dbbc74450f004e18f8ea596fa886bed31db7ec6f27f5e8689a27dd8659bc4",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 14
+    },
+    "scifi-slums-7": {
+      "sha256": "7c22d6c20de8895a91bcfd6fda2c5424a167857c521b4df1d83a1eb22904a141",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-slums@winter-0": {
+      "sha256": "00d5dfe511d93375dbb7396204379a7ff16b62ab47fab3a28229230b6517d8b1",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    },
+    "scifi-slums@winter-1": {
+      "sha256": "b8e9a7ba081358a1f52ef687e818bfd7299e3132cc057b77810dc63291cb4fbf",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-slums@winter-2": {
+      "sha256": "38fab809b792642dcd34e3512d051ed303081a5c33ea54d2d0c650af44fce71c",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    },
+    "scifi-slums@winter-3": {
+      "sha256": "875f3e1cfeccfca658184bf6c88b834b0f39f3c0c45e0b9981c5b37c214e0f00",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 17
+    },
+    "scifi-slums@winter-4": {
+      "sha256": "1b6c2968b105a906204ceee23c96593cf58cf95f8fa8fa411540ed6eafd88fb9",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-slums@winter-5": {
+      "sha256": "5f2121abb1d2eafe14601dea6f5041c5885247e7f8f9017b977b0ef9c12b8d7b",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    },
+    "scifi-slums@winter-6": {
+      "sha256": "31ae87b71bf5cb383ccbb4b2ee365307f1c159feadb6b5f43912ed8b7b6f8697",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    },
+    "scifi-slums@winter-7": {
+      "sha256": "463b20eb6335d9f3a97fc8548279f7e5beecdd3136954c8b3ca47a9415b62f29",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 14
+    },
+    "scifi-industry-0": {
+      "sha256": "0c82be7545268f0b6c763036d4439e66667f7c80a04457968371c86845858886",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-industry-1": {
+      "sha256": "8956ba5cfbc94b2358b0cda3d80996ef12ab562fb184db3533b1459aeca849ba",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 12
+    },
+    "scifi-industry-2": {
+      "sha256": "a32ff18a378b5a9a95af6dba76dcb147cde936ec96944dfc03fcdb17ce77eec8",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-industry-3": {
+      "sha256": "7238b22afedb6b7fc61ef15a52f194ddc7c705618fa8129bd40f59d10c8f76dd",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-industry-4": {
+      "sha256": "a46e30fb49c89aa949349e0118f5253e5691bd07d1b18832d643f3db8deadedf",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 13
+    },
+    "scifi-industry-5": {
+      "sha256": "26759b716ebc5a811ac785b40d7a8bc1db023b10f92e4ac310939cf839e11e5a",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 12
+    },
+    "scifi-industry-6": {
+      "sha256": "a4b81106842c4e7dcb997d431ea2a0815bb8c900bad8a9e56873cbbc720142b8",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 12
+    },
+    "scifi-industry-7": {
+      "sha256": "c0df4fa4b89ef6f3303a11eb81794a3ad3987f7178738829c6f2023e9a3b9483",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-industry@winter-0": {
+      "sha256": "f135fcaedb05229928e08655c8d9af26c46fb197a005c61131e86819ed7bed42",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-industry@winter-1": {
+      "sha256": "c8337facddb6812d222b88f33348b00438ee1f3c44e171e5521e5f4a9a97942b",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 14
+    },
+    "scifi-industry@winter-2": {
+      "sha256": "343de80505c1313c018ac889a6f5767c31051c02227afc657f51711b0d6dec00",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 17
+    },
+    "scifi-industry@winter-3": {
+      "sha256": "89c57585758b7ba4eae0f08e9f636fb707d8dda7ac8fd598d947daee11d09c71",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 17
+    },
+    "scifi-industry@winter-4": {
+      "sha256": "499c110ce98b225cf6ac598900a1a44e19119ebdf7054d488eb108f66918937e",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-industry@winter-5": {
+      "sha256": "8d4fc78c8a53d3b72cccd9b2d28397775014a12bcb1861c4e7e06f59bb6dbe0a",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    },
+    "scifi-industry@winter-6": {
+      "sha256": "43973177b4d18243781f9e7c93f69d8624e9d0226576a36f6ca05e062d4d0a89",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 15
+    },
+    "scifi-industry@winter-7": {
+      "sha256": "2729ba45da40a1056ae19a092115a31929b7f942c99240139d6ea5583aa18407",
+      "size": [
+        48,
+        48
+      ],
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "colors": 16
+    }
+  },
+  "orders": {
+    "city-summer-random51": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      1,
+      6,
+      4,
+      4,
+      2,
+      3,
+      2,
+      6,
+      0,
+      5,
+      7
+    ],
+    "city-summer-random113": [
+      2,
+      0,
+      6,
+      6,
+      1,
+      3,
+      1,
+      5,
+      7,
+      7,
+      4,
+      3,
+      4,
+      5,
+      2,
+      0
+    ],
+    "city-summer-random209": [
+      5,
+      7,
+      4,
+      3,
+      6,
+      7,
+      0,
+      5,
+      3,
+      6,
+      2,
+      1,
+      4,
+      1,
+      2,
+      0
+    ],
+    "city-winter-random51": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      1,
+      6,
+      4,
+      4,
+      2,
+      3,
+      2,
+      6,
+      0,
+      5,
+      7
+    ],
+    "city-winter-random113": [
+      2,
+      0,
+      6,
+      6,
+      1,
+      3,
+      1,
+      5,
+      7,
+      7,
+      4,
+      3,
+      4,
+      5,
+      2,
+      0
+    ],
+    "city-winter-random209": [
+      5,
+      7,
+      4,
+      3,
+      6,
+      7,
+      0,
+      5,
+      3,
+      6,
+      2,
+      1,
+      4,
+      1,
+      2,
+      0
+    ],
+    "slums-summer-random51": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      1,
+      6,
+      4,
+      4,
+      2,
+      3,
+      2,
+      6,
+      0,
+      5,
+      7
+    ],
+    "slums-summer-random113": [
+      2,
+      0,
+      6,
+      6,
+      1,
+      3,
+      1,
+      5,
+      7,
+      7,
+      4,
+      3,
+      4,
+      5,
+      2,
+      0
+    ],
+    "slums-summer-random209": [
+      5,
+      7,
+      4,
+      3,
+      6,
+      7,
+      0,
+      5,
+      3,
+      6,
+      2,
+      1,
+      4,
+      1,
+      2,
+      0
+    ],
+    "slums-winter-random51": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      1,
+      6,
+      4,
+      4,
+      2,
+      3,
+      2,
+      6,
+      0,
+      5,
+      7
+    ],
+    "slums-winter-random113": [
+      2,
+      0,
+      6,
+      6,
+      1,
+      3,
+      1,
+      5,
+      7,
+      7,
+      4,
+      3,
+      4,
+      5,
+      2,
+      0
+    ],
+    "slums-winter-random209": [
+      5,
+      7,
+      4,
+      3,
+      6,
+      7,
+      0,
+      5,
+      3,
+      6,
+      2,
+      1,
+      4,
+      1,
+      2,
+      0
+    ],
+    "industry-summer-random51": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      1,
+      6,
+      4,
+      4,
+      2,
+      3,
+      2,
+      6,
+      0,
+      5,
+      7
+    ],
+    "industry-summer-random113": [
+      2,
+      0,
+      6,
+      6,
+      1,
+      3,
+      1,
+      5,
+      7,
+      7,
+      4,
+      3,
+      4,
+      5,
+      2,
+      0
+    ],
+    "industry-summer-random209": [
+      5,
+      7,
+      4,
+      3,
+      6,
+      7,
+      0,
+      5,
+      3,
+      6,
+      2,
+      1,
+      4,
+      1,
+      2,
+      0
+    ],
+    "industry-winter-random51": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      1,
+      6,
+      4,
+      4,
+      2,
+      3,
+      2,
+      6,
+      0,
+      5,
+      7
+    ],
+    "industry-winter-random113": [
+      2,
+      0,
+      6,
+      6,
+      1,
+      3,
+      1,
+      5,
+      7,
+      7,
+      4,
+      3,
+      4,
+      5,
+      2,
+      0
+    ],
+    "industry-winter-random209": [
+      5,
+      7,
+      4,
+      3,
+      6,
+      7,
+      0,
+      5,
+      3,
+      6,
+      2,
+      1,
+      4,
+      1,
+      2,
+      0
+    ]
+  },
+  "prior_review_exists": true,
+  "changed_from_r5C_1": [
+    "scifi-city@winter-0",
+    "scifi-city@winter-1",
+    "scifi-city@winter-2",
+    "scifi-city@winter-3",
+    "scifi-city@winter-4",
+    "scifi-city@winter-5",
+    "scifi-city@winter-6",
+    "scifi-city@winter-7",
+    "scifi-slums-4",
+    "scifi-slums-6",
+    "scifi-slums-7",
+    "scifi-slums@winter-0",
+    "scifi-slums@winter-1",
+    "scifi-slums@winter-2",
+    "scifi-slums@winter-3",
+    "scifi-slums@winter-4",
+    "scifi-slums@winter-5",
+    "scifi-slums@winter-6",
+    "scifi-slums@winter-7",
+    "scifi-industry@winter-0",
+    "scifi-industry@winter-1",
+    "scifi-industry@winter-2",
+    "scifi-industry@winter-3",
+    "scifi-industry@winter-4",
+    "scifi-industry@winter-5",
+    "scifi-industry@winter-6",
+    "scifi-industry@winter-7"
+  ],
+  "unchanged_prior_passes": [
+    "scifi-city-0",
+    "scifi-city-1",
+    "scifi-city-2",
+    "scifi-city-3",
+    "scifi-city-4",
+    "scifi-city-5",
+    "scifi-city-6",
+    "scifi-city-7",
+    "scifi-slums-0",
+    "scifi-slums-1",
+    "scifi-slums-2",
+    "scifi-slums-3",
+    "scifi-slums-5",
+    "scifi-industry-0",
+    "scifi-industry-1",
+    "scifi-industry-2",
+    "scifi-industry-3",
+    "scifi-industry-4",
+    "scifi-industry-5",
+    "scifi-industry-6",
+    "scifi-industry-7"
+  ],
+  "sets": {
+    "city": {
+      "closest_pair_changed_fraction": [
+        0.44140625,
+        "scifi-city-6",
+        "scifi-city-5"
+      ],
+      "exact_duplicates": []
+    },
+    "city@winter": {
+      "closest_pair_changed_fraction": [
+        0.5646701388888888,
+        "scifi-city@winter-6",
+        "scifi-city@winter-5"
+      ],
+      "exact_duplicates": []
+    },
+    "slums": {
+      "closest_pair_changed_fraction": [
+        0.5021701388888888,
+        "scifi-slums-4",
+        "scifi-slums-2"
+      ],
+      "exact_duplicates": []
+    },
+    "slums@winter": {
+      "closest_pair_changed_fraction": [
+        0.6124131944444444,
+        "scifi-slums@winter-4",
+        "scifi-slums@winter-2"
+      ],
+      "exact_duplicates": []
+    },
+    "industry": {
+      "closest_pair_changed_fraction": [
+        0.4904513888888889,
+        "scifi-industry-4",
+        "scifi-industry-2"
+      ],
+      "exact_duplicates": []
+    },
+    "industry@winter": {
+      "closest_pair_changed_fraction": [
+        0.5729166666666666,
+        "scifi-industry@winter-5",
+        "scifi-industry@winter-4"
+      ],
+      "exact_duplicates": []
+    }
+  },
+  "winter_street_changes": {
+    "scifi-city@winter-0": {
+      "summer_ground_pixels": 1108,
+      "changed_ground_pixels": 188
+    },
+    "scifi-city@winter-1": {
+      "summer_ground_pixels": 1306,
+      "changed_ground_pixels": 203
+    },
+    "scifi-city@winter-2": {
+      "summer_ground_pixels": 1418,
+      "changed_ground_pixels": 259
+    },
+    "scifi-city@winter-3": {
+      "summer_ground_pixels": 1173,
+      "changed_ground_pixels": 124
+    },
+    "scifi-city@winter-4": {
+      "summer_ground_pixels": 1351,
+      "changed_ground_pixels": 234
+    },
+    "scifi-city@winter-5": {
+      "summer_ground_pixels": 1409,
+      "changed_ground_pixels": 292
+    },
+    "scifi-city@winter-6": {
+      "summer_ground_pixels": 1498,
+      "changed_ground_pixels": 294
+    },
+    "scifi-city@winter-7": {
+      "summer_ground_pixels": 1198,
+      "changed_ground_pixels": 231
+    },
+    "scifi-slums@winter-0": {
+      "summer_ground_pixels": 1112,
+      "changed_ground_pixels": 250
+    },
+    "scifi-slums@winter-1": {
+      "summer_ground_pixels": 1106,
+      "changed_ground_pixels": 168
+    },
+    "scifi-slums@winter-2": {
+      "summer_ground_pixels": 1019,
+      "changed_ground_pixels": 179
+    },
+    "scifi-slums@winter-3": {
+      "summer_ground_pixels": 932,
+      "changed_ground_pixels": 162
+    },
+    "scifi-slums@winter-4": {
+      "summer_ground_pixels": 938,
+      "changed_ground_pixels": 186
+    },
+    "scifi-slums@winter-5": {
+      "summer_ground_pixels": 1167,
+      "changed_ground_pixels": 210
+    },
+    "scifi-slums@winter-6": {
+      "summer_ground_pixels": 1012,
+      "changed_ground_pixels": 193
+    },
+    "scifi-slums@winter-7": {
+      "summer_ground_pixels": 1000,
+      "changed_ground_pixels": 268
+    },
+    "scifi-industry@winter-0": {
+      "summer_ground_pixels": 1202,
+      "changed_ground_pixels": 231
+    },
+    "scifi-industry@winter-1": {
+      "summer_ground_pixels": 1130,
+      "changed_ground_pixels": 219
+    },
+    "scifi-industry@winter-2": {
+      "summer_ground_pixels": 1256,
+      "changed_ground_pixels": 245
+    },
+    "scifi-industry@winter-3": {
+      "summer_ground_pixels": 1141,
+      "changed_ground_pixels": 200
+    },
+    "scifi-industry@winter-4": {
+      "summer_ground_pixels": 1231,
+      "changed_ground_pixels": 152
+    },
+    "scifi-industry@winter-5": {
+      "summer_ground_pixels": 1295,
+      "changed_ground_pixels": 164
+    },
+    "scifi-industry@winter-6": {
+      "summer_ground_pixels": 1165,
+      "changed_ground_pixels": 229
+    },
+    "scifi-industry@winter-7": {
+      "summer_ground_pixels": 1315,
+      "changed_ground_pixels": 205
+    }
+  }
+}

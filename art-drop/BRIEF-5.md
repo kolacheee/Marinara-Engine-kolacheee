@@ -49,3 +49,15 @@ The `wasteland-` prefix means only the wasteland setting gets these. Fantasy rui
 - **Autumn:** a mix of 3 orange, 2 red, 2 gold and 1 still-green tree, with muted, not neon saturation.
 
 Push each part to art/overworld-codex-2026-11-06 (fork only) and report after each.
+
+## Part A2: peaks at 96 px (added 01:03 after the in-game fit)
+At 48 px with 6 per cell, the range read as a thorny brown carpet of tiny cones. The game now plants about 1.6 peaks per cell, and each peak covers TWO cells by two.
+
+- **Files:** redraw `mountains-peak-0..7.png` and `mountains@winter-peak-0..7.png` NATIVELY at 96x96, transparent, at the same pixel density as everything else. Don't upscale the 48 px ones.
+- **Placement:** each peak's foot is on rows 90-95, centred left to right.
+- **Sizes:** 3 big massifs (70-88 px wide, 60-80 tall), 3 medium (50-64 wide), and 2 small rocky knolls (34-44 wide).
+- **Shapes:** double summits, a flat-topped crag, a sharp spike and a ridge shoulder.
+- **Contrast:** use a lit left face and a dark right face, strata lines, and a grass skirt at the foot in summer. Push contrast against the brown rock ground: lighter, cooler grey rock on the peaks, darker shadows and a clear 1 px outline.
+- **Winter:** bold snow caps on the upper third to half, with rock showing on the shadow side.
+- **The two bases are good and stay.**
+- **QC composite:** a lattice 48 px apart in a row, rows 30 px apart, alternate rows shifted 24 px, later rows drawn over earlier ones, over the 288 px base at 1x. It must read as a mountain range at map zoom.
