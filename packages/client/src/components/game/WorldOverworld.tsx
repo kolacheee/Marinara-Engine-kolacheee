@@ -349,21 +349,35 @@ export function WorldOverworld({
       });
       return [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? "grass";
     })();
-    /** The open ground nearest the cell at (x, y), most of it within the nearest ring that has any. */
-    const groundNear = (x: number, y: number) => {
-      for (let r = 1; r <= 4; r++) {
-        const count = new Map<string, number>();
-        for (let dy = -r; dy <= r; dy++)
-          for (let dx = -r; dx <= r; dx++) {
-            if (Math.max(Math.abs(dx), Math.abs(dy)) !== r || wetAt(x + dx, y + dy)) continue;
-            const other = lookAt(x + dx, y + dy);
-            if (openGround(other)) count.set(other, (count.get(other) ?? 0) + 1);
+    // Each field of a prop look becomes one open ground (the one most of its border has), so its cells meet
+    // the ground round them through that ground's own fringes, not in squares; the props go over it after.
+    const propCells = new Map<number, string>();
+    for (let start = 0; start < drawnLook.length; start++) {
+      const look = drawnLook[start]!;
+      if (!propLooks.has(look) || propCells.has(start)) continue;
+      const field = [start];
+      const seen = new Set<number>(field);
+      const border = new Map<string, number>();
+      for (let i = 0; i < field.length; i++) {
+        const [x, y] = [field[i]! % width, Math.floor(field[i]! / width)];
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++) {
+            const [nx, ny] = [x + dx, y + dy];
+            if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+            const at = ny * width + nx;
+            if (drawnLook[at] === look) {
+              if (!seen.has(at)) {
+                seen.add(at);
+                field.push(at);
+              }
+            } else if (!wetCell[at] && openGround(drawnLook[at]!))
+              border.set(drawnLook[at]!, (border.get(drawnLook[at]!) ?? 0) + 1);
           }
-        const best = [...count].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
-        if (best) return best;
       }
-      return commonOpen;
-    };
+      const ground = [...border].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? commonOpen;
+      for (const at of field) propCells.set(at, look);
+      for (const at of field) drawnLook[at] = ground;
+    }
     const groundOf = (x: number, y: number, drawn: string) => {
       const noise = cellNoise(x, y);
       inSeason(x, y);
@@ -384,11 +398,7 @@ export function WorldOverworld({
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
         const look = drawnLook[y * width + x]!;
-        const drawn = propLooks.has(look)
-          ? groundNear(x, y)
-          : coveredLooks.has(look) && !inner(x, y)
-            ? besideLook(x, y)
-            : look;
+        const drawn = coveredLooks.has(look) && !inner(x, y) ? besideLook(x, y) : look;
         if (coveredLooks.has(drawn) && drawn === look) floorOf(x, y, look);
         else groundOf(x, y, drawn);
         if (water[own] && !waterEdges) {
@@ -725,7 +735,7 @@ export function WorldOverworld({
         const look = drawnLook[y * width + x]!;
         if (!(WORLD_DECOR_LOOKS as readonly string[]).includes(look)) continue;
         const noise = cellNoise(x, y);
-        if (noise(61) >= 0.2 || !inner(x, y) || nearWay(x, y)) continue;
+        if (noise(61) >= 0.2 || !inner(x, y) || nearWay(x, y) || propCells.has(y * width + x)) continue;
         inSeason(x, y);
         drawTile(ctx, `decor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(67));
       }
@@ -734,7 +744,7 @@ export function WorldOverworld({
     if (propLooks.has("craters"))
       for (let y = 0; y < height; y++)
         for (let x = 0; x < width; x++) {
-          if (drawnLook[y * width + x] !== "craters" || wetCell[y * width + x]) continue;
+          if (propCells.get(y * width + x) !== "craters" || wetCell[y * width + x]) continue;
           const noise = cellNoise(x, y);
           if (noise(63) >= 0.65) continue;
           const large = noise(62) < 0.55;
