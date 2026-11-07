@@ -1,0 +1,541 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-8.md Part C: Slum shacks, 12 summer + 12 winter. Only these 24 files receive verdicts.",
+      "groups": {
+        "summer_small": [
+          "scifi-slums-bldg-0",
+          "scifi-slums-bldg-1",
+          "scifi-slums-bldg-2",
+          "scifi-slums-bldg-3",
+          "scifi-slums-bldg-4",
+          "scifi-slums-bldg-5",
+          "scifi-slums-bldg-6",
+          "scifi-slums-bldg-7"
+        ],
+        "summer_large": [
+          "scifi-slums-bldg-8",
+          "scifi-slums-bldg-9",
+          "scifi-slums-bldg-10",
+          "scifi-slums-bldg-11"
+        ],
+        "winter_small": [
+          "scifi-slums@winter-bldg-0",
+          "scifi-slums@winter-bldg-1",
+          "scifi-slums@winter-bldg-2",
+          "scifi-slums@winter-bldg-3",
+          "scifi-slums@winter-bldg-4",
+          "scifi-slums@winter-bldg-5",
+          "scifi-slums@winter-bldg-6",
+          "scifi-slums@winter-bldg-7"
+        ],
+        "winter_large": [
+          "scifi-slums@winter-bldg-8",
+          "scifi-slums@winter-bldg-9",
+          "scifi-slums@winter-bldg-10",
+          "scifi-slums@winter-bldg-11"
+        ]
+      },
+      "prior_review": "critic-r8C-0.json does not exist. No inherited pass decisions apply.",
+      "calibration": "Good enough to ship alongside the approved art, with every pass checked at native size, 4x and 8x. No concrete Part C defect meeting the rejection bar was found.",
+      "references": "Part C has no separate named image reference. Applied the shared Round 8 introduction: approved marker pixel density, three-quarter overhead view, top-left light and dark outline; used Part A street ground for the required slum scene. Also compared reference/scifi-marker0, current-scifi-slums and the approved out markers for all six settings, sci-fi marker1 and tower0, representative round-2 slums/city/industry/suburb/farmland, paddies in all four seasons, and grass/plains bases and details in all four seasons.",
+      "out_unchanged": true
+    },
+    "qc": {
+      "individuals": "All 24 inspected at exact nearest-neighbour 8x on both light and dark backgrounds; all 24 also inspected in native and 4x contact sheets. No key-colour fringe, soft alpha, halo, clipping, blur or accidental contour debris found. Small 1-pixel staircases and reduced detail are consistent with the approved art.",
+      "geometry": "All 0..7 are 48x48 and 8..11 are 96x96. Hard 0/255 alpha, zero hidden RGB, bottom-centred placement, final visible foot on row 46 or 94, clear canvas margins. All 24 PNG hashes are distinct.",
+      "random_tiling": "Two deterministic shuffled 8x2 arrangements per season, each including all eight small props twice, inspected at 1x and 4x. Transparent props introduce no square tile backing or ground border. Repeated instances are recognisable, as expected from a finite prop set; the eight designs are not near-duplicate redraws.",
+      "slum_blocks": "Summer and winter inspected at 1x/4x in independent cell-based scenes and a closely staggered planting stress scene. Also rebuilt the existing 126-prop placement manifest using current out PNGs, sorted by foot row, with full large-prop reservations and clear street corridors, and inspected both seasonal results at 1x/4x. Mixed rusty homes, tarps, shops and neon read as a coherent slum. Dense overlap does not introduce a framed-square texture or erase the main roof shapes.",
+      "ground_context": "Both supporting Part A street bases checked as literal unrotated 3x3 repeats at 1x/4x, with exact 4x wrap-intersection details. No hard wrap line found. The recurring grates, puddles and winter snow/rut motifs make the 288px repeat visible on empty ground. That is a property of the out-of-scope Part A bases, not a failure assigned to any Part C transparent prop.",
+      "winter": "Every winter prop preserves its summer layout, dark walls and lit signs. Snow has cool shaded faces and varied accumulation on roofs, tarps and ledges; none is blank, an all-white silhouette or a mismatched replacement design.",
+      "style": "Rust/ochre, slate/teal shadows, warm windows and restricted magenta/cyan signs fit the approved sci-fi art. Roofs remain lighter than right-hand walls. Large clusters carry more detail than small props without changing the native pixel grid. Designs vary in width, height, roofline, canopy shape and open space.",
+      "not_applicable": "Part C contains no bases, mountain peaks, crater tiles, ruin tiles, standalone trees or autumn variants. Peak lattice/range and forest-tree composites have no Part C inputs. Egg-crate peaks, Swiss-cheese craters, classical ruins, flat orange autumn and identical tree crowns do not apply. City and industry scene verdicts belong to Parts B/D and are excluded."
+    },
+    "files": {
+      "scifi-slums-bldg-0": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          4,
+          8,
+          43,
+          47
+        ],
+        "visible_colours": 22,
+        "sha256": "5b383386815df70f3eaf99387e2be97fef64f07841c0fffd00e327a0ab9849cc",
+        "verdict": "pass",
+        "visual_basis": "Offset two-level container home, a legible outside stair and patched corrugated roof; the upper mass and projecting stair break the box silhouette. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-1": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          2,
+          13,
+          45,
+          47
+        ],
+        "visible_colours": 20,
+        "sha256": "f2df5dc32edceeebfbf4ee93d34dc6068d07c545a999a4515038efbe69f56caf",
+        "verdict": "pass",
+        "visual_basis": "Broad pitched tarp shanty with a lean-to and asymmetric roof; its warm lit roof and cool side separate clearly at native scale. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-2": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          3,
+          9,
+          45,
+          47
+        ],
+        "visible_colours": 22,
+        "sha256": "9148f13233a3b96f747ca92614b0c858bb74b276880347540eac4f2cce771f46",
+        "verdict": "pass",
+        "visual_basis": "Compact noodle stall with serving opening, warm canopy edge and pink bowl sign; the sign and front opening stay readable in dense planting. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-3": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          2,
+          18,
+          47,
+          47
+        ],
+        "visible_colours": 24,
+        "sha256": "6e8e9fa4689d2fe541503c80a64d7e8ea9c360463b97104c405445ed4fd926aa",
+        "verdict": "pass",
+        "visual_basis": "Two unequal shacks joined by a sagging cable, with a tiny cyan suspended light; the intentional open gap and separate heights distinguish it from the other props. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-4": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          11,
+          2,
+          37,
+          47
+        ],
+        "visible_colours": 22,
+        "sha256": "daa1104b8dc4a7448030950ce41634c4321140812b2e444887da735ec0afbb39",
+        "verdict": "pass",
+        "visual_basis": "Narrow stacked dwelling with offset upper room and projecting balconies; tall proportions distinguish it from the broad stalls and sheds. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-5": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          2,
+          15,
+          47,
+          47
+        ],
+        "visible_colours": 21,
+        "sha256": "74652f9fda9689702eb534739abcdb6bb0688d515c44b307199bc09ded82f3da",
+        "verdict": "pass",
+        "visual_basis": "Wide barrel-roof repair shed with a large dark entrance and cyan sign; curved roof, opening and lean-to remain distinct. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-6": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          4,
+          14,
+          43,
+          47
+        ],
+        "visible_colours": 21,
+        "sha256": "c0d67b37348d4b1c0f77c91f7569499f96cfa5feb7f3789d451439fa429d4a64",
+        "verdict": "pass",
+        "visual_basis": "Round water-tank dwelling with a low attached shelter; the curved cap and cylindrical wall distinguish it from the rectangular homes. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-7": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          3,
+          10,
+          45,
+          47
+        ],
+        "visible_colours": 19,
+        "sha256": "2d47ffd9611df448dd05a201d0ce7f8d86edce8af429f2e5216ac0794865bf46",
+        "verdict": "pass",
+        "visual_basis": "Stepped rusty roof and broad purple vendor tarp, with side ladder; the canopy is a deliberate readable fabric plane, not a textureless whole building. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-8": {
+        "size": [
+          96,
+          96
+        ],
+        "visible_bbox_exclusive": [
+          8,
+          18,
+          88,
+          95
+        ],
+        "visible_colours": 27,
+        "sha256": "b9df77dbbf01cb3146896bdd65aa880bd0b0ffc12770f10fe3335b3f464e34c3",
+        "verdict": "pass",
+        "visual_basis": "Dense stepped container block with a central stair/alley, varied roof levels and grouped warm windows; busy detail remains subordinate to the two tall masses and lower shop fronts. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-9": {
+        "size": [
+          96,
+          96
+        ],
+        "visible_bbox_exclusive": [
+          3,
+          46,
+          93,
+          95
+        ],
+        "visible_colours": 25,
+        "sha256": "091d2937fe9567771a64aefa82f22a6b469eee75da045d283f2b576ca128bc28",
+        "verdict": "pass",
+        "visual_basis": "Low market cluster with an irregular patched canopy and lower shop openings; its broad low silhouette differs from the upright container blocks. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-10": {
+        "size": [
+          96,
+          96
+        ],
+        "visible_bbox_exclusive": [
+          4,
+          13,
+          92,
+          95
+        ],
+        "visible_colours": 22,
+        "sha256": "190a16c0abd707c9fb5c1488aca4c254067784901246dd7a1e16faaf25ef8417",
+        "verdict": "pass",
+        "visual_basis": "Tall courtyard block with raised connecting bridge and rooftop tank; the courtyard void, bridge, doors and two building masses remain readable. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums-bldg-11": {
+        "size": [
+          96,
+          96
+        ],
+        "visible_bbox_exclusive": [
+          2,
+          42,
+          94,
+          95
+        ],
+        "visible_colours": 23,
+        "sha256": "147f49310efbfbaf04d69daaeabd85c5402657d6ffa42d8f4d7af1d247229935",
+        "verdict": "pass",
+        "visual_basis": "Wide crescent bazaar with a purple canopy, low connector and raised right-hand room; the open centre and unequal heights give it a distinct footprint. Top-left highlights, dark right-side planes and hard pixel clusters fit the approved set."
+      },
+      "scifi-slums@winter-bldg-0": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          4,
+          8,
+          43,
+          47
+        ],
+        "visible_colours": 22,
+        "sha256": "cff609435684b142aea8f4f6c0530c6cab5b7c07dc925f6457d8851293e1a961",
+        "verdict": "pass",
+        "visual_basis": "Offset two-level container home, a legible outside stair and patched corrugated roof; the upper mass and projecting stair break the box silhouette. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-1": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          2,
+          13,
+          45,
+          47
+        ],
+        "visible_colours": 22,
+        "sha256": "e71622399f15553ab113204620a3753b739584e87b3b8dc80b7a9f199ba6a22b",
+        "verdict": "pass",
+        "visual_basis": "Broad pitched tarp shanty with a lean-to and asymmetric roof; its warm lit roof and cool side separate clearly at native scale. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-2": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          3,
+          10,
+          45,
+          47
+        ],
+        "visible_colours": 25,
+        "sha256": "3b0158165aff0069b4e5f98ce185dbf70174fe3cb4813fabd3b02c99ac9e6295",
+        "verdict": "pass",
+        "visual_basis": "Compact noodle stall with serving opening, warm canopy edge and pink bowl sign; the sign and front opening stay readable in dense planting. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-3": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          1,
+          18,
+          47,
+          47
+        ],
+        "visible_colours": 24,
+        "sha256": "03df93f6e6d8a937526bff1f71f6e846b9d7794c81c454fb2928a85c28c7b6f1",
+        "verdict": "pass",
+        "visual_basis": "Two unequal shacks joined by a sagging cable, with a tiny cyan suspended light; the intentional open gap and separate heights distinguish it from the other props. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-4": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          11,
+          2,
+          37,
+          47
+        ],
+        "visible_colours": 26,
+        "sha256": "88207270a569fcf9ef5a4f1f0a40df8f9ffda1947c9cb842d7f0adfcd6ce207b",
+        "verdict": "pass",
+        "visual_basis": "Narrow stacked dwelling with offset upper room and projecting balconies; tall proportions distinguish it from the broad stalls and sheds. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-5": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          2,
+          15,
+          47,
+          47
+        ],
+        "visible_colours": 24,
+        "sha256": "61033cc31f8622d76cf39d74c1dcf9acd3ea543278b05aa35054d18bd7f2229d",
+        "verdict": "pass",
+        "visual_basis": "Wide barrel-roof repair shed with a large dark entrance and cyan sign; curved roof, opening and lean-to remain distinct. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-6": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          4,
+          14,
+          43,
+          47
+        ],
+        "visible_colours": 23,
+        "sha256": "da0191a74d6cb56106056f32931c09535448c14604376edd727249cee846788d",
+        "verdict": "pass",
+        "visual_basis": "Round water-tank dwelling with a low attached shelter; the curved cap and cylindrical wall distinguish it from the rectangular homes. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-7": {
+        "size": [
+          48,
+          48
+        ],
+        "visible_bbox_exclusive": [
+          4,
+          10,
+          45,
+          47
+        ],
+        "visible_colours": 23,
+        "sha256": "0241881df4f8b0b0dd12a4c0faf9de1fe81eb4302b260ec52977f2e426c77849",
+        "verdict": "pass",
+        "visual_basis": "Stepped rusty roof and broad purple vendor tarp, with side ladder; the canopy is a deliberate readable fabric plane, not a textureless whole building. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-8": {
+        "size": [
+          96,
+          96
+        ],
+        "visible_bbox_exclusive": [
+          8,
+          15,
+          88,
+          95
+        ],
+        "visible_colours": 27,
+        "sha256": "669137062d21ce0ea9ed4a6fa8b4644f70943b5904c3aca62c8552223c42f743",
+        "verdict": "pass",
+        "visual_basis": "Dense stepped container block with a central stair/alley, varied roof levels and grouped warm windows; busy detail remains subordinate to the two tall masses and lower shop fronts. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-9": {
+        "size": [
+          96,
+          96
+        ],
+        "visible_bbox_exclusive": [
+          3,
+          47,
+          93,
+          95
+        ],
+        "visible_colours": 26,
+        "sha256": "2301d585918db7c9ad2f3d6682d546948504e5c93475d5ae4e726bf1a20a2d0e",
+        "verdict": "pass",
+        "visual_basis": "Low market cluster with an irregular patched canopy and lower shop openings; its broad low silhouette differs from the upright container blocks. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-10": {
+        "size": [
+          96,
+          96
+        ],
+        "visible_bbox_exclusive": [
+          5,
+          13,
+          92,
+          95
+        ],
+        "visible_colours": 27,
+        "sha256": "1cd856f99272611fe2b618821856a3ae06a65b84393880d341649c7b2b6f32c2",
+        "verdict": "pass",
+        "visual_basis": "Tall courtyard block with raised connecting bridge and rooftop tank; the courtyard void, bridge, doors and two building masses remain readable. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      },
+      "scifi-slums@winter-bldg-11": {
+        "size": [
+          96,
+          96
+        ],
+        "visible_bbox_exclusive": [
+          2,
+          42,
+          94,
+          95
+        ],
+        "visible_colours": 26,
+        "sha256": "c3a5828442f551c5491ec9cbd7b0ad9255a7d67d87898412ebe15df92b2c7cf9",
+        "verdict": "pass",
+        "visual_basis": "Wide crescent bazaar with a purple canopy, low connector and raised right-hand room; the open centre and unequal heights give it a distinct footprint. Winter follows the same architecture with shaded snow on exposed upper surfaces and ledges; dark walls, exposed rust and neon remain visible."
+      }
+    },
+    "composites": [
+      "critic-r8C-1-approved-comparison-1x.png",
+      "critic-r8C-1-approved-comparison-4x.png",
+      "critic-r8C-1-seasonal-approved-comparison-1x.png",
+      "critic-r8C-1-seasonal-approved-comparison-4x.png",
+      "critic-r8C-1-summer-dense-slum-block-1x.png",
+      "critic-r8C-1-summer-dense-slum-block-4x.png",
+      "critic-r8C-1-summer-ground-3x3-1x.png",
+      "critic-r8C-1-summer-ground-3x3-4x.png",
+      "critic-r8C-1-summer-ground-wrap-4x.png",
+      "critic-r8C-1-summer-large-1x.png",
+      "critic-r8C-1-summer-large-4x.png",
+      "critic-r8C-1-summer-planted-126-1x.png",
+      "critic-r8C-1-summer-planted-126-4x.png",
+      "critic-r8C-1-summer-random-8x2-1-1x.png",
+      "critic-r8C-1-summer-random-8x2-1-4x.png",
+      "critic-r8C-1-summer-random-8x2-2-1x.png",
+      "critic-r8C-1-summer-random-8x2-2-4x.png",
+      "critic-r8C-1-summer-slum-block-1x.png",
+      "critic-r8C-1-summer-slum-block-4x.png",
+      "critic-r8C-1-summer-small-1x.png",
+      "critic-r8C-1-summer-small-4x.png",
+      "critic-r8C-1-summer-sprite-00-8x.png",
+      "critic-r8C-1-summer-sprite-01-8x.png",
+      "critic-r8C-1-summer-sprite-02-8x.png",
+      "critic-r8C-1-summer-sprite-03-8x.png",
+      "critic-r8C-1-summer-sprite-04-8x.png",
+      "critic-r8C-1-summer-sprite-05-8x.png",
+      "critic-r8C-1-summer-sprite-06-8x.png",
+      "critic-r8C-1-summer-sprite-07-8x.png",
+      "critic-r8C-1-summer-sprite-08-8x.png",
+      "critic-r8C-1-summer-sprite-09-8x.png",
+      "critic-r8C-1-summer-sprite-10-8x.png",
+      "critic-r8C-1-summer-sprite-11-8x.png",
+      "critic-r8C-1-summer-staggered-core-1x.png",
+      "critic-r8C-1-summer-staggered-core-4x.png",
+      "critic-r8C-1-winter-dense-slum-block-1x.png",
+      "critic-r8C-1-winter-dense-slum-block-4x.png",
+      "critic-r8C-1-winter-ground-3x3-1x.png",
+      "critic-r8C-1-winter-ground-3x3-4x.png",
+      "critic-r8C-1-winter-ground-wrap-4x.png",
+      "critic-r8C-1-winter-large-1x.png",
+      "critic-r8C-1-winter-large-4x.png",
+      "critic-r8C-1-winter-planted-126-1x.png",
+      "critic-r8C-1-winter-planted-126-4x.png",
+      "critic-r8C-1-winter-random-8x2-1-1x.png",
+      "critic-r8C-1-winter-random-8x2-1-4x.png",
+      "critic-r8C-1-winter-random-8x2-2-1x.png",
+      "critic-r8C-1-winter-random-8x2-2-4x.png",
+      "critic-r8C-1-winter-slum-block-1x.png",
+      "critic-r8C-1-winter-slum-block-4x.png",
+      "critic-r8C-1-winter-small-1x.png",
+      "critic-r8C-1-winter-small-4x.png",
+      "critic-r8C-1-winter-sprite-00-8x.png",
+      "critic-r8C-1-winter-sprite-01-8x.png",
+      "critic-r8C-1-winter-sprite-02-8x.png",
+      "critic-r8C-1-winter-sprite-03-8x.png",
+      "critic-r8C-1-winter-sprite-04-8x.png",
+      "critic-r8C-1-winter-sprite-05-8x.png",
+      "critic-r8C-1-winter-sprite-06-8x.png",
+      "critic-r8C-1-winter-sprite-07-8x.png",
+      "critic-r8C-1-winter-sprite-08-8x.png",
+      "critic-r8C-1-winter-sprite-09-8x.png",
+      "critic-r8C-1-winter-sprite-10-8x.png",
+      "critic-r8C-1-winter-sprite-11-8x.png",
+      "critic-r8C-1-winter-staggered-core-1x.png",
+      "critic-r8C-1-winter-staggered-core-4x.png"
+    ],
+    "result": {
+      "reviewed": 24,
+      "passed": 24,
+      "failed": 0
+    }
+  },
+  "pass": [
+    "scifi-slums-bldg-0",
+    "scifi-slums-bldg-1",
+    "scifi-slums-bldg-2",
+    "scifi-slums-bldg-3",
+    "scifi-slums-bldg-4",
+    "scifi-slums-bldg-5",
+    "scifi-slums-bldg-6",
+    "scifi-slums-bldg-7",
+    "scifi-slums-bldg-8",
+    "scifi-slums-bldg-9",
+    "scifi-slums-bldg-10",
+    "scifi-slums-bldg-11",
+    "scifi-slums@winter-bldg-0",
+    "scifi-slums@winter-bldg-1",
+    "scifi-slums@winter-bldg-2",
+    "scifi-slums@winter-bldg-3",
+    "scifi-slums@winter-bldg-4",
+    "scifi-slums@winter-bldg-5",
+    "scifi-slums@winter-bldg-6",
+    "scifi-slums@winter-bldg-7",
+    "scifi-slums@winter-bldg-8",
+    "scifi-slums@winter-bldg-9",
+    "scifi-slums@winter-bldg-10",
+    "scifi-slums@winter-bldg-11"
+  ],
+  "fail": []
+}
