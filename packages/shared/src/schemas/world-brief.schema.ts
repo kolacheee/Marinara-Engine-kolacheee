@@ -6,7 +6,7 @@
 // ──────────────────────────────────────────────
 import { z } from "zod";
 import { promptSafeText } from "./ruleset.schema.js";
-import { WORLD_CHANGE_KINDS, type WorldKit } from "./world-kit.schema.js";
+import { WORLD_CHANGE_KINDS, WORLD_SCALES, type WorldKit } from "./world-kit.schema.js";
 import { isOverusedName } from "../features/world/overused-names.js";
 
 export const WORLD_BRIEF_LIMITS = Object.freeze({
@@ -146,6 +146,52 @@ const briefEvent = z
   })
   .strict();
 
+/** A real city in an Earth world's area: the cell it stands in, as the compile places it. */
+const earthCity = z
+  .object({
+    name: placeName,
+    country: promptSafeText(80),
+    state: promptSafeText(80).optional(),
+    cell: z.number().int().min(0),
+    pop: z.number().int().min(0),
+    capital: z.literal(true).optional(),
+  })
+  .strict();
+
+/** A real river in an Earth world's area: its cells from source to mouth, and its size (1 a stream to 5). */
+const earthRiver = z
+  .object({
+    name: promptSafeText(80).optional(),
+    path: z.array(z.number().int().min(0)).min(2).max(800),
+    width: z.number().int().min(1).max(5),
+  })
+  .strict();
+
+/**
+ * The Earth seed: a world made from the real Earth over an area, rather than drawn from the seed. The
+ * area's land, heights and climate are sampled once, by the server from its Earth grid, at the size the
+ * scale's map is, and kept with the brief, so a world compiles the same anywhere without the grid.
+ */
+export const worldEarthSchema = z
+  .object({
+    /** The middle of the area, in degrees. */
+    lon: z.number().min(-180).max(180),
+    lat: z.number().min(-80).max(80),
+    /** The scale it was sampled at; a world of another scale reads as not on Earth. */
+    scale: z.enum(WORLD_SCALES),
+    /** What the area was chosen by: a named area, or the places it was centred on. */
+    area: z.string().max(120).optional(),
+    /** The year the world is in, for a historical setting; the present when left out. */
+    year: z.number().int().min(-5000).max(3000).optional(),
+    /** Base64 of three planes, one byte a cell, row by row: the surface (0 sea, 1 lake, 2 land, 3 ice),
+     *  the height (metres / 32) and how dry the land is (0 wet to 255 dry). */
+    ground: z.string().max(60000),
+    rivers: z.array(earthRiver).max(400).default([]),
+    cities: z.array(earthCity).max(400).default([]),
+  })
+  .strict();
+export type WorldEarth = z.infer<typeof worldEarthSchema>;
+
 export const worldBriefSchema = z
   .object({
     briefVersion: z.literal(1),
@@ -170,6 +216,8 @@ export const worldBriefSchema = z
     folk: z.array(briefFolk).max(WORLD_BRIEF_LIMITS.folk).default([]),
     /** The setting's faiths. */
     faiths: z.array(briefFaith).max(WORLD_BRIEF_LIMITS.faiths).default([]),
+    /** The Earth seed: the real Earth over an area, when the setting is on Earth. */
+    earth: worldEarthSchema.optional(),
     /** Names for the people the compile draws, per culture, in that culture's own sound and order. */
     peopleNames: z
       .array(

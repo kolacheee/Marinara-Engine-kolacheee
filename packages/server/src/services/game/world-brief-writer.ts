@@ -59,6 +59,8 @@ export interface WorldBriefWritingInput {
   canonMore?: WorldCanonMore;
   /** Strict: the lore's places and nothing invented beside them. */
   strict?: boolean;
+  /** The Earth seed: the world is the real Earth, its map drawn from the real places the brief names. */
+  earth?: { year?: number };
 }
 
 export function buildWorldBriefPrompt(input: WorldBriefWritingInput): { system: string; user: string } {
@@ -81,6 +83,11 @@ export function buildWorldBriefPrompt(input: WorldBriefWritingInput): { system: 
     `- "faiths": the setting's faiths, 1 to ${WORLD_BRIEF_LIMITS.faiths} (a world without gods still has beliefs), each {"name", "note", "holy", "followers", "groups"}: "note" what its followers believe and do, in one line; "holy" names from "places" holy to it, where it began first; "followers" names from "folk" and "peoples" who keep it; "groups" names from "groups" that serve it.`,
     `- "peopleNames": for each culture id, the names its people are given, {"culture": id, "given": [...], "family": [...], "order": "given-family" | "family-given" | "given"}: 60 to 150 given names and 40 to 150 family names (none when the culture has no family names), in that culture's own sound and order as its naming note says. Varied: no name twice, not the same few names models reach for, not famous characters' names.`,
     `- "events": up to 10 notable events of the world's past, each {"yearsAgo", "kind", "text", "places", "groups"}: "yearsAgo" a whole number of years before the present; "kind" one of ${kindsOn.join(", ")} (only these: this world has no others); "text" what happened in one line; "places" and "groups" names from "places" and "groups". The world's history is written around them.`,
+    ...(input.earth
+      ? [
+          `- This world is the real Earth${input.earth.year !== undefined ? ` in the year ${input.earth.year < 0 ? `${-input.earth.year} BC` : input.earth.year}` : ""}: its map is drawn from the real land around the places you name. "places" are real countries, regions and cities by their real names${input.earth.year !== undefined ? " of that year" : ""}, as the setting has them (a place the setting invents inside one is fine, its "parent" the real place it is in); "placeNames" are names for small places in the land's own languages.`,
+        ]
+      : []),
     `- Use only the ids listed below. ${TEXT_RULE}`,
     ...languageRule(input.language),
     `At most ${WORLD_BRIEF_LIMITS.places} places, ${WORLD_BRIEF_LIMITS.allNames} place names and ${WORLD_BRIEF_LIMITS.allPeopleNames} people's names in all.`,
