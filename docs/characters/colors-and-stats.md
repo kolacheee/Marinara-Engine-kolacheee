@@ -59,6 +59,10 @@ A character has one switch, **Enable story stats**. Off, nothing below is shown 
 
 Click **Add** to create a pool or attribute, and the X on a row to remove it.
 
+Roleplay chats and Legacy games use these stats. A new Roleplay chat starts the character's tracker bars from the pools, and a roleplay encounter takes their maximum HP from an HP pool. A roleplay dice roll adds a bonus from the attribute it names, so a custom attribute such as Sanity counts too. MRPG games never build a sheet from them.
+
+In the new layout, the pools, attributes and tracker fields have their own **Roleplay Stats** section, apart from **Game Mode**. On a card that has none yet, add it with **+ Roleplay Stats** in the editor's left rail. A persona's status bars sit in its **Roleplay Stats** section too.
+
 ### Persona stats
 
 A persona **Stats** tab has two separate blocks, each with its own switch.
@@ -73,10 +77,9 @@ Both **Stats** tabs have a **Game Mode** section with an **MRPG** block, for gam
 1. **Tree**: the tree the character starts in. **Auto** reads it from the card's description and personality, and shows which tree that gives.
 2. **Strong in**: up to two stats the character grows well in. Each stat says what it does.
 3. **Weak in**: one stat they grow poorly in, or none.
-4. **Story** (character cards only): the pools and attributes described above. Roleplay chats and Legacy games use them. An MRPG game uses the class block instead and never builds a sheet from them.
-5. **Review**: the class a new game starts them as, at level 1, with its row, every stat, MP and Stamina.
+4. **Review**: the class a new game starts them as, at level 1, with its row, every stat, MP and Stamina.
 
-Every pick is kept as you make it, and **Back**, **Next** and the step names move between steps. Click **Finish** on the last step. The block then shows the review: the starting class and its stats, with the strong and weak ones marked, and a **Story stats** row. Click **Edit** to run the builder again, or the **Story stats** row to go straight to that step. Save the card as usual to keep the changes.
+Every pick is kept as you make it, and **Back**, **Next** and the step names move between steps. Click **Finish** on the last step. The block then shows the review: the starting class and its stats, with the strong and weak ones marked. Click **Edit** to run the builder again. Save the card as usual to keep the changes.
 
 The strong and weak picks lean the character's hidden growth in each game. Their sister tree comes from their temperament in the game, not from the card. See [Game Mode: MRPG Classes](../game/mrpg-classes.md#choose-a-characters-trees).
 

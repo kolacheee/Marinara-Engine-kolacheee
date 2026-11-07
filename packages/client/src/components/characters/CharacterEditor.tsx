@@ -112,6 +112,7 @@ import {
   Link2,
   Loader2,
   Swords,
+  Dices,
   Crop,
   ImageDown,
   Download,
@@ -224,9 +225,13 @@ const TABS = [
   { id: "gallery", label: "Gallery", icon: Camera },
   { id: "colors", label: "Colors", icon: Palette },
   { id: "voice", label: "Voice", icon: Volume2 },
+  { id: "rpstats", label: "Roleplay Stats", icon: Dices },
   { id: "stats", label: "Stats", icon: Swords },
   { id: "advanced", label: "Advanced", icon: Settings2 },
 ] as const;
+
+/** The classic look keeps roleplay stats inside its Stats tab; only the new layout splits them out. */
+const CLASSIC_TABS = TABS.filter((tab) => tab.id !== "rpstats");
 
 type TabId = (typeof TABS)[number]["id"];
 
@@ -241,6 +246,7 @@ const OVERHAUL_SECTION_LABELS: Record<TabId, string> = {
   gallery: "Gallery",
   colors: "Colors",
   voice: "Voice",
+  rpstats: "Roleplay Stats",
   stats: "Game Mode",
   advanced: "Advanced",
 };
@@ -1257,8 +1263,12 @@ export function CharacterEditor() {
       overhaulHasText(overhaulExt.boxColor) ||
       (Array.isArray(overhaulExt.nameAliases) && overhaulExt.nameAliases.length > 0),
     voice: overhaulHasText(overhaulExt.phoneticName),
-    // Classic picks live in this section too, so a card with only those still shows it.
-    stats: Boolean((overhaulExt.rpgStats as { enabled?: boolean } | undefined)?.enabled) || overhaulExt.classic != null,
+    rpstats:
+      Boolean((overhaulExt.rpgStats as { enabled?: boolean } | undefined)?.enabled) ||
+      (Array.isArray(overhaulExt.trackerCustomFieldDefaults) && overhaulExt.trackerCustomFieldDefaults.length > 0),
+    stats:
+      overhaulExt.classic != null ||
+      Object.keys((overhaulExt.rulesetSheets as Record<string, unknown> | undefined) ?? {}).length > 0,
     advanced:
       overhaulHasText(formData.system_prompt) ||
       overhaulHasText(formData.post_history_instructions) ||
@@ -1590,7 +1600,7 @@ export function CharacterEditor() {
           </div>
         </div>
 
-        <EditorTabNavigation tabs={TABS} activeId={activeTab} onChange={scrollToSection} />
+        <EditorTabNavigation tabs={CLASSIC_TABS} activeId={activeTab} onChange={scrollToSection} />
 
         <div className="mari-editor-actions flex">
           <button
@@ -1740,6 +1750,17 @@ export function CharacterEditor() {
                   )}
                 </LazyEditorSection>
               )}
+              {overhaulActive && showSection("rpstats") && (
+                <section data-editor-section="rpstats">
+                  <StatsTab
+                    formData={formData}
+                    updateExtension={updateExtension}
+                    onDraftChange={markDirty}
+                    overhaul
+                    part="roleplay"
+                  />
+                </section>
+              )}
               {showSection("stats") && (
                 <section data-editor-section="stats">
                   <StatsTab
@@ -1747,6 +1768,7 @@ export function CharacterEditor() {
                     updateExtension={updateExtension}
                     onDraftChange={markDirty}
                     overhaul={overhaulActive}
+                    part={overhaulActive ? "game" : undefined}
                   />
                 </section>
               )}
@@ -6466,9 +6488,13 @@ function StatsTab({
   updateExtension,
   onDraftChange,
   overhaul = false,
+  part,
 }: {
   /** UI overhaul: the compact Game Mode sheet replaces the RPG stats cards. */
   overhaul?: boolean;
+  /** UI overhaul: the Game Mode section (MRPG picks, ruleset sheets) or the Roleplay Stats section
+   *  (attributes, pools, tracker fields), each its own section (owner 2026-11-07). Both when unset. */
+  part?: "game" | "roleplay";
   formData: CharacterData;
   updateExtension: (key: string, value: unknown) => void;
   onDraftChange: () => void;
@@ -6537,26 +6563,32 @@ function StatsTab({
     );
   };
 
+  const showGame = part !== "roleplay";
+  const showRoleplay = part !== "game";
+
   return (
     <div className="space-y-6">
       {overhaul ? (
         <>
-          <SectionHeader title="Game Mode" />
-          <ClassicCardSection
-            value={formData.extensions.classic}
-            onChange={(classic) => updateExtension("classic", classic)}
-            description={[formData.description, formData.personality].filter(Boolean).join(" ")}
-            storySummary={
-              stats.enabled
-                ? localizeUi("game.combat.marinara.card.storyOn", {
-                    list: [...stats.attributes.map((one) => one.name), ...pools.map((pool) => pool.name)]
-                      .filter(Boolean)
-                      .join(", "),
-                  })
-                : localizeUi("game.combat.marinara.card.storyOff")
-            }
-            storyStats={
+          {showGame ? (
+            <>
+              <SectionHeader title="Game Mode" />
+              <ClassicCardSection
+                value={formData.extensions.classic}
+                onChange={(classic) => updateExtension("classic", classic)}
+                description={[formData.description, formData.personality].filter(Boolean).join(" ")}
+              />
+            </>
+          ) : null}
+          {showRoleplay ? (
+            <>
+              <SectionHeader
+                title={localizeUi("ui.characters.statstab.roleplayStats")}
+                subtitle={localizeUi("ui.characters.statstab.roleplayStatsNote")}
+              />
               <GameModeSheet
+                attributesNote={localizeUi("ui.characters.statstab.attributesNote")}
+                poolsNote={localizeUi("ui.characters.statstab.poolsNote")}
                 rpgEnabled={stats.enabled}
                 onRpgEnabled={(enabled) => update({ enabled })}
                 attributes={stats.attributes}
@@ -6595,8 +6627,8 @@ function StatsTab({
                   );
                 }}
               />
-            }
-          />
+            </>
+          ) : null}
         </>
       ) : (
         <>
@@ -6759,75 +6791,79 @@ function StatsTab({
         </>
       )}
 
-      <div className="space-y-3 border-t border-[var(--border)] pt-5">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <h3 className="text-sm font-semibold">{localizeUi("ui.characters.statstab.trackerCustomFields")}</h3>
-            <p className="mt-0.5 text-[0.6875rem] leading-relaxed text-[var(--muted-foreground)]">
-              {localizeUi("ui.characters.statstab.trackerCustomFieldsDescription")}
+      {showRoleplay ? (
+        <div className="space-y-3 border-t border-[var(--border)] pt-5">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-sm font-semibold">{localizeUi("ui.characters.statstab.trackerCustomFields")}</h3>
+              <p className="mt-0.5 text-[0.6875rem] leading-relaxed text-[var(--muted-foreground)]">
+                {localizeUi("ui.characters.statstab.trackerCustomFieldsDescription")}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                updateExtension("trackerCustomFieldDefaults", [...trackerCustomFieldDefaults, { name: "", value: "" }])
+              }
+              className="mari-chrome-accent-surface mari-accent-animated flex shrink-0 items-center gap-1 rounded-lg px-2.5 py-1 text-[0.6875rem] font-medium transition-colors"
+            >
+              <Plus size="0.75rem" />
+              {localizeUi("ui.characters.metadatatab.add")}
+            </button>
+          </div>
+
+          {trackerCustomFieldDefaults.length === 0 ? (
+            <p className="rounded-xl border border-dashed border-[var(--border)] px-3 py-4 text-center text-xs text-[var(--muted-foreground)]">
+              {localizeUi("ui.characters.statstab.noTrackerCustomFields")}
             </p>
-          </div>
-          <button
-            type="button"
-            onClick={() =>
-              updateExtension("trackerCustomFieldDefaults", [...trackerCustomFieldDefaults, { name: "", value: "" }])
-            }
-            className="mari-chrome-accent-surface mari-accent-animated flex shrink-0 items-center gap-1 rounded-lg px-2.5 py-1 text-[0.6875rem] font-medium transition-colors"
-          >
-            <Plus size="0.75rem" />
-            {localizeUi("ui.characters.metadatatab.add")}
-          </button>
-        </div>
-
-        {trackerCustomFieldDefaults.length === 0 ? (
-          <p className="rounded-xl border border-dashed border-[var(--border)] px-3 py-4 text-center text-xs text-[var(--muted-foreground)]">
-            {localizeUi("ui.characters.statstab.noTrackerCustomFields")}
-          </p>
-        ) : (
-          <div className="space-y-2">
-            {trackerCustomFieldDefaults.map((field, index) => (
-              <div
-                key={index}
-                className="grid gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)_auto] sm:items-center"
-              >
-                <input
-                  value={field.name}
-                  onChange={(event) => updateTrackerCustomFieldDefault(index, { name: event.target.value })}
-                  className="min-w-0 rounded-lg border border-[var(--border)] bg-[var(--input)] px-2 py-1 text-xs font-medium"
-                  placeholder={localizeUi("ui.characters.statstab.trackerFieldName")}
-                  aria-label={localizeUi("ui.characters.statstab.trackerFieldName")}
-                />
-                <input
-                  value={field.value}
-                  onChange={(event) => updateTrackerCustomFieldDefault(index, { value: event.target.value })}
-                  className="min-w-0 rounded-lg border border-[var(--border)] bg-[var(--input)] px-2 py-1 text-xs"
-                  placeholder={localizeUi("ui.characters.statstab.initialValue")}
-                  aria-label={localizeUi("ui.characters.statstab.initialValue")}
-                />
-                <button
-                  type="button"
-                  onClick={() =>
-                    updateExtension(
-                      "trackerCustomFieldDefaults",
-                      trackerCustomFieldDefaults.filter((_, fieldIndex) => fieldIndex !== index),
-                    )
-                  }
-                  className="rounded-lg p-1 text-[var(--muted-foreground)] transition-colors hover:bg-[var(--primary)]/15 hover:text-[var(--primary)]"
-                  title={localizeUi("ui.characters.statstab.removeTrackerField")}
-                  aria-label={localizeUi("ui.characters.statstab.removeTrackerField")}
+          ) : (
+            <div className="space-y-2">
+              {trackerCustomFieldDefaults.map((field, index) => (
+                <div
+                  key={index}
+                  className="grid gap-2 rounded-xl border border-[var(--border)] bg-[var(--card)] px-3 py-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)_auto] sm:items-center"
                 >
-                  <X size="0.75rem" />
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+                  <input
+                    value={field.name}
+                    onChange={(event) => updateTrackerCustomFieldDefault(index, { name: event.target.value })}
+                    className="min-w-0 rounded-lg border border-[var(--border)] bg-[var(--input)] px-2 py-1 text-xs font-medium"
+                    placeholder={localizeUi("ui.characters.statstab.trackerFieldName")}
+                    aria-label={localizeUi("ui.characters.statstab.trackerFieldName")}
+                  />
+                  <input
+                    value={field.value}
+                    onChange={(event) => updateTrackerCustomFieldDefault(index, { value: event.target.value })}
+                    className="min-w-0 rounded-lg border border-[var(--border)] bg-[var(--input)] px-2 py-1 text-xs"
+                    placeholder={localizeUi("ui.characters.statstab.initialValue")}
+                    aria-label={localizeUi("ui.characters.statstab.initialValue")}
+                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      updateExtension(
+                        "trackerCustomFieldDefaults",
+                        trackerCustomFieldDefaults.filter((_, fieldIndex) => fieldIndex !== index),
+                      )
+                    }
+                    className="rounded-lg p-1 text-[var(--muted-foreground)] transition-colors hover:bg-[var(--primary)]/15 hover:text-[var(--primary)]"
+                    title={localizeUi("ui.characters.statstab.removeTrackerField")}
+                    aria-label={localizeUi("ui.characters.statstab.removeTrackerField")}
+                  >
+                    <X size="0.75rem" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : null}
 
-      <RulesetSheetsSection
-        sheets={formData.extensions.rulesetSheets as Record<string, unknown> | undefined}
-        onChange={(sheets) => updateExtension("rulesetSheets", sheets)}
-      />
+      {showGame ? (
+        <RulesetSheetsSection
+          sheets={formData.extensions.rulesetSheets as Record<string, unknown> | undefined}
+          onChange={(sheets) => updateExtension("rulesetSheets", sheets)}
+        />
+      ) : null}
     </div>
   );
 }
