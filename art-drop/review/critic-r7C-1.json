@@ -1,0 +1,361 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-7.md, Part C plus its global size note",
+      "reviewed_files": [
+        "hills-prop-0",
+        "hills-prop-1",
+        "hills-prop-2",
+        "hills-prop-3",
+        "hills-prop-4",
+        "hills-prop-5",
+        "hills-prop-6",
+        "hills-prop-7",
+        "hills@winter-prop-0",
+        "hills@winter-prop-1",
+        "hills@winter-prop-2",
+        "hills@winter-prop-3",
+        "hills@winter-prop-4",
+        "hills@winter-prop-5",
+        "hills@winter-prop-6",
+        "hills@winter-prop-7"
+      ],
+      "prior_review": "art-drop/review/critic-r7C-0.json absent",
+      "excluded": "All other out/ files are comparison context only. Current Part C has no bases, peaks, trees, craters, ruins, cyberpunk tiles or autumn variants; peak lattice/range and forest composites and their specific failure modes are not applicable."
+    },
+    "hills-summer": {
+      "status": "fail",
+      "files": [
+        "hills-prop-0",
+        "hills-prop-1",
+        "hills-prop-2",
+        "hills-prop-3",
+        "hills-prop-4",
+        "hills-prop-5",
+        "hills-prop-6",
+        "hills-prop-7"
+      ],
+      "pass_count": 6,
+      "fail_count": 2
+    },
+    "hills-winter": {
+      "status": "fail",
+      "files": [
+        "hills@winter-prop-0",
+        "hills@winter-prop-1",
+        "hills@winter-prop-2",
+        "hills@winter-prop-3",
+        "hills@winter-prop-4",
+        "hills@winter-prop-5",
+        "hills@winter-prop-6",
+        "hills@winter-prop-7"
+      ],
+      "pass_count": 5,
+      "fail_count": 3
+    },
+    "mix": {
+      "single_round_hills": [
+        0,
+        1,
+        2
+      ],
+      "hill_pairs_or_chains": [
+        4,
+        5
+      ],
+      "hill_with_outcrop": [
+        6
+      ],
+      "boulder_clusters": [
+        3,
+        7
+      ],
+      "result": "All requested roles exist; redraws needed for silhouette variety, rolling relief and winter anchoring."
+    },
+    "checks": {
+      "reference": "Compared with reference/current-fantasy-hills.png and approved markers in all six settings, round-2 district/farmland/suburb examples, paddies, and grass/plains bases and details. Reference and approved style composites saved with this review prefix.",
+      "dimensions_and_placement": "All 16 files are RGBA and correct 48x48 (0-3) or 96x96 (4-7); transparent margins on all four edges; no clipped shapes. Small alpha footprints span 77.1-81.2% of cell width; large footprints span 83.3-85.4%. Vertical extent is lower because these are oblique terrain footprints, not upright square fills.",
+      "base_3x3": "Approved summer/winter grass and plains repeated 3x3 at native size; saved and inspected at 1x and 4x, with 4x seam-cross crops. Context only, no new base deliverables or base verdicts.",
+      "one_cell_random_8x2": "Summer and winter props 0-3 each occur four times in deterministic shuffled 8x2 layouts, over the corresponding grass and plains bases; inspected at 1x and 4x. No square edge seams or cell-border grid, but prop-1 has insufficient silhouette variety.",
+      "large_and_scatter": "Every prop inspected on approved summer grass, summer plains, wasteland soil, winter grass and winter plains at 1x/4x. Mixed-size scatter views inspected at 1x/4x. Additional plain sand-colour diagnostic backings (not approved terrain) inspected at 1x/4x.",
+      "every_file_8x": "All 16 individual images inspected at exact 8x nearest-neighbour scale against season-appropriate approved grass.",
+      "alpha_and_pixel_quality": "Light/dark diagnostic sheets inspected at 1x/4x plus individual 8x views. No blur, accidental antialiasing, fringe, coloured ground square or random texture noise found. Nonbinary alpha is intentional shading/fade, not treated as an antialiasing defect. Hill-only summer pixels are exclusively white/black with alpha; solid colour is restricted to rocks and winter snow.",
+      "light_palette_winter": "Top-left lighting is consistent. Grey stones and blue-white snow sit acceptably beside approved details and markers. Winter retains the original shading rather than turning blank; rock snow caps are present. Specific snow-ground readability failures are listed per file.",
+      "pass_evidence": {
+        "hills-prop-0": "A low oval hill with a readable lit slope and shaded toe at 1x; discrete alpha steps fade cleanly on green, tan and pale backings. Serves as the retained single-hill silhouette when prop-1 is replaced.",
+        "hills-prop-2": "Broader, shorter crown than prop-0; round mound remains legible in random layouts. Ground shows through the neutral shading; no hard perimeter, fringe or light-direction conflict.",
+        "hills-prop-3": "Compact solid boulder cluster has clear overlapping stones, crisp facets, a thin selective dark outline and grounded foot. Cool greys are compatible with the approved stone details; no halo on light or dark backings.",
+        "hills-prop-4": "Two unequal rounded hills read as a pair at native scale. Their saddle and separate shadow toes remain understandable on snow; no cell frame or clipping. Sparse winter marks remain small highlights.",
+        "hills-prop-6": "Summer rocky hill reads as a single mound with a small outcrop seated at its lit crest on grass/plains/tan soil. No ground square; neutral shading preserves the host hue. The snow-specific anchoring failure is recorded separately.",
+        "hills-prop-7": "Distinct large multi-stone cluster fills the intended width, with clear flat and upright rocks, coherent top-left facets, one-pixel contour accents and a contact shadow. Winter retains the geometry with coherent snow caps.",
+        "hills@winter-prop-0": "A low oval hill with a readable lit slope and shaded toe at 1x; discrete alpha steps fade cleanly on green, tan and pale backings. Serves as the retained single-hill silhouette when prop-1 is replaced.",
+        "hills@winter-prop-2": "Broader, shorter crown than prop-0; round mound remains legible in random layouts. Ground shows through the neutral shading; no hard perimeter, fringe or light-direction conflict.",
+        "hills@winter-prop-3": "Compact solid boulder cluster has clear overlapping stones, crisp facets, a thin selective dark outline and grounded foot. Cool greys are compatible with the approved stone details; no halo on light or dark backings.",
+        "hills@winter-prop-4": "Two unequal rounded hills read as a pair at native scale. Their saddle and separate shadow toes remain understandable on snow; no cell frame or clipping. Sparse winter marks remain small highlights.",
+        "hills@winter-prop-7": "Distinct large multi-stone cluster fills the intended width, with clear flat and upright rocks, coherent top-left facets, one-pixel contour accents and a contact shadow. Winter retains the geometry with coherent snow caps."
+      },
+      "evidence_prefix": "art-drop/review/critic-r7C-1-"
+    },
+    "measurements": {
+      "hills-prop-0": {
+        "size": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          6,
+          12,
+          44,
+          36
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "6817a88862eb870f652697db22694c642b01c0f2504a0bacd2c2968074eaf498"
+      },
+      "hills-prop-1": {
+        "size": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          7,
+          13,
+          44,
+          35
+        ],
+        "width_coverage_percent": 77.1,
+        "sha256": "b2e2d490e8bfb3b2e5af505849a06ac0c5a6e2c7c074df34b1b979cabff1d476"
+      },
+      "hills-prop-2": {
+        "size": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          6,
+          12,
+          44,
+          36
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "94c2388805162ce4bb6d7fa8435ca8472b927d2cce464a103ecb8f9145ddaf73"
+      },
+      "hills-prop-3": {
+        "size": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          4,
+          8,
+          43,
+          40
+        ],
+        "width_coverage_percent": 81.2,
+        "sha256": "2b08e7f235d254a6f7dbbc8d90eb08953541633d6d233df34f30e529b95c40fb"
+      },
+      "hills-prop-4": {
+        "size": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          9,
+          20,
+          89,
+          76
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "bb14702d9e0605182c72be78b3febc04e297c22079d5b1183407662c649d657c"
+      },
+      "hills-prop-5": {
+        "size": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          9,
+          18,
+          89,
+          78
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "d8ba905f3ba7904ca4364d20cb1e6168548cbcc083823ceeecb4525ac1bc8342"
+      },
+      "hills-prop-6": {
+        "size": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          9,
+          26,
+          89,
+          70
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "09119353a60f95099a6e80796fe729be9ca5a9484334640c4cc884fc39e29b42"
+      },
+      "hills-prop-7": {
+        "size": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          7,
+          15,
+          89,
+          81
+        ],
+        "width_coverage_percent": 85.4,
+        "sha256": "df2893f99ddabf110b8830d0b8348a6cedf6c792f691406d9b9eb50785b9426b"
+      },
+      "hills@winter-prop-0": {
+        "size": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          6,
+          12,
+          44,
+          36
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "bd251cf2c850f351fe46d37ee69f52d10465cd3548638e646f68e2fa6b718182"
+      },
+      "hills@winter-prop-1": {
+        "size": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          7,
+          13,
+          44,
+          35
+        ],
+        "width_coverage_percent": 77.1,
+        "sha256": "0350dfae718d2fc9a3009ffeca005fa3bb7b495eeccbeb5b6775b5873e450b6c"
+      },
+      "hills@winter-prop-2": {
+        "size": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          6,
+          12,
+          44,
+          36
+        ],
+        "width_coverage_percent": 79.2,
+        "sha256": "9c3a73efc9a8514ecf40de9ca764af50773ac43719b54ef1649f6f2f6886c937"
+      },
+      "hills@winter-prop-3": {
+        "size": [
+          48,
+          48
+        ],
+        "alpha_bbox": [
+          4,
+          8,
+          43,
+          40
+        ],
+        "width_coverage_percent": 81.2,
+        "sha256": "c76700c14bc1139ef92f86124e903ca8dfbb215069bd005ef2472aeb99ce3501"
+      },
+      "hills@winter-prop-4": {
+        "size": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          9,
+          20,
+          89,
+          76
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "aea6e0ecdef77086cc3be8acbf0dd1e49ea44fd959654bdd58624bcf14492344"
+      },
+      "hills@winter-prop-5": {
+        "size": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          9,
+          18,
+          89,
+          78
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "0bb66b35281219cb5222c4812929e6e07bb0fee07f25ea81cb1002db499f8e4a"
+      },
+      "hills@winter-prop-6": {
+        "size": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          9,
+          26,
+          89,
+          70
+        ],
+        "width_coverage_percent": 83.3,
+        "sha256": "5191e83ddf4e3b65c80d6d324b9d30a153f0fc03f26e8293b2daefb59fe5a219"
+      },
+      "hills@winter-prop-7": {
+        "size": [
+          96,
+          96
+        ],
+        "alpha_bbox": [
+          7,
+          15,
+          89,
+          81
+        ],
+        "width_coverage_percent": 85.4,
+        "sha256": "fb2df5fadef588d01ff7e95b574e6ebe6d4ef6c3061cfe31dcb853b5354f49de"
+      }
+    }
+  },
+  "pass": [
+    "hills-prop-0",
+    "hills-prop-2",
+    "hills-prop-3",
+    "hills-prop-4",
+    "hills-prop-6",
+    "hills-prop-7",
+    "hills@winter-prop-0",
+    "hills@winter-prop-2",
+    "hills@winter-prop-3",
+    "hills@winter-prop-4",
+    "hills@winter-prop-7"
+  ],
+  "fail": [
+    {
+      "name": "hills-prop-1",
+      "problems": "Near-duplicate of hills-prop-0 at 1x in both 8x2 random layouts: the same narrow SW-to-NE white crest and pointed lower-right shadow repeat, with only a slight change in length. It also reads as a thin ridge rather than a third round hill. Keep prop-0 and redraw prop-1 with a substantially broader, asymmetric round footprint and a differently placed, curved crown; preserve top-left light and neutral shading. Evidence: summer-8x2-random-grass-base and summer-8x2-random-plains-base at 1x/4x, individual-hills-prop-1 at 8x."
+    },
+    {
+      "name": "hills-prop-5",
+      "problems": "The central hill has a high, almost vertical right flank, a hard diagonal face boundary and stacked dark bands at its foot. In the native scatter it reads as a raised platform or little cliff with two satellite bumps, rather than a soft rolling hill chain. Lower the central profile, broaden its lower-right slope, replace the terrace-like bands with a gradual alpha falloff, and blend the saddles between the three crowns. Evidence: summer-scatter at 1x/4x, summer-large-surfaces on grass/plains/snow, individual-hills-prop-5 at 8x."
+    },
+    {
+      "name": "hills@winter-prop-1",
+      "problems": "Retains the near-duplicate silhouette and identical crest direction of hills@winter-prop-0; the few snow pixels do not distinguish it in the 1x randomized snow layouts. Its narrow bright strip reads as a ridge rather than a distinct round hill. Rebuild it from a more asymmetric, broader round summer prop-1 and retain that new silhouette in winter, with small snow highlights confined to the lit slope. Evidence: winter-8x2-random-grass@winter-base and winter-8x2-random-plains@winter-base at 1x/4x; individual-hills@winter-prop-1 at 8x."
+    },
+    {
+      "name": "hills@winter-prop-5",
+      "problems": "The same steep central wall and stacked foot bands as summer prop-5 become especially obvious on both approved snow bases: the chain reads as a scalloped snow ledge or cliff. Smooth the central hill into a broad rounded slope, soften the dark flank into the ground and merge the saddles; carry the corrected summer geometry into winter. Evidence: winter-large-surfaces and winter-scatter at 1x/4x, individual-hills@winter-prop-5 at 8x."
+    },
+    {
+      "name": "hills@winter-prop-6",
+      "problems": "On both approved snow bases the small dark outcrop appears suspended above and to the left of the visible hill shoulder. The intervening lit slope disappears into the snow, so the rock and hill read as separate objects at 1x as well as 4x/8x. Move the outcrop down onto the visible crown/shoulder and add a compact contact shadow or a short neutral shaded connection immediately under its base; keep enough hill relief on snow to anchor it without adding a ground patch. Evidence: winter-large-surfaces snow rows, winter-scatter at 1x/4x and individual-hills@winter-prop-6 at 8x."
+    }
+  ]
+}
