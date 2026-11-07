@@ -1,0 +1,630 @@
+{
+  "files": {
+    "crater-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "visible_bbox": [
+        9,
+        13,
+        41,
+        35
+      ],
+      "visible_pixel_count": 422,
+      "visible_rgba_colors": [
+        [
+          0,
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          0,
+          0,
+          40
+        ],
+        [
+          0,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          0,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          112
+        ],
+        [
+          0,
+          0,
+          0,
+          140
+        ],
+        [
+          0,
+          0,
+          0,
+          166
+        ],
+        [
+          255,
+          255,
+          255,
+          24
+        ],
+        [
+          255,
+          255,
+          255,
+          56
+        ],
+        [
+          255,
+          255,
+          255,
+          80
+        ],
+        [
+          255,
+          255,
+          255,
+          115
+        ]
+      ],
+      "non_neutral_visible_pixels": 0,
+      "opaque_pixels": 0,
+      "max_black_alpha": 166,
+      "max_white_alpha": 115,
+      "max_border_alpha": 0,
+      "sha256": "da300821fefc8b368adf6b5fe562ffe3d499da6c44f8de70a8c0f054285302df"
+    },
+    "crater-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "visible_bbox": [
+        7,
+        8,
+        39,
+        39
+      ],
+      "visible_pixel_count": 577,
+      "visible_rgba_colors": [
+        [
+          0,
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          0,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          112
+        ],
+        [
+          0,
+          0,
+          0,
+          140
+        ],
+        [
+          255,
+          255,
+          255,
+          24
+        ],
+        [
+          255,
+          255,
+          255,
+          56
+        ],
+        [
+          255,
+          255,
+          255,
+          80
+        ],
+        [
+          255,
+          255,
+          255,
+          115
+        ]
+      ],
+      "non_neutral_visible_pixels": 0,
+      "opaque_pixels": 0,
+      "max_black_alpha": 140,
+      "max_white_alpha": 115,
+      "max_border_alpha": 0,
+      "sha256": "fcc1a8ef0e64374f8592796d7c01c28f776f649eec6385165a4f39579cb1acab"
+    },
+    "crater-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "visible_bbox": [
+        10,
+        13,
+        37,
+        33
+      ],
+      "visible_pixel_count": 334,
+      "visible_rgba_colors": [
+        [
+          0,
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          0,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          112
+        ],
+        [
+          0,
+          0,
+          0,
+          140
+        ],
+        [
+          255,
+          255,
+          255,
+          24
+        ],
+        [
+          255,
+          255,
+          255,
+          56
+        ],
+        [
+          255,
+          255,
+          255,
+          80
+        ],
+        [
+          255,
+          255,
+          255,
+          115
+        ]
+      ],
+      "non_neutral_visible_pixels": 0,
+      "opaque_pixels": 0,
+      "max_black_alpha": 140,
+      "max_white_alpha": 115,
+      "max_border_alpha": 0,
+      "sha256": "d6c1fd93ab8be35f3be84371ff63ba7fe20935996173f4784731e8626da01c79"
+    },
+    "crater-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "visible_bbox": [
+        8,
+        9,
+        39,
+        34
+      ],
+      "visible_pixel_count": 320,
+      "visible_rgba_colors": [
+        [
+          0,
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          0,
+          0,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          112
+        ],
+        [
+          0,
+          0,
+          0,
+          140
+        ],
+        [
+          0,
+          0,
+          0,
+          166
+        ],
+        [
+          255,
+          255,
+          255,
+          24
+        ],
+        [
+          255,
+          255,
+          255,
+          56
+        ],
+        [
+          255,
+          255,
+          255,
+          80
+        ]
+      ],
+      "non_neutral_visible_pixels": 0,
+      "opaque_pixels": 0,
+      "max_black_alpha": 166,
+      "max_white_alpha": 80,
+      "max_border_alpha": 0,
+      "sha256": "08dc490daacb6ff643c9140a8fea11dbe28fd607b0feab1176bcdc3a7205db68"
+    },
+    "crater-prop-4": {
+      "size": [
+        96,
+        96
+      ],
+      "visible_bbox": [
+        12,
+        23,
+        86,
+        73
+      ],
+      "visible_pixel_count": 2160,
+      "visible_rgba_colors": [
+        [
+          0,
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          0,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          112
+        ],
+        [
+          0,
+          0,
+          0,
+          140
+        ],
+        [
+          0,
+          0,
+          0,
+          166
+        ],
+        [
+          255,
+          255,
+          255,
+          24
+        ],
+        [
+          255,
+          255,
+          255,
+          56
+        ],
+        [
+          255,
+          255,
+          255,
+          80
+        ],
+        [
+          255,
+          255,
+          255,
+          115
+        ]
+      ],
+      "non_neutral_visible_pixels": 0,
+      "opaque_pixels": 0,
+      "max_black_alpha": 166,
+      "max_white_alpha": 115,
+      "max_border_alpha": 0,
+      "sha256": "e3a59f71e046d2e53288d93533727de7c236cba0b47f3430326e927a4cc90c32"
+    },
+    "crater-prop-5": {
+      "size": [
+        96,
+        96
+      ],
+      "visible_bbox": [
+        11,
+        13,
+        82,
+        78
+      ],
+      "visible_pixel_count": 2258,
+      "visible_rgba_colors": [
+        [
+          0,
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          0,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          112
+        ],
+        [
+          0,
+          0,
+          0,
+          140
+        ],
+        [
+          0,
+          0,
+          0,
+          166
+        ],
+        [
+          255,
+          255,
+          255,
+          24
+        ],
+        [
+          255,
+          255,
+          255,
+          56
+        ],
+        [
+          255,
+          255,
+          255,
+          80
+        ],
+        [
+          255,
+          255,
+          255,
+          115
+        ]
+      ],
+      "non_neutral_visible_pixels": 0,
+      "opaque_pixels": 0,
+      "max_black_alpha": 166,
+      "max_white_alpha": 115,
+      "max_border_alpha": 0,
+      "sha256": "705bac43b17d8768aca0538dd6e1dfd75992119d22280b9a5aa1e7331043af1b"
+    },
+    "crater-prop-6": {
+      "size": [
+        96,
+        96
+      ],
+      "visible_bbox": [
+        14,
+        28,
+        85,
+        73
+      ],
+      "visible_pixel_count": 1883,
+      "visible_rgba_colors": [
+        [
+          0,
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          0,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          112
+        ],
+        [
+          0,
+          0,
+          0,
+          140
+        ],
+        [
+          0,
+          0,
+          0,
+          166
+        ],
+        [
+          255,
+          255,
+          255,
+          24
+        ],
+        [
+          255,
+          255,
+          255,
+          56
+        ],
+        [
+          255,
+          255,
+          255,
+          80
+        ],
+        [
+          255,
+          255,
+          255,
+          115
+        ]
+      ],
+      "non_neutral_visible_pixels": 0,
+      "opaque_pixels": 0,
+      "max_black_alpha": 166,
+      "max_white_alpha": 115,
+      "max_border_alpha": 0,
+      "sha256": "6e5987f6eb9223c57c1f1922ac46fcac71ffd57ac9dfd2decff60546d499d328"
+    },
+    "crater-prop-7": {
+      "size": [
+        96,
+        96
+      ],
+      "visible_bbox": [
+        15,
+        16,
+        80,
+        77
+      ],
+      "visible_pixel_count": 1707,
+      "visible_rgba_colors": [
+        [
+          0,
+          0,
+          0,
+          24
+        ],
+        [
+          0,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          0,
+          80
+        ],
+        [
+          0,
+          0,
+          0,
+          112
+        ],
+        [
+          0,
+          0,
+          0,
+          140
+        ],
+        [
+          255,
+          255,
+          255,
+          24
+        ],
+        [
+          255,
+          255,
+          255,
+          56
+        ],
+        [
+          255,
+          255,
+          255,
+          80
+        ],
+        [
+          255,
+          255,
+          255,
+          115
+        ]
+      ],
+      "non_neutral_visible_pixels": 0,
+      "opaque_pixels": 0,
+      "max_black_alpha": 140,
+      "max_white_alpha": 115,
+      "max_border_alpha": 0,
+      "sha256": "5fed8b1ae12c4f7ac1083a8a944c972b90cb12ddd5fe72117a9f873e95c324f2"
+    }
+  },
+  "out_directory_unchanged": true,
+  "out_file_count": 348
+}
