@@ -970,7 +970,8 @@ export function WorldOverworld({
         const look = propCells.get(y * width + x);
         if (!look || wetCell[y * width + x]) continue;
         const noise = cellNoise(x, y);
-        if (noise(63) >= 0.65) continue;
+        // Hills stand apart (a slope every cell reads as a heap of lumps), the rest about two cells in three.
+        if (noise(63) >= (look === "hills" ? 0.35 : 0.65)) continue;
         // A large one spills half a cell round it, so never beside water (its pools would lie over the lake).
         let shore = false;
         for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (wetAt(x + dx, y + dy)) shore = true;
