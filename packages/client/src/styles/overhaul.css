@@ -9635,6 +9635,8 @@ input.ov-edhead__title:focus {
   height: 2rem;
   flex: none;
   border-radius: 0.5rem;
+}
+
 /* ─── Game Mode section: Classic picks (ClassicCardSection) ─── */
 .ov-classic {
   display: grid;
