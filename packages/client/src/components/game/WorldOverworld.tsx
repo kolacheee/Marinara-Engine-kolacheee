@@ -35,6 +35,7 @@ import {
   worldRangePeaks,
   worldRangeRidges,
   worldRoadBridgePiece,
+  worldHistory,
   worldEdgeMask,
   WORLD_FRINGE_ORDER,
   WORLD_SQUARE_LOOKS,
@@ -411,6 +412,11 @@ export function WorldOverworld({
     // A wood's floor lies only inside it, off its roads and back from its places (the trees stand clear of
     // them, so the ground beside shows there instead).
     const clearing = new Set<number>();
+    // Where history says a place stood and fell: cleared like a place, its ruins drawn there (below).
+    const lostSpots = drawTile.hasPiece("ruins_props", 0) ? worldHistory(game).lost : [];
+    for (const lost of lostSpots)
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) clearing.add((lost.at.y + dy) * width + lost.at.x + dx);
     for (const place of world.places)
       for (let dy = -1; dy <= 1; dy++)
         for (let dx = -1; dx <= 1; dx++) clearing.add((place.at.y + dy) * width + place.at.x + dx);
@@ -744,6 +750,7 @@ export function WorldOverworld({
     // The trees on wooded looks that have them, with the markers: on the look's floor as drawn through its
     // fringe (so they follow its curved edge), never on a road or a place.
     const placed = new Set(world.places.map((place) => place.at.y * width + place.at.x));
+    const lostCells = new Set(lostSpots.map((lost) => lost.at.y * width + lost.at.x));
     const trees: Array<{ x: number; y: number; id: string; pick: number; w: number; h: number }> = [];
     for (const look of treeLooks) {
       if (!drawnLook.includes(look)) continue;
@@ -761,7 +768,7 @@ export function WorldOverworld({
             if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
             const far = Math.hypot(px - (nx + 0.5), py - (ny + 0.5));
             if (far < 0.85 && roads.has(ny * width + nx)) return false;
-            if (far < 1.9 && placed.has(ny * width + nx)) return false;
+            if (far < 1.9 && (placed.has(ny * width + nx) || lostCells.has(ny * width + nx))) return false;
           }
         if (square.has(drawnLook[cy * width + cx]!)) return false;
         // Never in the water (a water cell is drawn over the land under it, which may be the wood's),
@@ -963,7 +970,8 @@ export function WorldOverworld({
         const look = propCells.get(y * width + x);
         if (!look || wetCell[y * width + x]) continue;
         const noise = cellNoise(x, y);
-        if (noise(63) >= 0.65) continue;
+        // Hills stand apart (a slope every cell reads as a heap of lumps), the rest about two cells in three.
+        if (noise(63) >= (look === "hills" ? 0.35 : 0.65)) continue;
         // A large one spills half a cell round it, so never beside water (its pools would lie over the lake).
         let shore = false;
         for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (wetAt(x + dx, y + dy)) shore = true;
@@ -979,6 +987,30 @@ export function WorldOverworld({
           noise(66),
         );
       }
+    // Ruins where history says a place stood and fell (the owner, 2026-11-07: does their placement "make
+    // sense ... there was a civilization there at some point?"): a cluster round each lost place, on open
+    // ground (a wood's trees stand back from it) and never on a field, a built-up look, water, a road or a place.
+    for (const lost of lostSpots) {
+      // Each small ruin in a cluster a different one, so no two arches stand side by side alike.
+      let next = Math.floor(cellNoise(lost.at.x, lost.at.y)(70) * 4);
+      for (let dy = -2; dy <= 2; dy++)
+        for (let dx = -2; dx <= 2; dx++) {
+          const [x, y] = [lost.at.x + dx, lost.at.y + dy];
+          if (x < 0 || y < 0 || x >= width || y >= height) continue;
+          const at = y * width + x;
+          const look = drawnLook[at]!;
+          if (wetCell[at] || roads.has(at) || placed.has(at) || builtLooks.has(look) || square.has(look)) continue;
+          const noise = cellNoise(x, y);
+          const reach = Math.hypot(dx, dy);
+          if (reach > 1.6 || noise(67) > (reach < 0.5 ? 1 : 0.7)) continue;
+          let shore = false;
+          for (let ny = -1; ny <= 1; ny++) for (let nx = -1; nx <= 1; nx++) if (wetAt(x + nx, y + ny)) shore = true;
+          // The heart of the place a large ruin (a shell, a fallen tower), the rest smaller rubble round it.
+          const piece = reach < 0.5 && !shore ? 4 + Math.floor(noise(68) * 4) : next++ % 4;
+          inSeason(x, y);
+          drawTile.piece(ctx, "ruins_props", piece, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(66));
+        }
+    }
     drawTile.setCellSeason(undefined);
     return { canvas, trees };
   }, [byId, drawTile, game, heldCells, kit.travel, resolution, siteIds, world]);
