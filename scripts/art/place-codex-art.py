@@ -25,6 +25,10 @@ TILE_LOOKS = ("slums", "industry", "city", "suburb", "paddies")
 # Open ground redrawn with a texture (`<look><season>-base.png`, 288 px) and eight small things to scatter
 # over it (`<look><season>-detail-0..7.png`, the tile `decor_<look><season>`).
 DECOR_LOOKS = ("grass", "plains")
+# Ground textures only (`[<family>-]<look><season>-base.png`, 288 px).
+PATTERN_LOOKS = ("mountains", "craters", "ruins", "wasteland")
+# Standing sprites planted over a look (eight files by this pattern, the tile `treeline_<look><season>`).
+STANDING = (("mountains", "mountains{season}-peak-{i}.png"), ("forest", "treeline_forest{season}-{i}.png"))
 SEASONS = ("", "@spring", "@autumn", "@winter")
 # Settings whose farmland carries one of their own farmsteads among its variants.
 FARMSTEADS = ("fantasy", "wuxia", "jazz_age", "modern")
@@ -51,6 +55,12 @@ def main(out_dir, paths, only):
             if look not in only:
                 continue
             for season in SEASONS:
+                # A setting's own set (`<family>-<look><season>-<i>.png`) over the shared one, and it may add a
+                # season the pack had none of.
+                own = [os.path.join(out_dir, f"{family}-{look}{season}-{i}.png") for i in range(8)]
+                if all(os.path.exists(f) for f in own):
+                    made[f"{look}{season}"] = [(Image.open(f).convert("RGBA"), 1, 1) for f in own]
+                    continue
                 if f"{look}{season}" not in pack["tiles"]:
                     continue
                 files = [os.path.join(out_dir, f"{look}{season}-{i}.png") for i in range(8)]
@@ -69,6 +79,30 @@ def main(out_dir, paths, only):
                 files = [os.path.join(out_dir, f"{look}{season}-detail-{i}.png") for i in range(8)]
                 if all(os.path.exists(f) for f in files):
                     made[f"decor_{look}{season}"] = [(Image.open(f).convert("RGBA"), 1, 1) for f in files]
+        for look in PATTERN_LOOKS:
+            if look not in only:
+                continue
+            for season in SEASONS:
+                # A ground's texture, six cells square: the setting's own, else the shared one.
+                for base in (f"{family}-{look}{season}-base.png", f"{look}{season}-base.png"):
+                    if os.path.exists(os.path.join(out_dir, base)):
+                        made[f"{look}{season}"] = [(Image.open(os.path.join(out_dir, base)).convert("RGBA"), 6, 6)]
+                        break
+        for look, name in STANDING:
+            if look not in only:
+                continue
+            for season in SEASONS:
+                # Eight standing sprites (peaks, trees) as one block four cells by two.
+                files = [os.path.join(out_dir, name.format(season=season, i=i)) for i in range(8)]
+                tid = f"treeline_{look}{season}"
+                if not all(os.path.exists(f) for f in files):
+                    continue
+                if look != "mountains" and tid not in pack["tiles"] and f"treeline_{look}" not in pack["tiles"]:
+                    continue
+                block = Image.new("RGBA", (4 * CELL, 2 * CELL))
+                for i, f in enumerate(files):
+                    block.alpha_composite(Image.open(f).convert("RGBA"), ((i % 4) * CELL, (i // 4) * CELL))
+                made[tid] = [(block, 4, 2)]
         if "farmland" in only:
             # Seven field tiles and, in a setting that has one, its farmstead: one cell in eight a farm.
             for season in SEASONS:
@@ -112,7 +146,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", *TILE_LOOKS, *DECOR_LOOKS}
+    only = {"markers", "farmland", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))

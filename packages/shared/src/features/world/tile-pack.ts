@@ -109,6 +109,9 @@ export const WORLD_TREELINE_LOOKS = Object.freeze([
   "jungle",
   "dead_forest",
   "bamboo",
+  // Peaks standing over a range's rocky ground (user, 2026-11-07 review: one texture of identical peaks read
+  // as wallpaper), planted like trees.
+  "mountains",
 ] as const);
 
 /** Open ground with small things scattered over it (image packs; user, 2026-11-06, plains "mixed up a bit
