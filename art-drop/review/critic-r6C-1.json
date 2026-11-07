@@ -1,0 +1,260 @@
+{
+  "sets": {
+    "mountains": {
+      "verdict": "fail",
+      "files": [
+        "mountains-base",
+        "mountains-peak-0",
+        "mountains-peak-1",
+        "mountains-peak-2",
+        "mountains-peak-3",
+        "mountains-peak-4",
+        "mountains-peak-5",
+        "mountains-peak-6",
+        "mountains-peak-7",
+        "mountains-pine-0",
+        "mountains-pine-1",
+        "mountains-pine-2",
+        "mountains-pine-3",
+        "mountains-pine-4",
+        "mountains-pine-5",
+        "mountains-pine-6",
+        "mountains-pine-7",
+        "mountains-ridge-0",
+        "mountains-ridge-1",
+        "mountains-ridge-2",
+        "mountains-ridge-3",
+        "mountains-ridge-4",
+        "mountains-ridge-5",
+        "mountains-ridge-6",
+        "mountains-ridge-7",
+        "mountains@winter-base",
+        "mountains@winter-peak-0",
+        "mountains@winter-peak-1",
+        "mountains@winter-peak-2",
+        "mountains@winter-peak-3",
+        "mountains@winter-peak-4",
+        "mountains@winter-peak-5",
+        "mountains@winter-peak-6",
+        "mountains@winter-peak-7",
+        "mountains@winter-pine-0",
+        "mountains@winter-pine-1",
+        "mountains@winter-pine-2",
+        "mountains@winter-pine-3",
+        "mountains@winter-pine-4",
+        "mountains@winter-pine-5",
+        "mountains@winter-pine-6",
+        "mountains@winter-pine-7",
+        "mountains@winter-ridge-0",
+        "mountains@winter-ridge-1",
+        "mountains@winter-ridge-2",
+        "mountains@winter-ridge-3",
+        "mountains@winter-ridge-4",
+        "mountains@winter-ridge-5",
+        "mountains@winter-ridge-6",
+        "mountains@winter-ridge-7"
+      ],
+      "checks": {
+        "scope": "Only BRIEF-6.md Part C: 2 bases, 16 ridges, 16 existing peaks and 16 pines, summer and winter. References and approved art are comparison sources only.",
+        "prior_review": "art-drop/review/critic-r6C-0.json does not exist; no inherited passes apply.",
+        "individual_8x": "Every one of the 50 files was visually inspected as an individual nearest-neighbour 8x image on a checker background. Both bases were additionally inspected in all four 144x144 quadrants at exact 8x and across their wrapped junctions.",
+        "technical": "All expected files exist at the requested sizes: bases 288x288, ridges 144x96, peaks 96x96, pines 48x48. Bases are opaque. Sprites have transparent surroundings. All alpha is 0/255; every visible sprite is one 8-connected component. No exact duplicate RGBA images. No blur, smooth antialiasing, detached fringe pixels or export halos found at 8x.",
+        "references": "Visually compared with the named reference directory, especially current-fantasy-mountains, its winter counterpart, current-fantasy-hills, current-fantasy-treeline_forest, current-fantasy-treeline_conifer_forest and current grass/plains summer/winter. The old mountain atlas is a scale/material reference, not permission to reproduce its egg-crate layout.",
+        "approved_art": "Compared against approved fantasy/wuxia/modern markers, representative round-2 farmland/city/industry/suburb tiles, summer/winter paddies, and approved grass/plains bases and all summer/winter detail variants. Reference/approved-art/detail boards are saved. The muted slate rock, restrained greens and blue-white snow fit their material/value range; no separate palette-clash failure.",
+        "lighting": "Upper-left rock facets and foliage accents are light; right-facing rock planes and lower foliage are dark. Snow sits on upward-facing ledges and branches. No reversed-light failure.",
+        "seasonal_consistency": "Winter retains each summer silhouette and readable rock/needle structure, with substantial snow rather than a blank white substitute. The base failure concerns repetition, not missing winter content.",
+        "other_specific_problems": "Crater pits/Swiss-cheese craters, classical ruins, cyberpunk street grids and flat orange autumn art are outside Part C. Pine crown repetition is applicable and was checked in randomized and forest composites; the eight crown silhouettes remain distinguishable."
+      }
+    },
+    "bases": {
+      "verdict": "fail",
+      "files": [
+        "mountains-base",
+        "mountains@winter-base"
+      ],
+      "checks": {
+        "tiling": "Both inspected as full 3x3 fields at 1x and 4x, plus wrapped four-tile junctions and individual 8x views. No hard border seam or square alpha edge. The recognizable ledge motifs reveal the 288px repeat in both seasons.",
+        "ground": "Summer reads as a grey-green rocky slope with scree, ledges and sparse tufts, without a brown floor. Winter shows snow with grey rock. Grass/plains adjacency is materially plausible. These successes do not excuse the repeat."
+      },
+      "evidence": [
+        "critic-r6C-1-summer-base-3x3-1x.png",
+        "critic-r6C-1-summer-base-3x3-4x.png",
+        "critic-r6C-1-winter-base-3x3-1x.png",
+        "critic-r6C-1-winter-base-3x3-4x.png"
+      ]
+    },
+    "ridges": {
+      "verdict": "pass",
+      "files": [
+        "mountains-ridge-0",
+        "mountains-ridge-1",
+        "mountains-ridge-2",
+        "mountains-ridge-3",
+        "mountains-ridge-4",
+        "mountains-ridge-5",
+        "mountains-ridge-6",
+        "mountains-ridge-7",
+        "mountains@winter-ridge-0",
+        "mountains@winter-ridge-1",
+        "mountains@winter-ridge-2",
+        "mountains@winter-ridge-3",
+        "mountains@winter-ridge-4",
+        "mountains@winter-ridge-5",
+        "mountains@winter-ridge-6",
+        "mountains@winter-ridge-7"
+      ],
+      "checks": {
+        "shape_and_placement": "Each is a joined chain of 2-4 peaks with connected shoulders/saddles, low tapered lateral ends and a foot on the bottom edge. Indices 0-1 are tall, 2-5 medium and 6-7 low; the height categories are clearly visible in both seasons.",
+        "range": "Inspected seeded random staggered ranges at the specified 96px horizontal / 40px vertical spacing, at 1x and 4x, and explicit 48px-overlap pairs at both scales. Lateral overlap forms shared range silhouettes without a rectangular sprite edge or detached peak stamps. Low foothills leave ground channels, which are expected from the required low height; they are not evidence of a malformed join.",
+        "variety": "Two tall arrangements, broad/asymmetric medium chains and low foothills stay distinct at 1x. No near-duplicate rejection. Internal rock striations stay readable at 8x; snow preserves their relief."
+      },
+      "evidence": [
+        "critic-r6C-1-summer-range-1x.png",
+        "critic-r6C-1-summer-range-4x.png",
+        "critic-r6C-1-summer-ridge-overlap-pairs-1x.png",
+        "critic-r6C-1-summer-ridge-overlap-pairs-4x.png",
+        "critic-r6C-1-summer-ridges-1x.png",
+        "critic-r6C-1-summer-ridges-4x.png",
+        "critic-r6C-1-winter-range-1x.png",
+        "critic-r6C-1-winter-range-4x.png",
+        "critic-r6C-1-winter-ridge-overlap-pairs-1x.png",
+        "critic-r6C-1-winter-ridge-overlap-pairs-4x.png",
+        "critic-r6C-1-winter-ridges-1x.png",
+        "critic-r6C-1-winter-ridges-4x.png"
+      ]
+    },
+    "peaks": {
+      "verdict": "pass",
+      "files": [
+        "mountains-peak-0",
+        "mountains-peak-1",
+        "mountains-peak-2",
+        "mountains-peak-3",
+        "mountains-peak-4",
+        "mountains-peak-5",
+        "mountains-peak-6",
+        "mountains-peak-7",
+        "mountains@winter-peak-0",
+        "mountains@winter-peak-1",
+        "mountains@winter-peak-2",
+        "mountains@winter-peak-3",
+        "mountains@winter-peak-4",
+        "mountains@winter-peak-5",
+        "mountains@winter-peak-6",
+        "mountains@winter-peak-7"
+      ],
+      "checks": {
+        "fallback_lattice": "All eight per season inspected at 1x and 4x in a staggered fallback lattice with positional jitter, and individually at 8x. They offer distinct pointed, asymmetric, mesa and low rocky shapes. They remain suitable for the narrow spots specified by Part C.",
+        "egg_crate": "The old reference has a conspicuous repeated full-coverage peak array. The fallback stress lattice is necessarily regular in placement, but the actual supplied peak silhouettes vary strongly in height and width; the ridge range supplies the joined mass. No rejection for using the existing peak designs that Part C expressly says to retain.",
+        "placement_and_edges": "Feet are centered near the bottom (last occupied row 93); the small transparent bottom margin does not make them float in ground composites. Dark contours are crisp and intentional, compatible with approved outlined props rather than a partial-alpha halo. Snow and rock planes remain readable."
+      },
+      "evidence": [
+        "critic-r6C-1-summer-peak-lattice-1x.png",
+        "critic-r6C-1-summer-peak-lattice-4x.png",
+        "critic-r6C-1-winter-peak-lattice-1x.png",
+        "critic-r6C-1-winter-peak-lattice-4x.png"
+      ]
+    },
+    "pines": {
+      "verdict": "pass",
+      "files": [
+        "mountains-pine-0",
+        "mountains-pine-1",
+        "mountains-pine-2",
+        "mountains-pine-3",
+        "mountains-pine-4",
+        "mountains-pine-5",
+        "mountains-pine-6",
+        "mountains-pine-7",
+        "mountains@winter-pine-0",
+        "mountains@winter-pine-1",
+        "mountains@winter-pine-2",
+        "mountains@winter-pine-3",
+        "mountains@winter-pine-4",
+        "mountains@winter-pine-5",
+        "mountains@winter-pine-6",
+        "mountains@winter-pine-7"
+      ],
+      "checks": {
+        "one_cell_random_tiling": "Inspected an 8-column x 2-row random one-cell board at 1x and 4x for each season; every variant occurs twice. No opaque cell backing, cell-edge seam or stamped square grid.",
+        "forest": "Inspected each season in a densely planted forest at 1x and 4x, and in a grass/mountain/plains transition beside full-size forest trees. The winter transition uses the named green conifer reference solely for height comparison; it is not a proposed winter forest asset. Dense winter forest uses only the actual winter pines.",
+        "scale_placement_variety": "Occupied tree heights are 22-26px with trunks reaching row 47 at the bottom center. They read as small foothill conifers next to the roughly mid-30px reference trees. Narrow, broad, leaning and irregular crowns are distinguishable; none is an identical crown or merely a recoloured clone of another summer variant.",
+        "winter_and_pixel_quality": "Winter snow follows branch tiers and retains dark needles/trunks. All 16 inspected at 8x: readable clusters, upper-left highlights, no blurred edges, stray components, halo or muddy silhouette requiring rejection."
+      },
+      "evidence": [
+        "critic-r6C-1-summer-pines-random-8x2-1x.png",
+        "critic-r6C-1-summer-pines-random-8x2-4x.png",
+        "critic-r6C-1-summer-pines-dense-forest-1x.png",
+        "critic-r6C-1-summer-pines-dense-forest-4x.png",
+        "critic-r6C-1-summer-forest-transition-1x.png",
+        "critic-r6C-1-summer-forest-transition-4x.png",
+        "critic-r6C-1-winter-pines-random-8x2-1x.png",
+        "critic-r6C-1-winter-pines-random-8x2-4x.png",
+        "critic-r6C-1-winter-pines-dense-forest-1x.png",
+        "critic-r6C-1-winter-pines-dense-forest-4x.png",
+        "critic-r6C-1-winter-forest-transition-1x.png",
+        "critic-r6C-1-winter-forest-transition-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "mountains-peak-0",
+    "mountains-peak-1",
+    "mountains-peak-2",
+    "mountains-peak-3",
+    "mountains-peak-4",
+    "mountains-peak-5",
+    "mountains-peak-6",
+    "mountains-peak-7",
+    "mountains-pine-0",
+    "mountains-pine-1",
+    "mountains-pine-2",
+    "mountains-pine-3",
+    "mountains-pine-4",
+    "mountains-pine-5",
+    "mountains-pine-6",
+    "mountains-pine-7",
+    "mountains-ridge-0",
+    "mountains-ridge-1",
+    "mountains-ridge-2",
+    "mountains-ridge-3",
+    "mountains-ridge-4",
+    "mountains-ridge-5",
+    "mountains-ridge-6",
+    "mountains-ridge-7",
+    "mountains@winter-peak-0",
+    "mountains@winter-peak-1",
+    "mountains@winter-peak-2",
+    "mountains@winter-peak-3",
+    "mountains@winter-peak-4",
+    "mountains@winter-peak-5",
+    "mountains@winter-peak-6",
+    "mountains@winter-peak-7",
+    "mountains@winter-pine-0",
+    "mountains@winter-pine-1",
+    "mountains@winter-pine-2",
+    "mountains@winter-pine-3",
+    "mountains@winter-pine-4",
+    "mountains@winter-pine-5",
+    "mountains@winter-pine-6",
+    "mountains@winter-pine-7",
+    "mountains@winter-ridge-0",
+    "mountains@winter-ridge-1",
+    "mountains@winter-ridge-2",
+    "mountains@winter-ridge-3",
+    "mountains@winter-ridge-4",
+    "mountains@winter-ridge-5",
+    "mountains@winter-ridge-6",
+    "mountains@winter-ridge-7"
+  ],
+  "fail": [
+    {
+      "name": "mountains-base",
+      "problems": "Visible repeat at 1x and 4x in critic-r6C-1-summer-base-3x3-1x.png / -4x.png: the long upper-right rock shelf and the broad lower-left ledge recur as recognizable paired landmarks every 288px, making rows of identical outcrops across the slope. The diagonal moss/scree strokes reinforce those repeated bands. Reduce the size and value contrast of the largest shelves, break their continuous fronts into irregular smaller scree/ledge clusters, and redistribute the surrounding quiet areas so the 3x3 field does not reveal each tile. Keep the grey-green palette and sparse tufts; no brown recolour is needed."
+    },
+    {
+      "name": "mountains@winter-base",
+      "problems": "Strong wallpaper repeat at 1x and 4x in critic-r6C-1-winter-base-3x3-1x.png / -4x.png: the long snow-capped ledge in the upper-right and the broad ledge in the lower-left have dark continuous front faces that repeat as conspicuous identical marks every 288px. Those dark shelves expose the tile lattice much more strongly than the approved winter grass/plains bases. Break up the largest dark faces, shorten and vary the snow shelves, lower their contrast against the snow, and spread smaller exposed-rock patches less rhythmically. Preserve readable grey rock and snow; do not solve this by making winter blank."
+    }
+  ]
+}
