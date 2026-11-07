@@ -1,0 +1,70 @@
+{
+  "sets": {
+    "qc": {
+      "scope": "BRIEF-6.md Part D only: eight forest floor bases. Other art is comparison/context, without verdicts.",
+      "prior_review": "critic-r6D-0.json does not exist.",
+      "performed": [
+        "Each base tiled 3x3 at 1x and nearest-neighbour 4x; wrap intersection also examined at 4x.",
+        "Every individual file examined at nearest-neighbour 8x.",
+        "Every base composited beneath a deterministic, varied forest at 1x and 4x.",
+        "Compared with named forest/ground references, approved markers, round-2 tiles, paddies, and all seasonal grass/plains bases with their eight details.",
+        "Checked dimensions, opacity, pixel edges, noise, shape readability, lighting, ground darkness, palette fit, seasonal content, repeats and similarity."
+      ],
+      "not_applicable": "No Part D peaks, ridges, crater props, ruins, cyberpunk city tiles, one-cell tiles or new tree crowns. Peak lattice/range and 8x2 random one-cell tiling are therefore not applicable; identical-crown judgments are outside this review.",
+      "tree_context": "Broadleaf: out/treeline_forest-0..7 and @autumn versions. Conifer: reference/current-fantasy-treeline_conifer_forest.png. Summer broadleaf silhouettes also used for spring/winter ground-readability checks, because no matching spring/winter broadleaf set exists in out/. Unseasonal comparator foliage is not a floor defect.",
+      "format": "All eight files are 288x288, fully opaque, with 6-8 solid palette colours. Opaque coverage is appropriate for a repeating floor. No visible blur, antialiasing, alpha fringe, halo, placement defect or conflicting directional light found in the floor pixels.",
+      "darkness": "All seasonal floors are darker than matching approved grass. Mean Rec.709 RGB luma: forest 76.28/76.27/70.57/129.38 and conifer 62.14/69.17/65.54/126.99 (summer/spring/autumn/winter), versus grass 111.65/152.31/120.05/240.86.",
+      "similarity": "No exact duplicate files. Shared subdued moss/litter vocabulary in non-winter seasons is acceptable for shaded floor; it does not create identical crowns or a conspicuous stamped grid.",
+      "evidence": "critic-r6D-1-<name>-tile3x3-{1x,4x}.png; -wrap-intersection-4x.png; -8x.png; -forest-{1x,4x}.png; -forest-center-4x.png; -ground-comparison-{1x,4x}.png.",
+      "out_unchanged": true
+    },
+    "forest_floor": {
+      "files": [
+        "forest-floor-base",
+        "forest@autumn-floor-base",
+        "forest@spring-floor-base",
+        "forest@winter-floor-base"
+      ],
+      "result": "3 pass, 1 fail",
+      "pass_evidence": {
+        "forest-floor-base": "Low-contrast olive moss and sparse litter remain subordinate beneath the approved broadleaf trees; repeat joins do not draw a grid at map scale.",
+        "forest@spring-floor-base": "Fresher moss stays dark enough for shade; clean hard pixels, calm tiling, and readable overlaid trees.",
+        "forest@autumn-floor-base": "Sparse ochre fallen-leaf marks on subdued olive ground complement the varied approved autumn trees; no flat orange wash."
+      },
+      "winter": "Fail: busy raised-looking snow islands and a conspicuous repeated pattern."
+    },
+    "conifer_forest_floor": {
+      "files": [
+        "conifer_forest-floor-base",
+        "conifer_forest@autumn-floor-base",
+        "conifer_forest@spring-floor-base",
+        "conifer_forest@winter-floor-base"
+      ],
+      "result": "3 pass, 1 fail",
+      "pass_evidence": {
+        "conifer_forest-floor-base": "Dark blue-green shade with restrained moss/needle marks supports the reference conifers without adding crowns or competing highlights.",
+        "conifer_forest@spring-floor-base": "Sparse fresh moss and tiny needle/litter marks preserve quiet shaded gaps and clear tree silhouettes.",
+        "conifer_forest@autumn-floor-base": "Muted brown needle streaks provide autumn litter without turning evergreen ground orange; remains calm in repeat and forest composites."
+      },
+      "winter": "Fail: high-contrast camouflage pattern competes with trees and advertises the repeat."
+    }
+  },
+  "pass": [
+    "conifer_forest-floor-base",
+    "conifer_forest@autumn-floor-base",
+    "conifer_forest@spring-floor-base",
+    "forest-floor-base",
+    "forest@autumn-floor-base",
+    "forest@spring-floor-base"
+  ],
+  "fail": [
+    {
+      "name": "conifer_forest@winter-floor-base",
+      "problems": "At 1x the floor reads as dense blue-grey camouflage, not calm thin snow over needle-covered shade. Serrated light islands with shaded rims are close to tree-footprint size and compete with the conifers in the forest composite; at 4x/8x the rims make them look like raised clumps. The same distinctive dark forks and snow islands recur every 288 px in the 3x3 field, producing obvious repeated rows/columns. Compared with the approved winter grass/plains and snowy paddies, nearly all snow is a uniform muted blue slab, without their small neutral-white snow accents. Rework into fewer, broader, flatter low-contrast snow drifts with quieter edges and irregular dark litter openings; use restrained matching snow highlights while retaining forest shade, then recheck the full repeat and tree composite."
+    },
+    {
+      "name": "forest@winter-floor-base",
+      "problems": "Fails the calm-floor requirement: interlocking lobed snow shapes and hard dark-green gaps create an all-over camouflage pattern at 1x. Their bright upper rims and dark lower rims give many patches a bush/crown-like raised silhouette at 4x/8x, adding visual clutter directly between and behind tree trunks. The prominent forked snow bands recur every 288 px and form a readily traceable wallpaper repeat in the 3x3 composite. The predominantly blue-grey snow also sits apart from the neutral-white highlights of approved winter ground and paddies. Flatten the patch shading, simplify the serrated contours, group snow into larger unequal drifts separated by broad quiet shade/litter areas, and add only sparse compatible snow highlights; ensure the new arrangement conceals the repeat beneath trees."
+    }
+  ]
+}

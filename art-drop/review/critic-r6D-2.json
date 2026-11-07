@@ -1,0 +1,71 @@
+{
+  "sets": {
+    "qc": {
+      "scope": "BRIEF-6.md Part D only: eight 288x288 forest/conifer forest floor bases, four seasons per family. All other art used solely as reference/context.",
+      "standard": "Good enough to ship beside the approved art; six unchanged prior passes retained. Both changed winter files independently rechecked and rejected for the concrete defects below.",
+      "prior_review": "critic-r6D-1.json plus SHA-256 records in critic-r6D-1-checks.json. All six prior passes are byte-for-byte unchanged; only the two previous winter failures changed.",
+      "performed": [
+        "Each of the eight bases tiled 3x3 and examined at 1x and nearest-neighbour 4x, including enlarged wrap intersections.",
+        "Every individual Part D file examined at nearest-neighbour 8x.",
+        "Each floor composited under a deterministic varied forest, examined at 1x and 4x, with enlarged central views.",
+        "Compared against named tree/grass/plains references in art-drop/reference, approved out markers, round-2 city/slums/industry/suburb/farmland tiles, all seasonal paddies, and all seasonal grass/plains bases with their eight details.",
+        "Checked dimensions, opacity, pixel edges, blur/antialiasing, noise, shape readability, halo/fringe, lighting, palette compatibility, darkness against grass, seasonal content, flat orange autumn, visible seams/repeats and duplicates."
+      ],
+      "not_applicable": "Part D contains no peaks/ridges, one-cell tile sets, crater props, ruins, cyberpunk city art, or new crowns. Peak lattice/range and 8x2 random one-cell tiling therefore have no Part D inputs. Egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical crowns are outside these eight floor verdicts.",
+      "tree_context": "Broadleaf uses approved out/treeline_forest-0..7 and @autumn-0..7; conifer uses the eight 48x48 cells of reference/current-fantasy-treeline_conifer_forest.png. Spring/winter broadleaf use summer trees to check floor readability because matching seasonal broadleaf trees are absent from out. Reference conifers are evergreen and unsnowed. Comparator foliage season is not counted as a floor defect.",
+      "format": "All eight are 288x288, fully opaque with 4-8 hard palette colours. Solid coverage is appropriate for these ground bases. No intrinsic blur, antialiasing, transparency fringe/halo, placement error or reversed light found. No hard straight wrap seam found; winter failures concern conspicuous motif repetition and unfinished surface/palette treatment.",
+      "darkness": "All eight are darker than matching approved grass. Winter mean RGB luma: conifer 150.51, broadleaf 153.01 versus winter grass 240.86; darkness passes, but does not cure the winter surface defects.",
+      "similarity": "No exact duplicates among the eight. Non-winter floors share subdued ground vocabulary but retain distinct density, seasonal litter and hue. No concrete new duplicate defect overturns a prior pass.",
+      "evidence": "critic-r6D-2-<name>-tile3x3-{1x,4x}.png; -wrap-intersection-4x.png; -8x.png; -forest-{1x,4x}.png; -forest-center-4x.png; -ground-comparison-{1x,4x}.png. Additional labelled reference, approved-art and overview boards share the same prefix.",
+      "out_unchanged": true
+    },
+    "forest_floor": {
+      "files": [
+        "forest-floor-base",
+        "forest@autumn-floor-base",
+        "forest@spring-floor-base",
+        "forest@winter-floor-base"
+      ],
+      "result": "3 pass, 1 fail",
+      "pass_evidence": {
+        "forest-floor-base": "Low-contrast olive moss and sparse litter remain subordinate beneath the approved broadleaf trees; repeat joins do not draw a grid at map scale.",
+        "forest@spring-floor-base": "Fresher moss stays dark enough for shade; clean hard pixels, calm tiling, and readable overlaid trees.",
+        "forest@autumn-floor-base": "Sparse ochre fallen-leaf marks on subdued olive ground complement the varied approved autumn trees; no flat orange wash."
+      },
+      "winter": "Fail: the raised rims are corrected, but near-blank two-tone surface, weak snow/ground material distinction and repeating lobed openings still fall below approved-art quality."
+    },
+    "conifer_forest_floor": {
+      "files": [
+        "conifer_forest-floor-base",
+        "conifer_forest@autumn-floor-base",
+        "conifer_forest@spring-floor-base",
+        "conifer_forest@winter-floor-base"
+      ],
+      "result": "3 pass, 1 fail",
+      "pass_evidence": {
+        "conifer_forest-floor-base": "Dark blue-green shade with restrained moss/needle marks supports the reference conifers without adding crowns or competing highlights.",
+        "conifer_forest@spring-floor-base": "Sparse fresh moss and tiny needle/litter marks preserve quiet shaded gaps and clear tree silhouettes.",
+        "conifer_forest@autumn-floor-base": "Muted brown needle streaks provide autumn litter without turning evergreen ground orange; remains calm in repeat and forest composites."
+      },
+      "winter": "Fail: quieter and flatter than the previous version, but large camouflage motifs still repeat, with almost no material texture or dark needle-covered openings."
+    }
+  },
+  "pass": [
+    "conifer_forest-floor-base",
+    "conifer_forest@autumn-floor-base",
+    "conifer_forest@spring-floor-base",
+    "forest-floor-base",
+    "forest@autumn-floor-base",
+    "forest@spring-floor-base"
+  ],
+  "fail": [
+    {
+      "name": "conifer_forest@winter-floor-base",
+      "problems": "The raised snow rims are fixed, but the 1x and 4x 3x3 fields still read as a camouflage wallpaper: the large hooked dark opening and pale lobed islands repeat in obvious rows every 288 px. Their multi-cell shapes remain conspicuous between trees in the forest composite. At 4x/8x virtually all surface texture has been removed: three uninterrupted grey-green fills cover 99.89% of the tile, with only a few isolated needle strokes and white dots. The exposed ground is a lighter olive-grey fill rather than dark needle-covered shade, and the snow reads as flat grey paint beside the clustered cool snow and neutral highlights of the approved winter grass/plains and paddies. Keep the improved flat shading, but break up the recognizable large motifs, restore restrained small pixel clusters along selected snow edges and within exposed needle/litter patches, deepen some ground openings, and use sparse grouped snow highlights instead of isolated white specks. Recheck both the 3x3 repeat and forest at 1x/4x; do not restore the former raised rims or add blanket noise."
+    },
+    {
+      "name": "forest@winter-floor-base",
+      "problems": "The old crown-like rims are gone, but the replacement looks unfinished beside the approved terrain. At 4x/8x a single uninterrupted grey fill covers 80.49% of the tile, and a second flat olive-grey fill covers 19.42%; the few brown marks and white pinpoints do not establish thin snow over leaf-littered ground. This leaves large blank painted areas between the detailed tree sprites. In the 1x/4x 3x3 field, the same paired lobed dark patches recur every 288 px in readily traceable rows, despite the absence of a straight seam. The dominant green-grey snow also lacks the subtle cool shading and grouped neutral snow accents visible in the approved winter grass/plains and paddies. Retain calm broad snow coverage, but redistribute the distinctive dark-patch silhouettes to suppress the wallpaper repeat, give selected exposed patches subdued leaf-litter/darker shade clusters, and add sparse small snow-edge/highlight clusters that match the approved pixel scale. Preserve broad quiet areas and flat ground shading; do not bring back the raised island rims."
+    }
+  ]
+}

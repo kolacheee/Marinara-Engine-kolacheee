@@ -1,0 +1,172 @@
+{
+  "sets": {
+    "qc": {
+      "scope": "Only BRIEF-6.md Part D: eight forest/conifer forest floor bases. Other files were read only as reference and composite context and receive no verdict here.",
+      "standard": "Good enough to ship beside the approved art. Six unchanged previous passes retained; the two changed previous winter failures re-examined independently and promoted on the evidence recorded per file.",
+      "previous_review": "critic-r6D-2.json; change detection against critic-r6D-2-checks.json SHA-256 records.",
+      "performed": [
+        "All eight bases: full 3x3 tiling viewed at 1x and nearest-neighbour 4x; wrap intersections inspected separately at 4x.",
+        "All eight individual files: full nearest-neighbour 8x inspection, including original-resolution image delivery.",
+        "All eight floors: deterministic varied forest composites viewed at 1x and nearest-neighbour 4x.",
+        "Compared named tree, grass and plains reference atlases, approved out markers, round-2 city/slums/industry/suburb/farmland tiles, four seasonal paddy sets, and four seasonal grass/plains bases with all eight details.",
+        "Checked dimensions, coverage, seams, visible grid/repeat, blur, antialiasing, noise, muddy shapes, scale, placement, fringe/halo, lighting, palette compatibility, near-duplicates, darker-than-grass shade, autumn litter and winter completeness."
+      ],
+      "not_applicable": {
+        "peak_lattice_or_range": "No peaks or ridges occur in Part D. No lattice/range composite or egg-crate-peak verdict is applicable.",
+        "random_8x2_one_cell_tiling": "No one-cell tiles occur in Part D; all eight subjects are 288x288 bases. No Part D 8x2 one-cell test inputs exist.",
+        "other_specific_problem_types": "Swiss-cheese craters, classical ruins and stamped cyberpunk grids belong to other parts. Identical crowns are checked only as reference context: Part D creates no crowns. Flat orange autumn and blank/inconsistent winter are applicable and checked."
+      },
+      "forest_context": "Broadleaf uses out/treeline_forest-0..7 and the matching @autumn set. Matching spring/winter broadleaf sprites are absent, so summer trees are used to test those floor gaps. Conifers use the eight 48x48 cells in reference/current-fantasy-treeline_conifer_forest.png. Unsnowed reference trees are not treated as a defect in the winter floor files.",
+      "common_findings": {
+        "format": "All eight files are 288x288 and fully opaque. Continuous solid ground coverage is appropriate for these bases. Each uses 6-8 hard RGBA palette entries; no intrinsic blur, antialiasing, transparency halo or fringe found.",
+        "seams_and_repeat": "No hard wrap seam, straight grid, or conspicuous large wallpaper motif survives the 1x/4x tiling and forest checks. Winter no longer has the recognizable multi-cell silhouettes that failed review 2.",
+        "scale_shape_placement": "Ground marks are small relative to the 48px tree cells; no crowns, raised ground islands or oversized bright clumps. Flat ground has no standing-sprite bottom-centre requirement.",
+        "lighting": "No reversed directional relief found. Low ground contrast and restrained accents coexist with the top-left-lit reference sprites.",
+        "noise": "Sparse clustered moss/litter and broad quiet areas; winter accents are grouped rather than a blanket of isolated high-contrast pixels.",
+        "palette_and_seasons": "Subdued greens/ochres fit the approved palette. Autumn remains shaded with visible litter. Winter is cool blue-grey snow with small dark earth/litter openings, distinctly darker than sunlit winter grass/plains; neither blank nor an unrelated seasonal palette.",
+        "duplicates": "No exact duplicate floor files. No visually interchangeable new near-duplicate failure: conifer floors retain darker shade and needle vocabulary; broadleaf floors retain broader moss/leaf marks. Winter files differ in density, hue, shapes and placement."
+      },
+      "files": {
+        "conifer_forest-floor-base": {
+          "sha256": "0394e6e4980b7fc7a734810f9f80e4faa33170dfa8eb877eb8c99b659d03f6ff",
+          "unchanged_since_r6D_2": true,
+          "size": [
+            288,
+            288
+          ],
+          "colors": 6,
+          "mean_luma": 62.14,
+          "matching_grass_mean_luma": 111.65,
+          "darker_than_grass": true
+        },
+        "conifer_forest@autumn-floor-base": {
+          "sha256": "fa09ee0c28949f0546df2ddac96860c289b813525999b619c55ecfa187104e6e",
+          "unchanged_since_r6D_2": true,
+          "size": [
+            288,
+            288
+          ],
+          "colors": 8,
+          "mean_luma": 65.54,
+          "matching_grass_mean_luma": 120.05,
+          "darker_than_grass": true
+        },
+        "conifer_forest@spring-floor-base": {
+          "sha256": "83489e050d43a4882ff48721b323e687fa8b357d9dd9c58fb6502bf1b8434e18",
+          "unchanged_since_r6D_2": true,
+          "size": [
+            288,
+            288
+          ],
+          "colors": 7,
+          "mean_luma": 69.17,
+          "matching_grass_mean_luma": 152.31,
+          "darker_than_grass": true
+        },
+        "conifer_forest@winter-floor-base": {
+          "sha256": "babb4d6832dc5bd19cf970472ba5ffcd3e6c459006755c28ed7b2ea54ea54ab6",
+          "unchanged_since_r6D_2": false,
+          "size": [
+            288,
+            288
+          ],
+          "colors": 8,
+          "mean_luma": 169.06,
+          "matching_grass_mean_luma": 240.86,
+          "darker_than_grass": true
+        },
+        "forest-floor-base": {
+          "sha256": "cf80752422f33b8d34fe7ff8d2a073ade76d6ab95e949e71772cb6fb4a35a59c",
+          "unchanged_since_r6D_2": true,
+          "size": [
+            288,
+            288
+          ],
+          "colors": 7,
+          "mean_luma": 76.28,
+          "matching_grass_mean_luma": 111.65,
+          "darker_than_grass": true
+        },
+        "forest@autumn-floor-base": {
+          "sha256": "df3565a4dc0b22554d68ef541193574cd89a08fa12301e2e0dd7f678817b8307",
+          "unchanged_since_r6D_2": true,
+          "size": [
+            288,
+            288
+          ],
+          "colors": 6,
+          "mean_luma": 70.57,
+          "matching_grass_mean_luma": 120.05,
+          "darker_than_grass": true
+        },
+        "forest@spring-floor-base": {
+          "sha256": "9b92367db83c28832c9a2b93789d0d557c294a30c64a9045d92cc5859c94b3da",
+          "unchanged_since_r6D_2": true,
+          "size": [
+            288,
+            288
+          ],
+          "colors": 6,
+          "mean_luma": 76.27,
+          "matching_grass_mean_luma": 152.31,
+          "darker_than_grass": true
+        },
+        "forest@winter-floor-base": {
+          "sha256": "e657a74decb844a898870bff996ab9c640cf3ce9a74787c5b1b3d36ac51c8776",
+          "unchanged_since_r6D_2": false,
+          "size": [
+            288,
+            288
+          ],
+          "colors": 8,
+          "mean_luma": 176.96,
+          "matching_grass_mean_luma": 240.86,
+          "darker_than_grass": true
+        }
+      },
+      "evidence": "art-drop/review/critic-r6D-3-<name>-tile3x3-{1x,4x}.png; -8x.png; -forest-{1x,4x}.png; -wrap-intersection-4x.png; -ground-comparison-{1x,4x}.png. Labelled reference, approved-art, all-floor and wrap-intersection boards share the prefix. Numeric audit: critic-r6D-3-checks.json.",
+      "out_unchanged": true
+    },
+    "forest_floor": {
+      "files": [
+        "forest-floor-base",
+        "forest@autumn-floor-base",
+        "forest@spring-floor-base",
+        "forest@winter-floor-base"
+      ],
+      "result": "4 pass, 0 fail",
+      "pass_evidence": {
+        "forest-floor-base": "Retain previous pass, SHA-256 unchanged. Dark olive moss and restrained tan litter support the approved broadleaf trees. Clusters stay below crown contrast and scale. No new concrete seam, grid, blur or palette defect in the requested enlarged and composite checks.",
+        "forest@autumn-floor-base": "Retain previous pass, SHA-256 unchanged. Ochre/brown fallen-leaf clusters on shaded olive ground complement the varied approved autumn foliage. Autumn reads through litter rather than a flat orange fill; tiling remains unobtrusive under trees.",
+        "forest@spring-floor-base": "Retain previous pass, SHA-256 unchanged. Fresh green moss stays substantially darker than approved spring grass. Small hard-edged clusters and quiet gaps leave tree silhouettes clear; no new concrete failure in 3x3 tiling, forest composition or 8x inspection.",
+        "forest@winter-floor-base": "New pass after redraw. The two large recurring lobed openings and nearly empty green-grey fills are gone. Small irregular brown leaf-litter openings interrupt cool shaded snow, with restrained lighter snow streaks and grouped highlights at the approved terrain pixel scale. The 3x3 repeat has no conspicuous grid or large signature motif at 1x/4x, and the floor remains quiet between detailed trees. The 8x view shows deliberate hard pixel clusters, no blur/fringe and no return of raised island rims. Lighter and sparser than conifer winter, while still much darker than approved winter grass; winter now reads as a finished seasonal surface."
+      }
+    },
+    "conifer_forest_floor": {
+      "files": [
+        "conifer_forest-floor-base",
+        "conifer_forest@autumn-floor-base",
+        "conifer_forest@spring-floor-base",
+        "conifer_forest@winter-floor-base"
+      ],
+      "result": "4 pass, 0 fail",
+      "pass_evidence": {
+        "conifer_forest-floor-base": "Retain previous pass, SHA-256 unchanged. Dark blue-green shade, subdued moss and occasional needle marks. The 3x3 field has no conspicuous seam or grid; the ground recedes under reference conifers at 1x/4x. Hard pixel clusters remain clean at 8x.",
+        "conifer_forest@autumn-floor-base": "Retain previous pass, SHA-256 unchanged. Muted brown needle strokes sit in dark evergreen shade; neither orange wash nor bright clumps. Repeated ground stays quiet beneath trees, with clean joins and hard edges at 4x/8x.",
+        "conifer_forest@spring-floor-base": "Retain previous pass, SHA-256 unchanged. Sparse fresher moss and litter preserve calm dark gaps. No crown-like masses, bright highlights, hard seam or distracting repeating motif in the 3x3 and forest checks.",
+        "conifer_forest@winter-floor-base": "New pass after redraw. The former hooked multi-cell camouflage openings have been replaced by much smaller irregular dark olive/brown needle-ground marks. Cool blue-grey snow has low-contrast clustered shading and sparse grouped pale accents, so it is no longer blank grey paint. The 3x3 repeat does not produce the previous obvious motif rows or a grid at 1x/4x; forest gaps remain subordinate. At 8x the eight-colour surface is crisp and flat, without raised rims, antialiasing or blanket speckle. Denser, darker and more needle-like than broadleaf winter; compatible with shaded versions of the approved winter terrain colours."
+      }
+    }
+  },
+  "pass": [
+    "conifer_forest-floor-base",
+    "conifer_forest@autumn-floor-base",
+    "conifer_forest@spring-floor-base",
+    "conifer_forest@winter-floor-base",
+    "forest-floor-base",
+    "forest@autumn-floor-base",
+    "forest@spring-floor-base",
+    "forest@winter-floor-base"
+  ],
+  "fail": []
+}
