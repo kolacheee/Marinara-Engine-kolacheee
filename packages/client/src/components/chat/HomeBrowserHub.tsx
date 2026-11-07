@@ -83,7 +83,7 @@ import { formatShortcutKey } from "../../lib/keyboard-shortcuts";
 import { executeStateNavigation } from "../../lib/state-navigation";
 import { requestProfessorMariOpen } from "../../lib/professor-mari-open";
 import { cn, getAvatarCropStyle } from "../../lib/utils";
-import { MOBILE_SHELL_MEDIA_QUERY, useUIStore } from "../../stores/ui.store";
+import { useMobileShellMediaQuery, useUIStore } from "../../stores/ui.store";
 import { startSceneWithPromptPreferences } from "../../lib/scene-generation";
 import { useChatStore } from "../../stores/chat.store";
 import { CapabilityElement } from "../capabilities/CapabilityElement";
@@ -974,7 +974,7 @@ export function HomeBrowserHub({ pageActive, onOpenCredits }: HomeBrowserHubProp
   const showHomeBrowserAddressBar = useUIStore((state) => state.showHomeBrowserAddressBar);
   // The phone shell's own signal, not a width breakpoint: a landscape phone is wider than `sm`
   // but still gets compact tabs, with the URL bar and bookmark strip kept desktop-only.
-  const mobileShell = useMatchMedia(MOBILE_SHELL_MEDIA_QUERY);
+  const mobileShell = useMatchMedia(useMobileShellMediaQuery());
   const browserPackages = useMemo(() => selectHomeBrowserPackages(installed.data), [installed.data]);
   const agentWidgetGroups = useMemo(() => {
     const packageGroups = selectHomeWidgetPackages(installed.data).map((pkg) => {
@@ -2399,19 +2399,20 @@ export function HomeBrowserHub({ pageActive, onOpenCredits }: HomeBrowserHubProp
                       </ShortcutIcon>
                       <span className="text-[0.65rem] font-bold text-[var(--foreground)] sm:text-xs">
                         {t("home.recentChats.mode.game")}
-                        {noChatModel && (
-                          <button
-                            type="button"
-                            onClick={() => openAddConnection()}
-                            className="mari-chrome-control mx-auto mt-2 flex min-h-11 max-w-md items-center justify-center gap-2 rounded-xl border border-[var(--primary)]/40 bg-[var(--primary)]/10 px-4 py-2 text-xs font-semibold text-[var(--foreground)] sm:min-h-9"
-                          >
-                            <Plug size="0.875rem" aria-hidden="true" />
-                            {t("home.connectModel.cta")}
-                          </button>
-                        )}
                       </span>
                     </HomeNewChatLauncher>
                   </div>
+                  {/* Outside the launchers: a button can't sit inside another, and it would cover the Game button. */}
+                  {noChatModel && (
+                    <button
+                      type="button"
+                      onClick={() => openAddConnection()}
+                      className="mari-chrome-control mt-2 flex min-h-11 w-fit items-center justify-center gap-2 rounded-xl border border-[var(--primary)]/40 bg-[var(--primary)]/10 px-4 py-2 text-xs font-semibold text-[var(--foreground)] sm:min-h-9"
+                    >
+                      <Plug size="0.875rem" aria-hidden="true" />
+                      {t("home.connectModel.cta")}
+                    </button>
+                  )}
                   {overhaulActive ? (
                     <div className="ov-home-hero-actions">
                       <button type="button" className="ov-btn" onClick={openProfessor}>

@@ -7,7 +7,8 @@
 // right in its usual editor. One Library tab per section, not one per item.
 // ──────────────────────────────────────────────
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { ChevronDown, Download, Plus, Search } from "lucide-react";
+import { ChevronDown, ChevronLeft, Download, Plus, Search } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { PROVIDERS, type APIConnection, type APIProvider } from "@marinara-engine/shared";
 import { useUIStore } from "../../stores/ui.store";
 import { useOverhaulStore } from "../../stores/overhaul.store";
@@ -18,6 +19,21 @@ import { useRegexScripts, useUpdateRegexScript, type RegexScriptRow } from "../.
 import { useLocalizedUiText } from "../../localization/use-localized-ui-text";
 import { cn } from "../../lib/utils";
 import { Toggle, flag, parseList, useRegexImport } from "./LibraryTables";
+import { DeviceDetail, useDeviceEngines } from "../connections/DeviceDetail";
+import { ConnectionAccountEditor } from "../connections/ConnectionAccountEditor";
+import { ProviderIcon } from "../connections/ProviderIcon";
+import type { DeviceItem } from "../../hooks/use-device-setup";
+import { DecisionModelModal } from "../modals/DecisionModelModal";
+import { DECISION_DEVICE_ID, useDecisionEngine } from "./decision-engine";
+import { EditorCrumbs, type RailCrumb } from "./EditorRail";
+import { openLibraryPane, openLibrarySection } from "./library-navigation";
+import { OvEditorHeadSlot } from "./EditorChrome";
+
+/** Built-in model and local voice engines share the Model viewer: their id is `device:<item>`. */
+export const DEVICE_PREFIX = "device:";
+/** Viewer id of an account's own page (`account-key:` opens it on Replace key). */
+export const ACCOUNT_PREFIX = "account:";
+export const ACCOUNT_KEY_PREFIX = "account-key:";
 
 export type OvViewerRow = {
   id: string;
@@ -29,7 +45,8 @@ export type OvViewerRow = {
   monoSub?: boolean;
 };
 
-export type OvViewerGroup = { id: string; label: string; rows: OvViewerRow[] };
+/** `openId`: the group itself has a page (a Connections account); its name opens it, the chevron folds it. */
+export type OvViewerGroup = { id: string; label: string; rows: OvViewerRow[]; openId?: string };
 
 export type OvViewerTool = { label: string; icon: typeof Plus; onClick: () => void };
 
@@ -51,8 +68,11 @@ function OvViewer({
   emptyList,
   emptyDetail,
   children,
+  onSection,
 }: {
   title: string;
+  /** The section's landing page (Library > Connections). Without it the crumb only names the section. */
+  onSection?: () => void;
   meta: string;
   tools: OvViewerTool[];
   listLabel: string;
@@ -72,32 +92,49 @@ function OvViewer({
   children: ReactNode;
 }) {
   const [closed, setClosed] = useState<Record<string, boolean>>({});
+  const [headSlot, setHeadSlot] = useState<HTMLDivElement | null>(null);
   const visible = groups.filter((group) => group.rows.length || !search);
   const total = groups.reduce((sum, group) => sum + group.rows.length, 0);
+  // Library > Section > item, like the Lorebook, Preset and Character pages.
+  const selectedName = selectedId
+    ? (groups.find((group) => group.openId === selectedId)?.label ??
+      groups.flatMap((group) => group.rows).find((row) => row.id === selectedId)?.name)
+    : undefined;
+  const crumbs: RailCrumb[] = [
+    { label: "Library", onClick: openLibraryPane },
+    { label: title, onClick: onSection },
+  ];
+  if (typeof selectedName === "string" && selectedName) crumbs.push({ label: selectedName });
   return (
     <div className="ov-vw">
-      <header className="ov-vw__top">
-        <h1>{title}</h1>
-        <small>{meta}</small>
-        <div className="ov-vw__actions">
-          {tools.map(({ label, icon: Icon, onClick }) => (
-            <button key={label} type="button" className="ov-btn" onClick={onClick}>
-              {Icon ? <Icon size={14} aria-hidden="true" /> : null}
-              {label}
-            </button>
-          ))}
-          <button type="button" className="ov-btn ov-btn--primary" data-ov-anchor={newAnchor} onClick={onNew}>
-            <Plus size={14} aria-hidden="true" />
-            {newLabel}
-          </button>
-        </div>
-      </header>
+      {/* The open item's editor puts its own header here (OvEditorHead), so Regex, Connections and
+          Agents read like every other editor: Library › Section › Item, the item's name, Save. */}
+      <div className="ov-vw__head">
+        <div className="ov-vw__slot" ref={setHeadSlot} />
+        <header className="ov-vw__top has-crumbs">
+          <EditorCrumbs items={crumbs} />
+          <h1>{title}</h1>
+          <small>{meta}</small>
+        </header>
+      </div>
       <aside className="ov-vw__left" aria-label={title}>
         <div className="ov-vw__find">
           <label className="ov-vw__search">
             <Search size={13} aria-hidden="true" />
             <input value={search} onChange={(event) => onSearch(event.target.value)} placeholder={searchPlaceholder} />
           </label>
+        </div>
+        <div className="ov-vw__tools ov-vw__tools--list">
+          {tools.map(({ label, icon: Icon, onClick }) => (
+            <button key={label} type="button" onClick={onClick}>
+              {Icon ? <Icon size={13} aria-hidden="true" /> : null}
+              {label}
+            </button>
+          ))}
+          <button type="button" className="is-new" data-ov-anchor={newAnchor} onClick={onNew}>
+            <Plus size={13} aria-hidden="true" />
+            {newLabel}
+          </button>
         </div>
         <p className="ov-vw__label">
           {listLabel}
@@ -109,7 +146,23 @@ function OvViewer({
             const isClosed = closed[group.id] && !search;
             return (
               <section key={group.id} className="ov-vw__group">
-                {group.label ? (
+                {group.label && group.openId ? (
+                  <div className={cn("ov-vw__ghead is-split", group.openId === selectedId && "is-on")}>
+                    <button
+                      type="button"
+                      className="ov-vw__gfold"
+                      aria-expanded={!isClosed}
+                      aria-label={group.label}
+                      onClick={() => setClosed((current) => ({ ...current, [group.id]: !current[group.id] }))}
+                    >
+                      <ChevronDown size={13} className={cn(isClosed && "-rotate-90")} aria-hidden="true" />
+                    </button>
+                    <button type="button" className="ov-vw__gopen" onClick={() => onSelect(group.openId!)}>
+                      <span>{group.label}</span>
+                      <small>{group.rows.length}</small>
+                    </button>
+                  </div>
+                ) : group.label ? (
                   <button
                     type="button"
                     className="ov-vw__ghead"
@@ -151,7 +204,11 @@ function OvViewer({
           })}
         </div>
       </aside>
-      <div className="ov-vw__main">{children ?? <p className="ov-vw__pick">{emptyDetail}</p>}</div>
+      <div className="ov-vw__main">
+        <OvEditorHeadSlot.Provider value={headSlot}>
+          {children ?? <p className="ov-vw__pick">{emptyDetail}</p>}
+        </OvEditorHeadSlot.Provider>
+      </div>
     </div>
   );
 }
@@ -271,6 +328,9 @@ export function OvConnectionsViewer({ children }: { children: ReactNode }) {
   const openModal = useUIStore((s) => s.openModal);
   const selectedId = useUIStore((s) => s.connectionDetailId);
   const openConnectionDetail = useUIStore((s) => s.openConnectionDetail);
+  const closeConnectionDetail = useUIStore((s) => s.closeConnectionDetail);
+  const engines = useDeviceEngines();
+  const decisionEngine = useDecisionEngine();
   const [search, setSearch] = useState("");
 
   // Same shape as the landing table: each account with its models, then models with no account.
@@ -299,6 +359,7 @@ export function OvConnectionsViewer({ children }: { children: ReactNode }) {
       .map((group) => ({
         id: group.account.id,
         label: group.account.name,
+        openId: `${ACCOUNT_PREFIX}${group.account.id}`,
         rows: group.rows
           .filter((row) => hit(row, group.account.name))
           .sort((a, b) => (a.name ?? "").localeCompare(b.name ?? ""))
@@ -309,8 +370,30 @@ export function OvConnectionsViewer({ children }: { children: ReactNode }) {
       .filter((row) => hit(row))
       .map((row) => toRow(row, PROVIDERS[row.provider as APIProvider]?.name ?? row.provider ?? undefined));
     if (other.length) list.push({ id: "__other", label: localize("Other models"), rows: other });
+    const devices = engines
+      .filter((engine) => !needle || engine.name.toLowerCase().includes(needle))
+      .map((engine) => ({
+        id: `${DEVICE_PREFIX}${engine.item}`,
+        name: engine.name,
+        sub: [engine.state, engine.detail].filter(Boolean).join(" · "),
+        lead: <ProviderIcon provider={engine.item} size="sm" dim={engine.tone !== "ok"} />,
+      }));
+    if (decisionEngine && (!needle || decisionEngine.name.toLowerCase().includes(needle)))
+      devices.push({
+        id: DECISION_DEVICE_ID,
+        name: decisionEngine.name,
+        sub: decisionEngine.state,
+        lead: <ProviderIcon provider="decision" size="sm" dim={decisionEngine.tone !== "ok"} />,
+      });
+    if (devices.length) list.push({ id: "__device", label: localize("On this device"), rows: devices });
     return list;
-  }, [grouped, localize, search]);
+  }, [decisionEngine, engines, grouped, localize, search]);
+  const accountPage = selectedId?.startsWith(ACCOUNT_PREFIX)
+    ? { id: selectedId.slice(ACCOUNT_PREFIX.length), replaceKey: false }
+    : selectedId?.startsWith(ACCOUNT_KEY_PREFIX)
+      ? { id: selectedId.slice(ACCOUNT_KEY_PREFIX.length), replaceKey: true }
+      : null;
+  const device = selectedId?.startsWith(DEVICE_PREFIX) ? (selectedId.slice(DEVICE_PREFIX.length) as DeviceItem) : null;
 
   const firstId = groups.find((group) => group.rows.length)?.rows[0]?.id;
   useAutoSelect("connections", selectedId, firstId, openConnectionDetail);
@@ -333,10 +416,96 @@ export function OvConnectionsViewer({ children }: { children: ReactNode }) {
       onSelect={(id) => openConnectionDetail(id)}
       emptyList={localize("No accounts yet.")}
       emptyDetail={localize("Pick a model on the left, or add an account.")}
+      onSection={() => openLibrarySection("connections")}
     >
-      {children}
+      {accountPage ? (
+        <ConnectionAccountEditor
+          key={selectedId}
+          embedded
+          accountId={accountPage.id}
+          replaceKey={accountPage.replaceKey}
+          onClose={closeConnectionDetail}
+        />
+      ) : selectedId === DECISION_DEVICE_ID ? (
+        <div className="ov-devpage">
+          <header className="ov-devpage__head">
+            <ProviderIcon provider="decision" size="sm" />
+            <h3>{decisionEngine?.name ?? localize("Built-in model (decisions)")}</h3>
+            {decisionEngine ? <span className="ov-conn__dim">{decisionEngine.state}</span> : null}
+          </header>
+          <DecisionModelModal embedded open onClose={closeConnectionDetail} />
+        </div>
+      ) : device ? (
+        <div className="ov-devpage">
+          <DeviceDetail key={device} item={device} onOpenDefaults={closeConnectionDetail} />
+        </div>
+      ) : (
+        children
+      )}
     </OvViewer>
   );
 }
 
 // ── Agents ──
+
+/**
+ * Phones and tablets: an account, the built-in model, the decision model and the voice engines open
+ * as their own page (a ‹ back and a title, like other editors) instead of a pop-up. Model ids fall
+ * through to `children` (the Connection editor).
+ */
+export function OvConnectionPageMobile({ children }: { children: ReactNode }) {
+  const localize = useLocalizedUiText();
+  const { t } = useTranslation();
+  const selectedId = useUIStore((s) => s.connectionDetailId);
+  const closeConnectionDetail = useUIStore((s) => s.closeConnectionDetail);
+  const decisionEngine = useDecisionEngine();
+  const accountPage = selectedId?.startsWith(ACCOUNT_PREFIX)
+    ? { id: selectedId.slice(ACCOUNT_PREFIX.length), replaceKey: false }
+    : selectedId?.startsWith(ACCOUNT_KEY_PREFIX)
+      ? { id: selectedId.slice(ACCOUNT_KEY_PREFIX.length), replaceKey: true }
+      : null;
+  const device =
+    selectedId?.startsWith(DEVICE_PREFIX) && selectedId !== DECISION_DEVICE_ID
+      ? (selectedId.slice(DEVICE_PREFIX.length) as DeviceItem)
+      : null;
+  if (!accountPage && !device && selectedId !== DECISION_DEVICE_ID) return <>{children}</>;
+  const title = accountPage
+    ? localize("Account")
+    : device
+      ? t(`connections.add.device.${device === "local-model" ? "local_model" : device}`)
+      : (decisionEngine?.name ?? localize("Built-in model (decisions)"));
+  return (
+    <section className="ov-ed ovm-connpage" data-component="OverhaulConnectionPage">
+      {/* An account page brings the shared editor header (‹ back, name, Save). */}
+      <div className="ovm-drill-page__head" hidden={!!accountPage}>
+        <button
+          type="button"
+          className="ovm-drill-page__back"
+          aria-label={localize("Back")}
+          onClick={closeConnectionDetail}
+        >
+          <ChevronLeft size={26} aria-hidden="true" />
+        </button>
+        <span className="ovm-drill-page__title">{title}</span>
+        <span aria-hidden="true" />
+      </div>
+      {accountPage ? (
+        <ConnectionAccountEditor
+          key={selectedId}
+          embedded
+          accountId={accountPage.id}
+          replaceKey={accountPage.replaceKey}
+          onClose={closeConnectionDetail}
+        />
+      ) : device ? (
+        <div className="ov-devpage">
+          <DeviceDetail key={device} item={device} onOpenDefaults={closeConnectionDetail} />
+        </div>
+      ) : (
+        <div className="ov-devpage">
+          <DecisionModelModal embedded open onClose={closeConnectionDetail} />
+        </div>
+      )}
+    </section>
+  );
+}

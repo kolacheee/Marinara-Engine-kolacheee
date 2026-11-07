@@ -8,12 +8,7 @@
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import { Plus, Search, Download, List, LayoutGrid } from "lucide-react";
 import { toast } from "sonner";
-import {
-  BUILT_IN_AGENTS,
-  isAgentConfigDeleted,
-  isRetiredBuiltInAgentId,
-  type Lorebook,
-} from "@marinara-engine/shared";
+import { BUILT_IN_AGENTS, isAgentConfigDeleted, isRetiredBuiltInAgentId, type Lorebook } from "@marinara-engine/shared";
 import { useUIStore } from "../../stores/ui.store";
 import { useOverhaulMobile, useOverhaulStore } from "../../stores/overhaul.store";
 import { useLorebooks, useUpdateLorebook } from "../../hooks/use-lorebooks";
@@ -43,6 +38,17 @@ type Column<T> = {
 
 type Chip = { id: string; label: string };
 
+/** Section and group orders can arrive as stored JSON text: count the ids, not the characters. */
+function orderCount(order: unknown): number {
+  if (Array.isArray(order)) return order.length;
+  if (typeof order !== "string") return 0;
+  try {
+    const parsed: unknown = JSON.parse(order);
+    return Array.isArray(parsed) ? parsed.length : 0;
+  } catch {
+    return 0;
+  }
+}
 export function swatch(id: string) {
   let hash = 0;
   for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) | 0;
@@ -121,25 +127,28 @@ function ListPage<T extends { id: string }>({
   // New layout on phones: the filter chips become one dropdown beside + New, the view switch
   // sits at the end of that line, and the sort shares the search bar's line.
   const mobile = useOverhaulMobile();
+  // Many filters read as one dropdown on desktop too (like Connections' "All kinds"), so the toolbar stays on one line.
+  const chipsAsSelect = !!chips?.length && (mobile || chips.length > 3);
+  const chipSelect = chips?.length ? (
+    <select
+      className={cn("ov-select", mobile && "ovm-lp-filter")}
+      value={chip}
+      onChange={(event) => onChip?.(event.target.value)}
+      aria-label={localize("Filter")}
+    >
+      {chips.map((item) => (
+        <option key={item.id} value={item.id}>
+          {item.id === "all" ? localize("All kinds") : localize(item.label)}
+        </option>
+      ))}
+    </select>
+  ) : null;
   return (
     <section className="ov-list" data-component="OverhaulLibraryList">
       <header className="ov-gallery__head">
         <h1>{title}</h1>
         {actions}
-        {mobile && chips?.length ? (
-          <select
-            className="ov-select ovm-lp-filter"
-            value={chip}
-            onChange={(event) => onChip?.(event.target.value)}
-            aria-label={localize("Filter")}
-          >
-            {chips.map((item) => (
-              <option key={item.id} value={item.id}>
-                {localize(item.label)}
-              </option>
-            ))}
-          </select>
-        ) : null}
+        {mobile ? chipSelect : null}
         {mobile ? view : null}
       </header>
       <div className="ov-gallery__tools">
@@ -147,7 +156,8 @@ function ListPage<T extends { id: string }>({
           <Search size={14} aria-hidden="true" />
           <input value={search} onChange={(event) => onSearch(event.target.value)} placeholder={searchPlaceholder} />
         </label>
-        {(mobile ? [] : (chips ?? [])).map((item) => (
+        {!mobile && chipsAsSelect ? chipSelect : null}
+        {(chipsAsSelect ? [] : (chips ?? [])).map((item) => (
           <button
             key={item.id}
             type="button"
@@ -533,7 +543,7 @@ export function PresetsLanding() {
           key: "sections",
           label: "Sections",
           className: "ov-table__num",
-          render: (preset) => preset.sectionOrder?.length ?? 0,
+          render: (preset) => orderCount(preset.sectionOrder),
         },
         { key: "author", label: "Author", render: (preset) => preset.author || "—" },
         {
@@ -550,7 +560,7 @@ export function PresetsLanding() {
             key={preset.id}
             id={preset.id}
             name={preset.name}
-            sub={`${preset.sectionOrder?.length ?? 0} ${localize("sections")}`}
+            sub={`${orderCount(preset.sectionOrder)} ${localize("sections")}`}
             src={resolvePresetArtwork(preset)}
             onOpen={() => openPresetDetail(preset.id)}
           />

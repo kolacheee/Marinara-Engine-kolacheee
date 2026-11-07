@@ -19,6 +19,7 @@ import {
 } from "react";
 import { useTranslation, useTranslation as useUiTranslation } from "react-i18next";
 import { useLocalizedUiText } from "../../localization/use-localized-ui-text";
+import { useReadOnlySubtree } from "../../hooks/use-read-only-subtree";
 import { useUIStore } from "../../stores/ui.store";
 import { toast } from "sonner";
 import { showConfirmDialog } from "../../lib/app-dialogs";
@@ -83,15 +84,23 @@ import {
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { createPortal } from "react-dom";
-import { useOverhaulLook, useOverhaulMobile } from "../../stores/overhaul.store";
-import { EditorCrumbs } from "../overhaul/EditorRail";
-import { openLibrarySection } from "../overhaul/library-navigation";
+import { useOverhaulLook, useOverhaulMobile, useOverhaulTouchMessages } from "../../stores/overhaul.store";
+import { OvEditorHead, OvSaveButton } from "../overhaul/EditorChrome";
+import { openConnectionsPage } from "../overhaul/library-navigation";
 import { OvSeg } from "../overhaul/LoreEntryParts";
 import { HelpTooltip } from "../ui/HelpTooltip";
 import { DraftNumberInput } from "../ui/DraftNumberInput";
 import { MacroTextarea } from "../ui/MacroTextarea";
 import { applyTextareaQuoteFormat } from "../../lib/textarea-quotes";
 import { api } from "../../lib/api-client";
+import {
+  applyPresetDraftOps,
+  flushPresetDraftOps,
+  newDraftId,
+  pushPresetDraftOp,
+  remapPresetDraftOps,
+  type PresetDraftOp,
+} from "../../lib/preset-draft-ops";
 import { requestProfessorMariOpen } from "../../lib/professor-mari-open";
 import { useAgentConfigs, type AgentConfigRow } from "../../hooks/use-agents";
 import {
@@ -243,14 +252,25 @@ export function PresetEditor() {
   const [ovResetKey, setOvResetKey] = useState(0);
   const [ovDetailEl, setOvDetailEl] = useState<HTMLElement | null>(null);
   const [ovVarsEl, setOvVarsEl] = useState<HTMLElement | null>(null);
-  const [ovMoreOpen, setOvMoreOpen] = useState(false);
   const presetDetailId = useUIStore((s) => s.presetDetailId);
   const presetDetailInitialTab = useUIStore((s) => s.presetDetailInitialTab) as TabId | null;
   const closePresetDetail = useUIStore((s) => s.closePresetDetail);
   const openPresetDetail = useUIStore((s) => s.openPresetDetail);
   const activeChatId = useChatStore((s) => s.activeChatId);
 
-  const { data, isLoading, refetch: refetchPreset } = usePresetFull(presetDetailId);
+  const { data: savedData, isLoading, refetch: refetchPreset } = usePresetFull(presetDetailId);
+  // New layout: nothing here saves until Save. Section, group and variable changes wait as ops,
+  // and the editor shows the saved preset with them applied.
+  const [draftOps, setDraftOps] = useState<PresetDraftOp[]>([]);
+  const draftOpsRef = useRef(draftOps);
+  draftOpsRef.current = draftOps;
+  useEffect(() => {
+    setDraftOps([]);
+  }, [presetDetailId]);
+  const data = useMemo(
+    () => (savedData && draftOps.length ? applyPresetDraftOps(savedData, draftOps) : savedData),
+    [savedData, draftOps],
+  );
   const { data: activeChat } = useChat(activeChatId);
   const updatePreset = useUpdatePreset();
   const deletePreset = useDeletePreset();
@@ -277,7 +297,9 @@ export function PresetEditor() {
   useEffect(() => {
     setActiveTab(presetDetailInitialTab ?? "overview");
   }, [presetDetailId, presetDetailInitialTab]);
-  const [dirty, setDirty] = useState(false);
+  const [formDirty, setDirty] = useState(false);
+  const [flushingOps, setFlushingOps] = useState(false);
+  const dirty = formDirty || draftOps.length > 0;
   const setEditorDirty = useUIStore((s) => s.setEditorDirty);
   useEffect(() => {
     setEditorDirty(dirty);
@@ -286,6 +308,8 @@ export function PresetEditor() {
   const [showSaved, setShowSaved] = useState(false);
   const [stockCopyError, setStockCopyError] = useState<string | null>(null);
   const [stockCopyPending, setStockCopyPending] = useState(false);
+  const stockReadOnlyRef = useRef<HTMLDivElement>(null);
+  useReadOnlySubtree(stockReadOnlyRef, isStockMarinaraUniversalPreset(data?.preset ?? {}));
 
   // Local editable state
   const [localName, setLocalName] = useState("");
@@ -369,8 +393,23 @@ export function PresetEditor() {
       parameters: localParameters,
       scopedRegexMode: localScopedRegexMode,
     };
-    await updatePreset.mutateAsync({ id: presetDetailId, ...presetSavePatch(form, loadedFormRef.current) });
-    loadedFormRef.current = form;
+    if (formDirty) {
+      await updatePreset.mutateAsync({ id: presetDetailId, ...presetSavePatch(form, loadedFormRef.current) });
+      loadedFormRef.current = form;
+    }
+    const ops = draftOpsRef.current;
+    if (ops.length) {
+      setFlushingOps(true);
+      try {
+        const result = await flushPresetDraftOps(presetDetailId, ops);
+        await refetchPreset();
+        // Drop what was sent; anything added meanwhile (or left by a failure) now points at real ids.
+        setDraftOps((current) => remapPresetDraftOps(current.slice(result.sent), result.ids));
+        if (result.error) throw result.error;
+      } finally {
+        setFlushingOps(false);
+      }
+    }
     if (editRevisionRef.current !== revision) return false;
     setDirty(false);
     setShowSaved(true);
@@ -387,6 +426,8 @@ export function PresetEditor() {
     localParameters,
     localScopedRegexMode,
     updatePreset,
+    formDirty,
+    refetchPreset,
   ]);
 
   const handleExportPreset = useCallback(async () => {
@@ -426,7 +467,44 @@ export function PresetEditor() {
     deletePreset.mutate(presetDetailId, { onSuccess: () => leaveWithoutSaving(closePresetDetail) });
   }, [closePresetDetail, data?.preset, deletePreset, localizeUi, presetDetailId]);
 
-  useEditorLeaveSave(`presetDetailId:${presetDetailId}`, dirty, handleSave, updatePreset.isPending);
+  const savingPreset = updatePreset.isPending || flushingOps;
+  // Unsaved edits survive a reload, as in the Character editor (user panel 3, PV6).
+  useEditorLeaveSave(`presetDetailId:${presetDetailId}`, dirty, handleSave, savingPreset, {
+    ready: Boolean(data) && hydratedPresetIdRef.current === presetDetailId,
+    name: localName || (data?.preset as { name?: string } | undefined)?.name,
+    get: () => ({
+      form: formDirty
+        ? {
+            name: localName,
+            description: localDescription,
+            wrapFormat: localWrapFormat,
+            author: localAuthor,
+            conversationPrompt: localConversationPrompt,
+            gamePrompt: localGamePrompt,
+            parameters: localParameters,
+            scopedRegexMode: localScopedRegexMode,
+          }
+        : null,
+      ops: draftOps,
+    }),
+    restore: (value) => {
+      const kept = value as { form?: PresetFormFields | null; ops?: typeof draftOps } | null;
+      if (!kept) return;
+      if (kept.form && typeof kept.form === "object") {
+        const form = kept.form;
+        setLocalName(form.name ?? "");
+        setLocalDescription(form.description ?? "");
+        if (form.wrapFormat) setLocalWrapFormat(form.wrapFormat);
+        setLocalAuthor(form.author ?? "");
+        setLocalConversationPrompt(form.conversationPrompt ?? "");
+        setLocalGamePrompt(form.gamePrompt ?? "");
+        if (form.parameters && typeof form.parameters === "object") setLocalParameters(form.parameters);
+        if (form.scopedRegexMode) setLocalScopedRegexMode(form.scopedRegexMode);
+        markDirty();
+      }
+      if (Array.isArray(kept.ops) && kept.ops.length) setDraftOps(kept.ops);
+    },
+  });
   const markDirty = useCallback(() => {
     editRevisionRef.current += 1;
     setDirty(true);
@@ -530,6 +608,49 @@ export function PresetEditor() {
     const map = new Map((data.sections as any[]).map((s) => [s.id, s]));
     return sectionOrder.map((id: string) => map.get(id)).filter(Boolean) as any[];
   }, [data?.sections, sectionOrder]);
+  // In the new layout every change to sections, groups and variables waits for Save (or Ctrl+S).
+  const draftMutations = useMemo(() => {
+    if (!overhaulActive) return null;
+    const push = (op: PresetDraftOp) => {
+      editRevisionRef.current += 1;
+      setDraftOps((current) => pushPresetDraftOp(current, op));
+    };
+    const idle = { isPending: false };
+    type Vars = { presetId: string } & Record<string, unknown>;
+    const create = (kind: "createSection" | "createGroup" | "createVariable") => {
+      const run = ({ presetId: _presetId, ...data }: Vars) => {
+        const tempId = newDraftId();
+        push({ kind, tempId, data });
+        return { id: tempId };
+      };
+      return { ...idle, mutate: run, mutateAsync: async (vars: Vars) => run(vars) };
+    };
+    const update = (kind: "updateSection" | "updateGroup" | "updateVariable", key: string) => {
+      const run = ({ presetId: _presetId, [key]: id, ...patch }: Vars) => push({ kind, id: String(id), patch });
+      return { ...idle, mutate: run, mutateAsync: async (vars: Vars) => run(vars) };
+    };
+    const remove = (kind: "deleteSection" | "deleteGroup" | "deleteVariable", key: string) => {
+      const run = (vars: Vars) => push({ kind, id: String(vars[key]) });
+      return { ...idle, mutate: run, mutateAsync: async (vars: Vars) => run(vars) };
+    };
+    const reorder = (kind: "reorderSections" | "reorderVariables", key: string) => {
+      const run = (vars: Vars) => push({ kind, ids: [...(vars[key] as string[])] });
+      return { ...idle, mutate: run, mutateAsync: async (vars: Vars) => run(vars) };
+    };
+    return {
+      onCreateSection: create("createSection"),
+      onUpdateSection: update("updateSection", "sectionId"),
+      onDeleteSection: remove("deleteSection", "sectionId"),
+      onReorderSections: reorder("reorderSections", "sectionIds"),
+      onCreateGroup: create("createGroup"),
+      onUpdateGroup: update("updateGroup", "groupId"),
+      onDeleteGroup: remove("deleteGroup", "groupId"),
+      onCreateVariable: create("createVariable"),
+      onUpdateVariable: update("updateVariable", "variableId"),
+      onDeleteVariable: remove("deleteVariable", "variableId"),
+      onReorderVariables: reorder("reorderVariables", "variableIds"),
+    };
+  }, [overhaulActive]);
 
   const sectionHasLorebookMarker = useMemo(() => {
     return orderedSections.some((section: any) => {
@@ -589,7 +710,9 @@ export function PresetEditor() {
     );
   }
 
-  if (isStockMarinaraUniversalPreset(data.preset)) {
+  // The new layout shows the built-in preset itself, read-only, under a "Make editable copy" bar.
+  const stockPreset = isStockMarinaraUniversalPreset(data.preset);
+  if (stockPreset && !overhaulActive) {
     return (
       <div className="mari-editor-shell flex flex-1 items-center justify-center p-6">
         <div className="mari-editor-panel flex max-w-md flex-col items-center gap-3 p-5 text-center">
@@ -707,15 +830,24 @@ export function PresetEditor() {
     <>
       <h3 className="text-sm font-semibold">{localizeUi("generationParameters.preset.title")}</h3>
       <p className="text-xs text-[var(--muted-foreground)]">{localizeUi("generationParameters.preset.hint")}</p>
-      <GenerationParametersFields
-        value={getEditableGenerationParameters(DEFAULT_GENERATION_PARAMS, localParameters)}
-        showServiceTier
-        showTokenLimits={false}
-        onChange={(next) => {
-          setLocalParameters((previous) => ({ ...previous, ...next }));
-          markDirty();
-        }}
-      />
+      <div className="ov-params">
+        <div className="ov-params__limits">
+          <span className="ov-params__limits-label">{localizeUi("ui.presets.preseteditor.tokenLimits")}</span>
+          <span className="ov-params__limits-value">{localizeUi("ui.presets.preseteditor.tokenLimitsWhere")}</span>
+          <button type="button" className="ov-ed__link" onClick={() => openConnectionsPage()}>
+            {localizeUi("agents.activation.openConnections")} ›
+          </button>
+        </div>
+        <GenerationParametersFields
+          value={getEditableGenerationParameters(DEFAULT_GENERATION_PARAMS, localParameters)}
+          showServiceTier
+          showTokenLimits={false}
+          onChange={(next) => {
+            setLocalParameters((previous) => ({ ...previous, ...next }));
+            markDirty();
+          }}
+        />
+      </div>
     </>
   );
   const ov_regex = (
@@ -748,9 +880,36 @@ export function PresetEditor() {
       onReorderVariables={reorderVariables}
       hasLorebookMarker={sectionHasLorebookMarker}
       parentChatHasLorebook={parentChatHasLorebook}
+      {...(draftMutations ?? {})}
       {...extra}
     />
   );
+
+  const withStockBar = (editor: ReactNode) =>
+    stockPreset ? (
+      <div ref={stockReadOnlyRef} className="ov-stock-preset flex min-h-0 flex-1 flex-col" data-ov-readonly="true">
+        <div className="ov-stock-bar" role="status">
+          <span className="ov-stock-bar__text">{localizeUi("ui.presets.preseteditor.stockPresetReadOnlyBar")}</span>
+          {stockCopyError ? <span className="ov-stock-bar__error">{stockCopyError}</span> : null}
+          <button
+            type="button"
+            className="ov-btn ov-btn--primary"
+            onClick={() => void handleCreateStockCopy()}
+            disabled={stockCopyPending}
+          >
+            {stockCopyPending ? <Loader2 size={13} className="animate-spin" /> : <Copy size={13} />}
+            {localizeUi(
+              stockCopyPending
+                ? "ui.presets.preseteditor.creatingEditableCopy"
+                : "ui.presets.preseteditor.makeEditableCopy",
+            )}
+          </button>
+        </div>
+        {editor}
+      </div>
+    ) : (
+      editor
+    );
 
   if (overhaulActive) {
     const pages = [
@@ -787,14 +946,13 @@ export function PresetEditor() {
           <span className="ovm-drill-row__title">{label}</span>
         </button>
       );
-      const saveButton = dirty ? (
-        <button type="button" className="ovm-preset__save" onClick={handleSave} disabled={updatePreset.isPending}>
-          {localizeUi("ui.noodle.noodlehome.save")}
-        </button>
-      ) : (
-        <span aria-hidden="true" />
+      // Every drilled page keeps Save in reach, so a prompt section edit is never stranded.
+      const saveButton = (
+        <span className="ovm-preset__save-slot">
+          <OvSaveButton dirty={dirty} saving={savingPreset} onSave={handleSave} quiet />
+        </span>
       );
-      return (
+      return withStockBar(
         <div
           className="mari-editor-shell ov-preset ovm-preset flex flex-1 flex-col"
           data-component="OverhaulPresetEditor"
@@ -814,15 +972,11 @@ export function PresetEditor() {
               {saveButton}
             </div>
           ) : (
-            <header className="ov-preset__head">
-              <EditorCrumbs
-                items={[
-                  { label: localizeUi("Library"), onClick: () => openLibrarySection("characters") },
-                  { label: localizeUi("Presets"), onClick: handleClose },
-                  { label: data.preset.name },
-                ]}
-              />
-              <div className="ovm-preset__id">
+            <OvEditorHead
+              section="presets"
+              sectionLabel="Presets"
+              onBack={handleClose}
+              lead={
                 <span className="ovm-preset__art">
                   {presetArtwork ? (
                     <img src={presetArtwork} alt="" draggable={false} />
@@ -830,16 +984,10 @@ export function PresetEditor() {
                     <FileText size={22} aria-hidden="true" />
                   )}
                 </span>
-                <span className="ovm-preset__name">
-                  <strong>{localName || data.preset.name}</strong>
-                  <small>
-                    <span className={cn("ov-dot", dirty ? "is-dirty" : "is-saved")} />
-                    {dirty ? localizeUi("Unsaved changes") : localizeUi("ui.presets.preseteditor.changesSaved")}
-                  </small>
-                </span>
-                {saveButton}
-              </div>
-            </header>
+              }
+              title={localName || data.preset.name}
+              save={{ dirty, saving: savingPreset, onSave: handleSave }}
+            />
           )}
           <div className="ovm-preset__body">
             {!ovmPage ? (
@@ -881,89 +1029,62 @@ export function PresetEditor() {
             {ovmPage === "parameters" ? <div className="space-y-3">{ov_parameters}</div> : null}
             {ovmPage === "regex" ? ov_regex : null}
           </div>
-        </div>
+        </div>,
       );
     }
-    return (
+    return withStockBar(
       <div
         className="mari-editor-shell ov-preset flex flex-1 flex-col overflow-hidden"
         data-component="OverhaulPresetEditor"
       >
-        <header className="ov-preset__head">
-          <EditorCrumbs
-            items={[
-              { label: localizeUi("Library"), onClick: () => openLibrarySection("characters") },
-              { label: localizeUi("Presets"), onClick: handleClose },
-              { label: data.preset.name },
-            ]}
-          />
-          <div className="ov-bk-head__row">
-            <h1>{localName || data.preset.name}</h1>
-            <span className="ov-bk-head__spacer" />
-            <span className="ov-preset__state">
-              <span className={cn("ov-dot", dirty ? "is-dirty" : "is-saved")} />
-              {dirty ? localizeUi("Unsaved changes") : localizeUi("ui.presets.preseteditor.changesSaved")}
-            </span>
-            <button
-              type="button"
-              className="ov-btn"
-              onClick={() =>
-                useUIStore.getState().openModal("docs-viewer", { initialDoc: "prompts/macros.md", newTab: true })
-              }
-            >
-              {localizeUi("Macro Reference")}
-              <ExternalLink size={13} aria-hidden="true" />
-            </button>
-            <button type="button" className="ov-btn" onClick={handleExportPreset}>
-              <Upload size={13} aria-hidden="true" />
-              {localizeUi("Export")}
-            </button>
-            <button
-              type="button"
-              className="ov-btn ov-btn--primary"
-              onClick={handleSave}
-              disabled={updatePreset.isPending || !dirty}
-            >
-              <Save size={13} aria-hidden="true" />
-              {localizeUi("ui.noodle.noodlehome.save")}
-            </button>
-            <div className="ov-bk-head__more">
+        <OvEditorHead
+          className="ov-preset__head"
+          section="presets"
+          sectionLabel="Presets"
+          onBack={handleClose}
+          title={localName || data.preset.name}
+          save={{ dirty, saving: savingPreset, onSave: handleSave }}
+          actions={
+            <>
               <button
                 type="button"
-                className="ov-btn ov-btn--icon"
-                aria-label={localizeUi("More")}
-                aria-expanded={ovMoreOpen}
-                onClick={() => setOvMoreOpen((open) => !open)}
+                className="ov-btn"
+                onClick={() =>
+                  useUIStore.getState().openModal("docs-viewer", { initialDoc: "prompts/macros.md", newTab: true })
+                }
               >
-                ···
+                {localizeUi("Macro Reference")}
+                <ExternalLink size={13} aria-hidden="true" />
               </button>
-              {ovMoreOpen ? (
-                <div className="ov-menu" role="menu" onClick={() => setOvMoreOpen(false)}>
-                  <button
-                    type="button"
-                    role="menuitem"
-                    onClick={() =>
-                      requestProfessorMariOpen({
-                        destination: "omnibar",
-                        draft: localizeUi("professorMari.handoff.explainResourceDraft"),
-                        context: {
-                          source: "preset-editor",
-                          capability: "explain",
-                          resource: { kind: "preset", id: presetDetailId, label: data.preset.name },
-                        },
-                      })
-                    }
-                  >
-                    <MessageCircleQuestion size={13} aria-hidden="true" /> {localizeUi("professorMari.handoff.ask")}
-                  </button>
-                  <button type="button" role="menuitem" className="is-danger" onClick={handleDelete}>
-                    <Trash2 size={13} aria-hidden="true" /> {localizeUi("Delete preset")}
-                  </button>
-                </div>
-              ) : null}
-            </div>
-          </div>
-        </header>
+              <button type="button" className="ov-btn" onClick={handleExportPreset}>
+                <Upload size={13} aria-hidden="true" />
+                {localizeUi("Export")}
+              </button>
+            </>
+          }
+          menu={[
+            {
+              label: localizeUi("professorMari.handoff.ask"),
+              icon: <MessageCircleQuestion size={13} aria-hidden="true" />,
+              onSelect: () =>
+                requestProfessorMariOpen({
+                  destination: "omnibar",
+                  draft: localizeUi("professorMari.handoff.explainResourceDraft"),
+                  context: {
+                    source: "preset-editor",
+                    capability: "explain",
+                    resource: { kind: "preset", id: presetDetailId, label: data.preset.name },
+                  },
+                }),
+            },
+            {
+              label: localizeUi("Delete preset"),
+              icon: <Trash2 size={13} aria-hidden="true" />,
+              danger: true,
+              onSelect: () => void handleDelete(),
+            },
+          ]}
+        />
         <div className="ov-preset__body">
           <aside className="ov-preset__left">
             <p className="ov-preset__eyebrow">{localizeUi("Preset")}</p>
@@ -1006,7 +1127,7 @@ export function PresetEditor() {
             <div ref={setOvVarsEl} hidden={Boolean(ovSelected) || ovPage !== "variables"} />
           </main>
         </div>
-      </div>
+      </div>,
     );
   }
 
@@ -1977,7 +2098,10 @@ function SectionsTab({
   const masterDetail = detailTarget !== undefined;
   // New layout on phones and tablets: reordering, Duplicate and Delete wait behind Edit, so a stray tap
   // never moves or copies a section. Drag a row from anywhere while editing.
-  const touchLayout = useOverhaulMobile() && !masterDetail;
+  // A tablet held sideways (desktop layout, touch screen) gets the same guard in the list-and-detail view
+  // (user panel 2, N17: its eye toggles sat flush against every row, and nothing reordered by touch).
+  const touchScreenLayout = useOverhaulTouchMessages();
+  const touchLayout = (useOverhaulMobile() && !masterDetail) || (touchScreenLayout && masterDetail);
   const [touchEditing, setTouchEditing] = useState(false);
   const showRowTools = !touchLayout || touchEditing;
   const toggleExpanded = (id: string) => {
@@ -2631,7 +2755,7 @@ function SectionsTab({
                         <ChevronRight size="0.875rem" className="text-[var(--muted-foreground)]" />
                       )}
                     </button>
-                    {masterDetail ? enableButton : null}
+                    {masterDetail && (!touchLayout || touchEditing) ? enableButton : null}
                     {/* Every entry is System unless said otherwise, so the master-detail list only marks the others. */}
                     {!masterDetail || role !== "system" ? (
                       <RoleIcon size="0.875rem" className={cn("shrink-0", ROLE_COLORS[role])} />

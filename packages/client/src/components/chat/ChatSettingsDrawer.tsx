@@ -3,6 +3,7 @@ import { ChatButtonLayoutSettings } from "../../features/chat-settings/ChatButto
 // Chat: Settings Drawer — per-chat configuration
 // ──────────────────────────────────────────────
 import { createPortal } from "react-dom";
+import { useChatSettingsReflow } from "../../hooks/use-chat-settings-reflow";
 import {
   Fragment,
   lazy,
@@ -268,7 +269,7 @@ import { buildRoleplayAgentSettingsOrder, hasStandaloneRoleplayAgentSettings } f
 import { extractCreatorNotesCss } from "../../lib/creator-notes-css";
 import { isLorebookScopeActiveForChat } from "../../lib/lorebook-scope";
 import { addSilentGreetingSwipes } from "../../lib/message-swipes";
-import { useUIStore } from "../../stores/ui.store";
+import { ROLEPLAY_AVATAR_STYLES, useUIStore } from "../../stores/ui.store";
 import { abortGenerationForChat, useChatStore } from "../../stores/chat.store";
 import { blurActiveChatFloatingUiControl } from "../../lib/chat-floating-ui-events";
 import { requestChatHelp } from "../../lib/chat-help-events";
@@ -1012,6 +1013,7 @@ export function ChatSettingsDrawer({
   const updateChat = useUpdateChat();
   const roomRoster = useMultiplayerMutation<unknown, MultiplayerHostAction>("/multiplayer/host/actions");
   const updateMeta = useUpdateChatMetadata();
+  const globalAvatarStyle = useUIStore((s) => s.roleplayAvatarStyle);
   const updateTranslationMeta = useUpdateChatMetadata({ serialize: true });
   // Generation waits for queued saves, so the next reply uses the narration mode shown here (#6959).
   const updateGroupChatModeMeta = useUpdateChatMetadata({ serialize: true });
@@ -1106,6 +1108,9 @@ export function ChatSettingsDrawer({
     else if (windowOpen) nav.showQuick();
   }, [overhaulMobile, ovEditing, windowOpen]);
   const ovDocked = overhaulDesktop && !ovFloating;
+  // Docked Chat settings narrows the chat beside it instead of covering it. In Game Mode it slides over
+  // the game instead: squeezing the scene and the game pane left the narration unreadable (user panel 2, N2).
+  useChatSettingsReflow(panelRef, ovDocked && windowOpen && (chat as unknown as { mode?: unknown }).mode !== "game");
   const [ovScrollEl, setOvScrollEl] = useState<HTMLDivElement | null>(null);
   const setOvGameSettingsSlot = useOverhaulStore((state) => state.setGameSettingsSlot);
   const [ovProfileSlot, setOvProfileSlot] = useState<HTMLDivElement | null>(null);
@@ -5862,7 +5867,8 @@ export function ChatSettingsDrawer({
           {overhaulMobile && mobileNavView !== "off" && (
             <>
               <MobileChatSettingsQuick
-                order={CHAT_SETTINGS_ORDER.persona + 10}
+                // After Lorebooks, the last row on the quick page (its switches and All settings follow).
+                order={CHAT_SETTINGS_ORDER.lorebooks + 5}
                 sectionCount={0}
                 switches={[
                   {
@@ -6687,6 +6693,31 @@ export function ChatSettingsDrawer({
                   else updateChat.mutate({ id: chat.id, characterIds: [...chatCharIds, ...ids] });
                 }}
               />
+              {chatMode === "roleplay" ? (
+                <label className="mt-2 flex items-center justify-between gap-3 text-xs" data-chat-avatar-display>
+                  <span className="text-[0.6875rem] font-medium text-[var(--muted-foreground)]">
+                    {localizeUi("ui.chat.chatsettingsdrawer.avatarDisplay")}
+                  </span>
+                  <select
+                    value={typeof metadata.roleplayAvatarStyle === "string" ? metadata.roleplayAvatarStyle : ""}
+                    onChange={(event) =>
+                      updateMeta.mutate({ id: chat.id, roleplayAvatarStyle: event.target.value || null })
+                    }
+                    className="mari-preset-native-select min-w-0 max-w-[60%] truncate rounded-lg bg-[var(--secondary)] px-3 py-1.5 pr-8 text-xs text-[var(--foreground)] outline-none ring-1 ring-[var(--border)] focus:ring-[var(--primary)]/40"
+                  >
+                    <option value="">
+                      {localizeUi("ui.chat.chatsettingsdrawer.avatarDisplayDefault", {
+                        style: localizeUi(`ui.chat.chatsettingsdrawer.avatarStyle.${globalAvatarStyle}`),
+                      })}
+                    </option>
+                    {ROLEPLAY_AVATAR_STYLES.map((style) => (
+                      <option key={style} value={style}>
+                        {localizeUi(`ui.chat.chatsettingsdrawer.avatarStyle.${style}`)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ) : null}
               {cardThemingControls}
             </Section>
           )}
@@ -7993,7 +8024,8 @@ export function ChatSettingsDrawer({
             </Section>
           )}
 
-          <div style={{ order: CHAT_SETTINGS_ORDER.lorebooks }}>
+          {/* On the phone's quick page too: a lorebook is something a chat turns on and off often. */}
+          <div data-ovm-quick="true" style={{ order: CHAT_SETTINGS_ORDER.lorebooks }}>
             <LorebooksSection
               forceOpen={initialSection === "lorebooks"}
               chatId={chat.id}

@@ -15,6 +15,7 @@ import {
   type MouseEvent as ReactMouseEvent,
 } from "react";
 import { useQueries, useQueryClient, type InfiniteData } from "@tanstack/react-query";
+import { finishSetupDraft, isSetupKeptForLater, isUnfinishedSetup } from "../../hooks/use-setup-drafts";
 import {
   useChatMessages,
   useChatMessageCount,
@@ -40,7 +41,14 @@ import { hasActiveTextSelection } from "../../lib/text-selection";
 import { readChatMetadata } from "../../lib/chat-wizard-defaults";
 import { useChatWindowLayout } from "../../hooks/use-chat-window-layout";
 import { ChatSettingsBubble } from "./ChatSettingsBubble";
-import { useOverhaulActive, useOverhaulMobile } from "../../stores/overhaul.store";
+import { useOverhaulActive, useOverhaulMobile, useOverhaulTouchMessages } from "../../stores/overhaul.store";
+import {
+  prefersReducedMotion,
+  SWIPE_AXIS_RATIO,
+  SWIPE_COMMIT_PX,
+  SWIPE_EDGE_PX,
+  SWIPE_START_PX,
+} from "../overhaul/use-horizontal-swipe";
 import { ChatWindowWelcomeModal } from "../modals/ChatWindowWelcomeModal";
 import { useGameModeStore } from "../../stores/game-mode.store";
 import { useGenerate } from "../../hooks/use-generate";
@@ -689,6 +697,9 @@ const LocalChatArea = memo(function LocalChatArea({
   const chatBackground = useUIStore((s) => s.chatBackground);
   const pendingNewChatSetupId = useChatStore((s) => s.pendingNewChatSetups[activeChatId ?? ""]?.id ?? null);
   const chatWindowIntroDismissed = useUIStore((s) => s.chatWindowIntroDismissed);
+  // On a phone, one first-run popup per visit: when the intro tip shows, the help overlay waits for a later visit.
+  const [introShownThisVisit] = useState(() => !useUIStore.getState().chatWindowIntroDismissed);
+  const overhaulMobileShell = useOverhaulMobile();
   const gameSetupActive = useGameModeStore((state) => state.isSetupActive);
   const weatherEffects = useUIStore((s) => s.weatherEffects);
   const messagesPerPage = useUIStore((s) => s.messagesPerPage);
@@ -698,6 +709,10 @@ const LocalChatArea = memo(function LocalChatArea({
   const showHistoryTrimNotice = useUIStore((s) => s.showHistoryTrimNotice);
   const intuitiveSwipeNavigation = useUIStore((s) => s.intuitiveSwipeNavigation);
   const intuitiveSwipeRerollLatest = useUIStore((s) => s.intuitiveSwipeRerollLatest);
+  // Touch screens in the new layout (phones, and tablets held sideways) share the swipe gestures (panel 3, PT6).
+  const overhaulTouch = useOverhaulTouchMessages();
+  const phoneSwipeGestures = useUIStore((s) => s.swipeGestures);
+  const touchSwipesOn = overhaulTouch ? phoneSwipeGestures : intuitiveSwipeNavigation;
   const editLastMessageOnArrowUp = useUIStore((s) => s.editLastMessageOnArrowUp);
   const ttsLineVolume = useUIStore((s) => s.ttsLineVolume);
   const lastAppError = useUIStore((s) => s.lastAppError);
@@ -1359,6 +1374,8 @@ const LocalChatArea = memo(function LocalChatArea({
             backstory: parsed.extensions?.backstory ?? "",
             appearance: parsed.extensions?.appearance ?? "",
             tags: parsed.tags ?? [],
+            // The card's own Game Mode sheet, shown in the party pane until the game tracks stats itself.
+            rpgStats: parsed.extensions?.rpgStats?.enabled ? parsed.extensions.rpgStats : undefined,
           },
         ];
       } catch {
@@ -2795,10 +2812,12 @@ const LocalChatArea = memo(function LocalChatArea({
       if (
         !options?.skipTouchConfirm &&
         window.matchMedia("(pointer: coarse)").matches &&
+        // A new reply costs money, so it says so in plain words (panel 3, PP3/PV5).
         !(await showConfirmDialog({
-          title: localizeUi("ui.chat.chatarea.regenerateMessage"),
-          message: localizeUi("ui.chat.chatarea.regenerateThisMessageAsANewSwipe"),
-          confirmLabel: localizeUi("ui.agents.secretplotpanel.regenerate"),
+          title: localizeUi("ui.chat.chatarea.generateANewReply"),
+          message: localizeUi("ui.chat.chatarea.generateANewReplyDetail"),
+          confirmLabel: localizeUi("ui.chat.chatarea.generate"),
+          tone: "accent",
           chatStyle: true,
         }))
       ) {
@@ -3034,7 +3053,7 @@ const LocalChatArea = memo(function LocalChatArea({
   // Peek prompt state
   const [peekPromptData, setPeekPromptData] = useState<PeekPromptData | null>(null);
 
-  const handlePeekPrompt = useCallback(
+  const handlePeekPrompt: (messageId?: string) => void = useCallback(
     (messageId?: string) => {
       if (!activeChatId) return;
       peekPrompt.mutate(messageId ? { chatId: activeChatId, messageId } : activeChatId, {
@@ -3064,6 +3083,17 @@ const LocalChatArea = memo(function LocalChatArea({
           });
         },
         onError: (error) => {
+          // H3: an older reply (or one made before prompts were saved) has no saved prompt. Instead of a dead
+          // end, show the prompt as it would be built now, and say that it is not the exact one.
+          if (messageId && error instanceof ApiError && error.status === 404) {
+            toast.info(
+              localizeUi("ui.chat.chatarea.peekPromptNoSavedFallback", {
+                defaultValue: "No saved prompt for that reply, so this is the prompt as it would be built now.",
+              }),
+            );
+            handlePeekPrompt();
+            return;
+          }
           const message =
             error instanceof ApiError
               ? error.message
@@ -3074,6 +3104,7 @@ const LocalChatArea = memo(function LocalChatArea({
         },
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- the fallback calls this same callback
     [activeChatId, chatMeta.groupChatMode, checkMessage, handleReplyCheckupLink, messages, peekPrompt],
   );
 
@@ -3135,6 +3166,20 @@ const LocalChatArea = memo(function LocalChatArea({
     return null;
   }, [messages]);
 
+  // A finger swipe only changes a reply nobody has answered yet: once the user has written after it,
+  // swapping it would leave their message answering a reply that no longer shows (panel 3, PP5).
+  const latestReplyIsLastMessage = useMemo(() => {
+    if (!messages || !latestAssistantMessageForSwipes) return false;
+    for (let i = messages.length - 1; i >= 0; i--) {
+      const candidate = messages[i]!;
+      if (candidate.role !== "user" && candidate.role !== "assistant") continue;
+      const extra = candidate.extra as { hiddenFromUser?: boolean } | string | null | undefined;
+      if (typeof extra === "object" && extra?.hiddenFromUser === true) continue;
+      return candidate.id === latestAssistantMessageForSwipes.id;
+    }
+    return false;
+  }, [messages, latestAssistantMessageForSwipes]);
+
   useEffect(() => {
     if (!activeChatId) return;
     const handlePeekPromptRequest = (event: Event) => {
@@ -3195,9 +3240,10 @@ const LocalChatArea = memo(function LocalChatArea({
     encounterActive;
 
   const navigateLatestSwipe = useCallback(
-    (direction: -1 | 1) => {
+    (direction: -1 | 1, fromTouch = false) => {
       const supportsMode = chatMode === "conversation" || isRoleplay;
-      if (!supportsMode || !intuitiveSwipeNavigation || intuitiveSwipeBlocked) return false;
+      if (!supportsMode || !(fromTouch ? touchSwipesOn : intuitiveSwipeNavigation) || intuitiveSwipeBlocked)
+        return false;
       if (!activeChatId || isStreaming || !latestAssistantMessageForSwipes) return false;
 
       const swipeCount = latestAssistantMessageForSwipes.swipeCount ?? 1;
@@ -3214,11 +3260,19 @@ const LocalChatArea = memo(function LocalChatArea({
         return true;
       }
 
+      // Touch screens in the new layout: swiping past the last reply makes a new one, but a new reply
+      // costs money, so it always asks first; an accidental swipe never spends anything.
+      if (fromTouch && overhaulTouch) {
+        void handleRegenerate(latestAssistantMessageForSwipes.id);
+        return true;
+      }
       if (!intuitiveSwipeRerollLatest) return false;
       void handleRegenerate(latestAssistantMessageForSwipes.id, { skipTouchConfirm: true });
       return true;
     },
     [
+      overhaulTouch,
+      touchSwipesOn,
       activeChatId,
       chatMode,
       handleRegenerate,
@@ -3309,17 +3363,40 @@ const LocalChatArea = memo(function LocalChatArea({
   ]);
 
   useEffect(() => {
-    if (!intuitiveSwipeNavigation || intuitiveSwipeBlocked) return;
+    if (!touchSwipesOn || intuitiveSwipeBlocked) return;
+    // Phones in the new layout: only the latest reply reacts, and it follows the finger, so scrolling
+    // back through history can never change a reply by accident.
+    const latestOnly = overhaulTouch;
+    let followed: HTMLElement | null = null;
+    let axisLocked = false;
+    const release = (snap: boolean) => {
+      if (!followed) return;
+      const element = followed;
+      followed = null;
+      element.style.transition = snap && !prefersReducedMotion() ? "transform 180ms ease" : "none";
+      element.style.transform = "";
+    };
 
     const handleTouchStart = (event: TouchEvent) => {
       const target = event.target;
       const surface = closestChatScrollSurface(target);
+      axisLocked = false;
       if (event.touches.length !== 1 || !surface || shouldIgnoreIntuitiveSwipeTarget(target)) {
         intuitiveTouchStartRef.current = null;
         return;
       }
       const touch = event.touches.item(0);
       if (!touch) return;
+      if (latestOnly) {
+        const latestId = latestReplyIsLastMessage ? latestAssistantMessageForSwipes?.id : undefined;
+        const message = target instanceof Element ? target.closest<HTMLElement>("[data-message-id]") : null;
+        const nearEdge = touch.clientX < SWIPE_EDGE_PX || touch.clientX > window.innerWidth - SWIPE_EDGE_PX;
+        if (!latestId || message?.dataset.messageId !== latestId || nearEdge) {
+          intuitiveTouchStartRef.current = null;
+          return;
+        }
+        followed = message;
+      }
       intuitiveTouchStartRef.current = {
         x: touch.clientX,
         y: touch.clientY,
@@ -3327,9 +3404,31 @@ const LocalChatArea = memo(function LocalChatArea({
       };
     };
 
+    const handleTouchMove = (event: TouchEvent) => {
+      const start = intuitiveTouchStartRef.current;
+      const touch = event.touches.item(0);
+      if (!latestOnly || !start || !touch || !followed) return;
+      const deltaX = touch.clientX - start.x;
+      const deltaY = touch.clientY - start.y;
+      if (!axisLocked) {
+        if (Math.abs(deltaX) > SWIPE_START_PX && Math.abs(deltaX) > SWIPE_AXIS_RATIO * Math.abs(deltaY)) {
+          axisLocked = true;
+        } else if (Math.abs(deltaY) > SWIPE_START_PX) {
+          intuitiveTouchStartRef.current = null;
+          release(false);
+          return;
+        } else return;
+      }
+      if (prefersReducedMotion()) return;
+      const shown = Math.max(-96, Math.min(96, deltaX * 0.6));
+      followed.style.transition = "none";
+      followed.style.transform = `translateX(${shown}px)`;
+    };
+
     const handleTouchEnd = (event: TouchEvent) => {
       const start = intuitiveTouchStartRef.current;
       intuitiveTouchStartRef.current = null;
+      release(true);
       const touch = event.changedTouches.item(0);
       if (!start || !touch || shouldIgnoreIntuitiveSwipeTarget(start.target)) return;
 
@@ -3337,21 +3436,46 @@ const LocalChatArea = memo(function LocalChatArea({
       const deltaY = touch.clientY - start.y;
       const absX = Math.abs(deltaX);
       const absY = Math.abs(deltaY);
-      if (absX < INTUITIVE_SWIPE_MIN_DISTANCE || absY > INTUITIVE_SWIPE_MAX_VERTICAL_DRIFT || absX < absY * 1.35) {
+      if (latestOnly) {
+        if (!axisLocked || absX < SWIPE_COMMIT_PX) return;
+      } else if (
+        absX < INTUITIVE_SWIPE_MIN_DISTANCE ||
+        absY > INTUITIVE_SWIPE_MAX_VERTICAL_DRIFT ||
+        absX < absY * 1.35
+      ) {
         return;
       }
 
-      const handled = navigateLatestSwipe(deltaX < 0 ? 1 : -1);
-      if (handled) event.preventDefault();
+      const handled = navigateLatestSwipe(deltaX < 0 ? 1 : -1, true);
+      if (handled) {
+        event.preventDefault();
+        if (latestOnly) navigator.vibrate?.(10);
+      }
+    };
+    const handleTouchCancel = () => {
+      intuitiveTouchStartRef.current = null;
+      release(true);
     };
 
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
     window.addEventListener("touchend", handleTouchEnd, { passive: false });
+    window.addEventListener("touchcancel", handleTouchCancel);
     return () => {
+      release(false);
       window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("touchcancel", handleTouchCancel);
     };
-  }, [intuitiveSwipeBlocked, intuitiveSwipeNavigation, navigateLatestSwipe]);
+  }, [
+    intuitiveSwipeBlocked,
+    latestAssistantMessageForSwipes,
+    latestReplyIsLastMessage,
+    navigateLatestSwipe,
+    overhaulTouch,
+    touchSwipesOn,
+  ]);
 
   useEffect(() => {
     if (chat) useChatStore.getState().setActiveChat(chat);
@@ -3363,6 +3487,27 @@ const LocalChatArea = memo(function LocalChatArea({
     // A remount on the same chat keeps its open wizard; switching chats closes it.
     if (useChatStore.getState().setupWizardChatId !== activeChatId) setWizardOpen(false);
   }, [activeChatId, setWizardOpen]);
+
+  // Finishing setup (or Skip after making choices) turns the draft into a real chat.
+  const handleWizardFinish = useCallback(
+    (discarded?: boolean) => {
+      const chatId = useChatStore.getState().setupWizardChatId ?? activeChatId;
+      setWizardOpen(false);
+      if (discarded) return;
+      if (chatId) void finishSetupDraft(queryClient, chatId);
+      handleOpenSettingsPanel();
+    },
+    [activeChatId, handleOpenSettingsPanel, queryClient, setWizardOpen],
+  );
+  // A draft opened again (after a reload, or from its tab) goes straight back to its setup, once per visit.
+  const chatIsDraft = chat?.mode !== "game" && (isUnfinishedSetup(chat) || isSetupKeptForLater(chat));
+  const draftWizardShownFor = useRef<string | null>(null);
+  useEffect(() => {
+    if (!chat?.id || !chatIsDraft || chat.id !== activeChatId) return;
+    if (draftWizardShownFor.current === chat.id) return;
+    draftWizardShownFor.current = chat.id;
+    if (!wizardOpen) setWizardOpen(true);
+  }, [activeChatId, chat?.id, chatIsDraft, setWizardOpen, wizardOpen]);
 
   // Auto-open settings drawer for newly created chats
   const shouldOpenSettings = useChatStore((s) => s.shouldOpenSettings);
@@ -4110,6 +4255,7 @@ const LocalChatArea = memo(function LocalChatArea({
         isFirstChat={(allChats ?? []).filter((candidate) => candidate.mode === chatMode).length === 1}
         autoOpenBlocked={
           !chatWindowIntroDismissed ||
+          (overhaulMobileShell && introShownThisVisit) ||
           wizardOpen ||
           settingsOpen ||
           !!pendingNewChatMode ||
@@ -4176,10 +4322,7 @@ const LocalChatArea = memo(function LocalChatArea({
             }}
             onCloseSettings={handleCloseSettingsPanel}
             onOpenScheduleEditor={handleOpenScheduleEditor}
-            onWizardFinish={(discarded) => {
-              setWizardOpen(false);
-              if (!discarded) handleOpenSettingsPanel();
-            }}
+            onWizardFinish={handleWizardFinish}
             onClosePeekPrompt={() => setPeekPromptData(null)}
             onDeleteConfirm={handleDeleteConfirm}
             onDeleteSwipe={handleDeleteSwipe}
@@ -4265,10 +4408,7 @@ const LocalChatArea = memo(function LocalChatArea({
             onGenerateSelfie={handleGenerateConversationSelfie}
             onGenerateVideo={handleConversationGalleryVideo}
             onAnimateImage={handleConversationAnimateImage}
-            onWizardFinish={(discarded) => {
-              setWizardOpen(false);
-              if (!discarded) handleOpenSettingsPanel();
-            }}
+            onWizardFinish={handleWizardFinish}
             onClosePeekPrompt={() => setPeekPromptData(null)}
             onResetSpritePlacements={handleResetSpritePlacements}
             onSpriteSideChange={handleSetSpritePosition}
@@ -4426,10 +4566,7 @@ const LocalChatArea = memo(function LocalChatArea({
           onGenerateVideo={() => handleRoleplayVideo()}
           onRoleplayVideo={handleRoleplayVideo}
           onAnimateImage={(image) => handleGenerateRoleplaySceneVideo({ galleryImageId: image.id })}
-          onWizardFinish={(discarded) => {
-            setWizardOpen(false);
-            if (!discarded) handleOpenSettingsPanel();
-          }}
+          onWizardFinish={handleWizardFinish}
           onClosePeekPrompt={() => setPeekPromptData(null)}
           onResetSpritePlacements={handleResetSpritePlacements}
           onResetSpriteCharacterVisualSettings={handleResetSpriteCharacterVisualSettings}

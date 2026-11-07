@@ -1,4 +1,5 @@
 import { useMessagePresetVariables } from "../../hooks/use-message-preset-variables";
+import { avatarInitial } from "../../lib/avatar-initial";
 // ──────────────────────────────────────────────
 // Chat: Message — mode-aware rendering
 // ──────────────────────────────────────────────
@@ -106,7 +107,7 @@ import { createMessageMacroResolver } from "../../lib/chat-macros";
 import { readChatVariables } from "../../lib/state-editor/chat-variables-editor-source";
 import { HIGHLIGHT_CLASS, highlightAnswerValues } from "../../lib/onboarding-preview-highlight";
 import { useApplyRegex } from "../../hooks/use-apply-regex";
-import { getDefaultChatTextColor, useUIStore } from "../../stores/ui.store";
+import { getDefaultChatTextColor, selectRoleplayAvatarStyle, useUIStore } from "../../stores/ui.store";
 import { useChatStore } from "../../stores/chat.store";
 import { hasActiveTextSelection } from "../../lib/text-selection";
 import { parseChatMetadata } from "../../lib/chat-display";
@@ -148,9 +149,10 @@ import { GenerationReplayDetailsModal, hasGenerationReplayDetails } from "./Gene
 import { GenerationFallbackMarker } from "./GenerationFallbackMarker";
 import type { ChatImage } from "../../hooks/use-gallery";
 import { ChatImageLightbox } from "./ChatImageLightbox";
-import { useOverhaulActive, useOverhaulMobile } from "../../stores/overhaul.store";
+import { useOverhaulActive, useOverhaulTouchMessages } from "../../stores/overhaul.store";
 import { OvMobileMessageSheet, useLongPress } from "../overhaul/MobileMessageSheet";
 import { OvRpMessageFooter } from "../overhaul/RpMessageFooter";
+import { SwipeCountChip } from "../overhaul/SwipeCountChip";
 import { SwipeJumpControl } from "./SwipeJumpControl";
 import { toast } from "sonner";
 import { MessageThinkingModal } from "./MessageThinkingModal";
@@ -329,7 +331,7 @@ function AIVisibilityAvatar({ character, className }: { character: AIVisibilityC
         className,
       )}
     >
-      {character.name.trim().charAt(0).toUpperCase() || "?"}
+      {avatarInitial(character.name)}
     </span>
   );
 }
@@ -2130,7 +2132,7 @@ export const ChatMessage = memo(function ChatMessage({
   const vnPortraitScale = useUIStore((state) => (visualNovel ? state.roleplayVnPortraitScale : 1));
   const overhaulActive = useOverhaulActive();
   // Phones and tablets with the overhaul: no action row on messages; long-press opens the action sheet.
-  const overhaulMobile = useOverhaulMobile();
+  const overhaulMobile = useOverhaulTouchMessages();
   const alwaysDisplaySwipeMenu = useUIStore((state) =>
     isRoleplay
       ? state.alwaysDisplayRoleplaySwipeMenu
@@ -2169,7 +2171,7 @@ export const ChatMessage = memo(function ChatMessage({
       defaultDialogueColor: s.defaultDialogueColor,
       theme: s.theme,
       chatFontOpacity: s.chatFontOpacity,
-      roleplayAvatarStyle: s.roleplayAvatarStyle,
+      roleplayAvatarStyle: selectRoleplayAvatarStyle(s),
       roleplayAvatarScale: s.roleplayAvatarScale,
       roleplayAvatarsScrollable: s.roleplayAvatarsScrollable,
       roleplayStretchMessages: s.roleplayStretchMessages,
@@ -4412,12 +4414,15 @@ export const ChatMessage = memo(function ChatMessage({
     /** New layout: name, time and the message tools inside the bubble, above a divider line. */
     const ovRpHead = overhaulActive ? (
       isGrouped ? (
-        <div className="ov-rpmsg__tools-float">{rpActions("tools")}</div>
+        overhaulMobile ? null : (
+          <div className="ov-rpmsg__tools-float">{rpActions("tools")}</div>
+        )
       ) : (
         <div className="ov-rpmsg__head">
           {rpNameMeta}
           <span className="ov-rpmsg__grow" />
-          {rpActions("tools")}
+          {/* Touch screens: the tools live in the long-press menu. */}
+          {overhaulMobile ? null : rpActions("tools")}
         </div>
       )
     ) : null;
@@ -4772,6 +4777,10 @@ export const ChatMessage = memo(function ChatMessage({
                 onCreateNextSwipe={canCreateNextSwipe ? () => onRegenerate?.(message.id) : undefined}
               />
             )}
+
+            {overhaulMobile && !overhaulActive && isLastAssistantMessage && !isUser && !editing ? (
+              <SwipeCountChip index={message.activeSwipeIndex ?? 0} count={swipeCount} />
+            ) : null}
 
             <MessageMarkIndicators message={message} className="px-1" />
 
@@ -5508,10 +5517,16 @@ function ActionBtn({
   );
 }
 
+// One formatter for every message: toLocaleTimeString builds a new one per call, which made it a
+// noticeable part of opening a chat.
+let messageTimeFormat: Intl.DateTimeFormat | null = null;
+
 function formatTime(dateStr: string): string {
   try {
     const date = new Date(dateStr);
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    if (Number.isNaN(date.getTime())) return date.toLocaleTimeString();
+    messageTimeFormat ??= new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" });
+    return messageTimeFormat.format(date);
   } catch {
     return "";
   }

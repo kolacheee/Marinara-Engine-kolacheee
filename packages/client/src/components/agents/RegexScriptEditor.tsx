@@ -47,7 +47,8 @@ import {
 } from "@marinara-engine/shared";
 import { useTranslation as useUiTranslation } from "react-i18next";
 import { useOverhaulLook } from "../../stores/overhaul.store";
-import { OvEditorHead, OvEyebrow, OvRow, OvSaveState } from "../overhaul/EditorChrome";
+import { OvEditorHead, OvEyebrow, OvRow } from "../overhaul/EditorChrome";
+import { useEditorLeaveSave } from "../../hooks/use-editor-leave-save";
 import { OvChipInput, OvChipPicker, OvNum, OvSeg, OvToggle } from "../overhaul/LoreEntryParts";
 
 // ═══════════════════════════════════════════════
@@ -407,23 +408,31 @@ export function RegexScriptEditor() {
   }, [dirty, closeRegexDetail]);
 
   const handleSave = useCallback(async () => {
-    if (!regexDetailId) return;
+    if (!regexDetailId) return false;
     setSaveError(null);
     if (localCharacterScopeEnabled && localTargetCharacterIds.length === 0) {
       setSaveError(localizeUi("ui.agents.regexscripteditor.chooseAtLeastOneCharacter"));
-      return;
+      return false;
     }
     if (localPromptPresetScopeEnabled && localTargetPromptPresetIds.length === 0) {
       setSaveError(localizeUi("ui.agents.regexscripteditor.chooseAtLeastOnePromptPreset"));
-      return;
+      return false;
+    }
+    if (!localFindRegex.trim()) {
+      setSaveError(
+        localizeUi("ui.agents.regexscripteditor.findPatternRequired", {
+          defaultValue: "Add a Find pattern before saving.",
+        }),
+      );
+      return false;
     }
     if (blockingRegexError) {
       setSaveError(blockingRegexError);
-      return;
+      return false;
     }
     if (depthRangeError) {
       setSaveError(depthRangeError);
-      return;
+      return false;
     }
 
     const payload: Record<string, unknown> = {
@@ -462,8 +471,10 @@ export function RegexScriptEditor() {
       setDirty(false);
       setSavedFlash(true);
       setTimeout(() => setSavedFlash(false), 1500);
+      return true;
     } catch (err) {
       setSaveError(describeRegexEditorError(err));
+      return false;
     }
   }, [
     regexDetailId,
@@ -493,6 +504,59 @@ export function RegexScriptEditor() {
   ]);
 
   const markDirty = useCallback(() => setDirty(true), []);
+  // Unsaved edits survive a reload, as in the Character editor (user panel 3, PV6). A new script has no
+  // saved copy to come back to, so only existing scripts keep them.
+  useEditorLeaveSave(
+    `regexDetailId:${regexDetailId}`,
+    dirty,
+    handleSave,
+    updateScript.isPending || createScript.isPending,
+    {
+      ready: Boolean(dbRow) && !isNew,
+      name: localName || dbRow?.name,
+      get: () => ({
+        name: localName,
+        enabled: localEnabled,
+        findRegex: localFindRegex,
+        replaceString: localReplaceString,
+        trimStrings: localTrimStrings,
+        placement: localPlacement,
+        flags: localFlags,
+        applyMode: localApplyMode,
+        characterScopeEnabled: localCharacterScopeEnabled,
+        targetCharacterIds: localTargetCharacterIds,
+        promptPresetScopeEnabled: localPromptPresetScopeEnabled,
+        targetPromptPresetIds: localTargetPromptPresetIds,
+        order: localOrder,
+        minDepth: localMinDepth,
+        maxDepth: localMaxDepth,
+      }),
+      restore: (value) => {
+        if (!value || typeof value !== "object") return;
+        const kept = value as Record<string, unknown>;
+        if ("name" in kept) setLocalName(kept.name as typeof localName);
+        if ("enabled" in kept) setLocalEnabled(kept.enabled as typeof localEnabled);
+        if ("findRegex" in kept) setLocalFindRegex(kept.findRegex as typeof localFindRegex);
+        if ("replaceString" in kept) setLocalReplaceString(kept.replaceString as typeof localReplaceString);
+        if ("trimStrings" in kept) setLocalTrimStrings(kept.trimStrings as typeof localTrimStrings);
+        if ("placement" in kept) setLocalPlacement(kept.placement as typeof localPlacement);
+        if ("flags" in kept) setLocalFlags(kept.flags as typeof localFlags);
+        if ("applyMode" in kept) setLocalApplyMode(kept.applyMode as typeof localApplyMode);
+        if ("characterScopeEnabled" in kept)
+          setLocalCharacterScopeEnabled(kept.characterScopeEnabled as typeof localCharacterScopeEnabled);
+        if ("targetCharacterIds" in kept)
+          setLocalTargetCharacterIds(kept.targetCharacterIds as typeof localTargetCharacterIds);
+        if ("promptPresetScopeEnabled" in kept)
+          setLocalPromptPresetScopeEnabled(kept.promptPresetScopeEnabled as typeof localPromptPresetScopeEnabled);
+        if ("targetPromptPresetIds" in kept)
+          setLocalTargetPromptPresetIds(kept.targetPromptPresetIds as typeof localTargetPromptPresetIds);
+        if ("order" in kept) setLocalOrder(kept.order as typeof localOrder);
+        if ("minDepth" in kept) setLocalMinDepth(kept.minDepth as typeof localMinDepth);
+        if ("maxDepth" in kept) setLocalMaxDepth(kept.maxDepth as typeof localMaxDepth);
+        setDirty(true);
+      },
+    },
+  );
 
   const handleDelete = async () => {
     if (!dbRow) return;
@@ -585,15 +649,7 @@ export function RegexScriptEditor() {
     };
     return (
       <div className="mari-editor-shell flex flex-1 flex-col overflow-hidden">
-        <div
-          className="ov-ed"
-          onKeyDown={(event) => {
-            if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") {
-              event.preventDefault();
-              void handleSave();
-            }
-          }}
-        >
+        <div className="ov-ed">
           <OvEditorHead
             section="regex"
             sectionLabel="Regex scripts"
@@ -604,7 +660,7 @@ export function RegexScriptEditor() {
               markDirty();
             }}
             meta={runsLabel}
-            status={<OvSaveState dirty={dirty} saving={isPending} error={!!saveError} />}
+            save={{ dirty: dirty || isNew, saving: isPending, error: !!saveError, onSave: handleSave }}
             actions={
               <>
                 <OvToggle
@@ -618,17 +674,6 @@ export function RegexScriptEditor() {
                 <button type="button" className="ov-edbtn" onClick={handleExport}>
                   <Upload size={13} aria-hidden="true" />
                   {localizeUi("chat.advancedMemory.export")}
-                </button>
-                <button
-                  type="button"
-                  className="ov-edbtn ov-edbtn--primary"
-                  disabled={!dirty || isPending}
-                  onClick={() => void handleSave()}
-                >
-                  <Save size={13} aria-hidden="true" />
-                  {savedFlash
-                    ? localizeUi("chat.settings.inlineEditor.saved")
-                    : localizeUi("chat.settingsProfile.builder.save")}
                 </button>
               </>
             }

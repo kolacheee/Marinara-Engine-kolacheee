@@ -1,3 +1,5 @@
+import { askLeaveSetup, gameSetupDraftKey, registerSetupInputProbe } from "../../hooks/use-setup-drafts";
+import { useDialogStore } from "../../stores/dialog.store";
 import {
   audioConnectionSupportsGeneration,
   compileGameWorld,
@@ -211,7 +213,11 @@ export interface GameSetupWizardProps {
           instructions?: string;
         },
   ) => void;
-  onCancel: () => void;
+  /** `confirmed`: the player already agreed to discard what they chose, so closing doesn't ask again. */
+  /** true: discard confirmed; "later": keep the draft as "Setup not finished". */
+  onCancel: (confirmed?: boolean | "later") => void;
+  /** The last Create world failed: the wizard returns to its last step, where Create world is, with the choices kept. */
+  setupFailed?: boolean;
   /** Stops the world being generated, while it is. Absent when nothing can be stopped. */
   onStopGeneration?: () => void;
   isLoading: boolean;
@@ -524,6 +530,7 @@ export function GameSetupWizard({
   onSetupError,
   onComplete,
   onCancel,
+  setupFailed = false,
   onStopGeneration,
   isLoading,
   isDraftingMap,
@@ -961,6 +968,70 @@ export function GameSetupWizard({
 
   const steps = GAME_SETUP_STEPS;
   const currentStep = steps[step] ?? steps[0]!;
+  // Cancel or Esc on a new game the player already typed or stepped into asks first, the same way
+  // every time (user panel 2, N5: Esc dropped a typed name without asking while Cancel asked).
+  const gameNameRef = useRef(gameName);
+  gameNameRef.current = gameName;
+  /** Set once the draft is discarded, so leaving doesn't write it back. */
+  const skipDraftSaveRef = useRef(false);
+  const stepRef = useRef(step);
+  stepRef.current = step;
+  const draftHasInput = () => isNewGame && (gameNameRef.current.trim().length > 0 || stepRef.current > 0);
+  const draftHasInputRef = useRef(draftHasInput);
+  draftHasInputRef.current = draftHasInput;
+  // Leaving by any other route (Ctrl+K, a tab, Home) asks this wizard whether there is work to keep.
+  useEffect(() => registerSetupInputProbe(activeChatId, () => draftHasInputRef.current()), [activeChatId]);
+  const cancelSetup = useCallback(async () => {
+    if (draftHasInputRef.current()) {
+      // One question for every way out (user panel 3, PG4/PN1): dismissing it keeps setting up.
+      const choice = await askLeaveSetup("game");
+      if (choice === "continue") return;
+      if (choice === "later") {
+        saveSetupDraftRef.current();
+        onCancel("later");
+        return;
+      }
+      skipDraftSaveRef.current = true;
+      try {
+        localStorage.removeItem(gameSetupDraftKey(activeChatId));
+      } catch {
+        /* nothing kept */
+      }
+      onCancel(true);
+      return;
+    }
+    onCancel();
+  }, [activeChatId, onCancel]);
+  // Esc leaves like Cancel. A picker, menu or dialog open on top handles Esc itself.
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented || isLoading) return;
+      // A question already open over the wizard (the leave question itself) answers its own Esc.
+      if (useDialogStore.getState().dialog) return;
+      // The same Esc may have just closed that question (its own listener runs first): only a key pressed
+      // in the wizard, or with nothing focused, leaves it.
+      const target = event.target as Element | null;
+      if (
+        target &&
+        target !== document.body &&
+        target !== document.documentElement &&
+        !target.closest?.('[data-component="GameSetupWizard"]')
+      )
+        return;
+      const dialogs = document.querySelectorAll('[role="dialog"][aria-modal="true"], [role="menu"], [role="listbox"]');
+      if (dialogs.length > 1 || (dialogs.length === 1 && !dialogs[0]?.matches('[data-component="GameSetupWizard"]')))
+        return;
+      event.preventDefault();
+      void cancelSetup();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isLoading, cancelSetup]);
+
+  // A failed Create world brings the player back to the GM step with their choices, not to step 1.
+  useEffect(() => {
+    if (setupFailed) setStep(steps.length - 1);
+  }, [setupFailed, steps.length]);
   const learnedGenres = useMemo(
     () => filterLearnedOptions(learnedGameSetupOptions?.genres, [...GENRES, ...genres]),
     [genres, learnedGameSetupOptions?.genres],
@@ -1507,6 +1578,9 @@ export function GameSetupWizard({
         }),
       );
       const warnings = applySetupShareFile(shareFile);
+      // The game was made and only building its world failed (or setup was closed after Create world):
+      // reopen on the last step, where Create world tries again, not six Next presses back at step 1.
+      if (chatMetadata?.gameSessionStatus === "setup") setStep(GAME_SETUP_STEPS.length - 1);
       // This game's own ruleset and Experience are already fixed: no notice about importing them.
       setRulesetImportNotice(null);
       setExperienceImportNotice(null);
@@ -1517,6 +1591,71 @@ export function GameSetupWizard({
       );
     } catch {
       /* an unreadable snapshot leaves the wizard as it was */
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- once, when the lists are ready
+  }, [isNewGame, setupImportResourcesReady]);
+
+  // A new game's choices survive a reload or a closed tab (user panel 2, N7): they are kept per chat in
+  // this browser while setup is open and offered back when the same draft opens again.
+  const setupDraftKey = gameSetupDraftKey(activeChatId);
+  const saveSetupDraftRef = useRef<() => void>(() => undefined);
+  saveSetupDraftRef.current = () => {
+    if (!isNewGame || !setupImportResourcesReady || skipDraftSaveRef.current) return;
+    try {
+      const config = buildSetupConfig();
+      const file = buildGameSetupShareFile({
+        gameName: gameName.trim() || "Game",
+        config,
+        effectiveGenerationParameters: config.generationParameters,
+        preferences,
+        fallbackGmConnectionId: gmConnectionId,
+        labels: buildSetupShareLabels(),
+        connections: {},
+      });
+      localStorage.setItem(setupDraftKey, JSON.stringify({ step, gameName, file, savedAt: Date.now() }));
+    } catch {
+      /* storage full or blocked: the draft just isn't kept */
+    }
+  };
+  useEffect(() => {
+    if (!isNewGame) return;
+    const save = () => saveSetupDraftRef.current();
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") save();
+    };
+    window.addEventListener("pagehide", save);
+    document.addEventListener("visibilitychange", onVisibility);
+    const timer = window.setInterval(save, 3000);
+    return () => {
+      window.removeEventListener("pagehide", save);
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.clearInterval(timer);
+      // Leaving the wizard keeps its latest choices, so a draft kept for later opens where it was left.
+      save();
+    };
+  }, [isNewGame]);
+  const setupDraftRestoredRef = useRef(false);
+  useEffect(() => {
+    if (!isNewGame || setupDraftRestoredRef.current || !setupImportResourcesReady) return;
+    setupDraftRestoredRef.current = true;
+    let stored: { step?: number; gameName?: string; file?: unknown } | null;
+    try {
+      stored = JSON.parse(localStorage.getItem(setupDraftKey) ?? "null");
+    } catch {
+      stored = null;
+    }
+    if (!stored?.file) return;
+    try {
+      applySetupShareFile(parseGameSetupShareFileJson(JSON.stringify(stored.file)));
+      setGameName(typeof stored.gameName === "string" ? stored.gameName : "");
+      if (typeof stored.step === "number") setStep(Math.max(0, Math.min(GAME_SETUP_STEPS.length - 1, stored.step)));
+      setImportedSetupNotice(
+        localizeUi("ui.game.gamesetupwizard.draftRestored", {
+          defaultValue: "Your choices from before the reload are back.",
+        }),
+      );
+    } catch {
+      /* an unreadable draft leaves the wizard blank */
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- once, when the lists are ready
   }, [isNewGame, setupImportResourcesReady]);
@@ -1708,6 +1847,11 @@ export function GameSetupWizard({
 
   const handleComplete = () => {
     if (isLoading || !canStart) return;
+    try {
+      localStorage.removeItem(setupDraftKey);
+    } catch {
+      /* nothing kept */
+    }
     if (startMuted) {
       useGameAssetStore.getState().setAudioMuted(true);
     }
@@ -1849,7 +1993,7 @@ export function GameSetupWizard({
           New layout: Cancel is the only way out, and the tab bar stays reachable above the dialog. */}
       <div
         className={cn("fixed inset-0 z-[9998] bg-black/45 backdrop-blur-[2px]", overhaulActive && "ov-gsw-layer")}
-        onClick={isLoading || overhaulActive ? undefined : onCancel}
+        onClick={isLoading || overhaulActive ? undefined : () => void cancelSetup()}
       />
       <div
         className={cn(
@@ -1912,7 +2056,7 @@ export function GameSetupWizard({
               {overhaulActive ? null : (
                 <button
                   type="button"
-                  onClick={onCancel}
+                  onClick={() => void cancelSetup()}
                   disabled={isLoading}
                   className="rounded-lg p-1.5 text-[var(--muted-foreground)] transition-colors hover:bg-[var(--accent)] hover:text-[var(--foreground)] disabled:cursor-wait disabled:opacity-40"
                   aria-label={localizeUi("ui.game.gamesetupwizard.closeSetup")}
@@ -4194,7 +4338,7 @@ export function GameSetupWizard({
               <div className="flex items-center justify-between">
                 <button
                   type="button"
-                  onClick={step === 0 ? onCancel : () => setStep(step - 1)}
+                  onClick={step === 0 ? () => void cancelSetup() : () => setStep(step - 1)}
                   disabled={isLoading}
                   className={cn(GAME_SETUP_GHOST_BUTTON_CLASS, "disabled:cursor-wait disabled:opacity-40")}
                 >

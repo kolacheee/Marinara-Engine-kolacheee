@@ -64,6 +64,9 @@ export const CHAT_PRESET_EXCLUDED_METADATA_KEYS: readonly string[] = [
   "weekSummaries",
   "tags",
   "appliedChatPresetId",
+  // A new chat stays a draft until its setup finishes; applying a profile must not end that.
+  "setupPending",
+  "setupUnfinished",
   "branchName",
   "branchParentChatId",
   "branchParentMessageId",

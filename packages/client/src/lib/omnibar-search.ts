@@ -64,7 +64,14 @@ export type OmnibarAction =
       kind: "open-chat-tool";
       chatId: string;
       tool:
-        "summary" | "lorebook" | "reply-checkup" | "search" | "regenerate" | "advanced-parameters" | "memory-recall";
+        | "summary"
+        | "lorebook"
+        | "reply-checkup"
+        | "search"
+        | "regenerate"
+        | "advanced-parameters"
+        | "memory-recall"
+        | "peek-prompt";
     };
 
 export type OmnibarResult = {
@@ -115,6 +122,8 @@ export type OmnibarResult = {
    * parent control is not in the ranked list.
    */
   chooseValue?: () => void;
+  /** Puts back the value a `chooseValue` row replaced (the Undo on its toast). */
+  undoChooseValue?: () => void;
   kind?: CommandKind;
   icon?: CommandIcon;
   /** Promoted to the empty list's single "Now" row, and why. */

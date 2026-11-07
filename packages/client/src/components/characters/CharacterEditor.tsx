@@ -112,7 +112,6 @@ import {
   ArrowDown,
   ArrowUp,
   User,
-  MoreHorizontal,
   IdCard,
   Settings2,
   Library,
@@ -148,7 +147,6 @@ import {
   Check,
   Volume2,
   Sparkles,
-  Save,
 } from "lucide-react";
 import { PresetVariablesEditor } from "../presets/PresetVariablesEditor";
 import { requestProfessorMariOpen } from "../../lib/professor-mari-open";
@@ -239,10 +237,11 @@ import { LorebookAssignmentSection } from "../lorebooks/LorebookAssignmentSectio
 import { isOverhaulLook, useOverhaulLook, useOverhaulStore } from "../../stores/overhaul.store";
 import { GameModeSheet } from "../overhaul/GameModeSheet";
 import { ClassicCardSection } from "../overhaul/ClassicCardSection";
-import { AddFieldChips, EditorCrumbs, EditorRail, RailMoreMenu } from "../overhaul/EditorRail";
+import { AddFieldChips, EditorRail } from "../overhaul/EditorRail";
+import { OvEditorHead } from "../overhaul/EditorChrome";
 import { CopyIdLine } from "../overhaul/CopyIdLine";
 import { openLibrarySection } from "../overhaul/library-navigation";
-import { useStartChatFromCharacter } from "../../hooks/use-start-chat-from-character";
+import { CharacterChatButton } from "../overhaul/CharacterChatButton";
 import { useTranslation, useTranslation as useUiTranslation } from "react-i18next";
 
 // ── Tabs ──
@@ -483,6 +482,12 @@ function formatCharacterExtensionValue(key: string, value: unknown, formatQuotes
   return value;
 }
 
+/** A link that opens a section (the game's "Edit sheet") shows it even before it's in use. */
+function initialOverhaulSections(): string[] {
+  const tab = useUIStore.getState().characterDetailInitialTab;
+  return tab && tab !== "card" && tab !== "metadata" ? [tab] : [];
+}
+
 export function CharacterEditor() {
   const { t: localizeUi } = useUiTranslation();
   const characterId = useUIStore((s) => s.characterDetailId);
@@ -573,15 +578,11 @@ export function CharacterEditor() {
   const { data: characterSheetSprites } = useCharacterSprites(characterSheetGeneratorOpen ? characterId : null);
   const [newTag, setNewTag] = useState("");
   const overhaulActive = useOverhaulLook();
-  const { startChatFromCharacter } = useStartChatFromCharacter();
-  const [overhaulAddedSections, setOverhaulAddedSections] = useState<string[]>([]);
+  const [overhaulAddedSections, setOverhaulAddedSections] = useState<string[]>(initialOverhaulSections);
   const [overhaulAddedFields, setOverhaulAddedFields] = useState<string[]>([]);
-  const [overhaulMoreOpen, setOverhaulMoreOpen] = useState(false);
-  const closeOverhaulMore = useCallback(() => setOverhaulMoreOpen(false), []);
   useEffect(() => {
-    setOverhaulAddedSections([]);
+    setOverhaulAddedSections(initialOverhaulSections());
     setOverhaulAddedFields([]);
-    setOverhaulMoreOpen(false);
   }, [characterId]);
   const { data: overhaulSprites } = useCharacterSprites(overhaulActive ? characterId : null);
   const { data: overhaulGallery } = useCharacterGalleryImages(overhaulActive ? characterId : null);
@@ -996,6 +997,18 @@ export function CharacterEditor() {
     dirty,
     handleSave,
     saving || updateSheet.isPending || avatarUploading || lorebookEmbedding,
+    {
+      ready: formData !== null && loadedCharacterIdRef.current === characterId,
+      name: formData?.name,
+      get: () => ({ formData, comment: characterComment }),
+      restore: (value) => {
+        const kept = value as { formData?: CharacterData; comment?: string } | null;
+        if (!kept?.formData || typeof kept.formData !== "object") return;
+        setFormData(kept.formData);
+        if (typeof kept.comment === "string") setCharacterComment(kept.comment);
+        markDirty();
+      },
+    },
   );
 
   const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1501,20 +1514,21 @@ export function CharacterEditor() {
     setOverhaulAddedSections((prev) => (prev.includes(id) ? prev : [...prev, id]));
     window.setTimeout(() => scrollToSection(id as TabId), 60);
   };
+  const overhaulHead = overhaulActive ? (
+    <OvEditorHead
+      section="characters"
+      sectionLabel="Characters"
+      onBack={() => openLibrarySection("characters")}
+      title={formData.name}
+      onTitleChange={(value) => updateField("name", value)}
+      titlePlaceholder={localizeUi("ui.characters.charactereditor.characterName")}
+      actions={characterId ? <CharacterChatButton characterId={characterId} characterName={formData.name} /> : null}
+      save={{ dirty, onSave: handleSave, disabled: saveDisabled }}
+      menuContent={<div className="mari-editor-actions">{headerActions}</div>}
+    />
+  ) : null;
   const overhaulRail = overhaulActive ? (
     <EditorRail
-      crumbs={
-        <EditorCrumbs
-          items={[
-            { label: localizeUi("ui.overhaul.library", { defaultValue: "Library" }) },
-            {
-              label: localizeUi("ui.overhaul.characters", { defaultValue: "Characters" }),
-              onClick: () => leaveWithoutSaving(() => openLibrarySection("characters")),
-            },
-            { label: formData.name || localizeUi("ui.characters.charactereditor.characterName") },
-          ]}
-        />
-      }
       avatarUrl={avatarPreview}
       avatarStyle={getAvatarCropStyle(normalizeAvatarCrop(formData.extensions.avatarCrop))}
       placeholderIcon={User}
@@ -1539,9 +1553,6 @@ export function CharacterEditor() {
           ) : null}
         </>
       }
-      name={formData.name}
-      onNameChange={(value) => updateField("name", value)}
-      namePlaceholder={localizeUi("ui.characters.charactereditor.characterName")}
       subtitle={characterComment}
       onSubtitleChange={updateCharacterComment}
       subtitlePlaceholder={localizeUi("ui.characters.charactereditor.titleCommentEGModernAuVersion")}
@@ -1569,51 +1580,6 @@ export function CharacterEditor() {
             className="ov-mari-assist"
           />
         ) : null
-      }
-      actions={
-        <>
-          <button
-            type="button"
-            className="ov-btn ov-btn--accent"
-            onClick={() => {
-              if (!characterId) return;
-              startChatFromCharacter({
-                characterId,
-                characterName: formData.name,
-                mode: "roleplay",
-                firstMessage: formData.first_mes,
-                alternateGreetings: formData.alternate_greetings,
-              });
-            }}
-          >
-            <MessageCircle size="0.875rem" />
-            {localizeUi("ui.overhaul.chat", { defaultValue: "Chat" })}
-          </button>
-          <button
-            type="button"
-            onClick={handleSave}
-            disabled={saveDisabled}
-            className={cn("ov-btn", dirty && !saveDisabled && "ov-btn--primary")}
-            title={saveLabel}
-          >
-            <Save size="0.875rem" />
-            {saveLabel}
-          </button>
-          <button
-            type="button"
-            className={cn("ov-btn ov-btn--icon", overhaulMoreOpen && "is-on")}
-            data-ov-more-trigger=""
-            onClick={() => setOverhaulMoreOpen((open) => !open)}
-            aria-expanded={overhaulMoreOpen}
-            title={localizeUi("ui.overhaul.more", { defaultValue: "More" })}
-            aria-label={localizeUi("ui.overhaul.more", { defaultValue: "More" })}
-          >
-            <MoreHorizontal size="0.875rem" />
-          </button>
-          <RailMoreMenu open={overhaulMoreOpen} onClose={closeOverhaulMore}>
-            {headerActions}
-          </RailMoreMenu>
-        </>
       }
       sectionsTitle={localizeUi("ui.overhaul.onThisCard", { defaultValue: "On this card" })}
       sections={OVERHAUL_TAB_ORDER.filter((tab) => showSection(tab.id)).map((tab) => ({
@@ -1732,12 +1698,19 @@ export function CharacterEditor() {
           onRevealWorkingField={revealWorkingField}
           actionsSlot={headerActions}
           hideHeader={overhaulActive}
-          wrapBody={(body) => (
-            <div className={overhaulActive ? "ov-ed" : "contents"}>
-              {overhaulRail}
-              {body}
-            </div>
-          )}
+          wrapBody={(body) =>
+            overhaulActive ? (
+              <div className="ov-edpage">
+                {overhaulHead}
+                <div className="ov-ed">
+                  {overhaulRail}
+                  {body}
+                </div>
+              </div>
+            ) : (
+              <div className="contents">{body}</div>
+            )
+          }
         >
           {!overhaulActive && characterId && mariChipField && (
             <div className="mb-3 flex justify-end">

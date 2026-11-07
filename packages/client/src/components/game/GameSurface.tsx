@@ -190,6 +190,14 @@ import {
 import { useRenderTimer } from "../../lib/perf-diagnostics";
 import { isGenerationSendBlocked } from "../../lib/generation-stream-policy";
 import { showChoiceDialog, showConfirmDialog } from "../../lib/app-dialogs";
+import {
+  askLeaveSetup,
+  discardUnfinishedSetup,
+  isSetupKeptForLater,
+  isUnfinishedSetup,
+  keepSetupForLater,
+  setupDraftHasInput,
+} from "../../hooks/use-setup-drafts";
 import { CHAT_FLOATING_UI_DISMISS_EVENT } from "../../lib/chat-floating-ui-events";
 import { cn, generateClientId } from "../../lib/utils";
 import { GAME_DIALOG_CLASS, GAME_SECTION_CLASS } from "../../lib/chat-widget-colors";
@@ -335,6 +343,7 @@ import { GameStoryboardBackgroundVisual, GameStoryboardInlineViewer } from "./Ga
 import { GameVolumeMixer } from "./GameVolumeMixer";
 import { createPortal } from "react-dom";
 import { useOverhaulActive, useOverhaulStore } from "../../stores/overhaul.store";
+import { openLibrarySection } from "../overhaul/library-navigation";
 import { OvGamePane } from "../overhaul/GamePane";
 import { ChatSettingsSection } from "../../features/chat-settings/ChatSettingsSection";
 import {
@@ -1738,9 +1747,6 @@ import { useChatAvatarAgentIds } from "../../features/avatars/stage/use-chat-ava
 import { ConnectionSelect } from "../connections/ConnectionSelect";
 
 /** Typewriter component for the intro screen — reveals text character-by-character. */
-/** Empty "New Game" chats about to be dropped because the player left them, by chat id. */
-const emptySetupChatDrops = new Map<string, ReturnType<typeof setTimeout>>();
-
 /** How long the world overview takes to type out at most, however long it is. */
 const INTRO_TYPEWRITER_MAX_MS = 20_000;
 
@@ -2201,6 +2207,7 @@ import {
   VolumeX,
   X,
   Gamepad2,
+  SlidersHorizontal,
 } from "lucide-react";
 
 /** Randomly sample up to `max` items from an array (Fisher-Yates shuffle). */
@@ -2366,6 +2373,7 @@ interface GameSurfaceProps {
     combatIcon?: CombatIconChoice | null;
     nameColor?: string;
     dialogueColor?: string;
+    rpgStats?: import("@marinara-engine/shared").RPGStatsConfig;
   }>;
   personaInfo?: PersonaInfo;
   chatBackground?: string | null;
@@ -2404,6 +2412,28 @@ function readHostedRoomHumans(value: unknown): {
     host: own ? { name: own.name, description: own.description } : null,
     guests: humans.filter((human) => !human.isHost).map(({ id, name }) => ({ id, name })),
   };
+}
+
+/** A Game Mode sheet as party-pane stats: HP and pools as bars, then the attributes. */
+function rpgSheetStats(
+  sheet:
+    | {
+        attributes?: Array<{ name: string; value: number }>;
+        hp?: { value: number; max: number };
+        pools?: Array<{ name: string; value: number; max: number; color?: string }>;
+      }
+    | null
+    | undefined,
+) {
+  if (!sheet) return [];
+  const stats: Array<{ name: string; value: number; max?: number; color?: string }> = [];
+  const pools = sheet.pools ?? [];
+  if (sheet.hp && !pools.some((pool) => /^(hp|health|hit points?)$/i.test(pool.name.trim()))) {
+    stats.push({ name: "HP", value: sheet.hp.value, max: sheet.hp.max });
+  }
+  for (const pool of pools) stats.push({ name: pool.name, value: pool.value, max: pool.max, color: pool.color });
+  for (const attribute of sheet.attributes ?? []) stats.push({ name: attribute.name, value: attribute.value });
+  return stats;
 }
 
 function GameSurfaceComponent({
@@ -7176,7 +7206,10 @@ function GameSurfaceComponent({
   );
   useProvideChatGalleryActions(activeChatId, galleryActions);
 
+  const chatMetaRef = useRef(chatMeta);
+  chatMetaRef.current = chatMeta;
   const retryGeneration = useCallback(() => {
+    if (!chatMetaRef.current.gameId) return;
     // A turn that failed before the server saved it is back in the input (an interrupted or refused send): Retry sends
     // it again rather than asking the Game Master to go on without it. The failure banner clears once streaming starts.
     if (unsentTurnChatId && unsentTurnChatId === activeChatId) {
@@ -7189,6 +7222,7 @@ function GameSurfaceComponent({
 
   // The input no longer holds a turn it can send (cleared, or disabled): Retry asks the Game Master to go on instead.
   const retryWithoutUnsentTurn = useCallback(() => {
+    if (!chatMetaRef.current.gameId) return;
     setUnsentTurnChatId(null);
     setGenerationFailed(false);
     generate({ chatId: activeChatId, connectionId: null });
@@ -7196,6 +7230,8 @@ function GameSurfaceComponent({
 
   const generateInitialGameTurn = useCallback(() => {
     if (experienceStartupScopeRef.current !== experienceStartupScope || experienceStartupRef.current.blocked) return;
+    // A game that was never made has no world to open on: its setup comes first (user panel 3, PG2).
+    if (!chatMetaRef.current.gameId) return;
     const context = experienceStartupRef.current.context;
     generate({
       chatId: activeChatId,
@@ -7526,7 +7562,8 @@ function GameSurfaceComponent({
 
   // Game mutations
   const createGame = useCreateGame();
-  const gameSetup = useGameSetup();
+  // The wizard shows a failed setup in its own banner, so the hook doesn't toast it a second time.
+  const gameSetup = useGameSetup({ quietFailure: true });
   const generateSetupMapDraft = useGenerateSpatialMapDraft();
   const startGame = useStartGame();
   const rollDice = useRollDice();
@@ -11072,6 +11109,15 @@ function GameSurfaceComponent({
       };
     }
 
+    // Members the game hasn't given stats yet show their sheet: the one copied at setup, else the card's own.
+    for (const charId of partyIds) {
+      const card = cards[charId];
+      if (!card || (card.stats?.length ?? 0) > 0) continue;
+      const sheet = card.gameCard?.rpgStats ?? characters.find((ch) => ch.id === charId)?.rpgStats;
+      const sheetStats = rpgSheetStats(sheet);
+      if (sheetStats.length) card.stats = sheetStats;
+    }
+
     // Player persona card
     if (personaInfo?.name) {
       const configPersonaId = (config?.personaId as string | undefined) ?? null;
@@ -12851,12 +12897,10 @@ function GameSurfaceComponent({
   // The chat read can lag behind Start Game: once a game was made here (a failed setup still made
   // it), the chat holds a campaign the server keeps, so closing setup keeps it too.
   const setupMadeGame = createGame.data?.sessionChat.id === activeChatId;
-  const canAutoDeleteEmptySetupChat = needsCreation && !setupMadeGame && !isMessagesLoading && messages.length === 0;
-  // A "New Game" chat the player walks away from before any game was made in it is dropped, as
-  // closing the wizard already drops it, so leaving setup for another chat or page leaves no empty
-  // chat behind. The decision is the one the last commit saw for that chat; the drop waits a tick
-  // so a remount of the same chat (React's double effects in development) takes it back.
-  const leaveDropsChat = useRef<string | null>(null);
+  // Leaving an unfinished game is handled once, by the setup-draft janitor (use-setup-drafts): it only
+  // removes chats a New chat launcher made and the player never got into. A game that existed before
+  // (seeded, imported, or set up elsewhere) is never dropped just because its world isn't built yet
+  // (user panel 2, N1: leaving "Reach Campaign" deleted it right after "The campaign was kept").
   // Why the last Start Game did not finish, kept on screen over the wizard until the next try:
   // the game is already made by then, and a toast that fades leaves a player looking at a wizard
   // that seems to have done nothing.
@@ -12916,33 +12960,6 @@ function GameSurfaceComponent({
       document.removeEventListener("visibilitychange", reread);
     };
   }, [activeChatId, onSetupWizard, queryClient, setupBusy, unmade, waitingOnOtherSetup]);
-  useEffect(() => {
-    leaveDropsChat.current =
-      canAutoDeleteEmptySetupChat && !createGame.isPending && !gameSetup.isPending ? activeChatId : null;
-  });
-  useEffect(() => {
-    const chatId = activeChatId;
-    const waiting = emptySetupChatDrops.get(chatId);
-    if (waiting) {
-      clearTimeout(waiting);
-      emptySetupChatDrops.delete(chatId);
-    }
-    return () => {
-      if (leaveDropsChat.current !== chatId) return;
-      emptySetupChatDrops.set(
-        chatId,
-        setTimeout(() => {
-          emptySetupChatDrops.delete(chatId);
-          if (useChatStore.getState().activeChatId === chatId) return;
-          // Without force: the server refuses a chat that holds a game after all.
-          void api
-            .delete(`/chats/${chatId}`)
-            .then(() => queryClient.invalidateQueries({ queryKey: chatKeys.list() }))
-            .catch(() => undefined);
-        }, 0),
-      );
-    };
-  }, [activeChatId, queryClient]);
   const shouldShowSetupWizard =
     isSetupActive || (!setupWizardDismissed && (needsCreation || sessionStatus === "setup"));
 
@@ -12966,7 +12983,7 @@ function GameSurfaceComponent({
   if (shouldShowSetupWizard) {
     // Shared with an experience's own setup, so closing either one behaves identically.
     /** Closes setup from either wizard: no-op while a launch is pending, and drops an empty chat. */
-    const dismissSetupWizard = async () => {
+    const dismissSetupWizard = async (confirmed?: boolean | "later") => {
       if (
         createGame.isPending ||
         gameSetup.isPending ||
@@ -12978,17 +12995,42 @@ function GameSurfaceComponent({
         return;
       useGameModeStore.getState().setSetupActive(false);
       try {
-        if (await discardNewChatSetup(activeChatId)) return;
+        if (confirmed !== "later" && (await discardNewChatSetup(activeChatId))) return;
       } catch {
         toast.error(localizeUi("chat.wizard.cancelFailed"));
         return;
       }
+      // A new game whose world was never built (never made, or Create world failed) is a draft. Untouched,
+      // closing setup just removes it. With choices in it, closing asks one question, and dismissing that
+      // question keeps setting up (user panel 3, PG4/PN1/PN5).
+      let keepForLater = confirmed === "later";
+      const draft = isUnfinishedSetup(chat) || isSetupKeptForLater(chat);
+      if (draft && !keepForLater) {
+        const decision =
+          confirmed === true ? "discard" : setupDraftHasInput(chat) ? await askLeaveSetup("game") : "discard";
+        if (decision === "continue") {
+          useGameModeStore.getState().setSetupActive(true);
+          return;
+        }
+        if (decision === "later") keepForLater = true;
+        else if (await discardUnfinishedSetup(queryClient, activeChatId)) {
+          toast.info(localizeUi("game.setupDraft.discarded", { defaultValue: "Game discarded." }));
+          return;
+        }
+      }
+      if (keepForLater && !isSetupKeptForLater(chat)) await keepSetupForLater(queryClient, activeChatId);
       setDismissedSetupWizardChatId(activeChatId);
       writeSetupDismissed(activeChatId, true);
       // A Start Game that failed made the game without this page reading it yet: read it now, so
       // the closed setup shows as unfinished at once rather than only after a reload (re-test 10).
       if (setupMadeGame) void queryClient.invalidateQueries({ queryKey: chatKeys.detail(activeChatId) });
-      if (needsCreation || sessionStatus === "setup") {
+      if (keepForLater) {
+        toast.info(
+          localizeUi("game.setupDraft.keptForLater", {
+            defaultValue: 'Game setup kept for later. It\'s in your chats as "Setup not finished".',
+          }),
+        );
+      } else if (needsCreation || sessionStatus === "setup") {
         toast.info(localizeUi("ui.game.gamesurfacecomponent.gameSetupDismissedTheCampaignWasKept"));
       }
     };
@@ -13123,6 +13165,7 @@ function GameSurfaceComponent({
               }
             }}
             onCancel={dismissSetupWizard}
+            setupFailed={setupFailure?.chatId === activeChatId && !setupFailure.running}
             onStopGeneration={gameSetup.isPending ? gameSetup.cancel : undefined}
             isLoading={
               createGame.isPending ||
@@ -13224,7 +13267,9 @@ function GameSurfaceComponent({
   }
 
   // Setup was closed before it finished: nothing is loading or playable yet, so say so and offer it again.
-  if (setupWizardDismissed && sessionStatus === "setup" && !gameSetup.isPending && !isStreaming) {
+  // That includes a game that was never made at all (no world): it never falls through to the first-turn spinner,
+  // whose Retry would play a GM turn into a game with no world (user panel 3, PG2).
+  if (setupWizardDismissed && unmade && !gameSetup.isPending && !createGame.isPending && !isStreaming) {
     return (
       <>
         <div
@@ -13983,6 +14028,17 @@ function GameSurfaceComponent({
             <Braces size={13} />
             {t("game.toolbar.editGameData")}
           </button>
+          <button
+            type="button"
+            onClick={() => {
+              // Narration speed, auto-play and dialogue display live in Settings > Game.
+              useOverhaulStore.getState().setSettingsTab("game");
+              openLibrarySection("settings");
+            }}
+          >
+            <SlidersHorizontal size={13} />
+            {localizeUi("ui.game.gamesurfacecomponent.playbackSettings")}
+          </button>
           {renderRetryItems()}
         </div>
       </ChatSettingsSection>
@@ -14012,6 +14068,11 @@ function GameSurfaceComponent({
         inventory={inventoryItems}
         playerName={personaInfo?.name ?? "You"}
         onOpenInventory={activeExperienceChrome?.providesInventory ? undefined : () => setInventoryOpen(true)}
+        onEditSheet={(memberId) =>
+          characters.some((character) => character.id === memberId)
+            ? () => useUIStore.getState().openCharacterDetail(memberId, { initialTab: "stats" })
+            : undefined
+        }
         heading={ovHeading}
         journal={
           <Suspense fallback={null}>

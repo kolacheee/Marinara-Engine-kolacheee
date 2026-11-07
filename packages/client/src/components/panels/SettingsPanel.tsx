@@ -29,7 +29,7 @@ import {
   type TrackerThoughtBubbleDisplay,
   type VisualTheme,
 } from "../../stores/ui.store";
-import { useOverhaulActive, useOverhaulStore } from "../../stores/overhaul.store";
+import { useOverhaulActive, useOverhaulMobile, useOverhaulStore } from "../../stores/overhaul.store";
 import { UILanguageSetting } from "./settings/UILanguageSetting";
 import { LanguagePicker } from "../ui/LanguagePicker";
 import { MultiplayerSettings } from "../../features/multiplayer/MultiplayerSettings";
@@ -240,6 +240,7 @@ import {
   HostDeviceFileManagerError,
   isHostDeviceBrowser,
 } from "../../lib/host-device";
+import { DeviceLookSetting } from "./DeviceLookSetting";
 
 type CustomFontFace = {
   filename: string;
@@ -2339,6 +2340,10 @@ function GeneralSettings() {
   const setIntuitiveSwipeNavigation = useUIStore((s) => s.setIntuitiveSwipeNavigation);
   const intuitiveSwipeRerollLatest = useUIStore((s) => s.intuitiveSwipeRerollLatest);
   const setIntuitiveSwipeRerollLatest = useUIStore((s) => s.setIntuitiveSwipeRerollLatest);
+  const swipeGestures = useUIStore((s) => s.swipeGestures);
+  const setSwipeGestures = useUIStore((s) => s.setSwipeGestures);
+  // Phones in the new layout have no keyboard arrows or double-click: those rows only confused (panel 3, PP11).
+  const keyboardRowsHidden = useOverhaulMobile();
   const editLastMessageOnArrowUp = useUIStore((s) => s.editLastMessageOnArrowUp);
   const setEditLastMessageOnArrowUp = useUIStore((s) => s.setEditLastMessageOnArrowUp);
   const editMessageOnDoubleClick = useUIStore((s) => s.editMessageOnDoubleClick);
@@ -2652,34 +2657,45 @@ function GeneralSettings() {
         {...getSettingsSectionAnchorProps("editing-swipes")}
       >
         <div className="flex flex-col gap-2.5">
+          {keyboardRowsHidden ? null : (
+            <>
+              <ToggleSetting
+                anchorId={getSettingsControlAnchorId("up-arrow-edits-last-message")}
+                label={localizeUi("settings.controls.upArrowEdit.label")}
+                checked={editLastMessageOnArrowUp}
+                onChange={setEditLastMessageOnArrowUp}
+                help={localizeUi("settings.controls.upArrowEdit.help")}
+              />
+              <ToggleSetting
+                anchorId={getSettingsControlAnchorId("double-click-edits-messages")}
+                label={localizeUi("settings.controls.doubleClickEdit.label")}
+                checked={editMessageOnDoubleClick}
+                onChange={setEditMessageOnDoubleClick}
+                help={localizeUi("settings.controls.doubleClickEdit.help")}
+              />
+              <ToggleSetting
+                anchorId={getSettingsControlAnchorId("intuitive-swipe-navigation")}
+                label={localizeUi("settings.controls.intuitiveSwipes.label")}
+                checked={intuitiveSwipeNavigation}
+                onChange={setIntuitiveSwipeNavigation}
+                help={localizeUi("settings.controls.intuitiveSwipes.help")}
+              />
+              <ToggleSetting
+                anchorId={getSettingsControlAnchorId("reroll-past-newest-swipe")}
+                label={localizeUi("settings.controls.rerollLatest.label")}
+                checked={intuitiveSwipeRerollLatest}
+                onChange={setIntuitiveSwipeRerollLatest}
+                disabled={!intuitiveSwipeNavigation}
+                help={localizeUi("settings.controls.rerollLatest.help")}
+              />
+            </>
+          )}
           <ToggleSetting
-            anchorId={getSettingsControlAnchorId("up-arrow-edits-last-message")}
-            label={localizeUi("settings.controls.upArrowEdit.label")}
-            checked={editLastMessageOnArrowUp}
-            onChange={setEditLastMessageOnArrowUp}
-            help={localizeUi("settings.controls.upArrowEdit.help")}
-          />
-          <ToggleSetting
-            anchorId={getSettingsControlAnchorId("double-click-edits-messages")}
-            label={localizeUi("settings.controls.doubleClickEdit.label")}
-            checked={editMessageOnDoubleClick}
-            onChange={setEditMessageOnDoubleClick}
-            help={localizeUi("settings.controls.doubleClickEdit.help")}
-          />
-          <ToggleSetting
-            anchorId={getSettingsControlAnchorId("intuitive-swipe-navigation")}
-            label={localizeUi("settings.controls.intuitiveSwipes.label")}
-            checked={intuitiveSwipeNavigation}
-            onChange={setIntuitiveSwipeNavigation}
-            help={localizeUi("settings.controls.intuitiveSwipes.help")}
-          />
-          <ToggleSetting
-            anchorId={getSettingsControlAnchorId("reroll-past-newest-swipe")}
-            label={localizeUi("settings.controls.rerollLatest.label")}
-            checked={intuitiveSwipeRerollLatest}
-            onChange={setIntuitiveSwipeRerollLatest}
-            disabled={!intuitiveSwipeNavigation}
-            help={localizeUi("settings.controls.rerollLatest.help")}
+            anchorId={getSettingsControlAnchorId("phone-swipe-gestures")}
+            label={localizeUi("settings.controls.phoneSwipeGestures.label")}
+            checked={swipeGestures}
+            onChange={setSwipeGestures}
+            help={localizeUi("settings.controls.phoneSwipeGestures.help")}
           />
           <ToggleSetting
             anchorId={getSettingsControlAnchorId("guide-generations")}
@@ -4078,6 +4094,8 @@ function AppearanceSettings({ group = "app" }: { group?: AppearanceGroup }) {
                   "One tab bar on top, the Library on the right and Library pages in the middle. Desktop only; phones keep the standard layout.",
                 )}
               />
+
+              <DeviceLookSetting anchorId={getSettingsControlAnchorId("device-look")} />
 
               <label id={getSettingsControlAnchorId("theme-mode")} className="flex scroll-mt-3 flex-col gap-1">
                 <span className="text-xs font-medium inline-flex items-center gap-1">

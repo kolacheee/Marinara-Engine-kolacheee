@@ -1,4 +1,5 @@
 import { useQueries, useQueryClient } from "@tanstack/react-query";
+import { useStagedTranscriptCap } from "../../hooks/use-staged-transcript";
 import { useTranslation, useTranslation as useUiTranslation } from "react-i18next";
 import { normalizeSemanticSummaryRetrievalSettings } from "@marinara-engine/shared";
 import { toast } from "sonner";
@@ -60,7 +61,13 @@ import {
   resolveTranscriptRenderWindowSize,
   TRANSCRIPT_RENDER_WINDOW_STEP,
 } from "../../lib/transcript-render-window";
-import { selectSidebarShown, useUIStore } from "../../stores/ui.store";
+import {
+  DEFAULT_ROLEPLAY_BACKGROUND_URL,
+  ROLEPLAY_AVATAR_STYLES,
+  selectRoleplayAvatarStyle,
+  selectSidebarShown,
+  useUIStore,
+} from "../../stores/ui.store";
 import { useChatStore } from "../../stores/chat.store";
 import { useGameStateStore } from "../../stores/game-state.store";
 import { useChatComposerFocused, useChatKeyboardOpen } from "../../hooks/use-visual-viewport-chat-bottom";
@@ -73,7 +80,7 @@ import { ChatInput } from "./ChatInput";
 import { CyoaChoices } from "./CyoaChoices";
 import { CHAT_CONTROL_WINDOW_IDS, ChatConnectedChatWindow, ChatControlWindow } from "./ChatControlWindow";
 import { TrackerPanelBubble } from "./TrackerPanelBubble";
-import { useOverhaulMobile } from "../../stores/overhaul.store";
+import { useOverhaulLook, useOverhaulMobile } from "../../stores/overhaul.store";
 import { PHONE_BUBBLE_SIZE_PX, WINDOW_BUBBLE_SIZE_PX, WINDOW_MARGIN_PX } from "../../lib/floating-window-layout";
 import { useMatchMedia } from "../../hooks/use-match-media";
 import { CHAT_TOOLBAR_ICON_GAP_CLASS, getChatToolbarButtonClass } from "./ChatToolbarControls";
@@ -160,6 +167,16 @@ const ActiveLorebookEntriesContent = lazy(async () => {
   const module = await import("./ChatRoleplayPanels");
   return { default: module.ActiveLorebookEntriesContent };
 });
+
+/** Warms the parts a roleplay chat shows when it opens, so the first open needs no second round of downloads. */
+export function preloadRoleplaySurfaceParts() {
+  return Promise.all([
+    import("./RoleplayTrackerWindow"),
+    import("./RoleplayHUD"),
+    import("./WeatherEffects"),
+    import("./EchoChamberPanel"),
+  ]);
+}
 
 const roleplayNotificationSeenKeys = new Set<string>();
 const MAX_ROLEPLAY_NOTIFICATION_SEEN_KEYS = 5_000;
@@ -1013,6 +1030,7 @@ export function ChatRoleplaySurface({
   // Panel-enabled chats use the Trackers button to reopen their selected surface.
   const phoneLayout = useMatchMedia("(max-width: 767px)");
   const overhaulMobile = useOverhaulMobile();
+  const overhaulLook = useOverhaulLook();
   const trackerPanelEnabled = useUIStore((s) => s.trackerPanelEnabled);
   const trackerPanelOpen = useUIStore((s) => s.trackerPanelOpen);
   const showTrackerPanelBubble =
@@ -1031,6 +1049,9 @@ export function ChatRoleplaySurface({
   const sidebarOpen = useUIStore(selectSidebarShown);
   const rightPanelOpen = useUIStore((s) => s.rightPanelOpen);
   const chatBackgroundBlur = useUIStore((s) => s.chatBackgroundBlur);
+  // The stock black backdrop is a dark-mode default; in Light mode the theme's own background shows instead.
+  const lightTheme = useUIStore((s) => s.theme === "light");
+  const shownChatBackground = lightTheme && chatBackground === DEFAULT_ROLEPLAY_BACKGROUND_URL ? null : chatBackground;
   const roleplayReducedPaintEffects = useUIStore((s) => s.roleplayReducedPaintEffects);
   const defaultDisplayStyle = useUIStore((s) => s.roleplayDisplayStyle);
   const vnSpriteScale = useUIStore((s) => s.roleplayVnSpriteScale);
@@ -1040,7 +1061,13 @@ export function ChatRoleplaySurface({
   // Undefined until the chat sets it; ChatMessage then falls back to the retired global switch.
   const colorInlineNames = typeof chatMeta.colorInlineNames === "boolean" ? chatMeta.colorInlineNames : undefined;
   const chatPosition = useUIStore((s) => s.roleplayChatPosition);
-  const roleplayAvatarStyle = useUIStore((s) => s.roleplayAvatarStyle);
+  const roleplayAvatarStyle = useUIStore(selectRoleplayAvatarStyle);
+  // This chat's own avatar display (Chat settings > Characters), in effect while it's open.
+  const chatAvatarStyle = ROLEPLAY_AVATAR_STYLES.find((style) => style === chatMeta.roleplayAvatarStyle) ?? null;
+  useEffect(() => {
+    useUIStore.getState().setChatAvatarStyleOverride(chatAvatarStyle);
+    return () => useUIStore.getState().setChatAvatarStyleOverride(null);
+  }, [chatAvatarStyle]);
   const roleplayAvatarScale = useUIStore((s) => s.roleplayAvatarScale);
   const roleplayChatWidthPercent = useUIStore((s) => s.roleplayChatWidthPercent);
   const trackerPanelSide = useUIStore((s) => s.trackerPanelSide);
@@ -1284,12 +1311,11 @@ export function ChatRoleplaySurface({
       }
       const scrollElement = scrollRef.current;
       if (!scrollElement) return;
-      scrollElement
-        .closest<HTMLElement>('[data-chat-mode="roleplay"]')
-        ?.style.setProperty(
-          "--mari-roleplay-scrollbar-width",
-          `${scrollElement.offsetWidth - scrollElement.clientWidth}px`,
-        );
+      // Inherited by every row: write it only when it changes, so a re-measure restyles nothing.
+      const roleplayRoot = scrollElement.closest<HTMLElement>('[data-chat-mode="roleplay"]');
+      const scrollbarWidth = `${scrollElement.offsetWidth - scrollElement.clientWidth}px`;
+      if (roleplayRoot && roleplayRoot.style.getPropertyValue("--mari-roleplay-scrollbar-width") !== scrollbarWidth)
+        roleplayRoot.style.setProperty("--mari-roleplay-scrollbar-width", scrollbarWidth);
       const historyBox = scrollElement.parentElement;
       if (historyBox) {
         historyBox.style.top = visualNovel && vnHistoryOpen ? `${top + 8}px` : "";
@@ -1365,11 +1391,23 @@ export function ChatRoleplaySurface({
     setTranscriptWindowStart(null);
     pendingLoadMoreRevealRef.current = null;
   }, [maxMountedMessages]);
-  const transcriptWindow = useMemo(
-    () => getTranscriptRenderWindow(messages, { maxMountedMessages, startIndex: transcriptWindowStart }),
-    [maxMountedMessages, messages, transcriptWindowStart],
-  );
   const gotoRequest = useChatStore((state) => state.gotoRequest);
+  // Opening a chat mounts its newest rows first, then the older loaded ones (use-staged-transcript.ts).
+  const stagedCap = useStagedTranscriptCap(
+    activeChatId,
+    messagesLength,
+    transcriptWindowStart !== null || gotoRequest?.chatId === activeChatId || multiSelectMode || visualNovel,
+  );
+  const staging = stagedCap !== null;
+  const transcriptWindow = useMemo(
+    () =>
+      getTranscriptRenderWindow(messages, {
+        maxMountedMessages:
+          stagedCap === null ? maxMountedMessages : Math.min(stagedCap, maxMountedMessages ?? stagedCap),
+        startIndex: transcriptWindowStart,
+      }),
+    [maxMountedMessages, messages, stagedCap, transcriptWindowStart],
+  );
   useLayoutEffect(() => {
     if (!vnHistoryOpen || !pendingVnHistoryScroll.current) return;
     pendingVnHistoryScroll.current = false;
@@ -1820,7 +1858,7 @@ export function ChatRoleplaySurface({
           } as CSSProperties
         }
       >
-        <CrossfadeBackground url={chatBackground} blurPx={chatBackgroundBlur} />
+        <CrossfadeBackground url={shownChatBackground} blurPx={chatBackgroundBlur} />
         <div className="rpg-overlay absolute inset-0" />
         <div className="rpg-vignette pointer-events-none absolute inset-0" />
         {weatherEffects && <WeatherEffectsConnected paused={weatherEffectsPaused} />}
@@ -1994,7 +2032,7 @@ export function ChatRoleplaySurface({
                     "calc(var(--mari-roleplay-scroll-padding-bottom, 16px) + var(--mari-message-editor-scroll-space, 0px))",
                 }}
               >
-                {hasNextPage && (
+                {hasNextPage && !staging && (
                   <div className="mari-chat-load-more mb-3 flex justify-center">
                     <button
                       onClick={handleLoadMoreClick}
@@ -2012,9 +2050,11 @@ export function ChatRoleplaySurface({
                 )}
 
                 <TranscriptWindowControls
-                  hiddenBeforeCount={transcriptWindow.hiddenBeforeCount}
+                  hiddenBeforeCount={staging ? 0 : transcriptWindow.hiddenBeforeCount}
                   hiddenAfterCount={transcriptWindow.hiddenAfterCount}
-                  onShowOlder={transcriptWindow.hiddenBeforeCount > 0 ? showOlderTranscriptMessages : undefined}
+                  onShowOlder={
+                    !staging && transcriptWindow.hiddenBeforeCount > 0 ? showOlderTranscriptMessages : undefined
+                  }
                   className="pt-0"
                 />
 
@@ -2023,6 +2063,20 @@ export function ChatRoleplaySurface({
                     <div className="h-8 w-8 animate-spin rounded-full border-2 border-foreground/20 border-t-white/60" />
                   </div>
                 )}
+
+                {/* A roleplay with no messages yet: say what to do instead of a blank page (panel 3, round-1 #16). */}
+                {overhaulLook && !isLoading && !hasNextPage && !isStreaming && messages && messages.length === 0 ? (
+                  <div className="ov-rp-empty" data-component="RoleplayEmptyState">
+                    <strong>
+                      {characterNames.length
+                        ? localizeUi("ui.chat.chatroleplaysurface.emptyTitleWith", {
+                            names: characterNames.join(", "),
+                          })
+                        : localizeUi("ui.chat.chatroleplaysurface.emptyTitle")}
+                    </strong>
+                    <span>{localizeUi("ui.chat.chatroleplaysurface.emptyHint")}</span>
+                  </div>
+                ) : null}
 
                 {visibleMessages?.map((msg, i) => {
                   if (isMessageHiddenFromUser(msg)) return null;

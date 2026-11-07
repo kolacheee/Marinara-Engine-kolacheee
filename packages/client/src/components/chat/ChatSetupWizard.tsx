@@ -29,6 +29,14 @@ import {
 import { cn, getAvatarCropStyle } from "../../lib/utils";
 import { advanceChatSetupDraft } from "../../lib/chat-setup-draft";
 import { useDiscardNewChatSetup } from "../../hooks/use-discard-new-chat-setup";
+import {
+  askLeaveSetup,
+  discardUnfinishedSetup,
+  isSetupKeptForLater,
+  isUnfinishedSetup,
+  keepSetupForLater,
+  registerSetupInputProbe,
+} from "../../hooks/use-setup-drafts";
 import { useConnections, useModelParameterCapabilities } from "../../hooks/use-connections";
 import { usePresets, usePresetFull, useDefaultPreset } from "../../hooks/use-presets";
 import { useCharacterGroups, useCharacters, usePersonas } from "../../hooks/use-characters";
@@ -42,6 +50,7 @@ import { useUIStore } from "../../stores/ui.store";
 import { openAddConnection } from "../../lib/add-connection";
 import { ConnectionSelect } from "../connections/ConnectionSelect";
 import { useChatStore } from "../../stores/chat.store";
+import { useDialogStore } from "../../stores/dialog.store";
 import { useSidecarStore } from "../../stores/sidecar.store";
 import { api } from "../../lib/api-client";
 import { appendLocalSidecarConnectionOption, isConnectionFlagTrue } from "../../lib/connection-filters";
@@ -786,12 +795,32 @@ function SetupGenerationParametersPanel({
 export function ChatSetupWizard({ chat, onFinish }: ChatSetupWizardProps) {
   const { t } = useUiTranslation();
   const discard = useDiscardNewChatSetup();
+  const queryClient = useQueryClient();
   const [closing, setClosing] = useState(false);
   const dismiss = async () => {
     if (closing) return;
     setClosing(true);
     try {
-      const discarded = await discard(chat.id);
+      let discarded = await discard(chat.id);
+      // Anything left is a draft with choices in it, or one this page can't compare after a reload: ask the
+      // same three-way question as Game. Dismissing it means "Keep setting up" (user panel 3, PN1/PN5).
+      if (!discarded && (isUnfinishedSetup(chat) || isSetupKeptForLater(chat))) {
+        const choice = await askLeaveSetup("chat");
+        if (choice === "continue") return;
+        if (choice === "discard") {
+          discarded = await discardUnfinishedSetup(queryClient, chat.id);
+        } else {
+          // Kept for later: close setup without finishing it; it opens again next time.
+          await keepSetupForLater(queryClient, chat.id);
+          toast.info(
+            t("chat.wizard.keptForLater", {
+              defaultValue: 'Chat setup kept for later. It\'s in your chats as "Setup not finished".',
+            }),
+          );
+          if (useChatStore.getState().activeChatId === chat.id) onFinish(true);
+          return;
+        }
+      }
       const activeId = useChatStore.getState().activeChatId;
       if (activeId === chat.id || (discarded && activeId === null)) onFinish(discarded);
     } catch {
@@ -800,6 +829,66 @@ export function ChatSetupWizard({ chat, onFinish }: ChatSetupWizardProps) {
       setClosing(false);
     }
   };
+  const dismissRef = useRef(dismiss);
+  dismissRef.current = dismiss;
+  // Leaving by another route (Home, a tab, Ctrl+K) keeps a draft the player typed or picked in.
+  const isGameChat = (chat as unknown as { mode?: string }).mode === "game";
+  // What the chat looked like when its setup opened (the launcher's own copy when there is one), so leaving
+  // can tell a draft the player typed or picked in from an untouched one.
+  const startRef = useRef<{
+    name: string;
+    connectionId: string | null;
+    promptPresetId: string | null;
+    cast: string;
+  } | null>(null);
+  if (!startRef.current) {
+    const baseline = useChatStore.getState().pendingNewChatSetups[chat.id];
+    startRef.current = {
+      name: baseline?.name ?? chat.name,
+      connectionId: baseline ? baseline.connectionId : (chat.connectionId ?? null),
+      promptPresetId: baseline ? baseline.promptPresetId : (chat.promptPresetId ?? null),
+      cast: JSON.stringify((chat as { characterIds?: unknown }).characterIds ?? []),
+    };
+  }
+  useEffect(() => {
+    if (isGameChat) return;
+    return registerSetupInputProbe(chat.id, () => {
+      // A name still being saved counts: leaving blurs the field just as the janitor asks.
+      const saving = queryClient
+        .getMutationCache()
+        .getAll()
+        .some((mutation) => {
+          const variables = mutation.state.variables as { id?: string; chatId?: string } | undefined;
+          return mutation.state.status === "pending" && (variables?.id === chat.id || variables?.chatId === chat.id);
+        });
+      if (saving) return true;
+      const current = queryClient.getQueryData<Chat>(chatKeys.detail(chat.id));
+      const start = startRef.current;
+      if (!current || !start) return false;
+      return (
+        current.name !== start.name ||
+        (current.connectionId ?? null) !== start.connectionId ||
+        (current.promptPresetId ?? null) !== start.promptPresetId ||
+        JSON.stringify((current as { characterIds?: unknown }).characterIds ?? []) !== start.cast
+      );
+    });
+  }, [chat.id, isGameChat, queryClient]);
+  // Esc closes setup the way × does, as it does in Game setup (user panel 3, PN5).
+  useEffect(() => {
+    if (isGameChat) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      if (useDialogStore.getState().dialog) return;
+      if (document.querySelector('[role="dialog"][aria-modal="true"], [role="menu"], [role="listbox"]')) return;
+      const target = event.target as Element | null;
+      const inWizard = target?.closest?.('[data-component="ChatSetupWizard"]');
+      if (!inWizard && target !== document.body && target !== document.documentElement) return;
+      event.preventDefault();
+      void dismissRef.current();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isGameChat]);
   const applyingProfile = useIsApplyingChatPreset(chat.id);
   const [applyHold, setApplyHold] = useState<WizardApplyHold | null>(null);
   const hold = nextWizardApplyHold(applyHold, chat.id, applyingProfile);

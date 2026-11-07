@@ -19,7 +19,7 @@
   --ov-line: var(--border);
   --ov-text: var(--foreground);
   --ov-muted: var(--muted-foreground);
-  --ov-dim: color-mix(in srgb, var(--muted-foreground) 70%, transparent);
+  --ov-dim: color-mix(in srgb, var(--muted-foreground) 85%, transparent);
   --ov-accent: var(--primary);
   --ov-hover: color-mix(in srgb, var(--foreground) 7%, transparent);
   --ov-active-bg: color-mix(in srgb, var(--foreground) 9%, var(--background));
@@ -63,9 +63,11 @@
   width: 1.625rem;
   height: 1.625rem;
 }
-.ov-icon-btn:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-icon-btn:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 .ov-icon-btn.is-on {
   color: var(--ov-accent);
@@ -101,9 +103,11 @@
   gap: 0.4375rem;
   padding: 0 0.625rem 0 0.5625rem;
 }
-.ov-tab:hover {
-  color: var(--ov-text);
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-tab:hover {
+    color: var(--ov-text);
+    background: var(--ov-hover);
+  }
 }
 .ov-tab[draggable="true"] {
   position: relative;
@@ -199,9 +203,11 @@
   color: var(--ov-dim);
   font-size: 0.75rem;
 }
-.ov-text-btn:hover {
-  color: var(--ov-text);
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-text-btn:hover {
+    color: var(--ov-text);
+    background: var(--ov-hover);
+  }
 }
 .ov-text-btn.is-on {
   color: var(--ov-text);
@@ -262,9 +268,11 @@
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
 }
-.ov-libnav__item:hover {
-  color: var(--ov-text);
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-libnav__item:hover {
+    color: var(--ov-text);
+    background: var(--ov-hover);
+  }
 }
 .ov-libnav__item.is-on {
   color: var(--ov-text);
@@ -299,9 +307,11 @@
   color: var(--ov-dim);
   font-size: 0.75rem;
 }
-.ov-libnav__tag:hover {
-  color: var(--ov-text);
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-libnav__tag:hover {
+    color: var(--ov-text);
+    background: var(--ov-hover);
+  }
 }
 .ov-libnav__tag.is-on {
   color: var(--ov-text);
@@ -379,8 +389,10 @@
   font-size: 0.8125rem;
   font-weight: 600;
 }
-.ov-new-pill:hover {
-  filter: brightness(1.08);
+@media (hover: hover) {
+  .ov-new-pill:hover {
+    filter: brightness(1.08);
+  }
 }
 .ov-mode-count {
   margin-left: 0.25rem;
@@ -507,8 +519,10 @@
   font-size: 0.75rem;
   backdrop-filter: blur(6px);
 }
-.ov-chip-btn:hover {
-  background: color-mix(in srgb, var(--background) 90%, transparent);
+@media (hover: hover) {
+  .ov-chip-btn:hover {
+    background: color-mix(in srgb, var(--background) 90%, transparent);
+  }
 }
 .ov-rail__name {
   width: 100%;
@@ -560,8 +574,10 @@
 .ov-tag--add {
   border-style: dashed;
 }
-.ov-tag--add:hover {
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-tag--add:hover {
+    color: var(--ov-text);
+  }
 }
 .ov-tag--input {
   width: 6rem;
@@ -587,8 +603,10 @@
   font-size: 0.8125rem;
   white-space: nowrap;
 }
-.ov-btn:hover:not(:disabled) {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-btn:hover:not(:disabled) {
+    background: var(--ov-hover);
+  }
 }
 .ov-btn:disabled {
   opacity: 0.45;
@@ -596,19 +614,23 @@
 }
 .ov-btn--accent {
   border-color: transparent;
-  background: var(--ov-mode-roleplay);
-  color: #fff;
+  background: var(--ov-accent);
+  color: var(--primary-foreground);
 }
-.ov-btn--accent:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--ov-mode-roleplay) 88%, #fff);
+@media (hover: hover) {
+  .ov-btn--accent:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--ov-accent) 88%, #fff);
+  }
 }
 .ov-btn--primary {
   border-color: transparent;
   background: var(--ov-accent);
   color: var(--primary-foreground);
 }
-.ov-btn--primary:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--ov-accent) 88%, #fff);
+@media (hover: hover) {
+  .ov-btn--primary:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--ov-accent) 88%, #fff);
+  }
 }
 .ov-btn--icon {
   width: 2rem;
@@ -644,13 +666,13 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.ov-rail__more .mari-editor-actions {
+:is(.ov-rail__more, .ov-menu) .mari-editor-actions {
   display: grid !important;
   gap: 0.0625rem !important;
   width: 100%;
   padding: 0 !important;
 }
-.ov-rail__more .mari-editor-actions button[title] {
+:is(.ov-rail__more, .ov-menu) .mari-editor-actions button[title] {
   display: flex !important;
   width: 100% !important;
   height: auto !important;
@@ -667,25 +689,27 @@
   color: var(--ov-text) !important;
   text-align: left;
 }
-.ov-rail__more .mari-editor-actions button[title] svg {
+:is(.ov-rail__more, .ov-menu) .mari-editor-actions button[title] svg {
   width: 0.9375rem;
   height: 0.9375rem;
   flex: none;
 }
-.ov-rail__more .mari-editor-actions button[title] > :not(svg) {
+:is(.ov-rail__more, .ov-menu) .mari-editor-actions button[title] > :not(svg) {
   display: none;
 }
-.ov-rail__more .mari-editor-actions button[title]::after {
+:is(.ov-rail__more, .ov-menu) .mari-editor-actions button[title]::after {
   content: attr(title);
   overflow: hidden;
   font-size: 0.8125rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.ov-rail__more .mari-editor-actions button[title]:hover:not(:disabled) {
-  background: var(--ov-hover) !important;
+@media (hover: hover) {
+  :is(.ov-rail__more, .ov-menu) .mari-editor-actions button[title]:hover:not(:disabled) {
+    background: var(--ov-hover) !important;
+  }
 }
-.ov-rail__more .mari-editor-actions button[title]:has(svg.lucide-trash2, svg.lucide-trash-2) {
+:is(.ov-rail__more, .ov-menu) .mari-editor-actions button[title]:has(svg.lucide-trash2, svg.lucide-trash-2) {
   color: var(--destructive) !important;
 }
 .ov-rail__rule {
@@ -720,8 +744,10 @@
   font-size: 0.875rem;
   text-align: left;
 }
-.ov-rail__section:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-rail__section:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-rail__section.is-on {
   background: var(--ov-active-bg);
@@ -745,44 +771,36 @@
   font-size: 0.8125rem;
   text-align: left;
 }
-.ov-rail__children button:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-rail__children button:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
-.ov-rail__add {
-  position: relative;
+/* Sections not in use yet: one small "+ Name" each, wrapping, under the jump list. */
+.ov-rail__addlist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.125rem 0.25rem;
+  margin: 0.375rem 0 0;
+  padding: 0;
+  list-style: none;
 }
-.ov-rail__add-btn {
+.ov-rail__add-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  height: 1.875rem;
-  padding: 0 0.5rem;
-  color: var(--ov-accent);
-  font-size: 0.875rem;
-}
-.ov-rail__add-menu {
-  display: grid;
-  gap: 0.0625rem;
-  margin-top: 0.25rem;
-  padding: 0.25rem;
-  border: 1px solid var(--ov-line);
-  border-radius: 0.625rem;
-  background: var(--card);
-}
-.ov-rail__add-menu button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  height: 1.75rem;
+  gap: 0.25rem;
+  height: 1.625rem;
   padding: 0 0.5rem;
   border-radius: 0.4375rem;
-  color: var(--ov-text);
+  color: var(--ov-accent);
   font-size: 0.8125rem;
-  text-align: left;
+  white-space: nowrap;
 }
-.ov-rail__add-menu button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-rail__add-item:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-crumbs {
   display: flex;
@@ -798,8 +816,10 @@
   align-items: center;
   gap: 0.25rem;
 }
-.ov-crumbs__item button:hover {
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-crumbs__item button:hover {
+    color: var(--ov-text);
+  }
 }
 .ov-crumbs__item [aria-current] {
   color: var(--ov-text);
@@ -820,9 +840,11 @@
   color: var(--ov-muted);
   font-size: 0.8125rem;
 }
-.ov-addchip:hover {
-  border-color: var(--ov-accent);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-addchip:hover {
+    border-color: var(--ov-accent);
+    color: var(--ov-text);
+  }
 }
 
 /* Section titles in the editors read like the mockup: serif, with a rule. */
@@ -1081,10 +1103,19 @@
   overflow-y: auto;
   padding: 1.5rem 2rem 2.5rem;
 }
+/* Empty Library lists: the same dashed panel as the gallery's "+ New" tile, so empty pages match. */
 .ov-list__empty {
-  padding: 2rem 0;
+  display: flex;
+  min-height: 9rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0.75rem 0 0;
+  padding: 1.5rem;
+  border: 1px dashed color-mix(in srgb, var(--ov-accent) 35%, var(--ov-line));
+  border-radius: 0.75rem;
   color: var(--ov-muted);
   font-size: 0.875rem;
+  text-align: center;
 }
 .ov-pill {
   height: 2rem;
@@ -1094,8 +1125,10 @@
   color: var(--ov-text);
   font-size: 0.8125rem;
 }
-.ov-pill:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-pill:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-pill.is-on {
   border-color: transparent;
@@ -1159,9 +1192,13 @@
 .ov-table tbody tr {
   cursor: pointer;
 }
-.ov-table tbody tr:hover td,
 .ov-table tbody tr:focus-visible td {
   background: var(--ov-hover);
+}
+@media (hover: hover) {
+  .ov-table tbody tr:hover td {
+    background: var(--ov-hover);
+  }
 }
 .ov-table tbody tr:focus-visible {
   outline: none;
@@ -1234,7 +1271,7 @@
   transition: transform 0.15s ease;
 }
 .ov-switch.is-on {
-  background: var(--ov-mode-roleplay);
+  background: var(--ov-accent);
 }
 .ov-switch.is-on span {
   transform: translateX(0.875rem);
@@ -1307,8 +1344,10 @@
   color: var(--ov-muted);
   font-size: 0.9375rem;
 }
-.ov-settings__tabs [role="tab"]:hover {
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-settings__tabs [role="tab"]:hover {
+    color: var(--ov-text);
+  }
 }
 .ov-settings__tabs [role="tab"].is-on {
   border-bottom-color: var(--ov-accent);
@@ -1348,8 +1387,10 @@
   font-size: 0.8125rem;
   text-align: left;
 }
-.ov-settings__results button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-settings__results button:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-settings__results small {
   color: var(--ov-dim);
@@ -1368,9 +1409,11 @@
   color: var(--ov-muted);
   font-size: 0.8125rem;
 }
-.ov-chip:hover {
-  color: var(--ov-text);
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-chip:hover {
+    color: var(--ov-text);
+    background: var(--ov-hover);
+  }
 }
 .ov-settings__scroll {
   min-height: 0;
@@ -1637,9 +1680,13 @@
 .ov-sheet__table td input[type="number"] {
   font-family: var(--font-mono, ui-monospace, monospace);
 }
-.ov-sheet__table td input:not([type="color"]):hover,
 .ov-sheet__table td input:not([type="color"]):focus {
   border-color: var(--ov-line) !important;
+}
+@media (hover: hover) {
+  .ov-sheet__table td input:not([type="color"]):hover {
+    border-color: var(--ov-line) !important;
+  }
 }
 .ov-sheet__color {
   display: inline-flex;
@@ -1687,9 +1734,11 @@
   border-radius: 0.375rem;
   color: var(--ov-dim);
 }
-.ov-sheet__x:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-sheet__x:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 
 /* ─── Lorebook editor ─── */
@@ -1716,13 +1765,15 @@
   font-size: 0.8125rem;
   text-align: left;
 }
-.ov-menu button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-menu button:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-menu button.is-danger {
   color: var(--destructive);
 }
-[data-overhaul] .mari-editor-content-inner--wide:has(> .ov-bk-head) {
+[data-overhaul] .mari-editor-content-inner--wide:has(> :is(.ov-bk-head, .ov-edhead)) {
   max-width: none;
 }
 .ov-bk-head {
@@ -1937,9 +1988,13 @@
   background: transparent !important;
   box-shadow: none !important;
 }
-[data-overhaul] .ov-lore-row:hover > div:first-of-type,
 [data-overhaul] .ov-lore-row.is-open > div:first-of-type {
   background: var(--ov-hover);
+}
+@media (hover: hover) {
+  [data-overhaul] .ov-lore-row:hover > div:first-of-type {
+    background: var(--ov-hover);
+  }
 }
 [data-overhaul] .ov-lore-row > div:first-of-type {
   gap: 0.375rem;
@@ -2042,8 +2097,10 @@
   background: transparent !important;
   box-shadow: none !important;
 }
-.ov-preset__left [data-preset-section-root] > *:hover {
-  background: var(--ov-hover) !important;
+@media (hover: hover) {
+  .ov-preset__left [data-preset-section-root] > *:hover {
+    background: var(--ov-hover) !important;
+  }
 }
 .ov-preset__left [data-preset-section-root] + p {
   display: none;
@@ -2058,8 +2115,10 @@
   background: transparent !important;
   box-shadow: none !important;
 }
-[data-ov-row]:hover {
-  background: var(--ov-hover) !important;
+@media (hover: hover) {
+  [data-ov-row]:hover {
+    background: var(--ov-hover) !important;
+  }
 }
 [data-ov-row="selected"] {
   border-color: color-mix(in srgb, var(--ov-accent) 60%, transparent) !important;
@@ -2256,8 +2315,10 @@
   font-size: 0.8125rem;
   text-align: left;
 }
-.ov-docs__list button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-docs__list button:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-docs__list button.is-on {
   background: color-mix(in srgb, var(--ov-accent) 14%, transparent);
@@ -2340,8 +2401,10 @@
   border-radius: 0.5rem;
   text-align: left;
 }
-.ov-recent button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-recent button:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-recent__avatar {
   display: grid;
@@ -2531,13 +2594,19 @@
   border-radius: 0.25rem;
   color: var(--ov-muted);
 }
-.ov-lrow__acts button:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-lrow__acts button:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
-[data-overhaul] .ov-lore-row:hover > .ov-lrow,
 [data-overhaul] .ov-lore-row.is-open > .ov-lrow {
   background: var(--ov-hover);
+}
+@media (hover: hover) {
+  [data-overhaul] .ov-lore-row:hover > .ov-lrow {
+    background: var(--ov-hover);
+  }
 }
 
 .ov-lentry {
@@ -2744,8 +2813,10 @@
   place-items: center;
   color: var(--ov-dim);
 }
-.ov-chipbox__chip button:hover {
-  color: var(--destructive);
+@media (hover: hover) {
+  .ov-chipbox__chip button:hover {
+    color: var(--destructive);
+  }
 }
 .ov-lentry__filters {
   display: grid;
@@ -2907,43 +2978,54 @@
   color: var(--ov-text);
   font-size: 0.875rem;
 }
+/* ─── The one editor header (2026-11-07): every Library editor — Character, Persona, Lorebook,
+   Preset, Regex, Connection, Agent — uses this: crumbs at the top, the item's name as the title,
+   the editor's buttons, save state, Save and ⋯ on the right of the same line. ─── */
 .ov-edhead {
+  flex: none;
   margin-bottom: 0.75rem;
   padding-bottom: 0.625rem;
   border-bottom: 1px solid var(--ov-line);
 }
-.ov-edhead__crumbs {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: var(--ov-dim);
-  font-size: 0.75rem;
-}
-.ov-edhead__crumbs button:hover {
-  color: var(--ov-text);
-}
-.ov-edhead__crumbs span {
+.ov-edhead .ov-crumbs {
+  flex-wrap: nowrap;
+  min-width: 0;
+  margin: 0;
   overflow: hidden;
-  color: var(--ov-muted);
-  text-overflow: ellipsis;
+  font-size: 0.8125rem;
   white-space: nowrap;
+}
+.ov-edhead .ov-crumbs__item:last-child {
+  min-width: 0;
+  overflow: hidden;
+}
+.ov-edhead .ov-crumbs__item:last-child > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .ov-edhead__row {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: 0.25rem 0.75rem;
-  margin-top: 0.25rem;
+  min-height: 2.5rem;
+  margin-top: 0.375rem;
+}
+.ov-edhead__lead {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
 }
 .ov-edhead__title {
   min-width: 6rem;
   max-width: 100%;
+  flex: 0 1 auto;
   margin: 0;
   overflow: hidden;
   border: 0;
   background: transparent;
   color: var(--ov-text);
-  font: 600 1.75rem/1.2 var(--ov-serif);
+  font: 600 2rem/1.2 var(--ov-serif);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -2957,16 +3039,59 @@ input.ov-edhead__title:focus {
   box-shadow: 0 1px 0 var(--ov-accent);
 }
 .ov-edhead__meta {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
   color: var(--ov-muted);
   font-size: 0.875rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .ov-edhead__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  align-self: center;
+  justify-content: flex-end;
   gap: 0.5rem;
   margin-left: auto;
+}
+.ov-edhead__actions > :is(.ov-btn, .ov-edbtn) {
+  height: 2.125rem;
+}
+.ov-edhead__actions > :is(.ov-btn--icon, .ov-menu-wrap > .ov-edbtn--icon),
+.ov-edhead .ov-menu-wrap > .ov-edbtn--icon {
+  width: 2.125rem;
+  height: 2.125rem;
+}
+/* The one Save button: a quiet "Saved" pill until there is something to save, then the accent. */
+.ov-savebtn {
+  display: inline-flex;
+  height: 2.125rem;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0 0.875rem;
+  border: 1px solid var(--ov-line);
+  border-radius: 999px;
+  color: var(--ov-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ov-savebtn:disabled {
+  cursor: default;
+}
+.ov-savebtn.is-dirty {
+  border-color: transparent;
+  background: var(--ov-accent);
+  color: var(--primary-foreground);
+}
+@media (hover: hover) {
+  .ov-savebtn.is-dirty:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--ov-accent) 88%, #fff);
+  }
+}
+.ov-savebtn.is-dirty:disabled {
+  opacity: 0.6;
 }
 .ov-edbtn {
   display: inline-flex;
@@ -2980,8 +3105,10 @@ input.ov-edhead__title:focus {
   font-size: 0.8125rem;
   white-space: nowrap;
 }
-.ov-edbtn:hover:not(:disabled) {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-edbtn:hover:not(:disabled) {
+    background: var(--ov-hover);
+  }
 }
 .ov-edbtn:disabled {
   opacity: 0.5;
@@ -2992,8 +3119,10 @@ input.ov-edhead__title:focus {
   color: var(--background);
   font-weight: 600;
 }
-.ov-edbtn--primary:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--ov-text) 85%, transparent);
+@media (hover: hover) {
+  .ov-edbtn--primary:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--ov-text) 85%, transparent);
+  }
 }
 .ov-edbtn--icon {
   width: 1.875rem;
@@ -3188,8 +3317,10 @@ input.ov-edhead__title:focus {
   color: var(--ov-accent);
   font-size: 0.8125rem;
 }
-.ov-ed__link:hover {
-  text-decoration: underline;
+@media (hover: hover) {
+  .ov-ed__link:hover {
+    text-decoration: underline;
+  }
 }
 .ov-ed__flags {
   display: flex;
@@ -3345,8 +3476,10 @@ input.ov-edhead__title:focus {
   color: var(--ov-muted);
   text-align: left;
 }
-.ov-cf__toggle:hover {
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-cf__toggle:hover {
+    color: var(--ov-text);
+  }
 }
 @container ov-ed (min-width: 50rem) {
   .ov-agented .ov-row {
@@ -3604,8 +3737,10 @@ input.ov-edhead__title:focus {
   color: var(--ov-text);
   cursor: grab;
 }
-.ov-cs-edit__row:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-cs-edit__row:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-cs-edit__row.is-dragging {
   opacity: 0.4;
@@ -3738,12 +3873,14 @@ input.ov-edhead__title:focus {
   font-size: 0.8125rem !important;
   font-weight: 500;
 }
-.ov-cs
-  .mari-drawer__body
-  button[class*="rounded"]:is([class*="ring-1"], [class*="bg-[var(--secondary)]"], [class*="border"]):not(
-    [role="switch"]
-  ):not([class*="ov-"]):not(.cursor-help):hover {
-  background: var(--ov-hover) !important;
+@media (hover: hover) {
+  .ov-cs
+    .mari-drawer__body
+    button[class*="rounded"]:is([class*="ring-1"], [class*="bg-[var(--secondary)]"], [class*="border"]):not(
+      [role="switch"]
+    ):not([class*="ov-"]):not(.cursor-help):hover {
+    background: var(--ov-hover) !important;
+  }
 }
 .ov-cs .mari-drawer__body .grid:has(> button) {
   display: flex !important;
@@ -3880,10 +4017,12 @@ input.ov-edhead__title:focus {
   place-items: center;
   border-radius: 0.375rem;
 }
-.ov-rpf__swipes > button:hover:not(:disabled),
-.ov-rpf__btn:hover {
-  background: color-mix(in srgb, currentColor 12%, transparent);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-rpf__swipes > button:hover:not(:disabled),
+  .ov-rpf__btn:hover {
+    background: color-mix(in srgb, currentColor 12%, transparent);
+    color: var(--ov-text);
+  }
 }
 .ov-rpf__swipes > button:disabled {
   opacity: 0.35;
@@ -3985,8 +4124,10 @@ input.ov-edhead__title:focus {
   border-radius: 0.375rem;
   color: var(--ov-accent);
 }
-.ov-rpf-pop__foot button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-rpf-pop__foot button:hover {
+    background: var(--ov-hover);
+  }
 }
 /* The upstream action buttons, as a labelled vertical menu. */
 .ov-rpf-menu .mari-message-actions {
@@ -4018,8 +4159,10 @@ input.ov-edhead__title:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.ov-rpf-menu .mari-message-actions button[title]:hover {
-  background: var(--ov-hover) !important;
+@media (hover: hover) {
+  .ov-rpf-menu .mari-message-actions button[title]:hover {
+    background: var(--ov-hover) !important;
+  }
 }
 .ov-rpf-menu .mari-message-actions > button[title]:last-of-type:has(svg.lucide-trash2, svg.lucide-trash-2) {
   color: var(--destructive) !important;
@@ -4040,8 +4183,10 @@ input.ov-edhead__title:focus {
   border-radius: 0.375rem;
   text-align: left;
 }
-.ov-rpf-swipe:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-rpf-swipe:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-rpf-swipe.is-on {
   background: color-mix(in srgb, var(--ov-accent) 14%, transparent);
@@ -4116,8 +4261,10 @@ input.ov-edhead__title:focus {
   border-radius: 0.375rem;
   font-size: 0.9375rem;
 }
-.ov-cvh__quick button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-cvh__quick button:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-typing {
   display: flex;
@@ -4176,9 +4323,11 @@ input.ov-edhead__title:focus {
   place-items: center;
   border-radius: 0.375rem;
 }
-.ov-replybar button:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-replybar button:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 .ov-replyquote {
   margin: 0 0 0.125rem;
@@ -4229,9 +4378,11 @@ input.ov-edhead__title:focus {
   border-radius: 0.4375rem;
   color: var(--ov-muted);
 }
-.ov-gsw__icon:hover:not(:disabled) {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-gsw__icon:hover:not(:disabled) {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 .ov-gsw__steps {
   display: flex;
@@ -4254,9 +4405,11 @@ input.ov-edhead__title:focus {
   font-size: 0.78rem;
   white-space: nowrap;
 }
-.ov-gsw__steps button:hover:not(:disabled) {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-gsw__steps button:hover:not(:disabled) {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 .ov-gsw__steps button.is-done {
   color: var(--ov-muted);
@@ -4282,7 +4435,7 @@ input.ov-edhead__title:focus {
 /* Label-left rows: the field label sits in a 8.5rem column, everything else in the second column. */
 .ov-gsw .space-y-4 > div:has(> :is(label, span).mb-1\.5:first-child) {
   display: grid;
-  grid-template-columns: 8.5rem minmax(0, 1fr);
+  grid-template-columns: 7rem minmax(0, 1fr);
   column-gap: 0.75rem;
   align-items: start;
 }
@@ -4411,6 +4564,35 @@ input.ov-edhead__title:focus {
   color: var(--ov-text);
   font-size: 0.8125rem;
 }
+/* No room beside the scene: the pane floats over its right edge instead of squeezing the narration. */
+.ov-gpane.is-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 25;
+  border-left-color: color-mix(in srgb, var(--primary) 45%, var(--ov-line));
+  box-shadow:
+    -1px 0 0 color-mix(in srgb, var(--primary) 25%, transparent),
+    -16px 0 36px rgb(0 0 0 / 0.5);
+}
+/* The pane floats over the scene: the narration keeps to the uncovered part (but never under 18rem). */
+.ov-gwrap.is-pane-over :has(> .mari-game-narration-surface) {
+  max-width: max(18rem, calc(100% - var(--ov-gpane-cover, 23.5rem) - 1rem)) !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+.ov-gwrap.is-pane-over .mari-game-narration-surface > .mt-2.flex,
+.ov-gwrap.is-pane-over .mari-game-narration-surface > .mt-2.flex > div {
+  flex-wrap: wrap;
+  row-gap: 0.375rem;
+}
+.ov-gwrap.is-pane-over .mari-game-narration-surface > .mt-2.flex > :last-child {
+  margin-left: auto;
+}
+.ov-gpane-probe {
+  display: none;
+}
 .ov-gpane__head {
   display: flex;
   align-items: flex-start;
@@ -4445,8 +4627,10 @@ input.ov-edhead__title:focus {
   border-radius: 0.375rem;
   color: var(--ov-muted);
 }
-.ov-gpane__head button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-gpane__head button:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-gpane__tabs {
   display: flex;
@@ -4467,9 +4651,11 @@ input.ov-edhead__title:focus {
   color: var(--ov-muted);
   font-size: 0.75rem;
 }
-.ov-gpane__tabs button:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-gpane__tabs button:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 .ov-gpane__tabs button.is-on {
   background: color-mix(in srgb, var(--ov-accent) 14%, transparent);
@@ -4513,8 +4699,10 @@ input.ov-edhead__title:focus {
 .ov-gpane__table tbody tr {
   cursor: pointer;
 }
-.ov-gpane__table tbody tr:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-gpane__table tbody tr:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-gpane__table tbody tr.is-on {
   background: color-mix(in srgb, var(--ov-accent) 10%, transparent);
@@ -4586,33 +4774,6 @@ input.ov-edhead__title:focus {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-.ov-gpane__label--row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-.ov-gpane__label--row > span {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.ov-gpane__open {
-  flex: none;
-  padding: 0.125rem 0.5rem;
-  border: 1px solid var(--ov-line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ov-accent);
-  font: inherit;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-}
-.ov-gpane__open:hover,
-.ov-gpane__open:focus-visible {
-  border-color: var(--ov-accent);
 }
 .ov-gpane__stats {
   display: grid;
@@ -4716,9 +4877,11 @@ input.ov-edhead__title:focus {
   color: var(--ov-text) !important;
   font-size: 0.78rem !important;
 }
-.ov-gset__row > button:hover:not(:disabled),
-.ov-gset--tools > button:hover:not(:disabled) {
-  background: var(--ov-hover) !important;
+@media (hover: hover) {
+  .ov-gset__row > button:hover:not(:disabled),
+  .ov-gset--tools > button:hover:not(:disabled) {
+    background: var(--ov-hover) !important;
+  }
 }
 .ov-gset__row > button.is-danger {
   color: var(--destructive) !important;
@@ -4840,8 +5003,10 @@ input.ov-edhead__title:focus {
   border-radius: 0.4375rem !important;
   background: transparent !important;
 }
-.ov-sched__row:hover {
-  background: var(--ov-hover) !important;
+@media (hover: hover) {
+  .ov-sched__row:hover {
+    background: var(--ov-hover) !important;
+  }
 }
 .ov-sched__row.is-on {
   background: color-mix(in srgb, var(--ov-accent) 12%, transparent) !important;
@@ -5000,8 +5165,10 @@ input.ov-edhead__title:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.ov-week__dh:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-week__dh:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-week__dh.is-today {
   color: var(--ov-accent);
@@ -5105,8 +5272,10 @@ input.ov-edhead__title:focus {
 :root[data-overhaul] .mari-reaction-pill {
   background: color-mix(in srgb, var(--foreground) 3%, var(--background));
 }
-:root[data-overhaul] .mari-reaction-pill:hover {
-  background: color-mix(in srgb, var(--foreground) 6%, var(--background));
+@media (hover: hover) {
+  :root[data-overhaul] .mari-reaction-pill:hover {
+    background: color-mix(in srgb, var(--foreground) 6%, var(--background));
+  }
 }
 :root[data-overhaul] .mari-reaction-pill.is-mine {
   background: color-mix(in srgb, var(--primary) 18%, var(--background));
@@ -5298,19 +5467,52 @@ input.ov-edhead__title:focus {
 .ov-cs.ov-cs .mari-drawer__body .space-y-3:has(> .justify-between) > * + * {
   margin-top: 0.125rem !important;
 }
-/* Connection is one line: the section name and its selector (v1). */
-.ov-cs.ov-cs .mari-drawer[data-chat-settings-section="connection"] {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-  align-items: center;
-  column-gap: 0.75rem;
-}
-.ov-cs.ov-cs .mari-drawer[data-chat-settings-section="connection"] > .mari-drawer__body {
-  padding-top: 0 !important;
-}
-.ov-cs.ov-cs .mari-drawer[data-chat-settings-section="connection"] > .mari-drawer__header > svg:last-child,
-.ov-cs.ov-cs .mari-drawer[data-chat-settings-section="connection"] .mari-drawer__help {
+/* Connection is a section like Prompt Preset: header with "?" help, then one dense
+   dropdown row the size of the preset select. The model's "Follows your Main / Chosen
+   for this chat" note sits inline after its name; the chooser itself offers Use Main. */
+.ov-cs.ov-cs [data-chat-settings-model-field] > span:first-child,
+.ov-cs.ov-cs [data-chat-settings-model-field] > p {
   display: none;
+}
+/* Outranks the "boxed buttons become pills" and "picker rows" rules. */
+.ov-cs.ov-cs.ov-cs
+  .mari-drawer[data-chat-settings-section="connection"]
+  .mari-drawer__body
+  [data-chat-settings-model-field]
+  > button[type="button"][aria-expanded] {
+  min-height: 1.875rem !important;
+  gap: 0.5rem;
+  padding: 0 0.625rem 0 0.5rem !important;
+  /* Same border and fill as the Prompt Preset select below it. */
+  border: 1px solid var(--ov-line) !important;
+  border-radius: 0.375rem !important;
+  font-size: 0.8125rem !important;
+  background: color-mix(in srgb, var(--background) 70%, transparent) !important;
+  box-shadow: none;
+}
+.ov-cs.ov-cs [data-chat-settings-model-field] > button > :first-child:not(.flex-col) {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 0.25rem;
+  font-size: 0.5625rem;
+}
+.ov-cs.ov-cs [data-chat-settings-model-field] > button > :first-child:not(.flex-col) :is(svg, img) {
+  max-width: 0.75rem;
+  max-height: 0.75rem;
+}
+.ov-cs.ov-cs [data-chat-settings-model-field] > button > .flex-col {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.375rem;
+}
+.ov-cs.ov-cs [data-chat-settings-model-field] > button > .flex-col > span:first-child {
+  flex: 0 1 auto;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.ov-cs.ov-cs [data-chat-settings-model-field] > button > .flex-col > span:last-child {
+  flex: 1 1 0;
+  font-size: 0.6875rem;
 }
 /* Quiet centred notes ("No agent activity yet") sit on the left with no padding. */
 .ov-cs.ov-cs .mari-drawer__body :is(p, div).text-center:is(.py-3, .py-4, .py-5, .py-6, .py-8):not(:has(button)) {
@@ -5351,8 +5553,10 @@ input.ov-edhead__title:focus {
   color: var(--ov-muted);
   font-size: 0.75rem;
 }
-.ov-vw__crumb button:hover {
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-vw__crumb button:hover {
+    color: var(--ov-text);
+  }
 }
 .ov-vw__label {
   display: flex;
@@ -5385,8 +5589,10 @@ input.ov-edhead__title:focus {
   color: var(--ov-text);
   font-size: 0.8125rem;
 }
-.ov-vw__tools button:hover {
-  color: var(--ov-accent);
+@media (hover: hover) {
+  .ov-vw__tools button:hover {
+    color: var(--ov-accent);
+  }
 }
 .ov-vw__find {
   display: flex;
@@ -5458,8 +5664,10 @@ input.ov-edhead__title:focus {
   border-radius: 0.375rem;
   cursor: pointer;
 }
-.ov-vw__row:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-vw__row:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-vw__row.is-on {
   border-left-color: var(--ov-accent);
@@ -5534,12 +5742,24 @@ input.ov-edhead__title:focus {
   min-height: 0;
   flex: 1;
 }
-/* Inside a viewer the left column already says where you are: no breadcrumb, a smaller title. */
-.ov-vw__main .ov-edhead__crumbs {
+/* The viewer's header row: the open item's editor header (portaled into the slot) or, with
+   nothing open, the section's own title. */
+.ov-vw__head {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+.ov-vw__head:has(> .ov-vw__slot > *) > .ov-vw__top {
   display: none;
 }
-.ov-vw__main .ov-edhead__title {
-  font-size: 1.125rem !important;
+.ov-vw__slot > .ov-edhead {
+  margin: 0;
+  padding: 0.75rem 1.75rem 0.625rem;
+}
+.ov-vw__tools--list {
+  padding-bottom: 0.5rem;
+}
+.ov-vw__tools--list .is-new {
+  color: var(--ov-accent);
 }
 
 /* ─── Lorebook viewer: entries on the left, the open entry on the right (mockup) ─── */
@@ -5744,8 +5964,10 @@ input.ov-edhead__title:focus {
   color: var(--ov-text);
   font-size: 0.8125rem;
 }
-.ov-dl__act:hover:not(:disabled) {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-dl__act:hover:not(:disabled) {
+    background: var(--ov-hover);
+  }
 }
 .ov-dl__act:disabled,
 .ov-dl__primary:disabled {
@@ -5948,8 +6170,10 @@ input.ov-edhead__title:focus {
   font-size: 0.875rem;
   font-weight: 600;
 }
-.ov-dl__primary:hover:not(:disabled) {
-  filter: brightness(1.08);
+@media (hover: hover) {
+  .ov-dl__primary:hover:not(:disabled) {
+    filter: brightness(1.08);
+  }
 }
 .ov-dl__desc {
   max-width: 48rem;
@@ -6137,8 +6361,10 @@ input.ov-edhead__title:focus {
   font-size: 0.8125rem !important;
   font-weight: 500 !important;
 }
-:is(.ov-lv-tools__acts, .ov-po-tools) button.mari-editor-action:hover {
-  color: var(--ov-text) !important;
+@media (hover: hover) {
+  :is(.ov-lv-tools__acts, .ov-po-tools) button.mari-editor-action:hover {
+    color: var(--ov-text) !important;
+  }
 }
 :is(.ov-lv-tools__acts, .ov-po-tools) button.mari-editor-action--primary {
   color: var(--ov-accent) !important;
@@ -6322,8 +6548,10 @@ input.ov-edhead__title:focus {
   font-size: 0.75rem;
   font-weight: 500;
 }
-.ov-cb-io__btn:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-cb-io__btn:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-cb-io__btn:disabled {
   opacity: 0.5;
@@ -6365,7 +6593,6 @@ input.ov-edhead__title:focus {
   background: transparent;
   font-size: 0.75rem;
 }
-:root[data-overhaul="on"] .mari-chrome-control--compact:hover,
 :root[data-overhaul="on"]
   .mari-chrome-control--compact:is(
     [aria-pressed="true"],
@@ -6375,6 +6602,12 @@ input.ov-edhead__title:focus {
   ) {
   border-color: transparent;
   background: var(--ov-hover);
+}
+@media (hover: hover) {
+  :root[data-overhaul="on"] .mari-chrome-control--compact:hover {
+    border-color: transparent;
+    background: var(--ov-hover);
+  }
 }
 :root[data-overhaul="on"]
   :is(.mari-chrome-control--primary, .mari-chrome-control--small).w-full:not([role="switch"]):not(
@@ -6402,9 +6635,11 @@ input.ov-edhead__title:focus {
   font-size: 0.75rem;
   font-weight: 500;
 }
-:root[data-overhaul="on"] .mari-suggestion-chip:hover:not(:disabled) {
-  background: var(--ov-hover);
-  box-shadow: none;
+@media (hover: hover) {
+  :root[data-overhaul="on"] .mari-suggestion-chip:hover:not(:disabled) {
+    background: var(--ov-hover);
+    box-shadow: none;
+  }
 }
 
 /* Professor Mari tab: list rows at list density (chats, skills, memories). */
@@ -6453,15 +6688,6 @@ input.ov-edhead__title:focus {
   height: 2rem;
 }
 
-/* Home Widgets dialog: a dense list, eye toggles as small icon buttons. */
-[data-component="HomeBrowserHub.WidgetManager"] section.grid,
-[data-component="HomeBrowserHub.WidgetManager"] > .grid {
-  gap: 0.0625rem;
-}
-[data-component="HomeBrowserHub.WidgetManager"] h3 {
-  margin-bottom: 0.125rem;
-  font-size: 0.6875rem;
-}
 [data-overhaul="on"] [data-component="HomeBrowserHub.WidgetManager"] :is(section, .grid) > :is(div, button).min-h-12,
 [data-overhaul="on"] [data-component="HomeBrowserHub.WidgetManager"] .grid > button.min-h-11 {
   min-height: 2rem;
@@ -6473,11 +6699,13 @@ input.ov-edhead__title:focus {
   font-size: 0.8125rem;
   font-weight: 500;
 }
-[data-overhaul="on"]
-  [data-component="HomeBrowserHub.WidgetManager"]
-  :is(section, .grid)
-  > :is(div, button).min-h-12:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  [data-overhaul="on"]
+    [data-component="HomeBrowserHub.WidgetManager"]
+    :is(section, .grid)
+    > :is(div, button).min-h-12:hover {
+    background: var(--ov-hover);
+  }
 }
 [data-overhaul="on"] [data-component="HomeBrowserHub.WidgetManager"] .min-h-12 > span.h-8 {
   width: 1rem;
@@ -6497,8 +6725,10 @@ input.ov-edhead__title:focus {
   border-radius: 0.375rem;
   background: transparent;
 }
-[data-overhaul="on"] [data-component="HomeBrowserHub.WidgetManager"] .min-h-12 > button.h-10:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  [data-overhaul="on"] [data-component="HomeBrowserHub.WidgetManager"] .min-h-12 > button.h-10:hover {
+    background: var(--ov-hover);
+  }
 }
 [data-overhaul="on"] [data-component="HomeBrowserHub.WidgetManager"] .min-h-12 > button.h-10 svg {
   width: 0.9375rem;
@@ -6542,13 +6772,15 @@ input.ov-edhead__title:focus {
   background: transparent;
   box-shadow: none;
 }
-:root[data-overhaul="on"]
-  .mari-chrome-control.w-full.justify-start:not(.mari-chrome-control--primary):is(
-    :hover,
-    .mari-chrome-control--selected
-  ) {
-  border-color: transparent;
-  background: var(--ov-hover);
+@media (hover: hover) {
+  :root[data-overhaul="on"]
+    .mari-chrome-control.w-full.justify-start:not(.mari-chrome-control--primary):is(
+      :hover,
+      .mari-chrome-control--selected
+    ) {
+    border-color: transparent;
+    background: var(--ov-hover);
+  }
 }
 /* "Choose a chat mode": a short list of rows instead of three tall cards. */
 [data-overhaul="on"] [data-component="ChatModeSelectorModal"] {
@@ -6565,8 +6797,10 @@ input.ov-edhead__title:focus {
   background: transparent;
   box-shadow: none;
 }
-[data-overhaul="on"] [data-component="ChatModeSelectorModal"] > button:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  [data-overhaul="on"] [data-component="ChatModeSelectorModal"] > button:hover {
+    background: var(--ov-hover);
+  }
 }
 [data-overhaul="on"] [data-component="ChatModeSelectorModal"] > button > span:first-child {
   margin: 0;
@@ -6631,10 +6865,12 @@ input.ov-edhead__title:focus {
   width: 0.875rem;
   height: 0.875rem;
 }
-.ov-mari .mari-omnibar-header-menu__popover button:is(:hover, :focus-visible) {
-  outline: none;
-  box-shadow: none;
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-mari .mari-omnibar-header-menu__popover button:is(:hover, :focus-visible) {
+    outline: none;
+    box-shadow: none;
+    background: var(--ov-hover);
+  }
 }
 .ov-mari .mari-omnibar-header-menu__popover button:has(svg.lucide-trash2, svg.lucide-trash-2) {
   color: var(--destructive);
@@ -6661,9 +6897,11 @@ input.ov-edhead__title:focus {
   border-radius: 0.3125rem;
   color: var(--ov-dim);
 }
-.ov-cs-edit__pop:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-cs-edit__pop:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 /* Chat settings Edit: tinted in the accent colour like the app's other Edit buttons. */
 .ov-edbtn.ov-edbtn--tint {
@@ -6672,8 +6910,10 @@ input.ov-edhead__title:focus {
   color: var(--ov-accent);
   font-weight: 600;
 }
-.ov-edbtn.ov-edbtn--tint:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--ov-accent) 22%, transparent);
+@media (hover: hover) {
+  .ov-edbtn.ov-edbtn--tint:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--ov-accent) 22%, transparent);
+  }
 }
 
 /* Tabs size to their name: a short name never gets padded out to the long-tab minimum. */
@@ -6723,10 +6963,12 @@ input.ov-edhead__title:focus {
   color: var(--ov-accent);
   font-weight: 500;
 }
-.ov-addchip:hover {
-  border-color: var(--ov-accent);
-  background: color-mix(in srgb, var(--ov-accent) 22%, transparent);
-  color: var(--ov-accent);
+@media (hover: hover) {
+  .ov-addchip:hover {
+    border-color: var(--ov-accent);
+    background: color-mix(in srgb, var(--ov-accent) 22%, transparent);
+    color: var(--ov-accent);
+  }
 }
 .ov-ed [data-editor-section]:has(.ov-addchips) + [data-editor-section] {
   margin-top: 1.5rem;
@@ -6759,9 +7001,11 @@ input.ov-edhead__title:focus {
   font-size: 0.8125rem;
   font-weight: 500;
 }
-.ov-mari-assist:hover {
-  border-color: var(--ov-accent);
-  background: color-mix(in srgb, var(--ov-accent) 22%, transparent);
+@media (hover: hover) {
+  .ov-mari-assist:hover {
+    border-color: var(--ov-accent);
+    background: color-mix(in srgb, var(--ov-accent) 22%, transparent);
+  }
 }
 
 /* Character / Persona ID: one quiet line under Creator instead of its own full-width box. */
@@ -6796,9 +7040,11 @@ input.ov-edhead__title:focus {
   border-radius: 0.3125rem;
   color: var(--ov-muted);
 }
-.ov-idline__copy:hover {
-  background: color-mix(in srgb, var(--ov-accent) 14%, transparent);
-  color: var(--ov-accent);
+@media (hover: hover) {
+  .ov-idline__copy:hover {
+    background: color-mix(in srgb, var(--ov-accent) 14%, transparent);
+    color: var(--ov-accent);
+  }
 }
 
 /* Rail name and Title / comment wrap onto more lines instead of cutting off. */
@@ -6895,9 +7141,11 @@ input.ov-edhead__title:focus {
   border-radius: 0.4375rem;
   color: var(--ov-muted);
 }
-.ov-mref__close:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-mref__close:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 .ov-mref__body {
   overflow-y: auto;
@@ -6938,8 +7186,10 @@ input.ov-edhead__title:focus {
   border-bottom: 1px solid color-mix(in srgb, var(--ov-line) 55%, transparent);
   font-size: 0.8125rem;
 }
-.ov-mref__row:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-mref__row:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-mref__syntax {
   overflow-wrap: anywhere;
@@ -7061,51 +7311,6 @@ input.ov-edhead__title:focus {
   justify-content: flex-end;
 }
 
-/* ─── Faded Side Panel avatar style ───
-   Like the Glued Side Panel, but a wider portrait that fills the bubble's height and finishes fading
-   inside its own strip, before the text starts. */
-/* The min height goes on the bubble's inner row, so the portrait strip stretches to the bubble's
-   bottom edge instead of stopping at the last line of text. */
-.mari-rp-bubble--faded > div.items-stretch {
-  min-height: calc(7rem * var(--roleplay-avatar-scale, 1));
-}
-.mari-rp-bubble--faded .mari-roleplay-avatar-panel-rail {
-  width: calc(12rem * var(--roleplay-avatar-scale, 1)) !important;
-  border: 0 !important;
-  background: none !important;
-}
-.mari-rp-bubble--faded .rpg-avatar-panel-stack {
-  position: absolute !important;
-  inset: 0 !important;
-  height: auto !important;
-  -webkit-mask-image:
-    linear-gradient(to right, #000 30%, transparent 96%), linear-gradient(to bottom, #000 70%, transparent 100%);
-  mask-image:
-    linear-gradient(to right, #000 30%, transparent 96%), linear-gradient(to bottom, #000 70%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-}
-.mari-rp-bubble--faded.mari-rp-bubble--user .rpg-avatar-panel-stack {
-  -webkit-mask-image:
-    linear-gradient(to left, #000 30%, transparent 96%), linear-gradient(to bottom, #000 70%, transparent 100%);
-  mask-image:
-    linear-gradient(to left, #000 30%, transparent 96%), linear-gradient(to bottom, #000 70%, transparent 100%);
-}
-/* The glued panel's own bottom fades and tail copy are not needed; the mask does the fading. */
-.mari-rp-bubble--faded .rpg-avatar-panel-stack > .pointer-events-none,
-.mari-rp-bubble--faded .rpg-avatar-panel-tail {
-  display: none;
-}
-/* Stretch Messages: every roleplay message fills the full row, however short. */
-.mari-roleplay-message-row--stretch > .mari-roleplay-message-body {
-  flex: 1 1 auto;
-  width: 100%;
-}
-.mari-roleplay-message-row--stretch .mari-rp-bubble {
-  align-self: stretch;
-  width: 100%;
-}
-
 /* Schedule editor: Import and Export are two quiet text buttons on one row, under the draft note. */
 [data-overhaul] [data-schedule-io] {
   flex-wrap: wrap;
@@ -7126,8 +7331,10 @@ input.ov-edhead__title:focus {
 [data-overhaul] [data-schedule-io] .ov-sched-io__btn:first-of-type {
   margin-left: -0.625rem;
 }
-[data-overhaul] [data-schedule-io] .ov-sched-io__btn:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  [data-overhaul] [data-schedule-io] .ov-sched-io__btn:hover {
+    background: var(--ov-hover);
+  }
 }
 /* Save and Cancel/Discard share one row, Save last. */
 [data-overhaul] [data-schedule-actions] {
@@ -7409,7 +7616,9 @@ input.ov-edhead__title:focus {
 }
 .ov-topbar.is-autohide {
   position: fixed;
-  z-index: 60;
+  /* Above the Chat settings drawer and the game slide-over (z 71), so revealing the bar shows all of it,
+     with Docs, Library and the game-pane toggle in reach (user panel 3, PV2). */
+  z-index: 80;
   top: 0;
   left: 0;
   right: 0;
@@ -7423,11 +7632,15 @@ input.ov-edhead__title:focus {
 }
 .ov-topbar-hotzone {
   position: fixed;
-  z-index: 61;
+  z-index: 81;
   top: 0;
   left: 0;
   right: 0;
   height: 6px;
+}
+:root[data-ov-topbar-pinned] .ov-topbar.is-autohide {
+  transform: none;
+  transition: none;
 }
 .ov-topbar-hotzone:hover + .ov-topbar.is-autohide,
 .ov-topbar.is-autohide:hover,
@@ -7477,10 +7690,15 @@ input.ov-edhead__title:focus {
   cursor: pointer;
   white-space: nowrap;
 }
-.ov-thought-btn:hover,
 .ov-thought-btn:focus-visible {
   background: color-mix(in srgb, var(--foreground) 8%, transparent);
   color: var(--foreground);
+}
+@media (hover: hover) {
+  .ov-thought-btn:hover {
+    background: color-mix(in srgb, var(--foreground) 8%, transparent);
+    color: var(--foreground);
+  }
 }
 .ov-thought-btn__chev {
   transition: transform 0.15s ease;
@@ -7543,9 +7761,11 @@ input.ov-edhead__title:focus {
   font-size: 0.75rem;
   cursor: pointer;
 }
-.ov-selbar__link:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--foreground) 8%, transparent);
-  color: var(--foreground);
+@media (hover: hover) {
+  .ov-selbar__link:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--foreground) 8%, transparent);
+    color: var(--foreground);
+  }
 }
 .ov-selbar__link:disabled,
 .ov-selbar .ov-btn:disabled {
@@ -7593,9 +7813,11 @@ input.ov-edhead__title:focus {
   color: var(--ov-muted);
   cursor: pointer;
 }
-.ov-marks__back:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-marks__back:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 .ov-marks__row {
   display: flex;
@@ -7719,6 +7941,7 @@ input.ov-edhead__title:focus {
   position: fixed;
   z-index: 9998;
   width: 17.5rem;
+  max-width: calc(100vw - 1rem);
   padding: 0.75rem 0.875rem;
   border: 1px solid var(--ov-line);
   border-radius: 0.75rem;
@@ -7875,10 +8098,12 @@ input.ov-edhead__title:focus {
   white-space: nowrap;
   cursor: pointer;
 }
-.ov-peek__btn:hover,
-.ov-peek__iconbtn:hover:not(:disabled),
-.ov-peek__item:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-peek__btn:hover,
+  .ov-peek__iconbtn:hover:not(:disabled),
+  .ov-peek__item:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-peek__btn:disabled {
   opacity: 0.6;
@@ -8203,9 +8428,11 @@ input.ov-edhead__title:focus {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.ov-cs .ov-persona-reassign:hover {
-  color: var(--ov-text);
-  text-decoration: underline;
+@media (hover: hover) {
+  .ov-cs .ov-persona-reassign:hover {
+    color: var(--ov-text);
+    text-decoration: underline;
+  }
 }
 
 /* ─── Connections landing (board "ConnList"): accounts table with nested models ─── */
@@ -8289,8 +8516,10 @@ input.ov-edhead__title:focus {
 .ov-conn-defaults__cell:nth-child(3n) {
   border-right: 0;
 }
-.ov-conn-defaults__cell:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-conn-defaults__cell:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-conn-defaults__job {
   width: 6.5rem;
@@ -8443,9 +8672,11 @@ input.ov-edhead__title:focus {
   color: var(--ov-muted);
   cursor: pointer;
 }
-.ov-conn__more:hover {
-  background: var(--ov-hover);
-  color: var(--ov-text);
+@media (hover: hover) {
+  .ov-conn__more:hover {
+    background: var(--ov-hover);
+    color: var(--ov-text);
+  }
 }
 .ov-conn__link {
   padding: 0;
@@ -8614,10 +8845,15 @@ input.ov-edhead__title:focus {
   font-size: 0.8125rem;
   text-align: left;
 }
-.ov-add-list__row:hover,
 .ov-add-list__row:focus-visible {
   background: var(--ov-hover);
   outline: none;
+}
+@media (hover: hover) {
+  .ov-add-list__row:hover {
+    background: var(--ov-hover);
+    outline: none;
+  }
 }
 .ov-add-list__row > :first-child {
   width: 1.25rem !important;
@@ -8681,8 +8917,10 @@ input.ov-edhead__title:focus {
   border-color: transparent;
   font-size: 0.875rem;
 }
-.ov-add-drop > :first-child input:hover {
-  border-color: var(--ov-line);
+@media (hover: hover) {
+  .ov-add-drop > :first-child input:hover {
+    border-color: var(--ov-line);
+  }
 }
 /* Long account names stay on one line in the viewer's list headings. */
 .ov-vw__ghead {
@@ -8704,7 +8942,8 @@ input.ov-edhead__title:focus {
   min-height: 0;
   flex-direction: column;
   overflow: hidden;
-  background: var(--background);
+  /* The page surface behind it, like every other Library page (its token scope repaints --background darker). */
+  background: transparent;
 }
 .ov-org .ov-crumbs {
   margin-bottom: 0.5rem;
@@ -8776,8 +9015,10 @@ input.ov-edhead__title:focus {
   color: var(--ov-mode-game);
   white-space: nowrap;
 }
-.ov-org-updates__link:hover {
-  text-decoration: underline;
+@media (hover: hover) {
+  .ov-org-updates__link:hover {
+    text-decoration: underline;
+  }
 }
 .ov-org .ov-table-wrap,
 .ov-org__status,
@@ -8812,8 +9053,10 @@ input.ov-edhead__title:focus {
   background: color-mix(in srgb, var(--ov-text) 3%, transparent);
   cursor: default;
 }
-.ov-table tbody tr.ov-org__group:hover td {
-  background: color-mix(in srgb, var(--ov-text) 3%, transparent);
+@media (hover: hover) {
+  .ov-table tbody tr.ov-org__group:hover td {
+    background: color-mix(in srgb, var(--ov-text) 3%, transparent);
+  }
 }
 .ov-org__group b {
   margin-right: 0.5rem;
@@ -8891,16 +9134,20 @@ input.ov-edhead__title:focus {
   font-weight: 600;
   white-space: nowrap;
 }
-.ov-org__act:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--ov-accent) 14%, transparent);
+@media (hover: hover) {
+  .ov-org__act:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--ov-accent) 14%, transparent);
+  }
 }
 .ov-org__act.is-update {
   border-color: transparent;
   background: var(--ov-accent);
   color: var(--primary-foreground);
 }
-.ov-org__act.is-update:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--ov-accent) 88%, #fff);
+@media (hover: hover) {
+  .ov-org__act.is-update:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--ov-accent) 88%, #fff);
+  }
 }
 .ov-org__act.is-quiet {
   border-color: var(--ov-line);
@@ -8953,8 +9200,10 @@ input.ov-edhead__title:focus {
   padding: 0.375rem 0.5rem;
   border-radius: 0.375rem;
 }
-.ov-org-kits__row:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-org-kits__row:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-org-kits__text {
   display: flex;
@@ -9000,10 +9249,15 @@ input.ov-edhead__title:focus {
   border-radius: 0.625rem;
   cursor: pointer;
 }
-.ov-org-card:hover,
 .ov-org-card:focus-visible {
   border-color: color-mix(in srgb, var(--ov-accent) 50%, var(--ov-line));
   outline: none;
+}
+@media (hover: hover) {
+  .ov-org-card:hover {
+    border-color: color-mix(in srgb, var(--ov-accent) 50%, var(--ov-line));
+    outline: none;
+  }
 }
 .ov-org-card__art {
   aspect-ratio: 16 / 6;
@@ -9091,8 +9345,10 @@ input.ov-edhead__title:focus {
   font-size: 0.8125rem;
   text-align: left;
 }
-.ov-org-detail__item:hover {
-  background: var(--ov-hover);
+@media (hover: hover) {
+  .ov-org-detail__item:hover {
+    background: var(--ov-hover);
+  }
 }
 .ov-org-detail__item.is-on {
   background: var(--ov-active-bg, var(--ov-hover));
@@ -9543,4 +9799,1251 @@ input.ov-edhead__title:focus {
   .ov-classic__fold svg {
     transition: none;
   }
+}
+
+/* Connections: On this device rows (built-in model, local voice engines). */
+.ov-conn__device .ov-conn__acct b {
+  flex: none;
+}
+.ov-conn__devstate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+.ov-devpage {
+  max-width: 46rem;
+  padding-top: 0.5rem;
+}
+
+/* ── Connections set-up screens in the new layout (Built-in model, decision model, voice) ──
+   The upstream installers draw tall bordered cards; here they read as dense rows like the rest. */
+:root[data-overhaul] .mari-connection-scope [role="radiogroup"]:has(.mari-builtin-option) {
+  gap: 2px;
+}
+:root[data-overhaul] .mari-connection-scope .mari-builtin-option {
+  min-height: 0;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.5rem;
+  border-color: transparent;
+  background: transparent;
+}
+@media (hover: hover) {
+  :root[data-overhaul] .mari-connection-scope .mari-builtin-option:hover {
+    background: var(--marinara-chat-chrome-highlight-bg-hover, color-mix(in srgb, var(--foreground) 5%, transparent));
+  }
+}
+:root[data-overhaul] .mari-connection-scope .mari-builtin-option[aria-checked="true"] {
+  background: var(--mari-connection-tint);
+  border-color: color-mix(in srgb, var(--mari-panel-gradient-start) 55%, transparent);
+}
+:root[data-overhaul] .mari-connection-scope .mari-builtin-option > span.flex-col {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.5rem;
+}
+:root[data-overhaul] .mari-connection-scope .mari-builtin-option > span.flex-col > span:first-child {
+  font-size: 0.8125rem;
+}
+:root[data-overhaul] .mari-connection-scope .mari-builtin-option > span:last-child:not(.flex-col) {
+  font-size: 0.625rem;
+  padding: 0.0625rem 0.375rem;
+}
+
+:root[data-overhaul] .mari-dm-body {
+  gap: 0.875rem;
+}
+:root[data-overhaul] .mari-dm-hero > .mari-chrome-accent-soft-tile {
+  display: none;
+}
+:root[data-overhaul] .mari-dm-hero p:first-child {
+  font-size: 0.8125rem;
+}
+:root[data-overhaul] .mari-dm-warn {
+  border: 0;
+  border-left: 2px solid var(--warning);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.125rem 0 0.125rem 0.75rem;
+}
+:root[data-overhaul] .mari-dm-warn > div:first-child {
+  font-size: 0.8125rem;
+}
+:root[data-overhaul] .mari-dm-toggle {
+  border-width: 1px 0;
+  border-radius: 0;
+  padding: 0.5rem 0.125rem;
+}
+:root[data-overhaul] .mari-dm-row {
+  border-color: transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.625rem;
+}
+:root[data-overhaul] .mari-dm-body .rounded-xl.border:not(.mari-dm-warn):not(.mari-dm-row) {
+  border-radius: 0.5rem;
+  background: transparent;
+}
+:root[data-overhaul] .mari-dm-body > * > .mari-chrome-accent-surface.rounded-xl,
+:root[data-overhaul] .mari-dm-body .flex-col > .mari-chrome-accent-surface.rounded-xl {
+  align-self: flex-end;
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.75rem;
+}
+
+/* Voice: label-left rows, like Settings, instead of a label over every tall field. */
+:root[data-overhaul] .mari-connection-scope .mari-tts-field {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  align-items: center;
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
+}
+:root[data-overhaul] .mari-connection-scope .mari-tts-field > * {
+  margin-top: 0 !important;
+}
+:root[data-overhaul] .mari-connection-scope .mari-tts-field > :not(:first-child) {
+  grid-column: 2;
+}
+:root[data-overhaul] .mari-connection-scope .mari-tts-field .mari-chrome-field {
+  padding-block: 0.375rem;
+  font-size: 0.8125rem;
+}
+/* Device cards (speech model, built-in model page): flat sections split by a rule, not tinted bubbles. */
+:root[data-overhaul] .mari-device-card {
+  background: none;
+  border-radius: 0;
+  padding: 0.25rem 0 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+:root[data-overhaul] .mari-device-card:last-child {
+  border-bottom: 0;
+}
+/* "Set up a Decision provider instead" and Remove read as quiet actions, not full-width slabs. */
+:root[data-overhaul] .mari-dm-body > .mari-chrome-control,
+:root[data-overhaul] .mari-dm-body > * > .mari-chrome-control {
+  align-self: flex-start;
+  width: auto;
+}
+
+/* Job model picker ("Model for Main"): a slim Model / If it fails switch and a one-line "Now", no tinted slabs.
+   With no models to list, the window fits its content instead of keeping a tall empty frame. */
+:root[data-overhaul] .connection-picker-dialog:not(:has([data-switcher-panes])) {
+  height: auto !important;
+}
+:root[data-overhaul] .connection-picker-dialog [role="tablist"].grid {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.375rem 0.75rem;
+}
+:root[data-overhaul] .connection-picker-dialog [role="tablist"].grid > button {
+  min-height: 0;
+  width: auto;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+:root[data-overhaul] .connection-picker-dialog [role="tablist"].grid > button[aria-selected="true"] {
+  border-color: color-mix(in srgb, var(--mari-panel-gradient-start) 60%, transparent);
+}
+:root[data-overhaul] .connection-picker-dialog [role="tablist"].grid > button > span:last-child {
+  width: auto;
+  max-width: 14rem;
+}
+:root[data-overhaul] .connection-picker-dialog [data-switcher-section="now"] {
+  background: transparent;
+  margin-top: 0;
+  border-radius: 0;
+}
+:root[data-overhaul] .connection-picker-dialog [data-switcher-section="now"] > div > .min-w-0 {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+}
+:root[data-overhaul] .connection-picker-dialog [data-switcher-section="now"] > div > .min-w-0 > p {
+  padding-block: 0.375rem;
+}
+:root[data-overhaul] .connection-picker-dialog [data-switcher-section="now"] [data-switcher-default] {
+  height: 2rem;
+}
+:root[data-overhaul] .connection-picker-dialog [data-switcher-accounts] strong {
+  font-size: 0.8125rem;
+}
+:root[data-overhaul] .connection-picker-dialog [data-switcher-accounts] .mari-chrome-control {
+  min-height: 0;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.6875rem;
+}
+/* Decision model window, also when it opens on its own from the Built-in model page. */
+:root[data-overhaul] .mari-dm-body {
+  font-size: 0.8125rem;
+}
+:root[data-overhaul] .mari-dm-hero .text-sm {
+  font-size: 0.8125rem;
+}
+:root[data-overhaul] .mari-dm-warn p {
+  font-size: 0.75rem;
+}
+:root[data-overhaul] .mari-dm-row {
+  padding-block: 0.375rem;
+  gap: 0.625rem;
+}
+:root[data-overhaul] .mari-dm-row .text-sm {
+  font-size: 0.8125rem;
+}
+:root[data-overhaul] .mari-dm-row .text-xs {
+  font-size: 0.6875rem;
+  column-gap: 0.625rem;
+}
+:root[data-overhaul] .mari-dm-body .flex-col:has(> .mari-dm-row) {
+  gap: 2px;
+}
+:root[data-overhaul] .mari-dm-body .rounded-xl.border:not(.mari-dm-warn):not(.mari-dm-row) {
+  border-width: 1px 0 0;
+  padding: 0.75rem 0 0;
+}
+:root[data-overhaul] .mari-dm-body .rounded-xl.border:not(.mari-dm-warn):not(.mari-dm-row) .mari-chrome-field {
+  height: 2rem;
+  font-size: 0.8125rem;
+}
+
+/* An engine's page in the Connections viewer (built-in model, voice): same padding and density as the
+   Model editor beside it; actions are small controls, warnings a thin accent line. */
+.ov-vw__main > .ov-devpage {
+  padding: 1rem 1.5rem 2rem;
+  max-width: 48rem;
+  font-size: 0.8125rem;
+}
+.ov-devpage .mari-chrome-control {
+  font-size: 0.75rem;
+  min-height: 1.75rem;
+  padding: 0.25rem 0.625rem;
+}
+.ov-devpage .mari-device-warn {
+  border-width: 0 0 0 2px;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.125rem 0 0.125rem 0.625rem;
+}
+.ov-devpage .mari-device-link {
+  border-width: 1px 0;
+  border-radius: 0;
+  padding-inline: 0.125rem;
+}
+.ov-devpage .mari-device-decisions {
+  width: auto;
+  align-self: flex-start;
+}
+:root[data-overhaul] .mari-dm-body .rounded-xl.border:not(.mari-dm-warn):not(.mari-dm-row) input {
+  height: 2rem;
+  font-size: 0.8125rem;
+}
+.ov-devpage__head {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0 1rem;
+}
+.ov-devpage__head h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.ov-devpage .mari-dm-body {
+  max-width: 44rem;
+}
+
+/* Built-in model page: Runtime settings open as a section of the page, not a pop-up window.
+   Flat divider rows like the rest of the page; no card slab, no sticky window footer. */
+:root[data-overhaul] .mari-device-runtime {
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}
+:root[data-overhaul] .mari-device-runtime > h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  margin: 0 0 0.25rem;
+}
+:root[data-overhaul] .mari-device-runtime .mari-connection-scope > div:first-child {
+  padding: 0;
+  gap: 0.75rem;
+}
+:root[data-overhaul] .mari-device-runtime .rounded-xl {
+  border-radius: 0.375rem;
+  background: none;
+}
+:root[data-overhaul] .mari-device-runtime .divide-y > button {
+  min-height: 2.25rem;
+  padding: 0.35rem 0.625rem;
+}
+:root[data-overhaul] .mari-device-runtime .mari-connection-scope > div.sticky {
+  position: static;
+  background: none;
+  border-top: 0;
+  padding: 0.5rem 0 0;
+}
+:root[data-overhaul] .mari-device-runtime select,
+:root[data-overhaul] .mari-device-runtime input:not([type="checkbox"]):not([type="range"]) {
+  height: 2rem;
+  min-height: 2rem;
+  font-size: 0.8125rem;
+  padding-block: 0;
+}
+:root[data-overhaul] .mari-device-runtime .text-sm {
+  font-size: 0.8125rem;
+}
+:root[data-overhaul] .mari-device-runtime .text-base {
+  font-size: 0.875rem;
+}
+:root[data-overhaul] .mari-device-runtime [role="radiogroup"] button,
+:root[data-overhaul] .mari-device-runtime [role="tablist"] button {
+  min-height: 1.75rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+}
+
+/* Connections viewer: an account's name opens its page; the chevron only folds its models. */
+.ov-vw__ghead.is-split {
+  padding: 0;
+  gap: 0;
+  border-left: 2px solid transparent;
+  border-radius: 0.375rem;
+}
+.ov-vw__ghead.is-split.is-on {
+  border-left-color: var(--ov-accent);
+  background: color-mix(in srgb, var(--ov-text) 7%, transparent);
+}
+.ov-vw__gfold {
+  display: flex;
+  flex: none;
+  padding: 0.375rem 0.25rem 0.25rem 0.375rem;
+}
+.ov-vw__gopen {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.375rem 0.25rem 0.125rem;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+.ov-vw__gopen > span {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ov-vw__gopen:hover > span {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* An account's page in the Connections viewer: the editor that used to be a window, at page density. */
+.ov-vw__main > .ov-acctpage {
+  padding: 1rem 1.5rem 2rem;
+  max-width: 44rem;
+  font-size: 0.8125rem;
+}
+.ov-acctpage__head {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.ov-acctpage > .flex > .sticky {
+  position: static;
+  margin: 0.5rem 0 0;
+  padding: 0.75rem 0 0;
+  background: none;
+}
+.ov-acctpage .mari-connection-model-choice {
+  min-height: 2.5rem;
+  padding-block: 0.25rem;
+}
+.ov-acctpage .mari-connection-browse {
+  min-height: 2rem;
+  background: none;
+  font-size: 0.8125rem;
+  color: var(--ov-accent, var(--marinara-app-accent-static));
+}
+.ov-acctpage .mari-connection-browse > :first-child {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: none;
+}
+.ov-acctpage .mari-connection-model-choice > :first-child {
+  transform: scale(0.8);
+}
+
+/* Connections / Regex viewers: Library > Section > item above the title, like the Lorebook page. */
+.ov-vw__top.has-crumbs {
+  flex-wrap: wrap;
+  row-gap: 0.25rem;
+  padding-top: 0.75rem;
+}
+.ov-vw__top.has-crumbs > .ov-crumbs {
+  flex-basis: 100%;
+  margin-bottom: 0;
+  font-size: 0.8125rem;
+}
+
+/* Book settings: Enabled and the lorebook's Picture share a line. */
+.ov-bk__pair {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.ov-bk__pair > :first-child {
+  min-width: 0;
+  flex: 1;
+}
+
+/* Built-in preset: shown read-only under one bar that offers an editable copy. */
+.ov-stock-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.4375rem 0.875rem;
+  border-bottom: 1px solid var(--ov-line);
+  background: color-mix(in srgb, var(--primary) 9%, var(--card));
+  font-size: 0.8125rem;
+  color: var(--ov-text);
+}
+/* Kept edits from before a reload, inside the editor's header (OvDraftBar). */
+.ov-edhead .ov-draft-bar {
+  margin-top: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 35%, var(--ov-line));
+  border-radius: 0.5rem;
+}
+.ov-edhead .ov-draft-bar.is-restored {
+  background: color-mix(in srgb, var(--primary) 5%, var(--card));
+  color: var(--ov-muted, var(--muted-foreground));
+}
+.ov-stock-bar__text {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.ov-stock-bar__error {
+  color: var(--destructive);
+}
+.ov-stock-bar .ov-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+[data-ov-readonly] textarea,
+[data-ov-readonly] input {
+  cursor: default;
+}
+/* Read-only built-in preset: hide the controls that would change it; browsing stays. */
+[data-ov-readonly] .ov-bk-head__row > .ov-btn--primary,
+[data-ov-readonly] .ov-po-tools,
+[data-ov-readonly] .ov-povw__pic .ov-ed__link,
+[data-ov-readonly] input[type="file"] {
+  display: none !important;
+}
+[data-ov-readonly] .ov-seg button {
+  pointer-events: none;
+}
+[data-ov-readonly] .ov-preset__state,
+[data-ov-readonly] .ovm-preset__name > small {
+  display: none !important;
+}
+:root[data-overhaul="mobile"] .ov-stock-bar {
+  flex-wrap: nowrap;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+:root[data-overhaul="mobile"] .ov-stock-bar .ov-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Docked Chat settings makes room: the chat beside it narrows and reflows (use-chat-settings-reflow). */
+:root[data-overhaul="on"] [data-cs-docked="reflow"] > :first-child:not(.mari-window) {
+  margin-right: var(--ov-cs-reflow, 0px);
+  transition: margin-right 160ms ease;
+}
+/* Floating over the chat: the composer keeps clear of the pane, so Send stays in reach (panel 3, PR2). */
+:root[data-overhaul="on"] [data-cs-docked="overlay"] .mari-chat-input {
+  padding-right: calc(var(--ov-cs-cover, 0px) + 0.75rem);
+}
+/* Below this the chat (its padding takes ~80px) reads as a strip: Chat settings floats over it instead
+   (user panel 2: a 320px column at 1366 with the chat list open). */
+:root[data-overhaul="on"] {
+  --ov-chat-min: 560px;
+}
+
+/* Chats drawer: the rename pencil is a hover affordance, so touch screens don't get an invisible button. */
+@media (hover: none) {
+  .ov-chat-rename-btn {
+    display: none;
+  }
+}
+
+/* New Game: one fixed height for every step, so the footer (Back / Next) never moves; the body scrolls. */
+.ov-gsw {
+  height: min(40rem, calc(100dvh - var(--ov-topbar-height, 2.75rem) - 2rem)) !important;
+}
+:root[data-overhaul="on"] [data-cs-docked="reflow"][data-cs-tracker="right"] {
+  --tracker-panel-overlay-clearance: 0px;
+  --tracker-panel-chat-clearance: 0px;
+  --tracker-panel-column-room: 0px;
+  --tracker-panel-hud-clear-right: 0px;
+}
+
+/* Characters / Personas: card size switch (small / medium / large); the grid scales, it never becomes a list. */
+.ov-gallery__size button {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2rem;
+}
+.ov-gallery__grid[data-size="small"] {
+  grid-template-columns: repeat(auto-fill, minmax(6rem, 7rem));
+  gap: 1rem 0.625rem;
+}
+.ov-gallery__grid[data-size="small"] .ov-card__name {
+  font-size: 0.8125rem;
+}
+.ov-gallery__grid[data-size="large"] {
+  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 13.5rem));
+  gap: 1.5rem 1rem;
+}
+:root[data-overhaul="mobile"] .ov-gallery__size {
+  display: none;
+}
+
+/* ─── Shared editor header, page frames (2026-11-07) ─── */
+/* Character and Persona: the header spans the page; the rail and the sections sit under it. */
+[data-overhaul] .ov-edpage {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+[data-overhaul] .ov-edpage > .ov-edhead {
+  margin: 0;
+  padding: 0.75rem 1.75rem 0.625rem;
+}
+/* An account's picture before its name in the header. */
+.ov-acctpage__pic {
+  position: relative;
+  flex: none;
+  border-radius: 0.75rem;
+}
+.ov-acctpage__pic > span:last-child {
+  position: absolute;
+  right: -0.25rem;
+  bottom: -0.25rem;
+  display: flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--card);
+  box-shadow: 0 0 0 1px var(--ov-line);
+  color: var(--ov-text);
+}
+.ov-acctpage__pic {
+  display: flex;
+}
+.ov-edhead__lead .ov-acctpage__pic > :first-child {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+/* Every editor's header sits at the same place: flush with the pane, the same inner padding.
+   Editors whose page already pads (Regex, Agent, Connection) pull it back out. */
+:root[data-overhaul="on"] .ov-edhead:not(#ov-x) {
+  margin: 0 0 0.75rem;
+  padding: 0.75rem 1.75rem 0.625rem;
+}
+:root[data-overhaul="on"] :is(.ov-vw__slot, .ov-edpage, .ov-lv) > .ov-edhead:not(#ov-x) {
+  margin-bottom: 0;
+}
+:root[data-overhaul="on"] .ov-ed > .ov-edhead:not(#ov-x) {
+  margin: -1rem -1.75rem 0.75rem;
+}
+:root[data-overhaul="on"] .mari-editor-content-inner > .ov-edhead:not(#ov-x),
+:root[data-overhaul="on"] .ov-acctpage > .ov-edhead:not(#ov-x) {
+  margin-inline: -1.75rem;
+}
+input.ov-edhead__title:not(#ov-x) {
+  height: auto;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Desktop: the header is one line while it fits. A long name shrinks to about 18rem, then the
+   buttons wrap to a second line instead of the name being cut to a few letters (panel 2, N16). */
+/* Save, its state and ⋯ never leave the title row; when the row would cut the title short, only the
+   editor's own buttons move to a second line under it (OvEditorHead measures, panel 3 PV3). */
+:root[data-overhaul="on"] .ov-edhead__row {
+  flex-wrap: nowrap;
+}
+:root[data-overhaul="on"] .ov-edhead__title {
+  flex: 0 1 auto;
+  min-width: 6rem;
+}
+:root[data-overhaul="on"] .ov-edhead__actions {
+  flex: none;
+  flex-wrap: nowrap;
+}
+:root[data-overhaul="on"] .ov-edhead__secondary + .ov-edhead__primary {
+  margin-left: 0;
+}
+:root[data-overhaul="on"] .ov-edhead__row:not(:has(.ov-edhead__secondary)) .ov-edhead__primary {
+  margin-left: auto;
+}
+:root[data-overhaul="on"] .ov-edhead__row.is-split {
+  flex-wrap: wrap;
+}
+:root[data-overhaul="on"] .ov-edhead__row.is-split .ov-edhead__title {
+  flex: 0 1 auto;
+}
+:root[data-overhaul="on"] .ov-edhead__row.is-split .ov-edhead__primary {
+  order: 1;
+  margin-left: auto;
+}
+:root[data-overhaul="on"] .ov-edhead__row.is-split .ov-edhead__secondary {
+  order: 2;
+  flex: 1 0 100%;
+  justify-content: flex-end;
+  margin-left: 0;
+}
+
+/* Preset parameters: compact number fields instead of half-width bars (panel M13/Med 5). */
+.ov-params {
+  display: grid;
+  gap: 0.75rem;
+}
+/* The number fields share one flowing grid; everything else spans the full row. */
+.ov-params > .space-y-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 0.75rem;
+}
+.ov-params > .space-y-3 > * {
+  grid-column: 1 / -1;
+  margin: 0 !important;
+}
+.ov-params > .space-y-3 > .grid:is(.grid-cols-2, .grid-cols-1) {
+  display: contents;
+}
+.ov-params__limits {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+}
+.ov-params__limits-label {
+  font-weight: 600;
+}
+.ov-params__limits-value {
+  color: var(--muted-foreground);
+}
+
+/* One-line system notices ("You are now playing as Rook.") read as a slim centred divider, not a tall card. */
+:root[data-overhaul="on"] .mari-system-message[data-notice="line"] {
+  padding-block: 0.25rem;
+}
+:root[data-overhaul="on"] .mari-system-message[data-notice="line"] .mari-system-message-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted-foreground);
+  font-size: 0.75rem !important;
+  line-height: 1.4;
+  text-align: center;
+}
+:root[data-overhaul="on"] .mari-system-message[data-notice="line"] .mari-system-message-content::before,
+:root[data-overhaul="on"] .mari-system-message[data-notice="line"] .mari-system-message-content::after {
+  content: "";
+  flex: 1 1 1.5rem;
+  height: 1px;
+  background: var(--border);
+}
+:root[data-overhaul="on"] .mari-system-message[data-notice="line"] .mari-system-message-content > :first-child {
+  display: none; /* the "System" label */
+}
+:root[data-overhaul="on"] .mari-system-message[data-notice="line"] .mari-system-message-content > :nth-child(2) {
+  flex: 0 1 auto;
+  max-width: 75%;
+}
+:root[data-overhaul="on"] .mari-system-message[data-notice="line"] .mari-system-message-content > :nth-child(2) * {
+  margin: 0;
+  font-size: inherit;
+}
+/* Its actions float at the right end of the line instead of adding a row. */
+:root[data-overhaul="on"]
+  .mari-system-message[data-notice="line"]
+  .mari-system-message-content
+  > :last-child:not(:nth-child(2)) {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin: 0;
+  transform: translateY(-50%);
+  padding-left: 0.25rem;
+  background: var(--background);
+}
+
+/* Party pane: the member's name with an "Edit sheet" link, and a plain line when there are no stats. */
+.ov-gpane__detail-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.ov-gpane__link {
+  color: var(--ov-accent);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  .ov-gpane__link:hover {
+    text-decoration: underline;
+  }
+}
+.ov-gpane__none {
+  margin: 0 0 0.5rem;
+  color: var(--ov-muted);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+/* Menu separators and unavailable items (tab right-click menu). */
+.ov-menu__sep {
+  height: 1px;
+  margin: 0.25rem 0.375rem;
+  background: var(--ov-line);
+}
+.ov-menu button:disabled {
+  color: var(--ov-dim);
+  cursor: default;
+}
+@media (hover: hover) {
+  .ov-menu button:disabled:hover {
+    background: none;
+  }
+}
+
+/* Message names and times follow the theme (panel M9): readable on light bubbles, AA in dark. */
+:root[data-overhaul][data-theme="light"] .mari-message-name.text-neutral-300 {
+  color: var(--foreground);
+}
+:root[data-overhaul] .ov-rpmsg__head :is(.text-white\/30, .text-white\/25) {
+  /* --ov-dim measured about 4.1:1 on light skins; the muted tone clears 4.5:1 (panel 2). */
+  color: var(--ov-muted);
+}
+
+/* Native dropdowns in the game wizard and Chat settings look like the custom pickers beside them (panel M10). */
+:root[data-overhaul="on"] :is(.ov-gsw, .ov-cs) select:not([multiple]):not([size]) {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.625rem center;
+  background-repeat: no-repeat;
+  background-size: 0.875rem;
+  cursor: pointer;
+}
+
+/* Dice tray chips use the UI font like the rest of the game controls (panel M10). */
+:root[data-overhaul] .mari-chat-dice-control,
+:root[data-overhaul] .mari-chat-dice-control input {
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The swipe/regenerate row hangs under an AI message; leave room so it never sits on the next one. */
+:root[data-overhaul] [data-message-id]:has(.ov-rpf--below) {
+  padding-bottom: 0.875rem;
+}
+
+/* Dialog buttons: one height and baseline, and a destructive action reads as one (panel Low). */
+:root[data-overhaul] [data-dialog-action] {
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.875rem;
+  border-radius: 0.5rem;
+  line-height: 1;
+}
+:root[data-overhaul] [data-dialog-action="confirm"][data-tone="destructive"] {
+  border: 1px solid transparent;
+  background: var(--destructive);
+  box-shadow: none;
+  color: #fff;
+}
+@media (hover: hover) {
+  :root[data-overhaul] [data-dialog-action="confirm"][data-tone="destructive"]:hover {
+    background: color-mix(in srgb, var(--destructive) 88%, #fff);
+  }
+}
+
+/* Home starfield, cheaper (panel Low): one star in three twinkles; the rest hold still without their own layers. */
+:root[data-overhaul] .mari-home-browser-star:not(:nth-child(3n)) {
+  opacity: 0.3;
+  animation: none;
+  will-change: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-overhaul] .mari-home-browser-star {
+    opacity: 0.3;
+    animation: none;
+    will-change: auto;
+  }
+}
+
+/* Delete-message choices read as buttons in every skin (Stage drew them as bare text), deletes in red.
+   Outranks the widget-skin control rules so the frame shows in Stage, Marinara and Dottore alike. */
+:root[data-overhaul] [data-component="MessageDeleteActions"] > button {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+:root[data-overhaul] [data-component="MessageDeleteActions"] > button[data-tone="destructive"] {
+  color: var(--destructive);
+}
+:root[data-overhaul]
+  .mari-chat-action-panel.mari-chat-style-surface
+  [data-component="MessageDeleteActions"]
+  > button.mari-chat-style-control.mari-chrome-control {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+}
+@media (hover: hover) {
+  :root[data-overhaul]
+    .mari-chat-action-panel.mari-chat-style-surface
+    [data-component="MessageDeleteActions"]
+    > button.mari-chat-style-control.mari-chrome-control:hover {
+    background: color-mix(in srgb, var(--foreground) 9%, transparent);
+  }
+}
+:root[data-overhaul]
+  .mari-chat-action-panel.mari-chat-style-surface
+  [data-component="MessageDeleteActions"]
+  > button.mari-chat-style-control.mari-chrome-control[data-tone="destructive"] {
+  border-color: color-mix(in srgb, var(--destructive) 40%, var(--border));
+}
+
+/* ─── Touch screens in the desktop layout (tablets held sideways), user panel 2 ───
+   overhaul-mobile.css only loads for the phone shell, so a tablet that starts sideways never got the
+   touch pass: hidden hover buttons took taps and small controls had no hit area. Same rules, keyed on
+   the input instead of the shell. */
+@media (hover: none) and (pointer: coarse) {
+  :root[data-overhaul="on"] .ov-card__chat,
+  :root[data-overhaul="on"] [data-chat-row-delete] {
+    display: none !important;
+  }
+  :root[data-overhaul="on"]
+    .opacity-0:is([class*="group-hover:opacity-100"], [class*="hover:opacity-100"]):not(
+      [class*="max-md:opacity-100"],
+      [class*="coarse)]:opacity-100"]
+    ) {
+    pointer-events: none;
+  }
+  :root[data-overhaul="on"] .ov-switch {
+    position: relative;
+  }
+  :root[data-overhaul="on"] .ov-switch::after {
+    content: "";
+    position: absolute;
+    inset: -0.75rem -0.5rem;
+  }
+  /* Icon-only buttons (tag ×, help) get a bigger hit area. Labelled buttons (.ov-btn, e.g. the header's
+     "Chat" pill: an icon plus a text node, which :only-child can't see) keep their own layout (panel 3, PT1). */
+  :root[data-overhaul="on"]
+    :is(.ov-lv, .ov-ed, .ov-gallery, .ov-edpage)
+    span
+    > button:has(> svg:only-child):not(.ov-btn, .mari-chrome-control--primary) {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+  }
+  :root[data-overhaul="on"]
+    :is(.ov-lv, .ov-ed, .ov-gallery, .ov-edpage)
+    span
+    > button:has(> svg:only-child):not(.ov-btn, .mari-chrome-control--primary)::after {
+    content: "";
+    position: absolute;
+    inset: -0.625rem;
+  }
+  :root[data-overhaul="on"]
+    :is(
+      button[aria-label="Preview Markdown"],
+      button[aria-label="Expand editor"],
+      button[aria-label="Macro reference"]
+    ) {
+    position: relative;
+  }
+  :root[data-overhaul="on"]
+    :is(
+      button[aria-label="Preview Markdown"],
+      button[aria-label="Expand editor"],
+      button[aria-label="Macro reference"]
+    )::after {
+    content: "";
+    position: absolute;
+    inset: -0.4375rem -0.125rem;
+  }
+  :root[data-overhaul="on"] .mari-chat-input-box button:has(> svg) {
+    position: relative;
+  }
+  :root[data-overhaul="on"] .mari-chat-input-box button:has(> svg)::after {
+    content: "";
+    position: absolute;
+    inset: -0.25rem;
+  }
+  /* Tab close buttons and help icons: same size, a finger-sized hit area. */
+  :root[data-overhaul="on"] :is(.ov-tab__close, .ov-help) {
+    position: relative;
+  }
+  :root[data-overhaul="on"] :is(.ov-tab__close, .ov-help)::after {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+  }
+}
+
+/* ─── Tablet held sideways (desktop layout on a touch screen) ─── */
+/* Long-press on a message: the action sheet becomes a menu beside the finger. */
+.ovm-sheet.is-popover:not(#ovm-x) {
+  --ovm-raised: var(--ov-panel-raised, color-mix(in srgb, var(--foreground) 6%, var(--background)));
+  --ov-line: color-mix(in srgb, var(--foreground) 12%, transparent);
+  right: auto;
+  bottom: auto;
+  width: 21rem;
+  max-height: min(36rem, calc(100dvh - 1.5rem));
+  padding: 0.5rem;
+  border: 1px solid var(--ov-line);
+  border-radius: 1rem;
+  box-shadow: 0 1.125rem 2.5rem rgb(0 0 0 / 0.45);
+  transform: none;
+  animation: none;
+  zoom: 0.86;
+}
+.ovm-sheet-scrim:has(+ .ovm-sheet.is-popover) {
+  background: rgb(0 0 0 / 0.25);
+  backdrop-filter: none;
+}
+:root[data-overhaul="on"] [data-ovm-longpress] {
+  -webkit-touch-callout: none;
+}
+@media (hover: none) {
+  /* Holding a tab opens its menu, so iOS should not show its own link callout. */
+  :root[data-overhaul="on"] :is(.ov-tab, .ov-tabgroup) {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+}
+
+/* The character page's Chat menu hangs under its own button (CharacterChatButton places it). */
+.ov-chatbtn-wrap {
+  position: relative;
+  display: inline-flex;
+}
+.ov-chatbtn-wrap > .ov-rail__chats {
+  left: auto;
+  right: 0;
+  max-width: min(20rem, calc(100vw - 1rem));
+}
+
+/* Settings action buttons ("Open", "Manage"...) read as buttons: full text colour, not the dimmed pink link tint
+   that measured 2.85:1 (panel 2). */
+:root[data-overhaul="on"]
+  [data-ov-settings-sections]
+  .mari-chrome-control:not(.mari-chrome-control--primary):not(.mari-chrome-control--selected):not([role="switch"]) {
+  color: var(--ov-text);
+}
+
+/* ─── Swipe a chat row (phones and touch tablets, panel 3: PP1, PT4) ───
+   A narrow tray slides in over the row's trailing end; the row itself stays put, so the avatar and the
+   start of the chat's name stay readable whatever the row's width. */
+:root[data-overhaul] .ovm-swiperow {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+:root[data-overhaul] .ovm-swiperow__slide {
+  position: relative;
+  touch-action: pan-y;
+}
+:root[data-overhaul] .ovm-swiperow__tray {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 2;
+  display: flex;
+  width: var(--ovm-swiperow-tray);
+  overflow: hidden;
+  border-radius: 0 0.75rem 0.75rem 0;
+  box-shadow: -0.75rem 0 1rem -0.5rem rgb(0 0 0 / 0.35);
+  transform: translateX(calc(var(--ovm-swiperow-tray) - var(--ovm-swiperow-shown, 0px)));
+  transition:
+    transform 180ms ease,
+    visibility 0s 180ms;
+  /* Hidden at rest, so its colour never bleeds round the row's rounded corners. */
+  visibility: hidden;
+}
+:root[data-overhaul] .ovm-swiperow:is([data-open], [data-dragging]) .ovm-swiperow__tray {
+  visibility: visible;
+  transition: transform 180ms ease;
+}
+:root[data-overhaul] .ovm-swiperow[data-dragging] .ovm-swiperow__tray {
+  transition: none;
+}
+:root[data-overhaul] .ovm-swiperow__action {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1875rem;
+  border: 0;
+  background: color-mix(in srgb, var(--foreground) 14%, var(--sidebar, var(--background)));
+  color: var(--foreground);
+  font-size: 0.625rem;
+  line-height: 1.1;
+}
+:root[data-overhaul] .ovm-swiperow__action > span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+:root[data-overhaul] .ovm-swiperow__action.is-danger {
+  background: var(--destructive);
+  color: #fff;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-overhaul] .ovm-swiperow__tray {
+    transition: none;
+  }
+}
+
+/* ─── Action sheets (moved from overhaul-mobile.css so a tablet held sideways has them too) ───
+   Grouped rows along the bottom, Cancel on its own: Delete message, every phone confirm, a chat row's
+   long-press. */
+.ovm-action-sheet-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgb(0 0 0 / 0.55);
+  animation: ov-action-sheet-fade 140ms ease-out;
+}
+.ovm-action-sheet {
+  --ov-as-surface: var(
+    --ovm-raised,
+    color-mix(in srgb, var(--foreground) 6%, var(--marinara-page-backing, var(--background)))
+  );
+  --ov-as-line: var(--ovm-line, color-mix(in srgb, var(--foreground) 12%, transparent));
+  position: fixed;
+  z-index: 10001;
+  right: 0.5rem;
+  bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  left: 0.5rem;
+  display: grid;
+  gap: 0.5rem;
+  animation: ov-action-sheet-up 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (min-width: 600px) {
+  .ovm-action-sheet {
+    left: 50%;
+    width: 26rem;
+    transform: translateX(-50%);
+  }
+}
+@keyframes ov-action-sheet-up {
+  from {
+    translate: 0 40%;
+    opacity: 0.4;
+  }
+}
+@keyframes ov-action-sheet-fade {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ovm-action-sheet,
+  .ovm-action-sheet-scrim {
+    animation: none;
+  }
+}
+.ovm-action-sheet__group {
+  display: grid;
+  overflow: hidden;
+  border-radius: 0.875rem;
+  background: var(--ov-as-surface);
+}
+.ovm-action-sheet__head {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.875rem 1rem;
+  text-align: center;
+  color: var(--ov-muted, var(--muted-foreground));
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+.ovm-action-sheet__head strong {
+  color: var(--ov-text, var(--foreground));
+  font-size: 1rem;
+  font-weight: 600;
+}
+.ovm-action-sheet__head span {
+  white-space: pre-wrap;
+}
+.ovm-action-sheet__field {
+  width: 100%;
+  min-height: 2.75rem;
+  margin-top: 0.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--ov-as-line);
+  border-radius: 0.625rem;
+  background: var(--marinara-page-backing, var(--background));
+  color: var(--ov-text, var(--foreground));
+  font-size: 1rem;
+  text-align: left;
+}
+.ovm-action-sheet__field:focus {
+  border-color: var(--ov-accent, var(--primary));
+  outline: none;
+}
+.ovm-action-sheet__group > button {
+  display: flex;
+  min-height: 3.375rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  border-top: 1px solid var(--ov-as-line);
+  background: none;
+  color: var(--ov-text, var(--foreground));
+  font-size: 1.0625rem;
+}
+.ovm-action-sheet__group > button:first-child {
+  border-top: 0;
+}
+/* App dialogs drawn as a sheet keep the sheet's rows, not the dialog-button look (pill, fill). */
+:root[data-overhaul] .ovm-action-sheet__group > button[data-dialog-action] {
+  min-height: 3.375rem;
+  padding: 0 1rem;
+  border: 0;
+  border-top: 1px solid var(--ov-as-line);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  line-height: 1.2;
+}
+:root[data-overhaul] .ovm-action-sheet__group > button[data-dialog-action]:first-child {
+  border-top: 0;
+}
+:root[data-overhaul] .ovm-action-sheet__group > button[data-dialog-action].is-danger {
+  color: var(--destructive);
+}
+:root[data-overhaul] .ovm-action-sheet__group > button[data-dialog-action].is-primary {
+  color: var(--ov-accent, var(--primary));
+}
+.ovm-action-sheet__group > button.is-primary {
+  color: var(--ov-accent, var(--primary));
+  font-weight: 600;
+}
+.ovm-action-sheet__group > button.is-danger {
+  color: var(--destructive);
+  font-weight: 600;
+}
+.ovm-action-sheet__group > button.is-cancel {
+  font-weight: 600;
+}
+.ovm-action-sheet__group > button:active {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+.ovm-action-sheet__group > button:disabled {
+  opacity: 0.45;
+}
+
+/* Phones: which version of the latest reply is showing (panel 3, PP4). */
+:root[data-overhaul] .ov-swipe-chip {
+  display: inline-flex;
+  align-self: flex-start;
+  width: fit-content;
+  align-items: center;
+  gap: 0.125rem;
+  margin: 0.25rem 0.25rem 0;
+  padding: 0.0625rem 0.375rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  color: var(--ov-muted, var(--muted-foreground));
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+:root[data-overhaul] .ov-swipe-chip .is-off {
+  opacity: 0.35;
+}
+
+/* A roleplay with no messages yet (panel 3, round-1 #16): a quiet note instead of a blank page. */
+:root[data-overhaul] .ov-rp-empty {
+  display: grid;
+  gap: 0.375rem;
+  max-width: 26rem;
+  margin: 18vh auto 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, var(--marinara-page-backing, var(--background)) 82%, transparent);
+  color: var(--ov-muted, var(--muted-foreground));
+  font-size: 0.875rem;
+  line-height: 1.45;
+  text-align: center;
+}
+:root[data-overhaul] .ov-rp-empty strong {
+  color: var(--ov-text, var(--foreground));
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Lorebook keys: a long chip wraps inside its own column instead of running under the next field
+   (panel 3, PV10; most skins sized the field to its widest chip). */
+:root[data-overhaul] .ov-lentry__row > .ov-lf {
+  grid-template-columns: minmax(0, 1fr);
+}
+:root[data-overhaul] .ov-chipbox {
+  min-width: 0;
+  max-width: 100%;
+}
+:root[data-overhaul] .ov-chipbox__chip {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Light skins: a game with no scene art sits on the skin's own canvas, not pure black (panel 3, PV11). */
+:root[data-overhaul][data-theme="light"] .bg-black[data-chat-mode="game"] {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--background));
 }
