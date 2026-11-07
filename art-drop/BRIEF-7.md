@@ -40,3 +40,6 @@ them large, on the open ground around that area, so the art must sit naturally o
 - **Mix:** crescent (barchan) dunes, long ridges and a dune cluster. Two of them are ripple fields only.
 - **Rules:** no hue of their own, so they take on the colour of sand, desert or wasteland ground. Edges fade to zero.
 - **Winter:** the same shapes with snow-dusted crests (a few brighter white pixels along the crest).
+
+## SIZE NOTE (all parts, added 20:46)
+The 48 px props (numbers 0-3) must fill about 75-80% of their cell, not 30-50%. Small props turned into specks in the game (a cell is about 27 px on screen).
