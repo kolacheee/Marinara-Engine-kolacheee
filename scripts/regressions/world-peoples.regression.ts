@@ -151,7 +151,7 @@ for (const input of WORLD_STARTER_KITS) {
 assert.ok(told > 20, `peoples' deeds are told in the histories (${told})`);
 assert.equal(
   fingerprint.digest("hex"),
-  "57c9df6f9fa6eaa91221e19b916cb9e1233472089bc02bbfe9b798ba3740ed8b",
+  "bc1959712e6cc57532665b89538abae6968351274fbba71c16cb2d31a218f191",
   "the committed peoples",
 );
 console.log("world-peoples: ok");

@@ -398,7 +398,7 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
     },
   },
   bargainer: {
-    temper: { untrustworthy: 4, aloof: 1 },
+    temper: { untrustworthy: 4 },
     ground: [/grass|plain|farm|field|desert|steppe|savanna/, /.*/],
     remote: false,
     quirks: [
@@ -621,7 +621,7 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
           kind: "a guild species of brokers",
           nicks: ["the Factors", "the Brokers", "the Guild"],
           forms: [],
-          haunts: ["the guild exchange on {near}", "a broker-ship that never leaves orbit over {near}"],
+          haunts: ["the guild exchange on {near}", "a broker-ship anchored over {near}"],
           rules: [
             "They buy anything, memories and years of life included, and the price is always fair by their measure.",
             "A deal with one is a deal with the whole guild; a cheat is posted at every exchange they keep.",
@@ -784,8 +784,8 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
             "{near}'s armoury opened to their followers",
           ],
           offers: ["healing and clean water, for faith and service when called"],
-          wards: ["refusing their gifts; they cannot hold anyone who never accepted anything"],
-          roles: ["the Saint who preaches at {near} on the first day of each month", "a follower who wants out"],
+          wards: ["refusing their gifts, and keeping the sick out of their reach"],
+          roles: ["the Saint who preaches at {near} on the first day of each month", "*a follower who wants out"],
           deeds: [
             "Half of {near} followed the {name} into the crater in the year of the fever; a third came back.",
             "The well at {near} ran clean the day the Saint blessed it, and the town has served since.",
@@ -1483,7 +1483,7 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
           haunts: ["the hot zone past {near}", "the ruined city beyond {near}"],
           rules: [
             "They hunt at night, and smell blood for miles.",
-            "They avoid fire and running water.",
+            "They avoid fire and open daylight.",
             "!Anyone bitten and not cleaned within a day sickens, and some go to join them.",
           ],
           wants: ["{near}'s herds, and then {near}"],
@@ -1562,6 +1562,10 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
         {
           temper: { malevolent: 4 },
           kind: "a consuming swarm",
+          quirks: [
+            "answers in the voice of the last person it took",
+            "leaves every made thing it passes a little rusted",
+          ],
           nicks: ["the Bloom", "the Rust", "the Swarm"],
           forms: [
             "Self-copying things, machines or creatures (no one is sure which), that spread like rust across metal and stone.",
@@ -1744,6 +1748,7 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
         },
         {
           kind: "a network of watching machines",
+          quirks: ["rebroadcasts a human's words a day later", "hums when it is recording"],
           nicks: ["the Lens", "the Dust"],
           forms: [
             "Probes the size of dust motes, and now and then a larger machine, drifting through every system and recording.",
@@ -1877,11 +1882,15 @@ const ARCHETYPES: Record<WorldPeopleArchetype, Archetype> = {
           ],
         },
         {
-          temper: { aloof: 3, malevolent: 1.5 },
+          temper: { untrustworthy: 2, malevolent: 1.5 },
           kind: "a sleeping empire",
+          quirks: [
+            "speaks of empires dead ten thousand years as current affairs",
+            "calls every human by the name of a long-dead servant race",
+          ],
           nicks: ["the Sleepers", "the Dark Fleet"],
           forms: [
-            "No one living has seen one awake: only their tomb-ships, vast and dark, and the machines that serve them.",
+            "Few living have seen one awake, and fewer came back; most know only their tomb-ships, vast and dark, and the machines that serve them.",
           ],
           haunts: ["the tomb-ships in the dark belt beyond {near}", "the beacon buried under {near}"],
           rules: [
@@ -2069,12 +2078,12 @@ const MINDS: SpeciesPart[] = [
   {
     text: "Solitary minds that meet only to trade or breed; they find human crowds a kind of madness.",
     fits: ["bargainer", "elder", "devourer"],
-    excludes: ["collective", "machine"],
+    excludes: ["collective", "machine", "rooted"],
     rule: "They deal with one human at a time; a delegation is taken as an ambush.",
   },
   {
     text: "They have no sense of the far future, and hear human promises about next year as poetry.",
-    fits: ["trickster", "devourer"],
+    fits: ["trickster"],
     tags: ["now"],
     excludes: ["slow", "future", "sleep"],
   },
@@ -2657,7 +2666,7 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
     let finalTemper = temper;
     const want = at(fresh(fitting(variant.wants), usedLines));
     const harms = [...rules, want].some((line) =>
-      /\b(eat|eats|take people|takes people|take the|took|drown|drowned|tickle|abduct|for study|hearts|gas|given to them|kill|killed|do not come back)\b/i.test(
+      /\b(eat|eats|take people|takes people|take the|took|drown|drowned|tickle|abduct|for study|hearts|gas|given to them|kill|killed|do not come back|raid|raids|hunt|hunts|bullet|come back for the children)\b/i.test(
         line,
       ),
     );
@@ -2744,7 +2753,15 @@ export function worldPeoples(kit: WorldKit, world: CompiledWorld): WorldPeople[]
   for (const [i, a] of peoples.entries()) {
     for (const b of peoples.slice(i + 1)) {
       const close = Math.hypot(a.home.x - b.home.x, a.home.y - b.home.y) <= 8;
-      const [fromA, fromB] = relation(a.archetype, b.archetype, random, close);
+      const ghostly = /voices|machine mind|town untouched|network|orbit|fungal/;
+      const pair: [string, string] = relation(a.archetype, b.archetype, random, close);
+      const unhuntable =
+        (a.archetype === "devourer" && ghostly.test(b.kind)) || (b.archetype === "devourer" && ghostly.test(a.kind));
+      const [fromA, fromB] = !unhuntable
+        ? pair
+        : a.archetype === "devourer"
+          ? ["cannot get at the {other}, and leave them be", "pay the {other} no mind"]
+          : ["pay the {other} no mind", "cannot get at the {other}, and leave them be"];
       a.relations.push({ id: b.id, text: fromA });
       b.relations.push({ id: a.id, text: fromB });
     }
