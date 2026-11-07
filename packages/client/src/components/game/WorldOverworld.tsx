@@ -26,6 +26,9 @@ import {
   worldJoinedPieces,
   WORLD_DECOR_LOOKS,
   WORLD_PROP_LOOK_TILES,
+  WORLD_PROP_KEEPS_GROUND,
+  WORLD_BUILDING_LOOKS,
+  WORLD_BUILDING_PIECES,
   WORLD_TREELINE_LOOKS,
   worldTreelineTrees,
   worldRangePeaks,
@@ -309,7 +312,11 @@ export function WorldOverworld({
     );
     // Looks whose trees hide their ground's edge, so the edge is drawn as the ground beside them. A range's
     // peaks stand apart, so its rock keeps its own fringe and the peaks stand on it.
-    const coveredLooks = new Set<string>([...treeLooks].filter((look) => look !== "mountains"));
+    // Built-up looks a pack draws as buildings over street ground (like a wood's trees over its floor).
+    const builtLooks = new Set<string>(
+      WORLD_BUILDING_LOOKS.filter((look) => drawTile.hasPiece(`buildings_${look}`, 0)),
+    );
+    const coveredLooks = new Set<string>([...[...treeLooks].filter((look) => look !== "mountains"), ...builtLooks]);
     const lookAt = (x: number, y: number) =>
       drawnLook[Math.min(height - 1, Math.max(0, y)) * width + Math.min(width - 1, Math.max(0, x))]!;
     // A cell in the middle of its look, with no water beside it: water keeps the look of the land under
@@ -323,7 +330,7 @@ export function WorldOverworld({
       return true;
     };
     // Fields and built-up ground keep to their own cells: a wood beside one stands on open ground (grass).
-    const square = new Set<string>(WORLD_SQUARE_LOOKS);
+    const square = new Set<string>(WORLD_SQUARE_LOOKS.filter((look) => !builtLooks.has(look)));
     const besideLook = (x: number, y: number) => {
       const count = new Map<string, number>();
       for (let dy = -1; dy <= 1; dy++)
@@ -381,7 +388,7 @@ export function WorldOverworld({
       }
       const ground = [...border].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? commonOpen;
       for (const at of field) propCells.set(at, look);
-      for (const at of field) drawnLook[at] = ground;
+      if (!WORLD_PROP_KEEPS_GROUND.includes(look)) for (const at of field) drawnLook[at] = ground;
     }
     const groundOf = (x: number, y: number, drawn: string) => {
       const noise = cellNoise(x, y);
@@ -406,7 +413,16 @@ export function WorldOverworld({
     for (const place of world.places)
       for (let dy = -1; dy <= 1; dy++)
         for (let dx = -1; dx <= 1; dx++) clearing.add((place.at.y + dy) * width + place.at.x + dx);
-    for (const link of world.links) for (const at of link.path ?? []) clearing.add(at);
+    // A road's cells and the cells beside them: its trees stand back from it, so the floor beside it would
+    // show bare up to the road's edge.
+    for (const link of world.links)
+      for (const at of link.path ?? []) {
+        const [x, y] = [at % width, Math.floor(at / width)];
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++)
+            if (x + dx >= 0 && y + dy >= 0 && x + dx < width && y + dy < height)
+              clearing.add((y + dy) * width + x + dx);
+      }
     const floorAt = (x: number, y: number) =>
       x >= 0 &&
       y >= 0 &&
@@ -802,6 +818,52 @@ export function WorldOverworld({
             trees.push(peak);
         trees.push(...pines);
       }
+    }
+    // Buildings over built-up ground (the owner, 2026-11-07: "make buildings as props"), one to a cell like a
+    // wood's trees: a large one (two by two) where its four cells are free, else a mid-rise or a small one, a
+    // gap now and then for the street; none on a road, nor so near a place that it hides its marker.
+    for (const look of builtLooks) {
+      const id = `buildings_${look}`;
+      const pieces = WORLD_BUILDING_PIECES[id]!;
+      const bySize = (w: number, h: number) =>
+        pieces.flatMap((piece, index) => (piece.w === w && piece.h === h ? [index] : []));
+      const [small, medium, large] = [bySize(1, 1), bySize(1, 2), bySize(2, 2)];
+      const taken = new Set<number>();
+      const free = (x: number, y: number) => {
+        if (x < 0 || y < 0 || x >= width || y >= height) return false;
+        const at = y * width + x;
+        if (drawnLook[at] !== look || wetCell[at] || roads.has(at) || taken.has(at)) return false;
+        for (const place of world.places) if (Math.hypot(place.at.x - x, place.at.y - y) < 1.5) return false;
+        return true;
+      };
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          if (!free(x, y)) continue;
+          const noise = cellNoise(x, y);
+          if (noise(81) < 0.12) continue;
+          const pick = (from: number[]) => from[Math.floor(noise(82) * from.length)]!;
+          if (large.length && noise(83) < 0.3 && free(x + 1, y) && free(x, y + 1) && free(x + 1, y + 1)) {
+            for (const [dx, dy] of [
+              [0, 0],
+              [1, 0],
+              [0, 1],
+              [1, 1],
+            ] as const)
+              taken.add((y + dy) * width + x + dx);
+            trees.push({ x: x + 1, y: y + 1.95, id, pick: pick(large), w: 2, h: 2 });
+            continue;
+          }
+          taken.add(y * width + x);
+          const tall = medium.length && noise(84) < 0.4;
+          trees.push({
+            x: x + 0.5 + (noise(85) - 0.5) * 0.12,
+            y: y + 0.95,
+            id,
+            pick: pick(tall ? medium : small),
+            w: 1,
+            h: tall ? 2 : 1,
+          });
+        }
     }
     // Landmarks over built-up ground where the pack has them (a city's towers, industry's stacks and cooling
     // towers): about one cell in four, standing on its foot near the cell's bottom, never on a road or a place.
