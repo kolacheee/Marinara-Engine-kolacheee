@@ -7,6 +7,7 @@
 // phones and tablets get the mobile overhaul (top bar with the Library Stack,
 // All Tabs viewer, long-press message sheet). Everything here is per device.
 // ──────────────────────────────────────────────
+import { useSyncExternalStore } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -50,6 +51,9 @@ export type OverhaulSettingsTab =
 /** Chat settings drawer arrangement for one chat mode: section ids in order, and hidden ones. */
 export type OverhaulChatSettingsLayout = { order: string[]; hidden: string[] };
 
+/** How big the Characters / Personas gallery cards are. */
+export type GalleryCardSize = "small" | "medium" | "large";
+
 export type OverhaulGamePaneTab = "party" | "inventory" | "journal" | "map" | "sessions";
 
 export function overhaulTabKey(tab: OverhaulTab) {
@@ -57,6 +61,9 @@ export function overhaulTabKey(tab: OverhaulTab) {
 }
 
 interface OverhaulState {
+  /** Card size in the Characters / Personas galleries (this device). */
+  galleryCardSize: GalleryCardSize;
+  setGalleryCardSize: (size: GalleryCardSize) => void;
   /** The person's choice; on by default on this branch. */
   enabled: boolean;
   /** Set by AppShell: the desktop shell is showing (not the phone overlay shell). */
@@ -79,6 +86,11 @@ interface OverhaulState {
   setDesktop: (desktop: boolean) => void;
   touchTab: (tab: OverhaulTab) => void;
   closeTab: (tab: OverhaulTab) => void;
+  /** Tabs the person closed this session, newest last, for "Reopen closed tab" (Ctrl+Shift+T). */
+  closedTabs: OverhaulTab[];
+  rememberClosedTab: (tab: OverhaulTab) => void;
+  /** Takes the most recently closed tab off the list. */
+  takeClosedTab: () => OverhaulTab | null;
   /** Drag-to-reorder: put the tab with `key` at `index` in the strip. */
   moveTab: (key: string, index: number) => void;
   /** Tab groups by id. A group's tabs always sit next to each other in `tabs`. */
@@ -129,6 +141,12 @@ interface OverhaulState {
   /** Game Mode's right pane (Party, Inventory, Journal, Map, Sessions). */
   gamePaneOpen: boolean;
   setGamePaneOpen: (open: boolean) => void;
+  /** Not kept: the pane is open but folded away because the scene has no room beside it. */
+  gamePaneMadeRoom: boolean;
+  setGamePaneMadeRoom: (madeRoom: boolean) => void;
+  /** Not kept: the player opened the pane again while there is no room, so it floats over the scene. */
+  gamePaneForced: boolean;
+  setGamePaneForced: (forced: boolean) => void;
   gamePaneTab: OverhaulGamePaneTab;
   setGamePaneTab: (tab: OverhaulGamePaneTab) => void;
   /** Where Chat settings shows the game's own tools (the game portals them in). */
@@ -163,7 +181,7 @@ function withoutEmptyGroups(state: { tabs: OverhaulTab[]; tabGroups: Record<stri
 
 export const useOverhaulStore = create<OverhaulState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       enabled: true,
       desktop: true,
       tabs: [],
@@ -185,6 +203,20 @@ export const useOverhaulStore = create<OverhaulState>()(
           // No limit: tabs that don't fit the strip go to its overflow menu instead of being closed.
           return { tabs: [...state.tabs, { kind: tab.kind, id: tab.id }] };
         }),
+      closedTabs: [],
+      rememberClosedTab: (tab) =>
+        set((state) => ({
+          closedTabs: [
+            ...state.closedTabs.filter((existing) => overhaulTabKey(existing) !== overhaulTabKey(tab)),
+            { kind: tab.kind, id: tab.id },
+          ].slice(-20),
+        })),
+      takeClosedTab: () => {
+        const closed = get().closedTabs;
+        const tab = closed[closed.length - 1] ?? null;
+        if (tab) set({ closedTabs: closed.slice(0, -1) });
+        return tab;
+      },
       closeTab: (tab) =>
         set((state) =>
           withoutEmptyGroups({
@@ -331,13 +363,19 @@ export const useOverhaulStore = create<OverhaulState>()(
       chatSettingsEditing: false,
       setChatSettingsEditing: (chatSettingsEditing) => set({ chatSettingsEditing }),
       gamePaneOpen: true,
-      setGamePaneOpen: (gamePaneOpen) => set({ gamePaneOpen }),
+      setGamePaneOpen: (gamePaneOpen) => set({ gamePaneOpen, ...(gamePaneOpen ? {} : { gamePaneForced: false }) }),
+      gamePaneMadeRoom: false,
+      setGamePaneMadeRoom: (gamePaneMadeRoom) => set({ gamePaneMadeRoom }),
+      gamePaneForced: false,
+      setGamePaneForced: (gamePaneForced) => set({ gamePaneForced }),
       gamePaneTab: "party",
       setGamePaneTab: (gamePaneTab) => set({ gamePaneTab }),
       gameSettingsSlot: null,
       setGameSettingsSlot: (gameSettingsSlot) => set({ gameSettingsSlot }),
       allTabsOpen: false,
       setAllTabsOpen: (allTabsOpen) => set({ allTabsOpen }),
+      galleryCardSize: "medium",
+      setGalleryCardSize: (galleryCardSize) => set({ galleryCardSize }),
     }),
     {
       name: "marinara-overhaul-layout",
@@ -363,6 +401,7 @@ export const useOverhaulStore = create<OverhaulState>()(
         chatSettingsFloating: state.chatSettingsFloating,
         gamePaneOpen: state.gamePaneOpen,
         gamePaneTab: state.gamePaneTab,
+        galleryCardSize: state.galleryCardSize,
       }),
     },
   ),
@@ -374,6 +413,30 @@ export function useOverhaulActive() {
 }
 
 /** True when the overhaul layout is on and the phone/tablet shell is showing (the mobile overhaul). */
+/**
+ * Messages use the long-press action menu: phones and tablets, and the desktop layout on a touch
+ * screen (a tablet held sideways), where there is no hover to show the action row.
+ */
+const TOUCH_QUERY = "(hover: none) and (any-pointer: coarse)";
+
+export function useOverhaulTouchMessages() {
+  const enabled = useOverhaulStore((state) => state.enabled);
+  const desktop = useOverhaulStore((state) => state.desktop);
+  const touch = useSyncExternalStore(subscribeTouch, getTouch, () => false);
+  return enabled && (!desktop || touch);
+}
+function subscribeTouch(onChange: () => void) {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") return () => {};
+  const media = window.matchMedia(TOUCH_QUERY);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+}
+function getTouch() {
+  return (
+    typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia(TOUCH_QUERY).matches
+  );
+}
+
 export function useOverhaulMobile() {
   return useOverhaulStore((state) => state.enabled && !state.desktop);
 }

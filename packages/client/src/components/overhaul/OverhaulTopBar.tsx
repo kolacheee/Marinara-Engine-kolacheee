@@ -39,7 +39,7 @@ import {
 import { useChats } from "../../hooks/use-chats";
 import { useCharacter, usePersona } from "../../hooks/use-characters";
 import { useLorebook } from "../../hooks/use-lorebooks";
-import { useConnection } from "../../hooks/use-connections";
+import { useConnection, useConnections } from "../../hooks/use-connections";
 import { usePresetFull } from "../../hooks/use-presets";
 import { getChatDisplayName, parseChatMetadata } from "../../lib/chat-display";
 import { resolveLiveConversationStatus } from "../../lib/conversation-presence-status";
@@ -219,20 +219,17 @@ export function nameOf(record: unknown): string | null {
   return typeof name === "string" && name.trim() ? name : null;
 }
 
-/** "Universal · princess · 2 agents": the chat's preset, connection and agents at a glance. */
+/** "Roleplay · Claude Opus": the chat's mode and the model it talks to. */
 export function ChatSettingsSummary({ chat, fallback }: { chat: Chat; fallback: string }) {
-  const localize = useLocalizedUiText();
-  const preset = usePresetFull(chat.promptPresetId ?? null);
-  const connection = useConnection(chat.connectionId ?? null);
-  const presetName = nameOf((preset.data as { preset?: unknown } | undefined)?.preset ?? preset.data);
-  const connectionName = nameOf(connection.data);
-  const agents = Array.isArray(chat.metadata?.activeAgentIds) ? chat.metadata.activeAgentIds.length : 0;
-  const parts = [
-    presetName,
-    connectionName,
-    agents ? `${agents} ${localize(agents === 1 ? "agent" : "agents")}` : null,
-  ].filter(Boolean);
-  return <small>{parts.length ? parts.join(" · ") : fallback}</small>;
+  // One fixed format everywhere: "Mode · model" (panel 3, PV14/N10a). The preset and agent count made the
+  // label change while things loaded and from chat to chat; both are one click away in Chat settings.
+  const { data: connections } = useConnections();
+  const list = Array.isArray(connections) ? (connections as Array<Record<string, unknown>>) : [];
+  const connection = chat.connectionId
+    ? list.find((item) => item.id === chat.connectionId)
+    : list.find((item) => item.isDefault === true);
+  const parts = [fallback, nameOf(connection)].filter(Boolean);
+  return <small>{parts.join(" · ")}</small>;
 }
 
 /** Installed Home apps (Noodle, Slurp...) with their tab label and icon. */
@@ -273,6 +270,9 @@ export function TabLabel({ tab, chats }: { tab: OverhaulTab; chats: Chat[] }) {
   if (tab.kind === "chat") {
     const chat = chats.find((entry) => entry.id === tab.id);
     label = chat ? getChatDisplayName(chat) || null : null;
+    // A shared "[game] " style prefix would make every such tab read "[game…"; the tab's icon shows the mode.
+    const unprefixed = label?.replace(/^\[[^\]]{1,24}\]\s*/, "");
+    if (unprefixed) label = unprefixed;
   } else if (tab.kind === "character") label = parseCharacterName(character.data);
   else if (tab.kind === "persona") label = nameOf(persona.data);
   else if (tab.kind === "lorebook") label = nameOf(lorebook.data);
@@ -294,7 +294,7 @@ export function TabLabel({ tab, chats }: { tab: OverhaulTab; chats: Chat[] }) {
   const text = label ?? localize("Untitled");
   // Short names keep their natural width; only long names give way when the strip is full.
   return (
-    <span className="ov-tab__label" data-short={text.length <= 10 ? "true" : undefined}>
+    <span className="ov-tab__label" data-short={text.length <= 10 ? "true" : undefined} title={text}>
       {text}
     </span>
   );
@@ -324,8 +324,16 @@ export function TabPresence({ tab, chats }: { tab: OverhaulTab; chats: Chat[] })
 /** Game chats: show or hide the right game pane (Party, Inventory, Journal, Map, Sessions). */
 function GamePaneToggle() {
   const { t: localizeUi } = useUiTranslation();
-  const open = useOverhaulStore((state) => state.gamePaneOpen);
-  const setOpen = useOverhaulStore((state) => state.setGamePaneOpen);
+  const paneOpen = useOverhaulStore((state) => state.gamePaneOpen);
+  const madeRoom = useOverhaulStore((state) => state.gamePaneMadeRoom);
+  const setPaneOpen = useOverhaulStore((state) => state.setGamePaneOpen);
+  const setForced = useOverhaulStore((state) => state.setGamePaneForced);
+  // Folded away to give the scene room, the pane counts as hidden here: pressing shows it over the scene.
+  const open = paneOpen && !madeRoom;
+  const setOpen = (next: boolean) => {
+    if (next && paneOpen && madeRoom) setForced(true);
+    else setPaneOpen(next);
+  };
   return (
     <button
       type="button"
@@ -352,6 +360,29 @@ function AppTabIcon({ id }: { id: string }) {
       <BrowserPackageTabIcon packageId={app.id} version={app.version} iconPaths={app.iconPaths} />
     </span>
   );
+}
+
+/** The picture of what a tab shows (avatar, lorebook or preset image); null falls back to its icon. */
+function pictureOf(value: unknown): string | null {
+  const item = value as { avatarPath?: unknown; imagePath?: unknown; preset?: { imagePath?: unknown } } | undefined;
+  const src = item?.avatarPath ?? item?.imagePath ?? item?.preset?.imagePath;
+  return typeof src === "string" && src ? src : null;
+}
+
+export function useTabPicture(tab: OverhaulTab | null, chats: Chat[]): string | null {
+  const chat = tab?.kind === "chat" ? chats.find((entry) => entry.id === tab.id) : undefined;
+  // A chat shows its (first) character.
+  const characterId = tab?.kind === "character" ? tab.id : (chat?.characterIds?.[0] ?? null);
+  const character = useCharacter(characterId);
+  const persona = usePersona(tab?.kind === "persona" ? tab.id : null);
+  const lorebook = useLorebook(tab?.kind === "lorebook" ? tab.id : null);
+  const preset = usePresetFull(tab?.kind === "preset" ? tab.id : null);
+  if (!tab) return null;
+  if (tab.kind === "character" || tab.kind === "chat") return pictureOf(character.data);
+  if (tab.kind === "persona") return pictureOf(persona.data);
+  if (tab.kind === "lorebook") return pictureOf(lorebook.data);
+  if (tab.kind === "preset") return pictureOf(preset.data);
+  return null;
 }
 
 export function TabIcon({ tab, chats }: { tab: OverhaulTab; chats: Chat[] }) {
@@ -413,12 +444,22 @@ export function useTabBookkeeping(current: OverhaulTab | null, chats: Chat[]) {
 export function closeTabAndMove(tab: OverhaulTab, tabs: OverhaulTab[], currentKey: string | null) {
   const key = overhaulTabKey(tab);
   const index = tabs.findIndex((entry) => overhaulTabKey(entry) === key);
+  useOverhaulStore.getState().rememberClosedTab(tab);
   useOverhaulStore.getState().closeTab(tab);
   if (key !== currentKey) return;
   const remaining = tabs.filter((entry) => overhaulTabKey(entry) !== key);
   const next = remaining[Math.min(index, remaining.length - 1)];
   if (next) activateTab(next);
   else goHome();
+}
+
+/** Brings back the tab closed most recently (tab menu, Ctrl+Shift+T where the browser allows it). */
+export function reopenClosedTab() {
+  const tab = useOverhaulStore.getState().takeClosedTab();
+  if (!tab) return false;
+  useOverhaulStore.getState().touchTab(tab);
+  activateTab(tab);
+  return true;
 }
 
 /**
@@ -429,23 +470,28 @@ function useWindowFullscreen() {
   const [fullscreen, setFullscreen] = useState(false);
   useEffect(() => {
     const media = window.matchMedia("(display-mode: fullscreen)");
+    // Touch screens (tablets in landscape) have no pointer to bring the bar back, so it never hides there.
+    const touch = window.matchMedia("(hover: none)");
     const check = () =>
       setFullscreen(
-        Boolean(document.fullscreenElement) ||
-          media.matches ||
-          // Browser fullscreen (F11): no toolbars, so the page is the whole window and the whole screen.
-          (Math.abs(window.outerHeight - window.innerHeight) <= 1 &&
-            Math.abs(window.outerWidth - window.innerWidth) <= 1 &&
-            window.innerHeight >= window.screen.height - 1),
+        !touch.matches &&
+          (Boolean(document.fullscreenElement) ||
+            media.matches ||
+            // Browser fullscreen (F11): no toolbars, so the page is the whole window and the whole screen.
+            (Math.abs(window.outerHeight - window.innerHeight) <= 1 &&
+              Math.abs(window.outerWidth - window.innerWidth) <= 1 &&
+              window.innerHeight >= window.screen.height - 1)),
       );
     check();
     window.addEventListener("resize", check);
     document.addEventListener("fullscreenchange", check);
     media.addEventListener("change", check);
+    touch.addEventListener("change", check);
     return () => {
       window.removeEventListener("resize", check);
       document.removeEventListener("fullscreenchange", check);
       media.removeEventListener("change", check);
+      touch.removeEventListener("change", check);
     };
   }, []);
   return fullscreen;
@@ -531,6 +577,7 @@ export function OverhaulTopBar() {
           type="button"
           className="ov-icon-btn ov-icon-btn--sm"
           onClick={() => setOmnibarOpen(true)}
+          data-tour="omnibar-button"
           title={localize("Search or open anything")}
           aria-label={localize("Search or open anything")}
         >
@@ -560,6 +607,7 @@ export function OverhaulTopBar() {
             className="ov-text-btn"
             onClick={() => useUIStore.getState().openModal("docs-viewer")}
             title={localize("Docs")}
+            data-tour="docs-button"
           >
             <span aria-hidden="true">📖</span>
             <span>{localize("Docs")}</span>

@@ -3,7 +3,7 @@
 //
 // Portrait, name, byline, tags and the main actions sit on the left; under
 // them is the jump list of the sections this item actually uses, with
-// "+ Add a section" for the rest. The editor's sections scroll on the right.
+// a "+ Name" row for each section not in use yet. The editor's sections scroll on the right.
 // ──────────────────────────────────────────────
 import {
   useEffect,
@@ -104,9 +104,10 @@ export function EditorRail({
   onReplaceAvatar: () => void;
   /** Extra buttons over the portrait (Crop, Generate…). */
   avatarActions?: ReactNode;
-  name: string;
-  onNameChange: (value: string) => void;
-  namePlaceholder: string;
+  /** Without onNameChange the name is edited in the editor's header instead. */
+  name?: string;
+  onNameChange?: (value: string) => void;
+  namePlaceholder?: string;
   subtitle?: string;
   onSubtitleChange?: (value: string) => void;
   subtitlePlaceholder?: string;
@@ -128,7 +129,6 @@ export function EditorRail({
   const mobile = useOverhaulMobile();
   const [tagDraft, setTagDraft] = useState("");
   const [tagOpen, setTagOpen] = useState(false);
-  const [addOpen, setAddOpen] = useState(false);
 
   const commitTag = () => {
     const value = tagDraft.trim();
@@ -166,15 +166,17 @@ export function EditorRail({
       </div>
 
       {/* Single-line values that wrap: textareas sized to their content, Enter does not add a line. */}
-      <textarea
-        className="ov-rail__name ov-rail__wrap"
-        rows={1}
-        value={name}
-        onChange={(event) => onNameChange(event.target.value.replace(/\n/g, " "))}
-        onKeyDown={blockNewline}
-        placeholder={namePlaceholder}
-        aria-label={namePlaceholder}
-      />
+      {onNameChange ? (
+        <textarea
+          className="ov-rail__name ov-rail__wrap"
+          rows={1}
+          value={name}
+          onChange={(event) => onNameChange(event.target.value.replace(/\n/g, " "))}
+          onKeyDown={blockNewline}
+          placeholder={namePlaceholder}
+          aria-label={namePlaceholder}
+        />
+      ) : null}
       {onSubtitleChange ? (
         <textarea
           className="ov-rail__subtitle ov-rail__wrap"
@@ -267,30 +269,17 @@ export function EditorRail({
         ))}
       </ul>
       {addable.length > 0 ? (
-        <div className="ov-rail__add">
-          <button type="button" className="ov-rail__add-btn" onClick={() => setAddOpen((open) => !open)}>
-            <Plus size={14} aria-hidden="true" />
-            {localize("Add a section")}
-          </button>
-          {addOpen ? (
-            <div className="ov-rail__add-menu" role="menu">
-              {addable.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="menuitem"
-                  onClick={() => {
-                    setAddOpen(false);
-                    onAdd(item.id);
-                  }}
-                >
-                  <Plus size={12} aria-hidden="true" />
-                  {localize(item.label)}
-                </button>
-              ))}
-            </div>
-          ) : null}
-        </div>
+        // Every section not in use yet gets its own "+ Name" row, so nothing hides behind a menu.
+        <ul className="ov-rail__addlist" aria-label={localize("Add a section")}>
+          {addable.map((item) => (
+            <li key={item.id}>
+              <button type="button" className="ov-rail__add-item" onClick={() => onAdd(item.id)}>
+                <Plus size={12} aria-hidden="true" />
+                {localize(item.label)}
+              </button>
+            </li>
+          ))}
+        </ul>
       ) : null}
     </aside>
   );
@@ -326,14 +315,30 @@ export function AddFieldChips({
 }
 
 /** The rail's "⋯" overflow: the editor's header actions as a labelled menu list, like Message actions. */
-export function RailMoreMenu({ open, onClose, children }: { open: boolean; onClose: () => void; children: ReactNode }) {
+export function RailMoreMenu({
+  open,
+  onClose,
+  children,
+  label = "More actions",
+  className,
+  trigger = "[data-ov-more-trigger]",
+}: {
+  open: boolean;
+  onClose: () => void;
+  children: ReactNode;
+  /** English source text for the menu's small heading. */
+  label?: string;
+  className?: string;
+  /** Selector of the button that toggles this menu (a press on it is not an outside click). */
+  trigger?: string;
+}) {
   const localize = useLocalizedUiText();
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open) return;
     const onPointer = (event: PointerEvent) => {
       const target = event.target as Element | null;
-      if (!target || ref.current?.contains(target) || target.closest("[data-ov-more-trigger]")) return;
+      if (!target || ref.current?.contains(target) || target.closest(trigger)) return;
       onClose();
     };
     const onKey = (event: KeyboardEvent) => {
@@ -345,11 +350,16 @@ export function RailMoreMenu({ open, onClose, children }: { open: boolean; onClo
       document.removeEventListener("pointerdown", onPointer, true);
       document.removeEventListener("keydown", onKey);
     };
-  }, [open, onClose]);
+  }, [open, onClose, trigger]);
   if (!open) return null;
   return (
-    <div ref={ref} className="ov-rail__more" role="menu" onClick={() => window.setTimeout(onClose, 0)}>
-      <p className="ov-rail__more-label">{localize("More actions")}</p>
+    <div
+      ref={ref}
+      className={className ? `ov-rail__more ${className}` : "ov-rail__more"}
+      role="menu"
+      onClick={() => window.setTimeout(onClose, 0)}
+    >
+      <p className="ov-rail__more-label">{localize(label)}</p>
       <div className="mari-editor-actions">{children}</div>
     </div>
   );

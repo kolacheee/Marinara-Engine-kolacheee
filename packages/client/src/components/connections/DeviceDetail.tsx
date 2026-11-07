@@ -39,10 +39,12 @@ import { useDecisionOptions } from "../../hooks/use-decision-model";
 import { useDeviceSetup, type DeviceItem } from "../../hooks/use-device-setup";
 import { useTTSConfig } from "../../hooks/use-tts";
 import { GEMMA_RESTART_MESSAGE, useSidecarStore } from "../../stores/sidecar.store";
+import { useOverhaulLook } from "../../stores/overhaul.store";
 import { showConfirmDialog } from "../../lib/app-dialogs";
 import { JOB, JOBS, jobLabelKey } from "../../lib/connection-jobs";
 import { cn } from "../../lib/utils";
 import { DecisionModelModal } from "../modals/DecisionModelModal";
+import { ModelDownloadModal } from "../modals/ModelDownloadModal";
 import { ToggleSetting } from "../panels/settings/SettingControls";
 import { SpeechToTextCard } from "../panels/settings/SpeechToTextCard";
 import { TTSConfigCard } from "../panels/settings/TTSConfigCard";
@@ -53,7 +55,7 @@ const isLite = import.meta.env.VITE_MARINARA_LITE === "true";
 export const SMALL_ACTION = "mari-chrome-control px-2.5";
 /** The facts and models card of a detail page, coloured from the Connections panel tokens. */
 export const DETAIL_CARD_CLASS =
-  "mari-panel-gradient--connections rounded-xl bg-[linear-gradient(135deg,color-mix(in_srgb,var(--mari-panel-gradient-start)_5%,transparent),color-mix(in_srgb,var(--mari-panel-gradient-end)_5%,transparent))] p-3";
+  "mari-device-card mari-panel-gradient--connections rounded-xl bg-[linear-gradient(135deg,color-mix(in_srgb,var(--mari-panel-gradient-start)_5%,transparent),color-mix(in_srgb,var(--mari-panel-gradient-end)_5%,transparent))] p-3";
 
 export function formatBytes(bytes: number): string {
   if (bytes < 1024 * 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(0)} MB`;
@@ -257,6 +259,10 @@ function LocalModelDetail({ onOpenDefaults }: { onOpenDefaults: () => void }) {
   const { t: localizeUi } = useTranslation();
   /** The managed decision model installer, opened from inside this page. */
   const [decisionModalOpen, setDecisionModalOpen] = useState(false);
+  // The new layout on any screen size (phones get the same pages).
+  const ovDesktop = useOverhaulLook();
+  /** In the new layout, Runtime settings open as a section of this page instead of a pop-up. */
+  const [inlineSettings, setInlineSettings] = useState(false);
   const { data: agentConfigs } = useAgentConfigs();
   const { data: capabilityAgents } = useCapabilityAgentRegistry();
   const createAgent = useCreateAgent();
@@ -280,6 +286,7 @@ function LocalModelDetail({ onOpenDefaults }: { onOpenDefaults: () => void }) {
     restartRuntime,
     updateConfig,
     fetchStatus,
+    deleteModel,
   } = useSidecarStore();
   const isDownloaded = modelDownloaded;
   const [assigningTrackers, setAssigningTrackers] = useState(false);
@@ -370,9 +377,30 @@ function LocalModelDetail({ onOpenDefaults }: { onOpenDefaults: () => void }) {
     }
   };
 
+  const [removing, setRemoving] = useState(false);
+  const removeFiles = async () => {
+    const confirmed = await showConfirmDialog({
+      title: localizeUi("connections.device.removeFilesTitle"),
+      message: localizeUi("connections.device.removeFilesBody"),
+      confirmLabel: localizeUi("connections.device.removeFiles"),
+      tone: "destructive",
+    });
+    if (!confirmed) return;
+    setRemoving(true);
+    try {
+      await deleteModel();
+      setInlineSettings(false);
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : localizeUi("connections.device.removeFilesFailed"));
+    } finally {
+      setRemoving(false);
+    }
+  };
+
   const openLocalModelSettings = () => {
     void fetchStatus();
-    setShowDownloadModal(true);
+    if (ovDesktop) setInlineSettings((v) => !v);
+    else setShowDownloadModal(true);
   };
 
   const handleDownloadNow = async () => {
@@ -439,7 +467,12 @@ function LocalModelDetail({ onOpenDefaults }: { onOpenDefaults: () => void }) {
           <RefreshCw size="0.75rem" className={cn(retrying && "animate-spin")} />
           {localizeUi("connections.device.retry")}
         </button>
-        <button type="button" onClick={openLocalModelSettings} className={SMALL_ACTION}>
+        <button
+          type="button"
+          onClick={openLocalModelSettings}
+          className={cn(SMALL_ACTION, inlineSettings && "mari-device-active")}
+          aria-expanded={ovDesktop ? inlineSettings : undefined}
+        >
           <Settings2 size="0.75rem" />
           {localizeUi("connections.device.runtimeSettings")}
         </button>
@@ -511,7 +544,7 @@ function LocalModelDetail({ onOpenDefaults }: { onOpenDefaults: () => void }) {
         </FactRow>
       </section>
 
-      <div className="rounded-lg border border-[var(--marinara-app-accent-static)]/30 bg-[var(--marinara-app-accent-static)]/10 p-2.5">
+      <div className="mari-device-warn rounded-lg border border-[var(--marinara-app-accent-static)]/30 bg-[var(--marinara-app-accent-static)]/10 p-2.5">
         <div className="flex items-center gap-2 text-xs font-semibold text-[var(--marinara-app-accent-static)]">
           <AlertTriangle size="0.875rem" className="shrink-0" />
           {localizeUi("connections.device.notForRoleplay")}
@@ -524,7 +557,7 @@ function LocalModelDetail({ onOpenDefaults }: { onOpenDefaults: () => void }) {
             type="button"
             onClick={() => void handleAssignTrackersToLocal()}
             disabled={assigningTrackers}
-            className="flex w-full items-center justify-between gap-3 rounded-lg border border-[var(--border)] px-3 py-2 text-left transition-colors hover:bg-[var(--sidebar-accent)] disabled:opacity-50"
+            className="mari-device-link flex w-full items-center justify-between gap-3 rounded-lg border border-[var(--border)] px-3 py-2 text-left transition-colors hover:bg-[var(--sidebar-accent)] disabled:opacity-50"
           >
             <div className="min-w-0 flex-1">
               <div className="text-xs font-medium">{localizeUi("connections.device.useForAllTrackers")}</div>
@@ -562,11 +595,36 @@ function LocalModelDetail({ onOpenDefaults }: { onOpenDefaults: () => void }) {
           {isDownloading ? localizeUi("connections.device.downloading") : localizeUi("connections.device.downloadNow")}
         </button>
       )}
-      {/* The decision sidecar is its own model and its own process, so it does not wait for a chat model. */}
-      <button type="button" onClick={() => setDecisionModalOpen(true)} className={cn(SMALL_ACTION, "w-full")}>
-        {localizeUi("ui.panels.sidecarcard.decisionSidecar")}
-      </button>
+      {/* The decision sidecar is its own model and its own process, so it does not wait for a chat model.
+          The new layout lists it as its own entry beside this one, so it needs no button here. */}
+      {!ovDesktop && (
+        <button
+          type="button"
+          onClick={() => setDecisionModalOpen(true)}
+          className={cn(SMALL_ACTION, "mari-device-decisions w-full")}
+        >
+          {localizeUi("ui.panels.sidecarcard.decisionSidecar")}
+        </button>
+      )}
       <DecisionModelModal open={decisionModalOpen} onClose={() => setDecisionModalOpen(false)} />
+      {ovDesktop && inlineSettings ? (
+        <section className="mari-device-runtime">
+          <h4>{localizeUi("connections.device.runtimeSettings")}</h4>
+          <ModelDownloadModal embedded open onClose={() => setInlineSettings(false)} />
+        </section>
+      ) : null}
+      {/* Same as the decision model's page: the downloaded files can be removed from here. */}
+      {isDownloaded && !isDownloading && (
+        <button
+          type="button"
+          disabled={removing}
+          onClick={() => void removeFiles()}
+          className={cn(SMALL_ACTION, "mari-device-remove self-start")}
+        >
+          <Trash2 size="0.75rem" />
+          {localizeUi("connections.device.removeFiles")}
+        </button>
+      )}
     </div>
   );
 }

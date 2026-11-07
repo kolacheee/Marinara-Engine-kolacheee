@@ -4,7 +4,7 @@
 import { useState, useEffect, useCallback, useMemo, useRef, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { APP_VERSION } from "@marinara-engine/shared";
-import { MOBILE_SHELL_MEDIA_QUERY, useUIStore, type ChatModeShortcut } from "../../stores/ui.store";
+import { useMobileShellMediaQuery, useUIStore, type ChatModeShortcut } from "../../stores/ui.store";
 import { useChatStore } from "../../stores/chat.store";
 import { useTrackAchievement } from "../../hooks/use-achievements";
 import { docsLanguageKeys, useDocsLanguage, type DocsLanguageStatus } from "../../hooks/use-docs-language";
@@ -21,6 +21,7 @@ import { MARI_ASSET_TIER, mariImgLoading, type MariPose } from "../../lib/mari-w
 import { formatShortcutKey } from "../../lib/keyboard-shortcuts";
 import { WHATS_NEW_SEEN_VERSION_KEY } from "../modals/WhatsNewModal";
 import { LanguagePicker } from "../ui/LanguagePicker";
+import { useOverhaulStore, type OverhaulSettingsTab } from "../../stores/overhaul.store";
 
 // ─── Step definitions ─────────────────────────
 
@@ -56,6 +57,10 @@ interface TourStep {
   sprite?: { pose: MariPose; flip?: boolean };
   /** Body used instead of bodyKey on a phone-width screen, where this step's control is not on screen */
   phoneBodyKey?: string;
+  /** New layout: Settings tab to show while the Library's Settings page is open */
+  overhaulSettingsTab?: OverhaulSettingsTab;
+  /** New layout: place the card beside its target by `side` alone, never on top of the pane it describes */
+  besideTarget?: boolean;
 }
 
 function resolveTourStepTitle(step: TourStep, localizeUi: (key: string) => string, localize: (text: string) => string) {
@@ -212,6 +217,100 @@ const STEPS: TourStep[] = [
   },
 ];
 
+/**
+ * The tour for the new layout: chats on the left, the Library on the right, tabs and search in the top bar.
+ * It explains the three chat modes once, points at the Docs, and never points at old-layout controls.
+ */
+const OVERHAUL_STEPS: TourStep[] = [
+  {
+    target: null,
+    titleKey: "onboarding.overhaul.welcome.title",
+    bodyKey: "onboarding.overhaul.welcome.body",
+    sprite: { pose: "wave" },
+  },
+  {
+    target: "sidebar",
+    highlightTargets: ["sidebar-toggle"],
+    titleKey: "onboarding.overhaul.chats.title",
+    bodyKey: "onboarding.overhaul.chats.body",
+    phoneBodyKey: "onboarding.overhaul.chats.phoneBody",
+    side: "right",
+    besideTarget: true,
+    openSidebar: true,
+    sprite: { pose: "point-middle" },
+  },
+  {
+    target: "chat-modes",
+    titleKey: "onboarding.overhaul.modes.title",
+    bodyKey: "onboarding.overhaul.modes.body",
+    side: "right",
+    besideTarget: true,
+    openSidebar: true,
+    sprite: { pose: "explaining" },
+  },
+  {
+    target: "library-nav",
+    highlightTargets: ["panel-buttons"],
+    titleKey: "onboarding.overhaul.library.title",
+    bodyKey: "onboarding.overhaul.library.body",
+    phoneBodyKey: "onboarding.overhaul.library.phoneBody",
+    side: "left",
+    besideTarget: true,
+    openPanel: "characters",
+    sprite: { pose: "point-up", flip: true },
+  },
+  {
+    target: "panel-connections",
+    titleKey: "onboarding.overhaul.connections.title",
+    bodyKey: "onboarding.overhaul.connections.body",
+    side: "left",
+    besideTarget: true,
+    openPanel: "connections",
+    sprite: { pose: "point-middle", flip: true },
+  },
+  {
+    target: "panel-agents",
+    titleKey: "onboarding.overhaul.agents.title",
+    bodyKey: "onboarding.overhaul.agents.body",
+    side: "left",
+    besideTarget: true,
+    openPanel: "agents",
+    sprite: { pose: "point-middle", flip: true },
+  },
+  {
+    target: "panel-settings",
+    titleKey: "onboarding.overhaul.settings.title",
+    bodyKey: "onboarding.overhaul.settings.body",
+    side: "left",
+    besideTarget: true,
+    openPanel: "settings",
+    overhaulSettingsTab: "data",
+    sprite: { pose: "thinking" },
+  },
+  {
+    target: "omnibar-button",
+    highlightTargets: ["tab-strip"],
+    titleKey: "onboarding.overhaul.search.title",
+    bodyKey: "onboarding.overhaul.search.body",
+    phoneBodyKey: "onboarding.overhaul.search.phoneBody",
+    side: "bottom",
+    besideTarget: true,
+    openHome: true,
+    sprite: { pose: "point-up" },
+  },
+  {
+    target: "docs-button",
+    titleKey: "onboarding.overhaul.docs.title",
+    bodyKey: "onboarding.overhaul.docs.body",
+    phoneBodyKey: "onboarding.overhaul.docs.phoneBody",
+    side: "bottom",
+    besideTarget: true,
+    openHome: true,
+    docsLanguagePicker: true,
+    sprite: { pose: "greet" },
+  },
+];
+
 // ─── Spotlight overlay helpers ────────────────
 
 interface Rect {
@@ -296,6 +395,17 @@ function isChatModeTourTarget(target: string | null): boolean {
   return target?.startsWith("chat-mode-") ?? false;
 }
 
+/** The padded highlight box, kept inside the window so its outline is never cut off at an edge. */
+function clampSpotlightToViewport(rect: Rect): Rect {
+  const vw = getViewportWidth();
+  const vh = getViewportHeight();
+  const top = Math.max(1, rect.top - PAD);
+  const left = Math.max(1, rect.left - PAD);
+  const right = Math.min(vw - 1, rect.left + rect.width + PAD);
+  const bottom = Math.min(vh - 1, rect.top + rect.height + PAD);
+  return { top, left, width: Math.max(0, right - left), height: Math.max(0, bottom - top) };
+}
+
 // ─── Tooltip position ─────────────────────────
 
 function computeTooltipStyle(rect: Rect, step: TourStep): React.CSSProperties {
@@ -331,7 +441,7 @@ function computeTooltipStyle(rect: Rect, step: TourStep): React.CSSProperties {
     };
   }
 
-  if (isPanelTourTarget(step.target)) {
+  if (isPanelTourTarget(step.target) && !step.besideTarget) {
     const top = Math.max(topOffset, rect.top + rect.height + GAP);
     const left = clampNumber(rect.left + rect.width - TOOLTIP_W, VIEWPORT_MARGIN, vw - TOOLTIP_W - VIEWPORT_MARGIN);
     return {
@@ -346,7 +456,7 @@ function computeTooltipStyle(rect: Rect, step: TourStep): React.CSSProperties {
     };
   }
 
-  if (isTopbarTourTarget(step.target)) {
+  if (isTopbarTourTarget(step.target) && !step.besideTarget) {
     const top = topOffset;
     const left = clampNumber(rect.left + rect.width + GAP, VIEWPORT_MARGIN, vw - TOOLTIP_W - VIEWPORT_MARGIN);
     return {
@@ -361,7 +471,7 @@ function computeTooltipStyle(rect: Rect, step: TourStep): React.CSSProperties {
     };
   }
 
-  if (isChatModeTourTarget(step.target)) {
+  if (isChatModeTourTarget(step.target) && !step.besideTarget) {
     const top = Math.max(topOffset, rect.top);
     const left = clampNumber(rect.left + rect.width + GAP, VIEWPORT_MARGIN, vw - TOOLTIP_W - VIEWPORT_MARGIN);
     return {
@@ -447,6 +557,7 @@ function computeTooltipStyle(rect: Rect, step: TourStep): React.CSSProperties {
 
 function TourCardContent({
   step,
+  stepCount,
   currentStep,
   isLast,
   onNext,
@@ -454,6 +565,7 @@ function TourCardContent({
   pickerSlot,
 }: {
   step: number;
+  stepCount: number;
   currentStep: TourStep;
   isLast: boolean;
   onNext: () => void;
@@ -465,7 +577,7 @@ function TourCardContent({
   const localize = useLocalizedUiText();
   const { poses } = useMariAppearancePack();
   // UX-06: the phone shell (landscape too) has no search field to point at; the same step tells the user about the pull-down.
-  const mobileShell = useMatchMedia(MOBILE_SHELL_MEDIA_QUERY);
+  const mobileShell = useMatchMedia(useMobileShellMediaQuery());
   const bodyKey = currentStep.phoneBodyKey && mobileShell ? currentStep.phoneBodyKey : currentStep.bodyKey;
   const localizedBody = bodyKey
     ? localizeUi(bodyKey, { mod: formatShortcutKey("Mod") })
@@ -513,8 +625,11 @@ function TourCardContent({
       {pickerSlot}
 
       {/* Progress dots */}
-      <div className="mb-3 flex items-center justify-center gap-1.5">
-        {STEPS.map((_, i) => (
+      <div className="mb-3 flex items-center justify-center gap-1.5" data-component="OnboardingTutorial.Progress">
+        <span className="mr-1.5 text-[0.6875rem] tabular-nums text-[var(--marinara-chat-chrome-panel-muted)]">
+          {localizeUi("onboarding.stepCount", { step: step + 1, total: stepCount })}
+        </span>
+        {Array.from({ length: stepCount }, (_, i) => (
           <div
             key={i}
             className={`h-1.5 rounded-full transition-all duration-300 ${
@@ -555,6 +670,7 @@ function OnboardingTutorialInner() {
   const openRightPanel = useUIStore((s) => s.openRightPanel);
   const closeRightPanel = useUIStore((s) => s.closeRightPanel);
   const closeAllDetails = useUIStore((s) => s.closeAllDetails);
+  const tourSettingsTabRef = useRef<ReturnType<typeof useOverhaulStore.getState>["settingsTab"] | null>(null);
   const setSettingsTab = useUIStore((s) => s.setSettingsTab);
   const setSidebarOpen = useUIStore((s) => s.setSidebarOpen);
   const requestChatModeShortcut = useUIStore((s) => s.requestChatModeShortcut);
@@ -571,8 +687,11 @@ function OnboardingTutorialInner() {
   const rafRef = useRef<number>(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const currentStep = STEPS[step];
-  const isLast = step === STEPS.length - 1;
+  // The new layout gets its own tour; the classic layout keeps the original one.
+  const overhaulEnabled = useOverhaulStore((s) => s.enabled);
+  const steps = overhaulEnabled ? OVERHAUL_STEPS : STEPS;
+  const currentStep = steps[Math.min(step, steps.length - 1)];
+  const isLast = step >= steps.length - 1;
   const targetRect = spotlightRects.find((rect) => rect.target === currentStep.target) ?? null;
 
   // ── Documentation-language picker (final step) ──
@@ -641,6 +760,12 @@ function OnboardingTutorialInner() {
   // ── Side-effects when step changes ──
   useEffect(() => {
     if (currentStep.openHome) {
+      // New layout: also leave any Library page or Docs tab, as the top bar's Home button does.
+      const overhaul = useOverhaulStore.getState();
+      if (overhaul.enabled) {
+        overhaul.leaveDocs();
+        overhaul.setLibraryPage(null);
+      }
       closeAllDetails();
       setActiveChatId(null);
       closeRightPanel();
@@ -665,6 +790,11 @@ function OnboardingTutorialInner() {
       openRightPanel(currentStep.openPanel);
       if (currentStep.settingsTab) {
         setSettingsTab(currentStep.settingsTab);
+      }
+      if (currentStep.overhaulSettingsTab) {
+        // Remember the tab the user had, so finishing the tour doesn't leave Settings on the tour's tab.
+        tourSettingsTabRef.current ??= useOverhaulStore.getState().settingsTab;
+        useOverhaulStore.getState().setSettingsTab(currentStep.overhaulSettingsTab);
       }
     }
   }, [
@@ -704,6 +834,10 @@ function OnboardingTutorialInner() {
   }, [updateRect]);
 
   const finish = useCallback(() => {
+    if (tourSettingsTabRef.current) {
+      useOverhaulStore.getState().setSettingsTab(tourSettingsTabRef.current);
+      tourSettingsTabRef.current = null;
+    }
     // A new user has just met this release in the tour, so What's New must not open right after it.
     try {
       window.localStorage.setItem(WHATS_NEW_SEEN_VERSION_KEY, APP_VERSION);
@@ -768,18 +902,32 @@ function OnboardingTutorialInner() {
     <div className="mari-chrome-token-scope pointer-events-none fixed inset-0 z-[9999]">
       {/* Pulsing highlight rings around the current target elements */}
       {!isMobileViewport &&
-        spotlightRects.map((rect) => (
+        spotlightRects.map((rect, index) => (
           <div
             key={rect.target}
             data-component="OnboardingTutorial.Spotlight"
             data-tour-target={rect.target}
-            className="pointer-events-none fixed animate-pulse rounded-xl ring-2 ring-[var(--marinara-chat-chrome-focus-ring)]"
+            className={
+              currentStep.besideTarget
+                ? "pointer-events-none fixed rounded-xl"
+                : "pointer-events-none fixed animate-pulse rounded-xl ring-2 ring-[var(--marinara-chat-chrome-focus-ring)]"
+            }
             style={{
-              top: rect.top - PAD,
-              left: rect.left - PAD,
-              width: rect.width + PAD * 2,
-              height: rect.height + PAD * 2,
-              boxShadow: "0 0 16px 4px color-mix(in srgb, var(--marinara-chat-chrome-focus-ring) 40%, transparent)",
+              ...clampSpotlightToViewport(rect),
+              // New-layout steps: a solid accent outline, and the rest of the screen dimmed around the main target.
+              ...(currentStep.besideTarget
+                ? {
+                    outline: "2px solid var(--primary)",
+                    outlineOffset: -2,
+                    boxShadow:
+                      index === 0
+                        ? "0 0 18px 2px color-mix(in srgb, var(--primary) 45%, transparent), 0 0 0 200vmax rgb(0 0 0 / 0.42)"
+                        : "0 0 18px 2px color-mix(in srgb, var(--primary) 45%, transparent)",
+                  }
+                : {
+                    boxShadow:
+                      "0 0 16px 4px color-mix(in srgb, var(--marinara-chat-chrome-focus-ring) 40%, transparent)",
+                  }),
             }}
           />
         ))}
@@ -808,6 +956,7 @@ function OnboardingTutorialInner() {
             >
               <TourCardContent
                 step={step}
+                stepCount={steps.length}
                 currentStep={currentStep}
                 isLast={isLast}
                 onNext={next}
@@ -835,6 +984,7 @@ function OnboardingTutorialInner() {
           >
             <TourCardContent
               step={step}
+              stepCount={steps.length}
               currentStep={currentStep}
               isLast={isLast}
               onNext={next}

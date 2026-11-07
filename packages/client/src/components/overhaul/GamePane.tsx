@@ -6,14 +6,23 @@
 // tools (volume, assets, game data, checkpoints, retries, ending the session)
 // moved into Chat settings > Game.
 // ──────────────────────────────────────────────
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { avatarInitial } from "../../lib/avatar-initial";
 import { BookOpen, Backpack, Map as MapIcon, ScrollText, Users, X } from "lucide-react";
 import type { AvatarCrop, GameInventoryStack } from "@marinara-engine/shared";
 import { cn, getAvatarCropStyle } from "../../lib/utils";
 import { useOverhaulStore, type OverhaulGamePaneTab } from "../../stores/overhaul.store";
+import { useUIStore } from "../../stores/ui.store";
 import { useTranslation as useUiTranslation } from "react-i18next";
 import { useGameModeStore } from "../../stores/game-mode.store";
 import { useLocalizedUiText } from "../../localization/use-localized-ui-text";
+
+/** The narrowest the game scene (narration, composer) may get beside the game pane before the pane floats. */
+const GAME_SCENE_MIN_WIDTH = 520;
+/** The pane's width (23.5rem in overhaul.css), for measuring while it is folded away. */
+const GAME_PANE_REM = 23.5;
+/** About how wide the chat list is, to tell whether it fits back in. */
+const CHAT_LIST_REM = 20;
 
 export interface OvGamePaneMember {
   id: string;
@@ -72,7 +81,7 @@ function Avatar({ member }: { member: OvGamePaneMember }) {
       <img src={member.avatarUrl} alt="" style={getAvatarCropStyle(member.avatarCrop)} />
     </span>
   ) : (
-    <span className="ov-gpane__av">{member.name.slice(0, 1).toUpperCase()}</span>
+    <span className="ov-gpane__av">{avatarInitial(member.name)}</span>
   );
 }
 
@@ -80,10 +89,12 @@ function PartyTab({
   members,
   cards,
   inventory,
+  onEditSheet,
 }: {
   members: OvGamePaneMember[];
   cards: Record<string, OvGamePaneCard>;
   inventory: GameInventoryStack[];
+  onEditSheet?: (memberId: string) => (() => void) | undefined;
 }) {
   const { t: localizeUi } = useUiTranslation();
   const localize = useLocalizedUiText();
@@ -95,6 +106,7 @@ function PartyTab({
     ? inventory.filter((stack) => (stack.holder ?? "").toLowerCase() === selected.name.toLowerCase())
     : [];
   const otherStats = (card?.stats ?? []).filter((stat) => !HP.test(stat.name.trim()) && !MP.test(stat.name.trim()));
+  const editSheet = selected ? onEditSheet?.(selected.id) : undefined;
   return (
     <>
       <table className="ov-gpane__table">
@@ -142,20 +154,26 @@ function PartyTab({
       </table>
       {selected ? (
         <div className="ov-gpane__detail">
-          <p className="ov-gpane__label ov-gpane__label--row">
-            <span>{selected.name}</span>
-            {/* The full character sheet (Classic classes, skills and gear live there); the party bar that
+          <div className="ov-gpane__detail-head">
+            <p className="ov-gpane__label">{selected.name}</p>
+            {/* The full character sheet (MRPG classes, skills and gear live there); the party bar that
                 opened it is hidden in this layout. */}
             {card ? (
               <button
                 type="button"
-                className="ov-gpane__open"
+                className="ov-gpane__link"
                 onClick={() => useGameModeStore.getState().openCharacterSheet(selected.id)}
               >
-                {localize("Open sheet")}
+                {localize("Open sheet")} ›
               </button>
             ) : null}
-          </p>
+            {editSheet ? (
+              <button type="button" className="ov-gpane__link" onClick={editSheet}>
+                {localizeUi("ui.overhaul.partytab.editSheet")} ›
+              </button>
+            ) : null}
+          </div>
+          {!card?.stats?.length ? <p className="ov-gpane__none">{localizeUi("ui.overhaul.partytab.noStats")}</p> : null}
           {otherStats.length ? (
             <div className="ov-gpane__stats">
               {otherStats.map((stat) => (
@@ -284,6 +302,7 @@ export function OvGamePane({
   inventory,
   playerName,
   onOpenInventory,
+  onEditSheet,
   heading,
   journal,
   map,
@@ -294,6 +313,8 @@ export function OvGamePane({
   inventory: GameInventoryStack[];
   playerName: string;
   onOpenInventory?: () => void;
+  /** Opens a member's Game Mode sheet; returns nothing for members without one (NPCs). */
+  onEditSheet?: (memberId: string) => (() => void) | undefined;
   /** Day, place and session, shown over the tabs. */
   heading: ReactNode;
   journal: ReactNode;
@@ -306,9 +327,105 @@ export function OvGamePane({
   const tab = useOverhaulStore((state) => state.gamePaneTab);
   const setTab = useOverhaulStore((state) => state.setGamePaneTab);
   const setOpen = useOverhaulStore((state) => state.setGamePaneOpen);
+  // When the Library or the chat list (or a narrow window) leaves the scene under GAME_SCENE_MIN_WIDTH beside
+  // the pane, the pane folds away to its top-bar button and comes back by itself once there is room again
+  // (user panel 3, PG1: floating over the scene, it cut the narration off mid-sentence). Opened again while
+  // there is no room, it floats over the scene with a clear edge, the narration keeps to the uncovered part,
+  // and a click in the scene folds it away again.
+  const forced = useOverhaulStore((state) => state.gamePaneForced);
+  const setForced = useOverhaulStore((state) => state.setGamePaneForced);
+  const setMadeRoom = useOverhaulStore((state) => state.setGamePaneMadeRoom);
+  const paneRef = useRef<HTMLElement | null>(null);
+  const probeRef = useRef<HTMLSpanElement | null>(null);
+  const [narrow, setNarrow] = useState(false);
+  useEffect(() => {
+    const host = (paneRef.current ?? probeRef.current)?.parentElement;
+    if (!open || !host) return;
+    if (getComputedStyle(host).position === "static") host.style.position = "relative";
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const measure = () => {
+      const paneWidth = paneRef.current?.offsetWidth || GAME_PANE_REM * rem;
+      const room = host.clientWidth - paneWidth;
+      // A little slack before it comes back, so dragging the window edge doesn't flicker it.
+      setNarrow((was) => (was ? room < GAME_SCENE_MIN_WIDTH + 32 : room < GAME_SCENE_MIN_WIDTH));
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, [open, forced]);
+  useEffect(() => {
+    if (!narrow) setForced(false);
+  }, [narrow, setForced]);
+  // Opened again while there is no room: fold the chat list away first, so the pane can sit beside the scene.
+  // The chat list comes back by itself once there is room for all three again (the Library closed).
+  const hidListRef = useRef(false);
+  const listWidthRef = useRef(0);
+  useEffect(() => {
+    if (!forced || !narrow) return;
+    const ui = useUIStore.getState();
+    if (ui.sidebarOpen) {
+      // The chat list sits left of the game, so how far the game starts from the left is the list's width.
+      listWidthRef.current = (paneRef.current ?? probeRef.current)?.parentElement?.getBoundingClientRect().left ?? 0;
+      hidListRef.current = true;
+      ui.setSidebarOpen(false);
+    }
+  }, [forced, narrow]);
+  useEffect(() => {
+    const host = (paneRef.current ?? probeRef.current)?.parentElement;
+    if (!open || !host) return;
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const check = () => {
+      if (!hidListRef.current) return;
+      const ui = useUIStore.getState();
+      if (ui.sidebarOpen) {
+        hidListRef.current = false;
+        return;
+      }
+      const paneWidth = paneRef.current?.offsetWidth || GAME_PANE_REM * rem;
+      const listWidth = listWidthRef.current || CHAT_LIST_REM * rem;
+      if (host.clientWidth - paneWidth - listWidth >= GAME_SCENE_MIN_WIDTH + 16) {
+        hidListRef.current = false;
+        ui.setSidebarOpen(true);
+      }
+    };
+    const observer = new ResizeObserver(check);
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, [open]);
+  const madeRoom = open && narrow && !forced;
+  const overlay = open && narrow && forced;
+  useEffect(() => {
+    setMadeRoom(madeRoom);
+  }, [madeRoom, setMadeRoom]);
+  useEffect(() => () => setMadeRoom(false), [setMadeRoom]);
+  // Floating: the narration keeps to the part of the scene the pane doesn't cover, and a click there folds it.
+  useEffect(() => {
+    const pane = paneRef.current;
+    const host = pane?.parentElement;
+    if (!overlay || !pane || !host) return;
+    host.classList.add("is-pane-over");
+    host.style.setProperty("--ov-gpane-cover", `${pane.offsetWidth}px`);
+    const onPointerDown = (event: PointerEvent) => {
+      if (pane.contains(event.target as Node)) return;
+      if (!host.contains(event.target as Node)) return;
+      setForced(false);
+    };
+    host.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      host.classList.remove("is-pane-over");
+      host.style.removeProperty("--ov-gpane-cover");
+      host.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [overlay, setForced]);
   if (!open) return null;
+  if (madeRoom) return <span ref={probeRef} className="ov-gpane-probe" hidden />;
   return (
-    <aside className="ov-gpane" aria-label={localizeUi("ui.overhaul.ovgamepane.gamePane")}>
+    <aside
+      ref={paneRef}
+      className={cn("ov-gpane", overlay && "is-overlay")}
+      aria-label={localizeUi("ui.overhaul.ovgamepane.gamePane")}
+    >
       <div className="ov-gpane__head">
         <div className="ov-gpane__where">{heading}</div>
         <button
@@ -336,7 +453,9 @@ export function OvGamePane({
         ))}
       </div>
       <div className={cn("ov-gpane__body", `is-${tab}`)} role="tabpanel">
-        {tab === "party" ? <PartyTab members={members} cards={cards} inventory={inventory} /> : null}
+        {tab === "party" ? (
+          <PartyTab members={members} cards={cards} inventory={inventory} onEditSheet={onEditSheet} />
+        ) : null}
         {tab === "inventory" ? (
           <InventoryTab inventory={inventory} playerName={playerName} onOpenInventory={onOpenInventory} />
         ) : null}

@@ -1,10 +1,12 @@
 import { insertLibraryItems } from "../../lib/library-order";
+import { preloadChatSurface } from "../chat/chat-surface-preload";
 import {
   isOverhaulLook,
   isOverhaulMobile,
   useOverhaulActive,
   useOverhaulStore,
   useOverhaulMobile,
+  useOverhaulTouchMessages,
 } from "../../stores/overhaul.store";
 import { useLibraryFolderDrag } from "../../hooks/use-library-folder-drag";
 import { useLibraryOrder } from "../../hooks/use-library-order";
@@ -17,6 +19,9 @@ import {
   MessageSquareText,
   Search,
   Trash2,
+  Pencil,
+  Pin,
+  PinOff,
   Plus,
   Check,
   Download,
@@ -42,7 +47,15 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import { openActivityOverview, openGlobalSearch } from "../../lib/chat-insights";
-import { useBulkExportChats, useChats, useCreateChat, useDeleteChat, useDeleteChatGroup } from "../../hooks/use-chats";
+import {
+  useBulkExportChats,
+  useChats,
+  useCreateChat,
+  useDeleteChat,
+  useDeleteChatGroup,
+  useUpdateChat,
+  useUpdateChatMetadata,
+} from "../../hooks/use-chats";
 import { useChatPresets, useApplyChatPreset } from "../../hooks/use-chat-presets";
 import { useConnections } from "../../hooks/use-connections";
 import {
@@ -56,11 +69,12 @@ import {
 import { useCharacterSummaries } from "../../hooks/use-characters";
 import { handleFolderRenameKeyDown, useFolderRenameGesture } from "../../hooks/use-folder-rename-gesture";
 import { useChatStore } from "../../stores/chat.store";
-import { confirmNonEmptyFolderDelete, showConfirmDialog } from "../../lib/app-dialogs";
+import { confirmNonEmptyFolderDelete, showConfirmDialog, showPromptDialog } from "../../lib/app-dialogs";
 import { isMobileShellViewport, selectSidebarShown, useUIStore, type UserStatus } from "../../stores/ui.store";
 import { cn, getAvatarCropStyle } from "../../lib/utils";
 import { chatBackgroundMetadataToUrl } from "../../lib/backgrounds";
 import { formatRelativeContact } from "../../lib/relative-time";
+import { isSetupKeptForLater } from "../../hooks/use-setup-drafts";
 import { ChatRowPeek } from "./ChatRowPeek";
 import { Fragment, lazy, Suspense, useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { useTouchFolderDrag } from "../../hooks/use-touch-folder-drag";
@@ -97,7 +111,9 @@ import { EXPORT_FAILED_TOAST_ID } from "../../lib/file-download";
 import { SelectionActionBar } from "../ui/SelectionActionBar";
 import { SmoothFolderContent } from "../ui/SmoothFolderContent";
 import { HelpTooltip } from "../ui/HelpTooltip";
-import { MobileChatsHomeButton } from "../overhaul/MobileTopBar";
+import { MobileChatsHomeButton, MobileLibraryButton } from "../overhaul/MobileTopBar";
+import { SwipeActionsRow, type SwipeAction } from "../overhaul/SwipeActionsRow";
+import { RowActionSheet } from "../overhaul/RowActionSheet";
 import { useTranslation, useTranslation as useUiTranslation } from "react-i18next";
 import { useLocalizedUiText } from "../../localization/use-localized-ui-text";
 import { PersonalExtensionContributionSlot } from "../extensions/PersonalExtensionContributionSlot";
@@ -258,6 +274,16 @@ export function ChatSidebar() {
   const localize = useLocalizedUiText();
   const overhaulDesktop = useOverhaulActive();
   const overhaulMobile = useOverhaulMobile();
+  // Touch screens in the new layout (phones, and tablets held sideways): swipe a row left for Pin,
+  // Rename and Delete, or long-press it for the same actions in a sheet (panel 3, PP2, PT2, PT6).
+  const overhaulTouch = useOverhaulTouchMessages();
+  const swipeGesturesOn = useUIStore((s) => s.swipeGestures);
+  const swipeRows = overhaulTouch && swipeGesturesOn;
+  const [swipeOpenChatId, setSwipeOpenChatId] = useState<string | null>(null);
+  const rowActionsRef = useRef(new Map<string, { title: string; actions: SwipeAction[] }>());
+  const [rowSheet, setRowSheet] = useState<{ title: string; actions: SwipeAction[] } | null>(null);
+  const closeRowSheet = useCallback(() => setRowSheet(null), []);
+  const updateChatMetadata = useUpdateChatMetadata();
   // The overhaul look (compact rows, previews, mode counts) applies to phones too.
   const overhaulActive = overhaulDesktop || overhaulMobile;
   const { data: chats, isError: chatsError, isLoading, isFetching, refetch: refetchChats } = useChats();
@@ -266,6 +292,7 @@ export function ChatSidebar() {
   const { data: chatPresetsData } = useChatPresets();
   const applyChatPreset = useApplyChatPreset();
   const deleteChat = useDeleteChat();
+  const renameChat = useUpdateChat();
   const deleteChatGroup = useDeleteChatGroup();
   const bulkExportChats = useBulkExportChats();
   const activeChatId = useChatStore((s) => s.activeChatId);
@@ -542,7 +569,10 @@ export function ChatSidebar() {
       }
     }
 
-    return orderLibraryItems(result, (entry) => entry.chat.groupId ?? entry.chat.id);
+    const ordered = orderLibraryItems(result, (entry) => entry.chat.groupId ?? entry.chat.id);
+    // Pinned chats (phone row swipe > Pin) lead the list, in the list's own order.
+    const pinned = ordered.filter((entry) => isChatPinned(entry.chat));
+    return pinned.length ? [...pinned, ...ordered.filter((entry) => !isChatPinned(entry.chat))] : ordered;
   }, [chats, filtered, sort, orderLibraryItems, branchTreesByGroup]);
 
   // Detect if active chat belongs to a group so its group row highlights and stays mounted.
@@ -788,6 +818,7 @@ export function ChatSidebar() {
           characterIds: [],
           connectionId: starred?.settings.connectionId ?? undefined,
           promptPresetId: starred?.settings.promptPresetId ?? undefined,
+          setupPending: true,
         },
         {
           onSuccess: (chat) => {
@@ -967,6 +998,12 @@ export function ChatSidebar() {
       resetTouchDrag();
     },
     onCancel: resetTouchDrag,
+    // New layout: a still long-press opens the row's actions; moving the finger after pickup still drags.
+    onHoldRelease: (chatId) => {
+      if (!overhaulActive || multiSelectMode) return;
+      const entry = rowActionsRef.current.get(chatId);
+      if (entry) setRowSheet(entry);
+    },
   });
 
   // ── Batch actions ──
@@ -1106,6 +1143,42 @@ export function ChatSidebar() {
     return nodes;
   };
 
+  // ── Renaming a chat in place (desktop new layout: the hover pencil beside the name) ──
+  const [renamingChatId, setRenamingChatId] = useState<string | null>(null);
+  const [renameDraft, setRenameDraft] = useState("");
+  const commitRename = (chatId: string, currentName: string) => {
+    if (renamingChatId !== chatId) return;
+    setRenamingChatId(null);
+    const next = renameDraft.trim();
+    if (!next || next === currentName) return;
+    renameChat.mutate(
+      { id: chatId, name: next.slice(0, 200) },
+      {
+        onError: () =>
+          toast.error(localizeUi("ui.layout.chatsidebar.renameFailed", { defaultValue: "Couldn't rename the chat." })),
+      },
+    );
+  };
+
+  const renameChatWithSheet = async (chatId: string, currentName: string) => {
+    const next = (
+      await showPromptDialog({
+        title: localizeUi("ui.layout.chatsidebar.renameChat"),
+        message: "",
+        defaultValue: currentName,
+        confirmLabel: localizeUi("ui.layout.chatsidebar.renameShort"),
+      })
+    )?.trim();
+    if (!next || next === currentName) return;
+    renameChat.mutate(
+      { id: chatId, name: next.slice(0, 200) },
+      {
+        onError: () =>
+          toast.error(localizeUi("ui.layout.chatsidebar.renameFailed", { defaultValue: "Couldn't rename the chat." })),
+      },
+    );
+  };
+
   const renderChatRow = (entry: ChatListEntry) => {
     const { chat, branchCount, branchRows } = entry;
     const cfg = MODE_CONFIG[chat.mode] ?? MODE_CONFIG.conversation;
@@ -1166,7 +1239,9 @@ export function ChatSidebar() {
           ? notificationLabel
           : hasDraft
             ? localizeUi("ui.layout.chatsidebar.unsentDraft")
-            : null;
+            : isSetupKeptForLater(chat)
+              ? localizeUi("ui.layout.chatsidebar.setupNotFinished", { defaultValue: "Setup not finished" })
+              : null;
     // Same precedence as the subtitle: whatever the line says is what the icon marks.
     const SubtitleIcon =
       typingCharacter || isGenerating
@@ -1187,200 +1262,208 @@ export function ChatSidebar() {
         ? null
         : chatBackgroundMetadataToUrl(chat.metadata?.background, BACKGROUND_THUMBNAIL_WIDTH);
 
+    const rowActions: SwipeAction[] = [
+      {
+        key: "pin",
+        label: isChatPinned(chat)
+          ? localizeUi("ui.layout.chatsidebar.unpinChat")
+          : localizeUi("ui.layout.chatsidebar.pinChat"),
+        icon: isChatPinned(chat) ? <PinOff size="1rem" /> : <Pin size="1rem" />,
+        onSelect: () => updateChatMetadata.mutate({ id: chat.id, pinned: !isChatPinned(chat) }),
+      },
+      {
+        key: "rename",
+        label: localizeUi("ui.layout.chatsidebar.renameShort"),
+        icon: <Pencil size="1rem" />,
+        // A sheet with a proper field, not the small inline box (panel 3, PP10).
+        onSelect: () => void renameChatWithSheet(chat.id, chat.name),
+      },
+      {
+        key: "delete",
+        label: localizeUi("lorebook.editor.batch.delete"),
+        icon: <Trash2 size="1rem" />,
+        tone: "danger",
+        onSelect: () => {
+          if (branchCount > 1 && chat.groupId) {
+            setDeleteTarget({ chatId: chat.id, chatName: displayName, groupId: chat.groupId, branchCount });
+          } else {
+            void confirmDeleteChat(chat.id, displayName);
+          }
+        },
+      },
+    ];
+    rowActionsRef.current.set(chat.id, { title: displayName, actions: rowActions });
+
     return (
       <div key={chat.groupId ?? chat.id} className="flex flex-col">
-        <div
-          role="button"
-          tabIndex={0}
-          data-chat-id={chat.id}
-          title={displayName}
-          data-drag-id={chat.id}
-          aria-keyshortcuts="Alt+ArrowUp Alt+ArrowDown"
-          data-drag-kind="chat"
-          data-drag-order-id={chat.groupId ?? chat.id}
-          data-drag-folder={chat.folderId ?? ""}
-          onTouchStart={(event) => {
-            startTouchDrag(event, chat.id, {
-              sourceElement: event.currentTarget.closest<HTMLElement>("[data-chat-id]"),
-            });
-          }}
-          onMouseDown={(event) => startMouseDrag(event, chat.id)}
-          draggable
-          onDragStart={(event) => {
-            const chatIds = getDragChatIds(chat.id);
-            setDraggedChatId(chat.id);
-            event.dataTransfer.effectAllowed = "move";
-            event.dataTransfer.setData("application/x-marinara-chat-ids", JSON.stringify(chatIds));
-            event.dataTransfer.setData("application/x-marinara-chat-id", chat.id);
-            event.dataTransfer.setData("text/plain", chat.id);
-          }}
-          onDragEnd={() => {
-            setDraggedChatId(null);
-            setIsRootDropTarget(false);
-          }}
-          onClick={async () => {
-            if (suppressTouchDragClickRef.current) {
-              suppressTouchDragClickRef.current = false;
-              return;
-            }
-            if (multiSelectMode) {
-              toggleSelectChat(chat.id);
-              return;
-            }
-            await openChat(chat.id);
-          }}
-          // Enter/Space go through the click handler, so multi-select and the touch-drag guard
-          // apply to the keyboard too.
-          onKeyDown={(event) => {
-            const row = event.currentTarget;
-            activateRowFromKey(event, () => row.click());
-          }}
-          className={cn(
-            "group relative isolate flex w-full touch-pan-y cursor-grab active:cursor-grabbing items-center gap-2.5 overflow-hidden rounded-lg px-3 text-left transition-all duration-150",
-            overhaulActive ? "py-1.5" : "py-2.5",
-            multiSelectMode && isSelected
-              ? "mari-chrome-accent-surface mari-accent-animated"
-              : isActive
-                ? "bg-[var(--marinara-chat-chrome-highlight-bg)] ring-1 ring-[var(--marinara-chat-chrome-button-border-active)] shadow-sm"
-                : "hover:bg-[var(--marinara-chat-chrome-highlight-bg)]",
-            draggedChatId === chat.id && "opacity-50",
-          )}
+        <SwipeActionsRow
+          enabled={swipeRows && !multiSelectMode && renamingChatId !== chat.id}
+          open={swipeOpenChatId === chat.id}
+          onOpenChange={(open) => setSwipeOpenChatId(open ? chat.id : null)}
+          actions={rowActions}
         >
-          {/* Multi-select checkbox */}
-          {multiSelectMode && (
-            <div className="mari-chrome-accent-icon mari-accent-animated shrink-0">
-              {isSelected ? (
-                <CheckSquare size="0.875rem" />
-              ) : (
-                <SquareIcon size="0.875rem" className="text-[var(--muted-foreground)]" />
-              )}
-            </div>
-          )}
-
-          {/* Chat background banner — active/hovered only, behind everything */}
-          {bannerUrl && (
-            <span
-              aria-hidden
-              className={cn(
-                "pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-200",
-                // "hover" on a touch device means the active row only — no hover event ever fires.
-                chatListBackgrounds === "always" || isActive ? "opacity-100" : "group-hover:opacity-100",
-              )}
-            >
-              {/* Muted twice over: the image is faint, and a scrim still sits on top. Keeping
-                the scrim means text contrast does not depend on how light the image is. */}
-              {/* Full-size chat background squeezed into a 40px row: keep the decode off the
-                main thread and let offscreen rows skip it entirely. */}
-              <img
-                src={bannerUrl}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover opacity-[0.14] saturate-50"
-              />
-              <span className="absolute inset-0 bg-gradient-to-r from-[var(--sidebar-background)]/80 to-[var(--sidebar-background)]/40" />
-            </span>
-          )}
-
-          {/* Active indicator — generation is shown by the subtitle spinner instead. */}
-          {isActive && (
-            <span
-              // left-0, not -left-0.5: the row now clips (overflow-hidden, for the banner).
-              className="mari-chrome-accent-progress mari-accent-animated absolute left-0 top-1/2 h-5 w-1 -translate-y-1/2 rounded-full"
-            />
-          )}
-
-          {/* Chat avatar(s) or mode icon fallback — with unread badge overlay */}
-          <div className="relative flex-shrink-0">
-            {(() => {
-              const avatars = charIds
-                .slice(0, 3)
-                .map((id) => {
-                  const base = charLookup.get(id);
-                  if (!base) return null;
-                  const chatStatus = conversationStatusByCharacter.get(id);
-                  return chatStatus ? { ...base, conversationStatus: chatStatus } : base;
-                })
-                .filter(Boolean) as {
-                name: string;
-                avatarUrl: string | null;
-                avatarCrop?: AvatarCrop | null;
-                conversationStatus?: string;
-              }[];
-
-              const isConvoMode = chat.mode === "conversation";
-              const statusDot = (status?: string) => {
-                if (!isConvoMode) return null;
-                return (
-                  <span
-                    className={cn(
-                      "absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-[0.1875rem] ring-[1.5px] ring-[var(--sidebar-background)]",
-                      conversationStatusDotClass(status),
-                    )}
-                  />
-                );
-              };
-              const multiAvatarStatus = avatars.reduce<ConversationPresenceStatus | undefined>(
-                (worstStatus, avatar) => {
-                  const nextStatus = asConversationStatus(avatar.conversationStatus) ?? "online";
-                  if (!worstStatus) return nextStatus;
-                  return CONVERSATION_STATUS_PRIORITY[nextStatus] > CONVERSATION_STATUS_PRIORITY[worstStatus]
-                    ? nextStatus
-                    : worstStatus;
-                },
-                undefined,
-              );
-              if (avatars.length === 0) {
-                return (
-                  <div
-                    className={cn(
-                      "flex h-7 w-7 items-center justify-center rounded-lg text-xs transition-transform group-active:scale-90",
-                      "mari-chat-mode-avatar",
-                      cfg.logoModeClass,
-                      isActive && "shadow-sm",
-                    )}
-                  >
-                    {cfg.icon}
-                  </div>
-                );
+          <div
+            role="button"
+            tabIndex={0}
+            data-chat-id={chat.id}
+            title={displayName}
+            data-drag-id={chat.id}
+            aria-keyshortcuts="Alt+ArrowUp Alt+ArrowDown"
+            data-drag-kind="chat"
+            data-drag-order-id={chat.groupId ?? chat.id}
+            data-drag-folder={chat.folderId ?? ""}
+            onTouchStart={(event) => {
+              startTouchDrag(event, chat.id, {
+                sourceElement: event.currentTarget.closest<HTMLElement>("[data-chat-id]"),
+              });
+            }}
+            onMouseDown={(event) => startMouseDrag(event, chat.id)}
+            onPointerEnter={() => preloadChatSurface(chat.mode)}
+            draggable={renamingChatId !== chat.id}
+            onDragStart={(event) => {
+              const chatIds = getDragChatIds(chat.id);
+              setDraggedChatId(chat.id);
+              event.dataTransfer.effectAllowed = "move";
+              event.dataTransfer.setData("application/x-marinara-chat-ids", JSON.stringify(chatIds));
+              event.dataTransfer.setData("application/x-marinara-chat-id", chat.id);
+              event.dataTransfer.setData("text/plain", chat.id);
+            }}
+            onDragEnd={() => {
+              setDraggedChatId(null);
+              setIsRootDropTarget(false);
+            }}
+            onClick={async () => {
+              if (suppressTouchDragClickRef.current) {
+                suppressTouchDragClickRef.current = false;
+                return;
               }
-
-              if (avatars.length === 1) {
-                const a = avatars[0]!;
-                return a.avatarUrl ? (
-                  <div className="relative h-7 w-7 flex-shrink-0 transition-transform group-active:scale-90">
-                    <span className="relative block h-7 w-7 overflow-hidden rounded-lg">
-                      <img
-                        src={a.avatarUrl}
-                        alt={a.name}
-                        className="h-full w-full object-cover"
-                        style={getAvatarCropStyle(a.avatarCrop)}
-                      />
-                    </span>
-                    {statusDot(a.conversationStatus)}
-                  </div>
+              if (multiSelectMode) {
+                toggleSelectChat(chat.id);
+                return;
+              }
+              await openChat(chat.id);
+            }}
+            // Enter/Space go through the click handler, so multi-select and the touch-drag guard
+            // apply to the keyboard too.
+            onKeyDown={(event) => {
+              const row = event.currentTarget;
+              activateRowFromKey(event, () => row.click());
+            }}
+            className={cn(
+              "group relative isolate flex w-full touch-pan-y cursor-grab active:cursor-grabbing items-center gap-2.5 overflow-hidden rounded-lg px-3 text-left transition-all duration-150",
+              overhaulActive ? "py-1.5" : "py-2.5",
+              multiSelectMode && isSelected
+                ? "mari-chrome-accent-surface mari-accent-animated"
+                : isActive
+                  ? "bg-[var(--marinara-chat-chrome-highlight-bg)] ring-1 ring-[var(--marinara-chat-chrome-button-border-active)] shadow-sm"
+                  : "hover:bg-[var(--marinara-chat-chrome-highlight-bg)]",
+              draggedChatId === chat.id && "opacity-50",
+            )}
+          >
+            {/* Multi-select checkbox */}
+            {multiSelectMode && (
+              <div className="mari-chrome-accent-icon mari-accent-animated shrink-0">
+                {isSelected ? (
+                  <CheckSquare size="0.875rem" />
                 ) : (
-                  <div className="relative h-7 w-7 flex-shrink-0 transition-transform group-active:scale-90">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--secondary)] text-[0.625rem] font-bold text-[var(--muted-foreground)]">
-                      {a.name[0]}
-                    </div>
-                    {statusDot(a.conversationStatus)}
-                  </div>
-                );
-              }
+                  <SquareIcon size="0.875rem" className="text-[var(--muted-foreground)]" />
+                )}
+              </div>
+            )}
 
-              // Multiple characters — stacked avatars
-              return (
-                <div className="relative h-7 w-7 flex-shrink-0 transition-transform group-active:scale-90">
-                  {avatars.slice(0, 2).map((a, i) =>
-                    a.avatarUrl ? (
-                      <span
-                        key={i}
-                        className={cn(
-                          "absolute h-5 w-5 overflow-hidden rounded-md ring-2 ring-[var(--sidebar-background)]",
-                          i === 0 ? "top-0 left-0 z-10" : "bottom-0 right-0",
-                        )}
-                      >
+            {/* Chat background banner — active/hovered only, behind everything */}
+            {bannerUrl && (
+              <span
+                aria-hidden
+                className={cn(
+                  "pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-200",
+                  // "hover" on a touch device means the active row only — no hover event ever fires.
+                  chatListBackgrounds === "always" || isActive ? "opacity-100" : "group-hover:opacity-100",
+                )}
+              >
+                {/* Muted twice over: the image is faint, and a scrim still sits on top. Keeping
+                the scrim means text contrast does not depend on how light the image is. */}
+                {/* Full-size chat background squeezed into a 40px row: keep the decode off the
+                main thread and let offscreen rows skip it entirely. */}
+                <img
+                  src={bannerUrl}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover opacity-[0.14] saturate-50"
+                />
+                <span className="absolute inset-0 bg-gradient-to-r from-[var(--sidebar-background)]/80 to-[var(--sidebar-background)]/40" />
+              </span>
+            )}
+
+            {/* Active indicator — generation is shown by the subtitle spinner instead. */}
+            {isActive && (
+              <span
+                // left-0, not -left-0.5: the row now clips (overflow-hidden, for the banner).
+                className="mari-chrome-accent-progress mari-accent-animated absolute left-0 top-1/2 h-5 w-1 -translate-y-1/2 rounded-full"
+              />
+            )}
+
+            {/* Chat avatar(s) or mode icon fallback — with unread badge overlay */}
+            <div className="relative flex-shrink-0">
+              {(() => {
+                const avatars = charIds
+                  .slice(0, 3)
+                  .map((id) => {
+                    const base = charLookup.get(id);
+                    if (!base) return null;
+                    const chatStatus = conversationStatusByCharacter.get(id);
+                    return chatStatus ? { ...base, conversationStatus: chatStatus } : base;
+                  })
+                  .filter(Boolean) as {
+                  name: string;
+                  avatarUrl: string | null;
+                  avatarCrop?: AvatarCrop | null;
+                  conversationStatus?: string;
+                }[];
+
+                const isConvoMode = chat.mode === "conversation";
+                const statusDot = (status?: string) => {
+                  if (!isConvoMode) return null;
+                  return (
+                    <span
+                      className={cn(
+                        "absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-[0.1875rem] ring-[1.5px] ring-[var(--sidebar-background)]",
+                        conversationStatusDotClass(status),
+                      )}
+                    />
+                  );
+                };
+                const multiAvatarStatus = avatars.reduce<ConversationPresenceStatus | undefined>(
+                  (worstStatus, avatar) => {
+                    const nextStatus = asConversationStatus(avatar.conversationStatus) ?? "online";
+                    if (!worstStatus) return nextStatus;
+                    return CONVERSATION_STATUS_PRIORITY[nextStatus] > CONVERSATION_STATUS_PRIORITY[worstStatus]
+                      ? nextStatus
+                      : worstStatus;
+                  },
+                  undefined,
+                );
+                if (avatars.length === 0) {
+                  return (
+                    <div
+                      className={cn(
+                        "flex h-7 w-7 items-center justify-center rounded-lg text-xs transition-transform group-active:scale-90",
+                        "mari-chat-mode-avatar",
+                        cfg.logoModeClass,
+                        isActive && "shadow-sm",
+                      )}
+                    >
+                      {cfg.icon}
+                    </div>
+                  );
+                }
+
+                if (avatars.length === 1) {
+                  const a = avatars[0]!;
+                  return a.avatarUrl ? (
+                    <div className="relative h-7 w-7 flex-shrink-0 transition-transform group-active:scale-90">
+                      <span className="relative block h-7 w-7 overflow-hidden rounded-lg">
                         <img
                           src={a.avatarUrl}
                           alt={a.name}
@@ -1388,138 +1471,228 @@ export function ChatSidebar() {
                           style={getAvatarCropStyle(a.avatarCrop)}
                         />
                       </span>
-                    ) : (
-                      <div
-                        key={i}
-                        className={cn(
-                          "absolute flex h-5 w-5 items-center justify-center rounded-md bg-[var(--secondary)] text-[0.5rem] font-bold text-[var(--muted-foreground)] ring-2 ring-[var(--sidebar-background)]",
-                          i === 0 ? "top-0 left-0 z-10" : "bottom-0 right-0",
-                        )}
-                      >
+                      {statusDot(a.conversationStatus)}
+                    </div>
+                  ) : (
+                    <div className="relative h-7 w-7 flex-shrink-0 transition-transform group-active:scale-90">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--secondary)] text-[0.625rem] font-bold text-[var(--muted-foreground)]">
                         {a.name[0]}
                       </div>
-                    ),
-                  )}
-                  {statusDot(multiAvatarStatus)}
-                </div>
-              );
-            })()}
+                      {statusDot(a.conversationStatus)}
+                    </div>
+                  );
+                }
 
-            {/* Unread count badge */}
-            {(() => {
-              const count = signalRows
-                ? signalRows.reduce((sum, row) => sum + (unreadCounts.get(row.chat.id) ?? 0), 0)
-                : unreadCounts.get(chat.id) || 0;
-              if (count === 0 || isActive) return null;
-              return (
-                <span className="absolute -top-1 -right-1 z-20 flex h-4 min-w-4 items-center justify-center rounded-md bg-red-500 px-1 text-[0.5625rem] font-bold leading-none text-white shadow-sm ring-2 ring-[var(--sidebar-background)]">
-                  {count > 99 ? "99+" : count}
+                // Multiple characters — stacked avatars
+                return (
+                  <div className="relative h-7 w-7 flex-shrink-0 transition-transform group-active:scale-90">
+                    {avatars.slice(0, 2).map((a, i) =>
+                      a.avatarUrl ? (
+                        <span
+                          key={i}
+                          className={cn(
+                            "absolute h-5 w-5 overflow-hidden rounded-md ring-2 ring-[var(--sidebar-background)]",
+                            i === 0 ? "top-0 left-0 z-10" : "bottom-0 right-0",
+                          )}
+                        >
+                          <img
+                            src={a.avatarUrl}
+                            alt={a.name}
+                            className="h-full w-full object-cover"
+                            style={getAvatarCropStyle(a.avatarCrop)}
+                          />
+                        </span>
+                      ) : (
+                        <div
+                          key={i}
+                          className={cn(
+                            "absolute flex h-5 w-5 items-center justify-center rounded-md bg-[var(--secondary)] text-[0.5rem] font-bold text-[var(--muted-foreground)] ring-2 ring-[var(--sidebar-background)]",
+                            i === 0 ? "top-0 left-0 z-10" : "bottom-0 right-0",
+                          )}
+                        >
+                          {a.name[0]}
+                        </div>
+                      ),
+                    )}
+                    {statusDot(multiAvatarStatus)}
+                  </div>
+                );
+              })()}
+
+              {/* Unread count badge */}
+              {(() => {
+                const count = signalRows
+                  ? signalRows.reduce((sum, row) => sum + (unreadCounts.get(row.chat.id) ?? 0), 0)
+                  : unreadCounts.get(chat.id) || 0;
+                if (count === 0 || isActive) return null;
+                return (
+                  <span className="absolute -top-1 -right-1 z-20 flex h-4 min-w-4 items-center justify-center rounded-md bg-red-500 px-1 text-[0.5625rem] font-bold leading-none text-white shadow-sm ring-2 ring-[var(--sidebar-background)]">
+                    {count > 99 ? "99+" : count}
+                  </span>
+                );
+              })()}
+            </div>
+
+            {/* Name (desktop: a pencil beside it on hover renames in place) */}
+            <div className="min-w-0 flex-1">
+              {renamingChatId === chat.id ? (
+                <input
+                  autoFocus
+                  value={renameDraft}
+                  aria-label={localizeUi("ui.layout.chatsidebar.renameChat", { defaultValue: "Rename chat" })}
+                  onChange={(event) => setRenameDraft(event.target.value)}
+                  onClick={(event) => event.stopPropagation()}
+                  onMouseDown={(event) => event.stopPropagation()}
+                  onKeyDown={(event) => {
+                    event.stopPropagation();
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      commitRename(chat.id, chat.name);
+                    } else if (event.key === "Escape") {
+                      event.preventDefault();
+                      setRenamingChatId(null);
+                    }
+                  }}
+                  onBlur={() => commitRename(chat.id, chat.name)}
+                  onFocus={(event) => event.currentTarget.select()}
+                  // Same height as the name it replaces, so the row doesn't grow while you type.
+                  style={{ height: "1.25rem", minHeight: 0, paddingTop: 0, paddingBottom: 0 }}
+                  className="mari-chrome-field ov-chat-rename block w-full rounded px-1 text-sm"
+                />
+              ) : (
+                <span className="flex min-w-0 items-center gap-1">
+                  <span
+                    className={cn(
+                      "block min-w-0 truncate text-sm",
+                      isActive ? "mari-chrome-text-strong font-medium" : "mari-chrome-text",
+                    )}
+                  >
+                    {displayName}
+                  </span>
+                  {isChatPinned(chat) ? (
+                    <Pin
+                      size="0.6875rem"
+                      className="shrink-0 text-[var(--muted-foreground)]"
+                      aria-label={localizeUi("ui.layout.chatsidebar.pinned")}
+                    />
+                  ) : null}
+                  {overhaulDesktop && !multiSelectMode ? (
+                    <button
+                      type="button"
+                      data-chat-rename=""
+                      aria-label={localizeUi("ui.layout.chatsidebar.renameChat", { defaultValue: "Rename chat" })}
+                      title={localizeUi("ui.layout.chatsidebar.renameChat", { defaultValue: "Rename chat" })}
+                      onMouseDown={(event) => event.stopPropagation()}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setRenameDraft(chat.name);
+                        setRenamingChatId(chat.id);
+                      }}
+                      className="ov-chat-rename-btn shrink-0 rounded p-0.5 text-[var(--muted-foreground)] opacity-0 transition-opacity hover:text-[var(--foreground)] focus-visible:opacity-100 group-hover:opacity-100"
+                    >
+                      <Pencil size="0.6875rem" />
+                    </button>
+                  ) : null}
                 </span>
-              );
-            })()}
-          </div>
-
-          {/* Name */}
-          <div className="min-w-0 flex-1">
-            <span
-              className={cn(
-                "block truncate text-sm",
-                isActive ? "mari-chrome-text-strong font-medium" : "mari-chrome-text",
               )}
-            >
-              {displayName}
-            </span>
-            {chat.metadata?.multiplayer && (
-              <span className="mari-chrome-accent-text-muted block truncate text-[0.6875rem]">
-                {localizeUi(
-                  (chat.metadata.multiplayer as { role?: string; status?: string }).role === "host"
-                    ? (chat.metadata.multiplayer as { status?: string }).status === "ended"
-                      ? "multiplayer.sidebar.stopped"
-                      : "multiplayer.sidebar.hosting"
-                    : (chat.metadata.multiplayer as { status?: string }).status === "joined"
-                      ? "multiplayer.sidebar.joined"
-                      : "multiplayer.sidebar.disconnected",
-                )}
+              {chat.metadata?.multiplayer && (
+                <span className="mari-chrome-accent-text-muted block truncate text-[0.6875rem]">
+                  {localizeUi(
+                    (chat.metadata.multiplayer as { role?: string; status?: string }).role === "host"
+                      ? (chat.metadata.multiplayer as { status?: string }).status === "ended"
+                        ? "multiplayer.sidebar.stopped"
+                        : "multiplayer.sidebar.hosting"
+                      : (chat.metadata.multiplayer as { status?: string }).status === "joined"
+                        ? "multiplayer.sidebar.joined"
+                        : "multiplayer.sidebar.disconnected",
+                  )}
+                </span>
+              )}
+              {subtitle && (
+                <span className="mari-chrome-accent-text-muted flex items-center gap-1 truncate text-[0.6875rem] leading-tight">
+                  {SubtitleIcon && (
+                    <SubtitleIcon
+                      className={cn(
+                        "h-2.5 w-2.5 shrink-0",
+                        SubtitleIcon === Loader2 ? "animate-spin" : "animate-pulse",
+                      )}
+                    />
+                  )}
+                  <span className="truncate">{subtitle}</span>
+                </span>
+              )}
+            </div>
+
+            {/* Last-activity time — conversation chats only */}
+            {relativeTime && (
+              <span className="mari-chrome-accent-text-muted shrink-0 text-[0.625rem] tabular-nums">
+                {relativeTime}
               </span>
             )}
-            {subtitle && (
-              <span className="mari-chrome-accent-text-muted flex items-center gap-1 truncate text-[0.6875rem] leading-tight">
-                {SubtitleIcon && (
-                  <SubtitleIcon
-                    className={cn("h-2.5 w-2.5 shrink-0", SubtitleIcon === Loader2 ? "animate-spin" : "animate-pulse")}
-                  />
-                )}
-                <span className="truncate">{subtitle}</span>
-              </span>
-            )}
-          </div>
 
-          {/* Last-activity time — conversation chats only */}
-          {relativeTime && (
-            <span className="mari-chrome-accent-text-muted shrink-0 text-[0.625rem] tabular-nums">{relativeTime}</span>
-          )}
-
-          {/* Branch count badge. With recorded lineage it is also the toggle for the tree: the badge
+            {/* Branch count badge. With recorded lineage it is also the toggle for the tree: the badge
               is already the row's "this has branches" signal, so it opens them rather than a separate
               chevron gutter that would cost every row in the list its width. */}
-          {isBranchRoot ? (
-            <button
-              type="button"
-              aria-expanded={isExpanded}
-              aria-label={localizeUi(
-                isExpanded ? "ui.layout.chatsidebar.collapseBranches" : "ui.layout.chatsidebar.expandBranches",
-                { name: chat.name },
-              )}
-              onClick={(event) => {
-                event.stopPropagation();
-                if (chat.groupId) toggleBranchGroup(chat.groupId);
-              }}
-              // On touch the pseudo-element widens the tap target to ~44px without growing the pill.
-              className={cn(
-                "mari-chrome-muted-badge relative flex shrink-0 items-center gap-0.5 px-1.5 py-0.5 text-[0.625rem] transition-colors hover:border-[var(--marinara-chat-chrome-button-border-active)]",
-                "after:absolute after:inset-0 after:content-[''] max-md:after:-inset-x-1 max-md:after:-inset-y-3 [@media(pointer:coarse)]:after:-inset-x-1 [@media(pointer:coarse)]:after:-inset-y-3",
-                isExpanded && "border-[var(--marinara-chat-chrome-button-border-active)]",
-              )}
-            >
-              <GitBranch size="0.625rem" />
-              {branchCount}
-              <ChevronDown
-                size="0.625rem"
-                className={cn("transition-transform duration-200 ease-out", isExpanded && "rotate-180")}
-              />
-            </button>
-          ) : (
-            branchCount > 1 && (
-              <span className="mari-chrome-muted-badge flex shrink-0 items-center gap-0.5 px-1.5 py-0.5 text-[0.625rem]">
+            {isBranchRoot ? (
+              <button
+                type="button"
+                aria-expanded={isExpanded}
+                aria-label={localizeUi(
+                  isExpanded ? "ui.layout.chatsidebar.collapseBranches" : "ui.layout.chatsidebar.expandBranches",
+                  { name: chat.name },
+                )}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  if (chat.groupId) toggleBranchGroup(chat.groupId);
+                }}
+                // On touch the pseudo-element widens the tap target to ~44px without growing the pill.
+                className={cn(
+                  "mari-chrome-muted-badge relative flex shrink-0 items-center gap-0.5 px-1.5 py-0.5 text-[0.625rem] transition-colors hover:border-[var(--marinara-chat-chrome-button-border-active)]",
+                  "after:absolute after:inset-0 after:content-[''] max-md:after:-inset-x-1 max-md:after:-inset-y-3 [@media(pointer:coarse)]:after:-inset-x-1 [@media(pointer:coarse)]:after:-inset-y-3",
+                  isExpanded && "border-[var(--marinara-chat-chrome-button-border-active)]",
+                )}
+              >
                 <GitBranch size="0.625rem" />
                 {branchCount}
-              </span>
-            )
-          )}
+                <ChevronDown
+                  size="0.625rem"
+                  className={cn("transition-transform duration-200 ease-out", isExpanded && "rotate-180")}
+                />
+              </button>
+            ) : (
+              branchCount > 1 && (
+                <span className="mari-chrome-muted-badge flex shrink-0 items-center gap-0.5 px-1.5 py-0.5 text-[0.625rem]">
+                  <GitBranch size="0.625rem" />
+                  {branchCount}
+                </span>
+              )
+            )}
 
-          {/* Delete button */}
-          {!multiSelectMode && (
-            <button
-              aria-label={localizeUi("chat.branches.deleteLabel", { name: displayName })}
-              onClick={async (e) => {
-                e.stopPropagation();
-                if (branchCount > 1 && chat.groupId) {
-                  setDeleteTarget({
-                    chatId: chat.id,
-                    chatName: displayName,
-                    groupId: chat.groupId,
-                    branchCount,
-                  });
-                } else {
-                  await confirmDeleteChat(chat.id, displayName);
-                }
-              }}
-              className="shrink-0 rounded-md p-1 text-[var(--muted-foreground)] opacity-0 transition-all hover:bg-[var(--accent)] hover:text-[var(--foreground)] group-hover:opacity-100 max-md:opacity-100"
-            >
-              <Trash2 size="0.75rem" />
-            </button>
-          )}
-        </div>
+            {/* Delete button (phones with swipe gestures delete from the row swipe instead) */}
+            {!multiSelectMode && !swipeRows && (
+              <button
+                aria-label={localizeUi("chat.branches.deleteLabel", { name: displayName })}
+                onClick={async (e) => {
+                  e.stopPropagation();
+                  if (branchCount > 1 && chat.groupId) {
+                    setDeleteTarget({
+                      chatId: chat.id,
+                      chatName: displayName,
+                      groupId: chat.groupId,
+                      branchCount,
+                    });
+                  } else {
+                    await confirmDeleteChat(chat.id, displayName);
+                  }
+                }}
+                data-chat-row-delete
+                className="shrink-0 rounded-md p-1 text-[var(--muted-foreground)] opacity-0 transition-all hover:bg-[var(--accent)] hover:text-[var(--foreground)] group-hover:opacity-100 max-md:opacity-100"
+              >
+                <Trash2 size="0.75rem" />
+              </button>
+            )}
+          </div>
+        </SwipeActionsRow>
 
         {isBranchRoot && branchRows && (
           // The guide line hangs from the centre of the chat's avatar (px-3 + half of the 28px
@@ -1584,17 +1757,7 @@ export function ChatSidebar() {
         {overhaulMobile ? <MobileChatsHomeButton /> : null}
         <div className="flex min-w-0 shrink-0 items-center gap-1">
           <PersonalExtensionContributionSlot surface="chats" position="header" className="max-w-28" />
-          {overhaulMobile ? (
-            <button
-              onClick={handleNewChatFromTab}
-              disabled={createChat.isPending}
-              className="ovm-icon-btn"
-              title={t(`navigation.chatSidebar.new.${activeTab}`)}
-              aria-label={t(`navigation.chatSidebar.new.${activeTab}`)}
-            >
-              <Plus size={22} aria-hidden="true" />
-            </button>
-          ) : null}
+          {overhaulMobile ? <MobileLibraryButton tour={false} /> : null}
           {overhaulDesktop ? (
             <>
               <button
@@ -1663,7 +1826,7 @@ export function ChatSidebar() {
 
       {/* Tabs */}
       <div className="px-3 pt-3">
-        <div className="mari-chrome-segmented">
+        <div className="mari-chrome-segmented" data-tour="chat-modes">
           {(["conversation", "roleplay", "game"] as const).map((tab) => {
             const cfg = MODE_CONFIG[tab];
             const isActive = activeTab === tab;
@@ -1812,6 +1975,20 @@ export function ChatSidebar() {
           >
             <TextSearch size="0.875rem" />
           </button>
+          {overhaulMobile ? (
+            // "+ New" lives with the list's own tools, as on the Library pages (panel 3, PV7).
+            <button
+              type="button"
+              onClick={handleNewChatFromTab}
+              disabled={createChat.isPending}
+              className="ov-new-pill ovm-chats-new"
+              title={t(`navigation.chatSidebar.new.${activeTab}`)}
+              aria-label={t(`navigation.chatSidebar.new.${activeTab}`)}
+            >
+              <Plus size="1rem" aria-hidden="true" />
+              <span>{localize("New")}</span>
+            </button>
+          ) : null}
           {overhaulMobile ? (
             <div className="ov-menu-wrap ovm-chats-more">
               <button
@@ -2159,6 +2336,8 @@ export function ChatSidebar() {
         </Suspense>
       )}
 
+      {rowSheet ? <RowActionSheet title={rowSheet.title} actions={rowSheet.actions} onClose={closeRowSheet} /> : null}
+
       {/* ── Delete Branch Modal ── */}
       <Modal
         open={deleteTarget !== null}
@@ -2316,6 +2495,7 @@ function BranchRow({
             event.stopPropagation();
             onDelete();
           }}
+          data-chat-row-delete
           className="shrink-0 rounded-md p-1 text-[var(--muted-foreground)] opacity-0 transition-all hover:bg-[var(--accent)] hover:text-[var(--foreground)] focus-visible:opacity-100 group-hover:opacity-100 max-md:opacity-100"
         >
           <Trash2 size="0.75rem" />
@@ -2694,4 +2874,9 @@ function UserStatusFooter({
       </div>
     </div>
   );
+}
+
+/** Pinned from the phone row swipe; pinned chats lead the chat list. */
+function isChatPinned(chat: Chat): boolean {
+  return parseChatMetadata(chat.metadata).pinned === true;
 }

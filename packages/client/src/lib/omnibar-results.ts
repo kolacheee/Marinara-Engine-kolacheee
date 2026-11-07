@@ -19,6 +19,9 @@ import {
 import type { AgentConfigRow } from "../hooks/use-agents";
 import type { HomeFaqItem } from "../components/chat/HomeFaq";
 import { CHOICE_SCORE_PENALTY, buildChoiceOptionResults, readChoiceOptionId } from "./omnibar-choice-rows";
+
+/** Extra damping for "use for this chat" option rows, so the matching item's own (Open) row leads. */
+const CHAT_USE_SCORE_PENALTY = 80;
 import { frecencyBoost, type OmnibarFrecencyEntry } from "./omnibar-frecency";
 import { readNamedRow } from "./omnibar-row-readers";
 import { parseChatMetadata } from "./chat-display";
@@ -725,8 +728,19 @@ export function buildOmnibarSearchResults({
   // so "gpt" reaches "Use GPT-4 for this chat" without finding the Model row and
   // drilling into it. They stay out of the idle deck, which would otherwise gain
   // six rows per control before the user has asked for anything.
+  // Panel 3 (PR1): a typed preset, model or persona name means "open it" first. The "use it for this
+  // chat" rows leave the Current work group (which always leads) and rank under the item's own row.
   const controlChoices = trimmedQuery
-    ? [...controls, ...chatControls].flatMap((control) => buildChoiceOptionResults(control))
+    ? [
+        ...controls.flatMap((control) => buildChoiceOptionResults(control)),
+        ...chatControls.flatMap((control) =>
+          buildChoiceOptionResults(control).map((row) => ({
+            ...row,
+            group: undefined,
+            score: row.score - CHAT_USE_SCORE_PENALTY,
+          })),
+        ),
+      ]
     : [];
   // F8 (O5): Mari's promotion and "unambiguous direct hit" must never turn on a
   // frecency boost - "never moves Mari's row" means never decides it either.
@@ -1493,10 +1507,12 @@ export function buildOmnibarContextResults({
   }
   if (isActiveChatSurface && activeChat) {
     const chatTool = (
-      tool: "summary" | "lorebook" | "search" | "regenerate" | "advanced-parameters" | "memory-recall",
+      tool: "summary" | "lorebook" | "search" | "regenerate" | "advanced-parameters" | "memory-recall" | "peek-prompt",
       title: string,
       icon: OmnibarResult["icon"],
+      aliases?: readonly string[],
     ): OmnibarResult => ({
+      ...(aliases ? { aliases } : {}),
       id: `chat-tool:${tool}:${activeChat.id}`,
       title,
       category: "chat",
@@ -1519,10 +1535,26 @@ export function buildOmnibarContextResults({
     // UX-13: settings that live inside Chat Settings are findable by their own names.
     if (activeChat.mode !== "game") {
       push(
-        chatTool("advanced-parameters", t("commandCenter.chatTools.maxOutputTokens", "Max output tokens"), "command"),
+        // One honest name for the whole group (panel 3: "temperature" found a row called "Max output tokens").
+        chatTool(
+          "advanced-parameters",
+          t("commandCenter.chatTools.generationParameters", "Generation parameters"),
+          "command",
+          ["max output tokens", "max tokens", "temperature", "top p", "top k", "sampler", "generation parameters"],
+        ),
       );
       push(chatTool("memory-recall", t("commandCenter.chatTools.memoryRecall", "Memory Recall"), "command"));
     }
+    // H3: Peek Prompt was only in a message's "…" menu. Typed, it builds the next prompt now.
+    push({
+      ...chatTool("peek-prompt", t("commandCenter.chatTools.peekPrompt", "Peek prompt"), "command", [
+        "prompt preview",
+        "view prompt",
+        "see prompt",
+        "context",
+      ]),
+      idleHidden: true,
+    });
     if (activeChat.mode !== "game") {
       // The button under the reply already does this; the empty list does not repeat it (slice 78).
       push({

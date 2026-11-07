@@ -572,6 +572,16 @@ export const SETTINGS_SEARCHABLE_CONTROLS: readonly SettingsSearchableControlMet
     kind: "Toggle",
   },
   {
+    id: "phone-swipe-gestures",
+    sectionId: "editing-swipes",
+    labelKey: "settings.controls.phoneSwipeGestures.label",
+    label: "Swipe gestures on touch screens",
+    description: "In the new layout on a phone or tablet, swipe the latest reply, the top-bar title and chat rows.",
+    descriptionKey: "settings.search.phoneSwipeGestures.description",
+    aliases: ["swipe", "gestures", "touch"],
+    kind: "Toggle",
+  },
+  {
     id: "up-arrow-edits-last-message",
     sectionId: "editing-swipes",
     labelKey: "settings.controls.upArrowEdit.label",
@@ -860,6 +870,18 @@ export const SETTINGS_SEARCHABLE_CONTROLS: readonly SettingsSearchableControlMet
     descriptionKey: "settings.search.themeMode.description",
     aliases: ["theme", "dark", "light", "mode"],
     keywords: ["dark", "night", "light", "day"],
+    kind: "Select",
+  },
+  {
+    id: "device-look",
+    sectionId: "app-style",
+    labelKey: "settings.deviceLook.label",
+    label: "Look on this device",
+    description:
+      'Normally your theme, Visual Style, colors, font and CSS theme are the same on every device. Pick "Only this device" to give this one its own look, for example light on your phone and dark on your PC.',
+    descriptionKey: "settings.deviceLook.help",
+    aliases: ["per device", "different theme", "phone theme", "mobile theme", "sync theme"],
+    keywords: ["device", "phone", "desktop", "sync"],
     kind: "Select",
   },
   {

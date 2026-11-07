@@ -66,6 +66,18 @@ export type CharacterLibrarySort = (typeof CHARACTER_LIBRARY_SORT_OPTIONS)[numbe
 export type CardLibraryKind = "characters" | "personas";
 export const MOBILE_SHELL_MEDIA_QUERY =
   "(max-width: 767px), (max-width: 1440px) and (hover: none) and (any-pointer: coarse)";
+/** UI overhaul: touch tablets held sideways (1024px+ wide) get the desktop shell; portrait keeps the phone shell. */
+export const OVERHAUL_MOBILE_SHELL_MEDIA_QUERY =
+  "(max-width: 767px), (max-width: 1023px) and (hover: none) and (any-pointer: coarse), (max-width: 1440px) and (hover: none) and (any-pointer: coarse) and (orientation: portrait)";
+
+/** The phone-shell media query in effect (the overhaul lets touch tablets in landscape use the desktop shell). */
+export function mobileShellMediaQuery(): string {
+  return isOverhaulLook() ? OVERHAUL_MOBILE_SHELL_MEDIA_QUERY : MOBILE_SHELL_MEDIA_QUERY;
+}
+
+export function useMobileShellMediaQuery(): string {
+  return useOverhaulStore((state) => (state.enabled ? OVERHAUL_MOBILE_SHELL_MEDIA_QUERY : MOBILE_SHELL_MEDIA_QUERY));
+}
 export const CHARACTER_PANEL_FAVORITE_FILTER_OPTIONS = ["all", "favorites", "non-favorites"] as const;
 export type CharacterPanelFavoriteFilter = (typeof CHARACTER_PANEL_FAVORITE_FILTER_OPTIONS)[number];
 export const LOREBOOK_PANEL_CATEGORY_OPTIONS = [
@@ -124,6 +136,21 @@ export interface EchoChamberSize {
 }
 export type UserStatus = "active" | "idle" | "dnd" | "invisible";
 export type RoleplayAvatarStyle = "none" | "circles" | "rectangles" | "panel" | "faded";
+export const ROLEPLAY_AVATAR_STYLES: readonly RoleplayAvatarStyle[] = [
+  "none",
+  "circles",
+  "rectangles",
+  "panel",
+  "faded",
+];
+
+/** The avatar display in effect: the open chat's own choice, else the global one. */
+export function selectRoleplayAvatarStyle(state: {
+  chatAvatarStyleOverride: RoleplayAvatarStyle | null;
+  roleplayAvatarStyle: RoleplayAvatarStyle;
+}) {
+  return state.chatAvatarStyleOverride ?? state.roleplayAvatarStyle;
+}
 export type RoleplayChatPosition = "left" | "center" | "right";
 
 /** Stale or unknown synced values fall back to the centred layout. */
@@ -473,11 +500,16 @@ function normalizeScrollTop(value: unknown) {
   return typeof value === "number" && Number.isFinite(value) ? Math.max(0, Math.round(value)) : 0;
 }
 
-let mobileShellQuery: MediaQueryList | null = null;
+const mobileShellQueries = new Map<string, MediaQueryList>();
 
 export function isMobileShellViewport(): boolean {
   if (typeof window === "undefined") return false;
-  mobileShellQuery ??= window.matchMedia(MOBILE_SHELL_MEDIA_QUERY);
+  const query = mobileShellMediaQuery();
+  let mobileShellQuery = mobileShellQueries.get(query);
+  if (!mobileShellQuery) {
+    mobileShellQuery = window.matchMedia(query);
+    mobileShellQueries.set(query, mobileShellQuery);
+  }
   if (mobileShellQuery.matches) return true;
   const { sidebarWidth, rightPanelWidth } = useUIStore.getState();
   // Reserve both docked widths plus room for the topbar controls. Checking
@@ -1083,6 +1115,8 @@ interface UIState {
   intuitiveSwipeNavigation: boolean;
   /** When true, moving past the newest swipe on the latest assistant message creates a new reroll. */
   intuitiveSwipeRerollLatest: boolean;
+  /** New layout on phones: swipe the latest reply, the top-bar title and chat rows. Kept per device. */
+  swipeGestures: boolean;
   /** When true, pressing Up Arrow with an empty chat input opens the last user message for editing (Conversation/Roleplay). */
   editLastMessageOnArrowUp: boolean;
   /** When true, double-clicking or double-tapping a Roleplay message opens it for editing. */
@@ -1113,6 +1147,8 @@ interface UIState {
   gameTextEffectsEnabled: boolean;
   /** Layout style for roleplay message avatars */
   roleplayAvatarStyle: RoleplayAvatarStyle;
+  /** The open chat's own avatar display (Chat settings > Characters); null follows `roleplayAvatarStyle`. Not saved here. */
+  chatAvatarStyleOverride: RoleplayAvatarStyle | null;
   /** Scale multiplier for Roleplay message avatars. */
   roleplayAvatarScale: number;
   /** When true, Roleplay message avatars stay visible while scrolling through long messages. */
@@ -1501,6 +1537,7 @@ interface UIState {
   setSpotifyMobileWidgetPosition: (position: FloatingWidgetPosition) => void;
   setIntuitiveSwipeNavigation: (v: boolean) => void;
   setIntuitiveSwipeRerollLatest: (v: boolean) => void;
+  setSwipeGestures: (v: boolean) => void;
   setEditLastMessageOnArrowUp: (v: boolean) => void;
   setEditMessageOnDoubleClick: (v: boolean) => void;
   setSummaryPopoverSettings: (settings: Partial<SummaryPopoverSettings>) => void;
@@ -1515,6 +1552,7 @@ interface UIState {
   setKeepRoleplayThinkingExpanded: (v: boolean) => void;
   setGameTextEffectsEnabled: (v: boolean) => void;
   setRoleplayAvatarStyle: (v: RoleplayAvatarStyle) => void;
+  setChatAvatarStyleOverride: (v: RoleplayAvatarStyle | null) => void;
   setRoleplayAvatarScale: (v: number) => void;
   setRoleplayAvatarsScrollable: (v: boolean) => void;
   setRoleplayStretchMessages: (v: boolean) => void;
@@ -1671,9 +1709,7 @@ export function pickSyncedSettings(state: UIState) {
   return {
     libraryManualOrders: state.libraryManualOrders,
     showHomeBrowserAddressBar: state.showHomeBrowserAddressBar,
-    sidebarOpen: state.sidebarOpen,
-    sidebarWidth: state.sidebarWidth,
-    rightPanelWidth: state.rightPanelWidth,
+    // sidebarOpen and the pane widths stay on each device (see LOCAL_ONLY_SETTING_KEYS in use-settings-sync).
     trackerPanelEnabled: state.trackerPanelEnabled,
     trackerPanelSide: state.trackerPanelSide,
     trackerPanelHideHudWidgets: state.trackerPanelHideHudWidgets,
@@ -1800,6 +1836,7 @@ export function pickSyncedSettings(state: UIState) {
     spotifyMobileWidgetPosition: state.spotifyMobileWidgetPosition,
     intuitiveSwipeNavigation: state.intuitiveSwipeNavigation,
     intuitiveSwipeRerollLatest: state.intuitiveSwipeRerollLatest,
+    swipeGestures: state.swipeGestures,
     editLastMessageOnArrowUp: state.editLastMessageOnArrowUp,
     editMessageOnDoubleClick: state.editMessageOnDoubleClick,
     summaryPopoverSettings: state.summaryPopoverSettings,
@@ -1892,10 +1929,11 @@ export function pickPersistedUIState(state: UIState) {
     lorebookDetailId: state.lorebookDetailId,
     presetDetailId: state.presetDetailId,
     connectionDetailId: state.connectionDetailId,
-    agentDetailId: state.agentDetailId,
-    toolDetailId: state.toolDetailId,
+    // An unsaved "__new__" draft is not restored after a reload; it would reopen as an empty form.
+    agentDetailId: state.agentDetailId === "__new__" ? null : state.agentDetailId,
+    toolDetailId: state.toolDetailId === "__new__" ? null : state.toolDetailId,
     personaDetailId: state.personaDetailId,
-    regexDetailId: state.regexDetailId,
+    regexDetailId: state.regexDetailId === "__new__" ? null : state.regexDetailId,
     spatialMapDetailChatId: state.spatialMapDetailChatId,
     botBrowserOpen: state.botBrowserOpen,
     gameAssetsBrowserOpen: state.gameAssetsBrowserOpen,
@@ -2055,6 +2093,7 @@ export function pickPersistedUIState(state: UIState) {
     spotifyMobileWidgetPosition: state.spotifyMobileWidgetPosition,
     intuitiveSwipeNavigation: state.intuitiveSwipeNavigation,
     intuitiveSwipeRerollLatest: state.intuitiveSwipeRerollLatest,
+    swipeGestures: state.swipeGestures,
     editLastMessageOnArrowUp: state.editLastMessageOnArrowUp,
     editMessageOnDoubleClick: state.editMessageOnDoubleClick,
     summaryPopoverSettings: state.summaryPopoverSettings,
@@ -2389,6 +2428,7 @@ export const useUIStore = create<UIState>()(
         spotifyMobileWidgetPosition: { ...DEFAULT_MOBILE_MUSIC_WIDGET_POSITION },
         intuitiveSwipeNavigation: false,
         intuitiveSwipeRerollLatest: false,
+        swipeGestures: true,
         editLastMessageOnArrowUp: true,
         editMessageOnDoubleClick: true,
         summaryPopoverSettings: DEFAULT_SUMMARY_POPOVER_SETTINGS,
@@ -2403,6 +2443,7 @@ export const useUIStore = create<UIState>()(
         keepRoleplayThinkingExpanded: false,
         gameTextEffectsEnabled: true,
         roleplayAvatarStyle: "circles" as RoleplayAvatarStyle,
+        chatAvatarStyleOverride: null,
         roleplayAvatarScale: 1,
         roleplayAvatarsScrollable: false,
         roleplayStretchMessages: false,
@@ -2615,6 +2656,16 @@ export const useUIStore = create<UIState>()(
             get().closeAllDetails();
             useOverhaulStore.getState().openDocs(initialDoc, { newTab: Boolean(props?.newTab) });
             return;
+          }
+          // UI overhaul: an account is a page (desktop: in the Connections viewer, beside its models).
+          if (type === "connection-account" && typeof props?.accountId === "string") {
+            const overhaul = useOverhaulStore.getState();
+            if (overhaul.enabled) {
+              get().openConnectionDetail(
+                `${props.replaceKey === true ? "account-key:" : "account:"}${props.accountId}`,
+              );
+              return;
+            }
           }
           set({ modal: { type, props } });
         },
@@ -3370,6 +3421,7 @@ export const useUIStore = create<UIState>()(
           }),
         setIntuitiveSwipeNavigation: (v) => set({ intuitiveSwipeNavigation: v }),
         setIntuitiveSwipeRerollLatest: (v) => set({ intuitiveSwipeRerollLatest: v }),
+        setSwipeGestures: (v) => set({ swipeGestures: v }),
         setEditLastMessageOnArrowUp: (v) => set({ editLastMessageOnArrowUp: v }),
         setEditMessageOnDoubleClick: (v) => set({ editMessageOnDoubleClick: v }),
         setSummaryPopoverSettings: (settings) =>
@@ -3396,6 +3448,7 @@ export const useUIStore = create<UIState>()(
           set((state) => ({ keepRoleplayThinkingExpanded: state.showRoleplayThinkingInMessages && v })),
         setGameTextEffectsEnabled: (v) => set({ gameTextEffectsEnabled: v }),
         setRoleplayAvatarStyle: (v) => set({ roleplayAvatarStyle: v }),
+        setChatAvatarStyleOverride: (v) => set({ chatAvatarStyleOverride: v }),
         setRoleplayAvatarScale: (v) =>
           set({ roleplayAvatarScale: Math.max(ROLEPLAY_AVATAR_SCALE_MIN, Math.min(ROLEPLAY_AVATAR_SCALE_MAX, v)) }),
         setRoleplayAvatarsScrollable: (v) => set({ roleplayAvatarsScrollable: v }),

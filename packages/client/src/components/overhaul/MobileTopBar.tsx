@@ -8,7 +8,19 @@
 // ──────────────────────────────────────────────
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { ArrowUp, Check, Home, Layers, MessageCircle, Plus, Search, Settings, Settings2, X } from "lucide-react";
+import {
+  ArrowUp,
+  BookOpen,
+  Check,
+  Home,
+  Layers,
+  MessageCircle,
+  Plus,
+  Search,
+  Settings,
+  Settings2,
+  X,
+} from "lucide-react";
 import type { Chat } from "@marinara-engine/shared";
 import { useUIStore } from "../../stores/ui.store";
 import { useChatStore } from "../../stores/chat.store";
@@ -22,6 +34,7 @@ import { LIBRARY_SECTIONS, openLibrarySection } from "./library-navigation";
 import {
   ChatSettingsSummary,
   TabIcon,
+  useTabPicture,
   TabLabel,
   TabPresence,
   activateTab,
@@ -31,6 +44,7 @@ import {
   useTabBookkeeping,
 } from "./OverhaulTopBar";
 import { useTabScrollMemory } from "./use-tab-scroll-memory";
+import { useHorizontalSwipe, type SwipeDirection } from "./use-horizontal-swipe";
 
 /** Leave the Chats list or a mobile side panel before showing something else in the main area. */
 function closeMobilePanels() {
@@ -121,9 +135,7 @@ function StackMenu({ onClose, anchor }: { onClose: () => void; anchor: HTMLEleme
               useOverhaulStore.getState().openDocs(null);
             })}
           >
-            <span className="ovm-emoji-icon" aria-hidden="true">
-              📖
-            </span>
+            <BookOpen size={22} aria-hidden="true" />
             <span>{localize("Docs")}</span>
           </button>
           <button
@@ -168,6 +180,8 @@ function TabCard({
     const text = ref.current?.querySelector(".ovm-tabcard__label")?.textContent ?? "";
     setHidden(Boolean(query) && !text.toLowerCase().includes(query.toLowerCase()));
   });
+  const picture = useTabPicture(tab, chats);
+  const [pictureFailed, setPictureFailed] = useState(false);
   const kindLabel = tab
     ? localize(
         tab.kind === "chat"
@@ -205,8 +219,10 @@ function TabCard({
           else goHome();
         }}
       >
-        <span className="ovm-tabcard__thumb" aria-hidden="true">
-          {tab ? (
+        <span className={cn("ovm-tabcard__thumb", picture && !pictureFailed && "has-pic")} aria-hidden="true">
+          {picture && !pictureFailed ? (
+            <img className="ovm-tabcard__pic" src={picture} alt="" onError={() => setPictureFailed(true)} />
+          ) : tab ? (
             <span className="ovm-tabcard__glyph">
               <TabIcon tab={tab} chats={chats} />
             </span>
@@ -319,9 +335,31 @@ export function OverhaulMobileTopBar() {
   const activeChatId = useChatStore((s) => s.activeChatId);
   const chatSettingsOpen = useFloatingWindowStore((s) => s.open[CHAT_SETTINGS_WINDOW_ID] === true);
   const allTabsOpen = useOverhaulStore((s) => s.allTabsOpen);
-  const [stackOpen, setStackOpen] = useState(false);
-  const stackRef = useRef<HTMLButtonElement | null>(null);
-  const wide = useWideEnoughForLabel();
+  const tabCount = useOverhaulStore((s) => s.tabs.length);
+  const swipeGestures = useUIStore((s) => s.swipeGestures);
+  // Swiping the title moves through the open tabs in strip order (Home sits before the first).
+  const tabSteps = (direction: SwipeDirection) => {
+    const tabs = useOverhaulStore.getState().tabs;
+    const index = currentKey ? tabs.findIndex((tab) => overhaulTabKey(tab) === currentKey) : -1;
+    return { tabs, next: direction === "left" ? index + 1 : index - 1 };
+  };
+  // The whole middle of the bar takes the swipe (panel 3, PT5); only the title inside it moves, clipped
+  // to that box so it never slides over the icons (PP9).
+  const titleSwipe = useHorizontalSwipe({
+    enabled: swipeGestures && !sidebarOpen && tabCount > 0,
+    maxFollow: 48,
+    moveTarget: (el) => el.querySelector<HTMLElement>(".ovm-title__inner"),
+    canSwipe: (direction) => {
+      const { tabs, next } = tabSteps(direction);
+      return next >= -1 && next < tabs.length;
+    },
+    onSwipe: (direction) => {
+      const { tabs, next } = tabSteps(direction);
+      closeMobilePanels();
+      if (next < 0) goHome();
+      else if (tabs[next]) activateTab(tabs[next]);
+    },
+  });
 
   const activeChat = activeChatId ? chats.find((chat) => chat.id === activeChatId) : undefined;
   const chatOnScreen = current?.kind === "chat" && activeChat && !sidebarOpen && !rightPanelOpen;
@@ -372,36 +410,40 @@ export function OverhaulMobileTopBar() {
       <button
         type="button"
         className="ovm-title"
+        {...titleSwipe}
         onClick={() => useUIStore.getState().setOmnibarOpen(true)}
         aria-label={localize("Search or open anything")}
+        data-tour="omnibar-button"
       >
-        {sidebarOpen ? (
-          <span className="ovm-title__text">
-            <b>{localize("Chats")}</b>
-          </span>
-        ) : current?.kind === "chat" && activeChat ? (
-          <>
-            <TabIcon tab={current} chats={chats} />
+        <span className="ovm-title__inner">
+          {sidebarOpen ? (
             <span className="ovm-title__text">
-              <TabLabel tab={current} chats={chats} />
-              <ChatSettingsSummary chat={activeChat} fallback={modeLabel} />
+              <b>{localize("Chats")}</b>
             </span>
-          </>
-        ) : current ? (
-          <>
-            <TabIcon tab={current} chats={chats} />
-            <span className="ovm-title__text">
-              <TabLabel tab={current} chats={chats} />
-            </span>
-          </>
-        ) : (
-          <>
-            <img className="ovm-title__logo" src="/favicon.png" srcSet="/favicon.png 1x, /icon-192.png 3x" alt="" />
-            <span className="ovm-title__text">
-              <b>{localize("Home")}</b>
-            </span>
-          </>
-        )}
+          ) : current?.kind === "chat" && activeChat ? (
+            <>
+              <TabIcon tab={current} chats={chats} />
+              <span className="ovm-title__text">
+                <TabLabel tab={current} chats={chats} />
+                <ChatSettingsSummary chat={activeChat} fallback={modeLabel} />
+              </span>
+            </>
+          ) : current ? (
+            <>
+              <TabIcon tab={current} chats={chats} />
+              <span className="ovm-title__text">
+                <TabLabel tab={current} chats={chats} />
+              </span>
+            </>
+          ) : (
+            <>
+              <img className="ovm-title__logo" src="/favicon.png" srcSet="/favicon.png 1x, /icon-192.png 3x" alt="" />
+              <span className="ovm-title__text">
+                <b>{localize("Home")}</b>
+              </span>
+            </>
+          )}
+        </span>
       </button>
       <div className="ovm-topbar__side ovm-topbar__side--end">
         {chatOnScreen ? (
@@ -417,25 +459,53 @@ export function OverhaulMobileTopBar() {
             <Settings2 size={22} />
           </button>
         ) : null}
+        {/* Safari's tabs button: the open-tab count, one tap to All Tabs. */}
         <button
-          ref={stackRef}
           type="button"
-          className={cn("ovm-stack-btn", stackOpen && "is-on", wide && "has-label")}
-          aria-expanded={stackOpen}
-          aria-haspopup="menu"
-          aria-label={localize("Library")}
-          title={localize("Library")}
-          onClick={() => setStackOpen((open) => !open)}
-          data-tour="panel-buttons"
+          className={cn("ovm-icon-btn", allTabsOpen && "is-on")}
+          aria-label={localize("All Tabs")}
+          title={localize("All Tabs")}
+          onClick={() => useOverhaulStore.getState().setAllTabsOpen(!allTabsOpen)}
         >
-          <Layers size={22} aria-hidden="true" />
-          {wide ? <span>{localize("Library")}</span> : null}
+          <span className="ovm-tabs-icon" aria-hidden="true">
+            {tabCount + 1}
+          </span>
         </button>
+        <MobileLibraryButton />
       </div>
-      {stackOpen ? <StackMenu anchor={stackRef.current} onClose={() => setStackOpen(false)} /> : null}
       {allTabsOpen ? <AllTabsViewer chats={chats} current={current} /> : null}
       <JumpToTop />
     </header>
+  );
+}
+
+/**
+ * The Library (Stack) button. It sits top-right on every phone screen, the chat list included, so that
+ * corner always means Library (panel 3, PV7: "+ New" there made chats by accident).
+ */
+export function MobileLibraryButton({ tour = true }: { tour?: boolean }) {
+  const localize = useLocalizedUiText();
+  const [stackOpen, setStackOpen] = useState(false);
+  const stackRef = useRef<HTMLButtonElement | null>(null);
+  const wide = useWideEnoughForLabel();
+  return (
+    <>
+      <button
+        ref={stackRef}
+        type="button"
+        className={cn("ovm-stack-btn", stackOpen && "is-on", wide && "has-label")}
+        aria-expanded={stackOpen}
+        aria-haspopup="menu"
+        aria-label={localize("Library")}
+        title={localize("Library")}
+        onClick={() => setStackOpen((open) => !open)}
+        data-tour={tour ? "panel-buttons" : undefined}
+      >
+        <Layers size={22} aria-hidden="true" />
+        {wide ? <span>{localize("Library")}</span> : null}
+      </button>
+      {stackOpen ? <StackMenu anchor={stackRef.current} onClose={() => setStackOpen(false)} /> : null}
+    </>
   );
 }
 

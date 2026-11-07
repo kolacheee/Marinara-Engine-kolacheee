@@ -787,12 +787,18 @@ export function GlobalOmnibarDialog({ onClose }: { onClose: () => void }) {
               ...lorebookEntryResults,
               ...mariChatResults,
               // UX-13: the Chat Settings rows for Max output tokens and Memory Recall, when the typed text names them.
-              ...contextResults.filter(
-                (result) =>
-                  result.action?.kind === "open-chat-tool" &&
-                  (result.action.tool === "advanced-parameters" || result.action.tool === "memory-recall") &&
-                  result.title.toLowerCase().includes(deferredQuery.trim().toLowerCase()),
-              ),
+              // Their other names count too ("temperature", "peek"), so a typed sampler name lands on the
+              // chat's own parameters before a lookalike setting elsewhere (user panel 2).
+              ...contextResults.filter((result) => {
+                if (result.action?.kind !== "open-chat-tool") return false;
+                const tool = result.action.tool;
+                if (tool !== "advanced-parameters" && tool !== "memory-recall" && tool !== "peek-prompt") return false;
+                const typed = deferredQuery.trim().toLowerCase();
+                return [result.title, ...(result.aliases ?? [])].some(
+                  (name) =>
+                    name.toLowerCase().includes(typed) || (typed.length >= 4 && typed.includes(name.toLowerCase())),
+                );
+              }),
               // An explicit "Add X to this chat" row replaces the plain entity row
               // for the same thing: showing both lists every character twice, and
               // the plain one reads like "open" while doing the same attach.
@@ -1372,6 +1378,18 @@ export function GlobalOmnibarDialog({ onClose }: { onClose: () => void }) {
       }
       return;
     }
+    // A preset row's switch makes it the default; picking the row itself opens it, like a character
+    // or a lorebook (user panel 2, N8: Enter and click did nothing).
+    if (result.category === "preset") {
+      const presetId = getOmnibarResourceId(result);
+      if (presetId) {
+        if (!confirmLeaveEditor()) return;
+        ui().openPresetDetail(presetId);
+        recordUse(result.id);
+        onClose();
+        return;
+      }
+    }
     if (result.control) return;
     if (runDirectChatAction(result)) return;
     if (runSystemAction(result)) {
@@ -1458,11 +1476,15 @@ export function GlobalOmnibarDialog({ onClose }: { onClose: () => void }) {
     const parentId = readChoiceOptionId(result.id)?.parentId;
     setExpandedChoiceId(null);
     if (parentId && isChatScopedChoiceControlId(parentId)) {
+      const undo = result.undoChooseValue;
       toast.success(
         t("commandCenter.actions.chatControlChosen", "{{label}}: {{value}}", {
           label: result.description ?? result.command.title,
           value: result.title,
         }),
+        undo
+          ? { action: { label: t("ui.chat.chatresourcedropoverlay.undo", "Undo"), onClick: () => undo() } }
+          : undefined,
       );
       recordUse(result.id);
       onClose();
@@ -1525,7 +1547,9 @@ export function GlobalOmnibarDialog({ onClose }: { onClose: () => void }) {
     }
     autoSelectionRef.current = false;
     setActiveResultId(result.id);
-    if (result.control?.type === "toggle") flipToggleControl(result, result.control.value !== true);
+    // A preset row opens the preset; its "Set default preset" button is the toggle (user panel 2, N8).
+    if (result.category === "preset" && result.control?.type === "toggle") choose(result);
+    else if (result.control?.type === "toggle") flipToggleControl(result, result.control.value !== true);
     else if (result.control?.type === "choice")
       setExpandedChoiceId((current) => (current === result.id ? null : result.id));
     else choose(result);
@@ -1816,7 +1840,12 @@ export function GlobalOmnibarDialog({ onClose }: { onClose: () => void }) {
     if (result.id === "ask-professor-mari") {
       return result.group === "continue" ? t("commandCenter.open", "Open") : t("commandCenter.enter.ask", "Ask");
     }
-    if (result.chooseValue) return t("commandCenter.enter.choose", "Choose");
+    if (result.chooseValue) {
+      const parentId = readChoiceOptionId(result.id)?.parentId;
+      return parentId && isChatScopedChoiceControlId(parentId)
+        ? t("commandCenter.enter.useForChat", "Use for this chat")
+        : t("commandCenter.enter.choose", "Choose");
+    }
     switch (result.action?.kind) {
       case "add-to-chat":
         return t("commandCenter.enter.add", "Add");
