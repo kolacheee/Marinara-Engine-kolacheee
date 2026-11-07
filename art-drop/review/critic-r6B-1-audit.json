@@ -1,0 +1,938 @@
+{
+  "fantasy-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "185afff9547c14dc3eab0a3a7fee9dbf247fdf07c1b2521d4d5dadab6c300eb6",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      0,
+      10,
+      48,
+      38
+    ],
+    "opaque_pixels": 1229
+  },
+  "fantasy-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "152fec9e7bb0bd17d50ccc099c6587d5690454cee1abe6a44f6d13ed6be5e6d3",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      10,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1255
+  },
+  "fantasy-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "1b505c4583109a5d524a051dcdc60139ba40376b3df385906e621e11880d0990",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1345
+  },
+  "fantasy-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "c969794fd577695eff70912107f737832dd4f10583e8e928f34424dc2a9bcd8e",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1484
+  },
+  "fantasy-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "9d43a067ac473c593b3a3bebebe604904216016afe76df1f71befdecd0a8e65c",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1222,
+    "season_changed_pixels": 441
+  },
+  "fantasy-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "30b4f0b9938f41abdaa0338093a09d56d93f1a0efbff867d107ff1f233df6733",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      10,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1313,
+    "season_changed_pixels": 441
+  },
+  "fantasy-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "e4227eaacbe301a8b95b40c969239510b1bd9b28fe1b62b1e4ccb1a9e9377a29",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 17,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1353,
+    "season_changed_pixels": 672
+  },
+  "fantasy-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "bd2634b432ec779aef089069a3db080769a8e258ded8772f0c7c526883d981f9",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1515,
+    "season_changed_pixels": 1098
+  },
+  "wuxia-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "a2325cb9068c5219f927c88dcdf525f3b761de1a9c89f3016dbd6b11cbf75bf1",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1215
+  },
+  "wuxia-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "1ec6a9edafc4429cacb3c01f1f172e0e6046078553b5abee09035cf8ca13f3e7",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      10,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1230
+  },
+  "wuxia-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "90e64f7d00638fe7fd122b71b6e7f5b54dfe8a047f23bde96c15e599e9092c45",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 17,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1407
+  },
+  "wuxia-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "635ff0f6de94d917ee30b02af4d66239ce8f8c53aebc00801cf2b44a225e41d2",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 17,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1536
+  },
+  "wuxia-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "cdf9fa7b5a64e7e422dbc384aa257aeefe8a957e00e7bbcf33646ad552f5ac70",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 18,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1233,
+    "season_changed_pixels": 376
+  },
+  "wuxia-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "87bdb5f8b47238a0d13099f76e222a9d6392a8b0d7eddc31435c30cbd2bf8365",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      10,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1228,
+    "season_changed_pixels": 286
+  },
+  "wuxia-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "1ccd58ec275c652997c41dcf55b909066b436282198818c8655e0d84451c86ff",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 20,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1419,
+    "season_changed_pixels": 506
+  },
+  "wuxia-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "6537707f6d8e194bfe90e7df8f6189b13992e42a0d5a103c21b40c624464fdf9",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 19,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1532,
+    "season_changed_pixels": 579
+  },
+  "jazz_age-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "abbf80b0e484073850b14ade01d4ce7a5da3998d12d8857079b92b8b420f9420",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1276
+  },
+  "jazz_age-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "4099d4db633c55e691f75d4b9e7265ba4cb05a7edf32f590da3cdfd1e07e6f91",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 15,
+    "bbox": [
+      10,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1288
+  },
+  "jazz_age-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "bcf7e706e476951ea154d91cadeb07c2c706fe6bad64b7405e66833cd9236d77",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1418
+  },
+  "jazz_age-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "36899db1c0ad63baf339e451caae23a3f5bf9eb95e744aed8a3d5a582a05c574",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1370
+  },
+  "jazz_age-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "e729538735248c95d65e8d8b5a294167d589a7372fe808e0297c524c6b0c08cc",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1291,
+    "season_changed_pixels": 425
+  },
+  "jazz_age-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "8b9736c845127f4ae16bed602153beda59239de146c48e8f6390a1ba27476e87",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      11,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1284,
+    "season_changed_pixels": 309
+  },
+  "jazz_age-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "1b528c136639eec4d54613580ce0d9f676820db861e6250b22d9b8a2d8005826",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1409,
+    "season_changed_pixels": 306
+  },
+  "jazz_age-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "d2d8db1256dfa66130d4b054f2a81542be9df5127ca64d83e416f5264b69ed02",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1368,
+    "season_changed_pixels": 391
+  },
+  "modern-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "9ee4da62b8cf365a6ace0dd471dfe3eb5e52f3cb7e7cf4df8012faa7bcf0e8a3",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1302
+  },
+  "modern-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "b97ffc26add0bc2590fe496b8b6c7f09ca49d9734570b11ab1205538f811e4a5",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      10,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1242
+  },
+  "modern-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "4c640424c43bff045b7fbb399d69b22f5f89a9cc4818467116d6aa7a7a5a192e",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1447
+  },
+  "modern-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "3cd1c1c0b12908055acf31af7b8a31ed2fe220a03eb7f4cb3ee54a42a0b54d29",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1508
+  },
+  "modern-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "4a0d73116e0893a905ca4fd778b5f7bc3f951ad418af275a9d46a6efa7cd090e",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1307,
+    "season_changed_pixels": 357
+  },
+  "modern-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "29a00160345e7f5e5f75b2d886611e9395d317ef4acc620166f9b4d6dd61c907",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      10,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1236,
+    "season_changed_pixels": 393
+  },
+  "modern-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "9179ee35d726bc7b081eaf22456d63cc07876a87c269c7ac1d8ef14ae0ec736b",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1455,
+    "season_changed_pixels": 431
+  },
+  "modern-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "0d39d87a2d5c2374170adbf066a94512d59dba750b07ffdd07e7afa7878ceae1",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 13,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1538,
+    "season_changed_pixels": 358
+  },
+  "scifi-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "3ec3e695508a9dd8b8b050b47a5deb0aeaf5c6254fe1241405dc6d68c8511b54",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1251
+  },
+  "scifi-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "90f61be88be3e4fecbce31400b4ebad0a32cf423cf8d937fbd1f104692358951",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 10,
+    "bbox": [
+      11,
+      0,
+      38,
+      48
+    ],
+    "opaque_pixels": 1287
+  },
+  "scifi-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "7c7586fa031b58183fb77f003c2338db2cb42784cb362bdaecd5ced313dedcaa",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1188
+  },
+  "scifi-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "aea011fe95379a93bc4422b25eeff76cd3c7baf83ca47b30129fbfd9f5e92612",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 11,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1310
+  },
+  "scifi-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "468565cc940339396e4c166cf0cdfac550fee8e817d53aa88825be4443be66c6",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 12,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1295,
+    "season_changed_pixels": 442
+  },
+  "scifi-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "ad64bc4353d4f47f7b9ea7db7a9741ca76dbe4e9a9cb35d03f3adcf267a4c9b7",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 14,
+    "bbox": [
+      10,
+      0,
+      39,
+      48
+    ],
+    "opaque_pixels": 1306,
+    "season_changed_pixels": 519
+  },
+  "scifi-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "f3fbfc2f66008de0d1582b2f5a71904d56da823f3b8c73ba48706e184dcdb4d6",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1214,
+    "season_changed_pixels": 478
+  },
+  "scifi-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "f1ead257f7fe636ccb547fa20b313b7fd194b16512c2443ecddc5415476a3dce",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1319,
+    "season_changed_pixels": 424
+  },
+  "wasteland-bridge-h": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "505df888d8dbd573ee3be980c3a5c0f69e4f315155a6cf936dc252f3495067d4",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 15,
+    "bbox": [
+      0,
+      10,
+      48,
+      38
+    ],
+    "opaque_pixels": 1220
+  },
+  "wasteland-bridge-v": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "41a35393662dbb561a3010a10b8708916f0a37060fee267eb8a4bf94035091f0",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      11,
+      0,
+      38,
+      48
+    ],
+    "opaque_pixels": 1204
+  },
+  "wasteland-bridge-d1": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "bf30b4583a8d164c77cfaa6a809e26d453390fc2d8fc5cd9ff8718d66d1c8cf3",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 16,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1347
+  },
+  "wasteland-bridge-d2": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "dc54052f0f68d2889db68da8ac20ff3fa19542d167afa7aed331775f26fed417",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 15,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1365
+  },
+  "wasteland-bridge-h@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "ced9a86c10ce614966b0600b5dd1b0db9465d9f4080f66163ecdefb3c18ce28b",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 19,
+    "bbox": [
+      0,
+      10,
+      48,
+      39
+    ],
+    "opaque_pixels": 1307,
+    "season_changed_pixels": 666
+  },
+  "wasteland-bridge-v@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "9dfea01dc09a914ae365dd64f822abb2d4134bb8c497e34d584d85647c9e2d42",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 18,
+    "bbox": [
+      11,
+      0,
+      38,
+      48
+    ],
+    "opaque_pixels": 1208,
+    "season_changed_pixels": 518
+  },
+  "wasteland-bridge-d1@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "b37265d23e1103c1eb7f1ca866e2eb1e32dc04632f30256f5df011fe0a94c2de",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 20,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1374,
+    "season_changed_pixels": 720
+  },
+  "wasteland-bridge-d2@winter": {
+    "size": [
+      48,
+      48
+    ],
+    "sha256": "a66404bcdd625f88a6ff3e159983d23d379c47e9121cead00bc32ea114c9bdee",
+    "alpha_values": [
+      0,
+      255
+    ],
+    "opaque_colors": 19,
+    "bbox": [
+      0,
+      0,
+      48,
+      48
+    ],
+    "opaque_pixels": 1412,
+    "season_changed_pixels": 803
+  }
+}
