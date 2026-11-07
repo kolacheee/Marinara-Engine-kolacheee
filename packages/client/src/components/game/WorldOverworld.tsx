@@ -513,7 +513,7 @@ export function WorldOverworld({
         !drawnLook.includes(look) ||
         coveredLooks.has(look) ||
         square.has(look) ||
-        propLooks.has(look)
+        (propLooks.has(look) && !WORLD_PROP_KEEPS_GROUND.includes(look))
       )
         continue;
       const isLook = (x: number, y: number) => drawnLook[y * width + x] === look;
