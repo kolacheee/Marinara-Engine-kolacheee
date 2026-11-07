@@ -1,0 +1,601 @@
+{
+  "sets": {
+    "fantasy-summer": {
+      "result": "pass",
+      "notes": "Distinct rubble pile, broken columns, small arch, low wall, tower stump, large broken arch, overgrown foundation and stair-front doorway. The large arch and stair-front doorway share a motif but their silhouettes and footprints are different enough at 1x; they are not near-duplicates. Muted warm stone/moss fits the approved fantasy markers and ground details. Top-left highlights and lower/right shadows are consistent. No modern-collapse requirement applies to fantasy: its columns and arches are allowed.",
+      "checks": {
+        "scope": "BRIEF-7.md Part A only: transparent ruins props 0..7, summer and winter, for fantasy and wasteland. No critic-r7A-0.json exists.",
+        "format_and_placement": "All 0..3 are RGBA 48x48; all 4..7 are RGBA 96x96. Nothing touches or is clipped by the canvas edges. Large props span 80..82 px horizontally (about 85%); lower vertical spans fit their horizontal rubble/foundation/pylon silhouettes and remain substantial at 1x.",
+        "individuals": "Every file inspected at 1x and 4x in native sprite/terrain composites and at exact nearest-neighbour 8x in summer/winter pair sheets. Checked pixel clusters, outlines, lighting, shape clarity, palette, alpha fringe and seasonal consistency.",
+        "one_cell_random_8x2": "Props 0..3 placed in a reproducible shuffled 8-column, 2-row layout over approved seasonal grass; inspected at 1x and 4x. No rectangular ground patches, seams or tile-edge frames. Identical-prop repetitions are expected with four reusable overlays; the four different designs are distinguishable. This is a dense stress check, not the intended scatter density.",
+        "terrain_and_large_props": "All eight placed at native size, four small and four large, on 288x288 grass, dirt, sand-colour and snow backgrounds, at 1x and 4x. Checked grounding, contact shadows, square patches, contrast and footprint. Sand is explicitly a flat RGBA(204,184,139,255) test swatch because this drop contains no sand texture; grass/dirt/snow use approved out/ bases.",
+        "bases_3x3": "Part A supplies no bases to grade. Approved grass, plains and wasteland dirt summer/winter bases were also tiled 3x3 at 1x/4x as comparison context; they receive no new verdict in this report.",
+        "peaks_lattice_or_range": "Not applicable: no peaks or ridges in Part A.",
+        "trees_in_forest": "Not applicable: no trees in Part A.",
+        "references": "BRIEF-7 Part A names no external reference filename; its shared crater-prop layout was compared with out/crater-prop-0 and -4. Approved fantasy/wasteland markers, round-2 city/industry/slums/suburb/farmland tiles, paddies, grass/plains bases and details establish palette, pixel scale, outline weight and winter treatment. reference/current-wasteland-ruins and its winter version were inspected as the historical classical-ruins problem, not as the desired wasteland subject.",
+        "unrelated_failure_modes": "Egg-crate peaks, Swiss-cheese craters, stamped cyberpunk grids, flat orange autumn and identical tree crowns are not Part A subjects; no verdicts were issued for those files."
+      },
+      "composites": [
+        "critic-r7A-1-fantasy-summer-sprites-{1,4}x.png",
+        "critic-r7A-1-fantasy-pair-0..7-8x.png",
+        "critic-r7A-1-fantasy-summer-random-8x2-{1,4}x.png",
+        "critic-r7A-1-fantasy-summer-on-{grass,dirt,sand,snow}-{1,4}x.png",
+        "critic-r7A-1-approved-style-{1,4}x.png",
+        "critic-r7A-1-context-*-3x3-{1,4}x.png"
+      ],
+      "files": {
+        "fantasy-ruins-prop-0": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            5,
+            7,
+            43,
+            42
+          ],
+          "sha256": "f5b8cc03626708250a0ff769903a88adefa2fa6104b8c3875c245affc23f9506"
+        },
+        "fantasy-ruins-prop-1": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            6,
+            7,
+            43,
+            42
+          ],
+          "sha256": "8216aa4cf7c1dc4c8242d55e604e6810cc36f5be63eddafb2193449c3f6f0515"
+        },
+        "fantasy-ruins-prop-2": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            6,
+            5,
+            42,
+            44
+          ],
+          "sha256": "e155f86395e387e0773ea8be31d5858d8088730ecb78a30f6b3ce4c3e91877b3"
+        },
+        "fantasy-ruins-prop-3": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            5,
+            8,
+            43,
+            41
+          ],
+          "sha256": "952529e588e9527576ee9daa1652a0465ec5c09a254c4903fc89aae8a8186eeb"
+        },
+        "fantasy-ruins-prop-4": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            9,
+            88,
+            88
+          ],
+          "sha256": "0f4caa6337434ca7c65b984baf2e159db0b9c016fcf9d90a9940e1e0c7ac6fb8"
+        },
+        "fantasy-ruins-prop-5": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            8,
+            14,
+            88,
+            83
+          ],
+          "sha256": "6ab7f5212cd9c4c46d8a55230ac13f5c0b058f9c350e6919bdb92cd977b0c953"
+        },
+        "fantasy-ruins-prop-6": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            14,
+            89,
+            82
+          ],
+          "sha256": "8f81260e8a01db49dce4a02ec188d4dd3a2a48bd9eae7902171a358872cfec04"
+        },
+        "fantasy-ruins-prop-7": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            14,
+            89,
+            83
+          ],
+          "sha256": "b5ee7fa4296f546edb5eae6d1be609698815df9583b9379d23797d56a6d8aad4"
+        }
+      }
+    },
+    "fantasy-winter": {
+      "result": "pass",
+      "notes": "Same readable structures as summer, with snow on exposed tops and ledges, blue-grey undersides and plenty of stone still visible. Snow hue fits the approved winter grass/plains/details and paddies. Ground-level loose snow/rubble is acceptable; the sprites do not become blank white shapes.",
+      "checks": {
+        "scope": "BRIEF-7.md Part A only: transparent ruins props 0..7, summer and winter, for fantasy and wasteland. No critic-r7A-0.json exists.",
+        "format_and_placement": "All 0..3 are RGBA 48x48; all 4..7 are RGBA 96x96. Nothing touches or is clipped by the canvas edges. Large props span 80..82 px horizontally (about 85%); lower vertical spans fit their horizontal rubble/foundation/pylon silhouettes and remain substantial at 1x.",
+        "individuals": "Every file inspected at 1x and 4x in native sprite/terrain composites and at exact nearest-neighbour 8x in summer/winter pair sheets. Checked pixel clusters, outlines, lighting, shape clarity, palette, alpha fringe and seasonal consistency.",
+        "one_cell_random_8x2": "Props 0..3 placed in a reproducible shuffled 8-column, 2-row layout over approved seasonal grass; inspected at 1x and 4x. No rectangular ground patches, seams or tile-edge frames. Identical-prop repetitions are expected with four reusable overlays; the four different designs are distinguishable. This is a dense stress check, not the intended scatter density.",
+        "terrain_and_large_props": "All eight placed at native size, four small and four large, on 288x288 grass, dirt, sand-colour and snow backgrounds, at 1x and 4x. Checked grounding, contact shadows, square patches, contrast and footprint. Sand is explicitly a flat RGBA(204,184,139,255) test swatch because this drop contains no sand texture; grass/dirt/snow use approved out/ bases.",
+        "bases_3x3": "Part A supplies no bases to grade. Approved grass, plains and wasteland dirt summer/winter bases were also tiled 3x3 at 1x/4x as comparison context; they receive no new verdict in this report.",
+        "peaks_lattice_or_range": "Not applicable: no peaks or ridges in Part A.",
+        "trees_in_forest": "Not applicable: no trees in Part A.",
+        "references": "BRIEF-7 Part A names no external reference filename; its shared crater-prop layout was compared with out/crater-prop-0 and -4. Approved fantasy/wasteland markers, round-2 city/industry/slums/suburb/farmland tiles, paddies, grass/plains bases and details establish palette, pixel scale, outline weight and winter treatment. reference/current-wasteland-ruins and its winter version were inspected as the historical classical-ruins problem, not as the desired wasteland subject.",
+        "unrelated_failure_modes": "Egg-crate peaks, Swiss-cheese craters, stamped cyberpunk grids, flat orange autumn and identical tree crowns are not Part A subjects; no verdicts were issued for those files."
+      },
+      "composites": [
+        "critic-r7A-1-fantasy-winter-sprites-{1,4}x.png",
+        "critic-r7A-1-fantasy-pair-0..7-8x.png",
+        "critic-r7A-1-fantasy-winter-random-8x2-{1,4}x.png",
+        "critic-r7A-1-fantasy-winter-on-{grass,dirt,sand,snow}-{1,4}x.png",
+        "critic-r7A-1-approved-style-{1,4}x.png",
+        "critic-r7A-1-context-*-3x3-{1,4}x.png"
+      ],
+      "files": {
+        "fantasy-ruins@winter-prop-0": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            5,
+            7,
+            43,
+            42
+          ],
+          "sha256": "e59c79408cee3b83cd7c812898d45e87bfc86545c2ef0cc295d014f96b60c7ac"
+        },
+        "fantasy-ruins@winter-prop-1": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            6,
+            7,
+            43,
+            42
+          ],
+          "sha256": "8ab3292ac0d0a7a7f30ad78db0110b7897fe1688e71583ded8e020cc40c51280"
+        },
+        "fantasy-ruins@winter-prop-2": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            6,
+            5,
+            42,
+            44
+          ],
+          "sha256": "80315b6ef3bfaf09abb4daa3c786895a303a14706c7c557b1d6635f7888c1db0"
+        },
+        "fantasy-ruins@winter-prop-3": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            5,
+            8,
+            43,
+            41
+          ],
+          "sha256": "74b233e64c8ae4185649d98dad661afcb11a74601c958db20ca99711bec04bec"
+        },
+        "fantasy-ruins@winter-prop-4": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            9,
+            89,
+            88
+          ],
+          "sha256": "93faad2dde7cfe69ca4f12b5814392e2bdbe7ca127d19b795af6007c018dc97d"
+        },
+        "fantasy-ruins@winter-prop-5": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            8,
+            14,
+            88,
+            83
+          ],
+          "sha256": "62a6e10307a29b16cf59d0b34f01a753c542b71ab4e72508a5dce9a80520c29f"
+        },
+        "fantasy-ruins@winter-prop-6": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            14,
+            89,
+            82
+          ],
+          "sha256": "ad68272e3162cb099241751c022fd498035d0da08c32adb1c7d75f9e306d1c4d"
+        },
+        "fantasy-ruins@winter-prop-7": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            14,
+            89,
+            83
+          ],
+          "sha256": "d82fe420a5228d5245c5657cbde168f101694b058438f77af0a097ccc985f044"
+        }
+      }
+    },
+    "wasteland-summer": {
+      "result": "pass",
+      "notes": "Broken slabs with rebar, concrete frame, burnt car, twisted steel, roofless building shell, slab heap, toppled pylon and girder-crossed shell are distinguishable at map zoom. Concrete, rust and dark cavities fit the wasteland markers and approved tile palette. No Greek columns, paved ground square, blur, opaque halo or copied layout found.",
+      "checks": {
+        "scope": "BRIEF-7.md Part A only: transparent ruins props 0..7, summer and winter, for fantasy and wasteland. No critic-r7A-0.json exists.",
+        "format_and_placement": "All 0..3 are RGBA 48x48; all 4..7 are RGBA 96x96. Nothing touches or is clipped by the canvas edges. Large props span 80..82 px horizontally (about 85%); lower vertical spans fit their horizontal rubble/foundation/pylon silhouettes and remain substantial at 1x.",
+        "individuals": "Every file inspected at 1x and 4x in native sprite/terrain composites and at exact nearest-neighbour 8x in summer/winter pair sheets. Checked pixel clusters, outlines, lighting, shape clarity, palette, alpha fringe and seasonal consistency.",
+        "one_cell_random_8x2": "Props 0..3 placed in a reproducible shuffled 8-column, 2-row layout over approved seasonal grass; inspected at 1x and 4x. No rectangular ground patches, seams or tile-edge frames. Identical-prop repetitions are expected with four reusable overlays; the four different designs are distinguishable. This is a dense stress check, not the intended scatter density.",
+        "terrain_and_large_props": "All eight placed at native size, four small and four large, on 288x288 grass, dirt, sand-colour and snow backgrounds, at 1x and 4x. Checked grounding, contact shadows, square patches, contrast and footprint. Sand is explicitly a flat RGBA(204,184,139,255) test swatch because this drop contains no sand texture; grass/dirt/snow use approved out/ bases.",
+        "bases_3x3": "Part A supplies no bases to grade. Approved grass, plains and wasteland dirt summer/winter bases were also tiled 3x3 at 1x/4x as comparison context; they receive no new verdict in this report.",
+        "peaks_lattice_or_range": "Not applicable: no peaks or ridges in Part A.",
+        "trees_in_forest": "Not applicable: no trees in Part A.",
+        "references": "BRIEF-7 Part A names no external reference filename; its shared crater-prop layout was compared with out/crater-prop-0 and -4. Approved fantasy/wasteland markers, round-2 city/industry/slums/suburb/farmland tiles, paddies, grass/plains bases and details establish palette, pixel scale, outline weight and winter treatment. reference/current-wasteland-ruins and its winter version were inspected as the historical classical-ruins problem, not as the desired wasteland subject.",
+        "unrelated_failure_modes": "Egg-crate peaks, Swiss-cheese craters, stamped cyberpunk grids, flat orange autumn and identical tree crowns are not Part A subjects; no verdicts were issued for those files."
+      },
+      "composites": [
+        "critic-r7A-1-wasteland-summer-sprites-{1,4}x.png",
+        "critic-r7A-1-wasteland-pair-0..7-8x.png",
+        "critic-r7A-1-wasteland-summer-random-8x2-{1,4}x.png",
+        "critic-r7A-1-wasteland-summer-on-{grass,dirt,sand,snow}-{1,4}x.png",
+        "critic-r7A-1-approved-style-{1,4}x.png",
+        "critic-r7A-1-context-*-3x3-{1,4}x.png"
+      ],
+      "files": {
+        "wasteland-ruins-prop-0": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            5,
+            8,
+            43,
+            41
+          ],
+          "sha256": "0a412c03b0c2d94c329a22c4e77b10d5d739e64d8fc5e96bbfc051bc2a1f1996"
+        },
+        "wasteland-ruins-prop-1": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            5,
+            10,
+            42,
+            40
+          ],
+          "sha256": "05ba8cb3198e653d9e48c0af1183bd34b745cdfe4ed978911e4f7ee531b1288c"
+        },
+        "wasteland-ruins-prop-2": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            6,
+            9,
+            43,
+            39
+          ],
+          "sha256": "e9e333cdd9bda42111de8986997294a17a07eefd1785567b9cd1c124df925b16"
+        },
+        "wasteland-ruins-prop-3": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            6,
+            9,
+            43,
+            40
+          ],
+          "sha256": "8dda79d316a7918e358a4f8943eda117bd4cdad9058bf9b3a0bf256f8b54c674"
+        },
+        "wasteland-ruins-prop-4": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            13,
+            89,
+            84
+          ],
+          "sha256": "3182f7985ae538afc7cdfabbf682e84fe5d51db2190ef98157b828e6bb32e3ee"
+        },
+        "wasteland-ruins-prop-5": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            17,
+            88,
+            79
+          ],
+          "sha256": "9463c9fa2a3ad02fcd638115a3e739835a6bbb81841b822e3b51f740538b37e6"
+        },
+        "wasteland-ruins-prop-6": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            15,
+            89,
+            82
+          ],
+          "sha256": "5a68b81b4c7a0916b3ace22a2fb885444b6bdd6eb00616689da69c6bb124f22b"
+        },
+        "wasteland-ruins-prop-7": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            8,
+            19,
+            89,
+            78
+          ],
+          "sha256": "689c338b527d5c692b385a124ca108025850674780b3ca64ce1532f9b06798c8"
+        }
+      }
+    },
+    "wasteland-winter": {
+      "result": "fail",
+      "notes": "Snow caps preserve the summer silhouettes and material colours. Props 0, 2, 3, 4 and 7 survive the terrain and magnification checks. Props 1, 5 and 6 need local removal or attachment of the specific airborne snow islands listed under fail; no wholesale redraw is needed.",
+      "checks": {
+        "scope": "BRIEF-7.md Part A only: transparent ruins props 0..7, summer and winter, for fantasy and wasteland. No critic-r7A-0.json exists.",
+        "format_and_placement": "All 0..3 are RGBA 48x48; all 4..7 are RGBA 96x96. Nothing touches or is clipped by the canvas edges. Large props span 80..82 px horizontally (about 85%); lower vertical spans fit their horizontal rubble/foundation/pylon silhouettes and remain substantial at 1x.",
+        "individuals": "Every file inspected at 1x and 4x in native sprite/terrain composites and at exact nearest-neighbour 8x in summer/winter pair sheets. Checked pixel clusters, outlines, lighting, shape clarity, palette, alpha fringe and seasonal consistency.",
+        "one_cell_random_8x2": "Props 0..3 placed in a reproducible shuffled 8-column, 2-row layout over approved seasonal grass; inspected at 1x and 4x. No rectangular ground patches, seams or tile-edge frames. Identical-prop repetitions are expected with four reusable overlays; the four different designs are distinguishable. This is a dense stress check, not the intended scatter density.",
+        "terrain_and_large_props": "All eight placed at native size, four small and four large, on 288x288 grass, dirt, sand-colour and snow backgrounds, at 1x and 4x. Checked grounding, contact shadows, square patches, contrast and footprint. Sand is explicitly a flat RGBA(204,184,139,255) test swatch because this drop contains no sand texture; grass/dirt/snow use approved out/ bases.",
+        "bases_3x3": "Part A supplies no bases to grade. Approved grass, plains and wasteland dirt summer/winter bases were also tiled 3x3 at 1x/4x as comparison context; they receive no new verdict in this report.",
+        "peaks_lattice_or_range": "Not applicable: no peaks or ridges in Part A.",
+        "trees_in_forest": "Not applicable: no trees in Part A.",
+        "references": "BRIEF-7 Part A names no external reference filename; its shared crater-prop layout was compared with out/crater-prop-0 and -4. Approved fantasy/wasteland markers, round-2 city/industry/slums/suburb/farmland tiles, paddies, grass/plains bases and details establish palette, pixel scale, outline weight and winter treatment. reference/current-wasteland-ruins and its winter version were inspected as the historical classical-ruins problem, not as the desired wasteland subject.",
+        "unrelated_failure_modes": "Egg-crate peaks, Swiss-cheese craters, stamped cyberpunk grids, flat orange autumn and identical tree crowns are not Part A subjects; no verdicts were issued for those files."
+      },
+      "composites": [
+        "critic-r7A-1-wasteland-winter-sprites-{1,4}x.png",
+        "critic-r7A-1-wasteland-pair-0..7-8x.png",
+        "critic-r7A-1-wasteland-winter-random-8x2-{1,4}x.png",
+        "critic-r7A-1-wasteland-winter-on-{grass,dirt,sand,snow}-{1,4}x.png",
+        "critic-r7A-1-approved-style-{1,4}x.png",
+        "critic-r7A-1-context-*-3x3-{1,4}x.png"
+      ],
+      "files": {
+        "wasteland-ruins@winter-prop-0": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            5,
+            8,
+            43,
+            41
+          ],
+          "sha256": "f60ed77ff8631a54a5ec257d706bbff55daab915a11a73ffb74e2214bc914e75"
+        },
+        "wasteland-ruins@winter-prop-1": {
+          "result": "fail",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            6,
+            8,
+            42,
+            40
+          ],
+          "sha256": "ed6e1fa3e1024069cd07d155eb8ad67e76f65da3f2a8dc2472572c02967a4a40"
+        },
+        "wasteland-ruins@winter-prop-2": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            6,
+            9,
+            43,
+            39
+          ],
+          "sha256": "127f86c8150418520794f685d80df956fe57572be1e23b62b6b9f7cbdd72b166"
+        },
+        "wasteland-ruins@winter-prop-3": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox_exclusive": [
+            5,
+            9,
+            43,
+            40
+          ],
+          "sha256": "35c3453ba3391f6fd46da95f8336eccc19ee61f9452e23f7185fa7ec4d4f5036"
+        },
+        "wasteland-ruins@winter-prop-4": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            13,
+            89,
+            84
+          ],
+          "sha256": "82f41895c6842c5289520cda173f16a3974bcf20414a92a44891964780fe4916"
+        },
+        "wasteland-ruins@winter-prop-5": {
+          "result": "fail",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            17,
+            89,
+            79
+          ],
+          "sha256": "e8bacac15d28ece23969cb2eae7fa4809380ee2be385b0712c876f5161573793"
+        },
+        "wasteland-ruins@winter-prop-6": {
+          "result": "fail",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            15,
+            89,
+            82
+          ],
+          "sha256": "e75c9d8d99e5391266c30567c546a35d5cb7eadb9df4909a0b9d983d2f492801"
+        },
+        "wasteland-ruins@winter-prop-7": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox_exclusive": [
+            7,
+            18,
+            89,
+            78
+          ],
+          "sha256": "59473da28d3da98ac9ce6a6d0a81894d5f46998a2de2ee17917e9ea1cd4f2913"
+        }
+      }
+    }
+  },
+  "pass": [
+    "fantasy-ruins-prop-0",
+    "fantasy-ruins-prop-1",
+    "fantasy-ruins-prop-2",
+    "fantasy-ruins-prop-3",
+    "fantasy-ruins-prop-4",
+    "fantasy-ruins-prop-5",
+    "fantasy-ruins-prop-6",
+    "fantasy-ruins-prop-7",
+    "fantasy-ruins@winter-prop-0",
+    "fantasy-ruins@winter-prop-1",
+    "fantasy-ruins@winter-prop-2",
+    "fantasy-ruins@winter-prop-3",
+    "fantasy-ruins@winter-prop-4",
+    "fantasy-ruins@winter-prop-5",
+    "fantasy-ruins@winter-prop-6",
+    "fantasy-ruins@winter-prop-7",
+    "wasteland-ruins-prop-0",
+    "wasteland-ruins-prop-1",
+    "wasteland-ruins-prop-2",
+    "wasteland-ruins-prop-3",
+    "wasteland-ruins-prop-4",
+    "wasteland-ruins-prop-5",
+    "wasteland-ruins-prop-6",
+    "wasteland-ruins-prop-7",
+    "wasteland-ruins@winter-prop-0",
+    "wasteland-ruins@winter-prop-2",
+    "wasteland-ruins@winter-prop-3",
+    "wasteland-ruins@winter-prop-4",
+    "wasteland-ruins@winter-prop-7"
+  ],
+  "fail": [
+    {
+      "name": "wasteland-ruins@winter-prop-1",
+      "problems": "Detached snow/rust fleck at x=33..34, y=13 (zero-based) floats above and to the right of the broken concrete frame, separated even under 8-neighbour connectivity. It flashes against grass/dirt rather than reading as a snow cap. Remove that two-pixel island or reconnect it to an actual rebar tip. Evidence: critic-r7A-1-dark-pair-wasteland-ruins@winter-prop-1-8x.png; winter-on-grass/dirt composites at 1x and 4x."
+    },
+    {
+      "name": "wasteland-ruins@winter-prop-5",
+      "problems": "Unsupported snow fragments hang in transparent space above the left-hand rebar at x=35..37, y=28..29, and beside the right slab at x=81..83, y=48..49 (zero-based). These entirely new, detached white/blue clusters read as airborne fringe pixels on grass and dirt, not accumulated snow. Delete them or put the snow directly on connected slab/rebar surfaces; retain the grounded snow-covered rubble. Evidence: critic-r7A-1-dark-pair-wasteland-ruins@winter-prop-5-8x.png; winter-on-grass/dirt composites at 1x and 4x."
+    },
+    {
+      "name": "wasteland-ruins@winter-prop-6",
+      "problems": "A detached two-pixel white/blue snow sliver at x=15, y=48..49 (zero-based) floats off the left side of the pylon, well above its rubble foot. It has no supporting metal or stone in either seasonal sprite and reads as a bright fringe on grass/dirt. Remove it or attach the cap to the pylon; do not erase the legitimate snow-capped loose rubble near the ground. Evidence: critic-r7A-1-dark-pair-wasteland-ruins@winter-prop-6-8x.png; winter-on-grass/dirt composites at 1x and 4x."
+    }
+  ]
+}

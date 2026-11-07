@@ -1,0 +1,790 @@
+{
+  "sets": {
+    "fantasy-summer": {
+      "result": "pass",
+      "notes": "Pass retained for all eight unchanged files. Broken wall, toppled columns, small arch, foundation arc, tower stump, large overgrown arch, enclosed foundation and stair/arch ruin remain distinct. Warm grey stone and restrained moss sit with the fantasy castle and approved grass/plains details.",
+      "checks": {
+        "scope": "BRIEF-7.md Part A only: 32 transparent fantasy/wasteland ruins props, indices 0..7 in summer and winter. Parts B/C/D and all other out/ art receive no verdict.",
+        "previous_review": "All 29 previously passed files have the identical SHA-256 recorded in critic-r7A-1.json; all retain pass. Only wasteland winter 1, 5 and 6 changed. Each was re-inspected rather than inheriting a verdict.",
+        "format_placement": "Every 0..3 is RGBA 48x48; every 4..7 is RGBA 96x96. Transparent margins remain on all four edges; no clipping. Large silhouettes span 80..82 pixels horizontally, approximately the requested 85%. Lower vertical spans suit foundations, toppled pylons and horizontal rubble rather than signalling undersized assets.",
+        "individual_1x_4x_8x": "Every sprite viewed at 1x and nearest-neighbour 4x on ground, and at exact nearest-neighbour 8x in its summer-left/winter-right dark-background pair. Checked silhouettes, deliberate pixel clusters, top-left light, dark lower/right faces, outline weight, palette, contact shadow, isolated fragments and snow support. Limited 12..19 RGBA colours per sprite; alpha levels are 0/96/255, with 48 also used in some small contact shadows. No interpolated edge ramp or blurry resampling in the source.",
+        "one_cell_random_8x2": "All four 48px designs used four times each in a seeded shuffled 8-column x 2-row layout for every set, viewed at 1x and 4x. The four subjects remain distinguishable. No rectangular ground patch, tile-edge seam or internal paving grid. Dense adjacent copies visibly reuse the same sprite, as expected for a four-design overlay pool; they do not reveal near-duplicate different indices or a baked terrain repeat. Scatter at the brief's intended density.",
+        "terrain_composites": "All eight designs per set composited at native size over grass, dirt, sand and snow, viewed at 1x/4x. Ground remains visible around and through the objects; contact shadows ground the feet without a broad coloured halo. Grass/dirt/snow use approved out/grass-base, wasteland-wasteland-base and grass@winter-base. Sand is explicitly a flat RGBA(204,184,139,255) contrast swatch, not an approved sand asset (none supplied).",
+        "bases_3x3": "Not applicable to the verdict scope: Part A contains no bases. Additional approved grass/plains/wasteland summer/winter comparison backgrounds are saved as actual 3x3 repeats of their 288px sources at 1x/4x. context-bases is a thumbnail overview, not a native-resolution seam test. No approved base is regraded here.",
+        "peaks_lattice_or_range": "Not applicable: Part A has no peaks or ridges. No unrelated mountain files graded.",
+        "trees_composited_in_forest": "Not applicable: Part A has no tree sprites. Moss and vines on ruins are not tree crowns. No unrelated tree files graded.",
+        "references": "Part A names no external reference image; its explicit crater-prop layout precedent was compared at native size for indices 0 and 4. Approved markers (including native fantasy/wasteland 0 and 3), round-2 city/industry/slums/suburb/farmland, paddies, grass/plains bases and details supplied palette, pixel-scale and seasonal comparisons. current-wasteland-ruins and @winter are historical examples of the classical-column/paving problem, not the desired wasteland subject. Style sheets 0..4 are comparison contact sheets; oversized markers/bases there are thumbnails, so the separate native marker and crater sheets establish pixel scale.",
+        "specific_rejection_modes": "No wrong-setting classical columns in wasteland; fantasy columns/arches are explicitly requested. No muddy unreadable rubble, source blur, antialiasing fringe, palette clash, reversed lighting, square ground mat, blank winter or indistinguishable different-index designs found at shipping scale. Egg-crate peaks, Swiss-cheese crater fields, stamped cyberpunk grids, flat orange autumn and identical crowns are outside Part A and were not used to issue unrelated verdicts.",
+        "calibration": "Pass means shippable next to the approved art, not perfect. The small fantasy arch and large arch share a subject but have distinct construction, footprint and silhouette; the two wasteland building shells differ in broken mass and girders. Their reuse is not a near-duplicate failure.",
+        "out_preservation": "All 506 out/ PNG SHA-256 hashes match the snapshot taken before composite generation; out/ was not edited."
+      },
+      "composites": [
+        "critic-r7A-2-fantasy-summer-on-dirt-1x.png",
+        "critic-r7A-2-fantasy-summer-on-dirt-4x.png",
+        "critic-r7A-2-fantasy-summer-on-grass-1x.png",
+        "critic-r7A-2-fantasy-summer-on-grass-4x.png",
+        "critic-r7A-2-fantasy-summer-on-sand-1x.png",
+        "critic-r7A-2-fantasy-summer-on-sand-4x.png",
+        "critic-r7A-2-fantasy-summer-on-snow-1x.png",
+        "critic-r7A-2-fantasy-summer-on-snow-4x.png",
+        "critic-r7A-2-fantasy-summer-random-8x2-1x.png",
+        "critic-r7A-2-fantasy-summer-random-8x2-4x.png",
+        "critic-r7A-2-fantasy-summer-terrain-sheet-1x.png",
+        "critic-r7A-2-fantasy-summer-terrain-sheet-4x.png",
+        "critic-r7A-2-fantasy-pair-0-8x.png",
+        "critic-r7A-2-fantasy-pair-1-8x.png",
+        "critic-r7A-2-fantasy-pair-2-8x.png",
+        "critic-r7A-2-fantasy-pair-3-8x.png",
+        "critic-r7A-2-fantasy-pair-4-8x.png",
+        "critic-r7A-2-fantasy-pair-5-8x.png",
+        "critic-r7A-2-fantasy-pair-6-8x.png",
+        "critic-r7A-2-fantasy-pair-7-8x.png"
+      ],
+      "files": {
+        "fantasy-ruins-prop-0": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            5,
+            7,
+            43,
+            42
+          ],
+          "sha256": "f5b8cc03626708250a0ff769903a88adefa2fa6104b8c3875c245affc23f9506",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Broken masonry heap; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "fantasy-ruins-prop-1": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            6,
+            7,
+            43,
+            42
+          ],
+          "sha256": "8216aa4cf7c1dc4c8242d55e604e6810cc36f5be63eddafb2193449c3f6f0515",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Toppled carved columns; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "fantasy-ruins-prop-2": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            6,
+            5,
+            42,
+            44
+          ],
+          "sha256": "e155f86395e387e0773ea8be31d5858d8088730ecb78a30f6b3ce4c3e91877b3",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Small freestanding broken arch; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "fantasy-ruins-prop-3": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            5,
+            8,
+            43,
+            41
+          ],
+          "sha256": "952529e588e9527576ee9daa1652a0465ec5c09a254c4903fc89aae8a8186eeb",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Low broken curved wall/foundation; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "fantasy-ruins-prop-4": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            9,
+            88,
+            88
+          ],
+          "sha256": "0f4caa6337434ca7c65b984baf2e159db0b9c016fcf9d90a9940e1e0c7ac6fb8",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Collapsed tower stump; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "fantasy-ruins-prop-5": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            8,
+            14,
+            88,
+            83
+          ],
+          "sha256": "6ab7f5212cd9c4c46d8a55230ac13f5c0b058f9c350e6919bdb92cd977b0c953",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Large vine-covered arch; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "fantasy-ruins-prop-6": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            14,
+            89,
+            82
+          ],
+          "sha256": "8f81260e8a01db49dce4a02ec188d4dd3a2a48bd9eae7902171a358872cfec04",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Overgrown enclosed foundations; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "fantasy-ruins-prop-7": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            14,
+            89,
+            83
+          ],
+          "sha256": "b5ee7fa4296f546edb5eae6d1be609698815df9583b9379d23797d56a6d8aad4",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Stepped arch-and-wall ruin; readable silhouette, top-left highlights and grounded transparent edges."
+        }
+      }
+    },
+    "fantasy-winter": {
+      "result": "pass",
+      "notes": "Pass retained for all eight unchanged files. Snow rests on top faces and ledges, retaining the summer stone, moss, broken silhouettes and dark openings. Caps read on dark grass/dirt and bright snow; no blank replacement or seasonal shape mismatch.",
+      "checks": {
+        "scope": "BRIEF-7.md Part A only: 32 transparent fantasy/wasteland ruins props, indices 0..7 in summer and winter. Parts B/C/D and all other out/ art receive no verdict.",
+        "previous_review": "All 29 previously passed files have the identical SHA-256 recorded in critic-r7A-1.json; all retain pass. Only wasteland winter 1, 5 and 6 changed. Each was re-inspected rather than inheriting a verdict.",
+        "format_placement": "Every 0..3 is RGBA 48x48; every 4..7 is RGBA 96x96. Transparent margins remain on all four edges; no clipping. Large silhouettes span 80..82 pixels horizontally, approximately the requested 85%. Lower vertical spans suit foundations, toppled pylons and horizontal rubble rather than signalling undersized assets.",
+        "individual_1x_4x_8x": "Every sprite viewed at 1x and nearest-neighbour 4x on ground, and at exact nearest-neighbour 8x in its summer-left/winter-right dark-background pair. Checked silhouettes, deliberate pixel clusters, top-left light, dark lower/right faces, outline weight, palette, contact shadow, isolated fragments and snow support. Limited 12..19 RGBA colours per sprite; alpha levels are 0/96/255, with 48 also used in some small contact shadows. No interpolated edge ramp or blurry resampling in the source.",
+        "one_cell_random_8x2": "All four 48px designs used four times each in a seeded shuffled 8-column x 2-row layout for every set, viewed at 1x and 4x. The four subjects remain distinguishable. No rectangular ground patch, tile-edge seam or internal paving grid. Dense adjacent copies visibly reuse the same sprite, as expected for a four-design overlay pool; they do not reveal near-duplicate different indices or a baked terrain repeat. Scatter at the brief's intended density.",
+        "terrain_composites": "All eight designs per set composited at native size over grass, dirt, sand and snow, viewed at 1x/4x. Ground remains visible around and through the objects; contact shadows ground the feet without a broad coloured halo. Grass/dirt/snow use approved out/grass-base, wasteland-wasteland-base and grass@winter-base. Sand is explicitly a flat RGBA(204,184,139,255) contrast swatch, not an approved sand asset (none supplied).",
+        "bases_3x3": "Not applicable to the verdict scope: Part A contains no bases. Additional approved grass/plains/wasteland summer/winter comparison backgrounds are saved as actual 3x3 repeats of their 288px sources at 1x/4x. context-bases is a thumbnail overview, not a native-resolution seam test. No approved base is regraded here.",
+        "peaks_lattice_or_range": "Not applicable: Part A has no peaks or ridges. No unrelated mountain files graded.",
+        "trees_composited_in_forest": "Not applicable: Part A has no tree sprites. Moss and vines on ruins are not tree crowns. No unrelated tree files graded.",
+        "references": "Part A names no external reference image; its explicit crater-prop layout precedent was compared at native size for indices 0 and 4. Approved markers (including native fantasy/wasteland 0 and 3), round-2 city/industry/slums/suburb/farmland, paddies, grass/plains bases and details supplied palette, pixel-scale and seasonal comparisons. current-wasteland-ruins and @winter are historical examples of the classical-column/paving problem, not the desired wasteland subject. Style sheets 0..4 are comparison contact sheets; oversized markers/bases there are thumbnails, so the separate native marker and crater sheets establish pixel scale.",
+        "specific_rejection_modes": "No wrong-setting classical columns in wasteland; fantasy columns/arches are explicitly requested. No muddy unreadable rubble, source blur, antialiasing fringe, palette clash, reversed lighting, square ground mat, blank winter or indistinguishable different-index designs found at shipping scale. Egg-crate peaks, Swiss-cheese crater fields, stamped cyberpunk grids, flat orange autumn and identical crowns are outside Part A and were not used to issue unrelated verdicts.",
+        "calibration": "Pass means shippable next to the approved art, not perfect. The small fantasy arch and large arch share a subject but have distinct construction, footprint and silhouette; the two wasteland building shells differ in broken mass and girders. Their reuse is not a near-duplicate failure.",
+        "out_preservation": "All 506 out/ PNG SHA-256 hashes match the snapshot taken before composite generation; out/ was not edited."
+      },
+      "composites": [
+        "critic-r7A-2-fantasy-winter-on-dirt-1x.png",
+        "critic-r7A-2-fantasy-winter-on-dirt-4x.png",
+        "critic-r7A-2-fantasy-winter-on-grass-1x.png",
+        "critic-r7A-2-fantasy-winter-on-grass-4x.png",
+        "critic-r7A-2-fantasy-winter-on-sand-1x.png",
+        "critic-r7A-2-fantasy-winter-on-sand-4x.png",
+        "critic-r7A-2-fantasy-winter-on-snow-1x.png",
+        "critic-r7A-2-fantasy-winter-on-snow-4x.png",
+        "critic-r7A-2-fantasy-winter-random-8x2-1x.png",
+        "critic-r7A-2-fantasy-winter-random-8x2-4x.png",
+        "critic-r7A-2-fantasy-winter-terrain-sheet-1x.png",
+        "critic-r7A-2-fantasy-winter-terrain-sheet-4x.png",
+        "critic-r7A-2-fantasy-pair-0-8x.png",
+        "critic-r7A-2-fantasy-pair-1-8x.png",
+        "critic-r7A-2-fantasy-pair-2-8x.png",
+        "critic-r7A-2-fantasy-pair-3-8x.png",
+        "critic-r7A-2-fantasy-pair-4-8x.png",
+        "critic-r7A-2-fantasy-pair-5-8x.png",
+        "critic-r7A-2-fantasy-pair-6-8x.png",
+        "critic-r7A-2-fantasy-pair-7-8x.png"
+      ],
+      "files": {
+        "fantasy-ruins@winter-prop-0": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            5,
+            7,
+            43,
+            42
+          ],
+          "sha256": "e59c79408cee3b83cd7c812898d45e87bfc86545c2ef0cc295d014f96b60c7ac",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Broken masonry heap; supported snow caps preserve the summer structure."
+        },
+        "fantasy-ruins@winter-prop-1": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            6,
+            7,
+            43,
+            42
+          ],
+          "sha256": "8ab3292ac0d0a7a7f30ad78db0110b7897fe1688e71583ded8e020cc40c51280",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Toppled carved columns; supported snow caps preserve the summer structure."
+        },
+        "fantasy-ruins@winter-prop-2": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            6,
+            5,
+            42,
+            44
+          ],
+          "sha256": "80315b6ef3bfaf09abb4daa3c786895a303a14706c7c557b1d6635f7888c1db0",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Small freestanding broken arch; supported snow caps preserve the summer structure."
+        },
+        "fantasy-ruins@winter-prop-3": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            5,
+            8,
+            43,
+            41
+          ],
+          "sha256": "74b233e64c8ae4185649d98dad661afcb11a74601c958db20ca99711bec04bec",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Low broken curved wall/foundation; supported snow caps preserve the summer structure."
+        },
+        "fantasy-ruins@winter-prop-4": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            9,
+            89,
+            88
+          ],
+          "sha256": "93faad2dde7cfe69ca4f12b5814392e2bdbe7ca127d19b795af6007c018dc97d",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Collapsed tower stump; supported snow caps preserve the summer structure."
+        },
+        "fantasy-ruins@winter-prop-5": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            8,
+            14,
+            88,
+            83
+          ],
+          "sha256": "62a6e10307a29b16cf59d0b34f01a753c542b71ab4e72508a5dce9a80520c29f",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Large vine-covered arch; supported snow caps preserve the summer structure."
+        },
+        "fantasy-ruins@winter-prop-6": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            14,
+            89,
+            82
+          ],
+          "sha256": "ad68272e3162cb099241751c022fd498035d0da08c32adb1c7d75f9e306d1c4d",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Overgrown enclosed foundations; supported snow caps preserve the summer structure."
+        },
+        "fantasy-ruins@winter-prop-7": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            14,
+            89,
+            83
+          ],
+          "sha256": "d82fe420a5228d5245c5657cbde168f101694b058438f77af0a097ccc985f044",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Stepped arch-and-wall ruin; supported snow caps preserve the summer structure."
+        }
+      }
+    },
+    "wasteland-summer": {
+      "result": "pass",
+      "notes": "Pass retained for all eight unchanged files. Slab/rebar, concrete doorway, burnt car, twisted steel, roofless frame, slab pile, toppled pylon and girder-crossed shell read as post-industrial wreckage. Concrete/rust hues fit the wasteland markers and round-2 industry palette.",
+      "checks": {
+        "scope": "BRIEF-7.md Part A only: 32 transparent fantasy/wasteland ruins props, indices 0..7 in summer and winter. Parts B/C/D and all other out/ art receive no verdict.",
+        "previous_review": "All 29 previously passed files have the identical SHA-256 recorded in critic-r7A-1.json; all retain pass. Only wasteland winter 1, 5 and 6 changed. Each was re-inspected rather than inheriting a verdict.",
+        "format_placement": "Every 0..3 is RGBA 48x48; every 4..7 is RGBA 96x96. Transparent margins remain on all four edges; no clipping. Large silhouettes span 80..82 pixels horizontally, approximately the requested 85%. Lower vertical spans suit foundations, toppled pylons and horizontal rubble rather than signalling undersized assets.",
+        "individual_1x_4x_8x": "Every sprite viewed at 1x and nearest-neighbour 4x on ground, and at exact nearest-neighbour 8x in its summer-left/winter-right dark-background pair. Checked silhouettes, deliberate pixel clusters, top-left light, dark lower/right faces, outline weight, palette, contact shadow, isolated fragments and snow support. Limited 12..19 RGBA colours per sprite; alpha levels are 0/96/255, with 48 also used in some small contact shadows. No interpolated edge ramp or blurry resampling in the source.",
+        "one_cell_random_8x2": "All four 48px designs used four times each in a seeded shuffled 8-column x 2-row layout for every set, viewed at 1x and 4x. The four subjects remain distinguishable. No rectangular ground patch, tile-edge seam or internal paving grid. Dense adjacent copies visibly reuse the same sprite, as expected for a four-design overlay pool; they do not reveal near-duplicate different indices or a baked terrain repeat. Scatter at the brief's intended density.",
+        "terrain_composites": "All eight designs per set composited at native size over grass, dirt, sand and snow, viewed at 1x/4x. Ground remains visible around and through the objects; contact shadows ground the feet without a broad coloured halo. Grass/dirt/snow use approved out/grass-base, wasteland-wasteland-base and grass@winter-base. Sand is explicitly a flat RGBA(204,184,139,255) contrast swatch, not an approved sand asset (none supplied).",
+        "bases_3x3": "Not applicable to the verdict scope: Part A contains no bases. Additional approved grass/plains/wasteland summer/winter comparison backgrounds are saved as actual 3x3 repeats of their 288px sources at 1x/4x. context-bases is a thumbnail overview, not a native-resolution seam test. No approved base is regraded here.",
+        "peaks_lattice_or_range": "Not applicable: Part A has no peaks or ridges. No unrelated mountain files graded.",
+        "trees_composited_in_forest": "Not applicable: Part A has no tree sprites. Moss and vines on ruins are not tree crowns. No unrelated tree files graded.",
+        "references": "Part A names no external reference image; its explicit crater-prop layout precedent was compared at native size for indices 0 and 4. Approved markers (including native fantasy/wasteland 0 and 3), round-2 city/industry/slums/suburb/farmland, paddies, grass/plains bases and details supplied palette, pixel-scale and seasonal comparisons. current-wasteland-ruins and @winter are historical examples of the classical-column/paving problem, not the desired wasteland subject. Style sheets 0..4 are comparison contact sheets; oversized markers/bases there are thumbnails, so the separate native marker and crater sheets establish pixel scale.",
+        "specific_rejection_modes": "No wrong-setting classical columns in wasteland; fantasy columns/arches are explicitly requested. No muddy unreadable rubble, source blur, antialiasing fringe, palette clash, reversed lighting, square ground mat, blank winter or indistinguishable different-index designs found at shipping scale. Egg-crate peaks, Swiss-cheese crater fields, stamped cyberpunk grids, flat orange autumn and identical crowns are outside Part A and were not used to issue unrelated verdicts.",
+        "calibration": "Pass means shippable next to the approved art, not perfect. The small fantasy arch and large arch share a subject but have distinct construction, footprint and silhouette; the two wasteland building shells differ in broken mass and girders. Their reuse is not a near-duplicate failure.",
+        "out_preservation": "All 506 out/ PNG SHA-256 hashes match the snapshot taken before composite generation; out/ was not edited."
+      },
+      "composites": [
+        "critic-r7A-2-wasteland-summer-on-dirt-1x.png",
+        "critic-r7A-2-wasteland-summer-on-dirt-4x.png",
+        "critic-r7A-2-wasteland-summer-on-grass-1x.png",
+        "critic-r7A-2-wasteland-summer-on-grass-4x.png",
+        "critic-r7A-2-wasteland-summer-on-sand-1x.png",
+        "critic-r7A-2-wasteland-summer-on-sand-4x.png",
+        "critic-r7A-2-wasteland-summer-on-snow-1x.png",
+        "critic-r7A-2-wasteland-summer-on-snow-4x.png",
+        "critic-r7A-2-wasteland-summer-random-8x2-1x.png",
+        "critic-r7A-2-wasteland-summer-random-8x2-4x.png",
+        "critic-r7A-2-wasteland-summer-terrain-sheet-1x.png",
+        "critic-r7A-2-wasteland-summer-terrain-sheet-4x.png",
+        "critic-r7A-2-wasteland-pair-0-8x.png",
+        "critic-r7A-2-wasteland-pair-1-8x.png",
+        "critic-r7A-2-wasteland-pair-2-8x.png",
+        "critic-r7A-2-wasteland-pair-3-8x.png",
+        "critic-r7A-2-wasteland-pair-4-8x.png",
+        "critic-r7A-2-wasteland-pair-5-8x.png",
+        "critic-r7A-2-wasteland-pair-6-8x.png",
+        "critic-r7A-2-wasteland-pair-7-8x.png"
+      ],
+      "files": {
+        "wasteland-ruins-prop-0": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            5,
+            8,
+            43,
+            41
+          ],
+          "sha256": "0a412c03b0c2d94c329a22c4e77b10d5d739e64d8fc5e96bbfc051bc2a1f1996",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Broken slabs with exposed rebar; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "wasteland-ruins-prop-1": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            5,
+            10,
+            42,
+            40
+          ],
+          "sha256": "05ba8cb3198e653d9e48c0af1183bd34b745cdfe4ed978911e4f7ee531b1288c",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Broken concrete doorway/frame; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "wasteland-ruins-prop-2": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            6,
+            9,
+            43,
+            39
+          ],
+          "sha256": "e9e333cdd9bda42111de8986997294a17a07eefd1785567b9cd1c124df925b16",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Burnt car husk; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "wasteland-ruins-prop-3": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            6,
+            9,
+            43,
+            40
+          ],
+          "sha256": "8dda79d316a7918e358a4f8943eda117bd4cdad9058bf9b3a0bf256f8b54c674",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Twisted steel/rebar debris; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "wasteland-ruins-prop-4": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            13,
+            89,
+            84
+          ],
+          "sha256": "3182f7985ae538afc7cdfabbf682e84fe5d51db2190ef98157b828e6bb32e3ee",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Roofless multi-storey concrete shell; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "wasteland-ruins-prop-5": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            17,
+            88,
+            79
+          ],
+          "sha256": "9463c9fa2a3ad02fcd638115a3e739835a6bbb81841b822e3b51f740538b37e6",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Collapsed concrete slab heap; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "wasteland-ruins-prop-6": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            15,
+            89,
+            82
+          ],
+          "sha256": "5a68b81b4c7a0916b3ace22a2fb885444b6bdd6eb00616689da69c6bb124f22b",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Toppled lattice pylon; readable silhouette, top-left highlights and grounded transparent edges."
+        },
+        "wasteland-ruins-prop-7": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            8,
+            19,
+            89,
+            78
+          ],
+          "sha256": "689c338b527d5c692b385a124ca108025850674780b3ca64ce1532f9b06798c8",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Broken shell crossed by rusty girders; readable silhouette, top-left highlights and grounded transparent edges."
+        }
+      }
+    },
+    "wasteland-winter": {
+      "result": "pass",
+      "notes": "All eight pass. Five retain their unchanged previous pass. The three edited files remove the exact previously cited airborne snow islands; the repairs preserve the supported rebar, concrete edges, grounded rubble and consistent snow caps. No replacement fringe or damaged silhouette found.",
+      "checks": {
+        "scope": "BRIEF-7.md Part A only: 32 transparent fantasy/wasteland ruins props, indices 0..7 in summer and winter. Parts B/C/D and all other out/ art receive no verdict.",
+        "previous_review": "All 29 previously passed files have the identical SHA-256 recorded in critic-r7A-1.json; all retain pass. Only wasteland winter 1, 5 and 6 changed. Each was re-inspected rather than inheriting a verdict.",
+        "format_placement": "Every 0..3 is RGBA 48x48; every 4..7 is RGBA 96x96. Transparent margins remain on all four edges; no clipping. Large silhouettes span 80..82 pixels horizontally, approximately the requested 85%. Lower vertical spans suit foundations, toppled pylons and horizontal rubble rather than signalling undersized assets.",
+        "individual_1x_4x_8x": "Every sprite viewed at 1x and nearest-neighbour 4x on ground, and at exact nearest-neighbour 8x in its summer-left/winter-right dark-background pair. Checked silhouettes, deliberate pixel clusters, top-left light, dark lower/right faces, outline weight, palette, contact shadow, isolated fragments and snow support. Limited 12..19 RGBA colours per sprite; alpha levels are 0/96/255, with 48 also used in some small contact shadows. No interpolated edge ramp or blurry resampling in the source.",
+        "one_cell_random_8x2": "All four 48px designs used four times each in a seeded shuffled 8-column x 2-row layout for every set, viewed at 1x and 4x. The four subjects remain distinguishable. No rectangular ground patch, tile-edge seam or internal paving grid. Dense adjacent copies visibly reuse the same sprite, as expected for a four-design overlay pool; they do not reveal near-duplicate different indices or a baked terrain repeat. Scatter at the brief's intended density.",
+        "terrain_composites": "All eight designs per set composited at native size over grass, dirt, sand and snow, viewed at 1x/4x. Ground remains visible around and through the objects; contact shadows ground the feet without a broad coloured halo. Grass/dirt/snow use approved out/grass-base, wasteland-wasteland-base and grass@winter-base. Sand is explicitly a flat RGBA(204,184,139,255) contrast swatch, not an approved sand asset (none supplied).",
+        "bases_3x3": "Not applicable to the verdict scope: Part A contains no bases. Additional approved grass/plains/wasteland summer/winter comparison backgrounds are saved as actual 3x3 repeats of their 288px sources at 1x/4x. context-bases is a thumbnail overview, not a native-resolution seam test. No approved base is regraded here.",
+        "peaks_lattice_or_range": "Not applicable: Part A has no peaks or ridges. No unrelated mountain files graded.",
+        "trees_composited_in_forest": "Not applicable: Part A has no tree sprites. Moss and vines on ruins are not tree crowns. No unrelated tree files graded.",
+        "references": "Part A names no external reference image; its explicit crater-prop layout precedent was compared at native size for indices 0 and 4. Approved markers (including native fantasy/wasteland 0 and 3), round-2 city/industry/slums/suburb/farmland, paddies, grass/plains bases and details supplied palette, pixel-scale and seasonal comparisons. current-wasteland-ruins and @winter are historical examples of the classical-column/paving problem, not the desired wasteland subject. Style sheets 0..4 are comparison contact sheets; oversized markers/bases there are thumbnails, so the separate native marker and crater sheets establish pixel scale.",
+        "specific_rejection_modes": "No wrong-setting classical columns in wasteland; fantasy columns/arches are explicitly requested. No muddy unreadable rubble, source blur, antialiasing fringe, palette clash, reversed lighting, square ground mat, blank winter or indistinguishable different-index designs found at shipping scale. Egg-crate peaks, Swiss-cheese crater fields, stamped cyberpunk grids, flat orange autumn and identical crowns are outside Part A and were not used to issue unrelated verdicts.",
+        "calibration": "Pass means shippable next to the approved art, not perfect. The small fantasy arch and large arch share a subject but have distinct construction, footprint and silhouette; the two wasteland building shells differ in broken mass and girders. Their reuse is not a near-duplicate failure.",
+        "out_preservation": "All 506 out/ PNG SHA-256 hashes match the snapshot taken before composite generation; out/ was not edited."
+      },
+      "composites": [
+        "critic-r7A-2-wasteland-winter-on-dirt-1x.png",
+        "critic-r7A-2-wasteland-winter-on-dirt-4x.png",
+        "critic-r7A-2-wasteland-winter-on-grass-1x.png",
+        "critic-r7A-2-wasteland-winter-on-grass-4x.png",
+        "critic-r7A-2-wasteland-winter-on-sand-1x.png",
+        "critic-r7A-2-wasteland-winter-on-sand-4x.png",
+        "critic-r7A-2-wasteland-winter-on-snow-1x.png",
+        "critic-r7A-2-wasteland-winter-on-snow-4x.png",
+        "critic-r7A-2-wasteland-winter-random-8x2-1x.png",
+        "critic-r7A-2-wasteland-winter-random-8x2-4x.png",
+        "critic-r7A-2-wasteland-winter-terrain-sheet-1x.png",
+        "critic-r7A-2-wasteland-winter-terrain-sheet-4x.png",
+        "critic-r7A-2-wasteland-pair-0-8x.png",
+        "critic-r7A-2-wasteland-pair-1-8x.png",
+        "critic-r7A-2-wasteland-pair-2-8x.png",
+        "critic-r7A-2-wasteland-pair-3-8x.png",
+        "critic-r7A-2-wasteland-pair-4-8x.png",
+        "critic-r7A-2-wasteland-pair-5-8x.png",
+        "critic-r7A-2-wasteland-pair-6-8x.png",
+        "critic-r7A-2-wasteland-pair-7-8x.png"
+      ],
+      "files": {
+        "wasteland-ruins@winter-prop-0": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            5,
+            8,
+            43,
+            41
+          ],
+          "sha256": "f60ed77ff8631a54a5ec257d706bbff55daab915a11a73ffb74e2214bc914e75",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Broken slabs with exposed rebar; supported snow caps preserve the summer structure."
+        },
+        "wasteland-ruins@winter-prop-1": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            6,
+            8,
+            42,
+            40
+          ],
+          "sha256": "5523797e85e084870df4b05a96c98add6d81fc875135bd216b1ec1d8c98d5281",
+          "unchanged_since_r7A_1": false,
+          "previous_result": "fail",
+          "notes": "Broken concrete doorway/frame; supported snow caps preserve the summer structure.",
+          "repair_verification_zero_based": "Prior detached pair at x=33..34,y=13 is now fully transparent. The doorway edge and supported rebar caps are intact. No airborne replacement island at that location."
+        },
+        "wasteland-ruins@winter-prop-2": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            6,
+            9,
+            43,
+            39
+          ],
+          "sha256": "127f86c8150418520794f685d80df956fe57572be1e23b62b6b9f7cbdd72b166",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Burnt car husk; supported snow caps preserve the summer structure."
+        },
+        "wasteland-ruins@winter-prop-3": {
+          "result": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            5,
+            9,
+            43,
+            40
+          ],
+          "sha256": "35c3453ba3391f6fd46da95f8336eccc19ee61f9452e23f7185fa7ec4d4f5036",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Twisted steel/rebar debris; supported snow caps preserve the summer structure."
+        },
+        "wasteland-ruins@winter-prop-4": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            13,
+            89,
+            84
+          ],
+          "sha256": "82f41895c6842c5289520cda173f16a3974bcf20414a92a44891964780fe4916",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Roofless multi-storey concrete shell; supported snow caps preserve the summer structure."
+        },
+        "wasteland-ruins@winter-prop-5": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            17,
+            89,
+            79
+          ],
+          "sha256": "af43845f01b1f6969de6c3fb49d6cde373c1ce88c3fc89081ad198ac583e39f5",
+          "unchanged_since_r7A_1": false,
+          "previous_result": "fail",
+          "notes": "Collapsed concrete slab heap; supported snow caps preserve the summer structure.",
+          "repair_verification_zero_based": "Prior snow islands at x=35..37,y=28..29 and x=81..83,y=48..49 are now fully transparent. Other small upper flecks belong to surviving broken metal; low snow-capped rubble remains grounded. No floating white replacement in the repaired gaps."
+        },
+        "wasteland-ruins@winter-prop-6": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            15,
+            89,
+            82
+          ],
+          "sha256": "b60d58df37472dc1828b08b03eab540b9ac48eec4eb68ce9d5ac816320ded830",
+          "unchanged_since_r7A_1": false,
+          "previous_result": "fail",
+          "notes": "Toppled lattice pylon; supported snow caps preserve the summer structure.",
+          "repair_verification_zero_based": "Prior unsupported snow sliver at x=15,y=48..49 is now fully transparent. The pylon silhouette, dangling supported metal and snow-covered rubble foot are preserved."
+        },
+        "wasteland-ruins@winter-prop-7": {
+          "result": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "alpha_bbox_exclusive": [
+            7,
+            18,
+            89,
+            78
+          ],
+          "sha256": "59473da28d3da98ac9ce6a6d0a81894d5f46998a2de2ee17917e9ea1cd4f2913",
+          "unchanged_since_r7A_1": true,
+          "previous_result": "pass",
+          "notes": "Broken shell crossed by rusty girders; supported snow caps preserve the summer structure."
+        }
+      }
+    }
+  },
+  "pass": [
+    "fantasy-ruins-prop-0",
+    "fantasy-ruins-prop-1",
+    "fantasy-ruins-prop-2",
+    "fantasy-ruins-prop-3",
+    "fantasy-ruins-prop-4",
+    "fantasy-ruins-prop-5",
+    "fantasy-ruins-prop-6",
+    "fantasy-ruins-prop-7",
+    "fantasy-ruins@winter-prop-0",
+    "fantasy-ruins@winter-prop-1",
+    "fantasy-ruins@winter-prop-2",
+    "fantasy-ruins@winter-prop-3",
+    "fantasy-ruins@winter-prop-4",
+    "fantasy-ruins@winter-prop-5",
+    "fantasy-ruins@winter-prop-6",
+    "fantasy-ruins@winter-prop-7",
+    "wasteland-ruins-prop-0",
+    "wasteland-ruins-prop-1",
+    "wasteland-ruins-prop-2",
+    "wasteland-ruins-prop-3",
+    "wasteland-ruins-prop-4",
+    "wasteland-ruins-prop-5",
+    "wasteland-ruins-prop-6",
+    "wasteland-ruins-prop-7",
+    "wasteland-ruins@winter-prop-0",
+    "wasteland-ruins@winter-prop-1",
+    "wasteland-ruins@winter-prop-2",
+    "wasteland-ruins@winter-prop-3",
+    "wasteland-ruins@winter-prop-4",
+    "wasteland-ruins@winter-prop-5",
+    "wasteland-ruins@winter-prop-6",
+    "wasteland-ruins@winter-prop-7"
+  ],
+  "fail": []
+}
