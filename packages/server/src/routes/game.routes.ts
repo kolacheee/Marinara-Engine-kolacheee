@@ -10086,6 +10086,15 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
     const meta = parseMeta(chat.metadata);
     const block = marinaraLegacyUpgradeBlock(meta);
     if (block) return reply.code(409).send({ error: block });
+    // Only the session the next one starts from: an older session upgraded would be left behind when the
+    // game carries on from its latest, which stays Legacy.
+    const gameId = chat.groupId ?? readTrimmedString(meta.gameId);
+    if (gameId) {
+      const next = selectSessionForNextStart(await chats.listByGroup(gameId), chat.id);
+      if (next && next.id !== chat.id) {
+        return reply.code(409).send({ error: "Upgrade from the game's latest session: this one is an older session." });
+      }
+    }
 
     // Temperaments the cards don't have yet are read from the Descriptions, as a new card's would be.
     const needed = marinaraLegacyNeedsTemperament(meta);
