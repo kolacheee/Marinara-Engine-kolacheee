@@ -170,6 +170,9 @@ def main(out_dir, paths, only):
                 f = os.path.join(out_dir, f"scifi-street{season}-base.png")
                 if os.path.exists(f):
                     for look in ("city", "slums", "industry"):
+                        # Only a look whose buildings are in: street with nothing on it is no city.
+                        if not os.path.exists(os.path.join(out_dir, f"scifi-{look}{season}-bldg-0.png")):
+                            continue
                         made[f"floor_{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
                         made[f"{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
             row = lambda count, y, w, h: [(i * w, y, w, h) for i in range(count)]

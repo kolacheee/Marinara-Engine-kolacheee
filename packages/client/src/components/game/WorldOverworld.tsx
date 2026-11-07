@@ -424,14 +424,17 @@ export function WorldOverworld({
             if (x + dx >= 0 && y + dy >= 0 && x + dx < width && y + dy < height)
               clearing.add((y + dy) * width + x + dx);
       }
+    // A built-up look's street runs over all its cells, right up to its places and its edge (its rings are
+    // narrow, so an inner-only street would leave its buildings standing on the open ground beside).
     const floorAt = (x: number, y: number) =>
       x >= 0 &&
       y >= 0 &&
       x < width &&
       y < height &&
       coveredLooks.has(drawnLook[y * width + x]!) &&
-      inner(x, y) &&
-      !clearing.has(y * width + x);
+      (builtLooks.has(drawnLook[y * width + x]!)
+        ? !wetCell[y * width + x]
+        : inner(x, y) && !clearing.has(y * width + x));
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
@@ -833,7 +836,7 @@ export function WorldOverworld({
       const yards = pieces.flatMap((_, index) => (index >= yardsFrom ? [index] : []));
       const [small, medium, large] = [bySize(1, 1).filter((index) => index < yardsFrom), bySize(1, 2), bySize(2, 2)];
       // Suburbs lie looser than a city, and thin out towards their edge.
-      const gapAt = (x: number, y: number) => (yards.length ? (inner(x, y) ? 0.3 : 0.5) : 0.12);
+      const gapAt = (x: number, y: number) => (yards.length ? (inner(x, y) ? 0.3 : 0.5) : 0.06);
       const taken = new Set<number>();
       const free = (x: number, y: number) => {
         if (x < 0 || y < 0 || x >= width || y >= height) return false;
