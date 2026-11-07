@@ -233,7 +233,7 @@ const fantasy = kits.find((kit) => kit.id === "high_fantasy")!;
   const fingerprint = createHash("sha256").update(JSON.stringify(history)).digest("hex");
   assert.equal(
     fingerprint,
-    "0c92d711e728a50c484f2266f6324bb960942f75f1d7e934e52d68f822e515bf",
+    "6baba5c93b658c751f4146d6fe6af16bd6a82a479023f0da5dc855b5e84e8b4f",
     "the committed history",
   );
 
@@ -284,6 +284,7 @@ const fantasy = kits.find((kit) => kit.id === "high_fantasy")!;
   };
   const correlation = { 8: [] as number[], 9: [] as number[] };
   let wars = 0;
+  let [daughters, walls] = [0, 0];
   for (const kitId of ["high_fantasy", "wuxia_xianxia", "the_1920s"]) {
     const kit = { ...kits.find((each) => each.id === kitId)!, scale: "realm" as const };
     for (const seed of [3, 4242, 90210]) {
@@ -326,6 +327,29 @@ const fantasy = kits.find((kit) => kit.id === "high_fantasy")!;
           `${event.text}: no road between them`,
         );
       }
+      const named = (name: string) => game.world.places.find((place) => place.name === name)!;
+      for (const event of history.events) {
+        // A daughter town's settlers came from an older town of its own people.
+        const settled = / was founded, .+, by settlers from (.+)\.$/.exec(event.text);
+        if (settled) {
+          daughters++;
+          const [town, mother] = [game.world.places.find((place) => place.id === event.places[0])!, named(settled[1]!)];
+          assert.equal(town.culture, mother.culture, event.text);
+          assert.ok(foundedAt(history.events, mother.id) > event.yearsAgo, `${event.text}: mother not older`);
+        }
+        // Walls face a group the town's keeper was at odds with, raised in a year the town stood.
+        if (/ raised walls against /.test(event.text)) {
+          walls++;
+          assert.ok(foundedAt(history.events, event.places[0]!) >= event.yearsAgo, event.text);
+          assert.equal(event.groups.length, 2, event.text);
+        }
+        // A town where roads meet two peoples takes in settlers of the other.
+        const met = /^(.+) took in settlers from (.+?), /.exec(event.text);
+        if (met) assert.notEqual(named(met[1]!).culture, named(met[2]!).culture, event.text);
+        // A beaten town's people flee only to a town of their own keeper.
+        const fled = /went to war .+; (.+?) took .+; many of its people fled to (.+)\.$/.exec(event.text);
+        if (fled) assert.ok(fled[1]!.startsWith(event.groups[0]!), event.text);
+      }
       for (const lost of history.lost) {
         const cell = lost.at.y * game.world.width + lost.at.x;
         assert.ok(!water.has(parseInt(game.world.ground[cell]!, 36)), `${lost.name} lost in the water`);
@@ -340,6 +364,7 @@ const fantasy = kits.find((kit) => kit.id === "high_fantasy")!;
     JSON.stringify(correlation),
   );
   assert.ok(wars > 0, "the rival worlds went to war");
+  assert.ok(daughters > 10 && walls > 0, `daughter towns ${daughters}, walls ${walls}`);
 }
 
 // ── What the Game Master is told, and asking for more ──

@@ -120,6 +120,16 @@ for (const version of versions) {
           );
         const wars = history.events.filter((e) => / went to war/.test(e.text));
         if (wars.length) (sums.warStake ??= []).push(wars.filter((e) => / for /.test(e.text)).length / wars.length);
+        const founds = history.events.filter((e) => / was founded, /.test(e.text));
+        (sums.daughters ??= []).push(founds.filter((e) => /by settlers from/.test(e.text)).length / founds.length);
+        (sums.walls ??= []).push(history.events.filter((e) => /raised walls|set a watch/.test(e.text)).length);
+        (sums.soft ??= []).push(history.events.filter((e) => /Long safe from any border/.test(e.text)).length);
+        (sums.contact ??= []).push(history.events.filter((e) => /took in settlers/.test(e.text)).length);
+        if (wars.length) {
+          (sums.held ??= []).push(wars.filter((e) => /holding together/.test(e.text)).length / wars.length);
+          (sums.subjects ??= []).push(wars.filter((e) => /hemmed in/.test(e.text)).length / wars.length);
+          (sums.fled ??= []).push(wars.filter((e) => /fled to/.test(e.text)).length / wars.length);
+        }
         const woes = history.events.filter((e) => e.kind === "catastrophe" && e.severe);
         (sums.woes ??= []).push(woes.length);
         (sums.spread ??= []).push(woes.filter((e) => /spread from/.test(e.text)).length);
@@ -132,8 +142,7 @@ for (const version of versions) {
               .join("\n"),
           );
           console.log(`--- ${kit.id} ${scale} ${seed} v${version}`);
-          for (const e of history.events.filter((e) => !e.brewing).slice(0, 40))
-            console.log(`${e.yearsAgo}: ${e.text}`);
+          for (const e of history.events.filter((e) => !e.brewing)) console.log(`${e.yearsAgo}: ${e.text}`);
         }
       }
     }
