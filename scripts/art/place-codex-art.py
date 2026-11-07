@@ -122,30 +122,50 @@ def main(out_dir, paths, only):
                 made[f"farmland{season}"] = [(Image.open(f).convert("RGBA"), 1, 1) for f in files]
         if not made:
             continue
-        old = sheets.get("built")
-        across = max(12, (old.width // CELL) if old else 0)
-        x, y, row_h, spots = 0, (old.height // CELL) if old else 0, 0, []
-        for tid, variants in made.items():
-            for im, w, h in variants:
-                if x + w > across:
-                    x, y, row_h = 0, y + row_h, 0
-                spots.append((tid, im, x, y, w, h))
-                x += w
-                row_h = max(row_h, h)
-        sheet = Image.new("RGBA", (across * CELL, (y + row_h) * CELL))
-        if old:
-            sheet.alpha_composite(old, (0, 0))
-        for tid, im, x, y, w, h in spots:
-            sheet.alpha_composite(im, (x * CELL, y * CELL))
-        buf = io.BytesIO()
-        sheet.save(buf, "PNG", optimize=True)
-        pack["sheets"] = [s for s in pack["sheets"] if s["id"] != "built"] + [
-            {"id": "built", "png": PNG + base64.b64encode(buf.getvalue()).decode(), "width": sheet.width, "height": sheet.height}
-        ]
-        for tid in made:
+        # Every tile on the built sheet(s) is packed again from scratch with the new ones (what the new ones
+        # replace is dropped), widest first, so the sheet never grows past the 4096-pixel limit with spare rows.
+        kept = {}
+        for tid, variants in pack["tiles"].items():
+            if tid in made or not any(str(v.get("sheet", "")).startswith("built") for v in variants):
+                continue
+            kept[tid] = []
+            for v in variants:
+                w, h = v.get("w", 1), v.get("h", 1)
+                im = sheets[v["sheet"]].crop((v["x"] * CELL, v["y"] * CELL, (v["x"] + w) * CELL, (v["y"] + h) * CELL))
+                kept[tid].append((im, w, h))
+        everything = {**kept, **made}
+        across, limit = 32, 4096 // CELL
+        items = sorted(
+            ((tid, n, im, w, h) for tid, variants in everything.items() for n, (im, w, h) in enumerate(variants)),
+            key=lambda item: (-item[4], -item[3]),
+        )
+        built, placed = [], {}
+        x = y = row_h = 0
+        for tid, n, im, w, h in items:
+            if x + w > across:
+                x, y, row_h = 0, y + row_h, 0
+            if y + h > limit:
+                built.append(y + row_h if x else y)
+                x, y, row_h = 0, 0, 0
+            placed[(tid, n)] = (len(built), x, y, w, h, im)
+            x += w
+            row_h = max(row_h, h)
+        built.append(y + row_h)
+        names = ["built" if k == 0 else f"built{k + 1}" for k in range(len(built))]
+        canvases = [Image.new("RGBA", (across * CELL, rows * CELL)) for rows in built]
+        for (tid, n), (k, x, y, w, h, im) in placed.items():
+            canvases[k].alpha_composite(im, (x * CELL, y * CELL))
+        out = []
+        for name, canvas in zip(names, canvases):
+            buf = io.BytesIO()
+            canvas.save(buf, "PNG", optimize=True)
+            out.append({"id": name, "png": PNG + base64.b64encode(buf.getvalue()).decode(), "width": canvas.width, "height": canvas.height})
+        pack["sheets"] = [s for s in pack["sheets"] if not s["id"].startswith("built")] + out
+        for tid, variants in everything.items():
             pack["tiles"][tid] = []
-        for tid, im, x, y, w, h in spots:
-            pack["tiles"][tid].append({"sheet": "built", "x": x, "y": y, **({"w": w, "h": h} if w > 1 or h > 1 else {})})
+            for n in range(len(variants)):
+                k, x, y, w, h, im = placed[(tid, n)]
+                pack["tiles"][tid].append({"sheet": names[k], "x": x, "y": y, **({"w": w, "h": h} if w > 1 or h > 1 else {})})
         with open(path, "w") as f:
             f.write(json.dumps(pack, separators=(",", ":")) + "\n")
         print(path, {tid: len(v) for tid, v in made.items()})
