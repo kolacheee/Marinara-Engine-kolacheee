@@ -29,6 +29,7 @@ import {
   WORLD_PROP_KEEPS_GROUND,
   WORLD_BUILDING_LOOKS,
   WORLD_BUILDING_PIECES,
+  WORLD_BUILDING_YARDS,
   WORLD_TREELINE_LOOKS,
   worldTreelineTrees,
   worldRangePeaks,
@@ -827,7 +828,12 @@ export function WorldOverworld({
       const pieces = WORLD_BUILDING_PIECES[id]!;
       const bySize = (w: number, h: number) =>
         pieces.flatMap((piece, index) => (piece.w === w && piece.h === h ? [index] : []));
-      const [small, medium, large] = [bySize(1, 1), bySize(1, 2), bySize(2, 2)];
+      // A suburb's yard props (hedges, sheds, pools) stand in the gaps between its houses, not for one.
+      const yardsFrom = WORLD_BUILDING_YARDS[id] ?? pieces.length;
+      const yards = pieces.flatMap((_, index) => (index >= yardsFrom ? [index] : []));
+      const [small, medium, large] = [bySize(1, 1).filter((index) => index < yardsFrom), bySize(1, 2), bySize(2, 2)];
+      // Suburbs lie looser than a city, and thin out towards their edge.
+      const gapAt = (x: number, y: number) => (yards.length ? (inner(x, y) ? 0.3 : 0.5) : 0.12);
       const taken = new Set<number>();
       const free = (x: number, y: number) => {
         if (x < 0 || y < 0 || x >= width || y >= height) return false;
@@ -840,8 +846,14 @@ export function WorldOverworld({
         for (let x = 0; x < width; x++) {
           if (!free(x, y)) continue;
           const noise = cellNoise(x, y);
-          if (noise(81) < 0.12) continue;
           const pick = (from: number[]) => from[Math.floor(noise(82) * from.length)]!;
+          if (noise(81) < gapAt(x, y)) {
+            if (yards.length && noise(86) < 0.6) {
+              taken.add(y * width + x);
+              trees.push({ x: x + 0.5 + (noise(85) - 0.5) * 0.2, y: y + 0.95, id, pick: pick(yards), w: 1, h: 1 });
+            }
+            continue;
+          }
           if (large.length && noise(83) < 0.3 && free(x + 1, y) && free(x, y + 1) && free(x + 1, y + 1)) {
             for (const [dx, dy] of [
               [0, 0],

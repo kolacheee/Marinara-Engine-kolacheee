@@ -180,6 +180,16 @@ def main(out_dir, paths, only):
             }
             for look, slots in layouts.items():
                 standing(f"buildings_{look}", [f"scifi-{look}{{season}}-bldg-{i}.png" for i in range(len(slots))], slots)
+        if "suburbs" in only and family in ("modern", "jazz_age"):
+            # Suburbs as houses and yard props over the grass (BRIEF-9): the grass is the suburb's floor and its
+            # ground, twelve houses then eight yard props, in WORLD_BUILDING_PIECES' layout.
+            for season in SEASONS:
+                f = os.path.join(out_dir, f"grass{season}-base.png")
+                if os.path.exists(f) and f"suburb{season}" in pack["tiles"]:
+                    made[f"floor_suburb{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
+                    made[f"suburb{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
+            names = [f"suburb{{season}}-house-{i}.png" for i in range(12)] + [f"suburb{{season}}-yard-{i}.png" for i in range(8)]
+            standing("buildings_suburb", names, [(i % 8, i // 8, 1, 1) for i in range(12)] + [(i, 2, 1, 1) for i in range(8)])
         if "city" in only and family == "scifi":
             # Cyberpunk's built-up ground as one texture each, and the landmarks standing over it.
             for look in ("city", "slums", "industry"):
@@ -254,7 +264,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", "bridges", "marsh", "buildings", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
+    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))
