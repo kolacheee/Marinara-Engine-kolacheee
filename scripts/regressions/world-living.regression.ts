@@ -133,7 +133,7 @@ for (const kit of kits) {
 assert.ok(wars > 0, "turbulent worlds do come to blows");
 assert.equal(
   fingerprint.digest("hex"),
-  "934686c8090c327e91da454c8f547062c4cb5a4c8c250c252877a98329dfe89a",
+  "1c5603a6d4644e5135f41491fc39d6a615e0b61b153646ec3132b292f4b95939",
   "the living world is deterministic; regenerate this only for an intended engine change (and bump the generator version)",
 );
 

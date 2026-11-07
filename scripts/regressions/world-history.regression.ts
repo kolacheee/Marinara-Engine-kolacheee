@@ -24,6 +24,9 @@ import {
   parseWorldKit,
   worldHistory,
   worldHistoryAnswerText,
+  worldPlaceAssets,
+  worldSiteAge,
+  worldTerrainEntries,
   worldOverviewPromptText,
   worldPlacePast,
   worldWhereYouAreText,
@@ -84,7 +87,15 @@ for (const kit of kits) {
         growth.every((event) => event.yearsAgo <= founding[0]!.yearsAgo),
         `${what}: it grows after its founding`,
       );
-      assert.ok(growth.at(-1) === undefined || growth.at(-1)!.text.endsWith(`${kit.sizes[place.rank!]!.label}.`));
+      // Generator 9 adds why it grew ("… on the salt trade.") after the size it grew into.
+      const last = growth.at(-1)?.text;
+      const size = kit.sizes[place.rank!]!.label;
+      assert.ok(
+        last === undefined ||
+          last.endsWith(`${size}.`) ||
+          (game.world.generatorVersion >= 9 && last.includes(`${size} `)),
+        `${what}: ${place.name} last grows into its size now (${last})`,
+      );
     }
     for (const group of game.brief.groups) {
       const founding = history.events.find((event) => event.kind === "founding" && event.groups[0] === group.name)!;
@@ -222,7 +233,7 @@ const fantasy = kits.find((kit) => kit.id === "high_fantasy")!;
   const fingerprint = createHash("sha256").update(JSON.stringify(history)).digest("hex");
   assert.equal(
     fingerprint,
-    "8901a684733e6326c7debb1b540650e2a62046ffcd7c2acb0dfe2014d2796aaf",
+    "0c92d711e728a50c484f2266f6324bb960942f75f1d7e934e52d68f822e515bf",
     "the committed history",
   );
 
@@ -248,6 +259,87 @@ const fantasy = kits.find((kit) => kit.id === "high_fantasy")!;
     ),
   );
   assert.ok(checked.repairs.some((note) => /a place or group that is not in the brief was left out/.test(note)));
+}
+
+// ── Generator 9: the history grows out of the land ──
+{
+  const spearman = (xs: number[], ys: number[]) => {
+    const rank = (values: number[]) => {
+      const out = new Array<number>(values.length);
+      values
+        .map((value, index) => [value, index] as const)
+        .sort((a, b) => a[0] - b[0] || a[1] - b[1])
+        .forEach(([, index], position) => (out[index] = position));
+      return out;
+    };
+    const [a, b] = [rank(xs), rank(ys)];
+    const mean = (xs.length - 1) / 2;
+    let [num, da, db] = [0, 0, 0];
+    for (let i = 0; i < xs.length; i++) {
+      num += (a[i]! - mean) * (b[i]! - mean);
+      da += (a[i]! - mean) ** 2;
+      db += (b[i]! - mean) ** 2;
+    }
+    return num / Math.sqrt(da * db || 1);
+  };
+  const correlation = { 8: [] as number[], 9: [] as number[] };
+  let wars = 0;
+  for (const kitId of ["high_fantasy", "wuxia_xianxia", "the_1920s"]) {
+    const kit = { ...kits.find((each) => each.id === kitId)!, scale: "realm" as const };
+    for (const seed of [3, 4242, 90210]) {
+      const game = rivalWorld(kit, seed);
+      assert.equal(game.world.generatorVersion, 9);
+      const history = worldHistory(game);
+      const water = new Set(
+        game.world.terrain.flatMap((id, index) =>
+          worldTerrainEntries(kit).find((entry) => entry.id === id)?.kind === "water" ? [index] : [],
+        ),
+      );
+      const towns = game.world.places.filter((place) => place.rank !== undefined);
+      const foundedAt = (events: typeof history.events, id: string) =>
+        events.find((event) => event.kind === "founding" && event.places[0] === id && / was founded,/.test(event.text))
+          ?.yearsAgo ?? 0;
+      for (const [version, each] of [
+        [9, history],
+        [8, worldHistory({ ...game, world: compileGameWorld({ ...game, generatorVersion: 8 }), generatorVersion: 8 })],
+      ] as const) {
+        const assets = worldPlaceAssets(game.world, water);
+        correlation[version].push(
+          spearman(
+            towns.map((place) => worldSiteAge(assets.get(place.id)!)),
+            towns.map((place) => foundedAt(each.events, place.id)),
+          ),
+        );
+      }
+      for (const event of history.events) {
+        if (!/ went to war/.test(event.text) || event.fixed) continue;
+        wars++;
+        // A war is fought for something, over a place that stood by then.
+        assert.match(event.text, / went to war (for|over) /, event.text);
+        assert.ok(foundedAt(history.events, event.places[0]!) >= event.yearsAgo, `${event.text}: not founded yet`);
+      }
+      for (const event of history.events.filter((each) => /spread from/.test(each.text))) {
+        const [from, to] = /spread from (.+) to (.+)\.$/.exec(event.text)!.slice(1);
+        const ids = [from, to].map((name) => game.world.places.find((place) => place.name === name)!.id);
+        assert.ok(
+          game.world.links.some((link) => ids.includes(link.from) && ids.includes(link.to)),
+          `${event.text}: no road between them`,
+        );
+      }
+      for (const lost of history.lost) {
+        const cell = lost.at.y * game.world.width + lost.at.x;
+        assert.ok(!water.has(parseInt(game.world.ground[cell]!, 36)), `${lost.name} lost in the water`);
+        assert.ok(!game.world.places.some((place) => place.at.x === lost.at.x && place.at.y === lost.at.y));
+      }
+    }
+  }
+  const mean = (values: number[]) => values.reduce((sum, value) => sum + value, 0) / values.length;
+  // The oldest towns stand on the best sites (generator 8's history founded by size only).
+  assert.ok(
+    mean(correlation[9]) > 0.5 && mean(correlation[9]) > mean(correlation[8]) + 0.3,
+    JSON.stringify(correlation),
+  );
+  assert.ok(wars > 0, "the rival worlds went to war");
 }
 
 // ── What the Game Master is told, and asking for more ──

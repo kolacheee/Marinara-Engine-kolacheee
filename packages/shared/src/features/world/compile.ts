@@ -24,8 +24,10 @@ import {
   worldStepCost,
 } from "./land.js";
 
-export const WORLD_GENERATOR_VERSION = 8;
-/** The generator versions this Engine makes again from a recipe exactly as they were made: 8 lays the
+export const WORLD_GENERATOR_VERSION = 9;
+/** The generator versions this Engine makes again from a recipe exactly as they were made: 9 grows the
+ *  world's history out of its land (the oldest towns on the best sites, growth on harbours, roads and ore,
+ *  lost places that failed for a reason: history-land.ts; the map is 8's), 8 lays the
  *  roads along the land (round the ranges, through the passes, over the rivers where they must, joining into
  *  trunk roads: worldLandPath), 7 runs rivers
  *  down the shaped ground and marks the resources settlements grow around (harbours, passes, ore, salt,
@@ -38,7 +40,7 @@ export const WORLD_GENERATOR_VERSION = 8;
  *  town lot a cell back from its street with a path from its door out to it, 2 adds sites (caves, ruins,
  *  crypts a few steps out of the settlements; design-game-overworld-sites.md), 1 has none. A recipe of a
  *  version it reads stays editable and sharable as a recipe. */
-export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6, 7, 8]);
+export const WORLD_GENERATOR_VERSIONS_READ: readonly number[] = Object.freeze([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 export function worldGeneratorReads(version: unknown): boolean {
   return typeof version === "number" && WORLD_GENERATOR_VERSIONS_READ.includes(version);
 }

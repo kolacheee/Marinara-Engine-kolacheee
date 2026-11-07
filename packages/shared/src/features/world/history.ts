@@ -10,10 +10,21 @@
 // ──────────────────────────────────────────────
 import type { WorldBriefEvent } from "../../schemas/world-brief.schema.js";
 import type { WorldChangeKind } from "../../schemas/world-kit.schema.js";
-import { worldStream, type WorldPlace } from "./compile.js";
+import { worldStream, worldTerrainEntries, type WorldPlace } from "./compile.js";
+import {
+  worldBoomTown,
+  worldGrowthReason,
+  worldLostCause,
+  worldLostSite,
+  worldPlaceAssets,
+  worldSiteAge,
+  worldWarStake,
+  worldWoeOdds,
+} from "./history-land.js";
 import { worldPlaceNamed } from "./edits.js";
 import { worldPreEdit, type GameWorld } from "./game-world.js";
 import { worldFullName } from "./people.js";
+import { worldPeoples } from "./peoples.js";
 import { readGmTagAttributes } from "../../utils/skill-check-tag.js";
 
 /** How many years of history each scale of world has before "now". */
@@ -65,7 +76,7 @@ const CACHE_SIZE = 8;
 /** The world's history, the same for the same world every time. */
 export function worldHistory(game: GameWorld): WorldHistory {
   if (game.frozen) return game.frozen.history;
-  const key = JSON.stringify([game.seed, game.grounding, game.kit, game.brief]);
+  const key = JSON.stringify([game.seed, game.grounding, game.kit, game.brief, game.world.generatorVersion]);
   const hit = cache.get(key);
   if (hit) return hit;
   // The past is the compiled world's: hand edits (W9c) change the world from now on, never its history,
@@ -87,12 +98,51 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
   const add = (event: WorldHistoryEvent) => events.push(event);
 
   // ── Settlements: founded, oldest the biggest, and grown to the size they have now ──
+  // Generator 9: the oldest on the best sites (water, a harbour, a ford, rich soil), whatever their size
+  // now, and towns that grew on ore or a pass founded late, as boom towns are; each grows on what it has.
+  const water = new Set(
+    world.terrain.flatMap((id, index) =>
+      worldTerrainEntries(kit).find((entry) => entry.id === id)?.kind === "water" ? [index] : [],
+    ),
+  );
+  const landed = world.generatorVersion >= 9;
+  const assets = landed ? worldPlaceAssets(world, water) : new Map();
   const foundingRandom = worldStream(seed, "history", "founding");
   const founded = new Map<string, number>();
   const maxRank = Math.max(1, ...settlements.map((place) => place.rank!));
-  for (const place of [...settlements].sort((a, b) => b.rank! - a.rank! || a.id.localeCompare(b.id))) {
+  const foundingOrder = landed
+    ? (() => {
+        const siteOf = new Map(settlements.map((place) => [place.id, worldSiteAge(assets.get(place.id)!)]));
+        const rankOf = (values: Map<string, number>) => {
+          const sorted = [...settlements].sort(
+            (a, b) => values.get(a.id)! - values.get(b.id)! || a.id.localeCompare(b.id),
+          );
+          return new Map(sorted.map((place, index) => [place.id, index / Math.max(1, sorted.length - 1)]));
+        };
+        const site = rankOf(siteOf);
+        const size = rankOf(new Map(settlements.map((place) => [place.id, place.rank!])));
+        const age = new Map(
+          settlements.map((place) => [
+            place.id,
+            0.6 * site.get(place.id)! +
+              0.4 * size.get(place.id)! -
+              (worldBoomTown(assets.get(place.id)) ? 0.5 : 0) +
+              foundingRandom() * 0.15,
+          ]),
+        );
+        return [...settlements].sort((a, b) => age.get(b.id)! - age.get(a.id)! || a.id.localeCompare(b.id));
+      })()
+    : [...settlements].sort((a, b) => b.rank! - a.rank! || a.id.localeCompare(b.id));
+  foundingOrder.forEach((place, position) => {
     const share = 1 - place.rank! / (maxRank + 1);
-    const year = Math.max(1, Math.round(span - share * span * 0.8 * foundingRandom()));
+    const year = landed
+      ? Math.max(
+          1,
+          Math.round(
+            span * (1 - (position / Math.max(1, foundingOrder.length)) * 0.85) - foundingRandom() * span * 0.04,
+          ),
+        )
+      : Math.max(1, Math.round(span - share * span * 0.8 * foundingRandom()));
     founded.set(place.id, year);
     add({
       yearsAgo: year,
@@ -101,18 +151,23 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
       places: [place.id],
       groups: [],
     });
-    // One step up the ladder at a time, spread over the years since, the last a while ago.
+    // One step up the ladder at a time, spread over the years since, the last a while ago; a boom town
+    // grows fast, in the first third of its years.
+    const boom = landed && worldBoomTown(assets.get(place.id));
+    const reason = landed ? worldGrowthReason(place, assets.get(place.id)) : "";
     for (let rank = 1; rank <= place.rank!; rank++) {
-      const at = Math.max(1, Math.round(year - (year * rank) / (place.rank! + 1) - foundingRandom() * 2));
+      const at = boom
+        ? Math.max(1, Math.round(year - (year * rank) / (3 * (place.rank! + 1)) - foundingRandom() * 2))
+        : Math.max(1, Math.round(year - (year * rank) / (place.rank! + 1) - foundingRandom() * 2));
       add({
         yearsAgo: at,
         kind: on("fortunes") ? "fortunes" : "founding",
-        text: `${place.name} grew into ${aWord(sizes[rank]!.label)}.`,
+        text: `${place.name} grew into ${aWord(sizes[rank]!.label)}${rank === place.rank ? reason : ""}.`,
         places: [place.id],
         groups: [],
       });
     }
-  }
+  });
 
   // ── Groups: founded at their seats, led, and at peace or odds with each other ──
   const groupRandom = worldStream(seed, "history", "groups");
@@ -178,11 +233,27 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
     .filter((name) => !usedNames.has(name.toLowerCase()));
   const lostRandom = worldStream(seed, "history", "lost");
   const lostCount = Math.min(spareNames.length, Math.floor(settlements.length / 6));
+  // Generator 9: where a lost place stood is open land a few cells out, never on a place, a road or water.
+  const lostTaken = new Set(world.places.map((place) => place.at.y * world.width + place.at.x));
+  const roadCells = new Set(world.links.flatMap((link) => link.path ?? []));
+  const barrier = new Set(
+    world.terrain.flatMap((id, index) =>
+      worldTerrainEntries(kit).find((entry) => entry.id === id)?.kind === "barrier" ? [index] : [],
+    ),
+  );
+  const lostBlocked = (cell: number) => {
+    const ground = parseInt(world.ground[cell]!, 36);
+    return water.has(ground) || barrier.has(ground) || roadCells.has(cell);
+  };
   const lostPlaces = Array.from({ length: lostCount }, (_, index) => {
     const near = pick(settlements, lostRandom);
+    const at = landed
+      ? worldLostSite(world, near, lostTaken, lostBlocked, lostRandom)
+      : { x: Math.min(world.width - 1, near.at.x + 1), y: near.at.y };
+    lostTaken.add(at.y * world.width + at.x);
     return {
       name: spareNames[index]!,
-      at: { x: Math.min(world.width - 1, near.at.x + 1), y: near.at.y },
+      at,
       near,
       founded: Math.max(3, Math.round(span * (0.6 + 0.4 * lostRandom()))),
       fell: undefined as number | undefined,
@@ -222,6 +293,19 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
 
   // ── The years: the engine steps from the founding to "now" ──
   const brewing = new Map<string, number>();
+  const fairs = new Set<string>();
+  const spreading = new Map<number, Array<{ place: WorldPlace; from: WorldPlace }>>();
+  // Dry country around a place: desert, scrub, steppe or waste beside it.
+  const dryAt = (place: WorldPlace) => {
+    for (let dy = -1; dy <= 1; dy++)
+      for (let dx = -1; dx <= 1; dx++) {
+        const [x, y] = [place.at.x + dx, place.at.y + dy];
+        if (x < 0 || y < 0 || x >= world.width || y >= world.height) continue;
+        const id = world.terrain[parseInt(world.ground[y * world.width + x]!, 36)] ?? "";
+        if (/desert|dune|scrub|steppe|savanna|badland|dry|waste|ash/.test(id)) return true;
+      }
+    return false;
+  };
   const prosperity = new Map(settlements.map((place) => [place.id, 50]));
   const alive = (group: (typeof groups)[number], year: number) => group.year >= year;
   for (let year = span; year >= 1; year--) {
@@ -248,14 +332,24 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
 
     // Everyday life: a fair or festival first held at a place that has grown.
     if (on("everyday") && existing.length && random() < 0.04 * density) {
-      const place = pick(existing, random);
-      add({
-        yearsAgo: year,
-        kind: "everyday",
-        text: `${place.name} held its first fair.`,
-        places: [place.id],
-        groups: [],
-      });
+      // Generator 9: each place's first fair once, and at a market town where roads meet when there is one.
+      const unfaired = landed ? existing.filter((each) => !fairs.has(each.id)) : existing;
+      const crossroads = unfaired.filter((each) => (assets.get(each.id)?.ways ?? 0) >= 3);
+      const place = landed
+        ? unfaired.length
+          ? pick(crossroads.length ? crossroads : unfaired, random)
+          : undefined
+        : pick(existing, random);
+      if (place) {
+        fairs.add(place.id);
+        add({
+          yearsAgo: year,
+          kind: "everyday",
+          text: `${place.name} held its first fair.`,
+          places: [place.id],
+          groups: [],
+        });
+      }
     }
 
     // Fortunes: places drift between good and bad years.
@@ -370,11 +464,16 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
             continue;
           }
           if (brewing.get(key)! - year < WORLD_BUILD_UP.conflict || random() > 0.25 * density) continue;
-          const contested = settlements.filter(
+          const contested = (landed ? existing : settlements).filter(
             (place) => [a.name, b.name].includes(keepers.get(place.id) ?? "") && !fixedPlaces.has(place.id),
           );
           if (!contested.length) continue;
-          const place = pick(contested, random);
+          // Generator 9: the place worth most to fight for (a pass, ore, a harbour, a ford), mostly.
+          const place = landed
+            ? contested
+                .map((each) => ({ each, worth: worldWarStake(each, assets.get(each.id)).value + random() * 0.8 }))
+                .sort((x, y) => y.worth - x.worth || x.each.id.localeCompare(y.each.id))[0]!.each
+            : pick(contested, random);
           const winner = random() < 0.5 ? a : b;
           const loser = winner === a ? b : a;
           keepers.set(place.id, winner.name);
@@ -384,7 +483,9 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
           add({
             yearsAgo: year,
             kind: "conflict",
-            text: `${winner.name} and ${loser.name} went to war; ${winner.name} took ${place.name}.`,
+            text: landed
+              ? `${winner.name} and ${loser.name} went to war ${worldWarStake(place, assets.get(place.id)).phrase}; ${winner.name} took ${place.name}.`
+              : `${winner.name} and ${loser.name} went to war; ${winner.name} took ${place.name}.`,
             places: [place.id],
             groups: [winner.name, loser.name],
             severe: true,
@@ -410,6 +511,18 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
 
     // Catastrophe: a dry spell or a sickness that has brewed long enough becomes a famine or a plague.
     if (on("catastrophe")) {
+      // Generator 9: a plague carried on along the roads from where it struck.
+      for (const { place, from } of spreading.get(year) ?? []) {
+        prosperity.set(place.id, Math.max(0, prosperity.get(place.id)! - 15));
+        add({
+          yearsAgo: year,
+          kind: "catastrophe",
+          text: `The plague spread from ${from.name} to ${place.name}.`,
+          places: [place.id],
+          groups: [],
+          severe: true,
+        });
+      }
       for (const [key, since] of [...brewing]) {
         if (!key.startsWith("woe|") || since - year < WORLD_BUILD_UP.catastrophe || random() > 0.5) continue;
         const [, placeId, woe] = key.split("|");
@@ -419,11 +532,25 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
         add({
           yearsAgo: year,
           kind: "catastrophe",
-          text: woe === "drought" ? `Famine struck ${place.name}.` : `Plague struck ${place.name}; many died.`,
+          text:
+            woe === "drought"
+              ? `Famine struck ${place.name}.`
+              : woe === "flood"
+                ? `The river flooded ${place.name}.`
+                : `Plague struck ${place.name}; many died.`,
           places: [place.id],
           groups: [],
           severe: true,
         });
+        // Generator 9: a plague goes on along the roads and sea lanes to the places linked to it.
+        if (landed && woe === "sickness")
+          for (const link of world.links) {
+            const otherId = link.from === place.id ? link.to : link.to === place.id ? link.from : undefined;
+            const other = otherId ? existing.find((each) => each.id === otherId) : undefined;
+            if (!other || random() > 0.5) continue;
+            const at = year - 1 - Math.floor(random() * 2);
+            if (at >= 1) spreading.set(at, [...(spreading.get(at) ?? []), { place: other, from: place }]);
+          }
         const nearby = lostPlaces.find(
           (each) => each.fell === undefined && each.near.id === place.id && each.founded > year,
         );
@@ -440,8 +567,23 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
         }
       }
       if (existing.length && random() < 0.008 * density) {
-        const place = pick(existing, random);
-        const woe = random() < 0.5 ? "drought" : "sickness";
+        let place = landed ? existing[0]! : pick(existing, random);
+        let woe = random() < 0.5 ? "drought" : "sickness";
+        if (landed) {
+          // Generator 9: the kind of woe first, then the place most open to it.
+          const odds = existing.map((each) => ({ each, odds: worldWoeOdds(each, assets.get(each.id), dryAt(each)) }));
+          if (odds.some((each) => each.odds.flood > 0) && random() < 0.25) woe = "flood";
+          const weights = odds.map((each) => each.odds[woe as "drought" | "sickness" | "flood"]);
+          const total = weights.reduce((sum, weight) => sum + weight, 0);
+          let roll = random() * total;
+          place =
+            odds[
+              Math.max(
+                0,
+                weights.findIndex((weight) => (roll -= weight) < 0),
+              )
+            ]!.each;
+        }
         const key = `woe|${place.id}|${woe}`;
         if (!brewing.has(key)) {
           brewing.set(key, year);
@@ -449,7 +591,11 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
             yearsAgo: year,
             kind: "catastrophe",
             text:
-              woe === "drought" ? `A dry spell settled over ${place.name}.` : `A sickness appeared in ${place.name}.`,
+              woe === "drought"
+                ? `A dry spell settled over ${place.name}.`
+                : woe === "flood"
+                  ? `Heavy rains swelled the river above ${place.name}.`
+                  : `A sickness appeared in ${place.name}.`,
             places: [place.id],
             groups: [],
             brewing: true,
@@ -466,12 +612,77 @@ function runHistory({ kit, brief, world, seed }: GameWorld): WorldHistory {
     add({
       yearsAgo: place.fell,
       kind: on("fortunes") ? "fortunes" : "founding",
-      text: `${place.name} was abandoned as its people moved to ${place.near.name}.`,
+      text: landed
+        ? `${place.name} was abandoned: ${worldLostCause(place, world, water, place.near.name)}.`
+        : `${place.name} was abandoned as its people moved to ${place.near.name}.`,
       places: [place.near.id],
       groups: [],
     });
   }
   for (const place of lostPlaces) lost.push({ name: place.name, at: place.at, fellYearsAgo: place.fell! });
+
+  // ── Generator 9: the peoples who are not human, in the past of the places near them ──
+  // Each people's deeds happen at the settlement nearest its home, after that settlement's founding; a
+  // road laid past its home is remembered, and how it took that follows its temper.
+  if (landed) {
+    const peopleRandom = worldStream(seed, "history", "peoples");
+    const kindFor = (kinds: WorldChangeKind[]) => kinds.find((kind) => on(kind));
+    for (const people of worldPeoples(kit, world)) {
+      const near = settlements.find((place) => place.id === people.nearId);
+      if (!near) continue;
+      const since = founded.get(near.id) ?? span;
+      const harm = people.temper === "malevolent";
+      const deeds = people.deeds
+        .map((deed) => ({ deed, order: peopleRandom() }))
+        .sort((a, b) => a.order - b.order)
+        .slice(0, 1 + (peopleRandom() < 0.5 ? 1 : 0))
+        .map((each) => each.deed);
+      for (const deed of deeds) {
+        // A deed that cost lives or ruin is told as a catastrophe or a crime, the rest as everyday life.
+        const ruin =
+          /\b(lost|kill|killed|vanish|vanished|drown|drowned|dead|died|missing|burn|burned|torn|raid|sicken|sickened|wasted|ruin|ruined|failed|mad)\b/i.test(
+            deed,
+          );
+        const kind = kindFor(ruin ? ["catastrophe", "crime", "everyday"] : ["everyday", "fortunes", "lives"]);
+        if (!kind) continue;
+        add({
+          yearsAgo: Math.max(1, Math.round(1 + peopleRandom() * (since - 1))),
+          kind,
+          text: deed,
+          places: [near.id],
+          groups: [],
+          ...(ruin && harm && kind === "catastrophe" ? { severe: true as const } : {}),
+        });
+      }
+      const road = world.links.find((link) =>
+        (link.path ?? []).some(
+          (cell) =>
+            Math.max(
+              Math.abs((cell % world.width) - people.home.x),
+              Math.abs(Math.floor(cell / world.width) - people.home.y),
+            ) <= 1,
+        ),
+      );
+      const roadKind = kindFor(["everyday", "fortunes"]);
+      if (road && roadKind) {
+        const ends = [road.from, road.to].map((id) => world.places.find((place) => place.id === id)!);
+        const laid = Math.min(...ends.map((end) => founded.get(end.id) ?? span));
+        add({
+          yearsAgo: Math.max(1, Math.round(laid * (0.3 + peopleRandom() * 0.5))),
+          kind: roadKind,
+          text: `The way between ${ends[0]!.name} and ${ends[1]!.name} was laid past the home of the ${people.name}; ${
+            harm
+              ? "travellers on it have gone missing since"
+              : people.temper === "kindly"
+                ? "they let it pass, for a toll of offerings"
+                : "they drew back from it, and do not forget"
+          }.`,
+          places: [near.id],
+          groups: [],
+        });
+      }
+    }
+  }
 
   // The present: the brief's allies and rivals are how the groups get on now, whatever drifted.
   for (const group of groups) {
