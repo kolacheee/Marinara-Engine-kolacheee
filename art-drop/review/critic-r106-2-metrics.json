@@ -1,0 +1,1826 @@
+{
+  "fantasy-farmstead-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      7,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 14,
+    "sha256": "0c6e775b9eaa340713e7ffc15b30ef61d89017c0959e05b4524f74ab0b9cc3ab"
+  },
+  "fantasy-farmstead-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      15,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 9,
+    "sha256": "a996be93e41e84ae410b0d7bb958443a58de3b0b4fdf51f1697ed0a84e2ad1cc"
+  },
+  "fantasy-farmstead-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      6,
+      7,
+      42,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "9b8bc8504d9508fac4592c226072eb4d46b326c87c8235b2862e879cf245cb7e"
+  },
+  "fantasy-farmstead-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      10,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 8,
+    "sha256": "41c9e68c070c4f7715420b3df195bbb48ff9f68a57e84142ad4de30bc343082e"
+  },
+  "fantasy-farmstead-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      14,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "ceed0a4de9e99d28eacc9362d3d5af6adf44ff1de18fe3f8ce356470a088285f"
+  },
+  "fantasy-farmstead-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      12,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "846081527dd33ae7b20c135057f797491e065bc05315b95c2441522481b04468"
+  },
+  "fantasy-farmstead@spring-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      7,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "82c18a8dc92ec8f135c06064a661a87d746089b462b43a85900e3dd19500d995"
+  },
+  "fantasy-farmstead@spring-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      15,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "a2b1d8a83c8c255d57e35f4cbce357da6e452fc1441b44989cfbb45a6b99edf7"
+  },
+  "fantasy-farmstead@spring-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      6,
+      7,
+      42,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 18,
+    "sha256": "b73572984976ad89b8bea8197a182b5afc69c29c9031487704d72df53acc0a9f"
+  },
+  "fantasy-farmstead@spring-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      10,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "044817c5331a2d7f14c1d1e87f476fbfa7d76c860d440681b95723b52ef78beb"
+  },
+  "fantasy-farmstead@spring-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      14,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "05ea8f8f8366dabc019ca3590d05002e6dcec8e358a5df3ce2471f1609b01753"
+  },
+  "fantasy-farmstead@spring-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      12,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 13,
+    "sha256": "b17abd8895d5a4cea777696bf83a9c91e6d8bfed8961b0985ccf2b5d784aefd1"
+  },
+  "fantasy-farmstead@autumn-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      7,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "13667eb4d5a721e29d398d24477295e3a3428f462c66457ffe9bdec6cb2ccf2e"
+  },
+  "fantasy-farmstead@autumn-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      15,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 9,
+    "sha256": "1ea438c75354eb89196078ee8ecaf01f6ed0168ad12bf8d75dcc26eb648b60d6"
+  },
+  "fantasy-farmstead@autumn-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      6,
+      7,
+      42,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "f20cd5753cf4da4a7dac42982422944b17705abc277bdd4f5da2a0c22624a439"
+  },
+  "fantasy-farmstead@autumn-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      10,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 6,
+    "sha256": "d3af9c39d8cd399abef6cd2db08f54062e72a727b6e9767d449c3b3b0477beac"
+  },
+  "fantasy-farmstead@autumn-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      14,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "94e609c7f2936779aae408f5dea9069f02891cb22c86f57991d5f0e207d1340d"
+  },
+  "fantasy-farmstead@autumn-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      12,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "ead397a438f476e30d37316a95d02945e70eccd09b339f63ad2a74dfbbdf27fc"
+  },
+  "fantasy-farmstead@winter-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      7,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 18,
+    "sha256": "68ef2f077f79447910135c01ae043b1eceb17116602f54a4eb6c62f8178f0d1a"
+  },
+  "fantasy-farmstead@winter-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      15,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "ab44b553d5072201e9479afee92f4aa18861acd952ed7357fd42e3080e973f9a"
+  },
+  "fantasy-farmstead@winter-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      6,
+      7,
+      41,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "743c6b5c54f3292b958420a853c7db460493510a9986f41260f14c041bb54e66"
+  },
+  "fantasy-farmstead@winter-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      9,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 8,
+    "sha256": "a83b8467c81a3599df961a7529ffa278c77c2a57ce5cc5995233a7779dd7ca85"
+  },
+  "fantasy-farmstead@winter-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      14,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 13,
+    "sha256": "9a9baefd6d96a3ace19d554656574eb3b6307fcef5dca542579cb997196e6419"
+  },
+  "fantasy-farmstead@winter-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      13,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "1419804f2fe89fdefc522f31c61c1152587af89dcdfc5ad6383361fd8e2ca876"
+  },
+  "wuxia-farmstead-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      16,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 17,
+    "sha256": "73a1029b8fe29023a6c63b5fafd5ec2e74b42cbf7daad390e6c45dfcda00e97f"
+  },
+  "wuxia-farmstead-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      18,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 14,
+    "sha256": "1c6b95fa355f888d652ba93a2434fcc8cc3cb4f6078834c8bcad6ebbaab539c0"
+  },
+  "wuxia-farmstead-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      9,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 14,
+    "sha256": "dd39949b2bfe0a09ebf7d16dffa566d7c50f75b62c81b9f640c67f6871af2a62"
+  },
+  "wuxia-farmstead-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      21,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 6,
+    "sha256": "b74e7ac43c92c466244711b9b63b0c01341a879d478bd5263f4994a388511b17"
+  },
+  "wuxia-farmstead-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "aa9305214cb29ae1594e27a600040673d32cd7ef598999ee0955b980d44c8b09"
+  },
+  "wuxia-farmstead-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      14,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "a8dd549b6f9a27bbdbb822bcf38f9e3b00c6075140f97a2c3f2238a51b9fb34b"
+  },
+  "wuxia-farmstead@spring-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      16,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 18,
+    "sha256": "82bd2e4fc84d8ecded05380a45e50ccccc424a6d495d5eb3bcaff99307123a1d"
+  },
+  "wuxia-farmstead@spring-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      18,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "7fbf74048a4314bc5be912983caff7c3d8d8f38382686ea236f848765812797a"
+  },
+  "wuxia-farmstead@spring-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      9,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 18,
+    "sha256": "0f74af788167a8ed559ea8d983ce67ed9448facda3d9c314f442e912cd5b588f"
+  },
+  "wuxia-farmstead@spring-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      22,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 8,
+    "sha256": "367739cfbca1eb144563eabf415979d3d4fbd0164e60fe3e856d60ce53be505d"
+  },
+  "wuxia-farmstead@spring-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 18,
+    "sha256": "0bd2873d4cdb02f75db97e6e6163cace04fd485f3fa787045bae44cc3e0ead81"
+  },
+  "wuxia-farmstead@spring-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      14,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 19,
+    "sha256": "6b9bf0c13186b374298342d4c970d4a1c7e4c03eb8486fd9438d68115ec7a485"
+  },
+  "wuxia-farmstead@autumn-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      16,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "411b35c6110bd6a667f894327f4980eda9a167111a468dc277ba7c18414b9de2"
+  },
+  "wuxia-farmstead@autumn-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      18,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "bacdf24cc7f49d07da48fc07e51ac4631bd18acf93f35b0cb9f012327f547d94"
+  },
+  "wuxia-farmstead@autumn-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      9,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "c902e416003ed0676a22ed2a49b485376ddddfca61f4ea904b3365900f63a257"
+  },
+  "wuxia-farmstead@autumn-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      21,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 7,
+    "sha256": "eebe3aa0b187de1680b9a67ae8b537c0ef28e504b29ee3a6059371147b64fa25"
+  },
+  "wuxia-farmstead@autumn-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "16832d323fc5d411b4acdaf9c4e610a356507ce6960978adfc3436bc2999493d"
+  },
+  "wuxia-farmstead@autumn-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      14,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "c564d48c1561d11c3ac3f8cf94a8764d23a7a278344f3d9164f59e766146038d"
+  },
+  "wuxia-farmstead@winter-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      15,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "c9ec6a0bd588697f6314568af5d32d140c3a2f3977e825de7802c50a19e6aab6"
+  },
+  "wuxia-farmstead@winter-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "324da837f600ca6042a14a0c07a888ce4e889f260127bed3de1186a715b175f4"
+  },
+  "wuxia-farmstead@winter-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      8,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 17,
+    "sha256": "a7c7d548d4fef4b9a5a7ea183706ac79ee330f084bab044c76d8a9c250520230"
+  },
+  "wuxia-farmstead@winter-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      22,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "411f12056c0b910dc918673da950b999def41325b44d142bf250e514470e8981"
+  },
+  "wuxia-farmstead@winter-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "1318dc890267fa6e1a245b43ffbb12a33085d1962ffcedab390a35bcbbc4b3e8"
+  },
+  "wuxia-farmstead@winter-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      13,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 21,
+    "sha256": "64c8bfa6d43a6facc634a9ddd9eb3ccb8ac3f080d0f16d9a8ecd8786241ec1bc"
+  },
+  "jazz_age-farmstead-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      6,
+      7,
+      42,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "7f84d3bf9121dd9f929e71403ca9d23914d5f5143a8a2ca49e0266529974a491"
+  },
+  "jazz_age-farmstead-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 9,
+    "sha256": "6cc7f384e7dfe1e53a12f4809537890ae1a6e178b09860a0fd1b472f2852d8ae"
+  },
+  "jazz_age-farmstead-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      11,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "59f38fa3d1474fd8715b8321a416c4045247bc82121e18adda98f9f19f557f67"
+  },
+  "jazz_age-farmstead-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 9,
+    "sha256": "98e2b1cf64482c101d097510b4c9b4df1f2d9eeda89e943965d9408943c65106"
+  },
+  "jazz_age-farmstead-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      18,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "322aa46a6563f272810fc2ac8ba6f9bcc285cb61194b1bf472c9b8a45de51647"
+  },
+  "jazz_age-farmstead-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      13,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "ea4c1045f09fa1216ae8edc369b43c56d1638b4d1f18fba60a490c767abe559e"
+  },
+  "jazz_age-farmstead@spring-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      6,
+      7,
+      42,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 18,
+    "sha256": "d23fd6c58cd8d7e6dac36d799211da45366f8f3332dcf5a5f94d2271e5a6533c"
+  },
+  "jazz_age-farmstead@spring-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 9,
+    "sha256": "e5ab0cf4a738d1b5aa598d10b0dd1b264cd5d996408b2ce652b9276e3ed790b0"
+  },
+  "jazz_age-farmstead@spring-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      11,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 18,
+    "sha256": "1eb91013874b36491658514576a432c311ffb6a4ba7bd60f5b9d4d7b512e7de8"
+  },
+  "jazz_age-farmstead@spring-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 11,
+    "sha256": "6bfcc7b744747dd8e644103c7ffcbd8d01e84f869473c4f1be2bede36423a59e"
+  },
+  "jazz_age-farmstead@spring-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      18,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 9,
+    "sha256": "fccfe18b6e289cd139c9a614769fc9c628f5bd718d76eb2184b3c53c7482c0f4"
+  },
+  "jazz_age-farmstead@spring-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      13,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 17,
+    "sha256": "88704a0171aecc404ab913440d79f1e4ee0fce01d883117bb5677cc881bac495"
+  },
+  "jazz_age-farmstead@autumn-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      6,
+      7,
+      42,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "88a91fbbd1bf7ad277d0ad30eff3d5cb84023a333c62cdc9c93ae86de1e24384"
+  },
+  "jazz_age-farmstead@autumn-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 11,
+    "sha256": "079def36aaff56adcd4d835113d17e7ef50ab667028409a0c61e34a1ea1b329b"
+  },
+  "jazz_age-farmstead@autumn-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      11,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "a24baa5d29e6da9c5822cbaae0af4c53e842597bc5effc634faf01e4bc040ae8"
+  },
+  "jazz_age-farmstead@autumn-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "9622cb7451b4aca7e605b204e25814f3e1b5f47d53c7f88172a031f869b1a8a7"
+  },
+  "jazz_age-farmstead@autumn-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      18,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "b126f2bae9ac324c86c6b2a8de9d6f51e1e8c5351e1860ba16f37e2b66c86e8d"
+  },
+  "jazz_age-farmstead@autumn-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      13,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 11,
+    "sha256": "7c9d9843a67d87f86fd78f93da04eb98af982b8995c23f146d115b48f33b00ef"
+  },
+  "jazz_age-farmstead@winter-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      6,
+      7,
+      42,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 20,
+    "sha256": "9bef10d5534c87163e45005adca8eefbe163723df56f1a2c8e68f9525dd40d7a"
+  },
+  "jazz_age-farmstead@winter-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "088609bb078aa29b5a034a7d0a531db9328c66738b1907c979465c1c56f7bbdf"
+  },
+  "jazz_age-farmstead@winter-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      11,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 17,
+    "sha256": "f34aa3545486fd1d9fd7f863fe5c13a8a0ca7992bf7eec9fd8ab8801c92e4a69"
+  },
+  "jazz_age-farmstead@winter-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 13,
+    "sha256": "191f36efb0b9365605e3dec44314f8141a6cd2f340e4123ca73b391296ed8205"
+  },
+  "jazz_age-farmstead@winter-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      18,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "32bd78e848a8fdcd6763442da13cf6032ab931daf8aaaf1a720b44ea956b5022"
+  },
+  "jazz_age-farmstead@winter-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      13,
+      7,
+      34,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "7446a175b418269910abeb29e57fc84e38d9acf322118c58e9ef61679343bd73"
+  },
+  "modern-farmstead-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      10,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "9bd1c046c70d9709f3e941a8f3f4a49748864bfef55ae101728dc617b9c5cab5"
+  },
+  "modern-farmstead-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      21,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 11,
+    "sha256": "e8d2dc77964db6ad1387f583927ee3aa02d3e4fdfef2156f119bdd74808fecfb"
+  },
+  "modern-farmstead-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 11,
+    "sha256": "baa2166434f025f1d2b3c98e912aa1cc1ecc450790a32616cd22638667e0bd6e"
+  },
+  "modern-farmstead-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      13,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 21,
+    "sha256": "2aaeb17b6fe15f533c7227f6fd23899046a7c67016876e0b3f604db71db33f82"
+  },
+  "modern-farmstead-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "79012baf851989c48d400a535a1b1d0aabddb12074de68d1c1fc7d282cc9d3e6"
+  },
+  "modern-farmstead-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      12,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "f6d18d92e51c250a521eacd8e934b64217fd3ba3ded4a134db1d1b1e11525323"
+  },
+  "modern-farmstead@spring-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      10,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "1feddf3af1a274539be78f9e9f7f23a2a6adcd3a39ec9c566371e9cebd32ea16"
+  },
+  "modern-farmstead@spring-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      21,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "801a929bdaa7591459b052c2ea0e79a20593b74fdca1e4979ec7f565539444cb"
+  },
+  "modern-farmstead@spring-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 11,
+    "sha256": "76385e8f9734cb6156ef059f228eca28a77da44dfee33943193da1a8b5f9a051"
+  },
+  "modern-farmstead@spring-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      13,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 20,
+    "sha256": "f907b405088ca558e1f172c990857bdccd280d045340b9999c73bf73a8065d30"
+  },
+  "modern-farmstead@spring-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "213a97739db80db3ddb91345f576642e5fdb2f2e3e4ec785453ffd5d40bdb306"
+  },
+  "modern-farmstead@spring-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      12,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 14,
+    "sha256": "5b37d704b3a1fd49a8fa82a7bcece6a93652e4dd15d26be92ef03298f295eed6"
+  },
+  "modern-farmstead@autumn-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      10,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 18,
+    "sha256": "12164cd315ac02baaddc3852bc5d0091d55b9ad1ac82da9c23ad9c1938f1a689"
+  },
+  "modern-farmstead@autumn-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      21,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 13,
+    "sha256": "b56f5a7f80a8f419d5f8d972864c155a86305765a6372168c96458b765924c9b"
+  },
+  "modern-farmstead@autumn-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      12,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "9f6a05843a2e0c41f944d8f87dd5a268fb6b89937e4be97b1d9983c6d30daa8d"
+  },
+  "modern-farmstead@autumn-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      13,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 21,
+    "sha256": "5dbd3226ed60b8b9116a78115ee225b297f5656b74b8b9f91333074b06968df0"
+  },
+  "modern-farmstead@autumn-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 16,
+    "sha256": "0fb46c756e03b910da7d06889b66fd02273a5961a5c4e887d999247c9f5a3c5d"
+  },
+  "modern-farmstead@autumn-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      12,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 10,
+    "sha256": "d414e3a9297f2c2a0d54d6e8af14c9d1b55e1937548b6cf00de47d363cdb76cc"
+  },
+  "modern-farmstead@winter-0": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      9,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 11,
+    "sha256": "3900b3d5089d0358cb15e2c553831bf76cb03e73be4990a9a4aa61ed5697b9fc"
+  },
+  "modern-farmstead@winter-1": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      21,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 11,
+    "sha256": "105555c3aedb6d90abf6475a9ac7863fbde4d45e05c6271f8ac7ed24fd532d8e"
+  },
+  "modern-farmstead@winter-2": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      11,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 14,
+    "sha256": "e95aac6ade1dd1a1ae01166430ab8e9703fbeca2cd1319477b1bf6851203c5cc"
+  },
+  "modern-farmstead@winter-3": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      13,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 22,
+    "sha256": "9741fe011f8831111ba3363c8519747bddeb2407799acd0e363484fd16fcec1b"
+  },
+  "modern-farmstead@winter-4": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      4,
+      17,
+      44,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 15,
+    "sha256": "b117985507f6e8ada63219f83812bde3cf0030e624a220e7b58e85e277f31481"
+  },
+  "modern-farmstead@winter-5": {
+    "size": [
+      48,
+      48
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "bbox": [
+      12,
+      7,
+      35,
+      47
+    ],
+    "hidden_rgb": 0,
+    "colors": 12,
+    "sha256": "9f2a06447d01001da99185f5ecbf5f38ad15a72c14603efbce267e363ab11a3c"
+  }
+}
