@@ -1,0 +1,1810 @@
+{
+  "shore": [
+    {
+      "name": "shore-prop-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        12,
+        42,
+        35
+      ],
+      "alpha": [
+        0,
+        8,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "528f48e75fadfb22cb04e066cc95880e99f942663aa6ed8bbe2bc9de6b7c732c"
+    },
+    {
+      "name": "shore-prop-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        21,
+        43,
+        27
+      ],
+      "alpha": [
+        0,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "d835271f9d243d311fd9c5d4f2640136c65919b7c6ef469a642c5dee69e401cd"
+    },
+    {
+      "name": "shore-prop-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        17,
+        43,
+        33
+      ],
+      "alpha": [
+        0,
+        16,
+        24,
+        48,
+        80,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "5b1783cc260023f9058c5047ff75630c2d91e1d7eb75a6a3c0d6aff503964105"
+    },
+    {
+      "name": "shore-prop-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        19,
+        5,
+        28,
+        40
+      ],
+      "alpha": [
+        0,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "436a11fabc55ea7b3f7a8cc5b29c3816083a8acf2727d8d942f65a2afbf47305"
+    },
+    {
+      "name": "shore-prop-4",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        9,
+        13,
+        84,
+        89
+      ],
+      "alpha": [
+        0,
+        24,
+        48,
+        80,
+        112,
+        152
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "df6a09581a8eb84b2a51f00090dc8b2277e6953bed34ce4c42d1ead4c851bebd"
+    },
+    {
+      "name": "shore-prop-5",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        11,
+        20,
+        85,
+        77
+      ],
+      "alpha": [
+        0,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "f5785739f47c3d8899bdb3b1f2581f9c763ef6a4d87a905d0e8b914cba348eca"
+    },
+    {
+      "name": "shore-prop-6",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        7,
+        39,
+        89,
+        56
+      ],
+      "alpha": [
+        0,
+        8,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "9b0a990e6308dae4e26601228bb9d4a9c951cca9ed06a06bcaea1b69b0f0aba2"
+    },
+    {
+      "name": "shore-prop-7",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        8,
+        33,
+        88,
+        62
+      ],
+      "alpha": [
+        0,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "34f87dac080917e9d9dddc7ab8f0579c32fafe02502de31dbf073c40d4b37b86"
+    }
+  ],
+  "shore@winter": [
+    {
+      "name": "shore@winter-prop-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        7,
+        18,
+        42,
+        30
+      ],
+      "alpha": [
+        0,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "0acf96015865c6b556b6f06f06a2036e79621f5a97899bb116e8e5354eb18fd8"
+    },
+    {
+      "name": "shore@winter-prop-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        7,
+        21,
+        42,
+        27
+      ],
+      "alpha": [
+        0,
+        8,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "de7fc7d344aa8a2b4deb371a0203cb408c99339530b23e7ca809d6c94cbf56d8"
+    },
+    {
+      "name": "shore@winter-prop-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        17,
+        42,
+        32
+      ],
+      "alpha": [
+        0,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "3fd00429d18af671fc2f230f3925ef3d5853457c79221cd7397a11edb4e5811b"
+    },
+    {
+      "name": "shore@winter-prop-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        19,
+        6,
+        29,
+        40
+      ],
+      "alpha": [
+        0,
+        8,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "f2df9df1340c4555a249e3e1a88b00e6d6261a4cfef4a0c8361a85b5a1ba03d5"
+    },
+    {
+      "name": "shore@winter-prop-4",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        9,
+        10,
+        89,
+        86
+      ],
+      "alpha": [
+        0,
+        8,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "d6e5c579cb97753579254319f2da708047b8a0a0c5f9d127a4fc915628c8f53b"
+    },
+    {
+      "name": "shore@winter-prop-5",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        7,
+        18,
+        87,
+        77
+      ],
+      "alpha": [
+        0,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "b756d26e3353a637f84d5dcd5e6fd7ee9351461b45423311b7088c6895abf240"
+    },
+    {
+      "name": "shore@winter-prop-6",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        8,
+        37,
+        89,
+        59
+      ],
+      "alpha": [
+        0,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "425ecdb29d2730a6d73c833df2f2e1bf3f7c393a7888e74e887d3f8a146f23da"
+    },
+    {
+      "name": "shore@winter-prop-7",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        8,
+        33,
+        88,
+        63
+      ],
+      "alpha": [
+        0,
+        8,
+        16,
+        24,
+        48,
+        80,
+        112,
+        152,
+        184
+      ],
+      "visible_colors": 1,
+      "neutral": true,
+      "bottom_center_alpha": 0,
+      "sha256": "29161facccf0efce44a4911bb782535188619b787e8fc4ab34ecd486b648ca6e"
+    }
+  ],
+  "water": [
+    {
+      "name": "water-prop-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        11,
+        43,
+        36
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 11,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "89b815a3519e690cdfda1a61e56808cc799bf35240e601846e23f0d77596c1b1"
+    },
+    {
+      "name": "water-prop-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        11,
+        42,
+        37
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 12,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "1bb44e2358c2a388d11917ab2acd4a985b24d2365781ff4d3cd3649080e08fa1"
+    },
+    {
+      "name": "water-prop-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        9,
+        7,
+        40,
+        42
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 18,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "84d5f44189b444c6a8be4024f47456b2a9cd23933407df585608e0a84d221a80"
+    },
+    {
+      "name": "water-prop-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        13,
+        41,
+        36
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "466f558b215092c4eda9c896466c2695c916f832175cf4f22c0cfbbe49b2cd67"
+    },
+    {
+      "name": "water-prop-4",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        7,
+        15,
+        89,
+        81
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 13,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "70710361a836f68bf55f7e1b91c9e9d7c0fb9435afa792027b1aeb537e063937"
+    },
+    {
+      "name": "water-prop-5",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        7,
+        15,
+        89,
+        81
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "9b02a17773a647d6e23535d27f684aecd64925619c4c804da3a73dea75ef9b49"
+    },
+    {
+      "name": "water-prop-6",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        7,
+        14,
+        89,
+        81
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 21,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "f3fdef67a707ce9ed93fb52a5236c9d4d92b8058008d2498a36418d0167118db"
+    },
+    {
+      "name": "water-prop-7",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        8,
+        13,
+        89,
+        82
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 21,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "69be1e52500d643c13bad57f72e60a89a4be297131e8b2704544710da4fcf99d"
+    }
+  ],
+  "water@winter": [
+    {
+      "name": "water@winter-prop-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        9,
+        41,
+        38
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 19,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "d092a57549bcab7aa50c88a76a5174502058e188e121d267874c0de0ab0ec49f"
+    },
+    {
+      "name": "water@winter-prop-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        8,
+        41,
+        40
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 19,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "5f14b49fc5ce2872fd55553113ee20834b02b89085411d588c8bc6689173d595"
+    },
+    {
+      "name": "water@winter-prop-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        9,
+        6,
+        40,
+        42
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 17,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "da14bc523e88c1260982c4245e7bc359e4f91ba0ee6a40a782c8fd06ef74d9cb"
+    },
+    {
+      "name": "water@winter-prop-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        17,
+        43,
+        30
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 7,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "0f1d1c8e8ce06e6af96533aad95bdeeefa040df44d521de0b8fb540641bc93cf"
+    },
+    {
+      "name": "water@winter-prop-4",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        7,
+        14,
+        89,
+        82
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 11,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "d0fe5faba24840043900d8a44ac342f36e7975f8416409866921b5cb9e4b4811"
+    },
+    {
+      "name": "water@winter-prop-5",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        7,
+        10,
+        89,
+        86
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 13,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "e07f57d7eb740fba44b9b9318ea494ef47e11d0760e111db91b6caa97c563c07"
+    },
+    {
+      "name": "water@winter-prop-6",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        8,
+        15,
+        89,
+        80
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 18,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "a5ffc702bf109ac1586d73bf0221fa1028fe28e0ab51c836de57eb0659288898"
+    },
+    {
+      "name": "water@winter-prop-7",
+      "size": [
+        96,
+        96
+      ],
+      "bbox": [
+        7,
+        12,
+        87,
+        85
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 18,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "ca6bd9551e5580b8b7fb5c53683bdfb9332911720d3b6753c7946c1ec64eddd6"
+    }
+  ],
+  "fantasy-dock": [
+    {
+      "name": "fantasy-dock-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        8,
+        7,
+        40,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 8,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "87fe1c9ec9a7a1b770863b158d614006ffcbcea317b3eee2e9f71b2822a1d1d4"
+    },
+    {
+      "name": "fantasy-dock-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        9,
+        7,
+        38,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "79e93e8fad9ae82f8380cee4a61ff00b3a03aad1b3036a25ea5cf41d4b8fe4de"
+    },
+    {
+      "name": "fantasy-dock-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        7,
+        42,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 12,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "8a694c1815069a62d5286897a010d826d8d16d3345565f5002425a79fb8d460a"
+    },
+    {
+      "name": "fantasy-dock-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        9,
+        7,
+        39,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 12,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "958eb990ca42c52279bcfe75a22c28a9b56f981295c50a597d290835a2e96ff9"
+    }
+  ],
+  "fantasy-boat": [
+    {
+      "name": "fantasy-boat-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        7,
+        43,
+        40
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "672b4e8b0d28f92ed3a6b2352662c625789d1ba8483422180e08dc03dbcb6001"
+    },
+    {
+      "name": "fantasy-boat-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        5,
+        42,
+        43
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "5cad4360d058d42c152f84f7bc1019c83d99dd54594df25c399e4af2f783e42f"
+    },
+    {
+      "name": "fantasy-boat-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        12,
+        43,
+        35
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 8,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "a148d13ebe5e18e4beaf35fe25bc26affd7449dcdd4e9c4a4540b0fab254cfd4"
+    },
+    {
+      "name": "fantasy-boat-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        15,
+        5,
+        33,
+        42
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "52b1355c7687e7622dcad693762a70e56083a24cf504afad5f97cea7bc22dbb3"
+    }
+  ],
+  "wuxia-dock": [
+    {
+      "name": "wuxia-dock-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        7,
+        41,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 14,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "1287dbca5c25882674fbce3b4096e7918d0cca89edaf2149c30625404cc59f6d"
+    },
+    {
+      "name": "wuxia-dock-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        8,
+        43,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 15,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "78918473d14d51e9b3ffb52d86bf506dae0572548ecd086c948221a41358dfbd"
+    },
+    {
+      "name": "wuxia-dock-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        7,
+        42,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "4dbaf803ae2eb9a42a984352069775d4ac964c0dc9cfe0fb5c211ed4f63d3be6"
+    },
+    {
+      "name": "wuxia-dock-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        9,
+        43,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 13,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "0e2b84deffb0fb929b184e4917e88fc39751a41f9cc08905f6cd77c99853dbb5"
+    }
+  ],
+  "wuxia-boat": [
+    {
+      "name": "wuxia-boat-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        11,
+        43,
+        37
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 12,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "4344cc0a1cfed9c0f2af13636207428d70550fd254e945d9455984dd46d71304"
+    },
+    {
+      "name": "wuxia-boat-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        12,
+        43,
+        35
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 14,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "22657a34322b5961f4cd643ce2413099da987045e05d4246d0776e74f5dd3fea"
+    },
+    {
+      "name": "wuxia-boat-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        16,
+        5,
+        32,
+        42
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 16,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "219b5f900081f780964e3682d6167a4a478a6aac866968fbad732f5fb4f397fd"
+    },
+    {
+      "name": "wuxia-boat-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        19,
+        43,
+        29
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 11,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "d0f0420299504368cacca0962586b5bbf8420d27d25609603fa5f10ccc3f9f39"
+    }
+  ],
+  "jazz_age-dock": [
+    {
+      "name": "jazz_age-dock-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        7,
+        7,
+        40,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 16,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "447ae479bb92eab6a213909deb375d47795c755d7c7313a0116efe3d93331c80"
+    },
+    {
+      "name": "jazz_age-dock-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        7,
+        8,
+        40,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 17,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "dbe0b56da8089dba2fe03ac34e2d584a838e1cc24dd5353a5c792139f553ff95"
+    },
+    {
+      "name": "jazz_age-dock-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        8,
+        7,
+        40,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 17,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "928376fabdb3144fc421de9edd3d45e7a673c0eeab477ecd714869b17f2657bf"
+    },
+    {
+      "name": "jazz_age-dock-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        9,
+        8,
+        38,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 16,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "edfac9da0365344c134e187668fc56b52ee11e6bfe3443279debb42f11ad0e67"
+    }
+  ],
+  "jazz_age-boat": [
+    {
+      "name": "jazz_age-boat-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        12,
+        43,
+        36
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 18,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "8b5923fa10c94d712e2e13784ceddbc0dcc0d9519db46c696157187fe13b6676"
+    },
+    {
+      "name": "jazz_age-boat-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        10,
+        43,
+        37
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 15,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "e2477925cdd6f84aca2ad1a7b2bd4e875b5be46181ae1d00e1c42e1b6a824822"
+    },
+    {
+      "name": "jazz_age-boat-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        13,
+        5,
+        34,
+        43
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 19,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "a0b9e3aea8480932cd82d4e9af08e103da65ee312dd7e519401153adcba53426"
+    },
+    {
+      "name": "jazz_age-boat-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        12,
+        42,
+        36
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 15,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "a0eb7e410cc2db52ab5151600c83e893af95bc9702af5eb643f97a5886a853ba"
+    }
+  ],
+  "modern-dock": [
+    {
+      "name": "modern-dock-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        7,
+        41,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 11,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "9221525b1ac1c34452045cb10d90d723c108f1cb03ac0f8b38e03ab7229610f9"
+    },
+    {
+      "name": "modern-dock-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        17,
+        7,
+        40,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 10,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "651620bbf443a3348039876de170440529c9e73fb7ca08895cf5ae106c71f2f7"
+    },
+    {
+      "name": "modern-dock-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        7,
+        7,
+        41,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 11,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "e2f8303d70a9cc76e8abfea59b05c772bd80c3585e9f4f33d285138cb994c577"
+    },
+    {
+      "name": "modern-dock-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        7,
+        42,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 14,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "39a662a5c6d5dc4bc7f23da3f444ffc387a647a730c14998a95d2a579e0dc8b5"
+    }
+  ],
+  "modern-boat": [
+    {
+      "name": "modern-boat-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        12,
+        43,
+        36
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 10,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "1490cd00cfc65039915aa211bee329911c3c501159c34634c25f75751bca60d1"
+    },
+    {
+      "name": "modern-boat-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        8,
+        43,
+        38
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 17,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "d3f146b3854bb4dca60550b2f9af4ebaa9bf87ba88ce1916de6b21e5e042d338"
+    },
+    {
+      "name": "modern-boat-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        15,
+        5,
+        33,
+        42
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 15,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "f1a84371965e2b2c8382c8b01cc24ff7886564d2035f525424cc7fd057de4b33"
+    },
+    {
+      "name": "modern-boat-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        10,
+        5,
+        37,
+        42
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 16,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "bd0cd98a4e08e288169b8b772b893ec372fdfbdde9c084f3272c06b0cd0193dc"
+    }
+  ],
+  "scifi-dock": [
+    {
+      "name": "scifi-dock-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        7,
+        42,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 10,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "90fcaffdaa40a59951e081439dca5b0d872b3ffbcf7b156c9756d3c6b26a701e"
+    },
+    {
+      "name": "scifi-dock-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        7,
+        7,
+        41,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 10,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "d3e615aa2052f8173075f1f384f0a83efde3325af346db1b402e38f01af8c4e9"
+    },
+    {
+      "name": "scifi-dock-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        7,
+        41,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 13,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "5a77bb28481bb85395eb3b0f7806c9a4d1df0fe364ef491671e5a65c6d4e9d7d"
+    },
+    {
+      "name": "scifi-dock-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        7,
+        10,
+        41,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 12,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "1960851ba7f0d878209824a589f3dab7b92136f365a8b1642b2d04a407b2f4fc"
+    }
+  ],
+  "scifi-boat": [
+    {
+      "name": "scifi-boat-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        10,
+        43,
+        36
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "4cdb4af860d85342f417465b84960b046f3bde4abbc96baa36dbf5c87abc1ea8"
+    },
+    {
+      "name": "scifi-boat-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        9,
+        43,
+        37
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 12,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "513f96550efe5643c4a1933eec6256a30bb2ee26db9f2c5454fa6bcbda7a278a"
+    },
+    {
+      "name": "scifi-boat-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        14,
+        5,
+        34,
+        43
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 9,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "d5349078c1519148431d12351e9da9a8318bde5ac48237ff02fdc69cf6bbd791"
+    },
+    {
+      "name": "scifi-boat-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        9,
+        43,
+        37
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 12,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "12ef80723e042645d5fd5e8cf7bedee44fe144ef005af9dac8c023015c7d1873"
+    }
+  ],
+  "wasteland-dock": [
+    {
+      "name": "wasteland-dock-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        6,
+        8,
+        42,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 16,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "f169ba1d0ae19157eba0caeff67f1dfd62b236d78aa98e394e4ea9091e3caf45"
+    },
+    {
+      "name": "wasteland-dock-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        11,
+        8,
+        38,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 14,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "809fde2e2fa24232ac7d0ebb7d317465305e482409d731713a4dc025f01b3504"
+    },
+    {
+      "name": "wasteland-dock-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        8,
+        42,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 17,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "70224ab2dedb955f1c21556dfe93ac62c4caeff2f56e848a9804a404b665368b"
+    },
+    {
+      "name": "wasteland-dock-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        7,
+        7,
+        40,
+        48
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 17,
+      "neutral": false,
+      "bottom_center_alpha": 255,
+      "sha256": "fc93ba1f21bbf61dabc6ef285529819018bf8eb36fdc675c7247207767a7da8a"
+    }
+  ],
+  "wasteland-boat": [
+    {
+      "name": "wasteland-boat-0",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        9,
+        43,
+        38
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 15,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "aa967295a0af4097c897ab4d88ce8684006c13bb50a197267ff05629ccea5ae0"
+    },
+    {
+      "name": "wasteland-boat-1",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        9,
+        43,
+        39
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 17,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "66fab7158bf277e2d9d471a5c404a153a56442120ba3f0a9adaffec8fb693ea9"
+    },
+    {
+      "name": "wasteland-boat-2",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        12,
+        5,
+        36,
+        42
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 18,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "1e3e5f5f3226a141c34e2feef55cc11f21e61db80f526dcf20b5d21df18e2213"
+    },
+    {
+      "name": "wasteland-boat-3",
+      "size": [
+        48,
+        48
+      ],
+      "bbox": [
+        5,
+        8,
+        43,
+        40
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "visible_colors": 17,
+      "neutral": false,
+      "bottom_center_alpha": 0,
+      "sha256": "7ceedc2a5917bddea2b57849f4a563849897886b34cd38c36bc53afc096049b8"
+    }
+  ]
+}
