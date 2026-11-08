@@ -181,7 +181,8 @@ for feature in load("ne_10m_populated_places_simple"):
         {
             "name": props["nameascii"] or props["name"],
             "country": props["adm0name"],
-            **({"state": props["adm1name"]} if props.get("adm1name") else {}),
+            # Natural Earth's adm1 names lost some letters to "?" (Vietnam's provinces): left out, not shown so.
+            **({"state": props["adm1name"]} if props.get("adm1name") and "?" not in props["adm1name"] else {}),
             "lon": round(props["longitude"], 3),
             "lat": round(props["latitude"], 3),
             "pop": int(props["pop_max"] or 0),

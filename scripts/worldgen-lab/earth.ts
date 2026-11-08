@@ -13,6 +13,7 @@ import {
   worldBeyondText,
   worldBriefSchema,
   worldEarthCentre,
+  worldEarthTerrain,
   worldTerrainLook,
   type WorldEarthData,
 } from "../../packages/shared/src/index.js";
@@ -62,6 +63,7 @@ const COLORS: Record<string, string> = {
   suburb: "#d9a088",
   conifer_forest: "#2f5f3a",
   desert: "#e3cf96",
+  jungle: "#1f6b3a",
   snow: "#f2f2f2",
   scrub: "#b7a77a",
   wasteland: "#a08a6a",
@@ -96,7 +98,7 @@ for (const run of runs) {
   const world = compileWorld({ seed: Number(process.env.SEED ?? 7), kit, brief });
   const beyond = worldBeyondGround({ kit, seed: 7, grounding: "expand", brief, world });
   const P = beyond.pad * S;
-  const looks = world.terrain.map((id) => worldTerrainLook(kit.terrain!.find((t) => t.id === id)!));
+  const looks = world.terrain.map((id) => worldTerrainLook(worldEarthTerrain(kit).find((t) => t.id === id)!));
   let body = "";
   for (let i = 0; i < beyond.cells.length; i++) {
     const index = beyond.cells[i]!;

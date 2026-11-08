@@ -93,8 +93,9 @@ export type WorldWetness = (id: string) => number;
 /**
  * The kit's ground over the real land: sea and lakes where they are; the barrier (mountains) where the land
  * is high or steep, the hills below them, snow on the ice and the high peaks, marsh on wet low ground by the
- * water, and the rest by the real climate, each cell the wild ground class whose place from dry to wet is
- * nearest its dryness. Worked and built-up ground (fields, suburbs, the city) is left to the rings round
+ * water, jungle in the wet tropics, and the rest by the real climate, each cell the wild ground class
+ * whose place from dry to wet is nearest its dryness. The compile hands it the Earth's own ground the kit
+ * lacks (worldEarthTerrain: desert, scrub, jungle, snow, marsh, hills), so the Sahara is desert. Worked and built-up ground (fields, suburbs, the city) is left to the rings round
  * the settlements, as on any map; ruins keep their share, for the history to lay them.
  */
 export function worldEarthGround(
@@ -145,7 +146,8 @@ export function worldEarthGround(
   const snow = firstOf(/snow|tundra|\bice\b|glacier|frost/);
   const marsh = firstOf(/marsh|swamp|bog|\bfen|wetland/);
   const ruins = firstOf(/\bruin/);
-  const special = new Set([...hills, ...snow, ...marsh, ...ruins]);
+  const jungle = firstOf(/jungle|rainforest|tropic/);
+  const special = new Set([...hills, ...snow, ...marsh, ...ruins, ...jungle]);
   let wild = open.filter((entry) => !special.has(entry) && !worked(entry));
   if (!wild.length) wild = open.filter((entry) => !special.has(entry));
   if (!wild.length) wild = open;
@@ -184,6 +186,11 @@ export function worldEarthGround(
     }
     if (marsh.length && metres[cell]! < 60 && dry[cell]! < 0.4 && noise[cell]! > 0.55 && nearWater(cell)) {
       kinds[cell] = pickBy(marsh, cell).index;
+      continue;
+    }
+    // The wet tropics are jungle, whatever share the kit gives its woods.
+    if (jungle.length && Math.abs(latitude[cell]!) <= 23.5 && dry[cell]! < 0.2 + (noise[cell]! - 0.5) * 0.1) {
+      kinds[cell] = pickBy(jungle, cell).index;
       continue;
     }
     landCells.push(cell);
