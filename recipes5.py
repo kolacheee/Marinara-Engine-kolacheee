@@ -13,7 +13,8 @@ def key_half(half, thr=28, soft=28):
     """Alpha from the half's own flat backdrop colour (sampled at its corners).
     Only backdrop CONNECTED to the border goes: light fills inside the outline (same tone as the backdrop) stay."""
     rgb = half.convert("RGB")
-    diff = ImageChops.difference(rgb, Image.new("RGB", rgb.size, corner_bg(rgb))).convert("L")
+    r, g, b = ImageChops.difference(rgb, Image.new("RGB", rgb.size, corner_bg(rgb))).split()
+    diff = ImageChops.lighter(ImageChops.lighter(r, g), b)  # max channel: a dark red on dark brown still counts
     a = diff.point(lambda v: 0 if v < thr else 255 if v > thr + soft else int(255 * (v - thr) / soft))
     m = a.point(lambda v: 255 if v > 0 else 0)
     w, h = m.size
