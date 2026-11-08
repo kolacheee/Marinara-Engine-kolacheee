@@ -3,6 +3,7 @@
 AI-generated with the OpenAI Codex CLI's built-in image tool (codex-cli 0.166.0-alpha.6, ChatGPT plan), then resized, cropped and made seamless locally by `process.py` (Pillow). Not CC0 or hand-made art: note the provenance wherever these land.
 
 - `gen.sh` runs one Codex generation; `jobs1.txt` holds the first-pass prompts, `jobs2.txt` the night versions, `jobs3.txt` regen batch 1 (creator frame/stickers/strip, Seraphine) (each an edit of its day image, so the pair lines up).
+- `minimal/backdrop-day.png` and `backdrop-night.png` are drawn exactly by `draw_minimal.py` (Pillow, no AI): circle #E10600, diameter 40% of height, centre 74% across / 35% down; 3 px line at 82% down; day field #F2F0EC with faint noise grain, night #0A0A0A with a #E8E8E8 line.
 - 9-slice frames: decoration only in the outer 32 px (24 px for access, 40 px top / 16 px bottom for the pixel window); the middle is transparent.
 - Strips repeat left to right: a measured pattern period, or a mirrored tile for the lace.
 
