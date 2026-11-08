@@ -14,6 +14,7 @@ import {
   type CompiledWorld,
   type WorldPlace,
 } from "./compile.js";
+import { worldBeyondText } from "./beyond.js";
 import { applyWorldEdits, checkWorldEdits, worldEditsSchema, worldPlaceNamed, type WorldEdits } from "./edits.js";
 import { worldEditsFightable } from "./battlefield-maps.js";
 import { WORLD_RESOURCE_WORDS } from "./land.js";
@@ -261,6 +262,8 @@ export function worldOverviewPromptText(game: GameWorld): string {
     `- Now: ${brief.premise}`,
     ...(outer.length ? [`- ${outer.map((place) => describe(kit, place)).join("; ")}.`] : []),
     `- Biggest places: ${biggest.map((place) => describe(kit, place)).join("; ")}.`,
+    // The land past the map's edges, so the world does not end there.
+    ...[worldBeyondText(game)].filter(Boolean),
     ...brief.groups
       .slice(0, 8)
       .map((group) =>

@@ -167,6 +167,16 @@ const earthRiver = z
   })
   .strict();
 
+/** Past each edge of the map: the sea, or the lands there (the biggest first). */
+const worldBeyondLand = z
+  .object({
+    side: z.enum(["north", "east", "south", "west"]),
+    sea: z.literal(true).optional(),
+    names: z.array(promptSafeText(80)).max(3).default([]),
+  })
+  .strict();
+export type WorldBeyondLand = z.infer<typeof worldBeyondLand>;
+
 /**
  * The Earth seed: a world made from the real Earth over an area, rather than drawn from the seed. The
  * area's land, heights and climate are sampled once, by the server from its Earth grid, at the size the
@@ -188,6 +198,17 @@ export const worldEarthSchema = z
     ground: z.string().max(60000),
     rivers: z.array(earthRiver).max(400).default([]),
     cities: z.array(earthCity).max(400).default([]),
+    /** The land past the map's edge (drawn round it, never walked): the same three planes over the map
+     *  with `pad` cells more on every side, the rivers there (cells of that larger grid), and the lands. */
+    beyond: z
+      .object({
+        pad: z.number().int().min(1).max(16),
+        ground: z.string().max(60000),
+        rivers: z.array(earthRiver).max(200).default([]),
+        lands: z.array(worldBeyondLand).max(4).default([]),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 export type WorldEarth = z.infer<typeof worldEarthSchema>;

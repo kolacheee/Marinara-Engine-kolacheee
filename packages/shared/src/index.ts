@@ -97,6 +97,7 @@ export * from "./features/world/faiths.js";
 export * from "./features/world/earth.js";
 export * from "./features/world/earth-sample.js";
 export * from "./features/world/earth-history.js";
+export * from "./features/world/beyond.js";
 export * from "./features/world/ledger.js";
 export * from "./features/world/engine.js";
 export * from "./features/world/loot.js";

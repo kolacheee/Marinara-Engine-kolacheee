@@ -2092,3 +2092,7 @@ export function compileLinks(
     return sorted.map(([a, b]) => laid.get(`${a}:${b}`)!);
   }
 }
+
+/** For the land past the map's edge (beyond.ts): the ground's noise and where a ground class sits from dry
+ *  to wet, as the map's own ground is made with. */
+export { valueNoise as worldValueNoise, wetness as worldWetness };
