@@ -151,10 +151,16 @@ export const WORLD_BUILDING_PIECES: Readonly<Record<string, readonly Rect[]>> = 
   buildings_industry: [...buildingRow(6, 0, 1, 1), ...buildingRow(4, 1, 2, 2)],
   // Suburbs (the owner, 2026-11-07: "Surely suburbs, at least"): twelve houses, then eight yard props.
   buildings_suburb: [...buildingRow(8, 0, 1, 1), ...buildingRow(4, 1, 1, 1), ...buildingRow(8, 2, 1, 1)],
+  // A farm's buildings over its fields (the owner, 2026-11-07): a farmhouse, a barn, a granary or shed, a
+  // cart, a pen, a tower or silo, one cell each.
+  farmstead_props: buildingRow(6, 0, 1, 1),
 });
 /** The first yard prop in a building block (a hedge, a shed, a pool), drawn in the gaps between its houses. */
 export const WORLD_BUILDING_YARDS: Readonly<Record<string, number>> = Object.freeze({ buildings_suburb: 12 });
-export const WORLD_BUILDING_TILE_IDS = Object.freeze(WORLD_BUILDING_LOOKS.map((look) => `buildings_${look}` as const));
+export const WORLD_BUILDING_TILE_IDS = Object.freeze([
+  ...WORLD_BUILDING_LOOKS.map((look) => `buildings_${look}` as const),
+  "farmstead_props" as const,
+]);
 const blockOf = (id: string): readonly [number, number] => {
   const pieces = WORLD_BUILDING_PIECES[id]!;
   return [Math.max(...pieces.map((p) => p.x + p.w)), Math.max(...pieces.map((p) => p.y + p.h))];

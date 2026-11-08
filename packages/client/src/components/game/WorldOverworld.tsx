@@ -1299,6 +1299,60 @@ export function WorldOverworld({
           });
         }
     }
+    // Farms over the fields (the owner, 2026-11-07, farmsteads as props): now and then a farmhouse on a field
+    // cell, with one or two of its outbuildings (a barn, a granary, a cart, a pen, a silo) on the field cells
+    // beside, each farm two cells or more from the next, never on a way, a river or beside a place.
+    if (drawTile.hasPiece("farmstead_props", 0)) {
+      const farmed = new Set<number>();
+      const free = (x: number, y: number) => {
+        if (x < 0 || y < 0 || x >= width || y >= height) return false;
+        const at = y * width + x;
+        if (drawnLook[at] !== "farmland" || wetCell[at] || riverCells.has(at) || farmed.has(at)) return false;
+        for (let dy = -1; dy <= 1; dy++)
+          for (let dx = -1; dx <= 1; dx++) {
+            const near = (y + dy) * width + x + dx;
+            if (placed.has(near)) return false;
+            if (!dx && !dy && (roads.has(near) || lanes.has(near))) return false;
+          }
+        return true;
+      };
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          const noise = cellNoise(x, y);
+          if (noise(90) >= 0.14 || !free(x, y)) continue;
+          let crowded = false;
+          for (let dy = -2; dy <= 2; dy++)
+            for (let dx = -2; dx <= 2; dx++) if (farmed.has((y + dy) * width + x + dx)) crowded = true;
+          if (crowded) continue;
+          const farm: Array<[number, number, number]> = [[x, y, 0]];
+          // Its outbuildings, each a different one, on the free field cells beside.
+          let next = 1 + Math.floor(noise(91) * 5);
+          const want = noise(92) < 0.5 ? 1 : 2;
+          for (const [dx, dy] of [
+            [1, 0],
+            [0, 1],
+            [-1, 0],
+            [1, 1],
+          ] as const) {
+            if (farm.length > want) break;
+            if (!free(x + dx, y + dy) || noise(93 + dx + dy * 2) < 0.3) continue;
+            farm.push([x + dx, y + dy, next]);
+            next = 1 + (next % 5);
+          }
+          for (const [fx, fy, piece] of farm) {
+            farmed.add(fy * width + fx);
+            const spot = cellNoise(fx, fy);
+            trees.push({
+              x: fx + 0.5 + (spot(94) - 0.5) * 0.2,
+              y: fy + 0.92,
+              id: "farmstead_props",
+              pick: piece,
+              w: 1,
+              h: 1,
+            });
+          }
+        }
+    }
     // Small things on open ground (a flower clump, a rock, a bush): about one cell in five wholly inside
     // its look, never on or beside a road or a place, so nothing is cut by another ground's edge.
     const nearWay = (x: number, y: number) => {
