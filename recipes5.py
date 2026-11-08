@@ -55,7 +55,8 @@ def avatar_sheet(k, bgs, fill, grid=None):
 
 def pixel_backdrop(k, w, h, px=3, colours=32):
     img = opaque(raw(k), w, h)
-    art = pixelize(img, w // px, h // px, colours)
+    # the raw is already flat pixel art: nearest-sample the cell centres (a palette quantize drops the few lit windows)
+    art = img.resize((w // px, h // px), NN)
     return up(art, px).crop((0, 0, w, h)).convert("RGB")
 
 

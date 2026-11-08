@@ -4,3 +4,5 @@ maximal/petals-gutter rc=0 secs=77 exists=yes
 maximal/backdrop-day-portrait rc=0 secs=64 exists=yes
 immersion/avatar-defaults rc=0 secs=98 exists=yes
 creator/avatar-defaults rc=0 secs=118 exists=yes
+neon/backdrop-day-portrait rc=0 secs=131 exists=yes
+maximal/backdrop-night-portrait rc=0 secs=105 exists=yes
