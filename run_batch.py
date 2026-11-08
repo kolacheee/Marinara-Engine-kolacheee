@@ -10,21 +10,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 WORK, R3 = ROOT / "work", ROOT / "work" / "_r3"
-SKIP = {"minimal/game-stage"}  # exact geometry: drawn by draw_minimal.py, not generated
+SKIP = set()
 # regen lines whose brief says to keep the delivered shape: edit the current image instead of starting over
-EDIT = {"cozy/washi-tape", "maximal/backdrop-day", "creator/frame-card"}
+EDIT = set()
 
 # twin <- source: the twin is an edit of the source's raw, so the pair lines up
 TWINS = {
-    "access/backdrop-night": "access/backdrop-day",
-    "access/horizon-strip-night": "access/horizon-strip-day",
-    "access/sprig-night": "access/sprig-day",
-    "immersion/backdrop-day": "immersion/backdrop-night",
-    "creator/backdrop-night-v2": "creator/backdrop-day-v2",
-    "creator/topbar-band-night": "creator/topbar-band-day",
-    "cozy/backdrop-night": "cozy/backdrop-day",
-    "neon/backdrop-day": "neon/backdrop-night",
-    "maximal/backdrop-night": "maximal/backdrop-day",
+    "neon/backdrop-day-portrait": "neon/backdrop-night-portrait",
+    "maximal/backdrop-night-portrait": "maximal/backdrop-day-portrait",
+}
+# r5: style/content references from the delivered round-4 images (persona/name under images/)
+REFS = {
+    "neon/backdrop-night-portrait": ["neon/backdrop-night"],
+    "maximal/backdrop-day-portrait": ["maximal/backdrop-day"],
+    "maximal/avatar-defaults": ["maximal/portraits", "maximal/emblem"],
+    "maximal/petals-gutter": ["maximal/stickers"],
+    "creator/avatar-defaults": ["creator/backdrop-day-v2", "creator/sidebar-foot"],
+    "immersion/avatar-defaults": ["immersion/char-seraphine"],
 }
 
 
@@ -65,6 +67,12 @@ def main():
         ref, mode = "", ""
         if src and (WORK / src / "raw.png").exists():
             ref, mode = str(WORK / src / "raw.png"), "twin"
+            if k == "neon/backdrop-day-portrait":  # relight target look
+                ref += "," + str(ROOT / "images/neon/backdrop-day.png")
+            if k == "maximal/backdrop-night-portrait":
+                ref += "," + str(ROOT / "images/maximal/backdrop-night.png")
+        elif k in REFS:
+            ref, mode = ",".join(str(ROOT / "images" / f"{r}.png") for r in REFS[k]), "ref"
         elif j["prompt"].startswith("REGEN"):
             cur = ROOT / "images" / f"{k}.png"  # the current delivered image; round 3's if this round has none yet
             old = cur if cur.exists() else R3 / f"{k}.png"

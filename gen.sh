@@ -1,18 +1,24 @@
 #!/bin/bash
-# usage: gen.sh persona name "subject prompt" [reference-image] [twin|regen]
-#   twin  = edit the reference into its day/night twin, keeping composition (default when a reference is given)
+# usage: gen.sh persona name "subject prompt" [ref1,ref2,...] [twin|regen|ref]
+#   twin  = edit the first reference into its relit twin, keeping composition (default when a reference is given)
 #   regen = the reference is the previous round's image, shown only so the model sees what to fix
+#   ref   = the references are existing theme images: match their style/content, recompose per the brief
 P=$1; N=$2; S=$3; R=$4; M=${5:-twin}
-ROOT=~/Downloads/marinara-theme-images-r4
+ROOT=~/Downloads/marinara-theme-images-r5
 W=$ROOT/work/$P/$N
 mkdir -p "$W"
-IMG=(); PRE="create exactly one image"
+IMG=(); PRE="create exactly one image"; NAMES=()
 if [ -n "$R" ]; then
-  cp "$R" "$W/ref.png"; IMG=(-i "$W/ref.png")
+  i=0; IFS=, read -ra RS <<< "$R"
+  for r in "${RS[@]}"; do i=$((i+1)); cp "$r" "$W/ref$i.png"; IMG+=(-i "$W/ref$i.png"); NAMES+=("ref$i.png ($(basename "$(dirname "$r")")/$(basename "$r"))"); done
+  LIST=$(IFS=';'; echo "${NAMES[*]}")
   if [ "$M" = regen ]; then
-    PRE="create exactly one NEW image. The attached ref.png is the previous version, shown only so you can see what went wrong; do not copy it where the brief below differs, follow the brief"
+    PRE="create exactly one NEW image. The attached ref1.png is the previous version, shown only so you can see what went wrong; do not copy it where the brief below differs, follow the brief"
+  elif [ "$M" = ref ]; then
+    PRE="create exactly one NEW image. The attached images are existing images from the same theme, given as style and content references: $LIST. Match their style, palette and subject matter, but compose a new image exactly as the brief below says"
   else
-    PRE="edit the attached reference image (ref.png) into exactly one new image, keeping the same composition, layout, camera and shapes in the same positions, changing only what the brief asks"
+    PRE="edit the attached reference image (ref1.png) into exactly one new image, keeping the same composition, layout, camera and shapes in the same positions, changing only what the brief asks"
+    [ ${#RS[@]} -gt 1 ] && PRE="$PRE (ref2.png is an existing image showing the target lighting and palette to match; take only its look, not its composition)"
   fi
 fi
 start=$(date +%s)
