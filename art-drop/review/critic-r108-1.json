@@ -1,0 +1,510 @@
+{
+  "sets": {
+    "_scope": {
+      "brief": "art-drop/BRIEF-10.md, Part 8; inherited global style/seasons and applicable QC",
+      "target_count": 192,
+      "prior_review": "critic-r108-0.json does not exist; no prior-pass exceptions to apply.",
+      "reviewed_at": "1x and nearest-neighbour 4x ordered/context/random composites; every target also viewed at nearest-neighbour 8x on checkerboard.",
+      "applicable_checks": [
+        "All 192 landmarks planted on matching seasonal approved grass.",
+        "For every family and season, an 8x2 random arrangement contains every one of the eight sprites twice; reviewed at 1x and 4x.",
+        "Every file inspected at 8x for pixel clusters, silhouette, outline, stray pixels and fringe.",
+        "Compared against all four named reference markers for each family, complete house references where present, approved out markers, approved round-2 examples, paddies, and all seasonal grass/plains base-and-detail examples.",
+        "Checked 48x48 dimensions, transparency, bottom-centre placement, top-left light, palette fit, distinctness of the eight roles, and meaningful nonblank winter treatment."
+      ],
+      "not_applicable": {
+        "3x3_target_base_tiling": "Part 8 has no base files. Approved grass/plains are comparison material, not verdict targets.",
+        "peak_lattice_or_range": "Part 8 has no peaks; egg-crate peak defect is outside this target set.",
+        "trees_in_forest": "Part 8 has no trees; identical crowns and flat-orange forest autumn are outside this target set.",
+        "other_motifs": "Part 8 has no crater, ruins or cyberpunk ground tiles; Swiss-cheese craters, classical ruins and stamped ground grids are outside this target set."
+      },
+      "technical_result": "All 192 are 48x48 RGBA with alpha values 0/255, nonempty art and bottom-centred placement. No blank winters or visible alpha halos. Technical compliance does not override the visual failures below.",
+      "general_visual_result": "No additional target seam, background-grid, blur, antialias fringe, reversed-light, setting-palette or within-set near-duplicate failures found. The cyan hologram is accepted as a deliberate setting-specific graphic; the earthy wasteland palette is consistent with its approved markers.",
+      "evidence_prefix": "art-drop/review/critic-r108-1-",
+      "evidence_key": {
+        "ordered": "Rows summer, spring, autumn, winter; columns indices 0..7; 1x/4x.",
+        "random-8x2": "Four seasonal panels, each 8 columns by 2 rows, each index twice; 1x/4x.",
+        "edges-8x": "One sheet per family/season, indices 0..3 top and 4..7 bottom; complete 48x48 sprites on checkerboard.",
+        "style-context": "Approved out markers and complete named house references beside all target seasons; 1x/4x.",
+        "approved-terrain": "Seasonal grass/plains bases and details beside paddies; 1x/4x.",
+        "approved-round2": "Approved city/industry/slums and landscape examples; comparison only, 1x/4x."
+      },
+      "out_integrity": "SHA-256 of every PNG in out/ is unchanged from the pre-review snapshot."
+    },
+    "fantasy": {
+      "count": 32,
+      "pass_count": 24,
+      "fail_count": 8,
+      "status": "fail",
+      "checked_seasons": [
+        "summer",
+        "spring",
+        "autumn",
+        "winter"
+      ],
+      "checked_scales": [
+        1,
+        4,
+        8
+      ],
+      "evidence": [
+        "critic-r108-1-fantasy-ordered-1x.png",
+        "critic-r108-1-fantasy-ordered-4x.png",
+        "critic-r108-1-fantasy-random-8x2-1x.png",
+        "critic-r108-1-fantasy-random-8x2-4x.png",
+        "critic-r108-1-fantasy-style-context-1x.png",
+        "critic-r108-1-fantasy-style-context-4x.png",
+        "critic-r108-1-fantasy-summer-edges-8x.png",
+        "critic-r108-1-fantasy-spring-edges-8x.png",
+        "critic-r108-1-fantasy-autumn-edges-8x.png",
+        "critic-r108-1-fantasy-winter-edges-8x.png"
+      ]
+    },
+    "wuxia": {
+      "count": 32,
+      "pass_count": 24,
+      "fail_count": 8,
+      "status": "fail",
+      "checked_seasons": [
+        "summer",
+        "spring",
+        "autumn",
+        "winter"
+      ],
+      "checked_scales": [
+        1,
+        4,
+        8
+      ],
+      "evidence": [
+        "critic-r108-1-wuxia-ordered-1x.png",
+        "critic-r108-1-wuxia-ordered-4x.png",
+        "critic-r108-1-wuxia-random-8x2-1x.png",
+        "critic-r108-1-wuxia-random-8x2-4x.png",
+        "critic-r108-1-wuxia-style-context-1x.png",
+        "critic-r108-1-wuxia-style-context-4x.png",
+        "critic-r108-1-wuxia-summer-edges-8x.png",
+        "critic-r108-1-wuxia-spring-edges-8x.png",
+        "critic-r108-1-wuxia-autumn-edges-8x.png",
+        "critic-r108-1-wuxia-winter-edges-8x.png"
+      ]
+    },
+    "jazz_age": {
+      "count": 32,
+      "pass_count": 24,
+      "fail_count": 8,
+      "status": "fail",
+      "checked_seasons": [
+        "summer",
+        "spring",
+        "autumn",
+        "winter"
+      ],
+      "checked_scales": [
+        1,
+        4,
+        8
+      ],
+      "evidence": [
+        "critic-r108-1-jazz_age-ordered-1x.png",
+        "critic-r108-1-jazz_age-ordered-4x.png",
+        "critic-r108-1-jazz_age-random-8x2-1x.png",
+        "critic-r108-1-jazz_age-random-8x2-4x.png",
+        "critic-r108-1-jazz_age-style-context-1x.png",
+        "critic-r108-1-jazz_age-style-context-4x.png",
+        "critic-r108-1-jazz_age-summer-edges-8x.png",
+        "critic-r108-1-jazz_age-spring-edges-8x.png",
+        "critic-r108-1-jazz_age-autumn-edges-8x.png",
+        "critic-r108-1-jazz_age-winter-edges-8x.png"
+      ]
+    },
+    "modern": {
+      "count": 32,
+      "pass_count": 32,
+      "fail_count": 0,
+      "status": "pass",
+      "checked_seasons": [
+        "summer",
+        "spring",
+        "autumn",
+        "winter"
+      ],
+      "checked_scales": [
+        1,
+        4,
+        8
+      ],
+      "evidence": [
+        "critic-r108-1-modern-ordered-1x.png",
+        "critic-r108-1-modern-ordered-4x.png",
+        "critic-r108-1-modern-random-8x2-1x.png",
+        "critic-r108-1-modern-random-8x2-4x.png",
+        "critic-r108-1-modern-style-context-1x.png",
+        "critic-r108-1-modern-style-context-4x.png",
+        "critic-r108-1-modern-summer-edges-8x.png",
+        "critic-r108-1-modern-spring-edges-8x.png",
+        "critic-r108-1-modern-autumn-edges-8x.png",
+        "critic-r108-1-modern-winter-edges-8x.png"
+      ]
+    },
+    "scifi": {
+      "count": 32,
+      "pass_count": 30,
+      "fail_count": 2,
+      "status": "fail",
+      "checked_seasons": [
+        "summer",
+        "spring",
+        "autumn",
+        "winter"
+      ],
+      "checked_scales": [
+        1,
+        4,
+        8
+      ],
+      "evidence": [
+        "critic-r108-1-scifi-ordered-1x.png",
+        "critic-r108-1-scifi-ordered-4x.png",
+        "critic-r108-1-scifi-random-8x2-1x.png",
+        "critic-r108-1-scifi-random-8x2-4x.png",
+        "critic-r108-1-scifi-style-context-1x.png",
+        "critic-r108-1-scifi-style-context-4x.png",
+        "critic-r108-1-scifi-summer-edges-8x.png",
+        "critic-r108-1-scifi-spring-edges-8x.png",
+        "critic-r108-1-scifi-autumn-edges-8x.png",
+        "critic-r108-1-scifi-winter-edges-8x.png"
+      ]
+    },
+    "wasteland": {
+      "count": 32,
+      "pass_count": 23,
+      "fail_count": 9,
+      "status": "fail",
+      "checked_seasons": [
+        "summer",
+        "spring",
+        "autumn",
+        "winter"
+      ],
+      "checked_scales": [
+        1,
+        4,
+        8
+      ],
+      "evidence": [
+        "critic-r108-1-wasteland-ordered-1x.png",
+        "critic-r108-1-wasteland-ordered-4x.png",
+        "critic-r108-1-wasteland-random-8x2-1x.png",
+        "critic-r108-1-wasteland-random-8x2-4x.png",
+        "critic-r108-1-wasteland-style-context-1x.png",
+        "critic-r108-1-wasteland-style-context-4x.png",
+        "critic-r108-1-wasteland-summer-edges-8x.png",
+        "critic-r108-1-wasteland-spring-edges-8x.png",
+        "critic-r108-1-wasteland-autumn-edges-8x.png",
+        "critic-r108-1-wasteland-winter-edges-8x.png"
+      ]
+    }
+  },
+  "pass": [
+    "fantasy-landmark-0",
+    "fantasy-landmark-1",
+    "fantasy-landmark-2",
+    "fantasy-landmark-5",
+    "fantasy-landmark-6",
+    "fantasy-landmark-7",
+    "fantasy-landmark@spring-0",
+    "fantasy-landmark@spring-1",
+    "fantasy-landmark@spring-2",
+    "fantasy-landmark@spring-5",
+    "fantasy-landmark@spring-6",
+    "fantasy-landmark@spring-7",
+    "fantasy-landmark@autumn-0",
+    "fantasy-landmark@autumn-1",
+    "fantasy-landmark@autumn-2",
+    "fantasy-landmark@autumn-5",
+    "fantasy-landmark@autumn-6",
+    "fantasy-landmark@autumn-7",
+    "fantasy-landmark@winter-0",
+    "fantasy-landmark@winter-1",
+    "fantasy-landmark@winter-2",
+    "fantasy-landmark@winter-5",
+    "fantasy-landmark@winter-6",
+    "fantasy-landmark@winter-7",
+    "wuxia-landmark-0",
+    "wuxia-landmark-1",
+    "wuxia-landmark-2",
+    "wuxia-landmark-5",
+    "wuxia-landmark-6",
+    "wuxia-landmark-7",
+    "wuxia-landmark@spring-0",
+    "wuxia-landmark@spring-1",
+    "wuxia-landmark@spring-2",
+    "wuxia-landmark@spring-5",
+    "wuxia-landmark@spring-6",
+    "wuxia-landmark@spring-7",
+    "wuxia-landmark@autumn-0",
+    "wuxia-landmark@autumn-1",
+    "wuxia-landmark@autumn-2",
+    "wuxia-landmark@autumn-5",
+    "wuxia-landmark@autumn-6",
+    "wuxia-landmark@autumn-7",
+    "wuxia-landmark@winter-0",
+    "wuxia-landmark@winter-1",
+    "wuxia-landmark@winter-2",
+    "wuxia-landmark@winter-5",
+    "wuxia-landmark@winter-6",
+    "wuxia-landmark@winter-7",
+    "jazz_age-landmark-0",
+    "jazz_age-landmark-1",
+    "jazz_age-landmark-2",
+    "jazz_age-landmark-5",
+    "jazz_age-landmark-6",
+    "jazz_age-landmark-7",
+    "jazz_age-landmark@spring-0",
+    "jazz_age-landmark@spring-1",
+    "jazz_age-landmark@spring-2",
+    "jazz_age-landmark@spring-5",
+    "jazz_age-landmark@spring-6",
+    "jazz_age-landmark@spring-7",
+    "jazz_age-landmark@autumn-0",
+    "jazz_age-landmark@autumn-1",
+    "jazz_age-landmark@autumn-2",
+    "jazz_age-landmark@autumn-5",
+    "jazz_age-landmark@autumn-6",
+    "jazz_age-landmark@autumn-7",
+    "jazz_age-landmark@winter-0",
+    "jazz_age-landmark@winter-1",
+    "jazz_age-landmark@winter-2",
+    "jazz_age-landmark@winter-5",
+    "jazz_age-landmark@winter-6",
+    "jazz_age-landmark@winter-7",
+    "modern-landmark-0",
+    "modern-landmark-1",
+    "modern-landmark-2",
+    "modern-landmark-3",
+    "modern-landmark-4",
+    "modern-landmark-5",
+    "modern-landmark-6",
+    "modern-landmark-7",
+    "modern-landmark@spring-0",
+    "modern-landmark@spring-1",
+    "modern-landmark@spring-2",
+    "modern-landmark@spring-3",
+    "modern-landmark@spring-4",
+    "modern-landmark@spring-5",
+    "modern-landmark@spring-6",
+    "modern-landmark@spring-7",
+    "modern-landmark@autumn-0",
+    "modern-landmark@autumn-1",
+    "modern-landmark@autumn-2",
+    "modern-landmark@autumn-3",
+    "modern-landmark@autumn-4",
+    "modern-landmark@autumn-5",
+    "modern-landmark@autumn-6",
+    "modern-landmark@autumn-7",
+    "modern-landmark@winter-0",
+    "modern-landmark@winter-1",
+    "modern-landmark@winter-2",
+    "modern-landmark@winter-3",
+    "modern-landmark@winter-4",
+    "modern-landmark@winter-5",
+    "modern-landmark@winter-6",
+    "modern-landmark@winter-7",
+    "scifi-landmark-0",
+    "scifi-landmark-1",
+    "scifi-landmark-2",
+    "scifi-landmark-3",
+    "scifi-landmark-4",
+    "scifi-landmark-5",
+    "scifi-landmark-6",
+    "scifi-landmark@spring-0",
+    "scifi-landmark@spring-1",
+    "scifi-landmark@spring-2",
+    "scifi-landmark@spring-3",
+    "scifi-landmark@spring-4",
+    "scifi-landmark@spring-5",
+    "scifi-landmark@spring-6",
+    "scifi-landmark@spring-7",
+    "scifi-landmark@autumn-0",
+    "scifi-landmark@autumn-1",
+    "scifi-landmark@autumn-2",
+    "scifi-landmark@autumn-3",
+    "scifi-landmark@autumn-4",
+    "scifi-landmark@autumn-5",
+    "scifi-landmark@autumn-6",
+    "scifi-landmark@autumn-7",
+    "scifi-landmark@winter-0",
+    "scifi-landmark@winter-1",
+    "scifi-landmark@winter-2",
+    "scifi-landmark@winter-3",
+    "scifi-landmark@winter-4",
+    "scifi-landmark@winter-5",
+    "scifi-landmark@winter-6",
+    "wasteland-landmark-0",
+    "wasteland-landmark-1",
+    "wasteland-landmark-2",
+    "wasteland-landmark-5",
+    "wasteland-landmark-6",
+    "wasteland-landmark-7",
+    "wasteland-landmark@spring-0",
+    "wasteland-landmark@spring-1",
+    "wasteland-landmark@spring-2",
+    "wasteland-landmark@spring-5",
+    "wasteland-landmark@spring-6",
+    "wasteland-landmark@spring-7",
+    "wasteland-landmark@autumn-0",
+    "wasteland-landmark@autumn-1",
+    "wasteland-landmark@autumn-2",
+    "wasteland-landmark@autumn-5",
+    "wasteland-landmark@autumn-6",
+    "wasteland-landmark@autumn-7",
+    "wasteland-landmark@winter-0",
+    "wasteland-landmark@winter-1",
+    "wasteland-landmark@winter-2",
+    "wasteland-landmark@winter-5",
+    "wasteland-landmark@winter-6"
+  ],
+  "fail": [
+    {
+      "name": "fantasy-landmark-3",
+      "problems": "The watchtower cabin is readable, but its lower half is a knot of alternating dark pixels and short tan fragments. The ladder and crossed supports cannot be followed at 1x, unlike the clean structural beams in the approved markers. Redraw two continuous load-bearing legs, one deliberate cross-brace and a separate ladder; remove incidental holes and stubs."
+    },
+    {
+      "name": "fantasy-landmark-4",
+      "problems": "The windmill rotor has uneven, bent paddle fragments with no clear common hub; the upper-left and lower-left blades merge into the roof/outline. At 1x it reads as a damaged ornament on a tower rather than a working mill. Redraw a legible four-blade rotor with consistent blade lengths and continuous connections to one hub; keep the blades distinct from the blue roof."
+    },
+    {
+      "name": "fantasy-landmark@spring-3",
+      "problems": "The watchtower cabin is readable, but its lower half is a knot of alternating dark pixels and short tan fragments. The ladder and crossed supports cannot be followed at 1x, unlike the clean structural beams in the approved markers. Redraw two continuous load-bearing legs, one deliberate cross-brace and a separate ladder; remove incidental holes and stubs."
+    },
+    {
+      "name": "fantasy-landmark@spring-4",
+      "problems": "The windmill rotor has uneven, bent paddle fragments with no clear common hub; the upper-left and lower-left blades merge into the roof/outline. At 1x it reads as a damaged ornament on a tower rather than a working mill. Redraw a legible four-blade rotor with consistent blade lengths and continuous connections to one hub; keep the blades distinct from the blue roof."
+    },
+    {
+      "name": "fantasy-landmark@autumn-3",
+      "problems": "The watchtower cabin is readable, but its lower half is a knot of alternating dark pixels and short tan fragments. The ladder and crossed supports cannot be followed at 1x, unlike the clean structural beams in the approved markers. Redraw two continuous load-bearing legs, one deliberate cross-brace and a separate ladder; remove incidental holes and stubs."
+    },
+    {
+      "name": "fantasy-landmark@autumn-4",
+      "problems": "The windmill rotor has uneven, bent paddle fragments with no clear common hub; the upper-left and lower-left blades merge into the roof/outline. At 1x it reads as a damaged ornament on a tower rather than a working mill. Redraw a legible four-blade rotor with consistent blade lengths and continuous connections to one hub; keep the blades distinct from the blue roof."
+    },
+    {
+      "name": "fantasy-landmark@winter-3",
+      "problems": "The watchtower cabin is readable, but its lower half is a knot of alternating dark pixels and short tan fragments. The ladder and crossed supports cannot be followed at 1x, unlike the clean structural beams in the approved markers. Redraw two continuous load-bearing legs, one deliberate cross-brace and a separate ladder; remove incidental holes and stubs. Snow adds disconnected-looking white dashes through the mechanism/supports, further breaking its read; restrict snow to coherent upward-facing caps and ledges after repairing the structure."
+    },
+    {
+      "name": "fantasy-landmark@winter-4",
+      "problems": "The windmill rotor has uneven, bent paddle fragments with no clear common hub; the upper-left and lower-left blades merge into the roof/outline. At 1x it reads as a damaged ornament on a tower rather than a working mill. Redraw a legible four-blade rotor with consistent blade lengths and continuous connections to one hub; keep the blades distinct from the blue roof. Snow adds disconnected-looking white dashes through the mechanism/supports, further breaking its read; restrict snow to coherent upward-facing caps and ledges after repairing the structure."
+    },
+    {
+      "name": "wuxia-landmark-3",
+      "problems": "The watchtower platform and understructure dissolve into orange/dark checkerwork. The central ladder, legs and diagonal braces compete for the same pixels, so the support geometry is muddy at 1x. Reduce the understructure to continuous legs and one clear brace, with a separate ladder and open negative space beneath the platform."
+    },
+    {
+      "name": "wuxia-landmark-4",
+      "problems": "The apparent mill is an overpacked orange cluster below a tiled roof: wheel rim, spokes, posts and wall fragments cannot be separated at 1x. It reads as a tangled small building, not a distinct mill landmark. Enlarge and simplify the side wheel into a clear rim/hub/spoke silhouette, reduce competing timbers, and establish a single quiet wall plane."
+    },
+    {
+      "name": "wuxia-landmark@spring-3",
+      "problems": "The watchtower platform and understructure dissolve into orange/dark checkerwork. The central ladder, legs and diagonal braces compete for the same pixels, so the support geometry is muddy at 1x. Reduce the understructure to continuous legs and one clear brace, with a separate ladder and open negative space beneath the platform."
+    },
+    {
+      "name": "wuxia-landmark@spring-4",
+      "problems": "The apparent mill is an overpacked orange cluster below a tiled roof: wheel rim, spokes, posts and wall fragments cannot be separated at 1x. It reads as a tangled small building, not a distinct mill landmark. Enlarge and simplify the side wheel into a clear rim/hub/spoke silhouette, reduce competing timbers, and establish a single quiet wall plane."
+    },
+    {
+      "name": "wuxia-landmark@autumn-3",
+      "problems": "The watchtower platform and understructure dissolve into orange/dark checkerwork. The central ladder, legs and diagonal braces compete for the same pixels, so the support geometry is muddy at 1x. Reduce the understructure to continuous legs and one clear brace, with a separate ladder and open negative space beneath the platform."
+    },
+    {
+      "name": "wuxia-landmark@autumn-4",
+      "problems": "The apparent mill is an overpacked orange cluster below a tiled roof: wheel rim, spokes, posts and wall fragments cannot be separated at 1x. It reads as a tangled small building, not a distinct mill landmark. Enlarge and simplify the side wheel into a clear rim/hub/spoke silhouette, reduce competing timbers, and establish a single quiet wall plane."
+    },
+    {
+      "name": "wuxia-landmark@winter-3",
+      "problems": "The watchtower platform and understructure dissolve into orange/dark checkerwork. The central ladder, legs and diagonal braces compete for the same pixels, so the support geometry is muddy at 1x. Reduce the understructure to continuous legs and one clear brace, with a separate ladder and open negative space beneath the platform. Snow adds disconnected-looking white dashes through the mechanism/supports, further breaking its read; restrict snow to coherent upward-facing caps and ledges after repairing the structure."
+    },
+    {
+      "name": "wuxia-landmark@winter-4",
+      "problems": "The apparent mill is an overpacked orange cluster below a tiled roof: wheel rim, spokes, posts and wall fragments cannot be separated at 1x. It reads as a tangled small building, not a distinct mill landmark. Enlarge and simplify the side wheel into a clear rim/hub/spoke silhouette, reduce competing timbers, and establish a single quiet wall plane. Snow adds disconnected-looking white dashes through the mechanism/supports, further breaking its read; restrict snow to coherent upward-facing caps and ledges after repairing the structure."
+    },
+    {
+      "name": "jazz_age-landmark-3",
+      "problems": "The tower legs and bracing merge into a dark, perforated mass below the cabin. The approved jazz_age-marker1 tower has legible continuous beams; this version uses short broken segments and competing holes. Rebuild the lower half with continuous legs and a restrained X-brace, leaving one readable opening and a distinct ladder."
+    },
+    {
+      "name": "jazz_age-landmark-4",
+      "problems": "The windpump rotor is a lopsided broken ring with irregular holes and indistinct vanes; the mechanism below it merges into the lattice support. It becomes a scrap-like knot at 1x rather than a readable period windpump. Redraw a circular rotor around one hub with evenly organized vanes, then simplify the tower bracing and separate the adjacent tank."
+    },
+    {
+      "name": "jazz_age-landmark@spring-3",
+      "problems": "The tower legs and bracing merge into a dark, perforated mass below the cabin. The approved jazz_age-marker1 tower has legible continuous beams; this version uses short broken segments and competing holes. Rebuild the lower half with continuous legs and a restrained X-brace, leaving one readable opening and a distinct ladder."
+    },
+    {
+      "name": "jazz_age-landmark@spring-4",
+      "problems": "The windpump rotor is a lopsided broken ring with irregular holes and indistinct vanes; the mechanism below it merges into the lattice support. It becomes a scrap-like knot at 1x rather than a readable period windpump. Redraw a circular rotor around one hub with evenly organized vanes, then simplify the tower bracing and separate the adjacent tank."
+    },
+    {
+      "name": "jazz_age-landmark@autumn-3",
+      "problems": "The tower legs and bracing merge into a dark, perforated mass below the cabin. The approved jazz_age-marker1 tower has legible continuous beams; this version uses short broken segments and competing holes. Rebuild the lower half with continuous legs and a restrained X-brace, leaving one readable opening and a distinct ladder."
+    },
+    {
+      "name": "jazz_age-landmark@autumn-4",
+      "problems": "The windpump rotor is a lopsided broken ring with irregular holes and indistinct vanes; the mechanism below it merges into the lattice support. It becomes a scrap-like knot at 1x rather than a readable period windpump. Redraw a circular rotor around one hub with evenly organized vanes, then simplify the tower bracing and separate the adjacent tank."
+    },
+    {
+      "name": "jazz_age-landmark@winter-3",
+      "problems": "The tower legs and bracing merge into a dark, perforated mass below the cabin. The approved jazz_age-marker1 tower has legible continuous beams; this version uses short broken segments and competing holes. Rebuild the lower half with continuous legs and a restrained X-brace, leaving one readable opening and a distinct ladder. Snow adds disconnected-looking white dashes through the mechanism/supports, further breaking its read; restrict snow to coherent upward-facing caps and ledges after repairing the structure."
+    },
+    {
+      "name": "jazz_age-landmark@winter-4",
+      "problems": "The windpump rotor is a lopsided broken ring with irregular holes and indistinct vanes; the mechanism below it merges into the lattice support. It becomes a scrap-like knot at 1x rather than a readable period windpump. Redraw a circular rotor around one hub with evenly organized vanes, then simplify the tower bracing and separate the adjacent tank. Snow adds disconnected-looking white dashes through the mechanism/supports, further breaking its read; restrict snow to coherent upward-facing caps and ledges after repairing the structure."
+    },
+    {
+      "name": "scifi-landmark-7",
+      "problems": "The statue has a detached 22-pixel black hook at x=13..18, y=8..16, beside the upper-left shoulder/head. It reads as floating broken arm debris at 1x and is obvious on the 8x checkerboard. Remove it or connect and redraw it as a clearly posed arm; preserve a clean humanoid silhouette on the pedestal."
+    },
+    {
+      "name": "scifi-landmark@winter-7",
+      "problems": "The snowy statue loses a convincing connection between its body and pedestal: the bent lower limb ends above the plinth while a thin dark stalk and hook at the left carry the silhouette. White patches fragment the torso further. Reconnect a clearly shaped supporting leg/foot to the pedestal, remove the unrelated left hook, and confine snow to the head/shoulders and plinth ledge."
+    },
+    {
+      "name": "wasteland-landmark-3",
+      "problems": "The scrap watchtower loses its structure in near-black latticework: cabin, legs, ladder and braces overlap into a perforated blob at 1x. The approved wasteland markers retain clear wall and beam planes despite their scrap theme. Keep the patched cabin, but redraw continuous supporting legs and a few readable braces using a distinct midtone; remove surplus holes and tangles."
+    },
+    {
+      "name": "wasteland-landmark-4",
+      "problems": "The scrap windpump lacks a readable rotor: bent dark prongs and the heavily outlined mast merge into the same crooked-pole silhouette as the nearby totem/sign designs. The mechanism disappears at 1x, especially against autumn grass. Give it a clear hub and several broad, distinguishable scrap vanes, and separate the mast from its bracing with a visible material midtone."
+    },
+    {
+      "name": "wasteland-landmark@spring-3",
+      "problems": "The scrap watchtower loses its structure in near-black latticework: cabin, legs, ladder and braces overlap into a perforated blob at 1x. The approved wasteland markers retain clear wall and beam planes despite their scrap theme. Keep the patched cabin, but redraw continuous supporting legs and a few readable braces using a distinct midtone; remove surplus holes and tangles."
+    },
+    {
+      "name": "wasteland-landmark@spring-4",
+      "problems": "The scrap windpump lacks a readable rotor: bent dark prongs and the heavily outlined mast merge into the same crooked-pole silhouette as the nearby totem/sign designs. The mechanism disappears at 1x, especially against autumn grass. Give it a clear hub and several broad, distinguishable scrap vanes, and separate the mast from its bracing with a visible material midtone. This seasonal version also crushes most mast/brace detail into almost solid black; restore the brown midtone planes seen in the approved scrap buildings."
+    },
+    {
+      "name": "wasteland-landmark@autumn-3",
+      "problems": "The scrap watchtower loses its structure in near-black latticework: cabin, legs, ladder and braces overlap into a perforated blob at 1x. The approved wasteland markers retain clear wall and beam planes despite their scrap theme. Keep the patched cabin, but redraw continuous supporting legs and a few readable braces using a distinct midtone; remove surplus holes and tangles."
+    },
+    {
+      "name": "wasteland-landmark@autumn-4",
+      "problems": "The scrap windpump lacks a readable rotor: bent dark prongs and the heavily outlined mast merge into the same crooked-pole silhouette as the nearby totem/sign designs. The mechanism disappears at 1x, especially against autumn grass. Give it a clear hub and several broad, distinguishable scrap vanes, and separate the mast from its bracing with a visible material midtone. This seasonal version also crushes most mast/brace detail into almost solid black; restore the brown midtone planes seen in the approved scrap buildings."
+    },
+    {
+      "name": "wasteland-landmark@winter-3",
+      "problems": "The scrap watchtower loses its structure in near-black latticework: cabin, legs, ladder and braces overlap into a perforated blob at 1x. The approved wasteland markers retain clear wall and beam planes despite their scrap theme. Keep the patched cabin, but redraw continuous supporting legs and a few readable braces using a distinct midtone; remove surplus holes and tangles. Snow adds disconnected-looking white dashes through the mechanism/supports, further breaking its read; restrict snow to coherent upward-facing caps and ledges after repairing the structure."
+    },
+    {
+      "name": "wasteland-landmark@winter-4",
+      "problems": "The scrap windpump lacks a readable rotor: bent dark prongs and the heavily outlined mast merge into the same crooked-pole silhouette as the nearby totem/sign designs. The mechanism disappears at 1x, especially against autumn grass. Give it a clear hub and several broad, distinguishable scrap vanes, and separate the mast from its bracing with a visible material midtone. Snow adds disconnected-looking white dashes through the mechanism/supports, further breaking its read; restrict snow to coherent upward-facing caps and ledges after repairing the structure."
+    },
+    {
+      "name": "wasteland-landmark@winter-7",
+      "problems": "Snow breaks the scrap statue into alternating white, black and brown fragments across its head, torso and legs. At 1x the figure becomes an unreadable zigzag on a plinth, whereas the other seasons retain a bent human pose. Restore continuous head/torso/limb clusters and keep snow to a few upward-facing surfaces and the pedestal top; do not run white bands down the anatomy."
+    }
+  ]
+}
