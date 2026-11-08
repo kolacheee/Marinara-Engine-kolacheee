@@ -1302,8 +1302,9 @@ export function WorldOverworld({
     // Farms over the fields (the owner, 2026-11-07, farmsteads as props): now and then a farmhouse on a field
     // cell, with one or two of its outbuildings (a barn, a granary, a cart, a pen, a silo) on the field cells
     // beside, each farm two cells or more from the next, never on a way, a river or beside a place.
+    const farmedCells = new Set<number>();
     if (drawTile.hasPiece("farmstead_props", 0)) {
-      const farmed = new Set<number>();
+      const farmed = farmedCells;
       const free = (x: number, y: number) => {
         if (x < 0 || y < 0 || x >= width || y >= height) return false;
         const at = y * width + x;
@@ -1353,6 +1354,52 @@ export function WorldOverworld({
           }
         }
     }
+    // Orchards and vineyards over some of the fields (BRIEF-10): whole plots of three by three cells, about one
+    // plot in five an orchard and one in ten a vineyard, each cell a row of trees or vines that joins its
+    // neighbours', never on a farm's buildings, a way, a river or beside a place.
+    const planted = new Set<number>();
+    const orchards = drawTile.hasPiece("orchard_props", 0);
+    const vineyards = drawTile.hasPiece("vineyard_props", 0);
+    if (orchards || vineyards) {
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          const at = y * width + x;
+          if (drawnLook[at] !== "farmland" || wetCell[at] || riverCells.has(at) || farmedCells.has(at)) continue;
+          if (roads.has(at) || lanes.has(at)) continue;
+          let besidePlace = false;
+          for (let dy = -1; dy <= 1; dy++)
+            for (let dx = -1; dx <= 1; dx++) if (placed.has((y + dy) * width + x + dx)) besidePlace = true;
+          if (besidePlace) continue;
+          const plot = cellNoise(Math.floor(x / 3), Math.floor(y / 3))(95);
+          const id =
+            plot < 0.2 && orchards ? "orchard_props" : plot >= 0.2 && plot < 0.3 && vineyards ? "vineyard_props" : "";
+          if (!id) continue;
+          planted.add(at);
+          trees.push({ x: x + 0.5, y: y + 0.92, id, pick: Math.floor(cellNoise(x, y)(96) * 8), w: 1, h: 1 });
+        }
+    }
+    // A setting's landmarks (BRIEF-10: a well, a shrine, standing stones, a watchtower, a windmill): sparse, on
+    // open grass wholly inside its look, away from ways and places, each six cells or more from the next.
+    const landmarkCells = new Set<number>();
+    if (drawTile.hasPiece("landmark_props", 0)) {
+      const spots: Array<[number, number]> = [];
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          const at = y * width + x;
+          const look = drawnLook[at]!;
+          if (!(WORLD_DECOR_LOOKS as readonly string[]).includes(look)) continue;
+          const noise = cellNoise(x, y);
+          if (noise(97) >= 0.02 || !inner(x, y) || byWay(x, y) || propCells.has(at)) continue;
+          let nearPlace = false;
+          for (let dy = -2; dy <= 2; dy++)
+            for (let dx = -2; dx <= 2; dx++) if (placed.has((y + dy) * width + x + dx)) nearPlace = true;
+          if (nearPlace || spots.some(([sx, sy]) => Math.hypot(sx - x, sy - y) < 6)) continue;
+          if (lostSpots.some((lost) => Math.hypot(lost.at.x - x, lost.at.y - y) < 3)) continue;
+          spots.push([x, y]);
+          landmarkCells.add(at);
+          trees.push({ x: x + 0.5, y: y + 0.92, id: "landmark_props", pick: Math.floor(noise(98) * 8), w: 1, h: 1 });
+        }
+    }
     // Small things on open ground (a flower clump, a rock, a bush): about one cell in five wholly inside
     // its look, never on or beside a road or a place, so nothing is cut by another ground's edge.
     const nearWay = (x: number, y: number) => {
@@ -1368,7 +1415,14 @@ export function WorldOverworld({
         const look = drawnLook[y * width + x]!;
         if (!(WORLD_DECOR_LOOKS as readonly string[]).includes(look)) continue;
         const noise = cellNoise(x, y);
-        if (noise(61) >= 0.2 || !inner(x, y) || nearWay(x, y) || propCells.has(y * width + x)) continue;
+        if (
+          noise(61) >= 0.2 ||
+          !inner(x, y) ||
+          nearWay(x, y) ||
+          propCells.has(y * width + x) ||
+          landmarkCells.has(y * width + x)
+        )
+          continue;
         inSeason(x, y);
         drawTile(ctx, `decor_${look}`, x * OVERWORLD_TILE, y * OVERWORLD_TILE, noise(67));
       }
