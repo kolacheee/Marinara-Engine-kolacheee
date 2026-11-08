@@ -29,6 +29,7 @@ import {
   worldEarthDecode,
   worldEarthHistoricalPlace,
   worldEarthPeopleIn,
+  worldEarthTerrain,
   worldEarthTownStood,
   worldHistory,
   worldEarthLocate,
@@ -124,7 +125,9 @@ assert.equal(world.startId, london.id, "the party starts there");
 const sizes = fantasy.sizes.map((size) => size.id);
 assert.ok(london.rank! >= sizes.length - 2, `London is among the biggest: ${london.size}`);
 const kindAt = (x: number, y: number) =>
-  fantasy.terrain!.find((entry) => entry.id === world.terrain[parseInt(world.ground[y * world.width + x]!, 36)])!.kind;
+  worldEarthTerrain(fantasy).find(
+    (entry) => entry.id === world.terrain[parseInt(world.ground[y * world.width + x]!, 36)],
+  )!.kind;
 assert.equal(kindAt(london.at.x, london.at.y), "open");
 const parentOf = (id: string | null) => world.places.find((place) => place.id === id);
 let top = london;
@@ -157,6 +160,38 @@ assert.ok((world.rivers ?? []).length >= 3, "real rivers");
 const regionKit = { ...fantasy, scale: "region" as const };
 const notEarth = compileWorld({ seed: 11, kit: regionKit, brief: inputs.brief });
 assert.ok(!notEarth.places.some((place) => place.name === "Ireland"));
+
+// ── Ground the setting lacks: the Earth's own, where the real land is that ──
+{
+  const egypt = WORLD_EARTH_AREAS.find((area) => area.id === "egypt")!;
+  const sahara = sampleWorldEarth(data, {
+    ...worldEarthCentre(data, fantasy.scale, egypt.lon, egypt.lat),
+    scale: fantasy.scale,
+  });
+  const desertWorld = compileWorld({ seed: 4, kit: fantasy, brief: withWorldEarth(emptyBrief(), sahara) });
+  const ids = [...desertWorld.ground].map((c) => desertWorld.terrain[parseInt(c, 36)]!);
+  const land = ids.filter((id) => !["sea", "mountains"].includes(id)).length;
+  assert.ok(ids.filter((id) => id === "desert").length > land * 0.4, "the Sahara is desert in a fantasy setting");
+  assert.ok(ids.filter((id) => id === "grassland").length < land * 0.15, "not grassland");
+  const westAfrica = WORLD_EARTH_AREAS.find((area) => area.id === "west_africa")!;
+  const tropics = sampleWorldEarth(data, {
+    ...worldEarthCentre(data, fantasy.scale, westAfrica.lon, westAfrica.lat),
+    scale: fantasy.scale,
+  });
+  const tropicWorld = compileWorld({ seed: 4, kit: fantasy, brief: withWorldEarth(emptyBrief(), tropics) });
+  assert.ok(
+    [...tropicWorld.ground].some((c) => tropicWorld.terrain[parseInt(c, 36)] === "jungle"),
+    "jungle on the Guinea coast",
+  );
+  // A drawn world keeps its setting's own ground.
+  const drawn = compileWorld({ seed: 4, kit: fantasy, brief: emptyBrief() });
+  assert.deepEqual(
+    drawn.terrain,
+    fantasy.terrain!.map((entry) => entry.id),
+  );
+  // A dead world grows no jungle, even on Earth.
+  assert.ok(!worldEarthTerrain(kitOf("post_apocalyptic")).some((entry) => entry.id === "jungle"));
+}
 
 // ── A town ──
 const modern = kitOf("modern_day");

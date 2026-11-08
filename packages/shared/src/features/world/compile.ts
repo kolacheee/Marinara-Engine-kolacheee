@@ -238,6 +238,33 @@ export function worldTerrainEntries(kit: WorldKit) {
   return kit.terrain ?? [{ id: kit.layers[0]!.id, label: kit.layers[0]!.label, kind: "open" as const, share: 1 }];
 }
 
+/** Ground the real Earth has that a setting's palette may lack (owner 2026-11-07: the Sahara showed as
+ *  grassland in a fantasy setting): each added, with no share of its own, when the kit has none like it,
+ *  so the Earth seed lays it only where the real land is that and the kit's own ground is too far from it
+ *  (worldEarthGround takes the nearest class to the real climate). A dead world (wasteland, dead forest)
+ *  grows no jungle or forest. Drawn worlds never use them. */
+const EARTH_CLIMATE_GROUND: ReadonlyArray<{ id: string; label: string; has: RegExp; lush?: true }> = [
+  { id: "desert", label: "Desert", has: /desert|dune|sand/ },
+  { id: "scrubland", label: "Scrubland", has: /scrub|brush|heath|badland/ },
+  { id: "jungle", label: "Jungle", has: /jungle|rainforest|tropic/, lush: true },
+  { id: "snowfields", label: "Snowfields", has: /snow|tundra|\bice\b|glacier|frost/ },
+  { id: "marsh", label: "Marsh", has: /marsh|swamp|bog|\bfen|wetland/ },
+  { id: "hills", label: "Hills", has: /hill|highland|moor|upland/ },
+];
+
+/** The kit's ground classes and the Earth's own it lacks (EARTH_CLIMATE_GROUND), for an Earth world. */
+export function worldEarthTerrain(kit: WorldKit) {
+  const own = worldTerrainEntries(kit);
+  const dead = own.some((entry) => /waste|blight|ash|dead/.test(entry.id));
+  const extra = EARTH_CLIMATE_GROUND.filter(
+    (each) =>
+      !own.some((entry) => each.has.test(entry.id)) &&
+      !own.some((entry) => entry.id === each.id) &&
+      !(each.lush && dead),
+  ).map((each) => ({ id: each.id, label: each.label, kind: "open" as const, share: 0 }));
+  return [...own, ...extra];
+}
+
 function compileGround(seed: number, kit: WorldKit, width: number, height: number) {
   const terrain = worldTerrainEntries(kit);
   const elevation = valueNoise(seed, "elevation", width, height);
@@ -1111,7 +1138,7 @@ export function compileWorld({
   const earthGround =
     earth && earthFields
       ? worldEarthGround(
-          worldTerrainEntries(kit),
+          worldEarthTerrain(kit),
           earthFields,
           width,
           height,
@@ -1122,7 +1149,7 @@ export function compileWorld({
         )
       : null;
   const shaped = earthGround
-    ? { terrain: worldTerrainEntries(kit), ...earthGround }
+    ? { terrain: worldEarthTerrain(kit), ...earthGround }
     : generatorVersion >= 6 &&
         kit.scale !== "sector" &&
         !worldTerrainEntries(kit).some((entry) => /space|void|vacuum|nebula|orbit/.test(entry.id))

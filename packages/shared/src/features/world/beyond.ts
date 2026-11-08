@@ -12,8 +12,8 @@ import type { WorldBeyondLand } from "../../schemas/world-brief.schema.js";
 import {
   WORLD_DAYS_PER_CELL,
   worldCultivatedTerrain,
+  worldEarthTerrain,
   worldStream,
-  worldTerrainEntries,
   worldUrbanTerrain,
   worldValueNoise,
   worldWetness,
@@ -81,7 +81,7 @@ function makeBeyond(game: GameWorld, pad: number): WorldBeyond {
   const count = outerWidth * outerHeight;
   const own = Uint8Array.from(world.ground, (cell) => parseInt(cell, 36));
   const entries = world.terrain.map(
-    (id) => worldTerrainEntries(kit).find((entry) => entry.id === id) ?? { id, kind: "open" as const, share: 0 },
+    (id) => worldEarthTerrain(kit).find((entry) => entry.id === id) ?? { id, kind: "open" as const, share: 0 },
   );
   const isWater = (index: number) => entries[index]?.kind === "water";
   // Wild ground: what the land is where nobody works or builds it.
@@ -106,7 +106,7 @@ function makeBeyond(game: GameWorld, pad: number): WorldBeyond {
         const kmPerCell = WORLD_DAYS_PER_CELL[kit.scale] * WORLD_EARTH_KM_PER_DAY;
         const fields = worldEarthFields({ ...earth, ground: earth.beyond!.ground }, outerWidth, outerHeight, kmPerCell);
         if (!fields) return null;
-        const terrain = worldTerrainEntries(kit);
+        const terrain = worldEarthTerrain(kit);
         const laid = worldEarthGround(
           terrain,
           fields,
@@ -192,6 +192,7 @@ function makeBeyond(game: GameWorld, pad: number): WorldBeyond {
       rivers.push({ path: [...river.path], width: river.path.map(() => river.width) });
   } else {
     const random = worldStream(world.seed, "beyond", "rivers");
+    const leaving = new Set<number>();
     for (const river of world.rivers ?? []) {
       // A river that ends on the edge (not in the sea) flows out past it; one that rises on it flows in.
       for (const end of ["mouth", "source"] as const) {
@@ -199,6 +200,10 @@ function makeBeyond(game: GameWorld, pad: number): WorldBeyond {
         const [x, y] = [at % width, Math.floor(at / width)];
         if (x > 0 && y > 0 && x < width - 1 && y < height - 1) continue;
         if (isWater(own[at]!)) continue;
+        // One river out of each stretch of the edge: two that meet it side by side would braid out there.
+        if ([...leaving].some((other) => Math.abs((other % width) - x) + Math.abs(Math.floor(other / width) - y) <= 2))
+          continue;
+        leaving.add(at);
         const [dx, dy] = x === 0 ? [-1, 0] : x === width - 1 ? [1, 0] : y === 0 ? [0, -1] : [0, 1];
         const size = end === "mouth" ? river.width[river.width.length - 1]! : river.width[0]!;
         const path = [toOuter(at)];
@@ -264,7 +269,7 @@ const DIRECTION: Record<WorldBeyondSide, string> = { north: "North", east: "East
 export function worldBeyondText(game: GameWorld): string {
   const beyond = worldBeyondGround(game);
   const { pad, width, height, cells, lands } = beyond;
-  const terrain = worldTerrainEntries(game.kit);
+  const terrain = worldEarthTerrain(game.kit);
   const entryOf = (index: number) => terrain.find((entry) => entry.id === game.world.terrain[index]);
   const parts = lands.map((land) => {
     if (land.sea) return `${DIRECTION[land.side]}: the open sea`;
