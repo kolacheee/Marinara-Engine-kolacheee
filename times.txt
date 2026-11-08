@@ -40,3 +40,7 @@ neon/backdrop-day rc=0 secs=62 exists=yes
 maximal/backdrop-night rc=0 secs=63 exists=yes
 cozy/sprigs rc=0 secs=58 exists=yes
 maximal/ui-icons rc=0 secs=47 exists=yes
+cozy/washi-tape rc=0 secs=49 exists=yes
+immersion/backdrop-night rc=0 secs=62 exists=yes
+maximal/portraits rc=0 secs=62 exists=yes
+access/backdrop-night rc=0 secs=57 exists=yes

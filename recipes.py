@@ -332,3 +332,23 @@ RECIPES["creator/topbar-band-night"] = drawn(creator_band_night)
 # ponytail: both Codex tries drew the icons on a ~4 px grid, so they are snapped at 4x (32x32 art), not the brief's
 # 16x16 at 8x; forcing 8 px blocks destroyed them. Upgrade path: hand-author the 16x16 grids in code.
 RECIPES["maximal/ui-icons"] = lambda: regrid(raw("maximal/ui-icons"), 4, 14)
+
+
+def portraits():
+    """4 portraits, each its own 256 cell on a 64x64 art grid at 4x, max 16 colours, flat spec background."""
+    from process4 import hexc
+    img = P.cover(raw("maximal/portraits").convert("RGB"), 1024, 256)
+    out = Image.new("RGB", (1024, 256))
+    for i, bg in enumerate(["#F4C6D7", "#C3C9F1", "#BFE8D9", "#FFE3A3"]):
+        cell = regrid(img.crop((i * 256, 0, i * 256 + 256, 256)), 4, 16).convert("RGB")
+        # the colour filling the cell corners is the backdrop: make it the exact spec colour
+        b = hexc(bg)
+        px = cell.load()
+        for y in range(256):  # backdrop speckle: anything close to the spec backdrop colour becomes it exactly
+            for x in range(256):
+                if sum((c - d) ** 2 for c, d in zip(px[x, y], b)) < 30 ** 2: px[x, y] = b
+        out.paste(cell, (i * 256, 0))
+    return out
+
+
+RECIPES["maximal/portraits"] = portraits

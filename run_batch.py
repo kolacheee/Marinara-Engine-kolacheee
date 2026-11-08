@@ -11,6 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 WORK, R3 = ROOT / "work", ROOT / "work" / "_r3"
 SKIP = {"minimal/game-stage"}  # exact geometry: drawn by draw_minimal.py, not generated
+# regen lines whose brief says to keep the delivered shape: edit the current image instead of starting over
+EDIT = {"cozy/washi-tape"}
 
 # twin <- source: the twin is an edit of the source's raw, so the pair lines up
 TWINS = {
@@ -63,8 +65,17 @@ def main():
         ref, mode = "", ""
         if src and (WORK / src / "raw.png").exists():
             ref, mode = str(WORK / src / "raw.png"), "twin"
-        elif j["prompt"].startswith("REGEN") and (R3 / f"{k}.png").exists():
-            ref, mode = str(R3 / f"{k}.png"), "regen"
+        elif j["prompt"].startswith("REGEN"):
+            cur = ROOT / "images" / f"{k}.png"  # the current delivered image; round 3's if this round has none yet
+            old = cur if cur.exists() else R3 / f"{k}.png"
+            if old.exists():
+                ref, mode = str(WORK / k / "ref-current.png"), ("twin" if k in EDIT else "regen")
+                (WORK / k).mkdir(parents=True, exist_ok=True)
+                Path(ref).write_bytes(old.read_bytes())
+        prev = WORK / k / "raw.png"
+        if prev.exists():
+            n_old = len(list((WORK / k).glob("raw-prev*.png")))
+            prev.rename(WORK / k / f"raw-prev{n_old + 1}.png")
         args = ["bash", str(ROOT / "gen.sh"), p, n, j["prompt"] + hint(j)] + ([ref, mode] if ref else [])
         print("start", k, mode or "fresh", flush=True)
         subprocess.run(args)
