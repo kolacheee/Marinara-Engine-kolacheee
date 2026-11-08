@@ -1,0 +1,1221 @@
+{
+  "files": {
+    "orchard-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.363,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "8787d4dc301d36490b497650e5cea07b8caf6deb8ff5f0f61f73a644c196067b"
+    },
+    "orchard-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.345,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 15,
+      "sha256": "8c781b517b6f26e6d4f8a78d663c255c438508e9936a306dcb5e5b5e55e799ed"
+    },
+    "orchard-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.345,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "58e222d397544800717fab6e236a6eb3839526b449aa3f70003309dc6a0fcc4b"
+    },
+    "orchard-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.352,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 14,
+      "sha256": "022a1d22efed1a5808641e8aac6db9473e14f3174935656e7b8c764b8ac06bdf"
+    },
+    "orchard-prop-4": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.34,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "600d218b618eaef39596f19bd192a21b583c4cbe610cb5c4609c0558d7651e3f"
+    },
+    "orchard-prop-5": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.351,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 14,
+      "sha256": "271c8db4ddea852dbaef33554bb9cb4cdece132fbf063f6114fcd21d02aa455a"
+    },
+    "orchard-prop-6": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.35,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "5eefb1200c752364e1ad28d12494dc42c434c156a779e79e9fd7fd33a85ef869"
+    },
+    "orchard-prop-7": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.347,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "007db9360c211bf29fa8d9ac464909d768109f989036e7b076c9a900f4119f0b"
+    },
+    "orchard@spring-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.352,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 18,
+      "sha256": "c4c7264b5081c15f4a612b9d3b3ad3b5390ac3cb748a4c3b377cf0bedd91fbdf"
+    },
+    "orchard@spring-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.342,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 18,
+      "sha256": "f7926f3e0813feabc3a207a97fba66ce6b3d5af0e7d2385a5cad0c2bf1c0d8d0"
+    },
+    "orchard@spring-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.339,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 18,
+      "sha256": "a0339202e0bb4c0542113f2881606773a8344efefeccdb4696362c8611955ae6"
+    },
+    "orchard@spring-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.342,
+      "bbox": [
+        4,
+        2,
+        44,
+        48
+      ],
+      "colors": 18,
+      "sha256": "b6b61319d650b5bf6f6c0a89f12c3948e2aa2607cc815d6e59cde3cd945f74b5"
+    },
+    "orchard@spring-prop-4": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.332,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 18,
+      "sha256": "0ad8b80e37948021be53f1b99da16b12e1165ad20f74a320a8b13d512372ec30"
+    },
+    "orchard@spring-prop-5": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.347,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 18,
+      "sha256": "32fa71efae9b849c8952e3ff4d45367b81a99e50c8b5f8e7c7118cbccdd49b55"
+    },
+    "orchard@spring-prop-6": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.345,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 18,
+      "sha256": "3279bc570bcbf47af854611f14d74240b8bf7fe405219f34293993a374f147d4"
+    },
+    "orchard@spring-prop-7": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.336,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 18,
+      "sha256": "f65829d60cfa30fb24d60ef71c7f26a8ca1ef10e9f2be5d074b1121c118a993a"
+    },
+    "orchard@autumn-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.359,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "24bc24c72d5a206fdc89a0fb572f10123116dbf73166ae035cff9e8ada011552"
+    },
+    "orchard@autumn-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.339,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "83f04b9c1848ac0fd597ceace7ee001b32c23f658ae63ad8b73759bce09adebc"
+    },
+    "orchard@autumn-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.343,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 15,
+      "sha256": "8fc46cf290f51bfa0c2017d083be90cda8686a0ff1357023ca5a13b52eefcba2"
+    },
+    "orchard@autumn-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.345,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 14,
+      "sha256": "25620859878346c410a62b1b7638a002c1b0bc7d0a1212d2816f491131cd34d7"
+    },
+    "orchard@autumn-prop-4": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.335,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "cde595fc61325d1692ec74b3c8a891c8f1ca7988d7c18a79df4126e15e2301d9"
+    },
+    "orchard@autumn-prop-5": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.349,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "802afe380ac77eec03ca4943fa566afad779de455537c2b610b4d98b5833de6b"
+    },
+    "orchard@autumn-prop-6": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.349,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "d83f3522e498be01a6f512d2c47aeb62d729bf68d8091fde69459c9245c5e1e1"
+    },
+    "orchard@autumn-prop-7": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.341,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 12,
+      "sha256": "0274523e1d212c754ee0e0971f05c65b58c1dd97378c124785cbd7259654adb7"
+    },
+    "orchard@winter-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.228,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "306aade1e9541019544dc6022299b263424ffbdb86a8ae0dc8b36afa9dcd3a36"
+    },
+    "orchard@winter-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.217,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "4da138c74a430877802cba370dc08cd5e002d8e88904a8ed99b32a66495779ab"
+    },
+    "orchard@winter-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.224,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "e1985d8cec6e2aa0fe13fbb5157b9e185d0d0117a46f564b0442db90bacd04be"
+    },
+    "orchard@winter-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.194,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "7e43a6fb7fea6bb66f2b79c76e20a7ae8ba057a442aa6ec05c3834aa974fe389"
+    },
+    "orchard@winter-prop-4": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.212,
+      "bbox": [
+        3,
+        1,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "114e9452215ef670c36259b75a03ed8e0817942166e178a3a6e16f9263ecbe61"
+    },
+    "orchard@winter-prop-5": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.211,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 14,
+      "sha256": "a4c74b140d8af9022b0496c65830e2aee563618494de95599547e7f98b920151"
+    },
+    "orchard@winter-prop-6": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.207,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 14,
+      "sha256": "5c40c0afc82360aeef0722333b4f3c7cd58871bfefeb3d860d7331dd45f60cb8"
+    },
+    "orchard@winter-prop-7": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.214,
+      "bbox": [
+        3,
+        2,
+        44,
+        48
+      ],
+      "colors": 13,
+      "sha256": "9040dccefa5becdce1e9aa803e942908829c67efe56da985ce0359da24d3f569"
+    },
+    "vineyard-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.415,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 19,
+      "sha256": "51068d542a4ab6eb7931dd0c585a5ae48c409698f32e5bb4b0d9ef8398394956"
+    },
+    "vineyard-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.424,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 18,
+      "sha256": "5d5feea6e56bbca3acec0467b83cf31d7de11b1cc9d5f38cf9dce39e5b423f27"
+    },
+    "vineyard-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.412,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 18,
+      "sha256": "f6d86f87059099f4e8f265bea4fb6786f6953eb23de04304ff2eb2b9d94bed57"
+    },
+    "vineyard-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.419,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 19,
+      "sha256": "527fc42cfcef49b5be804fc7d4f63c901bb9377a4f8473fd33a3f694c68abaab"
+    },
+    "vineyard-prop-4": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.422,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 19,
+      "sha256": "5d6dbf01c67612e481b331291c34d5cfb4d9016be6e8bacfa999c9e90b2530fb"
+    },
+    "vineyard-prop-5": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.426,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 18,
+      "sha256": "ccdc5be207d19640d5fde1108bd2b2725320ffb03228dbb4d205d7ff137a807f"
+    },
+    "vineyard-prop-6": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.372,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 20,
+      "sha256": "52399489568fcf27afa963df1c94a35b3389bb20bcb82694406e48f515fcb691"
+    },
+    "vineyard-prop-7": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.405,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 19,
+      "sha256": "52f9c269a505305bca64bfde1587609fd2b7a2832a6b5cde003b936a89c5b151"
+    },
+    "vineyard@spring-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.265,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "210d0afc89e80b9335ae62571a168e17dc120562cd357bf2d69a0bb432394c0c"
+    },
+    "vineyard@spring-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.233,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "9b501c0ba44104fa5404021be8c4cc0c4d17fd3f4db8aa87a8aef5aa845109e2"
+    },
+    "vineyard@spring-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.313,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "3d5a2ba444cd24b0b74a4b42b87711b458fad2f52851374fd47100fbfd577f3c"
+    },
+    "vineyard@spring-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.309,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 15,
+      "sha256": "59fec0a113a2ce2ffd4fa54db95bc4f006fdc58d5df52807c09a7323039d6a61"
+    },
+    "vineyard@spring-prop-4": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.299,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 16,
+      "sha256": "30f607c9c3b5a69b1ddae2ab264d85dbb485edb9465122641d11157f291503be"
+    },
+    "vineyard@spring-prop-5": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.332,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "f60388003f3cc51da45f70b537250112c5071198f3afb1e7f917c046edc7b42e"
+    },
+    "vineyard@spring-prop-6": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.256,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 13,
+      "sha256": "9709203b63e68c9b2fcd0fd8eb8a2488969f9187c8c5a5efe0daf034e109af1f"
+    },
+    "vineyard@spring-prop-7": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.311,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "e12d31ec7b5342ad0cd0a79f740072fe2c0829d960b2cd7b0389289452c61887"
+    },
+    "vineyard@autumn-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.416,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 15,
+      "sha256": "5fcd0f770c015e553cd54d5f25d8bdd1f322f86da3767b272a78199509c90c4b"
+    },
+    "vineyard@autumn-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.421,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 20,
+      "sha256": "07fa9c548cac2da3a36ab0368ad4d157202c158e7dc1023553696c64a7ba69da"
+    },
+    "vineyard@autumn-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.409,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 18,
+      "sha256": "f9deca2a46633f4ba529b196e7cda11097fab730e830ba3e97a89c2b10956e90"
+    },
+    "vineyard@autumn-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.416,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 17,
+      "sha256": "d9964dcbc530730a78f49f09ee8ea21d141b89b6678a1ef9b1e11d364d09578d"
+    },
+    "vineyard@autumn-prop-4": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.421,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 18,
+      "sha256": "d4e9bbd7e4795d006f2e915adf54d6bf46f2d5d33bd8dcb5a1316e463dc0d184"
+    },
+    "vineyard@autumn-prop-5": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.425,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 17,
+      "sha256": "e289282c348950d622edb1c39646ff2d0e751853e315fcb93d02c0abb2f78a37"
+    },
+    "vineyard@autumn-prop-6": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.369,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 16,
+      "sha256": "4668993a36449df83f5270a144d90e38582490015d5cee0ca7a87bd9e6df48c9"
+    },
+    "vineyard@autumn-prop-7": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.41,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 15,
+      "sha256": "daf35a8c135815a2d96b3d23bd4f53d0e06af401e30f537f3b3f9e74534ad1a0"
+    },
+    "vineyard@winter-prop-0": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.309,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "09d522821b48b684e7a7357efd507cf421c2ac7d9e83b6bf1e944e2bbfbd4ebb"
+    },
+    "vineyard@winter-prop-1": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.319,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "ba03eb2df7e7555c96dbb6270787eab2e5abf3034a6c14ec97b2ce016a8b18e1"
+    },
+    "vineyard@winter-prop-2": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.275,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 15,
+      "sha256": "aec219e9ea93894b73dc0cdf7956b745fc60f5dc5ca5a7dfc0ee230c5700b090"
+    },
+    "vineyard@winter-prop-3": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.271,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "c609e1a7cad4f4143443fce98945153d40636717c1e4f60abfc0bc1001627b09"
+    },
+    "vineyard@winter-prop-4": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.307,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 15,
+      "sha256": "3691c0775e0b596bd4475debb152785b47a7df44c3dc6925bd5d798b9f051eff"
+    },
+    "vineyard@winter-prop-5": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.285,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 13,
+      "sha256": "0a920c27667d7842b55208845ad286d38463f7945ff6158debc7b0b2a7b17d03"
+    },
+    "vineyard@winter-prop-6": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.274,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 13,
+      "sha256": "870141adfd06b0bb010439d332b806ec8aef6123f70bb9c042362fd55fbe202b"
+    },
+    "vineyard@winter-prop-7": {
+      "size": [
+        48,
+        48
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "visible_fraction": 0.294,
+      "bbox": [
+        0,
+        3,
+        48,
+        44
+      ],
+      "colors": 14,
+      "sha256": "0851e6aa99fbb3b1a7e28f8a1aa9dd1966c30d94db825b2bdfe359499800b25b"
+    }
+  },
+  "identical_groups": []
+}

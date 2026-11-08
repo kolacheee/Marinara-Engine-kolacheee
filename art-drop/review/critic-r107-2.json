@@ -1,0 +1,311 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-10.md, Part 7: Orchards and vineyards; 64 files only.",
+      "files_reviewed": 64,
+      "prior_review": {
+        "file": "critic-r107-1.json",
+        "passes": 0,
+        "changed_files": 64,
+        "decision": "The prior review has no passes to preserve. All 64 current files differ from its recorded hashes; each was reassessed."
+      },
+      "references": [
+        "reference/*-marker0..3.png",
+        "reference/fantasy-house.png",
+        "reference/wuxia-house.png",
+        "reference/jazz_age-house.png",
+        "reference/modern-house.png",
+        "out/*-marker0..3.png",
+        "out/city[-0..7 and @winter-0..7].png",
+        "out/slums[-0..7 and @winter-0..7].png",
+        "out/industry[-0..7 and @winter-0..7].png",
+        "out/paddies<season>-0..7.png",
+        "out/farmland<season>-0..6.png",
+        "out/grass<season>-base.png and -detail-0..7.png",
+        "out/plains<season>-base.png and -detail-0..7.png",
+        "out/forest<season>-floor-base.png"
+      ],
+      "checks_completed": [
+        "Inspected every file at 8x nearest-neighbour on checkerboard contact sheets, all eight variants in each of eight family/season sheets.",
+        "Inspected each family and season in a seeded random 8x2 layout at native 48px cell pitch, at 1x and 4x on approved farmland. Every variant appears twice.",
+        "Inspected the same random arrangements at 1x and 4x on seasonal grass to distinguish prop boundaries from the approved farmland grid.",
+        "Inspected orchard trees as a 6x4-cell cultivated forest stand on each seasonal forest floor, at 1x and 4x.",
+        "Inspected seasonal approved farmland tile 0 repeated 3x3 at 1x and 4x as reference context.",
+        "Compared the named reference sheet, all 24 approved out/ markers, seasonal approved round-2/terrain/detail sheets, and a 1x/4x marker-and-prop comparison.",
+        "Checked dimensions, alpha values, occupied bounds, palettes, exact duplicate hashes, same-season pair similarity, and changes against the prior recorded hashes."
+      ],
+      "not_applicable": "Part 7 has no base or peak assets. Thus target-base 3x3 seam checks and peak lattice/range checks have no target members. The saved 3x3 farmland sheets are context only. Egg-crate peaks, Swiss-cheese craters, classical ruins and a stamped cyberpunk grid are outside this part; no other-part files receive verdicts.",
+      "technical_findings": "All 64 are 48x48 RGBA; alpha is exclusively 0/255. No blur, antialiasing, semitransparent fringe, pale/magenta halo or exact duplicate was found. Palettes contain 12-20 entries including transparency. The planted envelopes are approximately 84-85% of cell area; sparse bare winter branches are intentional, not blank assets.",
+      "style_findings": "Small clustered foliage, olive greens, warm timber, muted blossom pink and blue-white snow fit the approved terrain/details and marker vegetation. Upper-left highlights and lower/right shade are consistent. The autumn gold, rust and red remain differentiated. Dark wood and lower crown edges preserve the small forms; the vegetation does not need the heavy architectural contours of the largest markers to remain readable at 1x.",
+      "repeat_findings": "The remaining regularity is the planting rhythm requested by the brief. Orchard spacing continues across the 48px boundaries instead of grouping six trees behind wider gutters. Vineyard rows retain one angle and a consistent pitch, continuing across side boundaries. No additional cell-sized patch grid or conspicuous duplicate crown stamp survives the native-size mixed layouts. The approved farmland itself has rectangular field divisions; these were checked independently on grass and were not charged to the props.",
+      "result": "64 pass, 0 fail. These pass at the requested shipping threshold alongside the approved art; no remaining concrete rejection-level defect was found."
+    },
+    "orchard-summer": {
+      "verdict": "pass",
+      "members": [
+        "orchard-prop-0",
+        "orchard-prop-1",
+        "orchard-prop-2",
+        "orchard-prop-3",
+        "orchard-prop-4",
+        "orchard-prop-5",
+        "orchard-prop-6",
+        "orchard-prop-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "finding": "Four trees per cell now maintain approximately 24px planting pitch through random cell boundaries. Crown outlines, height, lobe arrangement and fruit/blossom distribution vary enough to avoid identical crowns; the forest composite reads as a continuous planted stand.",
+      "seasonal_check": "Leaf masses, orange fruit pixels and short trunks read as small fruit trees. Green shade clusters retain volume at 1x.",
+      "evidence": [
+        "critic-r107-2-orchard-summer-files-8x.png",
+        "critic-r107-2-orchard-summer-8x2-farmland-1x.png",
+        "critic-r107-2-orchard-summer-8x2-farmland-4x.png",
+        "critic-r107-2-orchard-summer-8x2-grass-1x.png",
+        "critic-r107-2-orchard-summer-8x2-grass-4x.png",
+        "critic-r107-2-orchard-summer-dense-stand-1x.png",
+        "critic-r107-2-orchard-summer-dense-stand-4x.png"
+      ]
+    },
+    "orchard-spring": {
+      "verdict": "pass",
+      "members": [
+        "orchard@spring-prop-0",
+        "orchard@spring-prop-1",
+        "orchard@spring-prop-2",
+        "orchard@spring-prop-3",
+        "orchard@spring-prop-4",
+        "orchard@spring-prop-5",
+        "orchard@spring-prop-6",
+        "orchard@spring-prop-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "finding": "Four trees per cell now maintain approximately 24px planting pitch through random cell boundaries. Crown outlines, height, lobe arrangement and fruit/blossom distribution vary enough to avoid identical crowns; the forest composite reads as a continuous planted stand.",
+      "seasonal_check": "Pale pink blossom masses have darker pink and green recesses; individual crowns remain legible on light grass and farmland.",
+      "evidence": [
+        "critic-r107-2-orchard-spring-files-8x.png",
+        "critic-r107-2-orchard-spring-8x2-farmland-1x.png",
+        "critic-r107-2-orchard-spring-8x2-farmland-4x.png",
+        "critic-r107-2-orchard-spring-8x2-grass-1x.png",
+        "critic-r107-2-orchard-spring-8x2-grass-4x.png",
+        "critic-r107-2-orchard-spring-dense-stand-1x.png",
+        "critic-r107-2-orchard-spring-dense-stand-4x.png"
+      ]
+    },
+    "orchard-autumn": {
+      "verdict": "pass",
+      "members": [
+        "orchard@autumn-prop-0",
+        "orchard@autumn-prop-1",
+        "orchard@autumn-prop-2",
+        "orchard@autumn-prop-3",
+        "orchard@autumn-prop-4",
+        "orchard@autumn-prop-5",
+        "orchard@autumn-prop-6",
+        "orchard@autumn-prop-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "finding": "Four trees per cell now maintain approximately 24px planting pitch through random cell boundaries. Crown outlines, height, lobe arrangement and fruit/blossom distribution vary enough to avoid identical crowns; the forest composite reads as a continuous planted stand.",
+      "seasonal_check": "Gold highlights, rust midtones, red fruit/leaf clusters and dark olive-brown recesses prevent a flat orange recolour.",
+      "evidence": [
+        "critic-r107-2-orchard-autumn-files-8x.png",
+        "critic-r107-2-orchard-autumn-8x2-farmland-1x.png",
+        "critic-r107-2-orchard-autumn-8x2-farmland-4x.png",
+        "critic-r107-2-orchard-autumn-8x2-grass-1x.png",
+        "critic-r107-2-orchard-autumn-8x2-grass-4x.png",
+        "critic-r107-2-orchard-autumn-dense-stand-1x.png",
+        "critic-r107-2-orchard-autumn-dense-stand-4x.png"
+      ]
+    },
+    "orchard-winter": {
+      "verdict": "pass",
+      "members": [
+        "orchard@winter-prop-0",
+        "orchard@winter-prop-1",
+        "orchard@winter-prop-2",
+        "orchard@winter-prop-3",
+        "orchard@winter-prop-4",
+        "orchard@winter-prop-5",
+        "orchard@winter-prop-6",
+        "orchard@winter-prop-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "finding": "Four trees per cell now maintain approximately 24px planting pitch through random cell boundaries. Crown outlines, height, lobe arrangement and fruit/blossom distribution vary enough to avoid identical crowns; the forest composite reads as a continuous planted stand.",
+      "seasonal_check": "Visible branching trunks and small snow caps replace leafy crowns. All eight files contain readable bare trees, with no blank or anomalously leafy member.",
+      "evidence": [
+        "critic-r107-2-orchard-winter-files-8x.png",
+        "critic-r107-2-orchard-winter-8x2-farmland-1x.png",
+        "critic-r107-2-orchard-winter-8x2-farmland-4x.png",
+        "critic-r107-2-orchard-winter-8x2-grass-1x.png",
+        "critic-r107-2-orchard-winter-8x2-grass-4x.png",
+        "critic-r107-2-orchard-winter-dense-stand-1x.png",
+        "critic-r107-2-orchard-winter-dense-stand-4x.png"
+      ]
+    },
+    "vineyard-summer": {
+      "verdict": "pass",
+      "members": [
+        "vineyard-prop-0",
+        "vineyard-prop-1",
+        "vineyard-prop-2",
+        "vineyard-prop-3",
+        "vineyard-prop-4",
+        "vineyard-prop-5",
+        "vineyard-prop-6",
+        "vineyard-prop-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "finding": "Three compatible horizontal rows maintain their pitch across random neighbours. Edge-reaching rails remove the old inset end-post gutters; varied post positions and foliage clusters avoid an obvious repeating 48px trellis patch.",
+      "seasonal_check": "Posts, continuous woody rails and hanging green/fruit clusters read as planted vines rather than broken miniature fences.",
+      "evidence": [
+        "critic-r107-2-vineyard-summer-files-8x.png",
+        "critic-r107-2-vineyard-summer-8x2-farmland-1x.png",
+        "critic-r107-2-vineyard-summer-8x2-farmland-4x.png",
+        "critic-r107-2-vineyard-summer-8x2-grass-1x.png",
+        "critic-r107-2-vineyard-summer-8x2-grass-4x.png"
+      ]
+    },
+    "vineyard-spring": {
+      "verdict": "pass",
+      "members": [
+        "vineyard@spring-prop-0",
+        "vineyard@spring-prop-1",
+        "vineyard@spring-prop-2",
+        "vineyard@spring-prop-3",
+        "vineyard@spring-prop-4",
+        "vineyard@spring-prop-5",
+        "vineyard@spring-prop-6",
+        "vineyard@spring-prop-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "finding": "Three compatible horizontal rows maintain their pitch across random neighbours. Edge-reaching rails remove the old inset end-post gutters; varied post positions and foliage clusters avoid an obvious repeating 48px trellis patch.",
+      "seasonal_check": "Sparser new green growth leaves the supporting posts and rails visible. It remains distinguishable from both summer and bare winter.",
+      "evidence": [
+        "critic-r107-2-vineyard-spring-files-8x.png",
+        "critic-r107-2-vineyard-spring-8x2-farmland-1x.png",
+        "critic-r107-2-vineyard-spring-8x2-farmland-4x.png",
+        "critic-r107-2-vineyard-spring-8x2-grass-1x.png",
+        "critic-r107-2-vineyard-spring-8x2-grass-4x.png"
+      ]
+    },
+    "vineyard-autumn": {
+      "verdict": "pass",
+      "members": [
+        "vineyard@autumn-prop-0",
+        "vineyard@autumn-prop-1",
+        "vineyard@autumn-prop-2",
+        "vineyard@autumn-prop-3",
+        "vineyard@autumn-prop-4",
+        "vineyard@autumn-prop-5",
+        "vineyard@autumn-prop-6",
+        "vineyard@autumn-prop-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "finding": "Three compatible horizontal rows maintain their pitch across random neighbours. Edge-reaching rails remove the old inset end-post gutters; varied post positions and foliage clusters avoid an obvious repeating 48px trellis patch.",
+      "seasonal_check": "Yellow, rust and red clusters vary along the rows; dark grape/wood details survive. The continuous rows do not become solid orange bars.",
+      "evidence": [
+        "critic-r107-2-vineyard-autumn-files-8x.png",
+        "critic-r107-2-vineyard-autumn-8x2-farmland-1x.png",
+        "critic-r107-2-vineyard-autumn-8x2-farmland-4x.png",
+        "critic-r107-2-vineyard-autumn-8x2-grass-1x.png",
+        "critic-r107-2-vineyard-autumn-8x2-grass-4x.png"
+      ]
+    },
+    "vineyard-winter": {
+      "verdict": "pass",
+      "members": [
+        "vineyard@winter-prop-0",
+        "vineyard@winter-prop-1",
+        "vineyard@winter-prop-2",
+        "vineyard@winter-prop-3",
+        "vineyard@winter-prop-4",
+        "vineyard@winter-prop-5",
+        "vineyard@winter-prop-6",
+        "vineyard@winter-prop-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "finding": "Three compatible horizontal rows maintain their pitch across random neighbours. Edge-reaching rails remove the old inset end-post gutters; varied post positions and foliage clusters avoid an obvious repeating 48px trellis patch.",
+      "seasonal_check": "Bare brown/olive wood, upright supports and small cool snow deposits remain readable on snow. The set retains its trellis structure and joins instead of becoming blank white strips.",
+      "evidence": [
+        "critic-r107-2-vineyard-winter-files-8x.png",
+        "critic-r107-2-vineyard-winter-8x2-farmland-1x.png",
+        "critic-r107-2-vineyard-winter-8x2-farmland-4x.png",
+        "critic-r107-2-vineyard-winter-8x2-grass-1x.png",
+        "critic-r107-2-vineyard-winter-8x2-grass-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "orchard-prop-0",
+    "orchard-prop-1",
+    "orchard-prop-2",
+    "orchard-prop-3",
+    "orchard-prop-4",
+    "orchard-prop-5",
+    "orchard-prop-6",
+    "orchard-prop-7",
+    "orchard@spring-prop-0",
+    "orchard@spring-prop-1",
+    "orchard@spring-prop-2",
+    "orchard@spring-prop-3",
+    "orchard@spring-prop-4",
+    "orchard@spring-prop-5",
+    "orchard@spring-prop-6",
+    "orchard@spring-prop-7",
+    "orchard@autumn-prop-0",
+    "orchard@autumn-prop-1",
+    "orchard@autumn-prop-2",
+    "orchard@autumn-prop-3",
+    "orchard@autumn-prop-4",
+    "orchard@autumn-prop-5",
+    "orchard@autumn-prop-6",
+    "orchard@autumn-prop-7",
+    "orchard@winter-prop-0",
+    "orchard@winter-prop-1",
+    "orchard@winter-prop-2",
+    "orchard@winter-prop-3",
+    "orchard@winter-prop-4",
+    "orchard@winter-prop-5",
+    "orchard@winter-prop-6",
+    "orchard@winter-prop-7",
+    "vineyard-prop-0",
+    "vineyard-prop-1",
+    "vineyard-prop-2",
+    "vineyard-prop-3",
+    "vineyard-prop-4",
+    "vineyard-prop-5",
+    "vineyard-prop-6",
+    "vineyard-prop-7",
+    "vineyard@spring-prop-0",
+    "vineyard@spring-prop-1",
+    "vineyard@spring-prop-2",
+    "vineyard@spring-prop-3",
+    "vineyard@spring-prop-4",
+    "vineyard@spring-prop-5",
+    "vineyard@spring-prop-6",
+    "vineyard@spring-prop-7",
+    "vineyard@autumn-prop-0",
+    "vineyard@autumn-prop-1",
+    "vineyard@autumn-prop-2",
+    "vineyard@autumn-prop-3",
+    "vineyard@autumn-prop-4",
+    "vineyard@autumn-prop-5",
+    "vineyard@autumn-prop-6",
+    "vineyard@autumn-prop-7",
+    "vineyard@winter-prop-0",
+    "vineyard@winter-prop-1",
+    "vineyard@winter-prop-2",
+    "vineyard@winter-prop-3",
+    "vineyard@winter-prop-4",
+    "vineyard@winter-prop-5",
+    "vineyard@winter-prop-6",
+    "vineyard@winter-prop-7"
+  ],
+  "fail": []
+}
