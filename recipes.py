@@ -328,3 +328,7 @@ def creator_band_night():
 
 
 RECIPES["creator/topbar-band-night"] = drawn(creator_band_night)
+
+# ponytail: both Codex tries drew the icons on a ~4 px grid, so they are snapped at 4x (32x32 art), not the brief's
+# 16x16 at 8x; forcing 8 px blocks destroyed them. Upgrade path: hand-author the 16x16 grids in code.
+RECIPES["maximal/ui-icons"] = lambda: regrid(raw("maximal/ui-icons"), 4, 14)

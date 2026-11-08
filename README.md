@@ -1,4 +1,17 @@
-# Marinara theming test images, round 3
+# Marinara theming test images, rounds 3 and 4
+
+## Round 4 (branch theming-r4-images)
+
+Same method as round 3 (Codex CLI image tool, then Pillow). Requests: `requests-batch1.md` (one line per image: `<persona>/<file>.png | WxH | transparent? | prompt`); retries with tightened prompts in `requests-batch1-retry.md`. Times per generation in `times.txt` (round 3's are in `times-r3.txt`).
+
+- `run_batch.py requests-batchN.md [persona/name ...]` runs `gen.sh` 3 at a time. A night/day twin is generated as an edit of its source's raw (`TWINS` in run_batch.py); a REGEN line gets the round-3 image as a "what went wrong" reference, not a layout to copy.
+- `process4.py [persona/name ...]` turns `work/<persona>/<name>/raw.png` into `images/<persona>/<name>.png` at the exact size, using the per-image recipes in `recipes.py`.
+- Drawn or derived in code, not generated, because the brief asked for exact geometry or a pixel-identical twin: `minimal/game-stage` (draw_minimal.py), `maximal/topbar-strip` (exact 512x48 pixel spec), `maximal/backdrop-night` (the day art grid relit class by class, so silhouettes match pixel for pixel; stars and moon placed in code), `access/horizon-strip-night` and `access/sprig-night` (the day image recoloured, same shapes), `creator/topbar-band-night` (day band relit, the generated night had clipped the leaves). The Codex raws for these stay in work/ for reference.
+- Partly redrawn: `neon/topbar-strip` keeps the generated circuit plate but the tube is drawn to spec (2 px core, glow, cyan to magenta and back so it tiles); `access/horizon-strip-day` gets a rolling seamless hill top edge.
+- Pixel-art sheets (`maximal/stickers2`, `ui-icons`, `emblem`) are snapped to an exact block grid (best phase, block-centre sample, flat colours); the emblem is locked to its spec palette.
+- Particle tiles (`immersion/ambient-motes`, `creator/ambient-leaves`, `neon/rain-tile`) drop any particle the raw's edge cut, so the wrap never slices one; the leaves are re-spread on a jittered grid.
+
+## Round 3
 
 AI-generated with the OpenAI Codex CLI's built-in image tool (codex-cli 0.166.0-alpha.6, ChatGPT plan), then resized, cropped and made seamless locally by `process.py` (Pillow). Not CC0 or hand-made art: note the provenance wherever these land.
 

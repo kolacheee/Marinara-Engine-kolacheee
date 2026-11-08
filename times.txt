@@ -39,3 +39,4 @@ cozy/backdrop-night rc=0 secs=72 exists=yes
 neon/backdrop-day rc=0 secs=62 exists=yes
 maximal/backdrop-night rc=0 secs=63 exists=yes
 cozy/sprigs rc=0 secs=58 exists=yes
+maximal/ui-icons rc=0 secs=47 exists=yes
