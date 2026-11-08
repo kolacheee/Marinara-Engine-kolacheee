@@ -1,0 +1,7 @@
+cozy|backdrop-night|the same cottage window scene at night: fairy lights strung along the window, lavender and navy palette, soft watercolour, calm centre
+neon|backdrop-night|the same cyberpunk skyline at night in heavy rain, glowing neon signs made only of abstract shapes and bars with no readable characters, dark centre
+minimal|backdrop-night|the same composition on a near-black background: the red circle stays red and the thin line becomes off-white, flat vector look
+creator|backdrop-night|the same autumn forest path at night, lit by warm glowing paper lanterns, deep blue sky, soft focus
+immersion|backdrop-night|the same castle library at night, lit by candles and cool moonlight through the windows, painterly anime style
+access|backdrop-night|the same calm blurred meadow at night in soft dark blues, very low contrast, heavily defocused
+maximal|backdrop-night|the same pixel art pink city at night with stars in the sky and lit windows, crisp pixels
