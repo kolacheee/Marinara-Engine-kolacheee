@@ -46,6 +46,8 @@ export const worldMapSchema = z
     name: z.string().min(1).max(80),
     seed: z.number().int().min(0).max(0xffffffff),
     brief: worldBriefSchema,
+    /** Its own hand edits (W9c), made in the editor while the party was on it. */
+    edits: worldEditsSchema.optional(),
   })
   .strict();
 export type WorldMapEntry = z.infer<typeof worldMapSchema>;
@@ -142,8 +144,7 @@ export function gameWorldFromMetadata(
   if (!kit) return null;
   const parsed = gameWorldSchema.safeParse(metadata.gameWorld);
   if (!parsed.success || !worldGeneratorReads(parsed.data.generatorVersion)) return null;
-  // Another of the world's maps: made from its own brief and seed, with no hand edits (those are the
-  // first map's).
+  // Another of the world's maps: made from its own brief and seed, with its own hand edits.
   const away = parsed.data.maps?.find((map) => map.id === (mapId ?? parsed.data.here));
   if (away && mapId !== "home") {
     const checked = checkWorldBrief(kit, away.brief);
@@ -155,8 +156,10 @@ export function gameWorldFromMetadata(
       brief: checked.brief,
       generatorVersion: parsed.data.generatorVersion,
     };
-    const world = compileGameWorld(inputs);
-    return { ...inputs, world, compiled: world, mapId: away.id };
+    const edits = away.edits && worldEditsFightable(away.edits).edits;
+    const full = edits && worldEditIssues(inputs, edits).length === 0 ? { ...inputs, edits } : inputs;
+    const compiled = compileGameWorld(inputs);
+    return { ...full, world: full === inputs ? compiled : compileGameWorld(full), compiled, mapId: away.id };
   }
   const checked = checkWorldBrief(kit, parsed.data.brief);
   if (!checked.ok) return null;

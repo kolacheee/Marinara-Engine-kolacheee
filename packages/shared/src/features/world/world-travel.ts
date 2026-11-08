@@ -150,9 +150,23 @@ export function worldTravel(
               : [pad + width + row, pad + at];
       ground += beyond.cells[y * outerWidth + x]!.toString(36);
     }
+  // And the map it left, past the new map's edge there: that map's own rows from its edge in.
+  let back = "";
+  for (let row = 0; row < pad && row < (side === "north" || side === "south" ? height : width); row++)
+    for (let at = 0; at < along; at++) {
+      const [x, y] =
+        side === "north"
+          ? [at, row]
+          : side === "south"
+            ? [at, height - 1 - row]
+            : side === "west"
+              ? [row, at]
+              : [width - 1 - row, at];
+      back += active.world.ground[y * width + x]!;
+    }
   return make({
     ...base,
     places: [{ name: name.trim().slice(0, 80), layer: settlement, tags: [], start: true }],
-    join: { side: OPPOSITE[side], ground },
+    join: { side: OPPOSITE[side], ground, back },
   });
 }

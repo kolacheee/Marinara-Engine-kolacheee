@@ -324,6 +324,7 @@ import {
   worldAssetsForFamily,
   gameWorldSchema,
   gameWorldFromMetadata,
+  gameWorldMapHere,
   worldMadeByThisGenerator,
   worldFold,
   worldSnapshot,
@@ -12173,19 +12174,29 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
           throw Object.assign(new Error("This game has no world."), { statusCode: 404 });
         }
         // The baseline, compared where the write happens: a layer saved since is newer than this draft.
-        if ("expected" in body) {
-          const stored = (fresh.gameWorld as { edits?: unknown }).edits ?? null;
-          if (!sameGameDataValue(stored, body.expected)) {
-            stale = { edits: stored };
-            return {};
-          }
+        // The edits are the map the party is on's (world-travel.ts): the one they were checked against. The
+        // party gone to another map meanwhile makes them stale.
+        const here = gameWorldMapHere(fresh);
+        const record = fresh.gameWorld as Record<string, unknown> & { maps?: Array<Record<string, unknown>> };
+        const map = here ? record.maps?.find((each) => each.id === here) : undefined;
+        const held = (map ? map.edits : record.edits) ?? null;
+        if (here !== game.mapId || ("expected" in body && !sameGameDataValue(held, body.expected))) {
+          stale = { edits: held };
+          return {};
         }
-        const now = gameWorldFromMetadata(fresh, "home");
-        storyRefusal = now ? editsStoryRefusal(now, edits, gameStoryFromMetadata(fresh, now)) : null;
-        if (storyRefusal) return {};
+        if (!map) {
+          const now = gameWorldFromMetadata(fresh, "home");
+          storyRefusal = now ? editsStoryRefusal(now, edits, gameStoryFromMetadata(fresh, now)) : null;
+          if (storyRefusal) return {};
+        }
         previous = fresh.gameWorld;
-        const { edits: _old, ...stored } = fresh.gameWorld as Record<string, unknown>;
-        return { gameWorld: edits ? { ...stored, edits } : stored };
+        const keep = (entry: Record<string, unknown>) => {
+          const { edits: _old, ...rest } = entry;
+          return edits ? { ...rest, edits } : rest;
+        };
+        if (map)
+          return { gameWorld: { ...record, maps: record.maps!.map((each) => (each === map ? keep(each) : each)) } };
+        return { gameWorld: keep(record) };
       });
       // Nothing was written for a stale or refused layer: no snapshot to save, and nothing to take back.
       // (`previous` is only set on a write, so a failed snapshot here would roll the world back to nothing.)

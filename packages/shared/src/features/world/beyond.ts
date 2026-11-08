@@ -63,6 +63,8 @@ export function worldBeyondGround(game: GameWorld, pad = WORLD_BEYOND_PAD): Worl
     brief.earth?.year,
     brief.earth?.beyond?.ground.length,
     brief.placeNames,
+    brief.join?.side,
+    brief.join?.back,
     world.places.map((place) => place.name),
     (world.rivers ?? []).map((river) => [river.path[0], river.path.at(-1)]),
   ]);
@@ -166,6 +168,28 @@ function makeBeyond(game: GameWorld, pad: number): WorldBeyond {
         ranOn[cell] = 1;
       } else cells[cell] = ground;
     }
+  // Past the edge it meets a map of the world by (world-travel.ts), that map as it is.
+  const join = !earth && brief.join?.back ? brief.join : null;
+  if (join) {
+    const along = join.side === "north" || join.side === "south" ? width : height;
+    const depth = Math.min(pad, Math.floor(join.back!.length / along));
+    for (let row = 0; row < depth; row++)
+      for (let at = 0; at < along; at++) {
+        const kind = parseInt(join.back![row * along + at]!, 36);
+        if (!(kind < world.terrain.length)) continue;
+        const [x, y] =
+          join.side === "north"
+            ? [at, -1 - row]
+            : join.side === "south"
+              ? [at, height + row]
+              : join.side === "west"
+                ? [-1 - row, at]
+                : [width + row, at];
+        const cell = (y + pad) * outerWidth + x + pad;
+        cells[cell] = kind;
+        ranOn[cell] = 1;
+      }
+  }
   const counts = new Map<number, number>();
   for (const index of own) if (wild(index) && !isWater(index)) counts.set(index, (counts.get(index) ?? 0) + 1);
   const commonest = [...counts].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]?.[0];
@@ -203,8 +227,11 @@ function makeBeyond(game: GameWorld, pad: number): WorldBeyond {
         // One river out of each stretch of the edge: two that meet it side by side would braid out there.
         if ([...leaving].some((other) => Math.abs((other % width) - x) + Math.abs(Math.floor(other / width) - y) <= 2))
           continue;
-        leaving.add(at);
         const [dx, dy] = x === 0 ? [-1, 0] : x === width - 1 ? [1, 0] : y === 0 ? [0, -1] : [0, 1];
+        // Not into the map it meets past that edge, which has its own rivers.
+        const toward: WorldBeyondSide = dx < 0 ? "west" : dx > 0 ? "east" : dy < 0 ? "north" : "south";
+        if (join && toward === join.side) continue;
+        leaving.add(at);
         const size = end === "mouth" ? river.width[river.width.length - 1]! : river.width[0]!;
         const path = [toOuter(at)];
         let [cx, cy] = [x + pad, y + pad];

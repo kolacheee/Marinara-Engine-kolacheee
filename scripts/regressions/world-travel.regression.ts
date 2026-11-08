@@ -121,6 +121,35 @@ const data: WorldEarthData = {
       if (first.world.terrain[shown] === north.world.terrain[here]) same++;
     }
   assert.ok(same >= all * 0.8, `the land runs on across: ${same} of ${all}`);
+  // Past its south edge is the first map itself, from its north edge down.
+  const past = worldBeyondGround(north);
+  let shown = 0;
+  let rows = 0;
+  for (let row = 0; row < past.pad; row++)
+    for (let x = 0; x < width; x++) {
+      rows++;
+      const at = past.cells[(past.pad + height + row) * past.width + past.pad + x]!;
+      if (north.world.terrain[at] === first.world.terrain[parseInt(first.world.ground[row * width + x]!, 36)]) shown++;
+    }
+  assert.equal(shown, rows, "the first map shows past the edge it is met by");
+  // The new map keeps hand edits of its own; the first map's are not on it.
+  {
+    const spot = north.world.places.find((place) => place.rank !== undefined)!;
+    const tw = after.gameWorld as { maps: Array<Record<string, unknown>> };
+    const editedMeta = {
+      ...after,
+      gameWorld: {
+        ...tw,
+        maps: tw.maps.map((map) => ({
+          ...map,
+          edits: { editsVersion: 1, places: [{ id: spot.id, name: "Northwatch" }] },
+        })),
+      },
+    };
+    const editedNorth = gameWorldFromMetadata(editedMeta)!;
+    assert.equal(editedNorth.world.places.find((place) => place.id === spot.id)?.name, "Northwatch");
+    assert.ok(!worldPlaceByName(gameWorldFromMetadata(editedMeta, "home")!.world, "Northwatch"));
+  }
   // Back by a place of the first map.
   const town = first.world.places.find(
     (place) => place.rank !== undefined && !worldPlaceByName(north.world, place.name),
