@@ -1,0 +1,756 @@
+{
+  "sets": {
+    "wasteland-city-summer": {
+      "status": "fail",
+      "files": [
+        "wasteland-city-bldg-0",
+        "wasteland-city-bldg-1",
+        "wasteland-city-bldg-2",
+        "wasteland-city-bldg-3",
+        "wasteland-city-bldg-4",
+        "wasteland-city-bldg-5",
+        "wasteland-city-bldg-6",
+        "wasteland-city-bldg-7",
+        "wasteland-city-bldg-8",
+        "wasteland-city-bldg-9",
+        "wasteland-city-bldg-10",
+        "wasteland-city-bldg-11",
+        "wasteland-city-bldg-12",
+        "wasteland-city-bldg-13",
+        "wasteland-city-bldg-14",
+        "wasteland-city-bldg-15"
+      ],
+      "pass_count": 6,
+      "fail_count": 10,
+      "checks": [
+        "All files viewed at 1x and 4x in labelled sheets; each viewed at 8x on transparency backing.",
+        "Dense-to-sparse street composite inspected at 1x and 4x, including both full-resolution scene halves.",
+        "48x48 subset also inspected in seeded random 8x2 layouts at 1x and 4x.",
+        "Size, bottom-centre anchor, alpha, silhouette variety, roof/ledge snow, outline, material readability, top-left lighting and palette compared with approved art."
+      ],
+      "pass_rationale": {
+        "wasteland-city-bldg-0": "Compact rebuilt shack: bent flue, door and boarded window remain distinct; weathered roof does not overwhelm the form.",
+        "wasteland-city-bldg-1": "Squat patched concrete home: readable flat roof, vent, doorway and shaded side; silhouette differs from the gabled shacks.",
+        "wasteland-city-bldg-3": "Distinct two-tier roof and lower lean-to; grey patch and front opening retain separation at native size.",
+        "wasteland-city-bldg-4": "Low garage/workshop silhouette with a broad roof cap, legible door and restrained detail for its small height.",
+        "wasteland-city-bldg-7": "Rusted water tower is immediately identifiable; tank, open X-braced frame and base shelter remain separate.",
+        "wasteland-city-bldg-11": "Asymmetric concrete residential tower has calm wall masses, discrete openings and a distinctive stepped roofline; local weathering does not destroy its silhouette."
+      },
+      "evidence": [
+        "critic-r105-1-summer-city-all-1x.png",
+        "critic-r105-1-summer-city-all-4x.png",
+        "critic-r105-1-summer-city-dense-to-sparse-1x.png",
+        "critic-r105-1-summer-city-dense-to-sparse-4x.png",
+        "critic-r105-1-summer-city-random8x2-1x.png",
+        "critic-r105-1-summer-city-random8x2-4x.png"
+      ]
+    },
+    "wasteland-slums-summer": {
+      "status": "fail",
+      "files": [
+        "wasteland-slums-bldg-0",
+        "wasteland-slums-bldg-1",
+        "wasteland-slums-bldg-2",
+        "wasteland-slums-bldg-3",
+        "wasteland-slums-bldg-4",
+        "wasteland-slums-bldg-5",
+        "wasteland-slums-bldg-6",
+        "wasteland-slums-bldg-7",
+        "wasteland-slums-bldg-8",
+        "wasteland-slums-bldg-9",
+        "wasteland-slums-bldg-10",
+        "wasteland-slums-bldg-11"
+      ],
+      "pass_count": 7,
+      "fail_count": 5,
+      "checks": [
+        "All files viewed at 1x and 4x in labelled sheets; each viewed at 8x on transparency backing.",
+        "Dense-to-sparse street composite inspected at 1x and 4x, including both full-resolution scene halves.",
+        "48x48 subset also inspected in seeded random 8x2 layouts at 1x and 4x.",
+        "Size, bottom-centre anchor, alpha, silhouette variety, roof/ledge snow, outline, material readability, top-left lighting and palette compared with approved art."
+      ],
+      "pass_rationale": {
+        "wasteland-slums-bldg-0": "Simple lean-to shack with clear roof pitch, door and side plane; sufficient scrap character without unreadable clutter.",
+        "wasteland-slums-bldg-1": "Low irregular shelter with readable canopy mouth and broad roof patches; distinct from the pitched-roof and container silhouettes.",
+        "wasteland-slums-bldg-2": "Small pitched/tarp shelter with clear peak, entrance and side lean-to; anchored and readable.",
+        "wasteland-slums-bldg-3": "Two-tier patched dwelling with legible ladder, roof shelves and doors; silhouette is distinct.",
+        "wasteland-slums-bldg-4": "Long sloping awning against a broken wall remains readable as a separate roof plane and shelter.",
+        "wasteland-slums-bldg-6": "Rounded salvaged hut is a distinct silhouette with a readable dark entry and grey sheet roof.",
+        "wasteland-slums-bldg-7": "Paired small shacks have separate roof pitches and entrances; they retain their shapes in the random layout."
+      },
+      "evidence": [
+        "critic-r105-1-summer-slums-all-1x.png",
+        "critic-r105-1-summer-slums-all-4x.png",
+        "critic-r105-1-summer-slums-dense-to-sparse-1x.png",
+        "critic-r105-1-summer-slums-dense-to-sparse-4x.png",
+        "critic-r105-1-summer-slums-random8x2-1x.png",
+        "critic-r105-1-summer-slums-random8x2-4x.png"
+      ]
+    },
+    "wasteland-industry-summer": {
+      "status": "fail",
+      "files": [
+        "wasteland-industry-bldg-0",
+        "wasteland-industry-bldg-1",
+        "wasteland-industry-bldg-2",
+        "wasteland-industry-bldg-3",
+        "wasteland-industry-bldg-4",
+        "wasteland-industry-bldg-5",
+        "wasteland-industry-bldg-6",
+        "wasteland-industry-bldg-7",
+        "wasteland-industry-bldg-8",
+        "wasteland-industry-bldg-9"
+      ],
+      "pass_count": 4,
+      "fail_count": 6,
+      "checks": [
+        "All files viewed at 1x and 4x in labelled sheets; each viewed at 8x on transparency backing.",
+        "Dense-to-sparse street composite inspected at 1x and 4x, including both full-resolution scene halves.",
+        "48x48 subset also inspected in seeded random 8x2 layouts at 1x and 4x.",
+        "Size, bottom-centre anchor, alpha, silhouette variety, roof/ledge snow, outline, material readability, top-left lighting and palette compared with approved art."
+      ],
+      "pass_rationale": {
+        "wasteland-industry-bldg-1": "Horizontal cylindrical tank and attached pump shed remain clearly distinguishable; enough quiet surface for this size.",
+        "wasteland-industry-bldg-3": "Two vertical tanks, overhead connecting pipe and low pump room are identifiable at 1x, with distinct spacing.",
+        "wasteland-industry-bldg-4": "Tapered foundry/hood and tall stack give a clear industrial silhouette; dark furnace opening remains readable.",
+        "wasteland-industry-bldg-8": "Large tank tower, X-bracing, continuous pipe and two rear vessels form an identifiable tank installation; foreground shed stays separate."
+      },
+      "evidence": [
+        "critic-r105-1-summer-industry-all-1x.png",
+        "critic-r105-1-summer-industry-all-4x.png",
+        "critic-r105-1-summer-industry-dense-to-sparse-1x.png",
+        "critic-r105-1-summer-industry-dense-to-sparse-4x.png",
+        "critic-r105-1-summer-industry-random8x2-1x.png",
+        "critic-r105-1-summer-industry-random8x2-4x.png"
+      ]
+    },
+    "wasteland-city-winter": {
+      "status": "fail",
+      "files": [
+        "wasteland-city@winter-bldg-0",
+        "wasteland-city@winter-bldg-1",
+        "wasteland-city@winter-bldg-2",
+        "wasteland-city@winter-bldg-3",
+        "wasteland-city@winter-bldg-4",
+        "wasteland-city@winter-bldg-5",
+        "wasteland-city@winter-bldg-6",
+        "wasteland-city@winter-bldg-7",
+        "wasteland-city@winter-bldg-8",
+        "wasteland-city@winter-bldg-9",
+        "wasteland-city@winter-bldg-10",
+        "wasteland-city@winter-bldg-11",
+        "wasteland-city@winter-bldg-12",
+        "wasteland-city@winter-bldg-13",
+        "wasteland-city@winter-bldg-14",
+        "wasteland-city@winter-bldg-15"
+      ],
+      "pass_count": 6,
+      "fail_count": 10,
+      "checks": [
+        "All files viewed at 1x and 4x in labelled sheets; each viewed at 8x on transparency backing.",
+        "Dense-to-sparse street composite inspected at 1x and 4x, including both full-resolution scene halves.",
+        "48x48 subset also inspected in seeded random 8x2 layouts at 1x and 4x.",
+        "Size, bottom-centre anchor, alpha, silhouette variety, roof/ledge snow, outline, material readability, top-left lighting and palette compared with approved art."
+      ],
+      "pass_rationale": {
+        "wasteland-city@winter-bldg-0": "Compact rebuilt shack: bent flue, door and boarded window remain distinct; weathered roof does not overwhelm the form. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-city@winter-bldg-1": "Squat patched concrete home: readable flat roof, vent, doorway and shaded side; silhouette differs from the gabled shacks. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-city@winter-bldg-3": "Distinct two-tier roof and lower lean-to; grey patch and front opening retain separation at native size. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-city@winter-bldg-4": "Low garage/workshop silhouette with a broad roof cap, legible door and restrained detail for its small height. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-city@winter-bldg-7": "Rusted water tower is immediately identifiable; tank, open X-braced frame and base shelter remain separate. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-city@winter-bldg-11": "Asymmetric concrete residential tower has calm wall masses, discrete openings and a distinctive stepped roofline; local weathering does not destroy its silhouette. Winter snow stays on recognizable roof/ledge tops and preserves the same main form."
+      },
+      "evidence": [
+        "critic-r105-1-winter-city-all-1x.png",
+        "critic-r105-1-winter-city-all-4x.png",
+        "critic-r105-1-winter-city-dense-to-sparse-1x.png",
+        "critic-r105-1-winter-city-dense-to-sparse-4x.png",
+        "critic-r105-1-winter-city-random8x2-1x.png",
+        "critic-r105-1-winter-city-random8x2-4x.png"
+      ]
+    },
+    "wasteland-slums-winter": {
+      "status": "fail",
+      "files": [
+        "wasteland-slums@winter-bldg-0",
+        "wasteland-slums@winter-bldg-1",
+        "wasteland-slums@winter-bldg-2",
+        "wasteland-slums@winter-bldg-3",
+        "wasteland-slums@winter-bldg-4",
+        "wasteland-slums@winter-bldg-5",
+        "wasteland-slums@winter-bldg-6",
+        "wasteland-slums@winter-bldg-7",
+        "wasteland-slums@winter-bldg-8",
+        "wasteland-slums@winter-bldg-9",
+        "wasteland-slums@winter-bldg-10",
+        "wasteland-slums@winter-bldg-11"
+      ],
+      "pass_count": 7,
+      "fail_count": 5,
+      "checks": [
+        "All files viewed at 1x and 4x in labelled sheets; each viewed at 8x on transparency backing.",
+        "Dense-to-sparse street composite inspected at 1x and 4x, including both full-resolution scene halves.",
+        "48x48 subset also inspected in seeded random 8x2 layouts at 1x and 4x.",
+        "Size, bottom-centre anchor, alpha, silhouette variety, roof/ledge snow, outline, material readability, top-left lighting and palette compared with approved art."
+      ],
+      "pass_rationale": {
+        "wasteland-slums@winter-bldg-0": "Simple lean-to shack with clear roof pitch, door and side plane; sufficient scrap character without unreadable clutter. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-slums@winter-bldg-1": "Low irregular shelter with readable canopy mouth and broad roof patches; distinct from the pitched-roof and container silhouettes. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-slums@winter-bldg-2": "Small pitched/tarp shelter with clear peak, entrance and side lean-to; anchored and readable. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-slums@winter-bldg-3": "Two-tier patched dwelling with legible ladder, roof shelves and doors; silhouette is distinct. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-slums@winter-bldg-4": "Long sloping awning against a broken wall remains readable as a separate roof plane and shelter. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-slums@winter-bldg-6": "Rounded salvaged hut is a distinct silhouette with a readable dark entry and grey sheet roof. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-slums@winter-bldg-7": "Paired small shacks have separate roof pitches and entrances; they retain their shapes in the random layout. Winter snow stays on recognizable roof/ledge tops and preserves the same main form."
+      },
+      "evidence": [
+        "critic-r105-1-winter-slums-all-1x.png",
+        "critic-r105-1-winter-slums-all-4x.png",
+        "critic-r105-1-winter-slums-dense-to-sparse-1x.png",
+        "critic-r105-1-winter-slums-dense-to-sparse-4x.png",
+        "critic-r105-1-winter-slums-random8x2-1x.png",
+        "critic-r105-1-winter-slums-random8x2-4x.png"
+      ]
+    },
+    "wasteland-industry-winter": {
+      "status": "fail",
+      "files": [
+        "wasteland-industry@winter-bldg-0",
+        "wasteland-industry@winter-bldg-1",
+        "wasteland-industry@winter-bldg-2",
+        "wasteland-industry@winter-bldg-3",
+        "wasteland-industry@winter-bldg-4",
+        "wasteland-industry@winter-bldg-5",
+        "wasteland-industry@winter-bldg-6",
+        "wasteland-industry@winter-bldg-7",
+        "wasteland-industry@winter-bldg-8",
+        "wasteland-industry@winter-bldg-9"
+      ],
+      "pass_count": 4,
+      "fail_count": 6,
+      "checks": [
+        "All files viewed at 1x and 4x in labelled sheets; each viewed at 8x on transparency backing.",
+        "Dense-to-sparse street composite inspected at 1x and 4x, including both full-resolution scene halves.",
+        "48x48 subset also inspected in seeded random 8x2 layouts at 1x and 4x.",
+        "Size, bottom-centre anchor, alpha, silhouette variety, roof/ledge snow, outline, material readability, top-left lighting and palette compared with approved art."
+      ],
+      "pass_rationale": {
+        "wasteland-industry@winter-bldg-1": "Horizontal cylindrical tank and attached pump shed remain clearly distinguishable; enough quiet surface for this size. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-industry@winter-bldg-3": "Two vertical tanks, overhead connecting pipe and low pump room are identifiable at 1x, with distinct spacing. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-industry@winter-bldg-4": "Tapered foundry/hood and tall stack give a clear industrial silhouette; dark furnace opening remains readable. Winter snow stays on recognizable roof/ledge tops and preserves the same main form.",
+        "wasteland-industry@winter-bldg-8": "Large tank tower, X-bracing, continuous pipe and two rear vessels form an identifiable tank installation; foreground shed stays separate. Winter snow stays on recognizable roof/ledge tops and preserves the same main form."
+      },
+      "evidence": [
+        "critic-r105-1-winter-industry-all-1x.png",
+        "critic-r105-1-winter-industry-all-4x.png",
+        "critic-r105-1-winter-industry-dense-to-sparse-1x.png",
+        "critic-r105-1-winter-industry-dense-to-sparse-4x.png",
+        "critic-r105-1-winter-industry-random8x2-1x.png",
+        "critic-r105-1-winter-industry-random8x2-4x.png"
+      ]
+    },
+    "wasteland-street-summer": {
+      "status": "pass",
+      "files": [
+        "wasteland-street-base"
+      ],
+      "pass_count": 1,
+      "fail_count": 0,
+      "checks": [
+        "3x3 tiling inspected at 1x and 4x, plus a 4x seam crossing.",
+        "Every quadrant inspected at exact 8x.",
+        "Opaque 288x288; no drawn buildings.",
+        "No hard wrap seam or framed tile grid observed."
+      ],
+      "notes": "Calm desaturated cracked rubble; joins have no hard seam or margin frame. The low-contrast repeated texture remains unobtrusive at 1x under buildings. Fine texture is acceptable ground detail, not a sprite-clarity failure.",
+      "evidence": [
+        "critic-r105-1-summer-base-3x3-1x.png",
+        "critic-r105-1-summer-base-3x3-4x.png",
+        "critic-r105-1-summer-base-seam-crossing-4x.png",
+        "critic-r105-1-summer-base-q0-8x.png",
+        "critic-r105-1-summer-base-q1-8x.png",
+        "critic-r105-1-summer-base-q2-8x.png",
+        "critic-r105-1-summer-base-q3-8x.png"
+      ]
+    },
+    "wasteland-street-winter": {
+      "status": "fail",
+      "files": [
+        "wasteland-street@winter-base"
+      ],
+      "pass_count": 0,
+      "fail_count": 1,
+      "checks": [
+        "3x3 tiling inspected at 1x and 4x, plus a 4x seam crossing.",
+        "Every quadrant inspected at exact 8x.",
+        "Opaque 288x288; no drawn buildings.",
+        "No hard wrap seam or framed tile grid observed."
+      ],
+      "notes": "Winter fails for flat surface/seasonal readability, not a detected seam.",
+      "evidence": [
+        "critic-r105-1-winter-base-3x3-1x.png",
+        "critic-r105-1-winter-base-3x3-4x.png",
+        "critic-r105-1-winter-base-seam-crossing-4x.png",
+        "critic-r105-1-winter-base-q0-8x.png",
+        "critic-r105-1-winter-base-q1-8x.png",
+        "critic-r105-1-winter-base-q2-8x.png",
+        "critic-r105-1-winter-base-q3-8x.png"
+      ]
+    },
+    "_review": {
+      "scope": "BRIEF-10.md Part 5 only: 78 wasteland street/city/slums/industry summer and winter files.",
+      "calibration": "Ship beside approved art, allowing purposeful weathering and minor irregularities. Failed noise is localized where it obscures structure; no universal rejection of textured pixel art. Passes retain readable silhouettes, planes and openings in native-size planted and randomized layouts.",
+      "previous_review": "critic-r105-0.json absent at start of review.",
+      "references": [
+        "art-drop/BRIEF-10.md Part 5 and shared built-up/QC rules",
+        "art-drop/BRIEF-8.md prop-placement approach referenced by BRIEF-10",
+        "art-drop/reference/wasteland-marker0.png through wasteland-marker3.png; no wasteland-house.png exists",
+        "art-drop/out/wasteland-marker0.png through wasteland-marker3.png (approved native markers)",
+        "Approved round-2 city, slums, industry, suburb and farmland samples in out/",
+        "Approved paddies in out/",
+        "Approved grass/plains bases and details, including spring/autumn/winter comparisons in out/"
+      ],
+      "not_applicable": "Part 5 has no mountain peaks, crater tiles, tree/forest assets or autumn variants. Peak lattice/range, forest planting, egg-crate peaks, Swiss-cheese craters, stamped cyberpunk grid, flat autumn and identical crowns therefore are outside this review, not silently reviewed as passes.",
+      "general_findings": [
+        "All 78 files present; all dimensions correct. All 76 sprite alpha channels contain only 0/255. Bottom bounds are on the penultimate image row and horizontal centring is appropriate.",
+        "No translucent fringe/halo, uniform reversed light direction or near-duplicate silhouette found. Warm rust/tan/grey palette is compatible in principle; the failed assets need clearer material boundaries and pixel clusters, rather than a blanket palette replacement.",
+        "No literal blur filter is asserted from palette counts: the cited muddy forms result from fragmented shading/dithering.",
+        "Snow exists on every winter sprite. Sprite failures identify architectural readability problems, with any extra winter fragmentation named explicitly.",
+        "Street and one-cell composites do not show a cell-border frame or stamped pavement grid. Reusing a sprite in a random-layout test is not counted as a near-duplicate asset."
+      ],
+      "technical_audit": {
+        "asset_count": 78,
+        "sprite_count": 76,
+        "pass_count": 35,
+        "fail_count": 43,
+        "out_files_hashed_before_and_after": 952,
+        "out_unchanged": true,
+        "asset_sha256": {
+          "wasteland-street-base": "62fbea1af4f6350e8cfdb49fe196ddb9b9442984300d1dff4ffda0fe2d34e391",
+          "wasteland-city-bldg-0": "c6222982f3ce1bf21da082bd5634a66beaf1526d29c239e771ea76abfe5853f8",
+          "wasteland-city-bldg-1": "bac49202a7dde17cc5c8881b7ce529e4cb1dc480863a504a7991984541b6bee6",
+          "wasteland-city-bldg-2": "e1980c7467b78e1e1919f5b2640993f1b4a6761ec896c78bd2f865c03867b19f",
+          "wasteland-city-bldg-3": "2614be1725abae7eb79f3a0a8279d297f624dc6386c2042d8be5e971467aa87d",
+          "wasteland-city-bldg-4": "d5bba01f10bd5b497d866920f749fc033ae9841b5701a3ba4eb1b35666cce6b6",
+          "wasteland-city-bldg-5": "f666bd94bbe87277077615b6ca5e9b5de6d5771e30c7ac3c8a5b6c7731554a5c",
+          "wasteland-city-bldg-6": "504fd133785796f3b407d45e7cb251a1699740055a3ff406dd78da95517cc647",
+          "wasteland-city-bldg-7": "032b99dafdc8abe9da898d79aa3fc7a393b479d285925e270fd933bd10a30e8f",
+          "wasteland-city-bldg-8": "765b140e38c2655739b5dc64d609bd6b9dba8e89f8c68fd3c3e7fe22a54b4673",
+          "wasteland-city-bldg-9": "cadc22586ef12aeb23e45d418525695ead519240c4ab4641fa4166bb870f074c",
+          "wasteland-city-bldg-10": "1ea3278bf233df72ce0f0e5a35e0915008f824077d33a9fbec3304e0f6256bd0",
+          "wasteland-city-bldg-11": "abee4b20f37649b782c36897faa7f8a0e92659b01d7f69ba0f2091633844481f",
+          "wasteland-city-bldg-12": "d1e2af98abb4b86509c5faa174d43c20dfd4a40b247822d0aa1d5a03899521c9",
+          "wasteland-city-bldg-13": "28b3fc201927a0476daf4ad796a9bbc850e16620855d98bd1334c2bcffd52f77",
+          "wasteland-city-bldg-14": "95f48d78895f205ebaca51b257e3c42478f2ee80741e77fc4e0b08a98638c953",
+          "wasteland-city-bldg-15": "85d75fe594fb23b4bd417e1c01d793bfdb6d7b4a7758b9f8af17b3d0441e6294",
+          "wasteland-slums-bldg-0": "77cdd0725e56014d85a8c9fba1dadbd421feef63dcd4e4d70d895c336581e854",
+          "wasteland-slums-bldg-1": "17d47d4d4226d4e7dda1bcbf2ef9da0dd811575145f2312a32b96b27c724068f",
+          "wasteland-slums-bldg-2": "89d5b0a71c9f6ed32949984a7bd861a9b4cc8bd24f5ac6d33b66f42a38db03aa",
+          "wasteland-slums-bldg-3": "3bc3cddc8cca999ba6ab4ce784a951468491ced89453faf6f5361120ebad90d6",
+          "wasteland-slums-bldg-4": "e5bbb13036e47284a5ae3be80053c2e557d8e67d7a4fc7c29c51338abe77ae75",
+          "wasteland-slums-bldg-5": "a3260222c31e44fcd0715999b6fc4fbf3f7c6ce62b4cd5aaa51c3ab5c7f5bd4c",
+          "wasteland-slums-bldg-6": "94f526cef35bb598806071efb5ed88e2cf525c2d0caa50252dbf8e2e4b5bf219",
+          "wasteland-slums-bldg-7": "5b83e9b32a021d24ce6b6222e96566fbaf9a7283364bf76bdb50c4f67c46a3d6",
+          "wasteland-slums-bldg-8": "317e886dd2bcf29d53c3792d1315feb6e53049755bbd9b05eeee1c8b9105ffee",
+          "wasteland-slums-bldg-9": "b66df2e95eeaf882aba6eda80536e58bc0dfeaccefa934410d11362848c445e6",
+          "wasteland-slums-bldg-10": "428234bfc07292432eb0e467ae75358fc3f76fe5ad9564fa815f0aa555e78953",
+          "wasteland-slums-bldg-11": "4bd2dbeb25a4924561d7e2fc3d555be4c6e7721a3ef9b99d2f637f29f71d1e78",
+          "wasteland-industry-bldg-0": "12e87af0d998dd85bdb36104964d20370ab56bd692ed4dd914c28a00e2e6a094",
+          "wasteland-industry-bldg-1": "36e3e53346342bf586779bc62259bf9bf11e2d299f82cea44daf6b59c3a569ab",
+          "wasteland-industry-bldg-2": "6e8ddc6f0e8e4c7a77c972e92677dae26a524c27dbb8ecbcde525bcde50d12aa",
+          "wasteland-industry-bldg-3": "582d09d458381dc2602a2e8afe46b4284cb97b3fbf87f2cb7e78bc33840c783d",
+          "wasteland-industry-bldg-4": "f2c7e48ed26915c4e61ac09f0c24c3ec5765d73ad613ccfaa8c46275304fd3b6",
+          "wasteland-industry-bldg-5": "2673e56166831431f3e4d1d312051f74013714c5c9516b1760ba9bde1e9f0e54",
+          "wasteland-industry-bldg-6": "5f0bcdd30b143e87e577172620799feb93c943386ec5353cc28e872a76f7f8ec",
+          "wasteland-industry-bldg-7": "1cae46626952a0034c46d2b73516ec189272f6c8ff630594315fec0a56335a2e",
+          "wasteland-industry-bldg-8": "78e7f5b74bc03e4a91f99abda0a85250f75820c600d947da4cdb13e96e6c5fb7",
+          "wasteland-industry-bldg-9": "b18c0e2bf06fd04995ca55e4ab876e9f279aa64bb7b00444f20b6aa7c2f4647a",
+          "wasteland-street@winter-base": "1b52466e7323bb1145e1e9c47fc4fa91b283b6a72d085c3744a27f5cb5a800c1",
+          "wasteland-city@winter-bldg-0": "b891a9b3f1952c06f7d427c0251617c4f46ce9dd3a9364f6a18fb5e428e850d5",
+          "wasteland-city@winter-bldg-1": "4469e7d9af4c4a64f27fc05b6d5b9fd1966537b0147938491068d650ce3751db",
+          "wasteland-city@winter-bldg-2": "7fa9c85e2774e328739233250d0dad768ef070a18d594efde43e892facd2cd19",
+          "wasteland-city@winter-bldg-3": "12467ed58b76bb8d185b1f0fb05c0f47c3340907f54b51a15ebbd2c6bc880e7d",
+          "wasteland-city@winter-bldg-4": "8efd08b9d6d12db5bc22bc4c48f0adaa4a3cca89045bbee3c42a17a6171646e1",
+          "wasteland-city@winter-bldg-5": "7225689b5e06827fed31902286ac8c39a340bd9aac154b875fabb6d8a569e10c",
+          "wasteland-city@winter-bldg-6": "24dbd1789ba1f027463da82202512878d3d8ff6c4c80e25c44582d3b709b1078",
+          "wasteland-city@winter-bldg-7": "7a64aa0aa49cd8b89560d6b53147ec40dfc45c774f525b919445ba58456538a3",
+          "wasteland-city@winter-bldg-8": "3d4d29070b5799d924cbab15d67388059d7e2f906034d1bd7a597d6a6127efa3",
+          "wasteland-city@winter-bldg-9": "4e08eaa04ae72ebd99dda51d1d83a0cf8ae92b8018f2192c1b1eb328b9ee7ca1",
+          "wasteland-city@winter-bldg-10": "8776c8296345a4fcefe12c9edb9b4deff98ac0d4a0275cc6e3c0956190aef8cc",
+          "wasteland-city@winter-bldg-11": "dc460506d28a68160f11ad91a9d3b91dba3ac66853c63a757a70e524afc96090",
+          "wasteland-city@winter-bldg-12": "95a8fa51de7cca4e57abbea619a78b9597d49affe3c61f055fe05e497faf844d",
+          "wasteland-city@winter-bldg-13": "6a83358d1123c54247702cd60239b1d743d008273306fc073c72ce23ef3a180b",
+          "wasteland-city@winter-bldg-14": "38d94fb383fb4e818391de93295e9e8e03000804d15bd303f05703d867917e79",
+          "wasteland-city@winter-bldg-15": "c100a022ba43de577bb0c25f95b55ce02b420c3a124970f032bb13bf294fa90d",
+          "wasteland-slums@winter-bldg-0": "f3c93ab6b35c3c5616cad612127cb1041a3971f0c2727f5f018017a339dd9a31",
+          "wasteland-slums@winter-bldg-1": "662301661093a2f717f357cdc8c307d2ee86385839681126be9285f43a914e6c",
+          "wasteland-slums@winter-bldg-2": "203e827df90690866148acc0d05705b864c70dd2c01ec8fe98a5ac3cc449368f",
+          "wasteland-slums@winter-bldg-3": "de1ee64d6d51e3daece18727aeb25e9904a209c1295fa514d0213c36333d9736",
+          "wasteland-slums@winter-bldg-4": "87f46f626b71e108a72ae64837fecd0931be022549eb96966fdd9975f21f6f59",
+          "wasteland-slums@winter-bldg-5": "8da002a1bfe88b0ff2568cbc3d5d00bd9d596a1751057acb296e654b0ab4a422",
+          "wasteland-slums@winter-bldg-6": "524a4d7c54a04aaf173e0797ac6c73dae233f48575df281effd255eedccbe775",
+          "wasteland-slums@winter-bldg-7": "a83619c184e1802f918727f14943901f906cc012af5e016b6250c211fbf132f9",
+          "wasteland-slums@winter-bldg-8": "adad62f3b58447ceafd7d2b2f9f5275d0f1fce08fe4721db452c945521e42366",
+          "wasteland-slums@winter-bldg-9": "1e3071b6aea037f7714532224bbe8c46f4d93c23fd106a61e230d1e319e18b5b",
+          "wasteland-slums@winter-bldg-10": "1e5ac621f6d0243a8d79305cd06b094af079ddf51e5d7a2833875b31b0279919",
+          "wasteland-slums@winter-bldg-11": "2fe837371748807c57c9ff93d80afb494e130bec3d47ce260d3835fac0b920b2",
+          "wasteland-industry@winter-bldg-0": "0ddeec395ae2495f344f3c8d5ba703e9509792c47229081a3c8cb5c15a1e2fb5",
+          "wasteland-industry@winter-bldg-1": "f5a974dfffbc6e83022f615aacef4e69bcd8e8a3b4776e1dcbb6f44f20629125",
+          "wasteland-industry@winter-bldg-2": "4ca3340d5e83e1d09b87cef0fcbb602e7975be1749c6d558dd22b33819eef365",
+          "wasteland-industry@winter-bldg-3": "2970b6c9084ebe516e57b3ae57b7665e6201b06990a280fc79bf962b96d9f8b4",
+          "wasteland-industry@winter-bldg-4": "fc7c7505130041ad710bc86abd849cd0b6fc7712b98830238501df141e9603b9",
+          "wasteland-industry@winter-bldg-5": "d33923c48cf8b714cc6e520cfbc5e421971c30073df08bd7ebb171e66be2b451",
+          "wasteland-industry@winter-bldg-6": "bb44df5690a1e0b88f9e3fe522cd06c857bea86b11c58475947160a61309625f",
+          "wasteland-industry@winter-bldg-7": "d03077ce2ae634acfa49518bdb6178a871218832b1730f00e2d22686097fd4ef",
+          "wasteland-industry@winter-bldg-8": "bf1e42b06ea7118dc57b79f5adc73dd1cbd75bebd8e5178ae15fbf28ae287bdd",
+          "wasteland-industry@winter-bldg-9": "92495c6a355f52d1fcc925113afeca74a46f7a9700945833b5509dc83e5312fe"
+        }
+      },
+      "composites": [
+        "critic-r105-1-approved-ground-summer-1x.png",
+        "critic-r105-1-approved-ground-summer-4x.png",
+        "critic-r105-1-approved-ground@autumn-1x.png",
+        "critic-r105-1-approved-ground@autumn-4x.png",
+        "critic-r105-1-approved-ground@spring-1x.png",
+        "critic-r105-1-approved-ground@spring-4x.png",
+        "critic-r105-1-approved-ground@winter-1x.png",
+        "critic-r105-1-approved-ground@winter-4x.png",
+        "critic-r105-1-approved-tiles-4x.png",
+        "critic-r105-1-reference-markers-8x.png",
+        "critic-r105-1-style-comparison-1x.png",
+        "critic-r105-1-style-comparison-4x.png",
+        "critic-r105-1-style-comparison-8x.png",
+        "critic-r105-1-summer-base-3x3-1x.png",
+        "critic-r105-1-summer-base-3x3-4x.png",
+        "critic-r105-1-summer-base-q0-8x.png",
+        "critic-r105-1-summer-base-q1-8x.png",
+        "critic-r105-1-summer-base-q2-8x.png",
+        "critic-r105-1-summer-base-q3-8x.png",
+        "critic-r105-1-summer-base-seam-crossing-4x.png",
+        "critic-r105-1-summer-base-seam-crossing-8x.png",
+        "critic-r105-1-summer-base-single-8x.png",
+        "critic-r105-1-summer-city-all-1x.png",
+        "critic-r105-1-summer-city-all-4x.png",
+        "critic-r105-1-summer-city-dense-to-sparse-1x.png",
+        "critic-r105-1-summer-city-dense-to-sparse-4x.png",
+        "critic-r105-1-summer-city-g0-p0-8x.png",
+        "critic-r105-1-summer-city-g0-p1-8x.png",
+        "critic-r105-1-summer-city-g1-p0-8x.png",
+        "critic-r105-1-summer-city-g1-p1-8x.png",
+        "critic-r105-1-summer-city-g1-p2-8x.png",
+        "critic-r105-1-summer-city-g2-p0-8x.png",
+        "critic-r105-1-summer-city-g2-p1-8x.png",
+        "critic-r105-1-summer-city-random8x2-1x.png",
+        "critic-r105-1-summer-city-random8x2-4x.png",
+        "critic-r105-1-summer-city-scene-half0-4x.png",
+        "critic-r105-1-summer-city-scene-half1-4x.png",
+        "critic-r105-1-summer-industry-all-1x.png",
+        "critic-r105-1-summer-industry-all-4x.png",
+        "critic-r105-1-summer-industry-dense-to-sparse-1x.png",
+        "critic-r105-1-summer-industry-dense-to-sparse-4x.png",
+        "critic-r105-1-summer-industry-g0-p0-8x.png",
+        "critic-r105-1-summer-industry-g0-p1-8x.png",
+        "critic-r105-1-summer-industry-g1-p0-8x.png",
+        "critic-r105-1-summer-industry-g1-p1-8x.png",
+        "critic-r105-1-summer-industry-random8x2-1x.png",
+        "critic-r105-1-summer-industry-random8x2-4x.png",
+        "critic-r105-1-summer-industry-scene-half0-4x.png",
+        "critic-r105-1-summer-industry-scene-half1-4x.png",
+        "critic-r105-1-summer-slums-all-1x.png",
+        "critic-r105-1-summer-slums-all-4x.png",
+        "critic-r105-1-summer-slums-dense-to-sparse-1x.png",
+        "critic-r105-1-summer-slums-dense-to-sparse-4x.png",
+        "critic-r105-1-summer-slums-g0-p0-8x.png",
+        "critic-r105-1-summer-slums-g0-p1-8x.png",
+        "critic-r105-1-summer-slums-g1-p0-8x.png",
+        "critic-r105-1-summer-slums-g1-p1-8x.png",
+        "critic-r105-1-summer-slums-random8x2-1x.png",
+        "critic-r105-1-summer-slums-random8x2-4x.png",
+        "critic-r105-1-summer-slums-scene-half0-4x.png",
+        "critic-r105-1-summer-slums-scene-half1-4x.png",
+        "critic-r105-1-wasteland-city-bldg-12-individual-8x.png",
+        "critic-r105-1-wasteland-city-bldg-13-individual-8x.png",
+        "critic-r105-1-wasteland-city-bldg-14-individual-8x.png",
+        "critic-r105-1-wasteland-city-bldg-15-individual-8x.png",
+        "critic-r105-1-wasteland-city@winter-bldg-12-individual-8x.png",
+        "critic-r105-1-wasteland-city@winter-bldg-13-individual-8x.png",
+        "critic-r105-1-wasteland-city@winter-bldg-14-individual-8x.png",
+        "critic-r105-1-wasteland-city@winter-bldg-15-individual-8x.png",
+        "critic-r105-1-wasteland-industry-bldg-6-individual-8x.png",
+        "critic-r105-1-wasteland-industry-bldg-7-individual-8x.png",
+        "critic-r105-1-wasteland-industry-bldg-8-individual-8x.png",
+        "critic-r105-1-wasteland-industry-bldg-9-individual-8x.png",
+        "critic-r105-1-wasteland-industry@winter-bldg-6-individual-8x.png",
+        "critic-r105-1-wasteland-industry@winter-bldg-7-individual-8x.png",
+        "critic-r105-1-wasteland-industry@winter-bldg-8-individual-8x.png",
+        "critic-r105-1-wasteland-industry@winter-bldg-9-individual-8x.png",
+        "critic-r105-1-wasteland-slums-bldg-10-individual-8x.png",
+        "critic-r105-1-wasteland-slums-bldg-11-individual-8x.png",
+        "critic-r105-1-wasteland-slums-bldg-8-individual-8x.png",
+        "critic-r105-1-wasteland-slums-bldg-9-individual-8x.png",
+        "critic-r105-1-wasteland-slums@winter-bldg-10-individual-8x.png",
+        "critic-r105-1-wasteland-slums@winter-bldg-11-individual-8x.png",
+        "critic-r105-1-wasteland-slums@winter-bldg-8-individual-8x.png",
+        "critic-r105-1-wasteland-slums@winter-bldg-9-individual-8x.png",
+        "critic-r105-1-winter-base-3x3-1x.png",
+        "critic-r105-1-winter-base-3x3-4x.png",
+        "critic-r105-1-winter-base-q0-8x.png",
+        "critic-r105-1-winter-base-q1-8x.png",
+        "critic-r105-1-winter-base-q2-8x.png",
+        "critic-r105-1-winter-base-q3-8x.png",
+        "critic-r105-1-winter-base-seam-crossing-4x.png",
+        "critic-r105-1-winter-base-seam-crossing-8x.png",
+        "critic-r105-1-winter-base-single-8x.png",
+        "critic-r105-1-winter-city-all-1x.png",
+        "critic-r105-1-winter-city-all-4x.png",
+        "critic-r105-1-winter-city-dense-to-sparse-1x.png",
+        "critic-r105-1-winter-city-dense-to-sparse-4x.png",
+        "critic-r105-1-winter-city-g0-p0-8x.png",
+        "critic-r105-1-winter-city-g0-p1-8x.png",
+        "critic-r105-1-winter-city-g1-p0-8x.png",
+        "critic-r105-1-winter-city-g1-p1-8x.png",
+        "critic-r105-1-winter-city-g1-p2-8x.png",
+        "critic-r105-1-winter-city-g2-p0-8x.png",
+        "critic-r105-1-winter-city-g2-p1-8x.png",
+        "critic-r105-1-winter-city-random8x2-1x.png",
+        "critic-r105-1-winter-city-random8x2-4x.png",
+        "critic-r105-1-winter-city-scene-half0-4x.png",
+        "critic-r105-1-winter-city-scene-half1-4x.png",
+        "critic-r105-1-winter-industry-all-1x.png",
+        "critic-r105-1-winter-industry-all-4x.png",
+        "critic-r105-1-winter-industry-dense-to-sparse-1x.png",
+        "critic-r105-1-winter-industry-dense-to-sparse-4x.png",
+        "critic-r105-1-winter-industry-g0-p0-8x.png",
+        "critic-r105-1-winter-industry-g0-p1-8x.png",
+        "critic-r105-1-winter-industry-g1-p0-8x.png",
+        "critic-r105-1-winter-industry-g1-p1-8x.png",
+        "critic-r105-1-winter-industry-random8x2-1x.png",
+        "critic-r105-1-winter-industry-random8x2-4x.png",
+        "critic-r105-1-winter-industry-scene-half0-4x.png",
+        "critic-r105-1-winter-industry-scene-half1-4x.png",
+        "critic-r105-1-winter-slums-all-1x.png",
+        "critic-r105-1-winter-slums-all-4x.png",
+        "critic-r105-1-winter-slums-dense-to-sparse-1x.png",
+        "critic-r105-1-winter-slums-dense-to-sparse-4x.png",
+        "critic-r105-1-winter-slums-g0-p0-8x.png",
+        "critic-r105-1-winter-slums-g0-p1-8x.png",
+        "critic-r105-1-winter-slums-g1-p0-8x.png",
+        "critic-r105-1-winter-slums-g1-p1-8x.png",
+        "critic-r105-1-winter-slums-random8x2-1x.png",
+        "critic-r105-1-winter-slums-random8x2-4x.png",
+        "critic-r105-1-winter-slums-scene-half0-4x.png",
+        "critic-r105-1-winter-slums-scene-half1-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "wasteland-city-bldg-0",
+    "wasteland-city-bldg-1",
+    "wasteland-city-bldg-11",
+    "wasteland-city-bldg-3",
+    "wasteland-city-bldg-4",
+    "wasteland-city-bldg-7",
+    "wasteland-city@winter-bldg-0",
+    "wasteland-city@winter-bldg-1",
+    "wasteland-city@winter-bldg-11",
+    "wasteland-city@winter-bldg-3",
+    "wasteland-city@winter-bldg-4",
+    "wasteland-city@winter-bldg-7",
+    "wasteland-industry-bldg-1",
+    "wasteland-industry-bldg-3",
+    "wasteland-industry-bldg-4",
+    "wasteland-industry-bldg-8",
+    "wasteland-industry@winter-bldg-1",
+    "wasteland-industry@winter-bldg-3",
+    "wasteland-industry@winter-bldg-4",
+    "wasteland-industry@winter-bldg-8",
+    "wasteland-slums-bldg-0",
+    "wasteland-slums-bldg-1",
+    "wasteland-slums-bldg-2",
+    "wasteland-slums-bldg-3",
+    "wasteland-slums-bldg-4",
+    "wasteland-slums-bldg-6",
+    "wasteland-slums-bldg-7",
+    "wasteland-slums@winter-bldg-0",
+    "wasteland-slums@winter-bldg-1",
+    "wasteland-slums@winter-bldg-2",
+    "wasteland-slums@winter-bldg-3",
+    "wasteland-slums@winter-bldg-4",
+    "wasteland-slums@winter-bldg-6",
+    "wasteland-slums@winter-bldg-7",
+    "wasteland-street-base"
+  ],
+  "fail": [
+    {
+      "name": "wasteland-city-bldg-10",
+      "problems": "The entire narrow right facade and repeated balcony edges are peppered with alternating orange/tan pixels. At 1x those details become a crawling vertical strip instead of a readable wall and ladder. Use solid wall planes, a few larger rust patches, and continuous dark lines for the access structure and balcony supports."
+    },
+    {
+      "name": "wasteland-city-bldg-12",
+      "problems": "The central courtyard facade is overloaded with tiny orange/brown fragments: railings, doors, posts and roof edges have insufficient separation at 1x. Reduce the internal detail, make the courtyard shadow one coherent space, and redraw a small number of continuous supports and clearly bounded roof sheets. Keep the entrance gap readable."
+    },
+    {
+      "name": "wasteland-city-bldg-13",
+      "problems": "The market front is a tangle of similarly coloured rails, stall contents and posts; the central passage and three canopy supports are hard to follow at 1x. Separate the tarp silhouettes with dark undersides, reduce stock to a few larger clusters, and make the posts and stall counters continuous. Show fabric tension or tied corners so the roofs read as tarps."
+    },
+    {
+      "name": "wasteland-city-bldg-14",
+      "problems": "The broad main roof has pervasive fine diagonal/checker dithering and grey patches with weak material boundaries. The front roof supports and opening also blend into the tan facade. Replace the roof grain with larger rusty sheet panels and clean seams, then define the entrance shadow, posts and lookout platform with the approved markers' dark line weight."
+    },
+    {
+      "name": "wasteland-city-bldg-15",
+      "problems": "The elevated blocks, bridge and front lean-to have too many broken tan/brown intersections. The bridge attachment and slender supports disappear into facade texture at 1x. Simplify the wall weathering, give the bridge an unbroken deck and clear attachment points, and trace each load-bearing post cleanly down to the bottom anchor."
+    },
+    {
+      "name": "wasteland-city-bldg-2",
+      "problems": "The upper roof is filled with a fine orange checker pattern, while the front awning, counter and supports collapse into alternating dark/tan fragments at 1x. Simplify the roof into a few corrugated sheets and redraw the storefront opening and posts as continuous dark-edged shapes, matching the approved marker panels."
+    },
+    {
+      "name": "wasteland-city-bldg-5",
+      "problems": "The open front is an indistinct brown clump: the left post, central contents and rear shadow merge, and the lower railing has broken, uneven clusters. Give the opening one connected shadow, separate two readable supports and one clear counter or doorway, and remove incidental single-pixel texture around them."
+    },
+    {
+      "name": "wasteland-city-bldg-6",
+      "problems": "The right-hand vertical strip of damage/stairs and the balcony undersides form dense checker noise through nearly the full height. They obscure the building planes at native size. Replace that texture with larger concrete breaks and a few continuous stair/rail lines; outline the balcony slabs and keep their undersides in one shadow value."
+    },
+    {
+      "name": "wasteland-city-bldg-8",
+      "problems": "The right facade and grey vertical patch alternate small brown/grey pixels so heavily that the wall edge, balcony supports and roof joins become mushy at 1x. Consolidate the patch into distinct metal sheets with dark seams, clean the stepped roof edges, and simplify the broken top-floor opening."
+    },
+    {
+      "name": "wasteland-city-bldg-9",
+      "problems": "The dominant pointed arched opening, tall broken gable and arched ground entrance read as a ruined chapel rather than a clearly repurposed wasteland home. Replace the ecclesiastical facade with broken concrete floor slabs or a rectangular structural opening, and add unmistakable salvaged-sheet infill, a usable door and a supported living platform."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-10",
+      "problems": "The entire narrow right facade and repeated balcony edges are peppered with alternating orange/tan pixels. At 1x those details become a crawling vertical strip instead of a readable wall and ladder. Use solid wall planes, a few larger rust patches, and continuous dark lines for the access structure and balcony supports. The bright broken snow bands amplify the facade chatter; use coherent caps on the balcony tops."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-12",
+      "problems": "The central courtyard facade is overloaded with tiny orange/brown fragments: railings, doors, posts and roof edges have insufficient separation at 1x. Reduce the internal detail, make the courtyard shadow one coherent space, and redraw a small number of continuous supports and clearly bounded roof sheets. Keep the entrance gap readable. The numerous short white ledge strokes amplify the courtyard clutter; reserve coherent snow masses for the main roof planes."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-13",
+      "problems": "The market front is a tangle of similarly coloured rails, stall contents and posts; the central passage and three canopy supports are hard to follow at 1x. Separate the tarp silhouettes with dark undersides, reduce stock to a few larger clusters, and make the posts and stall counters continuous. Show fabric tension or tied corners so the roofs read as tarps. Connect snow into believable canopy-top caps and keep the counter shadows clear beneath them."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-14",
+      "problems": "The broad main roof has pervasive fine diagonal/checker dithering and grey patches with weak material boundaries. The front roof supports and opening also blend into the tan facade. Replace the roof grain with larger rusty sheet panels and clean seams, then define the entrance shadow, posts and lookout platform with the approved markers' dark line weight. Snow coverage is present, but its broken boundaries add to the roof noise; consolidate it into a few readable deposits."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-15",
+      "problems": "The elevated blocks, bridge and front lean-to have too many broken tan/brown intersections. The bridge attachment and slender supports disappear into facade texture at 1x. Simplify the wall weathering, give the bridge an unbroken deck and clear attachment points, and trace each load-bearing post cleanly down to the bottom anchor. Simplify snow at the bridge and lean-to intersections so it does not hide the structural connections."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-2",
+      "problems": "The upper roof is filled with a fine orange checker pattern, while the front awning, counter and supports collapse into alternating dark/tan fragments at 1x. Simplify the roof into a few corrugated sheets and redraw the storefront opening and posts as continuous dark-edged shapes, matching the approved marker panels. Snow is also chopped into short stripes across the storefront; collect it on the roof and awning tops without fragmenting the opening."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-5",
+      "problems": "The open front is an indistinct brown clump: the left post, central contents and rear shadow merge, and the lower railing has broken, uneven clusters. Give the opening one connected shadow, separate two readable supports and one clear counter or doorway, and remove incidental single-pixel texture around them. Keep snow on the canopy top and rail ledge, with a clean dark recess beneath it."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-6",
+      "problems": "The right-hand vertical strip of damage/stairs and the balcony undersides form dense checker noise through nearly the full height. They obscure the building planes at native size. Replace that texture with larger concrete breaks and a few continuous stair/rail lines; outline the balcony slabs and keep their undersides in one shadow value. Group the snow into broad slab-top accumulations instead of bright flecks along the damaged right facade."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-8",
+      "problems": "The right facade and grey vertical patch alternate small brown/grey pixels so heavily that the wall edge, balcony supports and roof joins become mushy at 1x. Consolidate the patch into distinct metal sheets with dark seams, clean the stepped roof edges, and simplify the broken top-floor opening. Snow should strengthen the separate floor/roof planes; remove isolated bright ticks on the vertical facade."
+    },
+    {
+      "name": "wasteland-city@winter-bldg-9",
+      "problems": "The dominant pointed arched opening, tall broken gable and arched ground entrance read as a ruined chapel rather than a clearly repurposed wasteland home. Replace the ecclesiastical facade with broken concrete floor slabs or a rectangular structural opening, and add unmistakable salvaged-sheet infill, a usable door and a supported living platform. Preserve snow on the revised slab and ledge tops when changing the architecture."
+    },
+    {
+      "name": "wasteland-industry-bldg-0",
+      "problems": "The machinery on the front dissolves into a dark brown/grey checker clump and competes with similar roof grain. At 1x the working equipment cannot be identified. Redraw one clear furnace mouth, wheel or pump with a connected silhouette, separate it from the wall shadow, and reduce roof weathering to a few bounded scrap panels."
+    },
+    {
+      "name": "wasteland-industry-bldg-2",
+      "problems": "The front wheel/pipe assembly, recessed loading opening and apron blur together as small alternating tan/grey clusters. Clarify the actual industrial function with one readable machine silhouette and a connected dark opening; replace wall and roof speckle with larger concrete damage and sheet-metal patches."
+    },
+    {
+      "name": "wasteland-industry-bldg-5",
+      "problems": "The sloping machinery/conveyor and its raised support are a fragmented triangular cluster, with no clear belt, frame or connection to the shed. Redraw an unbroken diagonal beam or belt, two distinct supports, and a readable receiving opening; remove the dither where those parts meet."
+    },
+    {
+      "name": "wasteland-industry-bldg-6",
+      "problems": "The three roof runs are readable in silhouette but their eaves, trusses and front window bands are buried in checker/dotted rust texture. This becomes high-frequency noise beside the approved industrial tiles. Simplify to large metal panels, make truss diagonals continuous, and group the window bands and doorway shadows into clean shapes."
+    },
+    {
+      "name": "wasteland-industry-bldg-7",
+      "problems": "The large open hangar front is a brown crosshatch in which doors, machinery and support beams are hard to distinguish at 1x. Make the interior a unified dark recess, place one or two readable equipment silhouettes inside it, and redraw the arch ribs and door frame as continuous edges; reduce the roof's fine dithering."
+    },
+    {
+      "name": "wasteland-industry-bldg-9",
+      "problems": "The central scaffold, diagonal access and pipework intersect as alternating grey/tan fragments; the structure is not legible at native size. Separate pipes from the tower with coherent shadows, use continuous braces and an unmistakable stair or ladder, and simplify the small foreground equipment into larger, outlined clusters."
+    },
+    {
+      "name": "wasteland-industry@winter-bldg-0",
+      "problems": "The machinery on the front dissolves into a dark brown/grey checker clump and competes with similar roof grain. At 1x the working equipment cannot be identified. Redraw one clear furnace mouth, wheel or pump with a connected silhouette, separate it from the wall shadow, and reduce roof weathering to a few bounded scrap panels. Snow should cap the shed and equipment ledges without adding bright fragments through the machine silhouette."
+    },
+    {
+      "name": "wasteland-industry@winter-bldg-2",
+      "problems": "The front wheel/pipe assembly, recessed loading opening and apron blur together as small alternating tan/grey clusters. Clarify the actual industrial function with one readable machine silhouette and a connected dark opening; replace wall and roof speckle with larger concrete damage and sheet-metal patches. Keep snow on the roof and equipment tops, with the loading recess left clearly dark."
+    },
+    {
+      "name": "wasteland-industry@winter-bldg-5",
+      "problems": "The sloping machinery/conveyor and its raised support are a fragmented triangular cluster, with no clear belt, frame or connection to the shed. Redraw an unbroken diagonal beam or belt, two distinct supports, and a readable receiving opening; remove the dither where those parts meet. Keep a coherent cap on the raised frame and shed roof without breaking the diagonal machine silhouette."
+    },
+    {
+      "name": "wasteland-industry@winter-bldg-6",
+      "problems": "The three roof runs are readable in silhouette but their eaves, trusses and front window bands are buried in checker/dotted rust texture. This becomes high-frequency noise beside the approved industrial tiles. Simplify to large metal panels, make truss diagonals continuous, and group the window bands and doorway shadows into clean shapes. The many thin white eave strokes amplify the truss noise; use coherent roof-top snow masses and clean dark eave undersides."
+    },
+    {
+      "name": "wasteland-industry@winter-bldg-7",
+      "problems": "The large open hangar front is a brown crosshatch in which doors, machinery and support beams are hard to distinguish at 1x. Make the interior a unified dark recess, place one or two readable equipment silhouettes inside it, and redraw the arch ribs and door frame as continuous edges; reduce the roof's fine dithering. Keep the roof snow deposits coherent and leave the hangar opening structurally clear."
+    },
+    {
+      "name": "wasteland-industry@winter-bldg-9",
+      "problems": "The central scaffold, diagonal access and pipework intersect as alternating grey/tan fragments; the structure is not legible at native size. Separate pipes from the tower with coherent shadows, use continuous braces and an unmistakable stair or ladder, and simplify the small foreground equipment into larger, outlined clusters. Short white accents through the scaffold further confuse its braces; restrict snow to clear horizontal platforms and roof tops."
+    },
+    {
+      "name": "wasteland-slums-bldg-10",
+      "problems": "The large shared roof is an almost continuous fine diagonal checker pattern, and the front rail/counter details become noisy rather than readable at 1x. Redraw a few large, uneven corrugated sheets with deliberate seams, and simplify the front into two clear dark bays with continuous posts and a few large clutter shapes."
+    },
+    {
+      "name": "wasteland-slums-bldg-11",
+      "problems": "The tall pierced gable, massive tan walls and arched entry dominate as an old church ruin; the scrap settlement adaptation is secondary. Use a broken concrete frame or rectangular lintel, make the salvaged metal/tarp infill explicit, and replace the checker patches and fine roof grain with clean sheet shapes and dark seams."
+    },
+    {
+      "name": "wasteland-slums-bldg-5",
+      "problems": "The veranda front is a dense crosshatch of brown and tan pixels; its railing, stored objects and doorway merge at native size. Simplify it to one dark recess, two straight supports and a readable counter/rail. Reduce the checker roof texture and define a few distinct scrap panels rather than grain."
+    },
+    {
+      "name": "wasteland-slums-bldg-8",
+      "problems": "The central stairs, connecting awning and lower windows merge into a similarly coloured jumble. The four dwellings are distinct in outline but lose their access routes and material divisions at 1x. Give the stairs continuous steps/rails, use a connected shadow between blocks, and bound the grey sheet patches with clean seams."
+    },
+    {
+      "name": "wasteland-slums-bldg-9",
+      "problems": "The top metal-clad room and central facade are covered in fine alternating colour clusters, while the lower openings and left awning posts break into unrelated pixels. Replace the dither with broad salvaged panels, restore continuous posts and window frames, and separate the three levels with clean roof-edge shadows."
+    },
+    {
+      "name": "wasteland-slums@winter-bldg-10",
+      "problems": "The large shared roof is an almost continuous fine diagonal checker pattern, and the front rail/counter details become noisy rather than readable at 1x. Redraw a few large, uneven corrugated sheets with deliberate seams, and simplify the front into two clear dark bays with continuous posts and a few large clutter shapes. Snow is present but broken into many small roof islands; group it into fewer coherent accumulations after cleaning the sheet seams."
+    },
+    {
+      "name": "wasteland-slums@winter-bldg-11",
+      "problems": "The tall pierced gable, massive tan walls and arched entry dominate as an old church ruin; the scrap settlement adaptation is secondary. Use a broken concrete frame or rectangular lintel, make the salvaged metal/tarp infill explicit, and replace the checker patches and fine roof grain with clean sheet shapes and dark seams. Apply the snow caps to the revised concrete and scrap structure without reviving the church-like gable."
+    },
+    {
+      "name": "wasteland-slums@winter-bldg-5",
+      "problems": "The veranda front is a dense crosshatch of brown and tan pixels; its railing, stored objects and doorway merge at native size. Simplify it to one dark recess, two straight supports and a readable counter/rail. Reduce the checker roof texture and define a few distinct scrap panels rather than grain. Keep the snow cap above the veranda and leave its interior and supports readable."
+    },
+    {
+      "name": "wasteland-slums@winter-bldg-8",
+      "problems": "The central stairs, connecting awning and lower windows merge into a similarly coloured jumble. The four dwellings are distinct in outline but lose their access routes and material divisions at 1x. Give the stairs continuous steps/rails, use a connected shadow between blocks, and bound the grey sheet patches with clean seams. Keep the central staircase and passage visible between the snow-capped roof masses."
+    },
+    {
+      "name": "wasteland-slums@winter-bldg-9",
+      "problems": "The top metal-clad room and central facade are covered in fine alternating colour clusters, while the lower openings and left awning posts break into unrelated pixels. Replace the dither with broad salvaged panels, restore continuous posts and window frames, and separate the three levels with clean roof-edge shadows. Consolidate snow on roof and ledge tops; bright short strokes currently add to the facade fragmentation."
+    },
+    {
+      "name": "wasteland-street@winter-base",
+      "problems": "The 3x3 field reads as nearly uniform blue-grey with faint pepper specks: the cracked rubble character is almost gone, and there are no convincing snow drifts, exposed rubble patches or dirty travel tracks. It is visibly flatter than the approved winter grass/plains bases and the detailed snow on these buildings. Add restrained broad snow/slush value groups, buried crack/rubble shapes and irregular dark exposed-ground/track areas; retain seamless edges and quiet contrast."
+    }
+  ]
+}
