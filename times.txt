@@ -30,3 +30,7 @@ cozy/backdrop-night rc=0 secs=68 exists=yes
 creator/backdrop-night rc=0 secs=74 exists=yes
 maximal/backdrop-night rc=0 secs=74 exists=yes
 immersion/backdrop-night rc=0 secs=85 exists=yes
+creator/topbar-strip rc=0 secs=35 exists=yes
+creator/stickers rc=0 secs=37 exists=yes
+creator/frame-9slice rc=0 secs=51 exists=yes
+immersion/char-seraphine rc=0 secs=55 exists=yes

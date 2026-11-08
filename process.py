@@ -133,6 +133,60 @@ def window_9slice(img, size, top_keep, bottom_keep):
     return c
 
 
+def frame_clean(img, min_sat=70):
+    """Drop the grey haze some generations leave around a coloured frame: clear low-saturation pixels."""
+    img = img.convert("RGBA")
+    sat = img.convert("RGB").convert("HSV").getchannel("S").point(lambda v: 255 if v >= min_sat else 0)
+    img.putalpha(ImageChops.multiply(img.getchannel("A"), sat))
+    return img
+
+
+def sticker_row(img, n, cell, pad=3, resample=L):
+    """Split a row of n stickers on transparent gaps and centre each one in its own cell x cell square."""
+    img = img.convert("RGBA")
+    a = img.getchannel("A").point(lambda v: 255 if v > 12 else 0)
+    cols = list(a.resize((a.width, 1), Image.BOX).get_flattened_data())
+    segs, start = [], None
+    for x, v in enumerate(cols + [0]):
+        if v and start is None: start = x
+        if not v and start is not None:
+            segs.append((start, x)); start = None
+    segs = sorted(sorted(segs, key=lambda s: s[1] - s[0])[-n:])  # n widest runs, left to right
+    out = Image.new("RGBA", (cell * n, cell), (0, 0, 0, 0))
+    for i, (x0, x1) in enumerate(segs):
+        part = img.crop((x0, 0, x1, img.height))
+        out.paste(fit_transparent(part, cell, cell, pad, resample), (i * cell, 0))
+    return out
+
+
+def calm_strip(img, leaf_band, out_w=1920, out_h=48, leaf_h=20, x0=400, x1=1500, feather=80):
+    """Plain background from the raw's empty area, with a mirrored leaf band only between x0 and x1, on the bottom edge."""
+    img = img.convert("RGB")
+    bg = img.crop((0, 0, img.width, leaf_band[0] - 10)).resize((out_w, out_h), L)
+    band = img.crop((0, leaf_band[0], img.width, leaf_band[1]))
+    band = band.resize((round(band.width * leaf_h / band.height), leaf_h), L)
+    m = band.transpose(Image.FLIP_LEFT_RIGHT)
+    row = Image.new("RGB", (x1 - x0, leaf_h))
+    for i in range(0, x1 - x0, band.width):
+        row.paste(band if (i // band.width) % 2 == 0 else m, (i, 0))
+    w = x1 - x0
+    mask = Image.new("L", (w, 1))
+    mask.putdata([int(255 * min(1, i / feather, (w - 1 - i) / feather)) for i in range(w)])
+    bg.paste(row, (x0, out_h - leaf_h), mask.resize((w, leaf_h)))
+    return bg
+
+
+def character(img, w, h, resample=L):
+    """Waist-up bust: scale the figure to the full height, centre it on its weight, bottom-aligned."""
+    img = img.convert("RGBA").crop(alpha_bbox(img))
+    img = img.resize((round(img.width * h / img.height), h), resample)
+    cols = list(img.getchannel("A").resize((img.width, 1), Image.BOX).get_flattened_data())
+    cx = round(sum(i * v for i, v in enumerate(cols)) / max(1, sum(cols)))
+    c = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    c.paste(img, (w // 2 - cx, 0), img)
+    return c
+
+
 def main(only):
     def want(p, n):
         return not only or f"{p}/{n}" in only
@@ -150,7 +204,6 @@ def main(only):
         # persona: (band rows in raw px, periodic pattern?)
         "cozy": (None, None),
         "neon": ("auto", True),
-        "creator": ("auto", False),
         "immersion": ((150, 285), True),
         "maximal": ("auto", True),
     }
@@ -185,6 +238,10 @@ def main(only):
     if want("maximal", "window-9slice"):
         save(window_9slice(load("maximal", "window-9slice"), 192, 40, 16), "maximal", "window-9slice"); print("ok maximal window-9slice")
 
+    if want("creator", "topbar-strip"): save(calm_strip(load("creator", "topbar-strip"), (603, 724)), "creator", "topbar-strip"); print("ok creator topbar-strip")
+    if want("creator", "frame-9slice"): save(nine_slice(frame_clean(load("creator", "frame-9slice")), 96, 24), "creator", "frame-9slice"); print("ok creator frame-9slice")
+    if want("creator", "stickers"): save(sticker_row(load("creator", "stickers"), 4, 64), "creator", "stickers"); print("ok creator stickers")
+    if want("immersion", "char-seraphine"): save(character(load("immersion", "char-seraphine"), 420, 640), "immersion", "char-seraphine"); print("ok immersion char-seraphine")
     if want("cozy", "stickers"): save(fit_transparent(load("cozy", "stickers"), 512, 128, 4), "cozy", "stickers")
     if want("maximal", "stickers"): save(fit_transparent(load("maximal", "stickers"), 512, 128, 4, Image.NEAREST), "maximal", "stickers")
     if want("immersion", "dialogue-box"): save(fit_transparent(load("immersion", "dialogue-box"), 1200, 300, 0), "immersion", "dialogue-box")
