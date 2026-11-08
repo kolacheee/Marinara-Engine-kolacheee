@@ -1,5 +1,6 @@
 /** Draws Earth worlds (the Earth seed) for a few settings and areas, as an HTML page of SVG maps.
- *    tsx scripts/worldgen-lab/earth.ts EARTH_DIR out.html [kit:area:scale ...] */
+ *    tsx scripts/worldgen-lab/earth.ts EARTH_DIR out.html [kit:area:scale[:year] ...]
+ *  with the land past the edge round each (dimmed); area "drawn" for a world drawn from the seed. */
 import { readFileSync, writeFileSync } from "node:fs";
 import { gunzipSync, inflateSync } from "node:zlib";
 import {
@@ -8,6 +9,9 @@ import {
   compileWorld,
   parseWorldKit,
   sampleWorldEarth,
+  worldBeyondGround,
+  worldBeyondText,
+  worldBriefSchema,
   worldEarthCentre,
   worldTerrainLook,
   type WorldEarthData,
@@ -70,30 +74,47 @@ for (const run of runs) {
   const parsed = parseWorldKit(WORLD_STARTER_KITS.find((kit) => kit.id === kitId)!);
   if (!parsed.ok) throw new Error(kitId);
   const kit = { ...parsed.kit, scale: (scale ?? parsed.kit.scale) as typeof parsed.kit.scale };
-  const area = WORLD_EARTH_AREAS.find((each) => each.id === areaId)!;
-  const middle = worldEarthCentre(data, kit.scale, area.lon, area.lat);
-  const earth = sampleWorldEarth(data, { ...middle, scale: kit.scale, area: area.label, year });
-  const brief = {
+  // "drawn" for a world drawn from the seed (no Earth), to see its land past the edge.
+  const area = WORLD_EARTH_AREAS.find((each) => each.id === areaId) ?? { id: "drawn", label: "drawn", lon: 0, lat: 0 };
+  const earth =
+    area.id === "drawn"
+      ? undefined
+      : sampleWorldEarth(data, {
+          ...worldEarthCentre(data, kit.scale, area.lon, area.lat),
+          scale: kit.scale,
+          area: area.label,
+          year,
+        });
+  const brief = worldBriefSchema.parse({
     briefVersion: 1 as const,
     premise: "x",
-    places: [],
-    placeNames: [],
-    events: [],
-    groups: [],
-    peoples: [],
-    folk: [],
-    faiths: [],
-    peopleNames: [],
-    earth,
-  };
-  const world = compileWorld({ seed: 7, kit, brief });
+    placeNames: [
+      { culture: "x", names: ["Valdmark", "Orrin", "Kesh", "Thalor", "Brenn", "Ystra", "Morrow", "Calder"] },
+    ],
+    ...(earth ? { earth } : {}),
+  });
+  const world = compileWorld({ seed: Number(process.env.SEED ?? 7), kit, brief });
+  const beyond = worldBeyondGround({ kit, seed: 7, grounding: "expand", brief, world });
+  const P = beyond.pad * S;
   const looks = world.terrain.map((id) => worldTerrainLook(kit.terrain!.find((t) => t.id === id)!));
   let body = "";
-  for (let i = 0; i < world.ground.length; i++) {
-    const index = parseInt(world.ground[i]!, 36);
+  for (let i = 0; i < beyond.cells.length; i++) {
+    const index = beyond.cells[i]!;
     const fill = /ruin/.test(world.terrain[index] ?? "") ? "#4b2a6b" : (COLORS[looks[index]!] ?? "#999");
-    body += `<rect x="${(i % world.width) * S}" y="${Math.floor(i / world.width) * S}" width="${S}" height="${S}" fill="${fill}"/>`;
+    body += `<rect x="${(i % beyond.width) * S}" y="${Math.floor(i / beyond.width) * S}" width="${S}" height="${S}" fill="${fill}"/>`;
   }
+  const outerCentre = (cell: number) => [
+    (cell % beyond.width) * S + S / 2,
+    Math.floor(cell / beyond.width) * S + S / 2,
+  ];
+  for (const river of beyond.rivers)
+    for (let i = 0; i < river.path.length - 1; i++) {
+      const [[x1, y1], [x2, y2]] = [outerCentre(river.path[i]!), outerCentre(river.path[i + 1]!)];
+      body += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2f6fb0" stroke-width="${0.8 + river.width[i]! * 0.6}" stroke-linecap="round"/>`;
+    }
+  // The margin dimmed, as the Overworld draws it.
+  body += `<path fill="#000" fill-opacity="0.35" fill-rule="evenodd" d="M0 0H${beyond.width * S}V${beyond.height * S}H0Z M${P} ${P}V${P + world.height * S}H${P + world.width * S}V${P}Z"/>`;
+  body += `<g transform="translate(${P} ${P})">`;
   const centre = (cell: number) => [(cell % world.width) * S + S / 2, Math.floor(cell / world.width) * S + S / 2];
   for (const river of world.rivers ?? [])
     for (let i = 0; i < river.path.length - 1; i++) {
@@ -109,6 +130,8 @@ for (const run of runs) {
     const [x, y] = [place.at.x * S + S / 2, place.at.y * S + S / 2];
     body += `<circle cx="${x}" cy="${y}" r="${2 + (place.rank ?? 0)}" fill="#fff" stroke="#000"/><text x="${x + 5}" y="${y - 3}" font-size="10" fill="#000" stroke="#fff" stroke-width="2" paint-order="stroke">${place.name}</text>`;
   }
+  body += "</g>";
+  const lands = [worldBeyondText({ kit, seed: 7, grounding: "expand", brief, world }).replace(/; /g, "\n  ")];
   const tops = world.places
     .filter((place) => place.depth <= settlementsDepth)
     .sort((a, b) => a.depth - b.depth)
@@ -117,7 +140,7 @@ for (const run of runs) {
         `${"  ".repeat(place.depth)}${place.name}${place.size ? ` (${place.size}) in ${world.places.find((p) => p.id === place.parentId)?.name ?? ""}` : ""}`,
     )
     .slice(0, 60);
-  html += `<h3>${kitId} · ${area.label} · ${kit.scale}${year !== undefined ? ` · ${year}` : ""} (${world.width}×${world.height}, ${earth.rivers.length} rivers, ${earth.cities.length} cities, ground ${earth.ground.length} chars)</h3><div style="display:flex;gap:12px"><svg width="${world.width * S}" height="${world.height * S}">${body}</svg><pre>${tops.join("\n")}</pre></div>`;
+  html += `<h3>${kitId} · ${area.label} · ${kit.scale}${year !== undefined ? ` · ${year}` : ""} (${world.width}×${world.height}${earth ? `, ${earth.rivers.length} rivers, ${earth.cities.length} cities, ground ${earth.ground.length} chars, beyond ${earth.beyond?.ground.length ?? 0} chars` : ""})</h3><div style="display:flex;gap:12px"><svg style="flex-shrink:0" width="${beyond.width * S}" height="${beyond.height * S}">${body}</svg><pre style="white-space:pre-wrap">${[...lands, "", ...tops].join("\n")}</pre></div>`;
 }
 writeFileSync(out, html + "</body>");
 console.log("wrote", out);

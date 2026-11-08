@@ -7,7 +7,15 @@
 import { worldBriefSchema, type WorldBrief, type WorldEarth } from "../../schemas/world-brief.schema.js";
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { WORLD_DAYS_PER_CELL, WORLD_GROUND_SIZE } from "./compile.js";
-import { WORLD_EARTH_KM_PER_DAY, worldEarthCellDegrees, worldEarthEncode } from "./earth.js";
+import {
+  WORLD_BEYOND_PAD,
+  WORLD_BEYOND_SIDES,
+  WORLD_EARTH_KM_PER_DAY,
+  worldEarthCellDegrees,
+  worldEarthDecode,
+  worldEarthEncode,
+  type WorldBeyondSide,
+} from "./earth.js";
 import { worldEarthCitiesIn, worldEarthHistoricalPlace, type WorldEarthHistory } from "./earth-history.js";
 
 /** The baked grid: 3600 x 1800 cells of 0.1 degrees, row 0 at 90N, column 0 at 180W, three byte planes
@@ -125,9 +133,17 @@ const promptSafe = (text: string) => !/[\r\n\u0000-\u001F\u007F[\]]|\{\{|\}\}/.t
  */
 export function sampleWorldEarth(
   data: WorldEarthData,
-  options: { lon: number; lat: number; scale: WorldKit["scale"]; area?: string; year?: number },
+  options: {
+    lon: number;
+    lat: number;
+    scale: WorldKit["scale"];
+    area?: string;
+    year?: number;
+    /** The map's size, when not the scale's: the larger grid the land past the edge is read from. */
+    size?: readonly [number, number];
+  },
 ): WorldEarth {
-  const [width, height] = WORLD_GROUND_SIZE[options.scale];
+  const [width, height] = options.size ?? WORLD_GROUND_SIZE[options.scale];
   const kmPerCell = WORLD_DAYS_PER_CELL[options.scale] * WORLD_EARTH_KM_PER_DAY;
   const lat = Math.max(-78, Math.min(78, options.lat));
   const lon = ((((options.lon + 180) % 360) + 360) % 360) - 180;
@@ -337,6 +353,7 @@ export function sampleWorldEarth(
   }
 
   return {
+    ...(options.size ? {} : { beyond: earthBeyond(data, options, width, height) }),
     lon: Math.round(lon * 1000) / 1000,
     lat: Math.round(lat * 1000) / 1000,
     scale: options.scale,
@@ -346,6 +363,78 @@ export function sampleWorldEarth(
     rivers: rivers.slice(0, 400),
     cities,
   };
+}
+
+/**
+ * The land past the map's edge: the same area read again with WORLD_BEYOND_PAD cells more on every side (the
+ * map's own cells read the same, being the same points), the rivers' runs out there, and on each side the
+ * sea, or the countries of the biggest cities there (in a year of the past, the realms of that year).
+ */
+function earthBeyond(
+  data: WorldEarthData,
+  options: Parameters<typeof sampleWorldEarth>[1],
+  width: number,
+  height: number,
+): NonNullable<WorldEarth["beyond"]> {
+  const pad = WORLD_BEYOND_PAD;
+  const [outerWidth, outerHeight] = [width + pad * 2, height + pad * 2];
+  const outer = sampleWorldEarth(data, { ...options, size: [outerWidth, outerHeight] });
+  const inside = (cell: number) => {
+    const [x, y] = [(cell % outerWidth) - pad, Math.floor(cell / outerWidth) - pad];
+    return x >= 0 && y >= 0 && x < width && y < height;
+  };
+  // Which side of the map a cell out there is on: the one it is furthest past.
+  const sideOf = (cell: number): WorldBeyondSide => {
+    const [x, y] = [(cell % outerWidth) - pad, Math.floor(cell / outerWidth) - pad];
+    const past = { west: -x, east: x - (width - 1), north: -y, south: y - (height - 1) };
+    return (Object.entries(past) as Array<[WorldBeyondSide, number]>).sort((a, b) => b[1] - a[1])[0]![0];
+  };
+  // The rivers' runs out there, each with the map's cell it leaves from, so it joins the river inside.
+  const rivers: NonNullable<WorldEarth["beyond"]>["rivers"] = [];
+  let cells = 0;
+  for (const river of outer.rivers) {
+    let run: number[] = [];
+    const flush = () => {
+      if (run.length >= 2 && run.some((cell) => !inside(cell)) && rivers.length < 200 && cells < 8000) {
+        rivers.push({ ...(river.name ? { name: river.name } : {}), path: run.slice(0, 800), width: river.width });
+        cells += run.length;
+      }
+      run = [];
+    };
+    river.path.forEach((cell, index) => {
+      if (!inside(cell)) {
+        if (!run.length && index > 0) run.push(river.path[index - 1]!);
+        run.push(cell);
+      } else if (run.length) {
+        run.push(cell);
+        flush();
+      }
+    });
+    flush();
+  }
+  const planes = worldEarthDecode(outer.ground)!;
+  // A side with no city out there is still the land of the area's biggest city (a town map's edge).
+  const home = [...outer.cities].sort((a, b) => b.pop - a.pop)[0]?.country;
+  const lands = WORLD_BEYOND_SIDES.map((side) => {
+    let wet = 0;
+    let all = 0;
+    for (let cell = 0; cell < outerWidth * outerHeight; cell++)
+      if (!inside(cell) && sideOf(cell) === side) {
+        all++;
+        if (planes[cell]! <= 1) wet++;
+      }
+    const people = new Map<string, number>();
+    for (const city of outer.cities)
+      if (!inside(city.cell) && sideOf(city.cell) === side)
+        people.set(city.country, (people.get(city.country) ?? 0) + city.pop);
+    const names = [...people]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, 3)
+      .map(([name]) => name);
+    if (wet > all * 0.85 && !names.length) return { side, sea: true as const, names };
+    return { side, names: names.length || !home ? names : [home] };
+  });
+  return { pad, ground: outer.ground, rivers, lands };
 }
 
 /** The middle of an area at a scale: on a map of a town or a site, the biggest city near the point (a

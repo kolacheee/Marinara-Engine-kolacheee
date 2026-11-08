@@ -13,6 +13,11 @@ import type { WorldDrainage, WorldLandFields, WorldRiver } from "./land.js";
 /** The kilometres a day's walk covers, which sets how much of the Earth a map cell spans. */
 export const WORLD_EARTH_KM_PER_DAY = 30;
 
+/** How many cells of land past the map's edge are drawn round it (never walked), on every side. */
+export const WORLD_BEYOND_PAD = 12;
+export const WORLD_BEYOND_SIDES = ["north", "east", "south", "west"] as const;
+export type WorldBeyondSide = (typeof WORLD_BEYOND_SIDES)[number];
+
 const BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 export function worldEarthEncode(bytes: Uint8Array): string {
