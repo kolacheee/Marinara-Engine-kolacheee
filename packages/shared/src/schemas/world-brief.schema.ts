@@ -249,6 +249,13 @@ export const worldBriefSchema = z
           .string()
           .regex(/^[0-9a-z]*$/)
           .max(4000),
+        /** The map it meets, as it is from its edge in (the row at the edge first): drawn past this map's
+         *  edge there, so the land past it is that map (beyond.ts). */
+        back: z
+          .string()
+          .regex(/^[0-9a-z]*$/)
+          .max(4000)
+          .optional(),
       })
       .strict()
       .optional(),
