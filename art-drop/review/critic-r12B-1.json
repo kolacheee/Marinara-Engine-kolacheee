@@ -1,0 +1,136 @@
+{
+  "sets": {
+    "_review": {
+      "scope": "Only the current art-drop/BRIEF-12.md section B, Beach: two bases and sixteen props. No other output asset receives a verdict. The user wording also mentions peaks/craters/trees/ruins/autumn; those are not Part B in this checkout.",
+      "file_count": 18,
+      "pass_count": 15,
+      "fail_count": 3,
+      "calibration": "Good enough to ship beside the approved art. Deliberate low-contrast ground texture and the required fading edges of shading overlays are acceptable; obvious repeat composition and failed subject readability are not.",
+      "prior_pass_rule": "art-drop/review/critic-r12B-0.json does not exist. No inherited passes apply.",
+      "checks": {
+        "brief_and_references": "Read the complete current BRIEF-12, including shared view, lighting, outline, dimensions, footprints, neutral shading and QC rules. Part B names no external image reference. The treeline_forest reference named by Part C was viewed for context only. Also read BRIEF.md and BRIEF-2.md for the established pixel style and approved tile calibration.",
+        "approved_art": "Visually compared representative approved markers from all six families, round-2 city/industry/slums/suburb/farmland tiles, all eight paddies and all eight grass/plains detail variants in each of four seasons, with ground samples. Saved native and 4x comparison boards. Comparison assets are not re-reviewed or failed.",
+        "base_3x3": "Both opaque 288x288 bases tiled literally 3x3 and inspected at 1x and 4x. Supplemented with exact 4x single-base and wrap-junction views to inspect pixel clusters. No straight seam or per-cell frame found. Summer contrast is sufficiently quiet; winter repeats its larger snow/sand composition conspicuously and fails.",
+        "one_cell_random_8x2": "Summer and winter slots 0-3 composited in seeded shuffled 8x2 arrays on matching bases, at 1x and exact 4x. No clipped sprites, backing squares or accidental tile frames. These are independent prop placements; repeated instances of an intentionally reused prop are not themselves a seam.",
+        "peak_lattice_or_range": "Not applicable: current Part B contains no peaks.",
+        "trees_in_forest": "Not applicable: current Part B contains no trees. Tree kinds are section C; no tree is added to the verdict.",
+        "other_listed_problem_types": "Egg-crate peaks, Swiss-cheese craters, classical ruins, cyberpunk ground grids, flat orange autumn and identical crowns are absent from Part B. No implied pass on those out-of-scope assets.",
+        "context_1x_4x": "All sixteen props inspected on matching beach bases in ordered and scattered layouts at 1x/4x, plus grass/plains and dark-background checks for blending, fringe and unwanted backing. Both tide-pool overlays fail on their intended beach ground.",
+        "every_file_8x": "Every prop inspected with its entire canvas at exact nearest-neighbour 8x on matching beach and dark ground. Every pixel of each base inspected in four 144x144 quadrants at exact 8x. No source pixel omitted.",
+        "technical": "All 18 expected PNGs present, nonblank and correctly sized. Bases opaque. Fourteen solid props use binary alpha; both shading-only tide pools use neutral black/white RGB and deliberate stepped alpha from 8 to 64 plus zero. All transparent RGB is zero. All 18 images are byte-unique. Small prop bounds span 36px horizontally; large props span 82px, with transparent margins and no clipping. Shallow objects legitimately use flatter vertical footprints.",
+        "art_quality": "Individually checked seams/repeat, pixel sharpness, antialiasing, muddy masses/noise, silhouette, placement, margins, fringe/halo, top-left lighting, palette consistency and near-duplicates. The fourteen solid props have distinct subject silhouettes, readable material planes and compatible muted colours. Their winter variants retain the subject and consistent top-facing snow. No additional concrete defect found in the passing files. Tide-pool failures concern surface readability, not the mere presence of required alpha fading.",
+        "integrity": "SHA-256 before/after inventory confirms all 1402 files in art-drop/out/ unchanged. Verified 51 saved 1x-to-4x/8x proof pairs are exact nearest-neighbour enlargements. Eight base-quadrant 8x proofs and two 4x single-base proofs are generated directly from source crops/canvases.",
+        "limits": "Offline image review in an art-only checkout; no live-engine placement claim."
+      },
+      "evidence_prefix": "art-drop/review/critic-r12B-1-",
+      "evidence_png_count": 96,
+      "source_sha256": {
+        "beach-base": "940c4c1bccacee864514a495eab49a0538c4ff8d526a128e1c65c6a4e0e9c387",
+        "beach-prop-0": "622830d64245838daed926bfe99fb24e8be4c825d47dfac21cad99ce039b117d",
+        "beach-prop-1": "34a76803c3a9451ff5d01fc6cdf0b66a9a0c25d5d6076f3f017f08584c5e224d",
+        "beach-prop-2": "e7c26e6dd894f781358dcb13ec5c4281284dada28e5e962e06cec6d50758cd25",
+        "beach-prop-3": "18e6debe17b5dacea8acc7880cfc64e68647916a674033d88e7baf01ded0d33a",
+        "beach-prop-4": "1f7846a6e71396916507aa4f83abd0d52b808921ce54e8a18102775b4497a5c5",
+        "beach-prop-5": "8aab5719f96783ebff59e9a42f5978bb54a62b8f128364e74ef44833bebad942",
+        "beach-prop-6": "f4d10964449c4f9d82cd9e08b6dee4943980ac61f34d8897a15ebcd03a1030b6",
+        "beach-prop-7": "bfb7e47ba156a936141f53c023e0b386c45dc4c2de3c10a7445b8a67074426f3",
+        "beach@winter-base": "5ffea74fa4ba49ccc635bf7cffbcfc93577525f6fc8b195685a3e070c9325b51",
+        "beach@winter-prop-0": "9d0a618f2e794d296bd16b87d4ea2d343d4a6b6eec2c4084e0b77ca66b6859e4",
+        "beach@winter-prop-1": "1a82036a707c9532d2f735943ae69e3fc9d63076603a2106eec9f5b3e167ba25",
+        "beach@winter-prop-2": "f28c725505b5ec6fc61857b21fad2ba3df0c03e11c587a9c697aa19fd8c17a20",
+        "beach@winter-prop-3": "2b8cbadb57e3d1142e022688e9f4292d9b20797ed23a051507ca39dd9f13d2e1",
+        "beach@winter-prop-4": "4a2baa29c6b0c461e820c01d05b40cf1d0605cdf7adf7dcf1123c59a10ba8f8e",
+        "beach@winter-prop-5": "0e4d88004c12409baad9cba99f4fd1f02fbd358c0b9c06a232452164c0a0872d",
+        "beach@winter-prop-6": "54f1ef39d04c5c87911ecba38659f699d51ff08187e8c0e193c395bdf40ce607",
+        "beach@winter-prop-7": "4de0b70296391b2054262b0c5e61658219249e4fe9264bffeb36de16a0fa888b"
+      }
+    },
+    "beach": {
+      "verdict": "fail",
+      "files": [
+        "beach-base",
+        "beach-prop-0",
+        "beach-prop-1",
+        "beach-prop-2",
+        "beach-prop-3",
+        "beach-prop-4",
+        "beach-prop-5",
+        "beach-prop-6",
+        "beach-prop-7"
+      ],
+      "pass": [
+        "beach-base",
+        "beach-prop-0",
+        "beach-prop-1",
+        "beach-prop-2",
+        "beach-prop-3",
+        "beach-prop-4",
+        "beach-prop-5",
+        "beach-prop-7"
+      ],
+      "fail": [
+        "beach-prop-6"
+      ],
+      "assessment": "Base and seven solid props ship. The base has quiet damp-sand texture, small shell/pebble marks and no exposed seam/frame. Driftwood, shell group, kelp, barnacled rock, log, root fan and boulder group remain distinct and readable at native size. The tide pool needs a readable water surface."
+    },
+    "beach@winter": {
+      "verdict": "fail",
+      "files": [
+        "beach@winter-base",
+        "beach@winter-prop-0",
+        "beach@winter-prop-1",
+        "beach@winter-prop-2",
+        "beach@winter-prop-3",
+        "beach@winter-prop-4",
+        "beach@winter-prop-5",
+        "beach@winter-prop-6",
+        "beach@winter-prop-7"
+      ],
+      "pass": [
+        "beach@winter-prop-0",
+        "beach@winter-prop-1",
+        "beach@winter-prop-2",
+        "beach@winter-prop-3",
+        "beach@winter-prop-4",
+        "beach@winter-prop-5",
+        "beach@winter-prop-7"
+      ],
+      "fail": [
+        "beach@winter-base",
+        "beach@winter-prop-6"
+      ],
+      "assessment": "Seven solid props ship with consistent top-facing snow, retained silhouettes and compatible snow/stone/wood palettes. The base has conspicuous large-scale repetition; the frozen tide pool loses its structure on the intended ground."
+    }
+  },
+  "pass": [
+    "beach-base",
+    "beach-prop-0",
+    "beach-prop-1",
+    "beach-prop-2",
+    "beach-prop-3",
+    "beach-prop-4",
+    "beach-prop-5",
+    "beach-prop-7",
+    "beach@winter-prop-0",
+    "beach@winter-prop-1",
+    "beach@winter-prop-2",
+    "beach@winter-prop-3",
+    "beach@winter-prop-4",
+    "beach@winter-prop-5",
+    "beach@winter-prop-7"
+  ],
+  "fail": [
+    {
+      "name": "beach@winter-base",
+      "problems": "Visible composition repeat in the 3x3 proof at 1x and 4x: the broad bare-sand clearing around native (200,190), followed by the dense diagonal snow cluster below it, repeats as an obvious row of matching gaps every 288 px. The high-contrast snow also forms repeated parallel streaks. The wrap is joined, but the surface still reads as repeating wallpaper. Rebalance the snow/sand masses: split the large clearing, vary patch sizes and directions, and distribute quieter transitions across the wrap. Recheck the whole 3x3 area, not only the seam cross. Evidence: critic-r12B-1-winter-base-3x3-{1,4}x.png and winter-base-single-4x.png."
+    },
+    {
+      "name": "beach-prop-6",
+      "problems": "At 1x on its own sand base, the tide pool reads as a fuzzy brown oval shadow or stain, with one isolated pale slash at the upper-left; it does not establish a readable water surface or enclosing shallow bank. At 4x/8x the broad nested alpha bands dominate the shape. Preserve neutral shading-only RGB and the required fade to zero, but redraw the interior with a coherent irregular shallow rim, a flatter quieter surface and a few connected, crisp neutral reflection accents. Fade the outer fringe rather than letting the whole pool become an indistinct smudge. Evidence: critic-r12B-1-summer-all-props-on-beach-{1,4}x.png, summer-beach-scatter-{1,4}x.png and summer-prop-6-beach-dark-8x.png."
+    },
+    {
+      "name": "beach@winter-prop-6",
+      "problems": "The frozen tide pool nearly disappears into the actual winter beach at 1x and remains a vague lightened patch at 4x. Its two small crack marks are visible on the artificial dark background at 8x but lose their structure over the snow/sand texture; the ground pattern dominates the supposed ice plane. Redraw a readable, flatter frozen surface with a restrained neutral shaded rim and connected, higher-contrast crack/reflection clusters that survive both snowy and bare-sand placements. Keep it shading-only, without an opaque coloured backing, and retain a narrow fading outer edge. Evidence: critic-r12B-1-winter-all-props-on-beach-{1,4}x.png, winter-beach-scatter-{1,4}x.png and winter-prop-6-beach-dark-8x.png."
+    }
+  ]
+}

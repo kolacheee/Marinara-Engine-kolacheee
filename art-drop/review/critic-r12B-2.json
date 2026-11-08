@@ -1,0 +1,494 @@
+{
+  "sets": {
+    "_review": {
+      "scope": "Only BRIEF-12.md Part B (Beach): beach-base, beach@winter-base, and beach[-@winter]-prop-0..7. No verdict on other output art.",
+      "file_count": 18,
+      "pass_count": 18,
+      "fail_count": 0,
+      "calibration": "Good enough to ship beside approved art. Judged whole compositions and native-size subject readability as well as enlarged pixels. Deliberate restrained ground texture and the brief-required neutral fading overlays are acceptable.",
+      "prior_review": "critic-r12B-1.json checked by SHA-256. All 15 prior passes are unchanged and remain passed; reinspection found no concrete new defect. Exactly the three prior failures changed and received fresh verdicts.",
+      "changed_since_prior": [
+        "beach-prop-6",
+        "beach@winter-base",
+        "beach@winter-prop-6"
+      ],
+      "unchanged_prior_passes": [
+        "beach-base",
+        "beach-prop-0",
+        "beach-prop-1",
+        "beach-prop-2",
+        "beach-prop-3",
+        "beach-prop-4",
+        "beach-prop-5",
+        "beach-prop-7",
+        "beach@winter-prop-0",
+        "beach@winter-prop-1",
+        "beach@winter-prop-2",
+        "beach@winter-prop-3",
+        "beach@winter-prop-4",
+        "beach@winter-prop-5",
+        "beach@winter-prop-7"
+      ],
+      "checks": {
+        "brief_and_references": "Read complete BRIEF-12 and the established BRIEF.md/BRIEF-2.md style rules. Part B names no external image reference. Viewed reference marker0 images for six settings as shared style context; Part C tree references do not expand the Beach verdict scope.",
+        "approved_art": "Compared approved markers from all six families, representative summer/winter round-2 city, industry, slums, suburb and farmland tiles; all eight paddies plus all eight grass/plains details on their bases in each of four seasons. Saved comparison boards at 1x and 4x. Comparison assets receive no verdict.",
+        "bases_3x3_at_1x_4x": "Both bases literally tiled 3x3 and visually inspected at 1x and exact 4x, with seam-cross views. No straight seam, border or brightness step at the wraps. Winter no longer has the broad clearing/dense-streak repeat flagged previously; smaller varied snow remnants distribute the contrast without exposing a tile lattice. Low-contrast texture repeat is within the approved-ground shipping bar.",
+        "one_cell_random_8x2_at_1x_4x": "Slots 0-3 in each season placed in a seeded shuffled 8x2 layout on their matching base, visually inspected at native size and exact 4x. No clipping, backing squares, seam rhythm or framed cells. Distinct wood, shell, kelp and rock silhouettes remain legible.",
+        "all_props_context_at_1x_4x": "Every prop viewed on matching beach in ordered and scattered compositions at 1x/4x, and on approved grass/plains in both seasons. Pools additionally checked over six actual base crops plus dark and pale backgrounds. No unwanted sprite rectangle, key fringe or palette clash.",
+        "every_file_at_8x": "All 16 complete sprite canvases visually inspected at exact nearest-neighbour 8x side by side on beach and dark ground. Both complete bases visually inspected as four nonoverlapping 144x144 quadrants each at exact 8x, covering every source pixel.",
+        "sharpness_noise_shapes": "Solid cutouts retain discrete native pixel clusters, clear silhouettes and broad readable material planes; no blur, antialiasing fringe, muddy mass or distracting debris found. Fine wood grain and barnacles remain subordinate at 1x. Ground texture is restrained enough for props to read.",
+        "size_placement_light": "All dimensions match: bases 288x288 opaque; slots 0-3 48x48, slots 4-7 96x96. Small prop horizontal span 36 px (75%); large span 82 px (85%). All cutouts have transparent margins. Flatter vertical spans fit beach objects lying on the ground. Top/left highlights and darker lower/right faces are consistent with the approved art.",
+        "fringe_and_neutral_shading": "Fourteen solid props have binary alpha; both pools use neutral black/white RGB with deliberately stepped alpha and faint edges down to 8 then zero. No hidden RGB or coloured backing. Narrow intentional overlay fade is not treated as accidental antialiasing or a halo.",
+        "winter": "All eight winter subjects remain identifiable; top-facing snow caps use the established cool white/blue palette. Frosted sand and varied snow remnants keep the winter base populated without the former dominant repeating gap. The frozen pool has an opaque-looking but actually translucent neutral plane, a restrained rim and connected cracks that survive pale sand and snow.",
+        "near_duplicates": "All 18 files byte-unique. Within each season the subjects and silhouettes are distinct; branch, log and root fan differ substantially, as do single rock and boulder group. Winter counterparts deliberately preserve their summer subjects and are not treated as unwanted duplicates.",
+        "peak_lattice_or_range": "Not applicable: Part B contains no peaks.",
+        "trees_in_forest": "Not applicable: trees belong to Part C, not this review.",
+        "other_named_failure_types": "Egg-crate peaks, Swiss-cheese craters, classical ruins, cyberpunk grids, flat-orange autumn and identical crowns are absent from Part B; no verdict inferred for out-of-scope assets.",
+        "integrity": "Before/after SHA-256 inventory confirms all 1402 files in art-drop/out/ unchanged. Verified 54 saved 1x-to-4x/8x proof pairs are exact nearest-neighbour enlargements, plus all eight base-quadrant 8x images against their source crops.",
+        "limits": "Offline PNG review; no live-engine placement claim."
+      },
+      "repaired_file_assessments": {
+        "beach@winter-base": "PASS. The large clearing and dense parallel stripe composition are gone. Smaller snow patches vary in silhouette and spacing over quieter frosted sand. No conspicuous grid or dominant repeating mass in the full 3x3 at 1x/4x; no wrap discontinuity in the seam cross. Native and 8x views retain clean finite-colour clusters.",
+        "beach-prop-6": "PASS. A connected irregular bank encloses a flat, quieter surface; the connected pale reflection clusters now read as water at 1x on beach. Lower/right rim shading establishes the shallow depression. Narrow alpha fading blends into ground without the former nested smudge. The pool also reads on approved grass/plains and pale/dark controls.",
+        "beach@winter-prop-6": "PASS. The stronger pale ice plane suppresses competing ground texture while retaining neutral partial alpha. A connected branching crack network stays legible at 1x on both sandy and snow-heavy crops and on approved winter grounds. Its irregular rim and narrow fade integrate it without a coloured backing or box."
+      },
+      "evidence_prefix": "art-drop/review/critic-r12B-2-",
+      "evidence_png_count": 104,
+      "source_sha256": {
+        "beach-base": "940c4c1bccacee864514a495eab49a0538c4ff8d526a128e1c65c6a4e0e9c387",
+        "beach-prop-0": "622830d64245838daed926bfe99fb24e8be4c825d47dfac21cad99ce039b117d",
+        "beach-prop-1": "34a76803c3a9451ff5d01fc6cdf0b66a9a0c25d5d6076f3f017f08584c5e224d",
+        "beach-prop-2": "e7c26e6dd894f781358dcb13ec5c4281284dada28e5e962e06cec6d50758cd25",
+        "beach-prop-3": "18e6debe17b5dacea8acc7880cfc64e68647916a674033d88e7baf01ded0d33a",
+        "beach-prop-4": "1f7846a6e71396916507aa4f83abd0d52b808921ce54e8a18102775b4497a5c5",
+        "beach-prop-5": "8aab5719f96783ebff59e9a42f5978bb54a62b8f128364e74ef44833bebad942",
+        "beach-prop-6": "7067405917e9e6bcafe7cd30b3d740d2a029d3b130ddc38a67f434e3a548e91b",
+        "beach-prop-7": "bfb7e47ba156a936141f53c023e0b386c45dc4c2de3c10a7445b8a67074426f3",
+        "beach@winter-base": "8e82e82ed4a89d4d666f1d0afa15f06677574b28a3bf2f9f0ef91606f424de83",
+        "beach@winter-prop-0": "9d0a618f2e794d296bd16b87d4ea2d343d4a6b6eec2c4084e0b77ca66b6859e4",
+        "beach@winter-prop-1": "1a82036a707c9532d2f735943ae69e3fc9d63076603a2106eec9f5b3e167ba25",
+        "beach@winter-prop-2": "f28c725505b5ec6fc61857b21fad2ba3df0c03e11c587a9c697aa19fd8c17a20",
+        "beach@winter-prop-3": "2b8cbadb57e3d1142e022688e9f4292d9b20797ed23a051507ca39dd9f13d2e1",
+        "beach@winter-prop-4": "4a2baa29c6b0c461e820c01d05b40cf1d0605cdf7adf7dcf1123c59a10ba8f8e",
+        "beach@winter-prop-5": "0e4d88004c12409baad9cba99f4fd1f02fbd358c0b9c06a232452164c0a0872d",
+        "beach@winter-prop-6": "fffdb6d45a740893bf718318568695af9e4809de0af3fc46a932a23c00319fc3",
+        "beach@winter-prop-7": "4de0b70296391b2054262b0c5e61658219249e4fe9264bffeb36de16a0fa888b"
+      },
+      "technical": {
+        "beach-base": {
+          "size": [
+            288,
+            288
+          ],
+          "bounds": [
+            0,
+            0,
+            288,
+            288
+          ],
+          "visible_rgb_count": 10,
+          "alpha": [
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach-prop-0": {
+          "size": [
+            48,
+            48
+          ],
+          "bounds": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "visible_rgb_count": 7,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach-prop-1": {
+          "size": [
+            48,
+            48
+          ],
+          "bounds": [
+            6,
+            13,
+            42,
+            34
+          ],
+          "visible_rgb_count": 9,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach-prop-2": {
+          "size": [
+            48,
+            48
+          ],
+          "bounds": [
+            6,
+            15,
+            42,
+            33
+          ],
+          "visible_rgb_count": 7,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach-prop-3": {
+          "size": [
+            48,
+            48
+          ],
+          "bounds": [
+            6,
+            11,
+            42,
+            37
+          ],
+          "visible_rgb_count": 9,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach-prop-4": {
+          "size": [
+            96,
+            96
+          ],
+          "bounds": [
+            7,
+            31,
+            89,
+            65
+          ],
+          "visible_rgb_count": 7,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach-prop-5": {
+          "size": [
+            96,
+            96
+          ],
+          "bounds": [
+            7,
+            23,
+            89,
+            73
+          ],
+          "visible_rgb_count": 7,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach-prop-6": {
+          "size": [
+            96,
+            96
+          ],
+          "bounds": [
+            7,
+            30,
+            89,
+            66
+          ],
+          "visible_rgb_count": 2,
+          "alpha": [
+            0,
+            8,
+            16,
+            24,
+            32,
+            48,
+            64,
+            96,
+            112,
+            128
+          ],
+          "unchanged_prior_pass": false
+        },
+        "beach-prop-7": {
+          "size": [
+            96,
+            96
+          ],
+          "bounds": [
+            7,
+            28,
+            89,
+            68
+          ],
+          "visible_rgb_count": 9,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach@winter-base": {
+          "size": [
+            288,
+            288
+          ],
+          "bounds": [
+            0,
+            0,
+            288,
+            288
+          ],
+          "visible_rgb_count": 11,
+          "alpha": [
+            255
+          ],
+          "unchanged_prior_pass": false
+        },
+        "beach@winter-prop-0": {
+          "size": [
+            48,
+            48
+          ],
+          "bounds": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "visible_rgb_count": 11,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach@winter-prop-1": {
+          "size": [
+            48,
+            48
+          ],
+          "bounds": [
+            6,
+            14,
+            42,
+            34
+          ],
+          "visible_rgb_count": 15,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach@winter-prop-2": {
+          "size": [
+            48,
+            48
+          ],
+          "bounds": [
+            6,
+            15,
+            42,
+            33
+          ],
+          "visible_rgb_count": 11,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach@winter-prop-3": {
+          "size": [
+            48,
+            48
+          ],
+          "bounds": [
+            6,
+            11,
+            42,
+            37
+          ],
+          "visible_rgb_count": 16,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach@winter-prop-4": {
+          "size": [
+            96,
+            96
+          ],
+          "bounds": [
+            7,
+            31,
+            89,
+            65
+          ],
+          "visible_rgb_count": 12,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach@winter-prop-5": {
+          "size": [
+            96,
+            96
+          ],
+          "bounds": [
+            7,
+            23,
+            89,
+            73
+          ],
+          "visible_rgb_count": 12,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        },
+        "beach@winter-prop-6": {
+          "size": [
+            96,
+            96
+          ],
+          "bounds": [
+            7,
+            30,
+            89,
+            66
+          ],
+          "visible_rgb_count": 2,
+          "alpha": [
+            0,
+            8,
+            16,
+            32,
+            64,
+            80,
+            96,
+            128,
+            176,
+            208
+          ],
+          "unchanged_prior_pass": false
+        },
+        "beach@winter-prop-7": {
+          "size": [
+            96,
+            96
+          ],
+          "bounds": [
+            7,
+            28,
+            89,
+            68
+          ],
+          "visible_rgb_count": 13,
+          "alpha": [
+            0,
+            255
+          ],
+          "unchanged_prior_pass": true
+        }
+      }
+    },
+    "beach": {
+      "verdict": "pass",
+      "files": [
+        "beach-base",
+        "beach-prop-0",
+        "beach-prop-1",
+        "beach-prop-2",
+        "beach-prop-3",
+        "beach-prop-4",
+        "beach-prop-5",
+        "beach-prop-6",
+        "beach-prop-7"
+      ],
+      "pass": [
+        "beach-base",
+        "beach-prop-0",
+        "beach-prop-1",
+        "beach-prop-2",
+        "beach-prop-3",
+        "beach-prop-4",
+        "beach-prop-5",
+        "beach-prop-6",
+        "beach-prop-7"
+      ],
+      "fail": [],
+      "assessment": "Quiet seamless sand with damp patches, shell chips and pebbles; seven distinct solid props and a now-readable neutral tide pool. Muted materials, native pixel scale and top-left lighting fit the approved art."
+    },
+    "beach@winter": {
+      "verdict": "pass",
+      "files": [
+        "beach@winter-base",
+        "beach@winter-prop-0",
+        "beach@winter-prop-1",
+        "beach@winter-prop-2",
+        "beach@winter-prop-3",
+        "beach@winter-prop-4",
+        "beach@winter-prop-5",
+        "beach@winter-prop-6",
+        "beach@winter-prop-7"
+      ],
+      "pass": [
+        "beach@winter-base",
+        "beach@winter-prop-0",
+        "beach@winter-prop-1",
+        "beach@winter-prop-2",
+        "beach@winter-prop-3",
+        "beach@winter-prop-4",
+        "beach@winter-prop-5",
+        "beach@winter-prop-6",
+        "beach@winter-prop-7"
+      ],
+      "fail": [],
+      "assessment": "Frosted sand with distributed snow remnants passes the repeat check. Seven solid props retain coherent snow caps and clear subjects; the repaired frozen pool reads on the intended ground."
+    }
+  },
+  "pass": [
+    "beach-base",
+    "beach-prop-0",
+    "beach-prop-1",
+    "beach-prop-2",
+    "beach-prop-3",
+    "beach-prop-4",
+    "beach-prop-5",
+    "beach-prop-6",
+    "beach-prop-7",
+    "beach@winter-base",
+    "beach@winter-prop-0",
+    "beach@winter-prop-1",
+    "beach@winter-prop-2",
+    "beach@winter-prop-3",
+    "beach@winter-prop-4",
+    "beach@winter-prop-5",
+    "beach@winter-prop-6",
+    "beach@winter-prop-7"
+  ],
+  "fail": []
+}
