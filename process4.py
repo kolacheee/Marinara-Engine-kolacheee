@@ -187,13 +187,14 @@ def hills_silhouette(img, top_min, top_max, seed=4):
     w, h = img.size
     rnd = random.Random(seed)
     waves = [(k, rnd.uniform(0, 2 * math.pi), 1 / k) for k in (1, 2, 3, 5)]
-    a = Image.new("L", (w, h), 0)
-    d = ImageDraw.Draw(a)
-    for x in range(w):
-        v = sum(amp * math.sin(2 * math.pi * k * x / w + ph) for k, ph, amp in waves) / sum(1 / k for k, _, _ in waves)
-        top = top_min + (top_max - top_min) * (v + 1) / 2
-        d.line([(x, round(top)), (x, h)], fill=255)
-    a = a.resize((w * 4, h * 4)).filter(ImageFilter.GaussianBlur(2)).resize((w, h), Image.BOX)
+    S = 4  # draw the edge at 4x, then box-downsample: smooth anti-aliased curve, no stair steps
+    a = Image.new("L", (w * S, h * S), 0)
+    pts = []
+    for X in range(w * S + 1):
+        v = sum(amp * math.sin(2 * math.pi * k * X / (w * S) + ph) for k, ph, amp in waves) / sum(1 / k for k, _, _ in waves)
+        pts.append((X, (top_min + (top_max - top_min) * (v + 1) / 2) * S))
+    ImageDraw.Draw(a).polygon(pts + [(w * S, h * S), (0, h * S)], fill=255)
+    a = a.resize((w, h), Image.BOX)
     img.putalpha(ImageChops.multiply(img.getchannel("A"), a))
     return img
 

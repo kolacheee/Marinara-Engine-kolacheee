@@ -25,3 +25,17 @@ neon/rain-tile rc=0 secs=38 exists=yes
 neon/backdrop-game rc=0 secs=56 exists=yes
 neon/topbar-strip rc=0 secs=49 exists=yes
 maximal/backdrop-day rc=0 secs=62 exists=yes
+maximal/topbar-strip rc=0 secs=74 exists=yes
+maximal/stickers2 rc=0 secs=58 exists=yes
+maximal/ui-icons rc=0 secs=49 exists=yes
+maximal/emblem rc=0 secs=52 exists=yes
+access/backdrop-night rc=0 secs=60 exists=yes
+access/horizon-strip-night rc=0 secs=68 exists=yes
+immersion/backdrop-day rc=0 secs=57 exists=yes
+creator/backdrop-night-v2 rc=0 secs=63 exists=yes
+access/sprig-night rc=0 secs=113 exists=yes
+creator/topbar-band-night rc=0 secs=53 exists=yes
+cozy/backdrop-night rc=0 secs=72 exists=yes
+neon/backdrop-day rc=0 secs=62 exists=yes
+maximal/backdrop-night rc=0 secs=63 exists=yes
+cozy/sprigs rc=0 secs=58 exists=yes

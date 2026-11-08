@@ -177,3 +177,154 @@ def neon_strip():
 
 
 RECIPES["neon/topbar-strip"] = neon_strip
+
+
+def maximal_day_art():
+    r = P.cover(raw("maximal/backdrop-day").convert("RGB"), 1920, 1080).resize((480, 270), Image.BOX)
+    return r.quantize(12, Image.Quantize.MEDIANCUT, kmeans=4, dither=Image.Dither.NONE).convert("RGB")
+
+
+def maximal_day():
+    return up(maximal_day_art(), 4)
+
+
+def maximal_night():
+    """Relight the day art grid class by class, so every silhouette matches the day image pixel for pixel."""
+    import random
+    from process4 import hexc
+    day = maximal_day_art(); dp = day.load()
+    W, H = day.size
+    lum = lambda c: (c[0] * 3 + c[1] * 6 + c[2]) / 10
+    # foreground = the darker, saturated colours along the bottom (buildings, trees, pole and wires)
+    counts = {}
+    for y in range(H):
+        for x in range(W):
+            counts.setdefault(dp[x, y], []).append(y)
+    fg = {c for c, ys in counts.items() if sum(ys) / len(ys) > 0.75 * H and lum(c) < 215}
+    night = Image.new("RGB", (W, H)); np_ = night.load()
+    plum, mid, violet = hexc("#2B1E3D"), hexc("#34254C"), hexc("#3E2C5C")
+
+    def sky(x, y):
+        bands = [(0, 52, plum, None), (52, 66, plum, mid), (66, 110, mid, None), (110, 124, mid, violet), (124, H, violet, None)]
+        for a, b, c1, c2 in bands:
+            if a <= y < b:
+                return c1 if c2 is None or (x + y) % 2 else c2
+    rnd = random.Random(42)
+    is_fg = lambda x, y: 0 <= x < W and 0 <= y < H and dp[x, y] in fg
+    window = {}
+    for y in range(H):
+        for x in range(W):
+            c = dp[x, y]
+            if c in fg:
+                if x < 0.1 * W or x > 0.9 * W:
+                    tree = lum(c) > 180 and c[0] > c[2]  # the pink blobs at the far edges are the cherry trees
+                else:
+                    tree = False
+                np_[x, y] = hexc("#B66A9C") if tree else (hexc("#6E5A96") if c[0] > c[2] else hexc("#5B4A82"))
+            elif y > 0.7 * H and all(any(is_fg(x + dx * d, y + dy * d) for d in range(1, 7)) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                window[(x, y)] = True
+            else:
+                np_[x, y] = sky(x, y)
+    # light windows per blob: a third pink, a few butter, the rest dark
+    seen = set()
+    for p in window:
+        if p in seen: continue
+        blob, stack = [], [p]
+        while stack:
+            q = stack.pop()
+            if q in seen or q not in window: continue
+            seen.add(q); blob.append(q)
+            stack += [(q[0] + 1, q[1]), (q[0] - 1, q[1]), (q[0], q[1] + 1), (q[0], q[1] - 1)]
+        v = rnd.random()
+        col = hexc("#FF9EC4") if v < 0.33 else hexc("#FFE3A3") if v < 0.41 else hexc("#4A3A6E")
+        for q in blob: np_[q] = col
+    star = hexc("#F6E7F0")
+    for _ in range(25):  # single-pixel and 2x2 stars, top 40% only
+        x, y = rnd.randrange(4, W - 4), rnd.randrange(3, int(0.4 * H))
+        if 0.08 * W < x < 0.18 * W and y < 0.22 * H: continue  # keep clear of the moon
+        s = 2 if rnd.random() < 0.3 else 1
+        for dx in range(s):
+            for dy in range(s): np_[x + dx, y + dy] = star
+    mx, my, R = round(0.12 * W), round(0.14 * H), 7  # pixel crescent moon
+    for y in range(my - R, my + R + 1):
+        for x in range(mx - R, mx + R + 1):
+            if (x - mx) ** 2 + (y - my) ** 2 <= R * R and (x - mx - 4) ** 2 + (y - my + 2) ** 2 > (R - 1) ** 2:
+                np_[x, y] = hexc("#FFE9F3")
+    return up(night, 4)
+
+
+RECIPES["maximal/backdrop-day"] = maximal_day
+RECIPES["maximal/backdrop-night"] = drawn(maximal_night)
+
+
+def regrid(img, k, colours):
+    """Snap near-pixel-art to an exact k x k block grid: pick the best block phase, sample block centres,
+    flatten to `colours` colours with hard alpha, upscale nearest so every art pixel is a crisp k x k block."""
+    img = img.convert("RGBA")
+    W, H = img.size
+    gw, gh = W // k, H // k
+    ip = img.load()
+
+    def sample(ox, oy):
+        sm = Image.new("RGBA", (gw, gh), (0, 0, 0, 0)); sp = sm.load()
+        for gy in range(gh):
+            for gx in range(gw):
+                sp[gx, gy] = ip[min(W - 1, ox + gx * k + k // 2), min(H - 1, oy + gy * k + k // 2)]
+        return sm
+
+    best = None
+    for ox in range(k):
+        for oy in range(k):
+            back = Image.new("RGBA", (W, H)); back.paste(up(sample(ox, oy), k), (ox, oy))
+            d = ImageChops.difference(back.convert("RGB"), img.convert("RGB")).convert("L")
+            score = sum(d.get_flattened_data()) / (W * H)
+            if best is None or score < best[0]:
+                best = (score, ox, oy)
+    _, ox, oy = best
+    small = sample(ox, oy)
+    a = small.getchannel("A").point(lambda v: 255 if v > 127 else 0)
+    rgb = small.convert("RGB").quantize(colours, Image.Quantize.MEDIANCUT, kmeans=2, dither=Image.Dither.NONE).convert("RGB")
+    out = rgb.convert("RGBA"); out.putalpha(a)
+    print(f"   grid {k}: phase {ox},{oy} (err {best[0]:.1f})")
+    return up(out, k)
+
+
+RECIPES["maximal/stickers2"] = lambda: regrid(raw("maximal/stickers2"), 4, 24)
+RECIPES["maximal/ui-icons"] = lambda: regrid(raw("maximal/ui-icons"), 8, 14)
+RECIPES["maximal/emblem"] = lambda: regrid(raw("maximal/emblem"), 8, 8)
+
+
+def snap_palette(img, hexes):
+    """Map every opaque pixel to the nearest colour of a fixed palette (hard alpha)."""
+    from process4 import hexc
+    pal = [hexc(h) for h in hexes]
+    img = img.convert("RGBA"); px = img.load()
+    for y in range(img.height):
+        for x in range(img.width):
+            r, g, b, a = px[x, y]
+            if a < 128:
+                px[x, y] = (0, 0, 0, 0); continue
+            c = min(pal, key=lambda p: (p[0] - r) ** 2 + (p[1] - g) ** 2 + (p[2] - b) ** 2)
+            px[x, y] = c + (255,)
+    return img
+
+
+EMBLEM = ["#FFF6FA", "#4A2340", "#F4C6D7", "#DCE0F7", "#FF6FA5", "#FFFFFF", "#FFE3A3", "#E8A9C3"]
+RECIPES["maximal/emblem"] = lambda: snap_palette(regrid(raw("maximal/emblem"), 8, 16), EMBLEM)
+
+
+def creator_band_night():
+    """Night twin = the day band relit (walnut plate, ember/lantern leaves), so leaves and rule sit in the same place;
+    plus a gentle lantern glow rising from the bottom edge."""
+    day = Image.open(P.OUT / "creator" / "topbar-band-day.png").convert("RGB")
+    # ink amount from how far each pixel falls from the paper toward the rust ink, then walnut -> ember by that amount
+    g = day.convert("L")
+    paper = Image.new("L", g.size, 238).point(lambda v: v)
+    ink = ImageChops.subtract(paper, g).point(lambda v: min(255, round(v * 255 / 120)))
+    n = Image.composite(Image.new("RGB", g.size, (0xC4, 0x53, 0x2F)), Image.new("RGB", g.size, (0x21, 0x18, 0x11)), ink)
+    glow = Image.new("RGB", n.size, (0xF0, 0xA8, 0x48))
+    m = Image.new("L", (1, n.height)); m.putdata([round(28 * max(0, (y - 50) / 46) ** 2) for y in range(n.height)])
+    return Image.composite(glow, n, m.resize(n.size))
+
+
+RECIPES["creator/topbar-band-night"] = drawn(creator_band_night)
