@@ -120,3 +120,60 @@ RECIPES = {
     "maximal/topbar-strip": drawn(maximal_taskbar),
     "maximal/emblem": lambda: pixel_sprite(key_out(raw("maximal/emblem")), 64, 4, 8, 8),
 }
+
+
+def spread(img, cols, rows, seed=7):
+    """Lift each separate sprite out of a particle tile and re-place them on a jittered cols x rows grid."""
+    import random
+    from PIL import ImageDraw
+    img = img.convert("RGBA")
+    m = img.getchannel("A").point(lambda v: 255 if v > 4 else 0)
+    parts, px = [], m.load()
+    for y in range(0, m.height, 2):
+        for x in range(0, m.width, 2):
+            if px[x, y] == 255:
+                ImageDraw.floodfill(m, (x, y), 100)
+                blob = m.point(lambda v: 255 if v == 100 else 0)
+                bb = blob.getbbox()
+                ImageDraw.floodfill(m, (x, y), 50)
+                if bb and (bb[2] - bb[0]) * (bb[3] - bb[1]) > 30:
+                    piece = img.crop(bb); piece.putalpha(ImageChops.multiply(piece.getchannel("A"), blob.crop(bb)))
+                    parts.append(piece)
+    rnd = random.Random(seed)
+    rnd.shuffle(parts)
+    c = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    cw, ch = img.width // cols, img.height // rows
+    for i, p in enumerate(parts[: cols * rows]):
+        gx, gy = i % cols, i // cols
+        x = gx * cw + (cw - p.width) // 2 + rnd.randint(-cw // 5, cw // 5) + (ch // 2 if gy % 2 else 0)
+        y = gy * ch + (ch - p.height) // 2 + rnd.randint(-ch // 6, ch // 6)
+        for dx in (-img.width, 0, img.width):  # wrap so a sprite crossing an edge continues on the other side
+            for dy in (-img.height, 0, img.height):
+                if -p.width < x + dx < img.width and -p.height < y + dy < img.height: c.paste(p, (x + dx, y + dy), p)
+    return c
+
+
+RECIPES["creator/ambient-leaves"] = lambda: spread(wrap_particles(key_out(raw("creator/ambient-leaves")), 1024), 3, 2)
+
+
+def neon_strip():
+    """Keep the generated faint circuit plate; redraw the tube to spec (2 px core, ~6 px glow, cyan>magenta>cyan)."""
+    import math
+    from PIL import ImageDraw, ImageFilter
+    img = raw("neon/topbar-strip").convert("RGB").resize((2560, 96), L)
+    w, h = img.size
+    base = (0x05, 0x06, 0x0B)
+    ImageDraw.Draw(img).rectangle([0, 84, w, h], fill=base)
+    tube = Image.new("RGB", (w, h), (0, 0, 0)); d = ImageDraw.Draw(tube)
+    cy, cm = (0x22, 0xE4, 0xF5), (0xFF, 0x2B, 0xD6)
+    for x in range(w):
+        t = (1 - math.cos(2 * math.pi * x / w)) / 2  # 0 at both edges, 1 mid: tiles
+        c = tuple(round(a + (b - a) * t) for a, b in zip(cy, cm))
+        d.line([(x, 90), (x, 91)], fill=c)
+    glow = tube.filter(ImageFilter.GaussianBlur(3))
+    glow = Image.eval(glow, lambda v: min(255, v * 3))
+    img = ImageChops.add(ImageChops.add(img, glow), tube)
+    return img
+
+
+RECIPES["neon/topbar-strip"] = neon_strip

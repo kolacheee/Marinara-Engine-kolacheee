@@ -34,7 +34,19 @@ def opaque(img, w, h):
     return P.cover(img.convert("RGB"), w, h)
 
 
+def edges_match(img, xs=True, ys=True, tol=4):
+    g = img.convert("L"); w, h = g.size
+    def mean_diff(a, b):
+        d = ImageChops.difference(a, b); return sum(d.get_flattened_data()) / (d.width * d.height)
+    ok = True
+    if xs: ok &= mean_diff(g.crop((0, 0, 1, h)), g.crop((w - 1, 0, w, h))) < tol
+    if ys: ok &= mean_diff(g.crop((0, 0, w, 1)), g.crop((0, h - 1, w, h))) < tol
+    return ok
+
+
 def seamless(img, w, h, xs=True, ys=True):
+    if img.size == (w, h) and edges_match(img, xs, ys):
+        return img.convert("RGB")  # Codex already delivered an exact-size seamless tile: no blend ghosting
     return P.seam_blend(P.cover(img.convert("RGB") if img.mode != "RGBA" else img, w, h), xs, ys)
 
 
