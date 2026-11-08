@@ -36,6 +36,7 @@ import {
   worldRangeRidges,
   worldRoadBridgePiece,
   worldHistory,
+  worldBeyondGround,
   worldEdgeMask,
   WORLD_FRINGE_ORDER,
   WORLD_SQUARE_LOOKS,
@@ -217,15 +218,51 @@ export function WorldOverworld({
   );
 
   // ── What is drawn once: the ground and its ways, then the settlements ──
+  // The land past the map's edge (the owner, 2026-11-08), drawn as the map is, a pad of cells round it: the
+  // ground is drawn over the larger grid, the map's places, ways and rivers moved in by the pad.
+  const outer = useMemo(() => {
+    const beyond = worldBeyondGround(game as Parameters<typeof worldBeyondGround>[0]);
+    const { pad } = beyond;
+    const shift = (at: number) => (Math.floor(at / world.width) + pad) * beyond.width + (at % world.width) + pad;
+    const move = <T extends { at: { x: number; y: number } }>(each: T): T => ({
+      ...each,
+      at: { x: each.at.x + pad, y: each.at.y + pad },
+    });
+    const padded = {
+      ...world,
+      width: beyond.width,
+      height: beyond.height,
+      ground: Array.from(beyond.cells, (cell) => cell.toString(36)).join(""),
+      places: world.places.map(move),
+      links: world.links.map((link) => (link.path ? { ...link, path: link.path.map(shift) } : link)),
+      rivers: [...(world.rivers ?? []).map((river) => ({ ...river, path: river.path.map(shift) })), ...beyond.rivers],
+      resources: world.resources?.map(move),
+    };
+    const held = heldCells
+      ? Array.from({ length: beyond.width * beyond.height }, (_, at) => {
+          const [x, y] = [(at % beyond.width) - pad, Math.floor(at / beyond.width) - pad];
+          return x >= 0 && y >= 0 && x < world.width && y < world.height ? heldCells[y * world.width + x] : undefined;
+        })
+      : heldCells;
+    return {
+      pad,
+      world: padded,
+      byId: new Map(padded.places.map((place) => [place.id, place])),
+      held,
+      lost: worldHistory(game).lost.map(move),
+    };
+  }, [game, heldCells, world]);
   // In world units (16 a cell) at `resolution` canvas pixels a unit (an image pack's detail, as far as
   // the two canvases' size allows).
   const worldSize = { width: world.width * OVERWORLD_TILE, height: world.height * OVERWORLD_TILE };
   const resolution = overworldBaseResolution(
     drawTile,
-    2 * worldSize.width * worldSize.height,
+    2 * (world.width + 2 * outer.pad) * (world.height + 2 * outer.pad) * OVERWORLD_TILE * OVERWORLD_TILE,
     scale * (typeof window === "undefined" ? 1 : window.devicePixelRatio || 1),
   );
   const { canvas: ground, trees } = useMemo(() => {
+    // Drawn over the larger grid (see `outer`): these name its world, places and cells, not the map's.
+    const { world, byId, held: heldCells, pad } = outer;
     const canvas = document.createElement("canvas");
     if (drawTile.loading)
       return { canvas, trees: [] as Array<{ x: number; y: number; id: string; pick: number; w: number; h: number }> };
@@ -249,7 +286,7 @@ export function WorldOverworld({
     // coast, not the map's straight edge): border cells up to two deep, by a smooth noise along the edge,
     // are drawn as water, never a place, a way or the cells beside them.
     const wetCell: boolean[] = Array.from(cells, (cell) => water[cell]!);
-    if (worldBeyond(game, world).wet && drawTile.hasEdges("water")) {
+    if (!pad && worldBeyond(game, world).wet && drawTile.hasEdges("water")) {
       const kept = new Set<number>();
       const keep = (x: number, y: number) => {
         for (let dy = -1; dy <= 1; dy++)
@@ -425,7 +462,7 @@ export function WorldOverworld({
     // them, so the ground beside shows there instead).
     const clearing = new Set<number>();
     // Where history says a place stood and fell: cleared like a place, its ruins drawn there (below).
-    const lostSpots = drawTile.hasPiece("ruins_props", 0) ? worldHistory(game).lost : [];
+    const lostSpots = drawTile.hasPiece("ruins_props", 0) ? outer.lost : [];
     for (const lost of lostSpots)
       for (let dy = -1; dy <= 1; dy++)
         for (let dx = -1; dx <= 1; dx++) clearing.add((lost.at.y + dy) * width + lost.at.x + dx);
@@ -643,7 +680,7 @@ export function WorldOverworld({
           );
         }
     };
-    if (waterEdges) edgePass("water", (x, y) => wetCell[y * width + x]!, worldBeyond(game, world).wet);
+    if (waterEdges) edgePass("water", (x, y) => wetCell[y * width + x]!, !pad && worldBeyond(game, world).wet);
     // Rivers (world generator 7), over the ground and its shores and under the roads: each from its source
     // to the shore it runs into (a little past it, under the water's edge), the river it joins, or past
     // the map's edge.
@@ -1317,15 +1354,18 @@ export function WorldOverworld({
     }
     drawTile.setCellSeason(undefined);
     return { canvas, trees };
-  }, [byId, drawTile, game, heldCells, kit.travel, resolution, siteIds, world]);
+  }, [drawTile, game, kit.travel, outer, resolution, siteIds]);
   const markers = useMemo(() => {
     const canvas = document.createElement("canvas");
     if (drawTile.loading) return canvas;
-    canvas.width = world.width * OVERWORLD_TILE * resolution;
-    canvas.height = world.height * OVERWORLD_TILE * resolution;
+    // Over the larger grid, as the ground is: the map's places moved in by the pad, the trees already there.
+    const { pad } = outer;
+    canvas.width = (world.width + 2 * pad) * OVERWORLD_TILE * resolution;
+    canvas.height = (world.height + 2 * pad) * OVERWORLD_TILE * resolution;
     const ctx = canvas.getContext("2d");
     if (!ctx) return canvas;
     ctx.scale(resolution, resolution);
+    ctx.translate(pad * OVERWORLD_TILE, pad * OVERWORLD_TILE);
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = "high";
     const drawPlace = (place: (typeof settlements)[number]["place"]) => {
@@ -1375,15 +1415,28 @@ export function WorldOverworld({
           ctx,
           tree.id,
           tree.pick,
-          tree.x * OVERWORLD_TILE - OVERWORLD_TILE / 2,
-          tree.y * OVERWORLD_TILE - (tree.h * OVERWORLD_TILE * 46) / 48 + ((tree.h - 1) * OVERWORLD_TILE) / 2,
+          (tree.x - pad) * OVERWORLD_TILE - OVERWORLD_TILE / 2,
+          (tree.y - pad) * OVERWORLD_TILE - (tree.h * OVERWORLD_TILE * 46) / 48 + ((tree.h - 1) * OVERWORLD_TILE) / 2,
         ),
     }));
     for (const { place } of settlements) standing.push({ base: place.at.y + 1, draw: () => drawPlace(place) });
     standing.sort((a, b) => a.base - b.base);
     for (const each of standing) each.draw();
     return canvas;
-  }, [drawTile, lit, resolution, ruined, sealedKey, settlements, siteIds, top, trees, world.height, world.width]);
+  }, [
+    drawTile,
+    lit,
+    outer,
+    resolution,
+    ruined,
+    sealedKey,
+    settlements,
+    siteIds,
+    top,
+    trees,
+    world.height,
+    world.width,
+  ]);
 
   // Beyond the world's edge, the ground its edge has most of (the sea around an island, open space).
   const beyond = useMemo(() => {
@@ -1454,8 +1507,17 @@ export function WorldOverworld({
       }
       // Smooth only where the base is shown smaller than it was drawn (an image pack's art).
       ctx.imageSmoothingEnabled = drawTile.image && resolution > scale * dpr;
-      ctx.drawImage(ground, 0, 0, ground.width / resolution, ground.height / resolution);
-      ctx.drawImage(markers, 0, 0, markers.width / resolution, markers.height / resolution);
+      const off = -outer.pad * OVERWORLD_TILE;
+      ctx.drawImage(ground, off, off, ground.width / resolution, ground.height / resolution);
+      ctx.drawImage(markers, off, off, markers.width / resolution, markers.height / resolution);
+      // The land past the edge dimmed, so where the map ends reads as its border.
+      if (outer.pad) {
+        ctx.fillStyle = "rgba(5, 6, 10, 0.4)";
+        ctx.beginPath();
+        ctx.rect(off, off, worldSize.width - 2 * off, worldSize.height - 2 * off);
+        ctx.rect(0, 0, worldSize.width, worldSize.height);
+        ctx.fill("evenodd");
+      }
       ctx.imageSmoothingEnabled = false;
       const party = partyRef.current;
       if (party) {
@@ -1485,6 +1547,7 @@ export function WorldOverworld({
       drawTile,
       ground,
       markers,
+      outer.pad,
       resolution,
       scale,
       size.height,
