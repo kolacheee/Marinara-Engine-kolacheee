@@ -2838,6 +2838,8 @@ export function ChatSettingsDrawer({
       // update_about_me is Conversation-only (enforced server-side); hide the
       // toggle in other modes so it doesn't look available where it can't run.
       if (t.name === "update_about_me" && !isConversation) continue;
+      // A game on the real Earth attaches world_news by itself; it is no chat's own tool.
+      if (t.name === "world_news") continue;
       tools.push({ id: t.name, name: t.name, description: t.description });
     }
     if (customTools) {

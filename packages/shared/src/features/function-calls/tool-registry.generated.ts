@@ -20,6 +20,7 @@ import { spotifyGetPlaylistTracksToolManifest } from "./tools/spotify-get-playli
 import { spotifySearchToolManifest } from "./tools/spotify-search/manifest.js";
 import { spotifyPlayToolManifest } from "./tools/spotify-play/manifest.js";
 import { spotifySetVolumeToolManifest } from "./tools/spotify-set-volume/manifest.js";
+import { worldNewsToolManifest } from "./tools/world-news/manifest.js";
 import { editChatMessageToolManifest } from "./tools/edit-chat-message/manifest.js";
 
 export const BUILT_IN_TOOLS: ToolDefinition[] = [
@@ -41,6 +42,7 @@ export const BUILT_IN_TOOLS: ToolDefinition[] = [
   spotifySearchToolManifest,
   spotifyPlayToolManifest,
   spotifySetVolumeToolManifest,
+  worldNewsToolManifest,
   editChatMessageToolManifest,
 ];
 

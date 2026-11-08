@@ -1,4 +1,5 @@
 import { currentRoomGeneration, roomGenerationMetadata, roomToolAllowed } from "../multiplayer/generation-policy.js";
+import { gameHasEarthNews } from "../game/world-news.service.js";
 import {
   BUILT_IN_TOOLS,
   DEFAULT_AGENT_TOOLS,
@@ -171,8 +172,16 @@ const CONVERSATION_ONLY_TOOL_NAMES = new Set(["update_about_me"]);
 const DEFAULT_OFF_TOOL_NAMES = new Set(["update_about_me", ...(DEFAULT_AGENT_TOOLS.spotify ?? [])]);
 
 export function isChatToolEnabledByDefault(toolName: string): boolean {
-  return !AGENT_ONLY_TOOL_NAMES.has(toolName) && !DEFAULT_OFF_TOOL_NAMES.has(toolName);
+  return (
+    !AGENT_ONLY_TOOL_NAMES.has(toolName) && !DEFAULT_OFF_TOOL_NAMES.has(toolName) && !GAME_ONLY_TOOL_NAMES.has(toolName)
+  );
 }
+
+/**
+ * Tools that only a game attaches, by itself, when it fits: `world_news` for a game on the real Earth (the
+ * Earth seed). Never in a chat's own tool set.
+ */
+export const GAME_ONLY_TOOL_NAMES: ReadonlySet<string> = new Set(["world_news"]);
 
 /**
  * Game Mode rolls real dice instead of letting the GM invent numbers, so the dice tool
@@ -219,7 +228,7 @@ export function isChatToolResolved(
 ): boolean {
   if (AGENT_ONLY_TOOL_NAMES.has(name)) return false;
   if (args.autoAttachToolNames.includes(name)) return true;
-  if (!args.enableChatTools) return false;
+  if (!args.enableChatTools || GAME_ONLY_TOOL_NAMES.has(name)) return false;
   return args.activeToolIds.length > 0 ? args.activeToolIds.includes(name) : isChatToolEnabledByDefault(name);
 }
 
@@ -1330,6 +1339,8 @@ export async function resolveGenerationTools(args: ResolveGenerationToolsArgs): 
           ...(args.agentContext.chatMode === "game" && booleanText(args.chatMetadata.gameLorebookSearch)
             ? ["search_lorebook"]
             : []),
+          // A game on the real Earth can look up the real news (looked up, never pushed into the story).
+          ...(args.agentContext.chatMode === "game" && gameHasEarthNews(args.chatMetadata) ? ["world_news"] : []),
         ]
       : args.agentContext.chatMode === "roleplay"
         ? (args.autoAttachToolNames ?? []).filter((name) => name === "roll_dice")

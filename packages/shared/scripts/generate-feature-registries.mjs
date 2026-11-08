@@ -24,6 +24,7 @@ const TOOL_ORDER = [
   "spotify-search",
   "spotify-play",
   "spotify-set-volume",
+  "world-news",
 ];
 
 async function readManifestFolders(baseDir, manifestFile = "manifest.ts") {

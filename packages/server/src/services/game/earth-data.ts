@@ -7,12 +7,25 @@
 import { readFile } from "fs/promises";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
-import { gunzipSync, inflateSync } from "zlib";
-import type { WorldEarthData } from "@marinara-engine/shared";
+import { brotliDecompressSync, gunzipSync, inflateSync } from "zlib";
+import type { WorldEarthData, WorldEarthNewsData } from "@marinara-engine/shared";
 
 const EARTH_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "../../assets/earth");
 
 let loading: Promise<WorldEarthData> | null = null;
+let loadingNews: Promise<WorldEarthNewsData> | null = null;
+
+/** The real news by day (scripts/earth/bake-earth-news.py; Wikipedia's year articles, CC BY-SA 4.0), read
+ *  once when a Game Master first looks it up and kept. */
+export function loadWorldEarthNews(): Promise<WorldEarthNewsData> {
+  loadingNews ??= readFile(resolve(EARTH_DIR, "earth-news.json.br"))
+    .then((bytes) => JSON.parse(brotliDecompressSync(bytes).toString("utf8")) as WorldEarthNewsData)
+    .catch((error) => {
+      loadingNews = null;
+      throw error;
+    });
+  return loadingNews;
+}
 
 export function loadWorldEarthData(): Promise<WorldEarthData> {
   loading ??= (async () => {
