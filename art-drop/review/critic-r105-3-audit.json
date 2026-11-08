@@ -1,0 +1,1404 @@
+{
+  "wasteland-street-base": {
+    "size": [
+      288,
+      288
+    ],
+    "bbox": [
+      0,
+      0,
+      288,
+      288
+    ],
+    "alpha_values": [
+      255
+    ],
+    "colors": 7,
+    "sha256": "62fbea1af4f6350e8cfdb49fe196ddb9b9442984300d1dff4ffda0fe2d34e391"
+  },
+  "wasteland-city-bldg-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      6,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 17,
+    "sha256": "c6222982f3ce1bf21da082bd5634a66beaf1526d29c239e771ea76abfe5853f8"
+  },
+  "wasteland-city-bldg-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      13,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 22,
+    "sha256": "bac49202a7dde17cc5c8881b7ce529e4cb1dc480863a504a7991984541b6bee6"
+  },
+  "wasteland-city-bldg-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      9,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 9,
+    "sha256": "9ca5c2fdd6fd478a7f7748c0a080841a58ee7d9a8ebe1eaacbaedc46c406cd67"
+  },
+  "wasteland-city-bldg-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      4,
+      4,
+      44,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 24,
+    "sha256": "2614be1725abae7eb79f3a0a8279d297f624dc6386c2042d8be5e971467aa87d"
+  },
+  "wasteland-city-bldg-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      22,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 24,
+    "sha256": "d5bba01f10bd5b497d866920f749fc033ae9841b5701a3ba4eb1b35666cce6b6"
+  },
+  "wasteland-city-bldg-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      14,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 7,
+    "sha256": "e176f347d5a71dde2ee7a5f433f485a3834ef53773b9e36818627a43d4d0f481"
+  },
+  "wasteland-city-bldg-6": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      3,
+      4,
+      45,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 13,
+    "sha256": "5ff1f3fd6e17e0aabe6ea36511487302706fc2fac8b09ecc6cb55514de185c26"
+  },
+  "wasteland-city-bldg-7": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      2,
+      6,
+      46,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 24,
+    "sha256": "032b99dafdc8abe9da898d79aa3fc7a393b479d285925e270fd933bd10a30e8f"
+  },
+  "wasteland-city-bldg-8": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      2,
+      7,
+      46,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 12,
+    "sha256": "67a4fcc716bb7430c1537287f951f66872aeb1dc2d9c4956c5dc95ffb78d5118"
+  },
+  "wasteland-city-bldg-9": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      4,
+      4,
+      44,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 15,
+    "sha256": "08a6e0d62d05d4b9b13e0592f873479528398a218afdd4640d2be1d7bc6cca9f"
+  },
+  "wasteland-city-bldg-10": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      2,
+      14,
+      46,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 12,
+    "sha256": "aa5dbb96cbd4acf733a8c019fcaf49e26530f65c3d56fa64534975174ad17b9e"
+  },
+  "wasteland-city-bldg-11": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      3,
+      5,
+      45,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 26,
+    "sha256": "abee4b20f37649b782c36897faa7f8a0e92659b01d7f69ba0f2091633844481f"
+  },
+  "wasteland-city-bldg-12": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      33,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 14,
+    "sha256": "d66699a324368c5d6d827d3ac08fc1ea285923af90449ee443d8becf95de490f"
+  },
+  "wasteland-city-bldg-13": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      40,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 13,
+    "sha256": "d464830e62b7b1f2504d6bd17be3b665306249025d448b5095f66dc89441b280"
+  },
+  "wasteland-city-bldg-14": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      38,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 11,
+    "sha256": "98c698668f538b24d474ac12616ff8d3f9e9f2c853f10fc3e4b59942b7cb1a57"
+  },
+  "wasteland-city-bldg-15": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      19,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 14,
+    "sha256": "6441f4548cfe1fafce897e9573756f084249ff99dac234d2a2b630e412a5b572"
+  },
+  "wasteland-slums-bldg-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      14,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 20,
+    "sha256": "77cdd0725e56014d85a8c9fba1dadbd421feef63dcd4e4d70d895c336581e854"
+  },
+  "wasteland-slums-bldg-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      16,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 23,
+    "sha256": "17d47d4d4226d4e7dda1bcbf2ef9da0dd811575145f2312a32b96b27c724068f"
+  },
+  "wasteland-slums-bldg-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      16,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 22,
+    "sha256": "89d5b0a71c9f6ed32949984a7bd861a9b4cc8bd24f5ac6d33b66f42a38db03aa"
+  },
+  "wasteland-slums-bldg-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      8,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 25,
+    "sha256": "3bc3cddc8cca999ba6ab4ce784a951468491ced89453faf6f5361120ebad90d6"
+  },
+  "wasteland-slums-bldg-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      11,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 19,
+    "sha256": "e5bbb13036e47284a5ae3be80053c2e557d8e67d7a4fc7c29c51338abe77ae75"
+  },
+  "wasteland-slums-bldg-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      12,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 10,
+    "sha256": "e0159b66cb693211ff39688a2907082435c050dd4341c500598365814e6b3cb7"
+  },
+  "wasteland-slums-bldg-6": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      14,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 26,
+    "sha256": "94f526cef35bb598806071efb5ed88e2cf525c2d0caa50252dbf8e2e4b5bf219"
+  },
+  "wasteland-slums-bldg-7": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      18,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 21,
+    "sha256": "5b83e9b32a021d24ce6b6222e96566fbaf9a7283364bf76bdb50c4f67c46a3d6"
+  },
+  "wasteland-slums-bldg-8": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      25,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 15,
+    "sha256": "3ebd8e3e2da2a3ea854b7b56f82f1ee17d5874259046e090647bd58c6815cda2"
+  },
+  "wasteland-slums-bldg-9": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      20,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 14,
+    "sha256": "46c6e045d346bb77b18b71421e565870f958f3d691379cc8f072cae445cf8ab0"
+  },
+  "wasteland-slums-bldg-10": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      29,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 12,
+    "sha256": "311cc476a11c4de74887d16629c64cfdfcd3f2aaea36daeb9b186327dd34bfb7"
+  },
+  "wasteland-slums-bldg-11": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      27,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 12,
+    "sha256": "02be731afaeb249ef387a55bc7cb29b65393279191626b8267f7cd18974e3a8e"
+  },
+  "wasteland-industry-bldg-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      8,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 13,
+    "sha256": "8a60bd37138ce1fac5c6a8c1450f77534ad06574666e16d34bce37e01a2d21ae"
+  },
+  "wasteland-industry-bldg-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      22,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 22,
+    "sha256": "36e3e53346342bf586779bc62259bf9bf11e2d299f82cea44daf6b59c3a569ab"
+  },
+  "wasteland-industry-bldg-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      12,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 13,
+    "sha256": "87ff95c61a6720b9189c31738f61a11e6dd6e876450cd97b782baaa68a72c6a8"
+  },
+  "wasteland-industry-bldg-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      4,
+      4,
+      44,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 25,
+    "sha256": "582d09d458381dc2602a2e8afe46b4284cb97b3fbf87f2cb7e78bc33840c783d"
+  },
+  "wasteland-industry-bldg-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      5,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 23,
+    "sha256": "f2c7e48ed26915c4e61ac09f0c24c3ec5765d73ad613ccfaa8c46275304fd3b6"
+  },
+  "wasteland-industry-bldg-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      22,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 10,
+    "sha256": "5951e545958b9d419dbd4ec18576fdff9bcd476c1c67b851085c184c3e671d84"
+  },
+  "wasteland-industry-bldg-6": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      11,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 12,
+    "sha256": "5225c745f055160bef64d8a96bd90ece5a624f2da06350a452c5231c3e817e22"
+  },
+  "wasteland-industry-bldg-7": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      38,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 13,
+    "sha256": "a17c73aee76f9c7fb84ef0935278c848e0e47a51a10eeb7d19d23f037e48e4a0"
+  },
+  "wasteland-industry-bldg-8": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      14,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 28,
+    "sha256": "78e7f5b74bc03e4a91f99abda0a85250f75820c600d947da4cdb13e96e6c5fb7"
+  },
+  "wasteland-industry-bldg-9": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      13,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 15,
+    "sha256": "c0ffd6802c4d487ede15e00adb3ca6c699b4a62d0c0f775b7b0316d9dcd718de"
+  },
+  "wasteland-street@winter-base": {
+    "size": [
+      288,
+      288
+    ],
+    "bbox": [
+      0,
+      0,
+      288,
+      288
+    ],
+    "alpha_values": [
+      255
+    ],
+    "colors": 6,
+    "sha256": "1b5cb7c4444f9f99e0abd255765d15cd03e87fd972a93f706778748efde4cfad"
+  },
+  "wasteland-city@winter-bldg-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      5,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 23,
+    "sha256": "b891a9b3f1952c06f7d427c0251617c4f46ce9dd3a9364f6a18fb5e428e850d5"
+  },
+  "wasteland-city@winter-bldg-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      13,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 29,
+    "sha256": "4469e7d9af4c4a64f27fc05b6d5b9fd1966537b0147938491068d650ce3751db"
+  },
+  "wasteland-city@winter-bldg-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      9,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 11,
+    "sha256": "7a29d39cc7598ed613dabf00ffd5d407a2ca28b6975eadf8ac657a195c889b99"
+  },
+  "wasteland-city@winter-bldg-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      4,
+      4,
+      44,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 31,
+    "sha256": "12467ed58b76bb8d185b1f0fb05c0f47c3340907f54b51a15ebbd2c6bc880e7d"
+  },
+  "wasteland-city@winter-bldg-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      3,
+      21,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 31,
+    "sha256": "8efd08b9d6d12db5bc22bc4c48f0adaa4a3cca89045bbee3c42a17a6171646e1"
+  },
+  "wasteland-city@winter-bldg-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      13,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 11,
+    "sha256": "279e305277fe797a4791ffe5a6932390662a5bebbfbce079186f83570303bb1a"
+  },
+  "wasteland-city@winter-bldg-6": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      3,
+      4,
+      45,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 16,
+    "sha256": "b46908dcc85f18bf55c3a3f4b6bc239169759480bdc2a21830d084b6fcc1e384"
+  },
+  "wasteland-city@winter-bldg-7": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      2,
+      4,
+      45,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 30,
+    "sha256": "7a64aa0aa49cd8b89560d6b53147ec40dfc45c774f525b919445ba58456538a3"
+  },
+  "wasteland-city@winter-bldg-8": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      2,
+      7,
+      46,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 14,
+    "sha256": "1280cc86509e49c116973c0c8e20d454acedd0e2eebef9369bc0a38cd7f5c368"
+  },
+  "wasteland-city@winter-bldg-9": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      4,
+      4,
+      44,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 20,
+    "sha256": "efdf03fab48b9e135f46f5d26ee47350c5fcb89c8fd39b060f04d8bedd3ad567"
+  },
+  "wasteland-city@winter-bldg-10": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      2,
+      13,
+      46,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 17,
+    "sha256": "7b7eec897598eef74f7a1737da10d3741c3c7a61cfd985e7e561825fa9c9cd5c"
+  },
+  "wasteland-city@winter-bldg-11": {
+    "size": [
+      48,
+      96
+    ],
+    "bbox": [
+      3,
+      4,
+      44,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 31,
+    "sha256": "dc460506d28a68160f11ad91a9d3b91dba3ac66853c63a757a70e524afc96090"
+  },
+  "wasteland-city@winter-bldg-12": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      34,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 16,
+    "sha256": "30f486b5aee68a17efc456f8e09dd0127be8ae4c853662ca4357b4a6fcda5225"
+  },
+  "wasteland-city@winter-bldg-13": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      40,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 19,
+    "sha256": "8d64468a6691f5afaf6af7f1f7a714ae07d792fa56b8b1f7c7c0558df48d3ef8"
+  },
+  "wasteland-city@winter-bldg-14": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      38,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 17,
+    "sha256": "26833af94915ee1ce0664ebc67962428ce853769bccafdde86259fb00dbc8fca"
+  },
+  "wasteland-city@winter-bldg-15": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      19,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 17,
+    "sha256": "6bac25b203c712226c6b14705e22fbe86af0fdaaed84cd01922c6eea2cc9a256"
+  },
+  "wasteland-slums@winter-bldg-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      13,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 25,
+    "sha256": "f3c93ab6b35c3c5616cad612127cb1041a3971f0c2727f5f018017a339dd9a31"
+  },
+  "wasteland-slums@winter-bldg-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      3,
+      16,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 28,
+    "sha256": "662301661093a2f717f357cdc8c307d2ee86385839681126be9285f43a914e6c"
+  },
+  "wasteland-slums@winter-bldg-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      15,
+      45,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 29,
+    "sha256": "203e827df90690866148acc0d05705b864c70dd2c01ec8fe98a5ac3cc449368f"
+  },
+  "wasteland-slums@winter-bldg-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      8,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 30,
+    "sha256": "de1ee64d6d51e3daece18727aeb25e9904a209c1295fa514d0213c36333d9736"
+  },
+  "wasteland-slums@winter-bldg-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      10,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 28,
+    "sha256": "87f46f626b71e108a72ae64837fecd0931be022549eb96966fdd9975f21f6f59"
+  },
+  "wasteland-slums@winter-bldg-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      12,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 13,
+    "sha256": "073fc1ae6804001e729fc3bc46bc8bbf9ba0dec9962c47a30376e5fa3ac6163c"
+  },
+  "wasteland-slums@winter-bldg-6": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      13,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 29,
+    "sha256": "524a4d7c54a04aaf173e0797ac6c73dae233f48575df281effd255eedccbe775"
+  },
+  "wasteland-slums@winter-bldg-7": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      17,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 30,
+    "sha256": "a83619c184e1802f918727f14943901f906cc012af5e016b6250c211fbf132f9"
+  },
+  "wasteland-slums@winter-bldg-8": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      25,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 18,
+    "sha256": "7d6e71a9b53806d35cbecd2788c29a5bf8f39a5264aa519c5f28c21057a8465e"
+  },
+  "wasteland-slums@winter-bldg-9": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      20,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 16,
+    "sha256": "e1a18f5d53b554b3d51bdc531f96a4608e4e0afdc450b79da1c6c33a5c6d31c0"
+  },
+  "wasteland-slums@winter-bldg-10": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      29,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 18,
+    "sha256": "b09b2080af0330e32b41c7c0a6bb5d5e1800a3ca4f9bf1043b6427272b07528e"
+  },
+  "wasteland-slums@winter-bldg-11": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      26,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 15,
+    "sha256": "6d3a36bbebda72cb8344c879896145fd3ef9404f79921f3fa3bb47709717ad89"
+  },
+  "wasteland-industry@winter-bldg-0": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      8,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 13,
+    "sha256": "c75cdb1afccad0622ae98928c019c36f67c9f0b8c94c2f602667fe50e0bf6d4e"
+  },
+  "wasteland-industry@winter-bldg-1": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      21,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 28,
+    "sha256": "f5a974dfffbc6e83022f615aacef4e69bcd8e8a3b4776e1dcbb6f44f20629125"
+  },
+  "wasteland-industry@winter-bldg-2": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      12,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 15,
+    "sha256": "bd5330f65ba00ae7488cdc7337d6df0031c3f89a69f642f1385af2e46e9e247f"
+  },
+  "wasteland-industry@winter-bldg-3": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      4,
+      4,
+      44,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 31,
+    "sha256": "2970b6c9084ebe516e57b3ae57b7665e6201b06990a280fc79bf962b96d9f8b4"
+  },
+  "wasteland-industry@winter-bldg-4": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      5,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 28,
+    "sha256": "fc7c7505130041ad710bc86abd849cd0b6fc7712b98830238501df141e9603b9"
+  },
+  "wasteland-industry@winter-bldg-5": {
+    "size": [
+      48,
+      48
+    ],
+    "bbox": [
+      2,
+      22,
+      46,
+      47
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 14,
+    "sha256": "df6e24368de48a7239824bfb20923db87924ea621e425b54ed84b77f3e2175fe"
+  },
+  "wasteland-industry@winter-bldg-6": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      11,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 19,
+    "sha256": "07b6af5f401acab97dbaa25f6493093bdef9335623dc6f8584b8980dae2feb4a"
+  },
+  "wasteland-industry@winter-bldg-7": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      37,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 18,
+    "sha256": "3e11efa5c6386dff1ef5c4ddac0062f118ed40bda6d2b0d071feb44c53fed7a7"
+  },
+  "wasteland-industry@winter-bldg-8": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      13,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 32,
+    "sha256": "bf1e42b06ea7118dc57b79f5adc73dd1cbd75bebd8e5178ae15fbf28ae287bdd"
+  },
+  "wasteland-industry@winter-bldg-9": {
+    "size": [
+      96,
+      96
+    ],
+    "bbox": [
+      2,
+      13,
+      94,
+      95
+    ],
+    "alpha_values": [
+      0,
+      255
+    ],
+    "colors": 20,
+    "sha256": "9d176433954d002153e7a4c1e9696ee1baa2fd889f1d2cb3e97e22395886ed6f"
+  }
+}
