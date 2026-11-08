@@ -26,3 +26,7 @@ Every part needs a `@winter` set too: the same props with snow caps or frost.
   pipe, and a half-sunk car. The large ones are a drainage culvert and a slag heap with a puddle.
 
 Critic as before: anything that reads as a blob, a speck or a square gets redrawn.
+
+## F. Jungle floor (added 2026-11-08; Earth worlds now have jungle in most settings)
+- `jungle-floor-base.png`, 288 px, seamless, like the forest floors: dark humid soil with leaf litter, ferns
+  and roots, in a deep green-brown that sits under the jungle trees. No winter version.
