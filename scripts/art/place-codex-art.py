@@ -176,6 +176,10 @@ def main(out_dir, paths, only):
             }
             for look, slots in layouts.items():
                 standing(f"buildings_{look}", [f"{family}-{look}{{season}}-bldg-{i}.png" for i in range(len(slots))], slots)
+        if "farmsteads" in only and family in FARMSTEADS:
+            # A farm's buildings over its fields (BRIEF-10): six, one cell each.
+            standing("farmstead_props", [f"{{family}}-farmstead{{season}}-{i}.png" for i in range(6)],
+                     [(i, 0, 1, 1) for i in range(6)])
         if "lanes" in only:
             # A city's lanes (BRIEF-11), in the joined path's layout: one block, summer, for the whole year.
             f = os.path.join(out_dir, f"{family}-lane.png")
@@ -209,7 +213,8 @@ def main(out_dir, paths, only):
                     continue
                 files = [os.path.join(out_dir, f"farmland{season}-{i}.png") for i in range(7)]
                 files = [f for f in files if os.path.exists(f)]  # a layout still being redrawn is left out
-                if family in FARMSTEADS:
+                # The old one-tile farmstead only where its farm buildings (farmstead_props) are not drawn yet.
+                if family in FARMSTEADS and not os.path.exists(os.path.join(out_dir, f"{family}-farmstead-0.png")):
                     files.append(os.path.join(out_dir, f"{family}-farmstead{season}.png"))
                 made[f"farmland{season}"] = [(Image.open(f).convert("RGBA"), 1, 1) for f in files]
         if not made:
@@ -265,7 +270,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "lanes", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
+    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "lanes", "farmsteads", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))
