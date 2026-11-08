@@ -158,9 +158,10 @@ def main(out_dir, paths, only):
                      [(i % 4, i // 4, 1, 1) for i in range(8)])
         if "forest" in only:
             # A wood's floor under its trees, six cells square.
-            for look in ("forest", "conifer_forest"):
+            # (Codex names the dead wood's floor "deadforest".)
+            for look, name in (("forest", "forest"), ("conifer_forest", "conifer_forest"), ("dead_forest", "deadforest")):
                 for season in SEASONS:
-                    f = os.path.join(out_dir, f"{look}{season}-floor-base.png")
+                    f = os.path.join(out_dir, f"{name}{season}-floor-base.png")
                     if os.path.exists(f):
                         made[f"floor_{look}{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
         if "buildings" in only:
@@ -175,6 +176,21 @@ def main(out_dir, paths, only):
             }
             for look, slots in layouts.items():
                 standing(f"buildings_{look}", [f"{family}-{look}{{season}}-bldg-{i}.png" for i in range(len(slots))], slots)
+        if "lanes" in only:
+            # A city's lanes (BRIEF-11), in the joined path's layout: one block, summer, for the whole year.
+            f = os.path.join(out_dir, f"{family}-lane.png")
+            if os.path.exists(f):
+                made["lane_joined"] = [(Image.open(f).convert("RGBA"), 4, 23)]
+        if "suburbs" in only and family in ("modern", "jazz_age"):
+            # Suburbs as houses and yard props over the grass (BRIEF-9): the grass is the suburb's floor and its
+            # ground, twelve houses then eight yard props, in WORLD_BUILDING_PIECES' layout.
+            for season in SEASONS:
+                f = os.path.join(out_dir, f"grass{season}-base.png")
+                if os.path.exists(f) and f"suburb{season}" in pack["tiles"]:
+                    made[f"floor_suburb{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
+                    made[f"suburb{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
+            names = [f"suburb{{season}}-house-{i}.png" for i in range(12)] + [f"suburb{{season}}-yard-{i}.png" for i in range(8)]
+            standing("buildings_suburb", names, [(i % 8, i // 8, 1, 1) for i in range(12)] + [(i, 2, 1, 1) for i in range(8)])
         if "city" in only and family == "scifi":
             # Cyberpunk's built-up ground as one texture each, and the landmarks standing over it.
             for look in ("city", "slums", "industry"):
