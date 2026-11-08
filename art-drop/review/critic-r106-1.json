@@ -1,0 +1,1008 @@
+{
+  "sets": {
+    "fantasy-farmstead-summer": {
+      "status": "pass",
+      "files": [
+        "fantasy-farmstead-0",
+        "fantasy-farmstead-1",
+        "fantasy-farmstead-2",
+        "fantasy-farmstead-3",
+        "fantasy-farmstead-4",
+        "fantasy-farmstead-5"
+      ],
+      "pass_count": 6,
+      "fail_count": 0,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-fantasy-all-seasons-1x.png",
+        "critic-r106-1-fantasy-all-seasons-4x.png",
+        "critic-r106-1-fantasy-summer-inspection-8x.png",
+        "critic-r106-1-fantasy-summer-random-8x2-1x.png",
+        "critic-r106-1-fantasy-summer-random-8x2-4x.png",
+        "critic-r106-1-fantasy-references-1x.png",
+        "critic-r106-1-fantasy-references-4x.png",
+        "critic-r106-1-fantasy-alpha-light-4x.png",
+        "critic-r106-1-fantasy-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-summer-1x.png",
+        "critic-r106-1-approved-context-summer-4x.png",
+        "critic-r106-1-approved-round2-summer-1x.png",
+        "critic-r106-1-approved-round2-summer-4x.png"
+      ],
+      "pass_rationale": {
+        "fantasy-farmstead-0": "Timber-framed farmhouse, thatch roof, chimney and dark openings read at native size; cream walls and shaded right side fit the fantasy markers.",
+        "fantasy-farmstead-1": "Low thatched barn has a broad dark entrance and a different silhouette from the farmhouse and raised store; restrained roof texture survives planting.",
+        "fantasy-farmstead-2": "Raised square granary has distinct stone feet, stair, wall plane and blue slate cap; the cool roof is compatible with the approved fantasy castle roofs.",
+        "fantasy-farmstead-3": "Haystack remains a coherent straw mass beside the separately outlined wooden cart; projecting shafts and wheel distinguish the equipment from the load.",
+        "fantasy-farmstead-4": "Two cream sheep remain separate from the wooden rails and gate; transparent enclosure interior lets the approved field show through without a ground rectangle.",
+        "fantasy-farmstead-5": "Conical timber water tank, open support frame and front ladder remain distinct at 1x; the narrow vertical silhouette adds useful set variety."
+      },
+      "source_sha256": {
+        "fantasy-farmstead-0": "0c6e775b9eaa340713e7ffc15b30ef61d89017c0959e05b4524f74ab0b9cc3ab",
+        "fantasy-farmstead-1": "a996be93e41e84ae410b0d7bb958443a58de3b0b4fdf51f1697ed0a84e2ad1cc",
+        "fantasy-farmstead-2": "9b8bc8504d9508fac4592c226072eb4d46b326c87c8235b2862e879cf245cb7e",
+        "fantasy-farmstead-3": "41c9e68c070c4f7715420b3df195bbb48ff9f68a57e84142ad4de30bc343082e",
+        "fantasy-farmstead-4": "ceed0a4de9e99d28eacc9362d3d5af6adf44ff1de18fe3f8ce356470a088285f",
+        "fantasy-farmstead-5": "846081527dd33ae7b20c135057f797491e065bc05315b95c2441522481b04468"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "fantasy-farmstead-spring": {
+      "status": "pass",
+      "files": [
+        "fantasy-farmstead@spring-0",
+        "fantasy-farmstead@spring-1",
+        "fantasy-farmstead@spring-2",
+        "fantasy-farmstead@spring-3",
+        "fantasy-farmstead@spring-4",
+        "fantasy-farmstead@spring-5"
+      ],
+      "pass_count": 6,
+      "fail_count": 0,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-fantasy-all-seasons-1x.png",
+        "critic-r106-1-fantasy-all-seasons-4x.png",
+        "critic-r106-1-fantasy-spring-inspection-8x.png",
+        "critic-r106-1-fantasy-spring-random-8x2-1x.png",
+        "critic-r106-1-fantasy-spring-random-8x2-4x.png",
+        "critic-r106-1-fantasy-references-1x.png",
+        "critic-r106-1-fantasy-references-4x.png",
+        "critic-r106-1-fantasy-alpha-light-4x.png",
+        "critic-r106-1-fantasy-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-spring-1x.png",
+        "critic-r106-1-approved-context-spring-4x.png",
+        "critic-r106-1-approved-round2-spring-1x.png",
+        "critic-r106-1-approved-round2-spring-4x.png"
+      ],
+      "pass_rationale": {
+        "fantasy-farmstead@spring-0": "Timber-framed farmhouse, thatch roof, chimney and dark openings read at native size; cream walls and shaded right side fit the fantasy markers. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "fantasy-farmstead@spring-1": "Low thatched barn has a broad dark entrance and a different silhouette from the farmhouse and raised store; restrained roof texture survives planting. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "fantasy-farmstead@spring-2": "Raised square granary has distinct stone feet, stair, wall plane and blue slate cap; the cool roof is compatible with the approved fantasy castle roofs. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "fantasy-farmstead@spring-3": "Haystack remains a coherent straw mass beside the separately outlined wooden cart; projecting shafts and wheel distinguish the equipment from the load. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "fantasy-farmstead@spring-4": "Two cream sheep remain separate from the wooden rails and gate; transparent enclosure interior lets the approved field show through without a ground rectangle. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "fantasy-farmstead@spring-5": "Conical timber water tank, open support frame and front ladder remain distinct at 1x; the narrow vertical silhouette adds useful set variety. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer."
+      },
+      "source_sha256": {
+        "fantasy-farmstead@spring-0": "82c18a8dc92ec8f135c06064a661a87d746089b462b43a85900e3dd19500d995",
+        "fantasy-farmstead@spring-1": "a2b1d8a83c8c255d57e35f4cbce357da6e452fc1441b44989cfbb45a6b99edf7",
+        "fantasy-farmstead@spring-2": "b73572984976ad89b8bea8197a182b5afc69c29c9031487704d72df53acc0a9f",
+        "fantasy-farmstead@spring-3": "044817c5331a2d7f14c1d1e87f476fbfa7d76c860d440681b95723b52ef78beb",
+        "fantasy-farmstead@spring-4": "05ea8f8f8366dabc019ca3590d05002e6dcec8e358a5df3ce2471f1609b01753",
+        "fantasy-farmstead@spring-5": "b17abd8895d5a4cea777696bf83a9c91e6d8bfed8961b0985ccf2b5d784aefd1"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "fantasy-farmstead-autumn": {
+      "status": "pass",
+      "files": [
+        "fantasy-farmstead@autumn-0",
+        "fantasy-farmstead@autumn-1",
+        "fantasy-farmstead@autumn-2",
+        "fantasy-farmstead@autumn-3",
+        "fantasy-farmstead@autumn-4",
+        "fantasy-farmstead@autumn-5"
+      ],
+      "pass_count": 6,
+      "fail_count": 0,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-fantasy-all-seasons-1x.png",
+        "critic-r106-1-fantasy-all-seasons-4x.png",
+        "critic-r106-1-fantasy-autumn-inspection-8x.png",
+        "critic-r106-1-fantasy-autumn-random-8x2-1x.png",
+        "critic-r106-1-fantasy-autumn-random-8x2-4x.png",
+        "critic-r106-1-fantasy-references-1x.png",
+        "critic-r106-1-fantasy-references-4x.png",
+        "critic-r106-1-fantasy-alpha-light-4x.png",
+        "critic-r106-1-fantasy-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-autumn-1x.png",
+        "critic-r106-1-approved-context-autumn-4x.png",
+        "critic-r106-1-approved-round2-autumn-1x.png",
+        "critic-r106-1-approved-round2-autumn-4x.png"
+      ],
+      "pass_rationale": {
+        "fantasy-farmstead@autumn-0": "Timber-framed farmhouse, thatch roof, chimney and dark openings read at native size; cream walls and shaded right side fit the fantasy markers. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "fantasy-farmstead@autumn-1": "Low thatched barn has a broad dark entrance and a different silhouette from the farmhouse and raised store; restrained roof texture survives planting. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "fantasy-farmstead@autumn-2": "Raised square granary has distinct stone feet, stair, wall plane and blue slate cap; the cool roof is compatible with the approved fantasy castle roofs. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "fantasy-farmstead@autumn-3": "Haystack remains a coherent straw mass beside the separately outlined wooden cart; projecting shafts and wheel distinguish the equipment from the load. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "fantasy-farmstead@autumn-4": "Two cream sheep remain separate from the wooden rails and gate; transparent enclosure interior lets the approved field show through without a ground rectangle. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "fantasy-farmstead@autumn-5": "Conical timber water tank, open support frame and front ladder remain distinct at 1x; the narrow vertical silhouette adds useful set variety. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash."
+      },
+      "source_sha256": {
+        "fantasy-farmstead@autumn-0": "13667eb4d5a721e29d398d24477295e3a3428f462c66457ffe9bdec6cb2ccf2e",
+        "fantasy-farmstead@autumn-1": "1ea438c75354eb89196078ee8ecaf01f6ed0168ad12bf8d75dcc26eb648b60d6",
+        "fantasy-farmstead@autumn-2": "f20cd5753cf4da4a7dac42982422944b17705abc277bdd4f5da2a0c22624a439",
+        "fantasy-farmstead@autumn-3": "d3af9c39d8cd399abef6cd2db08f54062e72a727b6e9767d449c3b3b0477beac",
+        "fantasy-farmstead@autumn-4": "94e609c7f2936779aae408f5dea9069f02891cb22c86f57991d5f0e207d1340d",
+        "fantasy-farmstead@autumn-5": "ead397a438f476e30d37316a95d02945e70eccd09b339f63ad2a74dfbbdf27fc"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "fantasy-farmstead-winter": {
+      "status": "pass",
+      "files": [
+        "fantasy-farmstead@winter-0",
+        "fantasy-farmstead@winter-1",
+        "fantasy-farmstead@winter-2",
+        "fantasy-farmstead@winter-3",
+        "fantasy-farmstead@winter-4",
+        "fantasy-farmstead@winter-5"
+      ],
+      "pass_count": 6,
+      "fail_count": 0,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-fantasy-all-seasons-1x.png",
+        "critic-r106-1-fantasy-all-seasons-4x.png",
+        "critic-r106-1-fantasy-winter-inspection-8x.png",
+        "critic-r106-1-fantasy-winter-random-8x2-1x.png",
+        "critic-r106-1-fantasy-winter-random-8x2-4x.png",
+        "critic-r106-1-fantasy-references-1x.png",
+        "critic-r106-1-fantasy-references-4x.png",
+        "critic-r106-1-fantasy-alpha-light-4x.png",
+        "critic-r106-1-fantasy-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-winter-1x.png",
+        "critic-r106-1-approved-context-winter-4x.png",
+        "critic-r106-1-approved-round2-winter-1x.png",
+        "critic-r106-1-approved-round2-winter-4x.png"
+      ],
+      "pass_rationale": {
+        "fantasy-farmstead@winter-0": "Timber-framed farmhouse, thatch roof, chimney and dark openings read at native size; cream walls and shaded right side fit the fantasy markers. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "fantasy-farmstead@winter-1": "Low thatched barn has a broad dark entrance and a different silhouette from the farmhouse and raised store; restrained roof texture survives planting. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "fantasy-farmstead@winter-2": "Raised square granary has distinct stone feet, stair, wall plane and blue slate cap; the cool roof is compatible with the approved fantasy castle roofs. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "fantasy-farmstead@winter-3": "Haystack remains a coherent straw mass beside the separately outlined wooden cart; projecting shafts and wheel distinguish the equipment from the load. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "fantasy-farmstead@winter-4": "Two cream sheep remain separate from the wooden rails and gate; transparent enclosure interior lets the approved field show through without a ground rectangle. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "fantasy-farmstead@winter-5": "Conical timber water tank, open support frame and front ladder remain distinct at 1x; the narrow vertical silhouette adds useful set variety. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement."
+      },
+      "source_sha256": {
+        "fantasy-farmstead@winter-0": "68ef2f077f79447910135c01ae043b1eceb17116602f54a4eb6c62f8178f0d1a",
+        "fantasy-farmstead@winter-1": "ab44b553d5072201e9479afee92f4aa18861acd952ed7357fd42e3080e973f9a",
+        "fantasy-farmstead@winter-2": "743c6b5c54f3292b958420a853c7db460493510a9986f41260f14c041bb54e66",
+        "fantasy-farmstead@winter-3": "a83b8467c81a3599df961a7529ffa278c77c2a57ce5cc5995233a7779dd7ca85",
+        "fantasy-farmstead@winter-4": "9a9baefd6d96a3ace19d554656574eb3b6307fcef5dca542579cb997196e6419",
+        "fantasy-farmstead@winter-5": "1419804f2fe89fdefc522f31c61c1152587af89dcdfc5ad6383361fd8e2ca876"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "wuxia-farmstead-summer": {
+      "status": "fail",
+      "files": [
+        "wuxia-farmstead-0",
+        "wuxia-farmstead-1",
+        "wuxia-farmstead-2",
+        "wuxia-farmstead-3",
+        "wuxia-farmstead-4",
+        "wuxia-farmstead-5"
+      ],
+      "pass_count": 5,
+      "fail_count": 1,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal paddies; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-wuxia-all-seasons-1x.png",
+        "critic-r106-1-wuxia-all-seasons-4x.png",
+        "critic-r106-1-wuxia-summer-inspection-8x.png",
+        "critic-r106-1-wuxia-summer-random-8x2-1x.png",
+        "critic-r106-1-wuxia-summer-random-8x2-4x.png",
+        "critic-r106-1-wuxia-references-1x.png",
+        "critic-r106-1-wuxia-references-4x.png",
+        "critic-r106-1-wuxia-alpha-light-4x.png",
+        "critic-r106-1-wuxia-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-summer-1x.png",
+        "critic-r106-1-approved-context-summer-4x.png",
+        "critic-r106-1-approved-round2-summer-1x.png",
+        "critic-r106-1-approved-round2-summer-4x.png",
+        "critic-r106-1-wuxia-detail-3-1x.png",
+        "critic-r106-1-wuxia-detail-3-4x.png",
+        "critic-r106-1-wuxia-detail-3-8x.png"
+      ],
+      "pass_rationale": {
+        "wuxia-farmstead-0": "Compact farmhouse has grey upturned eaves, timber posts, doorway and stone foundation; it reads clearly on paddies and fits the named house reference.",
+        "wuxia-farmstead-1": "Low barn has a coherent grey tiled roof and dark central entrance; its low silhouette differs sufficiently from the farmhouse and elevated granary.",
+        "wuxia-farmstead-2": "Elevated granary has separate stone feet, front steps and a tall storage room under upturned eaves; muted roof and warm timber remain legible on the paddies.",
+        "wuxia-farmstead-4": "The roofed pig pen has two distinct brown animals beneath a separate roof plane, with front fence and supports still readable over the field.",
+        "wuxia-farmstead-5": "Rice mill has a separate building, cool tiled roof and large warm side waterwheel; its circular wheel structure is visible at native size and differs from the pen and granary."
+      },
+      "source_sha256": {
+        "wuxia-farmstead-0": "73a1029b8fe29023a6c63b5fafd5ec2e74b42cbf7daad390e6c45dfcda00e97f",
+        "wuxia-farmstead-1": "1c6b95fa355f888d652ba93a2434fcc8cc3cb4f6078834c8bcad6ebbaab539c0",
+        "wuxia-farmstead-2": "dd39949b2bfe0a09ebf7d16dffa566d7c50f75b62c81b9f640c67f6871af2a62",
+        "wuxia-farmstead-3": "3c2b6accff660e8d4ffb6d5860950049b15060e48bb14b54e2cbef961fbb20cf",
+        "wuxia-farmstead-4": "aa9305214cb29ae1594e27a600040673d32cd7ef598999ee0955b980d44c8b09",
+        "wuxia-farmstead-5": "a8dd549b6f9a27bbdbb822bcf38f9e3b00c6075140f97a2c3f2238a51b9fb34b"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "wuxia-farmstead-spring": {
+      "status": "fail",
+      "files": [
+        "wuxia-farmstead@spring-0",
+        "wuxia-farmstead@spring-1",
+        "wuxia-farmstead@spring-2",
+        "wuxia-farmstead@spring-3",
+        "wuxia-farmstead@spring-4",
+        "wuxia-farmstead@spring-5"
+      ],
+      "pass_count": 5,
+      "fail_count": 1,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal paddies; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-wuxia-all-seasons-1x.png",
+        "critic-r106-1-wuxia-all-seasons-4x.png",
+        "critic-r106-1-wuxia-spring-inspection-8x.png",
+        "critic-r106-1-wuxia-spring-random-8x2-1x.png",
+        "critic-r106-1-wuxia-spring-random-8x2-4x.png",
+        "critic-r106-1-wuxia-references-1x.png",
+        "critic-r106-1-wuxia-references-4x.png",
+        "critic-r106-1-wuxia-alpha-light-4x.png",
+        "critic-r106-1-wuxia-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-spring-1x.png",
+        "critic-r106-1-approved-context-spring-4x.png",
+        "critic-r106-1-approved-round2-spring-1x.png",
+        "critic-r106-1-approved-round2-spring-4x.png",
+        "critic-r106-1-wuxia-detail-3-1x.png",
+        "critic-r106-1-wuxia-detail-3-4x.png",
+        "critic-r106-1-wuxia-detail-3-8x.png"
+      ],
+      "pass_rationale": {
+        "wuxia-farmstead@spring-0": "Compact farmhouse has grey upturned eaves, timber posts, doorway and stone foundation; it reads clearly on paddies and fits the named house reference. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "wuxia-farmstead@spring-1": "Low barn has a coherent grey tiled roof and dark central entrance; its low silhouette differs sufficiently from the farmhouse and elevated granary. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "wuxia-farmstead@spring-2": "Elevated granary has separate stone feet, front steps and a tall storage room under upturned eaves; muted roof and warm timber remain legible on the paddies. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "wuxia-farmstead@spring-4": "The roofed pig pen has two distinct brown animals beneath a separate roof plane, with front fence and supports still readable over the field. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "wuxia-farmstead@spring-5": "Rice mill has a separate building, cool tiled roof and large warm side waterwheel; its circular wheel structure is visible at native size and differs from the pen and granary. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer."
+      },
+      "source_sha256": {
+        "wuxia-farmstead@spring-0": "82bd2e4fc84d8ecded05380a45e50ccccc424a6d495d5eb3bcaff99307123a1d",
+        "wuxia-farmstead@spring-1": "7fbf74048a4314bc5be912983caff7c3d8d8f38382686ea236f848765812797a",
+        "wuxia-farmstead@spring-2": "0f74af788167a8ed559ea8d983ce67ed9448facda3d9c314f442e912cd5b588f",
+        "wuxia-farmstead@spring-3": "f90c8dfe4ba3f0c041d7b523ef3e4d4838a177138fa7696cbd9ef6950841e1fb",
+        "wuxia-farmstead@spring-4": "0bd2873d4cdb02f75db97e6e6163cace04fd485f3fa787045bae44cc3e0ead81",
+        "wuxia-farmstead@spring-5": "6b9bf0c13186b374298342d4c970d4a1c7e4c03eb8486fd9438d68115ec7a485"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "wuxia-farmstead-autumn": {
+      "status": "fail",
+      "files": [
+        "wuxia-farmstead@autumn-0",
+        "wuxia-farmstead@autumn-1",
+        "wuxia-farmstead@autumn-2",
+        "wuxia-farmstead@autumn-3",
+        "wuxia-farmstead@autumn-4",
+        "wuxia-farmstead@autumn-5"
+      ],
+      "pass_count": 5,
+      "fail_count": 1,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal paddies; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-wuxia-all-seasons-1x.png",
+        "critic-r106-1-wuxia-all-seasons-4x.png",
+        "critic-r106-1-wuxia-autumn-inspection-8x.png",
+        "critic-r106-1-wuxia-autumn-random-8x2-1x.png",
+        "critic-r106-1-wuxia-autumn-random-8x2-4x.png",
+        "critic-r106-1-wuxia-references-1x.png",
+        "critic-r106-1-wuxia-references-4x.png",
+        "critic-r106-1-wuxia-alpha-light-4x.png",
+        "critic-r106-1-wuxia-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-autumn-1x.png",
+        "critic-r106-1-approved-context-autumn-4x.png",
+        "critic-r106-1-approved-round2-autumn-1x.png",
+        "critic-r106-1-approved-round2-autumn-4x.png",
+        "critic-r106-1-wuxia-detail-3-1x.png",
+        "critic-r106-1-wuxia-detail-3-4x.png",
+        "critic-r106-1-wuxia-detail-3-8x.png"
+      ],
+      "pass_rationale": {
+        "wuxia-farmstead@autumn-0": "Compact farmhouse has grey upturned eaves, timber posts, doorway and stone foundation; it reads clearly on paddies and fits the named house reference. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "wuxia-farmstead@autumn-1": "Low barn has a coherent grey tiled roof and dark central entrance; its low silhouette differs sufficiently from the farmhouse and elevated granary. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "wuxia-farmstead@autumn-2": "Elevated granary has separate stone feet, front steps and a tall storage room under upturned eaves; muted roof and warm timber remain legible on the paddies. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "wuxia-farmstead@autumn-4": "The roofed pig pen has two distinct brown animals beneath a separate roof plane, with front fence and supports still readable over the field. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "wuxia-farmstead@autumn-5": "Rice mill has a separate building, cool tiled roof and large warm side waterwheel; its circular wheel structure is visible at native size and differs from the pen and granary. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash."
+      },
+      "source_sha256": {
+        "wuxia-farmstead@autumn-0": "411b35c6110bd6a667f894327f4980eda9a167111a468dc277ba7c18414b9de2",
+        "wuxia-farmstead@autumn-1": "bacdf24cc7f49d07da48fc07e51ac4631bd18acf93f35b0cb9f012327f547d94",
+        "wuxia-farmstead@autumn-2": "c902e416003ed0676a22ed2a49b485376ddddfca61f4ea904b3365900f63a257",
+        "wuxia-farmstead@autumn-3": "e4d5d59aeab4ebbbcb4e4cdf284364cd5ae4e06c2908f80509d223959a446e00",
+        "wuxia-farmstead@autumn-4": "16832d323fc5d411b4acdaf9c4e610a356507ce6960978adfc3436bc2999493d",
+        "wuxia-farmstead@autumn-5": "c564d48c1561d11c3ac3f8cf94a8764d23a7a278344f3d9164f59e766146038d"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "wuxia-farmstead-winter": {
+      "status": "fail",
+      "files": [
+        "wuxia-farmstead@winter-0",
+        "wuxia-farmstead@winter-1",
+        "wuxia-farmstead@winter-2",
+        "wuxia-farmstead@winter-3",
+        "wuxia-farmstead@winter-4",
+        "wuxia-farmstead@winter-5"
+      ],
+      "pass_count": 5,
+      "fail_count": 1,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal paddies; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-wuxia-all-seasons-1x.png",
+        "critic-r106-1-wuxia-all-seasons-4x.png",
+        "critic-r106-1-wuxia-winter-inspection-8x.png",
+        "critic-r106-1-wuxia-winter-random-8x2-1x.png",
+        "critic-r106-1-wuxia-winter-random-8x2-4x.png",
+        "critic-r106-1-wuxia-references-1x.png",
+        "critic-r106-1-wuxia-references-4x.png",
+        "critic-r106-1-wuxia-alpha-light-4x.png",
+        "critic-r106-1-wuxia-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-winter-1x.png",
+        "critic-r106-1-approved-context-winter-4x.png",
+        "critic-r106-1-approved-round2-winter-1x.png",
+        "critic-r106-1-approved-round2-winter-4x.png",
+        "critic-r106-1-wuxia-detail-3-1x.png",
+        "critic-r106-1-wuxia-detail-3-4x.png",
+        "critic-r106-1-wuxia-detail-3-8x.png"
+      ],
+      "pass_rationale": {
+        "wuxia-farmstead@winter-0": "Compact farmhouse has grey upturned eaves, timber posts, doorway and stone foundation; it reads clearly on paddies and fits the named house reference. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "wuxia-farmstead@winter-1": "Low barn has a coherent grey tiled roof and dark central entrance; its low silhouette differs sufficiently from the farmhouse and elevated granary. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "wuxia-farmstead@winter-2": "Elevated granary has separate stone feet, front steps and a tall storage room under upturned eaves; muted roof and warm timber remain legible on the paddies. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "wuxia-farmstead@winter-4": "The roofed pig pen has two distinct brown animals beneath a separate roof plane, with front fence and supports still readable over the field. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "wuxia-farmstead@winter-5": "Rice mill has a separate building, cool tiled roof and large warm side waterwheel; its circular wheel structure is visible at native size and differs from the pen and granary. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement."
+      },
+      "source_sha256": {
+        "wuxia-farmstead@winter-0": "c9ec6a0bd588697f6314568af5d32d140c3a2f3977e825de7802c50a19e6aab6",
+        "wuxia-farmstead@winter-1": "324da837f600ca6042a14a0c07a888ce4e889f260127bed3de1186a715b175f4",
+        "wuxia-farmstead@winter-2": "a7c7d548d4fef4b9a5a7ea183706ac79ee330f084bab044c76d8a9c250520230",
+        "wuxia-farmstead@winter-3": "35177476a316539979f4929e212b6095b4d23d4d15b0fd3d1daa1c4efb84182c",
+        "wuxia-farmstead@winter-4": "1318dc890267fa6e1a245b43ffbb12a33085d1962ffcedab390a35bcbbc4b3e8",
+        "wuxia-farmstead@winter-5": "64c8bfa6d43a6facc634a9ddd9eb3ccb8ac3f080d0f16d9a8ecd8786241ec1bc"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "jazz_age-farmstead-summer": {
+      "status": "fail",
+      "files": [
+        "jazz_age-farmstead-0",
+        "jazz_age-farmstead-1",
+        "jazz_age-farmstead-2",
+        "jazz_age-farmstead-3",
+        "jazz_age-farmstead-4",
+        "jazz_age-farmstead-5"
+      ],
+      "pass_count": 5,
+      "fail_count": 1,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-jazz_age-all-seasons-1x.png",
+        "critic-r106-1-jazz_age-all-seasons-4x.png",
+        "critic-r106-1-jazz_age-summer-inspection-8x.png",
+        "critic-r106-1-jazz_age-summer-random-8x2-1x.png",
+        "critic-r106-1-jazz_age-summer-random-8x2-4x.png",
+        "critic-r106-1-jazz_age-references-1x.png",
+        "critic-r106-1-jazz_age-references-4x.png",
+        "critic-r106-1-jazz_age-alpha-light-4x.png",
+        "critic-r106-1-jazz_age-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-summer-1x.png",
+        "critic-r106-1-approved-context-summer-4x.png",
+        "critic-r106-1-approved-round2-summer-1x.png",
+        "critic-r106-1-approved-round2-summer-4x.png",
+        "critic-r106-1-jazz_age-detail-1-1x.png",
+        "critic-r106-1-jazz_age-detail-1-4x.png",
+        "critic-r106-1-jazz_age-detail-1-8x.png"
+      ],
+      "pass_rationale": {
+        "jazz_age-farmstead-0": "Narrow farmhouse has a readable porch, steps, chimney and dark slate roof; cream siding and warm masonry belong beside the approved Jazz Age settlement.",
+        "jazz_age-farmstead-2": "Lean-to shed has a clear sloping ribbed roof, framed door and small side equipment; the broad planes keep the weathering from becoming general noise.",
+        "jazz_age-farmstead-3": "Hay wagon has a separate dark bed and undercarriage below the round straw bales, with projecting shafts and a loose bale providing a distinct yard silhouette.",
+        "jazz_age-farmstead-4": "Two cattle stay separate from the front wooden fence and open enclosure; the small animal clusters are sufficient at map scale without obscuring the gate.",
+        "jazz_age-farmstead-5": "Brick silo has a readable cylindrical shaft, capped top and small side annex; warm brick and muted cap fit the family palette."
+      },
+      "source_sha256": {
+        "jazz_age-farmstead-0": "7f84d3bf9121dd9f929e71403ca9d23914d5f5143a8a2ca49e0266529974a491",
+        "jazz_age-farmstead-1": "58365333a9733afe97c8d4a757f66b0739dceb0ac3220b2a433dee172bbe7491",
+        "jazz_age-farmstead-2": "59f38fa3d1474fd8715b8321a416c4045247bc82121e18adda98f9f19f557f67",
+        "jazz_age-farmstead-3": "98e2b1cf64482c101d097510b4c9b4df1f2d9eeda89e943965d9408943c65106",
+        "jazz_age-farmstead-4": "322aa46a6563f272810fc2ac8ba6f9bcc285cb61194b1bf472c9b8a45de51647",
+        "jazz_age-farmstead-5": "ea4c1045f09fa1216ae8edc369b43c56d1638b4d1f18fba60a490c767abe559e"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "jazz_age-farmstead-spring": {
+      "status": "fail",
+      "files": [
+        "jazz_age-farmstead@spring-0",
+        "jazz_age-farmstead@spring-1",
+        "jazz_age-farmstead@spring-2",
+        "jazz_age-farmstead@spring-3",
+        "jazz_age-farmstead@spring-4",
+        "jazz_age-farmstead@spring-5"
+      ],
+      "pass_count": 5,
+      "fail_count": 1,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-jazz_age-all-seasons-1x.png",
+        "critic-r106-1-jazz_age-all-seasons-4x.png",
+        "critic-r106-1-jazz_age-spring-inspection-8x.png",
+        "critic-r106-1-jazz_age-spring-random-8x2-1x.png",
+        "critic-r106-1-jazz_age-spring-random-8x2-4x.png",
+        "critic-r106-1-jazz_age-references-1x.png",
+        "critic-r106-1-jazz_age-references-4x.png",
+        "critic-r106-1-jazz_age-alpha-light-4x.png",
+        "critic-r106-1-jazz_age-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-spring-1x.png",
+        "critic-r106-1-approved-context-spring-4x.png",
+        "critic-r106-1-approved-round2-spring-1x.png",
+        "critic-r106-1-approved-round2-spring-4x.png",
+        "critic-r106-1-jazz_age-detail-1-1x.png",
+        "critic-r106-1-jazz_age-detail-1-4x.png",
+        "critic-r106-1-jazz_age-detail-1-8x.png"
+      ],
+      "pass_rationale": {
+        "jazz_age-farmstead@spring-0": "Narrow farmhouse has a readable porch, steps, chimney and dark slate roof; cream siding and warm masonry belong beside the approved Jazz Age settlement. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "jazz_age-farmstead@spring-2": "Lean-to shed has a clear sloping ribbed roof, framed door and small side equipment; the broad planes keep the weathering from becoming general noise. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "jazz_age-farmstead@spring-3": "Hay wagon has a separate dark bed and undercarriage below the round straw bales, with projecting shafts and a loose bale providing a distinct yard silhouette. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "jazz_age-farmstead@spring-4": "Two cattle stay separate from the front wooden fence and open enclosure; the small animal clusters are sufficient at map scale without obscuring the gate. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "jazz_age-farmstead@spring-5": "Brick silo has a readable cylindrical shaft, capped top and small side annex; warm brick and muted cap fit the family palette. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer."
+      },
+      "source_sha256": {
+        "jazz_age-farmstead@spring-0": "d23fd6c58cd8d7e6dac36d799211da45366f8f3332dcf5a5f94d2271e5a6533c",
+        "jazz_age-farmstead@spring-1": "be8e708e037d9028c17234f5498e770b01bca1fa1741c783fb3abf966fd8ab95",
+        "jazz_age-farmstead@spring-2": "1eb91013874b36491658514576a432c311ffb6a4ba7bd60f5b9d4d7b512e7de8",
+        "jazz_age-farmstead@spring-3": "6bfcc7b744747dd8e644103c7ffcbd8d01e84f869473c4f1be2bede36423a59e",
+        "jazz_age-farmstead@spring-4": "fccfe18b6e289cd139c9a614769fc9c628f5bd718d76eb2184b3c53c7482c0f4",
+        "jazz_age-farmstead@spring-5": "88704a0171aecc404ab913440d79f1e4ee0fce01d883117bb5677cc881bac495"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "jazz_age-farmstead-autumn": {
+      "status": "fail",
+      "files": [
+        "jazz_age-farmstead@autumn-0",
+        "jazz_age-farmstead@autumn-1",
+        "jazz_age-farmstead@autumn-2",
+        "jazz_age-farmstead@autumn-3",
+        "jazz_age-farmstead@autumn-4",
+        "jazz_age-farmstead@autumn-5"
+      ],
+      "pass_count": 5,
+      "fail_count": 1,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-jazz_age-all-seasons-1x.png",
+        "critic-r106-1-jazz_age-all-seasons-4x.png",
+        "critic-r106-1-jazz_age-autumn-inspection-8x.png",
+        "critic-r106-1-jazz_age-autumn-random-8x2-1x.png",
+        "critic-r106-1-jazz_age-autumn-random-8x2-4x.png",
+        "critic-r106-1-jazz_age-references-1x.png",
+        "critic-r106-1-jazz_age-references-4x.png",
+        "critic-r106-1-jazz_age-alpha-light-4x.png",
+        "critic-r106-1-jazz_age-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-autumn-1x.png",
+        "critic-r106-1-approved-context-autumn-4x.png",
+        "critic-r106-1-approved-round2-autumn-1x.png",
+        "critic-r106-1-approved-round2-autumn-4x.png",
+        "critic-r106-1-jazz_age-detail-1-1x.png",
+        "critic-r106-1-jazz_age-detail-1-4x.png",
+        "critic-r106-1-jazz_age-detail-1-8x.png"
+      ],
+      "pass_rationale": {
+        "jazz_age-farmstead@autumn-0": "Narrow farmhouse has a readable porch, steps, chimney and dark slate roof; cream siding and warm masonry belong beside the approved Jazz Age settlement. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "jazz_age-farmstead@autumn-2": "Lean-to shed has a clear sloping ribbed roof, framed door and small side equipment; the broad planes keep the weathering from becoming general noise. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "jazz_age-farmstead@autumn-3": "Hay wagon has a separate dark bed and undercarriage below the round straw bales, with projecting shafts and a loose bale providing a distinct yard silhouette. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "jazz_age-farmstead@autumn-4": "Two cattle stay separate from the front wooden fence and open enclosure; the small animal clusters are sufficient at map scale without obscuring the gate. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "jazz_age-farmstead@autumn-5": "Brick silo has a readable cylindrical shaft, capped top and small side annex; warm brick and muted cap fit the family palette. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash."
+      },
+      "source_sha256": {
+        "jazz_age-farmstead@autumn-0": "88a91fbbd1bf7ad277d0ad30eff3d5cb84023a333c62cdc9c93ae86de1e24384",
+        "jazz_age-farmstead@autumn-1": "cc84e2183e035afb0a70662b93083ec6ed47c1efa83087f23f35357a0ba3ed4b",
+        "jazz_age-farmstead@autumn-2": "a24baa5d29e6da9c5822cbaae0af4c53e842597bc5effc634faf01e4bc040ae8",
+        "jazz_age-farmstead@autumn-3": "9622cb7451b4aca7e605b204e25814f3e1b5f47d53c7f88172a031f869b1a8a7",
+        "jazz_age-farmstead@autumn-4": "b126f2bae9ac324c86c6b2a8de9d6f51e1e8c5351e1860ba16f37e2b66c86e8d",
+        "jazz_age-farmstead@autumn-5": "7c9d9843a67d87f86fd78f93da04eb98af982b8995c23f146d115b48f33b00ef"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "jazz_age-farmstead-winter": {
+      "status": "fail",
+      "files": [
+        "jazz_age-farmstead@winter-0",
+        "jazz_age-farmstead@winter-1",
+        "jazz_age-farmstead@winter-2",
+        "jazz_age-farmstead@winter-3",
+        "jazz_age-farmstead@winter-4",
+        "jazz_age-farmstead@winter-5"
+      ],
+      "pass_count": 5,
+      "fail_count": 1,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-jazz_age-all-seasons-1x.png",
+        "critic-r106-1-jazz_age-all-seasons-4x.png",
+        "critic-r106-1-jazz_age-winter-inspection-8x.png",
+        "critic-r106-1-jazz_age-winter-random-8x2-1x.png",
+        "critic-r106-1-jazz_age-winter-random-8x2-4x.png",
+        "critic-r106-1-jazz_age-references-1x.png",
+        "critic-r106-1-jazz_age-references-4x.png",
+        "critic-r106-1-jazz_age-alpha-light-4x.png",
+        "critic-r106-1-jazz_age-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-winter-1x.png",
+        "critic-r106-1-approved-context-winter-4x.png",
+        "critic-r106-1-approved-round2-winter-1x.png",
+        "critic-r106-1-approved-round2-winter-4x.png",
+        "critic-r106-1-jazz_age-detail-1-1x.png",
+        "critic-r106-1-jazz_age-detail-1-4x.png",
+        "critic-r106-1-jazz_age-detail-1-8x.png"
+      ],
+      "pass_rationale": {
+        "jazz_age-farmstead@winter-0": "Narrow farmhouse has a readable porch, steps, chimney and dark slate roof; cream siding and warm masonry belong beside the approved Jazz Age settlement. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "jazz_age-farmstead@winter-2": "Lean-to shed has a clear sloping ribbed roof, framed door and small side equipment; the broad planes keep the weathering from becoming general noise. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "jazz_age-farmstead@winter-3": "Hay wagon has a separate dark bed and undercarriage below the round straw bales, with projecting shafts and a loose bale providing a distinct yard silhouette. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "jazz_age-farmstead@winter-4": "Two cattle stay separate from the front wooden fence and open enclosure; the small animal clusters are sufficient at map scale without obscuring the gate. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "jazz_age-farmstead@winter-5": "Brick silo has a readable cylindrical shaft, capped top and small side annex; warm brick and muted cap fit the family palette. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement."
+      },
+      "source_sha256": {
+        "jazz_age-farmstead@winter-0": "9bef10d5534c87163e45005adca8eefbe163723df56f1a2c8e68f9525dd40d7a",
+        "jazz_age-farmstead@winter-1": "9a402a8341adaa83ad7d9636ac4fb167e2490a91badcd305c9f8b81724e7b4e9",
+        "jazz_age-farmstead@winter-2": "f34aa3545486fd1d9fd7f863fe5c13a8a0ca7992bf7eec9fd8ab8801c92e4a69",
+        "jazz_age-farmstead@winter-3": "191f36efb0b9365605e3dec44314f8141a6cd2f340e4123ca73b391296ed8205",
+        "jazz_age-farmstead@winter-4": "32bd78e848a8fdcd6763442da13cf6032ab931daf8aaaf1a720b44ea956b5022",
+        "jazz_age-farmstead@winter-5": "7446a175b418269910abeb29e57fc84e38d9acf322118c58e9ef61679343bd73"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "modern-farmstead-summer": {
+      "status": "pass",
+      "files": [
+        "modern-farmstead-0",
+        "modern-farmstead-1",
+        "modern-farmstead-2",
+        "modern-farmstead-3",
+        "modern-farmstead-4",
+        "modern-farmstead-5"
+      ],
+      "pass_count": 6,
+      "fail_count": 0,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-modern-all-seasons-1x.png",
+        "critic-r106-1-modern-all-seasons-4x.png",
+        "critic-r106-1-modern-summer-inspection-8x.png",
+        "critic-r106-1-modern-summer-random-8x2-1x.png",
+        "critic-r106-1-modern-summer-random-8x2-4x.png",
+        "critic-r106-1-modern-references-1x.png",
+        "critic-r106-1-modern-references-4x.png",
+        "critic-r106-1-modern-alpha-light-4x.png",
+        "critic-r106-1-modern-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-summer-1x.png",
+        "critic-r106-1-approved-context-summer-4x.png",
+        "critic-r106-1-approved-round2-summer-1x.png",
+        "critic-r106-1-approved-round2-summer-4x.png"
+      ],
+      "pass_rationale": {
+        "modern-farmstead-0": "Compact farmhouse has separate entry steps, door, dark windows, chimney and a bounded roof panel; cream walls and blue-grey roof agree with the modern references.",
+        "modern-farmstead-1": "Low contemporary barn has a clear broad orange double entrance beneath a cool gabled roof; its squat silhouette is distinct from the tall metal shed.",
+        "modern-farmstead-2": "Metal shed has an open dark entrance beside a pale sliding door, a ribbed roof and shaded side wall; the architecture reads cleanly at native size.",
+        "modern-farmstead-3": "Tractor has a separate green hood, cab, dark tyres and ochre bales; those material/value groups remain distinct against the field.",
+        "modern-farmstead-4": "Two spotted cattle read separately within a steel enclosure; front mesh/gate texture stays localized and does not contaminate the animal silhouettes.",
+        "modern-farmstead-5": "Corrugated steel silo has a coherent blue-grey cylinder, cone cap, side ladder and bottom outlet; narrow height and cool metal distinguish it from the other five subjects."
+      },
+      "source_sha256": {
+        "modern-farmstead-0": "9bd1c046c70d9709f3e941a8f3f4a49748864bfef55ae101728dc617b9c5cab5",
+        "modern-farmstead-1": "e8d2dc77964db6ad1387f583927ee3aa02d3e4fdfef2156f119bdd74808fecfb",
+        "modern-farmstead-2": "baa2166434f025f1d2b3c98e912aa1cc1ecc450790a32616cd22638667e0bd6e",
+        "modern-farmstead-3": "2aaeb17b6fe15f533c7227f6fd23899046a7c67016876e0b3f604db71db33f82",
+        "modern-farmstead-4": "79012baf851989c48d400a535a1b1d0aabddb12074de68d1c1fc7d282cc9d3e6",
+        "modern-farmstead-5": "f6d18d92e51c250a521eacd8e934b64217fd3ba3ded4a134db1d1b1e11525323"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "modern-farmstead-spring": {
+      "status": "pass",
+      "files": [
+        "modern-farmstead@spring-0",
+        "modern-farmstead@spring-1",
+        "modern-farmstead@spring-2",
+        "modern-farmstead@spring-3",
+        "modern-farmstead@spring-4",
+        "modern-farmstead@spring-5"
+      ],
+      "pass_count": 6,
+      "fail_count": 0,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-modern-all-seasons-1x.png",
+        "critic-r106-1-modern-all-seasons-4x.png",
+        "critic-r106-1-modern-spring-inspection-8x.png",
+        "critic-r106-1-modern-spring-random-8x2-1x.png",
+        "critic-r106-1-modern-spring-random-8x2-4x.png",
+        "critic-r106-1-modern-references-1x.png",
+        "critic-r106-1-modern-references-4x.png",
+        "critic-r106-1-modern-alpha-light-4x.png",
+        "critic-r106-1-modern-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-spring-1x.png",
+        "critic-r106-1-approved-context-spring-4x.png",
+        "critic-r106-1-approved-round2-spring-1x.png",
+        "critic-r106-1-approved-round2-spring-4x.png"
+      ],
+      "pass_rationale": {
+        "modern-farmstead@spring-0": "Compact farmhouse has separate entry steps, door, dark windows, chimney and a bounded roof panel; cream walls and blue-grey roof agree with the modern references. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "modern-farmstead@spring-1": "Low contemporary barn has a clear broad orange double entrance beneath a cool gabled roof; its squat silhouette is distinct from the tall metal shed. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "modern-farmstead@spring-2": "Metal shed has an open dark entrance beside a pale sliding door, a ribbed roof and shaded side wall; the architecture reads cleanly at native size. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "modern-farmstead@spring-3": "Tractor has a separate green hood, cab, dark tyres and ochre bales; those material/value groups remain distinct against the field. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "modern-farmstead@spring-4": "Two spotted cattle read separately within a steel enclosure; front mesh/gate texture stays localized and does not contaminate the animal silhouettes. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer.",
+        "modern-farmstead@spring-5": "Corrugated steel silo has a coherent blue-grey cylinder, cone cap, side ladder and bottom outlet; narrow height and cool metal distinguish it from the other five subjects. Spring accents remain attached to the subject; the underlying materials and silhouette stay consistent with summer."
+      },
+      "source_sha256": {
+        "modern-farmstead@spring-0": "1feddf3af1a274539be78f9e9f7f23a2a6adcd3a39ec9c566371e9cebd32ea16",
+        "modern-farmstead@spring-1": "801a929bdaa7591459b052c2ea0e79a20593b74fdca1e4979ec7f565539444cb",
+        "modern-farmstead@spring-2": "76385e8f9734cb6156ef059f228eca28a77da44dfee33943193da1a8b5f9a051",
+        "modern-farmstead@spring-3": "f907b405088ca558e1f172c990857bdccd280d045340b9999c73bf73a8065d30",
+        "modern-farmstead@spring-4": "213a97739db80db3ddb91345f576642e5fdb2f2e3e4ec785453ffd5d40bdb306",
+        "modern-farmstead@spring-5": "5b37d704b3a1fd49a8fa82a7bcece6a93652e4dd15d26be92ef03298f295eed6"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "modern-farmstead-autumn": {
+      "status": "pass",
+      "files": [
+        "modern-farmstead@autumn-0",
+        "modern-farmstead@autumn-1",
+        "modern-farmstead@autumn-2",
+        "modern-farmstead@autumn-3",
+        "modern-farmstead@autumn-4",
+        "modern-farmstead@autumn-5"
+      ],
+      "pass_count": 6,
+      "fail_count": 0,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-modern-all-seasons-1x.png",
+        "critic-r106-1-modern-all-seasons-4x.png",
+        "critic-r106-1-modern-autumn-inspection-8x.png",
+        "critic-r106-1-modern-autumn-random-8x2-1x.png",
+        "critic-r106-1-modern-autumn-random-8x2-4x.png",
+        "critic-r106-1-modern-references-1x.png",
+        "critic-r106-1-modern-references-4x.png",
+        "critic-r106-1-modern-alpha-light-4x.png",
+        "critic-r106-1-modern-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-autumn-1x.png",
+        "critic-r106-1-approved-context-autumn-4x.png",
+        "critic-r106-1-approved-round2-autumn-1x.png",
+        "critic-r106-1-approved-round2-autumn-4x.png"
+      ],
+      "pass_rationale": {
+        "modern-farmstead@autumn-0": "Compact farmhouse has separate entry steps, door, dark windows, chimney and a bounded roof panel; cream walls and blue-grey roof agree with the modern references. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "modern-farmstead@autumn-1": "Low contemporary barn has a clear broad orange double entrance beneath a cool gabled roof; its squat silhouette is distinct from the tall metal shed. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "modern-farmstead@autumn-2": "Metal shed has an open dark entrance beside a pale sliding door, a ribbed roof and shaded side wall; the architecture reads cleanly at native size. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "modern-farmstead@autumn-3": "Tractor has a separate green hood, cab, dark tyres and ochre bales; those material/value groups remain distinct against the field. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "modern-farmstead@autumn-4": "Two spotted cattle read separately within a steel enclosure; front mesh/gate texture stays localized and does not contaminate the animal silhouettes. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash.",
+        "modern-farmstead@autumn-5": "Corrugated steel silo has a coherent blue-grey cylinder, cone cap, side ladder and bottom outlet; narrow height and cool metal distinguish it from the other five subjects. Autumn keeps the architecture/material colours and uses localized warm seasonal accents; it is not an orange wash."
+      },
+      "source_sha256": {
+        "modern-farmstead@autumn-0": "12164cd315ac02baaddc3852bc5d0091d55b9ad1ac82da9c23ad9c1938f1a689",
+        "modern-farmstead@autumn-1": "b56f5a7f80a8f419d5f8d972864c155a86305765a6372168c96458b765924c9b",
+        "modern-farmstead@autumn-2": "9f6a05843a2e0c41f944d8f87dd5a268fb6b89937e4be97b1d9983c6d30daa8d",
+        "modern-farmstead@autumn-3": "5dbd3226ed60b8b9116a78115ee225b297f5656b74b8b9f91333074b06968df0",
+        "modern-farmstead@autumn-4": "0fb46c756e03b910da7d06889b66fd02273a5961a5c4e887d999247c9f5a3c5d",
+        "modern-farmstead@autumn-5": "d414e3a9297f2c2a0d54d6e8af14c9d1b55e1937548b6cf00de47d363cdb76cc"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    },
+    "modern-farmstead-winter": {
+      "status": "pass",
+      "files": [
+        "modern-farmstead@winter-0",
+        "modern-farmstead@winter-1",
+        "modern-farmstead@winter-2",
+        "modern-farmstead@winter-3",
+        "modern-farmstead@winter-4",
+        "modern-farmstead@winter-5"
+      ],
+      "pass_count": 6,
+      "fail_count": 0,
+      "checks": [
+        "All six files viewed at native 1x and nearest-neighbour 4x in the family all-seasons sheet; each file also viewed at exact nearest-neighbour 8x in its season inspection sheet.",
+        "All six subjects included in a seeded 8x2 random planting on approved seasonal farmland; viewed at 1x and 4x for overlap, legibility, cell framing, seams and conspicuous sprite repeat.",
+        "Compared against the named family reference markers and house, approved output markers, round-2 city/industry/slums/suburb/farmland/farmstead tiles, paddies, and seasonal grass/plains bases and details. These approved files are context only, not verdict targets.",
+        "Checked silhouette and subject variety, muddy forms, palette compatibility, three-quarter overhead view, top-left light, pixel edges, blur/antialiasing, outline, speckle, fringe and halos. Light/dark alpha proofs also viewed at 4x.",
+        "Compared all four seasonal partners directly: winter snow preserves the structure; spring/autumn changes do not repaint the building into a flat seasonal colour.",
+        "Mechanical check: all files 48x48, binary 0/255 alpha, zero hidden RGB, transparent outer margin, lowest solid row 46, horizontally centred; no exact duplicate within the six-subject set.",
+        "Part 6 has no bases, peaks, terrain tiles or trees. Base 3x3, peak lattice/range and forest composites are not applicable; egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and identical tree crowns are outside this part. The requested one-cell 8x2 test was applied to these transparent farmstead props."
+      ],
+      "evidence": [
+        "critic-r106-1-modern-all-seasons-1x.png",
+        "critic-r106-1-modern-all-seasons-4x.png",
+        "critic-r106-1-modern-winter-inspection-8x.png",
+        "critic-r106-1-modern-winter-random-8x2-1x.png",
+        "critic-r106-1-modern-winter-random-8x2-4x.png",
+        "critic-r106-1-modern-references-1x.png",
+        "critic-r106-1-modern-references-4x.png",
+        "critic-r106-1-modern-alpha-light-4x.png",
+        "critic-r106-1-modern-alpha-dark-4x.png",
+        "critic-r106-1-approved-context-winter-1x.png",
+        "critic-r106-1-approved-context-winter-4x.png",
+        "critic-r106-1-approved-round2-winter-1x.png",
+        "critic-r106-1-approved-round2-winter-4x.png"
+      ],
+      "pass_rationale": {
+        "modern-farmstead@winter-0": "Compact farmhouse has separate entry steps, door, dark windows, chimney and a bounded roof panel; cream walls and blue-grey roof agree with the modern references. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "modern-farmstead@winter-1": "Low contemporary barn has a clear broad orange double entrance beneath a cool gabled roof; its squat silhouette is distinct from the tall metal shed. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "modern-farmstead@winter-2": "Metal shed has an open dark entrance beside a pale sliding door, a ribbed roof and shaded side wall; the architecture reads cleanly at native size. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "modern-farmstead@winter-3": "Tractor has a separate green hood, cab, dark tyres and ochre bales; those material/value groups remain distinct against the field. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "modern-farmstead@winter-4": "Two spotted cattle read separately within a steel enclosure; front mesh/gate texture stays localized and does not contaminate the animal silhouettes. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement.",
+        "modern-farmstead@winter-5": "Corrugated steel silo has a coherent blue-grey cylinder, cone cap, side ladder and bottom outlet; narrow height and cool metal distinguish it from the other five subjects. Snow caps the exposed upper surfaces/ledges while the openings, supports and equipment remain readable; it is not a blank white replacement."
+      },
+      "source_sha256": {
+        "modern-farmstead@winter-0": "3900b3d5089d0358cb15e2c553831bf76cb03e73be4990a9a4aa61ed5697b9fc",
+        "modern-farmstead@winter-1": "105555c3aedb6d90abf6475a9ac7863fbde4d45e05c6271f8ac7ed24fd532d8e",
+        "modern-farmstead@winter-2": "e95aac6ade1dd1a1ae01166430ab8e9703fbeca2cd1319477b1bf6851203c5cc",
+        "modern-farmstead@winter-3": "9741fe011f8831111ba3363c8519747bddeb2407799acd0e363484fd16fcec1b",
+        "modern-farmstead@winter-4": "b117985507f6e8ada63219f83812bde3cf0030e624a220e7b58e85e277f31481",
+        "modern-farmstead@winter-5": "9f2a06447d01001da99185f5ecbf5f38ad15a72c14603efbce267e363ab11a3c"
+      },
+      "prior_review": "critic-r106-0.json did not exist at review time."
+    }
+  },
+  "pass": [
+    "fantasy-farmstead-0",
+    "fantasy-farmstead-1",
+    "fantasy-farmstead-2",
+    "fantasy-farmstead-3",
+    "fantasy-farmstead-4",
+    "fantasy-farmstead-5",
+    "fantasy-farmstead@spring-0",
+    "fantasy-farmstead@spring-1",
+    "fantasy-farmstead@spring-2",
+    "fantasy-farmstead@spring-3",
+    "fantasy-farmstead@spring-4",
+    "fantasy-farmstead@spring-5",
+    "fantasy-farmstead@autumn-0",
+    "fantasy-farmstead@autumn-1",
+    "fantasy-farmstead@autumn-2",
+    "fantasy-farmstead@autumn-3",
+    "fantasy-farmstead@autumn-4",
+    "fantasy-farmstead@autumn-5",
+    "fantasy-farmstead@winter-0",
+    "fantasy-farmstead@winter-1",
+    "fantasy-farmstead@winter-2",
+    "fantasy-farmstead@winter-3",
+    "fantasy-farmstead@winter-4",
+    "fantasy-farmstead@winter-5",
+    "wuxia-farmstead-0",
+    "wuxia-farmstead-1",
+    "wuxia-farmstead-2",
+    "wuxia-farmstead-4",
+    "wuxia-farmstead-5",
+    "wuxia-farmstead@spring-0",
+    "wuxia-farmstead@spring-1",
+    "wuxia-farmstead@spring-2",
+    "wuxia-farmstead@spring-4",
+    "wuxia-farmstead@spring-5",
+    "wuxia-farmstead@autumn-0",
+    "wuxia-farmstead@autumn-1",
+    "wuxia-farmstead@autumn-2",
+    "wuxia-farmstead@autumn-4",
+    "wuxia-farmstead@autumn-5",
+    "wuxia-farmstead@winter-0",
+    "wuxia-farmstead@winter-1",
+    "wuxia-farmstead@winter-2",
+    "wuxia-farmstead@winter-4",
+    "wuxia-farmstead@winter-5",
+    "jazz_age-farmstead-0",
+    "jazz_age-farmstead-2",
+    "jazz_age-farmstead-3",
+    "jazz_age-farmstead-4",
+    "jazz_age-farmstead-5",
+    "jazz_age-farmstead@spring-0",
+    "jazz_age-farmstead@spring-2",
+    "jazz_age-farmstead@spring-3",
+    "jazz_age-farmstead@spring-4",
+    "jazz_age-farmstead@spring-5",
+    "jazz_age-farmstead@autumn-0",
+    "jazz_age-farmstead@autumn-2",
+    "jazz_age-farmstead@autumn-3",
+    "jazz_age-farmstead@autumn-4",
+    "jazz_age-farmstead@autumn-5",
+    "jazz_age-farmstead@winter-0",
+    "jazz_age-farmstead@winter-2",
+    "jazz_age-farmstead@winter-3",
+    "jazz_age-farmstead@winter-4",
+    "jazz_age-farmstead@winter-5",
+    "modern-farmstead-0",
+    "modern-farmstead-1",
+    "modern-farmstead-2",
+    "modern-farmstead-3",
+    "modern-farmstead-4",
+    "modern-farmstead-5",
+    "modern-farmstead@spring-0",
+    "modern-farmstead@spring-1",
+    "modern-farmstead@spring-2",
+    "modern-farmstead@spring-3",
+    "modern-farmstead@spring-4",
+    "modern-farmstead@spring-5",
+    "modern-farmstead@autumn-0",
+    "modern-farmstead@autumn-1",
+    "modern-farmstead@autumn-2",
+    "modern-farmstead@autumn-3",
+    "modern-farmstead@autumn-4",
+    "modern-farmstead@autumn-5",
+    "modern-farmstead@winter-0",
+    "modern-farmstead@winter-1",
+    "modern-farmstead@winter-2",
+    "modern-farmstead@winter-3",
+    "modern-farmstead@winter-4",
+    "modern-farmstead@winter-5"
+  ],
+  "fail": [
+    {
+      "name": "wuxia-farmstead-3",
+      "problems": "At 1x the hay/cart yard collapses into an orange lump: the central wheel, load and cart body share the same straw ramp and merge, and at 4x/8x there is no clear wooden bed/axle separating them. The left shafts lead into a mottled orange knot rather than a readable chassis. Redraw the bed and undercarriage in dark timber, give the visible wheel a continuous contrasting rim and hub, and separate the straw bales with a small clean dark gap. Keep the winter snow on top of these clarified forms rather than using it to define the cart."
+    },
+    {
+      "name": "wuxia-farmstead@spring-3",
+      "problems": "At 1x the hay/cart yard collapses into an orange lump: the central wheel, load and cart body share the same straw ramp and merge, and at 4x/8x there is no clear wooden bed/axle separating them. The left shafts lead into a mottled orange knot rather than a readable chassis. Redraw the bed and undercarriage in dark timber, give the visible wheel a continuous contrasting rim and hub, and separate the straw bales with a small clean dark gap. Keep the winter snow on top of these clarified forms rather than using it to define the cart."
+    },
+    {
+      "name": "wuxia-farmstead@autumn-3",
+      "problems": "At 1x the hay/cart yard collapses into an orange lump: the central wheel, load and cart body share the same straw ramp and merge, and at 4x/8x there is no clear wooden bed/axle separating them. The left shafts lead into a mottled orange knot rather than a readable chassis. Redraw the bed and undercarriage in dark timber, give the visible wheel a continuous contrasting rim and hub, and separate the straw bales with a small clean dark gap. Keep the winter snow on top of these clarified forms rather than using it to define the cart."
+    },
+    {
+      "name": "wuxia-farmstead@winter-3",
+      "problems": "At 1x the hay/cart yard collapses into an orange lump: the central wheel, load and cart body share the same straw ramp and merge, and at 4x/8x there is no clear wooden bed/axle separating them. The left shafts lead into a mottled orange knot rather than a readable chassis. Redraw the bed and undercarriage in dark timber, give the visible wheel a continuous contrasting rim and hub, and separate the straw bales with a small clean dark gap. Keep the winter snow on top of these clarified forms rather than using it to define the cart."
+    },
+    {
+      "name": "jazz_age-farmstead-1",
+      "problems": "The cream loft panel contains a conspicuous red question-mark/3-like squiggle instead of a readable loft opening or shutter; it remains visible at 1x and is an obvious pseudo-glyph at 4x/8x. The lower doors repeat the problem with disconnected cream/red zigzags instead of coherent bracing. Replace the loft mark with one clean dark opening or a framed shutter, and redraw each lower door with a straight frame and continuous diagonal brace. Preserve the barn silhouette and roof; this is an internal pixel-cluster repair."
+    },
+    {
+      "name": "jazz_age-farmstead@spring-1",
+      "problems": "The cream loft panel contains a conspicuous red question-mark/3-like squiggle instead of a readable loft opening or shutter; it remains visible at 1x and is an obvious pseudo-glyph at 4x/8x. The lower doors repeat the problem with disconnected cream/red zigzags instead of coherent bracing. Replace the loft mark with one clean dark opening or a framed shutter, and redraw each lower door with a straight frame and continuous diagonal brace. Preserve the barn silhouette and roof; this is an internal pixel-cluster repair."
+    },
+    {
+      "name": "jazz_age-farmstead@autumn-1",
+      "problems": "The cream loft panel contains a conspicuous red question-mark/3-like squiggle instead of a readable loft opening or shutter; it remains visible at 1x and is an obvious pseudo-glyph at 4x/8x. The lower doors repeat the problem with disconnected cream/red zigzags instead of coherent bracing. Replace the loft mark with one clean dark opening or a framed shutter, and redraw each lower door with a straight frame and continuous diagonal brace. Preserve the barn silhouette and roof; this is an internal pixel-cluster repair."
+    },
+    {
+      "name": "jazz_age-farmstead@winter-1",
+      "problems": "The cream loft panel contains a conspicuous red question-mark/3-like squiggle instead of a readable loft opening or shutter; it remains visible at 1x and is an obvious pseudo-glyph at 4x/8x. The lower doors repeat the problem with disconnected cream/red zigzags instead of coherent bracing. Replace the loft mark with one clean dark opening or a framed shutter, and redraw each lower door with a straight frame and continuous diagonal brace. Preserve the barn silhouette and roof; this is an internal pixel-cluster repair."
+    }
+  ]
+}
