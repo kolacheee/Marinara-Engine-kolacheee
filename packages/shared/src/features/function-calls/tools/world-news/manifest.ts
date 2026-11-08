@@ -4,7 +4,7 @@ import type { ToolDefinition } from "../../tool-definitions.js";
 export const worldNewsToolManifest = {
   name: "world_news",
   description:
-    "Look up the real news up to today in the story, for a game set on the real Earth. Call it only when a character follows the news: reads a paper, turns on the TV or radio, checks their phone, asks what is going on in the world, or hears talk of it. Ordinary days are not about the news; never bring it into a scene that is not about it. Lists the world's news and the named country's own, newest first, never a day after today.",
+    "Look up the real news up to today in the story, for a game set on the real Earth. Call it only when a character follows the news: reads a paper, turns on the TV or radio, checks their phone, asks what is going on in the world, or hears talk of it. Ordinary days are not about the news; never bring it into a scene that is not about it. Lists the names of the major real events up to today, newest first, never a day after it; tell them as the people there would hear them.",
   parameters: {
     type: "object",
     properties: {
@@ -20,11 +20,7 @@ export const worldNewsToolManifest = {
       },
       about: {
         type: "string",
-        description: "Optional words the news must mention, such as 'election' or 'World Trade Center'.",
-      },
-      country: {
-        type: "string",
-        description: "Optional country whose own news to add (default: the country the party is in).",
+        description: "Optional words the event's name must have, such as 'election' or 'attacks'.",
       },
     },
     required: ["date"],
