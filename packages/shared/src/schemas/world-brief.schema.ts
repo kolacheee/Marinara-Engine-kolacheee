@@ -239,6 +239,19 @@ export const worldBriefSchema = z
     faiths: z.array(briefFaith).max(WORLD_BRIEF_LIMITS.faiths).default([]),
     /** The Earth seed: the real Earth over an area, when the setting is on Earth. */
     earth: worldEarthSchema.optional(),
+    /** Another map of a drawn world, made past an edge of one before it: the ground along the edge it
+     *  meets that map by, as that map showed it past its own edge (one character a cell, base 36, the row
+     *  at the edge first), so the land runs on across. */
+    join: z
+      .object({
+        side: z.enum(["north", "east", "south", "west"]),
+        ground: z
+          .string()
+          .regex(/^[0-9a-z]*$/)
+          .max(4000),
+      })
+      .strict()
+      .optional(),
     /** Names for the people the compile draws, per culture, in that culture's own sound and order. */
     peopleNames: z
       .array(

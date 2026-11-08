@@ -12180,7 +12180,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
             return {};
           }
         }
-        const now = gameWorldFromMetadata(fresh);
+        const now = gameWorldFromMetadata(fresh, "home");
         storyRefusal = now ? editsStoryRefusal(now, edits, gameStoryFromMetadata(fresh, now)) : null;
         if (storyRefusal) return {};
         previous = fresh.gameWorld;
@@ -12371,7 +12371,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       }
       if (input === null) return { gameStory: null };
       // A world from an earlier generator is checked as its snapshot keeps it.
-      const now = worldMadeByThisGenerator(game) ? gameWorldFromMetadata(fresh) : game;
+      const now = worldMadeByThisGenerator(game) ? gameWorldFromMetadata(fresh, "home") : game;
       const checked = now ? checkStoryScript(now, input) : null;
       if (!checked?.ok) {
         const issues = checked?.issues ?? ["the game has no world"];

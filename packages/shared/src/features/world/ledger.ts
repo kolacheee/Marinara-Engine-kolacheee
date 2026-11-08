@@ -401,7 +401,9 @@ function foldPresent(
     ),
     ...game.world.places.map((place) => [place.name.toLowerCase(), place] as const),
   ]);
-  const from = ledger[0]?.from;
+  // The living world an earlier session left is the first map's: another map starts from its own.
+  const carried = ledger[0]?.from !== undefined;
+  const from = game.mapId ? undefined : ledger[0]?.from;
   const present: WorldPresent = from
     ? structuredClone(from.present)
     : {
@@ -452,7 +454,7 @@ function foldPresent(
   };
   // Where the party is, for the scene-first rule: the settlement the replies last put it in.
   let partyAt = from ? from.partyAt : worldSettlementOf(game, game.world.startId)?.id;
-  for (const entry of from ? ledger.slice(1) : ledger) {
+  for (const entry of carried ? ledger.slice(1) : ledger) {
     if (entry.at !== undefined) {
       partyAt = worldSettlementOf(game, worldPlaceId(entry.at))?.id;
       continue;

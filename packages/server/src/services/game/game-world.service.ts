@@ -6,7 +6,13 @@
 // a world with no snapshot (made before W11, on a development build) is made from its recipe on every
 // read, as before, and only while this Engine's generator made it.
 // ──────────────────────────────────────────────
-import { gameWorldFromMetadata, gameWorldFromSnapshot, worldSnapshot, type GameWorld } from "@marinara-engine/shared";
+import {
+  gameWorldFromMetadata,
+  gameWorldFromSnapshot,
+  gameWorldMapHere,
+  worldSnapshot,
+  type GameWorld,
+} from "@marinara-engine/shared";
 import type { DB } from "../../db/connection.js";
 import { logger } from "../../lib/logger.js";
 import { createGameWorldSnapshotsStorage } from "../storage/game-world-snapshots.storage.js";
@@ -20,6 +26,9 @@ export async function loadGameWorld(
   metadata: Record<string, unknown> | null | undefined,
 ): Promise<GameWorld | null> {
   if (!metadata || metadata.gameWorld == null) return null;
+  // On another of the world's maps (a journey off the first): that map, made from its own recipe; the
+  // snapshot is the first map's.
+  if (gameWorldMapHere(metadata)) return gameWorldFromMetadata(metadata);
   const snapshot = await createGameWorldSnapshotsStorage(db).get(chatId);
   if (snapshot) return gameWorldFromSnapshot(snapshot);
   if (!warned.has(chatId)) {
@@ -36,7 +45,7 @@ export async function saveGameWorldSnapshot(
   chatId: string,
   metadata: Record<string, unknown> | null | undefined,
 ): Promise<GameWorld | null> {
-  const game = gameWorldFromMetadata(metadata);
+  const game = gameWorldFromMetadata(metadata, "home");
   if (!game) return null;
   await createGameWorldSnapshotsStorage(db).put(chatId, worldSnapshot(game));
   return game;

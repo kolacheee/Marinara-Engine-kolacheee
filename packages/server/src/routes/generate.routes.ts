@@ -68,6 +68,12 @@ import {
   type DecisionMessage,
 } from "../services/generation/agent-activation-questions.js";
 import { registerSequentialGameTasks } from "../services/game/sequential-tasks.js";
+import {
+  keepWorldTravel,
+  placeTagBeyond,
+  worldMapInForce,
+  worldTravelFor,
+} from "../services/game/world-travel.service.js";
 import { loadGameWorld } from "../services/game/game-world.service.js";
 import { readMapPackPeople } from "../services/game/map-pack.service.js";
 import {
@@ -298,6 +304,7 @@ import {
   worldPresent,
   worldAddedPlace,
   type WorldPresent,
+  type WorldTravel,
   worldWalkFromMetadata,
   worldWalkSchema,
   worldWalkTags,
@@ -10516,6 +10523,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
           // in. A name the world lists takes its size from the world (worldgen W1).
           let turnPlace: GamePlace | null = null;
           let turnPlaceBefore: GamePlace | null = null;
+          let turnTravel: WorldTravel | null = null;
           let turnToldWalk: WorldWalk | null = null;
           let turnToldVisit: WorldTownVisit | null = null;
           let turnClockDays = 0;
@@ -10528,8 +10536,22 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             chatMode === "game" && !input.impersonate && turnGameRuleset?.status === "ok"
               ? turnGameRuleset.definition.items?.market
               : turnKitItems?.definition.items?.market;
-          const turnWorld =
+          const turnWorldStored =
             chatMode === "game" && !input.impersonate ? await loadGameWorld(app.db, input.chatId, chatMeta) : null;
+          // A world with more than one map (a journey off the first): the turn is on the map the replies
+          // before it left the party on.
+          const turnWorld = turnWorldStored
+            ? await worldMapInForce(
+                app.db,
+                input.chatId,
+                chatMeta,
+                turnWorldStored,
+                input.regenerateMessageId ?? null,
+              ).catch((error: unknown) => {
+                logger.warn(error, "[generate] Could not read which of the world's maps the party is on");
+                return turnWorldStored;
+              })
+            : null;
           let turnPresent: WorldPresent | undefined;
           // The Game Master's replies before this one (a regeneration's before the telling it replaces).
           let turnReplies: Awaited<ReturnType<typeof gameRepliesBefore>> | undefined;
@@ -10621,6 +10643,7 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
               }
             }
             if (/\[place:/i.test(fullResponse)) {
+              const unplaced = fullResponse;
               const placed = applyGamePlaceTags(
                 fullResponse,
                 (word) => (turnMarket ? rulesetMarketPlace(turnMarket, word) : worldKitSize(turnWorld!.kit, word)),
@@ -10631,6 +10654,21 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
                 contentReplaced = true;
               }
               if (placed.place) turnPlace = placed.place;
+              // A journey off the map (worldgen, world-travel.ts): a place no map of the world has opens a
+              // map there, kept once the reply is saved; one another map has takes the party back to it.
+              if (
+                turnWorld &&
+                placed.place?.name &&
+                !worldPlaceByName(turnWorld.world, placed.place.name) &&
+                !(turnPresent && worldAddedPlace(turnWorld, turnPresent, placed.place.name))
+              ) {
+                turnTravel = await worldTravelFor(
+                  chatMeta,
+                  turnWorld,
+                  placed.place.name,
+                  placeTagBeyond(unplaced, placed.place.name),
+                );
+              }
               // The map follows the story (worldgen W7): a world place the reply names, when the game's
               // atlas has it, is the reply's move on the map unless the reply made one of its own.
               // A market game without a world answers place tags too, and has no world places to map.
@@ -11119,6 +11157,15 @@ export async function generateRoutes(app: FastifyInstance, options: GenerateRout
             } catch (err) {
               // The reply is saved either way: a failed write is logged, never the turn's failure.
               logger.error(err, "[generate] Overworld walk and clock update failed for chat %s", input.chatId);
+            }
+          }
+          // The map a journey went to (world-travel.ts) is the one the party is on, once the reply is saved.
+          if (turnTravel && savedMsg?.id && !generationSignal.aborted) {
+            try {
+              await keepWorldTravel(app.db, input.chatId, turnTravel);
+              chatMeta.gameWorld = turnTravel.gameWorld;
+            } catch (err) {
+              logger.error(err, "[generate] Could not keep the map a journey went to for chat %s", input.chatId);
             }
           }
           // The world's people the saved reply named become tracked NPCs (worldgen W2).

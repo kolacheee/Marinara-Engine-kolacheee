@@ -226,7 +226,7 @@ export function buildCheckpointWorldEditsRestore(
   // re-saves no snapshot for it, so the common rewind (the layer unchanged) costs nothing here.
   if (sameGameDataValue((storedWorld as { edits?: unknown }).edits, edits)) return nothing;
 
-  const game = gameWorldFromMetadata(metadataAfterRestore);
+  const game = gameWorldFromMetadata(metadataAfterRestore, "home");
   if (!game) return { patch: null, refusal: "this game's world cannot be read" };
   if (edits) {
     const issues = [...worldEditIssues(game, edits), ...worldTownEditIssues(game, edits)];

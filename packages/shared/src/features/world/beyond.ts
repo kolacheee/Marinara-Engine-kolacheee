@@ -295,5 +295,9 @@ export function worldBeyondText(game: GameWorld): string {
     const names = land.names.length ? land.names.join(", ") : "lands with no name yet";
     return `${DIRECTION[land.side]}: ${names} (${ground.join(", ")})`;
   });
-  return `- Past the map's edges (lands the party can hear of or set out for, not on the map): ${parts.join("; ")}.`;
+  // How the party leaves the map: a new map is made where it goes (world-travel.ts).
+  const how = game.brief.earth
+    ? `A journey to a real place off the map (a flight, a voyage, a long road) is a place tag naming it, as [place: name="New York"]; the world opens a map there.`
+    : `To take the party past an edge, name the land in the place tag with the side it is on, as [place: name="Valdmark" beyond="north"]; the world opens a map there.`;
+  return `- Past the map's edges (lands the party can hear of or set out for, not on the map): ${parts.join("; ")}. ${how}`;
 }
