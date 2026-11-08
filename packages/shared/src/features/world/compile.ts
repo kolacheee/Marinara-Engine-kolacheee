@@ -1156,6 +1156,37 @@ export function compileWorld({
       ? compileShapedGround(seed, kit, width, height)
       : null;
   const { terrain, kinds } = shaped ?? compileGround(seed, kit, width, height);
+  // Another map past an edge of the one before it: the ground along the edge it meets that map by is the
+  // ground that map showed past its own edge, so the land runs on across (world maps, beyond.ts).
+  if (brief?.join && !earth && generatorVersion >= 10) {
+    const along = brief.join.side === "north" || brief.join.side === "south" ? width : height;
+    const depth = Math.floor(brief.join.ground.length / along);
+    for (let index = 0; index < depth * along; index++) {
+      const kind = parseInt(brief.join.ground[index]!, 36);
+      if (!(kind < terrain.length)) continue;
+      const [row, at] = [Math.floor(index / along), index % along];
+      const [jx, jy]: [number, number] =
+        brief.join.side === "north"
+          ? [at, row]
+          : brief.join.side === "south"
+            ? [at, height - 1 - row]
+            : brief.join.side === "west"
+              ? [row, at]
+              : [width - 1 - row, at];
+      if (jx < 0 || jy < 0 || jx >= width || jy >= height) continue;
+      const cell = jy * width + jx;
+      kinds[cell] = kind;
+      if (shaped?.land) {
+        const water = terrain[kind]!.kind === "water";
+        const barrier = terrain[kind]!.kind === "barrier";
+        shaped.land.isWater[cell] = water ? 1 : 0;
+        shaped.land.isBarrier[cell] = barrier ? 1 : 0;
+        if (water) shaped.land.elevation[cell] = 0;
+        else if (barrier) shaped.land.elevation[cell] = Math.max(shaped.land.elevation[cell]!, 0.8);
+        else if (shaped.land.elevation[cell]! <= 0.05) shaped.land.elevation[cell] = 0.2;
+      }
+    }
+  }
   // Generator 7: rivers down the shaped ground, and the resources settlements grow around, on a map big
   // enough to hold them (a region and up; a town or a site is too small a piece of land). On Earth, the
   // real rivers, at any scale.

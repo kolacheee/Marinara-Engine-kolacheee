@@ -37,6 +37,20 @@ const WHERE_YOU_ARE_PEOPLE = 5;
 
 export const WORLD_GROUNDINGS = Object.freeze(["expand", "strict"] as const);
 
+/** Another map of a game's world (owner 2026-11-08: "how does it handle cases where the user travels long
+ *  distance, let's say takes a flight from Tokyo to New York City"): made when the party first goes there,
+ *  at the same scale, and kept, so going back finds it as it was. `name` is the place it was made for. */
+export const worldMapSchema = z
+  .object({
+    id: z.string().regex(/^map-\d{1,3}$/),
+    name: z.string().min(1).max(80),
+    seed: z.number().int().min(0).max(0xffffffff),
+    brief: worldBriefSchema,
+  })
+  .strict();
+export type WorldMapEntry = z.infer<typeof worldMapSchema>;
+export const WORLD_GAME_MAPS_MAX = 12;
+
 /** What a game stores as `gameWorld`: the inputs of its compile. */
 export const gameWorldSchema = z
   .object({
@@ -46,6 +60,10 @@ export const gameWorldSchema = z
     brief: worldBriefSchema,
     /** The hand edits kept with it (W9c), applied after the compile. */
     edits: worldEditsSchema.optional(),
+    /** The world's other maps, where the party has gone past the first (worldMapSchema). */
+    maps: z.array(worldMapSchema).max(WORLD_GAME_MAPS_MAX).optional(),
+    /** The map the party is on: one of `maps`, else the first. */
+    here: z.string().max(16).optional(),
   })
   .strict();
 export type GameWorldInput = z.input<typeof gameWorldSchema>;
@@ -66,6 +84,8 @@ export interface GameWorld {
   /** The snapshot this world was read from (W11): its people, history and towns are the snapshot's, never
    *  made again. */
   frozen?: import("./snapshot.js").WorldSnapshot;
+  /** Which of the world's other maps this is (gameWorldSchema `maps`); the first map when left out. */
+  mapId?: string;
 }
 
 /** The world as compiled, before its edits: the snapshot's, or compiled now. */
@@ -112,12 +132,32 @@ export function compileGameWorld(input: Omit<GameWorld, "world">): CompiledWorld
 
 /** The game's world, or null when it has none, or none this Engine can read. A world made by another
  *  generator version is never reshaped by this one, so it reads as no world rather than a different one. */
-export function gameWorldFromMetadata(metadata: Record<string, unknown> | null | undefined): GameWorld | null {
+export function gameWorldFromMetadata(
+  metadata: Record<string, unknown> | null | undefined,
+  /** The map to read: the one the party is on (`here`) when left out; "home" for the first. */
+  mapId?: string,
+): GameWorld | null {
   if (!metadata || metadata.gameWorld == null) return null;
   const kit = gameWorldKitFromMetadata(metadata);
   if (!kit) return null;
   const parsed = gameWorldSchema.safeParse(metadata.gameWorld);
   if (!parsed.success || !worldGeneratorReads(parsed.data.generatorVersion)) return null;
+  // Another of the world's maps: made from its own brief and seed, with no hand edits (those are the
+  // first map's).
+  const away = parsed.data.maps?.find((map) => map.id === (mapId ?? parsed.data.here));
+  if (away && mapId !== "home") {
+    const checked = checkWorldBrief(kit, away.brief);
+    if (!checked.ok) return null;
+    const inputs = {
+      kit,
+      seed: away.seed,
+      grounding: parsed.data.grounding,
+      brief: checked.brief,
+      generatorVersion: parsed.data.generatorVersion,
+    };
+    const world = compileGameWorld(inputs);
+    return { ...inputs, world, compiled: world, mapId: away.id };
+  }
   const checked = checkWorldBrief(kit, parsed.data.brief);
   if (!checked.ok) return null;
   const inputs = {
@@ -132,6 +172,13 @@ export function gameWorldFromMetadata(metadata: Record<string, unknown> | null |
   const edits = parsed.data.edits && worldEditsFightable(parsed.data.edits).edits;
   const full = edits && worldEditIssues(inputs, edits).length === 0 ? { ...inputs, edits } : inputs;
   return { ...full, world: compileGameWorld(full), compiled: compileGameWorld(inputs) };
+}
+
+/** The other map of the world the party is on, by its id, or undefined when it is on the first. */
+export function gameWorldMapHere(metadata: Record<string, unknown> | null | undefined): string | undefined {
+  const stored = metadata?.gameWorld as { here?: unknown; maps?: Array<{ id?: unknown }> } | null | undefined;
+  const here = typeof stored?.here === "string" ? stored.here : undefined;
+  return here && Array.isArray(stored?.maps) && stored.maps.some((map) => map?.id === here) ? here : undefined;
 }
 
 /** Why an edit layer (W9c) does not fit a world, or nothing: checked against the world as compiled.
@@ -262,6 +309,12 @@ export function worldOverviewPromptText(game: GameWorld): string {
     `- Now: ${brief.premise}`,
     ...(outer.length ? [`- ${outer.map((place) => describe(kit, place)).join("; ")}.`] : []),
     `- Biggest places: ${biggest.map((place) => describe(kit, place)).join("; ")}.`,
+    // Another of the world's maps (a journey off the first): the first is still there to go back to.
+    ...(game.mapId
+      ? [
+          `- The party has travelled off the world's first map to this one; the places of the first map are still there, and a place tag naming one of them takes the party back.`,
+        ]
+      : []),
     // The land past the map's edges, so the world does not end there.
     ...[worldBeyondText(game)].filter(Boolean),
     ...brief.groups
