@@ -3,17 +3,29 @@
 These files are baked by `scripts/earth/bake-earth.py` from the sources below. An Earth world samples an
 area of them at its map's size on the server and keeps that sample with the world's brief.
 
-| File                     | What it holds                                                                                                                                                                         |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `earth-grid.bin`         | gzip: a 0.1 degree grid (3600 x 1800, row 0 at 90N, column 0 at 180W), three byte planes: surface (0 sea, 1 lake, 2 land, 3 ice), height (metres / 32) and dryness (0 wet to 255 dry) |
-| `earth-coast.bin`        | gzip: the coast and lakes at 0.02 degrees (18000 x 9000), two bit planes (land, then lake), for town and region maps                                                                  |
-| `earth-features.json.gz` | gzip JSON: rivers (name, rank, line), cities (name, country, state, lon, lat, population, rank, capital) and named regions (ranges, deserts, plains)                                  |
+| File                     | What it holds                                                                                                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `earth-grid.bin`         | gzip: a 0.1 degree grid (3600 x 1800, row 0 at 90N, column 0 at 180W), three byte planes: surface (0 sea, 1 lake, 2 land, 3 ice), height (metres / 32) and dryness (0 wet to 255 dry)  |
+| `earth-coast.bin`        | gzip: the coast and lakes at 0.02 degrees (18000 x 9000), two bit planes (land, then lake), for town and region maps                                                                   |
+| `earth-features.json.gz` | gzip JSON: rivers (name, rank, line), cities (name, country, state, lon, lat, population, rank, capital) and named regions (ranges, deserts, plains)                                   |
+| `earth-history.json.gz`  | gzip JSON: the dated cities of the past (name, other names, place, [year, people] counts, the Natural Earth city it is today) and today's cities' names of the past ([from, to, name]) |
+| `earth-polities.bin`     | the realms of the past: a 4-byte length, a gzip JSON header (name, union, years, member of, area, box on a 0.2 degree grid) and each realm's land as a zlib bit mask                   |
 
 To bake them again, download the sources unchanged into one folder and run:
 
 ```
 python3 -I scripts/earth/bake-earth.py SOURCE_DIR packages/server/src/assets/earth
 ```
+
+The history files are baked by `scripts/earth/bake-earth-history.py` from the Reba et al. tables
+(`chandlerV2.csv`, `modelskiAncientV2.csv`, `modelskiModernV2.csv`), Cliopatria's
+`cliopatria_polities_only_v021.geojson` and `ne_10m_populated_places_simple.geojson`:
+
+```
+python3 -I scripts/earth/bake-earth-history.py SOURCE_DIR packages/server/src/assets/earth
+```
+
+The names of the past (Edo, Constantinople, Bianjing) are the bake's own table.
 
 ## Sources
 
@@ -46,3 +58,13 @@ this attribution:
 
 **Dryness** is not a source: the bake works it out from the climate belts by latitude, the distance from
 the sea, the monsoon east coasts and westerly west coasts, and Natural Earth's deserts.
+
+**Cities of the past**: Reba, M., Reitsma, F. & Seto, K. C. (2016), "Spatializing 6,000 years of global
+urbanization from 3700 BC to AD 2000", _Scientific Data_ 3, 160034 (doi:10.1038/sdata.2016.34). The
+datasets digitise Chandler's _Four Thousand Years of Urban Growth_ and Modelski's _World Cities: -3000 to
+2000_: figshare doi:10.6084/m9.figshare.2059494, 10.6084/m9.figshare.2059497 and
+10.6084/m9.figshare.2059500, licensed CC BY 4.0. Joined to Natural Earth's cities and resampled by the bake.
+
+**Realms of the past**: Cliopatria v0.2.1, Seshat Global History Databank (Bennett, J. S. et al. 2024,
+Zenodo doi:10.5281/zenodo.13363121), licensed CC BY 4.0. Rasterised to a 0.2 degree grid by the bake; the
+Viking settlements' row is ended at 1170.

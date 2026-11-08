@@ -8,6 +8,7 @@ import { worldBriefSchema, type WorldBrief, type WorldEarth } from "../../schema
 import type { WorldKit } from "../../schemas/world-kit.schema.js";
 import { WORLD_DAYS_PER_CELL, WORLD_GROUND_SIZE } from "./compile.js";
 import { WORLD_EARTH_KM_PER_DAY, worldEarthCellDegrees, worldEarthEncode } from "./earth.js";
+import { worldEarthCitiesIn, worldEarthHistoricalPlace, type WorldEarthHistory } from "./earth-history.js";
 
 /** The baked grid: 3600 x 1800 cells of 0.1 degrees, row 0 at 90N, column 0 at 180W, three byte planes
  *  (surface, height in metres / 32, dryness). */
@@ -44,6 +45,8 @@ export interface WorldEarthData {
   grid: WorldEarthGrid;
   features: WorldEarthFeatures;
   coast?: WorldEarthCoast;
+  /** The past (historical eras): dated cities and the realms that held the land. */
+  history?: WorldEarthHistory;
 }
 
 /** Named areas, for a setting on Earth that names no real place the grid knows. */
@@ -307,8 +310,19 @@ export function sampleWorldEarth(
   }
   rivers.sort((a, b) => b.width - a.width || b.path.length - a.path.length);
 
+  // In a year before today's, the cities of that year, in their names then and the realms that held them.
+  const past = options.year !== undefined && options.year < 2000 && data.history ? options.year : undefined;
+  const source =
+    past !== undefined
+      ? worldEarthCitiesIn(
+          data.history!,
+          data.features.cities,
+          past,
+          (pointLon, pointLat) => cellOf(pointLon, pointLat).inside,
+        )
+      : data.features.cities;
   const cities: WorldEarth["cities"] = [];
-  for (const city of [...data.features.cities].sort((a, b) => b.pop - a.pop || a.rank - b.rank)) {
+  for (const city of [...source].sort((a, b) => b.pop - a.pop || a.rank - b.rank)) {
     const where = cellOf(city.lon, city.lat);
     if (!where.inside || !promptSafe(city.name) || city.name.length > 60 || !promptSafe(city.country)) continue;
     cities.push({
@@ -378,15 +392,21 @@ export function worldEarthLocate(
     const country = countries.get(key);
     const land = lands.get(key);
     const area = areas.get(key);
-    const point = city
-      ? { lon: city.lon, lat: city.lat }
-      : country
-        ? { lon: country.lon, lat: country.lat }
-        : land
-          ? { lon: (land.box[0] + land.box[2]) / 2, lat: (land.box[1] + land.box[3]) / 2 }
-          : area
-            ? { lon: area.lon, lat: area.lat }
-            : null;
+    const old =
+      !city && !country && !land && !area && data.history
+        ? worldEarthHistoricalPlace(data.history, data.features.cities, name, fold)
+        : null;
+    const point = old
+      ? old
+      : city
+        ? { lon: city.lon, lat: city.lat }
+        : country
+          ? { lon: country.lon, lat: country.lat }
+          : land
+            ? { lon: (land.box[0] + land.box[2]) / 2, lat: (land.box[1] + land.box[3]) / 2 }
+            : area
+              ? { lon: area.lon, lat: area.lat }
+              : null;
     if (point) found.push({ name, ...point, start: !!start });
   }
   if (!found.length) return null;
