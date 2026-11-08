@@ -1,0 +1,479 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "BRIEF-10.md, Part 7: Orchards and vineyards",
+      "files_reviewed": 64,
+      "prior_review": "critic-r107-0.json does not exist; no inherited passes.",
+      "references": "reference/*-marker0..3.png and the fantasy, wuxia, jazz_age and modern house references; approved out/ markers, city/slums/industry round-2 tiles, paddies, farmland, grass/plains bases and details.",
+      "checks_completed": [
+        "Every target file inspected at 8x nearest-neighbour on a checkerboard; all 64 dimensions, alpha values, bounds, palettes and exact duplicate hashes checked.",
+        "Every target included twice in a seeded 8x2 random tiling on seasonal farmland, inspected at 1x and 4x. Neutral grass/plains composites distinguish prop repetition from the approved field grid.",
+        "Orchard trees composited as a dense 6x4 stand on each seasonal forest floor, inspected at 1x and 4x.",
+        "Seasonal approved farmland reference tiled 3x3 and inspected at 1x and 4x."
+      ],
+      "not_applicable": "Part 7 contains no base files or mountain peaks. Peak lattice/range, egg-crate peaks, Swiss-cheese craters, classical ruins and stamped cyberpunk grids concern other parts and were not assigned verdicts. The 3x3 farmland panels are reference context, not reviews of approved assets.",
+      "technical_findings": "All targets are 48x48 RGBA with alpha only 0/255. No blur, anti-aliased edge, semitransparent fringe or exact duplicate file was found. The 39-40 px planted envelope fits the approximate 70-85% footprint instruction; opaque-pixel coverage is not used as a footprint failure.",
+      "style_findings": "Olive greens, warm wood, blossom pink, warm autumn hues and cool snow are broadly compatible with the approved art. No definite reversed light direction or white/magenta halo was found. Seasonal counterparts are intentional and are not counted as duplicates.",
+      "result": "0 pass, 64 fail. These are placement/continuity failures visible at native size, not demands for additional surface detail."
+    },
+    "orchard-summer": {
+      "verdict": "fail",
+      "members": [
+        "orchard-prop-0",
+        "orchard-prop-1",
+        "orchard-prop-2",
+        "orchard-prop-3",
+        "orchard-prop-4",
+        "orchard-prop-5",
+        "orchard-prop-6",
+        "orchard-prop-7"
+      ],
+      "pass": 0,
+      "fail": 8,
+      "seasonal_check": "Summer foliage and fruit are readable.",
+      "evidence": [
+        "critic-r107-1-orchard-summer-8x2-farmland-1x.png",
+        "critic-r107-1-orchard-summer-8x2-farmland-4x.png",
+        "critic-r107-1-orchard-summer-8x2-grass-1x.png",
+        "critic-r107-1-orchard-summer-8x2-grass-4x.png",
+        "critic-r107-1-orchard-summer-files-8x.png",
+        "critic-r107-1-orchard-summer-dense-stand-1x.png",
+        "critic-r107-1-orchard-summer-dense-stand-4x.png"
+      ],
+      "finding": "Repeated six-tree/two-row blocks remain visible in the cultivated forest at 1x and 4x. The fixed inset does not produce the soft joining requested by Part 7."
+    },
+    "orchard-spring": {
+      "verdict": "fail",
+      "members": [
+        "orchard@spring-prop-0",
+        "orchard@spring-prop-1",
+        "orchard@spring-prop-2",
+        "orchard@spring-prop-3",
+        "orchard@spring-prop-4",
+        "orchard@spring-prop-5",
+        "orchard@spring-prop-6",
+        "orchard@spring-prop-7"
+      ],
+      "pass": 0,
+      "fail": 8,
+      "seasonal_check": "Blossom is present on the orchard; budding foliage is present on the vineyard.",
+      "evidence": [
+        "critic-r107-1-orchard-spring-8x2-farmland-1x.png",
+        "critic-r107-1-orchard-spring-8x2-farmland-4x.png",
+        "critic-r107-1-orchard-spring-8x2-grass-1x.png",
+        "critic-r107-1-orchard-spring-8x2-grass-4x.png",
+        "critic-r107-1-orchard-spring-files-8x.png",
+        "critic-r107-1-orchard-spring-dense-stand-1x.png",
+        "critic-r107-1-orchard-spring-dense-stand-4x.png"
+      ],
+      "finding": "Repeated six-tree/two-row blocks remain visible in the cultivated forest at 1x and 4x. The fixed inset does not produce the soft joining requested by Part 7."
+    },
+    "orchard-autumn": {
+      "verdict": "fail",
+      "members": [
+        "orchard@autumn-prop-0",
+        "orchard@autumn-prop-1",
+        "orchard@autumn-prop-2",
+        "orchard@autumn-prop-3",
+        "orchard@autumn-prop-4",
+        "orchard@autumn-prop-5",
+        "orchard@autumn-prop-6",
+        "orchard@autumn-prop-7"
+      ],
+      "pass": 0,
+      "fail": 8,
+      "seasonal_check": "Autumn has yellow/orange/red variation rather than a single flat orange fill; continuity remains the blocker.",
+      "evidence": [
+        "critic-r107-1-orchard-autumn-8x2-farmland-1x.png",
+        "critic-r107-1-orchard-autumn-8x2-farmland-4x.png",
+        "critic-r107-1-orchard-autumn-8x2-grass-1x.png",
+        "critic-r107-1-orchard-autumn-8x2-grass-4x.png",
+        "critic-r107-1-orchard-autumn-files-8x.png",
+        "critic-r107-1-orchard-autumn-dense-stand-1x.png",
+        "critic-r107-1-orchard-autumn-dense-stand-4x.png"
+      ],
+      "finding": "Repeated six-tree/two-row blocks remain visible in the cultivated forest at 1x and 4x. The fixed inset does not produce the soft joining requested by Part 7."
+    },
+    "orchard-winter": {
+      "verdict": "fail",
+      "members": [
+        "orchard@winter-prop-0",
+        "orchard@winter-prop-1",
+        "orchard@winter-prop-2",
+        "orchard@winter-prop-3",
+        "orchard@winter-prop-4",
+        "orchard@winter-prop-5",
+        "orchard@winter-prop-6",
+        "orchard@winter-prop-7"
+      ],
+      "pass": 0,
+      "fail": 8,
+      "seasonal_check": "Bare woody structure and snow are present; winter is neither blank nor a summer foliage recolour.",
+      "evidence": [
+        "critic-r107-1-orchard-winter-8x2-farmland-1x.png",
+        "critic-r107-1-orchard-winter-8x2-farmland-4x.png",
+        "critic-r107-1-orchard-winter-8x2-grass-1x.png",
+        "critic-r107-1-orchard-winter-8x2-grass-4x.png",
+        "critic-r107-1-orchard-winter-files-8x.png",
+        "critic-r107-1-orchard-winter-dense-stand-1x.png",
+        "critic-r107-1-orchard-winter-dense-stand-4x.png"
+      ],
+      "finding": "Repeated six-tree/two-row blocks remain visible in the cultivated forest at 1x and 4x. The fixed inset does not produce the soft joining requested by Part 7."
+    },
+    "vineyard-summer": {
+      "verdict": "fail",
+      "members": [
+        "vineyard-prop-0",
+        "vineyard-prop-1",
+        "vineyard-prop-2",
+        "vineyard-prop-3",
+        "vineyard-prop-4",
+        "vineyard-prop-5",
+        "vineyard-prop-6",
+        "vineyard-prop-7"
+      ],
+      "pass": 0,
+      "fail": 8,
+      "seasonal_check": "Summer foliage and fruit are readable.",
+      "evidence": [
+        "critic-r107-1-vineyard-summer-8x2-farmland-1x.png",
+        "critic-r107-1-vineyard-summer-8x2-farmland-4x.png",
+        "critic-r107-1-vineyard-summer-8x2-grass-1x.png",
+        "critic-r107-1-vineyard-summer-8x2-grass-4x.png",
+        "critic-r107-1-vineyard-summer-files-8x.png"
+      ],
+      "finding": "Inset end posts, changing slopes and inconsistent row pitch make disconnected cell-sized trellis patches at 1x and 4x, not a continuous vineyard."
+    },
+    "vineyard-spring": {
+      "verdict": "fail",
+      "members": [
+        "vineyard@spring-prop-0",
+        "vineyard@spring-prop-1",
+        "vineyard@spring-prop-2",
+        "vineyard@spring-prop-3",
+        "vineyard@spring-prop-4",
+        "vineyard@spring-prop-5",
+        "vineyard@spring-prop-6",
+        "vineyard@spring-prop-7"
+      ],
+      "pass": 0,
+      "fail": 8,
+      "seasonal_check": "Blossom is present on the orchard; budding foliage is present on the vineyard.",
+      "evidence": [
+        "critic-r107-1-vineyard-spring-8x2-farmland-1x.png",
+        "critic-r107-1-vineyard-spring-8x2-farmland-4x.png",
+        "critic-r107-1-vineyard-spring-8x2-grass-1x.png",
+        "critic-r107-1-vineyard-spring-8x2-grass-4x.png",
+        "critic-r107-1-vineyard-spring-files-8x.png"
+      ],
+      "finding": "Inset end posts, changing slopes and inconsistent row pitch make disconnected cell-sized trellis patches at 1x and 4x, not a continuous vineyard."
+    },
+    "vineyard-autumn": {
+      "verdict": "fail",
+      "members": [
+        "vineyard@autumn-prop-0",
+        "vineyard@autumn-prop-1",
+        "vineyard@autumn-prop-2",
+        "vineyard@autumn-prop-3",
+        "vineyard@autumn-prop-4",
+        "vineyard@autumn-prop-5",
+        "vineyard@autumn-prop-6",
+        "vineyard@autumn-prop-7"
+      ],
+      "pass": 0,
+      "fail": 8,
+      "seasonal_check": "Autumn has yellow/orange/red variation rather than a single flat orange fill; continuity remains the blocker.",
+      "evidence": [
+        "critic-r107-1-vineyard-autumn-8x2-farmland-1x.png",
+        "critic-r107-1-vineyard-autumn-8x2-farmland-4x.png",
+        "critic-r107-1-vineyard-autumn-8x2-grass-1x.png",
+        "critic-r107-1-vineyard-autumn-8x2-grass-4x.png",
+        "critic-r107-1-vineyard-autumn-files-8x.png"
+      ],
+      "finding": "Inset end posts, changing slopes and inconsistent row pitch make disconnected cell-sized trellis patches at 1x and 4x, not a continuous vineyard."
+    },
+    "vineyard-winter": {
+      "verdict": "fail",
+      "members": [
+        "vineyard@winter-prop-0",
+        "vineyard@winter-prop-1",
+        "vineyard@winter-prop-2",
+        "vineyard@winter-prop-3",
+        "vineyard@winter-prop-4",
+        "vineyard@winter-prop-5",
+        "vineyard@winter-prop-6",
+        "vineyard@winter-prop-7"
+      ],
+      "pass": 0,
+      "fail": 8,
+      "seasonal_check": "Bare woody structure and snow are present; winter is neither blank nor a summer foliage recolour.",
+      "evidence": [
+        "critic-r107-1-vineyard-winter-8x2-farmland-1x.png",
+        "critic-r107-1-vineyard-winter-8x2-farmland-4x.png",
+        "critic-r107-1-vineyard-winter-8x2-grass-1x.png",
+        "critic-r107-1-vineyard-winter-8x2-grass-4x.png",
+        "critic-r107-1-vineyard-winter-files-8x.png"
+      ],
+      "finding": "Inset end posts, changing slopes and inconsistent row pitch make disconnected cell-sized trellis patches at 1x and 4x, not a continuous vineyard."
+    }
+  },
+  "pass": [],
+  "fail": [
+    {
+      "name": "orchard-prop-0",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The broad six-tree block has a visibly tighter gap between its two internal rows than between the block and the next cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard-prop-1",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. Its narrow pointed crowns make a much sparser patch next to the broad crowns in variants 0, 3, 5 and 6; the density jump reveals the cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard-prop-2",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The small narrow crowns leave particularly open ground around the six-tree group; neighbouring fuller variants reveal its rectangular footprint. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard-prop-3",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The two rows of broad crowns terminate together above the same clear bottom strip; adjacent groups remain visibly separated. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard-prop-4",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The six small isolated crowns create a conspicuous low-density square beside the fuller variants; its thin trunks do not bridge the gap. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard-prop-5",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The broad crowded crowns nearly merge within each group but stop at the perimeter, making the empty boundary band especially conspicuous. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard-prop-6",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The dense crowns form two compact belts inside the tile, then restart after a wider gap in the next cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard-prop-7",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The full six-tree group still has a regular perimeter moat; its two-row grouping remains apparent in the random stand. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@spring-prop-0",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The broad six-tree block has a visibly tighter gap between its two internal rows than between the block and the next cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@spring-prop-1",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. Its narrow pointed crowns make a much sparser patch next to the broad crowns in variants 0, 3, 5 and 6; the density jump reveals the cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@spring-prop-2",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The small narrow crowns leave particularly open ground around the six-tree group; neighbouring fuller variants reveal its rectangular footprint. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@spring-prop-3",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The two rows of broad crowns terminate together above the same clear bottom strip; adjacent groups remain visibly separated. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@spring-prop-4",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The six small isolated crowns create a conspicuous low-density square beside the fuller variants; its thin trunks do not bridge the gap. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@spring-prop-5",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The broad crowded crowns nearly merge within each group but stop at the perimeter, making the empty boundary band especially conspicuous. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@spring-prop-6",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The dense crowns form two compact belts inside the tile, then restart after a wider gap in the next cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@spring-prop-7",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The full six-tree group still has a regular perimeter moat; its two-row grouping remains apparent in the random stand. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@autumn-prop-0",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The broad six-tree block has a visibly tighter gap between its two internal rows than between the block and the next cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@autumn-prop-1",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. Its narrow pointed crowns make a much sparser patch next to the broad crowns in variants 0, 3, 5 and 6; the density jump reveals the cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@autumn-prop-2",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The small narrow crowns leave particularly open ground around the six-tree group; neighbouring fuller variants reveal its rectangular footprint. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@autumn-prop-3",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The two rows of broad crowns terminate together above the same clear bottom strip; adjacent groups remain visibly separated. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@autumn-prop-4",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The six small isolated crowns create a conspicuous low-density square beside the fuller variants; its thin trunks do not bridge the gap. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@autumn-prop-5",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The broad crowded crowns nearly merge within each group but stop at the perimeter, making the empty boundary band especially conspicuous. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@autumn-prop-6",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The dense crowns form two compact belts inside the tile, then restart after a wider gap in the next cell. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@autumn-prop-7",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: the six-tree/two-row clump resets every 48 px. A common four-pixel empty perimeter leaves at least an eight-pixel clear band between cells, wider than the gaps within the clump, so a visible patch grid survives on plain ground and in the forest composite. The full six-tree group still has a regular perimeter moat; its two-row grouping remains apparent in the random stand. Re-space the tree centres to a shared planting pitch across cell boundaries, stagger the outside crowns and trunks, and balance crown density against the other seven variants; keep the approximate 70-85% footprint and clean binary edges. Recheck a random stand, not only the isolated sprite."
+    },
+    {
+      "name": "orchard@winter-prop-0",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: six bare trees remain grouped into two rows in each 48 px cell. The common four-pixel empty perimeter creates at least eight-pixel gutters between groups; the wider boundary bands expose a repeating patch grid on snow and in the winter forest composite. Bare branches and snow are present and are not the failure. Re-space trunks and branch extents so the planting pitch continues through the boundary rather than restarting as another six-tree block; stagger the outside trees while preserving the approximate footprint, bare winter structure and clean binary edges."
+    },
+    {
+      "name": "orchard@winter-prop-1",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: six bare trees remain grouped into two rows in each 48 px cell. The common four-pixel empty perimeter creates at least eight-pixel gutters between groups; the wider boundary bands expose a repeating patch grid on snow and in the winter forest composite. Bare branches and snow are present and are not the failure. Re-space trunks and branch extents so the planting pitch continues through the boundary rather than restarting as another six-tree block; stagger the outside trees while preserving the approximate footprint, bare winter structure and clean binary edges."
+    },
+    {
+      "name": "orchard@winter-prop-2",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: six bare trees remain grouped into two rows in each 48 px cell. The common four-pixel empty perimeter creates at least eight-pixel gutters between groups; the wider boundary bands expose a repeating patch grid on snow and in the winter forest composite. Bare branches and snow are present and are not the failure. Re-space trunks and branch extents so the planting pitch continues through the boundary rather than restarting as another six-tree block; stagger the outside trees while preserving the approximate footprint, bare winter structure and clean binary edges."
+    },
+    {
+      "name": "orchard@winter-prop-3",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: six bare trees remain grouped into two rows in each 48 px cell. The common four-pixel empty perimeter creates at least eight-pixel gutters between groups; the wider boundary bands expose a repeating patch grid on snow and in the winter forest composite. Bare branches and snow are present and are not the failure. Re-space trunks and branch extents so the planting pitch continues through the boundary rather than restarting as another six-tree block; stagger the outside trees while preserving the approximate footprint, bare winter structure and clean binary edges."
+    },
+    {
+      "name": "orchard@winter-prop-4",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: six bare trees remain grouped into two rows in each 48 px cell. The common four-pixel empty perimeter creates at least eight-pixel gutters between groups; the wider boundary bands expose a repeating patch grid on snow and in the winter forest composite. Bare branches and snow are present and are not the failure. Re-space trunks and branch extents so the planting pitch continues through the boundary rather than restarting as another six-tree block; stagger the outside trees while preserving the approximate footprint, bare winter structure and clean binary edges."
+    },
+    {
+      "name": "orchard@winter-prop-5",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: six bare trees remain grouped into two rows in each 48 px cell. The common four-pixel empty perimeter creates at least eight-pixel gutters between groups; the wider boundary bands expose a repeating patch grid on snow and in the winter forest composite. Bare branches and snow are present and are not the failure. Re-space trunks and branch extents so the planting pitch continues through the boundary rather than restarting as another six-tree block; stagger the outside trees while preserving the approximate footprint, bare winter structure and clean binary edges."
+    },
+    {
+      "name": "orchard@winter-prop-6",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: six bare trees remain grouped into two rows in each 48 px cell. The common four-pixel empty perimeter creates at least eight-pixel gutters between groups; the wider boundary bands expose a repeating patch grid on snow and in the winter forest composite. Bare branches and snow are present and are not the failure. Re-space trunks and branch extents so the planting pitch continues through the boundary rather than restarting as another six-tree block; stagger the outside trees while preserving the approximate footprint, bare winter structure and clean binary edges."
+    },
+    {
+      "name": "orchard@winter-prop-7",
+      "problems": "Fails the soft-joining orchard requirement at 1x and 4x: six bare trees remain grouped into two rows in each 48 px cell. The common four-pixel empty perimeter creates at least eight-pixel gutters between groups; the wider boundary bands expose a repeating patch grid on snow and in the winter forest composite. Bare branches and snow are present and are not the failure. Re-space trunks and branch extents so the planting pitch continues through the boundary rather than restarting as another six-tree block; stagger the outside trees while preserving the approximate footprint, bare winter structure and clean binary edges."
+    },
+    {
+      "name": "vineyard-prop-0",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. Three nearly horizontal rows end on upright posts inside both side margins instead of continuing into adjacent cells. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard-prop-1",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. All three rows climb to the right; they collide in angle and height with the horizontal and descending variants. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard-prop-2",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. Three nearly horizontal rows have conspicuous repeated end posts and cannot join the sloped variants at the boundary. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard-prop-3",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three rows descend to the right and terminate inside the cell; they reverse direction against ascending variants 1 and 6. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard-prop-4",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. This uses two thick rows where most variants use three, creating an abrupt row-pitch/density change as well as exposed end posts. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard-prop-5",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three roughly horizontal rows restart behind an empty strip and do not meet neighbours at a common row height. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard-prop-6",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three rising rows slope upward to the right, ending at a different height from horizontal and descending neighbours. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard-prop-7",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The uneven three-row arrangement still stops at both side margins, producing another isolated patch rather than continuous planting. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@spring-prop-0",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. Three nearly horizontal rows end on upright posts inside both side margins instead of continuing into adjacent cells. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@spring-prop-1",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. All three rows climb to the right; they collide in angle and height with the horizontal and descending variants. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@spring-prop-2",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. Three nearly horizontal rows have conspicuous repeated end posts and cannot join the sloped variants at the boundary. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@spring-prop-3",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three rows descend to the right and terminate inside the cell; they reverse direction against ascending variants 1 and 6. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@spring-prop-4",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. This uses two thick rows where most variants use three, creating an abrupt row-pitch/density change as well as exposed end posts. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@spring-prop-5",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three roughly horizontal rows restart behind an empty strip and do not meet neighbours at a common row height. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@spring-prop-6",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three rising rows slope upward to the right, ending at a different height from horizontal and descending neighbours. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@spring-prop-7",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The uneven three-row arrangement still stops at both side margins, producing another isolated patch rather than continuous planting. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@autumn-prop-0",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. Three nearly horizontal rows end on upright posts inside both side margins instead of continuing into adjacent cells. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@autumn-prop-1",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. All three rows climb to the right; they collide in angle and height with the horizontal and descending variants. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@autumn-prop-2",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. Three nearly horizontal rows have conspicuous repeated end posts and cannot join the sloped variants at the boundary. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@autumn-prop-3",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three rows descend to the right and terminate inside the cell; they reverse direction against ascending variants 1 and 6. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@autumn-prop-4",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. This uses two thick rows where most variants use three, creating an abrupt row-pitch/density change as well as exposed end posts. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@autumn-prop-5",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three roughly horizontal rows restart behind an empty strip and do not meet neighbours at a common row height. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@autumn-prop-6",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three rising rows slope upward to the right, ending at a different height from horizontal and descending neighbours. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@autumn-prop-7",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The uneven three-row arrangement still stops at both side margins, producing another isolated patch rather than continuous planting. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@winter-prop-0",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. Three nearly horizontal rows end on upright posts inside both side margins instead of continuing into adjacent cells. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@winter-prop-1",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. All three rows climb to the right; they collide in angle and height with the horizontal and descending variants. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@winter-prop-2",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. Three nearly horizontal rows have conspicuous repeated end posts and cannot join the sloped variants at the boundary. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@winter-prop-3",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three rows descend to the right and terminate inside the cell; they reverse direction against ascending variants 1 and 6. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@winter-prop-4",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. This uses two thick rows where most variants use three, creating an abrupt row-pitch/density change as well as exposed end posts. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@winter-prop-5",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three roughly horizontal rows restart behind an empty strip and do not meet neighbours at a common row height. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@winter-prop-6",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The three rising rows slope upward to the right, ending at a different height from horizontal and descending neighbours. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    },
+    {
+      "name": "vineyard@winter-prop-7",
+      "problems": "Fails the soft-joining vineyard requirement at 1x and 4x: each trellis patch is enclosed by the same four-pixel empty perimeter, producing at least eight-pixel clear gutters at every 48 px boundary. The uneven three-row arrangement still stops at both side margins, producing another isolated patch rather than continuous planting. Use compatible row angles, pitch and boundary heights across the set; align end posts/row continuations so random neighbours read as one planted field, and break the rectangular perimeter rhythm with irregular foliage. Recheck the mixed 8x2 arrangement on plain ground as well as farmland."
+    }
+  ]
+}
