@@ -68,3 +68,10 @@ datasets digitise Chandler's _Four Thousand Years of Urban Growth_ and Modelski'
 **Realms of the past**: Cliopatria v0.2.1, Seshat Global History Databank (Bennett, J. S. et al. 2024,
 Zenodo doi:10.5281/zenodo.13363121), licensed CC BY 4.0. Rasterised to a 0.2 degree grid by the bake; the
 Viking settlements' row is ended at 1170.
+
+**The news** (`earth-news.json.br`): the dated entries of English Wikipedia's year articles ("2001") and
+year-in-country articles ("2001 in Japan"), by Wikipedia's contributors, licensed CC BY-SA 4.0
+(https://creativecommons.org/licenses/by-sa/4.0/). Each entry is the article's own words, from the numbered
+revision the slashyear snapshot v1.1.0 (github.com/ctrl-maud/slashyear) keeps for it, retrieved
+September 2026; the bake (`scripts/earth/bake-earth-news.py`) keeps a share of them and names the place
+each names. This file, as the adapted material, is shared under the same licence, CC BY-SA 4.0.

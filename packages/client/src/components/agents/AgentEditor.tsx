@@ -2239,6 +2239,7 @@ export function AgentEditor() {
       BUILT_IN_TOOLS.filter(
         (tool) =>
           tool.name !== LOREBOOK_WRITE_TOOL_NAME &&
+          tool.name !== "world_news" &&
           (tool.name !== MESSAGE_EDIT_TOOL_NAME || localCustomCapabilities.edit_messages === true),
       ),
     [localCustomCapabilities.edit_messages],

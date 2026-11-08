@@ -120,6 +120,7 @@ const ROOM_TOOLS = new Set([
   "update_game_state",
   "trigger_event",
   "search_lorebook",
+  "world_news",
   "read_chat_summary",
   "append_chat_summary",
   "read_chat_variable",

@@ -41,6 +41,7 @@ import {
   SPOTIFY_RECENT_TRACK_HISTORY_LIMIT,
 } from "@marinara-engine/shared";
 import { symbolDiceResolution } from "../game/dice.service.js";
+import { worldNewsTool } from "../game/world-news.service.js";
 
 type ToolExecutionOutcome =
   { result: unknown; success: true; httpStatus?: never } | { result: unknown; success: false; httpStatus?: number };
@@ -396,6 +397,8 @@ async function executeBuiltInTool(
       return searchLorebook(args, context?.searchLorebook);
     case "web_search":
       return webSearch(args);
+    case "world_news":
+      return worldNewsTool(args, context?.chatMeta);
     case "save_lorebook_entry":
       return saveLorebookEntry(args, context?.saveLorebookEntry);
     case "edit_chat_message":
