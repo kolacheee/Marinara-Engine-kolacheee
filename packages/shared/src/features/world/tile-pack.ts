@@ -154,12 +154,20 @@ export const WORLD_BUILDING_PIECES: Readonly<Record<string, readonly Rect[]>> = 
   // A farm's buildings over its fields (the owner, 2026-11-07): a farmhouse, a barn, a granary or shed, a
   // cart, a pen, a tower or silo, one cell each.
   farmstead_props: buildingRow(6, 0, 1, 1),
+  // Orchard rows and vine rows over a field (BRIEF-10), eight each, made to join with their neighbours.
+  orchard_props: buildingRow(8, 0, 1, 1),
+  vineyard_props: buildingRow(8, 0, 1, 1),
+  // Sparse points of interest on open ground (BRIEF-10): a well, a shrine, standing stones, a watchtower.
+  landmark_props: buildingRow(8, 0, 1, 1),
 });
 /** The first yard prop in a building block (a hedge, a shed, a pool), drawn in the gaps between its houses. */
 export const WORLD_BUILDING_YARDS: Readonly<Record<string, number>> = Object.freeze({ buildings_suburb: 12 });
 export const WORLD_BUILDING_TILE_IDS = Object.freeze([
   ...WORLD_BUILDING_LOOKS.map((look) => `buildings_${look}` as const),
   "farmstead_props" as const,
+  "orchard_props" as const,
+  "vineyard_props" as const,
+  "landmark_props" as const,
 ]);
 const blockOf = (id: string): readonly [number, number] => {
   const pieces = WORLD_BUILDING_PIECES[id]!;

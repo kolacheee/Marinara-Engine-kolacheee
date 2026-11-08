@@ -180,6 +180,15 @@ def main(out_dir, paths, only):
             # A farm's buildings over its fields (BRIEF-10): six, one cell each.
             standing("farmstead_props", [f"{{family}}-farmstead{{season}}-{i}.png" for i in range(6)],
                      [(i, 0, 1, 1) for i in range(6)])
+        if "orchards" in only:
+            # Orchard rows and vine rows over a field (BRIEF-10), one set for every setting, eight each.
+            for kind in ("orchard", "vineyard"):
+                standing(f"{kind}_props", [f"{kind}{{season}}-prop-{i}.png" for i in range(8)],
+                         [(i, 0, 1, 1) for i in range(8)])
+        if "landmarks" in only:
+            # A setting's points of interest on open ground (BRIEF-10), eight, one cell each.
+            standing("landmark_props", [f"{{family}}-landmark{{season}}-{i}.png" for i in range(8)],
+                     [(i, 0, 1, 1) for i in range(8)])
         if "lanes" in only:
             # A city's lanes (BRIEF-11), in the joined path's layout: one block, summer, for the whole year.
             f = os.path.join(out_dir, f"{family}-lane.png")
@@ -270,7 +279,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "lanes", "farmsteads", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
+    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "lanes", "farmsteads", "orchards", "landmarks", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))
