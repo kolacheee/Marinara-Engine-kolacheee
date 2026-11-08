@@ -192,7 +192,7 @@ def maximal_night():
     """Relight the day art grid class by class, so every silhouette matches the day image pixel for pixel."""
     import random
     from process4 import hexc
-    day = maximal_day_art(); dp = day.load()
+    day = Image.open(P.OUT / "maximal" / "backdrop-day.png").convert("RGB").resize((480, 270), Image.NEAREST); dp = day.load()
     W, H = day.size
     lum = lambda c: (c[0] * 3 + c[1] * 6 + c[2]) / 10
     # foreground = the darker, saturated colours along the bottom (buildings, trees, pole and wires)
@@ -352,3 +352,124 @@ def portraits():
 
 
 RECIPES["maximal/portraits"] = portraits
+
+
+def fg_colours(art):
+    lum = lambda c: (c[0] * 3 + c[1] * 6 + c[2]) / 10
+    ys = {}
+    W, H = art.size; px = art.load()
+    for y in range(H):
+        for x in range(W):
+            ys.setdefault(px[x, y], []).append(y)
+    return {c for c, v in ys.items() if sum(v) / len(v) > 0.6 * H and lum(c) < 215}
+
+
+def maximal_day_b3():
+    """Batch 3: taller skyline from the new raw, but the sky kept pixel for pixel from the batch-1 day image."""
+    new = maximal_day_art(); old = Image.open(WORK_MAX / "final-b1.png").convert("RGB").resize((480, 270), Image.NEAREST)
+    fn, fo = fg_colours(new), fg_colours(old)
+    np_, op = new.load(), old.load()
+    for x in range(480):
+        top = next((y for y in range(270) if np_[x, y] in fn), 270)  # new skyline top in this column
+        for y in range(top):
+            if op[x, y] not in fo:
+                np_[x, y] = op[x, y]  # sky above the new skyline: the old sky exactly
+    # back to 12 colours: only near-duplicate shades merge, every pixel keeps its place
+    new = new.quantize(12, Image.Quantize.MEDIANCUT, kmeans=4, dither=Image.Dither.NONE).convert("RGB")
+    return up(new, 4)
+
+
+WORK_MAX = P.WORK / "maximal" / "backdrop-day"
+RECIPES["maximal/backdrop-day"] = maximal_day_b3
+RECIPES["creator/ambient-leaves"] = lambda: wrap_particles(key_out(raw("creator/ambient-leaves")), 1024)
+
+
+def creator_frame_card():
+    """Lines drawn exactly to spec (outer 2 px #B5462A 70% at 2 px inset, inner 1 px #D98A2B 60% at 6 px inset,
+    10 px radius); the corner leaf is the leaf-cursor art turned 180 degrees so its stem points into the frame."""
+    from PIL import ImageDraw
+    S, W = 4, 192
+    c = Image.new("RGBA", (W * S, W * S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(c)
+    # outer: 2 px wide stroke whose outer edge sits 2 px in; inner: 1 px stroke whose outer edge sits 6 px in
+    d.rounded_rectangle([2 * S, 2 * S, (W - 2) * S - 1, (W - 2) * S - 1], radius=10 * S, outline=(0xB5, 0x46, 0x2A, 178), width=2 * S)
+    d.rounded_rectangle([6 * S, 6 * S, (W - 6) * S - 1, (W - 6) * S - 1], radius=6 * S, outline=(0xD9, 0x8A, 0x2B, 153), width=1 * S)
+    c = c.resize((W, W), Image.BOX)
+    leaf = key_out(raw("creator/cursor-leaf")).rotate(180)
+    leaf = place(leaf, 42, 42)
+    c.alpha_composite(leaf, (2, 2))  # inside the top-left 46 x 46 square
+    return c
+
+
+RECIPES["creator/frame-card"] = creator_frame_card
+
+
+def icon_art(k, h_art, colours=5):
+    """One icon raw -> art pixels `h_art` tall (aspect kept), hard alpha, few flat colours."""
+    img = key_out(raw(k)).convert("RGBA")
+    img = img.crop(P.alpha_bbox(img))
+    w_art = max(1, round(img.width * h_art / img.height))
+    if w_art > 28:  # keep inside the 28 px square
+        h_art = round(h_art * 28 / w_art); w_art = 28
+    return pixelize(img.resize((w_art * 8, h_art * 8), L), w_art, h_art, colours, alpha=True)
+
+
+ICON_PAL = {
+    "send": ["#4A2340", "#FF6FA5", "#FFB3CF"], "stop": ["#4A2340", "#E05A8A"], "attach": ["#4A2340", "#9AA6E0", "#DCE0F7"],
+    "emoji": ["#4A2340", "#FFE3A3", "#FF6FA5"], "cursor": ["#4A2340", "#FFFFFF"], "hand": ["#4A2340", "#FFFFFF", "#FF6FA5"],
+}
+
+
+def fill_holes(art, colour):
+    """Paint every transparent pixel the outside cannot reach (a hollow outline's inside) in `colour`."""
+    from PIL import ImageDraw
+    from process4 import hexc
+    w, h = art.size
+    m = Image.new("L", (w + 2, h + 2), 0)
+    m.paste(art.getchannel("A").point(lambda v: 255 if v else 0), (1, 1))
+    ImageDraw.floodfill(m, (0, 0), 128)
+    px, mp = art.load(), m.load()
+    for y in range(h):
+        for x in range(w):
+            if mp[x + 1, y + 1] == 0: px[x, y] = hexc(colour) + (255,)
+    return art
+
+
+ARROW = ["X", "XX", "X.X", "X..X", "X...X", "X....X", "X.....X", "X......X", "X.......X", "X........X",
+         "X.........X", "X..........X", "X......XXXXX", "X...X..X", "X..XX..X", "X.X  X..X", "XX   X..X", "X     X..X",
+         "      X..X", "       XX"]
+
+
+def bitmap(rows, colours):
+    from process4 import hexc
+    img = Image.new("RGBA", (max(map(len, rows)), len(rows)), (0, 0, 0, 0))
+    for y, r in enumerate(rows):
+        for x, ch in enumerate(r):
+            if ch in colours: img.putpixel((x, y), hexc(colours[ch]) + (255,))
+    return img
+
+
+def ui_icons_b3():
+    """Batch 3: six icons generated one per square canvas (the sheet kept coming back squashed), each on a
+    32x32 art grid at 4x, locked to its spec colours: square icons fill 28 art px; the arrow's tip at (1,1);
+    the hand's fingertip at (12,1)."""
+    def art(n, h):
+        # snap colours at full size first, then sample down: small accents (blush, cuff heart) survive
+        img = snap_palette(key_out(raw(f"maximal/icon-{n}")), ICON_PAL[n])
+        img = img.crop(P.alpha_bbox(img))
+        w = max(1, round(img.width * h / img.height))
+        if w > 28: h, w = round(h * 28 / w), 28
+        return img.resize((w, h), Image.NEAREST)
+    sheet = Image.new("RGBA", (6 * 32, 32), (0, 0, 0, 0))
+    for i, n in enumerate(["send", "stop", "attach", "emoji"]):
+        a = art(n, 28)
+        sheet.alpha_composite(a, (i * 32 + (32 - a.width) // 2, (32 - a.height) // 2))
+    arrow = bitmap(ARROW, {"X": "#4A2340", ".": "#FFFFFF"})  # classic OS arrow, drawn exactly (the raw's outline had gaps)
+    sheet.alpha_composite(arrow, (4 * 32 + 1, 1))
+    hand = art("hand", 22)
+    tips = [x for x in range(hand.width) if hand.getpixel((x, 0))[3]]
+    sheet.alpha_composite(hand, (5 * 32 + max(0, 12 - tips[len(tips) // 2]), 1))
+    return up(sheet, 4)
+
+
+RECIPES["maximal/ui-icons"] = ui_icons_b3

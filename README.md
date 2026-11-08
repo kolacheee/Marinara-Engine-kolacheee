@@ -2,7 +2,7 @@
 
 ## Round 4 (branch theming-r4-images)
 
-Same method as round 3 (Codex CLI image tool, then Pillow). Requests: `requests-batch1.md`, `requests-batch2.md` (one line per image: `<persona>/<file>.png | WxH | transparent? | prompt`); retries with tightened prompts in `requests-batch1-retry.md`. Times per generation in `times.txt` (round 3's are in `times-r3.txt`).
+Same method as round 3 (Codex CLI image tool, then Pillow). Requests: `requests-batch1.md`, `requests-batch2.md`, `requests-batch3.md` (+ `requests-batch3-icons.md`: the UI icons generated one per canvas, then assembled) (one line per image: `<persona>/<file>.png | WxH | transparent? | prompt`); retries with tightened prompts in `requests-batch1-retry.md`. Times per generation in `times.txt` (round 3's are in `times-r3.txt`).
 
 - `run_batch.py requests-batchN.md [persona/name ...]` runs `gen.sh` 3 at a time. A night/day twin is generated as an edit of its source's raw (`TWINS` in run_batch.py); a REGEN line gets the round-3 image as a "what went wrong" reference, not a layout to copy.
 - `process4.py [persona/name ...]` turns `work/<persona>/<name>/raw.png` into `images/<persona>/<name>.png` at the exact size, using the per-image recipes in `recipes.py`.

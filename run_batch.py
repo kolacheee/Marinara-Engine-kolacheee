@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent
 WORK, R3 = ROOT / "work", ROOT / "work" / "_r3"
 SKIP = {"minimal/game-stage"}  # exact geometry: drawn by draw_minimal.py, not generated
 # regen lines whose brief says to keep the delivered shape: edit the current image instead of starting over
-EDIT = {"cozy/washi-tape"}
+EDIT = {"cozy/washi-tape", "maximal/backdrop-day", "creator/frame-card"}
 
 # twin <- source: the twin is an edit of the source's raw, so the pair lines up
 TWINS = {
