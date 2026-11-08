@@ -1,0 +1,671 @@
+{
+  "sets": {
+    "_review": {
+      "scope": "BRIEF-12.md current Part A, Water edges, only: 16 shore overlays, 16 water props, 24 docks and 24 boats. Approved out/ art is comparison material, not a review target.",
+      "file_count": 80,
+      "pass_count": 51,
+      "fail_count": 29,
+      "calibration": "Good enough to ship beside the approved art. Deliberate pixel steps, weathering and simplification are accepted. Failures concern explicit brief requirements, lost native-scale readability or insufficient variation.",
+      "prior_review": "art-drop/review/critic-r12A-0.json does not exist; no inherited pass decisions.",
+      "checks": {
+        "composites_1x_4x": "Every Part A set inspected in water/shallows/shore contexts at native 1x and nearest-neighbour 4x. All water props also inspected at a grass/snow bank, all shore overlays against a shape-matched constructed shoreline, and every dock with its stem touching the bank.",
+        "individual_8x": "All 80 files inspected over dark water and pale shallows at exact nearest-neighbour 8x, two labelled files per inspection page; full canvas retained.",
+        "one_cell_random_8x2": "All twelve 48px boat/dock sets and all four 48px shore/water subsets inspected in seeded shuffled 8x2 native-cell composites at 1x and 4x. Additional mixed-size 8x2 repeats test all 96px props; half-width 4x crops preserve exact viewing scale for the wide boards. Transparent placement gaps are not themselves seam defects.",
+        "base_3x3": "Not applicable: current Part A contains no base textures. No out/ base was reviewed for a new verdict.",
+        "peak_lattice_or_range": "Not applicable: current Part A contains no peaks.",
+        "trees_in_forest": "Not applicable: current Part A contains no trees.",
+        "specific_other_brief_problems": "Egg-crate peaks, Swiss-cheese craters, classical ruins, a stamped cyberpunk ground grid, flat orange autumn and identical tree crowns are not present in the current Part A scope. Winter consistency, repetition, pixel noise, palette, edge quality and placement were checked on the actual Part A files.",
+        "technical": "All 80 required files present and RGBA. Shore/water 0..3 are 48x48, 4..7 are 96x96; boats/docks are 48x48. All 64 solid sprites use binary alpha. Shore overlays have neutral white RGB with intentional partial alpha; their inadequate visual falloff is separately failed. All docks meet bottom-centre at pixel (24,47). No blank sprite, exact pixel duplicate, blur, resampling antialiasing, coloured matte fringe or unintended canvas clipping found. Noise, readability and near-duplicate failures are listed per file.",
+        "lighting_palette": "Top-left light and palette compatibility checked against the approved comparison plates. Passing solids retain readable planes, restrained outlines and compatible muted setting colours; no additional material lighting/palette defect found in those passes.",
+        "references": "Current Part A names no external image reference. Read its shared style, size and placement rules; inspected all 24 approved out/ markers, all 48 round-2 city/industry/slums tiles, seasonal paddies, and grass/plains bases plus all eight detail sprites in all four seasons. Saved comparison plates include native-size marker/boat/dock comparisons.",
+        "water_ground_limit": "No water-base asset or runnable game is present in this checkout. Water comparisons use flat dark blue-grey (57,87,99) and shallow blue-grey (123,161,167) swatches beside approved grass/snow. Shoreline profiles in the placement plates are constructed test masks, not submitted art. No live-engine fit is claimed.",
+        "out_preservation": "SHA-256 comparison confirms all 1384 PNGs in art-drop/out/ are byte-for-byte unchanged.",
+        "scaling": "All saved 1x/4x proof pairs verified as exact nearest-neighbour enlargements; every 8x sprite proof likewise uses nearest-neighbour scaling."
+      },
+      "composite_prefix": "art-drop/review/critic-r12A-1-",
+      "composite_count": 172
+    },
+    "shore": {
+      "verdict": "fail",
+      "files": [
+        "shore-prop-0",
+        "shore-prop-1",
+        "shore-prop-2",
+        "shore-prop-3",
+        "shore-prop-4",
+        "shore-prop-5",
+        "shore-prop-6",
+        "shore-prop-7"
+      ],
+      "pass": [],
+      "fail": [
+        "shore-prop-0",
+        "shore-prop-1",
+        "shore-prop-2",
+        "shore-prop-3",
+        "shore-prop-4",
+        "shore-prop-5",
+        "shore-prop-6",
+        "shore-prop-7"
+      ],
+      "notes": "All eight fail the required foam/shallows blending: bright strokes and fragmentary fringes do not supply a tapered shallow-water transition. No hue contamination or blur.",
+      "evidence": [
+        "critic-r12A-1-shore-context-1x.png",
+        "critic-r12A-1-shore-context-4x.png",
+        "critic-r12A-1-shore-inspect-0-8x.png",
+        "critic-r12A-1-shore-inspect-1-8x.png",
+        "critic-r12A-1-shore-inspect-2-8x.png",
+        "critic-r12A-1-shore-inspect-3-8x.png",
+        "critic-r12A-1-shore-random-8x2-1x.png",
+        "critic-r12A-1-shore-random-8x2-4x.png",
+        "critic-r12A-1-shore-random-8x2-half-0-4x.png",
+        "critic-r12A-1-shore-random-8x2-half-1-4x.png",
+        "critic-r12A-1-shore-shoreline-fit-1x.png",
+        "critic-r12A-1-shore-shoreline-fit-4x.png",
+        "critic-r12A-1-shore-small-random-8x2-1x.png",
+        "critic-r12A-1-shore-small-random-8x2-4x.png"
+      ]
+    },
+    "shore@winter": {
+      "verdict": "fail",
+      "files": [
+        "shore@winter-prop-0",
+        "shore@winter-prop-1",
+        "shore@winter-prop-2",
+        "shore@winter-prop-3",
+        "shore@winter-prop-4",
+        "shore@winter-prop-5",
+        "shore@winter-prop-6",
+        "shore@winter-prop-7"
+      ],
+      "pass": [],
+      "fail": [
+        "shore@winter-prop-0",
+        "shore@winter-prop-1",
+        "shore@winter-prop-2",
+        "shore@winter-prop-3",
+        "shore@winter-prop-4",
+        "shore@winter-prop-5",
+        "shore@winter-prop-6",
+        "shore@winter-prop-7"
+      ],
+      "notes": "All eight fail edge falloff; several also retain the dotted-foam read rather than a connected shelf. None is blank.",
+      "evidence": [
+        "critic-r12A-1-shore@winter-context-1x.png",
+        "critic-r12A-1-shore@winter-context-4x.png",
+        "critic-r12A-1-shore@winter-inspect-0-8x.png",
+        "critic-r12A-1-shore@winter-inspect-1-8x.png",
+        "critic-r12A-1-shore@winter-inspect-2-8x.png",
+        "critic-r12A-1-shore@winter-inspect-3-8x.png",
+        "critic-r12A-1-shore@winter-random-8x2-1x.png",
+        "critic-r12A-1-shore@winter-random-8x2-4x.png",
+        "critic-r12A-1-shore@winter-random-8x2-half-0-4x.png",
+        "critic-r12A-1-shore@winter-random-8x2-half-1-4x.png",
+        "critic-r12A-1-shore@winter-shoreline-fit-1x.png",
+        "critic-r12A-1-shore@winter-shoreline-fit-4x.png",
+        "critic-r12A-1-shore@winter-small-random-8x2-1x.png",
+        "critic-r12A-1-shore@winter-small-random-8x2-4x.png"
+      ]
+    },
+    "water": {
+      "verdict": "mixed",
+      "files": [
+        "water-prop-0",
+        "water-prop-1",
+        "water-prop-2",
+        "water-prop-3",
+        "water-prop-4",
+        "water-prop-5",
+        "water-prop-6",
+        "water-prop-7"
+      ],
+      "pass": [
+        "water-prop-2",
+        "water-prop-6",
+        "water-prop-7"
+      ],
+      "fail": [
+        "water-prop-0",
+        "water-prop-1",
+        "water-prop-3",
+        "water-prop-4",
+        "water-prop-5"
+      ],
+      "notes": "Reeds 2/6 and large pads 7 survive deep/shallow/bank and repeat checks: readable species/material, distinct silhouettes, restrained colours and clean placement. Rock wet-edge/ripple omissions, slot 3 pad readability and slot 5 noise are failed individually.",
+      "evidence": [
+        "critic-r12A-1-water-bank-1x.png",
+        "critic-r12A-1-water-bank-4x.png",
+        "critic-r12A-1-water-context-1x.png",
+        "critic-r12A-1-water-context-4x.png",
+        "critic-r12A-1-water-inspect-0-8x.png",
+        "critic-r12A-1-water-inspect-1-8x.png",
+        "critic-r12A-1-water-inspect-2-8x.png",
+        "critic-r12A-1-water-inspect-3-8x.png",
+        "critic-r12A-1-water-random-8x2-1x.png",
+        "critic-r12A-1-water-random-8x2-4x.png",
+        "critic-r12A-1-water-random-8x2-half-0-4x.png",
+        "critic-r12A-1-water-random-8x2-half-1-4x.png",
+        "critic-r12A-1-water-small-random-8x2-1x.png",
+        "critic-r12A-1-water-small-random-8x2-4x.png"
+      ]
+    },
+    "water@winter": {
+      "verdict": "mixed",
+      "files": [
+        "water@winter-prop-0",
+        "water@winter-prop-1",
+        "water@winter-prop-2",
+        "water@winter-prop-3",
+        "water@winter-prop-4",
+        "water@winter-prop-5",
+        "water@winter-prop-6",
+        "water@winter-prop-7"
+      ],
+      "pass": [
+        "water@winter-prop-0",
+        "water@winter-prop-1",
+        "water@winter-prop-2",
+        "water@winter-prop-6",
+        "water@winter-prop-7"
+      ],
+      "fail": [
+        "water@winter-prop-3",
+        "water@winter-prop-4",
+        "water@winter-prop-5"
+      ],
+      "notes": "Slots 0/1 retain clear snow-capped rocks, 2/6 legible frozen reeds, and 7 recognisable dead pads in ice. These survive deep/shallow/bank and repeat checks. Slots 3/4/5 lose material clarity or broad snow forms.",
+      "evidence": [
+        "critic-r12A-1-water@winter-bank-1x.png",
+        "critic-r12A-1-water@winter-bank-4x.png",
+        "critic-r12A-1-water@winter-context-1x.png",
+        "critic-r12A-1-water@winter-context-4x.png",
+        "critic-r12A-1-water@winter-inspect-0-8x.png",
+        "critic-r12A-1-water@winter-inspect-1-8x.png",
+        "critic-r12A-1-water@winter-inspect-2-8x.png",
+        "critic-r12A-1-water@winter-inspect-3-8x.png",
+        "critic-r12A-1-water@winter-random-8x2-1x.png",
+        "critic-r12A-1-water@winter-random-8x2-4x.png",
+        "critic-r12A-1-water@winter-random-8x2-half-0-4x.png",
+        "critic-r12A-1-water@winter-random-8x2-half-1-4x.png",
+        "critic-r12A-1-water@winter-small-random-8x2-1x.png",
+        "critic-r12A-1-water@winter-small-random-8x2-4x.png"
+      ]
+    },
+    "fantasy-dock": {
+      "verdict": "pass",
+      "files": [
+        "fantasy-dock-0",
+        "fantasy-dock-1",
+        "fantasy-dock-2",
+        "fantasy-dock-3"
+      ],
+      "pass": [
+        "fantasy-dock-0",
+        "fantasy-dock-1",
+        "fantasy-dock-2",
+        "fantasy-dock-3"
+      ],
+      "fail": [],
+      "notes": "All four pass: readable wood planes and supports, distinct T/asymmetric/roofed landings, proper bottom anchor and a palette consistent with fantasy markers.",
+      "evidence": [
+        "critic-r12A-1-fantasy-dock-context-1x.png",
+        "critic-r12A-1-fantasy-dock-context-4x.png",
+        "critic-r12A-1-fantasy-dock-inspect-0-8x.png",
+        "critic-r12A-1-fantasy-dock-inspect-1-8x.png",
+        "critic-r12A-1-fantasy-dock-random-8x2-1x.png",
+        "critic-r12A-1-fantasy-dock-random-8x2-4x.png"
+      ]
+    },
+    "fantasy-boat": {
+      "verdict": "pass",
+      "files": [
+        "fantasy-boat-0",
+        "fantasy-boat-1",
+        "fantasy-boat-2",
+        "fantasy-boat-3"
+      ],
+      "pass": [
+        "fantasy-boat-0",
+        "fantasy-boat-1",
+        "fantasy-boat-2",
+        "fantasy-boat-3"
+      ],
+      "fail": [],
+      "notes": "All four pass: clear hull silhouettes and seat/rigging forms at 1x, distinct headings/profiles, clean enlarged pixel edges and compatible wood colours.",
+      "evidence": [
+        "critic-r12A-1-fantasy-boat-context-1x.png",
+        "critic-r12A-1-fantasy-boat-context-4x.png",
+        "critic-r12A-1-fantasy-boat-inspect-0-8x.png",
+        "critic-r12A-1-fantasy-boat-inspect-1-8x.png",
+        "critic-r12A-1-fantasy-boat-random-8x2-1x.png",
+        "critic-r12A-1-fantasy-boat-random-8x2-4x.png"
+      ]
+    },
+    "wuxia-dock": {
+      "verdict": "mixed",
+      "files": [
+        "wuxia-dock-0",
+        "wuxia-dock-1",
+        "wuxia-dock-2",
+        "wuxia-dock-3"
+      ],
+      "pass": [
+        "wuxia-dock-0",
+        "wuxia-dock-1",
+        "wuxia-dock-3"
+      ],
+      "fail": [
+        "wuxia-dock-2"
+      ],
+      "notes": "Slots 0/1/3 pass with readable timber landings, distinct roof/gate/support arrangements, top-left shading and correct bank anchors. Slot 2 loses its flat platform structure.",
+      "evidence": [
+        "critic-r12A-1-wuxia-dock-context-1x.png",
+        "critic-r12A-1-wuxia-dock-context-4x.png",
+        "critic-r12A-1-wuxia-dock-inspect-0-8x.png",
+        "critic-r12A-1-wuxia-dock-inspect-1-8x.png",
+        "critic-r12A-1-wuxia-dock-random-8x2-1x.png",
+        "critic-r12A-1-wuxia-dock-random-8x2-4x.png"
+      ]
+    },
+    "wuxia-boat": {
+      "verdict": "mixed",
+      "files": [
+        "wuxia-boat-0",
+        "wuxia-boat-1",
+        "wuxia-boat-2",
+        "wuxia-boat-3"
+      ],
+      "pass": [
+        "wuxia-boat-0",
+        "wuxia-boat-1",
+        "wuxia-boat-2"
+      ],
+      "fail": [
+        "wuxia-boat-3"
+      ],
+      "notes": "Slots 0/1/2 pass: identifiable covered sampan, narrow straw-canopy craft and upright sailboat with clear hulls and setting colours. Slot 3 duplicates slot 0 too closely.",
+      "evidence": [
+        "critic-r12A-1-wuxia-boat-context-1x.png",
+        "critic-r12A-1-wuxia-boat-context-4x.png",
+        "critic-r12A-1-wuxia-boat-inspect-0-8x.png",
+        "critic-r12A-1-wuxia-boat-inspect-1-8x.png",
+        "critic-r12A-1-wuxia-boat-random-8x2-1x.png",
+        "critic-r12A-1-wuxia-boat-random-8x2-4x.png"
+      ]
+    },
+    "jazz_age-dock": {
+      "verdict": "pass",
+      "files": [
+        "jazz_age-dock-0",
+        "jazz_age-dock-1",
+        "jazz_age-dock-2",
+        "jazz_age-dock-3"
+      ],
+      "pass": [
+        "jazz_age-dock-0",
+        "jazz_age-dock-1",
+        "jazz_age-dock-2",
+        "jazz_age-dock-3"
+      ],
+      "fail": [],
+      "notes": "All four pass: T, rail, broad landing and roofed variants remain distinguishable at 1x, with coherent timber/support shading, proper shore anchors and no fringe.",
+      "evidence": [
+        "critic-r12A-1-jazz_age-dock-context-1x.png",
+        "critic-r12A-1-jazz_age-dock-context-4x.png",
+        "critic-r12A-1-jazz_age-dock-inspect-0-8x.png",
+        "critic-r12A-1-jazz_age-dock-inspect-1-8x.png",
+        "critic-r12A-1-jazz_age-dock-random-8x2-1x.png",
+        "critic-r12A-1-jazz_age-dock-random-8x2-4x.png"
+      ]
+    },
+    "jazz_age-boat": {
+      "verdict": "pass",
+      "files": [
+        "jazz_age-boat-0",
+        "jazz_age-boat-1",
+        "jazz_age-boat-2",
+        "jazz_age-boat-3"
+      ],
+      "pass": [
+        "jazz_age-boat-0",
+        "jazz_age-boat-1",
+        "jazz_age-boat-2",
+        "jazz_age-boat-3"
+      ],
+      "fail": [],
+      "notes": "All four pass: cabin launch, open motor launch, upright steamer and canopied launch remain readable and distinct; warm cream/brown/rust fits the approved setting.",
+      "evidence": [
+        "critic-r12A-1-jazz_age-boat-context-1x.png",
+        "critic-r12A-1-jazz_age-boat-context-4x.png",
+        "critic-r12A-1-jazz_age-boat-inspect-0-8x.png",
+        "critic-r12A-1-jazz_age-boat-inspect-1-8x.png",
+        "critic-r12A-1-jazz_age-boat-random-8x2-1x.png",
+        "critic-r12A-1-jazz_age-boat-random-8x2-4x.png"
+      ]
+    },
+    "modern-dock": {
+      "verdict": "pass",
+      "files": [
+        "modern-dock-0",
+        "modern-dock-1",
+        "modern-dock-2",
+        "modern-dock-3"
+      ],
+      "pass": [
+        "modern-dock-0",
+        "modern-dock-1",
+        "modern-dock-2",
+        "modern-dock-3"
+      ],
+      "fail": [],
+      "notes": "All four pass: rail jetty, asymmetric timber landing, broad concrete platform and sheltered concrete landing have readable construction, distinct silhouettes and correct shore contact.",
+      "evidence": [
+        "critic-r12A-1-modern-dock-context-1x.png",
+        "critic-r12A-1-modern-dock-context-4x.png",
+        "critic-r12A-1-modern-dock-inspect-0-8x.png",
+        "critic-r12A-1-modern-dock-inspect-1-8x.png",
+        "critic-r12A-1-modern-dock-random-8x2-1x.png",
+        "critic-r12A-1-modern-dock-random-8x2-4x.png"
+      ]
+    },
+    "modern-boat": {
+      "verdict": "mixed",
+      "files": [
+        "modern-boat-0",
+        "modern-boat-1",
+        "modern-boat-2",
+        "modern-boat-3"
+      ],
+      "pass": [
+        "modern-boat-1",
+        "modern-boat-2",
+        "modern-boat-3"
+      ],
+      "fail": [
+        "modern-boat-0"
+      ],
+      "notes": "Slots 1/2/3 pass: orange rescue motorboat, upright cabin boat and sailboat have distinct silhouettes, clean material planes and appropriate restrained colours. Slot 0 has excessive stern/rail checker noise.",
+      "evidence": [
+        "critic-r12A-1-modern-boat-context-1x.png",
+        "critic-r12A-1-modern-boat-context-4x.png",
+        "critic-r12A-1-modern-boat-inspect-0-8x.png",
+        "critic-r12A-1-modern-boat-inspect-1-8x.png",
+        "critic-r12A-1-modern-boat-random-8x2-1x.png",
+        "critic-r12A-1-modern-boat-random-8x2-4x.png"
+      ]
+    },
+    "scifi-dock": {
+      "verdict": "pass",
+      "files": [
+        "scifi-dock-0",
+        "scifi-dock-1",
+        "scifi-dock-2",
+        "scifi-dock-3"
+      ],
+      "pass": [
+        "scifi-dock-0",
+        "scifi-dock-1",
+        "scifi-dock-2",
+        "scifi-dock-3"
+      ],
+      "fail": [],
+      "notes": "All four pass: dark T platform, pale faceted platform, broad dark landing and sheltered terminal remain distinct and readable, with sparse light accents and correct anchors.",
+      "evidence": [
+        "critic-r12A-1-scifi-dock-context-1x.png",
+        "critic-r12A-1-scifi-dock-context-4x.png",
+        "critic-r12A-1-scifi-dock-inspect-0-8x.png",
+        "critic-r12A-1-scifi-dock-inspect-1-8x.png",
+        "critic-r12A-1-scifi-dock-random-8x2-1x.png",
+        "critic-r12A-1-scifi-dock-random-8x2-4x.png"
+      ]
+    },
+    "scifi-boat": {
+      "verdict": "mixed",
+      "files": [
+        "scifi-boat-0",
+        "scifi-boat-1",
+        "scifi-boat-2",
+        "scifi-boat-3"
+      ],
+      "pass": [
+        "scifi-boat-0",
+        "scifi-boat-1",
+        "scifi-boat-3"
+      ],
+      "fail": [
+        "scifi-boat-2"
+      ],
+      "notes": "Slots 0/1/3 pass: clear low skiff, pale pointed craft and narrow podded craft silhouettes; muted grey/teal with sparse accents, clean boundaries and sufficient shape variation. Slot 2 is lost in deck-line noise.",
+      "evidence": [
+        "critic-r12A-1-scifi-boat-context-1x.png",
+        "critic-r12A-1-scifi-boat-context-4x.png",
+        "critic-r12A-1-scifi-boat-inspect-0-8x.png",
+        "critic-r12A-1-scifi-boat-inspect-1-8x.png",
+        "critic-r12A-1-scifi-boat-random-8x2-1x.png",
+        "critic-r12A-1-scifi-boat-random-8x2-4x.png"
+      ]
+    },
+    "wasteland-dock": {
+      "verdict": "pass",
+      "files": [
+        "wasteland-dock-0",
+        "wasteland-dock-1",
+        "wasteland-dock-2",
+        "wasteland-dock-3"
+      ],
+      "pass": [
+        "wasteland-dock-0",
+        "wasteland-dock-1",
+        "wasteland-dock-2",
+        "wasteland-dock-3"
+      ],
+      "fail": [],
+      "notes": "All four pass: scrap timber/metal construction is readable despite intentional wear; T, crooked asymmetric, broad rusty and roofed variants are distinct and connect properly to shore.",
+      "evidence": [
+        "critic-r12A-1-wasteland-dock-context-1x.png",
+        "critic-r12A-1-wasteland-dock-context-4x.png",
+        "critic-r12A-1-wasteland-dock-inspect-0-8x.png",
+        "critic-r12A-1-wasteland-dock-inspect-1-8x.png",
+        "critic-r12A-1-wasteland-dock-random-8x2-1x.png",
+        "critic-r12A-1-wasteland-dock-random-8x2-4x.png"
+      ]
+    },
+    "wasteland-boat": {
+      "verdict": "mixed",
+      "files": [
+        "wasteland-boat-0",
+        "wasteland-boat-1",
+        "wasteland-boat-2",
+        "wasteland-boat-3"
+      ],
+      "pass": [
+        "wasteland-boat-1",
+        "wasteland-boat-2",
+        "wasteland-boat-3"
+      ],
+      "fail": [
+        "wasteland-boat-0"
+      ],
+      "notes": "Slots 1/2/3 pass: boarded skiff, rag-sailed raft and scrap cabin boat retain readable silhouettes and structures at 1x; muted rust/wood fits the approved markers. Slot 0 loses its deck structure in mottling.",
+      "evidence": [
+        "critic-r12A-1-wasteland-boat-context-1x.png",
+        "critic-r12A-1-wasteland-boat-context-4x.png",
+        "critic-r12A-1-wasteland-boat-inspect-0-8x.png",
+        "critic-r12A-1-wasteland-boat-inspect-1-8x.png",
+        "critic-r12A-1-wasteland-boat-random-8x2-1x.png",
+        "critic-r12A-1-wasteland-boat-random-8x2-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "water-prop-2",
+    "water-prop-6",
+    "water-prop-7",
+    "water@winter-prop-0",
+    "water@winter-prop-1",
+    "water@winter-prop-2",
+    "water@winter-prop-6",
+    "water@winter-prop-7",
+    "fantasy-dock-0",
+    "fantasy-dock-1",
+    "fantasy-dock-2",
+    "fantasy-dock-3",
+    "fantasy-boat-0",
+    "fantasy-boat-1",
+    "fantasy-boat-2",
+    "fantasy-boat-3",
+    "wuxia-dock-0",
+    "wuxia-dock-1",
+    "wuxia-dock-3",
+    "wuxia-boat-0",
+    "wuxia-boat-1",
+    "wuxia-boat-2",
+    "jazz_age-dock-0",
+    "jazz_age-dock-1",
+    "jazz_age-dock-2",
+    "jazz_age-dock-3",
+    "jazz_age-boat-0",
+    "jazz_age-boat-1",
+    "jazz_age-boat-2",
+    "jazz_age-boat-3",
+    "modern-dock-0",
+    "modern-dock-1",
+    "modern-dock-2",
+    "modern-dock-3",
+    "modern-boat-1",
+    "modern-boat-2",
+    "modern-boat-3",
+    "scifi-dock-0",
+    "scifi-dock-1",
+    "scifi-dock-2",
+    "scifi-dock-3",
+    "scifi-boat-0",
+    "scifi-boat-1",
+    "scifi-boat-3",
+    "wasteland-dock-0",
+    "wasteland-dock-1",
+    "wasteland-dock-2",
+    "wasteland-dock-3",
+    "wasteland-boat-1",
+    "wasteland-boat-2",
+    "wasteland-boat-3"
+  ],
+  "fail": [
+    {
+      "name": "shore-prop-0",
+      "problems": "The diagonal is mostly a broken one-pixel bright stroke, without a shallow-water band; its nonzero alpha jumps straight to 152/184. Add a restrained water-side lightening band and taper its outer edge and both ends through low-opacity pixel clusters to zero."
+    },
+    {
+      "name": "shore-prop-1",
+      "problems": "The straight run reads as a thick, blunt-ended pale bar at 1x. Its few dim underside pixels do not soften the hard end caps or create a coherent shallows band. Break the foam into connected clusters, taper both ends and add a low-opacity water-side transition."
+    },
+    {
+      "name": "shore-prop-2",
+      "problems": "The U-shaped run is an isolated bright outline with a broken left arm and no readable shallow-water lightening. The only visible alpha levels are 152/184. Add a shallow band following the curve and taper its outside and endpoints to zero."
+    },
+    {
+      "name": "shore-prop-3",
+      "problems": "The vertical run becomes a chunky white wall with a ragged parallel fringe. The main boundary and end caps stay hard despite a few dim flecks. Reduce the heavy bar, group the foam into deliberate clusters and give the water-side band and endpoints a stepped opacity falloff."
+    },
+    {
+      "name": "shore-prop-4",
+      "problems": "The large curve is a thin bright contour plus scattered disconnected dots, rather than foam over shallows. All visible pixels are alpha 152/184. Consolidate the stray specks, add a restrained shallow-water band and fade that band and the ends to zero."
+    },
+    {
+      "name": "shore-prop-5",
+      "problems": "The diagonal becomes two skinny parallel scribbles without a broad, subtle shallows transition. Alpha is only 152/184 before dropping to zero. Keep one coherent foam front, simplify the secondary stroke and add a low-opacity water-side taper."
+    },
+    {
+      "name": "shore-prop-6",
+      "problems": "The broad U is a dotted, uneven outline with conspicuous gaps; no shallow-water band separates it from the dark water. All visible pixels are alpha 152/184. Group the foam into readable runs and add a faint band with tapered outer edge and ends."
+    },
+    {
+      "name": "shore-prop-7",
+      "problems": "The wavy run breaks into isolated bright dashes and dots, with no coherent shallow-water lightening. Alpha is only 152/184. Rebuild the foam as a readable front, remove incidental speckles and taper a subtle water-side band and both ends to zero."
+    },
+    {
+      "name": "shore@winter-prop-0",
+      "problems": "The ice lip is a hard bright ribbon: its visible alpha is only 152/184, with abrupt termination and no low-opacity outer transition. Keep the narrow shelf silhouette, but add a faint stepped ice/shallow-water apron and tapered ends so it blends into the underlying water."
+    },
+    {
+      "name": "shore@winter-prop-1",
+      "problems": "The shelf is a blunt, nearly rectangular pale strip at native size. The few dim pixels do not taper the two ends or its outer face. Shape the ends as narrowing ice tongues and add low-opacity clusters along the water-side edge before transparency."
+    },
+    {
+      "name": "shore@winter-prop-2",
+      "problems": "The U-shaped winter run is mostly disconnected one-pixel dashes, reading like the summer foam rather than a shelf with a visible surface. Nonzero alpha is only 152/184. Connect a narrow irregular shelf plane, add a restrained underside and fade the outer edge and ends."
+    },
+    {
+      "name": "shore@winter-prop-3",
+      "problems": "The vertical winter edge reads as a dashed pale line with abrupt bright side pixels, without a clear shelf surface or opacity falloff; visible alpha is only 152/184. Give it a narrow connected ice plane and taper its water-side edge and end caps."
+    },
+    {
+      "name": "shore@winter-prop-4",
+      "problems": "The large shelf has hard white cutouts and scattered bright chips; even its lowest visible alpha is 112, so the overlay stops abruptly against the water. Consolidate the chips and add lower-opacity outer clusters and narrowing endpoints while preserving the faceted ice edge."
+    },
+    {
+      "name": "shore@winter-prop-5",
+      "problems": "The long diagonal is a broken high-opacity ribbon with detached marks; visible alpha is only 152/184. Connect the principal shelf into a readable thin surface, remove incidental dots and taper a faint apron and both ends into the water."
+    },
+    {
+      "name": "shore@winter-prop-6",
+      "problems": "The winter U is essentially a dotted foam arc, with no continuous shelf plane and no low-opacity edge (only 152/184). Build a narrow connected ice surface with a few deliberate breaks, a restrained underside and an outer/endpoint fade."
+    },
+    {
+      "name": "shore@winter-prop-7",
+      "problems": "The upper shelf and the long detached lower arc read as two competing shoreline strokes. Both use only alpha 152/184 and stop sharply. Keep a single coherent shelf, reduce the secondary arc to a subtle underside/apron and taper the outer pixels and both ends to zero."
+    },
+    {
+      "name": "water-prop-0",
+      "problems": "The rocks end in an ordinary dark land-rock contour; there is no readable wet contact band or ripple ring outside the silhouette on either water swatch. Add a narrow dark wet waterline and a restrained broken elliptical ripple, distinct from the rock-face highlights."
+    },
+    {
+      "name": "water-prop-1",
+      "problems": "The three-rock cluster has bright face highlights but no legible surrounding ripple ring or wet waterline. It reads as a grass detail pasted onto water. Add the wet contact edge and a sparse low-contrast ripple outside the base; remove the stray isolated dark/green pixels near the perimeter."
+    },
+    {
+      "name": "water-prop-3",
+      "problems": "At 1x the lily patch reads as a shredded upright shrub: small green fragments and stems obscure the flat pad shapes. Simplify it into a few overlapping horizontal oval pads with clear notches, darker undersides and open water gaps; keep the flower as a small accent."
+    },
+    {
+      "name": "water-prop-4",
+      "problems": "The brown exposed-earth perimeter and dark contour read as a dry land island; the required wet edge and surrounding ripple ring are missing. Add a clear narrow wet contact band and a subtle broken water ellipse outside it, keeping those separate from the interior stone cracks."
+    },
+    {
+      "name": "water-prop-5",
+      "problems": "Dense dark crack outlines and tiny light chips make the two rock masses busy at 1x, and the scattered perimeter flecks never form the requested ripple ring. Simplify the smaller stone planes and hatching, remove stray dark dots, and add a readable wet edge plus a restrained broken ripple outside each island."
+    },
+    {
+      "name": "water@winter-prop-3",
+      "problems": "Most of the winter lily footprint is an opaque mid-grey slab covered in irregular grey scribbles. At 1x it reads as stone/mud rather than frozen pads, and is much duller than the ice and snow of slot 7 and the approved winter details. Use a coherent pale ice plane, a distinct darker blue-grey rim, sparse dead pad remnants and fewer interior marks."
+    },
+    {
+      "name": "water@winter-prop-4",
+      "problems": "The central and lower snow is chopped into numerous bright fragments boxed in dark outlines. At 1x this becomes black/white rubble noise beside the approved winter ground details. Merge the snow into larger caps, subordinate the internal cracks and keep a few broad shaded rock planes below them."
+    },
+    {
+      "name": "water@winter-prop-5",
+      "problems": "Both boulder masses are covered in high-contrast outlined snow chips and little dark loops; the lower rims also have detached dark flecks. The winter version reads as speckled rubble at 1x. Consolidate snow into connected top caps, reduce interior outlines and clean the loose perimeter dots."
+    },
+    {
+      "name": "wuxia-dock-2",
+      "problems": "The landing surface reads as an irregular pile of outlined grey stones with holes, rather than a flat usable jetty. Its nearly flat grey access stem also lacks the depth of the other docks. Redraw a clear level stone platform and continuous walkway, with restrained stone joints, a dark side face and legible attached posts/rails."
+    },
+    {
+      "name": "wuxia-boat-3",
+      "problems": "Near-duplicate of wuxia-boat-0 at 1x: the same down-right diagonal ochre/rust hull, central grey canopy and open end compartments dominate both silhouettes; the altered prow and stern do not provide enough variety in the random layout. Keep slot 0 and replace slot 3 with a visibly different hull/cargo/canopy arrangement."
+    },
+    {
+      "name": "modern-boat-0",
+      "problems": "The lower/right rail and stern dissolve into alternating white/dark checker pixels, with extra isolated bright flecks below the stern. At 1x that texture competes with the cockpit and hull. Use a continuous restrained rail highlight, one clear stern plane and fewer interior chips; keep wake pixels separate and intentional."
+    },
+    {
+      "name": "scifi-boat-2",
+      "problems": "The deck is a maze of nested grey outline loops, crossbars and isolated magenta marks. At 1x the cockpit and hull planes are lost in greeble noise, unlike the cleaner other three skiffs and approved sci-fi markers. Reduce the deck to two or three clear masses, one dark cockpit and a few grouped mechanical/light accents."
+    },
+    {
+      "name": "wasteland-boat-0",
+      "problems": "The raft hull/deck is an undifferentiated mottled brown patch at 1x; random light/dark chips obscure the planks and flotation structure. Keep the scrap silhouette and oar, but draw a few continuous deck boards, clear edge/barrel supports and larger restrained shadow groups instead of all-over speckling."
+    }
+  ]
+}
