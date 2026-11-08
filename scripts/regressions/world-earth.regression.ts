@@ -6,10 +6,13 @@
  *   - The compile lays the real coast, rivers and cities in their real countries, the same every time,
  *     and a world of another scale than the sample's is not on Earth.
  *   - The Game Master is told it is the real Earth, and no invented past is given for it.
+ *   - In a year of the past: the cities that stood then, by the records, under their names of the year
+ *     (Constantinople, Edo, Bianjing) and in the realms that held them; towns the records do not count
+ *     only from the year 1000, and small; a city silent in the records for centuries small in between.
  */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { gunzipSync } from "node:zlib";
+import { gunzipSync, inflateSync } from "node:zlib";
 
 import {
   WORLD_EARTH_AREAS,
@@ -22,7 +25,12 @@ import {
   withWorldEarth,
   worldBriefSchema,
   worldEarthCentre,
+  worldEarthCitiesIn,
   worldEarthDecode,
+  worldEarthHistoricalPlace,
+  worldEarthPeopleIn,
+  worldEarthTownStood,
+  worldHistory,
   worldEarthLocate,
   worldEarthNames,
   worldOverviewPromptText,
@@ -41,6 +49,18 @@ const data: WorldEarthData = {
     bits: new Uint8Array(gunzipSync(readFileSync(new URL("earth-coast.bin", dir)))),
   },
 };
+{
+  const raw = readFileSync(new URL("earth-polities.bin", dir));
+  const length = raw.readUInt32LE(0);
+  data.history = {
+    ...JSON.parse(gunzipSync(readFileSync(new URL("earth-history.json.gz", dir))).toString("utf8")),
+    polities: {
+      ...JSON.parse(gunzipSync(raw.subarray(4, 4 + length)).toString("utf8")),
+      masks: new Uint8Array(raw.subarray(4 + length)),
+      inflate: (bytes: Uint8Array) => new Uint8Array(inflateSync(bytes)),
+    },
+  };
+}
 assert.equal(data.grid.planes.length, 3600 * 1800 * 3);
 assert.equal(data.coast!.bits.length, (18000 * 9000) / 4);
 
@@ -157,4 +177,79 @@ const game: GameWorld = { ...inputs, world };
 const overview = worldOverviewPromptText(game);
 assert.ok(overview.includes("This is the real Earth"), overview);
 assert.ok(!overview.includes("- The past:"), "no invented past");
+const past = worldHistory(game);
+assert.deepEqual([past.events, past.leaders, past.lost], [[], {}, []], "no invented events, rulers or lost towns");
+
+// ── A year of the past ──
+const history = data.history!;
+const near = (lon: number, lat: number) => (x: number, y: number) => Math.abs(x - lon) < 1 && Math.abs(y - lat) < 1;
+const cityIn = (lon: number, lat: number, year: number) =>
+  worldEarthCitiesIn(history, data.features.cities, year, near(lon, lat));
+const constantinople = cityIn(29, 41, 1000)[0]!;
+assert.equal(constantinople.name, "Constantinople");
+assert.equal(constantinople.country, "Byzantine Empire");
+assert.ok(constantinople.pop > 200000 && constantinople.capital, `the great city of its time: ${constantinople.pop}`);
+assert.equal(cityIn(139.7, 35.7, 1700)[0]!.name, "Edo");
+assert.equal(cityIn(139.7, 35.7, 1700)[0]!.country, "Tokugawa Shogunate");
+const song = cityIn(114.3, 34.8, 1100);
+assert.equal(song[0]!.name, "Bianjing", "Kaifeng under its Song name, the biggest");
+const zhengzhou = song.find((city) => city.name === "Zhengzhou");
+assert.ok(zhengzhou && zhengzhou.pop <= 10000, `Zhengzhou, unrecorded since the Shang, small: ${zhengzhou?.pop}`);
+assert.ok(!song.some((city) => city.name === "Yin"), "the Shang capital long gone");
+const england = cityIn(-0.1, 51.5, 1300);
+assert.equal(england[0]!.name, "London");
+assert.equal(england[0]!.country, "Kingdom of England");
+assert.ok(england[0]!.pop > 20000 && england[0]!.pop < 120000, `London in 1300: ${england[0]!.pop}`);
+assert.ok(
+  england.slice(1).every((city) => city.pop <= 1500),
+  "the towns the records do not count are small",
+);
+assert.equal(cityIn(-6.2, 53.3, 1300)[0]!.country, "Kingdom of England", "Dublin English, not Norse, in 1300");
+assert.ok(!worldEarthTownStood(-0.7, 51.5, 117) && worldEarthTownStood(-0.7, 51.5, 1300));
+assert.ok(!worldEarthTownStood(-74, 40.7, 1650) && worldEarthTownStood(-74, 40.7, 1750), "the Americas as settled");
+const rome = cityIn(12.5, 41.9, 117);
+assert.ok(
+  rome.length &&
+    rome.every(
+      (city) =>
+        history.cities.some((dated) => dated.name === city.name || dated.alt?.includes(city.name)) ||
+        city.name === "Rome",
+    ),
+  "only the dated cities of antiquity",
+);
+assert.equal(rome[0]!.country, "Roman Empire");
+assert.equal(
+  worldEarthPeopleIn(
+    [
+      [-1400, 32000],
+      [-1360, 32000],
+      [1975, 1271000],
+    ],
+    1100,
+  ),
+  10000,
+);
+assert.equal(worldEarthPeopleIn([[1300, 25000]], 1600), 0, "a city without today's gone after its records");
+const istanbul = worldEarthHistoricalPlace(history, data.features.cities, "Constantinople", (text) =>
+  text.toLowerCase(),
+);
+assert.ok(istanbul && Math.abs(istanbul.lon - 29) < 0.5, "an old name is found");
+
+// A realm in 1300: the sample's cities in their realms of the year, and the world's countries those.
+const medieval = sampleWorldEarth(data, { ...found!, scale: fantasy.scale, year: 1300 });
+assert.equal(medieval.year, 1300);
+assert.ok(!medieval.cities.some((city) => city.name === "Liverpool" && city.pop > 5000));
+const medievalBrief = withWorldEarth(emptyBrief(places), medieval);
+const medievalWorld = compileWorld({ seed: 11, kit: fantasy, brief: medievalBrief });
+let realm = medievalWorld.places.find((place) => place.name === "London")!;
+while (realm.parentId) {
+  const parentId = realm.parentId;
+  realm = medievalWorld.places.find((place) => place.id === parentId)!;
+}
+assert.equal(realm.name, "Kingdom of England", "London in its realm of 1300");
+assert.ok(
+  medievalWorld.places.some((place) => place.name === "Kingdom of France" && place.depth === 0),
+  "and France over the Channel",
+);
+assert.ok(!medievalWorld.places.some((place) => place.name === "United Kingdom"), "no United Kingdom in 1300");
 console.log("world-earth: ok");

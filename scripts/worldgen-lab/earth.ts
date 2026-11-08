@@ -1,7 +1,7 @@
 /** Draws Earth worlds (the Earth seed) for a few settings and areas, as an HTML page of SVG maps.
  *    tsx scripts/worldgen-lab/earth.ts EARTH_DIR out.html [kit:area:scale ...] */
 import { readFileSync, writeFileSync } from "node:fs";
-import { gunzipSync } from "node:zlib";
+import { gunzipSync, inflateSync } from "node:zlib";
 import {
   WORLD_EARTH_AREAS,
   WORLD_STARTER_KITS,
@@ -19,6 +19,20 @@ const data: WorldEarthData = {
   features: JSON.parse(gunzipSync(readFileSync(`${dir}/earth-features.json.gz`)).toString("utf8")),
   coast: { width: 18000, height: 9000, bits: new Uint8Array(gunzipSync(readFileSync(`${dir}/earth-coast.bin`))) },
 };
+{
+  const raw = readFileSync(`${dir}/earth-polities.bin`);
+  const length = raw.readUInt32LE(0);
+  const header = JSON.parse(gunzipSync(raw.subarray(4, 4 + length)).toString("utf8"));
+  const history = JSON.parse(gunzipSync(readFileSync(`${dir}/earth-history.json.gz`)).toString("utf8"));
+  data.history = {
+    ...history,
+    polities: {
+      ...header,
+      masks: new Uint8Array(raw.subarray(4 + length)),
+      inflate: (bytes: Uint8Array) => new Uint8Array(inflateSync(bytes)),
+    },
+  };
+}
 const runs = wanted.length
   ? wanted
   : [
@@ -51,13 +65,14 @@ const COLORS: Record<string, string> = {
 const S = Number(process.env.CELL ?? 9);
 let html = "<body style='background:#222;color:#eee;font:13px sans-serif'>";
 for (const run of runs) {
-  const [kitId, areaId, scale] = run.split(":");
+  const [kitId, areaId, scale, yearText] = run.split(":");
+  const year = yearText ? Number(yearText) : undefined;
   const parsed = parseWorldKit(WORLD_STARTER_KITS.find((kit) => kit.id === kitId)!);
   if (!parsed.ok) throw new Error(kitId);
   const kit = { ...parsed.kit, scale: (scale ?? parsed.kit.scale) as typeof parsed.kit.scale };
   const area = WORLD_EARTH_AREAS.find((each) => each.id === areaId)!;
   const middle = worldEarthCentre(data, kit.scale, area.lon, area.lat);
-  const earth = sampleWorldEarth(data, { ...middle, scale: kit.scale, area: area.label });
+  const earth = sampleWorldEarth(data, { ...middle, scale: kit.scale, area: area.label, year });
   const brief = {
     briefVersion: 1 as const,
     premise: "x",
@@ -95,9 +110,14 @@ for (const run of runs) {
     body += `<circle cx="${x}" cy="${y}" r="${2 + (place.rank ?? 0)}" fill="#fff" stroke="#000"/><text x="${x + 5}" y="${y - 3}" font-size="10" fill="#000" stroke="#fff" stroke-width="2" paint-order="stroke">${place.name}</text>`;
   }
   const tops = world.places
-    .filter((place) => place.depth < settlementsDepth)
-    .map((place) => `${"  ".repeat(place.depth)}${place.name}`);
-  html += `<h3>${kitId} · ${area.label} · ${kit.scale} (${world.width}×${world.height}, ${earth.rivers.length} rivers, ${earth.cities.length} cities, ground ${earth.ground.length} chars)</h3><div style="display:flex;gap:12px"><svg width="${world.width * S}" height="${world.height * S}">${body}</svg><pre>${tops.join("\n")}</pre></div>`;
+    .filter((place) => place.depth <= settlementsDepth)
+    .sort((a, b) => a.depth - b.depth)
+    .map(
+      (place) =>
+        `${"  ".repeat(place.depth)}${place.name}${place.size ? ` (${place.size}) in ${world.places.find((p) => p.id === place.parentId)?.name ?? ""}` : ""}`,
+    )
+    .slice(0, 60);
+  html += `<h3>${kitId} · ${area.label} · ${kit.scale}${year !== undefined ? ` · ${year}` : ""} (${world.width}×${world.height}, ${earth.rivers.length} rivers, ${earth.cities.length} cities, ground ${earth.ground.length} chars)</h3><div style="display:flex;gap:12px"><svg width="${world.width * S}" height="${world.height * S}">${body}</svg><pre>${tops.join("\n")}</pre></div>`;
 }
 writeFileSync(out, html + "</body>");
 console.log("wrote", out);

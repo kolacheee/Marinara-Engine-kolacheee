@@ -82,7 +82,10 @@ export function worldHistory(game: GameWorld): WorldHistory {
   if (hit) return hit;
   // The past is the compiled world's: hand edits (W9c) change the world from now on, never its history,
   // so the history is the same however the world was since edited.
-  const history = runHistory(game.edits ? { ...game, world: worldPreEdit(game) } : game);
+  const run = runHistory(game.edits ? { ...game, world: worldPreEdit(game) } : game);
+  // An Earth world's past is the real one, which the Game Master knows: no invented events, rulers or lost
+  // towns; who keeps each place and how the groups get on stay, as the start of play's own story.
+  const history = game.brief.earth ? { ...run, events: [], leaders: {}, lost: [] } : run;
   cache.set(key, history);
   if (cache.size > CACHE_SIZE) cache.delete(cache.keys().next().value!);
   return history;

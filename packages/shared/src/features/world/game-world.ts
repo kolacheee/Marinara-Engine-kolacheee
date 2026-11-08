@@ -274,8 +274,7 @@ export function worldOverviewPromptText(game: GameWorld): string {
         ].join(""),
       ),
     ...(() => {
-      // An Earth world's past is the real one, which the Game Master knows; none is invented for it.
-      if (brief.earth) return [];
+      // An Earth world has none: its past is the real one, which the Game Master knows (worldHistory).
       const past = worldNotablePast(history);
       return past.length ? [`- The past:`, ...past.map((event) => `  - ${worldHistoryLine(event)}`)] : [];
     })(),

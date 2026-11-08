@@ -19,6 +19,7 @@ import {
   worldEarthGround,
   worldEarthSizeRank,
 } from "./earth.js";
+import { worldEarthEraScale } from "./earth-history.js";
 import type { WorldLandFields, WorldResource, WorldRiver } from "./land.js";
 import {
   WORLD_RESOURCE_TAG_WORDS,
@@ -1365,7 +1366,8 @@ export function compileWorld({
           : pick.city
             ? Math.min(
                 capital >= 0 ? capital - 1 : kit.sizes.length - 1,
-                worldEarthSizeRank(pick.city.pop, kit.sizes.length),
+                // Weighed against the cities of its own time.
+                worldEarthSizeRank(pick.city.pop / worldEarthEraScale(earth!.year), kit.sizes.length),
               )
             : 0);
       drafts.push({
