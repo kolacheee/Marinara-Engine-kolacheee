@@ -1,36 +1,28 @@
 // ──────────────────────────────────────────────
 // The Earth seed's news (owner 2026-11-08: "if the user has explored New York City before but they are
-// currently in Tokyo on Sept 11 2001 they still would hear the news", and then: "it's important the GM isn't
+// currently in Tokyo on Sept 11 2001 they still would hear the news"; then: "it's important the GM isn't
 // getting bombarded with events ... If the GM would search for current events for whatever reason then it can
-// pull from the feed"). The real events of each day, from English Wikipedia's year articles (the world's news)
-// and year-in-country articles (each country's own), baked by scripts/earth/bake-earth-news.py. Nothing puts
-// them in the story by itself: the Game Master looks them up (the world_news tool) when a character follows
-// the news, and never sees a day after the story's own.
+// pull from the feed"; and: "I don't think we need to add any data beyond the name of major real world events,
+// Game Mode kind of requires a SOTA model and those are knowledgeable enough"). The names of each day's real
+// events, from English Wikipedia's year articles, baked by scripts/earth/bake-earth-news.py. Nothing puts them
+// in the story by itself: the Game Master looks them up (the world_news tool) when a character follows the
+// news, and never sees a day after the story's own.
 // ──────────────────────────────────────────────
 
-/** One entry: month and day (0 when the article gives none), "e" an event or "d" a death, the index of its
- *  country (-1 the world's news), where it happened ("" when the entry names nowhere) and its words. */
-export type WorldEarthNewsRow = [number, number, "e" | "d", number, string, string];
+/** One event: month and day (0 when the article gives none) and its name. */
+export type WorldEarthNewsRow = [number, number, string];
 
-export interface WorldEarthNewsData {
-  countries: string[];
-  /** Each year's entries, by date. */
-  years: Record<string, WorldEarthNewsRow[]>;
-}
+/** Each year's events, by date. */
+export type WorldEarthNewsData = Record<string, WorldEarthNewsRow[]>;
 
 export interface WorldEarthNewsItem {
   /** "11 September 2001", "March 44 BC", "1066". */
   date: string;
-  text: string;
-  where?: string;
-  /** The world's news, or the news of the country asked about. */
-  scope: "world" | "country";
-  death?: true;
+  name: string;
 }
 
 export interface WorldEarthNewsResult {
   today: string;
-  country?: string;
   items: WorldEarthNewsItem[];
   /** How many more matched than are listed. */
   more: number;
@@ -44,11 +36,9 @@ export interface WorldEarthNewsQuery {
   day?: number;
   /** How far back to look: 7 days, or a year when `about` is given. */
   days?: number;
-  /** Words an entry must have, all of them. */
+  /** Words an event's name must have, all of them. */
   about?: string;
-  /** The country whose own news to add to the world's, by name. */
-  country?: string;
-  /** The most entries to list. */
+  /** The most events to list. */
   limit?: number;
 }
 
@@ -67,27 +57,6 @@ const MONTH_NAMES = [
   "November",
   "December",
 ];
-// The names people give a country, as the Earth seed (Natural Earth) names it.
-const COUNTRY_NAMES: Record<string, string> = {
-  usa: "United States of America",
-  us: "United States of America",
-  "u s": "United States of America",
-  america: "United States of America",
-  "united states": "United States of America",
-  uk: "United Kingdom",
-  britain: "United Kingdom",
-  "great britain": "United Kingdom",
-  england: "United Kingdom",
-  scotland: "United Kingdom",
-  wales: "United Kingdom",
-  "northern ireland": "United Kingdom",
-  "czech republic": "Czechia",
-  "hong kong": "Hong Kong S.A.R.",
-  bahamas: "The Bahamas",
-  gambia: "The Gambia",
-  "soviet union": "Russia",
-  ussr: "Russia",
-};
 const fold = (text: string) =>
   text
     .normalize("NFKD")
@@ -108,17 +77,8 @@ export function worldEarthNewsDate(year: number, month = 0, day = 0): string {
   return `${day} ${MONTH_NAMES[month - 1]} ${yearWords(year)}`;
 }
 
-/** The country a name means, as the news names it, or undefined. */
-export function worldEarthNewsCountry(data: WorldEarthNewsData, name: string | undefined): string | undefined {
-  if (!name?.trim()) return undefined;
-  const key = fold(name).replace(/^the /, "");
-  const named = COUNTRY_NAMES[key];
-  if (named) return named;
-  return data.countries.find((country) => fold(country).replace(/^the /, "") === key);
-}
-
 /**
- * The news up to a day of the story: the world's, and the country's own when one is named, newest first.
+ * The events up to a day of the story, newest first.
  * Never an entry after that day; an entry with no day counts once its month is over, one with no month once
  * its year is.
  */
@@ -132,37 +92,22 @@ export function worldEarthNews(data: WorldEarthNewsData, query: WorldEarthNewsQu
   const span = Math.max(1, Math.min(WORLD_EARTH_NEWS_MAX_DAYS, Math.floor(query.days ?? (words.length ? 366 : 7))));
   const today = dayNumber(year, month ?? 12, day ?? 31);
   const from = today - span + 1;
-  const country = worldEarthNewsCountry(data, query.country);
-  const countryIndex = country ? data.countries.indexOf(country) : -1;
   const limit = Math.max(1, Math.min(40, Math.floor(query.limit ?? 15)));
 
   const found: Array<{ at: number; item: WorldEarthNewsItem }> = [];
   const firstYear = Math.floor((from - 31) / 365.25);
   for (let each = year; each >= firstYear; each--) {
-    const rows = data.years[String(each)];
+    const rows = data[String(each)];
     if (!rows) continue;
-    for (const [rowMonth, rowDay, kind, rowCountry, where, text] of rows) {
-      if (rowCountry >= 0 && rowCountry !== countryIndex) continue;
+    for (const [rowMonth, rowDay, name] of rows) {
       // When it is known: its day, else the end of its month, else the end of its year.
       const at = dayNumber(each, rowMonth || 12, rowDay || 31);
       if (at > today || at < from) continue;
-      if (words.length) {
-        const haystack = fold(`${text} ${where}`);
-        if (!words.every((word) => haystack.includes(word))) continue;
-      }
-      found.push({
-        at,
-        item: {
-          date: worldEarthNewsDate(each, rowMonth, rowDay),
-          text,
-          ...(where ? { where } : {}),
-          scope: rowCountry >= 0 ? "country" : "world",
-          ...(kind === "d" ? { death: true as const } : {}),
-        },
-      });
+      if (words.length && !words.every((word) => fold(name).includes(word))) continue;
+      found.push({ at, item: { date: worldEarthNewsDate(each, rowMonth, rowDay), name } });
     }
   }
-  found.sort((a, b) => b.at - a.at || (a.item.scope === b.item.scope ? 0 : a.item.scope === "world" ? -1 : 1));
+  found.sort((a, b) => b.at - a.at);
   const items = found.slice(0, limit).map((each) => each.item);
   const note =
     year < 1850
@@ -172,7 +117,6 @@ export function worldEarthNews(data: WorldEarthNewsData, query: WorldEarthNewsQu
         : undefined;
   return {
     today: worldEarthNewsDate(year, month ?? 0, day ?? 0),
-    ...(country ? { country } : {}),
     items,
     more: Math.max(0, found.length - items.length),
     ...(note ? { note } : {}),

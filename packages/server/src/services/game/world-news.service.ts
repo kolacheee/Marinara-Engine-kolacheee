@@ -1,6 +1,6 @@
 // ──────────────────────────────────────────────
-// The world_news tool (the Earth seed's news, shared features/world/earth-news.ts): what the papers say up
-// to the story's day, for a Game Master whose game is on the real Earth. Pulled when a character follows
+// The world_news tool (the Earth seed's news, shared features/world/earth-news.ts): the names of the real
+// events up to the story's day, for a Game Master whose game is on the real Earth. Pulled when a character follows
 // the news, never pushed into the story.
 // ──────────────────────────────────────────────
 import {
@@ -11,26 +11,13 @@ import {
 } from "@marinara-engine/shared";
 import { loadWorldEarthNews } from "./earth-data.js";
 
-interface EarthCityLike {
-  country?: unknown;
-  pop?: unknown;
-}
-
-/** The real place an Earth game's party is on: the map's Earth sample, or null for a drawn world. */
-export function worldEarthOfGame(metadata: Record<string, unknown> | null | undefined): {
-  year?: number;
-  cities: EarthCityLike[];
-} | null {
+/** Whether the map the party is on is the real Earth (the Earth seed): its brief has an Earth sample. */
+export function worldEarthOfGame(metadata: Record<string, unknown> | null | undefined): boolean {
   const stored = metadata?.gameWorld as
     { brief?: { earth?: unknown }; maps?: Array<{ id?: unknown; brief?: { earth?: unknown } }> } | null | undefined;
   const here = gameWorldMapHere(metadata);
   const brief = here ? stored?.maps?.find((map) => map.id === here)?.brief : stored?.brief;
-  const earth = brief?.earth as { year?: unknown; cities?: unknown } | undefined;
-  if (!earth || typeof earth !== "object") return null;
-  return {
-    ...(typeof earth.year === "number" ? { year: earth.year } : {}),
-    cities: Array.isArray(earth.cities) ? (earth.cities as EarthCityLike[]) : [],
-  };
+  return !!brief?.earth && typeof brief.earth === "object";
 }
 
 /** Whether the world_news tool fits this game: a game on the real Earth. */
@@ -60,19 +47,13 @@ export function worldNewsAnswer(
   metadata: Record<string, unknown> | null | undefined,
   args: Record<string, unknown>,
 ): WorldEarthNewsResult | { error: string } {
-  const earth = worldEarthOfGame(metadata);
-  if (!earth) return { error: "This game is not set on the real Earth, so it has no real news." };
+  if (!worldEarthOfGame(metadata)) return { error: "This game is not set on the real Earth, so it has no real news." };
   const date = readNewsDate(args.date);
   if (!date) return { error: "Give today's date in the story as YYYY-MM-DD." };
-  // The party's country: the biggest city's on the map it is on.
-  const home = [...earth.cities]
-    .filter((city) => typeof city.country === "string")
-    .sort((a, b) => Number(b.pop ?? 0) - Number(a.pop ?? 0))[0]?.country as string | undefined;
   return worldEarthNews(data, {
     ...date,
     ...(typeof args.days === "number" ? { days: args.days } : {}),
     ...(typeof args.about === "string" ? { about: args.about } : {}),
-    country: typeof args.country === "string" && args.country.trim() ? args.country : home,
   });
 }
 
