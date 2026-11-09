@@ -1,0 +1,36 @@
+start noir/city-day fresh []
+start noir/roofline fresh []
+start noir/gargoyle fresh []
+done  noir/gargoyle True
+start noir/card-placeholder fresh []
+done  noir/roofline True
+start noir/scraps fresh []
+done  noir/city-day True
+start noir/hat-silhouette fresh []
+done  noir/card-placeholder True
+start noir/city-night twin ['raw.png']
+done  noir/scraps True
+start noir/city-day-snow twin ['raw.png']
+done  noir/hat-silhouette True
+start noir/city-phone-day ref ['raw.png']
+done  noir/city-night True
+start noir/city-night-storm twin ['raw.png']
+done  noir/city-phone-day True
+start noir/city-night-snow twin ['raw.png']
+done  noir/city-day-snow True
+start noir/city-phone-night twin ['raw.png']
+done  noir/city-night-storm True
+done  noir/city-phone-night True
+done  noir/city-night-snow True
+ok noir/city-day (2560, 1440) RGB
+ok noir/city-night (2560, 1440) RGB
+ok noir/city-night-storm (2560, 1440) RGB
+ok noir/city-night-snow (2560, 1440) RGB
+ok noir/city-day-snow (2560, 1440) RGB
+ok noir/city-phone-day (1080, 1920) RGB
+ok noir/city-phone-night (1080, 1920) RGB
+ok noir/roofline (2400, 240) RGBA
+ok noir/gargoyle (1024, 1024) RGBA
+ok noir/card-placeholder (768, 1024) RGB
+ok noir/scraps (1024, 1024) RGBA
+ok noir/hat-silhouette (512, 512) RGBA

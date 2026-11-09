@@ -40,3 +40,15 @@ nautical/chart-night rc=0 secs=70 exists=yes
 nautical/chart-wet-day rc=0 secs=82 exists=yes
 nautical/chart-phone-night rc=0 secs=68 exists=yes
 nautical/chart-wet-night rc=0 secs=76 exists=yes
+noir/gargoyle rc=0 secs=62 exists=yes
+noir/roofline rc=0 secs=68 exists=yes
+noir/city-day rc=0 secs=83 exists=yes
+noir/card-placeholder rc=0 secs=56 exists=yes
+noir/scraps rc=0 secs=55 exists=yes
+noir/hat-silhouette rc=0 secs=64 exists=yes
+noir/city-night rc=0 secs=87 exists=yes
+noir/city-phone-day rc=0 secs=74 exists=yes
+noir/city-day-snow rc=0 secs=114 exists=yes
+noir/city-night-storm rc=0 secs=84 exists=yes
+noir/city-phone-night rc=0 secs=66 exists=yes
+noir/city-night-snow rc=0 secs=130 exists=yes
