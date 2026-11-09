@@ -1,0 +1,6 @@
+start aero/backdrop-fog twin ['raw.png']
+start aero/backdrop-fog-night twin ['raw.png']
+done  aero/backdrop-fog True
+done  aero/backdrop-fog-night True
+ok aero/backdrop-fog (1920, 1080) RGB
+ok aero/backdrop-fog-night (1920, 1080) RGB
