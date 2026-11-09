@@ -1,0 +1,23 @@
+start nautical/chart-day regen ['ref-current.png']
+done  nautical/chart-day True
+start nautical/chart-fog-day twin ['raw.png', 'raw.png']
+start nautical/chart-night twin ['raw.png', 'raw.png']
+start nautical/chart-wet-day twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/nautical/chart-fog-day/raw.png': No such file or directory
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/nautical/chart-night/raw.png': No such file or directory
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/nautical/chart-wet-day/raw.png': No such file or directory
+done  nautical/chart-night True
+start nautical/chart-wet-night twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/nautical/chart-wet-night/raw.png': No such file or directory
+done  nautical/chart-wet-day True
+start nautical/chart-fog-night twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/nautical/chart-fog-night/raw.png': No such file or directory
+done  nautical/chart-fog-day True
+done  nautical/chart-fog-night True
+done  nautical/chart-wet-night True
+ok nautical/chart-day (2560, 1440) RGB
+ok nautical/chart-night (2560, 1440) RGB
+ok nautical/chart-wet-day (1672, 941) RGB
+ok nautical/chart-wet-night (2560, 1440) RGB
+ok nautical/chart-fog-day (2560, 1440) RGB
+ok nautical/chart-fog-night (2560, 1440) RGB
