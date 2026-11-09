@@ -1,0 +1,1033 @@
+{
+  "sets": {
+    "_qc": {
+      "brief": "art-drop/BRIEF-12.md Part F, opening shared pixel/lighting rules and final QC paragraph",
+      "scope": "Only wildlife-0..7 and wildlife@winter-0..7 are judged. All other out/ art is approved reference/context only.",
+      "calibration": "Ship beside the approved art at the requested 2-4 px body scale. These are hints: no demand for character-scale eyes, complete anatomy, enlarged bodies or snow piled on every animal. Seasonal counterpart geometry is an intentional match, not a near-duplicate failure.",
+      "previous_review": "art-drop/review/critic-r12F-0.json does not exist; no previous passes to carry forward.",
+      "coverage": {
+        "expected": 16,
+        "found": 16,
+        "pass": 15,
+        "fail": 1
+      },
+      "visual_checks": [
+        "Every file viewed in sparse wildlife composites on approved grass and plains in its own season, at native 1x and exact nearest-neighbour 4x.",
+        "Every file also viewed beside approved grass/plains detail props and a full native-size approved marker, at 1x and 4x.",
+        "Summer and winter sets each tested in shuffled 8x2 adjacent 48px cells on both grass and plains, at 1x and 4x. No opaque tile boundary, framed square or background seam is introduced. The packed stress proof is supplemental: these transparent wildlife props are specified to be placed sparsely.",
+        "Every file individually inspected at exact 8x on both dark and pale backgrounds. Rechecked winter sheep on both approved snow grounds at 1x, 4x and 8x.",
+        "Ducks additionally inspected on blue water context at 1x and 4x. The context is a flat preview colour, not a new or judged base.",
+        "Compared native and 4x proofs against approved six-family markers; representative summer/winter city, industry, slums and farmland from round 2; seasonal paddies; all four seasons of grass/plains bases and detail sets.",
+        "Checked scale, margins, placement, hard pixel edges, blur/antialiasing, noise, muddy silhouettes, fringe/halos, top-left lighting, palette fit, repeat/near-duplicates and winter readability. The one silhouette failure is listed below; the other 15 survive these checks at the intentionally tiny body scale."
+      ],
+      "not_applicable": {
+        "3x3_base_tiling": "Part F has no bases. Approved grass/plains are read-only context, not candidates for new verdicts.",
+        "peak_lattice_or_range": "Part F has no peaks.",
+        "trees_composited_in_forest": "Part F has no tree sprites or forest set.",
+        "egg_crate_peaks_Swiss_cheese_craters_classical_ruins_stamped_cyberpunk_grid_flat_orange_autumn_identical_crowns": "These subjects/seasons do not occur in Part F. No unrelated asset is reviewed or assigned a verdict.",
+        "named_reference_files": "Part F and the shared opening/QC paragraphs name no separate reference image files. The treeline_forest reference belongs to Part C tree placement."
+      },
+      "technical_checks": {
+        "dimensions": "16/16 are 48x48 RGBA",
+        "alpha": "16/16 have only alpha 0 and 255 and zero RGB under transparent pixels; no antialias alpha or rectangular backing",
+        "bounds": "All sprites have unclipped transparent margins. Group bounds are 35-36px wide by 34px high; each fox is 9x4px centred within the cell.",
+        "uniqueness": "16 distinct PNG SHA-256 hashes. The animal species have distinct silhouette/colour cues; seasonal pairs intentionally share placement.",
+        "components": "Herds retain 3 animals each; boar 2; fox 1; flying flock 5 birds plus 5 shadows. Duck ripple marks account for additional isolated pixels.",
+        "enlargements": "22 native/zoom relationships independently verified pixel-exact nearest-neighbour; all four per-file 8x inspection sheets use exact 8x native pixels.",
+        "out_unchanged": "All 1530 out/ PNG hashes match the pre-review snapshot; no out/ file was written."
+      },
+      "file_audit": {
+        "wildlife-0": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                11,
+                12
+              ],
+              "pixels": 14
+            },
+            {
+              "bbox": [
+                37,
+                21,
+                42,
+                25
+              ],
+              "pixels": 15
+            },
+            {
+              "bbox": [
+                16,
+                37,
+                21,
+                41
+              ],
+              "pixels": 13
+            }
+          ],
+          "sha256": "b41b00214a326ffd050f4aa53045b242f02b6a82705e52070f5491e902a134dc"
+        },
+        "wildlife-1": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                10,
+                11
+              ],
+              "pixels": 11
+            },
+            {
+              "bbox": [
+                37,
+                22,
+                41,
+                25
+              ],
+              "pixels": 11
+            },
+            {
+              "bbox": [
+                16,
+                37,
+                21,
+                41
+              ],
+              "pixels": 12
+            }
+          ],
+          "sha256": "62454dd45785c4004262cb0041b9a16ce93ce5a2780d2e0b090a06dea22cc25e"
+        },
+        "wildlife-2": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                12,
+                11
+              ],
+              "pixels": 19
+            },
+            {
+              "bbox": [
+                35,
+                22,
+                41,
+                26
+              ],
+              "pixels": 18
+            },
+            {
+              "bbox": [
+                16,
+                37,
+                22,
+                41
+              ],
+              "pixels": 20
+            }
+          ],
+          "sha256": "f1fbb2d3a808d811084fced3cc6c6ac0e8827c5b223cd1a07150f81e9295e363"
+        },
+        "wildlife-3": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                11,
+                11
+              ],
+              "pixels": 13
+            },
+            {
+              "bbox": [
+                35,
+                22,
+                41,
+                25
+              ],
+              "pixels": 13
+            },
+            {
+              "bbox": [
+                15,
+                37,
+                21,
+                41
+              ],
+              "pixels": 16
+            }
+          ],
+          "sha256": "9f8db5b5aa666d6e3a6213b4b02f59d5d3c8cba49322826235a54fc38e642623"
+        },
+        "wildlife-4": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                20,
+                7,
+                25,
+                9
+              ],
+              "pixels": 6
+            },
+            {
+              "bbox": [
+                22,
+                10,
+                27,
+                12
+              ],
+              "pixels": 7
+            },
+            {
+              "bbox": [
+                6,
+                10,
+                10,
+                13
+              ],
+              "pixels": 5
+            },
+            {
+              "bbox": [
+                8,
+                14,
+                12,
+                16
+              ],
+              "pixels": 4
+            },
+            {
+              "bbox": [
+                35,
+                18,
+                41,
+                21
+              ],
+              "pixels": 8
+            },
+            {
+              "bbox": [
+                38,
+                22,
+                42,
+                24
+              ],
+              "pixels": 6
+            },
+            {
+              "bbox": [
+                14,
+                27,
+                19,
+                29
+              ],
+              "pixels": 6
+            },
+            {
+              "bbox": [
+                16,
+                30,
+                21,
+                33
+              ],
+              "pixels": 7
+            },
+            {
+              "bbox": [
+                28,
+                34,
+                33,
+                37
+              ],
+              "pixels": 6
+            },
+            {
+              "bbox": [
+                30,
+                38,
+                34,
+                41
+              ],
+              "pixels": 6
+            }
+          ],
+          "sha256": "319b60a3f180a5a043adc3b592687d91df78780c134cd21e5cf799cbeb83f03d"
+        },
+        "wildlife-5": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                8,
+                7,
+                12,
+                10
+              ],
+              "pixels": 8
+            },
+            {
+              "bbox": [
+                12,
+                9,
+                13,
+                10
+              ],
+              "pixels": 1
+            },
+            {
+              "bbox": [
+                6,
+                9,
+                7,
+                10
+              ],
+              "pixels": 1
+            },
+            {
+              "bbox": [
+                37,
+                22,
+                42,
+                25
+              ],
+              "pixels": 9
+            },
+            {
+              "bbox": [
+                35,
+                23,
+                36,
+                24
+              ],
+              "pixels": 1
+            },
+            {
+              "bbox": [
+                15,
+                38,
+                21,
+                41
+              ],
+              "pixels": 9
+            }
+          ],
+          "sha256": "6bb47cb87a5e457dadbaff47213af6bb4f7cf5d1eb51a586937774a53ab0b096"
+        },
+        "wildlife-6": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            20,
+            23,
+            29,
+            27
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                20,
+                23,
+                29,
+                27
+              ],
+              "pixels": 21
+            }
+          ],
+          "sha256": "e255e6cc7e20bc5d4093f15b8a76e7abf750cb878e356197a07b2aeab794516b"
+        },
+        "wildlife-7": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                13,
+                12
+              ],
+              "pixels": 19
+            },
+            {
+              "bbox": [
+                35,
+                37,
+                42,
+                41
+              ],
+              "pixels": 21
+            }
+          ],
+          "sha256": "524ce1450b9bfa6c3aacc90c70938341d9860c8df723e5c97386138af92a9986"
+        },
+        "wildlife@winter-0": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                11,
+                12
+              ],
+              "pixels": 14
+            },
+            {
+              "bbox": [
+                37,
+                21,
+                42,
+                25
+              ],
+              "pixels": 13
+            },
+            {
+              "bbox": [
+                16,
+                37,
+                21,
+                41
+              ],
+              "pixels": 13
+            }
+          ],
+          "sha256": "c4e8064693179b923187fe01e90a9da3fb647723acc4123781986f2dda6c66f3"
+        },
+        "wildlife@winter-1": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                9,
+                11
+              ],
+              "pixels": 9
+            },
+            {
+              "bbox": [
+                37,
+                22,
+                41,
+                25
+              ],
+              "pixels": 10
+            },
+            {
+              "bbox": [
+                16,
+                37,
+                21,
+                41
+              ],
+              "pixels": 11
+            }
+          ],
+          "sha256": "b7b24079cf788d00c382d4261de92c7ffb16f65b38b7191b0b464ac2af50dbcd"
+        },
+        "wildlife@winter-2": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                12,
+                11
+              ],
+              "pixels": 19
+            },
+            {
+              "bbox": [
+                35,
+                22,
+                41,
+                26
+              ],
+              "pixels": 18
+            },
+            {
+              "bbox": [
+                16,
+                37,
+                22,
+                41
+              ],
+              "pixels": 20
+            }
+          ],
+          "sha256": "d0090c5b43467eff1c2ad8ebec42c4f6fe86cd909b441ddf42880fc637e87d86"
+        },
+        "wildlife@winter-3": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                11,
+                11
+              ],
+              "pixels": 11
+            },
+            {
+              "bbox": [
+                35,
+                22,
+                41,
+                25
+              ],
+              "pixels": 11
+            },
+            {
+              "bbox": [
+                15,
+                37,
+                21,
+                41
+              ],
+              "pixels": 15
+            }
+          ],
+          "sha256": "628ec11954a9a6f70eb8c5eca447eaecd725f461e2015a14be18a90f7f81c214"
+        },
+        "wildlife@winter-4": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                20,
+                7,
+                25,
+                9
+              ],
+              "pixels": 6
+            },
+            {
+              "bbox": [
+                22,
+                10,
+                27,
+                12
+              ],
+              "pixels": 7
+            },
+            {
+              "bbox": [
+                6,
+                10,
+                10,
+                13
+              ],
+              "pixels": 5
+            },
+            {
+              "bbox": [
+                8,
+                14,
+                12,
+                16
+              ],
+              "pixels": 4
+            },
+            {
+              "bbox": [
+                35,
+                18,
+                41,
+                21
+              ],
+              "pixels": 8
+            },
+            {
+              "bbox": [
+                38,
+                22,
+                42,
+                24
+              ],
+              "pixels": 6
+            },
+            {
+              "bbox": [
+                14,
+                27,
+                19,
+                29
+              ],
+              "pixels": 6
+            },
+            {
+              "bbox": [
+                16,
+                30,
+                21,
+                33
+              ],
+              "pixels": 7
+            },
+            {
+              "bbox": [
+                28,
+                34,
+                33,
+                37
+              ],
+              "pixels": 6
+            },
+            {
+              "bbox": [
+                30,
+                38,
+                34,
+                41
+              ],
+              "pixels": 6
+            }
+          ],
+          "sha256": "8a424c5ccb530cccb9553db1c4651ac7dada9c509298c676b99f76fe5f3abba8"
+        },
+        "wildlife@winter-5": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                8,
+                7,
+                12,
+                10
+              ],
+              "pixels": 8
+            },
+            {
+              "bbox": [
+                12,
+                9,
+                13,
+                10
+              ],
+              "pixels": 1
+            },
+            {
+              "bbox": [
+                6,
+                9,
+                7,
+                10
+              ],
+              "pixels": 1
+            },
+            {
+              "bbox": [
+                37,
+                22,
+                42,
+                25
+              ],
+              "pixels": 8
+            },
+            {
+              "bbox": [
+                35,
+                23,
+                36,
+                24
+              ],
+              "pixels": 1
+            },
+            {
+              "bbox": [
+                15,
+                38,
+                21,
+                41
+              ],
+              "pixels": 9
+            }
+          ],
+          "sha256": "ed118f8a5a808fae2dac91139a28db416fa93b9bde3eff6e50147e7b5fcf06ba"
+        },
+        "wildlife@winter-6": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            20,
+            23,
+            29,
+            27
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                20,
+                23,
+                29,
+                27
+              ],
+              "pixels": 19
+            }
+          ],
+          "sha256": "1c0c74c4eee82498dfb3a1dd071f46a02378e17a340b7efcd168f68fb684ea6c"
+        },
+        "wildlife@winter-7": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "components": [
+            {
+              "bbox": [
+                6,
+                7,
+                13,
+                12
+              ],
+              "pixels": 19
+            },
+            {
+              "bbox": [
+                35,
+                37,
+                42,
+                41
+              ],
+              "pixels": 19
+            }
+          ],
+          "sha256": "4011c73a76fe4495e411a4663d8cb7d62165c4c247a885fed133ac9304f65447"
+        }
+      },
+      "evidence": [
+        "critic-r12F-1-approved-grounds-autumn-1x.png",
+        "critic-r12F-1-approved-grounds-autumn-4x.png",
+        "critic-r12F-1-approved-grounds-spring-1x.png",
+        "critic-r12F-1-approved-grounds-spring-4x.png",
+        "critic-r12F-1-approved-grounds-summer-1x.png",
+        "critic-r12F-1-approved-grounds-summer-4x.png",
+        "critic-r12F-1-approved-grounds-winter-1x.png",
+        "critic-r12F-1-approved-grounds-winter-4x.png",
+        "critic-r12F-1-approved-markers-1x.png",
+        "critic-r12F-1-approved-markers-4x.png",
+        "critic-r12F-1-approved-paddies-1x.png",
+        "critic-r12F-1-approved-paddies-4x.png",
+        "critic-r12F-1-approved-round2-1x.png",
+        "critic-r12F-1-approved-round2-4x.png",
+        "critic-r12F-1-ducks-water-1x.png",
+        "critic-r12F-1-ducks-water-4x.png",
+        "critic-r12F-1-summer-files-0-3-8x.png",
+        "critic-r12F-1-summer-files-4-7-8x.png",
+        "critic-r12F-1-summer-grass-approved-context-1x.png",
+        "critic-r12F-1-summer-grass-approved-context-4x.png",
+        "critic-r12F-1-summer-grass-random-8x2-1x.png",
+        "critic-r12F-1-summer-grass-random-8x2-4x.png",
+        "critic-r12F-1-summer-grass-sparse-1x.png",
+        "critic-r12F-1-summer-grass-sparse-4x.png",
+        "critic-r12F-1-summer-plains-approved-context-1x.png",
+        "critic-r12F-1-summer-plains-approved-context-4x.png",
+        "critic-r12F-1-summer-plains-random-8x2-1x.png",
+        "critic-r12F-1-summer-plains-random-8x2-4x.png",
+        "critic-r12F-1-summer-plains-sparse-1x.png",
+        "critic-r12F-1-summer-plains-sparse-4x.png",
+        "critic-r12F-1-winter-files-0-3-8x.png",
+        "critic-r12F-1-winter-files-4-7-8x.png",
+        "critic-r12F-1-winter-grass-approved-context-1x.png",
+        "critic-r12F-1-winter-grass-approved-context-4x.png",
+        "critic-r12F-1-winter-grass-random-8x2-1x.png",
+        "critic-r12F-1-winter-grass-random-8x2-4x.png",
+        "critic-r12F-1-winter-grass-sparse-1x.png",
+        "critic-r12F-1-winter-grass-sparse-4x.png",
+        "critic-r12F-1-winter-plains-approved-context-1x.png",
+        "critic-r12F-1-winter-plains-approved-context-4x.png",
+        "critic-r12F-1-winter-plains-random-8x2-1x.png",
+        "critic-r12F-1-winter-plains-random-8x2-4x.png",
+        "critic-r12F-1-winter-plains-sparse-1x.png",
+        "critic-r12F-1-winter-plains-sparse-4x.png",
+        "critic-r12F-1-winter-sheep-readability-1x.png",
+        "critic-r12F-1-winter-sheep-readability-4x.png",
+        "critic-r12F-1-winter-sheep-readability-8x.png"
+      ]
+    },
+    "wildlife": {
+      "files": [
+        "wildlife-0",
+        "wildlife-1",
+        "wildlife-2",
+        "wildlife-3",
+        "wildlife-4",
+        "wildlife-5",
+        "wildlife-6",
+        "wildlife-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "verdict": "PASS: eight tiny, restrained wildlife hints; sparse placement and palette fit survive native/4x ground checks and 8x pixel inspection."
+    },
+    "wildlife@winter": {
+      "files": [
+        "wildlife@winter-0",
+        "wildlife@winter-1",
+        "wildlife@winter-2",
+        "wildlife@winter-3",
+        "wildlife@winter-4",
+        "wildlife@winter-5",
+        "wildlife@winter-6",
+        "wildlife@winter-7"
+      ],
+      "pass": 7,
+      "fail": 1,
+      "verdict": "FAIL SET: winter sheep loses essential head/body pixels. The other seven seasonal sprites remain nonblank, legible and compatible with approved snow grounds."
+    },
+    "species_notes": {
+      "0": "Three tiny deer hints retain upright head/neck ticks, warm bodies and separate dark undersides. No clipped animal or stray island; winter remains readable on snow.",
+      "1": "Summer sheep retain pale wool, contrasting muzzle/feet and a grazing/downturned pose. Winter fails because the first animal loses its muzzle and body contour; see fail entry.",
+      "2": "Three cattle retain broad short torsos, varied coat blocks and separated leg/underside ticks. The brighter winter coats retain enough brown structure to read against snow.",
+      "3": "Three horse hints retain longer horizontal torsos, raised/downturned necks and dark tail/foot ticks. Summer/winter differ without becoming blank or changing size class.",
+      "4": "Five wing silhouettes and five distinct down-right cast shadows, consistent with top-left light. Thin marks remain hard-edged at 8x; summer is subtle on green ground but still resolves as a flock at native scale, winter contrasts with snow.",
+      "5": "Three tiny duck bodies, short bills/head ticks and small detached ripple pixels. The ripple pixels are intentional water marks, not fringe. The water proof resolves the birds; both seasonal versions retain identity.",
+      "6": "The single centred fox has a short russet torso, dark underside and a long pale-tipped tail; its 9x4 total footprint includes the tail, not a 9px body. Remains a small hint rather than an oversized character.",
+      "7": "Two stocky boar hints retain dark belly/feet, short snout/tail ticks and a heavier silhouette than the deer/horses. Winter keeps brown body mass and does not dissolve into white snow."
+    }
+  },
+  "pass": [
+    "wildlife-0",
+    "wildlife-1",
+    "wildlife-2",
+    "wildlife-3",
+    "wildlife-4",
+    "wildlife-5",
+    "wildlife-6",
+    "wildlife-7",
+    "wildlife@winter-0",
+    "wildlife@winter-2",
+    "wildlife@winter-3",
+    "wildlife@winter-4",
+    "wildlife@winter-5",
+    "wildlife@winter-6",
+    "wildlife@winter-7"
+  ],
+  "fail": [
+    {
+      "name": "wildlife@winter-1",
+      "problems": "The upper-left sheep loses its head/muzzle and flank during the winter conversion: the summer muzzle at native (9,8) and body/neck pixel at (8,9) are transparent in winter. The remaining seven pale wool pixels sit above two dark foot pixels with no dark side contour, so on both approved snow grounds at 1x it reads as an anonymous pale fleck with feet rather than a sheep. Restore a connected, darker muzzle/neck and a restrained one-pixel side/underside contour, keeping the 2-4 px torso and three-animal layout. Recheck on grass@winter-base and plains@winter-base; do not enlarge the animals. Evidence: critic-r12F-1-winter-sheep-readability-{1,4,8}x.png."
+    }
+  ]
+}
