@@ -1,0 +1,547 @@
+{
+  "sets": {
+    "badlands": {
+      "status": "fail",
+      "pass_count": 7,
+      "fail_count": 1,
+      "checks": {
+        "scope": "Only BRIEF-13 Part B: badlands-prop-0..7 and badlands@winter-prop-0..7. Approved art and historical references are comparison material, not extra verdicts. No out/ file was edited; all out/ PNG hashes were verified unchanged across this review.",
+        "scales": "Inspected every Part B file at native 1x and nearest-neighbour 4x over approved plains, grass and wasteland dirt/snow. Inspected every file at nearest-neighbour 8x on a checkerboard, in groups 0-3, 4-5 and 6-7. No smoothing used.",
+        "small_random_8x2": "Completed and visually inspected both seasons, at 1x and 4x, on plains and wasteland bases. Each of small props 0-3 occurs four times in seeded shuffled order (seed 1302). No cell seams, ground squares, framing or tile-border grid. The intentionally repeated assets are recognizable, but the four source designs are distinct; no near-duplicate small designs.",
+        "mesa_landscape": "Completed mixed-size landscape in both seasons at 1x and 4x, containing all eight designs and repeated large props. Large props read as mesas of different profiles. Revised 6 has a continuous raised cap, an asymmetric shoulder and front strata; the former crater/arena reading is fixed. No egg-crate or Swiss-cheese field.",
+        "base_3x3": "Not applicable: Part B lists no base PNG. Approved bases are substrates only, not subjects of this verdict.",
+        "peak_lattice_or_range": "Not applicable: no peak/ridge assets in Part B. A badlands landscape was additionally inspected without imposing a mountain lattice on ground props.",
+        "trees_in_forest": "Not applicable: no tree files in Part B. Autumn colour and identical crown defects are not applicable to these badlands props.",
+        "size_placement": "All 16 required files present, RGBA, small indices 0-3 exactly 48x48, large 4-7 exactly 96x96. Small visible widths 36-38 px (75-79%); large 81-82 px (84-85%). Centred footprints, no canvas-edge clipping. Shorter vertical extents of low landforms match the oblique view; occupancy is not interpreted as 85% opaque area.",
+        "pixel_quality": "Compact clustered pixel palettes, crisp native grid, no blur, accidental antialiasing or noisy microtexture found. Checkerboard and pale/dark ground comparisons show no matte fringe or halo. Intentional translucency in cracks is appropriate see-through shading, not antialiasing.",
+        "palette_light": "Red-brown faces and tan caps fit the approved warm earth/roof palette while retaining their own rock colour. Upper-left ledge/cap light and darker right flanks match approved markers and terrain details. No reversed main light or palette clash found.",
+        "contact_shadows": "FAIL for revised 6 in both seasons: there is effectively no soft contact shadow outside its opaque rock silhouette. Summer has only 4 alpha-64 black pixels, winter only 5, mostly isolated. The matching approved-in-round-1 large badlands 4/5/7 have 57-71 such pixels tracing the contact. Verified visually at 1x/4x over light neutral ground and with a separate nonopaque-pixel mask, plus 8x source inspection. Restoring a narrow broken translucent contact strip is required by the shared brief; the landform itself need not be redrawn. Other raised props retain a readable contact treatment; flat crack overlays need no raised-object cast shadow.",
+        "winter": "All eight winter designs retain their summer subject/placement. Snow/frost appears on upper surfaces and ledges while exposed rock remains. Revised winter 3 now has 70 pale frost pixels at alpha 145/190 along selected crack lips, visible in the 1x and 4x composites, rather than the previous six faint white pixels. It remains see-through, with dark fissures exposed, and passes. No blank winter sprite.",
+        "historical_failure_modes": "The former hollow prop 6 shape is repaired in both seasons. No classical ruin/column/arena reading, stamped cyberpunk grid, blob, speck or baked ground square found. Flat orange autumn and identical tree crowns do not apply. The two shadow failures are recorded narrowly, without reopening unchanged passes.",
+        "calibration": "Ship beside approved art, not perfection. All 13 former passes are SHA-256 identical and remain passes. Three former failures changed: winter 3 is repaired; summer/winter 6 fix the hollow shape but fail their missing required contact shadow."
+      },
+      "reference_comparisons": [
+        "BRIEF-13.md shared style/layout and Part B; BRIEF-7.md C hills layout/scale and D dunes; BRIEF-2.md 8x2 random tiling method",
+        "reference/current-fantasy-hills.png, reference/wasteland-ground.png, reference/current-wasteland-wasteland.png",
+        "out/hills-prop-0,1,4,6 and matching winter; out/dunes-prop-0,1,4,6 and matching winter; out/crater-prop-0,1,4,6",
+        "All 24 out/<setting>-marker0..3 across fantasy, wuxia, jazz_age, modern, scifi and wasteland",
+        "out/city-0..7, industry-0..7, slums-0..7, suburb-0..7, farmland-0..6, paddies-0..7, plus winter counterparts",
+        "out/grass-base and grass-detail-0..7; out/plains-base and plains-detail-0..7; matching winter bases/details",
+        "out/wasteland-wasteland-base and out/wasteland-wasteland@winter-base as additional placement backgrounds"
+      ],
+      "evidence": [
+        "critic-r13B-2-approved-fantasy-markers-1x.png",
+        "critic-r13B-2-approved-fantasy-markers-4x.png",
+        "critic-r13B-2-approved-jazz_age-markers-1x.png",
+        "critic-r13B-2-approved-jazz_age-markers-4x.png",
+        "critic-r13B-2-approved-modern-markers-1x.png",
+        "critic-r13B-2-approved-modern-markers-4x.png",
+        "critic-r13B-2-approved-scifi-markers-1x.png",
+        "critic-r13B-2-approved-scifi-markers-4x.png",
+        "critic-r13B-2-approved-wasteland-markers-1x.png",
+        "critic-r13B-2-approved-wasteland-markers-4x.png",
+        "critic-r13B-2-approved-wuxia-markers-1x.png",
+        "critic-r13B-2-approved-wuxia-markers-4x.png",
+        "critic-r13B-2-reference-current-fantasy-hills-1x.png",
+        "critic-r13B-2-reference-current-fantasy-hills-4x.png",
+        "critic-r13B-2-reference-current-wasteland-wasteland-1x.png",
+        "critic-r13B-2-reference-current-wasteland-wasteland-4x.png",
+        "critic-r13B-2-reference-wasteland-ground-1x.png",
+        "critic-r13B-2-reference-wasteland-ground-4x.png",
+        "critic-r13B-2-summer-approved-city-industry-slums-1x.png",
+        "critic-r13B-2-summer-approved-city-industry-slums-4x.png",
+        "critic-r13B-2-summer-approved-grass-1x.png",
+        "critic-r13B-2-summer-approved-grass-4x.png",
+        "critic-r13B-2-summer-approved-plains-1x.png",
+        "critic-r13B-2-summer-approved-plains-4x.png",
+        "critic-r13B-2-summer-approved-suburb-farmland-paddies-1x.png",
+        "critic-r13B-2-summer-approved-suburb-farmland-paddies-4x.png",
+        "critic-r13B-2-summer-changed-mesa-comparison-1x.png",
+        "critic-r13B-2-summer-changed-mesa-comparison-4x.png",
+        "critic-r13B-2-summer-contact-shadow-audit-1x.png",
+        "critic-r13B-2-summer-contact-shadow-audit-4x.png",
+        "critic-r13B-2-summer-inspect-0-1-2-3-8x.png",
+        "critic-r13B-2-summer-inspect-4-5-8x.png",
+        "critic-r13B-2-summer-inspect-6-7-8x.png",
+        "critic-r13B-2-summer-mesa-landscape-1x.png",
+        "critic-r13B-2-summer-mesa-landscape-4x.png",
+        "critic-r13B-2-summer-on-grass-base-1x.png",
+        "critic-r13B-2-summer-on-grass-base-4x.png",
+        "critic-r13B-2-summer-on-plains-base-1x.png",
+        "critic-r13B-2-summer-on-plains-base-4x.png",
+        "critic-r13B-2-summer-on-wasteland-wasteland-base-1x.png",
+        "critic-r13B-2-summer-on-wasteland-wasteland-base-4x.png",
+        "critic-r13B-2-summer-reference-props-1x.png",
+        "critic-r13B-2-summer-reference-props-4x.png",
+        "critic-r13B-2-summer-small-random-8x2-on-plains-base-1x.png",
+        "critic-r13B-2-summer-small-random-8x2-on-plains-base-4x.png",
+        "critic-r13B-2-summer-small-random-8x2-on-wasteland-wasteland-base-1x.png",
+        "critic-r13B-2-summer-small-random-8x2-on-wasteland-wasteland-base-4x.png"
+      ],
+      "per_file": {
+        "badlands-prop-0": {
+          "status": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            10,
+            43,
+            38
+          ],
+          "sha256": "71f884ccd0d70ff72dd06a71dc2c39ef0281b4d3dbcc66fd3bed0ff0274e4c66",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 1456,
+            "64": 27,
+            "255": 821
+          },
+          "assessment": "PASS: a squat layered butte with an irregular tan cap, readable ledges, darker right face and grounded foot; distinct from the stepped double butte in prop 2. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands-prop-1": {
+          "status": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            6,
+            5,
+            42,
+            43
+          ],
+          "sha256": "fa27268eb5294e8639970cdef812c3959cb86001e0329cb56d0da168450e59f7",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 1600,
+            "64": 14,
+            "255": 690
+          },
+          "assessment": "PASS: unequal slender spires form a clear, distinct silhouette with shared rocky foot and upper-left highlights; neither a blob nor a scaled duplicate of the mesas. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands-prop-2": {
+          "status": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            10,
+            43,
+            38
+          ],
+          "sha256": "fd1afc8ef7740fc63e60d1731d054e48813c8332f76ce2a9c85dba3e6adf3969",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 1518,
+            "64": 15,
+            "255": 771
+          },
+          "assessment": "PASS: two unequal flat-topped buttes joined into one stepped mass; clear cap/face separation, correct light and compact contact shadow. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands-prop-3": {
+          "status": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            6,
+            5,
+            42,
+            43
+          ],
+          "sha256": "76ed33cd615da38280efa3d14914bf056f12a6c1560a51a7be942f3ea83f20de",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 2125,
+            "65": 2,
+            "75": 83,
+            "115": 94
+          },
+          "assessment": "PASS: sparse, tapering neutral translucent fissures read as a cracked-ground overlay on the tested substrates, with no tinted ground slab or square boundary. A sparse crack is appropriate here; the winter variant has a separate seasonal failure. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands-prop-4": {
+          "status": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            18,
+            89,
+            78
+          ],
+          "sha256": "3a96c3a046114a190773bb35895c17f2bd7237001a3116cf48eda4530197ab45",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 5516,
+            "64": 67,
+            "255": 3633
+          },
+          "assessment": "PASS: broad asymmetric raised mesa, cap notch and visible red-brown strata; the plateau remains legible without noisy texture, and its large footprint meets the layout. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands-prop-5": {
+          "status": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            17,
+            89,
+            79
+          ],
+          "sha256": "0715460fa12a0730e7176805d4f09b4308a563bd3d847b60e7fbaa7472a83651",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 5824,
+            "64": 61,
+            "255": 3331
+          },
+          "assessment": "PASS: descending connected terraces give this large mesa a different silhouette from props 4 and 7; ledges, shadow face and contact are readable at 1x. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands-prop-6": {
+          "status": "fail",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            17,
+            89,
+            79
+          ],
+          "sha256": "478e52e474a7b8124e1c2cfada4b850ca4f2be77e5f013e0e31632ea35147c74",
+          "previous_status": "fail",
+          "unchanged_since_r13B_1": false,
+          "alpha_pixel_counts": {
+            "0": 5346,
+            "64": 4,
+            "255": 3866
+          },
+          "assessment": "FAIL: former hollow/crater defect resolved; required contact shadow missing. See fail entry."
+        },
+        "badlands-prop-7": {
+          "status": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            24,
+            88,
+            72
+          ],
+          "sha256": "a0380118af932062769f980522f762166e2e25f87d3196edb82ee3b4848a17ca",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 6805,
+            "64": 57,
+            "255": 2354
+          },
+          "assessment": "PASS: low, elongated mesa with an uneven raised shoulder and separate small foot rock; width and lower profile provide useful variation without becoming a speck. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        }
+      }
+    },
+    "badlands@winter": {
+      "status": "fail",
+      "pass_count": 7,
+      "fail_count": 1,
+      "checks": {
+        "scope": "Only BRIEF-13 Part B: badlands-prop-0..7 and badlands@winter-prop-0..7. Approved art and historical references are comparison material, not extra verdicts. No out/ file was edited; all out/ PNG hashes were verified unchanged across this review.",
+        "scales": "Inspected every Part B file at native 1x and nearest-neighbour 4x over approved plains, grass and wasteland dirt/snow. Inspected every file at nearest-neighbour 8x on a checkerboard, in groups 0-3, 4-5 and 6-7. No smoothing used.",
+        "small_random_8x2": "Completed and visually inspected both seasons, at 1x and 4x, on plains and wasteland bases. Each of small props 0-3 occurs four times in seeded shuffled order (seed 1302). No cell seams, ground squares, framing or tile-border grid. The intentionally repeated assets are recognizable, but the four source designs are distinct; no near-duplicate small designs.",
+        "mesa_landscape": "Completed mixed-size landscape in both seasons at 1x and 4x, containing all eight designs and repeated large props. Large props read as mesas of different profiles. Revised 6 has a continuous raised cap, an asymmetric shoulder and front strata; the former crater/arena reading is fixed. No egg-crate or Swiss-cheese field.",
+        "base_3x3": "Not applicable: Part B lists no base PNG. Approved bases are substrates only, not subjects of this verdict.",
+        "peak_lattice_or_range": "Not applicable: no peak/ridge assets in Part B. A badlands landscape was additionally inspected without imposing a mountain lattice on ground props.",
+        "trees_in_forest": "Not applicable: no tree files in Part B. Autumn colour and identical crown defects are not applicable to these badlands props.",
+        "size_placement": "All 16 required files present, RGBA, small indices 0-3 exactly 48x48, large 4-7 exactly 96x96. Small visible widths 36-38 px (75-79%); large 81-82 px (84-85%). Centred footprints, no canvas-edge clipping. Shorter vertical extents of low landforms match the oblique view; occupancy is not interpreted as 85% opaque area.",
+        "pixel_quality": "Compact clustered pixel palettes, crisp native grid, no blur, accidental antialiasing or noisy microtexture found. Checkerboard and pale/dark ground comparisons show no matte fringe or halo. Intentional translucency in cracks is appropriate see-through shading, not antialiasing.",
+        "palette_light": "Red-brown faces and tan caps fit the approved warm earth/roof palette while retaining their own rock colour. Upper-left ledge/cap light and darker right flanks match approved markers and terrain details. No reversed main light or palette clash found.",
+        "contact_shadows": "FAIL for revised 6 in both seasons: there is effectively no soft contact shadow outside its opaque rock silhouette. Summer has only 4 alpha-64 black pixels, winter only 5, mostly isolated. The matching approved-in-round-1 large badlands 4/5/7 have 57-71 such pixels tracing the contact. Verified visually at 1x/4x over light neutral ground and with a separate nonopaque-pixel mask, plus 8x source inspection. Restoring a narrow broken translucent contact strip is required by the shared brief; the landform itself need not be redrawn. Other raised props retain a readable contact treatment; flat crack overlays need no raised-object cast shadow.",
+        "winter": "All eight winter designs retain their summer subject/placement. Snow/frost appears on upper surfaces and ledges while exposed rock remains. Revised winter 3 now has 70 pale frost pixels at alpha 145/190 along selected crack lips, visible in the 1x and 4x composites, rather than the previous six faint white pixels. It remains see-through, with dark fissures exposed, and passes. No blank winter sprite.",
+        "historical_failure_modes": "The former hollow prop 6 shape is repaired in both seasons. No classical ruin/column/arena reading, stamped cyberpunk grid, blob, speck or baked ground square found. Flat orange autumn and identical tree crowns do not apply. The two shadow failures are recorded narrowly, without reopening unchanged passes.",
+        "calibration": "Ship beside approved art, not perfection. All 13 former passes are SHA-256 identical and remain passes. Three former failures changed: winter 3 is repaired; summer/winter 6 fix the hollow shape but fail their missing required contact shadow."
+      },
+      "reference_comparisons": [
+        "BRIEF-13.md shared style/layout and Part B; BRIEF-7.md C hills layout/scale and D dunes; BRIEF-2.md 8x2 random tiling method",
+        "reference/current-fantasy-hills.png, reference/wasteland-ground.png, reference/current-wasteland-wasteland.png",
+        "out/hills-prop-0,1,4,6 and matching winter; out/dunes-prop-0,1,4,6 and matching winter; out/crater-prop-0,1,4,6",
+        "All 24 out/<setting>-marker0..3 across fantasy, wuxia, jazz_age, modern, scifi and wasteland",
+        "out/city-0..7, industry-0..7, slums-0..7, suburb-0..7, farmland-0..6, paddies-0..7, plus winter counterparts",
+        "out/grass-base and grass-detail-0..7; out/plains-base and plains-detail-0..7; matching winter bases/details",
+        "out/wasteland-wasteland-base and out/wasteland-wasteland@winter-base as additional placement backgrounds"
+      ],
+      "evidence": [
+        "critic-r13B-2-approved-fantasy-markers-1x.png",
+        "critic-r13B-2-approved-fantasy-markers-4x.png",
+        "critic-r13B-2-approved-jazz_age-markers-1x.png",
+        "critic-r13B-2-approved-jazz_age-markers-4x.png",
+        "critic-r13B-2-approved-modern-markers-1x.png",
+        "critic-r13B-2-approved-modern-markers-4x.png",
+        "critic-r13B-2-approved-scifi-markers-1x.png",
+        "critic-r13B-2-approved-scifi-markers-4x.png",
+        "critic-r13B-2-approved-wasteland-markers-1x.png",
+        "critic-r13B-2-approved-wasteland-markers-4x.png",
+        "critic-r13B-2-approved-wuxia-markers-1x.png",
+        "critic-r13B-2-approved-wuxia-markers-4x.png",
+        "critic-r13B-2-reference-current-fantasy-hills-1x.png",
+        "critic-r13B-2-reference-current-fantasy-hills-4x.png",
+        "critic-r13B-2-reference-current-wasteland-wasteland-1x.png",
+        "critic-r13B-2-reference-current-wasteland-wasteland-4x.png",
+        "critic-r13B-2-reference-wasteland-ground-1x.png",
+        "critic-r13B-2-reference-wasteland-ground-4x.png",
+        "critic-r13B-2-winter-approved-city-industry-slums-1x.png",
+        "critic-r13B-2-winter-approved-city-industry-slums-4x.png",
+        "critic-r13B-2-winter-approved-grass-1x.png",
+        "critic-r13B-2-winter-approved-grass-4x.png",
+        "critic-r13B-2-winter-approved-plains-1x.png",
+        "critic-r13B-2-winter-approved-plains-4x.png",
+        "critic-r13B-2-winter-approved-suburb-farmland-paddies-1x.png",
+        "critic-r13B-2-winter-approved-suburb-farmland-paddies-4x.png",
+        "critic-r13B-2-winter-changed-mesa-comparison-1x.png",
+        "critic-r13B-2-winter-changed-mesa-comparison-4x.png",
+        "critic-r13B-2-winter-contact-shadow-audit-1x.png",
+        "critic-r13B-2-winter-contact-shadow-audit-4x.png",
+        "critic-r13B-2-winter-inspect-0-1-2-3-8x.png",
+        "critic-r13B-2-winter-inspect-4-5-8x.png",
+        "critic-r13B-2-winter-inspect-6-7-8x.png",
+        "critic-r13B-2-winter-mesa-landscape-1x.png",
+        "critic-r13B-2-winter-mesa-landscape-4x.png",
+        "critic-r13B-2-winter-on-grass@winter-base-1x.png",
+        "critic-r13B-2-winter-on-grass@winter-base-4x.png",
+        "critic-r13B-2-winter-on-plains@winter-base-1x.png",
+        "critic-r13B-2-winter-on-plains@winter-base-4x.png",
+        "critic-r13B-2-winter-on-wasteland-wasteland@winter-base-1x.png",
+        "critic-r13B-2-winter-on-wasteland-wasteland@winter-base-4x.png",
+        "critic-r13B-2-winter-reference-props-1x.png",
+        "critic-r13B-2-winter-reference-props-4x.png",
+        "critic-r13B-2-winter-small-random-8x2-on-plains@winter-base-1x.png",
+        "critic-r13B-2-winter-small-random-8x2-on-plains@winter-base-4x.png",
+        "critic-r13B-2-winter-small-random-8x2-on-wasteland-wasteland@winter-base-1x.png",
+        "critic-r13B-2-winter-small-random-8x2-on-wasteland-wasteland@winter-base-4x.png"
+      ],
+      "per_file": {
+        "badlands@winter-prop-0": {
+          "status": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            10,
+            43,
+            38
+          ],
+          "sha256": "5fba16576bc11d5453cd6533b3dadcf4d639d6a3897c8de8c708e723981c69c3",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 1459,
+            "64": 27,
+            "255": 818
+          },
+          "assessment": "PASS: a squat layered butte with an irregular tan cap, readable ledges, darker right face and grounded foot; distinct from the stepped double butte in prop 2. Winter keeps the same form and adds visible snow/frost on upper surfaces without hiding the strata. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands@winter-prop-1": {
+          "status": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            6,
+            5,
+            42,
+            43
+          ],
+          "sha256": "7692c57aa64bd9a1d73833e91f43f7b250bee839acb5172a69beaaf0d72e0574",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 1603,
+            "64": 18,
+            "255": 683
+          },
+          "assessment": "PASS: unequal slender spires form a clear, distinct silhouette with shared rocky foot and upper-left highlights; neither a blob nor a scaled duplicate of the mesas. Winter keeps the same form and adds visible snow/frost on upper surfaces without hiding the strata. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands@winter-prop-2": {
+          "status": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            10,
+            43,
+            38
+          ],
+          "sha256": "654868d35361256f6d6f4141143dcd02c9d9b89b0539565d68bfd08cc103b898",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 1516,
+            "64": 18,
+            "255": 770
+          },
+          "assessment": "PASS: two unequal flat-topped buttes joined into one stepped mass; clear cap/face separation, correct light and compact contact shadow. Winter keeps the same form and adds visible snow/frost on upper surfaces without hiding the strata. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands@winter-prop-3": {
+          "status": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            6,
+            5,
+            42,
+            43
+          ],
+          "sha256": "e1def9aaae3d2ec7a171e5178dfbbb265b5c5ce522d64ec6a20c5d6005f4bd83",
+          "previous_status": "fail",
+          "unchanged_since_r13B_1": false,
+          "alpha_pixel_counts": {
+            "0": 2098,
+            "75": 65,
+            "115": 71,
+            "145": 50,
+            "190": 20
+          },
+          "assessment": "PASS: revised translucent cracked-earth patch now has visible pale blue-white frost on selected upper-left crack lips at 1x and 4x, with ground showing through and dark fissures retained. Native 8x inspection shows deliberate pixel clusters, no pale matte fringe or opaque ground patch. Seasonal defect resolved."
+        },
+        "badlands@winter-prop-4": {
+          "status": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            18,
+            89,
+            78
+          ],
+          "sha256": "8b0e54b0bcdca5b477183b66783ae7fa59646fdea7d843993d6c8a184d936b4c",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 5514,
+            "64": 71,
+            "255": 3631
+          },
+          "assessment": "PASS: broad asymmetric raised mesa, cap notch and visible red-brown strata; the plateau remains legible without noisy texture, and its large footprint meets the layout. Winter keeps the same form and adds visible snow/frost on upper surfaces without hiding the strata. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands@winter-prop-5": {
+          "status": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            18,
+            89,
+            78
+          ],
+          "sha256": "b146879b526a770c9af448a62b54ffb6285abfa24f07ca7dd25d77de91065b31",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 5831,
+            "64": 65,
+            "255": 3320
+          },
+          "assessment": "PASS: descending connected terraces give this large mesa a different silhouette from props 4 and 7; ledges, shadow face and contact are readable at 1x. Winter keeps the same form and adds visible snow/frost on upper surfaces without hiding the strata. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        },
+        "badlands@winter-prop-6": {
+          "status": "fail",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            17,
+            89,
+            79
+          ],
+          "sha256": "34793d76f71766414f5f3f71f191d58a89763efdda9d6040c65378e2e519765f",
+          "previous_status": "fail",
+          "unchanged_since_r13B_1": false,
+          "alpha_pixel_counts": {
+            "0": 5352,
+            "64": 5,
+            "255": 3859
+          },
+          "assessment": "FAIL: former hollow/crater defect resolved; required contact shadow missing. See fail entry."
+        },
+        "badlands@winter-prop-7": {
+          "status": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            24,
+            89,
+            72
+          ],
+          "sha256": "dbacc653e7769704e234b0bddae43a6ab6e0d18f6d1b0aef7068aa95c309fc6f",
+          "previous_status": "pass",
+          "unchanged_since_r13B_1": true,
+          "alpha_pixel_counts": {
+            "0": 6800,
+            "64": 63,
+            "255": 2353
+          },
+          "assessment": "PASS: low, elongated mesa with an uneven raised shoulder and separate small foot rock; width and lower profile provide useful variation without becoming a speck. Winter keeps the same form and adds visible snow/frost on upper surfaces without hiding the strata. Prior-pass source is byte-for-byte unchanged; rechecked at 1x, 4x and 8x, no concrete new defect found."
+        }
+      }
+    }
+  },
+  "pass": [
+    "badlands-prop-0",
+    "badlands-prop-1",
+    "badlands-prop-2",
+    "badlands-prop-3",
+    "badlands-prop-4",
+    "badlands-prop-5",
+    "badlands-prop-7",
+    "badlands@winter-prop-0",
+    "badlands@winter-prop-1",
+    "badlands@winter-prop-2",
+    "badlands@winter-prop-3",
+    "badlands@winter-prop-4",
+    "badlands@winter-prop-5",
+    "badlands@winter-prop-7"
+  ],
+  "fail": [
+    {
+      "name": "badlands-prop-6",
+      "problems": "The crater-like hollow is fixed: this is now a readable raised mesa. However, the required soft contact shadow is effectively absent. Only 4 black alpha-64 pixels survive outside the opaque body, as isolated fragments rather than a contact strip. At 1x/4x on pale ground the broad lower rock edge meets the ground abruptly; see critic-r13B-2-summer-contact-shadow-audit-1x.png and -4x.png. Add a restrained, broken 1-2 px translucent neutral shadow immediately beneath the lower/right foot, following the irregular footprint and tapering at the ends, consistent with props 4/5/7 and the top-left light. Keep the repaired plateau, clean transparent margin and existing rock palette; do not add a ground square or an opaque outline."
+    },
+    {
+      "name": "badlands@winter-prop-6",
+      "problems": "The crater-like hollow is fixed: this is now a readable raised mesa. However, the required soft contact shadow is effectively absent. Only 5 black alpha-64 pixels survive outside the opaque body, as isolated fragments rather than a contact strip. At 1x/4x on pale ground the broad lower rock edge meets the ground abruptly; see critic-r13B-2-winter-contact-shadow-audit-1x.png and -4x.png. Add a restrained, broken 1-2 px translucent neutral shadow immediately beneath the lower/right foot, following the irregular footprint and tapering at the ends, consistent with props 4/5/7 and the top-left light. Keep the repaired plateau, clean transparent margin and existing rock palette; do not add a ground square or an opaque outline."
+    }
+  ]
+}
