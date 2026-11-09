@@ -20,3 +20,14 @@ goth/night-phone rc=0 secs=53 exists=yes
 goth/cameo-silhouette rc=0 secs=69 exists=yes
 goth/day-chapel rc=0 secs=66 exists=yes
 goth/day-phone rc=0 secs=65 exists=yes
+steampunk/topbar-beam rc=0 secs=43 exists=yes
+steampunk/backdrop-day rc=0 secs=63 exists=yes
+steampunk/brass-clip rc=0 secs=71 exists=yes
+steampunk/label-holder rc=0 secs=48 exists=yes
+steampunk/stage-empty rc=0 secs=52 exists=yes
+steampunk/home-engraving rc=0 secs=66 exists=yes
+steampunk/phone-day rc=0 secs=67 exists=yes
+steampunk/backdrop-night rc=0 secs=92 exists=yes
+steampunk/backdrop-rain rc=0 secs=95 exists=yes
+steampunk/backdrop-snow rc=0 secs=91 exists=yes
+steampunk/phone-night rc=0 secs=67 exists=yes
