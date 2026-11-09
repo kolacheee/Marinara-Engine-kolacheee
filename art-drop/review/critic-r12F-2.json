@@ -1,0 +1,482 @@
+{
+  "sets": {
+    "_qc": {
+      "brief": "art-drop/BRIEF-12.md Part F, shared opening rules and final QC paragraph",
+      "scope": "Only wildlife-0..7 and wildlife@winter-0..7 receive verdicts. Approved reference art is read-only context.",
+      "standard": "Good enough to ship beside approved art at the explicit 2-4 px animal-body scale. Tiny hints do not need character-scale anatomy. The wildlife-specific size instruction takes precedence over the general prop cell-fill instruction.",
+      "previous_review": {
+        "path": "art-drop/review/critic-r12F-1.json",
+        "unchanged_prior_passes": [
+          "wildlife-0",
+          "wildlife-1",
+          "wildlife-2",
+          "wildlife-3",
+          "wildlife-4",
+          "wildlife-5",
+          "wildlife-6",
+          "wildlife-7",
+          "wildlife@winter-0",
+          "wildlife@winter-2",
+          "wildlife@winter-3",
+          "wildlife@winter-4",
+          "wildlife@winter-5",
+          "wildlife@winter-6",
+          "wildlife@winter-7"
+        ],
+        "changed_files": [
+          "wildlife@winter-1"
+        ],
+        "new_defects_overriding_prior_passes": [],
+        "resolution": "All fifteen unchanged prior passes retained after reinspection. The sole changed file is the previously failed winter sheep; the specific missing muzzle/flank defect is repaired and now passes."
+      },
+      "coverage": {
+        "expected": 16,
+        "found": 16,
+        "pass": 16,
+        "fail": 0
+      },
+      "visual_checks": [
+        "All sixteen complete 48x48 files inspected at exact 8x on dark and pale backgrounds. No blur, antialiasing, fringe, halo, clipped animal, rectangular backing or random edge debris.",
+        "Both seasonal sets composited sparsely on approved grass and plains at 1x and exact nearest-neighbour 4x. Upper half of each proof is grass; lower half is plains; species run 0-3 across the first row, 4-7 across the second.",
+        "Both seasonal sets stress-tested in shuffled adjacent 8x2 cells on each approved ground at 1x and 4x, seed 1202; each sprite occurs twice per ground. No sprite creates a seam, opaque tile edge or framed grid. Identical-position seasonal pairs are intentional; dense stress placement visibly repeats animals, but this is not a new grid defect in their specified sparse use.",
+        "Every sprite also viewed at 1x/4x beside full native-size fantasy-marker0 and all eight matching grass/plains details. Scale and restrained warm-brown, cream and grey palette fit the approved context.",
+        "Compared at 1x/4x with six families of approved markers (sizes 0/1 plus full fantasy/wuxia size 3), all summer/winter round-2 city/industry/slums/farmland tiles, all seasonal paddies and all seasonal grass/plains bases with detail sets.",
+        "Checked tiny silhouette readability, placement, body scale, palette clash, noisy/muddy masses, top-left light and near-duplicates. Species have different body/pose/colour cues; no new rejection-worthy duplication found.",
+        "Winter versions are nonblank and consistently cooled/lightened without erasing their dark animal structure. No requirement to put snow piles on these tiny living animals.",
+        "Ducks additionally checked at 1x/4x on a blue water context swatch. It is a flat preview colour, not an approved or newly judged base.",
+        "Winter sheep repair additionally checked at 1x/4x/8x on both approved snow grounds: left column summer comparison; middle/right columns current winter over different ground locations. Restored muzzle and flank solve the previous failure."
+      ],
+      "not_applicable": {
+        "3x3_base_tiling": "Part F contains no base textures. Approved ground bases are context only; no unrelated base receives a verdict.",
+        "peak_lattice_or_range_composite": "Part F contains no peaks.",
+        "forest_tree_composite": "Part F contains no trees. The treeline_forest reference in the brief belongs to Part C.",
+        "egg_crate_peaks_Swiss_cheese_craters_classical_ruins_cyberpunk_grid_flat_orange_autumn_identical_crowns": "None of these subjects or an autumn candidate occurs in Part F. Their asset-specific checks do not justify reviewing other parts.",
+        "named_reference_images": "Part F and its shared opening/QC text name no external image references. The approved out/ categories requested by the user supply the comparison context."
+      },
+      "technical_checks": {
+        "dimensions": "16/16 are 48x48 RGBA.",
+        "alpha": "16/16 use only alpha 0 and 255, with zero hidden RGB; no semitransparent antialias edge or opaque backing.",
+        "placement": "Unclipped transparent margins in every file. Herd/flock bounds are 35-36px wide by 34px high; single fox bounds are 9x4 including tail, centred in the cell.",
+        "uniqueness": "All sixteen PNG hashes differ. Seasonal geometry matching is deliberate, not a failed variation set.",
+        "enlargements": "All fourteen 1x-to-4x proof pairs and the sheep 1x-to-8x proof independently checked for exact nearest-neighbour pixels. Four whole-file dual-background sheets constructed at exact 8x.",
+        "out_unchanged": "All 1530 out/ PNG names and SHA-256 hashes match the snapshot taken before proof creation."
+      },
+      "file_audit": {
+        "wildlife-0": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 42,
+          "visible_colours": 9,
+          "hidden_rgb": 0,
+          "sha256": "b41b00214a326ffd050f4aa53045b242f02b6a82705e52070f5491e902a134dc"
+        },
+        "wildlife-1": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 34,
+          "visible_colours": 6,
+          "hidden_rgb": 0,
+          "sha256": "62454dd45785c4004262cb0041b9a16ce93ce5a2780d2e0b090a06dea22cc25e"
+        },
+        "wildlife-2": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 57,
+          "visible_colours": 8,
+          "hidden_rgb": 0,
+          "sha256": "f1fbb2d3a808d811084fced3cc6c6ac0e8827c5b223cd1a07150f81e9295e363"
+        },
+        "wildlife-3": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 42,
+          "visible_colours": 7,
+          "hidden_rgb": 0,
+          "sha256": "9f8db5b5aa666d6e3a6213b4b02f59d5d3c8cba49322826235a54fc38e642623"
+        },
+        "wildlife-4": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 61,
+          "visible_colours": 3,
+          "hidden_rgb": 0,
+          "sha256": "319b60a3f180a5a043adc3b592687d91df78780c134cd21e5cf799cbeb83f03d"
+        },
+        "wildlife-5": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 29,
+          "visible_colours": 10,
+          "hidden_rgb": 0,
+          "sha256": "6bb47cb87a5e457dadbaff47213af6bb4f7cf5d1eb51a586937774a53ab0b096"
+        },
+        "wildlife-6": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            20,
+            23,
+            29,
+            27
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 21,
+          "visible_colours": 6,
+          "hidden_rgb": 0,
+          "sha256": "e255e6cc7e20bc5d4093f15b8a76e7abf750cb878e356197a07b2aeab794516b"
+        },
+        "wildlife-7": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 40,
+          "visible_colours": 6,
+          "hidden_rgb": 0,
+          "sha256": "524ce1450b9bfa6c3aacc90c70938341d9860c8df723e5c97386138af92a9986"
+        },
+        "wildlife@winter-0": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 40,
+          "visible_colours": 8,
+          "hidden_rgb": 0,
+          "sha256": "c4e8064693179b923187fe01e90a9da3fb647723acc4123781986f2dda6c66f3"
+        },
+        "wildlife@winter-1": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 32,
+          "visible_colours": 5,
+          "hidden_rgb": 0,
+          "sha256": "facbac7799574548cf1471289946629f6f7441b6cc7e9fb80b914883604a31dc"
+        },
+        "wildlife@winter-2": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 57,
+          "visible_colours": 7,
+          "hidden_rgb": 0,
+          "sha256": "d0090c5b43467eff1c2ad8ebec42c4f6fe86cd909b441ddf42880fc637e87d86"
+        },
+        "wildlife@winter-3": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            41,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 37,
+          "visible_colours": 8,
+          "hidden_rgb": 0,
+          "sha256": "628ec11954a9a6f70eb8c5eca447eaecd725f461e2015a14be18a90f7f81c214"
+        },
+        "wildlife@winter-4": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 61,
+          "visible_colours": 2,
+          "hidden_rgb": 0,
+          "sha256": "8a424c5ccb530cccb9553db1c4651ac7dada9c509298c676b99f76fe5f3abba8"
+        },
+        "wildlife@winter-5": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 28,
+          "visible_colours": 10,
+          "hidden_rgb": 0,
+          "sha256": "ed118f8a5a808fae2dac91139a28db416fa93b9bde3eff6e50147e7b5fcf06ba"
+        },
+        "wildlife@winter-6": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            20,
+            23,
+            29,
+            27
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 19,
+          "visible_colours": 8,
+          "hidden_rgb": 0,
+          "sha256": "1c0c74c4eee82498dfb3a1dd071f46a02378e17a340b7efcd168f68fb684ea6c"
+        },
+        "wildlife@winter-7": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            7,
+            42,
+            41
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_pixels": 38,
+          "visible_colours": 5,
+          "hidden_rgb": 0,
+          "sha256": "4011c73a76fe4495e411a4663d8cb7d62165c4c247a885fed133ac9304f65447"
+        }
+      },
+      "evidence": [
+        "critic-r12F-2-approved-grounds-paddies-autumn-1x.png",
+        "critic-r12F-2-approved-grounds-paddies-autumn-4x.png",
+        "critic-r12F-2-approved-grounds-paddies-spring-1x.png",
+        "critic-r12F-2-approved-grounds-paddies-spring-4x.png",
+        "critic-r12F-2-approved-grounds-paddies-summer-1x.png",
+        "critic-r12F-2-approved-grounds-paddies-summer-4x.png",
+        "critic-r12F-2-approved-grounds-paddies-winter-1x.png",
+        "critic-r12F-2-approved-grounds-paddies-winter-4x.png",
+        "critic-r12F-2-approved-markers-1x.png",
+        "critic-r12F-2-approved-markers-4x.png",
+        "critic-r12F-2-approved-round2-1x.png",
+        "critic-r12F-2-approved-round2-4x.png",
+        "critic-r12F-2-ducks-water-1x.png",
+        "critic-r12F-2-ducks-water-4x.png",
+        "critic-r12F-2-sheep-snow-readability-1x.png",
+        "critic-r12F-2-sheep-snow-readability-4x.png",
+        "critic-r12F-2-sheep-snow-readability-8x.png",
+        "critic-r12F-2-summer-approved-context-grass-plains-1x.png",
+        "critic-r12F-2-summer-approved-context-grass-plains-4x.png",
+        "critic-r12F-2-summer-files-0-3-8x.png",
+        "critic-r12F-2-summer-files-4-7-8x.png",
+        "critic-r12F-2-summer-random-8x2-grass-plains-1x.png",
+        "critic-r12F-2-summer-random-8x2-grass-plains-4x.png",
+        "critic-r12F-2-summer-sparse-grass-plains-1x.png",
+        "critic-r12F-2-summer-sparse-grass-plains-4x.png",
+        "critic-r12F-2-winter-approved-context-grass-plains-1x.png",
+        "critic-r12F-2-winter-approved-context-grass-plains-4x.png",
+        "critic-r12F-2-winter-files-0-3-8x.png",
+        "critic-r12F-2-winter-files-4-7-8x.png",
+        "critic-r12F-2-winter-random-8x2-grass-plains-1x.png",
+        "critic-r12F-2-winter-random-8x2-grass-plains-4x.png",
+        "critic-r12F-2-winter-sparse-grass-plains-1x.png",
+        "critic-r12F-2-winter-sparse-grass-plains-4x.png"
+      ]
+    },
+    "wildlife": {
+      "files": [
+        "wildlife-0",
+        "wildlife-1",
+        "wildlife-2",
+        "wildlife-3",
+        "wildlife-4",
+        "wildlife-5",
+        "wildlife-6",
+        "wildlife-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "verdict": "PASS: all eight sparse wildlife hints survive native/4x context and random-cell checks plus whole-file 8x pixel inspection."
+    },
+    "wildlife@winter": {
+      "files": [
+        "wildlife@winter-0",
+        "wildlife@winter-1",
+        "wildlife@winter-2",
+        "wildlife@winter-3",
+        "wildlife@winter-4",
+        "wildlife@winter-5",
+        "wildlife@winter-6",
+        "wildlife@winter-7"
+      ],
+      "pass": 8,
+      "fail": 0,
+      "verdict": "PASS: seven unchanged passes retained; repaired sheep now has a readable connected head/body contour on both approved snow grounds."
+    },
+    "species_notes": {
+      "0": "PASS: three deer hints have raised neck/head ticks and warm torsos above dark undersides. Winter preserves all three animals. Hard pixels and unclipped spacing survive 1x/4x ground and 8x inspection.",
+      "1": "PASS: three sheep have pale compact wool bodies, grazing head cues and dark feet. The repaired winter upper-left sheep now has an opaque dark muzzle at (9,8) and a darker flank/neck pixel at (8,9). These connect its head and lower contour to the pale body. It remains legible on both approved snow grounds at 1x, 4x and 8x, without increasing body size.",
+      "2": "PASS: cattle have wider compact bodies and varied coat masses; dark undersides remain visible on grass, plains and snow. They remain distinct from the lighter wool blocks and narrower horse shapes.",
+      "3": "PASS: horses retain narrow long torsos, neck changes and dark foot/tail ticks. The three poses and coats vary enough at this scale; winter remains populated and readable.",
+      "4": "PASS: five distinct wing marks retain five down-right cast shadows, consistent with top-left light. Summer flock contrast is restrained on green ground but the coherent wing marks remain visible at 1x; winter improves contrast. Neither season has fuzzy or antialiased fringe.",
+      "5": "PASS: three ducks retain short head/bill ticks and compact bodies. Detached blue-grey pixels read as ripples on the water swatch, not halos. Both seasons also survive grass/plains composites as required.",
+      "6": "PASS: the single centred fox has a russet body, dark lower edge and extended pale-tipped tail. The 9x4 total extent includes the tail; its torso meets the tiny-body requirement. Snow does not erase it.",
+      "7": "PASS: two boar have squat brown masses, dark bellies/feet and short snout/tail cues. They are heavier than the horse/deer hints and survive winter recolouring without becoming blank."
+    }
+  },
+  "pass": [
+    "wildlife-0",
+    "wildlife-1",
+    "wildlife-2",
+    "wildlife-3",
+    "wildlife-4",
+    "wildlife-5",
+    "wildlife-6",
+    "wildlife-7",
+    "wildlife@winter-0",
+    "wildlife@winter-1",
+    "wildlife@winter-2",
+    "wildlife@winter-3",
+    "wildlife@winter-4",
+    "wildlife@winter-5",
+    "wildlife@winter-6",
+    "wildlife@winter-7"
+  ],
+  "fail": []
+}
