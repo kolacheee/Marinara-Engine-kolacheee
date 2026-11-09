@@ -1,4 +1,8 @@
-# Marinara theming test images, rounds 3 and 4
+# Marinara theming test images, rounds 3 to 6
+
+## Round 6 (branch theming-r6-images)
+
+Same method. `run6.py r6/requests-batchN.md` runs `gen.sh` 3 at a time in dependency order: a `relight A -> B` line is an edit of A's new raw (with the current B, or a named night image, as the lighting reference); a `REGEN` line uses the `r6/current` image (as the base of an edit when it says "edit of the current", else as a what-went-wrong reference); any other `persona/file.png` named in a prompt is passed as a style reference (the batch-mate's new raw when it is generated in the same batch). `process6.py` writes `r6/images/<persona>/<name>.png` with the recipes in `recipes6.py`. Times in `r6/times.txt`, per-image notes (tries, code redraws) in `r6/notes.md`.
 
 ## Round 4 (branch theming-r4-images)
 
