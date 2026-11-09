@@ -1,0 +1,563 @@
+{
+  "sets": {
+    "scrub": {
+      "status": "fail",
+      "files": [
+        "scrub-prop-0",
+        "scrub-prop-1",
+        "scrub-prop-2",
+        "scrub-prop-3",
+        "scrub-prop-4",
+        "scrub-prop-5",
+        "scrub-prop-6",
+        "scrub-prop-7"
+      ],
+      "passed": 6,
+      "failed": 2,
+      "scope": "BRIEF-13.md Part A only. Props 0-3: 48x48; props 4-7: 96x96. Other out/ assets are comparison references only.",
+      "prior_review": "critic-r13A-0.json does not exist; no prior passes to carry forward.",
+      "checks": {
+        "native_and_4x": "Visually inspected all eight props over reference/wasteland-ground.png (dirt) and approved plains-base.png at exact 1x and nearest-neighbour 4x, plus an irregular mixed-size map composition.",
+        "each_file_8x": "Visually inspected every file at exact nearest-neighbour 8x on both dark charcoal and pale neutral backgrounds to expose halos, fringe, muddy clusters and broken outlines.",
+        "random_8_by_2": "Visually inspected 8x2 cell-aligned composites at 1x and 4x on dirt and plains. Small props 0-3 each occur four times in seeded random order (seed 1301). No prop introduces a seam or square background; the four distinct designs are not near-duplicates. The cell-aligned test naturally aligns object positions, but there is no border drawn into the assets.",
+        "base_3_by_3": "Not applicable: Part A contains no base tiles. Approved bases used as substrates are not under review.",
+        "peak_lattice_or_range": "Not applicable: Part A contains no peaks.",
+        "trees_in_forest": "Not applicable: Part A contains dry scrub, tumbleweeds, stony patches and a gully, with no tree sprites.",
+        "dimensions_placement": "All expected files exist with the required dimensions, uncut transparent margins, centred footprints and no ground square. Visible widths are 37-38/48 px (77-79%) for small props and 80-82/96 px (83-85%) for large props; the overhead footprints need not fill the same percentage vertically.",
+        "pixel_grid_alpha": "No resampling blur or antialiased body fringe found. Solid props use a compact opaque palette with discrete alpha 80/150 contact-shadow pixels; the gully deliberately uses translucent shading. The gully shape failure is recorded separately.",
+        "lighting_palette": "Top-left body highlights and darker right/lower faces match the approved markers and dry/plains detail colours. No lush-green scrub, saturated palette clash, or reversed body lighting found. Gully rim treatment fails as described below.",
+        "winter": "Compared every summer file with its winter counterpart; same underlying props and layouts.",
+        "other_listed_failure_modes": "Egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids, flat orange autumn and identical tree crowns are outside this Part A file list. No unrelated file receives a verdict."
+      },
+      "reference_comparisons": [
+        "BRIEF-13.md Part A and its shared layout/style instructions; BRIEF.md style baseline",
+        "out/hills-prop-0.png, hills-prop-4.png and their winter counterparts for prop scale, placement and top-left light",
+        "out/fantasy-marker0.png, wuxia-marker0.png, modern-marker0.png, wasteland-marker0.png",
+        "out/slums-0.png, industry-1.png, city-2.png, suburb-3.png, farmland-1.png (approved round-2 examples)",
+        "out/paddies-0.png, paddies-3.png and their winter counterparts",
+        "out/grass-base.png, grass-detail-0.png, grass-detail-3.png, grass@winter-base.png, grass@winter-detail-2.png",
+        "out/plains-base.png, plains-detail-0.png, plains-detail-3.png, plains@winter-base.png, plains@winter-detail-2.png",
+        "reference/current-wasteland-scrub@winter.png (additional historical scrub comparison), reference/wasteland-ground.png"
+      ],
+      "evidence": [
+        "critic-r13A-1-summer-dirt-all-1x.png",
+        "critic-r13A-1-summer-dirt-all-4x.png",
+        "critic-r13A-1-summer-dirt-random8x2-1x.png",
+        "critic-r13A-1-summer-dirt-random8x2-4x.png",
+        "critic-r13A-1-summer-plains-all-1x.png",
+        "critic-r13A-1-summer-plains-all-4x.png",
+        "critic-r13A-1-summer-plains-random8x2-1x.png",
+        "critic-r13A-1-summer-plains-random8x2-4x.png",
+        "critic-r13A-1-summer-mixed-map-1x.png",
+        "critic-r13A-1-summer-mixed-map-4x.png",
+        "critic-r13A-1-scrub-prop-0-8x.png",
+        "critic-r13A-1-scrub-prop-1-8x.png",
+        "critic-r13A-1-scrub-prop-2-8x.png",
+        "critic-r13A-1-scrub-prop-3-8x.png",
+        "critic-r13A-1-scrub-prop-4-8x.png",
+        "critic-r13A-1-scrub-prop-5-8x.png",
+        "critic-r13A-1-scrub-prop-6-8x.png",
+        "critic-r13A-1-scrub-prop-7-8x.png",
+        "critic-r13A-1-approved-reference-board-1x.png",
+        "critic-r13A-1-approved-reference-board-4x.png",
+        "critic-r13A-1-winter-reference-comparison-1x.png",
+        "critic-r13A-1-winter-reference-comparison-4x.png"
+      ],
+      "per_file": {
+        "scrub-prop-0": {
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            12,
+            43,
+            36
+          ],
+          "visible_rgba_colors": 11,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 431,
+          "visible_pixels": 452,
+          "sha256": "5cbb452dd8bccb58d14435e644caa72a4c7e3a5d55971042d24a814e40c67581",
+          "verdict": "pass",
+          "notes": "PASS: Bare dry shrub has a legible branching silhouette at 1x; negative spaces and small khaki highlights remain clean at 4x/8x. Muted brown/olive belongs with the approved plains details and wasteland marker. No clipped tips, halo, ground square or reversed light."
+        },
+        "scrub-prop-1": {
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            10,
+            43,
+            37
+          ],
+          "visible_rgba_colors": 10,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 680,
+          "visible_pixels": 698,
+          "sha256": "143ac6c4c4aa4aed7c572624e48980f65a42ec844dfbf57cb16b8147a3438aa8",
+          "verdict": "pass",
+          "notes": "PASS: The two small tumbleweed balls read as a wiry tangle at native size. Their open crossing strands, different sizes and shared contact line distinguish them from the bare shrub, spiky tuft and stones. Clean native pixels and top-left highlights; no tile border."
+        },
+        "scrub-prop-2": {
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            13,
+            43,
+            35
+          ],
+          "visible_rgba_colors": 10,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 449,
+          "visible_pixels": 463,
+          "sha256": "81168c9be99611e72f58dec392a5f7605553f8ca8cb521870e1f52e11b553ff2",
+          "verdict": "pass",
+          "notes": "PASS: Three unequal spiky tufts read as dry low scrub, with a clear dominant left tuft and smaller right/front tufts. Khaki is dry rather than lush green; strong enough silhouette at 1x without noisy scattered foliage. Clean edges and restrained ground contact."
+        },
+        "scrub-prop-3": {
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            13,
+            42,
+            35
+          ],
+          "visible_rgba_colors": 14,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 321,
+          "visible_pixels": 341,
+          "sha256": "ec1a05878b5ef955a373ce57f85a0f4d8b5f3df25208601db7e9a7af34985805",
+          "verdict": "pass",
+          "notes": "PASS: Irregularly spaced, unequal stones and two tiny dry tufts form a legible stony patch. Top-left rock faces and darker lower/right planes match the approved lighting. Transparent gaps expose the actual base; no enclosing dirt square or edge halo."
+        },
+        "scrub-prop-4": {
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            26,
+            89,
+            70
+          ],
+          "visible_rgba_colors": 12,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 1884,
+          "visible_pixels": 1920,
+          "sha256": "fcc36e21a21de9e8589ac610fb01d3a1b06f68205baff5839c85d68dc6605ea1",
+          "verdict": "pass",
+          "notes": "PASS: The broad dry shrub patch has unequal heights, irregular gaps and an asymmetrical outline. Its clustered tops remain identifiable at 1x; the darker twig structure is readable enlarged. Different composition from the small bare shrub, not a translated duplicate. Correct dry palette and top-left light."
+        },
+        "scrub-prop-5": {
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            17,
+            89,
+            79
+          ],
+          "visible_rgba_colors": 11,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 2998,
+          "visible_pixels": 3034,
+          "sha256": "09bdec98bc27319f439ba636b5c5ada6ccaeea01becf1e185b684f31b819457f",
+          "verdict": "fail",
+          "notes": "FAIL: Large tumbleweed shape loses its wiry plant reading; see the actionable failure entry."
+        },
+        "scrub-prop-6": {
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            20,
+            88,
+            76
+          ],
+          "visible_rgba_colors": 9,
+          "alpha_levels": [
+            0,
+            36,
+            38,
+            61,
+            63,
+            65,
+            70,
+            82,
+            115,
+            150
+          ],
+          "opaque_pixels": 0,
+          "visible_pixels": 1356,
+          "sha256": "6f293ac5a0539820884ac8ee14bbbd6fc929e63eae2914f8017c68ba81ecdab3",
+          "verdict": "fail",
+          "notes": "FAIL: Gully reads as a beveled crack rather than eroded drainage; see the actionable failure entry."
+        },
+        "scrub-prop-7": {
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            20,
+            89,
+            75
+          ],
+          "visible_rgba_colors": 16,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 1860,
+          "visible_pixels": 1890,
+          "sha256": "ea4c92278edb958c195c1f2a2977b7083effb275865df7886a203730ff230681",
+          "verdict": "pass",
+          "notes": "PASS: Three separated boulder/brush groups give the large stony patch a broken, transparent footprint. Different rock profiles and unequal twigs avoid a copied cluster look. Flat pixel planes, light upper-left faces and dark contact edges sit comfortably with the approved detail palette."
+        }
+      }
+    },
+    "scrub@winter": {
+      "status": "fail",
+      "files": [
+        "scrub@winter-prop-0",
+        "scrub@winter-prop-1",
+        "scrub@winter-prop-2",
+        "scrub@winter-prop-3",
+        "scrub@winter-prop-4",
+        "scrub@winter-prop-5",
+        "scrub@winter-prop-6",
+        "scrub@winter-prop-7"
+      ],
+      "passed": 6,
+      "failed": 2,
+      "scope": "BRIEF-13.md Part A only. Props 0-3: 48x48; props 4-7: 96x96. Other out/ assets are comparison references only.",
+      "prior_review": "critic-r13A-0.json does not exist; no prior passes to carry forward.",
+      "checks": {
+        "native_and_4x": "Visually inspected all eight props over reference/wasteland-ground.png (dirt) and approved plains@winter-base.png at exact 1x and nearest-neighbour 4x, plus an irregular mixed-size map composition.",
+        "each_file_8x": "Visually inspected every file at exact nearest-neighbour 8x on both dark charcoal and pale neutral backgrounds to expose halos, fringe, muddy clusters and broken outlines.",
+        "random_8_by_2": "Visually inspected 8x2 cell-aligned composites at 1x and 4x on dirt and plains. Small props 0-3 each occur four times in seeded random order (seed 1301). No prop introduces a seam or square background; the four distinct designs are not near-duplicates. The cell-aligned test naturally aligns object positions, but there is no border drawn into the assets.",
+        "base_3_by_3": "Not applicable: Part A contains no base tiles. Approved bases used as substrates are not under review.",
+        "peak_lattice_or_range": "Not applicable: Part A contains no peaks.",
+        "trees_in_forest": "Not applicable: Part A contains dry scrub, tumbleweeds, stony patches and a gully, with no tree sprites.",
+        "dimensions_placement": "All expected files exist with the required dimensions, uncut transparent margins, centred footprints and no ground square. Visible widths are 37-38/48 px (77-79%) for small props and 80-82/96 px (83-85%) for large props; the overhead footprints need not fill the same percentage vertically.",
+        "pixel_grid_alpha": "No resampling blur or antialiased body fringe found. Solid props use a compact opaque palette with discrete alpha 80/150 contact-shadow pixels; the gully deliberately uses translucent shading. The gully shape failure is recorded separately.",
+        "lighting_palette": "Top-left body highlights and darker right/lower faces match the approved markers and dry/plains detail colours. No lush-green scrub, saturated palette clash, or reversed body lighting found. Gully rim treatment fails as described below.",
+        "winter": "All eight seasonal counterparts exist, keep their summer composition and show snow/frost. No blank winter. Props 5 and 6 retain shape defects; winter 6 also has a broken channel reading.",
+        "other_listed_failure_modes": "Egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids, flat orange autumn and identical tree crowns are outside this Part A file list. No unrelated file receives a verdict."
+      },
+      "reference_comparisons": [
+        "BRIEF-13.md Part A and its shared layout/style instructions; BRIEF.md style baseline",
+        "out/hills-prop-0.png, hills-prop-4.png and their winter counterparts for prop scale, placement and top-left light",
+        "out/fantasy-marker0.png, wuxia-marker0.png, modern-marker0.png, wasteland-marker0.png",
+        "out/slums-0.png, industry-1.png, city-2.png, suburb-3.png, farmland-1.png (approved round-2 examples)",
+        "out/paddies-0.png, paddies-3.png and their winter counterparts",
+        "out/grass-base.png, grass-detail-0.png, grass-detail-3.png, grass@winter-base.png, grass@winter-detail-2.png",
+        "out/plains-base.png, plains-detail-0.png, plains-detail-3.png, plains@winter-base.png, plains@winter-detail-2.png",
+        "reference/current-wasteland-scrub@winter.png (additional historical scrub comparison), reference/wasteland-ground.png"
+      ],
+      "evidence": [
+        "critic-r13A-1-winter-dirt-all-1x.png",
+        "critic-r13A-1-winter-dirt-all-4x.png",
+        "critic-r13A-1-winter-dirt-random8x2-1x.png",
+        "critic-r13A-1-winter-dirt-random8x2-4x.png",
+        "critic-r13A-1-winter-plains-all-1x.png",
+        "critic-r13A-1-winter-plains-all-4x.png",
+        "critic-r13A-1-winter-plains-random8x2-1x.png",
+        "critic-r13A-1-winter-plains-random8x2-4x.png",
+        "critic-r13A-1-winter-mixed-map-1x.png",
+        "critic-r13A-1-winter-mixed-map-4x.png",
+        "critic-r13A-1-scrub@winter-prop-0-8x.png",
+        "critic-r13A-1-scrub@winter-prop-1-8x.png",
+        "critic-r13A-1-scrub@winter-prop-2-8x.png",
+        "critic-r13A-1-scrub@winter-prop-3-8x.png",
+        "critic-r13A-1-scrub@winter-prop-4-8x.png",
+        "critic-r13A-1-scrub@winter-prop-5-8x.png",
+        "critic-r13A-1-scrub@winter-prop-6-8x.png",
+        "critic-r13A-1-scrub@winter-prop-7-8x.png",
+        "critic-r13A-1-approved-reference-board-1x.png",
+        "critic-r13A-1-approved-reference-board-4x.png",
+        "critic-r13A-1-winter-reference-comparison-1x.png",
+        "critic-r13A-1-winter-reference-comparison-4x.png"
+      ],
+      "per_file": {
+        "scrub@winter-prop-0": {
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            12,
+            43,
+            36
+          ],
+          "visible_rgba_colors": 16,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 420,
+          "visible_pixels": 440,
+          "sha256": "4c6a88aaff6b36b71644e98e3dde52015e77bb776384dd27676400bd8e78d5f5",
+          "verdict": "pass",
+          "notes": "PASS: Bare dry shrub has a legible branching silhouette at 1x; negative spaces and small khaki highlights remain clean at 4x/8x. Muted brown/olive belongs with the approved plains details and wasteland marker. No clipped tips, halo, ground square or reversed light. Winter keeps the summer layout and adds discrete white/cool-blue snow or frost on exposed upper surfaces; it is neither blank nor a flat recolour."
+        },
+        "scrub@winter-prop-1": {
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            10,
+            43,
+            38
+          ],
+          "visible_rgba_colors": 14,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 675,
+          "visible_pixels": 690,
+          "sha256": "7cb7a11f035f4afbfbfd4f1d5b968f350d7e09fd4eb4987d51b6467bbd907a7d",
+          "verdict": "pass",
+          "notes": "PASS: The two small tumbleweed balls read as a wiry tangle at native size. Their open crossing strands, different sizes and shared contact line distinguish them from the bare shrub, spiky tuft and stones. Clean native pixels and top-left highlights; no tile border. Winter keeps the summer layout and adds discrete white/cool-blue snow or frost on exposed upper surfaces; it is neither blank nor a flat recolour."
+        },
+        "scrub@winter-prop-2": {
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            13,
+            43,
+            35
+          ],
+          "visible_rgba_colors": 14,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 448,
+          "visible_pixels": 461,
+          "sha256": "aba5a930727a5dc7ecf753e3e6dff3e52caa9aacc7e7ced8d717087bd3a29842",
+          "verdict": "pass",
+          "notes": "PASS: Three unequal spiky tufts read as dry low scrub, with a clear dominant left tuft and smaller right/front tufts. Khaki is dry rather than lush green; strong enough silhouette at 1x without noisy scattered foliage. Clean edges and restrained ground contact. Winter keeps the summer layout and adds discrete white/cool-blue snow or frost on exposed upper surfaces; it is neither blank nor a flat recolour."
+        },
+        "scrub@winter-prop-3": {
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            13,
+            42,
+            35
+          ],
+          "visible_rgba_colors": 18,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 319,
+          "visible_pixels": 338,
+          "sha256": "7f806b24680061ed229c0c3de5b56d4be93c530fc9989e53ce319378daf4c994",
+          "verdict": "pass",
+          "notes": "PASS: Irregularly spaced, unequal stones and two tiny dry tufts form a legible stony patch. Top-left rock faces and darker lower/right planes match the approved lighting. Transparent gaps expose the actual base; no enclosing dirt square or edge halo. Winter keeps the summer layout and adds discrete white/cool-blue snow or frost on exposed upper surfaces; it is neither blank nor a flat recolour."
+        },
+        "scrub@winter-prop-4": {
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            26,
+            89,
+            70
+          ],
+          "visible_rgba_colors": 22,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 1874,
+          "visible_pixels": 1908,
+          "sha256": "39e4beba92f4cd1f1ce0eb2ef1e502b95bc96d5ff28fca1abcf4420b58d20bed",
+          "verdict": "pass",
+          "notes": "PASS: The broad dry shrub patch has unequal heights, irregular gaps and an asymmetrical outline. Its clustered tops remain identifiable at 1x; the darker twig structure is readable enlarged. Different composition from the small bare shrub, not a translated duplicate. Correct dry palette and top-left light. Winter keeps the summer layout and adds discrete white/cool-blue snow or frost on exposed upper surfaces; it is neither blank nor a flat recolour."
+        },
+        "scrub@winter-prop-5": {
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            17,
+            89,
+            80
+          ],
+          "visible_rgba_colors": 21,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 2978,
+          "visible_pixels": 3014,
+          "sha256": "f469b9443843c0dcb910f6544f1265e8f049341f1caa2ecd757d922a383ef1c7",
+          "verdict": "fail",
+          "notes": "FAIL: Large tumbleweed shape loses its wiry plant reading; see the actionable failure entry."
+        },
+        "scrub@winter-prop-6": {
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            20,
+            87,
+            76
+          ],
+          "visible_rgba_colors": 10,
+          "alpha_levels": [
+            0,
+            36,
+            63,
+            65,
+            82,
+            85,
+            115,
+            150,
+            155
+          ],
+          "opaque_pixels": 0,
+          "visible_pixels": 1351,
+          "sha256": "b2ca33e892544be6add56e8d8b5c996b2f7826e0dbda0f300f13b55a5c13c5a3",
+          "verdict": "fail",
+          "notes": "FAIL: Gully reads as a beveled crack rather than eroded drainage; see the actionable failure entry."
+        },
+        "scrub@winter-prop-7": {
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            20,
+            89,
+            75
+          ],
+          "visible_rgba_colors": 23,
+          "alpha_levels": [
+            0,
+            80,
+            150,
+            255
+          ],
+          "opaque_pixels": 1847,
+          "visible_pixels": 1880,
+          "sha256": "6abed5504a1bb9b3895f9ef8dccb9653de0ebb68b6affdbc6e94ed88f7475379",
+          "verdict": "pass",
+          "notes": "PASS: Three separated boulder/brush groups give the large stony patch a broken, transparent footprint. Different rock profiles and unequal twigs avoid a copied cluster look. Flat pixel planes, light upper-left faces and dark contact edges sit comfortably with the approved detail palette. Winter keeps the summer layout and adds discrete white/cool-blue snow or frost on exposed upper surfaces; it is neither blank nor a flat recolour."
+        }
+      }
+    }
+  },
+  "pass": [
+    "scrub-prop-0",
+    "scrub-prop-1",
+    "scrub-prop-2",
+    "scrub-prop-3",
+    "scrub-prop-4",
+    "scrub-prop-7",
+    "scrub@winter-prop-0",
+    "scrub@winter-prop-1",
+    "scrub@winter-prop-2",
+    "scrub@winter-prop-3",
+    "scrub@winter-prop-4",
+    "scrub@winter-prop-7"
+  ],
+  "fail": [
+    {
+      "name": "scrub-prop-5",
+      "problems": "At 1x on both dirt and plains, the three large tumbleweeds read as solid perforated balls or coiled shells, not dry wiry clumps. The 4x/8x views show broad continuous khaki ribbons and large dark enclosed holes, especially across the big rear ball and left ball. Redraw the interior as finer, irregular crossing twigs with more genuine transparent gaps and broken outer strands; reduce the broad solid bands and repeated ring/spiral construction while preserving the three unequal clumps and footprint."
+    },
+    {
+      "name": "scrub-prop-6",
+      "problems": "The dry gully reads as a graphic beveled lightning crack: a conspicuous pale ribbon runs along the angular branch edges against a dark, hard-edged trough. It remains visibly pasted on the plains at 1x/4x; at 8x the broad flat bands and abrupt step-shaped banks lack an eroded channel reading. Replace the continuous bright bevel with irregular, broken, lower-contrast bank shading; give the connected channel a varied width, taper the tributaries, and keep the substrate visible with translucent earth/shadow tones."
+    },
+    {
+      "name": "scrub@winter-prop-5",
+      "problems": "At 1x on both dirt and plains, the three large tumbleweeds read as solid perforated balls or coiled shells, not dry wiry clumps. The 4x/8x views show broad continuous khaki ribbons and large dark enclosed holes, especially across the big rear ball and left ball. Redraw the interior as finer, irregular crossing twigs with more genuine transparent gaps and broken outer strands; reduce the broad solid bands and repeated ring/spiral construction while preserving the three unequal clumps and footprint. Reapply the snow as small upper-surface catches on the corrected twigs; the current snow stripes trace and reinforce the same thick shell-like bands."
+    },
+    {
+      "name": "scrub@winter-prop-6",
+      "problems": "On winter plains at 1x/4x, the gully breaks into separate flat grey wedges toward the lower-right instead of reading as one drainage channel. At 8x, the broad pale frost/bevel crosses and washes out the trough at junctions, while the hard angular rims retain the summer lightning-crack look. Keep a visibly connected, tapering depression through the junctions and lower outlet; replace the broad bright bevel with sparse frost along irregular banks and lower-contrast translucent wall shading. Preserve the same channel layout as the corrected summer version."
+    }
+  ]
+}
