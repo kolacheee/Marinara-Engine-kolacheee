@@ -85,3 +85,4 @@ noir/city-night rc=0 secs=98 exists=yes
 noir/city-day-snow rc=0 secs=115 exists=yes
 noir/city-night-storm rc=0 secs=87 exists=yes
 noir/city-night-snow rc=0 secs=116 exists=yes
+steampunk/drawer-pull rc=0 secs=59 exists=yes
