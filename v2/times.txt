@@ -71,3 +71,8 @@ nautical/chart-phone-day rc=0 secs=76 exists=yes
 nautical/chart-fog-night rc=0 secs=73 exists=yes
 nautical/chart-wet-night rc=0 secs=84 exists=yes
 nautical/chart-phone-night rc=0 secs=76 exists=yes
+steampunk/brass-clip rc=0 secs=57 exists=yes
+steampunk/backdrop-rain rc=0 secs=83 exists=yes
+steampunk/backdrop-storm-night rc=0 secs=89 exists=yes
+steampunk/steam-banks rc=0 secs=65 exists=yes
+steampunk/stage-empty rc=0 secs=73 exists=yes

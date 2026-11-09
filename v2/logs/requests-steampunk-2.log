@@ -1,0 +1,16 @@
+start steampunk/backdrop-storm-night twin ['raw.png']
+start steampunk/brass-clip regen ['ref-current.png']
+start steampunk/backdrop-rain twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/steampunk/backdrop-rain/raw.png': No such file or directory
+done  steampunk/brass-clip True
+start steampunk/steam-banks fresh []
+done  steampunk/backdrop-rain True
+start steampunk/stage-empty regen ['ref-current.png']
+done  steampunk/backdrop-storm-night True
+done  steampunk/steam-banks True
+done  steampunk/stage-empty True
+ok steampunk/brass-clip (512, 512) RGBA
+ok steampunk/backdrop-storm-night (2560, 1440) RGB
+ok steampunk/backdrop-rain (1672, 940) RGB
+ok steampunk/steam-banks (2400, 900) RGBA
+ok steampunk/stage-empty (1600, 900) RGB
