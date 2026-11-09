@@ -1,0 +1,3 @@
+start goth/velvet-tile regen ['ref-current.png']
+done  goth/velvet-tile True
+ok goth/velvet-tile (1024, 1024) RGB
