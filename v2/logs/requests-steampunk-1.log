@@ -1,0 +1,33 @@
+start steampunk/backdrop-day fresh []
+start steampunk/topbar-beam fresh []
+start steampunk/brass-clip fresh []
+done  steampunk/topbar-beam True
+start steampunk/label-holder fresh []
+done  steampunk/backdrop-day True
+start steampunk/home-engraving fresh []
+done  steampunk/brass-clip True
+start steampunk/stage-empty fresh []
+done  steampunk/label-holder True
+start steampunk/phone-day ref ['raw.png']
+done  steampunk/stage-empty True
+start steampunk/backdrop-night twin ['raw.png']
+done  steampunk/home-engraving True
+start steampunk/backdrop-rain twin ['raw.png']
+done  steampunk/phone-day True
+start steampunk/backdrop-snow twin ['raw.png']
+done  steampunk/backdrop-night True
+start steampunk/phone-night twin ['raw.png']
+done  steampunk/backdrop-rain True
+done  steampunk/backdrop-snow True
+done  steampunk/phone-night True
+ok steampunk/backdrop-day (1672, 940) RGB
+ok steampunk/phone-day (1080, 2340) RGB
+ok steampunk/topbar-beam (2560, 96) RGB
+ok steampunk/brass-clip (512, 512) RGBA
+ok steampunk/label-holder (768, 256) RGBA
+ok steampunk/home-engraving (2123, 741) RGBA
+ok steampunk/stage-empty (1672, 941) RGB
+ok steampunk/backdrop-night (2560, 1440) RGB
+ok steampunk/backdrop-rain (2560, 1440) RGB
+ok steampunk/backdrop-snow (2560, 1440) RGB
+ok steampunk/phone-night (852, 1846) RGB
