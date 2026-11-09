@@ -1,0 +1,402 @@
+{
+  "sets": {
+    "_qc": {
+      "brief": "art-drop/BRIEF-12.md, Part E plus opening style/size rules and QC paragraph",
+      "scope": "Only the 48 <family>-roadside[-or-@winter]-0..3 PNGs are judged. Other art is read only for reference/context.",
+      "previous_review": "critic-r12E-0.json does not exist; no previous passing verdicts to carry forward.",
+      "coverage": {
+        "expected": 48,
+        "found": 48,
+        "pass": 46,
+        "fail": 2
+      },
+      "visual_checks": [
+        "All six families in both seasons composited sparsely beside the corresponding named reference road on approved grass and plains, inspected at exact native 1x and nearest-neighbour 4x.",
+        "Every one of the 48 files inspected at nearest-neighbour 8x, on pale and dark backgrounds; additional 8x crop sheets and winter contour proof resolve suspect edges.",
+        "Compared with named treeline reference and original family markers, approved out/ family markers, representative round-2 city/slums/industry/farmland, seasonal paddies, and grass/plains bases and details.",
+        "Checked pixel grid, edge/fringe/halo contamination, negative spaces, silhouette clarity, top-left lighting, scale/placement, family palette, seasonal registration and variation. No ship-blocking blur, antialiasing, ground backing, palette clash or near-duplicate was found in the 46 passes.",
+        "No blank winter: all 24 winter sprites remain recognizable and carry localized snow. Two mast contours fail as documented below."
+      ],
+      "not_applicable": {
+        "3x3_base_tiling": "Part E contains no opaque base textures. Existing bases serve as approved context and are not re-judged.",
+        "peak_lattice_or_range": "Part E contains no peaks.",
+        "8x2_random_tile_test": "Part E contains transparent props placed sparsely along roads, not one-cell opaque terrain/district tiles. Native and 4x sparse road scenes are the applicable placement test.",
+        "forest_lattice": "Part E contains no tree sprites. Named treeline art is a style/scale reference only.",
+        "egg_crate_peaks_Swiss_cheese_craters_classical_ruins_flat_orange_autumn_identical_crowns": "These subjects/seasons do not occur in Part E. No unrelated files are assigned a verdict."
+      },
+      "technical_checks": {
+        "dimensions": "48/48 are 48x48 RGBA",
+        "alpha": "48/48 use only alpha 0 and 255; transparent RGB is zero",
+        "bounds": "All have clear margins; longest dimension is 37 or 38 px and bottom contact is row 44",
+        "components": "All 48 have one connected 8-neighbour opaque component; no detached fringe/speck islands",
+        "uniqueness": "48 distinct SHA-256 hashes; seasonal counterparts intentionally preserve subject/layout",
+        "out_unchanged": "All 48 delivered PNG hashes match the hashes captured before composite generation"
+      },
+      "evidence": [
+        "critic-r12E-1-approved-comparison-1x.png",
+        "critic-r12E-1-approved-comparison-4x.png",
+        "critic-r12E-1-failed-contours-1x.png",
+        "critic-r12E-1-failed-contours-4x.png",
+        "critic-r12E-1-failed-contours-8x.png",
+        "critic-r12E-1-fantasy-pixels-8x.png",
+        "critic-r12E-1-fantasy-summer-inspection-8x.png",
+        "critic-r12E-1-fantasy-summer-road-1x.png",
+        "critic-r12E-1-fantasy-summer-road-4x.png",
+        "critic-r12E-1-fantasy-winter-inspection-8x.png",
+        "critic-r12E-1-fantasy-winter-road-1x.png",
+        "critic-r12E-1-fantasy-winter-road-4x.png",
+        "critic-r12E-1-jazz_age-pixels-8x.png",
+        "critic-r12E-1-jazz_age-summer-inspection-8x.png",
+        "critic-r12E-1-jazz_age-summer-road-1x.png",
+        "critic-r12E-1-jazz_age-summer-road-4x.png",
+        "critic-r12E-1-jazz_age-winter-inspection-8x.png",
+        "critic-r12E-1-jazz_age-winter-road-1x.png",
+        "critic-r12E-1-jazz_age-winter-road-4x.png",
+        "critic-r12E-1-modern-pixels-8x.png",
+        "critic-r12E-1-modern-summer-road-1x.png",
+        "critic-r12E-1-modern-summer-road-4x.png",
+        "critic-r12E-1-modern-winter-road-1x.png",
+        "critic-r12E-1-modern-winter-road-4x.png",
+        "critic-r12E-1-reference-comparison-1x.png",
+        "critic-r12E-1-reference-comparison-4x.png",
+        "critic-r12E-1-scifi-pixels-8x.png",
+        "critic-r12E-1-scifi-summer-road-1x.png",
+        "critic-r12E-1-scifi-summer-road-4x.png",
+        "critic-r12E-1-scifi-winter-road-1x.png",
+        "critic-r12E-1-scifi-winter-road-4x.png",
+        "critic-r12E-1-wasteland-pixels-8x.png",
+        "critic-r12E-1-wasteland-summer-road-1x.png",
+        "critic-r12E-1-wasteland-summer-road-4x.png",
+        "critic-r12E-1-wasteland-winter-road-1x.png",
+        "critic-r12E-1-wasteland-winter-road-4x.png",
+        "critic-r12E-1-winter-contour-check-8x.png",
+        "critic-r12E-1-wuxia-pixels-8x.png",
+        "critic-r12E-1-wuxia-summer-inspection-8x.png",
+        "critic-r12E-1-wuxia-summer-road-1x.png",
+        "critic-r12E-1-wuxia-summer-road-4x.png",
+        "critic-r12E-1-wuxia-winter-inspection-8x.png",
+        "critic-r12E-1-wuxia-winter-road-1x.png",
+        "critic-r12E-1-wuxia-winter-road-4x.png"
+      ],
+      "coordinate_convention": "All defect coordinates are zero-based native sprite pixels; proof filenames have prefix critic-r12E-1-."
+    },
+    "fantasy": {
+      "status": "pass",
+      "assessment": "PASS: the two arrows, open thatched shelter, hanging lantern and candle shrine are distinct and readable. Warm wood/stone sit with the approved fantasy markers. The roof, bench, opening and supports remain readable in snow; the mossy shrine keeps a coherent roof and niche at native size.",
+      "files": [
+        "fantasy-roadside-0",
+        "fantasy-roadside-1",
+        "fantasy-roadside-2",
+        "fantasy-roadside-3",
+        "fantasy-roadside@winter-0",
+        "fantasy-roadside@winter-1",
+        "fantasy-roadside@winter-2",
+        "fantasy-roadside@winter-3"
+      ],
+      "pass": [
+        "fantasy-roadside-0",
+        "fantasy-roadside-1",
+        "fantasy-roadside-2",
+        "fantasy-roadside-3",
+        "fantasy-roadside@winter-0",
+        "fantasy-roadside@winter-1",
+        "fantasy-roadside@winter-2",
+        "fantasy-roadside@winter-3"
+      ],
+      "fail": [],
+      "sha256": {
+        "fantasy-roadside-0": "5075c51a875537dd6ca37584b9419a6f7036f247b88c0cb41cf2a876e08bf61d",
+        "fantasy-roadside-1": "f8e726e845b21f0f40d0d9a556a881d8063915d983b16ddc9548c2aa326494e8",
+        "fantasy-roadside-2": "bd6b797790c5631940beb7ec0e099fbce72e53af85aacc2a800df1abcc566c2b",
+        "fantasy-roadside-3": "00e0698c3657c81fed90da7065f76f6462ad56d4fb48bc8b09dd761e798a65da",
+        "fantasy-roadside@winter-0": "3367f2cfbf173be8307c620f88a5a5a163d31bffe83a9d70b846939b970e9f18",
+        "fantasy-roadside@winter-1": "688a74c6ba281545e5c61f88643cabd12479a85cf51111978b415948b292b96f",
+        "fantasy-roadside@winter-2": "4ebca7e3b5ad639678629b9df66e9300109019980c19687d744d77d4ba702487",
+        "fantasy-roadside@winter-3": "dbaf133c674c99e80bbc054fb31ff6f5b7133be27fc0c14a4213fcaeebed7717"
+      },
+      "evidence": [
+        "critic-r12E-1-fantasy-pixels-8x.png",
+        "critic-r12E-1-fantasy-summer-inspection-8x.png",
+        "critic-r12E-1-fantasy-summer-road-1x.png",
+        "critic-r12E-1-fantasy-summer-road-4x.png",
+        "critic-r12E-1-fantasy-winter-inspection-8x.png",
+        "critic-r12E-1-fantasy-winter-road-1x.png",
+        "critic-r12E-1-fantasy-winter-road-4x.png"
+      ]
+    },
+    "wuxia": {
+      "status": "pass",
+      "assessment": "PASS: stele, open pavilion, red lantern and tiled shrine have distinct silhouettes. Roof tiles are busy at 8x but still form coherent planes at 1x/4x; the winter shrine is not a noise blob at map scale. Red timber, muted grey tiles and warm stone fit the setting, with clear lower/right shadow and open pavilion supports.",
+      "files": [
+        "wuxia-roadside-0",
+        "wuxia-roadside-1",
+        "wuxia-roadside-2",
+        "wuxia-roadside-3",
+        "wuxia-roadside@winter-0",
+        "wuxia-roadside@winter-1",
+        "wuxia-roadside@winter-2",
+        "wuxia-roadside@winter-3"
+      ],
+      "pass": [
+        "wuxia-roadside-0",
+        "wuxia-roadside-1",
+        "wuxia-roadside-2",
+        "wuxia-roadside-3",
+        "wuxia-roadside@winter-0",
+        "wuxia-roadside@winter-1",
+        "wuxia-roadside@winter-2",
+        "wuxia-roadside@winter-3"
+      ],
+      "fail": [],
+      "sha256": {
+        "wuxia-roadside-0": "ef503ee4957777c8170f6492a693283a15d9d9edffbf6ca34df806dfcb0ff45f",
+        "wuxia-roadside-1": "ea59e98b780d5d453036a27b7f43d391a1e662d7422f78155635899b2cd34b42",
+        "wuxia-roadside-2": "53693bbac7d26f533bcf288814892617e043a408632722ee0e631e183b91b094",
+        "wuxia-roadside-3": "54f32dce35ff65d971dfcedc63e29d0163b15f3dfcea2170010eabbda5c66aeb",
+        "wuxia-roadside@winter-0": "0b2a32dff7a4099e71ac8b3203dce03528260a7b97b23d2ee67bc4cd620aa0f9",
+        "wuxia-roadside@winter-1": "45fa0a5d4d2a648879bb2f98df6f99a0163ffcbf47aa72501d775d831616e99d",
+        "wuxia-roadside@winter-2": "b83d03f28c753b0a61e980064c566f681810f73ab741648c0176692f511f8880",
+        "wuxia-roadside@winter-3": "30cac392d42978881a47ee0d7abe44226573bdeb73ef6f4f6550de325b3b4350"
+      },
+      "evidence": [
+        "critic-r12E-1-wuxia-pixels-8x.png",
+        "critic-r12E-1-wuxia-summer-inspection-8x.png",
+        "critic-r12E-1-wuxia-summer-road-1x.png",
+        "critic-r12E-1-wuxia-summer-road-4x.png",
+        "critic-r12E-1-wuxia-winter-inspection-8x.png",
+        "critic-r12E-1-wuxia-winter-road-1x.png",
+        "critic-r12E-1-wuxia-winter-road-4x.png"
+      ]
+    },
+    "jazz_age": {
+      "status": "fail",
+      "assessment": "PARTIAL: summer signs, shelter, globe lamp and memorial cross pass. Copper/iron/limestone fit the approved warm architecture; shelter glazing and bench are clear and its legs connect. Winter signs, shelter and cross retain readable silhouettes. The winter lamp fails because snow cuts its shaft contour.",
+      "files": [
+        "jazz_age-roadside-0",
+        "jazz_age-roadside-1",
+        "jazz_age-roadside-2",
+        "jazz_age-roadside-3",
+        "jazz_age-roadside@winter-0",
+        "jazz_age-roadside@winter-1",
+        "jazz_age-roadside@winter-2",
+        "jazz_age-roadside@winter-3"
+      ],
+      "pass": [
+        "jazz_age-roadside-0",
+        "jazz_age-roadside-1",
+        "jazz_age-roadside-2",
+        "jazz_age-roadside-3",
+        "jazz_age-roadside@winter-0",
+        "jazz_age-roadside@winter-1",
+        "jazz_age-roadside@winter-3"
+      ],
+      "fail": [
+        "jazz_age-roadside@winter-2"
+      ],
+      "sha256": {
+        "jazz_age-roadside-0": "ffc06bc6ee6020e581cc58316cf98d2f8d074463548260f00051115b1692096c",
+        "jazz_age-roadside-1": "caf714501718a7f0cfa5404ea836783d0123f7c10df8767ed44752f80e4e6836",
+        "jazz_age-roadside-2": "434c4fedb8df18776eb62a75b5cbc6e43f9dfbfdfb1482ac2a7cdc96247db8d8",
+        "jazz_age-roadside-3": "a2b69def1fa4a9d239f4637f4bf2e07dd8a244f541c8e06010efdc8af97aadaf",
+        "jazz_age-roadside@winter-0": "bac2189631193a729350281b9345ee4af7c564b36536d00956e17407fdd119ab",
+        "jazz_age-roadside@winter-1": "0746897c11240ba8b4dd9a6d2f477fdeadc346bdde37c79e8ce3527c32bc6066",
+        "jazz_age-roadside@winter-2": "d9fc9b6925421035945338266942921115087ce3c7111f4e8976426c78834250",
+        "jazz_age-roadside@winter-3": "bbd024d216a0652b57dd0400d4f522542251071df2980bfa9740cc548d7b1846"
+      },
+      "evidence": [
+        "critic-r12E-1-jazz_age-pixels-8x.png",
+        "critic-r12E-1-jazz_age-summer-inspection-8x.png",
+        "critic-r12E-1-jazz_age-summer-road-1x.png",
+        "critic-r12E-1-jazz_age-summer-road-4x.png",
+        "critic-r12E-1-jazz_age-winter-inspection-8x.png",
+        "critic-r12E-1-jazz_age-winter-road-1x.png",
+        "critic-r12E-1-jazz_age-winter-road-4x.png"
+      ]
+    },
+    "modern": {
+      "status": "fail",
+      "assessment": "PARTIAL: summer road sign, glass shelter, slim lamp and roofed map board pass. The arrow, glass reflections, orange bench and map retain readable graphic shapes. Winter sign, shelter and board remain recognizable, with appropriate roof/ledge snow. The winter lamp fails its continuous shaft contour.",
+      "files": [
+        "modern-roadside-0",
+        "modern-roadside-1",
+        "modern-roadside-2",
+        "modern-roadside-3",
+        "modern-roadside@winter-0",
+        "modern-roadside@winter-1",
+        "modern-roadside@winter-2",
+        "modern-roadside@winter-3"
+      ],
+      "pass": [
+        "modern-roadside-0",
+        "modern-roadside-1",
+        "modern-roadside-2",
+        "modern-roadside-3",
+        "modern-roadside@winter-0",
+        "modern-roadside@winter-1",
+        "modern-roadside@winter-3"
+      ],
+      "fail": [
+        "modern-roadside@winter-2"
+      ],
+      "sha256": {
+        "modern-roadside-0": "0e71ecb9c8be80a690dfd7b9360110b7efb33072244d4c88f299a474f82ff03a",
+        "modern-roadside-1": "623fabb624840260f92cd25ae64aa0d5bfcd73520f109abc90b199da39d02b4d",
+        "modern-roadside-2": "6ca0e9c957d794c8e668e63cd1dcd3901f2fceaa853111ff05c7db5d48f4290a",
+        "modern-roadside-3": "55cd35427eaf59364d26559c35847d00c416753b485ccce41e731acba9056d80",
+        "modern-roadside@winter-0": "b3e59625ef449a04b15cd5f9fa9efb1a5db3293f714d05a0af6aa4b6e2c7232e",
+        "modern-roadside@winter-1": "5d94478f30380cf85ef83a51178167906a105a7c64c02e695d48329902fdfea0",
+        "modern-roadside@winter-2": "af26c76bd0d30c5952b50eddda82d3626a33a76cc3538cb86b2b896bda582239",
+        "modern-roadside@winter-3": "e5cd3f382cb7a52b4c9083d5aca6557d442fd782a12cfd0cd2031cad07ef1217"
+      },
+      "evidence": [
+        "critic-r12E-1-modern-pixels-8x.png",
+        "critic-r12E-1-modern-summer-road-1x.png",
+        "critic-r12E-1-modern-summer-road-4x.png",
+        "critic-r12E-1-modern-winter-road-1x.png",
+        "critic-r12E-1-modern-winter-road-4x.png"
+      ]
+    },
+    "scifi": {
+      "status": "pass",
+      "assessment": "PASS: beacon, teal-glass canopy, angular lamp and navigation terminal are distinct; cream ceramics and teal panes match the approved dome markers. The lighter surfaces are material highlights, not key fringes. Their shaded sides and bases remain readable on both winter grounds. No stamped grid is introduced by the props; the repeated slab road is an unchanged reference, not a Part E output.",
+      "files": [
+        "scifi-roadside-0",
+        "scifi-roadside-1",
+        "scifi-roadside-2",
+        "scifi-roadside-3",
+        "scifi-roadside@winter-0",
+        "scifi-roadside@winter-1",
+        "scifi-roadside@winter-2",
+        "scifi-roadside@winter-3"
+      ],
+      "pass": [
+        "scifi-roadside-0",
+        "scifi-roadside-1",
+        "scifi-roadside-2",
+        "scifi-roadside-3",
+        "scifi-roadside@winter-0",
+        "scifi-roadside@winter-1",
+        "scifi-roadside@winter-2",
+        "scifi-roadside@winter-3"
+      ],
+      "fail": [],
+      "sha256": {
+        "scifi-roadside-0": "3c2c78611b34782efb6fb2b5c94fb85e66bad566962c975b5e8aa3741ae6006d",
+        "scifi-roadside-1": "7a0095995d1ec679fdd6b10d82f001a262a6c0e9b5f060f03e6367153e9ee1de",
+        "scifi-roadside-2": "9f2c0a68ffb9c7eaad480b90db24aa9fc0750fdd1e7e76cd19fec50c16b53923",
+        "scifi-roadside-3": "fde12e2cc9ae421f206e8aa7c89f7504b78d2bf802cf9ea82e1fdee93dd879c2",
+        "scifi-roadside@winter-0": "f90f5fd168b40510524568c6500707c9614087b8149a1b9e96d910d5401dc273",
+        "scifi-roadside@winter-1": "756e0444a507287217e72b6aa9d3aac7e76be02523d184e6e8bd6a13468d3e0e",
+        "scifi-roadside@winter-2": "71c33e22576b527ea0011478a0de0803bd8e54fccffc7ff0960dc548b897188d",
+        "scifi-roadside@winter-3": "6416c3ef101e57bb0d1b0986aae6a8405c447a1b0658027f72246ad4ab63ebfc"
+      },
+      "evidence": [
+        "critic-r12E-1-scifi-pixels-8x.png",
+        "critic-r12E-1-scifi-summer-road-1x.png",
+        "critic-r12E-1-scifi-summer-road-4x.png",
+        "critic-r12E-1-scifi-winter-road-1x.png",
+        "critic-r12E-1-scifi-winter-road-4x.png"
+      ]
+    },
+    "wasteland": {
+      "status": "pass",
+      "assessment": "PASS: rusty direction plates, patched lean-to, wired lamp/battery and scrap memorial are readable and distinct. Ragged edges and bent shapes have intentional scrap structure rather than detached noise. The winter lamp retains brown/dark shaft pixels through its snow bands, unlike the two failed lamps; the hanging memorial loops connect. Rust, olive-grey sheet metal and dark brown match the approved scrap marker.",
+      "files": [
+        "wasteland-roadside-0",
+        "wasteland-roadside-1",
+        "wasteland-roadside-2",
+        "wasteland-roadside-3",
+        "wasteland-roadside@winter-0",
+        "wasteland-roadside@winter-1",
+        "wasteland-roadside@winter-2",
+        "wasteland-roadside@winter-3"
+      ],
+      "pass": [
+        "wasteland-roadside-0",
+        "wasteland-roadside-1",
+        "wasteland-roadside-2",
+        "wasteland-roadside-3",
+        "wasteland-roadside@winter-0",
+        "wasteland-roadside@winter-1",
+        "wasteland-roadside@winter-2",
+        "wasteland-roadside@winter-3"
+      ],
+      "fail": [],
+      "sha256": {
+        "wasteland-roadside-0": "5aed11425cc5e8c663b735eb811a02513bc98821cccaa7737915e430c59b4278",
+        "wasteland-roadside-1": "ac52d69a72f11b1bb425cb5512c409d34b9ff7a19e359f3ae7d2952796c26ee9",
+        "wasteland-roadside-2": "0b0c6be94c31993a6a67cd9f7283273d5776124a989b452a08556582c9e88049",
+        "wasteland-roadside-3": "23d5b64c2bab28df72ba83bf8eaf8ef12cc3907ef0e3ca573ff0a80374bf6919",
+        "wasteland-roadside@winter-0": "c89d3078b99bad6d78a36e8fc1128e0cefb2468211663d9ceb0eb0ae95fe5a66",
+        "wasteland-roadside@winter-1": "7be7e5beef91901cf1cf430578192d817dc349e411e2bd2ab290f2433ee7562c",
+        "wasteland-roadside@winter-2": "70b2152ab296dad95f64ac9293069c846ca99f4816614b9f38784d1828f8a3fc",
+        "wasteland-roadside@winter-3": "df491ae1d9a86d7242620b2aa318c75db7170ce6b3b042ecdc4e1afc35773f68"
+      },
+      "evidence": [
+        "critic-r12E-1-wasteland-pixels-8x.png",
+        "critic-r12E-1-wasteland-summer-road-1x.png",
+        "critic-r12E-1-wasteland-summer-road-4x.png",
+        "critic-r12E-1-wasteland-winter-road-1x.png",
+        "critic-r12E-1-wasteland-winter-road-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "fantasy-roadside-0",
+    "fantasy-roadside-1",
+    "fantasy-roadside-2",
+    "fantasy-roadside-3",
+    "fantasy-roadside@winter-0",
+    "fantasy-roadside@winter-1",
+    "fantasy-roadside@winter-2",
+    "fantasy-roadside@winter-3",
+    "wuxia-roadside-0",
+    "wuxia-roadside-1",
+    "wuxia-roadside-2",
+    "wuxia-roadside-3",
+    "wuxia-roadside@winter-0",
+    "wuxia-roadside@winter-1",
+    "wuxia-roadside@winter-2",
+    "wuxia-roadside@winter-3",
+    "jazz_age-roadside-0",
+    "jazz_age-roadside-1",
+    "jazz_age-roadside-2",
+    "jazz_age-roadside-3",
+    "jazz_age-roadside@winter-0",
+    "jazz_age-roadside@winter-1",
+    "jazz_age-roadside@winter-3",
+    "modern-roadside-0",
+    "modern-roadside-1",
+    "modern-roadside-2",
+    "modern-roadside-3",
+    "modern-roadside@winter-0",
+    "modern-roadside@winter-1",
+    "modern-roadside@winter-3",
+    "scifi-roadside-0",
+    "scifi-roadside-1",
+    "scifi-roadside-2",
+    "scifi-roadside-3",
+    "scifi-roadside@winter-0",
+    "scifi-roadside@winter-1",
+    "scifi-roadside@winter-2",
+    "scifi-roadside@winter-3",
+    "wasteland-roadside-0",
+    "wasteland-roadside-1",
+    "wasteland-roadside-2",
+    "wasteland-roadside-3",
+    "wasteland-roadside@winter-0",
+    "wasteland-roadside@winter-1",
+    "wasteland-roadside@winter-2",
+    "wasteland-roadside@winter-3"
+  ],
+  "fail": [
+    {
+      "name": "jazz_age-roadside@winter-2",
+      "problems": "The winter snow mask wipes out the pole's dark contour: at zero-based y=33, all three shaft pixels x=27..29 are snow white (#f5f6e8). Additional broad white bands around y=37 make the lower shaft look striped and visually disconnected on both approved winter grounds at 1x/4x. Keep an uninterrupted one-pixel dark side down the shaft; restrict snow to the upper curl, lamp cap and actual base ledges. Preserve the summer pole geometry. See failed-contours-{1,4,8}x and jazz_age-winter-road-{1,4}x proofs."
+    },
+    {
+      "name": "modern-roadside@winter-2",
+      "problems": "The thin winter mast loses its dark side midway down: at zero-based y=28, both shaft pixels x=28..29 are pale snow (#f5f6e8 / #d9ddd2), producing a visible gap against approved winter grass/plains. The shaft also pinches to a lone light pixel at (28,38), immediately above the foot, so it no longer has the summer mast's clean continuous contour. Restore a continuous dark shadow-side pixel through those rows, leaving snow on the lamp top and foot ledge rather than crossing the entire vertical shaft. See failed-contours-{1,4,8}x and modern-winter-road-{1,4}x proofs."
+    }
+  ]
+}
