@@ -1,0 +1,36 @@
+start aero/backdrop-day fresh []
+start aero/game-stage fresh []
+start aero/aurora-strip fresh []
+done  aero/aurora-strip True
+start aero/orb fresh []
+done  aero/game-stage True
+start aero/bubble-1 fresh []
+done  aero/backdrop-day True
+start aero/bubble-2 fresh []
+done  aero/bubble-2 True
+start aero/leaf fresh []
+done  aero/orb True
+start aero/backdrop-night twin ['raw.png']
+done  aero/bubble-1 True
+start aero/backdrop-rain twin ['raw.png']
+done  aero/leaf True
+start aero/backdrop-snow twin ['raw.png']
+done  aero/backdrop-night True
+start aero/phone-day ref ['raw.png']
+done  aero/backdrop-rain True
+done  aero/backdrop-snow True
+done  aero/phone-day True
+start aero/phone-night twin ['raw.png', 'raw.png']
+done  aero/phone-night True
+ok aero/backdrop-day (1920, 1080) RGB
+ok aero/backdrop-night (1920, 1080) RGB
+ok aero/backdrop-rain (1920, 1080) RGB
+ok aero/backdrop-snow (1920, 1080) RGB
+ok aero/phone-day (853, 1844) RGB
+ok aero/phone-night (853, 1844) RGB
+ok aero/game-stage (1920, 1080) RGB
+ok aero/aurora-strip (2400, 160) RGBA
+ok aero/orb (512, 512) RGBA
+ok aero/bubble-1 (512, 512) RGBA
+ok aero/bubble-2 (512, 512) RGBA
+ok aero/leaf (512, 512) RGBA
