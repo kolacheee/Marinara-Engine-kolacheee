@@ -31,3 +31,12 @@ steampunk/backdrop-night rc=0 secs=92 exists=yes
 steampunk/backdrop-rain rc=0 secs=95 exists=yes
 steampunk/backdrop-snow rc=0 secs=91 exists=yes
 steampunk/phone-night rc=0 secs=67 exists=yes
+nautical/brass-dividers rc=0 secs=54 exists=yes
+nautical/compass-rose rc=0 secs=70 exists=yes
+nautical/chart-day rc=0 secs=96 exists=yes
+nautical/parallel-rule rc=0 secs=60 exists=yes
+nautical/chart-phone-day rc=0 secs=59 exists=yes
+nautical/chart-night rc=0 secs=70 exists=yes
+nautical/chart-wet-day rc=0 secs=82 exists=yes
+nautical/chart-phone-night rc=0 secs=68 exists=yes
+nautical/chart-wet-night rc=0 secs=76 exists=yes

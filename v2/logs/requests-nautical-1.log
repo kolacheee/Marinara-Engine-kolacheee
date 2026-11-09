@@ -1,0 +1,27 @@
+start nautical/chart-day fresh []
+start nautical/compass-rose fresh []
+start nautical/brass-dividers fresh []
+done  nautical/brass-dividers True
+start nautical/parallel-rule fresh []
+done  nautical/compass-rose True
+done  nautical/chart-day True
+start nautical/chart-phone-day ref ['raw.png']
+start nautical/chart-night twin ['raw.png']
+done  nautical/parallel-rule True
+start nautical/chart-wet-day twin ['raw.png']
+done  nautical/chart-phone-day True
+start nautical/chart-phone-night twin ['raw.png']
+done  nautical/chart-night True
+start nautical/chart-wet-night twin ['raw.png']
+done  nautical/chart-wet-day True
+done  nautical/chart-phone-night True
+done  nautical/chart-wet-night True
+ok nautical/chart-day (1672, 940) RGB
+ok nautical/chart-night (2560, 1440) RGB
+ok nautical/chart-phone-day (852, 1847) RGB
+ok nautical/chart-phone-night (1170, 2532) RGB
+ok nautical/chart-wet-day (2560, 1440) RGB
+ok nautical/chart-wet-night (2560, 1440) RGB
+ok nautical/compass-rose (1200, 1200) RGBA
+ok nautical/brass-dividers (1400, 700) RGBA
+ok nautical/parallel-rule (2400, 260) RGBA
