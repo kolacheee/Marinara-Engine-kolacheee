@@ -1,0 +1,10 @@
+start noir/city-night-storm twin ['raw.png', 'raw.png']
+start noir/game-stage-day twin ['raw.png']
+start noir/gargoyle regen ['ref-current.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/noir/city-night-storm/raw.png': No such file or directory
+done  noir/gargoyle True
+done  noir/game-stage-day True
+done  noir/city-night-storm True
+ok noir/city-night-storm (1672, 941) RGB
+ok noir/game-stage-day (2560, 1440) RGB
+ok noir/gargoyle (1024, 1024) RGBA
