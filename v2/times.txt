@@ -92,3 +92,9 @@ nautical/chart-wet-day rc=0 secs=95 exists=yes
 nautical/chart-fog-day rc=0 secs=104 exists=yes
 nautical/chart-fog-night rc=0 secs=78 exists=yes
 nautical/chart-wet-night rc=0 secs=88 exists=yes
+nautical/chart-day rc=0 secs=75 exists=yes
+nautical/chart-night rc=0 secs=84 exists=yes
+nautical/chart-wet-day rc=0 secs=110 exists=yes
+nautical/chart-fog-day rc=0 secs=114 exists=yes
+nautical/chart-fog-night rc=0 secs=79 exists=yes
+nautical/chart-wet-night rc=0 secs=112 exists=yes
