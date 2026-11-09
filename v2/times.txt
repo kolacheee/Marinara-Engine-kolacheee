@@ -54,3 +54,9 @@ noir/city-phone-night rc=0 secs=66 exists=yes
 noir/city-night-snow rc=0 secs=130 exists=yes
 aero/backdrop-rain-night rc=0 secs=64 exists=yes
 aero/backdrop-snow-night rc=0 secs=70 exists=yes
+goth/stickers-day-2 rc=0 secs=62 exists=yes
+goth/velvet-tile rc=0 secs=65 exists=yes
+goth/ornaments-night-2 rc=0 secs=69 exists=yes
+goth/weather-day-2 rc=0 secs=51 exists=yes
+goth/cameo-pair rc=0 secs=70 exists=yes
+goth/night-chapel-storm rc=0 secs=75 exists=yes

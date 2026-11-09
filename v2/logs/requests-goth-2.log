@@ -1,0 +1,18 @@
+start goth/ornaments-night-2 fresh []
+start goth/stickers-day-2 fresh []
+start goth/velvet-tile regen ['ref-current.png']
+done  goth/stickers-day-2 True
+start goth/weather-day-2 fresh []
+done  goth/velvet-tile True
+start goth/cameo-pair fresh []
+done  goth/ornaments-night-2 True
+start goth/night-chapel-storm twin ['raw.png']
+done  goth/weather-day-2 True
+done  goth/cameo-pair True
+done  goth/night-chapel-storm True
+ok goth/velvet-tile (1024, 1024) RGB
+ok goth/ornaments-night-2 (1536, 1024) RGBA
+ok goth/stickers-day-2 (1536, 1024) RGBA
+ok goth/weather-day-2 (1536, 1024) RGBA
+ok goth/cameo-pair (1536, 1024) RGBA
+ok goth/night-chapel-storm (1672, 941) RGB
