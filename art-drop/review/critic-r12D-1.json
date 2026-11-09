@@ -1,0 +1,285 @@
+{
+  "sets": {
+    "D-snow-and-ice": {
+      "files": [
+        "ice-prop-0",
+        "ice-prop-1",
+        "ice-prop-2",
+        "ice-prop-3",
+        "ice-prop-4",
+        "ice-prop-5",
+        "ice-prop-6",
+        "ice-prop-7"
+      ],
+      "verdict": "fail",
+      "scope": "BRIEF-12.md Part D only: eight transparent ice-prop sprites. All other art used solely as comparison material or compositing ground.",
+      "prior_review": "critic-r12D-0.json does not exist; no carried-forward passes.",
+      "checks": {
+        "dimensions_and_placement": "PASS: 0-3 are 48x48; 4-7 are 96x96. Horizontal low props have clear margins and the expected small/large width fill. No clipping or incorrect bottom-edge anchoring requirement applies to these ground props.",
+        "native_and_4x": "Visually inspected water/shore, approved winter grass and plains fields, contrasting-background alpha sheet, pond-ground tests and approved-art atlas at 1x and exact nearest-neighbour 4x.",
+        "every_file_at_8x": "Visually inspected every individual ice-prop-0 through ice-prop-7 at exact nearest-neighbour 8x on dark water and approved winter grass.",
+        "bases_3x3": "N/A: Part D has no base files. Existing approved bases are comparison grounds, not review targets.",
+        "peak_lattice_or_range": "N/A: Part D has no peak files; egg-crate peak test does not apply.",
+        "one_cell_8x2": "No opaque one-cell terrain tiles in Part D. Additionally inspected the four 48x48 props in a seeded random 8x2 water scatter at 1x/4x; no tile-edge frames or accidental seams. Subject repetition in this deliberately dense prop stress test is not an edge-joining tile requirement.",
+        "forest_composite": "N/A: Part D has no trees or crowns.",
+        "pixel_integrity": "PASS: solids have only 0/255 alpha and 8-10 visible RGB colours; shading props contain only neutral black/white with stepped opacity. No interpolated blur, chromatic fringe, hidden RGB, rectangular support, or detached fringe evident at 8x. Intentional shading transparency is not treated as antialiasing.",
+        "light_palette_and_uniqueness": "PASS for the six passed files: upper-left lighting, muted pale blue/grey winter colours, discrete readable silhouettes, no near-duplicate compositions. Compared against approved markers for all six families, round-2 city/industry/slums/farmland summer and winter samples, seasonal paddies, grass/plains bases and small/large details, and original winter grass/plains references.",
+        "winter_readability": "FAIL for pond slots 2 and 5. Drifts remain intentionally subtle but legible; rocks and floes retain winter detail.",
+        "other_named_failure_modes": "No craters, classical ruins, cyberpunk tile grids or autumn crowns belong to Part D. Those unrelated families were not reviewed."
+      },
+      "limitations": "This art-only checkout contains no water-base image or runnable game. Water proof uses a labelled-in-report dark-water swatch RGB(38,57,68); shoreline mask is a review fixture, not reviewed art. Winter ground proofs use the actual approved PNGs.",
+      "file_checks": {
+        "ice-prop-0": {
+          "assessment": "PASS: one clear horizontal slab at 1x; clean stepped pale top and blue lower edge, top-left light, no fringe. Distinct from the three-slab group in slot 4.",
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            14,
+            43,
+            33
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_rgb_colors": 8,
+          "sha256": "1d90e2139f28dd17535420ac12e63d1750ec85901f53ff56b1f5e133c39ab48b",
+          "nonzero_hidden_rgb": 0,
+          "shading_chromatic_pixels": 510
+        },
+        "ice-prop-1": {
+          "assessment": "PASS: low rime-covered rock cluster reads at 1x, with exposed grey facets, pale upper-left frost and a dark lower contour. Fits the approved winter palette and stays distinct from the taller slot 7 group.",
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            15,
+            43,
+            33
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_rgb_colors": 10,
+          "sha256": "5f5cd23fdeb10e679ce9b0b7c52bfe3fe061758788dab11d275f80b83b8ae3ab",
+          "nonzero_hidden_rgb": 0,
+          "shading_chromatic_pixels": 485
+        },
+        "ice-prop-2": {
+          "assessment": "FAIL: frozen-pond readability; see fail entry and pond-ground composites.",
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            17,
+            43,
+            31
+          ],
+          "alpha_values": [
+            0,
+            32,
+            48,
+            64,
+            80,
+            112,
+            152
+          ],
+          "visible_rgb_colors": 1,
+          "sha256": "1db891f4b9da172d8211095123c58da3e8eccb926f92ede57ab522794bbdfa3e",
+          "nonzero_hidden_rgb": 0,
+          "shading_chromatic_pixels": 0
+        },
+        "ice-prop-3": {
+          "assessment": "PASS: small, low tapered drift with a light crest and restrained lower-right shading. Subtle at 1x but still visible on both winter bases; no solid outline or unwanted hue.",
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            18,
+            41,
+            29
+          ],
+          "alpha_values": [
+            0,
+            24,
+            32,
+            48,
+            64,
+            112,
+            152
+          ],
+          "visible_rgb_colors": 2,
+          "sha256": "19ab992766350a7535ffa347058f105073b51a65481549a3cde0435a294c3274",
+          "nonzero_hidden_rgb": 0,
+          "shading_chromatic_pixels": 0
+        },
+        "ice-prop-4": {
+          "assessment": "PASS: three clearly separated slabs with distinct sizes and contours, readable blue thickness, coherent upper-left light and crisp pixels. Group stays legible over dark water without a surrounding rectangular patch.",
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            7,
+            32,
+            89,
+            63
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_rgb_colors": 9,
+          "sha256": "ceb9604cce8c8c40a16e9bffaf5bce8cc034661511f8cdd1c1a5f8e9e1300737",
+          "nonzero_hidden_rgb": 0,
+          "shading_chromatic_pixels": 1668
+        },
+        "ice-prop-5": {
+          "assessment": "FAIL: frozen-pond boundary disappears on snow; see fail entry and pond-ground composites.",
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            7,
+            31,
+            89,
+            65
+          ],
+          "alpha_values": [
+            0,
+            24,
+            32,
+            48,
+            64,
+            80,
+            112,
+            152
+          ],
+          "visible_rgb_colors": 2,
+          "sha256": "3cc969c81853494074454e6ca42251508f36ab1c0d98576ddc0d253f02a9ad97",
+          "nonzero_hidden_rgb": 0,
+          "shading_chromatic_pixels": 0
+        },
+        "ice-prop-6": {
+          "assessment": "PASS: two wind-shaped banks with different profiles; lower-right shadows give enough relief at 1x on winter ground. Deliberately quiet shading, without a solid rim or chromatic halo. Distinct from the small narrow slot 3 drift.",
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            6,
+            33,
+            86,
+            62
+          ],
+          "alpha_values": [
+            0,
+            24,
+            32,
+            48,
+            80,
+            112,
+            152,
+            184
+          ],
+          "visible_rgb_colors": 2,
+          "sha256": "3e88a803874ebeff37b1cfba3e3948e6db04d850e8b43b67a39407374bc082e2",
+          "nonzero_hidden_rgb": 0,
+          "shading_chromatic_pixels": 0
+        },
+        "ice-prop-7": {
+          "assessment": "PASS: tall angular boulder group with smaller flank rocks, readable lit upper-left facets, snow/rime caps and a dark lower contour. Matches the muted winter references and approved details without blur or excess stippling.",
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            7,
+            24,
+            89,
+            72
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_rgb_colors": 9,
+          "sha256": "bf27cf1a357255a7b4603789bb0360439e313d54f6d66e5a59ab6c6277b5e2be",
+          "nonzero_hidden_rgb": 0,
+          "shading_chromatic_pixels": 2240
+        }
+      },
+      "composites": [
+        "critic-r12D-1-alpha-1x.png",
+        "critic-r12D-1-alpha-4x.png",
+        "critic-r12D-1-approved-art-1x.png",
+        "critic-r12D-1-approved-art-4x.png",
+        "critic-r12D-1-grass@winter-field-1x.png",
+        "critic-r12D-1-grass@winter-field-4x.png",
+        "critic-r12D-1-ice-prop-0-1x.png",
+        "critic-r12D-1-ice-prop-0-4x.png",
+        "critic-r12D-1-ice-prop-0-8x.png",
+        "critic-r12D-1-ice-prop-1-1x.png",
+        "critic-r12D-1-ice-prop-1-4x.png",
+        "critic-r12D-1-ice-prop-1-8x.png",
+        "critic-r12D-1-ice-prop-2-1x.png",
+        "critic-r12D-1-ice-prop-2-4x.png",
+        "critic-r12D-1-ice-prop-2-8x.png",
+        "critic-r12D-1-ice-prop-3-1x.png",
+        "critic-r12D-1-ice-prop-3-4x.png",
+        "critic-r12D-1-ice-prop-3-8x.png",
+        "critic-r12D-1-ice-prop-4-1x.png",
+        "critic-r12D-1-ice-prop-4-4x.png",
+        "critic-r12D-1-ice-prop-4-8x.png",
+        "critic-r12D-1-ice-prop-5-1x.png",
+        "critic-r12D-1-ice-prop-5-4x.png",
+        "critic-r12D-1-ice-prop-5-8x.png",
+        "critic-r12D-1-ice-prop-6-1x.png",
+        "critic-r12D-1-ice-prop-6-4x.png",
+        "critic-r12D-1-ice-prop-6-8x.png",
+        "critic-r12D-1-ice-prop-7-1x.png",
+        "critic-r12D-1-ice-prop-7-4x.png",
+        "critic-r12D-1-ice-prop-7-8x.png",
+        "critic-r12D-1-plains@winter-field-1x.png",
+        "critic-r12D-1-plains@winter-field-4x.png",
+        "critic-r12D-1-pond-ground-1x.png",
+        "critic-r12D-1-pond-ground-4x.png",
+        "critic-r12D-1-reference-winter-1x.png",
+        "critic-r12D-1-reference-winter-4x.png",
+        "critic-r12D-1-small-random-8x2-water-1x.png",
+        "critic-r12D-1-small-random-8x2-water-4x.png",
+        "critic-r12D-1-water-shore-1x.png",
+        "critic-r12D-1-water-shore-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "ice-prop-0",
+    "ice-prop-1",
+    "ice-prop-3",
+    "ice-prop-4",
+    "ice-prop-6",
+    "ice-prop-7"
+  ],
+  "fail": [
+    {
+      "name": "ice-prop-2",
+      "problems": "At 1x and 4x on both approved winter grass and winter plains, the frozen pond is effectively invisible: its white-only opacity patches supply no darker shore or bounded ice plane. On dark water/green ground it reads as a mottled pale smudge rather than a pond. Rework the shading into a coherent ice surface with a restrained neutral dark lower/right bank or depression rim and a few connected directional ice highlights; retain hue-free shading and fade the outer edge to zero. Check pond-ground-1x/4x and the individual 8x composite."
+    },
+    {
+      "name": "ice-prop-5",
+      "problems": "On both approved winter bases the bright pond fill and perimeter disappear, leaving two branching grey cracks and scattered dots drawn directly on the snow. At 1x there is no readable pond boundary or recessed ice surface; on green ground the ground texture continues through the pale patch. Add a coherent neutral shadowed bank/ice perimeter and an interior value structure that separates the frozen surface from its ground, while keeping shading hue-free and the outer edge faded. Integrate and taper the crack branches within that bounded surface rather than relying on cracks alone to identify a pond. See pond-ground-1x/4x and grass/plains winter field composites."
+    }
+  ]
+}
