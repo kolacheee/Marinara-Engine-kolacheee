@@ -52,3 +52,5 @@ noir/city-day-snow rc=0 secs=114 exists=yes
 noir/city-night-storm rc=0 secs=84 exists=yes
 noir/city-phone-night rc=0 secs=66 exists=yes
 noir/city-night-snow rc=0 secs=130 exists=yes
+aero/backdrop-rain-night rc=0 secs=64 exists=yes
+aero/backdrop-snow-night rc=0 secs=70 exists=yes

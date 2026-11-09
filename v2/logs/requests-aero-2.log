@@ -1,0 +1,6 @@
+start aero/backdrop-rain-night twin ['raw.png', 'raw.png']
+start aero/backdrop-snow-night twin ['raw.png', 'raw.png']
+done  aero/backdrop-rain-night True
+done  aero/backdrop-snow-night True
+ok aero/backdrop-rain-night (1672, 941) RGB
+ok aero/backdrop-snow-night (1920, 1080) RGB
