@@ -10,3 +10,13 @@ aero/backdrop-rain rc=0 secs=74 exists=yes
 aero/backdrop-snow rc=0 secs=61 exists=yes
 aero/phone-day rc=0 secs=51 exists=yes
 aero/phone-night rc=0 secs=57 exists=yes
+goth/night-chapel rc=0 secs=52 exists=yes
+goth/day-pattern rc=0 secs=53 exists=yes
+goth/velvet-tile rc=0 secs=66 exists=yes
+goth/stickers-day rc=0 secs=51 exists=yes
+goth/ornaments-night rc=0 secs=64 exists=yes
+goth/weather-sprites rc=0 secs=52 exists=yes
+goth/night-phone rc=0 secs=53 exists=yes
+goth/cameo-silhouette rc=0 secs=69 exists=yes
+goth/day-chapel rc=0 secs=66 exists=yes
+goth/day-phone rc=0 secs=65 exists=yes

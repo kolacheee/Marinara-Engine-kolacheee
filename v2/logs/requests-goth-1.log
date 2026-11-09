@@ -1,0 +1,30 @@
+start goth/night-chapel fresh []
+start goth/velvet-tile fresh []
+start goth/day-pattern fresh []
+done  goth/night-chapel True
+start goth/stickers-day fresh []
+done  goth/day-pattern True
+start goth/ornaments-night fresh []
+done  goth/velvet-tile True
+start goth/weather-sprites fresh []
+done  goth/stickers-day True
+start goth/cameo-silhouette fresh []
+done  goth/ornaments-night True
+start goth/day-chapel twin ['raw.png']
+done  goth/weather-sprites True
+start goth/night-phone ref ['raw.png']
+done  goth/night-phone True
+done  goth/cameo-silhouette True
+done  goth/day-chapel True
+start goth/day-phone twin ['raw.png', 'raw.png']
+done  goth/day-phone True
+ok goth/night-chapel (1672, 941) RGB
+ok goth/day-chapel (2560, 1440) RGB
+ok goth/night-phone (852, 1846) RGB
+ok goth/day-phone (852, 1846) RGB
+ok goth/velvet-tile (1024, 1024) RGB
+ok goth/day-pattern (1024, 1024) RGB
+ok goth/stickers-day (1536, 1024) RGBA
+ok goth/ornaments-night (1536, 1024) RGBA
+ok goth/weather-sprites (1536, 1024) RGBA
+ok goth/cameo-silhouette (1024, 1024) RGBA
