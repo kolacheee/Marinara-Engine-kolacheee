@@ -1,0 +1,323 @@
+{
+  "sets": {
+    "D-snow-and-ice": {
+      "files": [
+        "ice-prop-0",
+        "ice-prop-1",
+        "ice-prop-2",
+        "ice-prop-3",
+        "ice-prop-4",
+        "ice-prop-5",
+        "ice-prop-6",
+        "ice-prop-7"
+      ],
+      "verdict": "pass",
+      "scope": "BRIEF-12.md Part D only: ice-prop-0 through ice-prop-7. No other output art receives a verdict.",
+      "calibration": "Good enough to ship alongside the approved art. Existing passes are preserved unless a concrete new defect is identified.",
+      "prior_review": {
+        "file": "critic-r12D-1.json",
+        "unchanged_passes_carried_forward": [
+          "ice-prop-0",
+          "ice-prop-1",
+          "ice-prop-3",
+          "ice-prop-4",
+          "ice-prop-6",
+          "ice-prop-7"
+        ],
+        "changed_files_reassessed": [
+          "ice-prop-2",
+          "ice-prop-5"
+        ],
+        "new_defects_in_carried_passes": []
+      },
+      "checks": {
+        "dimensions_and_placement": "PASS: 0-3 are 48x48, 4-7 are 96x96. Small widths are 36-38px (75-79%); large widths are 80-82px (83-85%). Low horizontal ground props have appropriate vertical foreshortening and clear margins. No clipping, incorrect canvas size or floating support squares.",
+        "native_and_4x": "PASS: inspected all eight in native and nearest-neighbour 4x water/shore and approved winter grass/plains fields; also inspected green grass/plains fields, black/magenta/white transparency proofs and both pond-ground matrices at 1x/4x.",
+        "every_file_at_8x": "PASS: visually inspected all eight individual 8x composites, each over dark water (left) and approved winter grass (right). Solids remain crisp; pond and drift transparency is discrete value shading, not interpolated blur.",
+        "bases_3x3": "N/A: Part D contains no base files. Approved bases are comparison ground only; their own tiling is outside this review.",
+        "peak_lattice_or_range": "N/A: Part D contains no peaks; no mountain assets reviewed.",
+        "one_cell_8x2": "PASS: inspected a seeded random 8x2 arrangement of the four 48x48 props, at 1x/4x on dark water and both approved winter bases. No edge seams, square frames or accidental stamped lattice within the assets. The deliberately regular test placement and repeated copies of the same prop are fixture repetition, not eight seamless terrain variants. Sequence: [1, 3, 3, 1, 2, 0, 2, 0, 0, 1, 0, 3, 2, 2, 3, 1]",
+        "forest_composite": "N/A: Part D contains no trees; no forest/crown assets reviewed.",
+        "pixel_integrity": "PASS: four solids use only binary alpha and 8-10 RGB colours. Pond/drift slots 2,3,5,6 use only neutral black/white with stepped alpha and zero outside their silhouettes. All eight have zero nonzero RGB pixels hidden under alpha 0. No visible blur, antialiasing fringe, coloured halos, detached extraction debris, or noisy microtexture.",
+        "light_and_palette": "PASS: solid upper-left pale facets and darker lower/right faces agree with the brief. Snow and ice are muted cool greys/blues, compatible with approved winter ground and details. Hue-free shading inherits the underlying ground, as required. Green-ground pond tests are supplemental; winter grass/plains determine the snow readability verdict.",
+        "shapes_and_uniqueness": "PASS: single/grouped floes, low/tall rocks, small/large drift compositions and quiet/cracked ponds are distinguishable at 1x. Neither revised pond is blank on winter ground. No muddy silhouettes or near-duplicate file pair warrants rejection.",
+        "other_named_failure_modes": "Egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk terrain, flat orange autumn and identical crowns are N/A to these eight snow/ice props. Their families were not reviewed."
+      },
+      "comparison_material": {
+        "named_references": "Part D names no specific reference image. Applied the shared BRIEF-12 layout, top-left light, outline and shading rules.",
+        "approved_art": "All six setting marker families, variants 0-3; round-2 city/industry/slums/farmland summer and winter small/large samples; paddies 0,2,4,7 in all four seasons; grass/plains native base crops and details 0,7 in all four seasons. Atlases preserve native pixel size.",
+        "additional_reference": "art-drop/reference/current-grass@winter.png and current-plains@winter.png viewed as winter palette context.",
+        "water_fixture": "No water base PNG in this art-only checkout. Used flat dark water RGB(38,57,68). The stepped shoreline is a synthetic test mask; its straight segments are not defects in the reviewed sprites. No in-game rendering was available."
+      },
+      "file_checks": {
+        "ice-prop-0": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            14,
+            43,
+            33
+          ],
+          "sha256": "1d90e2139f28dd17535420ac12e63d1750ec85901f53ff56b1f5e133c39ab48b",
+          "unchanged_from_review_1": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_rgb_colors": 8,
+          "nonzero_hidden_rgb": 0,
+          "chromatic_visible_pixels": 510,
+          "assessment": "PASS carried forward; byte-identical to review 1. Single floe reads at native size; pale top, blue thickness and crisp lower outline remain coherent under top-left light."
+        },
+        "ice-prop-1": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            15,
+            43,
+            33
+          ],
+          "sha256": "5f5cd23fdeb10e679ce9b0b7c52bfe3fe061758788dab11d275f80b83b8ae3ab",
+          "unchanged_from_review_1": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_rgb_colors": 10,
+          "nonzero_hidden_rgb": 0,
+          "chromatic_visible_pixels": 485,
+          "assessment": "PASS carried forward; byte-identical to review 1. Low rime-covered rock group has exposed grey facets, clear upper-left frost and a distinct silhouette."
+        },
+        "ice-prop-2": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            17,
+            43,
+            31
+          ],
+          "sha256": "bdc300a48406f93798c425c2392c3ffe6efa29667487589997ab6a8a010b4b7c",
+          "unchanged_from_review_1": false,
+          "alpha_values": [
+            0,
+            16,
+            48,
+            80,
+            112,
+            152
+          ],
+          "visible_rgb_colors": 2,
+          "nonzero_hidden_rgb": 0,
+          "chromatic_visible_pixels": 0,
+          "assessment": "PASS after revision. The neutral darker lower/right bank now bounds a shallow ice plane on both approved winter bases, across three ground offsets at 1x and 4x. Upper-left broken highlights suggest ice without becoming noisy. At 8x the rim is restrained and stepped, with no coloured fringe or rectangular support. This small pond is intentionally quieter than slot 5; it no longer vanishes into snow."
+        },
+        "ice-prop-3": {
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            18,
+            41,
+            29
+          ],
+          "sha256": "19ab992766350a7535ffa347058f105073b51a65481549a3cde0435a294c3274",
+          "unchanged_from_review_1": true,
+          "alpha_values": [
+            0,
+            24,
+            32,
+            48,
+            64,
+            112,
+            152
+          ],
+          "visible_rgb_colors": 2,
+          "nonzero_hidden_rgb": 0,
+          "chromatic_visible_pixels": 0,
+          "assessment": "PASS carried forward; byte-identical to review 1. Small tapered snowdrift remains subtle but visible on both winter grounds; light crest and lower-right shadow give low relief without a solid-object outline."
+        },
+        "ice-prop-4": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            7,
+            32,
+            89,
+            63
+          ],
+          "sha256": "ceb9604cce8c8c40a16e9bffaf5bce8cc034661511f8cdd1c1a5f8e9e1300737",
+          "unchanged_from_review_1": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_rgb_colors": 9,
+          "nonzero_hidden_rgb": 0,
+          "chromatic_visible_pixels": 1668,
+          "assessment": "PASS carried forward; byte-identical to review 1. Three differently sized floes have clean separation, pale upper surfaces and blue lower faces. Distinct from the single floe in slot 0."
+        },
+        "ice-prop-5": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            7,
+            31,
+            89,
+            65
+          ],
+          "sha256": "ccd1673da4745d79fe4730f7ce8ef61efe478343b6db6bcbda6720d4427dd34a",
+          "unchanged_from_review_1": false,
+          "alpha_values": [
+            0,
+            24,
+            32,
+            64,
+            80,
+            112,
+            152,
+            184
+          ],
+          "visible_rgb_colors": 2,
+          "nonzero_hidden_rgb": 0,
+          "chromatic_visible_pixels": 0,
+          "assessment": "PASS after revision. A continuous, irregular neutral bank now encloses the ice surface on both winter bases at 1x and 4x across three offsets. The two crack branches lie inside a readable pond rather than floating directly on the snow. Directional pale streaks and a darker lower/right bank retain the recessed ice reading. The two-lobed outline and broad diagonal streaks remain conspicuous under dense repetition, so use as a sparse two-cell prop; they are not a ship-blocking repeat or a near-duplicate of slot 2."
+        },
+        "ice-prop-6": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            6,
+            33,
+            86,
+            62
+          ],
+          "sha256": "3e88a803874ebeff37b1cfba3e3948e6db04d850e8b43b67a39407374bc082e2",
+          "unchanged_from_review_1": true,
+          "alpha_values": [
+            0,
+            24,
+            32,
+            48,
+            80,
+            112,
+            152,
+            184
+          ],
+          "visible_rgb_colors": 2,
+          "nonzero_hidden_rgb": 0,
+          "chromatic_visible_pixels": 0,
+          "assessment": "PASS carried forward; byte-identical to review 1. Two wind-shaped snow banks have differing profiles and restrained lower-right shade. Quiet at native size but legible on both winter grounds and distinct from slot 3."
+        },
+        "ice-prop-7": {
+          "size": [
+            96,
+            96
+          ],
+          "bbox": [
+            7,
+            24,
+            89,
+            72
+          ],
+          "sha256": "bf27cf1a357255a7b4603789bb0360439e313d54f6d66e5a59ab6c6277b5e2be",
+          "unchanged_from_review_1": true,
+          "alpha_values": [
+            0,
+            255
+          ],
+          "visible_rgb_colors": 9,
+          "nonzero_hidden_rgb": 0,
+          "chromatic_visible_pixels": 2240,
+          "assessment": "PASS carried forward; byte-identical to review 1. Tall angular rime-covered boulder group has readable flank rocks, upper-left snow facets and a dark lower contour, with no halo."
+        }
+      },
+      "composite_notes": "All files prefixed critic-r12D-2-. Scale suffixes are exact nearest-neighbour magnifications. Pond-ground columns: winter grass, winter plains, summer grass, summer plains, dark-water swatch; rows use offsets (0,0), (83,93), (180,160). Alpha sheet columns are slots 0-7; rows black, magenta, white. Approved-art atlases 0/1/2/3 cover markers/round-2/paddies/ground and details.",
+      "composites": [
+        "critic-r12D-2-ice-prop-0-1x.png",
+        "critic-r12D-2-ice-prop-0-4x.png",
+        "critic-r12D-2-ice-prop-0-8x.png",
+        "critic-r12D-2-ice-prop-1-1x.png",
+        "critic-r12D-2-ice-prop-1-4x.png",
+        "critic-r12D-2-ice-prop-1-8x.png",
+        "critic-r12D-2-ice-prop-2-1x.png",
+        "critic-r12D-2-ice-prop-2-4x.png",
+        "critic-r12D-2-ice-prop-2-8x.png",
+        "critic-r12D-2-ice-prop-3-1x.png",
+        "critic-r12D-2-ice-prop-3-4x.png",
+        "critic-r12D-2-ice-prop-3-8x.png",
+        "critic-r12D-2-ice-prop-4-1x.png",
+        "critic-r12D-2-ice-prop-4-4x.png",
+        "critic-r12D-2-ice-prop-4-8x.png",
+        "critic-r12D-2-ice-prop-5-1x.png",
+        "critic-r12D-2-ice-prop-5-4x.png",
+        "critic-r12D-2-ice-prop-5-8x.png",
+        "critic-r12D-2-ice-prop-6-1x.png",
+        "critic-r12D-2-ice-prop-6-4x.png",
+        "critic-r12D-2-ice-prop-6-8x.png",
+        "critic-r12D-2-ice-prop-7-1x.png",
+        "critic-r12D-2-ice-prop-7-4x.png",
+        "critic-r12D-2-ice-prop-7-8x.png",
+        "critic-r12D-2-ice-prop-2-pond-ground-1x.png",
+        "critic-r12D-2-ice-prop-2-pond-ground-4x.png",
+        "critic-r12D-2-ice-prop-5-pond-ground-1x.png",
+        "critic-r12D-2-ice-prop-5-pond-ground-4x.png",
+        "critic-r12D-2-grass@winter-field-1x.png",
+        "critic-r12D-2-grass@winter-field-4x.png",
+        "critic-r12D-2-plains@winter-field-1x.png",
+        "critic-r12D-2-plains@winter-field-4x.png",
+        "critic-r12D-2-grass-field-1x.png",
+        "critic-r12D-2-grass-field-4x.png",
+        "critic-r12D-2-plains-field-1x.png",
+        "critic-r12D-2-plains-field-4x.png",
+        "critic-r12D-2-water-shore-1x.png",
+        "critic-r12D-2-water-shore-4x.png",
+        "critic-r12D-2-small-random-8x2-water-1x.png",
+        "critic-r12D-2-small-random-8x2-water-4x.png",
+        "critic-r12D-2-small-random-8x2-grass@winter-1x.png",
+        "critic-r12D-2-small-random-8x2-grass@winter-4x.png",
+        "critic-r12D-2-small-random-8x2-plains@winter-1x.png",
+        "critic-r12D-2-small-random-8x2-plains@winter-4x.png",
+        "critic-r12D-2-alpha-1x.png",
+        "critic-r12D-2-alpha-4x.png",
+        "critic-r12D-2-approved-art-0-1x.png",
+        "critic-r12D-2-approved-art-0-4x.png",
+        "critic-r12D-2-approved-art-1-1x.png",
+        "critic-r12D-2-approved-art-1-4x.png",
+        "critic-r12D-2-approved-art-2-1x.png",
+        "critic-r12D-2-approved-art-2-4x.png",
+        "critic-r12D-2-approved-art-3-1x.png",
+        "critic-r12D-2-approved-art-3-4x.png",
+        "critic-r12D-2-reference-winter-1x.png",
+        "critic-r12D-2-reference-winter-4x.png"
+      ]
+    }
+  },
+  "pass": [
+    "ice-prop-0",
+    "ice-prop-1",
+    "ice-prop-2",
+    "ice-prop-3",
+    "ice-prop-4",
+    "ice-prop-5",
+    "ice-prop-6",
+    "ice-prop-7"
+  ],
+  "fail": []
+}
