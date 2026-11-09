@@ -57,6 +57,8 @@ def existing(k):
     for d in (OUT, CUR):
         if (d / f"{k}.png").exists():
             return d / f"{k}.png"
+    if (WORK / k / "raw.png").exists():  # the previous raw generated on this PC
+        return WORK / k / "raw.png"
     return None
 
 
