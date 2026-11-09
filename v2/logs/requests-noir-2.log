@@ -1,0 +1,29 @@
+start noir/game-stage fresh []
+start noir/city-phone-day regen ['ref-current.png']
+start noir/city-day regen ['ref-current.png']
+done  noir/city-phone-day True
+done  noir/game-stage True
+done  noir/city-day True
+start noir/city-night twin ['raw.png', 'raw.png']
+start noir/city-phone-night twin ['raw.png', 'raw.png']
+start noir/city-day-snow twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/noir/city-phone-night/raw.png': No such file or directory
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/noir/city-night/raw.png': No such file or directory
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/noir/city-day-snow/raw.png': No such file or directory
+done  noir/city-phone-night True
+done  noir/city-night True
+start noir/city-night-snow twin ['raw.png', 'raw.png']
+start noir/city-night-storm twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/noir/city-night-snow/raw.png': No such file or directory
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/noir/city-night-storm/raw.png': No such file or directory
+done  noir/city-day-snow True
+done  noir/city-night-storm True
+done  noir/city-night-snow True
+ok noir/city-day (2560, 1440) RGB
+ok noir/city-night (1672, 941) RGB
+ok noir/city-night-storm (2560, 1440) RGB
+ok noir/city-night-snow (2560, 1440) RGB
+ok noir/city-day-snow (2560, 1440) RGB
+ok noir/city-phone-day (1080, 1920) RGB
+ok noir/city-phone-night (1080, 1920) RGB
+ok noir/game-stage (2560, 1440) RGB
