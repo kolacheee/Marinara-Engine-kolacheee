@@ -60,3 +60,5 @@ goth/ornaments-night-2 rc=0 secs=69 exists=yes
 goth/weather-day-2 rc=0 secs=51 exists=yes
 goth/cameo-pair rc=0 secs=70 exists=yes
 goth/night-chapel-storm rc=0 secs=75 exists=yes
+aero/backdrop-fog rc=0 secs=67 exists=yes
+aero/backdrop-fog-night rc=0 secs=69 exists=yes
