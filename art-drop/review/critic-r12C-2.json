@@ -1,0 +1,2060 @@
+{
+  "sets": {
+    "_review": {
+      "scope": "Only BRIEF-12.md Part C tree sprites: 56 files. Floor bases and all approved comparison art are reference material, not verdict subjects.",
+      "file_count": 56,
+      "pass_count": 56,
+      "fail_count": 0,
+      "calibration": "Good enough to ship next to approved art. Narrow conifers, broad umbrella crowns, open branching trees and short broken stumps are judged in their intended size class. No demand for extra detail merely because a sprite looks simple at 8x.",
+      "previous_review": "critic-r12C-1.json: 52 passes and 4 failures. SHA-256 comparison confirms that only the four failed bamboo sprites changed. All 52 unchanged passes were re-inspected; no concrete new defect warrants reversing a pass.",
+      "changed_files": [
+        "bamboo-2",
+        "bamboo-6",
+        "bamboo@winter-2",
+        "bamboo@winter-6"
+      ],
+      "unchanged_passes_preserved": 52,
+      "checks": {
+        "brief_and_reference": "Read BRIEF-12.md Part C and shared requirements, plus original BRIEF.md and BRIEF-2.md style rules. Viewed all eight treeline_forest sprites and their autumn counterparts at 1x and 4x.",
+        "approved_art": "Viewed all 24 approved markers at native size; city, industry, slums, suburb, farmland and paddies comparison boards at 4x, including seasonal versions shown on the boards. Viewed full grass/plains base swatches and all eight complete detail canvases for each of four seasons at native size. Compared palette, pixel density, dark edges, upper-left illumination and snow treatment. No new verdict on comparison art.",
+        "forest_lattice_1x_4x": "All seven sets were composited in deterministic staggered forests on existing appropriate forest/conifer/deadforest ground and inspected at exact native 1x and nearest-neighbour 4x. Dense overlapping portions and thinning edges both checked. No backing rectangle, per-cell seam, crown-clone pattern or unacceptable muddy overlap found.",
+        "every_sprite_8x": "Inspected every one of the 56 full 48x48 files at exact 8x in fourteen four-sprite sheets. Each enlarged sprite occupies its own complete 384x384 panel. No sprite was judged solely from a thumbnail.",
+        "edges_and_alpha": "Inspected every sprite against both light and dark backgrounds at 4x. No pale fringe, key-colour fringe, halo, clipping, blur or antialiasing found. Programmatic checks confirm 48x48 RGBA, only 0/255 alpha, zero hidden RGB, transparent outer margins and opaque bottom-centre contact at (23,44).",
+        "placement_scale_light_palette": "Trunk/root contact, tree size class and top-left highlights fit the treeline reference. Greens, grey deadwood and blue-white snow fit the approved context without a new palette clash. Narrow crowns and broken stumps are intentional subject variation.",
+        "variation": "No exact duplicates among the 56 source PNGs. Visual silhouette comparison finds meaningful species, crown-width, lean and branching differences within each set. Revised bamboo 2 and 6 are distinct from one another and from the remaining clumps. Corresponding winter layouts intentionally retain summer structure.",
+        "winter": "All 24 winter trees remain present and recognizable, with snow on supported branches, foliage or stump ledges. No blank winter file or inconsistent replacement layout found. Snow does not erase the revised bamboo stem channels.",
+        "base_3x3": "Not applicable: Part C delivers no bases. Existing floor bases are only compositing ground and were not added to the verdict scope.",
+        "peak_range": "Not applicable: Part C delivers no peaks. Tree forest lattice check performed for all seven sets.",
+        "one_cell_random_8x2": "Part C has transparent trees, not opaque edge-joining terrain tiles, so seam tiling is not a Part C requirement. Supplemental contiguous randomized 8x2 boards were saved for every set; revised bamboo summer/winter boards were additionally inspected at 1x and 4x for variant repetition and native readability.",
+        "specific_problem_list": "Identical crowns, noise, muddy shapes, weak bamboo structure, winter consistency and native readability checked directly. Egg-crate peaks, Swiss-cheese craters, classical ruins, stamped cyberpunk grids and flat orange autumn are outside Part C; no verdict was issued on those other subjects."
+      },
+      "out_unchanged": true,
+      "out_file_count_verified": 1458,
+      "input_sha256": {
+        "conifer_forest-0": "af82e2e17130b93ff363f10ea7c84c323e08d83ca984ce87549d2900f32582fa",
+        "conifer_forest-1": "bcc76bd7ed360fc2773ce4f36dadd67a94c5fee7b9472e6ee41a4e0198217019",
+        "conifer_forest-2": "6b2d3c0d015baf6115124a313700536e1cc326e2cf8aa68086647c4bc9822d10",
+        "conifer_forest-3": "607e30bba901e79bc511f7371c691e1bbd5f0682e23410ed0c654959dde66387",
+        "conifer_forest-4": "d7fccfae2068d5d187d1c7423e91dd3c1639f1a903ec1ae4752243c817ad6e75",
+        "conifer_forest-5": "699f42e7189276689606a281eb97ec2c141983e52e0e61aeb7931b9c281a9077",
+        "conifer_forest-6": "d18274f26fd77b5a7ea06df51b1df9357d7f9da6f8aa96559aca92a994c01f80",
+        "conifer_forest-7": "f1cd6b0bfe81fbfb8ebfc546d965746b1ca895283e2a70cd3d4ac5e8061af6fe",
+        "conifer_forest@winter-0": "bf4a0415f6be8c3ceebc265a41797459bd285b068d1d050261bab323757d0c9a",
+        "conifer_forest@winter-1": "97e9cf428e8c51ddfd9e5ba6d34ab96d838a9e4e8df6ea9bba6b5ef7ca437529",
+        "conifer_forest@winter-2": "34a0bb379816d34ebc5b55ed8e60bf40b218aae8e2bc2c1cb362c529e0d92bba",
+        "conifer_forest@winter-3": "2152dd6d0a3e74e837978991288204c809996357b16eaf4e4b1f52c3face84f8",
+        "conifer_forest@winter-4": "d5cf737d06c5abca7c416f583270422e6a3cf06d0836e4b6e5476fb719a91eb9",
+        "conifer_forest@winter-5": "0a86da8092be37be7c4ef656d9681491a3447227d25cc0af9c21b0597087247e",
+        "conifer_forest@winter-6": "dcd374671f41ce40b72ae956b44dfd952991527bfab3fd3207243fe3141fb463",
+        "conifer_forest@winter-7": "be3d970e7eaac425db6b6c6b0eb66b19281c39e7e1bc76559ecdc4f2dc49378f",
+        "jungle-0": "9d4d172a36c88335d7eb0b8aedfa05131e555aa9945ffce24c0989a5317ed3d3",
+        "jungle-1": "337b20323efc985b5ed1d3f67e6918d08abb972c99068678d57a9b6ccd9b31b4",
+        "jungle-2": "a5f527cbd22c57a3e374f1bf9608607238606a229cece4fff99922e2dad28854",
+        "jungle-3": "09263fdf90fb32e5ce51a70fb786acae46790820a2a69e6a75587a371bd0c39b",
+        "jungle-4": "9f8f8c61124d9c535754bf19ec072826af1e8b777322e44a8df6d42dfdfb1820",
+        "jungle-5": "92db553ed977a840e12d0bd38d97c0b3f68ff9ee597559fa831dbda10c4cb566",
+        "jungle-6": "c48cb15a38a4b1ad3e9bc2e5acb7ce237d5ee57d936f44dc74041a79a8ef4666",
+        "jungle-7": "11dbf3c4a1914ff1668427ce88c3de503fd87b15a35f0ee59e95d51e8cb06609",
+        "deadforest-0": "d94a1fc6869a46d9002b2ef44ce07c2312320540fb32845f2369da18c58c2700",
+        "deadforest-1": "b9274363cb7a4a650b89609f955e3cd7606b4b51cfcc045190a07aa7cffcf380",
+        "deadforest-2": "a65b3580ad3a31ab54500ec15cd962a0906a316b3ba63f7bea00b60d969b1be6",
+        "deadforest-3": "5b6a252854bae03d18f114cd6734b775a80ad378041d54c36b6d721a1d9be9b7",
+        "deadforest-4": "3effedd6597730e7142e09ea3c785bdc2ce30ea11c1ee06d178392ab315a1700",
+        "deadforest-5": "ec8983349b53e35ed999e0f3ef40b0c79f92b2fecab144937426c1d00caaba5e",
+        "deadforest-6": "f2bc43ac260a6a3b73ca07c60083f42da36e2aecd44ed2601722abcc49931713",
+        "deadforest-7": "cee966078a5ac637ae2f4420186577d0757aaad629297937b7aeee71f22e4f9e",
+        "deadforest@winter-0": "77adf92602ef22cd84bb2b8a01e121bb8cd546245a21514c584cf71d5be3b392",
+        "deadforest@winter-1": "826b355a312c4c92da59d06a20a5d0e2acdb944980120d75e6fdf87f09791745",
+        "deadforest@winter-2": "26028a64a64bd182ae1278f66aa4c692301cf6ecce8499042d8d4f38938c9734",
+        "deadforest@winter-3": "1093e22de8db303e24070fb0dfeaedc99cce2c459e9d598d57e1ef97743113c4",
+        "deadforest@winter-4": "0a9afdd9d6ed125eea8fbfa9b76f55fe1a57802b248581a416c8c2602c94c7fb",
+        "deadforest@winter-5": "1ec341136bc29cfb99c4ef24fe5fb9215aee7a0895fc9edbab5346f9cfe2f48b",
+        "deadforest@winter-6": "57e126cbfae15276c5c8f4e2d8b8c34d4ece75e1cc1b8a83c3b5dcc030ce7fab",
+        "deadforest@winter-7": "a6071905ca3f02a4ee1e1839bdb0d099d295391059318531a0dab611565d544c",
+        "bamboo-0": "0a5321898f23a0594e6315b901e43b07e1d45161d44eb547481adb474e94ec04",
+        "bamboo-1": "5c1325d8b211ae750bf734e03ac4dd9f9b57afb6c23d87464c8a1fc2ea858bde",
+        "bamboo-2": "cebe445b2a8d54f977422a9217ac258f4d67c04d7bd0f58aa355bab385445370",
+        "bamboo-3": "08480da54ce6b8535625a664cf87d4bd2bee7c79f741425997206978d2134b1b",
+        "bamboo-4": "99841643d67dd5190da74154b8933dd2b741d33aa1fb805f5e718059d77db437",
+        "bamboo-5": "1b2279ea307edaf63fb72c6199c1019dc979cf5399dd32a6c8a695bc6262d011",
+        "bamboo-6": "ea7ae4d9c2807a5c8591329fc1a5f3579d55ab9c15b71f922a7df9e952e3ca00",
+        "bamboo-7": "726b4a7f4fc64d9d89930d05c32ec988a6b43f2a25d1edccfd5a4fb3d93ab8a7",
+        "bamboo@winter-0": "69bfc40efea40bb527ccd474f4c13fcfc95e1b8d1a743bbf569e54278def7378",
+        "bamboo@winter-1": "278f8915eb1f44e5f16a1b98c565cff842f79444345843f6fe47c87b1b5c6bdd",
+        "bamboo@winter-2": "0010eff7704329df18f88c4c24a0fdff3b64ebf21bc205105020f0c15b25b4d9",
+        "bamboo@winter-3": "fcbd5bdd82340c8a271dc3fbd99263b5a4b100f59f08a7cabd666cce86c8fef7",
+        "bamboo@winter-4": "96f274abbfb82e19b80319cfe1e436f5ee9894402f07963295c0b8cc94b34498",
+        "bamboo@winter-5": "0ad101ea34fe4a03ad2f1b3792ce585e9983e1e111bc2dfc1630c57d02d6e395",
+        "bamboo@winter-6": "244ea0507cc2368da0ac459b1b1668f7e54931488b1fc6717029b2a9b1593c4c",
+        "bamboo@winter-7": "e816e8be9a47cc7afb53865f19945c294b504915c53d6fa4949db80cb87b8cdf"
+      },
+      "evidence_pngs": [
+        "critic-r12C-2-approved-city-1x.png",
+        "critic-r12C-2-approved-city-4x.png",
+        "critic-r12C-2-approved-farmland-1x.png",
+        "critic-r12C-2-approved-farmland-4x.png",
+        "critic-r12C-2-approved-ground-summer-1x.png",
+        "critic-r12C-2-approved-ground-summer-4x.png",
+        "critic-r12C-2-approved-ground@autumn-1x.png",
+        "critic-r12C-2-approved-ground@autumn-4x.png",
+        "critic-r12C-2-approved-ground@spring-1x.png",
+        "critic-r12C-2-approved-ground@spring-4x.png",
+        "critic-r12C-2-approved-ground@winter-1x.png",
+        "critic-r12C-2-approved-ground@winter-4x.png",
+        "critic-r12C-2-approved-industry-1x.png",
+        "critic-r12C-2-approved-industry-4x.png",
+        "critic-r12C-2-approved-markers-0-1x.png",
+        "critic-r12C-2-approved-markers-0-4x.png",
+        "critic-r12C-2-approved-markers-1-1x.png",
+        "critic-r12C-2-approved-markers-1-4x.png",
+        "critic-r12C-2-approved-markers-2-1x.png",
+        "critic-r12C-2-approved-markers-2-4x.png",
+        "critic-r12C-2-approved-paddies-1x.png",
+        "critic-r12C-2-approved-paddies-4x.png",
+        "critic-r12C-2-approved-slums-1x.png",
+        "critic-r12C-2-approved-slums-4x.png",
+        "critic-r12C-2-approved-suburb-1x.png",
+        "critic-r12C-2-approved-suburb-4x.png",
+        "critic-r12C-2-bamboo-alpha-1x.png",
+        "critic-r12C-2-bamboo-alpha-4x.png",
+        "critic-r12C-2-bamboo-forest-1x.png",
+        "critic-r12C-2-bamboo-forest-4x.png",
+        "critic-r12C-2-bamboo-random-8x2-1x.png",
+        "critic-r12C-2-bamboo-random-8x2-4x.png",
+        "critic-r12C-2-bamboo-row-1x.png",
+        "critic-r12C-2-bamboo-row-4x.png",
+        "critic-r12C-2-bamboo-sprites-0-8x.png",
+        "critic-r12C-2-bamboo-sprites-1-8x.png",
+        "critic-r12C-2-bamboo@winter-alpha-1x.png",
+        "critic-r12C-2-bamboo@winter-alpha-4x.png",
+        "critic-r12C-2-bamboo@winter-forest-1x.png",
+        "critic-r12C-2-bamboo@winter-forest-4x.png",
+        "critic-r12C-2-bamboo@winter-random-8x2-1x.png",
+        "critic-r12C-2-bamboo@winter-random-8x2-4x.png",
+        "critic-r12C-2-bamboo@winter-row-1x.png",
+        "critic-r12C-2-bamboo@winter-row-4x.png",
+        "critic-r12C-2-bamboo@winter-sprites-0-8x.png",
+        "critic-r12C-2-bamboo@winter-sprites-1-8x.png",
+        "critic-r12C-2-conifer_forest-alpha-1x.png",
+        "critic-r12C-2-conifer_forest-alpha-4x.png",
+        "critic-r12C-2-conifer_forest-forest-1x.png",
+        "critic-r12C-2-conifer_forest-forest-4x.png",
+        "critic-r12C-2-conifer_forest-random-8x2-1x.png",
+        "critic-r12C-2-conifer_forest-random-8x2-4x.png",
+        "critic-r12C-2-conifer_forest-row-1x.png",
+        "critic-r12C-2-conifer_forest-row-4x.png",
+        "critic-r12C-2-conifer_forest-sprites-0-8x.png",
+        "critic-r12C-2-conifer_forest-sprites-1-8x.png",
+        "critic-r12C-2-conifer_forest@winter-alpha-1x.png",
+        "critic-r12C-2-conifer_forest@winter-alpha-4x.png",
+        "critic-r12C-2-conifer_forest@winter-forest-1x.png",
+        "critic-r12C-2-conifer_forest@winter-forest-4x.png",
+        "critic-r12C-2-conifer_forest@winter-random-8x2-1x.png",
+        "critic-r12C-2-conifer_forest@winter-random-8x2-4x.png",
+        "critic-r12C-2-conifer_forest@winter-row-1x.png",
+        "critic-r12C-2-conifer_forest@winter-row-4x.png",
+        "critic-r12C-2-conifer_forest@winter-sprites-0-8x.png",
+        "critic-r12C-2-conifer_forest@winter-sprites-1-8x.png",
+        "critic-r12C-2-deadforest-alpha-1x.png",
+        "critic-r12C-2-deadforest-alpha-4x.png",
+        "critic-r12C-2-deadforest-forest-1x.png",
+        "critic-r12C-2-deadforest-forest-4x.png",
+        "critic-r12C-2-deadforest-random-8x2-1x.png",
+        "critic-r12C-2-deadforest-random-8x2-4x.png",
+        "critic-r12C-2-deadforest-row-1x.png",
+        "critic-r12C-2-deadforest-row-4x.png",
+        "critic-r12C-2-deadforest-sprites-0-8x.png",
+        "critic-r12C-2-deadforest-sprites-1-8x.png",
+        "critic-r12C-2-deadforest@winter-alpha-1x.png",
+        "critic-r12C-2-deadforest@winter-alpha-4x.png",
+        "critic-r12C-2-deadforest@winter-forest-1x.png",
+        "critic-r12C-2-deadforest@winter-forest-4x.png",
+        "critic-r12C-2-deadforest@winter-random-8x2-1x.png",
+        "critic-r12C-2-deadforest@winter-random-8x2-4x.png",
+        "critic-r12C-2-deadforest@winter-row-1x.png",
+        "critic-r12C-2-deadforest@winter-row-4x.png",
+        "critic-r12C-2-deadforest@winter-sprites-0-8x.png",
+        "critic-r12C-2-deadforest@winter-sprites-1-8x.png",
+        "critic-r12C-2-jungle-alpha-1x.png",
+        "critic-r12C-2-jungle-alpha-4x.png",
+        "critic-r12C-2-jungle-forest-1x.png",
+        "critic-r12C-2-jungle-forest-4x.png",
+        "critic-r12C-2-jungle-random-8x2-1x.png",
+        "critic-r12C-2-jungle-random-8x2-4x.png",
+        "critic-r12C-2-jungle-row-1x.png",
+        "critic-r12C-2-jungle-row-4x.png",
+        "critic-r12C-2-jungle-sprites-0-8x.png",
+        "critic-r12C-2-jungle-sprites-1-8x.png",
+        "critic-r12C-2-reference-treeline_forest-1x.png",
+        "critic-r12C-2-reference-treeline_forest-4x.png",
+        "critic-r12C-2-reference-treeline_forest@autumn-1x.png",
+        "critic-r12C-2-reference-treeline_forest@autumn-4x.png"
+      ]
+    },
+    "conifer_forest": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r12C-2-conifer_forest-alpha-1x.png",
+        "critic-r12C-2-conifer_forest-alpha-4x.png",
+        "critic-r12C-2-conifer_forest-forest-1x.png",
+        "critic-r12C-2-conifer_forest-forest-4x.png",
+        "critic-r12C-2-conifer_forest-random-8x2-1x.png",
+        "critic-r12C-2-conifer_forest-random-8x2-4x.png",
+        "critic-r12C-2-conifer_forest-row-1x.png",
+        "critic-r12C-2-conifer_forest-row-4x.png",
+        "critic-r12C-2-conifer_forest-sprites-0-8x.png",
+        "critic-r12C-2-conifer_forest-sprites-1-8x.png"
+      ],
+      "files": {
+        "conifer_forest-0": {
+          "verdict": "pass",
+          "notes": "Broad irregular tiered spruce silhouette; upper-left foliage planes and dark lower branch edges read cleanly.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            8,
+            39,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "af82e2e17130b93ff363f10ea7c84c323e08d83ca984ce87549d2900f32582fa"
+        },
+        "conifer_forest-1": {
+          "verdict": "pass",
+          "notes": "Slim fir has distinct stacked branch tiers and a readable central axis; narrowness is appropriate to its species.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            14,
+            10,
+            33,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 6,
+          "bottom_center_23_44": 255,
+          "sha256": "bcc76bd7ed360fc2773ce4f36dadd67a94c5fee7b9472e6ee41a4e0198217019"
+        },
+        "conifer_forest-2": {
+          "verdict": "pass",
+          "notes": "Low umbrella-pine crown is deliberately broad; trunk and fork stay legible and distinguish it from the taller forms.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            21,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "6b2d3c0d015baf6115124a313700536e1cc326e2cf8aa68086647c4bc9822d10"
+        },
+        "conifer_forest-3": {
+          "verdict": "pass",
+          "notes": "Full cedar-like triangular crown retains readable overlapping foliage planes and differs from 0 and 1.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            9,
+            8,
+            38,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 6,
+          "bottom_center_23_44": 255,
+          "sha256": "607e30bba901e79bc511f7371c691e1bbd5f0682e23410ed0c654959dde66387"
+        },
+        "conifer_forest-4": {
+          "verdict": "pass",
+          "notes": "Irregular broad pine has a clear trunk fork and asymmetric crown; does not repeat the umbrella-pine silhouette.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            10,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "d7fccfae2068d5d187d1c7423e91dd3c1639f1a903ec1ae4752243c817ad6e75"
+        },
+        "conifer_forest-5": {
+          "verdict": "pass",
+          "notes": "Open, sparse conifer shows connected branches and a central trunk; its gaps read as an intentionally open tree, not fringe debris.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            9,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "699f42e7189276689606a281eb97ec2c141983e52e0e61aeb7931b9c281a9077"
+        },
+        "conifer_forest-6": {
+          "verdict": "pass",
+          "notes": "Tall cypress-like column is a valid narrow species silhouette; restrained plane changes keep it solid and readable.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            17,
+            8,
+            30,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 6,
+          "bottom_center_23_44": 255,
+          "sha256": "d18274f26fd77b5a7ea06df51b1df9357d7f9da6f8aa96559aca92a994c01f80"
+        },
+        "conifer_forest-7": {
+          "verdict": "pass",
+          "notes": "Wind-bent conifer has a strongly asymmetric top and layered lower branches; clearly different from the upright forms.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            8,
+            41,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "f1cd6b0bfe81fbfb8ebfc546d965746b1ca895283e2a70cd3d4ac5e8061af6fe"
+        }
+      }
+    },
+    "conifer_forest@winter": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r12C-2-conifer_forest@winter-alpha-1x.png",
+        "critic-r12C-2-conifer_forest@winter-alpha-4x.png",
+        "critic-r12C-2-conifer_forest@winter-forest-1x.png",
+        "critic-r12C-2-conifer_forest@winter-forest-4x.png",
+        "critic-r12C-2-conifer_forest@winter-random-8x2-1x.png",
+        "critic-r12C-2-conifer_forest@winter-random-8x2-4x.png",
+        "critic-r12C-2-conifer_forest@winter-row-1x.png",
+        "critic-r12C-2-conifer_forest@winter-row-4x.png",
+        "critic-r12C-2-conifer_forest@winter-sprites-0-8x.png",
+        "critic-r12C-2-conifer_forest@winter-sprites-1-8x.png"
+      ],
+      "files": {
+        "conifer_forest@winter-0": {
+          "verdict": "pass",
+          "notes": "Broad irregular tiered spruce silhouette; upper-left foliage planes and dark lower branch edges read cleanly. Snow follows the branch tiers, with exposed dark needles below and shaded blue undersides; crown identity is preserved.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            8,
+            39,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 10,
+          "bottom_center_23_44": 255,
+          "sha256": "bf4a0415f6be8c3ceebc265a41797459bd285b068d1d050261bab323757d0c9a"
+        },
+        "conifer_forest@winter-1": {
+          "verdict": "pass",
+          "notes": "Slim fir has distinct stacked branch tiers and a readable central axis; narrowness is appropriate to its species. Snow follows the branch tiers, with exposed dark needles below and shaded blue undersides; crown identity is preserved.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            14,
+            10,
+            34,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 10,
+          "bottom_center_23_44": 255,
+          "sha256": "97e9cf428e8c51ddfd9e5ba6d34ab96d838a9e4e8df6ea9bba6b5ef7ca437529"
+        },
+        "conifer_forest@winter-2": {
+          "verdict": "pass",
+          "notes": "Low umbrella-pine crown is deliberately broad; trunk and fork stay legible and distinguish it from the taller forms. Snow follows the branch tiers, with exposed dark needles below and shaded blue undersides; crown identity is preserved.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            21,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 10,
+          "bottom_center_23_44": 255,
+          "sha256": "34a0bb379816d34ebc5b55ed8e60bf40b218aae8e2bc2c1cb362c529e0d92bba"
+        },
+        "conifer_forest@winter-3": {
+          "verdict": "pass",
+          "notes": "Full cedar-like triangular crown retains readable overlapping foliage planes and differs from 0 and 1. Snow follows the branch tiers, with exposed dark needles below and shaded blue undersides; crown identity is preserved.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            9,
+            8,
+            38,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 10,
+          "bottom_center_23_44": 255,
+          "sha256": "2152dd6d0a3e74e837978991288204c809996357b16eaf4e4b1f52c3face84f8"
+        },
+        "conifer_forest@winter-4": {
+          "verdict": "pass",
+          "notes": "Irregular broad pine has a clear trunk fork and asymmetric crown; does not repeat the umbrella-pine silhouette. Snow follows the branch tiers, with exposed dark needles below and shaded blue undersides; crown identity is preserved.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            10,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 12,
+          "bottom_center_23_44": 255,
+          "sha256": "d5cf737d06c5abca7c416f583270422e6a3cf06d0836e4b6e5476fb719a91eb9"
+        },
+        "conifer_forest@winter-5": {
+          "verdict": "pass",
+          "notes": "Open, sparse conifer shows connected branches and a central trunk; its gaps read as an intentionally open tree, not fringe debris. Snow follows the branch tiers, with exposed dark needles below and shaded blue undersides; crown identity is preserved.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            8,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 12,
+          "bottom_center_23_44": 255,
+          "sha256": "0a86da8092be37be7c4ef656d9681491a3447227d25cc0af9c21b0597087247e"
+        },
+        "conifer_forest@winter-6": {
+          "verdict": "pass",
+          "notes": "Tall cypress-like column is a valid narrow species silhouette; restrained plane changes keep it solid and readable. Snow follows the branch tiers, with exposed dark needles below and shaded blue undersides; crown identity is preserved.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            16,
+            9,
+            30,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 9,
+          "bottom_center_23_44": 255,
+          "sha256": "dcd374671f41ce40b72ae956b44dfd952991527bfab3fd3207243fe3141fb463"
+        },
+        "conifer_forest@winter-7": {
+          "verdict": "pass",
+          "notes": "Wind-bent conifer has a strongly asymmetric top and layered lower branches; clearly different from the upright forms. Snow follows the branch tiers, with exposed dark needles below and shaded blue undersides; crown identity is preserved.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            8,
+            41,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 12,
+          "bottom_center_23_44": 255,
+          "sha256": "be3d970e7eaac425db6b6c6b0eb66b19281c39e7e1bc76559ecdc4f2dc49378f"
+        }
+      }
+    },
+    "jungle": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r12C-2-jungle-alpha-1x.png",
+        "critic-r12C-2-jungle-alpha-4x.png",
+        "critic-r12C-2-jungle-forest-1x.png",
+        "critic-r12C-2-jungle-forest-4x.png",
+        "critic-r12C-2-jungle-random-8x2-1x.png",
+        "critic-r12C-2-jungle-random-8x2-4x.png",
+        "critic-r12C-2-jungle-row-1x.png",
+        "critic-r12C-2-jungle-row-4x.png",
+        "critic-r12C-2-jungle-sprites-0-8x.png",
+        "critic-r12C-2-jungle-sprites-1-8x.png"
+      ],
+      "files": {
+        "jungle-0": {
+          "verdict": "pass",
+          "notes": "Broad tropical crown has a clear buttressed trunk and a coherent asymmetric canopy.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            14,
+            43,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "9d4d172a36c88335d7eb0b8aedfa05131e555aa9945ffce24c0989a5317ed3d3"
+        },
+        "jungle-1": {
+          "verdict": "pass",
+          "notes": "Drooping palm fronds and ringed bent trunk read immediately at native scale.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            9,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "337b20323efc985b5ed1d3f67e6918d08abb972c99068678d57a9b6ccd9b31b4"
+        },
+        "jungle-2": {
+          "verdict": "pass",
+          "notes": "Starburst narrow palm silhouette is distinct from the drooping palm and the broad canopies.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            9,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 6,
+          "bottom_center_23_44": 255,
+          "sha256": "a5f527cbd22c57a3e374f1bf9608607238606a229cece4fff99922e2dad28854"
+        },
+        "jungle-3": {
+          "verdict": "pass",
+          "notes": "Rounded multi-lobed tropical canopy and broad buttressed trunk differ sufficiently from 0.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            14,
+            43,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "09263fdf90fb32e5ce51a70fb786acae46790820a2a69e6a75587a371bd0c39b"
+        },
+        "jungle-4": {
+          "verdict": "pass",
+          "notes": "Broad fan-like fronds form a coherent tropical palm crown with open separations.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            9,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "9f8f8c61124d9c535754bf19ec072826af1e8b777322e44a8df6d42dfdfb1820"
+        },
+        "jungle-5": {
+          "verdict": "pass",
+          "notes": "Tall compact multi-lobed canopy is distinct from the lower broad trees; trunk remains visible.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            9,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "92db553ed977a840e12d0bd38d97c0b3f68ff9ee597559fa831dbda10c4cb566"
+        },
+        "jungle-6": {
+          "verdict": "pass",
+          "notes": "Open fern-like radiating fronds and short trunk give a readable tree-fern silhouette.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            12,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "c48cb15a38a4b1ad3e9bc2e5acb7ce237d5ee57d936f44dc74041a79a8ef4666"
+        },
+        "jungle-7": {
+          "verdict": "pass",
+          "notes": "Asymmetric drooping fern-like fronds differ from 6; trunk and negative spaces stay readable.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            12,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "11dbf3c4a1914ff1668427ce88c3de503fd87b15a35f0ee59e95d51e8cb06609"
+        }
+      }
+    },
+    "deadforest": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r12C-2-deadforest-alpha-1x.png",
+        "critic-r12C-2-deadforest-alpha-4x.png",
+        "critic-r12C-2-deadforest-forest-1x.png",
+        "critic-r12C-2-deadforest-forest-4x.png",
+        "critic-r12C-2-deadforest-random-8x2-1x.png",
+        "critic-r12C-2-deadforest-random-8x2-4x.png",
+        "critic-r12C-2-deadforest-row-1x.png",
+        "critic-r12C-2-deadforest-row-4x.png",
+        "critic-r12C-2-deadforest-sprites-0-8x.png",
+        "critic-r12C-2-deadforest-sprites-1-8x.png"
+      ],
+      "files": {
+        "deadforest-0": {
+          "verdict": "pass",
+          "notes": "Wide heavy snag has distinct broken forks and restrained grey bark planes.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            8,
+            43,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "d94a1fc6869a46d9002b2ef44ce07c2312320540fb32845f2369da18c58c2700"
+        },
+        "deadforest-1": {
+          "verdict": "pass",
+          "notes": "Twisted S-shaped snag reads cleanly without tangles or isolated tips.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            8,
+            37,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 6,
+          "bottom_center_23_44": 255,
+          "sha256": "b9274363cb7a4a650b89609f955e3cd7606b4b51cfcc045190a07aa7cffcf380"
+        },
+        "deadforest-2": {
+          "verdict": "pass",
+          "notes": "Open forked skeleton differs from the heavy snag; thin branches remain attached and legible.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            8,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "a65b3580ad3a31ab54500ec15cd962a0906a316b3ba63f7bea00b60d969b1be6"
+        },
+        "deadforest-3": {
+          "verdict": "pass",
+          "notes": "Tall narrow broken trunk is a clear snag variant, with readable broken limbs and a small hollow.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            14,
+            8,
+            32,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "5b6a252854bae03d18f114cd6734b775a80ad378041d54c36b6d721a1d9be9b7"
+        },
+        "deadforest-4": {
+          "verdict": "pass",
+          "notes": "Short hollow stump has a dark broken interior and legible flared roots; reduced height is intentional.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            11,
+            20,
+            37,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "3effedd6597730e7142e09ea3c785bdc2ce30ea11c1ee06d178392ab315a1700"
+        },
+        "deadforest-5": {
+          "verdict": "pass",
+          "notes": "Leaning S-shaped tree has asymmetric ascending forks and a distinct root/trunk curve.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            9,
+            8,
+            40,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "ec8983349b53e35ed999e0f3ef40b0c79f92b2fecab144937426c1d00caaba5e"
+        },
+        "deadforest-6": {
+          "verdict": "pass",
+          "notes": "Second broken stump has a taller jagged break and different branch/root silhouette from 4.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            14,
+            19,
+            39,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "f2bc43ac260a6a3b73ca07c60083f42da36e2aecd44ed2601722abcc49931713"
+        },
+        "deadforest-7": {
+          "verdict": "pass",
+          "notes": "Low twisted spreading dead tree is recognizably wood with connected limbs and a different silhouette.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            8,
+            12,
+            45,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 7,
+          "bottom_center_23_44": 255,
+          "sha256": "cee966078a5ac637ae2f4420186577d0757aaad629297937b7aeee71f22e4f9e"
+        }
+      }
+    },
+    "deadforest@winter": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r12C-2-deadforest@winter-alpha-1x.png",
+        "critic-r12C-2-deadforest@winter-alpha-4x.png",
+        "critic-r12C-2-deadforest@winter-forest-1x.png",
+        "critic-r12C-2-deadforest@winter-forest-4x.png",
+        "critic-r12C-2-deadforest@winter-random-8x2-1x.png",
+        "critic-r12C-2-deadforest@winter-random-8x2-4x.png",
+        "critic-r12C-2-deadforest@winter-row-1x.png",
+        "critic-r12C-2-deadforest@winter-row-4x.png",
+        "critic-r12C-2-deadforest@winter-sprites-0-8x.png",
+        "critic-r12C-2-deadforest@winter-sprites-1-8x.png"
+      ],
+      "files": {
+        "deadforest@winter-0": {
+          "verdict": "pass",
+          "notes": "Wide heavy snag has distinct broken forks and restrained grey bark planes. Small snow caps sit on broken ends and upward ledges; grey wood and the original silhouette remain clear.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            8,
+            43,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "77adf92602ef22cd84bb2b8a01e121bb8cd546245a21514c584cf71d5be3b392"
+        },
+        "deadforest@winter-1": {
+          "verdict": "pass",
+          "notes": "Twisted S-shaped snag reads cleanly without tangles or isolated tips. Small snow caps sit on broken ends and upward ledges; grey wood and the original silhouette remain clear.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            8,
+            37,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 9,
+          "bottom_center_23_44": 255,
+          "sha256": "826b355a312c4c92da59d06a20a5d0e2acdb944980120d75e6fdf87f09791745"
+        },
+        "deadforest@winter-2": {
+          "verdict": "pass",
+          "notes": "Open forked skeleton differs from the heavy snag; thin branches remain attached and legible. Small snow caps sit on broken ends and upward ledges; grey wood and the original silhouette remain clear.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            8,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "26028a64a64bd182ae1278f66aa4c692301cf6ecce8499042d8d4f38938c9734"
+        },
+        "deadforest@winter-3": {
+          "verdict": "pass",
+          "notes": "Tall narrow broken trunk is a clear snag variant, with readable broken limbs and a small hollow. Small snow caps sit on broken ends and upward ledges; grey wood and the original silhouette remain clear.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            14,
+            8,
+            32,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "1093e22de8db303e24070fb0dfeaedc99cce2c459e9d598d57e1ef97743113c4"
+        },
+        "deadforest@winter-4": {
+          "verdict": "pass",
+          "notes": "Short hollow stump has a dark broken interior and legible flared roots; reduced height is intentional. Small snow caps sit on broken ends and upward ledges; grey wood and the original silhouette remain clear.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            11,
+            20,
+            37,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "0a9afdd9d6ed125eea8fbfa9b76f55fe1a57802b248581a416c8c2602c94c7fb"
+        },
+        "deadforest@winter-5": {
+          "verdict": "pass",
+          "notes": "Leaning S-shaped tree has asymmetric ascending forks and a distinct root/trunk curve. Small snow caps sit on broken ends and upward ledges; grey wood and the original silhouette remain clear.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            9,
+            8,
+            40,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "1ec341136bc29cfb99c4ef24fe5fb9215aee7a0895fc9edbab5346f9cfe2f48b"
+        },
+        "deadforest@winter-6": {
+          "verdict": "pass",
+          "notes": "Second broken stump has a taller jagged break and different branch/root silhouette from 4. Small snow caps sit on broken ends and upward ledges; grey wood and the original silhouette remain clear.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            14,
+            19,
+            39,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "57e126cbfae15276c5c8f4e2d8b8c34d4ece75e1cc1b8a83c3b5dcc030ce7fab"
+        },
+        "deadforest@winter-7": {
+          "verdict": "pass",
+          "notes": "Low twisted spreading dead tree is recognizably wood with connected limbs and a different silhouette. Small snow caps sit on broken ends and upward ledges; grey wood and the original silhouette remain clear.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            8,
+            12,
+            45,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "a6071905ca3f02a4ee1e1839bdb0d099d295391059318531a0dab611565d544c"
+        }
+      }
+    },
+    "bamboo": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r12C-2-bamboo-alpha-1x.png",
+        "critic-r12C-2-bamboo-alpha-4x.png",
+        "critic-r12C-2-bamboo-forest-1x.png",
+        "critic-r12C-2-bamboo-forest-4x.png",
+        "critic-r12C-2-bamboo-random-8x2-1x.png",
+        "critic-r12C-2-bamboo-random-8x2-4x.png",
+        "critic-r12C-2-bamboo-row-1x.png",
+        "critic-r12C-2-bamboo-row-4x.png",
+        "critic-r12C-2-bamboo-sprites-0-8x.png",
+        "critic-r12C-2-bamboo-sprites-1-8x.png"
+      ],
+      "files": {
+        "bamboo-0": {
+          "verdict": "pass",
+          "notes": "Several long culms and open vertical channels remain visible; small leaf sprays support the bamboo reading.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            8,
+            8,
+            38,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "0a5321898f23a0594e6315b901e43b07e1d45161d44eb547481adb474e94ec04"
+        },
+        "bamboo-1": {
+          "verdict": "pass",
+          "notes": "Sparse asymmetric sprays leave the long segmented culms readable at native size; finer leaves remain subordinate.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            11,
+            8,
+            45,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "5c1325d8b211ae750bf734e03ac4dd9f9b57afb6c23d87464c8a1fc2ea858bde"
+        },
+        "bamboo-2": {
+          "verdict": "pass",
+          "notes": "The previous closed triangular bush has been opened into several long, separately readable segmented culms. Continuous ground channels run through the upper clump; small side sprays leave the culms exposed. At 1x it reads as upright bamboo, including in mixed forest and random 8x2 proofs. No longer a single flecked crown. Pass.",
+          "previous_verdict": "fail",
+          "changed_since_previous": true,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            8,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "cebe445b2a8d54f977422a9217ac258f4d67c04d7bd0f58aa355bab385445370"
+        },
+        "bamboo-3": {
+          "verdict": "pass",
+          "notes": "Leaning sparse clump keeps a readable main stem structure and open, directional side sprays.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            8,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "08480da54ce6b8535625a664cf87d4bd2bee7c79f741425997206978d2134b1b"
+        },
+        "bamboo-4": {
+          "verdict": "pass",
+          "notes": "Open channels separate the main culms; leaf clusters remain distinct enough to read as bamboo.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            8,
+            40,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "99841643d67dd5190da74154b8933dd2b741d33aa1fb805f5e718059d77db437"
+        },
+        "bamboo-5": {
+          "verdict": "pass",
+          "notes": "Few tall exposed segmented culms and sparse leaves give the clearest small bamboo silhouette.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            10,
+            8,
+            34,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "1b2279ea307edaf63fb72c6199c1019dc979cf5399dd32a6c8a695bc6262d011"
+        },
+        "bamboo-6": {
+          "verdict": "pass",
+          "notes": "The former round shrub crown has been replaced by separated leaning culms and coherent downward leaf sprays. The right-heavy lean remains distinct from the upright variants, with exposed nodes and ground channels. Stems remain legible at 1x in the forest. The 8x view shows deliberate leaf clusters rather than scattered crown noise. Pass.",
+          "previous_verdict": "fail",
+          "changed_since_previous": true,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            10,
+            8,
+            44,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "ea7ae4d9c2807a5c8591329fc1a5f3579d55ab9c15b71f922a7df9e952e3ca00"
+        },
+        "bamboo-7": {
+          "verdict": "pass",
+          "notes": "Open spreading clump retains a readable fan of segmented culms and separated side sprays.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            8,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 8,
+          "bottom_center_23_44": 255,
+          "sha256": "726b4a7f4fc64d9d89930d05c32ec988a6b43f2a25d1edccfd5a4fb3d93ab8a7"
+        }
+      }
+    },
+    "bamboo@winter": {
+      "pass_count": 8,
+      "fail_count": 0,
+      "evidence": [
+        "critic-r12C-2-bamboo@winter-alpha-1x.png",
+        "critic-r12C-2-bamboo@winter-alpha-4x.png",
+        "critic-r12C-2-bamboo@winter-forest-1x.png",
+        "critic-r12C-2-bamboo@winter-forest-4x.png",
+        "critic-r12C-2-bamboo@winter-random-8x2-1x.png",
+        "critic-r12C-2-bamboo@winter-random-8x2-4x.png",
+        "critic-r12C-2-bamboo@winter-row-1x.png",
+        "critic-r12C-2-bamboo@winter-row-4x.png",
+        "critic-r12C-2-bamboo@winter-sprites-0-8x.png",
+        "critic-r12C-2-bamboo@winter-sprites-1-8x.png"
+      ],
+      "files": {
+        "bamboo@winter-0": {
+          "verdict": "pass",
+          "notes": "Several long culms and open vertical channels remain visible; small leaf sprays support the bamboo reading. Supported snow caps preserve exposed green culms and readable gaps between sprays.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            8,
+            8,
+            37,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 12,
+          "bottom_center_23_44": 255,
+          "sha256": "69bfc40efea40bb527ccd474f4c13fcfc95e1b8d1a743bbf569e54278def7378"
+        },
+        "bamboo@winter-1": {
+          "verdict": "pass",
+          "notes": "Sparse asymmetric sprays leave the long segmented culms readable at native size; finer leaves remain subordinate. Supported snow caps preserve exposed green culms and readable gaps between sprays.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            11,
+            8,
+            45,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "278f8915eb1f44e5f16a1b98c565cff842f79444345843f6fe47c87b1b5c6bdd"
+        },
+        "bamboo@winter-2": {
+          "verdict": "pass",
+          "notes": "The revised open upright culms remain visible through the winter treatment. Snow rests on a few supported upper leaf sprays and does not close the vertical ground channels or turn the clump into a striped bush. Winter is populated and registered to the summer counterpart. Pass.",
+          "previous_verdict": "fail",
+          "changed_since_previous": true,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            5,
+            8,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 10,
+          "bottom_center_23_44": 255,
+          "sha256": "0010eff7704329df18f88c4c24a0fdff3b64ebf21bc205105020f0c15b25b4d9"
+        },
+        "bamboo@winter-3": {
+          "verdict": "pass",
+          "notes": "Leaning sparse clump keeps a readable main stem structure and open, directional side sprays. Supported snow caps preserve exposed green culms and readable gaps between sprays.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            8,
+            43,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 12,
+          "bottom_center_23_44": 255,
+          "sha256": "fcbd5bdd82340c8a271dc3fbd99263b5a4b100f59f08a7cabd666cce86c8fef7"
+        },
+        "bamboo@winter-4": {
+          "verdict": "pass",
+          "notes": "Open channels separate the main culms; leaf clusters remain distinct enough to read as bamboo. Supported snow caps preserve exposed green culms and readable gaps between sprays.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            7,
+            8,
+            40,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 12,
+          "bottom_center_23_44": 255,
+          "sha256": "96f274abbfb82e19b80319cfe1e436f5ee9894402f07963295c0b8cc94b34498"
+        },
+        "bamboo@winter-5": {
+          "verdict": "pass",
+          "notes": "Few tall exposed segmented culms and sparse leaves give the clearest small bamboo silhouette. Supported snow caps preserve exposed green culms and readable gaps between sprays.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            11,
+            8,
+            34,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 12,
+          "bottom_center_23_44": 255,
+          "sha256": "0ad101ea34fe4a03ad2f1b3792ce585e9983e1e111bc2dfc1630c57d02d6e395"
+        },
+        "bamboo@winter-6": {
+          "verdict": "pass",
+          "notes": "Separate leaning culms and drooping sprays survive the snow treatment. Snow is grouped on supported upper leaves; it does not recreate the old mottled shrub mass. Green stems and dark leaf undersides stay readable against winter ground at 1x, with crisp caps at 8x. Pass.",
+          "previous_verdict": "fail",
+          "changed_since_previous": true,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            10,
+            8,
+            44,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 11,
+          "bottom_center_23_44": 255,
+          "sha256": "244ea0507cc2368da0ac459b1b1668f7e54931488b1fc6717029b2a9b1593c4c"
+        },
+        "bamboo@winter-7": {
+          "verdict": "pass",
+          "notes": "Open spreading clump retains a readable fan of segmented culms and separated side sprays. Supported snow caps preserve exposed green culms and readable gaps between sprays.",
+          "previous_verdict": "pass",
+          "changed_since_previous": false,
+          "rechecked_at": [
+            "1x forest",
+            "4x forest",
+            "8x full sprite",
+            "4x light/dark edge proof"
+          ],
+          "size": [
+            48,
+            48
+          ],
+          "bbox": [
+            6,
+            8,
+            42,
+            45
+          ],
+          "alpha_values": [
+            0,
+            255
+          ],
+          "hidden_rgb": 0,
+          "colors": 12,
+          "bottom_center_23_44": 255,
+          "sha256": "e816e8be9a47cc7afb53865f19945c294b504915c53d6fa4949db80cb87b8cdf"
+        }
+      }
+    }
+  },
+  "pass": [
+    "conifer_forest-0",
+    "conifer_forest-1",
+    "conifer_forest-2",
+    "conifer_forest-3",
+    "conifer_forest-4",
+    "conifer_forest-5",
+    "conifer_forest-6",
+    "conifer_forest-7",
+    "conifer_forest@winter-0",
+    "conifer_forest@winter-1",
+    "conifer_forest@winter-2",
+    "conifer_forest@winter-3",
+    "conifer_forest@winter-4",
+    "conifer_forest@winter-5",
+    "conifer_forest@winter-6",
+    "conifer_forest@winter-7",
+    "jungle-0",
+    "jungle-1",
+    "jungle-2",
+    "jungle-3",
+    "jungle-4",
+    "jungle-5",
+    "jungle-6",
+    "jungle-7",
+    "deadforest-0",
+    "deadforest-1",
+    "deadforest-2",
+    "deadforest-3",
+    "deadforest-4",
+    "deadforest-5",
+    "deadforest-6",
+    "deadforest-7",
+    "deadforest@winter-0",
+    "deadforest@winter-1",
+    "deadforest@winter-2",
+    "deadforest@winter-3",
+    "deadforest@winter-4",
+    "deadforest@winter-5",
+    "deadforest@winter-6",
+    "deadforest@winter-7",
+    "bamboo-0",
+    "bamboo-1",
+    "bamboo-2",
+    "bamboo-3",
+    "bamboo-4",
+    "bamboo-5",
+    "bamboo-6",
+    "bamboo-7",
+    "bamboo@winter-0",
+    "bamboo@winter-1",
+    "bamboo@winter-2",
+    "bamboo@winter-3",
+    "bamboo@winter-4",
+    "bamboo@winter-5",
+    "bamboo@winter-6",
+    "bamboo@winter-7"
+  ],
+  "fail": []
+}
