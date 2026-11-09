@@ -4,7 +4,7 @@
 #   regen = the reference is the previous round's image, shown only so the model sees what to fix
 #   ref   = the references are existing theme images: match their style/content, recompose per the brief
 P=$1; N=$2; S=$3; R=$4; M=${5:-twin}
-ROOT=~/Downloads/marinara-theme-images-r5
+ROOT=~/Downloads/marinara-theme-images-r6
 W=$ROOT/work/$P/$N
 mkdir -p "$W"
 IMG=(); PRE="create exactly one image"; NAMES=()
@@ -14,6 +14,7 @@ if [ -n "$R" ]; then
   LIST=$(IFS=';'; echo "${NAMES[*]}")
   if [ "$M" = regen ]; then
     PRE="create exactly one NEW image. The attached ref1.png is the previous version, shown only so you can see what went wrong; do not copy it where the brief below differs, follow the brief"
+    [ ${#RS[@]} -gt 1 ] && PRE="$PRE (the other attached images are existing images from the same theme, given only as style and palette references: $LIST)"
   elif [ "$M" = ref ]; then
     PRE="create exactly one NEW image. The attached images are existing images from the same theme, given as style and content references: $LIST. Match their style, palette and subject matter, but compose a new image exactly as the brief below says"
   else
@@ -27,4 +28,4 @@ start=$(date +%s)
   "Use your image generation tool to $PRE: $S. Absolutely no text, letters, numbers, words, signatures, watermarks or logos anywhere in the image. Save the generated image into the current working directory as raw.png and print its absolute path." < /dev/null > "$W/log.txt" 2>&1
 rc=$?
 end=$(date +%s)
-echo "$P/$N rc=$rc secs=$((end-start)) exists=$( [ -f "$W/raw.png" ] && echo yes || echo no)" >> $ROOT/times.txt
+echo "$P/$N rc=$rc secs=$((end-start)) exists=$( [ -f "$W/raw.png" ] && echo yes || echo no)" >> $ROOT/r6/times.txt
