@@ -1,0 +1,398 @@
+{
+  "sets": {
+    "scope": {
+      "brief": "art-drop/BRIEF-13.md, Part E plus its shared introductory layout and critic instructions",
+      "reviewed_files": 16,
+      "calibration": "Good enough to ship beside the approved art. Only the 16 toxic-edge files receive verdicts; all other art is comparison context.",
+      "prior_review": "art-drop/review/critic-r13E-0.json does not exist.",
+      "inapplicable_checks": {
+        "3x3_base_tiling": "Part E contains no base files. Existing bases were used as context, not re-reviewed.",
+        "peak_lattice_or_range": "Part E contains no peaks.",
+        "forest_tree_composite": "Part E contains no trees.",
+        "other_named_failure_modes": "Egg-crate peaks, Swiss-cheese craters, stamped cyberpunk grids, flat orange autumn and identical crowns are outside this file set. The culvert was specifically checked for a classical-ruin reading."
+      }
+    },
+    "comparison_art": {
+      "named_prop_references": [
+        "hills-prop-0",
+        "hills-prop-1",
+        "hills-prop-4",
+        "hills-prop-5",
+        "dunes-prop-0",
+        "dunes-prop-1",
+        "dunes-prop-4",
+        "dunes-prop-5",
+        "crater-prop-0",
+        "crater-prop-1",
+        "crater-prop-4",
+        "crater-prop-5",
+        "hills@winter-prop-0",
+        "hills@winter-prop-1",
+        "hills@winter-prop-4",
+        "hills@winter-prop-5",
+        "dunes@winter-prop-0",
+        "dunes@winter-prop-1",
+        "dunes@winter-prop-4",
+        "dunes@winter-prop-5"
+      ],
+      "approved_art": "Markers from all six settings; round-2 city, industry, slums, suburb and farmland tiles; paddies; summer and winter grass/plains bases with all eight details each.",
+      "source_context": [
+        "art-drop/reference/current-fantasy-hills.png",
+        "art-drop/reference/current-wasteland-wasteland.png"
+      ],
+      "finding": "Muted rust, charcoal, grey concrete and restrained yellow-green pollution sit within the approved earthy palette. Cool snow colours fit the approved winter grass and plains details. Pixel scale, outline weight and upper-left lighting are compatible."
+    },
+    "checks": {
+      "native_and_4x": "All 16 files inspected on correct-season wasteland ground at 1x and nearest-neighbour 4x; also compared on approved plains, and against checkerboard alpha sheets. Shore composites inspected at 1x and 4x. The olive water strip in shore-context composites is illustrative review scenery, not an out/ asset.",
+      "random8x2": "Summer and winter indices 0-3 each placed four times in a deterministic shuffled 8-column by 2-row layout, at their native 48px spacing. Both correct-season wasteland layouts inspected at 1x and 4x. No cell-boundary seams, square backing, clipped silhouettes or unintended grid connecting the props. Reused objects remain identifiable; this prop set is not a continuous terrain texture.",
+      "8x": "Every file inspected at exactly 8x nearest-neighbour in summer/winter strips ordered 0-1-2-3, 4-5 and 6-7. Individual 8x images were also saved, with checkerboard and correct-season wasteland ground side by side.",
+      "dimensions_and_placement": "All 0-3 files are 48x48, with longest alpha bounds 37-38px (77-79%). All 4-7 files are 96x96 with longest alpha bounds 82px (85%). Bounds remain inside each canvas. Flatter car/pipe/puddle heights follow their silhouettes; no stretching is needed.",
+      "pixel_and_alpha_quality": "Limited flat colour clusters and discrete pixel steps; no blur or smoothed opaque-object edges. Partial alpha is confined to intentional sludge/shadow effects. No ground square, light matte halo, detached alpha island or unwanted fringe found. Soft contact shadows anchor the solid props.",
+      "forms_and_light": "No ambiguous solid blob, speck-sized subject, muddy mass, reversed light, egg-like repetition or unreadable opening found. Upper/left planes are lighter, with dark right faces and occluded interiors.",
+      "variety": "Small pair versus large drum pile, elbow versus long damaged pipe, culvert, car and slag heap remain different silhouettes/compositions. Winter pairs intentionally preserve their summer geometry as required.",
+      "winter": "Every counterpart contains local snow or frost. Snow is distributed on exposed surfaces, preserves structural readability and uses cool highlights/shadows consistent with the approved winter art. The sludge remains green and translucent under sparse frost.",
+      "out_integrity": "All 1578 PNGs in art-drop/out/ match their initial SHA-256 hashes. No output artwork was edited."
+    },
+    "summer": {
+      "verdict": "pass",
+      "files": {
+        "wasteland-toxic-prop-0": {
+          "verdict": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            7,
+            5,
+            41,
+            43
+          ],
+          "finding": "Two damaged rusted drums read at native size; overlapping cylinders, rim highlights, dark right sides and a small green leak remain distinct. The dented right drum is irregular without becoming an unidentifiable lump."
+        },
+        "wasteland-toxic-prop-1": {
+          "verdict": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            11,
+            42,
+            37
+          ],
+          "finding": "The weakest-contrast asset, but acceptable on its intended wasteland ground: an irregular translucent olive/yellow stain with a thicker lower pool and sparse bright surface flecks. The transparent centre and fading perimeter preserve ground texture. It is a stain, rather than a solid green object; no square backing or opaque fringe."
+        },
+        "wasteland-toxic-prop-2": {
+          "verdict": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            10,
+            5,
+            38,
+            43
+          ],
+          "finding": "The open elbow and upright pipe outlet read separately at native size. The dark bore, highlighted upper-left metal, rust and small hanging sludge trail give the pipe a clear industrial silhouette."
+        },
+        "wasteland-toxic-prop-3": {
+          "verdict": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            12,
+            43,
+            36
+          ],
+          "finding": "The low car silhouette retains bonnet, dark window/cabin recess and broken rear body. Sludge at the lower edge and the submerged wheel line support the half-sunk reading; the horizontal footprint is appropriate to the perspective."
+        },
+        "wasteland-toxic-prop-4": {
+          "verdict": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            14,
+            89,
+            81
+          ],
+          "finding": "The broad concrete culvert has a legible dark drainage mouth, broken gate bars, exposed rusted reinforcement and runoff. These industrial cues keep the arch from reading as a classical ruin. The rubble apron is broken and transparent, not a terrain square."
+        },
+        "wasteland-toxic-prop-5": {
+          "verdict": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            20,
+            89,
+            76
+          ],
+          "finding": "The slag heap has a broken asymmetric ridge and readable large dark facets, with rusty upper-left planes and a separate translucent green puddle. It reads as a heap with runoff at 1x; the texture does not dissolve into independent specks."
+        },
+        "wasteland-toxic-prop-6": {
+          "verdict": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            16,
+            89,
+            80
+          ],
+          "finding": "The barrel pile has distinct upright, horizontal and crushed drums. Their rims, bands, overlapping silhouettes and leakage read clearly at 1x. It is a different arrangement from the small barrel pair rather than an enlarged duplicate."
+        },
+        "wasteland-toxic-prop-7": {
+          "verdict": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            16,
+            89,
+            80
+          ],
+          "finding": "The long broken pipe has a dark circular foreground bore, separate couplings, a torn far end and distinct supports. Its long low silhouette differs from the small elbow, culvert and barrel pile; exposed upper-left surfaces remain consistently lit."
+        }
+      }
+    },
+    "winter": {
+      "verdict": "pass",
+      "files": {
+        "wasteland-toxic@winter-prop-0": {
+          "verdict": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            7,
+            5,
+            41,
+            43
+          ],
+          "finding": "Two damaged rusted drums read at native size; overlapping cylinders, rim highlights, dark right sides and a small green leak remain distinct. The dented right drum is irregular without becoming an unidentifiable lump. Snow sits on the two upper drum rims in cool white/blue clusters; rusty faces and the leak remain visible. The cap is modest, but visible at 1x and consistent with a snow-capped prop."
+        },
+        "wasteland-toxic@winter-prop-1": {
+          "verdict": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            11,
+            42,
+            37
+          ],
+          "finding": "The weakest-contrast asset, but acceptable on its intended wasteland ground: an irregular translucent olive/yellow stain with a thicker lower pool and sparse bright surface flecks. The transparent centre and fading perimeter preserve ground texture. It is a stain, rather than a solid green object; no square backing or opaque fringe. Frost flecks replace part of the slick highlights while the green-yellow translucent stain remains. It is intentionally subtler than the solid snow-capped objects, not a blank winter image."
+        },
+        "wasteland-toxic@winter-prop-2": {
+          "verdict": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            10,
+            5,
+            38,
+            43
+          ],
+          "finding": "The open elbow and upright pipe outlet read separately at native size. The dark bore, highlighted upper-left metal, rust and small hanging sludge trail give the pipe a clear industrial silhouette. Top-facing elbow and upright lip receive coherent cool snow caps; the bore and sludge remain readable."
+        },
+        "wasteland-toxic@winter-prop-3": {
+          "verdict": "pass",
+          "size": [
+            48,
+            48
+          ],
+          "alpha_bbox": [
+            5,
+            12,
+            43,
+            36
+          ],
+          "finding": "The low car silhouette retains bonnet, dark window/cabin recess and broken rear body. Sludge at the lower edge and the submerged wheel line support the half-sunk reading; the horizontal footprint is appropriate to the perspective. Snow follows the bonnet and broken cabin/rear top surfaces. The car silhouette is preserved instead of disappearing into a white patch."
+        },
+        "wasteland-toxic@winter-prop-4": {
+          "verdict": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            14,
+            89,
+            81
+          ],
+          "finding": "The broad concrete culvert has a legible dark drainage mouth, broken gate bars, exposed rusted reinforcement and runoff. These industrial cues keep the arch from reading as a classical ruin. The rubble apron is broken and transparent, not a terrain square. Snow follows the broken concrete ledges and rubble tops while preserving the dark outlet, bars and runoff. No white rectangular footprint or processing halo."
+        },
+        "wasteland-toxic@winter-prop-5": {
+          "verdict": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            20,
+            89,
+            76
+          ],
+          "finding": "The slag heap has a broken asymmetric ridge and readable large dark facets, with rusty upper-left planes and a separate translucent green puddle. It reads as a heap with runoff at 1x; the texture does not dissolve into independent specks. Snow collects on exposed ridge ledges and separate rubble tops. Dark slag facets and the toxic puddle survive; this is the same heap with local snow accumulation, not a blank winter replacement."
+        },
+        "wasteland-toxic@winter-prop-6": {
+          "verdict": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            16,
+            89,
+            80
+          ],
+          "finding": "The barrel pile has distinct upright, horizontal and crushed drums. Their rims, bands, overlapping silhouettes and leakage read clearly at 1x. It is a different arrangement from the small barrel pair rather than an enlarged duplicate. Snow caps and bands follow the exposed drum tops and crushed rims while leaving rust and leaks legible. Upright and horizontal cylinders still separate at native size."
+        },
+        "wasteland-toxic@winter-prop-7": {
+          "verdict": "pass",
+          "size": [
+            96,
+            96
+          ],
+          "alpha_bbox": [
+            7,
+            16,
+            89,
+            80
+          ],
+          "finding": "The long broken pipe has a dark circular foreground bore, separate couplings, a torn far end and distinct supports. Its long low silhouette differs from the small elbow, culvert and barrel pile; exposed upper-left surfaces remain consistently lit. Snow follows the upper pipe run, broken end and support tops. The bore stays dark and clear; the snow does not close the opening or erase the pipe silhouette."
+        }
+      }
+    },
+    "evidence": {
+      "composites": [
+        "critic-r13E-1-approved-bases-details-summer-1x.png",
+        "critic-r13E-1-approved-bases-details-summer-4x.png",
+        "critic-r13E-1-approved-bases-details-winter-1x.png",
+        "critic-r13E-1-approved-bases-details-winter-4x.png",
+        "critic-r13E-1-approved-markers-1x.png",
+        "critic-r13E-1-approved-markers-4x.png",
+        "critic-r13E-1-approved-round2-and-paddies-1x.png",
+        "critic-r13E-1-approved-round2-and-paddies-4x.png",
+        "critic-r13E-1-named-prop-references-summer-1x.png",
+        "critic-r13E-1-named-prop-references-summer-4x.png",
+        "critic-r13E-1-named-prop-references-winter-1x.png",
+        "critic-r13E-1-named-prop-references-winter-4x.png",
+        "critic-r13E-1-reference-current-fantasy-hills-1x.png",
+        "critic-r13E-1-reference-current-fantasy-hills-4x.png",
+        "critic-r13E-1-reference-current-wasteland-wasteland-1x.png",
+        "critic-r13E-1-reference-current-wasteland-wasteland-4x.png",
+        "critic-r13E-1-season-pair-0-1x.png",
+        "critic-r13E-1-season-pair-0-4x.png",
+        "critic-r13E-1-season-pair-1-1x.png",
+        "critic-r13E-1-season-pair-1-4x.png",
+        "critic-r13E-1-season-pair-2-1x.png",
+        "critic-r13E-1-season-pair-2-4x.png",
+        "critic-r13E-1-season-pair-3-1x.png",
+        "critic-r13E-1-season-pair-3-4x.png",
+        "critic-r13E-1-season-pair-4-1x.png",
+        "critic-r13E-1-season-pair-4-4x.png",
+        "critic-r13E-1-season-pair-5-1x.png",
+        "critic-r13E-1-season-pair-5-4x.png",
+        "critic-r13E-1-season-pair-6-1x.png",
+        "critic-r13E-1-season-pair-6-4x.png",
+        "critic-r13E-1-season-pair-7-1x.png",
+        "critic-r13E-1-season-pair-7-4x.png",
+        "critic-r13E-1-summer-all-on-grass-base-1x.png",
+        "critic-r13E-1-summer-all-on-grass-base-4x.png",
+        "critic-r13E-1-summer-all-on-plains-base-1x.png",
+        "critic-r13E-1-summer-all-on-plains-base-4x.png",
+        "critic-r13E-1-summer-all-on-wasteland-wasteland-base-1x.png",
+        "critic-r13E-1-summer-all-on-wasteland-wasteland-base-4x.png",
+        "critic-r13E-1-summer-alpha-1x.png",
+        "critic-r13E-1-summer-alpha-4x.png",
+        "critic-r13E-1-summer-inspect-0-1-2-3-8x.png",
+        "critic-r13E-1-summer-inspect-4-5-8x.png",
+        "critic-r13E-1-summer-inspect-6-7-8x.png",
+        "critic-r13E-1-summer-random8x2-on-plains-base-1x.png",
+        "critic-r13E-1-summer-random8x2-on-plains-base-4x.png",
+        "critic-r13E-1-summer-random8x2-on-wasteland-wasteland-base-1x.png",
+        "critic-r13E-1-summer-random8x2-on-wasteland-wasteland-base-4x.png",
+        "critic-r13E-1-summer-shore-context-1x.png",
+        "critic-r13E-1-summer-shore-context-4x.png",
+        "critic-r13E-1-wasteland-toxic-prop-0-8x.png",
+        "critic-r13E-1-wasteland-toxic-prop-1-8x.png",
+        "critic-r13E-1-wasteland-toxic-prop-2-8x.png",
+        "critic-r13E-1-wasteland-toxic-prop-3-8x.png",
+        "critic-r13E-1-wasteland-toxic-prop-4-8x.png",
+        "critic-r13E-1-wasteland-toxic-prop-5-8x.png",
+        "critic-r13E-1-wasteland-toxic-prop-6-8x.png",
+        "critic-r13E-1-wasteland-toxic-prop-7-8x.png",
+        "critic-r13E-1-wasteland-toxic@winter-prop-0-8x.png",
+        "critic-r13E-1-wasteland-toxic@winter-prop-1-8x.png",
+        "critic-r13E-1-wasteland-toxic@winter-prop-2-8x.png",
+        "critic-r13E-1-wasteland-toxic@winter-prop-3-8x.png",
+        "critic-r13E-1-wasteland-toxic@winter-prop-4-8x.png",
+        "critic-r13E-1-wasteland-toxic@winter-prop-5-8x.png",
+        "critic-r13E-1-wasteland-toxic@winter-prop-6-8x.png",
+        "critic-r13E-1-wasteland-toxic@winter-prop-7-8x.png",
+        "critic-r13E-1-winter-all-on-grass@winter-base-1x.png",
+        "critic-r13E-1-winter-all-on-grass@winter-base-4x.png",
+        "critic-r13E-1-winter-all-on-plains@winter-base-1x.png",
+        "critic-r13E-1-winter-all-on-plains@winter-base-4x.png",
+        "critic-r13E-1-winter-all-on-wasteland-wasteland@winter-base-1x.png",
+        "critic-r13E-1-winter-all-on-wasteland-wasteland@winter-base-4x.png",
+        "critic-r13E-1-winter-alpha-1x.png",
+        "critic-r13E-1-winter-alpha-4x.png",
+        "critic-r13E-1-winter-inspect-0-1-2-3-8x.png",
+        "critic-r13E-1-winter-inspect-4-5-8x.png",
+        "critic-r13E-1-winter-inspect-6-7-8x.png",
+        "critic-r13E-1-winter-random8x2-on-plains@winter-base-1x.png",
+        "critic-r13E-1-winter-random8x2-on-plains@winter-base-4x.png",
+        "critic-r13E-1-winter-random8x2-on-wasteland-wasteland@winter-base-1x.png",
+        "critic-r13E-1-winter-random8x2-on-wasteland-wasteland@winter-base-4x.png",
+        "critic-r13E-1-winter-shore-context-1x.png",
+        "critic-r13E-1-winter-shore-context-4x.png"
+      ],
+      "source_hashes": "critic-r13E-1-source-hashes.json",
+      "builder": "critic-r13E-1-build.py"
+    }
+  },
+  "pass": [
+    "wasteland-toxic-prop-0",
+    "wasteland-toxic-prop-1",
+    "wasteland-toxic-prop-2",
+    "wasteland-toxic-prop-3",
+    "wasteland-toxic-prop-4",
+    "wasteland-toxic-prop-5",
+    "wasteland-toxic-prop-6",
+    "wasteland-toxic-prop-7",
+    "wasteland-toxic@winter-prop-0",
+    "wasteland-toxic@winter-prop-1",
+    "wasteland-toxic@winter-prop-2",
+    "wasteland-toxic@winter-prop-3",
+    "wasteland-toxic@winter-prop-4",
+    "wasteland-toxic@winter-prop-5",
+    "wasteland-toxic@winter-prop-6",
+    "wasteland-toxic@winter-prop-7"
+  ],
+  "fail": []
+}
