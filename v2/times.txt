@@ -77,3 +77,11 @@ steampunk/backdrop-storm-night rc=0 secs=89 exists=yes
 steampunk/steam-banks rc=0 secs=65 exists=yes
 steampunk/stage-empty rc=0 secs=73 exists=yes
 goth/velvet-tile rc=0 secs=50 exists=yes
+noir/city-phone-day rc=0 secs=68 exists=yes
+noir/game-stage rc=0 secs=77 exists=yes
+noir/city-day rc=0 secs=82 exists=yes
+noir/city-phone-night rc=0 secs=84 exists=yes
+noir/city-night rc=0 secs=98 exists=yes
+noir/city-day-snow rc=0 secs=115 exists=yes
+noir/city-night-storm rc=0 secs=87 exists=yes
+noir/city-night-snow rc=0 secs=116 exists=yes
