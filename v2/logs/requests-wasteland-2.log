@@ -1,0 +1,19 @@
+start wasteland/bg-haze-night twin ['raw.png', 'raw.png']
+start wasteland/metal-panel fresh []
+start wasteland/tex-tag-worn fresh []
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/wasteland/bg-haze-night/raw.png': No such file or directory
+done  wasteland/tex-tag-worn True
+start wasteland/stain-ring fresh []
+done  wasteland/metal-panel True
+start wasteland/rust-bleed fresh []
+done  wasteland/bg-haze-night True
+start wasteland/grime-smudge fresh []
+done  wasteland/rust-bleed True
+done  wasteland/grime-smudge True
+done  wasteland/stain-ring True
+ok wasteland/bg-haze-night (1920, 1080) RGB
+ok wasteland/metal-panel (768, 2048) RGB
+ok wasteland/tex-tag-worn (1024, 1024) RGB
+ok wasteland/stain-ring (512, 512) RGBA
+ok wasteland/rust-bleed (887, 1774) RGBA
+ok wasteland/grime-smudge (1774, 887) RGBA

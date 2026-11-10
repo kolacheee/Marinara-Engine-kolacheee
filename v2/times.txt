@@ -147,3 +147,9 @@ ship/spar rc=0 secs=67 exists=yes
 ship/deck-night rc=0 secs=74 exists=yes
 ship/deck-fog rc=0 secs=56 exists=yes
 ship/deck-fog-night rc=0 secs=71 exists=yes
+wasteland/tex-tag-worn rc=0 secs=56 exists=yes
+wasteland/metal-panel rc=0 secs=61 exists=yes
+wasteland/bg-haze-night rc=0 secs=67 exists=yes
+wasteland/rust-bleed rc=0 secs=45 exists=yes
+wasteland/grime-smudge rc=0 secs=49 exists=yes
+wasteland/stain-ring rc=0 secs=71 exists=yes
