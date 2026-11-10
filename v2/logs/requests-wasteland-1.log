@@ -1,0 +1,39 @@
+start wasteland/bg-day fresh []
+start wasteland/tex-tag fresh []
+start wasteland/tex-metal fresh []
+done  wasteland/tex-tag True
+start wasteland/topbar-strip fresh []
+done  wasteland/tex-metal True
+done  wasteland/bg-day True
+start wasteland/bg-phone-day ref ['raw.png']
+start wasteland/bg-night twin ['raw.png']
+done  wasteland/topbar-strip True
+start wasteland/bg-haze-day twin ['raw.png']
+done  wasteland/bg-phone-day True
+start wasteland/bg-ash-day twin ['raw.png']
+done  wasteland/bg-night True
+start wasteland/hero-tags ref ['raw.png']
+done  wasteland/bg-haze-day True
+start wasteland/bg-phone-night twin ['raw.png', 'raw.png']
+done  wasteland/bg-ash-day True
+start wasteland/bg-haze-night twin ['raw.png']
+done  wasteland/hero-tags True
+start wasteland/bg-ash-night twin ['raw.png']
+done  wasteland/bg-phone-night True
+start wasteland/hero-tags-night twin ['raw.png']
+done  wasteland/bg-haze-night True
+done  wasteland/bg-ash-night True
+done  wasteland/hero-tags-night True
+ok wasteland/bg-day (1672, 941) RGB
+ok wasteland/bg-night (1920, 1080) RGB
+ok wasteland/bg-phone-day (852, 1846) RGB
+ok wasteland/bg-phone-night (852, 1846) RGB
+ok wasteland/bg-haze-day (1920, 1080) RGB
+ok wasteland/bg-haze-night (1920, 1080) RGB
+ok wasteland/bg-ash-day (1920, 1080) RGB
+ok wasteland/bg-ash-night (1920, 1080) RGB
+ok wasteland/hero-tags (1600, 1000) RGBA
+ok wasteland/hero-tags-night (1586, 992) RGBA
+ok wasteland/tex-tag (1024, 1024) RGB
+ok wasteland/tex-metal (1024, 1024) RGB
+ok wasteland/topbar-strip (2048, 256) RGB
