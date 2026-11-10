@@ -129,3 +129,16 @@ starship/bg-storm rc=0 secs=76 exists=yes
 starship/porthole rc=0 secs=70 exists=yes
 starship/bg-night-phone rc=0 secs=66 exists=yes
 starship/bg-storm-phone rc=0 secs=65 exists=yes
+wasteland/tex-tag rc=0 secs=48 exists=yes
+wasteland/tex-metal rc=0 secs=56 exists=yes
+wasteland/bg-day rc=0 secs=62 exists=yes
+wasteland/topbar-strip rc=0 secs=66 exists=yes
+wasteland/bg-phone-day rc=0 secs=57 exists=yes
+wasteland/bg-night rc=0 secs=85 exists=yes
+wasteland/bg-haze-day rc=0 secs=76 exists=yes
+wasteland/bg-ash-day rc=0 secs=81 exists=yes
+wasteland/hero-tags rc=0 secs=79 exists=yes
+wasteland/bg-phone-night rc=0 secs=76 exists=yes
+wasteland/bg-haze-night rc=0 secs=72 exists=yes
+wasteland/bg-ash-night rc=0 secs=72 exists=yes
+wasteland/hero-tags-night rc=0 secs=56 exists=yes
