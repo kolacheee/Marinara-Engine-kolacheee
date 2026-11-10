@@ -1,0 +1,17 @@
+start ship/spar regen ['ref-current.png']
+start ship/deck-night twin ['raw.png', 'raw.png']
+start ship/sailcloth-night regen ['ref-current.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/ship/deck-night/raw.png': No such file or directory
+done  ship/sailcloth-night True
+start ship/deck-fog twin ['raw.png', 'raw.png']
+cp: cannot stat '/home/kolache/Downloads/marinara-starters-v2/work/ship/deck-fog/raw.png': No such file or directory
+done  ship/spar True
+done  ship/deck-night True
+done  ship/deck-fog True
+start ship/deck-fog-night twin ['raw.png']
+done  ship/deck-fog-night True
+ok ship/spar (2048, 160) RGBA
+ok ship/sailcloth-night (1024, 1024) RGB
+ok ship/deck-night (2560, 1440) RGB
+ok ship/deck-fog (2560, 1440) RGB
+ok ship/deck-fog-night (2560, 1440) RGB

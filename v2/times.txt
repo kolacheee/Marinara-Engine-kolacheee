@@ -142,3 +142,8 @@ wasteland/bg-phone-night rc=0 secs=76 exists=yes
 wasteland/bg-haze-night rc=0 secs=72 exists=yes
 wasteland/bg-ash-night rc=0 secs=72 exists=yes
 wasteland/hero-tags-night rc=0 secs=56 exists=yes
+ship/sailcloth-night rc=0 secs=57 exists=yes
+ship/spar rc=0 secs=67 exists=yes
+ship/deck-night rc=0 secs=74 exists=yes
+ship/deck-fog rc=0 secs=56 exists=yes
+ship/deck-fog-night rc=0 secs=71 exists=yes
