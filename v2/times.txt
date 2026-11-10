@@ -113,3 +113,11 @@ ship/deck-fog rc=0 secs=1141 exists=yes
 ship/deck-snow rc=0 secs=1149 exists=yes
 ship/sailcloth-night rc=0 secs=1039 exists=yes
 ship/deck-phone-night rc=0 secs=59 exists=yes
+bunker/key-art rc=0 secs=68 exists=yes
+bunker/backdrop-day rc=0 secs=77 exists=yes
+bunker/steel-plate rc=0 secs=49 exists=yes
+bunker/concrete rc=0 secs=61 exists=yes
+bunker/plot-map rc=0 secs=154 exists=yes
+bunker/backdrop-phone-day rc=0 secs=60 exists=yes
+bunker/backdrop-night rc=0 secs=81 exists=yes
+bunker/backdrop-phone-night rc=0 secs=55 exists=yes

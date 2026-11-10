@@ -1,0 +1,24 @@
+start bunker/backdrop-day fresh []
+start bunker/key-art fresh []
+start bunker/plot-map fresh []
+done  bunker/key-art True
+start bunker/steel-plate fresh []
+done  bunker/backdrop-day True
+start bunker/concrete fresh []
+done  bunker/steel-plate True
+start bunker/backdrop-night twin ['raw.png']
+done  bunker/concrete True
+start bunker/backdrop-phone-day ref ['raw.png']
+done  bunker/plot-map True
+done  bunker/backdrop-phone-day True
+start bunker/backdrop-phone-night twin ['raw.png']
+done  bunker/backdrop-night True
+done  bunker/backdrop-phone-night True
+ok bunker/backdrop-day (1920, 1080) RGB
+ok bunker/backdrop-night (1920, 1080) RGB
+ok bunker/backdrop-phone-day (941, 1672) RGB
+ok bunker/backdrop-phone-night (1080, 1920) RGB
+ok bunker/key-art (1672, 941) RGB
+ok bunker/plot-map (1600, 1000) RGB
+ok bunker/steel-plate (1024, 1024) RGB
+ok bunker/concrete (1024, 1024) RGB
