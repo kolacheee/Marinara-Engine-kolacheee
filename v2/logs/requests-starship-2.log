@@ -1,0 +1,6 @@
+start starship/bg-storm-phone regen ['ref-current.png', 'raw.png']
+start starship/bg-storm regen ['ref-current.png', 'raw.png']
+done  starship/bg-storm True
+done  starship/bg-storm-phone True
+ok starship/bg-storm (1672, 941) RGB
+ok starship/bg-storm-phone (1170, 2532) RGB
