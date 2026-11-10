@@ -1,0 +1,36 @@
+start ship/deck-day fresh []
+start ship/sailcloth fresh []
+start ship/spar fresh []
+done  ship/spar True
+start ship/lantern fresh []
+done  ship/sailcloth True
+start ship/feathers fresh []
+done  ship/deck-day True
+start ship/deck-night twin ['raw.png']
+done  ship/feathers True
+start ship/deck-phone-day ref ['raw.png']
+done  ship/lantern True
+start ship/deck-storm twin ['raw.png']
+done  ship/deck-night True
+start ship/deck-fog twin ['raw.png']
+done  ship/deck-phone-day True
+start ship/deck-snow twin ['raw.png']
+done  ship/deck-storm True
+start ship/sailcloth-night twin ['raw.png']
+done  ship/deck-fog True
+start ship/deck-phone-night twin ['raw.png']
+done  ship/deck-snow True
+done  ship/sailcloth-night True
+done  ship/deck-phone-night True
+ok ship/deck-day (1672, 941) RGB
+ok ship/deck-night (2560, 1440) RGB
+ok ship/deck-phone-day (853, 1844) RGB
+ok ship/deck-phone-night (853, 1844) RGB
+ok ship/deck-storm (2560, 1440) RGB
+ok ship/deck-fog (2560, 1440) RGB
+ok ship/deck-snow (2560, 1440) RGB
+ok ship/sailcloth (1024, 1024) RGB
+ok ship/sailcloth-night (1024, 1024) RGB
+ok ship/spar (2048, 128) RGBA
+ok ship/lantern (768, 1024) RGBA
+ok ship/feathers (1774, 887) RGBA

@@ -101,3 +101,15 @@ nautical/chart-wet-night rc=0 secs=112 exists=yes
 noir/gargoyle rc=0 secs=82 exists=yes
 noir/game-stage-day rc=0 secs=84 exists=yes
 noir/city-night-storm rc=0 secs=84 exists=yes
+ship/spar rc=0 secs=117 exists=yes
+ship/sailcloth rc=0 secs=121 exists=yes
+ship/deck-day rc=0 secs=133 exists=yes
+ship/feathers rc=0 secs=120 exists=yes
+ship/lantern rc=0 secs=147 exists=yes
+ship/deck-night rc=0 secs=353 exists=yes
+ship/deck-phone-day rc=0 secs=255 exists=yes
+ship/deck-storm rc=0 secs=355 exists=yes
+ship/deck-fog rc=0 secs=1141 exists=yes
+ship/deck-snow rc=0 secs=1149 exists=yes
+ship/sailcloth-night rc=0 secs=1039 exists=yes
+ship/deck-phone-night rc=0 secs=59 exists=yes
