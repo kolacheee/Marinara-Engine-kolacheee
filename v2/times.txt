@@ -121,3 +121,11 @@ bunker/plot-map rc=0 secs=154 exists=yes
 bunker/backdrop-phone-day rc=0 secs=60 exists=yes
 bunker/backdrop-night rc=0 secs=81 exists=yes
 bunker/backdrop-phone-night rc=0 secs=55 exists=yes
+starship/bg-day rc=0 secs=50 exists=yes
+starship/wx-ice rc=0 secs=71 exists=yes
+starship/bg-day-phone rc=0 secs=53 exists=yes
+starship/bg-night rc=0 secs=75 exists=yes
+starship/bg-storm rc=0 secs=76 exists=yes
+starship/porthole rc=0 secs=70 exists=yes
+starship/bg-night-phone rc=0 secs=66 exists=yes
+starship/bg-storm-phone rc=0 secs=65 exists=yes

@@ -1,0 +1,24 @@
+start starship/bg-day fresh []
+start starship/wx-ice fresh []
+done  starship/bg-day True
+start starship/bg-day-phone ref ['raw.png']
+start starship/bg-night twin ['raw.png']
+done  starship/wx-ice True
+start starship/bg-storm ref ['raw.png']
+done  starship/bg-day-phone True
+start starship/porthole ref ['raw.png']
+done  starship/bg-night True
+start starship/bg-night-phone twin ['raw.png']
+done  starship/bg-storm True
+start starship/bg-storm-phone ref ['raw.png']
+done  starship/porthole True
+done  starship/bg-night-phone True
+done  starship/bg-storm-phone True
+ok starship/bg-day (1672, 941) RGB
+ok starship/bg-night (2560, 1440) RGB
+ok starship/bg-day-phone (851, 1849) RGB
+ok starship/bg-night-phone (851, 1849) RGB
+ok starship/bg-storm (2560, 1440) RGB
+ok starship/bg-storm-phone (1170, 2532) RGB
+ok starship/porthole (1024, 1024) RGBA
+ok starship/wx-ice (1024, 1024) RGBA
