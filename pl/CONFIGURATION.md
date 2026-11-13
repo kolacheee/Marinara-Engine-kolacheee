@@ -173,7 +173,7 @@ Na komputerze, na którym działa serwer, te działania zwykle udają się bez s
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | Włącza własne narzędzia skryptowe. Przy narzędziach niesprawdzonych lub zaimportowanych zostaw wyłączone. |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | Pozwala uruchamiać skrypty przekształcające bazę danych asystentki Professor Mari na komputerach bez piaskownicy systemu operacyjnego (macOS Seatbelt lub Linux Bubblewrap, używanych, gdy są dostępne). Zostaw wyłączone, chyba że skrypt został przez ciebie przejrzany. |
 | `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Włącza ręczny podgląd i synchronizację repozytoriów agentów z serwisu GitHub w sekcji Agent Organizer. Zobacz [Własne repozytoria agentów](#custom-agent-repositories). |
-| `MARINARA_OVERWORLD_GAMES` | `false` | Pozwala graczom tworzyć gry Overworld (zestaw settingu i wygenerowany świat) oraz zamieniać w nie starsze gry. Gdy jest wyłączone, kreator oferuje tylko gry Classic. |
+| `MARINARA_OVERWORLD_GAMES` | `false` | Pozwala graczom tworzyć gry Overworld (zestaw settingu i wygenerowany świat) oraz zamieniać w nie starsze gry. Gdy jest wyłączone, kreator oferuje tylko gry VN. |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | Pierwsza z dwóch bram dla importu rozszerzeń od osób trzecich. Zobacz [Rozszerzenia zewnętrzne](#external-extensions). |
 | `IMPORT_ALLOWED_ROOTS` | pusta | Foldery, które import zbiorczy może czytać bez tokena z okna wyboru plików. |
 | `PROFILE_EXPORT_JSON_LIMIT_BYTES` | `268435456` (256 MiB) | Największy pojedynczy eksport profilu w formacie JSON, jaki zbuduje serwer. |
@@ -216,6 +216,8 @@ Powiadomienia to krótkie ostrzeżenia od opiekunów projektu, na przykład o pr
 > **Ostrzeżenie:** Przy wyłączonych powiadomieniach Marinara nie może poinformować cię o poprawkach bezpieczeństwa ani o wymaganych krokach. Samodzielnie śledź [wydania w serwisie GitHub](https://github.com/Pasta-Devs/Marinara-Engine/releases).
 
 Forki mogą skierować `MARINARA_NOTICES_URL` na własny plik.
+
+Żeby znaleźć serwer powiadomień, a przy włączonym [wychodzącym proxy](#outbound-http-proxy) także to proxy, Marinara czyta plik hosts i wysyła zapytania bezpośrednio do serwerów DNS. Nazwy znane tylko twojej sieci lokalnej, takie jak nazwy `.local` albo krótkie nazwy bez domeny inne niż `localhost`, nie działają. W środowisku Termux serwery DNS to te zapisane w pliku `$PREFIX/etc/resolv.conf`: serwery Google `8.8.8.8` i `8.8.4.4`, chyba że zmienisz ten plik.
 
 <a id="optional-multiplayer"></a>
 
@@ -319,7 +321,7 @@ Tabele powyżej obejmują kontrolę dostępu, przechowywanie danych, logowanie, 
 | `AUTO_OPEN_BROWSER` | `true` | Czy programy uruchamiające otwierają adres aplikacji. `false` to wyłącza. Konfiguracja zarządzana przez APK wyłącza tę opcję. |
 | `AUTO_UPDATE_ENABLED` | `true` | Czy programy uruchamiające oparte na Git pobierają i wgrywają aktualizacje przed startem. `false` wyłącza to od następnego uruchomienia. Program uruchamiający nadal sprawdza w trybie tylko do odczytu, czy są nowsze wydania, i wypisuje przypomnienie. `--skip-update` pomija oba sprawdzenia przy jednym starcie. |
 | `MARINARA_NOTICES_ENABLED` | `true` | Czy serwer pobiera powiadomienia od opiekunów. Zobacz [Powiadomienia Marinara](#marinara-notices). |
-| `MARINARA_NOTICES_URL` | `notices.json` w gałęzi `notices` | Zastępczy plik powiadomień dla forków i mirrorów. Jest sprawdzany tak samo, a linki spoza `https://github.com/Pasta-Devs/` są usuwane. |
+| `MARINARA_NOTICES_URL` | `notices.json` w gałęzi `notices` | Zastępczy plik powiadomień dla forków i mirrorów. Jest sprawdzany tak samo, a linki spoza `https://github.com/Pasta-Devs/` są usuwane. Host tego adresu musi być w pliku hosts albo w DNS. Zobacz [Powiadomienia Marinara](#marinara-notices). |
 | `MARINARA_ENV_FILE` | plik `.env` w głównym folderze projektu | Zmiana ścieżki do pliku `.env`. Ustaw ją przed startem. |
 | `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | Największa liczba równoczesnych żądań obrazów lub wideo w całym serwerze. Zmniejsz do 1-2, jeśli lokalnemu ComfyUI lub SwarmUI brakuje pamięci VRAM. `0` usuwa limit. Nieprawidłowe wartości są pomijane z ostrzeżeniem. Praca wsadowa nigdy nie zajmuje ostatniego miejsca. Działa dodatkowo obok opcji **Queue media generation requests** (kolejkowanie żądań generowania mediów) w **Settings → Generations → Overall Generations** (ustawienia, generowanie, ogólne ustawienia generowania), domyślnie włączonej, która kolejkuje zadania obrazów i wideo osobno dla każdego konta. |
 | `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS` | `600000` (10 min) | Jak długo żądanie czeka na wolne miejsce, zanim zakończy się błędem. `0` oznacza czekanie bez końca. |

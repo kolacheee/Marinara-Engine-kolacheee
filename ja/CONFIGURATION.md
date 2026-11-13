@@ -173,7 +173,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | カスタムのスクリプトツールをオンにします。信頼できないツールやインポートしたツールを使う場合は、オフのままにしてください。 |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | Professor Mariのデータベース変換スクリプトを、OSのサンドボックス(macOSのSeatbelt、LinuxのBubblewrap。ある場合は使います)がないホストでも実行できるようにします。スクリプトを自分で確認した場合以外は、オフのままにしてください。 |
 | `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agent Organizerで、GitHubのエージェントリポジトリーを手動でプレビューし、同期できるようにします。[カスタムエージェントのリポジトリー](#custom-agent-repositories)を参照してください。 |
-| `MARINARA_OVERWORLD_GAMES` | `false` | プレイヤーがOverworldゲーム(舞台設定キットと生成された世界)を作成し、以前の形式のゲームをOverworldゲームに変換できるようにします。オフの場合、ウィザードではClassicゲームだけを作成できます。 |
+| `MARINARA_OVERWORLD_GAMES` | `false` | プレイヤーがOverworldゲーム(舞台設定キットと生成された世界)を作成し、以前の形式のゲームをOverworldゲームに変換できるようにします。オフの場合、ウィザードではVNゲームだけを作成できます。 |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | サードパーティー製の拡張機能をインポートするための2つの許可のうち、1つ目です。[外部拡張機能(External Extensions)](#external-extensions)を参照してください。 |
 | `IMPORT_ALLOWED_ROOTS` | 空 | ピッカーのトークンなしで一括インポートが読み取れるフォルダー。 |
 | `PROFILE_EXPORT_JSON_LIMIT_BYTES` | `268435456`(256 MiB) | サーバーが作成するJSONのプロファイルエクスポート1件の最大サイズ。 |
@@ -216,6 +216,8 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 > **Warning:** お知らせをオフにすると、Marinaraはセキュリティ修正や必要な手順を伝えられません。[GitHubのリリース](https://github.com/Pasta-Devs/Marinara-Engine/releases)を自分で確認してください。
 
 フォークは、`MARINARA_NOTICES_URL`を自分のファイルに向けられます。
+
+お知らせのサーバーを探すとき、そして[外向きのプロキシ](#outbound-http-proxy)がオンの場合はそのプロキシを探すときにも、Marinaraはhostsファイルを読み、DNSサーバーに直接問い合わせます。`.local`の名前や、ドメインを含まない短い名前(`localhost`を除く)など、自分のローカルネットワークの中でしか通じない名前は使えません。Termuxでは、`$PREFIX/etc/resolv.conf`に書かれたDNSサーバーを使います。このファイルを編集しないかぎり、Googleの`8.8.8.8`と`8.8.4.4`です。
 
 <a id="optional-multiplayer"></a>
 
@@ -319,7 +321,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `AUTO_OPEN_BROWSER` | `true` | ランチャーがアプリのURLを開くかどうか。`false`にすると開きません。APKが管理するセットアップでは、これをオフにします。 |
 | `AUTO_UPDATE_ENABLED` | `true` | Gitを使うランチャーが、起動前にアップデートを取得して適用するかどうか。`false`にすると、次回の起動から無効になります。この場合もランチャーは、新しいリリースがないかを読み取りだけで確認し、リマインダーを表示します。`--skip-update`を使うと、1回の起動だけ両方の確認を省略します。 |
 | `MARINARA_NOTICES_ENABLED` | `true` | サーバーがメンテナーのお知らせを取得するかどうか。[Marinaraのお知らせ](#marinara-notices)を参照してください。 |
-| `MARINARA_NOTICES_URL` | `notices`ブランチの`notices.json` | フォークやミラー向けに、お知らせファイルを上書きします。同じ方法で検証され、`https://github.com/Pasta-Devs/`以外を指すリンクは削除されます。 |
+| `MARINARA_NOTICES_URL` | `notices`ブランチの`notices.json` | フォークやミラー向けに、お知らせファイルを上書きします。同じ方法で検証され、`https://github.com/Pasta-Devs/`以外を指すリンクは削除されます。このURLのホストは、hostsファイルかDNSに登録されている必要があります。[Marinaraのお知らせ](#marinara-notices)を参照してください。 |
 | `MARINARA_ENV_FILE` | プロジェクトルートの`.env` | `.env`ファイルのパスを変更します。起動前に設定してください。 |
 | `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | サーバー全体で同時に実行する画像・動画リクエストの最大数。ローカルのComfyUIやSwarmUIでVRAMが足りなくなる場合は、1-2に下げてください。`0`にすると上限をなくします。無効な値は警告を出して無視されます。一括処理が最後の枠を使うことはありません。この上限は、**Queue media generation requests**(メディア生成リクエストを順番待ちにする)に加えて適用されます。この設定は**Settings → Generations → Overall Generations**(設定 → 生成 → 生成全般)にあってデフォルトでオンになっており、画像と動画のジョブをアカウントごとに順番待ちにします。 |
 | `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS` | `600000`(10分) | リクエストが空き枠を待つ時間。これを過ぎると失敗します。`0`にすると無期限に待ちます。 |

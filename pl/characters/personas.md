@@ -64,7 +64,7 @@ Edytor persony działa jak edytor postaci opisany w przewodniku [Tworzenie i edy
 | **Lorebook** | Przypisz wpisy lorebooka, które włączają się, gdy ta persona jest w czacie. Zobacz [Lorebooki – przegląd](../lorebooks/overview.md). |
 | **Sprites** | Grafiki w pozycji stojącej dla trybów Game Mode i Roleplay. Ma kategorie **Facial Expressions**, **Full-body** i **Clips** oraz **Upload Folder**. Zobacz [Sprite'y postaci](sprites.md). |
 | **Gallery** | Obrazy i filmy referencyjne, z przyciskami **Upload Persona Images** i **Upload Persona Videos**. Zobacz [Galerie postaci i person](galleries.md). |
-| **Colors** | Kolory nazwy, dialogu i pola wiadomości. Zobacz [Kolory postaci i statystyki RPG](colors-and-stats.md). |
+| **Colors** | Kolory nazwy, dialogu i pola wiadomości. Zobacz [Kolory postaci i Statystyki Roleplay](colors-and-stats.md). |
 | **Stats** | Paski stanu i atrybuty RPG. Zobacz niżej [Zakładka Stats](#stats-tab). |
 
 Zakładka **Metadata** pokazuje:
@@ -99,7 +99,7 @@ Zakładka **Card** zawiera pola, które opisują cię dla AI. Każde ma szacunek
 Te funkcje działają tak samo jak u postaci, tylko ich przedmiotem jest persona:
 
 - Przycisk z różdżką nad każdym polem pisze je za ciebie. Zobacz [Generowanie pola karty różdżką](creating-and-editing-characters.md#write-a-card-field-with-the-wand).
-- **Add Alternative Field** (dodaj alternatywne pole) pod każdym polem daje wybranym czatom inną wersję tego pola. Lista **Active in** (aktywne w) pokazuje tylko czaty, które używają tej persony, a przypisania są wstrzymywane, gdy czat wybierze inną personę. Zobacz [Alternatywne pola w wybranych czatach](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats).
+- **Add Alternative Field** (dodaj alternatywne pole) pod każdym polem daje wybranym czatom inną wersję tego pola. Lista **Active in** (aktywne w) pokazuje tylko czaty, które używają tej persony, a przypisania są wstrzymywane, gdy czat wybierze inną personę. Każdy wariant można nazwać, a między wariantami przełączać się w **Chat Settings → Card Field Alternatives** (ustawienia czatu → alternatywne pola karty). Zobacz [Alternatywne pola w wybranych czatach](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats).
 - **Version history** (historia wersji) jest w zakładce **Metadata**. Przed pierwszą edycją wyświetla `Previous persona states will appear here after the next edit.` **Reset** usuwa wszystkie migawki i ustawia wersję na 1.0. Zobacz [Historia wersji](creating-and-editing-characters.md#version-history).
 
 <a id="stats-tab"></a>
@@ -109,7 +109,7 @@ Te funkcje działają tak samo jak u postaci, tylko ich przedmiotem jest persona
 Zakładka **Stats** ma dwa osobne bloki. Oba zasilają pasek HUD, czyli panel statystyk widoczny na ekranie w trakcie czatu.
 
 - **Enable Persona Stats** (włączenie statystyk persony) włącza paski stanu, czyli wskaźniki potrzeb takich jak głód i nastrój. Świeżo włączony blok ma na starcie paski Satiety, Energy, Hygiene i Mood, każdy z wartością 100 na 100. Agent **Persona Stats** dostosowuje je w miarę rozwoju historii.
-- **Enable RPG Attributes** (włączenie atrybutów RPG) włącza pule (Pools), czyli paski takie jak HP i MP, oraz atrybuty (Attributes), czyli liczby takie jak siła. Oba wyjaśnia przewodnik [Kolory postaci i statystyki RPG](colors-and-stats.md). Świeżo włączony blok ma na starcie HP i MP z wartością 100 na 100 oraz STR, DEX, CON, INT, WIS i CHA z wartością 10. Te wartości są wysyłane razem z personą na potrzeby walki i trybu Game Mode oraz opcjonalnych rzutów. Agenci ich nie aktualizują.
+- **Enable Roleplay Stats** (Włącz Statystyki Roleplay) włącza pule (Pools), czyli paski takie jak HP i MP, oraz atrybuty (Attributes), czyli liczby takie jak siła. Oba wyjaśnia przewodnik [Kolory postaci i Statystyki Roleplay](colors-and-stats.md). Świeżo włączony blok ma na starcie HP i MP z wartością 100 na 100 oraz STR, DEX, CON, INT, WIS i CHA z wartością 10. Te wartości są wysyłane razem z personą na potrzeby walki i trybu Game Mode oraz opcjonalnych rzutów. Agenci ich nie aktualizują.
 
 Blok **Game Mode Icon** (ikona trybu Game Mode) ustawia obraz twojego tokenu podczas walki w trybie Game Mode. Zobacz [Ikona trybu Game Mode](colors-and-stats.md#game-mode-icon). Gdy jest zainstalowany zestaw zasad Game Mode (zbiór reguł do gier w stylu stołowych RPG), blok **Ruleset sheets** (arkusze zestawów zasad) przechowuje twoją konfigurację początkową dla tego zestawu. Zobacz [Arkusze zestawów zasad](colors-and-stats.md#ruleset-sheets). Ustawione tu wartości są domyślnymi wartościami startowymi dla nowych czatów.
 
@@ -139,7 +139,7 @@ Aby usunąć personę, kliknij **Delete** w wierszu albo **Delete persona** w ed
 ## Powiązane przewodniki
 
 - [Wybór persony w czacie](choosing-your-persona.md)
-- [Kolory postaci i statystyki RPG](colors-and-stats.md)
+- [Kolory postaci i Statystyki Roleplay](colors-and-stats.md)
 - [Tworzenie i edycja postaci](creating-and-editing-characters.md)
 - [Profile w trybie Conversation Mode](../conversation/profiles.md)
 - [Makra promptów](../prompts/macros.md)

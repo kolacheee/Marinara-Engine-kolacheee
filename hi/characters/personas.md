@@ -64,8 +64,8 @@ Persona Editor [Character Editor](creating-and-editing-characters.md) की त
 | **Lorebook** | ऐसी लोरबुक एंट्री जोड़ें जो इस पर्सोना के चैट में होने पर सक्रिय होती हैं। देखें [लोरबुक का परिचय](../lorebooks/overview.md)। |
 | **Sprites** | Game और Roleplay के लिए खड़ी मुद्रा वाली आर्ट। इसमें **Facial Expressions**, **Full-body** और **Clips** हैं, और **Upload Folder** भी। देखें [कैरेक्टर स्प्राइट](sprites.md)। |
 | **Gallery** | रेफ़रेंस इमेज और वीडियो, **Upload Persona Images** और **Upload Persona Videos** के साथ। देखें [कैरेक्टर और पर्सोना गैलरी](galleries.md)। |
-| **Colors** | नाम, डायलॉग और संदेश बॉक्स के रंग। देखें [कैरेक्टर के रंग और RPG स्टैट](colors-and-stats.md)। |
-| **Stats** | स्टेटस बार और RPG एट्रिब्यूट। नीचे [Stats टैब](#stats-tab) देखें। |
+| **Colors** | नाम, डायलॉग और संदेश बॉक्स के रंग। देखें [कैरेक्टर के रंग और रोलप्ले स्टैट](colors-and-stats.md)। |
+| **Stats** | स्टेटस बार और रोलप्ले स्टैट। नीचे [Stats टैब](#stats-tab) देखें। |
 
 **Metadata** टैब में ये दिखते हैं:
 
@@ -99,7 +99,7 @@ Persona Editor [Character Editor](creating-and-editing-characters.md) की त
 ये सुविधाएँ कैरेक्टर की तरह ही काम करती हैं, बस इनका विषय पर्सोना होता है:
 
 - हर फ़ील्ड के ऊपर वाला वैंड बटन उसे आपके लिए लिख देता है। देखें [वैंड से कार्ड की फ़ील्ड लिखना](creating-and-editing-characters.md#write-a-card-field-with-the-wand)।
-- हर फ़ील्ड के नीचे **Add Alternative Field** (वैकल्पिक फ़ील्ड जोड़ें) चुनी हुई चैट को उस फ़ील्ड का एक अलग वर्ज़न देता है। **Active in** लिस्ट में सिर्फ़ वे चैट दिखती हैं जो इस पर्सोना को इस्तेमाल करती हैं, और जब कोई चैट दूसरा पर्सोना चुनती है तो असाइनमेंट रुक जाते हैं। देखें [चुनी हुई चैट में वैकल्पिक फ़ील्ड इस्तेमाल करना](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats)।
+- हर फ़ील्ड के नीचे **Add Alternative Field** (वैकल्पिक फ़ील्ड जोड़ें) चुनी हुई चैट को उस फ़ील्ड का एक अलग वर्ज़न देता है। **Active in** लिस्ट में सिर्फ़ वे चैट दिखती हैं जो इस पर्सोना को इस्तेमाल करती हैं, और जब कोई चैट दूसरा पर्सोना चुनती है तो असाइनमेंट रुक जाते हैं। आप हर विकल्प को नाम दे सकते हैं, और **Chat Settings → Card Field Alternatives** (चैट सेटिंग्स → कार्ड फ़ील्ड के विकल्प) से उनके बीच स्विच कर सकते हैं। देखें [चुनी हुई चैट में वैकल्पिक फ़ील्ड इस्तेमाल करना](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats)।
 - **Version history** (वर्ज़न हिस्ट्री) **Metadata** टैब पर है। पहला बदलाव करने से पहले इसमें `Previous persona states will appear here after the next edit.` लिखा रहता है। **Reset** हर स्नैपशॉट डिलीट कर देता है और वर्ज़न को 1.0 पर सेट कर देता है। देखें [वर्ज़न हिस्ट्री](creating-and-editing-characters.md#version-history)।
 
 <a id="stats-tab"></a>
@@ -109,7 +109,7 @@ Persona Editor [Character Editor](creating-and-editing-characters.md) की त
 **Stats** टैब में दो अलग-अलग हिस्से हैं। दोनों HUD को जानकारी देते हैं, यानी वह स्टैट पैनल जो चैट के दौरान स्क्रीन पर दिखता है।
 
 - **Enable Persona Stats** स्टेटस बार चालू करता है, यानी भूख और मूड जैसी ज़रूरतों के मीटर। नए सिरे से चालू करने पर Satiety, Energy, Hygiene और Mood मिलती हैं, हर एक 100 में से 100 पर। कहानी आगे बढ़ने के साथ **Persona Stats** एजेंट इन्हें बदलता रहता है।
-- **Enable RPG Attributes** Pools (HP और MP जैसी बार) और Attributes (ताकत जैसी संख्याएँ) चालू करता है। दोनों के बारे में [कैरेक्टर के रंग और RPG स्टैट](colors-and-stats.md) में बताया गया है। नए सिरे से चालू करने पर HP और MP 100 में से 100 पर, और STR, DEX, CON, INT, WIS और CHA 10 पर शुरू होते हैं। ये लड़ाई और Game Mode के लिए, और वैकल्पिक रोल के लिए, पर्सोना के साथ भेजे जाते हैं। एजेंट इन्हें अपडेट नहीं करते।
+- **Enable Roleplay Stats** (रोलप्ले स्टैट चालू करें) Pools (HP और MP जैसी बार) और Attributes (ताकत जैसी संख्याएँ) चालू करता है। दोनों के बारे में [कैरेक्टर के रंग और रोलप्ले स्टैट](colors-and-stats.md) में बताया गया है। नए सिरे से चालू करने पर HP और MP 100 में से 100 पर, और STR, DEX, CON, INT, WIS और CHA 10 पर शुरू होते हैं। ये लड़ाई और Game Mode के लिए, और वैकल्पिक रोल के लिए, पर्सोना के साथ भेजे जाते हैं। एजेंट इन्हें अपडेट नहीं करते।
 
 **Game Mode Icon** (Game Mode आइकन) हिस्सा तय करता है कि Game Mode की लड़ाई में आपके टोकन पर कौन-सी तस्वीर दिखे। देखें [Game Mode आइकन](colors-and-stats.md#game-mode-icon)। जब कोई Game Mode रूलसेट (टेबलटॉप जैसे खेलों के नियमों का सेट) इंस्टॉल हो, तो **Ruleset sheets** (रूलसेट शीट) हिस्से में उसके लिए आपका शुरुआती बिल्ड रहता है। देखें [रूलसेट शीट](colors-and-stats.md#ruleset-sheets)। यहाँ सेट की गई वैल्यू नई चैट के लिए शुरुआती डिफ़ॉल्ट होती हैं।
 
@@ -139,7 +139,7 @@ Persona Editor [Character Editor](creating-and-editing-characters.md) की त
 ## मिलती-जुलती गाइड
 
 - [चैट में अपना पर्सोना चुनना](choosing-your-persona.md)
-- [कैरेक्टर के रंग और RPG स्टैट](colors-and-stats.md)
+- [कैरेक्टर के रंग और रोलप्ले स्टैट](colors-and-stats.md)
 - [कैरेक्टर बनाना और एडिट करना](creating-and-editing-characters.md)
 - [Conversation मोड की प्रोफ़ाइल](../conversation/profiles.md)
 - [मैक्रो](../prompts/macros.md)

@@ -769,3 +769,108 @@ New anchors let the new English fragment links resolve against translated headin
 | still / still picture | 静态图 | Reuses `game/storyboard.md` and `media/animated-expressions.md`; a GIF frame is 帧 (9 帧、每帧 200 ms). |
 
 The Engine's GIF refusal strings stay English inside “ ” (§4.5.2). **Custom Parameters**(自定义参数) moved to its new first use in `media/image-providers.md` (§5.2.a). These are translation choices, not a new native-reader review.
+
+## ComfyUI authenticated proxy (2026-11-06, #8854)
+
+Precedents from the #8854 mirror of #8844 (`media/comfyui.md`), drafted against #8844 head `fbd9ca8821`:
+
+| English label or term | Gloss / rendering | Note |
+| --- | --- | --- |
+| Custom Request Headers (image or video model field) | **Custom Request Headers**(自定义请求头) | Equals `settings.connection.customHeaders.label` in `ui/zh-Hans.json` and fits the pack's 请求头 (`REMOTE_ACCESS.md`) and 自定义. Glossed once, in step 3 of the new section. |
+| Use an authenticated proxy (heading) | `## 使用需要认证的代理` | Sits under `<a id="use-an-authenticated-proxy"></a>`; both links read 使用需要认证的代理. 需要认证 (the proxy asks Marinara for credentials) keeps it apart from the forward-auth 转发认证代理 and 登录代理 in `REMOTE_ACCESS.md` and `CONFIGURATION.md`, and pairs with the LAN row's 没有认证的. |
+| a proxy in front of ComfyUI | ComfyUI 前面的代理 | 代理 is the §3 network-proxy term. |
+| scheme (an `Authorization` value such as `Basic ...`) | 认证类型 | Not 认证方案, because 方案 is the settings-profile term (§3). |
+| non-secret headers / secrets | 非机密的请求头 / 机密 | 非机密 follows `settings.connection.customHeaders.help`; 机密 as in 服务器机密 (`extending/custom-tools.md`). |
+| token checked by the proxy | Token | The §3 auth-credential row; never 令牌. |
+
+**API key**(API 密钥), **Video defaults**(视频默认值) and **Test video**(测试视频) take their first gloss in this file in the new section, copied from the 2026-11-01 entry and `media/scene-video.md`. These are translation choices, not a new native-reader review.
+
+## Music DJ folders per chat and character (2026-11-07, #8913, #8931)
+
+Precedents from the #8913 and #8931 mirror (`media/music.md`, `game/game-assets.md`, `connections/decision-models.md`), against Engine `d055e94915`:
+
+| English label or term | Gloss / rendering | Note |
+| --- | --- | --- |
+| Apply to (Music DJ setup field) | **Apply to**(应用到) | Equals `ui.agents.regexscripteditor.applyTo`; the sprite-layout string is 应用于. Glossed at its first mention in `media/music.md` and in `game/game-assets.md`. |
+| This chat (Apply to option) | **This chat**(此聊天) | Matches **This chat only**(仅此聊天) and `generationParameters.source.chat`; running prose keeps 这个聊天. |
+| All chats (default) / In use: / Use default / Unlink from / Reinstall | (所有聊天，默认) / (当前使用) / (使用默认) / (取消关联) / (重新安装) | Coined: `ui/zh-Hans.json` has none of the new `musicdjsetupfields`, `agenteditor` or `decisionmodelmodal` keys. Recheck when they ship. |
+| Default music folder on this device | **Default music folder on this device**(本设备上的默认音乐文件夹) | `game/game-assets.md` only, which glosses nearly every label. `media/music.md` leaves its folder fields and **Choose Folder** bare. |
+| Use a different folder for a chat or character (heading) | `### 为聊天或角色使用不同的文件夹` | Sits under `<a id="use-a-different-folder-for-a-chat-or-character"></a>`; the `game/game-assets.md` link reads 为聊天或角色使用不同的文件夹. |
+| branch / group chat / soundtrack / runtime | 分支 / 群聊 / 配乐 / 运行时 | 配乐 follows **Soundtrack**(配乐) in `roleplay/getting-started.md`; settings profiles stay 设置方案 (§3). |
+| a chat plays a folder | 聊天播放的文件夹 | The new row is 聊天播放的文件夹不对; the scope choice is 选择文件夹保存在哪一级. |
+
+**From**, **Default**, **Needs reinstall** and **Not set up** stay bare as statuses. The Troubleshooting row says 看看 **In use:** 显示的是什么, so the label's colon does not run into 。. These are translation choices, not a new native-reader review.
+
+## Chat Settings card link, per-chat Game Assets folder, local voice servers (2026-11-07, #8938, #8940, #8942)
+
+Precedents from the #8938, #8940 and #8942 mirror (`chats/group-chats.md`, `media/music.md`, `media/tts-setup.md`), against Engine `9650a8e6f0`:
+
+| English label or term | Gloss / rendering | Note |
+| --- | --- | --- |
+| Open character card (member-name tooltip under **Characters**) | **Open character card**(打开角色卡) | Equals `ui.chat.chatsettingsdrawer.openCharacterCard` in `ui/zh-Hans.json`. Sits in the row's full-width parentheses like the other tooltips: （**Open character card**(打开角色卡)）. |
+| Game Assets Music Folder (per-chat field) | **Game Assets Music Folder** | Bare, like the other folder fields in `media/music.md`. `ui/zh-Hans.json` has 游戏资源音乐文件夹 (`ui.chat.musicdjsetupfields.gameAssetsMusicFolder`); no gloss coined. The English casing is the add-to-chat label; Chat Settings shows the same field under the editor key **Game Assets music folder**, which has the same `ui/zh-Hans.json` value. |
+| members already in the chat are checked | 聊天里已有的成员都处于勾选状态 | 勾选 as in `chats/settings-profiles.md` and `characters/bot-browser.md`. A member's full card is 完整角色卡. |
+| This chat also shows … | 选中 **This chat** 时还会出现 … | The field appears only when **This chat** is the **Apply to** choice (`ChatSettingsDrawer.tsx`, `AgentAddSetupFields.tsx`). Subfolder is 子文件夹, as in the file's **On** bullet; the default is 默认文件夹. |
+| a voice server on your computer or private network | 你的电脑或私有网络上的 PocketTTS 或其他语音服务器 | The place covers both servers. 私有网络 as in `REMOTE_ACCESS.md`; voice server is 语音服务器, as in the PocketTTS bullet. **On this device** keeps its existing gloss (在你的电脑上). |
+
+**Add Character** and **Chat Settings** stay bare in the new rows; both are glossed earlier in `chats/group-chats.md`. These are translation choices, not a new native-reader review.
+
+## Notices DNS and Capability API 1.817 (2026-11-07, #8954)
+
+Precedents from the #8954 mirror (`CONFIGURATION.md`) and the #8951 section in `development/optional-agent-packages.md`, against Engine `dd85f7b40d`:
+
+| English label or term | Gloss / rendering | Note |
+| --- | --- | --- |
+| hosts file | hosts 文件 | Coined. `hosts` stays Latin with §4.4 spaces; `TROUBLESHOOTING.md` writes the path as `/etc/hosts`. |
+| DNS servers / asks the DNS servers directly | DNS 服务器 / 直接向 DNS 服务器查询 | Coined. The table row's "Its host must be in the hosts file or DNS" is 该 URL 的主机必须能在 hosts 文件或 DNS 中找到 (主机 as in the `MARINARA_SHARED_GPU_HOSTS` row). |
+| short names without a domain other than `localhost` | 除 `localhost` 外不带域名的单段名称 | 单段 follows the `TRUSTED_HOSTS` row (单段局域网名称) and `REMOTE_ACCESS.md` (单段机器名). Local network is 本地网络. |
+| the DNS servers are the ones in `$PREFIX/etc/resolv.conf` … unless you edit that file | DNS 服务器就是 `$PREFIX/etc/resolv.conf` 里列出的那些：除非你修改这个文件，否则就是 Google 的 … | Path and addresses byte-exact (§2.5). |
+| outbound proxy (inline link to `#outbound-http-proxy`) | 出站代理 | The heading 出站 HTTP 代理 without HTTP; 代理 is the §3 network-proxy term. |
+| Capability API 1.817 (heading) | `### Capability API 1.817：告诉包某个聊天已创建分支` | Sits under `<a id="capability-api-1817-telling-a-package-that-a-chat-was-branched"></a>`, like the 1.814 to 1.816 headings (full-width ：, §4.8.2). |
+| a chat is branched / branch route | 聊天创建分支 / 分支路由 | 分支 as in the file's 1.7 section. Snapshots are 快照, metadata 元数据. |
+| awaits it once | 调用它一次并等待它完成 | After 等待 `ensureMarinaraHost()` 完成 in the same file. |
+| logged and ignored / soft seam | 记录日志后忽略 / 软接口 | After the file's 记录日志后丢弃 and the 软接口 of its 1.12, 1.13 and 1.816 sections. |
+
+- The UI Editor steps for the app background (#8927): **UI Editor** is glossed once as (界面编辑器), **Whole app** as (整个应用) and **Choose what to change…** as (选择要更改的内容); the heading is "应用背景和 Accent Color". The sentence before the list ends with the full-width colon after the closing parenthesis.
+
+These are translation choices, not a new native-reader review.
+
+## Card field alternative names and the Chat Settings picker (2026-11-10, #9012)
+
+Precedents from the #9011 mirror (`characters/creating-and-editing-characters.md`, `characters/personas.md`), against Engine `ee5bc8e080`:
+
+| English label or term | Gloss / rendering | Note |
+| --- | --- | --- |
+| Card Field Alternatives (Chat Settings section) | **Card Field Alternatives**(卡片字段替代版本) | First bold use in `creating-and-editing-characters.md`, bold plus tight half-width gloss, and again in the personas bullet inside the combined **Chat Settings → Card Field Alternatives**(聊天设置 → 卡片字段替代版本) pair. The first rule never names the label and writes **Chat Settings** bare. |
+| Original (picker row) | **Original**(原始) | Glossed once, in the paragraph. 原始 as in the pack's 原始命令 and 原始字段. |
+| Backstory alternative 1 (alternative title) | **Backstory alternative 1**(背景故事的第 1 个替代版本) | The app's string: `ui/zh-Hans.json` `ui.cardFields.alternativeTitle` is {{field}}的第 {{index}} 个替代版本 with `chat.settings.inlineEditor.fields.backstory` = 背景故事. |
+| Optional: | 可选： | Full-width colon, as in `agents/custom-agents.md:184` and the pack's other optional steps. |
+| names are up to 60 characters | 名字最多 60 个字符 | Half-width digits (§4.4); 名字 as in the **Name** field. |
+| leave the name empty to keep the numbered title | 名字留空则保留带编号的标题 | 留空 as elsewhere for an empty field; 保留 for a value that is kept. |
+| applies from the next reply | 从下一条回复开始生效 | 下一条回复 (14 uses in the pack) rather than 下一次回复. |
+| the section is hidden | 这个区域不会显示 | 区域 for a panel region, 不会显示 for something that does not appear. |
+
+**Chat Settings** stays bare after its first-mention gloss in the paragraph, and the first rule writes it bare as well, as the file does elsewhere. In the personas bullet, *name each alternative* is 每个替代版本都可以命名 and *switch between them* is 在 … 里切换; the path is **Chat Settings → Card Field Alternatives**(聊天设置 → 卡片字段替代版本), one gloss pair for the whole bold span. These are translation choices, not a new native-reader review.
+## Rulesets in Roleplay (2026-11-11, #8999)
+
+Precedents from the #8999 sync of `roleplay/rulesets.md` (new), `game/rulesets.md`, `chats/chat-settings.md` and `roleplay/getting-started.md`, plus the 22 `chat.settings.ruleset.*` UI strings, against Engine `dcbaa4b9b8` (merge of #8998):
+
+| Item | zh-hans | Note |
+| --- | --- | --- |
+| ruleset / sheet / check | 规则集 / 人物卡 / 检定 | The Game Mode words `game/rulesets.md` already uses; *sheet* stays 人物卡, never 表格. |
+| skill / difficulty / turn | 技能 / 难度 / 回合 | As in `game/dice-and-skill-checks.md` and `chats/branches.md`. |
+| dice card | 骰子卡 | `game/dice-and-skill-checks.md`. |
+| tracker panel | Tracker Panel | Latin, as `roleplay/hud-and-trackers.md` writes it. |
+| sheet resource | 资源 | `game/rulesets.md` 消耗哪些资源. |
+| swipe / branch | 备选回复 / 分支 | `chats/branches.md` wording; the page says 当前选中的备选回复. |
+
+- Labels use the pack's gloss form (English bold, Chinese in half-width parentheses, no space before the bracket): **Chat Settings**(聊天设置), **Ruleset**(规则集), **Build sheet**(建立人物卡), **Open sheet**(打开人物卡), **Remove sheet**(移除人物卡), **Add missing sheets**(补齐缺少的人物卡), **No sheet:**(没有人物卡), **Give Mira a sheet**(给 Mira 一张人物卡), **Edit ruleset sheet**(编辑规则集人物卡), **Save sheet**(保存人物卡), **Rest**(休息), **Success**(成功), **Failure**(失败). **None** is (无), matching `chat.settings.ruleset.none`.
+- The troubleshooting table keeps English's UI sentence verbatim, as the English guide does: **This chat's ruleset is not installed here, so its checks and sheets are paused.**
+- UI cross-references quote the pack's own translated label in “” and point with **→**: `chat.settings.ruleset.noMembers` says “补齐缺少的人物卡” and `removeMessage` says 聊天设置 → 规则集. Prose uses the pack's 你 and full-width ，。; the UI strings keep the same 你 imperatives (先添加…再使用…).
+- `game/rulesets.md` gains the Roleplay sentence after the Official/Community bullets and, with it, `<a id="get-a-ruleset"></a>` above **获取规则集**: the new page links `#get-a-ruleset`, and a translated heading yields no English slug.
+
+These are translation choices, not a new native-reader review.
+
+## Roleplay message box opacity (2026-11-11, #9063)
+
+Precedents from the #9063 sync of `characters/colors-and-stats.md`,「三种颜色」, against Engine `ced9558565` (merge of #9091): the old sentence saying the slider *replaces* saved transparency is gone. The verb is **按比例缩放** ("这个滑块会按比例缩放…透明度"). *Alpha* stays Latin **alpha**, as the pack writes it in prose. *Fill* is **填充** (noun and verb), after **Background Color**(背景色) 填充… in `appearance/custom-css-themes.md`; *chat widget* is **聊天组件**, matching **Chat widget style**(聊天组件样式). The new paragraph reuses **Apply preset colors**(应用预设颜色) with the pack's tight half-width parens and runs the label bare afterwards. The two sentences use 全角 ，。 and keep one half-width space between CJK and Latin/code.

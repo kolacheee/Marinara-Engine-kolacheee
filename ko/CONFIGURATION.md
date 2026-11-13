@@ -173,7 +173,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | 사용자 지정 스크립트 도구를 켭니다. 신뢰할 수 없거나 가져온 도구라면 꺼 두세요. |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | OS 샌드박스(macOS Seatbelt 또는 Linux Bubblewrap, 있으면 사용)가 없는 호스트에서도 Professor Mari의 데이터베이스 변환 스크립트를 실행할 수 있게 합니다. 스크립트를 검토하지 않았다면 꺼 두세요. |
 | `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agent Organizer에서 GitHub 에이전트 저장소를 수동으로 미리 보고 동기화할 수 있게 합니다. [사용자 지정 에이전트 저장소](#custom-agent-repositories)를 참고하세요. |
-| `MARINARA_OVERWORLD_GAMES` | `false` | 플레이어가 Overworld 게임(세계관 키트와 생성된 세계)을 만들고 예전 게임을 Overworld 게임으로 바꿀 수 있게 합니다. 꺼져 있으면 마법사는 Classic 게임만 제공합니다. |
+| `MARINARA_OVERWORLD_GAMES` | `false` | 플레이어가 Overworld 게임(세계관 키트와 생성된 세계)을 만들고 예전 게임을 Overworld 게임으로 바꿀 수 있게 합니다. 꺼져 있으면 마법사는 VN 게임만 제공합니다. |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | 서드파티 확장 가져오기를 여는 두 관문 중 첫 번째입니다. [외부 확장](#external-extensions)을 참고하세요. |
 | `IMPORT_ALLOWED_ROOTS` | 비어 있음 | 선택기 토큰 없이 일괄 가져오기가 읽을 수 있는 폴더입니다. |
 | `PROFILE_EXPORT_JSON_LIMIT_BYTES` | `268435456`(256 MiB) | 서버가 만드는 단일 JSON 프로필 내보내기의 최대 크기입니다. |
@@ -216,6 +216,8 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 > **경고:** 공지를 끄면 Marinara가 보안 수정이나 필수 단계를 알려 줄 수 없습니다. [GitHub 릴리스](https://github.com/Pasta-Devs/Marinara-Engine/releases)를 직접 확인하세요.
 
 포크는 `MARINARA_NOTICES_URL`이 자신의 파일을 가리키게 할 수 있습니다.
+
+공지 서버를 찾을 때, 그리고 [아웃바운드 프록시](#outbound-http-proxy)가 켜져 있으면 그 프록시를 찾을 때도 Marinara는 hosts 파일을 읽고 DNS 서버에 직접 조회합니다. `.local` 이름이나 도메인 없는 짧은 이름(`localhost` 제외)처럼 내 로컬 네트워크에서만 통하는 이름은 동작하지 않습니다. Termux에서는 `$PREFIX/etc/resolv.conf`에 적힌 DNS 서버를 씁니다. 이 파일을 수정하지 않았다면 Google의 `8.8.8.8`과 `8.8.4.4`입니다.
 
 <a id="optional-multiplayer"></a>
 
@@ -319,7 +321,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `AUTO_OPEN_BROWSER` | `true` | 런처가 앱 URL을 열지 정합니다. `false`로 설정하면 열지 않습니다. APK가 관리하는 설치에서는 APK가 이 값을 끕니다. |
 | `AUTO_UPDATE_ENABLED` | `true` | Git 기반 런처가 시작 전에 업데이트를 받아 적용할지 정합니다. `false`로 설정하면 다음 실행부터 받지 않습니다. 이때도 런처는 새 릴리스가 있는지 읽기 전용으로 확인하고 안내를 출력합니다. `--skip-update`를 쓰면 이번 한 번만 두 확인을 모두 건너뜁니다. |
 | `MARINARA_NOTICES_ENABLED` | `true` | 서버가 메인테이너 공지를 가져올지 정합니다. [Marinara 공지](#marinara-notices)를 참고하세요. |
-| `MARINARA_NOTICES_URL` | `notices` 브랜치의 `notices.json` | 포크와 미러를 위한 공지 파일 재정의입니다. 같은 방식으로 검증되며, `https://github.com/Pasta-Devs/` 밖을 가리키는 링크는 제거됩니다. |
+| `MARINARA_NOTICES_URL` | `notices` 브랜치의 `notices.json` | 포크와 미러를 위한 공지 파일 재정의입니다. 같은 방식으로 검증되며, `https://github.com/Pasta-Devs/` 밖을 가리키는 링크는 제거됩니다. 이 URL의 호스트는 hosts 파일이나 DNS에 있어야 합니다. [Marinara 공지](#marinara-notices)를 참고하세요. |
 | `MARINARA_ENV_FILE` | 프로젝트 최상위의 `.env` | `.env` 파일 경로를 재정의합니다. 시작하기 전에 설정하세요. |
 | `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | 서버 전체에서 동시에 보내는 이미지나 동영상 요청 수의 상한입니다. 로컬 ComfyUI나 SwarmUI의 VRAM이 부족하면 1-2로 낮추세요. `0`은 상한을 없앱니다. 잘못된 값은 경고를 남기고 무시합니다. 일괄 작업은 마지막 자리를 차지하지 않습니다. **Settings → Generations → Overall Generations**(설정 → 생성 → 전체 생성)에 있는 **Queue media generation requests**(미디어 생성 요청 대기열 사용) 위에 추가로 적용됩니다. 이 설정은 기본적으로 켜져 있으며 계정마다 이미지와 동영상 작업을 대기열에 넣습니다. |
 | `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS` | `600000`(10분) | 요청이 빈 자리를 기다리다 실패하기까지의 시간입니다. `0`이면 무한정 기다립니다. |

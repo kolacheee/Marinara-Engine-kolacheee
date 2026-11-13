@@ -46,7 +46,7 @@ Zakładki, które mają własne przewodniki:
 | **Lorebook** | [Podpinanie lorebooków do postaci](../lorebooks/linking-to-characters.md) |
 | **Sprites** | [Sprite'y postaci](sprites.md) |
 | **Gallery** | [Galerie postaci i person](galleries.md) |
-| **Colors** i **Stats** | [Kolory postaci i statystyki RPG](colors-and-stats.md) |
+| **Colors** i **Stats** | [Kolory postaci i Statystyki Roleplay](colors-and-stats.md) |
 
 Poniższe sekcje omawiają zakładki **Metadata**, **Card**, **Voice** i **Advanced**, a do tego awatary i historię wersji.
 
@@ -167,13 +167,16 @@ Sekcja **Regex Scripts** zbiera skrypty typu znajdź i zamień, działające tyl
 Alternatywne pole nadaje tej samej postaci inny opis, wygląd, historię lub inny szczegół w wybranych czatach, a wszystkie pozostałe czaty zachowują oryginał. Pod każdym z siedmiu pól karty jest przycisk **Add Alternative Field** (dodaj alternatywne pole).
 
 1. Kliknij **Add Alternative Field** pod polem, które chcesz zmienić. Marinara kopiuje tekst pola do nowego wariantu.
-2. Edytuj wariant. Ma własną różdżkę, która traktuje tekst wariantu jako punkt wyjścia i nie zmienia oryginalnego pola.
-3. Otwórz **Active in 0 chats** (aktywne w 0 czatach) i zaznacz czaty, które mają go używać. Lista zawiera tylko czaty z tą postacią.
-4. Kliknij **Save**.
+2. Opcjonalnie: kliknij jego tytuł, na przykład **Backstory alternative 1** (Historia postaci – alternatywa 1), i wpisz nazwę, na przykład `Young`. Nazwa może mieć najwyżej 60 znaków. Zostaw nazwę pustą, żeby zachować numerowany tytuł.
+3. Edytuj wariant. Ma własną różdżkę, która traktuje tekst wariantu jako punkt wyjścia i nie zmienia oryginalnego pola.
+4. Otwórz **Active in 0 chats** (aktywne w 0 czatach) i zaznacz czaty, które mają go używać. Lista zawiera tylko czaty z tą postacią.
+5. Kliknij **Save**.
+
+Wariant można też wybrać z poziomu czatu. Otwórz **Chat Settings** (ustawienia czatu) i rozwiń **Card Field Alternatives** (alternatywne pola karty). Sekcja wymienia personę czatu i każdą postać w czacie, która ma warianty, z osobnym menu dla każdego pola. Wybierz **Original** (oryginał) albo wariant po nazwie. Karta zapisuje się od razu, a wybór obowiązuje od następnej odpowiedzi. Sekcja jest ukryta, gdy nic w czacie nie ma wariantów.
 
 Zasady:
 
-- Czat może używać tylko jednego wariantu danego pola. Zaznaczenie czatu w innym wariancie przenosi go tam.
+- Czat może używać tylko jednego wariantu danego pola. Zaznaczenie czatu w innym wariancie albo wybranie innego wariantu w Chat Settings przenosi go tam.
 - Bez zaznaczonych czatów wariant pozostaje nieaktywny na później.
 - Pusty wariant czyści to pole w swoich czatach.
 - Nadpisania scenariusza i wyglądu do obrazów ustawione dla konkretnego czatu nadal mają pierwszeństwo.

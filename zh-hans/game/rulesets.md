@@ -2,6 +2,8 @@
 
 规则集告诉 Game Mode 一套桌面系统如何运作：检定掷什么骰子、人物卡上有什么、消耗哪些资源、休息恢复什么，以及某些规则集如何进行整场战斗。用这份指南获取规则集、为游戏选择规则集，并了解游玩时有哪些变化。没有规则集的游戏采用 Marinara 自身规则，其他 Game Mode 指南介绍了这些规则。
 
+<a id="get-a-ruleset"></a>
+
 ## 获取规则集
 
 安装 5e (SRD 5.1) 这类官方规则集：
@@ -15,6 +17,8 @@
 
 - **Official**(官方) 规则集按上面的方法安装。
 - **Community**(社区) 规则集从文件或作者的 GitHub 仓库导入，并按来源归档，例如 `local/ember-roads` 或 `alice/v20`。
+
+这些规则集也都能用在 Roleplay 聊天里。见[Roleplay：按规则集游玩](../roleplay/rulesets.md)。
 
 导入使用的开关和导入智能体相同，即 **Allow custom Agent imports**(允许导入自定义智能体)。这个开关关闭时，导入的规则集不会出现在新游戏中，已经在用的游戏照常运行。使用导入规则集的游戏始终按创建时的确切版本来玩。想自己编写，见[编写 Game Mode 规则集](../extending/writing-rulesets.md)。
 
@@ -183,5 +187,5 @@ GM 在叙述时会同步更新人物卡。角色花费资源、受到伤害、�
 - [Game Mode：按规则集战斗](fighting-on-a-ruleset.md)
 - [Game Mode：骰子与技能检定](dice-and-skill-checks.md)
 - [Game Mode：队伍与 NPC](party-and-npcs.md)
-- [角色颜色与 RPG 数值：规则集人物卡](../characters/colors-and-stats.md#ruleset-sheets)
+- [角色颜色与角色扮演属性：规则集人物卡](../characters/colors-and-stats.md#ruleset-sheets)
 - [编写 Game Mode 规则集](../extending/writing-rulesets.md)

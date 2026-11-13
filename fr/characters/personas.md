@@ -64,7 +64,7 @@ L'éditeur de persona fonctionne comme le [Character Editor](creating-and-editin
 | **Lorebook** | Rattache des entrées de lorebook qui s'activent quand ce persona est dans le chat. Voir [Vue d'ensemble des lorebooks](../lorebooks/overview.md). |
 | **Sprites** | Des illustrations en pied pour le Game Mode et le Roleplay. Comprend **Facial Expressions**, **Full-body** et **Clips**, ainsi que **Upload Folder** (téléverser un dossier). Voir [Sprites de personnage](sprites.md). |
 | **Gallery** | Des images et des vidéos de référence, avec **Upload Persona Images** (téléverser des images de persona) et **Upload Persona Videos** (téléverser des vidéos de persona). Voir [Galeries de personnages et de personas](galleries.md). |
-| **Colors** | Les couleurs du nom, des dialogues et de la bulle de message. Voir [Couleurs des personnages et caractéristiques RPG](colors-and-stats.md). |
+| **Colors** | Les couleurs du nom, des dialogues et de la bulle de message. Voir [Couleurs des personnages et Caractéristiques de Roleplay](colors-and-stats.md). |
 | **Stats** | Les barres d'état et les attributs RPG. Voir [Onglet Stats](#stats-tab) plus bas. |
 
 L'onglet **Metadata** affiche :
@@ -99,7 +99,7 @@ L'onglet **Card** contient les champs qui te décrivent à l'IA. Chacun affiche 
 Ces fonctions marchent comme sur les personnages, avec le persona pour sujet :
 
 - Le bouton baguette au-dessus de chaque champ l'écrit pour toi. Voir [Écrire un champ de la fiche avec la baguette](creating-and-editing-characters.md#write-a-card-field-with-the-wand).
-- **Add Alternative Field** (ajouter un champ alternatif), sous chaque champ, donne une autre version du champ à certains chats. La liste **Active in** (actif dans) ne montre que les chats qui utilisent ce persona, et les affectations sont suspendues quand un chat choisit un autre persona. Voir [Utiliser un champ alternatif dans certains chats](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats).
+- **Add Alternative Field** (ajouter un champ alternatif), sous chaque champ, donne une autre version du champ à certains chats. La liste **Active in** (actif dans) ne montre que les chats qui utilisent ce persona, et les affectations sont suspendues quand un chat choisit un autre persona. Tu peux nommer chaque alternative et passer de l'une à l'autre depuis **Chat Settings → Card Field Alternatives** (réglages du chat → alternatives des champs de la fiche). Voir [Utiliser un champ alternatif dans certains chats](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats).
 - **Version history** (historique des versions) se trouve dans l'onglet **Metadata**. Avant ta première modification, il affiche `Previous persona states will appear here after the next edit.` **Reset** (réinitialiser) supprime tous les instantanés et remet la version à 1.0. Voir [Historique des versions](creating-and-editing-characters.md#version-history).
 
 <a id="stats-tab"></a>
@@ -109,7 +109,7 @@ Ces fonctions marchent comme sur les personnages, avec le persona pour sujet :
 L'onglet **Stats** comporte deux blocs distincts. Tous deux alimentent le HUD, le panneau de caractéristiques affiché à l'écran pendant un chat.
 
 - **Enable Persona Stats** (activer les caractéristiques du persona) active les barres d'état, des jauges pour des besoins comme la faim et l'humeur. Au départ, il y a Satiety, Energy, Hygiene et Mood, chacune à 100 sur 100. L'agent **Persona Stats** les ajuste au fil de l'histoire.
-- **Enable RPG Attributes** (activer les attributs RPG) active les Pools (des barres comme HP et MP) et les Attributes (des nombres comme la force). Les deux sont expliqués dans [Couleurs des personnages et caractéristiques RPG](colors-and-stats.md). Au départ, HP et MP sont à 100 sur 100, et STR, DEX, CON, INT, WIS et CHA à 10. Ces valeurs sont envoyées avec le persona pour le combat et le Game Mode, ainsi que pour les jets facultatifs. Les agents ne les mettent pas à jour.
+- **Enable Roleplay Stats** (Activer les Caractéristiques de Roleplay) active les Pools (des barres comme HP et MP) et les Attributes (des nombres comme la force). Les deux sont expliqués dans [Couleurs des personnages et Caractéristiques de Roleplay](colors-and-stats.md). Au départ, HP et MP sont à 100 sur 100, et STR, DEX, CON, INT, WIS et CHA à 10. Ces valeurs sont envoyées avec le persona pour le combat et le Game Mode, ainsi que pour les jets facultatifs. Les agents ne les mettent pas à jour.
 
 Un bloc **Game Mode Icon** (icône de Game Mode) définit l'image de ton pion dans un combat en Game Mode. Voir [Icône de Game Mode](colors-and-stats.md#game-mode-icon). Quand un ensemble de règles de Game Mode (des règles pour des jeux façon jeu de table) est installé, un bloc **Ruleset sheets** (fiches d'ensembles de règles) contient ta configuration de départ pour cet ensemble. Voir [Fiches d'ensembles de règles](colors-and-stats.md#ruleset-sheets). Les valeurs que tu définis servent de valeurs de départ par défaut pour les nouveaux chats.
 
@@ -139,7 +139,7 @@ Pour supprimer, clique sur **Delete** dans une ligne ou sur **Delete persona** d
 ## Guides associés
 
 - [Choisir ton persona dans un chat](choosing-your-persona.md)
-- [Couleurs des personnages et caractéristiques RPG](colors-and-stats.md)
+- [Couleurs des personnages et Caractéristiques de Roleplay](colors-and-stats.md)
 - [Créer et modifier des personnages](creating-and-editing-characters.md)
 - [Profils du mode Conversation](../conversation/profiles.md)
 - [Macros](../prompts/macros.md)

@@ -1,4 +1,4 @@
-# 角色颜色与 RPG 属性
+# 角色颜色与角色扮演属性
 
 **Colors**(颜色) 和 **Stats**(属性) 选项卡在 Character Editor(角色编辑器) 和 Persona Editor(用户角色编辑器) 里都有。Colors 决定角色或用户角色在聊天里的外观，Stats 用来设置可以追踪的数值，例如生命值或饥饿度。
 
@@ -34,7 +34,9 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 要调整透明度，使用 **Settings → Appearance → Roleplay Presentation → Roleplay Messages Background Opacity**(设置 → 外观 → Roleplay 呈现方式 → Roleplay 消息背景不透明度)。
 
-这个滑块会取代角色、用户角色和预设的背景色中保存的透明度，从头像提取的颜色也包括在内。你保存的颜色值本身保持不变。名字颜色和对话颜色不受影响。
+这个滑块会按比例缩放角色和用户角色消息框颜色中保存的透明度。如果颜色自带 alpha，例如 `rgba(255, 255, 255, 0.25)` 或 `#FFFFFF40`，它的显示透明度就是该 alpha 乘以滑块的值。你保存的颜色值本身保持不变。名字颜色和对话颜色不受影响。
+
+开启 **Apply preset colors**(应用预设颜色) 时，为聊天组件选择的背景色决定气泡的填充，滑块则直接决定这个填充的透明度。
 
 自定义主题的背景钩子和角色卡 CSS 仍然可以覆盖应用自带的气泡样式。
 
@@ -54,7 +56,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 ### 角色属性
 
-角色只有一个开关：**Enable RPG Stats**(启用 RPG 属性)。关闭时，下面的内容既不显示也不发送。开启后会出现两个区块：
+角色只有一个开关：**Enable Roleplay Stats**(启用角色扮演属性)。关闭时，下面的内容既不显示也不发送。开启后会出现两个区块：
 
 - **Pools**(资源条) 是带名字的条，包含当前值、最大值和颜色。新角色默认带 HP 和 MP，数值都是 100，满值 100。
 - **Attributes**(属性值) 是带名字的数值。新角色默认带 STR、DEX、CON、INT、WIS 和 CHA，全部为 10。
@@ -66,7 +68,24 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 用户角色的 **Stats** 选项卡有两个独立区块，各有各的开关。
 
 - **Persona Status Bars**(用户角色状态条) 用 **Enable Persona Stats**(启用用户角色属性) 开启，用来追踪生理和心理需求。初始的状态条是 Satiety、Energy、Hygiene 和 Mood，数值都是 100，满值 100。在 **Status Bars**(状态条) 下，每条都有名字、当前值、最大值和颜色。点击 **Add** 新增一条，点击 X 删除一条。
-- **Enable RPG Attributes**(启用 RPG 属性值) 的机制和角色卡一样，给你的用户角色提供 **Pools**(初始为 HP 和 MP，数值都是 100，满值 100) 和 **Attributes**(初始为 STR、DEX、CON、INT、WIS 和 CHA，全部为 10)。
+- **Enable Roleplay Stats**(启用角色扮演属性) 的机制和角色卡一样，给你的用户角色提供 **Pools**(初始为 HP 和 MP，数值都是 100，满值 100) 和 **Attributes**(初始为 STR、DEX、CON、INT、WIS 和 CHA，全部为 10)。
+
+<a id="mrpg-picks-on-a-card"></a>
+
+### 卡片上的 MRPG 选择
+
+两个 **Stats** 选项卡都有一个 **Game Mode**(游戏模式) 区块，其中的 **MRPG** 区块用于采用 MRPG 职业的游戏（也就是所有新游戏）。每局游戏都会为每个角色重新掷出 MRPG 属性，因此卡片不保存数值，只保存三项选择。引导式构建器会逐步询问这些选择：
+
+1. **Tree**(树)：角色从哪棵树开始。**Auto**(自动) 会从卡片的描述和性格中判断，并显示由此选出的树。
+2. **Strong in**(强项)：最多两项角色擅长成长的属性。每项属性都会说明自己的作用。
+3. **Weak in**(弱项)：一项角色不擅长成长的属性，也可以不选。
+4. **Review**(审查)：角色在新游戏中从 1 级开始时的职业，包括所在排位、每项属性、MP 和 Stamina。
+
+每项选择都会在做出时保存，可以用 **Back**(返回)、**Next**(下一步) 和步骤名称在各步骤之间移动。在最后一步点击 **Finish**(完成)。随后，区块会显示审查结果：起始职业及其属性，并标出强项和弱项。点击 **Edit**(编辑) 可以重新运行构建器。照常保存卡片即可保留改动。
+
+强项和弱项会影响角色在每局游戏中隐藏的成长倾向。姐妹树由角色在游戏中的性格决定，而不是来自卡片。见 [Game Mode：MRPG 职业](../game/mrpg-classes.md#choose-a-characters-trees)。
+
+这个区块下方的 **Roleplay Stats**(角色扮演属性) 就是上文介绍的资源池和属性。Roleplay 聊天和 Legacy 游戏会使用它们。MRPG 游戏则使用 MRPG 区块，绝不会根据它们生成人物卡。
 
 <a id="game-mode-icon"></a>
 
@@ -101,7 +120,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 
 未安装的规则集的人物卡会保留下来。它显示为一行，带一个 **Remove**(移除) 按钮，永远不会发送给 AI，安装那个规则集之后就能再次编辑，导出角色卡时也会一起带走。已安装规则集的人物卡如果当前版本读不了，例如由更新的版本保存的，也会原样保留。它的条目只提供 **Remove this sheet**(移除这张人物卡)，所以新人物卡绝不会意外覆盖它。每张人物卡上限为 64 KB。
 
-规则集人物卡与 **Enable RPG Stats** 和 **Enable RPG Attributes** 互不相干。使用 Marinara 自身规则的游戏会忽略人物卡；使用规则集的游戏则用人物卡代替上面的 Attributes 进行检定。
+规则集人物卡与 **Enable Roleplay Stats**(启用角色扮演属性) 互不相干。使用 Marinara 自身规则的游戏会忽略人物卡；使用规则集的游戏则用人物卡代替上面的 Attributes 进行检定。
 
 <a id="how-agents-update-your-stats"></a>
 
@@ -113,7 +132,7 @@ linear-gradient(90deg, #f59e0b, #ef4444)
 | --- | --- |
 | 角色的 **Pools**，例如 HP | **Character Tracker** 智能体，根据战斗、治疗和剧情事件修改。它不追踪玩家的用户角色。 |
 | **Persona Status Bars** | **Persona Stats** 智能体，在每条消息之后修改。 |
-| **RPG Attributes**(RPG 属性值)，例如 STR 和 DEX | 没有智能体修改。它们会随卡片一起发送，用于战斗和 Game Mode，以及 Roleplay 或 Game Mode 中的可选掷骰。 |
+| **Roleplay Stats**(角色扮演属性)，例如 STR 和 DEX | 没有智能体修改。它们会随卡片一起发送，用于战斗和 Game Mode，以及 Roleplay 或 Game Mode 中的可选掷骰。 |
 
 如果不开启对应的智能体，由追踪器管理的数值就一直停在你设定的默认值上。单靠 **Stats** 选项卡，游玩时不会更新任何东西。要开启这些智能体，见[可下载智能体参考](../agents/built-in-agents.md)。
 

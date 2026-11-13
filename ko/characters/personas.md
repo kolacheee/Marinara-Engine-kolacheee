@@ -64,7 +64,7 @@ Persona Editor는 [캐릭터 편집기](creating-and-editing-characters.md)와 �
 | **Lorebook** | 이 페르소나가 채팅에 있을 때 작동하는 로어북 항목을 연결합니다. [로어북 개요](../lorebooks/overview.md)를 참고하세요. |
 | **Sprites** | Game과 Roleplay(롤플레이)에서 쓰는 서 있는 캐릭터 그림. **Facial Expressions**, **Full-body**, **Clips**와 **Upload Folder**(폴더 업로드)가 있습니다. [캐릭터 스프라이트](sprites.md)를 참고하세요. |
 | **Gallery** | 참고 이미지와 동영상. **Upload Persona Images**(페르소나 이미지 업로드)와 **Upload Persona Videos**(페르소나 동영상 업로드)가 있습니다. [캐릭터와 페르소나 갤러리](galleries.md)를 참고하세요. |
-| **Colors** | 이름, 대사, 메시지 말풍선 색상. [캐릭터 색상과 RPG 스탯](colors-and-stats.md)을 참고하세요. |
+| **Colors** | 이름, 대사, 메시지 말풍선 색상. [캐릭터 색상과 롤플레이 스탯](colors-and-stats.md)을 참고하세요. |
 | **Stats** | 상태 막대와 RPG 속성. 아래 [Stats 탭](#stats-tab)을 참고하세요. |
 
 **Metadata** 탭에는 다음이 표시됩니다.
@@ -99,7 +99,7 @@ Persona Editor는 [캐릭터 편집기](creating-and-editing-characters.md)와 �
 다음 기능은 캐릭터에서와 똑같이 동작하며, 대상이 페르소나라는 점만 다릅니다.
 
 - 각 필드 위의 마법봉 버튼으로 필드를 대신 작성할 수 있습니다. [마법봉으로 카드 필드 생성](creating-and-editing-characters.md#write-a-card-field-with-the-wand)을 참고하세요.
-- 각 필드 아래의 **Add Alternative Field**(대체 필드 추가)로 선택한 채팅에 다른 버전을 줄 수 있습니다. **Active in** 목록에는 이 페르소나를 쓰는 채팅만 표시되며, 채팅에서 다른 페르소나를 선택하면 할당이 일시 중지됩니다. [선택한 채팅에서 대체 필드 사용](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats)을 참고하세요.
+- 각 필드 아래의 **Add Alternative Field**(대체 필드 추가)로 선택한 채팅에 다른 버전을 줄 수 있습니다. **Active in** 목록에는 이 페르소나를 쓰는 채팅만 표시되며, 채팅에서 다른 페르소나를 선택하면 할당이 일시 중지됩니다. 각 대체 필드에 이름을 붙일 수 있고, **Chat Settings → Card Field Alternatives**(채팅 설정 → 카드 대체 필드)에서 서로 전환할 수 있습니다. [선택한 채팅에서 대체 필드 사용](creating-and-editing-characters.md#use-an-alternative-field-in-selected-chats)을 참고하세요.
 - **Version history**(버전 히스토리)는 **Metadata** 탭에 있습니다. 처음 편집하기 전에는 `Previous persona states will appear here after the next edit.`이 표시됩니다. **Reset**(초기화)은 모든 스냅샷을 삭제하고 버전을 1.0으로 설정합니다. [버전 히스토리](creating-and-editing-characters.md#version-history)를 참고하세요.
 
 <a id="stats-tab"></a>
@@ -109,7 +109,7 @@ Persona Editor는 [캐릭터 편집기](creating-and-editing-characters.md)와 �
 **Stats** 탭에는 서로 다른 두 블록이 있습니다. 둘 다 채팅 중 화면에 표시되는 스탯 패널인 HUD에 반영됩니다.
 
 - **Enable Persona Stats**(페르소나 능력치 활성화)는 허기와 기분 같은 욕구를 나타내는 미터인 상태 막대를 켭니다. 새로 켜면 Satiety, Energy, Hygiene, Mood가 각각 100 중 100으로 시작합니다. **Persona Stats**(페르소나 스탯) 에이전트가 이야기 전개에 따라 이 값을 조정합니다.
-- **Enable RPG Attributes**(RPG 속성 활성화)는 Pools(HP와 MP 같은 막대)와 Attributes(힘 같은 숫자)를 켭니다. 둘 다 [캐릭터 색상과 RPG 스탯](colors-and-stats.md)에서 설명합니다. 새로 켜면 HP와 MP가 100 중 100으로, STR, DEX, CON, INT, WIS, CHA가 10으로 시작합니다. 이 값은 전투와 Game Mode(게임 모드)에서, 그리고 선택적 굴림에서 페르소나와 함께 전송됩니다. 에이전트는 이 값을 갱신하지 않습니다.
+- **Enable Roleplay Stats**(롤플레이 스탯 활성화)는 Pools(HP와 MP 같은 막대)와 Attributes(힘 같은 숫자)를 켭니다. 둘 다 [캐릭터 색상과 롤플레이 스탯](colors-and-stats.md)에서 설명합니다. 새로 켜면 HP와 MP가 100 중 100으로, STR, DEX, CON, INT, WIS, CHA가 10으로 시작합니다. 이 값은 전투와 Game Mode(게임 모드)에서, 그리고 선택적 굴림에서 페르소나와 함께 전송됩니다. 에이전트는 이 값을 갱신하지 않습니다.
 
 **Game Mode Icon**(Game Mode 아이콘) 블록은 Game Mode 전투에서 내 토큰에 표시할 그림을 정합니다. [Game Mode 아이콘](colors-and-stats.md#game-mode-icon)을 참고하세요. Game Mode 규칙 집합(테이블톱 방식 게임용 규칙 모음)이 설치되어 있으면 **Ruleset sheets**(룰셋 시트) 블록에 그 규칙 집합에서 쓸 내 시작 빌드가 들어갑니다. [규칙 집합 시트](colors-and-stats.md#ruleset-sheets)를 참고하세요. 여기서 정한 값은 새 채팅을 시작할 때의 기본값입니다.
 
@@ -139,7 +139,7 @@ Persona Editor는 [캐릭터 편집기](creating-and-editing-characters.md)와 �
 ## 관련 가이드
 
 - [채팅에서 페르소나 선택하기](choosing-your-persona.md)
-- [캐릭터 색상과 RPG 스탯](colors-and-stats.md)
+- [캐릭터 색상과 롤플레이 스탯](colors-and-stats.md)
 - [캐릭터 만들기와 편집](creating-and-editing-characters.md)
 - [Conversation Mode 프로필](../conversation/profiles.md)
 - [매크로](../prompts/macros.md)

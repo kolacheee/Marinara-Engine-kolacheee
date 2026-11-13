@@ -173,7 +173,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `CUSTOM_TOOL_SCRIPT_ENABLED` | `false` | कस्टम स्क्रिप्ट टूल चालू करता है। भरोसे के बाहर या इंपोर्ट किए गए टूल के लिए इसे बंद रखें। |
 | `MARI_DB_ALLOW_UNSAFE_TRANSFORMS` | `false` | Professor Mari की डेटाबेस बदलने वाली स्क्रिप्ट को उन होस्ट पर भी चलने देता है, जिनमें OS सैंडबॉक्स नहीं है (macOS Seatbelt या Linux Bubblewrap, जो मौजूद होने पर इस्तेमाल होते हैं)। जब तक आपने स्क्रिप्ट जाँची न हो, इसे बंद रखें। |
 | `ENABLE_CUSTOM_AGENT_REPOS` | `false` | Agent Organizer में GitHub एजेंट-रिपॉज़िटरी का मैन्युअल प्रीव्यू और सिंक चालू करता है। देखें [कस्टम एजेंट रिपॉज़िटरी](#custom-agent-repositories)। |
-| `MARINARA_OVERWORLD_GAMES` | `false` | खिलाड़ियों को Overworld गेम (एक सेटिंग किट और एक जेनरेट हुई दुनिया) बनाने और किसी पुराने गेम को Overworld गेम में बदलने देता है। बंद होने पर विज़ार्ड सिर्फ़ Classic गेम देता है। |
+| `MARINARA_OVERWORLD_GAMES` | `false` | खिलाड़ियों को Overworld गेम (एक सेटिंग किट और एक जेनरेट हुई दुनिया) बनाने और किसी पुराने गेम को Overworld गेम में बदलने देता है। बंद होने पर विज़ार्ड सिर्फ़ VN गेम देता है। |
 | `ENABLE_EXTERNAL_EXTENSIONS` | `false` | थर्ड-पार्टी एक्सटेंशन इंपोर्ट के दो गेट में से पहला। देखें [External Extensions](#external-extensions)। |
 | `IMPORT_ALLOWED_ROOTS` | खाली | वे फ़ोल्डर, जिन्हें बल्क इंपोर्ट बिना पिकर टोकन के पढ़ सकता है। |
 | `PROFILE_EXPORT_JSON_LIMIT_BYTES` | `268435456` (256 MiB) | सर्वर ज़्यादा से ज़्यादा इतना बड़ा एक JSON प्रोफ़ाइल एक्सपोर्ट बनाता है। |
@@ -216,6 +216,8 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 > **Warning:** नोटिस बंद होने पर Marinara आपको सुरक्षा फ़िक्स या ज़रूरी कदमों के बारे में नहीं बता सकता। [GitHub रिलीज़](https://github.com/Pasta-Devs/Marinara-Engine/releases) पर खुद नज़र रखें।
 
 फ़ोर्क `MARINARA_NOTICES_URL` को अपनी फ़ाइल की ओर कर सकते हैं।
+
+नोटिस सर्वर को, और [बाहर जाने वाली रिक्वेस्ट के लिए प्रॉक्सी](#outbound-http-proxy) चालू होने पर उस प्रॉक्सी को भी, ढूँढने के लिए Marinara hosts फ़ाइल पढ़ता है और सीधे DNS सर्वर से पूछता है। ऐसे नाम काम नहीं करते जिन्हें सिर्फ़ आपका लोकल नेटवर्क जानता है, जैसे `.local` नाम, या `localhost` के अलावा ऐसे एक-शब्द वाले नाम जिनमें डोमेन नहीं होता। Termux पर DNS सर्वर वे हैं जो `$PREFIX/etc/resolv.conf` में दिए गए हैं: जब तक आप वह फ़ाइल एडिट न करें, ये Google के `8.8.8.8` और `8.8.4.4` होते हैं।
 
 <a id="optional-multiplayer"></a>
 
@@ -317,7 +319,7 @@ ADMIN_SECRET=replace-this-with-a-long-random-secret
 | `AUTO_OPEN_BROWSER` | `true` | लॉन्चर ऐप का URL खोलें या नहीं। `false` इसे रोकता है। APK से मैनेज होने वाला सेटअप इसे बंद कर देता है। |
 | `AUTO_UPDATE_ENABLED` | `true` | Git वाले लॉन्चर शुरू होने से पहले अपडेट लाकर लागू करें या नहीं। `false` अगली बार शुरू करने से इसे बंद कर देता है। लॉन्चर फिर भी सिर्फ़ पढ़ने वाली एक जाँच करता है कि कोई नया रिलीज़ आया या नहीं, और याद दिला देता है। `--skip-update` एक बार शुरू करने के लिए दोनों जाँचें छोड़ देता है। |
 | `MARINARA_NOTICES_ENABLED` | `true` | सर्वर मेंटेनर्स के नोटिस लाए या नहीं। देखें [Marinara नोटिस](#marinara-notices)। |
-| `MARINARA_NOTICES_URL` | `notices` ब्रांच में `notices.json` | फ़ोर्क और मिरर के लिए नोटिस फ़ाइल बदलता है। इसकी जाँच उसी तरह होती है, और `https://github.com/Pasta-Devs/` के बाहर के लिंक हटा दिए जाते हैं। |
+| `MARINARA_NOTICES_URL` | `notices` ब्रांच में `notices.json` | फ़ोर्क और मिरर के लिए नोटिस फ़ाइल बदलता है। इसकी जाँच उसी तरह होती है, और `https://github.com/Pasta-Devs/` के बाहर के लिंक हटा दिए जाते हैं। इसका होस्ट hosts फ़ाइल या DNS में होना चाहिए। देखें [Marinara नोटिस](#marinara-notices)। |
 | `MARINARA_ENV_FILE` | प्रोजेक्ट रूट का `.env` | `.env` फ़ाइल के लिए दूसरा पथ। इसे स्टार्टअप से पहले सेट करें। |
 | `MARINARA_MEDIA_GENERATION_CONCURRENCY` | `4` | पूरे सर्वर में एक साथ ज़्यादा से ज़्यादा इतनी इमेज या वीडियो रिक्वेस्ट। लोकल ComfyUI या SwarmUI की VRAM खत्म हो जाए, तो इसे 1-2 तक घटाएँ। `0` यह सीमा हटा देता है। गलत वैल्यू चेतावनी के साथ अनदेखी कर दी जाती हैं। बैच का काम आखिरी स्लॉट कभी नहीं लेता। यह **Queue media generation requests** (मीडिया जेनरेशन रिक्वेस्ट कतार में लगाएँ) के ऊपर काम करता है, जो **Settings → Generations → Overall Generations** (सेटिंग्स → जेनरेशन → कुल जेनरेशन) में है और डिफ़ॉल्ट रूप से चालू रहता है। वह हर अकाउंट के लिए इमेज और वीडियो के काम कतार में लगाता है। |
 | `MARINARA_MEDIA_GENERATION_WAIT_TIMEOUT_MS` | `600000` (10 मिनट) | फ़ेल होने से पहले कोई रिक्वेस्ट खाली स्लॉट का कितनी देर इंतज़ार करती है। `0` हमेशा इंतज़ार करता है। |
