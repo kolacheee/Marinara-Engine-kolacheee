@@ -198,6 +198,12 @@ export const worldEarthSchema = z
     ground: z.string().max(60000),
     rivers: z.array(earthRiver).max(400).default([]),
     cities: z.array(earthCity).max(400).default([]),
+    /** How far the open sea lies from the area's middle due west and due east, km (to 6000): how
+     *  continental its climate is past what the map shows (climate.ts). */
+    seaKm: z
+      .object({ west: z.number().min(0).max(6000), east: z.number().min(0).max(6000) })
+      .strict()
+      .optional(),
     /** The land past the map's edge (drawn round it, never walked): the same three planes over the map
      *  with `pad` cells more on every side, the rivers there (cells of that larger grid), and the lands. */
     beyond: z

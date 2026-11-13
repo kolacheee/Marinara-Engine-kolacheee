@@ -362,7 +362,31 @@ export function sampleWorldEarth(
     ground: worldEarthEncode(out),
     rivers: rivers.slice(0, 400),
     cities,
+    seaKm: earthSeaKm(data, lon, lat),
   };
+}
+
+/** How far the open sea lies due west and due east of a point, km (to 6000): the middle of three rows a
+ *  degree apart, so an inlet or a lake does not count (climate.ts reads how continental it is). */
+function earthSeaKm(data: WorldEarthData, lon: number, lat: number): { west: number; east: number } {
+  const grid = data.grid;
+  const step = 360 / grid.width;
+  const along = (rowLat: number, toward: -1 | 1) => {
+    const kmPerStep = 111.32 * step * Math.max(0.05, Math.cos((rowLat * Math.PI) / 180));
+    const gy = Math.max(0, Math.min(grid.height - 1, Math.floor((90 - rowLat) / step)));
+    const gx0 = Math.floor((lon + 180) / step);
+    const steps = Math.min(grid.width, Math.ceil(6000 / kmPerStep));
+    for (let i = 1; i <= steps; i++) {
+      const gx = (((gx0 + toward * i) % grid.width) + grid.width) % grid.width;
+      if (grid.planes[gy * grid.width + gx] === 0) return Math.min(6000, Math.round(i * kmPerStep));
+    }
+    return 6000;
+  };
+  const middle = (toward: -1 | 1) =>
+    [lat - 1, lat, lat + 1]
+      .map((rowLat) => along(Math.max(-80, Math.min(80, rowLat)), toward))
+      .sort((a, b) => a - b)[1]!;
+  return { west: middle(-1), east: middle(1) };
 }
 
 /**
