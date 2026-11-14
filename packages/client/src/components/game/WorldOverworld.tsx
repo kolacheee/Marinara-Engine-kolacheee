@@ -536,6 +536,18 @@ export function WorldOverworld({
     // ground: two edge cells drawn as different grounds, or an edge cell and the open ground past it, then
     // meet through a fringe instead of a hard cell line (the owner, 2026-11-14: "harsh lines at forest edge").
     const edgeGround: Array<string | undefined> = new Array(width * height);
+    // Only a cell at the wood's rim, with open ground beside it: a clearing inside the wood (round a place or
+    // a road) keeps its soft floor fade, never a fringed square of ground.
+    const besideOpen = (x: number, y: number) => {
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) {
+          const [nx, ny] = [x + dx, y + dy];
+          if ((dx || dy) && nx >= 0 && ny >= 0 && nx < width && ny < height && !wetCell[ny * width + nx]) {
+            if (openGround(drawnLook[ny * width + nx]!)) return true;
+          }
+        }
+      return false;
+    };
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
@@ -548,7 +560,8 @@ export function WorldOverworld({
               : wetCell[y * width + x] && softShore(x, y)
                 ? softShore(x, y)!
                 : look;
-        if (coveredLooks.has(look) && drawn !== look && !wetCell[y * width + x]) edgeGround[y * width + x] = drawn;
+        if (coveredLooks.has(look) && drawn !== look && !wetCell[y * width + x] && besideOpen(x, y))
+          edgeGround[y * width + x] = drawn;
         if (coveredLooks.has(drawn) && drawn === look) floorOf(x, y, look);
         else groundOf(x, y, drawn);
         if (water[own] && !waterEdges) {
