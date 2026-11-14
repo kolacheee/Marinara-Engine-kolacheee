@@ -1,0 +1,11 @@
+import { chromium } from "@playwright/test";
+const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+await p.goto("http://127.0.0.1:7871/"); await p.waitForTimeout(2500);
+const skip = p.getByText("Skip Tutorial"); if (await skip.count()) await skip.first().click();
+await p.getByText("Harbor test").first().click(); await p.waitForTimeout(3000);
+const info = async (tag) => console.log(tag, JSON.stringify(await p.evaluate(() => { const el = document.querySelector('[data-mari-part="top-bar"], header, .mari-top-bar'); if (!el) return null; const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return { sel: el.getAttribute("data-mari-part") || el.className.slice(0, 60), top: r.top, h: r.height, disp: cs.display, vis: cs.visibility, bg: cs.backgroundImage.slice(0, 80) }; })));
+await p.mouse.move(700, 3); await p.waitForTimeout(1200); await info("before"); console.log(await p.evaluate(() => [...document.querySelectorAll("*")].filter(e => e.scrollTop > 0).map(e => (e.tagName + "." + String(e.className).slice(0, 50) + " st=" + e.scrollTop)).concat(["win=" + scrollY])));
+await p.screenshot({ path: "shots-out/topbar-before.png" });
+const got = p.locator("button:text-is('Got it')"); if (await got.count()) await got.first().click();
+await p.waitForTimeout(1000); await info("after");
+await b.close();

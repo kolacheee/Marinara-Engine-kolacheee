@@ -1,0 +1,904 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_5d28b64af0874b94b8107b1f61e1e16e",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "z4FKwHRd_0Dze9mZmBYXo"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_5d28b64af0874b94b8107b1f61e1e16e",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"z4FKwHRd_0Dze9mZmBYXo\",\n  \"name\": \"Lanternwake Harbor\",\n  \"css\": \"/* Lanternwake Harbor. Shape: rounded plaster panels 14px; fields/buttons 8px; tags native capsules; avatars native. Border: 1px solid theme border. Shadow: soft only. Selection: tinted fill; focus: inset outline. Header retains native height on phones. Packaged day/night harbor art. */\\n:root {\\n --mari-tokens-version: 1; --radius: 0.875rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 8px;\\n --mari-app-backdrop: url(\\\"theme:harbor-day-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-day-header.webp\\\") center / cover no-repeat;\\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\\n}\\n:root, :root[data-theme=\\\"light\\\"], :root[data-mari-sky=\\\"day\\\"], :root[data-mari-sky=\\\"dawn\\\"] {\\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #d9e9e8; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #cce8ea; --accent-foreground: #173c48; --border: #8aa7ac; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #8aa7ac; --sidebar-accent: #d9e9e8; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\\n}\\n:root[data-theme=\\\"dark\\\"]:not([data-mari-sky=\\\"day\\\"]):not([data-mari-sky=\\\"dawn\\\"]), :root[data-mari-sky=\\\"night\\\"], :root[data-mari-sky=\\\"dusk\\\"] {\\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #30424a; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #3c4e54; --accent-foreground: #fff0d6; --border: #697e80; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #697e80; --sidebar-accent: #30424a; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\\n --mari-app-backdrop: url(\\\"theme:harbor-night-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-night-header.webp\\\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\\n}\\n:root[data-mari-weather=\\\"rain\\\"], :root[data-mari-weather=\\\"storm\\\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"snow\\\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"fog\\\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"message\\\"], [data-mari-part=\\\"composer\\\"] { background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 5px 18px -10px #06192366; }\\n:where(button,input,select,textarea) { border-radius: 8px; }\\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border-color: var(--input); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button,input,select,textarea,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; }\\n@media (hover:hover) { [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); } }\\n/* Native phone layout, toolbar heights, and accessibility overrides remain intact. */\",\n  \"installedAt\": \"2026-11-14T11:50:23.369Z\",\n  \"createdAt\": \"2026-11-14T11:50:23.369Z\",\n  \"updatedAt\": \"2026-11-14T11:58:37.594Z\",\n  \"isActive\": false,\n  \"meta\": {\n    \"images\": [\n      {\n        \"name\": \"harbor-day-header.webp\",\n        \"bytes\": 302994,\n        \"css\": \"url(\\\"theme:harbor-day-header.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-night-header.webp\",\n        \"bytes\": 336654,\n        \"css\": \"url(\\\"theme:harbor-night-header.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-day-background.webp\",\n        \"bytes\": 367920,\n        \"css\": \"url(\\\"theme:harbor-day-background.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-night-background.webp\",\n        \"bytes\": 280698,\n        \"css\": \"url(\\\"theme:harbor-night-background.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [],\n    \"thumbnail\": null,\n    \"packageBytes\": 1717976\n  }\n}",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_1799e1d7be6742f7bd9597d8a8e3fa36",
+   "name": "docs_search",
+   "input": {
+    "query": "dialogue backdrop-layers",
+    "limit": 2
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_1799e1d7be6742f7bd9597d8a8e3fa36",
+   "name": "docs_search",
+   "isError": false,
+   "output": "Canonical documentation matches for: dialogue backdrop-layers\n\n1. Source: docs/media/tts-setup.md — Heading: Gacha Forge dialogue and audio — Line: 210\nGacha Forge 1.11.0 or later uses the **Voice** job's selected account and its per-character voice assignments. - Turn on **Read character dialogue** to read dialogue from imported characters that have an assigned voice. It is in a new world's **Lore** setup step, or in Gacha Forge's own world settings for an existing world. Narration, thoughts, generated units without an Engine character ID and characters without a voice stay silent. A name alone never borrows another character's voice.\n\n- A selected Audio account can be used when the **Voice** job is not **Off**.\n- Stock Game music and sound effects need no generation account. To compose new tracks, turn on **Generate music and sound effec…\n\n2. Source: docs/chats/group-chats.md — Heading: Color Dialogues (Roleplay, Merged only) — Line: 49\n**Color Dialogues** is off by default. When on, each character's lines use that character's own colors from the **Colors** tab of the Character Editor. In a Conversation group, lines are colored by speaker automatically and there is no toggle.",
+   "durationMs": 39
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_94ee3359d4524f3bb52919643945cd6d",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/theme-author-guide.md",
+    "heading": "Backdrops",
+    "maxChars": 6500
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_94ee3359d4524f3bb52919643945cd6d",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/theme-author-guide.md\nHeading: Backdrops\nStarts at line: 262\n\n\nSet `--mari-app-backdrop` on `:root` to paint art behind the app:\n\n```css\n:root {\n  --mari-app-backdrop: url(\"theme:city.webp\");\n  --mari-app-backdrop-position: bottom center;\n  --mari-app-backdrop-rendering: pixelated;\n}\n```\n\nIt is drawn once, on its own fixed layer under the whole app (`[data-mari-part=\"app-backdrop\"]`, so\nHome's decorations and the light scheme never hide it), and it shows behind chats too: the roleplay,\nconversation and game surfaces go transparent and the stock chat background steps aside. A\nbackground the user picked for a chat still shows on top of it. Panels keep `--card` and\n`--sidebar`, so make those translucent if you want the art to show behind them, and use\n`--mari-page-veil` to tint full pages. To give pages a panel of their own, style\n`[data-mari-part=\"page\"]` (see Hooks): it holds every Library page, editor, Settings and Docs, so\nLorebooks gets the same panel as Characters.\n\n| Token                            | Default                                                                                                                                                                                                           |\n| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `--mari-app-backdrop`            | One image or gradient                                                                                                                                                                                             |\n| `--mari-app-backdrop-size`       | `cover` (try `auto` or `64px` for tiles)                                                                                                                                                                          |\n| `--mari-app-backdrop-position`   | `center`                                                                                                                                                                                                          |\n| `--mari-app-backdrop-repeat`     | `no-repeat`                                                                                                                                                                                                       |\n| `--mari-app-backdrop-attachment` | `fixed`                                                                                                                                                                                                           |\n| `--mari-app-backdrop-rendering`  | `auto` (`pixelated` for pixel art)                                                                                                                                                                                |\n| `--mari-app-backdrop-layers`     | A whole `background` value with several layers, such as `url(city.webp) bottom / 100% auto no-repeat, radial-gradient(#fff3 1px, transparent 1px) 0 0 / 12px 12px, #fbe3ef`. It wins over the single-image tokens |\n\nCustom images are the most flexible part of a theme: backdrops, a top bar strip, Home widget\nframes and message frames (`border-image`, or a `background` on any part hook), tiled patterns\nand bundled pixel fonts all ship inside the theme file, and the import preview lists them.\nThe user's Appearance > Accessibility > Theme art strength fades the backdrop and the ambient\noverlay, and High contrast keeps them at 25% or less; a theme can't undo either.\n",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_234b4f6d16f244388a523f7ddf719757",
+   "name": "docs_search",
+   "input": {
+    "query": "--mari-dialogue",
+    "limit": 2
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_234b4f6d16f244388a523f7ddf719757",
+   "name": "docs_search",
+   "isError": false,
+   "output": "Canonical documentation matches for: --mari-dialogue\n\n1. Source: docs/appearance/theme-author-guide.md — Heading: Theme tokens added in v1.5 — Line: 206\n| `--mari-chat-line-height`                                  | Line height of message text in every chat mode (stock 1.5). Accessibility → Line spacing still wins                                                                 |\n| `--mari-dialogue-weight`                                   | The weight of quoted speech (`[data-mari-part=\"dialogue\"]`), for example `400` so a long speech isn't a bold slab                                                   |\n| `--mari-dialogue-color`                                    | Now also shows when the theme's `--mari-chat-*` colours switch on the chat colour paint, and so do the colours a theme gives italics and links                      |\n| `--mari-pa…\n\n2. Source: docs/appearance/theme-author-guide.md — Heading: Changes — Line: 753\n- **v1.5** (theming round 5, long replies): `--mari-chat-column`, `--mari-message-measure`,\n  `--mari-chat-line-height`, `--mari-dialogue-weight`, `--mari-paragraph-gap`, pinned speaker,\n  `--mari-phone-avatar`, VN text box parts and fade, `--mari-message-actions`,\n  `--mari-swipe-counter`, `--mari-card-art-placeholder`, `--mari-chat-row-art-opacity`,\n  `--mari-focus-frame-outset`, `--mari-scrim` and `--mari-center-x`; dialogue, paragraph-gap,",
+   "durationMs": 81
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_90c5c74dd5eb4d7ea823a877f8ed6b66",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/theme-author-guide.md",
+    "heading": "Theme tokens added in v1.5",
+    "maxChars": 3500
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_90c5c74dd5eb4d7ea823a877f8ed6b66",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/theme-author-guide.md\nHeading: Theme tokens added in v1.5\nStarts at line: 206 (bounded excerpt)\n\n\nFor long replies and the bits that took internal classes before. Each does nothing until a theme\nsets it, except where a stock value is given.\n\n| Token                                                      | Used for                                                                                                                                                            |\n| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `--mari-chat-column`                                       | The roleplay column that messages and the message box share (stock 58rem). The reader's own Chat settings → Chat width still wins                                   |\n| `--mari-message-measure`                                   | The longest line of message text, for example `68ch` (roleplay and conversation)                                                                                    |\n| `--mari-chat-line-height`                                  | Line height of message text in every chat mode (stock 1.5). Accessibility → Line spacing still wins                                                                 |\n| `--mari-dialogue-weight`                                   | The weight of quoted speech (`[data-mari-part=\"dialogue\"]`), for example `400` so a long speech isn't a bold slab                                                   |\n| `--mari-dialogue-color`                                    | Now also shows when the theme's `--mari-chat-*` colours switch on the chat colour paint, and so do the colours a theme gives italics and links                      |\n| `--mari-paragraph-gap`                                     | Space between paragraphs instead of one blank line, for example `0.85em`                                                                                            |\n| `--mari-pinned-speaker`, `--mari-pinned-speaker-bg`        | `on`: the name line of a tall roleplay reply stays at the top of the chat while you scroll through it (desktop and tablet). The background defaults to the bubble's |\n| `--mari-pinned-speaker-top`, `--mari-pinned-speaker-bleed` | Where the pinned line sits (stock: the top edge of the visible chat) and how far it reaches past the text (stock 1rem)                                              |\n| `--mari-phone-avatar`                                      | `hidden`: phones drop the avatar column in roleplay, so the reply gets the whole width                                                                              |\n| `--mari-vn-fade`                                           | The fade at the foot of the VN text box while more of the paragraph is below (stock 1.75rem, `0` turns it off)                                                      |\n| `--mari-message-actions`, `--mari-swipe-counter`           | The colour of the tools under a message and of its \"2 / 5\" swipe counter                                                                                            |\n| `--mari-card-art-placeholder`                              | A whole `background` for Library cards with no picture, instead of the random-hue gradient                                                                          |\n| `--mari-chat-row-art-opacity`                              | The open chat's picture behind its row in the chats sidebar (stock 0.14; `0` hides it)\n…",
+   "durationMs": 4
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_00f56a1c8f574fe5a5986735ff256da9",
+   "name": "app_data",
+   "input": {
+    "action": "theme.update",
+    "id": "z4FKwHRd_0Dze9mZmBYXo",
+    "apply": true,
+    "reason": "Adds a clear-weather harbor background layer and readable dialogue colors while preserving the artwork, weather styling, and layout.",
+    "patch": {
+     "css": "/* Lanternwake Harbor. Shape: rounded plaster panels 14px; fields/buttons 8px; tags native capsules; avatars native. Border: 1px solid theme border. Shadow: soft only. Selection: tinted fill; focus: inset outline. Header retains native height on phones. Packaged day/night harbor art. */\n:root {\n --mari-tokens-version: 1; --radius: 0.875rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 8px;\n --mari-app-backdrop: url(\"theme:harbor-day-background.webp\"); --mari-top-bar-bg: url(\"theme:harbor-day-header.webp\") center / cover no-repeat;\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\n /* Always supply the full background layer, including in clear weather. */\n --mari-app-backdrop-layers: var(--mari-app-backdrop) center / cover no-repeat;\n --mari-dialogue-color: var(--card-foreground);\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\n}\n:root, :root[data-theme=\"light\"], :root[data-mari-sky=\"day\"], :root[data-mari-sky=\"dawn\"] {\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #d9e9e8; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #cce8ea; --accent-foreground: #173c48; --border: #8aa7ac; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #8aa7ac; --sidebar-accent: #d9e9e8; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\n}\n:root[data-theme=\"dark\"]:not([data-mari-sky=\"day\"]):not([data-mari-sky=\"dawn\"]), :root[data-mari-sky=\"night\"], :root[data-mari-sky=\"dusk\"] {\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #30424a; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #3c4e54; --accent-foreground: #fff0d6; --border: #697e80; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #697e80; --sidebar-accent: #30424a; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\n --mari-app-backdrop: url(\"theme:harbor-night-background.webp\"); --mari-top-bar-bg: url(\"theme:harbor-night-header.webp\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\n}\n:root[data-mari-weather=\"rain\"], :root[data-mari-weather=\"storm\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\n:root[data-mari-weather=\"snow\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\n:root[data-mari-weather=\"fog\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\n[data-mari-part=\"page\"], [data-mari-part=\"home-widget\"], .mari-window, .mari-drawer, [data-mari-part=\"message\"], [data-mari-part=\"composer\"] { background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 5px 18px -10px #06192366; }\n:where(button,input,select,textarea) { border-radius: 8px; }\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border-color: var(--input); }\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\n:where(button,input,select,textarea,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; }\n@media (hover:hover) { [data-mari-part=\"home-widget\"]:hover { border-color: var(--primary); } }\n/* Native phone layout, toolbar heights, and accessibility overrides remain intact. */"
+    }
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_00f56a1c8f574fe5a5986735ff256da9",
+   "name": "app_data",
+   "isError": false,
+   "output": "Readback: store-verified\nCommand: app_data theme.update\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"ok\": true,\n  \"mode\": \"apply\",\n  \"saved\": true,\n  \"status\": \"applied\",\n  \"message\": \"Applied and saved. Marinara is showing the user a change card. The store read-back confirms the persisted rows match the intended change - no separate verification read is needed; report the outcome matter-of-factly.\",\n  \"readBack\": {\n    \"status\": \"verified\",\n    \"checkedRows\": 1\n  },\n  \"validation\": {\n    \"status\": \"passed\",\n    \"errors\": [],\n    \"notices\": [],\n    \"infos\": []\n  },\n  \"summary\": {\n    \"matchedRows\": 1,\n    \"affectedRows\": 1,\n    \"insertedRows\": 0,\n    \"updatedRows\": 1,\n    \"replacedRows\": 0,\n    \"deletedRows\": 0,\n    \"affectedTables\": {\n      \"custom_themes\": 1\n    },\n    \"preview\": [\n      {\n        \"table\": \"custom_themes\",\n        \"id\": \"z4FKwHRd_0Dze9mZmBYXo\",\n        \"action\": \"update\",\n        \"before\": {\n          \"css\": \"/* Lanternwake Harbor. Shape: rounded plaster panels 14px; fields/buttons 8px; tags native capsules; avatars native. Border: 1px solid theme border. Shadow: soft only. Selection: tinted fill; focus: inset outline. Header retains native height on phones. Packaged day/night harbor art. */\\n:root {\\n --mari-tokens-version: 1; --radius: 0.875rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 8px;\\n --mari-app-backdrop: url(\\\"theme:harbor-day-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-day-header.webp\\\") center / cover no-repeat;\\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\\n}\\n:root, :root[data-theme=\\\"light\\\"], :root[data-mari-sky=\\\"day\\\"], :root[data-mari-sky=\\\"dawn\\\"] {\\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #d9e9e8; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #cce8ea; --accent-foreground: #173c48; --border: #8aa7ac; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #8aa7ac; --sidebar-accent: #d9e9e8; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\\n}\\n:root[data-theme=\\\"dark\\\"]:not([data-mari-sky=\\\"day\\\"]):not([data-mari-sky=\\\"dawn\\\"]), :root[data-mari-sky=\\\"night\\\"], :root[data-mari-sky=\\\"dusk\\\"] {\\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #30424a; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #3c4e54; --accent-foreground: #fff0d6; --border: #697e80; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #697e80; --sidebar-accent: #30424a; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\\n --mari-app-backdrop: url(\\\"theme:harbor-night-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-night-header.webp\\\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\\n}\\n:root[data-mari-weather=\\\"rain\\\"], :root[data-mari-weather=\\\"storm\\\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"snow\\\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"fog\\\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"message\\\"], [data-mari-part=\\\"composer\\\"] { background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 5px 18px -10px #06192366; }\\n:where(button,input,select,textarea) { border-radius: 8px; }\\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border-color: var(--input); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button,input,select,textarea,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; }\\n@media (hover:hover) { [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); } }\\n/* Native phone layout, toolbar heights, and accessibility overrides remain intact. */\"\n        },\n        \"after\": {\n          \"css\": \"/* Lanternwake Harbor. Shape: rounded plaster panels 14px; fields/buttons 8px; tags native capsules; avatars native. Border: 1px solid theme border. Shadow: soft only. Selection: tinted fill; focus: inset outline. Header retains native height on phones. Packaged day/night harbor art. */\\n:root {\\n --mari-tokens-version: 1; --radius: 0.875rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 8px;\\n --mari-app-backdrop: url(\\\"theme:harbor-day-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-day-header.webp\\\") center / cover no-repeat;\\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n /* Always supply the full background layer, including in clear weather. */\\n --mari-app-backdrop-layers: var(--mari-app-backdrop) center / cover no-repeat;\\n --mari-dialogue-color: var(--card-foreground);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\\n}\\n:root, :root[data-theme=\\\"light\\\"], :root[data-mari-sky=\\\"day\\\"], :root[data-mari-sky=\\\"dawn\\\"] {\\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #d9e9e8; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #cce8ea; --accent-foreground: #173c48; --border: #8aa7ac; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #8aa7ac; --sidebar-accent: #d9e9e8; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\\n}\\n:root[data-theme=\\\"dark\\\"]:not([data-mari-sky=\\\"day\\\"]):not([data-mari-sky=\\\"dawn\\\"]), :root[data-mari-sky=\\\"night\\\"], :root[data-mari-sky=\\\"dusk\\\"] {\\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #30424a; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #3c4e54; --accent-foreground: #fff0d6; --border: #697e80; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #697e80; --sidebar-accent: #30424a; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\\n --mari-app-backdrop: url(\\\"theme:harbor-night-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-night-header.webp\\\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\\n}\\n:root[data-mari-weather=\\\"rain\\\"], :root[data-mari-weather=\\\"storm\\\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"snow\\\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"fog\\\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"message\\\"], [data-mari-part=\\\"composer\\\"] { background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 5px 18px -10px #06192366; }\\n:where(button,input,select,textarea) { border-radius: 8px; }\\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border-color: var(--input); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button,input,select,textarea,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; }\\n@media (hover:hover) { [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); } }\\n/* Native phone layout, toolbar heights, and accessibility overrides remain intact. */\"\n        },\n        \"unchangedFieldsOmitted\": true\n      }\n    ],\n    \"truncated\": false\n  },\n  \"changeCard\": {\n    \"undoUntil\": \"2026-11-28T12:07:55.074Z\"\n  },\n  \"journalPath\": \"/home/kolache/Downloads/marinara-agent-handoff/mari-theme-test-data/storage/journal/2026-11-14T12-07-54-977Z_mari-db_SBzHIh8CGZbl85VUEmvt7.jsonl\"\n}",
+   "durationMs": 119
+  }
+ },
+ {
+  "type": "suggestions",
+  "data": [
+   {
+    "id": "suggestion-1",
+    "label": "Check a screenshot",
+    "prompt": "Check this screenshot of Lanternwake Harbor for any remaining background or dialogue issues.",
+    "entity": "settings"
+   },
+   {
+    "id": "suggestion-2",
+    "label": "Adjust dialogue colour",
+    "prompt": "Make Lanternwake Harbor’s dialogue a little more distinct from narration while keeping strong contrast.",
+    "entity": "settings"
+   }
+  ]
+ },
+ {
+  "type": "draft",
+  "data": "Saved "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS;"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library →"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings →"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance →"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene;"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` —"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops”"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “"
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “Theme "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “Theme tokens "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “Theme tokens added "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “Theme tokens added in "
+ },
+ {
+  "type": "draft",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “Theme tokens added in v1.5.”"
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "Saved both fixes to **Lanternwake Harbor**. The harbor no longer needs bad weather to qualify for an appearance, kek.\n\n- **Clear-weather background:** added an explicit default background layer using the appropriate day/night harbor picture. Rain, snow, and fog still apply their existing washes over it.\n- **Quoted dialogue:** set it to follow the readable message-text palette—deep blue-green on cream during daytime, warm pale text on dark panels at night.\n\nI checked the saved CSS; all four pictures, header styling, weather effects, and phone layout remain unchanged. **The theme is currently inactive**, so select it in **Library → Settings → Appearance → CSS Themes**, then choose **Keep theme** to test it.\n\nI can verify the saved changes, not the rendered screen. Please check a clear daytime scene with quoted dialogue and a clear nighttime scene; send a screenshot if either still looks wrong.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “Theme tokens added in v1.5.”"
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]

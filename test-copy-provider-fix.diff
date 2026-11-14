@@ -1,0 +1,12 @@
+diff --git a/packages/server/src/services/llm/providers/openai.provider.ts b/packages/server/src/services/llm/providers/openai.provider.ts
+index 366cbf47a..ce98b0eb6 100644
+--- a/packages/server/src/services/llm/providers/openai.provider.ts
++++ b/packages/server/src/services/llm/providers/openai.provider.ts
+@@ -2996,7 +2996,6 @@ export class OpenAIProvider extends BaseLLMProvider {
+     }
+ 
+     if (
+-      !isOpenAIChatGPT &&
+       options.tools?.length &&
+       !options.forceTextualToolCalls &&
+       !this.isXAIMultiAgentModel(options.model)

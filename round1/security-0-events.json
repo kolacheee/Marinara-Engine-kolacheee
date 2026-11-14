@@ -1,0 +1,820 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_fa916c088ad94c83a19a65a22caaf5e3",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "IPu9ybelKidyXhmttSyjP"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_fa916c088ad94c83a19a65a22caaf5e3",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"IPu9ybelKidyXhmttSyjP\",\n  \"name\": \"Rainy Café\",\n  \"css\": \"/* Rainy Café — soft ceramic panels beside a rainy window.\\nShape: containers 14px; fields/buttons 8px; tags capsule; avatars retain native shape.\\nBorders: 1px solid theme border. Shadows: soft blur only.\\nSelection: tinted fill; focus: inset ring. No motion or control relocation. */\\n:root {\\n --mari-tokens-version: 1; --radius: 0.875rem;\\n --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif;\\n --mari-selected-tint: var(--primary);\\n --mari-app-backdrop: radial-gradient(ellipse at top right, #9b7049, #302720 75%);\\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-page-veil: color-mix(in srgb, var(--background) 96%, transparent);\\n --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 8px;\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --background: #241e1a; --foreground: #f5e9d9; --card: #302721; --card-foreground: #f5e9d9; --popover: #302721; --popover-foreground: #f5e9d9;\\n --primary: #edbc7e; --primary-foreground: #2b1c0e; --secondary: #49392d; --secondary-foreground: #f5e9d9; --muted: #3b3028; --muted-foreground: #d0beaa; --accent: #514032; --accent-foreground: #fff1df;\\n --border: #7d6855; --input: #8e755e; --ring: #edbc7e; --sidebar: #29221d; --sidebar-foreground: #f5e9d9; --sidebar-border: #7d6855; --sidebar-accent: #49392d; --sidebar-accent-foreground: #fff1df; --destructive: #f5a49a; --destructive-foreground: #381512;\\n}\\n[data-theme=\\\"light\\\"] {\\n --background: #f4ebdc; --foreground: #35271f; --card: #fff8ed; --card-foreground: #35271f; --popover: #fff8ed; --popover-foreground: #35271f;\\n --primary: #854820; --primary-foreground: #fff8ed; --secondary: #ead8bf; --secondary-foreground: #35271f; --muted: #eee1cf; --muted-foreground: #705a47; --accent: #e8d3b6; --accent-foreground: #35271f;\\n --border: #ac9072; --input: #9c7b5e; --ring: #854820; --sidebar: #f5e9d7; --sidebar-foreground: #35271f; --sidebar-border: #ac9072; --sidebar-accent: #ead8bf; --sidebar-accent-foreground: #35271f; --destructive: #a43129; --destructive-foreground: #fff8ed;\\n}\\n[data-theme=\\\"dark\\\"] { color-scheme: dark; }\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer {\\n background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 5px 20px -10px #160d0866;\\n}\\n[data-mari-part=\\\"message\\\"], [data-mari-part=\\\"composer\\\"] {\\n background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 5px 20px -10px #160d0866;\\n}\\n[data-mari-part=\\\"top-bar\\\"] { background: var(--sidebar); color: var(--sidebar-foreground); border-bottom: 1px solid var(--border); }\\n:where(button, input, textarea, select) { border-radius: 8px; }\\n:where(input, textarea, select) { background-color: var(--card); color: var(--foreground); border-color: var(--input); }\\n:where(input, textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button, input, textarea, select, a):focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; }\\n@media (hover: hover) { [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); } }\",\n  \"installedAt\": \"2026-11-14T11:48:02.175Z\",\n  \"createdAt\": \"2026-11-14T11:48:02.175Z\",\n  \"updatedAt\": \"2026-11-14T11:48:02.175Z\",\n  \"isActive\": false,\n  \"meta\": null\n}",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_c12871261f784145bc21f948ac7b73b1",
+   "name": "docs_search",
+   "input": {
+    "query": "notification sound new message",
+    "limit": 3
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_c12871261f784145bc21f948ac7b73b1",
+   "name": "docs_search",
+   "isError": false,
+   "output": "Canonical documentation matches for: notification sound new message\n\n1. Source: docs/agents/memory.md — Heading: Deciding who sees new messages — Line: 225\nIn a one-by-one Roleplay group chat, Advanced Memory can decide which characters see each new message. You then do not hide every line from a character who left the scene. Merged group chats and one-character chats do not offer it.\n\n1. Turn on **Decide who sees new messages** in Advanced Memory.\n\n2. Source: docs/chats/messages.md — Heading: The message toolbar — Line: 7\n- **Edit** changes the message text.\n- **Regenerate** asks the model for a new version of an AI reply. Each version is called a swipe.\n- **Delete** removes the message.\n\n3. Source: docs/chats/messages.md — Heading: Hide a message from the AI — Line: 115\nClick **Hide from AI** to keep a message out of the prompt on later turns. The message stays visible to you with a **Hidden from AI** label. Click **Unhide from AI** to send it again.\n\nIn a Roleplay group chat, **Hide from AI** opens an avatar chooser. Pick the group avatar to hide the message from everyone, or pick one or more characters to hide it only from them. A crossed-eye marker on the message shows who cannot see it. In a one-character chat, the button hides or unhides directly.",
+   "durationMs": 127
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_8bfb50a34f68417f9ee68fd24ca32270",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/custom-css-themes.md",
+    "heading": "",
+    "maxChars": 12000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_8bfb50a34f68417f9ee68fd24ca32270",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/custom-css-themes.md\nHeading: Custom CSS Themes\nStarts at line: 1 (bounded excerpt)\n\n# Custom CSS Themes\n\nA theme changes the whole look of Marinara: colors, fonts, pictures and the shape of panels. Marinara has a gallery of ready-made starter themes you can download. You can also import a theme someone shared, or make your own.\n\nFor a quick change with no theme at all, see [Appearance Settings](appearance-settings.md) or [Ready-made chat window styles](#ready-made-chat-window-styles). To make your own theme, the [Theme Author Guide](theme-author-guide.md) walks you through it step by step.\n\n## What a custom theme is\n\nA theme is a block of CSS, the code web pages use for colors, fonts and spacing, plus any pictures and fonts it brings along. Themes are saved on your Marinara server, so a theme you install shows up on every device that connects to it. Only one theme is on at a time, and you can keep as many as you like.\n\n## Where to find themes\n\nOpen **Library → Settings → Appearance** and click **CSS Themes** in the row of sections. In the classic layout it is **Settings → Addons → Theme Library**.\n\nThe section has:\n\n- **Create Theme** and **Import File** at the top.\n- **Allow themes with HTML (I accept the risk)**, off by default. See [Themes with HTML](#themes-with-html).\n- **Installed Themes**: **Default Theme**, then your own themes, then the starter themes you downloaded.\n- **Browse the theme gallery**: the starter themes you can download.\n\n## Starter themes\n\nStarter themes aren't part of the install, so they take no space until you want one. They live in the theme gallery, and Marinara downloads a theme only when you pick it.\n\n1. Click **Browse the theme gallery** under **Installed Themes**. Marinara needs an internet connection for this.\n2. Each theme shows a preview, a short description, its size and its tags.\n3. Click **Download** next to the ones you like. They appear under **Starter themes** in **Installed Themes**, ready to switch on.\n\n| Theme | Look |\n| --- | --- |\n| **Apogee Lounge** | The observation lounge of a 1970s space liner, with a gas giant through the window and messages on moulded panels. |\n| **Dewglass** | Glossy 2000s glass: messages are gel droplets over a sunny lagoon or an aurora night. |\n| **Granite Watch** | A Cold War command post under the mountain: replies print as teleprinter paper and widgets hang on clipboards. |\n| **Gutterlight** | A rainy gothic city drawn as a crime comic, with inked panels and caption boxes. |\n| **Lantern Meadow** | Calm and very readable, with no motion. |\n| **Lantern Path** | A reading column with gentle motion. |\n| **Maple's Bramble Cottage** | A cozy cottage, with a reading column for long replies. |\n| **NEON//GRID** | Neon cyberpunk, made for long replies. |\n| **Petal OS** | A playful retro desktop with pixel fonts. |\n| **Rosalind's Folio** | A storybook layout with visual novel touches. |\n| **Swiss Poster** | Quiet, clean poster design with no motion. |\n| **Under Sail** | The deck of a sailing ship at sea: every message is a canvas sail hung from a timber yard. |\n| **Velvet Casket** | Pastel goth by day and traditional goth by night, with coffin-shaped messages. |\n\nEvery starter theme has a Dark and a Light version. The small tags under each name, such as **No motion** or **High legibility**, tell you what to expect.\n\nWhen the gallery has a newer version of a theme you downloaded, the theme shows **Update** in the gallery list. Click it to get the new version.\n\nDownloaded starter themes are read-only, so they always stay as they were made. Each has four buttons:\n\n- **(i) Credits and licences**: who made the art and fonts, and how you may reuse them.\n- **Clone + Edit** (the copy icon): makes your own copy, such as \"Petal OS (my copy)\", and opens it in the editor.\n- **Export** (the upload icon): saves the theme as a file.\n- **Remove** (the bin icon): removes the theme from this install. You can download it again from the gallery any time.\n\nYou can also get the theme files without the app: they're in the `themes` folder of the theme gallery on GitHub ([kolacheee-themes branch](https://github.com/kolacheee/Marinara-Engine-kolacheee/tree/kolacheee-themes/themes)). Download a `.json` file there and use **Import File**.\n\n## Activating a theme\n\n1. Click a theme's name in **Installed Themes**. The theme turns on in this browser tab.\n2. A bar asks **Keep this theme?** and counts down from 15 seconds. Pointing at the bar pauses the countdown.\n3. Click **Keep theme** to keep it. It now shows on your other devices too. Click **Go back**, or let the countdown run out, to return to your previous look.\n\nClick **Default Theme** to turn custom themes off. **Reset Appearance**, at the top of **Settings → Appearance → Theme**, also turns the theme off.\n\nTo use a different theme on one device only, set **Look on this device** to **Only this device** in **Settings → Appearance → Theme** first.\n\n### Getting your normal look back\n\nIf a theme makes Marinara hard to use, any of these turns it off in that tab:\n\n- Press <kbd>Esc</kbd> three times.\n- Add `?safe` to the end of the address in your browser.\n- Press <kbd>Ctrl</kbd>+<kbd>K</kbd> and type \"Custom theme\".\n\nMarinara also guards the top bar, the sidebars, <kbd>Ctrl</kbd>+<kbd>K</kbd> and the message box. A theme can restyle them, but if it hides, moves or covers one, Marinara switches the theme off in that tab and tells you why.\n\n## Importing a theme\n\n1. Click **Import File**.\n2. Choose a `.json` or `.css` theme file.\n3. A preview shows the theme's name, author, version, pictures and size, and its credits and license. It lists anything to know before you install, such as moving pictures, text the theme adds, or parts that won't work.\n4. Choose what to bring along. The preview offers the theme's suggested settings, such as its color scheme, accent color and font, with most of them ticked. It can also add the theme's backgrounds to your chat background gallery.\n5. Click **Install and try it** to switch to it straight away, or **Install** to add it to the list.\n\nIf you already have a theme with the same name, the preview offers to update it or **Keep both**. When you go back from a theme you are trying, Marinara also puts back any settings it changed.\n\nA theme can't be installed if it writes text that asks for passwords or keys, or pretends to be Marinara. Never type a key or password because a theme asks for it.\n\n### Themes with HTML\n\nSome themes add a small HTML box to every message, called a message template. Marinara removes scripts, links, images and forms from it, but HTML from someone else could still mislead you. These themes install only while **Allow themes with HTML (I accept the risk)** is on. With the switch off, an installed theme shows without its HTML.\n\n## Creating a theme\n\nClick **Create Theme**, or **Clone + Edit** on a starter theme to start from something that already looks good. The editor has a name box, a large CSS box, **Preview** and **Save**. A new theme turns on when you save it, and asks **Keep this theme?**\n\nThe [Theme Author Guide](theme-author-guide.md#your-first-theme-step-by-step) has a step-by-step walkthrough for your first theme.\n\nYou can also ask Professor Mari to build or change a theme for you, and, with an image model set up in Connections, to make its pictures. See [Ask Professor Mari to make the art](theme-author-guide.md#ask-professor-mari-to-make-the-art).\n\n## Editing, exporting and removing your themes\n\nYour own themes have three buttons on their row:\n\n- **Edit theme CSS** (the code icon) opens the editor. Editing does not change which theme is on.\n- **Export** (the upload icon) downloads a `.json` file you can share or import elsewhere.\n- **Remove** (the trash icon) deletes the theme after you confirm. This cannot be undone, so export it first if you might want it later.\n\n## A theme for one chat\n\nA chat can have its own theme:\n\n1. Open the chat and open **Chat Settings**.\n2. In **Theme**, pick a theme. **Follow the app** uses your app theme, and **Default look (no custom theme)** turns themes off for that chat.\n3. In a chat with one character, tick **Use it for every chat with this character** to make it that character's theme.\n\nSettings and the Library always use the app theme.\n\n## Who can change themes\n\nOn the computer that runs Marinara, no secret is needed. From another device, such as a phone, creating, importing, cloning, editing and removing themes needs the admin secret. Enter it in **Settings → Advanced → Security**. Picking a theme someone already installed needs no secret. See [The admin secret](../REMOTE_ACCESS.md#the-admin-secret-and-privileged-actions).\n\n## Ready-made chat window styles\n\nBefore you start: this needs no CSS.\n\n1. Open **Settings → Appearance → Chat Buttons & Windows**.\n2. Under **Chat widget style**, pick a style.\n\n| Style          | Look                                                                                                                              |\n| -------------- | --------------------------------------------------------------------------------------------------------------------------------- |\n| **Default**    | The original look.                                                                                                                |\n| **Dottore**    | Icy blue instrument frames, pale metal edges and cut corners.                                                                     |\n| **Prof. Mari** | Gold-trimmed storybook frames, gemstone blues and Primogems on window titles. Its buttons use the same background as its windows. |\n\nEach style has its own font, works in light and dark mode, and styles buttons, windows and expandable sections together. Choosing a style resets **Font**, **Shape** and all three colors. Your window positions stay.\n\nYou can change these separately:\n\n- **Font** and **Shape** follow the style (**Preset font**, **Preset shape**) until you pick another.\n- **Border & Buttons Color** changes outlines and button icons. Icons use the first color of a gradient.\n- **Background Color** fills buttons, windows, expandable sections and editable fields.\n- **Text Color** changes widget text. Gradients appear on headings and labels, and editable fields use the first color.\n\nEach color has a color picker for a solid color and a gradient option. **Reset color** beside a control follows the style's light or dark colors again. Decorative crests keep their original colors.\n\n### Carry the style into the chat\n\nThree switches below the color pickers extend the style. Each starts off and works on its own. Turning one off restores the usual chat styling for that part, and choosing another style keeps your switch choices.\n\n| Switch                  | What it applies                                                                                                                                                                                                                                                                                                      |\n| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Apply preset font**   | The widget font, for messages, input boxes and chat controls.                                                                                                                                                                                                                                                        |\n| **Apply preset shape**  | The frame shape, for Roleplay messages (classic and visual novel), the Game dialogue box, input boxes and controls. Conversation messages keep their own shape.                                                                                                                                                      |\n| **Apply pre\n…",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_deb9adf0b34a4e9cb5e3a4c11c75df7d",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/theme-author-guide.md",
+    "heading": "Safety",
+    "maxChars": 2500
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_deb9adf0b34a4e9cb5e3a4c11c75df7d",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/theme-author-guide.md\nHeading: Safety\nStarts at line: 688 (bounded excerpt)\n\n\n- The top bar (including its fullscreen auto-hide state), the chats sidebar and its chat rows, the\n  Library sidebar, Ctrl+K and the message box can be restyled, not hidden, moved, covered, faded,\n  filtered away or made unclickable. The guard measures them with and without the theme after the\n  theme loads, at 2.5 s and 10 s, when a chat opens, when a panel opens, when the colour scheme\n  changes, on resize and when one of the theme's own animations starts or ends, and switches a\n  theme off in that tab when it breaks one.\n- Pictures count (guard v3). Whatever is painted over a tab, an icon, a chat row or the message\n  box is found at the control's centre, `pointer-events: none` or not and at any size, and a layer\n  that hides it (a colour, a gradient, or a picture whose pixels there are mostly opaque) counts as\n  covering. So do a `border-image` outset that spills over a control and a picture `mask` on one.\n  Inside the top bar, every `::before` and `::after` is stacked under the labels and icons, and\n  masks, `list-style-image` and `border-image-outset` don't apply. The backdrop and the ambient\n  overlay never count: they sit under the bars by construction.\n- Guard v4 (round 4). Contrast reads the layers behind text in paint order (a `border-image`\n  fill, then each background layer from the top, then the colour), weighs each by the part of the\n  text it actually covers (size, position and repeat), and samples a picture only under the text.\n  A thin rule or a small corner ornament no longer counts, and a dark veil over a light page is\n  read as dark. The top bar and the message box are checked more strictly: their text must keep\n  3:1 at its worst spot when it had that before. A picture on a control's own `::before` or\n  `::after` that covers the control counts as covering it, in the top bar, the chat rows and the\n  message box. A `position: fixed` picture on a pseudo-element gets a warning in the editor; use\n  `position: absolute`, `--mari-ambient` or `--mari-app-backdrop` instead. When top-bar art is\n  found on a pseudo-element, the tabs and icons get their plates as with `--mari-top-bar-bg`.\n- Contrast over art: when a picture is behind text, the guard reads the picture's colours instead\n  of skipping the check.\n- Chat text (v1.5): the guard samples the last few lines on screen in the chat and switches the theme\n  off when it paints over half of them (a pseudo-element cover, a solid ambient behind the cards, or a\n  focus frame whose outset spills ov\n…",
+   "durationMs": 5
+  }
+ },
+ {
+  "type": "draft",
+  "data": "I "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS,"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor,"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ,"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n-"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:**"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead;"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:**"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism,"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:**"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture,"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.**"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` —"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,”"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”;"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; "
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; `docs/"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; `docs/appearance/"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; `docs/appearance/theme-"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; `docs/appearance/theme-author-"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; `docs/appearance/theme-author-guide.md` —"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; `docs/appearance/theme-author-guide.md` — “"
+ },
+ {
+  "type": "draft",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; `docs/appearance/theme-author-guide.md` — “Safety.”"
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "I checked **Rainy Café**: it has its saved CSS, but no packaged logo picture yet. Two parts need a different approach—CSS is decor, not a tiny nightclub DJ, kek.\n\n- **Font:** Marinara strips `@import` and blocks external font URLs. Supply the actual `.woff2` or `.woff` font file instead; it can be embedded rather than loaded from that stylesheet.\n- **Message bell:** themes cannot run scripts or play arrival sounds. That needs a separate supported notification or extension mechanism, not code tucked into the theme.\n- **Logo:** upload the logo picture, or identify the existing gallery image you mean. I can then remove its background and trim the empty edges without guessing which artwork to alter.\n\n**Nothing has been changed.** Please send the logo and font file so I can work with the actual assets.\n\nReferences: `docs/appearance/custom-css-themes.md` — “What a custom theme is,” “Themes with HTML”; `docs/appearance/theme-author-guide.md` — “Safety.”"
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]

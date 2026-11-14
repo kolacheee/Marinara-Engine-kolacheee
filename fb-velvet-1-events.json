@@ -1,0 +1,1395 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_3e3c3917e6f3459391e9d8085415924d",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_3e3c3917e6f3459391e9d8085415924d",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n  \"name\": \"Velvet Casket (my copy)\",\n  \"css\": \"[elided 57436 chars — read this field with app_data { field: \\\"css\\\" }]\",\n  \"installedAt\": \"2026-11-14T11:41:01.460Z\",\n  \"createdAt\": \"2026-11-14T11:41:01.475Z\",\n  \"updatedAt\": \"2026-11-14T11:41:01.475Z\",\n  \"isActive\": true,\n  \"meta\": {\n    \"author\": \"kolache\",\n    \"version\": \"1.6\",\n    \"description\": \"Everything is a coffin: messages stand as coffins under an iron cemetery fence. Pastel goth lilac, mint and pink by day; black and oxblood velvet by candlelight at night.\",\n    \"colorScheme\": \"both\",\n    \"settings\": {\n      \"colorScheme\": \"time\",\n      \"dayStart\": \"07:00\",\n      \"nightStart\": \"19:00\",\n      \"accent\": \"#a3213a\",\n      \"accentLight\": \"#c42d7a\",\n      \"background\": \"#0b0709\",\n      \"backgroundLight\": \"#ece2fb\",\n      \"fontFamily\": \"EB Garamond\"\n    },\n    \"credits\": [\n      {\n        \"what\": \"Backdrops, velvet, wallpaper, stickers, ornaments, weather sprites\",\n        \"by\": \"kolache, made with Codex\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Coffin frames, iron fence, finials, send icon\",\n        \"by\": \"kolache, drawn in code\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Typefaces: UnifrakturCook, EB Garamond, Cormorant SC\",\n        \"by\": \"j. 'mach' wust; Georg Duffner and Octavio Pardo; Christian Thalmann\",\n        \"license\": \"OFL-1.1\"\n      }\n    ],\n    \"license\": \"Free to reuse\",\n    \"labels\": [\n      \"Day and night\",\n      \"Pastel goth by day\",\n      \"Traditional goth by night\",\n      \"Long-reply column\"\n    ],\n    \"images\": [\n      {\n        \"name\": \"cameo-day.webp\",\n        \"bytes\": 17643,\n        \"css\": \"url(\\\"theme:cameo-day.webp\\\")\"\n      },\n      {\n        \"name\": \"cameo-night.webp\",\n        \"bytes\": 15135,\n        \"css\": \"url(\\\"theme:cameo-night.webp\\\")\"\n      },\n      {\n        \"name\": \"card-new-day.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-day.svg\\\")\"\n      },\n      {\n        \"name\": \"card-new-night.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-night.svg\\\")\"\n      },\n      {\n        \"name\": \"day-chapel.webp\",\n        \"bytes\": 211722,\n        \"css\": \"url(\\\"theme:day-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"day-pattern.webp\",\n        \"bytes\": 25146,\n        \"css\": \"url(\\\"theme:day-pattern.webp\\\")\"\n      },\n      {\n        \"name\": \"day-phone.webp\",\n        \"bytes\": 125766,\n        \"css\": \"url(\\\"theme:day-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"fence-day.svg\",\n        \"bytes\": 1407,\n        \"css\": \"url(\\\"theme:fence-day.svg\\\")\"\n      },\n      {\n        \"name\": \"fence-night.svg\",\n        \"bytes\": 1461,\n        \"css\": \"url(\\\"theme:fence-night.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-day.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-day.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-night.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-night.svg\\\")\"\n      },\n      {\n        \"name\": \"night-chapel-storm.webp\",\n        \"bytes\": 91938,\n        \"css\": \"url(\\\"theme:night-chapel-storm.webp\\\")\"\n      },\n      {\n        \"name\": \"night-chapel.webp\",\n        \"bytes\": 73578,\n        \"css\": \"url(\\\"theme:night-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"night-phone.webp\",\n        \"bytes\": 50622,\n        \"css\": \"url(\\\"theme:night-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"or-bow.webp\",\n        \"bytes\": 9213,\n        \"css\": \"url(\\\"theme:or-bow.webp\\\")\"\n      },\n      {\n        \"name\": \"or-candle.webp\",\n        \"bytes\": 4485,\n        \"css\": \"url(\\\"theme:or-candle.webp\\\")\"\n      },\n      {\n        \"name\": \"or-crest.webp\",\n        \"bytes\": 7782,\n        \"css\": \"url(\\\"theme:or-crest.webp\\\")\"\n      },\n      {\n        \"name\": \"or-cross.webp\",\n        \"bytes\": 7152,\n        \"css\": \"url(\\\"theme:or-cross.webp\\\")\"\n      },\n      {\n        \"name\": \"or-fleur.webp\",\n        \"bytes\": 7821,\n        \"css\": \"url(\\\"theme:or-fleur.webp\\\")\"\n      },\n      {\n        \"name\": \"or-rose.webp\",\n        \"bytes\": 10047,\n        \"css\": \"url(\\\"theme:or-rose.webp\\\")\"\n      },\n      {\n        \"name\": \"or-stud.webp\",\n        \"bytes\": 9132,\n        \"css\": \"url(\\\"theme:or-stud.webp\\\")\"\n      },\n      {\n        \"name\": \"rail-day.svg\",\n        \"bytes\": 384,\n        \"css\": \"url(\\\"theme:rail-day.svg\\\")\"\n      },\n      {\n        \"name\": \"rail-night.svg\",\n        \"bytes\": 507,\n        \"css\": \"url(\\\"theme:rail-night.svg\\\")\"\n      },\n      {\n        \"name\": \"send-day.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-day.svg\\\")\"\n      },\n      {\n        \"name\": \"send-night.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-night.svg\\\")\"\n      },\n      {\n        \"name\": \"st-bat.webp\",\n        \"bytes\": 8553,\n        \"css\": \"url(\\\"theme:st-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-bunny.webp\",\n        \"bytes\": 11577,\n        \"css\": \"url(\\\"theme:st-bunny.webp\\\")\"\n      },\n      {\n        \"name\": \"st-heartbat.webp\",\n        \"bytes\": 6540,\n        \"css\": \"url(\\\"theme:st-heartbat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-holo.webp\",\n        \"bytes\": 7485,\n        \"css\": \"url(\\\"theme:st-holo.webp\\\")\"\n      },\n      {\n        \"name\": \"st-skull.webp\",\n        \"bytes\": 11094,\n        \"css\": \"url(\\\"theme:st-skull.webp\\\")\"\n      },\n      {\n        \"name\": \"velvet-tile.webp\",\n        \"bytes\": 10962,\n        \"css\": \"url(\\\"theme:velvet-tile.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-bat.webp\",\n        \"bytes\": 693,\n        \"css\": \"url(\\\"theme:wx-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-batday.webp\",\n        \"bytes\": 1179,\n        \"css\": \"url(\\\"theme:wx-batday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake1.webp\",\n        \"bytes\": 3504,\n        \"css\": \"url(\\\"theme:wx-flake1.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake2.webp\",\n        \"bytes\": 3318,\n        \"css\": \"url(\\\"theme:wx-flake2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake3.webp\",\n        \"bytes\": 3312,\n        \"css\": \"url(\\\"theme:wx-flake3.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-heart.webp\",\n        \"bytes\": 2193,\n        \"css\": \"url(\\\"theme:wx-heart.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-leaf.webp\",\n        \"bytes\": 1347,\n        \"css\": \"url(\\\"theme:wx-leaf.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-moonday.webp\",\n        \"bytes\": 2184,\n        \"css\": \"url(\\\"theme:wx-moonday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal.webp\",\n        \"bytes\": 1377,\n        \"css\": \"url(\\\"theme:wx-petal.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal2.webp\",\n        \"bytes\": 1194,\n        \"css\": \"url(\\\"theme:wx-petal2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petalday.webp\",\n        \"bytes\": 1479,\n        \"css\": \"url(\\\"theme:wx-petalday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-spark.svg\",\n        \"bytes\": 672,\n        \"css\": \"url(\\\"theme:wx-spark.svg\\\")\"\n      },\n      {\n        \"name\": \"wx-starday.webp\",\n        \"bytes\": 2427,\n        \"css\": \"url(\\\"theme:wx-starday.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [\n      {\n        \"family\": \"UnifrakturCook\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 17280\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 23820\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25389\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25350\n      },\n      {\n        \"family\": \"Cormorant SC\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 20940\n      }\n    ],\n    \"thumbnail\": {\n      \"bytes\": 27066\n    },\n    \"packageBytes\": 1196477\n  }\n}\n\nNote: oversized fields were elided to fit the output limit. Read any one in full by repeating this action with field=\"<path>\" (add offset to page a long value):\n  - css (57436 chars)",
+   "durationMs": 4
+  }
+ },
+ {
+  "type": "draft",
+  "data": "I’"
+ },
+ {
+  "type": "draft",
+  "data": "I’ll "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **"
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket ("
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**"
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’"
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout, and "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout, and starter "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout, and starter original "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout, and starter original will "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout, and starter original will stay "
+ },
+ {
+  "type": "draft",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout, and starter original will stay untouched.\n"
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the clone’s pictures and image-editing options.",
+    "status": "completed"
+   },
+   {
+    "content": "Prepare a blue recolor sample preserving the original scene.",
+    "status": "completed"
+   },
+   {
+    "content": "Apply the approved blue treatment to backgrounds and matching decorations.",
+    "status": "in_progress"
+   },
+   {
+    "content": "Verify the saved pictures and preserved theme settings.",
+    "status": "pending"
+   }
+  ]
+ },
+ {
+  "type": "token",
+  "data": "I’ll apply the approved blue treatment to **Velvet Casket (my copy)**’s backgrounds and matching decorations, preserving the original scenes rather than regenerating them. The CSS, fonts, layout, and starter original will stay untouched.\n"
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "narration": true
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_59d96d59c1ef4b8499394c74db977354",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_59d96d59c1ef4b8499394c74db977354",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari images <command>\nDiscovery: connections [--edit], capabilities [--edit], list assets|backgrounds|sprites|chat-gallery|character-gallery, get <asset-id>\nHITL preview: preview --operation generate|edit --prompt <text> [--target <target>] [--source <asset|url|file>] [--connection <id|name|default>]\nCreate preview asset: generate --prompt <text> [--target <target>] [--width <n>] [--height <n>] [--count 1-4] (--count makes that many versions in one go, one request each, for the user to pick from)\nTheme art: generate --prompt <text> --target theme-image --theme <theme-id> --name <name> [--width <n>] [--height <n>] (prompt sent exactly as written: the user's style profiles and prompt prefixes are left out; --verbatim does the same for any target)\nAdjust a picture without an image model (new preview asset, original kept): adjust --source <asset|url|file> [--crop left,top,width,height (px or %)] [--trim] [--transparent [auto|#hex] --tolerance 0-255 [--everywhere]] [--resize WxH|N --fit inside|cover|fill] [--flip horizontal|vertical|both] [--rotate 90|180|270] [--tint #hex]\nCreate edited preview asset: edit --prompt <text> (--source <asset|url|file> | --target <existing-image-target>) [--connection <edit-capable>]\nApply: assign --asset <asset-id> --target character-avatar --character <id>\nApply: assign --asset <asset-id> --target persona-avatar --persona <id>\nApply: assign --asset <asset-id> --target lorebook-image --lorebook <id>\nApply: assign --asset <asset-id> --target sprite --character <id> --expression happy\nApply: assign --asset <asset-id> --target background --name <name> [--tags a,b]\nApply: assign --asset <asset-id> --target chat-gallery --chat <id>\nApply: assign --asset <asset-id> --target character-gallery --character <id>\nApply: assign --asset <asset-id> --target theme-image --theme <theme-id> --name night-sky.webp (saved as WebP in the theme; its CSS uses url(\"theme:night-sky.webp\"))\nDelete/clear: delete --target asset|character-avatar|persona-avatar|lorebook-image|sprite|background|chat-gallery|character-gallery|theme-image ...\nNotes: preview never generates or saves. generate/edit save a review asset only. assign/delete mutate app image state.",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_36b8e5fe277141bf97bcef15bf1b350d",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-chapel.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_36b8e5fe277141bf97bcef15bf1b350d",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-chapel.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"SVbh2hqWVbwZ2JRdHtVZ7\",\n    \"filename\": \"mari-SVbh2hqWVbwZ2JRdHtVZ7.png\",\n    \"filePath\": \"mari-images/mari-SVbh2hqWVbwZ2JRdHtVZ7.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-SVbh2hqWVbwZ2JRdHtVZ7.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 1920,\n    \"height\": 1080,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:22.954Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 1920×1080\"\n  ],\n  \"width\": 1920,\n  \"height\": 1080,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-chapel.webp\"\n  }\n}",
+   "durationMs": 342
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_6d29aca2b7704a7b87a581a5d7691e81",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-phone.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_6d29aca2b7704a7b87a581a5d7691e81",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-phone.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"9R2_bCU65m8bORxIMBoUi\",\n    \"filename\": \"mari-9R2_bCU65m8bORxIMBoUi.png\",\n    \"filePath\": \"mari-images/mari-9R2_bCU65m8bORxIMBoUi.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-9R2_bCU65m8bORxIMBoUi.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 852,\n    \"height\": 1846,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.196Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 852×1846\"\n  ],\n  \"width\": 852,\n  \"height\": 1846,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-phone.webp\"\n  }\n}",
+   "durationMs": 242
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_3789ef58bcfa428f8bdd48214484d3d0",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-phone.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_3789ef58bcfa428f8bdd48214484d3d0",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-phone.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"lH3t53iUnQzJT7yfFfYDa\",\n    \"filename\": \"mari-lH3t53iUnQzJT7yfFfYDa.png\",\n    \"filePath\": \"mari-images/mari-lH3t53iUnQzJT7yfFfYDa.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-lH3t53iUnQzJT7yfFfYDa.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 852,\n    \"height\": 1846,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.396Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 852×1846\"\n  ],\n  \"width\": 852,\n  \"height\": 1846,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-phone.webp\"\n  }\n}",
+   "durationMs": 200
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_4cfe632049c140cf8f8b6573885454e5",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-chapel-storm.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_4cfe632049c140cf8f8b6573885454e5",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-chapel-storm.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"HgpWEODIf-rz_voaNJwUW\",\n    \"filename\": \"mari-HgpWEODIf-rz_voaNJwUW.png\",\n    \"filePath\": \"mari-images/mari-HgpWEODIf-rz_voaNJwUW.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-HgpWEODIf-rz_voaNJwUW.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 1672,\n    \"height\": 941,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.714Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 1672×941\"\n  ],\n  \"width\": 1672,\n  \"height\": 941,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-chapel-storm.webp\"\n  }\n}",
+   "durationMs": 318
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_59bc09960c0e46c28819ea0d697c4ae9",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-pattern.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_59bc09960c0e46c28819ea0d697c4ae9",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-pattern.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"Uk1I-v3-MW4_396DrKdrx\",\n    \"filename\": \"mari-Uk1I-v3-MW4_396DrKdrx.png\",\n    \"filePath\": \"mari-images/mari-Uk1I-v3-MW4_396DrKdrx.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-Uk1I-v3-MW4_396DrKdrx.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 512,\n    \"height\": 512,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.751Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 512×512\"\n  ],\n  \"width\": 512,\n  \"height\": 512,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-pattern.webp\"\n  }\n}",
+   "durationMs": 36
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_708a9cac108c40b5a15463e4135ad616",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name velvet-tile.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_708a9cac108c40b5a15463e4135ad616",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name velvet-tile.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"v34boPGKSrM8Jjok0eJ03\",\n    \"filename\": \"mari-v34boPGKSrM8Jjok0eJ03.png\",\n    \"filePath\": \"mari-images/mari-v34boPGKSrM8Jjok0eJ03.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-v34boPGKSrM8Jjok0eJ03.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 512,\n    \"height\": 512,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.806Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 512×512\"\n  ],\n  \"width\": 512,\n  \"height\": 512,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"velvet-tile.webp\"\n  }\n}",
+   "durationMs": 56
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_eda43cbb94054798b08302e2e8a234bf",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name cameo-day.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_eda43cbb94054798b08302e2e8a234bf",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name cameo-day.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"hdTYM40W3zmZykejUTFl3\",\n    \"filename\": \"mari-hdTYM40W3zmZykejUTFl3.png\",\n    \"filePath\": \"mari-images/mari-hdTYM40W3zmZykejUTFl3.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-hdTYM40W3zmZykejUTFl3.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 171,\n    \"height\": 240,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.825Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 171×240\"\n  ],\n  \"width\": 171,\n  \"height\": 240,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"cameo-day.webp\"\n  }\n}",
+   "durationMs": 18
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_b748c7d5c58d49658004cdd23c5456a0",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name cameo-night.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_b748c7d5c58d49658004cdd23c5456a0",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name cameo-night.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"aiVB6Kb2oMGVxdg9VeTpR\",\n    \"filename\": \"mari-aiVB6Kb2oMGVxdg9VeTpR.png\",\n    \"filePath\": \"mari-images/mari-aiVB6Kb2oMGVxdg9VeTpR.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-aiVB6Kb2oMGVxdg9VeTpR.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 148,\n    \"height\": 240,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.842Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 148×240\"\n  ],\n  \"width\": 148,\n  \"height\": 240,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"cameo-night.webp\"\n  }\n}",
+   "durationMs": 17
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_207ac06cfa8c45f8abfa09c18188c6ca",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name or-rose.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_207ac06cfa8c45f8abfa09c18188c6ca",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name or-rose.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"yhqBOHfHo1WW6kmTD7qyM\",\n    \"filename\": \"mari-yhqBOHfHo1WW6kmTD7qyM.png\",\n    \"filePath\": \"mari-images/mari-yhqBOHfHo1WW6kmTD7qyM.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-yhqBOHfHo1WW6kmTD7qyM.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 150,\n    \"height\": 147,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.856Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 150×147\"\n  ],\n  \"width\": 150,\n  \"height\": 147,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"or-rose.webp\"\n  }\n}",
+   "durationMs": 13
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_06df309462f248969f6976a24ec13833",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name or-bow.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_06df309462f248969f6976a24ec13833",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name or-bow.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"agITiZNrKsUEjKbwiDcpC\",\n    \"filename\": \"mari-agITiZNrKsUEjKbwiDcpC.png\",\n    \"filePath\": \"mari-images/mari-agITiZNrKsUEjKbwiDcpC.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-agITiZNrKsUEjKbwiDcpC.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 139,\n    \"height\": 150,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:10:23.870Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 139×150\"\n  ],\n  \"width\": 139,\n  \"height\": 150,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"or-bow.webp\"\n  }\n}",
+   "durationMs": 13
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_d2591a59963f45c18c45a3f06d3f6bd5",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset lR9BBmVZVAuzzY7U17pV0 --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-chapel.webp --apply --reason \"Recolors the night chapel blue while preserving its scene.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_d2591a59963f45c18c45a3f06d3f6bd5",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset lR9BBmVZVAuzzY7U17pV0 --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-chapel.webp --apply --reason \"Recolors the night chapel blue while preserving its scene.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:lR9BBmVZVAuzzY7U17pV0\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-chapel.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-chapel.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:night-chapel.webp\\\")\",\n    \"width\": 1672,\n    \"height\": 941,\n    \"animated\": false,\n    \"bytes\": 104408,\n    \"packageBytes\": 1237585,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 193
+  }
+ },
+ {
+  "type": "suggestions",
+  "data": [
+   {
+    "id": "suggestion-1",
+    "label": "Check the finished look",
+    "prompt": "Help me check the blue Velvet Casket theme on my phone.",
+    "entity": "settings"
+   },
+   {
+    "id": "suggestion-2",
+    "label": "Adjust the blue",
+    "prompt": "Make the blue artwork in Velvet Casket (my copy) a little less saturated.",
+    "entity": "settings"
+   }
+  ]
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_d6d37d1e31664db09abd7dd7cb2dde1e",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset SVbh2hqWVbwZ2JRdHtVZ7 --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-chapel.webp --apply --reason \"Matches the daytime chapel to the approved blue artwork.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_d6d37d1e31664db09abd7dd7cb2dde1e",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset SVbh2hqWVbwZ2JRdHtVZ7 --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-chapel.webp --apply --reason \"Matches the daytime chapel to the approved blue artwork.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:SVbh2hqWVbwZ2JRdHtVZ7\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-chapel.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-chapel.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:day-chapel.webp\\\")\",\n    \"width\": 1920,\n    \"height\": 1080,\n    \"animated\": false,\n    \"bytes\": 276970,\n    \"packageBytes\": 1324585,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 250
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_507b3944daeb4cc7ac5b33c63d8f6aaf",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset 9R2_bCU65m8bORxIMBoUi --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-phone.webp --apply --reason \"Recolors the daytime phone background blue without changing its crop.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_507b3944daeb4cc7ac5b33c63d8f6aaf",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset 9R2_bCU65m8bORxIMBoUi --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-phone.webp --apply --reason \"Recolors the daytime phone background blue without changing its crop.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:9R2_bCU65m8bORxIMBoUi\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-phone.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-phone.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:day-phone.webp\\\")\",\n    \"width\": 852,\n    \"height\": 1846,\n    \"animated\": false,\n    \"bytes\": 168740,\n    \"packageBytes\": 1381885,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 196
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_5cf8f8b82b7d4ed288b3df40e5d8a0ae",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset lH3t53iUnQzJT7yfFfYDa --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-phone.webp --apply --reason \"Recolors the nighttime phone background blue without changing its crop.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_5cf8f8b82b7d4ed288b3df40e5d8a0ae",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset lH3t53iUnQzJT7yfFfYDa --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-phone.webp --apply --reason \"Recolors the nighttime phone background blue without changing its crop.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:lH3t53iUnQzJT7yfFfYDa\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-phone.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-phone.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:night-phone.webp\\\")\",\n    \"width\": 852,\n    \"height\": 1846,\n    \"animated\": false,\n    \"bytes\": 77862,\n    \"packageBytes\": 1418205,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 185
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_91ee6508cb6744db94eb9e9b1138e251",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset HgpWEODIf-rz_voaNJwUW --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-chapel-storm.webp --apply --reason \"Matches the storm background to the blue chapel artwork.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_91ee6508cb6744db94eb9e9b1138e251",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset HgpWEODIf-rz_voaNJwUW --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-chapel-storm.webp --apply --reason \"Matches the storm background to the blue chapel artwork.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:HgpWEODIf-rz_voaNJwUW\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-chapel-storm.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-chapel-storm.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:night-chapel-storm.webp\\\")\",\n    \"width\": 1672,\n    \"height\": 941,\n    \"animated\": false,\n    \"bytes\": 140650,\n    \"packageBytes\": 1483157,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 221
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_a888786f4b884d22a2275f9b7d10c616",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset Uk1I-v3-MW4_396DrKdrx --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-pattern.webp --apply --reason \"Matches the wallpaper pattern to the approved blue palette.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_a888786f4b884d22a2275f9b7d10c616",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset Uk1I-v3-MW4_396DrKdrx --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name day-pattern.webp --apply --reason \"Matches the wallpaper pattern to the approved blue palette.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:Uk1I-v3-MW4_396DrKdrx\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-pattern.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"day-pattern.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:day-pattern.webp\\\")\",\n    \"width\": 512,\n    \"height\": 512,\n    \"animated\": false,\n    \"bytes\": 53020,\n    \"packageBytes\": 1520325,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 136
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_f7ba5f79e98040a0a22cc54f14489974",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset v34boPGKSrM8Jjok0eJ03 --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name velvet-tile.webp --apply --reason \"Recolors the velvet texture blue while keeping the fabric detail.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_f7ba5f79e98040a0a22cc54f14489974",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset v34boPGKSrM8Jjok0eJ03 --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name velvet-tile.webp --apply --reason \"Recolors the velvet texture blue while keeping the fabric detail.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:v34boPGKSrM8Jjok0eJ03\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"velvet-tile.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"velvet-tile.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:velvet-tile.webp\\\")\",\n    \"width\": 512,\n    \"height\": 512,\n    \"animated\": false,\n    \"bytes\": 63864,\n    \"packageBytes\": 1590861,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 338
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_25d9e62a7b534b12a9d47b20acfeecad",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset hdTYM40W3zmZykejUTFl3 --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name cameo-day.webp --apply --reason \"Matches the daytime cameo to the blue decorations.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_25d9e62a7b534b12a9d47b20acfeecad",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset hdTYM40W3zmZykejUTFl3 --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name cameo-day.webp --apply --reason \"Matches the daytime cameo to the blue decorations.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:hdTYM40W3zmZykejUTFl3\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"cameo-day.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"cameo-day.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:cameo-day.webp\\\")\",\n    \"width\": 171,\n    \"height\": 240,\n    \"animated\": false,\n    \"bytes\": 31648,\n    \"packageBytes\": 1609537,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 124
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_bbfb39cac6194c058c5c39888556eace",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset aiVB6Kb2oMGVxdg9VeTpR --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name cameo-night.webp --apply --reason \"Matches the nighttime cameo to the blue decorations.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_bbfb39cac6194c058c5c39888556eace",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset aiVB6Kb2oMGVxdg9VeTpR --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name cameo-night.webp --apply --reason \"Matches the nighttime cameo to the blue decorations.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:aiVB6Kb2oMGVxdg9VeTpR\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"cameo-night.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"cameo-night.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:cameo-night.webp\\\")\",\n    \"width\": 148,\n    \"height\": 240,\n    \"animated\": false,\n    \"bytes\": 30342,\n    \"packageBytes\": 1629813,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 118
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_fb9d466293074702ab51a24ec8b245ac",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset yhqBOHfHo1WW6kmTD7qyM --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name or-rose.webp --apply --reason \"Recolors the rose ornament blue while preserving its shape.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_fb9d466293074702ab51a24ec8b245ac",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset yhqBOHfHo1WW6kmTD7qyM --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name or-rose.webp --apply --reason \"Recolors the rose ornament blue while preserving its shape.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:yhqBOHfHo1WW6kmTD7qyM\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"or-rose.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"or-rose.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:or-rose.webp\\\")\",\n    \"width\": 150,\n    \"height\": 147,\n    \"animated\": false,\n    \"bytes\": 20862,\n    \"packageBytes\": 1644233,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 133
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_7180a541c4c746799d8cd60d46830b87",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset agITiZNrKsUEjKbwiDcpC --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name or-bow.webp --apply --reason \"Matches the bow ornament to the approved blue artwork.\"",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_7180a541c4c746799d8cd60d46830b87",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset agITiZNrKsUEjKbwiDcpC --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name or-bow.webp --apply --reason \"Matches the bow ornament to the approved blue artwork.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:agITiZNrKsUEjKbwiDcpC\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"or-bow.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"or-bow.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:or-bow.webp\\\")\",\n    \"width\": 139,\n    \"height\": 150,\n    \"animated\": false,\n    \"bytes\": 18500,\n    \"packageBytes\": 1656617,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"cameo-day.webp\",\n      \"cameo-night.webp\",\n      \"card-new-day.svg\",\n      \"card-new-night.svg\",\n      \"day-chapel.webp\",\n      \"day-pattern.webp\",\n      \"day-phone.webp\",\n      \"fence-day.svg\",\n      \"fence-night.svg\",\n      \"lid-day.svg\",\n      \"lid-night.svg\",\n      \"night-chapel-storm.webp\",\n      \"night-chapel.webp\",\n      \"night-phone.webp\",\n      \"or-bow.webp\",\n      \"or-candle.webp\",\n      \"or-crest.webp\",\n      \"or-cross.webp\",\n      \"or-fleur.webp\",\n      \"or-rose.webp\",\n      \"or-stud.webp\",\n      \"rail-day.svg\",\n      \"rail-night.svg\",\n      \"send-day.svg\",\n      \"send-night.svg\",\n      \"st-bat.webp\",\n      \"st-bunny.webp\",\n      \"st-heartbat.webp\",\n      \"st-holo.webp\",\n      \"st-skull.webp\",\n      \"velvet-tile.webp\",\n      \"wx-bat.webp\",\n      \"wx-batday.webp\",\n      \"wx-flake1.webp\",\n      \"wx-flake2.webp\",\n      \"wx-flake3.webp\",\n      \"wx-heart.webp\",\n      \"wx-leaf.webp\",\n      \"wx-moonday.webp\",\n      \"wx-petal.webp\",\n      \"wx-petal2.webp\",\n      \"wx-petalday.webp\",\n      \"wx-spark.svg\",\n      \"wx-starday.webp\"\n    ]\n  }\n}",
+   "durationMs": 107
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_66461c3da302406c9bb6771c9c297a64",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_66461c3da302406c9bb6771c9c297a64",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n  \"name\": \"Velvet Casket (my copy)\",\n  \"css\": \"[elided 57436 chars — read this field with app_data { field: \\\"css\\\" }]\",\n  \"installedAt\": \"2026-11-14T11:41:01.460Z\",\n  \"createdAt\": \"2026-11-14T11:41:01.475Z\",\n  \"updatedAt\": \"2026-11-14T12:11:25.226Z\",\n  \"isActive\": true,\n  \"meta\": {\n    \"author\": \"kolache\",\n    \"version\": \"1.6\",\n    \"description\": \"Everything is a coffin: messages stand as coffins under an iron cemetery fence. Pastel goth lilac, mint and pink by day; black and oxblood velvet by candlelight at night.\",\n    \"colorScheme\": \"both\",\n    \"settings\": {\n      \"colorScheme\": \"time\",\n      \"dayStart\": \"07:00\",\n      \"nightStart\": \"19:00\",\n      \"accent\": \"#a3213a\",\n      \"accentLight\": \"#c42d7a\",\n      \"background\": \"#0b0709\",\n      \"backgroundLight\": \"#ece2fb\",\n      \"fontFamily\": \"EB Garamond\"\n    },\n    \"credits\": [\n      {\n        \"what\": \"Backdrops, velvet, wallpaper, stickers, ornaments, weather sprites\",\n        \"by\": \"kolache, made with Codex\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Coffin frames, iron fence, finials, send icon\",\n        \"by\": \"kolache, drawn in code\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Typefaces: UnifrakturCook, EB Garamond, Cormorant SC\",\n        \"by\": \"j. 'mach' wust; Georg Duffner and Octavio Pardo; Christian Thalmann\",\n        \"license\": \"OFL-1.1\"\n      }\n    ],\n    \"license\": \"Free to reuse\",\n    \"labels\": [\n      \"Day and night\",\n      \"Pastel goth by day\",\n      \"Traditional goth by night\",\n      \"Long-reply column\"\n    ],\n    \"images\": [\n      {\n        \"name\": \"cameo-day.webp\",\n        \"bytes\": 31650,\n        \"css\": \"url(\\\"theme:cameo-day.webp\\\")\"\n      },\n      {\n        \"name\": \"cameo-night.webp\",\n        \"bytes\": 30342,\n        \"css\": \"url(\\\"theme:cameo-night.webp\\\")\"\n      },\n      {\n        \"name\": \"card-new-day.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-day.svg\\\")\"\n      },\n      {\n        \"name\": \"card-new-night.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-night.svg\\\")\"\n      },\n      {\n        \"name\": \"day-chapel.webp\",\n        \"bytes\": 276972,\n        \"css\": \"url(\\\"theme:day-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"day-pattern.webp\",\n        \"bytes\": 53022,\n        \"css\": \"url(\\\"theme:day-pattern.webp\\\")\"\n      },\n      {\n        \"name\": \"day-phone.webp\",\n        \"bytes\": 168741,\n        \"css\": \"url(\\\"theme:day-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"fence-day.svg\",\n        \"bytes\": 1407,\n        \"css\": \"url(\\\"theme:fence-day.svg\\\")\"\n      },\n      {\n        \"name\": \"fence-night.svg\",\n        \"bytes\": 1461,\n        \"css\": \"url(\\\"theme:fence-night.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-day.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-day.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-night.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-night.svg\\\")\"\n      },\n      {\n        \"name\": \"night-chapel-storm.webp\",\n        \"bytes\": 140652,\n        \"css\": \"url(\\\"theme:night-chapel-storm.webp\\\")\"\n      },\n      {\n        \"name\": \"night-chapel.webp\",\n        \"bytes\": 104409,\n        \"css\": \"url(\\\"theme:night-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"night-phone.webp\",\n        \"bytes\": 77862,\n        \"css\": \"url(\\\"theme:night-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"or-bow.webp\",\n        \"bytes\": 18501,\n        \"css\": \"url(\\\"theme:or-bow.webp\\\")\"\n      },\n      {\n        \"name\": \"or-candle.webp\",\n        \"bytes\": 4485,\n        \"css\": \"url(\\\"theme:or-candle.webp\\\")\"\n      },\n      {\n        \"name\": \"or-crest.webp\",\n        \"bytes\": 7782,\n        \"css\": \"url(\\\"theme:or-crest.webp\\\")\"\n      },\n      {\n        \"name\": \"or-cross.webp\",\n        \"bytes\": 7152,\n        \"css\": \"url(\\\"theme:or-cross.webp\\\")\"\n      },\n      {\n        \"name\": \"or-fleur.webp\",\n        \"bytes\": 7821,\n        \"css\": \"url(\\\"theme:or-fleur.webp\\\")\"\n      },\n      {\n        \"name\": \"or-rose.webp\",\n        \"bytes\": 20862,\n        \"css\": \"url(\\\"theme:or-rose.webp\\\")\"\n      },\n      {\n        \"name\": \"or-stud.webp\",\n        \"bytes\": 9132,\n        \"css\": \"url(\\\"theme:or-stud.webp\\\")\"\n      },\n      {\n        \"name\": \"rail-day.svg\",\n        \"bytes\": 384,\n        \"css\": \"url(\\\"theme:rail-day.svg\\\")\"\n      },\n      {\n        \"name\": \"rail-night.svg\",\n        \"bytes\": 507,\n        \"css\": \"url(\\\"theme:rail-night.svg\\\")\"\n      },\n      {\n        \"name\": \"send-day.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-day.svg\\\")\"\n      },\n      {\n        \"name\": \"send-night.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-night.svg\\\")\"\n      },\n      {\n        \"name\": \"st-bat.webp\",\n        \"bytes\": 8553,\n        \"css\": \"url(\\\"theme:st-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-bunny.webp\",\n        \"bytes\": 11577,\n        \"css\": \"url(\\\"theme:st-bunny.webp\\\")\"\n      },\n      {\n        \"name\": \"st-heartbat.webp\",\n        \"bytes\": 6540,\n        \"css\": \"url(\\\"theme:st-heartbat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-holo.webp\",\n        \"bytes\": 7485,\n        \"css\": \"url(\\\"theme:st-holo.webp\\\")\"\n      },\n      {\n        \"name\": \"st-skull.webp\",\n        \"bytes\": 11094,\n        \"css\": \"url(\\\"theme:st-skull.webp\\\")\"\n      },\n      {\n        \"name\": \"velvet-tile.webp\",\n        \"bytes\": 63864,\n        \"css\": \"url(\\\"theme:velvet-tile.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-bat.webp\",\n        \"bytes\": 693,\n        \"css\": \"url(\\\"theme:wx-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-batday.webp\",\n        \"bytes\": 1179,\n        \"css\": \"url(\\\"theme:wx-batday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake1.webp\",\n        \"bytes\": 3504,\n        \"css\": \"url(\\\"theme:wx-flake1.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake2.webp\",\n        \"bytes\": 3318,\n        \"css\": \"url(\\\"theme:wx-flake2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake3.webp\",\n        \"bytes\": 3312,\n        \"css\": \"url(\\\"theme:wx-flake3.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-heart.webp\",\n        \"bytes\": 2193,\n        \"css\": \"url(\\\"theme:wx-heart.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-leaf.webp\",\n        \"bytes\": 1347,\n        \"css\": \"url(\\\"theme:wx-leaf.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-moonday.webp\",\n        \"bytes\": 2184,\n        \"css\": \"url(\\\"theme:wx-moonday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal.webp\",\n        \"bytes\": 1377,\n        \"css\": \"url(\\\"theme:wx-petal.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal2.webp\",\n        \"bytes\": 1194,\n        \"css\": \"url(\\\"theme:wx-petal2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petalday.webp\",\n        \"bytes\": 1479,\n        \"css\": \"url(\\\"theme:wx-petalday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-spark.svg\",\n        \"bytes\": 672,\n        \"css\": \"url(\\\"theme:wx-spark.svg\\\")\"\n      },\n      {\n        \"name\": \"wx-starday.webp\",\n        \"bytes\": 2427,\n        \"css\": \"url(\\\"theme:wx-starday.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [\n      {\n        \"family\": \"UnifrakturCook\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 17280\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 23820\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25389\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25350\n      },\n      {\n        \"family\": \"Cormorant SC\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 20940\n      }\n    ],\n    \"thumbnail\": {\n      \"bytes\": 27066\n    },\n    \"packageBytes\": 1656617\n  }\n}\n\nNote: oversized fields were elided to fit the output limit. Read any one in full by repeating this action with field=\"<path>\" (add offset to page a long value):\n  - css (57436 chars)",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the clone’s pictures and image-editing options.",
+    "status": "completed"
+   },
+   {
+    "content": "Prepare a blue recolor sample preserving the original scene.",
+    "status": "completed"
+   },
+   {
+    "content": "Apply the approved blue treatment to backgrounds and matching decorations.",
+    "status": "completed"
+   },
+   {
+    "content": "Verify the saved pictures and preserved theme settings.",
+    "status": "completed"
+   }
+  ]
+ },
+ {
+  "type": "draft",
+  "data": "**"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket ("
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)**"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved;"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets,"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, but "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, but can’"
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, but can’t "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, but can’t inspect "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, but can’t inspect the "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, but can’t inspect the rendered "
+ },
+ {
+  "type": "draft",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, but can’t inspect the rendered screen "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "**Velvet Casket (my copy)** now has the approved blue artwork saved in the theme—not just sitting in the gallery. Same gothic scenes, colder blood, kek.\n\nI replaced **11 pictures**:\n- Day, night, and storm chapel backgrounds.\n- Day and night phone backgrounds.\n- Wallpaper and velvet textures.\n- Both cameos, the rose, and the bow.\n\nThe treatment recolors the whole image, including its lighting, as in the sample you approved. Scenes, dimensions, and crops are preserved; nothing was regenerated.\n\nI checked the saved picture package. Your existing CSS, fonts, layout, and other assets were left untouched, and **the clone remains active**. The starter original is unchanged.\n\nPlease check the desktop chapel and phone background in both day and night. I verified the saved assets, but can’t inspect the rendered screen here."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]

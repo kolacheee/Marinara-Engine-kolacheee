@@ -1,0 +1,983 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_c00c34a0b6ec45428eba0a4c67650d07",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_c00c34a0b6ec45428eba0a4c67650d07",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n  \"name\": \"Velvet Casket (my copy)\",\n  \"css\": \"[elided 57436 chars — read this field with app_data { field: \\\"css\\\" }]\",\n  \"installedAt\": \"2026-11-14T11:41:01.460Z\",\n  \"createdAt\": \"2026-11-14T11:41:01.475Z\",\n  \"updatedAt\": \"2026-11-14T11:41:01.475Z\",\n  \"isActive\": false,\n  \"meta\": {\n    \"author\": \"kolache\",\n    \"version\": \"1.6\",\n    \"description\": \"Everything is a coffin: messages stand as coffins under an iron cemetery fence. Pastel goth lilac, mint and pink by day; black and oxblood velvet by candlelight at night.\",\n    \"colorScheme\": \"both\",\n    \"settings\": {\n      \"colorScheme\": \"time\",\n      \"dayStart\": \"07:00\",\n      \"nightStart\": \"19:00\",\n      \"accent\": \"#a3213a\",\n      \"accentLight\": \"#c42d7a\",\n      \"background\": \"#0b0709\",\n      \"backgroundLight\": \"#ece2fb\",\n      \"fontFamily\": \"EB Garamond\"\n    },\n    \"credits\": [\n      {\n        \"what\": \"Backdrops, velvet, wallpaper, stickers, ornaments, weather sprites\",\n        \"by\": \"kolache, made with Codex\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Coffin frames, iron fence, finials, send icon\",\n        \"by\": \"kolache, drawn in code\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Typefaces: UnifrakturCook, EB Garamond, Cormorant SC\",\n        \"by\": \"j. 'mach' wust; Georg Duffner and Octavio Pardo; Christian Thalmann\",\n        \"license\": \"OFL-1.1\"\n      }\n    ],\n    \"license\": \"Free to reuse\",\n    \"labels\": [\n      \"Day and night\",\n      \"Pastel goth by day\",\n      \"Traditional goth by night\",\n      \"Long-reply column\"\n    ],\n    \"images\": [\n      {\n        \"name\": \"cameo-day.webp\",\n        \"bytes\": 17643,\n        \"css\": \"url(\\\"theme:cameo-day.webp\\\")\"\n      },\n      {\n        \"name\": \"cameo-night.webp\",\n        \"bytes\": 15135,\n        \"css\": \"url(\\\"theme:cameo-night.webp\\\")\"\n      },\n      {\n        \"name\": \"card-new-day.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-day.svg\\\")\"\n      },\n      {\n        \"name\": \"card-new-night.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-night.svg\\\")\"\n      },\n      {\n        \"name\": \"day-chapel.webp\",\n        \"bytes\": 211722,\n        \"css\": \"url(\\\"theme:day-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"day-pattern.webp\",\n        \"bytes\": 25146,\n        \"css\": \"url(\\\"theme:day-pattern.webp\\\")\"\n      },\n      {\n        \"name\": \"day-phone.webp\",\n        \"bytes\": 125766,\n        \"css\": \"url(\\\"theme:day-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"fence-day.svg\",\n        \"bytes\": 1407,\n        \"css\": \"url(\\\"theme:fence-day.svg\\\")\"\n      },\n      {\n        \"name\": \"fence-night.svg\",\n        \"bytes\": 1461,\n        \"css\": \"url(\\\"theme:fence-night.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-day.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-day.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-night.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-night.svg\\\")\"\n      },\n      {\n        \"name\": \"night-chapel-storm.webp\",\n        \"bytes\": 91938,\n        \"css\": \"url(\\\"theme:night-chapel-storm.webp\\\")\"\n      },\n      {\n        \"name\": \"night-chapel.webp\",\n        \"bytes\": 73578,\n        \"css\": \"url(\\\"theme:night-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"night-phone.webp\",\n        \"bytes\": 50622,\n        \"css\": \"url(\\\"theme:night-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"or-bow.webp\",\n        \"bytes\": 9213,\n        \"css\": \"url(\\\"theme:or-bow.webp\\\")\"\n      },\n      {\n        \"name\": \"or-candle.webp\",\n        \"bytes\": 4485,\n        \"css\": \"url(\\\"theme:or-candle.webp\\\")\"\n      },\n      {\n        \"name\": \"or-crest.webp\",\n        \"bytes\": 7782,\n        \"css\": \"url(\\\"theme:or-crest.webp\\\")\"\n      },\n      {\n        \"name\": \"or-cross.webp\",\n        \"bytes\": 7152,\n        \"css\": \"url(\\\"theme:or-cross.webp\\\")\"\n      },\n      {\n        \"name\": \"or-fleur.webp\",\n        \"bytes\": 7821,\n        \"css\": \"url(\\\"theme:or-fleur.webp\\\")\"\n      },\n      {\n        \"name\": \"or-rose.webp\",\n        \"bytes\": 10047,\n        \"css\": \"url(\\\"theme:or-rose.webp\\\")\"\n      },\n      {\n        \"name\": \"or-stud.webp\",\n        \"bytes\": 9132,\n        \"css\": \"url(\\\"theme:or-stud.webp\\\")\"\n      },\n      {\n        \"name\": \"rail-day.svg\",\n        \"bytes\": 384,\n        \"css\": \"url(\\\"theme:rail-day.svg\\\")\"\n      },\n      {\n        \"name\": \"rail-night.svg\",\n        \"bytes\": 507,\n        \"css\": \"url(\\\"theme:rail-night.svg\\\")\"\n      },\n      {\n        \"name\": \"send-day.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-day.svg\\\")\"\n      },\n      {\n        \"name\": \"send-night.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-night.svg\\\")\"\n      },\n      {\n        \"name\": \"st-bat.webp\",\n        \"bytes\": 8553,\n        \"css\": \"url(\\\"theme:st-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-bunny.webp\",\n        \"bytes\": 11577,\n        \"css\": \"url(\\\"theme:st-bunny.webp\\\")\"\n      },\n      {\n        \"name\": \"st-heartbat.webp\",\n        \"bytes\": 6540,\n        \"css\": \"url(\\\"theme:st-heartbat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-holo.webp\",\n        \"bytes\": 7485,\n        \"css\": \"url(\\\"theme:st-holo.webp\\\")\"\n      },\n      {\n        \"name\": \"st-skull.webp\",\n        \"bytes\": 11094,\n        \"css\": \"url(\\\"theme:st-skull.webp\\\")\"\n      },\n      {\n        \"name\": \"velvet-tile.webp\",\n        \"bytes\": 10962,\n        \"css\": \"url(\\\"theme:velvet-tile.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-bat.webp\",\n        \"bytes\": 693,\n        \"css\": \"url(\\\"theme:wx-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-batday.webp\",\n        \"bytes\": 1179,\n        \"css\": \"url(\\\"theme:wx-batday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake1.webp\",\n        \"bytes\": 3504,\n        \"css\": \"url(\\\"theme:wx-flake1.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake2.webp\",\n        \"bytes\": 3318,\n        \"css\": \"url(\\\"theme:wx-flake2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake3.webp\",\n        \"bytes\": 3312,\n        \"css\": \"url(\\\"theme:wx-flake3.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-heart.webp\",\n        \"bytes\": 2193,\n        \"css\": \"url(\\\"theme:wx-heart.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-leaf.webp\",\n        \"bytes\": 1347,\n        \"css\": \"url(\\\"theme:wx-leaf.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-moonday.webp\",\n        \"bytes\": 2184,\n        \"css\": \"url(\\\"theme:wx-moonday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal.webp\",\n        \"bytes\": 1377,\n        \"css\": \"url(\\\"theme:wx-petal.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal2.webp\",\n        \"bytes\": 1194,\n        \"css\": \"url(\\\"theme:wx-petal2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petalday.webp\",\n        \"bytes\": 1479,\n        \"css\": \"url(\\\"theme:wx-petalday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-spark.svg\",\n        \"bytes\": 672,\n        \"css\": \"url(\\\"theme:wx-spark.svg\\\")\"\n      },\n      {\n        \"name\": \"wx-starday.webp\",\n        \"bytes\": 2427,\n        \"css\": \"url(\\\"theme:wx-starday.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [\n      {\n        \"family\": \"UnifrakturCook\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 17280\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 23820\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25389\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25350\n      },\n      {\n        \"family\": \"Cormorant SC\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 20940\n      }\n    ],\n    \"thumbnail\": {\n      \"bytes\": 27066\n    },\n    \"packageBytes\": 1196477\n  }\n}\n\nNote: oversized fields were elided to fit the output limit. Read any one in full by repeating this action with field=\"<path>\" (add offset to page a long value):\n  - css (57436 chars)",
+   "durationMs": 4
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_cc9e3687d31f408bac32680997f77cc0",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM",
+    "field": "css",
+    "offset": 0,
+    "limit": 65000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_cc9e3687d31f408bac32680997f77cc0",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\n\"limit\" 65000 is above this read's maximum, so 20000 was used: this may not be everything.\nExit code: 0 (structured app-data runtime)\n\nstdout:\n/* VELVET CASKET (theme author guide v1.5, contract 1)\n   One idea: every container is a coffin. Messages stand as upright coffins with a finial on the\n   head, the message box is a coffin laid on its side, Home widgets are a row of coffins, dialogs are\n   coffin lids, buttons are coffin tags, avatars are mourning cameos, and an iron cemetery fence runs\n   under the top bar.\n   Day  = PASTEL GOTH: lilac, mint, baby pink, thick black sticker outlines, bats and bow-skulls.\n   Night = TRADITIONAL GOTH: black and oxblood velvet, antique silver trim, iron crosses, candlelight. */\n\n:root{\n  --mari-tokens-version:1;\n  /* coffin geometry (px so the shape survives any height) */\n  --vc-head:22px;   /* how far the head is cut in from each side */\n  --vc-sh:22px;     /* how far down the shoulders sit */\n  --vc-foot:14px;   /* how far the foot tapers in */\n  --vc-bw:2px;      /* outline thickness */\n  --vc-coffin:polygon(var(--vc-head) 0,calc(100% - var(--vc-head)) 0,100% var(--vc-sh),calc(100% - var(--vc-foot)) 100%,var(--vc-foot) 100%,0 var(--vc-sh));\n  --vc-coffin-in:polygon(calc(var(--vc-head) - 1px) 0,calc(100% - var(--vc-head) + 1px) 0,100% calc(var(--vc-sh) - 1px),calc(100% - var(--vc-foot)) 100%,var(--vc-foot) 100%,0 calc(var(--vc-sh) - 1px));\n  /* coffin on its side: head on the left, foot on the right */\n  --vc-coffin-side:polygon(0 12px,30px 0,calc(100% - 8px) 6px,100% 50%,calc(100% - 8px) calc(100% - 6px),30px 100%,0 calc(100% - 12px));\n  /* coffin tag for buttons and pills */\n  --vc-tag:polygon(8px 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,8px 100%,0 50%);\n\n  --vc-blackletter:\"UnifrakturCook\",\"Old English Text MT\",serif;\n  --vc-serif:\"EB Garamond\",Garamond,\"Times New Roman\",serif;\n  --vc-plate:\"Cormorant SC\",\"EB Garamond\",serif;\n\n  --radius:2px;\n  --mari-font-ui:var(--vc-serif);\n  --mari-font-heading:var(--vc-blackletter);\n  --mari-font-chat:var(--vc-serif);\n  --ov-serif:var(--vc-blackletter);\n  --mari-chat-font-size:17px;\n  --mari-chat-line-height:1.6;\n  --mari-message-measure:72ch;\n  --mari-paragraph-gap:0.8em;\n  --mari-dialogue-weight:500;\n  --mari-text-outline:0;\n  --mari-min-ui-text:12px;\n  --mari-toast-font-size:1rem;\n  --mari-selected-tint:var(--primary);\n  --mari-msg-head-rule:var(--vc-head-rule);\n  --mari-home-art:none;\n  --mari-home-widget-radius:0;\n  --mari-home-widget-border-width:0;\n  --mari-home-widget-font:var(--vc-serif);\n  --mari-home-widget-title-font:var(--vc-blackletter);\n  --mari-home-widget-title-size:1.6rem;\n  --mari-home-widget-eyebrow-size:0.8125rem;\n  --mari-home-widget-text-size:0.9375rem;\n  --mari-home-widget-action-size:0.9375rem;\n  --mari-home-shortcut-size:1rem;\n  --mari-top-bar-plate-radius:0;\n  --mari-composer-placeholder:\"Whisper into the dark...\";\n  --mari-chat-wash:none;\n  --mari-chat-row-art-opacity:0;\n  --marinara-theme-accent-pulse:none;\n  --glow-primary:transparent; --glow-accent:transparent;\n  --mari-chat-column:46rem;\n  --mari-art-saturation-1:28%; --mari-art-saturation-2:24%;\n  --mari-pinned-speaker:on;\n  --mari-phone-avatar:hidden;\n}\n\n/* ── NIGHT · traditional goth ─────────────────────────────── */\n:root,:root[data-theme=\"dark\"]{\n  --vc-ground:#0b0709; --vc-ink:#efe6e8; --vc-mute:#bfaeb5; --vc-faint:#9a8a91;\n  --vc-hair:rgba(185,170,180,.28);\n  --vc-trim:#9a8f99;              /* antique silver outline */\n  --vc-lining:#170a10;            /* coffin lining under the velvet */\n  --vc-lining-user:#1d0d14;\n  --vc-velvet:url(\"theme:velvet-tile.webp\");\n  --vc-panel:rgba(16,8,12,.92);\n  --vc-bar:#0e0709;\n  --vc-accent:#a3213a;            /* oxblood */\n  --vc-accent-ink:#f1a7b3;        /* readable crimson for text on black */\n  --vc-gold:#dcb874;              /* candle gold */\n  --vc-finial:url(\"theme:or-cross.webp\");\n  --vc-finial-user:url(\"theme:or-rose.webp\");\n  --vc-finial-latest:url(\"theme:or-candle.webp\");\n  --vc-crest:url(\"theme:or-crest.webp\");\n  --vc-scene-break:url(\"theme:or-fleur.webp\");\n  --vc-fence:url(\"theme:fence-night.svg\");\n  --mari-icon-send:url(\"theme:send-night.svg\");\n  --vc-backdrop:url(\"theme:night-chapel.webp\");\n  --vc-backdrop-wash:linear-gradient(rgba(11,7,9,0),rgba(11,7,9,0));\n  --mari-art-lightness-1:20%; --mari-art-lightness-2:12%;\n  --vc-online:#4fc79a;\n  --vc-name:var(--vc-gold);\n  --vc-latest-trim:#a3213a;\n  --vc-head-rule:1px solid rgba(185,170,180,.3);\n  --vc-mint:#cfc6d2;\n  --vc-mint-ink:#cfc6d2;\n  --vc-rail:url(\"theme:rail-night.svg\");\n  --vc-lid:url(\"theme:lid-night.svg\");\n  --vc-sidebar-bg:linear-gradient(rgba(14,7,10,.28),rgba(14,7,10,.4)),url(\"theme:velvet-tile.webp\") 0 0 / 512px repeat;\n  --vc-lining-layers:linear-gradient(rgba(21,9,14,.5),rgba(21,9,14,.58)),var(--vc-velvet) 0 0 / 512px repeat,#170a10;\n  --vc-lining-user-layers:linear-gradient(rgba(34,12,22,.46),rgba(34,12,22,.54)),var(--vc-velvet) 0 0 / 512px repeat,#1d0d14;\n}\n\n/* ── DAY · pastel goth ─────────────────────────────────────── */\n:root[data-theme=\"light\"]{\n  --vc-ground:#ece2fb; --vc-ink:#1f1226; --vc-mute:#4f3a5c; --vc-faint:#6a5677;\n  --vc-hair:rgba(26,16,32,.22);\n  --vc-trim:#1a1020;              /* thick black sticker outline */\n  --vc-lining:#f8f2ff;            /* lilac paper */\n  --vc-lining-user:#fde6f1;       /* baby pink */\n  --vc-velvet:none;\n  --vc-panel:rgba(244,236,253,.93);\n  --vc-bar:#f3eafd;\n  --vc-accent:#c42d7a;            /* hot baby-pink, white text passes */\n  --vc-accent-ink:#7a2a6e;\n  --vc-gold:#2f7d63;              /* mint ink for names */\n  --vc-finial:url(\"theme:st-bat.webp\");\n  --vc-finial-user:url(\"theme:st-skull.webp\");\n  --vc-finial-latest:url(\"theme:st-heartbat.webp\");\n  --vc-crest:url(\"theme:st-holo.webp\");\n  --vc-scene-break:url(\"theme:st-holo.webp\");\n  --vc-fence:url(\"theme:fence-day.svg\");\n  --vc-bw:2.5px;\n  --mari-icon-send:url(\"theme:send-day.svg\");\n  --vc-backdrop:url(\"theme:day-chapel.webp\");\n  --vc-backdrop-wash:linear-gradient(rgba(236,226,251,0),rgba(236,226,251,0));\n  --mari-art-lightness-1:84%; --mari-art-lightness-2:78%;\n  --vc-online:#17694a;\n  --vc-name:#6b1f6e;\n  --vc-mint:#9fe8c8;\n  --vc-mint-ink:#1d6b4f;\n  --vc-latest-trim:#1a1020;\n  --vc-head-rule:2px dashed #7fd6b0;\n  --vc-rail:url(\"theme:rail-day.svg\");\n  --vc-lid:url(\"theme:lid-day.svg\");\n  --vc-sidebar-bg:linear-gradient(rgba(246,240,254,.9),rgba(246,240,254,.9)),url(\"theme:day-pattern.webp\") 0 0 / 320px repeat;\n  --vc-lining-layers:#ecdfff;\n  --vc-lining-user-layers:#ffdcec;\n  --vc-lining-latest:linear-gradient(#ecdfff,#ecdfff) padding-box;\n}\n\n:root,:root[data-theme=\"dark\"],:root[data-theme=\"light\"]{\n  --background:var(--vc-ground); --foreground:var(--vc-ink);\n  --card:var(--vc-panel); --card-foreground:var(--vc-ink);\n  --popover:var(--vc-panel); --popover-foreground:var(--vc-ink);\n  --primary:var(--vc-accent); --primary-foreground:#fff;\n  --secondary:color-mix(in srgb,var(--vc-ink) 8%,var(--vc-ground)); --secondary-foreground:var(--vc-ink);\n  --muted:color-mix(in srgb,var(--vc-ink) 6%,var(--vc-ground)); --muted-foreground:var(--vc-mute);\n  --accent:color-mix(in srgb,var(--vc-accent) 16%,var(--vc-ground)); --accent-foreground:var(--vc-ink);\n  --destructive:#b3123a; --destructive-foreground:#fff;\n  --border:var(--vc-hair); --input:var(--vc-hair); --ring:var(--vc-accent);\n  --sidebar:var(--vc-panel); --sidebar-foreground:var(--vc-ink); --sidebar-border:var(--vc-hair);\n  --sidebar-accent:color-mix(in srgb,var(--vc-accent) 14%,transparent); --sidebar-accent-foreground:var(--vc-ink);\n  --ov-line:var(--vc-hair); --ov-text:var(--vc-ink); --ov-muted:var(--vc-mute); --ov-dim:var(--vc-faint);\n  --ov-accent:var(--vc-accent-ink);\n  --ov-hover:color-mix(in srgb,var(--vc-ink) 7%,transparent);\n  --ov-active-bg:color-mix(in srgb,var(--vc-accent) 18%,transparent);\n  --ov-mode-conversation:var(--vc-accent-ink); --ov-mode-roleplay:var(--vc-accent-ink); --ov-mode-game:var(--vc-gold);\n  --mari-mode-conversation:var(--vc-accent-ink); --mari-mode-roleplay:var(--vc-accent-ink); --mari-mode-game:var(--vc-gold);\n  --mari-home-pink:var(--vc-accent-ink); --mari-home-violet:var(--vc-gold);\n  --mari-chrome-accent:var(--vc-accent-ink);\n  --mari-chrome-muted:var(--vc-mute);\n  --mari-message-time:var(--vc-faint);\n  --mari-message-actions:var(--vc-mute);\n  --mari-swipe-counter:var(--vc-mute);\n  --mari-dialogue-color:var(--vc-accent-ink);\n  --mari-home-widget-bg:transparent;\n  --mari-home-widget-title-color:var(--vc-ink);\n  --mari-home-widget-muted:var(--vc-mute);\n  --mari-home-widget-eyebrow-color:var(--vc-accent-ink);\n  --mari-home-wash:transparent;\n  --mari-page-veil:color-mix(in srgb,var(--vc-ground) 82%,transparent);\n  --mari-chat-header-bg:none;\n  --mari-scrim:color-mix(in srgb,var(--vc-ground) 72%,transparent);\n  --mari-top-bar-plate:color-mix(in srgb,var(--vc-ground) 88%,transparent);\n  --mari-status-online:var(--vc-online); --mari-status-idle:var(--vc-gold); --mari-status-dnd:#c42d4a; --mari-status-offline:var(--vc-faint);\n  --mari-gauge-ok:#3fb68b; --mari-gauge-warn:#d39b3a; --mari-gauge-danger:#c42d4a;\n  --mari-game-combat:var(--vc-accent); --mari-game-combat-text:#fff;\n  --mari-game-combat-bg:var(--vc-accent); --mari-game-combat-bg-hover:color-mix(in srgb,var(--vc-accent) 85%,#000); --mari-game-combat-border:var(--vc-accent);\n  --mari-stage-empty-bg:var(--vc-backdrop-wash),var(--vc-backdrop) center bottom / cover no-repeat,var(--vc-ground);\n  --mari-user-avatar-placeholder:radial-gradient(circle at 50% 38%,var(--vc-trim) 0 22%,transparent 23%),radial-gradient(ellipse 60% 40% at 50% 100%,var(--vc-trim) 0 70%,transparent 71%),var(--vc-lining);\n  --mari-focus-ring-color:var(--vc-accent-ink);\n  --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 44px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\n}\n/* ── Backdrop: the same chapel and graveyard, pastel by day, candlelit by night ── */\n:root{\n  --mari-app-backdrop-layers:var(--vc-backdrop-wash),var(--vc-backdrop) center bottom / cover no-repeat,var(--vc-ground);\n  --mari-user-avatar-image:var(--vc-cameo);\n  --mari-card-art-placeholder:var(--vc-cameo) center / auto 70% no-repeat,var(--vc-card-ph);\n}\n:root,:root[data-theme=\"dark\"]{ --vc-cameo:url(\"theme:cameo-night.webp\"); --vc-card-ph:radial-gradient(ellipse at 50% 40%,#3a0d19,#120609 75%); }\n:root[data-theme=\"light\"]{ --vc-cameo:url(\"theme:cameo-day.webp\"); --vc-card-ph:radial-gradient(ellipse at 50% 40%,#fbe7f2,#dccbf6 75%); }\n@media (orientation:portrait){\n  :root[data-overhaul=\"mobile\"]{ --vc-backdrop:url(\"theme:night-phone.webp\"); }\n  :root[data-overhaul=\"mobile\"][data-theme=\"light\"]{ --vc-backdrop:url(\"theme:day-phone.webp\"); }\n}\n/* weather greys the graveyard over: rain and storm darken, snow pales, fog thickens */\n:root[data-mari-weather=\"rain\"],:root[data-mari-weather=\"storm\"]{ --vc-backdrop:url(\"theme:night-chapel-storm.webp\"); --vc-backdrop-wash:linear-gradient(rgba(14,10,22,.15),rgba(20,10,24,.1)); }\n:root[data-theme=\"light\"][data-mari-weather=\"rain\"],:root[data-theme=\"light\"][data-mari-weather=\"storm\"]{ --vc-backdrop-wash:linear-gradient(rgba(150,130,190,.38),rgba(190,170,215,.25)); }\n:root[data-mari-weather=\"snow\"],:root[data-mari-weather=\"hail\"]{ --vc-backdrop-wash:linear-gradient(rgba(200,190,210,.12),rgba(235,230,240,.22)); }\n:root[data-theme=\"light\"][data-mari-weather=\"snow\"],:root[data-theme=\"light\"][data-mari-weather=\"hail\"]{ --vc-backdrop-wash:linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.45)); }\n:root[data-mari-weather=\"fog\"]{ --vc-backdrop-wash:linear-gradient(rgba(60,36,46,.3),rgba(90,52,64,.45)); }\n:root[data-theme=\"light\"][data-mari-weather=\"fog\"]{ --vc-backdrop-wash:linear-gradient(rgba(236,226,251,.45),rgba(236,226,251,.6)); }\n\n/* ── Top bar: a cemetery fence runs along its foot ─────────── */\n[data-component=\"TopBar\"]{\n  font-family:var(--vc-plate); letter-spacing:.02em; border-bottom:0 !important;\n  height:auto !important; min-height:86px; padding-bottom:44px !important; align-items:flex-start;\n}\n[data-component=\"TopBar\"] .ov-tab,[data-component=\"TopBar\"] .ov-text-btn{ clip-path:var(--vc-tag); padding-inline:14px; border-radius:0; }\n[data-component=\"TopBar\"] .ov-tab.is-on{ background:color-mix(in srgb,var(--vc-accent) 30%,var(--vc-ground)); color:var(--vc-ink); }\n:root[data-theme=\"light\"] [data-component=\"TopBar\"] .ov-tab.is-on{ background:color-mix(in srgb,var(--vc-accent) 16%,#fff); }\n[data-component=\"TopBar\"] .ov-tab__label{ font-weight:700; }\n\n/* ── Sidebars: an iron railing on the inner edge ──────────── */\n[data-component=\"ChatSidebar\"]{ font-family:var(--vc-serif); background:var(--vc-rail) right top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-right:12px; }\n[data-component=\"RightPanelDesktop\"]{ background:var(--vc-rail) left top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-left:12px; }\n[data-chat-row]{ clip-path:var(--vc-tag); border-radius:0 !important; }\n[data-chat-row][data-selected=\"true\"]{ background:color-mix(in srgb,var(--vc-accent) 24%,var(--vc-ground)) !important; }\n[data-chat-row] [data-mari-part=\"avatar-placeholder\"],[data-chat-row] img{ border-radius:50% / 50%; }\n.ov-new-pill,.mari-chrome-control--primary,.ov-btn--primary{\n  clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:16px !important;\n  font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em;\n  background:var(--vc-accent) !important; color:#fff !important; border:0 !important;\n}\n[data-component=\"CenterContent\"] .mari-chrome-control:not(.mari-chrome-control--primary){ background-color:var(--vc-panel) !important; }\n.mari-chrome-segmented__button{ font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em; border-radius:0 !important; clip-path:var(--vc-tag); }\n\n/* ── Avatars: mourning cameos ─────────────────────────────── */\n.mari-roleplay-message-row [data-mari-part=\"avatar\"] button{\n  border-radius:50% / 50% !important; height:calc(3.25rem * var(--roleplay-avatar-scale,1)) !important; width:calc(2.6rem * var(--roleplay-avatar-scale,1)) !important;\n  box-shadow:0 0 0 2px var(--vc-lining),0 0 0 4px var(--vc-trim) !important; --tw-ring-color:transparent;\n}\n.mari-roleplay-message-row [data-mari-part=\"avatar\"] .rpg-avatar-glow{ filter:none; box-shadow:none; background:none; }\n[data-component=\"ConversationMessage.Content\"] [data-mari-part=\"avatar\"] button{\n  border-radius:50% / 50% !important; width:2.2rem !important; height:2.6rem !important;\n  box-shadow:0 0 0 2px var(--vc-lining),0 0 0 3.5px var(--vc-trim);\n}\n[data-component=\"ConversationMessage.Content\"] [data-mari-part=\"avatar\"]{ max-height:none; }\n\n/* ── Roleplay: each message is an upright coffin with a finial ── */\n.mari-rp-bubble{\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important;\n  background:var(--vc-trim) !important; isolation:isolate; box-shadow:none !important; backdrop-filter:none !important;\n}\n.mari-rp-bubble::before{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in);\n  background:var(--vc-lining-layers);\n}\n.mari-rp-bubble--user::before{ background:var(--vc-lining-user-layers); }\n.mari-rp-bubble > div{ padding:18px calc(var(--vc-foot) + 16px) 20px calc(var(--vc-foot) + 16px) !important; }\n.mari-roleplay-message-body{ position:relative; }\n.mari-roleplay-message-body::before{\n  content:\"\"; position:absolute; left:50%; top:-15px; width:26px; height:36px; translate:-50% 0; z-index:2; pointer-events:none;\n  background:var(--vc-finial) center / contain no-repeat;\n}\n[data-message-role=\"user\"] .mari-roleplay-message-body::before{ background-image:var(--vc-finial-user); left:auto; right:30px; translate:0 0; width:28px; height:28px; top:-14px; }\n[data-mari-part=\"message\"] .mari-message-name{ font-family:var(--vc-plate) !important; font-size:1.0625rem !important; font-weight:700; letter-spacing:.05em; color:var(--vc-name) !important; }\n[data-mari-part=\"message\"][data-latest] .mari-rp-bubble{ background:var(--vc-latest-trim) !important; }\n[data-mari-part=\"message\"][data-latest][data-message-role=\"assistant\"] .mari-roleplay-message-body::before{ background-image:var(--vc-finial-latest); }\n.mari-roleplay-message-row{ margin-bottom:2rem !important; }\n[data-mari-part=\"time\"]{ font-family:var(--vc-serif); font-size:.8125rem !important; }\n[data-mari-part=\"message\"] hr{ border:0; height:22px; margin:1.1em auto; background:var(--vc-scene-break) center / auto 22px no-repeat,linear-gradient(var(--vc-hair),var(--vc-hair)) center / 100% 1px no-repeat; }\n\n/* ── Composer: a coffin laid on its side ──────────────────── */\n[data-mari-part=\"composer\"] .mari-chat-input-box{\n  clip-path:var(--vc-coffin-side); border:0 !important; border-radius:0 !important; isolation:isolate;\n  background:var(--vc-trim) !important; padding-left:34px !important; padding-right:20px !important; box-shadow:none !important; backdrop-filter:none !important;\n}\n[data-mari-part=\"composer\"] .mari-chat-input-box::before{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-side);\n  background:var(--vc-lining-layers);\n}\n[data-mari-part=\"composer\"] textarea{ font-family:var(--vc-serif) !important; font-size:1.0625rem !important; color:var(--vc-ink) !important; }\n[data-mari-part=\"composer\"] textarea::placeholder{ color:var(--vc-faint) !important; font-style:italic; }\n\n/* ── Conversation: a mourning ledger ──────────────────────── */\n[data-mari-part=\"chat-header\"] > *{ clip-path:var(--vc-tag); border-radius:0 !important; }\n[data-component=\"ConversationMessage.Content\"] .mari-message-content{ font-size:1.0625rem; }\n/* the whole transcript is written inside one long coffin lid (a picture, so the scrollbar is never cut) */\n[data-chat-mode=\"conversation\"] .mari-messages-scroll{ background:var(--vc-lid) center top / calc(100% - 20px) 100% no-repeat; padding-inline:22px; }\n\n/* ── Game: narration in a coffin ──────────────────────────── */\n[data-mari-part=\"message\"][data-game-narration]{\n  position:relative;\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important; isolation:isolate;\n  background:var(--vc-trim) !important; box-shadow:none !important; backdrop-filter:none !important;\n  padding:20px 28px 16px !important;\n}\n[data-mari-part=\"message\"][data-game-narration]::before{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in); background:var(--vc-lining-layers);\n}\n[data-mari-part=\"message\"][data-game-narration] .game-narration-prose{ border-color:var(--vc-hair) !important; background:transparent !important; border-radius:0 !important; font-size:1.0625rem; }\n[data-mari-part=\"message\"][data-game-narration] .game-narration-prose .text-sm{ font-size:1.0625rem; line-height:1.6; }\n[data-mari-part=\"game-hud\"]{ clip-path:var(--vc-coffin); border-radius:0 !important; background:var(--vc-panel) !important; padding-inline:14px; }\n\n/* ── Home: a row of coffins ───────────────────────────────── */\n[data-mari-part=\"home-widget\"]{\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important; isolation:isolate;\n  background:var(--vc-trim) !important; box-shadow:none !important; backdrop-filter:none !important;\n}\n[data-mari-part=\"home-widget\"]::before{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in);\n  background:var(--vc-lining-layers);\n}\n[data-mari-part=\"home-widget\"] > header,[data-mari-part=\"home-widget\"] > div:not([data-home-professor-content]){ padding-inline:12px; }\n[data-mari-part=\"home-widget-eyebrow\"]{ font-family:var(--vc-plate) !important; letter-spacing:.14em; font-weight:700; }\n[data-mari-part=\"home-widget-glow\"]{ display:none !important; }\n[data-mari-part=\"home-widget-title\"]{ line-height:1.15 !important; margin-bottom:.35rem; letter-spacing:.01em; }\n[data-home-professor-content]{ padding-left:14px; }\n[data-mari-part=\"home-widget\"]::after{\n  content:\"\"; position:absolute; top:5px; left:50%; translate:-50% 0; width:64px; height:30px; pointer-events:none; z-index:0;\n  background:var(--vc-crest) center / contain no-repeat;\n}\n[data-component=\"CenterContent\"] h1{ font-family:var(--vc-blackletter); }\n\n/* ── Ctrl+K and dialogs: coffin lids ──────────────────────── */\n[data-componen\n\nField \"css\": showing characters 0–20000 of 57436. Re-read with field=\"css\" offset=20000 for the next window.",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_61595449cefc4fe9b0d7084d37ba81ed",
+   "name": "bash",
+   "input": {
+    "command": "mari themes --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_61595449cefc4fe9b0d7084d37ba81ed",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari themes --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari themes <command>\nRead: list [--active] [--limit <n>], active, get <id>\nWrite: create --name <name> (--css <css> | --css-file <path>) [--activate] [--apply] [--reason <text>]\nWrite: update <id> [--name <name>] [--css <css> | --css-file <path>] [--apply] [--reason <text>]\nWrite: set-active <id|none> [--apply] [--reason <text>]\nWrites dry-run by default; --apply saves reversible changes and shows a Keep/Restore review card.",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_69340ece27854daabb0cc720d3a283df",
+   "name": "bash",
+   "input": {
+    "command": "mari --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_69340ece27854daabb0cc720d3a283df",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari <group> <command>\nCore code/workspace: mari code status|diff|check|health|reload\nLive app data:       mari db status|tables|list|get|search|insert|patch|replace|delete|transform|validate\nCustomization:       mari themes list|active|get|create|update|set-active\nImages/media:        mari images connections|preview|generate|edit|assign|delete|list\nCreative data:       mari characters list|get|search|create|update|delete\nCreative data:       mari personas list|get|search|create|update|delete\nCreative data:       mari lorebooks list|get|get-entry <entry-id>|entries <lorebook-id>|search|create|update <lorebook-id>|add-entry <lorebook-id>|update-entry <entry-id>|delete-entry <entry-id>|link-character|unlink-character|delete\nCreative data:       mari presets list|get|sections <preset-id>|get-section <id>|groups|get-group|choice-blocks|get-choice-block|add-section|update-section|delete-section|add-group|update-group|delete-group|add-choice-block|update-choice-block|delete-choice-block|create|update\nChats (read-only):   mari chats list|get|messages|search\nFandom/Wikipedia:    mari wiki find-wikis|search-all|search|get-page|sections|category|site-info\nDiscovery:           mari <group> --help or mari <group> <command> --help\nWrites dry-run by default where supported; --apply saves reversible changes and shows a Keep/Restore review card.",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_852616861b70493aac4b77073427ac5e",
+   "name": "bash",
+   "input": {
+    "command": "mari db transform --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_852616861b70493aac4b77073427ac5e",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari db transform --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari db <command>\nDiscovery: status, tables, schema <table>, counts, data-dir, now, new-id\nRead: list <table>, get <table> <id>, select <table> --where <expr>, search <table|all> <query>, validate [--table <table>]\nWhere: row.field and row['field'] with comparisons, &&, ||, !, parentheses, and safe string/array methods (includes, startsWith, endsWith, case conversion, trim); arbitrary code and calls are rejected\nWrite: insert|patch|replace|delete|transform ... (dry-run by default; --apply saves reversible changes and shows a Keep/Restore review card)\nUse -- before positional arguments that match option names, with options first: mari db get --parsed -- characters --apply\nTransform scripts use an OS sandbox where supported; on other systems, reviewed local scripts remain available only with MARI_DB_ALLOW_UNSAFE_TRANSFORMS=true.\nKnown tables: chats, messages, message_swipes, conversation_call_sessions, conversation_call_messages, conversation_call_sounds, characters, character_card_versions ... (93)\nJournal directory: /home/kolache/Downloads/marinara-agent-handoff/mari-theme-test-data/storage/journal (storage)",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_e16ee49a36554e04b451702c0c2d5404",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM",
+    "field": "css",
+    "offset": 20000,
+    "limit": 20000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_e16ee49a36554e04b451702c0c2d5404",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\nt=\"GlobalOmnibar.Panel\"]{\n  /* Ctrl+K is protected from clipping, so its lid is a picture: a coffin outline on a clear ground */\n  background:var(--vc-lid) 0 0 / 100% 100% no-repeat !important; border:0 !important; border-radius:0 !important; box-shadow:none !important;\n}\n[data-component=\"GlobalOmnibar.Panel\"] > [aria-hidden=\"true\"]{ display:none; }\n[data-component=\"GlobalOmnibar.Panel\"] header > div:first-child{ padding-inline:30px; }\n[data-component=\"GlobalOmnibar.Panel\"] footer{ padding-inline:34px; border-color:transparent !important; }\n[data-component=\"GlobalOmnibar.Panel\"] header > div:first-child{ border-color:var(--vc-hair) !important; margin-inline:22px; }\n[data-component=\"GlobalOmnibar.Panel\"] [data-component=\"GlobalOmnibar.ScopeChips\"]{ padding-inline:26px; }\n[data-component=\"GlobalOmnibar.Results\"]{ padding-inline:18px !important; }\n[role=\"dialog\"]:not([data-component=\"GlobalOmnibar.Panel\"]){ border-color:var(--vc-trim) !important; border-radius:0 !important; }\n.mari-window,.mari-drawer{ border-radius:0 !important; border-color:var(--vc-trim) !important; }\n\n/* ── Pages: Library, Settings, editors ────────────────────── */\n[data-component=\"OverhaulSettingsPage\"] h1,[data-component=\"OverhaulLibraryPage\"] h1,[data-component=\"OverhaulEditorHead\"] h1,\n[data-mari-part=\"page-title\"]{ font-family:var(--vc-blackletter); font-weight:700; }\n[data-component=\"OverhaulCardGallery\"] [data-mari-part=\"card-art\"]{ clip-path:var(--vc-coffin); --vc-head:16px; --vc-sh:16px; --vc-foot:10px; }\n\n/* the stock chat background steps aside; the theme's night or day shows through */\nimg[data-mari-part=\"backdrop\"][data-default-background]{ opacity:0 !important; }\n\n/* ── Phone and tablet: smaller cuts ───────────────────────── */\n:root[data-overhaul=\"mobile\"]{ --vc-head:14px; --vc-sh:14px; --vc-foot:9px; }\n:root[data-overhaul=\"mobile\"] .mari-rp-bubble > div{ padding:14px 20px 16px !important; }\n:root[data-overhaul=\"mobile\"] [data-mari-part=\"composer\"] .mari-chat-input-box{ padding-left:24px !important; }\n:root[data-overhaul=\"mobile\"]{ --vc-coffin-side:polygon(0 9px,22px 0,calc(100% - 6px) 5px,100% 50%,calc(100% - 6px) calc(100% - 5px),22px 100%,0 calc(100% - 9px)); }\n\n/* ── Weather ──────────────────────────────────────────────── */\n/* Night: a cathedral storm. Silver rain, ash-pale snow, blood-grey graveyard fog, crimson petals, bolts on. */\n:root,:root[data-theme=\"dark\"]{\n  --mari-weather-rain-color:#b8adbd; --mari-weather-rain-length:1.6; --mari-weather-strength:1.1;\n  --mari-weather-snow-color:#ece6ea; --mari-weather-fog-color:#5a3440;\n  --mari-weather-lightning-color:#f1ecff; --mari-weather-lightning-bolt:3;\n  --mari-weather-firefly-color:#e2bd72; --mari-weather-star-color:#efe6ea; --mari-weather-moon-color:#efe8ee;\n  --mari-weather-petal-color:#a3213a; --mari-weather-leaf-color:#5a1626; --mari-weather-ember-color:#e2bd72; --mari-weather-dust-color:#cdbfc6;\n  --mari-weather-tint-strength:.7;\n  --mari-weather-petal-image:url(\"theme:wx-petal.webp\") url(\"theme:wx-petal2.webp\");\n  --mari-weather-leaf-image:url(\"theme:wx-leaf.webp\") url(\"theme:wx-leaf.webp\") url(\"theme:wx-bat.webp\");\n  --mari-weather-petal-size:.7; --mari-weather-leaf-size:.8;\n  --mari-weather-moon:none;\n}\n/* Day: candy storm. Lilac rain, white flakes, lilac fog, pink bolts, no app sun (pastel sky). */\n:root[data-theme=\"light\"]{\n  --mari-weather-rain-color:#7a5cc0; --mari-weather-rain-length:1.2; --mari-weather-strength:1.2;\n  --mari-weather-snow-color:#ffffff; --mari-weather-snow-size:1.4; --mari-weather-fog-color:#c9b3f0; --mari-weather-hail-color:#b8f0d8;\n  --mari-weather-lightning-color:#ff7ab8; --mari-weather-lightning-bolt:3;\n  --mari-weather-dust-color:#e07bb0; --mari-weather-petal-color:#f3a9c9; --mari-weather-leaf-color:#9fe3c6; --mari-weather-star-color:#c42d7a;\n  --mari-weather-sun:none; --mari-weather-moon:none; --mari-weather-tint-strength:.35;\n  --mari-weather-petal-image:url(\"theme:wx-heart.webp\") url(\"theme:wx-petalday.webp\") url(\"theme:wx-spark.svg\");\n  --mari-weather-snow-image:url(\"theme:wx-flake1.webp\") url(\"theme:wx-flake2.webp\") url(\"theme:wx-flake3.webp\") url(\"theme:wx-spark.svg\");\n  --mari-weather-hail-image:url(\"theme:wx-starday.webp\") url(\"theme:wx-heart.webp\");\n  --mari-weather-leaf-image:url(\"theme:wx-batday.webp\") url(\"theme:wx-moonday.webp\") url(\"theme:wx-spark.svg\");\n  --mari-weather-petal-size:.6; --mari-weather-leaf-size:.7;\n}\n\n/* ══ Round 2 ════════════════════════════════════════════════ */\n\n/* Composer: the transcript fades out above the side-laid coffin, so no prose shows around it */\n[data-chat-mode=\"roleplay\"] .mari-messages-scroll,[data-chat-mode=\"game\"] .mari-messages-scroll{\n  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 118px),transparent calc(100% - 84px));\n          mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 118px),transparent calc(100% - 84px));\n  padding-bottom:132px !important; scroll-padding-bottom:132px;\n}\n[data-chat-mode=\"conversation\"] .mari-messages-scroll{\n  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18px);\n          mask-image:linear-gradient(to bottom,transparent 0,#000 18px);\n}\n\n/* Night: coffin furniture. An antique-silver bevelled edge, velvet lining, silver studs at the shoulders */\n:root[data-theme=\"dark\"]{ --vc-silver:linear-gradient(160deg,#ece6ee,#857b8a 28%,#d9d1db 50%,#5f5662 74%,#c9c1cc); --vc-bw:2.5px; }\n:root[data-theme=\"dark\"] .mari-rp-bubble,\n:root[data-theme=\"dark\"] [data-mari-part=\"home-widget\"],\n:root[data-theme=\"dark\"] [data-mari-part=\"message\"][data-game-narration],\n:root[data-theme=\"dark\"] [data-mari-part=\"composer\"] .mari-chat-input-box{ background:var(--vc-silver) !important; }\n:root[data-theme=\"dark\"] [data-mari-part=\"message\"][data-latest] .mari-rp-bubble{ background:linear-gradient(160deg,#f0c3cc,#a3213a 32%,#e08a9c 52%,#6e1424 78%,#cf6a7e) !important; }\n:root[data-theme=\"dark\"] .mari-rp-bubble::after,\n:root[data-theme=\"dark\"] [data-mari-part=\"message\"][data-game-narration]::after{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; pointer-events:none; clip-path:var(--vc-coffin-in);\n  background:url(\"theme:or-stud.webp\") 6px 8px / 21px 21px no-repeat,url(\"theme:or-stud.webp\") calc(100% - 6px) 8px / 21px 21px no-repeat;\n}\n:root[data-theme=\"dark\"] [data-mari-part=\"home-widget\"]::after{ filter:drop-shadow(0 1px 1px #000); }\n/* Day: real pastel coffins, a mint lining on the newest reply, plum name plates */\n:root[data-theme=\"light\"] [data-mari-part=\"message\"][data-latest][data-message-role=\"assistant\"] .mari-rp-bubble::before{\n  background:linear-gradient(#ecdfff,#ecdfff) content-box,#9fe8c8 !important; padding:4px;\n}\n:root[data-theme=\"light\"] [data-mari-part=\"home-widget\"]::before{ background:#ebdeff; }\n:root[data-theme=\"light\"] [data-mari-part=\"home-widget\"][data-home-widget-id=\"professor\"]::before,\n:root[data-theme=\"light\"] [data-mari-part=\"home-widget\"]:nth-of-type(3n)::before{ background:#ffe3ef; }\n:root[data-theme=\"light\"] [data-mari-part=\"home-widget-eyebrow\"]{ color:#1d6b4f !important; }\n:root[data-theme=\"light\"] [data-mari-part=\"composer\"] .mari-chat-input-box::before{ background:#f6eeff; }\n:root[data-theme=\"light\"] .mari-chrome-segmented__button[aria-pressed=\"true\"],\n:root[data-theme=\"light\"] .mari-chrome-segmented__button[data-state=\"active\"]{ box-shadow:inset 0 -3px 0 var(--vc-mint); }\n:root[data-theme=\"light\"]{ --mari-focus-ring-color:#1d6b4f; scrollbar-color:#9fe8c8 transparent; }\n\n/* Bigger finials, sticker-sized */\n.mari-roleplay-message-body::before{ width:46px !important; height:52px !important; top:-30px !important; }\n[data-message-role=\"user\"] .mari-roleplay-message-body::before{ width:38px !important; height:38px !important; top:-22px !important; right:26px; }\n.mari-roleplay-message-row{ margin-bottom:2.4rem !important; }\n.mari-roleplay-message-row:first-child{ margin-top:14px; }\n:root[data-theme=\"light\"] .mari-roleplay-message-body::before{ filter:drop-shadow(0 0 0 #fff) drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff) drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff) drop-shadow(0 2px 2px rgba(26,16,32,.25)); }\n:root[data-theme=\"dark\"] .mari-roleplay-message-body::before{ filter:drop-shadow(0 2px 3px #000); }\n\n/* Phone: the name plate is a coffin tag, and the finial rides on the plate so it never floats in a gap */\n:root[data-overhaul=\"mobile\"] .mari-roleplay-message-body::before{ display:none; }\n[data-mari-part=\"header\"][data-placement=\"outside\"]{\n  clip-path:var(--vc-tag); border-radius:0 !important; padding:3px 16px !important; gap:8px;\n  background:var(--vc-plate-bg) !important; width:max-content; max-width:100%;\n}\n[data-message-role=\"user\"] [data-mari-part=\"header\"][data-placement=\"outside\"]{ margin-left:auto; }\n[data-mari-part=\"header\"][data-placement=\"outside\"]::before{\n  content:\"\"; flex:0 0 auto; width:24px; height:24px; background:var(--vc-finial) center / contain no-repeat;\n}\n[data-message-role=\"user\"] [data-mari-part=\"header\"][data-placement=\"outside\"]::before{ background-image:var(--vc-finial-user); }\n[data-latest][data-message-role=\"assistant\"] [data-mari-part=\"header\"][data-placement=\"outside\"]::before{ background-image:var(--vc-finial-latest); }\n:root,:root[data-theme=\"dark\"]{ --vc-plate-bg:linear-gradient(90deg,#3a0d19,#5a1626); }\n:root[data-theme=\"light\"]{ --vc-plate-bg:linear-gradient(90deg,#f3c6e0,#d9c4ff); }\n:root[data-theme=\"light\"] [data-mari-part=\"header\"][data-placement=\"outside\"] .mari-message-name{ color:#4a1050 !important; }\n:root[data-theme=\"light\"] [data-mari-part=\"header\"][data-placement=\"outside\"] [data-mari-part=\"time\"]{ color:#4f3a5c !important; }\n\n/* Scene break reads */\n[data-mari-part=\"message\"] hr{ height:30px !important; background-size:auto 30px,100% 1px !important; }\n:root[data-theme=\"dark\"] [data-mari-part=\"message\"] hr{ filter:brightness(1.6) drop-shadow(0 0 3px rgba(220,184,116,.35)); }\n\n/* Ctrl+K: the divider and rows stay inside the lid; mode tiles in the theme's colours */\n:root{ --mari-ctrlk-conversation:var(--vc-accent-ink); --mari-ctrlk-roleplay:var(--vc-name); --mari-ctrlk-game:var(--vc-gold); }\n[data-component=\"GlobalOmnibar.Panel\"] [data-component=\"GlobalOmnibar.ScopeChips\"]{ margin-inline:24px; border-color:var(--vc-hair) !important; }\n[data-component=\"GlobalOmnibar.Panel\"] [data-component=\"GlobalOmnibar.ScopeChips\"] button{ clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:14px; font-family:var(--vc-plate); font-weight:700; }\n[data-component=\"GlobalOmnibar.Results\"]{ padding-bottom:28px !important; }\n[data-component=\"GlobalOmnibar.Panel\"] [data-command-center-media]{ border-radius:50% / 50% !important; border-color:var(--vc-trim) !important; background:var(--vc-plate-bg) !important; }\n[data-component=\"GlobalOmnibar.Panel\"] footer{ color:var(--vc-mute) !important; font-size:.8125rem; }\n:root[data-theme=\"light\"] [data-component=\"GlobalOmnibar.Panel\"]{\n  background:var(--vc-lid) 0 0 / 100% 100% no-repeat !important;\n}\n\n/* Group chat avatars are two little cameos, not boxes */\n[data-chat-row] span.rounded-md{ border-radius:50% / 50% !important; --tw-ring-color:var(--vc-trim); }\n\n/* Game: the side pane gets the railing, plate headings and a coffin HUD */\n.ov-gpane{ background:var(--vc-rail) left top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-left:14px; border-left:0 !important; }\n.ov-gpane h2,.ov-gpane h3,.ov-gpane th{ font-family:var(--vc-plate); letter-spacing:.06em; }\n[data-mari-part=\"game-hud\"] > *{ background:var(--vc-panel) !important; border-color:var(--vc-trim) !important; border-radius:0 !important; clip-path:var(--vc-coffin); padding-top:12px; }\n\n/* Settings selects and fields become coffin tags too */\n[data-component=\"OverhaulSettingsPage\"] select{ border-radius:0 !important; padding-inline:14px !important; }\n\n/* Phone: title in blackletter, no railing cut off at the screen edge */\n:root[data-overhaul=\"mobile\"] [data-component=\"ChatSidebar\"],:root[data-overhaul=\"mobile\"] [data-component=\"RightPanelDesktop\"]{ background:var(--vc-sidebar-bg) !important; padding-inline:0; }\n[data-component=\"ChatSidebar\"] h2{ font-family:var(--vc-blackletter); font-size:1.35rem; font-weight:700; }\n\n/* Mode tabs: room for the counts */\n.mari-chrome-segmented__button{ padding-inline:12px !important; }\n\n/* Day snow is white with pink sparkle (sprites below when they arrive) */\n/* Home hero buttons sit on plates so the painted moon never washes them out */\n\n\n/* Day: the creepy-cute plush keeps watch over the conversation lid */\n:root[data-theme=\"light\"] [data-chat-mode=\"conversation\"] .mari-messages-scroll{ background:url(\"theme:st-bunny.webp\") right 64px top 40px / 56px no-repeat,var(--vc-lid) center top / calc(100% - 20px) 100% no-repeat; }\n/* Night: a black crepe mourning bow pinned to the conversation lid */\n:root[data-theme=\"dark\"] [data-chat-mode=\"conversation\"] .mari-messages-scroll{ background:url(\"theme:or-bow.webp\") right 64px top 36px / 52px no-repeat,var(--vc-lid) center top / calc(100% - 20px) 100% no-repeat; }\n/* phone: the name sits on its own plate, so the shoulder studs would sit on the text */\n:root[data-overhaul=\"mobile\"][data-theme=\"dark\"] .mari-rp-bubble::after{ display:none; }\n/* phone: the name tag is narrower than the coffin, so a pinned tag would leave the scrolling text peeking beside it; keep it with its message */\n:root[data-overhaul=\"mobile\"] [data-mari-part=\"header\"][data-placement=\"outside\"]{ position:relative !important; top:auto !important; }\n\n/* ══ Round 3 ══════════════════════════════════════════════ */\n/* Page buttons are whole coffin tags: the edge is the button, the plate is drawn inside it, so the\n   slanted ends keep their outline and icon-only buttons keep their icon */\n[data-component=\"CenterContent\"] .ov-btn:not(.ov-btn--primary){\n  border:0 !important; border-radius:0 !important; clip-path:var(--vc-tag); position:relative; isolation:isolate;\n  background:var(--vc-trim) !important; box-shadow:none !important;\n}\n[data-component=\"CenterContent\"] .ov-btn:not(.ov-btn--primary):not(.ov-btn--icon){ padding-inline:16px; }\n[data-component=\"CenterContent\"] .ov-btn--icon:not(.ov-btn--primary){ padding-inline:10px; min-width:40px; }\n[data-component=\"CenterContent\"] .ov-btn:not(.ov-btn--primary)::before{\n  content:\"\"; position:absolute; inset:1.5px; z-index:-1; pointer-events:none; clip-path:var(--vc-tag); background:var(--vc-bar);\n}\n[data-component=\"CenterContent\"] .ov-btn.is-on:not(.ov-btn--primary)::before{ background:color-mix(in srgb,var(--vc-accent) 22%,var(--vc-bar)); }\n@media (hover: hover){ [data-component=\"CenterContent\"] .ov-btn:not(.ov-btn--primary):hover::before{ background:color-mix(in srgb,var(--vc-accent) 22%,var(--vc-bar)); } }\n\n/* Ctrl+K: Continue cards share the full width, avatars show inside the cameo, the footer is its own band */\n[data-component=\"GlobalOmnibar.Panel\"] [data-command-center-media]{ background:none !important; background-color:var(--vc-plate-bg) !important; }\n[data-component=\"GlobalOmnibar.Panel\"] [data-command-center-media] > img{ border-radius:50%; }\nsection[aria-labelledby=\"omnibar-group-continue\"] > ul{ grid-template-columns:none !important; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); }\n[data-component=\"GlobalOmnibar.Panel\"] footer{ background:var(--vc-bar); border-top:1px solid var(--vc-hair) !important; margin-inline:24px; margin-bottom:14px; padding-inline:12px !important; }\n\n/* Loading: an oxblood (night) or lilac (day) shimmer instead of navy */\n.shimmer{ background:linear-gradient(90deg,#1c0a11 25%,#3a1220 50%,#1c0a11 75%) !important; background-size:200% 100% !important; clip-path:var(--vc-tag); border-radius:0 !important; }\n:root[data-theme=\"light\"] .shimmer{ background:linear-gradient(90deg,#efe3ff 25%,#ffdcec 50%,#efe3ff 75%) !important; background-size:200% 100% !important; }\n/* an avatar still loading (or broken) shows the cameo, not an empty oval */\n[data-chat-row] img,[data-mari-part=\"avatar\"] img,[data-command-center-media] img{ background:var(--vc-cameo) center / cover no-repeat; }\n\n/* Game map HUD: a full coffin with the silver (night) or sticker (day) edge */\n[data-tour=\"game-map\"]{ border:0 !important; border-radius:0 !important; clip-path:var(--vc-coffin); --vc-head:16px; --vc-sh:16px; --vc-foot:10px;\n  background:var(--vc-silver,#1a1020) !important; position:relative; isolation:isolate; padding-top:18px !important; backdrop-filter:none !important; box-shadow:none !important; }\n:root[data-theme=\"light\"] [data-tour=\"game-map\"]{ background:#1a1020 !important; }\n[data-tour=\"game-map\"]::before{ content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; pointer-events:none; clip-path:var(--vc-coffin-in); background:var(--vc-lining-layers); }\n[data-tour=\"game-map\"] > span{ font-family:var(--vc-plate); font-size:.8125rem !important; letter-spacing:.06em; color:var(--vc-mute) !important; }\n\n/* Toasts are coffin tags with a sticker (day) or a candle (night) in place of the info icon */\n[data-sonner-toast]{\n  background:var(--vc-toast-sticker) left 20px center / 30px 30px no-repeat,var(--vc-bar) !important;\n  border:0 !important; border-radius:0 !important; box-shadow:none !important;\n  clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,16px 100%,0 50%);\n  padding-left:60px !important; padding-right:46px !important;\n  font-family:var(--vc-serif) !important; color:var(--vc-ink) !important;\n}\n[data-sonner-toast] [data-icon]{ display:none !important; }\n/* the outline follows the clipped tag: four hard drop-shadows on the (unclipped) toaster */\n[data-sonner-toaster]{ filter:drop-shadow(2px 0 0 var(--vc-toast-edge)) drop-shadow(-2px 0 0 var(--vc-toast-edge)) drop-shadow(0 2px 0 var(--vc-toast-edge)) drop-shadow(0 -2px 0 var(--vc-toast-edge)); --width:410px; }\n:root,:root[data-theme=\"dark\"]{ --vc-toast-sticker:url(\"theme:or-candle.webp\"); --vc-toast-edge:#9a8f9c; }\n:root[data-theme=\"light\"]{ --vc-toast-sticker:url(\"theme:st-bat.webp\"); --vc-toast-edge:#1a1020; }\n[data-sonner-toast] [data-button]{ clip-path:var(--vc-tag); border-radius:0 !important; background:var(--vc-name) !important; color:var(--vc-bar) !important; font-family:var(--vc-plate) !important; font-weight:700 !important; padding-inline:14px !important; }\n:root[data-theme=\"dark\"] [data-sonner-toast] [data-button]{ background:var(--vc-accent) !important; color:#fff !important; }\n[data-sonner-toast] [data-close-button]{ left:auto !important; right:22px !important; top:50% !important; transform:translateY(-50%) !important; background:var(--vc-bar) !important; border-color:var(--vc-toast-edge) !important; color:var(--vc-ink) !important; }\n\n/* Settings selects: velvet or lilac lining with a trim edge */\n[data-component=\"OverhaulSettingsPage\"] select{ background-color:var(--vc-lining) !important; border:0 !important; box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important; color:var(--vc-ink) !important; }\n\n/* the map box is its own coffin, so its HUD slot is not a second one */\n[data-mari-part=\"game-hud\"] > *:has([data-tour=\"game-map\"]),[data-mari-part=\"game-hud\"] > [data-tour=\"game-map\"]{ clip-path:none; background:none !important; padding-top:0; }\n[data-mari-part=\"game-hud\"] > [data-tour=\"game-map\"]{ clip-path:var(--vc-coffin); background:var(--vc-silver,#1a1020) !important; padding-top:18px; }\n:root[data-theme=\"light\"] [data-mari-part=\"game-hud\"] > [data-tour=\"game-map\"]{ background:#1a1020 !important; }\n[data-tour=\"game-map\"] button{ clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:12px !important; font-family:var(--vc-plate) !important; font-weight:700; font-size:.8125rem !important; }\n[data-mari-part=\"game-hud\"]:has([data-tour=\"game-map\"]){ clip-path:none; background:none !important; padding-inline:0; }\n:root[data-theme=\"light\"] [data-tour=\"game-map\"] button:not(:disabled){ color:var(--vc-name) !important; background:#fff !important; }\n\n/* ══ Round 4 ══════════════════════════════════════════════ */\n/* Selects: a plain velvet slot with a full trim edge (a tag clip cannot ca\n\nField \"css\": showing characters 20000–40000 of 57436. Re-read with field=\"css\" offset=40000 for the next window.",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_97bd981b789e4b53b749bf447683f8a9",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM",
+    "field": "css",
+    "offset": 40000,
+    "limit": 20000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_97bd981b789e4b53b749bf447683f8a9",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\nrry an outline on a select) */\n[data-component=\"OverhaulSettingsPage\"] select{ clip-path:none !important; border:1.5px solid var(--vc-trim) !important; box-shadow:none !important; }\n/* Sidebars and the game pane: as dark and calm as the coffin linings */\n:root,:root[data-theme=\"dark\"]{ --vc-sidebar-bg:linear-gradient(rgba(12,6,9,.62),rgba(12,6,9,.7)),url(\"theme:velvet-tile.webp\") 0 0 / 512px repeat,#120609; }\n/* Ctrl+K: the list fades into the footer band instead of being sliced by it */\n[data-component=\"GlobalOmnibar.Panel\"] footer{ position:relative; }\n[data-component=\"GlobalOmnibar.Panel\"] footer::before{ content:\"\"; position:absolute; left:0; right:0; bottom:100%; height:34px; pointer-events:none; background:linear-gradient(to bottom,transparent,var(--vc-bar)); }\n/* Day iron is plum and lighter: a 32px fence by day, the black 44px railing at night */\n:root[data-theme=\"light\"]{ --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 32px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar)); }\n:root[data-theme=\"light\"] [data-component=\"TopBar\"]{ min-height:74px; padding-bottom:32px !important; }\n/* Phone: a compact toast docked above the bottom bar, clear of the mode tabs */\n:root[data-overhaul=\"mobile\"] [data-sonner-toast]{ padding:8px 40px 8px 44px !important; background-size:20px 20px,auto !important; background-position:left 16px center,0 0 !important; font-size:.875rem !important; min-height:0 !important; }\n:root[data-overhaul=\"mobile\"] [data-sonner-toast] [data-close-button]{ right:16px !important; }\n/* Loading and icon avatars in the chat list are cameo ovals too */\n[data-chat-row] > .relative.flex-shrink-0 [class*=\"rounded-\"]:not(.rounded-full),[data-chat-row] [data-mari-part=\"avatar-placeholder\"]{ border-radius:50% / 50% !important; }\n/* Library: the \"new\" card is an empty coffin with a dashed edge and a sticker */\n.ov-card__art--new{ clip-path:var(--vc-coffin); --vc-head:16px; --vc-sh:16px; --vc-foot:10px; border:0 !important; border-radius:0 !important; position:relative; isolation:isolate;\n  background:var(--vc-card-new) 0 0 / 100% 100% no-repeat,var(--vc-card-ph) !important; color:var(--vc-name) !important; }\n:root,:root[data-theme=\"dark\"]{ --vc-card-new:url(\"theme:card-new-night.svg\"); }\n:root[data-theme=\"light\"]{ --vc-card-new:url(\"theme:card-new-day.svg\"); }\n.ov-card__art--new::before{ content:\"\"; position:absolute; left:50%; top:22%; width:46px; height:46px; translate:-50% 0; z-index:-1; pointer-events:none; background:var(--vc-finial) center / contain no-repeat; }\n.ov-card__art--new svg{ margin-top:48px; }\n\n/* ══ Round 5 ══════════════════════════════════════════════ */\n/* Sidebar mode tabs: a shallower tag and tighter tracking, so the count sits inside the shape */\n[data-component=\"ChatSidebar\"] .mari-chrome-segmented__button{ clip-path:polygon(6px 0,calc(100% - 6px) 0,100% 50%,calc(100% - 6px) 100%,6px 100%,0 50%); padding-inline:10px !important; letter-spacing:.01em; gap:3px; }\n[data-component=\"ChatSidebar\"] .mari-chrome-segmented__button .ov-mode-count{ margin-left:2px; }\n/* Day selects: lilac lining and a plum trim, like the rest of the pastel forms */\n:root[data-theme=\"light\"] [data-component=\"OverhaulSettingsPage\"] select{ background-color:#ecdfff !important; border-color:#8a5aa8 !important; color:var(--vc-ink) !important; }\n/* Settings boxes (such as Custom sound) get room inside their edge */\n[data-component=\"OverhaulSettingsPage\"] .rounded-lg.p-2\\.5{ padding:12px 14px !important; border-radius:0 !important; }\n\n/* Night sidebars: the velvet is softened further so no streak shows behind the list */\n:root,:root[data-theme=\"dark\"]{ --vc-sidebar-bg:linear-gradient(rgba(12,6,9,.74),rgba(12,6,9,.8)),url(\"theme:velvet-tile.webp\") 0 0 / 512px repeat,#120609; }\n\n/* ══ Round 6: a smaller toast (its position stays the user's Notification position) ══ */\n:root:not([data-overhaul=\"mobile\"]) [data-sonner-toaster]{ --width:min(420px,calc(100vw - 48px)) !important; }\n[data-sonner-toast] [data-content]{ min-width:0; flex:1 1 auto; }\n[data-sonner-toast] [data-title],[data-sonner-toast] [data-description]{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }\n[data-sonner-toast] [data-description]{ font-size:.875rem !important; }\n:root[data-overhaul=\"mobile\"] [data-sonner-toast] [data-content]{ font-size:.875rem; }\n/* phone: one line, the title and its Refresh button */\n:root[data-overhaul=\"mobile\"] [data-sonner-toast] [data-description]{ display:none !important; }\n/* phone, toasts at the bottom: the chat keeps room so the newest reply is not under the toast */\n:root[data-overhaul=\"mobile\"]:has([data-sonner-toaster][data-y-position=\"bottom\"] [data-sonner-toast]) .mari-messages-scroll{ padding-bottom:200px !important; scroll-padding-bottom:200px; }\n\n/* ══ Round 7: the name-plate ornament sits dead centre ══ */\n/* the plate lines its text up on the baseline, so the ornament centres itself on both axes */\n[data-mari-part=\"header\"][data-placement=\"outside\"]::before{ align-self:center; width:28px; height:24px; background-position:center; background-size:contain; margin-block:0; }\n\n/* ══ Round 6 (1.1): one right pane, one page veil ═════════════ */\n/* Every full page already sits under --mari-page-veil (CenterContent), so Lorebooks, Presets, Regex,\n   Connections, Agents and Custom tools get the same velvet veil as Characters and Settings. */\n/* The right pane carries the railing now: the chat list inside it drops its own velvet and edge rail */\n.ov-sidepane [data-component=\"ChatSidebar\"]{ background:transparent !important; padding-right:0 !important; }\n/* Chats | Library: two coffin tags on an iron plate, the open one in oxblood (pink by day), like the top-bar tabs */\n.ov-sideswitch{\n  border:0 !important; border-radius:0 !important; padding:4px !important; gap:4px !important;\n  background:color-mix(in srgb,var(--vc-trim) 22%,var(--vc-bar));\n  clip-path:var(--vc-tag);\n}\n.ov-sideswitch__btn{\n  clip-path:var(--vc-tag); border-radius:0 !important;\n  font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em; color:var(--vc-mute) !important;\n}\n@media (hover: hover){ .ov-sideswitch__btn:not(.is-on):hover{ color:var(--vc-ink) !important; background:color-mix(in srgb,var(--vc-accent) 12%,var(--vc-bar)) !important; } }\n.ov-sideswitch__btn.is-on{ background:color-mix(in srgb,var(--vc-accent) 30%,var(--vc-ground)) !important; color:var(--vc-ink) !important; }\n:root[data-theme=\"light\"] .ov-sideswitch__btn.is-on{ background:color-mix(in srgb,var(--vc-accent) 16%,#fff) !important; }\n:root[data-theme=\"light\"] .ov-sideswitch{ background:color-mix(in srgb,var(--vc-trim) 12%,var(--vc-bar)); }\n/* Phones and tablets: the side page is lined in the same velvet as the sidebars, rows in the serif */\n.ovm-sidepage{ background:var(--vc-sidebar-bg) !important; font-family:var(--vc-serif); }\n:root[data-overhaul=\"mobile\"] .ovm-sidepage [data-component=\"ChatSidebar\"]{ background:transparent !important; }\n.ovm-sidepage .ovm-stack-menu__row{ clip-path:var(--vc-tag); border-radius:0 !important; }\n.ovm-sidepage__dock{ border-top-color:var(--vc-trim) !important; }\n.ovm-sidepage .ovm-stack-menu__tile{\n  clip-path:var(--vc-tag); border-radius:0 !important;\n  font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em;\n  background:color-mix(in srgb,var(--vc-accent) 14%,var(--vc-bar)) !important; color:var(--vc-ink) !important;\n}\n/* The editor's Chat button (accent) is a filled tag, so its white label always has its colour behind it */\n[data-component=\"CenterContent\"] .ov-btn--accent:not(.ov-btn--primary)::before{ background:var(--vc-accent) !important; }\n@media (hover: hover){ [data-component=\"CenterContent\"] .ov-btn--accent:not(.ov-btn--primary):hover::before{ background:color-mix(in srgb,var(--vc-accent) 85%,#000) !important; } }\n[data-component=\"CenterContent\"] .ov-btn--accent{ color:#fff !important; }\n/* Day: the gold mode tag (Game, Main) is a deeper bronze so it reads on lilac */\n:root[data-theme=\"light\"]{ --ov-mode-game:#6a3f00; }\n\n/* Auto-hide top bar (a fullscreen window in a chat) slides OVER the page, so the 44px fence band under\n   it would cover the Chats | Library switch and the safety guard would switch the theme off. While the\n   bar auto-hides it keeps its plain height and the fence shrinks to a trim inside it. */\n:root[data-ov-topbar-autohide] [data-component=\"TopBar\"]{\n  min-height:0; padding-bottom:0 !important; align-items:center;\n  --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 12px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\n}\n\n/* ══ Nitpick fixes (1.3) ══ */\n/* hover rules above are limited to mouse devices (@media (hover: hover)) */\n/* Night: app text set in the accent (helper links like \"Use this look on every device\") reads in the light crimson */\n:root[data-theme=\"dark\"] [class~=\"text-[var(--primary)]\"]{ color:var(--vc-accent-ink) !important; }\n/* Selects look like the other fields: the same slot, hairline and corner, with a drawn chevron instead of the browser's */\n:root[data-theme] [data-component=\"OverhaulSettingsPage\"] select{\n  appearance:none !important; -webkit-appearance:none !important;\n  background-color:var(--secondary) !important; color:var(--vc-ink) !important;\n  border:1px solid var(--border) !important; border-radius:2px !important; box-shadow:none !important; clip-path:none !important;\n  padding-right:36px !important;\n  background-image:linear-gradient(45deg,transparent 50%,var(--vc-mute) 50%),linear-gradient(135deg,var(--vc-mute) 50%,transparent 50%) !important;\n  background-position:calc(100% - 19px) 50%,calc(100% - 14px) 50% !important;\n  background-size:5px 5px,5px 5px !important; background-repeat:no-repeat !important;\n}\n/* Phones: the crest over each Home coffin sat on long labels (\"CONTINUE CHATTING\"); the header steps down below it */\n@media (max-width:640px){\n  [data-mari-part=\"home-widget\"] > header{ padding-top:24px !important; }\n}\n\n/* ══ 1.4: touch screens keep the plain top-bar height ══\n   Phones and tablets want every line of chat they can get, so the fence never adds a row there. It runs\n   along the foot of the normal bar instead, and the buttons stand in front of it on solid coffin tags\n   (the desktop tab shape) that stop just above the rails, so the iron never runs through an icon and\n   the railing still reads as one line. Desktop with a mouse keeps its railing row. */\n:root[data-overhaul=\"mobile\"]{\n  --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 22px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\n  --mari-top-bar-plate:var(--vc-bar); --mari-top-bar-plate-radius:0;\n  --vc-plate-tag:polygon(8px 2px,calc(100% - 8px) 2px,100% 19px,calc(100% - 8px) 36px,8px 36px,0 19px);\n}\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"]{\n  height:calc(3rem + env(safe-area-inset-top)) !important; min-height:0 !important; padding-bottom:0 !important; align-items:center;\n}\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"] :is(.ovm-icon-btn,.ovm-stack-btn){ clip-path:var(--vc-plate-tag); border-radius:0 !important; padding-bottom:6px; }\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"] .ovm-stack-btn{ padding-inline:12px; }\n/* the title is one tag around its words, not a slab across the whole middle of the fence */\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"] .ovm-title{ background-color:transparent !important; }\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"] .ovm-title__inner{ background:var(--vc-bar); clip-path:var(--vc-tag); padding:1px 16px; margin-bottom:6px; }\n@media (pointer: coarse){\n  :root[data-overhaul=\"on\"]{\n    --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 22px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\n    --mari-top-bar-plate:var(--vc-bar);\n  }\n  :root[data-overhaul=\"on\"] [data-component=\"TopBar\"]{ height:var(--ov-topbar-height) !important; min-height:0; padding-bottom:0 !important; align-items:center; }\n}\n\n/* ══ 1.5: one shape per row of controls (nitpick audit 2) ══════════════ */\n/* A coffin-tag outline drawn with backgrounds, for things that cannot carry the ::before plate\n   (selects, fields, chips): the four slanted ends as hairlines + an inset trim on the straight edges */\n:root{\n  --vc-edge-w:.9px;\n  --vc-tag-edge:\n    linear-gradient(to bottom right,transparent calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% + var(--vc-edge-w)),transparent calc(50% + var(--vc-edge-w))) left top / 8px 50% no-repeat,\n    linear-gradient(to top right,transparent calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% + var(--vc-edge-w)),transparent calc(50% + var(--vc-edge-w))) left bottom / 8px 50% no-repeat,\n    linear-gradient(to top right,transparent calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% + var(--vc-edge-w)),transparent calc(50% + var(--vc-edge-w))) right top / 8px 50% no-repeat,\n    linear-gradient(to bottom right,transparent calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% + var(--vc-edge-w)),transparent calc(50% + var(--vc-edge-w))) right bottom / 8px 50% no-repeat;\n  --vc-chev:\n    linear-gradient(45deg,transparent calc(50% - .8px),currentColor calc(50% - .8px),currentColor calc(50% + .8px),transparent calc(50% + .8px)) calc(100% - 19px) calc(50% + .5px) / 5.3px 5.3px no-repeat,\n    linear-gradient(-45deg,transparent calc(50% - .8px),currentColor calc(50% - .8px),currentColor calc(50% + .8px),transparent calc(50% + .8px)) calc(100% - 14.7px) calc(50% + .5px) / 5.3px 5.3px no-repeat;\n  --vc-cut:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 8px);\n}\n/* Library toolbars (and the split side): search, sort and the card-size switch are coffin tags like\n   Tags, Import and the icon buttons beside them */\n.ov-gallery__tools .ov-search,\n.ov-gallery__tools select.ov-select,\n.ov-gallery__tools .ov-seg,\n.ov-org .ov-search,\n.ov-org select.ov-select{\n  clip-path:var(--vc-tag) !important; border:0 !important; border-radius:0 !important;\n  box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important;\n  background:var(--vc-tag-edge), var(--vc-bar) !important;\n  padding-inline:14px !important;\n}\n.ov-gallery__tools select.ov-select,\n.ov-org select.ov-select{\n  background:var(--vc-tag-edge), var(--vc-chev), var(--vc-bar) !important;\n  padding-right:30px !important;\n}\n.ov-gallery__tools .ov-seg{ padding:2px 10px !important; }\n.ov-gallery__tools .ov-seg button{ clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:10px; }\n/* Home: Conversation, Roleplay and Game are coffin tags like Professor and Widgets */\n[data-component=\"CenterContent\"] .mari-chrome-control[data-home-chat-mode]{\n  border:0 !important; border-radius:0 !important; clip-path:var(--vc-tag);\n  box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important;\n  background:var(--vc-tag-edge), var(--vc-bar) !important;\n  padding-inline:16px !important;\n}\n/* phone Chats toolbar: search, tags and \"...\" are coffin tags like New */\n.ovm-sidepage .ovm-chats-tools .mari-chrome-field,\n.ovm-sidepage [data-mari-part=\"tag-filter\"],\n.ovm-sidepage .ovm-chats-more__btn,\n.mari-status-footer .mari-chrome-control,\n.mari-status-footer .mari-chrome-field{\n  border:0 !important; border-radius:0 !important; clip-path:var(--vc-tag);\n  box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important;\n  background:var(--vc-tag-edge), var(--vc-bar) !important;\n}\n.ovm-sidepage [data-mari-part=\"tag-filter\"], .ovm-sidepage .ovm-chats-more__btn{ min-width:3rem; }\n/* phone/tablet Chat settings: the rows are coffin tags, the switch tiles and Edit have cut corners,\n   like the rest of the theme (the drawer is square, not rounded) */\n.ov-cs.ov-cs [data-ovm-cs-view] .mari-drawer.ovm-cs-row,\n.ov-cs.ov-cs [data-ovm-cs-view] .mari-drawer[data-chat-settings-section=\"connection\"],\n.ov-cs.ov-cs [data-ovm-cs-view] [data-ovm-quick] > .mari-drawer,\n.ov-cs.ov-cs [data-ovm-cs-view=\"all\"] > [data-ovm-quick],\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-cs-row__btn,\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-csq__all{ border-radius:0 !important; clip-path:var(--vc-tag); }\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-cs-row__btn,\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-csq__all,\n.ov-cs.ov-cs [data-ovm-cs-view] .mari-drawer[data-chat-settings-section=\"connection\"]{ padding-inline:1.25rem !important; }\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-csq__switch{ border-radius:0 !important; clip-path:var(--vc-cut); }\n.ov-cs .ov-edbtn{ border-radius:0 !important; clip-path:var(--vc-tag); padding-inline:16px !important; }\n/* the Juno / Online chip over a conversation is an opaque tag, so messages never show through it */\n[data-mari-part=\"chat-header\"] > *{\n  background:var(--vc-tag-edge), var(--vc-bar) !important;\n  box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important;\n  padding-inline:14px 16px !important;\n}\n\n\n/* ══ 1.6: split view's second-side bar is a plain bar ══\n   It borrows the top bar's hooks, so it also took the fence row and its tall height; under the main bar's fence\n   that read as a double fence. The second side's bar keeps the bar colour and the plates, without the iron. */\n[data-component=\"TopBar\"][data-split-bar]{\n  min-height:0 !important; height:var(--ov-topbar-height) !important; padding-bottom:0 !important; align-items:center;\n  --mari-top-bar-bg:linear-gradient(var(--vc-bar),var(--vc-bar));\n  background:linear-gradient(var(--vc-bar),var(--vc-bar)) !important;\n}\n\n\nField \"css\": showing characters 40000–57436 of 57436.",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "draft",
+  "data": "I "
+ },
+ {
+  "type": "draft",
+  "data": "I found **"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket ("
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue,"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork,"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts,"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes,"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout,"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and inactive "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and inactive status "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and inactive status unchanged. "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and inactive status unchanged. Same "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and inactive status unchanged. Same casket,"
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and inactive status unchanged. Same casket, "
+ },
+ {
+  "type": "draft",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and inactive status unchanged. Same casket, colder "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_6f070f9577644236a7153ea9e38aeab1",
+   "name": "bash",
+   "input": {
+    "command": "mari themes get --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_6f070f9577644236a7153ea9e38aeab1",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari themes get --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari themes <command>\nRead: list [--active] [--limit <n>], active, get <id>\nWrite: create --name <name> (--css <css> | --css-file <path>) [--activate] [--apply] [--reason <text>]\nWrite: update <id> [--name <name>] [--css <css> | --css-file <path>] [--apply] [--reason <text>]\nWrite: set-active <id|none> [--apply] [--reason <text>]\nWrites dry-run by default; --apply saves reversible changes and shows a Keep/Restore review card.",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "token",
+  "data": "I found **Velvet Casket (my copy)**. I’ll change its crimson accents and oxblood shading to blue, keeping the artwork, fonts, coffin shapes, layout, and inactive status unchanged. Same casket, colder blood."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "narration": true
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_ac8e748bfc0e4d3380a2cac4e726742e",
+   "name": "bash",
+   "input": {
+    "command": "mari db transform custom_themes --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_ac8e748bfc0e4d3380a2cac4e726742e",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari db transform custom_themes --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari db <command>\nDiscovery: status, tables, schema <table>, counts, data-dir, now, new-id\nRead: list <table>, get <table> <id>, select <table> --where <expr>, search <table|all> <query>, validate [--table <table>]\nWhere: row.field and row['field'] with comparisons, &&, ||, !, parentheses, and safe string/array methods (includes, startsWith, endsWith, case conversion, trim); arbitrary code and calls are rejected\nWrite: insert|patch|replace|delete|transform ... (dry-run by default; --apply saves reversible changes and shows a Keep/Restore review card)\nUse -- before positional arguments that match option names, with options first: mari db get --parsed -- characters --apply\nTransform scripts use an OS sandbox where supported; on other systems, reviewed local scripts remain available only with MARI_DB_ALLOW_UNSAFE_TRANSFORMS=true.\nKnown tables: chats, messages, message_swipes, conversation_call_sessions, conversation_call_messages, conversation_call_sounds, characters, character_card_versions ... (93)\nJournal directory: /home/kolache/Downloads/marinara-agent-handoff/mari-theme-test-data/storage/journal (storage)",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_79b196cb34c04374af25f3e6980bed48",
+   "name": "grep",
+   "input": {
+    "pattern": "css-file|case 'transform'",
+    "path": ".",
+    "glob": "*mari*",
+    "ignoreCase": false,
+    "literal": false,
+    "context": 2,
+    "limit": 15
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_79b196cb34c04374af25f3e6980bed48",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/mari-db/mari-db.service.ts-2523: async function parseCssInput(flags: Map<string, string | boolean>, cwd?: string): Promise<string> {\npackages/server/src/services/mari-db/mari-db.service.ts-2524:   const raw = flagString(flags, \"css\");\npackages/server/src/services/mari-db/mari-db.service.ts:2525:   const file = flagString(flags, \"css-file\") ?? flagString(flags, \"file\");\npackages/server/src/services/mari-db/mari-db.service.ts-2526:   if (raw !== undefined && file) throw new Error(\"Use only one of --css or --css-file\");\npackages/server/src/services/mari-db/mari-db.service.ts-2527:   if (raw === undefined && !file) throw new Error(\"Missing --css '<css>' or --css-file <path>\");\npackages/server/src/services/mari-db/mari-db.service.ts-2524:   const raw = flagString(flags, \"css\");\npackages/server/src/services/mari-db/mari-db.service.ts-2525:   const file = flagString(flags, \"css-file\") ?? flagString(flags, \"file\");\npackages/server/src/services/mari-db/mari-db.service.ts:2526:   if (raw !== undefined && file) throw new Error(\"Use only one of --css or --css-file\");\npackages/server/src/services/mari-db/mari-db.service.ts-2527:   if (raw === undefined && !file) throw new Error(\"Missing --css '<css>' or --css-file <path>\");\npackages/server/src/services/mari-db/mari-db.service.ts-2528:   const css = file ? await readFile(resolve(cwd ? resolve(cwd) : process.cwd(), file), \"utf8\") : raw!;\npackages/server/src/services/mari-db/mari-db.service.ts-2525:   const file = flagString(flags, \"css-file\") ?? flagString(flags, \"file\");\npackages/server/src/services/mari-db/mari-db.service.ts-2526:   if (raw !== undefined && file) throw new Error(\"Use only one of --css or --css-file\");\npackages/server/src/services/mari-db/mari-db.service.ts:2527:   if (raw === undefined && !file) throw new Error(\"Missing --css '<css>' or --css-file <path>\");\npackages/server/src/services/mari-db/mari-db.service.ts-2528:   const css = file ? await readFile(resolve(cwd ? resolve(cwd) : process.cwd(), file), \"utf8\") : raw!;\npackages/server/src/services/mari-db/mari-db.service.ts-2529:   return normalizeThemeCss(css);",
+   "durationMs": 535
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_25c8a1c653904c74bf81bf1cc37ce3dd",
+   "name": "grep",
+   "input": {
+    "pattern": "transformScript|script-file|command === \"transform\"|case \"transform\"",
+    "path": "packages/server/src/services/mari-db/mari-db.service.ts",
+    "glob": "*",
+    "ignoreCase": false,
+    "literal": false,
+    "context": 5,
+    "limit": 12
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_25c8a1c653904c74bf81bf1cc37ce3dd",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/mari-db/mari-db.service.ts-8888:       }\npackages/server/src/services/mari-db/mari-db.service.ts-8889:       case \"insert\":\npackages/server/src/services/mari-db/mari-db.service.ts-8890:       case \"patch\":\npackages/server/src/services/mari-db/mari-db.service.ts-8891:       case \"replace\":\npackages/server/src/services/mari-db/mari-db.service.ts-8892:       case \"delete\":\npackages/server/src/services/mari-db/mari-db.service.ts:8893:       case \"transform\": {\npackages/server/src/services/mari-db/mari-db.service.ts-8894:         const request = await this.parseMutation(sub, parsed.positionals, parsed.flags, context.cwd);\npackages/server/src/services/mari-db/mari-db.service.ts-8895:         return this.executeMutation(request, context.command, context.sessionId);\npackages/server/src/services/mari-db/mari-db.service.ts-8896:       }\npackages/server/src/services/mari-db/mari-db.service.ts-8897:       default:\npackages/server/src/services/mari-db/mari-db.service.ts-8898:         return { ok: false, mode: \"read\", command: context.command, error: this.helpText() };",
+   "durationMs": 6
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_65b9781fa62540a5bfb6ca19c8cca318",
+   "name": "grep",
+   "input": {
+    "pattern": "output|export|writeFile",
+    "path": "packages/server/src/services/mari-db/mari-db.service.ts",
+    "glob": "*",
+    "ignoreCase": false,
+    "literal": false,
+    "context": 1,
+    "limit": 12
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_65b9781fa62540a5bfb6ca19c8cca318",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/mari-db/mari-db.service.ts-8: import { createHash } from \"node:crypto\";\npackages/server/src/services/mari-db/mari-db.service.ts:9: import { appendFile, mkdir, readFile, writeFile } from \"node:fs/promises\";\npackages/server/src/services/mari-db/mari-db.service.ts-10: import { existsSync, readFileSync, readdirSync, renameSync, rmSync } from \"node:fs\";\npackages/server/src/services/mari-db/mari-db.service.ts-367:   if (!reason) return null;\npackages/server/src/services/mari-db/mari-db.service.ts:368:   if ([\"length\", \"max_tokens\", \"max_output_tokens\"].includes(reason)) return \"It was cut off at the output limit.\";\npackages/server/src/services/mari-db/mari-db.service.ts-369:   if ([\"stop\", \"end_turn\", \"stop_sequence\"].includes(reason)) return \"It ended on its own; nothing cut it.\";\npackages/server/src/services/mari-db/mari-db.service.ts-374:   if (value.length <= limit) return { text: value, truncated: false };\npackages/server/src/services/mari-db/mari-db.service.ts:375:   return { text: `${value.slice(0, limit)}\\n… output truncated at ${limit} characters …`, truncated: true };\npackages/server/src/services/mari-db/mari-db.service.ts-376: }\npackages/server/src/services/mari-db/mari-db.service.ts-813: \npackages/server/src/services/mari-db/mari-db.service.ts:814: // L5: exported for the regression lane (raw mari db writes to messages/message_swipes must be\npackages/server/src/services/mari-db/mari-db.service.ts-815: // refused, pointing the caller at chat.updateMessage instead).",
+   "durationMs": 4
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_ddaea8571b744da8b589338618fa6012",
+   "name": "grep",
+   "input": {
+    "pattern": "async parseMutation|transformFile|flags, \"script\"|flags, \"code\"",
+    "path": "packages/server/src/services/mari-db/mari-db.service.ts",
+    "glob": "*",
+    "ignoreCase": false,
+    "literal": false,
+    "context": 8,
+    "limit": 10
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_ddaea8571b744da8b589338618fa6012",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/mari-db/mari-db.service.ts-8957:         const row = parseRow(table, raw);\npackages/server/src/services/mari-db/mari-db.service.ts-8958:         if (matchesSearchQuery(row, needle)) results.push({ table, row });\npackages/server/src/services/mari-db/mari-db.service.ts-8959:         if (results.length >= limit) return { ok: true, mode: \"read\", command, output: results };\npackages/server/src/services/mari-db/mari-db.service.ts-8960:       }\npackages/server/src/services/mari-db/mari-db.service.ts-8961:     }\npackages/server/src/services/mari-db/mari-db.service.ts-8962:     return { ok: true, mode: \"read\", command, output: results };\npackages/server/src/services/mari-db/mari-db.service.ts-8963:   }\npackages/server/src/services/mari-db/mari-db.service.ts-8964: \npackages/server/src/services/mari-db/mari-db.service.ts:8965:   private async parseMutation(\npackages/server/src/services/mari-db/mari-db.service.ts-8966:     kind: ParsedMutationRequest[\"kind\"],",
+   "durationMs": 5
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_0437010230d94af69db3bde6d5755715",
+   "name": "read",
+   "input": {
+    "path": "packages/server/src/services/mari-db/mari-db.service.ts",
+    "offset": 8965,
+    "limit": 100
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_0437010230d94af69db3bde6d5755715",
+   "name": "read",
+   "isError": false,
+   "output": "File packages/server/src/services/mari-db/mari-db.service.ts is 474686 bytes; refusing to read more than 256000 bytes. Use grep or a narrower file.",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_42c7c66446d04b3fb30bc264a5680c6b",
+   "name": "grep",
+   "input": {
+    "pattern": "private async parseMutation",
+    "path": "packages/server/src/services/mari-db/mari-db.service.ts",
+    "glob": "*",
+    "ignoreCase": false,
+    "literal": true,
+    "context": 95,
+    "limit": 1
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_42c7c66446d04b3fb30bc264a5680c6b",
+   "name": "grep",
+   "isError": false,
+   "output": "\"context\" 95 is outside 0-20, so 20 was used.\npackages/server/src/services/mari-db/mari-db.service.ts-8945:     query: string | undefined,",
+   "durationMs": 4
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_d380bd1b6a064997b3e269116ec7ee27",
+   "name": "grep",
+   "input": {
+    "pattern": "script|transform",
+    "path": "packages/server/src/services/mari-db/mari-db.service.ts",
+    "glob": "*",
+    "ignoreCase": false,
+    "literal": false,
+    "context": 3,
+    "limit": 80
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_d380bd1b6a064997b3e269116ec7ee27",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/mari-db/mari-db.service.ts-123: import { computePersonalExtensionHash } from \"../extensions/personal-extension-hash.js\";\npackages/server/src/services/mari-db/mari-db.service.ts-124: import { HomeWidgetCatalogConflictError, replaceHomeWidgetCatalog } from \"../home-widget-catalog.service.js\";\npackages/server/src/services/mari-db/mari-db.service.ts-125: import { createMariWherePredicate } from \"./mari-where-expression.js\";\npackages/server/src/services/mari-db/mari-db.service.ts:126: import { runMariTransformSandbox } from \"./mari-transform-sandbox.js\";\npackages/server/src/services/mari-db/mari-db.service.ts-127: import { reloadFeatureSettingsIfTouched } from \"../features/feature-settings.js\";\npackages/server/src/services/mari-db/mari-db.service.ts-128: import { createAppSettingsStorage } from \"../storage/app-settings.storage.js\";\npackages/server/src/services/mari-db/mari-db.service.ts-129: import { encryptCustomToolWebhookUrl, ENCRYPTED_WEBHOOK_PREFIX } from \"../../utils/custom-tool-webhook.js\";\npackages/server/src/services/mari-db/mari-db.service.ts-188:     | \"patch\"\npackages/server/src/services/mari-db/mari-db.service.ts-189:     | \"replace\"\npackages/server/src/services/mari-db/mari-db.service.ts-190:     | \"delete\"\npackages/server/src/services/mari-db/mari-db.service.ts:191:     | \"transform\"\npackages/server/src/services/mari-db/mari-db.service.ts-192:     | \"theme-create\"\npackages/server/src/services/mari-db/mari-db.service.ts-193:     | \"theme-update\"\npackages/server/src/services/mari-db/mari-db.service.ts-194:     | \"theme-set-active\"\npackages/server/src/services/mari-db/mari-db.service.ts-202:   where?: string;\npackages/server/src/services/mari-db/mari-db.service.ts-203:   row?: Row;\npackages/server/src/services/mari-db/mari-db.service.ts-204:   patch?: Row;\npackages/server/src/services/mari-db/mari-db.service.ts:205:   scriptPath?: string;\npackages/server/src/services/mari-db/mari-db.service.ts-206:   name?: string;\npackages/server/src/services/mari-db/mari-db.service.ts-207:   css?: string;\npackages/server/src/services/mari-db/mari-db.service.ts-208:   installedAt?: string;\npackages/server/src/services/mari-db/mari-db.service.ts-549:   // chat_images, character_images, assets, and custom_themes\npackages/server/src/services/mari-db/mari-db.service.ts-550:   // have no JSON columns; their former entries named columns that do not exist.\npackages/server/src/services/mari-db/mari-db.service.ts-551:   game_engine_state: [\"state\"],\npackages/server/src/services/mari-db/mari-db.service.ts:552:   regex_scripts: [\"trimStrings\", \"placement\", \"targetCharacterIds\", \"targetPromptPresetIds\"],\npackages/server/src/services/mari-db/mari-db.service.ts-553: };\npackages/server/src/services/mari-db/mari-db.service.ts-554: \npackages/server/src/services/mari-db/mari-db.service.ts-555: function buildTableMeta(table: Parameters<typeof getFileTableConfig>[0]): TableMeta {\npackages/server/src/services/mari-db/mari-db.service.ts-582: \npackages/server/src/services/mari-db/mari-db.service.ts-583: const TABLE_METAS = buildTableMetas();\npackages/server/src/services/mari-db/mari-db.service.ts-584: const AGENT_PHASES = new Set([\"pre_generation\", \"parallel\", \"post_processing\"]);\npackages/server/src/services/mari-db/mari-db.service.ts:585: const TOOL_EXECUTION_TYPES = new Set([\"webhook\", \"static\", \"script\"]);\npackages/server/src/services/mari-db/mari-db.service.ts-586: const BOOLEAN_TEXT_VALUES = new Set([\"true\", \"false\"]);\npackages/server/src/services/mari-db/mari-db.service.ts-587: \npackages/server/src/services/mari-db/mari-db.service.ts-588: function isRecord(value: unknown): value is Row {\npackages/server/src/services/mari-db/mari-db.service.ts-734: \npackages/server/src/services/mari-db/mari-db.service.ts-735: function normalizeAgentConfigWriteRow(row: Row): Row {\npackages/server/src/services/mari-db/mari-db.service.ts-736:   const out: Row = { ...row };\npackages/server/src/services/mari-db/mari-db.service.ts:737:   if (out.description === undefined) out.description = \"\";\npackages/server/src/services/mari-db/mari-db.service.ts-738:   if (out.connectionId === undefined) out.connectionId = null;\npackages/server/src/services/mari-db/mari-db.service.ts-739:   if (out.imagePath === undefined) out.imagePath = null;\npackages/server/src/services/mari-db/mari-db.service.ts-740:   if (out.promptTemplate === undefined) out.promptTemplate = \"\";\npackages/server/src/services/mari-db/mari-db.service.ts-750: \npackages/server/src/services/mari-db/mari-db.service.ts-751: function normalizeCustomToolWriteRow(row: Row): Row {\npackages/server/src/services/mari-db/mari-db.service.ts-752:   const out: Row = { ...row };\npackages/server/src/services/mari-db/mari-db.service.ts:753:   if (out.description === undefined) out.description = \"\";\npackages/server/src/services/mari-db/mari-db.service.ts-754:   if (out.parametersSchema === undefined) out.parametersSchema = {};\npackages/server/src/services/mari-db/mari-db.service.ts-755:   if (out.executionType === undefined) out.executionType = \"static\";\npackages/server/src/services/mari-db/mari-db.service.ts-756:   if (out.webhookUrl === undefined) out.webhookUrl = null;\npackages/server/src/services/mari-db/mari-db.service.ts-755:   if (out.executionType === undefined) out.executionType = \"static\";\npackages/server/src/services/mari-db/mari-db.service.ts-756:   if (out.webhookUrl === undefined) out.webhookUrl = null;\npackages/server/src/services/mari-db/mari-db.service.ts-757:   if (out.staticResult === undefined) out.staticResult = null;\npackages/server/src/services/mari-db/mari-db.service.ts:758:   if (out.scriptBody === undefined) out.scriptBody = null;\npackages/server/src/services/mari-db/mari-db.service.ts-759:   out.includeHiddenContext = out.includeHiddenContext === undefined ? \"false\" : toBooleanText(out.includeHiddenContext);\npackages/server/src/services/mari-db/mari-db.service.ts-760:   out.enabled = out.enabled === undefined ? \"true\" : toBooleanText(out.enabled);\npackages/server/src/services/mari-db/mari-db.service.ts-761:   return out;\npackages/server/src/services/mari-db/mari-db.service.ts-822: }\npackages/server/src/services/mari-db/mari-db.service.ts-823: \npackages/server/src/services/mari-db/mari-db.service.ts-824: /**\npackages/server/src/services/mari-db/mari-db.service.ts:825:  * L5/L7: the tables a transform runs over. parseMutation only guards positionals[0], which for\npackages/server/src/services/mari-db/mari-db.service.ts-826:  * `transform all <script>` is the literal \"all\", so \"all\" expands here and skips the message tables:\npackages/server/src/services/mari-db/mari-db.service.ts-827:  * raw writes there are refused, and the untrusted script only ever gets the tables it may change.\npackages/server/src/services/mari-db/mari-db.service.ts-828:  * A named message table still throws.\npackages/server/src/services/mari-db/mari-db.service.ts-823: \npackages/server/src/services/mari-db/mari-db.service.ts-824: /**\npackages/server/src/services/mari-db/mari-db.service.ts-825:  * L5/L7: the tables a transform runs over. parseMutation only guards positionals[0], which for\npackages/server/src/services/mari-db/mari-db.service.ts:826:  * `transform all <script>` is the literal \"all\", so \"all\" expands here and skips the message tables:\npackages/server/src/services/mari-db/mari-db.service.ts-827:  * raw writes there are refused, and the untrusted script only ever gets the tables it may change.\npackages/server/src/services/mari-db/mari-db.service.ts-828:  * A named message table still throws.\npackages/server/src/services/mari-db/mari-db.service.ts-829:  */\npackages/server/src/services/mari-db/mari-db.service.ts-824: /**\npackages/server/src/services/mari-db/mari-db.service.ts-825:  * L5/L7: the tables a transform runs over. parseMutation only guards positionals[0], which for\npackages/server/src/services/mari-db/mari-db.service.ts-826:  * `transform all <script>` is the literal \"all\", so \"all\" expands here and skips the message tables:\npackages/server/src/services/mari-db/mari-db.service.ts:827:  * raw writes there are refused, and the untrusted script only ever gets the tables it may change.\npackages/server/src/services/mari-db/mari-db.service.ts-828:  * A named message table still throws.\npackages/server/src/services/mari-db/mari-db.service.ts-829:  */\npackages/server/src/services/mari-db/mari-db.service.ts-830: export function resolveTransformTables(table: string): string[] {\npackages/server/src/services/mari-db/mari-db.service.ts-1467:   return {\npackages/server/src/services/mari-db/mari-db.service.ts-1468:     id,\npackages/server/src/services/mari-db/mari-db.service.ts-1469:     name,",
+   "durationMs": 5
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_59a5644de7de4255b325a3eda2877001",
+   "name": "bash",
+   "input": {
+    "command": "sed -n '8965,9035p' packages/server/src/services/mari-db/mari-db.service.ts; grep -n 'runMariTransformSandbox\\|scriptPath' packages/server/src/services/mari-db/mari-db.service.ts",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_59a5644de7de4255b325a3eda2877001",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: sed -n '8965,9035p' packages/server/src/services/mari-db/mari-db.service.ts; grep -n 'runMariTransformSandbox\\|scriptPath' packages/server/src/services/mari-db/mari-db.service.ts\nSandbox: linux-bubblewrap (network denied; writes confined to workspace)\nExit code: 0\n\nstdout:\n  private async parseMutation(\n    kind: ParsedMutationRequest[\"kind\"],\n    positionals: string[],\n    flags: Map<string, string | boolean>,\n    cwd?: string,\n  ): Promise<ParsedMutationRequest> {\n    const apply = hasFlag(flags, \"apply\");\n    const cascade = hasFlag(flags, \"cascade\");\n    const reason = flagString(flags, \"reason\") ?? null;\n    // L5: a raw mari db write can insert/patch/replace/delete a messages or message_swipes row\n    // directly, which skips chat storage's addSwipe/setActiveSwipe entirely (no new swipe, no\n    // memory-chunk invalidation, no inventory-telling bookkeeping) and can destroy the row chat.\n    // updateMessage exists to repair non-destructively. Refuse it here, before any plan is built.\n    guardRawMessageTableWrite(positionals[0]);\n    if (kind === \"insert\") {\n      const table = positionals[0];\n      if (!table) throw new Error(\"Usage: mari db insert <table> (--json '<row-json>' | --json-file <path>) [--apply]\");\n      return { kind, table, row: await parseJsonInput(flags, cwd), apply, cascade, reason, cwd };\n    }\n    if (kind === \"patch\") {\n      const [table, id] = positionals;\n      if (!table || !id)\n        throw new Error(\n          \"Usage: mari db patch <table> <id> (--json '<partial-row-json>' | --json-file <path>) [--apply]\",\n        );\n      return { kind, table, id, patch: await parseJsonInput(flags, cwd), apply, cascade, reason, cwd };\n    }\n    if (kind === \"replace\") {\n      const [table, id] = positionals;\n      if (!table || !id)\n        throw new Error(\n          \"Usage: mari db replace <table> <id> (--json '<full-row-json>' | --json-file <path>) [--apply]\",\n        );\n      return { kind, table, id, row: await parseJsonInput(flags, cwd), apply, cascade, reason, cwd };\n    }\n    if (kind === \"delete\") {\n      const table = positionals[0];\n      if (!table) throw new Error(\"Usage: mari db delete <table> <id>|--where <expr> [--cascade] [--apply]\");\n      const id = positionals[1];\n      const where = flagString(flags, \"where\");\n      if (!id && !where) throw new Error(\"Delete requires an id or an explicit --where expression\");\n      return { kind, table, id, where, apply, cascade, reason, cwd };\n    }\n    const [table, scriptPath] = positionals;\n    if (!table || !scriptPath)\n      throw new Error(\"Usage: mari db transform <table|all> <script.mjs> [--dry-run] [--apply]\");\n    return { kind, table, scriptPath, apply, cascade: true, reason, cwd };\n  }\n\n  private async captureDeletedLorebookEmbeddings(changes: PlanChange[]): Promise<void> {\n    for (const change of changes) {\n      if (!change.apply || change.table !== \"lorebooks\" || change.action !== \"delete\") continue;\n      change.embeddedCharacterId = (await resolveEmbeddedCharacterId(this.db, change.id)) ?? undefined;\n    }\n  }\n\n  // #4927/#4932: keep an embedded character's data.character_book in sync after Mari mutates a lorebook\n  // through the generic mutation path — which, unlike the HTTP routes, never called the sync, so\n  // add/update/delete of an embedded lorebook's entries left the derived copy stale. Safe for\n  // standalone lorebooks: syncCharacterBookFromLorebook no-ops when the lorebook isn't embedded, and\n  // swallows its own errors, so a sync failure never breaks the mutation.\n  private async syncAffectedCharacterBooks(changes: PlanChange[]): Promise<CharacterBookSyncOutcome[]> {\n    const lorebookIds = new Set<string>();\n    const outcomes: CharacterBookSyncOutcome[] = [];\n    const collect = (value: unknown) => {\n      if (typeof value === \"string\" && value) lorebookIds.add(value);\n    };\n    for (const change of changes) {\n      if (!change.apply) continue;\n      if (change.table === \"lorebook_entries\") {\n        // Collect BOTH sides: an entry reparented between lorebooks (a raw patch of its\n126:import { runMariTransformSandbox } from \"./mari-transform-sandbox.js\";\n205:  scriptPath?: string;\n9008:    const [table, scriptPath] = positionals;\n9009:    if (!table || !scriptPath)\n9011:    return { kind, table, scriptPath, apply, cascade: true, reason, cwd };\n9876:    const scriptPath = resolve(cwd, String(request.scriptPath));\n9889:    const sandboxResults = await runMariTransformSandbox({\n9891:      scriptPath,\n",
+   "durationMs": 2286
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_284f7f1968aa41e5a47d1224e41913e3",
+   "name": "bash",
+   "input": {
+    "command": "sed -n '9870,9935p' packages/server/src/services/mari-db/mari-db.service.ts; cat packages/server/src/services/mari-db/mari-transform-sandbox.ts | head -100",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_284f7f1968aa41e5a47d1224e41913e3",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: sed -n '9870,9935p' packages/server/src/services/mari-db/mari-db.service.ts; cat packages/server/src/services/mari-db/mari-transform-sandbox.ts | head -100\nSandbox: linux-bubblewrap (network denied; writes confined to workspace)\nExit code: 0\n\nstdout:\n  private async planTransform(\n    request: ParsedMutationRequest,\n    timestamp: string,\n    allocateId: () => string,\n  ): Promise<PlanChange[]> {\n    const cwd = request.cwd ? resolve(request.cwd) : process.cwd();\n    const scriptPath = resolve(cwd, String(request.scriptPath));\n    const tables = resolveTransformTables(String(request.table));\n    const allParsed = new Map<string, Row[]>();\n    const allRaw = new Map<string, Row[]>();\n    for (const table of tables) {\n      getMeta(table);\n      const rawRows = await this.rawRows(table);\n      allRaw.set(table, rawRows);\n      allParsed.set(\n        table,\n        rawRows.map((row) => parseRow(table, row)),\n      );\n    }\n    const sandboxResults = await runMariTransformSandbox({\n      workspaceRoot: cwd,\n      scriptPath,\n      timestamp,\n      tables: tables.map((table) => ({\n        name: table,\n        rows: allRaw.get(table) ?? [],\n        jsonColumns: [...(JSON_COLUMNS[table] ?? [])],\n      })),\n    });\n    const resultsByTable = new Map(sandboxResults.map((result) => [result.table, result.results]));\n    const changes: PlanChange[] = [];\n    for (const table of tables) {\n      const meta = getMeta(table);\n      const rawRows = allRaw.get(table) ?? [];\n      const parsedRows = allParsed.get(table) ?? [];\n      for (let index = 0; index < parsedRows.length; index++) {\n        const row = clone(parsedRows[index]!);\n        const raw = rawRows[index]!;\n        const tableResults = resultsByTable.get(table);\n        if (!tableResults || tableResults.length !== parsedRows.length) {\n          throw new Error(`Transform sandbox returned an incomplete result for ${table}`);\n        }\n        const sandboxResult = tableResults[index];\n        if (!sandboxResult || typeof sandboxResult.defined !== \"boolean\") {\n          throw new Error(`Transform sandbox returned an invalid result for ${table}`);\n        }\n        const result = sandboxResult.defined ? sandboxResult.value : undefined;\n        if (result === null || result === false || result === undefined) continue;\n        if (isRecord(result) && result.delete === true) {\n          changes.push({\n            table,\n            id: rowId(meta, raw),\n            action: \"delete\",\n            before: row,\n            after: null,\n            beforeRaw: raw,\n            afterRaw: null,\n            apply: true,\n          });\n          continue;\n        }\n        if (isRecord(result) && Object.prototype.hasOwnProperty.call(result, \"insert\")) {\n          const inserts = Array.isArray(result.insert) ? result.insert : [result.insert];\n          for (const insert of inserts) {\n            if (!isRecord(insert)) continue;\n            const insertRow = { ...insert };\nimport { randomUUID } from \"node:crypto\";\nimport { spawn } from \"node:child_process\";\nimport { resolve } from \"node:path\";\nimport { StringDecoder } from \"node:string_decoder\";\nimport { logger } from \"../../lib/logger.js\";\nimport {\n  getWorkspaceShellSandboxStatus,\n  sanitizeWorkspaceShellEnv,\n  spawnWorkspaceSandboxedProcess,\n  type WorkspaceSandboxedShell,\n} from \"../professor-mari/workspace-shell-sandbox.js\";\n\ntype Row = Record<string, unknown>;\n\nexport type MariTransformTable = {\n  name: string;\n  rows: Row[];\n  jsonColumns: string[];\n};\n\nexport type MariTransformOutput = {\n  table: string;\n  results: Array<{ defined: boolean; value?: unknown }>;\n};\n\ntype RunMariTransformInput = {\n  workspaceRoot: string;\n  scriptPath: string;\n  timestamp: string;\n  tables: MariTransformTable[];\n};\n\nconst TRANSFORM_TIMEOUT_MS = 15 * 60_000;\nconst MAX_TRANSFORM_OUTPUT_BYTES = 32 * 1024 * 1024;\nconst MAX_TRANSFORM_ERROR_BYTES = 32_000;\nconst UNSAFE_TRANSFORM_FALLBACK_ENV = \"MARI_DB_ALLOW_UNSAFE_TRANSFORMS\";\n\n// This source is deliberately self-contained. It executes in a separate Node process behind\n// Seatbelt/bubblewrap, not in Marinara's server process. The transform keeps the established\n// row/context API while network, secret files, and workspace writes remain unavailable.\nconst TRANSFORM_RUNNER_SOURCE = String.raw`\nimport { randomBytes } from \"node:crypto\";\nimport { pathToFileURL } from \"node:url\";\n\nconst chunks = [];\nfor await (const chunk of process.stdin) chunks.push(chunk);\nconst payload = JSON.parse(Buffer.concat(chunks).toString(\"utf8\"));\nconst emit = process.stdout.write.bind(process.stdout);\nconst encode = JSON.stringify.bind(JSON);\nconst clone = (value) => value === undefined ? value : JSON.parse(encode(value));\nconst jsonColumns = new Map(payload.tables.map((table) => [table.name, new Set(table.jsonColumns)]));\n\nfunction parseMaybe(value) {\n  if (typeof value !== \"string\") return value;\n  const trimmed = value.trim();\n  if (!trimmed || (!trimmed.startsWith(\"{\") && !trimmed.startsWith(\"[\") && trimmed !== \"null\")) return value;\n  try { return JSON.parse(trimmed); } catch { return value; }\n}\n\nfunction parseRow(table, row) {\n  const out = { ...row };\n  for (const key of jsonColumns.get(table) ?? []) {\n    if (Object.prototype.hasOwnProperty.call(out, key)) out[key] = parseMaybe(out[key]);\n  }\n  return out;\n}\n\nfunction booleanText(value) {\n  if (typeof value === \"boolean\") return String(value);\n  if (typeof value === \"number\" && (value === 0 || value === 1)) return value === 1 ? \"true\" : \"false\";\n  if (typeof value !== \"string\") return value;\n  const normalized = value.trim().toLowerCase();\n  return normalized === \"true\" || normalized === \"false\" ? normalized : value;\n}\n\nfunction normalizeRow(table, row) {\n  const out = { ...row };\n  if (table === \"agent_configs\") {\n    if (out.description === undefined) out.description = \"\";\n    if (out.connectionId === undefined) out.connectionId = null;\n    if (out.imagePath === undefined) out.imagePath = null;\n    if (out.promptTemplate === undefined) out.promptTemplate = \"\";\n    if (out.settings === undefined) out.settings = {};\n    if (typeof out.phase === \"string\" && out.phase.trim().toLowerCase() === \"inactive\") out.phase = \"post_processing\";\n    else if (typeof out.phase === \"string\") out.phase = out.phase.trim();\n    out.enabled = \"true\";\n  } else if (table === \"custom_tools\") {\n    if (out.description === undefined) out.description = \"\";\n    if (out.parametersSchema === undefined) out.parametersSchema = {};\n    if (out.executionType === undefined) out.executionType = \"static\";\n    if (out.webhookUrl === undefined) out.webhookUrl = null;\n    if (out.staticResult === undefined) out.staticResult = null;\n    if (out.scriptBody === undefined) out.scriptBody = null;\n    out.includeHiddenContext = out.includeHiddenContext === undefined ? \"false\" : booleanText(out.includeHiddenContext);\n    out.enabled = out.enabled === undefined ? \"true\" : booleanText(out.enabled);\n  }\n  return out;\n}\n\nfunction rawRow(table, row) {\n",
+   "durationMs": 1225
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_ebe4857277f848b59d26d1105fd83c4c",
+   "name": "bash",
+   "input": {
+    "command": "mari db schema custom_themes",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_ebe4857277f848b59d26d1105fd83c4c",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari db schema custom_themes\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"table\": \"custom_themes\",\n  \"primaryKey\": \"id\",\n  \"columns\": [\n    {\n      \"key\": \"id\",\n      \"dbName\": \"id\",\n      \"primary\": true,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"name\",\n      \"dbName\": \"name\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"css\",\n      \"dbName\": \"css\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"installedAt\",\n      \"dbName\": \"installed_at\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"createdAt\",\n      \"dbName\": \"created_at\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"updatedAt\",\n      \"dbName\": \"updated_at\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"isActive\",\n      \"dbName\": \"is_active\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"meta\",\n      \"dbName\": \"meta\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    }\n  ]\n}",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_059a6bc152934effb011a00b04de4bfa",
+   "name": "write",
+   "input": {
+    "path": "velvet-blue.mjs",
+    "content": "export default function(row) {\n if(row.id !== '22m7Hs1adySrgvLPKUtXM') return;\n const colors={'#a3213a':'#215fa3','#f1a7b3':'#a7ccf1','#c42d7a':'#2d68b8','#7a2a6e':'#2a507a','#f0c3cc':'#c3daf0','#e08a9c':'#8ab6e0','#6e1424':'#143e6e','#cf6a7e':'#6a9fcf','#3a0d19':'#0d233a','#120609':'#060c12','#170a10':'#0a1017','#1d0d14':'#0d151d','#0b0709':'#07090b','#0e0709':'#070b0e','#5a1626':'#16395a','#1c0a11':'#0a131c','#3a1220':'#12283a','#5a3440':'#34485a'};\n let css=row.css.replace(/#[0-9a-fA-F]{6}\\b/g,s=>colors[s.toLowerCase()]||s);\n const rgb={'16,8,12':'8,12,16','11,7,9':'7,9,11','14,7,10':'7,10,14','21,9,14':'9,14,21','34,12,22':'12,22,34','12,6,9':'6,9,12','60,36,46':'36,46,60','90,52,64':'52,64,90'};\n css=css.replace(/rgba\\((\\d+,\\d+,\\d+),/g,(s,v)=>rgb[v]?'rgba('+rgb[v]+',':s);\n if(css===row.css) throw new Error('No colors changed');\n return {...row,css};\n}\n",
+    "reason": "Prepares exact color-only replacements for the large cloned stylesheet while preserving all other fields."
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_059a6bc152934effb011a00b04de4bfa",
+   "name": "write",
+   "isError": false,
+   "output": "Wrote 869 bytes to velvet-blue.mjs.",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_e5312b4ae6d549fa9fb896359cbd3e66",
+   "name": "bash",
+   "input": {
+    "command": "mari db transform custom_themes velvet-blue.mjs --apply --reason \"Changes the clone's crimson accents and oxblood CSS shading to blue while preserving layout, artwork, fonts, and activation.\"",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_e5312b4ae6d549fa9fb896359cbd3e66",
+   "name": "bash",
+   "isError": false,
+   "output": "Readback: store-verified\nCommand: mari db transform custom_themes velvet-blue.mjs --apply --reason \"Changes the clone's crimson accents and oxblood CSS shading to blue while preserving layout, artwork, fonts, and activation.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"ok\": true,\n  \"mode\": \"apply\",\n  \"saved\": true,\n  \"status\": \"applied\",\n  \"message\": \"Applied and saved. Marinara is showing the user a change card. The store read-back confirms the persisted rows match the intended change - no separate verification read is needed; report the outcome matter-of-factly.\",\n  \"readBack\": {\n    \"status\": \"verified\",\n    \"checkedRows\": 1\n  },\n  \"validation\": {\n    \"status\": \"passed\",\n    \"errors\": [],\n    \"notices\": [],\n    \"infos\": []\n  },\n  \"command\": \"mari db transform custom_themes velvet-blue.mjs --apply --reason \\\"Changes the clone's crimson accents and oxblood CSS shading to blue while preserving layout, artwork, fonts, and activation.\\\"\",\n  \"summary\": {\n    \"matchedRows\": 1,\n    \"affectedRows\": 1,\n    \"insertedRows\": 0,\n    \"updatedRows\": 1,\n    \"replacedRows\": 0,\n    \"deletedRows\": 0,\n    \"affectedTables\": {\n      \"custom_themes\": 1\n    },\n    \"preview\": [\n      {\n        \"table\": \"custom_themes\",\n        \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n        \"action\": \"update\",\n        \"before\": {\n          \"css\": \"/* VELVET CASKET (theme author guide v1.5, contract 1)\\n   One idea: every container is a coffin. Messages stand as upright coffins with a finial on the\\n   head, the message box is a coffin laid on its side, Home widgets are a row of coffins, dialogs are\\n   coffin lids, buttons are coffin tags, avatars are mourning cameos, and an iron cemetery fence runs\\n   under the top bar.\\n   Day  = PASTEL GOTH: lilac, mint, baby pink, thick black sticker outlines, bats and bow-skulls.\\n   Night = TRADITIONAL GOTH: black and oxblood velvet, antique silver trim, iron crosses, candlelight. */\\n\\n:root{\\n  --mari-tokens-version:1;\\n  /* coffin geometry (px so the shape survives any height) */\\n  --vc-head:22px;   /* how far the head is cut in from each side */\\n  --vc-sh:22px;     /* how far down the shoulders sit */\\n  --vc-foot:14px;   /* how far the foot tapers in */\\n  --vc-bw:2px;      /* outline thickness */\\n  --vc-coffin:polygon(var(--vc-head) 0,calc(100% - var(--vc-head)) 0,100% var(--vc-sh),calc(100% - var(--vc-foot)) 100%,var(--vc-foot) 100%,0 var(--vc-sh));\\n  --vc-coffin-in:polygon(calc(var(--vc-head) - 1px) 0,calc(100% - var(--vc-head) + 1px) 0,100% calc(var(--vc-sh) - 1px),calc(100% - var(--vc-foot)) 100%,var(--vc-foot) 100%,0 calc(var(--vc-sh) - 1px));\\n  /* coffin on its side: head on the left, foot on the right */\\n  --vc-coffin-side:polygon(0 12px,30px 0,calc(100% - 8px) 6px,100% 50%,calc(100% - 8px) calc(100% - 6px),30px 100%,0 calc(100% - 12px));\\n  /* coffin tag for buttons and pills */\\n  --vc-tag:polygon(8px 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,8px 100%,0 50%);\\n\\n  --vc-blackletter:\\\"UnifrakturCook\\\",\\\"Old English Text MT\\\",serif;\\n  --vc-serif:\\\"EB Garamond\\\",Garamond,\\\"Times New Roman\\\",serif;\\n  --vc-plate:\\\"Cormorant SC\\\",\\\"EB Garamond\\\",serif;\\n\\n  --radius:2px;\\n  --mari-font-ui:var(--vc-serif);\\n  --mari-font-heading:var(--vc-blackletter);\\n  --mari-font-chat:var(--vc-serif);\\n  --ov-serif:var(--vc-blackletter);\\n  --mari-chat-font-size:17px;\\n  --mari-chat-line-height:1.6;\\n  --mari-message-measure:72ch;\\n  --mari-paragraph-gap:0.8em;\\n  --mari-dialogue-weight:500;\\n  --mari-text-outline:0;\\n  --mari-min-ui-text:12px;\\n  --mari-toast-font-size:1rem;\\n  --mari-selected-tint:var(--primary);\\n  --mari-msg-head-rule:var(--vc-head-rule);\\n  --mari-home-art:none;\\n  --mari-home-widget-radius:0;\\n  --mari-home-widget-border-width:0;\\n  --mari-home-widget-font:var(--vc-serif);\\n  --mari-home-widget-title-font:var(--vc-blackletter);\\n  --mari-home-widget-title-size:1.6rem;\\n  --mari-home-widget-eyebrow-size:0.8125rem;\\n  --mari-home-widget-text-size:0.9375rem;\\n  --mari-home-widget-action-size:0.9375rem;\\n  --mari-home-shortcut-size:1rem;\\n  --mari-top-bar-plate-radius:0;\\n  --mari-composer-placeholder:\\\"Whisper into the dark...\\\";\\n  --mari-chat-wash:none;\\n  --mari-chat-row-art-opacity:0;\\n  --marinara-theme-accent-pulse:none;\\n  --glow-primary:transparent; --glow-accent:transparent;\\n  --mari-chat-column:46rem;\\n  --mari-art-saturation-1:28%; --mari-art-saturation-2:24%;\\n  --mari-pinned-speaker:on;\\n  --mari-phone-avatar:hidden;\\n}\\n\\n/* ── NIGHT · traditional goth ─────────────────────────────── */\\n:root,:root[data-theme=\\\"dark\\\"]{\\n  --vc-ground:#0b0709; --vc-ink:#efe6e8; --vc-mute:#bfaeb5; --vc-faint:#9a8a91;\\n  --vc-hair:rgba(185,170,180,.28);\\n  --vc-trim:#9a8f99;              /* antique silver outline */\\n  --vc-lining:#170a10;            /* coffin lining under the velvet */\\n  --vc-lining-user:#1d0d14;\\n  --vc-velvet:url(\\\"theme:velvet-tile.webp\\\");\\n  --vc-panel:rgba(16,8,12,.92);\\n  --vc-bar:#0e0709;\\n  --vc-accent:#a3213a;            /* oxblood */\\n  --vc-accent-ink:#f1a7b3;        /* readable crimson for text on black */\\n  --vc-gold:#dcb874;              /* candle gold */\\n  --vc-finial:url(\\\"theme:or-cross.webp\\\");\\n  --vc-finial-user:url(\\\"theme:or-rose.webp\\\");\\n  --vc-finial-latest:url(\\\"theme:or-candle.webp\\\");\\n  --vc-crest:url(\\\"theme:or-crest.webp\\\");\\n  --vc-scene-break:url(\\\"theme:or-fleur.webp\\\");\\n  --vc-fence:url(\\\"theme:fence-night.svg\\\");\\n  --mari-icon-send:url(\\\"theme:send-night.svg\\\");\\n  --vc-backdrop:url(\\\"theme:night-chapel.webp\\\");\\n  --vc-backdrop-wash:linear-gradient(rgba(11,7,9,0),rgba(11,7,9,0));\\n  --mari-art-lightness-1:20%; --mari-art-lightness-2:12%;\\n  --vc-online:#4fc79a;\\n  --vc-name:var(--vc-gold);\\n  --vc-latest-trim:#a3213a;\\n  --vc-head-rule:1px solid rgba(185,170,180,.3);\\n  --vc-mint:#cfc6d2;\\n  --vc-mint-ink:#cfc6d2;\\n  --vc-rail:url(\\\"theme:rail-night.svg\\\");\\n  --vc-lid:url(\\\"theme:lid-night.svg\\\");\\n  --vc-sidebar-bg:linear-gradient(rgba(14,7,10,.28),rgba(14,7,10,.4)),url(\\\"theme:velvet-tile.webp\\\") 0 0 / 512px repeat;\\n  --vc-lining-layers:linear-gradient(rgba(21,9,14,.5),rgba(21,9,14,.58)),var(--vc-velvet) 0 0 / 512px repeat,#170a10;\\n  --vc-lining-user-layers:linear-gradient(rgba(34,12,22,.46),rgba(34,12,22,.54)),var(--vc-velvet) 0 0 / 512px repeat,#1d0d14;\\n}\\n\\n/* ── DAY · pastel goth ─────────────────────────────────────── */\\n:root[data-theme=\\\"light\\\"]{\\n  --vc-ground:#ece2fb; --vc-ink:#1f1226; --vc-mute:#4f3a5c; --vc-faint:#6a5677;\\n  --vc-hair:rgba(26,16,32,.22);\\n  --vc-trim:#1a1020;              /* thick black sticker outline */\\n  --vc-lining:#f8f2ff;            /* lilac paper */\\n  --vc-lining-user:#fde6f1;       /* baby pink */\\n  --vc-velvet:none;\\n  --vc-panel:rgba(244,236,253,.93);\\n  --vc-bar:#f3eafd;\\n  --vc-accent:#c42d7a;            /* hot baby-pink, white text passes */\\n  --vc-accent-ink:#7a2a6e;\\n  --vc-gold:#2f7d63;              /* mint ink for names */\\n  --vc-finial:url(\\\"theme:st-bat.webp\\\");\\n  --vc-finial-user:url(\\\"theme:st-skull.webp\\\");\\n  --vc-finial-latest:url(\\\"theme:st-heartbat.webp\\\");\\n  --vc-crest:url(\\\"theme:st-holo.webp\\\");\\n  --vc-scene-break:url(\\\"theme:st-holo.webp\\\");\\n  --vc-fence:url(\\\"theme:fence-day.svg\\\");\\n  --vc-bw:2.5px;\\n  --mari-icon-send:url(\\\"theme:send-day.svg\\\");\\n  --vc-backdrop:url(\\\"theme:day-chapel.webp\\\");\\n  --vc-backdrop-wash:linear-gradient(rgba(236,226,251,0),rgba(236,226,251,0));\\n  --mari-art-lightness-1:84%; --mari-art-lightness-2:78%;\\n  --vc-online:#17694a;\\n  --vc-name:#6b1f6e;\\n  --vc-mint:#9fe8c8;\\n  --vc-mint-ink:#1d6b4f;\\n  --vc-latest-trim:#1a1020;\\n  --vc-head-rule:2px dashed #7fd6b0;\\n  --vc-rail:url(\\\"theme:rail-day.svg\\\");\\n  --vc-lid:url(\\\"theme:lid-day.svg\\\");\\n  --vc-sidebar-bg:linear-gradient(rgba(246,240,254,.9),rgba(246,240,254,.9)),url(\\\"theme:day-pattern.webp\\\") 0 0 / 320px repeat;\\n  --vc-lining-layers:#ecdfff;\\n  --vc-lining-user-layers:#ffdcec;\\n  --vc-lining-latest:linear-gradient(#ecdfff,#ecdfff) padding-box;\\n}\\n\\n:root,:root[data-theme=\\\"dark\\\"],:root[data-theme=\\\"light\\\"]{\\n  --background:var(--vc-ground); --foreground:var(--vc-ink);\\n  --card:var(--vc-panel); --card-foreground:var(--vc-ink);\\n  --popover:var(--vc-panel); --popover-foreground:var(--vc-ink);\\n  --primary:var(--vc-accent); --primary-foreground:#fff;\\n  --secondary:color-mix(in srgb,var(--vc-ink) 8%,var(--vc-ground)); --secondary-foreground:var(--vc-ink);\\n  --muted:color-mix(in srgb,var(--vc-ink) 6%,var(--vc-ground)); --muted-foreground:var(--vc-mute);\\n  --accent:color-mix(in srgb,var(--vc-accent) 16%,var(--vc-ground)); --accent-foreground:var(--vc-ink);\\n  --destructive:#b3123a; --destructive-foreground:#fff;\\n  --border:var(--vc-hair); --input:var(--vc-hair); --ring:var(--vc-accent);\\n  --sidebar:var(--vc-panel); --sidebar-foreground:var(--vc-ink); --sidebar-border:var(--vc-hair);\\n  --sidebar-accent:color-mix(in srgb,var(--vc-accent) 14%,transparent); --sidebar-accent-foreground:var(--vc-ink);\\n  --ov-line:var(--vc-hair); --ov-text:var(--vc-ink); --ov-muted:var(--vc-mute); --ov-dim:var(--vc-faint);\\n  --ov-accent:var(--vc-accent-ink);\\n  --ov-hover:color-mix(in srgb,var(--vc-ink) 7%,transparent);\\n  --ov-active-bg:color-mix(in srgb,var(--vc-accent) 18%,transparent);\\n  --ov-mode-conversation:var(--vc-accent-ink); --ov-mode-roleplay:var(--vc-accent-ink); --ov-mode-game:var(--vc-gold);\\n  --mari-mode-conversation:var(--vc-accent-ink); --mari-mode-roleplay:var(--vc-accent-ink); --mari-mode-game:var(--vc-gold);\\n  --mari-home-pink:var(--vc-accent-ink); --mari-home-violet:var(--vc-gold);\\n  --mari-chrome-accent:var(--vc-accent-ink);\\n  --mari-chrome-muted:var(--vc-mute);\\n  --mari-message-time:var(--vc-faint);\\n  --mari-message-actions:var(--vc-mute);\\n  --mari-swipe-counter:var(--vc-mute);\\n  --mari-dialogue-color:var(--vc-accent-ink);\\n  --mari-home-widget-bg:transparent;\\n  --mari-home-widget-title-color:var(--vc-ink);\\n  --mari-home-widget-muted:var(--vc-mute);\\n  --mari-home-widget-eyebrow-color:var(--vc-accent-ink);\\n  --mari-home-wash:transparent;\\n  --mari-page-veil:color-mix(in srgb,var(--vc-ground) 82%,transparent);\\n  --mari-chat-header-bg:none;\\n  --mari-scrim:color-mix(in srgb,var(--vc-ground) 72%,transparent);\\n  --mari-top-bar-plate:color-mix(in srgb,var(--vc-ground) 88%,transparent);\\n  --mari-status-online:var(--vc-online); --mari-status-idle:var(--vc-gold); --mari-status-dnd:#c42d4a; --mari-status-offline:var(--vc-faint);\\n  --mari-gauge-ok:#3fb68b; --mari-gauge-warn:#d39b3a; --mari-gauge-danger:#c42d4a;\\n  --mari-game-combat:var(--vc-accent); --mari-game-combat-text:#fff;\\n  --mari-game-combat-bg:var(--vc-accent); --mari-game-combat-bg-hover:color-mix(in srgb,var(--vc-accent) 85%,#000); --mari-game-combat-border:var(--vc-accent);\\n  --mari-stage-empty-bg:var(--vc-backdrop-wash),var(--vc-backdrop) center bottom / cover no-repeat,var(--vc-ground);\\n  --mari-user-avatar-placeholder:radial-gradient(circle at 50% 38%,var(--vc-trim) 0 22%,transparent 23%),radial-gradient(ellipse 60% 40% at 50% 100%,var(--vc-trim) 0 70%,transparent 71%),var(--vc-lining);\\n  --mari-focus-ring-color:var(--vc-accent-ink);\\n  --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 44px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\\n}\\n/* ── Backdrop: the same chapel and graveyard, pastel by day, candlelit by night ── */\\n:root{\\n  --mari-app-backdrop-layers:var(--vc-backdrop-wash),var(--vc-backdrop) center bottom / cover no-repeat,var(--vc-ground);\\n  --mari-user-avatar-image:var(--vc-cameo);\\n  --mari-card-art-placeholder:var(--vc-cameo) center / auto 70% no-repeat,var(--vc-card-ph);\\n}\\n:root,:root[data-theme=\\\"dark\\\"]{ --vc-cameo:url(\\\"theme:cameo-night.webp\\\"); --vc-card-ph:radial-gradient(ellipse at 50% 40%,#3a0d19,#120609 75%); }\\n:root[data-theme=\\\"light\\\"]{ --vc-cameo:url(\\\"theme:cameo-day.webp\\\"); --vc-card-ph:radial-gradient(ellipse at 50% 40%,#fbe7f2,#dccbf6 75%); }\\n@media (orientation:portrait){\\n  :root[data-overhaul=\\\"mobile\\\"]{ --vc-backdrop:url(\\\"theme:night-phone.webp\\\"); }\\n  :root[data-overhaul=\\\"mobile\\\"][data-theme=\\\"light\\\"]{ --vc-backdrop:url(\\\"theme:day-phone.webp\\\"); }\\n}\\n/* weather greys the graveyard over: rain and storm darken, snow pales, fog thickens */\\n:root[data-mari-weather=\\\"rain\\\"],:root[data-mari-weather=\\\"storm\\\"]{ --vc-backdrop:url(\\\"theme:night-chapel-storm.webp\\\"); --vc-backdrop-wash:linear-gradient(rgba(14,10,22,.15),rgba(20,10,24,.1)); }\\n:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"rain\\\"],:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"storm\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(150,130,190,.38),rgba(190,170,215,.25)); }\\n:root[data-mari-weather=\\\"snow\\\"],:root[data-mari-weather=\\\"hail\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(200,190,210,.12),rgba(235,230,240,.22)); }\\n:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"snow\\\"],:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"hail\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.45)); }\\n:root[data-mari-weather=\\\"fog\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(60,36,46,.3),rgba(90,52,64,.45)); }\\n:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"fog\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(236,226,251,.45),rgba(236,226,251,.6)); }\\n\\n/* ── Top bar: a cemetery fence runs along its foot ─────────── */\\n[data-component=\\\"TopBar\\\"]{\\n  font-family:var(--vc-plate); letter-spacing:.02em; border-bottom:0 !important;\\n  height:auto !important; min-height:86px; padding-bottom:44px !important; align-items:flex-start;\\n}\\n[data-component=\\\"TopBar\\\"] .ov-tab,[data-component=\\\"TopBar\\\"] .ov-text-btn{ clip-path:var(--vc-tag); padding-inline:14px; border-radius:0; }\\n[data-component=\\\"TopBar\\\"] .ov-tab.is-on{ background:color-mix(in srgb,var(--vc-accent) 30%,var(--vc-ground)); color:var(--vc-ink); }\\n:root[data-theme=\\\"light\\\"] [data-component=\\\"TopBar\\\"] .ov-tab.is-on{ background:color-mix(in srgb,var(--vc-accent) 16%,#fff); }\\n[data-component=\\\"TopBar\\\"] .ov-tab__label{ font-weight:700; }\\n\\n/* ── Sidebars: an iron railing on the inner edge ──────────── */\\n[data-component=\\\"ChatSidebar\\\"]{ font-family:var(--vc-serif); background:var(--vc-rail) right top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-right:12px; }\\n[data-component=\\\"RightPanelDesktop\\\"]{ background:var(--vc-rail) left top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-left:12px; }\\n[data-chat-row]{ clip-path:var(--vc-tag); border-radius:0 !important; }\\n[data-chat-row][data-selected=\\\"true\\\"]{ background:color-mix(in srgb,var(--vc-accent) 24%,var(--vc-ground)) !important; }\\n[data-chat-row] [data-mari-part=\\\"avatar-placeholder\\\"],[data-chat-row] img{ border-radius:50% / 50%; }\\n.ov-new-pill,.mari-chrome-control--primary,.ov-btn--primary{\\n  clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:16px !important;\\n  font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em;\\n  background:var(--vc-accent) !important; color:#fff !important; border:0 !important;\\n}\\n[data-component=\\\"CenterContent\\\"] .mari-chrome-control:not(.mari-chrome-control--primary){ background-color:var(--vc-panel) !important; }\\n.mari-chrome-segmented__button{ font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em; border-radius:0 !important; clip-path:var(--vc-tag); }\\n\\n/* ── Avatars: mourning cameos ─────────────────────────────── */\\n.mari-roleplay-message-row [data-mari-part=\\\"avatar\\\"] button{\\n  border-radius:50% / 50% !important; height:calc(3.25rem * var(--roleplay-avatar-scale,1)) !important; width:calc(2.6rem * var(--roleplay-avatar-scale,1)) !important;\\n  box-shadow:0 0 0 2px var(--vc-lining),0 0 0 4px var(--vc-trim) !important; --tw-ring-color:transparent;\\n}\\n.mari-roleplay-message-row [data-mari-part=\\\"avatar\\\"] .rpg-avatar-glow{ filter:none; box-shadow:none; background:none; }\\n[data-component=\\\"ConversationMessage.Content\\\"] [data-mari-part=\\\"avatar\\\"] button{\\n  border-radius:50% / 50% !important; width:2.2rem !important; height:2.6rem !important;\\n  box-shadow:0 0 0 2px var(--vc-lining),0 0 0 3.5px var(--vc-trim);\\n}\\n[data-component=\\\"ConversationMessage.Content\\\"] [data-mari-part=\\\"avatar\\\"]{ max-height:none; }\\n\\n/* ── Roleplay: each message is an upright coffin with a finial ── */\\n.mari-rp-bubble{\\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important;\\n  background:var(--vc-trim) !important; isolation:isolate; box-shadow:none !important; backdrop-filter:none !important;\\n}\\n.mari-rp-bubble::before{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in);\\n  background:var(--vc-lining-layers);\\n}\\n.mari-rp-bubble--user::before{ background:var(--vc-lining-user-layers); }\\n.mari-rp-bubble > div{ padding:18px calc(var(--vc-foot) + 16px) 20px calc(var(--vc-foot) + 16px) !important; }\\n.mari-roleplay-message-body{ position:relative; }\\n.mari-roleplay-message-body::before{\\n  content:\\\"\\\"; position:absolute; left:50%; top:-15px; width:26px; height:36px; translate:-50% 0; z-index:2; pointer-events:none;\\n  background:var(--vc-finial) center / contain no-repeat;\\n}\\n[data-message-role=\\\"user\\\"] .mari-roleplay-message-body::before{ background-image:var(--vc-finial-user); left:auto; right:30px; translate:0 0; width:28px; height:28px; top:-14px; }\\n[data-mari-part=\\\"message\\\"] .mari-message-name{ font-family:var(--vc-plate) !important; font-size:1.0625rem !important; font-weight:700; letter-spacing:.05em; color:var(--vc-name) !important; }\\n[data-mari-part=\\\"message\\\"][data-latest] .mari-rp-bubble{ background:var(--vc-latest-trim) !important; }\\n[data-mari-part=\\\"message\\\"][data-latest][data-message-role=\\\"assistant\\\"] .mari-roleplay-message-body::before{ background-image:var(--vc-finial-latest); }\\n.mari-roleplay-message-row{ margin-bottom:2rem !important; }\\n[data-mari-part=\\\"time\\\"]{ font-family:var(--vc-serif); font-size:.8125rem !important; }\\n[data-mari-part=\\\"message\\\"] hr{ border:0; height:22px; margin:1.1em auto; background:var(--vc-scene-break) center / auto 22px no-repeat,linear-gradient(var(--vc-hair),var(--vc-hair)) center / 100% 1px no-repeat; }\\n\\n/* ── Composer: a coffin laid on its side ──────────────────── */\\n[data-mari-part=\\\"composer\\\"] .mari-chat-input-box{\\n  clip-path:var(--vc-coffin-side); border:0 !important; border-radius:0 !important; isolation:isolate;\\n  background:var(--vc-trim) !important; padding-left:34px !important; padding-right:20px !important; box-shadow:none !important; backdrop-filter:none !important;\\n}\\n[data-mari-part=\\\"composer\\\"] .mari-chat-input-box::before{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-side);\\n  background:var(--vc-lining-layers);\\n}\\n[data-mari-part=\\\"composer\\\"] textarea{ font-family:var(--vc-serif) !important; font-size:1.0625rem !important; color:var(--vc-ink) !important; }\\n[data-mari-part=\\\"composer\\\"] textarea::placeholder{ color:var(--vc-faint) !important; font-style:italic; }\\n\\n/* ── Conversation: a mourning ledger ──────────────────────── */\\n[data-mari-part=\\\"chat-header\\\"] > *{ clip-path:var(--vc-tag); border-radius:0 !important; }\\n[data-component=\\\"ConversationMessage.Content\\\"] .mari-message-content{ font-size:1.0625rem; }\\n/* the whole transcript is written inside one long coffin lid (a picture, so the scrollbar is never cut) */\\n[data-chat-mode=\\\"conversation\\\"] .mari-messages-scroll{ background:var(--vc-lid) center top / calc(100% - 20px) 100% no-repeat; padding-inline:22px; }\\n\\n/* ── Game: narration in a coffin ──────────────────────────── */\\n[data-mari-part=\\\"message\\\"][data-game-narration]{\\n  position:relative;\\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important; isolation:isolate;\\n  background:var(--vc-trim) !important; box-shadow:none !important; backdrop-filter:none !important;\\n  padding:20px 28px 16px !important;\\n}\\n[data-mari-part=\\\"message\\\"][data-game-narration]::before{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in); background:var(--vc-lining-layers);\\n}\\n[data-mari-part=\\\"message\\\"][data-game-narration] .game-narration-prose{ border-color:var(--vc-hair) !important; background:transparent !important; border-radius:0 !important; font-size:1.0625rem; }\\n[data-mari-part=\\\"message\\\"][data-game-narration] .game-narration-prose .text-sm{ font-size:1.0625rem; line-height:1.6; }\\n[data-mari-part=\\\"game-hud\\\"]{ clip-path:var(--vc-coffin); border-radius:0 !important; background:var(--vc-panel) !important; padding-inline:14px; }\\n\\n/* ── Home: a row of coffins ───────────────────────────────── */\\n[data-mari-part=\\\"home-widget\\\"]{\\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important; isolation:isolate;\\n  background:var(--vc-trim) !important; box-shadow:none !important; backdrop-filter:none !important;\\n}\\n[data-mari-part=\\\"home-widget\\\"]::before{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in);\\n  background:var(--vc-lining-layers);\\n}\\n[data-mari-part=\\\"home-widget\\\"] > header,[data-mari-part=\\\"home-widget\\\"] > div:not([data-home-professor-content]){ padding-inline:12px; }\\n[data-mari-part=\\\"home-widget-eyebrow\\\"]{ font-family:var(--vc-plate) !important; letter-spacing:.14em; font-weight:700; }\\n[data-mari-part=\\\"home-widget-glow\\\"]{ display:none !important; }\\n[data-mari-part=\\\"home-widget-title\\\"]{ line-height:1.15 !important; margin-bottom:.35rem; letter-spacing:.01em; }\\n[data-home-professor-content]{ padding-left:14px; }\\n[data-mari-part=\\\"home-widget\\\"]::after{\\n  content:\\\"\\\"; position:absolute; top:5px; left:50%; translate:-50% 0; width:64px; height:30px; pointer-events:none; z-index:0;\\n  background:var(--vc-crest) center / contain no-repeat;\\n}\\n[data-component=\\\"CenterContent\\\"] h1{ font-family:var(--vc-blackletter); }\\n\\n/* ── Ctrl+K and dialogs: coffin lids ──────────────────────── */\\n[data-component=\\\"GlobalOmnibar.Panel\\\"]{\\n  /* Ctrl+K is protected from clipping, so its lid is a picture: a coffin outline on a clear ground */\\n  background:var(--vc-lid) 0 0 / 100% 100% no-repeat !important; border:0 !important; border-radius:0 !important; box-shadow:none !important;\\n}\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] > [aria-hidden=\\\"true\\\"]{ display:none; }\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] header > div:first-child{ padding-inline:30px; }\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] footer{ padding-inline:34px; border-color:transparent !important; }\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] header > div:first-child{ border-color:var(--vc-hair) !important; margin-inline:22px; }\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] [data-component=\\\"GlobalOmnibar.ScopeChips\\\"]{ padding-inline:26px; }\\n[data-component=\\\"GlobalOmnibar.Results\\\"]{ padding-inline:18px !important; }\\n[role=\\\"dialog\\\"]:not([data-component=\\\"GlobalOmnibar.Panel\\\"]){ border-color:var(--vc-trim) !important; border-radius:0 !important; }\\n.mari-window,.mari-drawer{ border-radius:0 !important; border-color:var(--vc-trim) !important; }\\n\\n/* ── Pages: Library, Settings, editors ────────────────────── */\\n[data-component=\\\"OverhaulSettingsPage\\\"] h1,[data-component=\\\"OverhaulLibraryPage\\\"] h1,[data-component=\\\"OverhaulEditorHead\\\"] h1,\\n[data-mari-part=\\\"page-title\\\"]{ font-family:var(--vc-blackletter); font-weight:700; }\\n[data-component=\\\"OverhaulCardGallery\\\"] [data-mari-part=\\\"card-art\\\"]{ clip-path:var(--vc-coffin); --vc-head:16px; --vc-sh:16px; --vc-foot:10px; }\\n\\n/* the stock chat background steps aside; the theme's night or day shows through */\\nimg[data-mari-part=\\\"backdrop\\\"][data-default-background]{ opacity:0 !important; }\\n\\n/* ── Phone and tablet: smaller cuts ───────────────────────── */\\n:root[data-overhaul=\\\"mobile\\\"]{ --vc-head:14px; --vc-sh:14px; --vc-foot:9px; }\\n:root[data-overhaul=\\\"mobile\\\"] .mari-rp-bubble > div{ padding:14px 20px 16px !important; }\\n:root[data-overhaul=\\\"mobile\\\"] [data-mari-part=\\\"composer\\\"] .mari-chat-input-box{ padding-left:24px !important; }\\n:root[data-overhaul=\\\"mobile\\\"]{ --vc-coffin-side:polygon(0 9px,22px 0,calc(100% - 6px) 5px,100% 50%,calc(100% - 6px) calc(100% - 5px),22px 100%,0 calc(100% - 9px)); }\\n\\n/* ── Weather ──────────────────────────────────────────────── */\\n/* Night: a cathedral storm. Silver rain, ash-pale snow, blood-grey graveyard fog, crimson petals, bolts on. */\\n:root,:root[data-theme=\\\"dark\\\"]{\\n  --mari-weather-rain-color:#b8adbd; --mari-weather-rain-length:1.6; --mari-weather-strength:1.1;\\n  --mari-weather-snow-color:#ece6ea; --mari-weather-fog-color:#5a3440;\\n  --mari-weather-lightning-color:#f1ecff; --mari-weather-lightning-bolt:3;\\n  --mari-weather-firefly-color:#e2bd72; --mari-weather-star-color:#efe6ea; --mari-weather-moon-color:#efe8ee;\\n  --mari-weather-petal-color:#a3213a; --mari-weather-leaf-color:#5a1626; --mari-weather-ember-color:#e2bd72; --mari-weather-dust-color:#cdbfc6;\\n  --mari-weather-tint-strength:.7;\\n  --mari-weather-petal-image:url(\\\"theme:wx-petal.webp\\\") url(\\\"theme:wx-petal2.webp\\\");\\n  --mari-weather-leaf-image:url(\\\"theme:wx-leaf.webp\\\") url(\\\"theme:wx-leaf.webp\\\") url(\\\"theme:wx-bat.webp\\\");\\n  --mari-weather-petal-size:.7; --mari-weather-leaf-size:.8;\\n  --mari-weather-moon:none;\\n}\\n/* Day: candy storm. Lilac rain, white flakes, lilac fog, pink bolts, no app sun (pastel sky). */\\n:root[data-theme=\\\"light\\\"]{\\n  --mari-weather-rain-color:#7a5cc0; --mari-weather-rain-length:1.2; --mari-weather-strength:1.2;\\n  --mari-weather-snow-color:#ffffff; --mari-weather-snow-size:1.4; --mari-weather-fog-color:#c9b3f0; --mari-weather-hail-color:#b8f0d8;\\n  --mari-weather-lightning-color:#ff7ab8; --mari-weather-lightning-bolt:3;\\n  --mari-weather-dust-color:#e07bb0; --mari-weather-petal-color:#f3a9c9; --mari-weather-leaf-color:#9fe3c6; --mari-weather-star-color:#c42d7a;\\n  --mari-weather-sun:none; --mari-weather-moon:none; --mari-weather-tint-strength:.35;\\n  --mari-weather-petal-image:url(\\\"theme:wx-heart.webp\\\") url(\\\"theme:wx-petalday.webp\\\") url(\\\"theme:wx-spark.svg\\\");\\n  --mari-weather-snow-image:url(\\\"theme:wx-flake1.webp\\\") url(\\\"theme:wx-flake2.webp\\\") url(\\\"theme:wx-flake3.webp\\\") url(\\\"theme:wx-spark.svg\\\");\\n  --mari-weather-hail-image:url(\\\"theme:wx-starday.webp\\\") url(\\\"theme:wx-heart.webp\\\");\\n  --mari-weather-leaf-image:url(\\\"theme:wx-batday.webp\\\") url(\\\"theme:wx-moonday.webp\\\") url(\\\"theme:wx-spark.svg\\\");\\n  --mari-weather-petal-size:.6; --mari-weather-leaf-size:.7;\\n}\\n\\n/* ══ Round 2 ════════════════════════════════════════════════ */\\n\\n/* Composer: the transcript fades out above the side-laid coffin, so no prose shows around it */\\n[data-chat-mode=\\\"roleplay\\\"] .mari-messages-scroll,[data-chat-mode=\\\"game\\\"] .mari-messages-scroll{\\n  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 118px),transparent calc(100% - 84px));\\n          mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 118px),transparent calc(100% - 84px));\\n  padding-bottom:132px !important; scroll-padding-bottom:132px;\\n}\\n[data-chat-mode=\\\"conversation\\\"] .mari-messages-scroll{\\n  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18px);\\n          mask-image:linear-gradient(to bottom,transparent 0,#000 18px);\\n}\\n\\n/* Night: coffin furniture. An antique-silver bevelled edge, velvet lining, silver studs at the shoulders */\\n:root[data-theme=\\\"dark\\\"]{ --vc-silver:linear-gradient(160deg,#ece6ee,#857b8a 28%,#d9d1db 50%,#5f5662 74%,#c9c1cc); --vc-bw:2.5px; }\\n:root[data-theme=\\\"dark\\\"] .mari-rp-bubble,\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"home-widget\\\"],\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"message\\\"][data-game-narration],\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"composer\\\"] .mari-chat-input-box{ background:var(--vc-silver) !important; }\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"message\\\"][data-latest] .mari-rp-bubble{ background:linear-gradient(160deg,#f0c3cc,#a3213a 32%,#e08a9c 52%,#6e1424 78%,#cf6a7e) !important; }\\n:root[data-theme=\\\"dark\\\"] .mari-rp-bubble::after,\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"message\\\"][data-game-narration]::after{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; pointer-events:none; clip-path:var(--vc-coffin-in);\\n  background:url(\\\"theme:or-stud.webp\\\") 6px 8px / 21px 21px no-repeat,url(\\\"theme:or-stud.webp\\\") calc(100% - 6px) 8px / 21px 21px no-repeat;\\n}\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"home-widget\\\"]::after{ filter:drop-shadow(0 1px 1px #000); }\\n/* Day: real pastel coffins, a mint lining on the newest reply, plum name plates */\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"message\\\"][data-latest][data-message-role=\\\"assistant\\\"] .mari-rp-bubble::before{\\n  background:linear-gradient(#ecdfff,#ecdfff) content-box,#9fe8c8 !important; padding:4px;\\n}\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"home-widget\\\"]::before{ background:#ebdeff; }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"home-widget\\\"][data-home-widget-id=\\\"professor\\\"]::before,\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"home-widget\\\"]:nth-of-type(3n)::before{ background:#ffe3ef; }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"home-widget-eyebrow\\\"]{ color:#1d6b4f !important; }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"composer\\\"] .mari-chat-input-box::before{ background:#f6eeff; }\\n:root[data-theme=\\\"light\\\"] .mari-chrome-segmented__button[aria-pressed=\\\"true\\\"],\\n:root[data-theme=\\\"light\\\"] .mari-chrome-segmented__button[data-state=\\\"active\\\"]{ box-shadow:inset 0 -3px 0 var(--vc-mint); }\\n:root[data-theme=\\\"light\\\"]{ --mari-focus-ring-color:#1d6b4f; scrollbar-color:#9fe8c8 transparent; }\\n\\n/* Bigger finials, sticker-sized */\\n.mari-roleplay-message-body::before{ width:46px !important; height:52px !important; top:-30px !important; }\\n[data-message-role=\\\"user\\\"] .mari-roleplay-message-body::before{ width:38px !important; height:38px !important; top:-22px !important; right:26px; }\\n.mari-roleplay-message-row{ margin-bottom:2.4rem !important; }\\n.mari-roleplay-message-row:first-child{ margin-top:14px; }\\n:root[data-theme=\\\"light\\\"] .mari-roleplay-message-body::before{ filter:drop-shadow(0 0 0 #fff) drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff) drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff) drop-shadow(0 2px 2px rgba(26,16,32,.25)); }\\n:root[data-theme=\\\"dark\\\"] .mari-roleplay-message-body::before{ filter:drop-shadow(0 2px 3px #000); }\\n\\n/* Phone: the name plate is a coffin tag, and the finial rides on the plate so it never floats in a gap */\\n:root[data-overhaul=\\\"mobile\\\"] .mari-roleplay-message-body::before{ display:none; }\\n[data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]{\\n  clip-path:var(--vc-tag); border-radius:0 !important; padding:3px 16px !important; gap:8px;\\n  background:var(--vc-plate-bg) !important; width:max-content; max-width:100%;\\n}\\n[data-message-role=\\\"user\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]{ margin-left:auto; }\\n[data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]::before{\\n  content:\\\"\\\"; flex:0 0 auto; width:24px; height:24px; background:var(--vc-finial) center / contain no-repeat;\\n}\\n[data-message-role=\\\"user\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]::before{ background-image:var(--vc-finial-user); }\\n[data-latest][data-message-role=\\\"assistant\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]::before{ background-image:var(--vc-finial-latest); }\\n:root,:root[data-theme=\\\"dark\\\"]{ --vc-plate-bg:linear-gradient(90deg,#3a0d19,#5a1626); }\\n:root[data-theme=\\\"light\\\"]{ --vc-plate-bg:linear-gradient(90deg,#f3c6e0,#d9c4ff); }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"] .mari-message-name{ color:#4a1050 !important; }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"] [data-mari-part=\\\"time\\\"]{ color:#4f3a5c !important; }\\n\\n/* Scene break reads */\\n[data-mari-part=\\\"message\\\"] hr{ height:30px !important; background-size:auto 30px,100% 1px !important; }\\n:root[data-theme=\\\"dark\\\"] [data-\n… output truncated at 32000 characters …",
+   "durationMs": 392
+  }
+ },
+ {
+  "type": "suggestions",
+  "data": [
+   {
+    "id": "suggestion-1",
+    "label": "Try the blue version",
+    "prompt": "Activate Velvet Casket (my copy).",
+    "entity": "settings"
+   },
+   {
+    "id": "suggestion-2",
+    "label": "Adjust the blue",
+    "prompt": "Make the blue accents in Velvet Casket (my copy) a little brighter.",
+    "entity": "settings"
+   }
+  ]
+ },
+ {
+  "type": "draft",
+  "data": "Updated "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket ("
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents,"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders,"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket,"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts,"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes,"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout,"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour,"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**,"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive;"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive; "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive; the "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive; the original **"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive; the original **Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive; the original **Velvet Casket**"
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive; the original **Velvet Casket** "
+ },
+ {
+  "type": "draft",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive; the original **Velvet Casket** is "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "Updated and verified **Velvet Casket (my copy)**: crimson accents, highlighted borders, and oxblood CSS shading are now sapphire and deep navy. Same casket, colder blood.\n\nEverything else stays intact—fonts, coffin shapes, layout, day/night behaviour, and packaged artwork. **Red details painted into the images remain unchanged**, as do warning colours.\n\nYour clone remains inactive; the original **Velvet Casket** is untouched."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]

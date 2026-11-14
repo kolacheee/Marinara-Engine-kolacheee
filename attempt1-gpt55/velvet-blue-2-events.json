@@ -1,0 +1,12 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "error",
+  "data": "OpenAI Responses API error 400: The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account."
+ }
+]

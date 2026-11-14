@@ -1,0 +1,1203 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_36fca3b1d6a145558d7e2de2d040a369",
+   "name": "app_data",
+   "input": {
+    "action": "theme.list",
+    "limit": 100
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_36fca3b1d6a145558d7e2de2d040a369",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.list\nExit code: 0 (structured app-data runtime)\n\nstdout:\n[\n  {\n    \"id\": \"IPu9ybelKidyXhmttSyjP\",\n    \"name\": \"Rainy Café\",\n    \"isActive\": false,\n    \"cssLength\": 3821,\n    \"installedAt\": \"2026-11-14T11:48:02.175Z\",\n    \"updatedAt\": \"2026-11-14T12:01:42.087Z\"\n  },\n  {\n    \"id\": \"z4FKwHRd_0Dze9mZmBYXo\",\n    \"name\": \"Lanternwake Harbor\",\n    \"isActive\": false,\n    \"cssLength\": 4708,\n    \"installedAt\": \"2026-11-14T11:50:23.369Z\",\n    \"updatedAt\": \"2026-11-14T11:58:37.594Z\"\n  },\n  {\n    \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"Velvet Casket (my copy)\",\n    \"isActive\": true,\n    \"cssLength\": 57436,\n    \"installedAt\": \"2026-11-14T11:41:01.460Z\",\n    \"updatedAt\": \"2026-11-14T11:41:01.475Z\"\n  },\n  {\n    \"id\": \"starter-velvet-casket\",\n    \"name\": \"Velvet Casket\",\n    \"isActive\": false,\n    \"cssLength\": 57436,\n    \"installedAt\": \"2026-11-14T11:41:01.282Z\",\n    \"updatedAt\": \"1970-01-01T00:00:00.000Z\"\n  }\n]",
+   "durationMs": 6
+  }
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the clone’s pictures and image-editing options.",
+    "status": "in_progress"
+   },
+   {
+    "content": "Recolor the existing artwork blue without changing its scenes.",
+    "status": "pending"
+   },
+   {
+    "content": "Save and verify the replacement pictures.",
+    "status": "pending"
+   }
+  ]
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_e06381bc635a477390ce5a3ff42999e9",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_e06381bc635a477390ce5a3ff42999e9",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n  \"name\": \"Velvet Casket (my copy)\",\n  \"css\": \"[elided 57436 chars — read this field with app_data { field: \\\"css\\\" }]\",\n  \"installedAt\": \"2026-11-14T11:41:01.460Z\",\n  \"createdAt\": \"2026-11-14T11:41:01.475Z\",\n  \"updatedAt\": \"2026-11-14T11:41:01.475Z\",\n  \"isActive\": true,\n  \"meta\": {\n    \"author\": \"kolache\",\n    \"version\": \"1.6\",\n    \"description\": \"Everything is a coffin: messages stand as coffins under an iron cemetery fence. Pastel goth lilac, mint and pink by day; black and oxblood velvet by candlelight at night.\",\n    \"colorScheme\": \"both\",\n    \"settings\": {\n      \"colorScheme\": \"time\",\n      \"dayStart\": \"07:00\",\n      \"nightStart\": \"19:00\",\n      \"accent\": \"#a3213a\",\n      \"accentLight\": \"#c42d7a\",\n      \"background\": \"#0b0709\",\n      \"backgroundLight\": \"#ece2fb\",\n      \"fontFamily\": \"EB Garamond\"\n    },\n    \"credits\": [\n      {\n        \"what\": \"Backdrops, velvet, wallpaper, stickers, ornaments, weather sprites\",\n        \"by\": \"kolache, made with Codex\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Coffin frames, iron fence, finials, send icon\",\n        \"by\": \"kolache, drawn in code\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Typefaces: UnifrakturCook, EB Garamond, Cormorant SC\",\n        \"by\": \"j. 'mach' wust; Georg Duffner and Octavio Pardo; Christian Thalmann\",\n        \"license\": \"OFL-1.1\"\n      }\n    ],\n    \"license\": \"Free to reuse\",\n    \"labels\": [\n      \"Day and night\",\n      \"Pastel goth by day\",\n      \"Traditional goth by night\",\n      \"Long-reply column\"\n    ],\n    \"images\": [\n      {\n        \"name\": \"cameo-day.webp\",\n        \"bytes\": 17643,\n        \"css\": \"url(\\\"theme:cameo-day.webp\\\")\"\n      },\n      {\n        \"name\": \"cameo-night.webp\",\n        \"bytes\": 15135,\n        \"css\": \"url(\\\"theme:cameo-night.webp\\\")\"\n      },\n      {\n        \"name\": \"card-new-day.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-day.svg\\\")\"\n      },\n      {\n        \"name\": \"card-new-night.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-night.svg\\\")\"\n      },\n      {\n        \"name\": \"day-chapel.webp\",\n        \"bytes\": 211722,\n        \"css\": \"url(\\\"theme:day-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"day-pattern.webp\",\n        \"bytes\": 25146,\n        \"css\": \"url(\\\"theme:day-pattern.webp\\\")\"\n      },\n      {\n        \"name\": \"day-phone.webp\",\n        \"bytes\": 125766,\n        \"css\": \"url(\\\"theme:day-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"fence-day.svg\",\n        \"bytes\": 1407,\n        \"css\": \"url(\\\"theme:fence-day.svg\\\")\"\n      },\n      {\n        \"name\": \"fence-night.svg\",\n        \"bytes\": 1461,\n        \"css\": \"url(\\\"theme:fence-night.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-day.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-day.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-night.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-night.svg\\\")\"\n      },\n      {\n        \"name\": \"night-chapel-storm.webp\",\n        \"bytes\": 91938,\n        \"css\": \"url(\\\"theme:night-chapel-storm.webp\\\")\"\n      },\n      {\n        \"name\": \"night-chapel.webp\",\n        \"bytes\": 73578,\n        \"css\": \"url(\\\"theme:night-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"night-phone.webp\",\n        \"bytes\": 50622,\n        \"css\": \"url(\\\"theme:night-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"or-bow.webp\",\n        \"bytes\": 9213,\n        \"css\": \"url(\\\"theme:or-bow.webp\\\")\"\n      },\n      {\n        \"name\": \"or-candle.webp\",\n        \"bytes\": 4485,\n        \"css\": \"url(\\\"theme:or-candle.webp\\\")\"\n      },\n      {\n        \"name\": \"or-crest.webp\",\n        \"bytes\": 7782,\n        \"css\": \"url(\\\"theme:or-crest.webp\\\")\"\n      },\n      {\n        \"name\": \"or-cross.webp\",\n        \"bytes\": 7152,\n        \"css\": \"url(\\\"theme:or-cross.webp\\\")\"\n      },\n      {\n        \"name\": \"or-fleur.webp\",\n        \"bytes\": 7821,\n        \"css\": \"url(\\\"theme:or-fleur.webp\\\")\"\n      },\n      {\n        \"name\": \"or-rose.webp\",\n        \"bytes\": 10047,\n        \"css\": \"url(\\\"theme:or-rose.webp\\\")\"\n      },\n      {\n        \"name\": \"or-stud.webp\",\n        \"bytes\": 9132,\n        \"css\": \"url(\\\"theme:or-stud.webp\\\")\"\n      },\n      {\n        \"name\": \"rail-day.svg\",\n        \"bytes\": 384,\n        \"css\": \"url(\\\"theme:rail-day.svg\\\")\"\n      },\n      {\n        \"name\": \"rail-night.svg\",\n        \"bytes\": 507,\n        \"css\": \"url(\\\"theme:rail-night.svg\\\")\"\n      },\n      {\n        \"name\": \"send-day.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-day.svg\\\")\"\n      },\n      {\n        \"name\": \"send-night.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-night.svg\\\")\"\n      },\n      {\n        \"name\": \"st-bat.webp\",\n        \"bytes\": 8553,\n        \"css\": \"url(\\\"theme:st-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-bunny.webp\",\n        \"bytes\": 11577,\n        \"css\": \"url(\\\"theme:st-bunny.webp\\\")\"\n      },\n      {\n        \"name\": \"st-heartbat.webp\",\n        \"bytes\": 6540,\n        \"css\": \"url(\\\"theme:st-heartbat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-holo.webp\",\n        \"bytes\": 7485,\n        \"css\": \"url(\\\"theme:st-holo.webp\\\")\"\n      },\n      {\n        \"name\": \"st-skull.webp\",\n        \"bytes\": 11094,\n        \"css\": \"url(\\\"theme:st-skull.webp\\\")\"\n      },\n      {\n        \"name\": \"velvet-tile.webp\",\n        \"bytes\": 10962,\n        \"css\": \"url(\\\"theme:velvet-tile.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-bat.webp\",\n        \"bytes\": 693,\n        \"css\": \"url(\\\"theme:wx-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-batday.webp\",\n        \"bytes\": 1179,\n        \"css\": \"url(\\\"theme:wx-batday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake1.webp\",\n        \"bytes\": 3504,\n        \"css\": \"url(\\\"theme:wx-flake1.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake2.webp\",\n        \"bytes\": 3318,\n        \"css\": \"url(\\\"theme:wx-flake2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake3.webp\",\n        \"bytes\": 3312,\n        \"css\": \"url(\\\"theme:wx-flake3.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-heart.webp\",\n        \"bytes\": 2193,\n        \"css\": \"url(\\\"theme:wx-heart.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-leaf.webp\",\n        \"bytes\": 1347,\n        \"css\": \"url(\\\"theme:wx-leaf.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-moonday.webp\",\n        \"bytes\": 2184,\n        \"css\": \"url(\\\"theme:wx-moonday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal.webp\",\n        \"bytes\": 1377,\n        \"css\": \"url(\\\"theme:wx-petal.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal2.webp\",\n        \"bytes\": 1194,\n        \"css\": \"url(\\\"theme:wx-petal2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petalday.webp\",\n        \"bytes\": 1479,\n        \"css\": \"url(\\\"theme:wx-petalday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-spark.svg\",\n        \"bytes\": 672,\n        \"css\": \"url(\\\"theme:wx-spark.svg\\\")\"\n      },\n      {\n        \"name\": \"wx-starday.webp\",\n        \"bytes\": 2427,\n        \"css\": \"url(\\\"theme:wx-starday.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [\n      {\n        \"family\": \"UnifrakturCook\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 17280\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 23820\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25389\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25350\n      },\n      {\n        \"family\": \"Cormorant SC\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 20940\n      }\n    ],\n    \"thumbnail\": {\n      \"bytes\": 27066\n    },\n    \"packageBytes\": 1196477\n  }\n}\n\nNote: oversized fields were elided to fit the output limit. Read any one in full by repeating this action with field=\"<path>\" (add offset to page a long value):\n  - css (57436 chars)",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_42c1a4f096da4b9ead23137804010614",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_42c1a4f096da4b9ead23137804010614",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari images <command>\nDiscovery: connections [--edit], capabilities [--edit], list assets|backgrounds|sprites|chat-gallery|character-gallery, get <asset-id>\nHITL preview: preview --operation generate|edit --prompt <text> [--target <target>] [--source <asset|url|file>] [--connection <id|name|default>]\nCreate preview asset: generate --prompt <text> [--target <target>] [--width <n>] [--height <n>] [--count 1-4] (--count makes that many versions in one go, one request each, for the user to pick from)\nTheme art: generate --prompt <text> --target theme-image --theme <theme-id> --name <name> [--width <n>] [--height <n>] (prompt sent exactly as written: the user's style profiles and prompt prefixes are left out; --verbatim does the same for any target)\nAdjust a picture without an image model (new preview asset, original kept): adjust --source <asset|url|file> [--crop left,top,width,height (px or %)] [--trim] [--transparent [auto|#hex] --tolerance 0-255 [--everywhere]] [--resize WxH|N --fit inside|cover|fill] [--flip horizontal|vertical|both] [--rotate 90|180|270] [--tint #hex]\nCreate edited preview asset: edit --prompt <text> (--source <asset|url|file> | --target <existing-image-target>) [--connection <edit-capable>]\nApply: assign --asset <asset-id> --target character-avatar --character <id>\nApply: assign --asset <asset-id> --target persona-avatar --persona <id>\nApply: assign --asset <asset-id> --target lorebook-image --lorebook <id>\nApply: assign --asset <asset-id> --target sprite --character <id> --expression happy\nApply: assign --asset <asset-id> --target background --name <name> [--tags a,b]\nApply: assign --asset <asset-id> --target chat-gallery --chat <id>\nApply: assign --asset <asset-id> --target character-gallery --character <id>\nApply: assign --asset <asset-id> --target theme-image --theme <theme-id> --name night-sky.webp (saved as WebP in the theme; its CSS uses url(\"theme:night-sky.webp\"))\nDelete/clear: delete --target asset|character-avatar|persona-avatar|lorebook-image|sprite|background|chat-gallery|character-gallery|theme-image ...\nNotes: preview never generates or saves. generate/edit save a review asset only. assign/delete mutate app image state.",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_f8c5838e22084951adff92c0d8cc4239",
+   "name": "docs_search",
+   "input": {
+    "query": "theme image tint adjust source",
+    "limit": 2
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_f8c5838e22084951adff92c0d8cc4239",
+   "name": "docs_search",
+   "isError": false,
+   "output": "Canonical documentation matches for: theme image tint adjust source\n\n1. Source: docs/appearance/theme-author-guide.md — Heading: Your first theme, step by step — Line: 7\nA theme is a short list of settings written in CSS, the language web pages use for colours and fonts. You don't need to know CSS to start. Each line looks like `--name: value;`: a **token** (a named setting that starts with `--`), a colon, the value, and a semicolon.\n\n1. Open **Library → Settings → Appearance** and click **CSS Themes** in the row of sections.\n2. To change a starter theme, download one you like from **Browse the theme gallery**, find it under **Starter themes** and click **Clone + Edit** (the copy icon). Marinara makes your own copy, named for example \"Petal OS (my copy)\", and opens it in the editor. Starter themes stay read-only, so the original is always there. To start fr…\n\n2. Source: docs/appearance/theme-author-guide.md — Heading: Theme files — Line: 610\nExport writes one theme as one JSON file:\n\n```json\n{",
+   "durationMs": 126
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_481491c529d1469c86d29f2b3c4c7a99",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/theme-author-guide.md",
+    "heading": "Pictures",
+    "maxChars": 4000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_481491c529d1469c86d29f2b3c4c7a99",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/theme-author-guide.md\nHeading: Pictures\nStarts at line: 235\n\n\nA theme carries its pictures in `images` in the theme file, and its CSS uses them by name:\n\n```css\n:root {\n  --mari-app-backdrop: url(\"theme:night.webp\");\n}\n[data-mari-part=\"home-widget\"] {\n  border-image: url(\"theme:frame.webp\") 24 fill / 24px stretch;\n}\n```\n\n- Pictures count in the 6 MiB package budget, not in the 256 KiB CSS limit, so full-size art fits.\n- In the editor, open **Pictures and sharing details** and press **Add pictures**. PNG and JPEG are\n  saved as WebP on the way in (small ones lossless, so pixel art and 9-slice frames stay crisp;\n  at most 2560 px on the longest side). Click a picture's name to put `url(\"theme:name\")` at the cursor.\n- Importing a theme does the same: pictures written inline as `data:` URLs move out of the CSS\n  into `images`, still PNG and JPEG become WebP, and the preview lists every picture with its size\n  (with a \"Keep the original files instead\" box).\n- `theme:` names also find the theme's `backgrounds` by name, so art you ship for the chat\n  background gallery can be used in the CSS too, whether or not the user adds it to the gallery.\n- When the theme is applied, every picture becomes a short same-origin `blob:` URL: nothing is\n  downloaded, and a picture used in many places is decoded once.\n- GIF, APNG, animated WebP and SVG with `<animate>` count as moving pictures. The import preview\n  says so, and with Reduce motion on they show as their first frame.\n",
+   "durationMs": 5
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_ffeffb198a96475cb79dece26960f038",
+   "name": "bash",
+   "input": {
+    "command": "mari themes --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_ffeffb198a96475cb79dece26960f038",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari themes --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari themes <command>\nRead: list [--active] [--limit <n>], active, get <id>\nWrite: create --name <name> (--css <css> | --css-file <path>) [--activate] [--apply] [--reason <text>]\nWrite: update <id> [--name <name>] [--css <css> | --css-file <path>] [--apply] [--reason <text>]\nWrite: set-active <id|none> [--apply] [--reason <text>]\nWrites dry-run by default; --apply saves reversible changes and shows a Keep/Restore review card.",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_a6107ef6119e40e0bca2a0123d0f0f4b",
+   "name": "grep",
+   "input": {
+    "pattern": "theme-image",
+    "path": "server",
+    "glob": "*image*",
+    "ignoreCase": false,
+    "literal": true,
+    "context": 2,
+    "limit": 12
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_a6107ef6119e40e0bca2a0123d0f0f4b",
+   "name": "grep",
+   "isError": true,
+   "output": "Path not found: server. Paths resolve inside the workspace root; use ls or find to locate the file.",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_e1c98761b4274cb8abf0daa72fc8c33f",
+   "name": "ls",
+   "input": {
+    "path": ".",
+    "limit": 25
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_e1c98761b4274cb8abf0daa72fc8c33f",
+   "name": "ls",
+   "isError": false,
+   "output": "Directory: .\n.agents/\n.coderabbit.yaml\n.cursor/\n.dockerignore\n.env\n.env.example\n.git/\n.gitattributes\n.github/\n.gitignore\n.markdownlint.json\n.npmrc\n.nvmrc\n.pnpm-store/\n.pnpm/\n.prettierignore\n.prettierrc\nAGENTS.md\nandroid/\nCHANGELOG.md\nCODE_OF_CONDUCT.md\nCONTRIBUTING.md\ncustom_components/\nDESIGN.json\nDESIGN.md\n… 33 more",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_f0b4689b0acc4e80b83c7e93c29d65e4",
+   "name": "grep",
+   "input": {
+    "pattern": "theme-image",
+    "path": ".",
+    "glob": "*.ts",
+    "ignoreCase": false,
+    "literal": true,
+    "context": 1,
+    "limit": 15
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_f0b4689b0acc4e80b83c7e93c29d65e4",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/client/src/lib/card-css.ts-395:   // same-document fragment references like url(#grad) that SVG paints and filters use, and\npackages/client/src/lib/card-css.ts:396:   // `theme:<name>` references to a theme's own bundled pictures (lib/theme-images.ts turns those\npackages/client/src/lib/card-css.ts-397:   // into blob: URLs after sanitising; on their own they never reach the network).\npackages/client/src/lib/theme-content-check.ts-19: import { sanitizeSvg } from \"./theme-svg\";\npackages/client/src/lib/theme-content-check.ts:20: import { INLINE_IMAGE, dataUrlParts, isSvgPicture, pictureSizeAllowed, type ThemeImage } from \"./theme-images\";\npackages/client/src/lib/theme-content-check.ts-21: \npackages/client/src/lib/theme-content-check.ts-98:     if (isSvgPicture(parts.mime, parts.bytes)) {\npackages/client/src/lib/theme-content-check.ts:99:       // An SVG that doesn't parse is simply not shown (lib/theme-images.ts), so it is no risk.\npackages/client/src/lib/theme-content-check.ts-100:       const clean = sanitizeSvg(new TextDecoder().decode(parts.bytes));\npackages/client/src/lib/theme-guard.ts-34:   type ThemeImage,\npackages/client/src/lib/theme-guard.ts:35: } from \"./theme-images\";\npackages/client/src/lib/theme-guard.ts-36: \npackages/client/src/lib/theme-package.ts-35:   summarizeThemeImages,\npackages/client/src/lib/theme-package.ts:36: } from \"./theme-images\";\npackages/client/src/lib/theme-package.ts-37: ",
+   "durationMs": 413
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_2b2f6d981a2848ca9a462ca40ee81484",
+   "name": "grep",
+   "input": {
+    "pattern": "theme-image",
+    "path": "packages/server",
+    "glob": "*.ts",
+    "ignoreCase": false,
+    "literal": true,
+    "context": 2,
+    "limit": 20
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_2b2f6d981a2848ca9a462ca40ee81484",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/image/theme-package-image.ts-1: // ──────────────────────────────────────────────\npackages/server/src/services/image/theme-package-image.ts-2: // A picture for a theme's package, made on the server (Professor Mari's `mari images assign\npackages/server/src/services/image/theme-package-image.ts:3: // --target theme-image`). Same rules the theme editor and import apply in the browser\npackages/server/src/services/image/theme-package-image.ts-4: // (client lib/theme-images.ts shrinkThemeImage and the decode cap in the security audit):\npackages/server/src/services/image/theme-package-image.ts-5: // raster only, at most 8192 px a side and 40 megapixels, saved as WebP no larger than 2560 px on\npackages/server/src/services/image/theme-package-image.ts-2: // A picture for a theme's package, made on the server (Professor Mari's `mari images assign\npackages/server/src/services/image/theme-package-image.ts-3: // --target theme-image`). Same rules the theme editor and import apply in the browser\npackages/server/src/services/image/theme-package-image.ts:4: // (client lib/theme-images.ts shrinkThemeImage and the decode cap in the security audit):\npackages/server/src/services/image/theme-package-image.ts-5: // raster only, at most 8192 px a side and 40 megapixels, saved as WebP no larger than 2560 px on\npackages/server/src/services/image/theme-package-image.ts-6: // the longest side, lossless when small so pixel art and 9-slice frames stay crisp.\npackages/server/src/services/mari-db/mari-images.service.ts-142:   | { type: \"chat-gallery\"; chatId: string; imageId?: string | null }\npackages/server/src/services/mari-db/mari-images.service.ts-143:   | { type: \"character-gallery\"; characterId: string; imageId?: string | null }\npackages/server/src/services/mari-db/mari-images.service.ts:144:   | { type: \"theme-image\"; themeId: string; name: string };\npackages/server/src/services/mari-db/mari-images.service.ts-145: \npackages/server/src/services/mari-db/mari-images.service.ts-146: const BOOLEAN_FLAGS = new Set([\npackages/server/src/services/mari-db/mari-images.service.ts-946:     const imageSettings = await loadImageGenerationUserSettings(this.db);\npackages/server/src/services/mari-db/mari-images.service.ts-947:     const connectionImageDefaults = resolveConnectionImageDefaults(connection);\npackages/server/src/services/mari-db/mari-images.service.ts:948:     const verbatim = target?.type === \"theme-image\" || hasFlag(flags, \"verbatim\");\npackages/server/src/services/mari-db/mari-images.service.ts-949:     const compiled = mariImagePrompt({\npackages/server/src/services/mari-db/mari-images.service.ts-950:       verbatim,",
+   "durationMs": 587
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_904a9062894241a8b069b478ff764099",
+   "name": "grep",
+   "input": {
+    "pattern": "resolveSource|theme-image|tint",
+    "path": "packages/server/src/services/mari-db/mari-images.service.ts",
+    "glob": "*.ts",
+    "ignoreCase": false,
+    "literal": false,
+    "context": 2,
+    "limit": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_904a9062894241a8b069b478ff764099",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/mari-db/mari-images.service.ts-142:   | { type: \"chat-gallery\"; chatId: string; imageId?: string | null }\npackages/server/src/services/mari-db/mari-images.service.ts-143:   | { type: \"character-gallery\"; characterId: string; imageId?: string | null }\npackages/server/src/services/mari-db/mari-images.service.ts:144:   | { type: \"theme-image\"; themeId: string; name: string };\npackages/server/src/services/mari-db/mari-images.service.ts-145: \npackages/server/src/services/mari-db/mari-images.service.ts-146: const BOOLEAN_FLAGS = new Set([\npackages/server/src/services/mari-db/mari-images.service.ts-281:     adjust.rotate = angle;\npackages/server/src/services/mari-db/mari-images.service.ts-282:   }\npackages/server/src/services/mari-db/mari-images.service.ts:283:   const tint = flagString(flags, \"tint\");\npackages/server/src/services/mari-db/mari-images.service.ts-284:   if (tint !== undefined) {\npackages/server/src/services/mari-db/mari-images.service.ts-285:     parseHexColour(tint);\npackages/server/src/services/mari-db/mari-images.service.ts-282:   }\npackages/server/src/services/mari-db/mari-images.service.ts-283:   const tint = flagString(flags, \"tint\");\npackages/server/src/services/mari-db/mari-images.service.ts:284:   if (tint !== undefined) {\npackages/server/src/services/mari-db/mari-images.service.ts-285:     parseHexColour(tint);\npackages/server/src/services/mari-db/mari-images.service.ts-286:     adjust.tint = tint;\npackages/server/src/services/mari-db/mari-images.service.ts-283:   const tint = flagString(flags, \"tint\");\npackages/server/src/services/mari-db/mari-images.service.ts-284:   if (tint !== undefined) {\npackages/server/src/services/mari-db/mari-images.service.ts:285:     parseHexColour(tint);\npackages/server/src/services/mari-db/mari-images.service.ts-286:     adjust.tint = tint;\npackages/server/src/services/mari-db/mari-images.service.ts-287:   }\npackages/server/src/services/mari-db/mari-images.service.ts-284:   if (tint !== undefined) {\npackages/server/src/services/mari-db/mari-images.service.ts-285:     parseHexColour(tint);\npackages/server/src/services/mari-db/mari-images.service.ts:286:     adjust.tint = tint;\npackages/server/src/services/mari-db/mari-images.service.ts-287:   }\npackages/server/src/services/mari-db/mari-images.service.ts-288:   if (Object.keys(adjust).length === 0) {\npackages/server/src/services/mari-db/mari-images.service.ts-288:   if (Object.keys(adjust).length === 0) {\npackages/server/src/services/mari-db/mari-images.service.ts-289:     throw new Error(\npackages/server/src/services/mari-db/mari-images.service.ts:290:       \"Say what to change: --crop, --trim, --transparent [auto|#hex], --resize, --flip, --rotate or --tint\",\npackages/server/src/services/mari-db/mari-images.service.ts-291:     );\npackages/server/src/services/mari-db/mari-images.service.ts-292:   }\npackages/server/src/services/mari-db/mari-images.service.ts-946:     const imageSettings = await loadImageGenerationUserSettings(this.db);\npackages/server/src/services/mari-db/mari-images.service.ts-947:     const connectionImageDefaults = resolveConnectionImageDefaults(connection);\npackages/server/src/services/mari-db/mari-images.service.ts:948:     const verbatim = target?.type === \"theme-image\" || hasFlag(flags, \"verbatim\");\npackages/server/src/services/mari-db/mari-images.service.ts-949:     const compiled = mariImagePrompt({\npackages/server/src/services/mari-db/mari-images.service.ts-950:       verbatim,\npackages/server/src/services/mari-db/mari-images.service.ts-957:     });\npackages/server/src/services/mari-db/mari-images.service.ts-958:     const size = this.resolveSize(flags, kind, imageSettings);\npackages/server/src/services/mari-db/mari-images.service.ts:959:     const source = operation === \"edit\" ? await this.resolveSourceImage(flags, target, context, true) : null;\npackages/server/src/services/mari-db/mari-images.service.ts-960: \npackages/server/src/services/mari-db/mari-images.service.ts-961:     return {\npackages/server/src/services/mari-db/mari-images.service.ts-1001:     }\npackages/server/src/services/mari-db/mari-images.service.ts-1002: \npackages/server/src/services/mari-db/mari-images.service.ts:1003:     const sourceImage = operation === \"edit\" ? await this.resolveSourceImage(flags, target, context, true) : null;\npackages/server/src/services/mari-db/mari-images.service.ts-1004:     const imageSettings = await loadImageGenerationUserSettings(this.db);\npackages/server/src/services/mari-db/mari-images.service.ts-1005:     const connectionImageDefaults = resolveConnectionImageDefaults(connection);\npackages/server/src/services/mari-db/mari-images.service.ts-1006:     const kind = detectImageKind(target, flagString(flags, \"kind\"));\npackages/server/src/services/mari-db/mari-images.service.ts-1007:     const size = this.resolveSize(flags, kind, imageSettings);\npackages/server/src/services/mari-db/mari-images.service.ts:1008:     const verbatim = target?.type === \"theme-image\" || hasFlag(flags, \"verbatim\");\npackages/server/src/services/mari-db/mari-images.service.ts-1009:     const compiled = mariImagePrompt({\npackages/server/src/services/mari-db/mari-images.service.ts-1010:       verbatim,\npackages/server/src/services/mari-db/mari-images.service.ts-1098:     const adjustments = pictureAdjustments(flags);\npackages/server/src/services/mari-db/mari-images.service.ts-1099:     const target = this.parseTarget(flags, false);\npackages/server/src/services/mari-db/mari-images.service.ts:1100:     const source = await this.resolveSourceImage(flags, target, context, true);\npackages/server/src/services/mari-db/mari-images.service.ts-1101:     const adjusted = await adjustPicture(source.buffer, adjustments);\npackages/server/src/services/mari-db/mari-images.service.ts-1102:     const asset = await savePreviewAsset({\npackages/server/src/services/mari-db/mari-images.service.ts-1161:       if (required)\npackages/server/src/services/mari-db/mari-images.service.ts-1162:         throw new Error(\npackages/server/src/services/mari-db/mari-images.service.ts:1163:           \"Missing --target <character-avatar|persona-avatar|lorebook-image|sprite|background|chat-gallery|character-gallery|theme-image|asset>\",\npackages/server/src/services/mari-db/mari-images.service.ts-1164:         );\npackages/server/src/services/mari-db/mari-images.service.ts-1165:       return null;",
+   "durationMs": 4
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_981d00f7595f4620a1d1103101f6f86f",
+   "name": "grep",
+   "input": {
+    "pattern": "case \"theme-image\"|async resolveSourceImage|target.type === \"theme-image\"",
+    "path": "packages/server/src/services/mari-db/mari-images.service.ts",
+    "glob": "*.ts",
+    "ignoreCase": false,
+    "literal": false,
+    "context": 4,
+    "limit": 12
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_981d00f7595f4620a1d1103101f6f86f",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/mari-db/mari-images.service.ts-1214:         const characterId = normalizeId(flagString(flags, \"character\", \"character-id\", \"id\"));\npackages/server/src/services/mari-db/mari-images.service.ts-1215:         if (!characterId) throw new Error(\"character-gallery target requires --character <id>\");\npackages/server/src/services/mari-db/mari-images.service.ts-1216:         return { type: \"character-gallery\", characterId, imageId: normalizeId(flagString(flags, \"image\", \"image-id\")) };\npackages/server/src/services/mari-db/mari-images.service.ts-1217:       }\npackages/server/src/services/mari-db/mari-images.service.ts:1218:       case \"theme-image\":\npackages/server/src/services/mari-db/mari-images.service.ts-1219:       case \"theme\": {\npackages/server/src/services/mari-db/mari-images.service.ts-1220:         const themeId = normalizeId(flagString(flags, \"theme\", \"theme-id\", \"id\"));\npackages/server/src/services/mari-db/mari-images.service.ts-1221:         if (!themeId) throw new Error(\"theme-image target requires --theme <theme id> and --name <picture>.webp\");\npackages/server/src/services/mari-db/mari-images.service.ts-1222:         const rawName = flagString(flags, \"name\", \"image\", \"filename\");\npackages/server/src/services/mari-db/mari-images.service.ts-1228:         throw new Error(`Unknown image target: ${target}`);\npackages/server/src/services/mari-db/mari-images.service.ts-1229:     }\npackages/server/src/services/mari-db/mari-images.service.ts-1230:   }",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_54b4b7f820bf4ce598c902fb9d215a00",
+   "name": "grep",
+   "input": {
+    "pattern": "resolveSourceImage",
+    "path": "packages/server/src/services/mari-db",
+    "glob": "*.ts",
+    "ignoreCase": false,
+    "literal": true,
+    "context": 1,
+    "limit": 15
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_54b4b7f820bf4ce598c902fb9d215a00",
+   "name": "grep",
+   "isError": false,
+   "output": "packages/server/src/services/mari-db/mari-images.service.ts-958:     const size = this.resolveSize(flags, kind, imageSettings);\npackages/server/src/services/mari-db/mari-images.service.ts:959:     const source = operation === \"edit\" ? await this.resolveSourceImage(flags, target, context, true) : null;\npackages/server/src/services/mari-db/mari-images.service.ts-960: \npackages/server/src/services/mari-db/mari-images.service.ts-1002: \npackages/server/src/services/mari-db/mari-images.service.ts:1003:     const sourceImage = operation === \"edit\" ? await this.resolveSourceImage(flags, target, context, true) : null;\npackages/server/src/services/mari-db/mari-images.service.ts-1004:     const imageSettings = await loadImageGenerationUserSettings(this.db);\npackages/server/src/services/mari-db/mari-images.service.ts-1099:     const target = this.parseTarget(flags, false);\npackages/server/src/services/mari-db/mari-images.service.ts:1100:     const source = await this.resolveSourceImage(flags, target, context, true);\npackages/server/src/services/mari-db/mari-images.service.ts-1101:     const adjusted = await adjustPicture(source.buffer, adjustments);\npackages/server/src/services/mari-db/mari-images.service.ts-1231: \npackages/server/src/services/mari-db/mari-images.service.ts:1232:   private async resolveSourceImage(\npackages/server/src/services/mari-db/mari-images.service.ts-1233:     flags: Map<string, string | boolean>,\npackages/server/src/services/mari-db/mari-images.service.ts-1237:   ): Promise<ResolvedImage>;\npackages/server/src/services/mari-db/mari-images.service.ts:1238:   private async resolveSourceImage(\npackages/server/src/services/mari-db/mari-images.service.ts-1239:     flags: Map<string, string | boolean>,",
+   "durationMs": 5
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_53a47b088d6e46c3bad5572b96ba419d",
+   "name": "read",
+   "input": {
+    "path": "packages/server/src/services/mari-db/mari-images.service.ts",
+    "offset": 1244,
+    "limit": 100
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_53a47b088d6e46c3bad5572b96ba419d",
+   "name": "read",
+   "isError": false,
+   "output": "File: packages/server/src/services/mari-db/mari-images.service.ts\nLines: 1244-1343 of 1884 (truncated)\n\n1244:   private async resolveSourceImage(\n1245:     flags: Map<string, string | boolean>,\n1246:     target: ImageTarget | null,\n1247:     context: ImageCommandContext,\n1248:     required = false,\n1249:   ): Promise<ResolvedImage | null> {\n1250:     const explicit = flagString(flags, \"source\", \"source-image\", \"asset\", \"from\");\n1251:     if (explicit) return this.resolveImageReference(explicit, context);\n1252:     const targetImage = target ? await this.currentImageReferenceForTarget(target) : null;\n1253:     if (targetImage) return this.resolveImageReference(targetImage, context);\n1254:     if (required)\n1255:       throw new Error(\n1256:         \"Image editing requires --source <asset-id|app-url|file|data-url>, or a target that already has an image.\",\n1257:       );\n1258:     return null;\n1259:   }\n1260: \n1261:   private findSprite(ownerId: string, expression: string) {\n1262:     spriteFolder(ownerId);\n1263:     const sprites = listSpriteCatalog(ownerId).sprites;\n1264:     const exact = sprites.find((sprite) => sprite.expression === expression);\n1265:     const matches = sprites.filter((sprite) => sprite.label === expression);\n1266:     if (!exact && matches.length > 1) throw new Error(\"More than one sprite has that label; use its file handle.\");\n1267:     return exact ?? matches[0];\n1268:   }\n1269: \n1270:   private async currentImageReferenceForTarget(target: ImageTarget): Promise<string | null> {\n1271:     const characters = createCharactersStorage(this.db);\n1272:     switch (target.type) {\n1273:       case \"character-avatar\": {\n1274:         const row = await characters.getById(target.characterId);\n1275:         if (!row) throw new Error(`Character not found: ${target.characterId}`);\n1276:         return row.avatarPath ?? null;\n1277:       }\n1278:       case \"persona-avatar\": {\n1279:         const row = await characters.getPersona(target.personaId);\n1280:         if (!row) throw new Error(`Persona not found: ${target.personaId}`);\n1281:         return row.avatarPath ?? null;\n1282:       }\n1283:       case \"lorebook-image\": {\n1284:         const row = await createLorebooksStorage(this.db).getById(target.lorebookId);\n1285:         if (!row) throw new Error(`Lorebook not found: ${target.lorebookId}`);\n1286:         return typeof row.imagePath === \"string\" ? row.imagePath : null;\n1287:       }\n1288:       case \"sprite\": {\n1289:         return this.findSprite(target.ownerId, target.expression)?.url ?? null;\n1290:       }\n1291:       case \"background\":\n1292:         return target.filename ? `/api/backgrounds/file/${encodeURIComponent(target.filename)}` : null;\n1293:       case \"chat-gallery\":\n1294:         if (!target.imageId) return null;\n1295:         return this.chatGalleryImageUrl(target.chatId, target.imageId);\n1296:       case \"character-gallery\":\n1297:         if (!target.imageId) return null;\n1298:         return this.characterGalleryImageUrl(target.characterId, target.imageId);\n1299:       case \"asset\":\n1300:         return target.assetId ?? null;\n1301:       case \"theme-image\": {\n1302:         const theme = await createThemesStorage(this.db).getById(target.themeId);\n1303:         if (!theme) throw new Error(`Theme not found: ${target.themeId}`);\n1304:         return theme.meta?.images?.find((image) => image.name === target.name)?.src ?? null;\n1305:       }\n1306:     }\n1307:   }\n1308: \n1309:   private async chatGalleryImageUrl(chatId: string, imageId: string) {\n1310:     const image = await createGalleryStorage(this.db).getById(imageId, chatId);\n1311:     if (!image || image.chatId !== chatId) throw new Error(`Chat gallery image not found: ${imageId}`);\n1312:     const filename = image.filePath.split(\"/\").pop() ?? \"\";\n1313:     const ownerChatId = image.filePath.split(\"/\").filter(Boolean).length > 1 ? image.filePath.split(\"/\")[0]! : chatId;\n1314:     return `/api/gallery/file/${encodeURIComponent(ownerChatId)}/${encodeURIComponent(filename)}`;\n1315:   }\n1316: \n1317:   private async characterGalleryImageUrl(characterId: string, imageId: string) {\n1318:     const image = await createCharacterGalleryStorage(this.db).getById(imageId);\n1319:     if (!image || image.characterId !== characterId) throw new Error(`Character gallery image not found: ${imageId}`);\n1320:     const filename = image.filePath.split(\"/\").pop() ?? \"\";\n1321:     return `/api/characters/${encodeURIComponent(characterId)}/gallery/file/${encodeURIComponent(filename)}`;\n1322:   }\n1323: \n1324:   private async resolveImageReference(value: string, context: ImageCommandContext): Promise<ResolvedImage> {\n1325:     const data = decodeDataImage(value);\n1326:     if (data) return data;\n1327: \n1328:     const assets = await readManifest();\n1329:     const asset = assets.find(\n1330:       (candidate) =>\n1331:         candidate.id === value ||\n1332:         candidate.filename === value ||\n1333:         candidate.url === value ||\n1334:         candidate.filePath === value,\n1335:     );\n1336:     if (asset) {\n1337:       const image = await imageFromFile(\n1338:         assertInsideDir(PREVIEW_DIR, join(PREVIEW_DIR, asset.filename)),\n1339:         `asset:${asset.id}`,\n1340:         PREVIEW_DIR,\n1341:       );\n1342:       return { ...image, url: asset.url, asset };\n1343:     }",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "draft",
+  "data": "I "
+ },
+ {
+  "type": "draft",
+  "data": "I found "
+ },
+ {
+  "type": "draft",
+  "data": "I found the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **"
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket ("
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**"
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’"
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’"
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm it "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm it can "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm it can work "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm it can work directly "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm it can work directly from "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm it can work directly from the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm it can work directly from the packaged "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the clone’s pictures and image-editing options.",
+    "status": "completed"
+   },
+   {
+    "content": "Recolor the existing artwork blue without changing its scenes.",
+    "status": "in_progress"
+   },
+   {
+    "content": "Save and verify the replacement pictures.",
+    "status": "pending"
+   }
+  ]
+ },
+ {
+  "type": "token",
+  "data": "I found the red artwork inside **Velvet Casket (my copy)**. I’ll recolor the existing pictures rather than regenerate them, so the chapel, stained glass, roses, and phone crops keep their exact compositions. I also checked the image helper’s implementation to confirm it can work directly from the packaged originals."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "narration": true
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_c1ba0078cb03454a86d41cd94162f617",
+   "name": "bash",
+   "input": {
+    "command": "mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-chapel.webp --tint '#528bd4'",
+    "timeout": 60
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_c1ba0078cb03454a86d41cd94162f617",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images adjust --target theme-image --theme 22m7Hs1adySrgvLPKUtXM --name night-chapel.webp --tint '#528bd4'\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"assigned\": false,\n  \"message\": \"Adjusted copy saved as a new preview asset; the original is unchanged. Show it to the user, then use mari images assign on the one they want.\",\n  \"asset\": {\n    \"id\": \"lR9BBmVZVAuzzY7U17pV0\",\n    \"filename\": \"mari-lR9BBmVZVAuzzY7U17pV0.png\",\n    \"filePath\": \"mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png\",\n    \"url\": \"/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png\",\n    \"mimeType\": \"image/png\",\n    \"ext\": \"png\",\n    \"operation\": \"adjust\",\n    \"kind\": \"illustration\",\n    \"prompt\": \"\",\n    \"negativePrompt\": \"\",\n    \"width\": 1672,\n    \"height\": 941,\n    \"connectionId\": \"\",\n    \"connectionName\": \"\",\n    \"provider\": \"\",\n    \"source\": \"\",\n    \"serviceHint\": \"\",\n    \"model\": \"\",\n    \"sourceImage\": \"data-url\",\n    \"createdAt\": \"2026-11-14T12:09:29.490Z\"\n  },\n  \"steps\": [\n    \"tinted #528bd4 → 1672×941\"\n  ],\n  \"width\": 1672,\n  \"height\": 941,\n  \"targetSuggestion\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"night-chapel.webp\"\n  }\n}",
+   "durationMs": 179
+  }
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the clone’s pictures and image-editing options.",
+    "status": "completed"
+   },
+   {
+    "content": "Prepare a blue recolor sample preserving the original scene.",
+    "status": "completed"
+   },
+   {
+    "content": "After artwork approval, recolor and save the matching packaged pictures.",
+    "status": "pending"
+   }
+  ]
+ },
+ {
+  "type": "suggestions",
+  "data": [
+   {
+    "id": "suggestion-1",
+    "label": "Use this blue",
+    "prompt": "Use this blue treatment for the theme’s pictures and save them, keeping their scenes unchanged.",
+    "entity": "settings"
+   },
+   {
+    "id": "suggestion-2",
+    "label": "Deeper sapphire",
+    "prompt": "Make the picture recolor a deeper sapphire blue before saving.",
+    "entity": "settings"
+   }
+  ]
+ },
+ {
+  "type": "draft",
+  "data": "Yes—"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n!"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n!["
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample]"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you?"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket ("
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts,"
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts, "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts, and "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts, and layout. "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts, and layout. The "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts, and layout. The starter "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts, and layout. The starter original "
+ },
+ {
+  "type": "draft",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts, and layout. The starter original stays "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "Yes—the red is baked into the pictures, not just the CSS. I’ve made a **blue recolor sample from the original artwork**, without regenerating or changing the scene. Same gothic chapel, colder blood, kek.\n\n![Blue Velvet Casket chapel sample](/api/gallery/file/mari-images/mari-lR9BBmVZVAuzzY7U17pV0.png)\n\nThis applies a blue tint across the picture, including its lighting—not only the red areas. **The sample is saved, but your theme’s pictures haven’t been replaced yet.**\n\nDoes this blue treatment work for you? Once approved, I’ll apply it to the matching backgrounds and decorations in **Velvet Casket (my copy)**, preserving the scenes, crops, CSS, fonts, and layout. The starter original stays untouched."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]
