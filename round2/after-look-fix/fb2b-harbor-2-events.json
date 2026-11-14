@@ -1,0 +1,639 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_8c24451fe9c14227a0e771325e000cab",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "z4FKwHRd_0Dze9mZmBYXo"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_8c24451fe9c14227a0e771325e000cab",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"z4FKwHRd_0Dze9mZmBYXo\",\n  \"name\": \"Lanternwake Harbor\",\n  \"css\": \"/* Lanternwake Harbor — a weathered harbor inn.\\nShape spec: small-round plaster containers 8px; nested drawers, fields and buttons 4px; native tags and avatars retained; Conversation bubbles retain native silhouette.\\nBorders: containers 3px double rope-coloured theme border, fields/buttons 1px solid. Shadows: soft inset lantern glow only. Selected: warm fill and inset ring; focus: inset ring. No added phone rows, repositioned controls, animation, or decorative overlays. */\\n:root {\\n --mari-tokens-version: 1; --radius: 0.5rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-active: var(--secondary); --mari-top-bar-plate-radius: 4px; --mari-accent-text: var(--primary);\\n --mari-app-backdrop: url(\\\"theme:harbor-day-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-day-header.webp\\\") center / cover no-repeat;\\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-app-backdrop-layers: var(--mari-app-backdrop) center / cover no-repeat;\\n --mari-dialogue-color: var(--card-foreground);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\\n}\\n:root, :root[data-theme=\\\"light\\\"], :root[data-mari-sky=\\\"day\\\"], :root[data-mari-sky=\\\"dawn\\\"] {\\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #f3dfb6; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #f4e6ca; --accent-foreground: #173c48; --border: #927b53; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #927b53; --sidebar-accent: #f3dfb6; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\\n}\\n:root[data-theme=\\\"dark\\\"]:not([data-mari-sky=\\\"day\\\"]):not([data-mari-sky=\\\"dawn\\\"]), :root[data-mari-sky=\\\"night\\\"], :root[data-mari-sky=\\\"dusk\\\"] {\\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #51412e; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #443c30; --accent-foreground: #fff0d6; --border: #a28b63; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #a28b63; --sidebar-accent: #51412e; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\\n --mari-app-backdrop: url(\\\"theme:harbor-night-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-night-header.webp\\\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\\n}\\n:root[data-mari-weather=\\\"rain\\\"], :root[data-mari-weather=\\\"storm\\\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"snow\\\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"fog\\\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\\n/* Opaque plaster with faint mineral grain. The texture is paint, never a layer over controls. */\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"bubble\\\"], [data-mari-part=\\\"composer\\\"] {\\n background-color: var(--card);\\n background-image: repeating-linear-gradient(117deg, transparent 0 11px, color-mix(in srgb, var(--border) 5%, transparent) 11px 12px), linear-gradient(155deg, color-mix(in srgb, var(--secondary) 20%, transparent), transparent 65%);\\n color: var(--card-foreground); border: 3px double var(--border); border-radius: 8px;\\n box-shadow: inset 0 0 14px color-mix(in srgb, var(--secondary) 35%, transparent);\\n}\\n.mari-drawer { border-radius: 4px; }\\n:root[data-chat-open-mode=\\\"conversation\\\"] [data-mari-part=\\\"bubble\\\"] { border-radius: revert-layer; }\\n/* A message row is not a second bubble. */\\n[data-mari-part=\\\"message\\\"] { background: transparent; border: 0; box-shadow: none; }\\n.mari-window__header { border-radius: 5px 5px 0 0; }\\n.mari-drawer__header { border-radius: 1px 1px 0 0; }\\n.mari-window__header, .mari-drawer__header { background: var(--secondary); color: var(--secondary-foreground); border-bottom: 1px solid var(--border); }\\n[data-mari-part=\\\"page-title\\\"], [data-mari-part=\\\"home-widget-title\\\"], .mari-window__title, .mari-drawer__title { font-family: var(--mari-font-heading); color: var(--foreground); }\\n:where(button,input,select,textarea), .mari-window__control, .mari-drawer__popout { border-radius: 4px; }\\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button,[role=\\\"tab\\\"])[aria-selected=\\\"true\\\"], button[aria-pressed=\\\"true\\\"], .mari-window-bubble[data-open=\\\"true\\\"] {\\n background: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 1px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);\\n}\\n:where(button,input,select,textarea,a,[role=\\\"tab\\\"]):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\\n/* Opaque plates isolate labels from the artwork at every crop. Internal top-bar classes are documented but may change; paint only. */\\n[data-mari-part=\\\"top-bar\\\"] :is(button,[role=\\\"tab\\\"],.ov-tab,.ov-icon-btn) { background-color: var(--card); color: var(--card-foreground); border-radius: 4px; box-shadow: inset 0 0 0 1px var(--border); }\\n[data-mari-part=\\\"top-bar\\\"] :is([aria-selected=\\\"true\\\"],[aria-pressed=\\\"true\\\"]) { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent); }\\n@media (hover:hover) {\\n [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); }\\n [data-mari-part=\\\"top-bar\\\"] :is(button,[role=\\\"tab\\\"],.ov-tab,.ov-icon-btn):hover { background-color: var(--accent); color: var(--accent-foreground); }\\n}\\n@media (prefers-contrast: more) {\\n [data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"bubble\\\"], [data-mari-part=\\\"composer\\\"] { background-image: none; box-shadow: none; }\\n}\\n:root[data-mari-contrast=\\\"more\\\"] :is([data-mari-part=\\\"page\\\"],[data-mari-part=\\\"home-widget\\\"],.mari-window,.mari-drawer,[data-mari-part=\\\"bubble\\\"],[data-mari-part=\\\"composer\\\"]) { background-image: none; box-shadow: none; }\\n/* Native phone layout, toolbar heights, accessibility typography and weather behaviour remain intact. */\",\n  \"installedAt\": \"2026-11-14T11:50:23.369Z\",\n  \"createdAt\": \"2026-11-14T11:50:23.369Z\",\n  \"updatedAt\": \"2026-11-14T11:58:37.594Z\",\n  \"isActive\": true,\n  \"meta\": {\n    \"images\": [\n      {\n        \"name\": \"harbor-day-header.webp\",\n        \"bytes\": 302994,\n        \"css\": \"url(\\\"theme:harbor-day-header.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-night-header.webp\",\n        \"bytes\": 336654,\n        \"css\": \"url(\\\"theme:harbor-night-header.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-day-background.webp\",\n        \"bytes\": 367920,\n        \"css\": \"url(\\\"theme:harbor-day-background.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-night-background.webp\",\n        \"bytes\": 280698,\n        \"css\": \"url(\\\"theme:harbor-night-background.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [],\n    \"thumbnail\": null,\n    \"packageBytes\": 1717976\n  }\n}",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "draft",
+  "data": "**"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.**"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device;"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve verified "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve verified the "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve verified the saved "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve verified the saved package,"
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve verified the saved package, "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve verified the saved package, not "
+ },
+ {
+  "type": "draft",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve verified the saved package, not your "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "**Lanternwake Harbor is fully saved with its CSS and all four packaged pictures, and it’s active.** I checked the stored theme just now—no artwork left waiting in the gallery, kek.\n\nConfirmed in the saved theme:\n- Day and night harbor headers and matching backgrounds, connected to the day/night styling.\n- Clear-weather backgrounds plus rain, snow, and fog treatments.\n- Weathered plaster panels, rope-coloured edges, and lantern-glow selected states.\n- Bubble-only message styling, readable dialogue colours, and opaque backing behind top-bar controls.\n- No added phone header rows or repositioned controls.\n\nNothing further needed saving, so I left the finished theme intact. The remaining check is how it renders on your device; I’ve verified the saved package, not your screen."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]

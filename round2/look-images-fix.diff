@@ -1,0 +1,83 @@
+diff --git a/packages/server/src/services/professor-mari/pi-runtime.ts b/packages/server/src/services/professor-mari/pi-runtime.ts
+index f0ec2d9e6..8abbab733 100644
+--- a/packages/server/src/services/professor-mari/pi-runtime.ts
++++ b/packages/server/src/services/professor-mari/pi-runtime.ts
+@@ -499,20 +499,53 @@ export async function runPiLoop(input: PiRunInput & { commands: WorkspaceCommand
+     const prompt = getCurrentSystemPrompt(context.messages);
+     if (prompt) out.push({ role: "system", content: withToolFormat(prompt), contextKind: "prompt" });
+     let lastResult: ChatMessage | null = null;
+-    // Pictures from the newest round of tool results only: older rounds were already seen, and resending every
+-    // picture each round would grow the request with each look.
++    // Pictures she looked at stay in the run, each right after the tool results that returned them: she often looks
++    // at several pictures over a few rounds before she answers, and the Codex route replays no reasoning, so a
++    // picture sent for one round only was gone by the time she wrote about it. The newest LOOK_IMAGES_KEPT stay as
++    // pictures; older ones become a line saying so, which keeps the request from growing without end.
+     const all = context.messages as Message[];
+-    let newestAssistant = -1;
+-    for (let index = all.length - 1; index >= 0; index -= 1) {
+-      if (all[index]!.role === "assistant") {
+-        newestAssistant = index;
+-        break;
++    const LOOK_IMAGES_KEPT = 8;
++    const imagesByIndex = new Map<number, string[]>();
++    for (const [index, message] of all.entries()) {
++      if (message.role === "toolResult") {
++        const images = imagesOf(message.content as never);
++        if (images.length > 0) imagesByIndex.set(index, images);
+       }
+     }
+-    const lookImages: string[] = [];
++    let keepBudget = LOOK_IMAGES_KEPT;
++    const keptByIndex = new Map<number, number>();
++    for (const index of [...imagesByIndex.keys()].sort((a, b) => b - a)) {
++      const count = imagesByIndex.get(index)!.length;
++      const kept = Math.max(0, Math.min(count, keepBudget));
++      keptByIndex.set(index, kept);
++      keepBudget -= kept;
++    }
++    let pendingLook: string[] = [];
++    let pendingDropped = 0;
++    const flushLook = () => {
++      if (pendingLook.length === 0 && pendingDropped === 0) return;
++      out.push({
++        role: "user",
++        content:
++          pendingLook.length > 0
++            ? "(The pictures from the tool results above, so you can look at them. The user did not send these.)"
++            : `(${pendingDropped} picture(s) from the tool results above were shown earlier and are no longer attached.)`,
++        contextKind: "history",
++        ...(pendingLook.length > 0 ? { images: pendingLook } : {}),
++      });
++      pendingLook = [];
++      pendingDropped = 0;
++      lastResult = null;
++    };
+     for (const [index, message] of all.entries()) {
+-      if (message.role === "toolResult" && index > newestAssistant) lookImages.push(...imagesOf(message.content as never));
++      if (message.role !== "toolResult") flushLook();
+       if (message.role !== "toolResult") lastResult = null;
++      const lookHere = imagesByIndex.get(index);
++      if (lookHere) {
++        const kept = keptByIndex.get(index) ?? 0;
++        pendingLook.push(...lookHere.slice(lookHere.length - kept));
++        pendingDropped += lookHere.length - kept;
++      }
+       if (message.role === "user") {
+         const content = textOf(message.content as never);
+         out.push({ role: "user", content, contextKind: "history", ...attachmentsByText.get(content) });
+@@ -562,14 +595,7 @@ export async function runPiLoop(input: PiRunInput & { commands: WorkspaceCommand
+         });
+       }
+     }
+-    if (lookImages.length > 0) {
+-      out.push({
+-        role: "user",
+-        content: "(The pictures from your last tool results, so you can look at them. The user did not send these.)",
+-        contextKind: "history",
+-        images: lookImages,
+-      });
+-    }
++    flushLook();
+     return out;
+   };
+ 

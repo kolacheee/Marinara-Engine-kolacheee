@@ -1,0 +1,1367 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_32965cb5b42b47e39af2f88f133f3cc3",
+   "name": "app_data",
+   "input": {
+    "action": "theme.list",
+    "limit": 100
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_32965cb5b42b47e39af2f88f133f3cc3",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.list\nExit code: 0 (structured app-data runtime)\n\nstdout:\n[\n  {\n    \"id\": \"IPu9ybelKidyXhmttSyjP\",\n    \"name\": \"Rainy Café\",\n    \"isActive\": false,\n    \"cssLength\": 5776,\n    \"installedAt\": \"2026-11-14T11:48:02.175Z\",\n    \"updatedAt\": \"2026-11-14T12:53:55.438Z\"\n  },\n  {\n    \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n    \"name\": \"Velvet Casket (my copy)\",\n    \"isActive\": false,\n    \"cssLength\": 57436,\n    \"installedAt\": \"2026-11-14T11:41:01.460Z\",\n    \"updatedAt\": \"2026-11-14T12:11:25.226Z\"\n  },\n  {\n    \"id\": \"z4FKwHRd_0Dze9mZmBYXo\",\n    \"name\": \"Lanternwake Harbor\",\n    \"isActive\": true,\n    \"cssLength\": 7563,\n    \"installedAt\": \"2026-11-14T11:50:23.369Z\",\n    \"updatedAt\": \"2026-11-14T11:58:37.594Z\"\n  },\n  {\n    \"id\": \"starter-velvet-casket\",\n    \"name\": \"Velvet Casket\",\n    \"isActive\": false,\n    \"cssLength\": 57436,\n    \"installedAt\": \"2026-11-14T11:41:01.282Z\",\n    \"updatedAt\": \"1970-01-01T00:00:00.000Z\"\n  }\n]",
+   "durationMs": 4
+  }
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the three café images and saved Home-art reference.",
+    "status": "in_progress"
+   },
+   {
+    "content": "Choose the strongest image and replace Home art if needed.",
+    "status": "pending"
+   },
+   {
+    "content": "Verify the saved picture and explain the choice.",
+    "status": "pending"
+   }
+  ]
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_475b8b0c330d4e5c96edcae38c18d548",
+   "name": "bash",
+   "input": {
+    "command": "mari images look --source L7vCCX0Bqrg2viAxY3wHw,PDc_YxR_6YbDX9GZWImZ0,1vKQsjSOO7awK8ppdpcah",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_475b8b0c330d4e5c96edcae38c18d548",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images look --source L7vCCX0Bqrg2viAxY3wHw,PDc_YxR_6YbDX9GZWImZ0,1vKQsjSOO7awK8ppdpcah\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"look\": \"[mari-look:95ded418-09c2-4fba-8622-e5a4f8a39ba1] 3 picture(s) attached below, in the order given: asset:L7vCCX0Bqrg2viAxY3wHw, asset:PDc_YxR_6YbDX9GZWImZ0, asset:1vKQsjSOO7awK8ppdpcah.\",\n  \"message\": \"Look at them yourself before you tell the user about them: composition, colour, readability behind text, edges and leftover backgrounds.\"\n}",
+   "durationMs": 56
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_72bf57bf855a42478f03409d026f090e",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "IPu9ybelKidyXhmttSyjP"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_72bf57bf855a42478f03409d026f090e",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"IPu9ybelKidyXhmttSyjP\",\n  \"name\": \"Rainy Café\",\n  \"css\": \"/* Rainy Café — ceramic counter and enamel-mug rims.\\nShape: containers 16px; nested fields/buttons 10px; tags capsule; native avatars and Conversation bubble silhouettes.\\nBorder: 2px enamel rim on containers, 1px on fields/buttons. Shadow: steam-soft blur only with inset glaze.\\nSelected: warm fill and inset ring. Focus: inset outline. No control movement or added phone rows.\\nHome art version 1 is provisional: image viewer did not expose pixels for comparison. */\\n:root {\\n --mari-tokens-version: 1; --radius: 1rem;\\n --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-dialogue-color: var(--card-foreground);\\n --mari-app-backdrop: url(\\\"theme:rainy-window.webp\\\"); --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-emblem.webp\\\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#241e1a33,#241e1a66), url(\\\"theme:rainy-window.webp\\\") center / cover no-repeat;\\n --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 10px;\\n --mari-home-widget-border: var(--border); --mari-home-widget-border-width: 2px; --mari-home-widget-radius: 16px; --mari-home-widget-bg: var(--card);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --background: #241e1a; --foreground: #f5e9d9; --card: #302721; --card-foreground: #f5e9d9; --popover: #302721; --popover-foreground: #f5e9d9;\\n --primary: #edbc7e; --primary-foreground: #2b1c0e; --secondary: #49392d; --secondary-foreground: #f5e9d9; --muted: #3b3028; --muted-foreground: #d0beaa; --accent: #514032; --accent-foreground: #fff1df;\\n --border: #7d6855; --input: #8e755e; --ring: #edbc7e; --sidebar: #29221d; --sidebar-foreground: #f5e9d9; --sidebar-border: #7d6855; --sidebar-accent: #49392d; --sidebar-accent-foreground: #fff1df; --destructive: #f5a49a; --destructive-foreground: #381512;\\n}\\n[data-theme=\\\"light\\\"] {\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-emblem.webp\\\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#f4ebdc22,#f4ebdc44), url(\\\"theme:rainy-window.webp\\\") center / cover no-repeat;\\n --background: #f4ebdc; --foreground: #35271f; --card: #fff8ed; --card-foreground: #35271f; --popover: #fff8ed; --popover-foreground: #35271f;\\n --primary: #854820; --primary-foreground: #fff8ed; --secondary: #ead8bf; --secondary-foreground: #35271f; --muted: #eee1cf; --muted-foreground: #705a47; --accent: #e8d3b6; --accent-foreground: #35271f;\\n --border: #ac9072; --input: #9c7b5e; --ring: #854820; --sidebar: #f5e9d7; --sidebar-foreground: #35271f; --sidebar-border: #ac9072; --sidebar-accent: #ead8bf; --sidebar-accent-foreground: #35271f; --destructive: #a43129; --destructive-foreground: #fff8ed;\\n}\\n[data-theme=\\\"dark\\\"] { color-scheme: dark; }\\n/* Quiet glaze and sparse grout lines sit on opaque ceramic, not behind text as busy art. */\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"composer\\\"], [data-mari-part=\\\"bubble\\\"] {\\n background-color: var(--card); color: var(--card-foreground);\\n background-image: linear-gradient(135deg, color-mix(in srgb, var(--foreground) 4%, transparent), transparent 48%);\\n border: 2px solid var(--border); border-radius: 16px;\\n box-shadow: inset 0 0 0 2px var(--card), inset 0 0 0 3px color-mix(in srgb, var(--border) 45%, transparent), 0 8px 24px -14px color-mix(in srgb, var(--foreground) 28%, transparent);\\n}\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"] {\\n background-image: linear-gradient(color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px);\\n background-size: 64px 64px;\\n}\\n[data-mari-part=\\\"message\\\"] { background: transparent; border: 0; box-shadow: none; }\\n/* Conversation retains its existing corner silhouette. */\\n.texting-bubble[data-mari-part=\\\"bubble\\\"] { border-radius: revert-layer; }\\n[data-mari-part=\\\"top-bar\\\"] { background: var(--sidebar); color: var(--sidebar-foreground); border-bottom: 2px solid var(--border); }\\n.mari-window__header, .mari-drawer__header { background-color: var(--secondary); color: var(--secondary-foreground); border-radius: 12px 12px 8px 8px; border-bottom: 1px solid var(--border); }\\n:where(button,input,textarea,select) { border-radius: 10px; }\\n:where(input,textarea,select) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); box-shadow: inset 0 2px 5px color-mix(in srgb, var(--border) 12%, transparent); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button)[aria-pressed=\\\"true\\\"], [role=\\\"tab\\\"][aria-selected=\\\"true\\\"] { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--primary); }\\n:where(button,input,textarea,select,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\\n/* Public Home-art hook is an img in the current implementation; replace decorative content only. */\\n[data-mari-part=\\\"home-art\\\"] { content: url(\\\"theme:cafe-home.webp\\\"); object-fit: cover; object-position: center; border-radius: 14px; }\\n@media (hover: hover) { [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); } }\\n@media (prefers-contrast: more) { [data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"] { background-image: none; } }\\n:root[data-mari-contrast=\\\"more\\\"] [data-mari-part=\\\"page\\\"], :root[data-mari-contrast=\\\"more\\\"] [data-mari-part=\\\"home-widget\\\"] { background-image: none; }\",\n  \"installedAt\": \"2026-11-14T11:48:02.175Z\",\n  \"createdAt\": \"2026-11-14T11:48:02.175Z\",\n  \"updatedAt\": \"2026-11-14T12:53:55.438Z\",\n  \"isActive\": false,\n  \"meta\": {\n    \"images\": [\n      {\n        \"name\": \"rainy-window.webp\",\n        \"bytes\": 366051,\n        \"css\": \"url(\\\"theme:rainy-window.webp\\\")\"\n      },\n      {\n        \"name\": \"cafe-emblem.webp\",\n        \"bytes\": 123984,\n        \"css\": \"url(\\\"theme:cafe-emblem.webp\\\")\"\n      },\n      {\n        \"name\": \"cafe-home.webp\",\n        \"bytes\": 357147,\n        \"css\": \"url(\\\"theme:cafe-home.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [],\n    \"thumbnail\": null,\n    \"packageBytes\": 1129767\n  }\n}",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "draft",
+  "data": "**"
+ },
+ {
+  "type": "draft",
+  "data": "**Version "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3**"
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-"
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café"
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café,"
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’"
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version,"
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version, "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version, keeping "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version, keeping the "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version, keeping the CSS "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version, keeping the CSS and "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version, keeping the CSS and other "
+ },
+ {
+  "type": "draft",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version, keeping the CSS and other pictures "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the three café images and saved Home-art reference.",
+    "status": "completed"
+   },
+   {
+    "content": "Choose the strongest image and replace Home art if needed.",
+    "status": "in_progress"
+   },
+   {
+    "content": "Verify the saved picture and explain the choice.",
+    "status": "pending"
+   }
+  ]
+ },
+ {
+  "type": "token",
+  "data": "**Version 3** is my pick: the coffee-bean jar makes it read most clearly as a café, and the broad blue rainy window balances the amber lighting beautifully. I’ll replace the provisional Home picture with that version, keeping the CSS and other pictures unchanged."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "narration": true
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_7e2234ea20af4de694fa60255b8c9777",
+   "name": "bash",
+   "input": {
+    "command": "mari images assign --asset 1vKQsjSOO7awK8ppdpcah --target theme-image --theme IPu9ybelKidyXhmttSyjP --name cafe-home.webp --apply",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_7e2234ea20af4de694fa60255b8c9777",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images assign --asset 1vKQsjSOO7awK8ppdpcah --target theme-image --theme IPu9ybelKidyXhmttSyjP --name cafe-home.webp --apply\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"saved\": true,\n  \"source\": \"asset:1vKQsjSOO7awK8ppdpcah\",\n  \"target\": {\n    \"type\": \"theme-image\",\n    \"themeId\": \"IPu9ybelKidyXhmttSyjP\",\n    \"name\": \"cafe-home.webp\"\n  },\n  \"result\": {\n    \"themeId\": \"IPu9ybelKidyXhmttSyjP\",\n    \"name\": \"cafe-home.webp\",\n    \"replaced\": true,\n    \"css\": \"url(\\\"theme:cafe-home.webp\\\")\",\n    \"width\": 1672,\n    \"height\": 941,\n    \"animated\": false,\n    \"bytes\": 330910,\n    \"packageBytes\": 1094787,\n    \"packageLimitBytes\": 6291456,\n    \"pictures\": [\n      \"rainy-window.webp\",\n      \"cafe-emblem.webp\",\n      \"cafe-home.webp\"\n    ]\n  }\n}",
+   "durationMs": 248
+  }
+ },
+ {
+  "type": "suggestions",
+  "data": [
+   {
+    "id": "suggestion-1",
+    "label": "Try Rainy Café",
+    "prompt": "Activate Rainy Café so I can try its updated Home art.",
+    "entity": "settings"
+   },
+   {
+    "id": "suggestion-2",
+    "label": "Adjust the crop",
+    "prompt": "Help me adjust Rainy Café's Home picture crop for my phone.",
+    "entity": "settings"
+   }
+  ]
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_ecdd8e660a05464ab50bab91e24488e5",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "IPu9ybelKidyXhmttSyjP",
+    "field": "meta"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_ecdd8e660a05464ab50bab91e24488e5",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"images\": [\n    {\n      \"name\": \"rainy-window.webp\",\n      \"bytes\": 366051,\n      \"css\": \"url(\\\"theme:rainy-window.webp\\\")\"\n    },\n    {\n      \"name\": \"cafe-emblem.webp\",\n      \"bytes\": 123984,\n      \"css\": \"url(\\\"theme:cafe-emblem.webp\\\")\"\n    },\n    {\n      \"name\": \"cafe-home.webp\",\n      \"bytes\": 330912,\n      \"css\": \"url(\\\"theme:cafe-home.webp\\\")\"\n    }\n  ],\n  \"backgrounds\": [],\n  \"fonts\": [],\n  \"thumbnail\": null,\n  \"packageBytes\": 1094787\n}",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_d6b823e7dd194d7892b69e9b52446fca",
+   "name": "bash",
+   "input": {
+    "command": "mari images look --target theme-image --theme IPu9ybelKidyXhmttSyjP --name cafe-home.webp",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_d6b823e7dd194d7892b69e9b52446fca",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images look --target theme-image --theme IPu9ybelKidyXhmttSyjP --name cafe-home.webp\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"look\": \"[mari-look:143b8bdc-13cf-42e6-93c2-63a0d43b64b9] 1 picture(s) attached below, in the order given: data-url.\",\n  \"message\": \"Look at them yourself before you tell the user about them: composition, colour, readability behind text, edges and leftover backgrounds.\"\n}",
+   "durationMs": 37
+  }
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the three café images and saved Home-art reference.",
+    "status": "completed"
+   },
+   {
+    "content": "Choose the strongest image and replace Home art if needed.",
+    "status": "completed"
+   },
+   {
+    "content": "Verify the saved picture and explain the choice.",
+    "status": "completed"
+   }
+  ]
+ },
+ {
+  "type": "draft",
+  "data": "I’"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s**"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:**"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:**"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:**"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins**"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background,"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and emblem "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and emblem are "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and emblem are unchanged;"
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and emblem are unchanged; "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and emblem are unchanged; the "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and emblem are unchanged; the theme "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and emblem are unchanged; the theme remains "
+ },
+ {
+  "type": "draft",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window background, and emblem are unchanged; the theme remains inactive.**"
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "I’ve visually compared all three and replaced **Rainy Café’s** provisional Home art with **version 3**—a proper art choice this time, not coffee-fuelled guesswork, kek.\n\n1. **Version 1:** A steaming enamel mug sits on a woven coaster beneath an amber pendant, surrounded by cream tiles, trailing greenery, blue-and-white hydrangeas, and a checked blanket beside a rain-streaked window.\n2. **Version 2:** A larger mug rests on a folded striped cloth, framed by cream subway tiles, a rainy window, pale hydrangeas, an upper-right amber lamp, and a chunky knitted blanket.\n3. **Version 3:** A steaming mug on a wooden coaster anchors a polished café counter, with a coffee-bean jar, warm pendant lighting, pale flowers, and a broad rainy window overlooking glowing windows outside.\n\n**Version 3 wins** because the coffee beans give it the clearest café identity, while the spacious cool-blue window balances the warm amber interior without overcrowding the composition. The near-central mug also gives narrower crops a useful focal point. There are no visible people or text.\n\nI checked the saved package and reopened the attached Home picture to confirm it’s version 3. **The CSS, rainy-window backgrou"
+ },
+ {
+  "type": "token",
+  "data": "nd, and emblem are unchanged; the theme remains inactive.**"
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]

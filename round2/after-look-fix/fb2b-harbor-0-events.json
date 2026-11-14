@@ -1,0 +1,12 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "error",
+  "data": "OpenAI Responses stream failed: Our servers are currently overloaded. Please try again later."
+ }
+]
