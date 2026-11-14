@@ -215,6 +215,16 @@ def main(out_dir, paths, only):
                      [(i % 4, (i // 4) * 2, 1, 2) for i in range(8)])
             standing("standing_industry", [f"scifi-industry{{season}}-stack-{i}.png" for i in range(8)],
                      [(i % 4, (i // 4) * 2, 1, 2) for i in range(8)])
+        if "town_trees" in only and family == "scifi":
+            # Cyberpunk's town planters in the other seasons (BRIEF-14 D): four 96 px trees, and the town's paving
+            # under snow. The other settings' town trees and ground already have their seasons.
+            for season in SEASONS[1:]:
+                files = [os.path.join(out_dir, f"scifi-tree{season}-{i}.png") for i in range(4)]
+                if all(os.path.exists(f) for f in files):
+                    made[f"tree{season}"] = [(Image.open(f).convert("RGBA"), 2, 2) for f in files]
+                f = os.path.join(out_dir, f"scifi-town_ground{season}-base.png")
+                if os.path.exists(f):
+                    made[f"town_ground{season}"] = [(Image.open(f).convert("RGBA"), 6, 6)]
         if "farmland" in only:
             # Seven field tiles and, in a setting that has one, its farmstead: one cell in eight a farm.
             for season in SEASONS:
@@ -279,7 +289,7 @@ def main(out_dir, paths, only):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "lanes", "farmsteads", "orchards", "landmarks", "dunes", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
+    only = {"markers", "farmland", "bridges", "marsh", "buildings", "suburbs", "lanes", "farmsteads", "orchards", "landmarks", "dunes", "town_trees", *TILE_LOOKS, *DECOR_LOOKS, *PATTERN_LOOKS, *(look for look, _ in STANDING)}
     if "--only" in args:
         at = args.index("--only")
         only = set(args[at + 1].split(","))
