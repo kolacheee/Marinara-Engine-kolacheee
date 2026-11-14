@@ -1,0 +1,14 @@
+[
+ {
+  "id": "fb4-harbor",
+  "text": "Two shape slips in Lanternwake Harbor (night and day). 1) Library > Characters toolbar: the search box is a full pill, but the buttons beside it (folder, select, Browse online, Import, New character, the A to Z sort) are near-square rectangles, and the grid/list toggle is a pill holding square segments. Siblings in one row should share one shape; pick one radius for that row and make the toggle's selected segment follow its container. 2) In the chat composer, the text box draws its own thin rectangle inside the composer frame, so it looks like a box in a box. Remove the inner box (the composer frame is enough). Check the same toolbar on Personas and Lorebooks too."
+ },
+ {
+  "id": "fb4-cafe",
+  "text": "Rainy Caf\u00e9 has the same two slips as Harbor: check the Library toolbar shapes (search box vs buttons vs view toggle should share one shape) and remove the inner rectangle around the text box in the chat composer. Also: on Home the title and the Conversation/Roleplay/Game/Professor/Widgets buttons sit straight on the busy rainy-window picture with no backing, worst in the light look on a phone. Give them backing per your handbook's words-on-art rule."
+ },
+ {
+  "id": "fb4-velvet",
+  "text": "Blue Velvet copy, day look: a few bits are still lavender or pink: the picket trim along the top bar, the cross ornaments on the cards, and the pink bow and skull stickers. Turn them blue to match (recolour the pictures if they're pictures; look at them first). Use theme.update or mari images for this, and don't leave helper scripts behind in the app folder."
+ }
+]
