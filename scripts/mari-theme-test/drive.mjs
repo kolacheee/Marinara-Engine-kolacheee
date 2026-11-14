@@ -57,11 +57,20 @@ const run = async () => {
   })();
 
   const only = process.env.ONLY?.split(",");
-  for (const p of PROMPTS) {
-    if (only && !only.includes(p.id)) continue;
-    log(`\n===== ${p.id}: ${p.text}`);
+  const fingerprint = async () => JSON.stringify((await api("GET", "/api/themes")).map((t) => [t.id, t.css?.length, t.updatedAt, Object.keys(t.meta?.images ?? t.meta?.pictures ?? {}).length]));
+  const lastReply = async () => {
+    const msgs = await api("GET", `/api/chats/${chatId}/messages`);
+    const list = Array.isArray(msgs) ? msgs : msgs.messages ?? [];
+    const m = [...list].reverse().find((x) => x.role === "assistant");
+    return String(m?.content ?? "");
+  };
+  const FOLLOW_UPS = [
+    "Yes, go ahead with what you suggested. Use your defaults for anything you asked about, make the art yourself and pick the best version, then finish the whole theme.",
+    "Looks good, keep going until the theme is saved with its pictures and CSS.",
+  ];
+  const send = async (id, text, round) => {
     const t0 = Date.now();
-    const r = await fetch(BASE + "/api/professor-mari/workspace/prompt", { method: "POST", headers: H, body: JSON.stringify({ chatId, message: p.text, context: { source: "settings", capability: "create" } }) });
+    const r = await fetch(BASE + "/api/professor-mari/workspace/prompt", { method: "POST", headers: H, body: JSON.stringify({ chatId, message: text, context: { source: "settings", capability: "create" } }) });
     const reader = r.body.getReader(); const dec = new TextDecoder(); let buf = "";
     const events = [];
     for (;;) {
@@ -72,11 +81,27 @@ const run = async () => {
         const data = chunk.split("\n").filter((l) => l.startsWith("data:")).map((l) => l.slice(5).trim()).join("\n");
         if (!data) continue; let ev; try { ev = JSON.parse(data); } catch { continue; }
         events.push(ev);
-        if (ev.type !== "token" && ev.type !== "text_delta" && ev.type !== "delta") log(`  [${p.id}] ${ev.type}`, JSON.stringify(ev.data ?? "").slice(0, 400));
+        if (ev.type !== "token" && ev.type !== "text_delta" && ev.type !== "delta") log(`  [${id}] ${ev.type}`, JSON.stringify(ev.data ?? "").slice(0, 400));
       }
     }
-    writeFileSync(`${OUT}/${p.id}-events.json`, JSON.stringify(events, null, 1));
-    log(`===== ${p.id} done in ${Math.round((Date.now() - t0) / 1000)}s`);
+    writeFileSync(`${OUT}/${id}-${round}-events.json`, JSON.stringify(events, null, 1));
+    log(`===== ${id} round ${round} done in ${Math.round((Date.now() - t0) / 1000)}s`);
+  };
+  for (const p of PROMPTS) {
+    if (only && !only.includes(p.id)) continue;
+    log(`\n===== ${p.id}: ${p.text}`);
+    const before = await fingerprint();
+    await send(p.id, p.text, 0);
+    // Mari's skill asks before building and waits for a yes on art previews; answer like a user who agrees.
+    for (let i = 0; i < FOLLOW_UPS.length && p.id !== "starter-edit"; i++) {
+      const reply = await lastReply();
+      log(`  [${p.id}] Mari said:`, reply.slice(-600));
+      const changed = (await fingerprint()) !== before;
+      if (changed && !/\?\s*$/.test(reply.trim())) break;
+      log(`  [${p.id}] follow-up ${i + 1}`);
+      await send(p.id, FOLLOW_UPS[i], i + 1);
+    }
+    log(`  [${p.id}] final reply:`, (await lastReply()).slice(-1200));
   }
   stop = true; await approver;
 
