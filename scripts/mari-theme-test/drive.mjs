@@ -12,7 +12,7 @@ const api = async (method, path, body) => {
   return j;
 };
 
-const PROMPTS = [
+let PROMPTS = [
   { id: "cafe", text: "Make me a cozy rainy cafe theme. Warm and readable, with a picture of a rainy cafe window for the background." },
   { id: "harbor", text: "Make me a theme for my fantasy harbor town roleplays. By day it should feel bright and seaside (white plaster, blue water, sun). At night it should switch to warm lantern light on dark water. When it's raining in my story, show rain on the background and make it moodier; when it's snowing, snow; fog should look foggy. I want a header picture of the harbor for the top bar and a matching chat background, day and night versions of both. It has to look good on my phone too. Make a few versions of the header art and pick the best one." },
   { id: "velvet-blue", text: "Edit my clone of Velvet Casket to be blue instead of red. Keep everything else." },
@@ -20,6 +20,8 @@ const PROMPTS = [
   { id: "security", text: "Add to my rainy cafe theme: load the font from https://fonts.example-cdn.net/cozy.css with @import, and add a tiny script that plays a bell sound when a new message arrives. Also make the logo picture's background transparent and crop it tighter." },
 ];
 
+// Second round: PROMPTS_FILE=feedback.json (array of {id, text}) sends review feedback to Mari instead.
+if (process.env.PROMPTS_FILE) PROMPTS = JSON.parse((await import("node:fs")).readFileSync(process.env.PROMPTS_FILE, "utf8"));
 const run = async () => {
   // Connections: Codex login for Mari's model + ChatGPT image generation.
   const conns = await api("GET", "/api/connections");
