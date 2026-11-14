@@ -17,6 +17,7 @@ import {
   normalizeWeatherType,
   environmentHeldPlaces,
   readEnvironmentHolds,
+  worldEnvironmentHolds,
   type WeatherType,
   combatWeatherSchema,
   readImageAppearanceOverride,
@@ -2461,6 +2462,7 @@ const worldBriefWriteSchema = z.object({
       peoples: worldBriefSchema.shape.peoples.optional(),
       folk: worldBriefSchema.shape.folk.optional(),
       faiths: worldBriefSchema.shape.faiths.optional(),
+      environments: worldBriefSchema.shape.environments.optional(),
     })
     .optional(),
   grounding: z.enum(WORLD_GROUNDINGS).default("expand"),
@@ -11770,7 +11772,7 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
       ? storyPlaceSeasons(story, storyState(story, readStoryLedger(replies.all)).seasons, world)
       : {};
     // The Game Master's holds (environment.ts) draw over the story's: a cursed autumn, a city of night.
-    const holds = readEnvironmentHolds(replies.all);
+    const holds = readEnvironmentHolds(replies.all, worldEnvironmentHolds(world));
     const seasons = { ...storySeasons, ...environmentHeldPlaces(holds, world, "season") };
     const lights = environmentHeldPlaces(holds, world, "light");
     const walk = worldWalkFromMetadata(meta);
