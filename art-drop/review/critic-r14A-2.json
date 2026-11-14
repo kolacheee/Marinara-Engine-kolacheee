@@ -1,0 +1,54 @@
+{
+  "part": "A",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "grass@autumn-base": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "grass@autumn-detail-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "grass@autumn-detail-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "grass@autumn-detail-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "grass@autumn-detail-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "grass@autumn-detail-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "grass@autumn-detail-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "grass@autumn-detail-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    },
+    "grass@autumn-detail-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None."
+    }
+  },
+  "notes": "Independent review of the existing Part A PNGs; no artwork was drawn or edited. Read BRIEF-14 in full and the drawing/mode-sampling method sections of NOTES.md. Inspected all nine assets at exact native 1x and nearest-neighbour 4x, all eight details at 8x, the base in literal 3x3 repeats at 1x/4x, the wrap junction and five repaired locations at 8x, and sparse meadow composites at 1x/4x. Every detail was inspected on both summer and autumn grass, beside its summer partner, and in a 50:50 colour overlay and alpha-mask comparison. Proofs are critic-r14A-2-*.png. Mask panels show shared alpha in light grey; there are no summer-only or autumn-only pixels.\n\nBase: the former rust landmarks near (93,55), (187,42), (214,197), (94,224) and (214,232) are now quiet integrated turf. They no longer reveal a grid of repeated stamps. No conspicuous repeating blob, hard tile join, rounded perimeter, smear, haze or white wash was found. The tawny olive/khaki ground with ochre accents and sparse green reads as late-season meadow at native map scale, clearly distinct from the summer green and brighter orange-gold plains. Small dry marks remain subordinate to the ground texture.\n\nDetails: 0 retains the flower/seed heads and foliage; 1 retains the mossy stone and grey faces; 2 retains the broad plant, separated leaf planes and dark foot; 3 retains fine slanted seed grass; 4 retains the cut stump and roots; 5 retains all mushrooms and the transparent ring centre; 6 retains both grey rock volumes; 7 retains the individual leaf layout. Seasonal vegetation reads olive, khaki and ochre. Native pixel scale, contour weight and upper-left lighting match the summer sources. Detail 3 has the same four 8-connected alpha components as summer (358, 9, 7 and 5 pixels): the detached sections follow the existing seed-head positions and read as part of the grass at 1x, rather than new stray specks. There are no single-pixel detached sprite components.\n\nTechnical checks: base 288x288 RGBA, fully opaque; eight details 48x48 RGBA, alpha strictly 0/255; zero nonzero RGB under transparent pixels. All eight alpha channels are byte-identical to grass-detail-0..7, including internal holes and bounds. Finite palettes contain six visible base colours and 6/16/7/7/20/13/17/5 visible detail colours. The subdued green base swatch occupies 1.485%.\n\nIndependent whole-tile measurements (hue and HSV value calculated from mean RGB; luma = 0.2126R + 0.7152G + 0.0722B): summer RGB (100.3218,121.5728,46.6945), hue 77.0284 degrees, value 47.6756%, luma 111.6486; previous autumn RGB (118.9993,125.7706,66.5448), hue 66.8599 degrees, value 49.3218%, luma 120.0549; new autumn RGB (153.4071,139.7647,63.5730), hue 50.8883 degrees, value 60.1596%, luma 137.1641; autumn plains RGB (205.2210,146.5189,69.1735), hue 34.1111 degrees, value 80.4788%, luma 153.4147. Every new mean RGB channel, hue, value and luma lies strictly between summer and plains. Hue separation is 26.1401 degrees from summer and 16.7772 degrees from plains. The named fantasy reference crops match their corresponding source pixels. Wrap mean absolute RGB steps are 3.5856 left/right and 3.9167 top/bottom, versus interior horizontal/vertical steps of 2.9324/2.6728; visual repeats show no seam.\n\nplains@autumn-base.png matches the supplied current-plains snapshot byte-for-byte. All pre-existing art-drop files were left unchanged. Only this report and critic-r14A-2-*.png composites were written. No live-game test, commit, push or branch change was performed."
+}

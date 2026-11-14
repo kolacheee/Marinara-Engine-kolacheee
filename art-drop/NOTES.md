@@ -1,3 +1,124 @@
+# Round 14 — Part A: critic-r14A-1 redraw
+
+Repaired all nine failed Part A files. Five image-painted turf patches replace
+the base's isolated rust landmarks; the existing wrap edges are unchanged.
+All eight details now use their summer geometry: **zero differing alpha
+pixels**, identical bounds, leaf/blade positions and native contours. The
+stone, stump, mushroom ring and rock pair retain their original permanent
+materials; vegetation and flower/seed colours now read tawny olive, khaki
+and dry ochre. The mushroom ring's centre remains open.
+
+**Method:** twelve built-in image-tool repaints on solid magenta: two base
+variants and ten detail paintings, including alternatives for 0 and 3.
+Selected base variant 2 is BOX-registered to 1152×1152, reduced by the exact
+RGB mode of all 16 samples per 4×4 block, palette-locked and composited through
+minimum-error cuts around the five repairs. Detail paintings are
+BOX-registered to 384×384, magenta-keyed, palette-locked and reduced by the
+exact RGBA mode of all 64 samples per 8×8 block. Painted colour votes transfer
+through the original material regions; source dark contours are retained
+during palette cleanup. Code constructs no shapes or noise. Alpha is 0/255,
+with zero RGB under transparency.
+
+**Checks:** inspected native 1× and nearest-neighbour 4× assets, literal 3×3
+repeats, wrap junction, all details on summer/autumn grounds and season pairs.
+New base mean RGB is **153.41, 139.76, 63.57**; hue **50.89°**, HSV value
+**60.16%**, luma **137.16**. All lie between summer grass and autumn plains.
+The eight summer alpha masks, including source seed-head gaps, are exact.
+This is visual self-review following the supplied critic, without a new
+independent verdict or live-game check.
+
+Regenerated the twelve existing final `review/r14-A-*.png` proofs and added
+season-pair and repaired-area proofs. Repaint sources, alternatives and
+registration/mode stages use `review/r14-A-source-critic1-*.png`; exact
+prompts are in source PNG metadata. Processing/review scripts and validation
+are embedded in `review/r14-A-base-1x.png`. Protected-output hashes pass,
+including unchanged `plains@autumn-base.png`, summer partners, references and
+the supplied critic report. This task changed only the nine Part A outputs, Part A review PNGs
+and this note. A concurrent owner update added Part B instructions to
+`BRIEF-14.md`; Part A was unchanged and that edit was left intact.
+No commit, push or branch change.
+
+---
+
+# Round 14 — Part A
+
+Replaced only **`out/grass@autumn-base.png` (288×288)** and
+**`out/grass@autumn-detail-0..7.png` (48×48 each)**. The base is a quiet
+late-season meadow: tawny olive and khaki turf, small dry ochre strokes,
+five readable fallen-leaf clusters and **1.56%** subdued green remnants.
+The eight details are an upright dry tuft, three fallen leaves, windswept
+grass, short seed stalks, curled oak litter, an olive-rooted tuft, flattened
+straw with leaves, and a paired tuft. Their visible widths are 20–27 px,
+with at least **10 clear pixels** between artwork and every cell edge.
+The base is opaque RGBA; the details have transparent backgrounds.
+
+**Method:** thirteen built-in image-tool drawings: two base variants, one
+half-offset seam repaint, and ten individual detail drawings. The first
+base variant was selected over the second's checkerboard texture. Detail 0
+was redrawn for better definition; detail 3 was redrawn with shorter,
+sturdier stems after its first reduction left floating seed heads.
+Large initial drawings use solid magenta. The base's straight square is
+cropped from that surround and BOX-registered to **1152×1152**; the exact
+RGB mode of all **16 samples per 4×4 footprint** produces 288×288 pixels.
+Luminance registration and an explicit **eight-colour** palette establish
+the tawny/khaki range. A 144-pixel offset brings joins to the centre.
+The separately mode-reduced seam painting is transferred through a narrow
+cross using minimum-error hard cuts; its outer three-pixel ring is excluded
+from seam transfer. Final colour registration and removal of small stray
+rust marks retain the painted turf and five larger leaf clusters.
+
+Details are magenta-keyed, aspect-registered on **384×384** canvases, locked
+to a **15-colour** earth/olive/straw palette, and reduced by the exact RGBA
+mode of all **64 samples per 8×8 footprint**, including transparency.
+Native contour cleanup removes **nine pixels** of detached tip remnants.
+All eight final silhouettes are connected; alpha is strictly 0/255, and
+transparent RGB is zero. Top-left highlights, darker lower-right edges and
+native-pixel contours come from the drawings. Code registers, reduces,
+palette-locks, cleans, wraps and composites; it constructs no terrain
+shapes or noise.
+
+**Measurements:** whole-tile mean RGB; hue and HSV value calculated from
+that mean. “Luma” is the weighted RGB-code value
+`0.2126 R + 0.7152 G + 0.0722 B`, on a 0–255 scale.
+
+| Ground | Mean RGB | Hue | HSV value | Luma |
+|---|---|---:|---:|---:|
+| Summer grass | 100.32, 121.57, 46.69 | 77.03° | 47.68% | 111.65 |
+| Previous autumn grass | 119.00, 125.77, 66.55 | 66.86° | 49.32% | 120.06 |
+| **New autumn grass** | **153.37, 139.72, 63.56** | **50.88°** | **60.14%** | **137.12** |
+| Autumn plains, unchanged | 205.22, 146.52, 69.17 | 34.11° | 80.48% | 153.42 |
+
+Every new mean RGB channel falls strictly between the summer and plains
+references. Hue is separated from summer by **26.15°** and plains by
+**16.77°**; value and luma also fall between them.
+
+**QC:** inspected every final asset at **1× and exact nearest-neighbour 4×**,
+details over both matching autumn and summer grass, a sparse eight-detail
+meadow, the seasonal comparison, literal **3×3 repeats**, and the four-way
+wrap junction. No hard tile join, rounded tile perimeter, large repeating
+blob, haze, magenta fringe, ground backing or detached sprite speck was
+found. Mean absolute RGB step across left/right and top/bottom wraps is
+**3.59 / 3.92**, compared with **2.82** inside the texture. Small individual
+leaf placements remain locatable when deliberately studying repeated tiles.
+This is visual self-review, without an independent critic or live game check.
+
+Validation passes all nine dimensions, palette membership, hard alpha,
+zero hidden RGB, connected detail silhouettes, margins, exact reconstruction
+of all eight palette-locked mode reductions plus documented cleanup, all
+nine repeat placements, sixteen detail-proof placements, and all six exact
+4× proof enlargements. **All 2,001 protected files remain byte-identical**,
+including `plains@autumn-base.png`. No commit, push or branch change.
+
+Twelve final proofs are in `review/r14-A-{base,base-3x3,wrap-junction,
+details,meadow,season-comparison}-{1x,4x}.png`. Thirteen large source
+paintings and alternates are retained as `review/r14-A-source-*.png`;
+each contains its exact prompt in the PNG `Prompt` text field. The
+machine-readable validation results are embedded in
+`review/r14-A-base-1x.png` as `Validation`. Only the nine Part A outputs,
+these new `r14-A-*.png` files and this top note changed.
+
+---
+
 # Round 5 — Part A2: native 96 px mountains
 
 Replaced only the sixteen Part A2 peak sprites with fresh **96×96 RGBA**
