@@ -50,6 +50,8 @@ import {
   type TilePack,
   type WorldPlace,
   worldDrawnSeason,
+  environmentHeldCells,
+  type GameLightHold,
   worldSeasonCells,
   type WorldSeason,
 } from "@marinara-engine/shared";
@@ -218,6 +220,14 @@ export function WorldOverworld({
   const heldCells = useMemo(
     () => worldSeasonCells(game, JSON.parse(seasonsKey) as Record<string, WorldSeason>),
     [game, seasonsKey],
+  );
+
+  // The places the Game Master holds at night or dusk (environment.ts): their cells drawn dark whatever
+  // the clock, as a cursed city of endless night.
+  const lightsKey = JSON.stringify(overworld?.lights ?? {});
+  const lightCells = useMemo(
+    () => environmentHeldCells(game, JSON.parse(lightsKey) as Record<string, GameLightHold>),
+    [game, lightsKey],
   );
 
   // ── What is drawn once: the ground and its ways, then the settlements ──
@@ -1629,6 +1639,21 @@ export function WorldOverworld({
         ctx.rect(0, 0, worldSize.width, worldSize.height);
         ctx.fill("evenodd");
       }
+      if (lightCells) {
+        ctx.globalCompositeOperation = "multiply";
+        for (let at = 0; at < lightCells.length; at++) {
+          const light = lightCells[at];
+          if (light !== "dark" && light !== "dusk") continue;
+          ctx.fillStyle = light === "dark" ? "rgba(30, 36, 92, 0.75)" : "rgba(150, 90, 120, 0.45)";
+          ctx.fillRect(
+            (at % world.width) * OVERWORLD_TILE,
+            Math.floor(at / world.width) * OVERWORLD_TILE,
+            OVERWORLD_TILE,
+            OVERWORLD_TILE,
+          );
+        }
+        ctx.globalCompositeOperation = "source-over";
+      }
       ctx.imageSmoothingEnabled = false;
       const party = partyRef.current;
       if (party) {
@@ -1657,6 +1682,8 @@ export function WorldOverworld({
       darkness,
       drawTile,
       ground,
+      lightCells,
+      world.width,
       markers,
       outer.pad,
       resolution,
