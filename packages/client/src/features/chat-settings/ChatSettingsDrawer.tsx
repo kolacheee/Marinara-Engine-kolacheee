@@ -2,18 +2,7 @@ import { ChatButtonLayoutSettings } from "./ChatButtonLayoutSettings";
 // ──────────────────────────────────────────────
 // Chat: Settings Drawer — per-chat configuration
 // ──────────────────────────────────────────────
-import {
-  Fragment,
-  lazy,
-  Suspense,
-  useState,
-  useRef,
-  useEffect,
-  useMemo,
-  useCallback,
-  useId,
-  type ReactNode,
-} from "react";
+import { Fragment, lazy, Suspense, useState, useRef, useEffect, useMemo, useCallback, type ReactNode } from "react";
 import { useQuery, useQueryClient, useQueries } from "@tanstack/react-query";
 import { useTranslation, useTranslation as useUiTranslation } from "react-i18next";
 import { useLocalizedUiText } from "../../localization/use-localized-ui-text";
@@ -42,15 +31,12 @@ import {
   Image,
   Pencil,
   AlertTriangle,
-  Bot,
-  CalendarClock,
   Camera,
   RefreshCw,
   RotateCcw,
   Settings2,
   Info,
   Archive,
-  Brain,
   Feather,
   Paintbrush,
   Activity,
@@ -97,6 +83,9 @@ import { GroupChatSection } from "./sections/GroupChatSection";
 import { GameWidgetsSection } from "./sections/GameWidgetsSection";
 import { SettingsProfilesSection } from "./sections/SettingsProfilesSection";
 import { ConnectedChatsSection } from "./sections/ConnectedChatsSection";
+import { AutonomousMessagingSection } from "./sections/AutonomousMessagingSection";
+import { AutomaticSummarizationSection } from "./sections/AutomaticSummarizationSection";
+import { MemoryRecallSection } from "./sections/MemoryRecallSection";
 import { ConversationNotesSection } from "./sections/ConversationNotesSection";
 import { CombatStyleSection } from "./sections/CombatStyleSection";
 import { useGameRuleset } from "../../hooks/use-game-ruleset";
@@ -133,7 +122,6 @@ import {
   estimateTextTokens,
   normalizeAdvancedMemorySettings,
   normalizeGroupChatMode,
-  normalizeSemanticSummaryRetrievalSettings,
   resolveScopedRegexMode,
   isConversationCommandToggleOn,
   resolveGameStoryStyle,
@@ -148,7 +136,6 @@ import { MacroTextarea } from "../../components/ui/MacroTextarea";
 import { Modal } from "../../components/ui/Modal";
 import { DraftNumberInput } from "../../components/ui/DraftNumberInput";
 import {
-  AGENT_SETTINGS_SURFACE_CLASS,
   AgentCategorySection,
   AgentDefaultStatus,
   AgentSettingsActionButton,
@@ -172,15 +159,8 @@ import { ChoiceSelectionModal } from "../../components/presets/ChoiceSelectionMo
 import { CharacterOnboardingModal } from "../../components/characters/CharacterOnboardingModal";
 import { SecretPlotPanel } from "../../components/agents/SecretPlotPanel";
 import { SummariesEditorModal } from "./SummariesEditorModal";
-import { AdvancedMemorySettings } from "../../components/chat/AdvancedMemorySettings";
-import { AdvancedMemoryInspector } from "../../components/chat/AdvancedMemoryInspector";
 import { useAdvancedMemoryStatus } from "../../hooks/use-advanced-memory";
 import { AgentSuiteModal } from "./AgentSuiteModal";
-import { ConversationTimeZoneSelect } from "../../components/chat/ConversationTimeZoneSelect";
-import {
-  SemanticSummaryRetrievalControls,
-  type SemanticSummaryRetrievalControlField,
-} from "../../components/chat/SemanticSummaryRetrievalControls";
 import { RoleplayMessagePreview } from "../../components/chat/ChatMessage";
 import { resolveChatContextBudget } from "../../lib/professor-mari-context-budget";
 import { CHAT_SETTINGS_SURFACES } from "./chat-settings-surfaces";
@@ -256,7 +236,6 @@ import type {
   MusicDjFolderSource,
   PromptPreset,
   SpotifySourceType,
-  WeekSchedule,
 } from "@marinara-engine/shared";
 import {
   MAX_ILLUSTRATOR_IMAGES_PER_GENERATION,
@@ -280,13 +259,11 @@ import {
   MIN_AGENT_MAX_TOKENS,
   PROFESSOR_MARI_ID,
   STORYBOARD_AGENT_ID,
-  SUMMARY_TAIL_MESSAGES,
   estimateAgentLoadCost,
   getAgentPromptTemplateOptions,
   AGENT_COST_HIGH_CALLS,
   AGENT_COST_HIGH_TOKENS,
   CONVERSATION_COMMAND_AGENT_IDS,
-  CHAT_SUMMARY_OUTPUT_TOKENS,
   isAgentManifestAvailableInChatMode,
   isAgentConfigDeleted,
   isBuiltInAgentRuntimeDisabled,
@@ -663,7 +640,6 @@ export function ChatSettingsDrawer({
   const panelRef = useRef<HTMLDivElement | null>(null);
   // On phones the sheet keeps the field being typed in (a summary, the notes) above the keyboard.
   useKeepFocusedFieldAboveKeyboard(panelRef);
-  const scheduleControlsRef = useRef<HTMLDivElement | null>(null);
   const modePromptDefaultAppliedRef = useRef<string | null>(null);
   const agentSuiteCloseGuardRef = useRef<(() => Promise<boolean>) | null>(null);
   const drawerClosingRef = useRef(false);
@@ -789,7 +765,6 @@ export function ChatSettingsDrawer({
     setTrackerPanelEnabled(true);
     setTrackerPanelOpen(true, chat.id);
   };
-  const summaryRetrievalSettings = normalizeSemanticSummaryRetrievalSettings(metadata);
   // Chat variables live in the same map {{setvar}} writes, so a value a prompt
   // or lorebook set shows up here as an editable row.
   const chatMacroVariables = useMemo<Record<string, string>>(() => {
@@ -868,8 +843,6 @@ export function ChatSettingsDrawer({
         : null,
     [chat.connectionId, connections, gameContextMessagesQuery.data, isGame, showContextUsage, sidecarMaxContext],
   );
-  const conversationSummaryConnectionId =
-    typeof metadata.summaryConnectionId === "string" ? metadata.summaryConnectionId : "";
   const { data: allPersonas } = usePersonas();
   const { data: agentConfigs } = useAgentConfigs();
   const { data: allChats } = useChats({ refetchOnMount: false });
@@ -987,13 +960,6 @@ export function ChatSettingsDrawer({
     [metadata.summary, metadata.summaryEntries],
   );
   useEffect(() => {
-    if (!open || initialSection !== "autonomous" || !isConversation) return;
-    const frame = window.requestAnimationFrame(() => {
-      scheduleControlsRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, [initialSection, isConversation, open]);
-  useEffect(() => {
     if (!open || initialSection !== "memory-recall" || !isRoleplayMode) return;
     const frame = window.requestAnimationFrame(() => {
       panelRef.current
@@ -1033,17 +999,6 @@ export function ChatSettingsDrawer({
     );
     return () => window.cancelAnimationFrame(frame);
   }, [initialSection, open]);
-  const hasGeneratedConversationSchedules =
-    !!metadata.characterSchedules &&
-    typeof metadata.characterSchedules === "object" &&
-    Object.keys(metadata.characterSchedules).length > 0;
-  const conversationSchedulesEnabled =
-    metadata.conversationSchedulesEnabled === true ||
-    (metadata.conversationSchedulesEnabled == null && hasGeneratedConversationSchedules);
-  const autonomousDailyCapOverride =
-    typeof metadata.autonomousDailyCapOverride === "number" && Number.isFinite(metadata.autonomousDailyCapOverride)
-      ? Math.max(1, Math.floor(metadata.autonomousDailyCapOverride))
-      : null;
   const activeLorebookIds = useMemo(() => getChatActiveLorebookIds({ metadata: chat.metadata }), [chat.metadata]);
   const excludedLorebookIds = useMemo(() => getChatExcludedLorebookIds({ metadata: chat.metadata }), [chat.metadata]);
   const gameLorebookKeeperEnabled = metadata.gameLorebookKeeperEnabled === true;
@@ -3534,7 +3489,6 @@ export function ChatSettingsDrawer({
     const problems = advancedMemoryStatus.data ? advancedMemoryProblems(advancedMemoryStatus.data) : null;
     return !!problems && problems.fixSceneIds.length + problems.reviewSceneIds.length > 0;
   }, [advancedMemoryStatus.data]);
-  const advancedMemoryAttentionId = useId();
   const [inlineResourceEditor, setInlineResourceEditor] = useState<{
     kind: "character" | "persona" | "lorebook";
     id: string;
@@ -3575,14 +3529,6 @@ export function ChatSettingsDrawer({
     },
     [flushProseGuardianDrafts, onClose, showAgentSuiteModal],
   );
-  // Session-ephemeral: did the user change Day Rollover Hour in this drawer mount?
-  // Used to gate the "transitional duplication" warning so it only appears
-  // immediately after a change (when the warning is operationally useful) and
-  // doesn't permanently clutter chats that already have summaries.
-  const [rolloverTouchedThisSession, setRolloverTouchedThisSession] = useState(false);
-  useEffect(() => {
-    setRolloverTouchedThisSession(false);
-  }, [chat.id]);
   // The onboarding template whose questions window is open, picked from the
   // persona picker. A character, not a persona: nothing exists until Create.
   const [onboardingTemplateId, setOnboardingTemplateId] = useState<string | null>(null);
@@ -3691,111 +3637,6 @@ export function ChatSettingsDrawer({
   const [agentSetupQueue, setAgentSetupQueue] = useState<string[]>([]);
   const [agentAddCadenceInputFocused, setAgentAddCadenceInputFocused] = useState(false);
   const [addingAgentToChat, setAddingAgentToChat] = useState(false);
-  const [isRegeneratingSchedules, setIsRegeneratingSchedules] = useState(false);
-  // Synchronous lock to close the re-entry gap: React state commits are async, so two
-  // fast clicks can both pass the `isRegeneratingSchedules` check before the state updates.
-  const isRegeneratingSchedulesRef = useRef(false);
-  const scheduleGenerationAbortRef = useRef<AbortController | null>(null);
-  useEffect(() => () => scheduleGenerationAbortRef.current?.abort(), [chat.id, open]);
-  type ScheduleGenerationResult = { status: string; schedule?: Record<string, unknown> };
-  type ScheduleGenerationResponse = {
-    results?: Record<string, ScheduleGenerationResult>;
-    schedules?: Record<string, unknown>;
-  };
-  const generateConversationSchedules = useCallback(
-    async (forceRefresh = false) => {
-      if (isRegeneratingSchedulesRef.current) return;
-      isRegeneratingSchedulesRef.current = true;
-      setIsRegeneratingSchedules(true);
-      const controller = new AbortController();
-      scheduleGenerationAbortRef.current = controller;
-      try {
-        const scheduleGenerationPreferences = useUIStore.getState().scheduleGenerationPreferences;
-        const conversationTimeZone = useUIStore.getState().conversationTimeZone;
-        const result = await api.post<ScheduleGenerationResponse>(
-          "/conversation/schedule/generate",
-          {
-            chatId: chat.id,
-            characterIds: chatCharIds,
-            forceRefresh,
-            scheduleGenerationPreferences,
-            timeZone: conversationTimeZone,
-          },
-          { signal: controller.signal },
-        );
-        if (controller.signal.aborted) return;
-        await qc.refetchQueries({ queryKey: chatKeys.detail(chat.id) });
-        await qc.invalidateQueries({ queryKey: chatKeys.list() });
-        await qc.invalidateQueries({ queryKey: ["conversation-status", chat.id] });
-
-        const statuses = Object.values(result.results ?? {}).map((entry) => entry.status);
-        const generatedCount = statuses.filter((status) => status === "generated").length;
-        const sharedCount = statuses.filter((status) => status === "shared").length;
-        const freshCount = statuses.filter((status) => status === "fresh").length;
-        const skippedCount = statuses.filter((status) => status === "skipped_assistant").length;
-        const errorMessages = statuses
-          .filter((status) => status.startsWith("error:"))
-          .map((status) => status.slice("error:".length).trim())
-          .filter(Boolean);
-
-        if (errorMessages.length > 0) {
-          const prefix = errorMessages[0]?.startsWith("Refused to fetch")
-            ? "Connection failed"
-            : "Schedule generation failed";
-          const summary = `${prefix}: ${errorMessages[0]}`;
-          if (generatedCount + sharedCount + freshCount > 0) {
-            toast.error(
-              localizeUi("ui.chat.chatsettingsdrawer.value1Value2GeneratedValue3ReusedValue4AlreadyFresh", {
-                value1: summary,
-                value2: generatedCount,
-                value3: sharedCount,
-                value4: freshCount,
-              }),
-            );
-          } else {
-            toast.error(summary);
-          }
-          return;
-        }
-
-        if (generatedCount > 0 || sharedCount > 0) {
-          const parts: string[] = [];
-          if (generatedCount > 0) parts.push(`${generatedCount} generated`);
-          if (sharedCount > 0) parts.push(`${sharedCount} reused`);
-          if (freshCount > 0) parts.push(`${freshCount} already fresh`);
-          if (skippedCount > 0) parts.push(`${skippedCount} skipped`);
-          toast.success(localizeUi("ui.chat.chatsettingsdrawer.schedulesReadyValue1", { value1: parts.join(", ") }));
-          return;
-        }
-
-        if (freshCount > 0) {
-          toast.info(
-            localizeUi("ui.chat.chatsettingsdrawer.schedulesAreAlreadyUpToDateValue1", {
-              value1:
-                freshCount > 1
-                  ? localizeUi("ui.chat.chatsettingsdrawer.forValue1Characters", { value1: freshCount })
-                  : "",
-            }),
-          );
-          return;
-        }
-
-        if (skippedCount > 0) {
-          toast.info(localizeUi("ui.chat.chatsettingsdrawer.noSchedulesWereNeededForTheSelectedCharacters"));
-        }
-      } catch (error) {
-        if (controller.signal.aborted) return;
-        toast.error(
-          error instanceof Error ? error.message : localizeUi("ui.chat.chatsettingsdrawer.failedToGenerateSchedules"),
-        );
-      } finally {
-        scheduleGenerationAbortRef.current = null;
-        isRegeneratingSchedulesRef.current = false;
-        setIsRegeneratingSchedules(false);
-      }
-    },
-    [chat.id, chatCharIds, qc, localizeUi],
-  );
   const [scenePromptExpanded, setScenePromptExpanded] = useState(false);
   const [scenePromptDraft, setScenePromptDraft] = useState(metadata.sceneSystemPrompt ?? "");
   const gameAgentPool = useMemo(
@@ -4446,74 +4287,6 @@ export function ChatSettingsDrawer({
     setEditingName(false);
   };
 
-  const renderMemoryRecallControls = (defaultOn: boolean) => {
-    const effectiveValue =
-      !advancedMemoryEnabled &&
-      (metadata.enableMemoryRecall !== undefined ? metadata.enableMemoryRecall === true : defaultOn);
-    return (
-      <div className="space-y-2">
-        <SettingsSwitch
-          label={localizeUi("ui.chat.chatsettingsdrawer.enableMemoryRecall")}
-          description={localizeUi("ui.chat.chatsettingsdrawer.recallRelevantFragmentsFromEarlierInThisChatAnd")}
-          checked={effectiveValue}
-          onChange={(enableMemoryRecall) => updateMeta.mutate({ id: chat.id, enableMemoryRecall })}
-          labelPosition="start"
-          className={cn(
-            "justify-between rounded-md px-3 py-2.5 text-left",
-            effectiveValue
-              ? "bg-[var(--primary)]/10 ring-1 ring-[var(--primary)]/30"
-              : "bg-[var(--secondary)] hover:bg-[var(--accent)]",
-          )}
-          labelClassName="text-[0.6875rem] font-medium"
-        />
-        {advancedMemoryAvailable && (
-          <AdvancedMemorySettings
-            chatId={chat.id}
-            metadataSettings={metadata.advancedMemory}
-            gameMode={isGame}
-            individual={!isGame && groupChatMode === "individual"}
-            characters={chatCharIds.map((id) => ({ id, name: charNameMap.get(id) ?? id }))}
-            hasHistory={!!chat.lastMessageAt}
-          />
-        )}
-        <button
-          type="button"
-          onClick={() =>
-            setMemoryView((current) =>
-              advancedMemoryEnabled ? (current === "advanced" ? null : "advanced") : "standard",
-            )
-          }
-          className="mari-chrome-control relative flex min-h-9 w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-medium disabled:opacity-50"
-          aria-expanded={advancedMemoryEnabled ? memoryView === "advanced" : undefined}
-          aria-describedby={advancedMemoryEnabled && advancedMemoryNeedsReview ? advancedMemoryAttentionId : undefined}
-        >
-          <Brain size="0.75rem" />
-          {localizeUi("ui.chat.chatsettingsdrawer.accessMemoriesForThisChat")}
-          {advancedMemoryEnabled && advancedMemoryNeedsReview && (
-            // The theme's accent held steady marks scenes that need attention.
-            <span
-              data-advanced-memory-attention
-              aria-hidden="true"
-              className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--marinara-app-accent-static)]"
-            />
-          )}
-        </button>
-        {advancedMemoryEnabled && advancedMemoryNeedsReview && (
-          <span id={advancedMemoryAttentionId} className="sr-only">
-            {localizeUi("chat.advancedMemory.fix.scenesNeedAttention")}
-          </span>
-        )}
-        {advancedMemoryEnabled && memoryView === "advanced" && (
-          <AdvancedMemoryInspector
-            chatId={chat.id}
-            individual={!isGame && groupChatMode === "individual"}
-            characters={chatCharIds.map((id) => ({ id, name: charNameMap.get(id) ?? id }))}
-          />
-        )}
-      </div>
-    );
-  };
-
   const renderCustomAgentPicker = ({ showWhenEmpty = false }: { showWhenEmpty?: boolean } = {}) => {
     if (customAgents.length === 0 && !showWhenEmpty) return null;
     return (
@@ -4847,6 +4620,25 @@ export function ChatSettingsDrawer({
   if (!open) return null;
   // Only the loaded settings add the Chat Settings classes below; themes and select styling target them.
   const windowProps = getChatSettingsWindowProps(anchor);
+  // Memory recall renders in two places, so keyboard order stays as before in every mode.
+  const memoryRecallSectionProps = {
+    order: CHAT_SETTINGS_ORDER.memoryRecall,
+    chat,
+    metadata,
+    chatMode,
+    isConversation,
+    isRoleplayMode,
+    isGame,
+    initialSection,
+    groupChatMode,
+    chatCharIds,
+    charNameMap,
+    memoryView,
+    setMemoryView,
+    advancedMemoryAvailable,
+    advancedMemoryEnabled,
+    advancedMemoryNeedsReview,
+  };
   const helpLayoutButton =
     showHelpLayout && !chatHelpButtonHidden ? (
       <span data-chat-help="help" className="inline-flex">
@@ -5939,211 +5731,16 @@ export function ChatSettingsDrawer({
 
           {/* Autonomous Messaging — conversation mode only */}
           {isConversation && (
-            <Section
-              id="conversation-autonomous-messaging"
-              label={localizeUi("ui.chat.chatsettingsdrawer.autonomousMessaging")}
-              icon={<Bot size="0.875rem" />}
-              help={localizeUi("ui.chat.chatsettingsdrawer.charactersCanMessageYouUnpromptedBasedOnTheirPersonality")}
-              forceOpen={initialSection === "autonomous"}
-            >
-              <div className="space-y-2">
-                {/* Enable autonomous messages toggle */}
-                <div className="overflow-hidden rounded-md">
-                  <SettingsSwitch
-                    label={localizeUi("ui.chat.chatsettingsdrawer.autonomousMessages")}
-                    description={localizeUi(
-                      "ui.chat.chatsettingsdrawer.charactersMessageYouWhenYouReInactiveEvenWithout",
-                    )}
-                    checked={Boolean(metadata.autonomousMessages)}
-                    onChange={(autonomousMessages) => updateMeta.mutate({ id: chat.id, autonomousMessages })}
-                    labelPosition="start"
-                    className={cn(
-                      "justify-between rounded-md px-3 py-2.5 text-left",
-                      metadata.autonomousMessages
-                        ? "bg-[var(--primary)]/10 ring-1 ring-[var(--primary)]/30"
-                        : "bg-[var(--secondary)] hover:bg-[var(--accent)]",
-                    )}
-                    labelClassName="text-xs font-medium"
-                  />
-
-                  {metadata.autonomousMessages && (
-                    <div className="border-t border-[var(--border)]/50 px-3 pb-2.5 pt-2">
-                      <div className="space-y-1.5">
-                        <span className="block text-[0.625rem] font-medium text-[var(--muted-foreground)]">
-                          {localizeUi("ui.chat.chatsettingsdrawer.chatCheckInCap")}
-                        </span>
-                        <select
-                          aria-label={localizeUi("ui.chat.chatsettingsdrawer.chatCheckInCapMode")}
-                          value={autonomousDailyCapOverride === null ? "default" : "numeric"}
-                          onChange={(e) =>
-                            updateMeta.mutate({
-                              id: chat.id,
-                              autonomousDailyCapOverride:
-                                e.target.value === "numeric" ? (autonomousDailyCapOverride ?? 8) : null,
-                            })
-                          }
-                          className="mari-chrome-field w-full !rounded-md px-3 py-2 text-xs"
-                        >
-                          <option value="default">
-                            {localizeUi("ui.chat.chatsettingsdrawer.defaultChatCeilingTalkativenessBased")}
-                          </option>
-                          <option value="numeric">{localizeUi("ui.chat.chatsettingsdrawer.numericValue")}</option>
-                        </select>
-                        {autonomousDailyCapOverride !== null && (
-                          <label className="flex items-center justify-between gap-3 rounded-md bg-[var(--background)]/35 px-2.5 py-2">
-                            <span className="text-[0.625rem] text-[var(--muted-foreground)]">
-                              {localizeUi("ui.chat.chatsettingsdrawer.checkInsPerDay")}
-                            </span>
-                            <DraftNumberInput
-                              value={autonomousDailyCapOverride}
-                              min={1}
-                              onCommit={(value) =>
-                                updateMeta.mutate({
-                                  id: chat.id,
-                                  autonomousDailyCapOverride: value,
-                                })
-                              }
-                              ariaLabel="Numeric chat check-in ceiling"
-                              className="mari-chrome-field w-24 !rounded-md px-2 py-1.5 text-right text-xs"
-                            />
-                          </label>
-                        )}
-                        <p className="text-[0.55rem] text-[var(--muted-foreground)]">
-                          {localizeUi("ui.chat.chatsettingsdrawer.setsTheChatWideCeilingCharacterCapsCanOnly")}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Character exchanges toggle (group chats only) */}
-                {chatCharIds.length > 1 && (
-                  <SettingsSwitch
-                    label={localizeUi("ui.chat.chatsettingsdrawer.characterExchanges")}
-                    description={localizeUi("ui.chat.chatsettingsdrawer.charactersChatWithEachOtherInGroupChats")}
-                    checked={Boolean(metadata.characterExchanges)}
-                    onChange={(characterExchanges) => updateMeta.mutate({ id: chat.id, characterExchanges })}
-                    labelPosition="start"
-                    className={cn(
-                      "justify-between rounded-md px-3 py-2.5 text-left",
-                      metadata.characterExchanges
-                        ? "bg-[var(--primary)]/10 ring-1 ring-[var(--primary)]/30"
-                        : "bg-[var(--secondary)] hover:bg-[var(--accent)]",
-                    )}
-                    labelClassName="text-xs font-medium"
-                  />
-                )}
-
-                {/* Conversation schedules toggle */}
-                <SettingsSwitch
-                  label={localizeUi("ui.chat.chatsettingsdrawer.schedules")}
-                  description={localizeUi(
-                    "ui.chat.chatsettingsdrawer.optionalCharacterRoutinesForAvailabilityAndDelays",
-                  )}
-                  checked={conversationSchedulesEnabled}
-                  onChange={(nextEnabled) =>
-                    updateMeta.mutate({ id: chat.id, conversationSchedulesEnabled: nextEnabled })
-                  }
-                  labelPosition="start"
-                  className={cn(
-                    "justify-between rounded-md px-3 py-2.5 text-left",
-                    conversationSchedulesEnabled
-                      ? "bg-[var(--primary)]/10 ring-1 ring-[var(--primary)]/30"
-                      : "bg-[var(--secondary)] hover:bg-[var(--accent)]",
-                  )}
-                  labelClassName="text-xs font-medium"
-                />
-
-                <div ref={scheduleControlsRef} className="scroll-mt-2 space-y-2">
-                  {/* Schedule status */}
-                  <div className="flex items-center gap-2 rounded-lg bg-[var(--secondary)] px-3 py-2.5">
-                    <div className="flex-1 min-w-0">
-                      <span className="text-[0.6875rem] leading-snug text-[var(--muted-foreground)]">
-                        {!conversationSchedulesEnabled
-                          ? localizeUi(
-                              "ui.chat.chatsettingsdrawer.schedulesAreOffAutonomyUsesTalkativenessAndYourStatus",
-                            )
-                          : hasGeneratedConversationSchedules
-                            ? localizeUi(
-                                "ui.chat.chatsettingsdrawer.schedulesGeneratedStatusIsDerivedFromCharacterRoutines",
-                              )
-                            : localizeUi("ui.chat.chatsettingsdrawer.schedulesEnabledGenerateRoutinesWhenYouReReady")}
-                      </span>
-                      <p className="text-[0.59375rem] mt-0.5 text-[var(--muted-foreground)]/60">
-                        {conversationSchedulesEnabled
-                          ? localizeUi("schedule.sharedRoutines.help")
-                          : localizeUi("ui.chat.chatsettingsdrawer.turnSchedulesOnIfYouWantAvailabilityAndBusy")}
-                      </p>
-                    </div>
-                    <button
-                      onClick={async () => {
-                        await generateConversationSchedules(true);
-                      }}
-                      disabled={isRegeneratingSchedules || chatCharIds.length === 0}
-                      className={cn(
-                        "flex items-center gap-1 rounded-md px-2 py-1 text-[0.625rem] font-medium transition-colors",
-                        isRegeneratingSchedules || chatCharIds.length === 0
-                          ? "cursor-not-allowed text-[var(--muted-foreground)]/60"
-                          : "text-[var(--muted-foreground)] hover:bg-[var(--accent)] hover:text-[var(--foreground)]",
-                      )}
-                      title={
-                        isRegeneratingSchedules
-                          ? localizeUi("ui.chat.chatsettingsdrawer.regeneratingSchedules")
-                          : localizeUi("ui.chat.chatsettingsdrawer.generateSchedules")
-                      }
-                    >
-                      <RefreshCw size="0.6875rem" className={cn(isRegeneratingSchedules && "animate-spin")} />
-                      {isRegeneratingSchedules
-                        ? localizeUi("ui.chat.chatsettingsdrawer.regenerating")
-                        : hasGeneratedConversationSchedules
-                          ? localizeUi("ui.agents.secretplotpanel.regenerate")
-                          : localizeUi("ui.characters.characterclipcard.generate")}
-                    </button>
-                  </div>
-
-                  <div className="rounded-lg bg-[var(--secondary)]/55 px-3 py-2.5 ring-1 ring-[var(--border)]/80">
-                    <ConversationTimeZoneSelect compact containerQueries />
-                  </div>
-
-                  {hasGeneratedConversationSchedules && onOpenScheduleEditor && (
-                    <div className="mt-2 space-y-1.5">
-                      <span className="text-[0.625rem] font-medium text-[var(--muted-foreground)]">
-                        {localizeUi("ui.chat.chatsettingsdrawer.editSchedules")}
-                      </span>
-                      {chatCharIds.map((charId) => {
-                        const schedule = (metadata.characterSchedules as Record<string, WeekSchedule> | undefined)?.[
-                          charId
-                        ];
-                        const scheduledDayCount = schedule?.days
-                          ? Object.values(schedule.days).filter((blocks) => Array.isArray(blocks) && blocks.length > 0)
-                              .length
-                          : 0;
-                        return (
-                          <button
-                            key={charId}
-                            type="button"
-                            onClick={() => onOpenScheduleEditor(charId)}
-                            className="flex w-full items-center justify-between gap-3 rounded-lg bg-[var(--secondary)] px-3 py-2.5 text-left transition-colors hover:bg-[var(--accent)]/50"
-                          >
-                            <span className="min-w-0 flex-1 truncate text-xs font-medium">
-                              {charNameMap.get(charId) ?? "Unknown"}
-                            </span>
-                            <span className="shrink-0 text-[0.625rem] text-[var(--muted-foreground)]">
-                              {schedule
-                                ? localizeUi("ui.chat.chatsettingsdrawer.value1DayValue2Scheduled", {
-                                    value1: scheduledDayCount,
-                                    value2: scheduledDayCount === 1 ? "" : localizeUi("ui.noodle.stageprofileview.s"),
-                                  })
-                                : localizeUi("ui.chat.chatsettingsdrawer.createSchedule")}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </Section>
+            <AutonomousMessagingSection
+              chat={chat}
+              metadata={metadata}
+              chatCharIds={chatCharIds}
+              charNameMap={charNameMap}
+              open={open}
+              initialSection={initialSection}
+              isConversation={isConversation}
+              onOpenScheduleEditor={onOpenScheduleEditor}
+            />
           )}
 
           {/* Conversation feature packages expose commands and settings as soon as they are installed. */}
@@ -8683,184 +8280,17 @@ export function ChatSettingsDrawer({
 
           {/* Memory Recall — conversation mode: placed before Function Calling by section order */}
           {isConversation && import.meta.env.VITE_MARINARA_LITE !== "true" && (
-            <Section
-              id="conversation-memory-recall"
-              style={{ order: CHAT_SETTINGS_ORDER.memoryRecall }}
-              label={localizeUi("ui.chat.chatsettingsdrawer.memoryRecall")}
-              icon={<Brain size="0.875rem" />}
-              help={localizeUi("ui.chat.chatsettingsdrawer.whenEnabledRelevantFragmentsFromThisChatAreAutomatically")}
-            >
-              {renderMemoryRecallControls(true)}
-            </Section>
+            <MemoryRecallSection {...memoryRecallSectionProps} />
           )}
 
           {/* Automatic Summarization — conversation mode only. Opens a modal to edit per-day and per-week summaries. */}
           {isConversation && (
-            <Section
-              id="conversation-automatic-summarization"
-              label={localizeUi("ui.chat.chatsettingsdrawer.automaticSummarization")}
-              icon={<CalendarClock size="0.875rem" />}
-              help={localizeUi("ui.chat.chatsettingsdrawer.toHelpKeepTheRequestContextLowTheConversation")}
-            >
-              <div className="space-y-2.5">
-                <button
-                  onClick={() => setShowSummariesModal(true)}
-                  className="flex w-full items-center justify-between rounded-lg bg-[var(--secondary)] px-3 py-2.5 text-left transition-all hover:bg-[var(--accent)]"
-                >
-                  <div className="flex-1 min-w-0">
-                    <span className="text-[0.6875rem] font-medium">
-                      {localizeUi("ui.chat.chatsettingsdrawer.editSummaries")}
-                    </span>
-                    <p className="text-[0.625rem] text-[var(--muted-foreground)]">
-                      {localizeUi("ui.chat.chatsettingsdrawer.reviewAndEditWhatCharactersRememberFromThisChat")}
-                    </p>
-                  </div>
-                  <Pencil size="0.875rem" className="shrink-0 text-[var(--muted-foreground)]" />
-                </button>
-
-                {import.meta.env.VITE_MARINARA_LITE !== "true" && (
-                  <SettingsSwitch
-                    label={localizeUi("ui.chat.chatsettingsdrawer.semanticSummaryRetrieval")}
-                    description={localizeUi(
-                      "ui.chat.chatsettingsdrawer.keepRecentSummariesInContextAndRetrieveOnlyRelevantOlder",
-                    )}
-                    checked={metadata.semanticSummaryRetrievalEnabled === true}
-                    onChange={(semanticSummaryRetrievalEnabled) =>
-                      updateMeta.mutate({ id: chat.id, semanticSummaryRetrievalEnabled })
-                    }
-                    labelPosition="start"
-                    className={cn(
-                      "justify-between rounded-lg px-3 py-2.5 text-left",
-                      metadata.semanticSummaryRetrievalEnabled === true
-                        ? "bg-[var(--primary)]/10 ring-1 ring-[var(--primary)]/30"
-                        : cn(AGENT_SETTINGS_SURFACE_CLASS, "hover:bg-[var(--accent)]"),
-                    )}
-                    labelClassName="text-xs font-medium"
-                  />
-                )}
-                {import.meta.env.VITE_MARINARA_LITE !== "true" && (
-                  <SemanticSummaryRetrievalControls
-                    enabled={metadata.semanticSummaryRetrievalEnabled === true}
-                    recentCount={summaryRetrievalSettings.semanticSummaryRecentCount}
-                    olderCount={summaryRetrievalSettings.semanticSummaryOlderCount}
-                    minSimilarity={summaryRetrievalSettings.semanticSummaryMinSimilarity}
-                    recentLabel={localizeUi("ui.chat.chatsettingsdrawer.recentWeeks")}
-                    olderLabel={localizeUi("ui.chat.chatsettingsdrawer.olderWeeks")}
-                    thresholdLabel={localizeUi("ui.chat.chatsettingsdrawer.summaryRelevanceThreshold")}
-                    onChange={(field: SemanticSummaryRetrievalControlField, value) =>
-                      updateMeta.mutate({ id: chat.id, [field]: value })
-                    }
-                  />
-                )}
-
-                <div className="space-y-2 rounded-lg border border-[var(--border)] bg-[var(--secondary)]/35 p-2.5">
-                  <div className="space-y-1.5">
-                    <span className="text-xs font-medium">
-                      {localizeUi("ui.chat.summarypopover.summaryConnection_febe5c4")}
-                    </span>
-                    <ConnectionSelect
-                      job={t("connections.picker.job.summary")}
-                      value={conversationSummaryConnectionId || null}
-                      onChange={(connectionId) => updateMeta.mutate({ id: chat.id, summaryConnectionId: connectionId })}
-                      includeLocalSidecar={!isGame && sidecarModelDownloaded}
-                      defaultLabel={localizeUi("chat.summary.connection.agentDefaultFallback")}
-                      inherits="agents"
-                      aria-label={localizeUi("ui.chat.summarypopover.summaryConnection_febe5c4")}
-                    />
-                    <p className="text-[0.625rem] text-[var(--muted-foreground)]">
-                      {localizeUi("ui.chat.summarypopover.chooseTheModelConnectionUsedForManualAndAutomatic")}
-                    </p>
-                  </div>
-                  <div className="space-y-1.5">
-                    <span className="text-xs font-medium">
-                      {localizeUi("ui.chat.summarypopover.maximumOutputSize")}
-                    </span>
-                    <DraftNumberInput
-                      value={
-                        typeof metadata.summaryMaxTokens === "number"
-                          ? metadata.summaryMaxTokens
-                          : CHAT_SUMMARY_OUTPUT_TOKENS.DEFAULT
-                      }
-                      min={CHAT_SUMMARY_OUTPUT_TOKENS.MIN}
-                      max={CHAT_SUMMARY_OUTPUT_TOKENS.MAX}
-                      onCommit={(value) =>
-                        updateMeta.mutate({
-                          id: chat.id,
-                          summaryMaxTokens: value,
-                        })
-                      }
-                      ariaLabel={localizeUi("ui.chat.summarypopover.summaryMaximumOutputSize")}
-                      className="mari-chrome-field w-full !rounded-md px-3 py-2 text-xs"
-                    />
-                  </div>
-                </div>
-
-                {/* Day rollover hour */}
-                <div className="space-y-1.5">
-                  <span className="text-xs font-medium">
-                    {localizeUi("ui.chat.chatsettingsdrawer.dayRolloverHour")}
-                  </span>
-                  <select
-                    value={(metadata.dayRolloverHour as number | undefined) ?? 4}
-                    onChange={(e) => {
-                      setRolloverTouchedThisSession(true);
-                      updateMeta.mutate({ id: chat.id, dayRolloverHour: Number(e.target.value) });
-                    }}
-                    className="mari-chrome-field w-full !rounded-md px-3 py-2 text-xs"
-                  >
-                    {Array.from({ length: 12 }, (_, h) => {
-                      const label = h === 0 ? "12 AM (midnight)" : `${h} AM`;
-                      return (
-                        <option key={h} value={h}>
-                          {label}
-                        </option>
-                      );
-                    })}
-                  </select>
-                  <p className="text-[0.625rem] text-[var(--muted-foreground)]">
-                    {localizeUi("ui.chat.chatsettingsdrawer.messagesSentBeforeThisHourCountAsPartOf")}
-                  </p>
-                  {rolloverTouchedThisSession &&
-                    (((metadata.daySummaries as Record<string, unknown> | undefined) &&
-                      Object.keys(metadata.daySummaries as Record<string, unknown>).length > 0) ||
-                      ((metadata.weekSummaries as Record<string, unknown> | undefined) &&
-                        Object.keys(metadata.weekSummaries as Record<string, unknown>).length > 0)) && (
-                      <div className="flex items-start gap-1.5 rounded-md bg-amber-400/10 px-2 py-1.5 ring-1 ring-amber-400/20">
-                        <AlertTriangle size="0.75rem" className="mt-[0.125rem] shrink-0 text-amber-400/80" />
-                        <p className="text-[0.625rem] text-amber-400/80 leading-snug">
-                          {localizeUi("ui.chat.chatsettingsdrawer.existingSummariesWereBuiltWithThePreviousSettingFor")}{" "}
-                          <span className="font-medium">{localizeUi("ui.chat.chatsettingsdrawer.editSummaries")}</span>{" "}
-                          {localizeUi("ui.chat.chatsettingsdrawer.above")}
-                        </p>
-                      </div>
-                    )}
-                </div>
-
-                {/* Recent message tail */}
-                <div className="space-y-1.5">
-                  <span className="text-xs font-medium">
-                    {localizeUi("ui.chat.chatsettingsdrawer.recentMessageTail")}
-                  </span>
-                  <DraftNumberInput
-                    value={(metadata.summaryTailMessages as number | undefined) ?? SUMMARY_TAIL_MESSAGES.DEFAULT}
-                    min={SUMMARY_TAIL_MESSAGES.MIN}
-                    onCommit={(value) =>
-                      updateMeta.mutate({
-                        id: chat.id,
-                        summaryTailMessages: value,
-                      })
-                    }
-                    ariaLabel="Recent message tail"
-                    className="mari-chrome-field w-full !rounded-md px-3 py-2 text-xs"
-                  />
-                  <p className="text-[0.625rem] text-[var(--muted-foreground)]">
-                    {localizeUi("ui.chat.chatsettingsdrawer.howManyRecentMessagesToKeepWordForWord")}{" "}
-                    <span className="font-medium">0</span>{" "}
-                    {localizeUi("ui.chat.chatsettingsdrawer.toDisableHigherValuesIncreasePromptSizeAndModel")}
-                  </p>
-                </div>
-              </div>
-            </Section>
+            <AutomaticSummarizationSection
+              chat={chat}
+              metadata={metadata}
+              setShowSummariesModal={setShowSummariesModal}
+              isGame={isGame}
+            />
           )}
 
           <div style={{ order: CHAT_SETTINGS_ORDER.functionCalling }}>
@@ -8924,20 +8354,7 @@ export function ChatSettingsDrawer({
 
           {/* Memory Recall — roleplay/game modes: placed before Function Calling by section order */}
           {!isConversation && import.meta.env.VITE_MARINARA_LITE !== "true" && (
-            <Section
-              id={`${chatMode}-memory-recall`}
-              forceOpen={initialSection === "memory-recall"}
-              style={{ order: CHAT_SETTINGS_ORDER.memoryRecall }}
-              label={localizeUi("ui.chat.chatsettingsdrawer.memoryRecall")}
-              icon={<Brain size="0.875rem" />}
-              help={localizeUi(
-                isRoleplayMode
-                  ? "chat.advancedMemory.recallHelp"
-                  : "ui.chat.chatsettingsdrawer.whenEnabledRelevantFragmentsFromThisChatAreAutomatically",
-              )}
-            >
-              {renderMemoryRecallControls(metadata.sceneStatus === "active")}
-            </Section>
+            <MemoryRecallSection {...memoryRecallSectionProps} />
           )}
 
           <div style={{ order: CHAT_SETTINGS_ORDER.translation }}>
