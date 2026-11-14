@@ -1,6 +1,7 @@
 // ──────────────────────────────────────────────
 // Layout: Main App Shell (Discord-like three-column)
 // ──────────────────────────────────────────────
+import { preloadableLazy } from "../../lib/preloadable-lazy";
 import { useDeviceWalkthroughDue } from "../../hooks/use-device-walkthrough-due";
 import { useCenterPageOpen } from "../../hooks/use-chat-theme";
 import { useQueryClient } from "@tanstack/react-query";
@@ -91,28 +92,34 @@ const SpotifyMobileWidget = lazy(() =>
   import("../spotify/SpotifyMiniPlayer").then((module) => ({ default: module.SpotifyMobileWidget })),
 );
 const ChatArea = preloadedLazy(() => import("../chat/ChatArea").then((module) => module.ChatArea));
-const CharacterEditor = lazy(() =>
+const CharacterEditor = preloadableLazy(() =>
   import("../characters/CharacterEditor").then((module) => ({ default: module.CharacterEditor })),
 );
-const CharacterLibraryView = lazy(() =>
+const CharacterLibraryView = preloadableLazy(() =>
   import("../characters/CharacterLibraryView").then((module) => ({ default: module.CharacterLibraryView })),
 );
-const AgentCatalogView = lazy(() =>
+const AgentCatalogView = preloadableLazy(() =>
   import("../agents/AgentCatalogView").then((module) => ({ default: module.AgentCatalogView })),
 );
-const LorebookEditor = lazy(() =>
+const LorebookEditor = preloadableLazy(() =>
   import("../lorebooks/LorebookEditor").then((module) => ({ default: module.LorebookEditor })),
 );
-const PresetEditor = lazy(() => import("../presets/PresetEditor").then((module) => ({ default: module.PresetEditor })));
-const ConnectionEditor = lazy(() =>
+const PresetEditor = preloadableLazy(() =>
+  import("../presets/PresetEditor").then((module) => ({ default: module.PresetEditor })),
+);
+const ConnectionEditor = preloadableLazy(() =>
   import("../connections/ConnectionEditor").then((module) => ({ default: module.ConnectionEditor })),
 );
-const AgentEditor = lazy(() => import("../agents/AgentEditor").then((module) => ({ default: module.AgentEditor })));
-const ToolEditor = lazy(() => import("../agents/ToolEditor").then((module) => ({ default: module.ToolEditor })));
-const PersonaEditor = lazy(() =>
+const AgentEditor = preloadableLazy(() =>
+  import("../agents/AgentEditor").then((module) => ({ default: module.AgentEditor })),
+);
+const ToolEditor = preloadableLazy(() =>
+  import("../agents/ToolEditor").then((module) => ({ default: module.ToolEditor })),
+);
+const PersonaEditor = preloadableLazy(() =>
   import("../personas/PersonaEditor").then((module) => ({ default: module.PersonaEditor })),
 );
-const RegexScriptEditor = lazy(() =>
+const RegexScriptEditor = preloadableLazy(() =>
   import("../agents/RegexScriptEditor").then((module) => ({ default: module.RegexScriptEditor })),
 );
 const BotBrowserView = lazy(() =>
@@ -131,19 +138,19 @@ const OverhaulMariPage = lazy(() =>
 const OverhaulDocsPage = lazy(() =>
   import("../overhaul/DocsPage").then((module) => ({ default: module.OverhaulDocsPage })),
 );
-const OvRegexViewer = lazy(() =>
+const OvRegexViewer = preloadableLazy(() =>
   import("../overhaul/LibraryViewers").then((module) => ({ default: module.OvRegexViewer })),
 );
-const OvToolsViewer = lazy(() =>
+const OvToolsViewer = preloadableLazy(() =>
   import("../overhaul/LibraryViewers").then((module) => ({ default: module.OvToolsViewer })),
 );
-const OvConnectionsViewer = lazy(() =>
+const OvConnectionsViewer = preloadableLazy(() =>
   import("../overhaul/LibraryViewers").then((module) => ({ default: module.OvConnectionsViewer })),
 );
-const OvConnectionPageMobile = lazy(() =>
+const OvConnectionPageMobile = preloadableLazy(() =>
   import("../overhaul/LibraryViewers").then((module) => ({ default: module.OvConnectionPageMobile })),
 );
-const LibraryLandingPage = lazy(() =>
+const LibraryLandingPage = preloadableLazy(() =>
   import("../overhaul/LibraryLandingPage").then((module) => ({ default: module.LibraryLandingPage })),
 );
 const TrackerDataSidebar = lazy(() =>
@@ -718,7 +725,27 @@ export function AppShell({
   useEffect(() => {
     if (!overhaulEnabled) return;
     const preload = () => {
-      void import("../overhaul/LibraryLandingPage").catch(() => undefined);
+      // Library pages and viewers first, then the editors they open, so neither shows "Loading…".
+      void LibraryLandingPage.preload();
+      void Promise.all([
+        CharacterLibraryView.preload(),
+        AgentCatalogView.preload(),
+        OvRegexViewer.preload(),
+        OvToolsViewer.preload(),
+        OvConnectionsViewer.preload(),
+      ]).then(() => {
+        for (const editor of [
+          CharacterEditor,
+          PersonaEditor,
+          LorebookEditor,
+          PresetEditor,
+          RegexScriptEditor,
+          ConnectionEditor,
+          AgentEditor,
+          ToolEditor,
+        ])
+          void editor.preload();
+      });
       // Opening a chat is the next step almost every time: fetch the chat surfaces now, not on the click.
       preloadChatSurface("roleplay");
       preloadChatSurface("conversation");
@@ -1295,6 +1322,14 @@ export function AppShell({
   useEffect(() => {
     useCenterPageOpen.setState({ open: hasDetailView });
   }, [hasDetailView]);
+  // Phones and tablets: a page covers the whole screen, so a theme's ambient layer (rising bubbles,
+  // rain) holds still under it instead of repainting every frame where nobody sees it (battery).
+  const pageCoversScreen = overhaulMobile && shellOverlayMode && hasDetailView;
+  useEffect(() => {
+    if (!pageCoversScreen) return;
+    document.documentElement.setAttribute("data-mari-page-covers", "");
+    return () => document.documentElement.removeAttribute("data-mari-page-covers");
+  }, [pageCoversScreen]);
   const trackerPanelModeAvailable = activeChat?.mode === "roleplay";
   const trackerPanelActive = trackerPanelEnabled && trackerPanelOpen && trackerPanelSurfaceOpen;
   const trackerPanelDetached = trackerPanelWindowTarget !== null;
@@ -1888,7 +1923,7 @@ export function AppShell({
               data-chat-covered={chatSurfaceActive ? undefined : "true"}
               // New layout on phones/tablets: a page (Settings, an editor) covers Home or the chat completely, so
               // a theme's see-through page colour never shows them through it.
-              data-under-page={overhaulMobile && shellOverlayMode && hasDetailView ? "true" : undefined}
+              data-under-page={pageCoversScreen ? "true" : undefined}
               className={cn(
                 "mari-app-background-paint flex flex-1 flex-col overflow-hidden",
                 (botBrowserOpen || gameAssetsBrowserOpen || (!shellOverlayMode && hasDetailView)) && "hidden",
