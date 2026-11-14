@@ -532,6 +532,10 @@ export function WorldOverworld({
       (builtLooks.has(drawnLook[y * width + x]!)
         ? !wetCell[y * width + x]
         : inner(x, y) && !clearing.has(y * width + x));
+    // The open ground a wood's edge cell is drawn as (the ground beside it), so the fringes treat it as that
+    // ground: two edge cells drawn as different grounds, or an edge cell and the open ground past it, then
+    // meet through a fringe instead of a hard cell line (the owner, 2026-11-14: "harsh lines at forest edge").
+    const edgeGround: Array<string | undefined> = new Array(width * height);
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const own = cells[y * width + x]!;
@@ -544,6 +548,7 @@ export function WorldOverworld({
               : wetCell[y * width + x] && softShore(x, y)
                 ? softShore(x, y)!
                 : look;
+        if (coveredLooks.has(look) && drawn !== look && !wetCell[y * width + x]) edgeGround[y * width + x] = drawn;
         if (coveredLooks.has(drawn) && drawn === look) floorOf(x, y, look);
         else groundOf(x, y, drawn);
         if (water[own] && !waterEdges) {
@@ -623,7 +628,7 @@ export function WorldOverworld({
     for (const look of WORLD_FRINGE_ORDER) {
       if (
         !drawTile.hasFringe(look) ||
-        !drawnLook.includes(look) ||
+        (!drawnLook.includes(look) && !edgeGround.includes(look)) ||
         coveredLooks.has(look) ||
         square.has(look) ||
         softGround.has(look) ||
@@ -632,7 +637,10 @@ export function WorldOverworld({
         continue;
       // Soft ground counts as the look, so no fringe spills over it (it fades in over the look instead).
       const isLook = (x: number, y: number) =>
-        drawnLook[y * width + x] === look || softAt(x, y) || (wetCell[y * width + x] && softShore(x, y) !== undefined);
+        drawnLook[y * width + x] === look ||
+        edgeGround[y * width + x] === look ||
+        softAt(x, y) ||
+        (wetCell[y * width + x] && softShore(x, y) !== undefined);
       // Laid out as an edge tile is: with slanted corners and curved runs where the fringe has them.
       const fringeRows = drawTile.fringeRows(look);
       for (let y = 0; y <= height; y++)
