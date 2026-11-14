@@ -1,0 +1,83 @@
+{
+  "part": "A",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "grass@autumn-base",
+    "grass@autumn-detail-0",
+    "grass@autumn-detail-1",
+    "grass@autumn-detail-2",
+    "grass@autumn-detail-3",
+    "grass@autumn-detail-4",
+    "grass@autumn-detail-5",
+    "grass@autumn-detail-6",
+    "grass@autumn-detail-7"
+  ],
+  "files": {
+    "grass@autumn-base": {
+      "status": "fail",
+      "problems": [
+        "The isolated rust accents expose the repeat. At native 1x, the dark marks near (93,55), (187,42), (214,197), (94,224), and (214,232) read as small disconnected brown flecks; in the literal 3x3 repeat their copies form recognisable rows and columns every 288 pixels. The (214,197) mark is particularly conspicuous. This is a repeating-landmark problem, not a hard boundary seam. See critic-r14A-1-repeat-1x.png and critic-r14A-1-base-leaves-8x.png."
+      ],
+      "fix": "Keep the successful tawny-olive/khaki colour range and existing clean wrap. Repaint the five isolated rust landmarks into quieter, integrated dry turf/litter with less local contrast, rather than leaving five distinct stamps in the base. Keep strongly readable fallen leaves in the scattered detail layer. Use image-tool repainting and the established registration/mode/palette workflow, then inspect a fresh unmarked 3x3 repeat at 1x and 4x."
+    },
+    "grass@autumn-detail-0": {
+      "status": "fail",
+      "problems": [
+        "The summer flower-and-grass silhouette has been replaced by a smaller central dry tuft. The alpha masks differ at 366 native pixels, with only 30.81% intersection-over-union. The occupied bounds shrink from summer [8,8,40,40) to [11,13,38,35), losing the tall flower head, side flower and lower foliage. A season swap changes both the object and its footprint."
+      ],
+      "fix": "Use grass-detail-0.png as the registered source. Paint its flower heads, stems and foliage as late-season vegetation while preserving every summer alpha pixel, placement and one-pixel contour. Do not substitute a smaller centred tuft."
+    },
+    "grass@autumn-detail-1": {
+      "status": "fail",
+      "problems": [
+        "Three brown leaf shapes replace the summer moss-covered stone. Alpha differs at 264 pixels; intersection-over-union is 37.88%. Bounds shrink from [8,15,40,33) to [12,17,36,31). The permanent rock disappears on the seasonal swap, violating the required summer silhouette."
+      ],
+      "fix": "Restore the summer stone geometry, neutral rock faces and exact alpha mask from grass-detail-1.png. Change the moss/grass to restrained olive and ochre and paint any leaf litter within that fixed footprint, retaining the upper-left rock light and dark lower-right face."
+    },
+    "grass@autumn-detail-2": {
+      "status": "fail",
+      "problems": [
+        "The broad summer plant has become a narrow horizontal straw tuft. Alpha differs at 565 pixels, with 21.75% intersection-over-union. Bounds shrink from [7,8,41,39) to [12,18,37,30), reducing the silhouette height from 31 to 12 pixels. Most of the upper foliage and the foot are missing."
+      ],
+      "fix": "Register to grass-detail-2.png and retain its entire alpha mask and broad plant layout. Paint tawny/khaki seasonal foliage and dry ochre accents inside the existing form, preserving its top-left light and dark foot."
+    },
+    "grass@autumn-detail-3": {
+      "status": "fail",
+      "problems": [
+        "The tall, fine summer grass has been replaced by a short, thick-stemmed clump. Alpha differs at 304 pixels; intersection-over-union is 31.53%. Bounds change from [9,8,39,39) to [14,15,34,33), dropping from 31 to 18 pixels high.",
+        "At 1x and 4x, the two thick upright stems and rounded terminal caps read more like a tiny cactus or cut branches than meadow seed grass. The stem bodies around x=21-29, y=17-29 are too heavy relative to the fine summer blades."
+      ],
+      "fix": "Preserve grass-detail-3.png's existing blade and seed-head positions and exact alpha mask. Paint the stems dry ochre with fine continuous dark edges and upper-left highlights, retaining the source's slender grass character instead of the current thick capped stalks."
+    },
+    "grass@autumn-detail-4": {
+      "status": "fail",
+      "problems": [
+        "The summer stump, cut top and spreading roots have been replaced by a flat brown leaf pile. Alpha differs at 268 pixels; intersection-over-union is 41.10%. Bounds shrink from [8,13,40,35) to [11,18,37,30). A permanent wooden object disappears between seasons."
+      ],
+      "fix": "Keep the stump, cut top, roots and exact alpha silhouette of grass-detail-4.png. Restrict seasonal painting to grass/moss and small litter accents within that silhouette; retain the stump's existing light direction, volume and outline weight."
+    },
+    "grass@autumn-detail-5": {
+      "status": "fail",
+      "problems": [
+        "The summer mushroom ring is replaced by a central three-pronged grass tuft. Alpha differs at 447 pixels and intersection-over-union is only 6.68%. Bounds change from [8,11,41,37) to [13,15,35,33). The new tuft fills the previously open centre and removes the surrounding mushrooms."
+      ],
+      "fix": "Restore the mushroom ring and all original alpha pixels from grass-detail-5.png. Autumnise its surrounding vegetation and ground-facing accents while preserving the ring's open centre, mushroom positions and upper-left cap highlights."
+    },
+    "grass@autumn-detail-6": {
+      "status": "fail",
+      "problems": [
+        "The summer two-rock group is replaced by a thin horizontal strip of straw and litter. Alpha differs at 414 pixels; intersection-over-union is 23.62%. Bounds shrink from [7,11,41,37) to [10,21,36,30), reducing height from 26 to 9 pixels. Both permanent rock volumes vanish."
+      ],
+      "fix": "Restore the two rocks and exact grass-detail-6.png alpha mask, keeping their grey faces, upper-left highlights and lower-right shadows. Paint only the vegetation/litter into the autumn palette within the retained footprint."
+    },
+    "grass@autumn-detail-7": {
+      "status": "fail",
+      "problems": [
+        "The broad summer leafy patch is replaced by two small grass tufts. Alpha differs at 487 pixels; intersection-over-union is 22.20%. Bounds shrink from [7,11,41,37) to [12,17,36,31), removing much of the surrounding leaf silhouette and changing the feature's scale."
+      ],
+      "fix": "Keep the exact grass-detail-7.png alpha mask, leaf positions and overall footprint. Paint those existing leaves in tawny olive, khaki and restrained ochre, with the same native contour and light direction."
+    }
+  },
+  "notes": "Independent critic inspection covered all nine outputs at exact 1x and nearest-neighbour 4x, all eight details at 8x, the base in literal 3x3 repeats at 1x/4x and an 8x wrap junction, and every detail over both summer and autumn ground. Summer/new alpha overlays are in critic-r14A-1-details-{0-3,4-7}-4x.png: grey=overlap, cyan=summer only, magenta=autumn only. Coordinates are native pixels from the upper-left; bounds use exclusive right/bottom edges. The silhouette failures apply the user's explicit critic instruction and BRIEF-14's critic-wide rule that seasonal partners must keep the summer silhouette. The Part A description asks for tufts/litter, but does not explicitly waive that rule. Technical checks pass: base 288x288; eight details 48x48; alpha only 0/255 (base fully opaque); zero RGB under transparency; each detail one 8-connected component; no detached sprite specks or magenta fringe. No hard tile-boundary seam, rounded ground perimeter, haze or obvious reversed lighting was found. Colour separation passes both visually and numerically: summer mean RGB (100.3218,121.5728,46.6945), hue 77.0284 degrees, HSV value 47.6756%, luma 111.6486; previous autumn (118.9993,125.7706,66.5448), hue 66.8599 degrees, value 49.3218%, luma 120.0549; new autumn (153.3694,139.7169,63.5570), hue 50.8793 degrees, value 60.1448%, luma 137.1207; autumn plains (205.2210,146.5189,69.1735), hue 34.1111 degrees, value 80.4788%, luma 153.4147. Every new mean channel, hue, value and luma lies strictly between summer and plains. The named fantasy reference crops match the corresponding source ground pixels. Plains matches current-plains@autumn-base.png. New base wrap mean absolute RGB steps are 3.5856 horizontal / 3.9167 vertical versus interior 2.9525 / 2.6941; these do not cure the visible landmark repetition. The full brief and method sections were read. This was a read-only review of the output art: no asset redraw, live-game claim, commit, push or branch change. Only this report and critic-r14A-1-*.png review composites were written."
+}
