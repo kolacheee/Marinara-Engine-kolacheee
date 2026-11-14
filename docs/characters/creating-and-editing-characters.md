@@ -23,7 +23,7 @@ Pick the character when you start a chat. See [Roleplay Mode: Getting Started](.
 
 ## The Character Editor at a glance
 
-The Character Editor replaces the chat area with a full-page workspace. On a wide screen the tabs run down the left side. On a narrow screen they become a scrollable strip across the top. The tabs, in order, are **Metadata**, **Card**, **Onboarding**, **Convo**, **Lorebook**, **Images**, **Colors**, **Voice**, **Stats** and **Advanced**. Each tab jumps to its section of one long form, so you can also scroll.
+The Character Editor replaces the chat area with a full-page workspace. On a wide screen the tabs are a row of buttons across the header. On a narrow screen they fold into a menu under the name. The tabs, in order, are **Metadata**, **Card**, **Onboarding**, **Convo**, **Lorebook**, **Images**, **Colors**, **Voice**, **Stats** and **Advanced**. Each tab jumps to its section of one long form, so you can also scroll.
 
 The header holds the parts you use most:
 
