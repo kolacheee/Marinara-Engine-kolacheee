@@ -629,7 +629,7 @@ assert.doesNotMatch(
 );
 assert.match(
   importRoutesSource,
-  /app\.post\("\/marinara-package", \{ bodyLimit: NATIVE_PACKAGE_UPLOAD_LIMIT_BYTES \}[\s\S]*?req\.file\(\{[\s\S]*?fields: 1,[\s\S]*?parts: 2,[\s\S]*?files: 1,[\s\S]*?fileSize: NATIVE_PACKAGE_UPLOAD_LIMIT_BYTES[\s\S]*?\}\)/u,
+  /app\.post\("\/marinara-package", \{ bodyLimit: NATIVE_PACKAGE_UPLOAD_LIMIT_BYTES \}[\s\S]*?req\.file\(\{[\s\S]*?fields: 2,[\s\S]*?parts: 3,[\s\S]*?files: 1,[\s\S]*?fileSize: NATIVE_PACKAGE_UPLOAD_LIMIT_BYTES[\s\S]*?\}\)/u,
   "native character and persona packages must enforce the native package upload ceiling",
 );
 assert.match(
@@ -935,9 +935,9 @@ assert.throws(
   /Widget IDs must be unique/u,
 );
 assert.deepEqual(HOME_CHAT_MODE_ACCENTS, {
-  conversation: "oklch(0.79 0.16 205)",
-  roleplay: "oklch(0.76 0.19 52)",
-  game: "var(--marinara-mode-game-accent)",
+  conversation: "var(--mari-mode-conversation)",
+  roleplay: "var(--mari-mode-roleplay)",
+  game: "var(--mari-mode-game)",
 });
 
 const backgroundOrganization = normalizeBackgroundLibraryOrganization({
@@ -6193,7 +6193,8 @@ assert.match(
 assert.equal(
   themesRouteSource.match(/requirePrivilegedAccess\(req, reply, \{ feature: "Theme install\/update\/delete" \}\)/gu)
     ?.length,
-  3,
+  // Install, install from the gallery, edit and delete.
+  4,
   "theme installation, editing, and deletion should remain privileged while activation works from mobile clients",
 );
 const activeThemeHandler = themesRouteSource.match(
@@ -7013,7 +7014,7 @@ assert.match(
 );
 assert.match(
   globalStyles,
-  /\[data-marinara-accent-animation\] :where\(\.mari-editor-shell, select\) \{[\s\S]*--primary: var\(--marinara-app-accent-static\);[\s\S]*--marinara-chat-chrome-accent: var\(--marinara-app-accent-static\);[\s\S]*\}/u,
+  /\[data-marinara-accent-animation\] :where\(\.mari-editor-shell, select\) \{[\s\S]*--primary: var\(--marinara-app-accent-static\);[\s\S]*--marinara-chat-chrome-accent: var\(--mari-chrome-accent, var\(--marinara-app-accent-static\)\);[\s\S]*\}/u,
 );
 assert.match(globalStyles, /\[data-marinara-accent-animation\] select \{\s*transition: none;\s*\}/u);
 const markdownBlockquoteStyles =
@@ -7559,7 +7560,8 @@ assert.match(
 );
 assert.match(
   settingsSyncSource,
-  /hadMissingSyncedSettings[\s\S]*pickSyncedSettings\(useUIStore\.getState\(\)\)/u,
+  // The rewrite goes through syncedPayload(), which picks the synced settings from the store.
+  /hadMissingSyncedSettings[\s\S]*buildServerSettingsValue\(syncedPayload\(\)/u,
   "Incomplete server settings blobs must be rewritten with newly synced preferences",
 );
 
@@ -8904,7 +8906,7 @@ assert.match(
 );
 assert.match(
   summaryPopoverSource,
-  /<[A-Za-z]+\b(?=[^>]*data-touch-reorder-item=\{reorderable \? "summary-entry" : undefined\})(?=[^>]*data-touch-reorder-index=\{reorderable \? entryIndex : undefined\})(?=[^>]*draggable=\{reorderable && dragReady\})(?=[^>]*onDragStart=\{onDragStart\})[^>]*>/u,
+  /<[A-Za-z]+\b(?=[^>]*data-touch-reorder-item=\{reorderable \? "summary-entry" : undefined\})(?=[^>]*data-touch-reorder-index=\{reorderable \? entryIndex : undefined\})(?=[^>]*draggable=\{reorderable && (?:dragReady|\(dragReady \|\| isOverhaulActive\(\)\))\})(?=[^>]*onDragStart=\{onDragStart\})[^>]*>/u,
   "Summary entries must expose a shared desktop and touch reorder surface (the same row is a touch-reorder item, carries its persisted reorder index, and is desktop-draggable)",
 );
 assert.match(
