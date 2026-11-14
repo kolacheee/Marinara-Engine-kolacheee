@@ -1,3 +1,98 @@
+# Round 14 — Part C2
+
+Redrew only **`out/treeline_forest@winter-0..7.png`**, eight transparent
+**48×48** broadleaf trees, after the dense-map rejection of Part C. Crowns
+now read as rounded dormant twig masses in **two or three large, flat
+purple-brown tones**, with short bold lower forks and clean white upper-left
+snow caps. **0/2/6** are oaks, **1/4** beeches, **3/7** pale-trunk birches,
+and **5** the low spreading sapling. **2 and 4** retain two compact brown
+leaf clusters. The summer silhouettes and asymmetric crown lobes are exact.
+
+**Method:** **24 separate large built-in image-tool paintings on solid
+magenta**, three variants per tree. The first two variants established the
+simplified crowns; the third enlarged the painted snow caps after native
+measurement found insufficient coverage. Selected **0c / 1c / 2c / 3c /
+4c / 5c / 6c / 7c**. Exact prompts are embedded in
+`review/r14-C2-source-*.png`; the summer edit targets are `r14-C2-input-*.png`.
+
+Each keyed painting is cropped and BOX-registered to its summer bounds on
+**384×384**. Local vertical registration of upper-crown paint on **0/2/3/5**
+brings cap coverage into range while keeping the lower trunk anchored.
+An explicit **14-colour** material palette separates crown, bark, snow,
+birch and dead leaves; contour and brown bark use the summer colours.
+Every native pixel is the exact RGBA mode of **all 64 samples in its 8×8
+block**, including transparency, with lexicographic tie-breaking.
+
+The drawn colours are composited through the **exact summer alpha mask**;
+**82** uncovered registration samples use the nearest painted opaque sample.
+The original foot masks on rows **41–44** are retained, with their bark tones
+mapped to brown or pale birch. Native one-pixel contour cleanup and removal
+of isolated one/two-pixel colour remnants finish the drawings. Across the
+selected eight, **522 pixels** differ between raw mode and final, including
+mask registration, trunk-foot colour transfer and cleanup. No tree shapes,
+texture or noise were constructed by code. Final images have **7–10 opaque
+colours**, hard alpha **0/255**, and **zero RGB under transparency**.
+
+**Measurements:** zero-based bounds; right/bottom exclusive. Foot x ranges
+are inclusive. Every full alpha mask, every row/column extremity, every
+bounding box and every four-row trunk-foot mask matches summer with
+**zero differing pixels**. All feet end on **row 44**, leaving three clear
+rows below. Snow coverage includes white and its blue-grey underside over
+the opaque crown area on rows **0–38**, including contour and lower forks.
+
+| Tree | Summer = winter bounds | Visible size | Opaque pixels | Foot x on row 44 | Snow coverage |
+|---|---|---|---:|---|---:|
+| 0 — rounded oak | (6, 8, 41, 45) | 35×37 | 816 | 21–25 | 33.67% |
+| 1 — upright beech | (10, 6, 37, 45) | 27×39 | 678 | 21–25 | 30.02% |
+| 2 — spreading oak, leaves | (4, 12, 43, 45) | 39×33 | 771 | 21–25 | 28.88% |
+| 3 — rounded birch | (6, 9, 41, 45) | 35×36 | 778 | 22–25 | 32.71% |
+| 4 — beech, leaves | (10, 6, 37, 45) | 27×39 | 736 | 21–24 | 34.29% |
+| 5 — low sapling | (5, 12, 43, 45) | 38×33 | 743 | 20–27 | 33.38% |
+| 6 — crooked oak | (7, 10, 41, 45) | 34×35 | 742 | 21–25 | 34.65% |
+| 7 — slender birch | (10, 6, 38, 45) | 28×39 | 636 | 22–25 | 28.36% |
+
+**QC and review:** every tree is shown over `grass@winter-base` at **1×,
+exact nearest-neighbour 4× and 8×**, with a literal **4×2** reference-layout
+atlas and summer/conifer comparisons. The dense map panels each contain
+**128 overlapping trees** on a **24 px horizontal / 16 px vertical** staggered
+lattice, alternate rows shifted **12 px**, small position variation, and
+back-to-front row compositing. Each **456×192** native panel is then reduced
+by nearest neighbour to **152×64** and **190×80**: the original 48 px sprite
+cells become **16 px and 20 px** respectively. Identical placement lists
+compare winter broadleaf, winter conifers and summer broadleaf. Extra views
+compare the rejected Part C forest and put summer trees on the same snow.
+
+Visual self-review of those actual downscaled crops passes the C2 criterion:
+separate snow-capped rounded crowns remain readable, with clearer separation
+than the summer comparison and no bramble/static texture. Large crown tones
+remain continuous, snow is attached upper-surface coverage, and the 8× check
+finds no detached specks or thin-line crown networks. This is a **composited
+map-scale self-review**, not a new live-game or independent critic verdict.
+
+Primary proofs: `review/r14-C2-map-comparison-{16px,20px,1x,4x}.png`,
+`r14-C2-map-before-after-{16px,20px,1x}.png`,
+`r14-C2-tree-{0..7}-{1x,4x,8x}.png`, `r14-C2-overview.png`, and
+`r14-C2-closeup-{0,1}-8x.png`. Both unchanged grass backgrounds have literal
+**3×3 repeats at 1× and 4×**; no ground asset was changed.
+
+Validation recomputed **55,296 mode blocks / 3,538,944 samples** across all
+24 paintings, reconstructed every recorded native cleanup, verified **18
+exact 4× pairs**, **9 exact 8× pairs**, **18 literal repeat crops**, and the
+three 128-tree composites plus both downscaled comparisons. Every output
+is connected; each snow region is connected, without isolated snow pixels.
+**All 3,272 protected starting files remain byte-identical**, including
+summer trees, conifers, other parts, references and all previous reviews.
+
+There are **186 new C2 PNGs**, including sources, alternatives, registration
+stages and proofs. Processing recipe and per-variant measurements are in
+`r14-C2-alternatives-4x.png`; review recipe, placement list, validation recipe,
+full foot-row measurements and results are in `r14-C2-trees-1x.png` metadata.
+Starting hashes are in `r14-C2-reference.png`. Only the eight named outputs,
+these C2 review PNGs and this top note changed. **No commit, push or branch
+change.**
+
+---
+
 # Round 14 — Part A2: critic-r14A2-1 redraw
 
 Repaired only **`out/grass@autumn-detail-7.png`**. Its summer mask is now

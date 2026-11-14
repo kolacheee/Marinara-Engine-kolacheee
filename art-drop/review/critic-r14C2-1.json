@@ -1,0 +1,49 @@
+{
+  "part": "C2",
+  "round": 1,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "treeline_forest@winter-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required."
+    },
+    "treeline_forest@winter-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required."
+    },
+    "treeline_forest@winter-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required."
+    },
+    "treeline_forest@winter-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required."
+    },
+    "treeline_forest@winter-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required."
+    },
+    "treeline_forest@winter-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required."
+    },
+    "treeline_forest@winter-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required."
+    },
+    "treeline_forest@winter-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None required."
+    }
+  },
+  "notes": "Independent visual review of the current output PNGs, not the artist self-review. Read BRIEF-14.md in full and the NOTES.md drawing-method sections; applied the C2 override requiring simplified crown masses. Inspected every tree at exact 1x and nearest-neighbour 4x on grass@winter-base and grass-base, plus 8x close-ups on snow; compared the summer sources and overlaid their alpha masks. All eight are RGBA 48x48, have only alpha 0/255 and zero RGB under transparency. Every full alpha mask and trunk-foot mask on rows 41-44 matches its summer partner with zero differing pixels. Measurements use zero-based coordinates, bounding-box right/bottom exclusive, foot x ranges inclusive: 0 bbox (6,8,41,45), visible 35x37, 816 opaque pixels, foot row 44 x21-25; 1 bbox (10,6,37,45), visible 27x39, 678 opaque, foot x21-25; 2 bbox (4,12,43,45), visible 39x33, 771 opaque, foot x21-25; 3 bbox (6,9,41,45), visible 35x36, 778 opaque, foot x22-25; 4 bbox (10,6,37,45), visible 27x39, 736 opaque, foot x21-24; 5 bbox (5,12,43,45), visible 38x33, 743 opaque, foot x20-27; 6 bbox (7,10,41,45), visible 34x35, 742 opaque, foot x21-25; 7 bbox (10,6,38,45), visible 28x39, 636 opaque, foot x22-25. All bases end at y44, leaving three transparent rows. Exact white and blue-grey snow palette coverage over opaque crown pixels in rows 0-38 is, for 0-7: 33.67%, 30.02%, 28.88%, 32.71%, 34.29%, 33.38%, 34.65%, 28.36%. Snow forms attached upper-left caps with solid blue-grey undersides, without scattered white speckling. Broad purple-brown areas supply the requested two or three crown tones; visible lower forks and trunks identify trees rather than shapeless patches. The wide oaks, upright beeches, pale birches 3/7, low spreading sapling 5, and compact dead-leaf clusters on 2/4 preserve the requested variety within the fixed summer silhouettes. Pixel edges and dark contour weight are compatible with the summer art; lighting is upper-left. No soft alpha, haze, smears, detached opaque specks or thin-line twig networks were found. Reconstructed the existing 128-tree map directly from out/ using its saved placement list: 24-pixel horizontal and 16-pixel vertical spacing, alternate rows offset 12 pixels, small position variation and back-to-front compositing. The reconstructed 456x192 native crop and comparisons exactly match the supplied review pixels. Reviewed native crop and nearest-neighbour reductions to 152x64 and 190x80, giving 16-pixel and 20-pixel sprite cells, beside winter conifers and summer broadleaf at identical placements and scales. At both reduced sizes, distinct rounded snow-capped crowns remain readable and are at least as separable as the summer crowns; this is a winter wood, not static or dead bramble. Inspected literal 3x3 repeats of both unchanged ground references and verified the repeat pixels and their exact 4x enlargements. Verified all eight individual 1x/4x/8x snow proofs against current output files. Evidence: critic-r14C2-1-inspection-1x.png, critic-r14C2-1-inspection-{0,1}-4x.png (mask overlays and measurement metadata), and critic-r14C2-1-map-{16,20,48}px.png. This is an independent asset/composite review, not a new live-game test. No output art or pre-existing file was edited; only this report and critic-r14C2-1-*.png composites were written."
+}
