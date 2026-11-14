@@ -1,0 +1,158 @@
+{
+  "part": "B",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "hills-prop-1",
+    "hills-prop-3",
+    "hills@autumn-prop-1",
+    "hills@autumn-prop-3",
+    "hills@autumn-prop-4",
+    "hills@winter-prop-1",
+    "hills@winter-prop-3"
+  ],
+  "files": {
+    "hills-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-1": {
+      "status": "fail",
+      "problems": [
+        "At native 1x, this reads as a tilted mossy boulder rather than a grassy hill. The high right-hand lump around x26-41, y19-40 drops into a steep wall; the left toe around x5-22, y30-42 reads as the pointed end of the same rock.",
+        "The short isolated dark marks across the left/centre face read as pits or chips. There is no clearly readable grass-tuft grouping or wrapping terrace to establish landscape scale at 1x."
+      ],
+      "fix": "Use an image-tool repaint/redraw to make the raised right shoulder flow into a longer rounded downslope, with two short contours wrapping around the front and a few deliberate native grass-tuft clusters. Retain real height, roughly 38px width, the row-43 contact foot and a one-pixel dark outline. Do not flatten it into a puddle. Rebuild both seasonal partners from the corrected summer source and require zero alpha differences."
+    },
+    "hills-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-3": {
+      "status": "fail",
+      "problems": [
+        "At native 1x, the compact dome, abrupt right slope and broad largely featureless face around x15-30, y22-33 read as a green boulder. The tiny marks near the upper-left edge do not establish a grassy slope.",
+        "The grey stone at x34-38, y35-37 is the strongest material cue; with almost no readable grass tufts or terrace structure, it reinforces the overall rock reading rather than appearing as a small outcrop on a hill."
+      ],
+      "fix": "Repaint the face as a rounded grassy knoll with a clear descending shoulder, two sparse curved slope/terrace marks and grouped grass tufts that survive at 1x. Keep the small outcrop subordinate to the grass. Preserve height, roughly 38px width, top-left light and the contact foot; use the corrected summer silhouette for both seasonal partners."
+    },
+    "hills-prop-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-1": {
+      "status": "fail",
+      "problems": [
+        "The summer-1 boulder reading persists on both summer and autumn grass at 1x: the steep right lump and pointed left toe look like an ochre rock.",
+        "Tawny recolouring preserves the chip-like short marks without adding readable dry-grass or terrace cues. Alpha matches summer exactly, but the source form still fails the owner override."
+      ],
+      "fix": "After correcting summer 1, repaint that revised source in tawny olive/ochre, retaining its readable slope contours and clustered dry-grass tufts. Match Part A's ground while keeping the lit face distinct. Copy the revised summer alpha exactly, including the contact foot."
+    },
+    "hills@autumn-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-3": {
+      "status": "fail",
+      "problems": [
+        "At native 1x this looks like an ochre boulder, especially on autumn grass. The smooth central face and abrupt right slope have no convincing meadow texture, and the grey chip at x34-38, y35-37 reinforces stone.",
+        "The exact summer alpha match is correct, but it preserves summer 3's unresolved hill-versus-rock ambiguity."
+      ],
+      "fix": "Derive a new autumn partner from corrected summer 3. Carry over the rounded descending slope, sparse wrapping contours and grouped dry-grass tufts; keep the rock outcrop small and subordinate. Preserve the revised summer alpha pixel-for-pixel."
+    },
+    "hills@autumn-prop-4": {
+      "status": "fail",
+      "problems": [
+        "The central diagonal overlap/shadow, approximately x26-56, y54-77, and the lower slopes/foot around x24-68, y77-87 are broken into scattered olive/brown pixels and tiny alternating patches. At 4x/8x this is mottled stippling rather than deliberate grass-tuft clusters.",
+        "At native map scale those patches turn the valleys and foot into dirty, pitted bands. The texture is visibly noisier than summer 4 and the neighbouring autumn hill groups, weakening the clean rolling-hill reading."
+      ],
+      "fix": "Repaint the interior with solid tawny-olive slope planes, a clean darker overlap band and only a few intentional grouped tufts. Remove the scattered intermediate-colour stipple during palette/reduction cleanup; do not add blur or noise. Keep summer 4's exact alpha, its three crests, stone outcrop, dark one-pixel contour and attached foot."
+    },
+    "hills@autumn-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-1": {
+      "status": "fail",
+      "problems": [
+        "At native 1x on both grounds, this remains a snow-covered boulder: the steep right-hand mass, pointed left toe and chip-like marks preserve summer 1's rock form.",
+        "Snow is solid and the alpha/outline checks pass; the failure is terrain identity, not fog or transparency."
+      ],
+      "fix": "Make this from the corrected summer-1 knoll. Preserve its broader descending slope and wrapping relief contours under solid white snow, with blue-grey lower-right shade and a thin earth foot. Use the corrected summer alpha exactly; do not try to cure the rock form with a white overlay."
+    },
+    "hills@winter-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-3": {
+      "status": "fail",
+      "problems": [
+        "At native 1x this reads as a smooth snow-covered boulder. The unbroken central face and abrupt right slope retain summer 3's rock-like structure, while the small lower-right stone remains the only obvious surface landmark.",
+        "The opaque snow, blue-grey shading, dark foot and exact summer alpha are technically correct, but do not supply enough slope/terrace structure to make this clearly a hill."
+      ],
+      "fix": "Repaint from corrected summer 3, preserving its rounded shoulder and visible wrapping terrain contours beneath the snow. Keep solid top-left snow, blue-grey lower-right shade and the thin earth contact line. Match the corrected summer alpha exactly."
+    },
+    "hills@winter-prop-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent review of the 24 delivered Part B PNGs against the full BRIEF-14.md, especially the 08:38 UTC owner override, and NOTES.md drawing-method sections. No art was redrawn and no file in out/ was edited. Inspected every sprite at exact native 1x and nearest-neighbour 4x on its own seasonal grass; autumn and winter were also inspected on summer grass at both scales. Inspected 8x close-ups of indices 0, 1 and 3 across seasons, autumn 4 and winter 6. Inspected three fresh 720x480 native map crops, each containing 24 hills next to a forest edge, and native/4x comparisons with approved mountains and trees. Summer grass is pixel-identical to reference/r14/fantasy-grass-0.png. Summer/autumn forest edges use out/treeline_forest partners; no winter partners exist in out/, so the winter edge uses the supplied winter reference atlas. Its still-leafy trees are outside Part B and are not charged against these hills. All three grounds were inspected in literal 3x3 repeats and at enlarged wrap junctions; these are unchanged context assets, not Part B deliverables. Winter ground retains its existing repeated diagonal snow-streak rhythm; no hill-generated ground square or seam was found. Technical checks pass for all 24: 48x48 for 0-3, 96x96 for 4-7; visible widths 38/48 (79.17%) and 82/96 (85.42%); 6-10 opaque colours; alpha values exactly 0 and 255; zero nonzero RGB pixels under transparency; a single 8-connected opaque component; dark native boundary pixels and attached contact feet. All 16 seasonal alpha comparisons have exactly 0 differing pixels, including contact shadows, and the overlay proof contains no mismatch pixels. Winter snow is opaque paint with blue-grey lower-right shade and an earth-coloured foot; it is not haze. Top-left lighting and native pixel/outline scale are consistent with approved art. Indices 0 and 2 have sufficient readable contour/terrace cues; 4-7 have distinct overlapping rounded crests and are lower/rounder than the mountains. The failures are visual readability of 1 and 3 in all seasons, and autumn 4's noisy interior treatment; passing machine checks does not resolve those issues. Coordinates in problems are zero-based native pixels, x then y. Evidence is in review/critic-r14B-1-*.png, including all seasonal own-ground/summer-ground sheets, map crops, alpha overlays, 8x close-ups, ground repeats and approved-context comparisons. Verified all 10 enlarged prop sheets are exact nearest-neighbour 4x and all 27 ground-repeat placements are exact copies. Aggregate SHA-256 over sorted out/ file paths and contents remained 58d7034f4988b970f73867bcbabcf70973c7f5f62b494c790450b36d2ea4fc54. No commit, push or branch change."
+}

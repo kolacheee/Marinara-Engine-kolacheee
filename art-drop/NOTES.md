@@ -1,3 +1,149 @@
+# Round 14 — Part B: critic-r14B-1 redraw
+
+Repaired the **seven failed outputs**: summer hills **1/3**, their autumn/winter
+partners, and autumn hill **4**. All **17 passing Part B sprites** remain
+byte-identical. The small hills now have rounded descending shoulders, two
+wrapping terraces and connected grass tufts; 3's tiny stone stays subordinate.
+They are 38 px wide, 25/26 px high, with contact feet on row 43. Autumn 4 keeps
+summer 4's crests, stone and contour, with clean tawny planes and a solid
+darker overlap band.
+
+**Method:** thirteen built-in image-tool drawings/repaints on solid magenta:
+three variants/refinements per summer hill, two for autumn 4 and winter 3,
+and one each for the other partners. Selected summer **c/c**, autumn
+**a/a/a**, winter **a/b**. BOX registration to 384×384/768×768, palette lock,
+exact RGBA mode of every 8×8 block, and one-pixel outline cleanup follow the
+earlier method. Autumn paint votes transfer through summer material regions;
+opaque winter snow paintings use the exact summer mask. Code constructs
+no terrain shapes or noise.
+
+**Validation:** all sixteen seasonal masks differ by **0 pixels**, including
+contact feet. Dimensions, palette, hard alpha 0/255, zero hidden RGB,
+connectivity and dark boundaries pass. All **23,040 mode blocks** and recorded
+cleanup reproduce the seven outputs. Other art and the original critic
+report are unchanged.
+
+Regenerated all **22 final review PNGs**, including three **24-hill** forest-edge
+crops; added autumn/winter sheets on summer grass. Inspected native/4× views,
+autumn 4 at 8× and mountain/tree scale comparisons. Thirteen exact 4× pairs
+and 27 ground-repeat copies pass. Winter uses the existing reference forest
+atlas. This is self-review, without a new independent critic verdict.
+
+Sources and exact prompts are in `review/r14-B-critic1-source-*.png` metadata;
+stages/cleanup share that prefix. Prop proofs embed repair recipes; the summer
+map proof embeds validation. Only the seven outputs, Part B review PNGs and
+this note changed. **No commit, push or branch change.**
+
+---
+
+# Round 14 — Part B
+
+Redrew **all eight summer hills** under the owner override dated 2026-11-14
+08:38 UTC, then made their autumn and winter partners: **24 transparent PNGs**.
+The former rock piles are grassy hills too. Indices 0–3 are individual raised
+knolls with rounded crests, varied shoulders and short slope contours; 4–7
+are rolling groups with two or three overlapping crests. Sparse grass tufts,
+a few embedded stones and small foot shrubs give the slopes landscape scale.
+Top-left light, darker lower-right slopes and one-pixel dark outlines separate
+them from the grass. The groups are lower and rounder than the approved peaks.
+All feet have an attached dark contact edge, without a ground square.
+
+**Files:** replaced `out/hills-prop-0..7.png` and
+`out/hills@winter-prop-0..7.png`; added `out/hills@autumn-prop-0..7.png`.
+Autumn uses tawny olive, khaki and muted ochre alongside Part A's current
+`grass@autumn-base.png`. Winter has opaque white/blue snow faces, blue-grey
+right slopes and a thin dark earth line at the foot. Autumn preserves the
+summer stones; winter gives the existing stone regions snow/grey colours.
+All sixteen seasonal alpha comparisons are **exactly zero differing pixels**,
+including the contact edges: no shadow exception was needed.
+
+**Method:** 26 separate built-in image-tool drawings/repaints on solid magenta:
+ten summer drawings (two alternatives each for 0 and 2), eight autumn and
+eight winter repaints of the new summer sprites. The second summer drawings
+were selected for 0's stronger height and 2's clearer terrace marks. Magenta
+is keyed out, each drawing is cropped and BOX-registered to its native bounds
+on a **384×384** canvas for 48 px sprites or **768×768** for 96 px sprites.
+An explicit 11-colour grass/stone, autumn/stone or snow/earth palette is locked
+before reduction. Every native pixel is the exact RGBA mode of **all 64
+samples in its 8×8 footprint**, including transparency; ties use a stable
+lexicographic order. Nearest neighbour is used only for enlargement.
+
+Seasonal paintings are registered to each final summer bounding box and
+composited through that exact summer mask. Material cleanup retains permanent
+stone regions, removes newly invented stones from grass tufts, and keeps the
+source terrace/overlap marks registered. Boundary cleanup resolves the contour
+at one native pixel; isolated bright reduction remnants are removed. The final
+recorded cleanup/transfer counts are **704 summer, 92 autumn and 274 winter
+pixels**. Validation caught and corrected a neighbour-vote case that could
+copy the outline colour inward. Code registers, reduces, palette-locks, cleans
+and composites drawings; it constructs no hill shapes, textures or noise.
+Alpha is strictly **0/255**, and RGB under transparency is **0,0,0**.
+
+**Measurements:** visible bounds include the contact edge; fill is visible
+width divided by cell width. All three seasons share these bounds and opaque
+pixel counts. Snow coverage counts the six opaque snow/shadow palette colours
+as a percentage of the entire winter silhouette, including its outline,
+exposed earth and stone in the denominator.
+
+| Index | Canvas | Visible bounds | Width fill | Opaque pixels | Winter snow |
+|---|---|---|---:|---:|---:|
+| 0 | 48×48 | 38×28 | 79.17% | 790 | 87.97% |
+| 1 | 48×48 | 38×26 | 79.17% | 678 | 86.43% |
+| 2 | 48×48 | 38×26 | 79.17% | 676 | 86.09% |
+| 3 | 48×48 | 38×27 | 79.17% | 729 | 86.56% |
+| 4 | 96×96 | 82×53 | 85.42% | 2,964 | 92.95% |
+| 5 | 96×96 | 82×49 | 85.42% | 2,636 | 92.68% |
+| 6 | 96×96 | 82×51 | 85.42% | 2,974 | 92.70% |
+| 7 | 96×96 | 82×50 | 85.42% | 2,707 | 92.65% |
+
+Small feet finish on row **43**, large feet on row **88**. Every small sprite
+has five clear columns on either side; every group has seven. Final sprites
+use **6–10 opaque colours** each. The eight summer shapes are unique, and all
+24 final pixel arrays are unique.
+
+**QC and review:** inspected the complete seasonal sets at native **1×** and
+exact nearest-neighbour **4×**, the three **640×432** map-like crops with
+**24 fully visible hills per season** beside a forest edge, the seasonal
+comparison and a direct scale comparison with approved mountain/tree art.
+The hills retain rounded elevated profiles, readable overlaps and attached
+feet; no detached specks, magenta fringe, rectangular backing, haze or soft
+alpha remain. The winter treatment reads as snow on raised ground. This is
+visual self-review against the supplied critic criteria, without a new
+independent critic verdict or a live-game check.
+
+Summer/autumn forest edges use the unchanged `treeline_forest-*` and
+`treeline_forest@autumn-*` files. No winter partners are present in `out/`, so
+the winter scene uses the eight 48 px cells of the supplied
+`reference/r14/fantasy-treeline_forest@winter-0.png` atlas. That reference still
+shows the existing snow-dusted canopies; Part C was not changed.
+
+The **22 final proof PNGs** are `review/r14-B-{summer,autumn,winter}-
+{props,map,ground-3x3}-{1x,4x}.png`, plus
+`review/r14-B-{seasons,scale-comparison}-{1x,4x}.png`. The three ground repeat
+pairs are literal, unlabelled **3×3** copies of the unchanged matching grass
+bases; no ground asset was redrawn for B. All **27** repeat crops and all
+**11** exact 4× enlargements pass byte comparisons.
+
+All **138,240 mode blocks / 8,847,360 source samples** were recomputed.
+Saved reductions plus recorded cleanup reproduce every final sprite exactly.
+Dimensions, palette membership, hard alpha, zero hidden RGB, single connected
+silhouettes, one-pixel boundary contours, all sixteen seasonal masks and full
+map placement bounds pass. **All 2,114 protected files remain byte-identical**,
+including Part A, the brief, references, trees, mountains and other art.
+
+Sources and alternatives are retained as `review/r14-B-source-*.png`, with
+exact prompts in PNG metadata. Registration, palette-lock and mode stages
+are `review/r14-B-stage-*.png`; enlarged seasonal edit targets are
+`review/r14-B-edit-summer-*.png`. Processing scripts and pixel cleanup records
+are embedded in the three `r14-B-*-props-1x.png` proofs. The review recipe,
+placements, validation script and machine-readable results are embedded in
+`review/r14-B-summer-map-1x.png`; baseline hashes are embedded in
+`review/r14-B-reference.png`. There are **129 new Part B review/source/stage
+PNGs** in total. Only the 24 named outputs, those Part B PNGs and this top note
+changed. No commit, push or branch change.
+
+---
+
 # Round 14 — Part A: critic-r14A-1 redraw
 
 Repaired all nine failed Part A files. Five image-painted turf patches replace
