@@ -1,0 +1,129 @@
+{
+  "part": "B",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "hills-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@autumn-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "hills@winter-prop-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent round-2 review of all 24 current Part B outputs against the full BRIEF-14.md, including the 08:38 UTC owner override, and the drawing-method sections of NOTES.md. Inspected every hill at exact native 1x and nearest-neighbour 4x on its seasonal grass; autumn and winter were also inspected on summer grass at both scales. Inspected 8x seasonal close-ups of 1 and 3 and an 8x close-up of autumn 4; alpha overlays and 50/50 RGB overlays against summer; three fresh 736x464 native map crops containing 24 hills apiece beside a forest edge; and native/4x comparisons with all eight approved mountain peaks and representative trees. The seven previous failures are resolved: 1 and 3 now have rounded upper shoulders, descending right slopes, two readable wrapping relief lines and grouped grass marks, with 3's two-pixel stone subordinate. Their seasonal partners preserve those landforms. Autumn 4 now has coherent tawny planes and a solid central overlap shadow; the previous pitted stippling is gone. All eight summer forms read as raised grassy terrain at 1x. The large groups have two or three distinct overlapping rounded crests; their broad slopes and sparse grass texture distinguish them from the approved jagged rock peaks. Top-left light, darker lower-right slopes, native pixel scale, one-pixel dark contours and attached contact feet are consistent. No ground squares, fog, smears or detached specks were found. Autumn is visibly tawny/olive/ochre and sits on the current Part A grass. Winter has solid opaque snow, blue-grey relief and a thin dark earth foot, with readable height on both grounds. All 24 technical checks pass: 48x48 for indices 0-3 and 96x96 for 4-7; visible widths 38/48 (79.17%) and 82/96 (85.42%); 6-10 opaque colours; alpha exactly 0/255; zero nonzero RGB under transparency; one 4-connected opaque component; dark boundary pixels. All 16 seasonal alpha comparisons differ by exactly 0 pixels, including contact shadows. Summer grass is pixel-identical to reference/r14/fantasy-grass-0.png. Inspected all three contextual grounds in literal 3x3 repeats and 8x wrap-junction close-ups. The unchanged winter ground retains a repeated diagonal snow-streak rhythm; this is outside Part B. Summer/autumn maps use out/treeline_forest partners. No winter tree partners exist in out/, so that map uses the supplied winter reference atlas; its leafy canopy is a Part C issue, not a hill failure. Verified all 10 prop-sheet enlargements are exact nearest-neighbour 4x and all 27 repeated ground cells are exact copies. Review evidence is in critic-r14B-2-*.png; machine measurements and starting hashes are embedded in critic-r14B-2-alpha-overlays-1x.png. All 2374 pre-existing art-drop files remain byte-identical. Only this JSON and new critic-r14B-2 review composites were written; no out/ edit, commit, push or branch change. This is an asset/composite review, not a live-game check."
+}
