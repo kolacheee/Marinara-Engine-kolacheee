@@ -233,6 +233,7 @@ export function CardEditor<T extends string>({
               x={actionsMenu.x}
               y={actionsMenu.y}
               autoFocus={actionsMenu.keyboard}
+              align="end"
               items={menuItems}
               onClose={() => setActionsMenu(null)}
             />
