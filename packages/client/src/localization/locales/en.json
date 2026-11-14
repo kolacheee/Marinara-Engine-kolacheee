@@ -2840,6 +2840,7 @@
   "drawer.popOut.hint": "Open this section in its own window, or drag it out.",
   "drawer.popOut.label": "Open {{title}} in its own window",
   "drawer.popOut.section": "this section",
+  "editor.actions.more": "More actions",
   "editor.autosave.busy": "Please wait for the current editor operation to finish.",
   "editor.autosave.failed": "Could not save your changes. The editor is still open; please try again.",
   "editor.avatar.actions.help": "Choose an image from this device or create one with your configured image-generation connection.",
