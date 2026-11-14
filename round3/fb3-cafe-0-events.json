@@ -1,0 +1,1038 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_cadbcc2f553f47ce9078789fc86a5216",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "IPu9ybelKidyXhmttSyjP"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_cadbcc2f553f47ce9078789fc86a5216",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"IPu9ybelKidyXhmttSyjP\",\n  \"name\": \"Rainy Café\",\n  \"css\": \"/* Rainy Café — ceramic counter and enamel-mug rims.\\nShape: containers 16px; nested fields/buttons 10px; tags capsule; native avatars and Conversation bubble silhouettes.\\nBorder: 2px enamel rim on containers, 1px on fields/buttons. Shadow: steam-soft blur only with inset glaze.\\nSelected: warm fill and inset ring. Focus: inset outline. No control movement or added phone rows.\\nHome art version 1 is provisional: image viewer did not expose pixels for comparison. */\\n:root {\\n --mari-tokens-version: 1; --radius: 1rem;\\n --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-dialogue-color: var(--card-foreground);\\n --mari-app-backdrop: url(\\\"theme:rainy-window.webp\\\"); --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-emblem.webp\\\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#241e1a33,#241e1a66), url(\\\"theme:rainy-window.webp\\\") center / cover no-repeat;\\n --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 10px;\\n --mari-home-widget-border: var(--border); --mari-home-widget-border-width: 2px; --mari-home-widget-radius: 16px; --mari-home-widget-bg: var(--card);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --background: #241e1a; --foreground: #f5e9d9; --card: #302721; --card-foreground: #f5e9d9; --popover: #302721; --popover-foreground: #f5e9d9;\\n --primary: #edbc7e; --primary-foreground: #2b1c0e; --secondary: #49392d; --secondary-foreground: #f5e9d9; --muted: #3b3028; --muted-foreground: #d0beaa; --accent: #514032; --accent-foreground: #fff1df;\\n --border: #7d6855; --input: #8e755e; --ring: #edbc7e; --sidebar: #29221d; --sidebar-foreground: #f5e9d9; --sidebar-border: #7d6855; --sidebar-accent: #49392d; --sidebar-accent-foreground: #fff1df; --destructive: #f5a49a; --destructive-foreground: #381512;\\n}\\n[data-theme=\\\"light\\\"] {\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-emblem.webp\\\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#f4ebdc22,#f4ebdc44), url(\\\"theme:rainy-window.webp\\\") center / cover no-repeat;\\n --background: #f4ebdc; --foreground: #35271f; --card: #fff8ed; --card-foreground: #35271f; --popover: #fff8ed; --popover-foreground: #35271f;\\n --primary: #854820; --primary-foreground: #fff8ed; --secondary: #ead8bf; --secondary-foreground: #35271f; --muted: #eee1cf; --muted-foreground: #705a47; --accent: #e8d3b6; --accent-foreground: #35271f;\\n --border: #ac9072; --input: #9c7b5e; --ring: #854820; --sidebar: #f5e9d7; --sidebar-foreground: #35271f; --sidebar-border: #ac9072; --sidebar-accent: #ead8bf; --sidebar-accent-foreground: #35271f; --destructive: #a43129; --destructive-foreground: #fff8ed;\\n}\\n[data-theme=\\\"dark\\\"] { color-scheme: dark; }\\n/* Quiet glaze and sparse grout lines sit on opaque ceramic, not behind text as busy art. */\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"composer\\\"], [data-mari-part=\\\"bubble\\\"] {\\n background-color: var(--card); color: var(--card-foreground);\\n background-image: linear-gradient(135deg, color-mix(in srgb, var(--foreground) 4%, transparent), transparent 48%);\\n border: 2px solid var(--border); border-radius: 16px;\\n box-shadow: inset 0 0 0 2px var(--card), inset 0 0 0 3px color-mix(in srgb, var(--border) 45%, transparent), 0 8px 24px -14px color-mix(in srgb, var(--foreground) 28%, transparent);\\n}\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"] {\\n background-image: linear-gradient(color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px);\\n background-size: 64px 64px;\\n}\\n[data-mari-part=\\\"message\\\"] { background: transparent; border: 0; box-shadow: none; }\\n/* Conversation retains its existing corner silhouette. */\\n.texting-bubble[data-mari-part=\\\"bubble\\\"] { border-radius: revert-layer; }\\n[data-mari-part=\\\"top-bar\\\"] { background: var(--sidebar); color: var(--sidebar-foreground); border-bottom: 2px solid var(--border); }\\n.mari-window__header, .mari-drawer__header { background-color: var(--secondary); color: var(--secondary-foreground); border-radius: 12px 12px 8px 8px; border-bottom: 1px solid var(--border); }\\n:where(button,input,textarea,select) { border-radius: 10px; }\\n:where(input,textarea,select) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); box-shadow: inset 0 2px 5px color-mix(in srgb, var(--border) 12%, transparent); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button)[aria-pressed=\\\"true\\\"], [role=\\\"tab\\\"][aria-selected=\\\"true\\\"] { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--primary); }\\n:where(button,input,textarea,select,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\\n/* Public Home-art hook is an img in the current implementation; replace decorative content only. */\\n[data-mari-part=\\\"home-art\\\"] { content: url(\\\"theme:cafe-home.webp\\\"); object-fit: cover; object-position: center; border-radius: 14px; }\\n@media (hover: hover) { [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); } }\\n@media (prefers-contrast: more) { [data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"] { background-image: none; } }\\n:root[data-mari-contrast=\\\"more\\\"] [data-mari-part=\\\"page\\\"], :root[data-mari-contrast=\\\"more\\\"] [data-mari-part=\\\"home-widget\\\"] { background-image: none; }\",\n  \"installedAt\": \"2026-11-14T11:48:02.175Z\",\n  \"createdAt\": \"2026-11-14T11:48:02.175Z\",\n  \"updatedAt\": \"2026-11-14T13:01:39.294Z\",\n  \"isActive\": true,\n  \"meta\": {\n    \"images\": [\n      {\n        \"name\": \"rainy-window.webp\",\n        \"bytes\": 366051,\n        \"css\": \"url(\\\"theme:rainy-window.webp\\\")\"\n      },\n      {\n        \"name\": \"cafe-emblem.webp\",\n        \"bytes\": 123984,\n        \"css\": \"url(\\\"theme:cafe-emblem.webp\\\")\"\n      },\n      {\n        \"name\": \"cafe-home.webp\",\n        \"bytes\": 330912,\n        \"css\": \"url(\\\"theme:cafe-home.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [],\n    \"thumbnail\": null,\n    \"packageBytes\": 1094787\n  }\n}",
+   "durationMs": 5
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_bf6a432131c746bf885dafd8fb1bc180",
+   "name": "docs_search",
+   "input": {
+    "query": "home backdrop home-wash data home theme",
+    "limit": 3
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_bf6a432131c746bf885dafd8fb1bc180",
+   "name": "docs_search",
+   "isError": false,
+   "output": "Canonical documentation matches for: home backdrop home-wash data home theme\n\n1. Source: docs/appearance/theme-author-guide.md — Heading: Changes — Line: 754\nwhile buttons keep the full accent; `--mari-accent-text` sets that text colour yourself.\n  `[data-mari-part=\"top-bar\"]` is the top bar on every device, and split view's second side has its\n  own bar with the same `[data-component=\"TopBar\"]` hooks (plus `[data-split-bar]`), so a theme's\n  top-bar art, fonts and tab colours reach it. `--mari-game-combat-bg` and `-bg-hover` are a whole\n  `background`, so gradients work.\n\n2. Source: docs/appearance/theme-author-guide.md — Heading: Backdrops — Line: 262\nSet `--mari-app-backdrop` on `:root` to paint art behind the app:\n\n```css\n:root {\n\n3. Source: docs/appearance/theme-author-guide.md — Heading: Parts — Line: 457\n| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `[data-mari-part=\"message\"]`                                                           | One message row, in every chat mode: the full width of the chat, with the avatar, name line and bubble inside. Paint the bubble (`bubble` below), not this row, or every bubble sit…",
+   "durationMs": 95
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_d24cdd17862846b6b15482ef6f6bcf37",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/theme-author-guide.md",
+    "heading": "Backdrops",
+    "maxChars": 6500
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_d24cdd17862846b6b15482ef6f6bcf37",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/theme-author-guide.md\nHeading: Backdrops\nStarts at line: 262\n\n\nSet `--mari-app-backdrop` on `:root` to paint art behind the app:\n\n```css\n:root {\n  --mari-app-backdrop: url(\"theme:city.webp\");\n  --mari-app-backdrop-position: bottom center;\n  --mari-app-backdrop-rendering: pixelated;\n}\n```\n\nIt is drawn once, on its own fixed layer under the whole app (`[data-mari-part=\"app-backdrop\"]`, so\nHome's decorations and the light scheme never hide it), and it shows behind chats too: the roleplay,\nconversation and game surfaces go transparent and the stock chat background steps aside. A\nbackground the user picked for a chat still shows on top of it. Panels keep `--card` and\n`--sidebar`, so make those translucent if you want the art to show behind them, and use\n`--mari-page-veil` to tint full pages. To give pages a panel of their own, style\n`[data-mari-part=\"page\"]` (see Hooks): it holds every Library page, editor, Settings and Docs, so\nLorebooks gets the same panel as Characters.\n\n| Token                            | Default                                                                                                                                                                                                           |\n| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `--mari-app-backdrop`            | One image or gradient                                                                                                                                                                                             |\n| `--mari-app-backdrop-size`       | `cover` (try `auto` or `64px` for tiles)                                                                                                                                                                          |\n| `--mari-app-backdrop-position`   | `center`                                                                                                                                                                                                          |\n| `--mari-app-backdrop-repeat`     | `no-repeat`                                                                                                                                                                                                       |\n| `--mari-app-backdrop-attachment` | `fixed`                                                                                                                                                                                                           |\n| `--mari-app-backdrop-rendering`  | `auto` (`pixelated` for pixel art)                                                                                                                                                                                |\n| `--mari-app-backdrop-layers`     | A whole `background` value with several layers, such as `url(city.webp) bottom / 100% auto no-repeat, radial-gradient(#fff3 1px, transparent 1px) 0 0 / 12px 12px, #fbe3ef`. It wins over the single-image tokens |\n\nCustom images are the most flexible part of a theme: backdrops, a top bar strip, Home widget\nframes and message frames (`border-image`, or a `background` on any part hook), tiled patterns\nand bundled pixel fonts all ship inside the theme file, and the import preview lists them.\nThe user's Appearance > Accessibility > Theme art strength fades the backdrop and the ambient\noverlay, and High contrast keeps them at 25% or less; a theme can't undo either.\n",
+   "durationMs": 3
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_bf3d049409f94d0fa2f5740049556c7c",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/theme-author-guide.md",
+    "heading": "Hooks",
+    "maxChars": 14000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_bf3d049409f94d0fa2f5740049556c7c",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/theme-author-guide.md\nHeading: Hooks\nStarts at line: 424 (bounded excerpt)\n\n\n### On `<html>`\n\n| Attribute                       | Values                                                                                                   |\n| ------------------------------- | -------------------------------------------------------------------------------------------------------- |\n| `data-theme`                    | `dark`, `light`                                                                                          |\n| `data-visual-theme`             | `default` (Marinara), `sillytavern` (Dottore), `stage`                                                   |\n| `data-overhaul`                 | `on` (new layout, desktop), `mobile` (new layout, phone and tablet); absent in the old layout            |\n| `data-custom-theme`             | The active theme's id                                                                                    |\n| `data-seasonal-theme`           | The seasonal look, when one is on                                                                        |\n| `data-mari-accent-fx`           | `pulse` or `rgb` while an accent effect runs                                                             |\n| `data-chat-id`                  | The open chat's id                                                                                       |\n| `data-chat-open-mode`           | The open chat's mode: `roleplay`, `conversation`, `game`                                                 |\n| `data-chat-tags`                | The open chat's tags, lowercase with spaces as `-`: style a story with `:root[data-chat-tags~=\"horror\"]` |\n| `data-mari-chat-art-behind`     | Present while the chat's background is shown behind the side panels (`--mari-chat-art` is the picture)   |\n| `data-marinara-reduced-effects` | Present when ambient animation is reduced                                                                |\n| `data-mari-a11y-line-height`    | Present when the user widened line spacing (`--mari-a11y-line-height`)                                   |\n| `data-mari-a11y-letter-spacing` | Present when the user widened letter spacing (`--mari-a11y-letter-spacing`)                              |\n| `data-mari-a11y-focus`          | Present when strong focus rings are on                                                                   |\n| `data-mari-contrast`            | `more` when high contrast is on (the user's choice, or the device asks for it)                           |\n| `data-mari-cvd-safe`            | Present when colour-blind-safe colours are on                                                            |\n| `data-mari-weather`             | The story weather while it shows: `rain`, `snow`, `fog`… (see [Weather](#weather))                       |\n| `data-mari-sky`                 | `dawn`, `day`, `dusk` or `night` while the story weather shows                                           |\n| `data-mari-shelter`             | `indoors` or `outdoors` while the story weather shows, when the app can tell from the location           |\n\n### Areas\n\n`[data-component=\"…\"]` names the big areas: `AppShell`, `TopBar`, `ChatSidebar`, `ChatSidebarSlot`,\n`RightPanelDesktop`, `RightPanelDesktopSlot`, `CenterContent`, `GlobalOmnibar`, `OverhaulLibraryNav`,\n`OverhaulSettingsPage`, `OverhaulLibraryPage`, `OverhaulCardGallery`, `OverhaulEditorHead`,\n`OverhaulEditorRail`.\n\n### Parts\n\n| Selector                                                                               | What it is                                                                                                                                                                                                                                                                                                                                      |\n| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `[data-mari-part=\"message\"]`                                                           | One message row, in every chat mode: the full width of the chat, with the avatar, name line and bubble inside. Paint the bubble (`bubble` below), not this row, or every bubble sits inside a second box. Also has `data-message-id` and `data-message-role` (`user`, `assistant`, `system`, …) and the message data below                                                                                                                                                                                               |\n| `[data-mari-part=\"bubble\"]`                                                            | The message bubble itself, in Roleplay and Conversation (`.mari-rp-bubble` / `.texting-bubble`). Background, border, radius and shadow go here |\n| `[data-mari-part=\"message\"][data-latest]`                                              | The newest reply from the character                                                                                                                                                                                                                                                                                                             |\n| `[data-mari-part=\"message\"][data-streaming]`                                           | A reply that is still being written                                                                                                                                                                                                                                                                                                             |\n| `[data-mari-part=\"avatar\"]`, `[data-mari-part=\"header\"]`, `[data-mari-part=\"actions\"]` | Inside a message: the avatar, the name line and the message tools                                                                                                                                                                                                                                                                               |\n| `[data-mari-part=\"reasoning\"]`, `[data-mari-part=\"reasoning-text\"]`                    | The reasoning toggle (or box) and its text, the same hook on desktop and on phones                                                                                                                                                                                                                                                              |\n| `[data-mari-part=\"composer\"]`                                                          | The message box. `data-composer` is `roleplay`, `conversation` or `game`                                                                                                                                                                                                                                                                        |\n| `[data-mari-part=\"home-art\"]`                                                          | The stock pictures on Home's cards                                                                                                                                                                                                                                                                                                              |\n| `[data-mari-part=\"message\"][data-vn]`                                                  | The visual novel dialogue box: a message with the same data (character, role, index), plus `avatar` and `header` parts inside                                                                                                                                                                                                                   |\n| `[data-mari-part=\"vn-sprite\"]`                                                         | An empty layer behind the VN dialogue box, reaching the bottom of the scene. It has `data-vn-speaker` (the speaker's name as a slug, or their role), `data-vn-speaker-role`, `data-character` and `data-character-id` for whoever is speaking now, so a theme can stand their picture there. `[data-roleplay-vn-media]` has the same attributes |\n| `[data-mari-part=\"message\"][data-game-narration]`                                      | The Game narration box. `data-message-role` is `narrator`, or `assistant` with `data-character` and `data-character-name` while a character speaks; `data-segment-type` and `data-expression` describe the current line                                                                                                                         |\n| `[data-mari-part=\"app-backdrop\"]`, `[data-mari-part=\"ambient\"]`                        | The backdrop and ambient layers. Their place in the page is fixed; style them with the tokens                                                                                                                                                                                                                                                   |\n| `[data-mari-part=\"home-widget\"]`                                                       | A Home widget card, Professor Mari included. Its frame has `data-home-widget-id` (`recent`, `professor`, `whats-new`, `character-library`, …). Inside: `home-widget-eyebrow`, `home-widget-title`, `home-widget-text`                                                                                                                           |\n| `[data-mari-part=\"top-bar\"]`                                                           | The top bar on every device. Split view's second side has its own slim bar with the same hooks (`[data-component=\"TopBar\"]`, `.ov-tab`, `.ov-tab__label`, `.ov-icon-btn`), marked `[data-split-bar]`, so top-bar art and fonts reach it too                                                                                                     |\n| `[data-mari-part=\"page-title\"]`                                                        | The big title of a main page: every Library section (Characters, Lorebooks, Connections, Agents…), Settings, Extensions and Docs. Style page titles with this one hook so they match on every page                                                                                                                                              |\n| `[data-mari-part=\"backdrop\"]`                                                          | A chat's background image (see Backdrops)                                                                                                                                                                                                                                                                                                       |\n| `[data-mari-part=\"stage-empty\"]`                                                       | The game stage with no scene image                                                                                                                                                                                                                                                                                                              |\n| `[data-mari-part=\"time\"]`                                                              | A message's time, in every chat mode                                                                                                                                                                                                                                                                                                            |\n| `[data-mari-part=\"chat-header\"]`                                                       | The conversation header (`data-chat-mode=\"conversation\"`)                                                                                                                                                                                                                                                                                       |\n| `[data-mari-part=\"game-hud\"]`, `[data-mari-part=\"game-tools\"]`                         | The Game map-and-party float and the narration tool row                                                                                                                                                                                                                                                                                         |\n| `[data-mari-part=\"avatar-placeholder\"]`                                                | The empty avatar circle; `data-role` is `user` or `assistant`                                                                                                                                                                                                                                                                                   |\n| `[data-mari-part=\"header\"][data-placement]`                                            | On roleplay messages: `outside` (name above the bubble) or `inside`                                                                                                                                                                                                                                                                             |\n| `[data-mari-part=\"home-widget-glow\"]`                                                  | The glow behind a Home widget's header\n…",
+   "durationMs": 3
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_458c979473a64d23abf89f4256bd1633",
+   "name": "docs_search",
+   "input": {
+    "query": "--mari-home-wash",
+    "limit": 2
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_458c979473a64d23abf89f4256bd1633",
+   "name": "docs_search",
+   "isError": false,
+   "output": "Canonical documentation matches for: --mari-home-wash\n\n1. Source: docs/appearance/theme-author-guide.md — Heading: Theme tokens added in v1.1 — Line: 151\n| `--mari-home-widget-eyebrow-color`, `--mari-home-widget-action-size`, `--mari-professor-sprite-scale`                                                                                                                        | The small label above widget titles, Professor Mari's Ask button text, and the size of Mari's picture (1 = stock)                                                                                                                 |\n| `--mari-home-wash`                                                                                                                                                                                                           | The tint Home lays ov…\n\n2. Source: docs/appearance/theme-author-guide.md — Heading: Changes — Line: 754\nkept over a backdrop; `!important` shorthands with `var()` kept; ambient overlay; picture icons\n  and cursor; `--mari-home-wash`, `--mari-home-art` and more Home widget tokens; VN dialogue, VN\n  sprite slot and Game narration hooks; theme files can suggest Follow time of day; guard v3.\n\n- **v1.2**: message template slot (`templates` in the theme file, `[data-mari-part=\"message-extra\"]`),",
+   "durationMs": 35
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_407eea7901714d84ada7f296498c3fb0",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/theme-author-guide.md",
+    "heading": "Theme tokens added in v1.1",
+    "maxChars": 6000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_407eea7901714d84ada7f296498c3fb0",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/theme-author-guide.md\nHeading: Theme tokens added in v1.1\nStarts at line: 151 (bounded excerpt)\n\n\nThese have no value until a theme sets one, so the user's own setting applies until then.\n\n| Token                                                                                                                                                                                                                        | Used for                                                                                                                                                                                                                          |\n| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `--mari-text-outline`                                                                                                                                                                                                        | The outline on message text, for example `0` to turn it off or `1px #3b2a1a`. Otherwise it's the user's Text Outline setting                                                                                                      |\n| `--mari-dialogue-color`                                                                                                                                                                                                      | Dialogue colour when the character or persona has none of its own (their own colour still wins)                                                                                                                                   |\n| `--mari-chat-font-size`                                                                                                                                                                                                      | Message text size. The Accessibility minimum still applies                                                                                                                                                                        |\n| `--mari-composer-placeholder`                                                                                                                                                                                                | The message box placeholder, as a quoted string: `\"> waiting for user input...\"`. Set it on `:root` or on one composer, such as `[data-composer=\"game\"]`. Text that asks for keys or passwords is ignored                         |\n| `--mari-page-veil`                                                                                                                                                                                                           | A colour laid over Settings, the Library, editors and Docs, so long text stays readable over a backdrop. `transparent` by default                                                                                                 |\n| `--mari-top-bar-bg`                                                                                                                                                                                                          | A whole `background` value for the top bar: an image, a gradient or several layers. `--mari-top-bar-rendering: pixelated` keeps pixel art crisp. The tabs and icons always stay on top and visible                                |\n| `--mari-top-bar-plate`, `--mari-top-bar-plate-radius`                                                                                                                                                                        | Over top-bar art, every tab, open-chat tab, icon button and the logo sits on a plate so it stays readable. These set the plate's colour and its corner radius (default `0.5rem`); set the radius to `0` for square pixel buttons. |\n| `--mari-msg-head-rule`                                                                                                                                                                                                       | The line under the name in roleplay messages (a `border-bottom` value, such as `none` or `2px dashed currentColor`)                                                                                                               |\n| `--mari-home-widget-border`, `--mari-home-widget-border-width`, `--mari-home-widget-radius`, `--mari-home-widget-bg`                                                                                                         | Every Home widget's frame and surface, Professor Mari included                                                                                                                                                                    |\n| `--mari-home-widget-font`, `--mari-home-widget-title-font`, `--mari-home-widget-title-size`, `--mari-home-widget-title-color`, `--mari-home-widget-eyebrow-size`, `--mari-home-widget-text-size`, `--mari-home-widget-muted` | Home widget type. Widgets grow taller when the text needs more room instead of clipping it                                                                                                                                        |\n| `--mari-home-widget-eyebrow-color`, `--mari-home-widget-action-size`, `--mari-professor-sprite-scale`                                                                                                                        | The small label above widget titles, Professor Mari's Ask button text, and the size of Mari's picture (1 = stock)                                                                                                                 |\n| `--mari-home-wash\n…",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_16099ce4959044b290597877a24c232a",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/custom-css-themes.md",
+    "heading": "What a custom theme is",
+    "maxChars": 1000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_16099ce4959044b290597877a24c232a",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/custom-css-themes.md\nHeading: What a custom theme is\nStarts at line: 7\n\n\nA theme is a block of CSS, the code web pages use for colors, fonts and spacing, plus any pictures and fonts it brings along. Themes are saved on your Marinara server, so a theme you install shows up on every device that connects to it. Only one theme is on at a time, and you can keep as many as you like.\n",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "draft",
+  "data": "The "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration,"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present,"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere,"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s new**"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s new**—"
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s new**—no "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s new**—no extra "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s new**—no extra rows "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s new**—no extra rows or "
+ },
+ {
+  "type": "draft",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s new**—no extra rows or moved "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_fa6856a2357d4b919fbeaa5b4c1108e0",
+   "name": "app_data",
+   "input": {
+    "action": "theme.update",
+    "id": "IPu9ybelKidyXhmttSyjP",
+    "apply": true,
+    "reason": "Shows the selected café picture as Home's backdrop and removes the cramped card decoration while preserving other surfaces.",
+    "patch": {
+     "css": "/* Rainy Café — ceramic counter and enamel-mug rims.\nShape: containers 16px; nested fields/buttons 10px; tags capsule; native avatars and Conversation bubble silhouettes.\nBorder: 2px enamel rim on containers, 1px on fields/buttons. Shadow: steam-soft blur only with inset glaze.\nSelected: warm fill and inset ring. Focus: inset outline. No control movement or added phone rows.\nSelected Home picture: version 3, displayed through the app backdrop while Home widgets are present. */\n:root {\n --mari-tokens-version: 1; --radius: 1rem;\n --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\n --mari-selected-tint: var(--primary); --mari-dialogue-color: var(--card-foreground);\n --mari-app-backdrop: url(\"theme:rainy-window.webp\"); --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\n --mari-app-backdrop-layers: url(\"theme:cafe-emblem.webp\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#241e1a33,#241e1a66), url(\"theme:rainy-window.webp\") center / cover no-repeat;\n --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 10px;\n --mari-home-widget-border: var(--border); --mari-home-widget-border-width: 2px; --mari-home-widget-radius: 16px; --mari-home-widget-bg: var(--card);\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\n --background: #241e1a; --foreground: #f5e9d9; --card: #302721; --card-foreground: #f5e9d9; --popover: #302721; --popover-foreground: #f5e9d9;\n --primary: #edbc7e; --primary-foreground: #2b1c0e; --secondary: #49392d; --secondary-foreground: #f5e9d9; --muted: #3b3028; --muted-foreground: #d0beaa; --accent: #514032; --accent-foreground: #fff1df;\n --border: #7d6855; --input: #8e755e; --ring: #edbc7e; --sidebar: #29221d; --sidebar-foreground: #f5e9d9; --sidebar-border: #7d6855; --sidebar-accent: #49392d; --sidebar-accent-foreground: #fff1df; --destructive: #f5a49a; --destructive-foreground: #381512;\n}\n[data-theme=\"light\"] {\n --mari-app-backdrop-layers: url(\"theme:cafe-emblem.webp\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#f4ebdc22,#f4ebdc44), url(\"theme:rainy-window.webp\") center / cover no-repeat;\n --background: #f4ebdc; --foreground: #35271f; --card: #fff8ed; --card-foreground: #35271f; --popover: #fff8ed; --popover-foreground: #35271f;\n --primary: #854820; --primary-foreground: #fff8ed; --secondary: #ead8bf; --secondary-foreground: #35271f; --muted: #eee1cf; --muted-foreground: #705a47; --accent: #e8d3b6; --accent-foreground: #35271f;\n --border: #ac9072; --input: #9c7b5e; --ring: #854820; --sidebar: #f5e9d7; --sidebar-foreground: #35271f; --sidebar-border: #ac9072; --sidebar-accent: #ead8bf; --sidebar-accent-foreground: #35271f; --destructive: #a43129; --destructive-foreground: #fff8ed;\n}\n[data-theme=\"dark\"] { color-scheme: dark; }\n/* Quiet glaze and sparse grout lines sit on opaque ceramic, not behind text as busy art. */\n[data-mari-part=\"page\"], [data-mari-part=\"home-widget\"], .mari-window, .mari-drawer, [data-mari-part=\"composer\"], [data-mari-part=\"bubble\"] {\n background-color: var(--card); color: var(--card-foreground);\n background-image: linear-gradient(135deg, color-mix(in srgb, var(--foreground) 4%, transparent), transparent 48%);\n border: 2px solid var(--border); border-radius: 16px;\n box-shadow: inset 0 0 0 2px var(--card), inset 0 0 0 3px color-mix(in srgb, var(--border) 45%, transparent), 0 8px 24px -14px color-mix(in srgb, var(--foreground) 28%, transparent);\n}\n[data-mari-part=\"page\"], [data-mari-part=\"home-widget\"] {\n background-image: linear-gradient(color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px);\n background-size: 64px 64px;\n}\n[data-mari-part=\"message\"] { background: transparent; border: 0; box-shadow: none; }\n/* Conversation retains its existing corner silhouette. */\n.texting-bubble[data-mari-part=\"bubble\"] { border-radius: revert-layer; }\n[data-mari-part=\"top-bar\"] { background: var(--sidebar); color: var(--sidebar-foreground); border-bottom: 2px solid var(--border); }\n.mari-window__header, .mari-drawer__header { background-color: var(--secondary); color: var(--secondary-foreground); border-radius: 12px 12px 8px 8px; border-bottom: 1px solid var(--border); }\n:where(button,input,textarea,select) { border-radius: 10px; }\n:where(input,textarea,select) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); box-shadow: inset 0 2px 5px color-mix(in srgb, var(--border) 12%, transparent); }\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\n:where(button)[aria-pressed=\"true\"], [role=\"tab\"][aria-selected=\"true\"] { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--primary); }\n:where(button,input,textarea,select,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\n/* Home uses the shared backdrop, not the small decorative image in What's new.\n   Only decorative stock art is suppressed; card titles, content and controls stay intact. */\n:root { --mari-home-art: none; }\n:root:has([data-mari-part=\"home-widget\"]) {\n --mari-app-backdrop: url(\"theme:cafe-home.webp\");\n --mari-app-backdrop-layers: url(\"theme:cafe-home.webp\") center / cover no-repeat;\n --mari-home-wash: color-mix(in srgb, var(--background) 18%, transparent);\n}\n@media (hover: hover) { [data-mari-part=\"home-widget\"]:hover { border-color: var(--primary); } }\n@media (prefers-contrast: more) { [data-mari-part=\"page\"], [data-mari-part=\"home-widget\"] { background-image: none; } }\n:root[data-mari-contrast=\"more\"] [data-mari-part=\"page\"], :root[data-mari-contrast=\"more\"] [data-mari-part=\"home-widget\"] { background-image: none; }"
+    }
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_fa6856a2357d4b919fbeaa5b4c1108e0",
+   "name": "app_data",
+   "isError": false,
+   "output": "Readback: store-verified\nCommand: app_data theme.update\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"ok\": true,\n  \"mode\": \"apply\",\n  \"saved\": true,\n  \"status\": \"applied\",\n  \"message\": \"Applied and saved. Marinara is showing the user a change card. The store read-back confirms the persisted rows match the intended change - no separate verification read is needed; report the outcome matter-of-factly.\",\n  \"readBack\": {\n    \"status\": \"verified\",\n    \"checkedRows\": 1\n  },\n  \"validation\": {\n    \"status\": \"passed\",\n    \"errors\": [],\n    \"notices\": [],\n    \"infos\": []\n  },\n  \"summary\": {\n    \"matchedRows\": 1,\n    \"affectedRows\": 1,\n    \"insertedRows\": 0,\n    \"updatedRows\": 1,\n    \"replacedRows\": 0,\n    \"deletedRows\": 0,\n    \"affectedTables\": {\n      \"custom_themes\": 1\n    },\n    \"preview\": [\n      {\n        \"table\": \"custom_themes\",\n        \"id\": \"IPu9ybelKidyXhmttSyjP\",\n        \"action\": \"update\",\n        \"before\": {\n          \"css\": \"/* Rainy Café — ceramic counter and enamel-mug rims.\\nShape: containers 16px; nested fields/buttons 10px; tags capsule; native avatars and Conversation bubble silhouettes.\\nBorder: 2px enamel rim on containers, 1px on fields/buttons. Shadow: steam-soft blur only with inset glaze.\\nSelected: warm fill and inset ring. Focus: inset outline. No control movement or added phone rows.\\nHome art version 1 is provisional: image viewer did not expose pixels for comparison. */\\n:root {\\n --mari-tokens-version: 1; --radius: 1rem;\\n --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-dialogue-color: var(--card-foreground);\\n --mari-app-backdrop: url(\\\"theme:rainy-window.webp\\\"); --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-emblem.webp\\\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#241e1a33,#241e1a66), url(\\\"theme:rainy-window.webp\\\") center / cover no-repeat;\\n --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 10px;\\n --mari-home-widget-border: var(--border); --mari-home-widget-border-width: 2px; --mari-home-widget-radius: 16px; --mari-home-widget-bg: var(--card);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --background: #241e1a; --foreground: #f5e9d9; --card: #302721; --card-foreground: #f5e9d9; --popover: #302721; --popover-foreground: #f5e9d9;\\n --primary: #edbc7e; --primary-foreground: #2b1c0e; --secondary: #49392d; --secondary-foreground: #f5e9d9; --muted: #3b3028; --muted-foreground: #d0beaa; --accent: #514032; --accent-foreground: #fff1df;\\n --border: #7d6855; --input: #8e755e; --ring: #edbc7e; --sidebar: #29221d; --sidebar-foreground: #f5e9d9; --sidebar-border: #7d6855; --sidebar-accent: #49392d; --sidebar-accent-foreground: #fff1df; --destructive: #f5a49a; --destructive-foreground: #381512;\\n}\\n[data-theme=\\\"light\\\"] {\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-emblem.webp\\\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#f4ebdc22,#f4ebdc44), url(\\\"theme:rainy-window.webp\\\") center / cover no-repeat;\\n --background: #f4ebdc; --foreground: #35271f; --card: #fff8ed; --card-foreground: #35271f; --popover: #fff8ed; --popover-foreground: #35271f;\\n --primary: #854820; --primary-foreground: #fff8ed; --secondary: #ead8bf; --secondary-foreground: #35271f; --muted: #eee1cf; --muted-foreground: #705a47; --accent: #e8d3b6; --accent-foreground: #35271f;\\n --border: #ac9072; --input: #9c7b5e; --ring: #854820; --sidebar: #f5e9d7; --sidebar-foreground: #35271f; --sidebar-border: #ac9072; --sidebar-accent: #ead8bf; --sidebar-accent-foreground: #35271f; --destructive: #a43129; --destructive-foreground: #fff8ed;\\n}\\n[data-theme=\\\"dark\\\"] { color-scheme: dark; }\\n/* Quiet glaze and sparse grout lines sit on opaque ceramic, not behind text as busy art. */\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"composer\\\"], [data-mari-part=\\\"bubble\\\"] {\\n background-color: var(--card); color: var(--card-foreground);\\n background-image: linear-gradient(135deg, color-mix(in srgb, var(--foreground) 4%, transparent), transparent 48%);\\n border: 2px solid var(--border); border-radius: 16px;\\n box-shadow: inset 0 0 0 2px var(--card), inset 0 0 0 3px color-mix(in srgb, var(--border) 45%, transparent), 0 8px 24px -14px color-mix(in srgb, var(--foreground) 28%, transparent);\\n}\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"] {\\n background-image: linear-gradient(color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px);\\n background-size: 64px 64px;\\n}\\n[data-mari-part=\\\"message\\\"] { background: transparent; border: 0; box-shadow: none; }\\n/* Conversation retains its existing corner silhouette. */\\n.texting-bubble[data-mari-part=\\\"bubble\\\"] { border-radius: revert-layer; }\\n[data-mari-part=\\\"top-bar\\\"] { background: var(--sidebar); color: var(--sidebar-foreground); border-bottom: 2px solid var(--border); }\\n.mari-window__header, .mari-drawer__header { background-color: var(--secondary); color: var(--secondary-foreground); border-radius: 12px 12px 8px 8px; border-bottom: 1px solid var(--border); }\\n:where(button,input,textarea,select) { border-radius: 10px; }\\n:where(input,textarea,select) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); box-shadow: inset 0 2px 5px color-mix(in srgb, var(--border) 12%, transparent); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button)[aria-pressed=\\\"true\\\"], [role=\\\"tab\\\"][aria-selected=\\\"true\\\"] { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--primary); }\\n:where(button,input,textarea,select,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\\n/* Public Home-art hook is an img in the current implementation; replace decorative content only. */\\n[data-mari-part=\\\"home-art\\\"] { content: url(\\\"theme:cafe-home.webp\\\"); object-fit: cover; object-position: center; border-radius: 14px; }\\n@media (hover: hover) { [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); } }\\n@media (prefers-contrast: more) { [data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"] { background-image: none; } }\\n:root[data-mari-contrast=\\\"more\\\"] [data-mari-part=\\\"page\\\"], :root[data-mari-contrast=\\\"more\\\"] [data-mari-part=\\\"home-widget\\\"] { background-image: none; }\"\n        },\n        \"after\": {\n          \"css\": \"/* Rainy Café — ceramic counter and enamel-mug rims.\\nShape: containers 16px; nested fields/buttons 10px; tags capsule; native avatars and Conversation bubble silhouettes.\\nBorder: 2px enamel rim on containers, 1px on fields/buttons. Shadow: steam-soft blur only with inset glaze.\\nSelected: warm fill and inset ring. Focus: inset outline. No control movement or added phone rows.\\nSelected Home picture: version 3, displayed through the app backdrop while Home widgets are present. */\\n:root {\\n --mari-tokens-version: 1; --radius: 1rem;\\n --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-dialogue-color: var(--card-foreground);\\n --mari-app-backdrop: url(\\\"theme:rainy-window.webp\\\"); --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-emblem.webp\\\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#241e1a33,#241e1a66), url(\\\"theme:rainy-window.webp\\\") center / cover no-repeat;\\n --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-radius: 10px;\\n --mari-home-widget-border: var(--border); --mari-home-widget-border-width: 2px; --mari-home-widget-radius: 16px; --mari-home-widget-bg: var(--card);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --background: #241e1a; --foreground: #f5e9d9; --card: #302721; --card-foreground: #f5e9d9; --popover: #302721; --popover-foreground: #f5e9d9;\\n --primary: #edbc7e; --primary-foreground: #2b1c0e; --secondary: #49392d; --secondary-foreground: #f5e9d9; --muted: #3b3028; --muted-foreground: #d0beaa; --accent: #514032; --accent-foreground: #fff1df;\\n --border: #7d6855; --input: #8e755e; --ring: #edbc7e; --sidebar: #29221d; --sidebar-foreground: #f5e9d9; --sidebar-border: #7d6855; --sidebar-accent: #49392d; --sidebar-accent-foreground: #fff1df; --destructive: #f5a49a; --destructive-foreground: #381512;\\n}\\n[data-theme=\\\"light\\\"] {\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-emblem.webp\\\") right 20px bottom 20px / 72px auto no-repeat, linear-gradient(#f4ebdc22,#f4ebdc44), url(\\\"theme:rainy-window.webp\\\") center / cover no-repeat;\\n --background: #f4ebdc; --foreground: #35271f; --card: #fff8ed; --card-foreground: #35271f; --popover: #fff8ed; --popover-foreground: #35271f;\\n --primary: #854820; --primary-foreground: #fff8ed; --secondary: #ead8bf; --secondary-foreground: #35271f; --muted: #eee1cf; --muted-foreground: #705a47; --accent: #e8d3b6; --accent-foreground: #35271f;\\n --border: #ac9072; --input: #9c7b5e; --ring: #854820; --sidebar: #f5e9d7; --sidebar-foreground: #35271f; --sidebar-border: #ac9072; --sidebar-accent: #ead8bf; --sidebar-accent-foreground: #35271f; --destructive: #a43129; --destructive-foreground: #fff8ed;\\n}\\n[data-theme=\\\"dark\\\"] { color-scheme: dark; }\\n/* Quiet glaze and sparse grout lines sit on opaque ceramic, not behind text as busy art. */\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"composer\\\"], [data-mari-part=\\\"bubble\\\"] {\\n background-color: var(--card); color: var(--card-foreground);\\n background-image: linear-gradient(135deg, color-mix(in srgb, var(--foreground) 4%, transparent), transparent 48%);\\n border: 2px solid var(--border); border-radius: 16px;\\n box-shadow: inset 0 0 0 2px var(--card), inset 0 0 0 3px color-mix(in srgb, var(--border) 45%, transparent), 0 8px 24px -14px color-mix(in srgb, var(--foreground) 28%, transparent);\\n}\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"] {\\n background-image: linear-gradient(color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--border) 9%, transparent) 1px, transparent 1px);\\n background-size: 64px 64px;\\n}\\n[data-mari-part=\\\"message\\\"] { background: transparent; border: 0; box-shadow: none; }\\n/* Conversation retains its existing corner silhouette. */\\n.texting-bubble[data-mari-part=\\\"bubble\\\"] { border-radius: revert-layer; }\\n[data-mari-part=\\\"top-bar\\\"] { background: var(--sidebar); color: var(--sidebar-foreground); border-bottom: 2px solid var(--border); }\\n.mari-window__header, .mari-drawer__header { background-color: var(--secondary); color: var(--secondary-foreground); border-radius: 12px 12px 8px 8px; border-bottom: 1px solid var(--border); }\\n:where(button,input,textarea,select) { border-radius: 10px; }\\n:where(input,textarea,select) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); box-shadow: inset 0 2px 5px color-mix(in srgb, var(--border) 12%, transparent); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button)[aria-pressed=\\\"true\\\"], [role=\\\"tab\\\"][aria-selected=\\\"true\\\"] { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--primary); }\\n:where(button,input,textarea,select,a):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\\n/* Home uses the shared backdrop, not the small decorative image in What's new.\\n   Only decorative stock art is suppressed; card titles, content and controls stay intact. */\\n:root { --mari-home-art: none; }\\n:root:has([data-mari-part=\\\"home-widget\\\"]) {\\n --mari-app-backdrop: url(\\\"theme:cafe-home.webp\\\");\\n --mari-app-backdrop-layers: url(\\\"theme:cafe-home.webp\\\") center / cover no-repeat;\\n --mari-home-wash: color-mix(in srgb, var(--background) 18%, transparent);\\n}\\n@media (hover: hover) { [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); } }\\n@media (prefers-contrast: more) { [data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"] { background-image: none; } }\\n:root[data-mari-contrast=\\\"more\\\"] [data-mari-part=\\\"page\\\"], :root[data-mari-contrast=\\\"more\\\"] [data-mari-part=\\\"home-widget\\\"] { background-image: none; }\"\n        },\n        \"unchangedFieldsOmitted\": true\n      }\n    ],\n    \"truncated\": false\n  },\n  \"changeCard\": {\n    \"undoUntil\": \"2026-11-28T13:27:04.770Z\"\n  },\n  \"journalPath\": \"/home/kolache/Downloads/marinara-agent-handoff/mari-theme-test-data/storage/journal/2026-11-14T13-27-04-691Z_mari-db_sryobXP8U-_joTBqAoLoy.jsonl\"\n}",
+   "durationMs": 100
+  }
+ },
+ {
+  "type": "token",
+  "data": "The handbook confirms it: that slot is a small card decoration, not a Home hero image. I’ll put the chosen café picture on the backdrop while Home cards are present, keep the rainy-window backdrop elsewhere, and remove the cropped decoration from **What’s new**—no extra rows or moved controls."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "narration": true
+  }
+ },
+ {
+  "type": "suggestions",
+  "data": [
+   {
+    "id": "suggestion-1",
+    "label": "Adjust Home crop",
+    "prompt": "Adjust Rainy Café's Home backdrop crop to show the mug better on my phone.",
+    "entity": "settings"
+   },
+   {
+    "id": "suggestion-2",
+    "label": "Review screenshot",
+    "prompt": "I'll send a screenshot of Rainy Café's Home so you can check the picture placement and readability.",
+    "entity": "settings"
+   }
+  ]
+ },
+ {
+  "type": "draft",
+  "data": "Fixed "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp,"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3**"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present,"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new**"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip;"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere,"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability;"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified,"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen,"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area,"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-author-"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-author-guide.md` —"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-author-guide.md` — “"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops”"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” "
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “"
+ },
+ {
+  "type": "draft",
+  "data": "Fixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “Hooks.”"
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "\n\nFixed and saved **Rainy Café**. The café picture has escaped its decorative postage stamp, kek.\n\n- The selected **version 3** now fills the backdrop while Home cards are present, with a light day/night-aware wash.\n- **What’s new** no longer carries the cropped picture strip; its text and controls stay intact.\n- Elsewhere, the rainy-window backdrop and emblem remain unchanged.\n- Ceramic cards stay opaque for readability; no added rows or moved controls.\n\nThe saved CSS is verified, and the theme remains active. I can’t see the rendered Home screen, so please check the crop on your phone—the picture now uses the available backdrop area, but cards will naturally cover parts of it.\n\nReference: `docs/appearance/theme-author-guide.md` — “Backdrops” and “Hooks.”"
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]

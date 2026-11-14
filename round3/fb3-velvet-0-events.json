@@ -1,0 +1,1316 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_fc03658327244a119ca32af0bed538ba",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_fc03658327244a119ca32af0bed538ba",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n  \"name\": \"Velvet Casket (my copy)\",\n  \"css\": \"[elided 57436 chars — read this field with app_data { field: \\\"css\\\" }]\",\n  \"installedAt\": \"2026-11-14T11:41:01.460Z\",\n  \"createdAt\": \"2026-11-14T11:41:01.475Z\",\n  \"updatedAt\": \"2026-11-14T12:11:25.226Z\",\n  \"isActive\": false,\n  \"meta\": {\n    \"author\": \"kolache\",\n    \"version\": \"1.6\",\n    \"description\": \"Everything is a coffin: messages stand as coffins under an iron cemetery fence. Pastel goth lilac, mint and pink by day; black and oxblood velvet by candlelight at night.\",\n    \"colorScheme\": \"both\",\n    \"settings\": {\n      \"colorScheme\": \"time\",\n      \"dayStart\": \"07:00\",\n      \"nightStart\": \"19:00\",\n      \"accent\": \"#a3213a\",\n      \"accentLight\": \"#c42d7a\",\n      \"background\": \"#0b0709\",\n      \"backgroundLight\": \"#ece2fb\",\n      \"fontFamily\": \"EB Garamond\"\n    },\n    \"credits\": [\n      {\n        \"what\": \"Backdrops, velvet, wallpaper, stickers, ornaments, weather sprites\",\n        \"by\": \"kolache, made with Codex\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Coffin frames, iron fence, finials, send icon\",\n        \"by\": \"kolache, drawn in code\",\n        \"license\": \"Free to reuse\"\n      },\n      {\n        \"what\": \"Typefaces: UnifrakturCook, EB Garamond, Cormorant SC\",\n        \"by\": \"j. 'mach' wust; Georg Duffner and Octavio Pardo; Christian Thalmann\",\n        \"license\": \"OFL-1.1\"\n      }\n    ],\n    \"license\": \"Free to reuse\",\n    \"labels\": [\n      \"Day and night\",\n      \"Pastel goth by day\",\n      \"Traditional goth by night\",\n      \"Long-reply column\"\n    ],\n    \"images\": [\n      {\n        \"name\": \"cameo-day.webp\",\n        \"bytes\": 31650,\n        \"css\": \"url(\\\"theme:cameo-day.webp\\\")\"\n      },\n      {\n        \"name\": \"cameo-night.webp\",\n        \"bytes\": 30342,\n        \"css\": \"url(\\\"theme:cameo-night.webp\\\")\"\n      },\n      {\n        \"name\": \"card-new-day.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-day.svg\\\")\"\n      },\n      {\n        \"name\": \"card-new-night.svg\",\n        \"bytes\": 294,\n        \"css\": \"url(\\\"theme:card-new-night.svg\\\")\"\n      },\n      {\n        \"name\": \"day-chapel.webp\",\n        \"bytes\": 276972,\n        \"css\": \"url(\\\"theme:day-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"day-pattern.webp\",\n        \"bytes\": 53022,\n        \"css\": \"url(\\\"theme:day-pattern.webp\\\")\"\n      },\n      {\n        \"name\": \"day-phone.webp\",\n        \"bytes\": 168741,\n        \"css\": \"url(\\\"theme:day-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"fence-day.svg\",\n        \"bytes\": 1407,\n        \"css\": \"url(\\\"theme:fence-day.svg\\\")\"\n      },\n      {\n        \"name\": \"fence-night.svg\",\n        \"bytes\": 1461,\n        \"css\": \"url(\\\"theme:fence-night.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-day.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-day.svg\\\")\"\n      },\n      {\n        \"name\": \"lid-night.svg\",\n        \"bytes\": 480,\n        \"css\": \"url(\\\"theme:lid-night.svg\\\")\"\n      },\n      {\n        \"name\": \"night-chapel-storm.webp\",\n        \"bytes\": 140652,\n        \"css\": \"url(\\\"theme:night-chapel-storm.webp\\\")\"\n      },\n      {\n        \"name\": \"night-chapel.webp\",\n        \"bytes\": 104409,\n        \"css\": \"url(\\\"theme:night-chapel.webp\\\")\"\n      },\n      {\n        \"name\": \"night-phone.webp\",\n        \"bytes\": 77862,\n        \"css\": \"url(\\\"theme:night-phone.webp\\\")\"\n      },\n      {\n        \"name\": \"or-bow.webp\",\n        \"bytes\": 18501,\n        \"css\": \"url(\\\"theme:or-bow.webp\\\")\"\n      },\n      {\n        \"name\": \"or-candle.webp\",\n        \"bytes\": 4485,\n        \"css\": \"url(\\\"theme:or-candle.webp\\\")\"\n      },\n      {\n        \"name\": \"or-crest.webp\",\n        \"bytes\": 7782,\n        \"css\": \"url(\\\"theme:or-crest.webp\\\")\"\n      },\n      {\n        \"name\": \"or-cross.webp\",\n        \"bytes\": 7152,\n        \"css\": \"url(\\\"theme:or-cross.webp\\\")\"\n      },\n      {\n        \"name\": \"or-fleur.webp\",\n        \"bytes\": 7821,\n        \"css\": \"url(\\\"theme:or-fleur.webp\\\")\"\n      },\n      {\n        \"name\": \"or-rose.webp\",\n        \"bytes\": 20862,\n        \"css\": \"url(\\\"theme:or-rose.webp\\\")\"\n      },\n      {\n        \"name\": \"or-stud.webp\",\n        \"bytes\": 9132,\n        \"css\": \"url(\\\"theme:or-stud.webp\\\")\"\n      },\n      {\n        \"name\": \"rail-day.svg\",\n        \"bytes\": 384,\n        \"css\": \"url(\\\"theme:rail-day.svg\\\")\"\n      },\n      {\n        \"name\": \"rail-night.svg\",\n        \"bytes\": 507,\n        \"css\": \"url(\\\"theme:rail-night.svg\\\")\"\n      },\n      {\n        \"name\": \"send-day.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-day.svg\\\")\"\n      },\n      {\n        \"name\": \"send-night.svg\",\n        \"bytes\": 303,\n        \"css\": \"url(\\\"theme:send-night.svg\\\")\"\n      },\n      {\n        \"name\": \"st-bat.webp\",\n        \"bytes\": 8553,\n        \"css\": \"url(\\\"theme:st-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-bunny.webp\",\n        \"bytes\": 11577,\n        \"css\": \"url(\\\"theme:st-bunny.webp\\\")\"\n      },\n      {\n        \"name\": \"st-heartbat.webp\",\n        \"bytes\": 6540,\n        \"css\": \"url(\\\"theme:st-heartbat.webp\\\")\"\n      },\n      {\n        \"name\": \"st-holo.webp\",\n        \"bytes\": 7485,\n        \"css\": \"url(\\\"theme:st-holo.webp\\\")\"\n      },\n      {\n        \"name\": \"st-skull.webp\",\n        \"bytes\": 11094,\n        \"css\": \"url(\\\"theme:st-skull.webp\\\")\"\n      },\n      {\n        \"name\": \"velvet-tile.webp\",\n        \"bytes\": 63864,\n        \"css\": \"url(\\\"theme:velvet-tile.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-bat.webp\",\n        \"bytes\": 693,\n        \"css\": \"url(\\\"theme:wx-bat.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-batday.webp\",\n        \"bytes\": 1179,\n        \"css\": \"url(\\\"theme:wx-batday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake1.webp\",\n        \"bytes\": 3504,\n        \"css\": \"url(\\\"theme:wx-flake1.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake2.webp\",\n        \"bytes\": 3318,\n        \"css\": \"url(\\\"theme:wx-flake2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-flake3.webp\",\n        \"bytes\": 3312,\n        \"css\": \"url(\\\"theme:wx-flake3.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-heart.webp\",\n        \"bytes\": 2193,\n        \"css\": \"url(\\\"theme:wx-heart.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-leaf.webp\",\n        \"bytes\": 1347,\n        \"css\": \"url(\\\"theme:wx-leaf.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-moonday.webp\",\n        \"bytes\": 2184,\n        \"css\": \"url(\\\"theme:wx-moonday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal.webp\",\n        \"bytes\": 1377,\n        \"css\": \"url(\\\"theme:wx-petal.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petal2.webp\",\n        \"bytes\": 1194,\n        \"css\": \"url(\\\"theme:wx-petal2.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-petalday.webp\",\n        \"bytes\": 1479,\n        \"css\": \"url(\\\"theme:wx-petalday.webp\\\")\"\n      },\n      {\n        \"name\": \"wx-spark.svg\",\n        \"bytes\": 672,\n        \"css\": \"url(\\\"theme:wx-spark.svg\\\")\"\n      },\n      {\n        \"name\": \"wx-starday.webp\",\n        \"bytes\": 2427,\n        \"css\": \"url(\\\"theme:wx-starday.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [\n      {\n        \"family\": \"UnifrakturCook\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 17280\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 23820\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25389\n      },\n      {\n        \"family\": \"EB Garamond\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 25350\n      },\n      {\n        \"family\": \"Cormorant SC\",\n        \"license\": \"OFL-1.1\",\n        \"bytes\": 20940\n      }\n    ],\n    \"thumbnail\": {\n      \"bytes\": 27066\n    },\n    \"packageBytes\": 1656617\n  }\n}\n\nNote: oversized fields were elided to fit the output limit. Read any one in full by repeating this action with field=\"<path>\" (add offset to page a long value):\n  - css (57436 chars)",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_f718b00459c345f2ac57b0dc384d9c2c",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM",
+    "field": "css",
+    "offset": 0,
+    "limit": 18000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_f718b00459c345f2ac57b0dc384d9c2c",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n/* VELVET CASKET (theme author guide v1.5, contract 1)\n   One idea: every container is a coffin. Messages stand as upright coffins with a finial on the\n   head, the message box is a coffin laid on its side, Home widgets are a row of coffins, dialogs are\n   coffin lids, buttons are coffin tags, avatars are mourning cameos, and an iron cemetery fence runs\n   under the top bar.\n   Day  = PASTEL GOTH: lilac, mint, baby pink, thick black sticker outlines, bats and bow-skulls.\n   Night = TRADITIONAL GOTH: black and oxblood velvet, antique silver trim, iron crosses, candlelight. */\n\n:root{\n  --mari-tokens-version:1;\n  /* coffin geometry (px so the shape survives any height) */\n  --vc-head:22px;   /* how far the head is cut in from each side */\n  --vc-sh:22px;     /* how far down the shoulders sit */\n  --vc-foot:14px;   /* how far the foot tapers in */\n  --vc-bw:2px;      /* outline thickness */\n  --vc-coffin:polygon(var(--vc-head) 0,calc(100% - var(--vc-head)) 0,100% var(--vc-sh),calc(100% - var(--vc-foot)) 100%,var(--vc-foot) 100%,0 var(--vc-sh));\n  --vc-coffin-in:polygon(calc(var(--vc-head) - 1px) 0,calc(100% - var(--vc-head) + 1px) 0,100% calc(var(--vc-sh) - 1px),calc(100% - var(--vc-foot)) 100%,var(--vc-foot) 100%,0 calc(var(--vc-sh) - 1px));\n  /* coffin on its side: head on the left, foot on the right */\n  --vc-coffin-side:polygon(0 12px,30px 0,calc(100% - 8px) 6px,100% 50%,calc(100% - 8px) calc(100% - 6px),30px 100%,0 calc(100% - 12px));\n  /* coffin tag for buttons and pills */\n  --vc-tag:polygon(8px 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,8px 100%,0 50%);\n\n  --vc-blackletter:\"UnifrakturCook\",\"Old English Text MT\",serif;\n  --vc-serif:\"EB Garamond\",Garamond,\"Times New Roman\",serif;\n  --vc-plate:\"Cormorant SC\",\"EB Garamond\",serif;\n\n  --radius:2px;\n  --mari-font-ui:var(--vc-serif);\n  --mari-font-heading:var(--vc-blackletter);\n  --mari-font-chat:var(--vc-serif);\n  --ov-serif:var(--vc-blackletter);\n  --mari-chat-font-size:17px;\n  --mari-chat-line-height:1.6;\n  --mari-message-measure:72ch;\n  --mari-paragraph-gap:0.8em;\n  --mari-dialogue-weight:500;\n  --mari-text-outline:0;\n  --mari-min-ui-text:12px;\n  --mari-toast-font-size:1rem;\n  --mari-selected-tint:var(--primary);\n  --mari-msg-head-rule:var(--vc-head-rule);\n  --mari-home-art:none;\n  --mari-home-widget-radius:0;\n  --mari-home-widget-border-width:0;\n  --mari-home-widget-font:var(--vc-serif);\n  --mari-home-widget-title-font:var(--vc-blackletter);\n  --mari-home-widget-title-size:1.6rem;\n  --mari-home-widget-eyebrow-size:0.8125rem;\n  --mari-home-widget-text-size:0.9375rem;\n  --mari-home-widget-action-size:0.9375rem;\n  --mari-home-shortcut-size:1rem;\n  --mari-top-bar-plate-radius:0;\n  --mari-composer-placeholder:\"Whisper into the dark...\";\n  --mari-chat-wash:none;\n  --mari-chat-row-art-opacity:0;\n  --marinara-theme-accent-pulse:none;\n  --glow-primary:transparent; --glow-accent:transparent;\n  --mari-chat-column:46rem;\n  --mari-art-saturation-1:28%; --mari-art-saturation-2:24%;\n  --mari-pinned-speaker:on;\n  --mari-phone-avatar:hidden;\n}\n\n/* ── NIGHT · traditional goth ─────────────────────────────── */\n:root,:root[data-theme=\"dark\"]{\n  --vc-ground:#07090b; --vc-ink:#efe6e8; --vc-mute:#bfaeb5; --vc-faint:#9a8a91;\n  --vc-hair:rgba(185,170,180,.28);\n  --vc-trim:#9a8f99;              /* antique silver outline */\n  --vc-lining:#0a1017;            /* coffin lining under the velvet */\n  --vc-lining-user:#0d151d;\n  --vc-velvet:url(\"theme:velvet-tile.webp\");\n  --vc-panel:rgba(8,12,16,.92);\n  --vc-bar:#070b0e;\n  --vc-accent:#215fa3;            /* oxblood */\n  --vc-accent-ink:#a7ccf1;        /* readable crimson for text on black */\n  --vc-gold:#dcb874;              /* candle gold */\n  --vc-finial:url(\"theme:or-cross.webp\");\n  --vc-finial-user:url(\"theme:or-rose.webp\");\n  --vc-finial-latest:url(\"theme:or-candle.webp\");\n  --vc-crest:url(\"theme:or-crest.webp\");\n  --vc-scene-break:url(\"theme:or-fleur.webp\");\n  --vc-fence:url(\"theme:fence-night.svg\");\n  --mari-icon-send:url(\"theme:send-night.svg\");\n  --vc-backdrop:url(\"theme:night-chapel.webp\");\n  --vc-backdrop-wash:linear-gradient(rgba(7,9,11,0),rgba(7,9,11,0));\n  --mari-art-lightness-1:20%; --mari-art-lightness-2:12%;\n  --vc-online:#4fc79a;\n  --vc-name:var(--vc-gold);\n  --vc-latest-trim:#215fa3;\n  --vc-head-rule:1px solid rgba(185,170,180,.3);\n  --vc-mint:#cfc6d2;\n  --vc-mint-ink:#cfc6d2;\n  --vc-rail:url(\"theme:rail-night.svg\");\n  --vc-lid:url(\"theme:lid-night.svg\");\n  --vc-sidebar-bg:linear-gradient(rgba(7,10,14,.28),rgba(7,10,14,.4)),url(\"theme:velvet-tile.webp\") 0 0 / 512px repeat;\n  --vc-lining-layers:linear-gradient(rgba(9,14,21,.5),rgba(9,14,21,.58)),var(--vc-velvet) 0 0 / 512px repeat,#0a1017;\n  --vc-lining-user-layers:linear-gradient(rgba(12,22,34,.46),rgba(12,22,34,.54)),var(--vc-velvet) 0 0 / 512px repeat,#0d151d;\n}\n\n/* ── DAY · pastel goth ─────────────────────────────────────── */\n:root[data-theme=\"light\"]{\n  --vc-ground:#ece2fb; --vc-ink:#1f1226; --vc-mute:#4f3a5c; --vc-faint:#6a5677;\n  --vc-hair:rgba(26,16,32,.22);\n  --vc-trim:#1a1020;              /* thick black sticker outline */\n  --vc-lining:#f8f2ff;            /* lilac paper */\n  --vc-lining-user:#fde6f1;       /* baby pink */\n  --vc-velvet:none;\n  --vc-panel:rgba(244,236,253,.93);\n  --vc-bar:#f3eafd;\n  --vc-accent:#2d68b8;            /* hot baby-pink, white text passes */\n  --vc-accent-ink:#2a507a;\n  --vc-gold:#2f7d63;              /* mint ink for names */\n  --vc-finial:url(\"theme:st-bat.webp\");\n  --vc-finial-user:url(\"theme:st-skull.webp\");\n  --vc-finial-latest:url(\"theme:st-heartbat.webp\");\n  --vc-crest:url(\"theme:st-holo.webp\");\n  --vc-scene-break:url(\"theme:st-holo.webp\");\n  --vc-fence:url(\"theme:fence-day.svg\");\n  --vc-bw:2.5px;\n  --mari-icon-send:url(\"theme:send-day.svg\");\n  --vc-backdrop:url(\"theme:day-chapel.webp\");\n  --vc-backdrop-wash:linear-gradient(rgba(236,226,251,0),rgba(236,226,251,0));\n  --mari-art-lightness-1:84%; --mari-art-lightness-2:78%;\n  --vc-online:#17694a;\n  --vc-name:#6b1f6e;\n  --vc-mint:#9fe8c8;\n  --vc-mint-ink:#1d6b4f;\n  --vc-latest-trim:#1a1020;\n  --vc-head-rule:2px dashed #7fd6b0;\n  --vc-rail:url(\"theme:rail-day.svg\");\n  --vc-lid:url(\"theme:lid-day.svg\");\n  --vc-sidebar-bg:linear-gradient(rgba(246,240,254,.9),rgba(246,240,254,.9)),url(\"theme:day-pattern.webp\") 0 0 / 320px repeat;\n  --vc-lining-layers:#ecdfff;\n  --vc-lining-user-layers:#ffdcec;\n  --vc-lining-latest:linear-gradient(#ecdfff,#ecdfff) padding-box;\n}\n\n:root,:root[data-theme=\"dark\"],:root[data-theme=\"light\"]{\n  --background:var(--vc-ground); --foreground:var(--vc-ink);\n  --card:var(--vc-panel); --card-foreground:var(--vc-ink);\n  --popover:var(--vc-panel); --popover-foreground:var(--vc-ink);\n  --primary:var(--vc-accent); --primary-foreground:#fff;\n  --secondary:color-mix(in srgb,var(--vc-ink) 8%,var(--vc-ground)); --secondary-foreground:var(--vc-ink);\n  --muted:color-mix(in srgb,var(--vc-ink) 6%,var(--vc-ground)); --muted-foreground:var(--vc-mute);\n  --accent:color-mix(in srgb,var(--vc-accent) 16%,var(--vc-ground)); --accent-foreground:var(--vc-ink);\n  --destructive:#b3123a; --destructive-foreground:#fff;\n  --border:var(--vc-hair); --input:var(--vc-hair); --ring:var(--vc-accent);\n  --sidebar:var(--vc-panel); --sidebar-foreground:var(--vc-ink); --sidebar-border:var(--vc-hair);\n  --sidebar-accent:color-mix(in srgb,var(--vc-accent) 14%,transparent); --sidebar-accent-foreground:var(--vc-ink);\n  --ov-line:var(--vc-hair); --ov-text:var(--vc-ink); --ov-muted:var(--vc-mute); --ov-dim:var(--vc-faint);\n  --ov-accent:var(--vc-accent-ink);\n  --ov-hover:color-mix(in srgb,var(--vc-ink) 7%,transparent);\n  --ov-active-bg:color-mix(in srgb,var(--vc-accent) 18%,transparent);\n  --ov-mode-conversation:var(--vc-accent-ink); --ov-mode-roleplay:var(--vc-accent-ink); --ov-mode-game:var(--vc-gold);\n  --mari-mode-conversation:var(--vc-accent-ink); --mari-mode-roleplay:var(--vc-accent-ink); --mari-mode-game:var(--vc-gold);\n  --mari-home-pink:var(--vc-accent-ink); --mari-home-violet:var(--vc-gold);\n  --mari-chrome-accent:var(--vc-accent-ink);\n  --mari-chrome-muted:var(--vc-mute);\n  --mari-message-time:var(--vc-faint);\n  --mari-message-actions:var(--vc-mute);\n  --mari-swipe-counter:var(--vc-mute);\n  --mari-dialogue-color:var(--vc-accent-ink);\n  --mari-home-widget-bg:transparent;\n  --mari-home-widget-title-color:var(--vc-ink);\n  --mari-home-widget-muted:var(--vc-mute);\n  --mari-home-widget-eyebrow-color:var(--vc-accent-ink);\n  --mari-home-wash:transparent;\n  --mari-page-veil:color-mix(in srgb,var(--vc-ground) 82%,transparent);\n  --mari-chat-header-bg:none;\n  --mari-scrim:color-mix(in srgb,var(--vc-ground) 72%,transparent);\n  --mari-top-bar-plate:color-mix(in srgb,var(--vc-ground) 88%,transparent);\n  --mari-status-online:var(--vc-online); --mari-status-idle:var(--vc-gold); --mari-status-dnd:#c42d4a; --mari-status-offline:var(--vc-faint);\n  --mari-gauge-ok:#3fb68b; --mari-gauge-warn:#d39b3a; --mari-gauge-danger:#c42d4a;\n  --mari-game-combat:var(--vc-accent); --mari-game-combat-text:#fff;\n  --mari-game-combat-bg:var(--vc-accent); --mari-game-combat-bg-hover:color-mix(in srgb,var(--vc-accent) 85%,#000); --mari-game-combat-border:var(--vc-accent);\n  --mari-stage-empty-bg:var(--vc-backdrop-wash),var(--vc-backdrop) center bottom / cover no-repeat,var(--vc-ground);\n  --mari-user-avatar-placeholder:radial-gradient(circle at 50% 38%,var(--vc-trim) 0 22%,transparent 23%),radial-gradient(ellipse 60% 40% at 50% 100%,var(--vc-trim) 0 70%,transparent 71%),var(--vc-lining);\n  --mari-focus-ring-color:var(--vc-accent-ink);\n  --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 44px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\n}\n/* ── Backdrop: the same chapel and graveyard, pastel by day, candlelit by night ── */\n:root{\n  --mari-app-backdrop-layers:var(--vc-backdrop-wash),var(--vc-backdrop) center bottom / cover no-repeat,var(--vc-ground);\n  --mari-user-avatar-image:var(--vc-cameo);\n  --mari-card-art-placeholder:var(--vc-cameo) center / auto 70% no-repeat,var(--vc-card-ph);\n}\n:root,:root[data-theme=\"dark\"]{ --vc-cameo:url(\"theme:cameo-night.webp\"); --vc-card-ph:radial-gradient(ellipse at 50% 40%,#0d233a,#060c12 75%); }\n:root[data-theme=\"light\"]{ --vc-cameo:url(\"theme:cameo-day.webp\"); --vc-card-ph:radial-gradient(ellipse at 50% 40%,#fbe7f2,#dccbf6 75%); }\n@media (orientation:portrait){\n  :root[data-overhaul=\"mobile\"]{ --vc-backdrop:url(\"theme:night-phone.webp\"); }\n  :root[data-overhaul=\"mobile\"][data-theme=\"light\"]{ --vc-backdrop:url(\"theme:day-phone.webp\"); }\n}\n/* weather greys the graveyard over: rain and storm darken, snow pales, fog thickens */\n:root[data-mari-weather=\"rain\"],:root[data-mari-weather=\"storm\"]{ --vc-backdrop:url(\"theme:night-chapel-storm.webp\"); --vc-backdrop-wash:linear-gradient(rgba(14,10,22,.15),rgba(20,10,24,.1)); }\n:root[data-theme=\"light\"][data-mari-weather=\"rain\"],:root[data-theme=\"light\"][data-mari-weather=\"storm\"]{ --vc-backdrop-wash:linear-gradient(rgba(150,130,190,.38),rgba(190,170,215,.25)); }\n:root[data-mari-weather=\"snow\"],:root[data-mari-weather=\"hail\"]{ --vc-backdrop-wash:linear-gradient(rgba(200,190,210,.12),rgba(235,230,240,.22)); }\n:root[data-theme=\"light\"][data-mari-weather=\"snow\"],:root[data-theme=\"light\"][data-mari-weather=\"hail\"]{ --vc-backdrop-wash:linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.45)); }\n:root[data-mari-weather=\"fog\"]{ --vc-backdrop-wash:linear-gradient(rgba(36,46,60,.3),rgba(52,64,90,.45)); }\n:root[data-theme=\"light\"][data-mari-weather=\"fog\"]{ --vc-backdrop-wash:linear-gradient(rgba(236,226,251,.45),rgba(236,226,251,.6)); }\n\n/* ── Top bar: a cemetery fence runs along its foot ─────────── */\n[data-component=\"TopBar\"]{\n  font-family:var(--vc-plate); letter-spacing:.02em; border-bottom:0 !important;\n  height:auto !important; min-height:86px; padding-bottom:44px !important; align-items:flex-start;\n}\n[data-component=\"TopBar\"] .ov-tab,[data-component=\"TopBar\"] .ov-text-btn{ clip-path:var(--vc-tag); padding-inline:14px; border-radius:0; }\n[data-component=\"TopBar\"] .ov-tab.is-on{ background:color-mix(in srgb,var(--vc-accent) 30%,var(--vc-ground)); color:var(--vc-ink); }\n:root[data-theme=\"light\"] [data-component=\"TopBar\"] .ov-tab.is-on{ background:color-mix(in srgb,var(--vc-accent) 16%,#fff); }\n[data-component=\"TopBar\"] .ov-tab__label{ font-weight:700; }\n\n/* ── Sidebars: an iron railing on the inner edge ──────────── */\n[data-component=\"ChatSidebar\"]{ font-family:var(--vc-serif); background:var(--vc-rail) right top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-right:12px; }\n[data-component=\"RightPanelDesktop\"]{ background:var(--vc-rail) left top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-left:12px; }\n[data-chat-row]{ clip-path:var(--vc-tag); border-radius:0 !important; }\n[data-chat-row][data-selected=\"true\"]{ background:color-mix(in srgb,var(--vc-accent) 24%,var(--vc-ground)) !important; }\n[data-chat-row] [data-mari-part=\"avatar-placeholder\"],[data-chat-row] img{ border-radius:50% / 50%; }\n.ov-new-pill,.mari-chrome-control--primary,.ov-btn--primary{\n  clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:16px !important;\n  font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em;\n  background:var(--vc-accent) !important; color:#fff !important; border:0 !important;\n}\n[data-component=\"CenterContent\"] .mari-chrome-control:not(.mari-chrome-control--primary){ background-color:var(--vc-panel) !important; }\n.mari-chrome-segmented__button{ font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em; border-radius:0 !important; clip-path:var(--vc-tag); }\n\n/* ── Avatars: mourning cameos ─────────────────────────────── */\n.mari-roleplay-message-row [data-mari-part=\"avatar\"] button{\n  border-radius:50% / 50% !important; height:calc(3.25rem * var(--roleplay-avatar-scale,1)) !important; width:calc(2.6rem * var(--roleplay-avatar-scale,1)) !important;\n  box-shadow:0 0 0 2px var(--vc-lining),0 0 0 4px var(--vc-trim) !important; --tw-ring-color:transparent;\n}\n.mari-roleplay-message-row [data-mari-part=\"avatar\"] .rpg-avatar-glow{ filter:none; box-shadow:none; background:none; }\n[data-component=\"ConversationMessage.Content\"] [data-mari-part=\"avatar\"] button{\n  border-radius:50% / 50% !important; width:2.2rem !important; height:2.6rem !important;\n  box-shadow:0 0 0 2px var(--vc-lining),0 0 0 3.5px var(--vc-trim);\n}\n[data-component=\"ConversationMessage.Content\"] [data-mari-part=\"avatar\"]{ max-height:none; }\n\n/* ── Roleplay: each message is an upright coffin with a finial ── */\n.mari-rp-bubble{\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important;\n  background:var(--vc-trim) !important; isolation:isolate; box-shadow:none !important; backdrop-filter:none !important;\n}\n.mari-rp-bubble::before{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in);\n  background:var(--vc-lining-layers);\n}\n.mari-rp-bubble--user::before{ background:var(--vc-lining-user-layers); }\n.mari-rp-bubble > div{ padding:18px calc(var(--vc-foot) + 16px) 20px calc(var(--vc-foot) + 16px) !important; }\n.mari-roleplay-message-body{ position:relative; }\n.mari-roleplay-message-body::before{\n  content:\"\"; position:absolute; left:50%; top:-15px; width:26px; height:36px; translate:-50% 0; z-index:2; pointer-events:none;\n  background:var(--vc-finial) center / contain no-repeat;\n}\n[data-message-role=\"user\"] .mari-roleplay-message-body::before{ background-image:var(--vc-finial-user); left:auto; right:30px; translate:0 0; width:28px; height:28px; top:-14px; }\n[data-mari-part=\"message\"] .mari-message-name{ font-family:var(--vc-plate) !important; font-size:1.0625rem !important; font-weight:700; letter-spacing:.05em; color:var(--vc-name) !important; }\n[data-mari-part=\"message\"][data-latest] .mari-rp-bubble{ background:var(--vc-latest-trim) !important; }\n[data-mari-part=\"message\"][data-latest][data-message-role=\"assistant\"] .mari-roleplay-message-body::before{ background-image:var(--vc-finial-latest); }\n.mari-roleplay-message-row{ margin-bottom:2rem !important; }\n[data-mari-part=\"time\"]{ font-family:var(--vc-serif); font-size:.8125rem !important; }\n[data-mari-part=\"message\"] hr{ border:0; height:22px; margin:1.1em auto; background:var(--vc-scene-break) center / auto 22px no-repeat,linear-gradient(var(--vc-hair),var(--vc-hair)) center / 100% 1px no-repeat; }\n\n/* ── Composer: a coffin laid on its side ──────────────────── */\n[data-mari-part=\"composer\"] .mari-chat-input-box{\n  clip-path:var(--vc-coffin-side); border:0 !important; border-radius:0 !important; isolation:isolate;\n  background:var(--vc-trim) !important; padding-left:34px !important; padding-right:20px !important; box-shadow:none !important; backdrop-filter:none !important;\n}\n[data-mari-part=\"composer\"] .mari-chat-input-box::before{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-side);\n  background:var(--vc-lining-layers);\n}\n[data-mari-part=\"composer\"] textarea{ font-family:var(--vc-serif) !important; font-size:1.0625rem !important; color:var(--vc-ink) !important; }\n[data-mari-part=\"composer\"] textarea::placeholder{ color:var(--vc-faint) !important; font-style:italic; }\n\n/* ── Conversation: a mourning ledger ──────────────────────── */\n[data-mari-part=\"chat-header\"] > *{ clip-path:var(--vc-tag); border-radius:0 !important; }\n[data-component=\"ConversationMessage.Content\"] .mari-message-content{ font-size:1.0625rem; }\n/* the whole transcript is written inside one long coffin lid (a picture, so the scrollbar is never cut) */\n[data-chat-mode=\"conversation\"] .mari-messages-scroll{ background:var(--vc-lid) center top / calc(100% - 20px) 100% no-repeat; padding-inline:22px; }\n\n/* ── Game: narration in a coffin ──────────────────────────── */\n[data-mari-part=\"message\"][data-game-narration]{\n  position:relative;\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important; isolation:isolate;\n  background:var(--vc-trim) !important; box-shadow:none !important; backdrop-filter:none !important;\n  padding:20px 28px 16px !important;\n\nField \"css\": showing characters 0–18000 of 57436. Re-read with field=\"css\" offset=18000 for the next window.",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_2a5c2824f9534bedad17dfa35b29ca22",
+   "name": "bash",
+   "input": {
+    "command": "mari themes --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_2a5c2824f9534bedad17dfa35b29ca22",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari themes --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari themes <command>\nRead: list [--active] [--limit <n>], active, get <id>\nWrite: create --name <name> (--css <css> | --css-file <path>) [--activate] [--apply] [--reason <text>]\nWrite: update <id> [--name <name>] [--css <css> | --css-file <path>] [--apply] [--reason <text>]\nWrite: set-active <id|none> [--apply] [--reason <text>]\nWrites dry-run by default; --apply saves reversible changes and shows a Keep/Restore review card.",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_9c045b48acd1426688e5d44757f02f62",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM",
+    "field": "css",
+    "offset": 18000,
+    "limit": 20000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_9c045b48acd1426688e5d44757f02f62",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n\n}\n[data-mari-part=\"message\"][data-game-narration]::before{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in); background:var(--vc-lining-layers);\n}\n[data-mari-part=\"message\"][data-game-narration] .game-narration-prose{ border-color:var(--vc-hair) !important; background:transparent !important; border-radius:0 !important; font-size:1.0625rem; }\n[data-mari-part=\"message\"][data-game-narration] .game-narration-prose .text-sm{ font-size:1.0625rem; line-height:1.6; }\n[data-mari-part=\"game-hud\"]{ clip-path:var(--vc-coffin); border-radius:0 !important; background:var(--vc-panel) !important; padding-inline:14px; }\n\n/* ── Home: a row of coffins ───────────────────────────────── */\n[data-mari-part=\"home-widget\"]{\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important; isolation:isolate;\n  background:var(--vc-trim) !important; box-shadow:none !important; backdrop-filter:none !important;\n}\n[data-mari-part=\"home-widget\"]::before{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in);\n  background:var(--vc-lining-layers);\n}\n[data-mari-part=\"home-widget\"] > header,[data-mari-part=\"home-widget\"] > div:not([data-home-professor-content]){ padding-inline:12px; }\n[data-mari-part=\"home-widget-eyebrow\"]{ font-family:var(--vc-plate) !important; letter-spacing:.14em; font-weight:700; }\n[data-mari-part=\"home-widget-glow\"]{ display:none !important; }\n[data-mari-part=\"home-widget-title\"]{ line-height:1.15 !important; margin-bottom:.35rem; letter-spacing:.01em; }\n[data-home-professor-content]{ padding-left:14px; }\n[data-mari-part=\"home-widget\"]::after{\n  content:\"\"; position:absolute; top:5px; left:50%; translate:-50% 0; width:64px; height:30px; pointer-events:none; z-index:0;\n  background:var(--vc-crest) center / contain no-repeat;\n}\n[data-component=\"CenterContent\"] h1{ font-family:var(--vc-blackletter); }\n\n/* ── Ctrl+K and dialogs: coffin lids ──────────────────────── */\n[data-component=\"GlobalOmnibar.Panel\"]{\n  /* Ctrl+K is protected from clipping, so its lid is a picture: a coffin outline on a clear ground */\n  background:var(--vc-lid) 0 0 / 100% 100% no-repeat !important; border:0 !important; border-radius:0 !important; box-shadow:none !important;\n}\n[data-component=\"GlobalOmnibar.Panel\"] > [aria-hidden=\"true\"]{ display:none; }\n[data-component=\"GlobalOmnibar.Panel\"] header > div:first-child{ padding-inline:30px; }\n[data-component=\"GlobalOmnibar.Panel\"] footer{ padding-inline:34px; border-color:transparent !important; }\n[data-component=\"GlobalOmnibar.Panel\"] header > div:first-child{ border-color:var(--vc-hair) !important; margin-inline:22px; }\n[data-component=\"GlobalOmnibar.Panel\"] [data-component=\"GlobalOmnibar.ScopeChips\"]{ padding-inline:26px; }\n[data-component=\"GlobalOmnibar.Results\"]{ padding-inline:18px !important; }\n[role=\"dialog\"]:not([data-component=\"GlobalOmnibar.Panel\"]){ border-color:var(--vc-trim) !important; border-radius:0 !important; }\n.mari-window,.mari-drawer{ border-radius:0 !important; border-color:var(--vc-trim) !important; }\n\n/* ── Pages: Library, Settings, editors ────────────────────── */\n[data-component=\"OverhaulSettingsPage\"] h1,[data-component=\"OverhaulLibraryPage\"] h1,[data-component=\"OverhaulEditorHead\"] h1,\n[data-mari-part=\"page-title\"]{ font-family:var(--vc-blackletter); font-weight:700; }\n[data-component=\"OverhaulCardGallery\"] [data-mari-part=\"card-art\"]{ clip-path:var(--vc-coffin); --vc-head:16px; --vc-sh:16px; --vc-foot:10px; }\n\n/* the stock chat background steps aside; the theme's night or day shows through */\nimg[data-mari-part=\"backdrop\"][data-default-background]{ opacity:0 !important; }\n\n/* ── Phone and tablet: smaller cuts ───────────────────────── */\n:root[data-overhaul=\"mobile\"]{ --vc-head:14px; --vc-sh:14px; --vc-foot:9px; }\n:root[data-overhaul=\"mobile\"] .mari-rp-bubble > div{ padding:14px 20px 16px !important; }\n:root[data-overhaul=\"mobile\"] [data-mari-part=\"composer\"] .mari-chat-input-box{ padding-left:24px !important; }\n:root[data-overhaul=\"mobile\"]{ --vc-coffin-side:polygon(0 9px,22px 0,calc(100% - 6px) 5px,100% 50%,calc(100% - 6px) calc(100% - 5px),22px 100%,0 calc(100% - 9px)); }\n\n/* ── Weather ──────────────────────────────────────────────── */\n/* Night: a cathedral storm. Silver rain, ash-pale snow, blood-grey graveyard fog, crimson petals, bolts on. */\n:root,:root[data-theme=\"dark\"]{\n  --mari-weather-rain-color:#b8adbd; --mari-weather-rain-length:1.6; --mari-weather-strength:1.1;\n  --mari-weather-snow-color:#ece6ea; --mari-weather-fog-color:#34485a;\n  --mari-weather-lightning-color:#f1ecff; --mari-weather-lightning-bolt:3;\n  --mari-weather-firefly-color:#e2bd72; --mari-weather-star-color:#efe6ea; --mari-weather-moon-color:#efe8ee;\n  --mari-weather-petal-color:#215fa3; --mari-weather-leaf-color:#16395a; --mari-weather-ember-color:#e2bd72; --mari-weather-dust-color:#cdbfc6;\n  --mari-weather-tint-strength:.7;\n  --mari-weather-petal-image:url(\"theme:wx-petal.webp\") url(\"theme:wx-petal2.webp\");\n  --mari-weather-leaf-image:url(\"theme:wx-leaf.webp\") url(\"theme:wx-leaf.webp\") url(\"theme:wx-bat.webp\");\n  --mari-weather-petal-size:.7; --mari-weather-leaf-size:.8;\n  --mari-weather-moon:none;\n}\n/* Day: candy storm. Lilac rain, white flakes, lilac fog, pink bolts, no app sun (pastel sky). */\n:root[data-theme=\"light\"]{\n  --mari-weather-rain-color:#7a5cc0; --mari-weather-rain-length:1.2; --mari-weather-strength:1.2;\n  --mari-weather-snow-color:#ffffff; --mari-weather-snow-size:1.4; --mari-weather-fog-color:#c9b3f0; --mari-weather-hail-color:#b8f0d8;\n  --mari-weather-lightning-color:#ff7ab8; --mari-weather-lightning-bolt:3;\n  --mari-weather-dust-color:#e07bb0; --mari-weather-petal-color:#f3a9c9; --mari-weather-leaf-color:#9fe3c6; --mari-weather-star-color:#2d68b8;\n  --mari-weather-sun:none; --mari-weather-moon:none; --mari-weather-tint-strength:.35;\n  --mari-weather-petal-image:url(\"theme:wx-heart.webp\") url(\"theme:wx-petalday.webp\") url(\"theme:wx-spark.svg\");\n  --mari-weather-snow-image:url(\"theme:wx-flake1.webp\") url(\"theme:wx-flake2.webp\") url(\"theme:wx-flake3.webp\") url(\"theme:wx-spark.svg\");\n  --mari-weather-hail-image:url(\"theme:wx-starday.webp\") url(\"theme:wx-heart.webp\");\n  --mari-weather-leaf-image:url(\"theme:wx-batday.webp\") url(\"theme:wx-moonday.webp\") url(\"theme:wx-spark.svg\");\n  --mari-weather-petal-size:.6; --mari-weather-leaf-size:.7;\n}\n\n/* ══ Round 2 ════════════════════════════════════════════════ */\n\n/* Composer: the transcript fades out above the side-laid coffin, so no prose shows around it */\n[data-chat-mode=\"roleplay\"] .mari-messages-scroll,[data-chat-mode=\"game\"] .mari-messages-scroll{\n  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 118px),transparent calc(100% - 84px));\n          mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 118px),transparent calc(100% - 84px));\n  padding-bottom:132px !important; scroll-padding-bottom:132px;\n}\n[data-chat-mode=\"conversation\"] .mari-messages-scroll{\n  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18px);\n          mask-image:linear-gradient(to bottom,transparent 0,#000 18px);\n}\n\n/* Night: coffin furniture. An antique-silver bevelled edge, velvet lining, silver studs at the shoulders */\n:root[data-theme=\"dark\"]{ --vc-silver:linear-gradient(160deg,#ece6ee,#857b8a 28%,#d9d1db 50%,#5f5662 74%,#c9c1cc); --vc-bw:2.5px; }\n:root[data-theme=\"dark\"] .mari-rp-bubble,\n:root[data-theme=\"dark\"] [data-mari-part=\"home-widget\"],\n:root[data-theme=\"dark\"] [data-mari-part=\"message\"][data-game-narration],\n:root[data-theme=\"dark\"] [data-mari-part=\"composer\"] .mari-chat-input-box{ background:var(--vc-silver) !important; }\n:root[data-theme=\"dark\"] [data-mari-part=\"message\"][data-latest] .mari-rp-bubble{ background:linear-gradient(160deg,#c3daf0,#215fa3 32%,#8ab6e0 52%,#143e6e 78%,#6a9fcf) !important; }\n:root[data-theme=\"dark\"] .mari-rp-bubble::after,\n:root[data-theme=\"dark\"] [data-mari-part=\"message\"][data-game-narration]::after{\n  content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; pointer-events:none; clip-path:var(--vc-coffin-in);\n  background:url(\"theme:or-stud.webp\") 6px 8px / 21px 21px no-repeat,url(\"theme:or-stud.webp\") calc(100% - 6px) 8px / 21px 21px no-repeat;\n}\n:root[data-theme=\"dark\"] [data-mari-part=\"home-widget\"]::after{ filter:drop-shadow(0 1px 1px #000); }\n/* Day: real pastel coffins, a mint lining on the newest reply, plum name plates */\n:root[data-theme=\"light\"] [data-mari-part=\"message\"][data-latest][data-message-role=\"assistant\"] .mari-rp-bubble::before{\n  background:linear-gradient(#ecdfff,#ecdfff) content-box,#9fe8c8 !important; padding:4px;\n}\n:root[data-theme=\"light\"] [data-mari-part=\"home-widget\"]::before{ background:#ebdeff; }\n:root[data-theme=\"light\"] [data-mari-part=\"home-widget\"][data-home-widget-id=\"professor\"]::before,\n:root[data-theme=\"light\"] [data-mari-part=\"home-widget\"]:nth-of-type(3n)::before{ background:#ffe3ef; }\n:root[data-theme=\"light\"] [data-mari-part=\"home-widget-eyebrow\"]{ color:#1d6b4f !important; }\n:root[data-theme=\"light\"] [data-mari-part=\"composer\"] .mari-chat-input-box::before{ background:#f6eeff; }\n:root[data-theme=\"light\"] .mari-chrome-segmented__button[aria-pressed=\"true\"],\n:root[data-theme=\"light\"] .mari-chrome-segmented__button[data-state=\"active\"]{ box-shadow:inset 0 -3px 0 var(--vc-mint); }\n:root[data-theme=\"light\"]{ --mari-focus-ring-color:#1d6b4f; scrollbar-color:#9fe8c8 transparent; }\n\n/* Bigger finials, sticker-sized */\n.mari-roleplay-message-body::before{ width:46px !important; height:52px !important; top:-30px !important; }\n[data-message-role=\"user\"] .mari-roleplay-message-body::before{ width:38px !important; height:38px !important; top:-22px !important; right:26px; }\n.mari-roleplay-message-row{ margin-bottom:2.4rem !important; }\n.mari-roleplay-message-row:first-child{ margin-top:14px; }\n:root[data-theme=\"light\"] .mari-roleplay-message-body::before{ filter:drop-shadow(0 0 0 #fff) drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff) drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff) drop-shadow(0 2px 2px rgba(26,16,32,.25)); }\n:root[data-theme=\"dark\"] .mari-roleplay-message-body::before{ filter:drop-shadow(0 2px 3px #000); }\n\n/* Phone: the name plate is a coffin tag, and the finial rides on the plate so it never floats in a gap */\n:root[data-overhaul=\"mobile\"] .mari-roleplay-message-body::before{ display:none; }\n[data-mari-part=\"header\"][data-placement=\"outside\"]{\n  clip-path:var(--vc-tag); border-radius:0 !important; padding:3px 16px !important; gap:8px;\n  background:var(--vc-plate-bg) !important; width:max-content; max-width:100%;\n}\n[data-message-role=\"user\"] [data-mari-part=\"header\"][data-placement=\"outside\"]{ margin-left:auto; }\n[data-mari-part=\"header\"][data-placement=\"outside\"]::before{\n  content:\"\"; flex:0 0 auto; width:24px; height:24px; background:var(--vc-finial) center / contain no-repeat;\n}\n[data-message-role=\"user\"] [data-mari-part=\"header\"][data-placement=\"outside\"]::before{ background-image:var(--vc-finial-user); }\n[data-latest][data-message-role=\"assistant\"] [data-mari-part=\"header\"][data-placement=\"outside\"]::before{ background-image:var(--vc-finial-latest); }\n:root,:root[data-theme=\"dark\"]{ --vc-plate-bg:linear-gradient(90deg,#0d233a,#16395a); }\n:root[data-theme=\"light\"]{ --vc-plate-bg:linear-gradient(90deg,#f3c6e0,#d9c4ff); }\n:root[data-theme=\"light\"] [data-mari-part=\"header\"][data-placement=\"outside\"] .mari-message-name{ color:#4a1050 !important; }\n:root[data-theme=\"light\"] [data-mari-part=\"header\"][data-placement=\"outside\"] [data-mari-part=\"time\"]{ color:#4f3a5c !important; }\n\n/* Scene break reads */\n[data-mari-part=\"message\"] hr{ height:30px !important; background-size:auto 30px,100% 1px !important; }\n:root[data-theme=\"dark\"] [data-mari-part=\"message\"] hr{ filter:brightness(1.6) drop-shadow(0 0 3px rgba(220,184,116,.35)); }\n\n/* Ctrl+K: the divider and rows stay inside the lid; mode tiles in the theme's colours */\n:root{ --mari-ctrlk-conversation:var(--vc-accent-ink); --mari-ctrlk-roleplay:var(--vc-name); --mari-ctrlk-game:var(--vc-gold); }\n[data-component=\"GlobalOmnibar.Panel\"] [data-component=\"GlobalOmnibar.ScopeChips\"]{ margin-inline:24px; border-color:var(--vc-hair) !important; }\n[data-component=\"GlobalOmnibar.Panel\"] [data-component=\"GlobalOmnibar.ScopeChips\"] button{ clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:14px; font-family:var(--vc-plate); font-weight:700; }\n[data-component=\"GlobalOmnibar.Results\"]{ padding-bottom:28px !important; }\n[data-component=\"GlobalOmnibar.Panel\"] [data-command-center-media]{ border-radius:50% / 50% !important; border-color:var(--vc-trim) !important; background:var(--vc-plate-bg) !important; }\n[data-component=\"GlobalOmnibar.Panel\"] footer{ color:var(--vc-mute) !important; font-size:.8125rem; }\n:root[data-theme=\"light\"] [data-component=\"GlobalOmnibar.Panel\"]{\n  background:var(--vc-lid) 0 0 / 100% 100% no-repeat !important;\n}\n\n/* Group chat avatars are two little cameos, not boxes */\n[data-chat-row] span.rounded-md{ border-radius:50% / 50% !important; --tw-ring-color:var(--vc-trim); }\n\n/* Game: the side pane gets the railing, plate headings and a coffin HUD */\n.ov-gpane{ background:var(--vc-rail) left top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-left:14px; border-left:0 !important; }\n.ov-gpane h2,.ov-gpane h3,.ov-gpane th{ font-family:var(--vc-plate); letter-spacing:.06em; }\n[data-mari-part=\"game-hud\"] > *{ background:var(--vc-panel) !important; border-color:var(--vc-trim) !important; border-radius:0 !important; clip-path:var(--vc-coffin); padding-top:12px; }\n\n/* Settings selects and fields become coffin tags too */\n[data-component=\"OverhaulSettingsPage\"] select{ border-radius:0 !important; padding-inline:14px !important; }\n\n/* Phone: title in blackletter, no railing cut off at the screen edge */\n:root[data-overhaul=\"mobile\"] [data-component=\"ChatSidebar\"],:root[data-overhaul=\"mobile\"] [data-component=\"RightPanelDesktop\"]{ background:var(--vc-sidebar-bg) !important; padding-inline:0; }\n[data-component=\"ChatSidebar\"] h2{ font-family:var(--vc-blackletter); font-size:1.35rem; font-weight:700; }\n\n/* Mode tabs: room for the counts */\n.mari-chrome-segmented__button{ padding-inline:12px !important; }\n\n/* Day snow is white with pink sparkle (sprites below when they arrive) */\n/* Home hero buttons sit on plates so the painted moon never washes them out */\n\n\n/* Day: the creepy-cute plush keeps watch over the conversation lid */\n:root[data-theme=\"light\"] [data-chat-mode=\"conversation\"] .mari-messages-scroll{ background:url(\"theme:st-bunny.webp\") right 64px top 40px / 56px no-repeat,var(--vc-lid) center top / calc(100% - 20px) 100% no-repeat; }\n/* Night: a black crepe mourning bow pinned to the conversation lid */\n:root[data-theme=\"dark\"] [data-chat-mode=\"conversation\"] .mari-messages-scroll{ background:url(\"theme:or-bow.webp\") right 64px top 36px / 52px no-repeat,var(--vc-lid) center top / calc(100% - 20px) 100% no-repeat; }\n/* phone: the name sits on its own plate, so the shoulder studs would sit on the text */\n:root[data-overhaul=\"mobile\"][data-theme=\"dark\"] .mari-rp-bubble::after{ display:none; }\n/* phone: the name tag is narrower than the coffin, so a pinned tag would leave the scrolling text peeking beside it; keep it with its message */\n:root[data-overhaul=\"mobile\"] [data-mari-part=\"header\"][data-placement=\"outside\"]{ position:relative !important; top:auto !important; }\n\n/* ══ Round 3 ══════════════════════════════════════════════ */\n/* Page buttons are whole coffin tags: the edge is the button, the plate is drawn inside it, so the\n   slanted ends keep their outline and icon-only buttons keep their icon */\n[data-component=\"CenterContent\"] .ov-btn:not(.ov-btn--primary){\n  border:0 !important; border-radius:0 !important; clip-path:var(--vc-tag); position:relative; isolation:isolate;\n  background:var(--vc-trim) !important; box-shadow:none !important;\n}\n[data-component=\"CenterContent\"] .ov-btn:not(.ov-btn--primary):not(.ov-btn--icon){ padding-inline:16px; }\n[data-component=\"CenterContent\"] .ov-btn--icon:not(.ov-btn--primary){ padding-inline:10px; min-width:40px; }\n[data-component=\"CenterContent\"] .ov-btn:not(.ov-btn--primary)::before{\n  content:\"\"; position:absolute; inset:1.5px; z-index:-1; pointer-events:none; clip-path:var(--vc-tag); background:var(--vc-bar);\n}\n[data-component=\"CenterContent\"] .ov-btn.is-on:not(.ov-btn--primary)::before{ background:color-mix(in srgb,var(--vc-accent) 22%,var(--vc-bar)); }\n@media (hover: hover){ [data-component=\"CenterContent\"] .ov-btn:not(.ov-btn--primary):hover::before{ background:color-mix(in srgb,var(--vc-accent) 22%,var(--vc-bar)); } }\n\n/* Ctrl+K: Continue cards share the full width, avatars show inside the cameo, the footer is its own band */\n[data-component=\"GlobalOmnibar.Panel\"] [data-command-center-media]{ background:none !important; background-color:var(--vc-plate-bg) !important; }\n[data-component=\"GlobalOmnibar.Panel\"] [data-command-center-media] > img{ border-radius:50%; }\nsection[aria-labelledby=\"omnibar-group-continue\"] > ul{ grid-template-columns:none !important; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); }\n[data-component=\"GlobalOmnibar.Panel\"] footer{ background:var(--vc-bar); border-top:1px solid var(--vc-hair) !important; margin-inline:24px; margin-bottom:14px; padding-inline:12px !important; }\n\n/* Loading: an oxblood (night) or lilac (day) shimmer instead of navy */\n.shimmer{ background:linear-gradient(90deg,#0a131c 25%,#12283a 50%,#0a131c 75%) !important; background-size:200% 100% !important; clip-path:var(--vc-tag); border-radius:0 !important; }\n:root[data-theme=\"light\"] .shimmer{ background:linear-gradient(90deg,#efe3ff 25%,#ffdcec 50%,#efe3ff 75%) !important; background-size:200% 100% !important; }\n/* an avatar still loading (or broken) shows the cameo, not an empty oval */\n[data-chat-row] img,[data-mari-part=\"avatar\"] img,[data-command-center-media] img{ background:var(--vc-cameo) center / cover no-repeat; }\n\n/* Game map HUD: a full coffin with the silver (night) or sticker (day) edge */\n[data-tour=\"game-map\"]{ border:0 !important; border-radius:0 !important; clip-path:var(--vc-coffin); --vc-head:16px; --vc-sh:16px; --vc-foot:10px;\n  background:var(--vc-silver,#1a1020) !important; position:relative; isolation:isolate; padding-top:18px !important; backdrop-filter:none !important; box-shadow:none !important; }\n:root[data-theme=\"light\"] [data-tour=\"game-map\"]{ background:#1a1020 !important; }\n[data-tour=\"game-map\"]::before{ content:\"\"; position:absolute; inset:var(--vc-bw); z-index:-1; pointer-events:none; clip-path:var(--vc-coffin-in); background:var(--vc-lining-layers); }\n[data-tour=\"game-map\"] > span{ font-family:var(--vc-plate); font-size:.8125rem !important; letter-spacing:.06em; color:var(--vc-mute) !important; }\n\n/* Toasts are coffin tags with a sticker (day) or a candle (night) in place of the info icon */\n[data-sonner-toast]{\n  background:var(--vc-toast-sticker) left 20px center / 30px 30px no-repeat,var(--vc-bar) !important;\n  border:0 !important; border-radius:0 !important; box-shadow:none !important;\n  clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,16px 100%,0 50%);\n  padding-left:60px !important; padding-right:46px !important;\n  font-family:var(--vc-serif) !important; color:var(--vc-ink) !important;\n}\n[data-sonner-toast] [data-icon]{ display:none !important; }\n/* the outline follows the clipped tag: four hard drop-shadows on the (unclipped) toaster */\n[data-sonner-toaster]{ filter:drop-shadow(2px 0 0 var(--vc-toast-edge)) drop-shadow(-2px 0 0 var(--vc-toast-edge)) drop-shadow(0 2px 0 var(--vc-toast-edge)) drop-shadow(0 -2px 0 var(--vc-toast-edge)); --width:410px; }\n:root,:root[data-theme=\"dark\"]{ --vc-toast-sticker:url(\"theme:or-candle.webp\"); --vc-toast-edge:#9a8f9c; }\n:root[data-theme=\"light\"]{ --vc-toast-sticker:url(\"theme:st-bat.webp\"); --vc-toast-edge:#1a1020; }\n[data-sonner-toast] [data-butto\n\nField \"css\": showing characters 18000–38000 of 57436. Re-read with field=\"css\" offset=38000 for the next window.",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_d800ca738db5467d9e68d2a0eef08d0f",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/custom-css-themes.md",
+    "heading": "The CSS variable reference",
+    "maxChars": 1000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_d800ca738db5467d9e68d2a0eef08d0f",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/custom-css-themes.md\nHeading: The CSS variable reference\nStarts at line: 178 (bounded excerpt)\n\n\nThe theme editor has a collapsible **CSS Variable Reference**. Click it to see the most useful variables you can override. A theme changes the app by setting these variables in a `:root` block. The reference lists these variables:\n\n| Variable                       | What it controls          |\n| ------------------------------ | ------------------------- |\n| `--background`                 | Page background           |\n| `--foreground`                 | Main text                 |\n| `--primary`                    | Accent and buttons        |\n| `--primary-foreground`         | Text on primary           |\n| `--secondary`                  | Cards and inputs          |\n| `--card`                       | Card background           |\n| `--border`                     | Borders                   |\n| `--muted-foreground`           | Dimmed text               |\n| `--sidebar`                    | Sidebar background        |\n| `--sidebar-border`             | Sidebar border            |\n| `--marina\n…",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the copy’s day palette and preserved styling.",
+    "status": "in_progress"
+   },
+   {
+    "content": "Replace lavender and pink day colors with pale blues.",
+    "status": "pending"
+   },
+   {
+    "content": "Verify the saved CSS and unchanged artwork.",
+    "status": "pending"
+   }
+  ]
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_f0332a35a09641858fed449eddab139c",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "22m7Hs1adySrgvLPKUtXM",
+    "field": "css",
+    "offset": 38000,
+    "limit": 20000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_f0332a35a09641858fed449eddab139c",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\nn]{ clip-path:var(--vc-tag); border-radius:0 !important; background:var(--vc-name) !important; color:var(--vc-bar) !important; font-family:var(--vc-plate) !important; font-weight:700 !important; padding-inline:14px !important; }\n:root[data-theme=\"dark\"] [data-sonner-toast] [data-button]{ background:var(--vc-accent) !important; color:#fff !important; }\n[data-sonner-toast] [data-close-button]{ left:auto !important; right:22px !important; top:50% !important; transform:translateY(-50%) !important; background:var(--vc-bar) !important; border-color:var(--vc-toast-edge) !important; color:var(--vc-ink) !important; }\n\n/* Settings selects: velvet or lilac lining with a trim edge */\n[data-component=\"OverhaulSettingsPage\"] select{ background-color:var(--vc-lining) !important; border:0 !important; box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important; color:var(--vc-ink) !important; }\n\n/* the map box is its own coffin, so its HUD slot is not a second one */\n[data-mari-part=\"game-hud\"] > *:has([data-tour=\"game-map\"]),[data-mari-part=\"game-hud\"] > [data-tour=\"game-map\"]{ clip-path:none; background:none !important; padding-top:0; }\n[data-mari-part=\"game-hud\"] > [data-tour=\"game-map\"]{ clip-path:var(--vc-coffin); background:var(--vc-silver,#1a1020) !important; padding-top:18px; }\n:root[data-theme=\"light\"] [data-mari-part=\"game-hud\"] > [data-tour=\"game-map\"]{ background:#1a1020 !important; }\n[data-tour=\"game-map\"] button{ clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:12px !important; font-family:var(--vc-plate) !important; font-weight:700; font-size:.8125rem !important; }\n[data-mari-part=\"game-hud\"]:has([data-tour=\"game-map\"]){ clip-path:none; background:none !important; padding-inline:0; }\n:root[data-theme=\"light\"] [data-tour=\"game-map\"] button:not(:disabled){ color:var(--vc-name) !important; background:#fff !important; }\n\n/* ══ Round 4 ══════════════════════════════════════════════ */\n/* Selects: a plain velvet slot with a full trim edge (a tag clip cannot carry an outline on a select) */\n[data-component=\"OverhaulSettingsPage\"] select{ clip-path:none !important; border:1.5px solid var(--vc-trim) !important; box-shadow:none !important; }\n/* Sidebars and the game pane: as dark and calm as the coffin linings */\n:root,:root[data-theme=\"dark\"]{ --vc-sidebar-bg:linear-gradient(rgba(6,9,12,.62),rgba(6,9,12,.7)),url(\"theme:velvet-tile.webp\") 0 0 / 512px repeat,#060c12; }\n/* Ctrl+K: the list fades into the footer band instead of being sliced by it */\n[data-component=\"GlobalOmnibar.Panel\"] footer{ position:relative; }\n[data-component=\"GlobalOmnibar.Panel\"] footer::before{ content:\"\"; position:absolute; left:0; right:0; bottom:100%; height:34px; pointer-events:none; background:linear-gradient(to bottom,transparent,var(--vc-bar)); }\n/* Day iron is plum and lighter: a 32px fence by day, the black 44px railing at night */\n:root[data-theme=\"light\"]{ --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 32px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar)); }\n:root[data-theme=\"light\"] [data-component=\"TopBar\"]{ min-height:74px; padding-bottom:32px !important; }\n/* Phone: a compact toast docked above the bottom bar, clear of the mode tabs */\n:root[data-overhaul=\"mobile\"] [data-sonner-toast]{ padding:8px 40px 8px 44px !important; background-size:20px 20px,auto !important; background-position:left 16px center,0 0 !important; font-size:.875rem !important; min-height:0 !important; }\n:root[data-overhaul=\"mobile\"] [data-sonner-toast] [data-close-button]{ right:16px !important; }\n/* Loading and icon avatars in the chat list are cameo ovals too */\n[data-chat-row] > .relative.flex-shrink-0 [class*=\"rounded-\"]:not(.rounded-full),[data-chat-row] [data-mari-part=\"avatar-placeholder\"]{ border-radius:50% / 50% !important; }\n/* Library: the \"new\" card is an empty coffin with a dashed edge and a sticker */\n.ov-card__art--new{ clip-path:var(--vc-coffin); --vc-head:16px; --vc-sh:16px; --vc-foot:10px; border:0 !important; border-radius:0 !important; position:relative; isolation:isolate;\n  background:var(--vc-card-new) 0 0 / 100% 100% no-repeat,var(--vc-card-ph) !important; color:var(--vc-name) !important; }\n:root,:root[data-theme=\"dark\"]{ --vc-card-new:url(\"theme:card-new-night.svg\"); }\n:root[data-theme=\"light\"]{ --vc-card-new:url(\"theme:card-new-day.svg\"); }\n.ov-card__art--new::before{ content:\"\"; position:absolute; left:50%; top:22%; width:46px; height:46px; translate:-50% 0; z-index:-1; pointer-events:none; background:var(--vc-finial) center / contain no-repeat; }\n.ov-card__art--new svg{ margin-top:48px; }\n\n/* ══ Round 5 ══════════════════════════════════════════════ */\n/* Sidebar mode tabs: a shallower tag and tighter tracking, so the count sits inside the shape */\n[data-component=\"ChatSidebar\"] .mari-chrome-segmented__button{ clip-path:polygon(6px 0,calc(100% - 6px) 0,100% 50%,calc(100% - 6px) 100%,6px 100%,0 50%); padding-inline:10px !important; letter-spacing:.01em; gap:3px; }\n[data-component=\"ChatSidebar\"] .mari-chrome-segmented__button .ov-mode-count{ margin-left:2px; }\n/* Day selects: lilac lining and a plum trim, like the rest of the pastel forms */\n:root[data-theme=\"light\"] [data-component=\"OverhaulSettingsPage\"] select{ background-color:#ecdfff !important; border-color:#8a5aa8 !important; color:var(--vc-ink) !important; }\n/* Settings boxes (such as Custom sound) get room inside their edge */\n[data-component=\"OverhaulSettingsPage\"] .rounded-lg.p-2\\.5{ padding:12px 14px !important; border-radius:0 !important; }\n\n/* Night sidebars: the velvet is softened further so no streak shows behind the list */\n:root,:root[data-theme=\"dark\"]{ --vc-sidebar-bg:linear-gradient(rgba(6,9,12,.74),rgba(6,9,12,.8)),url(\"theme:velvet-tile.webp\") 0 0 / 512px repeat,#060c12; }\n\n/* ══ Round 6: a smaller toast (its position stays the user's Notification position) ══ */\n:root:not([data-overhaul=\"mobile\"]) [data-sonner-toaster]{ --width:min(420px,calc(100vw - 48px)) !important; }\n[data-sonner-toast] [data-content]{ min-width:0; flex:1 1 auto; }\n[data-sonner-toast] [data-title],[data-sonner-toast] [data-description]{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }\n[data-sonner-toast] [data-description]{ font-size:.875rem !important; }\n:root[data-overhaul=\"mobile\"] [data-sonner-toast] [data-content]{ font-size:.875rem; }\n/* phone: one line, the title and its Refresh button */\n:root[data-overhaul=\"mobile\"] [data-sonner-toast] [data-description]{ display:none !important; }\n/* phone, toasts at the bottom: the chat keeps room so the newest reply is not under the toast */\n:root[data-overhaul=\"mobile\"]:has([data-sonner-toaster][data-y-position=\"bottom\"] [data-sonner-toast]) .mari-messages-scroll{ padding-bottom:200px !important; scroll-padding-bottom:200px; }\n\n/* ══ Round 7: the name-plate ornament sits dead centre ══ */\n/* the plate lines its text up on the baseline, so the ornament centres itself on both axes */\n[data-mari-part=\"header\"][data-placement=\"outside\"]::before{ align-self:center; width:28px; height:24px; background-position:center; background-size:contain; margin-block:0; }\n\n/* ══ Round 6 (1.1): one right pane, one page veil ═════════════ */\n/* Every full page already sits under --mari-page-veil (CenterContent), so Lorebooks, Presets, Regex,\n   Connections, Agents and Custom tools get the same velvet veil as Characters and Settings. */\n/* The right pane carries the railing now: the chat list inside it drops its own velvet and edge rail */\n.ov-sidepane [data-component=\"ChatSidebar\"]{ background:transparent !important; padding-right:0 !important; }\n/* Chats | Library: two coffin tags on an iron plate, the open one in oxblood (pink by day), like the top-bar tabs */\n.ov-sideswitch{\n  border:0 !important; border-radius:0 !important; padding:4px !important; gap:4px !important;\n  background:color-mix(in srgb,var(--vc-trim) 22%,var(--vc-bar));\n  clip-path:var(--vc-tag);\n}\n.ov-sideswitch__btn{\n  clip-path:var(--vc-tag); border-radius:0 !important;\n  font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em; color:var(--vc-mute) !important;\n}\n@media (hover: hover){ .ov-sideswitch__btn:not(.is-on):hover{ color:var(--vc-ink) !important; background:color-mix(in srgb,var(--vc-accent) 12%,var(--vc-bar)) !important; } }\n.ov-sideswitch__btn.is-on{ background:color-mix(in srgb,var(--vc-accent) 30%,var(--vc-ground)) !important; color:var(--vc-ink) !important; }\n:root[data-theme=\"light\"] .ov-sideswitch__btn.is-on{ background:color-mix(in srgb,var(--vc-accent) 16%,#fff) !important; }\n:root[data-theme=\"light\"] .ov-sideswitch{ background:color-mix(in srgb,var(--vc-trim) 12%,var(--vc-bar)); }\n/* Phones and tablets: the side page is lined in the same velvet as the sidebars, rows in the serif */\n.ovm-sidepage{ background:var(--vc-sidebar-bg) !important; font-family:var(--vc-serif); }\n:root[data-overhaul=\"mobile\"] .ovm-sidepage [data-component=\"ChatSidebar\"]{ background:transparent !important; }\n.ovm-sidepage .ovm-stack-menu__row{ clip-path:var(--vc-tag); border-radius:0 !important; }\n.ovm-sidepage__dock{ border-top-color:var(--vc-trim) !important; }\n.ovm-sidepage .ovm-stack-menu__tile{\n  clip-path:var(--vc-tag); border-radius:0 !important;\n  font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em;\n  background:color-mix(in srgb,var(--vc-accent) 14%,var(--vc-bar)) !important; color:var(--vc-ink) !important;\n}\n/* The editor's Chat button (accent) is a filled tag, so its white label always has its colour behind it */\n[data-component=\"CenterContent\"] .ov-btn--accent:not(.ov-btn--primary)::before{ background:var(--vc-accent) !important; }\n@media (hover: hover){ [data-component=\"CenterContent\"] .ov-btn--accent:not(.ov-btn--primary):hover::before{ background:color-mix(in srgb,var(--vc-accent) 85%,#000) !important; } }\n[data-component=\"CenterContent\"] .ov-btn--accent{ color:#fff !important; }\n/* Day: the gold mode tag (Game, Main) is a deeper bronze so it reads on lilac */\n:root[data-theme=\"light\"]{ --ov-mode-game:#6a3f00; }\n\n/* Auto-hide top bar (a fullscreen window in a chat) slides OVER the page, so the 44px fence band under\n   it would cover the Chats | Library switch and the safety guard would switch the theme off. While the\n   bar auto-hides it keeps its plain height and the fence shrinks to a trim inside it. */\n:root[data-ov-topbar-autohide] [data-component=\"TopBar\"]{\n  min-height:0; padding-bottom:0 !important; align-items:center;\n  --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 12px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\n}\n\n/* ══ Nitpick fixes (1.3) ══ */\n/* hover rules above are limited to mouse devices (@media (hover: hover)) */\n/* Night: app text set in the accent (helper links like \"Use this look on every device\") reads in the light crimson */\n:root[data-theme=\"dark\"] [class~=\"text-[var(--primary)]\"]{ color:var(--vc-accent-ink) !important; }\n/* Selects look like the other fields: the same slot, hairline and corner, with a drawn chevron instead of the browser's */\n:root[data-theme] [data-component=\"OverhaulSettingsPage\"] select{\n  appearance:none !important; -webkit-appearance:none !important;\n  background-color:var(--secondary) !important; color:var(--vc-ink) !important;\n  border:1px solid var(--border) !important; border-radius:2px !important; box-shadow:none !important; clip-path:none !important;\n  padding-right:36px !important;\n  background-image:linear-gradient(45deg,transparent 50%,var(--vc-mute) 50%),linear-gradient(135deg,var(--vc-mute) 50%,transparent 50%) !important;\n  background-position:calc(100% - 19px) 50%,calc(100% - 14px) 50% !important;\n  background-size:5px 5px,5px 5px !important; background-repeat:no-repeat !important;\n}\n/* Phones: the crest over each Home coffin sat on long labels (\"CONTINUE CHATTING\"); the header steps down below it */\n@media (max-width:640px){\n  [data-mari-part=\"home-widget\"] > header{ padding-top:24px !important; }\n}\n\n/* ══ 1.4: touch screens keep the plain top-bar height ══\n   Phones and tablets want every line of chat they can get, so the fence never adds a row there. It runs\n   along the foot of the normal bar instead, and the buttons stand in front of it on solid coffin tags\n   (the desktop tab shape) that stop just above the rails, so the iron never runs through an icon and\n   the railing still reads as one line. Desktop with a mouse keeps its railing row. */\n:root[data-overhaul=\"mobile\"]{\n  --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 22px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\n  --mari-top-bar-plate:var(--vc-bar); --mari-top-bar-plate-radius:0;\n  --vc-plate-tag:polygon(8px 2px,calc(100% - 8px) 2px,100% 19px,calc(100% - 8px) 36px,8px 36px,0 19px);\n}\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"]{\n  height:calc(3rem + env(safe-area-inset-top)) !important; min-height:0 !important; padding-bottom:0 !important; align-items:center;\n}\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"] :is(.ovm-icon-btn,.ovm-stack-btn){ clip-path:var(--vc-plate-tag); border-radius:0 !important; padding-bottom:6px; }\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"] .ovm-stack-btn{ padding-inline:12px; }\n/* the title is one tag around its words, not a slab across the whole middle of the fence */\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"] .ovm-title{ background-color:transparent !important; }\n:root[data-overhaul=\"mobile\"] [data-component=\"TopBar\"] .ovm-title__inner{ background:var(--vc-bar); clip-path:var(--vc-tag); padding:1px 16px; margin-bottom:6px; }\n@media (pointer: coarse){\n  :root[data-overhaul=\"on\"]{\n    --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 22px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\n    --mari-top-bar-plate:var(--vc-bar);\n  }\n  :root[data-overhaul=\"on\"] [data-component=\"TopBar\"]{ height:var(--ov-topbar-height) !important; min-height:0; padding-bottom:0 !important; align-items:center; }\n}\n\n/* ══ 1.5: one shape per row of controls (nitpick audit 2) ══════════════ */\n/* A coffin-tag outline drawn with backgrounds, for things that cannot carry the ::before plate\n   (selects, fields, chips): the four slanted ends as hairlines + an inset trim on the straight edges */\n:root{\n  --vc-edge-w:.9px;\n  --vc-tag-edge:\n    linear-gradient(to bottom right,transparent calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% + var(--vc-edge-w)),transparent calc(50% + var(--vc-edge-w))) left top / 8px 50% no-repeat,\n    linear-gradient(to top right,transparent calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% + var(--vc-edge-w)),transparent calc(50% + var(--vc-edge-w))) left bottom / 8px 50% no-repeat,\n    linear-gradient(to top right,transparent calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% + var(--vc-edge-w)),transparent calc(50% + var(--vc-edge-w))) right top / 8px 50% no-repeat,\n    linear-gradient(to bottom right,transparent calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% - var(--vc-edge-w)),var(--vc-trim) calc(50% + var(--vc-edge-w)),transparent calc(50% + var(--vc-edge-w))) right bottom / 8px 50% no-repeat;\n  --vc-chev:\n    linear-gradient(45deg,transparent calc(50% - .8px),currentColor calc(50% - .8px),currentColor calc(50% + .8px),transparent calc(50% + .8px)) calc(100% - 19px) calc(50% + .5px) / 5.3px 5.3px no-repeat,\n    linear-gradient(-45deg,transparent calc(50% - .8px),currentColor calc(50% - .8px),currentColor calc(50% + .8px),transparent calc(50% + .8px)) calc(100% - 14.7px) calc(50% + .5px) / 5.3px 5.3px no-repeat;\n  --vc-cut:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 8px);\n}\n/* Library toolbars (and the split side): search, sort and the card-size switch are coffin tags like\n   Tags, Import and the icon buttons beside them */\n.ov-gallery__tools .ov-search,\n.ov-gallery__tools select.ov-select,\n.ov-gallery__tools .ov-seg,\n.ov-org .ov-search,\n.ov-org select.ov-select{\n  clip-path:var(--vc-tag) !important; border:0 !important; border-radius:0 !important;\n  box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important;\n  background:var(--vc-tag-edge), var(--vc-bar) !important;\n  padding-inline:14px !important;\n}\n.ov-gallery__tools select.ov-select,\n.ov-org select.ov-select{\n  background:var(--vc-tag-edge), var(--vc-chev), var(--vc-bar) !important;\n  padding-right:30px !important;\n}\n.ov-gallery__tools .ov-seg{ padding:2px 10px !important; }\n.ov-gallery__tools .ov-seg button{ clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:10px; }\n/* Home: Conversation, Roleplay and Game are coffin tags like Professor and Widgets */\n[data-component=\"CenterContent\"] .mari-chrome-control[data-home-chat-mode]{\n  border:0 !important; border-radius:0 !important; clip-path:var(--vc-tag);\n  box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important;\n  background:var(--vc-tag-edge), var(--vc-bar) !important;\n  padding-inline:16px !important;\n}\n/* phone Chats toolbar: search, tags and \"...\" are coffin tags like New */\n.ovm-sidepage .ovm-chats-tools .mari-chrome-field,\n.ovm-sidepage [data-mari-part=\"tag-filter\"],\n.ovm-sidepage .ovm-chats-more__btn,\n.mari-status-footer .mari-chrome-control,\n.mari-status-footer .mari-chrome-field{\n  border:0 !important; border-radius:0 !important; clip-path:var(--vc-tag);\n  box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important;\n  background:var(--vc-tag-edge), var(--vc-bar) !important;\n}\n.ovm-sidepage [data-mari-part=\"tag-filter\"], .ovm-sidepage .ovm-chats-more__btn{ min-width:3rem; }\n/* phone/tablet Chat settings: the rows are coffin tags, the switch tiles and Edit have cut corners,\n   like the rest of the theme (the drawer is square, not rounded) */\n.ov-cs.ov-cs [data-ovm-cs-view] .mari-drawer.ovm-cs-row,\n.ov-cs.ov-cs [data-ovm-cs-view] .mari-drawer[data-chat-settings-section=\"connection\"],\n.ov-cs.ov-cs [data-ovm-cs-view] [data-ovm-quick] > .mari-drawer,\n.ov-cs.ov-cs [data-ovm-cs-view=\"all\"] > [data-ovm-quick],\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-cs-row__btn,\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-csq__all{ border-radius:0 !important; clip-path:var(--vc-tag); }\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-cs-row__btn,\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-csq__all,\n.ov-cs.ov-cs [data-ovm-cs-view] .mari-drawer[data-chat-settings-section=\"connection\"]{ padding-inline:1.25rem !important; }\n.ov-cs.ov-cs [data-ovm-cs-view] .ovm-csq__switch{ border-radius:0 !important; clip-path:var(--vc-cut); }\n.ov-cs .ov-edbtn{ border-radius:0 !important; clip-path:var(--vc-tag); padding-inline:16px !important; }\n/* the Juno / Online chip over a conversation is an opaque tag, so messages never show through it */\n[data-mari-part=\"chat-header\"] > *{\n  background:var(--vc-tag-edge), var(--vc-bar) !important;\n  box-shadow:inset 0 0 0 1.5px var(--vc-trim) !important;\n  padding-inline:14px 16px !important;\n}\n\n\n/* ══ 1.6: split view's second-side bar is a plain bar ══\n   It borrows the top bar's hooks, so it also took the fence row and its tall height; under the main bar's fence\n   that read as a double fence. The second side's bar keeps the bar colour and the plates, without the iron. */\n[data-component=\"TopBar\"][data-split-bar]{\n  min-height:0 !important; height:var(--ov-topbar-height) !important; padding-bottom:0 !important; align-items:center;\n  --mari-top-bar-bg:linear-gradient(var(--vc-bar),var(--vc-bar));\n  background:linear-gradient(var(--vc-bar),var(--vc-bar)) !important;\n}\n\n\nField \"css\": showing characters 38000–57436 of 57436.",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_a8ab7fdfc4e64768be07cba8222688d5",
+   "name": "bash",
+   "input": {
+    "command": "mari --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_a8ab7fdfc4e64768be07cba8222688d5",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari <group> <command>\nCore code/workspace: mari code status|diff|check|health|reload\nLive app data:       mari db status|tables|list|get|search|insert|patch|replace|delete|transform|validate\nCustomization:       mari themes list|active|get|create|update|set-active\nImages/media:        mari images connections|preview|generate|edit|assign|delete|list\nCreative data:       mari characters list|get|search|create|update|delete\nCreative data:       mari personas list|get|search|create|update|delete\nCreative data:       mari lorebooks list|get|get-entry <entry-id>|entries <lorebook-id>|search|create|update <lorebook-id>|add-entry <lorebook-id>|update-entry <entry-id>|delete-entry <entry-id>|link-character|unlink-character|delete\nCreative data:       mari presets list|get|sections <preset-id>|get-section <id>|groups|get-group|choice-blocks|get-choice-block|add-section|update-section|delete-section|add-group|update-group|delete-group|add-choice-block|update-choice-block|delete-choice-block|create|update\nChats (read-only):   mari chats list|get|messages|search\nFandom/Wikipedia:    mari wiki find-wikis|search-all|search|get-page|sections|category|site-info\nDiscovery:           mari <group> --help or mari <group> <command> --help\nWrites dry-run by default where supported; --apply saves reversible changes and shows a Keep/Restore review card.",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_bb1f1536ed0346e980c78ecb8bf86ed5",
+   "name": "bash",
+   "input": {
+    "command": "mari db transform --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_bb1f1536ed0346e980c78ecb8bf86ed5",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari db transform --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari db <command>\nDiscovery: status, tables, schema <table>, counts, data-dir, now, new-id\nRead: list <table>, get <table> <id>, select <table> --where <expr>, search <table|all> <query>, validate [--table <table>]\nWhere: row.field and row['field'] with comparisons, &&, ||, !, parentheses, and safe string/array methods (includes, startsWith, endsWith, case conversion, trim); arbitrary code and calls are rejected\nWrite: insert|patch|replace|delete|transform ... (dry-run by default; --apply saves reversible changes and shows a Keep/Restore review card)\nUse -- before positional arguments that match option names, with options first: mari db get --parsed -- characters --apply\nTransform scripts use an OS sandbox where supported; on other systems, reviewed local scripts remain available only with MARI_DB_ALLOW_UNSAFE_TRANSFORMS=true.\nKnown tables: chats, messages, message_swipes, conversation_call_sessions, conversation_call_messages, conversation_call_sounds, characters, character_card_versions ... (93)\nJournal directory: /home/kolache/Downloads/marinara-agent-handoff/mari-theme-test-data/storage/journal (storage)",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "draft",
+  "data": "I "
+ },
+ {
+  "type": "draft",
+  "data": "I found "
+ },
+ {
+  "type": "draft",
+  "data": "I found the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry, artwork,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry, artwork, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry, artwork, fonts,"
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry, artwork, fonts, "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry, artwork, fonts, and "
+ },
+ {
+  "type": "draft",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry, artwork, fonts, and night "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_4c19c4681f1f4a3ba7858254519e49c4",
+   "name": "bash",
+   "input": {
+    "command": "mari themes get --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_4c19c4681f1f4a3ba7858254519e49c4",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari themes get --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari themes <command>\nRead: list [--active] [--limit <n>], active, get <id>\nWrite: create --name <name> (--css <css> | --css-file <path>) [--activate] [--apply] [--reason <text>]\nWrite: update <id> [--name <name>] [--css <css> | --css-file <path>] [--apply] [--reason <text>]\nWrite: set-active <id|none> [--apply] [--reason <text>]\nWrites dry-run by default; --apply saves reversible changes and shows a Keep/Restore review card.",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "token",
+  "data": "I found the cause: the copy’s daytime rules still contain lavender bubble fills, pink user bubbles, and a lilac sidebar wash—including hard-coded colors that bypass the blue accent. I’ll change those to pale blues with dark navy text, preserving the coffin geometry, artwork, fonts, and night palette."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "narration": true
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_bf6537b027d749f1a7b522e3371b73b0",
+   "name": "bash",
+   "input": {
+    "command": "mari db schema custom_themes",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_bf6537b027d749f1a7b522e3371b73b0",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari db schema custom_themes\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"table\": \"custom_themes\",\n  \"primaryKey\": \"id\",\n  \"columns\": [\n    {\n      \"key\": \"id\",\n      \"dbName\": \"id\",\n      \"primary\": true,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"name\",\n      \"dbName\": \"name\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"css\",\n      \"dbName\": \"css\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"installedAt\",\n      \"dbName\": \"installed_at\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"createdAt\",\n      \"dbName\": \"created_at\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"updatedAt\",\n      \"dbName\": \"updated_at\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"isActive\",\n      \"dbName\": \"is_active\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    },\n    {\n      \"key\": \"meta\",\n      \"dbName\": \"meta\",\n      \"primary\": false,\n      \"notNull\": true,\n      \"jsonEncoded\": false\n    }\n  ]\n}",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_91b9c44b779941e0a0cdfa94e8b36830",
+   "name": "bash",
+   "input": {
+    "command": "mari code --help",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_91b9c44b779941e0a0cdfa94e8b36830",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari code --help\nExit code: 0 (direct mari runtime)\n\nstdout:\nUsage: mari code <command>\nstatus                 Show workspace, runtime, git status, changed files, and diff stat.\ndiff [--patch]          Show changed files and git diff --stat. Add --patch for a truncated patch.\ndiff --cached [--patch] Show staged changed files and diff summary.\ncheck [--changed]       Run validation. --changed currently falls back to baseline pnpm check.\nhealth                 Show server/runtime health and database validation status.\nreload request --kind client|server|full --reason <text> [--resume]\ncontinue <run-id>       Planned durable resume command; not implemented yet.\nExamples:\n  mari code status\n  mari code diff --patch\n  mari code check\n  mari code reload request --kind server --reason \"Server route changed\" --resume",
+   "durationMs": 0
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_dc2d7ec8c8334560bfc3fc0c4515b638",
+   "name": "grep",
+   "input": {
+    "pattern": "transform.*script|script.*transform",
+    "path": "server",
+    "glob": "*mari*",
+    "ignoreCase": true,
+    "literal": false,
+    "context": 2,
+    "limit": 10
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_dc2d7ec8c8334560bfc3fc0c4515b638",
+   "name": "grep",
+   "isError": true,
+   "output": "Path not found: server. Paths resolve inside the workspace root; use ls or find to locate the file.",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_cb1f06275c7042b5995d8ed3778a5c7f",
+   "name": "bash",
+   "input": {
+    "command": "mari db transform custom_themes",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_cb1f06275c7042b5995d8ed3778a5c7f",
+   "name": "bash",
+   "isError": true,
+   "output": "Command: mari db transform custom_themes\nExit code: 1 (direct mari runtime)\n\nstdout:\n{\n  \"ok\": false,\n  \"mode\": \"read\",\n  \"command\": \"mari db transform custom_themes\",\n  \"error\": \"Usage: mari db transform <table|all> <script.mjs> [--dry-run] [--apply]\"\n}",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_e73cf5a4a9dd46389cae9fe81a0cc9f5",
+   "name": "ls",
+   "input": {
+    "path": ".",
+    "limit": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_e73cf5a4a9dd46389cae9fe81a0cc9f5",
+   "name": "ls",
+   "isError": false,
+   "output": "Directory: .\n.agents/\n.coderabbit.yaml\n.cursor/\n.dockerignore\n.env\n.env.example\n.git/\n.gitattributes\n.github/\n.gitignore\n.markdownlint.json\n.npmrc\n.nvmrc\n.pnpm-store/\n.pnpm/\n.prettierignore\n.prettierrc\nAGENTS.md\nandroid/\nCHANGELOG.md\nCODE_OF_CONDUCT.md\nCONTRIBUTING.md\ncustom_components/\nDESIGN.json\nDESIGN.md\ndocker-compose.yml\nDockerfile\nDockerfile.lite\ndocs/\ne2e/\n… 28 more",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_70e5263e018040118309fb3b9fc5dd39",
+   "name": "find",
+   "input": {
+    "pattern": "**/*velvet*",
+    "path": ".",
+    "limit": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_70e5263e018040118309fb3b9fc5dd39",
+   "name": "find",
+   "isError": false,
+   "output": "velvet-blue.mjs",
+   "durationMs": 179
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_f7561137b7e64ca18f571daa4790578e",
+   "name": "read",
+   "input": {
+    "path": "velvet-blue.mjs",
+    "offset": 1,
+    "limit": 160
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_f7561137b7e64ca18f571daa4790578e",
+   "name": "read",
+   "isError": false,
+   "output": "File: velvet-blue.mjs\nLines: 1-10 of 10\n\n1: export default function(row) {\n2:  if(row.id !== '22m7Hs1adySrgvLPKUtXM') return;\n3:  const colors={'#a3213a':'#215fa3','#f1a7b3':'#a7ccf1','#c42d7a':'#2d68b8','#7a2a6e':'#2a507a','#f0c3cc':'#c3daf0','#e08a9c':'#8ab6e0','#6e1424':'#143e6e','#cf6a7e':'#6a9fcf','#3a0d19':'#0d233a','#120609':'#060c12','#170a10':'#0a1017','#1d0d14':'#0d151d','#0b0709':'#07090b','#0e0709':'#070b0e','#5a1626':'#16395a','#1c0a11':'#0a131c','#3a1220':'#12283a','#5a3440':'#34485a'};\n4:  let css=row.css.replace(/#[0-9a-fA-F]{6}\\b/g,s=>colors[s.toLowerCase()]||s);\n5:  const rgb={'16,8,12':'8,12,16','11,7,9':'7,9,11','14,7,10':'7,10,14','21,9,14':'9,14,21','34,12,22':'12,22,34','12,6,9':'6,9,12','60,36,46':'36,46,60','90,52,64':'52,64,90'};\n6:  css=css.replace(/rgba\\((\\d+,\\d+,\\d+),/g,(s,v)=>rgb[v]?'rgba('+rgb[v]+',':s);\n7:  if(css===row.css) throw new Error('No colors changed');\n8:  return {...row,css};\n9: }\n10: ",
+   "durationMs": 1
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_1415dd9acb2a4323bd5c0458ef466fcb",
+   "name": "write",
+   "input": {
+    "path": "velvet-day-blue.mjs",
+    "content": "export default function(row) {\n if (row.id !== '22m7Hs1adySrgvLPKUtXM') return;\n const colors = {'#ece2fb':'#e2effb','#1f1226':'#12263b','#4f3a5c':'#3a536c','#6a5677':'#526b83','#f8f2ff':'#f2f8ff','#fde6f1':'#e0efff','#f3eafd':'#e8f2fc','#2f7d63':'#285d89','#6b1f6e':'#204f7b','#9fe8c8':'#a7d4f4','#1d6b4f':'#235b86','#7fd6b0':'#7bb9e6','#ecdfff':'#dfedfc','#ffdcec':'#d4e8fc','#fbe7f2':'#e7f3fc','#dccbf6':'#c5dff5','#7a5cc0':'#527fae','#c9b3f0':'#b3d2ee','#b8f0d8':'#c5e5fa','#ff7ab8':'#8ecbfa','#e07bb0':'#79a9d5','#f3a9c9':'#a9cff3','#9fe3c6':'#a3d5ee','#ebdeff':'#deecfc','#ffe3ef':'#e1f0fc','#f6eeff':'#eef6ff','#f3c6e0':'#c6e1f5','#d9c4ff':'#c4dafa','#4a1050':'#163e63','#efe3ff':'#e3effb','#8a5aa8':'#527fa6'};\n const rgb = {'244,236,253':'236,245,253','246,240,254':'237,246,254','236,226,251':'226,239,251','150,130,190':'130,162,190','190,170,215':'170,198,220'};\n let count = 0;\n // Only day-only rules change; all geometry, image references and dark rules remain verbatim.\n const css = row.css.replace(/([^{}]+)\\{([^{}]*)\\}/g, (rule, selector, body) => {\n  const selectors = selector.slice(selector.lastIndexOf('*/') + 2).trim().split(',');\n  if (!selectors.length || !selectors.every(s => s.includes('[data-theme=\"light\"]'))) return rule;\n  let next = body.replace(/#[0-9a-fA-F]{6}\\b/g, value => colors[value.toLowerCase()] || value)\n   .replace(/rgba\\((\\d+,\\d+,\\d+),/g, (value, triplet) => rgb[triplet] ? 'rgba(' + rgb[triplet] + ',' : value);\n  if (next !== body) count++;\n  return selector + '{' + next + '}';\n });\n if (count < 10) throw new Error('Expected day palette rules were not found: ' + count);\n const urls = s => s.match(/url\\([^)]*\\)/g).join('\\n');\n if (urls(css) !== urls(row.css)) throw new Error('Artwork references changed');\n return {...row, css};\n}\n",
+    "reason": "Prepares a day-only color replacement for the large stylesheet while retaining artwork references and all layout rules."
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_1415dd9acb2a4323bd5c0458ef466fcb",
+   "name": "write",
+   "isError": false,
+   "output": "Wrote 1783 bytes to velvet-day-blue.mjs.",
+   "durationMs": 3
+  }
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the copy’s day palette and preserved styling.",
+    "status": "completed"
+   },
+   {
+    "content": "Replace lavender and pink day colors with pale blues.",
+    "status": "in_progress"
+   },
+   {
+    "content": "Verify the saved CSS and unchanged artwork.",
+    "status": "pending"
+   }
+  ]
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_8d7ea370025e46528ff83fa8d7458f21",
+   "name": "bash",
+   "input": {
+    "command": "mari db transform custom_themes velvet-day-blue.mjs --apply --reason \"Replaces the copy’s lavender and pink daytime CSS colors with pale blues while preserving night styling, coffin shapes and packaged artwork.\"",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_8d7ea370025e46528ff83fa8d7458f21",
+   "name": "bash",
+   "isError": false,
+   "output": "Readback: store-verified\nCommand: mari db transform custom_themes velvet-day-blue.mjs --apply --reason \"Replaces the copy’s lavender and pink daytime CSS colors with pale blues while preserving night styling, coffin shapes and packaged artwork.\"\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"ok\": true,\n  \"mode\": \"apply\",\n  \"saved\": true,\n  \"status\": \"applied\",\n  \"message\": \"Applied and saved. Marinara is showing the user a change card. The store read-back confirms the persisted rows match the intended change - no separate verification read is needed; report the outcome matter-of-factly.\",\n  \"readBack\": {\n    \"status\": \"verified\",\n    \"checkedRows\": 1\n  },\n  \"validation\": {\n    \"status\": \"passed\",\n    \"errors\": [],\n    \"notices\": [],\n    \"infos\": []\n  },\n  \"command\": \"mari db transform custom_themes velvet-day-blue.mjs --apply --reason \\\"Replaces the copy’s lavender and pink daytime CSS colors with pale blues while preserving night styling, coffin shapes and packaged artwork.\\\"\",\n  \"summary\": {\n    \"matchedRows\": 1,\n    \"affectedRows\": 1,\n    \"insertedRows\": 0,\n    \"updatedRows\": 1,\n    \"replacedRows\": 0,\n    \"deletedRows\": 0,\n    \"affectedTables\": {\n      \"custom_themes\": 1\n    },\n    \"preview\": [\n      {\n        \"table\": \"custom_themes\",\n        \"id\": \"22m7Hs1adySrgvLPKUtXM\",\n        \"action\": \"update\",\n        \"before\": {\n          \"css\": \"/* VELVET CASKET (theme author guide v1.5, contract 1)\\n   One idea: every container is a coffin. Messages stand as upright coffins with a finial on the\\n   head, the message box is a coffin laid on its side, Home widgets are a row of coffins, dialogs are\\n   coffin lids, buttons are coffin tags, avatars are mourning cameos, and an iron cemetery fence runs\\n   under the top bar.\\n   Day  = PASTEL GOTH: lilac, mint, baby pink, thick black sticker outlines, bats and bow-skulls.\\n   Night = TRADITIONAL GOTH: black and oxblood velvet, antique silver trim, iron crosses, candlelight. */\\n\\n:root{\\n  --mari-tokens-version:1;\\n  /* coffin geometry (px so the shape survives any height) */\\n  --vc-head:22px;   /* how far the head is cut in from each side */\\n  --vc-sh:22px;     /* how far down the shoulders sit */\\n  --vc-foot:14px;   /* how far the foot tapers in */\\n  --vc-bw:2px;      /* outline thickness */\\n  --vc-coffin:polygon(var(--vc-head) 0,calc(100% - var(--vc-head)) 0,100% var(--vc-sh),calc(100% - var(--vc-foot)) 100%,var(--vc-foot) 100%,0 var(--vc-sh));\\n  --vc-coffin-in:polygon(calc(var(--vc-head) - 1px) 0,calc(100% - var(--vc-head) + 1px) 0,100% calc(var(--vc-sh) - 1px),calc(100% - var(--vc-foot)) 100%,var(--vc-foot) 100%,0 calc(var(--vc-sh) - 1px));\\n  /* coffin on its side: head on the left, foot on the right */\\n  --vc-coffin-side:polygon(0 12px,30px 0,calc(100% - 8px) 6px,100% 50%,calc(100% - 8px) calc(100% - 6px),30px 100%,0 calc(100% - 12px));\\n  /* coffin tag for buttons and pills */\\n  --vc-tag:polygon(8px 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,8px 100%,0 50%);\\n\\n  --vc-blackletter:\\\"UnifrakturCook\\\",\\\"Old English Text MT\\\",serif;\\n  --vc-serif:\\\"EB Garamond\\\",Garamond,\\\"Times New Roman\\\",serif;\\n  --vc-plate:\\\"Cormorant SC\\\",\\\"EB Garamond\\\",serif;\\n\\n  --radius:2px;\\n  --mari-font-ui:var(--vc-serif);\\n  --mari-font-heading:var(--vc-blackletter);\\n  --mari-font-chat:var(--vc-serif);\\n  --ov-serif:var(--vc-blackletter);\\n  --mari-chat-font-size:17px;\\n  --mari-chat-line-height:1.6;\\n  --mari-message-measure:72ch;\\n  --mari-paragraph-gap:0.8em;\\n  --mari-dialogue-weight:500;\\n  --mari-text-outline:0;\\n  --mari-min-ui-text:12px;\\n  --mari-toast-font-size:1rem;\\n  --mari-selected-tint:var(--primary);\\n  --mari-msg-head-rule:var(--vc-head-rule);\\n  --mari-home-art:none;\\n  --mari-home-widget-radius:0;\\n  --mari-home-widget-border-width:0;\\n  --mari-home-widget-font:var(--vc-serif);\\n  --mari-home-widget-title-font:var(--vc-blackletter);\\n  --mari-home-widget-title-size:1.6rem;\\n  --mari-home-widget-eyebrow-size:0.8125rem;\\n  --mari-home-widget-text-size:0.9375rem;\\n  --mari-home-widget-action-size:0.9375rem;\\n  --mari-home-shortcut-size:1rem;\\n  --mari-top-bar-plate-radius:0;\\n  --mari-composer-placeholder:\\\"Whisper into the dark...\\\";\\n  --mari-chat-wash:none;\\n  --mari-chat-row-art-opacity:0;\\n  --marinara-theme-accent-pulse:none;\\n  --glow-primary:transparent; --glow-accent:transparent;\\n  --mari-chat-column:46rem;\\n  --mari-art-saturation-1:28%; --mari-art-saturation-2:24%;\\n  --mari-pinned-speaker:on;\\n  --mari-phone-avatar:hidden;\\n}\\n\\n/* ── NIGHT · traditional goth ─────────────────────────────── */\\n:root,:root[data-theme=\\\"dark\\\"]{\\n  --vc-ground:#07090b; --vc-ink:#efe6e8; --vc-mute:#bfaeb5; --vc-faint:#9a8a91;\\n  --vc-hair:rgba(185,170,180,.28);\\n  --vc-trim:#9a8f99;              /* antique silver outline */\\n  --vc-lining:#0a1017;            /* coffin lining under the velvet */\\n  --vc-lining-user:#0d151d;\\n  --vc-velvet:url(\\\"theme:velvet-tile.webp\\\");\\n  --vc-panel:rgba(8,12,16,.92);\\n  --vc-bar:#070b0e;\\n  --vc-accent:#215fa3;            /* oxblood */\\n  --vc-accent-ink:#a7ccf1;        /* readable crimson for text on black */\\n  --vc-gold:#dcb874;              /* candle gold */\\n  --vc-finial:url(\\\"theme:or-cross.webp\\\");\\n  --vc-finial-user:url(\\\"theme:or-rose.webp\\\");\\n  --vc-finial-latest:url(\\\"theme:or-candle.webp\\\");\\n  --vc-crest:url(\\\"theme:or-crest.webp\\\");\\n  --vc-scene-break:url(\\\"theme:or-fleur.webp\\\");\\n  --vc-fence:url(\\\"theme:fence-night.svg\\\");\\n  --mari-icon-send:url(\\\"theme:send-night.svg\\\");\\n  --vc-backdrop:url(\\\"theme:night-chapel.webp\\\");\\n  --vc-backdrop-wash:linear-gradient(rgba(7,9,11,0),rgba(7,9,11,0));\\n  --mari-art-lightness-1:20%; --mari-art-lightness-2:12%;\\n  --vc-online:#4fc79a;\\n  --vc-name:var(--vc-gold);\\n  --vc-latest-trim:#215fa3;\\n  --vc-head-rule:1px solid rgba(185,170,180,.3);\\n  --vc-mint:#cfc6d2;\\n  --vc-mint-ink:#cfc6d2;\\n  --vc-rail:url(\\\"theme:rail-night.svg\\\");\\n  --vc-lid:url(\\\"theme:lid-night.svg\\\");\\n  --vc-sidebar-bg:linear-gradient(rgba(7,10,14,.28),rgba(7,10,14,.4)),url(\\\"theme:velvet-tile.webp\\\") 0 0 / 512px repeat;\\n  --vc-lining-layers:linear-gradient(rgba(9,14,21,.5),rgba(9,14,21,.58)),var(--vc-velvet) 0 0 / 512px repeat,#0a1017;\\n  --vc-lining-user-layers:linear-gradient(rgba(12,22,34,.46),rgba(12,22,34,.54)),var(--vc-velvet) 0 0 / 512px repeat,#0d151d;\\n}\\n\\n/* ── DAY · pastel goth ─────────────────────────────────────── */\\n:root[data-theme=\\\"light\\\"]{\\n  --vc-ground:#ece2fb; --vc-ink:#1f1226; --vc-mute:#4f3a5c; --vc-faint:#6a5677;\\n  --vc-hair:rgba(26,16,32,.22);\\n  --vc-trim:#1a1020;              /* thick black sticker outline */\\n  --vc-lining:#f8f2ff;            /* lilac paper */\\n  --vc-lining-user:#fde6f1;       /* baby pink */\\n  --vc-velvet:none;\\n  --vc-panel:rgba(244,236,253,.93);\\n  --vc-bar:#f3eafd;\\n  --vc-accent:#2d68b8;            /* hot baby-pink, white text passes */\\n  --vc-accent-ink:#2a507a;\\n  --vc-gold:#2f7d63;              /* mint ink for names */\\n  --vc-finial:url(\\\"theme:st-bat.webp\\\");\\n  --vc-finial-user:url(\\\"theme:st-skull.webp\\\");\\n  --vc-finial-latest:url(\\\"theme:st-heartbat.webp\\\");\\n  --vc-crest:url(\\\"theme:st-holo.webp\\\");\\n  --vc-scene-break:url(\\\"theme:st-holo.webp\\\");\\n  --vc-fence:url(\\\"theme:fence-day.svg\\\");\\n  --vc-bw:2.5px;\\n  --mari-icon-send:url(\\\"theme:send-day.svg\\\");\\n  --vc-backdrop:url(\\\"theme:day-chapel.webp\\\");\\n  --vc-backdrop-wash:linear-gradient(rgba(236,226,251,0),rgba(236,226,251,0));\\n  --mari-art-lightness-1:84%; --mari-art-lightness-2:78%;\\n  --vc-online:#17694a;\\n  --vc-name:#6b1f6e;\\n  --vc-mint:#9fe8c8;\\n  --vc-mint-ink:#1d6b4f;\\n  --vc-latest-trim:#1a1020;\\n  --vc-head-rule:2px dashed #7fd6b0;\\n  --vc-rail:url(\\\"theme:rail-day.svg\\\");\\n  --vc-lid:url(\\\"theme:lid-day.svg\\\");\\n  --vc-sidebar-bg:linear-gradient(rgba(246,240,254,.9),rgba(246,240,254,.9)),url(\\\"theme:day-pattern.webp\\\") 0 0 / 320px repeat;\\n  --vc-lining-layers:#ecdfff;\\n  --vc-lining-user-layers:#ffdcec;\\n  --vc-lining-latest:linear-gradient(#ecdfff,#ecdfff) padding-box;\\n}\\n\\n:root,:root[data-theme=\\\"dark\\\"],:root[data-theme=\\\"light\\\"]{\\n  --background:var(--vc-ground); --foreground:var(--vc-ink);\\n  --card:var(--vc-panel); --card-foreground:var(--vc-ink);\\n  --popover:var(--vc-panel); --popover-foreground:var(--vc-ink);\\n  --primary:var(--vc-accent); --primary-foreground:#fff;\\n  --secondary:color-mix(in srgb,var(--vc-ink) 8%,var(--vc-ground)); --secondary-foreground:var(--vc-ink);\\n  --muted:color-mix(in srgb,var(--vc-ink) 6%,var(--vc-ground)); --muted-foreground:var(--vc-mute);\\n  --accent:color-mix(in srgb,var(--vc-accent) 16%,var(--vc-ground)); --accent-foreground:var(--vc-ink);\\n  --destructive:#b3123a; --destructive-foreground:#fff;\\n  --border:var(--vc-hair); --input:var(--vc-hair); --ring:var(--vc-accent);\\n  --sidebar:var(--vc-panel); --sidebar-foreground:var(--vc-ink); --sidebar-border:var(--vc-hair);\\n  --sidebar-accent:color-mix(in srgb,var(--vc-accent) 14%,transparent); --sidebar-accent-foreground:var(--vc-ink);\\n  --ov-line:var(--vc-hair); --ov-text:var(--vc-ink); --ov-muted:var(--vc-mute); --ov-dim:var(--vc-faint);\\n  --ov-accent:var(--vc-accent-ink);\\n  --ov-hover:color-mix(in srgb,var(--vc-ink) 7%,transparent);\\n  --ov-active-bg:color-mix(in srgb,var(--vc-accent) 18%,transparent);\\n  --ov-mode-conversation:var(--vc-accent-ink); --ov-mode-roleplay:var(--vc-accent-ink); --ov-mode-game:var(--vc-gold);\\n  --mari-mode-conversation:var(--vc-accent-ink); --mari-mode-roleplay:var(--vc-accent-ink); --mari-mode-game:var(--vc-gold);\\n  --mari-home-pink:var(--vc-accent-ink); --mari-home-violet:var(--vc-gold);\\n  --mari-chrome-accent:var(--vc-accent-ink);\\n  --mari-chrome-muted:var(--vc-mute);\\n  --mari-message-time:var(--vc-faint);\\n  --mari-message-actions:var(--vc-mute);\\n  --mari-swipe-counter:var(--vc-mute);\\n  --mari-dialogue-color:var(--vc-accent-ink);\\n  --mari-home-widget-bg:transparent;\\n  --mari-home-widget-title-color:var(--vc-ink);\\n  --mari-home-widget-muted:var(--vc-mute);\\n  --mari-home-widget-eyebrow-color:var(--vc-accent-ink);\\n  --mari-home-wash:transparent;\\n  --mari-page-veil:color-mix(in srgb,var(--vc-ground) 82%,transparent);\\n  --mari-chat-header-bg:none;\\n  --mari-scrim:color-mix(in srgb,var(--vc-ground) 72%,transparent);\\n  --mari-top-bar-plate:color-mix(in srgb,var(--vc-ground) 88%,transparent);\\n  --mari-status-online:var(--vc-online); --mari-status-idle:var(--vc-gold); --mari-status-dnd:#c42d4a; --mari-status-offline:var(--vc-faint);\\n  --mari-gauge-ok:#3fb68b; --mari-gauge-warn:#d39b3a; --mari-gauge-danger:#c42d4a;\\n  --mari-game-combat:var(--vc-accent); --mari-game-combat-text:#fff;\\n  --mari-game-combat-bg:var(--vc-accent); --mari-game-combat-bg-hover:color-mix(in srgb,var(--vc-accent) 85%,#000); --mari-game-combat-border:var(--vc-accent);\\n  --mari-stage-empty-bg:var(--vc-backdrop-wash),var(--vc-backdrop) center bottom / cover no-repeat,var(--vc-ground);\\n  --mari-user-avatar-placeholder:radial-gradient(circle at 50% 38%,var(--vc-trim) 0 22%,transparent 23%),radial-gradient(ellipse 60% 40% at 50% 100%,var(--vc-trim) 0 70%,transparent 71%),var(--vc-lining);\\n  --mari-focus-ring-color:var(--vc-accent-ink);\\n  --mari-top-bar-bg:var(--vc-fence) 0 100% / auto 44px repeat-x,linear-gradient(var(--vc-bar),var(--vc-bar));\\n}\\n/* ── Backdrop: the same chapel and graveyard, pastel by day, candlelit by night ── */\\n:root{\\n  --mari-app-backdrop-layers:var(--vc-backdrop-wash),var(--vc-backdrop) center bottom / cover no-repeat,var(--vc-ground);\\n  --mari-user-avatar-image:var(--vc-cameo);\\n  --mari-card-art-placeholder:var(--vc-cameo) center / auto 70% no-repeat,var(--vc-card-ph);\\n}\\n:root,:root[data-theme=\\\"dark\\\"]{ --vc-cameo:url(\\\"theme:cameo-night.webp\\\"); --vc-card-ph:radial-gradient(ellipse at 50% 40%,#0d233a,#060c12 75%); }\\n:root[data-theme=\\\"light\\\"]{ --vc-cameo:url(\\\"theme:cameo-day.webp\\\"); --vc-card-ph:radial-gradient(ellipse at 50% 40%,#fbe7f2,#dccbf6 75%); }\\n@media (orientation:portrait){\\n  :root[data-overhaul=\\\"mobile\\\"]{ --vc-backdrop:url(\\\"theme:night-phone.webp\\\"); }\\n  :root[data-overhaul=\\\"mobile\\\"][data-theme=\\\"light\\\"]{ --vc-backdrop:url(\\\"theme:day-phone.webp\\\"); }\\n}\\n/* weather greys the graveyard over: rain and storm darken, snow pales, fog thickens */\\n:root[data-mari-weather=\\\"rain\\\"],:root[data-mari-weather=\\\"storm\\\"]{ --vc-backdrop:url(\\\"theme:night-chapel-storm.webp\\\"); --vc-backdrop-wash:linear-gradient(rgba(14,10,22,.15),rgba(20,10,24,.1)); }\\n:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"rain\\\"],:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"storm\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(150,130,190,.38),rgba(190,170,215,.25)); }\\n:root[data-mari-weather=\\\"snow\\\"],:root[data-mari-weather=\\\"hail\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(200,190,210,.12),rgba(235,230,240,.22)); }\\n:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"snow\\\"],:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"hail\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.45)); }\\n:root[data-mari-weather=\\\"fog\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(36,46,60,.3),rgba(52,64,90,.45)); }\\n:root[data-theme=\\\"light\\\"][data-mari-weather=\\\"fog\\\"]{ --vc-backdrop-wash:linear-gradient(rgba(236,226,251,.45),rgba(236,226,251,.6)); }\\n\\n/* ── Top bar: a cemetery fence runs along its foot ─────────── */\\n[data-component=\\\"TopBar\\\"]{\\n  font-family:var(--vc-plate); letter-spacing:.02em; border-bottom:0 !important;\\n  height:auto !important; min-height:86px; padding-bottom:44px !important; align-items:flex-start;\\n}\\n[data-component=\\\"TopBar\\\"] .ov-tab,[data-component=\\\"TopBar\\\"] .ov-text-btn{ clip-path:var(--vc-tag); padding-inline:14px; border-radius:0; }\\n[data-component=\\\"TopBar\\\"] .ov-tab.is-on{ background:color-mix(in srgb,var(--vc-accent) 30%,var(--vc-ground)); color:var(--vc-ink); }\\n:root[data-theme=\\\"light\\\"] [data-component=\\\"TopBar\\\"] .ov-tab.is-on{ background:color-mix(in srgb,var(--vc-accent) 16%,#fff); }\\n[data-component=\\\"TopBar\\\"] .ov-tab__label{ font-weight:700; }\\n\\n/* ── Sidebars: an iron railing on the inner edge ──────────── */\\n[data-component=\\\"ChatSidebar\\\"]{ font-family:var(--vc-serif); background:var(--vc-rail) right top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-right:12px; }\\n[data-component=\\\"RightPanelDesktop\\\"]{ background:var(--vc-rail) left top / 14px 64px repeat-y,var(--vc-sidebar-bg) !important; padding-left:12px; }\\n[data-chat-row]{ clip-path:var(--vc-tag); border-radius:0 !important; }\\n[data-chat-row][data-selected=\\\"true\\\"]{ background:color-mix(in srgb,var(--vc-accent) 24%,var(--vc-ground)) !important; }\\n[data-chat-row] [data-mari-part=\\\"avatar-placeholder\\\"],[data-chat-row] img{ border-radius:50% / 50%; }\\n.ov-new-pill,.mari-chrome-control--primary,.ov-btn--primary{\\n  clip-path:var(--vc-tag); border-radius:0 !important; padding-inline:16px !important;\\n  font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em;\\n  background:var(--vc-accent) !important; color:#fff !important; border:0 !important;\\n}\\n[data-component=\\\"CenterContent\\\"] .mari-chrome-control:not(.mari-chrome-control--primary){ background-color:var(--vc-panel) !important; }\\n.mari-chrome-segmented__button{ font-family:var(--vc-plate); font-weight:700; letter-spacing:.04em; border-radius:0 !important; clip-path:var(--vc-tag); }\\n\\n/* ── Avatars: mourning cameos ─────────────────────────────── */\\n.mari-roleplay-message-row [data-mari-part=\\\"avatar\\\"] button{\\n  border-radius:50% / 50% !important; height:calc(3.25rem * var(--roleplay-avatar-scale,1)) !important; width:calc(2.6rem * var(--roleplay-avatar-scale,1)) !important;\\n  box-shadow:0 0 0 2px var(--vc-lining),0 0 0 4px var(--vc-trim) !important; --tw-ring-color:transparent;\\n}\\n.mari-roleplay-message-row [data-mari-part=\\\"avatar\\\"] .rpg-avatar-glow{ filter:none; box-shadow:none; background:none; }\\n[data-component=\\\"ConversationMessage.Content\\\"] [data-mari-part=\\\"avatar\\\"] button{\\n  border-radius:50% / 50% !important; width:2.2rem !important; height:2.6rem !important;\\n  box-shadow:0 0 0 2px var(--vc-lining),0 0 0 3.5px var(--vc-trim);\\n}\\n[data-component=\\\"ConversationMessage.Content\\\"] [data-mari-part=\\\"avatar\\\"]{ max-height:none; }\\n\\n/* ── Roleplay: each message is an upright coffin with a finial ── */\\n.mari-rp-bubble{\\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important;\\n  background:var(--vc-trim) !important; isolation:isolate; box-shadow:none !important; backdrop-filter:none !important;\\n}\\n.mari-rp-bubble::before{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in);\\n  background:var(--vc-lining-layers);\\n}\\n.mari-rp-bubble--user::before{ background:var(--vc-lining-user-layers); }\\n.mari-rp-bubble > div{ padding:18px calc(var(--vc-foot) + 16px) 20px calc(var(--vc-foot) + 16px) !important; }\\n.mari-roleplay-message-body{ position:relative; }\\n.mari-roleplay-message-body::before{\\n  content:\\\"\\\"; position:absolute; left:50%; top:-15px; width:26px; height:36px; translate:-50% 0; z-index:2; pointer-events:none;\\n  background:var(--vc-finial) center / contain no-repeat;\\n}\\n[data-message-role=\\\"user\\\"] .mari-roleplay-message-body::before{ background-image:var(--vc-finial-user); left:auto; right:30px; translate:0 0; width:28px; height:28px; top:-14px; }\\n[data-mari-part=\\\"message\\\"] .mari-message-name{ font-family:var(--vc-plate) !important; font-size:1.0625rem !important; font-weight:700; letter-spacing:.05em; color:var(--vc-name) !important; }\\n[data-mari-part=\\\"message\\\"][data-latest] .mari-rp-bubble{ background:var(--vc-latest-trim) !important; }\\n[data-mari-part=\\\"message\\\"][data-latest][data-message-role=\\\"assistant\\\"] .mari-roleplay-message-body::before{ background-image:var(--vc-finial-latest); }\\n.mari-roleplay-message-row{ margin-bottom:2rem !important; }\\n[data-mari-part=\\\"time\\\"]{ font-family:var(--vc-serif); font-size:.8125rem !important; }\\n[data-mari-part=\\\"message\\\"] hr{ border:0; height:22px; margin:1.1em auto; background:var(--vc-scene-break) center / auto 22px no-repeat,linear-gradient(var(--vc-hair),var(--vc-hair)) center / 100% 1px no-repeat; }\\n\\n/* ── Composer: a coffin laid on its side ──────────────────── */\\n[data-mari-part=\\\"composer\\\"] .mari-chat-input-box{\\n  clip-path:var(--vc-coffin-side); border:0 !important; border-radius:0 !important; isolation:isolate;\\n  background:var(--vc-trim) !important; padding-left:34px !important; padding-right:20px !important; box-shadow:none !important; backdrop-filter:none !important;\\n}\\n[data-mari-part=\\\"composer\\\"] .mari-chat-input-box::before{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-side);\\n  background:var(--vc-lining-layers);\\n}\\n[data-mari-part=\\\"composer\\\"] textarea{ font-family:var(--vc-serif) !important; font-size:1.0625rem !important; color:var(--vc-ink) !important; }\\n[data-mari-part=\\\"composer\\\"] textarea::placeholder{ color:var(--vc-faint) !important; font-style:italic; }\\n\\n/* ── Conversation: a mourning ledger ──────────────────────── */\\n[data-mari-part=\\\"chat-header\\\"] > *{ clip-path:var(--vc-tag); border-radius:0 !important; }\\n[data-component=\\\"ConversationMessage.Content\\\"] .mari-message-content{ font-size:1.0625rem; }\\n/* the whole transcript is written inside one long coffin lid (a picture, so the scrollbar is never cut) */\\n[data-chat-mode=\\\"conversation\\\"] .mari-messages-scroll{ background:var(--vc-lid) center top / calc(100% - 20px) 100% no-repeat; padding-inline:22px; }\\n\\n/* ── Game: narration in a coffin ──────────────────────────── */\\n[data-mari-part=\\\"message\\\"][data-game-narration]{\\n  position:relative;\\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important; isolation:isolate;\\n  background:var(--vc-trim) !important; box-shadow:none !important; backdrop-filter:none !important;\\n  padding:20px 28px 16px !important;\\n}\\n[data-mari-part=\\\"message\\\"][data-game-narration]::before{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in); background:var(--vc-lining-layers);\\n}\\n[data-mari-part=\\\"message\\\"][data-game-narration] .game-narration-prose{ border-color:var(--vc-hair) !important; background:transparent !important; border-radius:0 !important; font-size:1.0625rem; }\\n[data-mari-part=\\\"message\\\"][data-game-narration] .game-narration-prose .text-sm{ font-size:1.0625rem; line-height:1.6; }\\n[data-mari-part=\\\"game-hud\\\"]{ clip-path:var(--vc-coffin); border-radius:0 !important; background:var(--vc-panel) !important; padding-inline:14px; }\\n\\n/* ── Home: a row of coffins ───────────────────────────────── */\\n[data-mari-part=\\\"home-widget\\\"]{\\n  clip-path:var(--vc-coffin); border:0 !important; border-radius:0 !important; isolation:isolate;\\n  background:var(--vc-trim) !important; box-shadow:none !important; backdrop-filter:none !important;\\n}\\n[data-mari-part=\\\"home-widget\\\"]::before{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; clip-path:var(--vc-coffin-in);\\n  background:var(--vc-lining-layers);\\n}\\n[data-mari-part=\\\"home-widget\\\"] > header,[data-mari-part=\\\"home-widget\\\"] > div:not([data-home-professor-content]){ padding-inline:12px; }\\n[data-mari-part=\\\"home-widget-eyebrow\\\"]{ font-family:var(--vc-plate) !important; letter-spacing:.14em; font-weight:700; }\\n[data-mari-part=\\\"home-widget-glow\\\"]{ display:none !important; }\\n[data-mari-part=\\\"home-widget-title\\\"]{ line-height:1.15 !important; margin-bottom:.35rem; letter-spacing:.01em; }\\n[data-home-professor-content]{ padding-left:14px; }\\n[data-mari-part=\\\"home-widget\\\"]::after{\\n  content:\\\"\\\"; position:absolute; top:5px; left:50%; translate:-50% 0; width:64px; height:30px; pointer-events:none; z-index:0;\\n  background:var(--vc-crest) center / contain no-repeat;\\n}\\n[data-component=\\\"CenterContent\\\"] h1{ font-family:var(--vc-blackletter); }\\n\\n/* ── Ctrl+K and dialogs: coffin lids ──────────────────────── */\\n[data-component=\\\"GlobalOmnibar.Panel\\\"]{\\n  /* Ctrl+K is protected from clipping, so its lid is a picture: a coffin outline on a clear ground */\\n  background:var(--vc-lid) 0 0 / 100% 100% no-repeat !important; border:0 !important; border-radius:0 !important; box-shadow:none !important;\\n}\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] > [aria-hidden=\\\"true\\\"]{ display:none; }\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] header > div:first-child{ padding-inline:30px; }\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] footer{ padding-inline:34px; border-color:transparent !important; }\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] header > div:first-child{ border-color:var(--vc-hair) !important; margin-inline:22px; }\\n[data-component=\\\"GlobalOmnibar.Panel\\\"] [data-component=\\\"GlobalOmnibar.ScopeChips\\\"]{ padding-inline:26px; }\\n[data-component=\\\"GlobalOmnibar.Results\\\"]{ padding-inline:18px !important; }\\n[role=\\\"dialog\\\"]:not([data-component=\\\"GlobalOmnibar.Panel\\\"]){ border-color:var(--vc-trim) !important; border-radius:0 !important; }\\n.mari-window,.mari-drawer{ border-radius:0 !important; border-color:var(--vc-trim) !important; }\\n\\n/* ── Pages: Library, Settings, editors ────────────────────── */\\n[data-component=\\\"OverhaulSettingsPage\\\"] h1,[data-component=\\\"OverhaulLibraryPage\\\"] h1,[data-component=\\\"OverhaulEditorHead\\\"] h1,\\n[data-mari-part=\\\"page-title\\\"]{ font-family:var(--vc-blackletter); font-weight:700; }\\n[data-component=\\\"OverhaulCardGallery\\\"] [data-mari-part=\\\"card-art\\\"]{ clip-path:var(--vc-coffin); --vc-head:16px; --vc-sh:16px; --vc-foot:10px; }\\n\\n/* the stock chat background steps aside; the theme's night or day shows through */\\nimg[data-mari-part=\\\"backdrop\\\"][data-default-background]{ opacity:0 !important; }\\n\\n/* ── Phone and tablet: smaller cuts ───────────────────────── */\\n:root[data-overhaul=\\\"mobile\\\"]{ --vc-head:14px; --vc-sh:14px; --vc-foot:9px; }\\n:root[data-overhaul=\\\"mobile\\\"] .mari-rp-bubble > div{ padding:14px 20px 16px !important; }\\n:root[data-overhaul=\\\"mobile\\\"] [data-mari-part=\\\"composer\\\"] .mari-chat-input-box{ padding-left:24px !important; }\\n:root[data-overhaul=\\\"mobile\\\"]{ --vc-coffin-side:polygon(0 9px,22px 0,calc(100% - 6px) 5px,100% 50%,calc(100% - 6px) calc(100% - 5px),22px 100%,0 calc(100% - 9px)); }\\n\\n/* ── Weather ──────────────────────────────────────────────── */\\n/* Night: a cathedral storm. Silver rain, ash-pale snow, blood-grey graveyard fog, crimson petals, bolts on. */\\n:root,:root[data-theme=\\\"dark\\\"]{\\n  --mari-weather-rain-color:#b8adbd; --mari-weather-rain-length:1.6; --mari-weather-strength:1.1;\\n  --mari-weather-snow-color:#ece6ea; --mari-weather-fog-color:#34485a;\\n  --mari-weather-lightning-color:#f1ecff; --mari-weather-lightning-bolt:3;\\n  --mari-weather-firefly-color:#e2bd72; --mari-weather-star-color:#efe6ea; --mari-weather-moon-color:#efe8ee;\\n  --mari-weather-petal-color:#215fa3; --mari-weather-leaf-color:#16395a; --mari-weather-ember-color:#e2bd72; --mari-weather-dust-color:#cdbfc6;\\n  --mari-weather-tint-strength:.7;\\n  --mari-weather-petal-image:url(\\\"theme:wx-petal.webp\\\") url(\\\"theme:wx-petal2.webp\\\");\\n  --mari-weather-leaf-image:url(\\\"theme:wx-leaf.webp\\\") url(\\\"theme:wx-leaf.webp\\\") url(\\\"theme:wx-bat.webp\\\");\\n  --mari-weather-petal-size:.7; --mari-weather-leaf-size:.8;\\n  --mari-weather-moon:none;\\n}\\n/* Day: candy storm. Lilac rain, white flakes, lilac fog, pink bolts, no app sun (pastel sky). */\\n:root[data-theme=\\\"light\\\"]{\\n  --mari-weather-rain-color:#7a5cc0; --mari-weather-rain-length:1.2; --mari-weather-strength:1.2;\\n  --mari-weather-snow-color:#ffffff; --mari-weather-snow-size:1.4; --mari-weather-fog-color:#c9b3f0; --mari-weather-hail-color:#b8f0d8;\\n  --mari-weather-lightning-color:#ff7ab8; --mari-weather-lightning-bolt:3;\\n  --mari-weather-dust-color:#e07bb0; --mari-weather-petal-color:#f3a9c9; --mari-weather-leaf-color:#9fe3c6; --mari-weather-star-color:#2d68b8;\\n  --mari-weather-sun:none; --mari-weather-moon:none; --mari-weather-tint-strength:.35;\\n  --mari-weather-petal-image:url(\\\"theme:wx-heart.webp\\\") url(\\\"theme:wx-petalday.webp\\\") url(\\\"theme:wx-spark.svg\\\");\\n  --mari-weather-snow-image:url(\\\"theme:wx-flake1.webp\\\") url(\\\"theme:wx-flake2.webp\\\") url(\\\"theme:wx-flake3.webp\\\") url(\\\"theme:wx-spark.svg\\\");\\n  --mari-weather-hail-image:url(\\\"theme:wx-starday.webp\\\") url(\\\"theme:wx-heart.webp\\\");\\n  --mari-weather-leaf-image:url(\\\"theme:wx-batday.webp\\\") url(\\\"theme:wx-moonday.webp\\\") url(\\\"theme:wx-spark.svg\\\");\\n  --mari-weather-petal-size:.6; --mari-weather-leaf-size:.7;\\n}\\n\\n/* ══ Round 2 ════════════════════════════════════════════════ */\\n\\n/* Composer: the transcript fades out above the side-laid coffin, so no prose shows around it */\\n[data-chat-mode=\\\"roleplay\\\"] .mari-messages-scroll,[data-chat-mode=\\\"game\\\"] .mari-messages-scroll{\\n  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 118px),transparent calc(100% - 84px));\\n          mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 118px),transparent calc(100% - 84px));\\n  padding-bottom:132px !important; scroll-padding-bottom:132px;\\n}\\n[data-chat-mode=\\\"conversation\\\"] .mari-messages-scroll{\\n  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18px);\\n          mask-image:linear-gradient(to bottom,transparent 0,#000 18px);\\n}\\n\\n/* Night: coffin furniture. An antique-silver bevelled edge, velvet lining, silver studs at the shoulders */\\n:root[data-theme=\\\"dark\\\"]{ --vc-silver:linear-gradient(160deg,#ece6ee,#857b8a 28%,#d9d1db 50%,#5f5662 74%,#c9c1cc); --vc-bw:2.5px; }\\n:root[data-theme=\\\"dark\\\"] .mari-rp-bubble,\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"home-widget\\\"],\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"message\\\"][data-game-narration],\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"composer\\\"] .mari-chat-input-box{ background:var(--vc-silver) !important; }\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"message\\\"][data-latest] .mari-rp-bubble{ background:linear-gradient(160deg,#c3daf0,#215fa3 32%,#8ab6e0 52%,#143e6e 78%,#6a9fcf) !important; }\\n:root[data-theme=\\\"dark\\\"] .mari-rp-bubble::after,\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"message\\\"][data-game-narration]::after{\\n  content:\\\"\\\"; position:absolute; inset:var(--vc-bw); z-index:-1; pointer-events:none; clip-path:var(--vc-coffin-in);\\n  background:url(\\\"theme:or-stud.webp\\\") 6px 8px / 21px 21px no-repeat,url(\\\"theme:or-stud.webp\\\") calc(100% - 6px) 8px / 21px 21px no-repeat;\\n}\\n:root[data-theme=\\\"dark\\\"] [data-mari-part=\\\"home-widget\\\"]::after{ filter:drop-shadow(0 1px 1px #000); }\\n/* Day: real pastel coffins, a mint lining on the newest reply, plum name plates */\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"message\\\"][data-latest][data-message-role=\\\"assistant\\\"] .mari-rp-bubble::before{\\n  background:linear-gradient(#ecdfff,#ecdfff) content-box,#9fe8c8 !important; padding:4px;\\n}\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"home-widget\\\"]::before{ background:#ebdeff; }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"home-widget\\\"][data-home-widget-id=\\\"professor\\\"]::before,\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"home-widget\\\"]:nth-of-type(3n)::before{ background:#ffe3ef; }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"home-widget-eyebrow\\\"]{ color:#1d6b4f !important; }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"composer\\\"] .mari-chat-input-box::before{ background:#f6eeff; }\\n:root[data-theme=\\\"light\\\"] .mari-chrome-segmented__button[aria-pressed=\\\"true\\\"],\\n:root[data-theme=\\\"light\\\"] .mari-chrome-segmented__button[data-state=\\\"active\\\"]{ box-shadow:inset 0 -3px 0 var(--vc-mint); }\\n:root[data-theme=\\\"light\\\"]{ --mari-focus-ring-color:#1d6b4f; scrollbar-color:#9fe8c8 transparent; }\\n\\n/* Bigger finials, sticker-sized */\\n.mari-roleplay-message-body::before{ width:46px !important; height:52px !important; top:-30px !important; }\\n[data-message-role=\\\"user\\\"] .mari-roleplay-message-body::before{ width:38px !important; height:38px !important; top:-22px !important; right:26px; }\\n.mari-roleplay-message-row{ margin-bottom:2.4rem !important; }\\n.mari-roleplay-message-row:first-child{ margin-top:14px; }\\n:root[data-theme=\\\"light\\\"] .mari-roleplay-message-body::before{ filter:drop-shadow(0 0 0 #fff) drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff) drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff) drop-shadow(0 2px 2px rgba(26,16,32,.25)); }\\n:root[data-theme=\\\"dark\\\"] .mari-roleplay-message-body::before{ filter:drop-shadow(0 2px 3px #000); }\\n\\n/* Phone: the name plate is a coffin tag, and the finial rides on the plate so it never floats in a gap */\\n:root[data-overhaul=\\\"mobile\\\"] .mari-roleplay-message-body::before{ display:none; }\\n[data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]{\\n  clip-path:var(--vc-tag); border-radius:0 !important; padding:3px 16px !important; gap:8px;\\n  background:var(--vc-plate-bg) !important; width:max-content; max-width:100%;\\n}\\n[data-message-role=\\\"user\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]{ margin-left:auto; }\\n[data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]::before{\\n  content:\\\"\\\"; flex:0 0 auto; width:24px; height:24px; background:var(--vc-finial) center / contain no-repeat;\\n}\\n[data-message-role=\\\"user\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]::before{ background-image:var(--vc-finial-user); }\\n[data-latest][data-message-role=\\\"assistant\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"]::before{ background-image:var(--vc-finial-latest); }\\n:root,:root[data-theme=\\\"dark\\\"]{ --vc-plate-bg:linear-gradient(90deg,#0d233a,#16395a); }\\n:root[data-theme=\\\"light\\\"]{ --vc-plate-bg:linear-gradient(90deg,#f3c6e0,#d9c4ff); }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"] .mari-message-name{ color:#4a1050 !important; }\\n:root[data-theme=\\\"light\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"] [data-mari-part=\\\"time\\\"]{ color:#4f3a5c !important; }\\n\\n/* Scene break reads */\\n[data-mari-part=\\\"message\\\"] hr{ height:30px !important; background-size:auto 30px,100% 1px !importa\n… output truncated at 32000 characters …",
+   "durationMs": 500
+  }
+ },
+ {
+  "type": "suggestions",
+  "data": [
+   {
+    "id": "suggestion-1",
+    "label": "Activate the blue copy",
+    "prompt": "Activate Velvet Casket (my copy) so I can test the blue daytime palette.",
+    "entity": "settings"
+   },
+   {
+    "id": "suggestion-2",
+    "label": "Refine the blue palette",
+    "prompt": "Make Velvet Casket (my copy)'s daytime blues slightly softer while keeping its shapes and art.",
+    "entity": "settings"
+   }
+  ]
+ },
+ {
+  "type": "todos",
+  "data": [
+   {
+    "content": "Inspect the copy’s day palette and preserved styling.",
+    "status": "completed"
+   },
+   {
+    "content": "Replace lavender and pink day colors with pale blues.",
+    "status": "completed"
+   },
+   {
+    "content": "Verify the saved CSS and unchanged artwork.",
+    "status": "completed"
+   }
+  ]
+ },
+ {
+  "type": "draft",
+  "data": "Saved "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket ("
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**;"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified the saved "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified the saved CSS,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified the saved CSS, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified the saved CSS, not "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified the saved CSS, not the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified the saved CSS, not the rendered "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "Saved and verified the daytime blue palette in **Velvet Casket (my copy)**. The lavender was hiding in hard-coded fills, not just the accent—stubborn little pastel vampire, kek.\n\n- **Bubbles:** pale ice-blue assistant bubbles and slightly deeper powder-blue user bubbles.\n- **Top bar and sidebar:** cool blue-white surfaces instead of lilac and pink washes.\n- **Matching details:** blue Home cards, composer, name plates, selected accents, and daytime weather tints, with dark navy text.\n\n**Coffin shapes, artwork, fonts, layout, and the night palette are unchanged.** The starter original is untouched.\n\nYour copy is currently **inactive**; I left that unchanged. Once you try it, check a daytime conversation and the sidebar—I verified the saved CSS, not the rendered screen."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]

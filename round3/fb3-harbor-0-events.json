@@ -1,0 +1,1024 @@
+[
+ {
+  "type": "metadata",
+  "data": {
+   "phase": "starting"
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_543e3a9befd44d5bbfd65ea14b24ccac",
+   "name": "bash",
+   "input": {
+    "command": "mari images look --target theme-image --theme z4FKwHRd_0Dze9mZmBYXo --name harbor-day-background.webp",
+    "timeout": 30
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_543e3a9befd44d5bbfd65ea14b24ccac",
+   "name": "bash",
+   "isError": false,
+   "output": "Command: mari images look --target theme-image --theme z4FKwHRd_0Dze9mZmBYXo --name harbor-day-background.webp\nExit code: 0 (direct mari runtime)\n\nstdout:\n{\n  \"look\": \"[mari-look:ce502173-f362-45f4-8157-d94bd3a81624] 1 picture(s) attached below, in the order given: data-url.\",\n  \"message\": \"Look at them yourself before you tell the user about them: composition, colour, readability behind text, edges and leftover backgrounds.\"\n}",
+   "durationMs": 57
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_5231a31b7b4347e7b16005224857c181",
+   "name": "app_data",
+   "input": {
+    "action": "theme.get",
+    "id": "z4FKwHRd_0Dze9mZmBYXo"
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_5231a31b7b4347e7b16005224857c181",
+   "name": "app_data",
+   "isError": false,
+   "output": "Command: app_data theme.get\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"id\": \"z4FKwHRd_0Dze9mZmBYXo\",\n  \"name\": \"Lanternwake Harbor\",\n  \"css\": \"/* Lanternwake Harbor — a weathered harbor inn.\\nShape spec: small-round plaster containers 8px; nested drawers, fields and buttons 4px; native tags and avatars retained; Conversation bubbles retain native silhouette.\\nBorders: containers 3px double rope-coloured theme border, fields/buttons 1px solid. Shadows: soft inset lantern glow only. Selected: warm fill and inset ring; focus: inset ring. No added phone rows, repositioned controls, animation, or decorative overlays. */\\n:root {\\n --mari-tokens-version: 1; --radius: 0.5rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-active: var(--secondary); --mari-top-bar-plate-radius: 4px; --mari-accent-text: var(--primary);\\n --mari-app-backdrop: url(\\\"theme:harbor-day-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-day-header.webp\\\") center / cover no-repeat;\\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-app-backdrop-layers: var(--mari-app-backdrop) center / cover no-repeat;\\n --mari-dialogue-color: var(--card-foreground);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\\n}\\n:root, :root[data-theme=\\\"light\\\"], :root[data-mari-sky=\\\"day\\\"], :root[data-mari-sky=\\\"dawn\\\"] {\\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #f3dfb6; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #f4e6ca; --accent-foreground: #173c48; --border: #927b53; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #927b53; --sidebar-accent: #f3dfb6; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\\n}\\n:root[data-theme=\\\"dark\\\"]:not([data-mari-sky=\\\"day\\\"]):not([data-mari-sky=\\\"dawn\\\"]), :root[data-mari-sky=\\\"night\\\"], :root[data-mari-sky=\\\"dusk\\\"] {\\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #51412e; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #443c30; --accent-foreground: #fff0d6; --border: #a28b63; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #a28b63; --sidebar-accent: #51412e; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\\n --mari-app-backdrop: url(\\\"theme:harbor-night-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-night-header.webp\\\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\\n}\\n:root[data-mari-weather=\\\"rain\\\"], :root[data-mari-weather=\\\"storm\\\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"snow\\\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"fog\\\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\\n/* Opaque plaster with faint mineral grain. The texture is paint, never a layer over controls. */\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"bubble\\\"], [data-mari-part=\\\"composer\\\"] {\\n background-color: var(--card);\\n background-image: repeating-linear-gradient(117deg, transparent 0 11px, color-mix(in srgb, var(--border) 5%, transparent) 11px 12px), linear-gradient(155deg, color-mix(in srgb, var(--secondary) 20%, transparent), transparent 65%);\\n color: var(--card-foreground); border: 3px double var(--border); border-radius: 8px;\\n box-shadow: inset 0 0 14px color-mix(in srgb, var(--secondary) 35%, transparent);\\n}\\n.mari-drawer { border-radius: 4px; }\\n:root[data-chat-open-mode=\\\"conversation\\\"] [data-mari-part=\\\"bubble\\\"] { border-radius: revert-layer; }\\n/* A message row is not a second bubble. */\\n[data-mari-part=\\\"message\\\"] { background: transparent; border: 0; box-shadow: none; }\\n.mari-window__header { border-radius: 5px 5px 0 0; }\\n.mari-drawer__header { border-radius: 1px 1px 0 0; }\\n.mari-window__header, .mari-drawer__header { background: var(--secondary); color: var(--secondary-foreground); border-bottom: 1px solid var(--border); }\\n[data-mari-part=\\\"page-title\\\"], [data-mari-part=\\\"home-widget-title\\\"], .mari-window__title, .mari-drawer__title { font-family: var(--mari-font-heading); color: var(--foreground); }\\n:where(button,input,select,textarea), .mari-window__control, .mari-drawer__popout { border-radius: 4px; }\\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button,[role=\\\"tab\\\"])[aria-selected=\\\"true\\\"], button[aria-pressed=\\\"true\\\"], .mari-window-bubble[data-open=\\\"true\\\"] {\\n background: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 1px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);\\n}\\n:where(button,input,select,textarea,a,[role=\\\"tab\\\"]):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\\n/* Opaque plates isolate labels from the artwork at every crop. Internal top-bar classes are documented but may change; paint only. */\\n[data-mari-part=\\\"top-bar\\\"] :is(button,[role=\\\"tab\\\"],.ov-tab,.ov-icon-btn) { background-color: var(--card); color: var(--card-foreground); border-radius: 4px; box-shadow: inset 0 0 0 1px var(--border); }\\n[data-mari-part=\\\"top-bar\\\"] :is([aria-selected=\\\"true\\\"],[aria-pressed=\\\"true\\\"]) { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent); }\\n@media (hover:hover) {\\n [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); }\\n [data-mari-part=\\\"top-bar\\\"] :is(button,[role=\\\"tab\\\"],.ov-tab,.ov-icon-btn):hover { background-color: var(--accent); color: var(--accent-foreground); }\\n}\\n@media (prefers-contrast: more) {\\n [data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"bubble\\\"], [data-mari-part=\\\"composer\\\"] { background-image: none; box-shadow: none; }\\n}\\n:root[data-mari-contrast=\\\"more\\\"] :is([data-mari-part=\\\"page\\\"],[data-mari-part=\\\"home-widget\\\"],.mari-window,.mari-drawer,[data-mari-part=\\\"bubble\\\"],[data-mari-part=\\\"composer\\\"]) { background-image: none; box-shadow: none; }\\n/* Native phone layout, toolbar heights, accessibility typography and weather behaviour remain intact. */\",\n  \"installedAt\": \"2026-11-14T11:50:23.369Z\",\n  \"createdAt\": \"2026-11-14T11:50:23.369Z\",\n  \"updatedAt\": \"2026-11-14T11:58:37.594Z\",\n  \"isActive\": false,\n  \"meta\": {\n    \"images\": [\n      {\n        \"name\": \"harbor-day-header.webp\",\n        \"bytes\": 302994,\n        \"css\": \"url(\\\"theme:harbor-day-header.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-night-header.webp\",\n        \"bytes\": 336654,\n        \"css\": \"url(\\\"theme:harbor-night-header.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-day-background.webp\",\n        \"bytes\": 367920,\n        \"css\": \"url(\\\"theme:harbor-day-background.webp\\\")\"\n      },\n      {\n        \"name\": \"harbor-night-background.webp\",\n        \"bytes\": 280698,\n        \"css\": \"url(\\\"theme:harbor-night-background.webp\\\")\"\n      }\n    ],\n    \"backgrounds\": [],\n    \"fonts\": [],\n    \"thumbnail\": null,\n    \"packageBytes\": 1717976\n  }\n}",
+   "durationMs": 3
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_8510ea55684b495ca14c91ec823e146e",
+   "name": "docs_search",
+   "input": {
+    "query": "message name timestamp theme hooks",
+    "limit": 5
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_8510ea55684b495ca14c91ec823e146e",
+   "name": "docs_search",
+   "isError": false,
+   "output": "Canonical documentation matches for: message name timestamp theme hooks\n\n1. Source: docs/appearance/theme-author-guide.md — Heading: Your first theme, step by step — Line: 7\nA theme is a short list of settings written in CSS, the language web pages use for colours and fonts. You don't need to know CSS to start. Each line looks like `--name: value;`: a **token** (a named setting that starts with `--`), a colon, the value, and a semicolon.\n\n1. Open **Library → Settings → Appearance** and click **CSS Themes** in the row of sections.\n2. To change a starter theme, download one you like from **Browse the theme gallery**, find it under **Starter themes** and click **Clone + Edit** (the copy icon). Marinara makes your own copy, named for example \"Petal OS (my copy)\", and opens it in the editor. Starter themes stay read-only, so the original is always there. To start fr…\n\n2. Source: docs/appearance/custom-css-themes.md — Heading: Starter themes — Line: 22\nStarter themes aren't part of the install, so they take no space until you want one. They live in the theme gallery, and Marinara downloads a theme only when you pick it.\n\n1. Click **Browse the theme gallery** under **Installed Themes**. Marinara needs an internet connection for this.\n2. Each theme shows a preview, a short description, its size and its tags.\n\n3. Source: docs/appearance/theme-author-guide.md — Heading: Theme files — Line: 611\nExport writes one theme as one JSON file:\n\n```json\n{\n\n4. Source: docs/appearance/theme-author-guide.md — Heading: Safety — Line: 689\n- The top bar (including its fullscreen auto-hide state), the chats sidebar and its chat rows, the\n  Library sidebar, Ctrl+K and the message box can be restyled, not hidden, moved, covered, faded,\n  filtered away or made unclickable. The guard measures them with and without the theme after the\n  theme loads, at 2.5 s and 10 s, when a chat opens, when a panel opens, when the colour scheme\n  changes, on resize and when one of the theme's own animations starts or ends, and switches a\n\n5. Source: docs/appearance/theme-author-guide.md — Heading: Changes — Line: 754\n`[data-mari-part=\"top-bar\"]` is the top bar on every device, and split view's second side has its\n  own bar with the same `[data-component=\"TopBar\"]` hooks (plus `[data-split-bar]`), so a theme's\n  top-bar art, fonts and tab colours reach it. `--mari-game-combat-bg` and `-bg-hover` are a whole\n  `background`, so gradients work.",
+   "durationMs": 76
+  }
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_9d575962a59f442b8718d0c123c76c00",
+   "name": "docs_read",
+   "input": {
+    "path": "docs/appearance/theme-author-guide.md",
+    "heading": "Hooks",
+    "maxChars": 14000
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_9d575962a59f442b8718d0c123c76c00",
+   "name": "docs_read",
+   "isError": false,
+   "output": "Source: docs/appearance/theme-author-guide.md\nHeading: Hooks\nStarts at line: 424 (bounded excerpt)\n\n\n### On `<html>`\n\n| Attribute                       | Values                                                                                                   |\n| ------------------------------- | -------------------------------------------------------------------------------------------------------- |\n| `data-theme`                    | `dark`, `light`                                                                                          |\n| `data-visual-theme`             | `default` (Marinara), `sillytavern` (Dottore), `stage`                                                   |\n| `data-overhaul`                 | `on` (new layout, desktop), `mobile` (new layout, phone and tablet); absent in the old layout            |\n| `data-custom-theme`             | The active theme's id                                                                                    |\n| `data-seasonal-theme`           | The seasonal look, when one is on                                                                        |\n| `data-mari-accent-fx`           | `pulse` or `rgb` while an accent effect runs                                                             |\n| `data-chat-id`                  | The open chat's id                                                                                       |\n| `data-chat-open-mode`           | The open chat's mode: `roleplay`, `conversation`, `game`                                                 |\n| `data-chat-tags`                | The open chat's tags, lowercase with spaces as `-`: style a story with `:root[data-chat-tags~=\"horror\"]` |\n| `data-mari-chat-art-behind`     | Present while the chat's background is shown behind the side panels (`--mari-chat-art` is the picture)   |\n| `data-marinara-reduced-effects` | Present when ambient animation is reduced                                                                |\n| `data-mari-a11y-line-height`    | Present when the user widened line spacing (`--mari-a11y-line-height`)                                   |\n| `data-mari-a11y-letter-spacing` | Present when the user widened letter spacing (`--mari-a11y-letter-spacing`)                              |\n| `data-mari-a11y-focus`          | Present when strong focus rings are on                                                                   |\n| `data-mari-contrast`            | `more` when high contrast is on (the user's choice, or the device asks for it)                           |\n| `data-mari-cvd-safe`            | Present when colour-blind-safe colours are on                                                            |\n| `data-mari-weather`             | The story weather while it shows: `rain`, `snow`, `fog`… (see [Weather](#weather))                       |\n| `data-mari-sky`                 | `dawn`, `day`, `dusk` or `night` while the story weather shows                                           |\n| `data-mari-shelter`             | `indoors` or `outdoors` while the story weather shows, when the app can tell from the location           |\n\n### Areas\n\n`[data-component=\"…\"]` names the big areas: `AppShell`, `TopBar`, `ChatSidebar`, `ChatSidebarSlot`,\n`RightPanelDesktop`, `RightPanelDesktopSlot`, `CenterContent`, `GlobalOmnibar`, `OverhaulLibraryNav`,\n`OverhaulSettingsPage`, `OverhaulLibraryPage`, `OverhaulCardGallery`, `OverhaulEditorHead`,\n`OverhaulEditorRail`.\n\n### Parts\n\n| Selector                                                                               | What it is                                                                                                                                                                                                                                                                                                                                      |\n| -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `[data-mari-part=\"message\"]`                                                           | One message row, in every chat mode: the full width of the chat, with the avatar, name line and bubble inside. Paint the bubble (`bubble` below), not this row, or every bubble sits inside a second box. Also has `data-message-id` and `data-message-role` (`user`, `assistant`, `system`, …) and the message data below                                                                                                                                                                                               |\n| `[data-mari-part=\"bubble\"]`                                                            | The message bubble itself, in Roleplay and Conversation (`.mari-rp-bubble` / `.texting-bubble`). Background, border, radius and shadow go here |\n| `[data-mari-part=\"message\"][data-latest]`                                              | The newest reply from the character                                                                                                                                                                                                                                                                                                             |\n| `[data-mari-part=\"message\"][data-streaming]`                                           | A reply that is still being written                                                                                                                                                                                                                                                                                                             |\n| `[data-mari-part=\"avatar\"]`, `[data-mari-part=\"header\"]`, `[data-mari-part=\"actions\"]` | Inside a message: the avatar, the name line and the message tools                                                                                                                                                                                                                                                                               |\n| `[data-mari-part=\"reasoning\"]`, `[data-mari-part=\"reasoning-text\"]`                    | The reasoning toggle (or box) and its text, the same hook on desktop and on phones                                                                                                                                                                                                                                                              |\n| `[data-mari-part=\"composer\"]`                                                          | The message box. `data-composer` is `roleplay`, `conversation` or `game`                                                                                                                                                                                                                                                                        |\n| `[data-mari-part=\"home-art\"]`                                                          | The stock pictures on Home's cards                                                                                                                                                                                                                                                                                                              |\n| `[data-mari-part=\"message\"][data-vn]`                                                  | The visual novel dialogue box: a message with the same data (character, role, index), plus `avatar` and `header` parts inside                                                                                                                                                                                                                   |\n| `[data-mari-part=\"vn-sprite\"]`                                                         | An empty layer behind the VN dialogue box, reaching the bottom of the scene. It has `data-vn-speaker` (the speaker's name as a slug, or their role), `data-vn-speaker-role`, `data-character` and `data-character-id` for whoever is speaking now, so a theme can stand their picture there. `[data-roleplay-vn-media]` has the same attributes |\n| `[data-mari-part=\"message\"][data-game-narration]`                                      | The Game narration box. `data-message-role` is `narrator`, or `assistant` with `data-character` and `data-character-name` while a character speaks; `data-segment-type` and `data-expression` describe the current line                                                                                                                         |\n| `[data-mari-part=\"app-backdrop\"]`, `[data-mari-part=\"ambient\"]`                        | The backdrop and ambient layers. Their place in the page is fixed; style them with the tokens                                                                                                                                                                                                                                                   |\n| `[data-mari-part=\"home-widget\"]`                                                       | A Home widget card, Professor Mari included. Its frame has `data-home-widget-id` (`recent`, `professor`, `whats-new`, `character-library`, …). Inside: `home-widget-eyebrow`, `home-widget-title`, `home-widget-text`                                                                                                                           |\n| `[data-mari-part=\"top-bar\"]`                                                           | The top bar on every device. Split view's second side has its own slim bar with the same hooks (`[data-component=\"TopBar\"]`, `.ov-tab`, `.ov-tab__label`, `.ov-icon-btn`), marked `[data-split-bar]`, so top-bar art and fonts reach it too                                                                                                     |\n| `[data-mari-part=\"page-title\"]`                                                        | The big title of a main page: every Library section (Characters, Lorebooks, Connections, Agents…), Settings, Extensions and Docs. Style page titles with this one hook so they match on every page                                                                                                                                              |\n| `[data-mari-part=\"backdrop\"]`                                                          | A chat's background image (see Backdrops)                                                                                                                                                                                                                                                                                                       |\n| `[data-mari-part=\"stage-empty\"]`                                                       | The game stage with no scene image                                                                                                                                                                                                                                                                                                              |\n| `[data-mari-part=\"time\"]`                                                              | A message's time, in every chat mode                                                                                                                                                                                                                                                                                                            |\n| `[data-mari-part=\"chat-header\"]`                                                       | The conversation header (`data-chat-mode=\"conversation\"`)                                                                                                                                                                                                                                                                                       |\n| `[data-mari-part=\"game-hud\"]`, `[data-mari-part=\"game-tools\"]`                         | The Game map-and-party float and the narration tool row                                                                                                                                                                                                                                                                                         |\n| `[data-mari-part=\"avatar-placeholder\"]`                                                | The empty avatar circle; `data-role` is `user` or `assistant`                                                                                                                                                                                                                                                                                   |\n| `[data-mari-part=\"header\"][data-placement]`                                            | On roleplay messages: `outside` (name above the bubble) or `inside`                                                                                                                                                                                                                                                                             |\n| `[data-mari-part=\"home-widget-glow\"]`                                                  | The glow behind a Home widget's header\n…",
+   "durationMs": 2
+  }
+ },
+ {
+  "type": "draft",
+  "data": "The "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections,"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone,"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery,"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels,"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid,"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates,"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without adding "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without adding padding,"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without adding padding, "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without adding padding, rows,"
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without adding padding, rows, "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without adding padding, rows, or "
+ },
+ {
+  "type": "draft",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without adding padding, rows, or moving "
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "tool_start",
+  "data": {
+   "id": "call_c0b804436ae34c3591f2bb25ceb409a5",
+   "name": "app_data",
+   "input": {
+    "action": "theme.update",
+    "id": "z4FKwHRd_0Dze9mZmBYXo",
+    "apply": true,
+    "reason": "Adds opaque day/night plates behind outside message names and timestamps without changing layout.",
+    "patch": {
+     "css": "/* Lanternwake Harbor — a weathered harbor inn.\nShape spec: small-round plaster containers 8px; nested drawers, fields and buttons 4px; native tags and avatars retained; Conversation bubbles retain native silhouette.\nBorders: containers 3px double rope-coloured theme border, fields/buttons 1px solid. Shadows: soft inset lantern glow only. Selected: warm fill and inset ring; focus: inset ring. No added phone rows, repositioned controls, animation, or decorative overlays. */\n:root {\n --mari-tokens-version: 1; --radius: 0.5rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-active: var(--secondary); --mari-top-bar-plate-radius: 4px; --mari-accent-text: var(--primary);\n --mari-app-backdrop: url(\"theme:harbor-day-background.webp\"); --mari-top-bar-bg: url(\"theme:harbor-day-header.webp\") center / cover no-repeat;\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\n --mari-app-backdrop-layers: var(--mari-app-backdrop) center / cover no-repeat;\n --mari-dialogue-color: var(--card-foreground);\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\n}\n:root, :root[data-theme=\"light\"], :root[data-mari-sky=\"day\"], :root[data-mari-sky=\"dawn\"] {\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #f3dfb6; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #f4e6ca; --accent-foreground: #173c48; --border: #927b53; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #927b53; --sidebar-accent: #f3dfb6; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\n}\n:root[data-theme=\"dark\"]:not([data-mari-sky=\"day\"]):not([data-mari-sky=\"dawn\"]), :root[data-mari-sky=\"night\"], :root[data-mari-sky=\"dusk\"] {\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #51412e; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #443c30; --accent-foreground: #fff0d6; --border: #a28b63; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #a28b63; --sidebar-accent: #51412e; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\n --mari-app-backdrop: url(\"theme:harbor-night-background.webp\"); --mari-top-bar-bg: url(\"theme:harbor-night-header.webp\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\n}\n:root[data-mari-weather=\"rain\"], :root[data-mari-weather=\"storm\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\n:root[data-mari-weather=\"snow\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\n:root[data-mari-weather=\"fog\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\n/* Opaque plaster with faint mineral grain. The texture is paint, never a layer over controls. */\n[data-mari-part=\"page\"], [data-mari-part=\"home-widget\"], .mari-window, .mari-drawer, [data-mari-part=\"bubble\"], [data-mari-part=\"composer\"] {\n background-color: var(--card);\n background-image: repeating-linear-gradient(117deg, transparent 0 11px, color-mix(in srgb, var(--border) 5%, transparent) 11px 12px), linear-gradient(155deg, color-mix(in srgb, var(--secondary) 20%, transparent), transparent 65%);\n color: var(--card-foreground); border: 3px double var(--border); border-radius: 8px;\n box-shadow: inset 0 0 14px color-mix(in srgb, var(--secondary) 35%, transparent);\n}\n.mari-drawer { border-radius: 4px; }\n:root[data-chat-open-mode=\"conversation\"] [data-mari-part=\"bubble\"] { border-radius: revert-layer; }\n/* A message row is not a second bubble. */\n[data-mari-part=\"message\"] { background: transparent; border: 0; box-shadow: none; }\n.mari-window__header { border-radius: 5px 5px 0 0; }\n.mari-drawer__header { border-radius: 1px 1px 0 0; }\n.mari-window__header, .mari-drawer__header { background: var(--secondary); color: var(--secondary-foreground); border-bottom: 1px solid var(--border); }\n[data-mari-part=\"page-title\"], [data-mari-part=\"home-widget-title\"], .mari-window__title, .mari-drawer__title { font-family: var(--mari-font-heading); color: var(--foreground); }\n:where(button,input,select,textarea), .mari-window__control, .mari-drawer__popout { border-radius: 4px; }\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); }\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\n:where(button,[role=\"tab\"])[aria-selected=\"true\"], button[aria-pressed=\"true\"], .mari-window-bubble[data-open=\"true\"] {\n background: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 1px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);\n}\n:where(button,input,select,textarea,a,[role=\"tab\"]):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\n/* Opaque plates isolate labels from the artwork at every crop. Internal top-bar classes are documented but may change; paint only. */\n[data-mari-part=\"top-bar\"] :is(button,[role=\"tab\"],.ov-tab,.ov-icon-btn) { background-color: var(--card); color: var(--card-foreground); border-radius: 4px; box-shadow: inset 0 0 0 1px var(--border); }\n[data-mari-part=\"top-bar\"] :is([aria-selected=\"true\"],[aria-pressed=\"true\"]) { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent); }\n@media (hover:hover) {\n [data-mari-part=\"home-widget\"]:hover { border-color: var(--primary); }\n [data-mari-part=\"top-bar\"] :is(button,[role=\"tab\"],.ov-tab,.ov-icon-btn):hover { background-color: var(--accent); color: var(--accent-foreground); }\n}\n@media (prefers-contrast: more) {\n [data-mari-part=\"page\"], [data-mari-part=\"home-widget\"], .mari-window, .mari-drawer, [data-mari-part=\"bubble\"], [data-mari-part=\"composer\"] { background-image: none; box-shadow: none; }\n}\n:root[data-mari-contrast=\"more\"] :is([data-mari-part=\"page\"],[data-mari-part=\"home-widget\"],.mari-window,.mari-drawer,[data-mari-part=\"bubble\"],[data-mari-part=\"composer\"]) { background-image: none; box-shadow: none; }\n/* Native phone layout, toolbar heights, accessibility typography and weather behaviour remain intact. */\n/* Outside message labels: opaque plaster plates, no added spacing or rows. */\n[data-mari-part=\"message\"] [data-mari-part=\"header\"][data-placement=\"outside\"],\n[data-mari-part=\"message\"] [data-mari-part=\"time\"] {\n background-color: var(--card);\n color: var(--card-foreground) !important;\n border-radius: 4px;\n text-shadow: none;\n}\n[data-mari-part=\"message\"] [data-mari-part=\"header\"][data-placement=\"outside\"] :is(span,a) {\n color: var(--card-foreground) !important;\n text-shadow: none;\n}\n"
+    }
+   }
+  }
+ },
+ {
+  "type": "tool_end",
+  "data": {
+   "id": "call_c0b804436ae34c3591f2bb25ceb409a5",
+   "name": "app_data",
+   "isError": false,
+   "output": "Readback: store-verified\nCommand: app_data theme.update\nExit code: 0 (structured app-data runtime)\n\nstdout:\n{\n  \"ok\": true,\n  \"mode\": \"apply\",\n  \"saved\": true,\n  \"status\": \"applied\",\n  \"message\": \"Applied and saved. Marinara is showing the user a change card. The store read-back confirms the persisted rows match the intended change - no separate verification read is needed; report the outcome matter-of-factly.\",\n  \"readBack\": {\n    \"status\": \"verified\",\n    \"checkedRows\": 1\n  },\n  \"validation\": {\n    \"status\": \"passed\",\n    \"errors\": [],\n    \"notices\": [],\n    \"infos\": []\n  },\n  \"summary\": {\n    \"matchedRows\": 1,\n    \"affectedRows\": 1,\n    \"insertedRows\": 0,\n    \"updatedRows\": 1,\n    \"replacedRows\": 0,\n    \"deletedRows\": 0,\n    \"affectedTables\": {\n      \"custom_themes\": 1\n    },\n    \"preview\": [\n      {\n        \"table\": \"custom_themes\",\n        \"id\": \"z4FKwHRd_0Dze9mZmBYXo\",\n        \"action\": \"update\",\n        \"before\": {\n          \"css\": \"/* Lanternwake Harbor — a weathered harbor inn.\\nShape spec: small-round plaster containers 8px; nested drawers, fields and buttons 4px; native tags and avatars retained; Conversation bubbles retain native silhouette.\\nBorders: containers 3px double rope-coloured theme border, fields/buttons 1px solid. Shadows: soft inset lantern glow only. Selected: warm fill and inset ring; focus: inset ring. No added phone rows, repositioned controls, animation, or decorative overlays. */\\n:root {\\n --mari-tokens-version: 1; --radius: 0.5rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-active: var(--secondary); --mari-top-bar-plate-radius: 4px; --mari-accent-text: var(--primary);\\n --mari-app-backdrop: url(\\\"theme:harbor-day-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-day-header.webp\\\") center / cover no-repeat;\\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-app-backdrop-layers: var(--mari-app-backdrop) center / cover no-repeat;\\n --mari-dialogue-color: var(--card-foreground);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\\n}\\n:root, :root[data-theme=\\\"light\\\"], :root[data-mari-sky=\\\"day\\\"], :root[data-mari-sky=\\\"dawn\\\"] {\\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #f3dfb6; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #f4e6ca; --accent-foreground: #173c48; --border: #927b53; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #927b53; --sidebar-accent: #f3dfb6; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\\n}\\n:root[data-theme=\\\"dark\\\"]:not([data-mari-sky=\\\"day\\\"]):not([data-mari-sky=\\\"dawn\\\"]), :root[data-mari-sky=\\\"night\\\"], :root[data-mari-sky=\\\"dusk\\\"] {\\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #51412e; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #443c30; --accent-foreground: #fff0d6; --border: #a28b63; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #a28b63; --sidebar-accent: #51412e; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\\n --mari-app-backdrop: url(\\\"theme:harbor-night-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-night-header.webp\\\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\\n}\\n:root[data-mari-weather=\\\"rain\\\"], :root[data-mari-weather=\\\"storm\\\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"snow\\\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"fog\\\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\\n/* Opaque plaster with faint mineral grain. The texture is paint, never a layer over controls. */\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"bubble\\\"], [data-mari-part=\\\"composer\\\"] {\\n background-color: var(--card);\\n background-image: repeating-linear-gradient(117deg, transparent 0 11px, color-mix(in srgb, var(--border) 5%, transparent) 11px 12px), linear-gradient(155deg, color-mix(in srgb, var(--secondary) 20%, transparent), transparent 65%);\\n color: var(--card-foreground); border: 3px double var(--border); border-radius: 8px;\\n box-shadow: inset 0 0 14px color-mix(in srgb, var(--secondary) 35%, transparent);\\n}\\n.mari-drawer { border-radius: 4px; }\\n:root[data-chat-open-mode=\\\"conversation\\\"] [data-mari-part=\\\"bubble\\\"] { border-radius: revert-layer; }\\n/* A message row is not a second bubble. */\\n[data-mari-part=\\\"message\\\"] { background: transparent; border: 0; box-shadow: none; }\\n.mari-window__header { border-radius: 5px 5px 0 0; }\\n.mari-drawer__header { border-radius: 1px 1px 0 0; }\\n.mari-window__header, .mari-drawer__header { background: var(--secondary); color: var(--secondary-foreground); border-bottom: 1px solid var(--border); }\\n[data-mari-part=\\\"page-title\\\"], [data-mari-part=\\\"home-widget-title\\\"], .mari-window__title, .mari-drawer__title { font-family: var(--mari-font-heading); color: var(--foreground); }\\n:where(button,input,select,textarea), .mari-window__control, .mari-drawer__popout { border-radius: 4px; }\\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button,[role=\\\"tab\\\"])[aria-selected=\\\"true\\\"], button[aria-pressed=\\\"true\\\"], .mari-window-bubble[data-open=\\\"true\\\"] {\\n background: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 1px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);\\n}\\n:where(button,input,select,textarea,a,[role=\\\"tab\\\"]):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\\n/* Opaque plates isolate labels from the artwork at every crop. Internal top-bar classes are documented but may change; paint only. */\\n[data-mari-part=\\\"top-bar\\\"] :is(button,[role=\\\"tab\\\"],.ov-tab,.ov-icon-btn) { background-color: var(--card); color: var(--card-foreground); border-radius: 4px; box-shadow: inset 0 0 0 1px var(--border); }\\n[data-mari-part=\\\"top-bar\\\"] :is([aria-selected=\\\"true\\\"],[aria-pressed=\\\"true\\\"]) { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent); }\\n@media (hover:hover) {\\n [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); }\\n [data-mari-part=\\\"top-bar\\\"] :is(button,[role=\\\"tab\\\"],.ov-tab,.ov-icon-btn):hover { background-color: var(--accent); color: var(--accent-foreground); }\\n}\\n@media (prefers-contrast: more) {\\n [data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"bubble\\\"], [data-mari-part=\\\"composer\\\"] { background-image: none; box-shadow: none; }\\n}\\n:root[data-mari-contrast=\\\"more\\\"] :is([data-mari-part=\\\"page\\\"],[data-mari-part=\\\"home-widget\\\"],.mari-window,.mari-drawer,[data-mari-part=\\\"bubble\\\"],[data-mari-part=\\\"composer\\\"]) { background-image: none; box-shadow: none; }\\n/* Native phone layout, toolbar heights, accessibility typography and weather behaviour remain intact. */\"\n        },\n        \"after\": {\n          \"css\": \"/* Lanternwake Harbor — a weathered harbor inn.\\nShape spec: small-round plaster containers 8px; nested drawers, fields and buttons 4px; native tags and avatars retained; Conversation bubbles retain native silhouette.\\nBorders: containers 3px double rope-coloured theme border, fields/buttons 1px solid. Shadows: soft inset lantern glow only. Selected: warm fill and inset ring; focus: inset ring. No added phone rows, repositioned controls, animation, or decorative overlays. */\\n:root {\\n --mari-tokens-version: 1; --radius: 0.5rem; --mari-font-ui: system-ui, sans-serif; --mari-font-heading: Georgia, serif; --mari-font-chat: system-ui, sans-serif; --mari-message-measure: 70ch;\\n --mari-selected-tint: var(--primary); --mari-page-veil: var(--background); --mari-top-bar-plate: var(--card); --mari-top-bar-plate-active: var(--secondary); --mari-top-bar-plate-radius: 4px; --mari-accent-text: var(--primary);\\n --mari-app-backdrop: url(\\\"theme:harbor-day-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-day-header.webp\\\") center / cover no-repeat;\\n --mari-app-backdrop-position: center; --mari-app-backdrop-size: cover;\\n --mari-app-backdrop-layers: var(--mari-app-backdrop) center / cover no-repeat;\\n --mari-dialogue-color: var(--card-foreground);\\n --ov-text: var(--foreground); --ov-muted: var(--muted-foreground); --ov-dim: var(--muted-foreground); --ov-line: var(--border); --ov-accent: var(--primary); --ov-hover: var(--accent); --ov-active-bg: var(--secondary);\\n --mari-weather-style: smooth; --mari-weather-amount: 0.65; --mari-weather-speed: 0.8; --mari-weather-strength: 1; --mari-weather-tint-strength: 0.65; --mari-weather-rain-color: #5896b3; --mari-weather-rain-length: 1.3; --mari-weather-snow-color: #d8eaf1; --mari-weather-snow-size: 1.1; --mari-weather-fog-color: #b6cbd0; --mari-weather-sun-color: #ffe2a1; --mari-weather-moon-color: #ffedc9;\\n}\\n:root, :root[data-theme=\\\"light\\\"], :root[data-mari-sky=\\\"day\\\"], :root[data-mari-sky=\\\"dawn\\\"] {\\n --background: #eaf3f2; --foreground: #173c48; --card: #fffaf0; --card-foreground: #173c48; --popover: #fffaf0; --popover-foreground: #173c48; --primary: #086780; --primary-foreground: #ffffff; --secondary: #f3dfb6; --secondary-foreground: #173c48; --muted: #e3edeb; --muted-foreground: #4c6870; --accent: #f4e6ca; --accent-foreground: #173c48; --border: #927b53; --input: #7899a0; --ring: #086780; --sidebar: #f3f3e9; --sidebar-foreground: #173c48; --sidebar-border: #927b53; --sidebar-accent: #f3dfb6; --sidebar-accent-foreground: #173c48; --destructive: #a52f2f; --destructive-foreground: #ffffff;\\n}\\n:root[data-theme=\\\"dark\\\"]:not([data-mari-sky=\\\"day\\\"]):not([data-mari-sky=\\\"dawn\\\"]), :root[data-mari-sky=\\\"night\\\"], :root[data-mari-sky=\\\"dusk\\\"] {\\n --background: #101e28; --foreground: #f5ead5; --card: #1a2b34; --card-foreground: #f5ead5; --popover: #1a2b34; --popover-foreground: #f5ead5; --primary: #edbc77; --primary-foreground: #29200f; --secondary: #51412e; --secondary-foreground: #f5ead5; --muted: #253942; --muted-foreground: #bfd0cf; --accent: #443c30; --accent-foreground: #fff0d6; --border: #a28b63; --input: #839695; --ring: #edbc77; --sidebar: #15252e; --sidebar-foreground: #f5ead5; --sidebar-border: #a28b63; --sidebar-accent: #51412e; --sidebar-accent-foreground: #f5ead5; --destructive: #ffb0a1; --destructive-foreground: #331a18;\\n --mari-app-backdrop: url(\\\"theme:harbor-night-background.webp\\\"); --mari-top-bar-bg: url(\\\"theme:harbor-night-header.webp\\\") center / cover no-repeat; --mari-weather-rain-color: #a6c6d4;\\n}\\n:root[data-mari-weather=\\\"rain\\\"], :root[data-mari-weather=\\\"storm\\\"] { --mari-weather-tint-strength: 0.85; --mari-app-backdrop-layers: linear-gradient(#102c4866,#102c4866), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"snow\\\"] { --mari-app-backdrop-layers: linear-gradient(#d7edf333,#aecbd144), var(--mari-app-backdrop) center / cover no-repeat; }\\n:root[data-mari-weather=\\\"fog\\\"] { --mari-weather-tint-strength: 0.95; --mari-app-backdrop-layers: linear-gradient(#b6cbd077,#b6cbd0aa), var(--mari-app-backdrop) center / cover no-repeat; }\\n/* Opaque plaster with faint mineral grain. The texture is paint, never a layer over controls. */\\n[data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"bubble\\\"], [data-mari-part=\\\"composer\\\"] {\\n background-color: var(--card);\\n background-image: repeating-linear-gradient(117deg, transparent 0 11px, color-mix(in srgb, var(--border) 5%, transparent) 11px 12px), linear-gradient(155deg, color-mix(in srgb, var(--secondary) 20%, transparent), transparent 65%);\\n color: var(--card-foreground); border: 3px double var(--border); border-radius: 8px;\\n box-shadow: inset 0 0 14px color-mix(in srgb, var(--secondary) 35%, transparent);\\n}\\n.mari-drawer { border-radius: 4px; }\\n:root[data-chat-open-mode=\\\"conversation\\\"] [data-mari-part=\\\"bubble\\\"] { border-radius: revert-layer; }\\n/* A message row is not a second bubble. */\\n[data-mari-part=\\\"message\\\"] { background: transparent; border: 0; box-shadow: none; }\\n.mari-window__header { border-radius: 5px 5px 0 0; }\\n.mari-drawer__header { border-radius: 1px 1px 0 0; }\\n.mari-window__header, .mari-drawer__header { background: var(--secondary); color: var(--secondary-foreground); border-bottom: 1px solid var(--border); }\\n[data-mari-part=\\\"page-title\\\"], [data-mari-part=\\\"home-widget-title\\\"], .mari-window__title, .mari-drawer__title { font-family: var(--mari-font-heading); color: var(--foreground); }\\n:where(button,input,select,textarea), .mari-window__control, .mari-drawer__popout { border-radius: 4px; }\\n:where(input,select,textarea) { background-color: var(--card); color: var(--foreground); border: 1px solid var(--input); }\\n:where(input,textarea)::placeholder { color: var(--muted-foreground); opacity: 1; }\\n:where(button,[role=\\\"tab\\\"])[aria-selected=\\\"true\\\"], button[aria-pressed=\\\"true\\\"], .mari-window-bubble[data-open=\\\"true\\\"] {\\n background: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 1px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent);\\n}\\n:where(button,input,select,textarea,a,[role=\\\"tab\\\"]):focus-visible { outline: 2px solid var(--ring); outline-offset: -3px; }\\n/* Opaque plates isolate labels from the artwork at every crop. Internal top-bar classes are documented but may change; paint only. */\\n[data-mari-part=\\\"top-bar\\\"] :is(button,[role=\\\"tab\\\"],.ov-tab,.ov-icon-btn) { background-color: var(--card); color: var(--card-foreground); border-radius: 4px; box-shadow: inset 0 0 0 1px var(--border); }\\n[data-mari-part=\\\"top-bar\\\"] :is([aria-selected=\\\"true\\\"],[aria-pressed=\\\"true\\\"]) { background-color: var(--secondary); color: var(--secondary-foreground); box-shadow: inset 0 0 0 2px var(--border), inset 0 0 12px color-mix(in srgb, var(--primary) 20%, transparent); }\\n@media (hover:hover) {\\n [data-mari-part=\\\"home-widget\\\"]:hover { border-color: var(--primary); }\\n [data-mari-part=\\\"top-bar\\\"] :is(button,[role=\\\"tab\\\"],.ov-tab,.ov-icon-btn):hover { background-color: var(--accent); color: var(--accent-foreground); }\\n}\\n@media (prefers-contrast: more) {\\n [data-mari-part=\\\"page\\\"], [data-mari-part=\\\"home-widget\\\"], .mari-window, .mari-drawer, [data-mari-part=\\\"bubble\\\"], [data-mari-part=\\\"composer\\\"] { background-image: none; box-shadow: none; }\\n}\\n:root[data-mari-contrast=\\\"more\\\"] :is([data-mari-part=\\\"page\\\"],[data-mari-part=\\\"home-widget\\\"],.mari-window,.mari-drawer,[data-mari-part=\\\"bubble\\\"],[data-mari-part=\\\"composer\\\"]) { background-image: none; box-shadow: none; }\\n/* Native phone layout, toolbar heights, accessibility typography and weather behaviour remain intact. */\\n/* Outside message labels: opaque plaster plates, no added spacing or rows. */\\n[data-mari-part=\\\"message\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"],\\n[data-mari-part=\\\"message\\\"] [data-mari-part=\\\"time\\\"] {\\n background-color: var(--card);\\n color: var(--card-foreground) !important;\\n border-radius: 4px;\\n text-shadow: none;\\n}\\n[data-mari-part=\\\"message\\\"] [data-mari-part=\\\"header\\\"][data-placement=\\\"outside\\\"] :is(span,a) {\\n color: var(--card-foreground) !important;\\n text-shadow: none;\\n}\"\n        },\n        \"unchangedFieldsOmitted\": true\n      }\n    ],\n    \"truncated\": false\n  },\n  \"changeCard\": {\n    \"undoUntil\": \"2026-11-28T13:25:32.655Z\"\n  },\n  \"journalPath\": \"/home/kolache/Downloads/marinara-agent-handoff/mari-theme-test-data/storage/journal/2026-11-14T13-25-32-371Z_mari-db_XP18WXUEKndG4OL-5M28r.jsonl\"\n}",
+   "durationMs": 319
+  }
+ },
+ {
+  "type": "token",
+  "data": "The daytime picture has bright water reflections, white stone, and dark foliage—lovely scenery, terrible backing for tiny labels, kek. I’ll give the existing outside name line and timestamps solid, day/night-aware plates, without adding padding, rows, or moving anything."
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "narration": true
+  }
+ },
+ {
+  "type": "suggestions",
+  "data": [
+   {
+    "id": "suggestion-1",
+    "label": "Check a screenshot",
+    "prompt": "Check this phone screenshot of Lanternwake Harbor's message names and timestamps for readability.",
+    "entity": "settings"
+   },
+   {
+    "id": "suggestion-2",
+    "label": "Use the theme",
+    "prompt": "Activate Lanternwake Harbor so I can test the label plates.",
+    "entity": "settings"
+   }
+  ]
+ },
+ {
+  "type": "draft",
+  "data": "Saved "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning;"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**;"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS,"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\n"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: "
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: `docs/"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: `docs/appearance/"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: `docs/appearance/theme-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: `docs/appearance/theme-author-"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: `docs/appearance/theme-author-guide.md` —"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: `docs/appearance/theme-author-guide.md` — “"
+ },
+ {
+  "type": "draft",
+  "data": "Saved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: `docs/appearance/theme-author-guide.md` — “Hooks.”"
+ },
+ {
+  "type": "draft",
+  "data": null
+ },
+ {
+  "type": "token",
+  "data": "\n\nSaved and verified the readability fix in **Lanternwake Harbor**. Beautiful harbor, but tiny timestamps shouldn’t have to compete with sun glitter, kek.\n\nI looked at the day background again: turquoise water, bright reflections, white stone terraces, and dark leafy shadows make unbacked text unreliable.\n\n- **Day:** outside name lines and timestamps now have opaque cream plates with deep blue-green lettering.\n- **Night:** the plates switch to dark blue-grey with warm pale lettering.\n- **Layout unchanged:** no extra rows, padding, or repositioning; the full message row stays clear.\n- All pictures, bubble styling, day/night switching, and weather treatments are preserved.\n\nThe saved theme is currently **inactive**; I left activation unchanged. Please check those labels on your phone once you try it—I verified the saved CSS, not the rendered screen.\n\nReference: `docs/appearance/theme-author-guide.md` — “Hooks.”"
+ },
+ {
+  "type": "metadata",
+  "data": {
+   "connection": {
+    "id": "pJtWTaw8IQb52dVaUZqEp",
+    "name": "Codex (test)",
+    "provider": "openai_chatgpt",
+    "model": "gpt-6-astra",
+    "maxContext": 400000
+   }
+  }
+ },
+ {
+  "type": "done",
+  "data": {
+   "ok": true
+  }
+ }
+]
