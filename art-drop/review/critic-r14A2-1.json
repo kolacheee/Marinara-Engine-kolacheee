@@ -1,0 +1,33 @@
+{
+  "part": "A2",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "grass@autumn-detail-7"
+  ],
+  "files": {
+    "grass@autumn-base": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change requested. Mean RGB is (153.53, 140.18, 63.74). The soft ochre/olive tonal drift, sparse small rust/brown leaves and fine turf marks read at 1x; the ground remains distinct from green summer grass and gold autumn plains. Literal 3x3 inspection shows no hard join or conspicuous large repeating patch."
+    },
+    "grass@autumn-detail-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change requested. The mossy rock has a readable dark native-pixel contour, pale upper-left stone facets and darker lower/right faces on both grounds. Its 425-pixel alpha mask and bounds (8,15)-(40,33), right/bottom exclusive, exactly match summer and the pre-A2 file."
+    },
+    "grass@autumn-detail-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change requested. The ochre blades, dark rooted base and pale seed heads give adequate 1x value contrast. The 379-pixel alpha mask exactly matches summer and the pre-A2 file. Its three detached seed-head groups are inherited source geometry, not newly introduced reduction specks."
+    },
+    "grass@autumn-detail-7": {
+      "status": "fail",
+      "problems": [
+        "The seasonal silhouette does not match grass-detail-7.png: 165 alpha pixels differ (111 summer pixels removed and 54 new autumn pixels added). With zero-based coordinates and right/bottom exclusive bounds, summer occupies (7,11)-(41,37), while this bush occupies (8,14)-(40,38). The upper crown loses rows 11-13 and much of its side contour; new pixels accumulate along rows 34-37, shifting the visible foot downward. The mismatch is visible in the red/blue mask overlay on critic-r14A2-1-details-4x.png. This fails the explicit critic criterion for a silhouette differing from its summer partner."
+      ],
+      "fix": "Keep the readable rust/amber foliage, upper-left lighting, woody forks and one-pixel dark contour, but register the image-painted bush into the exact grass-detail-7.png alpha mask. Restore the summer crown and side extents, remove all autumn-only pixels including the extra bottom row, and place the dark contact shading within the original foot. Repaint newly restored mask areas from the drawing and clean the outline inside that mask; do not alter the summer file. Require zero differing alpha pixels after the repair."
+    }
+  },
+  "notes": "Independent review of the four submitted files; no file in art-drop/out/ was edited. Read BRIEF-14.md in full and the relevant NOTES.md method sections. Inspected exact 1x and nearest-neighbour 4x, with 8x sprite close-ups, literal 3x3 grounds, the four-way wrap junction, all eight neighbouring autumn details, and all three reviewed details over both summer and autumn ground. Summer/seasonal alpha masks were overlaid and compared in code. The summer and plains output grounds are pixel-identical to reference/r14/fantasy-grass-0.png and fantasy-plains@autumn-0.png. All four dimensions are correct (base 288x288; details 48x48); the base is fully opaque, detail alpha values are only 0/255, and transparent RGB is zero. Opaque palette counts are 20 / 12 / 13 / 14 for base / detail 1 / detail 3 / detail 7. The base mean differs from target (153,140,64) by (+0.53,+0.18,-0.26). Standard deviation of 48x48 block mean luma is 2.16, compared with summer 2.06 and autumn plains 4.27. Wrap RGB steps are 1.34 horizontal and 1.18 vertical, versus internal steps 1.19 and 1.28. These measurements support, rather than replace, the visual repeat check. Detail 7 otherwise meets the requested bush appearance: a connected rust/amber crown, darker lower/right leaves, upper-left highlight and dark contact foot. The author notes that its silhouette change was intentional. The final critic instruction explicitly lists a summer-silhouette mismatch as a failure, and this review does not assume that the redraw request waives that criterion. Proofs and measurements are under review/critic-r14A2-1-*.png; grounds-1x.png embeds the independently computed measurements and starting hashes. Verified all 27 repeat placements and all eight 1x/4x proof pairs. All 3217 pre-existing art-drop files remain byte-identical during this review, including all outputs and NOTES.md. No commit, push or branch change."
+}
