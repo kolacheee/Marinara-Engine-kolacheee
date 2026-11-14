@@ -4,13 +4,19 @@ import { mkdtempSync, readFileSync, rmSync, symlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { regressionTimeoutMs } from "../run-regressions.mjs";
+import { discoverRegressions, REGRESSION_TIMEOUTS_MS, regressionTimeoutMs } from "../run-regressions.mjs";
 
 assert.equal(regressionTimeoutMs("scripts/regressions/server-signal-shutdown.regression.ts"), 270_000);
 assert.equal(regressionTimeoutMs("scripts/regressions/restart-supervisor.regression.ts"), 90_000);
-assert.equal(regressionTimeoutMs("scripts/regressions/ruleset-combat-director.regression.ts"), 300_000);
+assert.equal(regressionTimeoutMs("scripts/regressions/game-ruleset/ruleset-combat-director.regression.ts"), 300_000);
 assert.equal(regressionTimeoutMs("scripts/regressions/native-export-memory.regression.ts"), 90_000);
-assert.equal(regressionTimeoutMs("scripts/regressions/prompt.regression.ts"), 30_000);
+assert.equal(regressionTimeoutMs("scripts/regressions/prompt/assembly.regression.ts"), 30_000);
+
+// A moved or renamed file would silently lose its longer limit and time out under CI load.
+const discovered = new Set(discoverRegressions());
+for (const file of REGRESSION_TIMEOUTS_MS.keys()) {
+  assert(discovered.has(file), `${file} has a time limit in run-regressions.mjs but names no regression`);
+}
 
 // The shard action runs on Ubuntu; native Windows checks do not require Bash.
 if (process.platform !== "win32") {
@@ -134,7 +140,7 @@ try {
   assert.equal(missed.status, 1, "filters that match nothing must fail");
   assert.match(missed.stderr, /no-such-a, no-such-b/u);
   const imported = execFileSync(process.execPath, ["--input-type=module", "-"], {
-    input: `import { regressionTimeoutMs } from ${JSON.stringify(pathToFileURL(join(scripts, "run-regressions.mjs")).href)}; console.log(regressionTimeoutMs('scripts/regressions/prompt.regression.ts'));`,
+    input: `import { regressionTimeoutMs } from ${JSON.stringify(pathToFileURL(join(scripts, "run-regressions.mjs")).href)}; console.log(regressionTimeoutMs('scripts/regressions/prompt/assembly.regression.ts'));`,
     encoding: "utf8",
     timeout: 10_000,
   });
