@@ -18349,7 +18349,9 @@ test("character editor hands an editable resource context to floating Professor 
     }, character.id);
 
     // Home's own "Ask Professor Mari" stays mounted under the editor (#7312), so ask from the editor itself.
-    await page.locator(".mari-editor-shell").getByRole("button", { name: "Ask Professor Mari" }).click();
+    // The editor's own Ask sits in its "…" menu (#9227).
+    await page.locator(".mari-editor-shell [data-card-editor-more]").click();
+    await page.getByRole("menuitem", { name: "Ask Professor Mari", exact: true }).click();
     const composer = page.getByPlaceholder("Ask Professor Mari");
     // The handoff is a context chip in the composer's context row (floating window removed in 5bb03f918).
     const context = page.locator(".mari-workspace-composer__context");
