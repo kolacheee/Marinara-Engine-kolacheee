@@ -266,6 +266,7 @@ import {
   readMarinaraCardProgression,
 } from "@marinara-engine/shared";
 import type { AvatarCrop, CombatIconChoice, Persona, SceneSegmentEffect } from "@marinara-engine/shared";
+import { GAME_LIGHT_HOURS, type GameLightHold } from "@marinara-engine/shared";
 import {
   PROFESSOR_MARI_ID,
   SPOTIFY_RECENT_TRACK_HISTORY_LIMIT,
@@ -2725,6 +2726,9 @@ function GameSurfaceComponent({
 
   /** Build weather string from chatMeta.gameWeather if available. */
   const metaWeather = (chatMeta.gameWeather as { type?: string; temperature?: number } | undefined)?.type ?? null;
+  // A place the Game Master holds at night, dusk or day (environment.ts) shows that sky whatever the clock.
+  const lightHold = (chatMeta.gameWeather as { light?: GameLightHold } | undefined)?.light;
+  const heldHour = lightHold && Object.hasOwn(GAME_LIGHT_HOURS, lightHold) ? GAME_LIGHT_HOURS[lightHold] : null;
   const gameTimeMeta = chatMeta.gameTime as GameTimeMeta | undefined;
   const currentGameDay = useMemo(
     () => normalizeGameDay(gameTimeMeta?.day ?? parseGameDayFromTimeLabel(gameSnapshot?.time) ?? 1),
@@ -14140,7 +14144,7 @@ function GameSurfaceComponent({
                       <div className="pointer-events-none absolute inset-0 z-[1]">
                         <WeatherEffects
                           weather={gameSnapshot?.weather ?? null}
-                          timeOfDay={gameSnapshot?.time ?? metaTime ?? null}
+                          timeOfDay={heldHour ?? gameSnapshot?.time ?? metaTime ?? null}
                           showCelestial={false}
                           paused={isStreaming || scenePreparing || sceneAnalysis.isPending || agentsProcessing}
                         />
