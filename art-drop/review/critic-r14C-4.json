@@ -1,0 +1,49 @@
+{
+  "part": "C",
+  "round": 4,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "treeline_forest@winter-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-5": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent critic inspection of the current eight output files, not a drawing pass. Read BRIEF-14 in full and the relevant NOTES method sections. No art in out/ was edited.\n\nInspected every tree at exact native 1x and nearest-neighbour 4x, with all eight additionally inspected at 8x; viewed on neutral grey, summer grass and winter grass. Inspected the literal 4-by-2, 48-pixel-cell reference arrangement; 75-tree staggered woodland strips and mixed broadleaf/conifer strips on both grounds; summer/winter/conifer comparisons; and alpha-mask overlays. Ground context used literal 3x3 repeats of the unchanged 288x288 summer and winter grass plus 4x seam-junction crops. No ground seam issue affecting this review was found. All comparisons are offline image composites, not a live-game render.\n\nVisual verdict: the set reads as dense bare deciduous woodland at native scale. Branch forks remain readable, with solid snow on upper boughs; the crowns do not read as green foliage, fog, blobs or isolated twigs. Native pixel scale, stepped dark contours and upper-left illumination fit the surrounding art and supplied bare town-tree references. No detached specks, magenta fringe, backing squares or soft alpha were found. 0/2/6 read as varied oaks, 1/4 as upright beeches, 3/7 as pale-trunk birches; 5 is the shorter, low spreading sapling. Sparse attached brown leaf accents are visible on 2 and 4. The restored low-right lobe and left shoulder on 2, and both low lobes on 5, now preserve the summer envelope without losing the branching read.\n\nPart C specifically requires bare crowns with the same footprint, size and trunk base. Full filled-canopy alpha identity would prevent branch openings, so the silhouette check distinguishes the exterior contour and trunk-foot mask from intentional interior gaps. Across every pair: zero pixels outside the summer alpha mask, zero missing summer exterior-boundary pixels, zero row-extent mismatches, zero column-extent mismatches, and zero trunk-foot alpha XOR on rows 41-44. Full alpha XOR counts (summer-only interior openings), indices 0-7: 205, 154, 108, 232, 192, 142, 171, 157. All eight outputs are 48x48 RGBA, alpha only 0/255, zero nonzero RGB beneath transparency, and a single 8-connected sprite. Opaque palette counts, indices 0-7: 12, 12, 11, 7, 13, 6, 10, 11.\n\nMeasurements below are independently recomputed from current files. Bounds are zero-based (left, top, right-exclusive, bottom-exclusive). Foot spans are inclusive x endpoints, in row order y=41 / 42 / 43 / 44. Each summer value equals its winter partner; every tree ends at y=44 with three clear rows below.\n\n0: bounds (6, 8, 41, 45), visible size 35x37; foot x spans 21-24 / 21-24 / 21-25 / 21-25; bottom-foot centre x=23.\n\n1: bounds (10, 6, 37, 45), visible size 27x39; foot x spans 21-25 / 22-24 / 22-25 / 21-25; bottom-foot centre x=23.\n\n2: bounds (4, 12, 43, 45), visible size 39x33; foot x spans 20-24 / 20-24 / 19-24 / 21-25; bottom-foot centre x=23.\n\n3: bounds (6, 9, 41, 45), visible size 35x36; foot x spans 21-25 / 21-26 / 21-26 / 22-25; bottom-foot centre x=23.5.\n\n4: bounds (10, 6, 37, 45), visible size 27x39; foot x spans 21-25 / 21-25 / 21-25 / 21-24; bottom-foot centre x=22.5.\n\n5: bounds (5, 12, 43, 45), visible size 38x33; foot x spans 22-26 / 21-26 / 20-27 / 20-27; bottom-foot centre x=23.5.\n\n6: bounds (7, 10, 41, 45), visible size 34x35; foot x spans 21-25 / 21-25 / 21-25 / 21-25; bottom-foot centre x=23.\n\n7: bounds (10, 6, 38, 45), visible size 28x39; foot x spans 22-25 / 22-25 / 22-25 / 22-25; bottom-foot centre x=23.5.\n\nValidation: 18 enlargement pairs match exact nearest-neighbour scaling; all 18 ground-repeat cells match their source tiles exactly. All 1594 existing files in art-drop/out/ retain their starting SHA-256 hashes, including every conifer. Numeric measurements and those hashes are embedded in critic-r14C-4-neutral-1x.png. Only critic-r14C-4.json and critic-r14C-4-*.png review evidence were written; no commit, push or branch change."
+}

@@ -1,0 +1,58 @@
+{
+  "part": "C",
+  "round": 2,
+  "verdict": "fail",
+  "failed": [
+    "treeline_forest@winter-2",
+    "treeline_forest@winter-5"
+  ],
+  "files": {
+    "treeline_forest@winter-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-2": {
+      "status": "fail",
+      "problems": [
+        "The crown has closed, balloon-like branch loops: the high left lobe around x=10..22,y=12..23 and the right lobe around x=28..42,y=18..34 are enclosed by dark rims. At 4x/8x these read as outlines of hollow foliage clusters, with snow dots around their rims, rather than the tapering, outward-forking bare boughs in fantasy-tree@winter-0/1/3. The right lobe is especially blunt at native scale. See critic-r14C-2-closeup-2-3-8x.png (left tree) and critic-r14C-2-on-winter-4x.png (top row, third tree).",
+        "The intended dead leaves merge into the warm branch colours, especially on the upright right-side limb at x=31..34,y=22..31. At 1x they do not clearly read as a few hanging brown leaves; the branch-and-loop structure dominates."
+      ],
+      "fix": "Repaint the high-left and lower-right crown lobes as branching fans with tapered terminal forks and visible gaps between the terminal branches. Remove the visual enclosing rims; do not trace the summer foliage lobes as continuous dark rings. Keep snow as short solid caps on the upper sides of individual boughs, and make a few attached dead-leaf clusters distinct from the bark. Preserve the now-correct 39x33 envelope, summer apex/shoulder extents, and rows 41..44 foot mask. Use the large magenta-background image-tool drawing, palette lock, exact mode reduction and limited native cleanup method."
+    },
+    "treeline_forest@winter-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-5": {
+      "status": "fail",
+      "problems": [
+        "The small-tree crown reads as linked hollow rings rather than a sapling: the lower-left lobe around x=5..22,y=21..37 and high-right lobe around x=26..40,y=12..25 have heavy enclosing dark borders and sparse internal structure. At 1x the separate round lobes stand out; at 4x/8x the loop construction is unmistakable. See critic-r14C-2-closeup-4-5-8x.png (right tree) and critic-r14C-2-on-winter-4x.png (bottom row, second tree).",
+        "The mostly dark lobe rims overpower the fine juvenile branching required for the smaller sapling. The fixed short height is present, but the crown resembles a hollow shrub/topiary, not a young bare deciduous tree. This remains visible at the leading edge of critic-r14C-2-woodland-winter-1x.png."
+      ],
+      "fix": "Redraw the crown above the preserved foot as a finer, visibly connected juvenile branch hierarchy, following the existing high-right/lower-left asymmetry. Replace both enclosing lobe rings with tapered branching fans; retain sufficient secondary branches for woodland density. Keep thin snow ledges on upper boughs. Preserve the 38x33 envelope, measured summer extremities and exact x=20..27 foot on row 44. Use the established image-tool drawing and mode-reduction workflow; do not construct replacement branches in code."
+    },
+    "treeline_forest@winter-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent critic review of Round 14 Part C, round 2. Read BRIEF-14 in full and the relevant drawing, registration, mode-sampling, palette, alpha and cleanup methods in NOTES. Only new critic-r14C-2 review PNGs and this JSON were written. No output art, summer partner, conifer, ground, reference, notes or earlier review was edited. No commit, push or branch change. VERDICT BASIS: the previous seasonal-registration failures are fixed. All eight match the summer bounding boxes, every nonempty row/column extremity, and the complete four-row foot mask on rows 41..44. There are zero winter pixels outside the summer alpha mask and zero missing row/column-extremity pixels. Necessary internal bare-branch openings are not counted as silhouette failures. Trees 2 and 5 fail visual crown construction; preserving the envelope must not turn the branch tips into closed foliage-shaped rings. The other six are acceptable: 0/6 read as oaks, 1/4 as upright beeches, 3/7 as pale-trunk birches; 4 has subtle attached dead-leaf accents. MEASUREMENTS: zero-based coordinates, bounding-box right/bottom exclusive, foot-column endpoints inclusive. 0: summer=winter bbox=(6, 8, 41, 45), visible=35x37, foot row=44, foot x=21..25, centre x=23, alpha XOR=205 (all summer-only branch openings), opaque summer/winter=816/611; 1: summer=winter bbox=(10, 6, 37, 45), visible=27x39, foot row=44, foot x=21..25, centre x=23, alpha XOR=154 (all summer-only branch openings), opaque summer/winter=678/524; 2: summer=winter bbox=(4, 12, 43, 45), visible=39x33, foot row=44, foot x=21..25, centre x=23, alpha XOR=263 (all summer-only branch openings), opaque summer/winter=771/508; 3: summer=winter bbox=(6, 9, 41, 45), visible=35x36, foot row=44, foot x=22..25, centre x=23.5, alpha XOR=232 (all summer-only branch openings), opaque summer/winter=778/546; 4: summer=winter bbox=(10, 6, 37, 45), visible=27x39, foot row=44, foot x=21..24, centre x=22.5, alpha XOR=192 (all summer-only branch openings), opaque summer/winter=736/544; 5: summer=winter bbox=(5, 12, 43, 45), visible=38x33, foot row=44, foot x=20..27, centre x=23.5, alpha XOR=292 (all summer-only branch openings), opaque summer/winter=743/451; 6: summer=winter bbox=(7, 10, 41, 45), visible=34x35, foot row=44, foot x=21..25, centre x=23, alpha XOR=171 (all summer-only branch openings), opaque summer/winter=742/571; 7: summer=winter bbox=(10, 6, 38, 45), visible=28x39, foot row=44, foot x=22..25, centre x=23.5, alpha XOR=157 (all summer-only branch openings), opaque summer/winter=636/479. TECHNICAL CHECKS: every target is 48x48 RGBA, alpha only 0/255, zero RGB under transparency, and one 8-connected opaque component. Opaque palette counts by index are 12,12,10,7,13,11,10,11. No detached alpha specks, magenta fringe, soft alpha, ground square, haze or green winter canopy. Snow is solid paint; native pixel scale, dark outline colour and general upper-left lighting fit the approved neighbours. The failing loops are a drawing/readability problem, not an alpha or positioning problem. VISUAL EVIDENCE: every target viewed at exact 1x and nearest-neighbour 4x over neutral, summer grass and winter grass, and at 8x in paired close-ups. Compared summer/winter/conifer rows and registered alpha overlays. Viewed all four town winter-tree references and the supplied 4x2 forest-sheet reference. Independent 4x2 tree atlases reproduce that layout over both grounds. Viewed 45-tree broadleaf and 60-tree mixed-conifer strips at 1x, plus winter strips at 4x; the set reads as dense bare woodland overall, with the failed lobe structures conspicuous in individual trees. Broadleaf strips use 24px horizontal/24px vertical spacing, mixed strips 24px horizontal/20px vertical spacing, alternate rows shifted 12px. This is an asset-composite review, not a live-game rendering. Both unchanged grass grounds were viewed as literal 3x3 repeats at 1x and at their four-tile junctions at 4x. No Part C ground defect is assigned; grounds are outside this edit scope. All 18 repeat cells are byte-equal to their source pixels. 12 generated 4x proof pairs and all four 8x close-up pairs were verified as exact nearest-neighbour enlargements. ALPHA OVERLAY KEY: grey=shared opaque pixels, pink=summer-only pixels opened between winter branches, cyan=winter-only pixels (none); second row blends the registered summer and winter colours. UNCHANGED OUTPUT CHECK: combined path/content SHA-256 for every file under art-drop/out before and after review is c9b24c3c0f16046e1285011276e464ab1a46cf7dca426154debffb6ea4498c96. All conifers therefore remain byte-identical. Review evidence filenames begin critic-r14C-2-."
+}
