@@ -3166,6 +3166,12 @@ html[data-mari-ios-webkit] :is([data-component="RightPanelMobile"], [data-compon
   box-shadow: inset 0 0 0 1px var(--marinara-editor-border-strong);
 }
 
+/* The label truncates (overflow: hidden), so its line box must hold the whole glyph: the header's
+   `line-height: 1` for actions cut the descenders off "g" and "y". */
+.mari-editor-tab-label {
+  line-height: normal;
+}
+
 .mari-editor-tab-badge {
   margin-left: auto;
   border: 1px solid var(--marinara-editor-border);
