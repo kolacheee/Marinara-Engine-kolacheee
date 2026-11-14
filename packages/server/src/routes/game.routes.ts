@@ -142,6 +142,8 @@ import {
 } from "../services/storage/chats.storage.js";
 import { createGameWorldSnapshotsStorage } from "../services/storage/game-world-snapshots.storage.js";
 import { loadGameWorld, saveGameWorldSnapshot } from "../services/game/game-world.service.js";
+import { regionSpawnGame } from "../services/game/region-spawns.service.js";
+import { worldBandCells, worldSettlementBands } from "@marinara-engine/shared";
 import { createConnectionsStorage } from "../services/storage/connections.storage.js";
 import { createCharactersStorage } from "../services/storage/characters.storage.js";
 import { buildFallbackGameCharacterCard } from "../services/game/game-party-cards.js";
@@ -12878,6 +12880,20 @@ export async function gameRoutes(app: FastifyInstance, options: GameRouteOptions
         ...(hidden.size ? { hidden: [...hidden] } : {}),
         // Only when the story holds a place at a season (1.351).
         ...(Object.keys(seasons).length ? { seasons } : {}),
+        // Region spawns (MRPG games): each settlement's level band and each cell's, for the danger view
+        // and its band editor. Bands as set (story, hand or map), before the game's difficulty shifts them.
+        ...(await (async () => {
+          const spawns = regionSpawnGame(world, meta, (await gameRepliesBefore(app.db, chat.id)).all);
+          return spawns
+            ? {
+                bands: {
+                  settlements: worldSettlementBands(spawns.game),
+                  cells: worldBandCells(spawns.game),
+                  difficulty: spawns.difficulty,
+                },
+              }
+            : {};
+        })()),
       },
     };
   });
