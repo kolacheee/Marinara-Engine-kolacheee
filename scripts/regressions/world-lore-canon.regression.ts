@@ -33,7 +33,7 @@ const kind = kit.groupKinds[0]!.id;
 
 // ── The reading ──
 const prompt = buildWorldCanonPrompt(kit, [{ id: "a", name: "n", content: "c" }]).system;
-for (const asked of ['"peoples"', '"folk"', '"faiths"', '"groups"', "the size id the lore makes clear"])
+for (const asked of ['"peoples"', '"folk"', '"faiths"', '"groups"', '"environments"', "the size id the lore makes clear"])
   assert.ok(prompt.includes(asked), `the lore reading asks for ${asked}`);
 
 const merged = mergeWorldCanon(
@@ -61,6 +61,8 @@ const merged = mergeWorldCanon(
           lore: ["a", "made-up"],
         },
       ],
+      // "Calder is cursed to forever winter."
+      environments: [{ place: "Calder", season: "winter", note: "the barrow curse", lore: ["b"] }],
     },
     {
       places: [],
@@ -69,6 +71,10 @@ const merged = mergeWorldCanon(
         { name: "Carrow", note: "Hill herders", places: ["Calder", "Ashby"], lore: ["b"] },
       ],
       faiths: [{ name: "The Stone Saints", holy: ["Calder"], followers: ["Carrow"], lore: ["b"] }],
+      environments: [
+        { place: "calder", season: "summer", light: "dusk", lore: ["a"] },
+        { place: "Atlantis", light: "dark", lore: ["a"] },
+      ],
     },
   ],
   new Set(["a", "b"]),
@@ -87,9 +93,20 @@ assert.deepEqual(
 assert.deepEqual(merged.faiths[0]?.followers, ["Marrish"], "a follower the lore lacks is left out");
 assert.deepEqual(merged.faiths[0]?.lore, ["a"], "only entries that were read");
 assert.ok(merged.repairs.some((repair) => /Marrish: a place/.test(repair)));
+assert.deepEqual(
+  merged.environments.map((each) => [each.place, each.season, each.light, each.lore]),
+  [["Calder", "winter", "dusk", ["b", "a"]]],
+  "a held place the lore names, one per place, the first mention kept; a place the lore lacks left out",
+);
 
 // ── The brief keeps it ──
-const more = { groups: merged.groups, peoples: merged.peoples, folk: merged.folk, faiths: merged.faiths };
+const more = {
+  groups: merged.groups,
+  peoples: merged.peoples,
+  folk: merged.folk,
+  faiths: merged.faiths,
+  environments: merged.environments,
+};
 const brief = buildWorldBriefPrompt({
   kit,
   genre: "x",
@@ -122,6 +139,7 @@ assert.deepEqual(
 );
 assert.equal(read.brief.groups[0]!.name, "The Ember Church");
 assert.equal(read.brief.peoples[0]!.name, "Vael");
+assert.equal(read.brief.environments[0]?.season, "winter", "the brief keeps the lore's held place");
 
 // ── The world ──
 let rooted = 0;

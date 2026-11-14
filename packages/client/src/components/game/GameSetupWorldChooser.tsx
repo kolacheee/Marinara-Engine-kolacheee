@@ -317,6 +317,7 @@ export function GameSetupWorldChooser({
       peoples: WorldBriefPeople[];
       folk: WorldBriefFolk[];
       faiths: WorldBriefFaith[];
+      environments?: WorldCanonMore["environments"];
       repairs: string[];
       entriesRead: number;
       entriesLeft: number;
@@ -332,7 +333,13 @@ export function GameSetupWorldChooser({
       (value, into) => {
         into.canon = value.places;
         into.canonEvents = value.events;
-        into.canonMore = { groups: value.groups, peoples: value.peoples, folk: value.folk, faiths: value.faiths };
+        into.canonMore = {
+          groups: value.groups,
+          peoples: value.peoples,
+          folk: value.folk,
+          faiths: value.faiths,
+          environments: value.environments,
+        };
         // A brief already written takes the lore read now, so it never drifts from what is shown.
         if (into.brief)
           into.brief = withWorldCanon(into.brief, value.places, value.events, into.canonMore) as WorldBriefInput;
