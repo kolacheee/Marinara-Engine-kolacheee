@@ -1,0 +1,58 @@
+{
+  "part": "C",
+  "round": 3,
+  "verdict": "fail",
+  "failed": [
+    "treeline_forest@winter-2",
+    "treeline_forest@winter-5"
+  ],
+  "files": {
+    "treeline_forest@winter-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-2": {
+      "status": "fail",
+      "problems": [
+        "The open-fork redraw fixes the hollow crown loops, but it loses the summer outer silhouette. Matching the bounding box alone hides substantial shoulder and lower-lobe recession. At y=24 the summer span is x=5..41 and winter is x=10..35; at y=31 the summer left edge is x=5 and winter is x=12; at y=39 the right edge moves from x=32 to x=23. All 29 crown rows y=12..40 have different row extents. These are outer-contour losses, not just transparent spaces inside the crown. See critic-r14C-3-envelope-2-4x.png and critic-r14C-3-alpha-overlay-4x.png.",
+        "At 1x the formerly broad lower-right crown has collapsed into the central trunk and a few elevated forks, so the tree visibly changes its seasonal shape even though one terminal branch still reaches the original rightmost x=42. The overall forest remains readable, but this individual seasonal partner does not retain the required silhouette."
+      ],
+      "fix": "Keep the successful open branching, upper snow ledges and attached rust leaves. Repaint and register additional secondary branches and terminal forks into the missing summer shoulder/lower-lobe envelope, especially x=5..12,y=24..32 and x=24..41,y=33..40. Recover the broad low-right lobe and high-left apex placement as a dense branch network; do not restore the previous empty dark rings or add floating pixels merely to hit a bounding box. Preserve the 39x33 bounds (4,12,43,45) and exact rows 41..44 foot mask. Use image-tool painting on magenta, palette lock, exact mode reduction and limited native cleanup; inspect the actual registered contour as well as its bounding box."
+    },
+    "treeline_forest@winter-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-4": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-5": {
+      "status": "fail",
+      "problems": [
+        "The sapling now has connected juvenile forks instead of hollow rings, but both lower crown lobes recede from the summer silhouette. At y=32 summer spans x=5..40 and winter x=5..35; at y=35 the right edge moves from x=38 to x=32; at y=38 summer spans x=11..33 while winter is only x=21..25. The lower-left shoulder has retreated 10 native pixels at that row. 27 crown rows and 32 columns have different extremities. See critic-r14C-3-envelope-5-4x.png.",
+        "The bottom portion of the spreading crown disappears into a narrow central stem well above the preserved foot. At 1x this changes the summer low-spreading outline into a higher, more skeletal fork shape. This is a seasonal-silhouette failure; the smaller sapling identity itself is appropriate."
+      ],
+      "fix": "Retain the high-right/low-left asymmetry and fine sapling branch hierarchy, but repaint/register lower secondary forks into the missing summer envelope, particularly x=11..20,y=34..38 and x=26..40,y=30..38. Carry the lower lobes with connected branch tips and short snow caps, without recreating hollow rounded rims or detached extent-marker pixels. Preserve bounds (5,12,43,45), visible size 38x33, and the exact rows 41..44 foot mask ending at x=20..27 on row 44. Use the established image-tool/magenta/mode-sampling method and compare the resulting contour directly with summer."
+    },
+    "treeline_forest@winter-6": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    },
+    "treeline_forest@winter-7": {
+      "status": "pass",
+      "problems": [],
+      "fix": ""
+    }
+  },
+  "notes": "Independent critic review of Round 14 Part C, round 3. Read BRIEF-14 in full and the method passages of NOTES. Reviewed the current output files rather than relying on prior verdicts or self-review. Only this JSON and critic-r14C-3-*.png evidence were written; no output art, conifer, summer partner, ground, reference, notes or previous report was edited. No commit, push or branch change. VERDICT BASIS: six files pass; 2 and 5 fail seasonal outer-silhouette preservation. Their previous closed-loop drawing defects are fixed, and all eight satisfy the explicit bounding-box and trunk-foot measurements. However, the requested silhouette check reveals substantial outer-crown recession in 2 and 5. Alpha differences inside bare branching are expected and are not alone grounds for failure: the other six preserve every row/column extremity while opening their interiors. The failing coordinates above concern the exterior contour. The current notes only claim matching bounds/feet for the latest two redraws; this review does not treat that claim as proof of matching contours. MEASUREMENTS: zero-based coordinates; bounding-box right/bottom are exclusive; all x-range endpoints are inclusive. 0: summer=winter bbox=(6, 8, 41, 45), visible=35x37, foot row=44, foot x=21..25, centre x=23, rows 41..44 x ranges=[41:21..24, 42:21..24, 43:21..25, 44:21..25], foot-mask XOR=0, alpha XOR=205, opaque summer/winter=816/611, row/column extremity mismatches=0/0; 1: summer=winter bbox=(10, 6, 37, 45), visible=27x39, foot row=44, foot x=21..25, centre x=23, rows 41..44 x ranges=[41:21..25, 42:22..24, 43:22..25, 44:21..25], foot-mask XOR=0, alpha XOR=154, opaque summer/winter=678/524, row/column extremity mismatches=0/0; 2: summer=winter bbox=(4, 12, 43, 45), visible=39x33, foot row=44, foot x=21..25, centre x=23, rows 41..44 x ranges=[41:20..24, 42:20..24, 43:19..24, 44:21..25], foot-mask XOR=0, alpha XOR=385, opaque summer/winter=771/386, row/column extremity mismatches=29/37; 3: summer=winter bbox=(6, 9, 41, 45), visible=35x36, foot row=44, foot x=22..25, centre x=23.5, rows 41..44 x ranges=[41:21..25, 42:21..26, 43:21..26, 44:22..25], foot-mask XOR=0, alpha XOR=232, opaque summer/winter=778/546, row/column extremity mismatches=0/0; 4: summer=winter bbox=(10, 6, 37, 45), visible=27x39, foot row=44, foot x=21..24, centre x=22.5, rows 41..44 x ranges=[41:21..25, 42:21..25, 43:21..25, 44:21..24], foot-mask XOR=0, alpha XOR=192, opaque summer/winter=736/544, row/column extremity mismatches=0/0; 5: summer=winter bbox=(5, 12, 43, 45), visible=38x33, foot row=44, foot x=20..27, centre x=23.5, rows 41..44 x ranges=[41:22..26, 42:21..26, 43:20..27, 44:20..27], foot-mask XOR=0, alpha XOR=352, opaque summer/winter=743/391, row/column extremity mismatches=27/32; 6: summer=winter bbox=(7, 10, 41, 45), visible=34x35, foot row=44, foot x=21..25, centre x=23, rows 41..44 x ranges=[41:21..25, 42:21..25, 43:21..25, 44:21..25], foot-mask XOR=0, alpha XOR=171, opaque summer/winter=742/571, row/column extremity mismatches=0/0; 7: summer=winter bbox=(10, 6, 38, 45), visible=28x39, foot row=44, foot x=22..25, centre x=23.5, rows 41..44 x ranges=[41:22..25, 42:22..25, 43:22..25, 44:22..25], foot-mask XOR=0, alpha XOR=157, opaque summer/winter=636/479, row/column extremity mismatches=0/0. TECHNICAL CHECKS: all eight originals are 48x48 RGBA, alpha exactly 0/255, zero nonzero RGB beneath transparency, zero winter pixels outside summer masks, and one 8-connected opaque component each. Opaque palette counts by index: 12,12,11,7,13,7,10,11. No detached alpha specks, soft alpha, magenta fringe, ground square, blur or haze. Solid snow lies along upper branches; warm bark and pale birches retain dark native-pixel contours and compatible top-left lighting. The repaired oak has distinguishable attached rust leaf accents; beech 4 supplies the second dead-leaf variant. Oaks 0/6, beeches 1/4 and birches 3/7 are acceptable. VISUAL REVIEW: all eight examined at exact native 1x and nearest-neighbour 4x on neutral, summer grass and winter grass, plus paired 8x close-ups. Compared registered seasonal alpha overlays, summer/winter/conifer rows, and all four supplied town-tree references (reference 2 is itself a conifer). Rebuilt the literal 4x2 reference layout over grass@winter-base and summer grass. Viewed 45-tree broadleaf and 60-tree mixed-conifer strips at 1x and 4x on both grounds, using 24px horizontal and vertical spacing, alternate rows shifted 12px. The combined set reads as bare woodland beside the conifers, rather than a green canopy, fog or a field of isolated twigs. Failures are the individual seasonal silhouettes, not the overall strip density. No new grid-square or rounded-tile-edge artifact. GROUND CONTEXT: both unchanged grass bases examined as literal 3x3 repeats at 1x and at four-tile junctions at 4x. Source texture motifs repeat, but no hard seam or new Part C ground issue was identified; these grounds are outside this part. All 18 repeat cells match source pixels exactly. PROOF VALIDATION: 15 exact 4x pairs and 6 exact 8x pairs verified. Alpha overlay key: grey=shared opaque pixels, pink=summer-only pixels, cyan=winter-only pixels (none). The second row of the main alpha-overlay sheet blends registered source colours; this display blend is not part of any output sprite. 42 evidence PNGs use the critic-r14C-3- prefix. This is an asset-composite review, not a live-game render. UNCHANGED OUTPUT CHECK: combined path/content SHA-256 of every file under art-drop/out before and after review is 362193d689671a14de1e951ba89ad3e3d3440ed2b4843337d6e065a6500f83d8; all conifers are therefore byte-identical."
+}

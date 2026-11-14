@@ -1,3 +1,240 @@
+# Round 14 — Part C: critic-r14C-3 redraw
+
+Repaired only **`treeline_forest@winter-2.png` and `-5.png`** (48×48).
+Connected secondary branches now recover the oak's low-right lobe and left
+shoulder, and both low sapling lobes. The oak keeps its existing main forks,
+upper snow ledges and attached rust leaves. All six passing trees, summer
+partners and conifers are byte-identical.
+
+**Method:** six large built-in image-tool paintings on solid magenta, three
+variants per tree; selected **2c / 5c**. BOX registration on 384×384, painted
+row/column-band registration, fixed palette lock, exact RGBA mode of every
+8×8 block, summer-mask compositing and original feet. The oak composites its
+previous main forks over the new secondary branches. Two source-supported
+one-pixel contour repairs and 65 shadow-side colour corrections finish the
+composite; selected reduction stages have 20 recorded cleanup pixels.
+Code only registers, reduces, cleans and composites the drawings.
+
+**Measured summer = winter:** zero-based bounds with right/bottom exclusive;
+foot x endpoints inclusive. Foot spans below are ordered **y=41 / 42 / 43 / 44**.
+All eight have **zero row/column extremity mismatches, zero missing summer
+outer-contour pixels, zero pixels outside summer and zero foot-mask XOR**.
+
+| Index | Bounds | Visible size | Foot x spans, rows 41–44 |
+|---|---|---|---|
+| 0 | (6, 8, 41, 45) | 35×37 | 21–24 / 21–24 / 21–25 / 21–25 |
+| 1 | (10, 6, 37, 45) | 27×39 | 21–25 / 22–24 / 22–25 / 21–25 |
+| 2 | (4, 12, 43, 45) | 39×33 | 20–24 / 20–24 / 19–24 / 21–25 |
+| 3 | (6, 9, 41, 45) | 35×36 | 21–25 / 21–26 / 21–26 / 22–25 |
+| 4 | (10, 6, 37, 45) | 27×39 | 21–25 / 21–25 / 21–25 / 21–24 |
+| 5 | (5, 12, 43, 45) | 38×33 | 22–26 / 21–26 / 20–27 / 20–27 |
+| 6 | (7, 10, 41, 45) | 34×35 | 21–25 / 21–25 / 21–25 / 21–25 |
+| 7 | (10, 6, 38, 45) | 28×39 | 22–25 / 22–25 / 22–25 / 22–25 |
+
+**Checks:** rebuilt 18 review-sheet pairs, including the reference-layout
+4×2 winter-grass atlas, 45-tree woodland and 60-tree mixed-conifer strips
+on winter and summer grass. Inspected native, 4× and close-up views.
+Hard alpha 0/255, zero hidden RGB, connected sprites, palettes, **13,824 mode
+blocks**, 18 exact 4× pairs, two 8× pairs and 210 strip placements pass.
+**2,517 protected starting files** remain byte-identical. Visual self-review;
+no new independent critic or live-game verdict.
+
+Sources/prompts and processing records: `review/r14-C-critic3-*.png` metadata.
+Measurements, review recipe and validation are embedded in
+`review/r14-C-trees-1x.png`. No commit, push or branch change.
+
+---
+
+# Round 14 — Part C: critic-r14C-2 redraw
+
+Redrew only **`treeline_forest@winter-2.png` and `-5.png`**, both 48×48.
+The oak now has open branching fans, short upper snow ledges and three
+attached rust-leaf accents. The sapling has connected juvenile forks and
+the original high-right/low-left asymmetry. The six passing trees, summer
+partners and every conifer remain byte-identical.
+
+**Method:** five large built-in image-tool paintings on solid magenta:
+three oak variants and two saplings; selected **2c / 5a**. BOX registration
+on 384×384, fixed bark/snow/leaf palettes, exact RGBA mode over every 8×8
+block, summer-mask compositing, original feet on rows 41–44, and **47**
+recorded cleanup pixels. Three one-pixel joins recover painted leaf stems
+and a fork; three terminal pixels move one pixel to align the oak's apex
+and shoulders. Registration preserves the envelope while fork ends remain
+open. Code only registers, reduces, cleans and composites the drawings.
+
+**Measured summer = winter:** zero-based bounds, right/bottom exclusive;
+foot x endpoints inclusive. All feet end on **row 44**; all four-row foot
+masks match exactly.
+
+| Index | Bounds | Visible size | Foot x | Centre x |
+|---|---|---|---|---:|
+| 0 | (6, 8, 41, 45) | 35×37 | 21–25 | 23 |
+| 1 | (10, 6, 37, 45) | 27×39 | 21–25 | 23 |
+| 2 | (4, 12, 43, 45) | 39×33 | 21–25 | 23 |
+| 3 | (6, 9, 41, 45) | 35×36 | 22–25 | 23.5 |
+| 4 | (10, 6, 37, 45) | 27×39 | 21–24 | 22.5 |
+| 5 | (5, 12, 43, 45) | 38×33 | 20–27 | 23.5 |
+| 6 | (7, 10, 41, 45) | 34×35 | 21–25 | 23 |
+| 7 | (10, 6, 38, 45) | 28×39 | 22–25 | 23.5 |
+
+**Checks:** regenerated the Part C sheets and added before/after and close-up
+proofs. Inspected 1×/4× trees, the reference-layout 4×2 winter-grass atlas,
+45-tree woodland and 60-tree mixed-conifer strips, plus 8× close-ups.
+Hard alpha, zero hidden RGB, single connected sprites, zero pixels outside
+summer masks, 11,520 exact mode blocks, 16 exact 4× pairs and all 105 strip
+placements pass. **2,623 protected starting files** are byte-identical.
+Visual self-review only; no new independent critic or live-game check.
+
+Sources and prompts: `review/r14-C-critic2-source-*.png` metadata; processing
+and cleanup: `review/r14-C-critic2-stage-*-native.png` metadata. The rebuilt
+`review/r14-C-trees-1x.png` embeds the review recipe and validation results.
+No commit, push or branch change.
+
+---
+
+# Round 14 — Part C: critic-r14C-1 redraw
+
+Redrew all eight failed `out/treeline_forest@winter-0..7.png` files at
+**48×48**, restoring summer apexes, shoulders and asymmetric lobes.
+0/2/6 are oaks, 1/4 beeches, 3/7 pale birches, and 5 a smaller sapling;
+2 and 4 retain attached dead brown leaves. Bare branches carry upper snow.
+
+**Method:** twelve large image-tool paintings on solid magenta, including
+second variants for 2/4/5/7. Selected **0a/1a/2b/3a/4b/5b/6a/7b**.
+BOX registration to 384×384, local painted-band registration to summer
+row/column extents, 15-colour palette lock, exact RGBA mode of every 8×8
+block, summer-mask compositing, exact feet on rows 41–44, and one-pixel
+cleanup. **64 cleanup pixels**, including 16 terminal-contour restorations.
+Code constructs no shapes or noise. Alpha is **0/255**; hidden RGB is zero.
+
+**Measurements:** zero-based bounds `(left,top,right-exclusive,bottom-exclusive)`;
+foot ranges inclusive. Summer and winter are identical:
+
+| Index | Bounds | Visible size | Foot row | Foot x | Centre x |
+|---|---|---|---:|---|---:|
+| 0 | (6, 8, 41, 45) | 35×37 | 44 | 21–25 | 23 |
+| 1 | (10, 6, 37, 45) | 27×39 | 44 | 21–25 | 23 |
+| 2 | (4, 12, 43, 45) | 39×33 | 44 | 21–25 | 23 |
+| 3 | (6, 9, 41, 45) | 35×36 | 44 | 22–25 | 23.5 |
+| 4 | (10, 6, 37, 45) | 27×39 | 44 | 21–24 | 22.5 |
+| 5 | (5, 12, 43, 45) | 38×33 | 44 | 20–27 | 23.5 |
+| 6 | (7, 10, 41, 45) | 34×35 | 44 | 21–25 | 23 |
+| 7 | (10, 6, 38, 45) | 28×39 | 44 | 22–25 | 23.5 |
+
+All row/column extents match: **zero pixels outside summer, zero missing
+summer contour pixels, zero foot-mask differences**. Alpha differences
+are confined to internal branch openings.
+
+**Checks:** regenerated 26 final review PNGs, including 1×/4× trees, 4×2
+atlas, 45-tree woodland, 60-tree mixed/conifer strip, season comparisons,
+alternatives, contour overlays and ground repeats. Inspected native/4×
+views: dense bare woodland beside conifers, attached snow, no detached
+specks or haze. Self-review only; no new independent critic or live-game check.
+
+All **27,648 mode blocks / 1,769,472 samples**, recorded cleanup, 13 exact
+4× pairs, 18 ground-repeat crops, dimensions, 7–13-colour palettes,
+connectivity and composite placements pass. **2,504 protected starting
+files** remain byte-identical, including conifers and original critic evidence.
+
+Sources/recipes use `review/r14-C-critic1-*.png` metadata; measurements and
+validation are embedded in `review/r14-C-trees-1x.png`. Only the eight
+outputs, Part C review PNGs and this note changed. **No commit, push or
+branch change.**
+
+---
+
+# Round 14 — Part C
+
+Added **`out/treeline_forest@winter-0..7.png`**, eight transparent **48×48**
+winter broadleaf trees. The crowns are bare branching networks with narrow
+snow ledges on their upper boughs, following the supplied town winter-tree
+references. Indices **0/2/6** are varied oaks, **1/4** beeches, **3/7** pale-trunk
+birches, and **5** a smaller, low spreading sapling. **2 and 4** retain a few
+attached dead brown leaves. Top-left light, warm dark outlines and cool snow
+sit beside the unchanged winter conifers at the same native pixel scale.
+
+**Method:** eleven separate built-in image-tool drawings/repaints on solid
+magenta: one for each tree and second variants for **0, 2 and 4**. Selected
+**0b / 1a / 2a / 3a / 4b / 5a / 6a / 7a**. The second oak 0 preserves stronger
+snow strokes after reduction; oak 2's first painting retains the clearer leaf
+clusters; beech 4's repaint makes its few hanging leaves more readable.
+Magenta is keyed out, each drawing is cropped and BOX-registered to its
+summer partner's measured bounds on a **384×384** canvas. An explicit
+**15-colour** bark, birch, snow and dead-leaf palette is locked before reduction.
+Every native pixel is the exact RGBA mode of **all 64 samples in its 8×8
+footprint**, including transparency; ties use stable lexicographic order.
+Nearest neighbour is used only for review enlargement.
+
+Native cleanup removes detached reduction fragments. The original summer
+trunk-foot alpha on rows **41–44** is composited exactly, with bark colours
+mapped to the winter palette (pale bark for the birches). A one-pixel contour
+pass resolves the exposed trunk sides and bottom without changing alpha.
+Across the selected eight, the recorded mode-to-final cleanup changes
+**134 pixels**, including **20 contour-colour corrections**. Code registers,
+reduces, palette-locks, cleans and composites the drawings; it constructs no
+tree shapes or noise. Alpha is strictly **0/255**, with **zero RGB** under
+transparency. Each final sprite is one connected silhouette, using **9–12**
+opaque colours.
+
+**Measurements:** coordinates are zero-based. Bounds are
+`(left, top, right-exclusive, bottom-exclusive)`; foot-column ranges below
+are inclusive. The summer and winter measurements in every row are identical.
+All eight feet end on **row 44**, with three transparent rows below. The full
+four-row trunk-foot masks on **41–44** differ by **zero pixels** for all eight
+partners. Bare crowns retain the measured envelope while opening gaps between
+branches.
+
+| Index | Tree | Summer = winter bounds | Visible size | Foot row | Foot columns | Foot centre x |
+|---|---|---|---|---:|---|---:|
+| 0 | Rounded oak | (6, 8, 41, 45) | 35×37 | 44 | 21–25 | 23 |
+| 1 | Upright beech | (10, 6, 37, 45) | 27×39 | 44 | 21–25 | 23 |
+| 2 | Spreading oak, dead leaves | (4, 12, 43, 45) | 39×33 | 44 | 21–25 | 23 |
+| 3 | Silver birch | (6, 9, 41, 45) | 35×36 | 44 | 22–25 | 23.5 |
+| 4 | Beech, dead leaves | (10, 6, 37, 45) | 27×39 | 44 | 21–24 | 22.5 |
+| 5 | Small spreading sapling | (5, 12, 43, 45) | 38×33 | 44 | 20–27 | 23.5 |
+| 6 | Crooked oak | (7, 10, 41, 45) | 34×35 | 44 | 21–25 | 23 |
+| 7 | Slender birch | (10, 6, 38, 45) | 28×39 | 44 | 22–25 | 23.5 |
+
+**QC and review:** inspected all eight at native **1×**, exact nearest-neighbour
+**4×**, and enlarged native working views. The **192×96** atlas follows the
+reference's literal **4×2** arrangement over `grass@winter-base`. A **432×144**
+forest strip contains **45** fully visible broadleaf trees on a **24 px × 20 px**
+staggered lattice; alternate rows shift **12 px**. A second strip contains
+**60** trees across a broadleaf/conifer boundary. Crowns overlap into woodland,
+with visible branch gaps and trunks; the sapling stays lower and lighter.
+Separate proofs compare every tree with its summer partner and the eight
+unchanged conifers. No detached specks, magenta fringe, green winter canopy,
+backing square, blur or haze remains. This is visual self-review against the
+brief, without an independent critic verdict or a live-game check.
+
+The **20 final proof PNGs** are `review/r14-C-{trees,trees-atlas,forest-strip,
+mixed-forest-strip,conifer-comparison,season-comparison,alternatives,
+winter-grass-3x3,summer-grass-3x3,winter-grass-junction}-{1x,4x}.png`.
+Both grass repeats are literal, unlabelled **3×3** copies of the unchanged
+backgrounds used in the proofs; no ground asset was redrawn for Part C.
+Validation checks **18** repeat crops and **10** exact 4× enlargements.
+
+All **25,344 mode blocks / 1,622,016 source samples** across the eleven
+paintings were recomputed. Saved mode reductions plus recorded cleanup
+reproduce every native candidate exactly; the selected candidates match the
+eight output files. Dimensions, palette membership, hard alpha, zero hidden
+RGB, connectivity, exact summer bounds/foot masks, atlas compositing and all
+strip placements pass. **All 2,411 protected starting files remain
+byte-identical**, including every conifer, summer tree, ground, other part's
+art, brief and supplied reference.
+
+Sources and exact prompts are retained in `review/r14-C-source-*.png`
+(prompt metadata); registered, palette-locked, mode and cleaned stages use
+`review/r14-C-stage-*.png`. Cleaned-stage metadata contains the processing
+recipe and pixel cleanup records. `review/r14-C-trees-1x.png` embeds the review
+recipe, validation script and machine-readable measurements/results;
+`review/r14-C-reference.png` embeds the baseline hashes and original summer
+measurements. There are **87 Part C review/source/stage PNGs** in total.
+Only the eight named outputs, these Part C PNGs and this top note were written
+in the checkout. **No commit, push or branch change.**
+
+---
+
 # Round 14 — Part B: critic-r14B-1 redraw
 
 Repaired the **seven failed outputs**: summer hills **1/3**, their autumn/winter

@@ -1,0 +1,82 @@
+{
+  "part": "C",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "treeline_forest@winter-0",
+    "treeline_forest@winter-1",
+    "treeline_forest@winter-2",
+    "treeline_forest@winter-3",
+    "treeline_forest@winter-4",
+    "treeline_forest@winter-5",
+    "treeline_forest@winter-6",
+    "treeline_forest@winter-7"
+  ],
+  "files": {
+    "treeline_forest@winter-0": {
+      "status": "fail",
+      "problems": [
+        "Seasonal outer-silhouette mismatch. At y=8 the summer crown spans x=22..25, but winter spans x=20..26; at y=9 winter reaches x=28 beyond the summer right edge x=26. The upper-left shoulder also grows outside summer at (12,13) and (11,14).",
+        "Registered alpha comparison: 253 differing pixels (216 summer-only, 37 winter-only). Of the winter-only pixels, 31 lie beyond the summer left/right extent on their row, so this is more than opening internal gaps for bare branches. See critic-r14C-1-alpha-overlay-4x.png (grey=shared, cyan=summer-only, red=winter-only)."
+      ],
+      "fix": "Register the oak apex to x=22..25 at y=8 and bring the upper-left and upper-right branch tips back to the summer crown contour. Retain the branching gaps and upper-bough snow, the 35x37 envelope, and the exact existing foot. Use a large image-tool repaint against that registered reference, then the established palette-lock, 8x8 mode reduction and one-pixel cleanup workflow; preserve the already-correct native scale and hard alpha."
+    },
+    "treeline_forest@winter-1": {
+      "status": "fail",
+      "problems": [
+        "Seasonal outer-silhouette mismatch. The apex moves from (25,6) to (24,6). On y=10 the summer left edge is x=20, while winter extends to x=17; on y=12 it extends to x=14 instead of the summer x=17. This changes the narrow beech crown outline despite its identical bounding box.",
+        "Registered alpha comparison: 223 differing pixels (199 summer-only, 24 winter-only). Of the winter-only pixels, 22 lie beyond the summer left/right extent on their row, so this is more than opening internal gaps for bare branches. See critic-r14C-1-alpha-overlay-4x.png (grey=shared, cyan=summer-only, red=winter-only)."
+      ],
+      "fix": "Restore the apex at (25,6) and redraw the upper-left branch reach to track the summer left shoulder at y=10..13. Keep the 27x39 envelope and rows 41..44 foot mask; check the registered outer contour rather than only four bounding-box values. Use a large image-tool repaint against that registered reference, then the established palette-lock, 8x8 mode reduction and one-pixel cleanup workflow; preserve the already-correct native scale and hard alpha."
+    },
+    "treeline_forest@winter-2": {
+      "status": "fail",
+      "problems": [
+        "Seasonal outer-silhouette mismatch. The spreading summer crown has its high lobe at x=15..16 on y=12; winter instead puts its apex at x=23..24. At y=15 the winter right edge reaches x=32 where the summer edge is x=22. The old asymmetric crown has been replaced by a different branching outline.",
+        "Registered alpha comparison: 408 differing pixels (301 summer-only, 107 winter-only). Of the winter-only pixels, 83 lie beyond the summer left/right extent on their row, so this is more than opening internal gaps for bare branches. See critic-r14C-1-alpha-overlay-4x.png (grey=shared, cyan=summer-only, red=winter-only)."
+      ],
+      "fix": "Redraw the oak with its high left lobe and lower right lobe aligned to the summer source, beginning with the apex at x=15..16,y=12 and the right shoulder around y=13..17. Keep the dead-leaf accents, bare internal gaps, 39x33 bounds and exact foot. Use a large image-tool repaint against that registered reference, then the established palette-lock, 8x8 mode reduction and one-pixel cleanup workflow; preserve the already-correct native scale and hard alpha."
+    },
+    "treeline_forest@winter-3": {
+      "status": "fail",
+      "problems": [
+        "Seasonal outer-silhouette mismatch. The summer apex spans x=20..23 on y=9, while the winter apex is at x=24. The upper-right shoulder moves outward: on y=13 winter reaches x=32 against summer x=28, and on y=15 it reaches x=35 against summer x=32.",
+        "Registered alpha comparison: 312 differing pixels (261 summer-only, 51 winter-only). Of the winter-only pixels, 41 lie beyond the summer left/right extent on their row, so this is more than opening internal gaps for bare branches. See critic-r14C-1-alpha-overlay-4x.png (grey=shared, cyan=summer-only, red=winter-only)."
+      ],
+      "fix": "Reposition the birch apex and upper-right terminal branches onto the summer crown contour. Retain the pale trunk, attached snow ledges, 35x36 bounds and existing four-row trunk-foot mask; do not solve the mismatch by filling the crown into a leafy mass. Use a large image-tool repaint against that registered reference, then the established palette-lock, 8x8 mode reduction and one-pixel cleanup workflow; preserve the already-correct native scale and hard alpha."
+    },
+    "treeline_forest@winter-4": {
+      "status": "fail",
+      "problems": [
+        "Seasonal outer-silhouette mismatch. The summer tree is left-high: its apex spans x=15..18 on y=6. Winter shifts that apex to x=23, and on y=7 extends through x=27 where summer ends at x=20. The left-heavy summer crown becomes a central/right-heavy winter crown.",
+        "Registered alpha comparison: 341 differing pixels (308 summer-only, 33 winter-only). Of the winter-only pixels, 33 lie beyond the summer left/right extent on their row, so this is more than opening internal gaps for bare branches. See critic-r14C-1-alpha-overlay-4x.png (grey=shared, cyan=summer-only, red=winter-only)."
+      ],
+      "fix": "Use the summer left-high crown as the drawing reference: restore the apex around x=15..18,y=6 and pull the upper-right forks back to the original shoulder. Preserve the two-season 27x39 envelope, exact foot, visible bare branching and a few hanging brown leaves. Use a large image-tool repaint against that registered reference, then the established palette-lock, 8x8 mode reduction and one-pixel cleanup workflow; preserve the already-correct native scale and hard alpha."
+    },
+    "treeline_forest@winter-5": {
+      "status": "fail",
+      "problems": [
+        "Seasonal outer-silhouette mismatch. This is the largest positional change: the summer crown is right-high at x=32..33,y=12, but the winter apex is at x=12,y=12. On y=13 summer spans x=29..36 and winter spans x=9..12. Matching the bounding box has concealed a reversal of the crown asymmetry.",
+        "Registered alpha comparison: 420 differing pixels (336 summer-only, 84 winter-only). Of the winter-only pixels, 72 lie beyond the summer left/right extent on their row, so this is more than opening internal gaps for bare branches. See critic-r14C-1-alpha-overlay-4x.png (grey=shared, cyan=summer-only, red=winter-only)."
+      ],
+      "fix": "Redraw the smaller tree with the original high-right/lower-left branch envelope instead of the current high-left fork. Match the summer crown reach row by row, retain the 38x33 bounds and x=20..27 foot on row 44, and use finer juvenile branches to keep the sapling identity within that fixed footprint. Use a large image-tool repaint against that registered reference, then the established palette-lock, 8x8 mode reduction and one-pixel cleanup workflow; preserve the already-correct native scale and hard alpha."
+    },
+    "treeline_forest@winter-6": {
+      "status": "fail",
+      "problems": [
+        "Seasonal outer-silhouette mismatch. At y=15 summer spans x=14..33, while winter spans x=12..36; at y=16 the winter tree still extends past both summer edges. The upper crown also protrudes right at x=32,y=13 and x=33,y=14.",
+        "Registered alpha comparison: 270 differing pixels (225 summer-only, 45 winter-only). Of the winter-only pixels, 41 lie beyond the summer left/right extent on their row, so this is more than opening internal gaps for bare branches. See critic-r14C-1-alpha-overlay-4x.png (grey=shared, cyan=summer-only, red=winter-only)."
+      ],
+      "fix": "Bring the upper-left and upper-right oak branch tips inside the original summer shoulders, especially y=13..18. Preserve the 34x35 bounds and exact trunk foot while re-registering the branching crown to the actual summer contour. Use a large image-tool repaint against that registered reference, then the established palette-lock, 8x8 mode reduction and one-pixel cleanup workflow; preserve the already-correct native scale and hard alpha."
+    },
+    "treeline_forest@winter-7": {
+      "status": "fail",
+      "problems": [
+        "Seasonal outer-silhouette mismatch. The summer apex is at x=25..26,y=6; winter moves it to x=20. By y=10 winter extends left to x=14 where summer starts at x=20. The slender birch leans and carries its upper crown on a different side from its summer partner.",
+        "Registered alpha comparison: 340 differing pixels (289 summer-only, 51 winter-only). Of the winter-only pixels, 49 lie beyond the summer left/right extent on their row, so this is more than opening internal gaps for bare branches. See critic-r14C-1-alpha-overlay-4x.png (grey=shared, cyan=summer-only, red=winter-only)."
+      ],
+      "fix": "Restore the original right-shifted apex at x=25..26,y=6 and pull the upper-left branches back to the summer shoulder at y=8..12. Retain pale bark, bare internal branch gaps, the 28x39 bounds and exact foot at x=22..25,y=44. Use a large image-tool repaint against that registered reference, then the established palette-lock, 8x8 mode reduction and one-pixel cleanup workflow; preserve the already-correct native scale and hard alpha."
+    }
+  },
+  "notes": "Independent critic review of Part C only. Read BRIEF-14 in full and the earlier drawing/registration/reduction methods in NOTES. No output art, conifer, ground, reference, notes or other pre-existing file was edited. VERDICT BASIS: all eight fail the requested unchanged seasonal outer-silhouette criterion. The measured bounding boxes and feet match exactly, but the actual outer crown contours do not. Interior transparent gaps are necessary for bare deciduous crowns and are not, by themselves, the reason for failure; the cited winter pixels extend beyond the summer envelope and several apexes move sideways. MEASUREMENTS: zero-based coordinates; bounding boxes are (left,top,right-exclusive,bottom-exclusive); foot columns are inclusive. Summer and winter values are identical for the following measurements: 0: bbox=(6, 8, 41, 45), visible=35x37, foot row=44, foot x=21..25, centre x=23, rows 41..44 alpha differences=0; 1: bbox=(10, 6, 37, 45), visible=27x39, foot row=44, foot x=21..25, centre x=23, rows 41..44 alpha differences=0; 2: bbox=(4, 12, 43, 45), visible=39x33, foot row=44, foot x=21..25, centre x=23, rows 41..44 alpha differences=0; 3: bbox=(6, 9, 41, 45), visible=35x36, foot row=44, foot x=22..25, centre x=23.5, rows 41..44 alpha differences=0; 4: bbox=(10, 6, 37, 45), visible=27x39, foot row=44, foot x=21..24, centre x=22.5, rows 41..44 alpha differences=0; 5: bbox=(5, 12, 43, 45), visible=38x33, foot row=44, foot x=20..27, centre x=23.5, rows 41..44 alpha differences=0; 6: bbox=(7, 10, 41, 45), visible=34x35, foot row=44, foot x=21..25, centre x=23, rows 41..44 alpha differences=0; 7: bbox=(10, 6, 38, 45), visible=28x39, foot row=44, foot x=22..25, centre x=23.5, rows 41..44 alpha differences=0. PASSING CHECKS: all eight are 48x48 RGBA with alpha values only 0 and 255, zero RGB under transparency, one 8-connected opaque component, and 9..12 opaque palette colours. Summer/winter opaque pixel counts by index are 816/637, 678/503, 771/577, 778/568, 736/461, 743/491, 742/562, 636/398. All end on row 44. There are no detached alpha specks, soft fringes, magenta edges, ground squares, haze, or green winter canopies. The snow reads as solid paint on upper branches. Native pixel size and light placement are consistent enough with the supplied town-tree references and neighbouring conifers. Oaks, upright beeches and pale-trunk birches are distinguishable; 2 and 4 retain sparse brown leaves. The staggered winter strip reads as a dense bare woodland, although the fine branches make it busy. VISUAL INSPECTION: viewed every target at exact 1x, nearest-neighbour 4x and 8x; every tree over both grass-base and grass@winter-base; summer/winter/conifer comparisons; registered alpha overlays; the supplied fantasy-tree@winter-0..3 references and 4x2 fantasy-treeline_forest@winter layout; broadleaf and mixed-conifer forest strips at 1x and 4x. Both unchanged grounds were inspected as literal full 3x3 repeats, with no new seam defect attributed to Part C. The independent 432x160 forest strips use 24px horizontal/20px vertical staggered placement with a 12px alternate-row offset. Composites are asset review, not a live-game rendering. METHOD AUDIT: independently recomputed all 25,344 8x8 mode blocks across eleven saved variants (1,622,016 source samples), with zero differences; applying the recorded native cleanup reproduces every candidate, and the eight selected candidates equal the output pixels. This validates reduction and recorded cleanup; it does not substitute for the silhouette review. Eleven 4x proofs were verified as exact nearest-neighbour enlargements, and all eighteen ground-repeat cells equal their source. Starting hashes in the independent proof PNG metadata confirm all pre-existing files remain byte-identical. Evidence files use the critic-r14C-1- prefix; measurement and starting-hash records are embedded in their PNG metadata. No commit, push or branch change."
+}
