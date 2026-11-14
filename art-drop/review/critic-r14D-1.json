@@ -1,0 +1,82 @@
+{
+  "part": "D",
+  "round": 1,
+  "verdict": "fail",
+  "failed": [
+    "scifi-tree@winter-1",
+    "scifi-tree@winter-3"
+  ],
+  "files": {
+    "scifi-tree@autumn-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Rust/amber foliage reads clearly; source silhouette, planter and lights are preserved."
+    },
+    "scifi-tree@autumn-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Teal-violet leaves retain the cyan glow and the source silhouette."
+    },
+    "scifi-tree@autumn-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. The rust/amber hedge is distinct from summer at native size; hardware is unchanged."
+    },
+    "scifi-tree@autumn-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. The heated interior remains green; dome frame, planter, lights and alpha mask are preserved."
+    },
+    "scifi-tree@winter-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Solid snow caps and snow just inside the planter lip read at 1x, with blue-grey lower-right shading and no haze."
+    },
+    "scifi-tree@winter-1": {
+      "status": "fail",
+      "problems": [
+        "The summer alpha mask is not preserved: 833 pixels differ, comprising 818 removed opaque pixels and 15 added opaque pixels. Differences occupy x=8..87, y=9..61 (zero-based, inclusive). The broad fan crowns become thin open arcs; matching the original bounding box does not satisfy the requested pixel-for-pixel seasonal silhouette. See critic-r14D-1-tree-1-overlay-4x.png: red marks removed summer coverage and cyan marks additions.",
+        "The planter has no visible winter accumulation. The base and inner planting bed below y=63 remain summer-identical, including the green patch around the trunk. Snow is confined to the branch arcs, leaving the requested planter-rim snow absent."
+      ],
+      "fix": "Repaint the crown using the exact summer alpha mask as the acceptance constraint: use drawn snow, visible branching and sparse residual growth to make a bare-ish winter crown without changing its occupied pixels. Restore the 818 missing pixels and remove the 15 additions; verify zero alpha-mask differences, not just equal bounds. Add a small, clearly readable snow deposit immediately above the inner planter lip around the trunk, without altering any original planter or light pixels. Preserve the cyan trunk channels and lamps."
+    },
+    "scifi-tree@winter-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Dense clipped brown stems, solid upper snow and inner-lip snow read as a winter hedge. The original alpha mask, planter and lights are intact."
+    },
+    "scifi-tree@winter-3": {
+      "status": "fail",
+      "problems": [
+        "The top snow is insufficiently distinct from the summer glass reflections at native size, on both summer and winter paving. The 498 changed pixels are confined to x=16..79, y=20..36. At 4x/8x the new dark-blue lower edges and pale strips can be found, but at 1x these merge with the existing white-blue glazing highlights; the dome still reads essentially as the summer dome. See critic-r14D-1-dome-top-1x.png and critic-r14D-1-winter-on-winter-1x.png."
+      ],
+      "fix": "Repaint the upper glass sectors with broader, coherent solid snow deposits that read immediately at 96x96: a white upper surface and a restrained blue-grey lower edge, rather than narrow bands following the existing reflections. Keep the frame, planter, cyan lights, green interior and full summer alpha mask unchanged. Check the result on winter paving at 1x before accepting it."
+    },
+    "scifi-tree@spring-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Pale pink blossom is readable at 1x and retains the source outline, planter and lights."
+    },
+    "scifi-tree@spring-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Bright mint-cyan growth reads as spring while retaining the source silhouette and fixed lights."
+    },
+    "scifi-tree@spring-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Fresh light-green foliage is brighter than summer without losing the hedge structure or lower-right shading."
+    },
+    "scifi-tree@spring-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Green interior, glass, structural frame, lights and source silhouette remain coherent."
+    },
+    "scifi-town_ground@winter-base": {
+      "status": "pass",
+      "problems": [],
+      "fix": "None. Thin solid snow follows joints and slab edges; paving, fasteners and inset handles remain readable. Literal 3x3 repeats and enlarged edge/junction crops show no added tile-boundary seam or conspicuous snow motif."
+    }
+  },
+  "notes": "Independent critic review only; no file in art-drop/out/ was edited. Read BRIEF-14.md in full and the drawing-method sections of NOTES.md. Inspected every named output at exact native size and nearest-neighbour 4x, with 8x close-ups of the winter glowing tree, dome and ground junction. Compared summer/seasonal overlays and code-measured alpha masks. Inspected all props on summer paving and winter props on the winter ground; no separate autumn/spring town ground is named or supplied. Inspected summer and winter grounds as literal 3x3 repeats, plus horizontal and vertical wrap crops. Compared supplied summer crops and approved neighbouring sci-fi props. All twelve trees are RGBA 96x96, single 8-connected components, with alpha only 0/255 and zero RGB under transparency. Ground is RGBA 288x288 and fully opaque. Eleven trees have zero alpha-mask differences; winter-1 has 833. All tree bounds match their source. Protected-pixel comparisons were recomputed against the summer RGBA pixels using the supplied material masks, whose coverage was visually checked in critic-r14D-1-protected-0..3-4x.png. For EACH of autumn, winter and spring, changed protected-region/light-region pixels are: index 0 = 0/1305 and 0/54; index 1 = 0/1436 and 0/245; index 2 = 0/1691 and 0/86; index 3 = 0/2364 and 0/45. Protected regions include planter hardware and adjacent unchanged material; light regions are subsets. Additional independent lower-face checks also give zero changed pixels in every season: index 0, y>=75, 759 source-opaque pixels; index 1, y>=78, 545 pixels; index 2, y>=64, 535 pixels; index 3, y>=69, 741 pixels. Thus neither failure is a hardware/light recoloring failure. Ground differs from summer at 8249/82944 pixels (9.945%); the other 74695 pixels remain exactly summer paving. Ground has 19 opaque colours. No new soft alpha, hidden RGB, detached alpha specks, fog, wash, rounded paving perimeter, or lighting-direction defect was found. The winter dome failure concerns visual snow readability, not a claim that no snow pixels exist. Review evidence uses critic-r14D-1-*.png; neutral comparison strips are ordered summer/autumn/winter/spring, and overlay columns autumn/winter/spring. No commit, push or branch change was performed."
+}

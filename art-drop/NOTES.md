@@ -1,3 +1,162 @@
+# Round 14 — Part D: critic-r14D-1 redraw
+
+Redrew only **`out/scifi-tree@winter-1.png` and `out/scifi-tree@winter-3.png`**
+(96×96). The glowing tree now keeps the full summer fan silhouette, with
+visible branching, upper snow and **40 drawn snow pixels inside the planter
+lip**. The dome has broad white deposits with blue-grey lower edges; its
+green interior and frame remain exact summer pixels. All **eleven passing
+assets**, including the winter ground, remain byte-identical.
+
+**Method:** four large built-in image-tool paintings on solid magenta, two
+variants per failed piece; selected **1b / 3a**. Magenta key, BOX registration
+to 768×768, explicit palette lock, exact RGBA mode of all **64 samples per
+8×8 block**, then source-material compositing through the exact summer mask.
+Five missing registration samples in the selected crown use the nearest
+drawn opaque pixel. The native one-pixel contour pass required no additional
+hand-painted pixels. Hard alpha **0/255**, zero RGB under transparency;
+code constructs no shapes or noise. Exact prompts are embedded in
+`review/r14-D-critic1-source-winter-{1a,1b,3a,3b}.png`.
+
+**Preservation:** every seasonal tree now has **zero full-alpha-mask
+differences** from summer. Changed RGBA counts below apply to each of
+autumn / winter / spring:
+
+| Tree | Protected planter/frame region | Region changed | Light region | Lights changed |
+|---|---:|---|---:|---|
+| 0 | 1,305 pixels | 0 / 0 / 0 | 54 pixels | 0 / 0 / 0 |
+| 1 | 1,360 pixels | 0 / 0 / 0 | 245 pixels | 0 / 0 / 0 |
+| 2 | 1,691 pixels | 0 / 0 / 0 | 86 pixels | 0 / 0 / 0 |
+| 3 | 2,364 pixels | 0 / 0 / 0 | 45 pixels | 0 / 0 / 0 |
+
+Tree 1's original 1,436-pixel protection mask included **76 green planting-bed
+pixels**. These are now selected separately, excluding lamps and trunk
+channels. The original mask consequently records **40 changed pixels**, all
+drawn snow on that vegetation; the remaining 1,360 pixels are unchanged.
+The source/selection/final proof is `review/r14-D-critic1-bed-proof-4x.png`.
+
+**Review:** regenerated all 56 existing final Part D proof PNGs, plus new
+before/after, alternatives and bed-selection proofs. Inspected native and
+4× views, winter trees on both pavings, the winter town, all seasons, and
+ground repeats/junctions. Snow reads at 1×; the paving remains thinly covered
+and seamless. Validation checks **36,864 exact mode blocks / 2,359,296 samples**,
+31 exact 4× pairs, 18 literal repeat crops, connected sprites and the full
+starting-file hash scope. Recipes and results are embedded in
+`review/r14-D-seasons-1x.png`; sources/stages use `r14-D-critic1-*`.
+This is visual self-review, without a new independent critic or live-game
+verdict. **No commit, push or branch change.**
+
+---
+
+# Round 14 — Part D
+
+Added **12 transparent 96×96 town-tree partners**:
+`out/scifi-tree@autumn-0..3.png`, `scifi-tree@winter-0..3.png` and
+`scifi-tree@spring-0..3.png`, plus the opaque RGBA
+**288×288** `out/scifi-town_ground@winter-base.png`.
+
+Autumn has rust/amber bonsai and hedge foliage, teal-violet luminous leaves,
+and a green heated dome. Spring has pale pink bonsai blossoms, fresh light
+green hedge growth and brighter mint-cyan fans. Winter has solid bonsai snow
+caps, a clipped twig hedge with upper and inner-lip snow, a bare-ish glowing
+tree with snow on its curved branches, and a distinct shaded snow cap on the
+dome glass. The winter dome's original green interior is retained exactly.
+Snow sits above the planter lips; the original cream hardware remains visible.
+
+**Method:** **17 separate large built-in image-tool paintings** on solid
+magenta: fourteen tree drawings, two ground variants and one wrap repaint.
+The difficult winter glowing tree and dome each received two variants;
+**1b / 3b** were selected. The remaining tree selections are **a**. Ground
+**a** was selected over b's broader corner deposits. Exact prompts are saved
+in each source PNG's `Prompt` metadata.
+
+Tree paintings are magenta-keyed and BOX-registered to the summer bounds on
+**768×768** canvases, locked to explicit material palettes, then reduced by
+the exact RGBA mode of **all 64 samples in each 8×8 footprint**, including
+transparency. Ties use lexicographic RGBA order. Painted plant colours and
+snow are composited through source-derived material masks. Original
+planters, structural frames and lamp pixels are copied without quantization;
+the glowing tree's exposed trunk light channels are protected too. The
+native outline pass retains the inherited one-pixel contours and checks new
+shadow edges; it required **zero additional colour repairs** after the final
+palette reduction. An unused black palette slot found by validation was
+removed before final reduction. Every sprite is a single connected component,
+with alpha **0/255** and **zero RGB under transparency**. Final sprites retain
+**115–181 opaque colours**, including the unmodified source hardware palette.
+
+Ground paintings are BOX-registered to **1152×1152**, palette-locked and
+reduced by the exact RGBA mode of **all 16 samples per 4×4 footprint**. Only
+drawn snow is transferred onto the original paving. A half-offset inspection
+rejected the separate wrap repaint because it introduced a snow ledge across
+an exposed slab. The final wrap instead registers continuous snow strips from
+the selected painting's matching **144 px panel phase**, with minimum-error
+hard cuts through a narrow cross. No painted grey slabs replace the original
+paving. The offset outer three-pixel ring is retained; **87 isolated snow
+reduction pixels** are removed by restoring their exact summer pixels.
+Code only registers, reduces, palette-locks, cleans, wraps and composites
+drawings; selection masks do not draw artwork or noise.
+
+**Protected-pixel measurements:** coordinates are zero-based, with
+right/bottom exclusive. Each season has the same listed bounds as summer.
+The protected masks include hardware and adjacent unchanged source material;
+the light masks are their cyan lamp/channel subset. Counts below are literal
+RGBA pixel comparisons against `reference/r14/scifi-tree-N.png`.
+Changed counts are ordered **autumn / winter / spring**.
+
+| Index | Summer = seasonal bounds | Visible size | Protected pixels | Protected changed | Light pixels | Lights changed |
+|---|---|---|---:|---|---:|---|
+| 0 — ring bonsai | (11, 13, 85, 91) | 74×78 | 1,305 | 0 / 0 / 0 | 54 | 0 / 0 / 0 |
+| 1 — glowing tree | (8, 9, 88, 91) | 80×82 | 1,436 | 0 / 0 / 0 | 245 | 0 / 0 / 0 |
+| 2 — hedge box | (7, 24, 89, 79) | 82×55 | 1,691 | 0 / 0 / 0 | 86 | 0 / 0 / 0 |
+| 3 — heated dome | (6, 15, 90, 83) | 84×68 | 2,364 | 0 / 0 / 0 | 45 | 0 / 0 / 0 |
+
+All planter silhouettes and all protected RGBA values match summer exactly.
+Eleven partners also retain the **entire summer alpha mask**. Winter tree 1
+opens its branching crown: **833 alpha differences**, confined to the plant,
+with the same overall bounds and unchanged planter. Seasonal luminous foliage
+is editable plant material; the fixed lamps and exposed trunk channels remain
+exact. The source masks and coloured mask previews are retained for inspection.
+
+**Ground measurements:** **8,249 snow pixels / 82,944 = 9.95%** coverage;
+the remaining **74,695 pixels (90.05%)** are exact summer paving.
+The final ground has **19 colours**, full opacity, square edges and readable
+panel joints, fasteners and inset handles. Mean absolute RGB steps across
+left/right and top/bottom wraps are **9.07 / 6.78**, versus **7.31** across
+internal horizontal neighbours. The tiled paving's intentional panel joins
+remain; no added image-boundary line was found in the final repeat.
+
+**QC and review:** visually inspected every final file at **1× and exact
+nearest-neighbour 4×**, all seasons on town paving, winter on both summer and
+winter ground, a twelve-planter winter town crop, alternatives, the half-offset
+ground, horizontal/vertical joins and the four-way wrap junction. Compared the
+outlines, lighting and snow with the supplied summer sources and neighbouring
+approved sci-fi art. No detached sprite specks, magenta fringe, backing
+rectangles, fog, blur or rounded paving perimeter remains. This is visual
+self-review, without an independent critic or live-game verdict.
+
+There are **56 final proof PNGs (28 pairs)** in `review/r14-D-*.png`:
+individual seasonal trees, seasonal rows, season comparison, winter-on-summer
+row, winter town, alternatives, ground, literal unlabelled **3×3 repeats**
+of winter and reference summer ground, half-offset and wrap close-ups.
+Every delivered file has a native proof and a nearest-neighbour 4× proof.
+The winter repeat is **864×864 at 1× / 3456×3456 at 4×**.
+
+Validation recomputed **377,856 exact mode blocks / 12,238,848 samples**,
+checked all 28 exact enlargements and 18 literal repeat crops, reconstructed
+the final wrapped ground plus recorded cleanup, and checked native dimensions,
+palette membership, connected sprites, alpha, hidden RGB, bounds, individual
+proof placement and every protected-pixel comparison. **All 2,825 protected
+starting files remain byte-identical**, including Parts A–C, every reference,
+approved neighbouring art and the brief.
+
+Sources, alternatives, edit targets, masks and processing stages are retained
+among **168 Part D review/source/stage PNGs**. `review/r14-D-seasons-1x.png`
+embeds the processing, mask, wrap, cleanup, review and validation recipes plus
+machine-readable results. `review/r14-D-reference.png` embeds baseline
+hashes. Only the thirteen named outputs, Part D review PNGs and this top note
+changed. **No commit, push or branch change.**
+
+---
+
 # Round 14 — Part C: critic-r14C-3 redraw
 
 Repaired only **`treeline_forest@winter-2.png` and `-5.png`** (48×48).

@@ -1,0 +1,74 @@
+{
+  "part": "D",
+  "round": 2,
+  "verdict": "pass",
+  "failed": [],
+  "files": {
+    "scifi-tree@autumn-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@autumn-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@autumn-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@autumn-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@winter-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@winter-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@winter-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@winter-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@spring-0": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@spring-1": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@spring-2": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-tree@spring-3": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    },
+    "scifi-town_ground@winter-base": {
+      "status": "pass",
+      "problems": [],
+      "fix": "No change required."
+    }
+  },
+  "notes": "Independent review of the current 13 Part D outputs against the full BRIEF-14, the NOTES drawing/reduction method, summer sources, and approved neighbouring sci-fi art. Inspected all outputs at exact native 1x and nearest-neighbour 4x; reviewed trees over both summer and winter town paving, 50/50 overlays against summer, protected-material previews, and 8x winter glowing-tree/dome close-ups. The ground was inspected in a literal 3x3 repeat at 1x and 4x, with 4x wrap strips and an 8x four-way junction. All twelve trees are 96x96 RGBA, have alpha only 0/255, zero nonzero RGB pixels under transparency, one connected opaque component, and exactly zero changed alpha pixels against their respective summer source. Literal RGBA comparisons within the visually checked planter/frame protection masks give, in autumn/winter/spring order: tree 0, 1305 protected pixels, changed 0/0/0; tree 1, 1360 protected pixels, changed 0/0/0; tree 2, 1691 protected pixels, changed 0/0/0; tree 3, 2364 protected pixels, changed 0/0/0. Light-region comparisons: tree 0, 54 pixels, changed 0/0/0; tree 1, 245 pixels, changed 0/0/0; tree 2, 86 pixels, changed 0/0/0; tree 3, 45 pixels, changed 0/0/0. Masks used were r14-D-mask-protected-0/2, r14-D-critic1-mask-protected-1/3, and r14-D-mask-lights-0..3; coverage was checked visually against the summer hardware. Tree 1's older 1436-pixel protection mask records 0/40/0 changes: all 40 winter changes lie within the 76-pixel planting-bed selection, at x=35..58 and y=68..77, and are visible snow over green vegetation inside the lip, not changed planter hardware or lamps. The revised winter glowing tree preserves the full summer silhouette, retains cyan trunk illumination, and reads as dark branching fans carrying solid upper snow. The revised winter dome has a substantial white cap with blue-grey lower edges; its selected green interior has zero changed pixels. Autumn bonsai/hedge read rust and amber; luminous foliage reads teal-violet; heated dome stays green. Spring bonsai reads pale pink blossom, hedge fresh light green, and luminous foliage brighter mint-cyan. Winter bonsai/hedge show solid snow and exposed structure, with snow inside the planter lips. Native pixel scale, contour weight and upper-left lighting remain consistent with summer. No new detached prop specks, rectangular backings, soft alpha, haze or smear warrant a redraw. The winter ground is 288x288 RGBA, fully opaque, with 19 colours. Exactly 8249 of 82944 pixels (9.95%) differ from summer; 74695 pixels (90.05%) are unchanged paving. Snow is thin, gathers at joints/edges, leaves slabs and fittings readable, and does not introduce a visible tile-boundary seam or dominant snow-repeat motif; the regular panel rhythm belongs to the required summer paving. Fresh evidence is saved as critic-r14D-2-*.png. The all-trees-1x PNG embeds per-file measurements and starting output hashes. Verified 21 exact 4x proof pairs and all 18 repeat cells. All art-drop/out PNG hashes remain unchanged by this review. No artwork edited, commit, push, or branch change."
+}
