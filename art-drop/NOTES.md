@@ -1,3 +1,120 @@
+# Round 14 — Part A2: critic-r14A2-1 redraw
+
+Repaired only **`out/grass@autumn-detail-7.png`**. Its summer mask is now
+exact: **626 opaque pixels**, bounds **(7, 11, 41, 37)**, and **zero differing
+alpha pixels**. Restored all **111** missing summer pixels and removed all
+**54** autumn-only pixels, including the lowered foot. This supersedes the
+previous A2 note's intentional silhouette change.
+
+The critic accepted the drawing and requested registration, so the existing
+large magenta-backed bush painting **`r14-A2-source-detail-7a.png`** was reused.
+Compared two registrations; selected bounding-box registration for clearer
+woody forks. BOX-registered to **384×384**, locked to the existing **14-colour**
+autumn palette, then reduced by exact RGBA mode over all **64 samples per
+8×8 block**. Composited through the summer mask; **33** uncovered samples use
+the nearest painted sample. One-pixel contour cleanup stays inside that mask,
+with contact shade inside the original foot. Hard alpha **0/255**, zero hidden
+RGB; no constructed shapes, noise, or new drawing substituted for the source.
+
+Regenerated all **26 final A2 proofs** and added native/4× seasonal-mask
+comparisons under **`review/r14-A2-critic1-*.png`**. Visual self-review retains
+rust/amber foliage, upper-left light, branches and a readable outline at 1×.
+Validation passes both mode reductions (**4,608 blocks / 294,912 samples**),
+**16 exact 4× pairs**, **27 literal repeat placements**, and mask/palette/alpha
+checks. Recipes and results are embedded in `review/r14-A2-base-1x.png`.
+The three passing outputs remain byte-identical; base mean remains
+**RGB (153.53, 140.18, 63.74)**. Summer partners, autumn plains, details
+**0, 2, 4, 5, 6**, references and the supplied critic report are unchanged.
+No new independent critic or live-game verdict; no commit, push or branch change.
+
+---
+
+# Round 14 — Part A2
+
+Polished only **`out/grass@autumn-base.png` (288×288)** and
+**`grass@autumn-detail-{1,3,7}.png` (48×48)** after the in-game Part A review.
+The ground now has broad tawny/khaki light and shade, dry ochre patches and
+small rust/brown fallen leaves. Detail 7 is a new outlined autumn bush with
+amber upper-left foliage, rust lower boughs, visible woody forks and a dark
+contact foot. The mossy rock and grass tuft have stronger shaded edges and
+highlights while retaining their exact original and summer alpha masks.
+
+**Method:** seven large built-in image-tool paintings on solid magenta:
+two ground variants, two bush variants, one rock repaint, one tuft repaint
+and one half-offset wrap repaint. Selected **ground B / bush A**; B has fewer
+repeated leaf landmarks, while A keeps readable branches at native scale.
+Exact prompts are embedded in `review/r14-A2-source-*.png`.
+
+The ground square is cropped inside its magenta fringe, BOX-registered to
+**1152×1152**, locked to a **20-colour** palette with four source-sampled rust
+slots, and reduced by the exact RGBA mode of all **16 samples per 4×4 block**.
+A constant palette translation sets the target mean without changing drawn
+patch geometry. A **144 px** offset brings the joins to the centre; the
+separate wrap painting is registered, palette-locked and mode-reduced in the
+same way. Minimum-error hard cuts transfer **25,927 drawn pixels** through a
+narrow cross, preserving the offset outer three-pixel ring. No blended seam
+or synthetic terrain texture is added.
+
+Details are magenta-keyed, BOX-registered to **384×384**, palette-locked and
+reduced by the exact RGBA mode of all **64 samples per 8×8 block**, including
+transparency. Rock and tuft paints are composited through their existing
+masks. Native one-pixel contour cleanup changes **25 / 64 / 90 colour pixels**
+for details **1 / 3 / 7**; it adds no silhouette pixels. The bush palette is
+slightly desaturated to keep rust and amber restrained. Final palettes contain
+**12 / 13 / 14 opaque colours**. Hard alpha **0/255**, zero RGB under
+transparency. Code only registers, reduces, palette-locks, cleans, wraps and
+composites the drawings; it constructs no shapes or noise.
+
+**Measurements:** final ground mean RGB is **153.53, 140.18, 63.74**,
+within **0.54** of the requested target in every channel. Hue **51.08°** and
+luma **137.50** remain between summer grass (**77.03° / 111.65**) and unchanged
+autumn plains (**34.11° / 153.41**). The ground contains **111 rust/brown leaf
+pixels**, scattered in small drawn marks.
+
+Broad tonal drift is measured as the standard deviation of mean luma in
+non-overlapping **48×48** blocks: **0.30 before → 2.16 now**, compared with
+**2.06 summer / 4.27 autumn plains**. At 24×24 blocks the new value is **3.18**,
+versus **0.52 before**. Mean absolute RGB steps across left/right and top/bottom
+wraps are **1.34 / 1.18**, versus **1.19 / 1.28** across internal neighbours.
+
+| Detail | Final bounds, right/bottom exclusive | Opaque pixels | Alpha differences from before |
+|---|---|---:|---:|
+| 1 — mossy rock | (8, 15, 40, 33) | 425 | **0** |
+| 3 — grass tuft | (9, 8, 39, 39) | 379 | **0** |
+| 7 — autumn bush | (8, 14, 40, 38) | 569 | 165, intentional redraw |
+
+The rock and bush are each connected. The tuft retains its exact inherited
+seed-head gaps and four components (358 / 9 / 7 / 5 pixels); no new detached
+fragments were introduced.
+
+**QC and review:** inspected native 1× and exact nearest-neighbour 4× views,
+all eight details on the new ground, before/after rows, individual detail
+proofs, a map-like meadow, the half-offset junction and literal 3×3 repeats.
+The new base is shown beside summer grass and autumn plains both singly and
+in repeated comparisons. The outline, upper-left lighting and native scale
+read consistently with neighbouring details. No hard tile seam, rounded grid
+edge, distinct large patch landmark, magenta fringe, backing square, haze or
+blur was found. Small repeated leaf positions remain locatable on deliberate
+inspection. This is visual self-review, without a new live-game verdict.
+
+There are **26 final proof PNGs (13 pairs)** under `review/r14-A2-*.png`, plus
+source paintings, alternatives, inputs and processing stages: **70 new PNGs**
+in total. Each ground repeat is **864×864 at 1× / 3456×3456 at 4×**. The
+side-by-side repeat comparison also preserves literal 1× and 4× pixels.
+
+Validation recomputed **258,048 mode blocks / 4,571,136 samples**, verified
+**15 exact 4× pairs** including alternatives, **27 literal repeat crops**,
+recorded wrap and contour reconstruction, sizes, palettes, alpha, hidden RGB
+and both preserved masks. **All 3,142 protected starting files remain
+byte-identical**, including `plains@autumn-base.png`, details **0, 2, 4, 5, 6**,
+summer partners, every reference and all earlier review sheets. Processing,
+review and validation recipes plus measurements are embedded in
+`review/r14-A2-base-1x.png`; starting hashes are in `review/r14-A2-reference.png`.
+Only the four named outputs, these A2 PNGs and this top note changed.
+**No commit, push or branch change.**
+
+---
+
 # Round 14 — Part D: critic-r14D-1 redraw
 
 Redrew only **`out/scifi-tree@winter-1.png` and `out/scifi-tree@winter-3.png`**
