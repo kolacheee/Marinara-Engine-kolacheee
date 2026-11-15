@@ -1,6 +1,6 @@
 {
   "language": "de",
-  "sourceCommit": "7fc86da70d24b84317dc0a96ed9b1e8b852f9418",
+  "sourceCommit": "b9d95c9b7f193e22cb9aca7d9f549bfac256edfb",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -9,8 +9,8 @@
     },
     {
       "path": "FAQ.md",
-      "sha256": "c1f2924977aa97c0725d1c67f04310d00b094cefa5c8b8ab111820214cb2758d",
-      "bytes": 15475
+      "sha256": "362e19a13265d1f38152db8e8dc90a57342f5f5a00355af6f046a035c38d1989",
+      "bytes": 16519
     },
     {
       "path": "INSTALLATION.md",
@@ -29,8 +29,8 @@
     },
     {
       "path": "UPGRADING.md",
-      "sha256": "354e912c850c50f97c9393a9880215690cced8b63ed8751dfd3b71d0bb00a51b",
-      "bytes": 19190
+      "sha256": "4ac3b2243fad436c57e05e5c7242db0e73c3127bed77e76862c5318712dc6f14",
+      "bytes": 19377
     },
     {
       "path": "agents/agents-overview.md",

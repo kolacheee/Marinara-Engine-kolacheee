@@ -151,6 +151,17 @@ La liste des discussions se met à jour tout de suite pour les changements faits
 
 Maintenir un message ouvre son menu, donc aucun texte n'est sélectionné. Utilise **Copy** (copier) dans ce menu pour le message entier, ou **Edit** (modifier) pour sélectionner et copier une partie, puis **Cancel** (annuler).
 
+## Ma copie de ui/kolacheee ne se met plus à jour. Que faire ?
+
+La branche de test `ui/kolacheee` a été réécrite sur GitHub le 15 novembre 2026. L'application n'a pas changé, mais les copies antérieures à cette date ne peuvent plus avancer d'elles-mêmes : le lanceur indique que ta copie a des modifications absentes de GitHub et qu'elle n'a donc pas été mise à jour, et **Apply Update** (appliquer la mise à jour) échoue. Corrige-le une seule fois. Ferme Marinara, ouvre un terminal dans ton dossier Marinara (PowerShell sous Windows, Termux sous Android) et lance :
+
+```bash
+git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
+git checkout -B ui/kolacheee origin/ui/kolacheee
+```
+
+Démarre ensuite Marinara comme d'habitude. Tes discussions, personnages et réglages ne sont pas touchés, et les mises à jour suivantes fonctionnent comme avant. Si tu as toi-même modifié le code de Marinara sur cette branche, mets ces modifications de côté d'abord : cette étape place ta copie exactement sur la version de GitHub.
+
 ## Où trouver de l'aide ou signaler un bug ?
 
 Commence par [Résoudre les problèmes de Marinara Engine](TROUBLESHOOTING.md). Sur l'accueil, **Discord** ouvre le chat de la communauté et **Support** ouvre la page de support du projet. Signale les bugs et les demandes de fonctionnalités sur la page GitHub du projet.

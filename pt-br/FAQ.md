@@ -149,6 +149,17 @@ A lista de chats mostra na hora as mudanças feitas neste dispositivo. Mudanças
 
 Segurar uma mensagem abre o menu dela, então nenhum texto é selecionado. Use **Copiar** nesse menu para a mensagem inteira, ou **Editar** para selecionar e copiar uma parte, depois **Cancelar**.
 
+## Minha cópia do ui/kolacheee parou de atualizar. O que eu faço?
+
+A branch de testes `ui/kolacheee` foi reescrita no GitHub em 15 de novembro de 2026. O aplicativo não mudou, mas cópias anteriores a essa data não conseguem mais avançar sozinhas: o inicializador diz que sua cópia tem mudanças que não estão no GitHub e por isso não foi atualizada, e o **Apply Update** (aplicar a atualização) falha. Resolva isso uma única vez. Feche o Marinara, abra um terminal na pasta do Marinara (PowerShell no Windows, Termux no Android) e execute:
+
+```bash
+git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
+git checkout -B ui/kolacheee origin/ui/kolacheee
+```
+
+Depois inicie o Marinara como de costume. Seus chats, personagens e configurações não são alterados, e as próximas atualizações funcionam como antes. Se você mesmo alterou o código do Marinara nessa branch, guarde essas mudanças antes: este passo deixa sua cópia exatamente na versão do GitHub.
+
 ## Onde consigo ajuda ou relato um problema?
 
 Comece por [Solução de problemas](TROUBLESHOOTING.md). Na tela inicial, **Discord** abre o chat da comunidade e **Support** abre a página de suporte do projeto. Relate bugs e peça recursos novos na página do projeto no GitHub.
