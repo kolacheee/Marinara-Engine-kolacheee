@@ -81,7 +81,7 @@ Dans la nouvelle disposition sur un téléphone ou une tablette, les swipes et l
 - **Fais glisser la réponse la plus récente** vers la gauche ou la droite pour parcourir ses swipes. Un glissement vers la gauche au-delà du dernier demande "Generate a new reply?" avant d'en créer un, car une nouvelle réponse coûte une requête.
 - **Fais glisser le titre** de la barre du haut vers la gauche ou la droite pour parcourir tes onglets ouverts. Home compte comme l'onglet précédant le premier. Cela fonctionne dans la disposition pour téléphone, qu'une tablette utilise quand elle est tenue à la verticale ; tournée sur le côté, une tablette affiche plutôt la barre d'onglets.
 - **Fais glisser un chat** de la liste des chats vers la gauche pour afficher **Pin**, **Rename**, **Tags** et **Delete**.
-- **Appuie longuement sur un message** pour afficher ses actions : Regenerate, Edit, Copy, Branch et les autres.
+- **Appuie longuement sur un message** pour afficher ses actions : Regenerate, Edit, Copy, Branch et les autres. Maintenir un message ne sélectionne pas son texte. Pour copier une partie d'un message, ouvre **Edit** et sélectionne les mots à cet endroit.
 - **Appuie longuement sur un chat** dans la liste des chats pour afficher les mêmes actions.
 
 Désactive les swipes avec **Swipe gestures on touch screens** (gestes de balayage sur écran tactile) dans Settings > Chatting > Editing & Swipes. L'appui prolongé continue de fonctionner dans les deux cas.

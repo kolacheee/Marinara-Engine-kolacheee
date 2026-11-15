@@ -154,6 +154,7 @@ mari-protected, mari-theme-important, theme, base, components, utilities, mari-a
 | `--mari-chat-font-size` | 消息文字大小。Accessibility(无障碍) 的最小值仍然适用。 |
 | `--mari-composer-placeholder` | 消息框占位文字，以带引号的字符串表示：`"> waiting for user input..."`。可设在 `:root` 上，也可设在某个输入框上，例如 `[data-composer="game"]`。索要密钥或密码的文字会被忽略。 |
 | `--mari-page-veil` | 叠加在设置、资料库、编辑器和文档上的颜色，让长篇文字在背景图上仍清晰可读。默认为 `transparent`。 |
+| `--mari-page-floor` | 在背景图上方，每个完整页面下面垫着的近乎不透明的底层。默认是 `color-mix(in srgb, var(--background) 94%, transparent)`；设为 `transparent` 即去掉 |
 | `--mari-top-bar-bg` | 顶栏的完整 `background` 值：图片、渐变或多个图层。`--mari-top-bar-rendering: pixelated` 让像素画保持清晰。标签页和图标始终显示在最上层。 |
 | `--mari-top-bar-plate`, `--mari-top-bar-plate-radius` | 顶栏有图片时，每个标签页、打开的聊天标签、图标按钮和标志下方都有衬底，确保清晰可读。这些值设置衬底颜色和圆角半径（默认 `0.5rem`）；将半径设为 `0` 可得到方形像素按钮。 |
 | `--mari-msg-head-rule` | Roleplay 消息名字下方的线（`border-bottom` 值，例如 `none` 或 `2px dashed currentColor`） |
@@ -257,7 +258,7 @@ mari-protected, mari-theme-important, theme, base, components, utilities, mari-a
 }
 ```
 
-它只绘制一次，位于整个应用下方独立的固定图层（`[data-mari-part="app-backdrop"]`，因此首页装饰和浅色方案都不会遮住它），也会出现在聊天后面：Roleplay、Conversation 和游戏界面变为透明，默认聊天背景让位。用户为聊天选择的背景仍然显示在它上方。面板保留 `--card` 和 `--sidebar`，想让图片透出来，就把它们设为半透明，并用 `--mari-page-veil` 为整页叠加颜色。要让页面拥有自己的面板，设置 `[data-mari-part="page"]` 的样式（见“钩子”）：它包含所有资料库页面、编辑器、设置和文档，因此世界书和角色页面会得到相同的面板。
+它只绘制一次，位于整个应用下方独立的固定图层（`[data-mari-part="app-backdrop"]`，因此首页装饰和浅色方案都不会遮住它），也会出现在聊天后面：Roleplay、Conversation 和游戏界面变为透明，默认聊天背景让位。用户为聊天选择的背景仍然显示在它上方。面板保留 `--card` 和 `--sidebar`，想让图片透出来，就把它们设为半透明，并用 `--mari-page-veil` 为整页叠加颜色。要让页面拥有自己的面板，设置 `[data-mari-part="page"]` 的样式（见“钩子”）：它包含所有资料库页面、编辑器、设置和文档，因此世界书和角色页面会得到相同的面板。 在背景图上方，每个完整页面还会垫一层近乎不透明的 `--background` 底层（`--mari-page-floor`，默认 94%），让长列表和编辑器保持易读。可以把 `--mari-page-floor` 设成别的颜色，或设成 `transparent` 让更多插图透出来。用 `!important` 设置 `[data-mari-part="page"]` 样式的主题，会用自己的面板替代这层底层。
 
 | Token | 默认值 |
 | --- | --- |

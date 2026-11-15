@@ -81,7 +81,7 @@ W nowym układzie na telefonie lub tablecie przesunięcia i długie naciśnięci
 - **Przesuń najnowszą odpowiedź** w lewo lub w prawo, żeby przełączać się między jej swipe'ami. Przesunięcie w lewo za ostatni wariant wyświetla pytanie "Wygenerować nową odpowiedź?", zanim powstanie nowa, bo nowa odpowiedź wymaga żądania.
 - **Przesuń tytuł** na górnym pasku w lewo lub w prawo, żeby przełączać się między otwartymi kartami. Ekran główny liczy się jako karta przed pierwszą z nich. Działa to w układzie telefonu, którego tablet używa w pionie; w poziomie tablet pokazuje zamiast tego pasek kart.
 - **Przesuń czat** na liście czatów w lewo, żeby pokazać opcje **Przypnij**, **Zmień nazwę**, **Tagi** i **Usuń**.
-- **Naciśnij i przytrzymaj wiadomość**, żeby zobaczyć jej działania: Wygeneruj ponownie, Edytuj, Kopiuj, Utwórz gałąź i pozostałe.
+- **Naciśnij i przytrzymaj wiadomość**, żeby zobaczyć jej działania: Wygeneruj ponownie, Edytuj, Kopiuj, Utwórz gałąź i pozostałe. Przytrzymanie wiadomości nie zaznacza jej tekstu. Aby skopiować część wiadomości, otwórz **Edytuj** i zaznacz tam słowa.
 - **Naciśnij i przytrzymaj czat** na liście czatów, żeby zobaczyć te same działania.
 
 Wyłącz przesunięcia przełącznikiem **Gesty przesuwania na ekranach dotykowych** w Ustawienia > Czatowanie > Edycja i swipe'y. Długie naciśnięcie działa niezależnie od tego ustawienia.

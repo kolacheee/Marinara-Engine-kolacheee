@@ -81,7 +81,7 @@ No novo layout no celular ou tablet, swipes e toques longos substituem os botõe
 - **Deslize a resposta mais recente** para a esquerda ou para a direita para trocar entre os swipes dela. Deslizar para a esquerda além do último mostra a pergunta "Gerar uma nova resposta?" antes de gerar uma, porque uma nova resposta custa uma requisição.
 - **Deslize o título** na barra superior para a esquerda ou para a direita para trocar entre as abas abertas. A tela inicial conta como a aba anterior à primeira. Isso funciona no layout de celular, que um tablet usa na vertical; na horizontal, o tablet mostra a barra de abas.
 - **Deslize um chat** na lista de chats para a esquerda para mostrar **Fixar**, **Renomear**, **Tags** e **Excluir**.
-- **Pressione e segure uma mensagem** para ver as ações dela: Regenerar, Editar, Copiar, Ramificar e as demais.
+- **Pressione e segure uma mensagem** para ver as ações dela: Regenerar, Editar, Copiar, Ramificar e as demais. Segurar uma mensagem não seleciona o texto dela. Para copiar parte de uma mensagem, abra **Editar** e selecione as palavras ali.
 - **Pressione e segure um chat** na lista de chats para ver as mesmas ações.
 
 Desative os swipes com **Gestos de swipe em telas sensíveis ao toque** em Configurações > Conversando > Edição e swipes. O toque longo continua funcionando em qualquer caso.

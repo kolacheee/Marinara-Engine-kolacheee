@@ -130,7 +130,24 @@ Tak. Dodaj konto do generowania obrazów, na przykład **Pollinations** (bez klu
 
 ## Jak czytać dokumentację w aplikacji?
 
-Kliknij **Docs** na górnym pasku. Na telefonie dokumentacja znajduje się w bibliotece (przycisk ze stosem w prawym górnym rogu). W klasycznym układzie kliknij **Dokumentacja** w zakładkach ekranu głównego. W sekcji FAQ na ekranie głównym możesz też kliknąć **Otwórz dokumentację**.
+Kliknij **Docs** na górnym pasku. Na telefonie dokumentacja znajduje się na dole strony biblioteki (przycisk ze stosem w prawym górnym rogu). W klasycznym układzie kliknij **Dokumentacja** w zakładkach ekranu głównego. W sekcji FAQ na ekranie głównym możesz też kliknąć **Otwórz dokumentację**.
+
+- **Szukaj we wszystkich poradnikach**, w prawym górnym rogu strony dokumentacji, przeszukuje wszystkie poradniki i pokazuje pasujący wiersz każdego z nich. W otwartym poradniku każde trafienie jest podświetlone: naciśnij <kbd>Enter</kbd> lub strzałki, aby przechodzić między nimi.
+- **Na tej stronie** wyświetla sekcje otwartego poradnika. Kliknij jedną, aby do niej przejść.
+- **Wszystkie poradniki** wyświetla wszystkie poradniki według tematu. **Wstecz** i **Dalej** na końcu poradnika prowadzą do sąsiednich poradników.
+- Aby czytać poradniki w innym języku, wybierz go w **Ustawienia → Ogólne → Język → Język dokumentacji**.
+
+## Czy mogę wrócić do starego układu?
+
+Tak. Wyłącz **Nowy układ (podgląd przebudowy interfejsu)** w **Ustawienia → Wygląd → Motyw**. Ustawienie jest zapisywane osobno dla każdej przeglądarki, więc każde urządzenie może używać układu, który mu najbardziej odpowiada. Twoje czaty, postacie i ustawienia pozostają takie same.
+
+## Dlaczego lista czatów nie pokazuje czatu rozpoczętego na innym urządzeniu?
+
+Lista czatów od razu pokazuje zmiany wprowadzone na tym urządzeniu. Zmiany z innego urządzenia pojawiają się, gdy wracasz do aplikacji z innej aplikacji lub karty przeglądarki. Zobacz [Kiedy lista się odświeża](chats/managing-chats.md#when-the-list-updates).
+
+## Jak skopiować część wiadomości na telefonie lub tablecie?
+
+Przytrzymanie wiadomości otwiera jej menu, więc tekst nie jest zaznaczany. Użyj **Kopiuj** w tym menu, aby skopiować całą wiadomość, albo **Edytuj**, aby zaznaczyć i skopiować jej część, a potem **Anuluj**.
 
 ## Gdzie szukać pomocy albo zgłosić błąd?
 

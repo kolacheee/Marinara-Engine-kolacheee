@@ -81,7 +81,7 @@ En la nueva distribución de un teléfono o una tableta, los swipes y las pulsac
 - **Desliza la respuesta más reciente** hacia la izquierda o la derecha para moverte entre sus swipes. Si deslizas hacia la izquierda más allá del último, pregunta "Generate a new reply?" (¿Generar una respuesta nueva?) antes de crearla, porque una respuesta nueva cuesta una solicitud.
 - **Desliza el título** de la barra superior hacia la izquierda o la derecha para moverte entre las pestañas abiertas. Inicio cuenta como la pestaña anterior a la primera. Esto funciona en la distribución para teléfonos, que usa una tableta cuando se sostiene en vertical; cuando se gira de lado, la tableta muestra la barra de pestañas en su lugar.
 - **Desliza un chat** de la lista de chats hacia la izquierda para mostrar **Pin** (Fijar), **Rename** (Renombrar), **Tags** (Etiquetas) y **Delete**.
-- **Mantén pulsado un mensaje** para ver sus acciones: Regenerate, Edit, Copy, Branch y las demás.
+- **Mantén pulsado un mensaje** para ver sus acciones: Regenerate, Edit, Copy, Branch y las demás. Mantener pulsado un mensaje no selecciona su texto. Para copiar parte de un mensaje, abre **Edit** y selecciona allí las palabras.
 - **Mantén pulsado un chat** de la lista de chats para ver las mismas acciones.
 
 Desactiva los swipes con **Swipe gestures on touch screens** (Gestos de swipe en pantallas táctiles), en Settings > Chatting > Editing & Swipes. Las pulsaciones largas siguen funcionando de cualquier forma.

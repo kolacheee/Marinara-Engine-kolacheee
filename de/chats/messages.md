@@ -81,7 +81,7 @@ Im neuen Layout auf einem Handy oder Tablet ersetzen Swipes und langes Drücken 
 - **Wisch die neueste Antwort** nach links oder rechts, um zwischen ihren Swipes zu wechseln. Wischst du nach dem letzten weiter nach links, fragt die App „Generate a new reply?“, bevor sie eine neue Antwort erzeugt, denn diese kostet eine Anfrage.
 - **Wisch den Titel** in der oberen Leiste nach links oder rechts, um zwischen deinen offenen Tabs zu wechseln. Home zählt als Tab vor dem ersten. Das funktioniert im Handy-Layout, das ein Tablet im Hochformat verwendet; im Querformat zeigt ein Tablet stattdessen die Tab-Leiste.
 - **Wisch einen Chat** in der Chat-Liste nach links, um **Pin**, **Rename**, **Tags** und **Delete** anzuzeigen.
-- **Drück lange auf eine Nachricht**, um ihre Aktionen aufzurufen: Regenerate, Edit, Copy, Branch und die übrigen.
+- **Drück lange auf eine Nachricht**, um ihre Aktionen aufzurufen: Regenerate, Edit, Copy, Branch und die übrigen. Dabei wird kein Text markiert. Um einen Teil einer Nachricht zu kopieren, öffne **Edit** und markiere die Wörter dort.
 - **Drück lange auf einen Chat** in der Chat-Liste, um dieselben Aktionen aufzurufen.
 
 Schalte die Swipes unter Settings > Chatting > Editing & Swipes mit **Swipe gestures on touch screens** (Swipe-Gesten auf Touchscreens) aus. Langes Drücken funktioniert in beiden Fällen weiter.

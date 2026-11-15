@@ -164,6 +164,7 @@ mari-protected, mari-theme-important, theme, base, components, utilities, mari-a
 | `--mari-chat-font-size`                                                                                                                                                                                                      | 메시지 텍스트 크기. Accessibility(접근성)의 최솟값은 계속 적용됩니다 |
 | `--mari-composer-placeholder`                                                                                                                                                                                                | 메시지 입력란 플레이스홀더를 따옴표로 묶은 문자열로 지정합니다: `"> waiting for user input..."`. `:root` 또는 `[data-composer="game"]` 같은 입력란 하나에 설정하세요. 키나 비밀번호를 요구하는 텍스트는 무시됩니다 |
 | `--mari-page-veil`                                                                                                                                                                                                           | 배경 그림 위에서도 긴 글을 읽기 쉽도록 Settings, Library, 편집기, Docs 위에 덮는 색상. 기본값은 `transparent`입니다 |
+| `--mari-page-floor` | 배경 위에서 모든 전체 페이지가 올라가는 거의 불투명한 판. 기본값은 `color-mix(in srgb, var(--background) 94%, transparent)`이며, `transparent`로 없앨 수 있습니다 |
 | `--mari-top-bar-bg`                                                                                                                                                                                                          | 상단 바의 전체 `background` 값: 이미지, 그라데이션 또는 여러 레이어. `--mari-top-bar-rendering: pixelated`는 픽셀 아트를 선명하게 유지합니다. 탭과 아이콘은 항상 위에 표시됩니다 |
 | `--mari-top-bar-plate`, `--mari-top-bar-plate-radius`                                                                                                                                                                        | 상단 바 아트 위에서 모든 탭, 열린 채팅 탭, 아이콘 버튼, 로고는 읽기 쉽도록 받침 배경 위에 놓입니다. 이 토큰은 받침의 색상과 모서리 반경(기본값 `0.5rem`)을 설정합니다. 네모난 픽셀 버튼은 반경을 `0`으로 설정하세요 |
 | `--mari-msg-head-rule`                                                                                                                                                                                                       | Roleplay 메시지에서 이름 아래의 선(`none` 또는 `2px dashed currentColor` 같은 `border-bottom` 값) |
@@ -285,7 +286,7 @@ Roleplay, Conversation, Game 영역이 투명해지고 기본 채팅 배경은 �
 `--sidebar`를 유지하므로 뒤의 아트를 보이게 하려면 이 값을 반투명하게
 설정하고 전체 페이지에 색조를 더하려면 `--mari-page-veil`을 쓰세요. 페이지에 전용 패널을
 주려면 `[data-mari-part="page"]`의 스타일을 지정하세요(훅 참고). 여기에는 모든 Library 페이지,
-편집기, Settings, Docs가 들어 있으므로 Lorebooks에도 Characters와 같은 패널이 적용됩니다.
+편집기, Settings, Docs가 들어 있으므로 Lorebooks에도 Characters와 같은 패널이 적용됩니다. 배경 위에서는 모든 전체 페이지가 `--background`로 된 거의 불투명한 판(`--mari-page-floor`, 기본 94%) 위에도 놓이므로 긴 목록과 편집기를 읽기 쉽습니다. `--mari-page-floor`를 다른 색으로 바꾸거나, 그림이 더 보이도록 `transparent`로 설정하세요. `[data-mari-part="page"]`를 `!important`로 꾸미는 테마는 이 판 대신 자체 패널을 씁니다.
 
 |토큰|기본값|
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

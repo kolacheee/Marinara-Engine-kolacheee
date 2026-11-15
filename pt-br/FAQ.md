@@ -130,7 +130,24 @@ Sim. Adicione uma conta de geração de imagens, como o **Pollinations** (dispen
 
 ## Como leio a documentação dentro do aplicativo?
 
-Clique em **Documentação** na barra superior. No celular, a Documentação fica na Biblioteca (o botão de pilha no canto superior direito). No layout clássico, clique em **Documentação** nos favoritos da tela inicial. No FAQ da tela inicial, você também pode clicar em **Abrir a documentação**.
+Clique em **Documentação** na barra superior. No celular, a Documentação fica no fim da página da Biblioteca (o botão de pilha no canto superior direito). No layout clássico, clique em **Documentação** nos favoritos da tela inicial. No FAQ da tela inicial, você também pode clicar em **Abrir a documentação**.
+
+- **Buscar em todos os guias**, no canto superior direito da página de documentação, busca em todos os guias e mostra a linha correspondente de cada um. No guia que você abre, cada resultado fica destacado: pressione <kbd>Enter</kbd> ou as setas para passar de um a outro.
+- **Nesta página** lista as seções do guia aberto. Clique em uma para ir até ela.
+- **Todos os guias** lista todos os guias por assunto. **Anterior** e **Avançar**, no fim de um guia, levam aos guias vizinhos.
+- Para ler os guias em outro idioma, escolha-o em **Settings → General → Language → Documentation Language** (Configurações → Geral → Idioma → Idioma da documentação).
+
+## Posso voltar ao layout antigo?
+
+Sim. Desative **Novo layout (prévia da reformulação da interface)** em **Configurações → Aparência → Tema**. A opção é salva por navegador, então cada dispositivo pode usar o layout que combina melhor com ele. Seus chats, personagens e configurações continuam os mesmos.
+
+## Por que minha lista de chats não mostra um chat que comecei em outro dispositivo?
+
+A lista de chats mostra na hora as mudanças feitas neste dispositivo. Mudanças de outro dispositivo aparecem quando você volta ao aplicativo vindo de outro aplicativo ou aba do navegador. Veja [Quando a lista é atualizada](chats/managing-chats.md#when-the-list-updates).
+
+## Como copio parte de uma mensagem no celular ou tablet?
+
+Segurar uma mensagem abre o menu dela, então nenhum texto é selecionado. Use **Copiar** nesse menu para a mensagem inteira, ou **Editar** para selecionar e copiar uma parte, depois **Cancelar**.
 
 ## Onde consigo ajuda ou relato um problema?
 

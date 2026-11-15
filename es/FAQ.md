@@ -130,7 +130,24 @@ Sí. Añade una cuenta de generación de imágenes, como **Pollinations** (no ne
 
 ## ¿Cómo leo la documentación dentro de la app?
 
-Haz clic en **Docs** (Documentación) en la barra superior. En un teléfono, la documentación está en la Biblioteca (el botón de la pila en la parte superior derecha). En el diseño clásico, haz clic en **Documentation** en los marcadores de Home. En la FAQ de la pantalla de inicio, también puedes hacer clic en **Open Documentation** (Abrir documentación).
+Haz clic en **Docs** (Documentación) en la barra superior. En un teléfono, la documentación está al final de la página de la Biblioteca (el botón de la pila en la parte superior derecha). En el diseño clásico, haz clic en **Documentation** en los marcadores de Home. En la FAQ de la pantalla de inicio, también puedes hacer clic en **Open Documentation** (Abrir documentación).
+
+- **Search all guides** (Buscar en todas las guías), arriba a la derecha de la página de documentación, busca en todas las guías y muestra la línea que coincide en cada una. En la guía que abres, cada coincidencia queda resaltada: pulsa <kbd>Enter</kbd> o las flechas para pasar de una a otra.
+- **On this page** (En esta página) muestra las secciones de la guía abierta. Haz clic en una para ir allí.
+- **All guides** (Todas las guías) muestra todas las guías por tema. **Previous** (Anterior) y **Next** (Siguiente), al final de una guía, llevan a las guías vecinas.
+- Para leer las guías en otro idioma, elígelo en **Settings → General → Language → Documentation Language** (Configuración → General → Idioma → Idioma de la documentación).
+
+## ¿Puedo volver al diseño anterior?
+
+Sí. Desactiva **New layout (UI overhaul preview)** (Nueva distribución, vista previa de la renovación de la interfaz) en **Settings → Appearance → Theme** (Configuración → Apariencia → Tema). Se guarda por navegador, así que cada dispositivo puede usar el diseño que mejor le vaya. Tus chats, personajes y ajustes son los mismos en ambos casos.
+
+## ¿Por qué mi lista de chats no muestra un chat que empecé en otro dispositivo?
+
+La lista de chats se actualiza al momento con los cambios hechos en este dispositivo. Los cambios de otro dispositivo aparecen cuando vuelves a la app desde otra app o pestaña del navegador. Consulta [Cuándo se actualiza la lista](chats/managing-chats.md#when-the-list-updates).
+
+## ¿Cómo copio parte de un mensaje en un teléfono o una tableta?
+
+Al mantener pulsado un mensaje se abre su menú, así que no se selecciona texto. Usa **Copy** (Copiar) en ese menú para copiar el mensaje entero, o **Edit** (Editar) para seleccionar y copiar una parte, y después **Cancel** (Cancelar).
 
 ## ¿Dónde consigo ayuda o reporto un error?
 

@@ -1,6 +1,6 @@
 {
   "language": "ko",
-  "sourceCommit": "0380a0aebf4e7cc3aac0c3fb2065924608dbeee8",
+  "sourceCommit": "7fc86da70d24b84317dc0a96ed9b1e8b852f9418",
   "files": [
     {
       "path": "CONFIGURATION.md",
@@ -9,8 +9,8 @@
     },
     {
       "path": "FAQ.md",
-      "sha256": "74d01459b5775cba47abd11a51b45e1675b28a1b1ff129cf5021f4382bad20b6",
-      "bytes": 15441
+      "sha256": "f76b5ff6961d979140ad792974dccae596538a01294eb5ca2db86818ed59e6fb",
+      "bytes": 17445
     },
     {
       "path": "INSTALLATION.md",
@@ -109,8 +109,8 @@
     },
     {
       "path": "appearance/theme-author-guide.md",
-      "sha256": "d3a40fd9de06679c1db97cfbf88ee2d571af2ce62d7f3b7dd53de8b2e0b23541",
-      "bytes": 83381
+      "sha256": "1d9a996cbbf5c90a45cf18e994958da40ea9aa97bced1f49af2931e09e6455dc",
+      "bytes": 84027
     },
     {
       "path": "appearance/theme-weather.md",
@@ -209,8 +209,8 @@
     },
     {
       "path": "chats/messages.md",
-      "sha256": "77ee07f9755b80df82a153a43310ef0a82940b30c2a4b0d201a7fcd7e52edf7f",
-      "bytes": 14106
+      "sha256": "0e6c44aaff6748b56e300e4e78f2fe035e169ee279b748c71b4f1be4313e929d",
+      "bytes": 14262
     },
     {
       "path": "chats/peek-prompt.md",

@@ -130,7 +130,24 @@ Ja. Leg ein Konto für Bildgenerierung an, etwa **Pollinations** (braucht keinen
 
 ## Wie lese ich die Dokumentation innerhalb der App?
 
-Klick in der oberen Leiste auf **Docs** (Doku). Auf dem Handy liegt die Dokumentation in der Bibliothek, der Stapel-Schaltfläche oben rechts. Im klassischen Layout klickst du in den Lesezeichen von Home auf **Documentation** (Dokumentation). In der FAQ auf dem Home-Bildschirm kannst du auch auf **Open Documentation** (Dokumentation öffnen) klicken.
+Klick in der oberen Leiste auf **Docs** (Doku). Auf dem Handy findest du die Dokumentation unten auf der Seite der Bibliothek, der Stapel-Schaltfläche oben rechts. Im klassischen Layout klickst du in den Lesezeichen von Home auf **Documentation** (Dokumentation). In der FAQ auf dem Home-Bildschirm kannst du auch auf **Open Documentation** (Dokumentation öffnen) klicken.
+
+- **Search all guides** (Alle Anleitungen durchsuchen) oben rechts auf der Doku-Seite durchsucht alle Anleitungen und zeigt jeweils die passende Zeile. In der geöffneten Anleitung wird jeder Treffer markiert: Mit <kbd>Enter</kbd> oder den Pfeilen springst du von Treffer zu Treffer.
+- **On this page** (Auf dieser Seite) listet die Abschnitte der geöffneten Anleitung. Ein Klick springt dorthin.
+- **All guides** (Alle Anleitungen) listet alle Anleitungen nach Thema. **Previous** (Zurück) und **Next** (Weiter) am Ende einer Anleitung führen zu den benachbarten Anleitungen.
+- Um die Anleitungen in einer anderen Sprache zu lesen, wähl sie unter **Settings → General → Language → Documentation Language** (Einstellungen → Allgemein → Sprache → Sprache der Dokumentation).
+
+## Kann ich zum alten Layout zurück?
+
+Ja. Schalte **New layout (UI overhaul preview)** (Neues Layout, Vorschau der UI-Überarbeitung) unter **Settings → Appearance → Theme** (Einstellungen → Aussehen → Theme) aus. Die Einstellung gilt pro Browser, also kann jedes Gerät das Layout nutzen, das dort am besten passt. Deine Chats, Charaktere und Einstellungen bleiben in beiden Fällen gleich.
+
+## Warum zeigt meine Chatliste einen Chat nicht, den ich auf einem anderen Gerät begonnen habe?
+
+Die Chatliste übernimmt Änderungen auf diesem Gerät sofort. Änderungen von einem anderen Gerät erscheinen, wenn du aus einer anderen App oder einem anderen Browser-Tab zur App zurückkehrst. Siehe [Wann die Liste aktualisiert wird](chats/managing-chats.md#when-the-list-updates).
+
+## Wie kopiere ich auf dem Handy oder Tablet einen Teil einer Nachricht?
+
+Wenn du eine Nachricht gedrückt hältst, öffnet sich ihr Menü, deshalb wird dabei kein Text markiert. Nimm **Copy** (Kopieren) in diesem Menü für die ganze Nachricht, oder **Edit** (Bearbeiten), um einen Teil zu markieren und zu kopieren, und danach **Cancel** (Abbrechen).
 
 ## Wo bekomme ich Hilfe oder melde einen Fehler?
 

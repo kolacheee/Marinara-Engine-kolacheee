@@ -132,7 +132,24 @@ Oui. Ajoute un compte de génération d'images, par exemple **Pollinations** (au
 
 ## Comment lire la documentation dans l'application ?
 
-Clique sur **Docs** (documentation) dans la barre supérieure. Sur téléphone, les Docs se trouvent dans Library (le bouton en forme de pile en haut à droite). Dans la disposition classique, clique sur **Documentation** dans les marque-pages de Home. Dans la FAQ de l'accueil, tu peux aussi cliquer sur **Open Documentation** (ouvrir la documentation).
+Clique sur **Docs** (documentation) dans la barre supérieure. Sur téléphone, les Docs se trouvent en bas de la page Library (le bouton en forme de pile en haut à droite). Dans la disposition classique, clique sur **Documentation** dans les marque-pages de Home. Dans la FAQ de l'accueil, tu peux aussi cliquer sur **Open Documentation** (ouvrir la documentation).
+
+- **Search all guides** (rechercher dans tous les guides), en haut à droite de la page Docs, cherche dans tous les guides et affiche la ligne correspondante de chacun. Dans le guide que tu ouvres, chaque résultat est surligné : appuie sur <kbd>Enter</kbd> ou sur les flèches pour passer de l'un à l'autre.
+- **On this page** (sur cette page) liste les sections du guide ouvert. Clique sur l'une d'elles pour y aller.
+- **All guides** (tous les guides) liste tous les guides par thème. **Previous** (précédent) et **Next** (suivant), à la fin d'un guide, mènent aux guides voisins.
+- Pour lire les guides dans une autre langue, choisis-la dans **Settings → General → Language → Documentation Language** (Paramètres → Général → Langue → Langue de la documentation).
+
+## Puis-je revenir à l'ancienne disposition ?
+
+Oui. Désactive **New layout (UI overhaul preview)** (nouvelle disposition, aperçu de la refonte de l'interface) dans **Settings → Appearance → Theme** (Paramètres → Apparence → Thème). Le réglage est enregistré par navigateur, donc chaque appareil peut garder la disposition qui lui convient. Tes discussions, personnages et réglages restent les mêmes dans les deux cas.
+
+## Pourquoi ma liste de discussions n'affiche-t-elle pas une discussion commencée sur un autre appareil ?
+
+La liste des discussions se met à jour tout de suite pour les changements faits sur cet appareil. Les changements faits sur un autre appareil apparaissent quand tu reviens dans l'application depuis une autre application ou un autre onglet du navigateur. Voir [Quand la liste se met à jour](chats/managing-chats.md#when-the-list-updates).
+
+## Comment copier une partie d'un message sur téléphone ou tablette ?
+
+Maintenir un message ouvre son menu, donc aucun texte n'est sélectionné. Utilise **Copy** (copier) dans ce menu pour le message entier, ou **Edit** (modifier) pour sélectionner et copier une partie, puis **Cancel** (annuler).
 
 ## Où trouver de l'aide ou signaler un bug ?
 
