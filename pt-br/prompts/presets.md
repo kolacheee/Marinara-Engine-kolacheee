@@ -49,7 +49,7 @@ Os scripts de regex têm uma página própria, [Biblioteca → Scripts de regex]
 
 ## No layout clássico: o painel Presets
 
-A aba **Presets** contém **Prompts** e **Funções**. Use **Criar preset** para criar um preset, **Importar preset** para carregar um arquivo `.json` ou **Selecionar presets** para exportar ou excluir vários de uma vez. Use a aba **Regexes** para organizar scripts em pastas ou ativar ou desativar vários juntos. Veja [Scripts de regex](../extending/regex-scripts.md#manage-your-scripts).
+O painel tem quatro abas: **Prompts**, **Regexes**, **Ferramentas** e **Perfis**. Cada aba tem a mesma fileira de botões no topo e um campo de busca. Na aba **Prompts**, use **Criar preset** para criar um preset, **Importar preset** para carregar um arquivo `.json` ou **Selecionar presets** para exportar ou excluir vários de uma vez; **Selecionar todos os presets** marca todos os presets que a busca mostra. A aba **Regexes** guarda os scripts de regex; veja [Scripts de regex](../extending/regex-scripts.md#manage-your-scripts). A aba **Ferramentas** guarda as ferramentas personalizadas; veja [Ferramentas personalizadas](../extending/custom-tools.md). A aba **Perfis** guarda os perfis de configurações de chat; veja [Perfis de configurações](../chats/settings-profiles.md#the-profiles-tab).
 
 - **Search presets** (buscar presets) filtra a lista.
 - O menu de ordenação oferece **Manual order** (ordem manual), **A-Z**, **Z-A**, **Newest** e **Oldest**. Com **Manual order**, arraste uma linha, ou pressione <kbd>Alt</kbd>+<kbd>Up</kbd> ou <kbd>Alt</kbd>+<kbd>Down</kbd> em uma linha selecionada. Em uma tela sensível ao toque, mantenha uma linha pressionada para pegá-la.

@@ -46,16 +46,17 @@ Auf der Seite **Regex scripts** zeigt jedes Skript in der Liste seine Ausführun
 
 Im klassischen Layout zeigt jede Zeile der Liste **Regexes** den Namen des Skripts, ein Tag **AI** oder **User**, das Muster als `/pattern/flags`, einen Ein-/Aus-Schalter (wirkt sofort), **Edit regex** (Regex bearbeiten, Stift-Symbol) und **Delete regex** (Regex löschen, Papierkorb-Symbol). Gibt es noch keine Skripte, steht in der Liste „No regexes yet“. Zieh eine Zeile an ihrem Griff, um die Reihenfolge der Ausführung zu ändern.
 
+Um ein Skript zu finden, gib etwas in **Search regexes** ein. Die Suche erfasst Skriptnamen und Muster und öffnet jeden Ordner mit einem Treffer. Solange eine Suche aktiv ist, kannst du die Reihenfolge der Skripte nicht durch Ziehen ändern.
+
 ### Skripte in Ordnern organisieren
 
 1. Klick auf **Neuer Ordner** und benenne den Ordner.
 2. Klick auf das Ordnersymbol in einer Skriptzeile, um **In Ordner verschieben** zu öffnen.
 3. Wähle den Ordner. Um ein Skript herauszunehmen, wähle **Kein Ordner (oberste Ebene)**.
 
-Klick auf einen Ordnernamen, um ihn auf- oder zuzuklappen. Schalte den Ordnerschalter aus, um seine Skripte in allen Chats zu pausieren. Die Kopfzeile zeigt **Paused**. Jedes Skript behält seine gespeicherte Schalterstellung. Ein grauer, eingeschalteter Schalter kennzeichnet ein aktiviertes Skript, das durch den Ordner pausiert ist. Löschst du den Ordner, wandern seine Skripte auf die oberste Ebene und folgen wieder ihren eigenen Schaltern.
+Klick auf einen Ordnernamen, um ihn auf- oder zuzuklappen. Schalte den Ordnerschalter aus, um seine Skripte in allen Chats zu pausieren. Die Kopfzeile zeigt **Paused**. Jedes Skript behält seine gespeicherte Schalterstellung. Ein aktiviertes Skript in einem pausierten Ordner zeigt einen grauen Schalter und die Beschriftung **Paused by folder**. Löschst du den Ordner, wandern seine Skripte auf die oberste Ebene und folgen wieder ihren eigenen Schaltern.
 
-Ordner gruppieren Skripte, ohne ihre Ausführungsreihenfolge zu ändern. Klick auf **Ausführungsreihenfolge**, um die vollständige Liste in dieser Reihenfolge zu sehen. Zieh ein Skript an seinem Griff, um die Reihenfolge zu ändern. Ohne Ordner zeigt die Liste bereits die Ausführungsreihenfolge. In dieser Ansicht kennzeichnet ein Pausensymbol ein aktiviertes Skript, dessen Ordner pausiert ist.
-
+Ordner gruppieren Skripte, ohne ihre Ausführungsreihenfolge zu ändern. Klick auf **Ausführungsreihenfolge**, um die vollständige Liste in dieser Reihenfolge zu sehen. Zieh ein Skript an seinem Griff, um die Reihenfolge zu ändern. Ohne Ordner zeigt die Liste bereits die Ausführungsreihenfolge.
 ### Mehrere Skripte auf einmal ändern
 
 1. Klick auf **Regex-Skripte auswählen**.

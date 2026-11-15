@@ -1,10 +1,10 @@
 # Galeries de personnages et de personas
 
-L'onglet **Galerie** des éditeurs de personnage et de persona conserve des images et des vidéos rattachées à un personnage ou à un persona : elles restent même si tu supprimes des chats. Sers-t'en pour les planches de référence, les variantes de tenue et les packs d'images importés. Tu peux aussi marquer une image de la galerie comme emoji personnalisé, sticker ou arrière-plan qui suit le personnage dans chaque chat.
+La **Galerie**, dans l'onglet **Images** des éditeurs de personnage et de persona, conserve des images et des vidéos rattachées à un personnage ou à un persona : elles restent même si tu supprimes des chats. Sers-t'en pour les planches de référence, les variantes de tenue et les packs d'images importés. Tu peux aussi marquer une image de la galerie comme emoji personnalisé, sticker ou arrière-plan qui suit le personnage dans chaque chat.
 
-## L'onglet Galerie
+## Trouver la galerie
 
-Chaque personnage et chaque persona possède son propre onglet **Galerie** (icône d'appareil photo). Ouvre le personnage dans le Character Editor (éditeur de personnage) ou le persona dans le Persona Editor (éditeur de persona), puis clique sur **Galerie**. La galerie d'un personnage s'intitule **Galerie du personnage**, et celle d'un persona **Galerie du persona**. Les deux fonctionnent de la même façon.
+Chaque personnage et chaque persona possède sa propre galerie. Ouvre le personnage dans le Character Editor (éditeur de personnage) ou le persona dans le Persona Editor (éditeur de persona), clique sur l'onglet **Images**, puis sur **Galerie** en haut de celui-ci. La galerie d'un personnage s'intitule **Galerie du personnage**, et celle d'un persona **Galerie du persona**. Les deux fonctionnent de la même façon.
 
 La galerie compte deux sous-onglets :
 
@@ -15,7 +15,7 @@ La galerie propre à un chat est différente. Elle contient les illustrations de
 
 ### Ajouter des images
 
-1. Ouvre l'onglet **Galerie** et sélectionne **Images**.
+1. Ouvre **Images → Galerie** et sélectionne **Images**.
 2. Fais glisser des fichiers image sur **Upload Character Images** (téléverser des images de personnage), ou clique dessus pour choisir des fichiers. Dans un persona, la zone s'appelle **Upload Persona Images** (téléverser des images de persona).
 3. Attends la fin du téléversement. Les nouvelles images apparaissent dans la grille.
 
@@ -23,7 +23,7 @@ Clique sur une image pour la voir en plus grand. Chaque vignette a une commande 
 
 ### Ajouter des vidéos
 
-1. Ouvre l'onglet **Galerie** et sélectionne **Vidéos**.
+1. Ouvre **Images → Galerie** et sélectionne **Vidéos**.
 2. Fais glisser des fichiers vidéo sur **Upload Character Videos** (téléverser des vidéos de personnage), ou clique dessus pour choisir des fichiers. Dans un persona, la zone s'appelle **Upload Persona Videos** (téléverser des vidéos de persona).
 3. Attends la fin du téléversement.
 
@@ -33,7 +33,7 @@ Les formats pris en charge sont MP4, WebM et MOV. Les vidéos les plus récentes
 
 Un emoji personnalisé est une petite image insérée dans le texte, écrite `:name:`. Un sticker est une image plus grande affichée en bloc, écrite `sticker:name:`. Les deux ne fonctionnent que dans les chats en mode Conversation, le mode façon messagerie.
 
-1. Ouvre l'onglet **Galerie** et sélectionne **Images**.
+1. Ouvre **Images → Galerie** et sélectionne **Images**.
 2. Clique sur le petit bouton de marquage dans le coin supérieur gauche de l'image (infobulle **Tag as emoji or sticker**).
 3. Clique sur **Make emoji** (en faire un emoji) ou sur **Make sticker** (en faire un sticker).
 4. Dans la boîte de dialogue **Custom Emoji** ou **Custom Sticker**, saisis un nom et confirme.
@@ -56,7 +56,7 @@ Un emoji ou un sticker marqué dans la galerie ne fonctionne que pour ce seul pe
 
 Une image marquée comme arrière-plan apparaît, prête à être sélectionnée, dans chaque chat auquel participe le personnage (ou le persona) et peut représenter un lieu comme sa chambre.
 
-1. Ouvre l'onglet **Galerie** et sélectionne **Images**.
+1. Ouvre **Images → Galerie** et sélectionne **Images**.
 2. Clique sur le bouton de tag dans le coin supérieur gauche de l'image et choisis **Use as background** (utiliser comme arrière-plan).
 3. Saisis les lieux représentés, séparés par des virgules, comme `{{char}}'s bedroom, {{char}}'s room`, ou laisse le champ vide. Dans la galerie d'un persona, utilise `{{user}}`.
 

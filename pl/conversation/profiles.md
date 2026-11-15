@@ -11,7 +11,7 @@ Pola znajdują się w zakładce o nazwie **Convo**.
 1. Otwórz postać w panelu **Character Editor** (edytor postaci) albo personę w panelu **Persona Editor** (edytor persony). Aby tam trafić, otwórz **Biblioteka** > **Postacie** albo **Biblioteka** > **Persony**, a potem kliknij kartę (zobacz [Tworzenie i edycja postaci](../characters/creating-and-editing-characters.md) i [Persony użytkownika: tworzenie i edycja](../characters/personas.md)).
 2. Kliknij zakładkę **Convo**.
 
-Zakładka zawiera **Convo Display Name**, **About Me** i **Convo Behavior**. Przy postaci ma też **Weekly schedule** (z przyciskiem **Edit schedule** lub **Create schedule**, zobacz [harmonogramy](schedules.md)) i **Instrukcje generowania obrazów**, czyli opcjonalne wskazówki dla selfie tej postaci (zobacz [Selfie](selfies.md)).
+Zakładka zawiera **Nazwa wyświetlana w trybie Convo**, **O mnie** i **Zachowanie w trybie Convo**. Przy postaci ma też **Harmonogram tygodniowy** (z przyciskiem **Edytuj harmonogram** lub **Utwórz harmonogram**, zobacz [harmonogramy](schedules.md)). Wskazówki dla selfie tej postaci przeniesiono do zakładki **Obrazy** jako **Instrukcje selfie** (zobacz [Selfie](selfies.md)).
 
 ## Ustaw nazwę wyświetlaną
 

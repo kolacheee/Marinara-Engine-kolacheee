@@ -85,7 +85,7 @@ Para tirar uma tag, clique nela durante a edição de tags.
 
 As tags são escritas em minúsculas e podem conter letras, números, espaços, hífens e sublinhados, com até 40 caracteres cada.
 
-Marque as imagens com tags dos lugares que elas mostram, como `guest bedroom` ou `harbor tavern`. O agente **Background** lê as tags ao escolher, e o Illustrator reutiliza uma imagem cuja tag de duas ou mais palavras nomeia o lugar da história, em vez de pintar uma nova. Veja [Reutilizar imagens que você já tem](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
+Marque as imagens com tags dos lugares que elas mostram, como `guest bedroom` ou `harbor tavern`. O agente **Background** lê as tags ao escolher, e o Illustrator reutiliza uma imagem cuja tag de duas ou mais palavras nomeia o lugar da história, em vez de pintar uma nova (tags de uma palavra só não contam para isso). Veja [Reutilizar imagens que você já tem](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 <a id="download-a-background"></a>
 

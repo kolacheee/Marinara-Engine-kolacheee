@@ -175,9 +175,9 @@ Nadal trzeba włączyć **Enable Tool Use** w sekcji **Function Calling** czatu.
 
 ## Eksport i import narzędzi
 
-- Żeby wyeksportować jedno narzędzie, otwórz je i kliknij **Export function** (eksport funkcji). Zapisuje się plik `.json`.
-- Żeby wyeksportować wszystkie narzędzia, kliknij **Export functions to ZIP**.
-- Żeby zaimportować, kliknij **Import functions from ZIP or JSON** i wskaż plik `.json` albo `.zip`. Komunikat podaje, ile narzędzi zaimportowano.
+- Żeby wyeksportować jedno narzędzie, otwórz je i kliknij **Eksportuj funkcję**. Zapisuje się plik `.json`.
+- Żeby wyeksportować wszystkie narzędzia, kliknij **Eksportuj funkcje do ZIP**.
+- Żeby zaimportować, kliknij **Importuj funkcje z ZIP lub JSON** i wskaż plik `.json` albo `.zip`. Komunikat podaje, ile narzędzi zaimportowano.
 
 Zaimportowane narzędzia typu Webhook i Script zapisują się zawsze wyłączone, z wyłączonym **Include hidden chat context**, nawet jeśli plik prosi o którekolwiek z tych ustawień. Marinara pokazuje wtedy typ, adres webhooka i uprawnienia, o które prosił plik. Otwórz każde zaimportowane narzędzie, sprawdź je i włącz tylko wtedy, gdy mu ufasz. Narzędzia statyczne zachowują stan włączenia zapisany w pliku importu.
 

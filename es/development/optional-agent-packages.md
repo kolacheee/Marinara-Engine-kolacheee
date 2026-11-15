@@ -1116,8 +1116,13 @@ Es una interfaz flexible: un Engine anterior ignora el tercer argumento, así qu
 
 La vista del navegador recibe `openCharacter(characterId, { tab })`. Abre el editor de personajes, en la pestaña indicada si se da una, para que un paquete pueda llevar al usuario a un campo de la tarjeta que lee. Los Engines anteriores no lo tienen: comprueba que `openCharacter` exista antes de mostrar el enlace.
 
+Desde #9191, `tab` también acepta una sección dentro de una pestaña: `character-sheet`, `image-instructions`, `sprites` o
+`gallery`, todas en la pestaña **Images** (Imágenes). `sprites` y `gallery` antes eran pestañas, así que los enlaces antiguos siguen funcionando. Las
+instrucciones para selfies del personaje (`conversationImageInstructions`) se trasladaron de `convo` a `image-instructions`;
+un Engine anterior a #9191 no reconoce ese id y abre el editor en la parte superior.
+
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
 ```
 
 ### Capability API 1.66: escenas a partir de hilos de paquetes

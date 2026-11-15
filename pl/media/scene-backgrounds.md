@@ -40,7 +40,9 @@ Zanim Illustrator namaluje nowe miejsce, szuka obrazu, który już masz, w tej k
 2. Obraz z biblioteki, którego nazwa lub tag złożony z co najmniej dwóch słów występuje w lokalizacji z World State. Na przykład `generated-guest-bedroom.png` albo obraz z tagiem `guest bedroom` pasuje do lokalizacji "Smith House, guest bedroom".
 3. Jeśli World State nie podaje lokalizacji, w ten sam sposób dopasowywana jest nazwa miejsca zapisana przez model promptów agenta Illustrator.
 
-Jeśli znajdzie pasujący obraz, wyświetla go (w wersji odpowiadającej pogodzie w historii, jeśli taka istnieje) i niczego nie maluje. Nowy obraz powstaje tylko dla miejsca bez dopasowania. Tagowanie wgranych obrazów nazwami miejsc (zobacz [Tagowanie tła](../appearance/chat-backgrounds.md#tag-a-background)) to najprostszy sposób na oszczędzanie żądań obrazów.
+Wielkość liter, akcenty i "'s" nie mają znaczenia, a najbardziej szczegółowa nazwa ma pierwszeństwo przed zwykłym `bedroom.png`. Jeśli znajdzie pasujący obraz, wyświetla go (w wersji odpowiadającej pogodzie w historii, jeśli taka istnieje) i niczego nie maluje. Nowy obraz powstaje tylko dla miejsca bez dopasowania.
+
+Żeby miejsce zachowało swój obraz, nadaj plikowi nazwę tego miejsca (`kitchen.png` dla "Kitchen") albo dodaj tag z co najmniej dwóch słów, taki jak `smith house kitchen` (zobacz [Tagowanie tła](../appearance/chat-backgrounds.md#tag-a-background)). Tagi jednowyrazowe, takie jak `kitchen` lub `night`, są tutaj pomijane, bo zwykle opisują wygląd obrazu.
 
 ## Wersje teł dopasowane do pogody
 

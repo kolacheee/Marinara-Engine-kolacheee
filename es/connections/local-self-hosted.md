@@ -32,7 +32,7 @@ Un servidor local o autoalojado puede responder con el modelo que tiene cargado,
 - En la tabla de Connections dice "Whatever model the server has loaded" (El modelo que tenga cargado el servidor) y no tiene estrella.
 - Haz clic en **Default** en el panel para darle sus propios ajustes, como sus parámetros y su preset de prompt, igual que harías con un modelo con nombre.
 
-**Default** solo se muestra para un servidor en tu computadora o tu red. Un servicio en la nube siempre necesita un nombre de modelo.
+**Default** se muestra para un servidor en tu computadora o tu red, y para Grok CLI, que tiene su propio valor predeterminado (consulta [CLI de suscripción](subscription-clis.md)). Un servicio de API alojado necesita un nombre de modelo.
 
 ## Direcciones de los servidores locales comunes
 

@@ -69,7 +69,7 @@ Jeśli to nie zadziałało: sprawdź, czy **Story is at** pod listą pokazuje mi
 
 Obraz w sekcji **Galeria** postaci lub persony można oznaczyć jako tło. Pojawia się wtedy w każdym czacie z udziałem tej postaci, bez ustawiania przypięć w każdym czacie.
 
-1. Otwórz zakładkę **Galeria** postaci. Kliknij przycisk tagu na obrazie i wybierz **Use as background** (użycie jako tła).
+1. Otwórz **Obrazy → Galeria** postaci. Kliknij przycisk tagu na obrazie i wybierz **Use as background** (użycie jako tła).
 2. Wpisz przedstawione na nim miejsca, oddzielając je przecinkami, na przykład `{{char}}'s bedroom, {{char}}'s room`. W galerii postaci `{{char}}` oznacza tę postać, a w galerii persony `{{user}}` oznacza tę personę. Zostaw pole puste, jeśli obraz nie przedstawia jednego miejsca.
 
 Przycisk tagu obrazu pokazuje wtedy **Background:** (tło) i przypisane miejsca. Kliknij go, żeby wybrać **Edit places** (edycja miejsc) albo **Remove background tag** (usunięcie tagu tła).

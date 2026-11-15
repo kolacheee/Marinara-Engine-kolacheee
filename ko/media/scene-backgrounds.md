@@ -40,7 +40,9 @@ Illustrator는 새 장소를 그리기 전에 이미 가진 그림을 다음 순
 2. 이름이나 두 단어 이상의 태그가 World State의 장소에 포함된 라이브러리 그림입니다. 예를 들어 `generated-guest-bedroom.png`나 `guest bedroom` 태그가 붙은 그림은 "Smith House, guest bedroom"에 쓰입니다.
 3. World State에 장소가 없으면 Illustrator의 프롬프트 모델이 쓴 장소 이름을 같은 방식으로 비교합니다.
 
-맞는 그림이 있으면 그 그림을 표시하고(이야기의 날씨에 맞는 버전이 있으면 그 버전으로) 새로 그리지 않습니다. 맞는 그림이 없는 장소에만 새 그림을 만듭니다. 업로드한 그림에 장소 이름을 태그로 붙이는 것이 이미지 요청을 줄이는 가장 쉬운 방법입니다([배경에 태그 달기](../appearance/chat-backgrounds.md#tag-a-background) 참고).
+대소문자, 악센트, "'s"는 구분하지 않으며, 단순한 `bedroom.png`보다 가장 구체적인 이름을 우선합니다. 맞는 그림이 있으면 그 그림을 표시하고(이야기의 날씨에 맞는 버전이 있으면 그 버전으로) 새로 그리지 않습니다. 맞는 그림이 없는 장소에만 새 그림을 만듭니다.
+
+한 장소에 같은 그림이 계속 쓰이게 하려면 장소를 따라 파일 이름을 짓거나("Kitchen"이라면 `kitchen.png`), `smith house kitchen`처럼 두 단어 이상으로 된 태그를 붙이세요([배경에 태그 달기](../appearance/chat-backgrounds.md#tag-a-background) 참고). `kitchen`이나 `night`처럼 한 단어로 된 태그는 보통 그림의 모습을 설명하므로 여기서는 무시됩니다.
 
 ## 날씨별 배경
 

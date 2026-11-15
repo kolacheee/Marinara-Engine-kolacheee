@@ -1,10 +1,10 @@
 # Galerien für Charaktere und Personas
 
-Der Tab **Galerie** in den Editoren für Charaktere und Personas bewahrt Bilder und Videos auf, die an einem Charakter oder einer Persona hängen. So bleiben sie erhalten, auch wenn du Chats löschst. Nutze ihn für Referenzbögen, Outfit-Varianten und importierte Bildpakete. Außerdem kannst du ein Galerie-Bild als eigenes Emoji, als Sticker oder als Hintergrund markieren, der den Charakter in jeden Chat begleitet.
+Die **Galerie** im Tab **Bilder** in den Editoren für Charaktere und Personas bewahrt Bilder und Videos auf, die an einem Charakter oder einer Persona hängen. So bleiben sie erhalten, auch wenn du Chats löschst. Nutze sie für Referenzbögen, Outfit-Varianten und importierte Bildpakete. Außerdem kannst du ein Galerie-Bild als eigenes Emoji, als Sticker oder als Hintergrund markieren, der den Charakter in jeden Chat begleitet.
 
-## Der Tab „Galerie“
+## Die Galerie finden
 
-Jeder Charakter und jede Persona hat einen eigenen Tab **Galerie** (Kamerasymbol). Öffne den Charakter im Charakter-Editor oder die Persona im Persona-Editor und klick dann auf **Galerie**. Bei einem Charakter heißt die Galerie **Charaktergalerie**, bei einer Persona **Persona-Galerie**. Beide funktionieren gleich.
+Jeder Charakter und jede Persona hat eine eigene Galerie. Öffne den Charakter im Charakter-Editor oder die Persona im Persona-Editor, klick auf den Tab **Bilder** und dann oben darin auf **Galerie**. Bei einem Charakter heißt die Galerie **Charaktergalerie**, bei einer Persona **Persona-Galerie**. Beide funktionieren gleich.
 
 Die Galerie hat zwei Unter-Tabs:
 
@@ -15,7 +15,7 @@ Die Galerie eines Chats ist etwas anderes. Sie enthält Szenenillustrationen und
 
 ### Bilder hinzufügen
 
-1. Öffne den Tab **Galerie** und wähle **Bilder**.
+1. Öffne **Bilder → Galerie** und wähle **Bilder**.
 2. Zieh Bilddateien auf **Upload Character Images** (Charakterbilder hochladen) oder klick darauf, um Dateien auszuwählen. Bei einer Persona heißt das Feld **Upload Persona Images**.
 3. Warte, bis der Upload abgeschlossen ist. Die neuen Bilder erscheinen im Raster.
 
@@ -23,7 +23,7 @@ Klick auf ein Bild, um es größer zu sehen. Jede Kachel hat ein Bedienelement z
 
 ### Videos hinzufügen
 
-1. Öffne den Tab **Galerie** und wähle **Videos**.
+1. Öffne **Bilder → Galerie** und wähle **Videos**.
 2. Zieh Videodateien auf **Upload Character Videos** (Charaktervideos hochladen) oder klick darauf, um Dateien auszuwählen. Bei einer Persona heißt das Feld **Upload Persona Videos**.
 3. Warte, bis der Upload abgeschlossen ist.
 
@@ -33,7 +33,7 @@ Unterstützt werden MP4, WebM und MOV. Die neuesten Videos stehen oben. Welche S
 
 Ein eigenes Emoji ist ein kleines Bild mitten im Text, geschrieben als `:name:`. Ein Sticker ist ein größeres Bild als eigener Block, geschrieben als `sticker:name:`. Beides funktioniert nur in Chats im Conversation Mode, dem Chat-Modus im Messenger-Stil.
 
-1. Öffne den Tab **Galerie** und wähle **Bilder**.
+1. Öffne **Bilder → Galerie** und wähle **Bilder**.
 2. Klick auf die kleine Tag-Schaltfläche oben links im Bild (Tooltip **Tag as emoji or sticker**).
 3. Klick auf **Make emoji** oder **Make sticker**.
 4. Gib im Dialogfenster **Custom Emoji** bzw. **Custom Sticker** einen Namen ein und bestätige.
@@ -56,7 +56,7 @@ Ein in der Galerie markiertes Emoji oder Sticker gilt nur für genau diesen eine
 
 Ein als Hintergrund markiertes Bild steht in jedem Chat zur Auswahl, in dem der Charakter (oder die Persona) vorkommt. Es kann einen Ort darstellen, etwa sein Schlafzimmer.
 
-1. Öffne den Tab **Galerie** und wähle **Bilder**.
+1. Öffne **Bilder → Galerie** und wähle **Bilder**.
 2. Klick auf die Tag-Schaltfläche oben links im Bild und wähle **Use as background**.
 3. Gib die dargestellten Orte durch Kommas getrennt ein, etwa `{{char}}'s bedroom, {{char}}'s room`, oder lass das Feld leer. In der Galerie einer Persona verwendest du `{{user}}`.
 

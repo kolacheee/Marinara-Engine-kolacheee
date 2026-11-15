@@ -54,11 +54,11 @@ Otwarcie persony zastępuje obszar czatu pełnoekranowym edytorem **Persona Edit
 - Kafelek awatara. Kliknij go, żeby wgrać obraz. Przy skonfigurowanym połączeniu do generowania obrazów przycisk z różdżką może też go wygenerować.
 - Pole nazwy i pole komentarza, na krótką etykietę w rodzaju `Modern AU version`.
 - **Save**, nieaktywny, dopóki czegoś nie zmienisz.
-- **Eksportuj personę**, **Dodaj personę jako postać**, **Duplikuj personę** i **Usuń personę**.
+- Menu **…** (**Więcej działań**) z opcjami **Zapytaj Professor Mari**, **Eksportuj personę**, **Dodaj personę jako postać**, **Duplikuj personę** i **Usuń personę**.
 
 Opuszczenie edytora najpierw zapisuje zmiany. Jeśli zapis się nie powiedzie, edytor pozostaje otwarty z twoją wersją roboczą.
 
-Zakładki po kolei to **Metadane**, **Karta**, **Rozmowa**, **Lorebook**, **Sprite'y**, **Galeria**, **Kolory** i **Statystyki**. Każda zakładka przeskakuje do swojej sekcji jednego długiego formularza.
+Zakładki po kolei to **Metadane**, **Karta**, **Rozmowa**, **Lorebook**, **Obrazy**, **Kolory** i **Statystyki**. Każda zakładka przeskakuje do swojej sekcji jednego długiego formularza.
 
 Edytor persony działa jak edytor postaci opisany w przewodniku [Tworzenie i edycja postaci](creating-and-editing-characters.md). Poniższe uwagi opisują różnice.
 
@@ -68,8 +68,7 @@ Edytor persony działa jak edytor postaci opisany w przewodniku [Tworzenie i edy
 | **Card** | Zobacz niżej [Zakładka Card](#card-tab). |
 | **Convo** | Pola używane wyłącznie w trybie Conversation. Zobacz [Profile w trybie Conversation Mode](../conversation/profiles.md). |
 | **Lorebook** | Przypisz wpisy lorebooka, które włączają się, gdy ta persona jest w czacie. Zobacz [Lorebooki – przegląd](../lorebooks/overview.md). |
-| **Sprite'y** | Grafiki postaci do trybów Game i Roleplay. Zawiera **Wyrazy twarzy**, **Cała postać**, **Klipy** i **Prześlij folder**. Zobacz [Sprite'y postaci](sprites.md). |
-| **Galeria** | Obrazy i filmy referencyjne, z opcjami **Prześlij obrazy persony** i **Prześlij filmy persony**. Zobacz [Galerie postaci i person](galleries.md). |
+| **Obrazy** | **Arkusz postaci**, **Sprite'y** (grafiki postaci do trybów Game i Roleplay, z opcjami **Wyrazy twarzy**, **Cała postać**, **Klipy** i **Prześlij folder**) oraz **Galeria** (obrazy i filmy referencyjne, z opcjami **Prześlij obrazy persony** i **Prześlij wideo persony**). Zobacz [Sprite'y postaci](sprites.md) i [Galerie postaci i person](galleries.md). |
 | **Colors** | Kolory nazwy, dialogu i pola wiadomości. Zobacz [Kolory postaci i Statystyki Roleplay](colors-and-stats.md). |
 | **Stats** | Paski stanu i atrybuty RPG. Zobacz niżej [Zakładka Stats](#stats-tab). |
 
@@ -124,7 +123,7 @@ Blok **Game Mode Icon** (ikona trybu Game Mode) ustawia obraz twojego tokenu pod
 
 Aby zaimportować personę, kliknij **Import** w panelu **Personas**. Okno **Import Persona** przyjmuje pliki `.marinara` i `.json`, także kilka naraz. Plik z aplikacji Marinara Engine odtwarza pełne szczegóły, sprite'y i strukturę galerii. Zwykły plik JSON z innego narzędzia jest mapowany pole po polu na nową personę. Nazwa jest wymagana. Przy każdym pliku widać oznaczenie powodzenia albo niepowodzenia.
 
-Aby wyeksportować personę, kliknij **Eksportuj personę** w edytorze albo użyj **Eksportuj** w trybie zaznaczania. Okno **Export Persona** oferuje dwa formaty:
+Aby wyeksportować personę, kliknij **…**, a potem **Eksportuj personę** w edytorze albo użyj **Eksportuj** w trybie zaznaczania. Okno **Export Persona** oferuje dwa formaty:
 
 | Format | Co dostajesz |
 | --- | --- |
@@ -135,13 +134,13 @@ Eksport zbiorczy pobiera jeden plik zip z osobnym plikiem dla każdej persony.
 
 ## Duplikowanie i usuwanie persony
 
-Aby utworzyć kopię, kliknij **Duplikuj** w wierszu albo **Duplikuj personę** w edytorze. Kopia nosi nazwę "{oryginalna nazwa} (Copy)" i zachowuje wszystkie pola karty, kolory, statystyki i pola zakładki Convo. Żaden czat nie zmienia swojej persony.
+Aby utworzyć kopię, kliknij **Duplikuj** w wierszu albo **Duplikuj personę** w menu **…** edytora. Kopia nosi nazwę "{oryginalna nazwa} (Copy)" i zachowuje wszystkie pola karty, kolory, statystyki i pola zakładki Convo. Żaden czat nie zmienia swojej persony.
 
 Aby usunąć personę, kliknij **Delete** w wierszu albo **Delete persona** w menu **…** edytora, a potem potwierdź. Tego nie da się cofnąć. Aby usunąć wiele person, kliknij **Select**, zaznacz persony i użyj **Delete** na pasku zaznaczenia. Jeśli usunięcie się nie powiedzie, te persony pozostają zaznaczone, więc da się spróbować ponownie.
 
 ## Dodanie persony jako postaci
 
-**Dodaj personę jako postać** w nagłówku edytora tworzy nową kartę wśród twoich postaci. Kopiuje nazwę, opis, osobowość, scenariusz, historię, wygląd, tagi, autora, wersję i awatar. Persona pozostaje bez zmian. Edycję nowej karty opisuje przewodnik [Tworzenie i edycja postaci](creating-and-editing-characters.md).
+**Dodaj personę jako postać** w menu **…** w nagłówku edytora tworzy nową kartę wśród twoich postaci. Kopiuje nazwę, opis, osobowość, scenariusz, historię, wygląd, tagi, autora, wersję i awatar. Persona pozostaje bez zmian. Edycję nowej karty opisuje przewodnik [Tworzenie i edycja postaci](creating-and-editing-characters.md).
 
 ## Powiązane przewodniki
 

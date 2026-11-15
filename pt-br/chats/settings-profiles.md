@@ -35,12 +35,24 @@ O criador agrupa os espaços em **Chat**, **Story**, **Pictures** e **Behind the
 
 Como preencher os espaços:
 
-- Escolha os itens na lista de cada espaço. **Agents**, **Tools** e **Lorebooks** aceitam mais de uma escolha. Use as caixas de seleção em **Tools** para ligar ou desligar cada ferramenta. Em um espaço de item único, escolha **None** (nenhum) para limpá-lo.
-- Nas listas de agentes e de lorebooks, no computador, segure <kbd>Ctrl</kbd> (<kbd>Command</kbd> no macOS) para escolher vários itens. No celular, use os controles de seleção. **Clear selection** (limpar a seleção) esvazia uma lista.
+- Toque no campo de um espaço para abrir uma janela de seleção com busca e as pastas da biblioteca, como nos seletores de presets e lorebooks. Em um espaço de item único, escolha **Nenhum** para limpá-lo.
+- **Agentes** e **Lorebooks** aceitam várias escolhas: marque os itens na janela ou use **Adicionar todos** em uma pasta. Cada escolha aparece abaixo do campo com um botão de remoção, e **Limpar a seleção** esvazia o espaço. **Ferramentas** é uma lista de caixas de seleção: marque cada ferramenta para ativá-la.
 - No computador, você pode abrir uma barra lateral de biblioteca com o editor ainda aberto e arrastar um item até o campo correspondente.
 - **Parameters**, **Memory & summary** e **Translation** só mostram se o perfil inclui essas configurações. Altere-as em Chat Settings e depois salve no perfil.
 
-No assistente de configuração de novo chat, a etapa **Use a Profile** (usar um perfil) também tem **New profile…** no topo da lista e **Edit** ao lado de um perfil salvo. Depois que você salva, o assistente seleciona esse perfil.
+No assistente de configuração de novo chat, a etapa **Usar um perfil** tem **Novo** ao lado do campo de perfil e **Editar** ao lado de um perfil salvo. Depois que você salva, o assistente seleciona esse perfil.
+
+## A aba Perfis
+
+Para gerenciar perfis fora de um chat, abra o painel **Presets** e escolha a aba **Perfis**. Ela lista todos os perfis de Conversation e Roleplay, com o **Padrão** de cada modo primeiro. Os botões acima da lista (**Todos**, **Conversation**, **Roleplay**) filtram por modo, e **Buscar perfis** filtra pelo nome. Uma estrela marca o perfil padrão de cada modo para novos chats.
+
+- Clique em um perfil para abri-lo no editor de perfis no meio da tela. **Voltar** salva as mudanças; **Cancelar** descarta as mudanças. Os perfis **Padrão** não podem ser editados, por isso não abrem.
+- **Criar perfil de configurações** abre um perfil vazio. Escolha o modo com os botões **Conversation** e **Roleplay**; um perfil salvo mantém o modo.
+- Passe o mouse sobre uma linha para marcá-la com a estrela como padrão, duplicá-la, exportá-la ou excluí-la. No celular, esses botões aparecem sempre na borda direita da linha.
+- **Selecionar perfis** exporta ou exclui vários de uma vez. **Selecionar todos os perfis** ignora os perfis Padrão, que não podem ser excluídos. Cada perfil é exportado em um arquivo próprio.
+- **Importar perfil de configurações (.json)** carrega um arquivo `.marinara-settings-profile.json`.
+
+**Editar** nas Configurações do chat continua abrindo o criador em uma janela sobre o chat.
 
 ## Salve as configurações do chat em um perfil
 

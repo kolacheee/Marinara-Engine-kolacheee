@@ -46,16 +46,17 @@ En la página **Regex scripts**, cada script de la lista muestra su número de e
 
 En el diseño clásico, cada fila de la lista **Regexes** muestra el nombre del script, una etiqueta **AI** o **User**, el patrón como `/pattern/flags`, un interruptor de activar/desactivar (tiene efecto de inmediato), **Edit regex** (Editar regex, lápiz) y **Delete regex** (Eliminar regex, papelera). Sin scripts, la lista dice "No regexes yet" (aún no hay regexes). Arrastra una fila por su asa para cambiar el orden de ejecución.
 
+Para encontrar un script, escribe en **Search regexes** (Buscar regex). Busca coincidencias en los nombres y patrones de los scripts y abre cualquier carpeta que contenga una coincidencia. No puedes arrastrar scripts para reordenarlos mientras hay una búsqueda activa.
+
 ### Organizar scripts en carpetas
 
 1. Haz clic en **New Folder** (Nueva carpeta) y ponle nombre a la carpeta.
 2. Haz clic en el icono de carpeta de la fila de un script para abrir **Move to folder** (Mover a una carpeta).
 3. Elige la carpeta. Para sacar un script, elige **No folder (top level)** (Sin carpeta: nivel superior).
 
-Haz clic en el nombre de una carpeta para expandirla o contraerla. Desactiva el interruptor de la carpeta para pausar sus scripts en todos los chats. El encabezado muestra **Paused** (En pausa). Cada script conserva la posición guardada de su interruptor. Un interruptor gris en la posición de activado indica un script activado pero pausado por la carpeta. Al eliminar la carpeta, sus scripts pasan al nivel superior, donde siguen sus propios interruptores.
+Haz clic en el nombre de una carpeta para expandirla o contraerla. Desactiva el interruptor de la carpeta para pausar sus scripts en todos los chats. El encabezado muestra **Paused** (En pausa). Cada script conserva la posición guardada de su interruptor. Un script activado que está en una carpeta en pausa muestra un interruptor gris y una etiqueta **Paused by folder** (Pausado por la carpeta). Al eliminar la carpeta, sus scripts pasan al nivel superior, donde siguen sus propios interruptores.
 
-Las carpetas agrupan scripts sin cambiar cuándo se ejecutan. Haz clic en **Execution order** (Orden de ejecución) para ver la lista completa en el orden en que se ejecuta. Arrastra un script por su asa para cambiar ese orden. Cuando no tienes carpetas, la lista ya está en orden de ejecución. En esta vista, un icono de pausa marca los scripts activados cuya carpeta está en pausa.
-
+Las carpetas agrupan scripts sin cambiar cuándo se ejecutan. Haz clic en **Execution order** (Orden de ejecución) para ver la lista completa en el orden en que se ejecuta. Arrastra un script por su asa para cambiar ese orden. Cuando no tienes carpetas, la lista ya está en orden de ejecución.
 ### Cambiar varios scripts a la vez
 
 1. Haz clic en **Select regex scripts** (Seleccionar scripts regex).

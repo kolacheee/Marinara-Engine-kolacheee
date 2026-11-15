@@ -40,7 +40,9 @@ Illustrator 按 **Image Run Interval**(图片运行间隔) 检查场景，默认
 2. 背景库中名称或至少包含两个单词的标签出现在 World State 地点中的图片。例如，`generated-guest-bedroom.png` 或带 `guest bedroom` 标签的图片，都能用于“Smith House, guest bedroom”。
 3. 没有 World State 地点时，用同样的方法匹配 Illustrator 提示词模型写出的地点名。
 
-找到匹配图片就会显示（如果有符合故事天气的版本，就显示那个版本），不会重新绘制。只有没有匹配图片的地点才会生成新图。给上传的图片打上地点标签（见[为背景添加标签](../appearance/chat-backgrounds.md#tag-a-background)），是节省图像请求最简单的办法。
+匹配时不区分大小写、重音符号和“'s”，最具体的名称优先于 `bedroom.png` 这类泛称。找到匹配图片就会显示（如果有符合故事天气的版本，就显示那个版本），不会重新绘制。只有没有匹配图片的地点才会生成新图。
+
+要确保某个地点一直使用同一张图片，可以用地点名命名文件（如用 `kitchen.png` 对应“Kitchen”），或添加至少包含两个单词的标签，例如 `smith house kitchen`（见[为背景添加标签](../appearance/chat-backgrounds.md#tag-a-background)）。`kitchen` 或 `night` 这种只有一个单词的标签在这里会被忽略，因为它们通常描述的是图片的样子。
 
 ## 背景的天气版本
 

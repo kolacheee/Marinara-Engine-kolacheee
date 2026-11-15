@@ -69,7 +69,7 @@ Si no funcionó: comprueba que **Story is at**, debajo de la lista, muestre el l
 
 Una imagen de la **Gallery** (Galería) de un personaje o una persona se puede etiquetar como fondo. Así aparece en todos los chats en los que esté ese personaje, sin tener que fijarla en cada chat.
 
-1. Abre la pestaña **Gallery** del personaje. Haz clic en el botón de etiqueta de una imagen y elige **Use as background** (Usar como fondo).
+1. Abre **Images → Gallery** (Imágenes → Galería) del personaje. Haz clic en el botón de etiqueta de una imagen y elige **Use as background** (Usar como fondo).
 2. Escribe los lugares que muestra, separados por comas, como `{{char}}'s bedroom, {{char}}'s room`. En la galería de un personaje, `{{char}}` es ese personaje; en la de una persona, `{{user}}` es esa persona. Déjalo vacío si la imagen no representa un lugar concreto.
 
 El botón de etiqueta de la imagen pasa a mostrar **Background:** (Fondo:) y sus lugares. Haz clic en él para **Edit places** (Editar lugares) o **Remove background tag** (Quitar la etiqueta de fondo).

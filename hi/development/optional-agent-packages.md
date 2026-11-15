@@ -1002,8 +1002,13 @@ const memoryVectors = await embeddings.embed(memoryTexts, signal); // documents
 
 ब्राउज़र व्यू को `openCharacter(characterId, { tab })` मिलता है। यह कैरेक्टर एडिटर खोलता है, और टैब दिया हो तो उसी टैब पर, ताकि पैकेज उपयोगकर्ता को कार्ड के उस फ़ील्ड तक भेज सके जिसे वह पढ़ता है। पुराने Engine में यह नहीं है: लिंक दिखाने से पहले जाँचें कि `openCharacter` मौजूद है।
 
+#9191 से `tab` किसी टैब के अंदर का सेक्शन भी लेता है: `character-sheet`, `image-instructions`, `sprites` या
+`gallery`, ये सभी **Images** (इमेज) टैब में हैं। `sprites` और `gallery` पहले टैब थे, इसलिए पुराने लिंक काम करते रहते हैं।
+कैरेक्टर की सेल्फ़ी के निर्देश (`conversationImageInstructions`) `convo` से `image-instructions` में चले गए हैं;
+#9191 से पहले का Engine इस id को नहीं पहचानता और एडिटर को सबसे ऊपर खोलता है।
+
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
 ```
 
 ### Capability API 1.66: पैकेज के थ्रेड से सीन

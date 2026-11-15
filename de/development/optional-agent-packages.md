@@ -1012,8 +1012,13 @@ Dies ist eine weiche Schnittstelle: Eine ältere Engine ignoriert das dritte Arg
 
 Die Browseransicht erhält `openCharacter(characterId, { tab })`. Sie öffnet den Charakter-Editor, falls angegeben auf dem passenden Tab, sodass ein Paket den Nutzer zu einem Kartenfeld führen kann, das es liest. Ältere Engines haben diese Funktion nicht: Prüfe, ob `openCharacter` existiert, bevor du den Link anzeigst.
 
+Seit #9191 nimmt `tab` auch einen Bereich innerhalb eines Tabs an: `character-sheet`, `image-instructions`, `sprites` oder
+`gallery`, alle im Tab **Bilder**. `sprites` und `gallery` waren zuvor Tabs, daher funktionieren alte Links weiter. Die
+Selfie-Anweisungen des Charakters (`conversationImageInstructions`) sind von `convo` nach `image-instructions` umgezogen;
+eine Engine von vor #9191 kennt diese ID nicht und öffnet den Editor ganz oben.
+
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
 ```
 
 ### Capability API 1.66: Szenen aus Paket-Threads

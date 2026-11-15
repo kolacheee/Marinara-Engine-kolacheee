@@ -35,12 +35,24 @@ Der Builder gruppiert die Steckplätze unter **Chat**, **Story**, **Pictures** (
 
 So füllst du die Steckplätze:
 
-- Wähl Einträge aus der Liste jedes Steckplatzes. Bei **Agents**, **Tools** und **Lorebooks** kannst du mehrere wählen. Mit den Kontrollkästchen unter **Tools** schaltest du jedes Tool ein oder aus. Bei einem Steckplatz für nur einen Eintrag wählst du **None** (keine), um ihn zu leeren.
-- In den Listen für Agenten und Lorebooks hältst du am Computer <kbd>Strg</kbd> (unter macOS <kbd>Command</kbd>) gedrückt, um mehrere Einträge zu wählen. Am Telefon nutzt du die Steuerelemente zur Auswahl. **Clear selection** (Auswahl aufheben) leert eine Liste.
+- Tipp auf das Feld eines Steckplatzes, um ein Auswahlfenster mit Suche und den Ordnern deiner Bibliothek zu öffnen, wie bei der Preset- und Lorebook-Auswahl. Bei einem Steckplatz für nur einen Eintrag wählst du **Keine**, um ihn zu leeren.
+- Bei **Agenten** und **Lorebooks** kannst du mehrere Einträge wählen: Hak sie im Fenster ab oder nutze **Alle hinzufügen** bei einem Ordner. Jeder gewählte Eintrag erscheint unter dem Feld mit einer Schaltfläche zum Entfernen. **Auswahl aufheben** leert den Steckplatz. **Tools** ist eine Liste mit Kontrollkästchen: Hak ein Tool ab, um es einzuschalten.
 - Am Computer kannst du die Seitenleiste einer Bibliothek öffnen, während der Editor offen bleibt, und einen Eintrag auf sein Feld ziehen.
 - **Parameters**, **Memory & summary** und **Translation** zeigen nur an, ob das Profil sie enthält. Ändere sie in Chat Settings und speichere sie dann im Profil.
 
-Im Einrichtungsassistenten für neue Chats hat der Schritt **Use a Profile** (Profil verwenden) außerdem **New profile…** (neues Profil) oben in der Liste und **Edit** neben einem gespeicherten Profil. Nach dem Speichern wählt der Assistent dieses Profil aus.
+Im Einrichtungsassistenten für neue Chats hat der Schritt **Profil verwenden** die Schaltfläche **Neu** neben dem Profilfeld und **Bearbeiten** neben einem gespeicherten Profil. Nach dem Speichern wählt der Assistent dieses Profil aus.
+
+## Der Tab „Profiles“
+
+Um Profile außerhalb eines Chats zu verwalten, öffne das Panel **Voreinstellungen** und wähle den Tab **Profiles**. Er listet alle Conversation- und Roleplay-Profile auf, jeweils mit dem **Standardprofil** des Modus an erster Stelle. Die Schaltflächen darüber (**Alle**, **Conversation**, **Roleplay**) filtern nach Modus, **Search profiles** nach Namen. Ein Stern kennzeichnet das Standardprofil jedes Modus für neue Chats.
+
+- Klick auf ein Profil, um es im Profil-Editor in der Bildschirmmitte zu öffnen. **Zurück** speichert deine Änderungen; **Abbrechen** verwirft sie. Die **Standardprofil**-Einträge können nicht bearbeitet werden und lassen sich deshalb nicht öffnen.
+- **Einstellungsprofil erstellen** öffnet ein leeres Profil. Wähl seinen Modus über die Schaltflächen **Conversation** und **Roleplay**; ein gespeichertes Profil behält seinen Modus.
+- Zeig auf eine Zeile, um das Profil mit einem Stern als Standard zu markieren, zu duplizieren, zu exportieren oder zu löschen. Auf dem Telefon sind diese Schaltflächen am rechten Rand der Zeile immer sichtbar.
+- Mit **Select profiles** exportierst oder löschst du mehrere auf einmal. **Select all profiles** überspringt die Standardprofile, die nicht gelöscht werden können. Jedes Profil wird als eigene Datei exportiert.
+- **Einstellungsprofil importieren (.json)** lädt eine `.marinara-settings-profile.json`-Datei.
+
+**Bearbeiten** in den Chat-Einstellungen öffnet den Profil-Editor weiterhin als Fenster über dem Chat.
 
 ## Chat-Einstellungen in einem Profil speichern
 

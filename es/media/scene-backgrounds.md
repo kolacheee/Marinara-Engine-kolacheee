@@ -40,7 +40,9 @@ Antes de dibujar un lugar nuevo, Illustrator busca una imagen que ya tengas, en 
 2. Una imagen de la biblioteca cuyo nombre, o una etiqueta de dos o más palabras, aparezca en la ubicación de World State. Por ejemplo, `generated-guest-bedroom.png`, o una imagen con la etiqueta `guest bedroom`, sirve para "Smith House, guest bedroom".
 3. Si no hay una ubicación de World State, se busca de la misma forma una coincidencia con el nombre del lugar que escriba el modelo de prompts de Illustrator.
 
-Si alguna coincide, se muestra (con el clima de la historia, cuando existe esa versión) y no se dibuja nada. Solo un lugar sin coincidencias recibe una imagen nueva. Etiquetar las imágenes que subes con nombres de lugares (consulta [Etiquetar un fondo](../appearance/chat-backgrounds.md#tag-a-background)) es la forma más sencilla de ahorrar solicitudes de imágenes.
+No importan las mayúsculas, los acentos ni "'s", y el nombre más específico tiene prioridad sobre un simple `bedroom.png`. Si alguna coincide, se muestra (con el clima de la historia, cuando existe esa versión) y no se dibuja nada. Solo un lugar sin coincidencias recibe una imagen nueva.
+
+Para asegurarte de que un lugar conserve su imagen, ponle al archivo el nombre del lugar (`kitchen.png` para "Kitchen") o asígnale una etiqueta de dos o más palabras, como `smith house kitchen` (consulta [Etiquetar un fondo](../appearance/chat-backgrounds.md#tag-a-background)). Las etiquetas de una sola palabra como `kitchen` o `night` se ignoran aquí, porque suelen describir el aspecto de una imagen.
 
 ## Versiones de fondos según el clima
 

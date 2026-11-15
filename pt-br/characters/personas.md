@@ -54,11 +54,11 @@ Abrir uma persona troca a área do chat pelo Persona Editor em página inteira. 
 - O quadro do avatar. Clique nele para fazer upload de uma imagem. Com uma conexão de geração de imagens configurada, um botão de varinha também gera uma.
 - O campo de nome e um campo de comentário, para um rótulo curto como `Modern AU version`.
 - **Save**, que fica desativado até você mudar alguma coisa.
-- **Exportar a persona**, **Adicionar a persona como personagem**, **Duplicar a persona** e **Excluir a persona**.
+- O menu **…** (**Mais ações**), com **Perguntar à Professor Mari**, **Exportar a persona**, **Adicionar a persona como personagem**, **Duplicar a persona** e **Excluir a persona**.
 
 Sair do editor salva as suas mudanças antes. Se o salvamento falhar, o editor continua aberto com o seu rascunho.
 
-As abas, na ordem, são **Metadados**, **Card**, **Conversa**, **Lorebook**, **Sprites**, **Galeria**, **Cores** e **Estatísticas**. Cada aba leva à sua seção de um único formulário longo.
+As abas, na ordem, são **Metadados**, **Card**, **Conversa**, **Lorebook**, **Imagens**, **Cores** e **Estatísticas**. Cada aba leva à sua seção de um único formulário longo.
 
 O editor de persona funciona como o [Character Editor](creating-and-editing-characters.md). As observações abaixo tratam do que é diferente.
 
@@ -68,8 +68,7 @@ O editor de persona funciona como o [Character Editor](creating-and-editing-char
 | **Card** | Veja [Aba Card](#card-tab) abaixo. |
 | **Convo** | Campos usados só no modo Conversation. Veja [Perfis do Conversation Mode](../conversation/profiles.md). |
 | **Lorebook** | Anexe entradas de lorebook que são ativadas quando esta persona está no chat. Veja [Visão geral dos lorebooks](../lorebooks/overview.md). |
-| **Sprites** | Arte do personagem em pé para Game e Roleplay. Tem **Expressões faciais**, **Corpo inteiro** e **Clipes**, além de **Enviar pasta**. Veja [Sprites de personagem](sprites.md). |
-| **Galeria** | Imagens e vídeos de referência, com **Enviar imagens da persona** e **Enviar vídeos da persona**. Veja [Galerias de personagem e de persona](galleries.md). |
+| **Imagens** | **Ficha de personagem**, **Sprites** (arte do personagem em pé para Game e Roleplay, com **Expressões faciais**, **Corpo inteiro**, **Clipes** e **Enviar pasta**) e **Galeria** (imagens e vídeos de referência, com **Enviar imagens da persona** e **Enviar vídeos da persona**). Veja [Sprites de personagem](sprites.md) e [Galerias de personagem e de persona](galleries.md). |
 | **Colors** | Cores do nome, do diálogo e da caixa de mensagem. Veja [Cores do personagem e Status de Roleplay](colors-and-stats.md). |
 | **Stats** | Barras de status e Status de Roleplay. Veja [Aba Stats](#stats-tab) abaixo. |
 
@@ -124,7 +123,7 @@ Um bloco **Game Mode Icon** (ícone de Game Mode) define a imagem do seu token e
 
 Para importar, clique em **Import** no painel **Personas**. A janela **Import Persona** aceita arquivos `.marinara` e `.json`, inclusive vários de uma vez. Um arquivo do Marinara restaura todos os detalhes, os sprites e a estrutura da galeria. Um arquivo JSON genérico, vindo de outra ferramenta, é mapeado campo a campo para uma persona nova. O nome é obrigatório. Cada arquivo mostra uma marca de sucesso ou de falha.
 
-Para exportar, clique em **Exportar a persona** no editor ou use **Exportar** no modo de seleção. A janela **Exportar persona** oferece dois formatos:
+Para exportar, clique em **…** e depois em **Exportar a persona** no editor ou use **Exportar** no modo de seleção. A janela **Exportar persona** oferece dois formatos:
 
 | Formato | O que você recebe |
 | --- | --- |
@@ -135,13 +134,13 @@ A exportação em massa baixa um único zip, com um arquivo por persona.
 
 ## Duplicar ou excluir uma persona
 
-Para duplicar, clique em **Duplicar** em uma linha ou em **Duplicar a persona** no editor. A cópia recebe o nome "{original name} (Copy)" e mantém todos os campos do card, cores, status e campos de conversa. Nenhum chat muda de persona.
+Para duplicar, clique em **Duplicar** em uma linha ou em **Duplicar a persona** no menu **…** do editor. A cópia recebe o nome "{original name} (Copy)" e mantém todos os campos do card, cores, status e campos de conversa. Nenhum chat muda de persona.
 
 Para excluir, clique em **Delete** em uma linha ou em **Delete persona** no menu **…** do editor e confirme. Não é possível desfazer. Para excluir várias, clique em **Select**, marque as personas e use **Delete** na barra de seleção. Se uma exclusão falhar, essas personas continuam selecionadas para você tentar de novo.
 
 ## Adicionar a persona como personagem
 
-**Adicionar a persona como personagem** no cabeçalho do editor cria um novo card nos seus personagens. Ele copia o nome, a descrição, a personalidade, o cenário, a história, a aparência, as tags, o criador, a versão e o avatar. A persona continua como estava. Para editar o novo card, veja [Criando e editando personagens](creating-and-editing-characters.md).
+**Adicionar a persona como personagem** no menu **…** do cabeçalho do editor cria um novo card nos seus personagens. Ele copia o nome, a descrição, a personalidade, o cenário, a história, a aparência, as tags, o criador, a versão e o avatar. A persona continua como estava. Para editar o novo card, veja [Criando e editando personagens](creating-and-editing-characters.md).
 
 ## Guias relacionados
 

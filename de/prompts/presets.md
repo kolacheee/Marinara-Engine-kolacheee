@@ -51,7 +51,7 @@ Regex-Skripte haben ihre eigene Seite unter [Library → Regex scripts](../exten
 
 ## Im klassischen Layout: das Presets-Panel
 
-Der Tab **Voreinstellungen** enthält **Prompts** und **Funktionen**. Mit **Preset erstellen** legst du ein Preset an, mit **Preset importieren** lädst du eine `.json`-Datei und mit **Presets auswählen** exportierst oder löschst du mehrere auf einmal. Im Tab **Regex-Skripte** kannst du Skripte in Ordnern organisieren oder mehrere gemeinsam ein- oder ausschalten. Siehe [Regex-Skripte](../extending/regex-scripts.md#manage-your-scripts).
+Das Panel hat vier Tabs: **Prompts**, **Regex-Skripte**, **Tools** und **Profiles**. Jeder Tab hat oben dieselbe Schaltflächenreihe und ein Suchfeld. Im Tab **Prompts** legst du mit **Preset erstellen** ein Preset an, lädst mit **Preset importieren** eine `.json`-Datei oder exportierst oder löschst mit **Presets auswählen** mehrere auf einmal; **Select all presets** hakt jedes Preset ab, das die Suche anzeigt. Der Tab **Regex-Skripte** enthält deine Regex-Skripte; siehe [Regex-Skripte](../extending/regex-scripts.md#manage-your-scripts). Der Tab **Tools** enthält deine eigenen Tools; siehe [Eigene Tools](../extending/custom-tools.md). Der Tab **Profiles** enthält deine Chat-Einstellungsprofile; siehe [Einstellungsprofile](../chats/settings-profiles.md#the-profiles-tab).
 
 - **Search presets** (Presets durchsuchen) filtert die Liste.
 - Das Sortiermenü bietet **Manual order** (manuelle Reihenfolge), **A-Z**, **Z-A**, **Newest** und **Oldest**. Bei **Manual order** ziehst du eine Zeile oder drückst auf einer fokussierten Zeile <kbd>Alt</kbd>+<kbd>Up</kbd> oder <kbd>Alt</kbd>+<kbd>Down</kbd>. Auf einem Touchscreen hältst du eine Zeile gedrückt, um sie aufzunehmen.

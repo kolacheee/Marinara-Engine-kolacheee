@@ -179,9 +179,9 @@ Sigues teniendo que activar **Enable Tool Use** en la sección **Function Callin
 
 ## Exportar e importar herramientas
 
-- Para exportar una herramienta, ábrela y haz clic en **Export function**. Esto guarda un archivo `.json`.
-- Para exportar todas las herramientas, haz clic en **Export functions to ZIP**.
-- Para importar, haz clic en **Import functions from ZIP or JSON** y elige un archivo `.json` o `.zip`. Un mensaje informa cuántas herramientas se importaron.
+- Para exportar una herramienta, ábrela y haz clic en **Export tool** (Exportar herramienta). Esto guarda un archivo `.json`.
+- Para exportar todas las herramientas, haz clic en **Export tools to ZIP** (Exportar herramientas a ZIP).
+- Para importar, haz clic en **Import tools from ZIP or JSON** (Importar herramientas desde ZIP o JSON) y elige un archivo `.json` o `.zip`. Un mensaje informa cuántas herramientas se importaron.
 
 Las herramientas webhook y script importadas siempre se guardan desactivadas, con **Include hidden chat context** desactivado, aunque el archivo pida cualquiera de las dos cosas. Después, Marinara muestra el tipo, la dirección del webhook y los permisos que pedía el archivo. Abre cada herramienta importada, revísala y actívala solo si confías en ella. Las herramientas estáticas conservan el estado de activación importado.
 

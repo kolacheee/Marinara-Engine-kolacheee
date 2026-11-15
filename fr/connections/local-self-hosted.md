@@ -32,7 +32,7 @@ Un serveur local ou auto-hébergé peut répondre avec le modèle qu'il a charg�
 - Dans le tableau des connexions, il porte la mention "Quel que soit le modèle chargé sur le serveur" et n'a pas d'étoile.
 - Clique sur **Par défaut** dans le panneau pour lui attribuer ses propres réglages, comme ses paramètres et son preset de prompt, comme tu le ferais pour un modèle nommé.
 
-**Par défaut** n'apparaît que pour un serveur sur ton ordinateur ou ton réseau. Un service cloud a toujours besoin d'un nom de modèle.
+**Par défaut** apparaît pour un serveur sur ton ordinateur ou ton réseau, ainsi que pour la CLI Grok, qui a sa propre valeur par défaut (voir [CLI avec abonnement](subscription-clis.md)). Un service d'API hébergé a besoin d'un nom de modèle.
 
 ## Adresses des serveurs locaux courants
 

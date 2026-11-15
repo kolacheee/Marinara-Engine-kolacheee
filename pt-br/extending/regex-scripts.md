@@ -48,16 +48,17 @@ Na página **Scripts de regex**, cada script da lista mostra o número de execu�
 
 No layout clássico, cada linha da lista **Regexes** mostra o nome do script, uma etiqueta **IA** ou **Usuário**, o padrão no formato `/pattern/flags`, um botão liga/desliga (com efeito imediato), **Editar regex** (lápis) e **Excluir regex** (lixeira). Sem scripts, a lista mostra "No regexes yet". Arraste uma linha pela alça para mudar a ordem de execução.
 
+Para encontrar um script, digite em **Buscar regexes**. A busca encontra nomes e padrões de scripts e abre qualquer pasta que contenha uma correspondência. Você não pode arrastar scripts para reordená-los enquanto uma busca estiver ativa.
+
 ### Organizar scripts em pastas
 
 1. Clique em **New Folder** (nova pasta) e dê um nome à pasta.
 2. Clique no ícone de pasta na linha de um script para abrir **Move to folder** (mover para a pasta).
 3. Escolha a pasta. Para tirar um script de uma pasta, escolha **No folder (top level)** (sem pasta, nível superior).
 
-Clique no nome de uma pasta para expandi-la ou recolhê-la. Desligue a pasta para pausar seus scripts em todos os chats. O cabeçalho mostra **Paused** (pausada). Cada script mantém a posição salva do próprio botão liga/desliga. Um botão cinza na posição ligada indica um script ativado, mas pausado pela pasta. Excluir a pasta move seus scripts para o nível superior, onde cada um segue o próprio botão liga/desliga.
+Clique no nome de uma pasta para expandi-la ou recolhê-la. Desligue a pasta para pausar seus scripts em todos os chats. O cabeçalho mostra **Pausado**. Cada script mantém a posição salva do próprio botão liga/desliga. Um script ativado que está em uma pasta pausada mostra um botão cinza e o rótulo **Pausado pela pasta**. Excluir a pasta move seus scripts para o nível superior, onde cada um segue o próprio botão liga/desliga.
 
-As pastas agrupam scripts sem mudar a ordem de execução. Clique em **Execution order** (ordem de execução) para ver a lista completa na ordem em que os scripts rodam. Arraste um script pela alça para mudar a ordem. Quando não há pastas, a lista já aparece nessa ordem. Nessa visualização, um ícone de pausa marca um script ativado cuja pasta está pausada.
-
+As pastas agrupam scripts sem mudar a ordem de execução. Clique em **Ordem de execução** para ver a lista completa na ordem em que os scripts rodam. Arraste um script pela alça para mudar a ordem. Quando não há pastas, a lista já aparece nessa ordem.
 ### Alterar vários scripts de uma vez
 
 1. Clique em **Selecionar scripts de regex**.

@@ -84,7 +84,7 @@ Dein eigenes Profil hat **Edit Profile** (Profil bearbeiten). Ändere **Display 
 
 Bearbeitest du das Profil eines Charakters, erscheinen unter den Feldern zwei weitere Einstellungen, die sofort gespeichert werden.
 
-- **Use this character's image instructions in Noodle images** (Bildanweisungen dieses Charakters in Noodle-Bildern verwenden): fügt die **Image generation instructions** (Anweisungen zur Bildgenerierung) des Charakters aus dem Tab **Convo** des Charakter-Editors zu seinen Noodle-Bildern hinzu. **Edit image instructions** (Bildanweisungen bearbeiten) öffnet diesen Tab. Slurp nutzt dieselbe Wahl, bis du in Slurp eine eigene für diesen Charakter festlegst. Dafür ist Noodle 1.5.4 oder neuer nötig.
+- **Use this character's image instructions in Noodle images** (Bildanweisungen dieses Charakters in Noodle-Bildern verwenden): fügt die **Selfie instructions** des Charakters aus dem Tab **Bilder** des Charakter-Editors zu seinen Noodle-Bildern hinzu. **Edit image instructions** (Bildanweisungen bearbeiten) öffnet dieses Feld im Charakter-Editor (Noodle 1.5.17 oder neuer auf Marinara Engine mit Capability API 1.826 oder neuer; ältere Noodle-Versionen öffnen den Tab **Gespräch**). Slurp nutzt dieselbe Wahl, bis du in Slurp eine eigene für diesen Charakter festlegst. Dafür ist Noodle 1.5.4 oder neuer nötig.
 - **Image connection** (Bildverbindung): wählt das Bildmodell für die Noodle-Bilder dieses Charakters. **Use Noodle image connection** (Noodle-Bildverbindung verwenden) behält das aus den [Noodle-Einstellungen](noodle-settings.md#image-generation). Dafür ist Noodle 1.5.5 oder neuer nötig.
 
 Ein Profil zeigt außerdem die Zähler **Following** und **Followers** und drei Tabs: **Posts**, **Likes** und **Media** (Beiträge mit Bild).

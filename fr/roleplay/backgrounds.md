@@ -69,7 +69,7 @@ Si ça n'a pas marché : vérifie que **Story is at**, sous la liste, affiche le
 
 Une image de la **Galerie** d'un personnage ou d'un persona peut être marquée comme arrière-plan. Elle apparaît alors dans chaque chat où figure ce personnage, sans avoir à épingler d'image dans chaque chat.
 
-1. Ouvre l'onglet **Galerie** du personnage. Clique sur le bouton de tag d'une image et choisis **Use as background** (utiliser comme arrière-plan).
+1. Ouvre **Images → Galerie** du personnage. Clique sur le bouton de tag d'une image et choisis **Use as background** (utiliser comme arrière-plan).
 2. Saisis les lieux qu'elle représente, séparés par des virgules, par exemple `{{char}}'s bedroom, {{char}}'s room`. Dans la galerie d'un personnage, `{{char}}` désigne ce personnage ; dans celle d'un persona, `{{user}}` désigne ce persona. Laisse le champ vide si l'image ne représente pas un lieu précis.
 
 Le bouton de tag de l'image affiche alors **Background:** et ses lieux. Clique dessus pour choisir **Edit places** (modifier les lieux) ou **Remove background tag** (retirer le tag d'arrière-plan).

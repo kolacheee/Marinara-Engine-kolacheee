@@ -32,7 +32,7 @@ Ein lokaler oder selbst gehosteter Server kann mit dem Modell antworten, das er 
 - In der Verbindungstabelle steht dazu „Whatever model the server has loaded“, und es hat keinen Stern.
 - Klick im Panel auf **Default**, um ihm eigene Einstellungen zu geben, etwa Parameter und Prompt-Preset, genau wie einem benannten Modell.
 
-**Default** erscheint nur bei einem Server auf deinem Rechner oder in deinem Netzwerk. Ein Cloud-Dienst braucht immer einen Modellnamen.
+**Standard** erscheint bei einem Server auf deinem Rechner oder in deinem Netzwerk sowie für die Grok CLI, die einen eigenen Standard hat (siehe [Abonnement-CLIs](subscription-clis.md)). Ein gehosteter API-Dienst braucht einen Modellnamen.
 
 ## Adressen verbreiteter lokaler Server
 

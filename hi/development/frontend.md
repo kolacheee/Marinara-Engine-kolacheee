@@ -61,7 +61,7 @@ UI का डिज़ाइन Discord जैसा तीन-कॉलम व�
 
 UI और रनटाइम स्टेट के लिए क्लाइंट `packages/client/src/stores/` में Zustand स्टोर का एक सेट इस्तेमाल करता है। सिर्फ़ `ui.store.ts` ही परसिस्ट होता है। बाकी स्टोर चैट, एजेंट, गेम, लोकल मॉडल रनटाइम, ट्रांसलेशन, डायलॉग और बैकफ़िल की रनटाइम स्टेट रखते हैं।
 
-अभी की स्टोर फ़ाइलें ये हैं: `agent.store.ts`, `backfill.store.ts`, `chat-tools-menu.store.ts`, `chat.store.ts`, `conversation-games.store.ts`, `dialog.store.ts`, `encounter.store.ts`, `floating-window.store.ts`, `gallery.store.ts`, `game-asset.store.ts`, `game-mode.store.ts`, `game-state.store.ts`, `sidecar.store.ts`, `translation.store.ts`, और `ui.store.ts`। टेबल-गेम के स्टोर उनके डाउनलोड होने वाले पैकेज में चले गए हैं; `conversation-games.store.ts` सिर्फ़ Conversation के गेम पिकर और सेटअप पर नज़र रखता है।
+अभी की स्टोर फ़ाइलें ये हैं: `agent.store.ts`, `backfill.store.ts`, `chat-tools-menu.store.ts`, `chat.store.ts`, `combat-screen.store.ts`, `conversation-games.store.ts`, `dialog.store.ts`, `encounter.store.ts`, `floating-window.store.ts`, `gallery.store.ts`, `game-asset.store.ts`, `game-mode.store.ts`, `game-state.store.ts`, `roleplay-sheet.store.ts`, `sidecar.store.ts`, `translation.store.ts`, और `ui.store.ts`। टेबल-गेम के स्टोर उनके डाउनलोड होने वाले पैकेज में चले गए हैं; `conversation-games.store.ts` सिर्फ़ Conversation के गेम पिकर और सेटअप पर नज़र रखता है। `combat-screen.store.ts` यह याद रखता है कि कौन-सी लड़ाई की स्क्रीन और उसका कौन-सा राउंड दिख रहा है, ताकि ऊपर की पट्टी में कॉम्बैट कंट्रोल सिर्फ़ तभी दिखें। `roleplay-sheet.store.ts` याद रखता है कि Roleplay चैट में किस सदस्य की नियमसेट शीट खुली है।
 
 #### `ui.store.ts`: सेटिंग्स और UI क्रोम
 
@@ -126,7 +126,7 @@ Roleplay मोड के लिए सीन और दुनिया का �
 
 ### React Query (सर्वर डेटा)
 
-सर्वर का सारा डेटा TanStack React Query से आता है और वहीं कैश होता है, जिसकी सेटिंग `main.tsx` में है:
+सर्वर का सारा डेटा TanStack React Query से आता है और वहीं कैश होता है, जिसकी सेटिंग `lib/query-client.ts` में है:
 
 - स्टेल टाइम: 30 सेकंड (ग्लोबल डिफ़ॉल्ट)।
 - रीट्राई: 1 कोशिश।
@@ -137,7 +137,7 @@ Roleplay मोड के लिए सीन और दुनिया का �
 
 ## हुक रेफ़रेंस
 
-सारे हुक `src/hooks/` में हैं और `use-{entity}.ts` पैटर्न पर चलते हैं।
+सारे हुक `src/hooks/` में हैं और `use-{entity}.ts` पैटर्न पर चलते हैं। नीचे की टेबल में सिर्फ़ मुख्य हुक हैं; पूरा सेट `packages/client/src/hooks/` में है।
 
 ### चैट हुक (`use-chats.ts`)
 
@@ -181,27 +181,25 @@ Roleplay मोड के लिए सीन और दुनिया का �
 | हुक                            | प्रकार   | विवरण                                                       |
 | ------------------------------ | -------- | ---------------------------------------------------------- |
 | `usePresets()`                 | Query    | सारे प्रीसेट                                               |
-| `usePreset(id)` | Query | एक प्रीसेट |
-| `usePresetFull(id)` | Query | सेक्शन, ग्रुप और विकल्प समेत प्रीसेट |
+| `usePresetFull(id)` | Query | एक प्रीसेट, उसके सेक्शन, ग्रुप और वेरिएबल के साथ |
 | `useDefaultPreset()`           | Query    | डिफ़ॉल्ट प्रीसेट                                            |
-| `useCreatePreset()` | Mutation | प्रीसेट बनाना |
 | `useUpdatePreset()`            | Mutation | प्रीसेट अपडेट करना                                         |
 | `useDeletePreset()` | Mutation | प्रीसेट मिटाना |
-| `usePresetSections(presetId)` | Query | प्रीसेट के प्रॉम्प्ट सेक्शन |
-| `usePresetGroups(presetId)` | Query | सेक्शन ग्रुप |
-| `usePresetVariables(presetId)` | Query | प्रीसेट वेरिएबल (पहले चॉइस ब्लॉक कहलाते थे) |
-| `usePreviewPreset()` | Mutation | `{ presetId, chatId, choices }` के लिए रेंडर किया हुआ प्रॉम्प्ट प्रीव्यू |
+| `useDuplicatePreset()` | Mutation | प्रीसेट की कॉपी बनाना |
+| `useSetDefaultPreset()` | Mutation | प्रीसेट को डिफ़ॉल्ट बनाना |
+| `useCreateSection()` | Mutation | प्रॉम्प्ट सेक्शन बनाना (अपडेट, डिलीट और क्रम बदलने के हुक साथ में हैं) |
+| `useCreateGroup()` | Mutation | सेक्शन ग्रुप बनाना (अपडेट और डिलीट के हुक साथ में हैं) |
+| `useCreateVariable()` | Mutation | प्रीसेट वेरिएबल बनाना, जिसे पहले चॉइस ब्लॉक कहते थे (अपडेट, डिलीट और क्रम बदलने के हुक साथ में हैं) |
 
 ### एजेंट हुक (`use-agents.ts`)
 
 | हुक                  | प्रकार   | विवरण                           |
 | -------------------- | -------- | ------------------------------- |
 | `useAgentConfigs()`  | Query    | सारे एजेंट कॉन्फ़िगरेशन          |
-| `useAgentConfig(id)` | Query | एक एजेंट का कॉन्फ़िग |
 | `useCreateAgent()`   | Mutation | कस्टम एजेंट बनाना               |
 | `useUpdateAgent()`   | Mutation | एजेंट कॉन्फ़िग अपडेट करना        |
 | `useDeleteAgent()`   | Mutation | एजेंट मिटाना                    |
-| `useToggleAgent()` | Mutation | बिल्ट-इन एजेंट चालू या बंद करना |
+| `useUpdateAgentByType()` | Mutation | एजेंट टाइप के हिसाब से एजेंट कॉन्फ़िग अपडेट करना |
 
 ### जेनरेशन हुक (`use-generate.ts`)
 
@@ -231,7 +229,7 @@ Roleplay मोड के लिए सीन और दुनिया का �
 | `use-background-autonomous.ts` | ठंडी पड़ी चैट के लिए बैकग्राउंड पोलिंग      |
 | `use-translate.ts`             | टेक्स्ट ट्रांसलेशन                        |
 | `use-apply-regex.ts`           | संदेशों पर रेजेक्स स्क्रिप्ट चलाना         |
-| `use-custom-tools.ts` | कस्टम टूल CRUD |
+| `use-custom-tools.ts` | कस्टम टूल CRUD, क्रम बदलना और एक साथ कई टूल चालू या बंद करना |
 | `use-knowledge-sources.ts`     | नॉलेज सोर्स का प्रबंधन                     |
 | `use-gallery.ts`               | चैट गैलरी की इमेज                          |
 | `use-chat-folders.ts`          | चैट फ़ोल्डर CRUD और क्रम बदलना             |
@@ -326,9 +324,9 @@ AI Game Master वाला सरफ़ेस। यह चैट फ़ोल�
 पैनल `RightPanel.tsx` में दो जगह रजिस्टर होते हैं:
 
 1. `PANEL_CONFIG`: शीर्षक, आइकन और ग्रेडिएंट रंग।
-2. `PANELS`: कंपोनेंट मैप।
+2. `RIGHT_PANELS` (`right-panel-panels.ts` में): कंपोनेंट मैप।
 
-पैनल मॉड्यूल स्तर पर स्टेट बनाए रखते हैं। `mountedPanels` Set याद रखता है कि कौन-से पैनल खुल चुके हैं। एक बार माउंट होने पर पैनल DOM में बना रहता है (`display: none` या `aria-hidden` से छिपा हुआ), ताकि उसकी स्टेट बची रहे।
+पैनल `RightPanel` के अंदर `useState` में रखे `mountedPanels` Set से अपनी स्टेट बनाए रखते हैं। यह याद रखता है कि कौन-से पैनल खुल चुके हैं। एक बार माउंट होने पर पैनल DOM में बना रहता है (`display: none` या `aria-hidden` से छिपा हुआ), ताकि उसकी स्टेट बची रहे।
 
 ### UI प्रिमिटिव (`components/ui/`)
 
@@ -340,8 +338,11 @@ AI Game Master वाला सरफ़ेस। यह चैट फ़ोल�
 | `EmojiPicker`      | सर्च वाला इमोजी पॉपओवर (पोर्टल से रेंडर होता है)                       |
 | `GifPicker`        | Giphy API से GIF सर्च                                                  |
 | `HelpTooltip` | हॉवर पर आइकन, जो पोर्टल से रखा गया टूलटिप दिखाता है |
+| `LibraryToolbar` | हर लाइब्रेरी पैनल का साझा टूलबार (नीचे देखें) |
 
 सारे UI कंपोनेंट कंट्रोल्ड प्रॉप (value और onChange) इस्तेमाल करते हैं और ओवरले के लिए पोर्टल रेंडरिंग।
+
+**लाइब्रेरी पैनल `LibraryToolbar` इस्तेमाल करते हैं।** Characters, Personas, Lorebooks, Agents और Presets पैनल के टैब अपने ऊपरी कंट्रोल इसी से रेंडर करते हैं: वैकल्पिक लाइब्रेरी पंक्ति (पूरी चौड़ाई का एक बटन, या Download / Open Library की जोड़ी), बनाना / इंपोर्ट / एक्सपोर्ट / चुनना, साझा सॉर्ट मेन्यू के साथ सर्च, New Folder, फिर `children` के रूप में पैनल फ़िल्टर। पंक्तियाँ टाइप वाले props हैं, स्लॉट नहीं, इसलिए नए लाइब्रेरी पैनल को वही मार्कअप मिलता है, ऐसी कॉपी नहीं जो बाद में अलग हो जाए। पैनल में हाथ से टूलबार बनाने की जगह वहाँ prop जोड़ें।
 
 ## API क्लाइंट (`lib/api-client.ts`)
 
@@ -466,11 +467,12 @@ Personal Extensions सर्वर पर सेव, हैश से हूब
 | `/api/connections`   | GET, POST, PATCH, DELETE | API कनेक्शन CRUD, कॉपी बनाना, टेस्ट                                                        |
 | `/api/agents`        | GET, POST, PATCH, DELETE | एजेंट CRUD, echo संदेश, रन; बिल्ट-इन टॉगल `PUT /api/agents/toggle/:agentType` से होते हैं  |
 | `/api/lorebooks`     | GET, POST, PATCH, DELETE | लोरबुक CRUD, एंट्री, एक्सपोर्ट                                                              |
-| `/api/custom-tools` | GET, POST, PATCH, DELETE | कस्टम टूल CRUD |
+| `/api/custom-tools` | GET, POST, PUT, PATCH, DELETE | कस्टम टूल CRUD, `PUT /reorder` और `PUT /enabled` |
 | `/api/regex-scripts` | GET, POST, PUT, PATCH, DELETE | रेजेक्स स्क्रिप्ट CRUD, `PUT /reorder` और `PUT /enabled` |
 | `/api/library-folders/regex` | GET, POST, PATCH, DELETE | रेजेक्स फ़ोल्डर का CRUD, पॉज़ स्टेट और `POST /move` |
+| `/api/library-folders/functions` | GET, POST, PATCH, DELETE | कस्टम टूल फ़ोल्डर CRUD, रुके होने की स्थिति और `POST /move` |
 
-`PUT /api/regex-scripts/enabled` में `scriptIds` और `enabled` भेजें। कोई ID न मिले तो यह किसी स्क्रिप्ट को अपडेट किए बिना 404 लौटाता है। रेजेक्स लिस्ट में `pausedByFolder` सेव किए हुए `enabled` से अलग मिलता है।
+`PUT /api/regex-scripts/enabled` में `scriptIds` और `enabled` भेजें। कोई ID न मिले तो यह किसी स्क्रिप्ट को अपडेट किए बिना 404 लौटाता है। रेजेक्स लिस्ट में `pausedByFolder` सेव किए हुए `enabled` से अलग मिलता है। `PUT /api/custom-tools/enabled` भी `toolIds` के साथ इसी तरह काम करता है, और कस्टम टूल लिस्ट में भी `pausedByFolder` होता है। रुके हुए फ़ोल्डर का टूल मॉडल को कभी नहीं दिया जाता।
 
 एजेंट मेमोरी टूल `/api/agents/memory/:agentType/:chatId` इस्तेमाल करते हैं, जहाँ `agentType` एजेंट टाइप की स्ट्रिंग है और `chatId` लक्ष्य चैट की id।
 
@@ -486,7 +488,7 @@ Personal Extensions सर्वर पर सेव, हैश से हूब
 | प्रीफ़िक्स                 | एंडपॉइंट                          | विवरण                        |
 | ------------------------- | -------------------------------- | ---------------------------- |
 | `/api/chat-folders`       | CRUD और क्रम बदलना                | चैट फ़ोल्डर प्रबंधन           |
-| `/api/conversation` | schedule, status, message, check | ऑटोनॉमस मैसेजिंग सिस्टम |
+| `/api/conversation` | schedule, status, activity, autonomous | ऑटोनॉमस मैसेजिंग सिस्टम |
 | `/api/scene`              | create, plan, conclude           | सीन ब्रांचिंग                 |
 | `/api/encounter`          | init, action, summary            | कॉम्बैट एनकाउंटर              |
 | `/api/translate`          | POST                             | टेक्स्ट ट्रांसलेशन            |
@@ -495,8 +497,8 @@ Personal Extensions सर्वर पर सेव, हैश से हूब
 | `/api/game-rulesets`      | इंपोर्ट, स्कीमा, सोर्स, हटाना       | इंपोर्ट किए गए Game Mode रूलसेट |
 | `/api/game-worlds`        | लाइब्रेरी CRUD और दुनिया की एडिटिंग | नए गेम और मैप पैक के लिए दुनिया की लाइब्रेरी |
 | `/api/game-tile-packs`    | टाइल पैक, साथ में `/creatures` और `/boards` | मैप, क्रीचर और लड़ाई के बोर्ड के आर्ट पैक |
-| `/api/turn-games` | Chess, UNO, Poker के रूट | Conversation के टेबल गेम |
-| `/api/conversation-calls` | कॉल और सेशन रूट | Conversation की ऑडियो कॉल |
+| `/api/turn-games` | catalog, state, start, move, resign | Conversation के टेबल गेम (गेम पैकेज से आते हैं) |
+| `/api/conversation-calls` | कॉल और सेशन रूट (Conversation कॉल पैकेज रजिस्टर करता है) | Conversation की ऑडियो कॉल |
 
 ### मीडिया और ऐसेट
 
@@ -535,9 +537,9 @@ Personal Extensions सर्वर पर सेव, हैश से हूब
 
 | एंडपॉइंट                        | विवरण                                   |
 | ------------------------------- | --------------------------------------- |
-| `/api/updates/check` | GitHub रिलीज़ के मुकाबले वर्ज़न जाँच |
-| `/api/updates/latest` | सबसे नई रिलीज़ का मेटाडेटा |
-| `/api/updates/commits-behind` | Git इंस्टॉल अपडेट से कितना पीछे है |
+| `/api/updates/check` | GitHub रिलीज़ के मुकाबले वर्ज़न जाँच; git इंस्टॉल के लिए यह भी कि चेकआउट अपने अपडेट चैनल से कितना पीछे है |
+| `/api/updates/channel` | अपडेट चैनल, मौजूदा ब्रांच और चैनल लिस्ट |
+| `/api/updates/apply` | अपडेट लागू करना |
 | `/api/backup`                   | पूरा बैकअप, एक्सपोर्ट, इंपोर्ट           |
 | `/api/import/*`                 | SillyTavern और Marinara प्रोफ़ाइल इंपोर्ट |
 | `/api/admin/clear-all`          | सारा डेटा मिटाना                         |
@@ -560,13 +562,13 @@ Personal Extensions सर्वर पर सेव, हैश से हूब
 
 - मैनिफ़ेस्ट: `public/manifest.json`, जिसमें ऐप का नाम "Marinara Engine", standalone डिस्प्ले मोड और डार्क थीम है।
 - आइकन: 64px फ़ेविकॉन, 192px और 512px maskable आइकन, और एक स्प्लैश लोगो।
-- सर्विस वर्कर: अपने आप अपडेट होने की रणनीति वाला Workbox।
+- सर्विस वर्कर: `registerType: "prompt"` वाला Workbox, इसलिए नया वर्ज़न यूज़र की मंज़ूरी का इंतज़ार करता है।
 - कैशिंग: स्टैटिक ऐसेट कैश होते हैं; `/api/*` रूट NetworkOnly इस्तेमाल करते हैं।
 - कीप-अलाइव: `lib/keep-alive.ts` टैब को सोने से रोकने के लिए Web Locks API और BroadcastChannel पिंग इस्तेमाल करती है।
 
 ### वर्ज़न बेमेल की पहचान
 
-`App.tsx` हर 5 मिनट में `/api/health` पोल करता है। अगर सर्वर का वर्ज़न क्लाइंट के कैश किए वर्ज़न से अलग निकले तो क्लाइंट सर्विस वर्कर अनरजिस्टर करता है। अपडेट कराने के लिए कैश भी साफ़ करता है।
+`App.tsx` हर 5 मिनट में `/api/health` पोल करता है। अगर सर्वर का वर्ज़न क्लाइंट के कैश किए वर्ज़न से अलग निकले तो क्लाइंट `lib/browser-runtime.ts` के `forceRefreshSpa` से खुद को रिफ़्रेश करता है, जो सर्विस वर्कर अनरजिस्टर करता है और कैश साफ़ करता है।
 
 ## एजेंट सिस्टम
 
@@ -689,7 +691,7 @@ pnpm build
 ### बंडल बजट
 
 - मुख्य एंट्री: ज़्यादा से ज़्यादा 1 MB।
-- हर चंक: अधिकतम 500 KB।
+- हर चंक: `chunkSizeWarningLimit` 512 KB है। इससे ऊपर जाने पर बिल्ड की चेतावनी दिखती है; बिल्ड फ़ेल नहीं होता।
 - वेंडर स्प्लिट: react, tanstack, motion, zustand, icons, और misc।
 
 ### पथ उपनाम

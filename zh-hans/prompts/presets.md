@@ -49,7 +49,7 @@
 
 ## 经典布局中的 Presets 面板
 
-**Presets** 选项卡包含 **Prompts**(提示词) 和 **Functions**(函数)。用 **Create preset** 新建预设，用 **Import preset** 加载 `.json` 文件，或用 **Select presets** 一次导出或删除多个预设。在 **Regexes**(正则) 选项卡里，可以把脚本整理到文件夹中，或批量开启和关闭。见[正则脚本](../extending/regex-scripts.md#manage-your-scripts)。
+面板有四个选项卡：**Prompts**(提示词)、**Regexes**(正则)、**Tools**(工具) 和 **Profiles**(设置方案)。各选项卡顶部都有同样的一排按钮和搜索框。在 **Prompts** 选项卡中，用 **Create preset** 新建预设，用 **Import preset** 加载 `.json` 文件，或用 **Select presets** 一次导出或删除多个预设；**Select all presets**(选择全部预设) 会勾选搜索结果中的所有预设。**Regexes** 选项卡存放正则脚本，见[正则脚本](../extending/regex-scripts.md#manage-your-scripts)。**Tools** 选项卡存放自定义工具，见[自定义工具](../extending/custom-tools.md)。**Profiles** 选项卡存放聊天设置方案，见[设置方案](../chats/settings-profiles.md#the-profiles-tab)。
 
 - **Search presets**(搜索预设) 用来筛选列表。
 - 排序菜单的选项有 **Manual order**(手动排序)、**A-Z**、**Z-A**、**Newest** 和 **Oldest**。选 **Manual order** 时，可以拖动一行，或者在获得焦点的行上按 <kbd>Alt</kbd>+<kbd>Up</kbd> 或 <kbd>Alt</kbd>+<kbd>Down</kbd>。在触屏上，长按一行就能把它拿起来。

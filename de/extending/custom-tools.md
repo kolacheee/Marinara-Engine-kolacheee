@@ -179,9 +179,9 @@ Du kannst ein Tool auch einem Agenten statt einem Chat geben.
 
 ## Tools exportieren und importieren
 
-- Um ein einzelnes Tool zu exportieren, öffne es und klick auf **Export function** (Funktion exportieren). Das speichert eine `.json`-Datei.
-- Um alle Tools zu exportieren, klick auf **Export functions to ZIP**.
-- Zum Importieren klick auf **Import functions from ZIP or JSON** und wähle eine `.json`- oder `.zip`-Datei. Eine Meldung nennt die Anzahl der importierten Tools.
+- Um ein einzelnes Tool zu exportieren, öffne es und klick auf **Funktion exportieren**. Das speichert eine `.json`-Datei.
+- Um alle Tools zu exportieren, klick auf **Funktionen als ZIP exportieren**.
+- Zum Importieren klick auf **Funktionen aus ZIP oder JSON importieren** und wähle eine `.json`- oder `.zip`-Datei. Eine Meldung nennt die Anzahl der importierten Tools.
 
 Importierte Webhook- und Script-Tools werden immer ausgeschaltet gespeichert, mit ausgeschaltetem **Include hidden chat context**, selbst wenn die Datei eines davon verlangt. Marinara zeigt dann den Typ, die Webhook-Adresse und die Berechtigungen, die die Datei angefordert hat. Öffne jedes importierte Tool, prüfe es und schalte es nur ein, wenn du ihm vertraust. Static-Tools behalten ihren importierten Ein-/Aus-Zustand.
 

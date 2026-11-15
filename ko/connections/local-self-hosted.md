@@ -32,7 +32,7 @@
 - Connections 표에는 "Whatever model the server has loaded"라고 표시되며 별표가 없습니다.
 - 패널에서 **Default**를 클릭하면 이름이 있는 모델처럼 매개변수와 프롬프트 프리셋 등의 자체 설정을 지정할 수 있습니다.
 
-**Default**는 내 컴퓨터나 네트워크의 서버에만 표시됩니다. 클라우드 서비스에는 항상 모델 이름이 필요합니다.
+**Default**는 내 컴퓨터나 네트워크의 서버와 자체 기본값이 있는 Grok CLI에 표시됩니다([구독 CLI](subscription-clis.md) 참고). 호스팅된 API 서비스에는 모델 이름이 필요합니다.
 
 ## 많이 쓰는 로컬 서버의 주소
 

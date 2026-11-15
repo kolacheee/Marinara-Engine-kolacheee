@@ -9,12 +9,12 @@ Existem dois tipos de sprite:
 - **Facial Expressions** (expressões faciais) são retratos para humores como feliz, triste ou bravo.
 - **Full-body** (corpo inteiro) são imagens do corpo todo para poses como parado, andando ou em posição de combate.
 
-Os sprites aparecem na tela no Roleplay Mode e no Game Mode, não nos chats de Conversation. Você pode enviá-los em qualquer modo, porque um personagem mantém os sprites em todos os chats. Uma persona tem a mesma aba **Sprites**.
+Os sprites aparecem na tela no Roleplay Mode e no Game Mode, não nos chats de Conversation. Você pode enviá-los em qualquer modo, porque um personagem mantém os sprites em todos os chats. Uma persona tem a mesma seção **Sprites**.
 
-## Encontre a aba Sprites
+## Encontre os sprites
 
 1. Abra um personagem (ou uma persona) no editor dele.
-2. Clique na aba **Sprites**.
+2. Clique na aba **Imagens** e depois em **Sprites**, no topo dela.
 3. No topo, escolha uma categoria: **Facial Expressions**, **Full-body** ou **Clips**.
 
 As seções abaixo explicam **Facial Expressions** e **Full-body**. **Clips** faz parte do recurso de chamadas. Veja [Chamadas de áudio e vídeo no Conversation](../conversation/calls.md).
@@ -27,7 +27,7 @@ Você pode fazer upload de imagens PNG, JPEG, GIF, WebP, AVIF e SVG. Arquivos PN
 
 ### Faça upload de um ou mais sprites
 
-1. Abra a aba **Sprites** e escolha **Expressões faciais** ou **Corpo inteiro**.
+1. Abra **Imagens → Sprites** e escolha **Expressões faciais** ou **Corpo inteiro**.
 2. Clique em **Add sprites** (adicionar sprites).
 3. Clique em **Upload images** (fazer upload de imagens), entre na sua pasta e selecione as imagens dela. Você pode selecionar várias juntas.
 4. Na janela **Import images** (importar imagens), clique em **Import** (importar). **Cancel** (cancelar) não adiciona nada.
@@ -40,7 +40,7 @@ No editor de persona, use o campo de nome e o botão **Upload** de **Add Sprite*
 
 O upload de uma pasta inteira está disponível no editor de persona. Para personagens, use **Upload images**, como acima, e selecione as imagens dentro da sua pasta.
 
-1. Abra a aba **Sprites** da persona.
+1. Abra a aba **Imagens** da persona e clique em **Sprites**.
 2. Na caixa **Add Sprite**, clique em **Upload Folder** (enviar pasta).
 3. Escolha a pasta que contém as imagens.
 
@@ -160,11 +160,11 @@ Clique em **Select** para mostrar as caixas de seleção e **Select all sprites*
 
 ### Character Sheet
 
-A linha **Ficha de personagem** do editor de personagem abre com **Gerenciar**. Crie ou envie uma ficha ali. Ative **Usar como imagem de referência** para dar preferência a ela na representação da aparência do personagem.
+A **Ficha de personagem** fica no topo da aba **Imagens**, acima dos sprites, e abre com **Gerenciar**. Crie ou envie uma ficha ali. Ative **Usar como imagem de referência** para dar preferência a ela na representação da aparência do personagem.
 
 ## Exporte os sprites
 
-1. Abra a aba **Sprites**.
+1. Abra **Imagens → Sprites**.
 2. Clique em **Export** acima da grade do personagem, ou na caixa **Add Sprite** da persona.
 3. Escolha **Expressions only** ou **Full-body only** para exportar a categoria atual, ou **All sprites** para exportar tudo.
 

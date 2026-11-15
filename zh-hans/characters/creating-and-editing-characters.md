@@ -23,17 +23,19 @@
 
 ## Character Editor 总览
 
-Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时，选项卡竖排在左侧。屏幕较窄时，它们会变成顶部可滚动的一排。选项卡依次是 **Metadata**(元数据)、**Card**、**Onboarding**(交互式引导)、**Convo**(对话)、**Lorebook**(世界书)、**Sprites**(立绘)、**Gallery**(图库)、**Colors**(颜色)、**Voice**(声音)、**Stats**(属性) 和 **Advanced**(高级)。每个选项卡都会跳到同一张长表单里对应的部分，所以也可以直接滚动浏览。
+Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时，选项卡是一排横跨标题栏的按钮。在某些中等宽度下，按钮只显示图标；把鼠标移上去就能看到名称。屏幕较窄时，它们会收进名字下方的菜单。选项卡依次是 **Metadata**(元数据)、**Card**、**Onboarding**(交互式引导)、**Convo**(对话)、**Lorebook**(世界书)、**Images**(图片)、**Colors**(颜色)、**Voice**(声音)、**Stats**(属性) 和 **Advanced**(高级)。每个选项卡都会跳到同一张长表单里对应的部分，所以也可以直接滚动浏览。
 
 标题栏里放着最常用的部分：
 
 - **Back**(返回) 箭头、头像方块、名字输入框，以及标题或备注输入框，用来写一个简短的标记，比如 `Modern AU version`。下面一行显示作者和版本。
 - **Save**。改动之前这个按钮不可用。保存过程中，它会显示 **Uploading…**(正在上传头像)、**Embedding…**(正在把世界书加入角色卡) 或 **Saving…**。
 - **Favorite**(收藏) 星标。
-- **Export character**(导出角色)。参见[导入和导出角色卡](import-export.md)。
-- **Import character as persona**(导入为用户角色)，把这张角色卡复制成一个新的用户角色。参见[用户角色](personas.md)。
-- **Duplicate character**(复制角色)。
-- **Delete character**(删除角色)。
+- **…**（**More actions**(更多操作)）菜单，里面有：
+  - **Ask Professor Mari**(问问 Professor Mari)，向 Professor Mari 询问这张角色卡。
+  - **Export character**(导出角色)。参见[导入和导出角色卡](import-export.md)。
+  - **Import character as persona**(导入为用户角色)，把这张角色卡复制成一个新的用户角色。参见[用户角色](personas.md)。
+  - **Duplicate character**(复制角色)。
+  - **Delete character**(删除角色)。
 
 离开编辑器时会先保存改动。如果保存失败，编辑器会保持打开并保留草稿，方便你重试。
 
@@ -44,11 +46,22 @@ Character Editor 会把聊天区域换成一整页的工作区。屏幕较宽时
 | **Onboarding** | [交互式引导](interactive-onboarding.md) |
 | **Convo** | [Conversation Mode 个人资料](../conversation/profiles.md) |
 | **Lorebook** | [把世界书关联到角色](../lorebooks/linking-to-characters.md) |
-| **Sprites** | [角色立绘](sprites.md) |
-| **Gallery** | [角色与用户角色图库](galleries.md) |
+| **Images** | [角色立绘](sprites.md)和[角色与用户角色图库](galleries.md)。见下文的 [Images 选项卡](#images-tab)。 |
 | **Colors** 和 **Stats** | [角色颜色与角色扮演属性](colors-and-stats.md) |
 
-下面几节讲 **Metadata**、**Card**、**Voice** 和 **Advanced**，以及头像和版本历史。
+下面几节讲 **Metadata**、**Card**、**Images**、**Voice** 和 **Advanced**，以及头像和版本历史。
+
+
+## Images 选项卡
+
+**Images** 选项卡集中管理角色在图片里的样子。顶部按钮可以跳到各个部分：
+
+- **Character Sheet**(角色设定图)：角色的参考图。点击 **Manage**(管理) 来创建、上传或选择一张图，打开 **Use as reference image**(用作参考图)，生成图片时就会优先用它而不是头像。见[角色设定图](sprites.md#character-sheet)。
+- **Selfie instructions**(自拍指令)：这个角色在 Conversation 中自拍时使用的可选指令，例如镜头风格或表情。在 Noodle 和 Slurp 的设置里开启后，它们也可以使用这些指令。见[自拍](../conversation/selfies.md)。
+- **Sprites**(立绘)：表情、全身立绘和通话片段。见[角色立绘](sprites.md)。
+- **Gallery**(图库)：随角色保存的图片和视频。见[角色与用户角色图库](galleries.md)。
+
+用户角色的 **Images** 选项卡也有这些部分，但没有 **Selfie instructions**。
 
 <a id="metadata-tab"></a>
 

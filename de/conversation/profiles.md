@@ -11,7 +11,7 @@ Die Felder liegen auf einem Tab namens **Convo**.
 1. Öffne den Charakter im **Character Editor** oder die Persona im **Persona Editor**. Öffne dafür **Library** (Bibliothek) > **Characters** (Charaktere) oder **Library** > **Personas** (Personas) und klicke dann auf die Karte (siehe [Charaktere anlegen und bearbeiten](../characters/creating-and-editing-characters.md) und [Nutzer-Personas](../characters/personas.md)).
 2. Klicke auf den Tab **Convo**.
 
-Der Tab enthält **Convo Display Name**, **About Me** und **Convo Behavior**. Bei einem Charakter hat er außerdem **Weekly schedule** (mit **Edit schedule** oder **Create schedule**, siehe [Zeitpläne](schedules.md)) und **Image generation directions**, optionale Vorgaben für die Selfies dieses Charakters (siehe [Selfies](selfies.md)).
+Der Tab enthält **Anzeigename in Conversation**, **Über mich** und **Verhalten in Conversation**. Bei einem Charakter hat er außerdem **Wochenplan** (mit **Zeitplan bearbeiten** oder **Zeitplan erstellen**, siehe [Zeitpläne](schedules.md)). Die Vorgaben für die Selfies dieses Charakters sind in den Tab **Bilder** unter **Selfie instructions** umgezogen (siehe [Selfies](selfies.md)).
 
 ## Einen Anzeigenamen festlegen
 

@@ -23,17 +23,19 @@
 
 ## Character Editor 한눈에 보기
 
-Character Editor는 채팅 영역을 전체 화면 작업 공간으로 바꿉니다. 화면이 넓으면 탭이 왼쪽에 세로로 늘어섭니다. 화면이 좁으면 위쪽에 스크롤할 수 있는 가로줄로 표시됩니다. 탭은 순서대로 **Metadata**(메타데이터), **Card**, **Onboarding**(온보딩), **Convo**(콘보), **Lorebook**(로어북), **Sprites**(스프라이트), **Gallery**(갤러리), **Colors**(색상), **Voice**(음성), **Stats**(스탯), **Advanced**(고급)입니다. 각 탭은 하나로 이어진 긴 양식에서 해당 구역으로 이동하므로, 스크롤해서 볼 수도 있습니다.
+Character Editor는 채팅 영역을 전체 화면 작업 공간으로 바꿉니다. 화면이 넓으면 탭이 헤더에 가로로 늘어선 버튼으로 표시됩니다. 일부 중간 너비에서는 버튼에 아이콘만 표시되며, 마우스를 올리면 이름을 볼 수 있습니다. 화면이 좁으면 이름 아래의 메뉴로 접힙니다. 탭은 순서대로 **Metadata**(메타데이터), **Card**, **Onboarding**(온보딩), **Convo**(콘보), **Lorebook**(로어북), **Images**(이미지), **Colors**(색상), **Voice**(음성), **Stats**(스탯), **Advanced**(고급)입니다. 각 탭은 하나로 이어진 긴 양식에서 해당 구역으로 이동하므로, 스크롤해서 볼 수도 있습니다.
 
 헤더에는 자주 쓰는 요소가 모여 있습니다.
 
 - **Back**(뒤로) 화살표, 아바타 타일, 이름 입력란, 그리고 `Modern AU version`처럼 짧은 꼬리표를 다는 제목 또는 코멘트 입력란. 그 아래 줄에는 제작자와 버전이 표시됩니다.
 - **Save**. 무언가 바꾸기 전까지는 꺼져 있습니다. 작업하는 동안에는 아바타를 업로드하는 중이면 **Uploading…**(업로드 중…), 로어북을 카드에 추가하는 중이면 **Embedding…**(임베딩 중…), 그 밖에는 **Saving…**(저장 중…)이 표시됩니다.
 - **Favorite**(즐겨찾기) 별.
-- **Export character**(캐릭터 내보내기). [캐릭터 카드 가져오기와 내보내기](import-export.md)를 참고하세요.
-- **Import character as persona**(캐릭터를 페르소나로 가져오기). 이 카드를 새 페르소나로 복사합니다. [페르소나](personas.md)를 참고하세요.
-- **Duplicate character**(캐릭터 복제).
-- **Delete character**(캐릭터 삭제).
+- **…**(**More actions**(추가 작업)) 메뉴에는 다음 항목이 있습니다.
+  - **Ask Professor Mari**(Mari 교수님에게 묻기). Professor Mari에게 이 카드에 관해 묻습니다.
+  - **Export character**(캐릭터 내보내기). [캐릭터 카드 가져오기와 내보내기](import-export.md)를 참고하세요.
+  - **Import character as persona**(캐릭터를 페르소나로 가져오기). 이 카드를 새 페르소나로 복사합니다. [페르소나](personas.md)를 참고하세요.
+  - **Duplicate character**(캐릭터 복제).
+  - **Delete character**(캐릭터 삭제).
 
 편집기를 나가면 먼저 변경 내용이 저장됩니다. 저장에 실패하면 초안을 유지한 채 편집기가 열린 상태로 남으므로 다시 시도할 수 있습니다.
 
@@ -44,11 +46,22 @@ Character Editor는 채팅 영역을 전체 화면 작업 공간으로 바꿉니
 | **Onboarding** | [대화형 온보딩](interactive-onboarding.md) |
 | **Convo** | [Conversation Mode 프로필](../conversation/profiles.md) |
 | **Lorebook** | [로어북을 캐릭터와 페르소나에 연결하기](../lorebooks/linking-to-characters.md) |
-| **Sprites** | [캐릭터 스프라이트](sprites.md) |
-| **Gallery** | [캐릭터와 페르소나 갤러리](galleries.md) |
+| **Images** | [캐릭터 스프라이트](sprites.md)와 [캐릭터와 페르소나 갤러리](galleries.md). 아래 [Images 탭](#images-tab)을 참고하세요. |
 | **Colors**와 **Stats** | [캐릭터 색상과 롤플레이 스탯](colors-and-stats.md) |
 
-아래 절에서는 **Metadata**, **Card**, **Voice**, **Advanced** 탭과 아바타, 버전 히스토리를 설명합니다.
+아래 절에서는 **Metadata**, **Card**, **Images**, **Voice**, **Advanced** 탭과 아바타, 버전 히스토리를 설명합니다.
+
+
+## Images 탭
+
+**Images** 탭에는 그림 속 캐릭터의 모습에 관한 설정이 모여 있습니다. 맨 위의 버튼으로 각 부분으로 이동할 수 있습니다.
+
+- **Character Sheet**(캐릭터 시트): 캐릭터의 참조 이미지입니다. **Manage**(관리)를 클릭해 만들거나 업로드하거나 고르고, 이미지를 생성할 때 아바타보다 우선 사용하려면 **Use as reference image**(참조 이미지로 사용)를 켜세요. [캐릭터 시트](sprites.md#character-sheet)를 참고하세요.
+- **Selfie instructions**: 카메라 스타일이나 표정 등 이 캐릭터의 Conversation 셀카에 적용할 선택적 지침입니다. Noodle과 Slurp도 각 설정에서 켜면 이 지침을 사용할 수 있습니다. [셀카](../conversation/selfies.md)를 참고하세요.
+- **Sprites**(스프라이트): 표정, 전신 스프라이트, 통화 클립입니다. [캐릭터 스프라이트](sprites.md)를 참고하세요.
+- **Gallery**(갤러리): 캐릭터와 함께 보관하는 이미지와 동영상입니다. [캐릭터와 페르소나 갤러리](galleries.md)를 참고하세요.
+
+페르소나의 **Images** 탭도 **Selfie instructions**를 제외하면 같은 부분으로 구성됩니다.
 
 <a id="metadata-tab"></a>
 

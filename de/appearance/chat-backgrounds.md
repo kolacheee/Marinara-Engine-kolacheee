@@ -85,7 +85,7 @@ Um ein Tag zu entfernen, klick bei geöffneter Tag-Bearbeitung darauf.
 
 Tags sind kleingeschrieben und dürfen Buchstaben, Zahlen, Leerzeichen, Bindestriche und Unterstriche enthalten. Jedes Tag darf bis zu 40 Zeichen lang sein.
 
-Gib Bildern Tags für die dargestellten Orte, etwa `guest bedroom` oder `harbor tavern`. Der **Background**-Agent liest die Tags bei seiner Auswahl. Illustrator verwendet ein vorhandenes Bild wieder, wenn ein Tag aus mindestens zwei Wörtern den Ort der Geschichte benennt, statt ein neues zu malen. Siehe [Vorhandene Bilder wiederverwenden](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
+Gib Bildern Tags für die dargestellten Orte, etwa `guest bedroom` oder `harbor tavern`. Der **Background**-Agent liest die Tags bei seiner Auswahl. Illustrator verwendet ein vorhandenes Bild wieder, wenn ein Tag aus mindestens zwei Wörtern den Ort der Geschichte benennt, statt ein neues zu malen (Tags aus nur einem Wort zählen dafür nicht). Siehe [Vorhandene Bilder wiederverwenden](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 <a id="download-a-background"></a>
 

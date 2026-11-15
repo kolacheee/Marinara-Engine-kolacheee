@@ -11,7 +11,7 @@ Les champs sont dans un onglet nommé **Convo**.
 1. Ouvre le personnage dans le **Character Editor** (éditeur de personnage), ou la persona dans le **Persona Editor** (éditeur de persona). Pour y aller, ouvre **Library** > **Characters** (Bibliothèque > Personnages) ou **Library** > **Personas** (Bibliothèque > Personas), puis clique sur la fiche (voir [Créer et modifier des personnages](../characters/creating-and-editing-characters.md) et [Personas utilisateur](../characters/personas.md)).
 2. Clique sur l'onglet **Convo**.
 
-L'onglet contient **Convo Display Name**, **About Me** et **Convo Behavior**. Sur un personnage, il a aussi **Weekly schedule** (avec **Edit schedule** ou **Create schedule**, voir [emplois du temps](schedules.md)) et **Image generation instructions**, des directives facultatives pour les selfies de ce personnage (voir [Selfies](selfies.md)).
+L'onglet contient **Convo Display Name**, **About Me** et **Convo Behavior**. Sur un personnage, il a aussi **Weekly schedule** (avec **Edit schedule** ou **Create schedule**, voir [emplois du temps](schedules.md)). Les directives pour les selfies de ce personnage se trouvent maintenant dans l'onglet **Images**, sous **Selfie instructions** (instructions pour les selfies) (voir [Selfies](selfies.md)).
 
 ## Définir un nom d'affichage
 

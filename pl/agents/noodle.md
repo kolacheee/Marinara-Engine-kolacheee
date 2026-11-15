@@ -84,7 +84,7 @@ We własnym profilu masz przycisk **Edit Profile** (edycja profilu). Zmień pola
 
 Podczas edycji profilu postaci pod polami pojawiają się jeszcze dwa ustawienia, które zapisują się od razu.
 
-- **Use this character's image instructions in Noodle images** (instrukcje obrazów postaci w obrazach Noodle): dodaje do obrazów tej postaci w Noodle jej **Instrukcje generowania obrazów** z zakładki **Rozmowa** edytora postaci. **Edytuj instrukcje obrazów** otwiera tę zakładkę. Slurp używa tego samego wyboru, dopóki nie ustawisz go dla tej postaci w Slurp. Wymaga Noodle 1.5.4 lub nowszego.
+- **Use this character's image instructions in Noodle images** (instrukcje obrazów postaci w obrazach Noodle): dodaje do obrazów tej postaci w Noodle jej **Instrukcje selfie** z zakładki **Obrazy** edytora postaci. **Edytuj instrukcje obrazów** otwiera to pole w edytorze postaci (Noodle 1.5.17 lub nowszy, w aplikacji Marinara Engine z Capability API 1.826 lub nowszym; starsze wersje Noodle otwierają zakładkę **Rozmowa**). Slurp używa tego samego wyboru, dopóki nie ustawisz go dla tej postaci w Slurp. Wymaga Noodle 1.5.4 lub nowszego.
 - **Image connection** (połączenie do generowania obrazów): wybiera model obrazów dla obrazów tej postaci w Noodle. **Use Noodle image connection** (połączenie obrazowe Noodle) zachowuje model z [ustawień Noodle](noodle-settings.md#image-generation). Wymaga Noodle 1.5.5 lub nowszego.
 
 Profil pokazuje też liczniki **Following** i **Followers** oraz trzy zakładki: **Posts**, **Likes** i **Media** (posty z obrazem).

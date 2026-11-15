@@ -85,7 +85,7 @@ Para quitar una etiqueta, haz clic en ella mientras editas las etiquetas.
 
 Las etiquetas están en minúsculas y pueden contener letras, números, espacios, guiones y guiones bajos, hasta 40 caracteres cada una.
 
-Etiqueta las imágenes con los lugares que muestran, como `guest bedroom` o `harbor tavern`. El agente **Background** (Fondo) lee las etiquetas al elegir, e Illustrator reutiliza una imagen cuya etiqueta de dos o más palabras nombre el lugar de la historia en vez de pintar una nueva. Consulta [Reutilizar imágenes que ya tienes](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
+Etiqueta las imágenes con los lugares que muestran, como `guest bedroom` o `harbor tavern`. El agente **Background** (Fondo) lee las etiquetas al elegir, e Illustrator reutiliza una imagen cuya etiqueta de dos o más palabras nombre el lugar de la historia en vez de pintar una nueva (las etiquetas de una sola palabra no cuentan para esto). Consulta [Reutilizar imágenes que ya tienes](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 <a id="download-a-background"></a>
 

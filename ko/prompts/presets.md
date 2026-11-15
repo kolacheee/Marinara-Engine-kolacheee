@@ -49,7 +49,7 @@
 
 ## 클래식 레이아웃의 Presets 패널
 
-**Presets** 탭에는 **Prompts**와 **Functions**(기능)가 있습니다. **Create preset**으로 만들고, **Import preset**으로 `.json` 파일을 불러오며, **Select presets**로 여러 프리셋을 한 번에 내보내거나 삭제하세요. **Regexes**(정규식) 탭에서는 스크립트를 폴더로 정리하거나 여러 개를 한 번에 켜고 끌 수 있습니다. [정규식 스크립트](../extending/regex-scripts.md#manage-your-scripts)를 참고하세요.
+패널에는 **Prompts**, **Regexes**(정규식), **Tools**(도구), **Profiles**의 네 탭이 있습니다. 각 탭 맨 위에는 같은 버튼 줄과 검색창이 있습니다. **Prompts** 탭에서는 **Create preset**으로 만들고, **Import preset**으로 `.json` 파일을 불러오며, **Select presets**로 여러 프리셋을 한 번에 내보내거나 삭제하세요. **Select all presets**는 검색 결과에 표시된 모든 프리셋을 체크합니다. **Regexes** 탭에는 정규식 스크립트가 있습니다. [정규식 스크립트](../extending/regex-scripts.md#manage-your-scripts)를 참고하세요. **Tools** 탭에는 사용자 지정 도구가 있습니다. [사용자 지정 도구](../extending/custom-tools.md)를 참고하세요. **Profiles** 탭에는 채팅 설정 프로필이 있습니다. [설정 프로필](../chats/settings-profiles.md#the-profiles-tab)을 참고하세요.
 
 - **Search presets**는 목록을 걸러 냅니다.
 - 정렬 메뉴에서는 **Manual order**(수동 정렬), **A-Z**, **Z-A**, **Newest**, **Oldest** 중에서 고릅니다. **Manual order**에서는 행을 끌거나, 포커스가 있는 행에서 <kbd>Alt</kbd>+<kbd>Up</kbd> 또는 <kbd>Alt</kbd>+<kbd>Down</kbd>을 누르세요. 터치스크린에서는 행을 길게 눌러 집어 드세요.

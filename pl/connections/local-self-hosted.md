@@ -32,7 +32,7 @@ Serwer lokalny lub samodzielnie hostowany może odpowiadać modelem, który ma z
 - W tabeli Połączenia ma opis "Model aktualnie załadowany na serwerze" i nie ma gwiazdki.
 - Kliknij **Domyślny** w panelu, żeby nadać mu własne ustawienia, takie jak parametry i preset promptu, tak samo jak modelowi z nazwą.
 
-**Domyślny** pojawia się tylko przy serwerze na twoim komputerze lub w twojej sieci. Usługa w chmurze zawsze wymaga nazwy modelu.
+**Domyślny** pojawia się przy serwerze na twoim komputerze lub w twojej sieci, a także przy Grok CLI, które ma własny model domyślny (zobacz [Narzędzia CLI w ramach subskrypcji](subscription-clis.md)). Hostowana usługa API wymaga nazwy modelu.
 
 ## Adresy popularnych serwerów lokalnych
 

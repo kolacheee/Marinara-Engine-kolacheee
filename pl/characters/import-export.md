@@ -59,7 +59,7 @@ Aby przenieść całą instalację aplikacji SillyTavern, użyj importu zbiorcze
 ## Eksportowanie postaci
 
 1. Otwórz postać w edytorze.
-2. Kliknij **Eksportuj postać** w nagłówku. Otwiera się okno **Export Character**.
+2. Kliknij **…** w nagłówku, a potem **Eksportuj postać**. Otwiera się okno **Export Character**.
 3. Wybierz format. Marinara pobiera plik.
 
 | Format | Co otrzymujesz | Najlepszy do |

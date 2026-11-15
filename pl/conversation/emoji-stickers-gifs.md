@@ -82,7 +82,7 @@ Wyniki GIF-ów używają dojrzałej klasyfikacji Giphy. Nie możesz jej zmienić
 Każdy obraz w galerii postaci lub galerii persony może stać się emoji albo naklejką. Działa to w czatach, które obejmują tę postać lub personę.
 
 1. Otwórz **Character Editor** (edytor postaci) albo **Persona Editor** (edytor persony).
-2. Otwórz zakładkę **Gallery**, a potem podzakładkę **Images**.
+2. Otwórz zakładkę **Obrazy**, potem **Galeria** i jej podzakładkę **Obrazy**.
 3. Najedź na obraz i kliknij przycisk tagu w jego lewym górnym rogu.
 4. Wybierz **Make emoji** lub **Make sticker**.
 5. W oknie **Custom Emoji** lub **Custom Sticker** wpisz nazwę.

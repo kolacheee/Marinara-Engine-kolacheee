@@ -87,7 +87,7 @@ Pour retirer un tag, clique dessus pendant la modification des tags.
 
 Les tags sont en minuscules et peuvent contenir des lettres, des chiffres, des espaces, des traits d'union et des tirets bas, avec une limite de 40 caractères chacun.
 
-Ajoute aux images des tags qui nomment les lieux représentés, comme `guest bedroom` ou `harbor tavern`. L'agent **Background** lit les tags pour faire son choix, et Illustrator réutilise une image dont un tag d'au moins deux mots nomme le lieu de l'histoire, au lieu d'en peindre une nouvelle. Voir [Réutiliser les images que tu possèdes déjà](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
+Ajoute aux images des tags qui nomment les lieux représentés, comme `guest bedroom` ou `harbor tavern`. L'agent **Background** lit les tags pour faire son choix, et Illustrator réutilise une image dont un tag d'au moins deux mots nomme le lieu de l'histoire, au lieu d'en peindre une nouvelle (les tags d'un seul mot ne comptent pas ici). Voir [Réutiliser les images que tu possèdes déjà](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 ### Télécharger un arrière-plan
 

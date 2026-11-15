@@ -11,7 +11,7 @@
 1. 在 **Character Editor**(角色编辑器) 中打开角色，或在 **Persona Editor**(用户角色编辑器) 中打开用户角色。进入方式是打开 **Library**(资料库) > **Characters**(角色) 或 **Library** > **Personas**(人设)，再点击对应卡片（参见[创建和编辑角色](../characters/creating-and-editing-characters.md)和[用户角色](../characters/personas.md)）。
 2. 点击 **Convo** 选项卡。
 
-该选项卡包含 **Convo Display Name**(对话显示名称)、**About Me**(自我介绍) 和 **Convo Behavior**(对话行为)。角色还有 **Weekly schedule**(每周日程)（其中可以用 **Edit schedule**(编辑日程) 或 **Create schedule**(创建日程)，参见[日程](schedules.md)）和 **Image generation instructions**(图片生成指令)，用于填写该角色的可选自拍指令（参见[自拍](selfies.md)）。
+该选项卡包含 **Convo Display Name**(对话显示名称)、**About Me**(自我介绍) 和 **Convo Behavior**(对话行为)。角色还有 **Weekly schedule**(每周日程)（其中可以用 **Edit schedule**(编辑日程) 或 **Create schedule**(创建日程)，参见[日程](schedules.md)）。该角色的自拍指令已移到 **Images**(图片) 选项卡，名称为 **Selfie instructions**(自拍指令)（参见[自拍](selfies.md)）。
 
 ## 设置显示名称
 

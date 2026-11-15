@@ -11,7 +11,7 @@
 1. कैरेक्टर को **Character Editor** (कैरेक्टर एडिटर) में खोलें, या पर्सोना को **Persona Editor** (पर्सोना एडिटर) में। वहाँ पहुँचने के लिए **Library** > **Characters** या **Library** > **Personas** खोलें, फिर कार्ड पर क्लिक करें ([कैरेक्टर बनाना और एडिट करना](../characters/creating-and-editing-characters.md) और [यूज़र पर्सोना: बनाना और बदलना](../characters/personas.md) देखें)।
 2. **Convo** टैब पर क्लिक करें।
 
-इस टैब में **Convo Display Name**, **About Me** और **Convo Behavior** हैं। कैरेक्टर पर **Weekly schedule** (**Edit schedule** या **Create schedule** के साथ, [शेड्यूल](schedules.md) देखें) और **Image generation instructions** भी हैं, जो उस कैरेक्टर की सेल्फ़ी के लिए वैकल्पिक निर्देश हैं ([सेल्फ़ी](selfies.md) देखें)।
+इस टैब में **Convo Display Name**, **About Me** और **Convo Behavior** हैं। कैरेक्टर पर **Weekly schedule** भी है (**Edit schedule** या **Create schedule** के साथ, [शेड्यूल](schedules.md) देखें)। उस कैरेक्टर की सेल्फ़ी के निर्देश अब **Images** (इमेज) टैब में **Selfie instructions** (सेल्फ़ी के निर्देश) के नाम से हैं ([सेल्फ़ी](selfies.md) देखें)।
 
 ## डिस्प्ले नाम सेट करना
 

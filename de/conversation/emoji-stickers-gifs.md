@@ -83,7 +83,7 @@ GIF-Ergebnisse nutzen Giphys Freigabestufe für nicht jugendfreie Inhalte. Du ka
 Jedes Bild in einer Charakter-Galerie oder Persona-Galerie kann ein eigenes Emoji oder ein Sticker werden. Es funktioniert nur in Chats, die diesen Charakter oder diese Persona enthalten.
 
 1. Öffne den **Character Editor** oder den **Persona Editor**.
-2. Öffne den Tab **Gallery** und dann den Unter-Tab **Images**.
+2. Öffne den Tab **Bilder**, dann **Galerie** und deren Unter-Tab **Bilder**.
 3. Zeige auf ein Bild und klicke auf die Tag-Schaltfläche oben links.
 4. Wähle **Make emoji** oder **Make sticker**.
 5. Tippe im Dialogfenster **Custom Emoji** oder **Custom Sticker** einen Namen ein.

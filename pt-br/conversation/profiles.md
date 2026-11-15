@@ -11,7 +11,7 @@ Os campos ficam em uma aba chamada **Convo**.
 1. Abra o personagem no **Character Editor**, ou a persona no **Persona Editor**. Para chegar lá, abra **Biblioteca** > **Personagens** ou **Biblioteca** > **Personas**, e clique no cartão (veja [Criando e editando personagens](../characters/creating-and-editing-characters.md) e [Personas de usuário](../characters/personas.md)).
 2. Clique na aba **Convo**.
 
-A aba tem **Convo Display Name**, **About Me** e **Convo Behavior**. Em um personagem, ela também tem **Weekly schedule** (com **Edit schedule** ou **Create schedule**, veja [agendas](schedules.md)) e **Instruções de geração de imagens**, orientações opcionais para as selfies desse personagem (veja [Selfies](selfies.md)).
+A aba tem **Nome de exibição no Convo**, **Sobre mim** e **Comportamento no Convo**. Em um personagem, ela também tem **Agenda semanal** (com **Editar a agenda** ou **Criar agenda**, veja [agendas](schedules.md)). As orientações para as selfies desse personagem foram para a aba **Imagens**, como **Instruções para selfies** (veja [Selfies](selfies.md)).
 
 ## Defina um nome de exibição
 

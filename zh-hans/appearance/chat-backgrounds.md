@@ -85,7 +85,7 @@
 
 标签使用小写，可以包含字母、数字、空格、连字符和下划线，每个最多 40 个字符。
 
-按图片里的地点打标签，比如 `guest bedroom` 或 `harbor tavern`。**Background**(背景) 智能体挑选背景时会读取标签；如果某张图片的标签由两个或更多单词组成，且指的是故事里的地点，Illustrator 就会复用它，不再绘制新图。见[复用已有图片](../media/scene-backgrounds.md#reusing-pictures-you-already-have)。
+按图片里的地点打标签，比如 `guest bedroom` 或 `harbor tavern`。**Background**(背景) 智能体挑选背景时会读取标签；如果某张图片的标签由两个或更多单词组成，且指的是故事里的地点，Illustrator 就会复用它，不再绘制新图（只有一个单词的标签不算）。见[复用已有图片](../media/scene-backgrounds.md#reusing-pictures-you-already-have)。
 
 <a id="download-a-background"></a>
 

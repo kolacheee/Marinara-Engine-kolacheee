@@ -46,16 +46,17 @@ Na stronie **Skrypty regex** każdy skrypt na liście pokazuje numer w kolejnoś
 
 W klasycznym układzie każdy wiersz listy **Regexy** pokazuje nazwę skryptu, tag **AI** albo **Użytkownik**, wzorzec w postaci `/pattern/flags`, przełącznik włącz/wyłącz (zmiana działa od razu), **Edytuj regex** (ołówek) i **Usuń regex** (kosz). Gdy nie ma skryptów, lista pokazuje "Nie ma jeszcze regexów". Przeciągnij wiersz za uchwyt, żeby zmienić kolejność wykonywania.
 
+Żeby znaleźć skrypt, wpisz tekst w polu **Szukaj regexów**. Wyszukiwanie dopasowuje nazwy skryptów i wzorce oraz otwiera każdy folder zawierający dopasowanie. Przy aktywnym wyszukiwaniu nie można zmieniać kolejności skryptów przez przeciąganie.
+
 ### Porządkowanie skryptów w folderach
 
 1. Kliknij **New Folder** (nowy folder) i nazwij folder.
 2. Kliknij ikonę folderu w wierszu skryptu, żeby otworzyć **Move to folder** (przeniesienie do folderu).
 3. Wybierz folder. Żeby przenieść skrypt poza folder, wybierz **No folder (top level)** (bez folderu, poziom główny).
 
-Kliknij nazwę folderu, żeby go rozwinąć lub zwinąć. Wyłącz przełącznik folderu, żeby wstrzymać jego skrypty we wszystkich czatach. Nagłówek pokazuje **Paused** (wstrzymane). Każdy skrypt zachowuje zapisane ustawienie przełącznika. Szary przełącznik w pozycji włączonej oznacza skrypt włączony, ale wstrzymany przez folder. Usunięcie folderu przenosi skrypty na poziom główny, gdzie działają zgodnie z własnymi przełącznikami.
+Kliknij nazwę folderu, żeby go rozwinąć lub zwinąć. Wyłącz przełącznik folderu, żeby wstrzymać jego skrypty we wszystkich czatach. Nagłówek pokazuje **Paused** (wstrzymane). Każdy skrypt zachowuje zapisane ustawienie przełącznika. Skrypt, który jest włączony, ale znajduje się we wstrzymanym folderze, ma szary przełącznik i etykietę **Wstrzymany przez folder**. Usunięcie folderu przenosi skrypty na poziom główny, gdzie działają zgodnie z własnymi przełącznikami.
 
-Foldery grupują skrypty bez zmiany kolejności ich uruchamiania. Kliknij **Execution order** (kolejność wykonania), żeby zobaczyć pełną listę w kolejności uruchamiania. Przeciągnij skrypt za uchwyt, żeby zmienić kolejność. Jeśli nie ma folderów, lista jest już w tej kolejności. W tym widoku ikona pauzy oznacza włączony skrypt, którego folder jest wstrzymany.
-
+Foldery grupują skrypty bez zmiany kolejności ich uruchamiania. Kliknij **Execution order** (kolejność wykonania), żeby zobaczyć pełną listę w kolejności uruchamiania. Przeciągnij skrypt za uchwyt, żeby zmienić kolejność. Jeśli nie ma folderów, lista jest już w tej kolejności.
 ### Zmiana kilku skryptów naraz
 
 1. Kliknij **Wybierz skrypty regex**.

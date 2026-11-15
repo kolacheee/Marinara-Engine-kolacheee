@@ -61,7 +61,7 @@ Marinara Engineは、Conversation、Roleplay、Game Modeの3つのモードを�
 
 UIと実行時の状態には、`packages/client/src/stores/`にあるZustandストア群を使います。永続化しているストアは`ui.store.ts`だけです。残りは、チャット、エージェント、ゲーム、ローカルモデルのランタイム、翻訳、ダイアログ、バックフィルの実行時状態を保持します。
 
-現在のストアファイルは次のとおりです: `agent.store.ts`、`backfill.store.ts`、`chat-tools-menu.store.ts`、`chat.store.ts`、`conversation-games.store.ts`、`dialog.store.ts`、`encounter.store.ts`、`floating-window.store.ts`、`gallery.store.ts`、`game-asset.store.ts`、`game-mode.store.ts`、`game-state.store.ts`、`sidecar.store.ts`、`translation.store.ts`、`ui.store.ts`。テーブルゲームのストアは、それぞれのダウンロードできるパッケージに移りました。`conversation-games.store.ts`が扱うのは、Conversationのゲームの選択と準備だけです。
+現在のストアファイルは次のとおりです: `agent.store.ts`、`backfill.store.ts`、`chat-tools-menu.store.ts`、`chat.store.ts`、`combat-screen.store.ts`、`conversation-games.store.ts`、`dialog.store.ts`、`encounter.store.ts`、`floating-window.store.ts`、`gallery.store.ts`、`game-asset.store.ts`、`game-mode.store.ts`、`game-state.store.ts`、`roleplay-sheet.store.ts`、`sidecar.store.ts`、`translation.store.ts`、`ui.store.ts`。テーブルゲームのストアは、それぞれのダウンロードできるパッケージに移りました。`conversation-games.store.ts`が扱うのは、Conversationのゲームの選択と準備だけです。`combat-screen.store.ts`は表示中の戦闘画面とラウンドを追跡し、その間だけ上部バーに戦闘の操作を表示できるようにします。`roleplay-sheet.store.ts`は、Roleplayチャットでどのメンバーのルールセットのシートを開いているかを追跡します。
 
 #### `ui.store.ts`: 設定とUIの外枠
 
@@ -126,7 +126,7 @@ Roleplayモードのシーンと世界の状態を保持します。
 
 ### React Query(サーバーのデータ)
 
-サーバーのデータはすべてTanStack React Queryで取得してキャッシュします。設定は`main.tsx`にあります。
+サーバーのデータはすべてTanStack React Queryで取得してキャッシュします。設定は`lib/query-client.ts`にあります。
 
 - Stale time: 30秒(全体のデフォルト)。
 - リトライ: 1回。
@@ -137,7 +137,7 @@ Roleplayモードのシーンと世界の状態を保持します。
 
 ## フックのリファレンス
 
-フックはすべて`src/hooks/`にあり、`use-{entity}.ts`という命名に従います。
+フックはすべて`src/hooks/`にあり、`use-{entity}.ts`という命名に従います。以下の表は主なフックだけを示しています。すべてのフックは`packages/client/src/hooks/`にあります。
 
 ### チャットのフック(`use-chats.ts`)
 
@@ -181,27 +181,25 @@ Roleplayモードのシーンと世界の状態を保持します。
 | フック                           | 種類     | 説明                                                          |
 | ------------------------------ | -------- | ---------------------------------------------------------- |
 | `usePresets()`                 | クエリー    | すべてのプリセット                                                |
-| `usePreset(id)` | クエリー | プリセット1件 |
-| `usePresetFull(id)` | クエリー | セクション、グループ、選択肢を含むプリセット |
+| `usePresetFull(id)` | Query | セクション、グループ、変数を含む1つのプリセット |
 | `useDefaultPreset()` | クエリー | デフォルトのプリセット |
-| `useCreatePreset()` | ミューテーション | プリセットを作成 |
 | `useUpdatePreset()` | ミューテーション | プリセットを更新 |
 | `useDeletePreset()` | ミューテーション | プリセットを削除 |
-| `usePresetSections(presetId)` | クエリー | プリセットのプロンプトセクション |
-| `usePresetGroups(presetId)` | クエリー | セクションのグループ |
-| `usePresetVariables(presetId)` | クエリー | プリセット変数(旧称: choice block) |
-| `usePreviewPreset()` | ミューテーション | `{ presetId, chatId, choices }`に対応する描画済みプロンプトのプレビュー |
+| `useDuplicatePreset()` | Mutation | プリセットを複製 |
+| `useSetDefaultPreset()` | Mutation | プリセットをデフォルトに設定 |
+| `useCreateSection()` | Mutation | プロンプトセクションを作成(更新、削除、並べ替えのフックも同じ場所にあります) |
+| `useCreateGroup()` | Mutation | セクショングループを作成(更新、削除のフックも同じ場所にあります) |
+| `useCreateVariable()` | Mutation | プリセット変数(旧選択ブロック)を作成(更新、削除、並べ替えのフックも同じ場所にあります) |
 
 ### エージェントのフック(`use-agents.ts`)
 
 | フック                | 種類     | 説明                     |
 | -------------------- | -------- | ------------------------------- |
 | `useAgentConfigs()`  | クエリー    | すべてのエージェント設定        |
-| `useAgentConfig(id)` | クエリー | エージェント設定1件 |
 | `useCreateAgent()` | ミューテーション | カスタムエージェントを作成 |
 | `useUpdateAgent()` | ミューテーション | エージェント設定を更新 |
 | `useDeleteAgent()` | ミューテーション | エージェントを削除 |
-| `useToggleAgent()` | ミューテーション | 組み込みエージェントのオン/オフを切り替え |
+| `useUpdateAgentByType()` | Mutation | エージェントの種類を指定して設定を更新 |
 
 ### 生成のフック(`use-generate.ts`)
 
@@ -231,7 +229,7 @@ Roleplayモードのシーンと世界の状態を保持します。
 | `use-background-autonomous.ts` | 非アクティブなチャットへのバックグラウンドポーリング      |
 | `use-translate.ts`             | テキストの翻訳                          |
 | `use-apply-regex.ts`           | メッセージへの正規表現スクリプトの適用         |
-| `use-custom-tools.ts` | カスタムツールのCRUD |
+| `use-custom-tools.ts` | カスタムツールのCRUD、並べ替え、一括切り替え |
 | `use-knowledge-sources.ts`     | 知識ソースの管理                |
 | `use-gallery.ts`               | チャットのギャラリー画像                      |
 | `use-chat-folders.ts`          | チャットフォルダーのCRUDと並べ替え          |
@@ -326,9 +324,9 @@ AIゲームマスター(GM)の画面です。chatフォルダーの外、`compon
 パネルは`RightPanel.tsx`の2か所に登録します。
 
 1. `PANEL_CONFIG`: タイトル、アイコン、グラデーションの色。
-2. `PANELS`: コンポーネントの対応表。
+2. `RIGHT_PANELS`(`right-panel-panels.ts`内): コンポーネントのマップ。
 
-パネルはモジュールレベルで状態を維持します。`mountedPanels`というSetが訪問済みのパネルを記録します。一度マウントしたパネルは状態を保つためDOMに残り、`display: none`または`aria-hidden`で隠れます。
+パネルは`RightPanel`内の`useState`で保持する`mountedPanels` Setを通じて状態を維持します。このSetが訪問済みのパネルを記録します。一度マウントしたパネルは状態を保つためDOMに残り、`display: none`または`aria-hidden`で隠れます。
 
 ### UIプリミティブ(`components/ui/`)
 
@@ -340,8 +338,11 @@ AIゲームマスター(GM)の画面です。chatフォルダーの外、`compon
 | `EmojiPicker`      | 検索できる絵文字のポップオーバー(ポータルで描画)                            |
 | `GifPicker`        | Giphy APIを使ったGIF検索                                          |
 | `HelpTooltip`      | ホバーするとポータルで位置決めしたツールチップを表示するアイコン                     |
+| `LibraryToolbar` | すべてのライブラリーパネルで共通のツールバー(下記参照) |
 
 UIコンポーネントはすべて制御コンポーネント(valueとonChange)として作り、オーバーレイはポータルで描画します。
+
+**ライブラリーパネルは`LibraryToolbar`を使います。** Characters、Personas、Lorebooks、Agents、Presetsパネルの各タブは、上部の操作をこのコンポーネントで描画します。任意のライブラリー行(全幅ボタン1つ、またはDownload / Open Libraryの組み合わせ)、作成 / インポート / エクスポート / 選択、共通の並べ替えメニュー付き検索、New Folder、そして`children`としてパネルのフィルターを渡します。行はスロットではなく型付きのpropsなので、新しいライブラリーパネルも、別々に変更されていくコピーではなく同じマークアップを使えます。パネル内でツールバーを手作りする代わりに、ここにpropを追加してください。
 
 ## APIクライアント(`lib/api-client.ts`)
 
@@ -466,12 +467,13 @@ Personal Extensionsは、サーバーに保存され、ハッシュの完全一�
 | `/api/connections`   | GET, POST, PATCH, DELETE | API接続のCRUD、複製、テスト                                                      |
 | `/api/agents`        | GET, POST, PATCH, DELETE | エージェントのCRUD、エコーメッセージ、実行履歴。組み込みエージェントの切り替えは`PUT /api/agents/toggle/:agentType`を使います |
 | `/api/lorebooks`     | GET, POST, PATCH, DELETE | ロアブックのCRUD、エントリー、エクスポート                                                            |
-| `/api/custom-tools` | GET, POST, PATCH, DELETE | カスタムツールのCRUD |
+| `/api/custom-tools` | GET, POST, PUT, PATCH, DELETE | カスタムツールのCRUD、`PUT /reorder`、`PUT /enabled` |
 | `/api/regex-scripts` | GET, POST, PUT, PATCH, DELETE | 正規表現スクリプトのCRUD、`PUT /reorder`、`PUT /enabled` |
 | `/api/library-folders/regex` | GET, POST, PATCH, DELETE | 正規表現スクリプトのフォルダーのCRUD、一時停止状態、`POST /move` |
+| `/api/library-folders/functions` | GET, POST, PATCH, DELETE | カスタムツールのフォルダーのCRUD、一時停止状態、`POST /move` |
 
 
-`PUT /api/regex-scripts/enabled`は`scriptIds`と`enabled`を受け取ります。存在しないIDがあれば、どのスクリプトも更新せず404を返します。一覧には保存済みの`enabled`とは別に`pausedByFolder`が含まれます。
+`PUT /api/regex-scripts/enabled`は`scriptIds`と`enabled`を受け取ります。存在しないIDがあれば、どのスクリプトも更新せず404を返します。一覧には保存済みの`enabled`とは別に`pausedByFolder`が含まれます。`PUT /api/custom-tools/enabled`も`toolIds`で同じように動作し、カスタムツールの一覧にも`pausedByFolder`が含まれます。一時停止したフォルダー内のツールは、モデルに一切提示されません。
 
 エージェントの記憶機能のツールは`/api/agents/memory/:agentType/:chatId`を使います。`agentType`はエージェントの種別文字列、`chatId`は対象チャットのidです。
 
@@ -487,7 +489,7 @@ Personal Extensionsは、サーバーに保存され、ハッシュの完全一�
 | プレフィックス                    | エンドポイント                        | 説明                  |
 | ------------------------- | -------------------------------- | ---------------------------- |
 | `/api/chat-folders`       | CRUDと並べ替え                | チャットフォルダーの管理       |
-| `/api/conversation`       | schedule, status, message, check | 自律メッセージ送信の仕組み  |
+| `/api/conversation` | schedule, status, activity, autonomous | 自律メッセージ送信システム |
 | `/api/scene`              | create, plan, conclude           | シーンの分岐             |
 | `/api/encounter`          | init, action, summary            | 戦闘エンカウント            |
 | `/api/translate`          | POST                             | テキストの翻訳             |
@@ -496,8 +498,8 @@ Personal Extensionsは、サーバーに保存され、ハッシュの完全一�
 | `/api/game-rulesets` | インポート、スキーマ、ソース、削除 | インポートしたGame Modeのルールセット |
 | `/api/game-worlds` | ライブラリーのCRUDと世界の編集 | 新しいゲームとマップパック用の世界ライブラリー |
 | `/api/game-tile-packs` | タイルパック、および`/creatures`と`/boards` | マップ、クリーチャー、戦闘盤面のアートパック |
-| `/api/turn-games` | Chess、UNO、Pokerのルート | Conversationのテーブルゲーム |
-| `/api/conversation-calls` | 通話とセッションのルート | Conversationの音声通話 |
+| `/api/turn-games` | catalog, state, start, move, resign | Conversationのテーブルゲーム(ゲームはパッケージが提供します) |
+| `/api/conversation-calls` | 通話とセッションのルート(Conversation通話パッケージが登録) | Conversationの音声通話 |
 
 ### メディアとアセット
 
@@ -536,9 +538,9 @@ Personal Extensionsは、サーバーに保存され、ハッシュの完全一�
 
 | エンドポイント                        | 説明                             |
 | ------------------------------- | --------------------------------------- |
-| `/api/updates/check` | GitHubリリースとのバージョン比較 |
-| `/api/updates/latest` | 最新リリースのメタデータ |
-| `/api/updates/commits-behind` | Gitインストールのアップデートまでの差分 |
+| `/api/updates/check` | GitHubリリースに対するバージョン確認。gitインストールの場合は、チェックアウトがアップデートチャンネルからどれだけ遅れているかも確認 |
+| `/api/updates/channel` | アップデートチャンネル、現在のブランチ、チャンネル一覧 |
+| `/api/updates/apply` | アップデートを適用 |
 | `/api/backup`                   | フルバックアップ、エクスポート、インポート             |
 | `/api/import/*`                 | SillyTavernとMarinaraのプロファイルのインポート |
 | `/api/admin/clear-all`          | 全データの削除                    |
@@ -561,13 +563,13 @@ Personal Extensionsは、サーバーに保存され、ハッシュの完全一�
 
 - マニフェスト: `public/manifest.json`。アプリ名は「Marinara Engine」、表示モードはstandalone、テーマはダークです。
 - アイコン: 64pxのファビコン、192pxと512pxのマスカブルアイコン、スプラッシュ用のロゴ。
-- Service Worker: 自動アップデート方式のWorkbox。
+- Service worker: Workboxを`registerType: "prompt"`で使用するため、新しいバージョンはユーザーが受け入れるまで待機します。
 - キャッシュ: 静的アセットはキャッシュし、`/api/*`のルートはNetworkOnlyです。
 - キープアライブ: `lib/keep-alive.ts`がWeb Locks APIとBroadcastChannelのpingを使い、タブがスリープしないようにします。
 
 ### バージョン不一致の検出
 
-`App.tsx`は5分ごとに`/api/health`をポーリングします。サーバーのバージョンがクライアントにキャッシュされたバージョンと異なる場合、クライアントはService Workerの登録を解除します。また、アップデートを強制するためにキャッシュも消去します。
+`App.tsx`は5分ごとに`/api/health`をポーリングします。サーバーのバージョンがクライアントのキャッシュ済みバージョンと異なる場合、クライアントは`lib/browser-runtime.ts`の`forceRefreshSpa`で自身を再読み込みします。この関数はService workerの登録を解除し、キャッシュを消去します。
 
 ## エージェントシステム
 
@@ -690,7 +692,7 @@ pnpm build
 ### バンドルサイズの上限
 
 - メインのエントリー: 最大1 MB。
-- チャンクごと: 最大500 KB。
+- チャンクごと: `chunkSizeWarningLimit`は512 KBです。超えるとビルドの警告が表示されますが、ビルドは失敗しません。
 - ベンダーの分割: react、tanstack、motion、zustand、icons、misc。
 
 ### パスエイリアス

@@ -83,7 +83,7 @@ Otagować można tylko obrazy z etykietą **My upload**.
 
 Tagi zapisuje się małymi literami. Mogą zawierać litery, cyfry, spacje, łączniki i podkreślenia, do 40 znaków każdy.
 
-Oznaczaj obrazy tagami nazywającymi przedstawione miejsca, na przykład `guest bedroom` lub `harbor tavern`. Agent **Background** odczytuje tagi przy wyborze tła, a Illustrator ponownie używa obrazu, którego tag złożony z co najmniej dwóch słów nazywa miejsce z historii, zamiast malować nowy. Zobacz [Ponowne używanie posiadanych obrazów](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
+Oznaczaj obrazy tagami nazywającymi przedstawione miejsca, na przykład `guest bedroom` lub `harbor tavern`. Agent **Background** odczytuje tagi przy wyborze tła, a Illustrator ponownie używa obrazu, którego tag złożony z co najmniej dwóch słów nazywa miejsce z historii, zamiast malować nowy (tagi jednowyrazowe się tu nie liczą). Zobacz [Ponowne używanie posiadanych obrazów](../media/scene-backgrounds.md#reusing-pictures-you-already-have).
 
 ### Pobieranie tła
 

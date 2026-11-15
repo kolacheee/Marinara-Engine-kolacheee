@@ -35,12 +35,24 @@ Kreator grupuje pola w sekcjach **Chat** (czat), **Story** (fabuła), **Pictures
 
 Jak wypełniać pola:
 
-- Wybieraj elementy z listy każdego pola. W polach **Agents**, **Tools** i **Lorebooks** można wybrać kilka elementów. W polu **Tools** każde narzędzie włączasz albo wyłączasz jego polem wyboru. W polu na jeden element wybierz **None** (brak), aby je wyczyścić.
-- Na komputerze w listach agentów i lorebooków przytrzymaj <kbd>Ctrl</kbd> (w systemie macOS <kbd>Command</kbd>), aby wybrać kilka elementów. Na telefonie użyj kontrolek zaznaczania. **Clear selection** (wyczyszczenie zaznaczenia) opróżnia listę.
+- Kliknij pole, żeby otworzyć okno wyboru z wyszukiwarką i folderami biblioteki, podobne do okien wyboru presetów i lorebooków. W polu na jeden element wybierz **Brak**, aby je wyczyścić.
+- W polach **Agenci** i **Lorebooki** można wybrać kilka elementów: zaznacz je w oknie albo użyj **Dodaj wszystkie** przy folderze. Każdy wybrany element pojawia się pod polem z przyciskiem usuwania, a **Wyczyść wybór** opróżnia pole. **Narzędzia** to lista pól wyboru: zaznacz narzędzie, żeby je włączyć.
 - Na komputerze możesz otworzyć pasek boczny biblioteki, nie zamykając edytora, i przeciągnąć element do jego pola.
 - Pola **Parameters**, **Memory & summary** i **Translation** pokazują tylko, czy profil je zawiera. Zmień je w Chat Settings, a potem zapisz w profilu.
 
-W kreatorze nowego czatu krok **Use a Profile** (użycie profilu) ma też pozycję **New profile…** (nowy profil) na początku listy i przycisk **Edit** obok zapisanego profilu. Po zapisaniu kreator wybiera ten profil.
+W kreatorze nowego czatu krok **Użyj profilu** ma przycisk **Nowy** obok pola profilu i **Edytuj** obok zapisanego profilu. Po zapisaniu kreator wybiera ten profil.
+
+## Zakładka Profile
+
+Żeby zarządzać profilami poza czatem, otwórz panel **Presety** i wybierz zakładkę **Profile**. Zawiera wszystkie profile trybów Conversation i Roleplay, z profilem **Domyślny** każdego trybu na początku. Przyciski nad listą (**Wszystkie**, **Conversation**, **Roleplay**) filtrują ją według trybu, a **Szukaj profili** filtruje ją według nazwy. Gwiazdka oznacza profil domyślny dla nowych czatów w danym trybie.
+
+- Kliknij profil, żeby otworzyć go w edytorze profilu na środku ekranu. **Wstecz** zapisuje zmiany, a **Anuluj** je odrzuca. Profili **Domyślny** nie można edytować, więc się nie otwierają.
+- **Utwórz profil ustawień** otwiera pusty profil. Wybierz jego tryb przyciskami **Conversation** i **Roleplay**; zapisany profil zachowuje swój tryb.
+- Najedź na wiersz, żeby oznaczyć go gwiazdką jako domyślny, zduplikować, wyeksportować lub usunąć. Na telefonie te przyciski są zawsze widoczne przy prawej krawędzi wiersza.
+- **Zaznacz profile** pozwala wyeksportować lub usunąć kilka naraz. **Zaznacz wszystkie profile** pomija profile Domyślny, których nie można usunąć. Każdy profil eksportuje się do osobnego pliku.
+- **Importuj profil ustawień (.json)** wczytuje plik `.marinara-settings-profile.json`.
+
+**Edytuj** w ustawieniach czatu nadal otwiera kreator w oknie nad czatem.
 
 ## Zapisywanie ustawień czatu w profilu
 

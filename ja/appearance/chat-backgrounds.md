@@ -83,7 +83,7 @@
 
 タグは小文字で、文字、数字、スペース、ハイフン、アンダースコアを使えます。1つにつき40文字までです。
 
-`guest bedroom`や`harbor tavern`のように、画像に描かれた場所をタグにしてください。**Background**エージェントは選ぶときにタグを読みます。また、2語以上のタグが物語の場所を示していれば、Illustratorは新しく描かずにその画像を再利用します。[手持ちの画像の再利用](../media/scene-backgrounds.md#reusing-pictures-you-already-have)を参照してください。
+`guest bedroom`や`harbor tavern`のように、画像に描かれた場所をタグにしてください。**Background**エージェントは選ぶときにタグを読みます。また、2語以上のタグが物語の場所を示していれば、Illustratorは新しく描かずにその画像を再利用します(1語だけのタグは対象になりません)。[手持ちの画像の再利用](../media/scene-backgrounds.md#reusing-pictures-you-already-have)を参照してください。
 
 ### 背景をダウンロードする
 

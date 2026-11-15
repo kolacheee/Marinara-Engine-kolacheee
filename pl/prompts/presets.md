@@ -49,7 +49,7 @@ Skrypty regex mają własną stronę, [Biblioteka → Skrypty regex](../extendin
 
 ## W układzie klasycznym: panel Presets
 
-Zakładka **Presety** zawiera **Prompty** i **Funkcje**. Użyj **Utwórz preset**, żeby utworzyć preset, **Importuj preset**, żeby wczytać plik `.json`, albo **Zaznacz presety**, żeby wyeksportować lub usunąć kilka naraz. W zakładce **Regexes** możesz porządkować skrypty w folderach albo włączać i wyłączać kilka naraz. Zobacz [Skrypty regex](../extending/regex-scripts.md#manage-your-scripts).
+Panel ma cztery zakładki: **Prompty**, **Regexy**, **Narzędzia** i **Profile**. Każda ma u góry ten sam rząd przycisków i pole wyszukiwania. W zakładce **Prompty** użyj **Utwórz preset**, żeby utworzyć preset, **Importuj preset**, żeby wczytać plik `.json`, albo **Zaznacz presety**, żeby wyeksportować lub usunąć kilka naraz; **Zaznacz wszystkie presety** zaznacza każdy preset widoczny w wynikach wyszukiwania. Zakładka **Regexy** zawiera skrypty regex; zobacz [Skrypty regex](../extending/regex-scripts.md#manage-your-scripts). Zakładka **Narzędzia** zawiera własne narzędzia; zobacz [Własne narzędzia](../extending/custom-tools.md). Zakładka **Profile** zawiera profile ustawień czatu; zobacz [Profile ustawień](../chats/settings-profiles.md#the-profiles-tab).
 
 - Pole **Search presets** (wyszukiwanie presetów) filtruje listę.
 - Menu sortowania oferuje opcje **Manual order** (kolejność ręczna), **A-Z**, **Z-A**, **Newest** i **Oldest**. Przy **Manual order** przeciągnij wiersz albo naciśnij <kbd>Alt</kbd>+<kbd>Up</kbd> lub <kbd>Alt</kbd>+<kbd>Down</kbd> na zaznaczonym wierszu. Na ekranie dotykowym naciśnij i przytrzymaj wiersz, żeby go podnieść.

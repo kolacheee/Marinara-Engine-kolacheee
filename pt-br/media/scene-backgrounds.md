@@ -40,7 +40,9 @@ Antes de pintar um novo lugar, o Illustrator procura uma imagem que você já te
 2. Uma imagem da biblioteca cujo nome, ou uma tag de duas ou mais palavras, apareça no local do World State. Por exemplo, `generated-guest-bedroom.png`, ou uma imagem com a tag `guest bedroom`, serve para "Smith House, guest bedroom".
 3. Sem um local no World State, o nome do lugar escrito pelo modelo de prompt do Illustrator é comparado da mesma forma.
 
-Se uma imagem corresponder, ela é mostrada (com o clima da história, quando essa versão existe) e nada é pintado. Só um lugar sem correspondência recebe uma nova imagem. Marcar as imagens enviadas com nomes de lugares (veja [Adicionar tags a um plano de fundo](../appearance/chat-backgrounds.md#tag-a-background)) é a forma mais fácil de economizar requisições de imagem.
+Maiúsculas, minúsculas, acentos e "'s" não fazem diferença, e o nome mais específico tem prioridade sobre um simples `bedroom.png`. Se uma imagem corresponder, ela é mostrada (com o clima da história, quando essa versão existe) e nada é pintado. Só um lugar sem correspondência recebe uma nova imagem.
+
+Para garantir que um lugar mantenha a imagem, dê ao arquivo o nome do lugar (`kitchen.png` para "Kitchen") ou adicione uma tag de duas ou mais palavras, como `smith house kitchen` (veja [Adicionar tags a um plano de fundo](../appearance/chat-backgrounds.md#tag-a-background)). Tags de uma palavra só, como `kitchen` ou `night`, são ignoradas aqui, porque geralmente descrevem a aparência de uma imagem.
 
 ## Versões dos planos de fundo para cada clima
 

@@ -23,17 +23,19 @@ Wähl den Charakter aus, wenn du einen Chat startest. Siehe [Roleplay Mode: Erst
 
 ## Der Character Editor im Überblick
 
-Der Character Editor ersetzt den Chatbereich durch einen seitenfüllenden Arbeitsbereich. Auf einem breiten Bildschirm stehen die Tabs links untereinander. Auf einem schmalen Bildschirm bilden sie oben eine scrollbare Leiste. Die Tabs lauten der Reihe nach **Metadaten**, **Karte**, **Einführung**, **Gespräch**, **Lorebook**, **Sprites**, **Galerie**, **Farben**, **Stimme**, **Statistik** und **Erweitert**. Jeder Tab springt zu seinem Abschnitt in einem langen Formular, du kannst also auch einfach scrollen.
+Der Character Editor ersetzt den Chatbereich durch einen seitenfüllenden Arbeitsbereich. Auf einem breiten Bildschirm stehen die Tabs als Schaltflächenreihe in der Kopfzeile. Bei manchen mittleren Breiten zeigen die Schaltflächen nur ihre Symbole; zeig darauf, um den Namen zu sehen. Auf einem schmalen Bildschirm werden sie in einem Menü unter dem Namen zusammengefasst. Die Tabs lauten der Reihe nach **Metadaten**, **Karte**, **Einführung**, **Gespräch**, **Lorebook**, **Bilder**, **Farben**, **Stimme**, **Statistik** und **Erweitert**. Jeder Tab springt zu seinem Abschnitt in einem langen Formular, du kannst also auch einfach scrollen.
 
 Die Kopfzeile enthält die Elemente, die du am häufigsten brauchst:
 
 - Den Pfeil **Back** (Zurück), die Avatar-Kachel, ein Namensfeld und ein Feld für Titel oder Kommentar, gedacht für eine kurze Kennzeichnung wie `Modern AU version`. Eine Zeile darunter zeigt Ersteller und Version.
 - **Save**. Die Schaltfläche ist inaktiv, bis du etwas änderst. Während sie arbeitet, zeigt sie **Uploading…** (ein Avatar wird hochgeladen), **Embedding…** (ein Lorebook wird der Karte hinzugefügt) oder **Saving…**.
 - Den Stern **Favorite** (Favorit).
-- **Export character** (Charakter exportieren). Siehe [Charakterkarten importieren und exportieren](import-export.md).
-- **Import character as persona** (Charakter als Persona importieren), das diese Karte in eine neue Persona kopiert. Siehe [Personas](personas.md).
-- **Duplicate character** (Charakter duplizieren).
-- **Delete character** (Charakter löschen).
+- Das Menü **…** (**Weitere Aktionen**) mit:
+  - **Professor Mari fragen**, das Professor Mari zu dieser Karte befragt.
+  - **Charakter exportieren**. Siehe [Charakterkarten importieren und exportieren](import-export.md).
+  - **Charakter als Persona importieren**, das diese Karte in eine neue Persona kopiert. Siehe [Personas](personas.md).
+  - **Charakter duplizieren**.
+  - **Charakter löschen**.
 
 Beim Verlassen des Editors werden deine Änderungen zuerst gespeichert. Schlägt das Speichern fehl, bleibt der Editor mit deinem Entwurf geöffnet, damit du es erneut versuchen kannst.
 
@@ -44,11 +46,22 @@ Tabs mit eigener Anleitung:
 | **Onboarding** | [Interaktives Onboarding](interactive-onboarding.md) |
 | **Convo** | [Conversation-Mode-Profile](../conversation/profiles.md) |
 | **Lorebook** | [Lorebooks mit Charakteren und Personas verknüpfen](../lorebooks/linking-to-characters.md) |
-| **Sprites** | [Charakter-Sprites](sprites.md) |
-| **Galerie** | [Galerien für Charaktere und Personas](galleries.md) |
+| **Bilder** | [Charakter-Sprites](sprites.md) und [Galerien für Charaktere und Personas](galleries.md). Siehe unten [Tab „Bilder“](#images-tab). |
 | **Colors** und **Stats** | [Charakterfarben und Roleplay-Werte](colors-and-stats.md) |
 
-Die Abschnitte unten behandeln **Metadaten**, **Karte**, **Stimme** und **Erweitert**, dazu Avatare und den Versionsverlauf.
+Die Abschnitte unten behandeln **Metadaten**, **Karte**, **Bilder**, **Stimme** und **Erweitert**, dazu Avatare und den Versionsverlauf.
+
+
+## Tab „Bilder“
+
+Der Tab **Bilder** bündelt alles rund um das Aussehen eines Charakters auf Bildern. Über die Schaltflächen oben springst du zum jeweiligen Bereich:
+
+- **Charakterbogen**: ein Referenzbild des Charakters. Klick auf **Verwalten**, um eines zu erstellen, hochzuladen oder auszuwählen, und aktiviere **Als Referenzbild verwenden**, damit es bei der Bildgenerierung dem Avatar vorgezogen wird. Siehe [Charakterbogen](sprites.md#character-sheet).
+- **Selfie instructions**: optionale Vorgaben für die Conversation-Selfies dieses Charakters, etwa zum Kamerastil oder zu Gesichtsausdrücken. Auch Noodle und Slurp können sie verwenden, wenn du das in ihren Einstellungen einschaltest. Siehe [Selfies](../conversation/selfies.md).
+- **Sprites**: Gesichtsausdrücke, Ganzkörper-Sprites und Anruf-Clips. Siehe [Charakter-Sprites](sprites.md).
+- **Galerie**: Bilder und Videos, die beim Charakter gespeichert sind. Siehe [Galerien für Charaktere und Personas](galleries.md).
+
+Der Tab **Bilder** einer Persona hat dieselben Bereiche, außer **Selfie instructions**.
 
 <a id="metadata-tab"></a>
 

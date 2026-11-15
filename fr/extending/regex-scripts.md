@@ -46,16 +46,17 @@ Sur la page **Regex scripts**, chaque script de la liste affiche son numéro d'e
 
 Dans la disposition classique, chaque ligne de la liste **Regexes** affiche le nom du script, une étiquette **AI** ou **User**, le motif sous la forme `/pattern/flags`, un interrupteur marche/arrêt (effet immédiat), **Edit regex** (modifier la regex, crayon) et **Delete regex** (supprimer la regex, corbeille). Tant qu'il n'y a aucun script, la liste affiche "No regexes yet". Fais glisser une ligne par sa poignée pour changer l'ordre d'exécution.
 
+Pour trouver un script, saisis du texte dans **Search regexes** (rechercher des regex). La recherche porte sur les noms et les motifs des scripts, et ouvre tout dossier contenant une correspondance. Tu ne peux pas faire glisser les scripts pour les réordonner pendant une recherche.
+
 ### Organiser les scripts dans des dossiers
 
 1. Clique sur **Nouveau dossier** et nomme le dossier.
 2. Clique sur l'icône de dossier sur la ligne d'un script pour ouvrir **Déplacer vers un dossier**.
 3. Choisis le dossier. Pour sortir un script d'un dossier, choisis **Aucun dossier (niveau supérieur)**.
 
-Clique sur le nom d'un dossier pour le déplier ou le replier. Désactive l'interrupteur du dossier pour mettre ses scripts en pause dans tous les chats. L'en-tête affiche **En pause**. Chaque script garde la position enregistrée de son interrupteur. Un interrupteur gris en position activée indique un script activé mais mis en pause par le dossier. Supprimer le dossier déplace ses scripts au niveau supérieur, où ils suivent leurs propres interrupteurs.
+Clique sur le nom d'un dossier pour le déplier ou le replier. Désactive l'interrupteur du dossier pour mettre ses scripts en pause dans tous les chats. L'en-tête affiche **En pause**. Chaque script garde la position enregistrée de son interrupteur. Un script activé mais placé dans un dossier en pause affiche un interrupteur gris et une étiquette **Paused by folder** (mis en pause par le dossier). Supprimer le dossier déplace ses scripts au niveau supérieur, où ils suivent leurs propres interrupteurs.
 
-Les dossiers regroupent les scripts sans changer leur ordre d'exécution. Clique sur **Ordre d'exécution** pour voir la liste complète dans l'ordre où elle s'exécute. Fais glisser un script par sa poignée pour changer cet ordre. Si tu n'as aucun dossier, la liste est déjà dans l'ordre d'exécution. Dans cette vue, une icône de pause signale un script activé dont le dossier est en pause.
-
+Les dossiers regroupent les scripts sans changer leur ordre d'exécution. Clique sur **Ordre d'exécution** pour voir la liste complète dans l'ordre où elle s'exécute. Fais glisser un script par sa poignée pour changer cet ordre. Si tu n'as aucun dossier, la liste est déjà dans l'ordre d'exécution.
 ### Modifier plusieurs scripts à la fois
 
 1. Clique sur **Sélectionner des scripts regex**.

@@ -37,7 +37,7 @@
 - 工具上的 **⋯** 菜单（也可以右键点击工具）包含 **Export**(导出)、**Select**(选择) 和 **Delete**(删除)。
 - 列表上方的 **Select** 可以选择多个工具，然后在列表下方的操作栏中 **Export** 或 **Delete**。
 
-在经典布局中，**Functions** 标题栏有 **Create function**(创建函数)、**Import functions from ZIP or JSON**(从 ZIP 或 JSON 导入函数) 和 **Export functions to ZIP**(导出函数为 ZIP)，每行有 **Edit function**(编辑函数) 和 **Delete Function**(删除函数)。
+在经典布局中，**Functions** 标题栏有 **Create function**(创建函数)、**Import tools from ZIP or JSON**(从 ZIP 或 JSON 导入函数) 和 **Export tools to ZIP**(导出函数为 ZIP)，每行有 **Edit function**(编辑函数) 和 **Delete Function**(删除函数)。
 
 <a id="add-parameters"></a>
 
@@ -179,9 +179,9 @@ Game 聊天可以为工具规划使用单独的连接。其费用和行为见[�
 
 ## 导出与导入工具
 
-- 要导出单个工具，打开它并点击 **Export function**(导出函数)。这会保存一个 `.json` 文件。
-- 要导出全部工具，点击 **Export functions to ZIP**。
-- 要导入，点击 **Import functions from ZIP or JSON**，选择一个 `.json` 或 `.zip` 文件。会有一条消息报告导入了多少个工具。
+- 要导出单个工具，打开它并点击 **Export tool**(导出工具)。这会保存一个 `.json` 文件。
+- 要导出全部工具，点击 **Export tools to ZIP**。
+- 要导入，点击 **Import tools from ZIP or JSON**，选择一个 `.json` 或 `.zip` 文件。会有一条消息报告导入了多少个工具。
 
 导入的 Webhook 和脚本工具一律以关闭状态保存，**Include hidden chat context** 也是关闭的，即使文件要求开启其中任何一项。随后 Marinara 会显示类型、Webhook 地址和文件请求的权限。逐个打开导入的工具，检查它，只有在你信任它时才开启。Static 工具会保留导入时的开关状态。
 

@@ -85,7 +85,7 @@
 
 태그는 소문자로 저장되며, 글자, 숫자, 공백, 하이픈, 밑줄을 사용할 수 있습니다. 태그 하나는 최대 40자입니다.
 
-그림에 나온 장소를 `guest bedroom`이나 `harbor tavern`처럼 태그로 달아 두세요. **Background** 에이전트는 배경을 고를 때 태그를 읽습니다. Illustrator는 두 단어 이상으로 된 태그가 이야기 속 장소를 나타내는 그림이 있으면 새로 그리는 대신 그 그림을 재사용합니다. [기존 그림 재사용하기](../media/scene-backgrounds.md#reusing-pictures-you-already-have)를 참고하세요.
+그림에 나온 장소를 `guest bedroom`이나 `harbor tavern`처럼 태그로 달아 두세요. **Background** 에이전트는 배경을 고를 때 태그를 읽습니다. Illustrator는 두 단어 이상으로 된 태그가 이야기 속 장소를 나타내는 그림이 있으면 새로 그리는 대신 그 그림을 재사용합니다(한 단어로 된 태그는 여기에 해당하지 않습니다). [기존 그림 재사용하기](../media/scene-backgrounds.md#reusing-pictures-you-already-have)를 참고하세요.
 
 <a id="download-a-background"></a>
 

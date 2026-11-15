@@ -69,7 +69,7 @@ Se não funcionou: confira se **Story is at** abaixo da lista mostra o local e s
 
 Uma imagem na **Galeria** de um personagem ou de uma persona pode ser marcada como plano de fundo. Ela passa a aparecer em todos os chats em que esse personagem está, sem precisar configurar fixações em cada chat.
 
-1. Abra a aba **Galeria** do personagem. Clique no botão de tag de uma imagem e escolha **Use as background** (usar como plano de fundo).
+1. Abra **Imagens → Galeria** do personagem. Clique no botão de tag de uma imagem e escolha **Usar como plano de fundo**.
 2. Digite os locais que ela mostra, separados por vírgulas, como `{{char}}'s bedroom, {{char}}'s room`. Na galeria de um personagem, `{{char}}` é esse personagem; na de uma persona, `{{user}}` é essa persona. Deixe o campo vazio se a imagem não representar um local específico.
 
 O botão de tag da imagem passa a mostrar **Plano de fundo:** e os locais dela. Clique nele para **Edit places** (editar locais) ou **Remove background tag** (remover tag de plano de fundo).

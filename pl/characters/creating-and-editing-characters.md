@@ -23,17 +23,19 @@ Wybierz postać przy rozpoczynaniu czatu. Zobacz [Tryb Roleplay: pierwsze kroki]
 
 ## Edytor postaci w skrócie
 
-Edytor **Character Editor** zastępuje obszar czatu pełnoekranowym miejscem pracy. Na szerokim ekranie zakładki biegną w dół po lewej stronie. Na wąskim ekranie tworzą przewijany pasek u góry. Zakładki po kolei to **Metadane**, **Karta**, **Wprowadzenie**, **Rozmowa**, **Lorebook**, **Sprite'y**, **Galeria**, **Kolory**, **Głos**, **Statystyki** i **Zaawansowane**. Każda zakładka przeskakuje do swojej sekcji jednego długiego formularza, więc można też po prostu przewijać.
+Edytor **Character Editor** zastępuje obszar czatu pełnoekranowym miejscem pracy. Na szerokim ekranie zakładki tworzą rząd przycisków w nagłówku. Przy niektórych pośrednich szerokościach przyciski pokazują tylko ikony; najedź na ikonę, żeby zobaczyć nazwę. Na wąskim ekranie zakładki chowają się w menu pod nazwą. Zakładki po kolei to **Metadane**, **Karta**, **Wprowadzenie**, **Rozmowa**, **Lorebook**, **Obrazy**, **Kolory**, **Głos**, **Statystyki** i **Zaawansowane**. Każda zakładka przeskakuje do swojej sekcji jednego długiego formularza, więc można też po prostu przewijać.
 
 W nagłówku są elementy używane najczęściej:
 
 - Strzałka **Back** (wstecz), kafelek awatara, pole nazwy oraz pole tytułu lub komentarza na krótką etykietę w rodzaju `Modern AU version`. Wiersz pod nimi pokazuje autora i wersję.
 - **Save**. Przycisk jest nieaktywny, dopóki czegoś nie zmienisz. W trakcie pracy pokazuje napis **Uploading…** (wgrywa się awatar), **Embedding…** (lorebook jest dołączany do karty) albo **Saving…**.
 - Gwiazdka **Favorite** (ulubiona).
-- **Eksportuj postać**. Zobacz [Importowanie i eksportowanie kart postaci](import-export.md).
-- **Importuj postać jako personę**, czyli skopiowanie tej karty do nowej persony. Zobacz [Persony](personas.md).
-- **Duplikuj postać**.
-- **Usuń postać**.
+- Menu **…** (**Więcej działań**), które zawiera:
+  - **Zapytaj Professor Mari**, czyli pytanie do Professor Mari o tę kartę.
+  - **Eksportuj postać**. Zobacz [Importowanie i eksportowanie kart postaci](import-export.md).
+  - **Importuj postać jako personę**, czyli skopiowanie tej karty do nowej persony. Zobacz [Persony](personas.md).
+  - **Duplikuj postać**.
+  - **Usuń postać**.
 
 Opuszczenie edytora najpierw zapisuje zmiany. Jeśli zapis się nie powiedzie, edytor pozostaje otwarty z twoją wersją roboczą, żeby można było spróbować ponownie.
 
@@ -44,11 +46,22 @@ Zakładki, które mają własne przewodniki:
 | **Onboarding** | [Interaktywny onboarding](interactive-onboarding.md) |
 | **Convo** | [Profile w trybie Conversation Mode](../conversation/profiles.md) |
 | **Lorebook** | [Podpinanie lorebooków do postaci](../lorebooks/linking-to-characters.md) |
-| **Sprite'y** | [Sprite'y postaci](sprites.md) |
-| **Galeria** | [Galerie postaci i person](galleries.md) |
+| **Obrazy** | [Sprite'y postaci](sprites.md) i [Galerie postaci i person](galleries.md). Zobacz niżej [Zakładka Obrazy](#images-tab). |
 | **Colors** i **Stats** | [Kolory postaci i Statystyki Roleplay](colors-and-stats.md) |
 
-Poniższe sekcje omawiają zakładki **Metadane**, **Karta**, **Głos** i **Zaawansowane**, a do tego awatary i historię wersji.
+Poniższe sekcje omawiają zakładki **Metadane**, **Karta**, **Obrazy**, **Głos** i **Zaawansowane**, a do tego awatary i historię wersji.
+
+
+## Zakładka Obrazy
+
+Zakładka **Obrazy** zbiera wszystko, co dotyczy wyglądu postaci na obrazach. Przyciski u góry przenoszą do poszczególnych części:
+
+- **Arkusz postaci**: obraz referencyjny postaci. Kliknij **Zarządzaj**, żeby go utworzyć, wgrać lub wybrać, i włącz **Użyj jako obrazu referencyjnego**, żeby miał pierwszeństwo przed awatarem podczas generowania obrazów. Zobacz [Arkusz postaci](sprites.md#character-sheet).
+- **Instrukcje selfie**: opcjonalne wskazówki dla selfie tej postaci w trybie Conversation, takie jak styl zdjęć lub miny. Noodle i Slurp też mogą ich używać, jeśli włączysz to w ich ustawieniach. Zobacz [Selfie](../conversation/selfies.md).
+- **Sprite'y**: wyrazy twarzy, sprite'y całej sylwetki i klipy do rozmów. Zobacz [Sprite'y postaci](sprites.md).
+- **Galeria**: obrazy i filmy przechowywane z postacią. Zobacz [Galerie postaci i person](galleries.md).
+
+Zakładka **Obrazy** persony ma te same części z wyjątkiem pola **Instrukcje selfie**.
 
 <a id="metadata-tab"></a>
 

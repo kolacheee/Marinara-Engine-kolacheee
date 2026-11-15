@@ -83,7 +83,7 @@ Les résultats de GIF utilisent la classification pour adultes de Giphy. Tu ne p
 N'importe quelle image d'une Character Gallery ou d'une Persona Gallery peut devenir un emoji ou un sticker. Cela fonctionne seulement dans les chats qui incluent ce personnage ou cette persona.
 
 1. Ouvre le **Character Editor** ou le **Persona Editor**.
-2. Ouvre l'onglet **Gallery**, puis le sous-onglet **Images**.
+2. Ouvre l'onglet **Images**, puis **Galerie**, et son sous-onglet **Images**.
 3. Survole une image et clique sur le bouton de tag dans son coin en haut à gauche.
 4. Choisis **Make emoji** ou **Make sticker**.
 5. Dans la fenêtre **Custom Emoji** ou **Custom Sticker**, tape un nom.

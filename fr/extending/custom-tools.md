@@ -179,9 +179,9 @@ Tu dois quand même activer **Enable Tool Use** dans la section **Function Calli
 
 ## Exporter et importer des outils
 
-- Pour exporter un seul outil, ouvre-le et clique sur **Export function** (exporter la fonction). Un fichier `.json` est enregistré.
-- Pour exporter tous les outils, clique sur **Export functions to ZIP**.
-- Pour importer, clique sur **Import functions from ZIP or JSON** et choisis un fichier `.json` ou `.zip`. Un message indique combien d'outils ont été importés.
+- Pour exporter un seul outil, ouvre-le et clique sur **Export tool** (exporter l'outil). Un fichier `.json` est enregistré.
+- Pour exporter tous les outils, clique sur **Export tools to ZIP** (exporter les outils en ZIP).
+- Pour importer, clique sur **Import tools from ZIP or JSON** (importer des outils depuis un fichier ZIP ou JSON) et choisis un fichier `.json` ou `.zip`. Un message indique combien d'outils ont été importés.
 
 Les outils de type webhook et script importés sont toujours enregistrés désactivés, avec **Include hidden chat context** désactivé, même si le fichier demande l'un ou l'autre. Marinara affiche ensuite le type, l'adresse du webhook et les permissions demandées par le fichier. Ouvre chaque outil importé, examine-le, et ne l'active que si tu lui fais confiance. Les outils statiques conservent l'état marche/arrêt qu'ils avaient à l'import.
 

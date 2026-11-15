@@ -11,7 +11,7 @@
 1. **Character Editor**에서 캐릭터를, **Persona Editor**에서 페르소나를 여세요. **Library**(라이브러리) > **Characters**(캐릭터) 또는 **Library** > **Personas**(페르소나)를 연 다음 카드를 클릭하면 됩니다([캐릭터 만들기와 편집](../characters/creating-and-editing-characters.md)과 [사용자 페르소나](../characters/personas.md) 참고).
 2. **Convo** 탭을 클릭하세요.
 
-이 탭에는 **Convo Display Name**(대화(콘보) 표시 이름), **About Me**(내 소개), **Convo Behavior**(대화(콘보) 동작)가 있습니다. 캐릭터에는 **Weekly schedule**(주간 일정)도 있습니다. **Edit schedule**(일정 편집)이나 **Create schedule**(스케줄 만들기)이 함께 표시됩니다([스케줄](schedules.md) 참고). 캐릭터의 셀카에 적용할 선택 사항인 지침을 넣는 **Image generation instructions**(이미지 생성 지침)도 있습니다([셀카](selfies.md) 참고).
+이 탭에는 **Convo Display Name**(대화(콘보) 표시 이름), **About Me**(내 소개), **Convo Behavior**(대화(콘보) 동작)가 있습니다. 캐릭터에는 **Weekly schedule**(주간 일정)도 있습니다. **Edit schedule**(일정 편집)이나 **Create schedule**(스케줄 만들기)이 함께 표시됩니다([스케줄](schedules.md) 참고). 캐릭터의 셀카에 적용할 지침은 **Images**(이미지) 탭의 **Selfie instructions**로 옮겨졌습니다([셀카](selfies.md) 참고).
 
 ## 표시 이름 정하기
 

@@ -40,7 +40,9 @@ Bevor Illustrator einen neuen Ort malt, sucht er in dieser Reihenfolge nach eine
 2. Ein Bibliotheksbild, dessen Name oder ein Tag aus mindestens zwei Wörtern im Ort von World State vorkommt. Zum Beispiel passt `generated-guest-bedroom.png` oder ein Bild mit dem Tag `guest bedroom` zu „Smith House, guest bedroom“.
 3. Gibt es keinen Ort von World State, wird der Ortsname aus Illustrators Prompt-Modell auf dieselbe Weise abgeglichen.
 
-Passt ein Bild, wird es angezeigt (mit dem Wetter der Geschichte, falls diese Version existiert), und es wird nichts gemalt. Nur ein Ort ohne passenden Treffer bekommt ein neues Bild. Deine hochgeladenen Bilder mit Ortsnamen zu taggen (siehe [Einen Hintergrund taggen](../appearance/chat-backgrounds.md#tag-a-background)) ist der einfachste Weg, Bildanfragen zu sparen.
+Groß- und Kleinschreibung, Akzente und „'s“ spielen keine Rolle, und der genaueste Name hat Vorrang vor einem einfachen `bedroom.png`. Passt ein Bild, wird es angezeigt (mit dem Wetter der Geschichte, falls diese Version existiert), und es wird nichts gemalt. Nur ein Ort ohne passenden Treffer bekommt ein neues Bild.
+
+Damit ein Ort sein Bild behält, benenn die Datei nach dem Ort (`kitchen.png` für „Kitchen“) oder gib ihr ein Tag aus mindestens zwei Wörtern, etwa `smith house kitchen` (siehe [Einen Hintergrund taggen](../appearance/chat-backgrounds.md#tag-a-background)). Tags aus nur einem Wort wie `kitchen` oder `night` werden hier ignoriert, weil sie meist beschreiben, wie ein Bild aussieht.
 
 ## Wetterversionen von Hintergründen
 

@@ -69,7 +69,7 @@ Wenn es nicht funktioniert hat: Prüfe, ob **Story is at** unter der Liste den O
 
 Ein Bild in der **Galerie** eines Charakters oder einer Persona kann als Hintergrund markiert werden. Es erscheint dann in jedem Chat, an dem dieser Charakter teilnimmt, ohne dass du die Zuordnungen in jedem Chat einzeln festlegen musst.
 
-1. Öffne den Tab **Galerie** des Charakters. Klick auf die Tag-Schaltfläche eines Bildes und wähle **Use as background**.
+1. Öffne **Bilder → Galerie** des Charakters. Klick auf die Tag-Schaltfläche eines Bildes und wähle **Use as background**.
 2. Gib die dargestellten Orte durch Kommas getrennt ein, etwa `{{char}}'s bedroom, {{char}}'s room`. In der Galerie eines Charakters steht `{{char}}` für diesen Charakter; in der einer Persona steht `{{user}}` für diese Persona. Lass das Feld leer, wenn das Bild keinen bestimmten Ort darstellt.
 
 Die Tag-Schaltfläche des Bildes zeigt dann **Hintergrund:** und seine Orte. Klick darauf, um **Edit places** oder **Remove background tag** zu wählen.

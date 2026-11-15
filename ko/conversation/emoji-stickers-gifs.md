@@ -83,7 +83,7 @@ GIF 결과는 Giphy의 성인 등급을 씁니다. 앱에서는 이 등급을 �
 Character Gallery나 Persona Gallery에 있는 이미지는 어느 것이든 이모지나 스티커가 될 수 있습니다. 그 캐릭터나 페르소나가 들어간 채팅에서만 작동합니다.
 
 1. **Character Editor**나 **Persona Editor**를 여세요.
-2. **Gallery**(갤러리) 탭을 연 다음 **Images** 하위 탭을 여세요.
+2. **Images** 탭을 연 다음 **Gallery**(갤러리)를 열고 그 안의 **Images** 하위 탭을 여세요.
 3. 이미지 위에 마우스를 올리고 왼쪽 위 모서리의 태그 버튼을 클릭하세요.
 4. **Make emoji** 또는 **Make sticker**를 고르세요.
 5. **Custom Emoji** 또는 **Custom Sticker** 창에서 이름을 입력하세요.

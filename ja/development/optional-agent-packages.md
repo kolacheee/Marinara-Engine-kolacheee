@@ -997,8 +997,10 @@ const memoryVectors = await embeddings.embed(memoryTexts, signal); // documents
 
 ブラウザービューは`openCharacter(characterId, { tab })`を受け取ります。キャラクターエディターを開き、指定されたタブがあればそのタブを表示するため、パッケージは自身が読み取るカードの項目へユーザーを案内できます。古いEngineにはこの関数がありません。リンクを表示する前に`openCharacter`があることを確認してください。
 
+#9191以降、`tab`はタブ内のセクションも受け付けます。`character-sheet`、`image-instructions`、`sprites`、`gallery`で、すべて**画像**タブ内にあります。`sprites`と`gallery`は以前はタブだったため、古いリンクも引き続き機能します。キャラクターの自撮りの指示(`conversationImageInstructions`)は、`convo`から`image-instructions`に移動しました。#9191より前のEngineはこのIDを認識せず、エディターの先頭を開きます。
+
 ```ts
-if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "convo" });
+if (typeof props.openCharacter === "function") props.openCharacter(characterId, { tab: "image-instructions" });
 ```
 
 ### Capability API 1.66: パッケージのスレッドから始めるシーン
