@@ -149,17 +149,6 @@ Professor Mari는 홈 화면에 있는 내장 어시스턴트입니다. 앱을 �
 
 메시지를 길게 누르면 메뉴가 열리므로 텍스트가 선택되지 않습니다. 메시지 전체는 그 메뉴의 **Copy**(복사)를 쓰고, 일부를 선택해 복사하려면 **Edit**(편집)을 연 다음 **Cancel**(취소)로 닫으세요.
 
-## ui/kolacheee 사본이 더 이상 업데이트되지 않아요. 어떻게 하나요?
-
-테스트 브랜치 `ui/kolacheee`는 2026년 11월 15일에 GitHub에서 다시 작성되었습니다. 앱 자체는 바뀌지 않았지만, 그 전에 받은 사본은 더 이상 스스로 앞으로 나아가지 못합니다. 런처는 사본에 GitHub에 없는 변경이 있어 업데이트하지 않았다고 알리고, **Apply Update**(업데이트 적용)도 실패합니다. 한 번만 고치면 됩니다. Marinara를 닫고, Marinara 폴더에서 터미널(Windows는 PowerShell, Android는 Termux)을 연 뒤 다음을 실행하세요.
-
-```bash
-git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
-git checkout -B ui/kolacheee origin/ui/kolacheee
-```
-
-그런 다음 평소처럼 Marinara를 시작하세요. 채팅, 캐릭터, 설정은 그대로이고, 이후 업데이트도 전처럼 작동합니다. 이 브랜치에서 Marinara 코드를 직접 바꿨다면 먼저 그 변경을 따로 저장하세요. 이 단계는 사본을 GitHub의 버전과 정확히 같게 맞춥니다.
-
 ## 도움을 받거나 버그를 신고하려면 어디로 가야 하나요?
 
 [문제 해결](TROUBLESHOOTING.md)부터 확인하세요. 홈에서 **Discord**를 누르면 커뮤니티 채팅이, **Support**(지원)를 누르면 프로젝트 지원 페이지가 열립니다. 버그 신고와 기능 요청은 프로젝트의 GitHub 페이지에서 하세요.

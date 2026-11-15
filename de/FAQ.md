@@ -149,17 +149,6 @@ Die Chatliste übernimmt Änderungen auf diesem Gerät sofort. Änderungen von e
 
 Wenn du eine Nachricht gedrückt hältst, öffnet sich ihr Menü, deshalb wird dabei kein Text markiert. Nimm **Copy** (Kopieren) in diesem Menü für die ganze Nachricht, oder **Edit** (Bearbeiten), um einen Teil zu markieren und zu kopieren, und danach **Cancel** (Abbrechen).
 
-## Meine ui/kolacheee-Kopie aktualisiert sich nicht mehr. Was tun?
-
-Der Test-Branch `ui/kolacheee` wurde am 15. November 2026 auf GitHub neu geschrieben. Die App selbst hat sich nicht geändert, aber Kopien von vor diesem Datum kommen nicht mehr von selbst weiter: Der Launcher meldet, dass deine Kopie Änderungen hat, die nicht auf GitHub sind, und deshalb nicht aktualisiert wurde, und **Apply Update** (Update einspielen) schlägt fehl. Behebe das einmalig. Schließe Marinara, öffne ein Terminal in deinem Marinara-Ordner (PowerShell unter Windows, Termux unter Android) und führe aus:
-
-```bash
-git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
-git checkout -B ui/kolacheee origin/ui/kolacheee
-```
-
-Starte Marinara danach wie gewohnt. Deine Chats, Charaktere und Einstellungen bleiben unberührt, und spätere Updates funktionieren wie bisher. Wenn du Marinaras Code auf diesem Branch selbst geändert hast, sichere diese Änderungen vorher: Dieser Schritt setzt deine Kopie genau auf die Version von GitHub.
-
 ## Wo bekomme ich Hilfe oder melde einen Fehler?
 
 Fang mit [Fehlerbehebung](TROUBLESHOOTING.md) an. Auf Home öffnet **Discord** den Community-Chat und **Support** die Support-Seite des Projekts. Fehler und Funktionswünsche meldest du auf der GitHub-Seite des Projekts.

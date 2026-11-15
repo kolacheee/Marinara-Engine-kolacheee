@@ -149,17 +149,6 @@ Professor Mari 是主页上的内置助手。她能讲解这个应用，也能�
 
 按住消息会打开它的菜单，所以不会选中文字。复制整条消息用菜单里的 **Copy**(复制)；要选中并复制其中一部分，打开 **Edit**(编辑)，复制后点 **Cancel**(取消)。
 
-## 我的 ui/kolacheee 副本不再更新了，怎么办？
-
-测试分支 `ui/kolacheee` 已于 2026 年 11 月 15 日在 GitHub 上重写。应用本身没有变化，但在此日期之前获取的副本无法再自动前进：启动器会提示你的副本有 GitHub 上没有的更改，因此没有更新，**Apply Update**(应用更新)也会失败。只需修复一次：关闭 Marinara，在 Marinara 文件夹中打开终端(Windows 上用 PowerShell，Android 上用 Termux)，然后运行：
-
-```bash
-git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
-git checkout -B ui/kolacheee origin/ui/kolacheee
-```
-
-之后照常启动 Marinara。你的聊天、角色和设置不受影响，以后的更新也和以前一样正常。如果你自己在这个分支上改过 Marinara 的代码，请先保存这些更改：这一步会让你的副本与 GitHub 上的版本完全一致。
-
 ## 去哪里求助或者报 Bug？
 
 先看[故障排查](TROUBLESHOOTING.md)。在主页上，**Discord** 通向社区聊天，**Support**(支持) 打开项目的支持页面。Bug 和功能需求请到项目的 GitHub 页面提交。

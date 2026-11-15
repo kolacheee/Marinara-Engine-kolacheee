@@ -149,17 +149,6 @@ Lista czatów od razu pokazuje zmiany wprowadzone na tym urządzeniu. Zmiany z i
 
 Przytrzymanie wiadomości otwiera jej menu, więc tekst nie jest zaznaczany. Użyj **Kopiuj** w tym menu, aby skopiować całą wiadomość, albo **Edytuj**, aby zaznaczyć i skopiować jej część, a potem **Anuluj**.
 
-## Moja kopia ui/kolacheee przestała się aktualizować. Co zrobić?
-
-Gałąź testowa `ui/kolacheee` została przepisana na GitHubie 15 listopada 2026. Sama aplikacja się nie zmieniła, ale kopie sprzed tej daty nie mogą już same przejść dalej: launcher informuje, że twoja kopia ma zmiany, których nie ma na GitHubie, więc nie została zaktualizowana, a **Apply Update** kończy się błędem. Napraw to jednorazowo. Zamknij Marinarę, otwórz terminal w folderze Marinary (PowerShell w Windows, Termux w Androidzie) i uruchom:
-
-```bash
-git fetch origin "+refs/heads/ui/kolacheee:refs/remotes/origin/ui/kolacheee"
-git checkout -B ui/kolacheee origin/ui/kolacheee
-```
-
-Potem uruchom Marinarę jak zwykle. Twoje czaty, postacie i ustawienia pozostają nietknięte, a kolejne aktualizacje działają jak wcześniej. Jeśli sam zmieniałeś kod Marinary na tej gałęzi, najpierw zapisz te zmiany: ten krok ustawia twoją kopię dokładnie na wersji z GitHuba.
-
 ## Gdzie szukać pomocy albo zgłosić błąd?
 
 Zacznij od przewodnika [Rozwiązywanie problemów](TROUBLESHOOTING.md). Na ekranie głównym **Discord** otwiera czat społeczności, a **Support** (wsparcie) – stronę wsparcia projektu. Błędy i propozycje funkcji zgłaszaj na stronie projektu w serwisie GitHub.
